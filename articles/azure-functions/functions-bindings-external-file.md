@@ -14,17 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 1ab9b7e306fda89235f4e9388fdbae4ea54307df
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 4400ebce2fbed709dcadf41cd2b834fd36416c15
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Azure Functions – Bindungen zu externen Dateien (Vorschau)
-In diesem Artikel wird erläutert, wie Bindungen zu externen Dateien in Azure Functions verwendet werden. Azure Functions unterstützt Trigger-, Eingabe- und Ausgabebindungen für externe Dateien.
+In diesem Artikel wird gezeigt, wie Dateien von unterschiedlichen SaaS-Anbietern (z. B. OneDrive, Dropbox) in Ihrer Funktion verarbeitet werden, indem integrierte Bindungen verwendet werden. Azure Functions unterstützt Trigger-, Eingabe- und Ausgabebindungen für externe Dateien.
 
-Bindungen zu externen Dateien ermöglichen es Funktionen (Functions), auf Dateien zuzugreifen, die außerhalb von Azure gehostet werden. Diese Bindung erstellt neue API-Verbindungen oder verwendet vorhandene API-Verbindungen aus der Ressourcengruppe Ihrer Funktionen-App.
+Diese Bindung erstellt API-Verbindungen mit SaaS-Anbietern oder verwendet vorhandene API-Verbindungen aus der Ressourcengruppe Ihrer Funktionen-App.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -254,76 +255,6 @@ In C#-Funktionen können Sie auch eine Bindung zu jedem der folgenden Typen erst
 * `CloudBlockBlob`
 * `CloudPageBlob`
 
-<a name="inputsample"></a>
-
-## <a name="input-sample"></a>Eingabebeispiel
-Angenommen, Sie haben die folgende „function.json“-Datei, in der ein [Storage-Warteschlangentrigger](functions-bindings-storage-queue.md), eine Eingabe aus einer externen Datei und eine Ausgabe in eine externe Datei definiert sind:
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnection",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "myInputFile",
-      "type": "apiHubFile",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "<name of external file connection>",
-      "direction": "in"
-    },
-    {
-      "name": "myOutputFile",
-      "type": "apiHubFile",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "<name of external file connection>",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Sehen Sie sich das sprachspezifische Beispiel an, in dem die Eingabedatei in die Ausgabedatei kopiert wird.
-
-* [C#](#incsharp)
-* [Node.js](#innodejs)
-
-<a name="incsharp"></a>
-
-### <a name="input-usage-in-c"></a>Eingabeverwendung in C# #
-
-```cs
-public static void Run(string myQueueItem, string myInputFile, out string myOutputFile, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-    myOutputFile = myInputFile;
-}
-```
-
-<!--
-<a name="infsharp"></a>
-### Input usage in F# ##
-```fsharp
-
-```
--->
-
-<a name="innodejs"></a>
-
-### <a name="input-usage-in-nodejs"></a>Eingabeverwendung in Node.js
-
-```javascript
-module.exports = function(context) {
-    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
-    context.bindings.myOutputFile = context.bindings.myInputFile;
-    context.done();
-};
-```
 
 <a name="output"></a>
 
@@ -368,8 +299,76 @@ In C#-Funktionen können Sie auch eine Ausgabe in einen der folgenden Typen erst
 
 <a name="outputsample"></a>
 
-## <a name="output-sample"></a>Ausgabebeispiel
-Siehe [Eingabebeispiel](#inputsample).
+<a name="sample"></a>
+
+## <a name="input--output-sample"></a>Beispiel für Eingabe und Ausgabe
+Angenommen, Sie haben die folgende „function.json“-Datei, in der ein [Storage-Warteschlangentrigger](functions-bindings-storage-queue.md), eine Eingabe aus einer externen Datei und eine Ausgabe in eine externe Datei definiert sind:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnection",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputFile",
+      "type": "apiHubFile",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "<name of external file connection>",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputFile",
+      "type": "apiHubFile",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "<name of external file connection>",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Sehen Sie sich das sprachspezifische Beispiel an, in dem die Eingabedatei in die Ausgabedatei kopiert wird.
+
+* [C#](#incsharp)
+* [Node.js](#innodejs)
+
+<a name="incsharp"></a>
+
+### <a name="usage-in-c"></a>Verwendung in C# #
+
+```cs
+public static void Run(string myQueueItem, string myInputFile, out string myOutputFile, TraceWriter log)
+{
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    myOutputFile = myInputFile;
+}
+```
+
+<!--
+<a name="infsharp"></a>
+### Input usage in F# ##
+```fsharp
+
+```
+-->
+
+<a name="innodejs"></a>
+
+### <a name="usage-in-nodejs"></a>Verwendung in „Node.js“
+
+```javascript
+module.exports = function(context) {
+    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
+    context.bindings.myOutputFile = context.bindings.myInputFile;
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]

@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
-ms.openlocfilehash: 2e85e787d591f2c81ef4e54bc1e7ac111accbb16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 6926b0a594b29cb3b3fff7a76a258d11bd82ded8
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,6 +60,9 @@ Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](d
 ### <a name="custom-net-activities"></a>Benutzerdefinierte .NET-Aktivitäten 
 Falls Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, oder Daten mit Ihrer eigenen Logik transformieren möchten, erstellen Sie eine **benutzerdefinierte .NET-Aktivität**. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
+## <a name="schedule-pipelines"></a>Planen von Pipelines
+Eine Pipeline ist nur zwischen ihrer **start**- und ihrer **end**-Zeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Informationen zur Planung und Ausführung in Azure Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) .
+
 ## <a name="pipeline-json"></a>Pipeline-JSON
 Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generische Struktur für eine Pipeline sieht wie folgt aus:
 
@@ -90,10 +94,10 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
 | Beschreibung | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. |Ja |
 | Aktivitäten | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im nächsten Abschnitt. | Ja |  
 | Start | Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: `2016-10-14T16:32:41Z`. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Die Eigenschaften "start" und "end" geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. |Nein<br/><br/>Wenn Sie einen Wert für die Endeigenschaft angeben, müssen Sie auch einen Wert für die Starteigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein. Sie müssen beide Werte angeben, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeiten angeben, können Sie später zum Festlegen der Werte das Set-AzureRmDataFactoryPipelineActivePeriod-Cmdlet verwenden. |
-| end | Datum und Uhrzeit für das Ende der Pipeline. Muss, falls gewünscht, im ISO-Format angegeben werden. Beispiel: `2016-10-14T17:32:41Z` <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie „9999-09-09“ als Wert für die Endeigenschaft an. |Nein <br/><br/>Wenn Sie einen Wert für die Starteigenschaft angeben, müssen Sie auch einen Wert für die Endeigenschaft angeben.<br/><br/>Lesen Sie auch die Hinweise zur **Start** -Eigenschaft. |
+| end | Datum und Uhrzeit für das Ende der Pipeline. Muss, falls gewünscht, im ISO-Format angegeben werden. Beispiel: `2016-10-14T17:32:41Z` <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie „9999-09-09“ als Wert für die Endeigenschaft an. <br/><br/> Eine Pipeline ist nur zwischen ihrer Start- und ihrer Endzeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Informationen zur Planung und Ausführung in Azure Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) . |Nein <br/><br/>Wenn Sie einen Wert für die Starteigenschaft angeben, müssen Sie auch einen Wert für die Endeigenschaft angeben.<br/><br/>Lesen Sie auch die Hinweise zur **Start** -Eigenschaft. |
 | isPaused | Bei der Einstellung „true“ wird die Pipeline nicht ausgeführt. Sie befindet sich im Status „angehalten“. Standardwert = false. Sie können diese Eigenschaft zum Aktivieren oder Deaktivieren einer Pipeline verwenden. |Nein |
-| pipelineMode | Die Methode zum Planen von Ausführungen für die Pipeline. Zulässige Werte sind: „scheduled“ (Standard) und „onetime“.<br/><br/>„scheduled“ bedeutet, dass die Pipeline in einem bestimmten Zeitintervall gemäß ihrem aktiven Zeitraum (Start- und Endzeit) ausgeführt wird. „onetime“ bedeutet, dass die Pipeline nur einmal ausgeführt wird. Pipelines mit einmaliger Ausführung können derzeit nach der Erstellung nicht geändert oder aktualisiert werden. Informationen zur Einstellung der einmaligen Ausführung finden Sie unter [Pipeline mit einmaliger Ausführung](data-factory-scheduling-and-execution.md#onetime-pipeline) . |Nein |
-| expirationTime | Zeitraum, für den die [Pipeline mit einmaliger Ausführung](data-factory-scheduling-and-execution.md#onetime-pipeline) nach der Erstellung gültig ist und für den die Bereitstellung aufrechterhalten werden sollte. Wenn die Pipeline keine aktiven, fehlerhaften oder ausstehenden Ausführungen enthält, wird sie bei Erreichen der Ablaufzeit automatisch gelöscht. Der Standardwert: `"expirationTime": "3.00:00:00"`.|Nein |
+| pipelineMode | Die Methode zum Planen von Ausführungen für die Pipeline. Zulässige Werte sind: „scheduled“ (Standard) und „onetime“.<br/><br/>„scheduled“ bedeutet, dass die Pipeline in einem bestimmten Zeitintervall gemäß ihrem aktiven Zeitraum (Start- und Endzeit) ausgeführt wird. „onetime“ bedeutet, dass die Pipeline nur einmal ausgeführt wird. Pipelines mit einmaliger Ausführung können derzeit nach der Erstellung nicht geändert oder aktualisiert werden. Informationen zur Einstellung der einmaligen Ausführung finden Sie unter [Pipeline mit einmaliger Ausführung](#onetime-pipeline) . |Nein |
+| expirationTime | Zeitraum, für den die [Pipeline mit einmaliger Ausführung](#onetime-pipeline) nach der Erstellung gültig ist und für den die Bereitstellung aufrechterhalten werden sollte. Wenn die Pipeline keine aktiven, fehlerhaften oder ausstehenden Ausführungen enthält, wird sie bei Erreichen der Ablaufzeit automatisch gelöscht. Der Standardwert: `"expirationTime": "3.00:00:00"`.|Nein |
 | Datasets |Liste der Datasets, die von den in der Pipeline definierten Aktivitäten verwendet werden sollen. Diese Eigenschaft kann verwendet werden, um Datasets zu definieren, die spezifisch für diese Pipeline und nicht innerhalb der Data Factory definiert sind. In dieser Pipeline definierte Datasets können nicht gemeinsam genutzt, sondern nur von dieser Pipeline verwendet werden. Informationen hierzu finden Sie unter [Zugeordnete Datasets](data-factory-create-datasets.md#scoped-datasets) . |Nein |
 
 ## <a name="activity-json"></a>JSON-Definition der Aktivität
@@ -132,7 +136,7 @@ In der folgenden Tabelle werden die Eigenschaften in der JSON-Definition für di
 | linkedServiceName |Name des verknüpften Diensts, der von der Aktivität verwendet wird. <br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. |„Ja“ für die HDInsight-Aktivität und die Azure Machine Learning-Aktivität zur Batchbewertung  <br/><br/>„Nein“ für alle übrigen |
 | typeProperties |Eigenschaften im Abschnitt **typeProperties** sind abhängig vom Typ der Aktivität. Um Typeigenschaften für eine Aktivität anzuzeigen, klicken Sie auf die Links zur Aktivität im vorhergehenden Abschnitt. | Nein |
 | policy |Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Falls dies nicht angegeben wird, werden Standardrichtlinien verwendet. |Nein |
-| scheduler | Die „scheduler“-Eigenschaft wird verwendet, um die gewünschte Planung für die Aktivität zu definieren. Die untergeordneten Eigenschaften sind identisch mit denen der [availability-Eigenschaft in einem Dataset](data-factory-create-datasets.md#Availability). |Nein |
+| scheduler | Die „scheduler“-Eigenschaft wird verwendet, um die gewünschte Planung für die Aktivität zu definieren. Die untergeordneten Eigenschaften sind identisch mit denen der [availability-Eigenschaft in einem Dataset](data-factory-create-datasets.md#dataset-availability). |Nein |
 
 
 ### <a name="policies"></a>Richtlinien
@@ -279,125 +283,6 @@ In diesem Beispiel hat „Pipeline1“ nur eine Aktivität, die „Dataset1“ a
 
 Weitere Informationen finden Sie unter [Planung und Ausführung](#chaining-activities). 
 
-### <a name="json-example-for-chaining-two-copy-activity-in-a-pipeline"></a>JSON-Beispiel für das Verketten von zwei Kopieraktivitäten in einer Pipeline
-Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Sie können beispielsweise zwei Kopieraktivitäten in einer Pipeline („CopyActivity1“ und „CopyActivity2“) mit den folgenden Eingabe-/Ausgabedatasets verwenden:   
-
-**CopyActivity1**
-
-Eingabe: Dataset Ausgabe: Dataset2
-
-**CopyActivity2**
-
-Eingabe: Dataset2  Ausgabe: Dataset3
-
-CopyActivity2 wird nur ausgeführt, wenn CopyActivity1 erfolgreich ausgeführt wurde und Dataset2 verfügbar ist.
-
-Hier finden Sie das Beispiel für die Pipeline-JSON:
-
-```json
-{
-    "name": "ChainActivities",
-    "properties": {
-        "description": "Run activities in sequence",
-        "activities": [
-            {
-                "type": "Copy",
-                "typeProperties": {
-                    "source": {
-                        "type": "BlobSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink",
-                        "copyBehavior": "PreserveHierarchy",
-                        "writeBatchSize": 0,
-                        "writeBatchTimeout": "00:00:00"
-                    }
-                },
-                "inputs": [
-                    {
-                        "name": "Dataset1"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "Dataset2"
-                    }
-                ],
-                "policy": {
-                    "timeout": "01:00:00"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "name": "CopyFromBlob1ToBlob2",
-                "description": "Copy data from a blob to another"
-            },
-            {
-                "type": "Copy",
-                "typeProperties": {
-                    "source": {
-                        "type": "BlobSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink",
-                        "writeBatchSize": 0,
-                        "writeBatchTimeout": "00:00:00"
-                    }
-                },
-                "inputs": [
-                    {
-                        "name": "Dataset2"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "Dataset3"
-                    }
-                ],
-                "policy": {
-                    "timeout": "01:00:00"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "name": "CopyFromBlob2ToBlob3",
-                "description": "Copy data from a blob to another"
-            }
-        ],
-        "start": "2016-08-25T00:00:00Z",
-        "end": "2016-08-25T05:00:00Z",
-        "isPaused": false
-    }
-}
-```
-
-Beachten Sie, dass in diesem Beispiel das Ausgabedataset der ersten Kopieraktivität (Dataset2) als Eingabe für die zweite Aktivität festgelegt ist. Aus diesem Grund wird die zweite Aktivität nur ausgeführt, wenn das Ausgabedataset der ersten Aktivität bereit ist.  
-
-Das Ausgabedataset wird zwischen Start- und Endzeit der Pipeline stündlich erzeugt. Aus diesem Grund werden fünf Datasetslices von dieser Pipeline erzeugt, einer für jedes Aktivitätsfenster (12:00 Uhr - 1:00 Uhr, 1:00 Uhr - 2:00 Uhr, 2:00 Uhr - 3:00 Uhr, 3:00 Uhr - 4:00 Uhr, 04: 00 Uhr - 5: 00 Uhr). 
-
-
-Im Beispiel kann „CopyActivity2“ eine Zusätzliche Eingabe haben, z.B. „Dataset3“. Sie legen aber „Dataset2“ als Eingabe für „CopyActivity2“ fest, damit die Aktivität nicht so lange ausgeführt wird, bis „CopyActivity1“ abgeschlossen ist. Beispiel:
-
-**CopyActivity1**
-
-Eingabe: Dataset1 Ausgabe: Dataset2
-
-**CopyActivity2**
-
-Eingaben: Dataset3, Dataset2 Ausgabe: Dataset4
-
-In diesem Beispiel werden zwei Eingabedatasets für die zweite Kopieraktivität angegeben. Wenn mehrere Eingaben angegeben wurden, wird nur das erste Eingabedataset zum Kopieren der Daten verwendet, aber die anderen Datasets werden als Abhängigkeiten verwendet. CopyActivity2 wird erst gestartet, nachdem die folgenden Bedingungen erfüllt sind:
-
-* CopyActivity1 wurde erfolgreich abgeschlossen und Dataset2 ist verfügbar. Dieses Dataset wird beim Kopieren von Daten in Dataset4 nicht verwendet. Es fungiert nur als Terminplanungs-Abhängigkeit für CopyActivity2.   
-* Dataset3 ist verfügbar. Dieses Dataset stellt die Daten dar, die zum Ziel kopiert werden. 
-
-## <a name="scheduling-and-execution"></a>Planung und Ausführung
-Eine Pipeline ist nur zwischen ihrer Start- und ihrer Endzeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Eigentlich ist es nicht die Pipeline, die ausgeführt wird. Es sind vielmehr die Aktivitäten in der Pipeline, die ausgeführt werden. Dies geschieht jedoch im Gesamtkontext der Pipeline. 
-
-Informationen zur Planung und Ausführung in Azure Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) .
-
 ## <a name="create-and-monitor-pipelines"></a>Erstellen und Überwachen von Pipelines
 Sie können mit einem dieser Tools oder SDKs Pipelines erstellen. 
 
@@ -416,8 +301,55 @@ In den folgenden Tutorials finden Sie schrittweise Anleitungen zum Erstellen von
 
 Sobald eine Pipeline erstellt/bereitgestellt ist, können Sie sie mit den Blättern des Azure-Portals oder der App „Überwachung und Verwaltung“ überwachen und verwalten. In den nächsten Themen finden Sie schrittweise Anweisungen. 
 
-- [Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell](data-factory-monitor-manage-pipelines.md)
+- [Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell](data-factory-monitor-manage-pipelines.md).
 - [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)
+
+
+## <a name="onetime-pipeline"></a>Pipeline mit einmaliger Ausführung
+Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. stündlich oder täglich) innerhalb der in der Pipelinedefinition angegebenen Start- und Endzeiten planen. Weitere Informationen finden Sie unter [Planen von Aktivitäten](#scheduling-and-execution). Sie können auch eine Pipeline erstellen, die nur einmal ausgeführt wird. Legen Sie zu diesem Zweck wie im folgenden JSON-Beispiel gezeigt die **pipelineMode**-Eigenschaft in der Pipelinedefinition auf **onetime** (einmalig) fest. Der Standardwert für diese Eigenschaft lautet **scheduled** (geplant).
+
+```json
+{
+    "name": "CopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset"
+                    }
+                ]
+                "name": "CopyActivity-0"
+            }
+        ]
+        "pipelineMode": "OneTime"
+    }
+}
+```
+
+Beachten Sie Folgendes:
+
+* Es werden keine Start- und Endzeiten (**start** und **end**) für die Pipeline angegeben.
+* Die Verfügbarkeit (**availability**) von Ein- und Ausgabedatasets (**frequency** und **interval**) wird angegeben, auch wenn die Werte von Data Factory nicht verwendet werden.  
+* Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dieses Verhalten ist beabsichtigt.
+* Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 164e3b0af47cd98f2d20fce7344230608e9fbe8c
-ms.openlocfilehash: 72b823998ebd570acc34e6a7ca034f64881db0c4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: c16e07925389cc17ff156cae767366223fefa18f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -34,7 +36,7 @@ Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung z
 ## <a name="conditional-access-prerequisites"></a>Voraussetzungen für den bedingten Zugriff
 * Azure Active Directory Premium-Abonnement
 * Ein Verbundmandant oder verwalteter Azure Active Directory-Mandant
-* Verbundmandanten erfordern die Aktivierung von Multi-Factor Authentication (MFA)   
+* Verbundmandanten erfordern Multi-Factor Authentication (MFA).  
     ![Konfigurieren von Zugriffsregeln – Erfordern von Multi-Factor Authentication](./media/active-directory-application-proxy-conditional-access/application-proxy-conditional-access.png)
 
 ## <a name="configure-per-application-multi-factor-authentication"></a>Konfigurieren von Multi-Factor Authentication pro Anwendung
@@ -42,18 +44,18 @@ Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung z
 2. Gehen Sie zu Active Directory, und wählen Sie das Verzeichnis aus, in dem Sie den Anwendungsproxy aktivieren möchten.
 3. Klicken Sie auf **Anwendungen**, und scrollen Sie nach unten zum Abschnitt **Zugriffsregeln**. Der Abschnitt mit den Zugriffsregeln wird nur für Anwendungen angezeigt, die mit dem Anwendungsproxy veröffentlicht wurden und die Verbundauthentifizierung nutzen.
 4. Aktivieren Sie die Regeln, indem Sie **Zugriffsregeln aktivieren** auf **Ein** festlegen.
-5. Geben Sie die Benutzer und Gruppen an, auf die die Regeln angewendet werden sollen. Verwenden Sie die Schaltfläche **Gruppe hinzufügen**, um eine oder mehrere Gruppen auszuwählen, für die die Zugriffsregel gelten soll. Dieses Dialogfeld kann auch zum Entfernen ausgewählter Gruppen verwendet werden.  Bei Anwendung der ausgewählten Regeln auf Gruppen werden die Zugriffsregeln nur für Benutzer erzwungen, die einer der angegebenen Sicherheitsgruppen angehören.  
+5. Geben Sie die Benutzer und Gruppen an, auf die die Regeln angewendet werden sollen. Wählen Sie über die Schaltfläche **Gruppe hinzufügen** eine oder mehrere Gruppen aus, für die die Zugriffsregel gelten soll. Dieses Dialogfeld kann auch zum Entfernen ausgewählter Gruppen verwendet werden.  Wenn die Regeln auf Gruppen angewendet werden sollen, werden die Zugriffsregeln nur für Benutzer erzwungen, die einer der angegebenen Sicherheitsgruppen angehören.  
 
-   * Um Sicherheitsgruppen ausdrücklich von der Regel auszuschließen, aktivieren Sie die Option **Ausgenommen** und geben eine oder mehrere Gruppen an. Benutzer, die Mitglieder einer der in der Ausnahmeliste aufgeführten Gruppen sind, müssen keine mehrstufige Authentifizierung durchführen.  
-   * Wenn ein Benutzer unter Verwendung der Multi-Factor Authentication-Funktion auf Benutzerebene konfiguriert wurde, hat diese Einstellung Vorrang vor den Multi-Factor Authentication-Regeln auf Anwendungsebene. Dies bedeutet, dass Benutzer, die auf Benutzerebene für die mehrstufige Authentifizierung konfiguriert wurden, auch dann eine mehrstufige Authentifizierung durchlaufen müssen, wenn sie auf Anwendungsebene von den Multi-Factor Authentication-Regeln ausgenommen wurden. Hier erfahren Sie mehr über [Multi-Factor Authentication und benutzerspezifische Einstellungen](../multi-factor-authentication/multi-factor-authentication.md).
+   * Um Sicherheitsgruppen ausdrücklich von der Regel auszuschließen, aktivieren Sie die Option **Ausgenommen** und geben eine oder mehrere Gruppen an. Benutzer, die Mitglieder einer der in der Ausnahmeliste aufgeführten Gruppen sind, müssen keine Multi-Factor Authentication durchführen.  
+   * Wenn ein Benutzer unter Verwendung des Features Multi-Factor Authentication auf Benutzerebene konfiguriert wurde, hat diese Einstellung Vorrang vor den Multi-Factor Authentication-Regeln auf Anwendungsebene. Benutzer, die auf Benutzerebene für die Multi-Factor Authentication konfiguriert wurden, müssen auch dann eine Multi-Factor Authentication durchlaufen, wenn sie auf Anwendungsebene von den Multi-Factor Authentication-Regeln ausgenommen wurden. Hier erfahren Sie mehr über [Multi-Factor Authentication und benutzerspezifische Einstellungen](../multi-factor-authentication/multi-factor-authentication.md).
 6. Wählen Sie die Zugriffsregel, die Sie festlegen möchten:
 
-   * **Erfordert mehrstufige Authentifizierung**: Benutzer, auf die Zugriffsregeln angewendet werden, müssen eine mehrstufige Authentifizierung durchlaufen, bevor sie auf die Anwendung zugreifen können, für die die Regel gilt.
+   * **Mehrstufige Authentifizierung anfordern:** Benutzer, auf die Zugriffsregeln angewendet werden, müssen eine Multi-Factor Authentication durchlaufen, bevor sie auf die Anwendung zugreifen können, für die die Regel gilt.
    * **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**: Benutzer, die über eine vertrauenswürdige IP-Adresse auf die Anwendung zugreifen, werden nicht zur Ausführung einer mehrstufigen Authentifizierung aufgefordert. Die Bereiche für vertrauenswürdige IP-Adressen können auf den Einstellungsseiten für die mehrstufige Authentifizierung konfiguriert werden.
    * **Zugriff blockieren, wenn nicht gearbeitet wird**: Benutzer, die versuchen, sich von außerhalb des Unternehmensnetzwerks zu verbinden, können nicht auf die Anwendung zugreifen.
 
 ## <a name="configuring-mfa-for-federation-services"></a>Konfigurieren von MFA für Verbunddienste
-Für Verbundmandanten kann Multi-Factor Authentication (MFA) von Azure Active Directory oder vom lokalen AD FS-Server durchgeführt werden. Standardmäßig wird MFA auf allen Seiten durchgeführt, die von Azure Active Directory gehostet werden. Führen Sie zur lokalen Konfiguration von MFA Windows PowerShell aus, und verwenden Sie die –SupportsMFA-Eigenschaft zum Festlegen des Azure AD-Moduls.
+Für Verbundmandanten kann Multi-Factor Authentication (MFA) von Azure Active Directory oder vom lokalen AD FS-Server durchgeführt werden. Standardmäßig wird MFA auf allen Seiten durchgeführt, die von Azure Active Directory gehostet werden. Führen Sie zur lokalen Konfiguration von MFA Windows PowerShell aus, und verwenden Sie die SupportsMFA-Eigenschaft zum Festlegen des Azure AD-Moduls.
 
 Im folgenden Beispiel wird veranschaulicht, wie lokale MFA mithilfe des [Set-MsolDomainFederationSettings-Cmdlets](https://msdn.microsoft.com/library/azure/dn194088.aspx) auf dem Mandanten „contoso.com“ aktiviert wird: `Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true `
 
@@ -66,9 +68,4 @@ Zusätzlich zum Festlegen dieses Kennzeichens muss die AD FS-Instanz des Verbund
 * [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 04/25/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 2e7815702f2d2f4ce935826c4769838727a83696
-ms.openlocfilehash: 7d1be1dea6ed4ecda196743f592456a5b977e9b0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 2b0e5d4d1862305cda279fcf8cba895b8e6796bb
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen
 > [!NOTE]
 > Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-> 
-> 
 
 Heutzutage möchten Mitarbeiter an jedem Ort, zu jeder Zeit und mit jedem Gerät produktiv arbeiten können. Sie möchten auf ihren eigenen Geräten arbeiten, z.B. Tablet-PCs, Smartphones oder Laptops. Und sie erwarten, sowohl auf SaaS-Apps in der Cloud als auch auf lokale Unternehmens-Apps zugreifen zu können. Für die Bereitstellung des Zugriffs auf lokale Anwendungen wurden bisher virtuelle private Netzwerke (VPNs), demilitarisierte Zonen (DMZs) oder lokale Reverseproxys eingesetzt. Diese Lösungen sind aber nicht nur komplex und schwer zu schützen, sondern können außerdem nur mit hohem Kostenaufwand eingerichtet und verwaltet werden.
 
@@ -35,14 +35,14 @@ Moderne Mitarbeiter in einer Arbeitswelt mit dem Motto „mobile-first, cloud-fi
 ## <a name="what-is-azure-active-directory-application-proxy"></a>Was ist der Azure Active Directory-Anwendungsproxy?
 Der Azure AD-Anwendungsproxy ermöglicht das einmalige Anmelden (SSO) und den sicheren Remotezugriff für lokal gehostete Webanwendungen. Dies können SharePoint-Websites, Outlook Web Access oder beliebige andere Branchenwebanwendungen sein, die Sie einsetzen. Diese lokalen Webanwendungen sind in Azure AD integriert, also in die gleiche Identitäts- und Steuerungsplattform, die auch von O365 verwendet wird. Dadurch können Endbenutzer auf Ihre lokalen Anwendungen auf die gleiche Weise zugreifen wie auf O365 und andere SaaS-Apps, die in Azure AD integriert sind. Dafür müssen Sie weder die Netzwerkinfrastruktur ändern noch VPN verwenden.
 
-## <a name="why-is-this-a-better-solution"></a>Warum ist dies eine bessere Lösung?
+## <a name="why-is-application-proxy-a-better-solution"></a>Warum ist Anwendungsproxy eine bessere Lösung?
 Der Azure AD-Anwendungsproxy ist eine einfache, sichere und kostengünstige Lösung für den Remotezugriff auf alle lokalen Anwendungen.
 
 Azure AD-Anwendungsproxy:  
 
 * Funktioniert in der Cloud, und Sie können Zeit und Kosten sparen. Für lokale Lösungen müssen Sie DMZs, Edgeserver oder andere komplexe Infrastrukturen einrichten und verwalten.  
 * Sie sind einfacher einzurichten und zu schützen als lokale Lösungen, da Sie keine eingehenden Verbindungen über Ihre Firewall öffnen müssen.  
-* Bietet ein hohes Maß an Sicherheit. Wenn Sie Ihre Apps mit dem Azure AD-Anwendungsproxy veröffentlichen, können Sie die umfassenden Autorisierungssteuerungen und Sicherheitsanalysen in Azure nutzen. Dies bedeutet, dass Sie erweiterte Sicherheitsfunktionen für alle vorhandenen Apps erhalten, ohne Apps dafür ändern zu müssen.  
+* Bietet ein hohes Maß an Sicherheit. Wenn Sie Ihre Apps mit dem Azure AD-Anwendungsproxy veröffentlichen, können Sie die umfassenden Autorisierungssteuerungen und Sicherheitsanalysen in Azure nutzen. Sie erhalten erweiterte Sicherheitsfunktionen für alle vorhandenen Apps, ohne Apps dafür ändern zu müssen.  
 * Ermöglicht Ihren Benutzern einen einheitlichen Authentifizierungsvorgang. Mit dem einmaligen Anmelden können Ihre Benutzer leicht und problemlos mit nur einem Kennwort auf alle Apps zugreifen, die sie zum produktiven Arbeiten benötigen.  
 
 ## <a name="what-kind-of-applications-work-with-azure-ad-application-proxy"></a>Welche Arten von Anwendungen können mit dem Azure AD-Anwendungsproxy verwendet werden?
@@ -71,12 +71,12 @@ Wenn Benutzer per Remotezugriff auf Anwendungen zugreifen, stellen sie eine Verb
 7. Die Antwort wird über den Anwendungsproxy an den Benutzer gesendet.
 
 ### <a name="single-sign-on"></a>Einmaliges Anmelden
-Der Azure AD-Anwendungsproxy ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, nimmt der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung die Identität des Benutzers an, um das einmalige Anmelden zu ermöglichen. Wenn Sie über eine Anwendung verfügen, die Ansprüche unterstützt und die Azure Active Directory vertraut, wird das einmalige Anmelden möglich, weil der Benutzer bereits über Azure Active Directory authentifiziert wurde.
+Der Azure AD-Anwendungsproxy ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, nimmt der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung die Identität des Benutzers an, um das einmalige Anmelden zu ermöglichen. Wenn Sie über eine Anwendung verfügen, die Ansprüche unterstützt und Azure Active Directory vertraut, funktioniert das einmalige Anmelden, da der Benutzer bereits über Azure AD authentifiziert wurde.
 
 Weitere Informationen zu Kerberos finden Sie unter [All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd) (Alles über die eingeschränkte Kerberos-Delegierung, KCD).
 
 ## <a name="how-to-get-started"></a>Erste Schritte
-Stellen Sie sicher, dass Sie über ein Azure AD Basic- oder Premium-Abonnement und ein Azure AD-Verzeichnis verfügen, für die Sie als globaler Administrator angemeldet sind. Sie benötigen auch Azure AD Basic- oder Premium-Lizenzen für den Verzeichnisadministrator und Benutzer, die auf die Apps zugreifen. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md) .
+Stellen Sie sicher, dass Sie über ein Azure AD Basic- oder Premium-Abonnement und ein Azure AD-Verzeichnis verfügen, für die Sie als globaler Administrator angemeldet sind. Sie benötigen auch Azure AD Basic- oder Premium-Lizenzen für den Verzeichnisadministrator und Benutzer, die auf die Apps zugreifen. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
 Das Einrichten des Anwendungsproxys erfolgt in zwei Schritten:
 
@@ -93,10 +93,5 @@ Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
 * [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

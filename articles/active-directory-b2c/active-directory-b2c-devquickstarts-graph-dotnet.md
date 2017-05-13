@@ -3,8 +3,8 @@ title: 'Azure Active Directory B2C: Verwenden der Graph-API | Microsoft Docs'
 description: "Aufrufen der Graph-API für einen B2C-Mandanten durch Verwenden einer Anwendungsidentität zum Automatisieren des Prozesses."
 services: active-directory-b2c
 documentationcenter: .net
-author: dstrockis
-manager: mbaldwin
+author: gsacavdm
+manager: krassk
 editor: bryanla
 ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
 ms.service: active-directory-b2c
@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: a932b617d57184ef714bf18f1e1e23599db52487
+ms.date: 03/22/2017
+ms.author: gsacavdm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 27a331562d659212dcd1b775ac06e1e1e4686517
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -33,63 +35,55 @@ In diesem Artikel wird erläutert, wie Sie den automatisierten Anwendungsfall du
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Erhalten eines Azure AD-B2C-Mandanten
 Bevor Sie Anwendungen oder Benutzer erstellen und mit Azure AD interagieren können, benötigen Sie einen Azure AD B2C-Mandanten und ein globales Administratorkonto in diesem Mandanten. Falls Sie noch keinen Mandanten besitzen, führen Sie die [ersten Schritte mit Azure AD B2C](active-directory-b2c-get-started.md)aus.
 
-## <a name="register-a-service-application-in-your-tenant"></a>Registrieren einer Dienstanwendung in Ihrem Mandanten
-Da Sie jetzt über einen B2C-Mandanten verfügen, müssen Sie Ihre Dienstanwendung mit den Azure AD PowerShell-Cmdlets erstellen.
-Laden Sie zuerst den [Microsoft Online Services-Anmelde-Assistenten](http://go.microsoft.com/fwlink/?LinkID=286152)herunter, und installieren Sie ihn. Laden Sie anschließend das [Azure Active Directory-Modul für Windows PowerShell (64 Bit)](http://go.microsoft.com/fwlink/p/?linkid=236297)herunter, und installieren Sie es.
+## <a name="register-your-application-in-your-tenant"></a>Registrieren Ihrer Anwendung in Ihrem Mandanten
+Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung über das [Azure-Portal](https://portal.azure.com) registrieren.
 
 > [!IMPORTANT]
-> Um die Graph-API mit Ihrem B2C-Mandanten zu verwenden, müssen Sie unter Verwendung von PowerShell eine dedizierte Anwendung registrieren. Folgen Sie dazu den Anweisung in diesem Artikel. Sie können Ihre bereits vorhandenen B2C-Anwendungen, die sie im Azure-Portal registriert haben, nicht wiederverwenden.
-> 
-> 
+> Um die Graph-API mit dem B2C-Mandanten zu verwenden, müssen Sie eine dedizierte Anwendung über das generische Blatt *App-Registrierungen* im Azure-Portal registrieren, **NICHT** über das Blatt *Anwendungen* in Azure AD B2C. Sie können Ihre bereits vorhandenen B2C-Anwendungen, die Sie auf dem Blatt *Anwendungen* von Azure AD B2C registriert haben, nicht wiederverwenden.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+2. Wählen Sie Ihren Azure AD B2C-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite Ihr Konto auswählen.
+3. Wählen Sie im linken Navigationsbereich **Weitere Dienste**, und klicken Sie auf **App-Registrierungen** und auf **Hinzufügen**.
+4. Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. 
+    1. Wählen Sie **Web-App/API** als Anwendungstyp aus.    
+    2. Geben Sie **einen beliebigen Umleitungs-URI** (z.B. https://B2CGraphAPI) an, da dieser für dieses Beispiel nicht relevant ist.  
+5. Die Anwendung wird jetzt in der Liste der Anwendungen angezeigt. Klicken Sie darauf, um die **Anwendungs-ID** (auch als Client-ID bezeichnet) abzurufen. Kopieren Sie sie, da Sie sie in einem späteren Abschnitt benötigen.
+6. Klicken Sie auf dem Blatt „Einstellungen“ auf **Schlüssel**, und fügen Sie einen neuen Schlüssel hinzu (auch als Clientgeheimnis bezeichnet). Kopieren Sie ihn ebenfalls für die Verwendung in einem späteren Abschnitt.
+
+## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Konfigurieren der Berechtigungen zum Erstellen, Lesen und Aktualisieren für Ihre Anwendung
+Nun müssen Sie Ihre Anwendung so konfigurieren, dass sie alle erforderlichen Berechtigungen zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzern erhält.
+
+1. Fahren Sie auf dem Blatt „Registrierungen“ im Azure-Portal fort, und wählen Sie Ihre Anwendung aus.
+2. Klicken Sie auf dem Blatt „Einstellungen“ auf **Erforderliche Berechtigungen**.
+3. Klicken Sie auf dem Blatt „Erforderliche Berechtigungen“ auf **Microsoft Azure Active Directory**.
+4. Wählen Sie auf dem Blatt „Zugriff aktivieren“ die Berechtigung **Lese- und Schreibzugriff auf Verzeichnisdaten** unter **Anwendungsberechtigungen** aus, und klicken Sie auf **Speichern**.
+5. Klicken Sie schließlich wieder auf dem Blatt „Erforderliche Berechtigungen“ auf die Schaltfläche **Berechtigungen erteilen**.
+
+Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum Erstellen, Lesen und Aktualisieren von Benutzern in Ihrem B2C-Mandanten.
+
+## <a name="configure-delete-permissions-for-your-application"></a>Konfigurieren der Löschberechtigungen für Ihre Anwendung
+Derzeit schließt die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten* **NICHT** die Möglichkeit ein, Löschvorgänge wie z.B. das Löschen von Benutzern durchzuführen. Wenn Ihre Anwendung die Möglichkeit erhalten soll, Benutzer zu löschen, müssen Sie diese zusätzlichen Schritte mit PowerShell ausführen, andernfalls können Sie mit dem nächsten Abschnitt fortfahren.
+
+Laden Sie zuerst den [Microsoft Online Services-Anmelde-Assistenten](http://go.microsoft.com/fwlink/?LinkID=286152)herunter, und installieren Sie ihn. Laden Sie anschließend das [Azure Active Directory-Modul für Windows PowerShell (64 Bit)](http://go.microsoft.com/fwlink/p/?linkid=236297)herunter, und installieren Sie es.
 
 Nachdem Sie das PowerShell-Modul installiert haben, öffnen Sie PowerShell und stellen eine Verbindung mit Ihrem B2C-Mandanten her. Nach dem Ausführen von `Get-Credential` werden Sie zur Eingabe des Benutzernamens und Kennworts aufgefordert. Geben Sie den Benutzernamen und das Kennwort des Administratorkontos für Ihren B2C-Mandanten ein.
 
-```
-> $msolcred = Get-Credential
-> Connect-MsolService -credential $msolcred
-```
+> [!IMPORTANT]
+> Sie müssen ein B2C-Mandantenadministratorkonto verwenden, das für den B2C-Mandanten **lokal** ist. Diese Konten sehen wie folgt aus: myusername@myb2ctenant.onmicrosoft.com.
 
-Vor dem Erstellen der Anwendung müssen Sie einen neuen **geheimen Clientschlüssel**generieren.  Die Anwendung verwendet den geheimen Clientschlüssel für die Authentifizierung gegenüber Azure AD und zum Abrufen von Zugriffstoken. Sie können in PowerShell einen gültigen geheimen Schlüssel generieren:
-
-```
-> $bytes = New-Object Byte[] 32
-> $rand = [System.Security.Cryptography.RandomNumberGenerator]::Create()
-> $rand.GetBytes($bytes)
-> $rand.Dispose()
-> $newClientSecret = [System.Convert]::ToBase64String($bytes)
-> $newClientSecret
+```powershell
+Connect-MsolService
 ```
 
-Mit dem letzten angegebenen Befehl sollte Ihr neuer geheimer Clientschlüssel ausgegeben werden. Kopieren Sie ihn an einen sicheren Speicherort. Sie benötigen sie später. Jetzt können Sie Ihre Anwendung erstellen und den neuen geheimen Clientschlüssel als Anmeldeinformation für die App angeben:
+Nun verwenden Sie im Skript unten die **Anwendungs-ID**, um der Anwendung die Benutzerrolle des Kontoadministrators zuzuweisen, die es der Anwendung ermöglicht, Benutzer zu löschen. Diese Rollen haben allgemein bekannte Bezeichner, daher müssen Sie lediglich in das Skript unten Ihre **Anwendungs-ID** einfügen.
 
-```
-> New-MsolServicePrincipal -DisplayName "My New B2C Graph API App" -Type password -Value $newClientSecret
-
-DisplayName           : My New B2C Graph API App
-ServicePrincipalNames : {dd02c40f-1325-46c2-a118-4659db8a55d5}
-ObjectId              : e2bde258-6691-410b-879c-b1f88d9ef664
-AppPrincipalId        : dd02c40f-1325-46c2-a118-4659db8a55d5
-TrustedForDelegation  : False
-AccountEnabled        : True
-Addresses             : {}
-KeyType               : Password
-KeyId                 : a261e39d-953e-4d6a-8d70-1f915e054ef9
-StartDate             : 9/2/2015 1:33:09 AM
-EndDate               : 9/2/2016 1:33:09 AM
-Usage                 : Verify
+```powershell
+$applicationId = "<YOUR_APPLICATION_ID>"
+$sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
+Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-Wenn die Anwendung erfolgreich erstellt wurde, sollten Eigenschaften der Anwendung ausgegeben werden, z. B. wie im obigen Beispiel. Sie benötigen `ObjectId` und `AppPrincipalId`. Kopieren Sie diese Werte also ebenfalls.
-
-Nach der Erstellung einer Anwendung in Ihrem B2C-Mandanten müssen Sie die Berechtigungen zuweisen, die für die Durchführung von CRUD-Benutzervorgängen erforderlich sind. Weisen Sie der Anwendung drei Rollen zu: „Verzeichnis lesen“ (zum Lesen von Benutzern), „Verzeichnis schreiben“ (zum Erstellen und Aktualisieren von Benutzern) und einen Benutzerkontoadministrator (zum Löschen von Benutzern). Diese Rollen verfügen über bekannte Bezeichner, sodass Sie den Parameter `-RoleMemberObjectId` durch den oben angegebenen Wert `ObjectId` ersetzen und die folgenden Befehle ausführen können. Führen Sie `Get-MsolRole`aus, um die Liste mit allen Verzeichnisrollen anzuzeigen.
-
-```
-> Add-MsolRoleMember -RoleObjectId 88d8e3e3-8f55-4a1e-953a-9b9898b8876b -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-> Add-MsolRoleMember -RoleObjectId 9360feb5-f418-4baa-8175-e2a00bac4301 -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-> Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
-```
-
-Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzern in Ihrem B2C-Mandanten.
+Die Anwendung verfügt jetzt außerdem über die Berechtigung zum Löschen von Benutzern aus Ihrem B2C-Mandanten.
 
 ## <a name="download-configure-and-build-the-sample-code"></a>Herunterladen, Konfigurieren und Erstellen des Beispielcodes
 Laden Sie zunächst den Beispielcode herunter, und bereiten Sie ihn für die Ausführung vor. Dann sehen wir ihn uns genauer an.  Sie können den [Beispielcode als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip). Sie können ihn auch in einem Verzeichnis Ihrer Wahl klonen:
@@ -102,9 +96,9 @@ git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
 
 ```
 <appSettings>
-    <add key="b2c:Tenant" value="contosob2c.onmicrosoft.com" />
-    <add key="b2c:ClientId" value="{The AppPrincipalId from above}" />
-    <add key="b2c:ClientSecret" value="{The client secret you generated above}" />
+    <add key="b2c:Tenant" value="{Your Tenant Name}" />
+    <add key="b2c:ClientId" value="{The ApplicationID from above}" />
+    <add key="b2c:ClientSecret" value="{The Key from above}" />
 </appSettings>
 ```
 
@@ -355,15 +349,10 @@ Sie können den vollständigen Namen, z.B. `extension_55dc0861f9a44eb999e0a8a872
 Mit `B2CGraphClient`verfügen Sie über eine Dienstanwendung, mit der Ihre B2C-Mandantenbenutzer programmgesteuert verwaltet werden können. `B2CGraphClient` nutzt die eigene Anwendungsidentität für die Authentifizierung gegenüber der Azure AD Graph-API. Darüber hinaus werden Token mithilfe eines geheimen Clientschlüssels abgerufen. Beachten Sie beim Einbinden dieser Funktionalität in Ihre Anwendung einige wichtige Punkte für B2C-Apps:
 
 * Sie müssen der Anwendung im Mandanten die richtigen Berechtigungen gewähren.
-* Derzeit müssen Sie zum Abrufen von Zugriffstoken ADAL v2 verwenden. (Sie können Protokollnachrichten auch direkt ohne Verwendung einer Bibliothek senden.)
+* Derzeit müssen Sie zum Abrufen von Zugriffstoken ADAL (nicht MSAL) verwenden. (Sie können Protokollnachrichten auch direkt ohne Verwendung einer Bibliothek senden.)
 * Verwenden Sie beim Aufrufen der Graph-API `api-version=1.6`.
 * Beim Erstellen und Aktualisieren von Consumerbenutzern sind wie oben beschrieben einige Eigenschaften erforderlich.
 
 Wenn Sie Fragen haben oder Aktionen anfordern möchten, die Sie mit der Graph-API in Ihrem B2C-Mandanten durchführen möchten, hinterlassen Sie einen Kommentar zu diesem Artikel, oder legen Sie im GitHub-Repository des Codebeispiels einen entsprechenden Eintrag an.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

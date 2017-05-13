@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 7faa27220bcc07fff0bb2a77e7b90c386cc5ae1e
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: db3645304ab1274da7cd312bf01bbdb0fd158beb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -199,7 +200,7 @@ Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
    Unter [Überwachen der Pipeline](data-factory-monitor-manage-pipelines.md) finden Sie ausführliche Informationen zur Überwachung von Azure Data Factory-Pipelines.  
 
 > [!NOTE]
-> In diesem Beispiel weist SprocActivitySample keine Eingaben auf. Wenn Sie diese Aktivität mit einer Upstreamaktivität verketten möchten (d.h. vor der Verarbeitung), können die Ausgaben der Upstreamaktivität in dieser Aktivität als Eingaben verwendet werden. In diesem Fall wird die Aktivität erst ausgeführt, nachdem die Upstreamaktivität abgeschlossen wurde und ihre Ausgaben verfügbar sind (im Status „Bereit“). Die Eingaben können nicht direkt als Parameter für die Aktivität „Gespeicherte Prozedur“ verwendet werden.
+> In diesem Beispiel weist SprocActivitySample keine Eingaben auf. Wenn Sie diese Aktivität mit einer Upstreamaktivität verketten möchten (d.h. vor der Verarbeitung), können die Ausgaben der Upstreamaktivität in dieser Aktivität als Eingaben verwendet werden. In diesem Fall wird die Aktivität erst ausgeführt, nachdem die Upstreamaktivität abgeschlossen wurde und ihre Ausgaben verfügbar sind (im Status „Bereit“). Die Eingaben können nicht direkt als Parameter für die Aktivität „Gespeicherte Prozedur“ verwendet werden. Weitere Informationen über das Verketten von Aktivitäten in einer Pipeline finden Sie unter [Mehrere Aktivitäten in einer Pipeline](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline).
 >
 >
 
@@ -232,7 +233,7 @@ So sieht das JSON-Format zum Definieren der Aktivität „Gespeicherte Prozedur�
 | Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
 | Typ | Muss festgelegt sein auf: **SqlServerStoredProcedure** | Ja |
 | inputs | Optional. Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. |Nein |
-| outputs | Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |Ja |
+| outputs | Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |Ja |
 | storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank oder dem Azure SQL Data Warehouse an, die bzw. das vom verknüpften Dienst dargestellt wird, den die Ausgabetabelle verwendet. |Ja |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
 

@@ -15,10 +15,11 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 8ef393e414559ed6c7a2a3b41a0c8cf060f8d4da
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 42ac754ba24ba3e8f96d4fb6f3abb97169056c8e
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/21/2017
 In diesem Artikel wird das Importieren einer [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)-Datei in eine neue Azure SQL-Datenbank erläutert. In diesem Artikel werden die folgenden Methoden verwendet:
 - Das [Azure-Portal](https://portal.azure.com)
 - Das Befehlszeilenprogramm [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx)
-- Das [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaseimport?view=azurermps-3.7.0)-Cmdlet
+- Das [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport)-Cmdlet
 
 ## <a name="overview"></a>Übersicht
 
@@ -78,9 +79,15 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
 > Ein logischer Azure SQL-Datenbankserver lauscht auf Port 1433. Wenn Sie versuchen, über eine Unternehmensfirewall eine Verbindung mit einem logischen Azure SQL-Datenbankserver herzustellen, muss dieser Port in der Unternehmensfirewall geöffnet sein, damit der Vorgang erfolgreich ist.
 >
 
+In diesem Beispiel wird gezeigt, wie eine Datenbank mithilfe von „SqlPackage.exe“ mit universeller Active Directory-Authentifizierung importiert wird:
+
+```cmd
+SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
+```
+
 ## <a name="powershell"></a>PowerShell
 
-Verwenden Sie das [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaseimport?view=azurermps-3.7.0)-Cmdlet, um eine Anforderung für einen Datenbankimport beim Azure SQL-Datenbankdienst einzureichen. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Importvorgang abgeschlossen ist.
+Verwenden Sie das [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport)-Cmdlet, um eine Anforderung für einen Datenbankimport beim Azure SQL-Datenbankdienst einzureichen. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Importvorgang abgeschlossen ist.
 
  ```powershell
  $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName "myResourceGroup" `
@@ -97,7 +104,7 @@ Verwenden Sie das [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powe
 
  ```
 
-Zum Überprüfen des Status der Importanforderung verwenden Sie das [Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.7.0/get-azurermsqldatabaseimportexportstatus)-Cmdlet. Wenn Sie dieses Cmdlet direkt nach der Anforderung ausführen, wird in der Regel **Status: InProgress** zurückgegeben. Wenn **Status: Succeeded** angezeigt wird, ist der Import abgeschlossen.
+Zum Überprüfen des Status der Importanforderung verwenden Sie das [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus)-Cmdlet. Wenn Sie dieses Cmdlet direkt nach der Anforderung ausführen, wird in der Regel **Status: InProgress** zurückgegeben. Wenn **Status: Succeeded** angezeigt wird, ist der Import abgeschlossen.
 
 ```powershell
 $importStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink

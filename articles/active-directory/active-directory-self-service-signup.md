@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/13/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d517f434fe81617061d37a5b60f4e49806948005
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 63818878e01dd52a988e10a6e4f624638ea1cfae
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -91,7 +93,7 @@ Bei einer externen Übernahme verfügen Sie bereits über ein verwaltetes Verzei
 
 Als Administrator eines verwalteten Verzeichnisses fügen Sie eine Domäne hinzu, und dieser Domäne ist zufällig ein nicht verwaltetes Verzeichnis zugeordnet.
 
-Angenommen, Sie sind IT-Administrator und verfügen bereits über ein verwaltetes Verzeichnis für „Contoso.com“, einen Domänennamen, der für Ihre Organisation registriert ist. Sie erkennen, dass Benutzer in Ihrer Organisation eine Self-Service-Registrierung für ein Angebot mithilfe des E-Mail-Domänennamens user@contoso.co.uk, durchgeführt haben, der ein weiterer Domänenname im Besitz Ihrer Organisation ist. Diese Benutzer haben derzeit Konten in einem nicht verwalteten Verzeichnis für „contoso.co.uk“.
+Angenommen, Sie sind IT-Administrator und verfügen bereits über ein verwaltetes Verzeichnis für „Contoso.com“, einen Domänennamen, der für Ihre Organisation registriert ist. Sie erkennen, dass Benutzer in Ihrer Organisation eine Self-Service-Registrierung für ein Angebot mithilfe des E-Mail-Domänennamens user@contoso.co.uk durchgeführt haben, der ein weiterer Domänenname im Besitz Ihrer Organisation ist. Diese Benutzer haben derzeit Konten in einem nicht verwalteten Verzeichnis für „contoso.co.uk“.
 
 Sie möchten nicht zwei separate Verzeichnisse verwalten, weshalb Sie das nicht verwaltete Verzeichnis für „contoso.co.uk“ mit Ihrem vorhandenen von der IT-Abteilung verwalteten Verzeichnis für „contoso.com“ zusammenführen.
 
@@ -193,19 +195,14 @@ Im folgenden Flussdiagramm werden die verschiedenen Kombinationen für diese Par
 
 ![][1]
 
-Weitere Informationen und Beispiele zum Verwenden dieser Parameter finden Sie unter [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx).
+Weitere Informationen und Beispiele zum Verwenden dieser Parameter finden Sie unter [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
-* [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
-* [Azure-Cmdlet-Referenz](https://msdn.microsoft.com/library/azure/jj554330.aspx)
-* [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)
+* [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
+* [Azure PowerShell](/powershell/azure/overview)
+* [Azure-Cmdlet-Referenz](/powershell/azure/get-started-azureps)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

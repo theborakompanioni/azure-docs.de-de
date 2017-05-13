@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 05/1/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: a6241afa7398684d9315ab401ecdb5b2abd824c5
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 1370fa64c2ddc25d3121c567ceea4828b1e50921
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -117,7 +118,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Naxonia](http://www.nexonia.com/contact-us/), um diesen Wert zu erhalten. 
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Naxonia](https://nexonia.zendesk.com/hc/requests/new), um diesen Wert zu erhalten. 
 
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
@@ -132,7 +133,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_configure.png) 
 
-7. Wenden Sie sich an das [Supportteam von Nexonia](http://www.nexonia.com/contact-us/), um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
+7. Wenden Sie sich an das [Supportteam von Nexonia](https://nexonia.zendesk.com/hc/requests/new), um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
 
     • Das heruntergeladene **Zertifikat**
 
@@ -180,7 +181,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-nexonia-test-user"></a>Erstellen eines Nexonia-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Nexonia einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom [Nexonia-Supportteam](http://www.nexonia.com/contact-us/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Nexonia einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom [Nexonia-Supportteam](https://nexonia.zendesk.com/hc/requests/new) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers

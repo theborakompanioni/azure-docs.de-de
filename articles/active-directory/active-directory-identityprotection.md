@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2017
+ms.date: 05/02/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f09aa6cffbbaa2a3df7f84edee2d3e03aa23a719
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 483e77f598beaeb924197e3eb301a26da33a3f1f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -70,6 +71,25 @@ Azure Active Directory Identity Protection ist viel mehr als nur ein Tool für d
 * Richtlinie für Abwehrmaßnahmen bei risikobehafteten Anmeldungen, indem Anmeldungen blockiert oder die Multi-Factor Authentication erzwungen wird.
 * Richtlinie zum Blockieren oder Schützen risikobehafteter Benutzerkonten
 * Richtlinie zur Durchsetzung der Registrierung von Benutzern für die Multi-Factor Authentication
+
+
+
+## <a name="identity-protection-roles"></a>Identity Protection-Rollen
+
+Sie können für einen Lastenausgleich bei Managementaktivitäten zu Ihrer Implementierung von Identity Protection verschiedene Rollen zuweisen. Azure AD Identity Protection unterstützt drei Verzeichnisrollen:
+
+| Rolle                         | Möglich                          | Nicht möglich
+| :--                          | ---                                |  ---   |
+| Globaler Administrator         | Vollzugriff auf Identity Protection, Integrieren von Identity Protection| |
+| Sicherheitsadministrator       | Vollzugriff auf Identity Protection | Integrieren von Identity Protection, Zurücksetzen von Kennwörtern für einen Benutzer |
+| Benutzer mit Leseberechtigung für Sicherheitsfunktionen              | Schreibgeschützter Zugriff auf Identity Protection | Integrieren von Identity Protection, Bereinigen von Benutzern, Konfigurieren von Richtlinien, Zurücksetzen von Kennwörtern |
+
+
+
+
+Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md).
+
+
 
 ## <a name="detection"></a>Erkennung
 

@@ -13,41 +13,321 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 04/26/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 16a094b8a311c43658aad299e206d79e29bafed0
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 07916e9c05b06c6998daf54467ee97ba9d9d0a64
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus Azure Blob Storage zu kopieren. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
-Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
+## <a name="overview"></a>Übersicht
+Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azure Blob Storage bzw. aus Azure Blob Storage in einen beliebigen unterstützten Senkendatenspeicher kopieren. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Senken (Ziele) für die Kopieraktivität unterstützt werden. Beispielsweise können Sie Daten **aus** einer SQL Server-Datenbank oder einer Azure SQL-Datenbank **in** den Azure Blob Storage verschieben. Und Sie können Daten **aus** Azure Blob Storage **in** eine Azure SQL Data Warehouse- oder eine Azure DocumentDB-Sammlung kopieren. 
 
-> [!IMPORTANT]
-> Die Kopieraktivität unterstützt das Kopieren von Daten in und aus Azure Storage-Konten für allgemeine Zwecke und Blob Storage (Hot/Cool). Die Aktivität unterstützt das **Lesen aus Block-, Anfüge- und Seitenblobs**. Das **Schreiben wird jedoch nur für Blockblobs** unterstützt. Azure Premium Storage wird als Senke nicht unterstützt, da er vor dem Hintergrund von Seitenblobs funktioniert.
->
-> Bei der Kopieraktivität werden die Daten nicht in der Quelle gelöscht, nachdem sie erfolgreich in das Ziel kopiert wurden. Wenn Sie Quelldaten nach dem erfolgreichen Kopieren löschen müssen, erstellen Sie eine benutzerdefinierte Aktivität, um die Daten zu löschen, und verwenden Sie die Aktivität in der Pipeline.
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-## <a name="getting-started"></a>Erste Schritte
-Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus Azure Blob Storage verschiebt.
+Die Kopieraktivität unterstützt das Kopieren von Daten in und aus Azure Storage-Konten für allgemeine Zwecke und Blob Storage (Hot/Cool). Die Aktivität unterstützt das **Lesen aus Block-, Anfüge- und Seitenblobs**. Das **Schreiben wird jedoch nur für Blockblobs** unterstützt. Azure Premium Storage wird als Senke nicht unterstützt, da er vor dem Hintergrund von Seitenblobs funktioniert.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+> [!NOTE]
+> Bei der Kopieraktivität werden die Daten nicht in der Quelle gelöscht, nachdem sie erfolgreich in das Ziel kopiert wurden. Wenn Sie Quelldaten nach dem erfolgreichen Kopieren löschen müssen, erstellen Sie eine [benutzerdefinierte Aktivität](data-factory-use-custom-activities.md), um die Daten zu löschen, und verwenden Sie die Aktivität in der Pipeline.
 
-Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>Exemplarische Vorgehensweise: Verwenden des Kopier-Assistenten, um Daten in/aus Blob Storage zu kopieren
+Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kopiert werden können. In dieser exemplarischen Vorgehensweise haben sowohl der Quell- als auch der Zieldatenspeicher den Typ „Azure Blob Storage“. In der Pipeline in dieser exemplarischen Vorgehensweise werden Daten aus einem Ordner in einen anderen Ordner im selben BLOB-Container kopiert. Diese exemplarische Vorgehensweise ist bewusst einfach gehalten, um Einstellungen oder Eigenschaften für den Fall zu veranschaulichen, dass Blob Storage als Quelle oder Senke verwendet wird. 
 
-Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
+### <a name="prerequisites"></a>Voraussetzungen
+1. Erstellen Sie ein allgemein verwendbares **Azure Storage-Konto** (Azure-Speicherkonto), wenn Sie noch keines haben. In dieser exemplarischen Vorgehensweise verwenden Sie den Blob Storage sowohl als **Quell**- als auch als **Ziel**datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
+2. Erstellen Sie einen BLOB-Container namens **adfblobconnector** im Speicherkonto. 
+4. Erstellen Sie einen Ordner namens **input** im **adfblobconnector**-Container.
+5. Erstellen Sie eine Datei namens **emp.txt** mit dem folgenden Inhalt, und laden Sie diese Datei in den Ordner **input** hoch, indem Sie ein Tool wie [Azure-Speicher-Explorer](https://azurestorageexplorer.codeplex.com/) verwenden.
+    ```json
+    John, Doe
+    Jane, Doe
+    ```
+### <a name="create-the-data-factory"></a>Erstellen der Data Factory
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+2. Klicken Sie oben links auf **+ NEU**, und klicken Sie auf **Intelligence + Analytics** (Intelligence und Analyse) und dann auf **Data Factory**.
+3. Gehen Sie auf dem Blatt **Neue Data Factory** wie folgt vor:   
+    1. Geben Sie **ADFBlobConnectorDF** für **Name** ein. Der Name der Azure Data Factory muss global eindeutig sein. Sollte der Fehler `*Data factory name “ADFBlobConnectorDF” is not available` angezeigt werden, ändern Sie den Namen der Data Factory (etwa „IhrNameADFBlobConnectorDF“), und wiederholen Sie den Vorgang. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
+    2. Wählen Sie Ihr Azure- **Abonnement**aus.
+    3. Wählen Sie für „Ressourcengruppe“ die Option **Vorhandene verwenden** aus, um eine vorhandene Ressourcengruppe auszuwählen, oder wählen Sie **Erstellen** aus, um einen Namen für eine Ressourcengruppe einzugeben.
+    4. Wählen Sie einen **Standort** für die Data Factory aus.
+    5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.
+    6. Klicken Sie auf **Erstellen**.
+3. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt: ![Data Factory-Startseite](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
-1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert.
+### <a name="copy-wizard"></a>Kopier-Assistent
+1. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren (VORSCHAU)**, um den **Assistenten zum Kopieren von Daten** in einer eigenen Registerkarte zu starten.    
+    
+    > [!NOTE]
+    >    Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren**, oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, den Assistenten zu starten.
+2. Auf der Seite **Eigenschaften**:
+    1. Geben Sie **CopyPipeline** für **Aufgabenname** ein. Der Aufgabenname ist der Name der Pipeline in Ihrer Data Factory.
+    2. Geben Sie eine **Beschreibung**  für die Aufgabe ein (optional).
+    3. Übernehmen Sie für **Aufgabenhäufigkeit oder Aufgabenzeitplan** die Option **Regelmäßig ausführen nach Zeitplan**. Soll diese Aufgabe nicht wiederholt nach Zeitplan, sondern nur einmal ausgeführt werden, aktivieren Sie die Option **Einmal jetzt ausführen**. Wenn Sie **Einmal jetzt ausführen** aktivieren, wird eine [einmalige Pipeline](data-factory-create-pipelines.md#onetime-pipeline) (OneTime-Pipeline) erstellt. 
+    4. Übernehmen Sie die Einstellungen für **Wiederkehrendes Muster**. Diese Aufgabe wird täglich zwischen der Start- und der Endzeit ausgeführt, die Sie im nächsten Schritt angeben.
+    5. Ändern Sie den **Startzeitpunkt** in **21.04.2017**. 
+    6. Ändern Sie den **Endzeitpunkt** in **25.04.2017**. Sie können das jeweilige Datum auch direkt eingeben, statt den Kalender zu durchlaufen.     
+    8. Klicken Sie auf **Weiter**.
+      ![Kopiertool – Seite „Eigenschaften“](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
+3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. Sie können einen verknüpften Datenspeicherdienst verwenden oder einen neuen Datenspeicher angeben. Wählen Sie zum Verwenden eines vorhandenen verknüpften Diensts die Option **AUS VORHANDENEN VERKNÜPFTEN DIENSTEN** aus, und wählen Sie den richtigen verknüpften Dienst aus. 
+    ![Kopiertool – Seite „Quelldatenspeicher“](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
+4. Auf der Seite **Azure Blob Storage-Konto angeben** :
+   1. Übernehmen Sie den automatisch generierten Namen für **Verbindungsname**. Der Verbindungsname ist der Name des verknüpften Diensts des Typs „Azure Storage“. 
+   2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
+   3. Wählen Sie Ihr Azure-Abonnement aus, oder übernehmen Sie **Alle auswählen** für **Azure-Abonnement**.   
+   4. Wählen Sie in der Liste mit den **Azure-Speicherkonten**, die im ausgewählten Abonnement verfügbar sind, ein Azure-Speicherkonto aus. Sie können sich auch für das manuelle Eingeben von Speicherkontoeinstellungen entscheiden, indem Sie unter **Kontoauswahlmethode** die Option **Manuell eingeben** auswählen.
+   5. Klicken Sie auf **Weiter**. 
+      ![Kopiertool – Azure Blob Storage-Konto angeben](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+5. Auf der Seite **Eingabedatei oder -ordner auswählen** :
+   1. Doppelklicken Sie auf **adfblobcontainer**.
+   2. Wählen Sie **input** aus, und klicken Sie auf **Auswählen**. In dieser exemplarischen Vorgehensweise wählen Sie den Ordner „input“ aus. Sie könnten stattdessen die Datei „emp.txt“ im Ordner auswählen. 
+      ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+6. Auf der Seite für **Eingabedatei oder -ordner auswählen**:
+    1. Vergewissern Sie sich, dass **Datei oder Ordner** auf **adfblobconnector/input** festgelegt ist. Wenn sich die Dateien in Unterordnern befinden, z. B. „2017/04/01“, „2017/04/02“ usw., geben Sie „adfblobconnector/input/{year}/{month}/{day}“ für „Datei oder Ordner“ ein. Wenn Sie im Textfeld die TAB-TASTE drücken, werden drei Dropdownlisten angezeigt, in denen die Formate für Jahr (yyyy), Monat (MM) und Tag (dd) ausgewählt werden können. 
+    2. Aktivieren Sie nicht die Option **Dateien rekursiv kopieren**. Aktivieren Sie diese Option, wenn Sie die Ordner rekursiv durchlaufen möchten, um die in das Ziel zu kopierenden Dateien auszuwählen. 
+    3. Aktivieren Sie nicht die **Binärkopie**. Aktivieren Sie diese Option, um die Quelldatei als Binärkopie in das Ziel zu kopieren. Aktivieren Sie diese Option nicht für diese exemplarische Vorgehensweise, damit auf den nächsten Seiten weitere Optionen angezeigt werden. 
+    4. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist. Wählen Sie einen Wert für diese Option aus, wenn die Quelldateien in einem der unterstützten Formate komprimiert sind. 
+    5. Klicken Sie auf **Weiter**.
+    ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
+7. Auf der Seite **File format settings** (Dateiformateinstellungen) werden die Trennzeichen und das Schema angezeigt. Diese Informationen werden vom Assistenten beim Analysieren der Datei automatisch erkannt. 
+    1. Vergewissern Sie sich, dass das **Dateiformat** auf **Textformat** festgelegt ist. In der Dropdownliste werden alle unterstützten Formate angezeigt. Zum Beispiel: JSON, Avro, ORC, Parquet. 
+    2. Vergewissern Sie sich, dass das **Spaltentrennzeichen** auf `Comma (,)` festgelegt ist. Die weiteren Spaltentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben. 
+    3. Vergewissern Sie sich, dass das **Zeilentrennzeichen** auf `Carriage Return + Line feed (\r\n)` festgelegt ist. Die weiteren Zeilentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben. 
+    4. Vergewissern Sie sich, dass die **Anzahl zu überspringender Zeilen** auf **0** festgelegt ist. Wenn Sie möchten, dass einige Zeilen am Anfang der Datei übersprungen werden sollen, geben Sie hier die Anzahl ein. 
+    5. Vergewissern Sie sich, dass **Die erste Datenzeile enthält Spaltennamen** nicht aktiviert ist. Wenn die Quelldateien in der ersten Zeile Spaltennamen enthalten, aktivieren Sie diese Option. 
+    6. Vergewissern Sie sich, dass die Option **Leeren Spaltenwert als Nullwert behandeln** aktiviert ist. 
+    7. Erweitern Sie **Erweiterte Einstellungen**, um die verfügbaren erweiterten Optionen anzuzeigen. 
+    8. Unten auf der Seite finden Sie die **Vorschau** von Daten aus der Datei „emp.txt“. 
+    9. Klicken Sie auf die unten angezeigte Registerkarte **SCHEMA**, um sich das Schema anzusehen, das der Kopier-Assistent durch Auswerten der Daten in der Quelldatei abgeleitet hat. 
+    10. Klicken Sie auf **Weiter**, nachdem Sie die Trennzeichen und Vorschaudaten geprüft haben.
+    ![Kopiertool – Dateiformateinstellungen](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
+8. Wählen Sie auf der Seite **Zieldatenspeicher** die Option **Azure Blob Storage** aus, und klicken Sie auf **Weiter**. In dieser exemplarischen Vorgehensweise verwenden Sie den Azure Blob Storage sowohl als Quell- als auch als Zieldatenspeicher.    
+    ![Kopiertool – Zieldatenspeicher auswählen](media/data-factory-azure-blob-connector/select-destination-data-store.png)
+9. Auf der Seite **Azure Blob Storage-Konto angeben**:
+   1. Geben Sie im Feld **Verbindungsname** den Text **AzureStorageLinkedService** ein.
+   2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
+   3. Wählen Sie Ihr Azure- **Abonnement**aus.  
+   4. Wählen Sie Ihr Azure Storage-Konto aus. 
+   5. Klicken Sie auf **Weiter**.     
+10. Auf der Seite für **Ausgabedatei oder -ordner auswählen**: 
+    1. Geben Sie **Ordnerpfad** als **adfblobconnector/output/{year}/{month}/{day}** an. Drücken Sie die **TAB-TASTE**. 
+    2. Wählen Sie für **Jahr** die Option **yyyy** aus. 
+    3. Vergewissern Sie sich, dass **Monat** auf **MM** festgelegt ist. 
+    4. Vergewissern Sie sich, dass **Tag** auf **dd** festgelegt ist. 
+    5. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist. 
+    6. Vergewissern Sie sich, dass das **Kopierverhalten** auf **Dateien zusammenführen** festgelegt ist. Gibt es bereits eine Ausgabedatei mit demselben Namen, wird der neue Inhalt am Ende dieser Datei hinzugefügt.  
+    7. Klicken Sie auf **Weiter**. 
+    ![Kopiertool – Ausgabedatei- oder -ordner auswählen](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+11. Überprüfen Sie auf der Seite **Dateiformateinstellungen** die Einstellungen, und klicken Sie auf **Weiter**. Eine der weiteren Optionen an dieser Stelle besteht darin, eine Kopfzeile (Header) zu der Ausgabedatei hinzuzufügen. Wenn Sie diese Option aktivieren, wird eine Kopfzeile hinzugefügt, die die Namen der Spalten aus dem Schema der Quelle enthält. Sie können die Standardspaltennamen ändern, wenn Sie das Schema für die Quelle anzeigen. Beispielsweise könnten Sie den Namen der ersten Spalte in „Vorname“ und den Namen der zweiten Spalte in „Nachname“ ändern. Die Ausgabedatei wird dann mit einer Kopfzeile generiert, die diese Namen als Spaltennamen enthält. 
+    ![Kopiertool – Dateiformateinstellungen für das Ziel](media/data-factory-azure-blob-connector/file-format-destination.png)
+12. Vergewissern Sie sich auf der Seite **Leistungseinstellungen**, dass **Cloudeinheiten** und **Parallele Kopien** auf **Auto** festgelegt sind, und klicken Sie auf „Weiter“. Einzelheiten zu diesen Einstellungen finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md#parallel-copy).
+    ![Kopiertool – Leistungseinstellungen](media/data-factory-azure-blob-connector/copy-performance-settings.png) 
+14. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen (Aufgabeneigenschaften, Einstellungen für Quelle und Ziel sowie Kopiereinstellungen), und klicken Sie auf **Weiter**.
+    ![Kopiertool – Seite „Zusammenfassung“](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
+15. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **Fertig stellen**. Der Assistent erstellt zwei verknüpfte Dienste, zwei Datasets (Eingabe und Ausgabe) und eine Pipeline in der Data Factory erstellt (von der aus Sie den Kopier-Assistenten gestartet haben).
+    ![Kopiertool – Seite „Bereitstellung“](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus Azure Blob Storage finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples).
+### <a name="monitor-the-pipeline-copy-task"></a>Überwachen der Pipeline (Kopieraufgabe)
 
-Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Azure Blob Storage verwendet werden:
+1. Klicken Sie auf der Seite **Bereitstellung** auf den Link `Click here to monitor copy pipeline`. 
+2. Nun sollte die **Anwendung für Überwachen und Verwalten** auf einer separaten Registerkarte angezeigt werden. 
+    ![Anwendung für Überwachen und Verwalten](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+3. Ändern Sie oben die **Start**zeit in `04/19/2017` und die **End**zeit in `04/27/2017`, und klicken Sie dann auf **Anwenden**. 
+4. In der Liste **AKTIVITÄTSFENSTER** sollten nun fünf Aktivitätsfenster zu sehen sein. Die Zeiten unter **Fensterstart** sollten alle Tage ab der Pipelinestart- bis zur Pipelinendzeit abdecken. 
+5. Klicken Sie mehrmals auf die Schaltfläche **Aktualisieren** für die Liste **AKTIVITÄTSFENSTER**, bis der Status jedes Aktivitätsfensters auf „Bereit“ festgelegt ist. 
+6. Vergewissern Sie sich jetzt, dass die Ausgabedateien im Container „adfblobconnector“ in dessen Ordner „output“ generiert wurden. Für den Ordner „output“ sollte die folgende Ordnerstruktur angezeigt werden: 
+    ```
+    2017/04/21
+    2017/04/22
+    2017/04/23
+    2017/04/24
+    2017/04/25    
+    ```
+Ausführliche Informationen zum Überwachen und Verwalten von Data Factorys finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines](data-factory-monitor-manage-app.md). 
+ 
+### <a name="data-factory-entities"></a>Data Factory-Entitäten
+Kehren Sie jetzt zur Registerkarte mit der Data Factory-Startseite zurück. Sie können sehen, dass Ihre Data Factory nun zwei verknüpfte Dienste, zwei Datasets und eine Pipeline enthält. 
+
+![Data Factory-Startseite mit Entitäten](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
+
+Klicken Sie auf **Verfassen und bereitstellen**, um den Data Factory-Editor zu starten. 
+
+![Data Factory Editor](media/data-factory-azure-blob-connector/data-factory-editor.png)
+
+Sie sollten die folgenden Data Factory-Entitäten in Ihrer Data Factory sehen: 
+
+ - Zwei verknüpfte Dienste. Einer für die Quelle und der andere für das Ziel. In dieser exemplarischen Vorgehensweise verweisen beide verknüpften Dienste auf dasselbe Azure Storage-Konto. 
+ - Zwei Datasets. Ein Eingabedataset und ein Ausgabedataset. In dieser exemplarischen Vorgehensweise wird für beide Datasets derselbe BLOB-Container verwendet, sie befinden sich jedoch in unterschiedlichen Ordnern („input“ und „output“).
+ - Eine Pipeline. Die Pipeline enthält eine Kopieraktivität, in der eine Blobquelle und eine Blobsenke verwendet werden, um Daten aus einem Azure-Blobspeicherort in einen anderen Azure-Blobspeicherort zu kopieren. 
+
+Die folgenden Abschnitte enthalten weitere Informationen zu diesen Entitäten. 
+
+#### <a name="linked-services"></a>Verknüpfte Dienste
+Es sollten zwei verknüpfte Dienste angezeigt werden. Einer für die Quelle und der andere für das Ziel. In dieser exemplarischen Vorgehensweise unterscheiden sich die beiden Definitionen nur in den Namen. Die **type**-Eigenschaft des verknüpften Diensts ist auf **AzureStorage** festgelegt. Die wichtigste Eigenschaft der Definition des verknüpften Diensts ist die **connectionString**-Eigenschaft, die von Data Factory verwendet wird, um zur Laufzeit eine Verbindung mit Ihrem Azure Storage-Konto herzustellen. Ignorieren Sie die Definition der „hubName“-Eigenschaft. 
+
+##### <a name="source-blob-storage-linked-service"></a>Verknüpfter Dienst für den Quell-Blobspeicher
+```json
+{
+    "name": "Source-BlobStorage-z4y",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=**********"
+        }
+    }
+}
+```
+
+##### <a name="destination-blob-storage-linked-service"></a>Verknüpfter Dienst für den Ziel-Blobspeicher
+
+```json
+{
+    "name": "Destination-BlobStorage-z4y",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=**********"
+        }
+    }
+}
+```
+
+Weitere Informationen zum verknüpften Dienst für Azure Storage finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties). 
+
+#### <a name="datasets"></a>Datasets
+Es gibt zwei Datasets: ein Eingabedataset und ein Ausgabedataset. Der Datasettyp ist für beide auf **AzureBlob** festgelegt. 
+
+Das Eingabedataset verweist auf den Ordner **input** im BLOB-Container **adfblobconnector**. Die **external**-Eigenschaft für dieses Dataset ist auf **true** festgelegt, weil die Daten nicht von der Pipeline mit der Kopieraktivität erstellt werden, für die dieses Dataset als Eingabe fungiert. 
+
+Das Ausgabedataset verweist auf den Ordner **output** im selben BLOB-Container. Für das Ausgabedataset werden außerdem das Jahr, der Monat und der Tag der **SliceStart**-Systemvariablen verwendet, um den Pfad für die Ausgabedatei dynamisch auszuwerten. Eine Liste mit den Funktionen und Systemvariablen, die von Data Factory unterstützt werden, finden Sie unter [Data Factory – Funktionen und Systemvariablen](data-factory-functions-variables.md). Die **external**-Eigenschaft ist auf **false** (Standardwert) festgelegt, weil dieses Dataset von der Pipeline erstellt wird. 
+
+Weitere Informationen zu Eigenschaften, die von Azure-Blobdataset unterstützt werden, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
+
+##### <a name="input-dataset"></a>Eingabedataset
+
+```json
+{
+    "name": "InputDataset-z4y",
+    "properties": {
+        "structure": [
+            { "name": "Prop_0", "type": "String" },
+            { "name": "Prop_1", "type": "String" }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "Source-BlobStorage-z4y",
+        "typeProperties": {
+            "folderPath": "adfblobconnector/input/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+```
+
+##### <a name="output-dataset"></a>Ausgabedataset
+
+```json
+{
+    "name": "OutputDataset-z4y",
+    "properties": {
+        "structure": [
+            { "name": "Prop_0", "type": "String" },
+            { "name": "Prop_1", "type": "String" }
+        ],
+        "type": "AzureBlob",
+        "linkedServiceName": "Destination-BlobStorage-z4y",
+        "typeProperties": {
+            "folderPath": "adfblobconnector/output/{year}/{month}/{day}",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            },
+            "partitionedBy": [
+                { "name": "year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+                { "name": "month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+                { "name": "day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}
+```
+
+#### <a name="pipeline"></a>Pipeline
+Die Pipeline hat nur eine Aktivität. Die **type**-Eigenschaft der Aktivität ist auf **Copy** festgelegt.  In den „type“-Eigenschaften für die Aktivität gibt es zwei Abschnitte, einen für die Quelle und den anderen für die Senke. Der Quelltyp (source type) ist auf **BlobSource** festgelegt, weil die Aktivität Daten aus einem Blob Storage kopiert. Der Senkentyp (sink type) ist auf **BlobSink** festgelegt, weil die Aktivität Daten in einen Blob Storage kopiert. Die Kopieraktivität verwendet „InputDataset-z4y“ als Eingabe und „OutputDataset-z4y“ als Ausgabe. 
+
+Weitere Informationen zu Eigenschaften, die von „BlobSource“ und „BlobSink“ unterstützt werden, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). 
+
+```json
+{
+    "name": "CopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "BlobSink",
+                        "copyBehavior": "MergeFiles",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset-z4y"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-z4y"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-Blob path_ adfblobconnector_input_->OutputDataset-z4y"
+            }
+        ],
+        "start": "2017-04-21T22:34:00Z",
+        "end": "2017-04-25T05:00:00Z",
+        "isPaused": false,
+        "pipelineMode": "Scheduled"
+    }
+}
+```
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Es gibt zwei Arten von verknüpften Diensten, die Sie verwenden können, um einen Azure Storage mit einer Azure Data Factory zu verknüpfen. **AzureStorage** und **AzureStorageSas**. Dagegen bietet der mit Azure Storage SAS (Shared Access Signature) verknüpfte Dienst der Data Factory einen eingeschränkten bzw. zeitgebundenen Zugriff auf Azure-Speicher. Es gibt keine weitere Unterschiede zwischen diesen beiden verknüpften Diensten. Wählen Sie den verknüpften Dienst, der Ihren Anforderungen entspricht. Die folgenden Abschnitte bieten weitere Informationen zu diesen beiden verknüpften Diensten.
@@ -152,13 +432,24 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 | false |flattenHierarchy |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Ordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Ordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch generierter Name für Datei2<br/><br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
 | false |mergeFiles |Für den Quellordner „Ordner1“ mit der folgenden Struktur: <br/><br/>Ordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Datei2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei5<br/><br/>wird der Zielordner „Ordner1“ mit der folgenden Struktur erstellt:<br/><br/>Ordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inhalte von Datei1 + Datei2 werden zu einer Datei mit einem automatisch generierten Namen zusammengeführt. Automatisch generierter Name für Datei1<br/><br/>Unterordner1 mit Datei3, Datei4 und Datei5 wird nicht übernommen. |
 
-## <a name="supported-file-and-compression-formats"></a>Unterstützte Datei- und Komprimierungsformate
-Einzelheiten finden Sie im Artikel [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
+## <a name="toolssdks-to-create-a-pipeline"></a>Tools/SDKs zum Erstellen einer Pipeline  
+Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus Azure Blob Storage verschiebt.
 
-## <a name="json-examples"></a>JSON-Beispiele
+Dieser Artikel enthält eine exemplarische Vorgehensweise zum Kopieren von Daten aus einem Ordner in einen anderen Ordner innerhalb desselben Containers im Azure-Blobspeicher. Unter [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline, um Daten aus Azure Blob Storage in eine Azure SQL Server-Datenbank zu kopieren. 
+
+Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+
+Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
+
+1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert.
+
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  
+
 Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten aus Azure-Blobspeicher in die Azure SQL-Datenbank (und umgekehrt). Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
-## <a name="example-copy-data-from-blob-storage-to-sql-database"></a>Beispiel: Kopieren von Daten aus Blob Storage in SQL-Datenbank
+## <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>JSON-Beispiel: Kopieren von Daten aus Blob Storage in SQL-Datenbank
 Dieses Beispiel zeigt Folgendes:
 
 1. Einen verknüpften Dienst des Typs [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties)
@@ -211,38 +502,10 @@ Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "
       "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/",
       "fileName": "{Hour}.csv",
       "partitionedBy": [
-        {
-          "name": "Year",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "yyyy"
-          }
-        },
-        {
-          "name": "Month",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "MM"
-          }
-        },
-        {
-          "name": "Day",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "dd"
-          }
-        },
-        {
-          "name": "Hour",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "HH"
-          }
-        }
+        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "HH" } }
       ],
       "format": {
         "type": "TextFormat",
@@ -334,7 +597,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
    }
 }
 ```
-## <a name="example-copy-data-from-azure-sql-to-azure-blob"></a>Beispiel: Kopieren von Daten aus Azure SQL nach Azure-Blob
+## <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Azure SQL nach Azure-Blob
 Dieses Beispiel zeigt Folgendes:
 
 1. Einen verknüpften Dienst des Typs [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties)
@@ -419,36 +682,10 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
       "partitionedBy": [
         {
           "name": "Year",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "yyyy"
-          }
-        },
-        {
-          "name": "Month",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "MM"
-          }
-        },
-        {
-          "name": "Day",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "dd"
-          }
-        },
-        {
-          "name": "Hour",
-          "value": {
-            "type": "DateTime",
-            "date": "SliceStart",
-            "format": "HH"
-          }
-        }
+          "value": { "type": "DateTime",  "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "HH" } }
       ],
       "format": {
         "type": "TextFormat",

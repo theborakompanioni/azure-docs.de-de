@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
-ms.openlocfilehash: 2a050e5817ab884c9d4337cc1cc76e298299dba3
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e1c65060c2862736c76b36676f95a88d8dbab4c6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -80,7 +81,7 @@ In diesem Fall verfügt die Organisation über eine Reihe von virtuellen Compute
 
 ![Azure AD-IaaS-Netzwerk](./media/application-proxy-publish-apps-separate-networks/application-proxy-iaas-network.png)
   
-Dies kann ein Problem werden, da viele Organisationen mit mehreren Cloudanbietern arbeiten und sich ihre Anwendungen in vielen verschiedenen Rechenzentren befinden. Mit Azure AD-Anwendungsproxy-Connectorgruppen können Sie einen gemeinsamen Dienst zum Sichern des Zugriffs auf alle Anwendungen verwenden, ohne weitere Abhängigkeiten in Ihrem Unternehmensnetzwerk einzuführen:
+Dies kann ein Problem werden, da viele Organisationen mehrere Cloudanbieter verwenden und sich ihre Anwendungen in mehreren Rechenzentren befinden. Mit Azure AD-Anwendungsproxy-Connectorgruppen können Sie einen gemeinsamen Dienst zum Sichern des Zugriffs auf alle Anwendungen verwenden, ohne weitere Abhängigkeiten in Ihrem Unternehmensnetzwerk einzuführen:
 
 ![Azure AD-IaaS – mehrere Cloudanbieter](./media/application-proxy-publish-apps-separate-networks/application-proxy-multiple-cloud-vendors.png)
 

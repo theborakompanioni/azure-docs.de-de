@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 59dc5340ca8ac02b1d99205ad8f1d44fa60148c0
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 7f572adf499dd1fcd0db19500c9049af1e31cdea
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -44,17 +45,15 @@ SSH ist ein Protokoll für verschlüsselte Verbindungen, das die sichere Anmeldu
 Falls Sie keine SSH-Schlüssel verwenden möchten, können Sie sich natürlich auch weiterhin mithilfe eines Kennworts bei Ihren virtuellen Linux-Computern anmelden. Bei virtuellen Computern ohne Internetverbindung sind Kennwörter unter Umständen ausreichend. Allerdings müssen Sie weiterhin Ihre Kennwörter für die einzelnen virtuellen Linux-Computer verwalten und sich um angemessene Kennwortrichtlinien und -verfahren kümmern, indem Sie beispielsweise eine Mindestlänge für Kennwörter festlegen und sicherstellen, dass sie regelmäßig aktualisiert werden. Durch die Verwendung von SSH-Schlüsseln wird die übergreifende Verwaltung einzelner Anmeldeinformationen für mehrere virtuelle Computer weniger komplex.
 
 ## <a name="windows-packages-and-ssh-clients"></a>Windows-Pakete und SSH-Clients
-Die Verbindungsherstellung mit virtuellen Linux-Computern in Azure sowie deren Verwaltung wird mithilfe eines **SSH-Clients** durchgeführt. Auf Windows-Computern ist üblicherweise kein SSH-Client installiert. Gängige Windows-SSH-Clients, die Sie installieren können, sind in den folgenden Paketen enthalten:
+Die Verbindungsherstellung mit virtuellen Linux-Computern in Azure sowie deren Verwaltung wird mithilfe eines **SSH-Clients** durchgeführt. Auf Windows-Computern ist üblicherweise kein SSH-Client installiert. Im Windows 10 Anniversary Update wurde Bash für Windows hinzugefügt, und das neueste Windows 10 Creators Update stellt weitere Updates bereit. Mit dem Windows-Subsystem für Linux haben Sie die Möglichkeit, direkt aus einer Bash-Shell auf Hilfsprogramme, z.B. einen SSH-Client, zuzugreifen und diese auszuführen. Sie können dann entsprechend den Anleitungen eines beliebigen Linux-Dokuments vorgehen, etwa [Erstellen von SSH-Schlüsselpaaren für Linux](mac-create-ssh-keys.md). Bash für Windows befindet sich noch in der Entwicklung wird als Beta-Version bereitgestellt. Weitere Informationen zu Bash für Windows finden Sie unter [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) (Bash unter Ubuntu unter Windows).
+
+Wenn Sie nicht Bash für Windows, sondern eine andere Komponente verwenden möchten, finden Sie in den folgenden Paketen gängige Windows SSH-Clients, die Sie installieren können:
 
 * [Git für Windows](https://git-for-windows.github.io/)
 * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
-> [!NOTE]
-> Das neueste Windows 10 Anniversary Update enthält Bash für Windows. Mit diesem Feature können Sie das Windows-Subsystem für Linux ausführen und auf Hilfsprogramme zugreifen. Zu diesen zählt auch ein SSH-Client. Bash für Windows befindet sich noch in der Entwicklung wird als Beta-Version bereitgestellt. Weitere Informationen zu Bash für Windows finden Sie unter [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) (Bash unter Ubuntu unter Windows).
->
->
 
 ## <a name="which-key-files-do-you-need-to-create"></a>Erforderliche Schlüsseldateien
 Für Azure sind öffentliche und private Schlüssel mit mindestens 2.048 Bit im Format **ssh-rsa** erforderlich. Wenn Sie Azure-Ressourcen mit dem klassischen Bereitstellungsmodell verwalten, müssen Sie auch eine PEM-Datei (`.pem`) generieren.
@@ -149,14 +148,14 @@ Im folgenden Beispiel wird der zusätzliche private Schlüssel erstellt, der spe
 
     ![Schlüssel erfolgreich in PuTTYgen importiert](./media/ssh-from-windows/successfully-imported-key.png)
 6. Klicken Sie auf **OK** , um die Meldung zu schließen.
-7. Der öffentliche Schlüssel wird am oberen Rand des Fensters von **PuTTYgen** angezeigt. Dieser öffentliche Schlüssel muss beim Erstellen eines virtuellen Linux-Computers kopiert und in das Azure-Portal oder in die Azure Resource Manager-Vorlage eingefügt werden. Sie können auch auf die Option zum Speichern des öffentlichen Schlüssels****klicken, um eine Kopie auf Ihrem Computer zu speichern:
+7. Der öffentliche Schlüssel wird am oberen Rand des Fensters von **PuTTYgen** angezeigt. Dieser öffentliche Schlüssel muss beim Erstellen eines virtuellen Linux-Computers kopiert und in das Azure-Portal oder in die Azure Resource Manager-Vorlage eingefügt werden. Sie können auch auf die Option zum Speichern des öffentlichen Schlüssels**** klicken, um eine Kopie auf Ihrem Computer zu speichern:
 
     ![Speichern der Datei mit dem öffentlichen PuTTY-Schlüssel](./media/ssh-from-windows/save-public-key.png)
 
     Das folgende Beispiel zeigt, wie Sie diesen öffentlichen Schlüssel beim Erstellen eines virtuellen Linux-Computers kopieren und in das Azure-Portal einfügen. Der öffentliche Schlüssel wird dann in der Regel auf Ihrem neuen virtuellen Computer unter `~/.ssh/authorized_keys` gespeichert.
 
     ![Verwenden des öffentlichen Schlüssels beim Erstellen eines virtuellen Computers im Azure-Portal](./media/ssh-from-windows/use-public-key-azure-portal.png)
-8. Klicken Sie in **PuTTYgen** auf die Option zum Speichern des privaten****Schlüssels:
+8. Klicken Sie in **PuTTYgen** auf die Option zum Speichern des privaten**** Schlüssels:
 
     ![Speichern der Datei mit dem privaten PuTTY-Schlüssel](./media/ssh-from-windows/save-ppk-file.png)
 
@@ -165,7 +164,7 @@ Im folgenden Beispiel wird der zusätzliche private Schlüssel erstellt, der spe
    >
    >
 
-    Falls Sie eine Passphrase eingeben möchten, klicken Sie auf **Nein**, geben Sie im Hauptfenster von PuTTYgen eine Passphrase ein, und klicken Sie anschließend erneut auf die Option zum Speichern des privaten****Schlüssels. Klicken Sie andernfalls auf **Ja**, um den Vorgang ohne die optionale Passphrase fortzusetzen.
+    Falls Sie eine Passphrase eingeben möchten, klicken Sie auf **Nein**, geben Sie im Hauptfenster von PuTTYgen eine Passphrase ein, und klicken Sie anschließend erneut auf die Option zum Speichern des privaten**** Schlüssels. Klicken Sie andernfalls auf **Ja**, um den Vorgang ohne die optionale Passphrase fortzusetzen.
 9. Geben Sie einen Namen und einen Speicherort für Ihre PPK-Datei ein.
 
 ## <a name="use-putty-to-ssh-to-a-linux-machine"></a>Verwenden von PuTTY zum Herstellen einer SSH-Verbindung mit einem Linux-Computer

@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
-ms.openlocfilehash: 00424292fbc5321a77a4e924530ade97739208d4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 24f56b68a9313ed1bce859b9343a14de83d9b600
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -33,6 +35,7 @@ Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamische
 > * Dem Administrator, der die Regel für eine Gruppe verwaltet
 > * Alle Mitglieder der Gruppe
 >
+> Beachten Sie auch, dass Sie zwar für Geräte oder Benutzer eine dynamische Gruppe erstellen können, aber keine Regel, die sowohl Benutzer- als auch Geräteobjekte auswählt. 
 
 ## <a name="to-create-the-advanced-rule"></a>So erstellen Sie eine erweiterte Regel
 1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com)die Option **Active Directory**aus, und öffnen Sie dann das Verzeichnis Ihrer Organisation.
@@ -105,7 +108,7 @@ In der folgenden Tabelle sind mögliche Fehler und deren entsprechende Behebung 
 | --- | --- | --- |
 | Fehler: Das Attribut nicht unterstützt. |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/>Die Eigenschaft sollte einer der unterstützten Eigenschaften aus der [Liste oben](#supported-properties). |
 | Fehler: Der Operator wird für das Attribut nicht unterstützt. |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/>Die Eigenschaft weist den Typ „boolesch“ auf. Verwenden Sie die unterstützten booleschen Operatoren (-eq oder -ne) aus der oben stehenden Liste. |
-| Fehler: Abfragekompilierungsfehler. |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>Der logische Operator sollte mit einem der Operatoren in der obigen Liste der unterstützten Eigenschaften übereinstimmen. (user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")Error Fehler im regulären Ausdruck. |
+| Fehler: Abfragekompilierungsfehler. |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>Der logische Operator sollte mit einem der Operatoren in der obigen Liste der unterstützten Eigenschaften übereinstimmen.(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")Fehler im regulären Ausdruck. |
 | Fehler: Die Binärausdruck weist nicht das richtige Format auf. |(user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>Abfrage enthält mehrere Fehler. Die Klammern befinden sich nicht an der richtigen Stelle. |
 | Fehler: Unbekannter Fehler beim Einrichten dynamischer Mitgliedschaften. |(user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>Abfrage enthält mehrere Fehler. Die Klammern befinden sich nicht an der richtigen Stelle. |
 
@@ -251,9 +254,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

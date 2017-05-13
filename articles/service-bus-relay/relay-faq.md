@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: jotaub;sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 4b54ad027a7de02cba7821f2a9b7fd06ef3a825b
-ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7562fbee15e4450542c2c17d8ae2a763a556a44f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -49,8 +51,10 @@ Im Folgenden finden Sie drei Beispielszenarien:
 
 Beachten Sie, dass die Preise in diesen Beispielen nur während der Vorschauphase gelten und sich bei allgemeiner Verfügbarkeit von Hybridverbindungen ändern können.
 
-### <a name="how-are-wcf-relay-hours-calculated"></a>Wie werden WCF-Relaystunden berechnet?
-Relaystunden werden für den kumulativen Zeitraum in Rechnung gestellt, in dem jedes Service Bus-Relay „geöffnet“ ist. Ein Relay wird an einer bestimmten Service Bus-Adresse (Dienstnamespace-URL) implizit instanziiert und geöffnet, sobald ein relayfähiger WCF-Dienst oder „Relaylistener“ zum ersten Mal eine Verbindung mit dieser Adresse herstellt. Es wird erst geschlossen, wenn der letzte Listener die Verbindung mit dieser Adresse trennt. Zu Abrechnungszwecken wird ein Relay daher ab der Verbindungsherstellung durch den ersten Relaylistener bis zur Trennung der Verbindung mit der Service Bus-Adresse des Relays durch den letzten Relaylistener als „geöffnet“ betrachtet.
+### <a name="how-are-relay-hours-calculated"></a>Wie werden Relaystunden berechnet?
+WCF-Relay- und Hybridverbindungsstunden werden für den kumulativen Zeitraum in Rechnung gestellt, in dem jedes Service Bus-Relay „geöffnet“ ist. Ein Relay wird an einer bestimmten Service Bus-Adresse (Dienstnamespace-URL) implizit instanziiert und geöffnet, sobald ein relayfähiger Dienst oder ein „Relaylistener“ zum ersten Mal eine Verbindung mit dieser Adresse herstellt. Es wird erst geschlossen, wenn der letzte Listener die Verbindung mit dieser Adresse trennt. Zu Abrechnungszwecken wird ein Relay daher ab der Verbindungsherstellung durch den ersten Relaylistener bis zur Trennung der Verbindung mit der Service Bus-Adresse des Relays durch den letzten Relaylistener als „geöffnet“ betrachtet.
+
+WCF-Relays sind nur in den Namespaces des Tarifs „Standard“ verfügbar. Preise und [Verbindungskontingente](../service-bus-messaging/service-bus-quotas.md) für Relays sind ansonsten unverändert. Dies bedeutet, dass Relays auch weiterhin anhand der Anzahl der Nachrichten (nicht der Vorgänge) und der Relaystunden abgerechnet werden. Weitere Informationen finden Sie in der Tabelle [Hybridverbindungen und WCF-Relays](https://azure.microsoft.com/pricing/details/service-bus/) auf der Seite mit den Preisdetails.
 
 ### <a name="what-if-i-have-more-than-one-listener-connected-to-a-given-relay"></a>Was geschieht, wenn mehrere Listener mit einem bestimmten Relay verbunden sind?
 In einigen Fällen können mit einem einzelnen Relay mehrere Listener verbunden sein. Ein Relay wird als „geöffnet“ betrachtet, wenn mindestens ein Relaylistener mit ihm verbunden ist. Das Hinzufügen von zusätzlichen Listenern zu einem offenen Relay führt zu zusätzlichen Relaystunden. Die Anzahl von Relaysendern (Clients, die Nachrichten von Relays aufrufen oder an diese senden), die mit dem Relay verbunden sind, hat ebenfalls keine Auswirkung auf die Berechnung der Relaystunden.
@@ -107,9 +111,4 @@ Ja. Der Relay-Client stellt mithilfe vollqualifizierter Domänennamen Verbindung
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 * [Erste Schritte mit .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Erste Schritte mit Node](relay-hybrid-connections-node-get-started.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

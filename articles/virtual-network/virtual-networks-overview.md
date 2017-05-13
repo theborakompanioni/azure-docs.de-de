@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
-ms.openlocfilehash: 1072148f11052a643bdc70239029a651d9d71dda
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 22c0ee5090d67430fc63ad3f3c09076de0be067c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -61,9 +62,9 @@ Sie können VNets miteinander verbinden, sodass Ressourcen, für die eine Verbin
 ## <a name="connect-on-premises"></a>Herstellen einer Verbindung mit einem lokalen Netzwerk
 
 Sie können Ihr lokales Netzwerk mit einem VNet verbinden, indem Sie eine Kombination der folgenden Optionen verwenden:
-- **Point-to-Site-VPN (Virtual Private Network):** Wird zwischen einem einzelnen PC Ihres Netzwerks und dem VNet eingerichtet. Dieser Verbindungstyp ist gut geeignet, wenn Azure noch neu für Sie ist, oder wenn Sie ein Entwickler sind, da keine oder nur sehr geringe Änderungen Ihres vorhandenen Netzwerks erforderlich sind. Für die Verbindung wird das SSTP-Protokoll verwendet, um zwischen dem PC und dem VNet eine verschlüsselte Kommunikation über das Internet zu ermöglichen. Die Dauer der Wartezeit für ein Point-to-Site-VPN ist unvorhersehbar und verschlüsselt, weil der Datenverkehr über das Internet übertragen wird.
+- **Point-to-Site-VPN (Virtual Private Network):** Wird zwischen einem einzelnen PC Ihres Netzwerks und dem VNet eingerichtet. Dieser Verbindungstyp ist gut geeignet, wenn Azure noch neu für Sie ist, oder wenn Sie ein Entwickler sind, da keine oder nur sehr geringe Änderungen Ihres vorhandenen Netzwerks erforderlich sind. Für die Verbindung wird das SSTP-Protokoll verwendet, um zwischen dem PC und dem VNet eine verschlüsselte Kommunikation über das Internet zu ermöglichen. Die Dauer der Wartezeit für ein Point-to-Site-VPN ist unvorhersehbar, weil der Datenverkehr über das Internet übertragen wird.
 - **Site-to-Site-VPN:** Wird zwischen Ihrem VPN-Gerät und einem Azure VPN Gateway eingerichtet. Bei diesem Verbindungstyp können alle lokalen Ressourcen, die von Ihnen autorisiert werden, auf ein VNet zugreifen. Die Verbindung ist ein IPSec/IKE-VPN, mit dem die verschlüsselte Kommunikation über das Internet zwischen Ihrem lokalen Gerät und dem Azure VPN Gateway ermöglicht wird. Die Dauer der Wartezeit für eine Site-to-Site-Verbindung ist unvorhersehbar, da der Datenverkehr über das Internet übertragen wird.
-- **Azure ExpressRoute:** Wird zwischen Ihrem Netzwerk und Azure über einen ExpressRoute-Partner eingerichtet. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Die Dauer der Wartezeit für eine ExpressRoute-Verbindung ist vorhersehbar, da der Datenverkehr nicht über das Internet verläuft und nicht verschlüsselt ist.
+- **Azure ExpressRoute:** Wird zwischen Ihrem Netzwerk und Azure über einen ExpressRoute-Partner eingerichtet. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Die Dauer der Wartezeit für eine ExpressRoute-Verbindung ist vorhersehbar, da der Datenverkehr nicht über das Internet verläuft.
 
 Weitere Informationen zu allen vorherigen Verbindungsoptionen finden Sie im Artikel [Diagramme zur Verbindungstopologie](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namediagramsaconnection-topology-diagrams).
 
@@ -81,6 +82,10 @@ Azure erstellt Routentabellen, über die Ressourcen, die mit einem beliebigen Su
 ## <a name="pricing"></a>Preise
 
 Für virtuelle Netzwerke, Subnetze, Routentabellen oder Netzwerksicherheitsgruppen werden keine Gebühren berechnet. Für Internetbandbreite in ausgehender Richtung, öffentliche IP-Adressen, Peering in virtuellen Netzwerken, VPN Gateways und ExpressRoute werden jeweils eigene Preisstrukturen verwendet. Weitere Informationen hierzu finden Sie auf den Preisseiten zu [virtuellen Netzwerken](https://azure.microsoft.com/pricing/details/virtual-network), [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) und [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute).
+
+## <a name="faq"></a>Häufig gestellte Fragen
+
+Wenn Sie sich die häufig gestellten Fragen zu Virtual Network ansehen möchten, lesen Sie den Artikel [Azure Virtual Network – häufig gestellte Fragen](virtual-networks-faq.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

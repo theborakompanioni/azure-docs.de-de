@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dce65678f9fc96d5802a7b705689cc63e6532c84
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 077c39d1a6f61aba7b184ee616a93f30cdb7d12c
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -34,9 +35,18 @@ Siehe:
 Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
 
 ## <a name="who-can-access-the-api-data"></a>Wer kann auf die API-Daten zugreifen?
-* Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
+* Benutzer und Dienstprinzipale mit den Rollen „Sicherheitsadministrator“ oder „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“
 * Globale Administratoren
 * Jede App mit Autorisierung zum Zugriff auf die API (die App-Autorisierung kann nur basierend auf der Berechtigung eines globalen Administrators eingerichtet werden)
+
+Um den Zugriff für eine Anwendung auf Sicherheits-APIs wie z.B. Anmeldeereignisse zu konfigurieren, verwenden Sie den folgenden PowerShell-Code zum Hinzufügen des Dienstprinzipals der Anwendungen zur Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“.
+
+```PowerShell
+Connect-MsolService
+$servicePrincipal = Get-MsolServicePrincipal -AppPrincipalId "<app client id>"
+$role = Get-MsolRole | ? Name -eq "Security Reader"
+Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal -RoleMemberObjectId $servicePrincipal.ObjectId
+```
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um über die Berichterstellungs-API auf diesen Bericht zugreifen zu können, müssen folgende Bedingungen erfüllt sein:
