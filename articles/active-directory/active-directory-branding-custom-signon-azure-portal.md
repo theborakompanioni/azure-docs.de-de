@@ -1,5 +1,5 @@
 ---
-title: Anpassen Ihrer Anmeldeseite in der Azure Active Directory-Vorschau | Microsoft Docs
+title: Anpassen Ihrer Anmeldeseite in Azure Active Directory | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie der Anmeldeseite ein Unternehmensbranding hinzufügen."
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 48f85fd7e50c1cb3ece7f8b75779fe7cde92c7da
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 27590c018ea55e9793246c7a4cab10f934ea502b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in der Azure Active Directory-Vorschau
-Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in der Azure Active Directory-Vorschau möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)  Die Anmeldeseite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
+# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure Active Directory
+Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in Azure Active Directory möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. Die Anmeldeseite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
 
 Wenn Sie Ihre Unternehmensmarke, -farben und andere anpassbare Elemente auf dieser Seite anzeigen möchten, schauen Sie sich die folgenden Bilder an, um den Unterschied zwischen den beiden Eindrücken zu verstehen.
 
@@ -40,7 +42,7 @@ Wenn Sie Änderungen auf Ihre Anmeldeseite angewendet haben, kann es bis zu eine
 
 Eine Anmeldeseite mit Branding wird nur angezeigt, wenn Sie einen Dienst mit einer mandantenspezifischen URL besuchen, z. B. https://outlook.com/**contoso**.com oder https://mail.**contoso**.com.
 
-Wenn Sie einen Dienst mit nicht mandantenspezifischen URLs besuchen (7. B. https://mail.office365.com), wird eine Anmeldeseite ohne Branding angezeigt. In diesem Fall wird Ihr Branding angezeigt, nachdem Sie die Benutzer-ID eingegeben oder eine Benutzerkachel ausgewählt haben.
+Wenn Sie einen Dienst mit nicht mandantenspezifischen URLs besuchen (z.B. https://mail.office365.com), wird eine Anmeldeseite ohne Branding angezeigt. In diesem Fall wird Ihr Branding angezeigt, nachdem Sie die Benutzer-ID eingegeben oder eine Benutzerkachel ausgewählt haben.
 
 > [!NOTE]
 > * Ihr Domänenname muss im Abschnitt **Domänen** des Azure-Portals, in dem Sie das Branding konfiguriert haben, als „Aktiv“ angezeigt werden. Weitere Informationen finden Sie unter [Hinzufügen von benutzerdefinierten Domänennamen](active-directory-domains-add-azure-portal.md).
@@ -81,9 +83,4 @@ Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hinzufügen eines sprachspezifischen Unternehmensbrandings](active-directory-branding-localize-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

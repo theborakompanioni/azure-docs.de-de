@@ -3,7 +3,7 @@ title: "Konzeptioneller Überblick über benutzerdefinierte Domänennamen in Azu
 description: "Erläutert das Konzept der Verwendung von benutzerdefinierten Domänennamen in Azure Active Directory, einschließlich Verbundkonfiguration für einmaliges Anmelden."
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: fd0c5def-0da2-43af-81bc-76f4cfe86afd
@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 12d41a77655c4892a9dc20979ef98b1bd39f94c5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 028c1cab4f0229a06d37d2f325b384ee78a2b8f9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -55,16 +57,11 @@ Ein Domänenname muss in Azure AD überprüft werden, bevor er von anderen Micro
 Azure-Web-Apps verwenden eigene Mechanismen, um den Besitz einer Domäne zu überprüfen. Eine Domäne muss für die Verwendung mit einem Azure AD-Verzeichnis überprüft werden, selbst wenn sie zuvor zur Verwendung durch eine Azure-Web-App in einem auf diesem Azure AD-Verzeichnis basierenden Abonnement überprüft wurde. Eine Azure-Web-App kann einen Domänennamen verwenden, der in einem anderen Verzeichnis als dem Verzeichnis überprüft wurde, das die Web-App sichert.
 
 ## <a name="managing-domain-names"></a>Verwalten von Domänennamen
-Aufgaben der Domänenverwaltung können über das klassische Azure-Portal oder mithilfe von PowerShell durchgeführt werden. Viele Aufgaben können in der Azure AD-Graph-API (in der öffentlichen Vorschau) ausgeführt werden.
+Aufgaben der Domänenverwaltung können über das klassische Azure-Portal oder mithilfe von PowerShell durchgeführt werden. Viele Aufgaben können in der Azure AD-Graph-API ausgeführt werden.
 
 * [Hinzufügen und Überprüfen eines benutzerdefinierten Domänennamens](active-directory-add-domain.md)
 * [Verwalten von Domänen im klassischen Azure-Portal](active-directory-add-manage-domain-names.md)
 * [Verwenden von PowerShell zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Verwenden der Azure AD-Graph-API zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
