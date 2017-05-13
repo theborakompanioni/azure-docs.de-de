@@ -15,6 +15,7 @@
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
+        "LandingData": "Content",
         "RestApi": "Content"
       },
       "build_entry_point": "docs",
@@ -30,7 +31,7 @@
     "master-sync-work"
   ],
   "skip_source_output_uploading": false,
-  "need_preview_pull_request": false,
+  "need_preview_pull_request":true,
   "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.de-de",
   "git_repository_branch_open_to_public_contributors": "live",
   "enable_incremental_build": true,
@@ -42,6 +43,11 @@
       "branch_mapping": {}
     },
     {
+      "path_to_root": "_themes.pdf",
+      "url": "https://github.com/Microsoft/templates.docs.msft.pdf",
+      "branch": "master"
+    },
+    {
        "path_to_root": "_repo.en-us",
        "url": "https://github.com/Microsoft/azure-docs-pr",
        "branch": "live",
@@ -49,13 +55,19 @@
     },
     {
       "path_to_root": "cli_scripts",
-      "url": "https://github.com/Azure/azure-docs-cli-python-samples.git",
+      "url": "https://github.com/Azure/azure-docs-cli-python-samples",
       "branch": "master"
     },
     {
       "path_to_root": "powershell_scripts",
-      "url": "https://github.com/Azure/azure-docs-powershell-samples.git",
+      "url": "https://github.com/Azure/azure-docs-powershell-samples",
       "branch": "master"
     }
-  ]
+  ],
+  "need_generate_pdf_url_template": true,
+  "Targets": {
+    "Pdf": {
+      "template_folder": "_themes.pdf"
+    }
+  }
 }
