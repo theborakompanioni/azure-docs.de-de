@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-translationtype: Human Translation
-ms.sourcegitcommit: 3047ba6bb363e087bfdf767a32c92a503000f11e
-ms.openlocfilehash: c97343008b5af378ed9d441e242018849e2ab69a
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ab71da3b7cc77cfe6bf78caf358ddd0a4a10321b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-c"></a>Verwenden des Tabellenspeichers mit C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Übersicht
 In diesem Leitfaden wird gezeigt, wie häufige Szenarios mit dem Azure-Tabellenspeicherdienst ausgeführt werden. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück. Die behandelten Szenarios umfassen das **Erstellen und Löschen einer Tabelle** sowie das **Arbeiten mit Tabellenentitäten**.
@@ -452,10 +452,10 @@ azure::storage::table_result delete_result = table.execute(delete_operation);
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen von Tabellenspeichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr über Azure Storage zu erfahren.  
 
+* Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Verwenden des BLOB-Speichers mit C++](storage-c-plus-plus-how-to-use-blobs.md)
 * [Verwenden des Warteschlangenspeichers mit C++](storage-c-plus-plus-how-to-use-queues.md)
 * [Auflisten von Azure Storage-Ressourcen in C++](storage-c-plus-plus-enumeration.md)
 * [Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
 * [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
-
 

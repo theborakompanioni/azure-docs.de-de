@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: e9fd8855cf0c51df5f3ec4f80a733e778996fb82
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 15d3216ef5bb1d7ff312bd886837a3a7b0335afd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-php"></a>Verwenden des Tabellenspeichers mit PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Übersicht
 In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Tabellenspeicherdienst demonstriert. Die Beispiele wurden in PHP geschrieben und verwenden das [Azure-SDK für PHP][download]. Die besprochenen Szenarios umfassen **das Erstellen und Löschen einer Tabelle sowie das Einfügen, Löschen und Abfragen von Entitäten in einer Tabelle**. Weitere Informationen zum Azure-Tabellenspeicherdienst finden Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -484,9 +484,9 @@ catch(ServiceException $e){
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen des Azure-Tabellenspeicherdiensts vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-* Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/)
+* Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 
-Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/php/).
+* [PHP Developer Center](/develop/php/).
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://php.net/require_once

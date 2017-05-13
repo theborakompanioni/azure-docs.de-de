@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 18dcb3a319f78639b27f9e70a2177423192e5958
+ms.contentlocale: de-de
 ms.lasthandoff: 04/13/2017
 
 
@@ -123,7 +124,7 @@ Zum Verwenden von Data Lake-Speichern mit Ihrem HDInsight-Konto müssen Sie Ihre
 Sie greifen auf einen Data Lake-Speicher zu, indem Sie einen Azure AD-Dienstprinzipal (Azure Active Directory) verwenden, der Ihrem HDInsight-Cluster zugeordnet ist.
 
 ### <a name="to-add-a-service-principal"></a>So fügen Sie einen Dienstprinzipal hinzu
-1. Wählen Sie beim Erstellen des HDInsight-Clusters auf der Registerkarte **Datenquelle** eine **Azure Active Directory-Identität für den Cluster** aus.
+1.Wählen Sie beim Erstellen des HDInsight-Clusters auf der Registerkarte **Datenquelle** eine **Azure Active Directory-Identität für den Cluster** aus.
 
 2.Wählen Sie im Dialogfeld **Azure Active Directory-Identität für den Cluster** unter **AD-Dienstprinzipal auswählen** die Option **Neu erstellen**.
 
