@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/30/2016
+ms.date: 05/01/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 84a04f71ffde07e9caa439c03b55920d0bb0ef16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: af45d745bccb02ce9fd45320e83284a8b33d99bd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -51,6 +52,14 @@ ms.lasthandoff: 04/20/2017
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt.
+* Eine Option zum Deaktivieren der SSL-Überprüfung bei der Ausführung für den DocumentDB-Emulator wurde hinzugefügt.
+* Die Einschränkung wurde entfernt, dass das Modul für abhängige Anforderungen genau 2.10.0 sein muss.
+* Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
+* Unterstützung für das Aktivieren der Skriptprotokollierung während der Ausführung einer gespeicherten Prozedur wurde hinzugefügt.
+* REST-API-Version wurde mit dieser Version auf „2017-01-19“ (19.01.2017) festgelegt.
+
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * An Dokumentationskommentaren wurden redaktionelle Änderungen vorgenommen.
 
@@ -114,6 +123,7 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |01. Mai 2017 |--- |
 | [2.0.1](#2.0.1) |30. Oktober 2016 |--- |
 | [2.0.0](#2.0.0) |29. September 2016 |--- |
 | [1.9.0](#1.9.0) |7. Juli 2016 |--- |

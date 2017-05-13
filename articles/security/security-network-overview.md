@@ -12,31 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2017
+ms.date: 04/27/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 7fe9111061fed4af6aa720d0b158e5b4f2becd90
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: e74f3f7ed4ab0a7a37047b1277e76b6695f3884f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
 # <a name="azure-network-security-overview"></a>Die Netzwerksicherheit in Azure im Überblick
 Microsoft Azure verfügt über eine robuste Netzwerkinfrastruktur zur Unterstützung der Konnektivitätsanforderungen Ihrer Anwendungen und Dienste. Netzwerkkonnektivität ist zwischen Ressourcen in Azure, zwischen lokalen und in Azure gehosteten Ressourcen und zu und aus dem Internet und Azure möglich.
 
-Das Ziel dieses Artikel ist, Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit näherzubringen. Nachstehend finden Sie grundlegende Erklärungen für einige zentrale Konzepte im Bereich Netzwerksicherheit und die entsprechenden Anforderungen. Darüber hinaus erfahren Sie, was Azure in jedem dieser Bereiche zu bieten hat. Der Text enthält zahlreiche Links zu weiteren Artikeln. So erlangen Sie ein tieferes Verständnis für die Bereiche, die Sie interessieren.
+Das Ziel dieses Artikel ist, Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit näherzubringen. Nachstehend finden Sie grundlegende Erklärungen für einige zentrale Konzepte im Bereich Netzwerksicherheit und die entsprechenden Anforderungen. Darüber hinaus erfahren Sie, was Azure in jedem dieser Bereiche zu bieten hat. Der Text enthält zahlreiche Links, um ein tieferes Verständnis für die Bereiche zu erlangen, die Sie interessieren.
 
-Die „Übersicht über die Netzwerksicherheit in Azure“ wird sich auf folgende Themen konzentrieren:
+Die „Übersicht über die Netzwerksicherheit in Azure“ konzentriert sich auf folgende Themen:
 
 * Azure-Netzwerke
-* Azure Network Watcher
 * Die Netzwerkzugriffssteuerung
 * Ein sicherer Remotezugriff und standortübergreifende Konnektivität
-* Availability
-* Protokollierung
+* Verfügbarkeit
 * Namensauflösung
 * DMZ-Architektur
-* Azure Security Center
+* Überwachung und Bedrohungserkennung
+
 
 ## <a name="azure-networking"></a>Azure-Netzwerke
 Virtuelle Computer benötigen Netzwerkkonnektivität. Azure erfordert von einem virtuellen Computer eine Verbindung mit einem virtuellen Azure-Netzwerk, damit die Konnektivitätsanforderung unterstützt wird. Ein virtuelles Azure-Netzwerk ist ein logisches Konstrukt, das auf dem physischen Azure-Netzwerkfabric basiert. Jedes logische virtuelle Azure-Netzwerk ist von allen anderen virtuellen Azure-Netzwerken isoliert. Dadurch wird sichergestellt, dass der Netzwerkverkehr in Ihren Bereitstellungen nicht für andere Microsoft Azure-Kunden zugänglich ist.
@@ -45,20 +45,9 @@ Weitere Informationen:
 
 * [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md)
 
-## <a name="azure-network-watcher"></a>Azure Network Watcher
-Azure Network Watcher beinhaltet eine Vielzahl von Netzwerküberwachungsfunktionen, die bei der Behebung von Problemen helfen und einen komplett neuen Satz von Tools bereitstellen, um bei der Identifizierung von Sicherheitsproblemen zu unterstützen.
-
-Die [Sicherheitsgruppenansicht ](/network-watcher/network-watcher-security-group-view-overview.md) unterstützt bei der Überprüfung und Sicherheitskonformität von VMs (Virtual Machines) und kann zur Durchführung von programmgesteuerten Prüfungen verwendet werden, um die von Ihrem Unternehmen definierten Basisrichtlinien mit den effektiven Regeln für all Ihre VMs zu vergleichen. Hierdurch können Konfigurationsabweichungen einfacher festgestellt werden.
-
-Die [Paketerfassung](/network-watcher/network-watcher-packet-capture-overview.md) ermöglicht die Erfassung des Netzwerkdatenverkehrs zur und von der virtuellen Maschine. Neben der Sammlung von Netzwerkstatistiken und der Behebung von Anwendungsproblemen kann die Paketerfassung auch hinsichtlich der Überprüfung von Angriffen auf das Netzwerk von unschätzbarem Wert sein. Sie können diese Funktion auch zusammen mit Azure Functions verwenden, um als Reaktion auf bestimmte Azure-Warnungen Netzwerkaufnahmen zu starten.
-
-Um weitere Informationen zu Azure Network Watcher zu erhalten und zu erfahren, wie Sie einige Funktionen in Ihren Übungen prüfen, lesen Sie [Übersicht über die Überwachung in Azure Network Watcher](/network-watcher/network-watcher-monitoring-overview.md).
-
->[!NOTE]
-Azure Network Watcher befindet sich noch in der öffentlichen Vorschauphase und weist daher unter Umständen nicht dasselbe Maß an Verfügbarkeit und Zuverlässigkeit auf wie Dienste in Versionen mit allgemeiner Verfügbarkeit. Bestimmte Features werden eventuell nicht unterstützt, bieten möglicherweise eingeschränkte Funktionen und sind vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Diensts finden Sie auf der Seite mit [Azure-Updates](https://azure.microsoft.com/updates/?product=network-watcher).
 
 ## <a name="network-access-control"></a>Die Netzwerkzugriffssteuerung
-Netzwerkzugriffssteuerung bedeutet, die Konnektivität zu oder ausgehend von bestimmten Geräten oder Subnetzen innerhalb eines virtuellen Azure-Netzwerks zu begrenzen. Das Ziel der Netzwerkzugriffssteuerung ist sicherzustellen, dass Ihre virtuellen Computer und Dienste nur denjenigen Benutzern und Geräten zugänglich sind, denen Sie den Zugriff auch erlauben möchten. Zugriffssteuerungen basieren auf den Entscheidungen, Verbindungen zu und ausgehend von virtuellen Computern oder Diensten zuzulassen oder zu verweigern.
+Netzwerkzugriffssteuerung bedeutet, die Konnektivität zu oder ausgehend von bestimmten Geräten oder Subnetzen innerhalb eines virtuellen Azure-Netzwerks zu begrenzen. Das Ziel der Netzwerkzugriffssteuerung ist die Beschränkung des Zugriffs auf Ihre virtuellen Computer und Dienste auf genehmigte Benutzer und Geräte. Zugriffssteuerungen basieren auf den Entscheidungen, Verbindungen zu und ausgehend von virtuellen Computern oder Diensten zuzulassen oder zu verweigern.
 
 Azure unterstützt verschiedene Typen von Netzwerkzugriffssteuerungen. Diese umfassen:
 
@@ -67,7 +56,7 @@ Azure unterstützt verschiedene Typen von Netzwerkzugriffssteuerungen. Diese umf
 * Appliances für die Sicherheit des virtuellen Netzwerks
 
 ### <a name="network-layer-control"></a>Die Steuerung der Vermittlungsschicht
-Jede sichere Bereitstellung erfordert ein gewisses Maß an Netzwerkzugriffssteuerung. Das Ziel der Netzwerkzugriffssteuerung ist sicherzustellen, dass Ihre virtuellen Computer und die Netzwerkdienste, die auf diesen virtuellen Computern ausgeführt werden, ausschließlich mit den Netzwerkgeräten kommunizieren können, mit denen sie auch kommunizieren müssen, während alle anderen Verbindungsversuche blockiert werden.
+Jede sichere Bereitstellung erfordert ein gewisses Maß an Netzwerkzugriffssteuerung. Das Ziel der Netzwerkzugriffssteuerung ist die Einschränkung der Kommunikation virtueller Computer auf die erforderlichen Systeme, während alle anderen Verbindungsversuche blockiert werden.
 
 Wenn Sie eine einfache Zugriffskontrolle auf Netzwerkebene benötigen (basierend auf IP-Adresse und TCP- oder UDP-Protokollen), können Sie Netzwerksicherheitsgruppen verwenden. Eine Netzwerksicherheitsgruppe (NSG) ist eine einfache Firewall, die zustandsbehaftete Pakete filtert und die Zugriffssteuerung auf Grundlage eines [5-Tupels](https://www.techopedia.com/definition/28190/5-tuple)ermöglicht. NSGs bieten weder eine Inspektion auf Anwendungsebene noch authentifizierte Zugriffssteuerungen.
 
@@ -76,9 +65,9 @@ Weitere Informationen:
 * [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md)
 
 ### <a name="route-control-and-forced-tunneling"></a>Routensteuerung und Tunnelerzwingung
-Die Steuerung des Routingverhaltens in Ihren virtuellen Azure-Netzwerken ist eine entscheidende Funktion in den Bereichen Netzwerksicherheit und Zugriffssteuerung. Wenn das Routing nicht ordnungsgemäß konfiguriert ist, können sich auf dem virtuellen Computer gehostete Anwendungen und Dienste mit unerwünschten Geräten verbinden. Dies können auch Geräten sein, die sich im Besitz potenzieller Angreifer befinden und von ihnen betrieben werden.
+Die Steuerung des Routingverhaltens in Ihren virtuellen Azure-Netzwerken ist eine entscheidende Funktion in den Bereichen Netzwerksicherheit und Zugriffssteuerung. Wenn das Routing nicht ordnungsgemäß konfiguriert ist, können sich auf dem virtuellen Computer gehostete Anwendungen und Dienste mit nicht autorisierten Geräten verbinden. Dies umfasst auch Systeme, die sich im Besitz potenzieller Angreifer befinden und von diesen betrieben werden.
 
-Azure-Netzwerke unterstützen die Fähigkeit, das Routingverhalten für den Netzwerkverkehr in Ihrem virtuellen Azure-Netzwerk benutzerdefiniert anzupassen. Dadurch können Sie die Standardeinträge in der Routingtabelle in Ihrem virtuellen Azure-Netzwerk ändern. Mithilfe der Steuerung des Routingverhaltens können Sie sicherstellen, dass der gesamte von einem bestimmten Gerät oder einer Gerätegruppe ausgehende Datenverkehr über einen bestimmten Punkt in Ihr virtuelles Azure-Netzwerk eintritt oder es über diesen verlässt.
+Azure-Netzwerke unterstützen die Fähigkeit, das Routingverhalten für den Netzwerkverkehr in Ihrem virtuellen Azure-Netzwerk benutzerdefiniert anzupassen. Dadurch können Sie die Standardeinträge in der Routingtabelle in Ihrem virtuellen Azure-Netzwerk ändern. Mithilfe der Steuerung des Routingverhaltens können Sie sicherstellen, dass der gesamte von einem bestimmten Gerät oder einer Gerätegruppe ausgehende Datenverkehr über einen bestimmten Punkt in Ihr virtuelles Netzwerk eintritt oder es über diesen verlässt.
 
 Beispielsweise verfügen Sie in Ihrem virtuellen Azure-Netzwerk möglicherweise über eine Appliance für die Sicherheit des virtuellen Netzwerks. In diesem Fall möchten Sie auch gewährleisten, dass der gesamte Datenverkehr zu und ausgehend von Ihrem virtuellen Azure-Netzwerk Ihre Appliance für die Sicherheit Ihres virtuellen Netzwerks passiert. Sie erreichen dies über die Konfiguration der [benutzerdefinierten Routen](../virtual-network/virtual-networks-udr-overview.md) in Azure.
 
@@ -128,7 +117,7 @@ Weitere Informationen:
 * [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="connect-your-on-premises-network-to-an-azure-virtual-network-with-a-vpn"></a>Verbinden Ihres lokalen Netzwerks mit einem virtuellen Azure-Netzwerk mithilfe eines VPN
-Möglicherweise möchten Sie Ihr gesamtes Unternehmensnetzwerk oder Teile davon mit einem virtuellen Azure-Netzwerk verbinden. Dies ist in hybriden IT-Szenarien üblich, in denen Unternehmen [ihre lokalen Rechenzentren auf Azure ausweiten](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). Oftmals hosten Unternehmen Teile eines Diensts in Azure und andere Teile lokal, z.B. wenn eine Lösung Front-End-Webserver in Azure und lokale Back-End-Datenbanken enthält. Diese Art von „standortübergreifenden“ Verbindungen erhöhen die Sicherheit der in Azure verwalteten Ressourcen und ermöglichen Szenarien wie das Erweitern des Active Directory-Domänencontrollers auf Azure.
+Möglicherweise möchten Sie Ihr gesamtes Unternehmensnetzwerk oder Teile davon mit einem virtuellen Azure-Netzwerk verbinden. Dies ist in hybriden IT-Szenarien üblich, in denen Unternehmen [ihre lokalen Rechenzentren auf Azure ausweiten](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84). Oftmals hosten Unternehmen Teile eines Diensts in Azure und andere Teile lokal, z.B. wenn eine Lösung Front-End-Webserver in Azure und lokale Back-End-Datenbanken enthält. Diese Arten von „standortübergreifenden“ Verbindungen erhöhen die Sicherheit der in Azure verwalteten Ressourcen und ermöglichen Szenarien wie das Erweitern des Active Directory-Domänencontrollers auf Azure.
 
 Sie erreichen dies zum Beispiel über ein [Site-to-Site-VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn). Der Unterschied zwischen einem Standort-zu-Standort-VPN und einem Punkt-zu-Standort-VPN ist, dass ein Punkt-zu-Standort-VPN ein einzelnes Gerät mit einem virtuellen Azure-Netzwerk verbindet. Ein Standort-zu-Standort-VPN verbindet hingegen ein ganzes Netzwerk (z.B. Ihr lokales Netzwerk) mit einem virtuellen Azure-Netzwerk. Standort-zu-Standort-VPNs zu einem virtuellen Azure-Netzwerk verwenden das äußerst sichere IPsec-VPN-Protokoll im Tunnelmodus.
 
@@ -141,7 +130,7 @@ Weitere Informationen:
 Punkt-zu-Standort und Standort-zu-Standort-VPN-Verbindungen sind effektive Methoden, um die standortübergreifende Konnektivität zu aktivieren. Allerdings weisen sie, einigen Unternehmen zufolge, die folgenden Nachteile auf:
 
 * VPN-Verbindungen verschieben Daten über das Internet – bei der Datenverschiebung über ein öffentliches Netzwerk weisen diese Verbindungen möglicherweise Sicherheitsprobleme auf. Darüber hinaus können die Zuverlässigkeit und Verfügbarkeit dieser Internetverbindungen nicht garantiert werden.
-* VPN-Verbindungen mit virtuellen Azure-Netzwerken können für einige Anwendungen und Zwecke eine zu geringe Bandbreite bereitstellen, da sie ihr Maximum bei etwa 200 MB/s erreichen.
+* VPN-Verbindungen mit Azure Virtual Networks können für einige Anwendungen und Zwecke eine zu geringe Bandbreite bereitstellen, da sie ihr Maximum bei etwa 200 MB/s erreichen.
 
 Organisationen, die die höchsten Sicherheits- und Verfügbarkeitsstufen für ihre standortübergreifenden Verbindungen benötigen, verwenden in der Regel dedizierte WAN-Links für die Verbindung zu Remotestandorten. Azure bietet Ihnen die Möglichkeit, einen dedizierten WAN-Link zu verwenden, um Ihr lokales Netzwerk mit einem virtuellen Azure-Netzwerk zu verbinden. Dies wird über Azure ExpressRoute ermöglicht.
 
@@ -156,7 +145,7 @@ Sie erreichen dies z.B., indem die Dienste in einem virtuellen Azure-Netzwerk ü
 
 Ein besserer Weg wäre möglicherweise die Erstellung eines Standort-zu-Standort-VPN zwischen zwei virtuellen Azure-Netzwerken. Dieses Site-to-Site-VPN zwischen zwei virtuellen Azure-Netzwerken verwendet dasselbe [IPsec-Protokoll im Tunnelmodus](https://technet.microsoft.com/library/cc786385.aspx) wie die zuvor erwähnte standortübergreifende Site-to-Site-VPN-Verbindung.
 
-Der Vorteil eines Standort-zu-Standort-VPN zwischen zwei virtuellen Azure-Netzwerken besteht darin, dass die VPN-Verbindung über das Azure-Netzwerkfabric erstellt wird. Hierzu wird keine Verbindung über das Internet hergestellt. Dadurch erhalten Sie im Vergleich zu Standort-zu-Standort-VPNs, die Verbindungen über das Internet herstellen, eine zusätzliche Sicherheitsebene.
+Der Vorteil eines Standort-zu-Standort-VPN zwischen zwei Azure Virtual Networks besteht darin, dass die VPN-Verbindung über das Azure-Netzwerkfabric anstatt über das Internet erstellt wird. Dadurch erhalten Sie im Vergleich zu Standort-zu-Standort-VPNs, die Verbindungen über das Internet herstellen, eine zusätzliche Sicherheitsebene.
 
 Weitere Informationen:
 
@@ -214,19 +203,6 @@ Weitere Informationen:
 
 * [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 
-## <a name="logging"></a>Protokollierung
-Protokollierung auf Netzwerkebene ist eine entscheidende Funktion für jedes Netzwerksicherheitsszenario. In Azure können Sie Informationen für Netzwerksicherheitsgruppen (NSG) protokollieren, um Protokollierungsinformationen auf Netzwerkebene zu erhalten. Mit der NSG-Protokollierung erhalten Sie Informationen aus:
-
-* [Überwachungsprotokollen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md): Diese Protokolle werden verwendet, um alle Vorgänge anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
-* Ereignisprotokollen – Diese Protokolle bieten Informationen darüber, welche NSG-Regeln angewendet wurden.
-* Leistungsindikatorenprotokolle – Dieses Protokolle zeigen Ihnen an, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
-
-Sie können auch das leistungsstarke Datenvisualisierungstool [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)verwenden, um diese Protokolle anzuzeigen und zu analysieren.
-
-Weitere Informationen:
-
-* [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="name-resolution"></a>Namensauflösung
 Die Namensauflösung ist eine Schlüsselfunktion aller Dienste, die in Azure gehostet werden. Eine Kompromittierung der Namensauflösungsfunktion kann für die Sicherheit bedeuten, dass ein Angreifer Anforderungen von Ihren Websites auf die Website eines Angreifers umleiten kann. Eine sichere Namensauflösung ist eine Voraussetzung für alle Ihre gehosteten Clouddienste.
@@ -270,7 +246,24 @@ Weitere Informationen:
 
 * [Microsoft Cloud Services und Netzwerksicherheit](../best-practices-network-security.md)
 
-## <a name="azure-security-center"></a>Azure Security Center
+
+## <a name="monitoring-and-threat-detection"></a>Überwachung und Bedrohungserkennung
+
+Azure bietet Funktionen, die Sie in diesem wichtigen Bereich durch eine frühe Erkennung, Überwachung und die Möglichkeit zum Sammeln und Überprüfen des Netzwerkdatenverkehrs unterstützen.
+
+### <a name="azure-network-watcher"></a>Azure Network Watcher
+Azure Network Watcher beinhaltet eine Vielzahl von Funktionen, die bei der Behebung von Problemen helfen und einen komplett neuen Satz von Tools bereitstellen, um bei der Identifizierung von Sicherheitsproblemen zu unterstützen.
+
+Die [Sicherheitsgruppenansicht ](/network-watcher/network-watcher-security-group-view-overview.md) unterstützt bei der Überprüfung und Sicherheitskonformität von VMs (Virtual Machines) und kann zur Durchführung von programmgesteuerten Prüfungen verwendet werden, um die von Ihrem Unternehmen definierten Basisrichtlinien mit den effektiven Regeln für all Ihre VMs zu vergleichen. Hierdurch können Konfigurationsabweichungen einfacher festgestellt werden.
+
+Die [Paketerfassung](/network-watcher/network-watcher-packet-capture-overview.md) ermöglicht die Erfassung des Netzwerkdatenverkehrs zur und von der virtuellen Maschine. Neben der Sammlung von Netzwerkstatistiken und der Behebung von Anwendungsproblemen kann die Paketerfassung auch hinsichtlich der Überprüfung von Angriffen auf das Netzwerk von unschätzbarem Wert sein. Sie können diese Funktion auch zusammen mit Azure Functions verwenden, um als Reaktion auf bestimmte Azure-Warnungen Netzwerkaufnahmen zu starten.
+
+Um weitere Informationen zu Azure Network Watcher zu erhalten und zu erfahren, wie Sie einige Funktionen in Ihren Übungen prüfen, lesen Sie [Übersicht über die Überwachung in Azure Network Watcher](/network-watcher/network-watcher-monitoring-overview.md).
+
+>[!NOTE]
+Azure Network Watcher befindet sich noch in der öffentlichen Vorschauphase und weist daher unter Umständen nicht dasselbe Maß an Verfügbarkeit und Zuverlässigkeit auf wie Dienste in Versionen mit allgemeiner Verfügbarkeit. Bestimmte Features werden eventuell nicht unterstützt, bieten möglicherweise eingeschränkte Funktionen und sind vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Diensts finden Sie auf der Seite mit [Azure-Updates](https://azure.microsoft.com/updates/?product=network-watcher).
+
+### <a name="azure-security-center"></a>Azure Security Center
 Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Darüber hinaus sorgt Security Center für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 Mit Azure Security Center können Sie die Netzwerksicherheit wie folgt optimieren und überwachen:
@@ -282,4 +275,18 @@ Mit Azure Security Center können Sie die Netzwerksicherheit wie folgt optimiere
 Weitere Informationen:
 
 * [Einführung in Azure Security Center](../security-center/security-center-intro.md)
+
+
+### <a name="logging"></a>Protokollierung
+Protokollierung auf Netzwerkebene ist eine entscheidende Funktion für jedes Netzwerksicherheitsszenario. In Azure können Sie Informationen für Netzwerksicherheitsgruppen (NSG) protokollieren, um Protokollierungsinformationen auf Netzwerkebene zu erhalten. Mit der NSG-Protokollierung erhalten Sie Informationen aus:
+
+* [Überwachungsprotokollen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md): Diese Protokolle werden verwendet, um alle Vorgänge anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
+* Ereignisprotokollen – Diese Protokolle bieten Informationen darüber, welche NSG-Regeln angewendet wurden.
+* Leistungsindikatorenprotokolle – Dieses Protokolle zeigen Ihnen an, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+
+Sie können auch das leistungsstarke Datenvisualisierungstool [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)verwenden, um diese Protokolle anzuzeigen und zu analysieren.
+
+Weitere Informationen:
+
+* [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md)
 

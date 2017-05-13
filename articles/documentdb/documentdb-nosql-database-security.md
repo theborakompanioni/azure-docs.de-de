@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d04c670daac243119b47cece2df18335c7af972c
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 71668ceedca16647f814866ea9cf068f73e5daf6
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -82,6 +83,7 @@ Betrachten wir die Anforderungen nun im Detail.
 |Geofencing (geografische Eingrenzung)|DocumentDB stellt die Datengovernance und -compliance für unabhängige Regionen sicher (z.B. Deutschland, China, US Government).|
 |Geschützte Einrichtungen|Die Daten in DocumentDB sind auf SSDs in den geschützten Rechenzentren von Azure gespeichert.<br><br>Weitere Informationen erhalten Sie unter [Globale Rechenzentren von Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters).|
 |HTTPS-/SSL-/TLS-Verschlüsselung|Alle DocumentDB-Interaktionen zwischen Client und Dienst erfolgen über SSL/TLS 1.2. Auch alle Replikationen innerhalb eines Rechenzentrums und zwischen verschiedenen Rechenzentren erfolgen über SSL/TLS 1.2.|
+|Verschlüsselung ruhender Daten|Alle in DocumentDB gespeicherte Daten werden im Ruhezustand verschlüsselt. Weitere Informationen finden Sie unter [DocumentDB-Verschlüsselung ruhender Daten](.\documentdb-nosql-database-encryption-at-rest.md).|
 |Gepatchte Server|Da DocumentDB eine verwaltete NoSQL-Datenbank ist, müssen Sie keine Server verwalten oder patchen – das wird automatisch für Sie erledigt.|
 |Administratorkonten mit sicheren Kennwörtern|Es ist kaum zu glauben, dass diese Anforderung überhaupt erwähnt werden muss, aber im Gegensatz zu einigen unserer Wettbewerber ist es in DocumentDB unmöglich, ein Administratorkonto ohne Kennwort einzurichten.<br><br> Die Sicherheit über SSL und die auf HMAC-Geheimnissen basierende Authentifizierung sind standardmäßig integriert.|
 |Zertifizierungen für Sicherheit und Datenschutz|DocumentDB verfügt über folgende Zertifizierungen: [ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001), [EU-Musterklauseln](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses) und [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA). Weitere Zertifizierungen folgen.|

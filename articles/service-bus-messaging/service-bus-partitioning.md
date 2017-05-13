@@ -12,19 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2017
+ms.date: 04/28/2017
 ms.author: sethm;hillaryc
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 946f3ac069db436828427e575be5a14efac9dda9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 3466bbd23cb20df826ad919b8c76289d89375f04
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
-Für Azure Service Bus werden mehrere Nachrichtenbroker verwendet, um Nachrichten zu verarbeiten, sowie mehrere Nachrichtenspeicher, um Nachrichten zu speichern. Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Service Bus-*Partitionen* ermöglichen das Partitionieren von Warteschlangen oder Themen über mehrere Nachrichtenbroker und -speicher. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist. Partitionierte Warteschlangen und Themen können alle erweiterten Service Bus-Features enthalten, z. B. die Unterstützung von Transaktionen und Sitzungen.
+Für Azure Service Bus werden mehrere Nachrichtenbroker verwendet, um Nachrichten zu verarbeiten, sowie mehrere Nachrichtenspeicher, um Nachrichten zu speichern. Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Service Bus-*Partitionen* ermöglichen das Partitionieren von Warteschlangen und Themen oder *Nachrichtenentitäten* über mehrere Nachrichtenbroker und -speicher. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Entität nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist. Partitionierte Warteschlangen und Themen können alle erweiterten Service Bus-Features enthalten, z. B. die Unterstützung von Transaktionen und Sitzungen.
 
 Weitere Informationen zum inneren Aufbau von Service Bus finden Sie im Artikel [Service Bus-Architektur][Service Bus architecture].
+
+Die Partitionierung ist standardmäßig bei der Erstellung von Entitäten für alle Warteschlangen und Themen beim Standard- und Premium-Messaging aktiviert. Sie können die Entitäten des Standard-Messaging-Tarifs ohne Partitionierung erstellen, aber Warteschlangen und Themen in einem Premium-Namespace werden immer partitioniert. Diese Option kann nicht deaktiviert werden. 
+
+Es ist nicht möglich, die Partitionierungsoption für eine vorhandene Warteschlange oder ein Thema in den Standard- oder Premium-Tarif zu ändern. Sie können die Option nur bei der Erstellung der Entität festlegen.
 
 ## <a name="how-it-works"></a>So funktioniert's
 Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Fragmenten. Jedes Fragment wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein Thema gesendet wird, weist Service Bus die Nachricht einem der Fragmente zu. Service Bus nimmt die Auswahl willkürlich oder mithilfe eines Partitionsschlüssels vor, den der Absender angeben kann.
@@ -36,9 +41,19 @@ Es fallen keine zusätzlichen Kosten an, wenn eine Nachricht an eine partitionie
 ## <a name="enable-partitioning"></a>Aktivieren der Partitionierung
 Setzen Sie zum Verwenden von partitionierten Warteschlangen und Themen mit Azure Service Bus die Azure SDK-Version 2.2 oder höher ein, oder geben Sie `api-version=2013-10` in Ihren HTTP-Anforderungen an.
 
-Sie können Service Bus-Warteschlangen und -Themen in Größen von 1, 2, 3, 4 oder 5GB erstellen (die Standardgröße ist 1GB). Bei aktivierter Partitionierung erstellt Service Bus 16 Partitionen für jedes angegebene GB. Wenn Sie also eine Warteschlange mit einer Größe von 5 GB erstellen, beträgt die maximale Warteschlangengröße bei 16 Partitionen 5 \* 16 = 80 GB. Die maximale Größe der partitionierten Warteschlange oder des Themas wird im zugehörigen Eintrag im [Azure-Portal][Azure portal] angezeigt.
+### <a name="standard"></a>Standard
 
-Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema über Ihre Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning-Eigenschaft][TopicDescription.EnablePartitioning] auf **TRUE** festlegen. Diese Eigenschaften müssen bei der Erstellung der Warteschlange oder des Themas festgelegt werden. Es ist nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
+Im Standard-Messaging-Tarif können Sie Service Bus-Warteschlangen und -Themen in Größen von 1, 2, 3, 4 oder 5 GB erstellen (die Standardgröße ist 1 GB). Bei aktivierter Partitionierung erstellt Service Bus 16 Kopien (16 Partitionen) der Entität für jedes angegebene GB. Wenn Sie also eine Warteschlange mit einer Größe von 5 GB erstellen, beträgt die maximale Warteschlangengröße bei 16 Partitionen 5 \* 16 = 80 GB. Die maximale Größe der partitionierten Warteschlange oder des Themas wird im zugehörigen Eintrag im [Azure-Portal][Azure portal] auf dem Blatt **Übersicht** für diese Entität angezeigt.
+
+### <a name="premium"></a>Premium
+
+In einem Namespace mit Premium-Tarif können Sie Service Bus-Warteschlangen und -Themen in Größen von 1, 2, 3, 4, 5, 10, 20, 40 oder 80 GB erstellen (die Standardgröße ist 1 GB). Service Bus erstellt bei standardmäßig aktivierter Partitionierung zwei Partitionen pro Entität. Die maximale Größe der partitionierten Warteschlange oder des Themas wird im zugehörigen Eintrag im [Azure-Portal][Azure portal] auf dem Blatt **Übersicht** für diese Entität angezeigt.
+
+Weitere Informationen zur Partitionierung im Premium-Messaging-Tarif finden Sie unter [Service Bus Premium- und Standard-Tarif für Messaging](service-bus-premium-messaging.md). 
+
+### <a name="create-a-partitioned-entity"></a>Erstellen einer partitionierten Entität
+
+Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema über Ihre Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning-Eigenschaft][TopicDescription.EnablePartitioning] auf **TRUE** festlegen. Diese Eigenschaften müssen bei der Erstellung der Warteschlange oder des Themas festgelegt werden. Wie bereits erwähnt, ist es nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
 
 ```csharp
 // Create partitioned topic
@@ -48,7 +63,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-Alternativ können Sie eine partitionierte Warteschlange oder ein Thema in Visual Studio oder im [Azure-Portal][Azure portal] erstellen. Wenn Sie eine Warteschlange oder ein Thema im Portal erstellen, legen Sie die Option **Partitionierung aktivieren** auf dem Blatt **Allgemeine Einstellungen** des Warteschlangen- oder Themenfensters **Einstellungen** auf **TRUE** fest. Klicken Sie in Visual Studio im Dialogfeld **Neue Warteschlange** bzw. **Neues Thema** auf das Kontrollkästchen **Partitionierung aktivieren**.
+Alternativ können Sie eine partitionierte Warteschlange oder ein Thema im [Azure-Portal][Azure portal] oder in Visual Studio erstellen. Wenn Sie eine Warteschlange oder ein Thema im Portal erstellen, wird die Option **Partitionierung aktivieren** auf dem Blatt **Erstellen** der Warteschlange oder des Themas standardmäßig aktiviert. Sie können diese Option nur in einer Entität des Standard-Tarifs deaktivieren. Im Premium-Tarif ist die Partitionierung immer aktiviert. Klicken Sie in Visual Studio im Dialogfeld **Neue Warteschlange** bzw. **Neues Thema** auf das Kontrollkästchen **Partitionierung aktivieren**.
 
 ## <a name="use-of-partition-keys"></a>Verwenden von Partitionsschlüsseln
 Wenn eine Nachricht in eine partitionierte Warteschlange oder ein Thema eingereiht wird, wird von Service Bus das Vorhandensein eines Partitionsschlüssels überprüft. Wenn ein Schlüssel gefunden wird, wird das Fragment basierend auf diesem Schlüssel ausgewählt. Falls kein Partitionsschlüssel gefunden wird, wird das Fragment basierend auf einem internen Algorithmus ausgewählt.

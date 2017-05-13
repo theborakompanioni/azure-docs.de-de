@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 05/02/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 8929a1697bf88da82fc027520d0126eaef872840
-ms.openlocfilehash: ec7bdf6b27cc073324d0d3a79b268e9730a6016b
-ms.lasthandoff: 02/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 2fdf42c99395dd7a32ab68b0cf8d9504df3800ef
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -27,14 +28,14 @@ Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilit�
 Weitere Informationen zu anderen Premium-Cache-Features finden Sie unter [Einführung in den Premium-Tarif von Azure Redis Cache](cache-premium-tier-intro.md).
 
 ## <a name="what-is-redis-cluster"></a>Was ist Redis Cluster?
-Azure Redis Cache umfasst Redis Cluster entsprechend der [Implementierung in Redis](http://redis.io/topics/cluster-tutorial). Redis Cluster bringt Ihnen die folgenden Vorteile. 
+Azure Redis Cache umfasst Redis Cluster entsprechend der [Implementierung in Redis](http://redis.io/topics/cluster-tutorial). Redis Cluster bringt Ihnen die folgenden Vorteile: 
 
 * Die Möglichkeit, das DataSet automatisch zwischen mehreren Knoten aufzuteilen. 
 * Die Möglichkeit, Vorgänge fortzusetzen, wenn bei einer Teilmenge der Knoten Fehler auftreten oder nicht alle Knoten im Cluster miteinander kommunizieren können. 
 * Höherer Durchsatz: Der Durchsatz steigt linear, wenn Sie die Anzahl der Shards erhöht. 
 * Höhere Speichergröße: Die Speichergröße erhöht sich linear, wenn Sie die Anzahl der Shards erhöht.  
 
-Ausführliche Informationen zu Größe, Durchsatz und Bandbreite von Premium-Caches finden Sie in den [häufig gestellten Fragen zu Azure Redis Cache](cache-faq.md#what-redis-cache-offering-and-size-should-i-use) . 
+Ausführliche Informationen zu Größe, Durchsatz und Bandbreite von Premium-Caches finden Sie unter [Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 In Azure wird Redis Cluster als Modell aus primärem Cache und Replikatcache angeboten, in dem jeder Shard über ein Paar aus primärem Cache und Replikatcache mit Replikation verfügt und die Replikation mit dem Azure Redis Cache-Dienst verwaltet wird. 
 
@@ -66,16 +67,21 @@ Beispielcode zum Arbeiten mit Clustering mit dem StackExchange.Redis-Client find
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>Ändern der Clustergröße auf einem ausgeführten Premium-Cache
-Klicken Sie zum Ändern der Clustergröße auf einem ausgeführten Premium-Cache mit aktiviertem Clustering im **Ressourcenmenü** auf **(VORSCHAU) Größe des Redis-Clusters**.
+Klicken Sie zum Ändern der Clustergröße auf einem ausgeführten Premium-Cache mit aktiviertem Clustering im **Ressourcenmenü** auf **Größe des Redis-Clusters**.
 
 > [!NOTE]
-> Beachten Sie, dass sich trotz allgemeiner Verfügbarkeit der Azure Redis Cache in der Premium-Stufe das Feature Redis-Clustergröße derzeit in der Vorschau befindet.
+> Trotz allgemeiner Verfügbarkeit des Azure Redis Cache im Premium-Tarif befindet sich das Feature „Redis-Clustergröße“ derzeit in der Vorschau.
 > 
 > 
 
 ![Redis-Clustergröße][redis-cache-redis-cluster-size]
 
 Um die Clustergröße zu ändern, verwenden Sie den Schieberegler, oder geben Sie im Textfeld **Shardanzahl** eine Zahl zwischen 1 und 10 ein, und klicken Sie zum Speichern auf **OK**.
+
+> [!NOTE]
+> Bei der Skalierung eines Clusters wird der Befehl [MIGRATE](https://redis.io/commands/migrate) ausgeführt, bei dem es sich um einen Befehl mit hohen Kosten handelt, daher sollten Sie erwägen, den Vorgang in der Nebenzeit auszuführen. Während der Migration wird bei der Serverlast ein Spitzenwert angezeigt. Das Skalieren eines Clusters ist ein langer Prozess und die benötigte Zeit hängt von der Anzahl der Schlüssel und der Größe der Werte ab, die diesen Schlüsseln zugeordnet sind.
+> 
+> 
 
 ## <a name="clustering-faq"></a>Clustering – häufig gestellte Fragen
 Die folgende Liste enthält Antworten auf häufig gestellte Fragen zum Clustering in Azure Redis Cache.
@@ -98,7 +104,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zum Clusterin
 * Wenn Sie [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)nutzen, müssen Sie Version 1.0.481 oder höher verwenden. Sie stellen eine Verbindung mit dem Cache mit den gleichen [Endpunkten, Ports und Schlüsseln](cache-configure.md#properties) her, die Sie auch für einen Cache verwenden, bei dem das Clustering nicht aktiviert ist. Der einzige Unterschied besteht darin, dass alle Lese- und Schreibvorgänge für Datenbank 0 erfolgen müssen.
   
   * Für andere Clients gelten möglicherweise andere Anforderungen. Weitere Informationen finden Sie unter [Wird das Clustering auf allen Redis-Clients unterstützt?](#do-all-redis-clients-support-clustering)
-* Wenn für Ihre Anwendung mehrere Schlüsselvorgänge zu einem einzelnen Befehl zusammengefasst sind, müssen sich alle Schlüssel in demselben Shard befinden. Informationen dazu, wie Sie dies erreichen, finden Sie unter [Wie sind Schlüssel in einem Cluster verteilt?](#how-are-keys-distributed-in-a-cluster)
+* Wenn für Ihre Anwendung mehrere Schlüsselvorgänge zu einem einzelnen Befehl zusammengefasst sind, müssen sich alle Schlüssel in demselben Shard befinden. Informationen zum Suchen von Schlüsseln im gleichen Shard finden Sie unter [Wie sind Schlüssel in einem Cluster verteilt?](#how-are-keys-distributed-in-a-cluster)
 * Bei Verwendung des Redis ASP.NET-Sitzungszustandsanbieters müssen Sie Version 2.0.1 oder höher verwenden. Weitere Informationen finden Sie unter [Kann ich das Clustering mit den Redis ASP.NET-Sitzungszustands- und -Ausgabezwischenspeicherungsanbietern verwenden?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Wie sind Schlüssel in einem Cluster verteilt?

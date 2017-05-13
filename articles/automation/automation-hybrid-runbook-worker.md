@@ -4,7 +4,7 @@ description: "Der vorliegende Artikel stellt Informationen zum Installieren und 
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee
 ms.service: automation
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/31/2017
+ms.date: 05/02/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 3a958b790b4501153aad86310c3783d49733dd90
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 66e749106ba1031eef19b12f06d5bd16ffa9d09e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -69,6 +70,7 @@ Wenn Sie ein Automation-Konto für eine bestimmte Region festgelegt haben und di
 | --- | --- |
 | USA (Mitte/Süden) |scus-jobruntimedata-prod-su1.azure-automation.net |
 | USA (Ost) 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
+| USA, Westen-Mitte | wcus-jobruntimedata-prod-su1.azure-automation.net |
 | Westeuropa |we-jobruntimedata-prod-su1.azure-automation.net |
 | Nordeuropa |ne-jobruntimedata-prod-su1.azure-automation.net |
 | Kanada, Mitte |cc-jobruntimedata-prod-su1.azure-automation.net |
@@ -76,6 +78,14 @@ Wenn Sie ein Automation-Konto für eine bestimmte Region festgelegt haben und di
 | Indien (Mitte) |cid-jobruntimedata-prod-su1.azure-automation.net |
 | Japan Ost |jpe-jobruntimedata-prod-su1.azure-automation.net |
 | Australien, Südosten |ase-jobruntimedata-prod-su1.azure-automation.net |
+| UK, Süden | uks-jobruntimedata-prod-su1.azure-automation.net |
+| US Government, Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
+
+Wenn Sie eine Liste mit IP-Adressen statt Namen benötigen, können Sie die XML-Datei mit [Azure Datacenter-IP-Adressen](https://www.microsoft.com/download/details.aspx?id=41653) aus dem Microsoft Download Center herunterladen und überprüfen. 
+
+> [!NOTE]
+> Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und Speicherbereiche), die in Microsoft Azure-Rechenzentren verwendet werden. Eine aktualisierte Datei mit den derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Laden Sie die neue XML-Datei jede Woche herunter, und nehmen Sie die erforderlichen Änderungen an Ihrer Website vor, um in Azure ausgeführte Dienste ordnungsgemäß zu ermitteln. Diese Datei zum Aktualisieren der BGP-Ankündigung von Azure-Bereichen wird ExpressRoute-Benutzern jeweils in der ersten Woche des Monats angezeigt. 
+> 
 
 ## <a name="installing-hybrid-runbook-worker"></a>Installieren von Hybrid-Runbook-Worker
 

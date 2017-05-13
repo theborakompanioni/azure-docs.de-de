@@ -15,16 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 0f81ac0d19cd0f20c1f2214042eda391a3e68a7d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 0740bc1f9e8b8be3c59518d9b23b8a1411c6d16a
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 ---
 
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search
 Beim Erstellen von Abfragen für Azure Search können Sie entweder die standardmäßige [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx) oder alternativ dazu den [Lucene-Abfrageparser in Azure Search](https://msdn.microsoft.com/library/azure/mt589323.aspx) verwenden. Der Lucene-Abfrageparser unterstützt komplexere Abfragekonstrukte, beispielsweise feldbezogene Abfragen, Fuzzysuche, NEAR-Suche, Begriffsverstärkung (Term Boosting) und die Suche nach regulären Ausdrücken.
 
-In diesem Artikel können Sie Beispiele durchlaufen, in denen die Abfragesyntax von Lucene und die Ergebnisse nebeneinander dargestellt werden. Die Beispiele werden für einen vorab geladenen Suchindex in [JSFiddle](https://jsfiddle.net/)ausgeführt, einem Online-Code-Editor zum Testen von Skripts und HTML.
+In diesem Artikel können Sie Beispiele durchlaufen, in denen die Abfragesyntax von Lucene und die Ergebnisse nebeneinander dargestellt werden. Die Beispiele werden für einen vorab geladenen Suchindex in [JSFiddle](https://jsfiddle.net/)ausgeführt, einem Online-Code-Editor zum Testen von Skripts und HTML. Hintergrundinformationen zur Abfrageverarbeitung finden Sie unter [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md).
 
 Klicken Sie mit der rechten Maustaste auf die URLs im Abfragebeispiel, um JSFiddle in einem separaten Browserfenster zu öffnen.
 
@@ -120,9 +122,4 @@ Versuchen Sie, den Lucene-Abfrageparser in Ihrem Code anzugeben. Unter den folge
 
 * [Abfragen des Azure Search-Indexes mit dem .NET SDK](search-query-dotnet.md)
 * [Abfragen des Azure Search-Indexes mit der REST-API](search-query-rest-api.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

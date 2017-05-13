@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/22/2017
+ms.date: 05/01/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 56a55bc10c9cf16751c713da302dcd59362ab80f
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 0f3683939ac9646565a0669e19b4c82811d621fc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -83,7 +84,7 @@ Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsof
 * **throwOnError:** Geben Sie TRUE an, wenn bei einem Fehler eine Ausnahme ausgelöst werden soll, oder FALSE, wenn bei einem nicht ausgeführten Vorgang keine Meldung erfolgen soll. Sie können das Vorliegen von Fehlern feststellen, indem Sie die statische Eigenschaft „Microsoft.Web.Redis.RedisSessionStateProvider.LastException“ überprüfen. Der Standardwert ist „true“.
 * **retryTimeoutInMilliseconds**: Bei Fehlern werden Vorgänge für diese Zeitspanne wiederholt (angegeben in Millisekunden). Die erste Wiederholung erfolgt nach 20 Millisekunden. Danach wird die Wiederholung jede Sekunde durchgeführt, bis die in „retryTimeoutInMilliseconds“ angegebene Zeitspanne abgelaufen ist. Unmittelbar nach dieser Zeitspanne wird der Vorgang ein letztes Mal wiederholt. Wenn dann immer noch ein Fehler bei dem Vorgang auftritt, wird der aufrufenden Funktion eine Ausnahme zurückgegeben, abhängig von der Einstellung für „throwOnError“. Der Standardwert lautet 0, d.h. keine Wiederholungen.
 * **databaseId** : Gibt an, welche Datenbank für die Cacheausgabedaten verwendet werden soll. Wenn Sie hier nichts angeben, wird der Standardwert 0 verwendet.
-* **applicationName**: Schlüssel werden in Redis als `{<Application Name>_<Session ID>}_Data` gespeichert. Durch dieses Benennungsschema wird ermöglicht, dass mehrere Anwendungen denselben Schlüssel gemeinsam nutzen. Dieser Parameter ist optional, und wenn Sie ihn nicht angeben, wird der Standardwert verwendet.
+* **applicationName**: Schlüssel werden in Redis als `{<Application Name>_<Session ID>}_Data` gespeichert. Durch dieses Benennungsschema wird ermöglicht, dass mehrere Anwendungen dieselbe Redis-Instanz gemeinsam nutzen. Dieser Parameter ist optional, und wenn Sie ihn nicht angeben, wird der Standardwert verwendet.
 * **connectionTimeoutInMilliseconds** : Diese Einstellung ermöglicht Ihnen, die connectTimeout-Einstellung im StackExchange.Redis-Client zu überschreiben. Wenn Sie sie nicht angegeben, wird die connectTimeout-Standardeinstellung „5000“ verwendet. Weitere Informationen finden Sie unter [StackExchange.Redis-Konfigurationsmodell](http://go.microsoft.com/fwlink/?LinkId=398705).
 * **operationTimeoutInMilliseconds** : Diese Einstellung ermöglicht Ihnen, die syncTimeout-Einstellung im StackExchange.Redis-Client zu überschreiben. Wenn Sie sie nicht angegeben, wird die syncTimeout-Standardeinstellung „1000“ verwendet. Weitere Informationen finden Sie unter [StackExchange.Redis-Konfigurationsmodell](http://go.microsoft.com/fwlink/?LinkId=398705).
 

@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/16/2017
+ms.date: 05/02/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
-ms.openlocfilehash: bd042908fec2dcf499dd1cb5230f62ec4be9fdea
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 5161b555db96886f556a4fe96eab4415d8ccf047
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,28 +37,11 @@ Service Bus verwendet die zwei folgenden Messgrößen für Warteschlangen und Th
 
 Mit dem Tarif **Standard** werden gestaffelte Preise für Vorgänge eingeführt, die mit Warteschlangen und Themen/Abonnements ausgeführt werden. Dies führt zu volumenbasierten Rabatten von bis zu 80 Prozent in den höchsten Nutzungsebenen. Außerdem wird eine Basisgebühr von 10 US-Dollar pro Monat für den Tarif „Standard“ erhoben, die es Ihnen ermöglicht, bis zu 12,5 Millionen Vorgänge pro Monat ohne zusätzliche Kosten auszuführen.
 
-Der Tarif **Premium** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden voneinander isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2 oder 4 Messaging-Einheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messaging-Einheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Gebühren werden jedoch im 24-Stunden- bzw. Tagesrhythmus berechnet. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung. Diese Leistung ist nicht nur besser vorhersehbar und verfügbar, sondern auch schneller. Azure Service Bus Premium-Messaging basiert auf dem in Azure Event Hubs eingeführten Speichermodul. Mit Premium-Messaging wird bei Spitzenleistung eine viel höhere Geschwindigkeit erzielt, als bei der Standard-Stufe.
+Der Tarif **Premium** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden voneinander isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2 oder 4 Messaging-Einheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messaging-Einheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Gebühren werden jedoch im 24-Stunden- bzw. Tagesrhythmus berechnet. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung. Diese Leistung ist nicht nur besser vorhersehbar und verfügbar, sondern auch schneller.
 
-Beachten Sie, dass die Standardbasisgebühr nur einmal pro Monat pro Azure-Abonnement berechnet wird. Dies bedeutet, dass Sie nach dem Erstellen eines einzelnen Service Bus-Namespaces des Tarifs „Standard“ oder „Premium“ beliebig viele weitere Namespaces des Tarifs „Standard“ oder „Premium“ unter dem gleichen Azure-Abonnement erstellen können, ohne dass zusätzliche Basisgebühren entstehen.
+Beachten Sie, dass die Basisgebühr für den Standard-Tarif nur einmal pro Monat pro Azure-Abonnement berechnet wird. Dies bedeutet, dass Sie nach Erstellung eines einzigen Service Bus-Namespace des Standard-Tarifs unter demselben Azure-Abonnement beliebig viele weitere Standardnamespaces erstellen können, ohne dass zusätzliche Grundgebühren anfallen.
 
-Alle vorhandenen Service Bus-Namespaces, die vor dem 1. November 2014 erstellt wurden, werden automatisch dem Tarif „Standard“ zugeordnet. Dadurch wird sichergestellt, dass Sie auch weiterhin Zugriff auf alle Funktionen haben, die derzeit mit Service Bus verfügbar sind. Anschließend können Sie über das [klassische Azure-Portal][Azure classic portal] bei Bedarf eine Herabstufung auf den Tarif „Basic“ durchführen.
-
-In der folgenden Tabelle sind die Funktionsunterschiede zwischen den Tarifen „Basic“ und „Standard“/„Premium“ zusammengefasst.
-
-| Funktion | Basic | Standard/Premium |
-| --- | --- | --- |
-| Warteschlangen |Ja |Ja |
-| Geplante Nachrichten |Ja |Ja |
-| Themen/Abonnements |Nein |Ja |
-| Relays |Nein |Ja |
-| Transaktionen |Nein |Ja |
-| Deduplizierung |Nein |Ja |
-| Sitzungen |Nein |Ja |
-| Umfangreiche Nachrichten |Nein |Ja |
-| ForwardTo |Nein |Ja |
-| SendVia |Nein |Ja |
-| Brokerverbindungen (enthalten) |100 pro Service Bus-Namespace |1.000 pro Azure-Abonnement |
-| Brokerverbindungen (Überschreitung zulässig) |Nein |Ja (abrechenbar) |
+In der Tabelle [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/) sind die Funktionsunterschiede zwischen den Tarifen „Basic“, „Standard“ und „Premium“ zusammengefasst.
 
 ## <a name="messaging-operations"></a>Messagingvorgänge
 Als Teil des neuen Preismodells ändert sich die Abrechnung für Warteschlangen und Themen/Abonnements. Diese Entitäten wechseln aus einer Abrechnung pro Nachricht zu einer Abrechnung pro Vorgang. Ein „Vorgang“ bezieht sich auf jeden API-Aufruf für einen Warteschlangen- oder Themen-/Abonnementdienstendpunkt. Dies umfasst Verwaltungs-, Sende-/Empfangs- und Sitzungsstatusvorgänge.
@@ -67,37 +52,14 @@ Als Teil des neuen Preismodells ändert sich die Abrechnung für Warteschlangen 
 | Nachrichten |Senden und Empfangen von Nachrichten mit Warteschlangen oder Themen/Abonnements. |
 | Sitzungsstatus |Abrufen oder Festlegen des Sitzungsstatus für eine Warteschlange oder ein Thema/Abonnement. |
 
-Seit dem 1. November 2014 gelten die folgenden Preise:
-
-| Basic | Kosten |
-| --- | --- |
-| Vorgänge |0,05 US-Dollar pro&1; Million Vorgänge |
-
-| Standard | Kosten |
-| --- | --- |
-| Basisgebühr |10 US-Dollar/Monat |
-| Erste 12,5 Millionen Vorgänge/Monat |Enthalten |
-| 12,5–100 Millionen Vorgänge/Monat |0,80 US-Dollar pro&1; Million Vorgänge |
-| 100–2.500 Millionen Vorgänge/Monat |0,50 US-Dollar pro&1; Million Vorgänge |
-| Mehr als 2.500 Millionen Vorgänge/Monat |0,20 US-Dollar pro&1; Million Vorgänge |
-
-| Premium | Kosten |
-| --- | --- |
-| Täglich |11,13 US-Dollar Festpreis pro Nachrichteneinheit |
+Details zu den Kosten finden Sie auf der Seite [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="brokered-connections"></a>Brokerverbindungen
 *Brokerverbindungen* ermöglichen Nutzungsmuster von Kunden, die eine große Anzahl „dauerhaft verbundener“ Absender/Empfänger für Warteschlangen, Themen oder Abonnements umfassen. Dauerhaft verbundene Absender/Empfänger sind die Absender/Empfänger, die mithilfe von AMQP oder HTTP mit einem Empfangstimeout ungleich null eine Verbindung herstellen (z. B. langer HTTP-Abruf). HTTP-Absender und -Empfänger mit einem sofortigen Timeout generieren keine Brokerverbindungen.
 
-Zuvor galt für Warteschlangen und Themen/Abonnements ein Grenzwert von 100 gleichzeitigen Verbindungen pro URL. Mit dem aktuellen Abrechnungsschema entfällt der Grenzwert pro URL für Warteschlangen und Themen/Abonnements. Stattdessen werden Kontingente und Messgrößen für Brokerverbindungen auf der Ebene des Service Bus-Namespace und des Azure-Abonnements implementiert.
+Informationen zu Verbindungskontingenten und anderen Diensteinschränkungen finden Sie im Artikel [Service Bus-Kontingente](service-bus-quotas.md).
 
-Der Tarif „Basic“ umfasst 100 Brokerverbindungen pro Service Bus-Namespace (und ist streng auf diese Anzahl beschränkt). Verbindungen, die diese Anzahl überschreiten, werden im Tarif „Basic“ zurückgewiesen. Im Tarif „Standard“ entfällt der Grenzwert pro Namespace. Es zählt die aggregierte Verwendung von Brokerverbindungen im Azure-Abonnement. Im Tarif „Standard“ sind 1.000 Brokerverbindungen pro Azure-Abonnement ohne zusätzliche Kosten (die über die Basisgebühr hinausgehen) zulässig. Wenn mehr als insgesamt 1.000 Brokerverbindungen für Service Bus-Namespaces des Tarifs „Standard“ in einem Azure-Abonnement verwendet werden, erfolgt eine gestaffelte Abrechnung entsprechend der folgenden Tabelle:
-
-| Brokerverbindungen (Tarif „Standard“) | Kosten |
-| --- | --- |
-| Erste 1.000/Monat |In der Basisgebühr enthalten |
-| 1.000–100.000/Monat |0,03 US-Dollar pro Verbindung/Monat |
-| 100.000–500.000/Monat |0,025 US-Dollar pro Verbindung/Monat |
-| Mehr als 500.000/Monat |0,015 US-Dollar pro Verbindung/Monat |
+Im Tarif „Standard“ entfällt der Grenzwert für die Brokerverbindungen pro Namespace. Es zählt die aggregierte Verwendung von Brokerverbindungen im Azure-Abonnement. Weitere Informationen finden Sie in der Tabelle [Brokerverbindungen](https://azure.microsoft.com/pricing/details/service-bus/).
 
 > [!NOTE]
 > 1.000 Brokerverbindungen sind im Messagingtarif „Standard“ (über die Basisgebühr) enthalten und können für alle Warteschlangen, Themen und Abonnements im zugehörigen Azure-Abonnement gemeinsam verwendet werden.
@@ -117,17 +79,7 @@ Der Tarif „Basic“ umfasst 100 Brokerverbindungen pro Service Bus-Namespace (
 
 Weitere Informationen zu Brokerverbindungen finden Sie weiter unten im Abschnitt [Häufig gestellte Fragen](#faq) .
 
-## <a name="wcf-relay"></a>WCF-Relay
-WCF-Relays sind nur in den Namespaces des Tarifs „Standard“ verfügbar. Preise und Verbindungskontingente für Relays sind ansonsten unverändert. Dies bedeutet, dass Relays auch weiterhin anhand der Anzahl der Nachrichten (nicht der Vorgänge) und der Relaystunden abgerechnet werden.
-
-| WCF-Relay – Preise | Kosten |
-| --- | --- |
-| WCF-Relaystunden |0,10 US-Dollar pro 100 Relaystunden |
-| Meldungen |0,01 US-Dollar pro 10.000 Nachrichten |
-
 ## <a name="faq"></a>Häufig gestellte Fragen
-### <a name="how-is-the-wcf-relay-hours-meter-calculated"></a>Wie werden WCF-Relaystunden berechnet?
-Informationen dazu finden Sie in [diesem Thema](service-bus-faq.md).
 
 ### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>Was sind Brokerverbindungen, und wie erfolgt ihre Abrechnung?
 Eine Brokerverbindung ist als eine der folgenden Verbindungen definiert:
@@ -146,13 +98,8 @@ Beispiel:
 Ja. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTTP, unabhängig von der Anzahl der sendenden Systeme oder Geräte. Durch das Empfangen von Ereignissen mit HTTP mithilfe eines Timeouts größer als null (manchmal als "langer Abruf" bezeichnet) entstehen Gebühren für Brokerverbindungen. Durch AMQP-Verbindungen entstehen Gebühren für Brokerverbindungen, unabhängig davon, ob die Verbindungen zum Senden oder Empfangen verwendet werden. Beachten Sie, dass 100 Brokerverbindungen in einem Basic-Namespace kostenlos zulässig sind. Dies ist auch die maximale Anzahl von Brokerverbindungen, die in einem Azure-Abonnement zulässig ist. Die ersten 1.000 Brokerverbindungen in allen Standard-Namespaces in einem Azure-Abonnement sind ohne zusätzliche Kosten (über die Basisgebühr hinaus) enthalten. Da diese Kontingente für viele Dienst-zu-Dienst-Messaging-Szenarios ausreichend sind, werden Gebühren für Brokerverbindungen normalerweise nur dann relevant, wenn geplant ist, lange AMQP-oder HTTP-Abrufe mit einer großen Anzahl von Clients zu verwenden (z. B., um effizienteres Ereignisstreaming zu erreichen oder die bidirektionale Kommunikation mit zahlreichen Geräten oder Anwendungsinstanzen zu ermöglichen).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu Service Bus-Preisen finden Sie auf der [Azure Service Bus-Preisseite](https://azure.microsoft.com/pricing/details/service-bus/).
+* Weitere Informationen zu Service Bus-Preisen finden Sie auf der Seite [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 * In den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#pricing) werden einige allgemeine Fragen zur Preisgestaltung und Abrechnung für Service Bus beantwortet.
 
-[Azure classic portal]: http://manage.windowsazure.com
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[Azure portal]: https://portal.azure.com
 
