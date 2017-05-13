@@ -4,24 +4,25 @@ description: "Application Insights-Datenmodell für Metriktelemetrie"
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: e27301a4815d16396518ddfc7487b064892e7631
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 1bedede1934141927a770c97b61aeb5218652b3e
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metriktelemetrie: Application Insights-Datenmodell
 
-Es gibt zwei Arten von Metriktelemetrie, die von Application Insights unterstützt werden: Einzelmessung und vorab aggregierte Metrik. Eine Einzelmessung ist nur ein Name und Wert. Eine vorab aggregierte Metrik gibt den Mindest- und Höchstwert der Metrik im Aggregationsintervall und die Standardabweichung davon an.
+Es gibt zwei Arten von Metriktelemetrie, die von [Application Insights](app-insights-overview.md) unterstützt werden: Einzelmessung und vorab aggregierte Metrik. Eine Einzelmessung ist nur ein Name und Wert. Eine vorab aggregierte Metrik gibt den Mindest- und Höchstwert der Metrik im Aggregationsintervall und die Standardabweichung davon an.
 
 Vorab aggregierte Metriktelemetrie setzt voraus, das die Aggregationsdauer eine Minute betrug.
 
@@ -71,7 +72,7 @@ Standardabweichung der aggregierten Metrik. Darf nicht für eine Messung festgel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu den Application Insights-Typen und zum Datenmodell finden Sie unter [Datenmodell](/application-insights-data-model.md).
-- Erfahren Sie, wie Sie die [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](/app-insights-asp-net-dependencies.md) nutzen.
-- Überprüfen der von Application Insights unterstützten [Plattformen](/app-insights-platforms.md).
+- Erfahren Sie, wie Sie die [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md#send-metrics) nutzen.
+- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](application-insights-data-model.md).
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](app-insights-platforms.md).
 

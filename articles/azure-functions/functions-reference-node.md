@@ -1,6 +1,6 @@
 ---
 title: JavaScript-Entwicklerreferenz zu Azure Functions | Microsoft-Dokumentation
-description: Erfahren Sie, wie Azure Functions mithilfe von JavaScript entwickelt wird.
+description: "Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/06/2017
 ms.author: chrande, glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 060e1145246952c18f89e1088ed28ffb0036e6c5
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: ff8a92c66303c81075c8a42baaa841301d65daf1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -56,7 +57,7 @@ Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sod
 
 Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie in *function.json* vorhanden sind. Dies gilt auch, wenn Sie sie in der Exportanweisung nicht angeben. Wenn Sie also beispielsweise `function(context, a, b)` in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[3]` verweisen.
 
-Alle Bindungen werden unabhängig von der Richtung auch mit dem `context` -Objekt übergeben (wie weiter unten zu sehen). 
+Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt übergeben (siehe folgendes Skript). 
 
 ## <a name="context-object"></a>context-Objekt
 Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
@@ -87,7 +88,7 @@ Gibt ein benanntes Objekt zurück, das alle Eingabe- und Ausgabedaten enthält. 
 ```
 
 ```javascript
-// myInput contains the input data which may have properties such as "name"
+// myInput contains the input data, which may have properties such as "name"
 var author = context.bindings.myInput.name;
 // Similarly, you can set your output data
 context.bindings.myOutput = { 
@@ -102,7 +103,7 @@ context.done([err],[propertyBag])
 
 Teilt der Laufzeit mit, dass Ihr Code beendet ist. Sie müssen `context.done` aufrufen, da die Laufzeit sonst nie erfährt, dass Ihre Funktion abgeschlossen ist, und die Ausführung durch einen Timeout beendet wird. 
 
-Mit der `context.done`-Methode können Sie an die Laufzeit einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften zurückgeben, die die Eigenschaften des `context.bindings`-Objekts überschreiben.
+Mit der `context.done`-Methode können Sie einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften, die die Eigenschaften des `context.bindings`-Objekts überschreiben, an die Laufzeit zurückgeben.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -146,7 +147,7 @@ Beim Aufruf von `context.log()` wird Ihre Meldung auf der Standard-Ablaufverfolg
 context.log({hello: 'world'});  
 ```
 
-Dies ist gleichwertig mit folgendem Pfad:
+Der obige Code ist gleichwertig mit folgendem Code:
 
 ```javascript
 context.log.info({hello: 'world'});  
@@ -168,7 +169,7 @@ context.log('Node.js HTTP trigger function processed a request. RequestUri=' + r
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-Der gleiche Code kann auch im folgenden Format geschrieben werden:
+Sie können den gleichen Code auch im folgenden Format schreiben:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
@@ -177,7 +178,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>Konfigurieren der Ablaufverfolgungsebene für die Konsolenprotokollierung
 
-In Functions können Sie den Schwellenwert der Ablaufverfolgungsebene für das Schreiben in die Konsole definieren. So können Sie mühelos steuern, wie Ablaufverfolgungen Ihrer Funktionen in die Konsole geschrieben werden. Legen Sie mit der `tracing.consoleLevel`-Eigenschaft in der Datei „host.json“ den Schwellenwert für alle Ablaufverfolgungen fest, die in die Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App. Im folgenden Beispiel wird der Schwellenwert für die Ablaufverfolgung festgelegt, um die ausführliche Protokollierung zu aktivieren:
+Mit Functions können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schreiben in die Konsole definieren, sodass Sie mühelos mit Ihren Funktionen steuern können, wie Ablaufverfolgungen in die Konsole geschrieben werden. Legen Sie mit der `tracing.consoleLevel`-Eigenschaft in der Datei „host.json“ den Schwellenwert für alle Ablaufverfolgungen fest, die in die Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App. Im folgenden Beispiel wird der Schwellenwert für die Ablaufverfolgung festgelegt, um die ausführliche Protokollierung zu aktivieren:
 
 ```json
 { 
@@ -221,9 +222,9 @@ Das `response`-Objekt weist die folgenden Eigenschaften auf:
 
 ### <a name="accessing-the-request-and-response"></a>Zugreifen auf Anforderung und Antwort 
 
-Bei der Arbeit mit HTTP-Triggern haben Sie drei Möglichkeiten, auf die HTTP-Request-Objekte und -Response-Objekte zuzugreifen:
+Bei der Arbeit mit HTTP-Triggern haben Sie drei Möglichkeiten, auf HTTP-Anforderungsobjekt und -Antwortobjekt zuzugreifen:
 
-+ Über die benannten Eingabe- und Ausgabebindungen. Hierbei funktionieren die HTTP-Trigger und -Bindungen genauso wie jede andere Bindung. Im folgenden Beispiel wird das Response-Objekt mit einer als `response` benannten Bindung festgelegt. 
++ Über die benannten Eingabe- und Ausgabebindungen. Hierbei funktionieren die HTTP-Trigger und -Bindungen genauso wie jede andere Bindung. Im folgenden Beispiel wird das Antwortobjekt mit einer als `response` benannten Bindung festgelegt: 
 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
@@ -232,13 +233,13 @@ Bei der Arbeit mit HTTP-Triggern haben Sie drei Möglichkeiten, auf die HTTP-Req
 + Über die `req`- und `res`-Eigenschaft des `context`-Objekts. Auf diese Weise können Sie die herkömmlichen Muster für den Zugriff auf HTTP-Daten über das context-Objekt verwenden, anstatt das gesamte `context.bindings.name`-Muster verwenden zu müssen. Das folgende Beispiel veranschaulicht den Zugriff auf das `req`- und `res`-Objekt des `context`-Objekts:
 
     ```javascript
-    // You can access your http request off of the context ...
+    // You can access your http request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
     // and also set your http response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Aufrufen von `context.done()`. Es gibt eine besondere Art der HTTP-Bindung, die die Antwort zurückgibt, die der `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
++ Durch Aufrufen von `context.done()`. Eine besondere Art der HTTP-Bindung gibt die Antwort zurück, die der `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
 
     ```json
     {
@@ -247,7 +248,7 @@ Bei der Arbeit mit HTTP-Triggern haben Sie drei Möglichkeiten, auf die HTTP-Req
       "name": "$return"
     }
     ``` 
-    Diese Ausgabebindung erwartet, dass Sie die Antwort angeben, wenn Sie `done()` wie folgt aufrufen:
+    Diese Ausgabebindung erwartet, dass Sie die Antwort angeben, wenn Sie `done()` aufrufen, wie folgt:
 
     ```javascript
      // Define a valid response object.
@@ -255,22 +256,22 @@ Bei der Arbeit mit HTTP-Triggern haben Sie drei Möglichkeiten, auf die HTTP-Req
     context.done(null, res);   
     ```  
 
-## <a name="node-version--package-management"></a>Node-Version und Paketverwaltung
+## <a name="node-version-and-package-management"></a>Node-Version und Paketverwaltung
 Die Node-Version ist derzeit unveränderlich auf `6.5.0`festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
 
 Mit den folgenden Schritten können Sie Pakete in Ihre Funktionen-App einbeziehen: 
 
-1. Navigieren Sie zu `https://<function_app_name>.scm.azurewebsites.net`.
+1. Wechseln Sie zur Adresse `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Klicken Sie auf **Debugkonsole > CMD**.
+2. Klicken Sie auf **Debugkonsole** > **CMD**.
 
-3. Navigieren Sie zu `D:\home\site\wwwroot`, ziehen Sie dann die Datei „package.json“ auf den **wwwroot**-Ordner in der oberen Hälfte der Seite.  
+3. Gehen Sie zu `D:\home\site\wwwroot`, und ziehen Sie dann die Datei „package.json“ auf den **wwwroot**-Ordner in der oberen Hälfte der Seite.  
+    Es gibt auch andere Möglichkeiten, Dateien in Ihre Funktionen-App hochzuladen. Weitere Informationen finden Sie unter [Aktualisieren von Funktionen-App-Dateien](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files). 
 
-    Es gibt andere Möglichkeiten, Dateien in Ihre Funktionen-App hochzuladen. Weitere Informationen finden Sie unter [Aktualisieren von Funktionen-App-Dateien](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files). 
+4. Sobald die Datei „package.json“ hochgeladen ist, führen Sie den `npm install`-Befehl in der **Kudu-Remoteausführungskonsole** aus.  
+    Mit dieser Aktion werden die in der Datei „package.json“ angegebenen Pakete heruntergeladen und die Funktionen-App neu gestartet.
 
-4. Sobald die Datei „package.json“ hochgeladen ist, führen Sie den `npm install`-Befehl in der **Kudu-Remoteausführungskonsole** aus. Dadurch werden die in der Datei „package.json“ angegebenen Pakete heruntergeladen und die Funktionen-App neu gestartet.
-
-Nach der Installation der benötigten Pakete importieren Sie sie durch Aufrufen von `require('packagename')` in Ihre Funktion, wie im folgenden Beispiel gezeigt.
+Nach der Installation der benötigten Pakete importieren Sie sie durch Aufrufen von `require('packagename')` in Ihre Funktion, wie im folgenden Beispiel gezeigt:
 
 ```javascript
 // Import the underscore.js library
@@ -283,7 +284,7 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Sie sollten eine `package.json`-Datei im Stammverzeichnis Ihrer Funktionen-App definieren. So nutzen alle Funktionen in der App gemeinsam die gleichen zwischengespeicherten Pakete, was die Leistung optimiert. Wenn Versionskonflikte auftreten, können Sie den Konflikt beheben, indem Sie eine `package.json`-Datei im Ordner einer bestimmten Funktion hinzufügen.  
+Sie sollten eine `package.json`-Datei im Stammverzeichnis Ihrer Funktionen-App definieren. Wenn Sie die Datei definieren, nutzen alle Funktionen in der App gemeinsam die gleichen zwischengespeicherten Pakete, was die Leistung optimiert. Wenn ein Versionskonflikt auftritt, können Sie ihn beheben, indem Sie eine `package.json`-Datei im Ordner einer bestimmten Funktion hinzufügen.  
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 Verwenden Sie `process.env`zum Abrufen einer Umgebungsvariablen oder zum Abrufen des Werts einer App-Einstellung, wie im folgenden Codebeispiel zu sehen:
@@ -306,14 +307,14 @@ function GetEnvironmentVariable(name)
 ```
 ## <a name="considerations-for-javascript-functions"></a>Überlegungen zu JavaScript-Funktionen
 
-Beim Arbeiten mit JavaScript-Funktionen sollten Sie die folgenden Aspekte beachten.
+Beachten Sie bei der Arbeit mit JavaScript-Funktionen die Überlegungen in den folgenden beiden Abschnitten.
 
 ### <a name="choose-single-core-app-service-plans"></a>Auswählen von Einzelkern-App Service-Plänen
 
 Wenn Sie eine Funktionen-App erstellen, die einen App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren Kernen einen Einzelkernplan auswählen. Derzeit führt Functions JavaScript-Funktionen auf Einzelkern-VMs effizienter aus; die Verwendung größerer VMs führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen von virtuellen Computern mit einem Kern hinzufügen, oder Sie können die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
 
-### <a name="typescriptcoffeescript-support"></a>Unterstützung für TypeScript/CoffeeScript
-Noch gibt es keine direkte Unterstützung für die automatische Kompilierung von TypeScript/CoffeeScript über die Laufzeit. All dies müsste also außerhalb der Laufzeit zum Zeitpunkt der Bereitstellung geschehen. 
+### <a name="typescript-and-coffeescript-support"></a>TypeScript- und CoffeeScript-Unterstützung
+Weil es noch keine direkte Unterstützung für die automatische Kompilierung von TypeScript bzw. CoffeeScript über die Laufzeit gibt, muss eine solche Unterstützung außerhalb der Laufzeit zum Zeitpunkt der Bereitstellung geschehen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Ressourcen:

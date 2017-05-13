@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: ryancraw
-translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: 3753846e955308a7607d92ed25648d75b9cc3a35
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 3a915f782eddaa91bcfcc3f2b2c32eee752c319c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -51,7 +52,7 @@ Nun verbinden wir die Warteschlange mit dem Stream Analytics-Auftrag, der in der
    * **Codierung**: UTF8
    * **FORMAT**: Separate Zeile
 4. Klicken Sie auf die Schaltfläche **Erstellen** , um diese Quelle hinzuzufügen und zu überprüfen, ob Stream Analytics erfolgreich mit dem Speicherkonto verbunden werden kann.
-5. Ersetzen Sie auf der Registerkarte **Abfrage** die aktuelle Abfrage durch die folgende. Ersetzen Sie *[YOUR SERVICE BUS NAME] * durch den Namen der in Schritt 3 erstellten Ausgabe. 
+5. Ersetzen Sie auf der Registerkarte **Abfrage** die aktuelle Abfrage durch die folgende. Ersetzen Sie *[YOUR SERVICE BUS NAME]* durch den Namen der in Schritt 3 erstellten Ausgabe. 
    
     ```    
    
@@ -188,7 +189,7 @@ Wir finden es sehr spannend, was sich mit der Kombination aus Azure Functions un
 
 Wenn Sie mit Microsoft Azure noch nicht vertraut sind, laden wir Sie herzlich ein, sich für ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/)zu registrieren. Wenn Sie mit Stream Analytics noch nicht vertraut sind, legen Sie einfach los, indem Sie [Ihren ersten Stream Analytics-Auftrag erstellen](stream-analytics-create-a-job.md).
 
-Wenn Sie Hilfe benötigen, posten Sie Ihre Fragen in den [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)- oder [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)-Foren. 
+Wenn Sie Hilfe benötigen, posten Sie Ihre Fragen in den [MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)- oder [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)-Foren. 
 
 Weitere Informationen finden Sie auch in den folgenden Ressourcen:
 

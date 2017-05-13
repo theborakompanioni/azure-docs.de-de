@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 04/05/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 9edaa7a101ae0e1a395491999854ee7009fb69cd
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 2195eb4ce0e22c8c7c72ac0638ab927f13c4d454
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -31,171 +32,113 @@ ms.lasthandoff: 03/30/2017
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
 > * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 
-Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung.
-Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+Erfahren Sie, wie Sie ein Anwendungsgateway mithilfe von SSL-Auslagerung erstellen.
 
-Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
+![Beispielszenario][scenario]
 
-## <a name="scenario"></a>Szenario
-
-In diesem Szenario erfahren Sie, wie Sie ein Anwendungsgateway über das Azure-Portal erstellen.
+Application Gateway ist ein dediziertes virtuelles Gerät mit einem ADC (Application Delivery Controller) als Dienst und bietet verschiedene Lastenausgleichsfunktionen der Ebene 7 für Ihre Anwendung.
 
 Dieses Szenario umfasst Folgendes:
 
-* Sie erstellen ein Anwendungsgateway für mittlere Nutzungsdauer mit zwei Instanzen.
-* Sie erstellen ein virtuelles Netzwerk mit dem Namen AdatumAppGatewayVNET und dem reservierten CIDR-Block 10.0.0.0/16.
-* Sie erstellen ein Subnetz mit dem Namen Appgatewaysubnet, für das 10.0.0.0/28 als CIDR-Block verwendet wird.
-* Sie konfigurieren ein Zertifikat für die SSL-Auslagerung.
+1. [Erstellen eines mittleren Anwendungsgateways](#create-an-application-gateway) mit SSL-Auslagerung mit zwei Instanzen in eigenem Subnetz.
+1. [Hinzufügen von Servern zum Back-End-Pool](#add-servers-to-backend-pools)
+1. [Löschen aller Ressourcen](#delete-all-resources) Für manche der Ressourcen, die in dieser Übung erstellt werden, fallen Bereitstellungsgebühren an. Führen Sie daher nach Abschluss der Übung unbedingt die Schritte in diesem Abschnitt aus, um die erstellten Ressourcen zu löschen und die Gebühren möglichst gering zu halten.
 
-![Beispielszenario][scenario]
+
 
 > [!IMPORTANT]
 > Zusätzliche Konfigurationsschritte für das Anwendungsgateway (u.a. benutzerdefinierte Integritätstests, Back-End-Pool-Adressen und zusätzlichen Regeln) werden nicht während der Erstbereitstellung, sondern nach der Konfiguration des Anwendungsgateways ausgeführt.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Für Azure Application Gateway ist ein eigenes Subnetz erforderlich. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass der Adressbereich für mehrere Subnetze ausreicht. Sobald Sie ein Anwendungsgateway in einem Subnetz bereitstellen, können nur zusätzliche Anwendungsgateways zum Subnetz hinzugefügt werden.
+Führen Sie zum Erstellen eines Anwendungsgateways die folgenden Schritte aus. Für das Anwendungsgateway ist ein eigenes Subnetz erforderlich. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass der Adressbereich für mehrere Subnetze ausreicht. Sobald Sie ein Anwendungsgateway in einem Subnetz bereitstellen, können nur zusätzliche Anwendungsgateways zum Subnetz hinzugefügt werden.
 
-## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free) registrieren.
+1. Klicken Sie im Portalbereich „Favoriten“ auf **Neu**.
+1. Klicken Sie auf dem Blatt **Neu** auf **Netzwerk**. Klicken Sie auf dem Blatt **Netzwerk** auf **Anwendungsgateway**, wie in der folgenden Abbildung zu sehen:
 
-### <a name="step-1"></a>Schritt 1
+    ![Erstellen eines Anwendungsgateways][1]
 
-Navigieren Sie zum Azure-Portal, klicken Sie auf **Neu** > **Netzwerk** > **Application Gateway**.
+1. Geben Sie auf dem daraufhin angezeigten Blatt **Grundlagen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**:
 
-![Erstellen eines Anwendungsgateways][1]
+   | **Einstellung** | **Wert** | **Details**
+   |---|---|---|
+   |**Name**|AdatumAppGateway|Der Name des Anwendungsgateways|
+   |**Ebene**|Standard|Verfügbare Werte sind „Standard“ oder „WAF“. Besuchen Sie [Web Application Firewall (WAF)](application-gateway-web-application-firewall-overview.md), um weitere Informationen über WAF zu erhalten.|
+   |**SKU-Größe**|Mittel|Bei Auswahl der Ebene „Standard“ stehen „Klein“, „Mittel“ und „Groß“ zur Auswahl. Bei Auswahl der Ebene „WAF“ stehen nur „Mittel“ und „Groß“ zur Auswahl.|
+   |**Anzahl der Instanzen**|2|Die Anzahl der Instanzen des Anwendungsgateways für hohe Verfügbarkeit. Eine Instanzenzahl von 1 sollte nur zu Testzwecken verwendet werden.|
+   |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem Sie das Anwendungsgateway erstellen möchten.|
+   |**Ressourcengruppe**|**Neu erstellen**: AdatumAppGatewayRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups).|
+   |**Location**|USA (West)||
 
-### <a name="step-2"></a>Schritt 2
+1. Klicken Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, auf **Virtuelles Netzwerk auswählen**. Damit wird das Blatt **Virtuelles Netzwerk auswählen** geöffnet.  Klicken Sie auf **Neu erstellen**, um das Blatt **Virtuelles Netzwerk erstellen** zu öffnen.
 
-Geben Sie anschließend die allgemeinen Informationen zum Anwendungsgateway an. Wenn Sie fertig sind, klicken Sie auf **OK**
+ ![Wählen eines virtuellen Netzwerks][2]
 
-Folgende Informationen werden für die Grundeinstellungen benötigt:
+1. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. Damit werden die Blätter **Virtuelles Netzwerk erstellen** und **Virtuelles Netzwerk auswählen** geschlossen. Auch das Feld **Subnetz** auf dem Blatt **Einstellungen** mit dem ausgewählten Subnetz wird geschlossen.
 
-* **Name** : der Name für das Anwendungsgateway.
-* **Ebene:** Diese Einstellung ist die Dienstebene für das Anwendungsgateway. Es stehen zwei Ebenen zur Auswahl: **WAF** und **Standard**. Mit der Ebene „WAF“ wird die Firewallfunktion für die Webanwendung aktiviert.
-* **SKU-Größe:** Diese Einstellung gibt die Größe des Anwendungsgateways an. Sie haben die Wahl zwischen drei Größen: **Klein**, **Mittel** und **Groß**. Die Größe „Klein“ ist in Verbindung mit der Ebene „WAF“ nicht verfügbar.
-* **Anzahl von Instanzen**: Die Anzahl von Instanzen. Dieser Wert muss eine Zahl zwischen 2 und 10 sein.
-* **Ressourcengruppe**: Die Ressourcengruppe, zu der das Anwendungsgateway gehört. Hierbei kann es sich um eine vorhandene oder um eine neue Ressourcengruppe handeln.
-* **Standort**: Die Region für das Anwendungsgateway. Dieser Standort ist mit dem Standort der Ressourcengruppe identisch. Der Standort ist wichtig, da das virtuelle Netzwerk und die öffentliche IP-Adresse den gleichen Standort wie das Gateway aufweisen müssen.
+   |**Einstellung** | **Wert** | **Details** |
+   |---|---|---|
+   |**Name**|AdatumAppGatewayVNET|Name des Anwendungsgateways.|
+   |**Adressraum**|10.0.0.0/16| Dies ist der Adressraum für das virtuelle Netzwerk.|
+   |**Subnetzname**|AppGatewaySubnet|Name des Subnetzes für das Anwendungsgateway.|
+   |**Subnetzadressbereich**|10.0.0.0/28| Dieses Subnetz ermöglicht weitere Subnetze im virtuellen Netzwerk für Back-End-Pool Mitglieder.|
 
-![Blatt mit Grundeinstellungen][2]
+1. Wählen Sie auf dem Blatt **Einstellungen** unter **Frontend-IP-Konfiguration** den **IP-Adresstyp** **Öffentlich** aus.
 
-> [!NOTE]
-> Zu Testzwecken kann für die Anzahl von Instanzen der Wert 1 ausgewählt werden. Beachten Sie, dass eine Anzahl von weniger als zwei Instanzen nicht durch die SLA abgedeckt ist und daher nicht empfohlen wird. Gateways mit niedriger Nutzungsdauer sind für Dev/Test-Umgebungen vorgesehen und sollten nicht zu Produktionszwecken verwendet werden.
-> 
-> 
+1. Klicken Sie auf dem Blatt **Einstellungen** unter **Öffentliche IP-Adresse** auf **Öffentliche IP-Adresse auswählen**. Daraufhin wird das Blatt **Öffentliche IP-Adresse auswählen** geöffnet. Klicken Sie auf **Neu erstellen**.
 
-### <a name="step-3"></a>Schritt 3
+ ![Öffentliche IP-Adresse auswählen][3]
 
-Nachdem die Grundeinstellungen definiert wurden, muss im nächsten Schritt das zu verwendende virtuelle Netzwerk definiert werden. In diesem virtuellen Netzwerk befindet sich die Anwendung, für die das Anwendungsgateway den Lastenausgleich durchführt.
+1. Akzeptieren Sie auf dem Blatt **Öffentliche IP-Adresse erstellen** den Standardwert, und klicken Sie auf **OK**. Daraufhin werden die Blätter **Öffentliche IP-Adresse auswählen** und **Öffentliche IP-Adresse erstellen** geschlossen, und **Öffentliche IP-Adresse** wird mit der ausgewählten öffentlichen IP-Adresse gefüllt.
 
-Klicken Sie auf **Virtuelles Netzwerk auswählen** , um das virtuelle Netzwerk zu konfigurieren.
+1. Klicken Sie auf dem Blatt **Einstellungen** unter **Listenerkonfiguration** unter **Protokoll** auf **HTTPS**. Dadurch werden zusätzliche Felder hinzugefügt. Klicken Sie auf das Ordnersymbol für das Feld **PFX-Zertifikat hochladen**, und wählen Sie das entsprechende PFX-Zertifikat aus. Geben Sie die folgenden Informationen in die zusätzlichen **Listenerkonfiguration**-Felder ein:
 
-![Blatt mit Einstellungen für das Anwendungsgateway][3]
+   |**Einstellung** | **Wert** | **Details** |
+   |---|---|---|
+   |Name|Name des Zertifikats|Dieser Wert ist ein Anzeigename, mit dem auf das Zertifikat verwiesen wird.|
+   |Kennwort|Kennwort für die PFX-Datei| Dieses Kennwort wird für den privaten Schlüssel verwendet.|
 
-### <a name="step-4"></a>Schritt 4
+1. Klicken Sie auf dem Blatt **Einstellungen** auf **OK**, um den Vorgang fortzusetzen.
 
-Klicken Sie auf dem Blatt **Virtuelles Netzwerk auswählen** auf **Neu erstellen**
-
-An dieser Stelle kann ein vorhandenes virtuelles Netzwerk ausgewählt werden. Auf diese Vorgehensweise wird in diesem Szenario jedoch nicht näher eingegangen.  Bei Verwendung eines vorhandenen virtuellen Netzwerks ist es wichtig zu wissen, dass das virtuelle Netzwerk ein leeres Subnetz oder ein Subnetz nur mit Anwendungsgatewayressourcen benötigt, damit es verwendet werden kann.
-
-![Blatt „Virtuelles Netzwerk auswählen“][4]
-
-### <a name="step-5"></a>Schritt 5
-
-Füllen Sie die Netzwerkinformationen auf dem Blatt **Virtuelles Netzwerk erstellen** wie in der obigen [Szenariobeschreibung](#scenario) erläutert aus.
-
-![Blatt „Virtuelles Netzwerk erstellen“ mit eingegebenen Informationen][5]
-
-### <a name="step-6"></a>Schritt 6
-
-Nachdem das virtuelle Netzwerk erstellt wurde, wird im nächsten Schritt die Front-End-IP für das Anwendungsgateway definiert. An dieser Stelle können Sie zwischen einer öffentlichen und einer privaten IP-Adresse für das Front-End wählen. Die Auswahl ist davon abhängig, ob die Anwendung mit dem Internet verbunden ist oder nur intern verwendet wird. Bei diesem Szenario wird von einer öffentlichen IP-Adresse ausgegangen. Klicken Sie auf die Schaltfläche **Privat** , um eine private IP-Adresse auszuwählen. Es wird entweder eine automatisch zugewiesene IP-Adresse ausgewählt, oder Sie können das Kontrollkästchen **Bestimmte private IP-Adresse auswählen** aktivieren, um manuell eine IP-Adresse einzugeben.
-
-### <a name="step-7"></a>Schritt 7
-
-Klicken Sie auf **Öffentliche IP-Adresse auswählen**. Wenn eine vorhandene öffentliche IP-Adresse verfügbar ist, kann sie an dieser Stelle ausgewählt werden. In diesem Szenario erstellen Sie eine neue öffentliche IP-Adresse. Klicken Sie auf **Create new**
-
-![Blatt „Öffentliche IP-Adresse auswählen“][6]
-
-### <a name="step-8"></a>Schritt 8
-
-Als Nächstes wählen Sie einen Anzeigenamen für die öffentliche IP-Adresse und klicken auf **OK**
-
-![Blatt „Öffentliche IP-Adresse erstellen“][7]
-
-### <a name="step-9"></a>Schritt 9
-
-Die letzte Einstellung, die beim Erstellen eines Anwendungsgateways konfiguriert werden muss, ist die Listenerkonfiguration.  Wenn **HTTP** verwendet wird, ist die Konfiguration vollständig, und Sie können auf **OK** klicken. Wenn **HTTPS** verwendet werden soll, sind weitere Konfigurationsschritte erforderlich.
-
-Für die Verwendung von **HTTPS**ist ein Zertifikat erforderlich. Da der private Schlüssel des Zertifikats benötigt wird, müssen ein PFX-Export des Zertifikats und das Kennwort bereitgestellt werden.
-
-### <a name="step-10"></a>Schritt 10
-
-Klicken Sie auf **HTTPS** und dann auf das **Ordnersymbol** neben dem Textfeld **PFX-Zertifikat hochladen**.
-Navigieren Sie zur PFX-Zertifikatdatei in Ihrem Dateisystem. Wählen Sie das Zertifikat aus, legen Sie einen Anzeigenamen fest, und geben Sie das Kennwort für die PFX-Datei ein.
-
-Klicken Sie anschließend auf **OK** , um die Einstellungen für das Anwendungsgateway zu überprüfen.
-
-![Abschnitt „Listenerkonfiguration“ auf dem Blatt „Einstellungen“][9]
-
-### <a name="step-11"></a>Schritt 11
-
-Überprüfen Sie die Zusammenfassungsseite, und klicken Sie auf **OK**.  Das Anwendungsgateway wird in der Warteschlange platziert und erstellt.
-
-### <a name="step-12"></a>Schritt 12
-
-Nachdem das Anwendungsgateway erstellt wurde, navigieren Sie im Portal zu diesem Gateway, um die Konfiguration fortzusetzen.
-
-![Application Gateway – Ressourcenansicht][10]
-
-Mit diesen Schritten wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Nach der erfolgreichen Bereitstellung können Sie diese Einstellungen an Ihre Anforderungen anpassen.
+1. Überprüfen Sie die Einstellungen auf dem Blatt **Zusammenfassung**, und klicken Sie auf **OK**, um das Erstellen des Anwendungsgateways zu starten. Das Erstellen eines Anwendungsgateways ist eine Aufgabe mit langer Ausführungszeit.
 
 ## <a name="add-servers-to-backend-pools"></a>Hinzufügen von Servern zu Back-End-Pools
 
-Nachdem das Anwendungsgateway erstellt wurde, müssen die Systeme, die die mit einem Lastenausgleich zu versehende Anwendung hosten, weiter dem Anwendungsgateway hinzugefügt werden. Die IP-Adressen oder FQDN-Werte dieser Server werden den Back-End-Adresspools hinzugefügt.
+Nachdem das Anwendungsgateway erstellt wurde, müssen die Systeme, die die mit einem Lastenausgleich zu versehende Anwendung hosten, weiter dem Anwendungsgateway hinzugefügt werden. IP-Adressen, FQDN oder NICs dieser Server werden den Back-End-Adresspools hinzugefügt.
 
 ### <a name="ip-address-or-fqdn"></a>IP-Adresse oder FQDN
 
-#### <a name="step-1"></a>Schritt 1
+1. Klicken Sie nach der Erstellung des Anwendungsgateways im Bereich **Favoriten** des Azure-Portals auf **Alle Ressourcen**. Klicken Sie im Blatt „Alle Ressourcen“ auf das Anwendungsgateway **AdatumAppGateway**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **AdatumAppGateway** in das Feld **Nach Name filtern...** eingeben. eingeben und komfortabel auf das Anwendungsgateway zugreifen.
 
-Klicken Sie auf das Anwendungsgateway, das Sie erstellt haben, und dann auf **Back-End-Pools**. Wählen Sie den aktuellen Back-End-Pool aus.
+1. Das erstellte Anwendungsgateway wird angezeigt. Klicken Sie auf **Back-End-Pools**, und wählen Sie den aktuellen Back-End-Pool **appGatewayBackendPool**. Damit wird das Blatt **appGatewayBackendPool** geöffnet.
 
-![Application Gateway-Back-End-Pools][11]
+   ![Application Gateway-Back-End-Pools][4]
 
-#### <a name="step-2"></a>Schritt 2
-
-Klicken Sie auf **Ziel hinzufügen**, um IP-Adressen von FQDN-Werten hinzuzufügen.
-
-![Application Gateway-Back-End-Pools][11-1]
-
-#### <a name="step-3"></a>Schritt 3
-
-Nachdem alle Back-End-Werte eingegeben wurden, klicken Sie auf **Speichern**.
-
-![Hinzufügen von Werten zu Application Gateway-Back-End-Pools][12]
-
-Mit dieser Aktion werden die Werte im Back-End-Pool gespeichert. Sobald das Anwendungsgateway aktualisiert wurde, wird in das Anwendungsgateway eingehender Datenverkehr zu den Back-End-Adressen weitergeleitet, die in diesem Schritt hinzugefügt wurden.
+1. Klicken Sie auf **Ziel hinzufügen**, um IP-Adressen von FQDN-Werten hinzuzufügen. Wählen Sie **IP-Adresse oder FQDN** als **Typ**, und geben Sie Ihre IP-Adresse oder Ihren FQDN in das Feld ein. Wiederholen Sie diesen Schritt für zusätzliche Back-End-Pool-Mitglieder. Klicken Sie anschließend auf **Speichern**.
 
 ### <a name="virtual-machine-and-nic"></a>Virtueller Computer und NIC
 
 Sie können auch Netzwerkkarten virtueller Computer als Back-End-Poolmitglieder hinzufügen. In der Dropdownliste stehen nur virtuelle Computer im gleichen virtuellen Netzwerk wie das Anwendungsgateway zur Auswahl.
 
-#### <a name="step-1"></a>Schritt 1
+1. Klicken Sie nach der Erstellung des Anwendungsgateways im Bereich **Favoriten** des Azure-Portals auf **Alle Ressourcen**. Klicken Sie im Blatt „Alle Ressourcen“ auf das Anwendungsgateway **AdatumAppGateway**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **AdatumAppGateway** in das Feld **Nach Name filtern...** eingeben. eingeben und komfortabel auf das Anwendungsgateway zugreifen.
 
-Klicken Sie auf das Anwendungsgateway, das Sie erstellt haben, und dann auf **Back-End-Pools**. Wählen Sie den aktuellen Back-End-Pool aus.
+1. Das erstellte Anwendungsgateway wird angezeigt. Klicken Sie auf **Back-End-Pools**, und wählen Sie den aktuellen Back-End-Pool **appGatewayBackendPool**. Damit wird das Blatt **appGatewayBackendPool** geöffnet.
 
-![Application Gateway-Back-End-Pools][11]
+   ![Application Gateway-Back-End-Pools][5]
 
-#### <a name="step-2"></a>Schritt 2
+1. Klicken Sie auf **Ziel hinzufügen**, um IP-Adressen von FQDN-Werten hinzuzufügen. Wählen Sie **Virtueller Computer** als **Typ**, und wählen Sie die zu verwendende VM und NIC aus. Klicken Sie anschließend auf **Speichern**.
 
-Klicken Sie auf **Ziel hinzufügen**, um neue Back-End-Poolmitglieder hinzuzufügen. Wählen Sie in den Dropdownfeldern einen virtuellen Computer und eine Netzwerkkarte aus.
+   > [!NOTE]
+   > In der Dropdownliste stehen nur virtuelle Computer im gleichen virtuellen Netzwerk wie das Anwendungsgateway zur Auswahl.
 
-![Hinzufügen von Netzwerkkarten zu Application Gateway-Back-End-Pools][13]
+## <a name="delete-all-resources"></a>Löschen aller Ressourcen
 
-#### <a name="step-3"></a>Schritt 3
+Führen Sie die folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
 
-Klicken Sie zum Abschluss des Vorgangs auf **Speichern**, um die Netzwerkkarten als Back-End-Mitglieder zu speichern.
-
-![Speichern von Netzwerkkarten in Application Gateway-Back-End-Pools][14]
+1. Klicken Sie im Azure-Portal im Bereich **Favoriten** auf **Alle Ressourcen**. Klicken Sie auf dem Blatt „Alle Ressourcen“ auf die Ressourcengruppe **AdatumAppGatewayRG**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **AdatumAppGatewayRG** in das Feld **Nach Name filtern...** eingeben. eingeben und komfortabel auf die Ressourcengruppe zugreifen.
+1. Klicken Sie auf dem Blatt **AdatumAppGatewayRG** auf die Schaltfläche **Löschen**.
+1. Zur Bestätigung des Löschvorgangs werden Sie vom Portal zur Eingabe des Ressourcengruppennamens aufgefordert. Klicken Sie auf **Löschen**, geben Sie den Ressourcengruppennamen AdatumAppGateway ein, und klicken Sie anschließend auf **Löschen**. Da beim Löschen einer Ressourcengruppe alle Ressourcen innerhalb der Ressourcengruppe gelöscht werden, überprüfen Sie vor dem Löschen immer den Inhalt der Ressourcengruppe. Das Portal löscht zuerst alle in der Ressourcengruppe enthaltenen Ressourcen und anschließend die Ressourcengruppe selbst. Dieser Vorgang dauert einige Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -213,15 +156,5 @@ Informieren Sie sich über das Schützen von Anwendungen per [Web Application Fi
 [3]: ./media/application-gateway-create-gateway-portal/figure3.png
 [4]: ./media/application-gateway-create-gateway-portal/figure4.png
 [5]: ./media/application-gateway-create-gateway-portal/figure5.png
-[6]: ./media/application-gateway-create-gateway-portal/figure6.png
-[7]: ./media/application-gateway-create-gateway-portal/figure7.png
-[8]: ./media/application-gateway-create-gateway-portal/figure8.png
-[9]: ./media/application-gateway-create-gateway-portal/figure9.png
-[10]: ./media/application-gateway-create-gateway-portal/figure10.png
-[11]: ./media/application-gateway-create-gateway-portal/figure11.png
-[11-1]: ./media/application-gateway-create-gateway-portal/figure11-1.png
-[12]: ./media/application-gateway-create-gateway-portal/figure12.png
-[13]: ./media/application-gateway-create-gateway-portal/figure13.png
-[14]: ./media/application-gateway-create-gateway-portal/figure14.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
 

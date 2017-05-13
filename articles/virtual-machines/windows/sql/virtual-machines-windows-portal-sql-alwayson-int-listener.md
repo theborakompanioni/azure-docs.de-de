@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/28/2016
+ms.date: 05/01/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 6a37e9e786a4e399c49cb77758a23793790888c9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 9998c6ac27b9dc06b71edb4531aebeeb53fefcce
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="configure-an-internal-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurieren eines internen Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
-In diesem Thema erfahren Sie, wie Sie einen internen Load Balancer für eine SQL Server AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, die unter dem Resource Manager-Modell ausgeführt werden. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
+In diesem Thema erfahren Sie, wie Sie ein internes Lastenausgleichsmodul für eine SQL Server AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
 
-Für diese Aufgabe benötigen Sie eine SQL Server-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Diese Vorlage nimmt Ihnen die Erstellung des internen Load Balancers ab. 
+Für diese Aufgabe benötigen Sie eine SQL Server-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern mit Resource Manager bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Diese Vorlage nimmt Ihnen die Erstellung des internen Load Balancers ab. 
 
 Alternativ können Sie aber auch eine [Verfügbarkeitsgruppe manuell konfigurieren](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
 
@@ -153,53 +155,6 @@ In diesem Schritt erstellen Sie manuell den Verfügbarkeitsgruppenlistener im Fa
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
-<!---------------------------
-* Use RDP to connect to the Azure virtual machine that hosts the primary replica. 
-* Open Failover Cluster Manager.
-* Select the **Networks** node, and note the cluster network name. This name will be used in the `$ClusterNetworkName` variable in the PowerShell script.
-* Expand the cluster name, and then click **Roles**.
-* In the **Roles** pane, right-click the availability group name and then select **Add Resource** > **Client Access Point**.
-* In the **Name** box, create a name for this new listener, then click **Next** twice, and then click **Finish**. Do not bring the listener or resource online at this point.
-  
-  > [!NOTE]
-  > The name for the new listener is the network name that applications will use to connect to databases in the SQL Server availability group.
-  > 
-  > 
-* Click the **Resources** tab, then expand the Client Access Point you just created. Right-click the IP resource and click properties. Note the name of the IP address. You will use this name in the `$IPResourceName` variable in the PowerShell script.
-* Under **IP Address** click **Static IP Address** and set the static IP address to the same address that you used when you set the load balancer IP address on the Azure portal. Enable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
-* On the cluster node that currently hosts the primary replica, open an elevated PowerShell ISE and paste the following commands into a new script.
-  
-        $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $ILBIP = “<X.X.X.X>” # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-  
-        Import-Module FailoverClusters
-  
-        Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-* Update the variables and run the PowerShell script to configure the IP address and port for the new listener.
-  
-  > [!NOTE]
-  > If your SQL Servers are in separate regions, you need to run the PowerShell script twice. The first time use the cluster network name, cluster IP resource name, and load balancer IP address from the first resource group. The second time use the cluster network name, cluster IP resource name, and load balancer IP address from the second resource group.
-  > 
-  > 
-
-Now the cluster has an availability group listener resource.
-
-### 2. Bring the listener online
-With the availability group listener resource configured, you can bring the listener online so that applications can connect to databases in the availability group with the listener.
-
-* Navigate back to Failover Cluster Manager. Expand **Roles** and then highlight your Availability Group. On the **Resources** tab, right-click the listener name and click **Properties**.
-* Click the **Dependencies** tab. If there are multiple resources listed, verify that the IP addresses have OR, not AND, dependencies. Click **OK**.
-* Right-click the listener name and click **Bring Online**.
-* Once the listener is online, from the **Resources** tab, right-click the availability group and click **Properties**.
-* Create a dependency on the listener name resource (not the IP address resources name). Click **OK**.
-* Launch SQL Server Management Studio and connect to the primary replica.
-* Navigate to **AlwaysOn High Availability** | **Availability Groups** | **Availability Group Listeners**. 
-* You should now see the listener name that you created in Failover Cluster Manager. Right-click the listener name and click **Properties**.
-* In the **Port** box, specify the port number for the availability group listener by using the $EndpointPort you used earlier (1433 was the default), then click **OK**.
-
-------------------------------->
-
 ### <a name="verify-the-configuration-of-the-listener"></a>Überprüfen der Konfiguration des Listeners
 
 Wenn die Clusterressourcen und Abhängigkeiten ordnungsgemäß konfiguriert sind, sollten Sie den Listener in SQL Server Management Studio-Umgebungen finden. Führen Sie die folgenden Schritte aus, um den Listenerport festzulegen:
@@ -207,9 +162,9 @@ Wenn die Clusterressourcen und Abhängigkeiten ordnungsgemäß konfiguriert sind
 1. Starten Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem primären Replikat her.
 2. Navigieren Sie zu **Hohe Verfügbarkeit mit Always On** | **Verfügbarkeitsgruppen** | **Verfügbarkeitsgruppenlistener**. 
 1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
-1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für „$EndpointPort“ (Standardwert:&1433;). Klicken Sie anschließend auf **OK**.
+1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für „$EndpointPort“ (Standardwert: 1433). Klicken Sie anschließend auf **OK**.
 
-Sie verfügen nun über eine SQL Server AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern im Azure Resource Manager-Modus. 
+Sie verfügen nun über eine Verfügbarkeitsgruppe auf virtuellen Azure-Computern im Resource Manager-Modus. 
 
 ## <a name="test-the-connection-to-the-listener"></a>Testen der Verbindung mit dem Listener
 Gehen Sie wie folgt vor, um die Verbindung zu testen:
@@ -221,13 +176,75 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
 Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet. 
 
-## <a name="guidelines-and-limitations"></a>Richtlinien und Einschränkungen
-Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten folgenden Richtlinien:
+## <a name="create-an-ip-address---for-an-additional-availability-group"></a>Erstellen einer IP-Adresse für eine zusätzliche Verfügbarkeitsgruppe
 
-* Da der Listener für den Load Balancer konfiguriert wird und nur ein interner Load Balancer vorhanden ist, wird pro Clouddienst maximal ein interner Verfügbarkeitsgruppenlistener unterstützt. Es ist jedoch möglich, mehrere externe Listener zu erstellen. 
-* Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb des gleichen virtuellen Netzwerks.
+Jede Verfügbarkeitsgruppe verwendet einen separaten Listener. Jeder Listener ist mit einer eigenen IP-Adresse ausgestattet. Verwenden Sie das gleiche Lastenausgleichsmodul, um die IP-Adresse für zusätzliche Listener zu speichern. Nachdem Sie eine neue Verfügbarkeitsgruppe erstellt haben, fügen Sie die IP-Adresse zum Lastenausgleichsmodul hinzu, und konfigurieren Sie den Listener.
 
+Um mit dem Azure-Portal eine IP-Adresse zu einem Lastenausgleichsmodul hinzufügen, gehen Sie folgendermaßen vor:
 
-<!--HONumber=Jan17_HO2-->
+1. Öffnen Sie im Azure-Portal die Ressourcengruppe, die das Lastenausgleichsmodul enthält, und klicken Sie auf das Lastenausgleichsmodul. 
+2. Klicken Sie unter **EINSTELLUNGEN** auf **Front-End-IP-Pool**. Klicken Sie auf **+ Hinzufügen**. 
+3. Vergeben Sie unter **Front-End-IP-Adresse hinzufügen** einen Namen für das Front-End. 
+4. Stellen Sie sicher, dass das **Virtuelle Netzwerk** und das **Subnetz** mit denen der SQL Server-Instanzen identisch sind.
+5. Legen Sie die IP-Adresse für den Listener fest. 
+   
+   >[!TIP]
+   >Sie können die IP-Adresse auf statisch festlegen und eine Adresse eingeben, die derzeit nicht im Subnetz verwendet wird. Alternativ können Sie die IP-Adresse auf dynamisch festlegen, und den neuen Front-End-IP-Pool speichern. Hierdurch weist das Azure-Portal dem Pool automatisch eine verfügbare IP-Adresse zu. Sie können den Front-End-IP-Pool erneut öffnen, und die Zuweisung in statisch ändern. 
 
+   Speichern Sie die IP-Adresse für den Listener. 
+
+6. Fügen Sie einen Integritätstest hinzu. Verwenden Sie folgende Einstellungen:
+
+   |Einstellung |Wert
+   |:-----|:----
+   |**Name** |Ein Name zur Identifizierung des Tests.
+   |**Protokoll** |TCP
+   |**Port** |Ein nicht verwendeter TCP-Port. Muss auf allen virtuellen Maschinen verfügbar sein. Kann nicht für andere Zwecke verwendet werden. Nur jeweils ein Listener kann einen Testport verwenden. 
+   |**Intervall** |Der Zeitraum zwischen Testversuchen. Verwenden Sie den Standardwert (5).
+   |**Fehlerhafter Schwellenwert** |Die Anzahl der aufeinanderfolgenden Vorgänge, bei denen Schwellenwerte fehlschlagen sollten, bevor eine virtuelle Maschine als fehlerhaft eingestuft wird.
+
+   Klicken Sie zum Speichern des Tests auf **OK**. 
+
+7. Erstellen Sie eine neue Lastenausgleichsregel. Klicken Sie auf **Lastenausgleichsregeln** und anschließend auf **+ Hinzufügen**.
+8. Konfigurieren Sie die neue Lastenausgleichsregel mit folgenden Einstellungen:
+
+   |Einstellung |Wert
+   |:-----|:----
+   |**Name** |Ein Name zur Identifizierung der Lastenausgleichsregel. 
+   |**Frontend IP address** (Front-End-IP-Adresse) |Wählen Sie die IP-Adresse aus, die erstellt werden soll. 
+   |**Protokoll** |TCP
+   |**Port** |Verwenden Sie den Port, den die SQL Server-Instanzen verwenden. Eine Standardinstanz verwendet Port 1433, wenn Sie dies dahingehend geändert haben. 
+   |**Back-End-Port** |Verwenden Sie denselben Wert wie **Port**.
+   |**Back-End-Pool** |Der Pool, der die virtuellen Computer mit den SQL Server-Instanzen enthält. 
+   |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
+   |**Sitzungspersistenz** |Keine
+   |**Leerlaufzeitüberschreitung (Minuten)** |Standard (4)
+   |**Floating IP (Direct Server Return)** | Aktiviert
+
+### <a name="configure-the-availability-group-go-use-the-new-ip-address"></a>Konfigurieren der Verfügbarkeitsgruppe zur Verwendung der neuen IP-Adresse
+
+Um die Konfiguration des Clusters abzuschließen, wiederholen Sie die Schritte, die Sie bei der ersten Verfügbarkeitsgruppe ausgeführt haben. Konfigurieren Sie nämlich den [Cluster für die Verwendung der neuen IP-Adresse](#configure-the-cluster-to-use-the-load-balancer-ip-address). 
+
+Nachdem Sie eine IP-Adresse für den Listener hinzugefügt haben, können Sie die zusätzliche Verfügbarkeitsgruppe konfigurieren. 
+
+1. Vergewissern Sie sich, dass der Testport für die neue IP-Adresse auf beide virtuellen SQL Server-Computern geöffnet ist. 
+
+2. [Fügen Sie im Clustermanager den Clientzugriffspunkt hinzu](#addcap).
+
+3. [Konfigurieren Sie die IP-Ressource für die Verfügbarkeitsgruppe](#congroup).
+
+   >[!IMPORTANT]
+   >Verwenden Sie bei der Erstellung der IP-Adresse die IP-Adresse, die Sie dem Lastenausgleichsmodul hinzugefügt haben.  
+
+4. [Richten Sie die Abhängigkeit der SQL Server-Verfügbarkeitsgruppen-Ressource vom Clientzugriffspunkt ein](#dependencyGroup).
+
+5. [Legen Sie fest, dass die Clientzugriffspunkt-Ressource von der IP-Adresse abhängig ist](#listname).
+ 
+5. [Legen Sie die Clusterparameter in PowerShell fest](#setparam).
+
+Konfigurieren Sie nach der Konfiguration der Verfügbarkeitsgruppe für die Verwendung der neuen IP-Adresse die Verbindung für den Listener. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Konfigurieren einer SQL Server AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen](virtual-machines-windows-portal-sql-availability-group-dr.md)
 
