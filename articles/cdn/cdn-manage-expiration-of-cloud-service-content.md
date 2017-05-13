@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 02d0270c5763eb9dd2190bc24b793022ea536746
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: c207d780857a61d4b1fc0f39e6185cae67abc955
+ms.contentlocale: de-de
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -39,7 +41,7 @@ Dateien von öffentlich zugänglichen Ursprungswebservern können bis zum Ende i
 ## <a name="setting-cache-control-headers-in-configuration"></a>Festlegen von Cache-Control-Headern in der Konfiguration
 Bei statischen Inhalten wie Bildern und Stylesheets können Sie das Aktualisierungsintervall durch Ändern der Datei **applicationHost.config** oder **web.config** für Ihre Webanwendung steuern.  Das Element **system.webServer\staticContent\clientCache** in der Konfigurationsdatei legt den `Cache-Control`-Header für Ihre Inhalte fest. Für **web.config**gilt: Die Konfigurationseinstellungen wirken sich auf alle Inhalte des Ordners sowie der Unterordner aus, solange dies nicht auf Unterordnerebene überschrieben wird.  Beispielsweise können Sie auf der Stammebene eine standardmäßige Gültigkeitsdauer festlegen, damit alle statischen Inhalte 3 Tage zwischengespeichert werden, während in einem Unterordner mit stärker veränderlichem Inhalt eine Cacheeinstellung von 6 Stunden verwendet wird.  **applicationHost.config** betrifft alle Anwendungen auf der Website, kann jedoch mithilfe von Dateien vom Typ **web.config** in den Anwendungen überschrieben werden.
 
-Die folgende XML zeigt ein Beispiel zum Festlegen von **clientCache** auf ein maximales Alter von 3 Tagen:  
+Der folgende XML-Code zeigt ein Beispiel zum Festlegen von **clientCache** auf ein maximales Alter von 3 Tagen:  
 
 ```xml
 <configuration>
@@ -71,10 +73,5 @@ Response.Cache.SetLastModified(DateTime.Now);
 * [Lesen Sie ausführliche Informationen zum **clientCache**-Element.](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [Lesen Sie die Dokumentation für die **HttpResponse.Cache**-Eigenschaft.](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
 * [Lesen Sie die Dokumentation für die **HttpCachePolicy**-Klasse](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

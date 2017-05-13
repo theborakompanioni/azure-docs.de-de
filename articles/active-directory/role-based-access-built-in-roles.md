@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 73c38182f4caa92f5aa561b10a30c60efc8cfdae
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: b600b7d67de24eab5395f085a2a424159b14ff28
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
@@ -27,14 +28,21 @@ Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure
 ## <a name="roles-in-azure"></a>Rollen in Azure
 Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klicken Sie auf den Rollennamen, um eine ausführliche Liste der **actions** und **notactions** für die Rolle anzuzeigen. Die **Aktions** -Eigenschaft gibt die zulässigen Aktionen für Azure-Ressourcen an. Für Aktionszeichenfolgen dürfen Platzhalter verwendet werden. Die **notactions** -Eigenschaft gibt die Aktionen an, die von den zulässigen Aktionen ausgeschlossen sind.
 
+Die Aktion definiert, welche Art von Vorgängen für einen bestimmten Ressourcentyp ausgeführt werden können. Beispiel:
+- **Schreiben** ermöglicht Ihnen das Ausführen von PUT-, POST-, PATCH- und DELETE-Vorgängen.
+- **Lesen** ermöglicht Ihnen das Ausführen von GET-Vorgängen. 
+
+In diesem Artikel werden nur die heute vorhandenen verschiedenen Rollen behandelt. Wenn Sie einem Benutzer eine Rolle zuweisen, können Sie jedoch die zulässigen Aktionen weiter einschränken, indem Sie einen Gültigkeitsbereich definieren. Dies ist hilfreich, wenn Sie einem Benutzer die Rolle „Mitwirkender von Website“ zuweisen möchten, jedoch nur für eine Ressourcengruppe. 
+
 > [!NOTE]
-> Die Definitionen von Azure-Rollen werden ständig weiterentwickelt. Dieser Artikel wird so aktuell wie möglich gehalten. Die aktuellsten Definitionen von Rollen finden Sie jedoch immer in Azure PowerShell. Verwenden Sie je nachdem das Cmdlet `(get-azurermroledefinition "<role name>").actions` oder `(get-azurermroledefinition "<role name>").notactions`.
->
->
+> Die Definitionen von Azure-Rollen werden ständig weiterentwickelt. Dieser Artikel wird so aktuell wie möglich gehalten. Die aktuellsten Definitionen von Rollen finden Sie jedoch immer in Azure PowerShell. Verwenden Sie das Cmdlet [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition), um alle aktuellen Rollen aufzulisten. Mithilfe von `(get-azurermroledefinition "<role name>").actions` oder `(get-azurermroledefinition "<role name>").notactions` können Sie in eine bestimmte Rolle weiter eintauchen. Verwenden Sie [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation), um die Vorgänge von bestimmten Azure-Ressourcenanbietern aufzulisten. 
+
 
 | Rollenname | Beschreibung |
 | --- | --- |
-| [Mitwirkender des API-Verwaltungsdienstes](#api-management-service-contributor) |Kann API-Verwaltungsdienste verwalten |
+| [Mitwirkender des API-Verwaltungsdienstes](#api-management-service-contributor) |Kann API-Verwaltungsdienste und die APIs verwalten |
+| [Operatorrolle des API Management-Diensts](#api-management-service-operator-role) | Kann den API Management-Dienst, aber nicht die APIs selbst verwalten |
+| [Leserrolle des API Management-Diensts](#api-management-service-reader-role) | Besitzt schreibgeschützten Zugriff auf den API Management-Dienst und die APIs |
 | [Mitwirkender der Application Insights-Komponente](#application-insights-component-contributor) |Kann Application Insights-Komponenten verwalten |
 | [Operator für Automation](#automation-operator) |Kann Aufträge starten, unterbrechen und fortsetzen |
 | [Mitwirkender für Sicherungen](#backup-contributor) | Kann Sicherungen in einem Recovery Services-Tresor verwalten |
@@ -79,7 +87,41 @@ Kann API-Verwaltungsdienste verwalten
 
 | **Aktionen** |  |
 | --- | --- |
-| Microsoft.ApiManagement/Service/* |Erstellen und Verwalten von API-Verwaltungsdiensten |
+| Microsoft.ApiManagement/Service/* |Erstellen und Verwalten des API Management-Diensts |
+| Microsoft.Authorization/*/read |Lesen von Autorisierungen |
+| Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Warnungsregeln |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
+| Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
+| Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Rollen und Rollenzuweisungen |
+| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
+### <a name="api-management-service-operator-role"></a>Operatorrolle des API Management-Diensts
+Kann API-Verwaltungsdienste verwalten
+
+| **Aktionen** |  |
+| --- | --- |
+| Microsoft.ApiManagement/Service/*/read | Dient zum Lesen von API Management-Dienstinstanzen. |
+| Microsoft.ApiManagement/Service/backup/action | Dient zum Sichern des API Management-Diensts im angegebenen Container in einem vom Benutzer bereitgestellten Speicherkonto. |
+| Microsoft.ApiManagement/Service/delete | Löschen einer API Management-Dienstinstanz |
+| Microsoft.ApiManagement/Service/managedeployments/action | Dient zum Ändern der SKU/Einheiten sowie zum Hinzufügen oder Entfernen regionaler Bereitstellungen des API Management-Diensts. |
+| Microsoft.ApiManagement/Service/read | Dient zum Lesen der Metadaten für eine API Management-Dienstinstanz. |
+| Microsoft.ApiManagement/Service/restore/action | Dient zum Wiederherstellen des API Management-Diensts aus dem angegebenen Container in einem vom Benutzer bereitgestellten Speicherkonto. |
+| Microsoft.ApiManagement/Service/updatehostname/action | Dient zum Einrichten, Aktualisieren oder Entfernen benutzerdefinierter Domänennamen für einen API Management-Dienst. |
+| Microsoft.ApiManagement/Service/write | Dient zum Erstellen einer neuen Instanz des API Management-Diensts. |
+| Microsoft.Authorization/*/read |Lesen von Autorisierungen |
+| Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Warnungsregeln |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
+| Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
+| Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Rollen und Rollenzuweisungen |
+| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
+### <a name="api-management-service-reader-role"></a>Leserrolle des API Management-Diensts
+Kann API-Verwaltungsdienste verwalten
+
+| **Aktionen** |  |
+| --- | --- |
+| Microsoft.ApiManagement/Service/*/read | Dient zum Lesen von API Management-Dienstinstanzen. |
+| Microsoft.ApiManagement/Service/read | Dient zum Lesen der Metadaten für eine API Management-Dienstinstanz. |
 | Microsoft.Authorization/*/read |Lesen von Autorisierungen |
 | Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |

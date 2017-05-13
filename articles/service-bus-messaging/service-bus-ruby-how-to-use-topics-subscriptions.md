@@ -12,11 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 43197f7402795c37fa7ed43658bc3b8858a41080
-ms.openlocfilehash: c083d8ac0d16de40de4a2a9908cdcf2e02ed3d6a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: a71b3f455c2e84cd6aa4401621a24d5585e0da3c
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -33,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements aus 
 Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-Um Service Bus zu verwenden, müssen Sie das Ruby-Azure-Paket herunterladen und verwenden. Dieses enthält eine Reihe von Bibliotheken, die mit den Speicher-REST-Diensten kommunizieren.
+Um Service Bus zu verwenden, müssen Sie das Azure-Ruby-Paket herunterladen und verwenden. Dieses enthält eine Reihe von Bibliotheken, die mit den Speicher-REST-Diensten kommunizieren.
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>Verwenden von RubyGems zum Abrufen des Pakets
 1. Verwenden Sie eine Befehlszeilenschnittstelle wie **PowerShell** (Windows), **Terminal** (Mac) oder **Bash** (Unix).
@@ -93,7 +95,7 @@ subscription = azure_service_bus_service.create_subscription("test-topic", "all-
 ### <a name="create-subscriptions-with-filters"></a>Erstellen von Abonnements mit Filtern
 Sie können auch Filter definieren, durch die Sie angeben können, welche an ein Thema gesendeten Nachrichten in einem bestimmten Abonnement angezeigt werden sollen.
 
-Der von Abonnements unterstützte flexibelste Filtertyp ist **Azure::ServiceBus::SqlFilter**, der eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax [SqlFilter.SqlExpression](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx).
+Der von Abonnements unterstützte flexibelste Filtertyp ist **Azure::ServiceBus::SqlFilter**, der eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax von [SqlFilter](service-bus-messaging-sql-filter.md).
 
 Sie können einem Abonnement mithilfe der Methode **create\_rule()**-Methode des **Azure::ServiceBusService**-Objekts Filter hinzufügen. Durch diese Methode können Sie neue Filter einem vorhandenen Abonnement hinzufügen.
 
@@ -166,7 +168,7 @@ Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen 
 
 Zudem wird der im Abonnement gesperrten Anwendung ein Timeout zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Timeouts nicht verarbeiten kann (zum Beispiel, wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der Methode **delete\_subscription\_message()** abstürzt, wird die Nachricht erneut der Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing** (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Diese Logik wird häufig durch die Verwendung der Eigenschaft **Message\_id** der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
+Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der Methode **delete\_subscription\_message()** abstürzt, wird die Nachricht erneut der Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Diese Logik wird häufig durch die Verwendung der Eigenschaft **Message\_id** der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 Themen und Abonnements sind persistent und müssen über das [Azure-Portal][Azure portal] oder programmgesteuert explizit gelöscht werden. Das folgende Beispiel zeigt, wie Sie das Thema namens "test-topic" löschen.
@@ -185,13 +187,8 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
 * Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md).
-* API-Referenz für [SqlFilter](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx).
+* API-Referenz für [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter).
 * Besuchen Sie das [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby)-Repository auf GitHub.
 
 [Azure portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

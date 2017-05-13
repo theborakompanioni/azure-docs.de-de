@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 58b3d4a84c06a17eee41385509aa80e820399716
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 0786e54c288f30b0039c1d0b88f5c5b5965eecef
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -74,10 +75,6 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
   | **wafMode** | Modus der Web Application Firewall.  Verfügbare Optionen sind **Prävention** und **Erkennung**.|
   | **wafRuleSetType** | Regelsatztyp für WAF.  Derzeit die OWASP die einzige unterstützte Option. |
   | **wafRuleSetVersion** |Regelsatzversion. Die unterstützten Optionen sind derzeit OWASP CRS 2.2.9 und 3.0. |
-
-
-  > [!IMPORTANT]
-  > Azure-Ressourcen-Manager-Vorlagen, die in GitHub verwaltet werden, können sich im Laufe der Zeit ändern. Überprüfen Sie die Vorlage stets, bevor Sie sie verwenden.
 
 1. Überprüfen Sie den Inhalt unter **resources**, und beachten Sie folgende Eigenschaften:
 
@@ -136,102 +133,80 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
 
-Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
-### <a name="step-1"></a>Schritt 1
+1. Anmeldung bei PowerShell
 
-```powershell
-Login-AzureRmAccount
-```
+    ```powershell
+    Login-AzureRmAccount
+    ```
 
-### <a name="step-2"></a>Schritt 2
+1. Überprüfen Sie die Abonnements für das Konto.
 
-Überprüfen Sie die Abonnements für das Konto.
+    ```powershell
+    Get-AzureRmSubscription
+    ```
 
-```powershell
-Get-AzureRmSubscription
-```
+    Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.
 
-Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.
+1. Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
-### <a name="step-3"></a>Schritt 3
+    ```powershell
+    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    ```
 
-Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
+1. Erstellen Sie bei Bedarf eine Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup** . Im folgenden Beispiel erstellen Sie eine Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
 
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
-```
+    ```powershell
+    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    ```
 
-### <a name="step-4"></a>Schritt 4
-
-Erstellen Sie bei Bedarf eine Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup** . Im folgenden Beispiel erstellen Sie eine Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
-
-```powershell
-New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
-```
-
-Führen Sie das Cmdlet **New-AzureRmResourceGroupDeployment** aus, um das neue virtuelle Netzwerk mit der zuvor heruntergeladenen und geänderten Vorlage und den Parameterdateien bereitzustellen.
-
-```powershell
-New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
--TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
-```
+1. Führen Sie das Cmdlet **New-AzureRmResourceGroupDeployment** aus, um das neue virtuelle Netzwerk mit der zuvor heruntergeladenen und geänderten Vorlage und den Parameterdateien bereitzustellen.
+    
+    ```powershell
+    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
+    ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit der Azure-Befehlszeilenschnittstelle
 
 Führen Sie die folgenden Schritte aus, um die heruntergeladene Azure Resource Manager-Vorlage mithilfe der Azure-Befehlszeilenschnittstelle bereitzustellen:
 
-### <a name="step-1"></a>Schritt 1
+1. Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) , und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 
-Wenn Sie die Azure-CLI noch nie verwendet haben, lesen Sie den Artikel [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) , und befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Führen Sie bei Bedarf den Befehl `az group create` aus, um eine neue Ressourcengruppe zu erstellen, wie im folgenden Codeausschnitt zu sehen. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
-### <a name="step-2"></a>Schritt 2
+    ```azurecli
+    az group create --location westus --name appgatewayRG
+    ```
+    
+    **-n (oder --name)**. Name für die neue Ressourcengruppe. In unserem Fall ist dies *appgatewayRG*.
+    
+    **-l (oder --location)**. Azure-Region, in der die neue Ressourcengruppe erstellt wird. In unserem Szenario ist dies *westus*.
 
-Führen Sie bei Bedarf den Befehl `az group create` aus, um eine neue Ressourcengruppe zu erstellen, wie im folgenden Codeausschnitt zu sehen. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+1. Führen Sie das Cmdlet `az group deployment create` aus, um das neue virtuelle Netzwerk mithilfe der im vorherigen Schritt heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
 
-```azurecli
-az group create --location westus --name appgatewayRG
-```
-
-**-n (oder --name)**. Name für die neue Ressourcengruppe. In unserem Fall ist dies *appgatewayRG*.
-
-**-l (oder --location)**. Azure-Region, in der die neue Ressourcengruppe erstellt wird. In unserem Szenario ist dies *westus*.
-
-### <a name="step-4"></a>Schritt 4
-
-Führen Sie das Cmdlet `az group deployment create` aus, um das neue virtuelle Netzwerk mithilfe der im vorherigen Schritt heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
-
-```azurecli
-az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
-```
+    ```azurecli
+    az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
+    ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage per Click-to-Deploy
 
 Click-to-Deploy ist eine weitere Option zum Verwenden von Azure-Ressourcen-Manager-Vorlagen. Diese Art der Bereitstellung bietet eine einfache Möglichkeit, Vorlagen im Azure-Portal zu verwenden.
 
-### <a name="step-1"></a>Schritt 1
+1. Wechseln Sie zu [Erstellen eines Anwendungsgateways mit der Web Application Firewall](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/).
 
-Wechseln Sie zu [Erstellen eines Anwendungsgateways mit der Web Application Firewall](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/).
+1. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
 
-### <a name="step-2"></a>Schritt 2
+    ![Bereitstellen in Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
+    
+1. Füllen Sie im Portal die Parameter für die Bereitstellungsvorlage aus, und klicken Sie auf **OK**.
 
-Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
+    ![Parameter](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
+    
+1. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** aus, und klicken Sie auf **Kaufen**.
 
-![Bereitstellen in Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
-
-### <a name="step-3"></a>Schritt 3
-
-Füllen Sie im Portal die Parameter für die Bereitstellungsvorlage aus, und klicken Sie auf **OK**.
-
-![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
-
-### <a name="step-4"></a>Schritt 4
-
-Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** aus, und klicken Sie auf **Kaufen**.
-
-### <a name="step-5"></a>Schritt 5
-
-Klicken Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ auf **Erstellen**.
+1. Klicken Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ auf **Erstellen**.
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>Bereitstellen von Zertifikatdaten für Resource Manager-Vorlagen
 
@@ -239,6 +214,22 @@ Wenn Sie SSL mit einer Vorlage verwenden, muss das Zertifikat nicht hochgeladen,
 
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
+```
+
+## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+
+Führen Sie einen der folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
+
+### <a name="powershell"></a>PowerShell
+
+```powershell
+Remove-AzureRmResourceGroup -Name appgatewayRG
+```
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+```azurecli
+az group delete --name appgatewayRG
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

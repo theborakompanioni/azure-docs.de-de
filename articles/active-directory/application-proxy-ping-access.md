@@ -1,5 +1,5 @@
 ---
-title: "PingAccess für Azure AD-Anwendungsproxys | Microsoft-Dokumentation"
+title: "Headerbasierte Authentifizierung mit PingAccess für Azure AD-Anwendungsproxy | Microsoft-Dokumentation"
 description: "Veröffentlichen von Anwendungen mit PingAccess und App-Proxy zum Unterstützen der headerbasierten Authentifizierung."
 services: active-directory
 documentationcenter: 
@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 173607c481d0ba7ceece6310fcd131ff622a0677
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: 8db76d1f83cdf1cf53ddd1e9c69c56400d04af2d
+ms.contentlocale: de-de
+ms.lasthandoff: 04/29/2017
 
 ---
 
-# <a name="publish-applications-that-support-header-based-authentication-with-pingaccess-for-azure-ad"></a>Veröffentlichen von Anwendungen, die für Azure AD die headerbasierte Authentifizierung mit PingAccess unterstützen
+# <a name="publish-applications-that-support-header-based-authentication-with-azure-ad-application-proxy-and-pingaccess"></a>Veröffentlichen von Anwendungen, die die headerbasierte Authentifizierung mit Azure AD-Anwendungsproxy und PingAccess unterstützen
 
 Der Azure Active Directory-Anwendungsproxy und PingAccess arbeiten nun zusammen, um Azure Active Directory-Kunden einen Zugriff auf noch mehr Anwendungen bereitzustellen. PingAccess erweitert die [vorhandenen Angebote für den Anwendungsproxy](active-directory-application-proxy-get-started.md), um den Remotezugriff auf Anwendungen zu ermöglichen, die Header für die Authentifizierung verwenden. 
 
@@ -70,7 +71,7 @@ Dieser Abschnitt besteht aus zwei Teilen. Zunächst müssen Sie die App in Azure
 4. Wählen Sie **Lokale Anwendung** aus.
 5. Füllen Sie die Pflichtfelder mit Informationen zur neuen App aus. Befolgen Sie diese Anleitung für die folgenden Einstellungen:
   - **Interne URL:** Normalerweise geben Sie die URL an, über die Sie zur Anmeldeseite der App gelangen, wenn Sie sich im Unternehmensnetzwerk befinden. Für diese Partnerschaft muss der Connector den PingAccess-Proxy als Startseite der App verwenden. Verwenden Sie dieses Format: `https://<host name of your PA server>:<port>/<App path name>`. Der Standardport ist 3000, Sie können diesen aber in PingAccess konfigurieren.
-  - **Methode für die Vorauthentifizierung**: Azure Active Directory
+  - **Methode für die Vorauthentifizierung** : Azure Active Directory
   - **URL in Headern übersetzen**: Nein
 6. Klicken Sie unten auf dem Blatt auf **Hinzufügen**. Ihre Anwendung wird hinzugefügt, das Schnellstartmenü wird geöffnet. 
 7. Wählen Sie im Schnellstartmenü **Zuweisen eines Benutzers zu Testzwecken** aus, und fügen Sie der Anwendung mindestens einen Benutzer hinzu. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann. 

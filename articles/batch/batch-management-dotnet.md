@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 03/15/2017
+ms.date: 04/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f635bbd8652b97c1067473e56565bf7c6520a2ba
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -173,7 +174,7 @@ Sehen Sie sich das Beispielprojekt [AccountManagment][acct_mgmt_sample] auf GitH
 
 Vor dem Löschen des neu erstellten Batch-Kontos und der Ressourcengruppe können Sie beides im [Azure-Portal][azure_portal] anzeigen:
 
-Um die Beispielanwendung erfolgreich ausführen zu können, müssen Sie sie zunächst bei Ihrem Azure AD-Mandanten im Azure-Portal registrieren und der Azure Resource Manager-API Berechtigungen erteilen. Führen Sie die Schritte in [Authentifizieren von Batch-Verwaltungsanwendungen mit Azure AD](batch-aad-auth.md#use-azure-ad-with-batch-service-solutions) aus.
+Um die Beispielanwendung erfolgreich ausführen zu können, müssen Sie sie zunächst bei Ihrem Azure AD-Mandanten im Azure-Portal registrieren und der Azure Resource Manager-API Berechtigungen erteilen. Führen Sie die Schritte in [Authentifizieren von Batch Management-Lösungen mit Active Directory](batch-aad-auth-management.md) aus.
 
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Was ist Azure Active Directory?"

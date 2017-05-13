@@ -4,45 +4,46 @@ description: Korrelation der Application Insights-Telemetrie
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
-manager: azakonov-ms
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 279b673930a2011fef4d36e83a771b9ab654c663
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c48dc5cb5dd6dfa09ff9718e78f8d560886851be
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
-In der Welt der Mikroservices müssen für jeden logischen Vorgang Einstellungen an den verschiedenen Dienstkomponenten vorgenommen werden. Die UI-Komponente kommuniziert mit der Authentifizierungsanbieterkomponente, um die Anmeldeinformationen des Benutzers zu überprüfen, und mit der API-Komponente, um Daten zur Visualisierung abzurufen. Die API-Komponente wiederum kann Daten von anderen Diensten abfragen, Cacheanbieterkomponenten nutzen und die Abrechnungskomponente über diesen Aufruf benachrichtigen. Application Insights unterstützt die verteilte Telemetriekorrelation. Damit kann ermittelt werden, welche Komponente für UI-Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
+In der Welt der Mikroservices müssen für jeden logischen Vorgang Einstellungen an den verschiedenen Dienstkomponenten vorgenommen werden. Jede dieser Komponenten kann separat von [Application Insights](app-insights-overview.md) überwacht werden. Die Web-App-Komponente kommuniziert mit der Authentifizierungsanbieterkomponente, um die Anmeldeinformationen des Benutzers zu überprüfen, und mit der API-Komponente, um Daten zur Visualisierung abzurufen. Die API-Komponente wiederum kann Daten von anderen Diensten abfragen, Cacheanbieterkomponenten nutzen und die Abrechnungskomponente über diesen Aufruf benachrichtigen. Application Insights unterstützt die verteilte Telemetriekorrelation. Damit können Sie ermitteln, welche Komponente für Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
 
-In diesem Artikel wird das von Application Insights verwendete Datenmodell beschrieben. Darin werden die Methoden und Protokolle zur Kontextpropagierung erläutert. Zudem wird auch die Implementierung der Korrelationskonzepte in verschiedenen Sprachen und auf verschiedenen Plattformen behandelt.
+In diesem Artikel wird das von Application Insights verwendete Datenmodell erläutert, mit dem die von mehreren Komponenten gesendeten Telemetriedaten korreliert werden. Darin werden die Methoden und Protokolle zur Kontextpropagierung erläutert. Zudem wird auch die Implementierung der Korrelationskonzepte in verschiedenen Sprachen und auf verschiedenen Plattformen behandelt.
 
 ## <a name="telemetry-correlation-data-model"></a>Telemetriekorrelations-Datenmodell
 
-Application Insights definiert das [Datenmodell](/application-insights-data-model.md) für verteilte Telemetriekorrelationen. Um die Telemetrie mit dem logischen Vorgang zu verknüpfen, ist jedes Telemetrieelement mit dem Kontextfeld `operation_Id` versehen. Dieser Bezeichner wird von jedem Telemetrieelement in der verteilten Ablaufverfolgung gemeinsam genutzt. Selbst bei einem Verlust von Telemetriedaten von einer einzigen Ebene können Sie dennoch Telemetriedaten zuordnen, die von anderen Komponenten gemeldet wurden.
+Application Insights definiert ein [Datenmodell](application-insights-data-model.md) für die verteilte Telemetriekorrelation. Um die Telemetrie mit dem logischen Vorgang zu verknüpfen, ist jedes Telemetrieelement mit einem Kontextfeld namens `operation_Id` versehen. Dieser Bezeichner wird von jedem Telemetrieelement in der verteilten Ablaufverfolgung gemeinsam genutzt. Selbst bei einem Verlust von Telemetriedaten von einer einzigen Ebene können Sie dennoch Telemetriedaten zuordnen, die von anderen Komponenten gemeldet wurden.
 
-Der verteilte logische Vorgang besteht in der Regel aus einem Satz von kleineren Vorgängen, wobei die Anforderungen von einer der Komponenten verarbeitet werden. Diese Vorgänge werden von einer [Anforderungstelemetrie](/application-insights-data-model-request-telemetry.md) definiert. Jede Anforderungstelemetrie verfügt über eine eigene `id`, die diese eindeutig global identifiziert. Für sämtliche Telemetriedaten (Ablaufverfolgungen, Ausnahmen usw.), die dieser Anforderung zugeordnet sind, sollte die `operation_parentId` auf den Wert der Anforderungs-`id` festgelegt werden.
+Der verteilte logische Vorgang besteht in der Regel aus einem Satz von kleineren Vorgängen, wobei die Anforderungen von einer der Komponenten verarbeitet werden. Diese Vorgänge werden von einer [Anforderungstelemetrie](application-insights-data-model-request-telemetry.md) definiert. Jede Anforderungstelemetrie verfügt über eine eigene `id`, die diese eindeutig global identifiziert. Für sämtliche Telemetriedaten (Ablaufverfolgungen, Ausnahmen usw.), die dieser Anforderung zugeordnet sind, sollte die `operation_parentId` auf den Wert der Anforderungs-`id` festgelegt werden.
 
-Alle ausgehenden Vorgänge wie HTTP-Aufrufe an andere Komponenten werden durch eine [Abhängigkeitstelemetrie](/application-insights-data-model-dependency-telemetry.md) dargestellt. Abhängigkeitstelemetrien definieren zudem ihre eigene `id`, die global eindeutig ist. Anforderungsabhängigkeiten, die durch diese Anforderungstelemetrie initiiert werden, verwenden diese als `operation_parentId`.
+Alle ausgehenden Vorgänge wie HTTP-Aufrufe an andere Komponenten werden durch eine [Abhängigkeitstelemetrie](application-insights-data-model-dependency-telemetry.md) dargestellt. Abhängigkeitstelemetrien definieren zudem ihre eigene `id`, die global eindeutig ist. Anforderungsabhängigkeiten, die durch diese Anforderungstelemetrie initiiert werden, verwenden diese als `operation_parentId`.
 
 Sie können die Ansicht des verteilten logischen Vorgangs mit `operation_Id`, `operation_parentId` und `request.id` mit `dependency.id` erstellen. Diese Felder definieren auch die Kausalitätsreihenfolge der Telemetrieaufrufe.
 
 In Mikroserviceumgebungen können Ablaufverfolgungen von Komponenten an unterschiedliche Speicher weitergeleitet werden. Jede Komponente kann einen eigenen Instrumentierungsschlüssel in Application Insights aufweisen. Um Telemetriedaten für den logischen Vorgang abzurufen, müssen Sie Daten von jedem Speicher abfragen. Bei einer immensen Anzahl von Speichern benötigen Sie einen Anhaltspunkt, um zu wissen, wo Sie als Nächstes suchen müssen.
 
-Zur Behebung dieses Problem definiert das Datenmodell von Application Insights zwei Felder: `request.source` und `dependency.target`. Das erste Feld definiert die Komponente, die die Anforderung initiiert hat, und das zweite Feld die Komponente, die die Antwort des Abhängigkeitsaufrufs zurückgegeben hat.
+Zur Behebung dieses Problems definiert das Datenmodell von Application Insights zwei Felder: `request.source` und `dependency.target`. Das erste Feld identifiziert die Komponente, die die Abhängigkeitsanforderung initiiert hat, und das zweite Feld identifiziert die Komponente, die die Antwort des Abhängigkeitsaufrufs zurückgegeben hat.
 
 
 ## <a name="example"></a>Beispiel
 
-Veranschaulichen wir uns dies anhand eines Beispiels für eine STOCK PRICES-Anwendung, die den aktuellen Marktpreis eines Aktienkurses mithilfe der externen STOCKS API angibt. Die Anwendung STOCK PRICES enthält eine `Stock page`-Seite, die einen Ajax-Aufruf `GET /Home/Stock` an den Server sendet, der diesen AJAX-Aufruf verarbeitet. Um ein Ergebnis zurückzugeben, fragt die Anwendung STOCK API mit dem HTTP-Aufruf `GET /api/stock/value` ab.
+Veranschaulichen wir uns dies anhand eines Beispiels für eine STOCK PRICES-Anwendung, die den aktuellen Marktpreis eines Aktienkurses mithilfe der externen STOCKS API angibt. Die Anwendung STOCK PRICES enthält eine `Stock page`-Seite, die vom Clientwebbrowser mit `GET /Home/Stock` geöffnet wird. Die Anwendung fragt die STOCK API mit dem HTTP-Aufruf `GET /api/stock/value` ab.
 
 Sie können die daraus resultierenden Telemetriedaten durch Ausführung einer Abfrage analysieren:
 
@@ -84,7 +85,7 @@ Aufbau von [OpenTracing](http://opentracing.io/)- und Application Insights-Daten
 - `operation_Id` entspricht **TraceId**
 - `operation_ParentId` entspricht **Reference** vom Typ `ChileOf`
 
-Informationen zu den Application Insights-Typen und zum Datenmodell finden Sie unter [Datenmodell](/application-insights-data-model.md).
+Informationen zu den Application Insights-Typen und zum Datenmodell finden Sie unter [Datenmodell](application-insights-data-model.md).
 
 Definitionen von OpenTracing-Konzepten finden Sie unter [Spezifikation](https://github.com/opentracing/specification/blob/master/specification.md) und [Semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
@@ -107,7 +108,8 @@ Das Application Insights SDK mit der Startversion `2.4.0-beta1` verwendet Diagno
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Integrieren Sie alle Komponenten Ihres Mikroservices in Application Insights. Überprüfen Sie die [unterstützten Plattformen](/app-insights-platforms.md).
-- Informationen zu den Application Insights-Typen und zum Datenmodell finden Sie unter [Datenmodell](/application-insights-data-model.md).
-- Informationen zum Erweitern und Filtern von Telemetriedaten finden Sie [hier](/app-insights-api-filtering-sampling.md).
+- [Schreiben benutzerdefinierter Telemetriedaten](app-insights-api-custom-events-metrics.md)
+- Integrieren Sie alle Komponenten Ihres Mikroservices in Application Insights. Überprüfen Sie die [unterstützten Plattformen](app-insights-platforms.md).
+- Informationen zu den Application Insights-Typen und zum Datenmodell finden Sie unter [Datenmodell](application-insights-data-model.md).
+- Informationen zum Erweitern und Filtern von Telemetriedaten finden Sie [hier](app-insights-api-filtering-sampling.md).
 

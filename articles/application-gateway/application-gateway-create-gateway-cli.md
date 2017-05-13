@@ -13,12 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2017
+ms.date: 05/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 1481fcb070f383d158c5a6ae32504e498de4a66b
-ms.openlocfilehash: 68d3e3ee9b35f2d6d88cde68365cef91d9683462
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 14dab2197ff7c1eaff012066e321ef1b99f05bb3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -76,7 +77,8 @@ Für Azure Application Gateway ist ein eigenes Subnetz erforderlich. Stellen Sie
 az login -u "username"
 ```
 
->[HINWEIS] Sie können auch `az login` ohne die Option für die Geräteanmeldung verwenden, die die Eingabe eines Codes unter aka.ms/devicelogin erfordert.
+> [!NOTE]
+> Sie können auch `az login` ohne die Option für die Geräteanmeldung verwenden, die die Eingabe eines Codes unter aka.ms/devicelogin erfordert.
 
 Wenn Sie das vorherige Beispiel eingeben, erhalten Sie einen Code. Navigieren Sie in einem Browser zu „https://aka.ms/devicelogin“, und setzen Sie den Anmeldeprozess fort.
 
@@ -129,8 +131,7 @@ az network application-gateway create \
 --cert-file /mnt/c/Users/username/Desktop/application-gateway/fabrikam.pfx \
 --cert-password P@ssw0rd \
 --capacity 2 \
---sku-tier Standard \
---sku-name Standard_Small \
+--sku Standard_Small \
 --http-settings-cookie-based-affinity Enabled \
 --http-settings-protocol Http \
 --frontend-port 443 \
@@ -145,6 +146,14 @@ az network application-gateway create \
 Mit diesem Beispiel wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Darüber hinaus wird die SSL-Auslagerung konfiguriert. Nach der erfolgreichen Bereitstellung können Sie diese Einstellungen an Ihre Anforderungen anpassen.
 Wenn Sie Ihre Webanwendung bereits mit dem Back-End-Pool in den vorherigen Schritten definiert haben, beginnt nach dem Erstellen der Lastenausgleich.
 
+## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+
+Führen Sie die folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
+
+```azurecli
+az group delete --name AdatumAppGatewayRG
+```
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-probe-portal.md)

@@ -10,18 +10,19 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 04/25/2017
 ms.author: sergkanz
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f22b6dbdcc02b1182163f140d9ff13d2876dc0d8
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 5036ce23e602c7723f5fafef60ab45d533c1fe7d
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
 
-Anforderungstelemetrie stellt die extern ausgelöste Codeausführung und die Kapselung der logischen Codeausführung dar. Jede Anforderungsausführung wird durch eine eindeutige `ID` und `url` identifiziert, die alle Ausführungsparameter enthalten. Sie können Anforderungen nach logischen `name`-Werten gruppieren und die `source` der jeweiligen Anforderung definieren. Die Codeausführung kann `success` oder „fail“ ergeben und weist eine bestimmte `duration` auf. Erfolgreiche und fehlerhafte Ausführungen können weiter nach `resultCode` gruppiert werden. Die Startzeit für die Anforderungstelemetrie wird auf Umschlagebene definiert.
+Ein Anforderungstelemetrieelement (in [Application Insights](app-insights-overview.md)) stellt die logische Reihenfolge der Ausführung dar, die durch eine externe Anforderung bei der Anwendung ausgelöst wird. Jede Anforderungsausführung wird durch eine eindeutige `ID` und `url` identifiziert, die alle Ausführungsparameter enthalten. Sie können Anforderungen nach logischen `name`-Werten gruppieren und die `source` der jeweiligen Anforderung definieren. Die Codeausführung kann zu `success` oder `fail` führen und verfügt über eine bestimmte `duration`. Sowohl erfolgreiche als auch erfolglose Ausführungen können weiter nach `resultCode` gruppiert werden. Die Startzeit für die Anforderungstelemetrie wird auf Umschlagebene definiert.
 
 Die Anforderungstelemetrie unterstützt das Standarderweiterbarkeitsmodell mit benutzerdefinierten `properties` und `measurements`.
 
@@ -35,7 +36,7 @@ Maximale Länge: 1.024 Zeichen
 
 ## <a name="id"></a>ID
 
-Bezeichner einer Anforderungsaufrufinstanz. Wird für die Korrelation zwischen dem Anforderungselement und anderen Telemetrieelementen verwendet. Die ID muss global eindeutig sein. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](/correlation).
+Bezeichner einer Anforderungsaufrufinstanz. Wird für die Korrelation zwischen dem Anforderungselement und anderen Telemetrieelementen verwendet. Die ID muss global eindeutig sein. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](application-insights-correlation.md).
 
 Maximale Länge: 128 Zeichen
 
@@ -47,7 +48,7 @@ Maximale Länge: 2.048 Zeichen
 
 ## <a name="source"></a>Quelle
 
-Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des Aufrufers oder die IP-Adresse des Aufrufers. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](/correlation.md).
+Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des Aufrufers oder die IP-Adresse des Aufrufers. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](application-insights-correlation.md).
 
 Maximale Länge: 1.024 Zeichen
 
@@ -81,7 +82,8 @@ Weitere Informationen zu Ergebniscodes und Statuscodes von Anforderungen finden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](/application-insights-data-model.md).
-- Informieren Sie sich über das [Konfigurieren von ASP.NET Core-Anwendungen](/app-insights-asp-net-core.md) mit Application Insights.
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](/app-insights-platforms.md).
+- [Schreiben benutzerdefinierter Anforderungstelemetriedaten](app-insights-api-custom-events-metrics.md#trackrequest)
+- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](application-insights-data-model.md).
+- Informieren Sie sich über das [Konfigurieren von ASP.NET Core-Anwendungen](app-insights-asp-net.md) mit Application Insights.
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](app-insights-platforms.md).
 

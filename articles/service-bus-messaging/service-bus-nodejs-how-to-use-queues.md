@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 04/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: f0b0c3bc9daf1e44dfebecedf628b09c97394f94
-ms.openlocfilehash: d993ba4bdff690ee6f0867cdbf0a8059fb5847ee
-ms.lasthandoff: 01/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: a28be325d17bfbe2c5e22bf43e6143e520d6e39f
+ms.contentlocale: de-de
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -67,7 +68,7 @@ Das Azure-Modul liest die Umgebungsvariablen AZURE\_SERVICEBUS\_NAMESPACE und AZ
 
 Ein Beispiel zum Festlegen der Umgebungsvariablen in einer Konfigurationsdatei für einen Azure-Clouddienst finden Sie unter [Node.js-Clouddienst mit Speicher][Node.js Cloud Service with Storage].
 
-Ein Beispiel zum Festlegen der Umgebungsvariablen im [klassischen Azure-Portal][Azure classic portal] für eine Azure-Website finden Sie unter [Node.js-Webanwendung mit Storage][Node.js Web Application with Storage].
+Ein Beispiel zum Festlegen der Umgebungsvariablen im [Azure-Portal][Azure portal] für eine Azure-Website finden Sie unter [Node.js-Webanwendung mit Storage][Node.js Web Application with Storage].
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 Das **ServiceBusService**-Objekt ermöglicht Ihnen, mit Service Bus-Warteschlangen zu arbeiten. Der folgende Code erstellt ein **ServiceBusService**-Objekt. Fügen Sie ihn am Anfang der Datei **server.js** hinzu, nach der Anweisung zum Importieren des Azure-Moduls:
@@ -175,7 +176,7 @@ Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen 
 
 Zudem wird einer in der Warteschlange gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel, wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der **deleteMessage**-Methode abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing** (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
+Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der **deleteMessage**-Methode abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Warteschlangen finden Sie in den folgenden Ressourcen:
@@ -185,7 +186,7 @@ Weitere Informationen zu Warteschlangen finden Sie in den folgenden Ressourcen:
 * [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
-[Azure classic portal]: http://manage.windowsazure.com
+[Azure portal]: https://portal.azure.com
 
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

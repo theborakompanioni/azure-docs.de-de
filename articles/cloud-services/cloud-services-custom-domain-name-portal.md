@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 2b020004762125aad201cf7eb454da5cf73288ae
-ms.openlocfilehash: 7d509e9606c0a2f599f511c011ab775b2ea6f7b0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 55fc4e5c88568cca8a2842590dfd24e082139699
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -76,7 +78,7 @@ Sie müssen einen neuen Eintrag zu der DNS-Tabelle Ihrer benutzerdefinierten Dom
        ![Die Schnelleinsicht zeigt die Site-URL.][csurl]
      
        **OR**
-   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azureps-cmdlets-docs), und verwenden Sie dann den folgenden Befehl:
+   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/overview), und verwenden Sie dann den folgenden Befehl:
      
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -111,7 +113,7 @@ Sie müssen zunächst die virtuelle IP-Adresse Ihres Clouddiensts ermitteln, um 
        ![Die Schnelleinsicht zeigt die VIP.][vip]
      
        **OR**
-   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azureps-cmdlets-docs), und verwenden Sie dann den folgenden Befehl:
+   * Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azure/overview), und verwenden Sie dann den folgenden Befehl:
      
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -153,9 +155,4 @@ Dieses Beispiel zeigt das Erstellen eines A-Datensatzes für die Stammdomäne. W
 [klassischen Azure-Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

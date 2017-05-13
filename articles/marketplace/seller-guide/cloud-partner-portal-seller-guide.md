@@ -12,10 +12,11 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: rupesk@microsoft.com
 ms.robots: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: e302a87a25926a1ab48eb8168d26352d4c259c3f
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 59a0f0ec1b7b576339a45be26be8543ac0650a8a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 
@@ -78,7 +79,7 @@ Marketplace-Kunden sind sehr vielfältig. Und der Kundenstamm von Azure gehört 
 
 ## <a name="how-does-the-marketplace-work"></a>Wie funktioniert der Marketplace?
 
-Das ist schnell erklärt: Nachdem Sie das Genehmigungsverfahren durchlaufen haben, können Sie Ihr Azure-zertifiziertes VM-Image erstellen und im Marketplace veröffentlichen. Dort kann es dann innerhalb weniger Minuten von Azure-Kunden gefunden, erworben und bereitgestellt werden. Ein weiterer Vorteil: Kunden, die Ihre Lösung bereitstellen, können darauf vertrauen, dass die Umgebung für die erfolgreiche Verwendung in Azure konfiguriert und die Infrastruktur innerhalb weniger Minuten einsatzbereit ist.
+Das ist schnell erklärt: Nachdem Sie das Genehmigungsverfahren durchlaufen haben, können Sie Ihr Azure-zertifiziertes VM-Image erstellen und im Marketplace veröffentlichen. Dort kann es dann innerhalb weniger Minuten von Azure-Kunden gefunden, erworben und bereitgestellt werden. Noch besser ist, dass Kunden Ihre Lösung mit Zuversicht bereitstellen. Sie wissen, dass die Umgebung für die erfolgreiche Verwendung in Azure konfiguriert und die Infrastruktur innerhalb weniger Minuten einsatzbereit ist.
 
 Das Cloudpartnerportal ist die Anlaufstelle für die Angebotserstellung im Marketplace. VM-Images sind mit einem vollständig installierten Betriebssystem und mindestens einer Anwendung vorkonfiguriert. Vor der Veröffentlichung muss Ihr Image zertifiziert werden, was mit der Erfüllung bestimmter Voraussetzungen verbunden ist. Diese werden im nächsten Abschnitt erläutert.
 

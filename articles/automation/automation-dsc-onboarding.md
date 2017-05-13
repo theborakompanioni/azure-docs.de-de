@@ -13,10 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
-translationtype: Human Translation
-ms.sourcegitcommit: e2257730f0c62dbc0313ce7953fc5f953dae8ac3
-ms.openlocfilehash: f81536322ad1bb16e4af326e0b053da47690619c
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 7aaede3e93938553ee6d372478e3516e72885057
+ms.contentlocale: de-de
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -136,7 +137,7 @@ Virtuelle Azure-Computer können über Azure-Ressourcen-Manager-Vorlagen in Azur
 
 ### <a name="powershell"></a>PowerShell
 
-Mit dem Cmdlet [Register-AzureRmAutomationDscNode](https://msdn.microsoft.com/library/mt603833.aspx) können virtuelle Computer im Azure-Portal über PowerShell integriert werden.
+Mit dem Cmdlet [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) können virtuelle Computer im Azure-Portal über PowerShell integriert werden.
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Virtuelle Computer von Amazon Web Services (AWS)
 
@@ -161,7 +162,7 @@ Lokale Windows-Computer und Windows-Computer in anderen Clouds als Azure (z. B.
 
 Lokale Linux-Computer und Linux-Computer in Azure sowie in anderen Clouds können auch in Azure Automation DSC integriert werden, sofern sie über ausgehenden Zugriff auf das Internet verfügen. Es sind nur wenige einfache Schritte erforderlich:
 
-1. Stellen Sie sicher, dass die neueste Version des [DSC-Linux-Agents](http://www.microsoft.com/download/details.aspx?id=49150) auf den Computern installiert ist, die Sie in Azure Automation DSC integrieren möchten.
+1. Stellen Sie sicher, dass die neueste Version der [PowerShell Desired State Configuration für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) auf den Computern installiert ist, die Sie in Azure Automation DSC integrieren möchten.
 2. Gehen Sie folgendermaßen vor, wenn die [Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig4) zu Ihrem Anwendungsfall passen und Sie Computer so integrieren möchten, dass diese **sowohl** Informationen von Azure Automation DSC abrufen als auch Informationen an Azure Automation DSC senden:
 
    + Verwenden Sie auf jedem Linux-Computer, den Sie in Azure Automation DSC integrieren möchten, "Register.py" für eine Integration mit den Standardwerten des lokalen Konfigurations-Managers von PowerShell DSC:
@@ -170,7 +171,7 @@ Lokale Linux-Computer und Linux-Computer in Azure sowie in anderen Clouds könne
 
    + Informationen zum Suchen des Registrierungsschlüssels und der Registrierungs-URL für Ihr Automation-Konto finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
 
-     Wenn die Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC **nicht******zu Ihrem Anwendungsszenario passen, oder Sie Computer so integrieren möchten, dass Sie nur an Azure Automation DSC berichten und keine Konfigurationen oder PowerShell-Module davon abrufen, führen Sie die Schritte 3 bis 6 aus. Fahren Sie andernfalls direkt mit Schritt 6 fort.
+     Wenn die Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC **nicht****** zu Ihrem Anwendungsszenario passen, oder Sie Computer so integrieren möchten, dass Sie nur an Azure Automation DSC berichten und keine Konfigurationen oder PowerShell-Module davon abrufen, führen Sie die Schritte 3 bis 6 aus. Fahren Sie andernfalls direkt mit Schritt 6 fort.
 
 3. Führen Sie die Schritte im Abschnitt [**Generieren von DSC-Metakonfigurationen**](#generating-dsc-metaconfigurations) aus, um einen Ordner mit den erforderlichen DSC-Metakonfigurationen zu generieren.
 4. Wenden Sie die PowerShell DSC-Metakonfiguration remote auf die Computer an, die Sie integrieren möchten:
@@ -390,6 +391,6 @@ Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrier
 ## <a name="related-articles"></a>Verwandte Artikel
 
 * [Azure Automation DSC – Übersicht](automation-dsc-overview.md)
-* [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
+* [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 

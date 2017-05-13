@@ -15,10 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 04/05/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: b179588d29c5dd8cc5bd2469e7f1dfe669027eca
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 6b90f0232d0fc527d0232a19f9251519250687f0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -144,8 +145,8 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
 
-## <a name="backup-azure-vms"></a>Sichern von virtuellen Azure-Computern
-Nach der Erstellung eines Recovery Services-Tresors können Sie ihn verwenden, um einen virtuellen Computer zu schützen. Bevor Sie jedoch den Schutz anwenden, müssen Sie den Tresorkontext festlegen, und Sie sollten die Schutzrichtlinie bestätigen. Der Tresorkontext definiert den Datentyp, der im Tresor geschützt wird. Die Schutzrichtlinie stellt den Zeitplan für die Ausführung des Sicherungsauftrags dar, und für die Aufbewahrungsdauer jeder Sicherungsmomentaufnahme.
+## <a name="back-up-azure-vms"></a>Sichern von Azure-VMs
+Verwenden Sie den neuen Recovery Services-Tresor zum Schutz Ihrer virtuellen Computer. Bevor Sie den Schutz anwenden, legen Sie den Tresorkontext (den Typ der Daten, die im Tresor geschützt werden) fest, und überprüfen Sie die Schutzrichtlinie. Die Schutzrichtlinie stellt den Zeitplan für die Ausführung des Sicherungsauftrags dar, und für die Aufbewahrungsdauer jeder Sicherungsmomentaufnahme.
 
 Vor dem Aktivieren des Schutzes auf einem virtuellen Computer müssen Sie den Tresorkontext festlegen. Der Kontext wird auf alle nachfolgenden Cmdlets angewendet.
 
@@ -269,7 +270,7 @@ Es gibt einen wichtigen Unterschied zwischen dem Wiederherstellen eines virtuell
 * Wiederherstellung der Datenträger
 * Erstellen des virtuellen Computers aus gespeicherten Datenträgern
 
-Die folgende Grafik zeigt die Objekthierarchie vom RecoveryServicesVault bis runter zum BackupRecoveryPoint.
+Die folgende Grafik zeigt die Objekthierarchie von „RecoveryServicesVault“ bis „BackupRecoveryPoint“.
 
 ![Die Recovery Services-Objekthierarchie zeigt die BackupContainer an](./media/backup-azure-vms-arm-automation/backuprecoverypoint-only.png)
 
@@ -310,7 +311,7 @@ BackupManagementType        : AzureVM
 
 
 ### <a name="restore-the-disks"></a>Wiederherstellung der Datenträger
-Verwenden Sie das Cmdlet **[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)**, um Daten und die Konfiguration für ein Sicherungselement auf einem Wiederherstellungspunkt wiederherzustellen. Nachdem Sie einen Wiederherstellungspunkt ermittelt haben, verwenden Sie diesen als Wert für den **-RecoveryPoint** -Parameter. Im vorherigen Beispielcode wurde **$rp[0]** als Wiederherstellungspunkt ausgewählt, der verwendet werden soll. Im folgenden Beispielcode ist **$rp[0]** als Wiederherstellungspunkt zur Wiederherstellung auf dem Datenträger angegeben.
+Verwenden Sie das Cmdlet **[Restore-AzureRmRecoveryServicesBackupItem](https://msdn.microsoft.com/library/mt723316.aspx)**, um Daten und die Konfiguration für ein Sicherungselement auf einem Wiederherstellungspunkt wiederherzustellen. Nachdem Sie einen Wiederherstellungspunkt ermittelt haben, verwenden Sie diesen als Wert für den **-RecoveryPoint**-Parameter. Im vorherigen Beispielcode wurde **$rp[0]** als Wiederherstellungspunkt ausgewählt, der verwendet werden soll. Im folgenden Beispielcode ist **$rp[0]** der Wiederherstellungspunkt, der zum Wiederherstellen des Datenträgers verwendet wird.
 
 So stellen Sie den Datenträger und die Konfigurationsinformationen wieder her
 
@@ -341,18 +342,19 @@ Nachdem Sie die Datenträger wiederhergestellt haben, fahren Sie mit dem nächst
 Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schritte zum Erstellen und Konfigurieren des virtuellen Computers vom Datenträger.
 
 > [!NOTE]
-> Wenn Sie verschlüsselte virtuelle Computer mit wiederhergestellten Datenträgern erstellen, benötigt Ihre Rolle die Berechtigung für die Ausführung von **Microsoft.KeyVault/vaults/deploy/action**. Wenn Ihre Rolle nicht über diese Berechtigung verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+> Wenn Sie zum Erstellen von verschlüsselten virtuellen Computern wiederhergestellte Datenträger verwenden, muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle nicht über diese Berechtigung verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
 >
 >
 
 1. Fragen Sie die Eigenschaften des wiederhergestellten Datenträgers für die Auftragsdetails ab.
 
-    ```
-    PS C:\> $properties = $details.properties
-    PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
-    PS C:\> $containerName = $properties["Config Blob Container Name"]
-    PS C:\> $blobName = $properties["Config Blob Name"]
-    ```
+  ```
+  PS C:\> $properties = $details.properties
+  PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
+  PS C:\> $containerName = $properties["Config Blob Container Name"]
+  PS C:\> $blobName = $properties["Config Blob Name"]
+  ```
+
 2. Legen Sie den Azure-Speicherkontext fest, und stellen Sie die JSON-Konfigurationsdatei wieder her.
 
     ```
@@ -361,30 +363,37 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
     PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Raw -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
+
 3. Verwenden Sie die JSON-Konfigurationsdatei, um die Konfiguration des virtuellen Computers zu erstellen.
 
     ```
    PS C:\> $vm = New-AzureRmVMConfig -VMSize $obj.HardwareProfile.VirtualMachineSize -VMName "testrestore"
     ```
+
 4. Fügen Sie die Betriebssystemdatenträger und Datenträger hinzu.
 
-      Für nicht verschlüsselte VMs
+  Für nicht verschlüsselte VMs
 
-      ```
-      PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -CreateOption “Attach”
-      PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType
-      PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)
-       {
-       $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
-       }
-       ```
-       
-      For encrypted VMs, you need to specify [Key vault information](https://msdn.microsoft.com/library/dn868052.aspx) before you can attach disks.
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -CreateOption “Attach”
+    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType
+    PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)
+     {
+     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
+     }
+    ```
 
-      ```
-      PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -DiskEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007" -DiskEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -KeyEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007" -KeyEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -CreateOption "Attach" -Windows    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType    PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)     {     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach     }
-       ```
-       
+    Für nicht verschlüsselte VMs müssen Sie [Schlüsseltresorinformationen](https://msdn.microsoft.com/library/dn868052.aspx) angeben, bevor Sie Datenträger anfügen können.
+
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -DiskEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007" -DiskEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -KeyEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007" -KeyEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -CreateOption "Attach" -Windows
+    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType
+    PS C:\> foreach($dd in $obj.StorageProfile.DataDisks)
+     {
+     $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
+     }
+    ```
+
 5. Legen Sie die Netzwerkeinstellungen fest.
 
     ```
@@ -401,5 +410,5 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel für den Schutz von Windows Server: [Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell](backup-client-automation.md). Es gibt auch einen PowerShell-Artikel über das Verwalten von DPM-Sicherungen: [Bereitstellen und Verwalten der Sicherung für DPM](backup-dpm-automation.md). Diese beiden Artikel weisen eine Version für Resource Manager-Bereitstellungen und eine für klassische Bereitstellungen auf.  
+Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel [Sicherungen für Windows Server bereitstellen und verwalten](backup-client-automation.md). Es gibt auch einen PowerShell-Artikel über das Verwalten von DPM-Sicherungen: [Bereitstellen und Verwalten der Sicherung für DPM](backup-dpm-automation.md). Diese beiden Artikel weisen eine Version für Resource Manager-Bereitstellungen und eine für klassische Bereitstellungen auf.  
 

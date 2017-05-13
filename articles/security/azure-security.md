@@ -1,0 +1,402 @@
+---
+title: "Einführung in Azure Security | Microsoft-Dokumentation"
+description: Hier erhalten Sie Informationen zu Azure Security, seinen Diensten und zur Funktionsweise.
+services: security
+documentationcenter: na
+author: UnifyCloud
+manager: swadhwa
+editor: TomSh
+ms.assetid: 
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 04/27/2017
+ms.author: TomSh
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 01a9876f3a8500bc6c6bb6b3cbceeb8921147376
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
+
+
+---
+
+# <a name="introduction-to-azure-security"></a>Einführung in Azure Security
+## <a name="11-overview"></a>1.1 Übersicht
+Wir wissen, dass Sicherheit in der Cloud an erster Stelle steht und wie wichtig es ist, dass Sie präzise und zeitnahe Informationen zur Azure-Sicherheit finden. Eines der schlagkräftigsten Argumente dafür, Azure für Anwendungen und Dienste zu verwenden, ist die Vielzahl an Sicherheitstools und -funktionen. Diese Tools und Funktionen ermöglichen die Erstellung sicherer Lösungen auf der Grundlage der sicheren Azure-Plattform. Microsoft Azure bietet sowohl Vertraulichkeit, Integrität und Verfügbarkeit von Kundendaten als auch eine transparente Verantwortlichkeit.
+
+Damit Sie die Auflistung von Sicherheitskontrollen, die in Microsoft Azure implementiert sind, sowohl aus Kundensicht als auch aus Sicht der Microsoft-Vorgänge besser verstehen, ist dieses Whitepaper, „Einführung in Azure Security“, so konzipiert, dass es einen umfassenden Überblick über die mit Microsoft Azure verfügbare Sicherheit bereitstellt.
+
+### <a name="12-azure-platform"></a>1.2 Azure Platform
+Azure ist eine öffentliche Clouddienstplattform, die eine breite Palette an Betriebssystemen, Programmiersprachen, Frameworks, Tools, Datenbanken und Geräten unterstützt. Es kann Linux-Container mit Docker-Integration ausführen, Apps mit JavaScript, Python, .NET, PHP, Java und Node.js sowie Back-Ends für iOS-, Android- und Windows-Geräte erstellen.
+
+Die öffentlichen Azure-Clouddienste unterstützen dieselben Technologien, die bereits von Millionen von Entwicklern und IT-Profis zuverlässig eingesetzt werden. Wenn Sie IT-Ressourcen darauf erstellen oder zu einem öffentlichen Clouddienstanbieter migrieren, verlassen Sie sich darauf, dass die jeweilige Organisation Ihre Anwendungen und Daten mit den Diensten und Steuerungsmöglichkeiten schützen kann, die sie zum Verwalten der Sicherheit Ihrer cloudbasierten Ressourcen bereitstellt.
+
+Die Infrastruktur von Azure ist von den Hardwareressourcen bis zu den Anwendungen vollständig auf das gleichzeitige Hosten von Millionen von Kunden ausgelegt und stellt für Unternehmen eine vertrauenswürdige Grundlage zur Erfüllung ihrer Sicherheitsanforderungen dar.
+
+Darüber hinaus bietet Azure Ihnen ein breites Spektrum an konfigurierbaren Sicherheitsoptionen, die Sie selbst steuern können, um die Sicherheit an die individuellen Anforderungen der Bereitstellungen Ihrer Organisation anzupassen. Dieses Dokument hilft Ihnen dabei zu verstehen, wie Ihnen die Azure-Sicherheitsfunktionen dabei helfen können, diese Anforderungen zu erfüllen.
+
+> [!Note]
+> Der Hauptfokus in diesem Dokument richtet sich auf Steuerelemente für Kunden, mit denen Sie die Sicherheit für Ihre Anwendungen und Dienste anpassen und erhöhen können.
+>
+> Es werden einige allgemeine Informationen bereitgestellt, aber ausführliche Informationen dazu, wie Microsoft die Azure-Plattform selbst sichert, finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
+
+### <a name="13-abstract"></a>1.3 Zusammenfassung
+Ursprünglich wurden öffentliche Cloudmigrationen durch Kosteneinsparungen und die Innovationsbereitschaft vorangetrieben. Sicherheit wurde für eine gewisse Zeit als Hauptanliegen und sogar als Ausschlusskriterium für die öffentliche Cloudmigration betrachtet. Die Sicherheit öffentlicher Clouds hat sich inzwischen jedoch von einem Problem zu einem positiven Aspekt entwickelt, der für die Cloudmigration spricht. Der Grund dafür ist die hervorragende Möglichkeit großer öffentlicher Clouddienstanbieter, Anwendungen und Daten von cloudbasierten Ressourcen zu schützen.
+
+Die Infrastruktur von Azure ist von den Hardwareressourcen bis zu den Anwendungen vollständig auf das gleichzeitige Hosten von Millionen von Kunden ausgelegt und stellt für Unternehmen eine vertrauenswürdige Grundlage zur Erfüllung ihrer Sicherheitsanforderungen dar. Darüber hinaus bietet Azure Ihnen ein breites Spektrum an konfigurierbaren Sicherheitsoptionen, die Sie selbst steuern können, um die Sicherheit an die individuellen Anforderungen Ihrer Bereitstellungen anzupassen, damit sie Ihren IT-Kontrollrichtlinien und externen Bestimmungen entsprechen.
+
+In diesem Dokument wird der Sicherheitsansatz von Microsoft für die Microsoft Azure-Cloudplattform beschrieben:
+* Von Microsoft implementierte Sicherheitsfeatures zum Schützen der Azure-Infrastruktur, der Kundendaten und der Anwendungen.
+* Azure-Dienste und Sicherheitsfeatures, die für Sie zum Verwalten der Sicherheit der Dienste und Ihrer Daten in Ihren Azure-Abonnements zur Verfügung stehen.
+
+## <a name="20-summary-azure-security-capabilities"></a>2.0 Zusammenfassung zu Azure-Sicherheitsfunktionen
+Die folgende Tabelle enthält eine kurze Beschreibung der von Microsoft implementierten Sicherheitsfeatures zum Schützen der Azure-Infrastruktur, der Kundendaten und der Anwendungen.
+### <a name="21-security-features-implemented-to-secure-the-azure-platform"></a>2.1 Zum Schützen der Azure Platform implementierte Sicherheitsfeatures:
+Die nachfolgend aufgeführten Features sind Funktionen, die Sie überprüfen können, um die Gewissheit zu bieten, dass die Azure Platform auf sichere Weise verwaltet wird. Es wurden Links zu weiteren Details bereitgestellt, wie Microsoft Fragen zum Kundenvertrauen in vier Bereichen behandelt: Sichere Plattform, Datenschutz und Kontrollen, Compliance und Transparenz.
+
+
+| [Sichere Plattform](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Datenschutz und Kontrollen](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Compliance](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Transparenz](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
+| :-- | :-- | :-- | :-- | 
+| [Sicherheitsentwicklungszyklus](https://www.microsoft.com/en-us/sdl/), interne Überwachungen | [Ständiges Verwalten Ihrer Daten](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Trust Center](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Wie Microsoft Kundendaten in Azure-Diensten schützt](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
+| [Obligatorische Sicherheitsschulung, Hintergrundüberprüfungen](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc) |  [Kontrolle des Datenspeicherorts](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Hub für allgemeine Kontrollen](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Wie Microsoft den Datenspeicherort in Azure-Diensten verwaltet](http://azuredatacentermap.azurewebsites.net/)|
+| [Penetrationstests](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc), [Angriffserkennung, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagemen), [Überwachungen und Protokollierung](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Bereitstellen des Datenzugriff zu Ihren Bedingungen](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Checkliste zur Kaufprüfung von Clouddiensten](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Wer kann bei Microsoft unter welchen Bedingungen auf Ihre Daten zugreifen?](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [Hochmodernes Rechenzentrum](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), physische Sicherheit, [Sicheres Netzwerk](https://docs.microsoft.com/en-us/azure/security/security-network-overview) | [Antworten für Justizbehörden](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Compliance nach Dienst, Speicherort und Branche](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Wie Microsoft Kundendaten in Azure-Diensten schützt](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
+|  [Reaktion auf Sicherheitsvorfälle](http://aka.ms/SecurityResponsepaper), [Geteilte Verantwortung](http://aka.ms/sharedresponsibility) |[Strenge Datenschutzstandards](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Überprüfen der Zertifizierung für Azure-Dienste, Transparenzhub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+
+
+
+### <a name="22-security-features-offered-by-azure-to-secure-data-and-application"></a>2.2 Von Azure zum Schützen von Daten und Anwendungen bereitgestellte Sicherheitsfeatures
+In Abhängigkeit vom Clouddienstmodell besteht dahingehend eine variable Verantwortlichkeit, wer für die Verwaltung der Sicherheit der Anwendungen oder Dienste zuständig ist. Azure Platform verfügt über Funktionen, die Sie beim Erfüllen dieser Aufgaben durch integrierte Features sowie durch Partnerlösungen unterstützen, die in ein Azure-Abonnement implementiert werden können.
+
+Die integrierten Funktionen sind in sechs (6) Funktionsbereiche unterteilt: Vorgänge, Anwendungen, Speicher, Netzwerk, Compute und Identität. Zusätzliche Details zu den in Azure Platform in diesen sechs Bereichen verfügbaren Features und Funktionen werden über zusammenfassende Informationen bereitgestellt.
+
+## <a name="30-operations"></a>3.0 Vorgänge
+Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features von Sicherheitsvorgängen und zusammenfassende Informationen zu diesen Funktionen.
+
+### <a name="31-operations-management-suite-security-and-audit-dashboard"></a>3.1 Sicherheits- und Überwachungsdashboard von Operations Management Suite
+Die [Sicherheits- und Überwachungslösung von OMS](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) ermöglicht mit [integrierten Suchabfragen](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) für relevante Probleme, die Ihre Aufmerksamkeit erfordern, einen umfassenden Einblick in die Lage der IT-Sicherheit Ihres Unternehmens. Das Dashboard [Security and Audit](https://technet.microsoft.com/library/mt484091.aspx) (Sicherheit und Überwachung) ist die Startseite für alle Aspekte, die sich in OMS auf die Sicherheit beziehen. Hier erhalten Sie einen allgemeinen Überblick über den Sicherheitszustand Ihres Computers. Darüber hinaus können Sie alle Ereignisse der letzten 24 Stunden, sieben Tage oder eines anderen benutzerdefinierten Zeitraums anzeigen.
+
+Darüber hinaus können Sie die Sicherheit und Compliance von OMS konfigurieren, um [automatisch bestimmte Aktionen auszuführen](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/), wenn ein bestimmtes Ereignis erkannt wird.
+
+### <a name="32-azure-resource-manager"></a>3.2 Azure Resource Manager
+Mit dem [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine [Azure Resource Manager-Vorlage](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
+
+Auf Azure Resource Manager-Vorlagen basierte Bereitstellungen helfen dabei, die Sicherheit von Lösungen zu verbessern, die in Azure bereitgestellt werden, da standardmäßige Einstellungen für die Sicherheitskontrolle in standardisierte vorlagenbasierte Bereitstellungen integriert werden können. Dies verringert das Risiko von Fehlern bei der Sicherheitskonfiguration, die möglicherweise bei manuellen Bereitstellungen auftreten können.
+
+### <a name="33-application-insights"></a>3.3 Application Insights
+[Application Insights](https://docs.microsoft.com/azure/application-insights/) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM). Mit Application Insights können Sie Ihre aktiven Webanwendungen überwachen und automatisch Leistungsanomalien erkennen. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird. Er überwacht Ihre Anwendung während der gesamten Ausführung – sowohl in der Testphase als auch nach der Veröffentlichung oder Bereitstellung.
+
+Application Insights erstellt Diagramme und Tabellen, die beispielsweise Aufschluss darüber geben, zu welchen Tageszeiten das Benutzerinteresse besonders groß ist, wie gut die App reagiert und wie gut sie von externen Diensten versorgt wird, von denen sie unter Umständen abhängig ist.
+
+Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemetriedaten im Detail durchsuchen, um die Fehlerursache zu ermitteln. Darüber hinaus informiert Sie der Dienst per E-Mail, falls sich die Verfügbarkeit oder Leistung Ihrer App ändert. Application Insight wird daher zu einem wertvollen Sicherheitstool, da es bei der „Verfügbarkeit“ hilft, die zu den drei Sicherheitsbereichen „Vertraulichkeit“, „Integrität“ und „Verfügbarkeit“ zählt.
+
+### <a name="34-azure-monitor"></a>3.4 Azure Monitor
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur ([Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) als auch aus jeder einzelnen Azure-Ressource ([Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Mit Azure Monitor können Sie sich bei sicherheitsrelevanten Ereignissen warnen lassen, die in Azure-Protokollen generiert werden.
+
+### <a name="35-log-analytics"></a>3.5 Log Analytics
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/), Teil der [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite): bietet eine IT-Verwaltungslösung für lokale und cloudbasierte Infrastrukturen (z. B. AWS) zusätzlich zu Azure-Ressourcen. Daten von Azure Monitor können direkt an Log Analytics weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.
+
+Log Analytics kann ein hilfreiches Tool bei forensischen und anderen Sicherheitsanalysen sein, da Sie mit dem Tool schnell große Mengen von sicherheitsbezogenen Einträgen mit einem flexiblen Abfrageansatz durchsuchen können. Darüber hinaus können lokale [Firewall- und Proxyprotokolle in Azure exportiert und für die Analyse mit Log Analytics zur Verfügung gestellt werden.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
+
+### <a name="36-azure-advisor"></a>3.6 Azure-Ratgeber
+Bei dem [Azure-Ratgeber](https://docs.microsoft.com/azure/advisor/) handelt es sich um einen personalisierten Cloudberater, der Sie beim Optimieren von Azure-Bereitstellungen unterstützt. Er analysiert Ihre Ressourcenkonfiguration und Nutzungstelemetrie. Anschließend schlägt er Lösungen vor, um die [Leistung](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [Sicherheit](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) und [Hochverfügbarkeit](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) Ihrer Ressourcen zu verbessern, und sucht gleichzeitig nach Möglichkeiten, Ihre [Azure-Gesamtausgaben zu reduzieren](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Der Azure-Ratgeber bietet Sicherheitsempfehlungen, die den Gesamtsicherheitsstatus für Lösungen erheblich verbessern können, die Sie in Azure bereitstellen. Diese Empfehlungen stammen aus der Sicherheitsanalyse, die vom [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) durchgeführt wurde.
+
+### <a name="37-azure-security-center"></a>3.7 Azure Security Center
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen durch größere Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+
+Außerdem hilft das Azure Security Center bei Sicherheitsvorgängen, indem Ihnen ein einzelnes Dashboard bereitgestellt wird, das als Oberfläche für Warnungen und Empfehlungen dient, auf die sofort reagiert werden kann. Häufig können Sie Probleme mit einem einzelnen Klick im Azure Security Center beseitigen.
+## <a name="40-applications"></a>4. 0 Anwendungen
+Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Anwendungssicherheit und zusammenfassende Informationen zu diesen Funktionen.
+
+### <a name="41-web-application-vulnerability-scanning"></a>4.1 Sicherheitsrisikoprüfung für Webanwendungen
+Eine der einfachsten Möglichkeiten, mit der Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is) auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
+
+### <a name="42-penetration-testing"></a>4.2 Penetrationstests
+Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://security-forms.azure.com/penetration-testing/terms) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
+
+### <a name="43-web-application-firewall"></a>4.3 Web Application Firewall
+Die Web Application Firewall (WAF) in [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) hilft beim Schutz von Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen. Dazu bietet sie Schutz vor den Sicherheitsrisiken, die das [Open Web Application Security Project (OWASP) als die zehn häufigsten ermittelt hat](https://msdn.microsoft.com/library/).
+
+### <a name="44-authentication-and-authorization-in-azure-app-service"></a>4.4 Authentifizierung und Autorisierung in Azure App Service
+Mithilfe des [Authentifizierungs-/Autorisierungsfeatures von App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) kann Ihre Anwendung Benutzer anmelden, sodass Sie keine Codeänderungen für das Back-End der App vornehmen müssen. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit.
+
+### <a name="45-layered-security-architecture"></a>4.5 Mehrstufige Sicherheitsarchitektur
+Da [App Service-Umgebungen](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-intro) eine in einem [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede Anwendungsschicht gewähren können. Üblicherweise sollten API-Back-Ends nicht dem allgemeinen Internetzugriff preisgegeben werden, und APIs sollten nur von Upstream-Web-Apps aufgerufen werden können. Um den öffentlichen Zugriff auf API-Anwendungen zu beschränken, können [Netzwerksicherheitsgruppen (Network Security Groups, NSGs)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) in Azure Virtual Network-Subnetzen mit App Service-Umgebungen verwendet werden.
+
+### <a name="46-web-server-diagnostics-and-application-diagnostics"></a>4.6 Webserver- und Anwendungsdiagnose
+App Service-Web-Apps bieten Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Diese sind logisch in [Webserverdiagnose](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log) und [Anwendungsdiagnose](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx) unterteilt. Ein Webserver bezieht zwei wichtige Fortschritte bei der Diagnose und Problembehandlung von Websites und Anwendungen ein.
+
+Das erste neue Feature sind Zustandsinformationen in Echtzeit zu Anwendungspools, Workerprozessen, Websites, Anwendungsdomänen und aktiven Anforderungen. Der zweite Vorteil sind ausführliche Ablaufverfolgungsereignisse, die eine Anforderung während des vollständigen Prozesses (Anforderung und Antwort) nachverfolgen.
+
+IIS 7 kann zur Aktivierung der Auflistung dieser Ablaufverfolgungsereignisse so konfiguriert werden, dass für jede bestimmte Anforderung, die auf der abgelaufenen Zeit oder auf Fehlerantwortcodes basiert, automatisch vollständige Ablaufverfolgungsprotokolle im XML-Format erfasst werden.
+
+#### <a name="461-web-server-diagnostics"></a>4.6.1 Webserverdiagnose
+Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
+
+-    Detaillierte Fehlerprotokollierung – Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat.
+
+-    Ablaufverfolgung von Anforderungsfehlern – Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies kann nützlich sein, wenn Sie versuchen, die Leistung von Websites zu verbessern oder herauszufinden, warum ein bestimmter HTTP-Fehler zurückgegeben wird.
+
+-    Webserverprotokollierung – Informationen über HTTP-Transaktionen im erweiterten W3C-Protokolldateiformat. Dies ist hilfreich, wenn Sie allgemeine Website-Kennzahlen ermitteln möchten, wie die Anzahl der verarbeiteten Anfragen oder wie viele Anforderungen von einer bestimmten IP-Adresse stammen.
+
+#### <a name="462-application-diagnostics"></a>4.6.2 Anwendungsdiagnose
+Mit der Option [Anwendungsdiagnose](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log) können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Bei der Anwendungsdiagnose gibt es zwei Hauptarten von Ereignissen, die sich auf die Anwendungsleistung oder die Anwendungsausfälle und -fehler beziehen. Die Ausfälle und Fehler können weiter in Verbindungsfehler, Sicherheitsfehler und Ausfallprobleme unterteilt werden. Ausfallprobleme beziehen sich in der Regel auf ein Problem mit dem Anwendungscode.
+
+Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angezeigt werden:
+
+-    Alle (alle Ereignisse werden angezeigt)
+-    Anwendungsfehler (Ausnahmeereignisse werden angezeigt)
+-    Leistung (Leistungsereignisse werden angezeigt)
+
+## <a name="50-storage"></a>5.0 Speicher
+Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
+
+### <a name="51-role-based-access-control-rbac"></a>5.1 Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
+
+### <a name="52-shared-access-signature"></a>5.2 Shared Access Signature (SAS)
+[Shared Access Signatures (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
+
+### <a name="53-encryption-in-transit"></a>5.3 Verschlüsselung während der Übertragung
+Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie die Daten sichern mit:
+-    [Verschlüsselung auf Transportebene](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
+
+-    [Wire-Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares) (etwa [SMB 3.0-Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide) für [Azure-Dateifreigaben](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)).
+
+-    Clientseitiger Verschlüsselung, um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
+
+### <a name="54-encryption-at-rest"></a>5.4 Verschlüsselung ruhender Daten
+Für viele Organisationen ist die Verschlüsselung von ruhenden Daten ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features zur Speichersicherheit ermöglichen die Verschlüsselung „ruhender“ Daten:
+
+-    [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
+
+-    [Client-side Encryption](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
+
+-    [Azure-Datenträgerverschlüsselung](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
+
+### <a name="55-storage-analytics"></a>5.5 Speicheranalyse
+Die [Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren. Die Speicheranalyse protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Die folgenden Typen authentifizierter Anforderungen werden protokolliert:
+-    Erfolgreiche Anforderungen
+
+-    Fehlerhafte Anforderungen, einschließlich Timeout-, Drosselungs-, Netzwerk- und Autorisierungsfehler sowie anderer Fehler
+
+-    Anforderungen mithilfe einer SAS (Shared Access Signature), einschließlich fehlerhafter und erfolgreicher Anforderungen
+
+-    Anforderungen von Analysedaten
+
+### <a name="56-enabling-browser-based-clients-using-cors"></a>5.6 Aktivieren browserbasierter Clients über CORS
+[Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) ist ein Mechanismus, der es Domänen gestattet, sich gegenseitig die Zugriffsberechtigung für die Ressourcen der anderen Domänen zu erteilen. Der Benutzer-Agent sendet zusätzliche Header, um sicherzustellen, dass der von einer bestimmten Domäne geladene JavaScript-Code auf Ressourcen zugreifen kann, die sich in einer anderen Domäne befinden. Die letztere Domäne antwortet dann mit zusätzlichen Headern, die der ursprünglichen Domäne den Zugriff auf ihre Ressourcen gestattet oder verweigert.
+
+Die Azure-Speicherdienste unterstützten jetzt CORS, damit nach dem Festlegen der CORS-Regeln für den Dienst eine ordnungsgemäß authentifizierte Anforderung ausgewertet wird, die von einer anderen Domäne an den Dienst gesendet wurde, um zu ermitteln, ob die Anforderung gemäß den von Ihnen festgelegten Regeln zulässig ist.
+## <a name="60-networking"></a>6.0 Netzwerk
+Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Netzwerksicherheit und zusammenfassende Informationen zu diesen Funktionen.
+
+### <a name="61-network-layer-controls"></a>6.1 Kontrollen der Vermittlungsschicht
+Netzwerkzugriffssteuerung bedeutet, die Konnektivität zu oder ausgehend von bestimmten Geräten oder Subnetzen zu begrenzen. Dies stellt den Kern der Netzwerksicherheit dar. Das Ziel der Netzwerkzugriffssteuerung ist sicherzustellen, dass Ihre virtuellen Computer und Dienste nur denjenigen Benutzern und Geräten zugänglich sind, denen Sie den Zugriff auch erlauben möchten.
+
+#### <a name="611-network-security-groups"></a>6.1.1 Netzwerksicherheitsgruppen
+Eine [Netzwerksicherheitsgruppe (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) ist eine einfache Firewall, die zustandsbehaftete Pakete filtert und die Zugriffssteuerung auf Grundlage eines [5-Tupels](https://www.techopedia.com/definition/28190/5-tuple) ermöglicht. NSGs bieten weder eine Inspektion auf Anwendungsebene noch authentifizierte Zugriffssteuerungen. Sie können dazu verwendet werden, um den Datenverkehr zu steuern, der zwischen Subnetzen in einem Azure Virtual Network und zwischen einem Azure Virtual Network und dem Internet bewegt wird.
+
+#### <a name="612-route-control-and-forced-tunneling"></a>6.1.2 Routensteuerung und Tunnelerzwingung
+Die Steuerung des Routingverhaltens in Ihren virtuellen Azure-Netzwerken ist eine entscheidende Funktion in den Bereichen Netzwerksicherheit und Zugriffssteuerung. Wenn Sie z. B. sicherstellen möchten, dass der gesamte Datenverkehr zu und ausgehend von Ihrem Azure Virtual Network Ihr virtuelles Sicherheitsgerät passiert, müssen Sie das Routingverhalten steuern und anpassen können. Sie erreichen dies über die Konfiguration der benutzerdefinierten Routen in Azure.
+
+[Benutzerdefinierte Routen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) ermöglichen es Ihnen, eingehende und ausgehende Pfade für den Datenverkehr anzupassen, der zu oder von einzelnen virtuellen Computern oder Subnetzen bewegt wird, um möglichst die sicherste Route zu gewährleisten. Mithilfe der [Tunnelerzwingung](https://www.petri.com/azure-forced-tunneling) können Sie sicherstellen, dass Ihre Dienste nicht über die Erlaubnis verfügen, eine Verbindung mit Geräten im Internet zu initiieren.
+
+Dieser Mechanismus unterscheidet sich von der Möglichkeit zur Annahme eingehender Verbindungen und der Antwort auf diese. Front-End-Webserver müssen auf Anforderungen von Internethosts antworten. Aus dem Internet stammender, auf diesen Webservern eingehender Datenverkehr wird daher erlaubt und die Webserver dürfen antworten.
+
+Die Tunnelerzwingung wird häufig verwendet, um für ausgehenden Datenverkehr für das Internet zu erzwingen, dass dieser lokale Sicherheitsproxys und Firewalls durchläuft.
+
+#### <a name="613-virtual-network-security-appliances"></a>6.1.3 Appliances für die Sicherheit des virtuellen Netzwerks
+Obwohl Netzwerksicherheitsgruppen, benutzerdefinierte Routen und die Tunnelerzwingung Sicherheit in der Vermittlungs- und Transportschicht des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model)bieten, kann es vorkommen, dass Sie Sicherheit auf höheren Ebenen aktivieren möchten. Sie können mit einer Azure-Partnerlösung für Appliances für die Sicherheit des Netzwerks auf diese erweiterten Netzwerksicherheitsfeatures zugreifen. Die aktuellsten Azure-Partnerlösungen für Netzwerksicherheit finden Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/), und indem Sie nach den Stichworten „Sicherheit“ und „Netzwerksicherheit“ suchen.
+
+### <a name="62-azure-virtual-network"></a>6.2 Azure Virtual Network
+
+Ein virtuelles Azure-Netzwerk (VNet) ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es ist eine logische Isolierung der Azure-Netzworkfabric für Ihr Abonnement. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Sie können Ihr VNet in Subnetze segmentieren und virtuelle Azure IaaS-Computer (VMs) und/oder [Cloud Services (PaaS-Rolleninstanzen)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) in Azure Virtual Networks platzieren.
+
+Zudem können Sie das virtuelle Netzwerk mit einer der [Konnektivitätsoptionen](https://docs.microsoft.com/azure/vpn-gateway/) in Azure mit Ihrem lokalen Netzwerk verbinden. Im Wesentlichen können Sie Ihr Netzwerk mit vollständiger Kontrolle über IP-Adressblöcke auf Azure ausdehnen und von der Azure-Skalierung auf Unternehmensebene profitieren.
+
+Azure-Netzwerke unterstützen verschiedene Szenarien für den sicheren Remotezugriff. Dazu zählen:
+
+-    [Verbinden einzelner Arbeitsstationen mit einem Azure Virtual Network](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+
+-    [Verbinden eines lokalen Netzwerks mit einem Azure Virtual Network mithilfe eines VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
+
+-    [Verbinden eines lokalen Netzwerks mit einem Azure Virtual Network mithilfe eines dedizierten WAN-Links](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
+
+-    [Verbinden von Azure Virtual Networks untereinander](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
+
+### <a name="63-vpn-gateway"></a>6.3 VPN-Gateway
+Wenn Sie Netzwerkdatenverkehr zwischen Ihrem Azure Virtual Network und Ihrem lokalen Standort senden möchten, müssen Sie für Ihr Azure Virtual Network ein VPN Gateway erstellen. Ein [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr über eine öffentliche Verbindung gesendet wird. Sie können VP Gateways auch verwenden, um Datenverkehr zwischen Azure Virtual Networks über das Azure-Netzwerkfabric zu senden.
+
+### <a name="64-express-route"></a>6.4 ExpressRoute
+Microsoft Azure [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) ist ein dedizierter WAN-Link, mit dem Sie Ihre lokalen Netzwerke über eine dedizierte private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern können.
+
+![ExpressRoute](./media/azure-security/azure-security-fig1.png)
+
+Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Office 365 und CRM Online. Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden.
+
+ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet und können somit als sicherer angesehen werden als VPN-basierte Lösungen. Auf diese Weise können ExpressRoute-Verbindungen eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet bieten.
+
+
+### <a name="65-application-gateway"></a>6.5 Application Gateway
+Microsoft [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) verfügt über einen [ADC (Application Delivery Controller)](https://en.wikipedia.org/wiki/Application_delivery_controller) als Dienst und damit für Ihre Anwendung über verschiedene Lastenausgleichsfunktionen auf Schicht 7.
+
+![Application Gateway](./media/azure-security/azure-security-fig2.png)
+
+Sie können damit die Produktivität von Webfarmen steigern, indem sie die CPU-intensive SSL-Beendigung an das Application Gateway auslagern (auch als „SSL-Auslagerung“ oder „SSL-Bridging“ bekannt). Darüber hinaus werden noch weitere Routingfunktionen der Ebene 7 bereitgestellt. Hierzu zählen etwa die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und die Möglichkeit zum Hosten mehrerer Websites hinter einer einzelnen Application Gateway-Instanz. Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht).
+
+Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung.
+
+Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung ([Secure Sockets Layer](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-powershell)), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+
+### <a name="66-web-application-firewall"></a>6.6 Web Application Firewall
+Web Application Firewall ist ein Feature von [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction), das Schutz für Webanwendungen bietet, die Application Gateway für ADC-Standardfunktionen (Application Delivery Control, Steuerung der Anwendungsbereitstellung) nutzen. Web Application Firewall schützt sie vor den nach OWASP 10 häufigsten Web-Sicherheitslücken.
+
+![Web Application Firewall](./media/azure-security/azure-security-fig1.png)
+
+-    Schutz vor Einschleusung von SQL-Befehlen
+
+-    Schutz vor allgemeinen Webangriffen wie Befehlseinschleusung, HTTP Request Smuggling, HTTP Response Splitting und Remote File Inclusion
+
+-    Schutz vor Verletzungen des HTTP-Protokolls
+
+-    Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
+
+-    Verhindern von Bots, Crawlern und Scannern
+
+-    Erkennung häufiger Fehler bei der Anwendungskonfiguration (d. h. Apache, IIS usw.)
+
+
+Eine zentrale Webanwendungs-Firewall zum Schutz vor Webangriffen vereinfacht die Sicherheitsverwaltung erheblich und verleiht der Anwendung eine bessere Sicherung gegen die Bedrohungen durch Angriffe. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendung separat zu sichern. Vorhandene Anwendungsgateways können problemlos in ein Anwendungsgateway mit Web Application Firewall konvertiert werden.
+### <a name="67-traffic-manager"></a>6.7 Traffic Manager
+Microsoft [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) ermöglicht die Verteilung von Benutzerdatenverkehr für Dienstendpunkte in unterschiedlichen Rechenzentren. Zu den von Traffic Manager unterstützten Dienstendpunkten zählen virtuelle Azure-Computer, Web-Apps und Clouddienste. Darüber hinaus kann Traffic Manager auch mit externen, Azure-fremden Endpunkten verwendet werden. Traffic Manager verwendet das Domain Name System (DNS), um Clientanforderungen auf der Grundlage einer [Datenverkehrsrouting-Methode](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods) und der Integrität der Endpunkte an den optimalen Endpunkt weiterzuleiten.
+
+Traffic Manager bietet eine Reihe von Datenverkehrsrouting-Methoden, die verschiedene Anwendungsanforderungen erfüllen und die [Überwachung](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring) der Integrität von Endpunkten sowie automatisches Failover ermöglichen. Traffic Manager zeichnet sich durch eine geringe Fehleranfälligkeit aus, selbst wenn es zu einem Ausfall einer ganzen Azure-Region kommt.
+### <a name="68-azure-load-balancer"></a>6.8 Azure Load Balancer
+Der [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) bietet hohe Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Es ist ein Layer-4-Lastenausgleichsmodul (TCP, UDP), das eingehenden Datenverkehr auf funktionierende Dienstinstanzen verteilt, die in einer Lastenausgleichsgruppe definiert sind. Azure Load Balancer kann für Folgendes konfiguriert werden:
+
+-    Lastenausgleich des eingehenden Internetdatenverkehrs für virtuelle Computer. Diese Konfiguration wird als [Lastenausgleich für Internetzugriff](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)bezeichnet.
+
+-    Lastenausgleich für Datenverkehr zwischen virtuellen Computern in einem virtuellen Netzwerk, zwischen virtuellen Computern in Clouddiensten oder zwischen lokalen und virtuellen Computern in einem standortübergreifenden virtuellen Netzwerk. Diese Konfiguration wird als [interner Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)bezeichnet. • Weiterleiten von externem Datenverkehr an eine bestimmte Instanz eines virtuellen Computers.
+
+### <a name="69-internal-dns"></a>6.9 Internes DNS
+Sie können die Liste der in einem VNet verwendeten DNS-Server im Verwaltungsportal oder mithilfe der Netzwerkkonfigurationsdatei verwalten. Kunden können bis zu 12 DNS-Server für jedes VNet hinzufügen. Beim Angeben von DNS-Servern müssen Sie darauf achten, dass Sie die DNS-Server des Kunden in der richtigen Reihenfolge für dessen Umgebung auflisten. DNS-Serverlisten werden nicht per Roundrobin verarbeitet. Die DNS-Server werden in der Reihenfolge verwendet, in der sie angegeben sind. Wenn der erste DNS-Server in der Liste erreicht werden kann, verwendet der Client diesen DNS-Server unabhängig davon, ob der DNS-Server ordnungsgemäß funktioniert. Um die Reihenfolge der DNS-Server für das virtuelle Netzwerk des Kunden zu ändern, entfernen Sie die DNS-Server aus der Liste, und fügen Sie sie in der vom Kunden gewünschten Reihenfolge wieder hinzu. DNS unterstützt den Verfügbarkeitsaspekt der drei Sicherheitsbereiche „Vertraulichkeit“, „Integrität“ und „Verfügbarkeit“.
+
+### <a name="610-azure-dns"></a>6.10 Azure DNS
+Das [Domain Name System](https://technet.microsoft.com/library/bb629410.aspx) (DNS) ist für die Übersetzung (oder Auflösung) eines Website- oder Dienstnamens in die IP-Adresse verantwortlich. [Azure DNS ist ein Hostingdienst](https://docs.microsoft.com/azure/dns/dns-overview) für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten. DNS unterstützt den Verfügbarkeitsaspekt der drei Sicherheitsbereiche „Vertraulichkeit“, „Integrität“ und „Verfügbarkeit“.
+### <a name="611-log-analytics-nsgs"></a>6.11 Netzwerksicherheitsgruppen für Log Analytics
+Sie können die folgenden Diagnoseprotokoll-Kategorien für Netzwerksicherheitsgruppen aktivieren:
+-    Ereignis: Enthält Einträge, für die NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
+
+-    Regelzähler: Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+
+### <a name="612-azure-security-center"></a>6.12 Azure Security Center
+Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Darüber hinaus sorgt Security Center für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden. Bei Netzwerkempfehlungen stehen Firewalls, Netzwerksicherheitsgruppen, das Konfigurieren von Regeln für den eingehenden Datenverkehr und vieles mehr im Mittelpunkt.
+
+Verfügbare Netzwerkempfehlungen:
+
+-    [Firewall der nächsten Generation hinzufügen](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall): Empfiehlt, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation eines Microsoft-Partners hinzufügen.
+
+-    [Datenverkehr nur über NGFW routen](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only): Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss.
+
+-    [Netzwerksicherheitsgruppen in Subnetzen oder auf virtuellen Computern aktivieren](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups) Empfiehlt, dass Sie NSGs in Subnetzen oder auf virtuellen Computern aktivieren.
+
+-    [Zugriff über Endpunkt mit Internetzugriff einschränken](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints) Empfiehlt, dass Sie Regeln für eingehenden Datenverkehr für NSGs konfigurieren.
+
+
+## <a name="70-compute"></a>7.0 Compute
+
+Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features in diesem Bereich und zusammenfassende Informationen zu diesen Funktionen.
+
+### <a name="71-antimalware--antivirus"></a>7.1 Antischadsoftware und Antivirus
+Mit Azure IaaS können Sie zum Schützen der virtuellen Computer vor Dateien mit schädlichem Inhalt, Adware und anderen Bedrohungen Antischadsoftware von Anbietern wie Microsoft, Symantec, Trend Micro, McAfee und Kaspersky verwenden. [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) for Azure Cloud Services and Virtual Machines ist eine Echtzeit-Schutzfunktion zum Bestimmen und Entfernen von Viren, Spyware und anderer Schadsoftware. Microsoft Antimalware gibt konfigurierbare Warnungen aus, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen. Microsoft Antimalware kann auch über das Azure Security Center bereitgestellt werden.
+
+### <a name="72-hardware-security-module"></a>7.2 Hardwaresicherheitsmodul
+Verschlüsselung und Authentifizierung verbessern die Sicherheit erst dann, wenn die Schlüssel selbst geschützt sind. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) speichern. Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)verwaltet.
+
+### <a name="73-virtual-machine-backup"></a>7.3 Sicherung virtueller Computer
+[Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) ist eine Lösung, die Ihre Anwendungsdaten schützt – ganz ohne Investitionskosten und mit sehr niedrigen Betriebskosten. Anwendungsfehler können Ihre Daten beschädigen, und menschliche Fehler können Bugs in Ihren Anwendungen verursachen, die zu Sicherheitsproblemen führen können. Mit Azure Backup sind Ihre virtuellen Windows- und Linux-Computer geschützt.
+
+### <a name="74-azure-site-recovery"></a>7.4 Azure Site Recovery
+Ein wichtiger Teil der [BCDR](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)-Strategie (Geschäftskontinuität/Notfallwiederherstellung) Ihrer Organisation ist die Ermittlung, wie geschäftliche Workloads und Apps verfügbar gehalten werden können, wenn geplante und ungeplante Ausfälle auftreten. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) unterstützt die Orchestrierung von Replikation, Failover und Wiederherstellung von Workloads und Apps, damit diese Komponenten über einen sekundären Standort zur Verfügung stehen, wenn der primäre Standort ausfällt.
+
+### <a name="75-sql-vm-tde"></a>7.5 SQL VM TDE
+[Transparent Data Encryption (TDE)](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault) und Column Level Encryption (CLE) sind SQL Server-Verschlüsselungsfeatures. Bei dieser Art der Verschlüsselung müssen Kunden die kryptografischen Schlüssel verwalten und speichern, die Sie für die Verschlüsselung verwenden.
+
+Der Azure-Schlüsseltresor-Dienst (Azure Key Vault, AKV) ist dafür ausgelegt, die Sicherheit und Verwaltung dieser Schlüssel an einem sicheren und hoch verfügbaren Speicherort zu verbessern. Mit dem SQL Server-Connector kann SQL Server diese Schlüssel aus Azure Key Vault verwenden.
+
+Wenn Sie SQL Server mit lokalen Computern ausführen, können Sie die Schritte zum Zugreifen auf den Azure-Schlüsseltresor von Ihrem lokalen SQL Server-Computer ausführen. Sie können für SQL Server auf virtuellen Azure-Computern aber Zeit sparen, indem Sie die Funktion für die Azure-Schlüsseltresor-Integration verwenden. Mit einigen Azure PowerShell-Cmdlets zum Aktivieren dieser Funktion können Sie die Konfiguration automatisieren, die ein virtueller SQL-Computer zum Zugreifen auf Ihren Schlüsseltresor benötigt.
+
+### <a name="76-vm-disk-encryption"></a>7.6 Datenträgerverschlüsselung für virtuelle Computer
+[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ist eine neue Funktion, mit der Sie die Datenträger von virtuellen Windows- und Linux-IaaS-Computern verschlüsseln können. Diese Funktion verwendet das Branchen-Standardfeature BitLocker von Windows und das Feature DM-Crypt von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Diese Lösung stellt außerdem sicher, dass alle ruhenden Daten auf den Datenträgern der virtuellen Computer in Azure Storage verschlüsselt sind.
+
+### <a name="77-virtual-networking"></a>7.7 Virtuelle Netzwerke
+Virtuelle Computer benötigen Netzwerkkonnektivität. Azure erfordert von einem virtuellen Computer eine Verbindung mit einem virtuellen Azure-Netzwerk, damit die Konnektivitätsanforderung unterstützt wird. Ein virtuelles Azure-Netzwerk ist ein logisches Konstrukt, das auf dem physischen Azure-Netzwerkfabric basiert. Jedes logische [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ist von allen anderen virtuellen Azure-Netzwerken isoliert. Mit dieser Isolierung wird sichergestellt, dass der Netzwerkverkehr in Ihren Bereitstellungen nicht für andere Microsoft Azure-Kunden zugänglich ist.
+
+### <a name="78-patch-updates"></a>7.8 Patch-Updates
+Patch-Updates bilden die Grundlage zum Ermitteln und Beheben potenzieller Probleme und zur Vereinfachung des Verwaltungsprozesses von Softwareupdates. Beides wird dadurch erreicht, dass einerseits die Anzahl von Softwareupdates verringert wird, die Sie in Ihrem Unternehmen bereitstellen müssen, und andererseits die Möglichkeiten verbessert werden, die Einhaltung der Vorgaben zu überwachen.
+
+### <a name="79-security-policy-management-and-reporting"></a>7.9 Verwaltung von Sicherheitsrichtlinien und Berichtserstellung
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen und sorgt für eine größere Transparenz und bessere Kontrolle in Bezug auf die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+
+### <a name="710-azure-security-center"></a>7.10 Azure Security Center
+Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+
+## <a name="80-identify-and-access-management"></a>8.0 Identitäts- und Zugriffsverwaltung
+
+Das Schützen von Systemen, Anwendungen und Daten beginnt mit der identitätsbasierten Zugriffssteuerung. Die Features zur Identitäts- und Zugriffsverwaltung, die in Microsoft Business-Produkten und -Diensten integriert sind, unterstützen Sie beim Schützen Ihrer organisationsbezogenen und privaten Informationen vor nicht autorisiertem Zugriff, während sie für berechtigte Benutzer jederzeit und überall verfügbar sind.
+
+### <a name="81-secure-identity"></a>8.1 Schützen der Identität
+Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine Produkte und Dienste für die Identitäts- und Zugriffsverwaltung.
+-    [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) erfordert, dass Benutzer mehrere Zugriffsmethoden (lokal und in der Cloud) verwenden. Mit einer Reihe einfacher Verifizierungsoptionen wird für eine leistungsstarke Authentifizierung gesorgt und gleichzeitig die Benutzeranforderungen an einen einfachen Anmeldeprozess erfüllt.
+
+-    [Microsoft Authenticator](https://aka.ms/authenticator) bietet eine benutzerfreundliche Umgebung für die Multi-Factor Authentication, die mit Microsoft Azure Active Directory und Microsoft-Konten funktioniert und Unterstützung für Wearables und fingerabdruckbasierende Genehmigungen bietet.
+
+-    [Erzwingung der Kennwortrichtlinie](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) erhöht die Sicherheit herkömmlicher Kennwörter, indem Anforderungen hinsichtlich Länge und Komplexität sowie eine regelmäßige erzwungene Rotation und Kontosperrungen nach fehlgeschlagenen Authentifizierungsversuchen durchgesetzt werden.
+
+-    [Token-basierte Authentifizierung](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) aktiviert die Authentifizierung über Active Directory-Verbunddienste (AD FS) oder Drittanbietersysteme mit sicheren Token.
+
+-    [Rollenbasierte Zugriffssteuerung (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
+
+-    [Integrierte Identitätsverwaltung (Hybrididentität)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) ermöglicht es Ihnen, den Benutzerzugriff auf interne Rechenzentren und Cloudplattformen zu kontrollieren, indem Sie eine einzelne Benutzeridentität für die Authentifizierung und Autorisierung für alle Ressourcen erstellen.
+
+### <a name="82-secure-apps-and-data"></a>8.2 Schützen von Apps und Daten
+[Azure Active Directory](https://azure.microsoft.com/services/active-directory/) ist eine umfassende Cloudlösung zur Identitäts- und Zugriffsverwaltung, die Sie beim Sichern des Zugriffs auf Daten in lokalen Anwendungen sowie in der Cloud unterstützt und die Verwaltung von Benutzern und Gruppen unterstützt. Es kombiniert wesentliche Verzeichnisdienste, erweiterte Identitätskontrolle, Sicherheit und Anwendungszugriffsverwaltung und gestaltet es für Entwickler einfach, eine richtlinienbasierte Identitätsverwaltung in ihre Apps zu integrieren. Sie können Ihre Azure Active Directory-Anwendung erweitern, indem Sie mit den Basic-, Premium P1- und Premium P2-Editionen von Azure Active Directory kostenpflichtige Funktionen hinzufügen.
+
+| Kostenlose/Gemeinsame Features     | Basic-Features    |Premium P1-Features |Premium P2-Features | Azure Active Directory-Einbindung – nur auf Windows 10 bezogene Features|
+| :------------- | :------------- |:------------- |:------------- |:------------- |
+|     [Verzeichnisobjekte](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#directory-objects),    [Benutzer-/Gruppenverwaltung (hinzufügen/aktualisieren/löschen)/Benutzerbasierte Bereitstellung, Geräteregistrierung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration),     [Einmaliges Anmelden (Single Sign-On, SSO)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#single-sign-on-sso),     [Self-Service-Kennwortänderung für Cloudbenutzer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users),     [Verbinden (Synchronisierungsmodul, das lokale Verzeichnisse auf Azure Active Directory erweitert)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory),     [Sicherheits-/Verwendungsberichte](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#securityusage-reports)       |     [Gruppenbasierte Zugriffsverwaltung/Bereitstellung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning),    [Self-Service-Kennwortzurücksetzung für Cloudbenutzer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users),     [Unternehmensbranding (Anpassen von Anmeldeseiten/Zugriffsbereich)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization),    [Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#application-proxy),    [SLA 99,9 %](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#sla-999) |  [Self-Service-Verwaltung von Gruppen und Apps/Self-Service-Hinzufügung von Anwendungen/Dynamische Gruppen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-group),    [Self-Service-Kennwortzurücksetzung, -änderung, -entsperrung mit lokalem Rückschreiben](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back),    [Multi-Factor Authentication (cloudbasiert und lokal [MFA-Server])](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server),    [MIM CAL + MIM Server](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mim-cal-mim-server),     [Cloud App Discovery](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#cloud-app-discovery),     [Connect Health](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-health),     [Automatisches Kennwortrollover für Gruppenkonten](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|     [Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection),     [Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-configure)|    [Verbinden eines Geräts mit Azure AD, Desktop-SSO, Microsoft Passport für Azure AD, BitLocker-Wiederherstellung (Administrator)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery),    [Automatische Registrierung für MDM, BitLocker-Wiederherstellung (Self-Service), zusätzliche lokale Administratoren für Windows 10-Geräte über die Einbindung in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
+
+
+- [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-cloudappdiscovery-whatis) ist ein Premium-Feature von Azure Active Directory, mit dem Sie Cloudanwendungen identifizieren können, die von den Mitarbeitern in Ihrer Organisation verwendet werden.
+
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) ist ein Sicherheitsdienst, der die Funktionen von Azure Active Directory zur Erkennung von Anomalien verwendet, um eine konsolidierte Ansicht zu Risikoereignissen und potenziellen Sicherheitslücken zu bieten, die sich auf die Identitäten Ihrer Organisation auswirken könnten.
+
+- Mit [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) können Sie virtuelle Azure-Computer in eine Domäne einbinden, ohne Domänencontroller bereitstellen zu müssen. Die Benutzer melden sich mit den Active Directory-Anmeldeinformationen ihres Unternehmens an diesen virtuellen Computern an und können nahtlos auf Ressourcen zugreifen.
+
+- [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) ist ein hoch verfügbarer, globaler Identitätsverwaltungsdienst für kundenorientierte Apps, der für Hunderte Millionen von Identitäten skaliert und plattformübergreifend (mobil und Web) integriert werden kann. Ihre Kunden können sich über anpassbare Benutzeroberflächen, die vorhandene Konten für soziale Netzwerke verwenden, bei all Ihren Apps anmelden. Sie können aber auch neue eigenständige Anmeldeinformationen erstellen.
+
+- Die [Azure Active Directory B2B-Zusammenarbeit](https://aka.ms/aad-b2b-collaboration) ist eine sichere Lösung zur Partnerintegration, die Partnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und Unternehmensdaten über ihre selbstverwalteten Identitäten ermöglicht und so Ihre unternehmensübergreifenden Beziehungen unterstützt.
+
+- [Azure Active Directory Join](https://azure.microsoft.com/documentation/articles/active-directory-azureadjoin-overview/) ermöglicht Ihnen das Erweitern von Cloudfunktionen auf Windows 10-Geräte für die zentrale Verwaltung. Dadurch erhalten Benutzer die Möglichkeit, über Azure Active Directory eine Verbindung mit der Cloud des Unternehmens oder der Organisation herzustellen. Dies vereinfacht den Zugriff auf Apps und Ressourcen.
+
+- Der [Azure Active Directory-Anwendungsproxy](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) ermöglicht das einmalige Anmelden (SSO) und den sicheren Remotezugriff für lokal gehostete Webanwendungen.
+
+## <a name="next-steps"></a>Nächste Schritte
+- [Erste Schritte mit Microsoft Azure-Sicherheit](https://docs.microsoft.com/azure/security/azure-security-getting-started)
+
+Azure-Dienste und -Features, die Sie beim Sichern Ihrer Dienste und Daten innerhalb von Azure unterstützen
+
+- [Azure Security Center](https://azure.microsoft.com/services/security-center/)
+
+Mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen, um Bedrohungen zu erkennen, zu verhindern oder darauf zu reagieren
+
+- [Überwachen der Sicherheitsintegrität in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+
+Die Überwachung der Richtliniencompliance mithilfe der Überwachungsfunktionen von Azure Security Center.
+
+
+

@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 04/26/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: 5ae60cb8ba3d391d3babd1ab575b4f32e139a185
-ms.openlocfilehash: f2c9a5ef2a8f517b9b2072be57f4d8c51b7694c6
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 2d6ef39ad4678d331eadd2c0bfd6ff93c99da501
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -29,7 +30,7 @@ Mit der Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] k
 
 - Für die Runbooks wird ein [Ausführendes Azure-Konto](automation-sec-configure-azure-runas-account.md) verwendet.  Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.  
 
-- Mit dieser Lösung können nur VMs verwaltet werden, die unter demselben Abonnement und in derselben Ressourcengruppe wie das Automation-Konto enthalten sind.  
+- Mit dieser Lösung können nur VMs verwaltet werden, die unter demselben Abonnement wie das Automation-Konto enthalten sind.  
 
 - Diese Lösung wird nur in den folgenden Azure-Regionen bereitgestellt: „Australien, Südosten“, „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“.  Die Runbooks zum Verwalten des VM-Zeitplans können für VMs in jeder beliebigen Region verwendet werden.  
 

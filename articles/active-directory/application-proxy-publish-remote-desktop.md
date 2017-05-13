@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: e45d704e68c17d36fd5b195179730b80d0f53e0c
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: 9724ad2e460837157c7677d2c91493cebc8f7012
+ms.contentlocale: de-de
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,14 +60,14 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
 ### <a name="publish-the-rd-host-endpoint"></a>Veröffentlichen des RD-Hostendpunkts
 
 1. [Veröffentlichen Sie anhand der folgenden Werten eine neue Anwendung mit Anwendungsproxy](application-proxy-publish-azure-portal.md):
-   - Interne URL: https://<rdhost>.com/, wobei <rdhost> das gemeinsame Stammverzeichnis ist, den RD-Web und RD-Gateway gemeinsam nutzen. 
+   - Interne URL: https://\<rdhost\>.com/, wobei \<rdhost\> das gemeinsame Stammverzeichnis ist, den RD-Web und RD-Gateway gemeinsam nutzen. 
    - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung ausgefüllt, den Sie jedoch ändern können. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet. 
    - Präauthentifizierungsmethode: Azure Active Directory
    - URL-Header übersetzen: Nein
 2. Weisen Sie Benutzern die veröffentlichte RD-Anwendung zu. Stellen Sie sicher, dass alle Benutzer auch Zugriff auf RDS haben.
 3. Legen Sie für die Methode zur einmaligen Anmeldung für die Anwendung **Azure AD-SSO deaktiviert** fest. Ihre Benutzer werden aufgefordert, sich einmal bei Azure AD und einmal bei RD-Web zu authentifizieren, verfügen jedoch über die Möglichkeit zur einmaligen Anmeldung beim RD-Gateway. 
 4. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen** > *Ihre Anwendung* > **Einstellungen**. 
-5. Wählen Sie **Eigenschaften** und aktualisieren Sie das Feld **URL der Startseite**, sodass auf Ihren RD-Web-Endpunkt verwiesen wird (z.B. https://<rdhost>.com/RDWeb).
+5. Wählen Sie **Eigenschaften** aus, und aktualisieren Sie das Feld **URL der Startseite**, sodass auf Ihren RD-Web-Endpunkt verwiesen wird (z. B. https://\<rdhost\>.com/RDWeb).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Weiterleiten des RDS-Datenverkehrs an den Anwendungsproxy
 
@@ -82,7 +83,7 @@ Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und
 
   ![Bildschirm „Bereitstellungseigenschaften“ in RDS](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. Führen Sie für jede Sammlung den folgenden Befehl aus. Ersetzen Sie *<yourcollectionname>* und *<proxyfrontendurl>* durch Ihre eigenen Angaben. Dieser Befehl ermöglicht eine einmalige Anmeldung zwischen RD-Web und RD-Gateway und optimiert die Leistung:
+8. Führen Sie für jede Sammlung den folgenden Befehl aus. Ersetzen Sie *\<yourcollectionname\>* und *\<proxyfrontendurl\>* durch Ihre eigenen Information. Dieser Befehl ermöglicht eine einmalige Anmeldung zwischen RD-Web und RD-Gateway und optimiert die Leistung:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s: <proxyfrontendurl> `n require pre-authentication:i:1"
@@ -103,3 +104,4 @@ Prüfen Sie das Szenario mit Internet Explorer auf einem Windows 7- oder 10-Comp
 
 [Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy](application-proxy-enable-remote-access-sharepoint.md)  
 [Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy](application-proxy-security-considerations.md)
+
