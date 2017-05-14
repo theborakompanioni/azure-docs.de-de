@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2017
+ms.date: 05/08/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4149c5e06f1a23864ca0f92f1b7b73f4f66949df
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 1e48b0848c9f286f3bb0b3758403135a4f280bc0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -89,7 +90,7 @@ Mit Azure Site Recovery können SharePoint-Bereitstellungen wie folgt geschützt
 * Vereinfachen von Entwicklung und Tests von SharePoint-Anwendungen, indem für Test- und Debugzwecke eine der Produktionsversion ähnliche Replikatumgebung bedarfsgesteuert erstellt wird.
 * Vereinfachen des Übergangs in die Cloud, indem Site Recovery zum Migrieren von SharePoint-Bereitstellungen in Azure verwendet wird.
 
-[Erfahren Sie mehr](https://gallery.technet.microsoft.com/SharePoint-DR-Solution-f6b4aeae) über das Schützen von SharePoint.
+[Erfahren Sie mehr](site-recovery-sharepoint.md) über das Schützen von SharePoint.
 
 ## <a name="protect-dynamics-ax"></a>Schützen von Dynamics AX
 Azure Site Recovery trägt wie folgt zum Schutz Ihrer Dynamics AX ERP-Lösung bei:
@@ -98,7 +99,7 @@ Azure Site Recovery trägt wie folgt zum Schutz Ihrer Dynamics AX ERP-Lösung be
 * Vereinfachen der Migration von Dynamics AX-Bereitstellungen zur Cloud (Azure).
 * Vereinfachen von Entwicklung und Tests von Dynamics AX-Anwendungen, indem für Test- und Debugzwecke eine der Produktionsversion ähnliche Kopie bedarfsgesteuert erstellt wird.
 
-[Erfahren Sie mehr](https://gallery.technet.microsoft.com/Dynamics-AX-DR-Solution-b2a76281) über das Schützen von Dynamics AX.
+[Erfahren Sie mehr](site-recovery-dynamicsax.md) über das Schützen von Dynamics AX.
 
 ## <a name="protect-rds"></a>Schützen von RDS
 Mit Remotedesktopdiensten (RDS) werden eine Virtual Desktop Infrastructure (VDI) sowie sitzungsbasierte Desktops und Anwendungen ermöglicht, damit Benutzer an jedem Ort arbeiten können. Mit Azure Site Recovery haben Sie folgende Möglichkeiten:

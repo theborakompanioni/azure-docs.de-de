@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/18/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9ddf19c008c35525419a357436b1a969a4b19205
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9489fdc3c5388a7510bc4411b4abb05fa72fbf4f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -229,7 +230,7 @@ Standardmäßig gibt Zookeeper den Domänennamen der Kafka-Broker an Clients zur
 
     Geben Sie bei entsprechender Aufforderung den HTTPS-Benutzernamen und das Kennwort für den Cluster ein. Die Ambari-Webbenutzeroberfläche für den Cluster wird angezeigt.
 
-2. Wählen Sie zum Anzeigen von Informationen über Kafka aus der Liste auf der linken Seite __Kafka__ aus. 
+2. Wählen Sie zum Anzeigen von Informationen über Kafka aus der Liste auf der linken Seite __Kafka__ aus.
 
     ![Dienstliste, in der Kafka hervorgehoben ist](./media/hdinsight-apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
@@ -271,7 +272,7 @@ Standardmäßig gibt Zookeeper den Domänennamen der Kafka-Broker an Clients zur
 
 ## <a name="connect-to-the-vpn-gateway"></a>Herstellen einer Verbindung mit dem VPN-Gateway
 
-Verwenden Sie zum Herstellen einer Verbindung mit dem VPN-Gateway über einen __Windows-Client__ den Abschnitt __Herstellen einer Verbindung mit Azure__ im Dokument [Konfigurieren einer Point-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#a-nameconnectapart-7---connect-to-azure).
+Verwenden Sie zum Herstellen einer Verbindung mit dem VPN-Gateway über einen __Windows-Client__ den Abschnitt __Herstellen einer Verbindung mit Azure__ im Dokument [Konfigurieren einer Point-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#a-nameclientcertificatea7---install-an-exported-client-certificate).
 
 ## <a name="remote-kafka-client"></a>Kafka-Remoteclient
 
@@ -319,7 +320,7 @@ Um über den Clientcomputer eine Verbindung mit Kafka herzustellen, müssen Sie 
   ```
 
     Ersetzen Sie die `'ip_address'`-Einträge durch die Adressen, die in Schritt 1 in diesem Abschnitt zurückgegeben wurden.
-    
+
     > [!NOTE]
     > Dieser Code sendet die Zeichenfolge `test message` an das Thema `testtopic`. Die Standardkonfiguration von Kafka in HDInsight ist, dass das Thema erstellt wird, wenn es nicht vorhanden ist.
 

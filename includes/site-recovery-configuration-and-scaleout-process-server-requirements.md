@@ -8,7 +8,7 @@
 | **Software** | |
 | Betriebssystemversion | Windows Server 2012 R2 |
 | Gebietsschema des Betriebssystems | Englisch (en-us)|
-| VMware vSphere PowerCLI-Version | [PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0 "PowerCLI 6.0")|
+| VMware vSphere PowerCLI-Version | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V |
 | **Netzwerk** | |
 | Art der Netzwerkschnittstellenkarte | VMXNET3 |
