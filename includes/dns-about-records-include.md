@@ -2,7 +2,7 @@
 
 Einträge in Azure DNS werden mit relativen Namen angegeben. Ein *vollqualifizierter* Domänenname (fully qualified domain name, FQDN) beinhaltet den Zonennamen, ein *relativer* Name hingegen nicht. Der relative Eintragsname „www“ in der Zone „contoso.com“ gibt beispielsweise den vollqualifizierten Eintragsnamen „www.contoso.com“ an.
 
-Ein Eintrag an der *Zonenspitze* ist ein DNS-Eintrag im Stamm (oder der *Spitze*) einer DNS-Zone. Beispiel: Ein Eintrag an der Zonenspitze der DNS-Zone „contoso.com“ besitzt auch den vollqualifizierten Namen „contoso.com“ (dies wird mitunter als *reine* Domäne bezeichnet).  Gemäß der Konvention wird der relative Name '@' verwendet, um Einträge an der Zonenspitze darzustellen.
+Ein Eintrag an der *Zonenspitze* ist ein DNS-Eintrag im Stamm (oder der *Spitze*) einer DNS-Zone. Beispiel: Ein Eintrag an der Zonenspitze der DNS-Zone „contoso.com“ besitzt auch den vollqualifizierten Namen „contoso.com“ (dies wird mitunter als *reine* Domäne bezeichnet).  Gemäß der Konvention wird der relative Name “@“ verwendet, um Einträge an der Zonenspitze darzustellen.
 
 ### <a name="record-types"></a>Eintragstypen
 
