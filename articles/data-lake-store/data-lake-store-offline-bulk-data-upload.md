@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: dae5491962b22453c517da35539ce09463d8802d
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c852374b6f6ca58d807631fdfcc8e42abf99b673
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -188,7 +189,7 @@ In diesem Abschnitt sind die JSON-Definitionen angegeben, die Sie zum Erstellen 
     }
 }
 ````
-Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Data Lake Store mithilfe von Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store).
+Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Data Lake Store mithilfe von Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md).
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Wiederherstellen der Datendateien in Azure Data Lake Store
 Wir haben eine Datei mit einer Größe von 319GB verwendet und sie in kleinere Dateien aufgeteilt, sodass sie mithilfe des Azure Import/Export-Diensts übertragen werden konnte. Da die Daten nun in Azure Data Lake Store gespeichert sind, kann die Datei in ihrer ursprünglichen Größe wiederhergestellt werden. Dazu können die folgenden Azure PowerShell-Cmdlets verwendet werden.

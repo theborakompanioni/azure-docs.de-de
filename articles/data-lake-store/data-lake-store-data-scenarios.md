@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 05/10/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 4792b3f602c416457d8a0ec14c2939f704a002f6
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: a1349e53774732ffbfacefc7bd8dcc493f78fbd6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -42,7 +43,7 @@ Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Da
 | Datenquelle | Erfassen Sie mit |
 | --- | --- |
 | Lokalem Computer |<ul> <li>[Azure-Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Plattformübergreifende Azure-CLI](data-lake-store-get-started-cli.md)</li> <li>[Verwenden von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md#upload-source-data-files) </li></ul> |
-| Azure Storage-Blob |<ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von DistCp auf einem HDInsight-Cluster](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
+| Azure Storage-Blob |<ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von DistCp auf einem HDInsight-Cluster](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Streamingdaten
 Diese Daten können von verschiedenen Quellen wie Anwendungen, Geräten, Sensoren etc. generiert werden. Diese Daten können in einem Data Lake-Speicher von verschiedenen Tools erfasst werden. Diese Tools erfassen und verarbeiten die Daten in der Regel Ereignis für Ereignis in Echtzeit und schreiben dann die Ereignisse stapelweise in den Data Lake-Speicher, damit sie weiterverarbeitet werden können.
@@ -74,7 +75,7 @@ Die meisten HDInsight-Clustertypen (Hadoop, HBase, Storm) unterstützen den Data
 
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 * [AdlCopy-Dienst](data-lake-store-copy-data-azure-storage-blob.md)
-* [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)
+* [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)
 
 ### <a name="data-stored-in-on-premise-or-iaas-hadoop-clusters"></a>In lokalen oder IaaS Hadoop-Clustern gespeicherte Daten
 Große Datenmengen können in vorhandenen Hadoop-Clustern oder lokal auf Computern gespeichert werden, die HDFS verwenden. Die Hadoop-Cluster können sich in einer lokalen Bereitstellung oder innerhalb eines IaaS-Clusters in Azure befinden. Solche Daten müssen möglicherweise einmalig oder regelmäßig in den Azure Data Lake-Speicher kopiert werden. Hierfür stehen verschiedene Möglichkeiten zur Verfügung. Im Folgenden finden Sie eine Liste der Alternativen und die jeweiligen Vor- und Nachteile.
@@ -89,7 +90,7 @@ Große Datenmengen können in vorhandenen Hadoop-Clustern oder lokal auf Compute
 Das Hochladen von Datasets im Bereich mehrerer Terabyte kann mithilfe der oben beschriebenen Methoden manchmal langsam und kostspielig sein. In solchen Fällen können Sie die folgenden Optionen verwenden:
 
 * **Verwenden von Azure ExpressRoute**. Azure ExpressRoute ermöglicht Ihnen, private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur zu erstellen. Dies ist eine zuverlässige Option zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [Dokumentation zu Azure ExpressRoute](../expressroute/expressroute-introduction.md).
-* **Offline-Datenupload**. Wenn Azure ExpressRoute aus irgendeinem Grund nicht verwendet werden kann, können Sie über den [Azure Import/Export-Dienst](../storage/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store) oder dem [AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md) Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
+* **Offline-Datenupload**. Wenn Azure ExpressRoute aus irgendeinem Grund nicht verwendet werden kann, können Sie über den [Azure Import/Export-Dienst](../storage/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) oder dem [AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md) Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
 
   > [!NOTE]
   > Wenn Sie den Import/Export-Dienst verwenden, sollte die Größe der Dateien auf den Datenträgern, die Sie an das Azure-Rechenzentrum senden, nicht größer als 195 GB sein.

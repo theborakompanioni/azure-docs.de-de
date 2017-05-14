@@ -15,10 +15,11 @@ ms.workload: multiple
 ms.date: 04/03/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 0563f6c3aa4508ef2acac6b17dc85ecbf11bb154
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f1156572dece1dd59d5a258b670c8fb4f3e3d0e6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -34,8 +35,8 @@ In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich
 
 > [!IMPORTANT]
 > Jedes Azure Batch-Konto ist auf eine bestimmte Anzahl von Kernen (und damit auf eine maximale Anzahl von Computeknoten) beschränkt, die für die Verarbeitung verwendet werden können. Der Batch-Dienst erstellt maximal so viele neue Knoten, wie durch den Kerngrenzwert vorgegeben wird. Die durch eine Formel für die automatischen Skalierung angegebene Zielanzahl von Computeknoten wird vom Batch-Dienst möglicherweise nicht erreicht. Unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md) finden Sie Informationen zum Anzeigen und Erhöhen Ihrer Kontokontingente.
-> 
-> 
+>
+>
 
 ## <a name="automatic-scaling-formulas"></a>Formeln für die automatische Skalierung
 Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die automatische Skalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf eine Größe von 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
@@ -110,8 +111,8 @@ Sie können die Werte dieser vom Dienst definierten Variablen mit **get** abrufe
 
 > [!TIP]
 > Die obigen, vom Dienst definierten schreibgeschützten Variablen sind *Objekte* , die verschiedene Methoden für den Zugriff auf die zum jeweiligen Objekt gehörigen Daten bereitstellen. Weitere Informationen finden Sie unten unter [Erfassen von Stichprobendaten](#getsampledata).
-> 
-> 
+>
+>
 
 ## <a name="types"></a>Typen
 Folgende **Typen** werden in Formeln unterstützt.
@@ -121,7 +122,7 @@ Folgende **Typen** werden in Formeln unterstützt.
 * doubleVecList
 * string
 * timestamp – „timestamp“ ist eine Verbundstruktur, die folgende Member enthält:
-  
+
   * year
   * Monat (1-12)
   * Tag (1-31)
@@ -130,7 +131,7 @@ Folgende **Typen** werden in Formeln unterstützt.
   * Minute (00-59)
   * Sekunde (00-59)
 * timeInterval
-  
+
   * TimeInterval_Zero
   * TimeInterval_100ns
   * TimeInterval_Microsecond
@@ -253,8 +254,8 @@ Weil bei der Verfügbarkeit von Stichproben eine Verzögerung auftreten kann, m�
 
 > [!IMPORTANT]
 > Es wird **dringend empfohlen**, sich **in den Formeln für die automatische Skalierung nicht *ausschließlich* auf `GetSample(1)` zu verlassen**. Der Grund ist, dass `GetSample(1)` im Wesentlichen den Batch-Dienst anweist, die letzte vorhandene Stichprobe unabhängig vom Zeitpunkt ihrer Erfassung bereitzustellen. Da es sich nur um ein Stichprobe handelt, die ggf. schon älter ist, ist diese möglicherweise nicht für den aktuellen Aufgaben- oder Ressourcenstatus repräsentativ. Stellen Sie bei Verwendung von `GetSample(1)` sicher, dass dieser Wert zu einer längeren Anweisung gehört und nicht der einzige Datenpunkt ist, auf dem Ihre Formel basiert.
-> 
-> 
+>
+>
 
 ## <a name="metrics"></a>Metriken
 Für das Definieren einer Formel können Sie sowohl **Ressourcenmetriken** als auch **Taskmetriken** verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
@@ -367,12 +368,12 @@ pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);
 pool.Commit();
 ```
 
-Zusätzlich zur Batch-REST-API und zum .NET SDK können Sie auch die anderen [Batch-SDKs](batch-apis-tools.md#batch-development-apis), [Batch PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) und die [Batch-CLI](batch-cli-get-started.md) für die automatische Skalierung verwenden.
+Zusätzlich zur Batch-REST-API und zum .NET SDK können Sie auch die anderen [Batch-SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), [Batch PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) und die [Batch-CLI](batch-cli-get-started.md) für die automatische Skalierung verwenden.
 
 > [!IMPORTANT]
 > Wenn Sie einen Pool mit aktivierter automatischer Skalierung erstellen, dürfen Sie den Parameter `targetDedicated` **nicht** angeben. Beachten Sie auch, dass Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool]) zunächst die automatische Skalierung **deaktivieren** müssen, um die Größe des Pools ändern zu können.
-> 
-> 
+>
+>
 
 ### <a name="automatic-scaling-interval"></a>Intervall für die automatische Skalierung
 Standardmäßig passt der Batch-Dienst die Poolgröße gemäß seiner Formel für die automatische Skalierung alle **15 Minuten**an. Dieses Intervall kann jedoch mithilfe der folgenden Pooleigenschaften konfiguriert werden:
@@ -384,8 +385,8 @@ Das kürzeste Intervall ist fünf Minuten, das längste 168 Stunden. Wenn ein In
 
 > [!NOTE]
 > Die automatische Skalierung ist derzeit nicht als Reaktion im Zeitraum unter einer Minute auf Änderungen vorgesehen, sondern dient eher zum allmählichen Anpassen der Größe Ihres Pools während der Ausführung Ihres Workloads.
-> 
-> 
+>
+>
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Aktivieren der automatischen Skalierung für einen vorhandenen Pool
 Wenn Sie bereits einen Pool mit einer festgelegten Anzahl von Computeknoten mit dem Parameter *targetDedicated* erstellt haben, können Sie die automatische Skalierung trotzdem aktivieren. Jedes Batch-SDK verfügt über einen Vorgang zum Aktivieren der automatischen Skalierung („enable autoscale“), z.B.:
@@ -397,14 +398,14 @@ Wenn Sie die automatische Skalierung für einen vorhandenen Pool aktivieren, gil
 
 * Falls die automatische Skalierung für den Pool derzeit **deaktiviert** ist, wenn Sie die Anforderung „enable autoscale“ ausführen, *müssen* Sie dabei eine gültige autoscale-Formel angeben. Sie können *optional* ein Auswertungsintervall für die automatische Skalierung angeben. Wenn Sie kein Intervall angeben, wird der Standardwert „15 Minuten“ verwendet.
 * Wenn die automatische Skalierung für den Pool derzeit **aktiviert** ist, können Sie eine autoscale-Formel, ein Auswertungsintervall oder beides angeben. Es ist nicht möglich, beide Eigenschaften wegzulassen.
-  
+
   * Wenn Sie ein neues Auswertungsintervall für die automatische Skalierung angeben, wird der vorhandene Auswertungszeitplan beendet und ein neuer Zeitplan gestartet. Die Startzeit des neuen Zeitplans ist der Zeitpunkt, an dem die Anforderung vom Typ „enable autoscale“ ausgeführt wurde.
   * Wenn Sie die autoscale-Formel oder das Auswertungsintervall weglassen, nutzt der Batch-Dienst weiterhin den aktuellen Wert dieser Einstellung.
 
 > [!NOTE]
 > Wenn beim Erstellen des Pools für den *targetDedicated* -Parameter ein Wert angegeben wurde, wird dieser beim Auswerten der Formel für das automatische Skalieren ignoriert.
-> 
-> 
+>
+>
 
 In diesem C#-Codeausschnitt wird die [Batch .NET][net_api]-Bibliothek verwendet, um die automatische Skalierung in einem vorhandenen Pool zu aktivieren:
 
@@ -443,10 +444,10 @@ Sie können eine Formel auswerten, bevor Sie sie auf einen Pool anwenden. Auf di
 Damit Sie eine Formel für die automatische Skalierung auswerten können, müssen Sie zuerst die **automatische Skalierung** für den Pool mit einer **gültigen Formel** aktivieren. Wenn Sie eine Formel für einen Pool testen möchten, für den die automatische Skalierung noch nicht aktiviert ist, können Sie beim ersten Aktivieren der automatischen Skalierung die einzeilige Formel `$TargetDedicated = 0` verwenden. Verwenden Sie anschließend eines der folgenden Verfahren, um die zu testende Formel auszuwerten:
 
 * [BatchClient.PoolOperations.EvaluateAutoScale](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscale.aspx) oder [EvaluateAutoScaleAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscaleasync.aspx)
-  
+
     Für diese Batch .NET-Methoden sind die ID eines vorhandenen Pools und eine Zeichenfolge mit der auszuwertenden autoscale-Formel erforderlich. Die Ergebnisse der Auswertung sind in der zurückgegebenen [AutoScaleEvaluation](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscaleevaluation.aspx)-Instanz enthalten.
 * [Auswerten einer Formel für die automatische Skalierung](https://msdn.microsoft.com/library/azure/dn820183.aspx)
-  
+
     Geben Sie in dieser REST-API-Anforderung die Pool-ID im URI und die autoscale-Formel im *autoScaleFormula*-Element des Anforderungstexts an. Die bei der Anfrage generierte Antwort enthält Fehlerinformationen, die in Zusammenhang mit der Formel stehen können.
 
 In diesem [Batch .NET][net_api]-Codeausschnitt evaluieren wir eine Formel, bevor wir sie auf den [CloudPool][net_cloudpool] anwenden. Wenn für den Pool noch keine automatische Skalierung aktiviert ist, führen wir dies zuerst aus.

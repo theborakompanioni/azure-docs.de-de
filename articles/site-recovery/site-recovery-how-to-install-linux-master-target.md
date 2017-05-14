@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 02/13/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 22a86001fe93dcb11e180dbdd75045b49b85b58f
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 60102ebb43efc8710f102450df5b98edcb1d4b39
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -410,5 +411,6 @@ Sie können jetzt mit [Reprotection](site-recovery-how-to-reprotect.md) (Erneute
 * Stellen Sie sicher, dass Sie Storage vMotion nicht auf Verwaltungskomponenten wie dem Masterziel aktivieren. Wenn das Masterziel nach erfolgreichem erneuten Schützen verschoben wird, können die Datenträger des virtuellen Computers nicht getrennt werden, und das Failback schlägt fehl.
 * Das Masterziel darf keine Momentaufnahmen auf dem virtuellen Computer aufweisen. Wenn Momentaufnahmen vorhanden sind, schlägt das Failback fehl.
 * Aufgrund von benutzerdefinierten NIC-Konfigurationen bei einigen Kunden ist die Netzwerkschnittstelle während des Systemstarts deaktiviert, und der Masterziel-Agent kann nicht initialisiert werden. Stellen Sie sicher, dass die folgenden Eigenschaften richtig festgelegt sind. Überprüfen Sie diese Eigenschaften in den Dateien der Ethernet-Karte: „/etc/sysconfig/network-scripts/ifcfg-eth*“.
-        * BOOTPROTO=dhcp * ONBOOT=yes
+    * BOOTPROTO=dhcp
+    * ONBOOT=yes
 

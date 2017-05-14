@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b010891a177f27eef99bd65e0d940c83375aa5ec
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 7375d2d3c237c3b1c2dcdab44b2fcb0000ff961c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -202,16 +203,12 @@ Zum Finden der Berichte für die Kennwortverwaltung führen Sie die folgenden Sc
 4. Sehen Sie im Abschnitt **Aktivitätsprotokolle** nach.
 5. Wählen Sie entweder den Bericht **Aktivität „Zurücksetzen des Kennworts“** oder den Bericht **Aktivität „Registrierung für Zurücksetzen des Kennworts“** aus.
 
-   ![][001]
-
 ## <a name="view-password-reset-registration-activity-in-the-classic-portal"></a>Anzeigen der Aktivität zur Registrierung für die Kennwortzurücksetzung im klassischen Portal
 Der Bericht "Aktivität "Registrierung für Zurücksetzen des Kennworts"" zeigt alle Registrierungen für die Kennwortzurücksetzung, die in Ihrer Organisation erfolgt sind.  Eine Registrierung für die Kennwortzurücksetzung wird in diesem Bericht für jeden Benutzer angezeigt, der erfolgreich Authentifizierungsinformationen beim Registrierungsportal für die Kennwortzurücksetzung registriert hat ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)).
 
 * **Max. Zeitraum**: 30 Tage
 * **Max. Anzahl von Zeilen**: 75.000
 * **Zum Herunterladen**: Ja, über eine CSV-Datei
-
-    ![][002]
 
 ### <a name="description-of-report-columns"></a>Beschreibung der Berichtsspalten
 In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
@@ -234,8 +231,6 @@ Dieser Bericht zeigt alle Versuche der Kennwortzurücksetzung an, die in Ihrer O
 * **Max. Zeitraum**: 30 Tage
 * **Max. Anzahl von Zeilen**: 75.000
 * **Zum Herunterladen**: Ja, über eine CSV-Datei
-
-    ![][003]
 
 ### <a name="description-of-report-columns"></a>Beschreibung der Berichtsspalten
 In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
@@ -308,8 +303,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 * [**Häufig gestellte Fragen**](active-directory-passwords-faq.md) – Hier erhalten Sie Antworten auf häufig gestellte Fragen.
 * [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
 * [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
-
-[001]: ./media/active-directory-passwords-get-insights/001.jpg "Image_001.jpg"
-[002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
-[003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
 
