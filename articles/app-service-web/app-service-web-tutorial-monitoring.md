@@ -8,10 +8,11 @@ ms.author: byvinyal
 ms.date: 04/04/2017
 ms.topic: article
 ms.service: app-service-web
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 8d9b4a4fa3b62659fc7e2aa1c6329fdc5e01fe39
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 29df824062d00e01b786533033097948c008588f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 # <a name="monitor-app-service"></a>Überwachen des App Service
@@ -24,15 +25,15 @@ Jeder Abschnitt dieses Dokuments behandelt ein bestimmtes Feature. Wenn Sie die 
 - Debuggen und Beheben des Problems
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-- Sie benötigen eine Web-App zum Überwachen und zum Ausführen der beschriebenen Schritte. 
+- Sie benötigen eine Web-App zum Überwachen und zum Ausführen der beschriebenen Schritte.
     - Mit den im Lernprogramm zum [Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md) beschriebenen Schritten können Sie eine Anwendung erstellen.
 
-- Wenn Sie das **Remotedebuggen** Ihrer Anwendung testen möchten, benötigen Sie Visual Studio. 
-    - Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die kostenlose [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. 
+- Wenn Sie das **Remotedebuggen** Ihrer Anwendung testen möchten, benötigen Sie Visual Studio.
+    - Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die kostenlose [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden.
     - Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
 ## <a name="metrics"></a> Schritt 1 – Anzeigen von Metriken
-**Metriken** sind nützlich, um Folgendes zu verstehen: 
+**Metriken** sind nützlich, um Folgendes zu verstehen:
 - Anwendungsintegrität
 - Anwendungsleistung
 - Ressourcenverbrauch
@@ -50,7 +51,7 @@ Metriken stellen eine Verlaufsansicht über mehrere Hauptaggregationen für die 
 > * Skalierung: eine, zwei, drei Instanzen usw.
 > * SKU: Free, Shared, Basic, Standard, Premium usw.
 
-Um die Metriken für Ihre Web-App zu überprüfen, wechseln Sie zum Blatt **Übersicht** der App, die Sie überwachen möchten. Hier können Sie ein Diagramm für die Metriken Ihrer App als **Überwachungskachel** anzeigen. Klicken Sie auf die Kachel, um zu bearbeiten und zu konfigurieren, welche Metriken und welcher Zeitbereich angezeigt werden sollen. 
+Um die Metriken für Ihre Web-App zu überprüfen, wechseln Sie zum Blatt **Übersicht** der App, die Sie überwachen möchten. Hier können Sie ein Diagramm für die Metriken Ihrer App als **Überwachungskachel** anzeigen. Klicken Sie auf die Kachel, um zu bearbeiten und zu konfigurieren, welche Metriken und welcher Zeitbereich angezeigt werden sollen.
 
 Standardmäßig bietet das Ressourcenblatt eine Ansicht für die Anwendungsanforderungen und die Fehler in der letzten Stunde.
 ![Überwachen der App](media/app-service-web-tutorial-monitoring/app-service-monitor.png)
@@ -61,13 +62,13 @@ Wie im Beispiel zu erkennen ist, generiert eine Anwendung viele **HTTP-Serverfeh
 > Unter folgenden Links finden Sie weitere Informationen zu Azure Monitor:
 > - [Erste Schritte mit Azure Monitor](..\monitoring-and-diagnostics\monitoring-overview.md)
 > - [Metriken in Azure](..\monitoring-and-diagnostics\monitoring-overview-metrics.md)
-> - [Unterstützte Metriken von Azure Monitor](..\monitoring-and-diagnostics\monitoring-supported-metrics.md#microsoftwebsites-including-functions)
+> - [Unterstützte Metriken von Azure Monitor](..\monitoring-and-diagnostics\monitoring-supported-metrics.md)
 > - [Azure-Dashboards](..\azure-portal\azure-portal-dashboards.md)
 
 ## <a name="alerts"></a> Schritt 2: Konfigurieren von Warnungen
 **Warnungen** können so konfiguriert werden, dass sie unter bestimmten Bedingungen für Ihre App ausgelöst werden.
 
-In [Schritt 1 – Anzeigen von Metriken](#metrics) haben wir gesehen, dass die Anwendung eine große Anzahl von Fehlern aufwies. 
+In [Schritt 1 – Anzeigen von Metriken](#metrics) haben wir gesehen, dass die Anwendung eine große Anzahl von Fehlern aufwies.
 
 Nun konfigurieren wir eine Warnung, damit Sie automatisch benachrichtigt werden, wenn Fehler auftreten. In diesem Fall soll die Warnung jedes Mal, wenn die Anzahl der HTTP-Fehler 50X einen bestimmten Schwellenwert überschreitet, eine E-Mail senden.
 
@@ -76,14 +77,14 @@ Um eine Warnung zu erstellen, navigieren Sie zu **Überwachung** > **Warnungen**
 ![Warnungen](media/app-service-web-tutorial-monitoring/app-service-monitor-alerts.png)
 
 Geben Sie Werte für die Konfiguration der Warnung an:
-- **Ressource:** die Site, die mit der Warnung überwacht werden soll 
+- **Ressource:** die Site, die mit der Warnung überwacht werden soll
 - **Name:** ein Name für die Warnung, in diesem Fall *High HTTP 50X*
 - **Beschreibung:** Klartexterläuterung dazu, was in dieser Warnung ausgewertet wird
 - **Warnung bei:** Warnungen können Metriken oder Ereignisse untersuchen, in diesem Beispiel werden Metriken betrachtet.
 - **Metrik:** die zu überwachende Metrik, in diesem Fall *HTTP-Serverfehler*
 - **Bedingung:** die Umstände, unter denen eine Warnung ausgegeben werden soll, in diesem Fall wählen Sie die Option *größer als* aus
 - **Schwellenwert:** der Wert, auf den geachtet wird, in diesem Fall *400*
-- **Zeitraum:** Warnungen beziehen sich auf den Durchschnittswert der Metrik. Kleinere Zeiträume ergeben empfindlichere Warnungen. In diesem Fall werden *5 Minuten* betrachtet. 
+- **Zeitraum:** Warnungen beziehen sich auf den Durchschnittswert der Metrik. Kleinere Zeiträume ergeben empfindlichere Warnungen. In diesem Fall werden *5 Minuten* betrachtet.
 - **E-Mail-Besitzer, Mitwirkende und Leser:** in diesem Fall *Aktiviert*
 
 Nachdem die Warnung erstellt wurde, wird jedes Mal, wenn die App den konfigurierten Schwellenwert überschreitet, eine E-Mail gesendet. Aktive Warnungen können auch im Azure-Portal eingesehen werden.
@@ -115,7 +116,7 @@ Sie können App Service Companion im [App Store](https://itunes.apple.com/app/az
 
 ## <a name="diagnose"></a> Schritt 4: Diagnose und Problembehandlung
 **Diagnose und Problembehandlung** helfen dabei, Anwendungsprobleme von Plattformproblemen zu unterscheiden. Es können auch mögliche Gegenmaßnahmen vorgeschlagen werden, um Ihre Web-App wieder in einen problemfreien Zustand zu überführen.
- 
+
 ![Diagnose und Problembehandlung](media/app-service-web-tutorial-monitoring/app-service-monitor-diagnosis.png)
 
 Indem wir mit dem Beispiel aus den vorherigen Schritten fortfahren, sehen wir, dass bei der Anwendung Verfügbarkeitsprobleme aufgetreten sind. Die Plattformverfügbarkeit liegt hingegen weiterhin bei 100 %.
@@ -128,7 +129,7 @@ Nachdem wir die Fehler nun auf ein Anwendungsproblem eingegrenzt haben, können 
 Durch die Protokollierung können Sie Protokolle zu **Anwendungsdiagnosen** und **Webserverdiagnosen** für Ihre Web-App erfassen.
 
 ### <a name="application-diagnostics"></a>Anwendungsdiagnose
-Mit der Option „Anwendungsdiagnose“ können Sie die von der Anwendung zur Laufzeit erzeugten Ablaufverfolgungen erfassen. 
+Mit der Option „Anwendungsdiagnose“ können Sie die von der Anwendung zur Laufzeit erzeugten Ablaufverfolgungen erfassen.
 
 Wenn Sie Ihrer Anwendung eine Ablaufverfolgung hinzufügen, verbessern Sie Ihre Möglichkeiten zum Debuggen und zum Erkennen von Probleme deutlich.
 
@@ -165,19 +166,19 @@ Anwendungsprotokolle können im Dateisystem der Web-App gespeichert oder per Pus
  ### <a name="web-server-diagnostics"></a>Webserverdiagnose
 Webserverprotokolle werden auch dann generiert, wenn Ihre App nicht genutzt wird. In App Service können drei verschiedene Typen von Serverprotokollen erfasst werden:
 
-- **Webserverprotokollierung** 
-    - Informationen über HTTP-Transaktionen im [erweiterten W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). 
+- **Webserverprotokollierung**
+    - Informationen über HTTP-Transaktionen im [erweiterten W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
     - Dies ist hilfreich, wenn Sie allgemeine Website-Metriken ermitteln möchten, z.B. die Anzahl der verarbeiteten Anfragen oder wie viele Anforderungen von einer bestimmten IP-Adresse stammen.
-- **Detaillierte Fehlerprotokollierung** 
-    - Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). 
+- **Detaillierte Fehlerprotokollierung**
+    - Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher).
     - [Weitere Informationen über detaillierte Fehlerprotokolle](https://www.iis.net/learn/troubleshoot/diagnosing-http-errors/how-to-use-http-detailed-errors-in-iis)
-- **Ablaufverfolgung von Anforderungsfehlern** 
-    - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. 
+- **Ablaufverfolgung von Anforderungsfehlern**
+    - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit.
     - Protokolle zu Anforderungsfehlern sind hilfreich, um die Ursache eines bestimmten HTTP-Fehlers zu isolieren.
     - [Weitere Informationen über Fehler bei der Ablaufverfolgung von Anforderungen](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing/troubleshooting-failed-requests-using-tracing-in-iis)
 
 So aktivieren Sie die Serverprotokotollierung
-- Wechseln Sie zu **Überwachung** > **Diagnoseprotokolle**. 
+- Wechseln Sie zu **Überwachung** > **Diagnoseprotokolle**.
 - Aktivieren Sie die verschiedenen Typen der Webserverdiagnose mithilfe der Schalter.
 
 ![App überwachen](media/app-service-web-tutorial-monitoring/app-service-monitor-serverlogs.png)
@@ -190,17 +191,17 @@ Sie können auf in Blob Storage gespeicherte Protokolle mit dem Azure Storage-Ex
 
 - **Anwendungsprotokolle** - `%HOME%/LogFiles/Application/`.
     - Dieser Ordner enthält eine oder mehrere Textdateien mit Informationen, die bei der Anwendungsprotokollierung erzeugt wurden.
-- **Protokolle für Anforderungsfehler** - `%HOME%/LogFiles/W3SVC#########/`. 
-    - Dieser Ordner enthält eine XSL-Datei und eine oder mehrere XML-Dateien. 
-- **Detaillierte Fehlerprotokolle** - `%HOME%/LogFiles/DetailedErrors/`. 
+- **Protokolle für Anforderungsfehler** - `%HOME%/LogFiles/W3SVC#########/`.
+    - Dieser Ordner enthält eine XSL-Datei und eine oder mehrere XML-Dateien.
+- **Detaillierte Fehlerprotokolle** - `%HOME%/LogFiles/DetailedErrors/`.
     - Dieser Ordner enthält eine oder mehrere HTM-Dateien mit umfangreichen Informationen zu HTTP-Fehlern, die von der App generiert wurden.
-- **Webserverprotokolle** - `%HOME%/LogFiles/http/RawLogs`. 
+- **Webserverprotokolle** - `%HOME%/LogFiles/http/RawLogs`.
     - Dieser Ordner enthält eine oder mehrere Textdateien im erweiterten W3C-Protokolldateiformat.
 
 ## <a name="streaming"></a> Schritt 6: Protokollstreaming
 Die Streamingprotokolle sind beim Debuggen einer Anwendung hilfreich, da Sie gegenüber dem [Zugriff auf die Protokolle](#Accessing-Logs) über FTP Zeit sparen.
 
-App Service kann **Anwendungsprotokolle** und **Webserverprotokolle** streamen, sobald sie generiert werden. 
+App Service kann **Anwendungsprotokolle** und **Webserverprotokolle** streamen, sobald sie generiert werden.
 
 > [!TIP]
 > Bevor Sie versuchen, Protokolle zu streamen, stellen Sie sicher, dass das Erfassen von Protokollen wie im Abschnitt zur [Protokollierung](#logging) beschrieben aktiviert wurde.
@@ -219,7 +220,7 @@ Remotedebuggen ermöglicht Ihnen, an Ihre in der Cloud ausgeführte Web-App eine
 
 So fügen Sie den Debugger an Ihre in der Cloud ausgeführte App an
 
-- Öffnen Sie mit Visual Studio 2017 die Lösung für die App, die Sie debuggen möchten. 
+- Öffnen Sie mit Visual Studio 2017 die Lösung für die App, die Sie debuggen möchten.
 - Legen Sie wie bei der lokalen Entwicklung einige Breakpoints fest.
 - Öffnen Sie den **Cloud-Explorer** (STRG + /, STRG + X).
 - Melden Sie sich ggf. mit Ihren Azure-Anmeldeinformationen an.
@@ -241,7 +242,7 @@ Wenn Ihre Anwendung für mehrere Instanzen horizontal hochskaliert ist, kann **P
 Mit **Prozess-Explorer** haben Sie folgende Möglichkeiten:
 
 - Auflisten aller Prozesse in verschiedenen Instanzen Ihres App Service-Plans
-- Drilldown und Anzeigen der den einzelnen Prozessen zugeordneten Handles und Module 
+- Drilldown und Anzeigen der den einzelnen Prozessen zugeordneten Handles und Module
 - Anzeigen von Werten zu CPU, Arbeitssätzen und Threadanzahl auf Prozessebene zum Erkennen von unkontrollierten Prozessen
 - Suchen von Handles auf offene Dateien und Beenden bestimmter Prozessinstanzen
 
@@ -251,11 +252,11 @@ Prozess-Explorer ist unter **Überwachung** > **Prozess-Explorer** zu finden.
 
 
 ## <a name="insights"></a> Schritt 9: Application Insights
-**Application Insights** bietet Anwendungsprofile und erweiterte Überwachungsfunktionen für Ihre App. 
+**Application Insights** bietet Anwendungsprofile und erweiterte Überwachungsfunktionen für Ihre App.
 
 Mit Application Insights können Sie Ausnahme und Leistungsprobleme bei Ihrer Web-App erkennen und diagnostizieren.
 
-Sie können Application Insights für Ihre Web-App unter **Überwachung** > **Application Insights** aktivieren. 
+Sie können Application Insights für Ihre Web-App unter **Überwachung** > **Application Insights** aktivieren.
 
 > [!NOTE]
 > Möglicherweise werden Sie von Application Insights aufgefordert, die Application Insights-Websiteerweiterung zu installieren, um mit dem Erfassen von Daten zu beginnen. Die Installation der Websiteerweiterung führt zu einem Neustart der Anwendung.
@@ -269,3 +270,4 @@ Application Insights verfügt über eine Vielzahl von Funktionen. Weitere Inform
  - [Was ist Application Insights?](..\application-insights\app-insights-overview.md)
  - [Überwachen der Leistung der Azure-Web-App mit Application Insights](..\application-insights\app-insights-azure-web-apps.md)
  - [Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites mit Application Insights](..\application-insights\app-insights-monitor-web-app-availability.md)
+
