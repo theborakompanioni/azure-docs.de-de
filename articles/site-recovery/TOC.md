@@ -9,7 +9,7 @@
 
 # Erste Schritte
 ## [Replizieren von VMware-VMs in Azure](site-recovery-vmware-to-azure.md)
-## [Replizieren physischer Server in Azure](site-recovery-physical-servers-to-azure.md) 
+## [Replizieren physischer Server in Azure](site-recovery-physical-servers-to-azure.md)
 ## [Replizieren von Hyper-V-VMs in Azure (mit VMM)](site-recovery-vmm-to-azure.md)
 ## [Replizieren von Hyper-V-VMs in Azure](site-recovery-hyper-v-site-to-azure.md)
 ## [Replizieren von Hyper-V-VMs an einem sekundären Standort (mit VMM)](site-recovery-vmm-to-vmm.md)
@@ -23,6 +23,7 @@
 ### [Planen der Kapazität und Skalieren der VMware-Replikation in Azure](site-recovery-plan-capacity-vmware.md)
 ### [Deployment Planner für die VMware-Replikation in Azure](site-recovery-deployment-planner.md)
 ### [Capacity Planner für die Hyper-V-Replikation](site-recovery-capacity-planner.md)
+### [Rollenbasierte Zugriffssteuerung](site-recovery-role-based-linked-access-control.md)
 
 ## Konfigurieren
 ### [Einrichten der Quellumgebung](site-recovery-set-up-vmware-to-azure.md)
@@ -47,8 +48,8 @@
 ## Workloads
 ### [Active Directory und DNS](site-recovery-active-directory.md)
 ### [SQL Server](site-recovery-sql.md)
-### [SharePoint](site-recovery-workload.md#protect-sharepoint)
-### [Azure IoT Hub](site-recovery-workload.md#protect-dynamics-ax)
+### [SharePoint](site-recovery-sharepoint.md)
+### [Azure IoT Hub](site-recovery-dynamicsax.md)
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
 ### [SAP](site-recovery-workload.md#protect-sap)
