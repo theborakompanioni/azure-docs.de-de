@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2017
 ms.author: cgronlun;garye
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 50d1f8dfc7ce2d8bf4b04cff68698eafd56ce9c2
 ms.openlocfilehash: 518a7d2b5e43d8133d54ab583e4545a3ee9b3cba
+ms.contentlocale: de-de
 ms.lasthandoff: 05/05/2017
 
 
@@ -34,11 +35,11 @@ In diesem ersten Video geht es um die Arten von Fragen, die Data Science beantwo
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 In *Data Science für Einsteiger* erhalten Sie eine ca. 25 Minuten dauernde Schnelleinführung in Data Science. Sehen Sie sich die anderen vier Videos an:
 
-* 1. Video: Die 5 Fragen, die Data Science beantwortet
-* 2. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
+* Video 1: Die 5 Fragen, die Data Science beantwortet
+* Video 2: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
 * Video 3: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
 * Video 4: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
-* 5. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
+* Video 5: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>Aufzeichnung: Die 5 Fragen, die Data Science beantwortet
 Hallo! Willkommen bei der Videoreihe *Data Science für Einsteiger*.
