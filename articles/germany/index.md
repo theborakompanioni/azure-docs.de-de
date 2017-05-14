@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: Azure Germany Documentation - Tutorials, API Reference | Microsoft Docs
-description: Learn about Azure Germany capabilities, design, and security that support key German and international compliance standards.
+title: "Azure Deutschland-Dokumentation – Tutorials und API-Referenz | Microsoft-Dokumentation"
+description: "Erfahren Sie mehr über die Funktionen, die Designmerkmale und Sicherheitsmaßnahmen von Azure Deutschland, die die wichtigsten deutschen und internationalen Compliancestandards unterstützen."
 services: germany
 author: gitralf
 manager: carolz
@@ -12,18 +12,19 @@ ms.topic: landing-page
 ms.tgt_pltfrm: na
 ms.date: 04/12/2017
 ms.author: ralfwi
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: b4fef3db5064346cb3860af9d9d74e43445e6df7
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 759531ee75ff9609e8b5aaecdc4323fbb4bb1921
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
 
-# <a name="azure-germany-documentation"></a>Azure Germany Documentation
+# <a name="azure-germany-documentation"></a>Azure Deutschland-Dokumentation
 
-<p style="font-size: 1.125rem; padding-bottom: 0px;">Microsoft Azure Germany is built on Microsoft’s Trusted Cloud principles of security, privacy, compliance, and transparency, and brings data residency, in transit and at rest in Germany, and data replication across German datacenters for business continuity.</p>
-<p style="font-size: 1.125rem;">Customer data in the two datacenters is managed under the control of a data trustee, T-Systems International, an independent German company and subsidiary of Deutsche Telekom. It provides additional controls for customers’ data as access is only provided with the permission of customers or the data trustee.</p>
-<p style="font-size: 1.125rem; padding-bottom: 36px;">Microsoft’s commercial cloud services in these new datacenters adhere to German data handling regulations and give customers additional choices of how and where data is processed.</p>
+<p style="font-size: 1.125rem; padding-bottom: 0px;">Microsoft Azure Deutschland wurde basierend auf den Microsoft Trusted Cloud-Prinzipien von Sicherheit, Datenschutz, Compliance und Transparenz entwickelt. Es bietet Datenhoheit bei der Übertragung und Speicherung in Deutschland und gewährleistet die Geschäftskontinuität per Datenreplikation zwischen deutschen Rechenzentren.</p>
+<p style="font-size: 1.125rem;">Kundendaten in beiden Rechenzentren werden unter der Kontrolle eines Datentreuhänders, T-Systems International, verwaltet. Bei diesem Treuhänder handelt es sich um ein unabhängiges deutsches Unternehmen, eine Tochtergesellschaft der Deutschen Telekom. Dieser sorgt für eine umfassendere Kontrolle über Kundendaten, da der Zugriff nur mit der Zustimmung des Kunden oder des Datentreuhänders gewährt wird.</p>
+<p style="font-size: 1.125rem; padding-bottom: 36px;">Die kommerziellen Clouddienste von Microsoft in diesen neuen Rechenzentren erfüllen die deutschen Gesetze zur Datenverarbeitung und bieten Kunden eine größere Auswahl an Möglichkeiten, wie und wo die Daten verarbeitet werden.</p>
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/25/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>What is Azure Germany?</h3>
+                        <h3>Was ist Azure Deutschland?</h3>
                     </div>
                 </div>
             </div>
@@ -55,7 +56,7 @@ ms.lasthandoff: 04/25/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Developer Guide</h3>
+                        <h3>Entwicklerhandbuch</h3>
                     </div>
                 </div>
             </div>
@@ -66,14 +67,14 @@ ms.lasthandoff: 04/25/2017
 
 ---
 
-<h2>Reference</h2>
+<h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Resources</h3>
+                        <h3>Ressourcen</h3>
                         <p><a href="/azure/germany/germany-image-gallery">Images</a></p>
                     </div>
                 </div>
@@ -85,13 +86,13 @@ ms.lasthandoff: 04/25/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Services</h3>
+                        <h3>Dienste</h3>
                         <p><a href="/azure/germany/germany-services-compute">Compute</a></p>
-                        <p><a href="/azure/germany/germany-services-storage">Storage</a></p>
-                        <p><a href="/azure/germany/germany-services-database">Database</a></p>
-                        <p><a href="/azure/germany/germany-services-networking">Networking</a></p>
-                        <p><a href="/azure/germany/germany-services-securityandidentity">Security and identity</a></p>
-                        <p><a href="/azure/germany/germany-services-webandmobile">Web and mobile</a></p>
+                        <p><a href="/azure/germany/germany-services-storage">Speicher</a></p>
+                        <p><a href="/azure/germany/germany-services-database">Datenbank</a></p>
+                        <p><a href="/azure/germany/germany-services-networking">Netzwerk</a></p>
+                        <p><a href="/azure/germany/germany-services-securityandidentity">Sicherheit und Identität</a></p>
+                        <p><a href="/azure/germany/germany-services-webandmobile">Web und mobil</a></p>
                         <p><a href="/azure/germany/germany-services-iot">Internet of Things (IoT)</a></p>
                      </div>
                 </div>
