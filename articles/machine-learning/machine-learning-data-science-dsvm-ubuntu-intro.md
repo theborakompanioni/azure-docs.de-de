@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: c29e31f59acac56d6ec522e1e7946238a6e22aa5
+ms.contentlocale: de-de
 ms.lasthandoff: 04/20/2017
 
 
@@ -152,7 +153,7 @@ Weitere Informationen finden Sie auf [GitHub](https://github.com/Microsoft/CNTK)
 Caffe ist ein Deep Learning-Framework des Berkeley Vision and Learning Center. Es ist unter „/opt/caffe“ verfügbar. Beispiele finden Sie unter „/opt/caffe/examples“.
 
 #### <a name="h2o"></a>H2O
-H2O ist eine schnelle, verteilte In-Memory-Plattform für Machine Learning und Predictive Analytics. Ein Python-Paket ist sowohl in der Stammumgebung als auch der py35 Anaconda-Umgebung installiert. Ein R-Paket ist ebenfalls installiert. Die Flow Web-Benutzeroberfläche kann mit „java -jar /dsvm/tools/h2o/current/h2o.jar“ gestartet werden. Navigieren Sie zu „http://localhost:54321“, um zu beginnen. Beispiel-Notebooks stehen auch in JupyterHub zur Verfügung.
+H2O ist eine schnelle, verteilte In-Memory-Plattform für Machine Learning und Predictive Analytics. Ein Python-Paket ist sowohl in der Stammumgebung als auch der py35 Anaconda-Umgebung installiert. Ein R-Paket ist ebenfalls installiert. Die Flow Web-Benutzeroberfläche kann mit „java -jar /dsvm/tools/h2o/current/h2o.jar“ gestartet werden. Navigieren Sie zu „ http://localhost:54321 “, um zu beginnen. Beispiel-Notebooks stehen auch in JupyterHub zur Verfügung.
 
 #### <a name="keras"></a>Keras
 Keras ist eine allgemeine API für neuronale Netze in Python, die entweder auf TensorFlow oder auf Theano ausgeführt werden kann. Sie ist in der Stammumgebung und der py35 Python-Umgebung verfügbar. 
@@ -163,7 +164,7 @@ MXNet ist ein für Effizienz und Flexibilität konzipiertes Deep Learning-Framew
 #### <a name="nvidia-digits"></a>NVIDIA DIGITS
 Das NVIDIA Deep Learning GPU Training System, bekannt als DIGITS, ist ein System zum Vereinfachen häufiger Deep Learning-Aufgaben wie das Verwalten von Daten, das Bestimmen und Trainieren von neuronalen Netzen auf GPU-Systemen sowie das Überwachen der Leistung in Echtzeit mit erweiterten Visualisierungsfunktionen. 
 
-DIGITS ist als Dienst mit der Bezeichnung „digits“ verfügbar. Starten Sie den Dienst, und navigieren Sie zu „http://localhost:5000“, um zu beginnen.
+DIGITS ist als Dienst mit der Bezeichnung „digits“ verfügbar. Starten Sie den Dienst, und navigieren Sie zu „ http://localhost:5000 “, um zu beginnen.
 
 DIGITS ist auch als Python-Modul in der Conda-Stammumgebung installiert.
 
