@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 07c6836c9279ed2f28730a49d131c064891de1b1
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
-Dieser Artikel dient als Azure Site Recovery-Leitfaden für Bereitstellungen von „VMware zu Azure“ in der Produktion.
+Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
 
 ## <a name="overview"></a>Übersicht
 
@@ -36,7 +37,7 @@ Das Tool umfasst die folgenden Details:
 
 **Kompatibilitätsbewertung**
 
-* Bewertung der Eignung von virtuellen Computern basierend auf Datenträgeranzahl, Datenträgergröße, IOPS und Änderungsrate
+* Bewertung der Eignung von virtuellen Computern basierend auf Datenträgeranzahl, Datenträgergröße, IOPS, Änderungsrate und Starttyp (EFI/BIOS)
 * Geschätzte erforderliche Netzwerkbandbreite für die Deltareplikation
 
 **Vergleich von erforderlicher Netzwerkbandbreite und RPO-Bewertung**
@@ -204,6 +205,10 @@ Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmo
 | -StartDate | (Optional) Das Startdatum und die Uhrzeit im Format MM-TT-JJJJ:HH:MM (24-Stunden-Format). *StartDate* muss zusammen mit *EndDate* angegeben werden. Wenn „StartDate“ angegeben ist, wird der Bericht für die Profilerstellungsdaten erstellt, die zwischen „StartDate“ und „EndDate“ erfasst wurden. |
 | -EndDate | (Optional) Das Enddatum und die Uhrzeit im Format MM-TT-JJJJ:HH:MM (24-Stunden-Format). *EndDate* muss zusammen mit *StartDate* angegeben werden. Wenn „EndDate“ angegeben ist, wird der Bericht für die Profilerstellungsdaten erstellt, die zwischen „StartDate“ und „EndDate“ erfasst wurden. |
 | -GrowthFactor | (Optional) Der Zuwachsfaktor als Prozentsatz. Der Standardwert ist 30 Prozent. |
+| -UseManagedDisks | (Optional) UseManagedDisks – Ja/Nein. Die Standardeinstellung ist „Ja“. Die Anzahl der virtuellen Computer, die in einem einzelnen Speicherkonto enthalten sein können, wird basierend auf der Auswahl eines verwalteten Datenträger für das Failover bzw. Testfailover berechnet. |
+
+in einer einzelnen Speicherkontoplatzierung wird bei der Berechnung berücksichtigt, dass das Failover bzw. Testfailover von virtuellen Computern auf einem verwalteten Datenträger anstatt einem nicht verwalteten Datenträger erfolgt. |
+
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
 ```
@@ -480,7 +485,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 
 **NICs**: Die Anzahl von NICs auf der VM.
 
-**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt. 
+**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt.
 
 **OS Type**: Dies ist der Betriebssystemtyp der VM. Er kann „Windows“, „Linux“ oder „Other“ lauten.
 
@@ -517,7 +522,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 
 **NICs**: Die Anzahl von NICs auf der VM.
 
-**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt. 
+**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt.
 
 **OS Type**: Dies ist der Betriebssystemtyp der VM. Er kann „Windows“, „Linux“ oder „Other“ lauten.
 
@@ -558,6 +563,15 @@ Gehen Sie wie folgt vor, um den Deployment Planner zu aktualisieren:
 
 
 ## <a name="version-history"></a>Versionsverlauf
+
+### <a name="13"></a>1.3
+Aktualisiert: 9. Mai 2017
+
+Folgende neue Funktion wurde hinzugefügt:
+
+* Unterstützung verwalteter Datenträger bei der Berichterstellung wurde hinzugefügt. Die Anzahl der virtuellen Computer, die in einem einzelnen Speicherkonto enthalten sein können, wird basierend auf der Auswahl eines verwalteten Datenträger für das Failover bzw. Testfailover berechnet.        
+
+
 ### <a name="12"></a>1.2
 Aktualisiert: 7. April 2017
 
