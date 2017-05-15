@@ -4,7 +4,7 @@ description: "Diese Artikel bietet eine Einführung in die Überwachungsfunktion
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 05/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: d796566676e13b312832dd543f52d3475d877ef8
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: f7f50c305a5ae6ad7bba4e793f4cb6a0735b80b4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -28,18 +29,17 @@ Dieser Artikel unterstützt Sie bei der Überwachung der Richtliniencompliance m
 Überwachung wird häufig als Beobachten und Warten auf ein Eintreten eines Ereignisses aufgefasst, damit auf diese Situation reagiert werden kann. Sicherheitsüberwachung bezieht sich auf eine proaktive Strategie, bei der Ihre Ressourcen überwacht werden, um Systeme zu erkennen, die nicht den Unternehmensstandards oder bewährten Methoden entsprechen.
 
 ## <a name="monitoring-security-health"></a>Überwachung der Sicherheitsintegrität
-Nach Aktivierung der [Sicherheitsrichtlinien](security-center-policies.md) für die Ressourcen eines Abonnements analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Informationen zur Netzwerkkonfiguration sind sofort verfügbar. Es kann jedoch eine Stunde oder länger dauern, bis Informationen zur VM-Konfiguration (wie Sicherheitsupdatestatus und Betriebssystemkonfiguration) zur Verfügung stehen. Der Sicherheitsstatus Ihrer Ressourcen sowie ggf. vorliegende Probleme werden auf dem Blatt **Sicherheitsintegrität der Ressource** angezeigt. Eine Liste mit diesen Problemen steht auch auf dem Blatt **Empfehlungen** zur Verfügung.
+Nach Aktivierung der [Sicherheitsrichtlinien](security-center-policies.md) für die Ressourcen eines Abonnements analysiert Security Center die Sicherheit Ihrer Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Informationen zur Netzwerkkonfiguration sind sofort verfügbar. Es kann jedoch eine Stunde oder länger dauern, bis Informationen zur VM-Konfiguration (wie Sicherheitsupdatestatus und Betriebssystemkonfiguration) zur Verfügung stehen. Der Sicherheitsstatus Ihrer Ressourcen sowie ggf. vorliegende Probleme werden im Abschnitt **Prävention** angezeigt. Eine Liste mit diesen Problemen steht auch auf der Kachel **Empfehlungen** zur Verfügung.
 
 Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
-Auf der Kachel **Sicherheitsintegrität der Ressource** können Sie den Sicherheitsstatus Ihrer Ressourcen überwachen. Im folgenden Beispiel sehen Sie eine Reihe von Problemen mit hohem und mittlerem Schweregrad, die eine Reaktion erfordern. Die Sicherheitsrichtlinien, die aktiviert sind, wirken sich auf die Arten von Sicherheitsmechanismen aus, die überwacht werden.
+Unter dem Abschnitt **Prävention** können Sie den Sicherheitszustand Ihrer Ressourcen überwachen. Im folgenden Beispiel sehen Sie, dass auf der Kacheln der jeweiligen Ressource (Compute, Netzwerk, Speicher und Daten sowie Anwendung) die Gesamtanzahl der identifizierten Probleme angegeben ist.
 
-![Kachel „Sicherheitsintegrität der Ressource“](./media/security-center-monitoring/security-center-monitoring-fig1-new001-2017.png)
+![Kachel „Sicherheitsintegrität der Ressource“](./media/security-center-monitoring/security-center-monitoring-fig1-newUI-2017.png)
 
-Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss (beispielsweise einen virtuellen Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](/virtual-network/virtual-networks-nsg.md)), wird dies hier angegeben.
 
 ### <a name="monitor-compute"></a>Überwachen von Compute
-Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Compute** klicken, wird das Blatt **Compute** geöffnet. Auf diesem Blatt stehen drei Registerkarten zur Verfügung:
+Wenn Sie auf die Kachel **Compute** klicken, wird das Blatt **Compute** geöffnet. Auf diesem Blatt stehen drei Registerkarten zur Verfügung:
 
 - **Übersicht:** Überwachung und Empfehlungen zu virtuellen Computern.
 - **Virtuelle Computer:** Liste mit allen virtuellen Computern und dem jeweils aktuellen Sicherheitsstatus.
@@ -119,7 +119,7 @@ Eine Erläuterung der Empfehlung erhalten Sie, wenn Sie in der Spalte **BESCHREI
 ![Clouddienstempfehlungen](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
 ### <a name="monitor-virtual-networks"></a>Überwachen virtueller Netzwerke
-Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Netzwerk** klicken, wird das Blatt **Netzwerk** mit weiteren Details geöffnet, wie im folgenden Screenshot zu sehen:
+Wenn Sie auf die Kachel **Netzwerk** klicken, wird das Blatt **Netzwerk** mit weiteren Details geöffnet, wie im folgenden Screenshot zu sehen:
 
 ![Blatt „Netzwerk“](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
@@ -170,11 +170,11 @@ In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-ne
 
 Im unteren Bereich des Blatts befinden sich die Empfehlungen für diesen virtuellen Computer (ähnlich wie weiter oben beschrieben). Sie können auf eine Empfehlung klicken, um weitere Informationen zu erhalten oder die erforderliche Sicherheitskontrolle/-konfiguration anzuwenden.
 
-### <a name="monitor-data"></a>Überwachen von Daten
+### <a name="monitor-storage--data"></a>Überwachen von Speicher und Daten
 
-Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **SQL & Data** (SQL und Daten) klicken, wird das Blatt **Data Resources** (Datenressourcen) mit Empfehlungen für SQL und Storage geöffnet. Außerdem werden [Empfehlungen](security-center-sql-service-recommendations.md) zum allgemeinen Integritätsstatus der Datenbank abgegeben. Weitere Informationen zur Speicherverschlüsselung finden Sie unter [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Aktivieren der Verschlüsselung für Azure-Speicherkonten in Azure Security Center).
+Wenn Sie im Abschnitt **Prävention** auf **Speicher und Daten** klicken, wird das Blatt **Datenressourcen** mit Empfehlungen für SQL und Speicher geöffnet. Außerdem werden [Empfehlungen](security-center-sql-service-recommendations.md) zum allgemeinen Integritätsstatus der Datenbank abgegeben. Weitere Informationen zur Speicherverschlüsselung finden Sie unter [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Aktivieren der Verschlüsselung für Azure-Speicherkonten in Azure Security Center).
 
-![Datenressourcen](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
+![Datenressourcen](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
 
 Sie können unter **SQL Recommendations** (SQL-Empfehlungen) auf eine Empfehlung klicken und ausführlichere Informationen zu weiteren Aktionen erhalten, um ein Problem zu beheben. Das folgende Beispiel zeigt die Erweiterung der Empfehlung **Database Auditing & Threat detection on SQL databases** (Datenbanküberwachung und Bedrohungserkennung bei SQL-Datenbanken).
 
