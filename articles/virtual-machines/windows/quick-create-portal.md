@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/13/2017
+ms.date: 05/03/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: df6f1b86b706d58a5c07a4f3de43a1872da61511
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8d64ede4fd5f442cbfc88a61e2ad8388e0df2a7b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 ---
 
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>Erstellen einer Windows-VM im Azure-Portal
 
-Virtuelle Azure-Computer können über das Azure-Portal erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von virtuellen Computern und alle zugehörigen Ressourcen. In diesem Schnellstart wird beschrieben, wie Sie mit dem Azure-Portal einen virtuellen Computer erstellen. Nach Abschluss der Bereitstellung stellen wir eine Verbindung mit dem Server her und installieren IIS.
+Virtuelle Azure-Computer können über das Azure-Portal erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von virtuellen Computern und alle zugehörigen Ressourcen. In diesem Schnellstart werden die Erstellung eines virtuellen Computers und die Installation eines Webservers auf der VM Schritt für Schritt beschrieben.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -35,40 +35,30 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-2. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
+1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 
-3. Wählen Sie **Berechnen** auf dem Blatt **Neu**, wählen Sie *Windows Server 2016 Datacenter* auf dem Blatt **Berechnen**, und klicken Sie dann auf die Schaltfläche **Erstellen**.
+2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**, und stellen Sie sicher, dass **Resource Manager** als Bereitstellungsmodell ausgewählt ist. Klicken Sie auf die Schaltfläche **Erstellen** . 
 
-4. Füllen Sie das Formular **Grundlagen** für die VM aus. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Erstellen Sie für **Ressourcengruppe** eine neue Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen erstellt und kollektiv verwaltet werden. Klicken Sie zum Abschluss auf **OK**.
+3. Geben Sie die Informationen zum virtuellen Computer ein. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Klicken Sie zum Abschluss auf **OK**.
 
     ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 
-5. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. 
+4. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. 
 
     ![Screenshot: VM-Größen](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-6. Wählen Sie auf dem Einstellungenblatt *Ja* unter **Verwaltete Datenträger verwenden**, behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
+5. Wählen Sie auf dem Einstellungenblatt **Ja** unter **Verwaltete Datenträger verwenden**, behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
-7. Klicken Sie auf der Zusammenfassungsseite auf **OK**, um die Bereitstellung des virtuellen Computers zu starten.
+6. Klicken Sie auf der Zusammenfassungsseite auf **OK**, um die Bereitstellung des virtuellen Computers zu starten.
 
-8. Um den Bereitstellungsstatus zu überwachen, klicken Sie auf die VM. Sie finden den virtuellen Computer auf dem Dashboard des Azure-Portals oder durch Auswählen von **Virtuelle Computer** im linken Menü. Nachdem der virtuelle Computer erstellt wurde, ändert sich der Status von *Wird bereitgestellt* in *Wird ausgeführt*.
-
-## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr 
-
-Um IIS-Datenverkehr zuzulassen, muss Port 80 für Webdatenverkehr geöffnet werden. In diesem Schritt erfahren Sie, wie Sie eine Regel für eine Netzwerksicherheitsgruppe (NSG) erstellen, um eingehende Verbindungen an Port 80 zuzulassen.
-
-1. Klicken Sie auf dem Blatt für den virtuellen Computer im Abschnitt **Zusammenfassung** auf den Namen der **Ressourcengruppe**.
-2. Klicken Sie auf dem Blatt für die Ressourcengruppe in der Ressourcenliste auf die **Netzwerksicherheitsgruppe**. Der NSG-Name muss eine Kombination aus dem Namen des virtuellen Computers und dem Suffix *-nsg* sein.
-3. Klicken Sie auf die Überschrift **Eingangssicherheitsregel**, um die Eingangsregelliste zu öffnen. Die Liste müsste bereits eine Regel für RDP enthalten.
-4. Klicken Sie auf **+ Hinzufügen**, um das Blatt **Eingangssicherheitsregel hinzufügen** zu öffnen.
-5. Geben Sie unter **Name** den Namen *IIS* ein. Stellen Sie sicher, dass **Portbereich** auf *80* und **Aktion** auf *Zulassen* festgelegt ist. Klicken Sie auf **OK**.
+7. Die VM wird im Dashboard des Azure-Portals angeheftet. Nach Abschluss der Bereitstellung wird automatisch das Blatt mit der VM-Zusammenfassung geöffnet.
 
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
-Nachdem die Bereitstellung abgeschlossen ist, stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer her.
+Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer.
 
-1. Klicken Sie auf dem Blatt des virtuellen Computers auf die Schaltfläche **Verbinden**. Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
+1. Klicken Sie in den Eigenschaften des virtuellen Computers auf die Schaltfläche **Verbinden**. Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
 
     ![Portal 9](./media/quick-create-portal/quick-create-portal/portal-quick-start-9.png) 
 
@@ -81,15 +71,29 @@ Nachdem die Bereitstellung abgeschlossen ist, stellen Sie eine Remotedesktopverb
 
 ## <a name="install-iis-using-powershell"></a>Installieren von IIS mithilfe von PowerShell
 
-Öffnen Sie auf dem virtuellen Computer eine PowerShell-Eingabeaufforderung, und führen Sie den folgenden Befehl aus, um IIS zu installieren und die lokale Firewallregel zum Zulassen von Webdatenverkehr zu aktivieren:
+Starten Sie auf dem virtuellen Computer eine PowerShell-Sitzung, und führen Sie den folgenden Befehl aus, um IIS zu installieren.
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
+Beenden Sie die RDP-Sitzung nach Abschluss des Vorgangs, und wechseln Sie zurück zu den VM-Eigenschaften im Azure-Portal.
+
+## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr 
+
+Mit einer Netzwerksicherheitsgruppe (NSG) wird eingehender und ausgehender Datenverkehr geschützt. Wenn im Azure-Portal eine VM erstellt wird, wird für RDP-Verbindungen an Port 3389 eine Regel für eingehenden Datenverkehr erstellt. Da diese VM einen Webserver hostet, muss für Port 80 eine NSG-Regel erstellt werden.
+
+1. Klicken Sie auf dem virtuellen Computer auf den Namen der **Ressourcengruppe**.
+2. Wählen Sie die **Netzwerksicherheitsgruppe** aus. Die NSG können Sie anhand der Spalte **Typ** identifizieren. 
+3. Klicken Sie im Menü auf der linken Seite unter „Einstellungen“ auf **Eingangssicherheitsregeln**.
+4. Klicken Sie auf **Hinzufügen**.
+5. Geben Sie unter **Name** den Text **http** ein. Stellen Sie sicher, dass **Portbereich** auf 80 und **Aktion** auf **Zulassen** festgelegt ist. 
+6. Klicken Sie auf **OK**.
+
+
 ## <a name="view-the-iis-welcome-page"></a>Anzeigen der IIS-Willkommensseite
 
-Nachdem Sie IIS installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die IIS-Standardwillkommensseite anzeigen. Ermitteln Sie auf dem Blatt für den virtuellen Computer die *öffentliche IP-Adresse*, und verwenden Sie sie, um die Standardwebsite aufzurufen. 
+Nachdem IIS installiert und Port 80 für Ihre VM geöffnet wurde, ist der Zugriff auf den Webserver aus dem Internet möglich. Öffnen Sie einen Webbrowser, und geben Sie die öffentliche IP-Adresse der VM ein. Sie finden die öffentliche IP-Adresse im Azure-Portal auf dem Blatt der VM.
 
 ![IIS-Standardwebsite](./media/quick-create-powershell/default-iis-website.png) 
 
@@ -99,7 +103,8 @@ Wenn Ressourcengruppe, VM und alle zugehörigen Ressourcen nicht mehr benötigt 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Experimentieren mit der Installation einer Rolle auf der Windows-VM](hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+In diesem Schnellstart haben Sie einen einfachen virtuellen Computer und eine Netzwerksicherheitsgruppen-Regel bereitgestellt sowie einen Webserver installiert. Fahren Sie mit dem Tutorial für virtuelle Windows-Computer fort, um weitere Informationen zu virtuellen Azure-Computern zu erhalten.
 
-[Azure CLI-Beispiele für Windows-VMs](cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> [!div class="nextstepaction"]
+> [Azure-Tutorials zu virtuellen Windows-Computern](./tutorial-manage-vm.md)
 
