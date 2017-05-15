@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/11/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: fcc43e5d98f75b34f2d65c9e1ce8eeba7762caaf
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 0ca7382ed64fd548f8a086893ea2e3187dd26929
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -80,8 +81,8 @@ Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressource
    ![Empfehlungen in Azure Security Center][5]
 2. Wählen Sie eine Empfehlung auf dem Blatt **Empfehlungen** aus, um weitere Informationen anzuzeigen und Maßnahmen zum Beheben des Problems zu ergreifen.
 
-### <a name="view-the-health-and-security-state-of-your-resources"></a>Anzeigen des Integritäts- und Sicherheitsstatus Ihrer Ressourcen
-1. Kehren Sie zum Blatt **Security Center** zurück. Die Kachel **Sicherheitsintegrität der Ressource** enthält Indikatoren, die den Sicherheitsstatus für virtuelle Computer, Netzwerk, Daten und Anwendungen anzeigen.
+### <a name="view-the-security-state-of-your-resources"></a>Anzeigen des Sicherheitsstatus Ihrer Ressourcen
+1. Kehren Sie zum Blatt **Security Center** zurück. Der Abschnitt **Prävention** des Dashboards enthält Indikatoren, die den Sicherheitsstatus für virtuelle Computer, Netzwerk, Daten und Anwendungen anzeigen.
 2. Wählen Sie **Compute**, um weitere Informationen anzuzeigen. Das Blatt **Compute** wird mit drei Registerkarten geöffnet:
 
   - **Übersicht**: Enthält Empfehlungen zur Überwachung und zu virtuellen Computern.

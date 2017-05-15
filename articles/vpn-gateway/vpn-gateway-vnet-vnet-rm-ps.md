@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 19cd1cf60a14f4a2087bcfdbb4b223039c82dec3
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 8f370918b86c5519f370b0042866d2cc089655d4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -30,7 +31,7 @@ Dieser Artikel zeigt, wie Sie eine VPN-Gatewayverbindung zwischen virtuellen Net
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Klassisch – Azure-Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Verbinden von verschiedenen Bereitstellungsmodellen – Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
@@ -382,7 +383,7 @@ Dieser Schritt muss im Kontext des neuen Abonnements ausgeführt werden. Dieser 
   ```powershell
   New-AzureRmResourceGroup -Name $RG5 -Location $Location5
   ```
-4. Erstellen Sie die Subnetzkonfigurationen für „TestVNet4“.
+4. Erstellen Sie die Subnetzkonfigurationen für „TestVNet5“.
 
   ```powershell
   $fesub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 05/08/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bd2291129a1a61f69e83cb76748d00b9ede6eb6f
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ec658f4c74d54a11684460c0e634303793480152
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -66,7 +67,7 @@ Sie können Sicherheitsrichtlinien für jedes Abonnement oder jede Ressourcengru
    >
 9. Klicken Sie auf dem Blatt **Sicherheitsrichtlinie** auf **Ein**, um die Sicherheitsempfehlungen zu aktivieren, die Sie für dieses Abonnement verwenden möchten. Klicken Sie auf **Präventionsrichtlinie** , um Optionen wie im folgenden Screenshot anzuzeigen:
 
-    ![Auswählen der Sicherheitsrichtlinien](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
+    ![Auswählen der Sicherheitsrichtlinien](./media/security-center-policies/security-center-policies-fig4-newUI.png)
 
 Die folgende Tabelle gibt Aufschluss über die einzelnen Optionen:
 
@@ -82,6 +83,7 @@ Die folgende Tabelle gibt Aufschluss über die einzelnen Optionen:
 | SQL-Überwachung und -Bedrohungserkennung |Empfiehlt die Aktivierung der Zugriffsüberwachung für Azure-Datenbanken zur Erfüllung von Complianceanforderungen sowie die Aktivierung der erweiterten Bedrohungserkennung zu Untersuchungszwecken. |
 | Transparent Data Encryption für SQL |Empfiehlt, dass die Verschlüsselung im Ruhezustand für Ihre Azure SQL-Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien aktiviert wird. So können Ihre Daten auch dann nicht gelesen werden, wenn unberechtigt darauf zugegriffen wird. |
 | Sicherheitsrisikobewertung |Empfiehlt die Installation einer Lösung zur Sicherheitsrisikobewertung auf dem virtuellen Computer. |
+| Speicherverschlüsselung |Dieses Feature ist derzeit für Azure-Blobs und -Dateien verfügbar. Beachten Sie, dass nach dem Aktivieren der Speicherdienstverschlüsselung nur neue Daten verschlüsselt werden. Alle vorhandenen Dateien in diesem Speicherkonto bleiben unverschlüsselt. |
 
 Klicken Sie nach dem Konfigurieren aller Optionen auf dem Blatt **Sicherheitsrichtlinie**, das die Empfehlungen enthält, auf **OK**, und klicken Sie anschließend auf dem Blatt **Sicherheitsrichtlinie**, das die ursprünglichen Einstellungen enthält, auf **Speichern**.
 

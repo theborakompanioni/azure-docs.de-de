@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9bd8db6c765f8f702a6e4ea5b17507269d3310d1
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 2916ee6ba4753efdb8823f93c951a4f678b08ae4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -29,7 +30,7 @@ In diesem Schnellstarttutorial erfahren Sie Schritt für Schritt, wie Sie eine P
 
 Die folgenden Schritte können auf einem Mac oder auf einem Computer unter Windows oder Linux ausgeführt werden. Der gesamte Prozess dauert etwa fünf Minuten.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Installieren Sie vor der Ausführung dieses Beispiels zunächst die folgenden erforderlichen Komponenten:
 
@@ -107,7 +108,7 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-an-azure-app-service"></a>Erstellen einer Azure App Service-Instanz
 
-Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#create) einen Linux-basierten App Service-Plan.
+Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#create) einen App Service-Plan.
 
 > [!NOTE]
 > Ein App Service-Plan stellt die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich die durch den Plan definierten Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten.
@@ -119,7 +120,7 @@ Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/p
 > * SKU (Free, Shared, Basic, Standard, Premium)
 >
 
-Im folgenden Beispiel wird ein App Service-Plan für Linux-Worker namens `quickStartPlan` mit dem Tarif **FREE** erstellt.
+Im folgenden Beispiel wird ein App Service-Plan namens `quickStartPlan` mit dem Tarif **FREE** erstellt.
 
 ```azurecli
 az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
@@ -290,7 +291,7 @@ http://<app_name>.azurewebsites.net
 
 Diesmal wird die Seite mit der Nachricht „Hello World“ unter Verwendung unseres Python-Codes als Azure App Service-Web-App ausgeführt.
 
-![]()
+![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
 ## <a name="updating-and-deploying-the-code"></a>Aktualisieren und Bereitstellen des Codes
 
@@ -309,7 +310,7 @@ git push azure master
 
 Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das im Schritt „Navigieren zur App“ geöffnet wurde, und wählen Sie die Option „Aktualisieren“ aus.
 
-![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
+![hello-azure-in-browser](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Verwalten Ihrer neuen Azure-Web-App
 
@@ -319,13 +320,13 @@ Melden Sie sich hierzu bei [https://portal.azure.com](https://portal.azure.com) 
 
 Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
 
-![Portalnavigation zur Azure-Web-App](./media/app-service-web-get-started-python/Python-docs-hello-world-app-service-list.png)
+![Portalnavigation zur Azure-Web-App](./media/app-service-web-get-started-python/app-service-list.png)
 
 Dadurch gelangen Sie auf das _Blatt_ Ihrer Web-App (eine Portalseite, die horizontal geöffnet wird).
 
 Auf dem Blatt Ihrer Web-App wird standardmäßig die Seite **Übersicht** angezeigt. Diese Seite bietet einen Überblick über den Status Ihrer App. Hier können Sie auch einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen. Die Registerkarten auf der linken Seite des Blatts zeigen die verschiedenen Konfigurationsseiten, die Sie öffnen können.
 
-![App Service-Blatt im Azure-Portal](media/app-service-web-get-started-python/Python-docs-hello-world-app-service-detail.png)
+![App Service-Blatt im Azure-Portal](media/app-service-web-get-started-python/app-service-detail.png)
 
 Die Registerkarten auf dem Blatt zeigen die vielen tollen Features, mit denen Sie Ihre Web-App ausstatten können. Ein paar Beispiele:
 
@@ -341,4 +342,6 @@ Die Registerkarten auf dem Blatt zeigen die vielen tollen Features, mit denen Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich mit vorgefertigten [Azure CLI-Beispielen](app-service-cli-samples.md) vertraut.
+> [!div class="nextstepaction"]
+> [Machen Sie sich mit CLI-Skripts für Beispiel-Web-Apps vertraut.](app-service-cli-samples.md)
+

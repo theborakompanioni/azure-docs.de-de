@@ -1,7 +1,7 @@
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Vorbereiten der Authentifizierung von Anforderungen von Azure Resource Manager
 Sie müssen alle Vorgänge authentifizieren, die Sie mithilfe von [Azure Resource Manager][lnk-authenticate-arm] mit Azure Active Directory (AD) für die Ressourcen ausführen. Die einfachste Möglichkeit hierzu ist die Verwendung von PowerShell oder der Azure-Befehlszeilenschnittstelle.
 
-Installieren Sie [Azure PowerShell 1.0][lnk-powershell-install] oder höher, bevor Sie fortfahren.
+Installieren Sie die [Azure PowerShell-Cmdlets][lnk-powershell-install], bevor Sie den Vorgang fortsetzen.
 
 Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine AD-Anwendung mithilfe von PowerShell einrichten. Sie können diese Befehle in einer standardmäßigen PowerShell-Sitzung ausführen.
 
@@ -10,13 +10,13 @@ Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine A
     ```
     Login-AzureRmAccount
     ```
-2. Notieren Sie sich Ihre **TenantId** und Ihre **SubscriptionId**. Diese werden später benötigt werden.
+2. Notieren Sie sich Ihre **TenantId** und Ihre **SubscriptionId**. Diese werden später benötigt.
 3. Erstellen Sie mit dem folgenden Befehl eine neue Azure Active Directory-Anwendung, und ersetzen Sie die Platzhalter:
    
    * **{Display name}:** ein Anzeigename für Ihre Anwendung, z.B. **MySampleApp**.
    * **{Home page URL}:** Die URL der Startseite der App, z.B. **http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
    * **{Application identifier}:** Ein eindeutiger Bezeichner, z.B. **http://meinebeispielapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
-   * **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer Anwendung verwenden werden.
+   * **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer App verwenden werden.
      
      ```
      New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
@@ -33,7 +33,7 @@ Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine A
     New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
-Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifizierung aus einer benutzerdefinierten C#-Anwendung möglich ist. Die folgenden Werte werden Sie später in diesem Tutorial benötigen:
+Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifizierung aus einer benutzerdefinierten C#-Anwendung möglich ist. Die folgenden Werte benötigen Sie später in diesem Tutorial:
 
 * TenantId
 * SubscriptionId
@@ -41,4 +41,4 @@ Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifiz
 * Kennwort
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps

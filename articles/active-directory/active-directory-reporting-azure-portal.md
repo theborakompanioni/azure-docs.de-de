@@ -1,6 +1,7 @@
 ---
-title: "Azure Active Directory-Berichterstellung – Vorschau | Microsoft Docs"
-description: "Enthält eine Liste mit den verschiedenen verfügbaren Berichten für Azure Active Directory (Vorschau)."
+
+title: Azure Active Directory-Berichterstellung | Microsoft-Dokumentation
+description: "Enthält eine Liste mit den verschiedenen verfügbaren Berichten für Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,19 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
-ms.openlocfilehash: b9cd11954a52600c1cd50155cb7ce9b7d2355cd3
-ms.lasthandoff: 01/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: c7fe995f097c72ab5275249538fe2bb65efac256
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory-Berichterstellung – Vorschau
+# <a name="azure-active-directory-reporting"></a>Azure Active Directory-Berichterstellung
 
 
 *Diese Dokumentation ist Teil des Handbuchs für [Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
-Mit der Berichterstellungsfunktion in Azure Active Directory (Vorschauversion) erhalten Sie alle Informationen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen. [Was enthält die Vorschauversion?](active-directory-preview-explainer.md)
+Mit der Berichterstellungsfunktion in Azure Active Directory (Azure AD) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
 Die Berichterstellung hat zwei Hauptbereiche:
 

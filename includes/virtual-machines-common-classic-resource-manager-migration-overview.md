@@ -76,7 +76,9 @@ Die folgenden Funktionen werden derzeit nicht unterstützt: Optional können Sie
 | Compute |Nicht zugeordnete VM-Datenträger. | Die diesen Datenträgern zugrunde liegenden VHD-Blobs werden zusammen mit dem Speicherkonto migriert. |
 | Compute |VM-Images. | Die diesen Datenträgern zugrunde liegenden VHD-Blobs werden zusammen mit dem Speicherkonto migriert. |
 | Netzwerk |Endpunkt-ACLs. | Entfernen Sie Endpunkt-ACLs, und wiederholen Sie die Migration. |
-| Netzwerk |ExpressRoute mit Autorisierungslinks (siehe häufig gestellte Fragen), Application Gateway | Entfernen Sie das Gateway, bevor Sie mit der Migration beginnen, und erstellen Sie es nach Abschluss der Migration neu. |
+| Netzwerk |Virtuelles Netzwerk mit einem ExpressRoute-Gateway und einem VPN-Gateway  | Entfernen Sie die VPN Gateway-Instanz, bevor Sie mit der Migration beginnen, und erstellen Sie sie nach Abschluss der Migration neu. Weitere Informationen zur [ExpressRoute-Migration](../articles/expressroute/expressroute-migration-classic-resource-manager.md).|
+| Netzwerk |ExpressRoute mit Autorisierungslinks  | Entfernen Sie vor Beginn der Migration die ExpressRoute-Verbindung mit der Verbindung mit einem virtuellen Netzwerk, und erstellen Sie die Verbindung nach Abschluss der Migration neu. Weitere Informationen zur [ExpressRoute-Migration](../articles/expressroute/expressroute-migration-classic-resource-manager.md). |
+| Netzwerk |Application Gateway | Entfernen Sie die Application Gateway-Instanz, bevor Sie mit der Migration beginnen, und erstellen Sie sie nach Abschluss der Migration neu. |
 | Netzwerk |Virtuelle Netzwerke mit VNet-Peering. | Migrieren Sie das virtuelle Netzwerk zu Resource Manager, und führen Sie dann das Peering durch. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md). | 
 
 ### <a name="unsupported-configurations"></a>Nicht unterstützte Konfigurationen

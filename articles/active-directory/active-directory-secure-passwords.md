@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 8e625a346c9495d436a99fcf9eadf8ffeffcfdff
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 910ca62c331df0825e1403c19fe2f53672a7359d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -73,7 +74,8 @@ Für andere Microsoft-Konten sieht der Bildschirm in etwa wie folgt aus:
 
 Informationen zur Kennwortverwaltung in Azure Active Directory finden Sie unter [Funktionsweise der Kennwortverwaltung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-how-it-works).
 
-  >![NOTE] Wenn Sie Azure AD-Administrator sind, ist die Verwendung von [Windows Hello](https://www.microsoft.com/en-us/windows/windows-hello) ratsam, um ganz zu verhindern, dass Ihre Benutzer herkömmliche Kennwörter erstellen müssen.
+  >[!NOTE]
+  >Wenn Sie Azure AD-Administrator sind, ist die Verwendung von [Windows Hello](https://www.microsoft.com/en-us/windows/windows-hello) ratsam, um ganz zu verhindern, dass Ihre Benutzer herkömmliche Kennwörter erstellen müssen.
   >
 
 ## <a name="next-steps"></a>Nächste Schritte

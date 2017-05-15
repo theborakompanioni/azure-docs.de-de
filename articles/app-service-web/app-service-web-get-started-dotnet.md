@@ -12,12 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/27/2017
+ms.date: 05/05/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 24e9f1d7bdf4401d009ba04fb62351b6abda6079
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 773d616b2a5815158971d63d005fae605450ac98
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -29,7 +30,7 @@ Dieser Schnellstart hilft Ihnen bei der Bereitstellung Ihrer ersten ASP.NET-Web-
 
 ![ASP.NET-Web-App in Azure App Service](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Dieses Tutorial veranschaulicht, wie Sie mithilfe von Visual Studio 2017 eine ASP.NET-Web-App erstellen und für Azure bereitstellen. Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
@@ -37,7 +38,7 @@ Dieses Tutorial veranschaulicht, wie Sie mithilfe von Visual Studio 2017 eine AS
 
 ## <a name="create-an-aspnet-web-app"></a>Erstellen einer ASP.NET-Web-App
 
-Erstellen Sie in Visual Studio durch Drücken von `Ctrl`+`Shift`+`N` ein neues Projekt.
+Erstellen Sie in Visual Studio durch Drücken von `Ctrl`+`Shift`+`N` ein Projekt.
 
 Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C# > Web > ASP.NET-Webanwendung (.NET Framework)**.
 
@@ -110,7 +111,7 @@ Konfigurieren Sie den neuen App Service-Plan im Dialogfeld **App Service-Plan ko
 
 Klicken Sie auf **OK**.
 
-![Erstellen eines neuen App Service-Plans](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
+![App Service-Plan erstellen](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
 ## <a name="create-and-publish-the-web-app"></a>Erstellen und Veröffentlichen der Web-App
 
@@ -165,11 +166,11 @@ Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen
 
 Dadurch gelangen Sie auf das _Blatt_ Ihrer Web-App (eine Portalseite, die horizontal geöffnet wird). 
 
-Auf dem Blatt Ihrer Web-App wird standardmäßig die Seite **Übersicht** angezeigt. Diese Seite bietet einen Überblick über den Status Ihrer App. Hier können Sie auch einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen. Die Registerkarten auf der linken Seite des Blatts zeigen die verschiedenen Konfigurationsseiten, die Sie öffnen können. 
+Auf dem Blatt Ihrer Web-App wird standardmäßig die Seite **Übersicht** angezeigt. Diese Seite bietet einen Überblick über den Status Ihrer App. Hier können Sie auch einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen.  
 
 ![App Service-Blatt im Azure-Portal](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
-Die Registerkarten auf dem Blatt zeigen die vielen tollen Features, mit denen Sie Ihre Web-App ausstatten können. Ein paar Beispiele:
+Die Registerkarten auf der linken Seite des Blatts zeigen die verschiedenen Konfigurationsseiten, die Sie öffnen können. Ein paar Beispiele:
 
 - Zuordnen eines benutzerdefinierten DNS-Namens
 - Binden eines benutzerdefinierten SSL-Zertifikats
@@ -193,5 +194,9 @@ Geben Sie zur Bestätigung auf dem Bestätigungsblatt den Namen der Ressourcengr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich mit vorgefertigten [Azure PowerShell-Beispielen](app-service-powershell-samples.md) vertraut.
+> [!div class="nextstepaction"]
+> [Erfahren Sie, wie Sie eine ASP.NET-App in Azure mit SQL-Datenbank erstellen.](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+> [!div class="nextstepaction"]
+> [Machen Sie sich mit PowerShell-Skripts für Beispiel-Web-Apps vertraut.](app-service-powershell-samples.md)
 

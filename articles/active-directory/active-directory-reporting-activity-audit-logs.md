@@ -1,6 +1,7 @@
 ---
-title: "Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal – Vorschau | Microsoft-Dokumentation"
-description: "Enthält eine Einführung in die Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal (Vorschau)."
+
+title: "Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation"
+description: "Enthält eine Einführung in die Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,20 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d88f8bed0cbd14ee49986d6749396731a810034b
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 4065682658bdd99066266b8b4e5e4c4605ff3db9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal---preview"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal – Vorschau
+# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
-Mit der Berichterstellungsfunktion in Azure Active Directory [(Vorschau)](active-directory-preview-explainer.md) erhalten Sie alle Informationen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+Mit der Berichterstellungsfunktion in Azure Active Directory (Azure AD) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
-Die Architektur für die Berichterstellung in Azure Active Directory umfasst die folgenden Komponenten:
+Die Architektur für die Berichterstellung in Azure AD umfasst die folgenden Komponenten:
 
 - **Aktivität** 
     - **Anmeldeaktivitäten** : Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung
