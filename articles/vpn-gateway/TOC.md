@@ -1,7 +1,7 @@
 # Übersicht
 ## [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md)
 ## [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md)
-## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md)
+## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Erste Schritte
 ## [Planung und Entwurf für VPN Gateway](vpn-gateway-plan-design.md)
@@ -46,7 +46,9 @@
 ### [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [Erstellen selbstsignierter Zertifikate für Point-to-Site](vpn-gateway-certificates-point-to-site.md)
+## Erstellen selbstsignierter Zertifikate für Point-to-Site
+### [PowerShell](vpn-gateway-certificates-point-to-site.md)
+### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## Problembehandlung
 ### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
