@@ -15,9 +15,10 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: d6840be7afc05d8d563215e370c59cf41a206e4f
+ms.contentlocale: de-de
 ms.lasthandoff: 03/01/2017
 
 
