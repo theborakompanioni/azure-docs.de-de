@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/07/2017
+ms.date: 05/05/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 296f02dd7deb22fd4ca15478b7f90a7688b4304a
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: dea338477ca82eead9e272ed9a1709cb2643f743
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -116,7 +117,18 @@ Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
    
     ![Diagnoseereignisanzeige nach einem Failover][diagnostic-events-viewer-detail-post-failover]
 
-## <a name="switch-cluster-mode"></a>Wechseln des Clustermodus
+## <a name="cleaning-up-the-local-cluster-optional"></a>Bereinigen des lokalen Clusters (optional)
+Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, den Cluster zu verwalten:
+
+1. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden** .
+2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen** . Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Löschen Sie den Cluster nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
+
+## <a name="deploy-your-application-to-an-azure-cluster"></a>Bereitstellen der Anwendung in einem Azure-Cluster
+Nachdem Sie nun die Anwendung lokal bereitgestellt haben, können Sie dieselbe Anwendung in Azure bereitstellen. Im Dokument [Erstellen Ihres ersten Service Fabric-Clusters in Azure](service-fabric-get-started-azure-cluster.md) werden die Schritte unter Verwendung von Azure PowerShell oder des Portals behandelt.
+
+Nachdem Sie einen Azure-Cluster eingerichtet haben, können Sie diese Anwendung aus Visual Studio in Azure veröffentlichen, indem Sie die Anleitung im Artikel zum [Veröffentlichen in einem Azure-Cluster](service-fabric-publish-app-remote-cluster.md) befolgen.  
+
+## <a name="switch-cluster-mode-of-your-local-development-cluster"></a>Wechseln des Clustermodus des lokalen Entwicklungsclusters
 Standardmäßig ist der lokale Entwicklungscluster als Cluster mit fünf Knoten konfiguriert. Dies ist hilfreich beim Debuggen von Diensten, die auf mehreren Knoten bereitgestellt werden. Das Bereitstellen einer Anwendung im Entwicklungscluster mit fünf Knoten kann allerdings einige Zeit dauern. Wenn Sie möchten, dass Codeänderungen schnell durchlaufen werden, ohne dass die App auf fünf Knoten ausgeführt wird, können Sie den Entwicklungscluster auf den Modus mit nur einem Knoten umstellen. Klicken Sie zum Ausführen Ihres Codes in einem Cluster mit nur einem Knoten in der Taskleiste mit der rechten Maustaste auf den Manager für den lokalen Cluster, und wählen Sie **Switch Cluster Mode > 1 Node** (Clustermodus ändern > 1 Knoten).  
 
 ![Wechseln des Clustermodus][switch-cluster-mode]
@@ -136,11 +148,7 @@ Sie können den Clustermodus auch mithilfe von PowerShell ändern:
    
     ![Ausgabe bei der Clustereinrichtung][cluster-setup-success-1-node]
 
-## <a name="cleaning-up"></a>Bereinigen
-Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, den Cluster zu verwalten:
 
-1. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden** .
-2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen** . Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Löschen Sie den Cluster nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich, wie Sie einen [Cluster in Azure](service-fabric-cluster-creation-via-portal.md) oder einen [eigenständigen Cluster in Windows](service-fabric-cluster-creation-for-windows-server.md) erstellen.

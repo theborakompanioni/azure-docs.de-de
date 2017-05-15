@@ -15,10 +15,10 @@ ms.date: 04/07/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 375fdf142f7ecf5881876858178f663f516a6a71
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: c7f758900ca89ed8bf08090cda5964eccc876e1d
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/08/2017
 
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory für Entwickler
@@ -46,7 +46,7 @@ Diese Artikel enthalten Informationen dazu, wie Sie mit Azure Active Directory h
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
 |[App-Registrierung](active-directory-integrating-applications.md)           | Registrieren einer App in Azure AD |
-|[Mehrinstanzenfähige Apps](active-directory-devhowto-multi-tenant-overview.md)    | Anmelden bei einem Microsoft-Geschäftskonto |
+|[Mehrinstanzenfähige Apps](active-directory-devhowto-multi-tenant-overview.md)    | Anmelden bei einem Microsoft-Arbeitskonto |
 |[OAuth und OpenID Connect](active-directory-protocols-openid-connect-code.md)| Anmelden von Benutzern und Aufrufen von Web-APIs über unsere modernen Authentifizierungsprotokolle |
 |[Weitere Anleitungen...](active-directory-developers-guide-index.md#guides)        |     |
 

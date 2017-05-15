@@ -1,6 +1,7 @@
 ---
-title: "Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal – Vorschau | Microsoft-Dokumentation"
-description: "Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal (Vorschau)."
+
+title: "Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation"
+description: "Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,18 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f6c0bb59d9eb16da6c7daea2e722e32ac7dbc2d7
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 19cd81c1e6020523d1bea3ec76c957ce22f931ca
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal---preview"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal – Vorschau
+# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
-Mit der Berichterstellungsfunktion in Azure Active Directory [(Vorschau)](active-directory-preview-explainer.md) erhalten Sie alle Informationen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+Mit der Azure Active Directory-Berichterstellungsfunktion (Azure AD) im [Azure-Portal](https://portal.azure.com) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
 Die Architektur für die Berichterstellung in Azure Active Directory umfasst die folgenden Komponenten:
 
@@ -44,7 +46,7 @@ Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, k
 * Wie viele Benutzer sind für Benutzer im Laufe einer Woche angemeldet?
 * Wie lautet der Status dieser Anmeldungen?
 
-Ihr erster Einstiegspunkt für alle Anmeldeaktivitäten ist **Anmeldungen** im Abschnitt „Aktivität“ von **Azure Active** Directory.
+Ihr erster Einstiegspunkt für alle Anmeldeaktivitäten ist **Anmeldungen** im Abschnitt „Aktivität“ von **Azure Active**
 
 
 ![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/61.png "Anmeldeaktivität")

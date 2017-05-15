@@ -1,0 +1,12 @@
+Auf jedem Clientcomputer, der per Punkt-zu-Standort eine Verbindung mit einem VNet herstellt, muss ein Clientzertifikat installiert sein. Das Clientzertifikat wird über das Stammzertifikat generiert und auf jedem Clientcomputer installiert. Wenn kein gültiges Clientzertifikat installiert ist und der Client versucht, eine Verbindung mit dem VNet herzustellen, tritt bei der Authentifizierung ein Fehler auf.
+
+Sie können entweder ein eindeutiges Zertifikat für jeden Client generieren, oder Sie können dasselbe Zertifikat für mehrere Clients verwenden. Der Vorteil beim Generieren von eindeutigen Clientzertifikaten besteht darin, dass Sie ein einzelnes Zertifikat widerrufen können. Falls mehrere Clients das gleiche Clientzertifikat verwenden und Sie dieses Zertifikat widerrufen müssen, müssen Sie für alle Clients, die das Zertifikat zur Authentifizierung verwenden, neue Zertifikate generieren und installieren.
+
+Sie können mithilfe der folgenden Methoden Clientzertifikate generieren:
+
+- **Unternehmenszertifikat:**
+
+  - Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Name-Wert-Format „name@yourdomain.com“ (anstatt des Formats „Domänenname\Benutzername“).
+  - Stellen Sie sicher, dass das Clientzertifikat auf der Zertifikatvorlage „Benutzer“ basiert, die in der Nutzungsliste als ersten Eintrag „Clientauthentifizierung“ enthält (anstatt „Smartcard-Anmeldung“ usw.). Sie können das Zertifikat überprüfen, indem Sie auf das Clientzertifikat doppelklicken und *Details > Erweiterte Schlüsselverwendung* anzeigen.
+
+- **Selbstsigniertes Stammzertifikat:** Wenn Sie ein Clientzertifikat über ein selbstsigniertes Stammzertifikat mithilfe der Anleitung unter [Erstellen eines selbstsignierten Stammzertifikats für Punkt-zu-Standort-Verbindungen mit PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert) generieren, wird es automatisch auf dem Computer installiert, den Sie für die Generierung verwendet haben. Falls Sie ein Clientzertifikat auf einem anderen Clientcomputer installieren möchten, müssen Sie es exportieren. Befolgen Sie die Anweisungen im Artikel zum [Exportieren des Zertifikats](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).

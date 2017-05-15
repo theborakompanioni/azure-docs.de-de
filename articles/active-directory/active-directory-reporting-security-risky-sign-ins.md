@@ -1,6 +1,7 @@
 ---
-title: "Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal – Vorschau | Microsoft-Dokumentation"
-description: "Enthält Informationen zum Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal (Vorschau)."
+
+title: "Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal | Microsoft-Dokumentation"
+description: "Enthält Informationen zum Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal."
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -10,20 +11,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 349109e0c12a1394f96529a94ab884eeb451d242
-ms.openlocfilehash: 69b2166dcbc3e4abd99084b47907c90e157791de
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: e21b7733bc0f6b8625fbdcec3529ad603ce306c1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="risky-sign-ins-report-in-the-azure-active-directory-portal---preview"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal – Vorschau
+# <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
-Mit den Sicherheitsberichten in der Azure Active Directory-[Vorschau](active-directory-preview-explainer.md) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. 
+Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. 
 
-Azure Active Directory erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung *Risikoereignis* erstellt. Weitere Details finden Sie unter [Azure Active Directory risk events](active-directory-identity-protection-risk-events.md) (Azure Active Directory-Risikoereignisse). 
+Azure AD erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung *Risikoereignis* erstellt. Weitere Details finden Sie unter [Azure Active Directory risk events](active-directory-identity-protection-risk-events.md) (Azure Active Directory-Risikoereignisse). 
 
 Die erkannten Risikoereignisse werden zum Berechnen folgender Werte verwendet:
 
@@ -31,7 +33,7 @@ Die erkannten Risikoereignisse werden zum Berechnen folgender Werte verwendet:
 
 - **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter [Benutzer mit Risikomarkierung](active-directory-identityprotection.md#users-flagged-for-risk).  
 
-Im Azure-Portal befinden sich die Sicherheitsberichte auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit**. 
+Im [Azure-Portal](https://portal.azure.com) befinden sich die Sicherheitsberichte auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit**. 
 
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-risky-sign-ins/10.png)
 

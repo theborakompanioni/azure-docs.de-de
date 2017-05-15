@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2017
+ms.date: 05/04/2017
 ms.author: kgremban
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 4f7860b906ab988c918de31d53f4a958e4dea83b
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -31,9 +31,7 @@ ms.lasthandoff: 04/28/2017
 Mit Azure AD-Anwendungsproxy können Sie Remotearbeiter unterstützen, indem Sie lokale Anwendungen veröffentlichen, auf die über das Internet zugegriffen werden kann. Zu diesem Zeitpunkt sollten Sie den [Anwendungsproxy im klassischen Azure-Portal bereits aktiviert haben](active-directory-application-proxy-enable.md). In diesem Artikel werden Sie durch die Schritte zum Veröffentlichen von Anwendungen geführt, die in Ihrem lokalen Netzwerk ausgeführt werden, sowie zum Ermöglichen des sicheren Remotezugriffs von außerhalb Ihres Netzwerks. Nach dem Durcharbeiten dieses Artikels können Sie die Anwendung mit personalisierten Informationen oder Sicherheitsanforderungen konfigurieren.
 
 > [!NOTE]
-> Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-
-Wenn Sie die öffentliche Vorschau des Anwendungsproxys verwenden möchten, können Sie [Anwendungen im Azure-Portal veröffentlichen](application-proxy-publish-azure-portal.md).
+> Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md). Wenn Sie die den Anwendungsproxy verwenden möchten, können Sie [Anwendungen im Azure-Portal veröffentlichen](application-proxy-publish-azure-portal.md).
 
 ## <a name="publish-an-app-using-the-wizard"></a>Veröffentlichen einer App mithilfe des Assistenten
 1. Melden Sie sich als Administrator beim [klassischen Azure-Portal](https://manage.windowsazure.com/)an.

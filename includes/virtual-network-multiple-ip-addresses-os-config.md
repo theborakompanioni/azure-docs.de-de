@@ -32,7 +32,7 @@ Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ih
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Sie können das Internet nur pingen, wenn der oben erwähnten privaten IP-Adresse, die Sie verwenden, eine öffentliche IP-Adresse zugeordnet ist.
+>Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
@@ -161,7 +161,7 @@ Um sicherzustellen, dass Sie mit Ihrer sekundären IP-Konfiguration über die ih
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Sie können das Internet nur pingen, wenn der oben erwähnten privaten IP-Adresse, die Sie verwenden, eine öffentliche IP-Adresse zugeordnet ist.
+>Bei sekundären IP-Konfigurationen können Sie das Internet nur pingen, wenn der Konfiguration eine öffentliche IP-Adresse zugeordnet ist. Bei primären IP-Konfigurationen ist keine öffentliche IP-Adresse zum Pingen des Internets erforderlich.
 
 Wenn Sie ausgehende Verbindungen von einem sekundären NIC für virtuelle Linux-Computer überprüfen möchten, müssen Sie möglicherweise entsprechende Routen hinzufügen. Dazu gibt es zahlreiche Möglichkeiten. Weitere Informationen für Ihre Linux-Distribution finden Sie in der entsprechenden Dokumentation. Nachfolgend finden Sie eine der möglichen Methoden:
 

@@ -13,13 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/13/2017
+ms.date: 5/3/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 2e981f0f45bc5b338937839b74114e12db960927
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 245a89f2576dc1bfed2f9078f1d8761f91caf561
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -112,10 +113,10 @@ Virtuelle Storage Premium-Computer können entweder unter Storage Premium oder i
 Azure Backup schützt virtuelle Computer auf verwalteten Datenträgern. Bei verwalteten Datenträgern entfällt die Verwaltung von Speicherkonten für virtuelle Computer, und die Bereitstellung virtueller Computer wird erheblich vereinfacht.
 
 ### <a name="back-up-managed-disk-vms"></a>Sichern von virtuellen Computer auf verwalteten Datenträgern
-Das Sichern virtueller Computer auf verwalteten Datenträgern funktioniert genauso wie das Sichern virtueller Resource Manager-Computer. Im Azure-Portal können Sie den Sicherungsauftrag direkt in der Ansicht des virtuellen Computers oder in der Ansicht des Recovery Services-Tresors konfigurieren. Virtuelle Computer können auf verwalteten Datenträgern über RestorePoint-Sammlungen gesichert werden, die auf verwalteten Datenträgern aufbauen. Das Sichern von virtuellen Computern auf verwalteten Datenträgern mit Azure Disk Encryption (ADE) wird von Azure Backup derzeit nicht unterstützt.
+Das Sichern virtueller Computer auf verwalteten Datenträgern funktioniert genauso wie das Sichern virtueller Resource Manager-Computer. Im Azure-Portal können Sie den Sicherungsauftrag direkt in der Ansicht des virtuellen Computers oder in der Ansicht des Recovery Services-Tresors konfigurieren. Virtuelle Computer können auf verwalteten Datenträgern über RestorePoint-Sammlungen gesichert werden, die auf verwalteten Datenträgern aufbauen. Das Sichern von virtuellen Computern auf verwalteten Datenträgern mit Azure Disk Encryption (ADE) wird von Azure Backup ebenfalls unterstützt.
 
 ### <a name="restore-managed-disk-vms"></a>Wiederherstellen von virtuellen Computer auf verwalteten Datenträgern
-Mit Azure Backup können Sie einen vollständigen virtuellen Computer mit verwalteten Datenträgern oder verwaltete Datenträger in einem Resource Manager-Speicherkonto wiederherstellen. Während der Wiederherstellung werden die verwalteten Datenträger von Azure verwaltet. Sie als Kunde verwalten das Speicherkonto, das im Rahmen der Wiederherstellung erstellt wurde.
+Mit Azure Backup können Sie einen vollständigen virtuellen Computer mit verwalteten Datenträgern oder verwaltete Datenträger in einem Resource Manager-Speicherkonto wiederherstellen. Während der Wiederherstellung werden die verwalteten Datenträger von Azure verwaltet. Sie als Kunde verwalten das Speicherkonto, das im Rahmen der Wiederherstellung erstellt wurde. Zum Wiederherstellen verwalteter verschlüsselter VMs müssen Schlüssel und Geheimnisse des virtuellen Computers vor der Wiederherstellung bereits im Schlüsseltresor vorhanden sein.
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>Welche Features haben die einzelnen Backup-Komponenten?
 Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. die Unterstützung verschiedener Features der einzelnen Azure Backup-Komponenten zusammengefasst ist. Weitere Informationen zur Unterstützung bzw. weitere Details sind jeweils unterhalb der Tabelle zu finden.
