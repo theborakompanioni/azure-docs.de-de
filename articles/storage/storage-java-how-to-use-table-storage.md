@@ -14,16 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: bb72ac092496b5962c98006aca61b8c085cb1694
-ms.openlocfilehash: 2c73585e9d1f265c011cf94d1923ecec5f6a3435
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a4d6f144cc6940ffe2b2c6f27553cd7aa3bcb381
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-java"></a>Verwenden des Tabellenspeichers mit Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Übersicht
 In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Tabellenspeicherdienst demonstriert. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][Azure Storage SDK for Java]. Die erläuterten Szenarien umfassten das **Erstellen**, **Auflisten** und **Löschen** von Tabellen sowie das **Einfügen**, **Abfragen**, **Ändern** und **Löschen** von Entitäten in einer Tabelle. Weitere Informationen zu Tabellen finden Sie im Abschnitt [Nächste Schritte](#Next-Steps) .
@@ -562,10 +563,11 @@ catch (Exception e)
     e.printStackTrace();
 }
 ```
+[!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie sich nun mit den Grundlagen der Tabellenspeicherung vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
+* Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Storage-SDK für Java][Azure Storage SDK for Java]
 * [Azure Storage-Client-SDK-Referenz][Azure Storage-Client-SDK-Referenz]
 * [Azure Storage-REST-API][Azure Storage REST API]
@@ -580,9 +582,4 @@ Weitere Informationen finden Sie außerdem im [Java Developer Center](/develop/j
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

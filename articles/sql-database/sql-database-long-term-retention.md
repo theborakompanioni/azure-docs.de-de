@@ -16,10 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 043a1779ac694b0b3cbb5f1fd00117f716583669
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: e47c10c2c979622fba254757d3f7b9f19d3240f8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -99,10 +100,6 @@ Der Recovery Service kümmert sich anhand der bereitgestellten Beibehaltungsrich
 
 > [!NOTE]
 > Die Sicherungen, die sich bereits im Tresor befinden, werden davon nicht betroffen. Sie werden automatisch vom Recovery Service gelöscht, wenn ihre Beibehaltungsdauer abläuft.
-
-## <a name="removing-long-term-backup-retention-backups-from-the-azure-recovery-services-vault"></a>Entfernen von Sicherungen mit langfristiger Sicherungsaufbewahrung aus dem Azure Recovery Services-Tresor
-
-Informationen zum Entfernen von Sicherungen mit langfristiger Sicherungsaufbewahrung aus dem Tresor finden Sie unter [Löschen von Sicherungen mit langfristiger Sicherungsaufbewahrung](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="long-term-backup-retention-faq"></a>Häufig gestellte Fragen zur langfristigen Aufbewahrung von Sicherungen:
 

@@ -14,20 +14,20 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 98b02e8faa21e6d0e04d2f2c70bee6b8b018c010
-ms.lasthandoff: 12/09/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 34d075658514045e28d6a784c579528bb3eac376
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="how-to-use-table-storage-from-python"></a>Verwenden des Tabellenspeichers mit Python
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-
-[!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Übersicht
-In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Tabellenspeicherdienst demonstriert. Die Beispiele sind in Python geschrieben und verwenden das [Microsoft Azure Storage-SDK für Python]. Die behandelten Szenarien umfassen das Erstellen und Löschen einer Tabelle sowie das Einfügen und Abfragen von Tabellenentitäten.
+In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Tabellenspeicherdienst demonstriert. Die Beispiele sind in Python geschrieben und verwenden das [Microsoft Azure Storage-SDK für Python](https://github.com/Azure/azure-storage-python). Die behandelten Szenarien umfassen das Erstellen und Löschen einer Tabelle sowie das Einfügen und Abfragen von Tabellenentitäten.
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -164,13 +164,8 @@ table_service.delete_table('tasktable')
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie sich nun mit den Grundlagen von Table Storage vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr zu erfahren.
 
+* Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Python Developer Center](/develop/python/)
 * [REST-API für Azure-Speicherdienste](http://msdn.microsoft.com/library/azure/dd179355)
-* [Azure Storage-Teamblog]
-* [Microsoft Azure Storage-SDK für Python]
-
-[Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
-
+* [Microsoft Azure Storage-SDK für Python](https://github.com/Azure/azure-storage-python)
