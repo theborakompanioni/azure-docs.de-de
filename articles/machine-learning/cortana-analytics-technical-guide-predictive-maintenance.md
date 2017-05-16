@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
 ms.openlocfilehash: 6464dbf22fc0084ee7d50f3117dae9b6566614cd
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
 

@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 44be67cd5c59a57cafd244ce0a49a6fadf44bdda
 ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
 
@@ -94,7 +95,7 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 1. Klicken Sie auf die Schaltfläche **Start**, und geben Sie **R** ein. Geben Sie im Dialogfeld **Ausführen** den Befehl **mmc** ein, und klicken Sie auf **OK**.
 
     ![Starten der MMC-Konsole](./media/active-directory-domain-services-admin-guide/secure-ldap-start-run.png)
-2. Klicken Sie an der Eingabeaufforderung der Benutzerkontensteuerung****auf **JA**, um die MMC (Microsoft Management Console) als Administrator zu starten.
+2. Klicken Sie an der Eingabeaufforderung der Benutzerkontensteuerung**** auf **JA**, um die MMC (Microsoft Management Console) als Administrator zu starten.
 3. Klicken Sie im Menü **Datei** auf **Snap-In hinzufügen/entfernen**.
 
     ![Hinzufügen des Snap-Ins zur MMC-Konsole](./media/active-directory-domain-services-admin-guide/secure-ldap-add-snapin.png)
@@ -117,7 +118,7 @@ Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in e
 10. Wählen Sie das selbstsignierte Zertifikat aus, und **klicken Sie mit der rechten Maustaste darauf**. Wählen Sie im Kontextmenü **Alle Aufgaben** und anschließend **Exportieren** aus.
 
     ![Exportieren des Zertifikats](./media/active-directory-domain-services-admin-guide/secure-ldap-export-cert.png)
-11. Klicken Sie im Zertifikatexport-Assistenten****auf **Weiter**.
+11. Klicken Sie im Zertifikatexport-Assistenten**** auf **Weiter**.
 
     ![Exportieren des Zertifikats – Assistent](./media/active-directory-domain-services-admin-guide/secure-ldap-export-cert-wizard.png)
 12. Wählen Sie auf der Seite **Privaten Schlüssel exportieren** die Option **Ja, privaten Schlüssel exportieren** aus, und klicken Sie auf **Weiter**.
