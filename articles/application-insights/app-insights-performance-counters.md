@@ -4,7 +4,7 @@ description: "Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungs
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights
 ms.workload: tbd
@@ -12,10 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
-ms.author: awills
-translationtype: Human Translation
+ms.author: cfreeman
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 94a4d2b85c845b135201fd919e8eac64a5e1cb37
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -128,13 +130,8 @@ Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `clo
 ## <a name="alerts"></a>Warnungen
 Wie bei anderen Metriken können Sie [eine Warnung festlegen](app-insights-alerts.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie das Blatt „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
+## <a name="next"></a>Nächste Schritte
 * [Abhängigkeitsüberwachung](app-insights-asp-net-dependencies.md)
 * [Ausnahmeverfolgung](app-insights-asp-net-exceptions.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

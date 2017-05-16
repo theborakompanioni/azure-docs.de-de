@@ -13,11 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: maroche
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
 ms.openlocfilehash: 45a7b2df88a2edf2bccdfc9d2aaea932f2096f24
+ms.contentlocale: de-de
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -73,9 +75,4 @@ Bei Data Catalog-Administratoren handelt es sich implizit um Mitbesitzer aller A
 
 ## <a name="summary"></a>Zusammenfassung
 Beim Crowdsourcing-Modell von Data Catalog für die Ermittlung von Metadaten und Datenassets können alle Data Catalog-Benutzer eine Beitrag leisten und die Ermittlung durchführen. Die Standard Edition von Data Catalog enthält Funktionen für Besitz und Verwaltung, damit die Sichtbarkeit und Nutzung bestimmter Datenassets eingeschränkt werden kann.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
