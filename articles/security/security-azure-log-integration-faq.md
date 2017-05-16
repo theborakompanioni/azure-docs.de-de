@@ -99,7 +99,7 @@ Ausführliche Informationen zum Abrufen, Ändern und Festlegen der Azure-Diagnos
     $xmlconfig | Out-File -Encoding utf8 -FilePath "d:\WADConfig.xml"
 
 ### <a name="modify-the-wad-config"></a>Ändern der WAD-Konfiguration
-In der folgenden Beispielkonfiguration werden lediglich Ereignisse mit den Ereignis-IDs 4624 und 4625 aus dem Sicherheitsereignisprotokoll erfasst. Microsoft Antimalware-Ereignisse werden auf der Grundlage des Systemereignisprotokolls erfasst. Ausführliche Informationen zur Verwendung von XPath-Ausdrücken finden Sie unter [Consuming Events] (Nutzen von Ereignissen) (https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85).
+In der folgenden Beispielkonfiguration werden lediglich Ereignisse mit den Ereignis-IDs 4624 und 4625 aus dem Sicherheitsereignisprotokoll erfasst. Microsoft Antimalware-Ereignisse werden auf der Grundlage des Systemereignisprotokolls erfasst. Ausführliche Informationen zur Verwendung von XPath-Ausdrücken finden Sie unter [Nutzen von Ereignissen](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85) .
 
     <WindowsEventLog scheduledTransferPeriod="PT1M">
         <DataSource name="Security!*[System[(EventID=4624 or EventID=4625)]]" />
