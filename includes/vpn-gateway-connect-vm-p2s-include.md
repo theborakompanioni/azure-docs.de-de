@@ -7,15 +7,15 @@ Sie können eine Verbindung mit einer VM herstellen, die in Ihrem VNet bereitges
   - PowerShell: Verwenden Sie das Beispiel, um eine Liste mit VMs und privaten IP-Adressen aus Ihren Ressourcengruppen anzuzeigen. Es ist nicht erforderlich, dieses Beispiel vor der Verwendung zu ändern.
 
     ```powershell
-    $vms = get-azurermvm
-    $nics = get-azurermnetworkinterface | where VirtualMachine -NE $null
+    $VMs = Get-AzureRmVM
+    $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
 
-    foreach($nic in $nics)
+    foreach($Nic in $Nics)
     {
-      $vm = $vms | where-object -Property Id -EQ $nic.VirtualMachine.id
-      $prv = $nic.IpConfigurations | select-object -ExpandProperty PrivateIpAddress
-      $alloc = $nic.IpConfigurations | select-object -ExpandProperty PrivateIpAllocationMethod
-      Write-Output "$($vm.Name): $prv,$alloc"
+      $VM = $VMs | Where-Object -Property Id -eq $Nic.VirtualMachine.Id
+      $Prv = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAddress
+      $Alloc = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAllocationMethod
+      Write-Output "$($VM.Name): $Prv,$Alloc"
     }
     ```
 
