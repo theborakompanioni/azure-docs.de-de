@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: raymondl;garye;v-donglo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
 ms.openlocfilehash: 5032e66556622e44e5f5bba84c4ddf5318b1e194
+ms.contentlocale: de-de
 ms.lasthandoff: 03/02/2017
 
 
