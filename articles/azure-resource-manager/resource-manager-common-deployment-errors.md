@@ -11,15 +11,16 @@ keywords: Bereitstellungsfehler, Azure-Bereitstellung, in Azure bereitstellen.
 ms.assetid: c002a9be-4de5-4963-bd14-b54aa3d8fa59
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: bfbb3356454b9ef8b1834d03e7b76de9860a12c9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7dfd3f7f0bebd0dbe20ffc9952d83cb8b4fcfe3e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -285,7 +286,7 @@ Wenn Sie versuchen, die fehlende Ressource in der Vorlage bereitzustellen, prüf
 
 Vorschläge zur Problembehandlung für Abhängigkeitsfehler finden Sie unter [Überprüfen der Bereitstellungssequenz](#check-deployment-sequence).
 
-Dieser Fehler wird auch angezeigt, wenn die Ressource in einer anderen Ressourcengruppe als der vorhanden ist, in der die Ressource bereitgestellt wird. Verwenden Sie in diesem Fall die [resourceId-Funktion](resource-group-template-functions.md#resourceid), um den vollqualifizierten Namen der Ressource abzurufen.
+Dieser Fehler wird auch angezeigt, wenn die Ressource in einer anderen Ressourcengruppe als der vorhanden ist, in der die Ressource bereitgestellt wird. Verwenden Sie in diesem Fall die [resourceId-Funktion](resource-group-template-functions-resource.md#resourceid), um den vollqualifizierten Namen der Ressource abzurufen.
 
 ```json
 "properties": {
@@ -294,7 +295,7 @@ Dieser Fehler wird auch angezeigt, wenn die Ressource in einer anderen Ressource
 }
 ```
 
-Wenn Sie versuchen, die Funktionen [reference](resource-group-template-functions.md#reference) oder [listKeys](resource-group-template-functions.md#listkeys) mit einer Ressource zu verwenden, die nicht aufgelöst werden kann, erhalten Sie folgenden Fehler:
+Wenn Sie versuchen, die Funktionen [reference](resource-group-template-functions-resource.md#reference) oder [listKeys](resource-group-template-functions-resource.md#listkeys) mit einer Ressource zu verwenden, die nicht aufgelöst werden kann, erhalten Sie folgenden Fehler:
 
 ```
 Code=ResourceNotFound;
@@ -339,7 +340,7 @@ Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions.md#uniquestring) -Funktion verketten.
+Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions-string.md#uniquestring) -Funktion verketten.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
@@ -349,7 +350,7 @@ Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonventi
 Wenn Sie ein Speicherkonto bereitstellen, das den gleichen Namen hat wie ein in Ihrem Abonnement vorhandenes Speicherkonto, aber einen anderen Speicherort angeben, erhalten Sie eine Fehlermeldung, dass das Speicherkonto bereits an einem anderen Speicherort existiert. Löschen Sie das vorhandene Speicherkonto, oder geben Sie den gleichen Speicherort wie für das vorhandene Speicherkonto an.
 
 ### <a name="accountnameinvalid"></a>AccountNameInvalid
-Beim Versuch, einem Speicherkonto einen Namen zuzuweisen, der nicht zulässige Zeichen enthält, wird Ihnen der Fehler **AccountNameInvalid** angezeigt. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Die Funktion [uniqueString](resource-group-template-functions.md#uniquestring) gibt 13 Zeichen zurück. Wenn Sie ein Präfix mit dem Ergebnis von **uniqueString** verketten, sollte das Präfix maximal elf Zeichen lang sein.
+Beim Versuch, einem Speicherkonto einen Namen zuzuweisen, der nicht zulässige Zeichen enthält, wird Ihnen der Fehler **AccountNameInvalid** angezeigt. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Die Funktion [uniqueString](resource-group-template-functions-string.md#uniquestring) gibt 13 Zeichen zurück. Wenn Sie ein Präfix mit dem Ergebnis von **uniqueString** verketten, sollte das Präfix maximal elf Zeichen lang sein.
 
 ### <a name="badrequest"></a>BadRequest
 
@@ -626,7 +627,7 @@ Ein anderes Beispiel: Es treten Bereitstellungsfehler auf, von denen Sie annehme
 
 Viele Bereitstellungsfehler treten auf, wenn Ressourcen in einer unerwarteten Reihenfolge bereitgestellt werden. Diese Fehler treten auf, wenn Abhängigkeiten nicht ordnungsgemäß festgelegt sind. Wenn eine erforderliche Abhängigkeit nicht vorhanden ist, versucht eine Ressource, einen Wert für eine andere Ressource zu verwenden, die aber noch nicht existiert. Sie erhalten einen Fehler mit dem Hinweis, dass die Ressource nicht gefunden wurde. Diese Art von Fehler kann von Zeit zu Zeit auftreten, weil die Bereitstellungszeit für jede Ressource variieren kann. Der erste Versuch, die Ressourcen bereitzustellen, kann beispielsweise erfolgreich sein, weil eine erforderliche Ressource zufällig rechtzeitig erstellt wird. Der zweite Versuch ist dann aber nicht erfolgreich, weil die benötigte Ressource nicht rechtzeitig vorhanden ist. 
 
-Es ist ratsam, das Einrichten von Abhängigkeiten zu vermeiden, die nicht benötigt werden. Wenn Sie über nicht benötigte Abhängigkeiten verfügen, verlängern Sie die Dauer der Bereitstellung, indem Sie verhindern, dass nicht voneinander abhängige Ressourcen parallel bereitgestellt werden. Außerdem besteht die Gefahr, dass Sie Ringabhängigkeiten erstellen, die die Bereitstellung blockieren. Mit der Funktion [reference](resource-group-template-functions.md#reference) wird eine implizite Abhängigkeit von der Ressource erstellt, die Sie als Parameter in der Funktion angeben, wenn diese Ressource in derselben Vorlage bereitgestellt wird. Aus diesem Grund verfügen Sie ggf. über eine höhere Zahl von Abhängigkeiten als in der **dependsOn**-Eigenschaft angegeben. Mit der Funktion [resourceId](resource-group-template-functions.md#resourceid) wird keine implizite Abhängigkeit erstellt und nicht überprüft, ob die Ressource vorhanden ist.
+Es ist ratsam, das Einrichten von Abhängigkeiten zu vermeiden, die nicht benötigt werden. Wenn Sie über nicht benötigte Abhängigkeiten verfügen, verlängern Sie die Dauer der Bereitstellung, indem Sie verhindern, dass nicht voneinander abhängige Ressourcen parallel bereitgestellt werden. Außerdem besteht die Gefahr, dass Sie Ringabhängigkeiten erstellen, die die Bereitstellung blockieren. Mit der Funktion [reference](resource-group-template-functions-resource.md#reference) wird eine implizite Abhängigkeit von der Ressource erstellt, die Sie als Parameter in der Funktion angeben, wenn diese Ressource in derselben Vorlage bereitgestellt wird. Aus diesem Grund verfügen Sie ggf. über eine höhere Zahl von Abhängigkeiten als in der **dependsOn**-Eigenschaft angegeben. Mit der Funktion [resourceId](resource-group-template-functions-resource.md#resourceid) wird keine implizite Abhängigkeit erstellt und nicht überprüft, ob die Ressource vorhanden ist.
 
 Wenn Abhängigkeitsprobleme auftreten, benötigen Sie Informationen zur Reihenfolge der Ressourcenbereitstellung. So zeigen Sie die Reihenfolge der Vorgänge bei der Bereitstellung an:
 

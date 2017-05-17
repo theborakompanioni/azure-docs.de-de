@@ -20,6 +20,7 @@ ms.lasthandoff: 05/10/2017
 
 ---
 
+
 # <a name="what-is-azure-database-for-mysql-service-introduction"></a>Was ist Azure-Datenbank für MySQL? Einführung in den Dienst
 Azure-Datenbank für MySQL ist ein relationaler Datenbankdienst in Microsoft Cloud, der auf dem Datenbankmodul [MySQL Community Edition](https://www.mysql.com/products/community/) basiert.  Azure-Datenbank für MySQL bietet Folgendes:
 

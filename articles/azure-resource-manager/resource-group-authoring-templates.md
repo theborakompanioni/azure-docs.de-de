@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: de6016130666774577fb4ef598a44f6191ba9a76
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: c0c4ea4eba742e4abe3da9e92508665ec1d91490
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -376,7 +377,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Freigeben des 
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 * Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
-* Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dieses Szenario ist bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken üblich, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions.md#resourceid).
+* Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dieses Szenario ist bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken üblich, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions-resource.md#resourceid).
 
 [deployment2cmdlet]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/new-azurermresourcegroupdeployment
 

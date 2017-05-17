@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 006d8e10acd6b4b756c0b78988176f71c3802080
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5617f6453cb5dbb1c86ec41d7b9649356a3d9c78
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -108,7 +109,7 @@ Das folgende Beispiel zeigt einen SQL Server und eine SQL-Datenbank. Beachten Si
 ```
 
 ## <a name="reference-function"></a>reference-Funktion
-Mit der [reference](resource-group-template-functions.md#reference) -Funktion kann ein Ausdruck seinen Wert von anderen Paaren aus JSON-Name und -Wert oder Laufzeitressourcen ableiten. reference-Ausdrücke deklarieren implizit, dass eine Ressource von einer anderen abhängt. Das allgemeine Format lautet wie folgt:
+Mit der [reference](resource-group-template-functions-resource.md#reference) -Funktion kann ein Ausdruck seinen Wert von anderen Paaren aus JSON-Name und -Wert oder Laufzeitressourcen ableiten. reference-Ausdrücke deklarieren implizit, dass eine Ressource von einer anderen abhängt. Das allgemeine Format lautet wie folgt:
 
 ```json
 reference('resourceName').propertyPath
@@ -133,7 +134,7 @@ Im folgenden Beispiel hängt ein CDN-Endpunkt explizit vom CDN-Profil und impliz
 
 Sie können dieses Element oder das dependsOn-Element verwenden, um Abhängigkeiten anzugeben, aber Sie müssen nicht beide für dieselbe abhängige Ressource verwenden. Verwenden Sie nach Möglichkeit einen impliziten Verweis, um das Hinzufügen einer unnötigen Abhängigkeit zu vermeiden.
 
-Weitere Informationen finden Sie unter [reference-Funktion](resource-group-template-functions.md#reference).
+Weitere Informationen finden Sie unter [reference-Funktion](resource-group-template-functions-resource.md#reference).
 
 ## <a name="recommendations-for-setting-dependencies"></a>Empfehlungen für das Festlegen von Abhängigkeiten
 

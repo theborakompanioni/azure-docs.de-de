@@ -14,10 +14,11 @@ ms.devlang: na
 ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 3c5520f30b75c0e0a2b1aee890f79d01d325d543
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 745e115409a5b1e5e4f343ca0a5bb922272d3020
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -184,7 +185,7 @@ Hier erhalten Sie wieder Unterstützung von VS Code, indem verfügbare Funktione
 
 ![Anzeigen von Funktionen](./media/resource-manager-create-first-template/show-functions.png)
 
-Beachten Sie, dass die Funktion in eckige Klammern gesetzt ist. Mit der Funktion [resourceGroup](resource-group-template-functions.md#resourcegroup) wird ein Objekt mit einer `location`-Eigenschaft zurückgegeben. Die Ressourcengruppe enthält alle zugehörigen Ressourcen für Ihre Lösung. Sie können für die location-Eigenschaft einen Wert wie „Central US“ (USA, Mitte) hartcodieren, aber Sie müssen die Vorlage dann manuell ändern, um die erneute Bereitstellung für einen anderen Standort durchzuführen. Die Verwendung der Funktion `resourceGroup` erleichtert Ihnen die erneute Bereitstellung dieser Vorlage in einer anderen Ressourcengruppe an einem anderen Standort.
+Beachten Sie, dass die Funktion in eckige Klammern gesetzt ist. Mit der Funktion [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) wird ein Objekt mit einer `location`-Eigenschaft zurückgegeben. Die Ressourcengruppe enthält alle zugehörigen Ressourcen für Ihre Lösung. Sie können für die location-Eigenschaft einen Wert wie „Central US“ (USA, Mitte) hartcodieren, aber Sie müssen die Vorlage dann manuell ändern, um die erneute Bereitstellung für einen anderen Standort durchzuführen. Die Verwendung der Funktion `resourceGroup` erleichtert Ihnen die erneute Bereitstellung dieser Vorlage in einer anderen Ressourcengruppe an einem anderen Standort.
 
 Ihre Vorlage sieht jetzt wie folgt aus:
 
@@ -216,7 +217,7 @@ Ihre Vorlage sieht jetzt wie folgt aus:
 ## <a name="add-parameters-and-variables"></a>Hinzufügen von Parametern und Variablen
 In der Vorlage müssen jetzt nur noch zwei Werte festgelegt werden: **name** und **sku.name**. Für diese Eigenschaften fügen Sie Parameter hinzu, mit denen Sie diese Werte bei der Bereitstellung anpassen können. 
 
-Speicherkontonamen verfügen über mehrere Einschränkungen, die das Festlegen erschweren. Der Name muss zwischen drei und 24 Zeichen lang sein, darf nur Zahlen und Kleinbuchstaben enthalten und muss eindeutig sein. Verwenden Sie die Funktion [uniqueString](resource-group-template-functions.md#uniquestring), um einen Hashwert zu generieren, anstatt zu versuchen, einen eindeutigen Wert zu erraten, der die Einschränkungen erfüllt. Sie können diesen Hashwert aussagekräftiger machen, indem Sie ein Präfix hinzufügen, das nach der Bereitstellung zum Identifizieren als Speicherkonto dient. 
+Speicherkontonamen verfügen über mehrere Einschränkungen, die das Festlegen erschweren. Der Name muss zwischen drei und 24 Zeichen lang sein, darf nur Zahlen und Kleinbuchstaben enthalten und muss eindeutig sein. Verwenden Sie die Funktion [uniqueString](resource-group-template-functions-string.md#uniquestring), um einen Hashwert zu generieren, anstatt zu versuchen, einen eindeutigen Wert zu erraten, der die Einschränkungen erfüllt. Sie können diesen Hashwert aussagekräftiger machen, indem Sie ein Präfix hinzufügen, das nach der Bereitstellung zum Identifizieren als Speicherkonto dient. 
 
 1. Navigieren Sie zum Abschnitt **parameters** Ihrer Vorlage, um ein Präfix für den Namen zu übergeben, der Ihren Benennungskonventionen entspricht. Fügen Sie der Vorlage einen Parameter hinzu, für den ein Präfix für den Speicherkontonamen verwendet werden kann:
 
