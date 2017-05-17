@@ -14,11 +14,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: aa6e78feb7ffaefcb8bce9c7f2293421c4859898
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -35,10 +37,5 @@ Die folgenden Themen bieten Einblicke in unterschiedliche Funktionen von Windows
 | Erste Schritte |[Verwenden von Windows 10-Geräten an Ihrem Arbeitsplatz](active-directory-azureadjoin-windows10-devices.md) <br> <br> [Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-overview.md) <br> <br> [Authentifizieren von Identitäten ohne Kennwörter über Microsoft Passport](active-directory-azureadjoin-passport.md) |
 | Bereitstellung |[Verwendungsszenarios und Bereitstellungsaspekte für Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md) <br><br> [Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen](active-directory-azureadjoin-devices-group-policy.md)<br><br>[Aktivieren von Windows Hello for Business in Ihrer Organisation](active-directory-azureadjoin-passport-deployment.md)<br><br> [Übersicht über Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)<br><br> |
 | Benutzeraufgaben |[Einrichten eines neuen Geräts mit Azure AD während des Setups](active-directory-azureadjoin-user-frx.md) <br><br> [Einrichten eines Windows 10-Geräts mit Azure AD in den Einstellungen](active-directory-azureadjoin-user-upgrade.md) <br><br> [Verknüpfen eines persönlichen Windows 10-Geräts mit Ihrer Organisation](active-directory-azureadjoin-personal-device.md) |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

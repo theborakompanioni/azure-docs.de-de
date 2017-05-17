@@ -13,11 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bf9f0ae5876af6f9e92f86f0d49315ccb5ff06cf
 ms.openlocfilehash: 5f25bee0d6cb4c6985a63073e19929f8d69de139
+ms.contentlocale: de-de
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -40,10 +42,5 @@ ms.openlocfilehash: 5f25bee0d6cb4c6985a63073e19929f8d69de139
 * [Weitere Informationen zu Verwendungsszenarios für Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
