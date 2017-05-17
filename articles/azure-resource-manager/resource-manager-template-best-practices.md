@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: fe52ced5e4dc829b5d1421bf0edcd58cffcaad19
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 24c2b27948e9373bc3957f706ed802cc36c04148
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -48,7 +49,7 @@ Sie müssen einen eindeutigen Ressourcennamen für alle Ressourcentypen angeben,
 
 <sup>1</sup>Für Namen von Speicherkonten gilt darüber hinaus Folgendes: Kleinbuchstaben, max. 24 Zeichen, keine Bindestriche.
 
-Wenn Sie einen Parameter für einen Ressourcennamen angeben, müssen Sie beim Bereitstellen der Ressource einen eindeutigen Namen angeben. Optional können Sie eine Variable erstellen, die mit der [uniqueString()](resource-group-template-functions.md#uniquestring)-Funktion einen Namen generiert. 
+Wenn Sie einen Parameter für einen Ressourcennamen angeben, müssen Sie beim Bereitstellen der Ressource einen eindeutigen Namen angeben. Optional können Sie eine Variable erstellen, die mit der [uniqueString()](resource-group-template-functions-string.md#uniquestring)-Funktion einen Namen generiert. 
 
 Sie können auch ein Präfix oder Suffix zum **uniqueString**-Ergebnis hinzufügen. Wenn Sie den eindeutigen Namen ändern, können Sie den Ressourcentyp einfacher aus dem Namen ableiten. Beispielsweise können Sie einen eindeutigen Namen für ein Speicherkonto mit der folgenden Variablen generieren:
 
@@ -174,7 +175,7 @@ Die folgenden Informationen können bei der Verwendung von Parametern hilfreich 
 Die folgenden Informationen können bei der Verwendung von Variablen hilfreich sein:
 
 * Verwenden Sie Variablen für Werte, die Sie mehr als einmal in einer Vorlage verwenden müssen. Wenn ein Wert nur einmal verwendet wird, erleichtert ein hartcodierter Wert das Lesen Ihrer Vorlage.
-* Im Abschnitt **variables** können Sie die [reference](resource-group-template-functions.md#reference)-Funktion nicht nutzen. Die **reference**-Funktion leitet ihren Wert aus dem Laufzeitstatus der Ressource ab. Variablen werden jedoch während der ersten Analyse der Vorlage aufgelöst. Erstellen Sie Werte, die die **reference**-Funktion direkt in den Abschnitten **resources** oder **outputs** der Vorlage benötigen.
+* Im Abschnitt **variables** können Sie die [reference](resource-group-template-functions-resource.md#reference)-Funktion nicht nutzen. Die **reference**-Funktion leitet ihren Wert aus dem Laufzeitstatus der Ressource ab. Variablen werden jedoch während der ersten Analyse der Vorlage aufgelöst. Erstellen Sie Werte, die die **reference**-Funktion direkt in den Abschnitten **resources** oder **outputs** der Vorlage benötigen.
 * Beziehen Sie Variablen für Ressourcennamen ein, die eindeutig sein müssen (siehe [Ressourcennamen](#resource-names)).
 * Sie können Variablen in komplexen Objekten gruppieren. Sie können auf einen Wert in einem komplexen Objekt im Format **variable.subentry** verweisen. Durch die Gruppierung von Variablen können Sie verwandte Variablen nachverfolgen. Dadurch wird auch die Lesbarkeit der Vorlage verbessert. Hier sehen Sie ein Beispiel:
    
