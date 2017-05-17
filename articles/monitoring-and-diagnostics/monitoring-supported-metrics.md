@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/17/2017
+ms.date: 5/10/2017
 ms.author: johnkem
-translationtype: Human Translation
-ms.sourcegitcommit: 354bf45625c209c22118804d3835ca71e3128580
-ms.openlocfilehash: deda64fb779e176bb00c3256fa3028e7e3567eb4
-ms.lasthandoff: 02/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: c0e7eb271b7ab19131c500e139ea3b1f6b2e7479
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -42,6 +43,38 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |QueryPoolBusyThreads|Ausgelastete Abfragepoolthreads|Count|Durchschnitt|Anzahl von ausgelasteten Threads im Abfragethreadpool|
 |CommandPoolJobQueueLength|Warteschlangenlänge für Aufträge im Befehlspool|Count|Durchschnitt|Gibt die Anzahl von Aufträgen in der Warteschlange des Befehlsthreadpools an.|
 |ProcessingPoolJobQueueLength|Warteschlangenlänge für Verarbeitungspoolaufträge|Count|Durchschnitt|Anzahl von Nicht-E/A-Aufträgen in der Warteschlange des Verarbeitungsthreadpools|
+|CurrentConnections|Verbindung: Aktuelle Verbindungen|Count|Durchschnitt|Aktuelle Anzahl hergestellter Clientverbindungen.|
+|CleanerCurrentPrice|Arbeitsspeicher: Bereinigung – aktueller Preis|Count|Durchschnitt|Aktueller Preis des Arbeitsspeichers, $/Byte/Zeit, normalisiert auf 1000.|
+|CleanerMemoryShrinkable|Arbeitsspeicher: Bereinigung – verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die durch den Hintergrundbereinigungsprozess bereinigt wird.|
+|CleanerMemoryNonshrinkable|Arbeitsspeicher: Bereinigung – nicht verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die nicht durch den Hintergrundbereinigungsprozess bereinigt wird.|
+|MemoryUsage|Arbeitsspeicher: Speicherauslastung|Byte|Durchschnitt|Speicherauslastung des Serverprozesses, wie bei der Berechnung des Arbeitsspeicherpreises für die Bereinigung verwendet. Entspricht dem Indikator „Process\PrivateBytes“ zuzüglich der Größe der im Speicher abgebildeten Daten. Vom xVelocity-In-Memory-Analysemodul (VertiPaq) abgebildeter oder belegter Arbeitsspeicher, der über die Arbeitsspeichergrenze des xVelocity-Moduls hinausgeht, wird dabei ignoriert.|
+|MemoryLimitHard|Arbeitsspeicher: Grenzwert für den festen Speicher|Byte|Durchschnitt|Grenzwert für den festen Speicher gemäß Konfigurationsdatei.|
+|MemoryLimitHigh|Arbeitsspeicher: Obere Arbeitsspeichergrenze|Byte|Durchschnitt|Oberer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|
+|MemoryLimitLow|Arbeitsspeicher: Untere Arbeitsspeichergrenze|Byte|Durchschnitt|Unterer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|
+|MemoryLimitVertiPaq|Arbeitsspeicher: VertiPaq-Arbeitsspeichergrenze|Byte|Durchschnitt|In-Memory-Grenzwert gemäß Konfigurationsdatei.|
+|Kontingent|Arbeitsspeicher: Kontingent|Byte|Durchschnitt|Aktuelles Arbeitsspeicherkontingent in Byte. Das Arbeitsspeicherkontingent wird auch als Speicherzuweisung oder Speicherreservierung bezeichnet.|
+|QuotaBlocked|Arbeitsspeicher: Kontingent blockiert|Count|Durchschnitt|Aktuelle Anzahl von Kontingentanforderungen, die blockiert werden, bis andere Arbeitsspeicherkontingente freigegeben werden.|
+|VertiPaqNonpaged|Arbeitsspeicher: Nicht ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von Arbeitsspeicher, die im Arbeitssatz zur Verwendung durch das In-Memory-Modul gesperrt sind.|
+|VertiPaqPaged|Arbeitsspeicher: Ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von ausgelagertem Arbeitsspeicher, die für In-Memory-Daten verwendet werden.|
+|RowsReadPerSec|Verarbeitung: Gelesene Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der aus allen relationalen Datenbanken gelesenen Zeilen.|
+|RowsConvertedPerSec|Verarbeitung: Konvertierte Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der Zeilen, die bei der Verarbeitung konvertiert werden.|
+|RowsWrittenPerSec|Verarbeitung: Geschriebene Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der Zeilen, die bei der Verarbeitung geschrieben werden.|
+|CommandPoolBusyThreads|Threads: Ausgelastete Threads im Befehlspool|Count|Durchschnitt|Anzahl ausgelasteter Threads im Befehlsthreadpool.|
+|CommandPoolIdleThreads|Threads: Leerlaufthreads im Befehlspool|Count|Durchschnitt|Anzahl von Leerlaufthreads im Befehlsthreadpool.|
+|LongParsingBusyThreads|Threads: Ausgelastete lange Analysethreads|Count|Durchschnitt|Anzahl ausgelasteter Threads im Pool für lange Analysethreads.|
+|LongParsingIdleThreads|Threads: Lange Analysethreads im Leerlauf|Count|Durchschnitt|Anzahl von Leerlaufthreads im Pool für lange Analysethreads.|
+|LongParsingJobQueueLength|Threads: Warteschlangenlänge für lange Analyseaufträge|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Pools für lange Analysethreads.|
+|ProcessingPoolBusyIOJobThreads|Threads: Ausgelastete Threads für E/A-Aufträge im Verarbeitungspool|Count|Durchschnitt|Anzahl von Threads, die E/A-Aufträge im Verarbeitungsthreadpool ausführen.|
+|ProcessingPoolBusyNonIOThreads|Threads: Ausgelastete Nicht-E/A-Threads im Verarbeitungspool|Count|Durchschnitt|Anzahl von Threads, die Nicht-E/A-Aufträge im Verarbeitungsthreadpool ausführen.|
+|ProcessingPoolIOJobQueueLength|Threads: Warteschlangenlänge für E/A-Aufträge im Verarbeitungspool|Count|Durchschnitt|Anzahl von E/A-Aufträgen in der Warteschlange des Verarbeitungsthreadpools.|
+|ProcessingPoolIdleIOJobThreads|Threads: Leerlaufthreads für E/A-Aufträge im Verarbeitungspool|Count|Durchschnitt|Anzahl von Leerlaufthreads für E/A-Aufträge im Verarbeitungsthreadpool.|
+|ProcessingPoolIdleNonIOThreads|Threads: Nicht-E/A-Leerlaufthreads im Verarbeitungspool|Count|Durchschnitt|Anzahl von Leerlaufthreads im Verarbeitungsthreadpool, die für Nicht-E/A-Aufträge vorgesehen sind.|
+|QueryPoolIdleThreads|Threads: Abfragepoolthreads im Leerlauf|Count|Durchschnitt|Anzahl von Leerlaufthreads für E/A-Aufträge im Verarbeitungsthreadpool.|
+|QueryPoolJobQueueLength|Threads: Auftragswarteschlangenlänge für Abfragepool|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Abfragethreadpools.|
+|ShortParsingBusyThreads|Threads: Ausgelastete kurze Analysethreads|Count|Durchschnitt|Anzahl ausgelasteter Threads im Pool für kurze Analysethreads.|
+|ShortParsingIdleThreads|Threads: Kurze Analysethreads im Leerlauf|Count|Durchschnitt|Anzahl von Leerlaufthreads im Pool für kurze Analysethreads.|
+|ShortParsingJobQueueLength|Threads: Warteschlangenlänge für kurze Analyseaufträge|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Pools für kurze Analysethreads.|
+|memory_thrashing_metric|Arbeitsspeicherüberlastung|Prozent|Durchschnitt|Durchschnittliche Arbeitsspeicherüberlastung.|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
@@ -299,6 +332,42 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Datenträgerlesevorgänge/Sek.|Datenträgerlesevorgänge/Sek.|Anzahl pro Sekunde|Durchschnitt|Datenträgerlesevorgänge in IOPS|
 |Datenträgerschreibvorgänge/Sek.|Datenträgerschreibvorgänge/Sek.|Anzahl pro Sekunde|Durchschnitt|Datenträgerschreibvorgänge in IOPS|
 
+## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|CustomerInsightsApiCalls|CustomerInsightsApiCalls|Count|Gesamt||
+
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|cpu_percent|CPU in Prozent|Prozent|Durchschnitt|CPU in Prozent|
+|compute_limit|Grenzwert für Computeeinheit|Count|Durchschnitt|Grenzwert für Computeeinheit|
+|compute_consumption_percent|Prozentsatz von Computeeinheit|Prozent|Durchschnitt|Prozentsatz von Computeeinheit|
+|memory_percent|Arbeitsspeicher in Prozent|Prozent|Durchschnitt|Arbeitsspeicher in Prozent|
+|io_consumption_percent|E/A in Prozent|Prozent|Durchschnitt|E/A in Prozent|
+|storage_percent|Speicher in Prozent|Prozent|Durchschnitt|Speicher in Prozent|
+|storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|
+|storage_limit|Speicherbegrenzung|Byte|Durchschnitt|Speicherbegrenzung|
+|active_connections|Aktive Verbindungen gesamt|Count|Durchschnitt|Aktive Verbindungen gesamt|
+|connections_failed|Fehlerhafte Verbindungen gesamt|Count|Durchschnitt|Fehlerhafte Verbindungen gesamt|
+
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|cpu_percent|CPU in Prozent|Prozent|Durchschnitt|CPU in Prozent|
+|compute_limit|Grenzwert für Computeeinheit|Count|Durchschnitt|Grenzwert für Computeeinheit|
+|compute_consumption_percent|Prozentsatz von Computeeinheit|Prozent|Durchschnitt|Prozentsatz von Computeeinheit|
+|memory_percent|Arbeitsspeicher in Prozent|Prozent|Durchschnitt|Arbeitsspeicher in Prozent|
+|io_consumption_percent|E/A in Prozent|Prozent|Durchschnitt|E/A in Prozent|
+|storage_percent|Speicher in Prozent|Prozent|Durchschnitt|Speicher in Prozent|
+|storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|
+|storage_limit|Speicherbegrenzung|Byte|Durchschnitt|Speicherbegrenzung|
+|active_connections|Aktive Verbindungen gesamt|Count|Durchschnitt|Aktive Verbindungen gesamt|
+|connections_failed|Fehlerhafte Verbindungen gesamt|Count|Durchschnitt|Fehlerhafte Verbindungen gesamt|
+
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
@@ -311,11 +380,11 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |devices.totalDevices|Total devices (Geräte gesamt)|Count|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|
 |devices.connectedDevices.allProtocol|Verbundene Geräte|Count|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|
 |d2c.telemetry.egress.success|Telemetry messages delivered (Übermittelte Telemetrienachrichten)|Count|Gesamt|Erfolgreich auf Endpunkte geschriebene Nachrichten (Häufigkeit gesamt)|
-|d2c.telemetry.egress.dropped|Dropped messages (Gelöschte Nachrichten)|Count|Gesamt|Gibt die Anzahl von Nachrichten an, die gelöscht wurden, weil sich keine Routenübereinstimmung ergeben hat und die Fallbackroute deaktiviert war.|
+|d2c.telemetry.egress.dropped|Dropped messages (Gelöschte Nachrichten)|Count|Gesamt|Anzahl der Nachrichten, die aufgrund eines inaktiven Zustellungsendpunkts gelöscht wurden|
 |d2c.telemetry.egress.orphaned|Verwaiste Nachrichten|Count|Gesamt|Anzahl von Nachrichten, die keiner Route entsprechen (einschließlich der Fallbackroute)|
 |d2c.telemetry.egress.invalid|Invalid messages (Ungültige Nachrichten)|Count|Gesamt|Anzahl von Nachrichten, die aufgrund von Inkompatibilität mit dem Endpunkt nicht übermittelt wurden|
 |d2c.telemetry.egress.fallback|Messages matching fallback condition (Nachrichten, die die Fallbackbedingung erfüllen)|Count|Gesamt|Gibt die Anzahl von Nachrichten an, die auf den Fallbackendpunkt geschrieben werden.|
-|d2c.endpoints.egress.eventHubs|Messages delivered to Event Hub endpoints (An Event Hub-Endpunkte übermittelte Nachrichten)|Count|Gesamt|Gibt an, wie oft Nachrichten erfolgreich auf Event Hub-Endpunkte geschrieben wurden.|
+|d2c.endpoints.egress.eventHubs|Messages delivered to Event Hub endpoints (An Event Hub-Endpunkte übermittelte Nachrichten)|Count|Gesamt|Gibt an, wie oft Nachrichten erfolgreich auf Event Hub-Endpunkte geschrieben wurden.Gibt an, wie oft Nachrichten erfolgreich auf Event Hub-Endpunkte geschrieben wurden.|
 |d2c.endpoints.latency.eventHubs|Message latency for Event Hub endpoints (Nachrichtenwartezeit für Event Hub-Endpunkte)|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit zwischen dem Eingang der Nachricht beim IoT-Hub und dem Eingang der Nachricht bei einem Event Hub-Endpunkt in Millisekunden|
 |d2c.endpoints.egress.serviceBusQueues|Messages delivered to Service Bus Queue endpoints (An Service Bus-Warteschlangenendpunkte übermittelte Nachrichten)|Count|Gesamt|Gibt an, wie oft Nachrichten erfolgreich auf Service Bus-Warteschlangenendpunkte geschrieben wurden.|
 |d2c.endpoints.latency.serviceBusQueues|Message latency for Service Bus Queue endpoints (Nachrichtenwartezeit für Service Bus-Warteschlangenendpunkte)|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit zwischen dem Eingang der Nachricht beim IoT-Hub und dem Eingang der Nachricht bei einem Service Bus-Warteschlangenendpunkt in Millisekunden|
@@ -354,12 +423,14 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |jobs.queryJobs.failure|Failed job queries (Nicht erfolgreiche Auftragsabfragen)|Count|Gesamt|Gibt an, wie viele nicht erfolgreiche Aufrufe von Abfrageaufträgen durchgeführt wurden.|
 |jobs.completed|Abgeschlossene Aufträge|Count|Gesamt|Gibt die Anzahl von abgeschlossenen Aufträgen an.|
 |jobs.failed|Fehlerhafte Aufträge|Count|Gesamt|Gibt die Anzahl aller fehlerhaften Aufträge an.|
+|d2c.telemetry.ingress.sendThrottle|Anzahl von Drosselungsfehlern|Count|Gesamt|Anzahl von Drosselungsfehlern aufgrund von Drosselungen des Gerätedurchsatzes|
+|dailyMessageQuotaUsed|Gesamtzahl verwendeter Nachrichten|Count|Durchschnitt|Gesamtzahl der heute verwendeten Nachrichten|
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
 |---|---|---|---|---|
-|INREQS|Eingehende Anforderungen|Count|Gesamt|Gesamtzahl der eingehenden Anforderungen für einen Namespace|
+|INREQS|Eingehende Sendeanforderungen|Count|Gesamt|Gesamtzahl eingehender Sendeanforderungen für einen Notification Hub|
 |SUCCREQ|Erfolgreiche Anforderungen|Count|Gesamt|Gesamtzahl der erfolgreichen Anforderungen für einen Namespace|
 |FAILREQ|Anforderungsfehler|Count|Gesamt|Gesamtzahl der fehlgeschlagenen Anforderungen für einen Namespace|
 |SVRBSY|Fehler durch ausgelasteten Server|Count|Gesamt|Gesamtzahl der Fehler durch ausgelasteten Server für einen Namespace|
@@ -367,11 +438,11 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MISCERR|Andere Fehler|Count|Gesamt|Gesamtzahl der fehlgeschlagenen Anforderungen für einen Namespace|
 |INMSGS|Eingehende Nachrichten|Count|Gesamt|Gesamtzahl der eingehenden Nachrichten für einen Namespace|
 |OUTMSGS|Ausgehende Nachrichten|Count|Gesamt|Gesamtzahl der ausgehenden Nachrichten für einen Namespace|
-|EHINMBS|Eingehende Bytes|Bytes pro Sekunde|Gesamt|Event Hub-Durchsatz eingehender Nachrichten für einen Namespace|
-|EHOUTMBS|Ausgehende Bytes|Bytes pro Sekunde|Gesamt|Gesamtzahl der ausgehenden Nachrichten für einen Namespace|
+|EHINMBS|Eingehende Bytes|Byte|Gesamt|Event Hub-Durchsatz eingehender Nachrichten für einen Namespace|
+|EHOUTMBS|Ausgehende Bytes|Byte|Gesamt|Gesamtzahl der ausgehenden Nachrichten für einen Namespace|
 |EHABL|Archivierte Backlognachrichten|Count|Gesamt|Event Hub-Archivnachrichten im Backlog für einen Namespace|
 |EHAMSGS|Archivnachrichten|Count|Gesamt|Event Hub-Archivnachrichten in einem Namespace|
-|EHAMBS|Durchsatz von Archivnachrichten|Bytes pro Sekunde|Gesamt|Event Hub-Durchsatz archivierter Nachrichten in einem Namespace|
+|EHAMBS|Durchsatz von Archivnachrichten|Byte|Gesamt|Event Hub-Durchsatz archivierter Nachrichten in einem Namespace|
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
@@ -477,6 +548,10 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |outgoing.mpns.dropped|Verworfene MPNS-Benachrichtigungen|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die von MPNS verworfen wurden (MPNS-Antwortheader: X-NotificationStatus: QueueFull or Suppressed).|
 |outgoing.mpns.pnserror|MPNS-Fehler|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil Fehler bei der Kommunikation mit MPNS aufgetreten sind.|
 |outgoing.mpns.authenticationerror|MPNS-Authentifizierungsfehler|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil das PNS die angegebenen Anmeldeinformationen nicht akzeptiert hat oder die Anmeldeinformationen blockiert wurden.|
+|notificationhub.devices|Notification Hub-Geräte|Count|Durchschnitt|Die Anzahl der Geräte des Notification Hubs|
+|notificationhub.pushes|Notification Hub-Pushbenachrichtigungen|Count|Gesamt|Die Anzahl von Pushbenachrichtigungen im Notification Hub|
+|incoming.all.requests|Alle eingehenden Anforderungen|Count|Gesamt|Gesamtzahl eingehender Anforderungen für einen Notification Hub|
+|incoming.all.failedrequests|Alle eingehenden fehlerhaften Anforderungen|Count|Gesamt|Gesamtzahl eingehender fehlerhafter Anforderungen für einen Notification Hub|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -512,10 +587,9 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |sessions_percent|Sitzungen in Prozent|Prozent|Durchschnitt|Sitzungen in Prozent|
 |dtu_limit|DTU-Grenzwert|Count|Durchschnitt|DTU-Grenzwert|
 |dtu_used|DTU-Verbrauch|Count|Durchschnitt|DTU-Verbrauch|
-|service_level_objective|SLO der Datenbank|Count|Gesamt|SLO der Datenbank|
 |dwu_limit|DWU-Grenzwert|Count|Maximum|DWU-Grenzwert|
-|dwu_consumption_percent|DWU in Prozent|Prozent|Durchschnitt|DWU in Prozent|
-|dwu_used|DWU-Verbrauch|Count|Durchschnitt|DWU-Verbrauch|
+|dwu_consumption_percent|DWU in Prozent|Prozent|Maximum|DWU in Prozent|
+|dwu_used|DWU-Verbrauch|Count|Maximum|DWU-Verbrauch|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -550,65 +624,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |AMLCalloutFailedRequests|Fehlerhafte Funktionsanforderungen|Count|Gesamt|Fehlerhafte Funktionsanforderungen|
 |AMLCalloutInputEvents|Funktionsereignisse|Count|Gesamt|Funktionsereignisse|
 
-## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
-
-|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
-|---|---|---|---|---|
-|CpuPercentage|CPU-Prozentsatz|Prozent|Durchschnitt|CPU-Prozentsatz|
-|MemoryPercentage|Arbeitsspeicherprozentsatz|Prozent|Durchschnitt|Arbeitsspeicherprozentsatz|
-|DiskQueueLength|Warteschlangenlänge des Datenträgers|Count|Gesamt|Warteschlangenlänge des Datenträgers|
-|HttpQueueLength|Länge der HTTP-Warteschlange|Count|Gesamt|Länge der HTTP-Warteschlange|
-|BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
-|BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
-
-## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites (einschließlich Functions)
-
-|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
-|---|---|---|---|---|
-|CpuTime|CPU-Zeit|Sekunden|Gesamt|CPU-Zeit|
-|Anforderungen|Anforderungen|Count|Gesamt|Anforderungen|
-|BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
-|BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
-|Http101|HTTP 101|Count|Gesamt|HTTP 101|
-|Http2xx|HTTP 2xx|Count|Gesamt|HTTP 2xx|
-|Http3xx|HTTP 3xx|Count|Gesamt|HTTP 3xx|
-|Http401|HTTP 401|Count|Gesamt|HTTP 401|
-|Http403|HTTP 403|Count|Gesamt|HTTP 403|
-|Http404|HTTP 404|Count|Gesamt|HTTP 404|
-|Http406|HTTP 406|Count|Gesamt|HTTP 406|
-|Http4xx|HTTP 4xx|Count|Gesamt|HTTP 4xx|
-|Http5xx|HTTP-Serverfehler|Count|Gesamt|HTTP-Serverfehler|
-|MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|
-|AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|
-|AverageResponseTime|Durchschnittliche Antwortzeit|Sekunden|Durchschnitt|Durchschnittliche Antwortzeit|
-|FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Durchschnitt|Ausführungseinheiten für Funktion|
-|FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Durchschnitt|Ausführungsanzahl für Funktion|
-
-## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
-
-|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
-|---|---|---|---|---|
-|CpuTime|CPU-Zeit|Sekunden|Gesamt|CPU-Zeit|
-|Anforderungen|Anforderungen|Count|Gesamt|Anforderungen|
-|BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
-|BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
-|Http101|HTTP 101|Count|Gesamt|HTTP 101|
-|Http2xx|HTTP 2xx|Count|Gesamt|HTTP 2xx|
-|Http3xx|HTTP 3xx|Count|Gesamt|HTTP 3xx|
-|Http401|HTTP 401|Count|Gesamt|HTTP 401|
-|Http403|HTTP 403|Count|Gesamt|HTTP 403|
-|Http404|HTTP 404|Count|Gesamt|HTTP 404|
-|Http406|HTTP 406|Count|Gesamt|HTTP 406|
-|Http4xx|HTTP 4xx|Count|Gesamt|HTTP 4xx|
-|Http5xx|HTTP-Serverfehler|Count|Gesamt|HTTP-Serverfehler|
-|MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|
-|AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|
-|AverageResponseTime|Durchschnittliche Antwortzeit|Sekunden|Durchschnitt|Durchschnittliche Antwortzeit|
-|FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Durchschnitt|Ausführungseinheiten für Funktion|
-|FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Durchschnitt|Ausführungsanzahl für Funktion|
-
 ## <a name="next-steps"></a>Nächste Schritte
-* [Informationen zu Metriken in Azure Monitor](monitoring-overview.md#monitoring-sources)
+* [Informationen zu Metriken in Azure Monitor](monitoring-overview-metrics.md)
 * [Erstellen von Warnungen zu Metriken](insights-receive-alert-notifications.md)
 * [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](monitoring-overview-of-diagnostic-logs.md)
 

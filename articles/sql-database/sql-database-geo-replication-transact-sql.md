@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/13/2016
+ms.date: 04/14/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 07593e7f1d92a9a5943714f662568fec10a8886a
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1005f776ae85a7fc878315225c45f2270887771f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ Dieser Artikel beschreibt, wie Sie die aktive Georeplikation für eine Azure SQL
 Informationen zum Initiieren eines Failovers mit Transact-SQL finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit Transact-SQL](sql-database-geo-replication-failover-transact-sql.md).
 
 > [!NOTE]
-> Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
+> Bei Verwendung der aktiven Georeplikation (lesbare sekundäre Datenbanken) für die Wiederherstellung im Notfall sollten Sie eine Failovergruppe für alle Datenbanken in einer Anwendung konfigurieren, um automatisches und transparentes Failover zu ermöglichen. Dieses Feature befindet sich in der Vorschauphase. Weitere Informationen finden Sie unter [Übersicht: Aktive Georeplikation in Azure SQL-Datenbank](sql-database-geo-replication-overview.md).
 > 
 > 
 
@@ -53,23 +54,6 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 > [!NOTE]
 > Wenn auf dem angegebenen Partnerserver eine Datenbank mit dem gleichen Namen wie die primäre Datenbank vorhanden ist, wird durch den Befehl ein Fehler verursacht.
 > 
-> 
-
-### <a name="add-non-readable-secondary-single-database"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (Einzeldatenbank)
-Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank als Einzeldatenbank die folgenden Schritte aus.
-
-1. Verwenden von Version 13.0.600.65 oder höher von SQL Server Management Studio
-   
-   > [!IMPORTANT]
-   > Laden Sie die [aktuelle](https://msdn.microsoft.com/library/mt238290.aspx) Version von SQL Server Management Studio herunter. Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates des Azure-Portals synchron sind.
-   > 
-   > 
-2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
-3. Verwenden Sie die folgende **ALTER DATABASE**-Anweisung, um eine lokale Datenbank in eine primäre Datenbank mit Georeplikation und nicht lesbarer sekundärer Datenbank auf „MySecondaryServer1“ zu ändern. Hierbei steht „MySecondaryServer1“ für den Anzeigenamen des Servers.
-   
-        ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer1> WITH (ALLOW_CONNECTIONS = NO);
-4. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
 
 ### <a name="add-readable-secondary-single-database"></a>Hinzufügen einer lesbaren sekundären Datenbank (Einzeldatenbank)
 Führen Sie zum Erstellen einer lesbaren sekundären Datenbank als Einzeldatenbank die folgenden Schritte aus:
@@ -80,18 +64,6 @@ Führen Sie zum Erstellen einer lesbaren sekundären Datenbank als Einzeldatenba
    
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer2> WITH (ALLOW_CONNECTIONS = ALL);
-4. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
-
-### <a name="add-non-readable-secondary-elastic-pool"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (elastischer Pool)
-Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank in einem elastischen Pool die folgenden Schritte aus.
-
-1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver.
-2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
-3. Verwenden Sie die folgende **ALTER DATABASE** -Anweisung, um eine lokale Datenbank als georeplizierte primäre Datenbank mit einer nicht lesbaren sekundären Datenbank auf einem sekundären Server in einem elastischen Pool einzurichten.
-   
-        ALTER DATABASE <MyDB>
-           ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 4. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
 
 ### <a name="add-readable-secondary-elastic-pool"></a>Hinzufügen einer lesbaren sekundären Datenbank (elastischer Pool)
@@ -141,22 +113,6 @@ Gehen Sie folgendermaßen vor, um eine Gemeinschaft aktiver Georeplikation zu ü
         SELECT * FROM sys.dm_operation_status where major_resource_id = 'MyDB'
         ORDER BY start_time DESC
 9. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
-
-## <a name="upgrade-a-non-readable-secondary-to-readable"></a>Aktualisieren einer nicht lesbaren sekundären Datenbank auf „lesbar“
-Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert. Wenn Sie heute nicht lesbare sekundäre Datenbanken verwenden und auf lesbare Datenbanken aktualisieren möchten, können Sie die folgenden einfachen Schritte für jede sekundäre Datenbank ausführen.
-
-> [!IMPORTANT]
-> Es gibt keine Self-Service-Methode der direkten Aktualisierung einer nicht lesbaren sekundären Datenbank auf „lesbar“. Wenn Sie die einzige sekundäre Datenbank löschen, bleibt die primäre Datenbank ungeschützt, bis die neue sekundäre Datenbank vollständig synchronisiert ist. Wenn die SLA Ihrer Anwendung erfordert, dass die primäre Datenbank immer geschützt ist, sollten Sie das Erstellen einer parallelen sekundären Datenbank auf einem anderen Server erwägen, bevor Sie die oben genannten Schritte anwenden. Beachten Sie, dass jede primäre Datenbank bis zu 4 sekundäre Datenbanken haben kann.
-> 
-> 
-
-1. Stellen Sie zunächst eine Verbindung mit dem *sekundären* Server her, und löschen Sie die nicht lesbare sekundäre Datenbank:  
-   
-        DROP DATABASE <MyNonReadableSecondaryDB>;
-2. Stellen Sie jetzt eine Verbindung mit dem *primären* Server her, und fügen Sie eine neue lesbare sekundäre Datenbank hinzu.
-   
-        ALTER DATABASE <MyDB>
-            ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).

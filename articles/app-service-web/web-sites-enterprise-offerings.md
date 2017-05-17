@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: anwestg
-translationtype: Human Translation
-ms.sourcegitcommit: 4d3b3096e42736fddd3bb5b9f39376271d193c58
-ms.openlocfilehash: 980eb9ff0990d532a77614be571e3f6d24a1dfee
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4d46654f42a3fd5c9b491f1b565c2acfa0dc52c4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -112,7 +113,7 @@ Nachdem diese Punkte berücksichtigt wurden, ist Ihre Webanwendung bereit für d
 
 Die nächsten Schritte beim Migrationsvorgang bestehen darin, eine App Service-Web-App und eine Azure SQL-Datenbank zu erstellen. Es sind Web-Apps-Instanzen in verschiedenen Größen und mit einer unterschiedlichen Anzahl von CPU-Kernen und RAM-Mengen verfügbar, die Sie basierend auf Ihrer Webanwendungsanforderung auswählen können.  Weitere Informationen und Preise finden Sie unter [https://azure.microsoft.com/pricing/details/app-service/](https://azure.microsoft.com/pricing/details/app-service/). Ebenso bedient Microsoft Azure SQL-Datenbank alle Anforderungen eines Unternehmens mit verschiedenen Dienstebenen und Leistungsstufen, um Anforderungen zu erfüllen. Weitere Informationen finden Sie unter [https://azure.microsoft.com/pricing/details/sql-database/](https://azure.microsoft.com/pricing/details/sql-database/). Nach der Erstellung wird die Anwendung entweder über FTP oder WebDeploy auf App Service-Web-Apps hochgeladen und dann in die Datenbank übertragen.
 
-Bei dieser Migration verwendet die Lösung Azure SQL-Datenbank, aber das ist nicht die einzige Datenbank, die auf Azure unterstützt wird. Unternehmen können auch MySQL, MongoDB, Azure DocumentDB und vieles mehr über Add-Ons nutzen, die im [Azure Store](/marketplace/partner-program/)erworben werden können.
+Bei dieser Migration verwendet die Lösung Azure SQL-Datenbank, aber das ist nicht die einzige Datenbank, die auf Azure unterstützt wird. Unternehmen können auch MySQL, MongoDB, Azure Cosmos DB und vieles mehr über Add-Ons nutzen, die im [Azure Store](/marketplace/partner-program/)erworben werden können.
 
 Beim Erstellen einer Azure SQL-Datenbank stehen Ihnen eine Reihe von Optionen zum Importieren einer vorhandenen Datenbank von einem lokalen Server zur Verfügung, vom Generieren eines Skripts für eine vorhandene Datenbank bis zur Verwendung von [Export und Import von Datenebenenanwendungen](http://aka.ms/dacpac).
 

@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5fea9dfcd323ecf497742173a66119be4f734909
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a293c06f2e9bca8790832ecb851c89b04e76bb24
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -33,10 +34,6 @@ Die folgenden Abschnitte zeigen Ihnen, wie Sie das Azure-Portal zum Konfiguriere
 ### <a name="configure-the-vault-register-the-server-and-select-databases"></a>Konfigurieren des Tresors, Registrieren des Servers und Auswählen der Datenbanken
 
 Sie [konfigurieren einen Azure Recovery Services-Tresor zur Aufbewahrung von automatisierten Sicherungen](sql-database-long-term-retention.md) für einen längeren Zeitraum, als gemäß der Aufbewahrungsdauer für Ihre Dienstebene vorgesehen ist. 
-
-> [!TIP]
-> Informationen zum Löschen von Sicherungen mit langer Aufbewahrungsdauer finden Sie unter [Konfiguration einer langfristig aufbewahrten Sicherung einer Azure SQL-Datenbank und die Wiederherstellung daraus](sql-database-long-term-backup-retention-configure.md).
->
 
 1. Öffnen Sie die Seite **SQL Server** für Ihren Server.
 
@@ -216,9 +213,6 @@ $policyState = "enabled"
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -State $policyState -ResourceId $policy.Id
 ```
 
-> [!IMPORTANT]
-> Nach der Konfiguration werden innerhalb der nächsten sieben Tage Sicherungen im Tresor angezeigt. Setzen Sie dieses Tutorial fort, wenn Sicherungen im Tresor angezeigt werden.
-
 ### <a name="view-backup-info-and-backups-in-long-term-retention"></a>Anzeigen von Sicherungsinformationen sowie von Sicherungen mit langfristiger Aufbewahrung
 
 Zeigen Sie Informationen zu Ihren Datenbanksicherungen mit [langfristiger Beibehaltung der Sicherung](sql-database-long-term-retention.md) an. 
@@ -269,7 +263,7 @@ $restoredDb
 
 
 > [!NOTE]
-> Auf diesem Blatt können Sie mithilfe von SQL Server Management Studio eine Verbindung mit der wiederhergestellten Datenbank herstellen, um erforderliche Aufgaben durchzuführen. Sie können beispielsweise [einen Teil der Daten aus der wiederhergestellten Datenbank extrahieren und in die vorhandene Datenbank kopieren oder die vorhandene Datenbank löschen und die wiederhergestellte Datenbank in den vorhandenen Datenbanknamen umbenennen](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Auf diesem Blatt können Sie mithilfe von SQL Server Management Studio eine Verbindung mit der wiederhergestellten Datenbank herstellen, um erforderliche Aufgaben durchzuführen. Sie können beispielsweise einen Teil der Daten aus der wiederhergestellten Datenbank extrahieren und in die vorhandene Datenbank kopieren oder die vorhandene Datenbank löschen und die wiederhergestellte Datenbank in den vorhandenen Datenbanknamen umbenennen. Siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

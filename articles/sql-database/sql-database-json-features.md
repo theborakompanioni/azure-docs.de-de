@@ -15,16 +15,18 @@ ms.author: jovanpop
 ms.workload: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
-ms.sourcegitcommit: 76d06bd9e0b033a2fb993f6183900e42e5232665
-ms.openlocfilehash: 741095b0ec2ae2ce125b59dfc5d1112d0a92de43
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 57057bbdbbafff6843070336efc986286d84af36
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Getting started with JSON features in Azure SQL Database (Erste Schritte mit JSON-Features in der Azure SQL-Datenbank)
 In Azure SQL-Datenbank können Sie Daten analysieren und abfragen, die im JavaScript Object Notation-Format [(JSON)](http://www.json.org/) dargestellt werden, und Ihre relationalen Daten als JSON-Text exportieren.
 
-JSON ist ein gängiges Datenformat zum Austauschen von Daten in modernen Web- und mobilen Anwendungen. JSON wird auch zum Speichern von halbstrukturierten Daten in Protokolldateien oder in NoSQL-Datenbanken wie [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) verwendet. Viele REST-Webdienste geben Ergebnisse als JSON-Text formatiert zurück oder akzeptieren Daten im JSON-Format. Die meisten Azure-Dienste, z.B. [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/)und [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) verfügen über REST-Endpunkte, die Daten im JSON-Format zurückgeben oder verarbeiten.
+JSON ist ein gängiges Datenformat zum Austauschen von Daten in modernen Web- und mobilen Anwendungen. JSON wird auch zum Speichern von halbstrukturierten Daten in Protokolldateien oder in NoSQL-Datenbanken wie [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) verwendet. Viele REST-Webdienste geben Ergebnisse als JSON-Text formatiert zurück oder akzeptieren Daten im JSON-Format. Die meisten Azure-Dienste, z.B. [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/)und [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) verfügen über REST-Endpunkte, die Daten im JSON-Format zurückgeben oder verarbeiten.
 
 Mit Azure SQL-Datenbank können Sie problemlos mit JSON-Daten arbeiten und Ihre Datenbank in moderne Dienste integrieren.
 
@@ -204,10 +206,5 @@ In diesen Ressourcen finden Sie weitere Informationen zur Integration von JSON i
 * [Channel 9-Video](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
 Weitere Informationen zu verschiedenen Szenarios der Integration von JSON in Ihre Anwendung enthalten die Demos in diesem [Channel 9-Video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds), oder suchen Sie in den [JSON-Blogbeiträgen](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/) nach einem Szenario, das Ihrem Anwendungsfall entspricht.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

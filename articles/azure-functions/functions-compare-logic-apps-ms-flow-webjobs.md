@@ -15,10 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/08/2016
 ms.author: chrande; glenga
-translationtype: Human Translation
-ms.sourcegitcommit: ee94e074c574bc2e6e1a52dbfd6bd0ae102cb342
-ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0f35d79870301bcba9f009f7dbc00696ce426458
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -80,7 +81,7 @@ In der folgenden Tabelle werden die Unterschiede zwischen Functions und WebJobs 
 | Skalieren |Skalierung ohne Konfiguration |Skalierung mit App Service-Plan |
 | Preise |Nutzungsbasierte Bezahlung oder als Teil eines App Service-Plans |Teil eines App Service-Plans |
 | Ausführungstyp |ausgelöst, geplant (durch Trigger mit Timer) |ausgelöst, fortlaufend, geplant |
-| Auslösende Ereignisse |[Timer](functions-bindings-timer.md), [Azure DocumentDB](functions-bindings-documentdb.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md), [ Mobile App Service-Apps von Azure](functions-bindings-mobile-apps.md), [Azure Notification Hubs](functions-bindings-notification-hubs.md), [Azure Service Bus](functions-bindings-service-bus.md), [Azure Storage](functions-bindings-storage.md) |[Azure Storage](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), [Azure Service Bus](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
+| Auslösende Ereignisse |[Timer](functions-bindings-timer.md), [Azure Cosmos DB](functions-bindings-documentdb.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md), [Mobile App Service-Apps von Azure](functions-bindings-mobile-apps.md), [Azure Notification Hubs](functions-bindings-notification-hubs.md), [Azure Service Bus](functions-bindings-service-bus.md), [Azure Storage](functions-bindings-storage.md) |[Azure Storage](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), [Azure Service Bus](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
 | Entwicklung im Browser |x | |
 | Windows-Skripterstellung |experimentell |x |
 | PowerShell |experimentell |x |

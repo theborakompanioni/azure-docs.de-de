@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: mcollier
-translationtype: Human Translation
-ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
-ms.openlocfilehash: 6d66a8fa6eac5bc0ecdddc12b67697045556bf46
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: fcf9cc661da0d8e65b385bfddeded0a3e5d0d3e2
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitor-REST-API
 In diesem Artikel erfahren Sie, wie Sie die Authentifizierungen so durchführen, dass Ihr Code die [REST-API-Referenz für Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx)nutzen kann.         
 
-Mit der Azure Monitor-API können Sie die verfügbaren Standardmetrikdefinitionen (den Metriktyp, z.B. CPU-Zeit, Anforderungen etc.), Granularität und Metrikwerte programmgesteuert abrufen. Nach dem Abrufen können die Daten in einem separaten Datenspeicher abgelegt werden, z.B. in Azure SQL-Datenbank, DocumentDB oder Azure Data Lake. Von dort aus können ggf. weitere Analysen durchgeführt werden.
+Mit der Azure Monitor-API können Sie die verfügbaren Standardmetrikdefinitionen (den Metriktyp, z.B. CPU-Zeit, Anforderungen etc.), Granularität und Metrikwerte programmgesteuert abrufen. Nach dem Abrufen können die Daten in einem separaten Datenspeicher abgelegt werden, z.B. in Azure SQL-Datenbank, Azure Cosmos DB oder Azure Data Lake. Von dort aus können ggf. weitere Analysen durchgeführt werden.
 
 Außer dem Arbeiten mit verschiedenen Metrikdatenpunkten – wie in diesem Artikel beschrieben – können Sie mit der Monitor-API auch Warnungsregeln auflisten, Aktivitätsprotokolle anzeigen und vieles mehr. Eine vollständige Liste aller verfügbaren Vorgänge finden Sie in der [REST-API-Referenz für Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
@@ -216,9 +218,4 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/provide
 * Lesen Sie [Unterstützte Metriken von Azure Monitor](monitoring-supported-metrics.md).
 * Lesen Sie die [REST-API-Referenz zu Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 * Schlagen Sie in der [Azure-Verwaltungsbibliothek](https://msdn.microsoft.com/library/azure/mt417623.aspx)nach.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
