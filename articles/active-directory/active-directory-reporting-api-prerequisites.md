@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2016
+ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b0f23cc578fb946247d492b9dee92cf7a9daafa1
+ms.contentlocale: de-de
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -164,10 +166,5 @@ Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen ne
 ## <a name="next-steps"></a>Nächste Schritte
 * Möchten Sie programmgesteuert auf die Daten der Azure AD-Berichterstellungs-API zugreifen? Dann lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

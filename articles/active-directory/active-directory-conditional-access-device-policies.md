@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/16/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 613e2447c1e47fcd80f2e9ded9ad2669f8283c3d
+ms.contentlocale: de-de
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -46,10 +48,5 @@ Es ist geplant, die Richtlinie für den bedingten Zugriff auf Benutzer auf ander
 F: Wann wird die Richtlinie für den bedingten Zugriff auf Office 365-Dienste auf browserbasierte Apps (z. B. OWA, browserbasiertes SharePoint) ausgeweitet?
 
 Zurzeit ist der bedingte Zugriff auf Office 365-Dienste auf Geräteanwendungen beschränkt. Es ist geplant, die Richtlinie für den bedingten Zugriff auf Benutzer auszuweiten, die über Browser auf die Dienste zugreifen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
