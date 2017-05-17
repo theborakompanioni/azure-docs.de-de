@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 62bafc9bc58811cd9bd314639e3c2a609f4935d3
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ed9bfe928699d040aa4283da5a8690318932738c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -46,7 +47,10 @@ Die folgende Beschreibung bezieht sich auf die einzelnen Elemente des obigen Dia
 Ressourcen geben Metriken aus, die später von Regeln verarbeitet werden. Metriken sind über verschiedene Methoden verfügbar.
 Für Skalierungsgruppen für virtuelle Computer werden Telemetriedaten von Azure-Diagnose-Agents verwendet, während die Telemetriedaten für Web-Apps und Clouddienste direkt aus der Azure-Infrastruktur stammen. Einige häufig verwendete Statistiken sind CPU-Nutzung, Arbeitsspeichernutzung, Threadanzahl, Warteschlangenlänge und Datenträgerverwendung. Eine Liste mit den Telemetriedaten, die Sie verwenden können, finden Sie unter [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md).
 
-## <a name="time"></a>Zeit
+## <a name="custom-metrics"></a>Benutzerdefinierte Metriken
+Sie können auch eigene benutzerdefinierten Metriken verwenden, die von Ihren Anwendungen ausgegeben werden können. Wenn Sie Ihre Anwendungen für das Senden von Metriken an Application Insights konfiguriert haben, können Sie anhand dieser Metriken entscheiden, ob die Skalierung angewendet werden soll oder nicht. 
+
+## <a name="time"></a>Time
 Für zeitplanbasierte Regeln gilt die UTC-Zeit. Sie müssen die Zeitzone richtig einrichten, wenn Sie Ihre Regeln festlegen.  
 
 ## <a name="rules"></a>Regeln

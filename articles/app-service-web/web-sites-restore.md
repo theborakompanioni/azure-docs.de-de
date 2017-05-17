@@ -14,15 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 71d07e64480d4b4eaff7fdef53c8f5ff7a97a944
-ms.lasthandoff: 01/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 49aa35a42e4f6dab2f8d556f7b1b10bfdef7b7db
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="restore-an-app-in-azure"></a>Wiederherstellen einer App in Azure
-In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/app-service-value-prop-what-is.md) wiederherstellen, die zuvor gesichert wurde (siehe [Sichern einer App in Azure](web-sites-backup.md)). Sie können Ihre App mit den zugehörigen verknüpften Datenbanken (SQL-Datenbank oder MySQL) bei Bedarf in einem vorherigen Zustand wiederherstellen oder basierend auf der Sicherung der ursprünglichen App eine neue App erstellen. Das Erstellen einer neuen App, die parallel zur letzten Version ausgeführt wird, kann für A/B-Tests nützlich sein.
+In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/app-service-value-prop-what-is.md) wiederherstellen, die zuvor gesichert wurde (siehe [Sichern einer App in Azure](web-sites-backup.md)). Sie können Ihre App mit den zugehörigen verknüpften Datenbanken bei Bedarf in einem vorherigen Zustand wiederherstellen oder basierend auf der Sicherung der ursprünglichen App eine neue App erstellen. Azure App Service unterstützt die folgenden Datenbanken für Sicherung und Wiederherstellung:
+- [SQL-Datenbank](https://azure.microsoft.com/en-us/services/sql-database/)
+- [Azure-Datenbank für MySQL (Vorschau)](https://azure.microsoft.com/en-us/services/mysql)
+- [Azure-Datenbank für PostgreSQL (Vorschau)](https://azure.microsoft.com/en-us/services/postgres)
+- [ClearDB MySQL](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SuccessBricksInc.ClearDBMySQLDatabase?tab=Overview)
+- [MySQL In-App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarifen **Standard** und **Premium** ausgeführt werden. Informationen zum zentralen Hochskalieren der App finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md). Im Tarif **Premium** ist eine größere Anzahl täglicher Sicherungen zulässig ist als im Tarif **Standard**.
 
@@ -44,22 +50,19 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
     ![](./media/web-sites-restore/022ChooseDestination.png)
    
    > [!WARNING]
-   > Wenn Sie **Überschreiben**wählen, werden alle Daten in Ihrer vorhandenen App gelöscht. Bevor Sie auf **OK**klicken, stellen Sie sicher, dass alles genau Ihren Vorstellungen entspricht.
+   > Wenn Sie **Überschreiben** wählen, werden alle Daten in Ihrer vorhandenen App gelöscht und überschrieben. Bevor Sie auf **OK**klicken, stellen Sie sicher, dass alles genau Ihren Vorstellungen entspricht.
    > 
    > 
    
-    Sie können **Vorhandene App** auswählen, um die App-Sicherung in einer anderen App in derselben Ressourcengruppe wiederherzustellen. Bevor Sie diese Option verwenden, sollten Sie bereits eine andere App in der Ressourcengruppe erstellt haben, deren Datenbankkonfiguration derjenigen entspricht, die in der App-Sicherung definiert ist.
+    Sie können **Vorhandene App** auswählen, um die App-Sicherung in einer anderen App in derselben Ressourcengruppe wiederherzustellen. Bevor Sie diese Option verwenden, sollten Sie bereits eine andere App in der Ressourcengruppe erstellt haben, deren Konfiguration derjenigen entspricht, die in der App-Sicherung definiert ist.
+
 4. Klicken Sie auf **OK**.
 
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Herunterladen oder Löschen einer Sicherung aus einem Speicherkonto
-1. Wählen Sie auf dem Hauptblatt **Durchsuchen** des Azure-Portals die Option **Speicherkonten** aus.
-   
-    Eine Liste Ihrer vorhandenen Speicherkonten wird angezeigt.
-2. Wählen Sie das Speicherkonto aus, das die herunterzuladende oder zu löschende Sicherung enthält.
-   
-    Das Blatt für das Speicherkonto wird angezeigt.
+1. Wählen Sie auf dem Hauptblatt **Durchsuchen** des Azure-Portals die Option **Speicherkonten** aus. Eine Liste Ihrer vorhandenen Speicherkonten wird angezeigt.
+2. Wählen Sie das Speicherkonto aus, das die herunterzuladende oder zu löschende Sicherung enthält. Das Blatt des Speicherkontos wird angezeigt.
 3. Wählen Sie auf dem Blatt des Speicherkontos den gewünschten Container aus.
    
     ![Container anzeigen][ViewContainers]
@@ -71,20 +74,16 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
 <a name="OperationLogs"></a>
 
 ## <a name="monitor-a-restore-operation"></a>Überwachen eines Wiederherstellungsvorgangs
-1. Um Details über den Erfolg oder Misserfolg des Wiederherstellungsvorgangs für die App anzuzeigen, wechseln Sie im Azure-Portal zum Blatt **Aktivitätsprotokoll**.
-   
-    Auf dem Blatt **Aktivitätsprotokoll** werden alle Ihre Vorgänge mit Ebene, Status, Ressourcen und Zeitdetails angezeigt.
-2. Scrollen Sie nach unten zum gewünschten Wiederherstellungsvorgang, und klicken Sie darauf, um ihn auszuwählen.
+Um Details über den Erfolg oder Misserfolg des Wiederherstellungsvorgangs für die App anzuzeigen, wechseln Sie im Azure-Portal zum Blatt **Aktivitätsprotokoll**.  
+ 
+
+Scrollen Sie nach unten zum gewünschten Wiederherstellungsvorgang, und klicken Sie darauf, um ihn auszuwählen.
 
 Auf dem Blatt „Details“ werden die verfügbaren Informationen im Zusammenhang mit dem Wiederherstellungsvorgang angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können App Service-Apps auch mithilfe der REST-API sichern und wiederherstellen (siehe [Verwenden von REST zum Sichern und Wiederherstellen von App Service-Apps](websites-csm-backup.md)).
+Sie können App Service-Apps mithilfe der REST-API sichern und wiederherstellen (siehe [Verwenden von REST zum Sichern und Wiederherstellen von App Service-Apps](websites-csm-backup.md)).
 
-> [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-> 
-> 
 
 <!-- IMAGES -->
 [ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png

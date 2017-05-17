@@ -11,15 +11,16 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 04/19/2017
+ms.date: 05/15/2017
 ms.author: ddove
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: cc81b842833942019d5afec9b9dc33813ac48964
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 448bdbd2ae12d325781587846c812995cae33774
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -128,7 +129,7 @@ Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei 
 
 ## <a name="edtu-and-storage-limits-for-elastic-pools"></a>eDTUs und Speicherbeschränkungen für elastische Pools
 
-In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard-, Premium- und Premium RS-Pools beschrieben.
+Die folgenden Tabellen beschreiben die Ressourcengrenzwerte des elastischen Pools.  Beachten Sie, dass die Ressourcengrenzwerte einzelner Datenbanken in elastischen Pools im Allgemeinen denen einzelner Datenbanken außerhalb von Pools basierend auf DTU-Anzahl und Dienstebene entsprechen.  Auf eine S2-Datenbank können z.B. max. 120 Mitarbeiter gleichzeitig zugreifen.  Also können auch 120 Mitarbeiter gleichzeitig auf eine Datenbank in einem Standard-Pool zugreifen, wenn max. 50 DTUs pro Datenbank im Pool zulässig sind (entspricht S2).
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -167,3 +168,4 @@ Für Anwendungen, für die umfangreichere Wiederherstellungsanforderungen erford
 * Sie können einen elastischen Pool über das [Azure-Portal](sql-database-elastic-pool-manage-portal.md), mit [PowerShell](sql-database-elastic-pool-manage-powershell.md), [Transact-SQL](sql-database-elastic-pool-manage-tsql.md), [C#](sql-database-elastic-pool-manage-csharp.md) oder der REST-API erstellen und verwalten.
 * Ein Video finden Sie unter [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank).
 * Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+

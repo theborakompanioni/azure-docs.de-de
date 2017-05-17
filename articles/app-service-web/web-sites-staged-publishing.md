@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a51be4038ef6f9890645a71cd10cc86cb58929f3
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: dd0382aaec0cdcbd6688d99f7bc0245fae5b963f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
 
-Sie können die Bereitstellung Ihrer Web-App, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im App Service-Plan **Standard** oder **Premium** erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
+Sie können die Bereitstellung Ihrer Web-App, Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im App Service-Plan **Standard** oder **Premium** erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
 
 * Sie können App-Änderungen in einem Stagingbereitstellungsslot überprüfen, bevor Sie die App in den Produktionsslot überführen.
 * Indem Sie eine App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, stellen Sie sicher, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Verkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Überführungsoperationen fallengelassen. Dieser gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Austauschen erforderlich ist.
@@ -119,6 +120,9 @@ Auf dem Blatt „Ressourcen“ Ihrer App können Sie Bereitstellungsslots in der
 Das Feature „Mit Vorschau austauschen“ bzw. Austausch mit mehreren Phasen vereinfacht die Überprüfung slotspezifischer Konfigurationselemente, wie z.B. Verbindungszeichenfolgen.
 Für unternehmenswichtige Workloads möchten Sie ggf. prüfen, ob sich die App wie erwartet verhält, wenn die Konfiguration des Produktionsslots angewendet wird. Eine solche Überprüfung müssen Sie durchführen, *ehe* die App in die Produktionsumgebung überführt wird. „Mit Vorschau austauschen“ ist das Feature, das Sie hierfür brauchen.
 
+> [!NOTE]
+> „Mit Vorschau austauschen“ wird in Web-Apps unter Linux nicht unterstützt.
+
 Bei Verwendung der Option **Mit Vorschau austauschen** (siehe [Austauschen von Bereitstellungsslots](#Swap)) führt App Service Folgendes aus:
 
 - Der Zielslot bleibt unverändert, sodass die in diesem Slot (z.B. Produktion) vorhandene Workload nicht beeinträchtigt wird.
@@ -140,6 +144,9 @@ Das Feature „Automatisch tauschen“ rationalisiert DevOps-Szenarien, bei dene
 > Wenn Sie Auto Swap für einen Slot aktivieren, stellen Sie sicher, dass die Slotkonfiguration genau der erforderlichen Konfiguration für den Zielslot (normalerweise der Produktionsslot) entspricht.
 > 
 > 
+
+> [!NOTE]
+> „Automatisch tauschen“ wird in Web-Apps unter Linux nicht unterstützt.
 
 Das Konfigurieren von Auto Swap für einen Slot ist einfach. Führen Sie die folgenden Schritte aus:
 
@@ -276,8 +283,8 @@ Um einen nicht mehr benötigten Bereitstellungsslot zu löschen, verwenden Sie w
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure App Service-Web-App – Blockieren des Webzugriffs auf Nicht-Produktionsslots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-
+[Azure Web Sites – block web access to non-production deployment slots (Azure Web Sites – Blockieren des Webzugriffs auf nicht für die Produktion bestimmte Bereitstellungsslots)](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+[Einführung in App Service unter Linux](./app-service-linux-intro.md)
 [Kostenlose Microsoft Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->

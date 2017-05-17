@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/16/2016
-ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 7d666b81f6c836e161d3c97512767638c088d3c8
-ms.lasthandoff: 04/13/2017
+ms.date: 04/07/2017
+ms.author: sashan;carlrab
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4abcfa777c08cec25770dc92f38e530f1ddb1d89
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -34,16 +35,16 @@ Im weiteren Verlauf des Artikels werden Strategien für die Notfallwiederherstel
 ## <a name="scenario-1-cost-sensitive-startup"></a>Szenario 1: Kostenbewusste Anwendung für Startup-Unternehmen
 <i>Wir sind ein Startup-Unternehmen, bei dem stark auf die Kosten geachtet wird.  Wir möchten die Bereitstellung und Verwaltung der Anwendung vereinfachen und einen eingeschränkten Servicelevel (SLA) für einzelne Kunden verwenden. Es soll aber sichergestellt sein, dass die Anwendung als Ganzes niemals offline ist.</i>
 
-Zur Erfüllung der Anforderung zur Vereinfachung sollten Sie alle Mandantendatenbanken in einem elastischen Pool in der Azure-Region Ihrer Wahl bereitstellen und die Verwaltungsdatenbank(en) als georeplizierte einzelne Datenbank(en) bereitstellen. Verwenden Sie für die Notfallwiederherstellung von Mandanten die Geowiederherstellung, für die keine zusätzlichen Kosten anfallen. Um die Verfügbarkeit der Verwaltungsdatenbanken sicherzustellen, sollten sie in eine andere Region georepliziert werden (Schritt 1). Die laufenden Kosten der Notfallwiederherstellungskonfiguration in diesem Szenario entsprechen den Gesamtkosten der sekundären Datenbanken. Diese Konfiguration ist im nächsten Diagramm dargestellt.
+Zur Erfüllung der Anforderung zur Vereinfachung sollten Sie alle Mandantendatenbanken in einem elastischen Pool in der Azure-Region Ihrer Wahl bereitstellen und die Verwaltungsdatenbank(en) als georeplizierte einzelne Datenbank(en) bereitstellen. Verwenden Sie für die Notfallwiederherstellung von Mandanten die Geowiederherstellung, für die keine zusätzlichen Kosten anfallen. Um die Verfügbarkeit der Verwaltungsdatenbanken sicherzustellen, sollten sie mithilfe einer Failovergruppe in eine andere Region georepliziert werden (Schritt 1). Die laufenden Kosten der Notfallwiederherstellungskonfiguration in diesem Szenario entsprechen den Gesamtkosten der sekundären Datenbanken. Diese Konfiguration ist im nächsten Diagramm dargestellt.
 
 ![Abbildung 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
 Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschritte ausführen, die im nächsten Diagramm angegeben sind, um die Anwendung wieder in den Onlinezustand zu versetzen.
 
-* Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken (2) in die Region für die Notfallwiederherstellung durch. 
-* Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Kunden sind die Daten vorübergehend nicht verfügbar.
-* Erstellen Sie den elastischen Pool mit der gleichen Konfiguration wie für den ursprünglichen Pool (3). 
-* Verwenden Sie die Geowiederherstellung, um Kopien der Mandantendatenbanken zu erstellen (4). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
+* Die Failovergruppe initiiert das automatische Failover der Verwaltungsdatenbank in die DR-Region. Die Anwendung stellt die Verbindung mit der neuen primären Datenbank und allen neuen Konten automatisch wieder her, und in der DR-Region werden Mandantendatenbanken erstellt. Für die vorhandenen Kunden sind die Daten vorübergehend nicht verfügbar.
+* Erstellen Sie den elastischen Pool mit der gleichen Konfiguration wie für den ursprünglichen Pool (2).
+* Verwenden Sie die Geowiederherstellung, um Kopien der Mandantendatenbanken zu erstellen (3). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
+
 
 An diesem Punkt befindet sich die Anwendung in der Region für die Notfallwiederherstellung wieder im Onlinezustand, aber bei einigen Kunden kommt es beim Zugreifen auf ihre Daten zu Verzögerungen.
 
