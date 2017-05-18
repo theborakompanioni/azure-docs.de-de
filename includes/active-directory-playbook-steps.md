@@ -25,7 +25,7 @@
      * [Self-Service-Kennwortzurücksetzung](../articles/active-directory/active-directory-playbook-implementation.md#self-service-password-reset)
      * [Self-Service-Zugriff auf Anwendungen](../articles/active-directory/active-directory-playbook-implementation.md#self-service-access-to-applications)
 4. [Bausteine](../articles/active-directory/active-directory-playbook-building-blocks.md)
-   * [Katalog mit Akteuren](../articles/active-directory/active-directory-playbook-building-blocks.md#catalog-of-actors)
+   * [Katalog mit Akteuren](../articles/active-directory/active-directory-playbook-building-blocks.md)
    * [Allgemeine Voraussetzungen für alle Bausteine](../articles/active-directory/active-directory-playbook-building-blocks.md#common-prerequisites-for-all-building-blocks)
    * [Verzeichnissynchronisierung – Kennworthashsynchronisierung – Neue Installation](../articles/active-directory/active-directory-playbook-building-blocks.md#directory-synchronization---password-hash-sync-phs---new-installation)
    * [Branding](../articles/active-directory/active-directory-playbook-building-blocks.md#branding)
