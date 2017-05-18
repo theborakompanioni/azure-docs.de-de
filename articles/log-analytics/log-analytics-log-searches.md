@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/16/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: d4935af0647f0629cca327a7e87c29f1252af382
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: b005d0fb25483f3dce14133038d7759dff07fc7c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -148,7 +149,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 
 #### <a name="to-search-using-a-boolean-operator"></a>Suchen mithilfe eines booleschen Operators
-* Geben Sie im Suchabfragefeld `EventLog=System TimeGenerated>NOW-24HOURS"`  
+* Geben Sie im Suchabfragefeld `EventLog=System TimeGenerated>NOW-24HOURS`  
     ![Boolesche Suche](./media/log-analytics-log-searches/oms-search-boolean.png)
 
 Sie können das Zeitintervall zwar grafisch steuern, was die meiste Zeit auch sinnvoll ist, es hat jedoch auch Vorteile, einen Zeitfilter direkt in die Abfrage einzuschließen. Beispielsweise funktioniert dies hervorragend mit Dashboards, bei denen Sie die Zeit für jede Kachel überschreiben können, unabhängig von der *globalen* Zeitauswahl auf der Dashboardseite. Weitere Informationen finden Sie unter [Time Matters in Dashboard](http://cloudadministrator.wordpress.com/2014/10/19/system-center-advisor-restarted-time-matters-in-dashboard-part-6/)("Zeit spielt in Dashboards eine Rolle", auf Englisch).
@@ -442,7 +443,7 @@ Type=Perf  CounterName="% Processor Time"  InstanceName="_Total" | Measure Avg(C
 
 Wenn Sie mit Microsoft System Center – Operations Manager vertraut sind, können Sie sich den "Where"-Befehl in der Management Pack-Terminologie denken. Wenn das Beispiel eine Regel wäre, wäre der erste Teil der Abfrage die Datenquelle und der "Where"-Befehl wäre die Bedingungserkennung.
 
-Sie können die Abfrage als Kachel in **Mein Dashboard**verwenden, als eine Art Überwachung, wenn die CPUs des Computers stark ausgelastet sind. Weitere Informationen zu Dashboards finden Sie unter [Erstellen eines benutzerdefinierten Dashboards in Log Analytics](log-analytics-dashboards.md). Sie können Dashboards auch mithilfe der mobilen App erstellen und verwenden. Weitere Informationen finden Sie im Artikel zur [mobilen OMS-App ](http://www.windowsphone.com/en-us/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865). In den unteren beiden Kacheln der folgenden Abbildung bekommen Sie den Monitor als Liste und als Zahl angezeigt. Im Wesentlichen sollte die Zahl immer&0; (null) sein und die Liste leer. Andernfalls könnte es eine Warnungsbedingung geben. Bei Bedarf können sie  die Abfrage auch nutzen, um einen Blick auf überlastete Computer zu werden.
+Sie können die Abfrage als Kachel in **Mein Dashboard**verwenden, als eine Art Überwachung, wenn die CPUs des Computers stark ausgelastet sind. Weitere Informationen zu Dashboards finden Sie unter [Erstellen eines benutzerdefinierten Dashboards in Log Analytics](log-analytics-dashboards.md). Sie können Dashboards auch mithilfe der mobilen App erstellen und verwenden. Weitere Informationen finden Sie im Artikel zur [mobilen OMS-App ](http://www.windowsphone.com/en-us/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865). In den unteren beiden Kacheln der folgenden Abbildung bekommen Sie den Monitor als Liste und als Zahl angezeigt. Im Wesentlichen sollte die Zahl immer 0 (null) sein und die Liste leer. Andernfalls könnte es eine Warnungsbedingung geben. Bei Bedarf können sie  die Abfrage auch nutzen, um einen Blick auf überlastete Computer zu werden.
 
 !["mobile dashboard" ("mobiles Dashboard")](./media/log-analytics-log-searches/oms-search-mobile.png)
 
