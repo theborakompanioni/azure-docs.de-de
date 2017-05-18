@@ -46,7 +46,7 @@ Um alle Anwendungen in Ihrem Mandanten anzuzeigen, müssen Sie das **Filter**-St
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Warum wird eine bestimmte Anwendung in der Liste mit all meinen Anwendungen angezeigt?
 
-Bei einer Filterung nach **Alle Anwendungen** zeigt die Liste **Alle Anwendungen****** jedes Dienstprinzipalobjekt in Ihrem Mandanten an. Dienstprinzipalobjekte können dieser Liste auf unterschiedliche Arten hinzugefügt werden:
+Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendungen** jedes Dienstprinzipalobjekt in Ihrem Mandanten an. Dienstprinzipalobjekte können dieser Liste auf unterschiedliche Arten hinzugefügt werden:
 
 1.  Beim Hinzufügen einer beliebigen Anwendung aus dem Anwendungskatalog, wie z.B.:
 
