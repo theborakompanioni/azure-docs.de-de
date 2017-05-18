@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 03/27/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d05739a4d9f0712c2b4b47432bff97594a11b121
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f8279eb672e58c7718ffb8e00a89bc1fce31174f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/03/2017
 
 In dieser Übersicht über die Hauptkomponenten des Azure Batch-Diensts werden die wichtigsten Dienstfunktionen und Ressourcen beschrieben, die Batch-Entwickler zum Erstellen paralleler Computelösungen in größerem Umfang verwenden können.
 
-Sie werden viele der in diesem Artikel beschriebenen Ressourcen und Features nutzen. Dies gilt unabhängig davon, ob Sie eine verteilte Computeanwendung oder einen Computedienst mit direkter Ausgabe von [REST-API][batch_rest_api]-Aufrufen entwickeln oder eines der [Batch SDKs](batch-apis-tools.md#batch-development-apis) verwenden.
+Sie werden viele der in diesem Artikel beschriebenen Ressourcen und Features nutzen. Dies gilt unabhängig davon, ob Sie eine verteilte Computeanwendung oder einen Computedienst mit direkter Ausgabe von [REST-API][batch_rest_api]-Aufrufen entwickeln oder eines der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development) verwenden.
 
 > [!TIP]
 > Eine allgemeiner gehaltene Einführung in den Batch-Dienst finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md).
@@ -74,16 +74,15 @@ Ein Batch-Konto ist eine eindeutig identifizierte Entität innerhalb des Batch-D
 
 Ein Azure Batch-Konto können Sie über das [Azure-Portal](batch-account-create-portal.md) oder programmgesteuert (beispielsweise mit der [Batch Management .NET-Bibliothek ](batch-management-dotnet.md)) erstellen. Bei der Kontoerstellung können Sie ein Azure Storage-Konto zuordnen.
 
-Batch unterstützt zwei Kontokonfigurationen. Diese basieren auf der Eigenschaft *Poolzuordnungsmodus*. Über die beiden Konfigurationen erhalten Sie Zugriff auf verschiedene Funktionen für [Batch-Pools](#pool). (Weitere Informationen finden Sie weiter unten in diesem Artikel.) 
+Batch unterstützt zwei Kontokonfigurationen. Diese basieren auf der Eigenschaft *Poolzuordnungsmodus*. Über die beiden Konfigurationen erhalten Sie Zugriff auf verschiedene Funktionen für [Batch-Pools](#pool). (Weitere Informationen finden Sie weiter unten in diesem Artikel.)
 
 
-* **Batch-Dienst:**: Die Standardoption. Bei dieser Option werden im Hintergrund virtuelle Batch-Pool-Computer in von Azure verwalteten Abonnements zugeordnet. Diese Kontokonfiguration muss verwendet werden, wenn Cloud Services-Pools benötigt werden. Sie darf jedoch nicht verwendet werden, wenn VM-Pools erforderlich sind, die auf der Grundlage benutzerdefinierter VM-Images erstellt werden oder ein virtuelles Netzwerk verwenden. Auf die Batch-APIs kann entweder unter Verwendung der Authentifizierung mit gemeinsam verwendetem Schlüssel oder unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden. 
+* **Batch-Dienst:**: Die Standardoption. Bei dieser Option werden im Hintergrund virtuelle Batch-Pool-Computer in von Azure verwalteten Abonnements zugeordnet. Diese Kontokonfiguration muss verwendet werden, wenn Cloud Services-Pools benötigt werden. Sie darf jedoch nicht verwendet werden, wenn VM-Pools erforderlich sind, die auf der Grundlage benutzerdefinierter VM-Images erstellt werden oder ein virtuelles Netzwerk verwenden. Auf die Batch-APIs kann entweder unter Verwendung der Authentifizierung mit gemeinsam verwendetem Schlüssel oder unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden. Sie können entweder dedizierte Serverknoten oder Serverknoten mit niedriger Priorität in Pools in der Kontokonfiguration des Batch-Diensts verwenden.
 
-* **Benutzerabonnement:** Diese Kontokonfiguration muss verwendet werden, wenn VM-Pools erforderlich sind, die auf der Grundlage benutzerdefinierter VM-Images erstellt werden oder ein virtuelles Netzwerk verwenden. Auf die Batch-APIs kann nur unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden, und Cloud Services-Pools werden nicht unterstützt. Virtuelle Computer für Batch-Compute werden direkt in Ihrem Azure-Abonnement zugeordnet. In diesem Modus müssen Sie einen Azure-Schlüsseltresor für Ihr Batch-Konto einrichten.
- 
+* **Benutzerabonnement:** Diese Kontokonfiguration muss verwendet werden, wenn VM-Pools erforderlich sind, die auf der Grundlage benutzerdefinierter VM-Images erstellt werden oder ein virtuelles Netzwerk verwenden. Auf die Batch-APIs kann nur unter Verwendung der [Azure Active Directory-Authentifizierung](batch-aad-auth.md) zugegriffen werden, und Cloud Services-Pools werden nicht unterstützt. Virtuelle Computer für Batch-Compute werden direkt in Ihrem Azure-Abonnement zugeordnet. In diesem Modus müssen Sie einen Azure-Schlüsseltresor für Ihr Batch-Konto einrichten. Sie können nur dedizierte Serverknoten in Pools in der Kontokonfiguration des Benutzerabonnements verwenden. 
 
 ## <a name="compute-node"></a>Computeknoten
-Ein Computeknoten ist ein virtueller Azure-Computer (Virtual Machine, VM), der für die Verarbeitung eines Teils der Anwendungsworkload fest zugeordnet ist. Die Größe eines Knotens bestimmt die Anzahl von CPU-Kernen, die Speicherkapazität und die lokale Dateisystemgröße, die dem Knoten zugeordnet werden. Sie können Pools mit Windows- oder Linux-Knoten erstellen, indem Sie entweder Azure Cloud Services oder VM-Marketplace-Images verwenden. Weitere Informationen zu diesen Optionen finden Sie weiter unten im Abschnitt [Pool](#pool) .
+Ein Serverknoten ist ein virtueller Azure-Computer (VM) oder ein virtueller Clouddienstcomputer, der für die Verarbeitung eines Teils der Anwendungsworkload fest zugeordnet ist. Die Größe eines Knotens bestimmt die Anzahl von CPU-Kernen, die Speicherkapazität und die lokale Dateisystemgröße, die dem Knoten zugeordnet werden. Sie können Pools mit Windows- oder Linux-Knoten erstellen, indem Sie entweder Azure Cloud Services oder VM-Marketplace-Images verwenden. Weitere Informationen zu diesen Optionen finden Sie weiter unten im Abschnitt [Pool](#pool) .
 
 Knoten können beliebige ausführbare Dateien oder Skripts ausführen, die von der Betriebssystemumgebung des Knotens unterstützt werden. Hierzu zählen etwa \*EXE-, \*CMD-, \*BAT- und PowerShell-Skripts für Windows und Binärdateien sowie Shell- und Python-Skripts für Linux.
 
@@ -117,6 +116,25 @@ Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben. Eini
   * Die *Betriebssystemfamilie* bestimmt auch, welche Versionen von .NET mit dem Betriebssystem installiert werden.
   * Genau wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betriebssystemversion* angeben. (Weitere Informationen zu Workerrollen finden Sie im Abschnitt [Informationen zu Cloud Services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services) in der [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).)
   * Und genau wie bei Workerrollen empfiehlt sich auch bei der *Betriebssystemversion* die Angabe von `*`, damit die Knoten automatisch per Upgrade aktualisiert werden und für neue Versionen kein Zusatzaufwand entsteht. Mit der Wahl einer bestimmten Betriebssystemversion wird in erster Linie die Anwendungskompatibilität sichergestellt. Hierzu wird die Überprüfung der Abwärtskompatibilität vor der Versionsaktualisierung ermöglicht. Nach der Überprüfung kann die *Betriebssystemversion* für den Pool aktualisiert und das neue Betriebssystemimage installiert werden. Dabei werden alle ausgeführten Tasks unterbrochen und wieder der Warteschlange hinzugefügt.
+
+* **Art des Serverknotens** und **vorgegebene Anzahl von Knoten**
+
+    Wenn Sie einen Pool erstellen, können Sie die gewünschte Art von Serverknoten und jeweils die vorgegebene Anzahl von Knoten angeben. Es gibt zwei Arten von Serverknoten:
+
+    - **Serverknoten mit niedriger Priorität.** Knoten mit niedriger Priorität nutzen überschüssige Kapazität in Azure, um Batch-Workloads auszuführen. Knoten mit niedriger Priorität sind kostengünstiger als dedizierte Knoten und aktivieren Workloads, die eine umfangreiche Rechenleistung erfordern. Weitere Informationen finden Sie unter [Use low-priority VMs with Batch (Verwenden von VMs mit niedriger Priorität mit Batch)](batch-low-pri-vms.md).
+
+        Serverknoten mit niedriger Priorität können zurückgestellt werden, wenn Azure nicht über genügend überschüssige Kapazität verfügt. Wenn ein Knoten beim Ausführen von Aufgaben zurückgestellt wird, werden die Aufgaben in eine Warteschlange gestellt und erneut ausgeführt, wenn wieder ein Serverknoten verfügbar ist. Knoten mit niedriger Priorität eignen sich gut für Workloads, bei denen der Zeitpunkt des Auftragsabschlusses flexibel ist und die Arbeit über viele Knoten verteilt wird.
+
+        Serverknoten mit niedriger Priorität stehen nur für Batch-Konten zur Verfügung, die im Poolzuordnungsmodus **Batch-Dienst** erstellt wurden.
+
+    - **Dedizierte Serverknoten.** Dedizierte Serverknoten sind für Ihre Workloads reserviert. Sie sind teurer als Knoten mit niedriger Priorität, aber sie werden garantiert nie zurückgestellt.    
+
+    Sie können sowohl Serverknoten mit niedriger Priorität als auch dedizierte Serverknoten im selben Pool verwenden. Jede Art von Knoten &mdash; mit niedriger Priorität und dediziert &mdash; verfügt über eine eigene Zieleinstellung, für die Sie die gewünschte Anzahl von Knoten angeben können. 
+        
+    Die Anzahl der Serverknoten wird als *Ziel* bezeichnet, da Ihr Pool in einigen Fällen unter Umständen nicht die gewünschte Anzahl von Knoten erreicht. Ein Pool kann das Ziel zum Beispiel nicht erreichen, wenn er zuvor das [Kernkontingent](batch-quota-limit.md) Ihres Batch-Kontos erreicht. Der Pool kann das Ziel auch nicht erreichen, wenn Sie eine Formel für automatische Skalierung auf den Pool angewendet haben, die die maximale Anzahl von Knoten beschränkt.
+
+    Informationen zu den Preisen für beide Arten von Serverknoten finden Sie unter [Batch – Preise](https://azure.microsoft.com/pricing/details/batch/).
+
 * **Größe der Knoten**
 
     **Clouddienstkonfiguration** sind unter [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md). Batch unterstützt alle Cloud Services-Größen mit Ausnahme von `ExtraSmall`, `STANDARD_A1_V2` und `STANDARD_A2_V2`.
@@ -126,12 +144,11 @@ Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben. Eini
     Berücksichtigen Sie beim Auswählen einer Computeknotengröße die Merkmale und Anforderungen der Anwendungen, die auf den Knoten ausgeführt werden sollen. Die Beantwortung der Fragen, ob es sich beispielsweise um eine Multithreadanwendung handelt und wie viel Arbeitsspeicher sie beansprucht, kann Ihnen dabei behilflich sein, die am besten geeignete und kostengünstigste Knotengröße zu bestimmen. Die Knotengröße wird normalerweise unter der Annahme ausgewählt, dass jederzeit immer nur ein Task auf einem Knoten ausgeführt wird. Es ist aber auch möglich, mehrere Tasks (und somit mehrere Anwendungsinstanzen) während der Auftragsausführung auf Computeknoten [parallel zu nutzen](batch-parallel-node-tasks.md). In diesem Fall wird häufig eine höhere Knotengröße gewählt, um den höheren Bedarf an parallelen Taskausführungen decken zu können. Weitere Informationen finden Sie unter [Richtlinie zur Taskplanung](#task-scheduling-policy).
 
     Alle Knoten in einem Pool haben dieselbe Größe. Wenn Sie Anwendungen mit unterschiedlichen Systemanforderungen bzw. Auslastungsgraden ausführen möchten, empfehlen wir Ihnen die Verwendung von separaten Pools.
-* **Vorgegebene Anzahl von Knoten**
 
-    Dies ist die Anzahl von Computeknoten, die Sie im Pool bereitstellen möchten. Dies wird als *Ziel* bezeichnet, da Ihr Pool – in einigen Fällen – unter Umständen nicht die gewünschte Anzahl von Knoten erreicht. Dieser Fall kann eintreten, wenn der Pool das [Kernkontingent](batch-quota-limit.md) für Ihr Batch-Konto erreicht oder Sie eine Formel für die automatische Skalierung auf den Pool angewendet haben, die die maximale Knotenanzahl beschränkt. (Weitere Informationen finden Sie im Abschnitt „Skalierungsrichtlinie“.)
 * **Skalierungsrichtlinie**
 
     Für dynamische Workloads können Sie eine [Formel für automatische Skalierung](#scaling-compute-resources) schreiben und auf einen Pool anwenden. Der Batch-Dienst wertet die Formel regelmäßig aus und passt die Anzahl von Knoten innerhalb des Pools auf der Grundlage verschiedener Parameter an, die Sie für Pools, Aufträge und Tasks angeben können.
+
 * **Richtlinie zur Taskplanung**
 
     Die Konfiguration der [maximalen Tasks pro Knoten](batch-parallel-node-tasks.md) bestimmt die maximale Anzahl von Tasks, die parallel auf den einzelnen Computeknoten im Pool ausgeführt werden können.
@@ -336,7 +353,7 @@ Wenn Sie in Azure Batch einen Pool mit Computeknoten erstellen, können Sie mith
 
 * Das VNet sollte über genügend freie **IP-Adressen** verfügen, um die `targetDedicated`-Eigenschaft des Pools zu ermöglichen. Wenn das Subnetz nicht über genügend freie IP-Adressen verfügt, belegt der Batch-Dienst teilweise die Computeknoten im Pool und gibt einen Anpassungsfehler zurück.
 
-* Das angegebene Subnetz muss die Kommunikation mit dem Batch-Dienst zulassen, um Aufgaben für die Computeknoten planen zu können. Falls die Kommunikation mit den Computeknoten durch eine dem VNET zugeordnete **Netzwerksicherheitsgruppe (NSG)** verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest. 
+* Das angegebene Subnetz muss die Kommunikation mit dem Batch-Dienst zulassen, um Aufgaben für die Computeknoten planen zu können. Falls die Kommunikation mit den Computeknoten durch eine dem VNET zugeordnete **Netzwerksicherheitsgruppe (NSG)** verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest.
 
 * Falls dem angegebenen VNET NSGs zugeordnet sind, muss die eingehende Kommunikation aktiviert sein. Für Linux- und Windows-Pools müssen die Ports 29876 und 29877 aktiviert sein. Sie können Port 22 oder 3389 für SSH in Linux-Pools bzw. für RDP in Windows-Pools optional aktivieren (oder selektiv filtern).
 
@@ -345,7 +362,7 @@ Zusätzliche Einstellungen für das VNET sind abhängig vom Poolzuordnungsmodus 
 ### <a name="vnets-for-pools-provisioned-in-the-batch-service"></a>VNETs für im Batch-Dienst bereitgestellte Pools
 
 Im Zuordnungsmodus „Batch-Dienst“ können einem VNET nur Pools vom Typ **Cloud Services Configuration** (Clouddienstkonfiguration) zugewiesen werden. Darüber hinaus muss es sich bei dem angegebenen VNET um ein **klassisches** VNET handeln. VNets, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden, werden nicht unterstützt.
-   
+
 
 
 * Das Dienstprinzipal *MicrosoftAzureBatch* muss über die rollenbasierte Zugriffssteuerungsrolle [Mitwirkender von klassischen virtuellen Computern](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor) für den angegebenen VNet verfügen. Führen Sie im Azure-Portal die folgenden Schritte aus:
@@ -368,7 +385,7 @@ Mit der [automatischen Skalierung](batch-automatic-scaling.md)kann der Batch-Die
 
 Sie aktivieren die automatische Skalierung, indem Sie eine [Formel für die automatische Skalierung](batch-automatic-scaling.md#automatic-scaling-formulas) erstellen und diese Formel einem Pool zuordnen. Der Batch-Dienst verwendet die Formel, um die vorgegebene Anzahl von Knoten im Pool für das nächste Skalierungsintervall (welches Sie konfigurieren können) zu bestimmen. Sie können für einen Pool die Einstellungen für die automatische Skalierung angeben, wenn Sie diesen erstellen, oder Sie können die Skalierung für einen Pool später aktivieren. Außerdem können Sie die Skalierungseinstellungen für einen Pool aktualisieren, für den die Skalierung aktiviert ist.
 
-Beispielsweise kann es für einen Auftrag erforderlich sein, eine sehr große Anzahl von Tasks zu übermitteln, die ausgeführt werden sollen. Sie können dem Pool eine Skalierungsformel zuweisen, die die Anzahl von Knoten im Pool auf der Grundlage der aktuellen Anzahl von Tasks in der Warteschlange sowie der Abschlussrate der Tasks im Auftrag anpasst. Der Batch-Dienst wertet die Formel in regelmäßigen Abständen aus und ändert die Größe des Pools auf Grundlage von Workload und anderen Formeleinstellungen. Der Dienst fügt bei Bedarf Knoten hinzu, wenn eine große Anzahl von Tasks in der Warteschlange vorhanden ist und entfernt Knoten, wenn keine Tasks in der Warteschlange sind oder ausgeführt werden. 
+Beispielsweise kann es für einen Auftrag erforderlich sein, eine sehr große Anzahl von Tasks zu übermitteln, die ausgeführt werden sollen. Sie können dem Pool eine Skalierungsformel zuweisen, die die Anzahl von Knoten im Pool auf der Grundlage der aktuellen Anzahl von Tasks in der Warteschlange sowie der Abschlussrate der Tasks im Auftrag anpasst. Der Batch-Dienst wertet die Formel in regelmäßigen Abständen aus und ändert die Größe des Pools auf Grundlage von Workload und anderen Formeleinstellungen. Der Dienst fügt bei Bedarf Knoten hinzu, wenn eine große Anzahl von Tasks in der Warteschlange vorhanden ist und entfernt Knoten, wenn keine Tasks in der Warteschlange sind oder ausgeführt werden.
 
 Eine Skalierungsformel kann auf den folgenden Metriken basieren:
 

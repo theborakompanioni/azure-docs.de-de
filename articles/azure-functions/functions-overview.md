@@ -17,10 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: cfowler;mahender;glenga
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 045ec40811468eeffb25ed28ec5bfc84f074c19d
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7fcf35b99cc410655f2a3b9b6961f5e3bef3aeb5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -57,10 +58,10 @@ In Functions stehen unter anderem folgende Vorlagen für zentrale Szenarien zur 
 
 Azure Functions unterstützt *Trigger* zum Starten der Codeausführung sowie *Bindungen* zur Vereinfachung der Programmierung für Eingabe- und Ausgabedaten. Eine ausführliche Beschreibung der Trigger und Bindungen von Azure Functions finden Sie in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
-## <a name="a-nameintegrationsaintegrations"></a><a name="integrations"></a>Integrationen
+## <a name="integrations"></a>Integrationen
 Azure Functions kann in eine Reihe von Azure- und Drittanbieterdiensten integriert werden. Diese können Sie zum Auslösen Ihrer Funktion und zum Starten der Ausführung oder als Ein- und Ausgabe für Ihren Code verwenden. Azure Functions unterstützt folgende Dienstintegrationen: 
 
-* Azure DocumentDB
+* Azure Cosmos DB
 * Azure Event Hubs 
 * Azure Mobile Apps (Tabellen)
 * Azure Notification Hubs
@@ -70,7 +71,7 @@ Azure Functions kann in eine Reihe von Azure- und Drittanbieterdiensten integrie
 * Lokal (mit Service Bus)
 * Twilio (SMS-Nachrichten)
 
-## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Was kostet Functions?
+## <a name="pricing"></a>Was kostet Functions?
 Bei Azure Functions haben Sie die Wahl zwischen zwei Tarifplänen: 
 
 * **Verbrauchstarif für**: Wenn Ihre Funktion ausgeführt wird, stellt Azure die erforderlichen Verarbeitungsressourcen bereit. Sie müssen sich nicht um die Ressourcenverwaltung kümmern und bezahlen nur für die Zeit, in der Ihr Code ausgeführt wird. 

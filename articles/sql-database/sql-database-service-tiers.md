@@ -17,10 +17,10 @@ ms.workload: data-management
 wms.date: 04/26/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 0ab804ee1dc25f1e44be856564ac8ffa87c54dea
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: 3300c4e79ddc6c8e04c3b4d80b3ee07bd6aeea9d
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -50,8 +50,11 @@ Entscheiden Sie zuerst, ob Sie eine einzelne Datenbank mit einer definierten Men
 | **Dienstebenenfeatures** | **Basic** | **Standard** | **Premium** | **Premium RS**|
 | :-- | --: | --: | --: | --: |
 | Maximale Größe von Einzeldatenbanken | 2 GB | 250 GB | 4TB*  | 500 GB  |
-| Maximale Datenbankgröße in einem Pool für elastische Datenbanken | 156 GB | 2,9 TB | 500 GB | 500 GB |
+| Maximale Größe des Pools für elastische Datenbanken | 156 GB | 2,9 TB | 4TB* | 750 GB |
+| Maximale Datenbankgröße in einem Pool für elastische Datenbanken | 2 GB | 250 GB | 500 GB | 500 GB |
 | Maximale Anzahl von Datenbanken pro Pool | 500  | 500 | 100 | 100 |
+| Maximale Einzeldatenbanken-DTUs | 5 | 100 | 4000 | 1000 |
+| Maximale DTUs pro Datenbank in einem Pool für elastische Datenbanken | 5 | 100 | 4000 | 1000 |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 Tage | 35 Tage | 35 Tage | 35 Tage |
 ||||||
 
@@ -93,11 +96,9 @@ Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der G
 
 Durch Pools können Datenbanken eDTU-Ressourcen freigeben und gemeinsam nutzen, ohne dass jeder Datenbank im Pool eine bestimmte Leistungsebene zugewiesen werden muss. Beispielsweise kann eine Einzeldatenbank in einem Pool der Dienstebene „Standard“ 0 eDTU bis hin zum maximalen eDTU-Wert für Datenbanken nutzen, den Sie beim Konfigurieren des Pools festlegen. Bei Pools können mehrere Datenbanken mit unterschiedlichen Workloads die für den gesamten Pool verfügbaren eDTU-Ressourcen effizient nutzen. Weitere Informationen finden Sie unter den [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool.md) .
 
-In der folgenden Tabelle sind die Merkmale der Dienstebenen eines Pools beschrieben.
+Die folgenden Tabellen beschreiben die Ressourcengrenzwerte des Pools für elastische Datenbanken.  Beachten Sie, dass die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken im Allgemeinen denen einzelner Datenbanken außerhalb von Pools basierend auf DTU-Anzahl und Dienstebene entsprechen.  Auf eine S2-Datenbank können z.B. maximal 120 Mitarbeiter gleichzeitig zugreifen.  Also können auch 120 Mitarbeiter gleichzeitig auf eine Datenbank in einem Standard-Pool zugreifen, wenn maximal 50 DTUs pro Datenbank im Pool zulässig sind (entspricht S2).
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
-
-Für jede Datenbank in einem Pool gelten auch die Merkmale für Einzeldatenbanken für die entsprechende Dienstebene. Der Basic-Pool verfügt in Bezug auf die maximalen Sitzungen pro Pool beispielsweise über eine Beschränkung auf den Bereich von 4.800 bis 28.800. Eine eigenständige Datenbank in einem Basic-Pool verfügt dagegen über eine Datenbankbeschränkung von 300 Sitzungen.
 
 ## <a name="scaling-up-or-scaling-down-an-elastic-pool"></a>Zentrales Hoch- oder Herunterskalieren eines Pools für elastische Datenbanken
 
@@ -137,7 +138,7 @@ Beim Erstellen oder Aktualisieren einer P11-/P15-Datenbank in einer nicht unters
 ## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einem MAXSIZE-Wert von 4 TB
 
 - Beim Erstellen oder Aktualisieren einer P11- oder P15-Datenbank können Sie nur zwischen einem MAXSIZE-Wert von 1 TB und 4 TB wählen. Zwischengrößen werden zurzeit nicht unterstützt.
-- Der MAXSIZE-Wert der 4-TB-Datenbank kann nicht in 1 TB geändert werden, auch wenn der tatsächlich genutzte Speicher unter 1 TB liegt. Daher können Sie eine P11-Datenbank mit 4 TB oder eine P15-Datenbank mit 4 TB nicht auf eine P11-Datenbank mit 1 TB, eine P15-Datenbank mit 1 TB oder eine niedrigere Leistungsstufe (z.B. P1-P6) herunterstufen, bis zusätzliche Speicheroptionen für die restlichen Leistungsstufen bereitgestellt wurden. Diese Einschränkung gilt auch für Wiederherstellungs- und Kopierszenarien, einschließlich Point-in-Time- und Geowiederherstellung, langfristige Aufbewahrung von Sicherungen und Datenbankkopiervorgänge. Sobald eine Datenbank mit der 4-TB-Option konfiguriert wird, muss für Wiederherstellungsvorgänge dieser Datenbank ein P11-/P15-Ziel mit einem MAXSIZE-Wert von 4 TB verwendet werden.
+- Der MAXSIZE-Wert der 4-TB-Datenbank kann nicht in 1 TB geändert werden, auch wenn der tatsächlich genutzte Speicher unter 1 TB liegt. Daher können Sie eine P11-Datenbank mit 4 TB oder eine P15-Datenbank mit 4 TB nicht auf eine P11-Datenbank mit 1 TB, eine P15-Datenbank mit 1 TB oder eine niedrigere Leistungsstufe (z.B. P1-P6) herunterstufen, bis zusätzliche Speicheroptionen für die restlichen Leistungsstufen bereitgestellt wurden. Diese Einschränkung gilt auch für Wiederherstellungs- und Kopierszenarien, einschließlich Point-in-Time- und Geowiederherstellung, langfristige Aufbewahrung von Sicherungen und Datenbankkopiervorgänge. Sobald eine Datenbank mit der 4-TB-Option konfiguriert wird, muss für Wiederherstellungsvorgänge dieser Datenbank ein P11-/P15-Ziel mit einem MAXSIZE-Wert von 4 TB ausgeführt werden.
 - Szenarien für aktive Georeplikation:
    - Einrichten einer Georeplikationsbeziehung: Falls es sich bei der primären Datenbank um eine P11- oder P15-Datenbank handelt, müssen auch die sekundären Datenbanken vom Typ „P11“ oder „P15“ sein. Niedrigere Leistungsstufen werden als sekundäre Datenbanken abgelehnt, da sie 4 TB nicht unterstützen können.
    - Aktualisieren der primären Datenbank in einer Georeplikationsbeziehung: Die Änderung des MAXSIZE-Werts für eine primäre Datenbank in 4 TB löst die gleiche Änderung für die sekundäre Datenbank aus. Beide Upgrades müssen erfolgreich ausgeführt werden, damit die Änderung für die primäre Datenbank wirksam wird. Für die Option mit 4 TB gelten Regionseinschränkungen (siehe oben). Wenn sich die sekundäre Datenbank in einer Region befindet, die 4 TB nicht unterstützt, wird die primäre Datenbank nicht aktualisiert.
