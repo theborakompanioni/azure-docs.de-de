@@ -11,12 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/30/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: c6f25b8cf8c133f44644db1507958b2176efa230
-ms.lasthandoff: 04/13/2017
+ms.date: 05/05/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,9 +41,19 @@ Wenn Sie bereits eine Web-App in Azure ausführen, verfügen Sie schon über ein
 2. **Instrumentieren Sie Ihre Web-App**, nachdem Application Insights installiert wurde. 
    
     ![Instrumentieren Ihrer Web-App](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+   **Aktivieren Sie die clientseitige Überwachung** für Seitenansicht und Benutzertelemetrie.
+
+   * Wählen Sie „Einstellungen“ > „Anwendungseinstellungen“ aus.
+   * Fügen Sie unter „App-Einstellungen“ ein neues Schlüssel-Wert-Paar hinzu: 
+   
+    Schlüssel: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
+    
+    Wert: `true`
+   * **Speichern** Sie die Einstellungen, und **starten Sie die App neu**.
 3. **Überwachen Sie Ihre App**.  [Untersuchen Sie die Daten](#explore-the-data).
 
-Später können Sie die App bei Bedarf mit Application Insights erstellen und erneut bereitstellen.
+Später können Sie die App bei Bedarf mit Application Insights erstellen.
 
 *Wie entferne ich Application Insights oder stelle auf das Senden an eine andere Ressource um?*
 
@@ -104,6 +115,7 @@ Verwenden Sie die [Analytics-Abfragesprache](app-insights-analytics-tour.md), um
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Profilers in Ihrer Live-App](app-insights-profiler.md)
+* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample): Überwachen Sie Azure Functions mit Application Insights
 * [Ermöglichen des Sendens von Azure-Diagnosedaten an Application Insights](app-insights-azure-diagnostics.md)
 * [Überwachen von Dienstintegritätsmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) , wenn ein Vorgangsereignis auftritt oder Metriken einen Schwellenwert überschreiten.

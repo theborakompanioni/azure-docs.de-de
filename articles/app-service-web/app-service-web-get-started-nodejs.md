@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Node.js-Anwendung in einer Web-App | Microsoft-Dokumentation
+title: Erstellen einer Node.js-Anwendung in Azure-Web-App | Microsoft-Dokumentation
 description: "Stellen Sie in wenigen Minuten Ihre erste Node.js-App vom Typ „Hello World“ in einer App Service-Web-App bereit."
 services: app-service\web
 documentationcenter: 
@@ -12,29 +12,30 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/28/2017
+ms.date: 05/05/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ced6f54603120d8832ee417b02b6673f80a99613
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>Erstellen einer Node.js-Anwendung in einer Web-App
 
-In diesem Schnellstarttutorial erfahren Sie Schritt für Schritt, wie Sie eine Node.js-App entwickeln und für Azure bereitstellen. Wir führen die App mithilfe einer Linux-basierten Azure App Service-Instanz aus und konfigurieren darin eine neue Web-App über die Azure-Befehlszeilenschnittstelle. Anschließend stellen wir unsere Node.js-App mithilfe von Git für Azure bereit.
+In diesem Schnellstarttutorial erfahren Sie Schritt für Schritt, wie Sie eine Node.js-App entwickeln und für Azure bereitstellen. Wir führen die App mit einem [Azure App Service-Plan](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) aus und erstellen und konfigurieren darin eine neue Web-App über die Azure-Befehlszeilenschnittstelle. Anschließend stellen wir unsere Node.js-App mithilfe von Git für Azure bereit.
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-Die folgenden Schritte können auf einem Mac oder auf einem Computer unter Windows oder Linux ausgeführt werden. Der gesamte Prozess dauert etwa fünf Minuten.
+Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Der gesamte Prozess dauert etwa fünf Minuten.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie vor der Ausführung dieses Beispiels zunächst die folgenden erforderlichen Komponenten:
+Laden Sie vor dem Erstellen dieses Beispiels folgende Komponenten herunter und installieren Sie sie:
 
-1. [Laden Sie Git herunter, und installieren Sie es.](https://git-scm.com/)
-1. [Laden Sie Node.js und NPM herunter, und installieren Sie sie.](https://nodejs.org/)
-1. Laden Sie die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) herunter, und installieren Sie sie.
+* [Git](https://git-scm.com/)
+* [ Node.js und NPM](https://nodejs.org/)
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,9 +46,6 @@ Klonen Sie das Beispiel-App-Repository für „Hello World“ auf Ihren lokalen 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
-
-> [!TIP]
-> Alternativ können Sie [das Beispiel als ZIP-Datei herunterladen](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) und extrahieren.
 
 Navigieren Sie zum Verzeichnis mit dem Beispielcode.
 
@@ -83,20 +81,8 @@ Als Nächstes verwenden wir die Azure CLI 2.0 in einem Terminalfenster, um die R
 az login
 ```
 
-## <a name="configure-a-deployment-user"></a>Konfigurieren eines Bereitstellungsbenutzers
-
-Für FTP und lokales Git muss zur Authentifizierung Ihrer Bereitstellung ein Bereitstellungsbenutzer auf dem Server konfiguriert werden. Bei der Erstellung eines Bereitstellungsbenutzers handelt es sich um einen einmaligen Konfigurationsschritt. Notieren Sie sich den Benutzernamen und das Kennwort, da Sie beides in einem späteren Schritt benötigen.
-
-> [!NOTE]
-> Ein Bereitstellungsbenutzer wird bei FTP- und lokalen Git-Bereitstellungen für eine Web-App benötigt.
-> `username` und `password` gelten für die Kontoebene und unterscheiden sich daher von den Anmeldeinformationen für Ihr Azure-Abonnement. Diese Anmeldeinformationen müssen nur einmal erstellt werden.
->
-
-Verwenden Sie den Befehl [az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set), um Ihre Anmeldeinformationen auf der Kontoebene zu erstellen.
-
-```azurecli
-az appservice web deployment user set --user-name <username> --password <password>
-```
+<!-- ## Configure a Deployment User -->
+[!INCLUDE [login-to-azure](../../includes/configure-deployment-user.md)]
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -106,32 +92,26 @@ Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Res
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-an-azure-app-service"></a>Erstellen einer Azure App Service-Instanz
+## <a name="create-an-azure-app-service-plan"></a>Erstellen eines Azure App Service-Plans
 
-Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#create) einen Linux-basierten App Service-Plan.
+Erstellen Sie mit dem Befehl [az appservice plan create](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) einen kostenlosen [App Service-Plan](/cli/azure/appservice/plan#create).
 
-> [!NOTE]
-> Ein App Service-Plan stellt die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich die durch den Plan definierten Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten.
->
-> In App Service-Plänen wird Folgendes definiert:
-> * Region („Europa, Norden“, „USA, Osten“, „Asien, Südosten“)
-> * Instanzgröße (klein, mittel, groß)
-> * Skalierung (Instanzenanzahl)
-> * SKU (Free, Shared, Basic, Standard, Premium)
->
+<!--
+ An App Service plan represents the collection of physical resources used to ..
+-->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Im folgenden Beispiel wird ein App Service-Plan für Linux-Worker namens `quickStartPlan` mit dem Tarif **Standard** erstellt.
+Im folgenden Beispiel wird ein App Service-Plan mit dem Namen `quickStartPlan` mit dem Tarif **Free** erstellt.
 
 ```azurecli
-az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku S1 --is-linux
+az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
 ```
 
-Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an.
+Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
 
 ```json
 {
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-    "kind": "linux",
     "location": "West Europe",
     "sku": {
     "capacity": 1,
@@ -146,9 +126,13 @@ Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Nachdem Sie nun einen App Service-Plan erstellt haben, können Sie innerhalb des App Service-Plans `quickStartPlan` eine Web-App erstellen. Die Web-App bietet eine Hostingumgebung zum Bereitstellen unseres Codes sowie eine URL, unter der wir uns die bereitgestellte Anwendung ansehen können. Erstellen Sie die Web-App mit dem Befehl [az appservice web create](/cli/azure/appservice/web#create).
+Nachdem Sie einen App Service-Plan erstellt haben, können Sie nun innerhalb des App Service-Plans `quickStartPlan` eine [Web-App](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) erstellen. Die Web-App bietet eine Hostingumgebung zum Bereitstellen unseres Codes sowie eine URL, unter der wir uns die bereitgestellte Anwendung ansehen können. Erstellen Sie die Web-App mit dem Befehl [az appservice web create](/cli/azure/appservice/web#create).
 
-Ersetzen Sie im unten stehenden Befehl den Platzhalter `<app_name>` durch Ihren eigenen eindeutigen App-Namen. Da `<app_name>` als DNS-Standardwebsite für die Web-App verwendet wird, muss er für alle Apps in Azure eindeutig sein. Später können Sie der Web-App einen beliebigen benutzerdefinierten DNS-Eintrag zuordnen, bevor Sie sie für Ihre Benutzer verfügbar machen.
+Ersetzen Sie im unten stehenden Befehl den Platzhalter `<app_name>` durch Ihren eigenen eindeutigen App-Namen. `<app_name>` wird in der DNS-Standardwebsite für die Web-App verwendet. Wenn `<app_name>` nicht eindeutig ist, wird die Fehlermeldung „Eine Website mit dem Namen <app_name> ist bereits vorhanden“ angezeigt.
+
+<!-- removed per https://github.com/Microsoft/azure-docs-pr/issues/11878
+You can later map any custom DNS entry to the web app before you expose it to your users.
+-->
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -182,22 +166,11 @@ http://<app_name>.azurewebsites.net
 
 ![app-service-web-service-created](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
-Wir haben nun also eine neue leere Web-App in Azure erstellt. Als Nächstes konfigurieren wir unsere Web-App für die Verwendung von Node.js und stellen sie dafür bereit.
-
-## <a name="configure-to-use-nodejs"></a>Konfigurieren für die Verwendung von Node.js
-
-Konfigurieren Sie die Web-App mithilfe des Befehls [az appservice web config update](/cli/azure/app-service/web/config#update) für die Verwendung der Node.js-Version `6.9.3`.
-
-> [!TIP]
-> Wenn Sie die Node.js-Version auf diese Weise festlegen, wird ein von der Plattform bereitgestellter Standardcontainer verwendet. Informationen zur Verwendung eines eigenen Containers finden Sie in der Befehlszeilenreferenz für den Befehl [az appservice web config container update](/cli/azure/appservice/web/config/container#update).
-
-```azurecli
-az appservice web config update --linux-fx-version "NODE|6.9.3" --startup-file process.json --name <app_name> --resource-group myResourceGroup
-```
+Wir haben nun also eine neue leere Web-App in Azure erstellt.
 
 ## <a name="configure-local-git-deployment"></a>Konfigurieren der lokalen Git-Bereitstellung
 
-Bei der Bereitstellung für Ihre Web-App haben Sie verschiedene Optionen. Hierzu zählen beispielsweise FTP, lokales Git sowie GitHub, Visual Studio Team Services und Bitbucket.
+Bei der Bereitstellung Ihrer Web-App haben Sie verschiedene Optionen, darunter FTP, lokales Git sowie GitHub, Visual Studio Team Services und Bitbucket.
 
 Konfigurieren Sie mit dem Befehl [az appservice web source-control config-local-git](/cli/azure/appservice/web/source-control#config-local-git) den lokalen Git-Zugriff auf die Web-App.
 
@@ -219,9 +192,9 @@ Fügen Sie Ihrem lokalen Git-Repository eine Azure-Remoteinstanz hinzu.
 git remote add azure <paste-previous-command-output-here>
 ```
 
-Führen Sie einen Pushvorgang an die Azure-Remoteinstanz durch, um Ihre Anwendung bereitzustellen. Sie werden zur Angabe des Kennworts aufgefordert, das Sie zuvor bei der Erstellung des Bereitstellungsbenutzers angegeben haben.
+Führen Sie einen Pushvorgang an die Azure-Remoteinstanz durch, um Ihre App bereitzustellen. Sie werden zur Angabe des Kennworts aufgefordert, das Sie zuvor bei der Erstellung des Bereitstellungsbenutzers angegeben haben. Stellen Sie sicher, dass Sie das Kennwort eingeben, das Sie unter [Konfigurieren eines Bereitstellungsbenutzers](#configure-a-deployment-user) erstellt haben, und nicht das Kennwort, das Sie zur Anmeldung im Azure-Portal verwenden.
 
-```azurecli
+```bash
 git push azure master
 ```
 
@@ -286,7 +259,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das im Schritt „Navigieren zur App“ geöffnet wurde, und wählen Sie die Option „Aktualisieren“ aus.
+Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das im Schritt **Navigieren zur App** geöffnet wurde, und wählen Sie die Option „Aktualisieren“ aus.
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -318,7 +291,6 @@ Die Registerkarten auf dem Blatt zeigen die vielen tollen Features, mit denen Si
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Machen Sie sich mit vorgefertigten [Azure CLI-Beispielen](app-service-cli-samples.md) vertraut.
+> [!div class="nextstepaction"]
+> [Machen Sie sich mit CLI-Skripts für Beispiel-Web-Apps vertraut.](app-service-cli-samples.md)
 

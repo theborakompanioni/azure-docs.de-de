@@ -3,7 +3,7 @@ title: "Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites | Mi
 description: "Richten Sie Webtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert."
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
@@ -11,30 +11,29 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 5893f8126b0f18ac0d56e434a8e495380bd605d5
-ms.lasthandoff: 04/13/2017
+ms.date: 04/26/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0916c10afd526abaaf6c8e1e3aa311af5c7d84cd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
-Nachdem Sie die Web-App oder Website für einen beliebigen Server bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
+Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
 
-![Beispiel für Webtest](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
+Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Internet zugänglich ist, Verfügbarkeitstests einrichten. Der zu testenden Website muss nichts hinzugefügt werden. Es muss sich nicht einmal um Ihre Website handeln: Sie können auch einen benötigten REST-API-Dienst testen.
 
-Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Internet zugänglich ist, Webtests einrichten. Der zu testenden Website muss nichts hinzugefügt werden. Es muss sich nicht einmal um Ihre Website handeln: Sie können auch einen benötigten REST-API-Dienst testen.
-
-Es gibt zwei Arten von Webtests:
+Es gibt zwei Arten von Verfügbarkeitstests:
 
 * [URL-Pingtest](#create): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
 * [Mehrstufiger Webtest](#multi-step-web-tests): Diesen Test erstellen Sie in Visual Studio Enterprise und laden ihn in das Portal hoch.
 
-Sie können bis zu zehn Webtests pro Anwendungsressource erstellen.
+Sie können bis zu 25 Verfügbarkeitstests pro Anwendungsressource erstellen.
 
-## <a name="create"></a>1. Öffnen einer Ressource für Ihre Webtestberichte
+## <a name="create"></a>1. Öffnen einer Ressource für Ihre Verfügbarkeitstestberichte
 
 **Falls Sie Application Insights bereits für Ihre Web-App konfiguriert haben**, können Sie die dazugehörige Application Insights-Ressource im [Azure-Portal](https://portal.azure.com) öffnen.
 
@@ -45,11 +44,11 @@ Sie können bis zu zehn Webtests pro Anwendungsressource erstellen.
 Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht“ für die neue Ressource zu öffnen.
 
 ## <a name="setup"></a>2. Erstellen eines URL-Pingtests
-Öffnen Sie das Blatt „Verfügbarkeit“, und fügen Sie einen Webtest hinzu.
+Öffnen Sie das Blatt „Verfügbarkeit“, und fügen Sie einen Test hinzu.
 
 ![Mindestens die URL der Website eintragen](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **Die URL** kann eine beliebige Webseite sein, die Sie testen möchten, aber sie muss über das öffentliche Internet sichtbar sein. Die URL kann auch eine Abfragezeichenfolge enthalten, sodass Sie beispielsweise Ihre Datenbank abfragen können. Wenn die URL in eine Umleitung aufgelöst wird, werden bis zu 10 Umleitungen verfolgt.
+* **Die URL** kann eine beliebige Webseite sein, die Sie testen möchten, aber sie muss über das öffentliche Internet sichtbar sein. Die URL kann eine Abfragezeichenfolge enthalten. So können Sie beispielsweise Ihre Datenbank abfragen. Wenn die URL in eine Umleitung aufgelöst wird, werden bis zu 10 Umleitungen verfolgt.
 * **Abhängige Anforderungen analysieren**: Wenn diese Option aktiviert ist, werden beim Test Bilder, Skripts, Formatdateien und andere Dateien angefordert, die Teil der zu testenden Webseite sind. Die aufgezeichnete Antwortzeit enthält auch die Zeit, die zum Abrufen dieser Dateien erforderlich ist. Der Test schlägt fehl, wenn alle diese Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden können. 
 
     Wenn die Option nicht aktiviert ist, wird beim Test nur die Datei unter der von Ihnen angegebenen URL angefordert.
@@ -68,33 +67,41 @@ Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht�
     Sie können einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) einrichten, der bei einer Warnung aufgerufen wird. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Eigenschaften übergeben werden.)
 
 ### <a name="test-more-urls"></a>Testen weiterer URLs
-Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie auch sicherstellen, dass die Datenbank ausgeführt wird, indem Sie eine Such-URL testen.
+Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie zum Beispiel auch sicherstellen, dass die Datenbank ausgeführt wird, indem Sie eine Such-URL testen.
 
 
-## <a name="monitor"></a>3. Anzeigen der Webtestergebnisse
+## <a name="monitor"></a>3. Anzeigen der Verfügbarkeitstestergebnisse
 
-Klicken Sie nach fünf Minuten auf **Aktualisieren**, um die Testergebnisse anzuzeigen. 
+Klicken Sie nach einigen Minuten auf **Aktualisieren**, um die Testergebnisse anzuzeigen. 
 
-![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![Ergebnisübersicht im Startblatt](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
 
-Klicken Sie auf einen beliebigen Balken im Übersichtsdiagramm, um eine detailliertere Ansicht des Zeitraums zu erhalten.
+Das Punktdiagramm zeigt Stichproben der Testergebnisse an, die Diagnosedetails zu Testschritten enthalten. Das Testmodul speichert Diagnosedetails für Tests mit Fehlern. Für erfolgreiche Tests werden Diagnosedetails für eine Teilmenge der Ausführungen gespeichert. Bewegen Sie den Mauszeiger über einen der grünen oder roten Punkte, um Zeitstempel, Dauer, Standort und Name des Tests anzuzeigen. Klicken Sie auf einen Punkt im Punktdiagramm, um die Details des Testergebnisses anzuzeigen.  
+
+Wählen Sie einen bestimmten Test oder Standort aus, oder verringern Sie den Zeitraum, um weitere Ergebnisse um den gewünschten Zeitraum anzuzeigen. Verwenden Sie den Suchexplorer, um Ergebnisse von allen Ausführungen anzuzeigen, oder Analytics-Abfragen, um benutzerdefinierte Berichte für diese Daten auszuführen.
+
+Zusätzlich zu den reinen Ergebnissen gibt es im Metrik-Explorer zwei Verfügbarkeitsmetriken: 
+
+1. Verfügbarkeit: Prozentsatz der erfolgreichen Tests für alle Testausführungen 
+2. Testdauer: Durchschnittliche Testdauer für alle Ausführungen
+
+Sie können Filter auf den Testnamen oder Standort anwenden, um Trends eines bestimmten Tests und/oder Standorts zu analysieren.
 
 ## <a name="edit"></a> Überprüfen und Bearbeiten der Tests
 
 Wählen Sie auf der Seite „Zusammenfassung“ einen bestimmten Test aus. Auf dieser Seite werden die jeweiligen Ergebnisse angezeigt, und Sie können den Test bearbeiten oder vorübergehend deaktivieren.
 
-![Webtest bearbeiten oder deaktivieren](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Webtest bearbeiten oder deaktivieren](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
 
-Sie können Webtests beispielsweise deaktivieren, während Sie Wartungsarbeiten für den Dienst durchführen.
-
+Eventuell möchten Sie Verfügbarkeitstests oder die damit verknüpften Warnungsregeln deaktivieren, während Sie Ihren Dienst warten. 
 
 ## <a name="failures"></a>Wenn Sie Fehler finden ...
 Klicken Sie auf einen roten Punkt.
 
-![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/open-instance.png)
+![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
 
 
-Mit einem Webtestergebnis haben Sie folgende Möglichkeiten:
+Mit einem Verfügbarkeitstestergebnis können Sie folgende Aktionen ausführen:
 
 * Untersuchen Sie die vom Server erhaltene Antwort.
 * Öffnen Sie die von der Server-App gesendeten Telemetriedaten, während die Instanz der fehlgeschlagenen Anforderung verarbeitet wird.
@@ -104,7 +111,7 @@ Mit einem Webtestergebnis haben Sie folgende Möglichkeiten:
 
 *Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird.
 
-*Keine verwandten Elemente vorhanden?* Dies kann daran liegen, dass das [„Sampling“](app-insights-sampling.md) (Stichprobenerstellung) aktiv ist.
+*Keine verwandten Elemente vorhanden?* Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](app-insights-sampling.md) in Betrieb ist. 
 
 ## <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.
@@ -149,7 +156,7 @@ Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
     ![Öffnen Sie in Visual Studio die WEBTEST-Datei, und klicken Sie auf "Ausführen".](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
 #### <a name="2-upload-the-web-test-to-application-insights"></a>2. Hochladen des Webtests in Application Insights
-1. Erstellen Sie im Application Insights-Portal einen neuen Webtest.
+1. Erstellen Sie im Application Insights-Portal einen Webtest.
 
     ![Wählen Sie auf dem Blatt "Webtests" die Option "Hinzufügen".](./media/app-insights-monitor-web-app-availability/16-another-test.png)
 2. Wählen Sie einen mehrstufigen Test aus und laden Sie die .webtest-Datei hoch.
@@ -240,7 +247,7 @@ Sie können für Ihre Website einen Auslastungstest durchführen. Wie beim Verf�
 Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 ## <a name="automation"></a>Automation
-* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Webtests](app-insights-powershell.md#add-an-availability-test) .
+* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Verfügbarkeitstests](app-insights-powershell.md#add-an-availability-test).
 * Richten Sie einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## <a name="qna"></a>Fragen? Probleme?
@@ -252,13 +259,13 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
     Wir unterstützen TLS 1.1 und TLS 1.2.
 * *Gibt es einen Unterschied zwischen „Webtests“ und „Verfügbarkeitstests“?*
 
-    Wir verwenden die beiden Begriffe synonym.
+    Die beiden Begriffe sind austauschbar. „Verfügbarkeitstests“ ist ein allgemeinerer Begriff, der neben den mehrstufigen Webtests auch die einzelnen URL-Pingtests enthält.
 * *Ich möchte Verfügbarkeitstests auf unserem internen Server verwenden, der hinter einer Firewall ausgeführt wird.*
 
     Es gibt zwei mögliche Lösungen:
     
     * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](app-insights-ip-addresses.md) zugelassen werden.
-    * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden auf den Blättern der Verfügbarkeitswebtests nicht angezeigt, sondern als Verfügbarkeitsergebnisse in Analytics, Search und Metrik-Explorer.
+    * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden nicht auf den Blättern der Verfügbarkeitswebtests angezeigt, sondern als Verfügbarkeitsergebnisse in Analytics, Search und Metrik-Explorer.
 * *Fehler beim Hochladen eines Webtests mit mehreren Schritten*
 
     Die Größenbeschränkung beträgt 300 K.
@@ -291,4 +298,3 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-
