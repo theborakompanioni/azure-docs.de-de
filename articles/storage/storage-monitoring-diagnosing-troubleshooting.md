@@ -3,8 +3,8 @@ title: "Überwachung, Diagnose und Problembehandlung in Azure Storage | Microsof
 description: Verwenden Sie Features wie Speicheranalyse, clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Storage zu erkennen, zu diagnostizieren und zu beheben.
 services: storage
 documentationcenter: 
-author: jasonnewyork
-manager: tadb
+author: fhryo-msft
+manager: jahogg
 editor: tysonn
 ms.assetid: d1e87d98-c763-4caa-ba20-2cf85f853303
 ms.service: storage
@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
-ms.author: jahogg
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 8d2aa0c8ff9e39faf47c6c3339cd8da2610d2324
-ms.lasthandoff: 04/06/2017
+ms.date: 05/11/2017
+ms.author: fhryo-msft
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 8598e18aeb0552455a6e5344f10eb48382e8c2f4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -328,19 +329,19 @@ Bezieht sich Ihr Problem auf die Verfügbarkeit eines Speicherdiensts?
 * [Der Client empfängt HTTP 409 (Konflikt)-Meldungen]
 
 ---
-[Metrics show low PercentSuccess or analytics log entries have operations with transaction status of ClientOtherErrors]
+[Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“]
 
 ---
 [Kapazitätsmetriken zeigen einen unerwarteten Anstieg der Speicherkapazitätsauslastung an]
 
 ---
-[You are experiencing unexpected reboots of Virtual Machines that have a large number of attached VHDs]
+[Sie stoßen auf unerwartete Neustarts von virtuellen Computern, die über eine große Anzahl angeschlossener virtueller VHDs verfügen]
 
 ---
 [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]
 
 ---
-[You are encountering problems installing the Azure SDK for .NET]
+[Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme]
 
 ---
 [Sie haben ein anderes Problem mit einem Speicherdienst]

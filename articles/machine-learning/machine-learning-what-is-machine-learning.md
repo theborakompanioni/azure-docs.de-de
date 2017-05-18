@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
-translationtype: Human Translation
-ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
-ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 247c26b3988664bcf93fb5face6514a3dc74cebc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -50,7 +52,7 @@ In [Machine Learning Studio](machine-learning-what-is-ml-studio.md)können Sie i
 * Im [Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md)können Sie Lösungen für die Analyse testen, die von anderen Benutzern erstellt wurden, oder eigene Lösungen bereitstellen. Über soziale Netzwerke wie LinkedIn und Twitter können Sie Fragen oder Kommentare zu Experimenten an die Community senden oder Links zu Experimenten freigeben.
 
   ![Probieren Sie Vorhersageexperimente aus, oder ergänzen Sie den Azure Cortana Intelligence-Katalog durch eigene Experimente.](./media/machine-learning-what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
-* Nutzen Sie die umfangreiche Bibliothek mit [Machine Learning-Algorithmen und -Modulen](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) in Machine Learning Studio, um sofort mit dem Entwickeln von Vorhersagemodellen zu beginnen. Wählen Sie zwischen Beispielexperimenten, R- und Python-Paketen sowie erstklassigen Algorithmen aus Microsoft-Produktbereichen wie Xbox und Bing. Erweitern Sie Studio-Module mit Ihren eigenen benutzerdefinierten [R](machine-learning-r-quickstart.md)- und [Python](machine-learning-execute-python-scripts.md)-Skripts.
+* Nutzen Sie die umfangreiche Bibliothek mit [Machine Learning-Algorithmen und -Modulen](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) in Machine Learning Studio, um sofort mit dem Entwickeln von Vorhersagemodellen zu beginnen. Wählen Sie zwischen Beispielexperimenten, R- und Python-Paketen sowie erstklassigen Algorithmen aus Microsoft-Produktbereichen wie Xbox und Bing. Erweitern Sie Studio-Module mit Ihren eigenen benutzerdefinierten [R](machine-learning-extend-your-experiment-with-r.md)- und [Python](machine-learning-execute-python-scripts.md)-Skripts.
 
   ![Was ist Predictive Analytics? Beispiel eines Predictive Analytics-Experiments in Azure Machine Learning Studio](./media/machine-learning-what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
 
@@ -112,9 +114,4 @@ Die Grundlagen von Predictive Analytics und Machine Learning werden anhand eines
 
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

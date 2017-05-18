@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/06/2017
 ms.author: negat
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: f300537943b76e53b0e7c271e65293e585a2cd32
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 8e9caf7eebc17682b3204004e3a74331efbd04fb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -28,7 +29,7 @@ In diesem Artikel wird gezeigt, wie die [Vorlage für eine kleinstmögliche Skal
 
 ## <a name="change-the-template-definition"></a>Ändern der Vorlagendefinition
 
-Unsere Vorlage für die kleinstmögliche Skalierungsgruppe kann [hier](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json) angezeigt werden, und unsere Vorlage für die Bereitstellung der Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk kann [hier](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json) angezeigt werden. Sehen wir uns die Diff zum Erstellen dieser Vorlage (`git diff master minimum-viable-scale-set`) Stück für Stück an:
+Unsere Vorlage für die kleinstmögliche Skalierungsgruppe kann [hier](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json) angezeigt werden, und unsere Vorlage für die Bereitstellung der Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk kann [hier](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json) angezeigt werden. Sehen wir uns die Diff zum Erstellen dieser Vorlage (`git diff minimum-viable-scale-set existing-vnet`) Stück für Stück an:
 
 Wir fügen zunächst einen `subnetId`-Parameter hinzu. Diese Zeichenfolge wird an die Skalierungsgruppenkonfiguration übergeben und ermöglicht der Skalierungsgruppe das Identifizieren des vorab erstellten Subnetzes, in dem virtuelle Computer bereitgestellt werden sollen. Diese Zeichenfolge muss folgendes Format aufweisen: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Beispiel: Zum Bereitstellen der Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk mit dem Namen `myvnet`, dem Subnetz `mysubnet`, der Ressourcengruppe `myrg`, und dem Abonnement `00000000-0000-0000-0000-000000000000`, wäre „subnetId“: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 

@@ -1,4 +1,4 @@
---- 
+---
 title: Erste Schritte mit Azure Automation | Microsoft-Dokumentation
 description: "Dieser Artikel enthält eine Übersicht über den Azure Automation-Dienst, und es werden die wichtigsten Konzepte und Implementierungsdetails beschrieben, die als Vorbereitung für die Nutzung des Angebots über Azure Marketplace erforderlich sind."
 services: automation
@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 9b4982ffece9283304ad3ab3c82a471ac1dbd463
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 ---
 
 ## <a name="getting-started-with-azure-automation"></a>Erste Schritte mit Azure Automation
 
-In dieser Anleitung zu den ersten Schritten werden wichtige Konzepte zur Bereitstellung von Azure Automation vorgestellt. Wenn Automation in Azure neu für Sie ist oder wenn Sie Erfahrung mit Software zur Automatisierung von Workflows haben (z.B. System Center Orchestrator), ist diese Anleitung eine gute Hilfe bei den ersten Schritten in Bezug auf die Konzepte und Bereitstellungsdetails. 
+In dieser Anleitung zu den ersten Schritten werden wichtige Konzepte zur Bereitstellung von Azure Automation vorgestellt. Wenn Automation in Azure neu für Sie ist oder wenn Sie Erfahrung mit Software zur Automatisierung von Workflows haben (z.B. System Center Orchestrator), ist diese Anleitung eine gute Hilfe bei den ersten Schritten in Bezug auf die Konzepte und Bereitstellungsdetails.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
@@ -83,14 +83,14 @@ Ein Computer, der für die Ausführung von Hybrid Runbook-Aufträgen vorgesehen 
 ## <a name="security"></a>Sicherheit
 Mit Azure Automation können Sie Aufgaben für Ressourcen in Azure, lokal und mit anderen Cloudanbietern automatisieren.  Damit ein Runbook die erforderlichen Aktionen ausführen kann, muss es über Berechtigungen für den sicheren Zugriff auf die Ressourcen mit den geringstmöglichen Rechten im Abonnement verfügen.  
 
-### <a name="automation-account"></a>Automation-Konto 
+### <a name="automation-account"></a>Automation-Konto
 Alle Automatisierungsaufgaben, die Sie für Ressourcen mit den Azure-Cmdlets in Azure Automation durchführen, werden gegenüber Azure mit Azure Active Directory basierend auf den Anmeldeinformationen für die Organisationsidentität authentifiziert.  Ein Automation-Konto wird separat von dem Konto verwendet, das Sie zum Anmelden am Portal zur Konfiguration und Verwendung von Azure-Ressourcen nutzen.  
 
 Die Automation-Ressourcen für jedes Automation-Konto sind mit einer einzelnen Azure-Region verknüpft, aber die Automation-Konten können alle Ressourcen in Ihrem Abonnement verwalten. Erstellen Sie Automation-Konten in unterschiedlichen Regionen, wenn Ihre Richtlinien eine Isolierung von Daten und Ressourcen innerhalb einer spezifischen Region vorsehen.
 
 > [!NOTE]
 > Auf Automation-Konten und die darin enthaltenen Ressourcen, die mit dem Azure-Portal erstellt werden, kann im klassischen Azure-Portal nicht zugegriffen werden. Wenn Sie diese Konten oder die enthaltenen Ressourcen mit Windows PowerShell verwalten möchten, müssen Sie die Azure-Ressourcen-Manager-Module verwenden.
-> 
+>
 
 Wenn Sie ein Automation-Konto im Azure-Portal erstellen, werden automatisch zwei Authentifizierungsentitäten erstellt:
 
@@ -102,17 +102,17 @@ Die rollenbasierte Zugriffssteuerung ist für Azure Resource Manager verfügbar,
 #### <a name="authentication-methods"></a>Authentifizierungsmethoden
 In der folgenden Tabelle sind die unterschiedlichen Authentifizierungsmethoden für die einzelnen Umgebungen zusammengefasst, die von Azure Automation unterstützt werden.
 
-| Methode | Environment 
-| --- | --- | 
+| Methode | Environment
+| --- | --- |
 | Ausführendes Azure-Konto und klassisches ausführendes Konto |Azure Resource Manager- und klassische Azure-Bereitstellung |  
 | Azure AD-Benutzerkonto |Azure Resource Manager- und klassische Azure-Bereitstellung |  
 | Windows-Authentifizierung |Lokales Rechenzentrum oder anderer Cloudanbieter mit Hybrid Runbook Worker-Nutzung |  
 | AWS-Anmeldeinformationen |Amazon Web Services |  
 
 Der Abschnitt **How to\Authentication and Security** (Vorgehensweise/Authentifizierung und Sicherheit) enthält hilfreiche Artikel mit einer Übersicht und Implementierungsschritten zum Konfigurieren der Authentifizierung für diese Umgebungen – mit einem vorhandenen oder neuen Konto, das Sie für diese Umgebung festlegen.  Für das ausführende Azure-Konto und das klassische ausführende Konto wird im Thema [Update Automation Run As account using PowerShell](automation-update-account-powershell.md) (Aktualisieren des ausführenden Automation-Kontos mit PowerShell) beschrieben, wie Sie Ihr vorhandenes Automation-Konto mit den ausführenden Konten per PowerShell aktualisieren, falls die ursprüngliche Konfiguration nicht mit einem ausführenden bzw. klassischen ausführenden Konto durchgeführt wurde.   
- 
+
 ## <a name="network"></a>Netzwerk
-Damit der Hybrid Runbook Worker eine Verbindung mit Microsoft Operations Management Suite (OMS) herstellen und sich bei dem Dienst registrieren kann, benötigt er Zugriff auf die unten angegebene Portnummer und die angegebenen URLs.  Dies ist zusätzlich zu den [für Microsoft Monitoring Agent benötigten Ports und URLs](../log-analytics/log-analytics-proxy-firewall.md#configure-settings-with-the-microsoft-monitoring-agent) für die Herstellung einer Verbindung mit OMS erforderlich. Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem OMS-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist.
+Damit der Hybrid Runbook Worker eine Verbindung mit Microsoft Operations Management Suite (OMS) herstellen und sich bei dem Dienst registrieren kann, benötigt er Zugriff auf die unten angegebene Portnummer und die angegebenen URLs.  Dies ist zusätzlich zu den [für Microsoft Monitoring Agent benötigten Ports und URLs](../log-analytics/log-analytics-windows-agents.md) für die Herstellung einer Verbindung mit OMS erforderlich. Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem OMS-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist.
 
 Nachfolgend sind der Port und die URLs aufgeführt, die für die Kommunikation zwischen Hybrid Runbook Worker und Automation erforderlich sind.
 
@@ -136,11 +136,11 @@ Wenn Sie ein Automation-Konto für eine bestimmte Region festgelegt haben und di
 | UK, Süden | uks-jobruntimedata-prod-su1.azure-automation.net |
 | US Government, Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-Wenn Sie eine Liste mit IP-Adressen statt Namen benötigen, können Sie die XML-Datei mit [Azure Datacenter-IP-Adressen](https://www.microsoft.com/download/details.aspx?id=41653) aus dem Microsoft Download Center herunterladen und überprüfen. 
+Wenn Sie eine Liste mit IP-Adressen statt Namen benötigen, können Sie die XML-Datei mit [Azure Datacenter-IP-Adressen](https://www.microsoft.com/download/details.aspx?id=41653) aus dem Microsoft Download Center herunterladen und überprüfen.
 
 > [!NOTE]
-> Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und Speicherbereiche), die in Microsoft Azure-Datencentern verwendet werden. Eine aktualisierte Datei mit den derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Datencentern verwendet. Laden Sie die neue XML-Datei jede Woche herunter, und nehmen Sie die erforderlichen Änderungen an Ihrer Website vor, um in Azure ausgeführte Dienste ordnungsgemäß zu ermitteln. Diese Datei zum Aktualisieren der BGP-Ankündigung von Azure-Bereichen wird ExpressRoute-Benutzern jeweils in der ersten Woche des Monats angezeigt. 
-> 
+> Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und Speicherbereiche), die in Microsoft Azure-Rechenzentren verwendet werden. Eine aktualisierte Datei mit den derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Laden Sie die neue XML-Datei jede Woche herunter, und nehmen Sie die erforderlichen Änderungen an Ihrer Website vor, um in Azure ausgeführte Dienste ordnungsgemäß zu ermitteln. Diese Datei zum Aktualisieren der BGP-Ankündigung von Azure-Bereichen wird ExpressRoute-Benutzern jeweils in der ersten Woche des Monats angezeigt.
+>
 
 
 ## <a name="implementation"></a>Implementierung
@@ -175,16 +175,16 @@ Die empfohlene Methode zum Integrieren von Automation ist die Auswahl des Angebo
 
 4. Klicken Sie nach dem Durchlesen der Beschreibung für das Angebot auf **Erstellen**.  
 
-5. Wählen Sie auf dem Blatt mit den Einstellungen für **Automation + Control** die Option **OMS-Arbeitsbereich**.  Wählen Sie auf dem Blatt **OMS-Arbeitsbereich** einen OMS-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, in dem sich das Automation-Konto befindet, oder erstellen Sie einen OMS-Arbeitsbereich.  Gehen Sie wie folgt vor, wenn Sie noch nicht über einen OMS-Arbeitsbereich verfügen: Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, und führen Sie auf dem Blatt für den **OMS-Arbeitsbereich** die folgenden Schritte aus: 
+5. Wählen Sie auf dem Blatt mit den Einstellungen für **Automation + Control** die Option **OMS-Arbeitsbereich**.  Wählen Sie auf dem Blatt **OMS-Arbeitsbereich** einen OMS-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, in dem sich das Automation-Konto befindet, oder erstellen Sie einen OMS-Arbeitsbereich.  Gehen Sie wie folgt vor, wenn Sie noch nicht über einen OMS-Arbeitsbereich verfügen: Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, und führen Sie auf dem Blatt für den **OMS-Arbeitsbereich** die folgenden Schritte aus:
    - Geben Sie einen Namen für den neuen **OMS-Arbeitsbereich** an.
    - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    - Unter **Ressourcengruppe** können Sie eine Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.  
    - Wählen Sie einen **Speicherort**aus.  Derzeit sind nur die Standorte **Australien, Südosten**, **USA, Osten**, **Asien, Südosten**, **USA, Westen-Mitte** und **Europa, Westen** verfügbar.
    - Wählen Sie einen **Tarif**aus.  Für die Lösung sind zwei Tarife verfügbar: „Free“ und „Pro Knoten (OMS)“.  Beim Free-Tarif gelten Beschränkungen für die Datenmenge, die pro Tag erfasst werden kann, die Aufbewahrungsdauer und die Laufzeit von Runbookaufträgen in Minuten.  Für den Tarif „Pro Knoten (OMS)“ gilt keine Beschränkung für die täglich erfasste Datenmenge.  
-   - Wählen Sie die Option **Automation-Konto**.  Bei der Erstellung eines neuen OMS-Arbeitsbereichs müssen Sie auch ein Automation-Konto erstellen, das dem zuvor angegebenen neuen OMS-Arbeitsbereich zugeordnet wird, einschließlich Azure-Abonnement, -Ressourcengruppe und -Region.  Sie können die Option **Automation-Konto erstellen** wählen und auf dem Blatt **Automation-Konto** Folgendes angeben: 
+   - Wählen Sie die Option **Automation-Konto**.  Bei der Erstellung eines neuen OMS-Arbeitsbereichs müssen Sie auch ein Automation-Konto erstellen, das dem zuvor angegebenen neuen OMS-Arbeitsbereich zugeordnet wird, einschließlich Azure-Abonnement, -Ressourcengruppe und -Region.  Sie können die Option **Automation-Konto erstellen** wählen und auf dem Blatt **Automation-Konto** Folgendes angeben:
   - Geben Sie im Feld **Name** den Namen des Automation-Kontos ein.
 
-    Alle anderen Optionen werden basierend auf dem ausgewählten OMS-Arbeitsbereich automatisch aufgefüllt, und diese Optionen können nicht geändert werden.  Ein ausführendes Azure-Konto ist die standardmäßig verwendete Authentifizierungsmethode für das Angebot.  Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt.  Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
+    Alle anderen Optionen werden basierend auf dem ausgewählten OMS-Arbeitsbereich automatisch aufgefüllt, und diese Optionen können nicht geändert werden.  Ein ausführendes Azure-Konto ist die standardmäßig verwendete Authentifizierungsmethode für das Angebot.  Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt.  Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
     Wählen Sie andernfalls ein vorhandenes ausführendes Automation-Konto aus.  Das ausgewählte Konto darf nicht bereits mit einem anderen OMS-Arbeitsbereich verknüpft sein. Andernfalls wird auf dem Blatt eine Benachrichtigungsmeldung angezeigt.  Wenn bereits eine Verknüpfung besteht, müssen Sie ein anderes ausführendes Automation-Konto wählen oder ein Konto erstellen.
 
@@ -194,7 +194,7 @@ Die empfohlene Methode zum Integrieren von Automation ist die Auswahl des Angebo
 
 7. Bestätigen Sie auf dem Blatt mit den Einstellungen für **Automation + Control**, dass Sie die empfohlenen vorab ausgewählten Lösungen installieren möchten. Falls Sie einige Lösungen deaktivieren, können Sie sie im Nachhinein einzeln installieren.  
 
-8. Klicken Sie auf **Erstellen**, um mit der Integration von Automation und eines OMS-Arbeitsbereichs zu beginnen. Alle Einstellungen werden überprüft, und anschließend wird versucht, das Angebot in Ihrem Abonnement bereitzustellen.  Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
+8. Klicken Sie auf **Erstellen**, um mit der Integration von Automation und eines OMS-Arbeitsbereichs zu beginnen. Alle Einstellungen werden überprüft, und anschließend wird versucht, das Angebot in Ihrem Abonnement bereitzustellen.  Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
 Nach der Integration des Angebots können Sie mit der Erstellung von Runbooks beginnen, die aktivierten Verwaltungslösungen einsetzen oder [Log Analytics](https://docs.microsoft.com/azure/log-analytics) verwenden, um Daten zu erfassen, die von den Ressourcen in Ihrer Cloud- oder lokalen Umgebung generiert werden.   
 
@@ -202,5 +202,4 @@ Nach der Integration des Angebots können Sie mit der Erstellung von Runbooks be
 * Sie können überprüfen, ob die Authentifizierung Ihres neuen Automation-Kontos für Azure-Ressourcen funktioniert, indem Sie die Informationen zum [Testen der Authentifizierung für ausführende Azure Automation-Konten](automation-verify-runas-authentication.md) verwenden.
 * Erste Schritte mit PowerShell-Runbooks werden unter [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md) beschrieben.
 * Weitere Informationen zur grafischen Inhaltserstellung finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
-
 
