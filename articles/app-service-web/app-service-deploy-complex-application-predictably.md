@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: 37a10d284afa6b9ee2aa65e7ec015c3c364f551d
-ms.lasthandoff: 02/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 844f42e61ba443a4b74a52f622113e87a7781913
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -130,7 +131,7 @@ Beachten Sie Folgendes im Zusammenhang mit dem hervorgehobenen JSON-Code:
 * Die geschachtelten Ressourcen in `“resources”: […]`, in denen die Datenbank und die Firewallregeln definiert werden, haben ein `dependsOn`-Element, das die Ressourcen-ID der SQLServer-Ressource auf Stammebene angibt. Dadurch wird der Azure-Ressourcen-Manager angewiesen, dass vor dem Erstellen dieser Ressource, die andere Ressource bereits vorhanden sein muss; und wenn diese andere Ressource in der Vorlage definiert ist, muss sie zuerst erstellt werden.
   
   > [!NOTE]
-  > Ausführliche Informationen zur Verwendung der `resourceId()`-Funktion finden Sie unter [Azure Resource Manager template functions](../azure-resource-manager/resource-group-template-functions.md) (Funktionen von Azure Resource Manager-Vorlagen).
+  > Ausführliche Informationen zur Verwendung der `resourceId()`-Funktion finden Sie unter [Azure Resource Manager template functions](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid) (Funktionen von Azure Resource Manager-Vorlagen).
   > 
   > 
 * Die Wirkung des `dependsOn` -Elements ist, dass der Azure-Ressourcen-Manager weiß, welche Ressourcen parallel erstellt werden können und welche Ressourcen sequenziell erstellt werden müssen. 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 97ed0ae7cf9f741155c57053bc8b34a0246d0586
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 492e0ca675f2a827b172c33fcd33226abc95dcec
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -47,7 +48,7 @@ Die Verwendung von Event Hubs für den Empfang von Daten von Azure-Diagnose wird
 * Vorhandene Konfigurationen der Azure-Diagnose in einer Anwendung mithilfe einer *.wadcfgx* -Datei und einer der folgenden Methoden:
   * Visual Studio: [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Windows PowerShell: [Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services](../cloud-services/cloud-services-diagnostics-powershell.md)
-* Es muss ein Event Hubs-Namespace bereitgestellt werden, wie im Artikel [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) beschrieben.
+* Es muss ein Event Hubs-Namespace bereitgestellt werden, wie im Artikel [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Herstellen einer Verbindung zwischen der Azure-Diagnose und der Event Hubs-Senke
 Azure-Diagnose sendet Protokolle und Metriken standardmäßig stets an ein Azure Storage-Konto. Eine Anwendung kann auch Daten an Event Hubs senden, indem der *WADCFGX*-Datei im **PublicConfig** / **WadCfg**-Element ein neuer **Sinks**-Abschnitt hinzugefügt wird. In Visual Studio wird die *.wadcfgx*-Datei im folgenden Pfad gespeichert: **Cloud Services-Projekt** > **Rollen** > **(RoleName)** > **diagnostics.wadcfgx**-Datei.

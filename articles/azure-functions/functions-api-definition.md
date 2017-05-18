@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 08063960d3956ca65dd32d9fe726c366799a2087
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: aac362f5123038cc39e0d2b32c10f7747a702cfe
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -34,10 +35,10 @@ Dieses Vorschaufeature ermöglicht es Ihnen, eine OpenAPI 2.0-Definition (frühe
 
 ## <a name="enable"></a>Aktivieren der Unterstützung für eine OpenAPI-Definition
 * Sämtliche OpenAPI-Einstellungen können auf der Seite `API Definition (preview)` in Ihren Funktionen-App-Einstellungen konfiguriert werden.
-* Legen Sie `API defintion source` auf `Function` fest, um eine gehostete OpenAPI-Definition und eine Schnellstart-Definitionsgenerierung zu aktivieren.
+* Legen Sie `API definition source` auf `Function` fest, um eine gehostete OpenAPI-Definition und eine Schnellstart-Definitionsgenerierung zu aktivieren.
   * `External URL` ermöglicht, dass Sie in Ihrer Funktion eine OpenAPI-Definition verwenden, die andernorts gehostet wird.
 
-## <a name="generate-defintion"></a>Generieren eines Swagger-Gerüsts aus Ihren Funktionsmetadaten
+## <a name="generate-definition"></a>Generieren eines Swagger-Gerüsts aus Ihren Funktionsmetadaten
 Eine Vorlage ist ein optimaler Einstiegspunkt für das Schreiben Ihrer ersten OpenAPI-Definition. Das Feature für Definitionsvorlagen erstellt eine spärlich konfigurierte OpenAPI-Definition anhand aller Metadaten aus „function.json“ für jede Ihrer HTTP-Triggerfunktionen. **Sie müssen weitere Informationen zu Ihrer API aus der [OpenAPI-Spezifikation](http://swagger.io/specification/) eintragen, z.B. Vorlagen für Anforderungen (request) und Antworten (response).**
 
 [In diesem Erste-Schritte-Tutorial finden Sie schrittweise Anweisungen.](./functions-api-definition-getting-started.md)

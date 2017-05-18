@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 2bba3084a27186a2d6f728d6030ec9fa8afd0658
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 52d83b21f2f2346bfeb8d469a9bfb1b64dd4ba23
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -167,7 +168,7 @@ Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine vollständige Beispielvorlage für einen virtuellen Windows-Computer mit Diagnoseerweiterung finden Sie unter [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* Stellen Sie die Resource Manager-Vorlage über [Azure PowerShell](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder die [Azure-Befehlszeile](../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereit.
+* Stellen Sie die Resource Manager-Vorlage über [Azure PowerShell](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder die [Azure-Befehlszeile](../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereit.
 * Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../resource-group-authoring-templates.md)
 
 
