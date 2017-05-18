@@ -14,11 +14,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 02/09/2017
+ms.date: 05/18/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 25e19b14e1cad41a365ee88ed317078bf551c36a
+ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
 
 
@@ -45,8 +46,7 @@ Lesen Sie weiter, falls Sie ausführlichere Schritte und Erläuterungen benötig
 
 > [!TIP]
 > Falls die Schaltfläche **Verbinden** für Ihren virtuellen Computer im Portal abgeblendet ist und keine [ExpressRoute](../../expressroute/expressroute-introduction.md)- oder [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-Verbindung mit Azure besteht, müssen Sie eine öffentliche IP-Adresse erstellen und dem virtuellen Computer zuweisen, um RDP verwenden zu können. Lesen Sie mehr über [öffentliche IP-Adressen in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
-> 
-> 
+
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Behandlungsmöglichkeiten für RDP-Probleme
 Probleme mit virtuellen Computern, die unter Verwendung des Resource Manager-Bereitstellungsmodells erstellt wurden, können auf folgende Arten behandelt werden:
@@ -120,8 +120,6 @@ In den folgenden Beispielen werden Variablen wie `myResourceGroup`, `myVM` und `
 
 > [!NOTE]
 > Zum Zurücksetzen der Benutzeranmeldeinformationen und der RDP-Konfiguration wird das PowerShell-Cmdlet [Set AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) verwendet. In den folgenden Beispielen wird im Rahmen des Prozesses der Name `myVMAccessExtension` angegeben. Wenn Sie zuvor VMAccessAgent verwendet haben, können Sie den Namen der vorhandenen Erweiterung mithilfe von `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` abrufen, um die Eigenschaften des virtuellen Computers zu überprüfen. Der Name wird in der Ausgabe im Abschnitt „Erweiterungen“ angezeigt.
-> 
-> 
 
 Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtuellen Computer erneut herzustellen. Sollte sich immer noch keine Verbindung herstellen lassen, versuchen Sie es mit dem nächsten Schritt.
 
