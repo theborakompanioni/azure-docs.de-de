@@ -3,7 +3,7 @@ title: PowerShell-Skript zum Erstellen einer Application Insights-Ressource | Mi
 description: Automatisierung der Erstellung von Application Insights-Ressourcen.
 services: application-insights
 documentationcenter: windows
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: f0082c9b-43ad-4576-a417-4ea8e0daf3d9
 ms.service: application-insights

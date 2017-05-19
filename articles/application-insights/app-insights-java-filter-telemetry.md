@@ -3,7 +3,7 @@ title: Filtern von Azure Application Insights-Telemetriedaten in einer Java-Web-
 description: "Telemetriedatenverkehr lässt sich reduzieren, indem Sie die Ereignisse herausfiltern, die Sie nicht überwachen müssen."
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

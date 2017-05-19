@@ -3,7 +3,7 @@ title: "Problembehandlung ohne Daten – Application Insights für .NET"
 description: Sie sehen in Azure Application Insights keine Daten? Versuchen Sie es hier.
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
 ms.service: application-insights

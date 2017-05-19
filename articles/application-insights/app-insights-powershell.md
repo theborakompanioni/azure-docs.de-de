@@ -3,7 +3,7 @@ title: Automatisieren von Azure Application Insights mit PowerShell | Microsoft-
 description: "Automatisieren Sie die Ressourcen-, Warnungs- und Verfügbarkeitstesterstellung in PowerShell mithilfe einer Azure Resource Manager-Vorlage."
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
 ms.service: application-insights

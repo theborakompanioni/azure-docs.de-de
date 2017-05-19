@@ -3,7 +3,7 @@ title: Verwenden von Search in Azure Application Insights | Microsoft-Dokumentat
 description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von Ihrer Web-App gesendet werden.
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
 ms.service: application-insights

@@ -3,7 +3,7 @@ title: Untersuchen von Java-Ablaufverfolgungsprotokollen in Azure Application In
 description: Durchsuchen von Log4J- oder Logback-Ablaufverfolgungen in Application Insights
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights

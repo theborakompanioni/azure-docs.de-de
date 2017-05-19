@@ -3,7 +3,7 @@ title: "Intelligente Diagnose von Web-App-Leistungsänderungen in Azure Applicat
 description: Automatische Diagnose von Spitzen oder Schritten in der Leistungstelemetrie Ihrer Web-App
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

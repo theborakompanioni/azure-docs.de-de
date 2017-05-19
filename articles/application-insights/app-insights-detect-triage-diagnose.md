@@ -1,7 +1,7 @@
 ---
 title: "Erkennen und Diagnostizieren von Problemen mit Web-Apps – Azure Application Insights | Microsoft-Dokumentation"
 description: "Analysieren von Abstürzen und Erkennen und Diagnostizieren von Leistungsproblemen in Ihren Anwendungen"
-author: alancameronwills
+author: CFreemanwa
 services: application-insights
 documentationcenter: 
 manager: carmonm
