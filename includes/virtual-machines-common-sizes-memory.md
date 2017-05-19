@@ -46,7 +46,7 @@ ACU: 180 - 240
 
 ACU: 210 - 250
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2 |2 |14 |28 |4 |8.000/64 (72) |6.400/96 |2 hoch |
 | Standard_DS12_v2 |4 |28 |56 |8 |16.000/128 (144) |12.800/192 |4 hoch |
@@ -58,7 +58,7 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 * Der mit einer VM der DSv2-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
-**In einigen Regionen stehen für die Größe „Standard_DS15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md).
+**In einigen Regionen stehen für die Größe „Standard_DS15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-create-vm-accelerated-networking.md).
 
 ***Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 <br>
@@ -78,7 +78,7 @@ ACU: 210 - 250
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 32/32 x 500                       | 8/äußerst hoch           |
 | Standard_D15_v2** | 20        | 140         | 1.000          | 60000/937/468                                        | 40/40 x 500                       | 8/äußerst hoch*          |
 
-*In einigen Regionen stehen für die Größe „Standard_D15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md).
+*In einigen Regionen stehen für die Größe „Standard_D15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-create-vm-accelerated-networking.md).
 
 **Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
@@ -88,7 +88,7 @@ ACU: 210 - 250
 
 ACU: 160
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11 |2 |14 |28 |4 |8.000/64 (72) |6.400/64 |2/hoch |
 | Standard_DS12 |4 |28 |56 |8 |16.000/128 (144) |12.800/128 |4/hoch |
