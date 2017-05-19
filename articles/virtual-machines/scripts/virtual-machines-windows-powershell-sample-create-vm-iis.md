@@ -27,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 Dieses Skript erstellt einen virtuellen Azure-Computer mit Windows Server 2016 und verwendet dann die benutzerdefinierte Azure-VM-Skripterweiterung, um Internetinformationsdienste (IIS) zu installieren. Nachdem das Skript ausgeführt wurde, können Sie die standardmäßige IIS-Website über die öffentliche IP-Adresse des virtuellen Computers aufrufen.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

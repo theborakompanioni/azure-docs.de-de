@@ -3,7 +3,7 @@ title: Untersuchen von Metriken in Azure Application Insights | Microsoft Docs
 description: "Interpretieren von Metrik-Explorer-Diagrammen und Anpassen von Metrik-Explorer-Blättern"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
 ms.service: application-insights

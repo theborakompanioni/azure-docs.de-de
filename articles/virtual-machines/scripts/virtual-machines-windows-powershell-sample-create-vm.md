@@ -27,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 Dieses Skript erstellt einen virtuellen Azure-Computer mit Windows Server 2016. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

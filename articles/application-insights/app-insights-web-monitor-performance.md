@@ -3,7 +3,7 @@ title: "Überwachen der Integrität und Nutzung Ihrer Anwendung mit Application 
 description: "Erste Schritte mit Application Insights. Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihres lokalen oder Microsoft Azure-Anwendungen."
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 40650472-e860-4c1b-a589-9956245df307
 ms.service: application-insights

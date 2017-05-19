@@ -3,7 +3,7 @@ title: "Überwachen der Leistung der Azure-Web-App | Microsoft Docs"
 description: "Überwachung der Anwendungsleistung für Azure-Web-Apps. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung."
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: azure-portal

@@ -3,7 +3,7 @@ title: "Überwachen der Nutzung und Leistung bei Windows-Desktop-Apps"
 description: Analysieren Sie die Nutzung und Leistung Ihrer Windows-Desktop-Apps mit HockeyApp und Application Insights.
 services: application-insights
 documentationcenter: windows
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 19040746-3315-47e7-8c60-4b3000d2ddc4
 ms.service: application-insights
