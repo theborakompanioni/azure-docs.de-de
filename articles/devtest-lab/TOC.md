@@ -9,7 +9,7 @@
 ## [Erstellen Ihres ersten virtuellen Computers](devtest-lab-create-first-vm.md)
 ## [Festlegen von Startrichtlinien](devtest-lab-get-started-with-lab-policies.md)
 
-# Anleitung
+# Anleitungen
 ## Verwenden von virtuellen Computern in einem Lab
 ### [Erstellen virtueller Computer](devtest-lab-add-vm.md)
 ### [Erstellen von anforderbaren virtuellen Computern](devtest-lab-add-claimable-vm.md)
@@ -44,6 +44,8 @@
 ## Verwalten virtueller Netzwerke
 ### [Konfigurieren virtueller Netzwerke](devtest-lab-configure-vnet.md)
 ### [Auswählen einer IP-Konfigurationsoption](devtest-lab-shared-ip.md)
+
+## [Skalieren des Labs](devtest-lab-scale-lab.md)
 
 # Referenz
 ## [CLI 2.0](/cli/azure/lab)

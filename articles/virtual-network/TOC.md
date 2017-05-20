@@ -17,14 +17,17 @@
 ### [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 
 ## Bereitstellen
-### Virtuelle Netzwerke
-#### [Portal](virtual-networks-create-vnet-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
-#### [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
-#### [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
-#### [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-#### [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
+### Virtuelle Netzwerke (VNETs)
+#### [Erstellen, Ändern oder Löschen von VNETs](virtual-network-manage-network.md)
+#### [Erstellen, Ändern oder Löschen von Subnetzen](virtual-network-manage-subnet.md)
+#### [Erstellen eines VNET – mehrere Subnetze](virtual-networks-create-vnet-arm-pportal.md) 
+##### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
+##### [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
+#### Erstellen eines VNET – mehrere Subnetze (klassisch)
+##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-classic-cli.md)
 
 ### Netzwerksicherheitsgruppen
 #### [Portal](virtual-networks-create-nsg-arm-pportal.md)
@@ -46,20 +49,22 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [Vorlage](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### [Netzwerkschnittstellen](virtual-network-network-interface.md)
+### Netzwerkschnittstellen (NICs)
+#### [Erstellen, Ändern oder Löschen von NICs](virtual-network-network-interface.md)
+#### [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md)
 
 ### [Öffentliche IP-Adressen](virtual-network-public-ip-address.md)
 
 ### Virtuelle Computer
-
-#### Statische öffentliche IP-Adressen
+#### [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md) 
+#### Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse
 ##### [Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
 ##### [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
 
-#### Statische private IP-Adressen
+#### Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse
 ##### [Portal](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-static-private-ip-arm-cli.md)
@@ -67,18 +72,19 @@
 ##### [PowerShell (klassisch)](virtual-networks-static-private-ip-classic-ps.md)
 ##### [CLI (klassisch)](virtual-networks-static-private-ip-classic-cli.md)
 
-#### Mehrere Netzwerkschnittstellen
-##### [PowerShell](virtual-network-deploy-multinic-arm-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-deploy-multinic-arm-cli.md)
-##### [Vorlage](virtual-network-deploy-multinic-arm-template.md)
+#### Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellen
+##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [PowerShell (klassisch)](virtual-network-deploy-multinic-classic-ps.md)
 ##### [CLI (klassisch)](virtual-network-deploy-multinic-classic-cli.md)
 
-#### Mehrere IP-Adressen
+#### Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 ##### [Azure-Portal](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-multiple-ip-addresses-cli.md)
 ##### [Vorlage](virtual-network-multiple-ip-addresses-template.md)
+
+#### [Erstellen eines virtuellen Computers mit beschleunigten Netzwerken](virtual-network-create-vm-accelerated-networking.md)
 
 ### Konnektivitätsszenarien
 #### [Virtuelles Netzwerk (VNET) zu VNET](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -97,9 +103,6 @@
 ##### [Beispielanwendung](virtual-networks-sample-app.md)
 
 ## Konfigurieren
-### Beschleunigte Netzwerke für virtuelle Computer
-#### [Azure-Portal](virtual-network-accelerated-networking-portal.md)
-#### [PowerShell](virtual-network-accelerated-networking-powershell.md)
 ### [Optimieren des VM-Netzwerkdurchsatzes](virtual-network-optimize-network-bandwidth.md)
 ### Zugriffssteuerungslisten
 #### [Klassisches Portal](virtual-networks-acl.md)

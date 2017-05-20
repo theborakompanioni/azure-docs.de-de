@@ -28,7 +28,11 @@
 ### [Visual Studio-Projektvorlagen für Batch](batch-visual-studio-templates.md)
 ## Verwalten
 ### [Batch-PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md)
-### [Azure-Befehlszeilenschnittstelle](batch-cli-get-started.md)
+### [Azure-CLI](batch-cli-get-started.md)
+#### [Erstellen eines Batch-Kontos](./scripts/batch-cli-sample-create-account.md)
+#### [Hinzufügen einer Anwendung](./scripts/batch-cli-sample-add-application.md)
+#### [Verwalten von Pools](./scripts/batch-cli-sample-manage-pool.md)
+#### [Ausführen eines Auftrags und von Tasks](./scripts/batch-cli-sample-run-job.md)
 
 # Referenz
 ## [PowerShell](/powershell/module/azurerm.batch)
@@ -63,7 +67,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C#-Codebeispiele](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python-Codebeispiele](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-## [CLI-Beispiele](batch-cli-samples.md)
 ## [Big Compute-Ressourcen](big-compute-resources.md)
 ## [Blog](https://blogs.technet.microsoft.com/windowshpc/)
 
