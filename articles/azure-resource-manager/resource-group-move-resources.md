@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: cc2a24b26b152671173770adfd4aefcfcb2512d4
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: f1b9beabfb0a92e5cc49d6af762693ae45a85e42
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -89,7 +89,7 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * Data Lake Analytics
 * Data Lake-Speicher
 * DNS
-* DocumentDB
+* Azure Cosmos DB
 * Event Hubs
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * IoT Hubs
@@ -126,19 +126,20 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 
 * AD Hybrid Health Service
 * Application Gateway
+* Verfügbarkeitsgruppen mit virtuellen Computern mit Managed Disks
 * BizTalk Services
 * Container Service
 * ExpressRoute
 * DevTest-Labs: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS
+* Von Managed Disks erstellte Images
+* Verwaltete Datenträger
+* Verwaltete Anwendungen
 * Recovery Services-Tresor – verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
 * Sicherheit
+* Von Managed Disks erstellte Momentaufnahmen
 * Virtuelle Computer mit in Schlüsseltresor gespeichertem Zertifikat
 * Virtual Machines mit Managed Disks
-* Verfügbarkeitsgruppen mit virtuellen Computern mit Managed Disks
-* Verwaltete Datenträger
-* Von Managed Disks erstellte Images
-* Von Managed Disks erstellte Momentaufnahmen
 * Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Von Marketplace-Ressourcen erstellte virtuelle Computer können nicht über Abonnements verschoben werden. Die Ressource muss im aktuellen Abonnement aufgehoben und im neuen Abonnement erneut bereitgestellt werden
 
@@ -214,7 +215,7 @@ Beim Verschieben von Ressourcen in ein neues Abonnement gelten die folgenden Ein
 * Das Zielabonnement darf keine anderen klassischen Ressourcen enthalten.
 * Der Verschiebevorgang kann nur über eine separate REST-API für klassische Verschiebevorgänge angefordert werden. Die Resource Manager-Standardbefehle für das Verschieben funktionieren beim Verschieben klassischer Ressourcen in ein neues Abonnement nicht.
 
-Zum Verschieben von klassischen Ressourcen in ein neues Abonnement verwenden Sie entweder das Portal oder REST-Vorgänge, die für klassische Ressourcen spezifisch sind. Informationen zum Verschieben klassischer Ressourcen mithilfe des Portals finden Sie unter [Verwenden des Portals](#use-portal). Führen Sie zum Verwenden von REST die folgenden Schritte aus:
+Verwenden Sie zum Verschieben von klassischen Ressourcen in ein neues Abonnement die REST-Vorgänge, die für klassische Ressourcen spezifisch sind. Führen Sie zum Verwenden von REST die folgenden Schritte aus:
 
 1. Überprüfen Sie, ob das Quellabonnement an einem abonnementübergreifenden Verschiebevorgang teilnehmen kann. Gehen Sie folgendermaßen vor:
 
