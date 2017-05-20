@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 859c0bf3afec46e07b8b8da73fffbc37f3f7959d
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -54,7 +54,7 @@ Auf Ihrem Computer muss Azure PowerShell Version 1.2.1 oder höher installiert s
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Rufen Sie das für Azure Disk Encryption erforderliche Konfigurationsskript ab, und führen Sie es aus.
 Das für Azure Disk Encryption erforderliche Konfigurationsskript richtet alle Voraussetzungen ein, die zum Verschlüsseln Ihrer virtuellen Azure-Computer erforderlich sind.
 
-1. Rufen Sie die GitHub-Seite auf, auf der sich [das für Azure Disk Encryption erforderliche Setupskript](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)befindet.
+1. Rufen Sie die GitHub-Seite auf, auf der sich [das für Azure Disk Encryption erforderliche Setupskript](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)befindet.
 2. Klicken Sie auf der Seite GitHub auf die Schaltfläche **Roh** .
 3. Verwenden Sie **STRG+A**, um den gesamten Text auf der Seite auszuwählen, und anschließend **STRG+C**, um den gesamten Text auf der Seite in die Zwischenablage zu kopieren.
 4. Öffnen Sie den **Editor** , und fügen Sie den kopierten Text in den Editor ein.
@@ -92,23 +92,23 @@ Wenn Sie das für Azure Disk Encryption erforderliche Skript starten, werden Sie
 Führen Sie die folgenden Schritte aus, um einen virtuellen Azure-Computer zu verschlüsseln:
 
 1. Wenn Sie PowerShell ISE geschlossen haben, öffnen Sie eine erhöhte Instanz von PowerShell ISE. Befolgen Sie die weiter oben in diesem Artikel beschriebenen Anweisungen, wenn PowerShell ISE nicht bereits geöffnet ist. Wenn Sie das Skript geschlossen haben, öffnen Sie **ADEPrereqScript.ps1**, indem Sie auf **Datei** und anschließend auf **Öffnen** klicken, und wählen das Skript aus dem Ordner **c:\AzureADEScript** aus. Wenn Sie die Anweisungen in diesem Artikel von Beginn an ausgeführt haben, gehen Sie zum nächsten Schritt weiter.
-2. Ändern Sie in der Konsole von PowerShell ISE (im unteren Bereich von PowerShell ISE) den lokalen Speicherort des Skripts, indem Sie **cd c:\AzureADEScript** eingeben und danach die EINGABETASTE**** betätigen.
-3. Legen Sie die Ausführungsrichtlinie auf Ihrem Computer fest, damit Sie das Skript ausführen können. Geben Sie in der Konsole **Set-ExecutionPolicy Unrestricted** ein, und betätigen Sie dann die EINGABETASTE. Wenn ein Dialogfeld erscheint, das auf die Auswirkungen der Änderung zu der Ausführungsrichtlinie hinweist, klicken Sie entweder auf **Ja, alle** oder auf **Ja** (wenn Ihnen die Option **Ja, alle** angezeigt wird, wählen Sie diese aus, ****andernfalls wählen Sie **Ja**).
-4. Melden Sie sich bei Ihrem Azure-Konto an. Geben Sie in der Konsole **Login-AzureRmAccount** ein, und betätigen Sie die ****EINGABETASTE. Ein Dialogfeld wird angezeigt, in dem Sie Ihre Anmeldeinformationen eingeben. (Dabei müssen Sie über die Rechte zum Ändern der virtuellen Computer verfügen, da Sie diese andernfalls nicht verschlüsseln können. Falls Sie sich nicht sicher sind, können Sie bei Ihrem Abonnementbesitzer oder Administrator nachfragen.) Es sollten Informationen zu **Environment**, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden. Kopieren Sie die **SubscriptionId** in den Editor. Diese ist in Schritt Nr. 6 erforderlich.
+2. Ändern Sie in der Konsole von PowerShell ISE (im unteren Bereich von PowerShell ISE) den lokalen Speicherort des Skripts, indem Sie **cd c:\AzureADEScript** eingeben und danach die **EINGABETASTE** betätigen.
+3. Legen Sie die Ausführungsrichtlinie auf Ihrem Computer fest, damit Sie das Skript ausführen können. Geben Sie in der Konsole **Set-ExecutionPolicy Unrestricted** ein, und betätigen Sie dann die EINGABETASTE. Wenn ein Dialogfeld erscheint, das auf die Auswirkungen der Änderung zu der Ausführungsrichtlinie hinweist, klicken Sie entweder auf **Ja, alle** oder auf **Ja** (wenn Ihnen die Option **Ja, alle** angezeigt wird, wählen Sie diese aus, **andernfalls** wählen Sie **Ja**).
+4. Melden Sie sich bei Ihrem Azure-Konto an. Geben Sie in der Konsole **Login-AzureRmAccount** ein, und betätigen Sie die **EINGABETASTE**. Ein Dialogfeld wird angezeigt, in dem Sie Ihre Anmeldeinformationen eingeben. (Dabei müssen Sie über die Rechte zum Ändern der virtuellen Computer verfügen, da Sie diese andernfalls nicht verschlüsseln können. Falls Sie sich nicht sicher sind, können Sie bei Ihrem Abonnementbesitzer oder Administrator nachfragen.) Es sollten Informationen zu **Environment**, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden. Kopieren Sie die **SubscriptionId** in den Editor. Diese ist in Schritt Nr. 6 erforderlich.
 5. Ermitteln Sie das Abonnement, zum dem Ihr virtueller Computer gehört, sowie den Speicherort. Melden Sie sich bei [https://portal.azure.com](ttps://portal.azure.com) an.  Klicken Sie im linken Bereich der Seite auf **Virtuelle Computer**. Daraufhin wird eine Liste Ihrer virtuellen Computer mit den dazugehörige Abonnements angezeigt.
 
    ![Virtuelle Computer](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
-6. Kehren Sie zu PowerShell ISE zurück. Legen Sie den Abonnementkontext fest, in dem das Skript ausgeführt wird. Geben Sie in der Konsole **Select-AzureRmSubscription –SubscriptionId <Ihre_Abonnement-ID>** ein (ersetzen Sie **<Ihre_Abonnement-ID>** durch Ihre Abonnement-ID), und drücken Sie die EINGABETASTE****. Es sollten Informationen zu „Environment“, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden.
-7. Nun können Sie das Skript ausführen. Klicken Sie auf die Schaltfläche **Skript ausführen**, oder drücken Sie auf der Tastatur die ****F5-TASTE.
+6. Kehren Sie zu PowerShell ISE zurück. Legen Sie den Abonnementkontext fest, in dem das Skript ausgeführt wird. Geben Sie in der Konsole **Select-AzureRmSubscription –SubscriptionId <Ihre_Abonnement-ID>** ein (ersetzen Sie **<Ihre_Abonnement-ID>** durch Ihre Abonnement-ID), und drücken Sie die **EINGABETASTE**. Es sollten Informationen zu „Environment“, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden.
+7. Nun können Sie das Skript ausführen. Klicken Sie auf die Schaltfläche **Skript ausführen**, oder drücken Sie auf der Tastatur die **F5-TASTE**.
 
    ![Ausführen eines PowerShell-Skripts](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. Im Skript wird nach **resourceGroupName** gefragt: Geben Sie den Namen der *Ressourcengruppe* ein, die Sie verwenden möchten, und drücken Sie die EINGABETASTE****. Geben Sie, falls Sie über keinen solchen Tresor verfügen, einen Namen für einen neuen Tresor ein. Wenn Sie bereits über eine *Ressourcengruppe* verfügen, die Sie verwenden möchten (z.B. diejenige, in der sich Ihr virtueller Computer befindet), geben Sie den Namen der vorhandenen Ressourcengruppe ein.
+8. Im Skript wird nach **resourceGroupName** gefragt: Geben Sie den Namen der *Ressourcengruppe* ein, die Sie verwenden möchten, und drücken Sie die **EINGABETASTE**. Geben Sie, falls Sie über keinen solchen Tresor verfügen, einen Namen für einen neuen Tresor ein. Wenn Sie bereits über eine *Ressourcengruppe* verfügen, die Sie verwenden möchten (z.B. diejenige, in der sich Ihr virtueller Computer befindet), geben Sie den Namen der vorhandenen Ressourcengruppe ein.
 9. Das Skript fragt nach **keyVaultName:** – Geben Sie den Namen des *Schlüsseltresors* an, den Sie verwenden möchten, und betätigen Sie die EINGABETASTE. Geben Sie, falls Sie über keinen solchen Tresor verfügen, einen Namen für einen neuen Tresor ein. Wenn Sie bereits über einen Schlüsseltresor verfügen, der in diesem Abonnement verwendet werden soll, geben Sie den Namen des entsprechenden *Schlüsseltresors*an.
-10. Das Skript fragt nach **location**: Geben Sie den Namen des Speicherorts an, an dem sich der zu verschlüsselnde virtuelle Computer befindet, und betätigen Sie anschließend die EINGABETASTE****. Wenn Sie den Speicherort vergessen haben, gehen Sie zurück zu Schritt Nr. 5.
-11. Das Skript fragt nach **aadAppName**: Geben Sie den Namen der Azure *Active Directory*-Anwendung an, die Sie verwenden möchten, und betätigen Sie anschließend die ****EINGABETASTE. Geben Sie, falls Sie über keinen solchen Tresor verfügen, einen Namen für einen neuen Tresor ein. Wenn Sie bereits über eine *Azure Active Directory-Anwendung* verfügen, die Sie verwenden möchten, geben Sie den Namen der vorhandenen *Azure Active Directory-Anwendung* ein.
+10. Das Skript fragt nach **location**: Geben Sie den Namen des Speicherorts an, an dem sich der zu verschlüsselnde virtuelle Computer befindet, und betätigen Sie anschließend die **EINGABETASTE**. Wenn Sie den Speicherort vergessen haben, gehen Sie zurück zu Schritt Nr. 5.
+11. Das Skript fragt nach **aadAppName**: Geben Sie den Namen der Azure *Active Directory*-Anwendung an, die Sie verwenden möchten, und betätigen Sie anschließend die **EINGABETASTE**. Geben Sie, falls Sie über keinen solchen Tresor verfügen, einen Namen für einen neuen Tresor ein. Wenn Sie bereits über eine *Azure Active Directory-Anwendung* verfügen, die Sie verwenden möchten, geben Sie den Namen der vorhandenen *Azure Active Directory-Anwendung* ein.
 12. Ein Anmeldedialogfeld wird angezeigt. Geben Sie Ihre Anmeldeinformationen ein (Sie haben sich zwar bereits angemeldet, dies ist jedoch erneut erforderlich).
 13. Das Skript wird ausgeführt, und nach Abschluss des Vorgangs werden Sie aufgefordert, die Werte von **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl** und **keyVaultResourceId** zu kopieren. Kopieren Sie jeden dieser Werte in die Zwischenablage, und fügen Sie sie in den Editor ein.
-14. Kehren Sie zu PowerShell ISE zurück, und platzieren Sie den Cursor am Ende der letzten Zeile. Betätigen Sie daraufhin die EINGABETASTE****.
+14. Kehren Sie zu PowerShell ISE zurück, und platzieren Sie den Cursor am Ende der letzten Zeile. Betätigen Sie daraufhin die **EINGABETASTE**.
 
 Die Ausgabe des Skripts sieht etwa wie folgt aus:
 
@@ -151,7 +151,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 Betätigen Sie nach der Eingabe dieses Befehls die **EINGABETASTE**.
 
-Die zweite Methode besteht darin, in den Skriptbereich (dem oberen Bereich von PowerShell ISE) zu klicken, um im Skript nach unten zu scrollen. Markieren Sie den oben aufgeführten Befehl, und klicken Sie dann mit der rechten Maustaste darauf und anschließend auf **Auswahl ausführen**, oder drücken Sie auf der Tastatur die ****F8-TASTE.
+Die zweite Methode besteht darin, in den Skriptbereich (dem oberen Bereich von PowerShell ISE) zu klicken, um im Skript nach unten zu scrollen. Markieren Sie den oben aufgeführten Befehl, und klicken Sie dann mit der rechten Maustaste darauf und anschließend auf **Auswahl ausführen**, oder drücken Sie auf der Tastatur die **F8-TASTE**.
 
 ![PowerShell ISE](./media/security-center-disk-encryption/security-center-disk-encryption-fig8.png)
 
