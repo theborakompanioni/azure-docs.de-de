@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2017
 ms.author: carlrab
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: ca679a820eefc7acbb08eed6b8f809f46aacd3a3
+ms.contentlocale: de-de
 ms.lasthandoff: 04/15/2017
 
 
@@ -62,7 +63,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
 1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/)her.
 2. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
-3. Geben Sie auf der Anmeldeseite **** die Anmeldeinformationen für Ihr Abonnement ein.
+3. Geben Sie auf der **Anmeldeseite** die Anmeldeinformationen für Ihr Abonnement ein.
    
 ## <a name="provision-an-azure-active-directory-admin-for-your-sql-logical-server"></a>Bereitstellen eines Azure Active Directory-Administrators für Ihre logische SQL Server-Instanz
 
@@ -148,7 +149,7 @@ In diesem Abschnitt des Leitfadens zeigen Sie Informationen zum Serveradministra
 
    ![AAD-Administratorberechtigungen in der Masterdatenbank](./media/sql-database-control-access-aad-authentication-get-started/aad_admin_permissions_in_master_database.png)
 
-6. Erweitern Sie im **Objekt-Explorer** nacheinander **blankdb**, **Sicherheit** und **Benutzer**. Beachten Sie, dass diese Datenbank kein Benutzerkonto mit dem Namen user@microsoft.com enthält.
+6. Erweitern Sie im Objekt-Explorer nacheinander **blankdb**, **Sicherheit** und **Benutzer**. Beachten Sie, dass diese Datenbank kein Benutzerkonto mit dem Namen user@microsoft.com enthält.
 
    ![Benutzerkonten in blankdb](./media/sql-database-control-access-aad-authentication-get-started/user_accounts_in_blankdb.png)
 

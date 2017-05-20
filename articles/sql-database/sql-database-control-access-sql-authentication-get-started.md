@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: carlrab
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: 1bd474cc547ca2f6aa32944c1a1e5a92f917444a
+ms.contentlocale: de-de
 ms.lasthandoff: 04/15/2017
 
 
@@ -57,7 +58,7 @@ Die Schritte in dieser Prozedur veranschaulichen, wie Sie unter Verwendung Ihres
 
 1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/)her.
 2. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
-3. Geben Sie auf der Anmeldeseite **** die Anmeldeinformationen für Ihr Abonnement ein.
+3. Geben Sie auf der **Anmeldeseite** die Anmeldeinformationen für Ihr Abonnement ein.
 
 ## <a name="view-logical-server-security-information-in-the-azure-portal"></a>Anzeigen der Sicherheitsinformationen für den logischen Server im Azure-Portal
 

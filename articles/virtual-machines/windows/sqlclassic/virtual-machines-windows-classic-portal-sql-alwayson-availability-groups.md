@@ -15,9 +15,10 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
 ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
+ms.contentlocale: de-de
 ms.lasthandoff: 04/12/2017
 
 
@@ -149,7 +150,7 @@ In den nächsten Schritten werden die Active Directory-Konten für die spätere 
    | **Kennwort bestätigen** |Contoso!000 |
    | **Andere Kennwortoptionen** |Aktiviert |
    | **Kennwort läuft nie ab** |Aktiviert |
-5. Klicken Sie auf **OK**, um den Installationsbenutzer**** zu erstellen. Dieses Konto wird zum Konfigurieren des Failoverclusters und der Verfügbarkeitsgruppe verwendet.
+5. Klicken Sie auf **OK**, um den **Installationsbenutzer** zu erstellen. Dieses Konto wird zum Konfigurieren des Failoverclusters und der Verfügbarkeitsgruppe verwendet.
 6. Erstellen Sie mit der gleichen Vorgehensweise zwei weitere Benutzer: **CORP\SQLSvc1** und **CORP\SQLSvc2**. Diese Konten werden für SQL Server-Instanzen verwendet. Als Nächstes müssen Sie **CORP\Install** die erforderlichen Berechtigungen zum Konfigurieren des Windows-Failoverclustering erteilen.
 7. Klicken Sie im **Active Directory-Verwaltungscenter** im linken Bereich auf die Option **corp (lokal)**. Klicken Sie dann rechts im **Aufgabenbereich** auf **Eigenschaften**.
    
@@ -348,7 +349,7 @@ Sie sind jetzt bereit, um eine Verfügbarkeitsgruppe zu konfigurieren. Im Folgen
 5. Fügen Sie **CORP\SQLSvc1** hinzu, und erteilen Sie dafür die Berechtigung **Lesen/Schreiben**. Fügen Sie anschließend **CORP\SQLSvc2** hinzu, und erteilen Sie dafür die Berechtigung **Lesen**, wie auf dem folgenden Bildschirmfoto gezeigt, und klicken Sie dann auf **Freigeben**. Nachdem der Dateifreigabeprozess abgeschlossen ist, klicken Sie auf **Fertig**.
    
     ![Erteilen von Berechtigungen für den Sicherungsordner](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665522.gif)
-6. Starten Sie zum Erstellen der Datenbank die Option **SQL Server Management Studio** über das**** Startmenü, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
+6. Starten Sie zum Erstellen der Datenbank die Option **SQL Server Management Studio** über das **Startmenü**, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
 7. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und klicken Sie dann auf **Neue Datenbank**.
 8. Geben Sie unter **Datenbankname** den Namen **MyDB1** ein, und klicken Sie dann auf **OK**.
 
@@ -360,7 +361,7 @@ Sie sind jetzt bereit, um eine Verfügbarkeitsgruppe zu konfigurieren. Im Folgen
 5. Erweitern Sie zum Erstellen einer Transaktionsprotokollsicherung der Datenbank im **Objekt-Explorer** den Eintrag **Datenbanken**, klicken Sie mit der rechten Maustaste auf **MyDB1**, zeigen Sie auf **Aufgaben**, und klicken Sie dann auf **Sichern**.
 6. Wählen Sie unter **Sicherungstyp** die Option **Transaktionsprotokoll** aus. Behalten Sie für den Dateipfad **Ziel** den von Ihnen zuvor angegebenen Pfad bei, und klicken Sie dann auf **OK**. Wenn der Sicherungsvorgang abgeschlossen ist, klicken Sie wieder auf **OK**.
 7. Öffnen Sie zum Wiederherstellen der vollständigen sowie der Transaktionsprotokollsicherungen auf **ContosoSQL2** die RDP-Datei für **ContosoSQL2**, und melden Sie sich als **CORP\Install** an. Lassen Sie die Remotedesktopsitzung für **ContosoSQL1** geöffnet.
-8. Öffnen Sie **SQL Server Management Studio** über das**** Startmenü, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
+8. Öffnen Sie **SQL Server Management Studio** über das **Startmenü**, und klicken Sie dann auf **Verbinden**, um eine Verbindung mit der Standardinstanz von SQL Server herzustellen.
 9. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und klicken Sie dann auf **Datenbank wiederherstellen**.
 10. Wählen Sie im Abschnitt **Quelle** die Option **Gerät** aus, und klicken Sie dann auf die Schaltfläche mit den Auslassungspunkten (**...**) .
 11. Klicken Sie unter **Sicherungsmedien auswählen** auf **Hinzufügen**.
