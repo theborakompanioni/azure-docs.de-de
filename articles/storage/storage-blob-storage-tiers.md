@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: mihauss
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 618d31e991d9405ece6533727d700e316ae85bec
+ms.contentlocale: de-de
 ms.lasthandoff: 04/06/2017
 
 
@@ -53,9 +54,9 @@ Beispielszenarien für die Verwendung der Speicherebene „Cool“:
 
 * Datasets für Sicherung, Archivierung oder Notfallwiederherstellung
 * Ältere Medieninhalte, die nur noch selten angezeigt werden, dann aber umgehend verfügbar sein müssen
-* Große Datasets, die kostengünstig gespeichert werden müssen, während weitere Daten für die zukünftige Verarbeitung gesammelt werden (**z.B. langfristige Speicherung von wissenschaftlichen Daten oder Telemetrie-Rohdaten einer Produktionsstätte)
-* Originaldaten (Rohdaten), die auch nach der Umwandlung in ein endgültiges verwendbares Format erhalten bleiben müssen (**z.B. Medien-Rohdateien nach der Transcodierung in andere Formate)
-* Compliance- und Archivdaten, die über einen langen Zeitraum gespeichert werden müssen und selten verwendet werden (**z.B. Überwachungsvideos, alte Röntgenbilder/MRT-Scans für Unternehmen aus dem Gesundheitswesen, Audioaufnahmen und Protokolle von Kundenanrufen bei Finanzdienstleistern)
+* Große Datasets, die kostengünstig gespeichert werden müssen, während weitere Daten für die zukünftige Verarbeitung gesammelt werden (*z.B.* langfristige Speicherung von wissenschaftlichen Daten oder Telemetrie-Rohdaten einer Produktionsstätte)
+* Originaldaten (Rohdaten), die auch nach der Umwandlung in ein endgültiges verwendbares Format erhalten bleiben müssen (*z.B.* Medien-Rohdateien nach der Transcodierung in andere Formate)
+* Compliance- und Archivdaten, die über einen langen Zeitraum gespeichert werden müssen und selten verwendet werden (*z.B.* Überwachungsvideos, alte Röntgenbilder/MRT-Scans für Unternehmen aus dem Gesundheitswesen, Audioaufnahmen und Protokolle von Kundenanrufen bei Finanzdienstleistern)
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md) .
 
@@ -239,7 +240,7 @@ Diese gesamte Kapazität, die von Benutzerdaten und Analyseprotokollen (falls ak
 Die gleiche Methode kann auch zum Schätzen der Speicherkosten für Block- und Anfügeblobs in allgemeinen Speicherkonten verwendet werden.
 
 ##### <a name="transaction-costs"></a>Transaktionskosten
-Die Summe von *'TotalBillableRequests'*über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtzahl der Transaktionen für die jeweilige API an. **Beispiel: Die Gesamtzahl von *'GetBlob'*-Transaktionen eines bestimmten Zeitraums kann anhand der Gesamtsumme von abrechenbaren Anforderungen für alle Einträge mit dem Zeilenschlüssel *'user;GetBlob'* berechnet werden.
+Die Summe von *'TotalBillableRequests'*über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtzahl der Transaktionen für die jeweilige API an. *Beispiel:* Die Gesamtzahl von *'GetBlob'*-Transaktionen eines bestimmten Zeitraums kann anhand der Gesamtsumme von abrechenbaren Anforderungen für alle Einträge mit dem Zeilenschlüssel *'user;GetBlob'* berechnet werden.
 
 Um die Transaktionskosten für Blob-Speicherkonten zu schätzen, müssen Sie die Transaktionen in drei Gruppen unterteilen, da unterschiedliche Preise gelten.
 
