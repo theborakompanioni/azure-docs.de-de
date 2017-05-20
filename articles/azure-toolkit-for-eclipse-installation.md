@@ -36,7 +36,7 @@ Die folgenden Schritte veranschaulichen die Installation des Azure-Toolkits für
 2. Sobald Eclipse geöffnet wurde, klicken Sie auf das Menü **Help** (Hilfe) und dann auf **Install New Software** (Neue Software installieren), wie in der folgenden Abbildung gezeigt.
    
     ![Installieren des Azure-Toolkits für Eclipse][01]
-3. Geben Sie im Dialogfeld **Available Software** (Verfügbare Software) im Textfeld **Work with** (Arbeiten mit) **http://dl.microsoft.com/eclipse** ein, und drücken Sie dann die EINGABETASTE****.
+3. Geben Sie im Dialogfeld **Available Software** (Verfügbare Software) im Textfeld **Work with** (Arbeiten mit) **http://dl.microsoft.com/eclipse** ein, und drücken Sie dann die **EINGABETASTE**.
 4. Aktivieren Sie im Fenster **Name** die Option **Azure Toolkit for Eclipse**, und deaktivieren Sie **Contact all update sites during install to find required software**. Der Bildschirm sieht dann etwa wie folgt aus:
    
     ![Installieren des Azure-Toolkits für Eclipse][02]

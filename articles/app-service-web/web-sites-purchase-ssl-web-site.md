@@ -36,7 +36,7 @@ Ein SSL-Zertifikat können Sie bestellen, indem Sie im **Azure-Portal** ein neue
 
 ![Zertifikaterstellung](./media/app-service-web-purchase-ssl-web-site/createssl.png)
 
-Geben Sie einen aussagekräftigen Namen**** für Ihr SSL-Zertifikat sowie den Domänennamen ****ein.
+Geben Sie einen aussagekräftigen **Namen** für Ihr SSL-Zertifikat sowie den **Domänennamen** ein.
 
 > [!NOTE]
 > Dies ist einer der wichtigsten Teile des Einkaufsvorgangs. Achten Sie darauf, dass Sie den richtigen Hostnamen (benutzerdefinierte Domäne) eingeben, den Sie mit diesem Zertifikat schützen möchten. Fügen Sie dem Hostnamen **NICHT** WWW an. 

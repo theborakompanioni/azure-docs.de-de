@@ -66,10 +66,10 @@ Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpf
    
     ![Zonendatensatz hinzufügen](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
    
-   * Wenn Sie einen Eintrag vom Typ **A (Host)** hinzufügen, müssen Sie das Feld **Host** entweder auf **@** (Stammdomänenname wie **contoso.com**), auf * (Platzhalter für mehrere Unterdomänen) oder auf die gewünschte Unterdomäne (etwa **www.**) festlegen. Das Feld **Points to*** (Verweist auf) muss auf die IP-Adresse Ihrer Azure-Web-App festgelegt werden.
+   * Wenn Sie einen Eintrag vom Typ **A (Host)** hinzufügen, müssen Sie das Feld **Host** entweder auf **@** (Stammdomänenname wie **contoso.com**), auf * (Platzhalter für mehrere Unterdomänen) oder auf die gewünschte Unterdomäne (etwa **www.**) festlegen. Das Feld **Points to** (Verweist auf) muss auf die IP-Adresse Ihrer Azure-Web-App festgelegt werden.
    * Wenn Sie einen **CNAME (Alias)**-Eintrag hinzufügen, müssen Sie im Feld **Host** die gewünschte Unterdomäne festlegen. Beispiel: **www**. Sie müssen das Feld **Points to** (Verweist auf) auf den **.azurewebsites.net**-Domänennamen Ihrer Azure-Web-App festlegen. Beispiel: **contoso.azurewebsites.net**.
 4. Klicken Sie auf **Weiteren hinzufügen**.
-5. Wählen Sie als Eintragstyp die Option **TXT** aus, und geben Sie als Hostwert**** das Zeichen **@** und unter **Points to** (Verweist auf) den Wert **&lt;Name Ihrer Web-App&gt;.azurewebsites.net** ein.
+5. Wählen Sie als Eintragstyp die Option **TXT** aus, und geben Sie als **Hostwert** das Zeichen **@** und unter **Points to** (Verweist auf) den Wert **&lt;Name Ihrer Web-App&gt;.azurewebsites.net** ein.
    
    > [!NOTE]
    > Anhand dieses TXT-Eintrags prüft Azure, ob Sie der Besitzer der Domäne sind, die von dem A-Eintrag oder vom ersten TXT-Eintrag beschrieben wird. Nachdem die Domäne der Web-App im Azure-Portal zugeordnet wurde, kann der TXT-Eintrag entfernt werden.
