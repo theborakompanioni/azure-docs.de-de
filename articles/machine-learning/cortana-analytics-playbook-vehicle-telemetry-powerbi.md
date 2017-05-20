@@ -109,7 +109,7 @@ Klicken Sie auf den leeren Bereich, um eine neue Visualisierung hinzufügen.
 Wählen Sie unter „Felder“ **City** und **vin** aus. Ändern Sie die Visualisierung in **Zuordnung**. Ziehen Sie **vin** in den Bereich „Values“. Ziehen Sie **City** aus „Felder“ in den Bereich **Legende**.   
     ![Connected Cars (Fahrzeuge im Netzwerk) – Kartenvisualisierung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4c.png)
 
-Wählen Sie unter **** den Abschnitt **Format** aus. Klicken Sie auf **Titel**, und ändern Sie den **Text** in **Vehicles in operation by city** (Fahrzeuge im Einsatz nach Stadt).  
+Wählen Sie unter **Visualizations**(Visualisierungen) den Abschnitt **Format** aus. Klicken Sie auf **Titel**, und ändern Sie den **Text** in **Vehicles in operation by city** (Fahrzeuge im Einsatz nach Stadt).  
     ![Connected Cars - Vehicles in operation by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)   
 
 Die endgültige Visualisierung sieht wie in dieser Abbildung aus.    

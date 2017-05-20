@@ -35,7 +35,7 @@ Der Kontoadministrator muss sich über das [Azure-Portal](https://portal.azure.c
 
 1. Wählen Sie **Rechnungen** und dann **Access to invoices** (Zugriff auf Rechnungen) aus.
 
-1. Aktivieren Sie den Zugriff****.
+1. **Aktivieren** Sie den Zugriff.
 
 Durch Anmeldung können Benutzer mit den Rollen „Dienstadministrator“, „Co-Administrator“, „Besitzer“, „Mitwirkender“, „Leser“ und „Abrechnungsleser“ im Abonnement PDF-Rechnungen im Azure-Portal herunterladen. Allerdings stehen Rechnungen vor Dezember 2016 vorerst nur für den Kontoadministrator zur Verfügung.
 

@@ -249,7 +249,7 @@ Die Vorschauversion des Azure-Plug-Ins für Eclipse vom November 2012 wird ver�
 * Unterstützung von Microsoft Windows Server 2012 als Cloudbetriebssystem.
 * Unterstützung von zusammengestelltem Azure-Caching für Memcache-Clients.
 * Einbeziehung der Apache Qpid JMS-Clientbibliotheken zur Nutzung von Azure AMQP-basiertem Messaging.
-* Verbesserter Assistent für **** neue Projekt mit einer neuen Seite, auf der die Benutzer in ihren Projekten schnell mehrere zentrale Features (persistente Sitzungen, Caching und Remotedebuggen) aktivieren können.
+* Verbesserter Assistent für **neue Projekt** mit einer neuen Seite, auf der die Benutzer in ihren Projekten schnell mehrere zentrale Features (persistente Sitzungen, Caching und Remotedebuggen) aktivieren können.
 * Bei Ausführung im Serveremulator: Automatische Verringerung der Rolleninstanzen auf 1 zur Vermeidung von Portbindungskonflikten zwischen Serverinstanzen.
 
 ### <a name="september-28-2012"></a>28. September 2012
@@ -259,7 +259,7 @@ Die Vorschauversion des Azure-Plug-Ins für Eclipse vom September 2012 wird ver
 * Verbesserte Unterstützung der Angabe von Endpunktportbereichen.
 * Fehlerbehebungen für Dateipfade mit Leerzeichen.
 * Verbesserungen beim Rollenkontextmenü zur Beschleunigung des Zugriffs auf rollenspezifische Konfigurationseinstellungen.
-* Geringfügige Optimierungen für den Cloudveröffenlichungs-Assistenten **** und eine Reihe zusätzlicher Fehlerbehebungen.
+* Geringfügige Optimierungen für den **Cloudveröffenlichungs-Assistenten** und eine Reihe zusätzlicher Fehlerbehebungen.
 
 ### <a name="august-28-2012"></a>28. August 2012
 Die Vorschauversion des Azure-Plug-Ins für Eclipse vom August 2012 wird veröffentlicht. Dieses Dienstupdate enthält zusätzliche Fehlerbehebungen seit der Vorschauversion vom Juli 2012 sowie mehrere feedbackbasierte Verbesserungen der Benutzerfreundlichkeit für vorhandene Features:

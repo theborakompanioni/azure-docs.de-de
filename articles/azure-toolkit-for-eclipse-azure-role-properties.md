@@ -30,7 +30,7 @@ Die Eigenschaften Ihrer Azure-Rolle werden über die Eigenschaftsdialogfelder f�
 
 ![][ic789599]
 
-In diesem Thema werden die verschiedenen Eigenschaften beschrieben, die in den Eigenschaftendialogfeldern **** festgelegt werden können. Beachten Sie, dass viele Eigenschaften automatisch ausgefüllt werden, wenn Sie ein neues Azure-Bereitstellungsprojekt erstellen.
+In diesem Thema werden die verschiedenen Eigenschaften beschrieben, die in den **Eigenschaftendialogfeldern** festgelegt werden können. Beachten Sie, dass viele Eigenschaften automatisch ausgefüllt werden, wenn Sie ein neues Azure-Bereitstellungsprojekt erstellen.
 
 Die folgenden Eigenschaftenseiten stehen für Azure-Rollen zur Verfügung:
 
@@ -89,7 +89,7 @@ Das folgende Dialogfeld zeigt die Eigenschaften für einen Cache:
 * **Gültigkeitsdauer in Minuten:** Die maximale Gültigkeitsdauer eines Memcache-Schlüssels im Rahmen der Ablaufrichtlinie.
 * **Hohe Verfügbarkeit mit replizierten Sicherungen für verschiedene Rolleninstanzen:** Trägt mithilfe von replizierten Sicherungen für verschiedene Rolleninstanzen zur hohen Verfügbarkeit bei. Zur Verwendung dieses Features müssen für Ihre Bereitstellung mindestens zwei Rolleninstanzen aktiviert sein.
 
-Wenn Sie einen neuen Cache hinzufügen möchten, klicken Sie auf der Eigenschaftenseite **Caching** auf die Schaltfläche **Hinzufügen**. Daraufhin öffnet sich ein Dialogfeld zum Konfigurieren**** eines benannten Cache. Geben Sie Werte für die oben beschriebenen Eigenschaften an.
+Wenn Sie einen neuen Cache hinzufügen möchten, klicken Sie auf der Eigenschaftenseite **Caching** auf die Schaltfläche **Hinzufügen**. Daraufhin öffnet sich ein Dialogfeld zum **Konfigurieren eines benannten Cache**. Geben Sie Werte für die oben beschriebenen Eigenschaften an.
 
 Wenn Sie einen benannten Cache ändern möchten, wählen Sie den Cache aus, und klicken Sie auf der Eigenschaftenseite **Caching** auf die Schaltfläche **Bearbeiten**. Daraufhin öffnet sich ein Dialogfeld, in dem Sie die Cacheeigenschaften ändern können. Klicken Sie auf **OK** , um die Cachewerte zu speichern.
 
@@ -295,7 +295,7 @@ Hinweis: Unter Windows-fremden Betriebssystemen sind die Einstellungen **Emulato
 
 ![][ic789643]
 
-Die beiden folgenden Cloudbereitstellungsoptionen **** für Quelle und Art Ihres JDK-Pakets stehen unabhängig vom verwendeten Betriebssystem zur Verfügung:
+Die beiden folgenden **Cloudbereitstellungsoptionen** für Quelle und Art Ihres JDK-Pakets stehen unabhängig vom verwendeten Betriebssystem zur Verfügung:
 
 * **In Azure verfügbares JDK-Drittanbieterpaket bereitstellen** 
 * **Auf der Grundlage eines benutzerdefinierten Downloads bereitstellen** 
@@ -377,11 +377,11 @@ Ab der Version vom April 2014 werden Ihre Anwendungen automatisch in das für I
 ### <a name="notes-about-server-configuration"></a>Hinweise zur Serverkonfiguration
 Auf der Eigenschaftenseite **Serverkonfiguration** vorgenommene Änderungen werden auf die Elemente vom Typ `<component>` in der Datei „package.xml“ übertragen.
 
-Wenn Sie die ****automatische Uploadoption oder die ****downloadbasierte Bereitstellungsoption für das JDK-Paket oder den Anwendungsserver verwenden, eine Erstellung für die Cloud (nicht für den Serveremulator) durchführen und eine Netzwerkverbindung besteht, werden in der Konsolenausgabe unter Umständen Erstellungsmeldungen wie die folgenden angezeigt, während der Ant-Builder die Verfügbarkeit des Downloads überprüft:
+Wenn Sie die **automatische Uploadoption** oder die **downloadbasierte Bereitstellungsoption** für das JDK-Paket oder den Anwendungsserver verwenden, eine Erstellung für die Cloud (nicht für den Serveremulator) durchführen und eine Netzwerkverbindung besteht, werden in der Konsolenausgabe unter Umständen Erstellungsmeldungen wie die folgenden angezeigt, während der Ant-Builder die Verfügbarkeit des Downloads überprüft:
 
 `[windowsazurepackage] Verifying blob availability (https://example.blob.core.windows.net/temp/tomcat6.zip)...` 
 
-Bei Verwendung der downloadbasierten Bereitstellungsoption **** wird möglicherweise die folgende Warnung angezeigt, der Erstellungsprozess wird jedoch fortgesetzt:
+Bei Verwendung der **downloadbasierten Bereitstellungsoption** wird möglicherweise die folgende Warnung angezeigt, der Erstellungsprozess wird jedoch fortgesetzt:
 
 `[windowsazurepackage] warning: Failed to confirm blob availability! Make sure the URL and/or the access key is correct (https://example.blob.core.windows.net/temp/tomcat6.zip).` 
 
@@ -391,7 +391,7 @@ Wenn Sie die Downloadüberprüfung deaktivieren möchten (etwa, weil sie Ihrer M
 
 `<windowsazurepackage verifydownloads="false" ...>` 
 
-Bei Verwendung der automatischen Uploadoption **** informieren Erstellungsmeldungen im Konsolenfenster alle fünf Sekunden über den Fortschritt des Uploads, wenn ein Upload erforderlich ist.
+Bei Verwendung der **automatischen Uploadoption** informieren Erstellungsmeldungen im Konsolenfenster alle fünf Sekunden über den Fortschritt des Uploads, wenn ein Upload erforderlich ist.
 
 <a name="ssl_offloading_properties"></a> 
 
