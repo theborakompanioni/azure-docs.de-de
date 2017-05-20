@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2016
 ms.author: padmavc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c8cfe5fb933cf9056b971d3e524f3c9ebc910215
 ms.openlocfilehash: b494d5abfdd4045776b408cbb8ec99ee3905cf72
+ms.contentlocale: de-de
 ms.lasthandoff: 02/04/2017
 
 
@@ -66,7 +67,7 @@ Hier finden Sie die einzelnen Schritte, mit denen Sie Ihre öffentlichen Zertifi
 
 Um ein *privates Zertifikat* in Ihren Logik-Apps mit B2B-Funktionen zu verwenden, können Sie ein privates Zertifikat in Ihr Integrationskonto hochladen, indem Sie die folgenden Schritte ausführen.
 
-1. [Laden Sie Ihren privaten Schlüssel in Key Vault hoch](../key-vault/key-vault-get-started.md "Informationen zu Key Vault"), und geben Sie einen Schlüsselnamen****an. 
+1. [Laden Sie Ihren privaten Schlüssel in Key Vault hoch](../key-vault/key-vault-get-started.md "Informationen zu Key Vault"), und geben Sie einen Schlüsselnamen**** an. 
    
    > [!TIP]
    > Logic Apps muss zum Ausführen von Vorgängen für Key Vault autorisiert werden. Verwenden Sie den folgenden PowerShell-Befehl, um dem Logic Apps-Dienstprinzipal Zugriff zu gewähren: `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`  
