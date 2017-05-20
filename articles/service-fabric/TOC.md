@@ -70,9 +70,9 @@
 ##### [Java unter Linux](service-fabric-reliable-services-quick-start-java.md)
 
 #### Reliable Services-Lebenszyklus
-#### [Konfigurieren](service-fabric-reliable-services-configuration.md)
-#### [Senden von Benachrichtigungen](service-fabric-reliable-services-notifications.md)
-#### [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
+##### [Konfigurieren](service-fabric-reliable-services-configuration.md)
+##### [Senden von Benachrichtigungen](service-fabric-reliable-services-notifications.md)
+##### [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
 
 #### Kommunizieren mit Diensten
 ##### [Kommunizieren mit Reliable Services](service-fabric-reliable-services-communication.md)
@@ -215,6 +215,7 @@
 ### [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md)
 
 ### [Verwalten eines Clusters mithilfe der Azure-CLI](service-fabric-azure-cli.md)
+### [Patchen von Clusterknoten](service-fabric-patch-orchestration-application.md)
 
 ### Verwalten und Orchestrieren von Clusterressourcen
 #### [Übersicht über den Clusterressourcen-Manager](service-fabric-cluster-resource-manager-introduction.md)
@@ -249,11 +250,13 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [Sammeln von Protokollen in einem Dienstprozess](service-fabric-diagnostic-collect-logs-without-an-agent.md)
+### [Überwachen von Windows Server-Containern](service-fabric-diagnostics-containers-windowsserver.md)
 ### [Diagnose für zustandsbehaftete Reliable Services](service-fabric-reliable-services-diagnostics.md)
 ### [Diagnose in Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
 ### [Behandeln von Problemen mit dem lokalen Cluster](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # Referenz
+## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
 ## [Java-API](/java/api/)
 ## [.NET](/dotnet/api/)

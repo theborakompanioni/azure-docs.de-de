@@ -1,5 +1,5 @@
 # Übersicht
-## [Hadoop](hdinsight-hadoop-introduction.md)
+## [Informationen zu HDInsight und Hadoop](hdinsight-hadoop-introduction.md)
 ## [Hadoop-Komponenten in HDInsight](hdinsight-component-versioning.md)
 ## [R Server](hdinsight-hadoop-r-server-overview.md)
 ## [Apache Spark](hdinsight-apache-spark-overview.md)
@@ -133,6 +133,7 @@
 ### [Anpassen von Clustern mithilfe von Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [Anpassen von Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md)
 ### [Entwickeln von Skriptaktionen](hdinsight-hadoop-script-actions-linux.md)
+### [Installieren und Verwenden von Presto](hdinsight-hadoop-install-presto.md)
 ### [Installieren oder Aktualisieren von Mono](hdinsight-hadoop-install-mono.md)
 ### [Hinzufügen von Hive-Bibliotheken](hdinsight-hadoop-add-hive-libraries.md)
 ### [Verwenden von Giraph](hdinsight-hadoop-giraph-install-linux.md)
@@ -166,6 +167,7 @@
 #### [Verwenden der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md)
 ### [Hinzufügen von Speicherkonten](hdinsight-hadoop-add-storage.md)
 ### [Hochladen von Daten für Hadoop-Aufträge](hdinsight-upload-data.md)
+### [Mehrere HDInsight-Cluster mit Data Lake Store](hdinsight-multiple-clusters-data-lake-store.md)
 ### [Importieren und Exportieren von Daten mit Sqoop](hdinsight-use-sqoop.md)
 #### [Verbinden mit SSH](hdinsight-use-sqoop-mac-linux.md)
 #### [Ausführen mithilfe von cURL](hdinsight-hadoop-use-sqoop-curl.md)
@@ -220,5 +222,6 @@
 ### [Überwachen von Clustern mit der Ambari-API](hdinsight-monitor-use-ambari-api.md)
 
 # Ressourcen
+## [Windows-Tools für HDInsight](hdinsight-hadoop-windows-tools.md)
 ## [Erhalten von Hilfe im Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)

@@ -71,9 +71,11 @@
 ### [Langsame Sicherung von Dateien und Ordnern in Azure Backup](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
 # Konzepte
+## [Übersicht über Recovery Services-Tresore](backup-azure-recovery-services-vault-overview.md)
+## [Aktualisieren eines Backup-Tresors auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md)
+## [Löschen eines Azure Backup-Tresors](backup-azure-delete-vault.md)
 ## [Rollenbasierte Zugriffssteuerung](backup-rbac-rs-vault.md)
 ## [Sicherheit für Hybrid-Sicherungen](backup-azure-security-feature.md)
-## [Löschen eines Azure Backup-Tresors](backup-azure-delete-vault.md)
 ## [Konfigurieren der Offlinesicherung](backup-azure-backup-import-export.md)
 ## [Ersetzen der Bandbibliothek](backup-azure-backup-cloud-as-tape.md)
 ## [Anwendungskonsistente Sicherungen von virtuellen Linux-Computern](backup-azure-linux-app-consistent.md)
