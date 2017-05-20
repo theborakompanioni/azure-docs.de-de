@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
 ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
+ms.contentlocale: de-de
 ms.lasthandoff: 01/26/2017
 
 
@@ -100,13 +101,13 @@ Bei der bidirektionalen Authentifizierung muss das Ziel den Initiator und der In
     ![CHAP-Ziel](./media/storsimple-configure-chap/IC740948.png)
 2. Navigieren Sie auf dieser Seite zum Abschnitt **CHAP-Ziel** , und führen Sie die folgenden Schritte aus:
    
-   1. Geben Sie für Ihr Gerät einen Benutzernamen für umgekehrtes CHAP **** an.
-   2. Geben Sie für Ihr Gerät ein Kennwort für umgekehrtes CHAP **** an.
+   1. Geben Sie für Ihr Gerät einen **Benutzernamen für umgekehrtes CHAP** an.
+   2. Geben Sie für Ihr Gerät ein **Kennwort für umgekehrtes CHAP** an.
    3. Bestätigen Sie das Kennwort.
 3. Führen Sie im Abschnitt **CHAP-Initiator** folgende Schritte aus:
    
-   1. Geben Sie einen Benutzernamen **** für Ihr Gerät an.
-   2. Geben Sie ein Kennwort **** für Ihr Gerät an.
+   1. Geben Sie einen **Benutzernamen** für Ihr Gerät an.
+   2. Geben Sie ein **Kennwort** für Ihr Gerät an.
    3. Bestätigen Sie das Kennwort.
 4. Klicken Sie auf **Speichern**. Eine Bestätigungsmeldung wird angezeigt. Klicken Sie zum Speichern der Änderungen auf **OK** .
 
@@ -143,7 +144,7 @@ Das **Schnellverbindungsfeature** unterstützt keine Verbindungen mit aktivierte
 Aktivieren Sie im angezeigten Dialogfeld **Mit Ziel verbinden** das Kontrollkästchen **Diese Verbindung der Liste der bevorzugten Ziele hinzufügen**. Dadurch wird sichergestellt, dass bei jedem Neustart des Computer versucht wird, die Verbindung mit den bevorzugten iSCSI-Zielen wiederherzustellen.
 
 ## <a name="errors-during-configuration"></a>Fehler bei der Konfiguration
-Bei nicht ordnungsgemäßer CHAP-Konfiguration wird in der Regel ein Authentifizierungsfehler **** angezeigt.
+Bei nicht ordnungsgemäßer CHAP-Konfiguration wird in der Regel ein **Authentifizierungsfehler** angezeigt.
 
 ## <a name="verification-of-chap-configuration"></a>Überprüfen der CHAP-Konfiguration
 Mit den folgenden Schritten können Sie überprüfen, ob CHAP verwendet wird.
