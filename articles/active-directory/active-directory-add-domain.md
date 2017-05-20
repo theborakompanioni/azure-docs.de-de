@@ -42,7 +42,7 @@ Sie verfügen über mindestens einen Domänennamen, den Ihre Organisation zu ges
 
 ## <a name="add-a-custom-domain-name-to-your-directory"></a>Hinzufügen eines benutzerdefinierten Domänennamens zu Ihrem Verzeichnis
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit einem Benutzerkonto an, das ein globaler Administrator Ihres Azure AD-Verzeichnisses ist.
-2. Öffnen Sie in Active Directory Ihr Verzeichnis, und wählen Sie die Registerkarte **Domänen** aus.****
+2. Öffnen Sie in **Active Directory** Ihr Verzeichnis, und wählen Sie die Registerkarte **Domänen** aus.
 3. Wählen Sie in der Befehlsleiste **Hinzufügen**aus. Geben Sie den Namen der benutzerdefinierten Domäne ein, wie z.B. „contoso.com“. Achten Sie darauf, dass die Erweiterung „.com“, „.net“ oder eine andere Erweiterung der obersten Ebene vorhanden ist, und lassen Sie das Kontrollkästchen für „Einmaliges Anmelden“ (Verbund) deaktiviert.
 4. Wählen Sie **Hinzufügen**.
 5. Rufen Sie auf der zweiten Seite des Assistenten zum Hinzufügen von Domänen den DNS-Eintrag ab, mit dem Azure AD überprüft, ob Ihre Organisation der Besitzer des benutzerdefinierten Domänennamens ist.
