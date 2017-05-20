@@ -14,9 +14,10 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: ruturajd@microsoft.com
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6e6d0539c35d403c24ddd5e0b5d49f4d6116eead
 ms.openlocfilehash: 86f7e0565fe30af613f06764a494cbb996abcabe
+ms.contentlocale: de-de
 ms.lasthandoff: 01/30/2017
 
 
@@ -313,7 +314,7 @@ Sie können einen Failbackplan mit vContinuum vorbereiten, damit für die Anwend
 
     ![](./media/site-recovery-failback-azure-to-vmware/image38.png)
 3. Sie können die Wiederherstellung mithilfe mehrerer Optionen durchführen. Wir empfehlen jedoch, die Option **Latest Tag** (Neuester Tag) zu verwenden und **Apply for All VMs** (Für alle virtuelle Computer übernehmen) auszuwählen, damit ganz sicher die neuesten Daten aus dem virtuellen Computer verwendet werden.
-4. Führen Sie die Bereitschaftsprüfung aus.**** Dadurch wird überprüft, ob die richtigen Parameter konfiguriert sind, um die VM-Wiederherstellung zu aktivieren. Klicken Sie auf **Weiter**, wenn alle Überprüfungen erfolgreich waren. Falls dies nicht der Fall ist, überprüfen Sie das Protokoll und beheben Sie die Fehler.
+4. Führen Sie die **Bereitschaftsprüfung** aus. Dadurch wird überprüft, ob die richtigen Parameter konfiguriert sind, um die VM-Wiederherstellung zu aktivieren. Klicken Sie auf **Weiter**, wenn alle Überprüfungen erfolgreich waren. Falls dies nicht der Fall ist, überprüfen Sie das Protokoll und beheben Sie die Fehler.
 
     ![](./media/site-recovery-failback-azure-to-vmware/image39.png)
 5. Vergewissern Sie sich, dass unter **VM-Konfiguration** die Wiederherstellungseinstellungen korrekt sind. Bei Bedarf können Sie die VM-Einstellungen ändern.

@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: nkolli;trinadhk;anuragm;markgal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 127484103706be5acd0f988aee3d13217d4d87f2
 ms.openlocfilehash: f73bdcf056dc745f9f40e96d3dc51e5e4b88f77d
+ms.contentlocale: de-de
 ms.lasthandoff: 01/27/2017
 
 
@@ -239,7 +240,7 @@ Die Liste der Server, auf denen der DPM-Agent installiert ist und vom DPM-Server
 PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”
 ```
 
-Rufen Sie jetzt die Liste der Datenquellen auf ```$server``` mit dem [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605)-Cmdlet ab. In diesem Beispiel filtern wir nach dem Volume *D:\*, das wir für die Sicherung konfigurieren möchten. Diese Datenquelle wird der Schutzgruppe dann mithilfe des [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732)-Cmdlets hinzugefügt. Denken Sie daran, zum Vornehmen von Änderungen das*änderbare Schutzgruppenobjekt```$MPG``` zu verwenden.
+Rufen Sie jetzt die Liste der Datenquellen auf ```$server``` mit dem [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605)-Cmdlet ab. In diesem Beispiel filtern wir nach dem Volume *D:\*, das wir für die Sicherung konfigurieren möchten. Diese Datenquelle wird der Schutzgruppe dann mithilfe des [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732)-Cmdlets hinzugefügt. Denken Sie daran, zum Vornehmen von Änderungen das* änderbare* Schutzgruppenobjekt```$MPG``` zu verwenden.
 
 ```
 PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Name -contains “D:\” }
