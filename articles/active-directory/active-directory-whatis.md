@@ -25,7 +25,7 @@ ms.lasthandoff: 02/24/2017
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 Azure Active Directory (Azure AD) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft.
 
-Für IT-Administratoren bietet Azure AD eine kostengünstige, benutzerfreundliche Lösung, um Mitarbeitern und Geschäftspartnern SSO-Zugriff (Single Sign-On, einmaliges Anmelden) auf [Tausende von Cloud-SaaS-Anwendungen](active-directory-saas-tutorial-list.md) wie Office&365;, Salesforce.com, DropBox und Concur bereitzustellen.
+Für IT-Administratoren bietet Azure AD eine kostengünstige, benutzerfreundliche Lösung, um Mitarbeitern und Geschäftspartnern SSO-Zugriff (Single Sign-On, einmaliges Anmelden) auf [Tausende von Cloud-SaaS-Anwendungen](active-directory-saas-tutorial-list.md) wie Office 365, Salesforce.com, DropBox und Concur bereitzustellen.
 
 Anwendungsentwickler können sich dank Azure AD vollständig auf die Erstellung von Anwendungen konzentrieren, da Azure AD die schnelle und einfache Integration in eine erstklassige Identitätsverwaltungslösung ermöglicht, die von Millionen von Unternehmen auf der ganzen Welt verwendet wird.
 
