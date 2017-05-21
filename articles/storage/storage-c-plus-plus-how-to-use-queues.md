@@ -76,7 +76,7 @@ Zum Testen der Anwendung auf Ihrem lokalen Windows-Computer können Sie den [Mic
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Wählen Sie zum Starten des Azure-Speicheremulators die Schaltfläche **Start**, oder drücken Sie die WINDOWS-TASTE****. Geben Sie **Azure-Speicheremulator** ein, und wählen Sie den **Microsoft Azure-Speicheremulator** aus der Liste der Anwendungen aus.
+Wählen Sie zum Starten des Azure-Speicheremulators die Schaltfläche **Start**, oder drücken Sie die **WINDOWS-TASTE**. Geben Sie **Azure-Speicheremulator** ein, und wählen Sie den **Microsoft Azure-Speicheremulator** aus der Liste der Anwendungen aus.
 
 In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser zwei Methoden verwendet haben, um die Speicherverbindungszeichenfolge abzurufen.
 
