@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
 ms.openlocfilehash: a1e6f6738a3e6426a5ec5e0dab6f479a0a74b0ad
+ms.contentlocale: de-de
 ms.lasthandoff: 02/17/2017
 
 
@@ -85,7 +86,7 @@ Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon,
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in YouEarnedIt als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in YouEarnedIt muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in YouEarnedIt zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in YouEarnedIt zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei YouEarnedIt müssen folgende Schritte ausgeführt werden:
 

@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
 ms.openlocfilehash: 3b901bcb08a194f72c3dc75e33f2b94fffea370e
+ms.contentlocale: de-de
 ms.lasthandoff: 02/17/2017
 
 
@@ -85,7 +86,7 @@ In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veransch
 
 Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in StatusPage als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in StatusPage muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in StatusPage zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in StatusPage zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei StatusPage müssen Sie die folgenden Bausteine ausführen:
 

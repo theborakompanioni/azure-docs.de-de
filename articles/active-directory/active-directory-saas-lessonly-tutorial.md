@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
 ms.openlocfilehash: 242cc7d58acb4af66d7ea5da4502db4ce2b414c6
+ms.contentlocale: de-de
 ms.lasthandoff: 02/15/2017
 
 
@@ -86,7 +87,7 @@ In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veransch
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Lesson.ly als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Das heißt, zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Lesson.ly muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Lesson.ly zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Lesson.ly zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Lesson.ly müssen Sie die folgenden Schritte durchführen:
 
