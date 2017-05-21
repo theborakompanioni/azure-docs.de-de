@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0a8f2de60ab60b980b29c4dbc78045bd20693b9d
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 47609ab453cf3db3cb745f91ed23904ff90e7b41
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -129,13 +129,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der Freshdesk-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie oben im Menü auf **Admin**.
+8. Klicken Sie oben im Menü auf **Administrator**.
    
-       ![Admin](./media/active-directory-saas-freshdesk-tutorial/IC776768.png "Admin")
+   ![Admin](./media/active-directory-saas-freshdesk-tutorial/IC776768.png "Admin")
 
 9. Klicken Sie auf der Registerkarte **Allgemeine Einstellungen** auf **Sicherheit**.
    
-       ![Security](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "Security")
+   ![Sicherheit](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "Sicherheit")
 
 10. Führen Sie im Abschnitt **Sicherheit** die folgenden Schritte aus:
    
