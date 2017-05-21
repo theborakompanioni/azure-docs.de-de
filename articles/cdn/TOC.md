@@ -29,12 +29,14 @@
 ### [Überwachen von Ressourcen](cdn-resource-health.md)
 ### [Überschreiben des Verhaltens mit Regeln](cdn-rules-engine.md)
 ### [Erhalten von Warnungen in Echtzeit](cdn-real-time-alerts.md)
+### [HTTP/2-Unterstützung](cdn-http2.md)
 
 ## Analysieren
 ### [Analysieren von Verwendungsmustern](cdn-analyze-usage-patterns.md)
 ### [Generieren von erweiterten HTTP-Berichten](cdn-advanced-http-reports.md)
 ### [Anzeigen von Echtzeitstatistiken](cdn-real-time-stats.md)
 ### [Analysieren der Edgeknotenleistung](cdn-edge-performance.md)
+### [Exportieren von Metriken mit Diagnoseprotokollen](cdn-log-analysis.md)
 
 ## Entwickeln
 ### [.NET](cdn-app-dev-net.md)
