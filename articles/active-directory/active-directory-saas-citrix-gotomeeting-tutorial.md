@@ -13,9 +13,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 400793331aa2d56358a83a51ce64c67f59bbf3b7
 ms.openlocfilehash: d81de30a46f7b849e70b99e7f7423cbc90f25326
+ms.contentlocale: de-de
 ms.lasthandoff: 02/16/2017
 
 
@@ -133,7 +134,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
     c. Klicken Sie auf **Next**.
 
-1. Klicken Sie auf der Bestätigungsseite **** auf das Häkchen, um die Konfiguration zu speichern.
+1. Klicken Sie auf der **Bestätigungsseite** auf das Häkchen, um die Konfiguration zu speichern.
 2. Klicken Sie auf die Schaltfläche **Überprüfen** , um die Konfiguration zu überprüfen.
 
 ## <a name="assigning-users"></a>Zuweisen von Benutzern

@@ -13,9 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ad9c78483af88a85a1b790269231683155760d76
 ms.openlocfilehash: aef560c2b05a80c59743c4cc6d68d6d2c14bdc3f
+ms.contentlocale: de-de
 ms.lasthandoff: 02/15/2017
 
 
@@ -88,7 +89,7 @@ In diesem Abschnitt konfigurieren und testen Sie anhand einer Testbenutzerin nam
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Infor Retail – Information Management als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Infor Retail – Information Management muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird eingerichtet, indem Sie den Benutzernamen****in Azure AD dem Benutzernamen**** in Infor Retail – Information Management zuweisen.
+Diese Linkbeziehung wird eingerichtet, indem Sie den **Benutzernamen**in Azure AD dem **Benutzernamen** in Infor Retail – Information Management zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Infor Retail – Information Management müssen Sie die folgenden Bausteine ausführen:
 
