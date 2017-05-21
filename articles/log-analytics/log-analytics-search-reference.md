@@ -104,7 +104,7 @@ HTTP 500
 ### <a name="dates-and-times"></a>Datums- und Zeitangaben
 Jedes Datenelement im System besitzt eine *TimeGenerated*-Eigenschaft, die das ursprüngliche Datum und die Uhrzeit des Datensatzes darstellt. Einige Datentypen können darüber hinaus weitere Datums- und Uhrzeitfelder haben (z.B. *LastModified*).
 
-Das Zeitachsendiagramm bzw. die Uhrzeitauswahl ****in Azure Log Analytics zeigt eine Verteilung von Ergebnissen im Zeitverlauf an (gemäß der aktuell ausgeführten Abfrage). Dies basiert auf dem Feld *TimeGenerated*. Datums- und Uhrzeitfelder verfügen über ein bestimmtes Zeichenfolgenformat, das in Abfragen verwendet werden kann, um diese auf einen bestimmten Zeitraum zu beschränken. Sie können mit der Syntax auch auf relative Zeitintervalle verweisen (z. B. "zwischen vor 3 Tagen und vor 2 Stunden") .
+Das Zeitachsendiagramm bzw. die **Uhrzeitauswahl**in Azure Log Analytics zeigt eine Verteilung von Ergebnissen im Zeitverlauf an (gemäß der aktuell ausgeführten Abfrage). Dies basiert auf dem Feld *TimeGenerated*. Datums- und Uhrzeitfelder verfügen über ein bestimmtes Zeichenfolgenformat, das in Abfragen verwendet werden kann, um diese auf einen bestimmten Zeitraum zu beschränken. Sie können mit der Syntax auch auf relative Zeitintervalle verweisen (z. B. "zwischen vor 3 Tagen und vor 2 Stunden") .
 
 Hier einige gültige Syntaxformen für Datums- und Uhrzeitangaben:
 

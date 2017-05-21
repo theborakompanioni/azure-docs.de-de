@@ -68,7 +68,7 @@ Grundsätzlich müssen diese Schritte ausgeführt werden, um ein neues Vorlageni
 3. Installieren Sie Windows Server 2012 R2
 4. Installieren Sie die RDSH-Rolle (Remote Desktop Session Host) und das Desktopdarstellung-Feature.
 5. Installieren Sie weitere, von den Anwendungen benötigte Features.
-6. Installieren und konfigurieren Sie die Anwendungen. Um die gemeinsame Nutzung von Apps zu vereinfachen, fügen Sie alle Apps oder Programme, die Sie freigeben möchten, in das Startmenü des Images hinzu, insbesondere in ****%systemdrive%\ProgramData\Microsoft\Windows\Start \Programme**.
+6. Installieren und konfigurieren Sie die Anwendungen. Um die gemeinsame Nutzung von Apps zu vereinfachen, fügen Sie alle Apps oder Programme, die Sie freigeben möchten, in das **Startmenü** des Images hinzu, insbesondere in **%systemdrive%\ProgramData\Microsoft\Windows\Start \Programme.
 7. Führen Sie weitere, von den Anwendungen benötigte Windows-Konfigurationen aus.
 8. Deaktivieren Sie Encrypting File System (EFS).
 9. **ERFORDERLICH:** Wechseln Sie zu Windows Update, und installieren Sie alle wichtigen Updates.
