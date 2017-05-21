@@ -14,9 +14,10 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 04/25/2017
 ms.author: rachelap;robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
+ms.contentlocale: de-de
 ms.lasthandoff: 01/05/2017
 
 
