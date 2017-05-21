@@ -13,6 +13,7 @@
 ## Erstellen einer Vorlage
 ### [Informationen zu Skalierungsgruppenvorlagen](virtual-machine-scale-sets-mvss-start.md)
 ### [Hinzufügen eines virtuellen Netzwerks](virtual-machine-scale-sets-mvss-existing-vnet.md)
+### [Verwenden eines benutzerdefinierten Images](virtual-machine-scale-sets-mvss-custom-image.md)
 
 ## Bereitstellen
 ### [Erstellen mit dem Portal](virtual-machine-scale-sets-portal-create.md)

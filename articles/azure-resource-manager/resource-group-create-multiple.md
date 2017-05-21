@@ -12,145 +12,103 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/17/2017
+ms.date: 05/11/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 8ecf7c058b90fd18e41fd4e1cbc29e22dfeb0883
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: e98fa067c0ed385fe20f66645311c9fd51cd6456
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="deploy-multiple-instances-of-resources-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager-Vorlagen
+# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen
 In diesem Thema erfahren Sie, wie Sie die Azure-Ressourcen-Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource zu erstellen.
 
-## <a name="copy-and-copyindex"></a>copy und copyIndex
+## <a name="resource-iteration"></a>Ressourceniteration
+Fügen Sie zum Erstellen mehrerer Instanzen eines Ressourcentyps ein `copy`-Element zum Ressourcentyp hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten. Resource Manager erstellt die Ressourcen gleichzeitig. Aus diesem Grund ist die Reihenfolge, in der sie erstellt werden, nicht garantiert. Informationen zum Erstellen iterierter Ressourcen in Folge finden Sie unter [Sequenzielle Schleifen für Azure Resource Manager-Vorlagen](resource-manager-sequential-loop.md). 
+
 Die Ressource zum mehrfachen Erstellen übernimmt das folgende Format:
 
 ```json
-"resources": [ 
-  { 
-      "name": "[concat('examplecopy-', copyIndex())", 
-      "type": "Microsoft.Web/sites", 
-      "location": "East US", 
-      "apiVersion": "2015-08-01",
-      "copy": { 
-         "name": "websitescopy", 
-         "count": "[parameters('count')]" 
-      }, 
-      "properties": {
-          "serverFarmId": "hostingPlanName"
-      } 
-  } 
-]
-```
-
-Beachten Sie, dass die Anzahl der Iterationen im copy-Objekt angegeben wird:
-
-```json
-"copy": { 
-    "name": "websitescopy", 
-    "count": "[parameters('count')]" 
-} 
-```
-
-Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten.
-
-Beachten Sie, dass der Name der einzelnen Ressourcen die `copyIndex()`-Funktion enthält, die die aktuelle Iteration in der Schleife zurückgibt.
-
-```json
-"name": "[concat('examplecopy-', copyIndex())]",
-```
-
-Wenn Sie drei Websites bereitstellen, werden die folgenden Namen verwendet:
-
-* examplecopy-0
-* examplecopy-1
-* examplecopy-2
-
-Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben, z. B. `copyIndex(1)`. Die Anzahl von durchzuführenden Durchläufen wird weiterhin im copy-Element angegeben, aber der Wert von copyIndex wird um den angegebenen Wert versetzt. Wenn Sie dieselbe Vorlage wie im vorherigen Beispiel verwenden, dieses Mal aber „copyIndex(1)“ angeben, werden also drei Websites mit den folgenden Namen bereitgestellt:
-
-* examplecopy-1
-* examplecopy-2
-* examplecopy-3
-
-Resource Manager erstellt die Ressourcen gleichzeitig. Aus diesem Grund ist die Reihenfolge, in der sie erstellt werden, nicht garantiert. Informationen zum Erstellen iterierter Ressourcen in Folge finden Sie unter [Sequenzielle Schleifen für Azure Resource Manager-Vorlagen](resource-manager-sequential-loop.md). 
-
-Das „copy“-Objekt kann nur auf eine Ressource auf oberster Ebene angewendet werden. Es kann nicht auf eine Eigenschaft für einen Ressourcentyp oder auf eine untergeordnete Ressource angewendet werden. Im folgenden Beispiel mit Pseudocode wird gezeigt, wo „copy“ angewendet werden kann:
-
-```json
-"resources": [
-  {
-    "type": "{provider-namespace-and-type}",
-    "name": "parentResource",
-    "copy": {  
-      /* Yes, copy can be applied here */
-    },
-    "properties": {
-      "exampleProperty": {
-        /* No, copy cannot be applied here */
-      }
-    },
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
     "resources": [
-      {
-        "type": "{provider-type}",
-        "name": "childResource",
-        /* No, copy cannot be applied here. The resource must be promoted to top-level. */ 
-      }
-    ]
-  }
-] 
+        {
+            "apiVersion": "2016-01-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {},
+            "copy": {
+                "name": "storagecopy",
+                "count": 3
+            }
+        }
+    ],
+    "outputs": {}
+}
 ```
 
-Informationen zum Iterieren einer untergeordneten Ressourcen finden Sie unter [Erstellen mehrerer Instanzen einer untergeordneten Ressource](#create-multiple-instances-of-a-child-resource).
+Beachten Sie, dass der Name der einzelnen Ressourcen die `copyIndex()`-Funktion enthält, die die aktuelle Iteration in der Schleife zurückgibt. `copyIndex()` ist nullbasiert. Im folgenden Beispiel werden die unten aufgeführten Namen erstellt:
 
-Wenngleich Sie „copy“ nicht auf eine Eigenschaft anwenden können, ist diese Eigenschaft weiter Teil der Iterationen der Ressource, die die Eigenschaft enthält. Aus diesem Grund können Sie „copyIndex()“ in der Eigenschaft verwenden, um Werte anzugeben. Informationen zum Erstellen mehrerer Werte für eine Eigenschaft finden Sie unter [Erstellen mehrerer Instanzen einer Eigenschaft für einen Ressourcentyp](resource-manager-property-copy.md).
+```json
+"name": "[concat('storage', copyIndex())]",
+```
 
-## <a name="use-copy-with-array"></a>Verwenden von „copy“ mit Arrays
-Der „copy“-Vorgang ist besonders bei Verwendung von Arrays hilfreich, weil Sie jedes Element im Array durchlaufen können. So stellen Sie drei Websites mit den folgenden Namen bereit:
+Namen:
 
-* examplecopy-Contoso
-* examplecopy-Fabrikam
-* examplecopy-Coho
+* storage0
+* storage1
+* storage2
 
-Verwenden Sie die folgende Vorlage:
+Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben. Die Anzahl von durchzuführenden Durchläufen wird weiterhin im copy-Element angegeben, aber der Wert von copyIndex wird um den angegebenen Wert versetzt. Im folgenden Beispiel werden die unten aufgeführten Namen erstellt:
+
+```json
+"name": "[concat('storage', copyIndex(1))]",
+```
+
+Namen:
+
+* storage1
+* storage2
+* storage3
+
+Der „copy“-Vorgang ist besonders bei Verwendung von Arrays hilfreich, weil Sie jedes Element im Array durchlaufen können. Verwenden Sie die Funktion `length` für das Array, um die Anzahl von Iterationen anzugeben, und `copyIndex`, um den aktuellen Index im Array abzurufen. Im folgenden Beispiel werden die unten aufgeführten Namen erstellt:
 
 ```json
 "parameters": { 
   "org": { 
      "type": "array", 
      "defaultValue": [ 
-         "Contoso", 
-         "Fabrikam", 
-         "Coho" 
+         "contoso", 
+         "fabrikam", 
+         "coho" 
       ] 
   }
 }, 
 "resources": [ 
   { 
-      "name": "[concat('examplecopy-', parameters('org')[copyIndex()])]", 
-      "type": "Microsoft.Web/sites", 
-      "location": "East US", 
-      "apiVersion": "2015-08-01",
+      "name": "[concat('storage', parameters('org')[copyIndex()])]", 
       "copy": { 
-         "name": "websitescopy", 
+         "name": "storagecopy", 
          "count": "[length(parameters('org'))]" 
       }, 
-      "properties": {
-          "serverFarmId": "hostingPlanName"
-      } 
+      ...
   } 
 ]
 ```
 
-Beachten Sie, dass die `length`-Funktion zum Angeben der Anzahl verwendet wird. Das Array wird als Parameter für die length-Funktion bereitgestellt.
+Namen:
 
-```json
-"copy": {
-    "name": "websitescopy",
-    "count": "[length(parameters('siteNames'))]"
-}
-```
+* storagecontoso
+* storagefabrikam
+* storagecoho
 
 ## <a name="depend-on-resources-in-a-loop"></a>Abhängigkeit von Ressourcen in einer Schleife
 Sie geben an, dass eine Ressource nach einer anderen Ressource bereitgestellt wird, indem Sie das `dependsOn`-Element verwenden. Um eine Ressource bereitzustellen, die von der Sammlung von Ressourcen in einer Schleife abhängt, geben Sie den Namen der Kopierschleife im dependsOn-Element an. Das folgende Beispiel zeigt, wie drei Speicherkonten vor dem Bereitstellen des virtuellen Computers bereitgestellt werden. Die vollständige Definition des virtuellen Computers ist dabei nicht angegeben. Beachten Sie, dass „name“ für das copy-Element auf `storagecopy` und auch das dependsOn-Element für die virtuellen Computer auf `storagecopy` festgelegt ist.
@@ -162,16 +120,18 @@ Sie geben an, dass eine Ressource nach einer anderen Ressource bereitgestellt wi
     "parameters": {},
     "resources": [
         {
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-01-01",
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id), copyIndex())]",
+            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
             "location": "[resourceGroup().location]",
-            "properties": {
-                "accountType": "Standard_LRS"
+            "sku": {
+                "name": "Standard_LRS"
             },
-            "copy": { 
-                "name": "storagecopy", 
-                "count": 3 
+            "kind": "Storage",
+            "properties": {},
+            "copy": {
+                "name": "storagecopy",
+                "count": 3
             }
         },
         {

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 05/03/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d75088bd83b0b70c889388c95331bb56fe9ba15b
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 951a7849beb9653083ed0112dbbb6cf57175469d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -172,12 +173,15 @@ Die Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgend
 
 * `"equals": "value"`
 * `"like": "value"`
+* `"match": "value"`
 * `"contains": "value"`
 * `"in": ["value1","value2"]`
 * `"containsKey": "keyName"`
 * `"exists": "bool"`
 
 Bei Verwendung der Bedingung **like** können Sie im Wert einen Platzhalter (*) angeben.
+
+Geben Sie bei Verwendung der **match**-Bedingung für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Festlegen der Benennungskonvention](#set-naming-convention).
 
 ### <a name="fields"></a>Felder
 Bedingungen werden mithilfe von Feldern gebildet. Ein Feld stellt Eigenschaften in der Anforderungsnutzlast einer Ressource dar, mit der der Zustand der Ressource beschrieben wird.  
@@ -318,6 +322,36 @@ Das folgende Beispiel veranschaulicht die Verwendung von Platzhalterzeichen, die
       "field": "name",
       "like": "namePrefix*nameSuffix"
     }
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+Verwenden Sie die match-Bedingung, um anzugeben, dass Ressourcennamen einem Muster entsprechen. Im folgenden Beispiel müssen Namen mit `contoso` beginnen und sechs zusätzliche Buchstaben enthalten:
+
+```json
+{
+  "if": {
+    "not": {
+      "field": "name",
+      "match": "contoso??????"
+    }
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+Um ein Datumsmuster aus zwei Ziffern, Bindestrich, drei Buchstaben und vier Ziffern anzufordern, verwenden Sie Folgendes:
+
+```json
+{
+  "if": {
+    "field": "tags.date",
+    "match": "##-???-####"
   },
   "then": {
     "effect": "deny"

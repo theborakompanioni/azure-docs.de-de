@@ -11,6 +11,7 @@
 ## [Übersicht über die Lösung für verbundene Factorys](iot-suite-connected-factory-overview.md)
 ## [Exemplarische Vorgehensweise zur Remoteüberwachungslösung](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [Exemplarische Vorgehensweise zur Predictive Maintenance-Lösung](iot-suite-predictive-walkthrough.md)
+## [Exemplarische Vorgehensweise für die Lösung für verbundene Factorys](iot-suite-connected-factory-sample-walkthrough.md)
 ## [Herstellen einer Verbindung mit Raspberry Pi](iot-suite-raspberry-pi-kit-get-started.md)
 ### Verwenden von C
 #### [Simulierte Daten](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
