@@ -49,7 +49,7 @@ Sie können dann die Abfrage wie folgt umschreiben:
 
 Starten Sie nun den Auftrag erneut, und führen Sie ihn ein paar Minuten aus. Fragen Sie dann „temp1“ und „temp2“ mit dem Visual Studio-Cloud-Explorer ab, um die folgenden Tabellen zu generieren:
 
-**Tabelle temp1 **
+**Tabelle temp1**
 ![SELECT INTO Tabelle temp1](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
 **Tabelle temp2**

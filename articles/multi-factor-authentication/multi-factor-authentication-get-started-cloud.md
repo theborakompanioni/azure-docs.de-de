@@ -56,7 +56,7 @@ Gehen Sie wie unten angegeben vor, um MFA für die Benutzer zu aktivieren.
    ![Auf „Verzeichnis“ klicken](./media/multi-factor-authentication-get-started-cloud/manage1.png)
 6. Suchen Sie nach dem Benutzer, für den Sie die Überprüfung in zwei Schritten aktivieren möchten. Sie müssen möglicherweise oben die Ansicht ändern. Vergewissern Sie sich, dass der Status **Deaktiviert** lautet.
    ![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/enable1.png)
-7. Aktivieren Sie das Kontrollkästchen **** neben dem gewünschten Namen.
+7. Aktivieren Sie das **Kontrollkästchen** neben dem gewünschten Namen.
 8. Klicken Sie auf der rechten Seite auf **Aktivieren**.
    ![Benutzer aktivieren](./media/multi-factor-authentication-get-started-cloud/user1.png)
 9. Klicken Sie auf **Multi-Factor Auth aktivieren**.

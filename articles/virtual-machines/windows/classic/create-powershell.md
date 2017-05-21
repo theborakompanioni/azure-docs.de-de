@@ -42,7 +42,7 @@ Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung von Azure Po
 Wenn Sie dies noch nicht getan haben, verwenden Sie die Anweisungen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , um Azure PowerShell auf Ihrem lokalen Computer zu installieren. Öffnen Sie anschließend eine Windows PowerShell-Eingabeaufforderung.
 
 ## <a name="step-1-add-your-account"></a>Schritt 1: Hinzufügen Ihres Kontos
-1. Geben Sie an der PowerShell-Eingabeaufforderung **Add-AzureAccount** ein, und drücken Sie die EINGABETASTE****. 
+1. Geben Sie an der PowerShell-Eingabeaufforderung **Add-AzureAccount** ein, und drücken Sie die **EINGABETASTE**. 
 2. Geben Sie die mit Ihrem Azure-Abonnement verknüpfte E-Mail-Adresse ein, und klicken Sie auf **Weiter**. 
 3. Geben Sie das Kennwort für Ihr Konto ein. 
 4. Klicken Sie auf **Anmelden**.

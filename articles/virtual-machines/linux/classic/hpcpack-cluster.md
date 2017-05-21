@@ -69,13 +69,13 @@ Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-
    
     ![Erstellung über das Portal][portal]
 3. Geben Sie auf dem Blatt **Grundeinstellungen** einen Clusternamen ein. Dieser wird auch für den virtuellen Hauptknotencomputer verwendet. Sie können eine vorhandene Ressourcengruppe auswählen oder eine Gruppe für die Bereitstellung an einem für Sie verfügbaren Standort erstellen. Der Standort wirkt sich auf die Verfügbarkeit bestimmter VM-Größen und anderer Azure-Dienste aus (siehe [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/)).
-4. Für eine erste Bereitstellung können Sie auf dem Blatt mit den Einstellungen des Hauptknotens **** im Allgemeinen die Standardeinstellungen übernehmen. 
+4. Für eine erste Bereitstellung können Sie auf dem Blatt mit den **Einstellungen des Hauptknotens** im Allgemeinen die Standardeinstellungen übernehmen. 
    
    > [!NOTE]
    > Über die optionale Einstellung **URL für Skript nach der Konfiguration** können Sie ein öffentlich verfügbares Windows PowerShell-Skript angeben, das auf der Hauptknoten-VM ausgeführt werden soll, sobald diese in Betrieb genommen wurde. 
    > 
    > 
-5. Auf dem Blatt mit den Einstellungen für Computeknoten **** wählen Sie ein Benennungsmuster für die Knoten, die Anzahl und die Größe der Knoten sowie die Linux-Distribution, die bereitgestellt werden soll.
+5. Auf dem Blatt mit den **Einstellungen für Computeknoten** wählen Sie ein Benennungsmuster für die Knoten, die Anzahl und die Größe der Knoten sowie die Linux-Distribution, die bereitgestellt werden soll.
 6. Geben Sie auf dem Blatt **Infrastruktureinstellungen** den Namen für das virtuelle Netzwerk und die Active Directory-Domäne, die Anmeldeinformationen für Domänen- und VM-Administratoren sowie ein Benennungsmuster für die Speicherkonten ein.
    
    > [!NOTE]
@@ -173,7 +173,7 @@ Starten Sie auf dem Hauptknoten den HPC-Cluster-Manager, um den Status des HPC P
 
 ![Knoten-Verwaltung][management]
 
-Die Linux-Knoten werden auch in der Heat Map-Ansicht **** angezeigt.
+Die Linux-Knoten werden auch in der **Heat Map-Ansicht** angezeigt.
 
 ![Heat Map][heatmap]
 
