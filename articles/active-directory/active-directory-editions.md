@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 59e12d70d46d45fb7dc4244ac2968838cb29dbec
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9d10ebf9d7bd07bd126302a6ecf442d809e00196
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -367,20 +368,9 @@ Rechte an Microsoft Identity Manager Server-Software werden mit Windows Server-L
 
 * [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 
-## <a name="azure-ad-preview-features"></a>Azure AD-Vorschaufunktionen
-Neben den allgemein verfügbaren Funktionen der Free, Basic und Premium Editionen (P1 und P2) bietet Azure AD auch eine Sammlung von Vorschaufunktionen. Die Vorschaufunktionen vermitteln Ihnen einen Eindruck von in Kürze verfügbaren Funktionen, und Sie können ermitteln, ob diese Funktionen hilfreich für die Verbesserung Ihrer Umgebung sind.
-
-**Verfügbare Vorschaufunktionen:**
-
-* [B2B-Zusammenarbeit](active-directory-b2b-collaboration-overview.md)
-* [Verwaltungseinheiten](active-directory-administrative-units-management.md)
-* [HR-Anwendungsintegration](active-directory-saas-workday-inbound-tutorial.md)
-* [Zertifikatbasierte Authentifizierung auf iOS](active-directory-certificate-based-authentication-ios.md)
-* [Zertifikatbasierte Authentifizierung auf Android](active-directory-certificate-based-authentication-android.md)
-
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md)
-* [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
+* [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
 * [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->

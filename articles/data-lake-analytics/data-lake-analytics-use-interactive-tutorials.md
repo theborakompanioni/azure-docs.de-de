@@ -14,20 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 36677be6bc5599f55f1f15bc145c59033ad20e0a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ca88b355416b4ae4785bc69244185a67756ca916
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="use-azure-data-lake-analytics-interactive-tutorials"></a>Verwenden interaktiver Lernprogramme zu Azure Data Lake Analytics
 Das Azure-Portal bietet ein interaktives Tutorial für die ersten Schritte mit Data Lake Analytics. In diesem Artikel erfahren Sie, wie Sie das Tutorial für die Analyse von Websiteprotokollen durchlaufen.
-
-> [!NOTE]
-> Falls Sie dasselbe Lernprogramm für Visual Studio durchlaufen möchten, lesen Sie hierzu [Analysieren von Websiteprotokollen mit Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-> Weitere interaktive Lernprogramme werden dem Portal demnächst hinzugefügt.
-> 
-> 
 
 Weitere Lernprogramme finden Sie unter:
 
@@ -52,7 +48,7 @@ Jedes Data Lake Analytics-Konto ist mit einem [Azure Data Lake Store](../data-la
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/signin/index/?Microsoft_Azure_Kona=true&Microsoft_Azure_DataLake=true&hubsExtension_ItemHideKey=AzureDataLake_BigStorage%2cAzureKona_BigCompute)an.
 2. Klicken Sie links oben auf **Microsoft Azure** , um das Startmenü zu öffnen.
 3. Klicken Sie auf die Kachel **Marketplace** .  
-4. Geben Sie **Azure Data Lake Analytics** in das Suchfeld auf dem Blatt **Alles** ein, und drücken Sie die** **EINGABETASTE. **Azure Data Lake Analytics** wird in der Liste angezeigt.
+4. Geben Sie **Azure Data Lake Analytics** in das Suchfeld auf dem Blatt **Alles** ein, und drücken Sie die**** EINGABETASTE. **Azure Data Lake Analytics** wird in der Liste angezeigt.
 5. Klicken Sie in der Liste auf **Azure Data Lake Analytics** .
 6. Klicken Sie unten auf dem Blatt auf **Erstellen** .
 7. Geben Sie Folgendes ein, oder treffen Sie die entsprechende Auswahl:
@@ -87,10 +83,5 @@ Jedes Data Lake Analytics-Konto ist mit einem [Azure Data Lake Store](../data-la
 * [Erste Schritte mit Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

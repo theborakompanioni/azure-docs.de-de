@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6638d9f6c38fe25a99ae6d82eaae958edc3370f2
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f7ecb22ee46d83867453e035f8a639bc7f7f2d81
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung
 
-Für das Bereitstellen der Self-Service-Kennwortzurücksetzung (SSPR) müssen Authentifizierungsdaten vorhanden sein. Einige Organisationen verlangen von ihren Benutzern die Eingabe ihrer Authentifizierungsdaten, aber viele Organisationen bevorzugen eine Synchronisierung mit in Active Directory vorhandenen Daten. Wenn die Daten in Ihrem lokalen Verzeichnis ordnungsgemäß formatiert wurden und Sie [Azure AD Connect mit Expresseinstellungen](/connect/active-directory-aadconnect-get-started-express.md) konfigurieren, werden die Daten in Azure AD und SSPR ohne Benutzereingriff zur Verfügung gestellt.
+Für das Bereitstellen der Self-Service-Kennwortzurücksetzung (SSPR) müssen Authentifizierungsdaten vorhanden sein. Einige Organisationen verlangen von ihren Benutzern die Eingabe ihrer Authentifizierungsdaten, aber viele Organisationen bevorzugen eine Synchronisierung mit in Active Directory vorhandenen Daten. Wenn die Daten in Ihrem lokalen Verzeichnis ordnungsgemäß formatiert wurden und Sie [Azure AD Connect mit Expresseinstellungen](./connect/active-directory-aadconnect-get-started-express.md) konfigurieren, werden die Daten in Azure AD und SSPR ohne Benutzereingriff zur Verfügung gestellt.
 
 Telefonnummern müssen im Format „+Landesvorwahl Telefonnummer“ eingegeben werden (Beispiel: +1 4255551234), damit sie ordnungsgemäß funktionieren.
 
@@ -137,7 +137,7 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD
+Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
 * [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.

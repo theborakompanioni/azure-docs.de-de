@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/04/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: e1c65060c2862736c76b36676f95a88d8dbab4c6
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 39049c7a1e2a4d61ef62bd06cda9ef1bb2c50c0b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/05/2017
 
 ---
 
-# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups---public-preview"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen – öffentliche Vorschau
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-application-proxy-connectors-azure-portal.md)
 > * [Klassisches Azure-Portal](active-directory-application-proxy-connectors.md)
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/02/2017
 
 ## <a name="azure-ad-application-proxy-and-connector-groups"></a>Azure AD-Anwendungsproxy und Connectorgruppen
 
-Kunden verwenden den Azure AD-Anwendungsproxy für immer mehr Szenarien und Anwendungen. Daher haben wir den Anwendungsproxy durch Aktivieren weiterer Topologien noch flexibler gestaltet. Sie können Anwendungsproxy-Connectorgruppen erstellen – eine neue Funktion, um bestimmte Connectors bestimmten Anwendungen zuzuweisen. Diese Funktion sorgt für eine Vielzahl von Anwendungsfällen für den Anwendungsproxy, die bisher nicht möglich waren. Während der Phase der privaten Vorschau haben wir erlebt, dass Großkunden Connectorgruppen eingesetzt haben, um ihre Anwendungsproxy-Livebereitstellungen zu verbessern. 
+Kunden verwenden den Azure AD-Anwendungsproxy für immer mehr Szenarien und Anwendungen. Daher haben wir den Anwendungsproxy durch Aktivieren weiterer Topologien noch flexibler gestaltet. Sie können Anwendungsproxy-Connectorgruppen erstellen – eine neue Funktion, um bestimmte Connectors bestimmten Anwendungen zuzuweisen. Diese Funktion sorgt für eine Vielzahl von Anwendungsfällen für den Anwendungsproxy, die bisher nicht möglich waren. 
 
 Das grundlegende Konzept besteht darin, dass jeder Anwendungsproxyconnector einer Connectorgruppe zugewiesen wird. Alle Connectors, die zur gleichen Connectorgruppe gehören, fungieren als separate Gruppe für Hochverfügbarkeit und Lastenausgleich. Standardmäßig gehören alle Connectors zu einer Standardgruppe. Ein Administrator kann im Azure-Portal neue Gruppen erstellen und deren Zuweisungen ändern. 
 
