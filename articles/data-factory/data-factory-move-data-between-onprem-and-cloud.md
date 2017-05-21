@@ -1,5 +1,5 @@
 ---
-title: "Verschieben von Daten – Datenverwaltungsgateway | Microsoft Docs"
+title: "Verschieben von Daten – Datenverwaltungsgateway | Microsoft-Dokumenation"
 description: Richten Sie ein Datengateway ein, um Daten zwischen dem lokalen Speicher und der Cloud zu verschieben. Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten.
 keywords: Datengateway, Datenintegration, Daten verschieben, Gatewayanmeldeinformationen
 services: data-factory
@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: abnarain
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e1d44f85b36d08944351a79d7a4b39cc8de61201
 ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
+ms.contentlocale: de-de
 ms.lasthandoff: 11/17/2016
 
 
@@ -122,7 +123,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    * Anzeigen oder Exportieren des Zertifikats, das vom Gateway verwendet wird
    * Ändern des HTTPS-Endpunkts, der vom Gateway verwendet wird    
    * Festlegen eines HTTP-Proxys, der vom Gateway verwendet werden soll     
-9. (Optional) Wechseln Sie zur Registerkarte **Diagnose**, und aktivieren Sie die Option **Ausführliche Protokollierung aktivieren**, wenn Sie die ausführliche Protokollierung aktivieren möchten, um Probleme mit dem Gateway behandeln zu können. Die Protokollinformationen finden Sie in der** Ereignisanzeige** unter **Anwendungs- und Dienstprotokolle** -> Knoten **Datenverwaltungsgateway**.
+9. (Optional) Wechseln Sie zur Registerkarte **Diagnose**, und aktivieren Sie die Option **Ausführliche Protokollierung aktivieren**, wenn Sie die ausführliche Protokollierung aktivieren möchten, um Probleme mit dem Gateway behandeln zu können. Die Protokollinformationen finden Sie in der**Ereignisanzeige** unter **Anwendungs- und Dienstprotokolle** -> Knoten **Datenverwaltungsgateway**.
 
     ![Registerkarte „Diagnose“](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
@@ -342,7 +343,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 
    * Der Abschnitt „activities“ enthält nur eine Aktivität, deren **type** auf **Copy** festgelegt ist.
    * **Input** für die Aktivität ist auf **EmpOnPremSQLTable** und **output** auf **OutputBlobTable** festgelegt.
-   * Im Abschnitt **typeProperties** ist **SqlSource** als **Quelltyp** und **BlobSink **als **Senkentyp** angegeben.
+   * Im Abschnitt **typeProperties** ist **SqlSource** als **Quelltyp** und **BlobSink** als **Senkentyp** angegeben.
    * Die SQL-Abfrage `select * from emp` ist für die **sqlReaderQuery**-Eigenschaft von **SqlSource** angegeben.
 
    Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet.
