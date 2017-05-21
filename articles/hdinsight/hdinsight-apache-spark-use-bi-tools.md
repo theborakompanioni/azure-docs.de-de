@@ -16,9 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 36b7aaf99db48efa1b56b84ac0616cf9ee2830ac
+ms.contentlocale: de-de
 ms.lasthandoff: 03/18/2017
 
 
