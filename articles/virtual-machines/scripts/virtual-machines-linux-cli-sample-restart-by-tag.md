@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 85fa6ab8f7f5ad31347901a0be932d2474594802
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: fec7a2738c3b8e74ac335f62189f3d9b1dd346ab
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -59,19 +59,19 @@ Das dritte Skript startet alle virtuellen Computer neu, die bereitgestellt wurde
 Dieses Skript erstellt eine Ressourcengruppe und dann drei neu zu startende virtuelle Computer.
 Zwei davon sind gekennzeichnet.
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "Bereitstellen der VMs")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "Bereitstellen der VMs")]
 
 ### <a name="wait"></a>Warten
 
 Dieses Skript überprüft alle 20 Sekunden den Bereitstellungsstatus, bis alle drei virtuellen Computer bereitgestellt sind, oder bei der Bereitstellung eines von ihnen ein Fehler auftritt.
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/restart-by-tag/wait.sh "Warten auf das Bereitstellen der virtuellen Computer")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/wait.sh "Warten auf das Bereitstellen der virtuellen Computer")]
 
 ### <a name="restart-the-vms"></a>Neustarten der VMs
 
 Dieses Skript startet alle virtuellen Computer in der Ressourcengruppe neu und startet dann nur die markierten virtuellen Computer neu.
 
-[!code-azurecli[Main](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "Neustarten von VMs nach Tag")]
+[!code-azurecli-interactive[Main](../../../cli_scripts/virtual-machine/restart-by-tag/restart.sh "Neustarten von VMs nach Tag")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
 
