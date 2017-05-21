@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/24/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 521169d52d37e644ba416e27c9adc8587868ab40
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 899a45d59099dec147c96e4cd175536e859e88f8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -126,7 +127,7 @@ Weitere Antworten auf kennwortbezogene Fragen finden Sie unter [Häufig gestellt
 - - -
 **F: Was kann ich tun, wenn ich mein vorhandenes Office 365-/Azure AD-Kennwort ändern möchte, aber das alte Kennwort vergessen habe?**
 
-**A:** Für diese Situation stehen mehrere Optionen zur Verfügung.  Verwenden Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), sofern verfügbar.  Ob die SSPR funktioniert, hängt davon ab, wie sie konfiguriert ist.  Weitere Informationen finden Sie unter [Wie funktioniert das Portal für die Kennwortzurücksetzung?](active-directory-passwords-learn-more.md#how-does-the-password-reset-portal-work).
+**A:** Für diese Situation stehen mehrere Optionen zur Verfügung.  Verwenden Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), sofern verfügbar.  Ob die SSPR funktioniert, hängt davon ab, wie sie konfiguriert ist.  Weitere Informationen finden Sie unter [Wie funktioniert das Portal für die Kennwortzurücksetzung?](active-directory-passwords-best-practices.md).
 
 Für Office 365-Benutzer kann der Administrator das Kennwort mithilfe der Anleitung unter [Administratoren: Benutzerkennwörter zurücksetzen](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US) zurücksetzen.
 
@@ -146,7 +147,7 @@ Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert 
 Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten von „Password“ und „123456“.
 
 **F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**</br>
-Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets bietet und für alle B2C-Mandanten gilt. 
+Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets bietet und für alle B2C-Mandanten gilt.
 
 ## <a name="application-access"></a>Anwendungszugriff
 **F: Wo finde ich eine Liste mit bereits in Azure AD integrierten Anwendungen und deren Funktionen?**
