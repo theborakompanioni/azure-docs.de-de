@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 6662318e1fc1f611d943a31dd73ed08d031f85e9
+ms.contentlocale: de-de
 ms.lasthandoff: 04/25/2017
 
 ---
