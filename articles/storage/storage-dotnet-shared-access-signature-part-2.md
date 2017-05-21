@@ -121,7 +121,7 @@ Führen Sie eine Kompilierung durch, und führen Sie den Code aus, um den Shared
 
 `https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3D`
 
-Nach dem Ausführen des Codes wird die Shared Access Signature, die Sie im Container erstellt haben, für die nächsten&24; Stunden gültig sein. Die Signatur gewährt einem Client die Berechtigung, Blobs im Container aufzulisten und ein neues Blob im Container zu schreiben.
+Nach dem Ausführen des Codes wird die Shared Access Signature, die Sie im Container erstellt haben, für die nächsten 24 Stunden gültig sein. Die Signatur gewährt einem Client die Berechtigung, Blobs im Container aufzulisten und ein neues Blob im Container zu schreiben.
 
 ### <a name="generate-a-shared-access-signature-uri-for-a-blob"></a>Generieren eines Shared Access Signature-URI für ein Blob
 Als Nächstes schreiben wir einen ähnlichen Code, um ein neues Blob im Container zu erstellen und um eine Shared Access Signature dafür zu erstellen. Diese Shared Access Signature ist nicht mit einer gespeicherten Zugriffsrichtlinie verbunden, sodass sie die Startzeit, Ablaufzeit sowie Berechtigungsinformationen im URI enthält.
