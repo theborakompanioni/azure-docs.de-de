@@ -15,9 +15,10 @@ ms.topic: get-started-article
 ms.date: 03/29/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: f2481c18f12d74a90938ffb0353dd000fe73f440
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 ---
@@ -108,7 +109,7 @@ Falls Sie keine Kombination aus Benutzername und Kennwort verwenden möchten, ge
 15. Legen Sie das Kennwort auf das entsprechende Kontokennwort fest, und schließen Sie den Konfigurations-Editor.  
 16. Klicken Sie auf den Link **Übernehmen** .  
 17. Doppelklicken Sie im virtuellen Verzeichnis des Webdienst-SDKs auf **Authentifizierung**.  
-18. Vergewissern Sie sich, dass ASP.NET-Identitätswechsel und Standardauthentifizierung aktiviert**** und alle anderen Elemente deaktiviert**** sind.  
+18. Vergewissern Sie sich, dass ASP.NET-Identitätswechsel und Standardauthentifizierung **aktiviert** und alle anderen Elemente **deaktiviert** sind.  
 19. Doppelklicken Sie im virtuellen Verzeichnis des Webdienst-SDKs auf **SSL-Einstellungen**.  
 20. Legen Sie „Clientzertifikate“ auf **Akzeptieren** fest, und klicken Sie auf **Übernehmen**.  
 21. Kopieren Sie die zuvor exportierte PFX-Datei auf den Server, auf dem der AD FS-Adapter ausgeführt wird.  
