@@ -12,22 +12,33 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 05/04/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: d7006a50d35412021f7e475df526661854b23dc8
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 6563d1520149ae5ced7e2de80686ef1624ebb651
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="create-an-aspnet-app-in-azure-with-sql-database"></a>Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
+# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
 In diesem Lernprogramm wird gezeigt, wie Sie eine datengesteuerte ASP.NET-Web-App in Azure entwickeln, mit Azure SQL-Datenbank verbinden und datengestützte Funktionen aktivieren. Am Ende dieses Lernprogramms haben Sie eine ASP.NET-Anwendung, die in [Azure App Service](../app-service/app-service-value-prop-what-is.md) ausgeführt wird und mit SQL-Datenbank verbunden ist.
 
 ![Veröffentlichte ASP.NET-Anwendung in Azure-Web-App](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-## <a name="before-you-begin"></a>Voraussetzungen
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Erstellen einer SQL-Datenbank in Azure
+> * Herstellen einer Verbindung mit SQL-Datenbank für eine ASP.NET-App
+> * Bereitstellen der Anwendung in Azure
+> * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
+> * Streamen von Protokollen von Azure auf Ihr Terminal
+> * Verwalten der App im Azure-Portal
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Vor dem Ausführen dieses Beispiels [laden Sie die kostenlose Visual Studio 2017 Community Edition herunter, und installieren Sie sie](https://www.visualstudio.com/downloads/). Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
@@ -40,7 +51,7 @@ In diesem Schritt laden Sie eine ASP.NET-Beispielanwendung herunter.
 
 Laden Sie das Beispielprojekt herunter, indem Sie [hier](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip) klicken.
 
-Extrahieren Sie die heruntergeladene Datei `dotnet-sqldb-tutorial-master.zip` in ein Arbeitsverzeichnis.
+Extrahieren Sie die heruntergeladene ZIP-Datei _dotnet-sqldb-tutorial-master.zip_ in ein Arbeitsverzeichnis.
 
 > [!TIP]
 > Sie können das gleiche Beispielprojekt auch abrufen, indem Sie das GitHub-Repository klonen:
@@ -55,7 +66,7 @@ Dieses Beispielprojekt enthält eine einfache [ASP.NET MVC](https://www.asp.net/
 
 ### <a name="run-the-application"></a>Ausführen der Anwendung
 
-Starten Sie aus dem extrahierten Verzeichnis `dotnet-sqldb-tutorial-master\DotNetAppSqlDb.sln` in Visual Studio 2017.
+Öffnen Sie im extrahierten Verzeichnis die Datei _dotnet-sqldb-tutorial-master\DotNetAppSqlDb.sln_ in Visual Studio 2017.
 
 Wenn die Projektmappe geöffnet ist, geben Sie zum Ausführen im Browser `F5` ein.
 
@@ -63,7 +74,7 @@ Auf der Startseite sollte eine einfache Aufgabenliste angezeigt werden. Versuche
 
 ![Dialogfeld "Neues ASP.NET-Projekt"](./media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-Der Datenbankkontext verwendet eine Verbindungszeichenfolge namens `MyDbConnection`. Diese Verbindungszeichenfolge wird in `Web.config` definiert, und in `Models\MyDatabaseContext.cs` wird auf sie verwiesen. Der Name der Verbindungszeichenfolge ist alles, was, die Sie später benötigen, wenn Sie Ihre Azure-Web-App mit Azure SQL-Datenbank verbinden. 
+Der Datenbankkontext verwendet eine Verbindungszeichenfolge namens `MyDbConnection`. Diese Verbindungszeichenfolge ist in der Datei _Web.config_ definiert, und in _Models\MyDatabaseContext.cs_ wird darauf verwiesen. Sie benötigen später nur den Namen der Verbindungszeichenfolge, wenn Sie Ihre Azure-Web-App mit Azure SQL-Datenbank verbinden. 
 
 ## <a name="publish-to-azure-with-sql-database"></a>Veröffentlichen in Azure mit SQL-Datenbank
 
@@ -134,6 +145,9 @@ Sie können auch den automatisch generierten Namen übernehmen. Dieser ist berei
 
 Klicken Sie zur Vorbereitung des nächsten Schritts auf **Weitere Azure Services durchsuchen**.
 
+> [!NOTE]
+> Klicken Sie in diesem Dialogfeld noch nicht auf **Erstellen**. Es ist erforderlich, dass Sie im nächsten Schritt zuerst eine SQL-Datenbank einrichten.
+
 ![Konfigurieren des Web-App-Namens](./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 ### <a name="create-a-sql-server-instance"></a>Erstellen einer SQL Server-Instanz
@@ -150,9 +164,9 @@ Konfigurieren Sie die restlichen Felder, und klicken Sie auf **OK**.
 
 ### <a name="configure-the-sql-database"></a>Konfigurieren der SQL-Datenbank
 
-Geben Sie unter **Datenbankname** `myToDoAppDb` oder einen beliebigen Namen ein.
+Geben Sie unter **Datenbankname** den Namen _myToDoAppDb_ oder einen beliebigen anderen Namen ein.
 
-Geben Sie unter **Name der Verbindungszeichenfolge** den Namen `MyDbConnection` ein. Dieser Name muss mit der Verbindungszeichenfolge übereinstimmen, auf die in `Models\MyDatabaseContext.cs` verwiesen wird.
+Geben Sie unter **Name der Verbindungszeichenfolge** den Namen _MyDbConnection_ ein. Dieser Name muss mit der Verbindungszeichenfolge übereinstimmen, auf die in _Models\MyDatabaseContext.cs_ verwiesen wird.
 
 ![SQL-Datenbank konfigurieren](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
@@ -174,7 +188,7 @@ In Visual Studio können Sie Ihre neue SQL-Datenbank bequem im **SQL Server-Obje
 
 ### <a name="create-a-database-connection"></a>Erstellen einer Datenbankverbindung
 
-Öffnen Sie den **SQL Server-Objekt-Explorer**, indem Sie `Ctrl`+`\`, `Ctrl`+`S` drücken.
+Öffnen Sie den **SQL Server-Objekt-Explorer**, indem Sie `Ctrl`+`` ` ``, `Ctrl`+`S` drücken.
 
 Klicken Sie oben im **SQL Server-Objekt-Explorer** auf die Schaltfläche **SQL Server hinzufügen**.
 
@@ -210,7 +224,7 @@ In diesem Schritt verwenden Sie Code First-Migrationen in Entity Framework, um e
 
 ### <a name="update-your-data-model"></a>Aktualisieren Sie des Datenmodells
 
-Öffnen Sie `Models\Todo.cs` im Code-Editor. Fügen Sie der `ToDo`-Klasse die folgende Eigenschaft hinzu:
+Öffnen Sie _Models\Todo.cs_ im Code-Editor. Fügen Sie der `ToDo`-Klasse die folgende Eigenschaft hinzu:
 
 ```csharp
 public bool Done { get; set; }
@@ -248,7 +262,7 @@ Wenn die Anwendung ohne Fehler geladen wird, waren die Code First-Migrationen er
 
 Jetzt nehmen Sie Änderungen in Ihrem Code vor, um die `Done`-Eigenschaft zu verwenden. Der Einfachheit halber ändern Sie in diesem Lernprogramm nur Ansichten `Index` und `Create`, um die Eigenschaft in Aktion zu sehen.
 
-Öffnen Sie `Controllers\TodosController.cs`.
+Öffnen Sie _Controllers\TodosController.cs_.
 
 Suchen Sie die `Create()`-Methode, und fügen Sie `Done` zur Liste der Eigenschaften im `Bind`-Attribut hinzu. Wenn Sie hiermit fertig sind, sollte die Signatur der `Create()`-Methode wie folgt aussehen:
 
@@ -256,7 +270,7 @@ Suchen Sie die `Create()`-Methode, und fügen Sie `Done` zur Liste der Eigenscha
 public ActionResult Create([Bind(Include = "id,Description,CreatedDate,Done")] Todo todo)
 ```
 
-Öffnen Sie `Views\Todos\Create.cshtml`.
+Öffnen Sie _Views\Todos\Create.cshtml_.
 
 Im Razor-Code sollten Sie ein `<div class="form-group">`-Tag sehen, das `model.Description` verwendet, sowie ein weiteres `<div class="form-group">`-Tag, das `model.CreatedDate` verwendet. Fügen Sie unmittelbar nach diesen beiden Tags ein weiteres `<div class="form-group">`-Tag hinzu, das `model.Done` verwendet:
 
@@ -272,7 +286,7 @@ Im Razor-Code sollten Sie ein `<div class="form-group">`-Tag sehen, das `model.D
 </div>
 ```
 
-Öffnen Sie `Views\Todos\Index.cshtml`.
+Öffnen Sie _Views\Todos\Index.cshtml_.
 
 Suchen Sie das leere `<th></th>`-Tag. Fügen Sie direkt oberhalb dieses Tags folgenden Razor-Code hinzu:
 
@@ -320,7 +334,7 @@ Nachdem Sie Code First-Migrationen in der Azure-Web-App aktiviert haben, veröff
 
 Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**.
 
-Versuchen Sie erneut, neue Aufgaben zu erstellen, und wählen Sie **Fertig** aus. Sie sollten auf der Startseite als abgeschlossene Aufgaben angezeigt werden.
+Versuchen Sie erneut, Aufgaben hinzuzufügen, und wählen Sie **Fertig** aus. Sie sollten auf der Startseite als abgeschlossene Aufgaben angezeigt werden.
 
 ![Azure-Web-App nach Code First-Migration](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
@@ -333,7 +347,7 @@ Versuchen Sie erneut, neue Aufgaben zu erstellen, und wählen Sie **Fertig** aus
 
 Sie können Ablaufverfolgungsmeldungen direkt aus der Azure-Web-App in Visual Studio streamen.
 
-Öffnen Sie `Controllers\TodosController.cs`.
+Öffnen Sie _Controllers\TodosController.cs_.
 
 Beachten Sie, dass jede Aktion mit einer `Trace.WriteLine()`-Methode beginnt. Dieser Code wird hinzugefügt, um zu zeigen, wie leicht Sie Ablaufverfolgungsnachrichten zu Ihrer Azure-Web-App hinzufügen können.
 
@@ -413,6 +427,30 @@ Die Registerkarten auf dem Blatt zeigen die vielen tollen Features, mit denen Si
 - Zentrales und horizontales Hochskalieren
 - Hinzufügen einer Benutzerauthentifizierung
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+ 
+Wenn Sie diese Ressourcen nicht für ein anderes Tutorial benötigen (siehe [Nächste Schritte](#next)), können Sie sie löschen, indem Sie den folgenden Befehl ausführen: 
+  
+```azurecli 
+az group delete --name myResourceGroup 
+``` 
+
+<a name="next"></a>
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich mit vorgefertigten [Azure PowerShell-Beispielen](app-service-powershell-samples.md) vertraut.
+In diesem Tutorial haben Sie Folgendes gelernt:
+
+> [!div class="checklist"]
+> * Erstellen einer SQL-Datenbank in Azure
+> * Herstellen einer Verbindung mit SQL-Datenbank für eine ASP.NET-App
+> * Bereitstellen der Anwendung in Azure
+> * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
+> * Streamen von Protokollen von Azure auf Ihr Terminal
+> * Verwalten der App im Azure-Portal
+
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie hierfür einen benutzerdefinierten DNS-Namen zuordnen.
+
+> [!div class="nextstepaction"]
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md)
+

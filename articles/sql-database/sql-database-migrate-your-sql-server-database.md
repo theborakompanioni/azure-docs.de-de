@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 04/20/2017
+ms.date: 05/07/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: c6d965351f6f131ee342cea672fc4fa8771f8ede
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cf128e84cfa69a259ff529caebb910840dcbaede
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 
-In diesem Tutorial verwenden Sie den Microsoft Data Migration Assistant, um eine vorhandene SQL Server-Datenbank zu Azure SQL-Datenbank zu migrieren, und Sie durchlaufen die erforderlichen Schritte von der Vorbereitung für die Migration zum Durchführen der tatsächlichen Datenmigration und zum Herstellen der Verbindung mit der migrierten Datenbank, nachdem die Migration abgeschlossen ist. 
+Das Verschieben Ihrer SQL Server-Datenbank nach Azure SQL-Datenbank ist ein dreiteiliger Prozess: Sie bereiten die Datenbank vor und exportieren und importieren sie dann. In diesem Tutorial lernen Sie Folgendes:
 
-> [!IMPORTANT]
-> Um Kompatibilitätsprobleme zu beheben, verwenden Sie [Visual Studio Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt). 
->
+> [!div class="checklist"]
+> * Vorbereiten einer Datenbank in einer SQL Server-Instanz für die Migration zu Azure SQL-Datenbank per [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA)
+> * Exportieren der Datenbank in eine BACPAC-Datei
+> * Importieren der BACPAC-Datei in eine Azure SQL-Datenbank
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
-Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten:
+Vergewissern Sie sich zuerst, ob Folgendes vorhanden ist:
 
 - Die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Bei der Installation von SSMS wird auch die neueste Version von „SQLPackage“ installiert. Dies ist ein Befehlszeilenprogramm, mit dem eine Reihe von Datenbankentwicklungsaufgaben automatisiert werden kann. 
 - Den [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA).
-- Eine zu migrierende Datenbank. In diesem Tutorial wird die [SQL Server 2008-OLTP-Datenbank „AdventureWorks2008R2“](https://msftdbprodsamples.codeplex.com/releases/view/59211) für eine Instanz von SQL Server 2008R2 oder höher verwendet, Sie können aber jede Datenbank Ihrer Wahl verwenden. 
+- Eine zu migrierende Datenbank. In diesem Tutorial wird die [SQL Server 2008-OLTP-Datenbank „AdventureWorks2008R2“](https://msftdbprodsamples.codeplex.com/releases/view/59211) für eine Instanz von SQL Server 2008R2 oder höher verwendet, Sie können aber jede Datenbank Ihrer Wahl verwenden. Um Kompatibilitätsprobleme zu beheben, verwenden Sie [Visual Studio Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
 
 ## <a name="prepare-for-migration"></a>Vorbereiten der Migration
 
@@ -170,7 +170,7 @@ Führen Sie die folgenden Schritte aus, um die Datenbank „AdventureWorks2008R2
    ![Importieren mit SQLPackage](./media/sql-database-migrate-your-sql-server-database/sqlpackage-import.png)
 
 > [!IMPORTANT]
-> Ein logischer Azure SQL-Datenbankserver lauscht über Port 1433. Wenn Sie versuchen, durch eine Unternehmensfirewall eine Verbindung mit einem logischen Azure SQL-Datenbankserver herzustellen, muss dieser Port in der Unternehmensfirewall geöffnet sein, damit der Vorgang erfolgreich ist.
+> Ein logischer Azure SQL-Datenbankserver lauscht auf Port 1433. Wenn Sie versuchen, durch eine Unternehmensfirewall eine Verbindung mit einem logischen Azure SQL-Datenbankserver herzustellen, muss dieser Port in der Unternehmensfirewall geöffnet sein, damit der Vorgang erfolgreich ist.
 >
 
 ## <a name="connect-using-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mithilfe von SQL Server Management Studio (SSMS)
@@ -222,15 +222,17 @@ Sie können die Dienstebene, die Leistungsstufe und den Kompatibilitätsgrad üb
    ![Ändern des Kompatibilitätsgrads](./media/sql-database-migrate-your-sql-server-database/compat-level.png)
 
 ## <a name="next-steps"></a>Nächste Schritte 
+In diesem Tutorial haben Sie Ihre Datenbank vorbereitet, exportiert und importiert. Sie haben Folgendes gelernt:
 
-- Eine Übersicht über Migration finden Sie unter [Datenbankmigration](sql-database-cloud-migrate.md).
-- Eine Zusammenstellung zu Transact-SQL-Unterschieden finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).
-- Informationen zum Herstellen einer Verbindung mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit PHP finden Sie unter [Verbinden und Abfragen mit PHP](sql-database-connect-query-php.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Node.js finden Sie unter [Verbinden und Abfragen mit Node.js](sql-database-connect-query-nodejs.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Java finden Sie unter [Verbinden und Abfragen mit Java](sql-database-connect-query-java.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Ruby finden Sie unter [Verbinden und Abfragen mit Ruby](sql-database-connect-query-ruby.md).
+> [!div class="checklist"]
+> * Vorbereiten der Datenbank einer SQL Server-Instanz für die Migration zu Azure SQL-Datenbank
+> * Exportieren der Datenbank in eine BACPAC-Datei
+> * Importieren der BACPAC-Datei in eine Azure SQL-Datenbank
+
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Datenbank schützen.
+
+> [!div class="nextstepaction"]
+> [Schützen der Azure SQL-Datenbank](sql-database-security-tutorial.md)
+
 
 

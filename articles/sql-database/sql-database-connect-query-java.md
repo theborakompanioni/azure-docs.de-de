@@ -13,18 +13,19 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: andrela;carlrab;sstein
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 6ba2880b1ce9eed0f5c3b8e3ed4255c7e4ec7f29
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: defb32835971fe423e77a11817fce057fa7c929d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="azure-sql-database-use-java-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Java zum Herstellen einer Verbindung und Abfragen von Daten
 
-In diesem Schnellstart wird veranschaulicht, wie Sie [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) nutzen, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen. Anschließend können Sie Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über Mac OS-, Windows- und Ubuntu Linux-Plattformen verwenden.
+In diesem Schnellstart wird veranschaulicht, wie Sie [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) nutzen, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen. Anschließend können Sie Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über MacOS-, Windows- und Ubuntu Linux-Plattformen verwenden.
 
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
@@ -36,7 +37,7 @@ In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in
 Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure SQL-Datenbank haben. Falls Sie noch keine Erfahrung mit der Java-Entwicklung haben, navigieren Sie zu [Erstellen einer App mithilfe von SQL Server](https://www.microsoft.com/en-us/sql-server/developer-get-started/), und wählen Sie erst **Java** und dann Ihr Betriebssystem aus.
 
 ### <a name="mac-os"></a>**Mac OS**
-Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Java-Projekt erstellen möchten. Geben Sie die folgenden Befehle ein, um **brew** und **Maven** zu installieren. 
+Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Java-Projekt erstellen möchten. Installieren Sie **brew** und **Maven**, indem Sie die folgenden Befehle eingeben: 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -45,14 +46,14 @@ brew install maven
 ```
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Java-Projekt erstellen möchten. Geben Sie die folgenden Befehle ein, um **Maven** zu installieren. 
+Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Java-Projekt erstellen möchten. Installieren Sie **Maven**, indem Sie die folgenden Befehle eingeben:
 
 ```bash
 sudo apt-get install maven
 ```
 
 ### <a name="windows"></a>**Windows**
-Installieren Sie [Maven](https://maven.apache.org/download.cgi) unter Verwendung des offiziellen Installers. Maven dient zum einfacheren Verwalten von Abhängigkeiten sowie Erstellen, Testen und Ausführen Ihres Java-Projekts. 
+Installieren Sie [Maven](https://maven.apache.org/download.cgi) unter Verwendung des offiziellen Installers. Verwenden Sie Maven zum einfacheren Verwalten von Abhängigkeiten sowie zum Erstellen, Testen und Ausführen Ihres Java-Projekts. 
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
@@ -64,7 +65,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 
    ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
+4. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 5. Klicken Sie auf **Datenbankverbindungszeichenfolgen anzeigen**.
 
 6. Überprüfen Sie die vollständige **JDBC**-Verbindungszeichenfolge.
@@ -300,15 +301,8 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Erkunden Sie das GitHub-Repository für den [Microsoft-JDBC-Treiber für SQL Server](https://github.com/microsoft/mssql-jdbc).
-- [Posten Sie Probleme, oder stellen Sie Fragen](https://github.com/microsoft/mssql-jdbc/issues).
-- Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit PHP finden Sie unter [Verbinden und Abfragen mit PHP](sql-database-connect-query-php.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Node.js finden Sie unter [Verbinden und Abfragen mit Node.js](sql-database-connect-query-nodejs.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Ruby finden Sie unter [Verbinden und Abfragen mit Ruby](sql-database-connect-query-ruby.md).
+- [Entwurf Ihrer ersten Azure SQL-Datenbank](sql-database-design-first-database.md)
+- [Microsoft JDBC Driver für SQL Server](https://github.com/microsoft/mssql-jdbc)
+- [Melden von Problemen/Stellen von Fragen](https://github.com/microsoft/mssql-jdbc/issues)
 
 

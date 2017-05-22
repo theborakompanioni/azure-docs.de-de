@@ -13,19 +13,20 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: andrela;sstein;carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: c8700b16f91f014205acb93d6b57f9b972546268
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 56f1b57798b073622d273b16975981b23a0ad55d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 
 # <a name="azure-sql-database-use-ruby-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Ruby zum Herstellen einer Verbindung und Abfragen von Daten
 
-In diesem Schnellstart wird veranschaulicht, wie Sie mit [Ruby](https://Ruby.org) eine Verbindung mit einer Azure SQL-Datenbank herstellen und anschließend Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über die Plattformen Mac OS und Ubuntu Linux verwenden können.
+In diesem Schnellstart wird veranschaulicht, wie Sie mit [Ruby](https://Ruby.org) eine Verbindung mit einer Azure SQL-Datenbank herstellen und anschließend Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über die Plattformen MacOS und Ubuntu Linux verwenden können.
 
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
@@ -70,7 +71,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 
    ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
+4. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
     
 
 ## <a name="select-data"></a>Auswählen von Daten
@@ -187,15 +188,9 @@ delete('BrandNewProduct', client)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+- [Entwurf Ihrer ersten Azure SQL-Datenbank](sql-database-design-first-database.md)
+- [GitHub-Repository für TinyTDS](https://github.com/rails-sqlserver/tiny_tds)
+- [Melden von Problemen/Stellen von Fragen](https://github.com/rails-sqlserver/tiny_tds/issues)
+- [Ruby Driver for SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/) (Ruby-Treiber für SQL Server)
 
-- Github-Repository für [TinyTDS](https://github.com/rails-sqlserver/tiny_tds).
-- [Posten Sie Probleme, oder stellen Sie Fragen](https://github.com/rails-sqlserver/tiny_tds/issues).        
-- Informieren Sie sich über den [Microsoft Ruby-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/).
-- Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit PHP finden Sie unter [Verbinden und Abfragen mit PHP](sql-database-connect-query-php.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Node.js finden Sie unter [Verbinden und Abfragen mit Node.js](sql-database-connect-query-nodejs.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Java finden Sie unter [Verbinden und Abfragen mit Java](sql-database-connect-query-java.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
 

@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 74b077f6f09d53c9232e5b209a5dd811364ee3f5
-ms.openlocfilehash: c995e0de46c67c5c5d243739b2d36266267bdade
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 8e71a7462a0cbdbd177b088e6757c70eeef31fc7
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -335,6 +337,9 @@ Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre
 
 ```
 
+## <a name="localizing-your-html-content"></a>Lokalisieren Ihres HTML-Inhalts
+Sie können Ihren HTML-Inhalt lokalisieren, indem Sie die [„Sprachanpassung“](active-directory-b2c-reference-language-customization.md) aktivieren.  Wenn Sie die Sprachanpassung aktivieren, kann Azure AD B2C den OIDC-Parameter `ui-locales` an Ihren Endpunkt weiterleiten.  Sie können ihn verwenden, um sprachspezifische benutzerdefinierte UI-Seiten bereitzustellen.  
+
 ## <a name="things-to-remember-when-building-your-own-content"></a>Wichtige Aspekte beim Erstellen eigener Inhalte
 Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten Sie die folgenden bewährten Methoden:
 
@@ -346,9 +351,4 @@ Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten S
   * Eingeschränkte Unterstützung für Internet Explorer 9, 8
   * Google Chrome 42.0 und höher
   * Mozilla Firefox 38.0 und höher
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

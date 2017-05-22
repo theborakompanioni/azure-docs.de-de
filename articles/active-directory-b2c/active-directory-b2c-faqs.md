@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: ac2730935d206ddf9079395384d46a43fdd740cb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: bc0b0b652312f6bcc27a981da766e19cded7bd6c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,7 +34,7 @@ Azure AD B2C kann nicht mit Microsoft Office 365 verwendet werden. Es kann gene
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Was sind lokale Konten in Azure AD B2C? Wie unterscheiden sie sich von Geschäfts-, Schul- oder Unikonten in Azure AD?
 In einem Azure AD-Mandanten meldet sich jeder Benutzer im Mandanten (mit Ausnahme von Benutzern mit vorhandenen Microsoft-Konten) mit einer E-Mail-Adresse im Format `<xyz>@<tenant domain>` an. Hierbei ist `<tenant domain>` eine der überprüften Domänen im Mandanten oder die ursprüngliche `<...>.onmicrosoft.com`-Domäne. Dieser Kontotyp ist ein Geschäfts-, Schul- oder Unikonto.
 
-Bei einem Azure AD B2C-Mandanten kann sich der Benutzer in den meisten Apps mit einer beliebigen E-Mail-Adresse anmelden (also beispielsweise mit joe@comcast.net,, bob@gmail.com,, sarah@contoso.com, oder jim@live.com)). Diese Art von Konto ist ein lokales Konto. Jetzt werden auch beliebige Benutzernamen (einfache Zeichenfolgen) als lokale Konten unterstützt (z. B. joe, bob, sarah oder jim). Sie können eine dieser beiden lokalen Kontotypen im Azure AD B2C-Dienst auswählen.
+Bei einem Azure AD B2C-Mandanten kann sich der Benutzer in den meisten Apps mit einer beliebigen E-Mail-Adresse anmelden (also beispielsweise mit joe@comcast.net, bob@gmail.com, sarah@contoso.com oder jim@live.com). Diese Art von Konto ist ein lokales Konto. Jetzt werden auch beliebige Benutzernamen (einfache Zeichenfolgen) als lokale Konten unterstützt (z. B. joe, bob, sarah oder jim). Sie können eine dieser beiden lokalen Kontotypen im Azure AD B2C-Dienst auswählen.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welche Identitätsanbieter aus sozialen Netzwerken werden derzeit unterstützt? Welche sollen in Zukunft unterstützt werden?
 Gegenwärtig werden Facebook, Google+, LinkedIn und Amazon unterstützt. Die Unterstützung für andere beliebte soziale Identitätsanbieter wird je nach Kundennachfrage hinzugefügt.
@@ -80,7 +82,7 @@ Die Kennwortrichtlinie von Azure AD B2C für lokale Konten basiert auf der Kennw
 Nein. Azure AD Connect ist nicht für die Verwendung mit Azure AD B2C ausgelegt. In Zukunft werden verschiedene Migrationsoptionen und Tools standardmäßig vorhanden sein.
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Kann meine App Azure AD B2C-Seiten in einem iFrame öffnen?
-Nein, aus Sicherheitsgründen können Azure AD B2C-Seiten, die unter der `login.microsftonline.com`-Domäne bereitgestellt werden, nicht in einem iFrame geöffnet werden. Sie müssen für alle Endbenutzeroberflächen immer eine Weiterleitung an Azure AD B2C durchführen.
+Nein. Aus Sicherheitsgründen können Azure AD B2C-Seiten nicht in einem iFrame geöffnet werden.  Unser Dienst kommuniziert mit dem Browser, um dies zu unterbinden.  In allgemeinen Sicherheitskreisen und in der OAUTH2-Spezifikation wird davon abgeraten, iFrames für Identitätszwecke zu verwenden, weil dies mit einem Clickjacking-Risiko verbunden ist.
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Funktioniert Azure AD B2C in Verbindung mit CRM-Systemen wie Microsoft Dynamics?
 Derzeit ist dies nicht möglich. Die Integration dieser Systeme ist aber geplant.
@@ -92,7 +94,10 @@ Derzeit ist dies nicht möglich. Azure AD B2C bietet keine Unterstützung für S
 Lesen Sie diesen Artikel über [externe Identitäten](../active-directory/active-directory-b2b-compare-external-identities.md) , um mehr über das Anwenden der entsprechenden Features in Ihren Szenarien mit externen Identitäten zu erfahren.
 
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Welche Funktionen für Berichterstellung und Überwachung bietet Azure AD B2C? Sind die Funktionen mit denen in Azure AD Premium identisch?
-Nein. Azure AD B2C unterstützt nicht den gleichen Berichtssatz wie Azure AD Premium. Für Azure AD B2C werden in Kürze grundlegende APIs für Berichterstellung und Auditing veröffentlicht.
+Nein. Azure AD B2C unterstützt nicht den gleichen Berichtssatz wie Azure AD Premium. Es gibt aber viele Gemeinsamkeiten.  
+* Die Anmeldeberichte enthalten einen Eintrag für jede Anmeldung mit reduzierten Details.  
+* Überwachungsberichte sind im Azure-Portal unter „Azure Active Directory“ > „ACTIVITY-Audit logs“ (ACTIVITY-Überwachungsprotokolle) verfügbar. Wählen Sie die Option „B2C“, und wenden Sie je nach Bedarf Filter an. Sowohl die Administratoraktivität als auch die Anwendungsaktivität sind abgedeckt. 
+* Ein Nutzungsbericht mit Angaben zur Anzahl von Benutzern, zur Anzahl von Anmeldungen und zum MFA-Umfang ist unter [Zugriff auf Verwendungsberichte in Azure AD B2C über die Berichterstattungs-API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api) verfügbar.
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Kann ich die Benutzeroberfläche von Seiten lokalisieren, die von Azure AD B2C bereitgestellt werden? Welche Sprachen werden unterstützt?
 Derzeit ist Azure AD B2C nur für Englisch optimiert. Es ist geplant, die Lokalisierungsfeatures so bald wie möglich bereitzustellen.
@@ -123,10 +128,5 @@ Siehe [Senden von Supportanfragen für Azure Active Directory B2C](active-direct
 
 ## <a name="more-information"></a>Weitere Informationen
 Informieren Sie sich auch über die aktuellen [Einschränkungen des Diensts](active-directory-b2c-limitations.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
