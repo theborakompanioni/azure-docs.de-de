@@ -4,7 +4,7 @@ Die Clientbibliothek des IoT Hub-Serialisierungsprogramms verwendet ein Modell, 
 
 1. Fügen Sie die folgenden Variablendeklarationen nach den `#include` -Anweisungen hinzu. Ersetzen Sie die Platzhalterwerte „[Device Id]“ und „[Device Key]“ durch die Werte, die Sie für Ihr Gerät aus dem Dashboard der Remoteüberwachungslösung notiert haben. Ersetzen Sie „[IoTHub Name]“ durch den IoT Hub-Hostnamen aus dem Lösungsdashboard. Beispiel: Wenn der IoT Hub-Hostname **contoso.azure-devices.net** lautet, ersetzen Sie [IoTHub Name] durch **contoso**:
    
-    ```
+    ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
@@ -17,7 +17,7 @@ Die Clientbibliothek des IoT Hub-Serialisierungsprogramms verwendet ein Modell, 
    - Das Gerät kann gewünschte Eigenschaften, die im Gerätezwilling in IoT Hub festgelegt wurden, empfangen und auf sie reagieren.
    - Das Gerät kann auf die direkten Methoden **Reboot** und **InitiateFirmwareUpdate** reagieren, die über das Lösungsportal aufgerufen werden. Informationen zu den unterstützten direkten Methoden werden vom Gerät mithilfe gemeldeter Eigenschaften gesendet.
    
-    ```
+    ```c
     // Define the Model
     BEGIN_NAMESPACE(Contoso);
 
@@ -90,7 +90,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
 
 1. Fügen Sie zur Behandlung der gewünschten Eigenschaften, die auf dem Lösungsdashboard festgelegt werden, die folgenden Funktionen hinzu. Diese gewünschten Eigenschaften sind im Modell definiert:
 
-    ```
+    ```c
     void onDesiredTemperatureMeanValue(void* argument)
     {
       /* By convention 'argument' is of the type of the MODEL */
@@ -109,7 +109,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
 
 1. Fügen Sie zur Behandlung der direkten Methoden, die über den IoT Hub aufgerufen werden, die folgenden Funktionen hinzu. Diese direkten Methoden sind im Modell definiert:
 
-    ```
+    ```c
     /* Handlers for direct methods */
     METHODRETURN_HANDLE Reboot(Thermostat* thermostat)
     {
@@ -132,7 +132,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
 
 1. Fügen Sie die folgende Funktion hinzu, die eine Nachricht an die vorkonfigurierte Lösung sendet:
    
-    ```
+    ```c
     /* Send data to IoT Hub */
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
     {
@@ -160,7 +160,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
 
 1. Fügen Sie den folgenden Rückrufhandler hinzu, der ausgeführt wird, wenn das Gerät neue gemeldete Eigenschaftswerte an die vorkonfigurierte Lösung gesendet hat:
 
-    ```
+    ```c
     /* Callback after sending reported properties */
     void deviceTwinCallback(int status_code, void* userContextCallback)
     {
@@ -180,7 +180,7 @@ Fügen Sie nun den Code hinzu, der das im Modell definierte Verhalten implementi
     - Sie erstellt eine Schleife, um im Sekundentakt Telemetriedaten zu senden.
     - Sie hebt die Initialisierung aller Ressourcen auf.
 
-      ```
+      ```c
       void remote_monitoring_run(void)
       {
         if (platform_init() != 0)
