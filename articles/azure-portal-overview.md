@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
-translationtype: Human Translation
-ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
-ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: e4c1c2b956b2cae673e60223ce777ba1096dce33
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -32,7 +33,7 @@ Das Microsoft Azure-Portal ist eine zentrale Anlaufstelle zum Bereitstellen und 
   ![Azure-Portal-UI-Ausrichtung][UIOrientation]
 
 ## <a name="before-you-get-started"></a>Bevor Sie beginnen
-Um dieses Lernprogramm zu bearbeiten, benötigen Sie ein gültiges Azure-Abonnement.  Wenn Sie kein Azure-Abonnement haben, registrieren Sie sich noch heute [für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) .  Sobald Sie über ein Abonnement verfügen, können Sie unter [https://portal.azure.com] auf das Portal zugreifen.
+Um dieses Lernprogramm zu bearbeiten, benötigen Sie ein gültiges Azure-Abonnement.  Wenn Sie kein Azure-Abonnement haben, registrieren Sie sich noch heute [für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) .  Sobald Sie über ein Abonnement verfügen, können Sie unter <https://portal.azure.com> auf das Portal zugreifen.
 
 ## <a name="how-to-create-a-resource"></a>Erstellen einer Ressource
 Azure verfügt über einen Markt mit Tausenden von Elementen, die Sie von einem zentralen Ort aus erstellen können.  Angenommen, Sie möchten einen neuen Windows Server 2012-VM erstellen.  Der Hub +NEU ist Ihr Zugriffspunkt auf eine gut sortierte Reihe wichtiger Kategorien aus dem Marketplace.  Jede Kategorie verfügt über eine kleine Gruppe bestimmter Elemente und einen Link zum Marketplace mit allen Kategorien und der Suchfunktion. Um die neue Windows Server 2012-VM zu erstellen, führen Sie die folgenden Aktionen aus:  

@@ -1,8 +1,8 @@
 | Kategorie | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt |
 |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/data-factory-azure-blob-connector.md) |✓  |✓  |
+| &nbsp; |[Azure Cosmos DB (DocumentDB-API)](../articles/data-factory/data-factory-azure-documentdb-connector.md) |✓  |✓  |
 | &nbsp; |[Azure Data Lake-Speicher](../articles/data-factory/data-factory-azure-datalake-connector.md) |✓  |✓  |
-| &nbsp; |[Azure DocumentDB](../articles/data-factory/data-factory-azure-documentdb-connector.md) |✓ |✓  |
 | &nbsp; |[Azure SQL-Datenbank](../articles/data-factory/data-factory-azure-sql-connector.md) |✓  |✓  |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/data-factory-azure-sql-data-warehouse-connector.md) |✓  |✓  |
 | &nbsp; |[Azure Search-Index](../articles/data-factory/data-factory-azure-search-connector.md) | |✓  |

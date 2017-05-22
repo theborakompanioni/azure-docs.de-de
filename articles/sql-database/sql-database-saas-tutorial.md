@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen und Kennenlernen der Wingtip Tickets Platform-Anwendung (WTP-SaaS-Beispielanwendung, die Azure SQL-Datenbank verwendet) | Microsoft-Dokumentation
-description: Bereitstellen und Kennenlernen einer SaaS-Beispielanwendung, die Azure SQL-Datenbank verwendet
+title: Bereitstellen und Kennenlernen einer SaaS-Anwendung, die Azure SQL-Datenbank verwendet | Microsoft-Dokumentation
+description: "Bereitstellen und Kennenlernen der Wingtip Tickets-Beispiel-App (WTP) für Azure SQL-Datenbank"
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ff4dc19bb6e24ea9ceeed9721cfb3a85b4d10965
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 04859fb8a9f4a8bf04d92e7139d9202885c52503
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -29,6 +29,8 @@ ms.lasthandoff: 05/10/2017
 In diesem Tutorial stellen Sie die Wingtip Tickets Platform-SaaS-Anwendung (WTP) bereit und machen sich mit dieser vertraut. Die Anwendung verwendet ein SaaS-Anwendungsmuster mit einer Datenbank pro Mandant, um mit mehreren Mandanten zu kommunizieren. Mit der Anwendung sollen die Funktionen von Azure SQL-Datenbank vorgestellt werden, die SaaS-Szenarien ermöglichen, einschließlich von SaaS-Entwurfs- und -Verwaltungsmustern.
 
 Innerhalb von fünf Minuten, nachdem Sie unten auf die Schaltfläche *Bereitstellung in Azure* geklickt haben, verfügen Sie über eine funktionstüchtige mehrinstanzenfähige SaaS-Anwendung in der Cloud, die SQL-Datenbank verwendet. Die Anwendung wird mit drei Beispielmandanten mit jeweils einer eigenen Datenbank bereitgestellt. Diese werden alle in einem Pool für elastische SQL-Datenbanken bereitgestellt. Die App wird in Ihrem Azure-Abonnement bereitgestellt, wodurch Sie uneingeschränkten Zugriff erhalten und die einzelnen Anwendungskomponenten untersuchen und mit ihnen arbeiten können.
+
+Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung.
 
 In diesem Tutorial lernen Sie Folgendes kennen:
 

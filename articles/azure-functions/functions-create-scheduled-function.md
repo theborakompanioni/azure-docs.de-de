@@ -16,43 +16,49 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 10461bddeb4d5adf4a6e4f65159ba2653dbef8a4
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 1478a2eedad496d3113fef28920d10859d11b1ce
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-#  <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
+# <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
 
-Erfahren Sie, wie Sie mithilfe von Azure Functions eine Funktion erstellen können, die nach einem von Ihnen definierten Zeitplan ausgeführt wird. 
+Erfahren Sie, wie Sie mithilfe von Azure Functions eine Funktion erstellen können, die nach einem von Ihnen definierten Zeitplan ausgeführt wird.
 
 ![Erstellen einer Funktionen-App im Azure-Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
-Für die Schritte in diesem Thema werden in der Regel weniger als fünf Minuten benötigt.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="prerequisites"></a>Voraussetzungen 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
+[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-In diesem Thema erstellen Sie eine Funktion mit Auslösung per Timer in der vorhandenen Funktionen-App. 
+## <a name="create-an-azure-function-app"></a>Erstellen einer Azure Function-App
 
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-function"></a>Erstellen einer Funktion mit Auslösung per Timer
+![Die Funktionen-App wurde erfolgreich erstellt.](./media/functions-create-first-azure-function/function-app-create-success.png)
+
+Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
+
+<a name="create-function"></a>
+
+## <a name="create-a-timer-triggered-function"></a>Erstellen einer Funktion mit Auslösung per Timer
 
 1. Erweitern Sie Ihre Funktionen-App, klicken Sie neben den **Funktionen** auf die Schaltfläche **+**, und klicken Sie anschließend auf die Vorlage **TimerTrigger** für die gewünschte Sprache. Verwenden Sie dann die in der Tabelle angegebenen Einstellungen, und klicken Sie anschließend auf **Erstellen**:
 
-    | Einstellung      |  Empfohlener Wert   | Beschreibung                              |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **Name Ihrer Funktion** | TimerTriggerCSharp1 | Definiert den Namen der Funktion mit Auslösung per Timer
-    | **[Zeitplan](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 */1 * * * * | Ein sechs Felder umfassender [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression), der die minütliche Ausführung der Funktion festlegt. |
+| Einstellung | Empfohlener Wert | Beschreibung |
+|---|---|---|
+| **Name Ihrer Funktion** | TimerTriggerCSharp1 | Definiert den Namen der Funktion mit Auslösung per Timer |
+| **[Zeitplan](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression), der die minütliche Ausführung der Funktion festlegt. |
 
-    Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt. 
+Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
 
-4. Überprüfen Sie, ob die Funktion ausgeführt wird, indem Sie sich die Nachverfolgungsinformationen in den Protokollen ansehen. 
+1. Überprüfen Sie, ob die Funktion ausgeführt wird, indem Sie sich die Nachverfolgungsinformationen in den Protokollen ansehen.
 
-    ![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
 Jetzt können Sie den Zeitplan der Funktion anpassen, sodass sie nicht mehr so häufig ausgeführt wird, z.B. nur noch stündlich. 
 
@@ -71,12 +77,9 @@ Ihre Funktion wird nun stündlich ausgeführt.
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben eine Funktion erstellt, die nach einem Zeitplan ausgeführt wird. 
+
+Sie haben eine Funktion erstellt, die nach einem Zeitplan ausgeführt wird.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-Weitere Informationen zu Triggern mit Timern finden Sie unter [Planen der Ausführung von Code mit Azure Functions](functions-bindings-timer.md). 
-
-
-
-
+Weitere Informationen zu Triggern mit Timern finden Sie unter [Planen der Ausführung von Code mit Azure Functions](functions-bindings-timer.md).

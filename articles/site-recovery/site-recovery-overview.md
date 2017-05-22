@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 03/14/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: d8e4e4bb7dd1e40d8c561adba04b8346fcb2127d
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 89921997f68bd72ee6086d2b635361eeeaba1c28
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure Recovery Services unterstützen Sie bei Ihrer BCDR-Strategie. Mit dem [Azu
 
 - **Notfallwiederherstellung in der Cloud:** Workloads auf virtuellen Computern und physischen Servern können in Azure repliziert werden, anstatt eine Replikation an einem sekundären Standort durchzuführen. So entfallen die Kosten und die Komplexität, die mit der Verwaltung eines sekundären Datencenters verbunden sind.
 - **Flexible Replikation für Hybridumgebungen:** Sie können beliebige Workloads replizieren, die auf unterstützten lokalen virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows- bzw. Linux-Servern ausgeführt werden.
-- **Migration:** Mit Site Recovery können Sie lokale AWS-Instanzen zu virtuellen Azure-Computern oder virtuelle Azure-Computer zwischen Azure-Regionen migrieren.
+- **Migration:** Mit Site Recovery können Sie AWS-Instanzen zu virtuellen Azure-Computern oder virtuelle Azure-Computer zwischen Azure-Regionen migrieren.
 - **Einfachere Geschäftskontinuität und Notfallwiederherstellung:** Die Replikation kann über einen zentralen Ort im Azure-Portal bereitgestellt werden.  Sie können einfache Failover- und Failbackvorgänge für einzelne und mehrere Computern ausführen.
 - **Resilienz:** Site Recovery orchestriert die Replikation und das Failover, ohne Anwendungsdaten abzufangen.
 Da die replizierten Daten in Azure Storage gespeichert werden, profitieren Sie von der entsprechenden Resilienz. Bei einem Failover werden virtuelle Azure-Computer auf der Grundlage der replizierten Daten erstellt.
