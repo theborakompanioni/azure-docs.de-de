@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5d74f8216edd46fcd36d2b7f8763ec8a69ccad42
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5c995ca118676935f4f9b0c72c266b9d52c181cb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -44,7 +45,7 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 
 | [Verbinden einer Web-App mit einer SQL-­Datenbank](./scripts/app-service-cli-app-service-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine Azure-Web-App und eine SQL-Datenbank und fügt dann die Datenbank-Verbindungszeichenfolge zu den App-Einstellungen hinzu. |
 | [Verbinden einer Web-App mit einem Speicherkonto](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine Azure-Web-App und ein Speicherkonto und fügt dann die Speicherverbindungszeichenfolge zu den App-Einstellungen hinzu. |
 | [Herstellen einer Verbindung einer Web-App mit einem Redis-Cache](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine Azure-Web-App und einen Redis-Cache und fügt dann die Redis-Verbindungsdetails zu den App-Einstellungen hinzu. |
-| [Herstellen einer Verbindung einer Web-App mit einer DocumentDB-Instanz](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine Azure-Web-App und eine DocumentDB-Instanz und fügt dann die DocumentDB-Verbindungsdetails zu den App-Einstellungen hinzu. |
+| [Herstellen einer Verbindung zwischen einer Web-App und Cosmos DB](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine Azure-Web-App und eine Cosmos DB-Instanz und fügt dann die Cosmos DB-Verbindungsdetails zu den App-Einstellungen hinzu. |
 |**Überwachen der App**||
 | [Überwachen einer Web-App mit Webserverprotokollen](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine Azure-Web-App, aktiviert die Protokollierung für die App und lädt die Protokolle auf Ihren lokalen Computer herunter. |
 | | |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: multiple
-ms.date: 04/03/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f1156572dece1dd59d5a258b670c8fb4f3e3d0e6
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 85a2fac77cf5beae6debad044df169301d43f4ca
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -108,6 +108,7 @@ Sie können die Werte dieser vom Dienst definierten Variablen mit **get** abrufe
 | $SucceededTasks |Die Anzahl der Aufgaben, die erfolgreich abgeschlossen wurden |
 | $FailedTasks |Die Anzahl der Aufgaben, bei denen Fehler aufgetreten sind |
 | $CurrentDedicated |Die aktuelle Anzahl der zugewiesenen Computeknoten |
+| $PreemptedNodeCount | Die Anzahl der Knoten im Pool, die sich im Zustand „Vorzeitig entfernt“ befinden. |
 
 > [!TIP]
 > Die obigen, vom Dienst definierten schreibgeschützten Variablen sind *Objekte* , die verschiedene Methoden für den Zugriff auf die zum jeweiligen Objekt gehörigen Daten bereitstellen. Weitere Informationen finden Sie unten unter [Erfassen von Stichprobendaten](#getsampledata).

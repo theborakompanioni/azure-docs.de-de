@@ -52,10 +52,10 @@ Die Funktionsweise der Bereitstellung mit minutengenauer Granularität ist einfa
 
 Im Folgenden finden Sie ein konkretes Beispiel, in dem ein Kunde 10.000 RUs/Sek mit 100.000 RUs/Min. bereitstellen kann. Dabei werden 73% Kosteneinsparungen erzielt im Vergleich mit einer Bereitstellung für Spitzenlasten (mit 50.000 RUs/Sek.) während eines 90-Sekunden-Zeitraums in einer Sammlung, für die 10.000 RUs/Sek. und 100.000 RUs/Min. bereitgestellt wurden:
 
-* 1. Sekunde: Das Budget an RUs/Min. ist auf 100.000 festgelegt.
-* 3. Sekunde: Während dieser Sekunde beträgt der Verbrauch an Anforderungseinheiten 11.010 RUs und damit 1.010 RUs über dem Kontingent der RUs/Sek. Daher werden 1.010 RUs vom Budget der RUs/Min. abgezogen. 98.990 RUs stehen für die nächsten 57 Sekunden im Budget an RUs/Min. zur Verfügung.
-* 29. Sekunde: Während dieser Sekunde tritt eine Lastspitze auf (mehr als 4-mal so hoch wie die Bereitstellung pro Sekunde) und der Verbrauch an Anforderungseinheiten beträgt 46.920 RUs. 36.920 RUs werden vom Budget an RUs/Min. abgezogen, das damit von 92.323 RUs (28. Sekunde) auf 55.403 RUs (29. Sekunde) sinkt.
-* 61. Sekunde: Das Budget an RUs/Min. wird auf 100.000 RUs zurückgesetzt.
+* 1 Sekunde: Das Budget an RUs/Min. ist auf 100.000 festgelegt.
+* 3 Sekunde: Während dieser Sekunde beträgt der Verbrauch an Anforderungseinheiten 11.010 RUs und damit 1.010 RUs über dem Kontingent der RUs/Sek. Daher werden 1.010 RUs vom Budget der RUs/Min. abgezogen. 98.990 RUs stehen für die nächsten 57 Sekunden im Budget an RUs/Min. zur Verfügung.
+* 29 Sekunde: Während dieser Sekunde tritt eine Lastspitze auf (mehr als 4-mal so hoch wie die Bereitstellung pro Sekunde) und der Verbrauch an Anforderungseinheiten beträgt 46.920 RUs. 36.920 RUs werden vom Budget an RUs/Min. abgezogen, das damit von 92.323 RUs (28. Sekunde) auf 55.403 RUs (29. Sekunde) sinkt.
+* 61 Sekunde: Das Budget an RUs/Min. wird auf 100.000 RUs zurückgesetzt.
  
 ![Diagramm mit Verbrauch und Bereitstellung von Azure Cosmos DB](./media/request-units-per-minute/azure-cosmos-db-request-units-per-minute.png)
 

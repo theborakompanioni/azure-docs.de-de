@@ -1,6 +1,6 @@
 ---
-title: Verwendung von .NET Core in Azure App Service-Web-Apps unter Linux | Microsoft Docs
-description: Verwendung von .NET Core in Azure App Service-Web-Apps unter Linux
+title: Verwenden von .NET Core in Azure App Service-Web-Apps unter Linux | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie .NET Core in Azure App Service-Web-Apps unter Linux verwenden.
 keywords: Azure App Service, Web-App, DotNet, Core, Linux, OSS
 services: app-service
 documentationCenter: 
@@ -13,24 +13,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2017
+ms.date: 05/07/2017
 ms.author: aelnably;wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
-ms.openlocfilehash: 769de52a85d1d5078b2ba583e94cabd22b0fde65
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3608ddf86c3d8010b577e6f745dcd5cef016acd9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="using-net-core-in-web-apps-on-linux"></a>Verwendung von .NET Core in Web-Apps unter Linux #
+# <a name="using-net-core-in-azure-web-app-on-linux"></a>Verwenden von .NET Core in Azure-Web-Apps unter Linux #
+
+[!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
+
 
 Mit dem aktuellen Update unseres Back-Ends wurde Unterstützung für .NET Core v.1.0 eingeführt. Durch Festlegen der Konfiguration Ihrer Linux-Web-App können Sie den Anwendungsstapel ändern.
 
 
-## <a name="using-xplat-cli"></a>Verwendung der XPlat-CLI ##
+## <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle ##
 
-Mithilfe der aktuellen plattformübergreifenden Azure-Befehlszeilenschnittstelle können Sie den Befehl **azure webapp config set** zum Ändern des Anwendungsstapels verwenden. Beispiel:
+Mithilfe der [aktuellen Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli) können Sie den Befehl **azure webapp config set** zum Ändern des Anwendungsstapels verwenden. Beispiel:
 
         azure webapp config set --name ContosoAppServicePlan --resource-group ContosoLinuxAzureResourceGroup --netframeworkversion v1.0 --appcommandline aspnetcore.dll
 
@@ -41,7 +45,7 @@ Dadurch wird das .NET Core-Image geladen und Ihre Web-App gestartet. Mit dem Bef
         azure webapp config show --name ContosoAppServicePlan --resource-group ContosoLinuxAzureResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Was ist App Service unter Linux?](app-service-linux-intro.md)
-* [Erstellen von Web-Apps in App Service unter Linux](./app-service-linux-how-to-create-a-web-app.md)
+* [Was ist Azure-Web-Apps unter Linux?](app-service-linux-intro.md)
+* [Erstellen von Web-Apps in Azure-Web-Apps unter Linux](./app-service-linux-how-to-create-web-app.md)
 * [Plattformübergreifende Azure-Web-App-CLI](app-service-web-app-azure-resource-manager-xplat-cli.md)
 * [Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux](app-service-linux-faq.md)

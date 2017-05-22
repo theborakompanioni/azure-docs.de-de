@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: b521c3bb99c9a6980df46eacec4e1ebe72fb01a1
-ms.openlocfilehash: 00f6a7af021029d1795071c930e05f200578fa14
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6f1234381a6aad9632d88825aab1a5bf304a20fb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/23/2017
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
 
 > [!NOTE]
-> Zwar werden in dieser exemplarischen Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, die Informationen gelten aber auch für die automatische Skalierung von Cloud Services und Web-Apps.
+> Zwar werden in dieser exemplarischen Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, die Informationen gelten aber auch für die automatische Skalierung von [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/).
 > Wenn Sie eine einfache Einstellung für horizontales Herunterskalieren/Hochskalieren für eine VM-Skalierungsgruppe konfigurieren möchten, die auf einer einfachen Leistungsmetrik wie CPU basiert, finden Sie in den Dokumenten zu [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) und [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) weitere Informationen.
 >
 >
