@@ -5,7 +5,6 @@
 # Erste Schritte
 ## [Registrieren bei Log Analytics](log-analytics-get-started.md)
 ## [Verwalten des Zugriffs](log-analytics-manage-access.md)
-## [Proxy und Firewall](log-analytics-proxy-firewall.md)
 ## [Nutzungsdaten](log-analytics-usage.md)
 ## [Häufig gestellte Fragen zu Log Analytics](log-analytics-faq.md)
 ## [Service Providers](log-analytics-service-providers.md)
@@ -14,7 +13,7 @@
 ## Sammeln von Daten
 ### Verbundene Quellen
 #### [Windows-Agents](log-analytics-windows-agents.md)
-#### [Linux-Agents](log-analytics-linux-agents.md)
+#### [Linux-Agents](log-analytics-agent-linux.md)
 #### [Azure Virtual Machines](log-analytics-azure-vm-extension.md)
 #### [Azure-Ressourcen](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
@@ -23,8 +22,12 @@
 ### Datenquellen
 #### [Übersicht über Datenquellen](log-analytics-data-sources.md)
 #### [Windows-Ereignisse](log-analytics-data-sources-windows-events.md)
+#### [Benutzerdefinierte JSON-Daten](log-analytics-data-sources-json.md)
+#### [Collectd-Leistungsdaten](log-analytics-data-sources-collectd.md)
+#### [Nagios- und Zabbix-Warnungen](log-analytics-data-sources-alerts-nagios-zabbix.md)
 #### [Syslog](log-analytics-data-sources-syslog.md)
 #### [Leistungsindikatoren](log-analytics-data-sources-performance-counters.md)
+#### [Linux-Anwendungsleistung](log-analytics-data-sources-linux-applications.md)
 #### [IIS-Protokolle](log-analytics-data-sources-iis-logs.md)
 #### [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md)
 #### [Benutzerdefinierte Felder](log-analytics-custom-fields.md)
@@ -32,6 +35,7 @@
 ### [Übersicht über Protokollsuchvorgänge](log-analytics-log-searches.md)
 ### [Suchreferenz](log-analytics-search-reference.md)
 #### [Reguläre Ausdrücke](log-analytics-log-searches-regex.md)
+### [Ausführen von Aktionen aus Suchergebnissen](log-analytics-log-search-takeaction.md)
 ### [Computergruppen](log-analytics-computer-groups.md)
 ## Daten analysieren
 ### [Dashboards](log-analytics-dashboards.md)
