@@ -22,7 +22,7 @@ ms.lasthandoff: 12/13/2016
 
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
-Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version&1;.2 bzw.&2;.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
+Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
 
 ## <a name="install-the-java-sdk"></a>Installieren des Java SDK
 
@@ -52,7 +52,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
     </dependencies>
 ```
 
-*Log4J v2.&0;*
+*Log4J v2. 0*
 
 ```XML
 
@@ -65,7 +65,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
     </dependencies>
 ```
 
-*Log4J v1.&2;*
+*Log4J v1. 2*
 
 ```XML
 
@@ -90,13 +90,13 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '1.0.+'
 ```
 
-**Log4J v2.&0;**
+**Log4J v2. 0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '1.0.+'
 ```
 
-**Log4J v1.&2;**
+**Log4J v1. 2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '1.0.+'
@@ -108,8 +108,8 @@ Laden Sie den entsprechenden Appender herunter, extrahieren Sie ihn, und fügen 
 | Protokollierungstool | Download | Bibliothek |
 | --- | --- | --- |
 | Logback |[SDK mit Logback-Appender](https://aka.ms/xt62a4) |applicationinsights-logging-logback |
-| Log4J v2.&0; |[SDK mit Log4J-v2-Appender](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
-| Log4J v1.&2; |[SDK mit Log4J-v1.&2;-Appender](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
+| Log4J v2. 0 |[SDK mit Log4J-v2-Appender](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
+| Log4J v1. 2 |[SDK mit Log4J-v1. 2-Appender](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>Hinzufügen des Appenders zu Ihrem Protokollierungsframework
 Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit der Konfigurationsdatei für Log4J oder Logback zusammen: 
@@ -126,7 +126,7 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
     </root>
 ```
 
-*Log4J v2.&0;*
+*Log4J v2. 0*
 
 ```XML
 
@@ -142,7 +142,7 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
     </Configuration>
 ```
 
-*Log4J v1.&2;*
+*Log4J v1. 2*
 
 ```XML
 
