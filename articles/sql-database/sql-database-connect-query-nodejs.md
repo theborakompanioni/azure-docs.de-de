@@ -13,18 +13,19 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/07/2017
 ms.author: lbosq
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4de9eb8f55bfda8b223417f5c1ed4e71b0f063c6
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 99c1ce93f30a54fcf0d76b1367c2f9545258c1f9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="azure-sql-database-use-nodejs-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Node.js zum Herstellen einer Verbindung und Abfragen von Daten
 
-In diesem Schnellstart wird veranschaulicht, wie Sie [Node.js](https://nodejs.org/en/) nutzen, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen. Anschließend können Sie Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank auf Windows-, Mac- und Ubuntu Linux-Plattformen verwenden.
+In diesem Schnellstart wird veranschaulicht, wie Sie [Node.js](https://nodejs.org/en/) nutzen, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen. Anschließend können Sie Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank auf Windows-, Ubuntu Linux- und MacOS-Plattformen verwenden.
 
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einer der folgenden Anleitungen erstellt wurden:
 
@@ -254,14 +255,10 @@ function deleteFromDatabase(){
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+- [Entwurf Ihrer ersten Azure SQL-Datenbank](sql-database-design-first-database.md)
+- [Microsoft Node.js Driver for SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/) (Microsoft Node.js-Treiber für SQL Server)
+- [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md)
+- [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md)
 
-- Weitere Informationen zum [Microsoft Node.js-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)
-- Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Visual Studio finden Sie unter [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](sql-database-connect-query-dotnet.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit PHP finden Sie unter [Verbinden und Abfragen mit PHP](sql-database-connect-query-php.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Java finden Sie unter [Verbinden und Abfragen mit Java](sql-database-connect-query-java.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
-- Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Ruby finden Sie unter [Verbinden und Abfragen mit Ruby](sql-database-connect-query-ruby.md).
 
 

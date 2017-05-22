@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Ihre erste Azure SQL-Datenbank erstellen.
 services: sql-database
 documentationcenter: 
 author: janeng
-manager: jstrauss
+manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 
@@ -14,19 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 03/30/2017
+ms.date: 05/07/2017
 ms.author: janeng
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 0d02954829ebac9275c014f7dac7e1ec423b0fc1
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: a78284276b600172ad9fd6de2f30702a6f05e79b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
 # <a name="design-your-first-azure-sql-database"></a>Entwurf Ihrer ersten Azure SQL-Datenbank
 
-In diesem Tutorial erstellen Sie für eine Universität eine Datenbank, mit der die Noten und Kursanmeldungen von Studenten verfolgt werden können. In diesem Tutorial wird veranschaulicht, wie das [Azure-Portal](https://portal.azure.com/) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) verwendet werden, um eine Azure SQL-Datenbank auf einem logischen Azure SQL-Datenbankserver zu erstellen, Tabellen zu dieser Datenbank hinzuzufügen, Daten in die Tabellen zu laden und die Datenbank abzufragen. Außerdem wird veranschaulicht, wie die SQL-Datenbank-Funktionalität [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) verwendet wird, um die Datenbank im Zustand eines früheren Zeitpunkts wiederherzustellen.
+Azure SQL-Datenbank ist eine relationale, auf Microsoft SQL Server basierende Database-as-a-Service-Lösung. In diesem Tutorial werden grundlegende Datenbankaufgaben behandelt, z.B. Erstellen einer Datenbank und von Tabellen, Laden und Abfragen von Daten und Wiederherstellen eines früheren Zeitpunkts der Datenbank. Folgendes wird vermittelt: 
+
+> [!div class="checklist"]
+> * Erstellen einer Datenbank
+> * Einrichten einer Firewallregel
+> * Herstellen einer Verbindung mit der Datenbank mit [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)
+> * Erstellen von Tabellen
+> * Massenladen von Daten
+> * Abfragen der Daten
+> * Wiederherstellen eine früheren Zeitpunkts für die Datenbank mit den SQL-Datenbank-Funktionen für die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 Stellen Sie zur Durchführung dieses Tutorials sicher, dass Sie die neueste Version von [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) installiert haben. 
 
@@ -280,7 +290,19 @@ Stellen Sie sich vor, Sie haben versehentlich eine Tabelle gelöscht. Dies ist e
 
 3. Klicken Sie auf **OK**, um die Datenbank [für einen Zeitpunkt wiederherzustellen](sql-database-recovery-using-backups.md#point-in-time-restore), der vor dem Hinzufügen der Tabellen lag. Beim Wiederherstellen einer Datenbank im Zustand eines früheren Zeitpunkts wird ein Duplikat der Datenbank für den von Ihnen angegebenen Zeitpunkt im selben Server wie die ursprüngliche Datenbank hergestellt, vorausgesetzt, dass sich dieser Zeitpunkt innerhalb der für Ihre [Dienstebene](sql-database-service-tiers.md) geltenden Beibehaltungsdauer befindet.
 
-## <a name="next-steps"></a>Nächste Schritte 
 
-PowerShell-Beispiele für gängige Aufgaben finden Sie unter [Azure PowerShell-Beispiele für Azure SQL-Datenbank](sql-database-powershell-samples.md).
+
+## <a name="next-steps"></a>Nächste Schritte 
+In diesem Tutorial wurden grundlegende Datenbankaufgaben behandelt, z.B. das Erstellen einer Datenbank und von Tabellen, Laden und Abfragen von Daten und Wiederherstellen eines früheren Zeitpunkts der Datenbank. Es wurde Folgendes vermittelt:
+> [!div class="checklist"]
+> * Erstellen einer Datenbank
+> * Einrichten einer Firewallregel
+> * Herstellen einer Verbindung mit der Datenbank mit [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)
+> * Erstellen von Tabellen.
+> * Massenladen von Daten
+> * Abfragen der Daten
+> * Wiederherstellen eines früheren Zeitpunkts der Datenbank mit den SQL-Datenbank-Funktionen für die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) Fahren Sie mit dem nächsten Tutorial fort, um Informationen zum Migrieren Ihrer Daten zu erhalten.
+
+> [!div class="nextstepaction"]
+>[Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-migrate-your-sql-server-database.md)
 

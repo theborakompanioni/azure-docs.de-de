@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory B2C: Beheben von Problemen mit benutzerdefinierten Richtlinien | Microsoft-Dokumentation'
-description: "Ein Thema für die Problembehandlung bei benutzerdefinierten Azure Active Directory B2C-Richtlinien"
+title: "Azure Active Directory B2C: Application Insights für die Problembehandlung von benutzerdefinierten Richtlinien | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie Application Insights zum Nachverfolgen der Ausführung von benutzerdefinierten Richtlinien einrichten."
 services: active-directory-b2c
 documentationcenter: 
 author: saeeda
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeeda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 2fa67038f2a214c1569fc65fd9f1beba394cb790
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 07eddeb35c2b88b2de08270d9ff5de317cc09ec7
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/08/2017
 
 ---
 
@@ -46,11 +46,12 @@ Azure AD B2C unterstützt eine Funktion zum Senden von Daten an Application Insi
 1. Fügen Sie dem `<TrustFrameworkPolicy>`-Element die folgenden Attribute hinzu:
 
   ```XML
+  DeploymentMode="Development"
   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   ```
 
-1. Wenn er noch nicht vorhanden ist, fügen Sie dem Knoten `<RelyingParty>` den untergeordneten Knoten `<UserJourneyBehaviors>` hinzu.
-2. Fügen Sie den folgenden Knoten als untergeordnetes Element des `<UserJourneyBehaviors>`-Elements hinzu. Achten Sie darauf, `{Your Application Insights Key}` durch den **Instrumentierungsschlüssel** zu ersetzen, den Sie im vorherigen Abschnitt erhalten haben.
+1. Wenn er noch nicht vorhanden ist, fügen Sie dem Knoten `<RelyingParty>` den untergeordneten Knoten `<UserJourneyBehaviors>` hinzu. Er muss direkt nach `<DefaultUserJourney ReferenceId="YourPolicyName" />` angeordnet werden.
+2. Fügen Sie den folgenden Knoten als untergeordnetes Element des `<UserJourneyBehaviors>`-Elements hinzu. Achten Sie darauf, `{Your Application Insights Key}` durch den **Instrumentierungsschlüssel** zu ersetzen, den Sie im vorherigen Abschnitt von Application Insights erhalten haben.
 
   ```XML
   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -66,10 +67,12 @@ Azure AD B2C unterstützt eine Funktion zum Senden von Daten an Application Insi
     ...
     TenantId="fabrikamb2c.onmicrosoft.com"
     PolicyId="SignUpOrSignInWithAAD"
+    DeploymentMode="Development"
     UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   >
     ...
     <RelyingParty>
+      <DefaultUserJourney ReferenceId="YourPolicyName" />
       <UserJourneyBehaviors>
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
@@ -79,7 +82,7 @@ Azure AD B2C unterstützt eine Funktion zum Senden von Daten an Application Insi
 
 3. Laden Sie die Richtlinie hoch.
 
-### <a name="see-the-logs"></a>Anzeigen der Protokolle
+### <a name="see-the-logs-in-application-insights"></a>Anzeigen von Protokollen in Application Insights
 
 >[!NOTE]
 > Es gibt eine kurze Verzögerung (weniger als 5 Minuten), bevor Sie neue Protokolle in Application Insights anzeigen können.
@@ -94,7 +97,14 @@ Azure AD B2C unterstützt eine Funktion zum Senden von Daten an Application Insi
 traces | Anzeigen aller von Azure AD B2C generierten Protokolle |
 traces \| where timestamp > ago(1d) | Anzeigen aller am letzten Tag von Azure AD B2C generierten Protokolle
 
+Diese Einträge können ggf. lang sein.  Führen Sie einen Export in eine CSV-Datei durch, um sich dies genauer anzusehen.
+
 Weitere Informationen zum Tool Analytics finden Sie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
+
+^[!NOTE]
+^In der Community wurde ein userjourney-Viewer entwickelt, der als Hilfe für Identitätsentwickler dient.  Er wird von Microsoft nicht unterstützt und unverändert zur Verfügung gestellt.  Mit dem Viewer werden Daten aus Ihrer Application Insights-Instanz gelesen, und es wird eine gut strukturierte Ansicht der userjourney-Ereignisse bereitgestellt.  Sie können den Quellcode abrufen und in Ihrer eigenen Lösung bereitstellen.
+
+[GitHub-Repository mit Beispielen für nicht unterstützte benutzerdefinierte Richtlinien und verwandte Tools](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 
