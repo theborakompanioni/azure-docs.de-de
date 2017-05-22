@@ -1,6 +1,6 @@
 ---
-title: "Ausführen von Analyseabfragen für mehrere Mandanten (beispielhafte SaaS-Anwendung mit Azure SQL-Datenbank) | Microsoft-Dokumentation"
-description: "Ausführen von Analyseabfragen für mehrere Mandanten"
+title: "Ausführen von Analyseabfragen anhand mehrerer Azure SQL-Datenbanken | Microsoft-Dokumentation"
+description: "Ausführen verteilter Abfragen für mehrere Azure SQL-Datenbanken"
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b512e2f7833be1947ef7674d6e0266879789ac5a
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: a0742a004b618dda304618bca21ae715552c16e6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="run-analytics-queries-against-multiple-tenants"></a>Ausführen von Analyseabfragen für mehrere Mandanten
+# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>Ausführen verteilter Abfragen für mehrere Azure SQL-Datenbanken
 
 In diesem Tutorial führen Sie Analyseabfragen für jeden Mandanten im Katalog durch. Es wird ein elastischer Auftrag erstellt, der die Abfragen ausführt. Der Auftrag ruft Daten ab und lädt sie in eine separate Analysedatenbank, die auf dem Katalogserver erstellt wurde. Diese Datenbank kann abgefragt werden, um Einblicke zu erhalten, die sonst in den tagtäglichen operativen Daten aller Mandanten verborgen bleiben. Als Ausgabe des Auftrags wird aus den Abfrageergebnissen in der Mandantenanalysedatenbank eine Tabelle erstellt.
 

@@ -1,6 +1,6 @@
 ---
-title: "Überwachen der Leistung der Anwendung WTP (SaaS-Beispielanwendung, die Azure SQL-Datenbank verwendet) | Microsoft-Dokumentation"
-description: "Überwachen der Leistung einer SaaS-Beispielanwendung, die Azure SQL-Datenbank verwendet"
+title: "Überwachen der Leistung einer SaaS-App für SQL-Datenbank | Microsoft-Dokumentation"
+description: "Überwachen und Verwalten der Leistung für die Wingtip Tickets-Beispiel-App (WTP) für Azure SQL-Datenbank"
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1698a06dc326b1d215bb635c40724f914ba82442
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: af9511978718af10c97bee6af3a2835c9d2c1ff4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -42,8 +42,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die WTP-App wurde bereitgestellt. Unter [Bereitstellen und Kennenlernen der SaaS-Anwendung WTP](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
-* Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Die WTP-App wurde bereitgestellt. Unter [Deploy and explore the WTP SaaS application (Bereitstellen und Erkunden der SaaS-Anwendung von WTP)](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>Einführung in SaaS-Leistungsverwaltungsmuster
 
@@ -66,7 +66,7 @@ Für Szenarien mit hoher Nutzung kann Log Analytics verwendet werden (auch als O
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
-Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-Github-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
+Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
 
 ## <a name="provision-additional-tenants"></a>Bereitstellen zusätzlicher Mandanten
 
