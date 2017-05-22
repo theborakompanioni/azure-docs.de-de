@@ -1,6 +1,6 @@
 ---
-title: "Verwenden eines benutzerdefinierten Docker-Image für Azure App Service unter Linux | Microsoft Docs"
-description: "Es wird beschrieben, wie Sie ein benutzerdefiniertes Docker-Image für App Service unter Linux verwenden."
+title: "Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps unter Linux | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Image für Azure-Web-Apps unter Linux verwenden."
 keywords: Azure App Service, Web-App, Linux, Docker, Container
 services: app-service
 documentationcenter: 
@@ -15,15 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
-ms.openlocfilehash: 7e4aab65feac187b48ccca65b35bb94185323506
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9962766b0a1fdfe313b70ea65e08785ec8a97996
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="using-a-custom-docker-image-for-app-service-on-linux"></a>Verwenden eines benutzerdefinierten Docker-Image für App Service unter Linux #
+# <a name="using-a-custom-docker-image-for-azure-web-app-on-linux"></a>Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps unter Linux #
+
+[!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
+
 
 App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung für bestimmte Versionen bereit, z.B. PHP 7.0 und Node.js 4.5. In App Service unter Linux werden Docker-Container verwendet, um diese vorab erstellten Anwendungsstapel zu hosten. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel bereitzustellen, der nicht bereits in Azure definiert ist. Benutzerdefinierte Docker-Images können in einem öffentlichen oder privaten Docker-Repository gehostet werden.
 
@@ -98,11 +102,11 @@ Sie können auf die SCM-Website über die Option **Erweiterte Tools** im Menü *
 
 ## <a name="next-steps"></a>Nächste Schritte ##
 
-Unter den folgenden Links erhalten Sie Informationen zu den ersten Schritten mit App Service unter Linux.   
+Unter den folgenden Links erhalten Sie Informationen zu den ersten Schritten mit Web-Apps unter Linux.   
 
-* [Einführung in App Service unter Linux](./app-service-linux-intro.md)
-* [Erstellen von Web-Apps in App Service unter Linux](./app-service-linux-how-to-create-a-web-app.md)
-* [Verwenden der PM2-Konfiguration für Node.js in Web-Apps unter Linux](./app-service-linux-using-nodejs-pm2.md)
+* [Einführung in Azure-Web-Apps unter Linux](./app-service-linux-intro.md)
+* [Erstellen von Web-Apps in Azure-Web-Apps unter Linux](./app-service-linux-how-to-create-web-app.md)
+* [Verwenden der PM2-Konfiguration für Node.js in Azure-Web-Apps unter Linux](./app-service-linux-using-nodejs-pm2.md)
 * [Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux](app-service-linux-faq.md)
 
 In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview) können Sie Fragen stellen und Antworten auf Probleme erhalten.

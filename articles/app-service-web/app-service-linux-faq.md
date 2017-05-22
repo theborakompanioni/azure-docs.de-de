@@ -1,6 +1,6 @@
 ---
-title: "Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux"
+title: "Häufig gestellte Fragen zu Azure App Service-Web-App unter Linux | Microsoft-Dokumentation"
+description: "Häufig gestellte Fragen zu Azure App Service-Web-App unter Linux."
 keywords: "Azure App Service, Web-App, häufig gestellte Fragen, Linux, OSS"
 services: app-service
 documentationCenter: 
@@ -13,19 +13,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
-ms.author: aelnably
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: d9410448952438d6b9d437b7ca8823d4f196a2d6
-ms.lasthandoff: 04/22/2017
+ms.date: 05/04/2017
+ms.author: aelnably;wesmc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: dcce8d855f8c37d40fe8f09ef0a97e46b342e3cf
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="azure-app-service-web-apps-on-linux-faq"></a>Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux
+# <a name="azure-app-service-web-app-on-linux-faq"></a>Häufig gestellte Fragen zu Azure App Service-Web-App unter Linux
 
-Mit der Veröffentlichung von Azure App Service unter Linux (derzeit als Vorschau verfügbar) erweitern wir unsere Plattform um Funktionen und Verbesserungen. Im Folgenden finden Sie einige häufig gestellte Fragen (FAQ) von unseren Kunden aus den letzten Monaten.
+[!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
+
+
+Mit der Veröffentlichung von Web-App unter Linux erweitern wir unsere Plattform um Funktionen und Verbesserungen. Im Folgenden finden Sie einige häufig gestellte Fragen (FAQ) von unseren Kunden aus den letzten Monaten.
 Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald wie möglich antworten.
 
 ## <a name="built-in-images"></a>Integrierte Images
@@ -40,27 +44,29 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 ## <a name="management"></a>Verwaltung
 
-**F:** Ich habe im Azure-Portal auf „Neu starten“ geklickt, doch meine Web-App wurde nicht neu gestartet. Woran liegt das?
+**F:** Was geschieht, wenn ich auf die Schaltfläche „Neu starten“ im Azure-Portal klicke?
 
-**A:** Wir arbeiten daran, die Schaltfläche „Neu starten“ in der nahen Zukunft zu aktivieren. In der Zwischenzeit haben Sie zwei Möglichkeiten:
-- Fügen Sie der Anwendung eine Dummyeinstellung hinzu, oder ändern Sie eine solche Einstellung. Dadurch wird der Neustart der Web-App erzwungen.
-- Beenden und starten Sie Ihre Web-App.
+**A:** Dies entspricht dem Docker-Neustart.
 
 **F:** Kann ich über Secure Shell (SSH) eine Verbindung mit dem virtuellen Computer (VM) des App-Containers herstellen?
 
-**A:** Nein. Wir werden in einer zukünftigen Version eine Möglichkeit bereitstellen, über SSH eine Verbindung mit Ihrem App-Container herzustellen.
+**A:** Ja, dies ist über die SCM-Website möglich. Weitere Informationen finden Sie im Artikel [SSH support for Azure Web App on Linux](./app-service-linux-ssh-support.md) (SSH-Unterstützung für Azure-Web-App unter Linux).
 
 ## <a name="continuous-integrationdeployment"></a>Continuous Integration/Bereitstellung
 
 **F:** Meine Web-App verwendet nach dem Aktualisieren des Images auf DockerHub noch ein altes Docker-Containerimage. Unterstützen Sie Continuous Integration/Bereitstellung von benutzerdefinierten Containern?
 
-**A:** Sie können den Container aktualisieren, indem Sie Ihre Web-App beenden und dann wieder starten. Sie können auch eine Dummyeinstellung in der Anwendung ändern oder hinzufügen, um die Aktualisierung Ihres Containers zu erzwingen. In einer zukünftigen Version werden wir eine Funktion für die Continous Integration/Bereitstellung anbieten.
+**A:** Informationen zum Einrichten von Continuous Integration/Deployment für DockerHub-Images finden Sie im Artikel [Docker Hub Continuous Deployment with Azure Web App on Linux](./app-service-linux-ci-cd.md) (Docker Hub Continuous Deployment mit Azure-Web-App unter Linux). Bei privaten Registrierungen können Sie den Container aktualisieren, indem Sie Ihre Web-App beenden und dann wieder starten. Sie können auch eine Dummyeinstellung in der Anwendung ändern oder hinzufügen, um die Aktualisierung Ihres Containers zu erzwingen.
+
+**Q:** Werden Stagingumgebungen unterstützt?
+
+**A:** Ja.
 
 ## <a name="language-support"></a>Sprachunterstützung
 
 **F:** Unterstützen Sie nicht kompilierte .NET Core-Apps?
 
-**A:** Nein. Nein, Sie müssen kompilierte .NET Core-Apps mit allen Abhängigkeiten bereitstellen. Vollständige Funktionen für Bereitstellungen und Builds werden in einer zukünftigen Version verfügbar sein.
+**A:** Ja.
 
 **F:** Unterstützen Sie Composer als Abhängigkeits-Manager für PHP-Apps?
 
@@ -68,13 +74,13 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 ## <a name="custom-containers"></a>Benutzerdefinierte Container
 
-**F:** Ich verwende meinen eigenen benutzerdefinierten Container. Meine App befindet sich im Verzeichnis „\home\“, aber ich kann meine Dateien nicht finden, wenn ich mit der [SCM](https://github.com/projectkudu/kudu)-Website oder mit einem FTP-Client den Inhalt durchsuche. Wo sind meine Dateien?
+**F:** Ich verwende meinen eigenen benutzerdefinierten Container. Meine App befindet sich im Verzeichnis `\home\`, aber ich kann meine Dateien nicht finden, wenn ich mit der [SCM](https://github.com/projectkudu/kudu)-Website oder mit einem FTP-Client den Inhalt durchsuche. Wo sind meine Dateien?
 
-**A:** Wir stellen eine SMB-Freigabe im Verzeichnis „\home\“ bereit. Dadurch werden alle vorhandenen Inhalte überschrieben.
+**A:** Wir stellen eine SMB-Freigabe im Verzeichnis `\home\` bereit. Dadurch werden alle vorhandenen Inhalte überschrieben.
 
 **F:** Welches Format hat die Server-URL der privaten Registrierung?
 
-**A:** Sie müssen die vollständige Registrierungs-URL samt „http://“ oder „https://“ eingeben.
+**A:** Sie müssen die vollständige Registrierungs-URL samt `http://` oder `https://` eingeben.
 
 **F:** Welches Format hat der Bildname in der Option zur privaten Registrierung?
 
@@ -94,7 +100,7 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **F:** Mein benutzerdefinierter Container lauscht auf einen anderen Port als Port 80. Wie kann ich meine App so konfigurieren, dass die Anforderungen an diesen Port weitergeleitet werden?
 
-**A:** Sie können eine Anwendungseinstellung mit dem Namen **PORT** und für diese den Wert der erwarteten Portnummer angeben.
+**A:** Ports werden automatisch erkannt. Sie können auch eine Anwendungseinstellung mit dem Namen **PORT** und für diese den Wert der erwarteten Portnummer angeben.
 
 **F:** Muss ich HTTPS in meinem benutzerdefinierten Container implementieren?
 
@@ -114,9 +120,12 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **F:** Wo kann ich neue Funktionen beantragen?
 
-**A:** Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoice) einreichen. Bitte fügen Sie im Titel Ihrer Idee [Linux] hinzu.
+**A:** Sie können Ihre Idee im [Web-Apps-Feedbackforum](https://aka.ms/webapps-uservoice) einreichen. Fügen Sie im Titel Ihrer Idee „[Linux]“ hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Was ist App Service unter Linux?](app-service-linux-intro.md)
-* [Erstellen von Web-Apps in App Service unter Linux](app-service-linux-how-to-create-a-web-app.md)
+* [Was ist Azure-Web-App unter Linux?](app-service-linux-intro.md)
+* [Erstellen von Web-Apps in Azure-Web-App unter Linux](app-service-linux-how-to-create-web-app.md)
+* [SSH-Unterstützung für Azure-Web-App unter Linux](./app-service-linux-ssh-support.md)
+* [Einrichten von Stagingumgebungen in Azure App Service](./web-sites-staged-publishing.md)
+* [Docker Hub Continuous Deployment mit Azure-Web-App unter Linux](./app-service-linux-ci-cd.md)
 

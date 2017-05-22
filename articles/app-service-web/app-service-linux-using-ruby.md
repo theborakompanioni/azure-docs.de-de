@@ -1,6 +1,6 @@
 ---
-title: Verwendung von Ruby in Azure App Service-Web-Apps unter Linux | Microsoft Docs
-description: Verwendung von Ruby in Azure App Service-Web-Apps unter Linux
+title: Verwenden von Ruby in Azure App Service-Web-Apps unter Linux | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ruby in Azure App Service-Web-Apps unter Linux verwenden.
 keywords: "Azure App Service, Web-App, häufig gestellte Fragen, Linux, OSS, Ruby"
 services: app-service
 documentationCenter: 
@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: aelnably;wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
-ms.openlocfilehash: 8427034e5229000faf134bcd5b7174b0f7046321
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5aeef6f31dacb1b27c605d39a35a81bd0211e06a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="using-ruby-in-web-apps-on-linux"></a>Verwendung von Ruby in Web-Apps unter Linux #
+# <a name="using-ruby-in-web-app-on-linux"></a>Verwenden von Ruby in Web-Apps unter Linux #
 
-Mit dem aktuellen Update unseres Back-Ends wurde die Unterstützung für Ruby Version&2;.3 eingeführt. Durch Festlegen der Konfiguration Ihrer Linux-Web-App können Sie den Anwendungsstapel ändern.
+Mit dem aktuellen Update unseres Back-Ends wurde die Unterstützung für Ruby Version 2.3 eingeführt. Durch Festlegen der Konfiguration Ihrer Linux-Web-App können Sie den Anwendungsstapel ändern.
 
 ## <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals ##
 
@@ -45,8 +46,8 @@ Als Nächstes wird wie hier dargestellt das Blatt **Erstellen** geöffnet:
 Nachdem die Ruby-Web-App erstellt wurde, können Sie sie über Git oder FTP bereitstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Was ist App Service unter Linux?](app-service-linux-intro.md)
-* [Erstellen von Web-Apps in App Service unter Linux](app-service-linux-how-to-create-a-web-app.md)
+* [Was ist Web-Apps unter Linux?](app-service-linux-intro.md)
+* [Erstellen von Web-Apps in Web-Apps unter Linux](app-service-linux-how-to-create-web-app.md)
 * [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md)
 * [Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux](app-service-linux-faq.md)
 

@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 6dad42f94d263d9dacedf145bf4e5d487d0aed77
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f1e4a60cd98d40794c63dc334f242415445e0d6d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
-In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Er bezieht sich auf VMs, VM-Skalierungsgruppen und Clouddienste.  Andere Azure-Dienste verwenden andere Skalierungsmethoden.
+In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
 
 ## <a name="autoscale-concepts"></a>Konzepte der automatischen Skalierung
 * Eine Ressource kann nur *eine* Einstellung für die automatische Skalierung haben.
@@ -118,7 +119,7 @@ Zusätzlich wurde ein periodisches Profil für Montag eingerichtet. Es wurde fü
 
 Wenn die automatische Skalierung zurück zum Standardprofil wechselt, wird ebenfalls zuerst überprüft, ob die Höchst- und Mindestbedingungen erfüllt werden. Falls die Anzahl der Instanzen zu diesem Zeitpunkt 12 ist, wird auf 10, den für das Standardprofil zulässigen Höchstwert, herunterskaliert.
 
-![Einstellungen für die automatische Skalierung](./media/insights-autoscale-best-practices/insights-autoscale-best-practices.png)
+![Einstellungen für die automatische Skalierung](./media/insights-autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Skalierungsüberlegungen, wenn in einem Profil mehrere Regeln konfiguriert sind
 Es gibt Fälle, in denen Sie möglicherweise mehrere Regeln innerhalb eines Profils festlegen müssen. Die folgenden Regeln für die automatische Skalierung werden von Diensten verwendet, wenn mehrere Regeln festgelegt sind.
