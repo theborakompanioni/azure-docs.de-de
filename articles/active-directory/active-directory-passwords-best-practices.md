@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/12/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 328537b2bfbe15a23a9199bbb3c07851eaa85390
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 6cc1589f2ebad9267334f70926be369b32c8e075
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -28,15 +28,16 @@ Die meisten Kunden führen die hier angegebenen Schritte aus, um für ein reibun
 
 1. [Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis](active-directory-passwords-getting-started.md).
 2. [Konfigurieren Sie die lokalen AD-Berechtigungen für das Kennwortrückschreiben](active-directory-passwords-how-it-works.md#active-directory-permissions).
-3. [Weisen Sie die erforderlichen Lizenzen zu, und überprüfen Sie sie](active-directory-passwords-licensing.md).
-4. Wenn Sie das Rollout in Etappen durchführen möchten, können Sie die Kennwortzurücksetzung optional auf eine Gruppe von Benutzern begrenzen, um das Feature nach und nach einzuführen. Ändern Sie hierzu die Umschaltoption **Self-Service-Kennwortzurücksetzung aktiviert** von **Jeder** in **Eine Gruppe**, und wählen Sie eine Sicherheitsgruppe aus, die für die Kennwortzurücksetzung aktiviert werden soll. Allen Mitgliedern dieser Gruppe müssen Lizenzen zugewiesen sein. Dies ist eine gute Gelegenheit, um die [gruppenbasierte Lizenzierung](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing) umzusetzen.
-5. Geben Sie basierend auf Ihrer Richtlinie die mindestens erforderlichen [Authentifizierungsdaten](active-directory-passwords-data.md) ein.
-6. Schulen Sie Ihre Benutzer in der Nutzung von SSPR, indem Sie ihnen eine Anleitung senden, in der die Registrierung und Zurücksetzung beschrieben ist.
+3. [Konfigurieren Sie das Kennwortrückschreiben](active-directory-passwords-writeback.md#configuring-password-writeback), um Kennwörter aus Azure AD wieder in Ihr lokales Verzeichnis zu schreiben.
+4. [Weisen Sie die erforderlichen Lizenzen zu, und überprüfen Sie sie](active-directory-passwords-licensing.md).
+5. Wenn Sie das Rollout in Etappen durchführen möchten, können Sie die Kennwortzurücksetzung optional auf eine Gruppe von Benutzern begrenzen, um das Feature nach und nach einzuführen. Ändern Sie hierzu die Umschaltoption **Self-Service-Kennwortzurücksetzung aktiviert** von **Jeder** in **Eine Gruppe**, und wählen Sie eine Sicherheitsgruppe aus, die für die Kennwortzurücksetzung aktiviert werden soll. Allen Mitgliedern dieser Gruppe müssen Lizenzen zugewiesen sein. Dies ist eine gute Gelegenheit, um die [gruppenbasierte Lizenzierung](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing) umzusetzen.
+6. Geben Sie basierend auf Ihrer Richtlinie die mindestens erforderlichen [Authentifizierungsdaten](active-directory-passwords-data.md) ein.
+7. Schulen Sie Ihre Benutzer in der Nutzung von SSPR, indem Sie ihnen eine Anleitung senden, in der die Registrierung und Zurücksetzung beschrieben ist.
     > [!NOTE]
     > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie in [diesem ausführlichen Artikel](active-directory-passwords-how-it-works.md).
 
-7. Sie können einen beliebigen Zeitpunkt für das Erzwingen der Registrierung angeben und außerdem festlegen, dass Benutzer ihre Authentifizierungsinformationen nach einem bestimmten Zeitraum neu bestätigen müssen. Falls Sie nicht möchten, dass Benutzer sich registrieren müssen, können Sie die [Kennwortzurücksetzung bereitstellen, ohne dass eine Registrierung von Endbenutzern erforderlich ist](active-directory-passwords-data.md).
-8. Sie können den Verlauf der Registrierung und Nutzung durch die Benutzer verfolgen, indem Sie die [Berichterstellungsfunktion von Azure AD](active-directory-passwords-reporting.md) verwenden.
+8. Sie können einen beliebigen Zeitpunkt für das Erzwingen der Registrierung angeben und außerdem festlegen, dass Benutzer ihre Authentifizierungsinformationen nach einem bestimmten Zeitraum neu bestätigen müssen. Falls Sie nicht möchten, dass Benutzer sich registrieren müssen, können Sie die [Kennwortzurücksetzung bereitstellen, ohne dass eine Registrierung von Endbenutzern erforderlich ist](active-directory-passwords-data.md).
+9. Sie können den Verlauf der Registrierung und Nutzung durch die Benutzer verfolgen, indem Sie die [Berichterstellungsfunktion von Azure AD](active-directory-passwords-reporting.md) verwenden.
 
 ## <a name="email-based-rollout"></a>E-Mail-basierte Einführung
 
@@ -82,5 +83,5 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Kennwortrückschreiben:**](active-directory-passwords-writeback.md) Hier wird die Funktionsweise des Kennwortrückschreibens in Ihrem lokalen Verzeichnis beschrieben.
 * [**Berichterstellung:**](active-directory-passwords-reporting.md) Ermitteln Sie, ob, wann und wo Ihre Benutzer auf SSPR-Funktionen zugreifen.
 * [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
-* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? Antworten auf Fragen, die Sie schon immer stellen wollten
+* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.

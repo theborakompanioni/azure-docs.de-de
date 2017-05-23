@@ -52,7 +52,7 @@ sql-database-service-tiers.md
 
 ### <a name="premium-elastic-pool-limits"></a>Grenzwerte für elastische Pools – Premium
 
-| Poolgröße (eDTUs)  | **125** | **250** | **500** | **1000** | **1500** | 
+| Poolgröße (eDTUs)  | **125** | **250** | **500** | **1000** | **1500** **| 
 |:---|---:|---:|---:| ---: | ---: | 
 | Max. Datenspeicher pro Pool* | 250 GB | 500 GB | 750 GB | 750 GB | 1,5 TB | 
 | Max. In-Memory-OLTP-Speicher pro Pool | 1 GB| 2 GB| 4 GB| 10 GB| 12 GB| 
@@ -67,7 +67,7 @@ sql-database-service-tiers.md
 
 ### <a name="premium-elastic-pool-limits-continued"></a>Grenzwerte für elastische Pools – Premium (Fortsetzung) 
 
-| Poolgröße (eDTUs)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
+| Poolgröße (eDTUs)  |  **2000** **| **2500**  **| **3000**  **| **3500**  **| **4000**  **|
 |:---|---:|---:|---:| ---: | ---: | 
 | Max. Datenspeicher pro Pool* | 2 TB | 2,5 TB | 3 TB | 3,5 TB | 4 TB |
 | Max. In-Memory-OLTP-Speicher pro Pool | 16 GB | 20 GB | 24 GB | 28 GB | 32 GB |
@@ -96,5 +96,7 @@ sql-database-service-tiers.md
 ||||||||
 
 > [!IMPORTANT]
->\* In einem Pool zusammengefasste Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenspeicher in einem Pool für elastische Datenbanken auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt. Die standardmäßige maximale Datenspeicherkapazität pro Pool für Premium-Pools mit 1500 eDTUs beträgt 750 GB. Für die Nutzung einer höheren maximalen Datenspeichergröße pro Pool muss die entsprechende Größe explizit mit dem Azure-Portal oder [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) ausgewählt werden. Premium-Pool mit einer Speicherkapazität von mehr als 750 GB sind derzeit in folgenden Regionen in der öffentlichen Vorschau verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Die maximale Speicherkapazität pro Pool für alle anderen Regionen ist derzeit auf 750 GB beschränkt.
+>\* In einem Pool zusammengefasste Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenspeicher in einem Pool für elastische Datenbanken auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt. 
+>
+>\*\* Die standardmäßige maximale Datenspeicherkapazität pro Pool für Premium-Pools mit 1.500 eDTUs oder mehr beträgt 750 GB. Für die Nutzung einer höheren maximalen Datenspeichergröße pro Pool muss die entsprechende Größe explizit mit dem Azure-Portal oder [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) ausgewählt werden. Premium-Pools mit einer Speicherkapazität von mehr als 750 GB sind derzeit in folgenden Regionen in der öffentlichen Vorschau verfügbar: USA, Osten 2; USA, Westen; USA Gov Virginia; Europa, Westen; Deutschland, Mitte; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Die maximale Speicherkapazität pro Pool für alle anderen Regionen ist derzeit auf 750 GB beschränkt.
 >

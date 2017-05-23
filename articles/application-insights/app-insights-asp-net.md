@@ -3,7 +3,7 @@ title: "Einrichten der Web-App-Analyse für ASP.NET mit Azure Application Insigh
 description: "Konfigurieren Sie Leistung, Verfügbarkeit und Nutzungsanalyse für Ihre lokal oder in Azure gehostete ASP.NET-Website."
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/04/2017
+ms.date: 05/15/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 04bac05363f0f7468e41ccfd96a85e4bd7bf761c
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: af932e111ebc60ee86c823e65000d39fa6ea81cb
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -52,7 +52,12 @@ Fahren Sie mit der Seite für die Application Insights-Konfiguration fort:
 
 **a.** Wählen Sie das Konto und das Abonnement aus, das Sie zum Zugreifen auf Azure verwenden.
 
-**b.** Wählen Sie die Ressource in Azure aus, über die Sie die Daten Ihrer App anzeigen möchten. Normalerweise erstellen Sie eine separate Ressource für jede App. Wenn Sie die Ressourcengruppe oder den Speicherort Ihrer Daten festlegen möchten, klicken Sie auf **Einstellungen konfigurieren**. Ressourcengruppen werden zum Steuern das Zugriffs auf die Daten verwendet. Wenn Sie über mehrere Apps verfügen, die einen Teil desselben Systems bilden, können Sie die dazugehörigen Application Insights-Daten in derselben Ressourcengruppe anordnen.
+**b.** Wählen Sie die Ressource in Azure aus, über die Sie die Daten Ihrer App anzeigen möchten. In der Regel gilt:
+
+* Verwenden Sie eine [einzelne Ressource für verschiedene Komponenten](app-insights-monitor-multi-role-apps.md) einer einzelnen Anwendung. 
+* Erstellen Sie separate Ressourcen für nicht verbundene Anwendungen.
+ 
+Wenn Sie die Ressourcengruppe oder den Speicherort Ihrer Daten festlegen möchten, klicken Sie auf **Einstellungen konfigurieren**. Ressourcengruppen werden zum Steuern das Zugriffs auf die Daten verwendet. Wenn Sie über mehrere Apps verfügen, die einen Teil desselben Systems bilden, können Sie die dazugehörigen Application Insights-Daten in derselben Ressourcengruppe anordnen.
 
 **c.** Legen Sie eine Obergrenze auf den Grenzwert für das kostenlose Datenvolumen fest, um Gebühren zu vermeiden. Bis zu einem bestimmten Volumen von Telemetrie ist Application Insights kostenlos. Nach der Erstellung der Ressource können Sie Ihre Auswahl im Portal ändern, indem Sie **Features und Preise** > **Datenverwaltung** > **Volumenbegrenzung pro Tag** öffnen.
 

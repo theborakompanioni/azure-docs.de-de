@@ -7,6 +7,7 @@ Eine der zentralen Komponenten bei der Implementierung dieser IoT-Lösungsarchit
 
 * Mit der *Remoteüberwachung* können Sie den Status von Geräten (etwa Verkaufsautomaten) überwachen.
 * Die *vorhersagbare Wartung* hilft Ihnen dabei, den Wartungsbedarf von Geräten (etwa von Pumpen in abgelegenen Pumpwerken) zu antizipieren und ungeplante Downtime zu vermeiden.
+* Mit der *Connected Factory*-Lösung können Sie eine Verbindung mit Ihren Industrieanlagen herstellen und diese Anlagen überwachen.
 
 ## <a name="iot-solution-architecture"></a>Architektur einer IoT-Lösung
 

@@ -12,18 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/14/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 7b506668b3025774edec25b6a37b83a47d702cb0
-ms.openlocfilehash: b2eaddc631087d8b7b94e40f508bdd5da5229736
-ms.lasthandoff: 01/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 661470454775d43ce88410a6c995bbcc5e06264c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Hinzufügen von Benutzern aus anderen Verzeichnissen oder Partnerunternehmen zu Azure Active Directory
 > [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-users-create-external-azure-portal.md)
+> * [Azure-Portal](active-directory-users-create-external-azure-portal.md )
 > * [Klassisches Azure-Portal](active-directory-create-users-external.md)
 >
 >
@@ -44,9 +45,8 @@ In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen 
 > [!IMPORTANT]
 > Achten Sie auf die folgenden Probleme, die beim Hinzufügen eines Benutzerkontos auftreten können, wenn Ihre Organisation mehr als eine Domäne verwendet:
 >
-> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com, und **anschließend** geoffgrisso@contoso.com hinzu.
-> * Fügen Sie geoffgrisso@contoso.com **nicht** vor geoffgrisso@contoso.onmicrosoft.com hinzu. Diese Reihenfolge ist wichtig, und es kann umständlich sein, diesen Vorgang rückgängig zu machen.
->
+> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com und **anschließend**  geoffgrisso@contoso.com hinzu.
+> * Fügen Sie geoffgrisso@contoso.com **nicht** vor geoffgrisso@contoso.onmicrosoft.com hinzu.
 >
 
 Wenn Sie Informationen für einen Benutzer ändern, dessen Identität mit Ihrem lokalen Active Directory-Dienst synchronisiert ist, können Sie die Benutzerinformationen im klassischen Azure-Portal nicht ändern. Verwenden Sie zum Ändern der Benutzerinformationen Ihre lokalen Active Directory-Verwaltungstools.
@@ -74,15 +74,7 @@ Wenn ein Benutzer in seinem Basisverzeichnis gelöscht wird oder sein Microsoft-
 * **Dynamics CRM:**Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen in Dynamics CRM, wenn der Benutzer per PowerShell lizenziert ist.
 * **Dynamics AX:**Ermöglicht einem externen Benutzer den Zugriff auf autorisierte Ressourcen in Dynamics AX, wenn der Benutzer per PowerShell lizenziert ist. Die Einschränkungen für [externe Azure AD-Benutzer](#known-limitations-of-azure-ad-external-users) gelten auch für externe Benutzer in Dynamics AX.
 
-### <a name="known-limitations-of-azure-ad-external-users"></a>Bekannte Einschränkungen für externe Azure AD-Benutzer
-* Externe Benutzer, bei denen es sich um Administratoren handelt, können Benutzer von Partnerunternehmen nicht Verzeichnissen (B2B-Zusammenarbeit) außerhalb ihres Basisverzeichnisses hinzufügen.
-* Externe Benutzer können mehrinstanzenfähigen Anwendungen in Verzeichnissen außerhalb ihres Basisverzeichnisses nicht ihre Zustimmung geben.
-* PowerBI unterstützt den Zugriff durch externe Benutzer derzeit nicht.
-* Das Office-Portal unterstützt die Lizenzierung externer Benutzer nicht.
-* In Bezug auf Azure AD PowerShell werden externe Benutzer bei ihrem Basisverzeichnis angemeldet. Sie können Verzeichnisse, in denen sie externe Benutzer sind, nicht verwalten.
-* Beim Konfigurieren des Dynamics CRM Outlook-Plug-Ins müssen externe Benutzer unter Umständen manuell die URL des Dynamics CRM Online-Mandanten eingeben, anstatt „CRM Online“ auszuwählen.
-
-## <a name="whats-next"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-create-users.md)
 * [Verwalten von Azure AD](active-directory-administer.md)
 * [Verwalten von Kennwörtern in Azure AD](active-directory-manage-passwords.md)

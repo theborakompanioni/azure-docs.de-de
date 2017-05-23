@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/31/2017
-ms.author: jehollan; estfan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6634f0ee88e68f2fcb09fd7534a88677e8efa029
-ms.lasthandoff: 04/03/2017
+ms.author: LADocs; jehollan; estfan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 204bf123509729b60b55c306050cef54aa7fecc5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -39,7 +40,7 @@ Für dieses Beispiel wird außerdem Folgendes benötigt:
     > [!TIP]
     > Besitzer eines privaten [Microsoft-Kontos](https://account.microsoft.com/account) verfügen über ein Outlook.com-Konto. Falls Sie über ein Geschäfts-, Schul- oder Unikonto für Azure verfügen, besitzen Sie ein Konto vom Typ **Office 365 Outlook**.
 
-* Einen Link zum RSS-Feed einer Website. In diesem Beispiel wird der RSS-Feed für die [MSDN Channel 9-Website](https://channel9.msdn.com/) verwendet: `https://s.ch9.ms/Feeds/RSS`
+* Einen Link zum RSS-Feed einer Website. Dieses Beispiel verwendet die [RSS-Feeds für Topmeldungen von der CNN.com-Website](http://rss.cnn.com/rss/cnn_topstories.rss): `http://rss.cnn.com/rss/cnn_topstories.rss`
 
 ## <a name="add-a-trigger-that-starts-your-workflow"></a>Hinzufügen eines Triggers zum Starten des Workflows
 
@@ -74,7 +75,7 @@ Ein [*Trigger*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) ist ein 
      Außerdem können Sie die **Häufigkeit** und das **Intervall** ändern. 
      Diese Einstellungen steuern, wie häufig Ihre Logik-App eine Prüfung auf neue Elemente durchführt und alle in diesem Zeitraum gefundenen Elemente zurückgibt.
 
-     In diesem Beispiel soll täglich geprüft werden, ob auf der MSDN Channel 9-Website neue Elemente veröffentlicht wurden.
+     In diesem Beispiel soll täglich geprüft werden, ob auf der CNN-Website Topmeldungen veröffentlicht wurden.
 
      ![Einrichten eines Triggers mit RSS-Feed, Häufigkeit und Intervall](media/logic-apps-create-a-logic-app/rss-trigger-setup.png)
 

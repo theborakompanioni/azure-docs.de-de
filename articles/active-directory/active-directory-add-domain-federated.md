@@ -1,6 +1,6 @@
 ---
-title: "Hinzufügen des benutzerdefinierten Domänennamens und Einrichten der Verbundanmeldung an Azure Active Directory | Microsoft Docs"
-description: "Es wird beschrieben, wie Sie Azure Active Directory die Domänennamen Ihres Unternehmens hinzufügen und die Verbundanmeldung zwischen Azure Active Directory und Ihrer lokalen Verbundlösung einrichten."
+title: "Hinzufügen des benutzerdefinierten Domänennamens und Einrichten der Verbundanmeldung bei Azure Active Directory | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie die Domänennamen Ihres Unternehmens zu Azure Active Directory hinzufügen, um die Verbundanmeldung zwischen Azure Active Directory und Ihrer lokalen Verbundlösung einzurichten."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2016
+ms.date: 05/16/2017
 ms.author: curtand;jeffsta
 ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 77d34a6ebce12465a15de158b9160a03db58c48e
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 7f257dff6fdd423b89d1c52a84b64951dcf5915f
 ms.contentlocale: de-de
-ms.lasthandoff: 12/08/2016
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -29,7 +29,7 @@ Wenn Sie nicht über AD FS oder einen anderen Verbundserver verfügen und auch k
 
 ## <a name="add-a-custom-domain-name-to-your-directory"></a>Hinzufügen eines benutzerdefinierten Domänennamens zu Ihrem Verzeichnis
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit einem Benutzerkonto an, das ein globaler Administrator Ihres Azure AD-Verzeichnisses ist.
-2. Öffnen Sie in Active Directory Ihr Verzeichnis, und wählen Sie die Registerkarte **Domänen** aus.****
+2. Öffnen Sie in **Active Directory** Ihr Verzeichnis, und wählen Sie die Registerkarte **Domänen** aus.
 3. Wählen Sie auf der Befehlsleiste **Hinzufügen**aus, und geben Sie den Namen Ihrer benutzerdefinierten Domäne ein (beispielsweise „contoso.com“). Achten Sie darauf, die Erweiterung „.com“, „.net“ oder eine andere Erweiterung der obersten Ebene zu verwenden.
 4. Aktivieren Sie das Kontrollkästchen **Ich habe vor, diese Domäne für die einmalige Anmeldung bei meinem lokalen Active Directory-Verzeichnis zu konfigurieren** .
 5. Wählen Sie **Hinzufügen**.

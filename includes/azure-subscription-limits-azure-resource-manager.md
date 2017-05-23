@@ -10,6 +10,7 @@
 | Ressourcen-Manager-API-Lesevorgänge |15.000 pro Stunde |15.000 pro Stunde |
 | Ressourcen-Manager-API-Schreibvorgänge |1.200 pro Stunde |1.200 pro Stunde |
 | Ressourcen-Manager-API-Anforderungsgröße |4.194.304 Bytes |4.194.304 Bytes |
+| Tags pro Abonnement |10000 |10000 |
 | [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
 | [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
 

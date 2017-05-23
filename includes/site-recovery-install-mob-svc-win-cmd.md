@@ -9,26 +9,44 @@
 2. Führen Sie den folgenden Befehl aus, um den Mobilitätsdienst zu installieren:
 
   ```
-  UnifiedAgent.exe /Role "Agent" /CSEndpoint "IP address of the configuration server" /PassphraseFilePath <Full path to the passphrase file>``
+  UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
+  ```
+3. Nun muss der Agent beim Konfigurationsserver registriert werden.
+
+  ```
+  cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
+  UnifiedAgentConfigurator.exe”  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
   ```
 
 #### <a name="mobility-service-installer-command-line-arguments"></a>Befehlszeilenargumente für Mobilitätsdienst-Installationsprogramm
 
 ```
 Usage :
-UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <Installation directory>] [/CSIP <IP address>] [/PassphraseFilePath <Passphrase file path>] [/LogFilePath <Log file path>]<br/>
+UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
+```
+
+| Parameter|Typ|Beschreibung|Mögliche Werte|
+|-|-|-|-|
+|/Role|Erforderlich|Gibt an, ob Mobility Service (MS) oder MasterTarget (MT) installiert werden soll|MS </br> MT|
+|/InstallLocation|Optional|Installationsort des Mobilitätsdiensts|Beliebiger Ordner auf dem Computer|
+|/Platform|Erforderlich|Gibt die Plattform an, auf der Mobility Service installiert wird </br> </br>- **VMware**: Verwenden Sie diesen Wert für die Installation von Mobility Service auf einem virtuellen Computer, der auf *VMware vSphere ESXi-Hosts*, *Hyper-V-Hosts* und *physischen Servern* ausgeführt wird </br> - **Azure**: Verwenden Sie diesen Wert, wenn Sie den Agent auf einem virtueller Azure-IaaS-Computer installieren| VMware </br> Azure|
+|/Silent|Optional|Gibt an, dass das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll| NA|
+
+>[!TIP]
+> Die Setupprotokolle finden Sie unter: %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log
+
+#### <a name="mobility-service-registration-command-line-arguments"></a>Befehlszeilenargumente für die Mobility Service-Registrierung
+
+```
+Usage :
+UnifiedAgentConfigurator.exe”  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
 ```
 
   | Parameter|Typ|Beschreibung|Mögliche Werte|
   |-|-|-|-|
-  |/Role|Erforderlich|Gibt an, ob der Mobilitätsdienst installiert werden soll|Agent </br> MasterTarget|
-  |/InstallLocation|Erforderlich|Installationsort des Mobilitätsdiensts|Beliebiger Ordner auf dem Computer|
-  |/CSIP|Erforderlich|IP-Adresse des Konfigurationsservers| Beliebige gültige IP-Adresse|
+  |/CSEndPoint |Erforderlich|IP-Adresse des Konfigurationsservers| Beliebige gültige IP-Adresse|
   |/PassphraseFilePath|Erforderlich|Speicherort der Passphrase |Beliebiger UNC- oder lokaler Dateipfad|
-  |/LogFilePath|Optional|Speicherort des Installationsprotokolls|Beliebiger gültiger Ordner auf dem Computer|
 
-#### <a name="example"></a>Beispiel
 
-```
-  UnifiedAgent.exe /Role "Agent" /CSEndpoint "I192.168.2.35" /PassphraseFilePath "C:\Temp\MobSvc.passphrase"
-```
+>[!TIP]
+> Die AgentConfiguration-Protokolle finden Sie unter: %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log

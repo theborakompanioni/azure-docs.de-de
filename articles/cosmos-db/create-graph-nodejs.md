@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/13/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 45adf2accd3d9f43bc1d73b9ff93cc34d4d7c90a
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: d8a6a183d1acd7a06683ec2e402bd866cb5195f4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -96,27 +96,25 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“](./media/create-documentdb-dotnet/keys.png)
 
-2. Geben Sie die Konfigurationen *Endpunkt*, *db*, *coll* sowie *authKey* in der Datei `app.js` ein:
+2. Kopieren Sie den URI-Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in „config.js“ als Wert des Schlüssels „config.endpoint“ fest.
 
-    ```nodejs
-    const client = Gremlin.createClient(
-        443, 
-        config.endpoint, 
-        { 
-            "session": false, 
-            "ssl": true, 
-            "user": `/dbs/${config.database}/colls/${config.collection}`,
-            "password": config.primaryKey
-        });
-    ```
+    `config.endpoint = "GRAPHENDPOINT";`
+
+3. Ersetzen Sie den Teil „documents.azure.com“ des URI durch „graphs.azure.com“.
+
+4. Kopieren Sie anschließend den Wert für PRIMARY KEY aus dem Portal, und legen Sie ihn in „config.js“ als Wert für „config.primaryKey“ fest. Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
+
+    `config.primaryKey = "PRIMARYKEY";`
 
 ## <a name="run-the-console-app"></a>Ausführen der Konsolenanwendung
 
-1. Führen Sie `npm install` in einem Terminal aus, um erforderliche NPM-Module zu installieren
+1. Öffnen Sie ein Terminalfenster und wechseln Sie mit `cd` zu einem Installationsverzeichnis für die package.json-Datei, die im Projekt enthalten ist.  
 
-2. Ersetzen Sie den Inhalt von `node_modules\gremlin` durch den Quellcode aus der [Gremlin-Verzweigung von Cosmos DB](https://github.com/CosmosDB/gremlin-javascript), die über Unterstützung für SSL und SASL verfügt. SSL und SASL sind für Azure Cosmos DB erforderlich, werden im Moment aber noch nicht vom Treiber unterstützt (dies ist vorübergehend, bis die Änderungen im Treiber akzeptiert werden).
+2. Führen Sie `npm install gremlin` aus, um erforderliche NPM-Module zu installieren.
 
-2. Führen Sie `node app.js` in einem Terminal aus, um Ihre Node-Anwendung zu starten.
+3. Ersetzen Sie den Inhalt des Ordners `node_modules\gremlin` durch den Quellcode aus der [Gremlin-Verzweigung von Cosmos DB](https://github.com/CosmosDB/gremlin-javascript), die über Unterstützung für SSL und SASL verfügt. SSL und SASL sind für Azure Cosmos DB erforderlich, werden im Moment aber noch nicht vom Treiber unterstützt (dies ist vorübergehend, bis die Änderungen im Treiber akzeptiert werden).
+
+4. Führen Sie `node app.js` in einem Terminal aus, um Ihre Node-Anwendung zu starten.
 
 Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeigen, abzufragen, anzupassen und mit ihnen zu arbeiten. 
 
@@ -141,9 +139,7 @@ Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Graph mit dem Daten-Explorer erstellen und eine App ausführen. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Graphen mit Gremlin implementieren. 
+In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Graph mit dem Daten-Explorer erstellen und eine App ausführen. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Diagrammen mit Gremlin implementieren. 
 
 > [!div class="nextstepaction"]
-> [Abfragen mithilfe von Gremlin](tutorial-query-graph.md)
-
-
+> [Query using Gremlin (Abfragen mithilfe von Gremlin)](tutorial-query-graph.md)
