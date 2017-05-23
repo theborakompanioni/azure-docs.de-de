@@ -7,25 +7,24 @@
 ### [Übersicht](active-directory-b2c-reference-oauth-code.md)
 ### iOS
 #### [iOS Swift mit MSAL](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)
-#### [iOS ObjC mit AppAuth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth)
+#### [iOS ObjC mit AppAuth](active-directory-b2c-devquickstarts-ios.md)
 ### Android
 #### [Android mit MSAL](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal)
-#### [Android mit AppAuth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth)
+#### [Android mit AppAuth](active-directory-b2c-devquickstarts-android.md)
 ### [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)
 ### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
 ## Web-Apps
 ### [Übersicht](active-directory-b2c-reference-oidc.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-### [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
-### [NodeJS](active-directory-b2c-devquickstarts-web-node.md)
+### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
+### [Node.js](active-directory-b2c-devquickstarts-web-node.md)
 ## Einzelseiten-Apps
 ### [Übersicht](active-directory-b2c-reference-spa.md)
-### [JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-### [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-### [NodeJS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
+### [JavaScript mit MSAL](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+### [JavaScript mit Hello](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Web-APIs
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [NodeJS](active-directory-b2c-devquickstarts-api-node.md)
+### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 ### [Aufrufen einer .NET-Web-API](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # Anleitungen
@@ -48,9 +47,10 @@
 ## [Anpassen der Benutzeroberfläche](active-directory-b2c-reference-ui-customization.md)
 ### [Hilfstool für die Anpassung](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [Sprachanpassung](active-directory-b2c-reference-language-customization.md)
+## [Verwenden der Berichterstellungs-API](active-directory-b2c-refererence-usage-reporting-api.md)
 ## [Einrichten der Self-Service-Kennwortzurücksetzung](active-directory-b2c-reference-sspr.md)
 
-# Identity Experience Engine
+# Identity Experience Framework
 ## [Benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md)
 ## Anleitungen
 ### [Erste Schritte](active-directory-b2c-get-started-custom.md)
@@ -68,8 +68,7 @@
 ### Problembehandlung
 #### [Erfassen von Protokollen von Application Insights](active-directory-b2c-troubleshoot-custom.md)
 ## Referenz
-### [Anmerkungen zu dieser Version](active-directory-b2c-developer-notes-custom.md)
-
+### [Versionshinweise](active-directory-b2c-developer-notes-custom.md)
 
 # Referenz
 ## Glossar
@@ -78,6 +77,7 @@
 ### [Integrierte Richtlinien](active-directory-b2c-reference-policies.md)
 ### [Token](active-directory-b2c-reference-tokens.md)
 ## [Regionale Verfügbarkeit und Datenresidenz](active-directory-b2c-reference-tenant-type.md)
+## [Aktivieren der Abrechnung](active-directory-b2c-how-to-enable-billing.md)
 ## [Verwaltung von Bedrohungen](active-directory-b2c-reference-threat-management.md)
 ## [Beschränkungen und Einschränkungen](active-directory-b2c-limitations.md)
 ## [Probleme beim Erstellen eines Verzeichnisses](active-directory-b2c-support-create-directory.md)
