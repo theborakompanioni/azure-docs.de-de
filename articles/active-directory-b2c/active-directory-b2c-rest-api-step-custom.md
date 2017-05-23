@@ -53,26 +53,25 @@ Wir haben eine Azure-Funktion eingerichtet, die den Anspruch `email` empfängt u
 
 Der von der Azure-Funktion zurückgegebene `userMessage`-Anspruch ist in diesem Kontext optional und wird vom IEF ignoriert.  Er kann ggf. als Meldung verwendet werden, die an die Anwendung übergeben und dem Benutzer später angezeigt wird.
 
-```
+```csharp
 if (requestContentAsJObject.email == null)
+{
+    return request.CreateResponse(HttpStatusCode.BadRequest);
+}
+
+var email = ((string) requestContentAsJObject.email).ToLower();
+
+return request.CreateResponse<ResponseContent>(
+    HttpStatusCode.OK,
+    new ResponseContent
     {
-        return request.CreateResponse(HttpStatusCode.BadRequest);
-    }
-
-    var email = ((string) requestContentAsJObject.email).ToLower();
-
-
-     return request.CreateResponse<ResponseContent>(
-            HttpStatusCode.OK,
-            new ResponseContent
-            {
-                version = "1.0.0",
-                status = (int) HttpStatusCode.OK,
-                userMessage = "User Found",
-                city = "Redmond"
-            },
-            new JsonMediaTypeFormatter(),
-            "application/json");
+        version = "1.0.0",
+        status = (int) HttpStatusCode.OK,
+        userMessage = "User Found",
+        city = "Redmond"
+    },
+    new JsonMediaTypeFormatter(),
+    "application/json");
 ```
 
 Mit **Azure-Funktionen-Apps** ist es einfach, die Funktions-URL abzurufen. Darin ist auch der Bezeichner der spezifischen Funktion enthalten.  In diesem Fall lautet die URL: „https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==“. Sie können sie für Testzwecke verwenden.
@@ -86,26 +85,26 @@ Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, d
 
 ```XML
 <ClaimsProvider>
-        <DisplayName>REST APIs</DisplayName>
-        <TechnicalProfiles>
-            <TechnicalProfile Id="AzureFunctions-LookUpLoyaltyWebHook">     
-                <DisplayName>Check LookUpLoyalty Web Hook Azure Function</DisplayName>
-                <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-                <Metadata>
-                    <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
-                    <Item Key="AuthenticationType">None</Item>
-                    <Item Key="SendClaimsIn">Body</Item>
-                </Metadata>
-                <InputClaims>
-                    <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
-                </InputClaims>
-                <OutputClaims>
-                    <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
-                </OutputClaims>
-                <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-            </TechnicalProfile>
-        </TechnicalProfiles>
-    </ClaimsProvider>
+    <DisplayName>REST APIs</DisplayName>
+    <TechnicalProfiles>
+        <TechnicalProfile Id="AzureFunctions-LookUpLoyaltyWebHook">
+            <DisplayName>Check LookUpLoyalty Web Hook Azure Function</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <Metadata>
+                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
+                <Item Key="AuthenticationType">None</Item>
+                <Item Key="SendClaimsIn">Body</Item>
+            </Metadata>
+            <InputClaims>
+                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
+            </InputClaims>
+            <OutputClaims>
+                <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
+            </OutputClaims>
+            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+    </TechnicalProfiles>
+</ClaimsProvider>
 ```
 
 Das `<InputClaims>`-Element definiert die Ansprüche, die vom IEF zum REST-Dienst gesendet werden. Im obigen Beispiel wird der Inhalt des `givenName`-Anspruchs als `email`-Anspruch an den REST-Dienst gesendet.  
@@ -118,9 +117,9 @@ Der `city`-Anspruch ist in unserem Schema nicht anderweitig definiert. Wir füge
 
 ```XML
 <BuildingBlocks>
-<!--The claimtype city must be added to the TrustFrameworkPolicy-->
-<!-- You can add new claims in the BASE file Section III, or in the extensions file-->
-<ClaimsSchema>
+    <!--The claimtype city must be added to the TrustFrameworkPolicy-->
+    <!-- You can add new claims in the BASE file Section III, or in the extensions file-->
+    <ClaimsSchema>
         <ClaimType Id="city">
             <DisplayName>City</DisplayName>
             <DataType>string</DataType>
@@ -128,7 +127,7 @@ Der `city`-Anspruch ist in unserem Schema nicht anderweitig definiert. Wir füge
             <UserInputType>TextBox</UserInputType>
         </ClaimType>
     </ClaimsSchema>
-  </BuildingBlocks>
+</BuildingBlocks>
 ```
 
 ## <a name="step-4---include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-your-trustframeworkextensionsxml"></a>Schritt 4: Einfügen des REST-Dienst-Anspruchsaustauschs als Orchestrierungsschritt in die User Journey der Profilbearbeitung in der Datei „TrustFrameworkExtensions.xml“
@@ -142,10 +141,10 @@ Kopieren Sie den XML-Code für die User Journey der Profilbearbeitung aus der Da
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
-          <ClaimsExchanges>
-                <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
-            </ClaimsExchanges>
-        </OrchestrationStep>
+    <ClaimsExchanges>
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+    </ClaimsExchanges>
+</OrchestrationStep>
 ```
 
 > [!IMPORTANT]
@@ -155,58 +154,58 @@ Der endgültige UserJourney-XML-Code sollte wie folgt aussehen:
 
 ```XML
 <UserJourney Id="ProfileEdit">
-      <OrchestrationSteps>
+    <OrchestrationSteps>
         <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
-          <ClaimsProviderSelections>
-            <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
-            <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
-          </ClaimsProviderSelections>
+            <ClaimsProviderSelections>
+                <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
+                <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
+            </ClaimsProviderSelections>
         </OrchestrationStep>
         <OrchestrationStep Order="2" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
-            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-          </ClaimsExchanges>
+            <ClaimsExchanges>
+                <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+                <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+            </ClaimsExchanges>
         </OrchestrationStep>
         <OrchestrationStep Order="3" Type="ClaimsExchange">
-          <Preconditions>
-            <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-              <Value>authenticationSource</Value>
-              <Value>localAccountAuthentication</Value>
-              <Action>SkipThisOrchestrationStep</Action>
-            </Precondition>
-          </Preconditions>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
-          </ClaimsExchanges>
+            <Preconditions>
+                <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+                    <Value>authenticationSource</Value>
+                    <Value>localAccountAuthentication</Value>
+                    <Action>SkipThisOrchestrationStep</Action>
+                </Precondition>
+            </Preconditions>
+            <ClaimsExchanges>
+                <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
+            </ClaimsExchanges>
         </OrchestrationStep>
         <OrchestrationStep Order="4" Type="ClaimsExchange">
-          <Preconditions>
-            <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-              <Value>authenticationSource</Value>
-              <Value>socialIdpAuthentication</Value>
-              <Action>SkipThisOrchestrationStep</Action>
-            </Precondition>
-          </Preconditions>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-          </ClaimsExchanges>
+            <Preconditions>
+                <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+                    <Value>authenticationSource</Value>
+                    <Value>socialIdpAuthentication</Value>
+                    <Action>SkipThisOrchestrationStep</Action>
+                </Precondition>
+            </Preconditions>
+            <ClaimsExchanges>
+                <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+            </ClaimsExchanges>
         </OrchestrationStep>
         <OrchestrationStep Order="5" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
-          </ClaimsExchanges>
-           </OrchestrationStep>
-           <!-- Add a step 6 to the user journey before the jwt token is created-->
+            <ClaimsExchanges>
+                <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
+            </ClaimsExchanges>
+        </OrchestrationStep>
+        <!-- Add a step 6 to the user journey before the jwt token is created-->
         <OrchestrationStep Order="6" Type="ClaimsExchange">
-          <ClaimsExchanges>
+            <ClaimsExchanges>
                 <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
             </ClaimsExchanges>
-            </OrchestrationStep>
+        </OrchestrationStep>
         <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-      </OrchestrationSteps>
-      <ClientDefinition ReferenceId="DefaultWeb" />
-    </UserJourney>
+    </OrchestrationSteps>
+    <ClientDefinition ReferenceId="DefaultWeb" />
+</UserJourney>
 ```
 
 ## <a name="step-5---add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Schritt 5: Hinzufügen des „city“-Anspruchs zur Datei mit den Richtlinien der vertrauenden Seite, damit der Anspruch an Ihre Anwendung gesendet wird
