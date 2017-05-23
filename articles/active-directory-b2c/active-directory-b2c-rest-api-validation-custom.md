@@ -51,29 +51,29 @@ Wir können sicherstellen, dass der Name, der vom Benutzer bei der Profilbearbei
 
 Wir haben eine Azure-Funktion erstellt, die einen Anspruch erhält. Dieser wird als „playerTag“ erwartet, und es wird überprüft, ob der Anspruch vorhanden ist. Sie können auf [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) auf den gesamten Azure-Funktionscode zugreifen.
 
-```
+```csharp
 if (requestContentAsJObject.playerTag == null)
+{
+  return request.CreateResponse(HttpStatusCode.BadRequest);
+}
+
+var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
+
+if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
+{
+  return request.CreateResponse<ResponseContent>(
+    HttpStatusCode.Conflict,
+    new ResponseContent
     {
-        return request.CreateResponse(HttpStatusCode.BadRequest);
-    }
+      version = "1.0.0",
+      status = (int) HttpStatusCode.Conflict,
+      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
+    },
+    new JsonMediaTypeFormatter(),
+    "application/json");
+}
 
-    var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
-
-    if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
-    {
-        return request.CreateResponse<ResponseContent>(
-            HttpStatusCode.Conflict,
-            new ResponseContent
-            {
-                version = "1.0.0",
-                status = (int) HttpStatusCode.Conflict,
-                userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
-            },
-            new JsonMediaTypeFormatter(),
-            "application/json");
-    }
-
-    return request.CreateResponse(HttpStatusCode.OK);
+return request.CreateResponse(HttpStatusCode.OK);
 ```
 
 Der von der Azure-Funktion zurückgegebene `userMessage`-Anspruch wird vom Identity Experience Framework erwartet und wird für den Benutzer als Zeichenfolge dargestellt, wenn die Validierung fehlschlägt. Ein Beispiel hierfür ist das Zurückgeben des Konfliktstatus 409 im obigen Beispiel.
@@ -85,35 +85,30 @@ Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, d
 > [!NOTE]
 > Betrachten Sie den „Restful Provider, Version 1.0.0.0“, der unten als Protokoll angegeben ist, als die Funktion, die mit dem externen Dienst interagiert.  Eine vollständige Definition des Schemas finden Sie unter <!-- TODO: Link to RESTful Provider schema definition>-->.
 
-```
+```xml
 <ClaimsProvider>
-        <DisplayName>REST APIs</DisplayName>
-        <TechnicalProfiles>
-            <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
-
-                    <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
-                    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-                    <Metadata>
-                        <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                        <Item Key="AuthenticationType">None</Item>
-                        <Item Key="SendClaimsIn">Body</Item>
-                    </Metadata>
-                    <InputClaims>
-                        <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
-                    </InputClaims>
-                    <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-            </TechnicalProfile>
-
-
-            <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-
-                <ValidationTechnicalProfiles>       
-                    <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />       
-                </ValidationTechnicalProfiles>
-
-            </TechnicalProfile>
-        </TechnicalProfiles>
-    </ClaimsProvider>
+    <DisplayName>REST APIs</DisplayName>
+    <TechnicalProfiles>
+        <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
+            <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <Metadata>
+                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
+                <Item Key="AuthenticationType">None</Item>
+                <Item Key="SendClaimsIn">Body</Item>
+            </Metadata>
+            <InputClaims>
+                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
+            </InputClaims>
+            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+        <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+            <ValidationTechnicalProfiles>
+                <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />
+            </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+    </TechnicalProfiles>
+</ClaimsProvider>
 ```
 
 Das `InputClaims`-Element definiert die Ansprüche, die von der IEE zum REST-Dienst gesendet werden. Im obigen Beispiel wird der Inhalt des `givenName`-Anspruchs als `playerTag` an den REST-Dienst gesendet. In diesem Beispiel wird von der IEE keine Rückgabe von Ansprüchen erwartet. Stattdessen wird auf eine Antwort vom REST-Dienst gewartet, und basierend auf den empfangenen Statuscodes werden die entsprechenden Schritte ausgeführt.

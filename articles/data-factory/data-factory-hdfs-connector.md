@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: jingwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: dc501a1c7c0d6a1d70ce368f86a967f889394dc7
+ms.contentlocale: de-de
 ms.lasthandoff: 04/12/2017
 
 
@@ -425,7 +426,7 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
               REALM.COM = .
              }
 
-        Führen Sie nach der Konfiguration einen **Neustart** des KDC-Diensts aus.
+  Führen Sie nach der Konfiguration einen **Neustart** des KDC-Diensts aus.
 
 2.    Bereiten Sie mit dem folgenden Befehl einen Prinzipal namens **krbtgt/REALM.COM@AD.COM** auf dem KDC-Server vor:
 
