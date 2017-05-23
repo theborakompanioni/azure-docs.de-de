@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/28/2017
 ms.author: darosa;sethm;jotaub
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 72e4c59e1282d97cfc5aa5f55861c6f70d419ce8
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a916f643c7e6727d6053865d1c0bd2f683a53b3f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -48,11 +48,17 @@ In den folgenden Abschnitten werden einige Unterschiede zwischen der Premium- un
 
 ### <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
-Partitionierte Warteschlangen und Themen werden in Premium-Messaging unterstützt. Diese Entitäten sind tatsächlich immer partitioniert (und können nicht deaktiviert werden). Partitionierte Premium-Warteschlangen und -Themen funktionieren allerdings anders als in den Standard- und Basic-Tarifen des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung zur Steigerung der Leistung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md).
+Partitionierte Warteschlangen und Themen werden in Premium-Messaging unterstützt. Diese Entitäten sind tatsächlich immer partitioniert (und können nicht deaktiviert werden). Partitionierte Premium-Warteschlangen und -Themen funktionieren allerdings anders als in den Standard- und Basic-Tarifen des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung zur Steigerung der Leistung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. 
+
+Wenn bei Premium-Messaging die Größe einer Entität mit [MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) angegeben wird, wird diese Größe gleichmäßig auf die zwei Partitionen verteilt. Bei [standardmäßigen partitionierten Entitäten](service-bus-partitioning.md#standard) beträgt die Größe dagegen das 16-fache der angegebenen Größe. 
+
+Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md).
 
 ### <a name="express-entities"></a>Expressentitäten
 
-Da Premium-Messaging in einer vollständig isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
+Da Premium-Messaging in einer vollständig isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
+
+Wenn Sie unter Standard-Messaging über Code verfügen und diesen auf den Premium-Tarif portieren möchten, stellen Sie sicher, dass die Eigenschaft [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) auf **false** (Standardwert) gesetzt ist.
 
 ## <a name="get-started-with-premium-messaging"></a>Erste Schritte mit Premium-Messaging
 

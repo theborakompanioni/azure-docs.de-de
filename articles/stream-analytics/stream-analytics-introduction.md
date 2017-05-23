@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: a6b1df79f4fc6b09b681755f5adbb7f56faaf225
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 42f77fbea2ac9572940e8c428999c79d6b4b6e23
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -39,7 +40,7 @@ Große Datenmengen werden heute mit hoher Geschwindigkeit über das Netz übertr
 * **Geringe Kosten** : Als Clouddienst wurde der Stream Analytics-Dienst optimiert, damit Benutzer zu Beginn von den geringen Kosten profitieren können und um Echtzeitanalyselösungen zu verwalten. Das nutzungsbasierte Zahlungsmodell des Diensts basiert auf der Streamingeinheitennutzung sowie auf den vom System verarbeiteten Daten. Die Nutzung wird auf Grundlage der Menge an verarbeiteten Ereignissen und dem Umfang der im Cluster bereitgestellten Rechenleistung berechnet, um die jeweiligen Stream Analytics-Aufträge zu verarbeiten.  
 * **Verweisdaten** : Stream Analytics bietet Benutzern die Möglichkeit, Verweisdaten festzulegen und zu verwenden. Dabei kann es sich um historische Daten oder um einfache Nicht-Streamingdaten handeln, die im Lauf der Zeit weniger häufig geändert werden. Das System vereinfacht die Verwendung von Verweisdaten, damit sie wie alle anderen eingehenden Ereignisstreams mit anderen in Echtzeit erfassten Ereignisstreams verbunden werden, um Transformationen durchzuführen.  
 * **Benutzerdefinierte Funktionen** : Stream Analytics ist mit Azure Machine Learning verknüpft und ermöglicht das Definieren von Funktionsaufrufen im Machine Learning-Dienst im Rahmen einer Stream Analytics-Abfrage. Dadurch wird der Funktionsumfang von Stream Analytics auf die Nutzung vorhandener Azure Machine Learning-Lösungen erweitert. Weitere Informationen finden Sie im [Tutorial zur Machine Learning-Integration](stream-analytics-machine-learning-integration-tutorial.md).
-* **Konnektivität** : Stream Analytics stellt eine Direktverbindung mit Azure Event Hubs und Azure IoT Hubs (Datenstromerfassung) und mit dem Azure-Blob-Dienst (Erfassung historischer Daten) her. Ergebnisse von Stream Analytics können in Azure-Speicherblobs oder -tabellen, Azure SQL-Datenbank, Azure Data Lake Store, DocumentDB, Event Hubs, Azure Service Bus-Themen oder -Warteschlangen und Power BI geschrieben werden, um sie dort zu visualisieren, mit Workflows weiter zu verarbeiten, über [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) für eine Batchanalyse zu verwenden oder als Ereignisreihe erneut zu verarbeiten. Bei Event Hubs können mehrere Stream Analytics zusammen mit anderen Datenquellen und Verarbeitungsmodulen zusammengestellt werden, ohne den Streamingcharakter der Berechnung zu verlieren.  
+* **Konnektivität** : Stream Analytics stellt eine Direktverbindung mit Azure Event Hubs und Azure IoT Hubs (Datenstromerfassung) und mit dem Azure-Blob-Dienst (Erfassung historischer Daten) her. Ergebnisse von Stream Analytics können in Azure-Speicherblobs oder -tabellen, Azure SQL-Datenbank, Azure Data Lake Store, Azure Cosmos DB, Event Hubs, Azure Service Bus-Themen oder -Warteschlangen und Power BI geschrieben werden, um sie dort zu visualisieren, mit Workflows weiter zu verarbeiten, über [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) für eine Batchanalyse zu verwenden oder als Ereignisreihe erneut zu verarbeiten. Bei Event Hubs können mehrere Stream Analytics zusammen mit anderen Datenquellen und Verarbeitungsmodulen zusammengestellt werden, ohne den Streamingcharakter der Berechnung zu verlieren.  
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)

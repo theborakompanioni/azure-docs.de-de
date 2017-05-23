@@ -11,12 +11,12 @@ Sie können den Tabellenspeicherdienst verwenden, um sehr große Mengen struktur
 ## <a name="table-service-concepts"></a>Konzepte des Tabellenspeicherdiensts
 Der Tabellenspeicherdienst umfasst die folgenden Komponenten:
 
-![Table1][Table1]
+![Diagramm der Tabellenspeicherdienst-Komponenten][Table1]
 
 * **URL-Format**: Der Code adressiert Tabellen in einem Konto mithilfe dieses Adressformats:   
   http://`<storage account>`.table.core.windows.net/`<table>`  
   
-  Über diese Adresse können Azure-Tabellen direkt mit dem OData-Protokoll adressiert werden. Weitere Informationen finden Sie unter [OData.org][OData.org].
+  Über diese Adresse können Azure-Tabellen direkt mit dem OData-Protokoll adressiert werden. Weitere Informationen finden Sie unter [OData.org][OData.org]
 * **Speicherkonto:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Weitere Informationen zur Kapazität der Speicherkonten finden Sie unter [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Skalierbarkeits- und Leistungsziele für Microsoft Azure-Speicher, in englischer Sprache).
 * **Tabelle**: Eine Tabelle ist eine Sammlung von Entitäten. Tabellen erzwingen kein Schema für Entitäten. Das bedeutet, dass eine einzelne Tabelle Entitäten mit verschiedenen Eigenschaftensätzen enthalten kann. Die Anzahl von Tabellen, die ein Speicherkonto enthalten kann, ist nur durch die Kapazität des Speicherkontos begrenzt.
 * **Entität**: Eine Entität ist ein Satz von Eigenschaften, der einer Datenbankzeile ähnelt. Eine Entität kann bis zu 1 MB groß sein.

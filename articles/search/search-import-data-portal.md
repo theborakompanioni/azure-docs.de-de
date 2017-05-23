@@ -1,6 +1,6 @@
 ---
 title: "Importieren von Daten in Azure Search über das Portal | Microsoft-Dokumentation"
-description: Verwenden Sie den Datenimport-Assistenten von Azure Search im Azure-Portal, um Azure-Daten aus NoSQL DocumentDB, Blob Storage, Table Storage, SQL-Datenbank und SQL Server auf virtuellen Azure-Computern zu durchforsten.
+description: Verwenden Sie den Datenimport-Assistenten von Azure Search im Azure-Portal, um Azure-Daten aus NoSQL Azure Cosmos DB, Blob Storage, Table Storage, SQL-Datenbank und SQL Server auf virtuellen Azure-Computern zu durchforsten.
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
-ms.openlocfilehash: c03c26d0e5ea2529162262664412f4f8f7e854dc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,17 +34,17 @@ Intern wird von dem Assistenten ein *Indexer*konfiguriert und aufgerufen, um meh
 * Generieren eines anpassbaren Indexschemas auf der Grundlage der Quelldatenstruktur
 * Laden von JSON-Dokumenten in einen Index unter Verwendung eines aus der Datenquelle abgerufenen Rowsets
 
-Sie können diesen Workflow mithilfe von Beispieldaten in DocumentDB testen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit Azure Search im Portal](search-get-started-portal.md) .
+Sie können diesen Workflow mithilfe von Beispieldaten in Azure Cosmos DB testen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit Azure Search im Portal](search-get-started-portal.md) .
 
 > [!NOTE]
-> Starten Sie über das DocumentDB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
+> Starten Sie über das Azure Cosmos DB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
 
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>Vom Datenimport-Assistenten unterstützte Datenquellen
 Der Datenimport-Assistent unterstützt die folgenden Datenquellen: 
 
 * Azure SQL-Datenbank
 * Relationale SQL Server-Daten auf einem virtuellen Azure-Computer
-* Azure DocumentDB
+* Azure Cosmos DB
 * Azure-Blobspeicher
 * Azure-Tabellenspeicher
 
@@ -58,7 +60,7 @@ Als Eingabe ist ein vereinfachtes Dataset erforderlich. Sie können Daten nur au
 | **Vorhandene Datenquelle** |Wenn Sie in Ihrem Suchdienst bereits Indexer definiert haben, können Sie eine vorhandene Datenquellendefinition für einen weiteren Importvorgang auswählen. |
 | **Azure SQL-Datenbank** |Dienstname, Anmeldeinformationen für einen Datenbankbenutzer mit Leseberechtigung und ein Datenbankname können entweder auf der Seite oder über eine ADO.NET-Verbindungszeichenfolge angegeben werden. Wenn Sie Eigenschaften anzeigen oder anpassen möchten, verwenden Sie die Verbindungszeichenfolgen-Option. <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
 | **SQL Server auf virtuellen Azure-Computern** |Geben Sie einen vollqualifizierten Dienstnamen, eine Benutzer-ID, ein Kennwort und eine Datenbank als Verbindungszeichenfolge an. Um diese Datenquelle verwenden zu können, müssen Sie zuvor ein Zertifikat im lokalen Speicher installieren haben, das die Verbindung verschlüsselt. Eine Anleitung finden Sie unter [SQL-VM-Verbindung mit Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
-| **DocumentDB** |Zu den erforderlichen Angaben gehören das Konto, die Datenbank und die Sammlung. Alle Dokumente in der Sammlung werden in den Index aufgenommen. Sie können eine Abfrage zum Vereinfachen oder Filtern des Rowsets oder eine Abfrage zum Erkennen geänderter Dokumente bei nachfolgenden Datenaktualisierungsvorgängen definieren. |
+| **Azure Cosmos DB** |Zu den erforderlichen Angaben gehören das Konto, die Datenbank und die Sammlung. Alle Dokumente in der Sammlung werden in den Index aufgenommen. Sie können eine Abfrage zum Vereinfachen oder Filtern des Rowsets oder eine Abfrage zum Erkennen geänderter Dokumente bei nachfolgenden Datenaktualisierungsvorgängen definieren. |
 | **Azure Blob Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Container. Optional: Wenn zu Gruppierungszwecken für Blobnamen eine virtuelle Benennungskonvention verwendet wird, können Sie den virtuellen Verzeichnisteil des Namens als Ordner unter dem Container angeben. Weitere Informationen finden Sie unter [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md). |
 | **Azure Table Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Tabellenname. Optional können Sie eine Abfrage zum Abrufen einer Teilmenge der Tabellen angeben. Weitere Informationen finden Sie unter [Indizieren von Azure Table Storage mit Azure Search](search-howto-indexing-azure-tables.md). |
 
@@ -113,16 +115,11 @@ Der Assistent erstellt auch einen **Index**. In Azure Search muss ein Index nach
 Unter den folgenden Links finden Sie weitere Informationen zu Indexern:
 
 * [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Herstellen einer Verbindung zwischen DocumentDB und Azure Search unter Verwendung von Indexern](search-howto-index-documentdb.md)
+* [Indizieren von Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md)
 * [Indizieren von Azure Table Storage mit Azure Search](search-howto-indexing-azure-tables.md)
 
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
