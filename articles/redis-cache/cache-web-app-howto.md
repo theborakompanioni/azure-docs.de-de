@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/27/2017
+ms.date: 05/09/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 076a85b7b965f163255e919eb61700aef0d1fc18
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f23f71cc01eccf17d36885f786de9a7517606803
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -190,7 +191,7 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
 
     ```xml
     <connectionStrings>
-        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
 
@@ -203,13 +204,16 @@ Weitere Informationen zu diesem Paket finden Sie auf der [EntityFramework](https
         <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
       </configSections>
       <connectionStrings>
-        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
       </connectionStrings>
       ...
       ```
 
+    > [!NOTE]
+    > Ihre Verbindungszeichenfolge kann je nach der für das Tutorial verwendeten Visual Studio-Version und SQL Server Express-Edition abweichen. Die Vorlage „web.config“ sollte entsprechend Ihrer Installation konfiguriert werden und kann `Data Source`-Einträge wie `(LocalDB)\v11.0` (von SQL Server Express 2012) oder `Data Source=(LocalDB)\MSSQLLocalDB` (von SQL Server Express 2014 und höher) enthalten. Weitere Informationen zu Verbindungszeichenfolgen und SQL Express-Versionen finden Sie unter [SQL Server 2016 Express LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-2016-express-localdb).
+
 ### <a name="add-the-controller"></a>Hinzufügen des Controllers
-1. Drücken Sie F6 **** , um das Projekt zu erstellen. 
+1. Drücken Sie **F6**, um das Projekt zu erstellen. 
 2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie anschließend **Hinzufügen** > **Controller** aus.
    
     ![Controller hinzufügen][cache-add-controller]
@@ -693,7 +697,7 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
     In dieser Zeile wird der Wert `ViewBag.Msg` angezeigt, der einen Statusbericht zum aktuellen Vorgang enthält. `ViewBag.Msg` wird festgelegt, wenn Sie auf einen der Aktionslinks aus dem vorherigen Schritt klicken.   
    
     ![Statusmeldung][cache-status-message]
-2. Drücken Sie F6 **** , um das Projekt zu erstellen.
+2. Drücken Sie **F6**, um das Projekt zu erstellen.
 
 ## <a name="provision-the-azure-resources"></a>Bereitstellen der Azure-Ressourcen
 Bevor Sie Ihre Anwendung in Azure hosten können, müssen Sie die erforderlichen Azure-Dienste bereitstellen. Die Beispielanwendung in diesem Tutorial verwendet die folgenden Azure-Dienste:
@@ -702,18 +706,18 @@ Bevor Sie Ihre Anwendung in Azure hosten können, müssen Sie die erforderlichen
 * App Service-Web-App
 * SQL-Datenbank
 
-Klicken Sie auf die folgende Schaltfläche **** , um diese Dienste für eine neue oder vorhandene Ressourcengruppe Ihrer Wahl bereitzustellen:
+Klicken Sie auf die folgende Schaltfläche **Bereitstellen für Azure**, um diese Dienste für eine neue oder vorhandene Ressourcengruppe Ihrer Wahl bereitzustellen:
 
 [![Bereitstellung in Azure][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
 
-Die Schaltfläche zum ****Bereitstellen für Azure verwendet die [Azure-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates) namens [Create a Web App plus Redis Cache plus SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database), um diese Dienste bereitzustellen und die Verbindungszeichenfolge für die SQL-Datenbank sowie die Anwendungseinstellung für die Azure Redis Cache-Verbindungszeichenfolge festzulegen.
+Die Schaltfläche zum **Bereitstellen für Azure** verwendet die [Azure-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates) namens [Create a Web App plus Redis Cache plus SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database), um diese Dienste bereitzustellen und die Verbindungszeichenfolge für die SQL-Datenbank sowie die Anwendungseinstellung für die Azure Redis Cache-Verbindungszeichenfolge festzulegen.
 
 > [!NOTE]
 > Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero) .
 > 
 > 
 
-Nach dem Klicken auf die Schaltfläche zum Bereitstellen für Azure **** gelangen Sie zum Azure-Portal, und die Erstellung der in der Vorlage beschriebenen Ressourcen wird initiiert.
+Nach dem Klicken auf die Schaltfläche zum **Bereitstellen für Azure** gelangen Sie zum Azure-Portal, und die Erstellung der in der Vorlage beschriebenen Ressourcen wird initiiert.
 
 ![Bereitstellen in Azure][cache-deploy-to-azure-step-1]
 
@@ -736,7 +740,7 @@ Der Status Ihrer Bereitstellung wird auf dem Blatt **Microsoft.Template** angeze
 Nach Abschluss der Bereitstellung können Sie Ihre Anwendung über Visual Studio für Azure veröffentlichen.
 
 > [!NOTE]
-> Während der Bereitstellung auftretende Fehler werden auf dem Blatt **Microsoft.Template** angezeigt. Die Fehler sind häufig auf zu viele SQL Server oder auf zu viele kostenlose App Service-Hostingtarife pro Abonnement zurückzuführen. Beheben Sie alle Fehler, und starten Sie den Prozess erneut, indem Sie auf dem Blatt **Microsoft.Template** auf **Erneut bereitstellen** oder in diesem Tutorial auf die Schaltfläche zum Bereitstellen für Azure**** klicken.
+> Während der Bereitstellung auftretende Fehler werden auf dem Blatt **Microsoft.Template** angezeigt. Die Fehler sind häufig auf zu viele SQL Server oder auf zu viele kostenlose App Service-Hostingtarife pro Abonnement zurückzuführen. Beheben Sie alle Fehler, und starten Sie den Prozess erneut, indem Sie auf dem Blatt **Microsoft.Template** auf **Erneut bereitstellen** oder in diesem Tutorial auf die Schaltfläche zum **Bereitstellen für Azure** klicken.
 > 
 > 
 
@@ -749,7 +753,7 @@ In diesem Schritt des Tutorials wird Anwendung für Azure veröffentlicht und in
 2. Klicken Sie auf **Microsoft Azure App Service**, wählen Sie **Vorhandene auswählen**, und klicken Sie auf **Veröffentlichen**.
    
     ![Veröffentlichen][cache-publish-to-app-service]
-3. Wählen Sie das Abonnement aus, das beim Erstellen der Azure-Ressourcen verwendet wurde, erweitern Sie die Ressourcengruppe mit den Ressourcen, und wählen Sie die gewünschte Web-App aus. Bei Verwendung der Schaltfläche zum Bereitstellen für Azure**** beginnt der Name Ihrer Web-App mit **webSite**, gefolgt von einigen zusätzlichen Zeichen.
+3. Wählen Sie das Abonnement aus, das beim Erstellen der Azure-Ressourcen verwendet wurde, erweitern Sie die Ressourcengruppe mit den Ressourcen, und wählen Sie die gewünschte Web-App aus. Bei Verwendung der Schaltfläche zum **Bereitstellen für Azure** beginnt der Name Ihrer Web-App mit **webSite**, gefolgt von einigen zusätzlichen Zeichen.
    
     ![Web-App auswählen][cache-select-web-app]
 4. Klicken Sie auf **OK**, um mit dem Veröffentlichungsprozess zu beginnen. Der Veröffentlichungsprozess wird kurz darauf abgeschlossen, und die Beispielanwendung wird in einem Browser gestartet. Falls bei der Überprüfung oder Veröffentlichung ein DNS-Fehler auftritt und der Bereitstellungsprozess der Azure-Ressourcen für die Anwendung erst vor Kurzem abgeschlossen wurde, warten Sie einen Moment, und versuchen Sie es dann noch einmal.
@@ -773,7 +777,7 @@ In der folgenden Tabelle werden die einzelnen Aktionslinks aus der Beispielanwen
 Klicken Sie auf einige der Aktionen, und experimentieren Sie mit dem Abrufen der Daten aus unterschiedlichen Quellen. Beachten Sie jeweils die unterschiedliche Vorgangsdauer bei den verschiedenen Methoden zum Abrufen von Daten aus der Datenbank und dem Cache.
 
 ## <a name="delete-the-resources-when-you-are-finished-with-the-application"></a>Löschen der Ressourcen, wenn Sie die Anwendung nicht mehr benötigen
-Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie die Azure-Ressourcen löschen, um Kosten und Ressourcen zu sparen. Wenn Sie im Abschnitt [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) die Schaltfläche zum Bereitstellen für Azure**** verwendet haben und sich Ihre Ressourcen alle in der gleichen Ressourcengruppe befinden, können Sie sie durch Löschen der Ressourcengruppe alle auf einmal löschen.
+Wenn Sie die Beispielanwendung des Tutorials nicht mehr benötigen, können Sie die Azure-Ressourcen löschen, um Kosten und Ressourcen zu sparen. Wenn Sie im Abschnitt [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) die Schaltfläche zum **Bereitstellen für Azure** verwendet haben und sich Ihre Ressourcen alle in der gleichen Ressourcengruppe befinden, können Sie sie durch Löschen der Ressourcengruppe alle auf einmal löschen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 2. Geben Sie im Textfeld **Filterelemente...** den Namen Ihrer Ressourcengruppe ein.

@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 309a36b1aa5db95a287b7a6b21449f9d61880cf4
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c57c0ddbe8e33d77c6f07f58dfe3236733f6c62f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -47,7 +48,7 @@ Die vorkonfigurierten Lösungen verwenden in der Regel die folgenden Dienste:
 
 * Kern der Azure IoT Suite ist der [Azure IoT Hub][lnk-iot-hub]-Dienst. Dieser Dienst stellt die D2C- und C2D-Messagingfunktionen (Gerät zu Cloud und Cloud zu Gerät) und fungiert als Gateway für die Cloud und andere wichtige Dienste der IoT-Suite. Der Dienst ermöglicht das Empfangen von Nachrichten von Ihren verwendeten Geräten und das Senden von Befehlen an diese Geräte. Außerdem können Sie mit dem Dienst Ihre [Geräte verwalten][lnk-device-management]. Beispielsweise können Sie für Geräte, die mit dem Hub verbunden sind, die Konfiguration, einen Neustart oder das Zurücksetzen auf die Werkseinstellungen durchführen.
 * Die Datenanalyse während des Betriebs wird von [Azure Stream Analytics][lnk-asa] bereitgestellt. Die IoT Suite nutzt diesen Dienst für die Verarbeitung eingehender Telemetriedaten, für die Aggregation und für das Erkennen von Ereignissen. Die vorkonfigurierten Lösungen verwenden Stream Analytics auch für die Verarbeitung informativer Meldungen, die Daten wie Metadaten oder Antworten auf Befehle von Geräten enthalten. Die Lösungen verwenden Stream Analytics zum Verarbeiten von Nachrichten von Ihren Geräten und zum Übermitteln dieser Nachrichten an andere Dienste.
-* Die Datenspeicherfunktionen werden von [Azure Storage][lnk-azure-storage] und [Azure DocumentDB][lnk-document-db] bereitgestellt. Die vorkonfigurierten Lösungen verwenden den Blob-Speicher, um Telemetriedaten zu speichern und für die Analyse verfügbar zu machen. Die Lösungen verwenden DocumentDB zum Speichern von Metadaten zum Gerät und zum Aktivieren der Verwaltungsfunktionen der Lösungen für Geräte.
+* Die Datenspeicherfunktionen werden von [Azure Storage][lnk-azure-storage] und [Azure Cosmos DB][lnk-document-db] bereitgestellt. Die vorkonfigurierten Lösungen verwenden den Blob-Speicher, um Telemetriedaten zu speichern und für die Analyse verfügbar zu machen. Die Lösungen verwenden Cosmos DB zum Speichern von Metadaten zum Gerät und zum Aktivieren der Verwaltungsfunktionen der Lösungen für Geräte.
 * [Azure-Web-Apps][lnk-web-apps] und [Microsoft Power BI][lnk-power-bi] bieten Datenvisualisierungsfunktionen. Die Flexibilität von Power BI ermöglicht Kunden das schnelle Erstellen eigener interaktiver Dashboards, die Daten der IoT Suite verwenden.
 
 Eine Übersicht über die Architektur einer typischen IoT-Lösung finden Sie unter [Microsoft Azure und das Internet der Dinge (IoT)][iot-suite-what-is-azure-iot].

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fba7f5f33d1a0d39219a6790e1d5c6b4515b794c
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 29e8639a6f1f0c2733d24dda78975ea7cfb6107a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -107,7 +108,7 @@ Mit der Geräteverwaltungsfunktion von IoT Hub können Sie Ihre Geräteeigenscha
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Die vorkonfigurierte Lösung verwendet drei [Azure Stream Analytics][lnk-asa]-Aufträge (ASA), um den Telemetriedatenstrom von den Geräten zu filtern:
 
-* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine DocumentDB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum Ändern des Gerätestatus**** ausgeführt wurde.
+* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine Azure Cosmos DB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum Ändern des Gerätestatus**** ausgeführt wurde.
 * *Telemetrieauftrag* – Sendet alle Telemetrierohdaten zu Cold Storage-Zwecken an den Azure-Blobspeicher und berechnet Telemetrieaggregationen, die im Lösungsdashboard angezeigt werden.
 * *Regelauftrag* – Filtert den Telemetriedatenstrom, um Werte zu identifizieren, die Regelschwellenwerte überschreiten, und gibt die Daten an einen Event Hub aus. Wenn eine Regel ausgelöst wird, wird das Ereignis in der Dashboardansicht des Lösungsportals als neue Zeile der Alarmverlaufstabelle angezeigt. Diese Regeln können auf der Grundlage der Einstellungen, die im Lösungsportal in den Ansichten **Regeln** und **Aktionen** definiert sind, auch eine Aktion auslösen.
 
@@ -117,10 +118,10 @@ Bei dieser vorkonfigurierten Lösung bilden die ASA-Aufträge einen Teil des **I
 Bei dieser vorkonfigurierten Lösung bildet der Ereignisprozessor einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventProcessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. **EventProcessorHost** verwendet Folgendes:
-- Die Daten vom Typ **DeviceInfo**, um die Gerätedaten in der DocumentDB-Datenbank zu aktualisieren.
+- Die Daten vom Typ **DeviceInfo**, um die Gerätedaten in der Cosmos DB-Datenbank zu aktualisieren.
 - Die**** Regeldaten, um die Logik-App aufzurufen und die Warnungsanzeige im Lösungsportal zu aktualisieren.
 
-## <a name="device-identity-registry-device-twin-and-documentdb"></a>Geräteidentitätsregistrierung, Gerätezwilling und DocumentDB
+## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>Geräteidentitätsregistrierung, Gerätezwilling und Cosmos DB
 Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
 
 Bei einem [Gerätezwilling][lnk-device-twin] handelt es sich um ein von IoT Hub verwaltetes JSON-Dokument. Ein Gerätezwilling enthält Folgendes:
@@ -129,9 +130,9 @@ Bei einem [Gerätezwilling][lnk-device-twin] handelt es sich um ein von IoT Hub 
 - Gewünschte Eigenschaften, die an das Gerät gesendet werden sollen. Diese Eigenschaften können im Lösungsportal festgelegt werden.
 - Tags, die nur im Gerätezwilling (und nicht auf dem Gerät) vorhanden sind. Mithilfe dieser Tags können Gerätelisten im Lösungsportal gefiltert werden.
 
-Diese Lösung verwendet Gerätezwillinge zum Verwalten von Gerätemetadaten. Die Lösung verwendet auch eine DocumentDB-Datenbank, um zusätzliche lösungsspezifische Gerätedaten (beispielsweise die von den einzelnen Geräten unterstützten Befehle und den Befehlsverlauf) zu speichern.
+Diese Lösung verwendet Gerätezwillinge zum Verwalten von Gerätemetadaten. Die Lösung verwendet auch eine Cosmos DB-Datenbank, um zusätzliche lösungsspezifische Gerätedaten (beispielsweise die von den einzelnen Geräten unterstützten Befehle und den Befehlsverlauf) zu speichern.
 
-Die Lösung muss zudem die Informationen in der Geräteidentitätsregistrierung mit dem Inhalt der DocumentDB-Datenbank synchron halten. **EventProcessorHost** verwendet die Daten aus dem **DeviceInfo**-Datenstromanalyseauftrag zum Verwalten der Synchronisierung.
+Die Lösung muss zudem die Informationen in der Geräteidentitätsregistrierung mit dem Inhalt der Cosmos DB-Datenbank synchron halten. **EventProcessorHost** verwendet die Daten aus dem **DeviceInfo**-Datenstromanalyseauftrag zum Verwalten der Synchronisierung.
 
 ## <a name="solution-portal"></a>Lösungsportal
 ![Lösungsportal][img-dashboard]
@@ -168,3 +169,4 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
+

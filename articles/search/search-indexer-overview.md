@@ -1,6 +1,6 @@
 ---
 title: Indexer in Azure Search | Microsoft Docs
-description: "Erfahren Sie, wie Sie eine Azure SQL-Datenbank, DocumentDB oder Azure-Speicher per Crawler durchlaufen, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen."
+description: "Erfahren Sie, wie Sie eine Azure SQL-Datenbank, Azure Cosmos DB oder Azure-Speicher per Crawler durchlaufen, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
-ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 52b154895fca9fc465a9c6cc2fb6bf2d5384b057
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -27,9 +29,9 @@ ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
 > * [Übersicht](search-indexer-overview.md)
 > * [Portal](search-import-data-portal.md)
 > * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-> * [DocumentDB](search-howto-index-documentdb.md)
-> * [Blob Storage (Vorschau)](search-howto-indexing-azure-blob-storage.md)
-> * [Table Storage (Vorschau)](search-howto-indexing-azure-tables.md)
+> * [Azure Cosmos DB](search-howto-index-documentdb.md)
+> * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+> * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 >
 >
 
@@ -40,7 +42,7 @@ Sie können einen Indexer als alleiniges Mittel für die Datenerfassung verwende
 Sie können Indexer bei Bedarf oder nach einem Zeitplan für die regelmäßige Datenaktualisierung ausführen, z.B. alle 15 Minuten. Für häufigere Aktualisierungen ist ein Pushmodell erforderlich, bei dem Daten in Azure Search und Ihrer externen Datenquelle gleichzeitig aktualisiert werden.
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Ansätze zum Erstellen und Verwalten von Indexern
-Für allgemein verfügbare Indexer wie Azure SQL oder DocumentDB können Sie Indexer mit diesen Ansätzen erstellen und verwalten:
+Für allgemein verfügbare Indexer wie Azure SQL oder Azure Cosmos DB können Sie Indexer mit diesen Ansätzen erstellen und verwalten:
 
 * [Portal > Datenimport-Assistent ](search-get-started-portal.md)
 * [Dienst-REST-API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
@@ -56,7 +58,7 @@ Mit einem Indexer werden einige Aufgaben in Bezug auf die Datenerfassung automat
 Ein Indexer ruft Daten per Pull aus einer **Datenquelle** ab, die Informationen enthält, z.B. aus einer Verbindungszeichenfolge. Derzeit werden die folgenden Datenquellen unterstützt:
 
 * [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure-Blobspeicher](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
@@ -69,14 +71,9 @@ Die Indexerdefinition ist ein Konstrukt, bei dem der Index, die Datenquelle und 
 Nachdem Sie sich über die Grundlagen informiert haben, ist der nächste Schritt das Überprüfen der Anforderungen und Aufgaben für jeden Datenquellentyp.
 
 * [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure-Blobspeicher](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Indizieren von CSV-Blobs mit Azure Search-Blobindexer (Vorschau)](search-howto-index-csv-blobs.md)
-* [Indizieren von JSON-Blobs mit Azure Search-Blobindexer (Vorschau)](search-howto-index-json-blobs.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+* [Indizieren von CSV-Blobs mit Azure Search-Blobindexer](search-howto-index-csv-blobs.md)
+* [Indizieren von JSON-Blobs mit Azure Search-Blobindexer](search-howto-index-json-blobs.md)
 

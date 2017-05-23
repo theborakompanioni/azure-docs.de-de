@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e773fd4917c7a96201d94d31b2098a3486d27900
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4e2422e8651d6fd17df2670e78606d1caeaf64ce
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -676,14 +676,11 @@ Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artike
     
     Umfassende Unterstützung bei der Problembehandlung erhalten Sie im [Artikel zur Problembehandlung für Azure Files](storage-troubleshoot-file-connection-problems.md).               
 
-18. **Wie kann ich die serverseitige Verschlüsselung für Azure Files aktivieren?**
-> [!NOTE]
-> Die [serverseitige Verschlüsselung](storage-service-encryption.md) für Azure Files befindet sich derzeit in der Vorschauphase. Sie können sich an [SSEDiscussion](mailto:ssediscussions@microsoft.com) wenden, falls Sie während der Vorschauphase Fragen haben.
-
-    [Server Side Encryption](storage-service-encryption.md) for Azure Files is currently in preview. During preview, you can enable this feature only on new Azure Resource Manager storage accounts created by using the [Azure portal](https://portal.azure.com). There is no additional charge for enabling this feature. When you enable Storage Service Encryption for Azure File Storage, your data is automatically encrypted for you. 
+18. **Wie kann ich die serverseitige Verschlüsselung für Azure File Storage aktivieren?**
     
-    We plan to support enabling encryption for file storage with [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), [Azure CLI](storage-azure-cli.md), and the [Azure Storage Resource Provider REST API](/rest/api/storagerp/storageaccounts) in the future. 
-    See [Storage Service Encryption](storage-service-encryption.md) for more information about encryption at rest in Azure Storage, and you can contact ssediscussions@microsoft.com if you have questions during the preview.
+    [Serverseitige Verschlüsselung](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) für den Azure File Storage-Dienst ist in allen Regionen und öffentlichen sowie nationalen Clouds allgemein verfügbar. Sie können SSE für den File Storage-Dienst mit dem [Azure-Portal](https://ms.portal.azure.com/), der [Microsoft Azure Storage-Ressourcenanbieter-API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts), [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx) oder der [Azure CLI](https://azure.microsoft.com/en-us/documentation/articles/storage-azure-cli/) aktivieren.
+    
+    Nach der Aktivierung von SSE in Azure File Storage, werden neue Daten, die in den Dateispeicher in diesem Speicherkonto geschrieben werden, automatisch verschlüsselt. Diese Funktion ist für alle neuen Daten verfügbar, die in vorhandene oder neue Freigaben in einem vorhandenen oder neuen Speicherkonto geschrieben werden. Für die Aktivierung dieses Features fallen keine zusätzlichen Gebühren an. Erfahren Sie mehr zur [Aktivierung von SSE im Azure File Storage-Dienst](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.

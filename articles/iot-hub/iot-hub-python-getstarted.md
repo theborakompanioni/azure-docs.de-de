@@ -13,10 +13,11 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dkshir
 ms.custom: na
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: d020fc6b51f3b20f56fa056e666ba9c7441a3065
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d0ccbcfa5fc8006590951707f7162f7864110f38
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -277,7 +278,7 @@ Zum Empfangen von Telemetrienachrichten von Ihrem Gerät müssen Sie einen mit [
     ![Python-D2C-Nachrichten][2]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT Hub konfiguriert und anschließend in der Identitätsregistrierung des IoT Hubs eine Geräteidentität erstellt. Sie haben diese Geräteidentität verwendet, um die SimulatedDevice-App für das Senden von D2C-Nachrichten an den IoT Hub zu aktivieren. Sie haben mithilfe des IoT Hub-Explorer-Tools die vom IoT Hub empfangenen Nachrichten verfolgt. 
+In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT-Hub konfiguriert und anschließend in der Identitätsregistrierung des IoT-Hubs eine Geräteidentität erstellt. Sie haben diese Geräteidentität verwendet, um die SimulatedDevice-App für das Senden von D2C-Nachrichten an den IoT Hub zu aktivieren. Sie haben mithilfe des IoT Hub-Explorer-Tools die vom IoT Hub empfangenen Nachrichten verfolgt. 
 
 Ausführlichere Informationen zum Python SDK für Azure IoT Hub finden Sie in [diesem GitHub-Repository][lnk-python-github]. Sie können die Datei [iothub_messaging_sample.py][lnk-messaging-sample] herunterladen und ausführen, um Informationen zu den Messagingfunktionen des Azure IoT Hub Service SDK für Python zu erhalten. Für die geräteseitige Simulation mit dem Azure IoT Hub Device SDK für Python können Sie die Datei [iothub_client_sample.py][lnk-client-sample] herunterladen und ausführen.
 
@@ -285,7 +286,7 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen 
 
 * [Verbinden Ihres Geräts][lnk-connect-device]
 * [Erste Schritte mit der Geräteverwaltung][lnk-device-management]
-* [Erste Schritte mit dem IoT-Gateway SDK][lnk-gateway-SDK]
+* [Erste Schritte mit Azure IoT Edge][lnk-gateway-SDK]
 
 Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten mit Skalierbarkeit verarbeiten, finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial].
 

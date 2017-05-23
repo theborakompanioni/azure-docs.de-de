@@ -56,7 +56,7 @@ Zur Verwendung von `escapeChar` anstelle von `quoteChar` ersetzen Sie die Zeile 
 * Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, die keine Daten oder Kopfzeileninformationen enthalten. Geben Sie mit `skipLineCount` die Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch `firstRowAsHeader` angeben. Wenn sowohl `skipLineCount` als auch `firstRowAsHeader` angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
 
 ### <a name="specifying-jsonformat"></a>Angeben von „JsonFormat“
-Informationen zum **Importieren/Exportieren von JSON-Dateien in der vorliegenden Form in/aus DocumentDB** finden Sie im Abschnitt [Importieren/Exportieren von JSON-Dokumenten](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents) im DocumentDB-Connector mit Details.
+Informationen zum **Importieren/Exportieren von JSON-Dateien in der vorliegenden Form in/aus Azure Cosmos DB** finden Sie im Abschnitt [Importieren/Exportieren von JSON-Dokumenten](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents) im Azure Cosmos DB-Connector mit Details.
 
 Wenn Sie JSON-Dateien analysieren oder die Daten im JSON-Format schreiben möchten, legen Sie für die `format` `type`-Eigenschaft **JsonFormat** fest. Sie können auch die folgenden **optionalen** Eigenschaften im Abschnitt `format` angeben. Informationen zum Konfigurieren finden Sie im Abschnitt [JsonFormat-Beispiel](#jsonformat-example).
 

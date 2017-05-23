@@ -13,12 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 02/22/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e03d0ff92b0ad6d34314c55d98972997769d09f0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -199,7 +200,7 @@ Sie verfügen jetzt über einen Suchindex, der bereit für Abfragen ist. **Suche
 
   Klicken Sie zum Anzeigen der einzelnen Komponenten auf dem Dashboard auf die Kachel **Index**, **Indexer** oder **Datenquellen**, um eine Liste mit vorhandenen Objekten anzuzeigen. Weitere Informationen zu Indexbearbeitungen, die keine Neuerstellung erfordern, finden Sie unter [Update Index (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/update-index) (Aktualisieren des Index (Azure Search-REST-API)).
 
-+ Probieren Sie die Tools und Schritte mit anderen Datenquellen aus. Das Beispieldataset `realestate-us-sample` stammt aus einer Azure SQL-Datenbank, die Azure Search durchforsten kann. Neben Azure SQL-Datenbank kann Azure Search auch Azure Table Storage, Blob Storage, SQL Server auf einem virtuellen Azure-Computer sowie DocumentDB durchforsten und einen Index von darin enthaltenen flachen Datenstrukturen ableiten. Alle diese Datenquellen werden im Assistenten unterstützt. Im Code können Sie einen Index problemlos mithilfe eines *Indexers* auffüllen.
++ Probieren Sie die Tools und Schritte mit anderen Datenquellen aus. Das Beispieldataset `realestate-us-sample` stammt aus einer Azure SQL-Datenbank, die Azure Search durchforsten kann. Neben Azure SQL-Datenbank kann Azure Search auch Azure Table Storage, Blob Storage, SQL Server auf einem virtuellen Azure-Computer sowie Azure Cosmos DB durchforsten und einen Index von darin enthaltenen flachen Datenstrukturen ableiten. Alle diese Datenquellen werden im Assistenten unterstützt. Im Code können Sie einen Index problemlos mithilfe eines *Indexers* auffüllen.
 
 + Alle Indexer-fremden Datenquellen werden über ein Pushmodell unterstützt, bei dem Ihr Code neue und geänderte Rowsets per Push im JSON-Format an Ihren Index übermittelt. Weitere Informationen finden Sie unter [Add, Update or Delete Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) (Hinzufügen, Aktualisieren oder Löschen von Dokumenten in Azure Search).
 
