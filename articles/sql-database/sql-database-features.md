@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 03/03/2017
 ms.author: carlrab; jognanay
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: a1ede93b5aacf0d8a5bcf83f208f72be328ee72f
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 9daf8be93216aefbcf02e3fcba44d048ab95b43d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -35,7 +36,7 @@ Wir fügen Azure SQL-Datenbank ständig weitere Features hinzu. Daher empfehlen 
 | --- | :---: | :---: | 
 | Aktive Georeplikation | Nicht unterstützt – siehe [Always On-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Unterstützt](sql-database-geo-replication-overview.md)
 | Always Encrypted | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Unterstützt – siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)|
-| AlwaysOn-Verfügbarkeitsgruppen | [Unterstützt](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
+| AlwaysOn-Verfügbarkeitsgruppen | [Unterstützt](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | Nicht unterstützt – siehe [Aktive Georeplikation](sql-database-geo-replication-overview.md) |
 | Anfügen einer Datenbank | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nicht unterstützt |
 | Anwendungsrollen | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) |
 | Automatische Skalierung | Nicht unterstützt | Unterstützt – siehe [Dienstebenen](sql-database-service-tiers.md) |
@@ -87,7 +88,7 @@ Wir fügen Azure SQL-Datenbank ständig weitere Features hinzu. Daher empfehlen 
 | Unterstützung von JSON-Daten | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Unterstützt](sql-database-json-features.md) |
 | Sprachelemente | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten – siehe [Einzelne Elemente](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) |  
 | Verknüpfte Server | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nicht unterstützt – siehe [Elastic query (Elastische Abfrage)](sql-database-elastic-query-horizontal-partitioning.md) |
-| Protokollversand | [Unterstützt](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
+| Protokollversand | [Unterstützt](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | Nicht unterstützt – siehe [Aktive Georeplikation](sql-database-geo-replication-overview.md) |
 | Master Data Services (MDS) | [Unterstützt](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Nicht unterstützt |
 | Minimale Protokollierung bei Massenimport | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nicht unterstützt |
 | Ändern von Systemdaten | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Nicht unterstützt |
@@ -126,7 +127,7 @@ Wir fügen Azure SQL-Datenbank ständig weitere Features hinzu. Daher empfehlen 
 | Transaktionen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) |
 | Variablen | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | 
 | Transparent Data Encryption (TDE)  | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | [Unterstützt](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
-| Windows Server-Failoverclustering | [Unterstützt](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
+| Windows Server-Failoverclustering | [Unterstützt](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nicht unterstützt – siehe [Aktive Georeplikation](sql-database-geo-replication-overview.md) |
 | XML-Indizes | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | [Unterstützt](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) |
 
 ## <a name="next-steps"></a>Nächste Schritte

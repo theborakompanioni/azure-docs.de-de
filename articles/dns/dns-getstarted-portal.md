@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 ms.translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 3aea60bc21bfb0650a336f6674005bbab47201fe
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
 ms.contentlocale: de-de
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -48,7 +48,7 @@ Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verw
    | **Einstellung** | **Wert** | **Details** |
    |---|---|---|
    |**Name**|contoso.com|Der Name der DNS-Zone.|
-   |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem Sie das Anwendungsgateway erstellen möchten.|
+   |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem die DNS-Zone erstellt werden soll.|
    |**Ressourcengruppe**|**Neu erstellen:** contosoDNSRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Location**|USA (West)||
 
@@ -71,7 +71,7 @@ Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen A
    |**Typ**|A| Die Art des zu erstellenden DNS-Eintrags. Zulässige Werte: „A“, „AAAA“, „CNAME“, „MX“, „NS“, „SRV“, „TXT“ und „PTR“.  Weitere Informationen zu Datensatztypen finden Sie in der [Übersicht über DNS-Zonen und -Einträge](dns-zones-records.md).|
    |**TTL**|1|Die Gültigkeitsdauer (Time To Live, TTL) der DNS-Anforderung.|
    |**TTL-Einheit**|Stunden|Die Zeiteinheit für den TTL-Wert.|
-   |**IP-Adresse**|{ipAddressValue}| Bei diesem Wert handelt es sich um die IP-Adresse, die der DNS-Eintrag auflöst.|
+   |**IP-Adresse**|ipAddressValue| Bei diesem Wert handelt es sich um die IP-Adresse, die der DNS-Eintrag auflöst.|
 
 ## <a name="view-records"></a>Anzeigen von Datensätzen
 

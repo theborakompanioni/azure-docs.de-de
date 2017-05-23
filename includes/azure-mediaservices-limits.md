@@ -37,9 +37,11 @@ Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 >[!NOTE]
 > Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden. Weitere Informationen und ein Beispiel finden Sie in [diesem](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) Abschnitt.
 
-<sup>7</sup>Berücksichtigen Sie die folgenden Grenzwerte, wenn Sie Inhalte an ein Objekt in Azure Media Services hochladen und mit einem der Medienprozessoren in unseren Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analysemodulen wie Face Detector) verarbeiten möchten. 
+<sup>7</sup>Berücksichtigen Sie die Einschränkungen hinsichtlich der maximalen Größe, wenn Sie Inhalte an ein Medienobjekt in Azure Media Services hochladen und mit einem der Medienprozessoren in unserem Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analysemodulen wie Face Detector) verarbeiten möchten. 
 
-| Reservierte Einheiten für Medien (Typ) | Maximale Dateigröße (GB)| 
+Ab 15. Mai 2017 beträgt die für ein einzelnes Blob unterstützte maximale Größe 195 TB – bei größeren Dateien tritt bei dem Task ein Fehler auf. Wir arbeiten daran, diesen Grenzwert zu ändern. Darüber hinaus gelten folgende Einschränkungen hinsichtlich der maximalen Größe des Medienobjekts.
+
+| Reservierte Einheiten für Medien (Typ) | Maximale Eingabegröße (GB)| 
 | --- | --- | 
 |S1    | 325|
 |S2    | 640|

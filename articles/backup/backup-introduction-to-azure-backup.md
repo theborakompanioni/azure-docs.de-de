@@ -13,19 +13,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 5/3/2017
+ms.date: 5/8/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 245a89f2576dc1bfed2f9078f1d8761f91caf561
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: a5f297ad0a60a595ce9a50bdde1eadf015c69b89
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
-Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Backup-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
+Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
 
 [Video mit einem Überblick über Azure Backup](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
 
@@ -42,7 +42,7 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 * Georedundanter Speicher (GRS) repliziert Ihre Daten in eine sekundäre Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
 
-**Unbegrenzte Datenübertragungen**: Bei Azure Backup ist die Menge der übertragenen eingehenden und ausgehenden Daten nicht beschränkt. Außerdem fallen bei Azure Backup keine Gebühren für die übertragenen Daten an. Aber wenn Sie den Azure Import/Export-Dienst nutzen, um große Datenmengen zu importieren, werden für eingehende Daten Kosten berechnet. Weitere Informationen zu diesen Kosten finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md). Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Backup-Tresor übertragen wurden.
+**Unbegrenzte Datenübertragungen**: Bei Azure Backup ist die Menge der übertragenen eingehenden und ausgehenden Daten nicht beschränkt. Außerdem fallen bei Azure Backup keine Gebühren für die übertragenen Daten an. Aber wenn Sie den Azure Import/Export-Dienst nutzen, um große Datenmengen zu importieren, werden für eingehende Daten Kosten berechnet. Weitere Informationen zu diesen Kosten finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md). Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
 
 **Datenverschlüsselung**: Die Datenverschlüsselung ermöglicht eine sichere Übertragung und Speicherung Ihrer Daten in der öffentlichen Cloud. Sie speichern die Passphrase für die Verschlüsselung lokal, und sie wird niemals in Azure übertragen oder gespeichert. Wenn Daten wiederhergestellt werden sollen, sind nur Sie im Besitz der Passphrase für die Verschlüsselung bzw. des Schlüssels.
 
@@ -55,18 +55,18 @@ Falls Sie unsicher sind, welche Azure Backup-Komponente für Ihre Anforderungen 
 
 | Komponente | Vorteile | Einschränkungen | Was wird geschützt? | Wo werden Sicherungen gespeichert? |
 | --- | --- | --- | --- | --- |
-| Azure Backup-Agent (MARS) |<li>Sicherung von Dateien und Ordnern auf physischen oder virtuellen Windows-Computern (virtuelle Computer können sich am lokalen Standort oder in Azure befinden)<li>Kein separater Sicherungsserver erforderlich |<li>Drei Sicherungen pro Tag <li>Nicht anwendungsorientiert, nur Wiederherstellung auf Datei-, Ordner- und Volumeebene <li>  Keine Unterstützung für Linux |<li>Dateien <li>Ordner |Azure Backup-Tresor |
-| System Center DPM |<li>Anwendungsabhängige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung für Hyper-V- und VMware-VMs <li>Sichern und Wiederherstellen von virtuellen VMware-Computern mit DPM 2012 R2 |Oracle-Workloads können nicht gesichert werden.|<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger<li>  Band (nur lokal) |
-| Azure Backup Server |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung für Hyper-V- und VMware-VMs<li>Sichern und Wiederherstellen von virtuellen VMware-Computern <li>Keine System Center-Lizenz erforderlich |<li>Oracle-Workloads können nicht gesichert werden.<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger |
-| Azure IaaS-VM-Sicherung |<li>Native Sicherungen für Windows/Linux<li>Keine bestimmte Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur |<li>Tägliche Sicherung von virtuellen Computern <li>Wiederherstellung von virtuellen Computern nur auf Datenträgerebene<li>Keine lokale Sicherung möglich |<li>VMs <li>Alle Datenträger (mit PowerShell) |<p>Azure Backup-Tresor</p> |
+| Azure Backup-Agent (MARS) |<li>Sicherung von Dateien und Ordnern auf physischen oder virtuellen Windows-Computern (virtuelle Computer können sich am lokalen Standort oder in Azure befinden)<li>Kein separater Sicherungsserver erforderlich |<li>Drei Sicherungen pro Tag <li>Nicht anwendungsorientiert, nur Wiederherstellung auf Datei-, Ordner- und Volumeebene <li>  Keine Unterstützung für Linux |<li>Dateien <li>Ordner |Recovery Services-Tresor |
+| System Center DPM |<li>Anwendungsabhängige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Kann einen Recovery Services-Tresor verwenden<li>Linux-Unterstützung für Hyper-V- und VMware-VMs <li>Sichern und Wiederherstellen von virtuellen VMware-Computern mit DPM 2012 R2 |Oracle-Workloads können nicht gesichert werden.|<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Recovery Services-Tresor<li> Lokal angefügter Datenträger<li>  Band (nur lokal) |
+| Azure Backup Server |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Kann einen Recovery Services-Tresor verwenden<li>Linux-Unterstützung für Hyper-V- und VMware-VMs<li>Sichern und Wiederherstellen von virtuellen VMware-Computern <li>Keine System Center-Lizenz erforderlich |<li>Oracle-Workloads können nicht gesichert werden.<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Recovery Services-Tresor<li> Lokal angefügter Datenträger |
+| Azure IaaS-VM-Sicherung |<li>Native Sicherungen für Windows/Linux<li>Keine bestimmte Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur |<li>Tägliche Sicherung von virtuellen Computern <li>Wiederherstellung von virtuellen Computern nur auf Datenträgerebene<li>Keine lokale Sicherung möglich |<li>VMs <li>Alle Datenträger (mit PowerShell) |<p>Recovery Services-Tresor</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Was sind die Bereitstellungsszenarien für jede Komponente?
 | Komponente | Bereitstellung in Azure möglich? | Lokale Bereitstellung möglich? | Unterstützter Zielspeicher |
 | --- | --- | --- | --- |
-| Azure Backup-Agent (MARS) |<p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern bereitgestellt werden, die in Azure ausgeführt werden.</p> |<p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern oder physischen Computern bereitgestellt werden.</p> |<p>Azure Backup-Tresor</p> |
-| System Center DPM |<p>**Ja**</p><p>Erfahren Sie mehr über den [Schutz von Workloads in Azure mithilfe von System Center DPM](backup-azure-dpm-introduction.md).</p> |<p>**Ja**</p> <p>Erfahren Sie mehr zum [Schutz von Workloads und virtuellen Computern im Datencenter](https://technet.microsoft.com/en-us/system-center-docs/dpm/data-protection-manager).</p> |<p>Lokal angefügter Datenträger</p> <p>Azure Backup-Tresor</p> <p>Band (nur lokal)</p> |
-| Azure Backup Server |<p>**Ja**</p><p>Erfahren Sie mehr zum [Schutz von Workloads in Azure mithilfe von Azure Backup Server](backup-azure-microsoft-azure-backup.md).</p> |<p>**Ja**</p> <p>Erfahren Sie mehr zum [Schutz von Workloads in Azure mithilfe von Azure Backup Server](backup-azure-microsoft-azure-backup.md).</p> |<p>Lokal angefügter Datenträger</p> <p>Azure Backup-Tresor</p> |
-| Azure IaaS-VM-Sicherung |<p>**Ja**</p><p>Teil der Azure-Fabric</p><p>Speziell für die [Sicherung von Azure IaaS-VMs (Infrastructure as a Service)](backup-azure-vms-introduction.md).</p> |<p>**Nein**</p> <p>Sichern Sie virtuelle Computer in Ihrem Datencenter mit System Center DPM.</p> |<p>Azure Backup-Tresor</p> |
+| Azure Backup-Agent (MARS) |<p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern bereitgestellt werden, die in Azure ausgeführt werden.</p> |<p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern oder physischen Computern bereitgestellt werden.</p> |<p>Recovery Services-Tresor</p> |
+| System Center DPM |<p>**Ja**</p><p>Erfahren Sie mehr über den [Schutz von Workloads in Azure mithilfe von System Center DPM](backup-azure-dpm-introduction.md).</p> |<p>**Ja**</p> <p>Erfahren Sie mehr zum [Schutz von Workloads und virtuellen Computern im Datencenter](https://technet.microsoft.com/system-center-docs/dpm/data-protection-manager).</p> |<p>Lokal angefügter Datenträger</p> <p>Recovery Services-Tresor</p> <p>Band (nur lokal)</p> |
+| Azure Backup Server |<p>**Ja**</p><p>Erfahren Sie mehr zum [Schutz von Workloads in Azure mithilfe von Azure Backup Server](backup-azure-microsoft-azure-backup.md).</p> |<p>**Ja**</p> <p>Erfahren Sie mehr zum [Schutz von Workloads in Azure mithilfe von Azure Backup Server](backup-azure-microsoft-azure-backup.md).</p> |<p>Lokal angefügter Datenträger</p> <p>Recovery Services-Tresor</p> |
+| Azure IaaS-VM-Sicherung |<p>**Ja**</p><p>Teil der Azure-Fabric</p><p>Speziell für die [Sicherung von Azure IaaS-VMs (Infrastructure as a Service)](backup-azure-vms-introduction.md).</p> |<p>**Nein**</p> <p>Sichern Sie virtuelle Computer in Ihrem Datencenter mit System Center DPM.</p> |<p>Recovery Services-Tresor</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>Welche Anwendungen und Workloads kann ich sichern?
 Die folgende Tabelle enthält eine Matrix mit den Daten und Workloads, die mit Azure Backup geschützt werden können. Die Spalte „Azure Backup-Lösung“ enthält Links zur Bereitstellungsdokumentation für die Lösung. Jede Azure Backup-Komponente kann in einer Umgebung mit einem klassischen Bereitstellungsmodell (Service Manager-Bereitstellung) oder Resource Manager-Bereitstellungsmodell bereitgestellt werden.
@@ -91,15 +91,15 @@ In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über 
 | Komponente | Linux-Unterstützung (von Azure unterstützt) |
 | --- | --- |
 | Azure Backup-Agent (MARS) |Keine (nur Windows-basierter Agent) |
-| System Center DPM |Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> (nicht für Azure-VM verfügbar)<br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs |
-| Azure Backup Server |Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> (nicht für Azure-VM verfügbar)<br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs |
-| Azure IaaS-VM-Sicherung |Anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)<br/> [Präzise Dateiwiederherstellung](backup-azure-restore-files-from-vm.md)<br/> [Wiederherstellen aller VM-Datenträger](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-backed-up-disks)<br/> [VM-Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-new-vm-from-restore-point) |
+| System Center DPM |<li> Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> <li> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs </br> </br>  *Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.* <br/> |
+| Azure Backup Server |<li>Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/> <li> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs </br></br> *Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.*  |
+| Azure IaaS-VM-Sicherung |Anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/> [Präzise Dateiwiederherstellung](backup-azure-restore-files-from-vm.md)<br/> [Wiederherstellen aller VM-Datenträger](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM-Wiederherstellung](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden von Storage Premium-VMs mit Azure Backup
 Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
 
 ### <a name="back-up-premium-storage-vms"></a>Sichern virtueller Storage Premium-Computer
-Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe des Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Speicherkonto ausreichend freier Speicherplatz für den temporären Statingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/storage-premium-storage.md#pricing-and-billing).
+Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Storage Premium-Konto ausreichend freier Speicherplatz für den temporären Stagingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/storage-premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
 > Ändern oder bearbeiten Sie den Stagingspeicherort nicht.
@@ -116,7 +116,7 @@ Azure Backup schützt virtuelle Computer auf verwalteten Datenträgern. Bei verw
 Das Sichern virtueller Computer auf verwalteten Datenträgern funktioniert genauso wie das Sichern virtueller Resource Manager-Computer. Im Azure-Portal können Sie den Sicherungsauftrag direkt in der Ansicht des virtuellen Computers oder in der Ansicht des Recovery Services-Tresors konfigurieren. Virtuelle Computer können auf verwalteten Datenträgern über RestorePoint-Sammlungen gesichert werden, die auf verwalteten Datenträgern aufbauen. Das Sichern von virtuellen Computern auf verwalteten Datenträgern mit Azure Disk Encryption (ADE) wird von Azure Backup ebenfalls unterstützt.
 
 ### <a name="restore-managed-disk-vms"></a>Wiederherstellen von virtuellen Computer auf verwalteten Datenträgern
-Mit Azure Backup können Sie einen vollständigen virtuellen Computer mit verwalteten Datenträgern oder verwaltete Datenträger in einem Resource Manager-Speicherkonto wiederherstellen. Während der Wiederherstellung werden die verwalteten Datenträger von Azure verwaltet. Sie als Kunde verwalten das Speicherkonto, das im Rahmen der Wiederherstellung erstellt wurde. Zum Wiederherstellen verwalteter verschlüsselter VMs müssen Schlüssel und Geheimnisse des virtuellen Computers vor der Wiederherstellung bereits im Schlüsseltresor vorhanden sein.
+Mit Azure Backup können Sie einen vollständigen virtuellen Computer mit verwalteten Datenträgern oder verwaltete Datenträger in einem Speicherkonto wiederherstellen. Während der Wiederherstellung werden die verwalteten Datenträger von Azure verwaltet. Sie als Kunde verwalten das Speicherkonto, das im Rahmen der Wiederherstellung erstellt wurde. Beim Wiederherstellen verwalteter verschlüsselter VMs müssen die Schlüssel und Geheimnisse des virtuellen Computers vor dem Starten des Wiederherstellungsvorgangs bereits im Schlüsseltresor vorhanden sein.
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>Welche Features haben die einzelnen Backup-Komponenten?
 Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. die Unterstützung verschiedener Features der einzelnen Azure Backup-Komponenten zusammengefasst ist. Weitere Informationen zur Unterstützung bzw. weitere Details sind jeweils unterhalb der Tabelle zu finden.
@@ -124,19 +124,19 @@ Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. di
 ### <a name="storage"></a>Speicher
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Azure Backup-Tresor |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
+| Recovery Services-Tresor |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
 | Datenträgerspeicher | |![Ja][green] |![Ja][green] | |
 | Bandspeicher | |![Ja][green] | | |
-| Komprimierung <br/>(im Backup-Tresor) |![Ja][green] |![Ja][green] |![Ja][green] | |
+| Komprimierung <br/>(im Recovery Services-Tresor) |![Ja][green] |![Ja][green] |![Ja][green] | |
 | Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
-| Datenträgerdeduplizierung | |![Teilweise][yellow] |![Teilweise][yellow] | |
+| Datenträgerdeduplizierung | |![Teilweise][yellow] |![Teilweise][yellow] | | |
 
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key.png)
 
-Der Azure Backup-Tresor ist das bevorzugte Speicherziel aller Komponenten. System Center DPM und Azure Backup Server ermöglichen auch die Verwendung einer lokalen Datenträgerkopie. Nur System Center DPM bietet aber die Möglichkeit, Daten auf ein Bandspeichergerät zu schreiben.
+Der Recovery Services-Tresor ist das bevorzugte Speicherziel aller Komponenten. System Center DPM und Azure Backup Server ermöglichen auch die Verwendung einer lokalen Datenträgerkopie. Nur System Center DPM bietet aber die Möglichkeit, Daten auf ein Bandspeichergerät zu schreiben.
 
 #### <a name="compression"></a>Komprimierung
-Sicherungen werden komprimiert, um den erforderlichen Speicherplatz zu reduzieren. Die einzige Komponente, für die keine Komprimierung verwendet wird, ist die VM-Erweiterung. Die VM-Erweiterung kopiert alle Sicherungsdaten aus Ihrem Speicherkonto in den Sicherungstresor in der gleichen Region. Die Daten werden unkomprimiert übertragen. Dadurch erhöht sich geringfügig der verwendete Speicherplatz. Unkomprimiert gespeicherte Daten lassen sich im Bedarfsfall allerdings auch schneller wiederherstellen.
+Sicherungen werden komprimiert, um den erforderlichen Speicherplatz zu reduzieren. Die einzige Komponente, für die keine Komprimierung verwendet wird, ist die VM-Erweiterung. Die VM-Erweiterung kopiert alle Sicherungsdaten aus Ihrem Speicherkonto in den Recovery Services-Tresor in der gleichen Region. Die Daten werden unkomprimiert übertragen. Dadurch erhöht sich geringfügig der verwendete Speicherplatz. Unkomprimiert gespeicherte Daten lassen sich im Bedarfsfall allerdings auch schneller wiederherstellen.
 
 
 #### <a name="disk-deduplication"></a>Datenträgerdeduplizierung
@@ -148,7 +148,7 @@ Sie können die Deduplizierung nutzen, wenn Sie System Center DPM oder Azure Bac
 >
 
 ### <a name="incremental-backup-explained"></a>Erläuterung der inkrementellen Sicherung
-Die inkrementelle Sicherung wird unabhängig vom Zielspeicher (Datenträger, Band, Sicherungstresor) von allen Azure Backup-Komponenten unterstützt. Mit der inkrementellen Sicherung wird sichergestellt, dass Sicherungen speicher- und zeiteffizient sind, da nur die seit der letzten Sicherung vorgenommenen Änderungen übertragen werden.
+Die inkrementelle Sicherung wird unabhängig vom Zielspeicher (Datenträger, Band, Recovery Services-Tresor) von allen Azure Backup-Komponenten unterstützt. Mit der inkrementellen Sicherung wird sichergestellt, dass Sicherungen speicher- und zeiteffizient sind, da nur die seit der letzten Sicherung vorgenommenen Änderungen übertragen werden.
 
 #### <a name="comparing-full-differential-and-incremental-backup"></a>Vergleich zwischen vollständiger, differenzieller und inkrementeller Sicherung
 
@@ -171,10 +171,10 @@ Die **inkrementelle Sicherung** bietet eine hohe Speicher- und Netzwerkeffizienz
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key.png)
 
 #### <a name="network-security"></a>Netzwerksicherheit
-Sämtlicher Sicherungsdatenverkehr von Ihren Servern in den Azure Backup-Tresor wird mit AES 256 (Advanced Encryption Standard) verschlüsselt. Die Sicherungsdaten werden über eine sichere HTTPS-Verbindung übertragen. Die Sicherungsdaten werden auch im Sicherungstresor in verschlüsselter Form gespeichert. Nur Sie, der Azure-Kunde, sind im Besitz der Passphrase zum Entsperren dieser Daten. Die Sicherungsdaten können zu keinem Zeitpunkt von Microsoft entschlüsselt werden.
+Sämtlicher Sicherungsdatenverkehr von Ihren Servern in den Recovery Services-Tresor wird mit AES 256 (Advanced Encryption Standard) verschlüsselt. Die Sicherungsdaten werden über eine sichere HTTPS-Verbindung übertragen. Die Sicherungsdaten werden auch im Recovery Services-Tresor in verschlüsselter Form gespeichert. Nur Sie, der Azure-Kunde, sind im Besitz der Passphrase zum Entsperren dieser Daten. Die Sicherungsdaten können zu keinem Zeitpunkt von Microsoft entschlüsselt werden.
 
 > [!WARNING]
-> Nachdem Sie den Backup-Tresor eingerichtet haben, haben nur Sie Zugriff auf den Verschlüsselungsschlüssel. Microsoft bewahrt keine Kopie Ihres Verschlüsselungsschlüssels auf und hat auch keinen Zugriff auf den Schlüssel. Wenn der Schlüssel verlegt wird, kann Microsoft die gesicherten Daten nicht wiederherstellen.
+> Nachdem Sie den Recovery Services-Tresor eingerichtet haben, haben nur Sie Zugriff auf den Verschlüsselungsschlüssel. Microsoft bewahrt keine Kopie Ihres Verschlüsselungsschlüssels auf und hat auch keinen Zugriff auf den Schlüssel. Wenn der Schlüssel verlegt wird, kann Microsoft die gesicherten Daten nicht wiederherstellen.
 >
 >
 
@@ -185,15 +185,15 @@ Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselu
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Netzwerkkomprimierung <br/>(auf **Sicherungsserver**) | |![Ja][green] |![Ja][green] | |
-| Netzwerkkomprimierung <br/>(in **Sicherungstresor**) |![Ja][green] |![Ja][green] |![Ja][green] | |
+| Netzwerkkomprimierung <br/>(zum **Recovery Services-Tresor**) |![Ja][green] |![Ja][green] |![Ja][green] | |
 | Netzwerkprotokoll <br/>(auf **Sicherungsserver**) | |TCP |TCP | |
-| Netzwerkprotokoll <br/>(in **Sicherungstresor**) |HTTPS |HTTPS |HTTPS |HTTPS |
+| Netzwerkprotokoll <br/>(zum **Recovery Services-Tresor**) |HTTPS |HTTPS |HTTPS |HTTPS |
 
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key-2.png)
 
 Die VM-Erweiterung (auf der IaaS-VM) liest die Daten über das Speichernetzwerk direkt aus dem Azure-Speicherkonto, sodass es nicht erforderlich ist, diesen Datenverkehr zu komprimieren.
 
-Wenn Sie Daten in einer System Center DPM- oder Azure Backup Server-Instanz sichern, empfiehlt es sich, die Daten auf dem Weg vom primären Server zum Sicherungsserver zu komprimieren. Wenn die Daten vor dem Sichern in DPM oder Azure Backup Server komprimiert werden, wird weniger Bandbreite beansprucht.
+Wenn Sie einen System Center DPM-Server oder eine Azure Backup Server-Instanz als sekundären Sicherungsserver verwenden, empfiehlt es sich, die Daten zu komprimieren, die vom primären Server an den Sicherungsserver gesendet werden. Wenn die Daten vor dem Sichern in DPM oder Azure Backup Server komprimiert werden, wird weniger Bandbreite beansprucht.
 
 #### <a name="network-throttling"></a>Netzwerkdrosselung
 Der Azure Backup-Agent verfügt über die Netzwerkdrosselung, mit der Sie steuern können, wie die Netzwerkbandbreite während der Datenübertragung verwendet wird. Die Drosselung kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den anderen Internetdatenverkehr haben soll. Die Drosselung der Datenübertragung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
@@ -204,7 +204,7 @@ Für Azure Backup gilt pro *geschützter Instanz* eine Obergrenze von 9999 Wiede
 
 |  | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Sicherungshäufigkeit<br/> (im Backup-Tresor) |Drei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Eine Sicherung pro Tag |
+| Sicherungshäufigkeit<br/> (zum Recovery Services-Tresor) |Drei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Eine Sicherung pro Tag |
 | Sicherungshäufigkeit<br/> (auf Datenträger) |Nicht zutreffend |<li>Alle 15 Minuten für SQL Server <li>Stündlich für andere Workloads |<li>Alle 15 Minuten für SQL Server <li>Stündlich für andere Workloads</p> |Nicht zutreffend |
 | Aufbewahrungsoptionen |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |
 | Maximale Wiederherstellungspunkte pro geschützter Instanz |9999|9999|9999|9999|
@@ -221,13 +221,13 @@ Allgemeine Beispiele für geschützte Instanzen sind virtuelle Computer, Anwendu
 * Ein PC, eine Arbeitsstation oder ein Laptop unter dem Windows-Betriebssystem.
 
 
-## <a name="what-is-the-vault-credential-file"></a>Was ist die Datei mit Tresoranmeldeinformationen?
-Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für jeden Backup-Tresor generiert wird. Das Portal lädt anschließend den öffentlichen Schlüssel in den Access Control Service (ACS) hoch. Der private Schlüssel wird beim Herunterladen von Anmeldeinformationen für Sie bereitgestellt. Verwenden Sie ihn, um die zu schützenden Computer zu registrieren. Mit dem privaten Schlüssel können Sie die Server oder Computer für das Senden von Sicherungsdaten an einen bestimmten Backup-Tresor authentifizieren.
+## <a name="what-is-a-recovery-services-vault"></a>Was ist ein Recovery Services-Tresor?
+Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird. Sie können Recovery Services-Tresore zum Speichern von Sicherungsdaten für Azure-Dienste sowie lokale Server und Arbeitsstationen verwenden. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Sie können innerhalb eine Abonnements beliebig viele Recovery Services-Tresore erstellen.
 
-Sie verwenden die Tresoranmeldeinformationen nur, um die Server oder Computer zu registrieren. Gehen Sie mit den Tresoranmeldeinformationen aber sorgfältig um. Wenn sie verloren gehen oder in den Besitz anderer Personen gelangen, können die Tresoranmeldeinformationen zum Registrieren von anderen Computern für denselben Tresor verwendet werden. Da die Sicherungsdaten mit einer Passphrase verschlüsselt werden, auf die nur Sie Zugriff haben, können vorhandene Sicherungsdaten nicht kompromittiert werden. Tresoranmeldeinformationen laufen nach 48 Stunden ab. Sie können die Tresoranmeldeinformationen des Backup-Tresors zwar so häufig wie gewünscht herunterladen, aber nur die jeweils letzten Anmeldeinformationen können für die Registrierung verwendet werden.
+Sicherungstresore, die auf Azure Service Manager basieren, waren die erste Version eines Tresors. Recovery Services-Tresore, die um die Azure Resource Manager-Modellfunktionen ergänzt wurden, sind die zweite Version. Eine vollständige Beschreibung der Funktionsunterschiede finden Sie im [Übersichtsartikel zu Recovery Services-Tresoren](backup-azure-recovery-services-vault-overview.md). Sicherungstresors werden weiterhin unterstützt, Sie können aber keine neuen Sicherungstresore im Azure-Portal mehr erstellen.  
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Wie unterscheidet sich Azure Backup von Azure Site Recovery?
-Azure Backup und Azure Site Recovery ähneln sich insofern als mit beiden Diensten Daten gesichert und dann wiederhergestellt werden können. Die Dienste bieten jedoch unterschiedliche Nutzenversprechen.
+Azure Backup und Azure Site Recovery ähneln sich insofern als mit beiden Diensten Daten gesichert und dann wiederhergestellt werden können. Beide Dienste bieten aber unterschiedliche Funktionen hinsichtlich der Geschäftskontinuität und Notfallwiederherstellung in Ihrem Unternehmen. Verwenden Sie Azure Backup, um Daten auf differenzierte Weise zu schützen und wiederherzustellen. Wenn beispielsweise die Darstellung eines Laptops beschädigt wurde, verwenden Sie Azure Backup, um die Darstellung wiederherzustellen. Wenn Sie die Konfiguration und die Daten eines virtuellen Computers in einem anderen Rechenzentrum replizieren möchten, verwenden Sie Azure Site Recovery.
 
 Mit Azure Backup werden Daten lokal und in der Cloud geschützt. Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server. Beide Dienste sind wichtig, da die Daten im Rahmen Ihrer Notfallwiederherstellungsstrategie sicher und wiederherstellbar gespeichert werden müssen (Backup) *und* Ihre Workloads verfügbar sein müssen (Site Recovery), falls es zu Ausfällen kommen sollte.
 

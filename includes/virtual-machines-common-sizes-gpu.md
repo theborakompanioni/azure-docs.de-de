@@ -7,22 +7,22 @@ Die NC-Instanzen werden durch die Grafikkarte Tesla K80 von NVIDIA unterstützt.
 
 ## <a name="nv-instances"></a>NV-Instanzen
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | GPU |
-| --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 1 |
-| Standard_NV12 |12 |112 |680 | 2 |
-| Standard_NV24 |24 |224 |1.440 | 4 |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | GPU | Maximale Anzahl von Datenträgern |
+| --- | --- | --- | --- | --- | --- |
+| Standard_NV6 |6 |56 |380 | 1 | 64 |
+| Standard_NV12 |12 |112 |680 | 2 | 64 |
+| Standard_NV24 |24 |224 |1.440 | 4 | 64 |
 
 1 GPU = halbe M60-Karte
 
 ## <a name="nc-instances"></a>NC-Instanzen
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | GPU |
-| --- | --- | --- | --- | --- |
-| Standard_NC6 |6 |56 | 380 | 1 |
-| Standard_NC12 |12 |112 | 680 | 2 |
-| Standard_NC24 |24 |224 | 1.440 | 4 |
-| Standard_NC24r* |24 |224 | 1.440 | 4 |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | GPU | Maximale Anzahl von Datenträgern |
+| --- | --- | --- | --- | --- | --- |
+| Standard_NC6 |6 |56 | 380 | 1 | 12 |
+| Standard_NC12 |12 |112 | 680 | 2 | 24 |
+| Standard_NC24 |24 |224 | 1.440 | 4 | 48 |
+| Standard_NC24r* |24 |224 | 1.440 | 4 | 48 |
 
 1 GPU = halbe K80-Karte
 

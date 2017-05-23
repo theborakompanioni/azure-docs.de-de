@@ -2,8 +2,8 @@
 
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Virtuelle Netzwerke pro Abonnement |50 |100 |
-| Lokale Netzwerkstandorte pro Abonnement |20 |Support kontaktieren |
+| Virtuelle Netzwerke |50 |100 |
+| Lokale Netzwerksites |20 |Support kontaktieren |
 | DNS-Server pro virtuellem Netzwerk |20 |100 |
 | Private IP-Adressen pro virtuellem Netzwerk |4096 |4096 |
 | Parallele TCP-Verbindungen für einen virtuellen Computer bzw. eine Rolleninstanz |500K |500K |
@@ -22,7 +22,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Virtuelle Netzwerke pro Abonnement |50 |500 |
+| Virtuelle Netzwerke |50 |500 |
 | Subnetze pro virtuellem Netzwerk |1.000 |an den Support wenden |
 | DNS-Server pro virtuellem Netzwerk |9 |25 |
 | Private IP-Adressen pro virtuellem Netzwerk |4096 |4.096 |
@@ -43,5 +43,5 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
 | Sekundäre IP-Konfigurationen pro virtuellem Netzwerk |1000 |an den Support wenden |
 
-Wenden Sie sich an den Support, falls Sie Limits gegenüber den Standardwerten erhöhen müssen.
+[Wenden Sie sich an den Support](../articles/azure-supportability/how-to-create-azure-support-request.md), falls Sie Limits der Standardwerte erhöhen müssen.
 

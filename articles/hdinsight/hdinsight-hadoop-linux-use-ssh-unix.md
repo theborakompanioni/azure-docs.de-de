@@ -1,32 +1,35 @@
 ---
-title: Verwenden von SSH mit HDInsight (Hadoop) unter Windows, Linux, Unix oder OS X | Microsoft-Dokumentation
-description: " Sie können auf HDInsight über Secure Shell (SSH) zugreifen. Dieses Dokument enthält Informationen zur Verwendung von SSH zum Herstellen einer Verbindung mit HDInsight auf Windows-, Linux-, Unix- oder OS X-Clients."
+title: "Verwenden von SSH mit Hadoop – Azure HDInsight | Microsoft-Dokumentation"
+description: "Sie können auf HDInsight über Secure Shell (SSH) zugreifen. Dieses Dokument enthält Informationen zum Herstellen einer Verbindung mit HDInsight mithilfe der Befehle „ssh“ und „scp“ über Windows-, Linux-, Unix- oder macOS-Clients."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
+keywords: Hadoop-Befehle in Linux, Hadoop-Linux-Befehle, Hadoop macOS, SSH-Hadoop, SSH-Hadoop-Cluster
 ms.assetid: a6a16405-a4a7-4151-9bbf-ab26972216c5
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 05/12/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 248e820ccd2c68a8500aab3233c5beea3c8cc868
-ms.lasthandoff: 04/04/2017
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 3eb1d4df7ab87ec692716339eb0ecb9df4c58732
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
+
 
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH
 
-Informieren Sie sich darüber, wie Sie [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) verwenden, um eine sichere Verbindung mit HDInsight herzustellen. HDInsight kann Linux (Ubuntu) als Betriebssystem für Knoten im Cluster verwenden. SSH kann genutzt werden, um eine Verbindung mit den Haupt- und Edgeknoten eines Linux-basierten Clusters herzustellen und Befehle direkt auf diesen Knoten auszuführen.
+Informieren Sie sich darüber, wie Sie [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) verwenden, um eine sichere Verbindung mit Hadoop in Azure HDInsight herzustellen. 
 
-Die folgende Tabelle enthält die Adress- und Portinformationen, die zum Herstellen der Verbindung mit HDInsight per SSH benötigt werden:
+HDInsight kann Linux (Ubuntu) als Betriebssystem für Knoten im Hadoop-Cluster verwenden. Die folgende Tabelle enthält die Adress- und Portinformationen, die zum Herstellen der Verbindung mit HDInsight unter Linux über einen SSH-Client benötigt werden:
 
 | Adresse | Port | Verbindungsherstellung mit... |
 | ----- | ----- | ----- |
@@ -38,40 +41,44 @@ Die folgende Tabelle enthält die Adress- und Portinformationen, die zum Herstel
 > [!NOTE]
 > Ersetzen Sie `<edgenodename>` durch den Namen des Edgeknotens.
 >
-> Ersetzen Sie `<clustername>` durch den Namen Ihres HDInsight-Clusters.
+> Ersetzen Sie `<clustername>` durch den Namen Ihres Clusters.
 >
-> Wir empfehlen Ihnen, __immer eine Verbindung mit dem Edgeknoten herzustellen__, falls ein Knoten dieser Art vorhanden ist. Auf den Hauptknoten werden Dienste gehostet, die für die Integrität des Clusters wichtig sind. Auf dem Edgeknoten werden nur die Komponenten ausgeführt, die Sie darauf anordnen.
+> Wenn Ihr Cluster einen Edgeknoten enthält, sollten Sie __stets die Verbindung mit dem Edgeknoten__ mithilfe von SSH herstellen. Auf den Hauptknoten werden Dienste gehostet, die für die Integrität von Hadoop wichtig sind. Auf dem Edgeknoten werden nur die Komponenten ausgeführt, die Sie darauf anordnen.
 >
 > Weitere Informationen zur Verwendung von Edgeknoten finden Sie unter [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node).
 
 ## <a name="ssh-clients"></a>SSH-Clients
 
-Die meisten Betriebssysteme verfügen über den `ssh`-Client. In Microsoft Windows wird standardmäßig kein SSH-Client bereitgestellt. Ein SSH-Client für Windows ist in den folgenden Paketen verfügbar:
+Linux-, Unix- und macOS-Systeme bieten die Befehle `ssh` und `scp`. Der `ssh`-Client wird häufig verwendet, um eine Remote-Befehlszeilensitzung mit einem Linux- oder Unix-basierten System zu erstellen. Der `scp`-Client wird verwendet, um Dateien zwischen Ihrem Client und dem Remotesystem sicher zu kopieren.
 
-* [Bash unter Ubuntu unter Windows 10](https://msdn.microsoft.com/commandline/wsl/about): Der Befehl `ssh` wird per Bash über die Windows-Befehlszeile bereitgestellt.
+In Microsoft Windows wird standardmäßig kein SSH-Client bereitgestellt. Die `ssh`- und `scp`-Clients sind für Windows über die folgenden Pakete verfügbar:
 
-* [Git (https://git-scm.com/)](https://git-scm.com/): Der Befehl `ssh` wird über die GitBash-Befehlszeile bereitgestellt.
+* [Azure Cloud Shell](../cloud-shell/quickstart.md): Die Cloud Shell stellt eine Bash-Umgebung in Ihrem Browser bereit und bietet die Befehle `ssh` und `scp` sowie weitere gängige Linux-Befehle.
 
-* [GitHub Desktop (https://desktop.github.com/)](https://desktop.github.com/): Der Befehl `ssh` wird über die Git-Shell-Befehlszeile bereitgestellt. GitHub Desktop kann für die Verwendung von Bash, die Windows-Eingabeaufforderung oder PowerShell als Befehlszeile für die Git-Shell konfiguriert werden.
+* [Bash auf Ubuntu unter Windows 10](https://msdn.microsoft.com/commandline/wsl/about): Die Befehle `ssh` und `scp` sind per Bash über die Windows-Befehlszeile verfügbar.
+
+* [Git (https://git-scm.com/)](https://git-scm.com/): Die Befehle `ssh` und `scp` sind über die GitBash-Befehlszeile verfügbar.
+
+* [GitHub Desktop (https://desktop.github.com/)](https://desktop.github.com/): Die Befehle `ssh` und `scp` sind über die GitHub-Shellbefehlszeile verfügbar. GitHub Desktop kann für die Verwendung von Bash, die Windows-Eingabeaufforderung oder PowerShell als Befehlszeile für die Git-Shell konfiguriert werden.
 
 * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH): Das PowerShell-Team portiert OpenSSH zu Windows und stellt Testversionen bereit.
 
     > [!WARNING]
     > Das OpenSSH-Paket enthält die SSH-Serverkomponente `sshd`. Mit dieser Komponente wird ein SSH-Server auf Ihrem System gestartet, sodass andere Benutzer eine Verbindung damit herstellen können. Sie sollten diese Komponente nur konfigurieren und Port 22 nur öffnen, wenn Sie auf Ihrem System einen SSH-Server hosten möchten. Für die Kommunikation mit HDInsight ist dies nicht erforderlich.
 
-Es gibt auch mehrere grafische SSH-Clients, z.B. [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) und [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Diese Clients können zum Herstellen einer Verbindung mit HDInsight verwendet werden, aber der Prozess der Verbindungsherstellung mit einem Server ist anders als bei der Nutzung des Hilfsprogramms `ssh`. Weitere Informationen finden Sie in der Dokumentation des grafischen Clients, den Sie verwenden.
+Es gibt auch mehrere grafische SSH-Clients, z.B. [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) und [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Diese Clients können zum Herstellen einer Verbindung mit HDInsight verwendet werden, aber der Prozess der Verbindungsherstellung ist anders als bei der Nutzung des Hilfsprogramms `ssh`. Weitere Informationen finden Sie in der Dokumentation des grafischen Clients, den Sie verwenden.
 
 ## <a id="sshkey"></a>Authentifizierung: SSH-Schlüssel
 
-Für SSH-Schlüssel wird [Public-key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) (Verschlüsselung mit öffentlichem Schlüssel) zum Schützen des Clusters verwendet. SSH-Schlüssel sind sicherer als Kennwörter und stellen einen einfachen Weg zum Schützen des HDInsight-Clusters dar.
+Für SSH-Schlüssel wird die [Verschlüsselung mit öffentlichen Schlüsseln](https://en.wikipedia.org/wiki/Public-key_cryptography) zum Authentifizieren von SSH-Sitzungen verwendet. SSH-Schlüssel sind sicherer als Kennwörter und stellen einen einfachen Weg zum Schützen des Zugriffs auf Ihren Hadoop-Cluster dar.
 
 Wenn Ihr SSH-Konto mit einem Schlüssel geschützt ist, muss der Client beim Herstellen der Verbindung den passenden privaten Schlüssel bereitstellen:
 
 * Die meisten Clients können für die Verwendung eines __Standardschlüssels__ konfiguriert werden. Beispielsweise sucht der `ssh`-Client in Linux- und Unix-Umgebungen unter `~/.ssh/id_rsa` nach einem privaten Schlüssel.
 
-* Sie können den __Pfad zu einem privaten Schlüssel__ angeben. Beim `ssh`-Client wird der Parameter `-i` verwendet, um den Pfad zum privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/hdinsight sshuser@myedge.mycluster-ssh.azurehdinsight.net`.
+* Sie können den __Pfad zu einem privaten Schlüssel__ angeben. Beim `ssh`-Client wird der Parameter `-i` verwendet, um den Pfad zum privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net`.
 
-* Wenn Sie __mehrere private Schlüssel__ zur Verwendung mit verschiedenen Servern nutzen, können Hilfsprogramme wie [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) zum automatischen Auswählen des richtigen Schlüssels eingesetzt werden.
+* Wenn Sie __mehrere private Schlüssel__ zur Verwendung mit verschiedenen Servern nutzen, können Sie Hilfsprogramme wie [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) verwenden. Das Hilfsprogramm `ssh-agent` kann verwendet werden, um automatisch den Schlüssel auszuwählen, der beim Herstellen einer SSH-Sitzung verwendet werden soll.
 
 > [!IMPORTANT]
 >
@@ -90,7 +97,7 @@ Beim Erstellen des Schlüssels werden Sie zum Eingeben von Informationen aufgefo
 * Der __private Schlüssel__ wird verwendet, um Ihren Client im HDInsight-Cluster zu authentifizieren.
 
 > [!IMPORTANT]
-> Sie können Ihre Schlüssel mit einer Passphrase schützen. Dies ist praktisch ein Kennwort für Ihren privaten Schlüssel. Wenn Ihr privater Schlüssel in den Besitz einer anderen Person gelangt, muss diese Person für die Nutzung des Schlüssels dann auch über die Passphrase verfügen.
+> Sie können Ihre Schlüssel mit einer Passphrase schützen. Eine Passphrase ist praktisch ein Kennwort für Ihren privaten Schlüssel. Wenn Ihr privater Schlüssel in den Besitz einer anderen Person gelangt, muss diese Person für die Nutzung des Schlüssels dann auch über die Passphrase verfügen.
 
 ### <a name="create-hdinsight-using-the-public-key"></a>Erstellen von HDInsight-Clustern mit dem öffentlichen Schlüssel
 
@@ -129,7 +136,7 @@ Weitere Informationen finden Sie unter [Configure Domain-joined HDInsight cluste
 
 ## <a name="connect-to-worker-and-zookeeper-nodes"></a>Herstellen einer Verbindung mit Worker- und Zookeeper-Knoten
 
-Auf die Workerknoten und die Zookeeper-Knoten kann über das Internet nicht direkt zugegriffen werden. Der Zugriff ist aber über die Haupt- oder Edgeknoten des Clusters möglich. Im Anschluss finden Sie die allgemeinen Schritte zum Verbinden mit anderen Knoten:
+Auf die Worker- und Zookeeper-Knoten kann nicht direkt über das Internet zugegriffen werden. Auf sie kann über Clusterhauptknoten oder über Edgeknoten zugegriffen werden. Im Anschluss finden Sie die allgemeinen Schritte zum Verbinden mit anderen Knoten:
 
 1. Herstellen einer SSH-Verbindung mit einem Haupt- oder Edgeknoten:
 
@@ -139,11 +146,11 @@ Auf die Workerknoten und die Zookeeper-Knoten kann über das Internet nicht dire
 
         ssh sshuser@wn0-myhdi
 
-    Informationen zum Abrufen einer Liste mit den Domänennamen der Knoten im Cluster finden Sie unter den Beispielen im Dokument [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
+    Informationen zum Abrufen einer Liste mit den Domänennamen der Knoten im Cluster finden Sie im Dokument [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
 
-Falls das SSH-Konto durch ein __Kennwort__ geschützt ist, werden Sie zur Eingabe dieses Kennworts aufgefordert, und die Verbindung wird hergestellt.
+Wenn das SSH-Konto mit einem __Kennwort__ gesichert wird, geben Sie das Kennwort ein, wenn Sie eine Verbindung herstellen.
 
-Wenn das SSH-Konto mit __SSH-Schlüsseln__ geschützt ist, müssen Sie sicherstellen, dass Ihre lokale Umgebung für die SSH-Agent-Weiterleitung konfiguriert ist.
+Wenn das SSH-Konto mit __SSH-Schlüsseln__ gesichert wird, stellen Sie sicher, dass die SSH-Weiterleitung auf dem Client aktiviert ist.
 
 > [!NOTE]
 > Eine weitere Möglichkeit zum direkten Zugreifen auf alle Knoten im Cluster ist die Installation von HDInsight in einem Azure Virtual Network. Anschließend können Sie Ihren Remotecomputer mit demselben virtuellen Netzwerk verknüpfen und auf alle Knoten im Cluster direkt zugreifen.
@@ -153,7 +160,7 @@ Wenn das SSH-Konto mit __SSH-Schlüsseln__ geschützt ist, müssen Sie sicherste
 ### <a name="configure-ssh-agent-forwarding"></a>Konfigurieren der SSH-Agent-Weiterleitung
 
 > [!IMPORTANT]
-> In den folgenden Schritten wird davon ausgegangen, dass Sie ein Linux-/UNIX-basiertes System und Bash unter Windows 10 verwenden. Falls diese Schritte für Ihr System nicht geeignet sind, ziehen Sie die Dokumentation für Ihren SSH-Client zurate.
+> In den folgenden Schritten wird davon ausgegangen, dass Sie ein Linux- oder UNIX-basiertes System und Bash unter Windows 10 verwenden. Falls diese Schritte für Ihr System nicht geeignet sind, ziehen Sie die Dokumentation für Ihren SSH-Client zurate.
 
 1. Öffnen Sie `~/.ssh/config`in einem Text-Editor. Sollte die Datei nicht vorhanden sein, können Sie sie durch Eingabe von `touch ~/.ssh/config` an einer Befehlszeile erstellen.
 
@@ -172,7 +179,7 @@ Wenn das SSH-Konto mit __SSH-Schlüsseln__ geschützt ist, müssen Sie sicherste
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    Sollte nichts zurückgegeben werden, wird `ssh-agent` nicht ausgeführt. Sehen Sie sich unter [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) (Verwenden von „ssh-agent“ mit SSH) die Informationen zu den Agent-Startskripts an, oder informieren Sie sich in der Dokumentation Ihres SSH-Clients über spezifische Installations- und Konfigurationsschritte für `ssh-agent`.
+    Sollte nichts zurückgegeben werden, wird `ssh-agent` nicht ausgeführt. Weitere Informationen finden Sie in den Informationen zu den Agent-Startskripts unter [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) (Verwenden von „ssh-agent“ mit SSH) oder in der Dokumentation Ihres SSH-Clients.
 
 4. Nachdem Sie sichergestellt haben, dass **ssh-Agent** ausgeführt wird, verwenden Sie folgenden Befehl, um Ihren privaten SSH-Schlüssel dem Agent hinzuzufügen:
 

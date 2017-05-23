@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: c9d5fdc2ff27454b2492751034b43658ee9d46c5
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: e7ed94a3aa24d401e073cf260453550b4c67f47e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20-preview"></a>Erste Schritte mit Azure Data Lake Store unter Verwendung von Azure CLI 2.0 (Vorschau)
+# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Erste Schritte mit Azure Data Lake Store mithilfe der Azure CLI 2.0
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -51,16 +52,8 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake Store verwendet, bei dem Sie sich als Endbenutzer anmelden. Die Zugriffsebene für das Data Lake Store-Konto und das Dateisystem hängt dann von der Zugriffsebene des angemeldeten Benutzers ab. Für die Authentifizierung mit Data Lake Store stehen mit **Endbenutzerauthentifizierung** und **Dienst-zu-Dienst-Authentifizierung** aber auch noch andere Konzepte zur Verfügung. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md)(Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory).
 
-## <a name="enable-data-lake-store-preview-in-azure-cli-20"></a>Aktivieren von Data Lake Store (Vorschau) in Azure CLI 2.0
 
-Data Lake Store CLI 2.0 befindet sich derzeit in der Vorschauphase und wird bei der Installation von Azure CLI 2.0 standardmäßig nicht aktiviert. Führen Sie den folgenden Befehl aus, um Data Lake Store CLI 2.0 zu aktivieren:
-
-```azurecli
-az component update --add dls
-```
-
-
-## <a name="log-in-to-your-azure-subscription"></a>Anmelden bei Ihrem Azure-Abonnement
+## <a name="log-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
 
 1. Melden Sie sich bei Ihrem Azure-Abonnement an.
 
