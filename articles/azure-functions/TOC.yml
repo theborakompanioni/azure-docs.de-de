@@ -1,128 +1,128 @@
-- name: "Dokumentation zu Functions"
+- name: Dokumentation zu Functions
   href: index.yml
-- name: "Übersicht"
+- name: Übersicht
   items:
-  - name: "Informationen zu Functions"
+  - name: Informationen zu Functions
     href: functions-overview.md
-  - name: "Functions Runtime"
+  - name: Functions Runtime
     href: functions-runtime-overview.md
-  - name: "Auswahl zwischen Flow, Logic Apps, Functions und WebJobs"
+  - name: 'Auswahl zwischen Flow, Logic Apps, Functions und WebJobs'
     href: functions-compare-logic-apps-ms-flow-webjobs.md
-- name: "Schnellstarts"
+- name: Schnellstarts
   expanded: true
   items:
-  - name: "Erstellen von Funktionen – Portal"
+  - name: Erstellen von Funktionen – Portal
     href: functions-create-first-azure-function.md
-  - name: "Erstellen von Funktionen – Azure-CLI"
+  - name: Erstellen von Funktionen – Azure-CLI
     href: functions-create-first-azure-function-azure-cli.md
 #  - name: Create function - Visual Studio
 #    href: functions-create-your-first-function-visual-studio.md
-  - name: "Trigger"
+  - name: Trigger
     items:
-    - name: "Timer"
+    - name: Timer
       href: functions-create-scheduled-function.md
-    - name: "GitHub-Webhook"
+    - name: GitHub-Webhook
       href: functions-create-github-webhook-triggered-function.md
-    - name: "Blob Storage"
+    - name: Blob Storage
       href: functions-create-storage-blob-triggered-function.md
-    - name: "Queue Storage"
+    - name: Queue Storage
       href: functions-create-storage-queue-triggered-function.md
-  - name: "Integrieren"
+  - name: Integrieren
     items:
-    - name: "Speicher"
+    - name: Speicher
       href: functions-integrate-storage-queue-output-binding.md
-#    - name: Cosmos DB
-#      href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: "Beispiele"
+    - name: Cosmos DB
+      href: functions-integrate-store-unstructured-data-cosmosdb.md
+- name: Beispiele
   items:
-  - name: "Azure-Befehlszeilenschnittstelle"
+  - name: Azure-Befehlszeilenschnittstelle
     href: functions-cli-samples.md
-- name: "Tutorials"
+- name: Tutorials
   items:
-  - name: "1: Verwenden von Azure Functions mit Logic Apps"
+  - name: '1: Verwenden von Azure Functions mit Logic Apps'
     href: functions-twitter-email.md
-  - name: "2: Erstellen einer serverlosen API"
+  - name: '2: Erstellen einer serverlosen API'
     href: functions-create-serverless-api.md
-- name: "Konzepte"
+- name: Konzepte
   items:
-  - name: "Hostingpläne"
+  - name: Hostingpläne
     href: functions-scale.md
-  - name: "Trigger und Bindungen"
+  - name: Trigger und Bindungen
     href: functions-triggers-bindings.md
-- name: "Anleitungen"
+- name: Anleitungen
   items:
-  - name: "Testen von Azure Functions"
+  - name: Testen von Azure Functions
     href: functions-test-a-function.md
-  - name: "Lokales Entwickeln und Debuggen"
+  - name: Lokales Entwickeln und Debuggen
     href: functions-run-local.md
-  - name: "Konfigurieren der Einstellungen für eine Funktionen-App"
+  - name: Konfigurieren der Einstellungen für eine Funktionen-App
     href: functions-how-to-use-azure-function-app-settings.md
-  - name: "Continuous Deployment für Azure Functions"
+  - name: Continuous Deployment für Azure Functions
     href: functions-continuous-deployment.md
-  - name: "Bereitstellen von Functions mit Infrastruktur als Code"
+  - name: Bereitstellen von Functions mit Infrastruktur als Code
     href: functions-infrastructure-as-code.md
-  - name: "Überwachen von Azure Functions"
+  - name: Überwachen von Azure Functions
     href: functions-monitoring.md
-  - name: "Installieren der Functions Runtime"
+  - name: Installieren der Functions Runtime
     href: functions-runtime-install.md
-- name: "Referenz"
+- name: Referenz
   items:
-  - name: "Entwickeln von Funktionen-Apps"
+  - name: Entwickeln von Funktionen-Apps
     href: functions-reference.md
     items:
-    - name: "Open API 2.0"
+    - name: Open API 2.0
       href: functions-api-definition.md
-  - name: "Bewährte Methoden für Azure Functions"
+  - name: Bewährte Methoden für Azure Functions
     href: functions-best-practices.md
-  - name: "Bindungen"
+  - name: Bindungen
     items:
-    - name: "DocumentDB-Bindungen"
+    - name: Cosmos DB-Bindungen
       href: functions-bindings-documentdb.md
-    - name: "Event Hub-Bindungen"
+    - name: Event Hub-Bindungen
       href: functions-bindings-event-hubs.md
-    - name: "HTTP- und Webhookbindungen"
+    - name: HTTP- und Webhookbindungen
       href: functions-bindings-http-webhook.md
-    - name: "Mobile Apps-Bindungen"
+    - name: Mobile Apps-Bindungen
       href: functions-bindings-mobile-apps.md
-    - name: "Notification Hub-Ausgabebindung"
+    - name: Notification Hub-Ausgabebindung
       href: functions-bindings-notification-hubs.md
-    - name: "Service Bus-Trigger und -Bindungen für Warteschlangen und Themen"
+    - name: Service Bus-Trigger und -Bindungen für Warteschlangen und Themen
       href: functions-bindings-service-bus.md
-    - name: "SendGrid-Bindungen"
+    - name: SendGrid-Bindungen
       href: functions-bindings-sendgrid.md
-    - name: "Speicherbindungen"
+    - name: Speicherbindungen
       items:
-      - name: "Blobbindungen"
+      - name: Blobbindungen
         href: functions-bindings-storage-blob.md
-      - name: "Warteschlangenbindungen"
+      - name: Warteschlangenbindungen
         href: functions-bindings-storage-queue.md
-      - name: "Tabellenbindungen"
+      - name: Tabellenbindungen
         href: functions-bindings-storage-table.md
-      - name: "Bindungen zu externen Dateien"
+      - name: Bindungen zu externen Dateien
         href: functions-bindings-external-file.md
-    - name: "SendGrid-Bindungen"
+    - name: SendGrid-Bindungen
       href: functions-bindings-sendgrid.md
-    - name: "Trigger mit Timer"
+    - name: Trigger mit Timer
       href: functions-bindings-timer.md
-    - name: "Twilio-Ausgabebindung"
+    - name: Twilio-Ausgabebindung
       href: functions-bindings-twilio.md
-  - name: "Frameworks"
+  - name: Frameworks
     items:
-    - name: "C#"
+    - name: 'C#'
       href: functions-reference-csharp.md
-    - name: "F#"
+    - name: 'F#'
       href: functions-reference-fsharp.md
-    - name: "JavaScript"
+    - name: JavaScript
       href: functions-reference-node.md
-- name: "Ressourcen"
+- name: Ressourcen
   items:
-  - name: "Preise"
+  - name: Preise
     href: https://azure.microsoft.com/pricing/details/functions/
-  - name: "MSDN-Forum"
+  - name: MSDN-Forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
-  - name: "Stack Overflow"
+  - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-functions
-  - name: "Azure Functions-GitHub-Repository"
+  - name: Azure Functions-GitHub-Repository
     href: https://github.com/Azure/Azure-Functions/
-  - name: "Dienstupdates"
+  - name: Dienstupdates
     href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=
