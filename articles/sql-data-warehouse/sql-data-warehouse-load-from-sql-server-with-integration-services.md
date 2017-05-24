@@ -15,9 +15,10 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 03/30/2017
 ms.author: douglasl;barbkess
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: d208f783e5b4e7786350706d8025e6e13f45f0d2
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 

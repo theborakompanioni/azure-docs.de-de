@@ -14,9 +14,10 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: sethm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
+ms.contentlocale: de-de
 ms.lasthandoff: 04/12/2017
 
 

@@ -16,9 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: acfba48585b960a1ce39b77e35d292189aa9732b
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 
