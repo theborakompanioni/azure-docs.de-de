@@ -13,32 +13,50 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 05/08/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d082b37a2e070136178259c54ada8dc141f81e13
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: b3bb7d9d14293aae78c3a1c2ac6badcc48dcbe2c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
 
 # <a name="how-to-use-availability-sets"></a>Verwenden von Verfügbarkeitsgruppen
 
-In diesem Tutorial erhalten Sie Informationen dazu, wie Sie die Verfügbarkeit von virtuellen Computern (VMs) steigern können, indem Sie sie einer logischen Gruppierung – einer sogenannten Verfügbarkeitsgruppe – zuweisen. Wenn Sie virtuelle Computer in einer Verfügbarkeitsgruppe erstellen, werden diese auf der Azure-Plattform in der zugrunde liegenden Infrastruktur verteilt. Bei einem Hardwarefehler oder einer geplanten Wartung auf der Plattform wird durch die Verwendung von Verfügbarkeitsgruppen sichergestellt, dass zumindest ein virtueller Computer weiterhin ausgeführt wird.
 
-Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
+In diesem Tutorial erfahren Sie etwas darüber, wie Sie die Verfügbarkeit und Zuverlässigkeit Ihrer Virtual Machine-Lösungen in Azure mithilfe Verfügbarkeitsgruppen erhöhen. Verfügbarkeitsgruppen sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwarecluster verteilt werden. Dadurch wird sichergestellt, dass bei einem Hardware- oder Softwarefehler in Azure nur ein Teil Ihrer virtuellen Computer beeinträchtigt wird und dass die Lösung insgesamt aus Sicht Ihrer Kunden verfügbar und betriebsbereit bleibt.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Verfügbarkeitsgruppe erstellen
+> * Erstellen eines virtuellen Computers in einer Verfügbarkeitsgruppe
+> * Überprüfen der verfügbaren VM-Größen
+
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
 
 ## <a name="availability-set-overview"></a>Übersicht über Verfügbarkeitsgruppen
 
-Virtuelle Computer können in logischen Hardwaregruppierungen im zugrunde liegenden Azure-Rechenzentrum erstellt werden. Wenn Sie mehrere virtuelle Computer erstellen, werden die Compute- und Speicherressourcen auf die Hardware (z.B. Server, Netzwerkswitches und Speicher) verteilt. Diese Verteilung gewährleistet die Verfügbarkeit Ihrer App, wenn eine der Hardwarekomponenten gewartet wird. Diese logische Gruppierung lässt sich mit Verfügbarkeitsgruppen definieren.
+Eine Verfügbarkeitsgruppe ist eine Funktion zur logischen Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die virtuellen Computer innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Compute-Racks, Speichereinheiten und Netzwerkswitches verteilt werden. Dadurch wird im Fall eines Hardware- oder Softwarefehlers in Azure nur ein Teil Ihrer virtuellen Computer beeinträchtigt, und die Anwendung insgesamt bleibt betriebsbereit und weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen sind eine wesentliche Funktion für die Einrichtung zuverlässiger Cloudlösungen.
 
-Verfügbarkeitsgruppen bieten hohe Verfügbarkeit für die virtuellen Computer. Sie sollten zudem sicherstellen, dass Ihre Anwendungen auch so konzipiert werden, dass Ausfälle oder Wartungsereignisse toleriert werden.
+In einer typischen VM-basierten Lösung gibt es möglicherweise vier Front-End-Webserver und zwei Back-End-VMs, die eine Datenbank hosten. Sie können in Azure zwei Verfügbarkeitsgruppen definieren, bevor Sie Ihre virtuellen Computer bereitstellen: eine Verfügbarkeitsgruppe für die Ebene „Web“ und eine Verfügbarkeitsgruppe für die Ebene „Datenbank“. Bei der Erstellung eines neuen virtuellen Computers geben Sie dann die Verfügbarkeitsgruppe als Parameter für den Befehl „az vm create“ an, damit Azure automatisch sicherstellen kann, dass die virtuellen Computer, die Sie in der Verfügbarkeitsgruppe erstellen über mehrere physische Hardwareressourcen isoliert werden. Wenn bei der physischen Hardware, auf der Ihre Webserver- oder Datenbankserver-VMs ausgeführt werden, ein Problem auftritt, können Sie sich sicher sein, dass die anderen Instanzen Ihrer Webserver- und Datenbank-VMs weiterhin einwandfrei ausgeführt werden, da sie sich auf anderer Hardware befinden.
+
+Sie sollten immer Verfügbarkeitsgruppen verwenden, wenn Sie zuverlässige VM-basierte Lösungen in Azure bereitstellen möchten.
+
 
 ## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 
 Eine Verfügbarkeitsgruppe können Sie mithilfe von [az vm availability-set create](/cli/azure/availability-set#create) erstellen. Im folgenden Beispiel wird die Anzahl der Update- sowie der Fehlerdomänen für die Verfügbarkeitsgruppe *myAvailabilitySet* in der Ressourcengruppe *myResourceGroupAvailability* auf *2* festgelegt.
+
+Erstellen Sie eine Ressourcengruppe.
+
+```azurecli
+az group create --name myResourceGroupAvailability --location eastus
+```
+
 
 ```azurecli
 az vm availability-set create \
@@ -48,11 +66,11 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
+Mithilfe von Verfügbarkeitsgruppen können Sie Ressourcen in „Fehlerdomänen“ und „Updatedomänen“ isolieren. Eine **Fehlerdomäne** stellt eine isolierte Sammlung von Server-, Netzwerk- und Speicherressourcen dar. Im vorherigen Beispiel haben wir angegeben, dass unsere Verfügbarkeitsgruppe auf mindestens zwei Fehlerdomänen verteilt werden soll, wenn unsere VMs bereitgestellt werden. Wir geben auch an, dass wir unsere Verfügbarkeitsgruppe über zwei **Updatedomänen** verteilen möchten.  Zwei Updatedomänen stellen sicher, dass unsere VM-Ressourcen bei Softwareupdates in Azure isoliert sind. Damit wird verhindert, dass die zugrunde liegende Software auf allen VM gleichzeitig aktualisiert wird.
+
 ## <a name="create-vms-inside-an-availability-set"></a>Erstellen von virtuellen Computern in einer Verfügbarkeitsgruppe
 
 Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sicherzustellen, dass sie ordnungsgemäß auf die Hardwarekomponenten verteilt werden. Nach der Erstellung kann einer Verfügbarkeitsgruppe kein vorhandener virtueller Computer mehr hinzugefügt werden. 
-
-Die Hardware an einem Standort ist in mehrere Updatedomänen und Fehlerdomänen unterteilt. Eine **Updatedomäne** ist eine Gruppe von virtuellen Computern und der zugrunde liegenden physischen Hardwarekomponenten, die gleichzeitig neu gestartet werden können. Virtuelle Computer in ein und derselben **Fehlerdomäne** nutzen denselben Speicher sowie eine Stromquelle und einen Netzwerkswitch gemeinsam. 
 
 Beim Erstellen eines virtuellen Computers mit [az vm create](/cli/azure/vm#create) legen Sie die Verfügbarkeitsgruppe mit dem Parameter `--availability-set` fest, um den Namen der Verfügbarkeitsgruppe anzugeben.
 
@@ -70,7 +88,9 @@ for i in `seq 1 2`; do
 done 
 ```
 
-Damit wurden 2 virtuelle Computer auf die zugrunde liegenden Hardwarekomponenten verteilt. 
+Wir verfügen jetzt über zwei virtuelle Computer in unseren neu erstellten Verfügbarkeitsgruppe. Da sie sich in derselben Verfügbarkeitsgruppe befinden, stellt Azure sicher, dass die virtuellen Computer und alle ihre Ressourcen (einschließlich Datenträger) auf isolierte physische Hardware verteilt werden. Mithilfe dieser Verteilung wird eine deutlich höhere Verfügbarkeit unserer gesamten VM-Lösung sichergestellt.
+
+Sie werden beim Hinzufügen virtueller Computer feststellen, dass eine bestimmte Größe für virtuelle Computer nicht mehr für die Verwendung in der Verfügbarkeitsgruppe verfügbar ist. Dieses Problem kann auftreten, wenn nicht mehr genügend Kapazität für das Hinzufügen vorhanden ist, um die Isolationsregeln die Verfügbarkeitsgruppe weiter einzuhalten. Sie können die verfügbaren VM-Größen innerhalb einer vorhandenen Verfügbarkeitsgruppe mit dem `--availability-set list-sizes`-Parameter überprüfen.
 
 ## <a name="check-for-available-vm-sizes"></a>Prüfen der verfügbaren VM-Größen 
 
@@ -85,8 +105,16 @@ az vm availability-set list-sizes \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Verfügbarkeitsgruppen verwendet werden. Im nächsten Tutorial erhalten Sie Informationen zu VM-Skalierungsgruppen.
+In diesem Tutorial haben Sie Folgendes gelernt:
 
-[Erstellen einer VM-Skalierungsgruppe](tutorial-create-vmss.md)
+> [!div class="checklist"]
+> * Verfügbarkeitsgruppe erstellen
+> * Erstellen eines virtuellen Computers in einer Verfügbarkeitsgruppe
+> * Überprüfen der verfügbaren VM-Größen
+
+Im nächsten Tutorial erhalten Sie Informationen zu VM-Skalierungsgruppen.
+
+> [!div class="nextstepaction"]
+> [Erstellen einer VM-Skalierungsgruppe](tutorial-create-vmss.md)
 
 
