@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
 ms.openlocfilehash: 9c3927b64009c51fb8236e42fa9e6137a9909a4a
+ms.contentlocale: de-de
 ms.lasthandoff: 02/17/2017
 
 
