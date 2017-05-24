@@ -12,13 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 05/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 0bd6fce848c6d174eb519f8ef8a14f9ead5fa5ce
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 1199840da725afdae3ee69a26db9ceedb2ab37e3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 ---
 
@@ -79,15 +80,27 @@ Wenn Sie beim Anzeigen des HDInsight-Clusters im Azure-Portal den Eintrag __Spei
 
 Die Speicherinformationen werden nicht angezeigt, da das Skript nur die core-site.xml-Konfiguration für den Cluster ändert. Diese Informationen werden nicht verwendet, wenn Sie die Clusterinformationen mit Azure-Verwaltungs-APIs abrufen.
 
-Verwenden Sie die Ambari-REST-API, um Speicherkontoinformationen anzuzeigen, die dem Cluster mit diesem Skript hinzugefügt wurden. Der folgende Befehl zeigt die Verwendung von [cURL (http://curl.haxx.se/)](http://curl.haxx.se/) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) zum Abrufen und Analysieren von JSON-Daten aus Ambari:
+Verwenden Sie die Ambari-REST-API, um Speicherkontoinformationen anzuzeigen, die dem Cluster mit diesem Skript hinzugefügt wurden. Verwenden Sie die folgenden Befehle, um diese Informationen für Ihren Cluster abzurufen:
 
-> [!div class="tabbedCodeSnippets" data-resources="OutlookServices.Calendar"]
-> ```PowerShell
-> curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["""fs.azure.account.key.STORAGEACCOUNT.blob.core.windows.net"""] | select(. != null)'
-> ```
-> ```Bash
-> curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.STORAGEACCOUNT.blob.core.windows.net"] | select(. != null)'
-> ```
+```PowerShell
+$creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" `
+    -Credential $creds
+$respObj = ConvertFrom-Json $resp.Content
+$respObj.items.configurations.properties."fs.azure.account.key.$storageAccountName.blob.core.windows.net"
+```
+
+> [!NOTE]
+> Legen Sie `$clusterName` auf den Namen des HDInsight-Clusters fest. Legen Sie `$storageAccountName` auf den Namen des Speicherkontos fest. Geben Sie bei der entsprechenden Aufforderung das Anmeldekonto (Administrator) und für den Cluster das entsprechende Kennwort ein.
+
+```Bash
+curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
+```
+
+> [!NOTE]
+> Legen Sie `$PASSWORD` auf das Kennwort des Anmeldekontos (Administrator) für den Cluster fest. Legen Sie `$CLUSTERNAME` auf den Namen des HDInsight-Clusters fest. Legen Sie `$STORAGEACCOUNTNAME` auf den Namen des Speicherkontos fest.
+>
+> In diesem Beispiel werden JSON-Daten unter Verwendung von [curl (http://curl.haxx.se/)](http://curl.haxx.se/) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) abgerufen und analysiert.
 
 Ersetzen Sie bei Verwendung dieses Befehls __CLUSTERNAME__ durch den Namen des HDInsight-Clusters. Ersetzen Sie __PASSWORD__ mit dem HTTP-Anmeldekennwort für den Cluster. Ersetzen Sie __STORAGEACCOUNT__ mit dem Namen des Speicherkontos, das mit der Skriptaktion hinzugefügt wurde. Die Ausgabe dieses Befehls entspricht in etwa dem folgenden Text:
 
@@ -124,9 +137,15 @@ Um dieses Problem zu umgehen, müssen Sie den vorhandenen Eintrag für das Speic
 
 Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, könnten Sie eine schlechte Leistung feststellen. Der Zugriff auf Daten in einer anderen Region ist mit Netzwerkdatenverkehr außerhalb des regionalen Azure-Rechenzentrums und über das öffentliche Internet verbunden, was zu Latenz führen kann.
 
+> [!WARNING]
+> Die Verwendung eines Speicherkontos in einer anderen Region als dem HDInsight-Cluster wird nicht unterstützt.
+
 ### <a name="additional-charges"></a>Zusätzliche Gebühren
 
 Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, fallen Ihnen möglicherweise zusätzliche Ausgangsgebühren in Ihrer Azure-Abrechnung auf. Eine Ausgangsgebühr wird fällig, wenn Daten ein regionales Rechenzentrum verlassen, und zwar auch dann, wenn das Ziel des Datenverkehrs ein anderes Azure-Rechenzentrum in einer anderen Region ist.
+
+> [!WARNING]
+> Die Verwendung eines Speicherkontos in einer anderen Region als dem HDInsight-Cluster wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

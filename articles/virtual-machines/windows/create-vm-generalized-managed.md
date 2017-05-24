@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/7/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 157f8db0f0f7ac751b03b39e504bf0a5ec25effc
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: e308b75581ca5372a4de168895f2eeb140a69a78
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -185,6 +186,6 @@ Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](htt
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Informationen zum Verwalten Ihres neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

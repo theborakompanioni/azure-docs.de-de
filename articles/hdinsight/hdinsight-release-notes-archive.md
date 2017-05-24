@@ -1,6 +1,6 @@
 ---
 title: Archivierte Versionshinweise zu Hadoop-Komponenten in Azure HDInsight | Microsoft-Dokumentation
-description: "Archivierte Versionshinweise und Versionen der Hadoop-Komponenten für Azure HDInsight."
+description: "Archivierte Versionshinweise für ältere Versionen der Hadoop-Komponenten für Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 editor: cgronlun
@@ -8,7 +8,7 @@ manager: jhubbard
 author: nitinme
 tags: azure-portal
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,10 +17,10 @@ ms.date: 4/06/2017
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5e1538ae0d4b1270040bd593cae66c1dd1046201
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 7d8b691905c07b11543505ed1961d908ff4de654
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -62,7 +62,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 | --- | --- | --- | --- | --- |
-| Änderungen an HDInsight 3.4-Clustern |Der Standardwert für folgende Hive-Konfigurationen wurden zur Verbesserung der Leistung geändert:  <ul><li>`hive.vectorized.execution.reduce.enabled=true`</li><li>`hive.tez.min.partition.factor=1f`</li><li>`hive.tez.max.partition.factor=3f`</li><li>`tez.shuffle-vertex-manager.min-src-fraction=0.9`</li><li>`tez.shuffle-vertex-manager.max-src-fraction=0.95`</li><li>`tez.runtime.shuffle.connect.timeout= 30000`</li></ul> |Dienst |Alle |N/V |
+| Änderungen an HDInsight 3.4-Clustern |Die Standardwerte für folgende Hive-Konfigurationen wurden zur Verbesserung der Leistung geändert <ul><li>`hive.vectorized.execution.reduce.enabled=true`</li><li>`hive.tez.min.partition.factor=1f`</li><li>`hive.tez.max.partition.factor=3f`</li><li>`tez.shuffle-vertex-manager.min-src-fraction=0.9`</li><li>`tez.shuffle-vertex-manager.max-src-fraction=0.95`</li><li>`tez.runtime.shuffle.connect.timeout= 30000`</li></ul> |Dienst |Alle |N/V |
 | In dieser Version enthaltene Korrekturen |HIVE-13632, HIVE-12897,HIVE-12907,HIVE-12908,HIVE-12988,HIVE-13510,HIVE-13572,HIVE-13716,HIVE-13726,HIVE-12505,HIVE-13632,HIVE-13661,HIVE-13705,HIVE-13743,HIVE-13810,HIVE-13857,HIVE-13902,HIVE-13911,HIVE-13933 |Dienst |Alle |N/V |
 
 ## <a name="notes-for-07142016-release-of-hdinsight"></a>Hinweise für die HDInsight-Version 3.1 vom 14.07.2016
@@ -167,10 +167,10 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z. B. Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 | --- | --- | --- | --- | --- |
-| Probleme beim Upgrade des benutzerdefinierten Metastores für HDI 3.4 |Die Erstellung eines Clusters schlug fehl, wenn Sie einen benutzerdefinierten Metastore verwendet haben, der zuvor für eine niedrigere Version eines anderen HDInsight-Clusters verwendet wurde. Der Grund dafür lag in einem Skriptfehler beim Upgrade, der nun behoben wurde. |Clustererstellung |Alle |N/V |
+| Probleme beim Upgrade des benutzerdefinierten Metastores für HDI 3.4 |Die Erstellung eines Clusters schlug fehl, wenn Sie einen benutzerdefinierten Metastore verwendet haben, der zuvor für eine niedrigere Version eines anderen HDInsight-Clusters verwendet wurde. Der Grund dafür lag in einem Upgradeskriptfehler, der nun behoben wurde. |Clustererstellung |Alle |N/V |
 | Wiederherstellung nach Livy-Absturz |Resilienz des Auftragsstatus für jeden über Livy gesendeten Auftrag. |Zuverlässigkeit |Spark unter Linux |N/V |
 | Hohe Verfügbarkeit von Jupyter-Inhalten |Ermöglicht das Speichern und Laden von Jupyter Notebook-Inhalten auf und von dem mit dem Cluster verknüpften Speicherkonto. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md). |Notebooks |Spark unter Linux |N/V |
-| Entfernen von hiveContext in Jupyter Notebooks |Verwenden Sie `%%sql`-Magic anstelle von `%%hive`-Magic. „sqlContext“ entspricht „hiveContext“. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md) |Notebooks |Spark-Cluster unter Linux |N/V |
+| Entfernen von hiveContext in Jupyter-Notebooks |Verwenden Sie `%%sql`-Magic anstelle von `%%hive`-Magic. „sqlContext“ entspricht „hiveContext“. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md) |Notebooks |Spark-Cluster unter Linux |N/V |
 | Einstellung des Supports für ältere Versionen von Spark |Die ältere Version Spark 1.3.1 wird zum 31.05. aus dem Dienst entfernt. |Dienst |Spark-Cluster unter Windows |N/V |
 
 ## <a name="notes-for-03292016-release-of-hdinsight"></a>Hinweise für die HDInsight-Version vom 29.03.2016
@@ -572,7 +572,7 @@ Diese Version enthält die folgenden Updates.
 </tr>
 <tr>
 <td>SCP.NET-EventHub-Unterstützung</td>
-<td>Die aktualisierten Clusterpakete für HDInsight Storm enthalten neue Elemente für SCP.NET. Sie haben nun im Topologie-Generator Zugriff auf neue APIs, welche die Verwendung von EventHubSpout oder Java Spouts erleichtern. Da die Verträge aktualisiert wurden, müssen Sie Ihr SCP.NET Client-SDK aktualisieren, um mit den neuen Clustern arbeiten zu können. Nähere Informationen zu den neuen APIs und deren Verwendung sowie Versionshinweise (einschließlich Fehlerbehebungen) finden Sie in der im Nuget-Paket SCP.NET enthaltenen Infodatei.</td>
+<td>Die aktualisierten Clusterpakete für HDInsight Storm enthalten neue Elemente für SCP.NET. Sie haben nun im Topologie-Generator Zugriff auf neue APIs, welche die Verwendung von EventHubSpout oder Java Spouts erleichtern. Da die Verträge aktualisiert wurden, müssen Sie Ihr SCP.NET Client-SDK aktualisieren, um mit den neuen Clustern arbeiten zu können. Nähere Informationen zu den neuen APIs und deren Verwendung sowie Versionshinweise (einschließlich Fehlerbehebungen) finden Sie in der im NuGet-Paket SCP.NET enthaltenen Infodatei.</td>
 <td>VS-Tools</td>
 <td>Storm-3.2-HDInsight-Cluster</td>
 <td>N/V</td>
@@ -835,10 +835,10 @@ Diese Version enthält die folgenden Updates.
 <td>Hadoop 2.6/HDP2.2 ist in HDInsight 3.2-Clustern verfügbar. Es enthält wichtige Updates für alle Open Source-Komponenten. Weitere Informationen finden Sie unter „Neuerungen in HDInsight“ und in den <a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">Anmerkungen zur Version HDP 2.2.0.0</a>.</td>
 <td>Open-Source-Software</td>
 <td>Alle</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
 <tr>
-<td>HDInsight unter Linux (Vorschau)</td>
+<td>HDInsight unter Linux (Vorschauversion)</td>
 <td>Cluster können unter Ubuntu Linux bereitgestellt werden. Nähere Informationen finden Sie unter „Erste Schritte mit HDInsight unter Linux“.</td>
 <td>Dienst</td>
 <td>Hadoop</td>
@@ -870,10 +870,10 @@ Diese Version enthält die folgenden Updates.
 <td>In Visual Studio wurden die Tools für Apache Storm vervollständigt und die Tools für Apache Hive aktualisiert, um Anweisungsvervollständigung, lokale Überprüfung und verbesserte Unterstützung für das Remotedebuggen zu bieten. Weitere Informationen finden Sie unter „Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio“.</td>
 <td>Tools</td>
 <td>Hadoop</td>
-<td>–</td>
+<td>N/V</td>
 </tr>
-<td>Hadoop-Connector für DocumentDB</td>
-<td>Mit Hadoop-Connector für DocumentDB können Sie komplexe Aggregationen, Analysen und Bearbeitungen mit schemalosen JSON-Dokumenten ausführen, die in verschiedenen DocumentDB-Sammlungen oder Datenbankkonten gespeichert sind. Weitere Informationen und ein Lernprogramm finden Sie unter „Ausführen von Hadoop-Aufträgen mit DocumentDB und HDInsight“.</td>
+<td>Hadoop-Connector für Azure Cosmos DB</td>
+<td>Mit Hadoop-Connector für Azure Cosmos DB können Sie komplexe Aggregationen, Analysen und Bearbeitungen mit schemalosen JSON-Dokumenten ausführen, die in verschiedenen Azure Cosmos DB-Sammlungen oder Datenbankkonten gespeichert sind. Weitere Informationen und ein Lernprogramm finden Sie unter „Ausführen von Hadoop-Aufträgen mit Azure Cosmos DB und HDInsight“.</td>
 <td>Dienst</td>
 <td>Hadoop</td>
 <td>N/V</td>
@@ -1102,7 +1102,7 @@ Die vollständigen Versionsnummern für mit dieser Version bereitgestellte HDIns
 * HDInsight 2.1.9.382.1169709 (keine Änderung im Vergleich zum 14.11.2014)
 * HDInsight 3.0.5.382.1169709 (keine Änderung gegenüber 14.11.2014)
 * HDInsight 3.1.1.382.1169709 (keine Änderung im Vergleich zum 14.11.2014)
-* HDINsight SDK 1.4.0
+* HDInsight SDK 1.4.0
 
 Diese Version enthält die folgenden Aktualisierungen von Komponenten.
 
@@ -1261,7 +1261,7 @@ Anmerkung zur Azure PowerShell- und HDInsight SDK-Fehlermeldung: „*Cluster ist
 
      templeton.mapper.memory.mb (=1024)
 
-  * Mit dieser Änderung wird der folgende Fehler behoben, der bei bestimmten Hive-Abfragen aufgrund der niedrigeren Arbeitsspeicherlimits auftrat: „Container is running beyond physical memory limits“ (Containerausführung überschreitet die physischen Arbeitsspeicherlimits).
+  * Mit dieser Änderung wird der folgende Fehler behoben, der bei bestimmten Hive-Abfragen aufgrund der niedrigeren Speichergrenzwerte auftrat: „Container is running beyond physical memory limits“ (Containerausführung überschreitet die physischen Speichergrenzwerte).
   * Um die Einstellungen auf die alten Standardwerte zurückzusetzen, können Sie diesen Konfigurationswert zum Zeitpunkt der Clustererstellung über Azure PowerShell auf 512 festlegen. Verwenden Sie dazu folgenden Befehl:
 
       Add-AzureRmHDInsightConfigValues -Core @{"templeton.mapper.memory.mb"="512";}
@@ -1301,7 +1301,7 @@ Diese Version enthält mehrere Verbesserungen des HDInsight-Dienstes:
 Mit HBase können Sie verschiedene Arbeitslasten in Echtzeit in HDInsight erstellen, von interaktiven Websites mit großen Datasets bis zu Diensten, die Sensor- und Telemetriedaten aus Millionen von Endpunkten speichern. Der nächste Schritt besteht im Analysieren der Daten in diesen Arbeitslasten mit Hadoop-Aufträgen. Dies ist in HDInsight über Azure PowerShell und das Hive-Cluster-Dashboard möglich.
 
 ### <a name="apache-mahout-preinstalled-on-hdinsight-31"></a>Apache Mahout vorinstalliert in HDInsight 3.1
- [Mahout](http://hortonworks.com/hadoop/mahout/) wird in HDInsight 3.1 Hadoop-Clustern vorinstalliert, sodass Sie Mahout-Aufträge ohne eine zusätzliche Clusterkonfiguration ausführen können. Sie können beispielsweise remote auf einen Hadoop-Cluster über das Remote Desktop Protocol (RDP) zugreifen und ohne zusätzliche Schritte den folgenden Mahout-Befehl "Hello world" ausführen:
+ [Mahout](http://hortonworks.com/hadoop/mahout/) wird in HDInsight 3.1 Hadoop-Clustern vorinstalliert, sodass Sie Mahout-Aufträge ohne eine zusätzliche Clusterkonfiguration ausführen können. Sie können beispielsweise remote auf einen Hadoop-Cluster über das Remote Desktop Protocol (RDP) zugreifen und ohne zusätzliche Schritte den folgenden Mahout-Befehl „Hallo Welt“ ausführen:
 
         mahout org.apache.mahout.classifier.df.tools.Describe -p /user/hdp/glass.data -f /user/hdp/glass.info -d I 9 N L
 

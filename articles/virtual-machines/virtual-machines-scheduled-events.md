@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 7f0613285bc548e1329be3c33c30939f5998f379
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 627aa117ded0aaa519052d4ea1a1995ba2e363ee
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -71,7 +71,7 @@ In beiden Fällen dauert der vom Benutzer initiierte Vorgang länger, da geplant
 ## <a name="using-the-api"></a>Verwenden der API
 
 ### <a name="query-for-events"></a>Abfragen von Ereignissen
-Sie können geplante Ereignisse abfragen, indem Sie einfach folgenden Aufruf ausführen
+Sie können geplante Ereignisse abfragen, indem Sie einfach folgenden Aufruf ausführen:
 
     curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
 
@@ -92,13 +92,25 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
          }
      ]
     }
+    
+### <a name="event-properties"></a>Ereigniseigenschaften
+|Eigenschaft  |  Beschreibung |
+| - | - |
+| EventId |Global eindeutigen Bezeichner für ein Ereignis. <br><br> Beispiel: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| EventType | Auswirkungen des Ereignisses. <br><br> Werte: <br><ul><li> <i>Freeze</i>: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Es gibt keine Auswirkungen auf Arbeitsspeicher, geöffnete Dateien oder Netzwerkverbindungen. <li> <i>Reboot</i>: Der Neustart des virtuellen Computers ist geplant (der Arbeitsspeicher wird geleert).<li> <i>Redeploy</i>: Das Verschieben des virtuellen Computers auf einen anderen Knoten ist geplant (kurzlebige Datenträger gehen verloren). |
+| ResourceType | Typ der Ressource, auf die sich das Ereignis auswirkt. <br><br> Werte: <ul><li>VirtualMachine|
+| Ressourcen| Liste der Ressourcen, auf die sich das Ereignis auswirkt. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
+| Ereignisstatus | Status des Ereignisses. <br><br> Werte: <ul><li><i>Geplant</i>: Ereignis erfolgt nach dem in der Eigenschaft <i>NotBefore</i> angegebenen Zeitpunkt.<li><i>Gestartet</i>: Ereignis wurde gestartet.</i>
+| NotBefore| Zeit, nach der das Ereignis starten kann. <br><br> Beispiel: <br><ul><li> 2016-09-19T18:29:47Z  |
 
-EventType: Erfasst die erwartete Auswirkung auf den virtuellen Computer. Dabei gilt:
-- Freeze: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Es gibt keine Auswirkungen auf Arbeitsspeicher, geöffnete Dateien oder Netzwerkverbindungen.
-- Reboot: Der Neustart des virtuellen Computers ist geplant (der Arbeitsspeicher wird geleert).
-- Redeploy: Das Verschieben des virtuellen Computers auf einen anderen Knoten ist geplant (der kurzlebige Datenträger geht verloren). 
+### <a name="event-scheduling"></a>Ereigniszeitplanung
+Jedes Ereignis erfolgt dem Zeitplan nach, basierend auf dem Ereignistyp, eine Mindestzeitspanne in der Zukunft. Diese Zeitspanne spiegelt sich in der Eigenschaft <i>NotBefore</i> eines Ereignisses wider. 
 
-Wenn ein Ereignis geplant ist (Status = Scheduled), gibt Azure die Uhrzeit bekannt, nach der das Ereignis starten kann (wird im Feld „NotBefore“ angegeben).
+|EventType  | Mindestzeitspanne |
+| - | - |
+| Freeze| 15 Minuten |
+| Neustart | 15 Minuten |
+| Erneute Bereitstellung | 10 Minuten |
 
 ### <a name="starting-an-event-expedite"></a>(Beschleunigtes) Starten eines Ereignisses
 
@@ -120,11 +132,13 @@ function GetScheduledEvents($uri)
 }
 
 # How to approve a scheduled event
-function ApproveScheduledEvent($eventId, $uri)
+function ApproveScheduledEvent($eventId, $docIncarnation, $uri)
 {    
-    # Create the Scheduled Events Approval Json
+    # Create the Scheduled Events Approval Document
     $startRequests = [array]@{"EventId" = $eventId}
-    $scheduledEventsApproval = @{"StartRequests" = $startRequests} 
+    $scheduledEventsApproval = @{"StartRequests" = $startRequests; "DocumentIncarnation" = $docIncarnation} 
+    
+    # Convert to JSON string
     $approvalString = ConvertTo-Json $scheduledEventsApproval
 
     Write-Host "Approving with the following: `n" $approvalString
@@ -161,7 +175,7 @@ foreach($event in $scheduledEvents.Events)
     $entry = Read-Host "`nApprove event? Y/N"
     if($entry -eq "Y" -or $entry -eq "y")
     {
-    ApproveScheduledEvent $event.EventId $scheduledEventURI 
+    ApproveScheduledEvent $event.EventId $scheduledEvents.DocumentIncarnation $scheduledEventURI 
     }
 }
 ``` 
@@ -207,6 +221,7 @@ Geplante Ereignisse können mit den folgenden Datenstrukturen analysiert werden.
 ```csharp
     public class ScheduledEventsDocument
     {
+        public string DocumentIncarnation;
         public List<CloudControlEvent> Events { get; set; }
     }
 
@@ -217,11 +232,12 @@ Geplante Ereignisse können mit den folgenden Datenstrukturen analysiert werden.
         public string EventType { get; set; }
         public string ResourceType { get; set; }
         public List<string> Resources { get; set; }
-        public DateTime NoteBefore { get; set; }
+        public DateTime? NotBefore { get; set; }
     }
 
     public class ScheduledEventsApproval
     {
+        public string DocumentIncarnation;
         public List<StartRequest> StartRequests = new List<StartRequest>();
     }
 
@@ -259,7 +275,11 @@ public class Program
             Console.ReadLine();
 
             // Approve events
-            ScheduledEventsApproval scheduledEventsApprovalDocument = new ScheduledEventsApproval();
+            ScheduledEventsApproval scheduledEventsApprovalDocument = new ScheduledEventsApproval()
+        {
+            DocumentIncarnation = scheduledEventsDocument.DocumentIncarnation
+        };
+        
             foreach (CloudControlEvent ccevent in scheduledEventsDocument.Events)
             {
                 scheduledEventsApprovalDocument.StartRequests.Add(new StartRequest(ccevent.EventId));

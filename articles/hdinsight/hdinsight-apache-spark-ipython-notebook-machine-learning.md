@@ -1,6 +1,6 @@
 ---
-title: "Verwenden von Apache Spark zum Erstellen von Machine Learning-Anwendungen für Azure HDInsight | Microsoft-Dokumentation"
-description: "Schritt-für-Schritt-Anleitung zur Verwendung von Notebooks mit Apache Spark zum Erstellen von Machine Learning-Anwendungen"
+title: "Erstellen von Apache Spark-Machine Learning-Anwendungen für Azure HDInsight | Microsoft-Dokumentation"
+description: Schrittweise Anleitung zum Erstellen einer Apache Spark-Machine Learning-Anwendung in HDInsight Spark-Clustern mit Jupyter-Notebook
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -17,36 +17,35 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 94c7aca175543b94742ad57af6949b3fcdda6356
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 2e70e40629126604cc7f29029d73aa578507e1a2
 ms.contentlocale: de-de
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="build-machine-learning-applications-to-run-on-apache-spark-clusters-on-hdinsight"></a>Erstellen von Machine Learning-Anwendungen zur Ausführung auf Apache Spark-Clustern unter HDInsight
+# <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Erstellen von Apache Spark-Machine Learning-Anwendungen für Azure HDInsight
 
-Sie erfahren, wie Sie eine Machine Learning-Anwendung mit einem Apache Spark-Cluster in HDInsight erstellen. In diesem Artikel wird beschrieben, wie Sie das Jupyter Notebook für den Cluster zum Erstellen und Testen unserer Anwendung verwenden. Für die Anwendung werden die HVAC.csv-Beispieldaten genutzt, die standardmäßig auf allen Clustern verfügbar sind.
+Erfahren Sie, wie Sie eine Apache Spark-Machine Learning-Anwendung mit einem Spark-Cluster unter HDInsight erstellen. In diesem Artikel wird beschrieben, wie Sie das Jupyter-Notebook für den Cluster zum Erstellen und Testen dieser Anwendung verwenden. Für die Anwendung werden die HVAC.csv-Beispieldaten genutzt, die standardmäßig auf allen Clustern verfügbar sind.
 
 **Voraussetzungen:**
 
 Sie benötigen Folgendes:
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md). 
 
-## <a name="data"></a>Anzeigen der Daten
-Bevor wir mit dem Erstellen der Anwendung beginnen, müssen wir uns zuerst mit der Struktur der Daten und der Art der Analyse vertraut machen, die wir für die Daten durchführen. 
+## <a name="data"></a>Grundlegendes zum Dataset
+Bevor wir mit dem Erstellen der Anwendung beginnen, müssen wir uns zuerst mit der Struktur der Daten, für die wir die Anwendung erstellen, und der Art der Analyse, die wir für die Daten durchführen, vertraut machen. 
 
 In diesem Artikel verwenden wir die Beispieldatendatei **HVAC.csv** , die im Azure Storage-Konto verfügbar ist, das Sie dem HDInsight-Cluster zugeordnet haben. Im Speicherkonto finden Sie die Datei unter **\HdiSamples\HdiSamples\SensorSampleData\hvac**. Laden Sie die CSV-Datei herunter, und öffnen Sie sie, um eine Momentaufnahme der Daten zu erhalten.  
 
-![HVAC-Datenmomentaufnahme](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.png "Momentaufnahme der HVAC-Daten")
+![Momentaufnahme der für das Spark-Machine Learning-Beispiel verwendeten Daten](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Momentaufnahme der für das Spark-Machine Learning-Beispiel verwendeten Daten")
 
 Die Daten zeigen die Zieltemperatur und die Ist-Temperatur eines Gebäudes an, in dem HVAC-Systeme installiert sind. Angenommen, die Spalte **System** enthält die System-ID und die Spalte **SystemAge** eine Angabe in Jahren, wie lange das HVAC-System im Gebäude bereits verwendet wird.
 
 Wir sagen anhand dieser Daten vorher, ob es in einem Gebäude basierend auf der Zieltemperatur zu warm oder zu kalt ist. Hierfür werden die System-ID und das Alter des Systems verwendet.
 
-## <a name="app"></a>Schreiben einer Machine Learning-Anwendung mit Spark MLlib
+## <a name="app"></a>Schreiben einer Spark-Machine Learning-Anwendung mit Spark MLlib
 In dieser Anwendung verwenden wir eine Spark ML-Pipeline, um eine Dokumentklassifizierung durchzuführen. In der Pipeline teilen wir das Dokument in Wörter auf, konvertieren die Wörter in einen numerischen Featurevektor und erstellen dann mit den Featurevektoren und Beschriftungen ein Vorhersagemodell. Führen Sie die folgenden Schritte aus, um die Anwendung zu erstellen:
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.   
@@ -60,11 +59,11 @@ In dieser Anwendung verwenden wir eine Spark ML-Pipeline, um eine Dokumentklassi
    > 
 3. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und dann auf **PySpark**.
    
-    ![Erstellen eines neuen Jupyter Notebooks](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.createnotebook.png "Erstellen eines neuen Jupyter Notebooks")
+    ![Erstellen eines Jupyter-Notebooks für das Spark-Machine Learning-Beispiel](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-create-notebook.png "Erstellen eines Jupyter-Notebooks für das Spark-Machine Learning-Beispiel")
 4. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Klicken Sie oben auf den Namen des Notebooks, und geben Sie einen Anzeigenamen ein.
    
-    ![Angeben eines neuen Namens für das Notebook](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.notebook.name.png "Angeben eines neuen Namens für das Notebook")
-5. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie UMSCHALT+EINGABETASTE ****. 
+    ![Angeben eines Notebooknamens für das Spark-Machine Learning-Beispiel](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-notebook-name.png "Angeben eines Notebooknamens für das Spark-Machine Learning-Beispiel")
+5. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABETASTE**. 
    
         from pyspark.ml import Pipeline
         from pyspark.ml.classification import LogisticRegression
@@ -160,7 +159,7 @@ In dieser Anwendung verwenden wir eine Spark ML-Pipeline, um eine Dokumentklassi
 
     Wechseln Sie zurück, und überprüfen Sie die Ausgabe gegenüber der CSV-Rohdatei. Die erste Zeile der CSV-Datei enthält beispielsweise folgende Daten:
 
-    ![HVAC-Datenmomentaufnahme](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.first.row.png "Momentaufnahme der HVAC-Daten")
+    ![Momentaufnahme der Ausgabedaten für das Spark-Machine Learning-Beispiel](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Momentaufnahme der Ausgabedaten für das Spark-Machine Learning-Beispiel")
 
     Beachten Sie, dass die Ist-Temperatur unterhalb der Zieltemperatur liegt. Im Gebäude ist es also zu kalt. In der Schulungsausgabe lautet der Wert **label** in der ersten Zeile daher **0,0**. Dies bedeutet, dass es im Gebäude nicht zu warm ist.
 
@@ -196,7 +195,7 @@ In dieser Anwendung verwenden wir eine Spark ML-Pipeline, um eine Dokumentklassi
    In der ersten Zeile der Vorhersage können Sie sehen, dass das Gebäude für ein HVAC-System mit ID 20 und einem Systemalter von 25 Jahren zu warm ist (**prediction=1.0**). Der erste Wert für DenseVector (0,49999) entspricht der Vorhersage 0,0, und der zweite Wert (0,5001) entspricht der Vorhersage 1,0. Obwohl der zweite Wert in der Ausgabe nur unwesentlich höher ist, zeigt das Modell **prediction=1.0**an.
 4. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Dadurch wird das Notebook heruntergefahren und geschlossen.
 
-## <a name="anaconda"></a>Verwenden der Anaconda-scikit-learn-Bibliothek für Machine Learning
+## <a name="anaconda"></a>Verwenden der Anaconda-scikit-learn-Bibliothek für Spark-Machine Learning
 Apache Spark-Cluster unter HDInsight enthalten Anaconda-Bibliotheken. Dazu gehört auch die **scikit-learn** -Bibliothek für Machine Learning. Außerdem enthält die Bibliothek verschiedene Datasets, mit denen Sie Beispielanwendungen direkt über ein Jupyter Notebook erstellen können. Beispiele zur Verwendung der scikit-learn-Bibliothek finden Sie unter [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="seealso"></a>Weitere Informationen

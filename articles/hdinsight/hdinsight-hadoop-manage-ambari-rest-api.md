@@ -1,6 +1,6 @@
 ---
-title: "Überwachen und Verwalten von Azure HDInsight-Clustern mithilfe der Ambari-REST-API | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Linux-basierten HDInsight-Clustern verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Ambari-REST-API verwenden."
+title: "Überwachen und Verwalten von Hadoop mit der Ambari-REST-API – Azure HDInsight | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Hadoop-Clustern in Azure HDInsight verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Ambari-REST-API verwenden."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 05/16/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ce6d8301c9c9fc0b9ac6bc2e31023ebbbba8a67c
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 7ac80a8521b48f43538ca06a054f8302eb32eea6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -27,7 +28,9 @@ ms.lasthandoff: 04/27/2017
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern mit dem Linux-Betriebssystem enthalten und wird verwendet, um den Cluster zu überwachen und Konfigurationsänderungen vorzunehmen. Dieses Dokument enthält grundlegende Informationen zur Verwendung der Ambari-REST-API.
+Erfahren Sie, wie Sie die Ambari-REST-API zum Verwalten und Überwachen von Hadoop-Clustern in Azure HDInsight verwenden.
+
+Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern mit dem Linux-Betriebssystem enthalten und wird verwendet, um den Cluster zu überwachen und Konfigurationsänderungen vorzunehmen.
 
 ## <a id="whatis"></a>Was ist Ambari?
 

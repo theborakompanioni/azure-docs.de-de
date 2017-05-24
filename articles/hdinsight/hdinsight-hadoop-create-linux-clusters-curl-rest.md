@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Azure HDInsight (Hadoop)-Clustern mithilfe von cURL und REST | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie HDInsight-Cluster mit cURL, Azure Resource Manager-Vorlagen und der Azure-REST-API erstellen. Sie können den Cluster-Typ (Hadoop, HBase oder Storm) angeben oder Skripts verwenden, um benutzerdefinierte Komponenten zu installieren."
+title: Erstellen von HDInsight-Clustern (Hadoop) mithilfe der Azure-REST-API | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie HDInsight-Cluster erstellen, indem Sie Azure Resource Manager-Vorlagen an die Azure-REST-API senden.
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/17/2017
+ms.date: 05/17/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 05f2ce6d6f170e16985c3ed3523d4e41173e21e0
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 997c8623b9bc99074723f77237fbbbdba031d577
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="create-hdinsight-clusters-using-curl-and-the-azure-rest-api"></a>Erstellen von HDInsight-Clustern mithilfe von cURL und der Azure-REST-API
+# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Erstellen von Hadoop-Clustern mithilfe der Azure-REST-API
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -33,32 +33,16 @@ Erfahren Sie, wie Sie einen HDInsight-Cluster mit einer Azure Resource Manager-V
 Mit der Azure-REST-API können Sie Verwaltungsvorgänge für Dienste durchführen, die auf der Azure-Plattform gehostet werden. Beispielsweise können Sie neue Ressourcen wie etwa HDInsight-Cluster erstellen.
 
 > [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight 3.3](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
-* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-
-* **Azure CLI 2.0** (Vorschau) Die Azure-Befehlszeilenschnittstelle wird verwendet, um einen Dienstprinzipal zu erstellen, der zum Generieren von Authentifizierungstoken für Anforderungen an die Azure-REST-API verwendet wird. Weitere Informationen zur Azure CLI 2.0-Vorschau finden Sie unter [Erste Schritte mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-
-* **cURL**. Dieses Hilfsprogramm ist über Ihr Paketverwaltungssystem verfügbar oder kann hier heruntergeladen werden: [http://curl.haxx.se/](http://curl.haxx.se/).
-
-  > [!NOTE]
-  > Wenn Sie PowerShell zum Ausführen der Befehle in diesem Dokument verwenden, müssen Sie zuerst den `curl`-Alias entfernen, der standardmäßig erstellt wird. Dieser Alias verwendet Invoke-WebRequest anstelle von cURL. Wenn Sie diesen Alias nicht entfernen, könnten Sie bei einigen der in diesem Dokument verwendeten Befehle Fehlermeldungen erhalten.
-  >
-  > Um diesen Alias zu entfernen, verwenden Sie folgenden Befehl in der PowerShell-Eingabeaufforderung:
-  >
-  > `Remove-item alias:curl`
-  >
-  > Nachdem der Alias entfernt wurde, können Sie die auf Ihrem System installierte cURL-Version verwenden.
+> [!NOTE]
+> Bei den Schritten in diesem Dokument wird das Hilfsprogramm [curl (https://curl.haxx.se/)](https://curl.haxx.se/) für die Kommunikation mit der Azure-REST-API verwendet.
 
 ## <a name="create-a-template"></a>Erstellen einer Vorlage
 
 Bei Azure Resource Manager-Vorlagen handelt es sich um JSON-Dokumente, mit denen eine **Ressourcengruppe** und alle darin enthaltenen Ressourcen (z.B. HDInsight) beschrieben werden. Diese vorlagenbasierte Vorgehensweise ermöglicht Ihnen, die Ressourcen zu definieren, die Sie für HDInsight in einer Vorlage benötigen.
 
-Folgendes ist eine Kombination aus den Vorlagen- und Parameterdateien von [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password). Damit wird ein Linux-basierter Cluster erstellt, bei dem das SSH-Benutzerkonto durch ein Kennwort geschützt ist.
+Das folgende JSON-Dokument ist eine Kombination aus den Vorlagen- und Parameterdateien von [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password). Damit wird ein Linux-basierter Cluster erstellt, bei dem das SSH-Benutzerkonto durch ein Kennwort geschützt ist.
 
    ```json
    {
@@ -67,22 +51,6 @@ Folgendes ist eine Kombination aus den Vorlagen- und Parameterdateien von [https
                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                "contentVersion": "1.0.0.0",
                "parameters": {
-                   "location": {
-                       "type": "string",
-                       "allowedValues": ["Central US",
-                       "East Asia",
-                       "East US",
-                       "Japan East",
-                       "Japan West",
-                       "North Europe",
-                       "South Central US",
-                       "Southeast Asia",
-                       "West Europe",
-                       "West US"],
-                       "metadata": {
-                           "description": "The location where all azure resources are deployed."
-                       }
-                   },
                    "clusterType": {
                        "type": "string",
                        "allowedValues": ["hadoop",
@@ -144,7 +112,7 @@ Folgendes ist eine Kombination aus den Vorlagen- und Parameterdateien von [https
                "resources": [{
                    "name": "[parameters('clusterStorageAccountName')]",
                    "type": "Microsoft.Storage/storageAccounts",
-                   "location": "[parameters('location')]",
+                   "location": "[resourceGroup().location]",
                    "apiVersion": "[variables('defaultApiVersion')]",
                    "dependsOn": [],
                    "tags": {
@@ -157,7 +125,7 @@ Folgendes ist eine Kombination aus den Vorlagen- und Parameterdateien von [https
                {
                    "name": "[parameters('clusterName')]",
                    "type": "Microsoft.HDInsight/clusters",
-                   "location": "[parameters('location')]",
+                   "location": "[resourceGroup().location]",
                    "apiVersion": "[variables('clusterApiVersion')]",
                    "dependsOn": ["[concat('Microsoft.Storage/storageAccounts/',parameters('clusterStorageAccountName'))]"],
                    "tags": {
@@ -223,9 +191,6 @@ Folgendes ist eine Kombination aus den Vorlagen- und Parameterdateien von [https
            },
            "mode": "incremental",
            "Parameters": {
-               "location": {
-                   "value": "North Europe"
-               },
                "clusterName": {
                    "value": "newclustername"
                },
@@ -307,45 +272,47 @@ Führen Sie die in [Erste Schritte mit Azure CLI 2.0](https://docs.microsoft.com
 
 Führen Sie den folgenden Befehl aus, um ein Authentifizierungstoken abzurufen:
 
-    curl -X "POST" "https://login.microsoftonline.com/TenantID/oauth2/token" \
-    -H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
-    -H "Content-Type: application/x-www-form-urlencoded" \
-    --data-urlencode "client_id=AppID" \
-    --data-urlencode "grant_type=client_credentials" \
-    --data-urlencode "client_secret=password" \
-    --data-urlencode "resource=https://management.azure.com/"
+```bash
+curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
+-H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
+-H "Content-Type: application/x-www-form-urlencoded" \
+--data-urlencode "client_id=$APPID" \
+--data-urlencode "grant_type=client_credentials" \
+--data-urlencode "client_secret=$PASSWORD" \
+--data-urlencode "resource=https://management.azure.com/"
+```
 
-    Replace **TenantID**, **AppID**, and **password** with the values obtained or used previously.
+Legen Sie `$TENANTID`, `$APPID` und `$PASSWORD` auf die zuvor abgerufenen oder verwendeten Werte fest.
 
-    If this request is successful, you receive a 200 series response and the response body contains a JSON document.
+Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text ein JSON-Dokument enthält.
 
-    The JSON document returned by this request contains an element named **access_token**. The value of **access_token** is used to authentication requests to the REST API.
+Das von dieser Anforderung zurückgegebene JSON-Dokument enthält ein Element mit dem Namen **access_token**. Der Wert von **access_token** wird verwendet, um Anforderungen an die REST-API zu authentifizieren.
 
-   ```json
-   {
-       "token_type":"Bearer",
-       "expires_in":"3599",
-       "expires_on":"1463409994",
-       "not_before":"1463406094",
-       "resource":"https://management.azure.com/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWoNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI2Ny8iLCJpYXQiOjE0NjM0MDYwOTQsIm5iZiI6MTQ2MzQwNjA5NCwiZXhwIjoxNDYzNDA5OTk5LCJhcHBpZCI6IjBlYzcyMzM0LTZkMDMtNDhmYi04OWU1LTU2NTJiODBiZDliYiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJzdWIiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ2ZXIiOiIxLjAifQ.nJVERbeDHLGHn7ZsbVGBJyHOu2PYhG5dji6F63gu8XN2Cvol3J1HO1uB4H3nCSt9DTu_jMHqAur_NNyobgNM21GojbEZAvd0I9NY0UDumBEvDZfMKneqp7a_cgAU7IYRcTPneSxbD6wo-8gIgfN9KDql98b0uEzixIVIWra2Q1bUUYETYqyaJNdS4RUmlJKNNpENllAyHQLv7hXnap1IuzP-f5CNIbbj9UgXxLiOtW5JhUAwWLZ3-WMhNRpUO2SIB7W7tQ0AbjXw3aUYr7el066J51z5tC1AK9UC-mD_fO_HUP6ZmPzu5gLA6DxkIIYP3grPnRVoUDltHQvwgONDOw"
-   }
-   ```
+```json
+{
+    "token_type":"Bearer",
+    "expires_in":"3599",
+    "expires_on":"1463409994",
+    "not_before":"1463406094",
+    "resource":"https://management.azure.com/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWoNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI2Ny8iLCJpYXQiOjE0NjM0MDYwOTQsIm5iZiI6MTQ2MzQwNjA5NCwiZXhwIjoxNDYzNDA5OTk5LCJhcHBpZCI6IjBlYzcyMzM0LTZkMDMtNDhmYi04OWU1LTU2NTJiODBiZDliYiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJzdWIiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ2ZXIiOiIxLjAifQ.nJVERbeDHLGHn7ZsbVGBJyHOu2PYhG5dji6F63gu8XN2Cvol3J1HO1uB4H3nCSt9DTu_jMHqAur_NNyobgNM21GojbEZAvd0I9NY0UDumBEvDZfMKneqp7a_cgAU7IYRcTPneSxbD6wo-8gIgfN9KDql98b0uEzixIVIWra2Q1bUUYETYqyaJNdS4RUmlJKNNpENllAyHQLv7hXnap1IuzP-f5CNIbbj9UgXxLiOtW5JhUAwWLZ3-WMhNRpUO2SIB7W7tQ0AbjXw3aUYr7el066J51z5tC1AK9UC-mD_fO_HUP6ZmPzu5gLA6DxkIIYP3grPnRVoUDltHQvwgONDOw"
+}
+```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Gehen Sie wie folgt vor, um eine Ressourcengruppe zu erstellen.
 
-* Ersetzen Sie **SubscriptionID** durch die Abonnement-ID, die Sie während der Erstellung des Dienstprinzipals erhalten haben.
-* Ersetzen Sie **AccessToken** durch das Zugriffstoken, das Sie im vorherigen Schritt erhalten haben.
-* Ersetzen Sie **DataCenterLocation** durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden".
-* Ersetzen Sie **ResourceGroupName** durch den Namen, den Sie für diese Gruppe verwenden möchten.
+* Legen Sie `$SUBSCRIPTIONID` auf die Abonnement-ID fest, die Sie während der Erstellung des Dienstprinzipals erhalten haben.
+* Legen Sie`$ACCESSTOKEN` auf das Zugriffstoken fest, das Sie im vorherigen Schritt erhalten haben.
+* Ersetzen Sie `DATACENTERLOCATION` durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden".
+* Legen Sie `$RESOURCEGROUPNAME` auf den Namen fest, den Sie für diese Gruppe verwenden möchten:
 
 ```bash
-curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName?api-version=2015-01-01" \
-    -H "Authorization: Bearer AccessToken" \
+curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
+    -H "Authorization: Bearer $ACCESSTOKEN" \
     -H "Content-Type: application/json" \
     -d $'{
-"location": "DataCenterLocation"
+"location": "DATACENTERLOCATION"
 }'
 ```
 
@@ -355,13 +322,11 @@ Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text 
 
 Stellen Sie mit dem folgenden Befehl die Vorlage für die Ressourcengruppe bereit.
 
-* Ersetzen Sie **SubscriptionID** und **AccessToken** durch die oben verwendeten Werte.
-* Ersetzen Sie **ResourceGroupName** durch den Namen der Ressourcengruppe, die Sie im vorherigen Abschnitt erstellt haben.
-* Ersetzen Sie **DeploymentName** durch den Namen, den Sie für diese Bereitstellung verwenden möchten.
+* Legen Sie `$DEPLOYMENTNAME` auf den Namen fest, den Sie für diese Bereitstellung verwenden möchten.
 
 ```bash
-curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName/providers/microsoft.resources/deployments/DeploymentName?api-version=2015-01-01" \
--H "Authorization: Bearer AccessToken" \
+curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
+-H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json" \
 -d "{set your body string to the template and parameters}"
 ```
@@ -374,22 +339,19 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text ein JSON-Dokument mit Informationen zum Bereitstellungsvorgang enthält.
 
 > [!IMPORTANT]
-> Zu diesem Zeitpunkt war die Bereitstellung bereits übermittelt, aber noch nicht abgeschlossen. Es kann mehrere Minuten dauern (in der Regel etwa 15), bis die Bereitstellung abgeschlossen ist.
+> Die Bereitstellung war bereits übermittelt, aber noch nicht abgeschlossen. Es kann mehrere Minuten dauern (in der Regel etwa 15), bis die Bereitstellung abgeschlossen ist.
 
 ## <a name="check-the-status-of-a-deployment"></a>Überprüfen des Bereitstellungsstatus
 
 Verwenden Sie den folgenden Befehl, um den Status der Bereitstellung zu prüfen:
 
-* Ersetzen Sie **SubscriptionID** und **AccessToken** durch die oben verwendeten Werte.
-* Ersetzen Sie **ResourceGroupName** durch den Namen der Ressourcengruppe, die Sie im vorherigen Abschnitt erstellt haben.
-
 ```bash
-curl -X "GET" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName/providers/microsoft.resources/deployments/DeploymentName?api-version=2015-01-01" \
--H "Authorization: Bearer AccessToken" \
+curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
+-H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json"
 ```
 
-Dieser Befehl gibt ein JSON-Dokument mit Informationen zum Bereitstellungsvorgang zurück. Das Element `"provisioningState"` enthält den Status der Bereitstellung. Wenn dies den Wert `"Succeeded"` enthält, wurde die Bereitstellung erfolgreich abgeschlossen.
+Dieser Befehl gibt ein JSON-Dokument mit Informationen zum Bereitstellungsvorgang zurück. Das Element `"provisioningState"` enthält den Status der Bereitstellung. Wenn dieses Element den Wert `"Succeeded"` aufweist, wurde die Bereitstellung erfolgreich abgeschlossen.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
