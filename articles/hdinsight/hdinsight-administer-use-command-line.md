@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Hadoop-Clustern mit der Azure-CLI | Microsoft Docs
-description: Verwalten von Hadoop-Clustern in HDIsight mit der Azure-CLI
+description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Hadoop-Cluster in Azure HDInsight verwalten. Die Azure-Befehlszeilenschnittstelle funktioniert unter Windows, Mac und Linux.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,17 +9,18 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: 4f26c79f-8540-44bd-a470-84722a9e4eca
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e70e24951481c33525a852479c9c9647a45e71ac
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c8067e582dd7e20b4ca35771123303de6c4a4ef6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -50,8 +51,8 @@ Um Hilfe zu erhalten, verwenden Sie die Option **-h** .  Beispiel:
 
     azure hdinsight cluster create -h
 
-## <a name="create-clusters"></a>Erstellen von Clustern
-Weitere Informationen finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
+## <a name="create-clusters-with-the-cli"></a>Erstellen von Clustern mit der Befehlszeilenschnittstelle
+Weitere Informationen finden Sie unter [Erstellen von Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
 
 ## <a name="list-and-show-cluster-details"></a>Auflisten und Anzeigen von Clusterdetails
 Mit den folgenden Befehlen können Sie Clusterdetails auflisten und anzeigen:
@@ -59,7 +60,7 @@ Mit den folgenden Befehlen können Sie Clusterdetails auflisten und anzeigen:
     azure hdinsight cluster list
     azure hdinsight cluster show <Cluster Name>
 
-![HDI.CLIListCluster][image-cli-clusterlisting]
+![Befehlszeilenansicht der Clusterliste][image-cli-clusterlisting]
 
 ## <a name="delete-clusters"></a>Löschen von Clustern
 Mit dem folgenden Befehl können Sie ein Cluster löschen:
@@ -107,5 +108,5 @@ Sie sind nun in der Lage, verschiedene Verwaltungsaufgaben für HDInsight-Cluste
 [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
-[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "Auflisten und Anzeigen von Clustern"
+[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/command-line-list-of-clusters.png "Auflisten und Anzeigen von Clustern"
 

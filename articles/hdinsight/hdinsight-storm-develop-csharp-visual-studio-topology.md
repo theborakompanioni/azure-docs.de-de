@@ -1,6 +1,6 @@
 ---
-title: Apache Storm-Topologien mit Visual Studio und C# | Microsoft Docs
-description: "Erfahren Sie, wie Sie Storm-Topologien in C# erstellen, indem Sie mit den HDInsight Tools für Visual Studio eine einfache Wortanzahl-Topologie in Visual Studio erstellen."
+title: "Apache Storm-Topologien mit Visual Studio und C# – Azure | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Storm-Topologien in C# erstellen, indem Sie mit den Hadoop-Tools für Visual Studio eine einfache Wortanzahl-Topologie in Visual Studio erstellen."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,16 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: cc6b16b559c4d1eafc570d0361c710487021f175
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 7b267ba427da276f53326c9068417521c8976e63
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="develop-c-topologies-for-apache-storm-on-hdinsight-using-hadoop-tools-for-visual-studio"></a>Entwickeln von C#-Topologien für Apache Storm in HDInsight mithilfe von Hadoop-Tools für Visual Studio
 
-Erfahren Sie, wie Sie eine C#-Storm-Topologie mithilfe der HDInsight-Tools für Visual Studio erstellen. In diesem Dokument werden Sie durch die Erstellung eines Storm-Projekts in Visual Studio, durch den zugehörigen lokalen Test und dessen Bereitstellung eines Apache Storm-Clusters in HDInsight geleitet.
+Erfahren Sie, wie Sie eine C#-Storm-Topologie mithilfe der Data Lake-Tools (Hadoop) für Visual Studio erstellen. In diesem Dokument werden Sie durch die Erstellung eines Storm-Projekts in Visual Studio, durch den zugehörigen lokalen Test und dessen Bereitstellung eines Apache Storm-Clusters in HDInsight geleitet.
 
 Außerdem erfahren Sie, wie hybride Topologien erstellt werden, die C#- und Java-Komponenten verwenden.
 
@@ -53,10 +54,10 @@ Außerdem erfahren Sie, wie hybride Topologien erstellt werden, die C#- und Java
 
 * Azure SDK 2.9.5 oder höher
 
-* HDInsight-Tools für Visual Studio: Informationen zum Installieren und Konfigurieren der HDInsight-Tools für Visual Studio finden Sie unter [Erste Schritte mit den HDInsight-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) .
+* Informationen zum Installieren und Konfigurieren der Data Lake-Tools für Visual Studio finden Sie unter [Erste Schritte mit den Data Lake-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
   > [!NOTE]
-  > HDInsight-Tools für Visual Studio werden von Visual Studio Express nicht unterstützt
+  > Data Lake-Tools für Visual Studio werden von Visual Studio Express nicht unterstützt
 
 * Apache Storm in HDInsight-Cluster: Informationen zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit Apache Storm in HDInsight](hdinsight-apache-storm-tutorial-get-started.md) .
 
@@ -65,14 +66,14 @@ Außerdem erfahren Sie, wie hybride Topologien erstellt werden, die C#- und Java
 
 ## <a name="templates"></a>Vorlagen
 
-Die HDInsight-Tools für Visual Studio umfassen die folgenden Vorlagen:
+Die Data Lake-Tools für Visual Studio umfassen die folgenden Vorlagen:
 
 | Projekttyp | Zeigt |
 | --- | --- |
 | Storm-Anwendung |Leeres Projekt der Storm-Topologie |
 | Storm Azure SQL Writer-Beispiel |Gewusst wie: Schreiben in eine Azure SQL-Datenbank |
-| Storm DocumentDB Reader-Beispiel |Gewusst wie: Lesen aus der Azure DocumentDB |
-| Storm DocumentDB Writer-Beispiel |Gewusst wie: Schreiben in Azure DocumentDB |
+| Storm Azure Cosmos DB Reader – Beispiel |Lesen aus Azure Cosmos DB |
+| Storm Azure Cosmos DB Writer – Beispiel |Schreiben in Azure Cosmos DB |
 | Storm EventHub Reader-Beispiel |Gewusst wie: Lesen aus Azure Event Hubs |
 | Storm EventHub Writer-Beispiel |Gewusst wie: Schreiben in Azure Event Hubs |
 | Storm HBase Reader-Beispiel |Gewusst wie: Lesen aus HBase auf HDInsight-Clustern |
@@ -95,7 +96,7 @@ Eine Beispieltopologie, die diese Komponente verwendet und mit Storm auf HDInsig
 
 ## <a name="create-a-c-topology"></a>Erstellen einer C#-Topologie
 
-1. Wenn Sie die neueste Version der HDInsight-Tools für Visual Studio noch nicht installiert haben, finden Sie Informationen dazu unter [Erste Schritte mit den HDInsight-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
+1. Wenn Sie die neueste Version der Data Lake-Tools für Visual Studio noch nicht installiert haben, finden Sie Informationen dazu unter [Erste Schritte mit den Data Lake-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
 2. Öffnen Sie Visual Studio, wählen Sie **Datei** > **Neu** aus, und klicken Sie dann auf **Projekt**.
 
@@ -420,9 +421,9 @@ Transaktionale Topologien implementieren Folgendes, um die Wiedergabe von Daten 
 
 Wie im Projekt **Storm-Beispiel** veranschaulicht, kann zur Laufzeit auf Basis der Konfiguration angegeben werden, ob es sich um eine transaktionale Komponente handelt.
 
-## <a name="hybrid-topology"></a>Hybride Topologie
+## <a name="hybrid-topology-with-c-and-java"></a>Hybridtopologie mit C# und Java
 
-HDInsight-Tools für Visual Studio können auch zum Erstellen von hybriden Topologien verwendet werden, bei denen einige Komponenten aus C#- und andere aus Java-Code bestehen.
+Data Lake-Tools für Visual Studio können auch zum Erstellen von hybriden Topologien verwendet werden, bei denen einige Komponenten aus C#- und andere aus Java-Code bestehen.
 
 Erstellen Sie für eine hybride Beispieltopologie ein Projekt, und wählen Sie **Storm Hybrid Sample** (Storm-Hybrid-Beispiel) aus. Dieser Beispieltyp veranschaulicht die folgenden Konzepte:
 
@@ -514,7 +515,7 @@ Neuere Versionen von SCP.NET unterstützen die Paketaktualisierung über NuGet. 
 > 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 > 2. Suchen Sie über das Feld **Suche** nach **Microsoft.SCP.Net.SDK**, und fügen Sie es dem Projekt hinzu.
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshooting-common-issues-with-topologies"></a>Problembehandlung für allgemeine Probleme mit Topologien
 
 ### <a name="null-pointer-exceptions"></a>NULL-Zeigerausnahmen
 

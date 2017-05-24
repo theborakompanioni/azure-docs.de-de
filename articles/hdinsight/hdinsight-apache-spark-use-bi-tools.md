@@ -1,6 +1,7 @@
 ---
-title: "Verwenden von BI-Tools mit Apache Spark für HDInsight | Microsoft-Dokumentation"
-description: "Schritt-für-Schritt-Anleitung zur Verwendung von Notebooks mit Apache Spark zum Erstellen von Schemas für Rohdaten, Speichern als Tabellen und Verwenden von BI-Tools in der Tabelle zur Datenanalyse"
+title: Spark BI mit Datenvisualisierungstools unter Azure HDInsight | Microsoft-Dokumentation
+description: "Verwenden von Datenvisualisierungstools für Analysen mithilfe von Apache Spark BI in HDInsight-Clustern"
+keywords: Apache Spark Bi, Spark Bi, Spark-Datenvisualisierung, Spark-Business Intelligence
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -9,7 +10,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,36 +18,36 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 36b7aaf99db48efa1b56b84ac0616cf9ee2830ac
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: bc6749f583de752592b0b49548c5a42321cac7b3
 ms.contentlocale: de-de
-ms.lasthandoff: 03/18/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="use-bi-tools-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von BI-Tools mit Apache Spark-Cluster unter Azure HDInsight
+# <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Apache Spark BI mit Datenvisualisierungstools unter Azure HDInsight
 
-Es wird beschrieben, wie Sie Apache Spark in Azure HDInsight verwenden, um ein Beispieldataset mit unformatierten Daten zu analysieren, und dann BI-Tools zum Visualisieren der Daten nutzen. In diesem Artikel wird veranschaulicht, wie Sie BI-Tools, z.B. Power BI und Tableau, für HDInsight Spark-Cluster einsetzen.
+Erfahren Sie, wie Sie Datenvisualisierungstools wie Power BI und Tableau verwenden, um ein unformatiertes Beispieldataset mit Apache Spark BI in HDInsight-Clustern zu analysieren.
 
 > [!NOTE]
 > Die in diesem Artikel beschriebenen Verbindungen mit BI-Tools werden unter Spark 2.1 in der Vorschau von Azure HDInsight 3.6 nicht unterstützt. Nur die Spark-Versionen 1.6 und 2.0 (HDInsight 3.4 bzw. 3.5) werden unterstützt.
 >
 
-Dieses Tutorial steht auch als Jupyter Notebook für einen Spark-Cluster (Linux) zur Verfügung, den Sie in HDInsight erstellen. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Wenn Sie das Tutorial innerhalb eines Notebooks ausführen möchten, erstellen Sie einen Spark-Cluster, starten Sie ein Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), und führen Sie dann das Notebook **Use BI tools with Apache Spark on HDInsight.ipynb** im Ordner **Python** aus.
+Dieses Tutorial steht auch als Jupyter-Notebook für einen HDInsight Spark-Cluster zur Verfügung. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Wenn Sie das Tutorial innerhalb eines Notebooks ausführen möchten, erstellen Sie einen Spark-Cluster, starten Sie ein Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), und führen Sie dann das Notebook **Use BI tools with Apache Spark on HDInsight.ipynb** im Ordner **Python** aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 
-## <a name="hivetable"></a>Speichern von Rohdaten als Tabelle
+## <a name="hivetable"></a>Vorbereiten von Daten für die Spark-Datenvisualisierung
 
 In diesem Abschnitt verwenden wir das [Jupyter](https://jupyter.org) Notebook aus einem HDInsight Spark-Cluster zum Ausführen von Aufträgen, bei denen Ihre Beispielrohdaten verarbeitet und dann als Tabelle gespeichert werden. Die Beispieldaten sind in einer CSV-Datei (hvac.csv) enthalten, die standardmäßig auf allen Clustern verfügbar ist.
 
-Nachdem Ihre Daten als Tabelle gespeichert wurden, verwenden wir im nächsten Abschnitt BI-Tools, um eine Verbindung mit der Tabelle herzustellen und weitere Visualisierungen durchzuführen.
+Nachdem Ihre Daten als Tabelle gespeichert wurden, verwenden wir im nächsten Abschnitt BI-Tools, um eine Verbindung mit der Tabelle herzustellen und Datenvisualisierungen durchzuführen.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.   
+
 2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Cluster-Dashboard** und anschließend auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
    > [!NOTE]
@@ -58,11 +59,11 @@ Nachdem Ihre Daten als Tabelle gespeichert wurden, verwenden wir im nächsten Ab
 
 3. Erstellen Sie ein Notebook. Klicken Sie auf **Neu** und dann auf **PySpark**.
 
-    ![Erstellen eines Jupyter Notebooks](./media/hdinsight-apache-spark-use-bi-tools/hdispark.note.jupyter.createnotebook.png "Erstellen eines Jupyter Notebooks")
+    ![Erstellen eines Jupyter-Notebooks für Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/create-jupyter-notebook-for-spark-bi.png "Erstellen eines Jupyter-Notebooks für Apache Spark BI")
 
 4. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Klicken Sie oben auf den Namen des Notebooks, und geben Sie einen Anzeigenamen ein.
 
-    ![Angeben eines neuen Namens für das Notebook](./media/hdinsight-apache-spark-use-bi-tools/hdispark.note.jupyter.notebook.name.png "Angeben eines neuen Namens für das Notebook")
+    ![Angeben eines Namens für das Notebooks für Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/jupyter-notebook-name-for-spark-bi.png "Angeben eines Namens für das Notebooks für Apache Spark BI")
 
 5. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Setzen Sie dazu den Cursor in die Zelle, und drücken Sie **UMSCHALT- + EINGABETASTE**.
 
@@ -112,7 +113,7 @@ Nachdem Ihre Daten als Tabelle gespeichert wurden, verwenden wir im nächsten Ab
 
 9. Fahren Sie das Notebook herunter, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**.
 
-## <a name="powerbi"></a>Verwenden von Power BI
+## <a name="powerbi"></a>Verwenden von Power BI für die Spark-Datenvisualisierung
 
 Nachdem Sie die Daten als Tabelle gespeichert haben, können Sie Power BI verwenden, um eine Verbindung mit den Daten herzustellen und die Daten zu visualisieren. So können Sie Berichte, Dashboards usw. erstellen.
 
@@ -124,76 +125,77 @@ Nachdem Sie die Daten als Tabelle gespeichert haben, können Sie Power BI verwen
 
 4. Klicken Sie auf der Seite **Daten abrufen** unter **Daten importieren oder mit Daten verbinden** für **Datenbanken** auf **Abrufen**.
 
-    ![Abrufen von Daten in Power BI](./media/hdinsight-apache-spark-use-bi-tools/hdispark.powerbi.get.data.png "Abrufen von Daten in Power BI")
+    ![Einlesen von Daten in Power BI für Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Einlesen von Daten in Power BI für Apache Spark BI")
 
 5. Klicken Sie auf dem nächsten Bildschirm auf **Spark on Azure HDInsight** und dann auf **Verbinden**. Geben Sie nach Aufforderung die Cluster-URL (`mysparkcluster.azurehdinsight.net`) und die Anmeldeinformationen für die Verbindung mit dem Cluster ein.
 
-    ![Herstellen einer Verbindung mit Spark](./media/hdinsight-apache-spark-use-bi-tools/power-bi-connect-to-spark.png "Abrufen von Daten in Power BI")
+    ![Herstellen einer Verbindung mit Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/connect-to-apache-spark-bi.png "Herstellen einer Verbindung mit Apache Spark BI")
 
     Nachdem die Verbindung hergestellt wurde, beginnt Power BI mit dem Importieren der Daten aus dem Spark-Cluster unter HDInsight.
 
 6. Power BI importiert die Daten und fügt ein **Spark**-Dataset unter der Überschrift **Datasets** hinzu. Klicken Sie auf das Dataset, um ein neues Arbeitsblatt zum Visualisieren der Daten zu öffnen. Sie können das Arbeitsblatt auch als Bericht speichern. Klicken Sie im Menü **Datei** auf **Speichern**, um ein Arbeitsblatt zu speichern.
 
-    ![Spark-Kachel im Power BI-Dashboard](./media/hdinsight-apache-spark-use-bi-tools/hdispark.powerbi.tile.png "Spark-Kachel im Power BI-Dashboard")
+    ![Apache Spark BI-Kachel im Power BI-Dashboard](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-tile-dashboard.png "Apache Spark BI-Kachel im Power BI-Dashboard")
 7. Beachten Sie, dass in der Liste **Felder** auf der rechten Seite die **hvac**-Tabelle aufgeführt ist, die Sie vorhin erstellt haben. Erweitern Sie die Tabelle, um die Felder in der Tabelle anzuzeigen, die Sie im Notebook definiert haben.
 
-      ![Auflisten der Hive-Tabellen](./media/hdinsight-apache-spark-use-bi-tools/hdispark.powerbi.display.tables.png "Auflisten der Hive-Tabellen")
+      ![Liste der Tabellen im Apache Spark BI-Dashboard](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-display-tables.png "Liste der Tabellen im Apache Spark BI-Dashboard")
 
 8. Erstellen Sie eine Visualisierung, um die Abweichung zwischen Zieltemperatur und Ist-Temperatur für jedes Gebäude anzuzeigen. Wählen Sie die Option **Flächendiagramm** (rot umrandet dargestellt), um Ihre Daten zu visualisieren. Zum Definieren der Achse verschieben Sie das Feld **BuildingID** per Drag & Drop unter **Achse** und die Felder **ActualTemp**/**TargetTemp** unter **Wert**.
 
-    ![Erstellen von Visualisierungen](./media/hdinsight-apache-spark-use-bi-tools/hdispark.powerbi.visual1.png "Erstellen von Visualisierungen")
+    ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
 
 9. Standardmäßig werden in der Visualisierung die Summen für **ActualTemp** und **TargetTemp** angezeigt. Wählen Sie für beide Felder in der Dropdownliste die Option **Mittelwert** aus, um für beide Gebäude den Mittelwert der Ist- und Zieltemperaturen zu erhalten.
 
-    ![Erstellen von Visualisierungen](./media/hdinsight-apache-spark-use-bi-tools/hdispark.powerbi.visual2.png)
+    ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
 
 10. Ihre Datenvisualisierung sollte in etwa wie im Screenshot aussehen. Bewegen Sie den Cursor über die Visualisierung, um QuickInfos mit relevanten Daten abzurufen.
 
-    ![Erstellen von Visualisierungen](./media/hdinsight-apache-spark-use-bi-tools/hdispark.powerbi.visual3.png)
+    ![Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Erstellen von Spark-Datenvisualisierungen mithilfe von Apache Spark BI")
 
 11. Klicken Sie im oberen Menü auf **Speichern** , und geben Sie einen Berichtsnamen an. Sie können die Visualisierung auch anheften. Wenn Sie eine Visualisierung anheften, wird sie in Ihrem Dashboard gespeichert, damit Sie jeweils den aktuellen Wert im Blick haben.
 
    Sie können für ein Dataset beliebig viele Visualisierungen hinzufügen und im Dashboard anheften, um eine Momentaufnahme Ihrer Daten zu erhalten. Außerdem sind Spark-Cluster unter HDInsight per Direktverbindung mit Power BI verbunden. So wird sichergestellt, dass Power BI immer über die aktuellsten Daten aus Ihrem Cluster verfügt, damit Sie keine Aktualisierungen für das Dataset einplanen müssen.
 
-## <a name="tableau"></a>Verwenden von Tableau Desktop zum Analysieren von Daten in der Tabelle
+## <a name="tableau"></a>Verwenden von Tableau Desktop für die Spark-Datenvisualisierung
 
 > [!NOTE]
 > Dieser Abschnitt gilt nur für Spark 1.5.2-Cluster, die in Azure HDInsight erstellt wurden.
 >
 >
 
-1. Installieren Sie [Tableau Desktop](http://www.tableau.com/products/desktop) auf dem Computer, auf dem Sie dieses Tutorial durchführen.
+1. Installieren Sie [Tableau Desktop](http://www.tableau.com/products/desktop) auf dem Computer, auf dem Sie dieses Apache Spark BI-Tutorial durchführen.
 
 2. Stellen Sie sicher, dass auf dem Computer auch der Microsoft Spark ODBC-Treiber installiert ist. Sie können den Treiber [hier](http://go.microsoft.com/fwlink/?LinkId=616229)installieren.
 
 1. Starten Sie Tableau Desktop. Klicken Sie im linken Bereich in der Liste mit den verfügbaren Servern auf **Spark SQL**. Wenn Spark-SQL nicht standardmäßig im linken Bereich aufgeführt ist, finden Sie es durch Klicken auf **Mehr Server**.
 2. Geben Sie im Dialogfeld für die Spark-SQL-Verbindung die Werte wie im Screenshot dargestellt ein, und klicken Sie dann auf **OK**.
 
-    ![Herstellen einer Verbindung mit einem Spark-Cluster](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.connect.png "Herstellen einer Verbindung mit einem Spark-Cluster")
+    ![Herstellen einer Verbindung mit einem Cluster für Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/connect-to-tableau-apache-spark-bi.png "Herstellen einer Verbindung mit einem Cluster für Apache Spark BI")
 
     In der Dropdownliste für die Authentifizierung wird der **Microsoft Azure HDInsight-Dienst** nur dann als Option aufgeführt, wenn Sie auf dem Computer den [Microsoft Spark-ODBC-Treiber](http://go.microsoft.com/fwlink/?LinkId=616229) installiert haben.
 3. Klicken Sie auf dem nächsten Bildschirm in der Dropdownliste **Schema** auf das Symbol **Suchen** und dann auf **Standard**.
 
-    ![Suchen nach Schemas](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.find.schema.png "Suchen nach Schemas")
+    ![Suchen eines Schemas für Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/tableau-find-schema-apache-spark-bi.png "Suchen eines Schemas für Apache Spark BI")
 4. Klicken Sie für das Feld **Tabelle** erneut auf das Symbol **Suchen**, um alle Hive-Tabellen aufzulisten, die im Cluster verfügbar sind. Daraufhin sollte die **hvac** -Tabelle angezeigt werden, die Sie zuvor mit dem Notebook erstellt haben.
 
-    ![Suchen nach Tabellen](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.find.table.png "Suchen nach Tabellen")
+    ![Suchen einer Tabelle für Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/tableau-find-table-apache-spark-bi.png "Suchen einer Tabelle für Apache Spark BI")
 5. Legen Sie die Tabelle im oberen Feld auf der rechten Seite ab. Tableau importiert die Daten und zeigt das Schema wie in der Hervorhebung mit dem roten Kasten an.
 
-    ![Hinzufügen von Tabellen zu Tableau](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.drag.table.png "Hinzufügen von Tabellen zu Tableau")
-6. Klicken Sie unten links auf die Registerkarte **Blatt1** . Erstellen Sie eine Visualisierung, in der die durchschnittlichen Ziel- und Ist-Temperaturen für alle Gebäude und jedes Datum angezeigt werden. Ziehen Sie **Datum** und **Building ID** (Gebäude-ID) auf **Spalten** und **Actual Temp**/**Target Temp** (Tatsächliche Temperatur/Zieltemperatur) auf **Zeilen**. Wählen Sie unter **Markierungen** die Option **Bereich**, um eine Bereichskartenvisualisierung zu verwenden.
+    ![Hinzufügen von Tabellen zu Tableau für Apache Spark BI](./media/hdinsight-apache-spark-use-bi-tools/tableau-add-table-apache-spark-bi.png "Hinzufügen von Tabellen zu Tableau für Apache Spark BI")
+6. Klicken Sie unten links auf die Registerkarte **Blatt1** . Erstellen Sie eine Visualisierung, in der die durchschnittlichen Ziel- und Ist-Temperaturen für alle Gebäude und jedes Datum angezeigt werden. Ziehen Sie **Datum** und **Building ID** (Gebäude-ID) auf **Spalten** und **Actual Temp**/**Target Temp** (Tatsächliche Temperatur/Zieltemperatur) auf **Zeilen**. Wählen Sie unter **Markierungen** die Option **Bereich** aus, um eine Bereichskarte für die Spark-Datenvisualisierung zu verwenden.
 
-     ![Hinzufügen von Feldern für die Visualisierung](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.drag.fields.png "Hinzufügen von Feldern für die Visualisierung")
+     ![Hinzufügen von Feldern für die Spark-Datenvisualisierung](./media/hdinsight-apache-spark-use-bi-tools/spark-data-visualization-add-fields.png "Hinzufügen von Feldern für die Spark-Datenvisualisierung")
 7. Standardmäßig werden die Temperaturfelder als Aggregatwerte angezeigt. Wenn Sie stattdessen die durchschnittlichen Temperaturen anzeigen möchten, können Sie die Dropdownliste verwenden, wie unten dargestellt.
 
-    ![Bestimmen des Mittelwerts für die Temperatur](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.temp.avg.png "Bestimmen des Mittelwerts für die Temperatur")
+    ![Ermitteln der Durchschnittstemperatur für die Spark-Datenvisualisierung](./media/hdinsight-apache-spark-use-bi-tools/spark-data-visualization-average-temperature.png "Ermitteln der Durchschnittstemperatur für die Spark-Datenvisualisierung")
+
 8. Sie können auch eine Temperaturkarte auf die andere Temperaturkarte legen, um ein besseres Gefühl für den Unterschied zwischen Ziel- und Ist-Temperaturen zu erhalten. Bewegen Sie den Mauszeiger in die Ecke der unteren Bereichskarte, bis das Griffsymbol mit einem roten Kreis markiert wird. Ziehen Sie die Karte in die andere Karte, die darüber liegt, und lassen Sie die Maustaste los, wenn die Form im roten Rechteck hervorgehoben wird.
 
-    ![Zusammenführen von Karten](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.merge.png "Zusammenführen von Karten")
+    ![Zusammenführen von Karten für die Spark-Datenvisualisierung](./media/hdinsight-apache-spark-use-bi-tools/spark-data-visualization-merge-maps.png "Zusammenführen von Karten für die Spark-Datenvisualisierung")
 
      Die Visualisierung der Daten sollte sich wie im Screenshot dargestellt ändern:
 
-    ![Visualisierung](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.final.visual.png "Visualisierung")
+    ![Tableau-Ausgabe für die Spark-Datenvisualisierung](./media/hdinsight-apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Tableau-Ausgabe für die Spark-Datenvisualisierung")
 9. Klicken Sie auf **Speichern** , um das Arbeitsblatt zu speichern. Sie können Dashboards erstellen und ein oder mehrere Blätter hinzufügen.
 
 ## <a name="seealso"></a>Weitere Informationen

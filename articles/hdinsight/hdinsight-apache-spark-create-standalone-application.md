@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Scala Maven-Anwendung zur Ausführung in Azure Spark-Clustern | Microsoft-Dokumentation"
+title: "Erstellen einer Scala-Anwendung zur Ausführung in Spark-Clustern in Azure HDInsight | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie eine eigenständige Spark-Anwendung, die Maven nutzt, zur Ausführung in HDInsight Spark-Clustern erstellen."
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c435e8ec21b568afcadaa1af95964753d36d0ccb
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 3cc921bdd6c9b374bda7bbfc3781f7a1327ae438
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -63,7 +63,7 @@ Falls Sie beim Installieren von IntelliJ IDEA nicht zum Aktivieren des Scala-Plu
     ![Maven-Projekt erstellen](./media/hdinsight-apache-spark-create-standalone-application/create-maven-project.png)
    
    * Wählen Sie den Projekttyp **Maven** aus.
-   * Geben Sie ein Projekt-SDK ****an. Klicken Sie auf „Neu“, und navigieren Sie zum Installationsverzeichnis von Java (üblicherweise `C:\Program Files\Java\jdk1.8.0_66`).
+   * Geben Sie ein **Projekt-SDK**an. Klicken Sie auf „Neu“, und navigieren Sie zum Installationsverzeichnis von Java (üblicherweise `C:\Program Files\Java\jdk1.8.0_66`).
    * Aktivieren Sie das Kontrollkästchen **Archetypbasierte Erstellung** .
    * Wählen Sie in der Liste mit den Archetypen die Option **org.scala-tools.archetypes:scala-archetype-simple**aus. Dadurch wird die passende Verzeichnisstruktur erstellt, und die erforderlichen Abhängigkeiten zum Schreiben des Scala-Programms werden heruntergeladen.
 2. Geben Sie passende Werte für **GroupId**, **ArtifactId** und **Version** an. Klicken Sie auf **Weiter**.

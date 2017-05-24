@@ -1,6 +1,7 @@
 ---
-title: Verwenden unterschiedlicher Kernel mit Jupyter Notebooks in Azure HDInsight Spark-Clustern | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über die PySpark-, PySpark3- und Spark-Kernel, die Sie mit in Spark-Clustern in HDInsight Linux verfügbaren Jupyter Notebooks verwenden können."
+title: "Kernel für Jupyter-Notebook in Spark-Clustern in Azure HDInsight | Microsoft-Dokumentation"
+description: "Erfahren Sie mehr über die PySpark-, PySpark3- und Spark-Kernel für in Spark-Clustern in HDInsight Linux verfügbare Jupyter-Notebooks."
+keywords: Jupyter-Notebook unter Spark, Jupyter Spark
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -9,24 +10,24 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 0719e503-ee6d-41ac-b37e-3d77db8b121b
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/15/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 096fbc1d30e8c9df0c9008525e0fac3fd6e449cf
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: c5813341f0d70a3c04e915d243d2a9717cad1fc9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="jupyter-notebooks-kernels-with-apache-spark-clusters-in-hdinsight"></a>Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight 
+# <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Kernel für Jupyter-Notebook in Spark-Clustern in Azure HDInsight 
 
-HDInsight Spark-Cluster bieten Kernel, die Sie beim Jupyter Notebook zum Testen Ihrer Spark-Anwendungen verwenden können. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. Die beiden Kernels sind:
+HDInsight Spark-Cluster bieten Kernel, die Sie beim Jupyter Notebook in Spark zum Testen Ihrer Anwendungen verwenden können. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. Folgende drei Kernel sind verfügbar:
 
 - **PySpark** für in Python2 geschriebene Anwendungen
 - **PySpark3** für in Python3 geschriebene Anwendungen
@@ -38,18 +39,18 @@ In diesem Artikel erfahren Sie, wie Sie diese Kernels verwenden und welche Vorte
 
 * Einen Apache Spark-Cluster unter HDInsight Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
-## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Erstellen eines Jupyter-Notebooks unter Spark HDInsight
 
 1. Öffnen Sie Ihren Cluster im [Azure-Portal](https://portal.azure.com/).  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](hdinsight-administer-use-portal-linux.md#list-and-show-clusters). Der Cluster wird in einem neuen Blatt des Portals geöffnet.
 
 2. Klicken Sie im Abschnitt **Quick links** (Direktlinks) auf **Cluster dashboards** (Clusterdashboards), um das Blatt **Cluster dashboards** (Clusterdashboards) zu öffnen.  Wenn Ihnen **Quick Links** (Direktlinks) nicht angezeigt wird, klicken Sie im linken Menü des Blatts auf **Übersicht**.
 
-    ![Clusterdashboards](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-azure-portal-cluster-dashboards.png "Clusterdashboards") 
+    ![Jupyter-Notebook unter Spark](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-jupyter-notebook-on-spark.png "Jupyter-Notebook unter Spark") 
 
 3. Klicken Sie auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
    
    > [!NOTE]
-   > Sie können auch das Jupyter Notebook für Ihren Cluster aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
+   > Sie können das Jupyter-Notebook im Spark-Cluster auch aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
@@ -57,13 +58,13 @@ In diesem Artikel erfahren Sie, wie Sie diese Kernels verwenden und welche Vorte
 
 3. Klicken Sie auf **Neu** und anschließend entweder auf **Pyspark**, **PySpark3** oder **Spark**, um ein Notebook zu erstellen. Der Spark-Kernel ist für Scala-Anwendungen vorgesehen, der PySpark-Kernel für Python2-Anwendungen und der PySpark3-Kernel für Python3-Anwendungen.
    
-    ![Erstellen eines Jupyter Notebooks](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "Erstellen eines Jupyter Notebooks") 
+    ![Kernel für Jupyter-Notebooks unter Spark](./media/hdinsight-apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernel für Jupyter-Notebooks unter Spark") 
 
 4. Mit dem gewählten Kernel wird ein Notebook geöffnet.
 
-## <a name="benefits-of-using-these-kernels"></a>Vorteile der Verwendung dieser Kernel
+## <a name="benefits-of-using-the-kernels"></a>Vorteile der Kernelverwendung
 
-Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
+Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Notebook in Spark HDInsight-Clustern.
 
 - **Voreingestellte Kontexte** Bei Verwendung der **PySpark**-, **PySpark3**- oder **Spark**-Kernel müssen Sie die Spark- oder Hive-Kontexte nicht mehr explizit festlegen, um mit Ihren Anwendungen arbeiten zu können. Diese sind standardmäßig verfügbar. Diese Kontexte sind:
    
@@ -149,7 +150,7 @@ Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster auftreten, we
 
 ## <a name="supported-browser"></a>Unterstützte Browser
 
-Für HDInsight Spark-Cluster ausgeführte Jupyter Notebooks werden nur von Google Chrome unterstützt.
+Jupyter Notebooks in Spark HDInsight-Clustern werden nur von Google Chrome unterstützt.
 
 ## <a name="feedback"></a>Feedback
 Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit ausreifen. Im Zuge dieser Entwicklung ändern sich unter Umständen auch APIs. Wir freuen uns über Ihr Feedback zur Verwendung der neuen Kernel. Dies hilft uns bei der Gestaltung der endgültigen Kernelversion. Kommentare/Feedback können Sie im Kommentarbereich **** am Ende dieses Artikels hinterlassen.

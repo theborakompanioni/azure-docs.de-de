@@ -1,6 +1,6 @@
 ---
-title: "Bereitstellen einer App in Skalierungsgruppen für virtuelle Computer | Microsoft Docs"
-description: Bereitstellen einer App in VM-Skalierungsgruppen
+title: Aktualisieren einer Azure-VM-Skalierungsgruppe | Microsoft-Dokumentation
+description: Aktualisieren einer Azure-VM-Skalierungsgruppe
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gbowerman
@@ -13,11 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 05/15/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a5158c51149e75952eaf91af14f3fcf2dd1ed2af
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: bbc04cfb1145f3be2957d11f2ed6253428c4b9c3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -93,10 +95,5 @@ Der folgende Screenshot zeigt ein Modell einer Skalierungsgruppe der Ubuntu 14.0
 Nach dem Klicken auf **Upgrade** > **Get Details** (Details abrufen) werden die virtuellen Computer in „UD 0“ aktualisiert.
 
 ![Vmsseditor mit einer aktiven Aktualisierung](./media/virtual-machine-scale-sets-upgrade-scale-set/vmssEditor2.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

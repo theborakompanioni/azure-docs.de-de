@@ -1,5 +1,5 @@
 ---
-title: Lokale Installation von Jupyter Notebook und Herstellen einer Verbindung mit einem Azure HDInsight Spark-Cluster | Microsoft Docs
+title: Lokale Installation von Jupyter und Herstellen einer Verbindung mit einem Azure HDInsight Spark-Cluster | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Jupyter Notebook auf Ihrem Computer installieren und eine Verbindung zum Apache Spark-Cluster in Azure HDInsight herstellen.
 services: hdinsight
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 689bcb86a5eb4476cb62516f623cd23702cd6bc9
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: c2949fbda0503c779b117aebb14d4d7b76bae426
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight"></a>Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung mit dem Apache Spark-Cluster in HDInsight
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung mit Apache Spark in HDInsight
 
 In diesem Artikel erfahren Sie, wie Sie Jupyter Notebook mit den benutzerdefinierten Kerneln PySpark (für Python) und Spark (für Scala) mit Spark Magic installieren und das Notebook mit einem HDInsight-Cluster verbinden. Es kann eine Reihe von Gründen geben, Jupyter auf dem lokalen Computer zu installieren, und es auch können auch einige Probleme auftreten. Weitere Informationen hierzu finden Sie im Abschnitt [Warum sollte ich Jupyter auf meinem Computer installieren?](#why-should-i-install-jupyter-on-my-computer) am Ende dieses Artikels.
 
@@ -61,7 +61,7 @@ Informationen zum Installieren von Spark Magic und der PySpark- und Spark-Kernel
 
 * Führen Sie für Cluster der Versionen 3.5 und 3.6 den Befehl `pip install sparkmagic==0.11.2` aus, um sparkmagic 0.11.2 zu installieren.
 
-## <a name="configure-spark-magic-to-access-the-hdinsight-spark-cluster"></a>Konfigurieren von Spark Magic für den Zugriff auf den Spark-Cluster in HDInsight
+## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>Konfigurieren von Spark Magic zum Herstellen der Verbindung mit dem Spark-Cluster in HDInsight
 
 In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es installiert haben, um eine Verbindung mit einem Apache Spark-Cluster herzustellen. Dieser muss bereits in Azure HDInsight erstellt worden sein.
 
@@ -119,7 +119,7 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
 
     a. Erstellen Sie ein neues Notebook. Klicken Sie in der rechten Ecke auf **Neu**. Daraufhin sollten der Standardkernel **Python2** und die zwei neu installierten Kernel **PySpark** und **Spark** angezeigt werden. Klicken Sie auf **PySpark**.
 
-    ![Erstellen eines neuen Jupyter Notebooks](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Erstellen eines neuen Jupyter Notebooks")
+    ![Kernels in Jupyter Notebook](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Kernels in Jupyter Notebook")
 
     b. Führen Sie den folgenden Codeausschnitt aus.
 
