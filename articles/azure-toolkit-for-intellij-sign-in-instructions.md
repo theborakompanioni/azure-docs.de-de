@@ -1,5 +1,5 @@
 ---
-title: "Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ | Microsoft-Dokumentation"
+title: "Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie sich bei Microsoft Azure mit dem Azure-Toolkit für IntelliJ anmelden."
 services: 
 documentationcenter: java
@@ -14,143 +14,144 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: d1be0432a54ed300bc135345b660b90f3efb3b39
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 4e2ed072bdaea0a71fef042c0c72b7656a42bbe8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
 
-# <a name="azure-sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ
+# <a name="sign-in-instructions-for-the-azure-toolkit-for-intellij"></a>Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ
 
 Das Azure-Toolkit für IntelliJ bietet zwei Methoden für die Anmeldung bei Ihrem Azure-Konto:
 
-  * **Interaktiv**: Bei Wahl dieser Methode geben Sie bei jeder Anmeldung bei Ihrem Azure-Konto Ihre Azure-Anmeldeinformationen ein.
-  * **Automatisch**: Für diese Methode erstellen Sie eine Datei mit Anmeldeinformationen, die Ihre Dienstprinzipaldaten enthält. Anschließend können Sie sich mithilfe dieser Datei automatisch bei Ihrem Azure-Konto anmelden.
+  * **Interaktiv:** Sie geben Ihre Azure-Anmeldeinformationen bei jeder Anmeldung beim Azure-Konto ein.
+  * **Automatisiert:** Sie erstellen eine Datei mit Anmeldeinformationen, die Sie für die automatische Anmeldung beim Azure-Konto verwenden können.
 
-In den folgenden Abschnitte werden die für die beiden Methoden auszuführenden Schritte beschrieben.
+In den folgenden Abschnitten wird die Verwendung der beiden Methoden beschrieben.
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="signing-into-your-azure-account-interactively"></a>Interaktive Anmeldung bei Ihrem Azure-Konto
+## <a name="sign-in-to-your-azure-account-interactively"></a>Interaktive Anmeldung bei Ihrem Azure-Konto
 
-Nachstehend wird erläutert, wie Sie sich bei Azure durch manuelles Eingeben Ihrer Azure-Anmeldeinformationen anmelden.
+Gehen Sie folgendermaßen vor, um sich durch manuelles Eingeben Ihrer Azure-Anmeldeinformationen bei Azure anzumelden:
 
 1. Öffnen Sie das Projekt in IntelliJ IDEA.
 
-1. Klicken Sie auf **Tools**, dann auf **Azure** und danach auf **Azure Sign In**.
+2. Klicken Sie auf **Tools** (Extras), zeigen Sie auf **Azure**, und klicken Sie dann auf **Azure Sign In** (Azure-Anmeldung).
 
-   ![IntelliJ-Menü für die Anmeldung bei Azure][I01]
+   ![IntelliJ-Befehl für Azure-Anmeldung][I01]
 
-1. Wählen Sie im angezeigten Dialogfeld **Azure Sign In** die Option **Interactive** aus, und klicken Sie dann auf **Sign In**.
+3. Wählen Sie im Fenster **Azure Sign In** (Azure-Anmeldung) die Option **Interactive** (Interaktiv) aus, und klicken Sie dann auf **Sign in** (Anmelden).
 
-   ![Anmeldedialogfeld][I02]
+   ![Fenster für die Azure Anmeldung mit „Interactive“ ausgewählt][I02]
 
-1. Wenn das Dialogfeld **Azure Log In** angezeigt wird, geben Sie Ihre Azure-Anmeldeinformationen ein, und klicken Sie dann auf **Sign In**.
+4. Geben Sie im Dialogfeld **Azure Log In** (Azure-Anmeldung) Ihre Azure-Anmeldeinformationen ein, und klicken Sie dann auf **Sign in** (Anmelden).
 
    ![Dialogfeld für Azure-Anmeldung][I03]
 
-1. Wenn das Dialogfeld **Select Subscriptions** angezeigt wird, wählen Sie die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **OK**.
+5. Wenn das Dialogfeld **Select Subscriptions** (Abonnements auswählen) angezeigt wird, wählen Sie die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **OK**.
 
    ![Dialogfeld zum Auswählen von Abonnements][I04]
 
-## <a name="signing-out-of-your-azure-account-when-you-signed-in-interactively"></a>Abmelden von Ihrem Azure-Konto bei interaktiver Anmeldung
+## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-interactively"></a>Abmelden von Ihrem Azure-Konto nach interaktiver Anmeldung
 
-Nachdem Sie die Schritte im vorherigen Abschnitt konfiguriert haben, werden Sie bei jedem Neustart von IntelliJ IDEA automatisch von Ihrem Azure-Konto abgemeldet. Wenn Sie sich jedoch von Ihrem Azure-Konto abmelden möchten, ohne IntelliJ IDEE neu zu starten, führen Sie die folgenden Schritte aus.
+Nachdem Sie Ihr Konto über die zuvor angegebenen Schritte konfiguriert haben, werden Sie bei jedem Neustart von IntelliJ IDEA automatisch von Ihrem Azure-Konto abgemeldet. Wenn Sie sich jedoch von Ihrem Azure-Konto abmelden möchten, *ohne* IntelliJ IDEA neu zu starten, gehen Sie folgendermaßen vor.
 
-1. Klicken Sie in IntelliJ IDEA auf **Tools**, dann auf **Azure** und danach auf **Azure Sign Out**.
+1. Klicken Sie in IntelliJ IDEA auf **Tools** (Extras), zeigen Sie auf **Azure**, und klicken Sie dann auf **Azure Sign Out** (Azure-Abmeldung).
 
-   ![IntelliJ-Menü für die Abmeldung von Azure][L01]
+   ![IntelliJ-Befehl für Azure-Abmeldung][L01]
 
-1. Wenn das Dialogfeld **Azure Sign Out** angezeigt wird, klicken Sie auf **Yes**.
+2. Klicken Sie im Bestätigungsfenster **Azure Sign Out** (Azure-Abmeldung) auf **Yes** (Ja).
 
-   ![Dialogfeld zum Abmelden][L02]
+   ![Bestätigungsfenster für Azure-Abmeldung][L02]
 
-## <a name="signing-into-your-azure-account-automatically-and-creating-a-credentials-file-to-use-in-the-future"></a>Automatisches Anmelden bei Ihrem Azure-Konto und Erstellen einer Datei mit Anmeldeinformationen für die künftige Nutzung
+## <a name="sign-in-to-your-azure-account-automatically"></a>Automatisches Anmelden bei Ihrem Azure-Konto
 
-Nachstehend werden die Schritte zum Erstellen einer Datei mit Anmeldeinformationen erläutert, die Ihre Dienstprinzipaldaten enthält. Nachdem Sie diese Schritte abgeschlossen haben, verwendet IntelliJ IDEA automatisch die Datei mit Anmeldeinformationen, damit Sie beim Öffnen Ihres Projekts automatisch bei Azure angemeldet werden.
+In diesem Abschnitt erfahren Sie, wie Sie eine Datei mit Anmeldeinformationen erstellen, die Ihre Dienstprinzipaldaten enthält. Nachdem Sie dieses Verfahren abgeschlossen haben, verwendet Eclipse die Datei mit Anmeldeinformationen, um Sie bei jedem Öffnen Ihres Projekts automatisch bei Azure anzumelden.
 
 1. Öffnen Sie das Projekt in IntelliJ IDEA.
 
-1. Klicken Sie auf **Tools**, dann auf **Azure** und danach auf **Azure Sign In**.
+2. Zeigen Sie im Menü **Tools** (Extras) auf **Azure**, und klicken Sie dann auf **Azure Sign In** (Azure-Anmeldung).
 
-   ![IntelliJ-Menü für die Anmeldung bei Azure][A01]
+   ![IntelliJ-Befehl für Azure-Anmeldung][A01]
 
-1. Wählen Sie im angezeigten Dialogfeld **Azure Sign In** die Option **Automated** aus, und klicken Sie dann auf **New**.
+3. Wählen Sie im Fenster **Azure Sign In** (Azure-Anmeldung) die Option **Automated** (Automatisiert) aus, und klicken Sie dann auf **New** (Neu).
 
-   ![Anmeldedialogfeld][A02]
+   ![Fenster für die Azure Anmeldung mit „Automated“ ausgewählt][A02]
 
-1. Wenn das Dialogfeld **Azure Log In** angezeigt wird, geben Sie Ihre Azure-Anmeldeinformationen ein, und klicken Sie dann auf **Sign In**.
+4. Geben Sie im Fenster **Azure Log In** (Azure-Anmeldung) Ihre Azure-Anmeldeinformationen ein, und klicken Sie dann auf **Sign in** (Anmelden).
 
    ![Dialogfeld für Azure-Anmeldung][A03]
 
-1. Wenn das Dialogfeld **Create authentication files** angezeigt wird, wählen Sie die gewünschten Abonnements aus. Wählen Sie Ihr Zielverzeichnis, und klicken Sie dann auf **Start**.
+5. Wählen Sie im Dialogfeld **Create authentication files** (Authentifizierungsdateien erstellen) die gewünschten Abonnements und Ihr Zielverzeichnis aus, und klicken Sie dann auf **Start**.
 
-   ![Dialogfeld für Azure-Anmeldung][A04]
+   ![Fenster zum Erstellen der Authentifizierungsdateien][A04]
 
-1. Das Dialogfeld **Service Principal Creatation Status** wird angezeigt. Nachdem Ihre Dateien erfolgreich erstellt wurden, klicken Sie auf **OK**.
+6. Klicken Sie im Dialogfeld **Service Principal Creation Status** (Dienstprinzipal-Erstellungsstatus) nach dem Erstellen Ihrer Dateien auf **OK**.
 
-   ![Dialogfeld mit dem Status der Dienstprinzipalerstellung][A05]
+   ![Dialogfeld für den Status der Dienstprinzipalerstellung][A05]
 
-1. Wenn das Dialogfeld **Azure Sign In** angezeigt wird, klicken Sie auf **Sign In**.
+7. Klicken Sie im Fenster **Azure Sign In** (Azure-Anmeldung) auf **Sign in** (Anmelden).
 
    ![Dialogfeld für Azure-Anmeldung][A06]
 
-1. Wenn das Dialogfeld **Select Subscriptions** angezeigt wird, wählen Sie die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **OK**.
+8. Wenn das Dialogfeld **Select Subscriptions** (Abonnements auswählen) angezeigt wird, wählen Sie die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **OK**.
 
    ![Dialogfeld zum Auswählen von Abonnements][A07]
 
-## <a name="signing-out-of-your-azure-account-when-you-signed-in-automatically"></a>Automatisches Abmelden von Ihrem Azure-Konto bei automatischer Anmeldung
+## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-automatically"></a>Abmelden von Ihrem Azure-Konto nach automatischer Anmeldung
 
-Nachdem Sie die Schritte im vorherigen Abschnitt konfiguriert haben, werden Sie vom Azure-Toolkit bei jedem Neustart von IntelliJ IDEA automatisch bei Ihrem Azure-Konto angemeldet. Um sich jedoch von Ihrem Azure-Konto abzumelden und zu verhindern, dass das Azure-Toolkit Sie automatisch anmeldet, führen Sie die folgenden Schritte aus.
+Nachdem Sie Ihr Konto über die zuvor angegebenen Schritte konfiguriert haben, werden Sie bei jedem Neustart von IntelliJ IDEA automatisch durch das Azure-Toolkit bei Ihrem Azure-Konto angemeldet. Um sich jedoch von Ihrem Azure-Konto abzumelden und zu verhindern, dass das Azure-Toolkit Sie automatisch anmeldet, gehen Sie folgendermaßen vor:
 
-1. Klicken Sie in IntelliJ IDEA auf **Tools**, dann auf **Azure** und danach auf **Azure Sign Out**.
+1. Klicken Sie in IntelliJ IDEA auf **Tools** (Extras), zeigen Sie auf **Azure**, und klicken Sie dann auf **Azure Sign Out** (Azure-Abmeldung).
 
-   ![IntelliJ-Menü für die Abmeldung von Azure][L01]
+   ![IntelliJ-Befehl für Azure-Abmeldung][L01]
 
-1. Wenn das Dialogfeld **Azure Sign Out** angezeigt wird, klicken Sie auf **Yes**.
+2. Klicken Sie im Bestätigungsfenster **Azure Sign Out** (Azure-Abmeldung) auf **Yes** (Ja).
 
-   ![Dialogfeld zum Abmelden][L03]
+   ![Bestätigungsfenster für Azure-Abmeldung][L03]
 
-## <a name="signing-into-your-azure-account-automatically-using-a-credentials-file-which-you-have-already-created"></a>Automatisches Anmelden bei Ihrem Azure-Konto mithilfe einer bereits erstellten Datei mit Anmeldeinformationen
+## <a name="sign-in-to-your-azure-account-automatically-by-using-an-existing-credentials-file"></a>Automatisches Anmelden bei Ihrem Azure-Konto mithilfe einer vorhandenen Datei mit Anmeldeinformationen
 
-Wenn Sie sich bei Verwenden von IntelliJ IDEE von Azure abmelden, müssen Sie das Azure-Toolkit für IntelliJ so neu konfigurieren, dass eine Datei mit Anmeldeinformationen verwendet wird, die Sie zuvor erstellt haben, ehe Sie sich automatisch bei Ihrem Azure-Konto anmelden können. Die folgenden Schritte begleiten Sie durch die Konfiguration des Azure-Toolkits, um eine vorhandene Datei mit Anmeldeinformationen zu verwenden.
+Wenn Sie sich bei Verwendung von IntelliJ IDEA von Ihrem Azure-Konto abmelden, müssen Sie eine vorhandene Datei mit Anmeldeinformationen verwenden, um sich automatisch wieder bei dem Konto anzumelden. Zum Konfigurieren des Azure-Toolkits für Eclipse, sodass eine vorhandene Datei mit Anmeldeinformationen verwendet werden, gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie das Projekt in IntelliJ IDEA.
 
-1. Klicken Sie auf **Tools**, dann auf **Azure** und danach auf **Azure Sign In**.
+2. Zeigen Sie im Menü **Tools** (Extras) auf **Azure**, und klicken Sie dann auf **Azure Sign In** (Azure-Anmeldung).
 
-   ![IntelliJ-Menü für die Anmeldung bei Azure][A01]
+   ![IntelliJ-Befehl für Azure-Anmeldung][A01]
 
-1. Wählen Sie im angezeigten Dialogfeld **Azure Sign In** die Option **Automated** aus, und klicken Sie dann auf **Browse**.
+3. Wählen Sie im Fenster **Azure Sign In** (Azure-Anmeldung) die Option **Automated** (Automatisiert) aus, und klicken Sie dann auf **Browse** (Durchsuchen).
 
-   ![Anmeldedialogfeld][A02]
+   ![Fenster für die Azure Anmeldung mit „Automated“ ausgewählt][A02]
 
-1. Wenn das Dialogfeld **Select Authentication File** angezeigt wird, wählen Sie eine Datei mit Anmeldeinformationen aus, die Sie zuvor erstellt haben, und klicken Sie dann auf **Select**.
+4. Wählen Sie im Dialogfeld **Select Authentication File** (Authentifizierungsdatei auswählen) eine zuvor erstellte Datei mit Anmeldeinformationen aus, und klicken Sie dann auf **Select** (Auswählen).
 
-   ![Anmeldedialogfeld][A08]
+   ![Dialogfeld zum Auswählen einer Authentifizierungsdatei][A08]
 
-1. Wenn das Dialogfeld **Azure Sign In** angezeigt wird, klicken Sie auf **Sign In**.
+5. Klicken Sie im Fenster **Azure Sign In** (Azure-Anmeldung) auf **Sign in** (Anmelden).
 
-   ![Dialogfeld für Azure-Anmeldung][A06]
+   ![Fenster für die Azure Anmeldung mit „Automated“ ausgewählt][A06]
 
-1. Wenn das Dialogfeld **Select Subscriptions** angezeigt wird, wählen Sie die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **OK**.
+6. Wenn das Dialogfeld **Select Subscriptions** (Abonnements auswählen) angezeigt wird, wählen Sie die Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **OK**.
 
    ![Dialogfeld zum Auswählen von Abonnements][A07]
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
 
 * [Azure-Toolkit für Eclipse]
   * [Neuerungen im Azure-Toolkit für Eclipse]
   * [Installieren des Azure-Toolkits für Eclipse]
-  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]
+  * [Anleitung zur Anmeldung für das Azure-Toolkit für Eclipse]
   * [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
 * [Azure Toolkit für IntelliJ]
   * [Neuerungen im Azure-Toolkit für IntelliJ]
   * [Installieren des Azure Toolkit für IntelliJ]
-  * *Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ (dieser Artikel)*
+  * *Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ* (dieser Artikel)
   * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
@@ -163,8 +164,8 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Sign In Instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Anleitung zur Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Sign-in instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
 [Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
