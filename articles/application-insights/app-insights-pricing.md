@@ -3,7 +3,7 @@ title: "Verwalten von Preisen und Datenvolumen für Azure Application Insights |
 description: "Verwalten Sie Telemetriedatenvolumen, und überwachen Sie Kosten in Application Insights."
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
-ms.author: awills
+ms.date: 05/10/2017
+ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6f84365acb9a1cc1fc31fa5f3c04cd112f68087b
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 0a66567d7381f38787f9aa7652c944e4bb3aef82
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -148,10 +148,7 @@ Konfigurieren Sie zum Festlegen der Erfassungs-Stichprobenerstellung die Einstel
 ![Klicken Sie im Blatt „Kontingent und Preise“ auf die Kachel „Stichproben“, und wählen Sie eine Einheit für die Stichprobenerstellung.](./media/app-insights-pricing/04.png)
 
 > [!WARNING]
-> Der auf der Kachel „Beibehaltene Stichproben“ angegebene Wert gibt nur den Wert an, den Sie für die Erfassungs-Stichprobenerstellung festgelegt haben. Er zeigt nicht den Stichproben-Prozentsatz, der im SDK in Ihrer App angewendet wird. 
-> 
-> Falls für die eingehenden Telemetriedaten bereits im SDK Stichproben erstellt wurden, wird die Erfassungs-Stichprobenerstellung nicht angewendet.
-> 
+> Über das Blatt „Datensampling“ wird nur der Wert für die Erfassung von Stichproben gesteuert. Die Samplingrate, die vom Application Insights SDK in Ihrer App angewendet wird, wird nicht widergespiegelt. Falls für die eingehenden Telemetriedaten bereits im SDK Stichproben erstellt wurden, wird die Erfassungs-Stichprobenerstellung nicht angewendet.
 > 
 
 Verwenden Sie etwa folgende [Analytics-Abfrage](app-insights-analytics.md) , um den tatsächlichen Stichproben-Prozentsatz unabhängig davon zu ermitteln, wo er angewendet wird:
