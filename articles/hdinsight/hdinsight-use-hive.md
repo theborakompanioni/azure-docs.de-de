@@ -17,9 +17,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/14/2017
 ms.author: larryfr
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: db324cc8269a1f23613e5193f5a1dec1d26a62b1
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
 
 
@@ -137,7 +138,7 @@ Diese Anweisungen führen die folgenden Aktionen aus:
 
 * **ALS ORC GESPEICHERT**: Speichert die Daten im ORC-Format (Optimized Row Columnar). Dies ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
 
-* **ÜBERSCHREIBEN EINFÜGEN ...**SELECT**: Wählt Zeilen in der Tabelle **log4jLogs**aus, die**[ERROR]**enthalten. Dann werden die Daten in die Tabelle **errorLogs eingefügt.
+* **ÜBERSCHREIBEN EINFÜGEN ...** SELECT**: Wählt Zeilen in der Tabelle **log4jLogs **aus, die** [ERROR] **enthalten. Dann werden die Daten in die Tabelle **errorLogs eingefügt.
 
 > [!NOTE]
 > Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
