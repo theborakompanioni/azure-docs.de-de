@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 5/10/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: c0e7eb271b7ab19131c500e139ea3b1f6b2e7479
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: ff47eaa27351f8d1685090edc54d90e5e91a1de0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -623,6 +623,63 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |AMLCalloutRequests|Funktionsanforderungen|Count|Gesamt|Funktionsanforderungen|
 |AMLCalloutFailedRequests|Fehlerhafte Funktionsanforderungen|Count|Gesamt|Fehlerhafte Funktionsanforderungen|
 |AMLCalloutInputEvents|Funktionsereignisse|Count|Gesamt|Funktionsereignisse|
+
+## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|CpuPercentage|CPU-Prozentsatz|Prozent|Durchschnitt|CPU-Prozentsatz|
+|MemoryPercentage|Arbeitsspeicherprozentsatz|Prozent|Durchschnitt|Arbeitsspeicherprozentsatz|
+|DiskQueueLength|Warteschlangenlänge des Datenträgers|Count|Gesamt|Warteschlangenlänge des Datenträgers|
+|HttpQueueLength|Länge der HTTP-Warteschlange|Count|Gesamt|Länge der HTTP-Warteschlange|
+|BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
+|BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
+
+## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites (einschließlich Functions)
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|CpuTime|CPU-Zeit|Sekunden|Gesamt|CPU-Zeit|
+|Anforderungen|Anforderungen|Count|Gesamt|Anforderungen|
+|BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
+|BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
+|Http101|HTTP 101|Count|Gesamt|HTTP 101|
+|Http2xx|HTTP 2xx|Count|Gesamt|HTTP 2xx|
+|Http3xx|HTTP 3xx|Count|Gesamt|HTTP 3xx|
+|Http401|HTTP 401|Count|Gesamt|HTTP 401|
+|Http403|HTTP 403|Count|Gesamt|HTTP 403|
+|Http404|HTTP 404|Count|Gesamt|HTTP 404|
+|Http406|HTTP 406|Count|Gesamt|HTTP 406|
+|Http4xx|HTTP 4xx|Count|Gesamt|HTTP 4xx|
+|Http5xx|HTTP-Serverfehler|Count|Gesamt|HTTP-Serverfehler|
+|MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|
+|AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|
+|AverageResponseTime|Durchschnittliche Antwortzeit|Sekunden|Durchschnitt|Durchschnittliche Antwortzeit|
+|FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Durchschnitt|Ausführungseinheiten für Funktion|
+|FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Durchschnitt|Ausführungsanzahl für Funktion|
+
+## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|CpuTime|CPU-Zeit|Sekunden|Gesamt|CPU-Zeit|
+|Anforderungen|Anforderungen|Count|Gesamt|Anforderungen|
+|BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
+|BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
+|Http101|HTTP 101|Count|Gesamt|HTTP 101|
+|Http2xx|HTTP 2xx|Count|Gesamt|HTTP 2xx|
+|Http3xx|HTTP 3xx|Count|Gesamt|HTTP 3xx|
+|Http401|HTTP 401|Count|Gesamt|HTTP 401|
+|Http403|HTTP 403|Count|Gesamt|HTTP 403|
+|Http404|HTTP 404|Count|Gesamt|HTTP 404|
+|Http406|HTTP 406|Count|Gesamt|HTTP 406|
+|Http4xx|HTTP 4xx|Count|Gesamt|HTTP 4xx|
+|Http5xx|HTTP-Serverfehler|Count|Gesamt|HTTP-Serverfehler|
+|MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|
+|AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|
+|AverageResponseTime|Durchschnittliche Antwortzeit|Sekunden|Durchschnitt|Durchschnittliche Antwortzeit|
+|FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Durchschnitt|Ausführungseinheiten für Funktion|
+|FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Durchschnitt|Ausführungsanzahl für Funktion|
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Informationen zu Metriken in Azure Monitor](monitoring-overview-metrics.md)

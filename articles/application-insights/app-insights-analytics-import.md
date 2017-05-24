@@ -3,7 +3,7 @@ title: Importieren von Daten in Analytics in Azure Application Insights | Micros
 description: "Importieren Sie statische Daten zur Verknüpfung mit App-Telemetrie, oder importieren Sie einen separaten Datenstrom zum Abfragen durch Analytics."
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4f10e5a8200af870e0adb8977b9c68b9998a6de7
-ms.lasthandoff: 03/21/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: d649644959d907ff7fd6c1de360b091682f13d5b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -41,7 +42,7 @@ Das Senden von Daten an Ihre Datenquelle ist einfach.
 Die Häufigkeit des Hochladens und Geschwindigkeit, mit der die Daten für Abfragen verfügbar sein sollen, legen Sie fest. Es ist effizienter, Daten in größeren Blöcken hochzuladen, die aber nicht größer als 1 GB sein sollten.
 
 > [!NOTE]
-> *Haben Sie viele zu analysierende Datenquellen?* [*Erwägen Sie den Einsatz von*logstash*zum Übertragen Ihrer Daten in Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
+> *Haben Sie viele zu analysierende Datenquellen?* [*Erwägen Sie den Einsatz von* logstash *zum Übertragen Ihrer Daten in Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>Vorbereitung
@@ -187,11 +188,11 @@ Die Daten stehen nach wenigen Minuten in Analytics zur Verfügung.
 * **400 – Ungültige Anforderung**: Gibt an, dass die Nutzlast der Anforderung ungültig ist. Prüfen Sie Folgendes:
  * Die Richtigkeit des Instrumentierungsschlüssels.
  * Die Gültigkeit des Uhrzeitwerts. (Aktuelle Uhrzeit in UTC.)
- * Ob Daten dem Schema entsprechen.
+ * Der JSON-Code des Ereignisses entspricht dem Schema.
 * **403 – Verboten**: Auf das Blob, das Sie gesendet haben, kann nicht zugegriffen werden. Stellen Sie sicher, dass der SAS-Schlüssel gültig und nicht abgelaufen ist.
 * **404 – Nicht gefunden**:
  * Das Blob ist nicht vorhanden.
- * Der Datenquellenname ist falsch.
+ * Die Quell-ID (sourceId) ist falsch.
 
 Ausführlichere Informationen sind in der zurückgegebenen Fehlermeldung verfügbar.
 
@@ -203,8 +204,6 @@ Dieser Code verwendet das NuGet-Paket [Newtonsoft.Json](https://www.nuget.org/pa
 ### <a name="classes"></a>Klassen
 
 ```C#
-
-
 namespace IngestionClient 
 { 
     using System; 
@@ -357,7 +356,6 @@ namespace IngestionClient
         #endregion Private 
     } 
 } 
-
 ```
 
 ### <a name="ingest-data"></a>Erfassen von Daten
@@ -365,14 +363,11 @@ namespace IngestionClient
 Verwenden Sie für jedes Blob diesen Code. 
 
 ```C#
-
-
    AnalyticsDataSourceClient client = new AnalyticsDataSourceClient(); 
 
-   var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "tableId/sourceId", "blobUrlWithSas"); 
+   var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "sourceId", "blobUrlWithSas"); 
 
    bool success = await client.RequestBlobIngestion(ingestionRequest);
-
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

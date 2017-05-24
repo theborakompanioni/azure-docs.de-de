@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 29d30cacb29fee1b2c5b8ef523051fa543bee829
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 652a2eb0db0e41c4706e06cd0cb2e97ce1eb6ab2
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -53,10 +53,10 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
 1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie einen **Namen** für Ihre Anwendung ein (z.B. „Azure AD B2C-App“).
 1. Wählen Sie **Web-App/API** als Anwendungstyp aus.
-1. Geben Sie für „Anmelde-URL“ die nachfolgende URL ein, wobei `{tenantName}` durch den Namen Ihres Azure AD B2C-Mandanten (d.h. „fabrikamb2c.onmicrosoft.com“) ersetzt werden sollte.
+1. Geben Sie für „Anmelde-URL“ die nachfolgende URL ein, wobei `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten (also „fabrikamb2c.onmicrosoft.com“) ersetzt werden sollte.
 
     ```
-    https://login.microsoftonline.com/te/{tenantName}.onmicrosoft.com/oauth2/authresp
+    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. Speichern Sie die **Anwendungs-ID**.
@@ -68,28 +68,16 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
 
 Sie müssen den Anwendungsschlüssel `contoso.com` in Ihrem Azure AD B2C-Mandanten speichern. Gehen Sie dazu folgendermaßen vor:
 
-1. Öffnen Sie PowerShell, und navigieren Sie zum Arbeitsverzeichnis `active-directory-b2c-advanced-policies`.
-1. Wechseln Sie in den Ordner mit dem ExploreAdmin-Tool.
+1. Navigieren Sie zu Ihrem Azure AD B2C-Mandanten, und öffnen Sie „B2C-Einstellungen“ > „Identity Experience Framework“ > „Policy Keys“ (Richtlinienschlüssel).
+1. Klicken Sie auf „+ Hinzufügen“.
+1. Optionen:
+ * Wählen Sie „Option“ > `Manual`.
+ * Name: > `ContosoAppSecret`: Wählen Sie einen Namen aus, der mit dem Namen Ihres Azure AD-Mandanten übereinstimmt.  Dem Namen Ihres Schlüssels wird automatisch das Präfix „B2C_1A_“ hinzugefügt.
+ * Fügen Sie Ihren Anwendungsschlüssel in das Textfeld `Secret` ein.
+ * Wählen Sie „Signatur“.
+1. Klicken Sie auf `Create`.
+1. Bestätigen, dass der Schlüssel erstellt wurde: `B2C_1A_ContosoAppSecret`
 
-    ```powershell
-    cd active-directory-b2c-advanced-policies\ExploreAdmin
-    ```
-
-1. Importieren Sie das ExploreAdmin-Tool in PowerShell.
-
-    ```powershell
-    Import-Module .\ExploreAdmin.dll
-    ```
-
-1. Ersetzen Sie im folgenden Befehl `tenantName` durch den Namen Ihres Azure AD B2C-Mandanten (z.B. „fabrikamb2c.onmicrosoft.com“), `SecretReferenceId` durch einen Namen, den Sie als Verweis auf das Geheimnis verwenden möchten (z.B. „ContosoAppSecret“), und `ClientSecret` durch den Anwendungsschlüssel `contoso.com`. Führen Sie den Befehl aus.
-
-    ```PowerShell
-    Set-CpimKeyContainer -Tenant {tenantName} -StorageReferenceId {SecretReferenceId} -UnencodedAsciiKey {ClientSecret}
-    ```
-
-    Stellen Sie bei der Ausführung des Befehls sicher, dass Sie mit dem lokalen Administratorkonto „onmicrosoft.com“ beim Azure AD B2C-Mandanten angemeldet sind. Wenn Sie eine Fehlermeldung erhalten, die besagt, dass „TokenSigningKeyContainer“ nicht gefunden werden kann, lesen Sie den [Leitfaden für erste Schritte](active-directory-b2c-get-started-custom.md).
-
-1. Schließen Sie PowerShell.
 
 ## <a name="add-a-claims-provider-in-your-base-policy"></a>Hinzufügen eines Anspruchsanbieters in Ihrer Basisrichtlinie
 
@@ -104,39 +92,39 @@ Damit sich Benutzer mithilfe von Azure AD anmelden können, müssen Sie Azure AD
         <Domain>Contoso</Domain>
         <DisplayName>Login using Contoso</DisplayName>
         <TechnicalProfiles>
-        <TechnicalProfile Id="ContosoProfile">
-            <DisplayName>Contoso Employee</DisplayName>
-            <Description>Login with your Contoso account</Description>
-            <Protocol Name="OpenIdConnect"/>
-            <OutputTokenFormat>JWT</OutputTokenFormat>
-            <Metadata>
-                <Item Key="METADATA">https://login.windows.net/contoso.com/.well-known/openid-configuration</Item>
-                <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
-                <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
-                <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>
-                <Item Key="response_types">id_token</Item>
-                <Item Key="UsePolicyInRedirectUri">false</Item>
-            </Metadata>
-            <CryptographicKeys>
-            <Key Id="client_secret" StorageReferenceId="ContosoAppSecret"/>
-            </CryptographicKeys>
-            <OutputClaims>
-                <OutputClaim ClaimTypeReferenceId="userId" PartnerClaimType="oid"/>
-                <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid"/>
-                <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-                <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-                <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-                <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="contosoAuthentication" />
-                <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="AzureADContoso" />
-            </OutputClaims>
-            <OutputClaimsTransformations>
-                <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
-                <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
-                <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
-                <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
-            </OutputClaimsTransformations>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
-        </TechnicalProfile>
+            <TechnicalProfile Id="ContosoProfile">
+                <DisplayName>Contoso Employee</DisplayName>
+                <Description>Login with your Contoso account</Description>
+                <Protocol Name="OpenIdConnect"/>
+                <OutputTokenFormat>JWT</OutputTokenFormat>
+                <Metadata>
+                    <Item Key="METADATA">https://login.windows.net/contoso.com/.well-known/openid-configuration</Item>
+                    <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
+                    <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
+                    <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>
+                    <Item Key="response_types">id_token</Item>
+                    <Item Key="UsePolicyInRedirectUri">false</Item>
+                </Metadata>
+                <CryptographicKeys>
+                    <Key Id="client_secret" StorageReferenceId="B2C_1A_ContosoAppSecret"/>
+                </CryptographicKeys>
+                <OutputClaims>
+                    <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="oid"/>
+                    <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid"/>
+                    <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+                    <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
+                    <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+                    <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="contosoAuthentication" />
+                    <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="AzureADContoso" />
+                </OutputClaims>
+                <OutputClaimsTransformations>
+                    <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
+                    <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
+                    <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
+                    <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
+                </OutputClaimsTransformations>
+                <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
+            </TechnicalProfile>
         </TechnicalProfiles>
     </ClaimsProvider>
     ```
@@ -153,9 +141,9 @@ Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle defin
 1. Aktualisieren Sie den Wert für `<Description>`.
 1. Azure AD verwendet das OpenID Connect-Protokoll. Stellen Sie daher sicher, dass der Wert für `<Protocol>` „OpenIDConnect“ lautet.
 
-Sie müssen den Abschnitt `<Metdata>` im obigen XML-Dokument entsprechend den Konfigurationseinstellungen für Ihren speziellen Azure AD-Mandanten aktualisieren. Aktualisieren Sie wie folgt die Metadatenwerte im XML-Dokument :
+Sie müssen den Abschnitt `<Metadata>` im obigen XML-Dokument entsprechend den Konfigurationseinstellungen für Ihren speziellen Azure AD-Mandanten aktualisieren. Aktualisieren Sie wie folgt die Metadatenwerte im XML-Dokument :
 
-1. Setzen Sie `<Item Key="METADATA">` auf `https://login.windows.net/{tenantName}/.well-known/openid-configuration`, wobei `tenantName` der Name Ihres Azure AD-Mandanten (z.B. „contoso.com“) ist.
+1. Setzen Sie `<Item Key="METADATA">` auf `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, wobei `yourAzureADtenant` der Name Ihres Azure AD-Mandanten (z.B. „contoso.com“) ist.
 1. Öffnen Sie Ihren Browser, und rufen Sie die URL `Metadata` auf, die Sie gerade aktualisiert haben.
 1. Suchen Sie im Browser nach dem Objekt „Aussteller“, und kopieren Sie dessen Wert. Es sollte in etwa wie folgt aussehen: `https://sts.windows.net/{tenantId}/`.
 1. Fügen Sie den Wert für `<Item Key="ProviderName">` in das XML-Dokument ein.
@@ -164,9 +152,9 @@ Sie müssen den Abschnitt `<Metdata>` im obigen XML-Dokument entsprechend den Ko
 1. Vergewissern Sie sich, dass `<Item Key="response_types">` auf `id_token` gesetzt ist.
 1. Vergewissern Sie sich, dass `<Item Key="UsePolicyInRedirectUri">` auf `false` gesetzt ist.
 
-Sie müssen außerdem das [Azure AD-Geheimnis, das Sie in Ihrem Azure AD B2C-Mandanten registriert haben](#add-the-azure-ad-key-to-azure-ad-b2c), mit `<ClaimsProvider>` von Azure AD verknüpfen.
+Sie müssen außerdem das Azure AD-Geheimnis, das Sie in Ihrem Azure AD B2C-Mandanten registriert haben, mit `<ClaimsProvider>` von Azure AD verknüpfen.
 
-1. Ändern Sie im Abschnitt `<CryptographicKeys>` des obigen XML-Dokuments den Wert für `StorageReferenceId` in die Referenz-ID des Geheimnisses (z.B. „ContosoAppSecret“), das Sie definiert haben.
+* Ändern Sie im Abschnitt `<CryptographicKeys>` des obigen XML-Dokuments den Wert für `StorageReferenceId` in die Referenz-ID des Geheimnisses (z.B. „ContosoAppSecret“), das Sie definiert haben.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Hochladen der Erweiterungsdatei zur Überprüfung
 
@@ -222,7 +210,7 @@ Die Änderung der Erweiterungsdatei ist abgeschlossen. Speichern Sie diese Datei
 Nun müssen Sie die Datei der vertrauenden Seite aktualisieren, die die gerade erstellte User Journey initiiert.
 
 1. Erstellen Sie eine Kopie von der Datei „SignUpOrSignIn.xml“ in Ihrem Arbeitsverzeichnis, und benennen Sie sie um (z.B. „SignUpOrSignInWithAAD.xml“).
-1. Öffnen Sie die neue Datei, und ändern Sie das `PolicyId`-Attribut für `<TrustFrameworkPolicy>` in einen eindeutigen Wert. Dies ist der Name Ihrer Richtlinie (z.B. „SignUpOrSignInWithAAD“).
+1. Öffnen Sie die neue Datei, und ändern Sie das `PolicyId`-Attribut für `<TrustFrameworkPolicy>` in einen eindeutigen Wert (z.B. SignUpOrSignInWithAAD). Dies ist der Name Ihrer Richtlinie (d.h. B2C\_1A\_SignUpOrSignInWithAAD).
 1. Ändern Sie das `ReferenceId`-Attribut in `<DefaultUserJourney>`, sodass es der ID der neuen User Journey, die Sie erstellt haben, entspricht (z.B. „SignUpOrSignUsingContoso“).
 1. Speichern Sie die Änderungen, und laden Sie die Datei hoch.
 
@@ -231,7 +219,6 @@ Nun müssen Sie die Datei der vertrauenden Seite aktualisieren, die die gerade e
 Testen Sie die benutzerdefinierte Richtlinie, die Sie soeben hochgeladen haben, indem Sie das zugehörige Blatt öffnen und dann auf „Jetzt ausführen“ klicken. Informationen zum Umgang mit etwaigen auftretenden Fehlern finden Sie unter [Problembehandlung](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
- 
-Senden Sie uns Ihr Feedback an AADB2CPreview@microsoft.com.
 
+Senden Sie uns Ihr Feedback an AADB2CPreview@microsoft.com.
 
