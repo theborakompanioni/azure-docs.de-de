@@ -16,9 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: 213b6b5274ebde8cc460829ff1edc96a66eef994
+ms.contentlocale: de-de
 ms.lasthandoff: 03/25/2017
 
 
@@ -102,7 +103,7 @@ Klicken Sie vor dem Speichern der Datenquelle auf **Testen**.
 Im letzten Abschnitt haben Sie zwei Richtlinien konfiguriert:  „hiveuser1“ verfügt über die Auswahlberechtigung für alle Spalten, „hiveuser2“ über die Auswahlberechtigung für zwei Spalten. In diesem Abschnitt nehmen Sie die Identität der beiden Benutzer an, um Daten in Excel zu importieren.
 
 1. Öffnen Sie eine neue oder bereits vorhandene Arbeitsmappe in Excel.
-2. Klicken Sie auf der Registerkarte **Daten** auf **Aus anderen Quellen**. Klicken Sie dann auf **Aus dem Datenverbindungs-Assistenten**, um den Datenverbindungs-Assistenten**** zu starten.
+2. Klicken Sie auf der Registerkarte **Daten** auf **Aus anderen Quellen**. Klicken Sie dann auf **Aus dem Datenverbindungs-Assistenten**, um den **Datenverbindungs-Assistenten**zu starten.
 
     ![Öffnen des Datenverbindungs-Assistenten][img-hdi-simbahiveodbc.excel.dataconnection]
 3. Wählen Sie als Datenquelle **ODBC DSN** aus, und klicken Sie dann auf **Weiter**.
