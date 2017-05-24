@@ -14,9 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: f703da63c4243c73cf68d3df9953f73d2462ac1c
+ms.contentlocale: de-de
 ms.lasthandoff: 04/06/2017
 
 

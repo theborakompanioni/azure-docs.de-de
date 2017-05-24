@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 305f02bb120a1096c46de94d103a5700dabdc8ba
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 

@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: danlep
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 0fcfcc53641ebdf8a668b353db8eebb3bc64795d
+ms.contentlocale: de-de
 ms.lasthandoff: 03/31/2017
 
 
