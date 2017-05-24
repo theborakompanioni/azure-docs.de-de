@@ -3,7 +3,7 @@ title: Virtuelle Azure-Netzwerke und virtuelle Linux-Computer | Microsoft-Dokume
 description: 'Tutorial: Verwalten von virtuellen Azure-Netzwerken und virtuellen Linux-Computern mit der Azure-Befehlszeilenschnittstelle'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: davidmu1
+author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -13,200 +13,299 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/18/2017
-ms.author: davidmu
+ms.date: 05/10/2017
+ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 1ac628b606a198bb437c02d00467d48462c34334
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: e843e444d2fe32f578c5a887b606db982920a9e0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Verwalten von virtuellen Azure-Netzwerken und virtuellen Linux-Computern mit der Azure-Befehlszeilenschnittstelle
 
-In diesem Tutorial erfahren Sie, wie Sie mehrere virtuelle Computer (VMs) in einem virtuellen Netzwerk erstellen und die Netzwerkverbindung zwischen ihnen konfigurieren. Nach Abschluss des Tutorials kann über das Internet über Port 22 für SSH-Verbindungen und Port 80 für HTTP-Verbindungen auf einen virtuellen Front-End-Computer zugegriffen werden. Ein virtueller Back-End-Computer mit einer MySQL -Datenbank ist isoliert und der Zugriff nur über den virtuellen Front-End-Computer an Port 3306 möglich.
+Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommunikation. Dieses Tutorial enthält ausführliche Informationen zum Bereitstellen von zwei virtuellen Computern sowie zum Konfigurieren von Azure-Netzwerken für diese virtuellen Computer. In den Beispielen in diesem Tutorial wird davon ausgegangen, dass auf den virtuellen Computern eine Webanwendung mit einem Datenbank-Back-End gehostet wird. Eine Anwendung wird im Tutorial jedoch nicht bereitgestellt. In diesem Tutorial lernen Sie Folgendes:
 
-Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
+> [!div class="checklist"]
+> * Bereitstellen eines virtuellen Netzwerks
+> * Erstellen eines Subnetzes in einem virtuellen Netzwerk
+> * Anfügen virtueller Computer an ein Subnetz
+> * Verwalten der öffentlichen IP-Adressen des virtuellen Computers
+> * Sichern des eingehenden Internetdatenverkehrs
+> * Sichern des Datenverkehrs zwischen virtuellen Computern
 
-## <a name="create-vm-and-vnet"></a>Erstellen des virtuellen Computers und des virtuellen Netzwerks
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie zum Ermitteln der CLI-Version `az --version` aus. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
 
-Ein Azure Virtual Network (VNet) ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Bei einem VNet handelt es sich um eine logische Isolation von der dedizierten Azure-Cloud für Ihr Abonnement. Ein VNET umfasst Subnetze, Regeln für die Verbindung mit diesen Subnetzen und Verbindungen von den virtuellen Computern zu den Subnetzen. Mit der Azure-Befehlszeilenschnittstelle können Sie mühelos alle netzwerkbezogenen Ressourcen erstellen, die für die Unterstützung des Zugriffs auf die virtuellen Computer erforderlich sind. 
+## <a name="vm-networking-overview"></a>Übersicht über VM-Netzwerke
 
-Vor der Erstellung anderer Azure-Ressourcen müssen Sie zunächst mit „az group create“ eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *westus* eine Ressourcengruppe mit dem Namen *myRGNetwork*:
+Virtuelle Azure-Netzwerke ermöglichen sichere Netzwerkverbindungen zwischen virtuellen Computern, dem Internet und anderen Azure-Diensten wie Azure SQL-Datenbank. Virtuelle Netzwerke werden in logische Segmente, sogenannte Subnetze, unterteilt. Subnetze dienen zur Steuerung des Netzwerkdatenflusses und als Sicherheitsgrenze. Bei der Bereitstellung eines virtuellen Computers ist in der Regel eine virtuelle Netzwerkschnittstelle enthalten, die an ein Subnetz angefügt ist.
+
+## <a name="deploy-virtual-network"></a>Bereitstellen eines virtuellen Netzwerks
+
+In diesem Tutorial wird ein einzelnes virtuelles Netzwerk mit zwei Subnetzen erstellt: Einem Front-End-Subnetz zum Hosten einer Webanwendung und einem Back-End-Subnetz zum Hosten eines Datenbankservers.
+
+Vor der Erstellung eines virtuellen Netzwerks müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort „eastus“ eine Ressourcengruppe mit dem Namen *myRGNetwork*.
 
 ```azurecli
-az group create --name myRGNetwork --location westus
+az group create --name myRGNetwork --location eastus
 ```
 
-Wenn Sie einen virtuellen Computer mithilfe der Azure-Befehlszeilenschnittstelle erstellen, werden die erforderlichen Netzwerkressourcen automatisch zeitgleich erstellt. Erstellen Sie *myFrontendVM* und die unterstützenden Netzwerkressourcen mit [az vm create](https://docs.microsoft.com/cli/azure/vm#create):
+### <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
+
+Erstellen Sie mit dem Befehl [az network vnet create](/cli/azure/network/vnet#create) ein virtuelles Netzwerk. In diesem Beispiel erhält das Netzwerk den Namen *mvVnet* und das Adresspräfix *10.0.0.0/16*. Zudem wird ein Subnetz mit dem Namen *mySubnetFrontEnd* und dem Präfix *10.0.1.0/24* erstellt. Weiter unten in diesem Tutorial wird eine Verbindung zwischen einem virtuellen Front-End-Computer und diesem Subnetz hergestellt. 
+
+```azurecli
+az network vnet create \
+  --resource-group myRGNetwork \
+  --name myVnet \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name mySubnetFrontEnd \
+  --subnet-prefix 10.0.1.0/24
+```
+
+### <a name="create-subnet"></a>Erstellen eines Subnetzes
+
+Mit dem Befehl [az network vnet subnet create](/cli/azure/network/vnet/subnet#create) wird dem virtuellen Netzwerk ein neues Subnetz hinzugefügt. In diesem Beispiel erhält das Subnetz den Namen *mySubnetBackEnd* und das Adresspräfix *10.0.2.0/24*. Dieses Subnetz wird für alle Back-End-Dienste verwendet.
+
+```azurecli
+az network vnet subnet create \
+  --resource-group myRGNetwork \
+  --vnet-name myVnet \
+  --name mySubnetBackEnd \
+  --address-prefix 10.0.2.0/24
+```
+
+Zu diesem Zeitpunkt wurde ein Netzwerk erstellt und in zwei Subnetze unterteilt: eines für Front-End-Dienste und eines für Back-End-Dienste. Im nächsten Abschnitt werden virtuelle Computer erstellt und mit diesen Subnetzen verbunden.
+
+## <a name="understand-public-ip-address"></a>Grundlegendes zu öffentlichen IP-Adressen
+
+Dank einer öffentlichen IP-Adresse kann über das Internet auf Azure-Ressourcen zugegriffen werden. In diesem Abschnitt des Tutorials wird ein virtueller Computer erstellt, um das Arbeiten mit öffentlichen IP-Adressen zu veranschaulichen.
+
+### <a name="allocation-method"></a>Zuordnungsmethode
+
+Eine öffentliche IP-Adresse kann dynamisch oder statisch zugeordnet werden. Standardmäßig wird die öffentliche IP-Adresse dynamisch zugeordnet. Dynamische IP-Adressen werden freigegeben, wenn die Zuordnung eines virtuellen Computers aufgehoben wird. Dieses Verhalten bewirkt, dass sich die IP-Adresse bei jedem Vorgang ändert, der eine Aufhebung der VM-Zuordnung beinhaltet.
+
+Als Zuordnungsmethode kann die statische Zuordnung festgelegt werden. Dadurch wird sichergestellt, dass die IP-Adresse einem virtuellen Computer zugewiesen bleibt, auch wenn seine Zuordnung aufgehoben ist. Wenn Sie eine statisch zugeordnete IP-Adresse verwenden, kann die IP-Adresse selbst nicht angegeben werden. Stattdessen wird sie aus einem Pool verfügbarer Adressen zugeordnet.
+
+### <a name="dynamic-allocation"></a>Dynamische Zuordnung
+
+Beim Erstellen eines virtuellen Computers mit dem Befehl [az vm create](/cli/azure/vm#create) wird die öffentliche IP-Adresse standardmäßig dynamisch zugeordnet. Im folgenden Beispiel wird ein virtueller Computer mit einer dynamischen IP-Adresse erstellt. 
 
 ```azurecli
 az vm create \
   --resource-group myRGNetwork \
-  --name myFrontendVM \
+  --name myFrontEndVM \
+  --vnet-name myVnet \
+  --subnet mySubnetFrontEnd \
+  --nsg myNSGFrontEnd \
+  --public-ip-address myFrontEndIP \
   --image UbuntuLTS \
   --generate-ssh-keys
 ```
 
-Notieren Sie sich die öffentliche IP-Adresse, nachdem der virtuelle Computer erstellt wurde. Diese Adresse wird in späteren Schritten in diesem Tutorial verwendet:
+### <a name="static-allocation"></a>Statische Zuordnung
 
-```bash
-{
-  "fqdns": "",
-  "id": "/subscriptions/{id}/resourceGroups/myRGNetwork/providers/Microsoft.Compute/virtualMachines/myFrontendVM",
-  "location": "westus",
-  "macAddress": "00-0D-3A-23-9A-49",
-  "powerState": "VM running",
-  "privateIpAddress": "10.0.0.4",
-  "publicIpAddress": "40.68.254.142",
-  "resourceGroup": "myRGNetwork"
-}
-```
+Fügen Sie beim Erstellen eines virtuellen Computers mit dem Befehl [az vm create](/cli/azure/vm#create) das Argument `--public-ip-address-allocation static` ein, um eine statische öffentliche IP-Adresse zuzuweisen. Dieser Vorgang wird in diesem Tutorial nicht veranschaulicht. Im nächsten Abschnitt wird eine dynamisch zugeordnete IP-Adresse jedoch in eine statisch zugeordnete Adresse geändert. 
 
-Folgende Netzwerkressourcen wurden erstellt:
+### <a name="change-allocation-method"></a>Ändern der Zuordnungsmethode
 
-- **myFrontendVMNSG**: Die Netzwerksicherheitsgruppe, die eingehenden Datenverkehr für *myFrontendVM* schützt.
-- **myVMPublicIP**: Die öffentliche IP-Adresse, die den Internetzugriff auf *myFrontendVM* ermöglicht.
-- **myVMVMNic**: Die virtuelle Netzwerkschnittstelle, die die Netzwerkverbindung für *myFrontendVM* bereitstellt.
-- **myVMVNET**: Das virtuelle Netzwerk, mit dem *myFrontendVM* verbunden ist.
+Die Zuordnungsmethode für die IP-Adresse kann mit dem Befehl [az network public-ip update](/cli/azure/network/public-ip#update) geändert werden. In diesem Beispiel wird die IP-Adresszuordnungsmethode des virtuellen Front-End-Computers in statisch geändert.
 
-## <a name="install-web-server"></a>Installieren des Webservers
-
-Erstellen Sie eine SSH-Verbindung mit *myFrontendVM*. Ersetzen Sie die IP-Beispieladresse durch die öffentliche IP-Adresse des virtuellen Computers:
-
-```bash
-ssh 40.68.254.142
-```
-
-Führen Sie die folgenden Befehle zum Installieren von NGINX aus:
-
-```bash
-sudo apt-get -y update && sudo apt-get -y install nginx
-```
-
-Schließen Sie die SSH-Sitzung:
-
-```bash
-exit
-```
-
-## <a name="manage-internet-traffic"></a>Verwalten des Internetdatenverkehrs
-
-Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit einem virtuellen Netzwerk verbunden sind, zugelassen oder abgelehnt wird. Netzwerksicherheitsgruppen können Subnetzen oder einzelnen an virtuelle Computer angefügte NICs zugeordnet werden. Das Öffnen oder Schließen des Zugriffs auf virtuelle Computer über Ports erfolgt mithilfe von NSG-Regeln. Beim Erstellen von *myFrontendVM* wurde der eingehende Port 22 automatisch für SSH-Verbindungen geöffnet.
-
-Öffnen Sie Port 80 mit [az vm open-port](https://docs.microsoft.com/cli/azure/vm#open-port) auf *myFrontendVM*:
+Heben Sie zunächst die Zuordnung des virtuellen Computer auf.
 
 ```azurecli
-az vm open-port --resource-group myRGNetwork --name myFrontendVM --port 80
+az vm deallocate --resource-group myRGNetwork --name myFrontEndVM
 ```
 
-Nun können Sie zur öffentlichen IP-Adresse des virtuellen Computers navigieren und die NGINX-Website anzeigen.
-
-![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png)
-
-## <a name="manage-internal-traffic"></a>Verwalten des internen Datenverkehrs
-
-Die interne Kommunikation von virtuellen Computern kann auch über eine Netzwerksicherheitsgruppe konfiguriert werden. In diesem Abschnitt erfahren Sie, wie ein weiteres Subnetz im Netzwerk erstellt und dem Subnetz eine Netzwerksicherheitsgruppe zugewiesen wird, sodass eine Verbindung von *myFrontendVM* mit *myBackendVM* über Port 3306 zulässig ist. Das Subnetz wird dann bei der Erstellung dem virtuellen Computer zugewiesen.
-
-Fügen Sie mit [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) die Netzwerksicherheitsgruppe *myBackendNSG* hinzu. 
+Verwenden Sie den Befehl [az network public-ip update](/azure/network/public-ip#update), um die Zuordnungsmethode zu aktualisieren. In diesem Fall wird für `--allocaion-metod` die Methode *static* festgelegt.
 
 ```azurecli
-az network nsg create \
- --resource-group myRGNetwork \
- --name myBackendNSG
+az network public-ip update --resource-group myRGNetwork --name myFrontEndIP --allocation-method static
 ```
 
-Richten Sie einen Port für die Kommunikation zwischen *myFrontendVM* und *myBackendVM* im virtuellen Netzwerk ein. Fügen Sie mit [az network rule create](/cli/azure/network/rule#create) eine NSG-Regel hinzu, die Datenverkehr zu *myBackendSubnet* nur aus *myVMSubnet* zulässt:
+Starten Sie den virtuellen Computer.
 
 ```azurecli
-az network nsg rule create \
- --resource-group myRGNetwork \
- --nsg-name myBackendNSG \
- --name com-rule \
- --access Allow \
- --protocol Tcp \
- --direction Inbound \
- --priority 100 \
- --source-address-prefix 10.0.0.0/24 \
- --source-port-range "*" \
- --destination-address-prefix "*" \
- --destination-port-range 3306
+az vm start --resource-group myRGNetwork --name myFrontEndVM --no-wait
 ```
 
-## <a name="add-back-end-subnet"></a>Hinzufügen des Back-End-Subnetzes
+### <a name="no-public-ip-address"></a>Keine öffentliche IP-Adresse
 
-Ein Subnetz ist eine untergeordnete Ressource eines VNet und hilft, die Segmente von Adressräumen innerhalb eines CIDR-Blocks mithilfe von IP-Adressenpräfixen zu definieren. NICs können zu Subnetzen hinzugefügt und mit virtuellen Computern verbunden werden, sodass sie Konnektivität für verschiedene Workloads bereitstellen.
+Häufig muss ein virtueller Computer nicht über das Internet zugänglich sein. Verwenden Sie zum Erstellen eines virtuellen Computers ohne öffentliche IP-Adresse das Argument `--public-ip-address ""` mit einem leeren Satz doppelter Anführungszeichen. Diese Konfiguration wird weiter unten in diesem Tutorial veranschaulicht.
 
-Fügen Sie *myBackEndSubnet* mit [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#create) zu *myFrontendVMVNet* hinzu:
+## <a name="secure-network-traffic"></a>Netzwerkdatenverkehr absichern
+
+Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken (VNet) verbunden sind, zugelassen oder abgelehnt wird. Netzwerksicherheitsgruppen können Subnetzen oder einzelnen Netzwerkschnittstellen zugeordnet werden. Wenn eine Netzwerksicherheitsgruppe einer Netzwerkschnittstelle zugewiesen ist, gilt sie nur für den zugeordneten virtuellen Computer. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die Regeln für alle Ressourcen, die mit dem Subnetz verbunden sind. 
+
+### <a name="network-security-group-rules"></a>Netzwerksicherheitsgruppen-Regeln
+
+NSG-Regeln definieren Netzwerkports, über die Datenverkehr zugelassen oder verweigert wird. Die Regeln können Quell- und Ziel-IP-Adressbereiche enthalten, um Datenverkehr zwischen bestimmten Systemen oder Subnetzen zu steuern. NSG-Regeln enthalten darüber hinaus eine Priorität (zwischen 1 und 4.096). Regeln werden gemäß ihrer Priorität ausgewertet. Eine Regel mit einer Priorität von 100 wird vor einer Regel der Priorität 200 ausgewertet.
+
+Alle NSGs enthalten eine Gruppe von Standardregeln. Die Standardregeln können zwar nicht gelöscht werden, haben aber niedrigste Priorität und können somit durch selbst erstellte Regeln außer Kraft gesetzt werden.
+
+- **Virtuelles Netzwerk:** Datenverkehr wird aus einem bzw. in ein virtuelles Netzwerk in ein- und ausgehender Richtung zugelassen.
+- **Internet:** Ausgehender Datenverkehr wird zugelassen, aber eingehender Datenverkehr wird blockiert.
+- **Lastenausgleich:** Lassen Sie für den Lastenausgleich (Load Balancer) von Azure die Überprüfung der Integrität der virtuellen Computer und der Rolleninstanzen zu. Sie können diese Regel außer Kraft setzen, wenn Sie keine Gruppe mit Lastenausgleich verwenden.
+
+### <a name="create-network-security-groups"></a>Erstellen von Netzwerksicherheitsgruppen
+
+Eine Netzwerksicherheitsgruppe kann mithilfe des Befehls [az vm create](/cli/azure/vm#create) zum gleichen Zeitpunkt erstellt werden wie ein virtueller Computer. Dabei wird die NSG der Netzwerkschnittstelle des virtuellen Computers zugewiesen, und zum Zulassen des Datenverkehrs an Port *22* von jedem Ziel wird automatisch eine NSG-Regel erstellt. Weiter oben in diesem Tutorial wurde die Front-End-NSG automatisch mit dem virtuellen Front-End-Computer erstellt. Für Port 22 wurde ebenfalls automatisch eine NSG-Regel erstellt. 
+
+In einigen Fällen kann es hilfreich sein, vorab eine Netzwerksicherheitsgruppe zu erstellen, beispielsweise wenn keine SSH-Standardregeln erstellt werden sollen oder wenn die Netzwerksicherheitsgruppe an ein Subnetz angefügt werden soll. 
+
+Erstellen Sie mit dem Befehl [az network nsg create](/cli/azure/network/nsg#create) eine Netzwerksicherheitsgruppe.
 
 ```azurecli
-az network vnet subnet create \
- --address-prefix 10.0.1.0/24 \
- --name myBackendSubnet \
- --resource-group myRGNetwork \
- --vnet-name myFrontendVMVNET \
- --network-security-group myBackendNSG
+az network nsg create --resource-group myRGNetwork --name myNSGBackEnd
 ```
 
-## <a name="create-back-end-vm"></a>Erstellen des virtuellen Back-End-Computers
+Die NSG wird keiner Netzwerkschnittstelle, sondern einem Subnetz zugewiesen. In dieser Konfiguration erbt jeder an das Subnetz angefügte virtuelle Computer die NSG-Regeln.
 
-Erstellen Sie *myBackendVM* mit [az vm create](/cli/azure/vm#create) unter Verwendung von *myBackendSubnet*:
+Aktualisieren Sie das vorhandene Subnetz namens *mySubnetBackEnd* mit der neuen Netzwerksicherheitsgruppe.
+
+```azurecli
+az network vnet subnet update \
+  --resource-group myRGNetwork \
+  --vnet-name myVnet \
+  --name mySubnetBackEnd \
+  --network-security-group myNSGBackEnd
+```
+
+Erstellen Sie nun einen virtuellen Computer, der mit *mySubnetBackEnd* verbunden ist. Beachten Sie, dass für das Argument `--nsg` als Wert leere doppelte Anführungszeichen angegeben sind. Eine NSG muss nicht mit dem virtuellen Computer erstellt werden. Der virtuelle Computer ist mit dem Back-End-Subnetz verbunden, das durch die vorab erstellte Back-End-NSG geschützt wird. Diese NSG gilt für den virtuellen Computer. Beachten Sie darüber hinaus, dass für das Argument `--public-ip-address` als Wert leere doppelte Anführungszeichen angegeben sind. Diese Konfiguration erstellt einen virtuellen Computer ohne öffentliche IP-Adresse. 
 
 ```azurecli
 az vm create \
   --resource-group myRGNetwork \
-  --name myBackendVM \
+  --name myBackEndVM \
+  --vnet-name myVnet \
+  --subnet mySubnetBackEnd \
+  --public-ip-address "" \
+  --nsg "" \
   --image UbuntuLTS \
-  --generate-ssh-keys \
-  --subnet myBackendSubnet \
-  --vnet-name myFrontendVMVNET \
-  --public-ip-address ""
-
+  --generate-ssh-keys
 ```
 
-## <a name="install-database"></a>Installieren der Datenbank
+### <a name="secure-incoming-traffic"></a>Sichern des eingehenden Datenverkehrs
 
-In diesem Tutorial kopieren Sie den privaten Schlüssel von Ihrem virtuellen Entwicklungscomputer in *myFrontendVM*. In einer Produktionsumgebung wird empfohlen, anstelle der Verwendung von „--generate-ssh-keys“ beim Erstellen der virtuellen Computer spezifische Schlüssel für die Verwendung auf den virtuellen Computern zu erstellen. 
+Als der virtuelle Fron-End-Computer erstellt wurde, wurde eine NSG-Regel generiert, um eingehenden Datenverkehr an Port 22 zuzulassen. Diese Regel lässt SSH-Verbindungen mit dem virtuellen Computer zu. In diesem Beispiel sollte der Datenverkehr auch an Port *80* zugelassen werden. Diese Konfiguration ermöglicht auf dem virtuellen Computer den Zugriff auf eine Webanwendung.
 
-Auf den virtuellen Back-End-Computer soll kein öffentlicher Zugriff erfolgen. In diesem Abschnitt erfahren Sie, wie Sie sich über SSH bei *myFrontendVM* anmelden und dann über SSH über *myFrontendVM* bei *myBackendVM* anmelden.
+Erstellen Sie mit dem Befehl [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Regel für Port *80*.
 
-Ersetzen Sie die IP-Beispieladresse durch die öffentliche IP-Adresse von *myFrontendVM*:
-
-```bash
-scp ~/.ssh/id_rsa 40.68.254.142:~/.ssh/id_rsa
+```azurecli
+az network nsg rule create \
+  --resource-group myRGNetwork \
+  --nsg-name myNSGFrontEnd \
+  --name http \
+  --access allow \
+  --protocol Tcp \
+  --direction Inbound \
+  --priority 200 \
+  --source-address-prefix "*" \
+  --source-port-range "*" \
+  --destination-address-prefix "*" \
+  --destination-port-range 80
 ```
 
-Erstellen Sie eine SSH-Verbindung mit *myFrontendVM*. Ersetzen Sie die IP-Beispieladresse durch die öffentliche IP-Adresse von *myFrontendVM*:
+Auf den virtuellen Front-End-Computer kann nun an Port *22* und Port *80* zugegriffen werden. Der gesamte andere eingehende Datenverkehr wird an der Netzwerksicherheitsgruppe blockiert. Es ist möglicherweise hilfreich, die NSG-Regelkonfigurationen visuell darzustellen. Geben Sie die NSG-Regelkonfiguration mit dem Befehl [az network rule list](/cli/azure/network/nsg/rule#list) zurück. 
 
-```bash
-ssh 40.68.254.142
+```azurecli
+az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGFrontEnd --output table
 ```
 
-Stellen Sie auf *myFrontendVM* eine Verbindung mit *myBackendVM* her:
+Ausgabe:
 
-```bash
-ssh myBackendVM
+```azurecli
+Access    DestinationAddressPrefix      DestinationPortRange  Direction    Name                 Priority  Protocol    ProvisioningState    ResourceGroup    SourceAddressPrefix    SourcePortRange
+--------  --------------------------  ----------------------  -----------  -----------------  ----------  ----------  -------------------  ---------------  ---------------------  -----------------
+Allow     *                                               22  Inbound      default-allow-ssh        1000  Tcp         Succeeded            myRGNetwork      *                      *
+Allow     *                                               80  Inbound      http                      200  Tcp         Succeeded            myRGNetwork      *                      *
 ```
 
-Führen Sie den folgenden Befehl aus, um MySQL zu installieren:
+### <a name="secure-vm-to-vm-traffic"></a>Sichern des Datenverkehrs zwischen virtuellen Computern
 
-```bash
-sudo apt-get -y install mysql-server
+Netzwerksicherheitsgruppen-Regeln können auch zwischen virtuellen Computern gelten. In diesem Beispiel muss der virtuelle Front-End-Computer an Port *22* und *3306* mit dem virtuellen Back-End-Computer kommunizieren. Diese Konfiguration lässt SSH-Verbindungen vom virtuellen Front-End-Computer sowie die Kommunikation zwischen einer Anwendung auf dem virtuellen Front-End-Computer und einer Back-End-MySQL-Datenbank zu. Der gesamte andere Datenverkehr sollte zwischen dem virtuellen Front-End-Computer und dem virtuellen Back-End-Computer blockiert werden.
+
+Erstellen Sie mit dem Befehl [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Regel für Port 22. Beachten Sie, dass das Argument `--source-address-prefix` den Wert *10.0.1.0/24* angibt. Diese Konfiguration sorgt dafür, dass nur Datenverkehr vom Front-End-Subnetz die Netzwerksicherheitsgruppe passieren kann.
+
+```azurecli
+az network nsg rule create \
+  --resource-group myRGNetwork \
+  --nsg-name myNSGBackEnd \
+  --name SSH \
+  --access Allow \
+  --protocol Tcp \
+  --direction Inbound \
+  --priority 100 \
+  --source-address-prefix 10.0.1.0/24 \
+  --source-port-range "*" \
+  --destination-address-prefix "*" \
+  --destination-port-range "22"
 ```
 
-Befolgen Sie die Anweisungen zum Einrichten von MySQL.
+Fügen Sie nun eine Regel für MySQL-Datenverkehr an Port 3306 hinzu.
 
-Schließen Sie die SSH-Sitzungen:
-
-```bash
-exit
+```azurecli
+az network nsg rule create \
+  --resource-group myRGNetwork \
+  --nsg-name myNSGBackEnd \
+  --name MySQL \
+  --access Allow \
+  --protocol Tcp \
+  --direction Inbound \
+  --priority 200 \
+  --source-address-prefix 10.0.1.0/24 \
+  --source-port-range "*" \
+  --destination-address-prefix "*" \
+  --destination-port-range "3306"
 ```
 
-MySQL wird installiert, um zu zeigen, wie eine Anwendung auf *myBackendVM* installiert werden kann, in diesem Tutorial jedoch nicht verwendet.
+Da Netzwerksicherheitsgruppen eine Standardregel zum Zulassen des gesamten Datenverkehrs zwischen virtuellen Computern im gleichen VNET enthalten, kann schließlich eine Regel für die Netzwerksicherheitsgruppen des Back-Ends erstellt werden, um den gesamten Datenverkehr zu blockieren. Beachten Sie dabei, dass `--priority` den Wert *300* erhält. Dieser Wert ist niedriger als die NSG- und die MySQL-Regeln. Mit dieser Konfiguration wird sichergestellt, dass SSH- und MySQL-Datenverkehr weiterhin die Netzwerksicherheitsgruppe passieren kann.
+
+```azurecli
+az network nsg rule create \
+  --resource-group myRGNetwork \
+  --nsg-name myNSGBackEnd \
+  --name denyAll \
+  --access Deny \
+  --protocol Tcp \
+  --direction Inbound \
+  --priority 300 \
+  --source-address-prefix "*" \
+  --source-port-range "*" \
+  --destination-address-prefix "*" \
+  --destination-port-range "*"
+```
+
+Vom Front-End-Subnetz kann nun an Port *22* und Port *3306* auf den virtuellen Back-End-Computer zugegriffen werden. Der gesamte andere eingehende Datenverkehr wird an der Netzwerksicherheitsgruppe blockiert. Es ist möglicherweise hilfreich, die NSG-Regelkonfigurationen visuell darzustellen. Geben Sie die NSG-Regelkonfiguration mit dem Befehl [az network rule list](/cli/azure/network/nsg/rule#list) zurück. 
+
+```azurecli
+az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGBackEnd --output table
+```
+
+Ausgabe:
+
+```azurecli
+Access    DestinationAddressPrefix    DestinationPortRange    Direction    Name       Priority  Protocol    ProvisioningState    ResourceGroup    SourceAddressPrefix    SourcePortRange
+--------  --------------------------  ----------------------  -----------  -------  ----------  ----------  -------------------  ---------------  ---------------------  -----------------
+Allow     *                           22                      Inbound      SSH             100  Tcp         Succeeded            myRGNetwork      10.0.1.0/24            *
+Allow     *                           3306                    Inbound      MySQL           200  Tcp         Succeeded            myRGNetwork      10.0.1.0/24            *
+Deny      *                           *                       Inbound      denyAll         300  Tcp         Succeeded            myRGNetwork      *                      *
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zum Erstellen und Schützen von Azure-Netzwerken in Bezug auf virtuelle Computer erhalten. Im nächsten Tutorial erfahren Sie mehr über das Überwachen der VM-Sicherheit mit Azure Security Center.
+In diesem Tutorial haben Sie Azure-Netzwerke in Bezug auf virtuelle Computer erstellt und erhalten. Es wurde Folgendes vermittelt:
 
-[Verwalten der Sicherheit virtueller Computer](./tutorial-azure-security.md)
+> [!div class="checklist"]
+> * Bereitstellen eines virtuellen Netzwerks
+> * Erstellen eines Subnetzes in einem virtuellen Netzwerk
+> * Anfügen virtueller Computer an ein Subnetz
+> * Verwalten der öffentlichen IP-Adressen des virtuellen Computers
+> * Sichern des eingehenden Internetdatenverkehrs
+> * Sichern des Datenverkehrs zwischen virtuellen Computern
+
+Im nächsten Tutorial erhalten Sie Informationen zum Sichern von Daten auf virtuellen Computern mit Azure Backup. 
+
+> [!div class="nextstepaction"]
+> [Back up Linux virtual machines in Azure](./tutorial-backup-vms.md) (Sichern virtueller Linux-Computer in Azure)
