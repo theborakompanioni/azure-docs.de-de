@@ -57,7 +57,8 @@
     href: azure-vm-network-overview.md
   - name: VM-Skalierungsgruppen
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-  - name: Instanzmetadatendienst 
+  - name: Instanzmetadatendienst
+ 
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: Container
     href: containers.md
@@ -170,10 +171,7 @@
       href: update-agent.md
     - name: Sichern mit Recovery Services
       href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: >-
-        Verknüpfen eines virtuellen RedHat-Computers mit einem Azure Active
-        Directory-Domänendienst
-
+    - name: Verknüpfen eines virtuellen RedHat-Computers mit einem Azure Active Directory-Domänendienst
       href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
   - name: Verbinden mit SSH
     items:
@@ -184,10 +182,7 @@
         href: create-ssh-keys-detailed.md
     - name: Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer
       href: ssh-from-windows.md
-    - name: >-
-        Verwenden von Remotedesktop zum Herstellen einer Verbindung mit einem
-        virtuellen Linux-Computer
-
+    - name: Verwenden von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer
       href: use-remote-desktop.md
   - name: Verwalten von VM-Images
     items:
@@ -244,19 +239,13 @@
     items:
     - name: Erstellen virtueller Netzwerke
       href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: >-
-        Bereitstellen eines virtuellen Computers in einem vorhandenen virtuellen
-        Netzwerk
-
+    - name: Bereitstellen eines virtuellen Computers in einem vorhandenen virtuellen Netzwerk
       items:
       - name: Azure-Befehlszeilenschnittstelle
         href: deploy-linux-vm-into-existing-vnet-using-cli.md
       - name: Azure-Portal
         href: deploy-linux-vm-into-existing-vnet-using-portal.md
-    - name: >-
-        Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten
-        (NICs)
-
+    - name: Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)
       href: multiple-nics.md
     - name: Erstellen einer statischen öffentlichen IP-Adresse
       href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
@@ -290,10 +279,7 @@
     items:
     - name: Deaktivieren von SSH-Kennwörtern durch konfigurieren von SSHD
       href: mac-disable-ssh-password-usage.md
-    - name: >-
-        Zurücksetzen des SSH-Zugriffs, Verwalten von Benutzern und Überprüfen von
-        Datenträgern
-
+    - name: 'Zurücksetzen des SSH-Zugriffs, Verwalten von Benutzern und Überprüfen von Datenträgern'
       href: using-vmaccess-extension.md
     - name: Verwenden von Stammberechtigungen
       href: use-root-privileges.md
