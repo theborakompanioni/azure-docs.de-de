@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7729890157900d0211b3a7ec05096ca315018875
 ms.openlocfilehash: 23d79fb83c1c4b103407c001dcafb8b1f3cfa5a7
+ms.contentlocale: de-de
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -98,10 +100,5 @@ Gehen Sie wie folgt vor, um eine neue Zuordnung hochzuladen, die eine vorhandene
 * [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
 * [Weitere Informationen zu Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")  
 * [Weitere Informationen zu Transformationen](logic-apps-enterprise-integration-transform.md "Informationen zu Unternehmensintegrationstransformationen")  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

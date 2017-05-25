@@ -3,7 +3,7 @@ title: Referenz zur Azure Log Analytics-Suche | Microsoft-Dokumentation
 description: "Die Referenz zur Log Analytics-Suche enthält eine Beschreibung der Suchsprache und die allgemeinen Optionen zur Abfragesyntax, die Sie beim Suchen von Daten und Filtern von Ausdrücken verwenden können, um Ihre Suche einzugrenzen."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: bwren
 manager: carmonm
 editor: 
 ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
-ms.author: banders
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
@@ -613,7 +613,7 @@ Dieses Beispiel gibt ein Ereignis (das letzte Ereignis) pro EventID-Element zur�
 
 ### <a name="join"></a>Join
 Verknüpft die Ergebnisse zweier Abfragen zu einem einzelnen Resultset.  Unterstützt mehrere Join-Typen:
-  
+
 | Join-Typ | Beschreibung |
 |:--|:--|
 | Innerer Join | Gibt nur Datensätze mit einem übereinstimmenden Wert in beiden Abfragen zurück. |

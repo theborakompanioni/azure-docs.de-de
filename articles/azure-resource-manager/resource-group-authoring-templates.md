@@ -284,7 +284,10 @@ Sie definieren Ressourcen mit der folgenden Struktur:
       "type": "<resource-provider-namespace/resource-type-name>",
       "name": "<name-of-the-resource>",
       "location": "<location-of-resource>",
-      "tags": "<name-value-pairs-for-resource-tagging>",
+      "tags": {
+          "<tag-name1>": "<tag-value1>",
+          "<tag-name2>": "<tag-value2>"
+      },
       "comments": "<your-reference-notes>",
       "dependsOn": [
           "<array-of-related-resource-names>"

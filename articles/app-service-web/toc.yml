@@ -141,9 +141,9 @@
     href: web-sites-deploy.md
     items:
     - name: Bereitstellen über FTP
-      href: app-service-deploy-content-sync.md
+      href: app-service-deploy-ftp.md
     - name: Bereitstellen über Cloudsynchronisierung
-      href: web-sites-deploy.md
+      href: app-service-deploy-content-sync.md
     - name: Kontinuierliche Bereitstellung
       href: app-service-continuous-deployment.md
     - name: Bereitstellen in der Stagingumgebung

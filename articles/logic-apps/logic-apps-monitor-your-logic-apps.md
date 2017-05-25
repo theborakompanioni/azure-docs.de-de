@@ -12,17 +12,17 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: jehollan
 ms.custom: H1Hack27Feb2017
+ms.date: 10/18/2016
+ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: d6840be7afc05d8d563215e370c59cf41a206e4f
 ms.contentlocale: de-de
 ms.lasthandoff: 03/01/2017
 
-
 ---
+
 # <a name="check-the-performance-and-start-diagnostic-logging-and-alerts-of-your-workflows-in-logic-apps"></a>Überprüfen der Leistung und Starten von Diagnoseprotokollen und Warnungen für Ihre Workflows in Logic Apps
 Nach dem [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) können Sie den vollständigen Verlauf ihrer Ausführung im Azure-Portal einsehen.  Sie können auch Dienste wie Azure-Diagnose und Azure-Warnungen einrichten, um Ereignisse in Echtzeit zu überwachen und in bestimmten Situationen benachrichtigt zu werden (beispielsweise, wenn innerhalb einer Stunde mehr als fünf Ausführungen nicht erfolgreich waren).
 
