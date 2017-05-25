@@ -13,33 +13,40 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 7a6f255c64a584e29801aacb40c79462751fe535
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: e22fa4ed45ffaed1a05292e9b86d5cebc0079117
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
-In diesem Tutorial werden grundlegende Vorgänge bei der Erstellung von virtuellen Azure-Computern behandelt. Hierzu zählen unter anderem das Auswählen einer VM-Größe, das Auswählen eines VM-Images und das Bereitstellen eines virtuellen Computers. Des Weiteren werden in diesem Tutorial grundlegende Verwaltungsvorgänge wie etwa das Verwalten des Zustands sowie das Löschen und das Ändern der Größe eines virtuellen Computers beschrieben.
+Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible Computerumgebung. In diesem Tutorial werden grundlegende Vorgänge bei der Bereitstellung von virtuellen Azure-Computern behandelt, z.B. Auswählen einer VM-Größe, Auswählen eines VM-Images und Bereitstellen eines virtuellen Computers. Folgendes wird vermittelt:
 
-Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
+> [!div class="checklist"]
+> * Erstellen eines virtuellen Computers und Herstellen einer Verbindung mit ihm
+> * Auswählen und Verwenden von VM-Images
+> * Anzeigen und Verwenden bestimmter VM-Größen
+> * Ändern der Größe eines virtuellen Computers
+> * Anzeigen und Verstehen des Status von virtuellen Computern
+
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
 Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#create) eine Ressourcengruppe. 
 
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *westus* erstellt. 
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus* erstellt. 
 
 ```azurecli
-az group create --name myResourceGroupVM --location westus
+az group create --name myResourceGroupVM --location eastus
 ```
 
-Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers angegeben, was im Laufe dieses Tutorials veranschaulicht wird.
+Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers angegeben und ist im gesamten Tutorial zu sehen.
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
@@ -57,7 +64,7 @@ Nach der Erstellung des virtuellen Computers gibt die Azure-Befehlszeilenschnitt
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westus",
+  "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
@@ -139,11 +146,11 @@ Die Größe eines virtuellen Computers bestimmt die Menge an Computeressourcen (
 
 ### <a name="vm-sizes"></a>VM-Größen
 
-In der folgenden Tabelle sind Größen nach Anwendungsfällen kategorisiert.  
+In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.  
 
 | Typ                     | Größen           |    Beschreibung       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Allgemeiner Zweck](sizes-general.md)         |DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
+| [Allgemeiner Zweck](sizes-general.md)         |DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
 | [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md)    | GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbanken, mittlere bis große Caches und In-Memory-Analysen.                 |
 | [Speicheroptimiert](../virtual-machines-windows-sizes-storage.md)      | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
@@ -156,7 +163,7 @@ In der folgenden Tabelle sind Größen nach Anwendungsfällen kategorisiert.
 Eine Liste mit den verfügbaren VM-Größen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm#list-sizes). 
 
 ```azurecli
-az vm list-sizes --location westus --output table
+az vm list-sizes --location eastus --output table
 ```
 
 Hier sehen Sie einen Teil der Ausgabe:
@@ -297,6 +304,17 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zur grundlegenden Erstellung und Verwaltung von virtuellen Computern erhalten. Im nächsten Tutorial erhalten Sie Informationen zu VM-Datenträgern.  
+In diesem Tutorial haben Sie Informationen zur grundlegenden Erstellung und Verwaltung von virtuellen Computern erhalten, darunter:
 
-[Erstellen und Verwalten von VM-Datenträgern](./tutorial-manage-disks.md)
+> [!div class="checklist"]
+> * Erstellen eines virtuellen Computers und Herstellen einer Verbindung mit ihm
+> * Auswählen und Verwenden von VM-Images
+> * Anzeigen und Verwenden bestimmter VM-Größen
+> * Ändern der Größe eines virtuellen Computers
+> * Anzeigen und Verstehen des Status von virtuellen Computern
+
+Im nächsten Tutorial erhalten Sie Informationen zu VM-Datenträgern.  
+
+> [!div class="nextstepaction"]
+> [Erstellen und Verwalten von VM-Datenträgern](./tutorial-manage-disks.md)
+

@@ -15,17 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
-ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
-ms.lasthandoff: 01/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: de5e1732dab570b80692efcdd08e4ed2d8c98800
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover 
 
 > [!NOTE]
-> [Die aktive Georeplikation](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar.
+> Die [aktive Georeplikation](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar.
 >  
 
 ## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>Übersicht über die Authentifizierungsanforderungen für die Notfallwiederherstellung
@@ -101,7 +102,7 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Verwalten von Datenbankzugriff und Anmeldungen finden Sie unter [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit](sql-database-manage-logins.md).
 * Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
-* Informationen zur Verwendung und Konfiguration der aktiven Georeplikation finden Sie unter [aktiven Georeplikation](sql-database-geo-replication-overview.md)
+* Informationen zur Verwendung und Konfiguration der aktiven Georeplikation finden Sie unter [aktive Georeplikation](sql-database-geo-replication-overview.md)
 * Informationen zur Verwendung der Geowiederherstellung finden Sie unter [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore)
 
 

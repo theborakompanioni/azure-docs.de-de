@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9093bf30a67fd762b237faa61071137fd83d048f
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 540cd10066e055e2dc132445b9adba5a4112d63a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/16/2017
 
 ---
 
@@ -35,11 +35,14 @@ Beim ersten Start fragt Azure Cloud Shell nach Ihrem Abonnement, um ein LRS-Spei
 Die Dateifreigabe wird als `clouddrive` in Ihrem $Home-Verzeichnis eingebunden. Die Dateifreigabe wird auch zum Speichern eines 5 GB großen Images verwendet, das für Sie erstellt wird und Ihr $Home-Verzeichnis automatisch aktualisiert und beibehält. Dies ist ein einmaliger Vorgang, die Einbindung erfolgt für nachfolgende Sitzungen automatisch.
 
 ### <a name="cloud-shell-persists-files-with-both-methods-below"></a>Cloud Shell verwendet die beiden unten stehenden Methoden zum Beibehalten von Dateien:
-1. Es wird ein Datenträgerimage Ihres $Home-Verzeichnisses erstellt, um Dateien in $Home beizubehalten. Dieses Datenträgerimage wird in der von Ihnen angegebenen Dateifreigabe als `<User>.img` unter `fileshare.storage.windows.net/fileshare/.cloudconsole/<User>.img` gespeichert.
+1. Es wird ein Datenträgerimage Ihres $Home-Verzeichnisses erstellt, um Dateien in $Home beizubehalten. Dieses Datenträgerimage wird in der von Ihnen angegebenen Dateifreigabe als `acc_<User>.img` unter `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` gespeichert.
 
 2. Die angegebene Dateifreigabe wird zur direkten Interaktion mit der Freigabe als `clouddrive` in Ihr $Home-Verzeichnis eingebunden. 
 `/Home/<User>/clouddrive` wird `fileshare.storage.windows.net/fileshare` zugeordnet.
  
+> [!Note]
+> Alle Dateien in Ihrem $Home-Verzeichnis, wie etwa SSH-Schlüssel, werden beständig in Ihrem Datenträgerimage gespeichert, das in der eingebundenen Dateifreigabe gespeichert ist. Wenden Sie beim beständigen Speichern von Informationen in Ihrem $Home-Verzeichnis und der eingebundenen Dateifreigabe bewährte Methoden an.
+
 ## <a name="using-clouddrive"></a>Verwenden des clouddrive-Befehls
 Benutzer können in Cloud Shell einen Befehl namens `clouddrive` ausführen, der die manuelle Aktualisierung der in Cloud Shell eingebundenen Dateifreigabe ermöglicht.
 ![](media/clouddrive-h.png)
@@ -110,26 +113,23 @@ shm                                                    65536       0      65536 
 justin@Azure:~$
 ```
 
-## <a name="upload-or-download-local-files"></a>Hochladen oder Herunterladen von lokalen Dateien
-Verwenden Sie das Azure-Portal, um die Übertragung lokaler Dateien in die oder aus der Dateifreigabe zu verwalten.
-Die Aktualisierung der Dateien in Cloud Shell wird auf der Benutzeroberfläche der Dateifreigabe reflektiert, wenn das Blatt aktualisiert wird.
+## <a name="transfer-local-files-to-cloud-shell"></a>Übertragen Sie lokale Dateien auf Cloud Shell
+Das `clouddrive`-Verzeichnis wird mit dem Blatt „Storage“ im Azure-Portal synchronisiert. Verwenden Sie dieses, um lokale Dateien in Ihre oder aus Ihrer Dateifreigabe zu übertragen. Die Aktualisierung der Dateien in Cloud Shell wird auf der Benutzeroberfläche der Dateifreigabe reflektiert, wenn das Blatt aktualisiert wird.
 
-1. Navigieren Sie zur eingebundenen Dateifreigabe ![](media/touch-txt-storage.png).
+### <a name="download-files"></a>Herunterladen von Dateien
+![](media/download.gif)
+1. Navigieren Sie zur eingebundenen Dateifreigabe
 2. Wählen Sie im Portal die Zieldatei aus.
-3. Klicken Sie auf „Herunterladen“ ![](media/download-storage.png)
+3. Klicken Sie auf „Herunterladen“
 
-Wenn Sie eine Datei herunterladen müssen, die sich außerhalb von `clouddrive` befindet, gehen Sie folgendermaßen vor:
-1. Kopieren Sie die Datei nach `/<User>/clouddrive`. <br>
-2. Führen Sie die [vorherigen Schritte](#upload-or-download-local-files) aus. <br>
+### <a name="upload-files"></a>Hochladen von Dateien
+![](media/upload.gif)
+1. Navigieren Sie zur eingebundenen Dateifreigabe
+2. Wählen Sie „Hochladen“ aus
+3. Wählen Sie die Datei aus, die Sie hochladen möchten
+4. Bestätigen Sie den Upload
 
-## <a name="cloud-shell-tagging"></a>Tags in Cloud Shell
-Cloud Shell fügt eingebundenen Speicherkonten ein Tag in folgendem Format hinzu: <br>
-
-| Schlüssel | Wert |
-|:-------------:|:-------------:|
-|cloud-console-files-for-user@domain.com|fileshareName|
-
-Verwenden Sie diese Tags, um anzuzeigen, welche Benutzer bestimmten Dateifreigaben zugeordnet sind und wo sich bestimmte $Home-Images befinden.
+Sie sollten die Datei jetzt zugreifbar in Ihrem clouddrive-Verzeichnis in Cloud Shell sehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Cloud Shell – Schnellstart](quickstart.md) 

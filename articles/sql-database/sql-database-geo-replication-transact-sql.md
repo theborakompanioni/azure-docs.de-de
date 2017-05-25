@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL | Microsoft Docs"
+title: "Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL | Microsoft-Dokumentation"
 description: "Konfigurieren der Georeplikation für Azure SQL-Datenbank mithilfe von Transact-SQL"
 services: sql-database
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 04/14/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1005f776ae85a7fc878315225c45f2270887771f
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: dad35a2b3beb2b07d5b12afb8a04ba48f8b8ef7e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -30,17 +30,19 @@ Dieser Artikel beschreibt, wie Sie die aktive Georeplikation für eine Azure SQL
 Informationen zum Initiieren eines Failovers mit Transact-SQL finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit Transact-SQL](sql-database-geo-replication-failover-transact-sql.md).
 
 > [!NOTE]
-> Bei Verwendung der aktiven Georeplikation (lesbare sekundäre Datenbanken) für die Wiederherstellung im Notfall sollten Sie eine Failovergruppe für alle Datenbanken in einer Anwendung konfigurieren, um automatisches und transparentes Failover zu ermöglichen. Dieses Feature befindet sich in der Vorschauphase. Weitere Informationen finden Sie unter [Übersicht: Aktive Georeplikation in Azure SQL-Datenbank](sql-database-geo-replication-overview.md).
+> Bei Verwendung der aktiven Georeplikation (lesbare sekundäre Datenbanken) für die Wiederherstellung im Notfall sollten Sie eine Failovergruppe für alle Datenbanken in einer Anwendung konfigurieren, um automatisches und transparentes Failover zu ermöglichen. Dieses Feature befindet sich in der Vorschauphase. Weitere Informationen finden Sie unter [Übersicht: Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md).
 > 
 > 
 
 Wenn Sie die aktive Georeplikation mithilfe von Transact-SQL konfigurieren möchten, benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement.
-* Einen logischen Azure SQL-Datenbankserver (<MyLocalServer>) und eine Azure SQL-Datenbank (<MyDB>): Die primäre Datenbank, die Sie replizieren möchten.
-* Ein oder mehrere logische Azure SQL-Datenbankserver <MySecondaryServer(n)>: Die logischen Server, die als Partnerserver fungieren, in denen Sie sekundäre Datenbanken erstellen.
-* Eine Anmeldung mit der Berechtigung „DBManager“ für die primäre Datenbank, mit der Berechtigung „db_ownership“ für die lokale Datenbank für die Georeplikation und der Berechtigung „DBManager“ für die Partnerserver, für die Sie die Georeplikation konfigurieren.
-* SQL Server Management Studio (SSMS)
+* Ein Azure-Abonnement
+* Einen logischen Azure SQL-Datenbankserver (<MyLocalServer>) und eine Azure SQL-Datenbank (<MyDB>): Die primäre Datenbank, die Sie replizieren möchten
+* Einen oder mehrere logische Azure SQL-Datenbankserver <MySecondaryServer(n)>: Die logischen Server, die als Partnerserver fungieren, in denen Sie sekundäre Datenbanken erstellen
+* Eine Anmeldung, die für die primäre Datenbank „DBManager“ ist
+* Sie müssen die db_ownership der lokalen Datenbank besitzen, für die Sie Georeplikation ausführen möchten
+* Sie müssen auf den Partnerservern, für die Sie die Georeplikation konfigurieren möchten, als DBManager festgelegt sein
+* Die neueste Version von SQL Server Management Studio (SSMS)
 
 > [!IMPORTANT]
 > Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -60,7 +62,7 @@ Führen Sie zum Erstellen einer lesbaren sekundären Datenbank als Einzeldatenba
 
 1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver.
 2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
-3. Verwenden Sie die folgende **ALTER DATABASE** -Anweisung, um eine lokale Datenbank als georeplizierte primäre Datenbank mit einer lesbaren sekundären Datenbank auf einem sekundären Server einzurichten.
+3. Verwenden Sie die folgende **ALTER DATABASE**-Anweisung, um eine lokale Datenbank als georeplizierte primäre Datenbank mit einer lesbaren sekundären Datenbank auf einem sekundären Server einzurichten.
    
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer2> WITH (ALLOW_CONNECTIONS = ALL);
@@ -71,7 +73,7 @@ Führen Sie zum Erstellen einer lesbaren sekundären Datenbank in einem elastisc
 
 1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver.
 2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
-3. Verwenden Sie die folgende **ALTER DATABASE** -Anweisung, um eine lokale Datenbank als georeplizierte primäre Datenbank mit einer lesbaren sekundären Datenbank auf einem sekundären Server in einem elastischen Pool einzurichten.
+3. Verwenden Sie die folgende **ALTER DATABASE**-Anweisung, um eine lokale Datenbank als georeplizierte primäre Datenbank mit einer lesbaren sekundären Datenbank auf einem sekundären Server in einem elastischen Pool einzurichten.
    
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer4> WITH (ALLOW_CONNECTIONS = ALL
@@ -115,7 +117,7 @@ Gehen Sie folgendermaßen vor, um eine Gemeinschaft aktiver Georeplikation zu ü
 9. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+* Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md)
 * Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 
 

@@ -3,19 +3,17 @@ title: "Diensttarife in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
 description: "Diensttarife in Azure-Datenbank für MySQL"
 services: mysql
 author: v-chenyh
-ms.author: v-chenyh
 manager: jhubbard
 editor: jasonh
-ms.assetid: 
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/16/2017
+ms.author: v-chenyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b647db3c3a48ac6c151814ee68b3117a92c1d4d8
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 9ae42c9b151c53a1f57d6856bc29cd7f71a7f9be
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-service-tier"></a>Optionen und Leistung von Azure-Datenbank für MySQL: Überblick über die verfügbaren Funktionen in den einzelnen Diensttarifen
@@ -39,18 +37,17 @@ In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich 
 | Basic | Diese Option ist am besten für kleine Workloads geeignet, die skalierbare Compute- und Speichereinheiten ohne IOPS-Garantie erfordern. Beispiele hierfür sind Server, die für die Entwicklung, für Tests oder für kleine, selten verwendete Anwendungen verwendet werden. |
 | Standard | Dies ist die optimale Option für Cloudanwendungen, die IOPS-Garantie mit der Möglichkeit, für einen hohen Durchsatz unabhängig auf eine höhere Anzahl von Computing- und Speichereinheiten zu skalieren, erfordern. Hierzu zählen beispielsweise Web- oder Analyseanwendungen. |
 | Premium | Diese Option ist am besten für Workloads geeignet, die sehr kurze Latenzen für Transaktionen und E/A sowie hohe E/A und einen hohen Workloaddurchsatz erfordern. Sie bietet optimale Unterstützung für viele gleichzeitige Benutzer. Sie gilt für Datenbanken, die unternehmenskritische Anwendungen unterstützen.<br />Der Diensttarif „Premium“ ist nicht in der Vorschau verfügbar. |
-| &nbsp; | &nbsp; |
+
 
 Um eine Auswahl für einen Diensttarif zu treffen, müssen Sie zunächst bestimmen, ob Ihre Workload eine IOPS-Garantie erfordert. Ermitteln Sie dann die Funktionen, die mindestens erforderlich sind:
 
 | **Dienstebenenfeatures** | **Basic** | **Standard** | **Premium** * |
 | :------------------------ | :-------- | :----------- | :------------ |
-| Max. Anzahl von Compute-Einheiten | 100 | 2000 | Nicht in der Vorschau verfügbar |
+| Max. Anzahl von Compute-Einheiten | 100 | 2.000 | Nicht in der Vorschau verfügbar |
 | Max. Gesamtspeicher | 1.050 GB | 10.000 GB | Nicht in der Vorschau verfügbar |
 | Garantie für Speicher-IOPS | N/V | Ja | Nicht in der Vorschau verfügbar |
-| Max. Speicher-IOPS | N/V | 30.000 | Nicht in der Vorschau verfügbar |
+| Max. Speicher-IOPS | N/V | 3,000 | Nicht in der Vorschau verfügbar |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 Tage | 35 Tage | 35 Tage |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; |
 
 > [!NOTE]
 > Der Diensttarif „Standard“ in der Vorschau unterstützt derzeit bis zu 800 Compute-Einheiten und max. 1000 GB Speicher.
@@ -68,35 +65,31 @@ Allerdings können Sie die Compute-Einheiten basierend auf den Workloadanforderu
 ## <a name="service-tiers-and-performance-levels"></a>Tarife und Leistungsebenen
 
 Bei Azure-Datenbank für MySQL gibt es mehrere Leistungsstufen in den einzelnen Diensttarifen. Sie können die Ebene, die Ihren Anforderungen an Workloads am besten entspricht, über eine der folgenden Quellen auswählen:
-
 - [Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure-CLI](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Unabhängig von der Anzahl der gehosteten Datenbanken auf jedem MySQL-Server erhält Ihre Datenbank einen garantierten Ressourcensatz, und die erwarteten Leistungsmerkmale Ihres Servers werden nicht beeinträchtigt.
 
-Diensttarif „Basic“:
+### <a name="basic-service-tier"></a>Diensttarif „Basic“:
 
 | **Leistungsstufe** | **50** | **100** |
 | :-------------------- | :----- | :------ |
 | Max. Anzahl von Compute-Einheiten | 50 | 100 |
 | Inbegriffene Speichergröße | 50 GB | 50 GB |
 | Max. Größe des Serverspeichers\* | 1.050 GB | 1.050 GB |
-| Maximale Anzahl gleichzeitiger Anmeldungen | &nbsp; | &nbsp; |
-| Max. Anzahl von Verbindungen | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; |
 
-Diensttarif „Standard“:
+\* Die max. Größe des Serverspeichers bezieht sich auf die maximale Speichergröße, die für Ihren Server bereitgestellt wird.
+
+
+### <a name="standard-service-tier"></a>Diensttarif „Standard“:
 
 | **Leistungsstufe** | **100** | **200** | **400** | **800** |
 | :-------------------- | :------ | :------ | :------ | :------ |
 | Max. Anzahl von Compute-Einheiten | 100 | 200 | 400 | 800 |
-| Inbegriffene Speichergröße und bereitgestellte IOPS | 125 GB, 375 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| Max. Größe des Serverspeichers\* | 1 TB | &nbsp; | &nbsp; | &nbsp; |
-| Max. bereitgestellte Server-IOPS | 3.000 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| Max. bereitgestellte Server-IOPS pro GB | 3 IOPS pro GB fest | &nbsp; | &nbsp; | &nbsp; |
-| Maximale Anzahl gleichzeitiger Anmeldungen | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| Max. Anzahl von Verbindungen | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+| Inbegriffene Speichergröße und bereitgestellte IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS |
+| Max. Größe des Serverspeichers\* | 1 TB | 1 TB | 1 TB | 1 TB |
+| Max. bereitgestellte Server-IOPS | 3.000 IOPS | 3.000 IOPS | 3.000 IOPS | 3.000 IOPS |
+| Max. bereitgestellte Server-IOPS pro GB | 3 IOPS pro GB fest | 3 IOPS pro GB fest | 3 IOPS pro GB fest | 3 IOPS pro GB fest |
 
 \* Die max. Größe des Serverspeichers bezieht sich auf die maximale Speichergröße, die für Ihren Server bereitgestellt wird.
 
@@ -109,12 +102,15 @@ Wenn Sie die Dienst- und/oder die Leistungsstufe einer Datenbank ändern, wird e
 Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif des Servers vor und nach der Änderung ab. Beispielsweise sollte ein Server beim Ändern von Compute-Einheiten in den oder aus dem Diensttarif „Standard“ bzw. innerhalb dieses Diensttarifs innerhalb von wenigen Minuten zentral hochskalieren. Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 
 ### <a name="documentation-about-the-steps-for-scaling-up-or-down"></a>Dokumentation zu den Schritten für das zentrale Hoch- oder Herunterskalieren
+[Überwachen und Skalieren eines Azure-Datenbank für MySQL-Servers mithilfe der Azure CLI](scripts/sample-scale-server.md)
 
-- [Verwalten eines einzelnen Servers mit dem Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Verwalten eines einzelnen Servers mit der Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ### <a name="details-about-scaling-up-or-down"></a>Details zum zentralen Hoch- oder Herunterskalieren
 
 - Für ein Downgrade eines Servers sollten die Speichereinheiten des Servers kleiner als die im Zieldiensttarif maximal zulässige Größe sein.
-- Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen eines Azure-Datenbank für MySQL-Servers mit dem Azure-Portal](./howto-restore-server-portal.md).
+- Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen eines Azure-Datenbank für MySQL-Servers mit dem Azure-Portal](howto-restore-server-portal.md).
 - Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
+
+## <a name="next-steps"></a>Nächste Schritte
+[Erläuterung der Compute- und der Speichereinheit](concepts-compute-unit-and-storage.md)
+

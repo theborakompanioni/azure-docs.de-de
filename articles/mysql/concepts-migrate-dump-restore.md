@@ -11,17 +11,17 @@ ms.service: mysql-database
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: portal
-ms.date: 05/10/2017
+ms.date: 05/17/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c09a6fa947d235189ab0137b074b6d7d9c925827
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c0029e025cf6d0af478d1f21dc6acc7860905a81
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 ---
 
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen
-In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Azure-Datenbank für MySQL beschrieben.
+In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Azure-Datenbank für MySQL beschrieben
 - Sichern und Wiederherstellen über die Befehlszeile (mithilfe von „mysqldump“) 
 - Sichern und Wiederherstellen mithilfe von PHPMyAdmin 
 
@@ -65,9 +65,6 @@ Um alle Datenbanken auf dem Server gleichzeitig zu sichern, verwenden Sie die Op
 ```
 $ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
-
-## <a name="upload-files"></a>Hochladen von Dateien
-Mit WinSCP können Sie problemlos den Import oder die Sicherung Ihrer vorhandenen MySQL-Umgebungsdateien (Azure oder nicht Azure) lokal über das SFTP- oder FTPS-Protokoll für Exportzwecke hochladen und verwalten.
 
 ## <a name="create-a-database-on-the-target-azure-mysql-server"></a>Erstellen einer Datenbank auf dem Azure-MySQL-Zielserver
 Sie müssen auf dem Azure-Datenbank für MySQL-Zielserver, auf den die Daten mit MySQL Workbench, Toad, Navicat oder einem beliebigen Drittanbietertool für MySQL migriert werden sollen, eine leere Datenbank erstellen. Die Datenbank kann denselben Namen aufweisen wie die Datenbank, die die Sicherungsdaten enthält, oder Sie können eine Datenbank mit einem anderen Namen erstellen.

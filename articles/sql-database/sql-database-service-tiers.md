@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-wms.date: 04/26/2017
+wms.date: 05/14/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 3300c4e79ddc6c8e04c3b4d80b3ee07bd6aeea9d
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 1811c325e240a6688b09f7260b33fbe19d022cea
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -59,7 +59,7 @@ Entscheiden Sie zuerst, ob Sie eine einzelne Datenbank mit einer definierten Men
 ||||||
 
 > [!IMPORTANT]
-> Die zusätzlichen Speicheroptionen sind derzeit in den folgenden Regionen verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Informationen finden Sie unter [Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einem MAXSIZE-Wert von 4 TB](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize).
+> Die zusätzlichen Speicheroptionen sind derzeit in den folgenden Regionen verfügbar: USA, Osten 2; USA, Westen, USA Reg-Bez. Virginia; Europa, Westen; Deutschland, Mitte; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Informationen finden Sie unter [Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einem MAXSIZE-Wert von 4 TB](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize).
 >
 
 Nach der Ermittlung der Mindestdienstebene können Sie die Leistungsebene für die Datenbank (Anzahl von DTUs) bestimmen. Die standardmäßigen Leistungsebenen S2 und S3 sind meist ein guter Ausgangspunkt. Für Datenbanken mit hohen CPU- oder E/A-Anforderungen empfehlen sich dagegen eher die Premium-Leistungsebenen. Premium bietet im Vergleich zur höchsten Standard-Leistungsebene mehr CPU- und eine mindestens zehnmal höhere E/A-Leistung.
@@ -87,8 +87,8 @@ Wenn Sie die Dienst- und/oder die Leistungsstufe einer Datenbank ändern, wird e
 Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte eine 250-GB-Datenbank beim Wechsel in, aus oder innerhalb eines Standarddiensttarifs innerhalb von sechs Stunden zentral hochskalieren. Eine Datenbank der gleichen Größe, die ihre Leistungsstufen innerhalb des Premium-Diensttarifs ändert, sollte dies innerhalb von drei Stunden vollziehen.
 
 * Für ein Downgrade einer Datenbank sollte die Datenbank kleiner als die in der Zieldienstebene maximal zulässige Größe sein. 
-* Beim Aktualisieren einer Datenbank, für die [Georeplikation](sql-database-geo-replication-portal.md) aktiviert ist, müssen Sie vor der Aktualisierung der primären Datenbank zunächst die zugehörigen sekundären Datenbanken auf die gewünschte Leistungsstufe aktualisieren.
-* Beim Downgrade von einer Premium-Dienstebene müssen Sie zuerst alle geografischen Replikationsbeziehungen beenden. Sie können die im Thema [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) beschriebenen Schritte verwenden, um den Replikationsprozess zwischen der primären und den aktiven sekundären Datenbanken zu beenden.
+* Bei einem Upgrade einer Datenbank, für die [Georeplikation](sql-database-geo-replication-portal.md) aktiviert ist, müssen Sie vor dem Upgrade der primären Datenbank zunächst ein Upgrade der zugehörigen sekundären Datenbanken auf die gewünschte Leistungsstufe vornehmen.
+* Beim Downgrade von einer Premium-Dienstebene müssen Sie zuerst alle Georeplikationsbeziehungen beenden. Sie können die im Thema [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) beschriebenen Schritte verwenden, um den Replikationsprozess zwischen der primären und den aktiven sekundären Datenbanken zu beenden.
 * Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen der Azure SQL-Datenbank](sql-database-business-continuity.md).
 * Die neuen Eigenschaften für die Datenbank werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 
@@ -96,7 +96,7 @@ Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der G
 
 Durch Pools können Datenbanken eDTU-Ressourcen freigeben und gemeinsam nutzen, ohne dass jeder Datenbank im Pool eine bestimmte Leistungsebene zugewiesen werden muss. Beispielsweise kann eine Einzeldatenbank in einem Pool der Dienstebene „Standard“ 0 eDTU bis hin zum maximalen eDTU-Wert für Datenbanken nutzen, den Sie beim Konfigurieren des Pools festlegen. Bei Pools können mehrere Datenbanken mit unterschiedlichen Workloads die für den gesamten Pool verfügbaren eDTU-Ressourcen effizient nutzen. Weitere Informationen finden Sie unter den [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool.md) .
 
-Die folgenden Tabellen beschreiben die Ressourcengrenzwerte des Pools für elastische Datenbanken.  Beachten Sie, dass die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken im Allgemeinen denen einzelner Datenbanken außerhalb von Pools basierend auf DTU-Anzahl und Dienstebene entsprechen.  Auf eine S2-Datenbank können z.B. maximal 120 Mitarbeiter gleichzeitig zugreifen.  Also können auch 120 Mitarbeiter gleichzeitig auf eine Datenbank in einem Standard-Pool zugreifen, wenn maximal 50 DTUs pro Datenbank im Pool zulässig sind (entspricht S2).
+Die folgenden Tabellen beschreiben die Ressourcengrenzwerte des Pools für elastische Datenbanken.  Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen hinsichtlich DTU-Anzahl und Dienstebene denen einzelner Datenbanken außerhalb von Pools.  Auf eine S2-Datenbank können z.B. maximal 120 Mitarbeiter gleichzeitig zugreifen.  Also können auch 120 Mitarbeiter gleichzeitig auf eine Datenbank in einem Standard-Pool zugreifen, wenn maximal 50 DTUs pro Datenbank im Pool zulässig sind (entspricht S2).
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
@@ -133,12 +133,12 @@ ALTER DATABASE <myDatabaseName>
 Die Aktualisierung einer vorhandenen P11- oder P15-Datenbank kann nur mithilfe einer Prinzipalanmeldung auf Serverebene oder von Mitgliedern der Datenbankrolle „dbmanager“ ausgeführt werden. Bei Ausführung in einer unterstützten Region wird die Konfiguration umgehend aktualisiert. Dies kann mithilfe von [SELECT DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx) oder durch Überprüfen der Datenbankgröße im Azure-Portal überprüft werden. Die Datenbank bleibt während des Upgradevorgangs online. Allerdings können Sie nicht die vollständigen 4 TB an Speicher nutzen, bis die tatsächlichen Datenbankdateien auf den neuen MAXSIZE-Wert aktualisiert wurden. Die erforderliche Dauer hängt von der Größe der zu aktualisierenden Datenbank ab.  
 
 ### <a name="error-messages"></a>Fehlermeldungen
-Beim Erstellen oder Aktualisieren einer P11-/P15-Datenbank in einer nicht unterstützten Region, tritt beim Erstellen oder Aktualisieren ein Fehler mit der folgenden Fehlermeldung auf: **P11 and P15 database with up to 4TB of storage are available in US East 2, West US, South East Asia, West Europe, Canada East, Canada Central, Japan East, and Australia East.** (P11- und P15-Datenbanken mit einem Speicher von bis zu 4 TB sind in den folgenden Regionen verfügbar: USA, Osten 2; USA, Westen; Asien, Südosten; Europa, Westen; Kanada, Osten; Kanada, Mitte; Japan, Osten und Australien, Osten.)
+Beim Erstellen oder Aktualisieren einer P11-/P15-Datenbank in einer nicht unterstützten Region, tritt beim Erstellen oder Aktualisieren ein Fehler mit der folgenden Fehlermeldung auf: **P11 and P15 database with up to 4TB of storage are available in US East2, West US, US Gov Virginia, West Europe, Germany Central, South East Asia, Japan East, Australia East, Canada Central, and Canada East.** (P11- und P15-Datenbanken mit einem Speicher von bis zu 4 TB sind in den folgenden Regionen verfügbar: USA, Osten 2; USA, Westen, USA Reg-Bez. Virginia; Europa, Westen; Deutschland, Mitte; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten.)
 
 ## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>Aktuelle Einschränkungen von P11- und P15-Datenbanken mit einem MAXSIZE-Wert von 4 TB
 
 - Beim Erstellen oder Aktualisieren einer P11- oder P15-Datenbank können Sie nur zwischen einem MAXSIZE-Wert von 1 TB und 4 TB wählen. Zwischengrößen werden zurzeit nicht unterstützt.
-- Der MAXSIZE-Wert der 4-TB-Datenbank kann nicht in 1 TB geändert werden, auch wenn der tatsächlich genutzte Speicher unter 1 TB liegt. Daher können Sie eine P11-Datenbank mit 4 TB oder eine P15-Datenbank mit 4 TB nicht auf eine P11-Datenbank mit 1 TB, eine P15-Datenbank mit 1 TB oder eine niedrigere Leistungsstufe (z.B. P1-P6) herunterstufen, bis zusätzliche Speicheroptionen für die restlichen Leistungsstufen bereitgestellt wurden. Diese Einschränkung gilt auch für Wiederherstellungs- und Kopierszenarien, einschließlich Point-in-Time- und Geowiederherstellung, langfristige Aufbewahrung von Sicherungen und Datenbankkopiervorgänge. Sobald eine Datenbank mit der 4-TB-Option konfiguriert wird, muss für Wiederherstellungsvorgänge dieser Datenbank ein P11-/P15-Ziel mit einem MAXSIZE-Wert von 4 TB ausgeführt werden.
+- Der MAXSIZE-Wert der 4-TB-Datenbank kann nicht in 1 TB geändert werden, auch wenn der tatsächlich genutzte Speicher unter 1 TB liegt. Daher können Sie eine P11-Datenbank mit 4 TB oder eine P15-Datenbank mit 4 TB nicht auf eine P11-Datenbank mit 1 TB, eine P15-Datenbank mit 1 TB oder eine niedrigere Leistungsstufe (z.B. P1–P6) herunterstufen, bis zusätzliche Speicheroptionen für die restlichen Leistungsstufen bereitgestellt wurden. Diese Einschränkung gilt auch für Wiederherstellungs- und Kopierszenarien, einschließlich Point-in-Time- und Geowiederherstellung, langfristige Aufbewahrung von Sicherungen und Datenbankkopiervorgänge. Sobald eine Datenbank mit der 4-TB-Option konfiguriert wird, muss für Wiederherstellungsvorgänge dieser Datenbank ein P11-/P15-Ziel mit einem MAXSIZE-Wert von 4 TB ausgeführt werden.
 - Szenarien für aktive Georeplikation:
    - Einrichten einer Georeplikationsbeziehung: Falls es sich bei der primären Datenbank um eine P11- oder P15-Datenbank handelt, müssen auch die sekundären Datenbanken vom Typ „P11“ oder „P15“ sein. Niedrigere Leistungsstufen werden als sekundäre Datenbanken abgelehnt, da sie 4 TB nicht unterstützen können.
    - Aktualisieren der primären Datenbank in einer Georeplikationsbeziehung: Die Änderung des MAXSIZE-Werts für eine primäre Datenbank in 4 TB löst die gleiche Änderung für die sekundäre Datenbank aus. Beide Upgrades müssen erfolgreich ausgeführt werden, damit die Änderung für die primäre Datenbank wirksam wird. Für die Option mit 4 TB gelten Regionseinschränkungen (siehe oben). Wenn sich die sekundäre Datenbank in einer Region befindet, die 4 TB nicht unterstützt, wird die primäre Datenbank nicht aktualisiert.

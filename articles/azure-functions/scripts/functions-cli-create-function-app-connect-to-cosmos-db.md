@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Azure-Funktion, die eine Verbindung mit Azure DocumentDB herstellt | Microsoft-Dokumentation
-description: "Azure CLI-Skriptbeispiel – Erstellen einer Azure-Funktion, die eine Verbindung mit Azure DocumentDB herstellt"
+title: Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt | Microsoft-Dokumentation
+description: 'Azure CLI-Skriptbeispiel: Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt'
 services: functions
 documentationcenter: functions
 author: rachelappel
@@ -10,19 +10,18 @@ tags: functions
 ms.assetid: 
 ms.service: functions
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 46e0fe827b7b34010d14a31ff377d4854ec62f6e
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: dbe02fbc71f04c67ab03a84845bf8666333ce621
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
-
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt
 
 Dieses Beispielskript erstellt eine Azure-Funktionen-App und stellt eine Verbindung mit einer Azure Cosmos DB-Datenbank her.
@@ -31,9 +30,9 @@ Dieses Beispielskript erstellt eine Azure-Funktionen-App und stellt eine Verbind
 
 ## <a name="sample-script"></a>Beispielskript
 
-Erstellen eines App-Beispiels
+In diesem Beispiel werden eine Azure-Funktionen-App erstellt und ein Cosmos DB-Endpunkt sowie ein Zugriffsschlüssel zu den App-Einstellungen hinzugefügt.
 
-[!code-azurecli[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b53bd4d9db9c1ca030a770e56427f35204b90ab3
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: fbc5cc4a332877451867ca434db40d67ee623a0f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -44,15 +45,17 @@ In der folgenden Tabelle werden die Angebots-IDs aufgeführt, die über den Azur
 | [Enterprise Dev/Test](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Überprüfen Ihres Azure-Abonnements
-Wenn Sie Ihre Angebots-ID nicht kennen, können Sie sie über das Azure-Portal oder das Kontoportal abrufen.
+Wenn Sie Ihre Angebots-ID nicht kennen, können Sie sie auf eine der beiden folgenden Weisen beim Azure-Portal abrufen:  
 
-Die Abonnement-Angebots-ID finden Sie im Azure-Portal im Blatt „Abonnements“:
+- Auf dem Blatt „Abonnements“:
 
-![Details der Angebots-ID aus dem Azure-Portal](./media/client-images/offer_id_azure_portal.png) 
+  ![Details der Angebots-ID aus dem Azure-Portal](./media/client-images/offer-id-azure-portal.png) 
+
+- Klicken Sie alternativ auf **Abrechnung** und dann auf Ihre Abonnement-ID. Die Angebots-ID wird auf dem Blatt „Abrechnung“ angezeigt.
 
 Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](http://account.windowsazure.com/Subscriptions) des Azure-Kontoportals anzeigen:
 
-![Details der Angebots-ID aus dem Azure-Kontoportal](./media/client-images/offer_id_azure_account_portal.png) 
+![Details der Angebots-ID aus dem Azure-Kontoportal](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Jetzt können Sie Ihre VMs mit [PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), [Resource Manager-Vorlagen](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) bereitstellen.

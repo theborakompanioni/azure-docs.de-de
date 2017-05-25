@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 03/17/2017
 ms.author: rickbyh
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 9716975994d1ab3b7cf63efc6480efcd48eb67bb
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 105255696c59346f3a8f0013d98602c9f17b7661
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -31,7 +32,7 @@ Die meisten Transact-SQL-Funktionen, die von Anwendungen verwendet werden, werde
 
 Darüber hinaus werden einige Features und Syntax überhaupt nicht unterstützt, da die Azure SQL-Datenbank entwickelt wurde, um Features von Abhängigkeiten auf Masterdatenbank und Betriebssystem zu isolieren. An sich sind die meisten Aktivitäten auf Serverebene für die SQL-Datenbank nicht geeignet. T-SQL-Anweisungen und -Optionen sind nicht verfügbar, wenn sie Optionen auf Serverebene, Betriebssystemkomponenten oder bestimmte Dateisystemkonfigurationen konfigurieren. Wenn solche Funktionen erforderlich sind, dann ist häufig eine andere geeignete Alternative von der SQL-Datenbank oder aus einem anderen Azure-Feature oder -Dienst verfügbar. 
 
-Zum Beispiel ist hohe Verfügbarkeit in Azure integriert, sodass Konfigurieren von Always On nicht erforderlich ist (obwohl Sie möglicherweise aktive Georeplikation für schnellere Wiederherstellung im Notfall konfigurieren möchten). Deshalb werden alle T-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf Always On beziehen, werden auch nicht unterstützt.
+Zum Beispiel ist hohe Verfügbarkeit in Azure integriert, sodass Konfigurieren von Always On nicht erforderlich ist (obwohl es sinnvoll sein kann, aktive Georeplikation für schnellere Wiederherstellung im Notfall zu konfigurieren). Deshalb werden alle T-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf Always On beziehen, werden auch nicht unterstützt.
 
 Eine Liste der Funktionen, die von der SQL-Datenbank unterstützt bzw. nicht unterstützt werden, finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md). Die Liste auf dieser Seite ergänzt dieses Thema zu Richtlinien und Funktionen und konzentriert sich auf Transact-SQL-Anweisungen.
 

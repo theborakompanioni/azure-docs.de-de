@@ -17,16 +17,16 @@ ms.workload: data-management
 ms.date: 04/21/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 364038c11f13bcb72b259618b1d7d433f48a33c1
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: b1b67a83a25159414a80382030903d300aad71f7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank
 
-Beim Erstellen und Bereitstellen von Diensten mit hoher Verfügbarkeit für Azure SQL-Datenbank müssen Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md) verwenden. Dies bietet Widerstandsfähigkeit gegenüber regionalen Fehlern und schwerwiegenden Ausfällen und ermöglicht die schnelle Wiederherstellung mithilfe des Failovers auf sekundäre Datenbanken. Dieser Artikel behandelt allgemeine Anwendungsmuster und erläutert die Vor- und Nachteile der einzelnen Optionen je nach Anwendungsbereitstellungsanforderungen, gewünschter Vereinbarung zum Servicelevel, Datenverkehrslatenz sowie Kosten. Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten auf Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz gegenüber regionalen Fehlern und katastrophalen Ausfällen bereitzustellen und eine schnelle Wiederherstellung in den sekundären Datenbanken zu ermöglichen. Dieser Artikel behandelt allgemeine Anwendungsmuster und erläutert die Vor- und Nachteile der einzelnen Optionen je nach Anwendungsbereitstellungsanforderungen, gewünschter Vereinbarung zum Servicelevel, Datenverkehrslatenz sowie Kosten. Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 ## <a name="design-pattern-1-active-passive-deployment-for-cloud-disaster-recovery-with-a-co-located-database"></a>Entwurfsmuster 1: Aktiv-/Passiv-Bereitstellung für eine cloudbasierte Notfallwiederherstellung mit zusammengestellter Datenbank
 Diese Option eignet sich am besten für Anwendungen mit den folgenden Merkmalen:
@@ -58,7 +58,7 @@ Nach Abschluss des Failovers der Endpunkte der Anwendung und der Datenbank start
 Bei einem Ausfall in der sekundären Region wird der Replikationslink zwischen der primären und sekundären Datenbank unterbrochen, aber das Failover wird nicht ausgelöst, weil die primäre Datenbank nicht betroffen ist. Die Verfügbarkeit der Anwendung ändert sich in diesem Fall nicht, sie wird jedoch ungeschützt und mit dem erhöhten Risiko betrieben, dass beide Regionen nacheinander ausfallen.
 
 > [!NOTE]
->Wir empfehlen ausschließlich Bereitstellungskonfigurationen mit einer einzelnen Notfallwiederherstellungsregion. Der Grund ist, dass die meisten Azure-Gebiete zwei Regionen aufweisen. Diese Konfigurationen bieten Ihrer Anwendung keinen Schutz vor einem katastrophenbedingten Ausfall beider Regionen. Im unwahrscheinlichen Fall eines solchen Ausfalls können Sie Ihre Datenbanken mithilfe eines [Geowiederherstellungsvorgangs](sql-database-disaster-recovery.md#recover-using-geo-restore) in einer dritten Region wiederherstellen.
+> Wir empfehlen ausschließlich Bereitstellungskonfigurationen mit einer einzelnen Notfallwiederherstellungsregion. Der Grund ist, dass die meisten Azure-Gebiete zwei Regionen aufweisen. Diese Konfigurationen bieten Ihrer Anwendung keinen Schutz vor einem katastrophenbedingten Ausfall beider Regionen. Im unwahrscheinlichen Fall eines solchen Ausfalls können Sie Ihre Datenbanken mithilfe eines [Geowiederherstellungsvorgangs](sql-database-disaster-recovery.md#recover-using-geo-restore) in einer dritten Region wiederherstellen.
 >
 
 Nach Behebung der Ausfallursache wird die sekundäre Datenbank automatisch mit der primären neu synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank geringfügig beeinträchtigt sein, abhängig von der Menge der Daten, die synchronisiert werden müssen. Das folgende Diagramm zeigt einen Ausfall in der sekundären Region.
@@ -163,7 +163,7 @@ Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung k�
 * Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 * Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 * Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md)
-* Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md)  
+* Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).  
 * Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md)
 * Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 

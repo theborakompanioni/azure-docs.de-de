@@ -15,16 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
-translationtype: Human Translation
-ms.sourcegitcommit: 66c37501b053cd9a8b4487c34e8914b75f3058ee
-ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 4b59c8aa3dea3e8fba692ab66420295a09210d3b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
 > [!NOTE]
 > [Die aktive Georeplikation](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Tarifen verfügbar.
-> 
 > 
 
 Erfahren Sie, wie Sie die [Georeplikation](sql-database-geo-replication-overview.md) in SQL-Datenbank verwenden, um parallele Upgrades Ihrer Cloudanwendung zu aktivieren. Da ein Upgrade einen unterbrechenden Vorgang darstellt, sollte es Teil der Planung und des Designs Ihrer Geschäftskontinuität sein. In diesem Artikel betrachten wir zwei unterschiedliche Methoden zum Orchestrieren des Upgradevorgangs und erörtern die Vor- und Nachteile jeder Option. Für die Zwecke dieses Artikels verwenden wir eine einfache Anwendung, die aus einer mit einer Einzeldatenbank als Datenebene verbundenen Website besteht. Unser Ziel ist es, die Version 1 der Anwendung auf die Version 2 zu aktualisieren, ohne dass sich dies deutlich auf die Endbenutzererfahrung auswirkt. 
@@ -44,8 +45,7 @@ Wenn sich Ihre Anwendung auf automatische Datenbanksicherungen verlässt und die
 
 > [!NOTE]
 > Beachten Sie, dass sich die Vorbereitungsschritte nicht auf die Anwendung im Produktionsslot auswirken und diese im Vollzugriffsmodus funktionieren kann.
-> 
-> 
+>  
 
 ![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
@@ -80,7 +80,7 @@ An dieser Stelle ist die Anwendung voll funktionsfähig, und die Upgradeschritte
 
 Der wichtigste **Vorteil** dieser Option ist, dass Sie eine Anwendung in einer einzelnen Region mithilfe einer Reihe von einfachen Schritten upgraden können. Die anfallenden Kosten für das Upgrade sind relativ gering. Der wichtigste **Nachteil** ist, dass im Fall eines schwerwiegenden Fehlers während des Upgrades die Wiederherstellung auf den Status vor dem Upgrade beinhaltet, dass die Anwendung in einer anderen Region erneut bereitgestellt und die Datenbank mithilfe der Geowiederherstellung aus einer Sicherung wiederhergestellt wird. Dieser Prozess führt zu erheblicher Downtime.   
 
-## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Upgraden von Anwendungen, die sich auf die Datenbank-Georeplikation für die Notfallwiederherstellung verlassen
+## <a name="upgrading-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Upgrade von Anwendungen, die für die Notfallwiederherstellung von der Datenbank-Georeplikation abhängen
 Wenn Ihre Anwendung für die Geschäftskontinuität die Georeplikation nutzt, wird sie in mindestens zwei verschiedenen Regionen bereitgestellt. In der primären Region erfolgt eine aktive Bereitstellung und in der Sicherungsregion eine Standby-Bereitstellung. Zusätzlich zu den weiter oben genannten Faktoren muss der Upgradevorgang Folgendes garantieren:
 
 * Die Anwendung bleibt jederzeit während des Upgrades vor schwerwiegenden Fehlern geschützt
@@ -135,26 +135,10 @@ Der wichtigste **Vorteil** dieser Option ist, dass Sie die Anwendung und ihre ge
 Die beiden in diesem Artikel beschriebenen Upgrademethoden unterscheiden sich hinsichtlich der Komplexität und der anfallenden Kosten. Beide legen jedoch den Fokus auf die Minimierung der Zeit, in der die Endbenutzer auf schreibgeschützte Vorgänge eingeschränkt sind. Diese Zeit wird direkt durch die Dauer des Upgradeskripts definiert. Sie hängt nicht von der Datenbankgröße, der gewählten Dienstebene, der Websitekonfiguration oder anderen Faktoren ab, die Sie nicht einfach steuern können. Das liegt daran, dass alle Vorbereitungsschritte von den Upgradeschritten entkoppelt sind und ohne Auswirkungen auf die Produktionsanwendung durchgeführt werden können. Die Effizienz des Upgradeskripts ist der wichtigste Faktor, der die Endbenutzerfreundlichkeit während Upgrades bestimmt. Die beste Möglichkeit diese zu verbessern ist daher, sich darauf zu konzentrieren, das Upgradeskript so effizient wie möglich zu gestalten.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-* Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
-* Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus automatisierten Sicherungen](sql-database-recovery-using-backups.md)
-* Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md)  
-* Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md)
+* Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+* Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+* Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus automatisierten Sicherungen](sql-database-recovery-using-backups.md).
+* Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
-## <a name="additionale-resources"></a>Weitere Ressourcen
-Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informieren, die zum Implementieren des Upgradeworkflows erforderlich sind:
-
-* [Hinzufügen einer sekundären Datenbank](https://msdn.microsoft.com/library/azure/mt603689.aspx) 
-* [Failover database to secondary (Failover für die Datenbank in eine sekundäre Datenbank)](https://msdn.microsoft.com/library/azure/mt619393.aspx)
-* [Trennen der Georeplikationsverbindung mit der sekundären Datenbank](https://msdn.microsoft.com/library/azure/mt603457.aspx)
-* [Geo-restore database (Geowiederherstellung der Datenbank)](https://msdn.microsoft.com/library/azure/mt693390.aspx) 
-* [Drop database (Verwerfen der Datenbank)](https://msdn.microsoft.com/library/azure/mt619368.aspx)
-* [Copy database (Kopieren der Datenbank)](https://msdn.microsoft.com/library/azure/mt603644.aspx)
-* [Festlegen des schreibgeschützten bzw. des Lese-/Schreibmodus für die Datenbank](https://msdn.microsoft.com/library/bb522682.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.service: functions
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 04/11/2017
 ms.author: cfowler
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0d887999d1118e498293fb13b9612828d914b0ae
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 8c98e392c1c735458184bb782ed9c42f468f33de
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 ---
-
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Erstellen einer Funktionen-App in einem App Service-Plan
 
 Dieses Beispielskript erstellt eine Azure-Funktionen-App, die einen Container für Ihre Funktionen darstellt. Die Funktionen-App wird mithilfe eines dedizierten App Service-Plans erstellt. Die Serverressourcen sind also immer aktiv.
@@ -31,24 +30,21 @@ Dieses Beispielskript erstellt eine Azure-Funktionen-App, die einen Container f�
 
 ## <a name="sample-script"></a>Beispielskript
 
-Erstellen eines App-Beispiels
+Dieses Skript erstellt eine Azure-Funktionen-App mithilfe eines dedizierten [App Service-Plans](../functions-scale.md#app-service-plan).
 
-[!code-azurecli[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "Erstellen einer Azure-Funktion in einem App Service-Plan")]
-
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
-
-Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die App Service-App und alle zugehörigen Ressourcen entfernt werden.
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "Erstellen einer Azure-Funktion in einem App Service-Plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. Das Skript verwendet die folgenden Befehle:
 
 | Befehl | Hinweise |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appserviceplan create](https://docs.microsoft.com/cli/azure/appserviceplan#create) | Erstellt einen App Service-Plan. |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#create) | Erstellt ein Azure Storage-Konto. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appserviceplan#create) | Erstellt einen App Service-Plan. |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#delete) | Erstellt eine Azure-Funktionen-App. |
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -56,3 +52,4 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Weitere Azure Functions-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Functions](../functions-cli-samples.md).
+

@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
-ms.date: 04/10/2017
+wms.date: 05/14/2017
 ms.author: srinia
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: b84185d0f224352e7cf5449068bee359914bd4ed
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 907e15da90bcd82358a462f7d8a7d2ba4a34f371
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 05/16/2017
 
 ---
 
@@ -88,7 +87,7 @@ Set-AzureRmSqlElasticPool -ResourceGroupName “resourcegroup1” -ServerName �
 Verwenden Sie das [Set-AzureRmSqlElasticPool](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlelasticpool)-Cmdlet, um den Parameter _-StorageMB_ festzulegen. Geben Sie die Speicherbeschränkung in MB ein (mit 2097152 wird die Speicherbeschränkung beispielsweise auf 2 TB festgelegt). Mögliche Werte sind unter [eDTUs und Speicherbeschränkungen](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools) aufgeführt.
 
 > [!IMPORTANT]
-> Die standardmäßige maximale Datenspeicherkapazität pro Pool für Premium-Pools mit 1.500 eDTUs beträgt 750 GB. Um einen höheren Wert für die _maximale Datenspeichergröße pro Pool_ zu erhalten, müssen Sie die Speicherbeschränkung explizit festlegen. Premium-Pools mit einer Speicherkapazität von mehr als 750 GB sind derzeit in folgenden Regionen als öffentliche Vorschauversion verfügbar: „USA, Osten 2“, „USA, Westen“, „Europa, Westen“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“.
+> Die standardmäßige maximale Datenspeicherkapazität pro Pool für Premium-Pools mit 1.500 eDTUs beträgt 750 GB. Um einen höheren Wert für die _maximale Datenspeichergröße pro Pool_ zu erhalten, müssen Sie die Speicherbeschränkung explizit festlegen. Premium-Pools mit einer Speicherkapazität von mehr als 750 GB sind derzeit in folgenden Regionen in der öffentlichen Vorschau verfügbar: USA, Osten 2; USA, Westen; USA Gov Virginia; Europa, Westen; Deutschland, Mitte; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten.
 
 ```PowerShell
 Set-AzureRmSqlElasticPool -ServerName "server1" -ElasticPoolName “elasticpool1” -StorageMB 2097152

@@ -13,21 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/17/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 188c4758843a49ca38a151835d561c5f2d58d3a0
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 5b6c65ec8431c3a55e7cbccec3db5d08974982b5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Gewusst wie: Anpassen eines virtuellen Linux-Computers beim ersten Start
-Um virtuelle Computer (VMs) auf schnelle und einheitliche Weise zu erstellen, ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen virtueller Computer beim ersten Start ist die Verwendung von [cloud-Init](https://cloudinit.readthedocs.io). In diesem Tutorial wird die Verwendung von cloud-init zum automatischen Installieren von Paketen, Konfigurieren des NGINX-Webservers und Bereitstellen einer Node.js-App beschrieben.
+In einem früheren Tutorial haben Sie erfahren, wie eine SSH-Verbindung mit einem virtuellen Computer hergestellt und NGINX manuell installiert wird. Um VMs auf schnelle und einheitliche Weise zu erstellen, ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen virtueller Computer beim ersten Start ist die Verwendung von [cloud-Init](https://cloudinit.readthedocs.io). In diesem Tutorial lernen Sie Folgendes:
 
-Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
+> [!div class="checklist"]
+> * Erstellen einer cloud-init-Konfigurationsdatei
+> * Erstellen eines virtuellen Computers, der eine cloud-init-Datei verwendet
+> * Anzeigen einer laufenden Node.js-App nach dem Erstellen der VM
+> * Verwenden von Key Vault zum sicheren Speichern der Zertifikate
+> * Automatisieren der sicheren Bereitstellung von NGINX mithilfe von cloud-init
 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
 
 ## <a name="cloud-init-overview"></a>Übersicht zu cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs ausgeführt wird, müssen Sie keine zusätzlichen Schritte oder erforderlichen Agents auf Ihre Konfiguration anwenden.
@@ -92,10 +98,10 @@ runcmd:
 Weitere Informationen zu den cloud-init-Konfigurationsoptionen finden Sie in den [cloud-init-Konfigurationsbeispielen](https://cloudinit.readthedocs.io/en/latest/topics/examples.html).
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *westus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*.
+Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*:
 
 ```azurecli
-az group create --name myResourceGroupAutomate --location westus
+az group create --name myResourceGroupAutomate --location eastus
 ```
 
 Jetzt können Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer erstellen. Verwenden Sie den `--custom-data`-Parameter, um Ihre cloud-init-Konfigurationsdatei zu übergeben. Geben Sie den vollständigen Pfad zu der Konfigurationsdatei *cloud-init.txt* an, wenn Sie die Datei außerhalb Ihres vorhandenen Arbeitsverzeichnisses gespeichert haben. Im folgenden Beispiel wird ein virtueller Computer namens *myAutomatedVM* erstellt:
@@ -260,7 +266,17 @@ Gesicherte NGINX-Website und Node.js-App werden dann wie im folgenden Beispiel a
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, einen virtuellen Computer beim ersten Start anzupassen. Im nächsten Tutorial erfahren Sie, wie Sie benutzerdefinierte VM-Images erstellen.
+In diesem Tutorial haben Sie virtuelle Computer beim ersten Start mit cloud-init konfiguriert. Es wurde Folgendes vermittelt:
 
-[Erstellen von benutzerdefinierten VM-Images](./tutorial-custom-images.md)
+> [!div class="checklist"]
+> * Erstellen einer cloud-init-Konfigurationsdatei
+> * Erstellen eines virtuellen Computers, der eine cloud-init-Datei verwendet
+> * Anzeigen einer laufenden Node.js-App nach dem Erstellen der VM
+> * Verwenden von Key Vault zum sicheren Speichern der Zertifikate
+> * Automatisieren der sicheren Bereitstellung von NGINX mithilfe von cloud-init
+
+Im nächsten Tutorial erfahren Sie, wie Sie benutzerdefinierte VM-Images erstellen.
+
+> [!div class="nextstepaction"]
+> [Erstellen von benutzerdefinierten VM-Images](./tutorial-custom-images.md)
 

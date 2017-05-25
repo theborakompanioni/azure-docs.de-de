@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 47627bc6df93db1d92aa29350fe6e48039dc6f1b
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 63f1c468b5f8f4b0bb298cb67adea8c01b065427
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Übersicht über Azure Cloud Shell (Vorschau)
@@ -39,19 +39,22 @@ In Cloud Shell sind gängige Befehlszeilentools und Sprachunterstützung vorinst
 Cloud Shell führt in jeder Sitzung eine sichere Authentifizierung durch, sodass Sie über die Azure CLI 2.0 sofort auf Ihre Ressourcen zugreifen können.
 
 ### <a name="connect-your-azure-file-storage"></a>Herstellen einer Verbindung mit Ihrem Azure-Dateispeicher
-Cloud Shell-Computer sind temporär und erfordern folglich das Einbinden einer Azure-Dateifreigabe, um Ihr $Home-Verzeichnis dauerhaft bereitzustellen.
+Cloud Shell-Computer sind temporär und erfordern folglich das Einbinden einer Azure-Dateifreigabe als `clouddrive`, um Ihr $Home-Verzeichnis dauerhaft bereitzustellen.
 Beim ersten Start werden Sie von Cloud Shell darauf hingewiesen, dass eine Ressourcengruppe, ein Speicherkonto und eine Dateifreigabe in Ihrem Namen erstellt werden. Dieser Schritt ist nur einmal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. 
 
 ![](media/storage-prompt.png)
 
-In Ihrem Namen wird ein LRS-Speicherkonto mit einer Azure-Dateifreigabe erstellt, die standardmäßig ein 5-GB-Datenträgerimage umfasst.
-Dieses Datenträgerimage wird zum Synchronisieren und dauerhaften Speichern Ihres $Home-Verzeichnisses verwendet. Es gelten die üblichen Speicherkosten.
+In Ihrem Namen wird ein LRS-Speicherkonto mit einer Azure-Dateifreigabe erstellt, die standardmäßig ein 5-GB-Datenträgerimage umfasst. Die Dateifreigabe wird zum Zweck der Interaktion mit dem Datenträgerimage, das zum Synchronisieren und dauerhaften Bereitstellen Ihres $Home-Verzeichnisses verwendet wird, als `clouddrive` eingebunden. Es gelten die üblichen Speicherkosten.
+
 Drei Ressourcen werden in Ihrem Namen erstellt:
 1. Eine Ressourcengruppe namens `cloud-shell-storage-<region>`
 2. Ein Speicherkonto namens `cs-uniqueGuid`
 3. Eine Dateifreigabe namens `cs-<user>-<domain>-com-uniqueGuid`
 
-[Weitere Informationen zum dauerhaften Speichern von Dateien durch Cloud Shell] (persisting-shell-storage.md).
+> [!Note]
+> Alle Dateien in Ihrem $Home-Verzeichnis, wie etwa SSH-Schlüssel, werden beständig in Ihrem Datenträgerimage gespeichert, das in der eingebundenen Dateitreigabe gespeichert ist. Wenden Sie beim Speichern von Dateien in Ihrem $Home-Verzeichnis und der eingebundenen Dateifreigabe bewährte Methoden an.
+
+[Weitere Informationen zu Cloud Shell-Speicher, dem Aktualisieren von Dateifreigaben und dem Upload/Download von Dateien.] (persisting-shell-storage.md).
 
 ## <a name="concepts"></a>Konzepte
 * Cloud Shell wird auf einem temporären Computer ausgeführt, der pro Sitzung und pro Benutzer bereitgestellt wird.

@@ -13,25 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 84ce4b288c23c7005ac92f18ee26af70479deb8d
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 4453876c126289f922d6d08d321707e1d10004e3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Verwalten von Azure-Datenträgern mit der Azure-CLI
 
-Dieses Tutorial behandelt die verschiedenen Typen von VM-Datenträgern, das Auswählen einer Datenträgerkonfiguration sowie das Erstellen von Datenträgern und deren Anfügen an virtuelle Azure-Computer. Darüber hinaus wird in diesem Tutorial erläutert, wie Datenträger-Momentaufnahmen erstellt werden. 
+Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten der virtuellen Computer. Beim Erstellen eines virtuellen Computers muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. Dieses Tutorial behandelt die Bereitstellung und Verwaltung der Datenträger von virtuellen Computern. Sie erhalten Informationen zu folgenden Themen:
 
-Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
+> [!div class="checklist"]
+> * Betriebssystem-Datenträger und temporäre Datenträger
+> * Datenträger
+> * Standard- und Premium-Datenträger
+> * Datenträgerleistung
+> * Anfügen und Vorbereiten von Datenträgern für Daten
+> * Ändern der Größe von Datenträgern
+> * Momentaufnahmen von Datenträgern
+
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 
-Beim Erstellen eines virtuellen Azure-Computers werden dem virtuellen Computer automatisch zwei Datenträger angefügt. 
+Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automatisch an den virtuellen Computer angefügt. 
 
 **Betriebssystem-Datenträger**: Betriebssystem-Datenträger können in der Größe auf bis zu 1TB angepasst werden und hosten das Betriebssystem des virtuellen Computers. Der Betriebssystem-Datenträger wird standardmäßig mit */dev/sda* bezeichnet. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Aufgrund dieser Konfiguration sollte der Betriebssystem-Datenträger **nicht** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert. 
 
@@ -39,7 +48,7 @@ Beim Erstellen eines virtuellen Azure-Computers werden dem virtuellen Computer a
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
 
-| Typ | Größe des virtuellen Computers | Max. Größe des temporären Datenträgers |
+| Typ | Größe des virtuellen Computers | Max. Größe des temporären Datenträgers (GB) |
 |----|----|----|
 | [Allgemeiner Zweck](sizes-general.md) | A- und D-Serie | 800 |
 | [Computeoptimiert](sizes-compute.md) | F-Serie | 800 |
@@ -50,7 +59,7 @@ Beim Erstellen eines virtuellen Azure-Computers werden dem virtuellen Computer a
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
 
-Zum Installieren von Anwendungen und zum Speichern von Daten können weitere Datenträger hinzugefügt werden. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger hat eine maximale Kapazität von 1TB. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die dem virtuellen Computer angefügt werden können. Für jeden Kernspeicher eines virtuellen Computers können zwei Datenträger angefügt werden. 
+Zum Installieren von Anwendungen und zum Speichern von Daten können weitere Datenträger hinzugefügt werden. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger hat eine maximale Kapazität von 1 TB. Die Größe eines virtuellen Computers bestimmt die Anzahl der Datenträger, die an den virtuellen Computer angefügt werden können. Für jeden Kernspeicher eines virtuellen Computers können zwei Datenträger angefügt werden. 
 
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
 
@@ -77,7 +86,7 @@ Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe 
 
 ### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
 
-|Datenträgertyp des Premium-Speichers | P10 | P20 | P30 |
+|Storage Premium-Datenträgertyp | P10 | P20 | P30 |
 | --- | --- | --- | --- |
 | Datenträgergröße (aufgerundet) | 128 GB | 512 GB | 1.024GB (1TB) |
 | Max. IOPS pro Datenträger | 500 | 2.300 | 5.000 |
@@ -274,6 +283,19 @@ az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zu VM-Datenträgern erhalten. Im nächsten Tutorial erfahren Sie, wie die VM-Konfiguration automatisiert werden kann.
+In diesem Tutorial haben Sie Informationen zu VM-Datenträgern erhalten, darunter die folgenden:
 
-[Automatisieren der VM-Konfiguration](./tutorial-automate-vm-deployment.md)
+> [!div class="checklist"]
+> * Betriebssystem-Datenträger und temporäre Datenträger
+> * Datenträger
+> * Standard- und Premium-Datenträger
+> * Datenträgerleistung
+> * Anfügen und Vorbereiten von Datenträgern für Daten
+> * Ändern der Größe von Datenträgern
+> * Momentaufnahmen von Datenträgern
+
+Im nächsten Tutorial erfahren Sie, wie die VM-Konfiguration automatisiert werden kann.
+
+> [!div class="nextstepaction"]
+> [Automatisieren der VM-Konfiguration](./tutorial-automate-vm-deployment.md)
+
