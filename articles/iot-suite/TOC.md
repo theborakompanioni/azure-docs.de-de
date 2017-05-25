@@ -30,7 +30,6 @@
 ### [C unter Windows](iot-suite-connecting-devices.md)
 ### [C unter Linux](iot-suite-connecting-devices-linux.md)
 ### [Node.js](iot-suite-connecting-devices-node.md)
-## [Verbinden Ihres mbed-Geräts](iot-suite-connecting-devices-mbed.md)
 ## [Verbinden einer Logik-App mit der Remoteüberwachungslösung](iot-suite-logic-apps-tutorial.md)
 ## [Anpassen vorkonfigurierter Lösungen](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [Verwenden dynamischer Telemetriedaten mit der Remoteüberwachungslösung](iot-suite-dynamic-telemetry.md)
