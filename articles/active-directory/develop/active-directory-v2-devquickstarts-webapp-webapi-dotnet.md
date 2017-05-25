@@ -14,9 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
 ms.openlocfilehash: c6cca8fda4ba6a26d5ee74b43e0bae37639865c5
+ms.contentlocale: de-de
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -198,10 +201,5 @@ Weitere Ressourcen:
 
 ## <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

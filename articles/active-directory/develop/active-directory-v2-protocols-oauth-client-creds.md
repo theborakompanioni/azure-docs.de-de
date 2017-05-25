@@ -15,9 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08e2e561b6b939de4d829c816c1948361e16f6c4
 ms.openlocfilehash: 2bbfed6e14a77964a32b84ae3f78f3529f13043c
+ms.contentlocale: de-de
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -207,10 +210,5 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 ## <a name="code-sample"></a>Codebeispiel
 Ein Beispiel für eine Anwendung, die die Gewährung von Clientanmeldeinformationen über den Endpunkt für die Administratorzustimmung implementiert, finden Sie in unserem [v2.0-Daemon-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

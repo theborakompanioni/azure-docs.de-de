@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
 ms.openlocfilehash: e00ceb8dd87e00bbdd05146e107c72e6182eb474
+ms.contentlocale: de-de
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -201,9 +204,4 @@ Content-Type: application/json
 Sie können das resultierende Zugriffstoken in HTTP-Anforderungen an die Ressource verwenden. Es zeigt der Ressource zuverlässig, dass die App über die erforderliche Berechtigung verfügt, eine bestimmte Aufgabe auszuführen.  
 
 Weitere Informationen zum OAuth 2.0-Protokoll und zum Abrufen von Zugriffstoken finden Sie in der [Protokollreferenz zum v2.0-Endpunkt](active-directory-v2-protocols.md).
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -14,9 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
-translationtype: Human Translation
+ms.custom: aaddev
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
 ms.openlocfilehash: 3f2e856b71a42fe677d92c9c020236b8f0da9c1e
+ms.contentlocale: de-de
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -245,10 +248,5 @@ Weitere Informationen zum v2.0-Endpunkt finden Sie im [v2.0-Entwicklerhandbuch](
 
 ## <a name="get-security-updates-for-our-products"></a>Abrufen von Sicherheitsupdates für unsere Produkte
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
