@@ -1,86 +1,98 @@
 ---
 title: Intelligente Erkennung von Leistungsabweichungen | Microsoft Docs
-description: "Application Insights führt eine proaktive Analyse Ihrer App-Telemetrie durch und warnt Sie vor potenziellen Problemen. Dieses Feature muss nicht konfiguriert werden."
+description: "Application Insights führt eine intelligente Analyse Ihrer App-Telemetriedaten durch und warnt Sie vor potenziellen Problemen. Dieses Feature muss nicht konfiguriert werden."
 services: application-insights
 documentationcenter: windows
 author: antonfrMSFT
-manager: douge
+manager: carmonm
 ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 843a3cafd5a00dd4b4de04a43f18d58e60a48b29
-ms.lasthandoff: 04/12/2017
+ms.date: 5/04/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 080b732d78731e6281e82ddc28a3e84ae8755ffa
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
+[Application Insights](app-insights-overview.md) analysiert die Leistung Ihrer Webanwendung automatisch und kann Sie vor potenziellen Problemen warnen. Sie lesen diese Information möglicherweise, weil Sie eine Benachrichtigung der intelligenten Erkennung erhalten haben.
 
-[Application Insights](app-insights-overview.md) führt eine umfassende Analyse Ihrer App-Telemetrie durch und kann Sie bei potenziellen Leistungsproblemen warnen. Sie lesen dies wahrscheinlich, da Sie eine unser intelligenten Warnungen per E-Mail erhalten haben.
+Für diese Funktion müssen Sie lediglich Ihre App für Application Insights (auf [ASP.NET](app-insights-asp-net.md), Java (app-insights-java-get-started.md) oder [Node.js](app-insights-nodejs.md) und in [Webseitencode](app-insights-javascript.md)) konfigurieren. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten generiert.
 
-Für dieses Feature ist kein Setup erforderlich und ist automatisch aktiviert, wenn Ihre App genügend Telemetriedaten generiert.
+## <a name="when-would-i-get-a-smart-detection-notification"></a>Wann erhalte ich eine Benachrichtigung der intelligenten Erkennung?
 
-## <a name="what-is-smart-detection-of-performance-anomalies"></a>Was ist die intelligente Erkennung von Leistungsabweichungen?
-Bei der intelligenten Erkennung werden ungewöhnliche Muster in Bezug auf die Leistung der App erkannt, indem die von Ihrer App an Application Insights gesendeten Telemetriedaten analysiert werden.
+Application Insights hat festgestellt, dass die Leistung Ihrer Anwendung auf eine der folgenden Weisen beeinträchtigt wird:
 
-Es werden vor allem Leistungsprobleme ermittelt, die sich nur auf einige Ihrer Benutzer auswirken oder nur in bestimmten Fällen eine Auswirkung für Benutzer darstellen.
+* **Beeinträchtigte Antwortzeit** – Ihre App reagiert langsamer auf Anforderungen als gewöhnlich. Die Änderung erfolgte möglicherweise plötzlich, z.B. aufgrund einer Regression in Ihrer aktuellen Bereitstellung. Oder sie erfolgte schrittweise, wurde möglicherweise durch einen Speicherverlust verursacht. 
+* **Beeinträchtigte Dauer der Abhängigkeit** – Ihre App ruft eine REST-API, Datenbank oder eine andere Abhängigkeit auf. Die Abhängigkeit reagiert langsamer als gewöhnlich.
+* **Langsames Leistungsmuster** – In Ihrer App scheint ein Leistungsproblem vorzuliegen, das sich nur auf einige Anforderungen auswirkt. Beispielsweise werden Seiten mit einigen Browsertypen deutlich langsamer als mit anderen Browsern geladen, oder Anforderungen werden über einen bestimmten Server deutlich langsamer bereitgestellt. Derzeit überprüfen wir mit unseren Algorithmen die Seitenladezeiten, Antwortzeiten von Anforderungen und Antwortzeit von Abhängigkeiten.  
 
-Beispielsweise können Sie benachrichtigt werden, ob Ihre App-Seiten mit einigen Browsertypen deutlich langsamer als bei anderen Browsern geladen werden oder ob Anforderungen über einen bestimmten Server deutlich langsamer bereitgestellt werden. Außerdem können Probleme mit Kombinationen von Eigenschaften erkannt werden, z. B. das langsame Laden von Seiten in einem geografischen Bereich zu einer bestimmten Tageszeit.
+Die intelligente Erkennung benötigt ein bearbeitbares Volumen an Telemetriedaten von mindestens acht Tagen, um eine Baseline für normale Leistung zu erstellen. Nachdem Ihre Anwendung über diesen Zeitraum ausgeführt wurde, erhalten Sie daher eine Benachrichtigung über wichtige Probleme.
 
-Anomalien dieser Art sind nicht leicht zu erkennen, wenn nur die Daten untersucht werden, aber sie kommen häufiger vor, als man denkt. Sie erfahren davon meistens erst, wenn Sie Beschwerden von Kunden erhalten. Dann ist es bereits zu spät: Die betroffenen Benutzer wandern zur Konkurrenz ab!
 
-Derzeit überprüfen wir mit unseren Algorithmen die Seitenladezeiten, Reaktionszeiten auf Anforderungen auf dem Server und Reaktionszeiten von Abhängigkeiten.  
+## <a name="does-my-app-definitely-have-a-problem"></a>Liegt wirklich ein Problem mit meiner App vor?
 
-Sie müssen keine Schwellenwerte festlegen und keine Regeln konfigurieren. Machine Learning- und Data Mining-Algorithmen werden verwendet, um ungewöhnliche Muster zu erkennen.
+Nein, eine Benachrichtigung bedeutet nicht zwingend, dass ein Problem mit Ihrer App vorliegt. Es handelt sich lediglich um Vorschlag über etwas, das Sie sich möglicherweise genauer ansehen möchten.
 
-## <a name="about-the-smart-detection-alert"></a>Informationen zu Warnungen der intelligenten Erkennung
-* *Warum habe ich diese E-Mail erhalten?*
-  * Die von Ihrer Anwendung an Application Insights gesendeten Telemetriedaten wurden mit der intelligenten Erkennung analysiert. Dabei wurde ein Leistungsproblem in der Anwendung erkannt.
-* *Bedeutet die Benachrichtigung, dass ich definitiv ein Problem habe?*
-  * Nein. Es handelt sich lediglich um Vorschlag über etwas, das Sie sich möglicherweise genauer ansehen möchten.
-* *Wie sollte ich vorgehen?*
-  * [Sehen Sie sich die dargestellten Daten an](#responding-to-an-alert). Verwenden Sie den Metrik-Explorer, um die Leistung im Zeitverlauf zu überprüfen und zusätzliche Metriken anzuzeigen. Verwenden Sie die Suche, um bestimmte Ereignisse herauszufiltern, mit denen Sie die Ursache ermitteln können.
+## <a name="how-do-i-fix-it"></a>Wie behebe ich das Problem?
+
+Die Benachrichtigungen enthalten Diagnoseinformationen. Hier sehen Sie ein Beispiel:
+
+
+![Hier sehen Sie ein Beispiel, in dem eine schlechtere Antwortzeit ermittelt wurde.](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+
+1. **Eingrenzung**. Diese Benachrichtigung zeigt an, wie viele Benutzer oder wie viele Vorgänge betroffen sind. Dadurch können Sie dem Problem eine Priorität zuweisen.
+2. **Umfang**. Betrifft das Problem den gesamten Datenverkehr oder nur bestimmte Seiten? Ist das Problem auf bestimmte Browser oder Standorte beschränkt? Diese Informationen können Sie der Benachrichtigung entnehmen.
+3. **Diagnose**. Häufig finden Sie in den Diagnoseinformationen in der Benachrichtigung eine mögliche Ursache des Problems. Wird die Antwortzeit z.B. durch eine höhere Anforderungsrate verlängert, liegt möglicherweise eine Überlastung Ihres Servers oder Ihrer Abhängigkeiten vor. 
+
+    Öffnen Sie andernfalls das Blatt „Leistung“ im Application Insights. Dort finden Sie [Profiler](app-insights-profiler.md)-Daten. Wenn Ausnahmen ausgelöst werden, können Sie auch den [Snapshot Debugger](app-insights-snapshot-debugger.md) verwenden.
+
+
+
+## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
+
+Benachrichtigungen der intelligenten Erkennung sind standardmäßig aktiviert und werden an Personen gesendet, die über [Besitzer, Mitwirkende und Leser mit Zugriff auf die Application Insights-Ressource](app-insights-resources-roles-access-control.md) verfügen. Um dies zu ändern, klicken Sie in der E-Mail-Benachrichtigung auf **Konfigurieren**, oder öffnen Sie die Einstellungen für die intelligente Erkennung in Application Insights. 
+  
+  ![Einstellungen für die intelligente Erkennung](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  
+  * Der Link **Abbestellen** in der E-Mail der intelligenten Erkennung 
+
+Pro Tag und Application Insights-Ressource wird nur eine E-Mail zu Leistungsanomalien der intelligenten Erkennung gesendet. Die E-Mail wird nur gesendet, wenn an diesem Tag mindestens ein neues Problem erkannt wurde. Sie erhalten Nachrichten nicht mehrfach. 
+
+## <a name="faq"></a>Häufig gestellte Fragen
+
 * *Meine Daten werden also angesehen?*
   * Nein. Der Dienst ist vollständig automatisch. Nur Sie erhalten die Benachrichtigungen. Ihre Daten sind [privat](app-insights-data-retention-privacy.md).
-
-## <a name="the-detection-process"></a>Der Erkennungsvorgang
-* *Welche Arten von Leistungsanomalien werden erkannt?*
-  * Muster, deren Überprüfung für Sie selbst zeitaufwendig wäre Beispiel: schlechte Leistung bei einer bestimmten Kombination aus Ort, Uhrzeit und Plattform
 * *Werden alle der von Application Insights erfassten Daten analysiert?*
-  * Derzeit nicht. Gegenwärtig werden Antwortzeiten auf Anforderungen, Reaktionszeiten von Abhängigkeiten und Seitenladezeiten analysiert. Die Analyse weiterer Metriken wird in Kürze zur Verfügung stehen.
-* *Kann ich meinen eigenen Erkennungsregeln für Anomalien erstellen?*
+  * Derzeit nicht. Gegenwärtig werden Antwortzeiten auf Anforderungen, Reaktionszeiten von Abhängigkeiten und Seitenladezeiten analysiert. Ein Analysen von zusätzlichen Metriken finden Sie in unserem Backlog.
 
-  * Bisher nicht. Sie können aber Folgendes tun:
-  * [Einrichten von Warnungen](app-insights-alerts.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
-  * [Exportieren von Telemetriedaten](app-insights-export-telemetry.md) in eine [Datenbank](app-insights-code-sample-export-sql-stream-analytics.md) oder [in PowerBI](app-insights-export-power-bi.md), mit denen Sie selbst eine Analyse durchführen können.
+* Mit welchen Anwendungstypen ist dies möglich?
+  * Jede Anwendung, die die entsprechenden Telemetrie generiert, erkennt diese Beeinträchtigungen. Wenn Sie Application Insights in Ihrer Web-App installiert haben, werden Anforderungen und Abhängigkeiten automatisch nachverfolgt. Falls Sie in Back-End-Diensten oder anderen Apps Aufrufe von [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) oder [TrackDependency](app-insights-api-custom-events-metrics.md#trackdependency) eingefügt haben, funktioniert die intelligente Erkennung auf die gleiche Weise.
+
+* *Kann ich meine eigenen Erkennungsregeln für Anomalien erstellen oder vorhandene Regeln anpassen?*
+
+  * Das ist leider noch nicht möglich. Jedoch ist Folgendes möglich:
+    * [Einrichten von Warnungen](app-insights-alerts.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
+    * [Exportieren von Telemetriedaten](app-insights-export-telemetry.md) in eine [Datenbank](app-insights-code-sample-export-sql-stream-analytics.md) oder [in PowerBI](app-insights-export-power-bi.md), mit denen Sie selbst eine Analyse durchführen können.
 * *Wie oft wird die Analyse ausgeführt?*
 
-  * Die Analyse der Telemetriedaten vom Vortag wird täglich ausgeführt.
+  * Die Analyse der Telemetriedaten vom Vortag wird täglich ausgeführt (ganzer Tag in Zeitzone UTC).
 * *Ersetzt dies also die [Metrikwarnungen](app-insights-alerts.md)?*
-  * Nein.  Wir können nicht dafür sorgen, dass jedes Verhalten erkannt wird, das Sie als ungewöhnlich erachten könnten.
+  * Nein.  Wir können nicht gewährleisten, dass jedes Verhalten erkannt wird, das Sie möglicherweise als ungewöhnlich erachten.
 
-## <a name="how-to-investigate-the-issues-raised"></a>Gewusst wie: Untersuchen der erkannten Probleme
-Öffnen Sie den Diagnosebericht über die E-Mail oder die Anomalienliste.
 
-![Klicken Sie auf den Link in der E-Mail-Benachrichtigung, um den Diagnosebericht in Azure zu öffnen.](./media/app-insights-proactive-performance-diagnostics/03.png)
-
-* **Wann** gibt die Zeit an, zu der das Problem erkannt wurde.
-* **Was** beschreibt Folgendes:
-
-  * Das erkannte Problem
-  * Die Merkmale der gefundenen Gruppe von Ereignissen, die das problematische Verhalten aufwiesen
-* In der Tabelle wird diese Gruppe mit beeinträchtigter Leistung mit dem durchschnittlichen Verhalten aller anderen Ereignisse verglichen.
-
-Klicken Sie auf die Links, um den Metrik-Explorer und die Suche für die relevanten Berichte zu öffnen, die nach Zeit und Eigenschaften der Gruppe mit beeinträchtigter Leistung gefiltert sind.
-
-Ändern Sie den Zeitraum und die Filter zum Durchsuchen der Telemetrie.
+* *Erhalte ich eine Erinnerung, wenn ich nach einer Benachrichtigung nichts unternehme?*
+  * Nein, Sie erhalten jeweils nur eine Nachricht zu einem Problem. Wenn das Problem weiterhin besteht, wird es im Feed-Blatt der intelligenten Erkennung aktualisiert.
+* *Ich habe die E-Mail verloren. Wo finde ich die Benachrichtigungen im Portal?*
+  * Klicken Sie in der Application Insights-Übersicht Ihrer App auf die Kachel für die **intelligente Erkennung**. Dort finden Sie alle Benachrichtigungen der letzten 90 Tage.
 
 ## <a name="how-can-i-improve-performance"></a>Wie kann ich die Leistung verbessern?
 Langsame und fehlgeschlagene Antworten sind für Websitebenutzer eines der größten Ärgernisse, was Sie sicherlich aus eigener Erfahrung bestätigen können. Daher ist es wichtig, diese Probleme zu beheben.
@@ -88,7 +100,7 @@ Langsame und fehlgeschlagene Antworten sind für Websitebenutzer eines der grö�
 ### <a name="triage"></a>Eingrenzung
 Erstens: Ist es wirklich ein Problem? Wenn eine Seite immer langsam geladen wird, aber nur 1 % der Benutzer Ihrer Website diese Seite anzeigen müssen, gibt es vielleicht wichtigere Dinge, mit denen Sie sich beschäftigen müssen. Falls nur 1 % der Benutzer darauf zugreifen, aber jedes Mal Ausnahmen ausgelöst werden, kann es erforderlich sein, dies zu untersuchen.
 
-Verwenden Sie die Aussage zur Auswirkung in der E-Mail als allgemeinen Anhaltspunkt, aber seien Sie sich bewusst, dass damit nicht alles abgedeckt wird. Sammeln Sie zur Bestätigung weitere Beweise.
+Verwenden Sie die Aussage zur Auswirkung (betroffene Benutzer oder Prozentsatz des Datenverkehrs) als allgemeinen Anhaltspunkt, aber bedenken Sie, dass damit nicht alles abgedeckt wird. Sammeln Sie zur Bestätigung weitere Beweise.
 
 Sehen Sie sich die Parameter des Problems an. Falls eine geografische Abhängigkeit besteht, sollten Sie [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) für diese Region einrichten. Möglicherweise liegen in diesem Umfeld lediglich Netzwerkprobleme vor.
 
@@ -109,32 +121,74 @@ Da Sie im Web viele Ratschläge zur Verbesserung der Serverreaktionszeit und Sei
 * Langsame Serverabhängigkeiten: Sehen Sie sich die geografischen Standorte der Komponenten an. Stellen Sie bei Verwendung von Azure beispielsweise sicher, dass sich der Webserver und die Datenbank in derselben Region befinden. Werden bei Abfragen mehr Informationen als nötig abgerufen? Würde das Zwischenspeichern oder eine Batchverarbeitung helfen?
 * Kapazitätsprobleme: Sehen Sie sich die Servermetriken von Reaktionszeiten und die Anforderungsanzahl an. Wenn für die Antwortzeiten unverhältnismäßige Spitzen gegenüber den Spitzen bei der Anzahl der Anforderungen zu beobachten sind, ist die Wahrscheinlichkeit hoch, dass Ihre Server überlastet sind.
 
-## <a name="notification-emails"></a>E-Mail-Benachrichtigungen
-* *Muss ich diesen Dienst abonnieren, um Benachrichtigungen zu erhalten?*
-  * Nein. Unser Bot überprüft in regelmäßigen Abständen die Daten aller Application Insights-Benutzer und sendet Benachrichtigungen, wenn Probleme erkannt werden.
-* *Kann ich das Abonnement abbestellen oder die Benachrichtigungen stattdessen an meine Kollegen senden lassen?*
 
-  * Klicken Sie auf den Link zum Abbestellen des Abonnements in der Warnung oder in der E-Mail.
+## <a name="server-response-time-degradation"></a>Beeinträchtigte Antwortzeit des Servers
 
-    Derzeit werden Sie an Personen gesendet, die über [Schreibzugriff für die Application Insights-Ressource](app-insights-resources-roles-access-control.md)verfügen.
+Die Benachrichtigung über die beeinträchtigte Antwortzeit enthält folgende Informationen:
 
-    Sie können die Einstellungen für die Liste mit den Empfängern auch auf dem Blatt für die intelligente Erkennung bearbeiten.
-* *Ich möchte nicht mit diesen Nachrichten überflutet werden.*
-  * Sie erhalten nur eine Nachricht pro Tag, in der das relevanteste Problem genannt wird, über das wir noch nicht berichtet haben. Sie erhalten Nachrichten nicht mehrfach.
-* *Erhalte ich eine Erinnerung, wenn ich nichts unternehme?*
-  * Nein, Sie erhalten jeweils nur eine Nachricht zu einem Problem.
-* *Ich habe die E-Mail verloren. Wo finde ich die Benachrichtigungen im Portal?*
-  * Klicken Sie in der Application Insights-Übersicht Ihrer App auf die Kachel für die **intelligente Erkennung**. Dort finden Sie alle Benachrichtigungen der letzten 7 Tage.
+* Die Antwortzeit im Vergleich zur normalen Antwortzeit für diesen Vorgang.
+* Wie viele Benutzer betroffen sind.
+* Die durchschnittliche Antwortzeit und die Antwortzeit des 90. Quantils für diesen Vorgang am Tag der Erkennung und an den 7 Tagen davor. 
+* Die Anzahl dieser Vorgangsanforderungen am Tag der Erkennung und an den 7 Tagen davor.
+* Korrelation zwischen Beeinträchtigungen bei diesem Vorgang und Beeinträchtigungen in zugehörigen Abhängigkeiten. 
+* Links mit Informationen zur Problembehebung.
+  * Mit Profiler-Ablaufverfolgungen können Sie die Vorgangszeit anzeigen (der Link ist verfügbar, wenn während des Erkennungszeitraums Beispiele der Profiler-Ablaufverfolgung für diesen Vorgang erfasst wurden). 
+  * Leistungsberichte im Metrikexplorer, in dem Sie Zeitbereiche/Filter für diesen Vorgang segmentieren können.
+  * Suchen Sie nach diesen Aufrufen, um Eigenschaften bestimmter Aufrufe anzuzeigen.
+  * Fehlerberichte – Beträgt der Zähler > 1, lagen Fehler im Vorgang vor, die zur Leistungsbeeinträchtigung beigetragen haben könnten.
+
+## <a name="dependency-duration-degradation"></a>Beeinträchtigung der Abhängigkeitsdauer
+
+Moderne Anwendungen verwenden zunehmend den Mikroservices-Entwurfsansatz, der in vielen Fällen zur Abhängigkeit von externen Diensten führt. Wenn beispielsweise Ihre Anwendung von einer Datenplattform abhängt oder Sie einen eigenen Botdienst entwickeln, benötigen Sie wahrscheinlich einen Cognitive Services-Anbieter, um eine menschlichere Interaktion Ihrer Bots zu ermöglichen, und einen Datenspeicherdienst, aus dem der Bot Anworten abrufen kann.  
+
+Beispiel einer Benachrichtigung über beeinträchtigte Abhängigkeit:
+
+![Hier sehen Sie ein Beispiel, in dem eine beeinträchtigte Abhängigkeitsdauer erkannt wurde.](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+
+Sie enthält folgende Angaben:
+
+* Die Dauer im Vergleich zur normalen Antwortzeit für diesen Vorgang
+* Wie viele Benutzer betroffen sind
+* Die durchschnittliche Dauer und Dauer des 90. Quantils für diese Abhängigkeit am Tag der Erkennung und an den 7 Tagen davor
+* Anzahl der Abhängigkeitsaufrufe am Tag der Erkennung und an den 7 Tagen davor
+* Links mit Informationen zur Problembehebung
+  * Leistungsberichte im Metrikexplorer für diese Abhängigkeit
+  * Suche nach dieser Abhängigkeit, um Eigenschaften von Aufrufen anzuzeigen
+  * Fehlerberichte – Beträgt der Zähler >1, lagen Fehler in Abhängigkeitsaufrufen während des Erkennungszeitraums vor, die zur Beeinträchtigung der Dauer beigetragen haben könnten. 
+  * Öffnen von Analytics mit Abfragen, die Dauer und Anzahl dieser Abhängigkeit berechnen  
+
+## <a name="smart-detection-of-slow-performing-patterns"></a>Intelligente Erkennung langsamer Leistungsmuster 
+
+Application Insights ermittelt Leistungsprobleme, die sich möglicherweise nur auf einige Benutzer auswirken oder nur in bestimmten Fällen eine Auswirkung für Benutzer darstellen. Beispielsweise werden Sie benachrichtigt, wenn Seiten mit einem Browsertyp deutlich langsamer als bei anderen Browsertypen geladen werden oder wenn Anforderungen über einen bestimmten Server deutlich langsamer bereitgestellt werden. Außerdem können Probleme mit Kombinationen von Eigenschaften erkannt werden, z.B. das langsame Laden von Seiten in einem geografischen Bereich mit Clients, die ein bestimmtes Betriebssystem verwenden.  
+
+Anomalien dieser Art sind nicht leicht zu erkennen, wenn nur die Daten untersucht werden, aber sie kommen häufiger vor, als man denkt. Sie erfahren davon meistens erst, wenn Sie Beschwerden von Kunden erhalten. Dann ist es bereits zu spät: Die betroffenen Benutzer wandern zur Konkurrenz ab!
+
+Derzeit überprüfen wir mit unseren Algorithmen die Seitenladezeiten, Reaktionszeiten auf Anforderungen auf dem Server und Reaktionszeiten von Abhängigkeiten.  
+
+Sie müssen keine Schwellenwerte festlegen und keine Regeln konfigurieren. Machine Learning- und Data Mining-Algorithmen werden verwendet, um ungewöhnliche Muster zu erkennen.
+
+![Klicken Sie auf den Link in der E-Mail-Benachrichtigung, um den Diagnosebericht in Azure zu öffnen.](./media/app-insights-proactive-performance-diagnostics/03.png)
+
+* **Wann** gibt die Zeit an, zu der das Problem erkannt wurde.
+* **Was** beschreibt Folgendes:
+
+  * Das erkannte Problem
+  * Die Merkmale der gefundenen Gruppe von Ereignissen, die das problematische Verhalten aufwiesen
+* In der Tabelle wird diese Gruppe mit beeinträchtigter Leistung mit dem durchschnittlichen Verhalten aller anderen Ereignisse verglichen.
+
+Klicken Sie auf die Links, um den Metrik-Explorer und die Suche für die relevanten Berichte zu öffnen, die nach Zeit und Eigenschaften der Gruppe mit beeinträchtigter Leistung gefiltert sind.
+
+Ändern Sie den Zeitraum und die Filter zum Durchsuchen der Telemetrie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen:
 
-* [Metrik-Explorer](app-insights-metrics-explorer.md)
-* [Suchexplorer](app-insights-diagnostic-search.md)
-* [Analytics: Leistungsfähige Abfragesprache](app-insights-analytics-tour.md)
+* [Profiler](app-insights-profiler.md) 
+* [Snapshot Debugger](app-insights-snapshot-debugger.md)
+* [Analyse](app-insights-analytics-tour.md)
+* [Intelligente Analysediagnose](app-insights-analytics-diagnostics.md)
 
 Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
 * [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
 * [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
-

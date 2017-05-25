@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 37b85ba4987f8f29e4e825a17f0a892ddabf9599
-ms.lasthandoff: 04/12/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e76a31a8eaa249ab064d180bfd7ed158ef32c85a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -86,19 +87,35 @@ Heften Sie zum Speichern der angewendeten Filter die gefilterte Ansicht an ein [
 
 ![An Dashboard anheften](./media/app-insights-app-map/12.png)
 
+## <a name="error-pane"></a>Fehlerbereich
+Wenn Sie auf einen Knoten in der Zuordnung klicken, wird ein Fehlerbereich auf der rechten Seite angezeigt, in dem die Fehler für diesen Knoten zusammengefasst sind. Fehler werden zunächst nach Vorgangs-ID und dann nach Problem-ID gruppiert.
+
+![Fehlerbereich](./media/app-insights-app-map/error-pane.png)
+
+Durch Klicken auf einen Fehler wird die letzte Instanz dieses Fehlers aufgerufen.
+
+## <a name="resource-health"></a>Ressourcenintegrität
+Für einige Ressourcentypen wird die Ressourcenintegrität oben im Fehlerbereich angezeigt. Beispiel: Wenn Sie auf einen SQL-Knoten klicken, werden die Datenbankintegrität und ausgelöste Warnungen angezeigt.
+
+![Ressourcenintegrität](./media/app-insights-app-map/resource-health.png)
+
+Sie können auf den Ressourcennamen klicken, um Standardübersichtsmetriken für diese Ressourcen anzuzeigen.
+
 ## <a name="end-to-end-system-app-maps"></a>Lückenlose System-App-Zuordnungen
+
+*SDK-Version 2.3 oder höher erforderlich*
 
 Wenn Ihre Anwendung mehrere Komponenten hat, z.B. zusätzlich zur Web-App einen Back-End-Dienst, können sie alle in einer integrierten App-Zuordnung anzeigen.
 
 ![Filter festlegen](./media/app-insights-app-map/multi-component-app-map.png)
 
-Die App-Zuordnung findet Serverknoten, indem alle Application Insights-Ressourcen innerhalb der aktuellen Ressourcengruppe gesucht werden. Sie erkennt auch Serverknoten durch Folgen aller Abhängigkeitsaufrufe, die von Application Insights-Ressourcen in der aktuellen Ressourcengruppe nachverfolgt werden.
+Die App-Zuordnung ermittelt Serverknoten, indem sie mit dem Application Insights SDK HTTP-Abhängigkeitsaufrufe zwischen Servern verfolgt. Bei jeder Application Insights-Ressource wird davon ausgegangen, dass sie einen Server enthält.
 
+### <a name="multi-role-app-map-preview"></a>App-Zuordnung mit mehreren Rollen (Vorschau)
 
-### <a name="setting-up"></a>Einrichten
+Das Vorschaufeature für die App-Zuordnung mit mehreren Rollen ermöglicht es Ihnen, die App-Zuordnung mit mehreren Servern zu nutzen, die Daten an die gleiche Application Insights-Ressource bzw. den gleichen Instrumentierungsschlüssel senden. Server in der Zuordnung sind nach der Eigenschaft „cloud_RoleName“ für Telemetrieelemente segmentiert. Legen Sie auf dem Blatt „Previews“ (Vorschauen) für *Multi-role Application Map* (Anwendungszuordnung mit mehreren Rollen) die Option *Ein* fest, um diese Konfiguration zu aktivieren.
 
-> [!NOTE] 
-> Lückenlose System-App-Zuordnungen sind in der Vorschauphase. Sie müssen Ihre Komponenten mit einer speziellen Version des SDK instrumentieren und eine besondere URL nutzen, um die App-Zuordnung anzuzeigen. [Erfahren Sie, wie Sie lückenlose System-App-Zuordnungen einrichten](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-app-map-preview.md).
+Dieser Ansatz ist unter Umständen in einer Microservices-Anwendung oder anderen Szenarien erwünscht, bei denen Sie Ereignisse über mehrere Server hinweg mit einer einzelnen Application Insights-Ressource korrelieren möchten.
 
 ## <a name="video"></a>Video
 
