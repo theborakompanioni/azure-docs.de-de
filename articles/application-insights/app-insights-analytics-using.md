@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 8485fd9350672dd0f41e2d5dada57a1940c43f16
-ms.lasthandoff: 04/13/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6c8df6b9804d082c8044cdb2420cc5ea42b9774f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -123,6 +124,16 @@ Wählen Sie den gewünschten Diagrammtyp:
 Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie die X- und Y-Achse sowie eine Spalte mit Dimensionen auswählen, um die Ergebnisse aufzuteilen.
 
 Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-reference.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
+
+### <a name="analytics-diagnostics"></a>Analytics-Diagnose
+
+
+Wenn in einem Zeitdiagramm eine abrupte Spitze oder ein Sprung in Ihren Daten dargestellt ist, wird unter Umständen ein hervorgehobener Punkt auf der Linie angezeigt. Dieser gibt an, dass die Analytics-Diagnose eine Kombination von Eigenschaften ermittelt hat, die die abrupte Änderung herausfiltert. Klicken Sie auf den Punkt, um weitere Details zum Filter zu erhalten und die gefilterte Version anzuzeigen. Dadurch können Sie vielleicht ermitteln, was die Änderung verursacht hat. 
+
+[Weitere Informationen zur Analytics-Diagnose](app-insights-analytics-diagnostics.md)
+
+
+![Analytics-Diagnose](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>An Dashboard anheften
 Sie können ein Diagramm oder eine Tabelle an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Unter Umständen müssen Sie [das Tarifpaket für Ihre App aktualisieren](app-insights-pricing.md) , um diese Funktion zu aktivieren.) 

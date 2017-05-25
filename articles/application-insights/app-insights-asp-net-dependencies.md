@@ -3,7 +3,7 @@ title: "Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft D
 description: "Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights."
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: d15c4ca8-4c1a-47ab-a03d-c322b4bb2a9e
 ms.service: application-insights
@@ -11,12 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 35817adde713995ec82eead033f058ee109bf900
-ms.lasthandoff: 03/16/2017
+ms.date: 05/04/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c31abf49a05f7911d4ec82db59efa2724ab7b49b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -31,7 +32,7 @@ Der standardmäßig verfügbare Abhängigkeitsmonitor meldet derzeit Aufrufe an 
   * SQL-Datenbanken
   * ASP.NET-Web- und WCF-Dienste, die HTTP-basierte Bindungen verwenden
   * Lokale oder Remote-HTTP-Aufrufe
-  * Azure DocumentDb, Tabelle, Blobspeicher und Warteschlange
+  * Azure Cosmos DB, Tabelle, Blob Storage und Warteschlange
 * Webseiten
   * AJAX-Aufrufe
 
@@ -119,11 +120,11 @@ In einem anderen Fall handelt es sich nicht um einen Abhängigkeitsaufruf mit la
 
 Es scheint eine große Unterbrechung nach dem ersten Abhängigkeitsaufruf zu geben, daher sollten wir den Code betrachten, um den Grund dafür herauszufinden.
 
-### <a name="profiling-your-live-site"></a>Profilerstellung Ihrer Live-Website
+### <a name="profile-your-live-site"></a>Erstellen eines Profils Ihrer Livewebsite
 
-Sie möchten wissen, was am längsten gedauert hat? Der Application Insights-Profiler verfolgt HTTP-Aufrufe zu Ihrer Livewebsite zurück, und zeigt an, welche Funktionen im Code die meiste Zeit in Anspruch genommen haben. Der Profiler befindet sich derzeit in der eingeschränkten Vorschau – Sie können sich [anmelden, um ihn auszuprobieren](https://aka.ms/AIProfilerPreview).
+Sie möchten wissen, was am längsten gedauert hat? Der [Application Insights-Profiler](app-insights-profiler.md) verfolgt HTTP-Aufrufe zu Ihrer Livewebsite zurück, und zeigt an, welche Funktionen im Code die meiste Zeit in Anspruch genommen haben.
 
-## <a name="failed-requests"></a>Failed requests
+## <a name="failed-requests"></a>Anforderungsfehler
 Anforderungsfehler können auch fehlgeschlagenen Aufrufen von Abhängigkeiten zugeordnet werden. Wir können erneut bis zum Problem durchklicken.
 
 ![Klicken Sie auf das Diagramm mit Anforderungsfehlern](./media/app-insights-asp-net-dependencies/06-fail.png)

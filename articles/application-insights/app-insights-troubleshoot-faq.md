@@ -12,11 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 191d9e1197c3526d2f72b972b7fada76dee84447
-ms.lasthandoff: 04/13/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 65c199064273930f66db580b6c01dabb4b906e7a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -103,7 +104,7 @@ Eine Desktop-App, die Sie auf Ihrem IIS-Webserver zum Konfigurieren von Applicat
 Von Server-Web-Apps:
 
 * HTTP-Anforderungen
-* [Abhängigkeiten](app-insights-asp-net-dependencies.md) Aufrufe von SQL-Datenbanken, HTTP-Aufrufe externer Dienste, Aufrufe von Azure DocumentDB, Tabellen, Blob Storage und Warteschlangen. 
+* [Abhängigkeiten](app-insights-asp-net-dependencies.md) Aufrufe von SQL-Datenbanken, HTTP-Aufrufe externer Dienste, Aufrufe von Azure Cosmos DB, Tabellen, Blob Storage und Warteschlangen. 
 * [Ausnahmen](app-insights-asp-net-exceptions.md) und Stapelüberwachungen.
 * [Leistungsindikatoren](app-insights-performance-counters.md) – bei Verwendung von [Statusmonitor](app-insights-monitor-performance-live-website-now.md), Azure-Überwachung („app-insights-azure-web-apps.md“) oder [collectd-Writer für Application Insights](app-insights-java-collectd.md).
 * [Benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md), die Sie codieren.

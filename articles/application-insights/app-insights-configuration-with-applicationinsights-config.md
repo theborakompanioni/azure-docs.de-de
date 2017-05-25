@@ -5,18 +5,20 @@ services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
 editor: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 6e397752-c086-46e9-8648-a1196e8078c2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2016
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: a43eca9878881731f54dc1ec3bc8a9cd15bf2c5e
+ms.date: 05/3/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 52b5be98742c9bf0834c12136416e856af5d99cc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -75,6 +77,18 @@ Meldet die [Antwortzeit und den Ergebniscode](app-insights-asp-net.md) von HTTP-
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` – Verfolgt nicht behandelte Ausnahmen für Workerrollen, Windows-Dienste und Konsolenanwendungen.
 * [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) .
 
+### <a name="eventsource-tracking"></a>EventSource-Nachverfolgung
+Mit `EventSourceTelemetryModule` können Sie EventSource-Ereignisse so konfigurieren, dass sie als Ablaufverfolgungen an Application Insights gesendet werden. Informationen zum Nachverfolgen von EventSource-Ereignissen finden Sie unter [Verwenden von EventSource-Ereignissen](app-insights-asp-net-trace-logs.md#using-eventsource-events).
+
+* `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
+* [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+
+### <a name="etw-event-tracking"></a>ETW-Ereignisnachverfolgung
+Mit `EtwCollectorTelemetryModule` können Sie Ereignisse von ETW-Anbietern so konfigurieren, dass Sie als Ablaufverfolgungen an Application Insights gesendet werden. Informationen zum Nachverfolgen von ETW-Ereignissen finden Sie unter [Verwenden von ETW-Ereignissen](app-insights-asp-net-trace-logs.md#using-etw-events).
+
+* `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
+* [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 Das Microsoft.ApplicationInsights-Paket enthält die [Kern-API](https://msdn.microsoft.com/library/mt420197.aspx) des SDK. Sie wird von den anderen Telemetriemodulen verwendet, und Sie können sie auch [verwenden, um Ihre eigene Telemetrie zu definieren](app-insights-api-custom-events-metrics.md).
 
@@ -117,6 +131,8 @@ Die standardmäßigen Initialisierer werden entweder von den Web- oder WindowsSe
 * `UserTelemetryInitializer` aktualisiert die `Id`- und `AcquisitionDate`-Eigenschaften des `User`-Kontexts für alle Telemetrieelemente mit Werten, die aus dem `ai_user`-Cookie extrahiert werden, der vom Application Insights-JavaScript-Instrumentationscode generiert wird, der im Browser des Benutzers ausgeführt wird.
 * `WebTestTelemetryInitializer` legt die Benutzer-ID, Sitzungs-ID und synthetischen Quelleneigenschaften für die HTTP-Anforderungen fest, die aus [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md)stammen.
   Die `<Filters>` legen identifizierende Eigenschaften der Anforderungen fest.
+
+Für .NET-Anwendungen in Service Fabric können Sie das `Microsoft.ApplicationInsights.ServiceFabric`-NuGet-Paket aufnehmen. Dieses Paket enthält ein `FabricTelemetryInitializer`-Element, wodurch Service Fabric-Eigenschaften zu Telemetrieelementen hinzugefügt werden. Weitere Informationen finden Sie auf der [GitHub-Seite](https://go.microsoft.com/fwlink/?linkid=848457) zu den Eigenschaften, die von diesem NuGet-Paket hinzugefügt werden.
 
 ## <a name="telemetry-processors-aspnet"></a>Telemetrieprozessoren (ASP.NET)
 Mit Telemetrieprozessoren kann jedes Telemetrieelement direkt vor dem Senden vom SDK an das Portal gefiltert und geändert werden.
@@ -261,9 +277,4 @@ Um einen neuen Schlüssel abzurufen, [erstellen Sie eine neue Ressource im Appli
 [new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
