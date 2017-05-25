@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 19fe97eb41be3222a846f86b2a390bf86157884f
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: b64621bb5bc5d3c3e968b8b077bf132ebb1f6838
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -102,7 +103,6 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "version": "3.2",
             "clusterSize": 1,
             "timeToLive": "00:30:00",
             "linkedServiceName": "AzureStorageLinkedService"
@@ -115,7 +115,6 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im C
 
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
-| Version |Gibt die Version des zu erstellenden HDInsight-Clusters als 3.2 an. |
 | ClusterSize |Gibt die Größe des HDInsight-Clusters an. |
 | TimeToLive |Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
 | linkedServiceName |Gibt das Speicherkonto an, das verwendet wird, um die von HDInsight generierten Protokolle zu speichern. |

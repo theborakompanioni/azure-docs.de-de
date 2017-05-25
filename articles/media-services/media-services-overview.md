@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: f22b87fc5bdfe2db5de39adaafe9c71d8c32b26a
-ms.lasthandoff: 01/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 0a84e69f33ae30040c2365e6a5180e17e8df7539
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -74,7 +75,7 @@ Azure Media Services-Konzepte finden Sie unter [Konzepte](media-services-concept
 
 Eine Reihe mit Vorgehensweisen (Gewusst wie), in der die wichtigsten Komponenten von Azure Media Services beschrieben werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)(Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet eine hervorragende Übersicht über die Konzepte und verwendet das AMSE-Tool, um die AMS-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
 
-## <a name="a-idvodscenariosadelivering-media-on-demand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
+## <a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
 In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevanten Themen bereitgestellt. Das folgende Diagramm zeigt die Hauptbestandteile der Media Services-Plattform, die am Bereitstellen von On-Demand-Inhalten beteiligt sind.
 
 ![VoD-Workflow](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
@@ -126,7 +127,7 @@ Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit de
     Wenn Sie einen SAS-Locator verwenden, wird der Inhalt aus dem Azure-Blob-Speicher heruntergeladen. In diesem Fall müssen keine Streamingendpunkte im Status „Gestartet“ vorhanden sein.
 4. Führen Sie einen progressiven Download der Inhalte durch.
 
-## <a name="a-idlivescenariosadelivering-live-streaming-events-with-azure-media-services"></a><a id="live_scenarios"></a>Bereitstellen von Livestreamingereignissen mit Azure Media Services
+## <a id="live_scenarios"></a>Bereitstellen von Livestreamingereignissen mit Azure Media Services
 Beim Arbeiten mit Livestreaming werden normalerweise die folgenden Komponenten verwendet:
 
 * Eine Kamera, mit der ein Ereignis übertragen wird.
@@ -185,8 +186,7 @@ Von Media Services wird die Integration mit Azure CDN unterstützt. Informatione
 Sie können **Media Services** skalieren, indem Sie die Anzahl **reservierter Einheiten für das Streaming** und die Anzahl **reservierter Einheiten für die Codierung** angeben, die für Ihr Konto bereitgestellt werden sollen.
 
 Außerdem können Sie Ihr Media Services-Konto skalieren, indem Sie Speicherkonten hinzufügen. Jedes Speicherkonto ist auf 500 TB beschränkt. Um den Speicher über die Standardbeschränkungen hinaus zu erweitern, können Sie mehrere Speicherkonten mit einem einzelnen Media Services-Konto verknüpfen.
-Media Services-Kunden wählen je nach ihren Anforderungen entweder einen **Standard**-Streamingendpunkt oder mindestens einen **Premium**-Streamingendpunkt. Ein Standard-Streamingendpunkt eignet sich für die meisten Streamingworkloads. Er umfasst die gleichen Features wie Premium-Streamingeinheiten.
-Ein Standard-Streamingendpunkt eignet sich für die meisten Streamingworkloads. Wenn Sie über eine erweiterte Workload verfügen, Ihre Anforderungen an die Streamingkapazität nicht für die Durchsatzziele von Standard-Streamingendpunkten geeignet sind oder Sie die Kapazität des StreamingEndpoint-Diensts steuern möchten, um steigende Bandbreitenanforderungen durch die Anpassung von Skalierungseinheiten zu bewältigen (auch als Premium-Streamingeinheiten bezeichnet), empfehlen wir Ihnen die Zuordnung von Skalierungseinheiten.
+Media Services-Kunden wählen je nach ihren Anforderungen entweder einen **Standard**-Streamingendpunkt oder mindestens einen **Premium**-Streamingendpunkt. Ein Standard-Streamingendpunkt eignet sich für die meisten Streamingworkloads. Er umfasst die gleichen Features wie Premium-Streamingeinheiten. Wenn Sie über eine erweiterte Workload verfügen, Ihre Anforderungen an die Streamingkapazität nicht für die Durchsatzziele von Standard-Streamingendpunkten geeignet sind oder Sie die Kapazität des StreamingEndpoint-Diensts steuern möchten, um steigende Bandbreitenanforderungen durch die Anpassung von Skalierungseinheiten zu bewältigen (auch als Premium-Streamingeinheiten bezeichnet), empfehlen wir Ihnen die Zuordnung von Skalierungseinheiten.
 
 [Dieses Thema](media-services-portal-scale-streaming-endpoints.md) enthält Links zu relevanten Themen.
 

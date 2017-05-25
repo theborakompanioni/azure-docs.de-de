@@ -13,7 +13,7 @@ Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und
 
 ACU: 210 - 250
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/48 |2 moderat |
 | Standard_DS2_v2 |2 |7 |14 |4 |8.000/64 (86) |6.400/96 |2 hoch |

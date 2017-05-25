@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 05/15/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e68815c2dafc596c3560ad3fcb2a7bf96d29182b
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 2364ab79ec4091d41e4d340e13033181df05b507
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="tutorial-get-started-with-the-preconfigured-solutions"></a>Tutorial: Erste Schritte mit den vorkonfigurierten Lösungen
-## <a name="introduction"></a>Einführung
+# <a name="get-started-with-the-preconfigured-solutions"></a>Erste Schritte mit den vorkonfigurierten Lösungen
+
 [Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] von Azure IoT Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte Lösung für die *Remoteüberwachung* stellt eine Verbindung mit Ihren Geräten her und überwacht die Geräte. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und Verbessern der Geschäftsergebnisse verwenden, indem Sie Prozesse so einrichten, dass sie automatisch auf diesen Datenstrom reagieren.
 
 Dieses Tutorial zeigt, wie Sie eine vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der vorkonfigurierten Lösung kennen. Sie können auf einen Großteil dieser Features über das *Lösungsdashboard* zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
@@ -34,8 +35,6 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
 > [!NOTE]
 > Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
-> 
-> 
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 

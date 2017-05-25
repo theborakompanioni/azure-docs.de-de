@@ -5,7 +5,7 @@ Die Ls-Serie ist für Workloads optimiert, für die ein lokaler Speicher mit ger
 
 ACU: 180 - 240
  
-| Größe          | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite | 
+| Größe          | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite | 
 |---------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
 | Standard_L4s  | 4    | 32   | 678   | 8              | N/V/N/V (0)          | 5.000 / 125                               | 2/hoch       | 
 | Standard_L8s  | 8    | 64   | 1.388 | 16             | N/V/N/V (0)          | 10.000/250                              | 4/sehr hoch  | 
