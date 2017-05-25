@@ -12,21 +12,26 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/02/2017
 ms.author: antisch
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: d5ef87e6e7092820a65c5736c1942fd5cec57462
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 ---
 
 # <a name="running-jobs-on-azure-batch-with-azure-cli"></a>Ausführen von Aufträgen in Azure Batch mit der Azure-CLI
 
-Dieses Skript erstellt einen Batch-Auftrag und fügt eine Reihe von Aufgaben zum Auftrag hinzu. Außerdem wird die Überwachung eines Auftrags und seiner Aufgaben veranschaulicht.
-Beim Ausführen des Skripts wird davon ausgegangen, dass bereits ein Batch-Konto eingerichtet wurde und sowohl ein Pool als auch eine Anwendung konfiguriert wurden. Weitere Informationen finden Sie in den [Beispielskripts](../batch-cli-samples.md) zu den einzelnen Themen.
+Dieses Skript erstellt einen Batch-Auftrag und fügt eine Reihe von Aufgaben zum Auftrag hinzu. Außerdem wird die Überwachung eines Auftrags und seiner Aufgaben veranschaulicht. Schließlich erfahren Sie, wie Sie den Batch-Dienst effizient abfragen, um Informationen über die Aufgaben von Aufträgen zu erhalten.
 
-Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um sich bei Azure anzumelden.
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Installieren Sie Azure CLI gemäß den Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
+- Erstellen Sie ein Batch-Konto, falls Sie noch keins besitzen. Ein Beispielskript zum Erstellen eines Kontos finden Sie unter [Erstellen eines Batch-Kontos mit der Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account).
+- Konfigurieren Sie eine Anwendung für die Ausführung aus einer Startaufgabe, wenn dies noch nicht geschehen ist. Unter [Hinzufügen von Anwendungen in Azure Batch mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) finden Sie ein Beispielskript, das eine Anwendung erstellt und ein Anwendungspaket auf Azure hochlädt.
+- Konfigurieren Sie einen Pool, in dem der Auftrag ausgeführt wird. Unter [Verwalten von Azure Batch-Pools mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool) finden Sie ein Beispielskript, das einen Pool entweder mit einer Clouddienstkonfiguration oder einer virtuellen Computerkonfiguration erstellt.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -34,7 +39,7 @@ Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anwe
 
 ## <a name="clean-up-job"></a>Bereinigungsauftrag
 
-Nachdem Sie das oben aufgeführte Beispielskript ausgeführt haben, entfernen Sie den Auftrag und alle seine Aufgaben mit dem folgenden Befehl. Beachten Sie, dass der Pool separat gelöscht werden muss. Informationen hierzu finden Sie unter der [Tutorial zum Verwalten von Pools](./batch-cli-sample-manage-pool.md).
+Nachdem Sie das oben aufgeführte Beispielskript ausgeführt haben, entfernen Sie den Auftrag und alle seine Aufgaben mit dem folgenden Befehl. Beachten Sie, dass der Pool separat gelöscht werden muss. Weitere Informationen zum Erstellen und Löschen von Pools finden Sie unter [Verwalten von Azure Batch-Pools mit der Azure-Befehlszeilenschnittstelle](./batch-cli-sample-manage-pool.md).
 
 ```azurecli
 az batch job delete --job-id myjob
@@ -52,6 +57,7 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen eines Batch-Auftrags
 | [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | Ruft Details eines angegebenen Batch-Auftrags ab.  |
 | [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | Fügt eine Aufgabe zum angegebenen Batch-Auftrag hinzu.  |
 | [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | Ruft die Details einer Aufgabe aus dem angegebenen Batch-Auftrag ab.  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | Listet die dem angegebenen Auftrag zugeordneten Aufgaben auf.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

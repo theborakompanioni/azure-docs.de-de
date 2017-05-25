@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 03/062/2016
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 64babace9ec5aa61acb396edf86f889e96a52c71
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c9376b95e4686f804d34f648e15cfcc0f2847718
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation für SQL-Daten
 Informationen zum Initiieren eines Failovers mit dem Azure-Portal finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md).
 
 > [!NOTE]
-> Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch zu lesbaren sekundären Datenbanken aktualisiert.
+> Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wurde der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken wurden automatisch zu lesbaren sekundären Datenbanken aktualisiert.
 > 
 > 
 
@@ -74,7 +74,7 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie zur primären Datenbank wird.  
 
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
-2. Wählen Sie auf dem Blatt „SQL-Datenbank“ **Alle Einstellungen** > **Georeplikation**.
+2. Wählen Sie auf dem Blatt „SQL-Datenbank“ **Alle Einstellungen** > **Georeplikation** aus.
 3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die zur neuen primären Datenbank werden soll. Klicken Sie anschließend auf **Failover**.
    
     ![Failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)

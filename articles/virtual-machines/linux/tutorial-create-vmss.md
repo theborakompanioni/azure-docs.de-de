@@ -13,21 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 6be49be9e4321075aa76b3abcf4695d0e7b45f6e
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: 972c6f60c8963cad6f92b228e795a5027b838f00
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hoch verfügbaren App unter Linux
-In diesem Tutorial erfahren Sie, wie sich mithilfe von VM-Skalierungsgruppen in Azure die Anzahl der virtuellen Computer (VMs), auf denen Ihre App ausgeführt wird, schnell skalieren lässt. Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. Um eine VM-Skalierungsgruppe in Aktion zu sehen, erstellen Sie eine Node.js-App, die auf mehreren virtuellen Linux-Computern ausgeführt wird.
+Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine Skalierungsgruppe für virtuelle Computer bereit. Folgendes wird vermittelt:
 
-Die Schritte in diesem Tutorial können mit der neuesten Version von [Azure CLI 2.0](/cli/azure/install-azure-cli) ausgeführt werden.
+> [!div class="checklist"]
+> * Verwenden von cloud-init zum Erstellen einer zu skalierenden Anwendung
+> * Erstellen einer Skalierungsgruppe für virtuelle Computer
+> * Erhöhen oder Verringern der Anzahl der Instanzen in einer Skalierungsgruppe
+> * Anzeigen von Verbindungsinformationen für die Skalierungsgruppeninstanzen
+> * Verwenden von Datenträgern mit Skalierungsgruppen
 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
 
 ## <a name="scale-set-overview"></a>Übersicht über Skalierungsgruppen
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. In Skalierungsgruppen werden die gleichen Komponenten verwendet, die Sie im vorherigen Tutorial [Erstellen von hoch verfügbaren virtuellen Computern](tutorial-availability-sets.md) kennengelernt haben. Virtuelle Computer in einer Skalierungsgruppe werden in einer Verfügbarkeitsgruppe erstellt und auf logische Fehler- und Updatedomänen verteilt.
@@ -86,10 +92,10 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *westus* eine Ressourcengruppe mit dem Namen *myResourceGroupScaleSet*.
+Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *eastus* eine Ressourcengruppe mit dem Namen *myResourceGroupScaleSet*:
 
 ```azurecli
-az group create --name myResourceGroupScaleSet --location westus
+az group create --name myResourceGroupScaleSet --location eastus
 ```
 
 Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel werden eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, der virtuelle Computer mithilfe der cloud-init-Datei angepasst und (sofern noch nicht vorhanden) SSH-Schlüssel generiert:
@@ -161,8 +167,8 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 ```azurecli
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup            VmId
 ------------  --------------------  ----------  ------------  -------------------  -----------------------  ------------------------------------
-           1  True                  westus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
-           3  True                  westus      myScaleSet_3  Succeeded            MYRESOURCEGROUPSCALESET  44266022-65c3-49c5-92dd-88ffa64f95da
+           1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
+           3  True                  eastus      myScaleSet_3  Succeeded            MYRESOURCEGROUPSCALESET  44266022-65c3-49c5-92dd-88ffa64f95da
 ```
 
 
@@ -241,7 +247,16 @@ az vmss disk detach `
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie erfahren, wie Sie eine VM-Skalierungsgruppe erstellen. Im nächsten Tutorial erhalten Sie weitere Informationen zu den Konzepten des Lastenausgleichs für virtuelle Computer.
+In diesem Tutorial haben Sie eine Skalierungsgruppe für virtuelle Computer bereitgestellt. Es wurde Folgendes vermittelt:
 
-[Lastenausgleich für virtuelle Computer](tutorial-load-balancer.md)
+> [!div class="checklist"]
+> * Verwenden von cloud-init zum Erstellen einer zu skalierenden Anwendung
+> * Erstellen einer Skalierungsgruppe für virtuelle Computer
+> * Erhöhen oder Verringern der Anzahl der Instanzen in einer Skalierungsgruppe
+> * Anzeigen von Verbindungsinformationen für die Skalierungsgruppeninstanzen
+> * Verwenden von Datenträgern mit Skalierungsgruppen
 
+Im nächsten Tutorial erhalten Sie weitere Informationen zu den Konzepten des Lastenausgleichs für virtuelle Computer.
+
+> [!div class="nextstepaction"]
+> [Lastenausgleich für virtuelle Computer](tutorial-load-balancer.md)

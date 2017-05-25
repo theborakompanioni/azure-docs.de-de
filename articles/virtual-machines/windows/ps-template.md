@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: acb8dda8819099595893f2ea65b23e76223507bd
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 67b023ccd761bc08b96c9ebda907c6451bfbe52f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -101,6 +102,6 @@ Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
 
 - Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../../resource-manager-common-deployment-errors.md) lesen.
 - Erfahren Sie, wie Sie Azure PowerShell zum Erstellen eines virtuellen Computers verwenden können: [Erstellen einer Windows-VM mit dem Resource Manager und PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Erfahren Sie, wie Sie den erstellten virtuellen Computer verwalten, indem Sie [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) durcharbeiten.
 
 

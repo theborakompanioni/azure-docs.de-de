@@ -12,21 +12,24 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/02/2017
 ms.author: antisch
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 342cc2c93304f7a8f651769139e28ebf2e30d412
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5d057eaf32867aedc95d58c5185e2be1f9385ec0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 ---
 
 # <a name="adding-applications-to-azure-batch-with-azure-cli"></a>Hinzufügen von Anwendungen in Azure Batch mit der Azure-Befehlszeilenschnittstelle
 
 Dieses Skript veranschaulicht die Einrichtung einer Anwendung für die Verwendung mit einem Azure Batch-Pool oder -Task. Für das Einrichten einer Anwendung fassen Sie die ausführbare Datei mit sämtlichen Abhängigkeiten in einer ZIP-Datei zusammen. In diesem Beispiel hat die ausführbare ZIP-Datei den Namen „my-application-exe.zip“.
-Bei der Ausführung des Skripts wird davon ausgegangen, dass bereits ein Batch-Konto eingerichtet wurde. Weitere Informationen finden Sie im [Beispielskript für das Erstellen eines Batch-Kontos](./batch-cli-sample-create-account.md).
 
-Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um sich bei Azure anzumelden.
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Installieren Sie Azure CLI mithilfe der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
+- Erstellen Sie ein Batch-Konto, falls Sie noch keins besitzen. Ein Beispielskript zum Erstellen eines Kontos finden Sie unter [Erstellen eines Batch-Kontos mit der Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account).
 
 ## <a name="sample-script"></a>Beispielskript
 

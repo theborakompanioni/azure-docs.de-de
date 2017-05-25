@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b9cb2e6c15cbe217c57ddfe2910e8017bd61a67a
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 198a8421636945bdf60c4ed519d065617a7fc287
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -58,7 +58,7 @@ Beachten Sie Folgendes:
 * Für `path` finden Sie Informationen zur Formatierung von Blobnamensmustern unter [Namensmuster](#pattern).
 * `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](functions-how-to-use-azure-function-app-settings.md). 
 
-Wenn bei der Ausführung eines Verbrauchsplans eine Funktionen-App im Leerlauf ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs erstellt werden. Sobald die Funktionen-App ausgeführt wird, werden die Blobs schneller verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, verwenden Sie entweder einen regulären App Service-Plan mit aktivierter Always On-Option oder einen anderen Mechanismus, um die Blobverarbeitung auszulösen, z.B. eine Warteschlangennachricht mit dem Blobnamen. 
+Wenn bei der Ausführung eines Verbrauchsplans eine Funktionen-App im Leerlauf ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden. Sobald die Funktionen-App ausgeführt wird, werden die Blobs schneller verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, verwenden Sie entweder einen regulären App Service-Plan mit aktivierter Always On-Option oder einen anderen Mechanismus, um die Blobverarbeitung auszulösen, z.B. eine Warteschlangennachricht mit dem Blobnamen. 
 
 Weitere Informationen finden Sie auch unter einer der folgenden Unterüberschriften:
 

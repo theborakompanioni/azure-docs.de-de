@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 284b239860481cf76f647d78f6a7b5e2b7cf9a3b
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: af7d5b03e1490ed8d90021980f14c47281e8a655
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -79,6 +80,7 @@ Nein. Die virtuellen Computer in einer Verfügbarkeitsgruppe müssen entweder al
 
 Noch nicht, dies ist aber für die Zukunft geplant.
 
+
 **Kann ich einen leeren verwalteten Datenträger erstellen?**
 
 Ja, Sie können einen leeren Datenträger erstellen. Ein verwalteter Datenträger kann unabhängig von einem virtuellen Computer erstellt werden (also ohne ihn an einen virtuellen Computer anzufügen).
@@ -126,6 +128,10 @@ Nein. Dies wird derzeit nicht unterstützt.
 
 **Kann ich die Eigenschaft „Name“ des Computers ändern, wenn ich einen speziellen (nicht mit Sysprep vorbereiteten oder generalisierten) Betriebssystem-Datenträger zum Bereitstellen einer VM verwende?** Nein. Sie können die Eigenschaft „Name“ des Computers nicht ändern. Die neue VM übernimmt diese von der übergeordneten VM, mit der der Betriebssystem-Datenträger erstellt wurde. 
 
+**Wo finde ich Azure Resource Manager-Beispielvorlagen, um virtuelle Computer mit verwalteten Datenträgern zu erstellen**
+* https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md
+* https://github.com/chagarw/MDPP
+
 ## <a name="managed-disks-and-port-8443"></a>Managed Disks und Port 8443
 
 **Warum müssen Kunden die Sperre für ausgehenden Datenverkehr an Port 8443 für virtuelle Computer aufheben, die Azure Managed Disks verwenden?**
@@ -144,7 +150,7 @@ Dies wirkt sich nicht auf die Bereitstellung aus.
 
 Die Erweiterung wird nicht erfolgreich bereitgestellt. Der Status der Erweiterung ist unbekannt. 
 
-**Was passiert, wenn eine ARM-Vorlage zum Bereitstellen mehrerer virtueller Computer verwendet wird, auf denen Port 8443 gesperrt ist – einer der virtuellen Computer verfügt über Erweiterungen und ein zweiter ist vom ersten abhängig?**
+**Was passiert, wenn eine Azure Resource Manager-Vorlage zum Bereitstellen mehrerer virtueller Computer verwendet wird, auf denen Port 8443 gesperrt ist – einer der virtuellen Computer verfügt über Erweiterungen und ein zweiter ist vom ersten abhängig?**
 
 Der erste virtuelle Computer wird als fehlerhafte Bereitstellung angezeigt, da die Erweiterungen nicht erfolgreich bereitgestellt wurden. Der zweite virtuelle Computer wird nicht bereitgestellt. 
 

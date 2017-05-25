@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6530da96cd6e6ccd90714a9d3c9f00f88afe853e
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: b3a2bf688f1837a17312ec4bb5ca6b87209076cd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/03/2017
 Wenn Sie über virtuelle Azure-Computer verfügen, für die nicht verwaltete Datenträger in Speicherkonten verwendet werden, und die Verwendung von [Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) möglich sein soll, können Sie die virtuellen Computer konvertieren. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch sämtliche angefügten Datenträger von der Verwendung nicht verwalteter Datenträger in einem Speicherkonto zur Verwendung verwalteter Datenträger konvertiert. Die virtuellen Computer werden heruntergefahren und freigegeben. Verwenden Sie dann Powershell zum Konvertieren des virtuellen Computers zur Verwendung verwalteter Datenträger. Nach der Konvertierung starten Sie den virtuellen Computer neu. Dieser verwendet jetzt verwaltete Datenträger.
 
 Bevor Sie beginnen, lesen Sie die Informationen im Artikel [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
-Testen Sie den Migrationsprozess durch Migrieren eines virtuellen Testcomputers vor dem Ausführen der Migration in der Produktion, da der Migrationsvorgang nicht rückgängig gemacht werden kann.
+Testen Sie den Migrationsprozess durch Migrieren eines virtuellen Testcomputers vor dem Ausführen der Migration in der Produktion, da der Migrationsvorgang nicht rückgängig gemacht werden kann. Die Verwaltung des virtuellen Computers ist während der Migration gesperrt, sodass Sie den virtuellen Computer bis zum Abschluss der Migration nicht starten, beenden oder löschen können.
 
 
 > [!IMPORTANT] 

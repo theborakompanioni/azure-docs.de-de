@@ -1,5 +1,5 @@
 ---
-title: Wiederherstellen einer Datenbank eines einzelnen Mandanten (SaaS-Beispielanwendung unter Verwendung von Azure SQL-Datenbank) | Microsoft-Dokumentation
+title: "Wiederherstellen einer Azure SQL-Datenbank in einer mehrinstanzenfähigen App | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie die SQL-Datenbank-Instanz eines einzelnen Mandanten nach versehentlichem Löschen von Daten wiederherstellen."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
@@ -17,10 +17,10 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: billgib;sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: aa5759645713c5e5bc4c4f1d2b10f032efc7eae2
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 8567061a98ec5a0619a8e10cb44501dd88d8166c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -44,8 +44,8 @@ In diesem Tutorial lernen Sie zwei Muster der Datenwiederherstellung kennen:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die WTP-App wurde bereitgestellt. Unter [Bereitstellen und Kennenlernen der SaaS-Anwendung WTP](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
-* Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Die WTP-App wurde bereitgestellt. Unter [Deploy and explore the WTP SaaS application (Bereitstellen und Erkunden der SaaS-Anwendung von WTP)](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-the-saas-tenant-restore-pattern"></a>Einführung in das SaaS-Muster zur Mandantenwiederherstellung
 
@@ -57,7 +57,7 @@ Im zweiten Muster, wo davon ausgegangen wird, dass der Mandant einen Verlust ode
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
-Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-Github-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
+Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>Simulieren des versehentlichen Löschens von Daten durch den Mandanten
 

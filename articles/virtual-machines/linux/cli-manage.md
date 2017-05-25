@@ -1,6 +1,6 @@
 ---
-title: "Grundlegende Befehle der Azure-Befehlszeilenschnittstelle für Linux und Mac | Microsoft Docs"
-description: Grundlegende Befehle der Azure-Befehlszeilenschnittstelle, um Ihnen beim Verwalten Ihrer virtuellen Computer im Azure Resource Manager-Modus mit Linux und Mac zu helfen
+title: Allgemeine Azure CLI 2.0-Befehle | Microsoft-Dokumentation
+description: "Lernen Sie einige der allgemeinen Azure CLI 2.0-Befehle für den Einstieg in die Verwaltung Ihrer virtuellen Computer im Azure Resource Manager-Modus"
 services: virtual-machines-linux
 documentationcenter: 
 author: RicksterCDN
@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/23/2016
+ms.date: 05/12/2017
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 59a0f28561757ad065e9add5fcf92f997346cc84
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 091bba93bd9730f3fea0aa8667cfdcda2d7aa0ed
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="common-azure-cli-commands-on-linux-and-mac"></a>Allgemeine Befehle der Azure-Befehlszeilenschnittstelle für Linux und Mac
+# <a name="common-azure-cli-20-commands-for-managing-azure-resources"></a>Allgemeine Azure-CLI 2.0-Befehle zum Verwalten von Azure-Ressourcen
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]
 
 

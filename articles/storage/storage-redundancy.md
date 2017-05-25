@@ -1,6 +1,6 @@
 ---
 title: Datenreplikation in Azure Storage | Microsoft-Dokumentation
-description: "Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS)."
+description: "Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS)."
 services: storage
 documentationcenter: 
 author: mmacy
@@ -12,17 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 05/15/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 72e07c4fd686feee5045ef3b9a504d2ea41f8675
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 6a5ba89d8b17e0646cd8a6185da6d1094fd64d12
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="azure-storage-replication"></a>Azure Storage-Replikation
-Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Bei der Replikation werden Ihre Daten kopiert, und zwar entweder innerhalb desselben Rechenzentrums, oder in ein zweites Rechenzentrum. Dies hängt davon ab, welche Replikationsoption Sie wählen. Mit der Replikation werden Ihre Daten geschützt, und die Betriebszeit der Anwendung wird hoch gehalten, falls es zu vorübergehenden Hardwareausfällen kommt. Wenn Ihre Daten in einem zweiten Rechenzentrum repliziert werden, werden Ihre Daten außerdem vor einem Ausfall aufgrund einer Katastrophe am primären Standort geschützt.
+
+Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Bei der Replikation werden Ihre Daten kopiert, und zwar entweder innerhalb desselben Rechenzentrums, oder in ein zweites Rechenzentrum. Dies hängt davon ab, welche Replikationsoption Sie wählen. Mit der Replikation werden Ihre Daten geschützt, und die Betriebszeit der Anwendung wird hoch gehalten, falls es zu vorübergehenden Hardwareausfällen kommt. Wenn Ihre Daten in einem zweiten Rechenzentrum repliziert werden, sind Ihre Daten vor einem Ausfall aufgrund einer Katastrophe am primären Standort geschützt.
 
 Mit der Replikation wird sichergestellt, dass Ihr Speicherkonto auch bei Ausfällen die [Servicelevelvereinbarung (SLA) für Storage](https://azure.microsoft.com/support/legal/sla/storage/) erfüllt. Die Servicelevelvereinbarung enthält Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit.
 
@@ -33,14 +34,14 @@ Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Replikation
 * [Georedundanter Speicher (GRS)](#geo-redundant-storage)
 * [Georedundanter Speicher mit Lesezugriff (RA-GRS)](#read-access-geo-redundant-storage)
 
-Georedundanter Speicher mit Lesezugriff (RA-GRS) ist die Standardoption bei der Erstellung eines neuen Speicherkontos.
+Georedundanter Speicher mit Lesezugriff (RA-GRS) ist die Standardoption bei der Erstellung eines Speicherkontos.
 
 Die folgende Tabelle bietet eine schnelle Übersicht über die Unterschiede zwischen LRS, ZRS, GRS und RA-GRS. In den nachfolgenden Abschnitten werden die einzelnen Replikationstypen ausführlicher behandelt.
 
 | Replikationsstrategie | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
 | Daten werden in mehreren Datencentern repliziert. |Nein |Ja |Ja |Ja |
-| Daten können vom sekundären Standort sowie vom primären Standort aus gelesen werden. |Nein |Nein |Nein |Ja |
+| Daten können von einem sekundären Standort sowie vom primären Standort gelesen werden. |Nein |Nein |Nein |Ja |
 | Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden. |3 |3 |6 |6 |
 
 Informationen zu den Preisen für die verschiedenen Redundanzoptionen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) .
@@ -48,10 +49,9 @@ Informationen zu den Preisen für die verschiedenen Redundanzoptionen finden Sie
 > [!NOTE]
 > Storage Premium unterstützt nur lokal redundanten Speicher (Locally Redundant Storage, LRS). Informationen zu Storage Premium finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads virtueller Azure-Computer](storage-premium-storage.md).
 >
->
 
 ## <a name="locally-redundant-storage"></a>Lokal redundanter Speicher
-Bei Lokal redundanter Speicher (LRS) werden Ihre Daten dreimal in einer Speicherskalierungseinheit repliziert, die in einem Datencenter in der Region gehostet wird, in der Sie Ihr Speicherkonto erstellt haben. Eine Schreibanforderung wird nur einmal erfolgreich zurückgegeben, nachdem sie in alle drei Replikate geschrieben wurde. Diese drei Replikate befinden sich in separaten Fehler- und Upgradedomänen innerhalb einer Speicherskalierungseinheit.
+Bei lokal redundantem Speicher (LRS) werden Ihre Daten dreimal in einer Speicherskalierungseinheit repliziert, die in einem Datencenter in der Region gehostet wird, in der Sie Ihr Speicherkonto erstellt haben. Eine Schreibanforderung wird nur einmal erfolgreich zurückgegeben, nachdem sie in alle drei Replikate geschrieben wurde. Diese drei Replikate befinden sich in separaten Fehler- und Upgradedomänen innerhalb einer Speicherskalierungseinheit.
 
 Eine Speicherskalierungseinheit ist eine Sammlung von Speicherknotengestellen (Racks). Eine Fehlerdomäne (FD) ist eine Gruppe von Knoten, die eine physische Fehlereinheit darstellen und als Knoten angesehen werden können, die zum gleichen physischen Gestell gehören. Eine Upgradedomäne (UD) ist eine Gruppe von Knoten, die während des Vorgangs eines Dienstupgrades (Rollouts) gemeinsam aktualisiert werden. Die drei Replikate sind auf UDs und FDs in einer Speicherskalierungseinheit verteilt, um sicherzustellen, dass Daten verfügbar sind, auch wenn ein Hardwarefehler sich auf ein einzelnes Gestell auswirkt oder wenn Knoten während eines Rollouts aktualisiert werden.
 
@@ -61,7 +61,7 @@ Lokal redundanter Speicher kann für bestimmte Szenarien aber trotzdem geeignet 
 
 * Er bietet die höchste maximale Bandbreite von Azure Storage-Replikationsoptionen.
 * Wenn Ihre Anwendung Daten speichert, die problemlos wiederhergestellt werden können, können Sie sich für LRS entscheiden.
-* Einige Anwendungen sind aufgrund von Datenvorschriften auf die Replikation von Daten innerhalb eines Lands beschränkt. Eine gekoppelte Region kann sich in einem anderen Land befinden. Informationen zu Regionspaaren finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
+* Einige Anwendungen sind aufgrund von Datenvorschriften auf die Replikation von Daten innerhalb eines Lands beschränkt. Eine gepaarte Region könnte sich beispielsweise in einem anderen Land befinden. Weitere Informationen zu Regionspaarungen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
 ## <a name="zone-redundant-storage"></a>Zonenredundanter Speicher
 Beim zonenredundanten Speicher (ZRS) werden Ihre Daten zusätzlich zur Speicherung von drei Replikaten (ähnlich wie bei LRS) asynchron in Datencentern in einer oder zwei Regionen repliziert. Dies führt zu einer höheren Dauerhaftigkeit als bei LRS. Per ZRS gespeicherte Daten bleiben auch dann dauerhaft vorhanden, wenn das primäre Datencenter nicht verfügbar oder nicht mehr wiederherstellbar ist.
@@ -136,7 +136,7 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 * RA-GRS ist für hohe Verfügbarkeit ausgelegt. Eine Anleitung zur Skalierbarkeit finden Sie in der [Checkliste zur Leistung](storage-performance-checklist.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Entwerfen hochverfügbarer Anwendungen mithilfe des RA-GRS-Speichers](storage-designing-ha-apps-with-ragrs.md)
+* [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS-Speicher](storage-designing-ha-apps-with-ragrs.md)
 * [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 * [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md)
 * [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md)

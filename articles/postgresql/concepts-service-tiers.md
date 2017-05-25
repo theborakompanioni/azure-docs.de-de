@@ -10,12 +10,12 @@ ms.assetid:
 ms.service: postgresql-database
 ms.tgt_pltfrm: portal
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/16/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 23a93060697bc48084658bbbd895d13fd393b07b
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: a946c114824597cc55e435a455cd888816789dbf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-service-tier"></a>Optionen und Leistung von Azure-Datenbank für PostgreSQL: Überblick über die verfügbaren Funktionen in den einzelnen Diensttarifen
@@ -46,15 +46,15 @@ Um eine Auswahl für einen Diensttarif zu treffen, müssen Sie zunächst bestimm
 
 | **Dienstebenenfeatures** | **Basic** | **Standard** | **Premium** * |
 | :------------------------ | :-------- | :----------- | :------------ |
-| Max. Anzahl von Compute-Einheiten | 100 | 2000 | Nicht in der Vorschau verfügbar |
+| Max. Anzahl von Compute-Einheiten | 100 | 2.000 | Nicht in der Vorschau verfügbar |
 | Max. Gesamtspeicher | 1.050 GB | 10.000 GB | Nicht in der Vorschau verfügbar |
 | Garantie für Speicher-IOPS | N/V | Ja | Nicht in der Vorschau verfügbar |
-| Max. Speicher-IOPS | N/V | 30.000 | Nicht in der Vorschau verfügbar |
+| Max. Speicher-IOPS | N/V | 3,000 | Nicht in der Vorschau verfügbar |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 Tage | 35 Tage | 35 Tage |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+
 
 > [!NOTE]
-> Der Diensttarif „Standard“ in der Vorschau unterstützt derzeit bis zu 800 Compute-Einheiten und max. 1000 GB Speicher.
+> Der Diensttarif „Standard“ in der Vorschau unterstützt derzeit bis zu 800 Compute-Einheiten und max. 1.000 GB Speicher.
 
 Nachdem Sie den Mindestdiensttarif ermittelt haben, können Sie die Leistungsebene für den Azure-Datenbank für PostgreSQL-Server (Anzahl von Compute-Einheiten) bestimmen. Die 200 und 400 Compute-Einheiten im Tarif „Standard“ sind häufig ein guter Ausgangspunkt für Anwendungen, die eine höhere Benutzerparallelität für ihre Web- oder Analyseworkloads erfordern. 
 
@@ -70,38 +70,32 @@ Allerdings können Sie die Compute-Einheiten basierend auf den Workloadanforderu
 
 Bei Azure-Datenbank für PostgreSQL gibt es mehrere Leistungsstufen in den einzelnen Diensttarifen. Sie können die Ebene, die Ihren Anforderungen an Workloads am besten entspricht, über eine der folgenden Quellen auswählen:
 
-- [Azure-Portal](/azure/azure-portal-overview) unter [http://portal.azure.com](http://portal.azure.com)
+- [Azure-Portal](quickstart-create-server-database-portal.md) unter [http://portal.azure.com](http://portal.azure.com)
 - [Azure-CLI](quickstart-create-server-database-azure-cli.md)
 
 Unabhängig von der Anzahl der gehosteten Datenbanken auf jedem PostgreSQL-Server erhält Ihre Datenbank einen garantierten Ressourcensatz, und die erwarteten Leistungsmerkmale Ihres Servers werden nicht beeinträchtigt.
 
-Diensttarif „Basic“:
+### <a name="basic-service-tier"></a>Diensttarif „Basic“:
 
 | **Leistungsstufe** | **50** | **100** |
-| :-------------------- | :----- | :------ |
+| --------------------: | :----- | :------ |
 | Max. Anzahl von Compute-Einheiten | 50 | 100 |
 | Inbegriffene Speichergröße | 50 GB | 50 GB |
 | Max. Größe des Serverspeichers\* | 1.050 GB | 1.050 GB |
-| Maximale Anzahl gleichzeitiger Anmeldungen | &nbsp; | &nbsp; |
-| Max. Anzahl von Verbindungen | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; |
 
-Diensttarif „Standard“:
+### <a name="standard-service-tier"></a>Diensttarif „Standard“:
 
 | **Leistungsstufe** | **100** | **200** | **400** | **800** |
-| :-------------------- | :------ | :------ | :------ | :------ |
+| --------------------: | :------ | :------ | :------ | :------ |
 | Max. Anzahl von Compute-Einheiten | 100 | 200 | 400 | 800 |
-| Inbegriffene Speichergröße und bereitgestellte IOPS | 125 GB, 375 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| Max. Größe des Serverspeichers\* | 1 TB | &nbsp; | &nbsp; | &nbsp; |
-| Max. bereitgestellte Server-IOPS | 3.000 IOPS | &nbsp; | &nbsp; | &nbsp; |
-| Max. bereitgestellte Server-IOPS pro GB | 3 IOPS pro GB fest | &nbsp; | &nbsp; | &nbsp; |
-| Maximale Anzahl gleichzeitiger Anmeldungen | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| Max. Anzahl von Verbindungen | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | &nbsp; | &nbsp; | &nbsp; |
+| Inbegriffene Speichergröße und bereitgestellte IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS | 125 GB,<br/> 375 IOPS |
+| Max. Größe des Serverspeichers\* | 1 TB | 1 TB | 1 TB | 1 TB |
+| Max. bereitgestellte Server-IOPS | 3.000 IOPS | 3.000 IOPS | 3.000 IOPS | 3.000 IOPS |
+| Max. bereitgestellte Server-IOPS pro GB | 3 IOPS pro GB fest | 3 IOPS pro GB fest | 3 IOPS pro GB fest | 3 IOPS pro GB fest |
 
 \* Die max. Größe des Serverspeichers bezieht sich auf die maximale Speichergröße, die für Ihren Server bereitgestellt wird.
 
-## <a name="scaling-up-or-down-a-single-server"></a>Zentrales Hoch- oder Herunterskalieren eines einzigen Servers
+## <a name="scaling-up-or-down-a-server"></a>Zentrales Hoch- oder Herunterskalieren eines Servers
 
 Nach der Auswahl eines Diensttarifs und einer Leistungsebene können Sie den Server dynamisch und basierend auf den Workloadanforderungen zentral hoch- oder herunterskalieren. Wenn Sie zentral hoch- oder herunterskalieren müssen, können Sie den Tarif Ihrer Datenbank im Azure-Portal oder über die Azure CLI problemlos ändern.
 
@@ -109,10 +103,7 @@ Wenn Sie die Dienst- und/oder die Leistungsstufe einer Datenbank ändern, wird e
 
 Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif des Servers vor und nach der Änderung ab. Beispielsweise sollte ein Server beim Ändern von Compute-Einheiten in den oder aus dem Diensttarif „Standard“ bzw. innerhalb dieses Diensttarifs innerhalb von wenigen Minuten zentral hochskalieren. Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 
-### <a name="documentation-about-the-steps-for-scaling-up-or-down"></a>Dokumentation zu den Schritten für das zentrale Hoch- oder Herunterskalieren
-
-- [Verwalten eines einzelnen Servers im Azure-Portal](quickstart-create-server-database-portal.md)
-- [Verwalten einer einzelnen Datenbank mit der Azure CLI](quickstart-create-server-database-azure-cli.md)
+Sie können das Azure-Portal für das zentrale Hoch- und Herunterskalieren oder die Azure-Befehlszeilenschnittstelle für die Überwachung und Skalierung Ihres Servers verwenden. Weitere Informationen finden Sie unter [Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit Azure CLI](scripts/sample-scale-server-up-or-down.md)
 
 ### <a name="details-about-scaling-up-or-down"></a>Details zum zentralen Hoch- oder Herunterskalieren
 

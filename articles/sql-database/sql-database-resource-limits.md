@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 04/19/2017
+wms.date: 05/14/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 90f2ea599dd97780d7ec43f09ab1b1497d6e87f5
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: a7887839b7a3672e824ed6662f6ba5dc4e318fab
 ms.contentlocale: de-de
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -53,7 +53,7 @@ Für eine einzelne Datenbank sind deren Einschränkungen durch die Dienstebene u
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 > [!IMPORTANT]
-> Kunden mit den Leistungsstufen P11 und P15 können bis zu 4TB Speicher ohne Aufpreis nutzen. Diese 4-TB-Option ist derzeit in folgenden Regionen in der verfügbar: USA, Osten 2; USA, Westen; Europa, Westen; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten.
+> Kunden mit den Leistungsstufen P11 und P15 können bis zu 4TB Speicher ohne Aufpreis nutzen. Die 4 TB-Option ist derzeit in den folgenden Regionen verfügbar: USA, Osten 2; USA, Westen, USA Reg-Bez. Virginia; Europa, Westen; Deutschland, Mitte; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten.
 >
 
 ### <a name="elastic-pools"></a>Elastische Pools

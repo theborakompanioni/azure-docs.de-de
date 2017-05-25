@@ -12,12 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/02/2017
 ms.author: antisch
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7cec2a8c66868c601c38dc2dea61dda38d3cd3b2
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 2556b02459886390b803407c5cb828687229a44e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -25,14 +26,16 @@ ms.lasthandoff: 03/24/2017
 
 Diese Skripts veranschaulichen einige der in der Azure-CLI verfügbaren Tools zum Erstellen und Verwalten von Computeknotenpools im Azure Batch-Dienst.
 
-Beim Ausführen dieser Skripts wird davon ausgegangen, dass bereits ein Batch-Konto eingerichtet und eine Anwendung konfiguriert wurde. Weitere Informationen finden Sie in den [Beispielskripts](../batch-cli-samples.md) zu den einzelnen Themen.
-
 > [!NOTE]
 > Mit den Befehlen in diesem Beispiel werden virtuelle Computer in Azure erstellt. Durch das Ausführen von virtuellen Computern fallen Gebühren für Ihr Konto an. Um diese Gebühren zu minimieren, löschen Sie den virtuellen Computer, sobald Sie das Beispiel ausgeführt haben. Weitere Informationen finden Sie unter [Bereinigen von Pools](#clean-up-pools).
 
-Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um sich bei Azure anzumelden.
+Batch-Pools können auf zwei Arten konfiguriert werden: entweder als Cloud Services- (nur Windows) oder VM-Konfiguration (Windows und Linux) . Die Beispielskripts unten veranschaulichen das Erstellen von Pools mit beiden Konfigurationen.
 
-Batch-Pools können auf zwei Arten konfiguriert werden: entweder als Cloud Services- (nur Windows) oder VM-Konfiguration (Windows und Linux) .
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Installieren Sie Azure CLI gemäß den Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
+- Erstellen Sie ein Batch-Konto, falls Sie noch keins besitzen. Ein Beispielskript zum Erstellen eines Kontos finden Sie unter [Erstellen eines Batch-Kontos mit der Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account).
+- Konfigurieren Sie eine Anwendung für die Ausführung aus einer Startaufgabe, wenn dies noch nicht geschehen ist. Unter [Hinzufügen von Anwendungen in Azure Batch mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) finden Sie ein Beispielskript, das eine Anwendung erstellt und ein Anwendungspaket auf Azure hochlädt.
 
 ## <a name="pool-with-cloud-service-configuration-sample-script"></a>Beispielskript für einen Pool mit Cloud Services-Konfiguration
 
