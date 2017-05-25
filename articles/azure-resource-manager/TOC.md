@@ -24,7 +24,6 @@
 ### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
 ### [Erstellen mehrerer Instanzen](resource-group-create-multiple.md)
-### [Sequenzielle Schleife](resource-manager-sequential-loop.md)
 ### [Standort festlegen](resource-manager-template-location.md)
 ### [Tags zuweisen](resource-manager-template-tags.md)
 ### [Festlegen von Name und Typ der untergeordneten Ressource](resource-manager-template-child-resource.md)
@@ -44,7 +43,7 @@
 #### [Exportieren der Vorlage und erneutes Bereitstellen](resource-manager-export-template-cli.md)
 ### [Portal](resource-group-template-deploy-portal.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
-### [Bereitstellung mehrerer Ressourcengruppen](resource-manager-cross-resource-group-deployment.md)
+### [Ressourcengruppenübergreifende Bereitstellung](resource-manager-cross-resource-group-deployment.md)
 ### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md)
 
