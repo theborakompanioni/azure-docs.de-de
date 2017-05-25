@@ -12,16 +12,17 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
-ms.author: mandia
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.date: 02/27/2017
+ms.author: LADocs; mandia
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: 9d40c5028fd8b3ab20f7562dce9274664e4e56ac
+ms.contentlocale: de-de
 ms.lasthandoff: 03/01/2017
 
-
 ---
+
 # <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>Überprüfen und Transformieren von XML-Nachrichten, Codieren und Decodieren von Flatfiles und Anreichern von Nachrichtenfeatures in Logik-Apps
 
 Mit Logik-Apps können Sie XML-Nachrichten verarbeiten, die Sie senden und empfangen. Dieses Feature ist im Enterprise Integration Pack enthalten. Für Benutzer mit einem BizTalk Server-Hintergrund bietet Ihnen das Enterprise Integration Pack ähnliche Möglichkeiten zum Transformieren und Überprüfen von Nachrichten, Arbeiten mit Flatfiles und sogar Verwenden von XPath, um eine Nachricht mit bestimmten Eigenschaften anzureichern oder bestimmte Eigenschaften aus einer Nachricht zu extrahieren. 

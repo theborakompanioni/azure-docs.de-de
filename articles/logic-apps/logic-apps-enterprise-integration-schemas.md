@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
-ms.author: estfan
-translationtype: Human Translation
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 7884032fd4b5a72ca7e2f2dc2830b0a7c2220e94
 ms.openlocfilehash: 5d8ddd4449d3b160dbca7496c801e75dcf4a44e5
+ms.contentlocale: de-de
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -58,11 +60,11 @@ Die Schritte hierfür richten sich nach der Zugriffsebene für den Blobcontainer
 
 **So bestimmen Sie diese Zugriffsebene**
 
-1.  Öffnen Sie den **Azure-Speicher-Explorer**. 
+1.    Öffnen Sie den **Azure-Speicher-Explorer**. 
 
-2.  Wählen Sie unter **Blobcontainer** den gewünschten Blobcontainer aus. 
+2.    Wählen Sie unter **Blobcontainer** den gewünschten Blobcontainer aus. 
 
-3.  Klicken Sie auf **Sicherheit** > **Zugriffsebene**.
+3.    Klicken Sie auf **Sicherheit** > **Zugriffsebene**.
 
 Führen Sie die folgenden Schritte aus, wenn die Blob-Sicherheitszugriffsebene **Öffentlich** lautet.
 
@@ -132,10 +134,5 @@ Azure zeigt die Meldung, dass das Schema erfolgreich hochgeladen wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über das Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

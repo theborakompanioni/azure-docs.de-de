@@ -12,16 +12,17 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
-ms.author: padmavc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.date: 01/27/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
 ms.openlocfilehash: dc760b4c08d0e1afff3bc1276f6ed2367d67629e
+ms.contentlocale: de-de
 ms.lasthandoff: 03/01/2017
 
-
 ---
+
 # <a name="start-or-enable-logging-of-as2-x12-and-edifact-messages-to-monitor-success-errors-and-message-properties"></a>Starten oder Aktivieren der Protokollierung von AS2-, X12- und EDIFACT-Nachrichten für die Überwachung von Erfolgs-, Fehler- und Nachrichteneigenschaften
 
 Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden Geschäftsprozessen oder Anwendungen. Mit der Beziehung wird eine Vereinbarung zwischen Geschäftsprozessen definiert. Nachdem die Kommunikation hergestellt wurde, können Sie eine Nachrichtenüberwachung einrichten, um zu prüfen, ob die Kommunikation wie erwartet funktioniert. Um mehr Details und Debugfunktionen zu erhalten, können Sie für Ihr Integrationskonto die Diagnose einrichten.
