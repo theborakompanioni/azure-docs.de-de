@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: 0ceba4142fd7b0e6edc1b7a6c14470d21806004a
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 95691b6e59f5e21e7c6cff9f4222bcffade57973
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -101,7 +102,6 @@ Bei einem verknüpften bedarfsgesteuerten HDInsight-Dienst wird der HDInsight-Cl
         "properties": {
         "type": "HDInsightOnDemand",
             "typeProperties": {
-                "version": "3.2",
                 "clusterSize": 1,
                 "timeToLive": "00:30:00",
                 "linkedServiceName": "AzureStorageLinkedService1"
@@ -114,7 +114,6 @@ Bei einem verknüpften bedarfsgesteuerten HDInsight-Dienst wird der HDInsight-Cl
 
     Eigenschaft | Beschreibung
     -------- | ----------- 
-    Version | Gibt an, welche Version des HDInsight-Hadoop-Clusters erstellt werden soll.
     ClusterSize | Gibt die Größe des HDInsight-Hadoop-Clusters an.
     TimeToLive | Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird.
     linkedServiceName | Gibt das Speicherkonto an, das verwendet wird, um die vom HDInsight-Hadoop-Cluster generierten Protokolle zu speichern. 
