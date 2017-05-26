@@ -18,12 +18,13 @@
 
 # Anleitung
 ## Planen
-### [Voraussetzungen für die Bereitstellung](site-recovery-prereq.md)
+### [Voraussetzungen für die Azure-Replikation](site-recovery-prereq.md)
 ### [Planen der Netzwerkinfrastruktur](site-recovery-network-design.md)
+### [Planen der Netzwerkzuordnung](site-recovery-network-mapping.md)
 ### [Planen der Kapazität und Skalieren der VMware-Replikation in Azure](site-recovery-plan-capacity-vmware.md)
 ### [Deployment Planner für die VMware-Replikation in Azure](site-recovery-deployment-planner.md)
 ### [Capacity Planner für die Hyper-V-Replikation](site-recovery-capacity-planner.md)
-### [Rollenbasierte Zugriffssteuerung](site-recovery-role-based-linked-access-control.md)
+### [Steuern der VM-Replikation mit rollenbasiertem Zugriff](site-recovery-role-based-linked-access-control.md)
 
 ## Konfigurieren
 ### [Einrichten der Quellumgebung](site-recovery-set-up-vmware-to-azure.md)
@@ -53,6 +54,8 @@
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
 ### [SAP](site-recovery-workload.md#protect-sap)
+### [IIS-basierte Webanwendungen](site-recovery-iis.md)
+### [Citrix XenApp und XenDesktop](site-recovery-citrix-xenapp-and-xendesktop.md)
 ### [Andere Workloads](site-recovery-workload.md#workload-summary)
 ## Automatisieren der Replikation
 ### [Automatisieren der Hyper-V-Replikation in Azure (ohne VMM)](site-recovery-deploy-with-powershell-resource-manager.md)

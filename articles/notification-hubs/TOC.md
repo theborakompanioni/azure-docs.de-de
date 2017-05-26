@@ -44,6 +44,7 @@
 
 ## Verwalten
 ### [Registrierungen](notification-hubs-push-notification-registration-management.md)
+### [Auf APNs-Token basierende Authentifizierung](notification-hubs-push-notification-http2-token-authentification.md)
 
 ## [Schützen](notification-hubs-push-notification-security.md)
 ### Sichere Pushbenachrichtigungen

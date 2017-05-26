@@ -17,17 +17,13 @@
 ### [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 
 ## Bereitstellen
-### Virtuelle Netzwerke (VNETs)
-#### [Erstellen, Ändern oder Löschen von VNETs](virtual-network-manage-network.md)
-#### [Erstellen, Ändern oder Löschen von Subnetzen](virtual-network-manage-subnet.md)
-#### [Erstellen eines VNET – mehrere Subnetze](virtual-networks-create-vnet-arm-pportal.md) 
-##### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
-##### [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
-#### Erstellen eines VNET – mehrere Subnetze (klassisch)
-##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-classic-cli.md)
+### [Virtuelle Netzwerke](virtual-networks-create-vnet-arm-pportal.md)
+#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+#### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
+#### [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
+#### [Portal (klassisch)](virtual-networks-create-vnet-classic-pportal.md)
+#### [PowerShell (klassisch)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+#### [CLI (klassisch)](virtual-networks-create-vnet-classic-cli.md)
 
 ### Netzwerksicherheitsgruppen
 #### [Portal](virtual-networks-create-nsg-arm-pportal.md)
@@ -49,14 +45,9 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [Vorlage](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### Netzwerkschnittstellen (NICs)
-#### [Erstellen, Ändern oder Löschen von NICs](virtual-network-network-interface.md)
-#### [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md)
-
 ### [Öffentliche IP-Adressen](virtual-network-public-ip-address.md)
 
 ### Virtuelle Computer
-#### [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md) 
 #### Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse
 ##### [Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
@@ -103,20 +94,29 @@
 ##### [Beispielanwendung](virtual-networks-sample-app.md)
 
 ## Konfigurieren
-### [Optimieren des VM-Netzwerkdurchsatzes](virtual-network-optimize-network-bandwidth.md)
+
 ### Zugriffssteuerungslisten
 #### [Klassisches Portal](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
-### [Namensauflösung für virtuelle Computer und Clouddienste](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+### Virtuelle Computer
+#### [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md)
+#### [Namensauflösung für virtuelle Computer und Clouddienste](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+#### [Optimieren des Netzwerkdurchsatzes](virtual-network-optimize-network-bandwidth.md)
+#### [Anzeigen und Ändern von Hostnamen](virtual-networks-viewing-and-modifying-hostnames.md)
 
 ## Verwalten
+### [Virtuelle Netzwerke](virtual-network-manage-network.md)
+#### [Subnetze](virtual-network-manage-subnet.md)
+#### [Peerings](virtual-network-manage-peering.md)
 ### Netzwerksicherheitsgruppen
 #### [Portal](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-manage-nsg-arm-cli.md)
 #### [Protokolle](virtual-network-nsg-manage-log.md)
+### Netzwerkschnittstellen (NICs)
+#### [Erstellen, Ändern oder Löschen von NICs](virtual-network-network-interface.md)
+#### [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md)
 ### Virtuelle Computer
-#### [Anzeigen und Ändern von Hostnamen](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [Verschieben einer VM in ein anderes Subnetz](virtual-networks-move-vm-role-to-subnet.md)
 
 ## Problembehandlung

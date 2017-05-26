@@ -21,9 +21,13 @@
 ### [Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+### Generieren selbstsignierter Zertifikate für Point-to-Site
+#### [PowerShell](vpn-gateway-certificates-point-to-site.md)
+#### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## Konfigurieren von VNet-zu-VNet-Verbindungen
 ### [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+### [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## Konfigurieren einer VNet-zu-VNet-Verbindung zwischen Bereitstellungsmodellen
 ### [Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -46,9 +50,6 @@
 ### [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## Erstellen selbstsignierter Zertifikate für Point-to-Site
-### [PowerShell](vpn-gateway-certificates-point-to-site.md)
-### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## Problembehandlung
 ### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
@@ -56,9 +57,9 @@
 # Referenz
 ## [PowerShell](/powershell/module/azurerm.network)
 ## [PowerShell (klassisch)](/powershell/module/azure/?view=azuresmps-3.7.0)
-## [REST](https://msdn.microsoft.com/library/mt163859)
+## [REST](https://docs.microsoft.com/rest/api/network/virtualnetworkgateways)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/jj154113)
-## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network)
+## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network/vnet-gateway)
 
 # Verwandte Themen
 ## [Virtual Network](/azure/virtual-network/)

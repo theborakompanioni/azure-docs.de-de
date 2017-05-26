@@ -39,11 +39,11 @@
       href: concepts-server-logs.md
   - name: Ressourcen
     items:
-    - name: Dienstebenen
+    - name: Tarife
       href: concepts-service-tiers.md
-    - name: Computeeinheiten & Speichereinheiten
+    - name: Compute-Einheiten
       href: concepts-compute-unit-and-storage.md
-    - name: Grenzen
+    - name: Einschränkungen
       href: concepts-limits.md
   - name: Datenzugriff und Sicherheit
     items:

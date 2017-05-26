@@ -5,7 +5,7 @@
   - name: Informationen zu Azure Cosmos DB
     href: introduction.md
   - name: Willkommen DocumentDB-Kunden
-    href: welcome-documentdb-customers.md
+    href: https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
 - name: Schnellstarts
   expanded: true
   items:
@@ -236,6 +236,12 @@
       href: ../documentdb/documentdb-online-backup-and-restore.md
     - name: Regionales Failover
       href: ../documentdb/documentdb-regional-failovers.md
+    - name: Festlegen des Durchsatzes
+      href: ../documentdb/documentdb-set-throughput.md
+    - name: Überwachen von SLAs
+      href: ../documentdb/documentdb-monitor-accounts.md
+    - name: Verwalten von Schlüsseln und Konsistenz
+      href: ../documentdb/documentdb-manage-account.md
     - name: Automation
       items:
       - name: 'Azure CLI 1.0: Erstellen eines Kontos'
@@ -250,10 +256,14 @@
         href: ../documentdb/documentdb-nosql-database-encryption-at-rest.md
       - name: Firewallunterstützung
         href: ../documentdb/documentdb-firewall-support.md
+      - name: Sichern des Zugriffs auf Daten
+        href: ../documentdb/documentdb-secure-access-to-data.md
   - name: Integrieren
     items:
     - name: Herstellen einer Verbindung mit Spark
       href: ../documentdb/documentdb-spark-connector.md
+    - name: Herstellen einer Verbindung mit Spark GraphX
+      href: spark-connector-graph.md      
     - name: Bereitstellen einer Website mit Azure App Service
       href: ../documentdb/documentdb-create-documentdb-website.md
     - name: Anwendungsprotokollierung mit Logic Apps
