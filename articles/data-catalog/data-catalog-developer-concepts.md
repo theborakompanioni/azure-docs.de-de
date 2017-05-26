@@ -271,7 +271,7 @@ Eine Berechtigung ist eine Liste mit Zugriffssteuerungseinträgen. Jeder Zugriff
 
 In der Vorschauversion von **Azure Data Catalog** wird in der Berechtigungsliste nur das Recht **Read** unterstützt, um die Einschränkung der Sichtbarkeit eines Assets zu ermöglichen.
 
-Standardmäßig ist jeder authentifizierte Benutzer zum Lesen **** aller Elemente im Katalog berechtigt, es sei denn, die Sichtbarkeit ist auf die Gruppe von Prinzipalen in den Berechtigungen beschränkt.
+Standardmäßig ist jeder authentifizierte Benutzer zum **Lesen** aller Elemente im Katalog berechtigt, es sei denn, die Sichtbarkeit ist auf die Gruppe von Prinzipalen in den Berechtigungen beschränkt.
 
 ## <a name="rest-api"></a>REST-API
 Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Berechtigungen steuern. Neben der Elementnutzlast können zwei Systemeigenschaften angegeben werden: **roles** und **permissions**.
@@ -281,7 +281,7 @@ Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Be
 > 
 > **Besitzer** gilt nur für ein Stammelement.
 > 
-> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss **Mitwirkender** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal &lt;Everyone&gt; festgelegt werden (wie im folgenden Beispiel zu sehen). **Mitwirkender** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines Elements unverändert.**** Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist &lt;Everyone&gt;: Der **Mitwirkende** kann also nur ein Benutzer, der ein Element erstellt hat, oder &lt;Everyone&gt; sein.
+> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss **Mitwirkender** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal &lt;Everyone&gt; festgelegt werden (wie im folgenden Beispiel zu sehen). **Mitwirkender** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines **Elements unverändert**. Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist &lt;Everyone&gt;: Der **Mitwirkende** kann also nur ein Benutzer, der ein Element erstellt hat, oder &lt;Everyone&gt; sein.
 > 
 > 
 

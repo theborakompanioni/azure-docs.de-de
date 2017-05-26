@@ -256,7 +256,7 @@ So funktioniert das Messaging von JMS nach .NET:
 
 * Starten Sie die .NET-Beispielanwendung ohne Befehlszeilenargumente.
 * Starten Sie anschließend die beispielhafte Java-Anwendung mit dem Befehlszeilenargument "sendonly". Die Anwendung empfängt in diesem Modus keine Nachrichten aus der Warteschlange, sie sendet lediglich Nachrichten.
-* Drücken Sie mehrmals die EINGABETASTE**** in der Java-Anwendungskonsole, sodass die Nachrichten gesendet werden.
+* Drücken Sie mehrmals die **EINGABETASTE** in der Java-Anwendungskonsole, sodass die Nachrichten gesendet werden.
 * Diese Nachrichten werden anschließend von der .NET-Anwendung empfangen.
 
 #### <a name="output-from-jms-application"></a>Ausgabe der JMS-Anwendung
@@ -284,7 +284,7 @@ So funktioniert die Nachrichtenübermittlung von .NET nach JMS:
 
 * Starten Sie die .NET-Beispielanwendung mit dem Befehlszeilenargument "sendonly". Die Anwendung empfängt in diesem Modus keine Nachrichten aus der Warteschlange, sie sendet lediglich Nachrichten.
 * Starten Sie die beispielhafte Java-Anwendung ohne Befehlszeilenargumente.
-* Drücken Sie mehrmals die EINGABETASTE**** in der .NET-Anwendungskonsole, sodass die Nachrichten gesendet werden.
+* Drücken Sie mehrmals die **EINGABETASTE** in der .NET-Anwendungskonsole, sodass die Nachrichten gesendet werden.
 * Diese Nachrichten werden anschließend von der Java-Anwendung empfangen.
 
 #### <a name="output-from-net-application"></a>Ausgabe der .NET-Anwendung
