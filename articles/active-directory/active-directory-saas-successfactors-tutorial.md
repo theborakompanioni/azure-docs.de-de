@@ -86,7 +86,7 @@ Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon,
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in SuccessFactors als Gegenpart für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SuccessFactors muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in ServiceNow zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in ServiceNow zuweisen.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit SuccessFactors zu konfigurieren und zu testen:
 
@@ -141,7 +141,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 2. Melden Sie sich in einem anderen Webbrowserfenster als Administrator beim **SuccessFactors-Verwaltungsportal** an.
 
-3. Rufen Sie **Anwendungssicherheit** auf, und navigieren Sie zum Feature für einmaliges Anmelden****. 
+3. Rufen Sie **Anwendungssicherheit** auf, und navigieren **Sie zum Feature für einmaliges Anmelden**. 
 
 4. Geben Sie unter **Reset Token** (Token zurücksetzen) einen beliebigen Wert an, und klicken Sie auf **Save Token** (Token speichern), um SAML-SSO zu aktivieren.
    

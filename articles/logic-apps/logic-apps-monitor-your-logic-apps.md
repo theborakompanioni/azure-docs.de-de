@@ -33,7 +33,7 @@ Wählen Sie zum Anzeigen des Verlaufs **Durchsuchen** und dann **Logic Apps**. E
 
 Das Blatt bietet einige hilfreiche Abschnitte:
 
-* In der **Zusammenfassung** werden alle Ausführungen**** und der **Triggerverlauf** aufgeführt.
+* In der **Zusammenfassung** werden **alle Ausführungen** und der **Triggerverlauf** aufgeführt.
   * Unter **All runs** (Alle Ausführungen) werden die neuesten Logik-App-Ausführungen aufgelistet.  Sie können auf eine beliebige Zeile klicken, um Details zur jeweiligen Ausführung anzuzeigen. Wenn Sie auf die Kachel klicken, werden weitere Ausführungen aufgelistet.
   * Unter **Triggerverlauf** werden sämtliche Triggeraktivitäten für die Logik-App aufgelistet.  Bei einer Triggeraktivität kann es sich um eine übersprungene Überprüfung auf neue Daten handeln (mit der etwa geprüft werden sollte, ob dem FTP-Server eine neue Datei hinzugefügt wurde). Bei erfolgreichen Aktivitäten wurden Daten zum Auslösen einer Logik-App zurückgegeben, und bei einem Fehler liegt ein Konfigurationsfehler vor.
 * **Diagnose** können Sie Laufzeitdetails und -ereignisse anzeigen und [Azure-Warnungen](#adding-azure-alerts)
