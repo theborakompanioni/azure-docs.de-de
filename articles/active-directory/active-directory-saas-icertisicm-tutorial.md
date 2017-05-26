@@ -86,7 +86,7 @@ In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veransch
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Icertis Contract Management Platform als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Icertis Contract Management Platform muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird eingerichtet, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Icertis Contract Management Platform zuweisen.
+Diese Linkbeziehung wird eingerichtet, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Icertis Contract Management Platform zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Icertis Contract Management Platform müssen Sie die folgenden Bausteine ausführen:
 

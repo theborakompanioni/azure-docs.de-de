@@ -86,7 +86,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) vo
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in HireVue als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HireVue muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in HireVue zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in HireVue zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei HireVue müssen folgende Schritte ausgeführt werden:
 

@@ -84,7 +84,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden für Azu
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Expensify als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Expensify muss eine Linkbeziehung eingerichtet werden.  
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Expensify zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Expensify zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Expensify müssen Sie die folgenden Schritte ausführen:
 
@@ -114,12 +114,12 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-expensify-tutorial/tutorial_expensify_05.png)   
   1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
   2. Klicken Sie auf **Weiter**.
-5. Zum Aktivieren von SSO in Expensify müssen Sie in der Anwendung zuerst die Domänensteuerung **** aktivieren. Sie können die Domänensteuerung in der Anwendung aktivieren. Die erforderlichen Schritte sind [hier](http://help.expensify.com/domain-control)aufgeführt. Weitere Unterstützung erhalten Sie beim Support von Expensify unter [help@expensify.com](mailto:help@expensify.com). Führen Sie nach dem Aktivieren der Domänensteuerung die folgenden Schritte aus:
+5. Zum Aktivieren von SSO in Expensify müssen Sie in der Anwendung zuerst die **Domänensteuerung** aktivieren. Sie können die Domänensteuerung in der Anwendung aktivieren. Die erforderlichen Schritte sind [hier](http://help.expensify.com/domain-control)aufgeführt. Weitere Unterstützung erhalten Sie beim Support von Expensify unter [help@expensify.com](mailto:help@expensify.com). Führen Sie nach dem Aktivieren der Domänensteuerung die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-expensify-tutorial/tutorial_expensify_51.png) 
   1. Melden Sie sich bei der Expensify-Anwendung an.
   2. Klicken Sie oben auf der Symbolleiste auf **Admin**.
-  3. Klicken Sie im linken Bereich auf die Option für die Domänensteuerung ****.
+  3. Klicken Sie im linken Bereich auf die Option für die **Domänensteuerung**.
   4. Klicken Sie auf Ihren bestätigten Domänennamen.
   5. Klicken Sie im linken Bereich auf **SAML**, und wählen Sie dann **Aktiviert**.
   6. Öffnen Sie die aus Azure AD heruntergeladenen Verbundmetadaten, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Identitätsanbietermetadaten** ein.

@@ -86,7 +86,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) vo
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Predictix Assortment Planning als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Predictix Assortment Planning muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen ****in Azure AD als Benutzernamen ****in Predictix Assortment Planning zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Predictix Assortment Planning zuweisen.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Microsoft Azure AD mit Predictix Assortment Planning zu konfigurieren und zu testen:
 

@@ -105,7 +105,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 7. Klicken Sie im rechten Bereich auf **Add Identity Provider**(Identitätsanbieter hinzufügen). 
    
     ![Konfigurieren der einmaligen Anmeldung][55]
-8. Führen Sie auf der Seite mit den Identitätsanbietereinstellungen **** die folgenden Schritte aus:
+8. Führen Sie auf der Seite mit den **Identitätsanbietereinstellungen** die folgenden Schritte aus:
    
     ![Konfigurieren der einmaligen Anmeldung][56]
 
