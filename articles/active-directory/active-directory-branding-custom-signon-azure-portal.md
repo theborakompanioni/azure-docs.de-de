@@ -69,7 +69,7 @@ Legen Sie diese Einstellung zum Ausblenden des Kontrollkästchens auf **Ja** fes
 **So fügen Sie Ihrem Verzeichnis ein Unternehmensbranding hinzu**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 
    ![Öffnen der Benutzerverwaltung](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Unternehmensbranding** aus.
