@@ -171,7 +171,7 @@ In diesem Abschnitt lesen Sie Nachrichten aus dem Warteschlangen-Endpunkt.
 Sie können jetzt die Anwendung ausführen.
 
 1. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen**aus. Wählen Sie **Mehrere Startprojekte** aus, und wählen Sie dann für die Projekte **ReadDeviceToCloudMessages**, **SimulatedDevice** und **ReadCriticalQueue** als Aktion die Option **Starten** aus.
-2. Drücken Sie**** F5, um die drei Konsolen-Apps zu starten. Die **ReadDeviceToCloudMessages**-App verfügt nur über unkritische, von der **SimulatedDevice**-Anwendung gesendete Nachrichten, und die **ReadCriticalQueue**-App verfügt nur über kritische Nachrichten.
+2. Drücken Sie **F5**, um die drei Konsolen-Apps zu starten. Die **ReadDeviceToCloudMessages**-App verfügt nur über unkritische, von der **SimulatedDevice**-Anwendung gesendete Nachrichten, und die **ReadCriticalQueue**-App verfügt nur über kritische Nachrichten.
    
    ![Drei Konsolen-Apps][50]
 
