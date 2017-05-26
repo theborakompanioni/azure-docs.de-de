@@ -42,7 +42,7 @@ Durch die SQL-Bedrohungserkennung werden Warnungen in [Azure Security Center](ht
 3. Schalten Sie auf dem Konfigurationsblatt **Überwachung und Bedrohungserkennung** die Option „Überwachung“ auf **EIN**. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
   
     ![Navigationsbereich][2]
-4. Aktivieren Sie **** die Bedrohungserkennung.
+4. **Aktivieren Sie** die Bedrohungserkennung.
 5. Konfigurieren Sie die Liste der E-Mail-Empfänger, die bei Erkennung anormaler Datenbankaktivitäten einen Sicherheitshinweis erhalten sollen.
 6. Klicken Sie auf dem Blatt **Überwachung und Bedrohungserkennung** auf **Speichern**, um die neuen oder aktualisierten Einstellungen für Überwachung und Bedrohungserkennung zu speichern.
        
