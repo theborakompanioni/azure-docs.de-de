@@ -1,26 +1,10 @@
 ---
-title: Erstellen der ersten Data Factory (Azure-Portal) | Microsoft Docs
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mit dem Data Factory-Editor im Azure-Portal.
-services: data-factory
-documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
-ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 04/17/2017
-ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: c9f2e3beafd19e0d4d62e409a80da336be17b90b
-ms.lasthandoff: 02/03/2017
+title: Erstellen der ersten Data Factory (Azure-Portal) | Microsoft-Dokumentation description: In diesem Tutorial erstellen Sie im Azure-Portal eine Azure Data Factory-Beispielpipeline mit dem Data Factory-Editor.
+services: data-factory documentationcenter: '' author: spelluru manager: jhubbard editor: monicar
 
+ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d ms.service: data-factory ms.workload: data-services ms.tgt_pltfrm: na ms.devlang: na ms.topic: hero-article ms.date: 04/17/2017 ms.author: spelluru
 
----
+---3
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>Tutorial: Erstellen der ersten Azure Data Factory mit dem Azure-Portal
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
@@ -36,7 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://por
 > [!NOTE]
 > Die Datenpipeline in diesem Tutorial transformiert Eingabedaten in Ausgabedaten. Sie kopiert keine Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
+> Dieses Tutorial verwendet nur eine Aktivität vom Typ „Kopieren“. Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Planung und Ausführung in einer Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
@@ -61,13 +45,15 @@ Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline k
    >
 4. Wählen Sie das **Azure-Abonnement** , in dem die Data Factory erstellt werden soll.
 5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine Ressourcengruppe. Erstellen Sie für das Tutorial eine Ressourcengruppe mit dem Namen **ADFGetStartedRG**.
-6. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
+6. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur Regionen angezeigt, die vom Data Factory-Dienst unterstützt werden.
+7. Wählen Sie die Option **An Dashboard anheften** aus. 
+8. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
 
    > [!IMPORTANT]
    > Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
    >
    >
-7. Sie sehen, dass die Data Factory im **Startmenü** des Azure-Portals wie folgt erstellt wird:   
+7. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status „Die Data Factory wird bereitgestellt.“.    
 
    ![Erstellen des Data Factory-Status](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 8. Glückwunsch! Sie haben erfolgreich Ihre erste Data Factory erstellt. Nachdem die Data Factory erfolgreich erstellt wurde, sehen Sie die Data Factory-Seite mit dem Inhalt der Data Factory.     
@@ -114,7 +100,6 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
       "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-          "version": "3.2",
           "clusterSize": 1,
           "timeToLive": "00:30:00",
           "linkedServiceName": "AzureStorageLinkedService"
@@ -127,7 +112,6 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
 
    | Eigenschaft | Beschreibung |
    |:--- |:--- |
-   | Version |Gibt die Version des zu erstellenden HDInsight-Clusters als 3.2 an. |
    | ClusterSize |Gibt die Größe des HDInsight-Clusters an. |
    | TimeToLive |Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
    | linkedServiceName |Gibt das Speicherkonto an, das verwendet wird, um die von HDInsight generierten Protokolle zu speichern. |
@@ -184,13 +168,16 @@ In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für 
 
    | Eigenschaft | Beschreibung |
    |:--- |:--- |
-   | Typ |Die Type-Eigenschaft wird auf „AzureBlob“ festgelegt, da sich Daten im Azure-Blobspeicher befinden. |
-   | linkedServiceName |Verweist auf den „AzureStorageLinkedService“, den Sie zuvor erstellt haben. |
-   | fileName |Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Fall wird nur „input.log“ verarbeitet. |
-   | Typ |Da die Protokolldateien im Textformat vorliegen, verwenden wir „TextFormat“. |
-   | columnDelimiter |Spalten werden in den Protokolldateien per Komma (,) voneinander getrennt. |
-   | frequency/interval |„frequency“ wird auf „Month“ und „interval“ auf „1“ festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind. |
-   | external |Diese Eigenschaft wird auf „true“ festgelegt, wenn die Eingabedaten nicht vom Data Factory-Dienst generiert werden. |
+   | Typ |Die Eigenschaft „type“ wird auf **AzureBlob** festgelegt, da sich Daten in Azure Blob Storage befinden. |
+   | linkedServiceName |Verweist auf den **AzureStorageLinkedService**-Dienst, den Sie zuvor erstellt haben. |
+   | folderPath | Diese Eigenschaft gibt den **Blobcontainer** und den **Ordner** an, der Eingabeblobs enthält. | 
+   | fileName |Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Tutorial wird nur **input.log** verarbeitet. |
+   | Typ |Da die Protokolldateien im Textformat vorliegen, verwenden wir **TextFormat**. |
+   | columnDelimiter |Spalten werden in den Protokolldateien per **Komma (`,`)** voneinander getrennt. |
+   | frequency/interval |„frequency“ wird auf **Month** und „interval“ auf **1** festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind. |
+   | external | Diese Eigenschaft wird auf **true** festgelegt, wenn die Daten nicht von dieser Pipeline generiert werden. In diesem Tutorial wird die Datei „input.log“ nicht von dieser Pipeline generiert. Daher legen wir die Eigenschaft auf „true“ fest. |
+
+    Weitere Informationen zu diesen JSON-Eigenschaften finden Sie im Artikel [Azure Blob-Connector](data-factory-azure-blob-connector.md#dataset-properties).
 3. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um das neu erstellte DataSet bereitzustellen. Das Dataset sollte in der Strukturansicht auf der linken Seite angezeigt werden.
 
 ### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
@@ -391,4 +378,3 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 | [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |
 | [Planung und Ausführung](data-factory-scheduling-and-execution.md) |In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) |In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. |
-
