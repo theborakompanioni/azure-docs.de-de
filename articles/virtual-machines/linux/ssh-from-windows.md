@@ -148,14 +148,14 @@ Im folgenden Beispiel wird der zusätzliche private Schlüssel erstellt, der spe
 
     ![Schlüssel erfolgreich in PuTTYgen importiert](./media/ssh-from-windows/successfully-imported-key.png)
 6. Klicken Sie auf **OK** , um die Meldung zu schließen.
-7. Der öffentliche Schlüssel wird am oberen Rand des Fensters von **PuTTYgen** angezeigt. Dieser öffentliche Schlüssel muss beim Erstellen eines virtuellen Linux-Computers kopiert und in das Azure-Portal oder in die Azure Resource Manager-Vorlage eingefügt werden. Sie können auch auf die Option zum Speichern des öffentlichen Schlüssels**** klicken, um eine Kopie auf Ihrem Computer zu speichern:
+7. Der öffentliche Schlüssel wird am oberen Rand des Fensters von **PuTTYgen** angezeigt. Dieser öffentliche Schlüssel muss beim Erstellen eines virtuellen Linux-Computers kopiert und in das Azure-Portal oder in die Azure Resource Manager-Vorlage eingefügt werden. Sie können auch auf die Option zum **Speichern des öffentlichen Schlüssels** klicken, um eine Kopie auf Ihrem Computer zu speichern:
 
     ![Speichern der Datei mit dem öffentlichen PuTTY-Schlüssel](./media/ssh-from-windows/save-public-key.png)
 
     Das folgende Beispiel zeigt, wie Sie diesen öffentlichen Schlüssel beim Erstellen eines virtuellen Linux-Computers kopieren und in das Azure-Portal einfügen. Der öffentliche Schlüssel wird dann in der Regel auf Ihrem neuen virtuellen Computer unter `~/.ssh/authorized_keys` gespeichert.
 
     ![Verwenden des öffentlichen Schlüssels beim Erstellen eines virtuellen Computers im Azure-Portal](./media/ssh-from-windows/use-public-key-azure-portal.png)
-8. Klicken Sie in **PuTTYgen** auf die Option zum Speichern des privaten**** Schlüssels:
+8. Klicken Sie in **PuTTYgen** auf die Option zum **Speichern des privaten** Schlüssels:
 
     ![Speichern der Datei mit dem privaten PuTTY-Schlüssel](./media/ssh-from-windows/save-ppk-file.png)
 
@@ -164,7 +164,7 @@ Im folgenden Beispiel wird der zusätzliche private Schlüssel erstellt, der spe
    >
    >
 
-    Falls Sie eine Passphrase eingeben möchten, klicken Sie auf **Nein**, geben Sie im Hauptfenster von PuTTYgen eine Passphrase ein, und klicken Sie anschließend erneut auf die Option zum Speichern des privaten**** Schlüssels. Klicken Sie andernfalls auf **Ja**, um den Vorgang ohne die optionale Passphrase fortzusetzen.
+    Falls Sie eine Passphrase eingeben möchten, klicken Sie auf **Nein**, geben Sie im Hauptfenster von PuTTYgen eine Passphrase ein, und klicken Sie anschließend erneut auf die Option zum **Speichern des privaten** Schlüssels. Klicken Sie andernfalls auf **Ja**, um den Vorgang ohne die optionale Passphrase fortzusetzen.
 9. Geben Sie einen Namen und einen Speicherort für Ihre PPK-Datei ein.
 
 ## <a name="use-putty-to-ssh-to-a-linux-machine"></a>Verwenden von PuTTY zum Herstellen einer SSH-Verbindung mit einem Linux-Computer
