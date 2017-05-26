@@ -29,6 +29,8 @@ Mit diesem Beispiel wird eine VM-Skalierungsgruppe erstellt und eine Erweiterung
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
 ## <a name="sample-script"></a>Beispielskript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Erstellen der VM-Skalierungsgruppe mit LAMP-Stapel")]

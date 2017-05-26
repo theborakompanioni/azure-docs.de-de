@@ -32,6 +32,7 @@ Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicheru
 > * Wiederherstellen einer Datei aus einer Sicherung
 
 
+
 ## <a name="backup-overview"></a>Übersicht über Azure Backup
 
 Wenn der Azure Backup-Dienst eine Sicherung initiiert, löst er die Sicherungserweiterung zum Erstellen einer Momentaufnahme aus. Der Azure Backup-Dienst verwendet unter Linux die Erweiterung _VMSnapshotLinux_. Die Erweiterung wird während der ersten VM-Sicherung installiert, wenn die VM ausgeführt wird. Wenn die VM nicht ausgeführt wird, erstellt der Backup-Dienst eine Momentaufnahme des zugrunde liegenden Speichers (da keine Schreibvorgänge der Anwendung erfolgen, während die VM beendet ist).
