@@ -45,12 +45,22 @@
     href: functions-create-serverless-api.md
 - name: Konzepte
   items:
-  - name: Hostingpläne
+  - name: Verbrauchs- und App Service-Pläne
     href: functions-scale.md
   - name: Trigger und Bindungen
     href: functions-triggers-bindings.md
+  - name: Sprachen
+    items:
+    - name: 'Konzepte der C#-Funktionen'
+      href: functions-reference-csharp.md
+    - name: 'Konzepte der F#-Funktionen'
+      href: functions-reference-fsharp.md
+    - name: Konzepte der JavaScript-Funktionen
+      href: functions-reference-node.md    
 - name: Anleitungen
   items:
+  - name: Entwicklerhandbuch
+    href: functions-reference.md
   - name: Testen von Azure Functions
     href: functions-test-a-function.md
   - name: Lokales Entwickeln und Debuggen
@@ -65,15 +75,14 @@
     href: functions-monitoring.md
   - name: Installieren der Functions Runtime
     href: functions-runtime-install.md
+  - name: Verbinden mit SQL Database
+    href: functions-scenario-database-table-cleanup.md
+  - name: Erstellen einer Open API 2.0-Definition
+    href: functions-api-definition-getting-started.md     
+  - name: Bewährte Methoden für Azure Functions
+    href: functions-best-practices.md     
 - name: Referenz
   items:
-  - name: Entwickeln von Funktionen-Apps
-    href: functions-reference.md
-    items:
-    - name: Open API 2.0
-      href: functions-api-definition.md
-  - name: Bewährte Methoden für Azure Functions
-    href: functions-best-practices.md
   - name: Bindungen
     items:
     - name: Cosmos DB-Bindungen
@@ -106,14 +115,8 @@
       href: functions-bindings-timer.md
     - name: Twilio-Ausgabebindung
       href: functions-bindings-twilio.md
-  - name: Frameworks
-    items:
-    - name: 'C#'
-      href: functions-reference-csharp.md
-    - name: 'F#'
-      href: functions-reference-fsharp.md
-    - name: JavaScript
-      href: functions-reference-node.md
+  - name: OpenAPI-Referenz
+    href: functions-api-definition.md     
 - name: Ressourcen
   items:
   - name: Preise

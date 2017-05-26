@@ -35,7 +35,7 @@
 ### [Eingehende Diagnose für Web-Apps und Dienste](app-insights-devops.md)
 ### [Leistungsüberwachung in Webanwendungen](app-insights-web-monitor-performance.md)
 ### [Trennen von Entwicklung, Test und Produktion](app-insights-separate-resources.md)
-### [Überwachen von Apps mit mehreren Rollen](app-insights-monitor-multi-role-apps.md)
+### [Überwachen von Apps mit mehreren Komponenten](app-insights-monitor-multi-role-apps.md)
 ### [Wie führe ich in Application Insights ... aus?](app-insights-how-do-i.md)
 
 
@@ -139,7 +139,7 @@
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [REST](https://dev.applicationinsights.io/)
+## [Datenzugriffs-API](https://dev.applicationinsights.io/)
 ## [Datenmodell](application-insights-data-model.md)
 ### [Anforderung](application-insights-data-model-request-telemetry.md)
 ### [Abhängigkeit](application-insights-data-model-dependency-telemetry.md)
@@ -147,6 +147,7 @@
 ### [Ablaufverfolgung](application-insights-data-model-trace-telemetry.md)
 ### [Event](application-insights-data-model-event-telemetry.md)
 ### [Metrik](application-insights-data-model-metric-telemetry.md)
+### [Context](application-insights-data-model-context.md)
 ## [Telemetriekorrelation](application-insights-correlation.md)
 
 # Ressourcen

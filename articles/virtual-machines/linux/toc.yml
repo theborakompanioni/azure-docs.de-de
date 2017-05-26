@@ -297,6 +297,8 @@
       href: extensions-customscript.md
     - name: OMS-Agent-Erweiterung
       href: extensions-oms.md
+    - name: Linux-Diagnoseerweiterung
+      href: diagnostic-extension.md
   - name: Ausführen von Anwendungen
     items:
     - name: Cloud Foundry
@@ -354,19 +356,24 @@
       href: migration-classic-resource-manager-faq.md
   - name: Problembehandlung
     items:
-    - name: Problembehandlung für SSH-Verbindungen
+    - name: SSH-Verbindungen
       href: troubleshoot-ssh-connection.md
       items:
       - name: Ausführliche Problembehandlungsschritte
         href: detailed-troubleshoot-ssh-connection.md
-    - name: Problembehandlung beim Anwendungszugriff
+    - name: Startdiagnose
+ 
+      href: boot-diagnostics.md
+    - name: Zugriff auf Anwendungen
       href: troubleshoot-app-connection.md
-    - name: Problembehandlung bei Zuordnungsfehlern
+    - name: Fehler bei der Zuordnung
       href: allocation-failure.md
-    - name: Problembehandlung bei Bereitstellungsproblemen
+    - name: Bereitstellungsprobleme
       href: troubleshoot-deployment-new-vm.md
     - name: Erneutes Bereitstellen eines virtuellen Computers auf einem neuen Azure-Knoten
       href: redeploy-to-new-node.md
+    - name: Häufige Fehlermeldungen
+      href: error-messages.md
     - name: Anfügen einer virtuellen Festplatte für die Problembehandlung
       items:
       - name: Azure-Befehlszeilenschnittstelle

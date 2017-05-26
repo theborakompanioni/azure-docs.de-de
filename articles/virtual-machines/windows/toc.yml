@@ -55,7 +55,8 @@
     href: network-overview.md
   - name: VM-Skalierungsgruppen
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: Instanzmetadatendienst 
+  - name: Instanzmetadatendienst
+ 
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: Container
     href: containers.md
@@ -137,10 +138,7 @@
       href: csharp-template.md
     - name: Erstellen eines virtuellen Computers mit Chef
       href: chef-automation.md
-    - name: >-
-        Erstellen eines virtuellen Computers, auf dem gängige Anwendungsframeworks
-        ausgeführt werden
-
+    - name: 'Erstellen eines virtuellen Computers, auf dem gängige Anwendungsframeworks ausgeführt werden'
       href: app-frameworks.md
     - name: Verschieben einer VM zwischen Abonnements
       href: move-vm.md
@@ -183,10 +181,7 @@
       href: prepare-for-upload-vhd-image.md
     - name: Erstellen eines Images für einen verwalteten Datenträger
       href: capture-image-resource.md
-    - name: >-
-        Erstellen eines virtuellen Computers auf der Grundlage eines Images für einen
-        verwalteten Datenträger
-
+    - name: Erstellen eines virtuellen Computers auf der Grundlage eines Images für einen verwalteten Datenträger
       href: create-vm-generalized-managed.md
   - name: Verwalten von VM-Speicher
     items:
@@ -226,10 +221,7 @@
         href: upload-image.md
       - name: Erstellen eines nicht verwalteten Images
         href: capture-image.md
-      - name: >-
-          Erstellen eines nicht verwalteten virtuellen Computers auf der Grundlage einer
-          generalisierten VHD
-
+      - name: Erstellen eines nicht verwalteten virtuellen Computers auf der Grundlage einer generalisierten VHD
         href: create-vm-generalized.md
       - name: Kopieren eines virtuellen Computers
         href: vhd-copy.md
@@ -242,10 +234,7 @@
     items:
     - name: Erstellen virtueller Netzwerke
       href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: >-
-        Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten
-        (NICs)
-
+    - name: Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)
       href: multiple-nics.md
     - name: Erstellen einer statischen öffentlichen IP-Adresse
       href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
@@ -333,10 +322,7 @@
       href: ./sql/virtual-machines-windows-sql-server-iaas-overview.md
     - name: SharePoint
       href: sharepoint-farm.md
-    - name: >-
-        Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu
-        Testzwecken
-
+    - name: Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken
       href: ps-hybrid-cloud-test-env-lob.md
     - name: Einrichten einer simulierten Hybrid Cloud-Umgebung zu Testzwecken
       href: ps-hybrid-cloud-test-env-sim.md
@@ -355,15 +341,9 @@
       items:
       - name: Migrieren von Amazon Web Services (AWS) zu Azure
         href: aws-to-azure.md
-    - name: >-
-        Hochladen und Erstellen eines virtuellen Computers auf der Grundlage einer
-        generalisierten VHD
-
+    - name: Hochladen und Erstellen eines virtuellen Computers auf der Grundlage einer generalisierten VHD
       href: upload-generalized-managed.md
-    - name: >-
-        Hochladen und Erstellen eines virtuellen Computers auf der Grundlage einer
-        speziellen VHD
-
+    - name: Hochladen und Erstellen eines virtuellen Computers auf der Grundlage einer speziellen VHD
       href: upload-specialized.md
     - name: Migrieren von der klassischen Bereitstellung zum Azure Resource Manager
       href: migration-classic-resource-manager-overview.md
@@ -391,6 +371,9 @@
         href: troubleshoot-specific-rdp-errors.md
     - name: Zurücksetzen des RDP-Kennworts
       href: reset-rdp.md
+    - name: Startdiagnose
+ 
+      href: boot-diagnostics.md
     - name: Erstellen eines virtuellen Computers
       href: troubleshoot-deployment-new-vm.md
     - name: Neustart oder Größenänderung eines virtuellen Computers
@@ -401,10 +384,9 @@
       href: allocation-failure.md
     - name: Erneutes Bereitstellen eines virtuellen Computers
       href: redeploy-to-new-node.md
-    - name: >-
-        Anfügen einer virtuellen Festplatte an den virtuellen
-        Problembehandlungscomputer
-
+    - name: Häufige Fehlermeldungen
+      href: error-messages.md
+    - name: Anfügen einer virtuellen Festplatte an den virtuellen Problembehandlungscomputer
       items:
       - name: Azure PowerShell
         href: troubleshoot-recovery-disks.md

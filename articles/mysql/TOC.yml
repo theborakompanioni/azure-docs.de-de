@@ -39,11 +39,11 @@
       href: concepts-supported-versions.md
   - name: Ressourcen
     items:
-    - name: Dienstebenen
+    - name: Tarife
       href: concepts-service-tiers.md
-    - name: Computeeinheiten & Speichereinheiten
+    - name: Compute-Einheiten
       href: concepts-compute-unit-and-storage.md
-    - name: Grenzen
+    - name: Einschränkungen
       href: concepts-limits.md
   - name: Datenzugriff und Sicherheit
     items:
@@ -85,6 +85,8 @@
       href: howto-connection-string.md
     - name: Konfigurieren von SSL
       href: howto-configure-ssl.md
+    - name: Web App
+      href: howto-connect-webapp.md
 - name: Referenz
   items:
   - name: Azure-Befehlszeilenschnittstelle
