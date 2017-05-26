@@ -41,7 +41,7 @@ Der Artikel enthält zwei Abschnitte:
 ## <a id="authconfig"></a> Konfigurieren der Dienstprinzipalauthentifizierung in Azure App Service
 Dieser Abschnitt enthält allgemeine Anweisungen, die für alle API-Apps gelten. Die speziellen Schritte für die .NET-Beispielanwendung (Aufgabenliste) sind in [Fortsetzen der Tutorialreihe für .NET-API-Apps](#tutorialstart)enthalten.
 
-1. Navigieren Sie im [Azure-Portal ](https://portal.azure.com/)zum Blatt **Einstellungen** der zu schützenden API-App, suchen Sie den Abschnitt mit den Features****, und klicken Sie auf **Authentifizierung/Autorisierung**.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/)zum Blatt **Einstellungen** der zu schützenden API-App, suchen Sie den Abschnitt mit den **Features**, und klicken Sie auf **Authentifizierung/Autorisierung**.
    
     ![Authentifizierung/Autorisierung im Azure-Portal](./media/app-service-api-dotnet-user-principal-auth/features.png)
 2. Klicken Sie auf dem Blatt **Authentifizierung/Autorisierung** auf **Ein**.
@@ -100,7 +100,7 @@ Im folgenden Abschnitt konfigurieren Sie die API-App der mittleren Ebene für da
 Wenn beim Befolgen der Anweisungen in diesem Tutorial Probleme auftreten, lesen Sie den Abschnitt [Problembehandlung](#troubleshooting) am Ende des Tutorials. 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zum Blatt **Einstellungen** der API-App, die Sie für die API-App ToDoListDataAPI (Datenebene) erstellt haben. Klicken Sie anschließend auf **Einstellungen**.
-2. Suchen Sie auf dem Blatt **Einstellungen** nach dem Abschnitt mit den Features****, und klicken Sie dann auf **Authentifizierung/Autorisierung**.
+2. Suchen Sie auf dem Blatt **Einstellungen** nach dem Abschnitt mit den **Features**, und klicken Sie dann auf **Authentifizierung/Autorisierung**.
    
     ![Authentifizierung/Autorisierung im Azure-Portal](./media/app-service-api-dotnet-user-principal-auth/features.png)
 3. Klicken Sie auf dem Blatt **Authentifizierung/Autorisierung** auf **Ein**.

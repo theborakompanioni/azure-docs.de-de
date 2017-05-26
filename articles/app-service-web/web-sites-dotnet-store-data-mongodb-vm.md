@@ -100,7 +100,7 @@ Der C#-Treiber für MongoDB ist jetzt installiert.  Dem Projekt wurden Verweise 
 ![Verweise auf C#-Treiber für MongoDB][MongoDBCSharpDriverReferences]
 
 ## <a name="add-a-model"></a>Hinzufügen eines Modells
-Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner *Models*, ****fügen Sie eine neue **Klasse** hinzu, und benennen Sie sie *TaskModel.cs*.  Ersetzen Sie den vorhandenen Code in der Datei *TaskModel.cs*durch den folgenden Code:
+Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner *Models*, **fügen** Sie eine neue **Klasse** hinzu, und benennen Sie sie *TaskModel.cs*.  Ersetzen Sie den vorhandenen Code in der Datei *TaskModel.cs*durch den folgenden Code:
 
     using System;
     using System.Collections.Generic;
@@ -133,7 +133,7 @@ Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordn
     }
 
 ## <a name="add-the-data-access-layer"></a>Hinzufügen der Datenzugriffsschicht
-Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt *MyTaskListApp* und ****fügen Sie einen **Neuen Ordner** mit dem Namen *DAL* hinzu.  Klicken Sie mit der rechten Maustaste auf den Ordner *DAL*, und ****fügen Sie eine neue **Klasse** hinzu. Benennen Sie die Klassendatei *Dal.cs*.  Ersetzen Sie den vorhandenen Code in der Datei *Dal.cs*durch den folgenden Code:
+Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt *MyTaskListApp* und **fügen** Sie einen **Neuen Ordner** mit dem Namen *DAL* hinzu.  Klicken Sie mit der rechten Maustaste auf den Ordner *DAL*, und **fügen** Sie eine neue **Klasse** hinzu. Benennen Sie die Klassendatei *Dal.cs*.  Ersetzen Sie den vorhandenen Code in der Datei *Dal.cs*durch den folgenden Code:
 
     using System;
     using System.Collections.Generic;
