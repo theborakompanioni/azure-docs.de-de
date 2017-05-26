@@ -87,7 +87,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) vo
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in CA PPM als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in CA PPM muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in CA PPM zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in CA PPM zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei CA PPM müssen Sie die folgenden Bausteine ausführen:
 
