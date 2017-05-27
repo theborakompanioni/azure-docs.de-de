@@ -3,7 +3,7 @@ title: "Azure Application Insights – häufig gestellte Fragen | Microsoft-Doku
 description: "Häufig gestellte Fragen zu Application Insights."
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 65c199064273930f66db580b6c01dabb4b906e7a
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 8a6a8027b93d0d5b353c41c103d2c9ad5faa70c1
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -172,6 +172,8 @@ Sie haben folgende Möglichkeiten, um das Problem auszuschließen:
 POST-Daten werden nicht automatisch protokolliert, Sie können jedoch einen TrackTrace-Aufruf verwenden und die Daten in den Nachrichtenparameter einfügen. Die Größenbegrenzung hierfür ist höher als bei Zeichenfolgeneigenschaften, Sie können jedoch nicht danach filtern.
 
 ## <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Sollte ich eine einzelne oder mehrere Application Insights-Ressourcen verwenden?
+
+Verwenden Sie eine einzelne Ressource für alle Komponenten oder Rollen in einem einzelnen Geschäftssystem. Verwenden Sie separate Ressourcen für Entwicklungs-, Test- und Releaseversionen und für unabhängige Anwendungen.
 
 * [Konsultieren Sie die Erörterung hier](app-insights-separate-resources.md).
 * [Beispiel – Clouddienst mit Worker- und Webrolle](app-insights-cloudservices.md)

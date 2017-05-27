@@ -12,12 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/02/2017
 ms.author: antisch
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 4d37dfc6c7110aa32788bbd3c3f81cd84a1426d2
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 698978fd717091c49a1375e222f46f4325431223
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -25,7 +26,9 @@ ms.lasthandoff: 03/24/2017
 
 Dieses Skript erstellt ein Azure Batch-Konto und zeigt, wie verschiedene Eigenschaften des Kontos abgefragt und aktualisiert werden können.
 
-Installieren Sie bei Bedarf die Azure-Befehlszeilenschnittstelle anhand der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), und führen Sie dann `az login` aus, um sich bei Azure anzumelden.
+## <a name="prerequisites"></a>Voraussetzungen
+
+Installieren Sie Azure CLI mithilfe der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
 
 ## <a name="batch-account-sample-script"></a>Beispielskript für ein Batch-Konto
 
