@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 2916ee6ba4753efdb8823f93c951a4f678b08ae4
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: df34052acc401fb5bb1e3f808c649c0ea0bcf33c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -28,7 +28,7 @@ In diesem Schnellstarttutorial erfahren Sie Schritt für Schritt, wie Sie eine P
 
 ![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-Die folgenden Schritte können auf einem Mac oder auf einem Computer unter Windows oder Linux ausgeführt werden. Der gesamte Prozess dauert etwa fünf Minuten.
+Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Der gesamte Prozess dauert etwa fünf Minuten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -110,15 +110,7 @@ az group create --name myResourceGroup --location westeurope
 
 Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#create) einen App Service-Plan.
 
-> [!NOTE]
-> Ein App Service-Plan stellt die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich die durch den Plan definierten Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten.
->
-> In App Service-Plänen wird Folgendes definiert:
-> * Region („Europa, Norden“, „USA, Osten“, „Asien, Südosten“)
-> * Instanzgröße (klein, mittel, groß)
-> * Skalierung (Instanzenanzahl)
-> * SKU (Free, Shared, Basic, Standard, Premium)
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 Im folgenden Beispiel wird ein App Service-Plan namens `quickStartPlan` mit dem Tarif **FREE** erstellt.
 
