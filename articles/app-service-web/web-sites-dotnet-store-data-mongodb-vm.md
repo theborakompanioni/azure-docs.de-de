@@ -363,7 +363,7 @@ Um den Titel oben auf der Seite zu ändern, öffnen Sie die Datei „*Views\Shar
     <div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
 
-Um die Möglichkeit zum Erstellen eines neuen Tasks hinzuzufügen, klicken Sie mit der rechten Maustaste auf den Ordner *Views\Home\\*, und ****fügen Sie eine neue **Ansicht** hinzu.  Benennen Sie die Ansicht *Create*. Ersetzen Sie den Code durch den folgenden Code:
+Um die Möglichkeit zum Erstellen eines neuen Tasks hinzuzufügen, klicken Sie mit der rechten Maustaste auf den Ordner *Views\Home\\*, und **fügen** Sie eine neue **Ansicht** hinzu.  Benennen Sie die Ansicht *Create*. Ersetzen Sie den Code durch den folgenden Code:
 
     @model MyTaskListApp.Models.MyTask
 
