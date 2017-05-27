@@ -3,7 +3,7 @@ title: Anhalten, Fortsetzen und Skalieren mit REST in Azure SQL Data Warehouse |
 description: "PowerShell-Aufgaben zum Verwalten von Computeleistung. Skalieren von Computeressourcen durch Anpassen der DWUs Sie können Computeressourcen auch nach Bedarf anhalten und fortsetzen, um Kosten zu sparen."
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: hirokib
 manager: barbkess
 editor: 
 ms.assetid: 21de7337-9356-49bb-a6eb-06c1beeba2c4
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: 548e61004bd95d9e785fea438eb8b81aa63f1739
+ms.contentlocale: de-de
 ms.lasthandoff: 03/28/2017
 
 

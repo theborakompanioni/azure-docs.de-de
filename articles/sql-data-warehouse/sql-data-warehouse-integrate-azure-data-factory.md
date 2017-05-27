@@ -3,7 +3,7 @@ title: Verwenden von Azure Data Factory mit SQL Data Warehouse | Microsoft Docs
 description: "Tipps für die Verwendung von Azure Data Factory (ADF) mit Azure SQL Data Warehouse für die Entwicklung von Lösungen."
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: hirokib
 manager: jhubbard
 editor: 
 ms.assetid: 492de762-c7a2-4cdb-943f-3135230e94f1
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
-ms.author: barbkess
-translationtype: Human Translation
+ms.author: elbutter;barbkess
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 12743b3594a0a62b0b974fb6dd1c39972c1bd3fa
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 

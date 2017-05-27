@@ -218,6 +218,8 @@ Die Seite Ihrer DNS-Einträge sollte in etwa wie auf dem folgenden Screenshot au
 
 ![Seite der DNS-Einträge](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
+<a name="enable-a"></a>
+
 ### <a name="enable-the-a-record-mapping-in-your-app"></a>Aktivieren der Zuordnung von A-Einträgen in Ihrer App
 
 Jetzt können Sie Ihren konfigurierten DNS-Namen zu Ihrer App hinzufügen.

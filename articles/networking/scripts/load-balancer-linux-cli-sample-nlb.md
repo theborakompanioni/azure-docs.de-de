@@ -68,4 +68,3 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 
 Zusätzliche Azure-Netzwerk-CLI-Skriptbeispiele finden Sie in der [Azure-Netzwerkdokumentation](../cli-samples.md).
-

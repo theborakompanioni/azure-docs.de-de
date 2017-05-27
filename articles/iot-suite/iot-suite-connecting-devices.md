@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2017
+ms.date: 05/25/2017
 ms.author: dobett
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 3536777690a9b00ded7c7fdf4d5f39638dad71b0
+ms.contentlocale: de-de
 ms.lasthandoff: 03/10/2017
 
 
@@ -59,7 +60,7 @@ Fügen Sie die Parson JSON-Bibliothek dem **RMDevice**-Projekt hinzu, und fügen
 
 1. Öffnen Sie in Visual Studio die Datei „RMDevice.c“. Ersetzen Sie die vorhandenen `#include`-Anweisungen durch folgenden Code:
    
-    ```
+    ```c
     #include "iothubtransportmqtt.h"
     #include "schemalib.h"
     #include "iothub_client.h"
@@ -81,7 +82,7 @@ Fügen Sie Code zum Aufrufen der Funktion **remote\_monitoring\_run** hinzu, ers
 
 1. Ersetzen Sie die **main**-Funktion durch folgenden Code, um die **remote\_monitoring\_run**-Funktion aufzurufen:
    
-    ```
+    ```c
     int main()
     {
       remote_monitoring_run();
