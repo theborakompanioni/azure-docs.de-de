@@ -16,16 +16,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6521e1e71b18a352404c1c63c5d745d637951ea9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: e95d3a57594d55b7d7176d873cde8abfa6e12ecd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="quick-start-guide-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Schnellstartanleitung: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs
 ## <a name="introduction"></a>Einführung
-Diese Schnellstartanleitung hilft Ihnen beim Einrichten eines Einzelinstanz-SAP HANA-Prototyps oder -Demosystems auf virtuellen Azure-Computern (VMs), wenn Sie SAP NetWeaver 7.5 und SAP HANA SP12 manuell installieren.
+Diese Schnellstartanleitung dient Ihnen als Hilfe beim Einrichten eines SAP HANA-Einzelinstanzprototyps oder Demosystems unter Azure Virtual Machines (VMs), wenn Sie SAP NetWeaver 7.5 und SAP HANA 1.0 SP12 manuell installieren. Diese Anleitung soll nicht als Ersatz für die SAP-Dokumentation dienen, sondern legt den Schwerpunkt mehr auf die Bereitstellung unter Azure.
+
+>[!Note]
+>Beachten Sie, dass sich diese Anleitung auf Bereitstellungen von SAP HANA auf Azure-VMs bezieht. Alle Aspekte der Bereitstellung von SAP HANA für große HANA-Instanzen sind in einer separaten Dokumentation enthalten, die Sie auch unter „https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started“ finden.
+ 
 
 Die Anleitung setzt voraus, dass Sie mit solchen Azure IaaS-Grundlagen vertraut sind:
  * Bereitstellen virtueller Computer oder virtueller Netzwerke über das Azure-Portal oder PowerShell.
@@ -33,74 +38,110 @@ Die Anleitung setzt voraus, dass Sie mit solchen Azure IaaS-Grundlagen vertraut 
 
 Die Anleitung setzt auch voraus, dass Sie mit SAP HANA und SAP NetWeaver und deren lokaler Installation vertraut sind.
 
-Außerdem sollten Sie die SAP-Azure-Dokumentation kennen, auf die im Abschnitt „Allgemeine Informationen“ am Ende der Anleitung hingewiesen wird.
+Weitere Informationen, die Sie kennen und verinnerlicht haben sollten, was die Installation und den Betrieb von SAP HANA- und SAP-Anwendungsinstanzen in Azure betrifft, sind:
 
-Da der Inhalt der Anleitung auf nicht produktive Systeme beschränkt ist, werden Themen wie hohe Verfügbarkeit (HA), Sicherung, Wiederherstellung im Notfall (DR), hohe Leistung oder besondere Sicherheitsüberlegungen nicht behandelt.
+Informationen zur Planung der SAP-Bereitstellung in Azure, z.B. VNet-Planung und Nutzung von Azure Storage, finden Sie unter [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide).
 
-SAP-Linux-Azure wird nur für Azure Resource Manager und nicht das klassische Bereitstellungsmodell unterstützt. Daher wird ein Beispielsetup mit zwei virtuellen Computern ausgeführt, um eine verteilte SAP NetWeaver-Installation über das Azure Resource Manager-Modell zu erreichen. Weitere Informationen zum Resource Manager finden Sie im Abschnitt „Allgemeine Informationen“ am Ende der Anleitung.
+Bereitstellungsprinzipien und Möglichkeiten zur Bereitstellung von VMs in Azure finden Sie unter [Bereitstellung von Azure Virtual Machines für SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide).
 
-Für die Beispielinstallation wurden die folgenden zwei Test-VMs verwendet:
+Aspekte zur hohen Verfügbarkeit von SAP NetWeaver ASCS, SCS und ERS in Azure werden unter [Hohe Verfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide) beschrieben.
 
-* hana-appsrv (Typ DS3) zum Hosten der NetWeaver-Instanz 7.5 ABAP SAP Central Services (ASCS) + PAS
-* hana-dbsrv (Typ GS4) zum Hosten von HANA SP12
+Der Leitfaden [Erstellen einer SAP NetWeaver Multi-SID-Konfiguration](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid) enthält Details zur Verbesserung der Effizienz beim Nutzen einer Multi-SID-Installation von ASCS/SCS in Azure.
 
-Beide virtuellen Computer gehörten zu einem virtuellen Azure-Netzwerk (azure-hana-test-vnet), und das BS war in beiden Fällen SLES 12 SP1.
+Prinzipien der Ausführung von SAP NetWeaver basierend auf Linux-VMs in Azure sind unter [Ausführen von SAP NetWeaver auf Microsoft Azure SUSE-Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart) beschrieben. Lesen Sie sich diesen Leitfaden durch, da er Details zu einigen spezifischen Einstellungen für Linux auf Azure-VMs sowie Details zum richtigen Anfügen von Azure-Speicherdatenträgern an Linux-VMs enthält.
 
-Seit Juli 2016 wird SAP HANA nur für OLAP-Produktionssysteme (BW) unter Azure-VMs vom Typ GS5 vollständig unterstützt. Zu Testzwecken, bei denen kein offizieller SAP-Support erwartet wird, sind auch kleinere Lösungen ausreichend, z.B. GS4. Für SAP HANA unter Azure sollte immer Azure Storage Premium für HANA-Daten und -Protokolldateien verwendet werden (Informationen hierzu finden Sie weiter unten im Abschnitt „Datenträgereinrichtung“). Weitere Informationen dazu, welche SAP-Produkte unter Azure unterstützt werden, finden Sie im Abschnitt „Allgemeine Informationen“ am Ende dieser Anleitung.
+Bisher sind Azure-VMs von SAP nur für SAP HANA-Konfigurationen mit zentraler Hochskalierung zertifiziert. Konfigurationen mit horizontaler Hochskalierung mit SAP HANA-Workload werden noch nicht unterstützt. Informationen zur hohen Verfügbarkeit von SAP HANA bei Konfigurationen mit zentraler Hochskalierung finden Sie unter [Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
 
-In der Anleitung werden zwei unterschiedliche Möglichkeiten zum manuellen Installieren von SAP HANA auf Azure-VMs beschrieben:
+
+Empfehlungen und Möglichkeiten zur Sicherung von SAP HANA-Datenbanken auf Azure-VMs sind in diesen Leitfäden aufgeführt.
+
+* [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+* [SAP HANA-Sicherung mit Azure Backup auf Dateiebene](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+* [SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+
+Die Verwendung der SAP Cloud Appliance Library zum Bereitstellen von S/4HANA oder BW/4HANA ist unter [Bereitstellen von SAP S/4HANA oder BW/4HANA in Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) beschrieben.
+
+Von SAP sind die von SAP HANA unterstützten Betriebssysteme unter [SAP Support Note #2235581 – SAP HANA: Supported Operating Systems](https://launchpad.support.sap.com/#/notes/2235581/E) (SAP-Supporthinweis #2235581 – SAP HANA: Unterstützte Betriebssysteme) dokumentiert. Auf Azure-VMs wird nur ein Teil dieser Betriebssysteme unterstützt. Für die Bereitstellung von SAP HANA in Azure werden die folgenden Betriebssysteme unterstützt: 
+
+* SUSE Linux Enterprise Server 12.x
+* Red Hat Enterprise Linux 7.2
+
+Weitere Dokumentation von SAP in Bezug auf SAP HANA und die verschiedenen Linux-Betriebssysteme:
+
+* [SAP Support Note #171356 – SAP Software on Linux: General Information](https://launchpad.support.sap.com/#/notes/1984787)
+* [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+* [SAP Support Note #2205917 – SAP HANA DB Recommended OS Settings for SLES 12 for SAP Applications](https://launchpad.support.sap.com/#/notes/2205917/E)
+* [SAP Support Note #1984787 – SUSE Linux Enterprise Server 12: Installation Notes](https://launchpad.support.sap.com/#/notes/1984787)
+* [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070)
+* [SAP Support Note #2009879 – SAP HANA Guidelines for Red Hat Enterprise Linux (RHEL) Operating System](https://launchpad.support.sap.com/#/notes/2009879) (SAP-Supporthinweis #2009879 – SAP HANA-Richtlinien für das RHEL-Betriebssystem (Red Hat Enterprise Linux))
+* [2292690 – SAP HANA DB: Recommended OS Settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E) (2292690 – SAP HANA DB: Empfohlene Betriebssystemeinstellungen für RHEL 7)
+
+Beachten Sie auch diese beiden SAP-Hinweise zur SAP-Überwachung in Azure:
+
+* SAP-Hinweis zur „erweiterten Überwachung“ von SAP mit Linux-VMs unter Azure: [SAP-Hinweis 2191498](https://launchpad.support.sap.com/#/notes/2191498/E).
+* SAP-Hinweis mit Informationen zu SAPOSCOL unter Linux: [SAP-Hinweis 1102124](https://launchpad.support.sap.com/#/notes/1102124/E).
+* Wichtige Überwachungsmetriken für SAP in Microsoft Azure: [SAP-Hinweis 2178632](https://launchpad.support.sap.com/#/notes/2178632/E).
+
+
+Azure-VM-Typen und von SAP unterstützte Workloadszenarien für SAP HANA sind unter [SAP certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html) (IaaS-Plattformen mit SAP-Zertifizierung) dokumentiert. Azure-VM-Typen, die verwendet werden können und von SAP für SAP NetWeaver oder die S/4HANA-Anwendungsschicht zertifiziert sind, sind von SAP unter [SAP Note 1928533 – SAP Applications on Azure: Supported Products and Azure VM types](https://launchpad.support.sap.com/#/notes/1928533/E) (SAP-Hinweis 1928533 – SAP-Anwendungen in Azure: Unterstützte Produkte und Azure-VM-Typen) dokumentiert.
+
+>[!Note]
+>SAP-Linux-Azure wird nur für Azure Resource Manager (ARM) und nicht für das klassische Bereitstellungsmodell (ASM) unterstützt. 
+
+
+In dieser Anleitung werden zwei unterschiedliche Möglichkeiten zum manuellen Installieren von SAP HANA auf Azure-VMs beschrieben:
 
 * Mit dem SAP Software Provisioning Manager (SWPM) im Rahmen einer verteilten NetWeaver-Installation im Schritt „Datenbankinstanzinstallation“.
 * Mit dem HANA Lifecycle Management Tool „hdblcm“ und anschließendem Installieren von NetWeaver.
 
-Sie können auch SWPM verwenden und alle Komponenten (SAP HANA, SAP-Anwendungsserver, ASCS-Instanz, SAP GUI) auf einer einzelnen VM installieren. Diese Option wird in dieser Anleitung nicht beschrieben, aber die zu berücksichtigenden Elemente sind identisch.
+Sie können auch SWPM verwenden und alle Komponenten (SAP HANA, SAP-Anwendungsserver, ASCS-Instanz) auf einer einzelnen VM installieren. Dies ist [hier](https://blogs.saphana.com/2013/12/31/announcement-sap-hana-and-sap-netweaver-as-abap-deployed-on-one-server-is-generally-available/) beschrieben. Diese Option wird in dieser Anleitung zwar nicht beschrieben, aber die zu berücksichtigenden Elemente sind identisch.
 
 Bevor Sie eine Installation beginnen, lesen Sie unbedingt „Vorbereiten von Azure-VMs auf eine manuelle Installation von SAP HANA“, unmittelbar nach den beiden Checklisten für die SAP HANA-Installation. Auf diese Weise können mehrere grundlegende Fehler vermieden werden, die auftreten können, wenn Sie nur eine standardmäßige Azure-VM-Konfiguration verwenden.
 
 ## <a name="checklist-for-sap-hana-installation-using-sap-swpm"></a>Checkliste für SAP HANA-Installation per SAP SWPM
-Dieser Abschnitt enthält die wichtigsten Schritte für eine manuelle Einzelinstanz-SAP HANA-Installation für Demo- oder Prototypzwecke, wenn Sie SAP SWPM verwenden, um eine verteilte SAP NetWeaver 7.5-Installation auszuführen. Die einzelnen Elemente werden im Verlauf der Anleitung in Form von Screenshots ausführlicher veranschaulicht.
+Dieser Abschnitt enthält die wichtigsten Schritte für eine manuelle SAP HANA-Einzelinstanzinstallation, wenn Sie SAP SWPM verwenden, um eine verteilte SAP NetWeaver 7.5-Installation durchzuführen. Die einzelnen Elemente werden im Verlauf der Anleitung in Form von Screenshots ausführlicher veranschaulicht.
 
 * Erstellen Sie ein virtuelles Azure-Netzwerk, das die beiden Test-VMs enthält.
-* Stellen Sie zwei Azure-VMs mit dem Betriebssystem SLES bzw. SLES für SAP Applications 12 SP1 gemäß Azure Resource Manager-Modell bereit.
-* Fügen Sie zwei Standarddatenträger für die Speicherung der App-Server-VM an (z.B. 75GB und 500GB).
-* Fügen Sie vier Datenträger der HANA DB-Server-VM an – zwei Standarddatenträger für die Speicherung (z.B. App-Server-VM) und zwei Datenträger für Storage Premium (z.B. 2 512-GB-Datenträger).
+* Stellen Sie zwei Azure-VMs mit Betriebssystem (in unserem Beispiel: SLES bzw. SLES für SAP Applications 12 SP1) gemäß Azure Resource Manager-Modell bereit.
+* Fügen Sie zwei Azure Standard- oder Premium-Speicherdatenträger an die Anwendungsserver-VM an (z.B. Datenträger mit 75 GB oder 500 GB).
+* Fügen Sie Storage Premium-Datenträger an die HANA DB-Server-VM an. Details hierzu finden Sie im Abschnitt „Datenträgereinrichtung“.
 * Fügen Sie je nach Größe- oder Durchsatzanforderungen mehrere Datenträger an, und erstellen Sie Stripesetvolumes, entweder mithilfe logischer Volumeverwaltung (LVM) oder eines Hilfsprogramms zur Verwaltung mehrerer Geräte (mdadm) auf der Betriebssystemebene in der VM.
 * Erstellen Sie XFS-Dateisysteme auf den angefügten Datenträgern/logischen Volumes.
 * Stellen Sie die neuen XFS-Dateisysteme auf Betriebssystemebene bereit. Verwenden Sie ein Dateisystem, um die gesamte SAP-Software vorzuhalten, und das andere beispielsweise für das sapmnt-Verzeichnis und ggf. Sicherungen. Stellen Sie auf dem SAP HANA-DB-Server XFS-Dateisysteme auf den Datenträgern für Storage Premium als „/hana“ und „/usr/sap“ bereit. Dieser Prozess ist erforderlich, um zu verhindern, dass sich das Stammdateisystem füllt, das auf virtuellen Azure-Linux-Computern nicht groß ist.
 * Geben Sie die lokalen IP-Adressen der Test-VMs in „/etc/hosts“ ein.
 * Geben Sie den Parameter „nofail“ in „/etc/fstab“ ein.
-* Legen Sie die Kernel-Parameter gemäß dem SAP HANA-SLES-12-Hinweis fest. Weitere Informationen finden Sie im Abschnitt „Kernel-Parameter“.
+* Legen Sie die Linux-Kernelparameter gemäß den SAP-Hinweisen zu HANA und zur von Ihnen verwendeten Version des Linux-Betriebssystems fest. Weitere Informationen finden Sie im Abschnitt „Kernel-Parameter“.
 * Fügen Sie den Auslagerungsbereich hinzu.
 * Installieren Sie optional einen grafischen Desktop auf den Test-VMs. Verwenden Sie andernfalls eine SAPinst-Remoteinstallation.
 * Laden Sie die SAP-Software vom SAP Service Marketplace herunter.
 * Installieren Sie die SAP ASCS-Instanz auf der App-Server-VM.
-* Geben Sie das Verzeichnis „/sapmnt“ zwischen den Test-VMs mithilfe von NFS frei. Die App-Server-VM ist der NFS-Server.
+* Geben Sie das Verzeichnis „/sapmnt“ zwischen den Test-VMs mithilfe von NFS frei. Die Anwendungsserver-VM ist der NFS-Server.
 * Installieren Sie die Datenbankinstanz, einschließlich HANA, mit SWPM auf der DB-Server-VM.
-* Installieren Sie den primären Anwendungsserver (PAS) auf der App-Server-VM.
+* Installieren Sie den primären Anwendungsserver (PAS) auf der Anwendungsserver-VM.
 * Starten Sie die SAP Management Console (MC), und stellen Sie z. B. eine Verbindung mit SAP GUI/HANA Studio her.
 
 ## <a name="checklist-for-sap-hana-installation-using-hdblcm"></a>Checkliste für SAP HANA-Installation per hdblcm
 Dieser Abschnitt enthält die wichtigsten Schritte für eine manuelle Einzelinstanz-SAP HANA-Installation für Demo- oder Prototypzwecke, wenn Sie SAP hdblcm verwenden, um eine verteilte SAP NetWeaver 7.5-Installation auszuführen. Die einzelnen Elemente werden im Verlauf der Anleitung in Form von Screenshots ausführlicher veranschaulicht.
 
 * Erstellen Sie ein virtuelles Azure-Netzwerk, das die beiden Test-VMs enthält.
-* Stellen Sie zwei Azure-VMs mit dem Betriebssystem SLES bzw. SLES für SAP Applications 12 SP1 gemäß Azure Resource Manager-Modell bereit.
-* Fügen Sie zwei Standarddatenträger für die Speicherung der App-Server-VM an (z.B. 75GB und 500GB).
-* Fügen Sie vier Datenträger der HANA DB-Server-VM an – zwei Standarddatenträger für die Speicherung (z.B. App-Server-VM) und zwei Datenträger für Storage Premium (z.B. 2 512-GB-Datenträger).
+* Stellen Sie zwei Azure-VMs mit Betriebssystem (in unserem Beispiel: SLES bzw. SLES für SAP Applications 12 SP1) gemäß Azure Resource Manager-Modell bereit.
+* Fügen Sie zwei Azure Standard- oder Premium-Speicherdatenträger an die Anwendungsserver-VM an (z.B. Datenträger mit 75 GB oder 500 GB).
+* Fügen Sie Storage Premium-Datenträger an die HANA DB-Server-VM an. Details hierzu finden Sie im Abschnitt „Datenträgereinrichtung“.
 * Fügen Sie je nach Größe- oder Durchsatzanforderungen mehrere Datenträger an, und erstellen Sie Stripesetvolumes, entweder mithilfe logischer Volumeverwaltung (LVM) oder eines Hilfsprogramms zur Verwaltung mehrerer Geräte (mdadm) auf der Betriebssystemebene in der VM.
 * Erstellen Sie XFS-Dateisysteme auf den angefügten Datenträgern/logischen Volumes.
 * Stellen Sie die neuen XFS-Dateisysteme auf Betriebssystemebene bereit. Verwenden Sie ein Dateisystem, um die gesamte SAP-Software vorzuhalten, und das andere beispielsweise für das sapmnt-Verzeichnis und ggf. Sicherungen. Stellen Sie auf dem SAP HANA-DB-Server XFS-Dateisysteme auf den Datenträgern für Storage Premium als „/hana“ und „/usr/sap“ bereit. Dieser Prozess ist erforderlich, um zu verhindern, dass sich das Stammdateisystem füllt, das auf virtuellen Azure-Linux-Computern nicht groß ist.
 * Geben Sie die lokalen IP-Adressen der Test-VMs in „/etc/hosts“ ein.
 * Geben Sie den Parameter „nofail“ in „/etc/fstab“ ein.
-* Legen Sie die Kernel-Parameter gemäß dem SAP HANA-SLES-12-Hinweis fest. Weitere Informationen finden Sie im Abschnitt „Kernel-Parameter“.
+* Legen Sie die Kernelparameter gemäß den SAP-Hinweisen zu HANA und zur von Ihnen verwendeten Version des Linux-Betriebssystems fest. Weitere Informationen finden Sie im Abschnitt „Kernel-Parameter“.
 * Fügen Sie den Auslagerungsbereich hinzu.
 * Installieren Sie optional einen grafischen Desktop auf den Test-VMs. Verwenden Sie andernfalls eine SAPinst-Remoteinstallation.
 * Laden Sie die SAP-Software vom SAP Service Marketplace herunter.
 * Erstellen Sie eine Gruppe „sapsys“ mit der Gruppen-ID 1001 auf der HANA DB-Server-VM.
 * Installieren Sie SAP HANA auf der DB-Server-VM mithilfe des HANA-Datenbanklebenszyklus-Managers (HDBLCM).
 * Installieren Sie die SAP ASCS-Instanz auf der App-Server-VM.
-* Geben Sie das Verzeichnis „/sapmnt“ zwischen den Test-VMs mithilfe von NFS frei. Die App-Server-VM ist der NFS-Server.
+* Geben Sie das Verzeichnis „/sapmnt“ zwischen den Test-VMs mithilfe von NFS frei. Die Anwendungsserver-VM ist der NFS-Server.
 * Installieren Sie die Datenbankinstanz, einschließlich HANA, mit SWPM auf der HANA-DB-Server-VM.
-* Installieren Sie den primären Anwendungsserver (PAS) auf der App-Server-VM.
+* Installieren Sie den primären Anwendungsserver (PAS) auf der Anwendungsserver-VM.
 * Starten Sie SAP MC, und stellen Sie eine Verbindung über SAP GUI/HANA Studio her.
 
 ## <a name="prepare-azure-vms-for-a-manual-installation-of-sap-hana"></a>Vorbereiten von Azure-VMs auf eine manuelle Installation von SAP HANA
@@ -114,13 +155,14 @@ Dieser Abschnitt enthält die folgenden Themen:
 * /etc/fstab
 
 ### <a name="os-updates"></a>Betriebssystemupdates
-Da SUSE Updates und Fixes für das Betriebssystem bereitstellt, um die Sicherheit und den reibungslosen Betrieb sicherzustellen, empfiehlt es sich, vor dem Installieren zusätzlicher Software zu prüfen, ob Updates verfügbar sind.
-In vielen Fällen lassen sich Supportanfragen vermeiden, wenn sich das System auf dem aktuellen Patchlevel befindet.
+Da von den Distributoren des Linux-Betriebssystems Updates und Fixes für das Betriebssystem bereitgestellt werden, um die Sicherheit und den reibungslosen Betrieb sicherzustellen, empfiehlt es sich, vor dem Installieren zusätzlicher Software die Verfügbarkeit von Updates zu prüfen.
+In vielen Fällen lassen sich Supportanfragen vermeiden, wenn sich das System auf dem aktuellen Patchlevel befindet. Stellen Sie außerdem sicher, dass Sie Folgendes verwenden:
+* SUSE Linux Enterprise Server für SAP-Anwendung
+* Red Hat Enterprise Linux für SAP-Anwendung oder für SAP HANA 
 
-Die Azure-On-Demand-Images werden automatisch mit der SUSE-Aktualisierungsinfrastruktur verbunden, wenn zusätzliche Softwareanwendungen und Updates verfügbar sind.
-Die BYOS-Images müssen möglicherweise beim SUSE Customer Center (https://scc.suse.com) registriert werden.
+Registrieren Sie die Betriebssystembereitstellung unter Ihrem Linux-Abonnement, das Sie vom Linux-Anbieter erhalten haben. Beachten Sie bei SUSE, dass auch SUSE-Betriebssystemimages für SAP-Anwendungen vorhanden sind, die bereits Dienste enthalten und automatisch registriert werden.
 
-Überprüfen Sie die verfügbaren Patches mit folgendem Befehl:
+Beispiel: Überprüfen Sie für SUSE Linux einfach wie folgt die verfügbaren Patches:
 
  `sudo zypper list-patches`
 
@@ -140,40 +182,43 @@ Wenn Sie den Parameter *--dry-run* hinzufügen, können Sie das Update testen, o
 
 
 ### <a name="disk-setup"></a>Datenträgereinrichtung
-Das Stammdateisystem einer Linux-VM unter Azure hat eine begrenzte Größe. Daher ist es erforderlich, einer VM zur Ausführung von SAP zusätzlichen Datenträgerspeicherplatz anzufügen. Bei einer SAP-App-Server-VM, die in einer reinen Prototyp- oder Demoumgebung verwendet wird, können Azure-Standarddatenträger für die Speicherung verwendet werden. Für die SAP HANA DB-Daten und -Protokolldateien sollten Azure Storage Premium-Datenträger eingesetzt werden. Dies gilt auch für Umgebungen, die nicht für die Produktion bestimmt sind.
+Das Stammdateisystem einer Linux-VM unter Azure hat eine begrenzte Größe. Daher ist es erforderlich, an eine Azure-VM zur Ausführung von SAP zusätzlichen Datenträgerspeicherplatz anzufügen. Für die SAP-Anwendungsserver-Azure-VMs kann die Nutzung von Azure Standard Storage-Datenträgern zulässig sein. Für die SAP HANA-DBMS-Azure-VMs ist die Nutzung von Azure Storage Premium-Datenträgern für die Implementierung zu Produktions- und anderen Zwecken aber obligatorisch.
 
-Weitere Informationen finden Sie unter [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Basierend auf den SAP HANA TDI-Speicheranforderungen ([SAP HANA TDI Storage Requirements](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)) empfehlen wir die folgende Konfiguration von Azure Storage Premium: 
 
-Geben Sie für das Zwischenspeichern auf Azure-Datenträgern **Keine** für Datenträger ein, die verwendet werden sollen, um die HANA-Transaktionsprotokolle zu speichern. Für HANA-Datendateien kann das Zwischenspeichern von Lesevorgängen verwendet werden. Da es sich bei HANA um eine speicherinterne Datenbank handelt, hängt es vom übergeordneten Nutzungsmuster ab, wie stark der Lesecache auf Azure-Datenträgerebene die Leistung verbessert (z.B. Starten von HANA und Lesen von Daten vom Datenträger in den Arbeitsspeicher).
+| VM-SKU | RAM |  „/hana/data“ und „/hana/log“ <br /> Striping mit LVM oder MDAADM | /hana/shared | /root volume | /usr/sap |
+| --- | --- | --- | --- | --- | --- |
+| GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-Weitere Informationen finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads virtueller Azure-Computer](../../../storage/storage-premium-storage.md).
+Bei der vorgeschlagenen Datenträgerkonfiguration werden das HANA-Datenvolume und -Protokollvolume auf der gleichen Gruppe von Azure Storage Premium-Datenträgern angeordnet, für die das Striping per LVM oder MDADM durchgeführt wird. Es ist nicht erforderlich, eine RAID-Redundanzebene zu definieren, da bei Azure Storage Premium aus Redundanzgründen drei Images der Datenträger aufbewahrt werden. Sie können sich für unterschiedliche Datenträgerkonfigurationen entscheiden. Lesen Sie sich aber bitte die Artikel [SAP HANA TDI Storage Requirements](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA TDI-Speicheranforderungen) und [SAP HANA Server Installation and Update Guide](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm) (SAP HANA-Server – Installations- und Updateleitfaden) durch, um sicherzustellen, dass Sie genügend Speicher konfiguriert haben. Informieren Sie sich auch über die verschiedenen VHD-Durchsatzvolumes der unterschiedlichen Azure Storage Premium-Datenträger, die unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](https://docs.microsoft.com/azure/storage/storage-premium-storage) dokumentiert sind. 
 
-Um JSON-Beispielvorlagen für die Erstellung von virtuellen Computern zu suchen, wechseln Sie zu [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) (Azure-Schnellstartvorlagen).
-Die Vorlage „vm-simple-sles“ ist eine einfache Vorlage, die einen Speicherabschnitt mit einem zusätzlichen 100-GB-Datenträger enthält.
-
-Um zu erfahren, wie Sie ein SUSE-Image mit PowerShell oder CLI finden, und um die Bedeutung des Anfügens eines Datenträgers mit UUID zu verstehen, lesen Sie [Ausführen von SAP NetWeaver auf Microsoft Azure SUSE Linux-VMs](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-Je nach der Größe und den Durchsatzanforderungen des Systems kann es erforderlich sein, anstelle eines Datenträgers mehrere Datenträger anzufügen und später auf Betriebssystemebene ein Stripeset für diese Datenträger zu erstellen. Sie erstellen ein Stripeset über mehrere Azure-Datenträger aus zwei Gründen:
-
-* Sie können den Durchsatz erhöhen.
-* Sie benötigen ein einzelnes Dateisystem, das größer als 1TB ist, da der aktuelle Grenzwert für Azure-Datenträgergröße 1TB beträgt (Stand Juli 2016).
+Je nach Bedarf können Sie den HANA DBMS-VMs weitere Storage Premium-Datenträger zum Speichern von Datenbank- oder Transaktionsprotokollsicherungen hinzufügen.
 
 Weitere Informationen zu den zwei wichtigsten Tools zum Konfigurieren von Striping finden Sie in den folgenden Artikeln:
 
 * [Konfigurieren von Software-RAID unter Linux](../../linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](../../linux/configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
+Weitere Informationen zum Anfügen von Datenträgern an Azure-VMs, auf denen Linux als Gast-BS ausgeführt wird, finden Sie unter [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+Azure Storage Premium ermöglicht die Definition von Zwischenspeicherungsmodi für Datenträger. Für das Stripeset mit „/hana/data“ und „/hana/log“ sollte die Zwischenspeicherung von Datenträgern deaktiviert sein. Für die anderen Volumes (Datenträger) sollte der Zwischenspeicherungsmodus auf READONLY festgelegt werden.
+
+Weitere Informationen finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads virtueller Azure-Computer](../../../storage/storage-premium-storage.md).
+
+Um JSON-Beispielvorlagen für die Erstellung von virtuellen Computern zu suchen, wechseln Sie zu [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) (Azure-Schnellstartvorlagen).
+Die Vorlage „vm-simple-sles“ ist eine einfache Vorlage, die einen Speicherabschnitt mit einem zusätzlichen 100-GB-Datenträger enthält. Diese Vorlage kann als Basis verwendet werden. Es wird erwartet, dass Sie die Vorlage an Ihre jeweilige Konfiguration anpassen.
+
+>[!Note]
+>Beachten Sie, dass es wichtig ist, den Azure Storage-Datenträger per UUID anzufügen. Dies ist unter [Ausführen von SAP NetWeaver auf Microsoft Azure SUSE-Linux-VMs](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentiert.
+
+
 In der Testumgebung wurden zwei Azure-Standarddatenträger für die Speicherung der SAP-App-Server-VM angefügt, wie im folgenden Screenshot gezeigt. Ein Datenträger speicherte die gesamte SAP-Software für die Installation (z.B. NetWeaver 7.5, SAP GUI, SAP HANA usw.). Der zweite Datenträger stellte sicher, dass ausreichend freier Speicherplatz für zusätzliche Anforderungen (z.B. Sicherung und Testdaten) verfügbar sein würde und das Verzeichnis „/sapmnt“ (d.h. SAP-Profile) für alle virtuellen Computer freigegeben wurde, die zur gleichen SAP Landscape gehören.
 
 ![SAP HANA-App-Server-Datenträgerfenster, in dem zwei Datenträger und ihre Größen angezeigt werden](./media/hana-get-started/image003.jpg)
 
-Im Gegensatz zum App-Server-VM-Szenario wurden vier Datenträger der SAP HANA-Server-VM angefügt, wie im folgenden Screenshot gezeigt. Zwei Datenträger wurden verwendet, um die SAP-Software zu speichern (Sie können die SAP-Software auch mittels NFS freigeben) und ausreichend freien Speicherplatz (z.B. für die Sicherung) verfügbar zu machen. Die beiden zusätzlichen Datenträger waren Azure Storage Premium-Datenträger zum Speichern von SAP HANA-Daten und -Protokolldateien und des Verzeichnisses „/usr/sap“.
-
-![SAP HANA-App-Server-Datenträgerfenster, in dem vier Datenträger und ihre Größen angezeigt werden](./media/hana-get-started/image004.jpg)
 
 ### <a name="kernel-parameters"></a>Kernelparameter
-Für SAP HANA sind spezifische Linux-Kerneleinstellungen erforderlich, die nicht Teil des Standardimage des Azure-Katalogs sind und manuell festgelegt werden müssen. Ein SAP HANA-Hinweis beschreibt die empfohlenen Betriebssystemeinstellungen für SLES 12/SLES für SAP Applications 12: [ SAP-Hinweis 2205917](https://launchpad.support.sap.com/#/notes/2205917).
-
+Für SAP HANA sind spezifische Linux-Kerneleinstellungen erforderlich, die nicht Teil des Standardimage des Azure-Katalogs sind und manuell festgelegt werden müssen. Die Parameter können sich für SUSE und Red Hat unterscheiden. Die oben aufgeführten SAP-Hinweise enthalten Informationen zu diesen Parametern. In den hier gezeigten Screenshots wurde SUSE Linux 12 SP1 verwendet. 
 
 SLES für SAP Applications 12 GA und SP1 verfügen über ein neues Tool, das das bisherige Hilfsprogramm „sapconf“ ersetzt. Das Tool heißt „tuned-adm“, und ein spezielles SAP HANA-Profil ist dafür verfügbar. Um das System für SAP HANA zu optimieren, geben Sie einfach folgenden Befehl als Root-Benutzer ein: „tuned-adm profile sap-hana“.
 
@@ -202,7 +247,7 @@ Es ist nicht erforderlich, dass Sie Ihre Dateisysteme auf diese Weise strukturie
 
 ![Zwei auf der SAP-App-Server-VM erstellte Dateisysteme](./media/hana-get-started/image008.jpg)
 
-In Bezug auf die SAP HANA DB-VM ist es wichtig zu wissen, dass bei einer Datenbankinstallation mit SAPinst (SWPM) und der einfachen Installationsoption „Typisch“ die Daten standardmäßig unter „/hana“ und „/usr/sap“ installiert werden. Die Standardeinstellung für die Sicherung von SAP HANA-Protokollen befindet sich unter „/usr/sap“. Noch einmal: Da es wichtig ist, zu verhindern, dass der Speicherplatz für das Stammdateisystem ausgeht, stellen Sie sicher, dass genügend freier Speicherplatz unter „/hana“ und „/usr/sap“ vorhanden ist, bevor Sie SAP HANA mit SWPM installieren.
+In Bezug auf die SAP HANA DB-VM ist der Hinweis wichtig, dass bei einer Datenbankinstallation mit SAPinst (SWPM) und der einfachen Installationsoption „Typisch“ alles unter „/hana“ und „/usr/sap“ installiert wird. Die Standardeinstellung für die Sicherung von SAP HANA-Protokollen befindet sich unter „/usr/sap“. Noch einmal: Da es wichtig ist, zu verhindern, dass der Speicherplatz für das Stammdateisystem ausgeht, stellen Sie sicher, dass genügend freier Speicherplatz unter „/hana“ und „/usr/sap“ vorhanden ist, bevor Sie SAP HANA mit SWPM installieren.
 
 Eine Beschreibung des standardmäßigen Dateisystemlayouts von SAP HANA finden Sie im [SAP HANA Server Installation and Update Guide](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm) (Handbuch zu Installation und Update von SAP HANA-Servern).
 ![Zusätzliche auf der SAP-App-Server-VM erstellte Dateisysteme](./media/hana-get-started/image009.jpg)
@@ -400,21 +445,6 @@ Nach Abschluss der Installation des SAP-App-Servers und der SAP GUI können Sie 
 
 ![Die mit der dbacockpit-Transaktion überprüfte HANA DB-Instanz](./media/hana-get-started/image039b.jpg)
 
-## <a name="about-sap-azure-certifications-and-running-sap-hana-on-azure"></a>Informationen zu SAP-Azure-Zertifizierungen und Ausführung von SAP HANA in Azure
-Weitere Informationen finden Sie in der folgenden Dokumentation:
-* Allgemeine SAP-Azure-Informationen zur Ausführung von SAP unter Azure mit dem Windows-Betriebssystem im klassischen Modus: [Verwenden von SAP auf virtuellen Windows-Computern in Azure](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
-* Informationen zu vorhandenen SAP-Vorlagen zur Nutzung durch Kunden: [Azure Quickstart Templates for SAP](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/) (Azure-Schnellstartvorlagen für SAP).
-* Allgemeine SAP-Azure-Informationen zur Ausführung von SAP unter Azure mit dem Linux-Betriebssystem im Azure Resource Manager-Modell: [Verwenden von SAP auf virtuellen Linux-Computern](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Verzeichnis mit zertifizierter SAP HANA-Hardware, in dem aufgeführt ist, welche Arten von Azure-VMs für die Produktion unterstützt werden: [Certified SAP HANA® Hardware Directory](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html) (Verzeichnis zertifizierter SAP HANA®-Hardware).
-* Informationen zur Größe von virtuellen Computern, speziell für Linux-Workloads: [Größen für virtuelle Computer in Azure](../../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* SAP-Hinweis, in dem alle unterstützten SAP-Produkte unter Azure und die unterstützten Azure-VM-Typen für SAP aufgeführt sind: [SAP-Hinweis 1928533](https://launchpad.support.sap.com/#/notes/1928533/E).
-* SAP-Hinweis zur „erweiterten Überwachung“ von SAP mit Linux-VMs unter Azure: [SAP-Hinweis 2191498](https://launchpad.support.sap.com/#/notes/2191498/E).
-* SAP HANA-Angebot zu „großen Instanzen“ von Azure. Es ist wichtig zu verstehen, dass diese Informationen sich nicht auf das Ausführen von SAP HANA auf virtuellen Azure-Computern beziehen. Es geht um eine Hybridumgebung, in der die SAP-App-Server auf Azure-VMs ausgeführt werden, aber SAP HANA auf Bare-Metal-Servern ausgeführt wird: [SAP-Hinweis 2316233](https://launchpad.support.sap.com/#/notes/2316233/E).
-* SAP-Hinweis mit Informationen zu SAPOSCOL unter Linux: [SAP-Hinweis 1102124](https://launchpad.support.sap.com/#/notes/1102124/E).
-* Wichtige Überwachungsmetriken für SAP in Microsoft Azure: [SAP-Hinweis 2178632](https://launchpad.support.sap.com/#/notes/2178632/E).
-* Weitere Informationen zu Azure Resource Manager: [Übersicht über den Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md).
-* Informationen zum Bereitstellen von virtuellen Linux-Computern über Vorlagen: [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure-CLI](../../linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Vergleich von Azure Resource Manager und klassischen Bereitstellungsmodellen: [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../../../resource-manager-deployment-model.md).
 
 ## <a name="sap-software-downloads"></a>SAP-Softwaredownloads
 Sie können die Software vom SAP Service Marketplace herunterladen, wie in den folgenden Screenshots dargestellt.
