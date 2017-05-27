@@ -13,10 +13,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: portal
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 25bfd2c6c25ddb8747dec58fdc68f904f81127fa
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 85bb0396809297f0efb7323bef081055f17ede62
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -28,8 +28,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 Öffnen Sie Ihren Webbrowser, und navigieren Sie zum [Microsoft Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich im Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
-
-![Azure-Portal – Anmeldung und Dashboard](./media/quickstart-create-mysql-server-database-using-azure-portal/1_portal-login.png)
 
 ## <a name="create-azure-database-for-mysql-server"></a>Erstellen einer Azure-Datenbank für MySQL-Server
 

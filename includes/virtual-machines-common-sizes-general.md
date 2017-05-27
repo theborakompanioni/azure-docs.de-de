@@ -40,7 +40,7 @@ ACU: 210 - 250
 ## <a name="ds-series"></a>DS-Serie*
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/32 |2^/moderat |
+| Standard_DS1 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/32 |2/moderat |
 | Standard_DS2 |2 |7 |14 |4 |8.000/64 (86) |6.400/64 |2/hoch |
 | Standard_DS3 |4 |14 |28 |8 |16.000/128 (172) |12.800/128 |4/hoch |
 | Standard_DS4 |8 |28 |56 |16 |32.000/256 (344) |25.600/256 |8/hoch |

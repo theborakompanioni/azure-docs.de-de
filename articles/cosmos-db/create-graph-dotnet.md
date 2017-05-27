@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 07a13c3e9e2baefe0be7ed417ba105dd23a3708d
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 597b12b98edb07e453fc3cd5a0884c584a5bfd14
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -43,23 +43,11 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 
 [!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
 
-## <a name="add-sample-data"></a>Hinzufügen von Beispieldaten
-
-Sie können dem Graph nun mithilfe des Daten-Explorers Daten hinzufügen.
-
-1. Erweitern Sie im Daten-Explorer **sample-database**, **sample-graph**, **Graph**, und klicken Sie anschließend auf **New Vertex** (Neuer Scheitelpunkt) und **New Edge** (Neuer Rand), um dem Graph Elemente hinzuzufügen. Im Daten-Explorer können Sie zudem Ihren Durchsatz skalieren und dem Container gespeicherte Prozeduren, benutzerdefinierte Funktionen und Trigger hinzufügen.
-
-    ![Hinzufügen von Scheitelpunkten und Rändern zu einem Graph im Daten-Explorer](./media/create-graph-dotnet/azure-cosmos-db-graph-sample-data.png)
-
-2. Nachdem Sie einige Elemente hinzugefügt haben, klicken Sie auf die Schaltfläche **Apply Filter** (Filter anwenden), oder klicken Sie mit der rechten Maustaste auf **Graph**, und klicken Sie auf **New Graph Query** (Neue Graph-Abfrage), um die visuelle Darstellung Ihrer Daten anzuzeigen. Sie können die Beschriftung und den Stil der Daten ändern, indem Sie auf die Schaltfläche **Style** (Stil) klicken und die Einstellungen ändern. Hier finden Sie einen Beispiel-Graph im Daten-Explorer. Alle angezeigten Beschriftungen, Farben und Daten können geändert werden.
-
-    ![Visueller Graph-Explorer im Daten-Explorer im Azure-Portal](./media/create-graph-dotnet/azure-cosmos-db-graph-explorer.png)
-
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
-Nun klonen wir eine Graph-API-App aus GitHub, legen die Verbindungszeichenfolge fest und führen sie aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
+Klonen Sie jetzt eine Graph-API-App aus GitHub, legen Sie die Verbindungszeichenfolge fest und führen Sie diese aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
-1. Öffnen Sie ein Git-Terminalfenster, z.B. Git Bash, und wechseln Sie mit `cd` zu einem Arbeitsverzeichnis.  
+1. Öffnen Sie ein Git-Terminalfenster, z.B. ein Git Bash, und `cd` in einem Arbeitsverzeichnis.  
 
 2. Führen Sie den folgenden Befehl aus, um das Beispielrepository zu klonen. 
 
@@ -71,7 +59,7 @@ Nun klonen wir eine Graph-API-App aus GitHub, legen die Verbindungszeichenfolge 
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Datei „Program.cs“. Sie stellen fest, dass mit diesen Codezeilen die Azure Cosmos DB-Ressourcen erstellt werden. 
+Es folgt ein kurzer Überblick zu dem, was in der App geschieht. Öffnen Sie die Datei „Program.cs“. Sie stellen fest, dass mit diesen Codezeilen die Azure Cosmos DB-Ressourcen erstellt werden. 
 
 * Der DocumentClient wird initialisiert. In der Vorschauversion wurde eine Graph-Erweiterungs-API für den DocumentDB-Client hinzugefügt. Wir arbeiten mit einem eigenständigen Graph-Client, der von DocumentDB-Client und -Ressourcen entkoppelt ist.
 
@@ -114,9 +102,9 @@ Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Da
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
-Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungszeichenfolge abzurufen und in die App zu kopieren.
+Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto im linken Navigationsbereich auf **Schlüssel**, und klicken Sie anschließend auf **Lese-/Schreib-Schlüssel**. Mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms kopieren Sie im nächsten Schritt den URI und den Primärschlüssel in die Datei `App.config`.
+1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto im linken Navigationsbereich auf **Schlüssel**, und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. Mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms kopieren Sie im nächsten Schritt den URI und den Primärschlüssel in die Datei `App.config`.
 
     ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal, Blatt „Schlüssel“](./media/create-graph-dotnet/keys.png)
 
@@ -146,28 +134,28 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 ## <a name="browse-using-the-data-explorer"></a>Durchsuchen mit dem Daten-Explorer
 
-Sie können nun in den Daten-Explorer im Azure-Portal zurückkehren und die neuen Graph-Daten durchsuchen und abfragen.
+Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren und die neuen Graph-Daten durchsuchen und abfragen.
 
 * Im Daten-Explorer wird die neue Datenbank im Bereich „Sammlungen“ angezeigt. Erweitern Sie **graphdb**, **graphcoll**, und klicken Sie anschließend auf **Graph**.
 
     Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
 
-## <a name="review-slas-in-the-azure-portal"></a>Durchlesen von SLAs im Azure-Portal
+## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie diese App nicht weiterhin verwenden, löschen Sie im Azure-Portal sämtliche Ressourcen, die mit diesem Schnellstart erstellt wurden. Führen Sie dazu folgende Schritte aus: 
+Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen im Azure-Portal. Führen Sie dazu folgende Schritte durch: 
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource. 
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Gruppe ein, und klicken Sie dann auf **Löschen**.
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Graph mit dem Daten-Explorer erstellen und eine App ausführen. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Durchlaufen von Graphen mit Gremlin implementieren. 
+In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Graph mit dem Daten-Explorer erstellen und eine App ausführen. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Diagrammen mit Gremlin implementieren. 
 
 > [!div class="nextstepaction"]
-> [Abfragen mithilfe von Gremlin](tutorial-query-graph.md)
+> [Query using Gremlin (Abfragen mithilfe von Gremlin)](tutorial-query-graph.md)
 
 
