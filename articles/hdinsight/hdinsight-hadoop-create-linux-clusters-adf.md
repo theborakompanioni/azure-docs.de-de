@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b515ffeebb2ebb4455c48b98d085acef7556291b
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 8bdbe30bb435f06ba206bfde81b238fe7dcf544c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -573,7 +574,9 @@ In diesem Artikel haben Sie gelernt, wie Sie mit Azure Data Factory einen bedarf
 ## <a name="appendix"></a>Anhang
 
 ### <a name="azure-cli-script"></a>Azure CLI-Skript
-Sie können das Tutorial mit der Azure CLI anstelle von Azure PowerShell absolvieren. Zur Verwendung der Azure CLI installieren Sie die Azure CLI zuerst anhand folgender Anweisungen:[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+Sie können das Tutorial mit der Azure CLI anstelle von Azure PowerShell absolvieren. Zur Verwendung der Azure CLI installieren Sie die Azure CLI zuerst gemäß der folgenden Anleitung:
+
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 #### <a name="use-azure-cli-to-prepare-the-storage-and-copy-the-files"></a>Verwenden der Azure CLI zum Vorbereiten des Speichers und Kopieren der Dateien
 

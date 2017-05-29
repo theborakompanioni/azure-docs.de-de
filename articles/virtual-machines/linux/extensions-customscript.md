@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 16d04d0f470dde3917f5a12f527ecceb493b2a57
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 89001404fa7255efc656b98983502d1f1d84fd73
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -34,6 +34,8 @@ In der Konfiguration der benutzerdefinierten Skripterweiterung werden Aspekte wi
 ### <a name="public-configuration"></a>Öffentliche Konfiguration
 Schema:
 
+**Hinweis**: Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Verwenden Sie die Namen wie hier angegeben, um Probleme bei der Bereitstellung zu vermeiden.
+
 * **commandToExecute**(erforderlich; Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt.
 * **fileUris**(optional; Zeichenfolgenarray): Die URLs für die herunterzuladenden Dateien.
 * **timestamp** (optional; ganze Zahl): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.
@@ -47,6 +49,8 @@ Schema:
 
 ### <a name="protected-configuration"></a>Geschützte Konfiguration
 Schema:
+
+**Hinweis**: Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Verwenden Sie die Namen wie hier angegeben, um Probleme bei der Bereitstellung zu vermeiden.
 
 * **commandToExecute**(optional; Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, falls Ihr Befehl vertrauliche Informationen (beispielsweise Kennwörter) enthält.
 * **storageAccountName**(optional; Zeichenfolge): Der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen Datei-URIs um URLs für Azure-Blobs handeln.

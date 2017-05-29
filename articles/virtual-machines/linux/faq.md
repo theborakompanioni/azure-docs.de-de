@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d579b55f07a2e710624b10fe77c17f449b09ab42
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5a0092481cb461f26ba463f4c9bbaf114ecb1248
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -52,6 +53,9 @@ Ja, dies ist jetzt möglich. Der virtuelle Computer muss zuerst beendet/freigege
 
 ## <a name="are-there-any-computer-name-requirements"></a>Gibt es Anforderungen an den Computernamen?
 Ja. Der Computername kann maximal 64 Zeichen lang sein. Weitere Informationen zur Benennung von Ressourcen finden Sie unter [Benennungsrichtlinien für die Infrastruktur](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+
+## <a name="are-there-any-resource-group-name-requirements"></a>Gelten für Namen von Ressourcengruppen bestimmte Anforderungen?
+Ja. Der Name der Ressourcengruppe darf maximal 90 Zeichen lang sein. Weitere Informationen zu Ressourcengruppen finden Sie unter [Richtlinien für die Azure-Ressourcengruppen für Windows-VMs](infrastructure-resource-groups-guidelines.md).
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Welche Anforderungen an den Benutzernamen gelten beim Erstellen eines virtuellen Computers?
 Benutzernamen müssen 1 bis 64 Zeichen lang sein.

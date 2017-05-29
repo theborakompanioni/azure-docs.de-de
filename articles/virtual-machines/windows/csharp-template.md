@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2017
 ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 738ff9882cffc428f571ab6aea96c0927d2ce443
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 7bed1e96cec49e8b62d671952976025453da6787
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -35,14 +36,14 @@ In diesem Schritt stellen Sie sicher, dass Visual Studio installiert ist, und er
 
 1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://www.visualstudio.com/).
 2. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
-3. Wählen Sie unter **Vorlagen** > **Visual C#** die Option **Konsolenanwendung** aus, geben Sie Name und Speicherort des Projekts ein, und klicken Sie dann auf **OK**.
+3. Wählen Sie unter **Vorlagen** > **Visual C#** die Option **Konsolen-App (.NET Framework)**, geben Sie Name und Speicherort des Projekts ein, und klicken Sie dann auf **OK**.
 
 ## <a name="step-2-install-libraries"></a>Schritt 2: Installieren von Bibliotheken
 
 NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installieren, die Sie zum Ausführen dieser Schritte benötigen. Sie benötigen die Azure Resource Manager-Bibliothek und die Active Directory-Authentifizierungsbibliothek, um die Ressourcen zu erstellen. Führen Sie folgende Schritte aus, um diese Bibliotheken in Visual Studio abzurufen:
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen, klicken Sie anschließend auf **NuGet-Pakete verwalten** und dann auf **Durchsuchen**.
-2. Geben Sie *Microsoft.IdentityModel.Clients.ActiveDirectory* in das Suchfeld ein, klicken Sie auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen, und klicken Sie auf **NuGet-Pakete für Projektmappe verwalten...** und dann auf **Durchsuchen**.
+2. Geben Sie *Microsoft.IdentityModel.Clients.ActiveDirectory* in das Suchfeld ein, wählen Sie Ihr Projekt aus, klicken Sie auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
 3. Wählen Sie am oberen Rand der Seite **Vorabversion einschließen**aus. Geben Sie *Microsoft.Azure.Management.ResourceManager* in das Suchfeld ein, klicken Sie auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
 
 Sie können nun die Bibliotheken verwenden, um Ihre Anwendung zu erstellen.
@@ -51,7 +52,7 @@ Sie können nun die Bibliotheken verwenden, um Ihre Anwendung zu erstellen.
 
 Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf einen [Active Directory-Dienstprinzipal](../../resource-group-authenticate-service-principal.md) haben. Vom Dienstprinzipal erhalten Sie ein Token zum Authentifizieren von Anforderungen an Azure Resource Manager.
 
-1. Öffnen Sie die Datei „Program.cs“ für das von Ihnen erstellte Projekt, und fügen Sie dann die folgenden using-Anweisungen am Anfang der Datei hinzu:
+1. Öffnen Sie die Datei „Program.cs“ für das von Ihnen erstellte Projekt, und fügen Sie die folgenden using-Anweisungen dann am Anfang der Datei den vorhandenen Anweisungen hinzu:
 
     ```
     using Microsoft.Azure;
@@ -67,8 +68,8 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
     ```
     private static async Task<AuthenticationResult> GetAccessTokenAsync()
     {
-      var cc = new ClientCredential("{client-id}", "{client-secret}");
-      var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
+      var cc = new ClientCredential("client-id", "client-secret");
+      var context = new AuthenticationContext("https://login.windows.net/tenant-id");
       var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
       if (token == null)
       {
@@ -80,9 +81,9 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
 
     Ersetzen Sie die folgenden Werte:
     
-    - *{client-id}* durch den Bezeichner der Azure Active Directory-Anwendung. Diesen Bezeichner finden Sie auf dem Blatt „Eigenschaften“ der AD-Anwendung. Um die AD-Anwendung im Azure-Portal zu suchen, klicken Sie im Ressourcenmenü auf **Azure Active Directory**, und klicken Sie dann auf **App-Registrierungen**.
-    - *{client-secret}* durch den Zugriffsschlüssel der AD-Anwendung. Diesen Bezeichner finden Sie auf dem Blatt „Eigenschaften“ der AD-Anwendung.
-    - *{tenant-id}* durch die Mandanten-ID Ihres Abonnements. Die Mandanten-ID finden Sie auf dem Blatt „Eigenschaften“ für Azure Active Directory im Azure-Portal. Sie ist als *Verzeichnis-ID* bezeichnet.
+    - *client-id* durch den Bezeichner der Azure Active Directory-Anwendung. Diesen Bezeichner finden Sie auf dem Blatt „Eigenschaften“ der AD-Anwendung. Um die AD-Anwendung im Azure-Portal zu suchen, klicken Sie im Ressourcenmenü auf **Azure Active Directory**, und klicken Sie dann auf **App-Registrierungen**.
+    - *client-secret* durch den Zugriffsschlüssel der AD-Anwendung. Diesen Bezeichner finden Sie auf dem Blatt „Eigenschaften“ der AD-Anwendung.
+    - *tenant-id* durch die Mandanten-ID Ihres Abonnements. Die Mandanten-ID finden Sie auf dem Blatt „Eigenschaften“ für Azure Active Directory im Azure-Portal. Sie ist als *Verzeichnis-ID* bezeichnet.
 
 3. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
@@ -102,7 +103,7 @@ Auch wenn Sie eine Ressourcengruppe aus einer Vorlage erstellen können, wird mi
     ```
     var groupName = "myResourceGroup";
     var subscriptionId = "subsciptionId";
-    var deploymentName = "deploymentName;
+    var deploymentName = "deploymentName";
     var location = "location";
     ```
 

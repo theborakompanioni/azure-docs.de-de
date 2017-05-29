@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: bd67dc463daee2d7763e722f079930d8712fe478
-ms.openlocfilehash: 81a08a3cbd14c4a61efe68d9dd9fcd032dd1e1cd
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 957fb7bf1bd646ae5e4d27350502bdf14b0f00c3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -90,6 +91,8 @@ Der folgende JSON-Code zeigt das Schema für die benutzerdefinierte Skripterweit
 | commandToExecute (Beispiel) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 |
 | storageAccountName (Beispiel) | examplestorageacct |
 | storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== |
+
+**Hinweis**: Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Verwenden Sie die Namen wie oben angegeben, um Probleme bei der Bereitstellung zu vermeiden.
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 

@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 05/11/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e3c97fdc9d4c69e2d67744798bc0b47d21b08ddf
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: abe380b8cb5988479197353282ef76442ee75930
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -29,12 +30,10 @@ Wenn Sie die Größe eines virtuellen Computers ändern oder diesen **beenden (Z
 
 Weitere Informationen zur Verwendung des temporären Datenträgers in Azure finden Sie unter [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
-
 ## <a name="attach-the-data-disk"></a>Anfügen des Datenträgers
 Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen. 
 
-* Informationen zur Verwendung des Portals finden Sie unter [Anfügen eines Datenträgers für Daten im Azure-Portal](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Informationen zur Verwendung des Portals finden Sie unter [How to attach a managed data disk to a Windows VM in the Azure portal](attach-managed-disk-portal.md) (Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal).
 * Informationen zur Verwendung des klassischen Portals finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). 
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Temporäres Verschieben von „pagefile.sys“ zu Laufwerk C
@@ -69,6 +68,6 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 9. Starten Sie den virtuellen Computer neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sie können den Speicher erhöhen, der für den virtuellen Computer verfügbar ist, indem Sie [einen zusätzlichen Datenträger anfügen](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Sie können den Speicher erhöhen, der für den virtuellen Computer verfügbar ist, indem Sie [einen zusätzlichen Datenträger anfügen](attach-managed-disk-portal.md).
 
 

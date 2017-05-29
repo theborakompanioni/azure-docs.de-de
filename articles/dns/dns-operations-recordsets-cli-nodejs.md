@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/20/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 3074bf378f809a9857c7ea72521961368a14772c
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 307b327e4c04a0461e39930114eb193791cbda9a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -221,8 +222,6 @@ azure network dns record-set add-record MyResourceGroup contoso.com www A -a 5.6
 azure network dns record-set delete-record MyResourceGroup contoso.com www A -a 1.2.3.4
 ```
 
-Sie können im automatisch erstellten NS-Ressourceneintragssatz auf der obersten Ebene der Zone (`-Name "@"`, einschließlich Anführungszeichen) keine Einträge hinzufügen, entfernen oder ändern. Für diesen Eintragssatz können Sie nur die Gültigkeitsdauer (Time-to-Live, TTL) und die Metadaten ändern.
-
 ### <a name="to-modify-a-cname-record"></a>Ändern eines CNAME-Eintrags
 
 Um einen CNAME-Eintrag zu ändern, verwenden Sie `azure network dns record-set add-record` zum Hinzufügen eines neuen Eintragswerts. Im Gegensatz zu anderen Eintragstypen kann ein CNAME-Eintrag nur einen einzelnen Eintrag enthalten. Daher wird der vorhandene Eintrag *ersetzt*, wenn ein neuer Eintrag hinzugefügt wird, und muss nicht separat gelöscht werden.  Sie werden aufgefordert, die Ersetzung zu akzeptieren.
@@ -241,6 +240,21 @@ Das folgende Beispiel zeigt, wie Sie die Eigenschaft „email“ des SOA-Eintrag
 
 ```azurecli
 azure network dns record-set set-soa-record rg1 contoso.com --email admin.contoso.com
+```
+
+
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>So ändern Sie NS-Einträge an der Zonenspitze
+
+Der für die Zonenspitze festgelegte NS-Eintrag wird für jede DNS-Zone automatisch erstellt. Er enthält die Namen der Azure DNS-Namenserver, die der Zone zugewiesen sind.
+
+Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Eintragssatz ändern. Es ist aber nicht möglich, die vorab mit Daten gefüllten Azure DNS-Namenserver zu entfernen oder zu ändern.
+
+Beachten Sie, dass dies nur für den NS-Eintragssatz der Zonenspitze gilt. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen geändert werden.
+
+Im folgenden Beispiel wird gezeigt, wie Sie dem NS-Eintragssatz der Zonenspitze einen zusätzlichen Namenserver hinzufügen:
+
+```azurecli
+azure network dns record-set add-record MyResourceGroup contoso.com "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
 ### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>So ändern Sie die Gültigkeitsdauer eines vorhandenen Eintragssatzes

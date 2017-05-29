@@ -14,10 +14,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1d7f24b8a65347bc54b273d08c06b22320cbeb2c
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 54389c0b6dfbe5483106ca74e379dff9091fb907
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -303,13 +304,17 @@ Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ### <a name="to-modify-ns-records-at-the-zone-apex"></a>So ändern Sie NS-Einträge an der Zonenspitze
 
-Sie können dem automatisch erstellten NS-Ressourceneintragssatz auf der obersten Ebene der Zone (`-Name "@"`, einschließlich Anführungszeichen) keine Einträge hinzufügen, keine Einträge daraus entfernen und keine Einträge ändern. Sie können nur die Gültigkeitsdauer (Time-to-Live, TTL) und die Metadaten des Ressourceneintragssatzes ändern.
+Der für die Zonenspitze festgelegte NS-Eintrag wird für jede DNS-Zone automatisch erstellt. Er enthält die Namen der Azure DNS-Namenserver, die der Zone zugewiesen sind.
 
-Im folgenden Beispiel wird veranschaulicht, wie Sie die Eigenschaft "TTL" der NS-Datensatzgruppe ändern:
+Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Eintragssatz ändern. Es ist aber nicht möglich, die vorab mit Daten gefüllten Azure DNS-Namenserver zu entfernen oder zu ändern.
+
+Beachten Sie, dass dies nur für den NS-Eintragssatz der Zonenspitze gilt. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen geändert werden.
+
+Im folgenden Beispiel wird gezeigt, wie Sie dem NS-Eintragssatz der Zonenspitze einen zusätzlichen Namenserver hinzufügen:
 
 ```powershell
 $rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
-$rs.Ttl = 300
+Add-AzureRmDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzureRmDnsRecordSet -RecordSet $rs
 ```
 
