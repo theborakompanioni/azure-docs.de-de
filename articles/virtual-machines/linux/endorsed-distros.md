@@ -1,6 +1,6 @@
 ---
 title: "Unterstützte Distributionen von Linux | Microsoft Docs"
-description: "Hier erfahren Sie mehr über unterstützte Linux-Verteilungen auf Azure, einschließlich Leitfäden für Ubuntu, OpenLogic, Oracle und SUSE."
+description: "Hier erfahren Sie mehr über unterstützte Linux-Distributionen für Azure, einschließlich Leitfäden für Ubuntu, CentOS, Oracle und SUSE."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3a9edce4b8e7208579ee810ad40a65b22db20cac
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0fbbf4aacd22f0458b82adcf4335890fbf5ec628
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -41,7 +42,7 @@ Der Azure Linux-Agent ist bereits in den Images im Azure-Katalog vorinstalliert 
 
 | Verteilung | Version | Treiber | Agent |
 | --- | --- | --- | --- |
-| CentOS by OpenLogic |CentOS 6.3+, 7.0+ |CentOS 6.3: [LIS-Download](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4+: Im Kernel |Paket: Im [Open Logic-Repository](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS von Rogue Wave Software (früher OpenLogic) |CentOS 6.3+, 7.0+ |CentOS 6.3: [LIS-Download](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4+: Im Kernel |Paket: Im [Repository](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) unter „WALinuxAgent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Im Kernel |Quellcode: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+, 8.2+ |Im Kernel |Paket: Im Repository unter „waagent“  <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |Im Kernel |Paket: Im Repository unter „WALinuxAgent“  <br/>Quellcode: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -51,10 +52,6 @@ Der Azure Linux-Agent ist bereits in den Images im Azure-Katalog vorinstalliert 
 | Ubuntu |Ubuntu 12.04, 14.04, 16.04, 16.10 |Im Kernel |Paket: Im Repository unter „WALinuxAgent“  <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="partners"></a>Partner
-### <a name="openlogic"></a>OpenLogic
-[http://www.openlogic.com/azure](http://www.openlogic.com/azure)
-
-OpenLogic ist ein führender Anbieter von Open Source-Lösungen für Unternehmen für die Cloud und das Rechenzentrum. OpenLogic hilft Hunderten führenden Unternehmen in zahlreichen Industriezweigen beim sicheren Erwerb, der Unterstützung sowie Steuerung von Open Source-Software. OpenLogic bietet handelsüblichen technischen Support und Schadenersatzleistungen für 600 von der OpenLogic Expert Community unterstützte Open Source-Pakete, einschließlich professionellem Support für CentOS, und ist zugleich der Launch-Partner für die Bereitstellung von CentOS-Images unter Azure.
 
 ### <a name="coreos"></a>CoreOS
 [https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)

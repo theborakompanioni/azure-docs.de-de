@@ -12,31 +12,31 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ce95c31f34c86ac6fd4a7348024206bf45135995
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 5fdf061d6bf9961455377935304e9075ef4e59fa
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Windows-Computer in Azure
-[MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. Dieser Artikel führt Sie durch die Installation und Konfiguration von MongoDB auf einem virtuellen Windows Server 2012 R2-Computer in Azure. Sie können [MongoDB auch auf einem virtuellen Linux-Computer in Azure installieren](../linux/install-mongodb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+[MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. Dieser Artikel führt Sie durch die Installation und Konfiguration von MongoDB auf einem virtuellen Windows Server 2012 R2-Computer in Azure. Sie können [MongoDB auch auf einem virtuellen Linux-Computer in Azure installieren](../linux/install-mongodb.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Vor der Installation und Konfiguration von MongoDB müssen Sie zunächst einen virtuellen Computer erstellen und ihm im Idealfall einen Datenträger hinzufügen. Informationen zum Erstellen eines virtuellen Computers und Hinzufügen eines Datenträgers finden Sie in den folgenden Artikeln:
 
-* [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Erstellen einer Windows-VM mit dem Resource Manager und PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Attach a data disk to a Windows Server VM using Azure PowerShell](https://msdn.microsoft.com/library/mt603673.aspx) (Anfügen eines Datenträgers an einen virtuellen Windows Server-Computer mit Azure PowerShell)
+* Erstellen Sie eine Windows Server-VM über das [Azure-Portal](quick-create-portal.md) oder per [Azure PowerShell](quick-create-powershell.md).
+* Fügen Sie einen Datenträger an eine Windows Server-VM an, indem Sie das [Azure-Portal](attach-disk-portal.md) oder [Azure PowerShell](attach-disk-ps.md) verwenden.
 
-Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie sich mit Remotedesktop bei Ihrem virtuellen Windows Server-Computer an](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie sich mit Remotedesktop bei Ihrem virtuellen Windows Server-Computer an](connect-logon.md).
 
 ## <a name="install-mongodb"></a>Installieren von MongoDB
 > [!IMPORTANT]
 > MongoDB-Sicherheitsfunktionen wie Authentifizierung und IP-Adressen-Anbindung werden nicht standardmäßig aktiviert. Die Sicherheitsfunktionen sollten aktiviert werden, bevor MongoDB in einer Produktionsumgebung eingesetzt wird. Weitere Informationen finden Sie unter [MongoDB Security and Authentication](http://www.mongodb.org/display/DOCS/Security+and+Authentication) (MongoDB: Sicherheit und Authentifizierung).
-> 
-> 
+
 
 1. Wenn Sie über Remotedesktop eine Verbindung mit dem virtuellen Computer hergestellt haben, öffnen Sie auf dem virtuellen Computer im Menü **Start** Internet Explorer.
 2. Wählen Sie beim ersten Öffnen von Internet Explorer die Option **Empfohlene Sicherheits-, Datenschutz- und Kompatibilitätseinstellungen verwenden**, und klicken Sie auf **OK**.
@@ -65,7 +65,7 @@ Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie s
      
      ![Konfigurieren von PATH-Variablen](./media/install-mongodb/configure-path-variables.png)
      
-     Fügen Sie den Pfad zum MongoDB-Ordner `bin` hinzu. MongoDB wird in der Regel unter `C:\Program Files\MongoDB` installiert. Überprüfen Sie den Installationspfad auf Ihrem virtuellen Computer. Im folgenden Beispiel wird der standardmäßige Installationsspeicherort von MongoDB der `PATH`-Variablen hinzugefügt:
+     Fügen Sie den Pfad zum MongoDB-Ordner `bin` hinzu. MongoDB wird normalerweise unter *C:\Programme\MongoDB* installiert. Überprüfen Sie den Installationspfad auf Ihrem virtuellen Computer. Im folgenden Beispiel wird der standardmäßige Installationsspeicherort von MongoDB der `PATH`-Variablen hinzugefügt:
      
      ```
      ;C:\Program Files\MongoDB\Server\3.2\bin
@@ -73,8 +73,7 @@ Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie s
      
      > [!NOTE]
      > Achten Sie darauf, dass Sie das vorangestellte Semikolon (`;`) hinzufügen, um anzugeben, dass Sie einen Speicherort zur `PATH`-Variablen hinzufügen.
-     > 
-     > 
+
 2. Erstellen Sie auf Ihrem Datenträger Daten- und Protokollverzeichnisse für MongoDB. Wählen Sie im Menü **Start** die Option **Eingabeaufforderung**. Die folgenden Beispiele erstellen die Verzeichnisse auf Laufwerk F:
    
     ```
@@ -91,8 +90,7 @@ Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie s
    
    > [!NOTE]
    > Die Eingabeaufforderung bleibt bei dieser Aufgabe, während die MongoDB-Instanz ausgeführt wird. Lassen Sie das Eingabeaufforderungsfenster geöffnet, damit MongoDB weiterhin ausgeführt wird. Oder installieren Sie MongoDB als Dienst, wie im nächsten Schritt beschrieben.
-   > 
-   > 
+
 4. Installieren Sie für zusätzliche Stabilität von MongoDB `mongod.exe` als Dienst. Die Erstellung eines Diensts bedeutet, dass Sie nicht bei jeder Nutzung von MongoDB eine Eingabeaufforderung geöffnet lassen müssen. Erstellen Sie den Dienst wie folgt, und passen Sie den Pfad zu Ihren Daten- und Protokollverzeichnissen entsprechend an:
    
     ```
@@ -148,19 +146,22 @@ exit
 ## <a name="configure-firewall-and-network-security-group-rules"></a>Konfigurieren von Firewall- und Netzwerksicherheitsgruppen-Regeln
 Nach der Installation und Ausführung von MongoDB öffnen Sie einen Port in der Windows-Firewall, um eine Remoteverbindung mit MongoDB herzustellen. Wenn Sie eine neue eingehende Regel erstellen möchten, um TCP-Port 27017 zuzulassen, öffnen Sie eine administrative PowerShell-Eingabeaufforderung, und geben Sie den folgenden Befehl ein:
 
-```powerShell
-New-NetFirewallRule -DisplayName "Allow MongoDB" -Direction Inbound `
-    -Protocol TCP -LocalPort 27017 -Action Allow
+```powerahell
+New-NetFirewallRule `
+    -DisplayName "Allow MongoDB" `
+    -Direction Inbound `
+    -Protocol TCP `
+    -LocalPort 27017 `
+    -Action Allow
 ```
 
-Sie können die Regel auch mithilfe des grafischen Verwaltungstools **Windows-Firewall mit erweiterter Sicherheit** erstellen. Erstellen Sie eine neue eingehende Regel zum Zulassen von TCP-Port 27017.
+Sie können die Regel auch mithilfe des grafischen Verwaltungstools **Windows-Firewall mit erweiterter Sicherheit**  erstellen. Erstellen Sie eine neue eingehende Regel zum Zulassen von TCP-Port 27017.
 
-Erstellen Sie ggf. eine Netzwerksicherheitsgruppen-Regel, um den Zugriff auf MongoDB von außerhalb des vorhandenen Subnetzes Ihres virtuellen Azure-Netzwerks zuzulassen. Sie können die Netzwerksicherheitsgruppen-Regeln im [Azure-Portal](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder mit [Azure PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) erstellen. Lassen Sie wie bei den Windows-Firewallregeln TCP-Port 27017 für die virtuelle Netzwerkschnittstelle des virtuellen MongoDB-Computers zu.
+Erstellen Sie ggf. eine Netzwerksicherheitsgruppen-Regel, um den Zugriff auf MongoDB von außerhalb des vorhandenen Subnetzes Ihres virtuellen Azure-Netzwerks zuzulassen. Sie können die Netzwerksicherheitsgruppen-Regeln im [Azure-Portal](nsg-quickstart-portal.md) oder mit [Azure PowerShell](nsg-quickstart-powershell.md) erstellen. Lassen Sie wie bei den Windows-Firewallregeln TCP-Port 27017 für die virtuelle Netzwerkschnittstelle des virtuellen MongoDB-Computers zu.
 
 > [!NOTE]
 > TCP-Port 27017 wird in MongoDB als Standardport verwendet. Sie können diesen Port mithilfe des `--port`-Parameters ändern, wenn sie `mongod.exe` manuell oder über einen Dienst starten. Aktualisieren Sie bei Änderung des Ports unbedingt die Windows-Firewall- und die Netzwerksicherheitsgruppen-Regeln in den vorhergehenden Schritten.
-> 
-> 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie erfahren, wie Sie MongoDB auf dem virtuellen Windows-Computer installieren und konfigurieren. Sie können nun auf Ihrem virtuellen Windows-Computer auf MongoDB zugreifen. Lesen Sie dazu die Informationen in den weiterführenden Themen in der [MongoDB-Dokumentation](https://docs.mongodb.com/manual/).

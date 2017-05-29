@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3874cba5f0e09145a29159690fd740eeddad209a
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: bbf0f4868a95d21c3aaa31109c4c5a8083efc6db
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -43,7 +44,7 @@ Aufgaben:
 * Erstellen Sie den Satz von Ressourcengruppen anhand Ihrer Benennungskonvention. Sie können die Azure-Befehlszeilenschnittstelle oder das Portal verwenden.
 
 ## <a name="resource-groups"></a>Ressourcengruppen
-In Azure fassen Sie zusammengehörige Ressourcen wie Speicherkonten, virtuelle Netzwerke und virtuelle Computer (VMs) logisch zusammen, um sie als eine Einheit bereitzustellen, zu verwalten und zu warten. Auf diese Weise können Sie Anwendungen leichter bereitstellen und gleichzeitig alle zugehörigen Ressourcen verwaltungstechnisch zusammenhalten oder anderen Benutzern Zugriff auf die Ressourcengruppe gewähren. Ausführlichere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+In Azure fassen Sie zusammengehörige Ressourcen wie Speicherkonten, virtuelle Netzwerke und virtuelle Computer (VMs) logisch zusammen, um sie als eine Einheit bereitzustellen, zu verwalten und zu warten. Auf diese Weise können Sie Anwendungen leichter bereitstellen und gleichzeitig alle zugehörigen Ressourcen verwaltungstechnisch zusammenhalten oder anderen Benutzern Zugriff auf die Ressourcengruppe gewähren. Namen von Ressourcengruppen dürfen maximal 90 Zeichen lang sein. Ausführlichere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 Ressourcengruppen bietet den wesentlichen Vorteil, dass Sie Ihre Umgebung mithilfe einer JSON-Datei erstellen können, die Speicher-, Netzwerk- und Computeressourcen deklariert. Sie können auch zugehörige benutzerdefinierte Skripts oder anzuwendende Konfigurationen definieren. Mithilfe solcher JSON-Vorlagen erstellen Sie konsistente, reproduzierbare Bereitstellungen für Ihre Anwendungen. Dieser Ansatz ermöglicht die Erstellung einer Umgebung für die Entwicklung und die anschließende Verwendung derselben Vorlage für die Erstellung einer Produktionsbereitstellung (oder umgekehrt). Um die Verwendung von Vorlagen besser zu verstehen, können Sie die [exemplarische Vorgehensweise zu Vorlagen](../../azure-resource-manager/resource-manager-template-walkthrough.md) durchlaufen, die Sie schrittweise durch die Erstellung einer JSON-Vorlage führt.
 
