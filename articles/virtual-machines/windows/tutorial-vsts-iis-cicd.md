@@ -149,7 +149,7 @@ Fügen Sie nach Erstellung der Bereitstellungsgruppe die einzelnen IIS-Instanzen
 1. Fügen Sie zurück in der **PowerShell-Administratorsitzung** auf dem virtuellen Computer das aus Team Services kopierte Skript ein, und führen Sie es aus.
 2. Wenn Sie aufgefordert werden, Tags für den Agent zu konfigurieren, wählen Sie *J*, und geben Sie *Web* ein.
 3. Wenn Sie zur Eingabe des Benutzerkontos aufgefordert werden, drücken Sie die EINGABETASTE**, um die Standardwerte zu übernehmen.
-4. Warten Sie, bis die Ausführung des Skripts mit der Meldung *Service vstsagent.account.computername started successfully* (Dienst „vstsagent.account.computername“ wurde gestartet.) abgeschlossen wird.
+4. Warten Sie, bis die Ausführung des Skripts mit der Meldung *Service vstsagent.account.computername started successfully* (Dienst „vstsagent.account.computername“ wurde erfolgreich gestartet.) abgeschlossen wird.
 5. Öffnen Sie im Menü **Build und Release** auf der Seite **Bereitstellungsgruppen** die Bereitstellungsgruppe *myIIS*. Überprüfen Sie auf der Registerkarte **Computer**, ob Ihr virtueller Computer aufgeführt ist.
 
     ![Der virtuelle Computer wurde zur Team Services-Bereitstellungsgruppe hinzugefügt.](media/tutorial-vsts-iis-cicd/deployment_group.png)
