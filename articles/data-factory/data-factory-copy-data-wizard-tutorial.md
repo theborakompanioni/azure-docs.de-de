@@ -84,7 +84,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    4. Klicken Sie auf **Weiter**.
   
       
-      ![Kopiertool – Seite „Eigenschaften“](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
+      ![Copy Tool - Properties page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. 
    
     ![Kopiertool – Seite „Quelldatenspeicher“](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
@@ -121,7 +121,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    6. Klicken Sie auf **Weiter**.
   
       
-      ![Kopiertool – Azure SQL-Datenbank angeben](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      ![Copy Tool - specify Azure SQL database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. Wählen Sie auf der Seite **Tabellenzuordnung** für das Feld **Ziel** in der Dropdownliste die Option **emp** aus, und klicken Sie auf den **Pfeil nach unten** (optional), um das Schema und eine Vorschau der Daten anzuzeigen.
     
      ![Kopiertool – Tabellenzuordnung](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
