@@ -65,7 +65,7 @@ Hinweis: Der HTTP-Anforderungstrigger ist bereits konfiguriert, Sie müssen jedo
 | Dokumentparametername | Name, der auf das Cosmos DB-Objekt im Code verweist |
 | Datenbankname | Name der Datenbank zum Speichern von Dokumenten |
 | Sammlungsname | Name der Gruppierung von Cosmos DB-Datenbanken |
-| Would you like the Cosmos DB and collection created for you (Sollen Cosmos DB-Datenbanken und die Sammlung für Sie erstellt werden?) | Ja oder nein |
+| Would you like the Cosmos DB and collection created for you (Sollen die Cosmos DB-Datenbank und die Sammlung für Sie erstellt werden?) | Ja oder nein |
 | Cosmos DB account connection (Cosmos DB-Kontoverbindung) | Verbindungszeichenfolge, die auf die Cosmos DB-Datenbank verweist |
 
 Darüber hinaus müssen Sie die Verbindung mit der Cosmos DB-Datenbank konfigurieren.

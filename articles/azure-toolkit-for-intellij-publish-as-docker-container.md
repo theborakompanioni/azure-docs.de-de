@@ -76,7 +76,7 @@ Docker-Container sind eine weit verbreitete Methode zum Bereitstellen von Webanw
       
    c. Geben Sie im Feld **Region** die geografische Region ein, in der sich Ihr Host befindet.
       
-   d. Gehen Sie auf der Registerkarte **OS and Size** (BS und Größe) wie folgt vor:      
+   d. Gehen Sie auf der Registerkarte **OS and Size** (Betriebssystem und Größe) wie folgt vor:      
       * **Host OS** (Hostbetriebssystem): Geben Sie das Betriebssystem für den virtuellen Computer ein, der Ihren Host enthält. 
       * **Größe**: Geben Sie die Größe des virtuellen Computers für Ihren Host ein.   
        

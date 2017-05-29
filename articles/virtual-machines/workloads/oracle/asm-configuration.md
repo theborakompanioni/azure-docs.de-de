@@ -413,7 +413,7 @@ Führen Sie zum Vorbereiten des Clients und des virtuellen Computers für die Au
   > Der Schlüssel muss die Zeichenfolge `ssh-rsa` enthalten. Zudem muss der Inhalt des Schlüssels als einzelne Textzeile eingefügt werden.
   >  
 
-7.  Starten Sie PuTTY. Navigieren Sie im Bereich **Category** (Kategorie) zu **Connection** > **SSH** > **Auth** (Verbindung > SSH > Authentifizierung). Navigieren Sie im Feld **Private key file for authentication** (Datei des privaten Schlüssels für die Authentifizierung) zu dem zuvor erstellten Schlüssel.
+7.  Starten Sie PuTTY. Navigieren Sie im Bereich **Category** (Kategorie) zu **Connection** > **SSH** > **Auth** (Verbindung > SSH > Authentifizierung). Navigieren Sie im Feld **Private key file for authentication** (Datei mit privatem Schlüssel für die Authentifizierung) zu dem zuvor erstellten Schlüssel.
 
   ![Screenshot der Seite zum Festlegen des privaten Schlüssels](./media/asm-configuration/setprivatekey.png)
 
@@ -461,7 +461,7 @@ Führen Sie zum Installieren von Oracle Grid Infrastructure die folgenden Schrit
 
   ![Screenshot der Seite „Specify ASM Password“ (ASM-Kennwort angeben) des Installationsprogramms](./media/asm-configuration/install04.png)
 
-6. (Optional) Aktivieren Sie auf der Seite **Specify Management Options** (Verwaltungsoptionen angeben) das Kästchen **Register with Enterprise Manager (EM) Cloud Control** (Mit Enterprise Manager (EM) Cloud Control registrieren).
+6. (Optional) Aktivieren Sie auf der Seite **Specify Management Options** (Verwaltungsoptionen angeben) das Kästchen **Register with Enterprise Manager (EM) Cloud Control** (Bei Enterprise Manager (EM) Cloud Control registrieren).
 
   ![Screenshot der Seite „Specify Management Options“ (Verwaltungsoptionen angeben) des Installationsprogramms](./media/asm-configuration/install05.png)
 
@@ -481,9 +481,9 @@ Führen Sie zum Installieren von Oracle Grid Infrastructure die folgenden Schrit
 
   ![Screenshot der Seite „Root script execution configuration“ (Konfiguration der root-Skriptausführung) des Installationsprogramms](./media/asm-configuration/install09.png)
 
-11. Wählen Sie auf der Seite **Perform Prerequisite Checks** (Voraussetzungsüberprüfungen ausführen) die Option **Fix & Check Again** (Beheben und erneut überprüfen).
+11. Wählen Sie auf der Seite **Perform Prerequisite Checks** (Überprüfungen auf erforderliche Komponenten ausführen) die Option **Fix & Check Again** (Beheben und erneut überprüfen).
 
-  ![Screenshot der Seite „Perform Prerequisite Checks“ (Voraussetzungsüberprüfungen ausführen) des Installationsprogramms](./media/asm-configuration/install10.png)
+  ![Screenshot der Seite „Perform Prerequisite Checks“ (Überprüfungen auf erforderliche Komponenten ausführen) des Installationsprogramms](./media/asm-configuration/install10.png)
 
 12. Wählen Sie auf der Seite **Fixup Script** (Fehlerbehebungsskript) die Schaltfläche **OK**.
 
