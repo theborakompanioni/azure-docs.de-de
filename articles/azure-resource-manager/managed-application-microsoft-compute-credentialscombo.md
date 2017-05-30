@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 80f35b5df784985afcf8b8f70cea7cd0886d5007
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 254f383ee6f7cb9f7051fa135d85319a22c3c369
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Compute.CredentialsCombo“
-Eine Gruppe von Steuerelementen mit integrierter Überprüfung für Windows- und Linux-Kennwörter und öffentliche SSH-Schlüssel.
+Eine Gruppe von Steuerelementen mit integrierter Überprüfung für Windows- und Linux-Kennwörter und öffentliche SSH-Schlüssel. Dieses Element verwenden Sie beim [Erstellen einer verwalteten Azure-Anwendung](managed-application-publishing.md).
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
 ![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
@@ -109,6 +109,7 @@ Wenn der Benutzer einen öffentlichen SSH-Schlüssel angegeben hat, wird die fol
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](managed-application-overview.md).
 * Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
 * Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](managed-application-createuidefinition-elements.md).
 

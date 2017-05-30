@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 69ed2a62f06fb21529a3588de5043359b166e307
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 27843b116d949899e4eae65f342324f77ebca70b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Storage.MultiStorageAccountCombo“
-Eine Gruppe von Steuerelementen zum Erstellen mehrerer Speicherkonten mit Namen, die mit einem allgemeinen Präfix beginnen.
+Eine Gruppe von Steuerelementen zum Erstellen mehrerer Speicherkonten mit Namen, die mit einem allgemeinen Präfix beginnen. Dieses Element verwenden Sie beim [Erstellen einer verwalteten Azure-Anwendung](managed-application-publishing.md).
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
@@ -72,6 +72,7 @@ Eine Gruppe von Steuerelementen zum Erstellen mehrerer Speicherkonten mit Namen,
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](managed-application-overview.md).
 * Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
 * Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](managed-application-createuidefinition-elements.md).
 

@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: aa161d2f6611cd7f1ef8fac8eebfde12eedd9fcf
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 5a0ac5b811812c8c03f7f63aae12b8699d248ebf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 
 # <a name="microsoftcommontextbox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.TextBox UI“
-Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden kann.
+Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden kann. Dieses Element verwenden Sie beim [Erstellen einer verwalteten Azure-Anwendung](managed-application-publishing.md).
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
@@ -58,6 +58,7 @@ Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden k
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](managed-application-overview.md).
 * Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
 * Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](managed-application-createuidefinition-elements.md).
 
