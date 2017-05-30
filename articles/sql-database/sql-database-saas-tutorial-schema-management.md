@@ -17,18 +17,18 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 19d02229781186053a0063af1c7e1a3280179f46
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: cbe2b6bbc8e193bdbbf08572a8488239c633548d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
-# <a name="manage-schema-for-multiple-tenants-in-the-wtp-saas-application"></a>Verwalten des Schemas für mehrere Mandanten in der WTP-SaaS-Anwendung
+# <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>Verwalten des Schemas für mehrere Mandanten in der Wingtip-SaaS-Anwendung
 
-Im Tutorial mit der Einführung in die WTP-Anwendung wird veranschaulicht, wie mithilfe der WTP-App eine Mandantendatenbank mit ihrem ursprünglichen Schema bereitgestellt und im Katalog registriert werden kann. Wie jede andere Anwendung wird die WTP-App laufend weiterentwickelt, und gelegentlich sind Änderungen an der Datenbank erforderlich. Derartige Änderungen können ein neues oder geändertes Schema, neue oder geänderte Verweisdaten und routinemäßige Wartungsaufgaben sein, die eine optimale Leistung der App sicherstellen sollen. Bei einer SaaS-Anwendung müssen diese Änderungen u.U. koordiniert für eine große Anzahl von Mandantendatenbanken bereitgestellt werden. Änderungen müssen zudem in den Bereitstellungsprozess für künftige Mandantendatenbanken eingeschlossen werden.
+Im [ersten Wingtip-SaaS-Tutorial](sql-database-saas-tutorial.md) wird veranschaulicht, wie die App eine Mandantendatenbank bereitstellen und im Katalog registrieren kann. Wie jede andere Anwendung wird die Wingtip-SaaS-App laufend weiterentwickelt, und gelegentlich sind Änderungen an der Datenbank erforderlich. Derartige Änderungen können ein neues oder geändertes Schema, neue oder geänderte Verweisdaten und routinemäßige Wartungsaufgaben sein, die eine optimale Leistung der App sicherstellen sollen. Bei einer SaaS-Anwendung müssen diese Änderungen u.U. koordiniert für eine große Anzahl von Mandantendatenbanken bereitgestellt werden. Änderungen müssen zudem in den Bereitstellungsprozess für künftige Mandantendatenbanken eingeschlossen werden.
 
-In diesem Tutorial werden zwei Szenarien erläutert: das Bereitstellen der Aktualisierungen von Verweisdaten für alle Mandanten und das Retuning eines Index für die Tabelle mit den Referenzdaten. Mit der Funktion [Elastische Aufträge](sql-database-elastic-jobs-overview.md) werden diese Vorgänge für alle Mandanten ausgeführt, sowie für eine *goldene* Mandantendatenbank, die als Vorlage für neue Datenbanken verwendet wird.
+In diesem Tutorial werden zwei Szenarien erläutert: das Bereitstellen der Aktualisierungen von Verweisdaten für alle Mandanten und das Retuning eines Index für die Tabelle mit den Referenzdaten. Mit der Funktion [Elastische Aufträge](sql-database-elastic-jobs-overview.md) werden diese Vorgänge für alle Mandanten durchgeführt, sowie auch für die *goldene* Mandantendatenbank, die als Vorlage für neue Datenbanken verwendet wird.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -41,8 +41,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die WTP-App wurde bereitgestellt. Unter [Bereitstellen und Kennenlernen der SaaS-Anwendung WTP](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
-* Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Die Wingtip-SaaS-App wird bereitgestellt. Unter [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Die aktuelle Version von SQL Server Management Studio (SSMS) wurde installiert. [Herunterladen und Installieren von SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 *In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Elastische Datenbankaufträge). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID für SaaSFeedback@microsoft.com mit dem Betreff „subject=Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Da es sich um eine eingeschränkte Vorschauversion handelt, wenden Sie sich bei auftretenden Fragen oder um Support zu erhalten an SaaSFeedback@microsoft.com.*
@@ -62,9 +62,9 @@ Es gibt eine neue Version von Elastische Aufträge, die nun eine integrierte Fun
 > [!NOTE]
 > *In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Elastische Datenbankaufträge). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID für SaaSFeedback@microsoft.com mit dem Betreff „subject=Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Da es sich um eine eingeschränkte Vorschauversion handelt, wenden Sie sich bei auftretenden Fragen oder um Support zu erhalten an SaaSFeedback@microsoft.com.*
 
-## <a name="get-the-wingtip-application-scripts"></a>Abrufen der Wingtip-Anwendungsskripts
+## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
-Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
+Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>Erstellen einer Auftragskonto-Datenbank und eines neuen Auftragskontos
 
@@ -89,7 +89,7 @@ Zum Erstellen eines neuen Auftrags verwenden wir eine Gruppe von gespeicherten S
 1. Stellen Sie außerdem eine Verbindung mit dem Mandantenserver her: tenants1-\<user\>.database.windows.net
 1. Navigieren Sie zur Datenbank *contosoconcerthall* auf dem Server *tenants1*, und fragen Sie die Tabelle *VenueTypes* ab, um sich zu vergewissern, dass *Motorcycle Racing* und *Swimming Club* **nicht** in der Ergebnisliste enthalten sind.
 1. Öffnen Sie die Datei …\\Learning Modules\\Schema Management\\DeployReferenceData.sql.
-1. Ändern Sie \<user\>, und geben Sie an allen drei Stellen im Skript den Benutzernamen an, den Sie beim Bereitstellen der WTP-App verwendet haben.
+1. Ändern Sie \<user\>, und geben Sie an allen drei Stellen im Skript den Benutzernamen an, den Sie beim Bereitstellen der Wingtip-App verwendet haben.
 1. Stellen Sie sicher, dass Sie mit der Datenbank „jobaccount“ verbunden sind, und drücken Sie **F5**, um das Skript auszuführen.
 
 * **sp\_add\_target\_group** erstellt den Zielgruppennamen DemoServerGroup, und nun müssen wir Zielelemente hinzufügen.
@@ -107,9 +107,9 @@ Zum Erstellen eines neuen Auftrags verwenden wir eine Gruppe von gespeicherten S
 
 Erstellen Sie einen Auftrag mit den gleichen gespeicherten Systemprozeduren für Aufträge.
 
-1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit dem Server „catalog-&lt;WtpUser&gt;.database.windows.net“ her.
+1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit dem Server „catalog-&lt;user&gt;.database.windows.net“ her.
 1. Öffnen Sie die Datei …\\Learning Modules\\Schema Management\\OnlineReindex.sql.
-1. Klicken Sie mit der rechten Maustaste, wählen Sie „Verbindung“ aus, und stellen Sie eine Verbindung mit dem Server „catalog-&lt;WtpUser&gt;.database.windows.net“ her, falls dies noch nicht geschehen ist.
+1. Klicken Sie mit der rechten Maustaste, wählen Sie die Option „Verbindung“, und stellen Sie eine Verbindung mit dem Server „catalog-&lt;Benutzer&gt;.database.windows.net“ her, falls dies noch nicht geschehen ist.
 1. Stellen Sie sicher, dass Sie mit der Datenbank „jobaccount“ verbunden sind, und drücken Sie F5, um das Skript auszuführen.
 
 * sp\_add\_job erstellt einen neuen Auftrag mit dem Namen „Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885“.
@@ -133,6 +133,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Weitere Tutorials, die auf der ersten Wingtip Tickets Platform-Anwendungsbereitstellung (WTP) aufbauen](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [Zusätzliche Tutorials, die auf der Wingtip-SaaS-Anwendungsbereitstellung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Verwalten horizontal hochskalierter Clouddatenbanken](sql-database-elastic-jobs-overview.md)
 * [Erstellen und Verwalten von horizontal hochskalierten Clouddatenbanken](sql-database-elastic-jobs-create-and-manage.md)

@@ -1,6 +1,6 @@
 ---
-title: "Überwachen der Leistung einer SaaS-App für SQL-Datenbank | Microsoft-Dokumentation"
-description: "Überwachen und Verwalten der Leistung für die Wingtip Tickets-Beispiel-App (WTP) für Azure SQL-Datenbank"
+title: "Überwachen der Leistung vieler Azure SQL-Datenbanken in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation"
+description: "Überwachen und Verwalten der Leistung für die SaaS-Beispiel-App Wingtip für Azure SQL-Datenbank"
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -17,18 +17,18 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: af9511978718af10c97bee6af3a2835c9d2c1ff4
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 54f29cc816d356e22b425f3824ef89800c017e61
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
-# <a name="monitor-performance-of-the-wtp-sample-saas-application"></a>Überwachen der Leistung der SaaS-Beispielanwendung WTP
+# <a name="monitor-performance-of-the-wingtip-saas-application"></a>Überwachen der Leistung der SaaS-Anwendung Wingtip
 
 In diesem Tutorial werden die integrierten Überwachungs- und Benachrichtigungsfeatures von SQL-Datenbank und Pools für elastische Datenbanken veranschaulicht, und anschließend werden verschiedene Szenarien für die Verwaltung wichtiger Leistungsaspekte in SaaS-Anwendungen beschrieben.
 
-Die App Wingtip Tickets verwendet ein Datenmodell mit einem einzelnen Mandanten, wobei jeder Veranstaltungsort (Mandant) über eine eigene Datenbank verfügt. Wie viele SaaS-Anwendungen ist das erwartete Workloadmuster des Mandanten unvorhersehbar und sporadisch. Mit anderen Worten, Ticketverkäufe können jederzeit erfolgen. Um von diesem typischen Datenbanknutzungsmuster zu profitieren, werden Mandantendatenbanken in Pools für elastische Datenbanken bereitgestellt. Pools für elastische Datenbanken optimieren die Kosten einer Lösung, indem Ressourcen über viele Datenbanken hinweg gemeinsam genutzt werden. Bei einem solchen Muster ist es wichtig, die Datenbank- und Poolressourcenverwendung zu überwachen, um sicherzustellen, dass die Lasten gleichmäßig auf die Pools verteilt werden. Sie müssen zudem sicherstellen, dass die einzelnen Datenbanken über ausreichende Ressourcen verfügen, und dass die Pools ihre [eDTU](sql-database-what-is-a-dtu.md)-Grenzwerte nicht erreichen. In diesem Tutorial werden Methoden zum Überwachen und Verwalten von Datenbanken und Pools behandelt, und es wird erklärt, wie Sie Korrekturmaßnahmen als Reaktion auf Workloadschwankungen ergreifen.
+Die SaaS-App Wingtip verwendet ein Datenmodell mit einem einzelnen Mandanten, wobei jeder Veranstaltungsort (Mandant) über eine eigene Datenbank verfügt. Wie viele SaaS-Anwendungen ist das erwartete Workloadmuster des Mandanten unvorhersehbar und sporadisch. Mit anderen Worten, Ticketverkäufe können jederzeit erfolgen. Um von diesem typischen Datenbanknutzungsmuster zu profitieren, werden Mandantendatenbanken in Pools für elastische Datenbanken bereitgestellt. Pools für elastische Datenbanken optimieren die Kosten einer Lösung, indem Ressourcen über viele Datenbanken hinweg gemeinsam genutzt werden. Bei einem solchen Muster ist es wichtig, die Datenbank- und Poolressourcenverwendung zu überwachen, um sicherzustellen, dass die Lasten gleichmäßig auf die Pools verteilt werden. Sie müssen zudem sicherstellen, dass die einzelnen Datenbanken über ausreichende Ressourcen verfügen, und dass die Pools ihre [eDTU](sql-database-what-is-a-dtu.md)-Grenzwerte nicht erreichen. In diesem Tutorial werden Methoden zum Überwachen und Verwalten von Datenbanken und Pools behandelt, und es wird erklärt, wie Sie Korrekturmaßnahmen als Reaktion auf Workloadschwankungen ergreifen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -42,7 +42,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die WTP-App wurde bereitgestellt. Unter [Deploy and explore the WTP SaaS application (Bereitstellen und Erkunden der SaaS-Anwendung von WTP)](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Die Wingtip-SaaS-App wird bereitgestellt. Unter [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>Einführung in SaaS-Leistungsverwaltungsmuster
@@ -66,7 +66,7 @@ Für Szenarien mit hoher Nutzung kann Log Analytics verwendet werden (auch als O
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
-Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
+Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)
 
 ## <a name="provision-additional-tenants"></a>Bereitstellen zusätzlicher Mandanten
 
@@ -80,7 +80,7 @@ Wenn Sie in einem vorherigen Tutorial bereits einen Batch von Mandanten bereitge
 
 Das Skript stellt in weniger als fünf Minuten 17 Mandanten bereit.
 
-Das Skript *New-TenantBatch* verwendet einen geschachtelten oder verknüpften Satz von [Resource Manager](../azure-resource-manager/index.md)-Vorlagen, die einen Batch von Mandanten erstellen, der standardmäßig die Datenbank **baseTenantDb** auf den Katalogserver kopiert, um die neuen Mandantendatenbanken zu erstellen, diese dann im Katalog registriert und sie schließlich mit dem Mandantennamen und dem Veranstaltungsorttyp initialisiert. Dies ist konsistent mit der Bereitstellung eines neuen Mandanten durch die WTP-App. Alle an *baseTenantDB* vorgenommenen Änderungen werden auf alle danach bereitgestellten neuen Mandanten angewendet. Im [Tutorial zur Schemaverwaltung](sql-database-saas-tutorial-schema-management.md) erfahren Sie, wie Sie Schemaänderungen an *vorhandenen* Mandantendatenbanken ausführen (einschließlich der *goldenen* Datenbank).
+Das Skript *New-TenantBatch* verwendet einen geschachtelten oder verknüpften Satz von [Resource Manager](../azure-resource-manager/index.md)-Vorlagen, die einen Batch von Mandanten erstellen, der standardmäßig die Datenbank **baseTenantDb** auf den Katalogserver kopiert, um die neuen Mandantendatenbanken zu erstellen, diese dann im Katalog registriert und sie schließlich mit dem Mandantennamen und dem Veranstaltungsorttyp initialisiert. Dies ist konsistent mit der Bereitstellung eines neuen Mandanten durch die App. Alle an *baseTenantDB* vorgenommenen Änderungen werden auf alle danach bereitgestellten neuen Mandanten angewendet. Im [Tutorial zur Schemaverwaltung](sql-database-saas-tutorial-schema-management.md) erfahren Sie, wie Sie Schemaänderungen an *vorhandenen* Mandantendatenbanken ausführen (einschließlich der *goldenen* Datenbank).
 
 ## <a name="simulate-different-usage-patterns-by-generating-different-load-types"></a>Simulieren verschiedener Verwendungsmuster durch Generieren anderer Lasttypen
 
@@ -222,7 +222,7 @@ Sobald die erhöhte Auslastung der Datenbank „contosoconcerthall“ nachlässt
 
 ## <a name="other-performance-management-patterns"></a>Andere Leistungsverwaltungsmuster
 
-**Präemptive Skalierung** In Übung 6, in der Sie erfahren haben, wie Sie eine isolierte Datenbank skalieren, wussten Sie, nach welcher Datenbank Sie suchen mussten. Wenn WTP von der Verwaltung der Contoso Concert Hall über den bevorstehenden Ticketverkauf informiert worden wäre, hätte die Datenbank vorsorglich aus dem Pool verschoben werden können. Andernfalls wäre es wahrscheinlich erforderlich gewesen, eine Benachrichtigung für den Pool oder die Datenbank auszugeben, um die Situation zu erkennen. Sehr ungünstig wäre es, wenn Sie erst davon erfahren hätten, weil sich die anderen Mandanten im Pool über die Beeinträchtigung der Leistung beschwert hätten. Wenn der Mandant einschätzen kann, wie lange zusätzliche Ressourcen benötigt werden, können Sie ein Azure Automation-Runbook einrichten, um die Datenbank nach einem definierten Zeitplan aus dem Pool in einen anderen Pool und dann wieder zurück zu verschieben.
+**Präemptive Skalierung** In Übung 6, in der Sie erfahren haben, wie Sie eine isolierte Datenbank skalieren, wussten Sie, nach welcher Datenbank Sie suchen mussten. Wenn Wingtip von der Verwaltung der Contoso Concert Hall über den bevorstehenden Ticketverkauf informiert worden wäre, hätte die Datenbank vorsorglich aus dem Pool verschoben werden können. Andernfalls wäre es wahrscheinlich erforderlich gewesen, eine Benachrichtigung für den Pool oder die Datenbank auszugeben, um die Situation zu erkennen. Sehr ungünstig wäre es, wenn Sie erst davon erfahren hätten, weil sich die anderen Mandanten im Pool über die Beeinträchtigung der Leistung beschwert hätten. Wenn der Mandant einschätzen kann, wie lange zusätzliche Ressourcen benötigt werden, können Sie ein Azure Automation-Runbook einrichten, um die Datenbank nach einem definierten Zeitplan aus dem Pool in einen anderen Pool und dann wieder zurück zu verschieben.
 
 **Self-Service-Skalierung des Mandanten** Da die Skalierung eine Aufgabe ist, die problemlos über das Verwaltungs-API aufgerufen werden kann, können Sie die Fähigkeit, Mandantendatenbanken zu skalieren, ganz leicht in Ihre mandantenseitige Anwendung integrieren und als Feature Ihres SaaS-Diensts anbieten. Lassen Sie Mandanten beispielsweise das zentrale Hoch- oder Herunterskalieren selbst verwalten, vielleicht direkt verknüpft mit der Abrechnung.
 
@@ -247,7 +247,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Weitere Tutorials, die auf der ersten Wingtip Tickets Platform-Anwendungsbereitstellung (WTP) aufbauen](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendungsbereitstellung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Pools für elastische SQL-Datenbanken](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md): Tutorial zum Einrichten und Verwenden von Log Analytics

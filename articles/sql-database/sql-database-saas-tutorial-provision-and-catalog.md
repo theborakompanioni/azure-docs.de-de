@@ -1,6 +1,6 @@
 ---
 title: "Bereitstellen neuer Mandanten in einer mehrinstanzenfähigen App mit Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Bereitstellen und Katalogisieren neuer Mandanten in der Wingtip Tickets-SaaS-Beispielanwendung (WTP) für SQL-Datenbank"
+description: Bereitstellen und Katalogisieren von neuen Mandanten in der Wingtip-SaaS-App
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
-ms.author: billgib; sstein
+ms.date: 05/24/2017
+ms.author: sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: aae5d85a18f93b7821a6ef8fc7161dd9a6ebe533
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: cf2fa0950f9f9df833051979b02355236214c4ea
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
 # <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>Bereitstellen neuer Mandanten und Registrieren der Mandanten im Katalog
 
-In diesem Tutorial stellen Sie neue Mandanten in der Wingtip Tickets Platform (WTP)-SaaS-Anwendung bereit. Sie erstellen Mandanten und Mandantendatenbanken und registrieren diese Mandanten im Katalog. Der *Katalog* ist eine Datenbank, in der die Zuordnung zwischen den SaaS-Anwendungen, vielen Mandanten und den zugehörigen Daten verwaltet wird. Verwenden Sie diese Skripts, um die verwendeten Bereitstellungs- und Katalogmuster zu erkunden und zu erfahren, wie die Registrierung neuer Mandanten im Katalog implementiert wird. Der Katalog spielt eine wichtige Rolle, da er die Anwendungsanforderungen an die richtigen Datenbanken weiterleitet.
+In diesem Tutorial stellen Sie neue Mandanten in der Wingtip-SaaS-Anwendung bereit. Sie erstellen Mandanten und Mandantendatenbanken und registrieren diese Mandanten im Katalog. Der *Katalog* ist eine Datenbank, in der die Zuordnung zwischen den SaaS-Anwendungen, vielen Mandanten und den zugehörigen Daten verwaltet wird. Verwenden Sie diese Skripts, um die verwendeten Bereitstellungs- und Katalogmuster zu erkunden und zu erfahren, wie die Registrierung neuer Mandanten im Katalog implementiert wird. Der Katalog spielt eine wichtige Rolle, da er die Anwendungsanforderungen an die richtigen Datenbanken weiterleitet.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -39,16 +39,16 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die WTP-App wurde bereitgestellt. Unter [Deploy and explore the WTP SaaS application (Bereitstellen und Erkunden der SaaS-Anwendung von WTP)](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Die Wingtip-SaaS-App wird bereitgestellt. Unter [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>Einführung in die SaaS-Katalogmuster
 
-In einer in Datenbanken gesicherten, mehrinstanzenfähigen SaaS-Anwendung ist es wichtig zu wissen, wo Informationen über jeden einzelnen Mandanten gespeichert sind. Im SaaS-Katalogmuster dient eine Katalogdatenbank zum Speichern der Zuordnungen zwischen Mandanten und den Speicherorten ihrer Daten. Die WTP-App verwendet eine Datenbankarchitektur mit einem einzelnen Mandanten, aber das grundlegende Muster zum Speichern der Zuordnung zwischen Mandant und Datenbank in einem Katalog gilt, ganz gleich, ob eine mehrinstanzenfähige Datenbank oder eine Datenbank mit nur einem Mandanten verwendet wird.
+Für eine mehrinstanzenfähige SaaS-Anwendung mit Datenbankunterstützung ist es wichtig zu wissen, wo die Informationen über jeden einzelnen Mandanten gespeichert sind. Im SaaS-Katalogmuster dient eine Katalogdatenbank zum Speichern der Zuordnungen zwischen Mandanten und den Speicherorten ihrer Daten. Die Wingtip-SaaS-App verwendet eine Datenbankarchitektur mit einem einzelnen Mandanten, aber das grundlegende Muster zum Speichern der Zuordnung zwischen Mandant und Datenbank in einem Katalog gilt unabhängig davon, ob eine mehrinstanzenfähige Datenbank oder eine Datenbank mit nur einem Mandanten verwendet wird.
 
-Jedem Mandanten ist ein Schlüssel zugewiesen, der seine Daten im Katalog identifiziert. In der WTP-Anwendung wird der Schlüssel aus einem Hash des Mandantennamens gebildet. Anhand dieses Musters kann der Mandantennamensteil der Anwendungs-URL verwendet werden, um den Schlüssel zu erstellen und die Verbindung eines bestimmten Mandanten abzurufen. Andere ID-Schemas könnten ohne Auswirkungen auf das gesamte Muster verwendet werden.
+Jedem Mandanten ist ein Schlüssel zugewiesen, der seine Daten im Katalog identifiziert. In der Wingtip-SaaS-Anwendung wird der Schlüssel aus einem Hash des Mandantennamens gebildet. Anhand dieses Musters kann der Mandantennamensteil der Anwendungs-URL verwendet werden, um den Schlüssel zu erstellen und die Verbindung eines bestimmten Mandanten abzurufen. Andere ID-Schemas könnten ohne Auswirkungen auf das gesamte Muster verwendet werden.
 
-Der Katalog in der App WTP wird mithilfe der Shardverwaltungstechnologie in der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](sql-database-elastic-database-client-library.md) implementiert. EDCL dient zum Erstellen und Verwalten eines in einer Datenbank gesicherten _Katalogs_, der eine _Shardzuordnung_ verwaltet. Der Katalog enthält die Zuordnung zwischen Schlüsseln (Mandanten) und ihren Datenbanken (Shards).
+Der Katalog in der App wird mithilfe der Shardverwaltungstechnologie in der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](sql-database-elastic-database-client-library.md) implementiert. EDCL dient zum Erstellen und Verwalten eines in einer Datenbank gesicherten _Katalogs_, der eine _Shardzuordnung_ verwaltet. Der Katalog enthält die Zuordnung zwischen Schlüsseln (Mandanten) und ihren Datenbanken (Shards).
 
 > [!IMPORTANT]
 > Sie können auf die Zuordnungsdaten in der Katalogdatenbank zugreifen, *allerdings sollten Sie sie nicht bearbeiten*. Bearbeiten Sie Zuordnungsdaten nur über EDCL-APIs. Ein direktes Bearbeiten der Zuordnungsdaten birgt das Risiko, den Katalog zu beschädigen, und wird daher nicht unterstützt.
@@ -57,16 +57,16 @@ Die Wingtip-SaaS-App stellt neue Mandanten durch Kopieren einer *goldenen* Daten
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
-Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
+Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)
 
 ## <a name="provision-a-new-tenant"></a>Bereitstellen eines neuen Mandanten
 
-Wenn Sie bereits im ersten WTP-Tutorial einen Mandanten erstellt haben, können Sie direkt mit dem nächsten Abschnitt fortfahren: [Bereitstellen ein Batches von Mandanten](#provision-a-batch-of-tenants).
+Wenn Sie bereits im [ersten Wingtip-SaaS-Tutorial](sql-database-saas-tutorial.md) einen Mandanten erstellt haben, können Sie direkt mit dem nächsten Abschnitt fortfahren: [Bereitstellen eines Batches von Mandanten](#provision-a-batch-of-tenants).
 
 Führen Sie das Skript *Demo-ProvisionAndCatalog* aus, um schnell einen Mandanten zu erstellen und im Katalog zu registrieren:
 
 1. Öffnen Sie „**Demo-ProvisionAndCatalog.ps1**“ in der PowerShell-ISE, und legen Sie die folgenden Werte fest:
-   * **$TenantName** = Name des neuen Veranstaltungsorts (z.B., *Bushwillow Blues*). 
+   * **$TenantName** = Name des neuen Veranstaltungsorts (z.B., *Bushwillow Blues*).
    * **$VenueType** = einer der vordefinierten Veranstaltungsorttypen: „blues“, „classicalmusic“, „dance“, „jazz“, „judo“, „motorracing“, „multipurpose“, „opera“, „rockmusic“, „soccer“.
    * **$DemoScenario** = 1, behalten Sie hierfür die Einstellung _1_ für **Bereitstellen eines einzelnen Mandanten** bei.
 
@@ -79,7 +79,7 @@ Nach Abschluss des Skripts wird der neue Mandant bereitgestellt und seine *Veran
 
 ## <a name="provision-a-batch-of-tenants"></a>Bereitstellen eines Batches von Mandanten
 
-In dieser Übung wird einen Batch von zusätzlichen Mandanten bereitgestellt. Es wird empfohlen, diese Übung auszuführen, bevor Sie weitere WTP-Tutorials absolvieren.
+In dieser Übung wird einen Batch von zusätzlichen Mandanten bereitgestellt. Es wird empfohlen, diese Übung durchzuführen, bevor Sie weitere Wingtip-SaaS-Tutorials absolvieren.
 
 1. Öffnen Sie „...\\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1*“ in der *PowerShell-ISE*, und legen Sie die folgenden Werte fest:
    * **$DemoScenario** = **3**, festgelegt auf **3** für **Bereitstellen eines Batches von Mandanten**.
@@ -156,9 +156,9 @@ Weitere Bereitstellungsmuster, die in diesem Tutorial nicht behandelt werden:
 
 ## <a name="stopping-wingtip-saas-application-related-billing"></a>Beenden der Wingtip SaaS-anwendungsbezogenen Abrechnung
 
-Wenn Sie kein weiteres Tutorial absolvieren möchten, empfiehlt es sich, alle Ressourcen zu löschen, um deren Berechnung zu beenden. Löschen Sie die Ressourcengruppe, in der die WTP-Anwendung bereitgestellt wurde, und alle zugehörigen Ressourcen werden gelöscht.
+Wenn Sie kein weiteres Tutorial absolvieren möchten, empfiehlt es sich, alle Ressourcen zu löschen, um deren Berechnung zu beenden. Löschen Sie die Ressourcengruppe, in der die Wingtip-Anwendung bereitgestellt wurde. Alle zugehörigen Ressourcen werden gelöscht.
 
-* Browsen Sie im Portal zur Ressourcengruppe der Anwendung, und löschen Sie sie, um jegliche künftige Abrechnung für diese WTP-Bereitstellung zu vermeiden.
+* Browsen Sie im Portal zur Ressourcengruppe der Anwendung, und löschen Sie sie, um jegliche Berechnung von Gebühren für diese Wingtip-Bereitstellung zu beenden.
 
 ## <a name="tips"></a>Tipps
 
@@ -180,7 +180,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Weitere Tutorials, die auf der ersten Wingtip Tickets Platform-Anwendungsbereitstellung (WTP) aufbauen](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Clientbibliothek für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library)
 * [So wird's gemacht: Debuggen von Skripts in Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
 

@@ -1,4 +1,4 @@
----
+--- 
 title: "Azure Service Fabric-Plug-In für Eclipse | Microsoft-Dokumentation"
 description: "Enthält eine Beschreibung der ersten Schritte mit dem Service Fabric-Plug-In für Eclipse."
 services: service-fabric
@@ -12,12 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/06/2017
+ms.date: 05/03/2016
 ms.author: saysa
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 0407eab7e70649999ba07730425366b7b62e4e7a
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: c50c77b3288bc0a2d9148d04c6fc45aa24882ebb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -34,7 +35,7 @@ Sie können ein Service Fabric-Plug-In in Eclipse installieren. Das Plug-In kann
     -   Unter **Hilfe** > **Nach Updates suchen** können Sie nach Updates für Eclipse Neon suchen und diese installieren.
 
 2.  Die Installation des Service Fabric-Plug-Ins können Sie unter **Hilfe** > **Install New Software** (Neue Software installieren) durchführen.
-  1.    Geben Sie in das Feld **Arbeiten mit** die URL **http://dl.windowsazure.com/eclipse/servicefabric** ein.
+  1.    Geben Sie im Feld **Work with** (Verwenden von) die URL **http://dl.microsoft.com/eclipse** ein.
   2.    Klicken Sie auf **Hinzufügen**.
     ![Service Fabric-Plug-In für Eclipse Neon][sf-eclipse-plugin-install]
   3.    Wählen Sie das Service Fabric-Plug-In aus, und klicken Sie auf **Weiter**.
@@ -43,7 +44,7 @@ Sie können ein Service Fabric-Plug-In in Eclipse installieren. Das Plug-In kann
 Falls Sie das Service Fabric-Plug-In bereits installiert haben, sollten Sie sicherstellen, dass Sie über die aktuelle Version verfügen. Unter **Hilfe** > **Installationsdetails** können Sie prüfen, ob Updates verfügbar sind. Wählen Sie in der Liste mit den installierten Plug-Ins die Option „Service Fabric“, und klicken Sie auf **Aktualisieren**. Die verfügbaren Updates werden installiert.
 
 > [!NOTE]
-> Wenn das Installieren oder Aktualisieren des Service Fabric-Plug-Ins lange dauert, kann dies an einer Eclipse-Einstellung liegen. In Eclipse werden Metadaten zu allen Änderungen von Updatewebsites gesammelt, die für Ihre Eclipse-Instanz registriert sind. Navigieren Sie zu **Available Software Sites** (Verfügbare Softwarestandorte), um das Vorhandensein eines Updates für das Service Fabric-Plug-In zu prüfen und das Update zu installieren. Deaktivieren Sie die Kontrollkästchen für alle Websites, mit Ausnahme des Kontrollkästchens, das auf den Speicherort des Service Fabric-Plug-Ins (http://dl.windowsazure.com/eclipse/servicefabric) verweist.
+> Wenn das Installieren oder Aktualisieren des Service Fabric-Plug-Ins lange dauert, kann dies an einer Eclipse-Einstellung liegen. In Eclipse werden Metadaten zu allen Änderungen von Updatewebsites gesammelt, die für Ihre Eclipse-Instanz registriert sind. Navigieren Sie zu **Available Software Sites** (Verfügbare Softwarestandorte), um das Vorhandensein eines Updates für das Service Fabric-Plug-In zu prüfen und das Update zu installieren. Deaktivieren Sie die Kontrollkästchen für alle Websites, mit Ausnahme des Kontrollkästchens, das auf den Speicherort des Service Fabric-Plug-Ins (http://dl.microsoft.com/eclipse/azure/servicefabric) verweist.
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Erstellen einer Service Fabric-Anwendung in Eclipse
 
@@ -123,6 +124,12 @@ Führen Sie die folgenden Schritte aus, um einer vorhandenen Service Fabric-Anwe
 5.  Nachdem der Dienst hinzugefügt wurde, sieht die Gesamtstruktur des Projekts in etwa wie im folgenden Projekt aus:
 
     ![Service Fabric – Dienst hinzufügen – Seite 4][add-service/p4]
+
+## <a name="edit-manifest-versions-of-your-service-fabric-java-application"></a>Bearbeiten von Manifestversionen Ihrer Service Fabric-Java-Anwendung
+
+Klicken Sie zum Bearbeiten von Manifestversionen mit der rechten Maustaste auf das Projekt, navigieren Sie zu **Service Fabric**, und wählen Sie in der Dropdownliste des Menüs die Option **Manifestversionen bearbeiten...**. Im Assistenten können Sie die Manifestversionen für das Anwendungsmanifest, das Dienstmanifest und die Versionen für die Pakete **Code**, **Config** und **Data** aktualisieren.
+
+Wenn Sie die Option **Anwendung und Dienstversionen automatisch aktualisieren** aktivieren und dann eine Version aktualisieren, werden die Manifestversionen automatisch aktualisiert. Beispiel: Sie aktivieren zuerst das Kontrollkästchen und aktualisieren dann die Version von **Code** von 0.0.0 auf 0.0.1 und klicken auf **Fertig stellen**. Die Versionen des Dienstmanifests und des Anwendungsmanifests werden dann automatisch auf 0.0.1 aktualisiert.
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>Aktualisieren der Service Fabric-Java-Anwendung
 
