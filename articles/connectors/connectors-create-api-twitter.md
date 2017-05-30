@@ -3,8 +3,8 @@ title: Informationen zum Verwenden des Twitter-Connectors in Logik-Apps | Micros
 description: "Übersicht über den Twitter-Connector mit REST-API-Parametern"
 services: 
 documentationcenter: 
-author: msftman
-manager: erikre
+author: MandiOhlinger
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
@@ -14,10 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
-ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7b4e14ff2e7e6575574e9da412d29cc2c228990f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -98,297 +100,11 @@ Im nächsten Schritt fügen Sie eine Twitter-Aktion hinzu. Diese Aktion postet T
    ![Twitter-Aktion – Abbildung 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
 7. Speichern Sie Ihre Arbeit, und senden Sie einen Tweet mit dem Hashtag #Seattle, um den Workflow zu aktivieren.  
 
-## <a name="technical-details"></a>Technische Details
-Im Folgenden finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
 
-## <a name="twitter-triggers"></a>Twitter-Trigger
-Der Twitter-Connector verfügt über folgende Trigger:  
-
-| Trigger | Beschreibung |
-| --- | --- |
-| [Wenn ein neuer Tweet gepostet wird](connectors-create-api-twitter.md#when-a-new-tweet-is-posted) |Mit diesem Vorgang wird ein Datenfluss ausgelöst, wenn ein neuer Tweet gepostet wird, der einer bestimmten Suchabfrage entspricht. |
-
-## <a name="twitter-actions"></a>Twitter-Aktionen
-Der Twitter-Connector verfügt über folgende Aktionen:
-
-| Aktion | Beschreibung |
-| --- | --- |
-| [Timeline des Benutzers abrufen](connectors-create-api-twitter.md#get-user-timeline) |Mit diesem Vorgang wird eine Liste der neuesten Tweets abgerufen, die von einem bestimmten Benutzer gepostet wurden. |
-| [Eigene Timeline abrufen](connectors-create-api-twitter.md#get-home-timeline) |Mit diesem Vorgang werden die neuesten Tweets und Retweets abgerufen, die von mir und meinen Followern gepostet wurden. |
-| [Tweets durchsuchen](connectors-create-api-twitter.md#search-tweets) |Mit diesem Vorgang wird eine Liste der relevanten Tweets abgerufen, die mit der Suchabfrage übereinstimmen. |
-| [Follower abrufen](connectors-create-api-twitter.md#get-followers) |Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die einem bestimmten Benutzer folgen. |
-| [Meine Follower abrufen](connectors-create-api-twitter.md#get-my-followers) |Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die mir folgen. |
-| [Gefolge abrufen](connectors-create-api-twitter.md#get-following) |Mit diesem Vorgang wird die Liste der Personen abgerufen, denen ein bestimmter Benutzer folgt. |
-| [Mein Gefolge abrufen](connectors-create-api-twitter.md#get-my-following) |Mit diesem Vorgang wird die Liste der Benutzer abgerufen, denen ich folge. |
-| [Benutzer abrufen](connectors-create-api-twitter.md#get-user) |Mit diesem Vorgang werden die Profildetails für einen bestimmten Benutzer abgerufen, z.B. Benutzername, Beschreibung, Anzahl von Followern usw. |
-| [Tweet posten](connectors-create-api-twitter.md#post-a-tweet) |Mit diesem Vorgang wird ein neuer Tweet gepostet. |
-
-## <a name="action-details"></a>Aktionsdetails
-Im Folgenden finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten:
-
-### <a name="get-user-timeline"></a>Timeline des Benutzers abrufen
-Mit diesem Vorgang wird eine Liste der neuesten Tweets abgerufen, die von einem bestimmten Benutzer gepostet wurden. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| userName* |Benutzername |Twitter-Handle für den Benutzer |
-| maxResults |Maximale Anzahl von Ergebnissen |Die maximale Anzahl von Tweets, die zurückgegeben werden sollen |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-TweetModel: Darstellung des Tweet-Objekts
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| TweetText |string |Textinhalt des Tweets |
-| TweetId |string |ID des Tweets |
-| CreatedAt |string |Zeitpunkt, zu dem der Tweet gepostet wurde |
-| RetweetCount |integer |Gesamtanzahl von Retweets für den Tweet |
-| TweetedBy |string |Name des Benutzers, der den Tweet gepostet hat |
-| MediaUrls |array |URL der Medien, die mit dem Tweet gepostet wurden |
-| TweetLanguageCode |string |Sprachcode des Tweets |
-| TweetInReplyToUserId |string |Benutzer-ID des Autors des Tweets, auf den der aktuelle Tweet eine Antwort ist |
-| Favorited |Boolescher Wert |Gibt an, ob der Tweet als Favorit markiert ist |
-| UserMentions |array |Liste der im Tweet erwähnten Benutzer |
-| OriginalTweet |nicht definiert |Ursprünglicher Tweet, aus dem der aktuelle Tweet als Retweet erstellt wurde |
-| UserDetails |nicht definiert |Details zu dem Benutzer, der getweetet hat |
-
-### <a name="get-home-timeline"></a>Eigene Timeline abrufen
-Mit diesem Vorgang werden die neuesten Tweets und Retweets abgerufen, die von mir und meinen Followern gepostet wurden. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| maxResults |Maximale Anzahl von Ergebnissen |Die maximale Anzahl von Tweets, die zurückgegeben werden sollen |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-TweetModel: Darstellung des Tweet-Objekts
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| TweetText |string |Textinhalt des Tweets |
-| TweetId |string |ID des Tweets |
-| CreatedAt |string |Zeitpunkt, zu dem der Tweet gepostet wurde |
-| RetweetCount |integer |Gesamtanzahl von Retweets für den Tweet |
-| TweetedBy |string |Name des Benutzers, der den Tweet gepostet hat |
-| MediaUrls |array |URL der Medien, die mit dem Tweet gepostet wurden |
-| TweetLanguageCode |string |Sprachcode des Tweets |
-| TweetInReplyToUserId |string |Benutzer-ID des Autors des Tweets, auf den der aktuelle Tweet eine Antwort ist |
-| Favorited |Boolescher Wert |Gibt an, ob der Tweet als Favorit markiert ist |
-| UserMentions |array |Liste der im Tweet erwähnten Benutzer |
-| OriginalTweet |nicht definiert |Ursprünglicher Tweet, aus dem der aktuelle Tweet als Retweet erstellt wurde |
-| UserDetails |nicht definiert |Details zu dem Benutzer, der getweetet hat |
-
-### <a name="search-tweets"></a>Tweets durchsuchen
-Mit diesem Vorgang wird eine Liste der relevanten Tweets abgerufen, die mit der Suchabfrage übereinstimmen. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| searchQuery* |Suchtext |Suchbegriff wie „Happy Hour“, „#haiku“, „Liebe OR Hass“ |
-| maxResults |Maximale Anzahl von Ergebnissen |Die maximale Anzahl von Tweets, die zurückgegeben werden sollen |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-TweetModel: Darstellung des Tweet-Objekts
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| TweetText |string |Textinhalt des Tweets |
-| TweetId |string |ID des Tweets |
-| CreatedAt |string |Zeitpunkt, zu dem der Tweet gepostet wurde |
-| RetweetCount |integer |Gesamtanzahl von Retweets für den Tweet |
-| TweetedBy |string |Name des Benutzers, der den Tweet gepostet hat |
-| MediaUrls |array |URL der Medien, die mit dem Tweet gepostet wurden |
-| TweetLanguageCode |string |Sprachcode des Tweets |
-| TweetInReplyToUserId |string |Benutzer-ID des Autors des Tweets, auf den der aktuelle Tweet eine Antwort ist |
-| Favorited |Boolescher Wert |Gibt an, ob der Tweet als Favorit markiert ist |
-| UserMentions |array |Liste der im Tweet erwähnten Benutzer |
-| OriginalTweet |nicht definiert |Ursprünglicher Tweet, aus dem der aktuelle Tweet als Retweet erstellt wurde |
-| UserDetails |nicht definiert |Details zu dem Benutzer, der getweetet hat |
-
-### <a name="get-followers"></a>Follower abrufen
-Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die einem bestimmten Benutzer folgen. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| userName* |Benutzername |Twitter-Handle für den Benutzer |
-| maxResults |Maximale Anzahl von Ergebnissen |Maximale Anzahl zurückzugebender Benutzer |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-UserDetailsModel: Twitter-Benutzerdetails
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| FullName |string |Name des Benutzers |
-| Standort |string |Standort des Benutzers |
-| ID |integer |Twitter-ID des Benutzers |
-| UserName |string |Bildschirmname des Benutzers |
-| FollowersCount |integer |Anzahl von Followern |
-| Beschreibung |string |Benutzerbeschreibung |
-| StatusesCount |integer |Anzahl von Benutzerstatuswerten |
-| FriendsCount |integer |Anzahl von Freunden |
-| FavouritesCount |integer |Anzahl von Tweets, die der Benutzer als Favorit markiert hat |
-| ProfileImageUrl |string |URL des Profilbilds |
-
-### <a name="get-my-followers"></a>Meine Follower abrufen
-Mit diesem Vorgang wird die Liste der Benutzer abgerufen, die mir folgen. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| maxResults |Maximale Anzahl von Ergebnissen |Maximale Anzahl abzurufender Benutzer |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-UserDetailsModel: Twitter-Benutzerdetails
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| FullName |string |Name des Benutzers |
-| Standort |string |Standort des Benutzers |
-| ID |integer |Twitter-ID des Benutzers |
-| UserName |string |Bildschirmname des Benutzers |
-| FollowersCount |integer |Anzahl von Followern |
-| Beschreibung |string |Benutzerbeschreibung |
-| StatusesCount |integer |Anzahl von Benutzerstatuswerten |
-| FriendsCount |integer |Anzahl von Freunden |
-| FavouritesCount |integer |Anzahl von Tweets, die der Benutzer als Favorit markiert hat |
-| ProfileImageUrl |string |URL des Profilbilds |
-
-### <a name="get-following"></a>Gefolge abrufen
-Mit diesem Vorgang wird die Liste der Personen abgerufen, denen ein bestimmter Benutzer folgt. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| userName* |Benutzername |Twitter-Handle für den Benutzer |
-| maxResults |Maximale Anzahl von Ergebnissen |Maximale Anzahl zurückzugebender Benutzer |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-UserDetailsModel: Twitter-Benutzerdetails
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| FullName |string |Name des Benutzers |
-| Standort |string |Standort des Benutzers |
-| ID |integer |Twitter-ID des Benutzers |
-| UserName |string |Bildschirmname des Benutzers |
-| FollowersCount |integer |Anzahl von Followern |
-| Beschreibung |string |Benutzerbeschreibung |
-| StatusesCount |integer |Anzahl von Benutzerstatuswerten |
-| FriendsCount |integer |Anzahl von Freunden |
-| FavouritesCount |integer |Anzahl von Tweets, die der Benutzer als Favorit markiert hat |
-| ProfileImageUrl |string |URL des Profilbilds |
-
-### <a name="get-my-following"></a>Mein Gefolge abrufen
-Mit diesem Vorgang wird die Liste der Benutzer abgerufen, denen ich folge. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| maxResults |Maximale Anzahl von Ergebnissen |Maximale Anzahl zurückzugebender Benutzer |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-UserDetailsModel: Twitter-Benutzerdetails
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| FullName |string |Name des Benutzers |
-| Standort |string |Standort des Benutzers |
-| ID |integer |Twitter-ID des Benutzers |
-| UserName |string |Bildschirmname des Benutzers |
-| FollowersCount |integer |Anzahl von Followern |
-| Beschreibung |string |Benutzerbeschreibung |
-| StatusesCount |integer |Anzahl von Benutzerstatuswerten |
-| FriendsCount |integer |Anzahl von Freunden |
-| FavouritesCount |integer |Anzahl von Tweets, die der Benutzer als Favorit markiert hat |
-| ProfileImageUrl |string |URL des Profilbilds |
-
-### <a name="get-user"></a>Benutzer abrufen
-Mit diesem Vorgang werden die Profildetails für einen bestimmten Benutzer abgerufen, z.B. Benutzername, Beschreibung, Anzahl von Followern usw. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| userName* |Benutzername |Twitter-Handle für den Benutzer |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-UserDetailsModel: Twitter-Benutzerdetails
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| FullName |string |Name des Benutzers |
-| Standort |string |Standort des Benutzers |
-| ID |integer |Twitter-ID des Benutzers |
-| UserName |string |Bildschirmname des Benutzers |
-| FollowersCount |integer |Anzahl von Followern |
-| Beschreibung |string |Benutzerbeschreibung |
-| StatusesCount |integer |Anzahl von Benutzerstatuswerten |
-| FriendsCount |integer |Anzahl von Freunden |
-| FavouritesCount |integer |Anzahl von Tweets, die der Benutzer als Favorit markiert hat |
-| ProfileImageUrl |string |URL des Profilbilds |
-
-### <a name="post-a-tweet"></a>Tweet posten
-Mit diesem Vorgang wird ein neuer Tweet gepostet. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| tweetText |Tweettext |Text, der gepostet werden soll |
-| body |Medien |Zu veröffentlichende Medien |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-TweetResponseModel: Modell zur Darstellung eines geposteten Tweets
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| TweetId |string |ID des abgerufenen Tweets |
-
-### <a name="when-a-new-tweet-is-posted"></a>Wenn ein neuer Tweet gepostet wird
-Mit diesem Vorgang wird ein Datenfluss ausgelöst, wenn ein neuer Tweet gepostet wird, der einer bestimmten Suchabfrage entspricht. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| searchQuery* |Suchtext |Suchbegriff wie „Happy Hour“, „#haiku“, „Liebe OR Hass“ |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-#### <a name="output-details"></a>Ausgabedetails
-TriggerBatchResponse[TweetModel]
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| value |array |
-
-## <a name="http-responses"></a>HTTP-Antworten
-Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden: 
-
-| Name | Beschreibung |
-| --- | --- |
-| 200 |OK |
-| 202 |Zulässig |
-| 400 |Ungültige Anforderung |
-| 401 |Nicht autorisiert |
-| 403 |Verboten (403) |
-| 404 |Nicht gefunden |
-| 500 |Interner Serverfehler. Unbekannter Fehler. |
-| die Standardeinstellung |Fehler beim Vorgang. |
+## <a name="view-the-swagger"></a>Anzeigen von Swagger
+Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/twitterconnector/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

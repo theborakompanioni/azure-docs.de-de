@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: e776d095356e10ef47ca49e2a8b9f97d63fb80be
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: fd691f898e26bea0a304bcf52e5df9ee7db8b818
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -122,19 +123,8 @@ Wählen Sie folgende Aktion aus: **Ereignis senden**.
 
     Sie haben nun eine Aktion zum Senden von Ereignissen über Ihre Logik-App eingerichtet. 
 
-## <a name="technical-details"></a>Technische Details
-
-### <a name="triggers"></a>Trigger
-
-| Trigger | Beschreibung |
-| --- | --- |
-| Wenn Ereignisse im Event Hub verfügbar sind | Löst einen Workflow aus, wenn Ereignisse im festgelegten Event Hub verfügbar sind. |
-
-### <a name="actions"></a>Actions
-
-| Aktion | Beschreibung |
-| --- | --- |
-| Ereignis senden | Sendet ein Ereignis an den festgelegten Event Hub. |
+## <a name="view-the-swagger"></a>Anzeigen von Swagger
+Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/eventhubs/). 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 

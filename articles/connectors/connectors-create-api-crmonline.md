@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: f09dd58f17b228d6381af95c40c5391886bbb8f1
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 845dd16c703362e9e64f02832a35c90e7e77e264
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -167,164 +168,9 @@ Sehen Sie sich zur Problembehandlung im Falle eines nicht erfolgreichen Schritts
 
 Weitere Informationen zum Behandeln von Problemen mit Logik-Apps finden Sie unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md).
 
-## <a name="technical-details"></a>Technische Details
-## <a name="triggers"></a>Trigger
-| Trigger | Beschreibung |
-| --- | --- |
-| When a record is created (Wenn ein Datensatz erstellt wird) |Löst einen Flow aus, wenn ein Objekt in Dynamics 365 erstellt wird. |
-| When a record is updated (Wenn ein Datensatz aktualisiert wird) |Löst einen Flow aus, wenn ein Objekt in Dynamics 365 aktualisiert wird. |
-| When a record is deleted (Wenn ein Datensatz gelöscht wird) |Löst einen Flow aus, wenn ein Objekt in Dynamics 365 gelöscht wird. |
+## <a name="view-the-swagger"></a>Anzeigen von Swagger
 
-## <a name="actions"></a>Actions
-| Aktion | Beschreibung |
-| --- | --- |
-| List records (Datensätze auflisten) |Dieser Vorgang ruft die Datensätze für eine Entität ab. |
-| Create a new record (Neuen Datensatz erstellen) |Dieser Vorgang erstellt einen neuen Datensatz einer Entität. |
-| Get record (Datensatz abrufen) |Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab. |
-| Delete a record (Datensatz löschen) |Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung. |
-| Aktualisieren eines Eintrags |Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität. |
-
-### <a name="trigger-and-action-details"></a>Trigger- und Aktionsdetails
-Dieser Abschnitt enthält spezifische Details zu den einzelnen Triggern und Aktionen. Hierzu zählen unter anderem erforderliche oder optionale Eingabeeigenschaften sowie entsprechende Ausgaben im Zusammenhang mit dem Connector.
-
-#### <a name="when-a-record-is-created"></a>When a record is created (Wenn ein Datensatz erstellt wird)
-Löst einen Flow aus, wenn ein Objekt in Dynamics 365 erstellt wird.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-| $filter |Filterabfrage |Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge |
-| $orderby |Sortieren nach |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-ItemsList
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| value |array |
-
-#### <a name="when-a-record-is-updated"></a>When a record is updated (Wenn ein Datensatz aktualisiert wird)
-Löst einen Flow aus, wenn ein Objekt in Dynamics 365 aktualisiert wird.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-ItemsList
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| value |array |
-
-#### <a name="when-a-record-is-deleted"></a>When a record is deleted (Wenn ein Datensatz gelöscht wird)
-Löst einen Flow aus, wenn ein Objekt in Dynamics 365 gelöscht wird.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-ItemsList
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| value |Array |
-
-#### <a name="list-records"></a>List records (Datensätze auflisten)
-Dieser Vorgang ruft die Datensätze für eine Entität ab.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-| $filter |Filterabfrage |Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge |
-| $orderby |Sortieren nach |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-ItemsList
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| value |Array |
-
-#### <a name="create-a-new-record"></a>Create a new record (Neuen Datensatz erstellen)
-Dieser Vorgang erstellt einen neuen Datensatz einer Entität.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Keine
-
-#### <a name="get-record"></a>Get record (Datensatz abrufen)
-Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-| id* |Item identifier (Elementbezeichner) |Bezeichner für den Datensatz |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Keine
-
-#### <a name="delete-a-record"></a>Delete a record (Datensatz löschen)
-Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-| id* |Item identifier (Elementbezeichner) |Bezeichner für den Datensatz |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-#### <a name="update-a-record"></a>Update a record (Datensatz aktualisieren)
-Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität.
-
-| Eigenschaftenname | Anzeigename | Beschreibung |
-| --- | --- | --- |
-| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
-| table* |Entitätsname |Name der Entität |
-| id* |Record identifier (Datensatzbezeichner) |Bezeichner für den Datensatz |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Keine
-
-## <a name="http-responses"></a>HTTP-Antworten
-Von den angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
-
-| Name | Beschreibung |
-| --- | --- |
-| 200 |OK |
-| 202 |Zulässig |
-| 400 |Ungültige Anforderung |
-| 401 |Nicht autorisiert |
-| 403 |Verboten (403) |
-| 404 |Nicht gefunden |
-| 500 |Interner Serverfehler. Unbekannter Fehler. |
-| die Standardeinstellung |Fehler beim Vorgang. |
+Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/crm/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.

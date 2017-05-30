@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/15/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: e14da5fa10533d922a6263e8f52a53c0eaa23393
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: faa6d403aa130738ae0b58ba1ffc828a1e37e9f4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -341,7 +342,7 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie
 ## <a name="indexing-documents-along-with-related-data"></a>Indizieren von Dokumenten zusammen mit den zugehörigen Daten
 
 Ihren Dokumenten sind möglicherweise Metadaten zugeordnet – z.B. die Abteilung, die das Dokument erstellt hat –, die als strukturierte Daten an einem der folgenden Speicherorte gespeichert sind.
--   In einem separaten Datenspeicher, z.B. SQL-Datenbank oder DocumentDB
+-   In einem separaten Datenspeicher wie SQL-Datenbank oder Azure Cosmos DB
 -   Als benutzerdefinierte Metadaten in Azure Blob Storage direkt an jedes Dokument angefügt (Weitere Informationen finden Sie unter [Festlegen und Abrufen von Eigenschaften und Metadaten für Blob-Ressourcen](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources).)
 
 Sie können die Dokumente zusammen mit ihren Metadaten indizieren, indem Sie den gleichen eindeutigen Schlüsselwert jedem Dokument und seinen Metadaten zuweisen und für jeden Indexer die Aktion `mergeOrUpload` angeben. Eine ausführliche Beschreibung dieser Lösung finden Sie im externen Artikel [Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in Azure Search).

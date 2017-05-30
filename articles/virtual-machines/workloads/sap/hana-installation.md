@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: b791be369016dd52d95ec727e46fd8b554c09047
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 89356670737ed7b9adc5df51466ce71eb73b3cd4
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -28,7 +28,7 @@ Die Installation von SAP HANA liegt in Ihrer Verantwortung, und Sie können dami
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Erste Schritte nach dem Empfang der SAP HANA (große Instanzen)-Einheit(en)
 
-Der **erste Schritt** nach Empfang der SAP HANA (große Instanzen)-Einheit(en) und Einrichten von Zugriff auf und Verbindung mit den Instanzen besteht darin, das Betriebssystem der Instanz bei Ihrem Betriebssystemanbieter zu registrieren. Dazu gehört das Registrieren Ihres SUSE Linux-Betriebssystems in einer Instanz von SUSE SMT, die Sie bereitgestellt haben müssen. Alternativ muss Ihr RedHat-Betriebssystem bei dem Red Hat Subscription Manager registriert werden, mit dem eine Verbindung herstellen müssen. Lesen Sie auch die Anmerkungen in diesem [Dokument](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dieser Schritt ist auch erforderlich, damit das Betriebssystem zukünftig gepatcht werden kann. Eine Aufgabe, die in der Verantwortung des Kunden liegt. 
+Der **erste Schritt** nach Empfang der SAP HANA (große Instanzen)-Einheit(en) und Einrichten von Zugriff auf und Verbindung mit den Instanzen besteht darin, das Betriebssystem der Instanz bei Ihrem Betriebssystemanbieter zu registrieren. Dazu gehört das Registrieren Ihres SUSE Linux-Betriebssystems in einer Instanz von SUSE SMT, die Sie auf einem VM in Azure bereitgestellt haben müssen, mit dem die Einheit der großen SAP HANA-Instanz eine Verbindung herstellen kann. Alternativ muss Ihr RedHat-Betriebssystem bei dem Red Hat Subscription Manager registriert werden, mit dem eine Verbindung herstellen müssen. Lesen Sie auch die Anmerkungen in diesem [Dokument](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dieser Schritt ist auch erforderlich, damit das Betriebssystem zukünftig gepatcht werden kann. Eine Aufgabe, die in der Verantwortung des Kunden liegt. Die Dokumentation zum Installieren und Konfigurieren von SMT für SUSE finden Sie [hier](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
 Der **zweite Schritt** besteht darin, nach neuen Patches und Fixes der speziellen Betriebssystemversion zu suchen. Überprüfen Sie, ob die Patchebene der SAP HANA (große Instanz) den neuesten Stand hat. Je nach Zeitplanung der Betriebssystempatches/-versionen und Änderungen am Image, das Microsoft bereitstellen kann, gibt es möglicherweise Fälle, in denen die neuesten Patches nicht enthalten sind. Daher ist es, nachdem eine SAP HANA (große Instanzen)-Einheit übernommen und die Betriebssysteminstallation bei dem Linux-Distributor registriert wurde, zwingend erforderlich zu prüfen, ob der jeweilige Linux-Anbieter in der Zwischenzeit Patches freigegeben hat, die für die Sicherheit, Funktionalität, Verfügbarkeit und Leistung relevant sind und angewendet werden müssen.
 

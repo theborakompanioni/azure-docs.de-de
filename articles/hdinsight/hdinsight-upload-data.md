@@ -1,6 +1,7 @@
 ---
 title: "Hochladen von Daten für Hadoop-Aufträge in HDInsight | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Daten für Hadoop-Aufträge in HDInsight mithilfe der Azure-Befehlszeilenschnittstelle, Azure-Speicher-Explorer, Azure PowerShell, der Hadoop-Befehlszeile oder Sqoop hochladen und abrufen können."
+keywords: ETL Hadoop, Importieren von Daten in Hadoop, Laden von Daten in Hadoop
 services: hdinsight,storage
 documentationcenter: 
 tags: azure-portal
@@ -9,17 +10,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/12/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0caac0c7ad76df7e7fa657227339d1df8b4a3c77
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 134afd3495c555f85e8838cbe0344a3a48534950
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -187,7 +189,7 @@ Bevor Sie das Tool verwenden können, müssen Sie den Namen Ihres Azure-Speicher
 
 1. Führen Sie den Azure-Speicher-Explorer aus. Wenn Sie den Speicher-Explorer erstmals ausführen, werden Sie zur Eingabe des **Speicherkontonamens** und **Speicherkontoschlüssels** aufgefordert. Wenn Sie den Speicher-Explorer zuvor bereits ausgeführt haben, wählen Sie die Schaltfläche **Hinzufügen** aus, um einen neuen Speicherkontonamen und -schlüssel hinzuzufügen.
 
-    Geben Sie den Namen und Schlüssel für das vom HDinsight-Cluster verwendete Speicherkonto ein, und wählen Sie dann **SPEICHERN UND ÖFFNEN** aus.
+    Geben Sie den Namen und Schlüssel für das vom HDInsight-Cluster verwendete Speicherkonto ein, und wählen Sie dann **SPEICHERN UND ÖFFNEN** aus.
 
     ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
 2. Klicken Sie in der Liste der Container links auf der Benutzeroberfläche auf den Namen des Containers, der Ihrem HDInsight-Cluster zugeordnet ist. Standardmäßig handelt es sich dabei um den Namen des HDInsight-Clusters, der jedoch abweichen kann, wenn Sie bei der Clustererstellung einen bestimmten Namen eingegeben haben.

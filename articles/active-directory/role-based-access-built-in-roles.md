@@ -16,10 +16,10 @@ ms.date: 04/21/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b600b7d67de24eab5395f085a2a424159b14ff28
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a0a3b7ad7757439b5f73c38e759761f671ca2e17
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
@@ -55,7 +55,7 @@ In diesem Artikel werden nur die heute vorhandenen verschiedenen Rollen behandel
 | [Mitwirkender von Data Factory](#data-factory-contributor) |Kann Data Factorys und darin enthaltene untergeordnete Ressourcen erstellen und verwalten. |
 | [DevTest Labs-Benutzer](#devtest-labs-user) |Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren |
 | [DNS Zone Contributor](#dns-zone-contributor) |Kann DNS-Zonen und -Einträge verwalten |
-| [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor) |Kann DocumentDB-Konten verwalten |
+| [Azure Cosmos DB-Kontomitwirkender](#documentdb-account-contributor) |Kann Azure Cosmos DB-Konten verwalten |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) |Kann Intelligent Systems-Konten verwalten |
 | [Überwachungsleser](#monitoring-reader) |Kann alle Überwachungsdaten lesen |
 | [Überwachungsmitwirkender](#monitoring-contributor) |Kann Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten |
@@ -365,8 +365,8 @@ Kann DNS-Zonen und -Einträge verwalten.
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/\* |Erstellen und Verwalten von Supporttickets |
 
-### <a name="documentdb-account-contributor"></a>Mitwirkender von DocumentDB-Konto
-Kann DocumentDB-Konten verwalten
+### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB-Kontomitwirkender
+Kann Azure Cosmos DB-Konten verwalten
 
 | **Aktionen** |  |
 | --- | --- |

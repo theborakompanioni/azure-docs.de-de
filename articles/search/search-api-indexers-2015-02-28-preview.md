@@ -12,18 +12,19 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/01/2016
+ms.date: 05/01/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
-ms.openlocfilehash: 801a9d0e92a248d2e9843f13cfce74b948cf0d4b
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 356ceb98106d080d8c24dedc3547bee33750156e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="indexer-operations-azure-search-service-rest-api-2015-02-28-preview"></a>Indexer-Vorgänge (REST-API für Azure Search-Dienst: 2015-02-28-Preview)
 > [!NOTE]
-> Dieser Artikel beschreibt die Indexer in der REST-API [2015-02-28-Preview](search-api-2015-02-28-preview.md). Diese API-Version fügt Vorschauversionen eines Azure Blob Storage-Indexers mit Dokumentextraktion und Azure Table Storage-Indexers sowie weitere Verbesserungen hinzu. Die API unterstützt auch allgemein verfügbare Indexer, einschließlich Indexer für Azure SQL-Datenbank, SQL Server auf virtuellen Azure-Computern und Azure DocumentDB.
+> Dieser Artikel beschreibt die Indexer in der REST-API [2015-02-28-Preview](search-api-2015-02-28-preview.md). Diese API-Version fügt Vorschauversionen eines Azure Blob Storage-Indexers mit Dokumentextraktion und Azure Table Storage-Indexers sowie weitere Verbesserungen hinzu. Die API unterstützt auch allgemein verfügbare Indexer, einschließlich Indexer für Azure SQL-Datenbank, SQL Server auf virtuellen Azure-Computern und Azure Cosmos DB.
 > 
 > 
 
@@ -43,7 +44,7 @@ Eine **Datenquelle** gibt an, welche Daten indiziert werden müssen. Sie legt au
 Die folgenden Datenquellen werden derzeit unterstützt:
 
 * **Azure SQL-Datenbank** und **SQL Server auf Azure-VMs**. Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md). 
-* **Azure DocumentDB**. Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-index-documentdb.md). 
+* **Azure Cosmos DB**. Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-index-documentdb.md). 
 * **Azure-Blobspeicher**, einschließlich der folgenden Dokumentformate: PDF, Microsoft Office (DOCX/DOC, XSLX/XLS, PPTX/PPT, MSG), HTML, XML, ZIP und Nur-Text-Dateien (einschließlich JSON). Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-indexing-azure-blob-storage.md).
 * **Azure Table Storage**. Eine gezielte exemplarische Vorgehensweise finden Sie [in diesem Artikel](search-howto-indexing-azure-tables.md).
 
@@ -124,13 +125,13 @@ Die Anforderung enthält die folgenden Eigenschaften:
 * `description`: Eine optionale Beschreibung. 
 * `type`: Erforderlich. Dabei muss es sich um einen der unterstützten Datenquellentypen handeln:
   * `azuresql` : Azure SQL-Datenbank und SQL Server in Azure VMs
-  * `documentdb` : Azure DocumentDB
+  * `documentdb`: Azure Cosmos DB
   * `azureblob` : Azure Blob Storage
   * `azuretable` : Azure Table Storage
 * `credentials`:
   * Die erforderlichen Eigenschaft `connectionString` gibt die Verbindungszeichenfolge für die Datenquelle an. Das Format der Verbindungszeichenfolge hängt vom Typ der Datenquelle ab: 
     * Für SQL Azure ist dies die übliche SQL Server-Verbindungszeichenfolge. Wenn Sie die Verbindungszeichenfolge über das Azure-Portal abrufen, verwenden Sie die Option `ADO.NET connection string` .
-    * Für DocumentDB muss die Verbindungszeichenfolge folgenden Format aufweisen: `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"`. Alle Werte sind erforderlich. Informationen zu den Werten finden Sie im [Azure-Portal](https://portal.azure.com/).  
+    * Für Azure Cosmos DB muss die Verbindungszeichenfolge das folgende Format aufweisen: `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"`. Alle Werte sind erforderlich. Informationen zu den Werten finden Sie im [Azure-Portal](https://portal.azure.com/).  
     * Für Azure Blob Storage und Azure Table Storage ist dies die Verbindungszeichenfolge für das Speicherkonto. Das Format wird [hier](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)beschrieben. Ein HTTPS-Endpunktprotokoll ist erforderlich.  
 * `container`, erforderlich: Gibt die zu indizierenden Daten mithilfe der Eigenschaften `name` und `query` an: 
   * `name`, erforderlich:
@@ -168,7 +169,7 @@ Diese Richtlinie kann wie folgt angegeben werden:
         "highWaterMarkColumnName" : "[a row version or last_updated column name]" 
     } 
 
-Wenn Sie DocumentDB-Datenquellen verwenden, müssen Sie die von DocumentDB bereitgestellte Eigenschaft `_ts` verwenden. 
+Wenn Sie Azure Cosmos DB-Datenquellen verwenden, müssen Sie die von Azure Cosmos DB bereitgestellte Eigenschaft `_ts` verwenden. 
 
 Bei der Nutzung von Azure-Blobdatenquellen verwendet Azure Search automatisch eine Änderungserkennungsrichtlinie für hohe Grenzwerte auf Basis der letzten Änderung des Blobzeitstempels. Sie müssen eine solche Richtlinie nicht selbst angeben.   
 
@@ -413,7 +414,7 @@ Optional kann ein Indexer mehrere Parameter angeben, die sein Verhalten beeinflu
 * `maxFailedItems` : Die maximale Anzahl der Elemente, deren Indizierung fehlschlagen darf. Wird die Anzahl überschritten, gilt die Ausführung des Indexers als fehlgeschlagen. Der Standardwert ist 0. Informationen zu fehlgeschlagenen Elementen werden mithilfe des Vorgangs [Indexer-Status abrufen](#GetIndexerStatus) zurückgegeben. 
 * `maxFailedItemsPerBatch` : Die maximale Anzahl der Elemente in jedem Batch, deren Indizierung fehlschlagen darf. Wird die Anzahl überschritten, gilt die Ausführung des Indexers als fehlgeschlagen. Der Standardwert ist 0.
 * `base64EncodeKeys`: Gibt an, ob Dokumentschlüssel mit base-64 codiert werden. In Azure Search gelten Einschränkungen für Zeichen, die in einem Dokumentschlüssel vorhanden sein können. Allerdings können die Werte in Ihren Quelldaten Zeichen enthalten, die ungültig sind. Wenn solche Werte als Dokumentschlüssel indiziert werden sollen, können Sie dieses Kennzeichen auf "true" festlegen. Der Standardwert ist `false`.
-* `batchSize`: Gibt die Anzahl der Elemente an, die aus einer Datenquelle gelesen und als einzelner Batch indiziert werden, um die Leistung zu verbessern. Der Standardwert hängt vom Datenquellentyp ab: 1000 für Azure SQL und DocumentDB und 10 für Azure Blob Storage.
+* `batchSize`: Gibt die Anzahl der Elemente an, die aus einer Datenquelle gelesen und als einzelner Batch indiziert werden, um die Leistung zu verbessern. Der Standardwert hängt vom Datenquellentyp ab: 1000 für Azure SQL und Azure Cosmos DB und 10 für Azure Blob Storage.
 
 **Feldzuordnungen**
 

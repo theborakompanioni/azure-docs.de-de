@@ -1,6 +1,6 @@
 ---
 title: "Hinzufügen des Azure Blob Storage-Connectors in Ihren Logik-Apps | Microsoft Docs"
-description: "Übersicht über den Azure Blob Storage-Connector mit REST-API-Parametern"
+description: Verwenden und Konfigurieren des Azure Blob Storage-Connectors in einer Logik-App
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -13,29 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 10/18/2016
-ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: 6b7c73576e09af3d1b3c886efa88044846e91494
-ms.lasthandoff: 02/16/2017
+ms.date: 05/02/2017
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a52cc8d5685fad849bf8ea2a4c4f8fde3f340bde
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="get-started-with-the-azure-blob-storage-connector"></a>Erste Schritte mit dem Azure Blob Storage-Connector
-Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten. In Azure Blob Storage können Sie verschiedene Aktionen für Blobs ausführen und sie beispielsweise hochladen, aktualisieren, abrufen oder löschen. 
+# <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>Verwenden des Azure Blob Storage-Connectors in einer Logik-App
+Mit dem Azure Blob Storage-Connector können Sie Blobs in Ihr(em) Speicherkonto hochladen, aktualisieren, abrufen und löschen – und all das in einer Logik-App.  
 
 Azure-Blobspeicher ermöglicht Folgendes:
 
 * Gestalten Sie Ihren Workflow, indem Sie neue Projekte hochladen oder kürzlich aktualisierte Dateien abrufen.
 * Mithilfe von Aktionen können Sie unter anderem Dateimetadaten abrufen, eine Datei löschen und Dateien kopieren. Wenn also beispielsweise ein Tool auf einer Azure-Website aktualisiert wird (Trigger), kann eine Datei in Blob Storage aktualisiert werden (Aktion). 
 
-Dieses Thema beschreibt, wie Sie den Blob Storage-Connector in einer Logik-App verwenden, und enthält eine Liste mit Aktionen.
+In diesem Thema wird beschrieben, wie Sie den Blob Storage-Connector in einer Logik-App verwenden.
 
-> [!NOTE]
-> Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps. 
-> 
-> 
+Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md).
 
 Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md).
 
@@ -44,8 +42,6 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst 
 
 #### <a name="create-the-connection"></a>Erstellen der Verbindung
 > [!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
-> 
-> 
 
 ## <a name="use-a-trigger"></a>Verwenden eines Triggers
 Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – beispielsweise einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md) finden Sie ein Beispiel.
@@ -68,238 +64,16 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
    
    > [!NOTE]
    > In diesem Beispiel rufen wir die Metadaten einer Datei ab. Fügen Sie zum Anzeigen der Metadaten eine weitere Aktion hinzu, die unter Verwendung eines anderen Connectors eine neue Datei erstellt. Fügen Sie beispielsweise eine OneDrive-Aktion hinzu, die auf der Grundlage der Metadaten eine neue Testdatei erstellt. 
-   > 
-   > 
+
+
 5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
 
 > [!TIP]
 > Der [Speicher-Explorer](http://storageexplorer.com/) ist ein praktisches Verwaltungstool für mehrere Speicherkonten.
-> 
-> 
 
-## <a name="technical-details"></a>Technische Details
-## <a name="storage-blob-actions"></a>Storage-Blobaktionen
-| Aktion | Beschreibung |
-| --- | --- |
-| [Dateimetadaten abrufen](connectors-create-api-azureblobstorage.md#get-file-metadata) |Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab. |
-| [Datei aktualisieren](connectors-create-api-azureblobstorage.md#update-file) |Dieser Vorgang aktualisiert eine Datei. |
-| [Datei löschen](connectors-create-api-azureblobstorage.md#delete-file) |Dieser Vorgang löscht eine Datei. |
-| [Dateimetadaten anhand des Pfads abrufen](connectors-create-api-azureblobstorage.md#get-file-metadata-using-path) |Dieser Vorgang ruft Dateimetadaten unter Verwendung des Pfads ab. |
-| [Dateiinhalt anhand des Pfads abrufen](connectors-create-api-azureblobstorage.md#get-file-content-using-path) |Dieser Vorgang ruft Dateiinhalte unter Verwendung des Pfads ab. |
-| [Dateiinhalte abrufen](connectors-create-api-azureblobstorage.md#get-file-content) |Dieser Vorgang ruft Dateiinhalte unter Verwendung der ID ab. |
-| [Datei erstellen](connectors-create-api-azureblobstorage.md#create-file) |Dieser Vorgang lädt eine Datei hoch. |
-| [Datei kopieren](connectors-create-api-azureblobstorage.md#copy-file) |Dieser Vorgang kopiert eine Datei in Azure Blob Storage. |
-| [Archiv in Ordner extrahieren](connectors-create-api-azureblobstorage.md#extract-archive-to-folder) |Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner. |
+## <a name="view-the-swagger"></a>Anzeigen von Swagger
 
-### <a name="action-details"></a>Aktionsdetails
-Dieser Abschnitt enthält spezifische Details zu den einzelnen Aktionen. Hierzu zählen unter anderem erforderliche oder optionale Eingabeeigenschaften sowie entsprechende Ausgaben im Zusammenhang mit dem Connector.
-
-#### <a name="get-file-metadata"></a>Dateimetadaten abrufen
-Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| id* |Datei |Datei auswählen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-BlobMetadata
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| id |string |
-| Name |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| Größe |integer |
-| MediaType |string |
-| IsFolder |Boolescher Wert |
-| ETag |string |
-| FileLocator |string |
-
-#### <a name="update-file"></a>Datei aktualisieren
-Dieser Vorgang aktualisiert eine Datei.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| id* |Datei |Datei auswählen |
-| body* |Dateiinhalte |Inhalte der zu aktualisierenden Datei |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-BlobMetadata
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| id |string |
-| Name |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| Größe |integer |
-| MediaType |string |
-| IsFolder |Boolescher Wert |
-| ETag |string |
-| FileLocator |string |
-
-#### <a name="delete-file"></a>Datei löschen
-Dieser Vorgang löscht eine Datei.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| id* |Datei |Datei auswählen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Keine
-
-#### <a name="get-file-metadata-using-path"></a>Dateimetadaten anhand des Pfads abrufen
-Dieser Vorgang ruft Dateimetadaten unter Verwendung des Pfads ab.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| path* |Dateipfad |Datei auswählen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-BlobMetadata
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| id |string |
-| Name |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| Größe |integer |
-| MediaType |string |
-| IsFolder |Boolescher Wert |
-| ETag |string |
-| FileLocator |string |
-
-#### <a name="get-file-content-using-path"></a>Dateiinhalt anhand des Pfads abrufen
-Dieser Vorgang ruft Dateiinhalte unter Verwendung des Pfads ab.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| path* |Dateipfad |Datei auswählen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Keine
-
-#### <a name="get-file-content"></a>Dateiinhalte abrufen
-Dieser Vorgang ruft Dateiinhalte unter Verwendung der ID ab.  
-
-| Eigenschaftenname | Datentyp | Beschreibung |
-| --- | --- | --- |
-| id* |string |Datei auswählen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Keine
-
-#### <a name="create-file"></a>Datei erstellen
-Dieser Vorgang lädt eine Datei hoch.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| folderPath* |Ordnerpfad |Ordner auswählen |
-| name* |Dateiname |Name der hochzuladenden Datei |
-| body* |Dateiinhalte |Inhalt der hochzuladenden Datei |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-BlobMetadata
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| id |string |
-| Name |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| Größe |integer |
-| MediaType |string |
-| IsFolder |Boolescher Wert |
-| ETag |string |
-| FileLocator |string |
-
-#### <a name="copy-file"></a>Datei kopieren
-Dieser Vorgang kopiert eine Datei in Azure Blob Storage.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| source* |Quell-URL |URL zur Quelldatei angeben |
-| destination* |Zieldateipfad |Zieldateipfad einschließlich Zieldateiname angeben |
-| overwrite |Überschreiben? |Soll eine vorhandene Zieldatei überschrieben werden (True/False)? |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-BlobMetadata
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| id |string |
-| Name |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| Größe |integer |
-| MediaType |string |
-| IsFolder |Boolescher Wert |
-| ETag |string |
-| FileLocator |string |
-
-#### <a name="extract-archive-to-folder"></a>Archiv in Ordner extrahieren
-Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| source* |Quellarchiv-Dateipfad |Archivdatei auswählen |
-| destination* |Zielordnerpfad |Zu extrahierende Inhalte auswählen |
-| overwrite |Überschreiben? |Soll eine vorhandene Zieldatei überschrieben werden (True/False)? |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-BlobMetadata
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| id |string |
-| Name |string |
-| displayName |string |
-| path |string |
-| LastModified |string |
-| Größe |integer |
-| MediaType |string |
-| IsFolder |Boolescher Wert |
-| ETag |string |
-| FileLocator |string |
-
-## <a name="http-responses"></a>HTTP-Antworten
-Das Aufrufen der verschiedenen Aktionen löst unter Umständen bestimmte Antworten aus. Diese Antworten sind in der folgenden Tabelle aufgeführt und beschrieben:  
-
-| Name | Beschreibung |
-| --- | --- |
-| 200 |OK |
-| 202 |Zulässig |
-| 400 |Ungültige Anforderung |
-| 401 |Nicht autorisiert |
-| 403 |Verboten (403) |
-| 404 |Nicht gefunden |
-| 500 |Interner Serverfehler. Unbekannter Fehler ist aufgetreten |
-| die Standardeinstellung |Fehler beim Vorgang. |
+Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/azureblobconnector/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.

@@ -1,10 +1,11 @@
 ---
-redirect_url: https://azure.microsoft.com/services/documentdb/
+redirect_url: https://azure.microsoft.com/services/cosmos-db/
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: 48380d1fd5394cc32b4e868a82f456497bc4a915
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 28af0300f7027ccce8207d0f767490bddd4bf532
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 
@@ -19,8 +20,8 @@ Wenn dem so ist, haben wir zwei informative Dokumente für Sie:
   
   * Unterscheidung zwischen operativen Daten, die von Anwendungen gelesen und geschrieben werden, und analytischen Daten, die zur Bereitstellung von Business Intelligence (BI) dienen, damit Sie die richtige Technologie für Ihre Anforderungen bestimmen können.
   * Eine kurze Übersicht über relationale Technologien.
-  * Eine Einführung in die einzelnen NoSQL-Technologien von Azure: DocumentDB, Tabellenspeicher, HBase und HDInsight.
+  * Eine Einführung in die einzelnen NoSQL-Technologien von Azure: Azure Cosmos DB, Tabellenspeicher, HBase und HDInsight.
   * Ein Vergleich zwischen den NoSQL-Technologien und Azure SQL-Datenbank. 
-  * Verwendung von Azure DocumentDB im Vergleich zu Tabellenspeicher im Vergleich zu HBase im Vergleich zu HDInsight im Vergleich zu SQL-Datenbank.
+  * Verwendung von Azure Cosmos DB im Vergleich zu Tabellenspeicher im Vergleich zu HBase im Vergleich zu HDInsight im Vergleich zu SQL-Datenbank.
 
 

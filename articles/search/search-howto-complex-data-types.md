@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 09/07/2016
+ms.date: 05/01/2017
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a90d7d90a6f3a75e230d32fb02b5ae69909d3c31
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +29,7 @@ Externe Datasets, die zum Auffüllen eines Azure Search-Index verwendet werden, 
 Komplexe Datentypen werden in Azure Search nicht systemintern unterstützt. Eine bewährte Lösung stellt jedoch ein zweistufiger Prozess dar, bei dem die Struktur reduziert und dann die innere Struktur mithilfe des Datentyps **Sammlung** wieder zusammengesetzt wird. Die in diesem Artikel beschriebene Technik ermöglicht das Durchsuchen, Facettieren, Filtern und Sortieren des Inhalts.
 
 ## <a name="example-of-a-complex-data-structure"></a>Beispiel für eine komplexe Datenstruktur
-In der Regel befinden sich die betreffenden Daten als JSON- oder XML-Dokumente oder als Elemente in einem NoSQL-Speicher wie z. B. DocumentDB. Im Hinblick auf die Struktur besteht die Herausforderung in den zahlreichen untergeordneten Elementen, die gefiltert und durchsucht werden müssen.  Als Ausgangspunkt für die Veranschaulichung der Problemumgehung dient das folgende JSON-Dokument, in dem eine Gruppe von Kontakten als Beispiel aufgeführt ist:
+In der Regel befinden sich die betreffenden Daten als JSON- oder XML-Dokumente oder als Elemente in einem NoSQL-Speicher wie z. B. Azure Cosmos DB. Im Hinblick auf die Struktur besteht die Herausforderung in den zahlreichen untergeordneten Elementen, die gefiltert und durchsucht werden müssen.  Als Ausgangspunkt für die Veranschaulichung der Problemumgehung dient das folgende JSON-Dokument, in dem eine Gruppe von Kontakten als Beispiel aufgeführt ist:
 
 ~~~~~
 [
@@ -136,11 +138,6 @@ Diese Methode eignet sich für eine Reihe von Szenarien, ist jedoch nicht in jed
 Ein Beispiel für das Indizieren eines komplexen JSON-Datasets in Azure Search und das Durchführen einer Reihe von Abfragen über dieses Dataset finden Sie in diesem [GitHub-Repository](https://github.com/liamca/AzureSearchComplexTypes).
 
 ## <a name="next-step"></a>Nächster Schritt
-[für eine systemeigene Unterstützung von komplexen Datentypen](https://feedback.azure.com/forums/263029-azure-search) , und teilen Sie uns alle weiteren Anregungen mit, die wir bei der Implementierung von Features berücksichtigen sollten. Sie können mich auch direkt auf Twitter unter @liamca. erreichen.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[für eine systemeigene Unterstützung von komplexen Datentypen](https://feedback.azure.com/forums/263029-azure-search) , und teilen Sie uns alle weiteren Anregungen mit, die wir bei der Implementierung von Features berücksichtigen sollten. Sie können mich auch direkt auf Twitter unter @liamca erreichen.
 
 

@@ -14,12 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/17/2017
+ms.date: 05/09/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 67663af0913a03f2001b4cce6f9f49ee91195026
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: bb58cd7a00bc8eb5eaf2ea5a7a8f7641b0502ed9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -111,6 +112,7 @@ Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
 
 1. Klicken Sie auf **Weiter**.
 
+
 1. Klicken Sie auf **Fertig stellen**.
 
    Im Failovercluster-Manager sehen Sie nun, dass Ihr Cluster über einen neuen Knoten verfügt, und der Knoten wird im Container **Knoten** aufgelistet.
@@ -135,7 +137,9 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
+
 1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
+
 
 1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...**.
 
@@ -172,7 +176,9 @@ Legen Sie als Nächstes das Clusterquorum fest.
 
 1. Geben Sie unter **Dateifreigabenzeugen konfigurieren** den Pfad für die erstellte Freigabe ein. Klicken Sie auf **Weiter**.
 
+
 1. Überprüfen Sie unter **Bestätigung** die Einstellungen. Klicken Sie auf **Weiter**.
+
 
 1. Klicken Sie auf **Fertig stellen**.
 
@@ -237,7 +243,9 @@ Repeat these steps on the second SQL Server.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner der Datenbanksicherung, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
+
 1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
+
 
 1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...**.
 
@@ -273,7 +281,8 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
     ![Starten des Assistenten für neue Verfügbarkeitsgruppen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. Klicken Sie auf der Seite **Einführung** auf **Weiter**. Geben Sie auf der Seite **Namen der Verfügbarkeitsgruppe angeben** unter **Name der Verfügbarkeitsgruppe** den Namen für die Verfügbarkeitsgruppe ein (beispielsweise **AG1**). Klicken Sie auf **Next**.
+2. Klicken Sie auf der Seite **Einführung** auf **Weiter**. Geben Sie auf der Seite **Namen der Verfügbarkeitsgruppe angeben** unter **Name der Verfügbarkeitsgruppe** den Namen für die Verfügbarkeitsgruppe ein (beispielsweise **AG1**). Klicken Sie auf **Weiter**.
+
 
     ![Assistent für neue Verfügbarkeitsgruppen, Namen der Verfügbarkeitsgruppe angeben](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -297,6 +306,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
     ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
 8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\**. Klicken Sie auf **Weiter**.
+
 
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.
@@ -354,7 +364,7 @@ Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe e
    | Einstellung | Field |
    | --- | --- |
    | **Name** |Verwenden Sie einen Textnamen für den Lastenausgleich (beispielsweise **sqlLB**). |
-   | **Schema** |Intern |
+   | **Typ** |Intern |
    | **Virtuelles Netzwerk** |Verwenden Sie den Namen des virtuellen Azure-Netzwerks. |
    | **Subnetz** |Verwenden Sie den Namen des Subnetzes, in dem sich der virtuelle Computer befindet.  |
    | **IP-Adresszuweisung** |Statisch |
@@ -381,6 +391,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
    | Einstellung | Beschreibung | Beispiel
    | --- | --- |---
    | **Name** | Geben Sie einen Textnamen ein. | SQLLBBE
+   | **Zugeordnet zu** | Auswahlliste | Verfügbarkeitsgruppe
    | **Verfügbarkeitsgruppe** | Verwenden Sie einen Namen der Verfügbarkeitsgruppe, in der sich Ihre virtuellen SQL Server-Computer befinden. | sqlAvailabilitySet |
    | **Virtuelle Computer** |Die Namen der beiden virtuellen Azure-Computer mit SQL Server | sqlserver-0, sqlserver-1
 
@@ -390,9 +401,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Wählen Sie als Verfügbarkeitsgruppe die Verfügbarkeitsgruppe mit den SQL Server-Instanzen aus.
 
-1. Schließen Sie bei den virtuellen Computern beide SQL Server-Instanzen ein. Schließen Sie den Dateifreigabenzeugen-Server nicht ein. Ihre Auswahl sollte in etwa wie folgt aussehen:
-
-   ![Navigieren zum Lastenausgleich in der Ressourcengruppe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/88-configurebepool.png)
+1. Schließen Sie bei den virtuellen Computern beide SQL Server-Instanzen ein. Schließen Sie den Dateifreigabenzeugen-Server nicht ein.
 
 1. Klicken Sie auf **OK**, um den Back-End-Pool zu erstellen.
 
@@ -468,7 +477,7 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 1. Testen Sie die Verbindung mithilfe des **sqlcmd** -Hilfsprogramms. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd** -Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
 
     ```
-    sqlmd -S <listenerName> -E
+    sqlcmd -S <listenerName> -E
     ```
 
     Geben Sie den Port in der Verbindungszeichenfolge an, wenn der Listener einen anderen Port als den Standardport (1433) verwendet. Mit dem folgenden sqlcmd-Befehl wird beispielsweise eine Verbindung mit einem Listener über Port 1435 hergestellt:

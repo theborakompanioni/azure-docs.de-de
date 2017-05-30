@@ -12,12 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/02/2017
+ms.date: 05/01/2017
 ms.author: liamca
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 56eeed7634fca840172ab828be5f202d80f3f4fb
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -80,7 +81,7 @@ Das Ziel bei der Einrichtung geografisch verteilter Suchdienste ist es, über mi
 Es gibt zwei Optionen für die Synchronisierung Ihrer verteilten Suchdienste: den [Azure Search-Indexer](search-indexer-overview.md) und die Push-API (auch als [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) bezeichnet).  
 
 ### <a name="azure-search-indexers"></a>Azure Search-Indexer
-Wenn Sie den Azure Search-Indexer verwenden, importieren Sie Datenänderungen bereits aus einem zentralen Datenspeicher wie z.B. Azure SQL-Datenbank oder DocumentDB. Beim Erstellen eines neuen Suchdiensts erstellen Sie einfach auch einen neuen Azure Search-Indexer für diesen Dienst, der auf den gleichen Datenspeicher zeigt. Auf diese Weise werden neue Änderungen von den verschiedenen Indexern indiziert, sobald sie sich im Datenspeicher befinden.  
+Wenn Sie den Azure Search-Indexer verwenden, importieren Sie Datenänderungen bereits aus einem zentralen Datenspeicher wie Azure SQL-Datenbank oder Azure Cosmos DB. Beim Erstellen eines neuen Suchdiensts erstellen Sie einfach auch einen neuen Azure Search-Indexer für diesen Dienst, der auf den gleichen Datenspeicher zeigt. Auf diese Weise werden neue Änderungen von den verschiedenen Indexern indiziert, sobald sie sich im Datenspeicher befinden.  
 
 Diese Architektur würde in etwa wie folgt aussehen.
 

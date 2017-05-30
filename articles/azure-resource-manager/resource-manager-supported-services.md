@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: bf4e400e30cc93ca8fa0cc727ada0f1b224b05cb
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 70a598c9a5bf514f62baa0c5275b2e44cd9776b8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -69,8 +70,8 @@ Clouddienste (klassisch) können mit anderen klassischen Ressourcen verwendet we
 ## <a name="databases"></a>Datenbanken
 | Dienst | Ressourcen-Manager aktiviert | REST-API | Vorlagenformat |
 | --- | --- | --- | --- | --- |
-| DocumentDB |Ja |[DocumentDB REST](/rest/api/documentdbresourceprovider) |[DocumentDB-Ressourcen](/azure/templates/microsoft.documentdb/databaseaccounts) |
-| Redis Cache |Ja | [Redis Cache REST](/rest/api/redis) |[Redis-Ressourcen](/azure/templates/microsoft.cache/redis) |
+| Azure Cosmos DB |Ja |[Azure Cosmos DB REST](/rest/api/documentdbresourceprovider) |[Azure Cosmos DB-Ressourcen](/azure/templates/microsoft.documentdb/databaseaccounts) |
+| Redis-Cache |Ja | [Redis Cache REST](/rest/api/redis) |[Redis-Ressourcen](/azure/templates/microsoft.cache/redis) |
 | SQL-Datenbank |Ja |[SQL-Datenbank REST](/rest/api/sql) |[SQL-Datenbank-Ressourcen](/azure/templates/microsoft.sql/servers) |
 | SQL Data Warehouse |Ja | | |
 

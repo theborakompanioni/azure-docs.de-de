@@ -1,40 +1,44 @@
 ---
-title: "Indizieren einer DocumentDB-Datenquelle für Azure Search | Microsoft-Dokumentation"
-description: Dieser Artikel veranschaulicht das Erstellen eines Azure Search-Indexers mit DocumentDB als Datenquelle.
+title: "Indizieren einer Cosmos DB-Datenquelle für Azure Search | Microsoft Docs"
+description: In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Indexer mit Cosmos DB als Datenquelle erstellen.
 services: search
 documentationcenter: 
 author: chaosrealm
 manager: pablocas
 editor: 
 ms.assetid: 
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 04/11/2017
+ms.date: 05/01/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 5f657ed128103d4bf1304dfc5fae8d86ef950d87
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 333f8320820a1729a14ffc2e29446e7452aa768e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="connecting-documentdb-with-azure-search-using-indexers"></a>Herstellen einer Verbindung zwischen DocumentDB und Azure Search unter Verwendung von Indexern
+# <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Verbinden von Cosmos DB mit Azure Search mithilfe von Indexern
 
-Wenn Sie komfortable Suchfunktionen für Ihre DocumentDB-Daten implementieren möchten, können Sie Daten mit einem Azure Search-Indexer in einen Azure Search-Index übertragen. In diesem Artikel erfahren Sie, wie Sie Azure DocumentDB mit Azure Search integrieren, ohne dass Sie Code zum Beibehalten der Indizierungsinfrastruktur schreiben müssen.
+Wenn Sie komfortable Suchfunktionen für Ihre Cosmos DB-Daten implementieren möchten, können Sie Daten mit einem Azure Search-Indexer in einen Azure Search-Index übertragen. In diesem Artikel erfahren Sie, wie Sie Azure Cosmos DB in Azure Search integrieren, ohne Code zum Beibehalten der Indizierungsinfrastruktur schreiben zu müssen.
 
-Zum Einrichten eines DocumentDB-Indexers benötigen Sie einen [Azure Search-Dienst](search-create-service-portal.md). Erstellen Sie dann einen Index und schließlich den Indexer. Sie können diese Objekte mit dem [Portal](search-import-data-portal.md), dem [.NET SDK](/dotnet/api/microsoft.azure.search) oder der [REST-API](/rest/api/searchservice/) für alle Nicht-.NET-Sprachen erstellen. 
+Zum Einrichten eines Cosmos DB-Indexers benötigen Sie einen [Azure Search-Dienst](search-create-service-portal.md). Erstellen Sie dann einen Index, eine Datenquelle und schließlich den Indexer. Sie können diese Objekte mit dem [Portal](search-import-data-portal.md), dem [.NET SDK](/dotnet/api/microsoft.azure.search) oder der [REST-API](/rest/api/searchservice/) für alle Nicht-.NET-Sprachen erstellen. 
 
 Wenn Sie sich für das Portal entscheiden, führt Sie der [Datenimport-Assistent](search-import-data-portal.md) durch die Erstellung aller dieser Ressourcen.
 
 > [!NOTE]
-> Starten Sie über das DocumentDB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
+> Cosmos DB ist die nächste Generation von DocumentDB. Der Produktname wurde zwar geändert, aber die Syntax ist noch dieselbe. Geben Sie weiterhin `documentdb` an, wie in diesem Indexer-Artikel beschrieben. 
+
+> [!TIP]
+> Sie können den **Datenimport-Assistenten** über das Cosmos DB-Dashboard starten, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
 
 <a name="Concepts"></a>
 ## <a name="azure-search-indexer-concepts"></a>Azure Search Indexer-Konzepte
-Azure Search unterstützt die Erstellung und Verwaltung von Datenquellen (einschließlich DocumentDB) und von Indexern, die gegenläufig zu diesen Datenquellen fungieren.
+Azure Search unterstützt die Erstellung und Verwaltung von Datenquellen (einschließlich Cosmos DB) und von Indexern, die für diese Datenquellen ausgeführt werden.
 
 Eine **Datenquelle** gibt die zu indizierenden Daten, Anmeldeinformationen und Richtlinien für das Bestimmen von Änderungen in den Daten an (z.B. geänderte oder gelöschte Dokumente in Ihrer Sammlung). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
 
@@ -67,20 +71,20 @@ Führen Sie einen POST aus, um eine Datenquelle zu erstellen:
 
 Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Felder enthalten sollte:
 
-* **Name**: Wählen Sie einen beliebigen Namen für Ihre DocumentDB-Datenbank.
+* **Name**: Wählen Sie einen Namen für Ihre Cosmos DB-Datenbank aus.
 * **type**: Muss `documentdb` lauten.
 * **Anmeldeinformationen**:
   
-  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen zur Azure DocumentDB-Datenbank im folgenden Format an: `AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
+  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen für Ihre Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
 * **Container**:
   
-  * **Name**: Erforderlich. Geben Sie die ID der zu indizierenden DocumentDB-Sammlung an.
+  * **Name**: Erforderlich. Geben Sie die ID der zu indizierenden Cosmos DB-Sammlung an.
   * **Abfrage**: Optional. Sie können eine Abfrage spezifizieren, um ein beliebiges JSON-Dokument in ein Flatfile-Schema zu reduzieren, welches Azure Search indizieren kann.
 * **dataChangeDetectionPolicy**: Empfohlen. Weitere Informationen finden Sie im Abschnitt [Indizieren von geänderten Dokumenten](#DataChangeDetectionPolicy).
 * **dataDeletionDetectionPolicy**: Optional. Weitere Informationen finden Sie im Abschnitt [Indizieren von gelöschten Dokumenten](#DataDeletionDetectionPolicy).
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Verwenden von Abfragen zum Formen indizierter Daten
-Sie können eine DocumentDB-Abrage angeben, um geschachtelte Eigenschaften oder Arrays zu vereinfachen, JSON-Eigenschaften zu projizieren und die zu indizierenden Daten zu filtern. 
+Sie können eine Cosmos DB-Abfrage angeben, um geschachtelte Eigenschaften oder Arrays zu vereinfachen, JSON-Eigenschaften zu projizieren und die zu indizierenden Daten zu filtern. 
 
 Beispieldokument:
 
@@ -142,7 +146,7 @@ Anhand des folgenden Beispiels wird ein Index mit einer ID und einem Beschreibun
 Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Quelldokumente oder mit der Ausgabe Ihrer benutzerdefinierten Abfrageprojektion kompatibel ist.
 
 > [!NOTE]
-> Für partitionierte Sammlungen ist der Standarddokumentschlüssel die DocumentDB-Eigenschaft `_rid`, die in Azure Search in `rid` umbenannt wird. Darüber hinaus enthalten die `_rid`-Werte von DocumentDB Zeichen, die in Azure Search-Schlüsseln ungültig sind. Deshalb sind die `_rid`-Werte Base64-codiert.
+> Für partitionierte Sammlungen ist der Standarddokumentschlüssel die Cosmos DB-Eigenschaft `_rid`, die in Azure Search in `rid` umbenannt wird. Darüber hinaus enthalten die `_rid`-Werte von Cosmos DB Zeichen, die in Azure Search-Schlüsseln ungültig sind. Deshalb sind die `_rid`-Werte Base64-codiert.
 > 
 > 
 
@@ -229,7 +233,7 @@ Der Ausführungsverlauf enthält bis zu 50 der jüngsten abgeschlossenen Ausfüh
 
 <a name="DataChangeDetectionPolicy"></a>
 ## <a name="indexing-changed-documents"></a>Indizieren von geänderten Dokumenten
-Die Richtlinie zum Erkennen von Datenänderungen dient einer effizienten Identifizierung geänderter Datenelemente. Derzeit ist die einzige unterstützte Richtlinie die `High Water Mark`-Richtlinie, die die `_ts`-(Zeitstempel-)Eigenschaft verwendet, welche von DocumentDB bereitgestellt wird. Diese wird wie folgt angegeben:
+Die Richtlinie zum Erkennen von Datenänderungen dient einer effizienten Identifizierung geänderter Datenelemente. Derzeit ist die einzige unterstützte Richtlinie die `High Water Mark`-Richtlinie, die die `_ts`-Eigenschaft (Zeitstempel) verwendet, die von Cosmos DB bereitgestellt wird. Diese wird wie folgt angegeben:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -277,7 +281,7 @@ Im folgenden Beispiel wird eine Datenquelle mit einer Richtlinie zum vorläufige
     }
 
 ## <a name="NextSteps"></a>Nächste Schritte
-Glückwunsch! Sie wissen nun, wie Azure DocumentDB mit Azure Search unter Verwendung des Indexers für DocumentDB integriert wird.
+Glückwunsch! Sie wissen nun, wie Azure Cosmos DB mit dem Indexer für Cosmos DB in Azure Search integriert wird.
 
-* Weitere Informationen zu Azure DocumentDB finden Sie auf der [Seite zum DocumentDB-Dienst](https://azure.microsoft.com/services/documentdb/).
+* Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Seite über den Cosmos DB-Dienst](https://azure.microsoft.com/services/documentdb/).
 * Weitere Informationen zu Azure Search finden Sie auf der [Seite des Search-Diensts](https://azure.microsoft.com/services/search/).
