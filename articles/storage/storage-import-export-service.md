@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 132c1cf6b06924b8d23d696ea732856886be975d
-ms.lasthandoff: 05/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1aebecdaacd3525bec07a9359e52d2bc3d1539de
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -76,7 +77,8 @@ Laden Sie die neueste Version des [WAImportExport-Tools](http://download.microso
 >
 
 ### <a name="hard-disk-drives"></a>Festplattenlaufwerke
-Für den Import/Export-Dienst werden nur 2,5-Zoll-SSD-Laufwerke bzw. interne 2,5-Zoll- oder 3,5-Zoll-SATA II- oder -III-Festplatten unterstützt. Sie können Festplatten mit bis zu 10 TB verwenden.
+Für den Import/Export-Dienst werden nur 2,5-Zoll-SSD-Laufwerke bzw. interne 2,5-Zoll- oder 3,5-Zoll-SATA II- oder III-HDDs unterstützt. Ein einzelner Import-/Exportauftrag kann maximal 10 HDDs/SSDs umfassen, und jede einzelne HDD/SSD kann eine beliebige Größe aufweisen. Eine große Anzahl von Laufwerken kann über mehrere Aufträge verteilt werden, und es gibt keine Beschränkung hinsichtlich der Anzahl der Aufträge, die erstellt werden können. 
+
 Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein.
 
 > [!IMPORTANT]
@@ -508,6 +510,14 @@ Informationen hierzu finden Sie unter [Importieren von PST-Dateien oder SharePoi
 
 Informationen hierzu finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](../backup/backup-azure-backup-import-export.md).
 
+**Wie viele HDDs kann eine Lieferung maximal enthalten?
+
+Eine Lieferung kann eine beliebige Anzahl von HDDs umfassen, und wenn die Datenträger zu mehreren Aufträgen gehören, wird empfohlen, a) die Datenträger mit den entsprechenden Auftragsnamen zu beschriften, und b) die Aufträge mit einer Nachverfolgungsnummer und dem Suffix -1, -2 usw. zu versehen.
+  
+**Welche maximale Blockblob- und Seitenblobgröße wird vom Datenträgerimport/-export unterstützt?
+
+Die maximale Blockblobgröße beträgt ungefähr 4,768 TB oder 5.000.000 MB.
+Die maximale Seitenblobgröße beträgt 1 TB.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)
