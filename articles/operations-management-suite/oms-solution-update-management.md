@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2017
+ms.date: 05/23/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 03a6c1f20632691c08f5de4afe74eacc6f79608e
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: ff8d911750a551f4a099fcba13841c98881104a9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -51,7 +51,11 @@ Sie können Softwareupdates auf Computern bereitstellen und installieren, für d
 Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führt der Zielcomputer die Bereitstellung parallel aus.  Zuerst wird ein Scanvorgang durchgeführt, um sicherzustellen, dass die Updates weiterhin erforderlich sind, und anschließend werden sie installiert.  Beachten Sie folgenden wichtigen Hinweis: Für WSUS-Clientcomputer schlägt die Updatebereitstellung fehl, wenn die Updates in WSUS nicht genehmigt sind.  Die Ergebnisse der angewendeten Updates werden an OMS weitergeleitet, damit sie in den Dashboards verarbeitet und zusammengefasst werden können (oder per Ereignissuche).     
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Die Lösung unterstützt die Durchführung von Updatebewertungen für Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2012 und höher.  Server Core- und Nano Server-Installationsoptionen werden nicht unterstützt.
+* Die Lösung unterstützt die Durchführung von Updatebewertungen für Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2008 R2 und höher.  Server Core- und Nano Server-Installationsoptionen werden nicht unterstützt.
+
+    > [!NOTE]
+    > Damit die Bereitstellung von Updates für Windows Server 2008 R2 unterstützt wird, sind .NET Framework 4.5 und WMF 5.0 oder höher erforderlich.
+    >  
 * Windows-Clientbetriebssysteme werden nicht unterstützt.  
 * Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen.  
   

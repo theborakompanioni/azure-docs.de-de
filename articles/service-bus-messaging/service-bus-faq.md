@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: sethm;jotaub
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 7f3ddc2d7036b9951d4796cf4664f870a0c5f4b6
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 612fb681ab0c8fe77652041f8a1fc23ad0d3428a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -92,9 +92,16 @@ SAS (Shared Access Signatures) sind ein Authentifizierungsmechanismus, der auf s
 
 ## <a name="subscription-and-namespace-management"></a>Abonnement- und Namespace-Verwaltung
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Wie migriere ich einen Namespace zu einem anderen Azure-Abonnement?
-Mithilfe des Azure-Portals können Sie Service Bus-Namespaces auf ein anderes Abonnement übertragen, indem Sie den [hier](../azure-resource-manager/resource-group-move-resources.md#use-portal) aufgeführten Anweisungen folgen. Wenn Sie lieber PowerShell verwenden möchten, führen Sie die folgenden Anweisungen aus: 
 
-Mit der folgenden Befehlssequenz wird ein Namespace aus einem Azure-Abonnement in ein anderes verschoben. Um diesen Vorgang auszuführen, muss der Namespace bereits aktiv sein und der Benutzer, der die PowerShell-Befehle ausführt, muss sowohl im Quell- als auch im Zielabonnement Administratorrechte besitzen.
+Sie können einen Namespace entweder über das [Azure-Portal](https://portal.azure.com) oder unter Verwendung von PowerShell-Befehlen von einem Azure-Abonnement in ein anderes verschieben. Der Namespace muss bereits aktiv sein, um diesen Vorgang durchführen zu können. Der Benutzer, der die Befehle ausführt, muss sowohl im Quellabonnement als auch im Zielabonnement Administrator sein.
+
+#### <a name="portal"></a>Portal
+
+Wenn Sie Service Bus-Namespaces mithilfe des Azure-Portals auf ein anderes Abonnement übertragen möchten, folgen Sie den [hier](../azure-resource-manager/resource-group-move-resources.md#use-portal) aufgeführten Anweisungen. 
+
+#### <a name="powershell"></a>PowerShell
+
+Mit der folgenden PowerShell-Befehlssequenz wird ein Namespace aus einem Azure-Abonnement in ein anderes verschoben. Um diesen Vorgang auszuführen, muss der Namespace bereits aktiv sein und der Benutzer, der die PowerShell-Befehle ausführt, muss sowohl im Quell- als auch im Zielabonnement Administratorrechte besitzen.
 
 ```powershell
 # Create a new resource group in target subscription

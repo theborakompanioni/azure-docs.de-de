@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 05/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: b942f934ecb25083d779096dc628e342870edc26
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 360073c0ed75552e62e69ce72b225ba35a2a3e09
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -30,19 +31,17 @@ Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Co
 >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-1. Wählen Sie auf dem Blatt **Security Center** die Kachel **Empfehlungen** aus.  Das Blatt **Empfehlungen** wird geöffnet.
-   ![Blatt „Security Center“][1]
-2. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Sammlung von Daten für Abonnements aktivieren** aus.  Das Blatt **Turn on data collection** (Datensammlung aktivieren) wird geöffnet.
+1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Sammlung von Daten für Abonnements aktivieren** aus.  Das Blatt **Turn on data collection** (Datensammlung aktivieren) wird geöffnet.
    ![Blatt „Empfehlungen“][2]
-3. Wählen Sie auf dem Blatt **Turn on data collection** (Datensammlung aktivieren) Ihr Abonnement aus. Das Blatt **Sicherheitsrichtlinie** für das Abonnement wird geöffnet.
-4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** unter **Datensammlung** die Option **Ein** aus, um automatisch Protokolle zu erfassen. Durch Aktivieren der Datensammlung wird die Überwachungserweiterung auf allen aktuellen und neuen unterstützten VMs im Abonnement bereitgestellt.
+2. Wählen Sie auf dem Blatt **Turn on data collection** (Datensammlung aktivieren) Ihr Abonnement aus. Das Blatt **Sicherheitsrichtlinie** für das Abonnement wird geöffnet.
+3. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** unter **Datensammlung** die Option **Ein** aus, um automatisch Protokolle zu erfassen. Durch Aktivieren der Datensammlung wird die Überwachungserweiterung auf allen aktuellen und neuen unterstützten VMs im Abonnement bereitgestellt.
 
    ![Blatt „Sicherheitsrichtlinie“][3]
 
-5. Wählen Sie **Speichern**aus.
-6. Wählen Sie **Ein Speicherkonto pro Region auswählen**aus. Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Wenn Sie nicht für jede Region ein Speicherkonto auswählen, wird ein Speicherkonto für Sie erstellt und in der securitydata-Ressourcengruppe platziert. In diesem Beispiel wählen wir **newstoracct**. Sie können das Speicherkonto später ändern, indem Sie zur Sicherheitsrichtlinie für Ihr Abonnement zurückkehren und ein anderes Speicherkonto auswählen.
+4. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Ein Speicherkonto pro Region auswählen**aus. Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Wenn Sie nicht für jede Region ein Speicherkonto auswählen, wird ein Speicherkonto für Sie erstellt und in der securitydata-Ressourcengruppe platziert. In diesem Beispiel wählen wir **newstoracct**. Sie können das Speicherkonto später ändern, indem Sie zur Sicherheitsrichtlinie für Ihr Abonnement zurückkehren und ein anderes Speicherkonto auswählen.
    ![Auswählen eines Speicherkontos][4]
-7. Klicken Sie auf **OK**.
+6. Klicken Sie auf **OK**.
 
 > [!NOTE]
 > Es wird empfohlen, dass Sie zunächst die Datensammlung aktivieren und ein Speicherkonto auf Abonnementebene auswählen. Sicherheitsrichtlinien können auf der Ebene von Azure-Abonnement und Ressourcengruppe festgelegt werden, die Konfiguration von Datensammlung und Speicherkonten erfolgt jedoch nur auf Abonnementebene.
@@ -80,7 +79,6 @@ In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Daten
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/)(Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/security-center-blade.png
 [2]: ./media/security-center-enable-data-collection/recommendations.png
 [3]: ./media/security-center-enable-data-collection/data-collection.png
 [4]: ./media/security-center-enable-data-collection/storage-account.png

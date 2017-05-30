@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 7d582960e615962a3952dd2f58c74ed91e5c450d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 762af7e09342f1bb51352e6c3d104bd4d8944e65
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -120,7 +122,7 @@ Bei diesem Ablauf führt die App [Richtlinien](active-directory-b2c-reference-po
 ![Abbildung der Verantwortlichkeitsbereiche systemeigener Apps](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
-Azure AD B2C unterstützt derzeit nicht die folgenden Arten von Apps, die aber trotzdem Teil der Roadmap sind. Weitere Einschränkungen für Azure AD B2C werden unter [Einschränkungen](active-directory-b2c-limitations.md)beschrieben.
+Azure AD B2C unterstützt derzeit nicht die folgenden Arten von Apps, die aber trotzdem Teil der Roadmap sind. 
 
 ### <a name="daemonsserver-side-apps"></a>Daemons/serverseitige Apps
 Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff arbeiten, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) sowie über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen.
@@ -131,9 +133,4 @@ Der Ablauf wird derzeit von Azure AD B2C nicht unterstützt. Diese Apps können 
 Viele Architekturen umfassen eine Web-API, von der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario wird häufig bei nativen Clients mit einem Web-API-Back-End eingesetzt. Dieses ruft dann einen Microsoft-Onlinedienst wie z. B. die Azure AD Graph-API auf.
 
 Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf.  Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert.
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

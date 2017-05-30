@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 143d48b9fc551ade0d0fd043cdb0cf1f3340a9af
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: e975c6d8f217bc73948c0c046204b16b1a742bc7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/20/2017
 
 ---
 
@@ -36,7 +36,7 @@ Verwaltungszugriffsrichtlinien gewähren Berechtigungen im Zusammenhang mit der 
 *    Erstellung und Löschung der Umgebung, Ereignisquellen und Verweisdatasets sowie
 *    Verwaltung der Datenzugriffsrichtlinien.
 
-Datenzugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datenabfragen, für die Bearbeitung von Verweisdaten in der Umgebung und für gespeicherte freigegebene Abfragen und Perspektiven, die der Umgebung zugeordnet sind.
+Datenzugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datenabfragen, für die Bearbeitung von Verweisdaten in der Umgebung und für die Freigabe gespeicherter Abfragen und Perspektiven, die der Umgebung zugeordnet sind.
 
 Die beiden Arten von Richtlinien ermöglichen eine klare Trennung zwischen dem Zugriff auf die Umgebungsverwaltung und dem Zugriff auf die Daten in der Umgebung. Dadurch können Sie eine Umgebung beispielsweise so einrichten, dass der Besitzer/Ersteller der Umgebung keinen Datenzugriff hat. Ebenso können Sie Benutzern und Diensten, die über die Berechtigung zum Lesen von Daten aus der Umgebung verfügen, den Zugriff auf die Konfiguration der Umgebung verweigern.
 

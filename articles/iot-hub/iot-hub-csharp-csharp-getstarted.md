@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 05/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 68d409c7c7ce14c988d8335f6ed54e9be69bcba7
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 4b15801b2ddda0dfd61b025535e379d9a8eed287
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -31,6 +31,12 @@ Am Ende dieses Tutorials verfügen Sie über drei .NET-Konsolen-Apps:
 * **CreateDeviceIdentity**: Hiermit werden eine Geräteidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden mit Ihrer simulierten Geräte-App erstellt.
 * **ReadDeviceToCloudMessages**: Hiermit wird die Telemetrie angezeigt, die Ihre simulierte Geräte-App sendet.
 * **SimulatedDevice**: Hiermit wird mithilfe der zuvor erstellten Geräteidentität eine Verbindung mit Ihrem IoT Hub hergestellt und jede Sekunde unter Verwendung des MQTT-Protokolls eine Telemetrienachricht gesendet.
+
+Sie können die Visual Studio-Projektmappe mit den drei Apps von Github herunterladen und klonen.
+
+```bash
+git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-client-app.git
+```
 
 > [!NOTE]
 > Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können, finden Sie unter [Azure IoT SDKs][lnk-hub-sdks].
@@ -46,55 +52,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Sie haben nun Ihren IoT-Hub erstellt und verfügen über den Hostnamen und die IoT Hub-Verbindungszeichenfolge, die Sie für die weiteren Schritte in diesem Tutorial benötigen.
 
-## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
-In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, mit der eine Geräteidentität in der Identitätsregistrierung Ihres IoT-Hubs erstellt wird. Ein Gerät kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity] im Abschnitt zur Identitätsregistrierung. Beim Ausführen dieser Konsolen-App werden eine eindeutige Geräte-ID und ein Schlüssel erstellt, mit denen sich das Gerät beim Senden von D2C-Nachrichten (Device-to-Cloud, Gerät-an-Cloud) beim IoT Hub identifizieren kann.
-
-1. Fügen Sie in Visual Studio einer neuen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung (.NET Framework** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Stellen Sie sicher, dass .NET-Framework-Version 4.5.1 oder höher verwendet wird. Nennen Sie das Projekt **CreateDeviceIdentity** und die Projektmappe **IoTHubGetStarted**.
-   
-    ![Neues Visual C#-Projekt für den klassischen Windows-Desktop][10]
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **CreateDeviceIdentity**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **microsoft.azure.devices**, wählen Sie zum Installieren des Pakets **Microsoft.Azure.Devices** die Option **Installieren** aus, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket [Azure IoT-Dienst-SDK][lnk-nuget-service-sdk] heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
-   
-    ![Fenster „NuGet-Paket-Manager“][11]
-4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
-   
-        using Microsoft.Azure.Devices;
-        using Microsoft.Azure.Devices.Common.Exceptions;
-5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben.
-   
-        static RegistryManager registryManager;
-        static string connectionString = "{iot hub connection string}";
-6. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
-   
-        private static async Task AddDeviceAsync()
-        {
-            string deviceId = "myFirstDevice";
-            Device device;
-            try
-            {
-                device = await registryManager.AddDeviceAsync(new Device(deviceId));
-            }
-            catch (DeviceAlreadyExistsException)
-            {
-                device = await registryManager.GetDeviceAsync(deviceId);
-            }
-            Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
-        }
-   
-    Mit dieser Methode wird eine Geräteidentität mit der ID **myFirstDevice** erstellt. (Falls diese Geräte-ID in der Identitätsregistrierung bereits vorhanden ist, werden mit dem Code lediglich die vorhandenen Geräteinformationen abgerufen.) Anschließend zeigt die App den Primärschlüssel für diese Identität an. Sie verwenden diesen Schlüssel in der simulierten Geräte-App, um eine Verbindung mit Ihrem IoT-Hub herzustellen.
-7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
-   
-        registryManager = RegistryManager.CreateFromConnectionString(connectionString);
-        AddDeviceAsync().Wait();
-        Console.ReadLine();
-8. Führen Sie diese Anwendung aus, und notieren Sie den Geräteschlüssel.
-   
-    ![Von der Anwendung generierter Geräteschlüssel][12]
-
-> [!NOTE]
-> Die Identitätsregistrierung in IoT Hub speichert nur Geräteidentitäten, um einen sicheren Zugriff auf den IoT-Hub zu ermöglichen. Sie speichert Geräte-IDs und Schlüssel, die als Sicherheitsanmeldeinformationen verwendet werden, sowie ein Aktiviert/Deaktiviert-Kennzeichen, mit dem Sie den Zugriff für ein einzelnes Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity].
-> 
-> 
+<a id="DeviceIdentity_csharp"></a>
+[!INCLUDE [iot-hub-get-started-create-device-identity-csharp](../../includes/iot-hub-get-started-create-device-identity-csharp.md)]
 
 <a id="D2C_csharp"></a>
 ## <a name="receive-device-to-cloud-messages"></a>Empfangen von Gerät-an-Cloud-Nachrichten
@@ -112,52 +71,60 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die D2C-Nachrichten (D
 3. Suchen Sie im Fenster **NuGet-Paket-Manager** nach **WindowsAzure.ServiceBus**, wählen Sie die Option **Installieren** aus, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird [Azure Service Bus][lnk-servicebus-nuget] mit allen Abhängigkeiten heruntergeladen, installiert und mit einem Verweis versehen. Dieses Paket ermöglicht der Anwendung das Herstellen einer Verbindung mit dem Event Hub-kompatiblen Endpunkt des IoT Hubs.
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
    
-        using Microsoft.ServiceBus.Messaging;
-        using System.Threading;
+   ```csharp
+   using Microsoft.ServiceBus.Messaging;
+   using System.Threading;
+   ```
 5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im Abschnitt zur Erstellung eines IoT-Hubs erstellt haben.
    
-        static string connectionString = "{iothub connection string}";
-        static string iotHubD2cEndpoint = "messages/events";
-        static EventHubClient eventHubClient;
+   ```csharp
+   static string connectionString = "{iothub connection string}";
+   static string iotHubD2cEndpoint = "messages/events";
+   static EventHubClient eventHubClient;
+   ```
 6. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
    
-        private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
+   ```csharp
+    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
+    {
+        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
+        while (true)
         {
-            var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
-            while (true)
-            {
-                if (ct.IsCancellationRequested) break;
-                EventData eventData = await eventHubReceiver.ReceiveAsync();
-                if (eventData == null) continue;
-   
-                string data = Encoding.UTF8.GetString(eventData.GetBytes());
-                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
-            }
+            if (ct.IsCancellationRequested) break;
+            EventData eventData = await eventHubReceiver.ReceiveAsync();
+            if (eventData == null) continue;
+
+            string data = Encoding.UTF8.GetString(eventData.GetBytes());
+            Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
         }
+    }
+   ```
    
     Diese Methode verwendet eine **EventHubReceiver** -Instanz, um Nachrichten von allen D2C-Empfangspartitionen des IoT Hubs zu empfangen. Beachten Sie, wie beim Erstellen des **EventHubReceiver**-Objekts ein `DateTime.Now`-Parameter übergeben wird, damit nur die Nachrichten empfangen werden, die nach seinem Start gesendet wurden. Dieser Filter ist in einer Testumgebung hilfreich, damit Sie die aktuelle Gruppe der Nachrichten anzeigen können. In einer Produktionsumgebung sollte mit Ihrem Code sichergestellt werden, dass alle Nachrichten verarbeitet werden. Weitere Informationen finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial].
 7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
    
-        Console.WriteLine("Receive messages. Ctrl-C to exit.\n");
-        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, iotHubD2cEndpoint);
-   
-        var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds;
-   
-        CancellationTokenSource cts = new CancellationTokenSource();
-   
-        System.Console.CancelKeyPress += (s, e) =>
-        {
-          e.Cancel = true;
-          cts.Cancel();
-          Console.WriteLine("Exiting...");
-        };
-   
-        var tasks = new List<Task>();
-        foreach (string partition in d2cPartitions)
-        {
-           tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
-        }  
-        Task.WaitAll(tasks.ToArray());
+   ```csharp
+    Console.WriteLine("Receive messages. Ctrl-C to exit.\n");
+    eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, iotHubD2cEndpoint);
+
+    var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds;
+
+    CancellationTokenSource cts = new CancellationTokenSource();
+
+    System.Console.CancelKeyPress += (s, e) =>
+    {
+        e.Cancel = true;
+        cts.Cancel();
+        Console.WriteLine("Exiting...");
+    };
+
+    var tasks = new List<Task>();
+    foreach (string partition in d2cPartitions)
+    {
+        tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
+    }  
+    Task.WaitAll(tasks.ToArray());
+   ```
 
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine .NET-Konsolenanwendung, die ein Gerät simuliert, das D2C-Nachrichten (Device to Cloud, Gerät zu Cloud) an einen IoT-Hub sendet.
@@ -169,51 +136,61 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolenanwendung, die ein Gerät si
 3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **Microsoft.Azure.Devices.Client**, wählen Sie zum Installieren des Pakets **Microsoft.Azure.Devices** die Option **Installieren** aus, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das [NuGet-Paket mit dem Azure IoT-Geräte-SDK][lnk-device-nuget] heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgende `using`-Anweisung hinzu:
    
-        using Microsoft.Azure.Devices.Client;
-        using Newtonsoft.Json;
+   ```csharp
+   using Microsoft.Azure.Devices.Client;
+   using Newtonsoft.Json;
+   ```
 5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie die Platzhalterwerte durch den IoT-Hub-Hostnamen, den Sie im Abschnitt zum Erstellen eines IoT-Hubs abgerufen haben, und durch den Geräteschlüssel, den Sie im Abschnitt „Erstellen einer Geräteidentität“ abgerufen haben.
    
-        static DeviceClient deviceClient;
-        static string iotHubUri = "{iot hub hostname}";
-        static string deviceKey = "{device key}";
+   ```csharp
+   static DeviceClient deviceClient;
+   static string iotHubUri = "{iot hub hostname}";
+   static string deviceKey = "{device key}";
+   ```
+
 6. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
    
-        private static async void SendDeviceToCloudMessagesAsync()
+   ```csharp
+    private static async void SendDeviceToCloudMessagesAsync()
+    {
+        double minTemperature = 20;
+        double minHumidity = 60;
+        int messageId = 1;
+        Random rand = new Random();
+
+        while (true)
         {
-            double minTemperature = 20;
-            double minHumidity = 60;
-            Random rand = new Random();
-   
-            while (true)
+            double currentTemperature = minTemperature + rand.NextDouble() * 15;
+            double currentHumidity = minHumidity + rand.NextDouble() * 20;
+
+            var telemetryDataPoint = new
             {
-                double currentTemperature = minTemperature + rand.NextDouble() * 15;
-                double currentHumidity = minHumidity + rand.NextDouble() * 20;
-   
-                var telemetryDataPoint = new
-                {
-                    deviceId = "myFirstDevice",
-                    temperature = currentTemperature,
-                    humidity = currentHumidity
-                };
-                var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
-                var message = new Message(Encoding.ASCII.GetBytes(messageString));
-                message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
-   
-                await deviceClient.SendEventAsync(message);
-                Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
-   
-                await Task.Delay(1000);
-            }
+                messageId = messageId++,
+                deviceId = "myFirstDevice",
+                temperature = currentTemperature,
+                humidity = currentHumidity
+            };
+            var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+            message.Properties.Add("temperatureAlert", (currentTemperature > 30) ? "true" : "false");
+
+            await deviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
+
+            await Task.Delay(1000);
         }
-   
+    }
+   ```
     Diese Methode sendet jede Sekunde eine neue D2C-Nachricht. Die Nachricht enthält ein JSON-serialisiertes Objekt mit der Geräte-ID sowie zufällig generierten Zahlen, um einen Temperatur- und Feuchtigkeitssensor zu simulieren.
 7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
    
-        Console.WriteLine("Simulated device\n");
-        deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);
-   
-        SendDeviceToCloudMessagesAsync();
-        Console.ReadLine();
+   ```csharp
+   Console.WriteLine("Simulated device\n");
+   deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);
+
+   SendDeviceToCloudMessagesAsync();
+   Console.ReadLine();
+   ```
    
    In der Standardeinstellung erstellt die **Create**-Methode eine **DeviceClient**-Instanz, die das AMQP-Protokoll für die Kommunikation mit dem IoT Hub verwendet. Um das MQTT- oder HTTP-Protokoll zu verwenden, nutzen Sie die Überschreibung der **Create**-Methode, bei der Sie das Protokoll angeben können. Wenn Sie das HTTP-Protokoll verwenden, müssen Sie Ihrem Projekt auch das NuGet-Paket **Microsoft.AspNet.WebApi.Client** hinzufügen, um den **System.Net.Http.Formatting**-Namespace einzuschließen.
 
@@ -244,19 +221,19 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen 
 
 * [Verbinden Ihres Geräts][lnk-connect-device]
 * [Erste Schritte mit der Geräteverwaltung][lnk-device-management]
-* [Erste Schritte mit IoT Edge][lnk-gateway-SDK]
+* [Erste Schritte mit IoT Edge][lnk-iot-edge]
 
 Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten mit Skalierbarkeit verarbeiten, finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial].
+
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->
 [41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 [43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
-[10]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp1.png
 [10a]: ./media/iot-hub-csharp-csharp-getstarted/create-receive-csharp1.png
 [10b]: ./media/iot-hub-csharp-csharp-getstarted/create-device-csharp1.png
-[11]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp2.png
-[12]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp3.png
+
 
 <!-- Links -->
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
@@ -266,15 +243,13 @@ Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten 
 [lnk-portal]: https://portal.azure.com/
 
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-servicebus-nuget]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [lnk-device-nuget]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-connected-service]: https://visualstudiogallery.msdn.microsoft.com/e254a3a5-d72e-488e-9bd3-8fee8e0cd1d6
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 

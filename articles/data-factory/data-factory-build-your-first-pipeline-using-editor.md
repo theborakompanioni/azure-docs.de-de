@@ -1,10 +1,28 @@
 ---
-title: Erstellen der ersten Data Factory (Azure-Portal) | Microsoft-Dokumentation description: In diesem Tutorial erstellen Sie im Azure-Portal eine Azure Data Factory-Beispielpipeline mit dem Data Factory-Editor.
-services: data-factory documentationcenter: '' author: spelluru manager: jhubbard editor: monicar
+title: Erstellen der ersten Data Factory (Azure-Portal) | Microsoft Docs
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mit dem Data Factory-Editor im Azure-Portal.
+services: data-factory
+documentationcenter: 
+author: spelluru
+manager: jhubbard
+editor: monicar
+ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 04/17/2017
+ms.author: spelluru
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: c54a1ed648022875f489179a3321dedf2d290d7e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d ms.service: data-factory ms.workload: data-services ms.tgt_pltfrm: na ms.devlang: na ms.topic: hero-article ms.date: 04/17/2017 ms.author: spelluru
 
----3
+---
+
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>Tutorial: Erstellen der ersten Azure Data Factory mit dem Azure-Portal
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
@@ -17,10 +35,12 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d ms.service: data-factory ms.wor
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) Ihre erste Azure Data Factory erstellen. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus. 
 
+Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktivität**. Bei dieser Aktivität wird ein Hive-Skript in einem Azure HDInsight-Cluster ausgeführt, mit dem Eingabedaten transformiert werden, um Ausgabedaten zu erhalten. Die Pipeline zwischen dem Start- und Endzeitpunkt wird einmal pro Monat ausgeführt. 
+
 > [!NOTE]
-> Die Datenpipeline in diesem Tutorial transformiert Eingabedaten in Ausgabedaten. Sie kopiert keine Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Die Datenpipeline in diesem Tutorial transformiert Eingabedaten in Ausgabedaten. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> Dieses Tutorial verwendet nur eine Aktivität vom Typ „Kopieren“. Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Planung und Ausführung in einer Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
+> Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Planung und Ausführung in einer Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
@@ -378,3 +398,4 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 | [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |
 | [Planung und Ausführung](data-factory-scheduling-and-execution.md) |In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) |In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. |
+

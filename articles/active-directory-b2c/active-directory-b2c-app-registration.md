@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 3/13/2017
 ms.author: parakhj
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: e04fbd97dd4d5ecaf12edf47d80572b32d29ed00
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 414c684c78314a92bbbe12e6164e2b10fb682b0f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 
@@ -51,7 +52,9 @@ Sie können auf das Blatt auch zugreifen, indem Sie im [Azure-Portal](https://po
 4. Stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**. Die **Antwort-URLs** sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie z. B. Folgendes ein: `https://localhost:44316/`.
 5. Klicken Sie auf **Erstellen** , um Ihre Anwendung zu registrieren.
 6. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code. 
-7. Falls Ihre Webanwendung auch eine durch Azure AD B2C geschützte Web-API aufruft, ist die Erstellung eines **geheimen Anwendungsschlüssels** ratsam. Klicken Sie hierzu auf dem Blatt **Schlüssel** auf die Schaltfläche **Schlüssel generieren**.
+7. Falls Ihre Webanwendung auch eine durch Azure AD B2C geschützte Web-API aufruft, ist Folgendes ratsam:
+   1. Erstellung eines **Anwendungsgeheimnisses**. Klicken Sie hierzu auf dem Blatt **Schlüssel** auf die Schaltfläche **Schlüssel generieren**.
+   2. Klicken Sie auf **API-Zugriff** und dann auf **Hinzufügen**, und wählen Sie Ihre Web-API und Bereiche (Berechtigungen) aus.
 
 > [!NOTE]
 > **Geheime Anwendungsschlüssel** sind wichtige Sicherheitsanmeldeinformationen, die entsprechend geschützt werden müssen.
@@ -78,7 +81,9 @@ Sie können auf das Blatt auch zugreifen, indem Sie im [Azure-Portal](https://po
 5. Geben Sie einen **Umleitungs-URI** mit einem benutzerdefinierten Schema ein. Beispielsweise „com.onmicrosoft.contoso.appname://redirect/path“. Achten Sie darauf, einen [funktionierenden Umleitungs-URI](#choosing-a-redirect-uri) zu wählen.
 6. Klicken Sie auf **Speichern**, um Ihre Anwendung zu registrieren.
 7. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
-8. Falls Ihre native Anwendung auch eine durch Azure AD B2C geschützte Web-API aufruft, wird darüber hinaus die Erstellung eines **geheimen Anwendungsschlüssels** empfohlen. Klicken Sie dazu auf dem Blatt **Schlüssel** auf die Schaltfläche **Schlüssel generieren**.
+8. Falls Ihre Webanwendung auch eine durch Azure AD B2C geschützte Web-API aufruft, ist Folgendes ratsam:
+   1. Erstellung eines **Anwendungsgeheimnisses**. Klicken Sie hierzu auf dem Blatt **Schlüssel** auf die Schaltfläche **Schlüssel generieren**.
+   2. Klicken Sie auf **API-Zugriff** und dann auf **Hinzufügen**, und wählen Sie Ihre Web-API und Bereiche (Berechtigungen) aus.
 
 > [!NOTE]
 > **Geheime Anwendungsschlüssel** sind wichtige Sicherheitsanmeldeinformationen, die entsprechend geschützt werden müssen.
@@ -89,9 +94,7 @@ Bei der Auswahl eines Umleitungs-URIs für mobile/systemeigene Anwendungen sind 
 * **Eindeutigkeit**: Das Schema des Umleitungs-URIS muss für jede Anwendung eindeutig sein. In unserem Beispiel (com.onmicrosoft.contoso.appname://redirect/path) verwenden wir „com.onmicrosoft.contoso.appname“ als Schema. Es wird empfohlen, diesem Muster zu folgen. Wenn zwei Anwendungen dasselbe Schema verwenden, wird den Benutzer das Dialogfeld „App auswählen“ angezeigt. Wenn der Benutzer die falsche Auswahl trifft, schlägt die Anmeldung fehl. 
 * **Vollständigkeit**: Der Umleitungs-URI muss ein Schema und einen Pfad aufweisen. Der Pfad muss nach der Domäne mindestens ein Schrägstrich enthalten (Beispiel: „//contoso/“ funktioniert, aber „//contoso“ schlägt fehl). 
 
-## <a name="build-a-quick-start-application"></a>Erstellen einer Schnellstart-App
-Nachdem Sie nun über eine bei Azure AD B2C registrierte Anwendung verfügen, können Sie zum Einstieg eines der Schnellstarttutorials ausführen. Hier sind einige Vorschläge:
-
-[!INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
+## <a name="build-an-application"></a>Erstellen einer Anwendung
+Nachdem Sie nun über eine bei Azure AD B2C registrierte Anwendung verfügen, können Sie zum Einstieg eines der [Schnellstarttutorials](active-directory-b2c-overview.md#get-started) ausführen.
 
 

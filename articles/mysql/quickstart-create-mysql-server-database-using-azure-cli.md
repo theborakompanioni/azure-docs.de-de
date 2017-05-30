@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: portal
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 05/24/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 574299dd64120d75a1a36cb2ded0fdd269292570
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 9f78163e4ff1166a2abd94150d686256ee338286
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -29,7 +29,6 @@ Für dieses Schnellstarttutorial muss die aktuelle Version von [Azure CLI 2.0](h
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-
 Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
 ```azurecli
@@ -87,7 +86,7 @@ Das Ergebnis liegt im JSON-Format vor. Notieren Sie sich **fullyQualifiedDomainN
 {
   "administratorLogin": "myadmin",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "mycliserver.database.windows.net",
+  "fullyQualifiedDomainName": "mycliserver.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mycliresource/providers/Microsoft.DBforMySQL/servers/mycliserver",
   "location": "westus",
   "name": "mycliserver",
@@ -114,7 +113,7 @@ Stellen Sie beim Herstellen einer Verbindung zu Ihrem Server mit dem Befehlszeil
 
 1. Stellen Sie eine Verbindung zum Server mit dem Befehlszeilentool **mysql** her:
 ```dos
- mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
+ mysql -h mycliserver.mysql.database.azure.com -u myadmin@mycliserver -p
 ```
 
 2. Zeigen Sie den Serverstatus an:
@@ -124,7 +123,7 @@ Stellen Sie beim Herstellen einer Verbindung zu Ihrem Server mit dem Befehlszeil
 Wenn alles funktioniert, sollte das Befehlszeilentool Folgendes ausgeben:
 
 ```dos
-C:\Users\v-chenyh>mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
+C:\Users\v-chenyh>mysql -h mycliserver.mysql.database.azure.com -u myadmin@mycliserver -p
 Enter password: ***********
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 65512
@@ -149,7 +148,7 @@ SSL:                    Not in use
 Using delimiter:        ;
 Server version:         5.6.26.0 MySQL Community Server (GPL)
 Protocol version:       10
-Connection:             mycliserver.database.windows.net via TCP/IP
+Connection:             mycliserver.mysql.database.azure.com via TCP/IP
 Server characterset:    latin1
 Db     characterset:    latin1
 Client characterset:    gbk
@@ -175,16 +174,15 @@ mysql>
 |----------------|-----------------|
 |    *Verbindungsname* | Geben Sie einen beliebigen Namen für diese Verbindung ein |
 | *Verbindungsmethode* | Wählen Sie „Standard (TCP/IP)“ aus |
-| *Hostname* | mycliserver.database.windows.net (der SERVERNAME, den Sie sich zuvor notiert haben) |
+| *Hostname* | mycliserver.mysql.database.azure.com (der zuvor notierte Servername) |
 | *Port* | 3306 |
-| *Benutzername* | myadmin@mycliserver (die SERVERADMINISTRATORANMELDUNG, die Sie sich zuvor notiert haben) |
-| *Kennwort* | Sie können das Kennwort für das Administratorkonto im Tresor speichern |
+| *Benutzername* | myadmin@mycliserver (die zuvor notierte Serveradministratoranmeldung) |
+| *Kennwort* | Speichern Sie das Kennwort für das Administratorkonto. |
 
-![Einrichten einer neuen Verbindung](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
+   ![Einrichten einer neuen Verbindung](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
 
-3.    Klicken Sie auf **Verbindung testen**, um zu testen, ob alle Parameter richtig konfiguriert wurden.
-
-4.    Nun können Sie auf die Verbindung klicken, die gerade erstellt wurde, um eine Verbindung zum Server herzustellen.
+Klicken Sie auf **Verbindung testen**, um zu testen, ob alle Parameter richtig konfiguriert wurden.
+Nun können Sie auf die Verbindung klicken, die gerade erstellt wurde, um eine Verbindung zum Server herzustellen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -197,5 +195,5 @@ az group delete --name mycliresource
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Entwerfen Sie eine MySQL-Datenbank mit der Azure CLI](./tutorial-design-database-using-cli.md).
+> [Entwerfen einer MySQL-Datenbank mit der Azure CLI](./tutorial-design-database-using-cli.md)
 
