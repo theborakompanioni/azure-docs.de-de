@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 5/9/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c78f07cb780d5e7cd758fb782fc6ba37946f9537
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -50,8 +51,28 @@ Beim Auflösen und Verbinden mit Diensten werden die folgenden Schritte in einer
 * **Verbinden**: Eine Verbindung mit dem Dienst wird über das auf diesem Endpunkt verwendete Protokoll hergestellt.
 * **Wiederholen**: Ein Verbindungsversuch kann aus verschiedenen Gründen fehlschlagen, z.B. wenn der Dienst seit der letzten Auflösung der Endpunktadresse verschoben wurde. In diesem Fall müssen die obigen Schritte zum Auflösen und Verbinden solange wiederholt werden, bis die Verbindung hergestellt werden kann.
 
+## <a name="connecting-to-other-services"></a>Herstellen einer Verbindung zu anderen Diensten
+Dienste, die innerhalb eines Clusters miteinander verbunden sind, können im Allgemeinen direkt auf die Endpunkte anderer Dienste zugreifen, da sich die Knoten in einem Cluster im gleichen Netzwerk befinden. Um die Verbindung zwischen Diensten zu erleichtern, bietet Service Fabric zusätzliche Dienste, die den Naming Service verwenden. Ein DNS-Dienst und einen Reverseproxydienst.
+
+
+### <a name="dns-service"></a>DNS-Dienst
+Da viele Dienste, insbesondere in Containern gepackte Dienste, über einen vorhandenen URL-Namen verfügen können, ist es sehr praktisch, diese über das standardmäßige DNS-Protokoll (statt über das Naming Service-Protokoll) auflösen zu können, besonders in Szenarien mit „Lift & Shift“-Anwendungen. Genau dies übernimmt der DNS-Dienst. Mit dem DNS-Dienst können Sie einem Dienstnamen DNS-Namen zuordnen und so Endpunkt-IP-Adressen auflösen. 
+
+Wie im folgenden Diagramm dargestellt, ordnet der im Service Fabric-Cluster ausgeführte DNS-Dienst den Dienstnamen DNS-Namen zu, die dann durch den Naming Service aufgelöst werden und die Endpunktadressen zurückgeben, mit denen die Verbindung hergestellt werden soll. Der DNS-Name für den Dienst wird zum Zeitpunkt der Erstellung bereitgestellt. 
+
+![Dienstendpunkte][9]
+
+Weitere Informationen zur Verwendung des DNS-Diensts finden Sie im Artikel [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).
+
+### <a name="reverse-proxy-service"></a>Reverseproxydienst
+Der Reverseproxy adressiert Dienste im Cluster, die HTTP-Endpunkte (einschließlich HTTPS) verfügbar machen. Der Reverseproxy vereinfacht das Aufrufen anderer Dienste und deren Methoden durch Verwendung eines bestimmten URI-Formats erheblich und verarbeitet die Schritte Auflösen, Verbinden und Wiederholen, die erforderlich sind, damit ein Dienst mit einem anderen unter Verwendung des Naming Serivce kommunizieren kann. Mit anderen Worten: Der Naming Service wird beim Aufrufen anderer Dienste vor Ihnen verborgen, indem der Vorgang auf das Aufrufen einer URL vereinfacht wird.
+
+![Dienstendpunkte][10]
+
+Weitere Informationen zur Verwendung des Reverseproxydiensts finden Sie im Artikel [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md).
+
 ## <a name="connections-from-external-clients"></a>Verbindungen von externen Clients
-Dienste, die innerhalb eines Clusters miteinander verbunden sind, können im Allgemeinen direkt auf die Endpunkte anderer Dienste zugreifen, da sich die Knoten in einem Cluster in der Regel im gleichen Netzwerk befinden. In einigen Umgebungen kann sich ein Cluster jedoch hinter einem Load Balancer befinden, der den externen eingehenden Datenverkehr durch eine begrenzte Anzahl von Ports umleitet. In diesen Fällen können Dienste weiterhin miteinander kommunizieren und Adressen mithilfe von Naming Service auflösen, allerdings sind zusätzliche Schritte erforderlich, damit externe Clients eine Verbindung mit den Diensten herstellen können.
+Dienste, die innerhalb eines Clusters miteinander verbunden sind, können im Allgemeinen direkt auf die Endpunkte anderer Dienste zugreifen, da sich die Knoten in einem Cluster im gleichen Netzwerk befinden. In einigen Umgebungen kann sich ein Cluster jedoch hinter einem Load Balancer befinden, der den externen eingehenden Datenverkehr durch eine begrenzte Anzahl von Ports umleitet. In diesen Fällen können Dienste weiterhin miteinander kommunizieren und Adressen mithilfe von Naming Service auflösen, allerdings sind zusätzliche Schritte erforderlich, damit externe Clients eine Verbindung mit den Diensten herstellen können.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric in Azure
 Ein Service Fabric-Cluster in Azure befindet sich hinter einem Azure Load Balancer. Der gesamte externe Datenverkehr zum Cluster muss den Load Balancer durchlaufen. Der Load Balancer leitet auf einem bestimmten Port eingehenden Datenverkehr automatisch an einen beliebigen *Knoten* weiter, der den gleichen Port geöffnet hat. Der Azure Load Balancer weiß nur, welche Ports auf den *Knoten* geöffnet sind, aber nicht, welche Ports von einzelnen *Diensten* geöffnet wurden.
@@ -152,10 +173,10 @@ Damit externer Datenverkehr auf Port **80**zulässig ist, müssen die folgenden 
 
 Bitte beachten Sie, dass Azure Load Balancer und der Test nur die *Knoten* kennen, nicht aber die *Dienste*, die auf den Knoten ausgeführt werden. Der Azure Load Balancer sendet Datenverkehr an die Knoten, die auf den Test reagieren. Stellen Sie daher sicher, dass die Dienste auf den Knoten verfügbar sind, die auf den Test reagieren können.
 
-## <a name="built-in-communication-api-options"></a>Integrierte Optionen für Kommunikations-APIs
+## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: Integrierte Optionen für Kommunikations-APIs
 Das Reliable Services-Framework wird mit mehreren vorab erstellten Kommunikationsoptionen ausgeliefert. Welche Option in Ihrem Fall am besten geeignet ist, hängt vom Programmiermodell, dem Kommunikationsframework und der Programmiersprache Ihrer Dienste ab.
 
-* **Kein bestimmtes Protokoll** : Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
+* **Kein bestimmtes Protokoll**: Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
 * **HTTP**: Für die sprachunabhängige Kommunikation bietet HTTP eine branchenübliche Auswahl von Tools und HTTP-Servern, die in verschiedenen Sprachen verfügbar sind und alle von Service Fabric unterstützt werden. Dienste können alle verfügbaren HTTP-Stapel verwenden, einschließlich [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) für C#-Anwendungen. In C# geschriebene Clients können `ICommunicationClient`die Klassen `ServicePartitionClient` verwenden, wobei für Java die `CommunicationClient`- und `FabricServicePartitionClient`-Klassen [für die Dienstauflösung, HTTP-Verbindungen und Wiederholungsschleifen](service-fabric-reliable-services-communication.md) verwendet werden sollten.
 * **WCF**: Wenn der vorhandene Code das WCF-Kommunikationsframework verwendet, können Sie `WcfCommunicationListener` für den Server und die Klassen `WcfCommunicationClient` und `ServicePartitionClient` für den Client verwenden. Dies ist jedoch nur für C#-Anwendungen für Windows-basierte Cluster verfügbar. Weitere Informationen finden Sie in folgenden Artikel: [WCF-basierter Kommunikationsstapel für Reliable Services](service-fabric-reliable-services-communication-wcf.md).
 
@@ -172,4 +193,6 @@ Lesen Sie mehr über die Konzepte und APIs im [Reliable Services-Kommunkationsmo
 [5]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerport.png
 [7]: ./media/service-fabric-connect-and-communicate-with-services/distributedservices.png
 [8]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerprobe.png
+[9]: ./media/service-fabric-connect-and-communicate-with-services/dns.png
+[10]: ./media/service-fabric-reverseproxy/internal-communication.png
 

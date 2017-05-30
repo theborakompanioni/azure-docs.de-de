@@ -2,27 +2,25 @@ Es gibt verschiedene Gründe, aus denen Sie eine Anwendung, die auf einem virtue
 
 Wenn beim Herstellen einer Verbindung mit dem virtuellen Computer mit RDP oder SSH Probleme auftreten, finden Sie entsprechende Informationen in den folgenden Artikeln:
 
-* [Behandeln von Problemen mit Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Behandeln von Problemen mit Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
+* [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)
 
 > [!NOTE]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../articles/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung beider Modelle, Microsoft empfiehlt jedoch für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
-> 
-> 
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
 
-## <a name="quick-start-troubleshooting-endpoint-connectivity-problems"></a>Allgemeine Problembehandlung bei Endpunktverbindungen
+## <a name="quick-start-troubleshooting-steps"></a>Schritte zur Schnellstartproblembehandlung
 Wenn beim Herstellen der Verbindung mit einer Anwendung Probleme auftreten, führen Sie die folgenden allgemeinen Schritte zur Problembehandlung aus. Versuchen Sie nach jedem Schritt erneut, eine Verbindung mit der Anwendung herzustellen:
 
 * Starten Sie den virtuellen Computer neu.
 * Erstellen Sie den Endpunkt, die Firewallregeln und die Regeln für die Netzwerksicherheitsgruppen (NSG) neu.
-  * [Klassisches Modell: Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
   * [Resource Manager-Modell: Verwalten von Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Klassisches Modell: Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
 * Stellen Sie die Verbindung über einen anderen Ort her, z.B. über ein anderes virtuelles Azure-Netzwerk.
 * Stellen Sie den virtuellen Computer erneut bereit.
-  * [Erneutes Bereitstellen von virtuellen Windows-Computern](../articles/virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-  * [Erneutes Bereitstellen von virtuellen Linux-Computern](../articles/virtual-machines/linux/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  * [Erneutes Bereitstellen von virtuellen Windows-Computern](../articles/virtual-machines/windows/redeploy-to-new-node.md)
+  * [Erneutes Bereitstellen von virtuellen Linux-Computern](../articles/virtual-machines/linux/redeploy-to-new-node.md)
 * Erstellen Sie den virtuellen Computer neu.
 
 Weitere Informationen finden Sie unter [Problembehandlung bei Endpunktverbindungen (RDP/SSH/HTTP-Fehler usw.)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
@@ -44,6 +42,7 @@ Die Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen 
    * Verhindern Firewallregeln den ordnungsgemäßen Datenverkehrsfluss?
 
 Bei Clientcomputern, die über eine Site-to-Site-VPN- oder ExpressRoute-Verbindung auf die Anwendung zugreifen, sind die Hauptbereiche, die zu Problemen führen können, die Anwendung und der virtuelle Azure-Computer.
+
 Gehen Sie folgendermaßen vor, um die Quelle des Problems und dessen Korrektur zu bestimmen.
 
 ## <a name="step-1-access-application-from-target-vm"></a>Schritt 1: Zugreifen auf die Anwendung vom virtuellen Zielcomputer
@@ -115,7 +114,7 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 * Den eingehenden Anwendungs-Antwortdatenverkehr vom virtuellen Azure-Computer.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-[Behandeln von Problemen mit Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Behandeln von Problemen mit Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
 
-[Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)
 

@@ -14,10 +14,10 @@ ms.date: 04/22/2017
 ms.author: dkshir
 ms.custom: na
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d0ccbcfa5fc8006590951707f7162f7864110f38
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 572dfc8965957c4667d4124b045ffbb835786a94
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -40,6 +40,10 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Wenn Sie das Windows-Betriebssystem nutzen, wird das [Visual C++ Redistributable Package][lnk-visual-c-redist] verwendet, um die Nutzung von nativen DLLs aus Python zu ermöglichen.
 * [Node.js 4.0 oder höher][lnk-node-download]. Stellen Sie je nach Einrichtung sicher, dass die 32-Bit- bzw. die 64-Bit-Installation verwendet wird. Sie ist erforderlich, um das [IoT Hub-Explorer-Tool][lnk-iot-hub-explorer] zu installieren.
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
+
+> [!NOTE]
+> Die *pip*-Pakete für `azure-iothub-service-client` und `azure-iothub-device-client` sind derzeit nur für das Windows-Betriebssystem verfügbar. Pakete für Linux/Mac OS finden Sie in den Abschnitten zu Linux und Mac OS im Beitrag [Prepare your development environment for Python][lnk-python-devbox] (Vorbereiten der Entwicklungsumgebung für Python).
+> 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -286,9 +290,10 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen 
 
 * [Verbinden Ihres Geräts][lnk-connect-device]
 * [Erste Schritte mit der Geräteverwaltung][lnk-device-management]
-* [Erste Schritte mit Azure IoT Edge][lnk-gateway-SDK]
+* [Erste Schritte mit Azure IoT Edge][lnk-iot-edge]
 
 Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten mit Skalierbarkeit verarbeiten, finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial].
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->
 [1]: ./media/iot-hub-python-getstarted/createdevice.png
@@ -311,6 +316,7 @@ Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten 
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
 [lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
+[lnk-python-devbox]: https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md
 
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
@@ -318,6 +324,6 @@ Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 

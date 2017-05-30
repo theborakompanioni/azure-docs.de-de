@@ -1,6 +1,6 @@
 ---
 title: "Hinzufügen einer Web Application Firewall in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen **Web Application Firewall hinzufügen** und **Finalize application protection** (Anwendungsschutz abschließen) implementieren."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen **Web Application Firewall hinzufügen** und **Anwendungsschutz abschließen** implementieren."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 05/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 2286437f4ab13384f895e906ccda48ac1b4c553d
-ms.openlocfilehash: b44a0373ceca84b423984e01eee1e57a67d97cdd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d04a07237029953d8a9b20704d85e852ce45d867
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,7 +42,9 @@ Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen 
 3. Sie können eine vorhandene Web Application Firewall verwenden oder eine neue erstellen. Da in diesem Beispiel noch keine WAFs vorhanden sind, erstellen wir eine neue WAF.
 4. Wählen Sie hierzu in der Liste mit den integrierten Partnern eine Lösung aus. In diesem Beispiel verwenden wir **Barracuda Web Application Firewall**.
 5. Auf dem dann geöffneten Blatt **Barracuda Web Application Firewall** werden Informationen zu dieser Partnerlösung angezeigt. Klicken Sie auf dem Informationsblatt auf **Erstellen** .
+
    ![Blatt mit Firewallinformationen][3]
+
 6. Das Blatt **Neue Web Application Firewall** wird geöffnet, auf dem Sie Schritte zur **VM-Konfiguration** ausführen und **WAF-Informationen** bereitstellen können. Wählen Sie **VM-Konfiguration**aus.
 7. Auf dem Blatt **VM-Konfiguration** können Sie Informationen zum Einrichten des virtuellen Computers eingeben, auf dem die WAF ausgeführt wird.
    ![VM configuration][4]
@@ -48,9 +52,12 @@ Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen 
 
 ## <a name="finalize-application-protection"></a>Finalize application protection (Anwendungsschutz abschließen)
 1. Kehren Sie zum Blatt **Empfehlungen** zurück. Ein neuer Eintrag wurde generiert, nachdem Sie die WAF erstellt haben: **Finalize application protection**(Anwendungsschutz abschließen). Aufgrund dieses Eintrags wissen Sie, dass Sie den Prozess der eigentlichen „Verdrahtung“ der WAF in Azure Virtual Network abschließen müssen, damit die Anwendung geschützt werden kann.
-   ![Finalize application protection (Anwendungsschutz abschließen) (Anwendungsschutz abschließen)][5]
+
+   ![Finalize application protection (Anwendungsschutz abschließen)][5]
+
 2. Wählen Sie **Finalize application protection**(Anwendungsschutz abschließen). Ein neues Blatt wird geöffnet. Sie sehen, dass eine Webanwendung vorhanden ist, für die der Datenverkehr umgeleitet muss.
 3. Wählen Sie die Webanwendung aus. Es wird ein Blatt geöffnet, in dem Sie Schritte zum Abschließen des Web Application Firewall-Setups ausführen können. Führen Sie die Schritte aus, und wählen Sie dann **Datenverkehr einschränken**aus. Security Center kümmert sich daraufhin um die Details.
+
    ![Datenverkehr einschränken][6]
 
 > [!NOTE]
@@ -60,7 +67,7 @@ Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen 
 
 Die Protokolle dieser WAF sind nun vollständig integriert. Security Center kann automatisch beginnen, die Protokolle zu sammeln und zu analysieren, damit Sie wichtige Sicherheitswarnungen erhalten können.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Web Application Firewall hinzufügen“ implementieren. Weitere Informationen zum Konfigurieren einer Web Application Firewall finden Sie im folgenden Artikel:
 
 * [Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
@@ -81,9 +88,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [4]: ./media/security-center-add-web-application-firewall/select-vm-config.png
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

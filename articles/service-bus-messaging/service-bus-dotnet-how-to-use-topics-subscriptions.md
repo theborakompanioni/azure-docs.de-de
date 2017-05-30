@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 03/23/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: bec18e91ef8798a791d4b1fe93bd529593197e01
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 5ff7783081a722474bbbc38795e88da05bca78d2
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -177,7 +178,7 @@ Sie können auch Filter einrichten, durch die Sie angeben können, welche an ein
 
 Der von Abonnements unterstützte flexibelste Filtertyp ist die [SqlFilter][SqlFilter]-Klasse, die eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
-Mit dem folgenden Beispiel wird ein Abonnement namens **HighMessages** mit einem [SqlFilter][SqlFilter]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte **MessageNumber**-Eigenschaft größer als 3 ist.
+Mit dem folgenden Beispiel wird ein Abonnement namens **HighMessages** mit einem [SqlFilter][SqlFilter]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft größer als 3 ist:
 
 ```csharp
 // Create a "HighMessages" filtered subscription.
@@ -189,7 +190,7 @@ namespaceManager.CreateSubscription("TestTopic",
    highMessagesFilter);
 ```
 
-Im folgenden Beispiel wird in ähnlicher Weise ein Abonnement namens **LowMessages** mit einem [SqlFilter][SqlFilter]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte **MessageNumber**-Eigenschaft kleiner oder gleich 3 ist:
+Im folgenden Beispiel wird in ähnlicher Weise ein Abonnement namens **LowMessages** mit einem [SqlFilter][SqlFilter]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft kleiner oder gleich 3 ist:
 
 ```csharp
 // Create a "LowMessages" filtered subscription.
@@ -218,9 +219,9 @@ TopicClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Klasse. **BrokeredMessage**-Objekte verfügen über einen Satz von Standardeigenschaften (z.B. [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) und [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Textkörper der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor des **BrokeredMessage**-Objekts übergeben wird. Der entsprechende **DataContractSerializer** wird dann zum Serialisieren des Objekts verwendet. Alternativ kann ein **System.IO.Stream**-Objekt zur Verfügung gestellt werden.
+An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Klasse. **BrokeredMessage**-Objekte verfügen über einen Satz von Standardeigenschaften (z.B. [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) und [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.timetolive#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Textkörper der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor des **BrokeredMessage**-Objekts übergeben wird. Der entsprechende **DataContractSerializer** wird dann zum Serialisieren des Objekts verwendet. Alternativ kann ein **System.IO.Stream**-Objekt zur Verfügung gestellt werden.
 
-Das folgende Beispiel zeigt, wie fünf Testnachrichten an das **TestTopic**-/[TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt gesendet werden, das im vorherigen Codebeispiel abgerufen wurde. Beachten Sie, dass der Wert der [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft jeder Nachricht gemäß der Iteration der Schleife variiert (auf diese Weise wird bestimmt, welche Abonnements die Nachricht erhalten).
+Das folgende Beispiel zeigt, wie fünf Testnachrichten an das **TestTopic**-/[TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)-Objekt gesendet werden, das im vorherigen Codebeispiel abgerufen wurde. Beachten Sie, dass der Wert der [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft jeder Nachricht gemäß der Iteration der Schleife variiert (auf diese Weise wird bestimmt, welche Abonnements die Nachricht erhalten).
 
 ```csharp
 for (int i=0; i<5; i++)
@@ -289,7 +290,7 @@ Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen 
 
 Zudem wird einer im Abonnement gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel wenn die Anwendung abstürzt) entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht – aber vor Ausgabe der [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)-Anforderung – abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* (Verarbeitung mindestens einmal) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen unter Umständen erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) -Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
+Falls die Anwendung nach der Verarbeitung der Nachricht – aber vor Ausgabe der [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)-Anforderung – abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* (Verarbeitung mindestens einmal) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen unter Umständen erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) -Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 Das folgende Beispiel zeigt, wie das Thema **TestTopic** aus dem **HowToSample**-Dienstnamespace gelöscht wird.

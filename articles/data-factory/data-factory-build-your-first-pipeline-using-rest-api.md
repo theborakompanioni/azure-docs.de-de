@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: b64621bb5bc5d3c3e968b8b077bf132ebb1f6838
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: a8a4c9592ec78f1c56c9bf60c10d9190c13b0e7d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -33,12 +33,16 @@ ms.lasthandoff: 05/16/2017
 >
 >
 
+
 In diesem Artikel verwenden Sie die Data Factory-REST-API zum Erstellen Ihrer ersten Azure Data Factory. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus.
 
+Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktivität**. Bei dieser Aktivität wird ein Hive-Skript in einem Azure HDInsight-Cluster ausgeführt, mit dem Eingabedaten transformiert werden, um Ausgabedaten zu erhalten. Die Pipeline zwischen dem Start- und Endzeitpunkt wird einmal pro Monat ausgeführt.
+
 > [!NOTE]
-> Die Datenpipeline in diesem Tutorial transformiert Eingabedaten in Ausgabedaten. Sie kopiert keine Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> In diesem Artikel werden nicht alle Komponenten der REST-API behandelt. In der [Data Factory REST-API-Referenz](/rest/api/datafactory/) finden Sie eine umfassende Dokumentation zur REST-API.
 > 
-> Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
+> Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Planung und Ausführung in einer Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.

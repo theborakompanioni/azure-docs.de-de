@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 03/29/2017
+ms.date: 05/09/2017
 ms.author: barclayn
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: f7c2f702a4ff2af8bb7487d49f5c6f9bf5199a49
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5e135be1e21173add3236f851609f1df0a5b0dee
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.lasthandoff: 04/14/2017
 Azure Active Directory-Überwachungsereignisse helfen Ihnen dabei, privilegierte Aktionen zu bestimmen, die in Azure Active Directory aufgetreten sind. Sie können die Typen von Ereignissen anzeigen, die Sie nachverfolgen können, indem Sie [Azure Active Directory-Überwachungsberichtereignisse](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md) überprüfen.
 
 >[!NOTE]
-Sie müssen die Schritte im Artikel [Erste Schritte](security-azure-log-integration-get-started.md) abgeschlossen haben, bevor Sie die Schritte in diesem Artikel durchführen können.
+Lesen Sie den Artikel [Erste Schritte](security-azure-log-integration-get-started.md), und führen Sie alle Schritte bis zu Schritt 3 im Abschnitts **Schritte nach der Installation und zur Validierung** aus, bevor Sie mit den Schritten in diesem Artikel beginnen.
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Schritte zum Integrieren von Azure Active Directory-Überwachungsprotokollen
 
@@ -35,9 +36,9 @@ Sie müssen die Schritte im Artikel [Erste Schritte](security-azure-log-integrat
 2. Führen Sie den folgenden Befehl aus:
 
  ``azlog createazureid``
- 
+
  Dabei werden Sie zur Angabe Ihrer Azure-Anmeldeinformationen aufgefordert. Anschließend wird in den Azure AD-Mandanten, die die Azure-Abonnements hosten, in denen der angemeldete Benutzer als Administrator, Co-Administrator oder Besitzer fungiert, ein Azure Active Directory-Dienstprinzipal erstellt. Handelt es sich bei dem angemeldeten Benutzer nur um einen Gastbenutzer des Azure AD-Mandanten, tritt bei dem Befehl ein Fehler auf. Die Authentifizierung gegenüber Azure wird über Azure Active Directory (AD) durchgeführt. Beim Erstellen eines Dienstprinzipals für die Azure-Protokollintegration wird die Azure AD-Identität erstellt, die Lesezugriff auf Azure-Abonnements erhält.
- 
+
 3. Führen Sie mit Ihrer Mandanten-ID den Befehl aus. Sie müssen Mitglied der Mandanten-Administratorrolle zum Ausführen des Befehls sein.
 
 ``Azlog.exe authorizedirectoryreader tenantId``
@@ -53,7 +54,7 @@ Beispiel
 
 Verweisen Sie für den Standardconnector für die SIEM-Dateiweiterleitung auf den richtigen Ordner, um die Daten an die SIEM-Instanz zu übermitteln. Ja nach verwendetem SIEM-Produkt benötigen Sie unter Umständen einige Feldzuordnungen.
 
-Unterstützung durch die Community ist über das [MSDN-Forum für die Azure-Protokollintegration](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration) verfügbar. Dieses Forum bietet der AzLog-Community die Möglichkeit, sich gegenseitig mit Fragen, Antworten, Tipps und Tricks zur optimalen Verwendung der Azure-Protokollintegration zu unterstützen. Darüber hinaus überwacht das Team für die Azure-Protokollintegration dieses Forum und bietet nach Möglichkeit entsprechende Hilfe an. 
+Unterstützung durch die Community ist über das [MSDN-Forum für die Azure-Protokollintegration](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration) verfügbar. Dieses Forum bietet der AzLog-Community die Möglichkeit, sich gegenseitig mit Fragen, Antworten, Tipps und Tricks zur optimalen Verwendung der Azure-Protokollintegration zu unterstützen. Darüber hinaus überwacht das Team für die Azure-Protokollintegration dieses Forum und bietet nach Möglichkeit entsprechende Hilfe an.
 
 Sie können zudem eine [Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md) öffnen. Wählen Sie zu diesem Zweck **Protokollintegration** als Dienst aus, für den Sie Support anfordern.
 

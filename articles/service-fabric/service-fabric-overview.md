@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: mfussell
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 0fb4cc7b3c071eeb0bff15f9a57fc7e2106d7ca7
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 81dae4c35fead96af8a8a2823952a0bd7f2e537e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -42,7 +42,7 @@ Warum ist ein Microserviceansatz wichtig? Die beiden wichtigsten Gründe sind:
 * Sie können je nach Ihren Anforderungen verschiedene Teile der Anwendung skalieren.
 * Entwicklungsteams können beim Einführen von Änderungen flexibler vorgehen und dadurch Funktionen für Kunden schneller und häufiger bereitstellen.
 
-Service Fabric liegt schon heute zahlreichen Microsoft-Diensten zugrunde. Hierzu zählen unter anderem Azure SQL-Datenbank, Azure DocumentDB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Skype for Business und viele weitere Azure-Kerndienste.
+Service Fabric liegt schon heute zahlreichen Microsoft-Diensten zugrunde. Hierzu zählen unter anderem Azure SQL-Datenbank, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Skype for Business und viele weitere Azure-Kerndienste.
 
 Service Fabric wurde für die Erstellung cloudbasierter Dienste konzipiert, die zu Beginn klein ausfallen und je nach Bedarf auf Hunderte oder Tausende von Computern skaliert werden können.
 

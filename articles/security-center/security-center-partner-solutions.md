@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 05/09/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
-ms.openlocfilehash: 2d7ab8fbed1d4edb60416c7c6b7ae08ddbdec91a
-ms.lasthandoff: 02/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5ffc3253cf07018ad6fe9f0112c75c2e1495e5df
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -34,33 +35,30 @@ Auf der Kachel **Partnerlösungen** auf dem Blatt **Security Center** können Si
 
 ![Kachel „Partnerlösungen“][1]
 
-Die Kachel **Partnerlösungen** zeigt die Anzahl der Partnerlösungen und eine Statusübersicht für diese Lösungen an.
-
-Eine Partnerlösung kann den folgenden **STATUS** haben:
-
-* Geschützt (grün): Es liegt kein Integritätsproblem vor.
-* Fehlerhaft (rot): Es liegt ein Integritätsproblem vor, das sofort untersucht werden muss.
-* Melden beendet (orange): Die Lösung hat das Melden der Integrität beendet.
-* Unbekannter Schutzstatus (orange): Der Integritätsstatus der Lösung ist derzeit unbekannt, da beim Hinzufügen einer neuen Ressource zur vorhandenen Lösung ein Fehler aufgetreten ist.
-* Nicht gemeldet (grau): Die Lösung hat noch keine Meldung berichtet. Der Status einer Lösung kann unter Umständen noch nicht gemeldet worden sein, wenn die Verbindung gerade hergestellt wurde und die Bereitstellung noch nicht abgeschlossen ist.
-
-Wenn in Ihr Abonnement keine Lösungen integriert sind, zeigt die Kachel an, dass es keine Lösungen gibt. Wenn Sie die Kachel **Partnerlösungen** auswählen, können Sie das Blatt **Empfehlungen** zum Bereitstellen von Partnersicherheitslösungen öffnen.
-
-![Keine Partnerlösungen][2]
+Die Kachel **Partnerlösungen** zeigt die Anzahl der in Ihr Abonnement integrierten Partnerlösungen an. Sind keine Lösungen integriert, zeigt die Kachel die Zahl 0 (null) an.
 
 So zeigen der Integrität Ihrer Partnerlösungen an:
 
-1. Wählen Sie die Kachel **Partnerlösungen** . Ein Blatt mit einer Liste der Partnerlösungen, die mit dem Security Center verbunden sind, wird geöffnet.
+1. Wählen Sie die Kachel **Partnerlösungen** . Das Blatt **Partnerlösungen** mit einer Liste der Partnerlösungen, die mit dem Security Center verbunden sind, wird geöffnet.
 
    ![Partnerlösungen][3]
-2. Wählen Sie eine Partnerlösung aus. In diesem Beispiel wählen wir die Lösung **F5-WAF2** aus.  Auf einem Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole** , um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen.
+
+   Eine Partnerlösung kann den folgenden Status aufweisen:
+
+   * Geschützt (grün): Es liegt kein Integritätsproblem vor.
+   * Fehlerhaft (rot): Es liegt ein Integritätsproblem vor, das sofort untersucht werden muss.
+   * Melden beendet (orange): Die Lösung hat das Melden der Integrität beendet.
+   * Unbekannter Schutzstatus (orange): Der Integritätsstatus der Lösung ist derzeit unbekannt, da beim Hinzufügen einer neuen Ressource zur vorhandenen Lösung ein Fehler aufgetreten ist.
+   * Nicht gemeldet (grau): Die Lösung hat noch keine Meldung berichtet. Der Status einer Lösung kann unter Umständen noch nicht gemeldet worden sein, wenn die Verbindung gerade hergestellt wurde und die Bereitstellung noch nicht abgeschlossen ist.
+
+2. Wählen Sie eine Partnerlösung aus. In diesem Beispiel wählen wir die Lösung **Qualys** aus.  Auf einem Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole** , um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen.
 
    ![Details der Partnerlösung][4]
-3. Wechseln Sie zurück zum Blatt **F5-WAF2**, und wählen Sie **App verknüpfen** aus. Das Blatt **Anwendungen verknüpfen** wird geöffnet. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
+3. Wechseln Sie zurück zum Blatt **Qualys**, und wählen Sie **Virtuellen Computer verknüpfen** aus. Das Blatt **Anwendungen verknüpfen** wird geöffnet. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
 
    ![Verknüpfen Sie Ressourcen mit Partnerlösungen][5]
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurden Ihnen die **Partnerlösungen** in Security Center vorgestellt. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
@@ -72,7 +70,6 @@ In diesem Dokument wurden Ihnen die **Partnerlösungen** in Security Center vorg
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png
-[2]: ./media/security-center-partner-solutions/no-partner-solutions-to-display.png
 [3]: ./media/security-center-partner-solutions/partner-solutions.png
 [4]: ./media/security-center-partner-solutions/partner-solutions-detail.png
 [5]: ./media/security-center-partner-solutions/link-applications.png

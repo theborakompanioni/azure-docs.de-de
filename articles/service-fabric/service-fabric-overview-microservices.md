@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/06/2017
 ms.author: msfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: a2a72da08ccff17407fcdd98783137b091651b47
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 77eb843f83bd2d246dd4943e52c1e8b2ac07a5ab
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -129,7 +131,7 @@ Es ist eigentlich offensichtlich und wird doch oft übersehen, dass der Microser
 Die Integrität unterscheidet sich von der Diagnose. Bei der Integrität geht es darum, dass der Microservice seinen aktuellen Zustand meldet, damit geeignete Maßnahmen ergriffen werden können. Ein gutes Beispiel ist die Verwendung der Upgrade- und Bereitstellungsmechanismen zum Wahren der Verfügbarkeit. Auch wenn ein Dienst aufgrund eines Prozessabsturzes oder eines Computerneustarts zu einem bestimmten Zeitpunkt unter Umständen keine volle Integrität aufweist, kann er trotzdem noch betriebsbereit sein. Sie sollten auf jeden Fall vermeiden, diesen Zustand zu verschlimmern, indem Sie ein Upgrade durchführen. Die beste Vorgehensweise besteht darin, zuerst eine Untersuchung durchzuführen oder dem Microservice Zeit zum Beheben des Fehlers zu lassen. Anhand von Integritätsereignissen eines Microservice können wir fundierte Entscheidungen treffen und selbstreparierende Dienste erstellen.
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric als Microservice-Plattform
-Azure Service Fabric ist entstanden, als Microsoft die Umstellung von „Paketprodukten“, die meist monolithisch waren, auf Dienste vollzogen hat. Aus den Erfahrungen, die bei der Erstellung und dem Betrieb großer Dienste wie Azure SQL-Datenbank und Azure DocumentDB gesammelt wurden, ist Service Fabric entstanden. Die Plattform entwickelte sich im Laufe der Zeit weiter und wurde von immer mehr Diensten genutzt. Es war wichtig, dass Service Fabric nicht nur in Azure ausgeführt werden konnte, sondern auch in eigenständigen Windows Server-Bereitstellungen.
+Azure Service Fabric ist entstanden, als Microsoft die Umstellung von „Paketprodukten“, die meist monolithisch waren, auf Dienste vollzogen hat. Aus den Erfahrungen, die bei der Erstellung und dem Betrieb großer Dienste wie Azure SQL-Datenbank und Azure Cosmos DB gesammelt wurden, ist Service Fabric entstanden. Die Plattform entwickelte sich im Laufe der Zeit weiter und wurde von immer mehr Diensten genutzt. Es war wichtig, dass Service Fabric nicht nur in Azure ausgeführt werden konnte, sondern auch in eigenständigen Windows Server-Bereitstellungen.
 
 ***Die Ziele von Service Fabric sind das Lösen der schwierigen Probleme, die mit der Erstellung und Ausführung eines Diensts verbunden sind, und die effiziente Nutzung von Infrastrukturressourcen, damit Teams geschäftliche Probleme mit einem Microservice-Ansatz lösen können.***
 
@@ -153,9 +155,4 @@ Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellu
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

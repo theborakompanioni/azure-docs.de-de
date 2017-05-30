@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: f2c67bb0629c8a37e557d4813e3efa459f3c82ad
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 693a4a0dbe7e067492040a12c6cb3b003bbcc54e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -301,15 +302,15 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Codieren |Beim CSV- oder JSON-Format muss eine Codierung angegeben werden. Das einzige derzeit unterstützte Codierungsformat ist UTF-8. |
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabulator und senkrechter Strich. |
 
-## <a name="documentdb"></a>DocumentDB
-[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) ist ein vollständig verwalteter NoSQL-Dokumentendatenbankdienst, der Abfragen und Transaktionen über schemafreie Daten, vorhersagbare und zuverlässige Leistung sowie schnelle Entwicklung bietet.
+## <a name="azure-cosmos-db"></a>Azure Cosmos DB
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ist ein vollständig verwalteter NoSQL-Dokumentendatenbankdienst, der Abfragen und Transaktionen über schemafreie Daten, vorhersagbare und zuverlässige Leistung sowie schnelle Entwicklung bietet.
 
-Die folgende Liste enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer DocumentDB-Ausgabe.
+Die folgende Liste enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Azure Cosmos DB-Ausgabe.
 
 * **Ausgabealias** : Ein Alias zum Verweisen auf diese Ausgabe in Ihrer ASA-Abfrage.  
-* **Kontoname** : Der Name oder Endpunkt-URI des DocumentDB-Kontos.  
-* **Kontoschlüssel** : Der gemeinsame Zugriffsschlüssel für das DocumentDB-Konto.  
-* **Datenbank** : Der Name der DocumentDB-Datenbank.  
+* **Kontoname**: Der Name oder Endpunkt-URI des Cosmos DB-Kontos.  
+* **Kontoschlüssel**: Der gemeinsame Zugriffsschlüssel für das Cosmos DB-Konto.  
+* **Datenbank**: Der Name der Cosmos DB-Datenbank.  
 * **Muster für Sammlungsnamen**: Der Sammlungsname oder das Muster für die zu verwendenden Sammlungen. Das Sammlungsnamenformat kann mit dem optionalen Token {partition} gebildet werden, wobei Partitionen bei 0 beginnen. Im Folgenden finden Sie Beispiele gültiger Eingaben:  
   1\) MyCollection – Eine Sammlung mit dem Namen „MyCollection“ muss vorhanden sein.  
   2\) MyCollection{partition} – Solche Auflistungen müssen vorhanden sein: „MyCollection0“, „MyCollection1“, „MyCollection2“ usw.  

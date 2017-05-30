@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2017
+ms.date: 05/18/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 3df12cd8700a75c1288967e86cd92e6ed4886d59
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: ced46c64c1c105aa987759e05ab3680bc399f9a0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -40,14 +41,14 @@ Jeder Messagingentität wird ein bestimmter Container zugewiesen. Ein Container 
 ## <a name="processing-of-incoming-messaging-requests"></a>Verarbeiten eingehender Messaginganforderungen
 Wenn ein Client eine Anforderung an Service Bus sendet, wird diese vom Azure Load Balancer an einen der Gatewayknoten weitergeleitet. Der Gatewayknoten autorisiert die Anforderung. Wenn die Anforderung eine Messagingentität (Warteschlange, Thema, Abonnement) betrifft, sucht der Gatewayknoten die Entität im Gatewayspeicher und ermittelt den Messagingspeicher, in dem sich die Entität befindet. Anschließend wird der Messagingbrokerknoten ermittelt, der momentan für den Container zuständig ist, und die Anforderung wird an diesen Messagingbrokerknoten gesendet. Der Messagingbrokerknoten verarbeitet die Anforderung und aktualisiert den Entitätszustand im Containerspeicher. Anschließend sendet der Messagingbrokerknoten die Antwort an den Gatewayknoten zurück, der wiederum eine entsprechende Antwort an den Client sendet, von dem die ursprüngliche Anforderung stammte.
 
-![Verarbeiten eingehender Messaginganforderungen](./media/service-bus-architecture/IC690644.png)
+![Verarbeiten eingehender Messaginganforderungen](./media/service-bus-architecture/ic690644.png)
 
 ## <a name="processing-of-incoming-relay-requests"></a>Verarbeiten eingehender Relayanforderungen
-Wenn ein Client eine Anforderung an Service Bus sendet, wird diese vom Azure Load Balancer an einen der Gatewayknoten weitergeleitet. Handelt es sich dabei um eine Lauschanforderung, erstellt der Gatewayknoten ein neues Relay. Handelt es sich um eine Verbindungsanforderung für ein bestimmtes Relay, leitet der Gatewayknoten die Anforderung an den für das Relay zuständigen Gatewayknoten weiter. Der für das Relay zuständige Gatewayknoten sendet eine Rendezvousanforderung an den lauschenden Client und fordert den Listener auf, einen temporären Kanal zu dem Gatewayknoten zu erstellen, der die Verbindungsanfrage erhalten hat.
+Wenn ein Client eine Anforderung an den [Azure Relay](/azure/service-bus-relay/)-Dienst sendet, wird diese vom Azure Load Balancer an einen der Gatewayknoten weitergeleitet. Handelt es sich dabei um eine Lauschanforderung, erstellt der Gatewayknoten ein neues Relay. Handelt es sich um eine Verbindungsanforderung für ein bestimmtes Relay, leitet der Gatewayknoten die Anforderung an den für das Relay zuständigen Gatewayknoten weiter. Der für das Relay zuständige Gatewayknoten sendet eine Rendezvousanforderung an den lauschenden Client und fordert den Listener auf, einen temporären Kanal zu dem Gatewayknoten zu erstellen, der die Verbindungsanfrage erhalten hat.
 
 Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Gatewayknoten austauschen, die für das Rendezvous verwendet wird.
 
-![Verarbeiten eingehender WCF Relay-Anforderungen](./media/service-bus-architecture/IC690645.png)
+![Verarbeiten eingehender WCF Relay-Anforderungen](./media/service-bus-architecture/ic690645.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich einen Überblick über die Service Bus-Architektur verschafft haben, finden Sie unter den folgenden Links weitere Informationen:

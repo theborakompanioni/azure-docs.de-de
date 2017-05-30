@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 05fe90fe8d4320f3be2a08fed5902cf5c25dd87b
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 460276303f026553e1ea374f85759937afe90dfa
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -37,13 +37,16 @@ ms.lasthandoff: 05/17/2017
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Microsoft Visual Studio eine Data Factory mit einer Pipeline erstellen, die Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert. Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Tutorials den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md).   
 
-Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Sie transformiert keine Eingabedaten in Ausgabedaten. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
+In diesem Tutorial erstellen Sie eine Pipeline mit einer einzelnen Aktivität: der Kopieraktivität. Die Kopieraktivität kopiert die Daten aus einem unterstützten Datenspeicher in einen unterstützten Senkendatenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Sie basiert auf einem global verfügbaren Dienst, mit dem Daten zwischen verschiedenen Datenspeichern sicher, zuverlässig und skalierbar kopiert werden können. Weitere Informationen zur Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).
 
-Dieses Tutorial verwendet nur eine Aktivität vom Typ „Kopieren“. Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Planung und Ausführung in einer Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
+Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Mehrere Aktivitäten in einer Pipeline](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
+
+> [!NOTE] 
+> Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus. 
-2. Data Factory-Entitäten können nur von einem **Administrator des Azure-Abonnements** für Azure Data Factory veröffentlicht werden.  
+1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.       
+2. Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
 3. Folgendes muss auf Ihrem Computer installiert sein: 
    * Visual Studio 2013 oder Visual Studio 2015
    * Laden Sie das Azure-SDK für Visual Studio 2013 oder Visual Studio 2015 herunter. Navigieren Sie zur [Azure-Downloadseite](https://azure.microsoft.com/downloads/), und klicken Sie auf **VS 2013** oder **VS 2015** im Abschnitt **.NET**.
@@ -104,6 +107,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 2. Wählen Sie dieses Mal **Azure SQL Linked Service** aus, und klicken Sie dann auf **Hinzufügen**. 
 3. Ersetzen Sie in der Datei **AzureSqlLinkedService1.json** die Platzhalter `<servername>`, `<databasename>`, `<username@servername>` und `<password>` durch die entsprechenden Angaben für Azure SQL-Server, -Datenbank, -Benutzerkonto und -Kennwort.    
 4. Speichern Sie die Datei **AzureSqlLinkedService1.json** . 
+    
     Weitere Informationen zu diesen JSON-Eigenschaften finden Sie unter [Azure SQL-Datenbankconnector](data-factory-azure-sql-connector.md#linked-service-properties).
 
 
@@ -214,6 +218,7 @@ In diesem Schritt erstellen Sie ein Ausgabedataset namens **OutputDataset**. Die
     Die emp-Tabelle in der Datenbank enthält drei Spalten: **ID**, **FirstName** und **LastName**. Da es sich bei „ID“ um eine Identitätsspalte handelt, müssen Sie hier lediglich **FirstName** und **LastName** angeben.
 
     Weitere Informationen zu diesen JSON-Eigenschaften finden Sie im Artikel [Azure SQL-Connector](data-factory-azure-sql-connector.md#dataset-properties).
+
 ## <a name="create-pipeline"></a>Erstellen der Pipeline
 In diesem Schritt erstellen Sie eine Pipeline mit einer **Kopieraktivität**, für die **InputDataset** als Eingabe und **OutputDataset** als Ausgabe verwendet wird.
 
@@ -261,8 +266,8 @@ Derzeit steuert das Ausgabedataset den Zeitplan. In diesem Tutorial wird ein Aus
            }
          }
        ],
-       "start": "2015-07-12T00:00:00Z",
-       "end": "2015-07-13T00:00:00Z",
+       "start": "2017-05-11T00:00:00Z",
+       "end": "2017-05-12T00:00:00Z",
        "isPaused": false
      }
     }
@@ -340,7 +345,19 @@ Beachten Sie folgende Punkte:
 > Data Factory-Instanzen können nur von einem Administrator oder Co-Administrator des Azure-Abonnements erstellt werden.
 
 ## <a name="monitor-pipeline"></a>Überwachen der Pipeline
-Unter [Überwachen von Datasets und Pipelines](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline) finden Sie eine Anleitung zum Überwachen der in diesem Tutorial erstellten Pipeline und Datasets über das Azure-Portal. Visual Studio unterstützt derzeit keine Überwachung von Data Factory-Pipelines.  
+Navigieren Sie zur Startseite Ihrer Data Factory:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie im linken Menü auf **Weitere Dienste** und dann auf **Data Factorys**.
+
+    ![Durchsuchen von Data Factorys](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
+3. Beginnen Sie mit der Eingabe der Data Factory.
+
+    ![Name der Data Factory](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
+4. Klicken Sie in der Liste der Ergebnisse auf Ihre Data Factory, um die Startseite für Ihre Data Factory anzuzeigen.
+
+    ![Data Factory-Startseite](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
+5. Befolgen Sie die Anweisungen unter [Überwachen von Datasets und Pipelines](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline), um die in diesem Tutorial erstellte Pipeline und die erstellten Datasets zu überwachen. Visual Studio unterstützt derzeit keine Überwachung von Data Factory-Pipelines. 
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. Sie haben Visual Studio verwendet, um die Data Factory, verknüpfte Dienste, Datasets und eine Pipeline zu erstellen. Im Anschluss sind die allgemeinen Schritte aufgeführt, die Sie in diesem Tutorial ausgeführt haben:  
@@ -352,7 +369,6 @@ In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus 
 3. Sie haben **Datasets**erstellt, mit denen Eingabedaten und Ausgabedaten für Pipelines beschrieben werden.
 4. Sie haben eine **Pipeline** mit einer **Kopieraktivität**, mit **BlobSource** als Quelle und mit **qlSink** als Senke erstellt. 
 
-## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Transformieren von Daten durch eine HDInsight-Hive-Aktivität mithilfe eines Azure HDInsight-Clusters finden Sie im [Tutorial: Erstellen der ersten Pipeline zum Transformieren von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
 
 Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
@@ -366,7 +382,8 @@ In diesem Abschnitt wird beschrieben, wie mithilfe des Server-Explorer in Visual
     ![Server-Explorer](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
 
 ## <a name="create-a-visual-studio-project-for-an-existing-data-factory"></a>Erstellen eines Visual Studio-Projekts für eine vorhandene Data Factory
-3. Durch Klicken mit der rechten Maustaste auf eine Data Factory im Server-Explorer und Auswählen von „Data Factory in neues Projekt exportieren“ können Sie anhand einer vorhandenen Data Factory ein Visual Studio-Projekt erstellen.
+
+- Klicken Sie mit der rechten Maustaste auf eine Data Factory im Server-Explorer, und wählen Sie **Data Factory in neues Projekt exportieren** aus, um anhand einer vorhandenen Data Factory ein Visual Studio-Projekt zu erstellen.
 
     ![Exportieren einer Data Factory in ein Visual Studio-Projekt](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
 
@@ -495,4 +512,4 @@ In diesem Tutorial haben Sie Azure Blob Storage als Quelldatenspeicher und Azure
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-Um weitere Informationen zu Feldern bzw. Eigenschaften zu erhalten, die im Kopier-Assistenten für einen Datenspeicher angezeigt werden, klicken Sie auf den Link für den Datenspeicher in der Tabelle.
+Um weitere Informationen zum Kopieren von Daten in einen bzw. aus einem Datenspeicher zu erhalten, klicken Sie in der Tabelle auf den Link für den Datenspeicher.

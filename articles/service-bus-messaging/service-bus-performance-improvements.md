@@ -12,17 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
+ms.date: 05/10/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: a9fd01e533f4ab76a68ec853a645941eff43dbfd
-ms.openlocfilehash: d077099a9fdc50cf78157bcb7f28d1d28583bea1
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: e6a0e480f7748f12f5e566cf4059b5b2c4242c09
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
-In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Service Bus Messaging](https://azure.microsoft.com/services/service-bus/) die Leistung beim Austausch von Brokernachrichten optimieren. Der erste Teil befasst sich mit den verschiedenen Mechanismen zur Leistungssteigerung. Der zweite Teil bietet eine Anleitung zur Verwendung von Service Bus auf eine Weise, die die beste Leistung in einem bestimmten Szenario ermöglichen kann.
+
+In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Service Bus-Messaging](https://azure.microsoft.com/services/service-bus/) die Leistung beim Austausch von Brokernachrichten optimieren. Der erste Teil befasst sich mit den verschiedenen Mechanismen zur Leistungssteigerung. Der zweite Teil bietet eine Anleitung zur Verwendung von Service Bus auf eine Weise, die die beste Leistung in einem bestimmten Szenario ermöglichen kann.
 
 Im Rahmen dieses Themas bezieht sich der Begriff „Client“ auf eine Entität, die auf Service Bus zugreift. Ein Client kann die Rolle eines Absenders oder eines Empfängers annehmen. Der Begriff „Absender“ wird für einen Service Bus-Warteschlangenclient oder für einen Service Bus-Themenclient verwendet, der Nachrichten an eine Service Bus-Warteschlange oder an ein Service Bus-Thema sendet. Der Begriff „Empfänger“ bezieht sich auf einen Service Bus-Warteschlangenclient oder einen auf einen Service Bus-Abonnementclient, der Nachrichten von einer Service Bus-Warteschlange oder einem Service Bus-Abonnement empfängt.
 
@@ -130,7 +132,8 @@ Die Eigenschaft für die Gültigkeitsdauer (Time-to-Live, TTL) einer Nachricht w
 Der Vorabruf wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll verfügbar. Das HTTP-Protokoll unterstützt keinen Vorabruf. Vorabrufe sind für synchrone und asynchrone Empfangsvorgänge verfügbar.
 
 ## <a name="express-queues-and-topics"></a>Express-Warteschlangen und -Themen
-Express-Entitäten ermöglichen Szenarien mit hohem Durchsatz und reduzierter Latenz. Wenn bei Express-Entitäten eine Nachricht an eine Warteschlange oder an ein Thema gesendet wird, wird sie nicht sofort im Messagingspeicher gespeichert. Stattdessen wird sie im Arbeitsspeicher zwischengespeichert. Wenn eine Nachricht mehr als ein paar Sekunden in der Warteschlange bleibt, wird sie automatisch in einen stabilen Speicher geschrieben und so vor Datenverlusten aufgrund eines Ausfalls geschützt. Das Schreiben der Nachricht in einen Speichercache erhöht den Durchsatz und verringert die Latenz, da zu dem Zeitpunkt, zu dem die Nachricht gesendet wird, kein Zugriff auf den stabilen Speicher erfolgt. Nachrichten, die innerhalb weniger Sekunden genutzt werden, werden nicht in den Messagingspeicher geschrieben. Das folgende Beispiel erstellt ein Express-Thema.
+
+Expressentitäten ermöglichen Szenarien mit einem hohen Durchsatz und reduzierter Latenz und werden nur im Standard-Messaging-Tarif unterstützt. Entitäten, die in [Premium-Namespaces](service-bus-premium-messaging.md) erstellt wurden, unterstützen die Expressoption nicht. Wenn bei Express-Entitäten eine Nachricht an eine Warteschlange oder an ein Thema gesendet wird, wird sie nicht sofort im Messagingspeicher gespeichert. Stattdessen wird sie im Arbeitsspeicher zwischengespeichert. Wenn eine Nachricht mehr als ein paar Sekunden in der Warteschlange bleibt, wird sie automatisch in einen stabilen Speicher geschrieben und so vor Datenverlusten aufgrund eines Ausfalls geschützt. Das Schreiben der Nachricht in einen Speichercache erhöht den Durchsatz und verringert die Latenz, da zu dem Zeitpunkt, zu dem die Nachricht gesendet wird, kein Zugriff auf den stabilen Speicher erfolgt. Nachrichten, die innerhalb weniger Sekunden genutzt werden, werden nicht in den Messagingspeicher geschrieben. Das folgende Beispiel erstellt ein Express-Thema.
 
 ```csharp
 TopicDescription td = new TopicDescription(TopicName);
@@ -141,7 +144,7 @@ namespaceManager.CreateTopic(td);
 Wenn eine Nachricht, die wichtige Informationen enthält, die nicht verloren gehen dürfen, an eine Express-Entität gesendet wird, kann der Absender in Service Bus erzwingen, dass die Nachricht sofort in den stabilen Speicher übertragen wird, indem die Eigenschaft [ForcePersistence][ForcePersistence] auf **TRUE** festgelegt wird.
 
 > [!NOTE]
-> Beachten Sie, dass Expressentitäten keine Transaktionen unterstützen.
+> Expressentitäten unterstützen keine Transaktionen.
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>Verwenden partitionierter Warteschlangen oder Themen
 Intern verwendet Service Bus den gleichen Knoten und den gleichen Messagingspeicher, um sämtliche Nachrichten für eine Messagingentität (Warteschlange oder Thema) zu verarbeiten und zu speichern. Partitionierte Warteschlangen oder Themen sind hingegen auf mehrere Knoten und Messagingspeicher verteilt. Sie bieten einen höheren Durchsatz als reguläre Warteschlangen und Themen und zeichnen sich zudem durch eine höhere Verfügbarkeit aus. Um eine partitionierte Entität zu erstellen, legen Sie die [EnablePartitioning][EnablePartitioning]-Eigenschaft auf **TRUE** fest, wie im folgenden Beispiel gezeigt. Weitere Informationen zu partitionierten Entitäten finden Sie unter [Partitionierte Messagingentitäten][Partitioned messaging entities].
@@ -252,12 +255,12 @@ Weitere Informationen zum Optimieren der Service Bus-Leistung finden Sie unter [
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [PeekLock]: /dotnet/api/microsoft.servicebus.messaging.receivemode
 [ReceiveAndDelete]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.netmessagingtransportsettings#Microsoft_ServiceBus_Messaging_NetMessagingTransportSettings_BatchFlushInterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableBatchedOperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_PrefetchCount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_PrefetchCount
-[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ForcePersistence
-[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
+[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.netmessagingtransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_NetMessagingTransportSettings_BatchFlushInterval
+[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations#Microsoft_ServiceBus_Messaging_QueueDescription_EnableBatchedOperations
+[QueueClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount#Microsoft_ServiceBus_Messaging_QueueClient_PrefetchCount
+[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount#Microsoft_ServiceBus_Messaging_SubscriptionClient_PrefetchCount
+[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence#Microsoft_ServiceBus_Messaging_BrokeredMessage_ForcePersistence
+[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription#Microsoft_ServiceBus_Messaging_TopicDescription_EnableFilteringMessagesBeforePublishing
+[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing#Microsoft_ServiceBus_Messaging_TopicDescription_EnableFilteringMessagesBeforePublishing
 

@@ -7,9 +7,9 @@ Es gibt zwei Arten von Microsoft Azure Platform-Ereignissen, die sich auf die Ve
 Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, sollten Sie die folgenden bewährten Methoden befolgen, um die hohe Verfügbarkeit virtueller Computer zu gewährleisten:
 
 * [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]
+* [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]
 * [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]
 * [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]
-* [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]
 
 ## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz
 Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die von der Azure-SLA zugesicherte Verfügbarkeit von 99,95 Prozent eingehalten wird. Weitere Informationen finden Sie unter [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
@@ -24,9 +24,23 @@ Mit Fehlerdomänen wird die Gruppe der virtuellen Computer definiert, die eine S
 <!--Image reference-->
    ![Schematische Darstellung der Konfiguration mit Updatedomäne und Fehlerdomäne](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
-### <a name="managed-disk-fault-domains-and-availability-sets"></a>Fehlerdomänen und Verfügbarkeitsgruppen für verwaltete Datenträger
-Virtuelle Computer mit [Azure Managed Disks](../articles/storage/storage-faq-for-disks.md) werden bei Verwendung einer verwalteten Verfügbarkeitsgruppe auf Fehlerdomänen für verwaltete Datenträger ausgerichtet. Diese Ausrichtung stellt sicher, dass sich alle verwalteten, an einen virtuellen Computer angefügten Datenträger innerhalb der gleichen Fehlerdomäne für verwaltete Datenträger befinden. Nur virtuelle Computer mit verwalteten Datenträgern können in einer verwalteten Verfügbarkeitsgruppe erstellt werden. Die Anzahl der Fehlerdomänen für verwaltete Datenträger variiert je nach Region – pro Region sind entweder zwei oder drei Fehlerdomänen für verwaltete Datenträger vorhanden.
+## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe
+Falls Sie derzeit VMs mit nicht verwalteten Datenträgern verwenden, empfehlen wir Ihnen dringend, [VMs in der Verfügbarkeitsgruppe für die Verwendung von Managed Disks zu konvertieren](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set).
 
+[Managed Disks](../articles/storage/storage-managed-disks-overview.md) ermöglicht eine bessere Zuverlässigkeit für Verfügbarkeitsgruppen, indem sichergestellt wird, dass die Datenträger von VMs in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Hierzu werden die Datenträger automatisch in verschiedenen Speicherclustern angeordnet. Wenn ein Speichercluster aufgrund eines Hardware- oder Softwarefehlers ausfällt, treten nur für die VM-Instanzen mit Datenträgern auf diesen Stamps Fehler auf. 
+
+![Fehlerdomänen für verwaltete Datenträger](./media/virtual-machines-common-manage-availability/md-fd.png)
+
+> [!IMPORTANT]
+> Die Anzahl von Fehlerdomänen für verwaltete Verfügbarkeitsgruppen variieren je nach Region: zwei oder drei pro Region. In der folgenden Tabelle ist die Anzahl pro Region aufgeführt:
+
+[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
+
+Gehen Sie wie folgt vor, wenn Sie planen, VMs mit [nicht verwalteten Datenträgern](../articles/storage/storage-about-disks-and-vhds-windows.md#types-of-disks) zu verwenden: Halten Sie sich an die unten angegebenen bewährten Methoden für Storage-Konten, bei denen virtuelle Festplatten (VHDs) von VMs als [Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) gespeichert werden. 
+
+1. **Alle Datenträger (Betriebssystem und Daten) müssen einem virtuellen Computer im selben Speicherkonto zugeordnet sein**
+2. **Überprüfen Sie die [Grenzwerte](../articles/storage/storage-scalability-targets.md) für die Anzahl von nicht verwalteten Datenträgern eines Storage-Kontos**, bevor Sie einem Speicherkonto weitere VHDs hinzufügen.
+3. **Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe.** Geben Sie Storage-Konten mit mehreren VMs in derselben Verfügbarkeitsgruppe nicht für die gemeinsame Nutzung frei. Für VMs, die über verschiedene Verfügbarkeitsgruppen verteilt sind, können Speicherkonten freigegeben werden, solange die oben genannten bewährten Methoden befolgt werden.
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen
 Wenn Ihre virtuellen Computer fast alle identisch sind und die Anwendung auf die gleiche Weise unterstützen, wird empfohlen, für jede einzelne Anwendungsebene eine Verfügbarkeitsgruppe zu konfigurieren.  Wenn Sie eine Verfügbarkeitsgruppe mit zwei verschiedenen Ebenen anlegen, können alle virtuellen Computer derselben Anwendungsebene zur gleichen Zeit neu gestartet werden. Indem Sie mindestens zwei virtuelle Computer in einer Verfügbarkeitsgruppe für jede Ebene konfigurieren, gewährleisten Sie, dass mindestens ein virtueller Computer pro Ebene verfügbar ist.
@@ -41,21 +55,11 @@ Kombinieren Sie den Azure-Lastenausgleich ( [Azure Load Balancer](../articles/lo
 
 Wenn der Lastenausgleich nicht für die gleichmäßige Verteilung des Datenverkehrs auf mehrere virtuelle Computer konfiguriert ist, wirkt sich ein geplantes Wartungsereignis schließlich auf den einzigen virtuellen Computer, der den Datenverkehr aufrechterhält, aus und führt zu einem Ausfall der Anwendungsebene. Werden dagegen mehrere virtuelle Computer derselben Ebene demselben Lastenausgleich und derselben Verfügbarkeitsgruppe zugeordnet, wird der Datenverkehr kontinuierlich von mindestens einer Instanz aufrechterhalten.
 
-## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe
-Falls Sie derzeit VMs mit nicht verwalteten Datenträgern verwenden, empfehlen wir Ihnen dringend, [VMs in der Verfügbarkeitsgruppe für die Verwendung von Managed Disks zu konvertieren](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md#convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set).
-
-[Managed Disks](../articles/storage/storage-managed-disks-overview.md) ermöglicht eine bessere Zuverlässigkeit für Verfügbarkeitsgruppen, indem sichergestellt wird, dass die Datenträger von VMs in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Hierzu werden die Datenträger automatisch in verschiedenen Speicherskalierungseinheiten („Stamps“) angeordnet. Wenn ein Stamp aufgrund eines Hardware- oder Softwarefehlers ausfällt, treten nur für die VM-Instanzen mit Datenträgern auf diesen Stamps Fehler auf. 
-
-Gehen Sie wie folgt vor, wenn Sie planen, VMs mit [nicht verwalteten Datenträgern](../articles/storage/storage-about-disks-and-vhds-windows.md#types-of-disks) zu verwenden: Halten Sie sich an die unten angegebenen bewährten Methoden für Storage-Konten, bei denen virtuelle Festplatten (VHDs) von VMs als [Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) gespeichert werden. 
-
-1. **Alle Datenträger (Betriebssystem und Daten) müssen einem virtuellen Computer im selben Speicherkonto zugeordnet sein**
-2. **Überprüfen Sie die [Grenzwerte](../articles/storage/storage-scalability-targets.md) für die Anzahl von nicht verwalteten Datenträgern eines Storage-Kontos**, bevor Sie einem Speicherkonto weitere VHDs hinzufügen.
-3. **Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe.** Geben Sie Storage-Konten mit mehreren VMs in derselben Verfügbarkeitsgruppe nicht für die gemeinsame Nutzung frei. Für VMs, die über verschiedene Verfügbarkeitsgruppen verteilt sind, können Speicherkonten freigegeben werden, solange die oben genannten bewährten Methoden befolgt werden.
 
 <!-- Link references -->
 [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
 [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]: #configure-each-application-tier-into-separate-availability-sets
 [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]: #combine-a-load-balancer-with-availability-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
-[Use Managed Disks for VMs in Availability Set]: #use-managed-disks-for-vms-in-availability-set
+[Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]: #use-managed-disks-for-vms-in-an-availability-set
 

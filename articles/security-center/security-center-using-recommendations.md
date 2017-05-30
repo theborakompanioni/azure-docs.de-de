@@ -1,6 +1,6 @@
 ---
 title: "Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit | Microsoft-Dokumentation"
-description: " Erfahren Sie, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Azure Security Center Sicherheitsangriffe abgewehrt werden können.. "
+description: " Erfahren Sie, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Azure Security Center Sicherheitsangriffe abgewehrt werden können. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 313801fc3b845cd30506b1a26918660e77d2a986
-ms.openlocfilehash: 67095e0d8752fb3a2bca692f65e77cde5fd1a966
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 36dd149812a0e8c8ca8ef2bac09c1920ec15d3ba
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -75,7 +77,7 @@ Jeff meldet sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-
 
 1. Jeff wählt die Kachel **Empfehlungen** aus, um das Blatt **Empfehlungen** zu öffnen.
    ![Auswählen der Kachel „Empfehlungen“][3]
-2. Jeff überprüft die Liste der Empfehlungen. Er sieht, dass Security Center die Liste der Empfehlungen nach Priorität (von der höchsten zur niedrigsten) bereitstellt. Es beschließt, sich mit der ersten Empfehlung mit der Priorität „Hoch“ in der Liste zu beschäftigen. Er wählt auf dem Blatt **Empfehlungen** die Option **Endpoint Protection installieren** aus.
+2. Jeff überprüft die Liste der Empfehlungen. Er sieht, dass Security Center die Liste der Empfehlungen nach Priorität (von der höchsten zur niedrigsten) bereitstellt. Er beschließt, sich mit der Empfehlung mit der Priorität „Hoch“ in der Liste zu beschäftigen. Er wählt auf dem Blatt **Empfehlungen** die Option **Endpoint Protection installieren** aus.
 3. Das Blatt **Endpoint Protection installieren** wird mit einer Liste virtueller Computer geöffnet, für die keine Antischadsoftware aktiviert ist. Jeff prüft die Liste der VMs. Er wählt alle VMs und dann **Auf 3 VMs installieren** aus.
    ![Endpoint Protection installieren][4]
 4. Das Blatt **Endpoint Protection auswählen** wird geöffnet und stellt Jeff zwei Antischadsoftwarelösungen zur Auswahl. Jeff wählt die Lösung **Microsoft Antimalware** aus.
@@ -114,9 +116,4 @@ Das Überwachen von Empfehlungen in Security Center kann helfen, Sicherheitsrisi
 [5]:./media/security-center-using-recommendations/microsoft-antimalware.png
 [6]: ./media/security-center-using-recommendations/provide-security-contact-details.png
 [7]: ./media/security-center-using-recommendations/dismiss-recommendation.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

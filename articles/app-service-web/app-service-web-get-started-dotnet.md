@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 773d616b2a5815158971d63d005fae605450ac98
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 018a46452c13886b9519ed5d2311bc65649c3c69
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -87,27 +87,15 @@ Nennen Sie Ihre Ressourcengruppe **myResourceGroup**, und klicken Sie anschließ
 
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
-Ihre Azure Web-App benötigt außerdem einen _App Service-Plan_. 
-
-> [!NOTE]
-> Ein App Service-Plan stellt die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Apps teilen sich die durch den Plan definierten Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten. 
->
-> In App Service-Plänen wird Folgendes definiert:
->
-> - Region („Europa, Norden“, „USA, Osten“, „Asien, Südosten“)
-> - Instanzgröße (klein, mittel, groß)
-> - Skalierung (Instanzenanzahl) 
-> - SKU (Free, Shared, Basic, Standard, Premium)
->
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 Klicken Sie neben **App Service-Plan** auf **Neu**. 
 
 Konfigurieren Sie den neuen App Service-Plan im Dialogfeld **App Service-Plan konfigurieren** mit den folgenden Einstellungen:
 
 - **App Service-Plan**: Geben Sie **myAppServicePlan** ein. 
-- **Standort**: Wählen Sie **Europa, Westen** oder eine beliebige andere Region aus.
-- **Größe**: Wählen Sie **Free** oder einen beliebigen anderen [Tarif](https://azure.microsoft.com/pricing/details/app-service/) aus.
+- **Standort**: Wählen Sie **Europa, Westen** oder eine Region in Ihrer Nähe aus.
+- **Größe**: Wählen Sie **Free** oder einen anderen [Tarif](https://azure.microsoft.com/pricing/details/app-service/) aus.
 
 Klicken Sie auf **OK**.
 

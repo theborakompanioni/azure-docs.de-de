@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/25/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: e6cf8797d08609f847e33f88e78fbcd3f3743a08
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 42fabff59577db5feb98e5c03d7a2b6d3d2461c3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -29,15 +29,11 @@ Erfahren Sie, wie Sie eine Funktion erstellen, die ausgelöst wird, wenn Meldung
 
 ![Zeigen Sie die Meldung in den Protokollen an.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
-Für die Schritte in diesem Thema werden in der Regel weniger als fünf Minuten benötigt.
-
 ## <a name="prerequisites"></a>Voraussetzungen
-
-Vor dem Ausführen dieses Beispiels müssen folgende Schritte ausgeführt worden sein:
 
 - Laden Sie den [Microsoft Azure Storage Explorer](http://storageexplorer.com/) herunter, und installieren Sie ihn.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Sie benötigen ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial von Azure Cosmos DB: Erstellen, Abfragen und Traversieren in der Gremlin-Konsole | Microsoft-Dokumentation'
+title: 'Tutorial von Azure Cosmos DB: Erstellen, Abfragen und Traversieren in der Apache TinkerPops Gremlin-Konsole | Microsoft-Dokumentation'
 description: Schnellstart von Azure Cosmos DB zum Erstellen von Scheitelpunkten, Kanten und Abfragen mit der Graph-API von Azure Cosmos DB
 services: cosmosdb
 author: AndrewHoh
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/19/2017
 ms.author: anhoh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fb27ba1a70959ba92fbd021e9e42438081000e45
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: caf3b69b25ccd15322054a0bbf95fc2a5816e00a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/20/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
-In diesem Schnellstart wird veranschaulicht, wie Sie ein Konto, eine Datenbank und einen Graph (Container) in Azure Cosmos DB mithilfe des Azure-Portals erstellen und anschließend mit Daten der Graph-API (Vorschau) in der [Gremlin-Konsole](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) arbeiten können. In diesem Tutorial erstellen Sie Scheitelpunkte und Kanten und fragen diese ab. Außerdem führen Sie eine Aktualisierung einer Scheitelpunkteigenschaft durch sowie eine Abfrage von Scheitelpunkten, eine Übertragung eines Graphs und das Löschen eines Scheitelpunkts.
+In diesem Schnellstart wird veranschaulicht, wie Sie ein Konto, eine Datenbank und einen Graph (Container) in Azure Cosmos DB mithilfe des Azure-Portals erstellen und anschließend mit Daten der Graph-API (Vorschauversion) in der [Gremlin-Konsole](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) von [Apache TinkerPop](http://tinkerpop.apache.org) arbeiten können. In diesem Tutorial erstellen Sie Scheitelpunkte und Kanten und fragen diese ab. Außerdem führen Sie eine Aktualisierung einer Scheitelpunkteigenschaft durch sowie eine Abfrage von Scheitelpunkten, eine Übertragung eines Graphs und das Löschen eines Scheitelpunkts.
 
 ![Azure Cosmos DB in der Gremlin-Konsole von Apache](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -55,7 +55,7 @@ Außerdem müssen Sie die [Gremlin-Konsole](http://tinkerpop.apache.org/) instal
     ---|---|---
     Host|***.graphs.azure.com|Ihr URI des Graph-Dienst, den Sie aus dem Azure-Portal abrufen können
     Port|443|Auf 443 festlegen
-    Benutzername|*Ihr Benutzername*|Die Ressource in der Form `/dbs/<db>/colls/<coll>`
+    Benutzername|*Ihr Benutzername*|Die Ressource in der Form `/dbs/<db>/colls/<coll>`.
     Kennwort|*Ihr primärer Hauptschlüssel*|Ihr primärer Hauptschlüssel für Azure Cosmos DB
     ConnectionPool|{enableSsl: true}|Die Verbindungspooleinstellung für SSL
     serializer|{ className:org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Auf diesen Wert festlegen
@@ -268,5 +268,4 @@ Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem
 In diesem Schnellstart haben Sie erfahren, wie Sie ein Konto für Azure Cosmos DB und einen Graph mit dem Daten-Explorer erstellen können. Außerdem wissen Sie nun, wie Sie Scheitelpunkte und Kanten erstellen können, und wie Sie den Graph mit der Gremlin-Konsole traversieren können. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Graphen mit Gremlin implementieren. 
 
 > [!div class="nextstepaction"]
-> [Abfragen mithilfe von Gremlin](tutorial-query-graph.md)
-
+> [Query using Gremlin (Abfragen mithilfe von Gremlin)](tutorial-query-graph.md)

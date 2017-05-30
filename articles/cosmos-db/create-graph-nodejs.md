@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/13/2017
+ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: d8a6a183d1acd7a06683ec2e402bd866cb5195f4
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 5c996068ff5fbadda6730244c34c0d0d1f8fb447
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -27,7 +27,11 @@ ms.lasthandoff: 05/15/2017
 
 Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
-Dieser Schnellstart veranschaulicht, wie Sie ein Azure Cosmos DB-Konto für die Graph-API (Vorschau), eine Datenbank und einen Graph mithilfe des Azure-Portals erstellen können. Anschließend erstellen Sie eine Konsolenanwendung mithilfe des Treibers [Gremlin Node.js](https://aka.ms/gremlin-node) und führen diese aus.  
+Dieser Schnellstart veranschaulicht, wie Sie ein Azure Cosmos DB-Konto für die Graph-API (Vorschau), eine Datenbank und einen Graph mithilfe des Azure-Portals erstellen können. Anschließend erstellen Sie eine Konsolenanwendung mithilfe des Treibers [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) und führen diese aus.  
+
+> [!NOTE]
+> Das NPM-Modul `gremlin-secure` ist eine modifizierte Version des `gremlin`-Moduls mit Unterstützung für SSL und SASL, die beide für die Verbindungsherstellung mit Azure Cosmos DB erforderlich sind. Der Quellcode steht auf [GitHub](https://github.com/CosmosDB/gremlin-javascript) zur Verfügung.
+>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -61,21 +65,23 @@ Klonen Sie jetzt eine Graph-API-App aus GitHub, legen Sie die Verbindungszeichen
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Datei `app.js`. Dort finden Sie folgende Codezeilen.
+Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Datei `app.js`. Dort finden Sie folgende Codezeilen. 
 
 * Der Gremlin-Client wird erstellt.
 
     ```nodejs
     const client = Gremlin.createClient(
         443, 
-        "https://<fillme>.graphs.azure.com", 
+        config.endpoint, 
         { 
             "session": false, 
             "ssl": true, 
-            "user": "/dbs/<db>/colls/<coll>",
-            "password": "<authKey>"
+            "user": `/dbs/${config.database}/colls/${config.collection}`,
+            "password": config.primaryKey
         });
     ```
+
+Die Konfigurationen befinden sich alle in `config.js`. Diese Datei wird im folgenden Abschnitt bearbeitet.
 
 * Es werden einige Schritte mit Gremlin mithilfe der `client.execute`-Methode ausgeführt.
 
@@ -96,25 +102,37 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“](./media/create-documentdb-dotnet/keys.png)
 
-2. Kopieren Sie den URI-Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in „config.js“ als Wert des Schlüssels „config.endpoint“ fest.
+2. Kopieren Sie den Gremlin-URI-Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in „config.js“ als Wert des Schlüssels `config.endpoint` fest. Als Gremlin-Endpunkt muss nur der Hostname ohne Protokoll/Portnummer wie beispielsweise `mygraphdb.graphs.azure.com` (NICHT `https://mygraphdb.graphs.azure.com` oder `mygraphdb.graphs.azure.com:433`) angegeben werden.
 
     `config.endpoint = "GRAPHENDPOINT";`
 
-3. Ersetzen Sie den Teil „documents.azure.com“ des URI durch „graphs.azure.com“.
-
-4. Kopieren Sie anschließend den Wert für PRIMARY KEY aus dem Portal, und legen Sie ihn in „config.js“ als Wert für „config.primaryKey“ fest. Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
+3. Kopieren Sie anschließend den Wert für PRIMARY KEY aus dem Portal, und legen Sie ihn in „config.js“ als Wert für „config.primaryKey“ fest. Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
 
     `config.primaryKey = "PRIMARYKEY";`
+
+4. Geben Sie den Datenbanknamen und den Graphnamen (Container) für den Wert von „config.database“ und „config.collection“ ein. 
+
+Hier sehen Sie ein Beispiel dafür, wie Ihre fertige Datei „config.js“ aussehen sollte:
+
+```nodejs
+var config = {}
+
+// Note that this must not have HTTPS or the port number
+config.endpoint = "mygraphdb.graphs.azure.com";
+config.primaryKey = "OjlhK6tjxfSXyKtrmCiM9O6gQQgu5DmgAoauzD1PdPIq1LZJmILTarHvrolyUYOB0whGQ4j21rdAFwoYep7Kkw==";
+config.database = "graphdb"
+config.collection = "Persons"
+
+module.exports = config;
+```
 
 ## <a name="run-the-console-app"></a>Ausführen der Konsolenanwendung
 
 1. Öffnen Sie ein Terminalfenster und wechseln Sie mit `cd` zu einem Installationsverzeichnis für die package.json-Datei, die im Projekt enthalten ist.  
 
-2. Führen Sie `npm install gremlin` aus, um erforderliche NPM-Module zu installieren.
+2. Führen Sie `npm install` aus, um erforderliche NPM-Module zu installieren. Dies beinhaltet `gremlin-secure`.
 
-3. Ersetzen Sie den Inhalt des Ordners `node_modules\gremlin` durch den Quellcode aus der [Gremlin-Verzweigung von Cosmos DB](https://github.com/CosmosDB/gremlin-javascript), die über Unterstützung für SSL und SASL verfügt. SSL und SASL sind für Azure Cosmos DB erforderlich, werden im Moment aber noch nicht vom Treiber unterstützt (dies ist vorübergehend, bis die Änderungen im Treiber akzeptiert werden).
-
-4. Führen Sie `node app.js` in einem Terminal aus, um Ihre Node-Anwendung zu starten.
+3. Führen Sie `node app.js` in einem Terminal aus, um Ihre Node-Anwendung zu starten.
 
 Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeigen, abzufragen, anzupassen und mit ihnen zu arbeiten. 
 

@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 95691b6e59f5e21e7c6cff9f4222bcffade57973
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 9d788bf8e41fe225a4c24a4f5b464e8664f3d677
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -37,6 +37,8 @@ Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktiv
 
 > [!NOTE]
 > In diesem Tutorial wird nicht veranschaulicht, wie Sie Daten mit Azure Data Factory kopieren. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> 
+> Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Planung und Ausführung in einer Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 
 ## <a name="walkthrough-create-and-publish-data-factory-entities"></a>Exemplarische Vorgehensweise: Erstellen und Veröffentlichen von Data Factory-Entitäten
@@ -55,8 +57,8 @@ Hier sind die Schritte angegeben, die Sie im Rahmen dieser exemplarischen Vorgeh
 5. Nach der Veröffentlichung verwenden Sie die Blätter im Azure-Portal und die App für die Überwachung und Verwaltung, um die Pipeline zu überwachen. 
   
 ### <a name="prerequisites"></a>Voraussetzungen
-1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind. Sie können auch oben in der Dropdownliste die Option **Übersicht und Voraussetzungen** wählen, um zum Artikel zu wechseln. Nachdem Sie alle Voraussetzungen erfüllt haben, können Sie zurück zu diesem Artikel wechseln, indem Sie in der Dropdownliste die Option **Visual Studio** wählen.  
-2. Data Factory-Entitäten in Visual Studio können nur von einem **Administrator des Azure-Abonnements** für Azure Data Factory veröffentlicht werden. 
+1. Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind. Sie können auch oben in der Dropdownliste die Option **Übersicht und Voraussetzungen** wählen, um zum Artikel zu wechseln. Nachdem Sie alle Voraussetzungen erfüllt haben, können Sie zurück zu diesem Artikel wechseln, indem Sie in der Dropdownliste die Option **Visual Studio** wählen.
+2. Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.  
 3. Folgendes muss auf Ihrem Computer installiert sein:
    * Visual Studio 2013 oder Visual Studio 2015
    * Laden Sie das Azure-SDK für Visual Studio 2013 oder Visual Studio 2015 herunter. Navigieren Sie zur [Azure-Downloadseite](https://azure.microsoft.com/downloads/), und klicken Sie auf **VS 2013** oder **VS 2015** im Abschnitt **.NET**.
