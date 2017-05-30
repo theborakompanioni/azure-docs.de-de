@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 02/28/2017
 ms.author: jahogg
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 9da543dbebe8f35178233d91492b0aff21f10986
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5ddb234cc97b3113ec865f97195c871b9f2f40d3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure-Speichertabelle – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
-## <a name="overview"></a>Übersicht
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+
 Beim Entwurf von skalierbaren und leistungsfähigen Tabellen müssen Sie eine Reihe von Faktoren beachten, beispielsweise Leistung, Skalierbarkeit und Kosten. Wenn Sie früher schon Schemas für relationale Datenbanken entworfen haben, werden Sie mit diesen Überlegungen vertraut sein. Aber trotz einigen Ähnlichkeiten zwischen dem Modell des Azure-Tabellenspeicherdienstes und relationalen Modellen gibt es auch viele wichtige Unterschiede. Diese Unterschiede führen in der Regel zu sehr unterschiedlichen Entwürfen, die einer mit relationalen Datenbanken vertrauten Person kontraproduktiv oder falsch erscheinen, aber sinnvoll sind, wenn Sie einen Entwurf für einen NoSQL-Schlüssel-Wert-Speicher wie z. B. den Azure-Tabellenspeicherdienst durchführen. Viele der Unterschiede zu Ihrem Entwurf spiegeln die Tatsache wider, dass der Tabellenspeicherdienst zur Unterstützung von Cloudanwendungen konzipiert ist, die Milliarden von Entitäten (Zeilen in der Terminologie für relationale Datenbanken) aus Daten oder Datensätzen beinhalten und die sehr hohe Transaktionsvolumen unterstützen müssen. Aus diesem Grund müssen Sie andere Überlegungen anstellen, wie Sie Ihre Daten speichern, und verstehen, wie der Tabellenspeicherdienst funktioniert. Ein gut konzipierter NoSQL-Datenspeicher kann bei Ihrer Lösung eine viel tiefere Skalierung ermöglichen (und zu geringeren Kosten), als dies bei einer Lösung möglich ist, die eine relationale Datenbank verwendet. Dieses Handbuch unterstützt Sie bei folgenden Themen.  
 
 ## <a name="about-the-azure-table-service"></a>Informationen zum Azure-Tabellenspeicherdienst
@@ -164,7 +166,7 @@ Tabellenspeicher ist relativ günstig, aber Sie sollten die Kostenschätzungen f
 ## <a name="guidelines-for-table-design"></a>Richtlinien für den Entwurf von Tabellen
 In diesen Listen werden einige der wichtigsten Richtlinien zusammengefasst, die Sie beim Entwerfen von Tabellen berücksichtigten sollten. Diese werden weiter unten in diesem Handbuch ausführlicher behandelt. Diese Richtlinien unterscheiden sich stark von den Richtlinien, die in der Regel für das Entwerfen relationaler Datenbanken befolgt werden.  
 
-So entwerfen Sie Ihre Tabellenspeicherdienstlösung für größtmögliche Effizienz von *Lesevorgängen* :
+So entwerfen Sie Ihre Tabellenspeicherdienstlösung für größtmögliche Effizienz von *Lesevorgängen*:
 
 * ***Legen Sie den Entwurf für Abfragen in leseintensiven Anwendungen aus.*** Bedenken Sie beim Entwerfen von Tabellen die Abfragen (insbesondere Abfragen mit sensiblem Latenzverhalten), die Sie ausführen werden, bevor Sie überlegen, wie die Entitäten aktualisiert werden sollen. Dies führt in der Regel zu einer effizienten und leistungsstarken Lösung.  
 * ***Geben Sie „PartitionKey“ und „RowKey“ in den Abfragen an.*** *Punktabfragen* wie diese sind die effizientesten Tabellenspeicherdienst-Abfragen.  
@@ -261,7 +263,7 @@ Viele Anwendungen verfügen über Anforderungen für die Verwendung von Daten, d
 
 * [Sekundäres Indexmuster für Intra-Partition](#intra-partition-secondary-index-pattern) – Speichern mehrerer Kopien jeder Entität mit unterschiedlichen RowKey-Werten (in derselben Partition) zur Aktivierung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen RowKey-Werten.  
 * [Sekundäres Indexmuster für Inter-Partition](#inter-partition-secondary-index-pattern) – Speichern mehrerer Kopien der einzelnen Entitäten mit verschiedenen RowKey-Werten in separaten Partitionen in separaten Tabellen für schnelle und effiziente Suchvorgänge und alternative Sortierreihenfolgen mit verschiedenen RowKey-Werten.
-* [Log Tail-Muster](#log-tail-pattern) – Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey** -Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
+* [Log Tail-Muster](#log-tail-pattern) – Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey**-Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
 
 ## <a name="design-for-data-modification"></a>Entwurf für die Datenänderung
 Dieser Abschnitt konzentriert sich auf Gesichtspunkte zum Entwurf für die Optimierung von Einfügungen, Aktualisierungen und Löschungen. In einigen Fällen müssen Sie einen Kompromiss finden zwischen Entwürfen, die nach Abfragen optimiert sind und Entwürfen, die nach Datenänderung optimiert sind, so wie sie dies auch bei Entwürfen für relationale Datenbanken vornehmen (obwohl die Techniken für die Verwaltung von Entwurfskompromissen für eine relationale Datenbank unterschiedlich sind). Der Abschnitt [Entwurfsmuster für die Tabelle](#table-design-patterns) beschreibt einige detaillierte Entwurfsmuster für den Tabellenspeicherdienst und stellt einige dieser Kompromisse heraus. In der Praxis werden Sie feststellen, dass viele für Abfragen von Entitäten optimierte Entwürfe sich auch zum Ändern von Entitäten eignen.  
@@ -296,7 +298,7 @@ In vielen Fällen ergibt ein Entwurf für effiziente Abfragen effiziente Änderu
 Die folgenden Muster im Abschnitt [Entwurfsmuster für die Tabelle](#table-design-patterns) befassen sich mit den Kompromissen zwischen einem Entwurf für effiziente Abfragen und einem Entwurf für effiziente Datenänderung:  
 
 * [Zusammengesetzte Schlüsselmuster](#compound-key-pattern) – Verwenden Sie zusammengesetzte **RowKey** -Werte, damit der Client in der Lage ist, mit einer einzelnen Punktabfrage nach verknüpften Daten zu suchen.  
-* [Log Tail-Muster](#log-tail-pattern) – Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey** -Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
+* [Log Tail-Muster](#log-tail-pattern) – Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey**-Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
 
 ## <a name="encrypting-table-data"></a>Verschlüsseln von Tabellendaten
 Die .NET-Clientbibliothek für Azure Storage unterstützt die Verschlüsselung der Eigenschaften von Zeichenfolgenentitäten für Einfüge- und Ersetzungsvorgänge. Die verschlüsselten Zeichenfolgen werden als binäre Eigenschaften für den Dienst gespeichert, und sie werden nach der Entschlüsselung wieder in Zeichenfolgen konvertiert.    
@@ -718,7 +720,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 * [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Log Tail-Muster
-Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey** -Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
+Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey**-Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
 
 #### <a name="context-and-problem"></a>Kontext und Problem
 Eine gängige Anforderung ist, die zuletzt erstellten Entitäten abzurufen, z. B. die letzten zehn Kostenabrechnungen, die von einem Mitarbeiter übermittelt wurden. Tabellenabfragen unterstützen einen **$top**-Abfragevorgang, um die ersten *n* Entitäten einer Menge zurückzugeben. Es gibt keinen entsprechenden Abfragevorgang, mit dem die letzten n Entitäten einer Menge zurückgegeben werden können.  

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/17/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
-ms.openlocfilehash: e628143db9ceba5e159022d2eefe3e6dd9f4bf22
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0753be48514bd2087b52fc85d27754c28dbcd58b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -46,7 +47,7 @@ Weitere Informationen finden Sie im Artikel [Anwendungsmodell](service-fabric-ap
 
 Es gibt zwei Arten von Diensten:
 
-* **Zustandslos:** Verwenden Sie einen zustandslosen Dienst, wenn der persistente Zustand des Diensts in einem externen Speicherdienst wie Azure Storage, Azure SQL-Datenbank oder Azure DocumentDB gespeichert ist. Wenn der Dienst über keinen persistenten Speicher verfügt, verwenden Sie einen zustandslosen Dienst. Ein Beispiel hierfür ist ein Rechnerdienst, in dem Werte an den Dienst übergeben werden und eine Berechnung unter Verwendung dieser Werte ausgeführt und ein Ergebnis zurückgegeben wird.
+* **Zustandslos:** Verwenden Sie einen zustandslosen Dienst, wenn der persistente Zustand des Diensts in einem externen Speicherdienst wie Azure Storage, Azure SQL-Datenbank oder Azure Cosmos DB gespeichert ist. Wenn der Dienst über keinen persistenten Speicher verfügt, verwenden Sie einen zustandslosen Dienst. Ein Beispiel hierfür ist ein Rechnerdienst, in dem Werte an den Dienst übergeben werden und eine Berechnung unter Verwendung dieser Werte ausgeführt und ein Ergebnis zurückgegeben wird.
 * **Zustandsbehaftet:** Verwenden Sie einen zustandsbehafteten Dienst, wenn Service Fabric zur Verwaltung des Dienstzustands Programmiermodelle mit Reliable Collections oder Reliable Actors verwenden soll. Geben Sie (für die Skalierbarkeit) an, über wie viele Partitionen Sie Ihren Zustand verteilen möchten, wenn Sie einen benannten Dienst erstellen. Geben Sie auch (für die Zuverlässigkeit) an, wie viele Male Ihr Zustand über Knoten repliziert werden soll. Jeder benannte Dienst verfügt über ein einzelnes primäres Replikat und mehrere sekundäre Replikate. Sie ändern den Zustand Ihres benannten Diensts, indem Sie in das primäre Replikat schreiben. Service Fabric repliziert dann diesen Zustand an alle sekundären Replikate und hält so Ihren Zustand synchron. Service Fabric erkennt automatisch, wenn ein Fehler bei einem primären Replikat auftritt, und stuft ein vorhandenes sekundäres Replikat zum primären Replikat hoch. Service Fabric erstellt dann ein neues sekundäres Replikat.  
 
 **Dienstpaket:** Ein Datenträgerverzeichnis mit der Datei `ServiceManifest.xml` des Diensttyps. Diese Datei verweist auf den Code, die statischen Daten und die Konfigurationspakete für den Diensttyp. Auf die Dateien im Dienstpaketverzeichnis wird in der Datei `ApplicationManifest.xml` des Anwendungstyps verwiesen. Ein Dienstpaket kann beispielsweise auf den Code, die statischen Daten und die Konfigurationspakete verweisen, die zusammen einen Datenbankdienst bilden.

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 627f9dccb48712fced81f2c6dc694043f7162205
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5b5aa75756d2a7061d531d50a59a2c52dfb75cbe
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -333,7 +334,7 @@ Streaming-Job kann mehrere Ausgaben haben. Unterstützte Ausgaben: Azure Event H
             </td>
             <td width="246" valign="top">
                 <p>
-Unterstützung für viele Ausgaben in einer Topologie, jede Ausgabe kann eine benutzerdefinierte Logik für die Downstreamverarbeitung haben. Standardmäßig enthält Storm Connectors für PowerBI, Ereignis-Hubs von Azure, Azure-Blob-Speicher, Azure-DocumentDB, SQL und HBase. Nicht unterstützte Connectors können über benutzerdefinierten Code implementiert werden.
+Unterstützung für viele Ausgaben in einer Topologie, jede Ausgabe kann eine benutzerdefinierte Logik für die Downstreamverarbeitung haben. Standardmäßig enthält Storm Connectors für PowerBI, Azure Event Hubs, Azure-Blobspeicher, Azure Cosmos DB, SQL und HBase. Nicht unterstützte Connectors können über benutzerdefinierten Code implementiert werden.
                 </p>
             </td>
         </tr>
@@ -569,7 +570,7 @@ Referenzdaten von Azure-Blobs sind mit einer maximalen Größe von 100 MB des In
             </td>
             <td width="246" valign="top">
                 <p>
-Keine Beschränkungen für die Datengröße. Connectors sind für HBase, DocumentDB, SQL Server und Azure verfügbar. Nicht unterstützte Connectors können über benutzerdefinierten Code implementiert werden.
+Keine Beschränkungen für die Datengröße. Connectors sind für HBase, Azure Cosmos DB, SQL Server und Azure verfügbar. Nicht unterstützte Connectors können über benutzerdefinierten Code implementiert werden.
                 </p>
                 <p>
 Das Aktualisieren von Verweisdaten muss von benutzerdefiniertem Code behandelt werden.

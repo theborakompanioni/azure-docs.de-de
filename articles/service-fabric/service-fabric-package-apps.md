@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/24/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 15b6f6c85c5a5accbd31225c277de87346a2e16f
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f47fbe0e9c6cb4d09e6233f6d26211969a5c1f00
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/27/2017
 In diesem Artikel wird beschrieben, wie eine Service Fabric-Anwendung paketiert und für die Bereitstellung vorbereitet wird.
 
 ## <a name="package-layout"></a>Paketlayout
-Anwendungsmanifest, Dienstmanifeste und andere erforderliche Paketdateien müssen in einem bestimmten Layout für die Bereitstellung in einem Service Fabric-Cluster angeordnet werden. Die Beispielmanifeste in diesem Artikel müssen in der folgenden Verzeichnisstruktur angeordnet werden:
+Das Anwendungsmanifest, ein oder mehrere Dienstmanifeste und andere erforderliche Paketdateien müssen in einem bestimmten Layout für die Bereitstellung in einem Service Fabric-Cluster angeordnet werden. Die Beispielmanifeste in diesem Artikel müssen in der folgenden Verzeichnisstruktur angeordnet werden:
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -54,7 +55,7 @@ Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Anforder
 * Einrichten und Initialisieren von Umgebungsvariablen, die die ausführbare Datei des Diensts benötigt. Dies ist nicht auf Dateien beschränkt, die mit den Service Fabric-Programmiermodellen geschrieben wurden. „npm.exe“ benötigt beispielsweise einige Umgebungsvariablen, die zum Bereitstellen einer node.js-Anwendung konfiguriert wurden.
 * Einrichten einer Zugriffssteuerung durch Installieren von Sicherheitszertifikaten.
 
-Weitere Informationen zum Konfigurieren von **SetupEntryPoint** finden Sie unter [Konfigurieren der Richtlinie für einen Setupeinstiegspunkt für Dienste](service-fabric-application-runas-security.md).  
+Weitere Informationen zum Konfigurieren von **SetupEntryPoint** finden Sie unter [Konfigurieren der Richtlinie für einen Setupeinstiegspunkt für Dienste](service-fabric-application-runas-security.md).
 
 ## <a name="configure"></a>Konfigurieren 
 ### <a name="build-a-package-by-using-visual-studio"></a>Erstellen eines Pakets mit Visual Studio
@@ -113,20 +114,20 @@ PS D:\temp>
 
 Wenn [Anwendungsparameter](service-fabric-manage-multiple-environment-app-configuration.md) in Ihrer Anwendung definiert sind, können Sie diese zwecks ordnungsgemäßer Überprüfung an [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) übergeben.
 
-Wenn Sie wissen, in welchem Cluster die Anwendung bereitgestellt wird, wird empfohlen, die Verbindungszeichenfolge des Abbildspeichers zu übergeben. In diesem Fall wird das Paket auch anhand älterer Versionen der Anwendung, die bereits im Cluster ausgeführt werden, überprüft. Beispielsweise kann bei der Überprüfung festgestellt werden, ob bereits ein Paket mit derselben Version, jedoch mit einem anderen Inhalt bereitgestellt wurde.  
+Wenn Sie wissen, in welchem Cluster die Anwendung bereitgestellt wird, empfiehlt es sich, diese Angabe im Parameter `ImageStoreConnectionString` zu übergeben. In diesem Fall wird das Paket auch anhand älterer Versionen der Anwendung, die bereits im Cluster ausgeführt werden, überprüft. Beispielsweise kann bei der Überprüfung festgestellt werden, ob bereits ein Paket mit derselben Version, jedoch mit einem anderen Inhalt bereitgestellt wurde.  
 
 Sobald die Anwendung korrekt paketiert wurde und die Überprüfung bestanden hat, beurteilen Sie basierend auf der Größe und Anzahl der Dateien, ob eine Komprimierung erforderlich ist. 
 
 ## <a name="compress-a-package"></a>Komprimieren eines Pakets
 Wenn ein Paket groß ist oder viele Dateien enthält, können Sie es zur schnelleren Bereitstellung komprimieren. Durch eine Komprimierung werden die Anzahl der Dateien und die Größe des Pakets verringert.
-Das [Hochladen des Anwendungspakets](service-fabric-deploy-remove-applications.md#upload-the-application-package) kann zwar eventuell länger dauern als das Hochladen eines nicht komprimierten Pakets, doch im Gegenzug sind die [Registrierung](service-fabric-deploy-remove-applications.md#register-the-application-package) und die [Aufhebung der Registrierung des Anwendungstyps](service-fabric-deploy-remove-applications.md#unregister-an-application-type) schneller.
+Das [Hochladen komprimierter Anwendungspakete](service-fabric-deploy-remove-applications.md#upload-the-application-package) kann länger dauern als das Hochladen nicht komprimierter Pakete (besonders, wenn die für die Komprimierung benötigte Zeit mit eingerechnet wird), aber das [Registrieren](service-fabric-deploy-remove-applications.md#register-the-application-package) und das [Aufheben der Registrierung des Anwendungstyps](service-fabric-deploy-remove-applications.md#unregister-an-application-type) erfolgen bei einem komprimierten Paket schneller.
 
 Für komprimierte und nicht komprimierte Pakete gilt dasselbe Bereitstellungsverfahren. Wenn das Paket komprimiert ist, wird es als solches im Clusterabbildspeicher gespeichert und vor Ausführung der Anwendung auf dem Knoten dekomprimiert.
 Bei der Komprimierung wird das gültige Service Fabric-Paket durch die komprimierte Version ersetzt. Der Ordner muss Schreibberechtigungen zulassen. Wird ein bereits komprimiertes Paket komprimiert, werden keine Änderungen vorgenommen. 
 
 Sie können ein Paket komprimieren, indem Sie den Powershell-Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) mit dem Schalter `CompressPackage` ausführen. Das Paket kann anhand desselben Befehls mit dem Schalter `UncompressPackage` dekomprimiert werden.
 
-Mit dem folgenden Befehl wird das Paket komprimiert, ohne dass es im Abbildspeicher kopiert wird. Mit [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) ohne `SkipCopy`-Flag können Sie ein komprimiertes Paket bei Bedarf in ein oder mehrere Service Fabric-Cluster kopieren. Das Paket enthält nun ZIP-Dateien für die Pakete `code`, `config` und `data`. Das Anwendungsmanifest und die Dienstmanifeste werden nicht komprimiert, da sie für zahlreiche interne Vorgänge (z.B. Paketfreigabe, Extraktion des Namen und der Version des Anwendungstyps für bestimmte Überprüfungen) benötigt werden.
+Mit dem folgenden Befehl wird das Paket komprimiert, ohne dass es im Abbildspeicher kopiert wird. Mit [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) ohne `SkipCopy`-Flag können Sie ein komprimiertes Paket bei Bedarf in ein oder mehrere Service Fabric-Cluster kopieren. Das Paket enthält nun ZIP-Dateien für die Pakete `code`, `config` und `data` . Das Anwendungsmanifest und die Dienstmanifeste werden nicht komprimiert, da sie für zahlreiche interne Vorgänge (z.B. Paketfreigabe, Extraktion des Namen und der Version des Anwendungstyps für bestimmte Überprüfungen) benötigt werden.
 Eine Komprimierung der Manifeste würde dazu führen, dass diese Vorgänge unwirksam werden.
 
 ```
@@ -169,7 +170,7 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 ```
 
 Intern berechnet das Service Fabric-Paket zur Überprüfung Prüfsummen für die Anwendungspakete. Bei der Komprimierung werden die Prüfsummen für die komprimierten Versionen der einzelnen Pakete berechnet.
-Wenn Sie eine nicht komprimierte Version des Anwendungspakets kopiert haben und dieses Paket komprimieren möchten, müssen Sie die Versionen der `code`-, `config`- und `data`-Pakete ändern, um einen Prüfsummenkonflikt zu vermeiden. Wenn die Pakete unverändert sind, können Sie [diff provisioning](service-fabric-application-upgrade-advanced.md) verwenden, anstatt die Version zu ändern. Beziehen Sie bei dieser Option nicht das unveränderte Paket ein, verweisen Sie einfach vom Dienstmanifest aus darauf.
+Wenn Sie eine nicht komprimierte Version des Anwendungspakets kopiert haben und dieses Paket komprimieren möchten, müssen Sie die Versionen der Pakete `code`, `config` und `data` ändern, um einen Prüfsummenkonflikt zu vermeiden. Wenn die Pakete unverändert sind, können Sie [diff provisioning](service-fabric-application-upgrade-advanced.md) verwenden, anstatt die Version zu ändern. Beziehen Sie bei dieser Option nicht das unveränderte Paket ein, sondern verweisen Sie vom Dienstmanifest aus darauf.
 
 Gleichermaßen gilt: Wenn Sie eine komprimierte Version des Pakets hochgeladen haben und ein unkomprimiertes Paket verwenden möchten, müssen Sie die Versionen aktualisieren, um den Prüfsummenkonflikt zu vermeiden.
 
