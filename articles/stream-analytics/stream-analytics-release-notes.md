@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 05/03/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 05c5476cbfd616ce47d6d93627c6e7dd4d8a0d6f
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6a5ec66172e7920a89ff8c0592224f01f19c9e41
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -85,7 +85,7 @@ Diese Version enthält die folgenden Updates.
 | --- | --- |
 | Öffentliche Vorschau zu Azure IoT Suite |Stream Analytics ist in der öffentlichen Vorschau von Azure IoT Suite enthalten. |
 | Azure-Portal, „Integration“ |Stream Analytics ist nicht nur weiterhin im Azure-Verwaltungsportal enthalten, sondern jetzt auch in das [Azure-Portal](https://azure.microsoft.com/overview/preview-portal/) integriert. Beachten Sie, dass im Vorschauportal derzeit nur ein Teil der im Azure-Verwaltungsportal bereitgestellten Stream Analytics-Funktionalität verfügbar ist. Nicht unterstützt werden Funktionen wir das Testen von Abfragen im Browser, das Konfigurieren der Power BI-Ausgabe und das Durchsuchen oder Erstellen neuer Eingabe- und Ausgaberessourcen in Abonnements, auf die Sie zugreifen können. |
-| Unterstützung für DocumentDB-Ausgabe |Stream Analytics-Aufträge können jetzt Ausgaben an [DocumentDB](https://azure.microsoft.com/services/documentdb/)senden. |
+| Unterstützung für die Ausgabe der Cosmos-DB |Stream Analytics-Aufträge können jetzt Ausgaben an [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)senden. |
 | Unterstützung für IoT Hub-Eingabe |Stream Analytics-Aufträge können jetzt Daten von IoT Hubs erfassen. |
 | TIMESTAMP BY für heterogene Ereignisse |Wenn ein einzelner Datenstrom mehrere Ereignistypen mit Zeitstempeln in verschiedenen Feldern enthält, können Sie nun [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) mit Ausdrücken verwenden, um für jeden Fall unterschiedliche Zeitstempelfelder anzugeben. |
 

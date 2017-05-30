@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 8b453c7fe85a60791867d1c49fc2350e5f51a489
-ms.openlocfilehash: 0e917d1594deefd2b2764b09dc8bea79420c0d37
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ad88c17e0c6bad7cb58c8517a47bbe5fe0fae763
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -86,7 +87,7 @@ Von der verschlüsselten Kommunikation bis zur Verarbeitung von Daten in der Clo
 
 Sobald sich Daten in der Cloud befinden, können sie in jedem benutzerdefinierten Workflow verarbeitet und gespeichert werden. Der Zugriff auf die einzelnen Teile der Daten wird mit Azure Active Directory je nach verwendetem Speicherdienst gesteuert.
 
-Alle Schlüssel, die von der IoT-Infrastruktur verwendet werden, werden in der Cloud im sicheren Speicher abgelegt, und es kann ein Rollover durchgeführt werden, falls Schlüssel neu bereitgestellt werden müssen. Daten können in [DocumentDB](../documentdb/documentdb-introduction.md) oder in [SQL-Datenbanken](../sql-database/sql-database-faq.md) gespeichert werden, sodass die gewünschte Sicherheitsebene definiert werden kann. Darüber hinaus verfügt Azure über einen Weg zum Überwachen und Überprüfen des gesamten Zugriffs auf Ihre Daten, damit Sie vor allen Angriffen und unberechtigten Zugriffen gewarnt werden können.
+Alle Schlüssel, die von der IoT-Infrastruktur verwendet werden, werden in der Cloud im sicheren Speicher abgelegt, und es kann ein Rollover durchgeführt werden, falls Schlüssel neu bereitgestellt werden müssen. Daten können in [Azure Cosmos DB](../documentdb/documentdb-introduction.md) oder in [SQL-Datenbanken](../sql-database/sql-database-faq.md) gespeichert werden, sodass die gewünschte Sicherheitsebene definiert werden kann. Darüber hinaus verfügt Azure über einen Weg zum Überwachen und Überprüfen des gesamten Zugriffs auf Ihre Daten, damit Sie vor allen Angriffen und unberechtigten Zugriffen gewarnt werden können.
 
 ## <a name="conclusion"></a>Zusammenfassung
 Das Internet der Dinge beginnt mit Ihren „Dingen“, also den Dingen, die Unternehmen am meisten am Herzen liegen. Das IoT kann für ein Unternehmen von hohem Nutzen sein, indem Kosten reduziert werden, der Umsatz gesteigert wird und das Geschäft transformiert wird. Der Erfolg der Transformation hängt größtenteils von der Wahl der richtigen IoT-Software und des richtigen Dienstanbieters ab. Hiermit ist die Wahl eines Anbieters gemeint, der diese Transformation nicht nur fördert und beschleunigt, weil er die geschäftlichen Anforderungen kennt. Der Anbieter sollte auch Dienste und Software mit einem Design bereitstellen, bei dem Sicherheit, Datenschutz, Transparenz und Compliance im Vordergrund stehen. Microsoft verfügt über umfassende Erfahrung in Bezug auf die Entwicklung und Bereitstellung sicherer Software und Dienste und nimmt auch im neuen Zeitalter des Internets der Dinge eine führende Stellung ein. 
@@ -97,7 +98,7 @@ Sicherheitsmaßnahmen sind in die Microsoft Azure IoT Suite standardmäßig inte
 Für jede vorkonfigurierte Azure IoT Suite-Lösung werden Instanzen von Azure-Diensten erstellt, z.B.:
 
 * [**Azure IoT Hub:**](https://azure.microsoft.com/services/iot-hub/) das Gateway, mit dem die Cloud mit den „Dingen“ verbunden wird. Sie können eine Skalierung auf Millionen von Verbindungen pro Hub durchführen und riesige Datenmengen mit Authentifizierung pro Gerät verarbeiten, um Ihre Lösung zu schützen.
-* [**Azure DocumentDB:**](https://azure.microsoft.com/services/documentdb/) skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. DocumentDB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
+* [**Azure Cosmos DB**](https://azure.microsoft.com/services/documentdb/): Ein skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. Cosmos DB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
 * [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/)Datenstromverarbeitung in Echtzeit in der Cloud, mit der eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht wird, mit der Sie in Echtzeit basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
 * [**Azure App Services:**](https://azure.microsoft.com/services/app-service/) Cloudplattform für leistungsstarke mobile Apps und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
 * [**Logic Apps:**](https://azure.microsoft.com/services/app-service/logic/) Das Logic Apps-Feature von Azure App Service dient als Hilfe bei der Integration Ihrer IoT-Lösung in Ihre vorhandenen branchenspezifischen Systeme und bei der Automatisierung von Workflowprozessen. Mit Logik-Apps können Entwickler Workflows entwerfen, die über einen Auslöser gestartet werden, und dann eine Reihe von Schritten ausführen – Regeln und Aktionen, für die leistungsfähige Connectors zur Integration in Ihre Geschäftsprozesse eingesetzt werden. Logik-Apps ermöglichen standardmäßig Verbindungen mit einem umfassenden Ökosystem von SaaS-, cloudbasierten und lokalen Anwendungen.
@@ -124,3 +125,4 @@ Sie können unter [Verwalten des Zugriffs auf IoT Hub][lnk-devguide-security] im
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-faq]: iot-suite-faq.md
 [lnk-devguide-security]: ../iot-hub/iot-hub-devguide-security.md
+
