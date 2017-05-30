@@ -12,11 +12,13 @@ ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 09/07/2016
+ms.date: 05/01/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 524d3300e621d8e383833198c14c2e2e8461683b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ea3fc801074bb6d7e7c32574bc94702c79a61185
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -1119,7 +1121,7 @@ Der Antworttext hat folgendes Format:
 ## <a name="document-operations"></a>Dokumentvorgänge
 In Azure Search wird ein Index in der Cloud gespeichert und mit JSON-Dokumenten gefüllt, die Sie in den Dienst hochladen. Die gesamten hochgeladenen Dokumente stellen den Korpus Ihrer Suchdaten dar. Dokumente enthalten Felder, von denen einige beim Hochladen als Suchbegriffe mit Token versehen werden. Das URL-Segment `/docs` in der Azure Search-API stellt die Sammlung von Dokumenten in einem Index dar. Alle an der Sammlung durchgeführten Vorgänge wie das Hochladen, Zusammenführen, Löschen oder Abfragen von Dokumenten findet im Kontext eines einzigen Index statt. Die URLs für diese Vorgänge beginnen daher für einen gegebenen Indexnamen immer mit `/indexes/[index name]/docs`.
 
-Der Anwendungscode muss JSON-Dokumente zum Hochladen in Azure Search generieren. Alternativ kann zum Laden von Dokumenten auch ein [Indexer](https://msdn.microsoft.com/library/dn946891.aspx) verwendet werden, wenn entweder eine Azure SQL-Datenbank oder DocumentDB als Datenquelle verwendet wird. In der Regel werden Indizes aus einem einzelnen Dataset aufgefüllt, das Sie bereitstellen.
+Der Anwendungscode muss JSON-Dokumente zum Hochladen in Azure Search generieren. Alternativ kann zum Laden von Dokumenten auch ein [Indexer](https://msdn.microsoft.com/library/dn946891.aspx) verwendet werden, wenn entweder Azure SQL-Datenbank oder Azure Cosmos DB als Datenquelle verwendet wird. In der Regel werden Indizes aus einem einzelnen Dataset aufgefüllt, das Sie bereitstellen.
 
 Es empfiehlt sich, für jedes zu durchsuchende Element ein Dokument zu haben. Eine Filmverleihanwendung könnte ein Dokument pro Film haben, eine Ladenanwendung ein Dokument pro Artikel, eine Anwendung für Online-Kurse ein Dokument pro Kurs, eine Forschungsfirma ein Dokument pro akademisches Papier in ihrem Repository usw.
 
@@ -1968,9 +1970,4 @@ Rufen Sie 5 Vorschläge mit der Teilsuche nach "lux" ab.
       "top": 5,
       "suggesterName": "sg"
     }
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

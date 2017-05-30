@@ -4,7 +4,7 @@ description: "Übersicht über den Informix-Connector mit REST-API-Parametern"
 services: 
 documentationcenter: 
 author: gplarsen
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
@@ -14,10 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
-ms.author: plarsen
-translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
-ms.openlocfilehash: 614400a8787fdd2081fa8e981c0fc6b6dd794a58
+ms.author: plarsen; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ca7a62338740e39647b39f2221bc5ac7321ba4fd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -270,145 +272,16 @@ Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer Informix-T
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
 
-## <a name="technical-details"></a>Technische Details
-## <a name="actions"></a>Actions
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Der Informix-Datenbankconnector enthält die folgenden Aktionen: 
-
-| Aktion | Beschreibung |
-| --- | --- |
-| [GetRow](connectors-create-api-informix.md#get-row) |Ruft eine einzelne Zeile aus einer Informix-Tabelle ab. |
-| [GetRows](connectors-create-api-informix.md#get-rows) |Ruft Zeilen aus einer Informix-Tabelle ab. |
-| [InsertRow](connectors-create-api-informix.md#insert-row) |Fügt eine neue Zeile in eine Informix-Tabelle ein. |
-| [DeleteRow](connectors-create-api-informix.md#delete-row) |Löscht eine Zeile aus einer Informix-Tabelle. |
-| [GetTables](connectors-create-api-informix.md#get-tables) |Ruft Tabellen aus einer Informix-Datenbank ab. |
-| [UpdateRow](connectors-create-api-informix.md#update-row) |Aktualisiert eine vorhandene Zeile in einer Informix-Tabelle. |
-
-### <a name="action-details"></a>Aktionsdetails
-Dieser Abschnitt enthält spezifische Details zu den einzelnen Aktionen. Hierzu zählen unter anderem erforderliche oder optionale Eingabeeigenschaften sowie entsprechende Ausgaben im Zusammenhang mit dem Connector.
-
-#### <a name="get-row"></a>Zeile abrufen
-Ruft eine einzelne Zeile aus einer Informix-Tabelle ab.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| table* |Tabellenname |Name der Informix-Tabelle |
-| id* |Zeilen-ID |Eindeutiger Bezeichner der abzurufenden Zeile |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Item
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| ItemInternalId |string |
-
-#### <a name="get-rows"></a>Zeilen abrufen
-Ruft Zeilen aus einer Informix-Tabelle ab.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| table* |Tabellenname |Name der Informix-Tabelle |
-| $skip |Auslassungsanzahl |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |Maximale Anzahl von Get-Anforderungen |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
-| $filter |Filterabfrage |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
-| $orderby |Sortieren nach |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-ItemsList
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| value |array |
-
-#### <a name="insert-row"></a>Zeile einfügen
-Fügt eine neue Zeile in eine Informix-Tabelle ein.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| table* |Tabellenname |Name der Informix-Tabelle |
-| item* |Zeile |In die angegebene Informix-Tabelle einzufügende Zeile |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Item
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| ItemInternalId |string |
-
-#### <a name="delete-row"></a>Zeile löschen
-Löscht eine Zeile aus einer Informix-Tabelle.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| table* |Tabellenname |Name der Informix-Tabelle |
-| id* |Zeilen-ID |Eindeutiger Bezeichner der zu löschenden Zeile |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Keine
-
-#### <a name="get-tables"></a>Tabellen abrufen
-Ruft Tabellen aus einer Informix-Datenbank ab.  
-
-Es gibt keine Parameter für diesen Aufruf. 
-
-##### <a name="output-details"></a>Ausgabedetails
-TablesList
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| value |array |
-
-#### <a name="update-row"></a>Zeile aktualisieren
-Aktualisiert eine vorhandene Zeile in einer Informix-Tabelle.  
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| table* |Tabellenname |Name der Informix-Tabelle |
-| id* |Zeilen-ID |Eindeutiger Bezeichner der zu aktualisierenden Zeile |
-| item* |Zeile |Zeile mit aktualisierten Werten |
-
-Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
-
-##### <a name="output-details"></a>Ausgabedetails
-Item
-
-| Eigenschaftenname | Datentyp |
-| --- | --- |
-| ItemInternalId |string |
-
-### <a name="http-responses"></a>HTTP-Antworten
-Das Aufrufen der verschiedenen Aktionen löst unter Umständen bestimmte Antworten aus. Diese Antworten sind in der folgenden Tabelle aufgeführt und beschrieben:  
-
-| Name | Beschreibung |
-| --- | --- |
-| 200 |OK |
-| 202 |Zulässig |
-| 400 |Ungültige Anforderung |
-| 401 |Nicht autorisiert |
-| 403 |Verboten (403) |
-| 404 |Nicht gefunden |
-| 500 |Interner Serverfehler. Unbekannter Fehler ist aufgetreten |
-| die Standardeinstellung |Fehler beim Vorgang. |
-
 ## <a name="supported-informix-platforms-and-versions"></a>Unterstützte Informix-Plattformen und -Versionen
 Dieser Connector unterstützt die folgenden IBM Informix-Versionen, wenn diese für die Unterstützung von Clientverbindungen vom Typ „Distributed Relational Database Architecture“ (DRDA) konfiguriert sind.
 
 * IBM Informix 12.1
 * IBM Informix 11.7
 
+## <a name="view-the-swagger"></a>Anzeigen von Swagger
+Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/informix/). 
+
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

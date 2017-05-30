@@ -14,34 +14,44 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: spelluru
 published: true
-translationtype: Human Translation
-ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
-ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
-ms.lasthandoff: 02/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f29bb67ea50c531278e546c9fde88fd53230bc3c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 Eine Herausforderung für die moderne Datenintegration ist das nahtlose Verschieben von Daten zwischen lokalen Speicherorten und der Cloud. Dank Data Factory verläuft diese Integration mit dem Datenverwaltungsgateway nahtlos. Es handelt sich um einen Agent, den Sie lokal installieren können, um eine hybride Datenverschiebung zu ermöglichen.
 
-In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwaltungsgateway und zu dessen Verwendung: 
+In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwaltungsgateway und zu dessen Verwendung:
 
 *  [Gateway zur Datenverwaltung](data-factory-data-management-gateway.md)
-*  [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md) 
+*  [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 
-## <a name="current-version-2762192"></a>AKTUELLE VERSION (2.7.6219.2)
-
-### <a name="whats-new"></a>Neuigkeiten
-- Sie können sich jetzt über den Dienstprinzipal bei Ihrem Azure Data Lake Store authentifizieren. Zuvor wurde nur OAuth unterstützt.
-- Wir haben einen neuen Treiber für das Auslesen von Daten aus Oracle in lokalen Datenspeicher im Gateway in das Paket integriert.
+## <a name="current-version-2963132"></a>AKTUELLE VERSION (2.9.6313.2)
 
 ### <a name="enhancements-"></a>Verbesserungen
-- Verbesserte Leistung beim Lesen von Daten aus Oracle-Datenquellen.
-- Behoben: Problem beim Ablauf des OAuth-Tokens der OData-Quelle.
-- Behoben: Problem beim Lesen von Oracle-Dezimalzahl von mehr als 28 Bits.
+-    Sie können DNS-Einträge hinzufügen, um Service Bus auf die Whitelist zu setzen, statt alle Azure IP-Adressen der Firewall auf eine Whitelist zu setzen (sofern erforderlich). Ausführlichere Informationen finden Sie hier.
+-    Sie können jetzt Daten in einen/aus einem einzelnen Blockblob von bis zu 4,75 TB kopieren. Dies ist die unterstützte maximale Größe eines Blockblobs. (Der frühere Grenzwert war 195 GB.)
+-    Behoben: Fehler „Nicht genügend Arbeitsspeicher“ beim Entzippen mehrerer kleiner Dateien während der Kopieraktivität.
+-    Behoben: Fehler „Index außerhalb des gültigen Bereichs“ beim Kopieren aus DocumentDB in eine lokale SQL-Instanz mit der Idempotenz-Funktion.
+-    Behoben: SQL-Bereinigungsskript funktioniert nicht bei lokaler SQL-Instanz mit dem Assistenten zum Kopieren.
+-    Behoben: Spaltenname mit Leerzeichen am Ende funktioniert nicht in Kopieraktivität.
 
 
 ## <a name="earlier-versions"></a>Frühere Versionen
+
+## <a name="28662833"></a>2.8.66283.3
+### <a name="enhancements-"></a>Verbesserungen
+- Behoben: Problem aufgrund fehlender Anmeldeinformationen beim Neustart des Gatewaycomputers.
+- Behoben: Problem bei der Registrierung während der Gatewaywiederherstellung mit einer Sicherungsdatei.
+
+
+## <a name="2762401"></a>2.7.6240.1
+### <a name="enhancements-"></a>Verbesserungen
+- Behoben: Fehler beim Lesen eines NULL-Dezimalwerts von Oracle als Quelle.
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>Neuigkeiten
@@ -63,7 +73,7 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 
 ### <a name="whats-new"></a>Neuigkeiten
 
-- Sie können jetzt die Anmeldeinformationen für Datenquellen lokal speichern. Die Anmeldeinformationen werden verschlüsselt. Die Anmeldeinformationen für Datenquellen können mit einer Sicherungsdatei, die über das vorhandene Gateway exportiert werden kann, wiederhergestellt werden (alles lokal). 
+- Sie können jetzt die Anmeldeinformationen für Datenquellen lokal speichern. Die Anmeldeinformationen werden verschlüsselt. Die Anmeldeinformationen für Datenquellen können mit einer Sicherungsdatei, die über das vorhandene Gateway exportiert werden kann, wiederhergestellt werden (alles lokal).
 
 ### <a name="enhancements-"></a>Verbesserungen
 
@@ -89,7 +99,7 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 
 *  Der DB2-Treiber ist jetzt im Gatewayinstallationspaket enthalten. Sie müssen ihn nicht separat installieren. 
 *  Der DB2-Treiber unterstützt nun z/OS und DB2 für i (AS/400) sowie die bereits unterstützten Plattformen (Linux, Unix und Windows). 
-*  Unterstützt die Verwendung von DocumentDB als Quelle oder Ziel für lokale Datenspeicher.
+*  Unterstützt die Verwendung von Azure Cosmos DB als Quelle oder Ziel für lokale Datenspeicher.
 *  Unterstützt das Kopieren von Daten in kalte bzw. heiße Blobspeicher (und umgekehrt) sowie das bereits unterstützte allgemeine Speicherkonto. 
 *  Ermöglicht die Verbindung mit einer lokalen SQL Server-Instanz über ein Gateway mit Remoteanmeldeberechtigungen.  
 
@@ -105,7 +115,7 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 
     *  Neu organisierte und vereinfachte Steuerelemente.
 
-    *  Sie können Daten aus einem Speicher mithilfe des [in der Vorschau befindlichen codefreien Kopiertools](data-factory-copy-data-wizard-tutorial.md)kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature. 
+    *  Sie können Daten aus einem Speicher mithilfe des [in der Vorschau befindlichen codefreien Kopiertools](data-factory-copy-data-wizard-tutorial.md)kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
 *  Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer lokalen SQL Server-Datenbank in Azure Machine Learning zu erfassen.
 
 *  Leistungsverbesserungen
@@ -120,7 +130,7 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 
 *  Die maximale Größe des Gatewayereignisprotokolls wurde von 1 MB auf 40 MB erhöht.
 
-*  Wenn während der automatischen Aktualisierung des Gateways ein Neustart erforderlich ist, wird ein Warnungsdialogfeld angezeigt. Sie können auswählen, ob das Gateway jetzt oder zu einem späteren Zeitpunkt neugestartet werden soll. 
+*  Wenn während der automatischen Aktualisierung des Gateways ein Neustart erforderlich ist, wird ein Warnungsdialogfeld angezeigt. Sie können auswählen, ob das Gateway jetzt oder zu einem späteren Zeitpunkt neugestartet werden soll.
 
 *  Wenn bei der automatischen Aktualisierung ein Fehler auftritt, versucht das Gatewayinstallationsprogramm höchstens dreimal, die automatische Aktualisierung zu wiederholen.
 
@@ -226,7 +236,7 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  Beheben von Problemen mit der Zeitüberschreitung, um zeitaufwändigere Datenquellenverbindungen zu unterstützen 
+*  Beheben von Problemen mit der Zeitüberschreitung, um zeitaufwändigere Datenquellenverbindungen zu unterstützen
 
 ### <a name="1155268"></a>1.1.5526.8
 

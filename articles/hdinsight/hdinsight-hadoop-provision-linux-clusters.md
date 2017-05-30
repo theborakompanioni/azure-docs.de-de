@@ -1,6 +1,7 @@
 ---
 title: Erstellen von Hadoop-, HBase-, Kafka-, Storm- oder Spark-Clustern in Azure HDInsight | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Hadoop-, HBase-, Storm- oder Spark-Cluster unter Linux für HDInsight mithilfe eines Browsers, der Azure-Befehlszeilenschnittstelle, Azure PowerShell, REST oder durch ein SDK erstellt werden."
+keywords: Einrichtung von Hadoop-Clustern, Einrichtung von Kafka-Clustern, Einrichtung von Spark-Clustern, Einrichtung von HBase-Clustern, Einrichtung von Storm-Clustern, was ist ein Hadoop-Cluster?
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -17,10 +18,10 @@ ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 9fc96db2b832f1e57813bebd2d46e4b78ed04677
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: ed0a5cfc02572d537f4b179ad612ad153a2db1d4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -177,22 +178,35 @@ Sie können Speicherkonten hinzufügen, wenn Sie einen HDInsight-Cluster erstell
 Weitere Informationen zu einem sekundären Azure Storage-Konto finden Sie unter [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zur Verwendung von sekundärem Data Lake-Speicher finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 
-#### <a name="use-hiveoozie-metastore"></a>Hive-/Oozie-Metastore
+#### <a name="use-hiveoozie-metastore"></a>Hive-Metastore
+
 Wir empfehlen, einen benutzerdefinierten Metastore zu verwenden, wenn Sie nach dem Löschen des HDInsight-Clusters Ihre Hive-Tabellen beibehalten möchten. Sie können diesen Metastore an einen anderen HDInsight-Cluster anfügen.
 
 > [!IMPORTANT]
 > Ein HDInsight-Metastore, der für eine HDInsight-Clusterversion erstellt wurde, kann nicht über verschiedene HDInsight-Clusterversionen freigegeben werden. Eine Liste mit den HDInsight-Versionen finden Sie unter [Unterstützte HDInsight-Versionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
->
->
 
-Metastore enthält Hive- und Oozie-Metadaten, wie z. B. Hive-Tabellen, Partitionen, Schemata und Spalten. Mit dem Metastore können Sie Ihre Hive- und Oozie-Metadaten beibehalten, damit Sie Hive-Tabellen oder Oozie-Aufträge nicht neu erstellen müssen, wenn Sie einen neuen Cluster erstellen. Standardmäßig speichert Hive diese Informationen in einer eingebetteten Azure SQL-Datenbank. Die eingebettete Datenbank kann die Metadaten nicht beibehalten, wenn der Cluster gelöscht wird. Wenn Sie eine Hive-Tabelle in einem HDInsight-Cluster mit einem konfigurierten Hive-Metastore erstellen, wird die Tabelle beibehalten, falls Sie den Cluster mit demselben Hive-Metastore erneut erstellen.
+Der Metastore enthält Hive-Metadaten, wie z. B. Hive-Tabellen, Partitionen, Schemata und Spalten. Mit dem Metastore können Sie Ihre Hive-Metadaten beibehalten, sodass Sie beim Erstellen eines neuen Clusters keine Hive-Tabellen neu erstellen müssen. Standardmäßig speichert Hive diese Informationen in einer eingebetteten Azure SQL-Datenbank. Die eingebettete Datenbank kann die Metadaten nicht beibehalten, wenn der Cluster gelöscht wird. Wenn Sie eine Hive-Tabelle in einem HDInsight-Cluster mit einem konfigurierten Hive-Metastore erstellen, wird die Tabelle beibehalten, falls Sie den Cluster mit demselben Hive-Metastore erneut erstellen.
 
-Für HBase-Clustertypen ist keine Metastore-Konfiguration verfügbar.
+Die Metastore-Konfiguration ist nicht für alle Clustertypen verfügbar. Für HBase- oder Kafka-Cluster ist sie beispielsweise nicht verfügbar.
 
 > [!IMPORTANT]
-> Verwenden Sie beim Erstellen eines benutzerdefinierten Metastores keinen Datenbanknamen, der Gedankenstriche oder Bindestriche enthält. Dies kann dazu führen, dass der Clustererstellungsprozess fehlschlägt.
->
->
+> Verwenden Sie beim Erstellen eines benutzerdefinierten Metastores keinen Datenbanknamen, der Gedankenstriche, Bindestriche oder Leerzeichen enthält. Dies kann dazu führen, dass der Clustererstellungsprozess fehlschlägt.
+
+> [!WARNING]
+> Azure SQL Data Warehouse wird für den Hive-Metastore nicht unterstützt.
+
+
+#### <a name="oozie-metastore"></a>Oozie-Metastore
+
+Verwenden Sie zur Erhöhung der Leistung bei Verwendung von Oozie einen benutzerdefinierten Metastore. Ein benutzerdefinierter Metastore ist auch nützlich, wenn Sie nach dem Löschen Ihres Clusters auf Oozie-Auftragsdaten zugreifen möchten. Wenn Sie Oozie nicht oder nur gelegentlich verwenden möchten, müssen Sie keinen benutzerdefinierten Metastore erstellen.
+
+> [!IMPORTANT]
+> Ein benutzerdefinierter Oozie-Metastore kann nicht wiederverwendet werden. Wenn Sie einen benutzerdefinierten Oozie-Metastore verwenden möchten, müssen Sie beim Erstellen des HDInsight-Clusters eine leere Azure SQL-Datenbank bereitstellen.
+
+Die Metastore-Konfiguration ist nicht für alle Clustertypen verfügbar. Für HBase- oder Kafka-Cluster ist sie beispielsweise nicht verfügbar.
+
+> [!WARNING]
+> Azure SQL Data Warehouse wird für den Oozie-Metastore nicht unterstützt.
 
 ## <a name="install-hdinsight-applications"></a>Installieren von HDInsight-Anwendungen
 

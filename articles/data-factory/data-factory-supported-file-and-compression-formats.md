@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 06f7b38f5d08f2182f08d38a11dec526042c1828
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4b496eb3d82249e8dc29833fa7bf94ffbfd87ea0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -82,7 +83,7 @@ Zur Verwendung von `escapeChar` anstelle von `quoteChar` ersetzen Sie die Zeile 
 * Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, die keine Daten oder Kopfzeileninformationen enthalten. Geben Sie mit `skipLineCount` die Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch `firstRowAsHeader` angeben. Wenn sowohl `skipLineCount` als auch `firstRowAsHeader` angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
 
 ## <a name="json-format"></a>JSON-Format
-Informationen zum **unveränderten Importieren/Exportieren einer JSON-Datei in bzw. aus DocumentDB** finden Sie im Abschnitt [Importieren oder Exportieren von JSON-Dokumenten](data-factory-azure-documentdb-connector.md#importexport-json-documents) im Artikel [Verschieben von Daten in/aus Azure DocumentDB](data-factory-azure-documentdb-connector.md).
+Informationen zum **unveränderten Importieren/Exportieren einer JSON-Datei in/aus Azure Cosmos DB** finden Sie im Abschnitt [Importieren oder Exportieren von JSON-Dokumenten](data-factory-azure-documentdb-connector.md#importexport-json-documents) im Artikel [Verschieben von Daten in/aus Azure Cosmos DB](data-factory-azure-documentdb-connector.md).
 
 Wenn Sie JSON-Dateien analysieren oder die Daten im JSON-Format schreiben möchten, legen Sie für die `type`-Eigenschaft im Abschnitt `format` den Wert **JsonFormat** fest. Sie können auch die folgenden **optionalen** Eigenschaften im Abschnitt `format` angeben. Informationen zum Konfigurieren finden Sie im Abschnitt [JsonFormat-Beispiel](#jsonformat-example).
 

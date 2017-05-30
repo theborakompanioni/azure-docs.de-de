@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 04/05/2017
+ms.date: 05/01/2017
 ms.author: betorres
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: ab273c56fe9818ea65979376ec829032f67f04ed
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 16cb5a1e16a59200f0e731622398efcf24c3f777
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -62,11 +63,11 @@ Der Abschnitt „Verwendung“ umfasst einen Verbrauchszähler, aus dem hervorge
 >
 
 ### <a name="using-the-rest-api"></a>Verwenden der REST-API
-Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken.  Bei Verwendung von [Indexern](https://msdn.microsoft.com/library/azure/dn946891.aspx) zum Laden eines Index aus Azure SQL-Datenbank oder DocumentDB steht eine zusätzliche API zum Abrufen der benötigen Zahlen zur Verfügung.
+Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken.  Bei Verwendung von [Indexern](https://msdn.microsoft.com/library/azure/dn946891.aspx) zum Laden eines Index aus Azure SQL-Datenbank oder Azure Cosmos DB steht eine zusätzliche API zum Abrufen der benötigen Zahlen zur Verfügung.
 
-* [Abrufen von Indexstatistiken](https://msdn.microsoft.com/library/azure/dn798942.aspx)
-* [Dokumentenanzahl](https://msdn.microsoft.com/library/azure/dn798924.aspx)
-* [Abrufen des Indexerstatus](https://msdn.microsoft.com/library/azure/dn946884.aspx)
+* [Abrufen von Indexstatistiken](/rest/api/searchservice/get-index-statistics)
+* [Dokumentenanzahl](/rest/api/searchservice/count-documents)
+* [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
 
 ## <a name="how-to-export-logs-and-metrics"></a>Exportieren von Protokollen und Metriken
 

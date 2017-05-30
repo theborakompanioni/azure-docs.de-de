@@ -13,21 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/21/2017
+ms.date: 05/02/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d68fc54f3fd08b3d7d66a9cd1ddb91c340191468
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: a7511a35a7b186fc424088e7ff5cbc933d325712
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
 # <a name="manage-azure-disks-with-powershell"></a>Verwalten von Azure-Datenträgern mit PowerShell
 
-In diesem Tutorial lernen Sie die verschiedenen Typen von VM-Datenträgern kennen und erhalten Informationen zum Auswählen einer Datenträgerkonfiguration sowie zum Erstellen und Anfügen von Datenträgern an virtuelle Azure-Computer. Darüber hinaus wird in diesem Tutorial erläutert, wie Datenträger-Momentaufnahmen erstellt werden.  
+Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten der virtuellen Computer. Beim Erstellen eines virtuellen Computers muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. Dieses Tutorial behandelt die Bereitstellung und Verwaltung der Datenträger von virtuellen Computern. Sie erhalten Informationen zu folgenden Themen:
 
-Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](/powershell/azure/overview)-Modul ausgeführt werden.
+> [!div class="checklist"]
+> * Betriebssystemdatenträger und temporäre Datenträger
+> * Datenträger
+> * Standard- und Premium-Datenträger
+> * Datenträgerleistung
+> * Anfügen und Vorbereiten von Datenträgern
+
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 
@@ -39,7 +46,7 @@ Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automat
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
 
-| Typ | Größe des virtuellen Computers | Max. Größe des temporären Datenträgers |
+| Typ | Größe des virtuellen Computers | Max. Größe des temporären Datenträgers (GB) |
 |----|----|----|
 | [Allgemeiner Zweck](sizes-general.md) | A- und D-Serie | 800 |
 | [Computeoptimiert](sizes-compute.md) | F-Serie | 800 |
@@ -136,7 +143,17 @@ Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zu VM-Datenträgern erhalten. Im nächsten Tutorial erfahren Sie, wie die VM-Konfiguration automatisiert werden kann.
+In diesem Tutorial haben Sie Informationen zu VM-Datenträgern erhalten, darunter die folgenden:
 
-[Automatisieren der VM-Konfiguration](./tutorial-automate-vm-deployment.md)
+> [!div class="checklist"]
+> * Betriebssystemdatenträger und temporäre Datenträger
+> * Datenträger
+> * Standard- und Premium-Datenträger
+> * Datenträgerleistung
+> * Anfügen und Vorbereiten von Datenträgern
+
+Im nächsten Tutorial erfahren Sie, wie die VM-Konfiguration automatisiert werden kann.
+
+> [!div class="nextstepaction"]
+> [Automatisieren der VM-Konfiguration](./tutorial-automate-vm-deployment.md)
 
