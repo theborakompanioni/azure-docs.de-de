@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: cdc50ec4bf98d7924ad5bf97c9a757f0bac01173
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b0b2e8f375fa0b80e4f933515e1e8a689478483e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -74,7 +75,7 @@ Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen k
 ## <a name="field-gateways"></a>Bereichsgateways
 Bei einer IoT-Lösung ist zwischen Ihren Geräten und IoT Hub-Endpunkten ein *Bereichsgateway* angeordnet. Es befindet sich normalerweise in der Nähe Ihrer Geräte. Ihre Geräte kommunizieren direkt mit dem Bereichsgateway, indem sie ein von den Geräten unterstütztes Protokoll nutzen. Das Bereichsgateway verbindet sich mit einem IoT Hub-Endpunkt über ein Protokoll, das von IoT Hub unterstützt wird. Bei einem Bereichsgateway kann es sich um hochspezialisierte Hardware oder einen Computer mit niedriger Leistung handeln, auf dem Software für das End-to-End-Szenario ausgeführt wird, wofür das Gateway vorgesehen ist.
 
-Sie können das [Azure IoT Gateway SDK][lnk-gateway-sdk] verwenden, um ein Bereichsgateway zu implementieren. Dieses SDK bietet bestimmte Funktionen, z.B. die Möglichkeit, die Kommunikation von mehreren Geräten im Multiplexverfahren über die gleiche IoT Hub-Verbindung zu übertragen.
+Sie können [Azure IoT Edge][lnk-gateway-sdk] verwenden, um ein Bereichsgateway zu implementieren. IoT Edge bietet spezifische Funktionen, z.B. die Möglichkeit, die Kommunikation von mehreren Geräten im Multiplexverfahren über die gleiche IoT Hub-Verbindung zu übertragen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
@@ -83,7 +84,7 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 * [Kontingente und Drosselung][lnk-devguide-quotas]
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt]
 
-[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-gateway-sdk]: https://github.com/Azure/iot-edge
 
 [img-endpoints]: ./media/iot-hub-devguide-endpoints/endpoints.png
 [lnk-amqp]: https://www.amqp.org/

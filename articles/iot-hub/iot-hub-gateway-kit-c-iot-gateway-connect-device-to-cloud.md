@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/06/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: e8efc3204512b7213c44a15c25b38287465975df
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2b772afc946f1637cb8d61c198bc9cf18f42e1ba
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -122,7 +123,7 @@ Sie haben die Verbindung zwischen IoT-Gateway und SensorTag erfolgreich aktivier
 
 ## <a name="run-a-ble-sample-application-to-send-sensortag-data-to-your-iot-hub"></a>Führen Sie eine BLE-Beispielanwendung aus, um SensorTag-Daten an Ihren IoT Hub zu senden.
 
-Die Beispielanwendung „Bluetooth Low Energy (BLE)“ wird vom Azure IoT Gateway SDK bereitgestellt. Die Beispielanwendung erfasst Daten zur BLE-Verbindung und sendet Daten zu Ihrem IoT Hub. Zum Ausführen der Beispielanwendung müssen Sie wie folgt vorgehen:
+Die Beispielanwendung „Bluetooth Low Energy (BLE)“ wird von Azure IoT Edge bereitgestellt. Die Beispielanwendung erfasst Daten zur BLE-Verbindung und sendet Daten zu Ihrem IoT Hub. Zum Ausführen der Beispielanwendung müssen Sie wie folgt vorgehen:
 
 1. Konfigurieren Sie die Beispielanwendung.
 1. Führen Sie die Beispielanwendung auf dem IoT-Gateway aus.
@@ -170,5 +171,5 @@ Die Beispielanwendung „Bluetooth Low Energy (BLE)“ wird vom Azure IoT Gatewa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwenden des IoT-Gateways für die Transformation von Sensordaten mit dem Azure IoT Gateway SDK](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+[Verwenden des IoT-Gateways für die Transformation von Sensordaten mit Azure IoT Edge](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 

@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 1ea1f54832a13b57caf3d6783e482fad4ba00781
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2ac6f92d027c893316b6e310e4c3103ab0e51785
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -219,29 +222,13 @@ Wenn Sie diesen Fehler in der IFrame-Anforderung erhalten, muss sich der Benutze
 `id_token`s und `access_token`s laufen nach kurzer Zeit ab. Ihre App muss daher diese Token in regelmäßigen Abständen aktualisieren.  Zum Aktualisieren beider Tokentypen können Sie die oben erwähnte verborgene IFrame-Anforderung unter Verwendung des Parameters `prompt=none` ausführen, um das Verhalten von Azure AD zu steuern.  Wenn Sie ein neues `id_token` erhalten möchten, verwenden Sie unbedingt `response_type=id_token` und `scope=openid`, sowie den Parameter `nonce`.
 
 ## <a name="send-a-sign-out-request"></a>Senden einer Abmeldungsanforderung
-Der OpenIdConnect- `end_session_endpoint` wird derzeit vom V2.0-Endpunkt nicht unterstützt. Dies bedeutet, dass Ihre App keine Anforderung an den v2.0-Endpunkt zum Beenden der Sitzung eines Benutzers und zum Löschen von Cookies, die vom v2.0-Endpunkt festgelegt wurden, senden kann.
-Um einen Benutzer abzumelden, kann eine App ganz einfach die eigene Sitzung mit dem Benutzer beenden, und die Sitzung des Benutzers mit dem v2.0-Endpunkt unverändert lassen.  Wenn der Benutzer das nächste Mal versucht, sich anzumelden, wird eine Seite mit dem Hinweis "Konto auswählen" angezeigt, auf der die aktiv angemeldeten Konten aufgeführt werden.
-Auf dieser Seite kann der Benutzer sich von jedem Konto abmelden, sodass die Sitzung mit dem v2.0-Endpunkt beendet wird.
-
-<!--
-
-When you wish to sign the user out of the  app, it is not sufficient to clear your app's cookies or otherwise end the session with the user.  You must also redirect the user to the v2.0 endpoint for sign out.  If you fail to do so, the user will be able to re-authenticate to your app without entering their credentials again, because they will have a valid single sign-on session with the v2.0 endpoint.
-
-You can simply redirect the user to the `end_session_endpoint` listed in the OpenID Connect metadata document:
+Die OpenIdConnect `end_session_endpoint` ermöglicht Ihrer App das Senden einer Anforderung an den v2.0-Endpunkt zum Beenden der Sitzung eines Benutzers und zum Löschen von Cookies, die vom v2.0-Endpunkt festgelegt wurden.  Um einen Benutzer vollständig von einer Webanwendung abzumelden, muss Ihre App ihre eigene Sitzung mit dem Benutzer beenden (in der Regel durch Löschen eines Tokencaches oder von Cookies) und dann den Browser zu folgender Adresse umleiten
 
 ```
-GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
-post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| Parameter | | Description |
-| ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | recommended | The URL which the user should be redirected to after successful logout.  If not included, the user will be shown a generic message by the v2.0 endpoint.  |
-
--->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-
+| Parameter |  | Beschreibung |
+| --- | --- | --- |
+| Mandant |erforderlich |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können.  Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner.  Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
+| post_logout_redirect_uri | empfohlen | Die URL, zu der der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Dieser Wert muss einem der Umleitung-URIs entsprechen, die für die Anwendung registriert sind. Wenn keine Angabe erfolgt, wird dem Benutzer vom v2.0-Endpunkt eine allgemeine Meldung angezeigt. |

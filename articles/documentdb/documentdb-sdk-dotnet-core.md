@@ -1,24 +1,25 @@
 ---
 title: Azure DocumentDB .NET Core-API, -SDK und -Ressourcen | Microsoft-Dokumentation
 description: "Wichtige Informationen zu .NET Core-API und .NET Core SDK einschließlich Terminen für Veröffentlichung und Außerbetriebnahme sowie Änderungen an den einzelnen Versionen des DocumentDB .NET Core SDK."
-services: documentdb
+services: cosmosdb
 documentationcenter: .net
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
 ms.assetid: f899b314-26ac-4ddb-86b2-bfdf05c2abf2
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 05/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: d5552615bfa663f4604e29839ecf8f5fc25c328f
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: cb53a57be75f89390312473a2c80923514b295c2
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/20/2017
 > * [Node.js](documentdb-sdk-node.md)
 > * [Java](documentdb-sdk-java.md)
 > * [Python](documentdb-sdk-python.md)
-> * [REST](https://docs.microsoft.com/en-us/rest/api/documentdb/)
+> * [REST](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
@@ -56,6 +57,15 @@ Das DocumentDB .NET Core SDK weist Funktionsparität mit der neuesten Version de
 
 > [!NOTE] 
 > Das DocumentDB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
+
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
+
+*    Es wurde Unterstützung für das Feature „Anforderungseinheiten pro Minute“ (RU/m) hinzugefügt.
+*    Es wurde Unterstützung für eine neue Konsistenzebene mit dem Namen „ConsistentPrefix“ hinzugefügt.
+*    Es wurde Unterstützung für Abfragemetriken für einzelne Partitionen hinzugefügt.
+*    Es wurde Unterstützung für die Größenbeschränkung des Fortsetzungstoken für Abfragen hinzugefügt.
+*    Es wurde Unterstützung für eine ausführlichere Ablaufverfolgung für Anforderungsfehler hinzugefügt.
+*    Es wurden einige Leistungsverbesserungen im SDK vorgenommen.
 
 ### <a name="a-name122122"></a><a name="1.2.2"/>1.2.2
 
@@ -107,6 +117,7 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.3.0](#1.3.0) |10. Mai 2017 |--- |
 | [1.2.2](#1.2.2) |19. April 2017 |--- |
 | [1.2.1](#1.2.1) |29. März 2017 |--- |
 | [1.2.0](#1.2.0) |25. März 2017 |--- |
@@ -117,6 +128,6 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 | [0.1.0-preview](#0.1.0-preview) |15. November 2016 |31. Dezember 2016 |
 
 ## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) . 
+Weitere Informationen zu Cosmos DB finden Sie auf der Seite zum Dienst [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/). 
 
 

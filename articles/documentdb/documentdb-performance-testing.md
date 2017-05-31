@@ -1,55 +1,56 @@
 ---
-title: DocumentDB-Skalierung und -Leistung | Microsoft Docs
-description: "Erfahren Sie, wie Sie Skalierungs- und Leistungstests mit Azure DocumentDB durchführen."
+title: Azure Cosmos DB-Skalierungs- und -Leistungstests | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Skalierungs- und Leistungstests mit Azure Cosmos DB durchführen."
 keywords: Leistungstests
-services: documentdb
+services: cosmosdb
 author: arramac
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 86bd591c26a58200dab9872e07e6e8bdf2522df9
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d662af5fcd78d88b02e7f21c4d2d2c6add1270bc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="performance-and-scale-testing-with-azure-documentdb"></a>Leistungs- und Skalierungstests mit Azure DocumentDB
-Leistungs- und Skalierungstests sind ein wichtiger Schritt bei der Entwicklung von Anwendungen. Die Datenbankebene hat bei vielen Anwendungen einen erheblichen Einfluss auf die allgemeine Leistung und Skalierbarkeit und ist daher eine wichtige Komponente von Leistungstests. [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) wurde speziell für die elastische Skalierung und vorhersagbare Leistung entwickelt und eignet sich deshalb hervorragend für Anwendungen, die eine leistungsstarke Datenbankebene benötigen. 
+# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
+Leistungs- und Skalierungstests sind ein wichtiger Schritt bei der Entwicklung von Anwendungen. Die Datenbankebene hat bei vielen Anwendungen einen erheblichen Einfluss auf die allgemeine Leistung und Skalierbarkeit und ist daher eine wichtige Komponente von Leistungstests. [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) wurde speziell für die flexible Skalierung und vorhersagbare Leistung entwickelt und eignet sich deshalb hervorragend für Anwendungen, die eine leistungsstarke Datenbankebene benötigen. 
 
-Dieser Artikel ist eine Referenz für Entwickler, die Leistungstestsammlungen für ihre DocumentDB-Workloads implementieren oder DocumentDB für leistungsstarke Anwendungsszenarien auswerten. Er konzentriert sich hauptsächlich auf isolierte Leistungstests der Datenbank, enthält jedoch auch bewährte Methoden für Produktionsanwendungen.
+Dieser Artikel ist eine Referenz für Entwickler, die Leistungstestsammlungen für ihre Cosmos DB-Workloads implementieren oder Cosmos DB für leistungsstarke Anwendungsszenarien auswerten. Er konzentriert sich hauptsächlich auf isolierte Leistungstests der Datenbank, enthält jedoch auch bewährte Methoden für Produktionsanwendungen.
 
 Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:   
 
-* Wo kann ich eine Beispiel-.NET-Clientanwendung für Leistungstests von Azure DocumentDB finden? 
-* Wie erreiche ich über meine Clientanwendung hohe Durchsätze mit Azure DocumentDB?
+* Wo kann ich eine Beispiel-.NET-Clientanwendung für Leistungstests von Cosmos DB finden? 
+* Wie erreiche ich über meine Clientanwendung hohe Durchsätze mit Cosmos DB?
 
-Sie können das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren zu beginnen. 
+Sie können das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren zu beginnen. 
 
 > [!NOTE]
-> Das Ziel dieser Anwendung ist die Veranschaulichung von bewährten Methoden, um mit einer geringeren Anzahl von Clientcomputern eine bessere Leistung für DocumentDB zu erzielen. Diese Anwendung soll nicht die Spitzenleistung des Diensts zeigen – dieser lässt sich grenzenlos skalieren.
+> Das Ziel dieser Anwendung ist die Veranschaulichung von bewährten Methoden, um mit einer geringeren Anzahl von Clientcomputern eine bessere Leistung für Cosmos DB zu erzielen. Diese Anwendung soll nicht die Spitzenleistung des Diensts zeigen – dieser lässt sich grenzenlos skalieren.
 > 
 > 
 
-Die clientseitigen Konfigurationsoptionen zur Verbesserung der Leistung von DocumentDB finden Sie unter [Tipps zur Leistungssteigerung für DocumentDB](documentdb-performance-tips.md).
+Die clientseitigen Konfigurationsoptionen zur Verbesserung der Leistung von Cosmos DB finden Sie unter [Tipps zur Leistungssteigerung für Azure Cosmos DB](documentdb-performance-tips.md).
 
 ## <a name="run-the-performance-testing-application"></a>Ausführen der Anwendung zur Leistungsüberprüfung
 Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompilieren und auszuführen, wie in den folgenden Schritten beschrieben. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Clientanwendungen ähneln.
 
-**Schritt 1:** Laden Sie das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie eine Verzweigung des GitHub-Repositorys.
+**Schritt 1:** Laden Sie das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie eine Verzweigung des GitHub-Repositorys.
 
 **Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für „EndpointUrl“, „AuthorizationKey“, „CollectionThroughput“ und „DocumentTemplate“ (optional).
 
 > [!NOTE]
-> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/) , um die Kosten pro Sammlung abschätzen zu können. DocumentDB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer DocumentDB-Sammlungen nach dem Testen löschen oder verringern.
+> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/) , um die Kosten pro Sammlung abschätzen zu können. Cosmos DB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer DocumentDB-Sammlungen nach dem Testen löschen oder verringern.
 > 
 > 
 
@@ -104,14 +105,14 @@ Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompiliere
 Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](documentdb-indexing-policies.md) und [Konsistenzebenen](documentdb-consistency-levels.md) ausprobieren, um die Auswirkungen auf Durchsatz und Latenz zu ermitteln. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer .NET-Konsolenanwendung die Leistung und Skalierung mit DocumentDB testen können. Weitere Informationen zu der Arbeit mit DocumentDB finden Sie unter den folgenden Links.
+In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer .NET-Konsolenanwendung die Leistung und Skalierung mit Cosmos DB testen können. Weitere Informationen zu der Arbeit mit Cosmos DB finden Sie unter den folgenden Links.
 
-* [Beispiel zu Leistungstests in DocumentDB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
-* [Clientkonfigurationsoptionen zur Verbesserung der Leistung von DocumentDB](documentdb-performance-tips.md)
-* [Serverseitige Partitionierung in DocumentDB](documentdb-partition-data.md)
+* [Beispiel zu Leistungstests in Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB](documentdb-performance-tips.md)
+* [Serverseitige Partitionierung in Azure Cosmos DB](documentdb-partition-data.md)
 * [DocumentDB-Sammlungen und -Leistungsstufen](documentdb-performance-levels.md)
 * [DocumentDB .NET SDK-Dokumentation auf MSDN](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net)
-* [DocumentDB-Blog zu Leistungstipps](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
+* [Azure Cosmos DB-Blog mit Leistungstipps](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
 
 

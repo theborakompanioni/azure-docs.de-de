@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
-ms.author: b-hoedid
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b996ed1889ec39de78dcee9bbcb18a5982fc5f7f
-ms.lasthandoff: 04/04/2017
+ms.author: LADocs; b-hoedid
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f68b27e007ad2de9e880f1fe0736d403f74dc80b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -46,12 +47,12 @@ Das Projekt musste zwei wesentliche Anforderungen erfüllen:
 
 ## <a name="how-we-solved-the-problem"></a>Lösung des Problems
 
-Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") gewählt. Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
+Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") gewählt (Cosmos DB verweist auf Datensätze als Dokumente). Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
 
-Eine weitere Anforderung war die endgültige Löschung von Datensätzen nach einem bestimmten Datum. DocumentDB verfügt über eine Eigenschaft namens [Time-To-Live (TTL)](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time-To-Live (TTL)") (Gültigkeitsdauer), mit der wir einen **Time-To-Live (TTL)** -Wert für die einzelnen Datensätze oder Sammlungen festlegen konnten. Durch diese Funktion müssen Datensätze in DocumentDB nicht mehr manuell gelöscht werden.
+Eine weitere Anforderung war die endgültige Löschung von Datensätzen nach einem bestimmten Datum. Cosmos DB verfügt über eine Eigenschaft namens [Gültigkeitsdauer](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Gültigkeitsdauer"), mit der wir einen Wert für **Gültigkeitsdauer** für die einzelnen Datensätze oder Sammlungen festlegen konnten. Dadurch müssen Datensätze in Cosmos DB nicht mehr manuell gelöscht werden.
 
 > [!IMPORTANT]
-> Zur Durchführung dieses Tutorials müssen Sie eine DocumentDB-Datenbank und zwei Sammlungen (Protokollierung und Fehler) erstellen.
+> Zur Durchführung dieses Tutorials müssen Sie eine Cosmos DB-Datenbank und zwei Sammlungen (Protokollierung und Fehler) erstellen.
 
 ## <a name="create-the-logic-app"></a>Erstellen der Logik-App
 
@@ -258,7 +259,7 @@ Hier sehen Sie den Logik-App-Quellcode zum Erstellen eines Fehlerdatensatzes:
 }             
 ```
 
-#### <a name="insert-error-into-documentdb--request"></a>Einfügen eines Fehlers in DocumentDB – Anforderung
+#### <a name="insert-error-into-cosmos-db--request"></a>Einfügen eines Fehlers in Cosmos DB: Anforderung
 
 ``` json
 
@@ -281,7 +282,7 @@ Hier sehen Sie den Logik-App-Quellcode zum Erstellen eines Fehlerdatensatzes:
 }
 ```
 
-#### <a name="insert-error-into-documentdb--response"></a>Einfügen eines Fehlers in DocumentDB – Antwort
+#### <a name="insert-error-into-cosmos-db--response"></a>Einfügen eines Fehlers in Cosmos DB: Antwort
 
 ``` json
 {
@@ -399,16 +400,16 @@ Nachdem Sie die Antwort erhalten haben, können Sie sie an die übergeordnete Lo
 ```
 
 
-## <a name="documentdb-repository-and-portal"></a>DocumentDB-Repository und Portal
+## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB-Repository und -Portal
 
-Mit unserer Lösung haben wir den Funktionsumfang von [DocumentDB](https://azure.microsoft.com/services/documentdb) erweitert.
+Mit unserer Lösung haben wir den Funktionsumfang von [Cosmos DB](https://azure.microsoft.com/services/documentdb) erweitert.
 
 ### <a name="error-management-portal"></a>Fehlerverwaltungsportal
 
-Sie können eine MVC-Web-App erstellen, mit der die Fehlerdatensätze aus DocumentDB angezeigt werden können. In der aktuellen Version sind die Vorgänge **Liste**, **Details**, **Bearbeiten** und **Löschen** enthalten.
+Sie können eine MVC-Web-App erstellen, mit der die Fehlerdatensätze aus Cosmos DB angezeigt werden können. In der aktuellen Version sind die Vorgänge **Liste**, **Details**, **Bearbeiten** und **Löschen** enthalten.
 
 > [!NOTE]
-> Beim Bearbeitungsvorgang ersetzt DocumentDB das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
+> Beim Bearbeitungsvorgang ersetzt Cosmos DB das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
 
 Im Anschluss finden Sie Beispiele für unsere MVC-App-Details, die auf der Grundlage des zuvor beschriebenen Konzepts erstellt wurden.
 
@@ -492,3 +493,4 @@ Den Quellcode für die API-Anwendung zur Logik-App-Ausnahmeverwaltung finden Sie
 * [Anzeigen weiterer Logik-App-Beispiele und -Szenarien](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Informationen zur Überwachung von Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Erstellen von automatisierten Bereitstellungsvorlagen für Logik-Apps](../logic-apps/logic-apps-create-deploy-template.md)
+

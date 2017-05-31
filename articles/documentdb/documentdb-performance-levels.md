@@ -1,31 +1,32 @@
 ---
-title: Leistungsebenen in DocumentDB | Microsoft Docs
-description: "Erfahren Sie, wie Sie mithilfe von Leistungsebenen in DocumentDB den Durchsatz pro Sammlung reservieren können."
-services: documentdb
+title: Leistungsebenen der DocumentDB-API | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie mithilfe von Leistungsebenen der DocumentDB-API den Durchsatz auf Containerbasis reservieren können."
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 7dc21c71-47e2-4e06-aa21-e84af52866f4
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 659d6bd63ea996af7b7b172f998884354e5d5858
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2f67166e95da9f47133f8856be4c7902da75b886
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="retiring-the-s1-s2-and-s3-performance-levels-in-documentdb"></a>Aussondern der Leistungsebenen S1, S2 und S3 in DocumentDB
+# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
 
 > [!IMPORTANT] 
-> Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue DocumentDB-Sammlungen nicht mehr verfügbar.
+> Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue DocumentDB-API-Konten nicht mehr verfügbar.
 >
 
 Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3. Es wird beschrieben, wie die Sammlungen, für die diese Leistungsebenen verwendet werden, am 1. August 2017 zu Sammlungen mit nur einer Partition migriert werden. Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
@@ -45,7 +46,7 @@ Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3.
 
 ## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Warum werden die Leistungsebenen S1, S2 und S3 ausgesondert?
 
-Die Leistungsebenen S1, S2 und S3 bieten nicht die Flexibilität wie DocumentDB-Sammlungen mit nur einer Partition. Bei den Leistungsebenen S1, S2 und S3 waren sowohl der Durchsatz als auch die Speicherkapazität voreingestellt. Mit DocumentDB können Sie den Durchsatz und den Speicher jetzt anpassen, sodass Sie viel flexibler skalieren können, wenn sich Ihre Anforderungen ändern.
+Die Leistungsebenen S1, S2 und S3 bieten nicht die Flexibilität wie DocumentDB-API-Sammlungen. Bei den Leistungsebenen S1, S2 und S3 waren sowohl der Durchsatz als auch die Speicherkapazität voreingestellt. Sie haben keine Elastizität bereitgestellt. Mit Azure Cosmos DB können Sie den Durchsatz und den Speicher jetzt anpassen, sodass Sie viel flexibler skalieren können, wenn sich Ihre Anforderungen ändern.
 
 <a name="compare"></a>
 
@@ -58,7 +59,7 @@ Die folgende Tabelle enthält einen Vergleich der Durchsatz- und Speicheroptione
 |Maximaler Durchsatz|Unbegrenzt|10.000 RU/s|250 RU/s|1.000 RU/s|2.500 RU/s|
 |Minimaler Durchsatz|2.500 RU/s|400 RU/s|250 RU/s|1.000 RU/s|2.500 RU/s|
 |Maximale Speichergröße|Unbegrenzt|10 GB|10 GB|10 GB|10 GB|
-|Preis|Durchsatz: 6 USD/100 RU/s<br><br>Speicher:&0;,25 USD/GB|Durchsatz: 6 USD/100 RU/s<br><br>Speicher:&0;,25 USD/GB|25 USD|50 USD|100 USD|
+|Preis|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|25 USD|50 USD|100 USD|
 
 Sind Sie EA-Kunde? Wenn ja, helfen Ihnen die Informationen unter [Inwieweit bin ich betroffen, wenn ich EA-Kunde bin?](#ea-customer) weiter.
 
@@ -66,7 +67,7 @@ Sind Sie EA-Kunde? Wenn ja, helfen Ihnen die Informationen unter [Inwieweit bin 
 
 ## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Was muss ich tun, um den unterbrechungsfreien Zugriff auf meine Daten sicherzustellen?
 
-Nichts. Die Migration wird von DocumentDB für Sie durchgeführt. Wenn Sie eine S1-, S2- oder S3-Sammlung verwenden, wird Ihre aktuelle Sammlung am 31. Juli 2017 zu einer Sammlung mit nur einer Partition migriert. 
+Nichts. Die Migration wird von Cosmos DB für Sie durchgeführt. Wenn Sie eine S1-, S2- oder S3-Sammlung verwenden, wird Ihre aktuelle Sammlung am 31. Juli 2017 zu einer Sammlung mit nur einer Partition migriert. 
 
 <a name="collection-change"></a>
 
@@ -78,7 +79,7 @@ Bei Verwendung einer S2-Sammlung wird die Migration zu einer Sammlung mit nur ei
 
 Bei Verwendung einer S3-Sammlung wird die Migration zu einer Sammlung mit nur einer Partition und 2.500 RU/s durchgeführt. Die Durchsatzstufe ändert sich für Sie nicht.
 
-In jedem dieser Fälle können Sie nach der Migration Ihrer Sammlung die Durchsatzstufe anpassen oder je nach Bedarf zentral hoch- oder herunterskalieren, um für Ihre Benutzer den Zugriff mit geringer Wartezeit zu ermöglichen. Um die Durchsatzstufe nach der Migration Ihrer Sammlung zu ändern, öffnen Sie im Azure-Portal einfach Ihr DocumentDB-Konto, klicken auf „Skalieren“, wählen Ihre Sammlung aus und passen dann die Durchsatzstufe an. Dies ist im folgenden Screenshot dargestellt:
+In jedem dieser Fälle können Sie nach der Migration Ihrer Sammlung die Durchsatzstufe anpassen oder je nach Bedarf zentral hoch- oder herunterskalieren, um für Ihre Benutzer den Zugriff mit geringer Wartezeit zu ermöglichen. Um die Durchsatzstufe nach der Migration Ihrer Sammlung zu ändern, öffnen Sie im Azure-Portal einfach Ihr Cosmos DB-Konto, klicken auf „Skalieren“, wählen Ihre Sammlung aus und passen dann die Durchsatzstufe an. Dies ist im folgenden Screenshot dargestellt:
 
 ![Skalieren des Durchsatzes im Azure-Portal](./media/documentdb-performance-levels/azure-documentdb-portal-scale-throughput.png)
 
@@ -94,7 +95,7 @@ Angenommen, Sie verfügen über zehn S1-Sammlungen mit jeweils 1 GB Speicher in 
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Welche Möglichkeiten habe ich, wenn ich mehr als 10 GB Speicher benötige?
 
-Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 10 GB Speicher verfügbar sind: Sie können das DocumentDB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md). Informationen dazu, wie Sie eine S1-, S2- oder S3-Sammlung oder eine Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren, finden Sie unter [Migrieren von Sammlungen mit nur einer Partition zu partitionierten Sammlungen](documentdb-partition-data.md#migrating-from-single-partition). 
+Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 10 GB Speicher verfügbar sind: Sie können das Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](documentdb-partition-data.md). Informationen dazu, wie Sie eine S1-, S2- oder S3-Sammlung oder eine Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren, finden Sie unter [Migrieren von Sammlungen mit nur einer Partition zu partitionierten Sammlungen](documentdb-partition-data.md#migrating-from-single-partition). 
 
 <a name="change-before"></a>
 
@@ -106,7 +107,7 @@ Nur für vorhandene Konten mit S1-, S2- und S3-Leistung können die Leitungseben
 
 ## <a name="how-will-i-know-when-my-collection-has-migrated"></a>Woran kann ich erkennen, dass meine Sammlung migriert wurde?
 
-Die Migration wird am 31. Juli 2017 durchgeführt. Wenn Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 verwenden, erhalten Sie vom DocumentDB-Team vor der Durchführung der Migration eine E-Mail. Nach Abschluss der Migration wird am 1. August 2017 im Azure-Portal angezeigt, dass für Ihre Sammlung Standard-Preise verwendet werden.
+Die Migration wird am 31. Juli 2017 durchgeführt. Wenn Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 verwenden, erhalten Sie vom Cosmos DB-Team vor der Durchführung der Migration eine E-Mail. Nach Abschluss der Migration wird am 1. August 2017 im Azure-Portal angezeigt, dass für Ihre Sammlung Standard-Preise verwendet werden.
 
 ![Sicherstellen, dass Ihre Sammlung zum Standard-Tarif migriert wurde](./media/documentdb-performance-levels/documentdb-portal-standard-pricing-applied.png)
 
@@ -118,11 +119,11 @@ Sie können von den Leistungsebenen S1, S2 und S3 die Migration zu Sammlungen mi
 
 **So migrieren Sie Sammlungen mit nur einer Partition über das Azure-Portal**
 
-1. Klicken Sie im [**Azure-Portal**](https://portal.azure.com) auf **NoSQL (DocumentDB)**, und wählen Sie das zu ändernde DocumentDB-Konto aus. 
+1. Klicken Sie im [**Azure-Portal**](https://portal.azure.com) auf **Azure Cosmos DB**, und wählen Sie dann das zu ändernde Cosmos DB-Konto aus. 
  
-    Wenn **NoSQL (DocumentDB)** in der Navigationsleiste nicht angezeigt wird, klicken Sie auf „>“, scrollen Sie zu **Datenbanken**, wählen Sie **NoSQL (DocumentDB)** und dann das DocumentDB-Konto aus.  
+    Wenn **Azure Cosmos DB** in der Navigationsleiste nicht angezeigt wird, klicken Sie auf „>“, scrollen Sie zu **Datenbanken**, wählen Sie **Azure Cosmos DB** und dann das DocumentDB-Konto aus.  
 
-2. Klicken Sie im Ressourcenmenü unter **Sammlungen** auf **Skalieren**, wählen Sie in der Dropdownliste die zu ändernde Sammlung aus, und klicken Sie dann auf **Tarif**. Für Konten mit vordefiniertem Durchsatz gilt der Tarif S1, S2 oder S3.  Klicken Sie auf dem Blatt **Preisstufe auswählen** auf **Standard**, um den benutzerdefinierten Durchsatz zu ändern, und anschließend auf **Auswählen**, um die Änderung zu speichern.
+2. Klicken Sie im Ressourcenmenü unter **Container** auf **Skalieren**, wählen Sie in der Dropdownliste die zu ändernde Sammlung aus, und klicken Sie dann auf **Tarif**. Für Konten mit vordefiniertem Durchsatz gilt der Tarif S1, S2 oder S3.  Klicken Sie auf dem Blatt **Preisstufe auswählen** auf **Standard**, um den benutzerdefinierten Durchsatz zu ändern, und anschließend auf **Auswählen**, um die Änderung zu speichern.
 
     ![Screenshot des Blatts „Einstellungen“, der veranschaulicht, wo Sie den Durchsatzwert ändern können](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
 
@@ -174,9 +175,9 @@ Besuchen Sie [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.doc
 EA-Kunden genießen bis zum Ablauf ihres aktuellen Vertrags Preissicherheit.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Preisen und der Datenverwaltung mit Azure DocumentDB finden Sie in folgenden Ressourcen:
+Weitere Informationen zu Preisen und der Datenverwaltung mit Azure Cosmos DB finden Sie in folgenden Ressourcen:
 
-1.    [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md): Es werden die Unterschiede zwischen Sammlungen mit nur einer Partition und partitionierten Sammlungen beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
-2.    [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/): Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
+1.    [Partitionierung von Daten in Cosmos DB](documentdb-partition-data.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
+2.    [Cosmos DB-Preise](https://azure.microsoft.com/pricing/details/documentdb/). Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
 3.    [Anforderungseinheiten](documentdb-request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.
-4.    [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md): Es wird beschrieben, wie Sie Ihre Daten für DocumentDB modellieren.
+

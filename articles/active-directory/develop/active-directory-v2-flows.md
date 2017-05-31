@@ -12,11 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/01/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 86055605be6fe264fcb53b26d87a36bcba568a53
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ab08c126b746ad6f8a835585b7e9773a505e8317
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -92,9 +95,9 @@ Eine Web-API kann Zugriffstoken von allen App-Typen empfangen, z.B. von Webserve
 
 ![Authentifizierungsablauf für eine Web-API](../../media/active-directory-v2-flows/convergence_scenarios_webapi.png)
 
-Weitere Informationen zu Autorisierungscodes und Aktualisierungstoken sowie die ausführlichen Schritte zum Abrufen von Zugriffstoken finden Sie im [OAuth 2.0-Protokoll](active-directory-v2-protocols-oauth-code.md).
-
 Informationen zum Schützen einer Web-API mithilfe von OAuth2-Zugriffstoken finden Sie in den Web-API-Codebeispielen im Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started).
+
+Oftmals müssen Web-APIs auch ausgehende Anforderungen an nachgelagerte Web-APIs stellen, die von Azure Active Directory geschützt werden.  Zu diesem Zweck können Web-APIs den Fluss **Im Namen von** von Azure AD nutzen, der der Web-API ermöglicht, ein eingehendes Zugriffstoken gegen ein anderes Zugriffstoken zu tauschen, das in ausgehenden Anforderungen verwendet werden soll.  Der Fluss „Im Namen von“ des v2.0-Endpunkts wird [hier detailliert beschrieben](active-directory-v2-protocols-oauth-on-behalf-of.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobile und native Apps
 Auf Geräten installierte Apps, z.B. mobile Apps und Desktop-Apps, benötigen häufig Zugriff auf Back-End-Dienste oder Web-APIs, die im Auftrag eines Benutzers Daten speichern und Funktionen ausführen. Diese Apps können sich mithilfe des [OAuth 2.0-Autorisierungscodeflusses](active-directory-v2-protocols-oauth-code.md) bei Back-End-Diensten anmelden und die Autorisierung hinzufügen.
@@ -112,7 +115,7 @@ Bei diesem Ablauf empfängt die App Token direkt vom v2.0-Autorisierungsendpunkt
 
 Um dieses Szenario in Aktion zu sehen, testen Sie eines der Codebeispiele für Single-Page-Apps im Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started).
 
-### <a name="daemons-and-server-side-apps"></a>Daemons und serverseitige Apps
+## <a name="daemons-and-server-side-apps"></a>Daemons und serverseitige Apps
 Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff ausgeführt werden, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen.
 
 Bei diesem Ablauf erhält die App Token durch die direkte Interaktion mit dem `/token`-Endpunkt:
@@ -120,18 +123,4 @@ Bei diesem Ablauf erhält die App Token durch die direkte Interaktion mit dem `/
 ![Authentifizierungsablauf für Daemon-Apps](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
 Informationen zum Erstellen einer Daemon-App finden Sie in der Dokumentation zu Clientanmeldeinformationen im Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started). Zudem können Sie auch eine [.NET-Beispiel-App](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2) testen.
-
-## <a name="current-limitations"></a>Aktuelle Einschränkungen
-Derzeit werden die in diesem Abschnitt beschriebenen App-Typen vom v2.0-Endpunkt nicht unterstützt, dies ist jedoch in Planung. Weitere Einschränkungen für den v2.0-Endpunkt finden Sie unter [Sollte ich den v2.0-Endpunkt verwenden?](active-directory-v2-limitations.md).
-
-### <a name="chained-web-apis-on-behalf-of"></a>Verkettete Web-APIs (Im-Auftrag-von)
-Viele Architekturen umfassen eine Web-API, die eine weitere nachgeordnete Web-API aufrufen muss. Beide werden jeweils durch den v2.0-Endpunkt gesichert. Dieses Szenario kommt häufig bei nativen Clients mit Web-API-Back-End vor, das wiederum eine Instanz der Microsoft Online Services aufruft, z.B. Office 365 oder die Graph-API.
-
-Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0 JSON Web Token-Bearer (JWT) unterstützt werden, der auch als [„Im Auftrag von“-Ablauf](active-directory-v2-protocols.md) bezeichnet wird. Der „Im-Auftrag-von“-Ablauf ist im v2.0-Endpunkt derzeit noch nicht implementiert. Im [Im-Auftrag-von-Codebeispiel auf GitHub](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet) können Sie sich die Funktionsweise dieses Ablaufs im allgemein verfügbaren Azure AD-Dienst ansehen.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Anfügen eines Datenträgers an einen virtuellen Windows-Computer | Microsoft Docs"
-description: "Hier erhalten Sie Informationen zum Anfügen von neuen oder vorhandenen Datenträgern an einen virtuellen Windows-Computer im Azure-Portal mit dem Resource Manager-Bereitstellungsmodell."
+title: "Anfügen eines nicht verwalteten Datenträgers an einen virtuellen Windows-Computer – Azure | Microsoft-Dokumentation"
+description: "Hier erhalten Sie Informationen zum Anfügen eines neuen oder vorhandenen nicht verwalteten Datenträgers an einen virtuellen Windows-Computer im Azure-Portal mit dem Resource Manager-Bereitstellungsmodell."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,70 +13,72 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 05/09/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3a3dce590013187e4136a65a47a10c9532321b1e
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
+ms.openlocfilehash: d02f92a8809efd6f58312af8cb40739299ea28f6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="how-to-attach-a-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal
-In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Windows-Computer anfügen können. Sie können auch [einen Datenträger an eine Linux-VM im Azure-Portal anfügen](../linux/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Lesen Sie die folgenden Tipps, bevor Sie mit diesem Vorgang fortfahren:
+# <a name="how-to-attach-an-unmanaged-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Anfügen eines nicht verwalteten Datenträgers an eine Windows-VM im Azure-Portal
 
-* Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene nicht verwaltete Datenträger an einen virtuellen Windows-Computer anfügen können. Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](./attach-disk-ps.md). Lesen Sie die folgenden Tipps, bevor Sie mit diesem Vorgang fortfahren:
+
+* Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md).
 * Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können Datenträger aus Premium- und aus Standard-Speicherkonten für diese virtuellen Computer verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Neue Datenträger werden von Azure beim Anfügen automatisch erstellt. Sie müssen den Datenträger also nicht manuell erstellen.
-* Bei einem bereits vorhandenen Datenträger muss die VHD-Datei in einem Azure-Speicherkonto verfügbar sein. Sie können eine bereits vorhandene VHD verwenden, die noch nicht an einen anderen virtuellen Computer angefügt wurde, oder eine eigene VHD-Datei in das Speicherkonto hochladen.
+
 
 Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](attach-disk-ps.md).
 
 
-
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im Menü „Hub“ auf **Virtuelle Computer**.
+2. Klicken Sie im Menü auf der linken Seite auf **Virtuelle Computer**.
 3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
-4. Klicken Sie auf dem Blatt „Virtuelle Computer“ unter **Zusammenfassung** auf **Datenträger**.
+4. Klicken Sie auf dem Blatt „Virtuelle Computer“ auf **Datenträger**.
    
-    ![Öffnen der Datenträgereinstellungen](./media/attach-disk-portal/find-disk-settings.png)
-
 Folgen Sie den Anweisungen zum Anfügen eines [neuen](#option-1-attach-a-new-disk) oder eines [vorhandenen](#option-2-attach-an-existing-disk) Datenträgers.
 
 ## <a name="option-1-attach-and-initialize-a-new-disk"></a>Option 1: Anfügen und Initialisieren eines neuen Datenträgers
-1. Klicken Sie auf dem Blatt **Datenträger** auf **Neuen anfügen**.
-2. Überprüfen und aktualisieren Sie nach Bedarf die Standardeinstellungen, und klicken Sie anschließend auf **OK**.
+1. Klicken Sie auf dem Blatt **Datenträger** auf **+ Datenträger anfügen**.
+2. Geben Sie auf dem Blatt **Verwalteten Datenträger anfügen** in **Name** einen Namen für den Datenträger ein, und wählen Sie in **Quelltyp** dann **Neu (leerer Datenträger)** aus.
+3. Klicken Sie unter **Speichercontainer** auf die Schaltfläche **Durchsuchen**, und wechseln Sie zum Speicherkonto und Container, in dem die neue virtuelle Festplatte gespeichert werden soll. Klicken Sie dann auf **Auswählen**. 
+  
+   ![Überprüfen der Datenträgereinstellungen](./media/attach-disk-portal/attach-empty-unmanaged.png)
    
-   ![Überprüfen der Datenträgereinstellungen](./media/attach-disk-portal/attach-new.png)
-3. Nachdem der Datenträger von Azure erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
+3. Wenn Sie mit den Einstellungen für den Datenträger fertig sind, klicken Sie auf **OK**.
+4. Zurück auf dem Blatt **Datenträger** klicken Sie auf **Speichern**, um den Datenträger der Konfiguration des virtuellen Computers hinzuzufügen.
+
 
 ### <a name="initialize-a-new-data-disk"></a>Initialisieren eines neuen Datenträgers
 
 1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen dazu finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-2. Öffnen Sie den **Server-Manager**, nachdem Sie sich auf dem virtuellen Computer angemeldet haben. Klicken Sie im linken Bereich auf **Datei- und Speicherdienste**.
-   
-    ![Server-Manager öffnen](./media/attach-disk-portal/fileandstorageservices.png)
-3. Erweitern Sie das Menü, und wählen Sie **Datenträger**.
-4. Im Abschnitt **Datenträger** werden die Datenträger aufgelistet. In den meisten Fällen sind darin Datenträger 0, Datenträger 1 und Datenträger 2 enthalten. Datenträger 0 ist der Betriebssystemdatenträger. Bei Datenträger 1 handelt es sich um den temporären Datenträger, und Datenträger 2 ist der Datenträger, den Sie gerade an den virtuellen Computer angefügt haben. Für den neuen Datenträger wird die Partition als **Unbekannt** aufgelistet. Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen Sie **Initialisieren** aus.
-5. Sie werden darüber informiert, dass alle Daten gelöscht werden, wenn der Datenträger initialisiert wird. Klicken Sie auf **Ja** , um die Warnung zu bestätigen und den Datenträger zu initialisieren. Wenn dieser Vorgang abgeschlossen ist, wird die Partition als **GPT** aufgeführt. Klicken Sie erneut mit der rechten Maustaste auf den Datenträger, und wählen Sie **Neues Volume**.
-6. Schließen Sie den Assistenten unter Verwendung der angegebenen Standardwerte ab. Sobald der Assistent fertig ist, wird ein neues Volume im Bereich **Volumes** aufgelistet. Der Datenträger ist jetzt online und zum Speichern von Daten bereit.
-
-    ![Volume erfolgreich initialisiert](./media/attach-disk-portal/newvolumecreated.png)
+1. Klicken Sie im virtuellen Computer auf **Start**, geben Sie **diskmgmt.msc** ein, und drücken Sie die **EINGABETASTE**. Dadurch wird das Snap-In „Datenträgerverwaltung“ gestartet.
+2. Die Datenträgerverwaltung erkennt, dass es einen neuen nicht initialisierten Datenträger gibt, weshalb das Fenster „Datenträger initialisieren“ eingeblendet wird.
+3. Stellen Sie sicher, dass der neue Datenträger ausgewählt ist, und klicken Sie auf **OK**, um ihn zu initialisieren.
+4. Der neue Datenträger wird jetzt als **Nicht zugeordnet** angezeigt. Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen **Neues einfaches Volume** aus. Der **Assistent zum Erstellen neuer einfacher Volumes** wird gestartet.
+5. Durchlaufen Sie den Assistenten, und behalten alle Standardeinstellungen bei. Klicken Sie abschließend auf **Fertig stellen**.
+6. Schließen Sie die Datenträgerverwaltung.
+7. In einem Popupfenster werden Sie informiert, dass Sie den neuen Datenträger formatieren müssen, ehe Sie ihn verwenden können. Klicken Sie auf **Datenträger formatieren**.
+8. Überprüfen Sie im Dialogfeld **Neuen Datenträger formatieren** die Einstellungen, und klicken Sie dann auf **Starten**.
+9. Sie erhalten die Warnung, dass bei Formatierung des Datenträgers alle Daten gelöscht werden. Klicken Sie auf **OK**.
+10. Wenn die Formatierung abgeschlossen ist, klicken Sie auf **OK**.
 
 
 ## <a name="option-2-attach-an-existing-disk"></a>Option 2: Anfügen eines vorhandenen Datenträgers
-1. Klicken Sie auf dem Blatt **Datenträger** auf **Vorhandenen anfügen**.
-2. Klicken Sie unter **Vorhandenen Datenträger anfügen** auf **VHD-Datei**.
-   
-   ![Anfügen eines vorhandenen Datenträgers](./media/attach-disk-portal/attach-existing.png)
-3. Wählen Sie unter **Speicherkonten**das Konto und den Container aus, der die VHD-Datei enthält.
-   
-   ![Suchen nach VHD-Dateien](./media/attach-disk-portal/find-storage-container.png)
-4. Wählen Sie die VHD-Datei aus.
-5. Die ausgewählte Datei wird unter **Vorhandenen Datenträger anfügen** und dort unter **VHD-Datei** angezeigt. Klicken Sie auf **OK**.
-6. Nachdem der Datenträger von Azure an den virtuellen Computer angefügt wurde, wird er in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
+1. Klicken Sie auf dem Blatt **Datenträger** auf **+ Datenträger anfügen**.
+2. Klicken Sie auf dem Blatt **Nicht verwalteten Datenträger anfügen** in **Quelltyp** auf **Vorhandenes Blob**.
 
+    ![Überprüfen der Datenträgereinstellungen](./media/attach-disk-portal/attach-existing-unmanaged.png)
+
+    3. Klicken Sie auf **Durchsuchen**, und navigieren Sie zum Speicherkonto und Container, in dem sich die vorhandene virtuellen Festplatte befindet. Klicken Sie auf die virtuelle Festplatte und dann auf **Auswählen**.
+4. Klicken Sie auf dem Blatt **Nicht verwalteten Datenträger anfügen** auf **OK**.
+5. Zurück auf dem Blatt **Datenträger** klicken Sie auf **Speichern**, um den Datenträger der Konfiguration des virtuellen Computers hinzuzufügen.
+   
 
 
 ## <a name="use-trim-with-standard-storage"></a>Verwenden von TRIM mit dem Standardspeicher

@@ -1,6 +1,6 @@
 ---
-title: Datenkonvertierung auf IoT-Gateway mit Azure IoT-Gateway-SDK | Microsoft-Dokumentation
-description: "Verwenden Sie IoT-Gateway, um das Format der Sensordaten über ein benutzerdefiniertes Modul aus dem Azure IoT-Gateway-SDK zu konvertieren."
+title: Datenkonvertierung auf IoT-Gateway mit Azure IoT Edge | Microsoft-Dokumentation
+description: "Verwenden Sie IoT-Gateway, um das Format der Sensordaten über ein benutzerdefiniertes Modul aus Azure IoT Edge zu konvertieren."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,21 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: d7897f1a7eee5fbb04cf43da0d0156a6b8fb11f6
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7bf9e64db91cb0fec37ff242bea94dbbd0833054
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-gateway-sdk"></a>Verwenden des IoT-Gateways für die Transformation von Sensordaten mit dem Azure IoT-Gateway-SDK
+# <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>Verwenden des IoT-Gateways für die Transformation von Sensordaten mit Azure IoT Edge
 
 > [!NOTE]
 > Stellen Sie vor Beginn dieses Tutorials sicher, dass Sie die folgenden Lektionen der Reihe nach ausgeführt haben:
 > * [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
 > * [Verwenden von IoT-Gateway zum Verbinden von Geräten mit der Cloud: SensorTag mit Azure IoT Hub](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
-Ein Zweck eines Iot-Gateways ist das Verarbeiten gesammelter Daten vor dem Senden an die Cloud. Das Azure IoT-Gateway-SDK führt Module ein, die erstellt und zusammengesetzt werden können, um den Workflow der Datenverarbeitung zu bilden. Ein Modul empfängt eine Nachricht, führt eine Aktion daran aus und gibt sie zur Verarbeitung an andere Module weiter.
+Ein Zweck eines Iot-Gateways ist das Verarbeiten gesammelter Daten vor dem Senden an die Cloud. Azure IoT Edge führt Module ein, die erstellt und zusammengesetzt werden können, um den Workflow der Datenverarbeitung zu bilden. Ein Modul empfängt eine Nachricht, führt eine Aktion daran aus und gibt sie zur Verarbeitung an andere Module weiter.
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
@@ -39,7 +40,7 @@ Sie erfahren, wie Sie ein Modul erstellen, um Nachrichten von SensorTag in ein a
 
 * Erstellen Sie ein Modul, um eine empfangene Nachricht in das JSON-Format zu konvertieren.
 * Kompilieren Sie das Modul.
-* Fügen Sie das Modul der BLE-Beispielanwendung aus dem Azure IoT-Gateway-SDK hinzu.
+* Fügen Sie das Modul der BLE-Beispielanwendung aus Azure IoT Edge hinzu.
 * Führen Sie die Beispielanwendung aus.
 
 ## <a name="what-you-need"></a>Erforderliches Element
@@ -61,7 +62,7 @@ Sie erfahren, wie Sie ein Modul erstellen, um Nachrichten von SensorTag in ein a
    git clone https://github.com/Azure-Samples/iot-hub-c-intel-nuc-gateway-customized-module.git
    ```
 
-   Dies ist ein in der Programmiersprache C geschriebenes natives Azure-Gateway-SDK-Modul. Das Modul konvertiert das Format der empfangenen Nachrichten in das folgende Format:
+   Dies ist ein in der Programmiersprache C geschriebenes natives Azure IoT Edge-Modul. Das Modul konvertiert das Format der empfangenen Nachrichten in das folgende Format:
 
    ```json
    {"deviceId": "Intel NUC Gateway", "messageId": 0, "temperature": 0.0}

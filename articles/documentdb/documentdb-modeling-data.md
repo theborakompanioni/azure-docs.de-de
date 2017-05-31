@@ -1,28 +1,30 @@
 ---
-title: Modellieren von Daten in Azure DocumentDB | Microsoft Docs
-description: "Informationen zur Datenmodellierung für DocumentDB, eine  NoSQL-Dokumentdatenbank."
+title: Modellieren von Daten in Azure Cosmos DB | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Daten für Azure Cosmos DB, eine global verteile Datenbank mit mehreren Modellen, modellieren."
 keywords: Modellieren von Daten
-services: documentdb
+services: cosmosdb
 author: arramac
 manager: jhubbard
 editor: mimig1
 documentationcenter: 
 ms.assetid: 69521eb9-590b-403c-9b36-98253a4c88b5
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2016
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: 09f42bae67f794f12c7c37cd25c25f4c991fe893
-ms.openlocfilehash: 93d0d7276e4ff426e87bdc3dadd736de8d6525fb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 6c7a921ca6eb3a1e840c3020b6016d2cf1915d14
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="modeling-data-in-documentdb"></a>Modellieren von Daten in DocumentDB
-Schemafreie Datenbanken wie Azure DocumentDB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie die Verwendung und Verarbeitung Ihrer Daten sorgfältig bedenken. 
+# <a name="modeling-data-in-azure-cosmos-db"></a>Modellierung von Daten in Azure Cosmos DB
+Schemafreie Datenbanken wie Azure Cosmos DB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie die Verwendung und Verarbeitung Ihrer Daten sorgfältig bedenken. 
 
 Wie werden die Daten gespeichert? Wie wird Ihre Anwendung Daten abrufen und abfragen? Ist Ihre Anwendung lese- und schreibintensiv? 
 
@@ -35,7 +37,7 @@ Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wann bette ich Daten ein, und wann verknüpfe ich sie?
 
 ## <a name="embedding-data"></a>Einbetten von Daten
-Versuchen Sie beim ersten Modellieren von Daten in einer Dokumentenablage wie etwa DocumentDB Ihre Entitäten als **eigenständige Dokumente**, dargestellt im JSON-Format, zu behandeln.
+Versuchen Sie beim ersten Modellieren von Daten in einer Dokumentenablage wie etwa Azure Cosmos DB Ihre Entitäten als **eigenständige Dokumente**, dargestellt im JSON-Format, zu behandeln.
 
 Bevor wir uns stärker damit befassen, sehen Sie sich zunächst einmal genau an, wie Sie eine Entität in einer relationalen Datenbank modellieren, ein Konzept, mit dem viele von uns bereits vertraut sind. Das folgende Beispiel zeigt, wie eine Person in einer relationalen Datenbank gespeichert werden kann. 
 
@@ -181,10 +183,10 @@ Dabei kann es sich um das Aktienportfolio einer Person handeln. Wir haben uns da
 
 Die Aktie *zaza* kann jeden Tag mehrere Hundert Mal gehandelt werden, und Tausende Benutzer besitzen *zaza* in ihrem Portfolio. Bei einem Datenmodell wie dem obigen müssten wir viele Tausend Portfoliodokumente mehrmals täglich aktualisieren, was zu einem schlecht skalierbaren System führt. 
 
-## <a name="a-idreferareferencing-data"></a><a id="Refer"></a>Verweisen auf Daten
+## <a id="Refer"></a>Verweisen auf Daten
 Das Einbetten von Daten funktioniert somit in vielen Fällen gut, aber es ist klar, dass es Szenarien gibt, bei denen das Denormalisieren von Daten mehr Probleme verursacht als es wert ist. Was also können wir jetzt tun? 
 
-Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentendatenbank können sich die Informationen in einem Dokument befinden, das sich tatsächlich auf Daten in anderen Dokumenten bezieht. Ich befürworte nicht für eine Minute, dass wir Systeme in DocumentDB erstellen sollen, die besser für eine relationale Datenbank oder eine andere Dokumentendatenbank geeignet sind, aber einfache Beziehungen sind in Ordnung und können sehr nützlich sein. 
+Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentendatenbank können sich die Informationen in einem Dokument befinden, das sich tatsächlich auf Daten in anderen Dokumenten bezieht. Ich befürworte nicht für eine Minute, dass wir Systeme in Azure Cosmos DB erstellen sollen, die besser für eine relationale Datenbank oder eine andere Dokumentendatenbank geeignet sind, aber einfache Beziehungen sind in Ordnung und können sehr nützlich sein. 
 
 Im JSON-Abschnitt unten verwenden wir das vorherige Beispiel eines Aktienportfolios, aber dieses Mal verweisen wir auf den Aktieneintrag im Portfolio, anstatt ihn einzubetten. Auf diese Weise müssen wir nur dieses eine Aktiendokument aktualisieren, wenn sich der Aktieneintrag mehrmals am Tag ändert. 
 
@@ -230,7 +232,7 @@ Ein unmittelbarer Nachteil dieses Ansatzes besteht jedoch darin, dass, wenn Ihre
 > 
 
 ### <a name="what-about-foreign-keys"></a>Was ist mit Fremdschlüsseln?
-Da es derzeit kein Konzept für eine Einschränkung gibt, Fremdschlüssel oder anderweitig, sind alle Beziehungen zwischen Dokumenten in Dokumenten im Grunde "schwache Verknüpfungen" und werden nicht von der Datenbank selbst überprüft. Wenn Sie sicherstellen möchten, dass die Daten, auf die ein Dokument verweist, tatsächlich vorhanden sind, müssen Sie dies in der Anwendung durchführen oder serverseitige Trigger oder gespeicherte Prozeduren für DocumentDB verwenden.
+Da es derzeit kein Konzept für eine Einschränkung gibt, Fremdschlüssel oder anderweitig, sind alle Beziehungen zwischen Dokumenten in Dokumenten im Grunde "schwache Verknüpfungen" und werden nicht von der Datenbank selbst überprüft. Wenn Sie sicherstellen möchten, dass die Daten, auf die ein Dokument verweist, tatsächlich vorhanden sind, müssen Sie dies in der Anwendung durchführen oder serverseitige Trigger oder gespeicherte Prozeduren für Azure Cosmos DB verwenden.
 
 ### <a name="when-to-reference"></a>Wann Sie verweisen sollten
 Verwenden Sie in der Regel normalisierte Datenmodelle in den folgenden Fällen:
@@ -258,13 +260,13 @@ Sehen Sie sich den unten stehenden JSON-Code an, in dem Verleger und Bücher mod
     }
 
     Book documents:
-    {"id": "1", "name": "DocumentDB 101" }
-    {"id": "2", "name": "DocumentDB for RDBMS Users" }
+    {"id": "1", "name": "Azure Cosmos DB 101" }
+    {"id": "2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "3", "name": "Taking over the world one JSON doc at a time" }
     ...
-    {"id": "100", "name": "Learn about Azure DocumentDB" }
+    {"id": "100", "name": "Learn about Azure Cosmos DB" }
     ...
-    {"id": "1000", "name": "Deep Dive in to DocumentDB" }
+    {"id": "1000", "name": "Deep Dive in to Azure Cosmos DB" }
 
 Wenn die Anzahl der Bücher für jeden Verleger klein ist und nur über begrenztes Wachstum verfügt, kann es nützlich sein, den Buchverweis im Verlegerdokument zu speichern. Wenn die Anzahl der Bücher pro Verleger jedoch unbegrenzt ist, würde dieses Datenmodell zu veränderbaren, wachsenden Arrays führen, wie im obigen Verlegerbeispieldokument gezeigt. 
 
@@ -277,13 +279,13 @@ Durch ein paar Änderungen entsteht ein Modell, das weiterhin die gleichen Daten
     }
 
     Book documents: 
-    {"id": "1","name": "DocumentDB 101", "pub-id": "mspress"}
-    {"id": "2","name": "DocumentDB for RDBMS Users", "pub-id": "mspress"}
+    {"id": "1","name": "Azure Cosmos DB 101", "pub-id": "mspress"}
+    {"id": "2","name": "Azure Cosmos DB for RDBMS Users", "pub-id": "mspress"}
     {"id": "3","name": "Taking over the world one JSON doc at a time"}
     ...
-    {"id": "100","name": "Learn about Azure DocumentDB", "pub-id": "mspress"}
+    {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
     ...
-    {"id": "1000","name": "Deep Dive in to DocumentDB", "pub-id": "mspress"}
+    {"id": "1000","name": "Deep Dive in to Azure Cosmos DB", "pub-id": "mspress"}
 
 Im Beispiel oben haben wir die unbegrenzte Auflistung im Verlegerdokument gelöscht. Stattdessen haben wir nur einen Verweis zum Verleger in jedem Buchdokument.
 
@@ -299,11 +301,11 @@ Möglicherweise sind Sie versucht, dasselbe mit Dokumenten zu replizieren, wobei
     {"id": "a2", "name": "William Wakefield" }
 
     Book documents:
-    {"id": "b1", "name": "DocumentDB 101" }
-    {"id": "b2", "name": "DocumentDB for RDBMS Users" }
+    {"id": "b1", "name": "Azure Cosmos DB 101" }
+    {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
-    {"id": "b4", "name": "Learn about Azure DocumentDB" }
-    {"id": "b5", "name": "Deep Dive in to DocumentDB" }
+    {"id": "b4", "name": "Learn about Azure Cosmos DB" }
+    {"id": "b5", "name": "Deep Dive in to Azure Cosmos DB" }
 
     Joining documents: 
     {"authorId": "a1", "bookId": "b1" }
@@ -321,14 +323,14 @@ Stellen Sie sich einmal Folgendes vor:
     {"id": "a2", "name": "William Wakefield", "books": ["b1", "b4"]}
 
     Book documents: 
-    {"id": "b1", "name": "DocumentDB 101", "authors": ["a1", "a2"]}
-    {"id": "b2", "name": "DocumentDB for RDBMS Users", "authors": ["a1"]}
-    {"id": "b3", "name": "Learn about Azure DocumentDB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive in to DocumentDB", "authors": ["a2"]}
+    {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
+    {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
+    {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
+    {"id": "b4", "name": "Deep Dive in to Azure Cosmos DB", "authors": ["a2"]}
 
 Es gibt einen Autor, bei dem ich sofort weiß, welche Bücher er geschrieben hat, oder ich habe ein Buchdokument geladen, für das ich die IDs der Autoren kenne. Dadurch ersparen Sie sich Zwischenabfragen der Verknüpfungstabelle, wodurch wiederum die Anzahl der Serverroundtrips Ihrer Anwendung reduziert wird. 
 
-## <a name="a-idwrapupahybrid-data-models"></a><a id="WrapUp"></a>Hybriddatenmodelle
+## <a id="WrapUp"></a>Hybriddatenmodelle
 Wir haben jetzt gesehen wie Daten eingebettet (bzw. denormalisiert) werden und wie auf Daten verwiesen wird (bzw. wie sie normalisiert werden), und beide Modelle haben ihre Vor- und Nachteile. 
 
 Doch es muss nicht immer ein Entweder-oder geben. Trauen Sie sich, die Systeme etwas zu vermischen. 
@@ -364,7 +366,7 @@ Betrachten Sie das folgende JSON-Beispiel.
     Book documents:
     {
         "id": "b1",
-        "name": "DocumentDB 101",
+        "name": "Azure Cosmos DB 101",
         "authors": [
             {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
             {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "http://....png"}
@@ -372,7 +374,7 @@ Betrachten Sie das folgende JSON-Beispiel.
     },
     {
         "id": "b2",
-        "name": "DocumentDB for RDBMS Users",
+        "name": "Azure Cosmos DB for RDBMS Users",
         "authors": [
             {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
         ]
@@ -386,24 +388,19 @@ Wenn sich der Name des Autors ändert oder das Foto aktualisiert werden soll, m�
 
 Im Beispiel gibt es vorab **berechnete Aggregatwerte** , um sich die teure Verarbeitung eines Lesevorgangs zu ersparen. Im Beispiel werden einige der im Autorendokument eingebetteten Daten zur Laufzeit berechnet. Jedes Mal, wenn ein neues Buch veröffentlicht wird, wird ein Buchdokument erstellt, **und** das Feld „CountOfBooks“ wird auf einen berechneten Wert festgelegt, basierend auf der Anzahl der Buchdokumente, die für einen bestimmten Autor vorhanden sind. Diese Optimierung wäre in schreibintensiven Systemen gut, in denen wir uns Berechnungen für Schreibvorgänge leisten können, um Lesevorgänge zu optimieren.
 
-Die Möglichkeit über ein Modell mit vorab berechneten Felder zu verfügen, wird dank der Unterstützung von **Transaktionen mit mehreren Dokumenten** durch DocumentDB ermöglicht. Viele NoSQL-Speicher können keine Transaktionen über Dokumente hinweg durchführen und bevorzugen aufgrund dieser Einschränkung Entwurfsentscheidungen, wie z. B. "Immer alles einbetten". Mit DocumentDB können Sie serverseitige Trigger oder gespeicherte Prozeduren verwenden, mit denen Bücher eingefügt und Autoren in einer einzigen ACID-Transaktion aktualisiert werden. Sie **müssen** nicht alles in ein Dokument einbetten, nur um sicherzustellen, dass Ihre Daten konsistent bleiben.
+Die Möglichkeit über ein Modell mit vorab berechneten Felder zu verfügen, wird dank der Unterstützung von **Transaktionen mit mehreren Dokumenten** durch Azure Cosmos DB ermöglicht. Viele NoSQL-Speicher können keine Transaktionen über Dokumente hinweg durchführen und bevorzugen aufgrund dieser Einschränkung Entwurfsentscheidungen, wie z. B. "Immer alles einbetten". Mit Azure Cosmos DB können Sie serverseitige Trigger oder gespeicherte Prozeduren verwenden, mit denen Bücher eingefügt und Autoren in einer einzigen ACID-Transaktion aktualisiert werden. Sie **müssen** nicht alles in ein Dokument einbetten, nur um sicherzustellen, dass Ihre Daten konsistent bleiben.
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>Nächste Schritte
+## <a name="NextSteps"></a>Nächste Schritte
 Die wichtigsten Erkenntnisse dieses Artikels bestehen darin, dass die Datenmodellierung in einer schemafreien Welt genauso wichtig ist wie eh und je. 
 
 Es gibt genauso wenig einen einzigen Weg, um Daten auf einem Bildschirm darzustellen, wie es nur einen einzigen Weg gibt, Ihre Daten zu modellieren. Sie müssen Ihre Anwendung kennen und wissen, wie die Daten erstellt, verwendet und verarbeitet werden. Erst dann können Sie durch Anwenden von einigen der hier vorgestellten Richtlinien damit beginnen, ein Modell zu erstellen, das die unmittelbaren Anforderungen der Anwendung berücksichtigt. Wenn sich Ihre Anwendungen ändern müssen, können Sie die Flexibilität einer schemafreien Datenbank nutzen, um diese Änderung zu übernehmen und um das Datenmodell problemlos weiterzuentwickeln. 
 
-Weitere Informationen zu Azure DocumentDB finden Sie auf der [Dokumentationsseite](https://azure.microsoft.com/documentation/services/documentdb/) des Diensts. 
+Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Dokumentationsseite](https://azure.microsoft.com/documentation/services/documentdb/) des Diensts. 
 
-Informationen zum Optimieren von Indizes in Azure DocumentDB finden Sie im Artikel über die [Indizierungsrichtlinien](documentdb-indexing-policies.md).
+Informationen zum Optimieren von Indizes in Azure Cosmos DB finden Sie im Artikel über die [Indizierungsrichtlinien](documentdb-indexing-policies.md).
 
-Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf mehreren Partitionen finden Sie unter [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md). 
+Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf mehreren Partitionen finden Sie unter [Partitionieren von Daten in Azure Cosmos DB](documentdb-partition-data.md). 
 
-Anleitungen für die Datenmodellierung und das Sharding für mehrinstanzenfähige Anwendungen finden Sie unter [Skalieren einer mehrinstanzenfähigen Anwendung mit Azure DocumentDB](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+Anleitungen für die Datenmodellierung und das Sharding für mehrinstanzenfähige Anwendungen finden Sie unter [Skalieren einer mehrinstanzenfähigen Anwendung mit Azure Cosmos DB](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx).
 
 

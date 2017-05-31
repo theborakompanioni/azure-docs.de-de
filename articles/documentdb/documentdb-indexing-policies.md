@@ -1,31 +1,40 @@
 ---
-title: "Indizierungsrichtlinien für DocumentDB | Microsoft Docs"
-description: "Erfahren Sie, wie die Indizierung in DocumentDB funktioniert, und wie Sie die Indizierungsrichtlinie konfigurieren und ändern können. Konfigurieren Sie die Indizierungsrichtlinie innerhalb von DocumentDB für die automatische Indizierung und eine bessere Leistung."
-keywords: Funktionsweise von Indizierung,automatische Indizierung,Indizierungsdatenbank,DocumentDB,Azure,Microsoft Azure
-services: documentdb
+title: "Indizierungsrichtlinien für Azure Cosmos DB | Microsoft-Dokumentation"
+description: "Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB. In diesem Artikel wird das Konfigurieren und Ändern der Indizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung erläutert."
+keywords: Funktionsweise von Indizierung, automatische Indizierung, Indizierungsdatenbank
+services: cosmosdb
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: monicar
 ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 12/22/2016
+ms.date: 04/25/2017
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: bd77eaab1dbad95a70b6d08947f11d95220b8947
-ms.openlocfilehash: 818337dfb36ee4c84fa2543f7c54558287ead0e1
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: c64c7a058d8635223dadd21eea402d92656599b9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="documentdb-indexing-policies"></a>Indizierungsrichtlinien für DocumentDB
-Zwar lassen zahlreiche Kunden gerne alle Aspekte der Indizierung automatisch von Azure DocumentDB verwalten, DocumentDB unterstützt jedoch auch die Angabe einer benutzerdefinierten **Indizierungsrichtlinie** für Sammlungen während der Erstellung. Indizierungsrichtlinien in DocumentDB sind flexibler und leistungsfähiger als sekundäre Indizes, die in anderen Datenbankplattformen angeboten werden, da sie Ihnen das Entwerfen und Anpassen der Form des Indexes ohne Einbußen bei der Schemaflexibilität ermöglichen. Um zu erfahren, wie die Indizierung innerhalb von DocumentDB funktioniert, müssen Sie verstehen, dass Sie durch die Verwaltung der Indizierungsrichtlinie differenzierte Kompromisse zwischen dem Indexspeicheraufwand, dem Schreib- und Abfragedurchsatz und der Abfragekonsistenz vornehmen können.  
+# <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
-In diesem Artikel befassen wir uns eingehend mit DocumentDB-Indizierungsrichtlinien, der Anpassung der Indizierungsrichtlinie und den zugehörigen Vor- und Nachteilen. 
+Standardmäßig werden alle Azure Cosmos DB-Daten indiziert. Während sich zahlreiche Kunden gerne alle Aspekte der Indizierung automatisch von Azure Cosmos DB verwalten lassen, unterstützt Azure Cosmos DB jedoch auch die Angabe einer benutzerdefinierten **Indizierungsrichtlinie** für Sammlungen während der Erstellung. Indizierungsrichtlinien in Azure Cosmos DB sind flexibler und leistungsfähiger als sekundäre Indizes, die in anderen Datenbankplattformen angeboten werden, da sie Ihnen das Entwerfen und Anpassen der Form des Indexes ohne Einbußen bei der Schemaflexibilität ermöglichen. Um zu erfahren, wie die Indizierung innerhalb von Azure Cosmos DB funktioniert, müssen Sie verstehen, dass Sie durch die Verwaltung der Indizierungsrichtlinie differenzierte Kompromisse zwischen dem Indexspeicheraufwand, dem Schreib- und Abfragedurchsatz und der Abfragekonsistenz vornehmen können.  
+
+**Indizieren von Daten in Azure Cosmos DB für die einzelnen Datenmodelle**
+
+|   |DocumentDB-API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tabellen-API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graph-API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      MongoDB-API|
+|---|-----------------|--------------|-------------|---------------|
+|Indizierungsoptionen|Verwenden Sie die Standardeinstellung, und indizieren Sie alle Daten. <br><br> Oder [erstellen Sie benutzerdefinierte Indizierungsrichtlinien](#CustomizingIndexingPolicy).|
+|Indizierungsmodi|[Konsistent, Verzögert oder Keine](#indexing-modes).|
+
+In diesem Artikel befassen wir uns eingehend mit Azure Cosmos DB-Indizierungsrichtlinien, der Anpassung der Indizierungsrichtlinie und den zugehörigen Vor- und Nachteilen. 
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
@@ -36,11 +45,11 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wie vergleiche ich die Speicherung und Leistung verschiedener Indizierungsrichtlinien?
 
 ## <a id="CustomizingIndexingPolicy"></a> Anpassen der Indizierungsrichtlinie einer Sammlung.
-Entwickler können die Kompromisse zwischen Speicher, Schreib-/Abfrageleistung und Abfragekonsistenz durch Überschreiben der Standardindizierungsrichtlinie in einer DocumentDB-Sammlung und durch Konfigurieren die folgenden Aspekte anpassen.
+Entwickler können die Kompromisse zwischen Speicher, Schreib-/Abfrageleistung und Abfragekonsistenz durch Überschreiben der Standardindizierungsrichtlinie in einer Azure Cosmos DB-Sammlung und durch Konfigurieren der folgenden Aspekte anpassen.
 
 * **Ein-/Auschließen von Dokumenten und Pfaden in den/aus dem Index**. Entwickler können bestimmte Dokumente zum Zeitpunkt des Einfügens oder Ersetzens in der Sammlung ausschließen oder einschließen. Entwickler können auch bestimmte JSON-Eigenschaften – auch als „Pfade“ bezeichnet – (einschließlich Platzhaltermustern) bei der Indizierung in Dokumenten ein- bzw. ausschließen, die in einem Index enthalten sind.
 * **Konfigurieren verschiedener Indextypen**. Für jeden eingeschlossenen Pfad können Entwickler auch den erforderlichen Indextyp über Sammlung angeben, die auf ihren Daten basiert, sowie die erwartete Abfrage-Workload und Systemlast und die numerische/Zeichenfolge-„Genauigkeit“ für jeden Pfad.
-* **Konfigurieren von Indexaktualisierungsmodi**. DocumentDB unterstützt drei Indizierungsmodi, welche über die Indizierungsrichtlinie in einer DocumentDB-Sammlung konfiguriert werden können: Konsistent, Verzögert und Keine. 
+* **Konfigurieren von Indexaktualisierungsmodi**. Azure Cosmos DB unterstützt drei Indizierungsmodi, welche über die Indizierungsrichtlinie in einer Azure Cosmos DB-Sammlung konfiguriert werden können: Konsistent, Verzögert und Keine. 
 
 Mit dem folgenden .NET-Codeausschnitt wird gezeigt, wie eine benutzerdefinierte Indizierungsrichtlinie während der Erstellung einer Sammlung festgelegt wird. Hier wird die Richtlinie mit dem Bereichsindex für Zeichenfolgen und Zahlen mit maximaler Genauigkeit festgelegt. Mit dieser Richtlinie können Order By-Abfragen für Zeichenfolgen ausgeführt werden.
 
@@ -55,25 +64,25 @@ Mit dem folgenden .NET-Codeausschnitt wird gezeigt, wie eine benutzerdefinierte 
 > [!NOTE]
 > Das JSON-Schema für die Indizierungsrichtlinie wurde mit der Veröffentlichung der REST-API-Version 2015-06-03 geändert, um Bereichsindizes für Zeichenfolgen zu unterstützen. .NET SDK 1.2.0 und Java, Python und Node.js SDKs 1.1.0 unterstützen das neue Richtlinienschema. Für ältere SDKs wird die REST-API-Version 2015-04-08 genutzt und das ältere Schema der Indizierungsrichtlinie unterstützt.
 > 
-> Standardmäßig indiziert DocumentDB alle Zeichenfolgeneigenschaften in Dokumenten konsistent mit einem Hashindex und numerische Eigenschaften mit einem Bereichsindex.  
+> Standardmäßig indiziert Azure Cosmos DB alle Zeichenfolgeneigenschaften in Dokumenten konsistent mit einem Hashindex und numerische Eigenschaften mit einem Bereichsindex.  
 > 
 > 
 
-### <a name="database-indexing-modes"></a>Datenbank-Indizierungsmodi
-DocumentDB unterstützt drei Indizierungsmodi, welche über die Indizierungsrichtlinie in einer DocumentDB-Sammlung konfiguriert werden können – Konsistent, Verzögert und Keine.
+### <a id="indexing-modes"></a>Datenbank-Indizierungsmodi
+Azure Cosmos DB unterstützt drei Indizierungsmodi, welche über die Indizierungsrichtlinie in einer Azure Cosmos DB-Sammlung konfiguriert werden können – Konsistent, Verzögert und Keine.
 
-**Konsistent**: Wenn die Richtlinie einer DocumentDB-Sammlung als „konsistent“ festgelegt ist, folgen die Abfragen für eine bestimmte DocumentDB-Sammlung derselben Konsistenzebene wie für die Punktlesevorgänge angegeben (d. h. „strong“, „bounded-staleness“, „session“ oder „eventual“). Der Index wird synchron im Rahmen der Aktualisierung des Dokuments (d. h. Einfügen, Ersetzen, Aktualisieren und Löschen eines Dokuments in einer DocumentDB-Sammlung) aktualisiert.  Die konsistente Indizierung unterstützt konsistente Abfragen auf Kosten einer möglichen Verringerung des Schreibdurchsatzes. Diese Verringerung ist eine Funktion der eindeutigen Pfade, die indiziert werden müssen, und der „Konsistenzebene“. Der konsistente Indizierungsmodus ist für Workloads mit schnellem Schreiben und sofortigem Abfragen vorgesehen.
+**Konsistent**: Wenn die Richtlinie einer Azure Cosmos DB-Sammlung als „konsistent“ festgelegt ist, folgen die Abfragen für eine bestimmte Azure Cosmos DB-Sammlung derselben Konsistenzebene wie für die Punktlesevorgänge angegeben (d. h. „strong“, „bounded-staleness“, „session“ oder „eventual“). Der Index wird synchron im Rahmen der Aktualisierung des Dokuments (d. h. Einfügen, Ersetzen, Aktualisieren und Löschen eines Dokuments in einer Azure Cosmos DB-Sammlung) aktualisiert.  Die konsistente Indizierung unterstützt konsistente Abfragen auf Kosten einer möglichen Verringerung des Schreibdurchsatzes. Diese Verringerung ist eine Funktion der eindeutigen Pfade, die indiziert werden müssen, und der „Konsistenzebene“. Der konsistente Indizierungsmodus ist für Workloads mit schnellem Schreiben und sofortigem Abfragen vorgesehen.
 
-**Verzögert**: Um den maximalen Dokumenterfassungsdurchsatz zu ermöglichen, kann eine DocumentDB-Sammlung mit verzögerter Konsistenz konfiguriert werden; d. h. Abfragen sind letztendlich konsistent. Der Index wird asynchron aktualisiert, wenn eine DocumentDB-Sammlung untätig ist, z. B. wenn die Durchsatzkapazität der Sammlung nicht vollständig mit dem Verarbeiten von Benutzeranforderungen ausgelastet ist. Für Workloads, die „jetzt erfassen, später abfragen“ und eine ungehinderte Dokumenterfassung erfordern, kann der „verzögerte“ Indizierungsmodus geeignet sein.
+**Verzögert**: Um den maximalen Dokumenterfassungsdurchsatz zu ermöglichen, kann eine Azure Cosmos DB-Sammlung mit verzögerter Konsistenz konfiguriert werden; d. h. Abfragen sind letztendlich konsistent. Der Index wird asynchron aktualisiert, wenn eine Azure Cosmos DB-Sammlung untätig ist, z. B. wenn die Durchsatzkapazität der Sammlung nicht vollständig mit dem Verarbeiten von Benutzeranforderungen ausgelastet ist. Für Workloads, die „jetzt erfassen, später abfragen“ und eine ungehinderte Dokumenterfassung erfordern, kann der „verzögerte“ Indizierungsmodus geeignet sein.
 
-**Keine**: Einer Sammlung mit dem Indexmodus „Keine“ ist kein Index zugeordnet. Diese Option wird häufig verwendet, wenn DocumentDB als Schlüssel-Wert-Speicher genutzt wird und auf Dokumente nur nach ihrer ID-Eigenschaft zugegriffen wird. 
+**Keine**: Einer Sammlung mit dem Indexmodus „Keine“ ist kein Index zugeordnet. Diese Option wird häufig verwendet, wenn Azure Cosmos DB als Schlüssel-Wert-Speicher genutzt wird und auf Dokumente nur nach ihrer ID-Eigenschaft zugegriffen wird. 
 
 > [!NOTE]
 > Das Konfigurieren der Indizierungsrichtlinie mit „Keine“ hat den Nebeneffekt, dass alle vorhandenen Indizes gelöscht werden. Verwenden Sie diese Option, wenn Ihre Zugriffsmuster nur „ID“ und/oder „Self-Link“ erfordern.
 > 
 > 
 
-Das folgende Beispiel zeigt die Erstellung einer DocumentDB-Sammlung mithilfe des .NET SDK mit konsistenter automatischer Indizierung bei jeder Dokumenteinfügung.
+Das folgende Beispiel zeigt die Erstellung einer Azure Cosmos DB-Sammlung mithilfe des .NET SDK mit konsistenter automatischer Indizierung bei jeder Dokumenteinfügung.
 
 Die folgende Tabelle zeigt die Konsistenz für Abfragen auf Grundlage des konfigurierten Indizierungsmodus (Konsistent und Verzögert) für die Sammlung und die für die Abfrageanforderung angegebene Konsistenzebene. Dies gilt für Abfragen mit beliebigen Schnittstellen – REST-API, SDKs aus gespeicherten Prozeduren und Triggern. 
 
@@ -84,7 +93,7 @@ Die folgende Tabelle zeigt die Konsistenz für Abfragen auf Grundlage des konfig
 |Sitzung|Sitzung|Letztlich (Eventual)|
 |Letztlich (Eventual)|Letztlich (Eventual)|Letztlich (Eventual)|
 
-DocumentDB gibt einen Fehler für Abfragen zurück, die für Sammlungen mit dem Indizierungsmodus „Keine“ ausgeführt wurden. Abfragen können immer noch als Scans über den expliziten Header `x-ms-documentdb-enable-scan` in der REST-API oder die Anforderungsoption `EnableScanInQuery` des .NET-SDKs ausgeführt werden. Einige Abfragefeatures wie ORDER BY werden als Scans mit `EnableScanInQuery`nicht unterstützt.
+Azure Cosmos DB gibt einen Fehler für Abfragen zurück, die für Sammlungen mit dem Indizierungsmodus „Keine“ ausgeführt wurden. Abfragen können immer noch als Scans über den expliziten Header `x-ms-documentdb-enable-scan` in der REST-API oder die Anforderungsoption `EnableScanInQuery` des .NET-SDKs ausgeführt werden. Einige Abfragefeatures wie ORDER BY werden als Scans mit `EnableScanInQuery`nicht unterstützt.
 
 Die folgende Tabelle zeigt die Konsistenz für Abfragen auf Grundlage des Indizierungsmodus (Konsistent, Verzögert und Keine) wenn „EnableScanInQuery“ angegeben wird.
 
@@ -95,7 +104,7 @@ Die folgende Tabelle zeigt die Konsistenz für Abfragen auf Grundlage des Indizi
 |Sitzung|Sitzung|Letztlich (Eventual)|Sitzung|
 |Letztlich (Eventual)|Letztlich (Eventual)|Letztlich (Eventual)|Letztlich (Eventual)|
 
-Das folgende Codebeispiel zeigt die Erstellung einer DocumentDB-Sammlung mithilfe des .NET SDK mit konsistenter Indizierung bei jeder Dokumenteinfügung.
+Das folgende Codebeispiel zeigt die Erstellung einer Azure Cosmos DB-Sammlung mithilfe des .NET SDK mit konsistenter Indizierung bei jeder Dokumenteinfügung.
 
      // Default collection creates a hash index for all string fields and a range index for all numeric    
      // fields. Hash indexes are compact and offer efficient performance for equality queries.
@@ -108,11 +117,11 @@ Das folgende Codebeispiel zeigt die Erstellung einer DocumentDB-Sammlung mithilf
 
 
 ### <a name="index-paths"></a>Indexpfade
-DocumentDB modelliert JSON-Dokumente und den Index als Strukturen und ermöglicht es Ihnen, die Richtlinien für Pfade innerhalb der Struktur zu optimieren. Weitere Informationen finden Sie in der [Einführung in die DocumentDB Indizierung](documentdb-indexing.md). Innerhalb von Dokumenten können Sie auswählen, welche Pfade bei der Indizierung ein- oder ausgeschlossen werden müssen. Dies kann bessere Schreibleistungen und geringeren Indexspeicherbedarf für Szenarien bieten, in denen die Abfragemuster im Voraus bekannt sind.
+Azure Cosmos DB modelliert JSON-Dokumente und den Index als Strukturen und ermöglicht es Ihnen, die Richtlinien für Pfade innerhalb der Struktur zu optimieren. Weitere Informationen finden Sie in der [Einführung in die Azure Cosmos DB-Indizierung](documentdb-indexing.md). Innerhalb von Dokumenten können Sie auswählen, welche Pfade bei der Indizierung ein- oder ausgeschlossen werden müssen. Dies kann bessere Schreibleistungen und geringeren Indexspeicherbedarf für Szenarien bieten, in denen die Abfragemuster im Voraus bekannt sind.
 
 Indexpfade beginnen mit dem Stamm (/) und enden in der Regel mit dem Platzhalterzeichen "?", das angibt, dass mehrere mögliche Werte für das Präfix verfügbar sind. Für SELECT * FROM Families F WHERE F.familyName = "Andersen" müssen Sie z. B. einen Indexpfad für /familyName/? in die Indexrichtlinie der Sammlung einbinden.
 
-Indexpfade können auch das Platzhalterzeichen *verwenden, um das Verhalten für Pfade rekursiv unter dem Präfix anzugeben. Beispielsweise kann „/payload/*“ dazu verwendet werden, um sämtliche Elemente unter der payload-Eigenschaft von der Indizierung auszuschließen.
+Indexpfade können auch das Platzhalterzeichen * verwenden, um das Verhalten für Pfade rekursiv unter dem Präfix anzugeben. Beispielsweise kann „/payload/*“ dazu verwendet werden, um sämtliche Elemente unter der payload-Eigenschaft von der Indizierung auszuschließen.
 
 Im Folgenden sind die allgemeinen Muster zum Angeben von Indexpfaden aufgeführt:
 
@@ -162,17 +171,17 @@ Nachdem wir uns mit der Angabe von Pfaden beschäftigt haben, wenden wir uns jet
 * Genauigkeit: 1–8 oder –1 (maximale Genauigkeit) für Zahlen, 1–100 (maximale Genauigkeit) für Zeichenfolgen
 
 #### <a name="index-kind"></a>Indexart
-DocumentDB unterstützt die Indextypen "Hash" und "Range" für alle Pfade (die für Zeichenfolgen, Zahlen oder beides konfiguriert sein können).
+Azure Cosmos DB unterstützt die Indextypen „Hash“ und „Range“ für alle Pfade (die für Zeichenfolgen, Zahlen oder beides konfiguriert sein können).
 
 * **Hash** unterstützt effiziente Gleichheits- und JOIN-Abfragen. In den meisten Fällen benötigen Hashindizes keine höhere Genauigkeit als den Standardwert von 3 Bytes. Der Datentyp kann „String“ oder „Number“ sein.
 * **Range** unterstützt effiziente Gleichheitsabfragen, Bereichsabfragen (mit >, <, >=, <=, !=) und Order By-Abfragen. Bei Order By-Abfragen muss standardmäßig auch die maximale Indexgenauigkeit (–1) angegeben werden. Der Datentyp kann „String“ oder „Number“ sein.
 
-DocumentDB unterstützt auch den Indextyp „Spatial“ für alle Pfade, die für den Datentyp „Point“, „Polygon“ oder „LineString“ angegeben werden können. Der Wert im angegebenen Pfad muss ein gültiges GeoJSON-Fragment wie `{"type": "Point", "coordinates": [0.0, 10.0]}`sein.
+Azure Cosmos DB unterstützt auch den Indextyp „Spatial“ für alle Pfade, die für den Datentyp „Point“, „Polygon“ oder „LineString“ angegeben werden können. Der Wert im angegebenen Pfad muss ein gültiges GeoJSON-Fragment wie `{"type": "Point", "coordinates": [0.0, 10.0]}`sein.
 
 * **Spatial** unterstützt effiziente räumliche Abfragen zur Entfernung und zu enthaltenen Elementen. Der Datentyp kann „Point“, „Polygon“ oder „LineString“ sein.
 
 > [!NOTE]
-> DocumentDB unterstützt die automatische Indizierung von Punkten, Polygonen und LineStrings.
+> Azure Cosmos DB unterstützt die automatische Indizierung von Punkten, Polygonen und LineStrings.
 > 
 > 
 
@@ -208,7 +217,7 @@ Das folgende Beispiel zeigt, wie die Genauigkeit für Bereichsindizes in einer S
 
 
 > [!NOTE]
-> DocumentDB gibt einen Fehler zurück, wenn in einer Abfrage "Order By" verwendet wird, aber kein Bereichsindex für den abgefragten Pfad mit maximaler Genauigkeit vorhanden ist. 
+> Azure Cosmos DB gibt einen Fehler zurück, wenn in einer Abfrage „Order By“ verwendet wird, aber kein Bereichsindex für den abgefragten Pfad mit maximaler Genauigkeit vorhanden ist. 
 > 
 > 
 
@@ -216,7 +225,7 @@ Auf ähnliche Weise können Pfade vollständig von der Indizierung ausgeschlosse
 
     var collection = new DocumentCollection { Id = "excludedPathCollection" };
     collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
+    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*" });
 
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
 
@@ -237,23 +246,23 @@ Das folgende Beispiel veranschaulicht z. B. das explizite Einbeziehen eines Dok
         new RequestOptions { IndexingDirective = IndexingDirective.Include });
 
 ## <a name="modifying-the-indexing-policy-of-a-collection"></a>Ändern der Indizierungsrichtlinie einer Sammlung
-DocumentDB ermöglicht Ihnen das dynamische Ändern der Indizierungsrichtlinie einer Sammlung. Eine Änderung der Indizierungsrichtlinie in einer DocumentDB-Sammlung kann zu einer Änderung in der Form des Index einschließlich der indizierbaren Pfade, deren Genauigkeit sowie des Konsistenzmodells des Index selbst führen. Eine Änderung der Indizierungsrichtlinie erfordert daher effektiv eine Transformation des alten Index in einen neuen. 
+Azure Cosmos DB ermöglicht Ihnen das dynamische Ändern der Indizierungsrichtlinie einer Sammlung. Eine Änderung der Indizierungsrichtlinie in einer Azure Cosmos DB-Sammlung kann zu einer Änderung in der Form des Index einschließlich der indizierbaren Pfade, deren Genauigkeit sowie des Konsistenzmodells des Index selbst führen. Eine Änderung der Indizierungsrichtlinie erfordert daher effektiv eine Transformation des alten Index in einen neuen. 
 
 **Onlineindextransformationen**
 
-![Funktionsweise der Indizierung – DocumentDB-Onlineindextransformationen](media/documentdb-indexing-policies/index-transformations.png)
+![Funktionsweise der Indizierung – Azure Cosmos DB-Onlineindextransformationen](media/documentdb-indexing-policies/index-transformations.png)
 
 Indextransformationen erfolgen online; das bedeutet, dass die gemäß der alten Richtlinien indizierten Dokumente effizient gemäß der neuen Richtlinie transformiert werden, **ohne dass Auswirkungen auf die Schreibverfügbarkeit oder den bereitgestellten Durchsatz** der Sammlung entstehen. Die Transformation hat keine Auswirkungen auf die Konsistenz der Lese- und Schreibvorgänge, die mithilfe der REST-API, SDKs oder innerhalb von gespeicherten Prozeduren und Triggern erfolgen. Dies bedeutet, dass es keine Leistungseinbußen oder Ausfallzeiten für Ihre Apps gibt, wenn Sie eine Indizierungsrichtlinie ändern.
 
 Abfragen sind jedoch unabhängig von der Indizierungsmoduskonfiguration („Konsistent“ oder „Verzögert“) während der Ausführung der Indextransformation letztendlich konsistent. Dies gilt auch für Abfragen über beliebige Schnittstellen – REST-API, SDKs oder innerhalb von gespeicherten Prozeduren und Triggern. Wie die verzögerte Indizierung wird auch die Indextransformation asynchron im Hintergrund auf den Replikaten mit den verfügbaren freien Ressourcen für ein bestimmtes Replikat ausgeführt. 
 
-Indextransformationen werden auch **direkt** vorgenommen, d. h. DocumentDB behält nicht zwei Kopien des Indexes bei, sondern tauscht den alten Index durch den neuen aus. Dies bedeutet, dass beim Durchführen von Indextransformationen in Ihren Sammlungen kein zusätzlicher Speicherplatz erforderlich ist oder belegt wird.
+Indextransformationen werden auch **direkt** vorgenommen, d. h. Azure Cosmos DB behält nicht zwei Kopien des Indexes bei, sondern tauscht den alten Index durch den neuen aus. Dies bedeutet, dass beim Durchführen von Indextransformationen in Ihren Sammlungen kein zusätzlicher Speicherplatz erforderlich ist oder belegt wird.
 
-Wenn Sie eine Indizierungsrichtlinie ändern, hängt die Anwendung der Änderungen Wechsel vom alten zum neuen Index stärker von den Indizierungmoduskonfigurationen ab als von den anderen Werten wie ein-/ausgeschlossene Pfade, Indexarten und Genauigkeiten. Wenn sowohl Ihre alten als auch die neuen Richtlinien konsistente Indizierung verwenden, führt DocumentDB eine Onlineindextransformation durch. Während der Ausführung der Transformation können Sie keine weitere Änderung der Indizierungsrichtlinie mit konsistentem Indizierungsmodus vornehmen.
+Wenn Sie eine Indizierungsrichtlinie ändern, hängt die Anwendung der Änderungen Wechsel vom alten zum neuen Index stärker von den Indizierungmoduskonfigurationen ab als von den anderen Werten wie ein-/ausgeschlossene Pfade, Indexarten und Genauigkeiten. Wenn sowohl Ihre alten als auch die neuen Richtlinien konsistente Indizierung verwenden, führt Azure Cosmos DB eine Onlineindextransformation durch. Während der Ausführung der Transformation können Sie keine weitere Änderung der Indizierungsrichtlinie mit konsistentem Indizierungsmodus vornehmen.
 
 Sie können jedoch in den Indizierungsmodus „Verzögert“ oder „Keine“ wechseln, während eine Transformation ausgeführt wird. 
 
-* Beim Wechsel zu „Verzögert“ erfolgt die Änderung der Indexrichtlinie effektiv sofort und DocumentDB beginnt mit dem erneuten asynchronen Erstellen des Index. 
+* Beim Wechsel zu „Verzögert“ erfolgt die Änderung der Indexrichtlinie effektiv sofort und Azure Cosmos DB beginnt mit dem erneuten asynchronen Erstellen des Index. 
 * Wenn Sie zu „Keine“ wechseln, wird der Index effektiv sofort verworfen. Der Wechseln zu „Keine“ ist nützlich, wenn Sie eine laufende Transformation abbrechen und mit einer anderen Indizierungsrichtlinie neu beginnen möchten. 
 
 Wenn Sie das .NET-SDK verwenden, können Sie die Änderung einer Indizierungsrichtlinie mit der neuen **ReplaceDocumentCollectionAsync**-Methode starten und den prozentualen Fortschritt der Indextransformation mithilfe der Response-Eigenschaft **IndexTransformationProgress** aus einem **ReadDocumentCollectionAsync**-Aufruf nachverfolgen. Andere SDKs und die REST-API unterstützen entsprechende Eigenschaften und Methoden Änderungen an Indizierungsrichtlinien.
@@ -298,10 +307,10 @@ Sie können den Index für eine Sammlung verwerfen, indem Sie in den Indizierung
 
     await client.ReplaceDocumentCollectionAsync(collection);
 
-Warum sollten Sie Änderungen an der Indizierungsrichtlinie Ihrer DocumentDB-Sammlungen vornehmen? Folgende Anwendungsfälle sind die gängigsten:
+Warum sollten Sie Änderungen an der Indizierungsrichtlinie Ihrer Azure Cosmos DB-Sammlungen vornehmen? Folgende Anwendungsfälle sind die gängigsten:
 
 * Bereitstellung konsistenter Ergebnisse während des normalen Betriebs, aber Reduzierung auf verzögerte Indizierung während Massendatenimporten
-* Einführung neuer Indizierungsfunktionen in Ihren aktuellen DocumentDB-Sammlungen, z. B. räumliche Abfragen, die den Indextyp "Spatial" erfordern, oder ORDER BY- und Zeichenfolgenbereich-Abfragen, die den neu eingeführten Zeichenfolgenindex-Typ "Range" erfordern.
+* Einführung neuer Indizierungsfunktionen in Ihren aktuellen Azure Cosmos DB-Sammlungen, z. B. räumliche Abfragen, die den Indextyp „Spatial“ erfordern, oder ORDER BY- und Zeichenfolgenbereich-Abfragen, die den neu eingeführten Zeichenfolgenindex-Typ „Range“ erfordern.
 * Manuelles Auswählen der zu indizierenden Eigenschaften und Änderungen dieser mit der Zeit
 * Optimieren der Indizierungsgenauigkeit zur Verbesserung der Abfrageleistung oder zum Reduzieren der Speicherbelegung
 
@@ -405,7 +414,7 @@ Für einen praktischen Vergleich folgen ein Beispiel für eine benutzerdefiniert
     }
 
 ## <a name="next-steps"></a>Nächste Schritte
-Verwenden Sie die unten angegebenen Links, um auf Beispiele für die Verwaltung der Indizierungsrichtlinie und weitere Informationen zur Abfragesprache von DocumentDB zuzugreifen.
+Verwenden Sie die unten angegebenen Links, um auf Beispiele für die Verwaltung der Indizierungsrichtlinie und weitere Informationen zur Abfragesprache von Azure Cosmos DB zuzugreifen.
 
 1. [Codebeispiele für die DocumentDB-.NET-Indexverwaltung](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
 2. [Vorgänge für DocumentDB-Dokumentauflistungen](https://msdn.microsoft.com/library/azure/dn782195.aspx)

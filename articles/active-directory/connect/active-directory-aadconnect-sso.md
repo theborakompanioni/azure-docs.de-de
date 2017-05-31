@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/08/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b3eebdd714b38ffd9432404944829d05ef3c3dc6
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2601850f99188445cf63a6a4f185bdc4ebb92c29
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -44,6 +44,12 @@ Wenn eine der oben genannten Bedingungen nicht erfüllt wird, wird der Benutzer 
 
 ![Nahtloses einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso1.png)
 
+Die anderen Funktionen des nahtlosen einmaligen Anmeldens lauten wie folgt:
+
+- Wenn eine (von einer Anwendung in Ihrem Mandanten ausgelöste) Azure AD-Anmeldeanforderung den Parameter `domain_hint` oder `login_hint` enthält, werden diese bei der nahtlosen einmaligen Anmeldung genutzt, sodass die Benutzer ihren Benutzernamen und ihr Kennwort nicht eingeben müssen.
+- Nahtloses einmaliges Anmelden unterstützt Benutzernamen, bei denen es sich entweder um den lokalen Benutzernamen (in der Regel „userPrincipalName“) oder ein anderes (als „Alternative ID“ bezeichnetes) Attribut handeln kann, das in Azure AD Connect konfiguriert ist.
+- Das nahtlose einmalige Anmelden ist ein opportunistisches Feature, d.h., wenn ein Fehler auftritt, wird auf die reguläre Benutzeranmeldung zurückgegriffen – die Benutzer müssen also ihr Kennwort auf der Anmeldeseite eingeben.
+
 ## <a name="whats-available-during-preview"></a>Was ist in der Preview-Version verfügbar?
 
 >[!NOTE]
@@ -63,8 +69,6 @@ Die nahtlose einmalige Anmeldung ist auf browserbasierten Clients und Office-Cli
 
 >[!NOTE]
 >Bei Windows 10 wird empfohlen, [Azure AD Join](../active-directory-azureadjoin-overview.md) zu verwenden, um eine optimale Funktionsweise von Azure AD sicherzustellen.
-
-Wenn eine Azure AD-Anmeldeanforderung die Parameter `domain_hint` oder `login_hint` enthält (initiiert von einer Anwendung in Ihrem Mandanten), werden diese bei der nahtlosen einmaligen Anmeldung genutzt, sodass die Benutzer ihren Benutzernamen und ihr Kennwort nicht eingeben müssen.
 
 ## <a name="how-does-azure-ad-seamless-sso-work"></a>Wie funktioniert die nahtlose einmalige Anmeldung mit Azure AD?
 
@@ -102,8 +106,8 @@ Wenn Sie die nahtlose einmalige Anmeldung mit Passthrough-Authentifizierung akti
 Wenn Sie die nahtlose einmalige Anmeldung mit Kennwortsynchronisierung aktivieren und es eine Firewall zwischen Azure AD Connect und Azure AD gibt, stellen Sie Folgendes sicher:
 
 - Der Azure AD Connect-Server kann mit `*.msappproxy.net`-URLs kommunizieren.
-- Azure AD Connect (Version 1.1.484.0 oder höher) kann über den Port 443 HTTPS-Anforderungen an Azure AD senden. Dieser wird nur zur Aktivierung der Funktion verwendet, nicht für die eigentlichen Benutzeranmeldungen.
-- Azure AD Connect kann auch direkte IP-Verbindungen zu den [IP-Bereichen des Azure-Rechenzentrums](https://www.microsoft.com/en-us/download/details.aspx?id=41653) herstellen. Auch diese Funktion wird nur für das Aktivieren des Features verwendet.
+- Azure AD Connect (Version 1.1.484.0 oder höher) kann über den Port 443 HTTPS-Anforderungen an Azure AD senden. Dieser wird nur zur Aktivierung des Features verwendet, nicht für die eigentlichen Benutzeranmeldungen.
+- Azure AD Connect kann auch direkte IP-Verbindungen zu den [IP-Bereichen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herstellen. Auch dies wird nur zum Aktivieren des Features verwendet.
 
 >[!NOTE]
 > Ältere Versionen von Azure AD Connect (vor 1.1.484.0) müssen über Port 9090 mit Azure AD kommunizieren können.
@@ -120,9 +124,9 @@ Wenn bereits eine Installation von Azure AD Connect vorhanden ist, richten Sie d
 
 ![Azure AD Connect – Benutzeranmeldung ändern](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
-Fahren Sie mit dem Installations-Assistenten fort, bis Sie zu der Seite „Einmaliges Anmelden aktivieren“ gelangen. Für jede AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie die nahtlose einmalige Anmeldung aktivieren möchten, müssen Sie die Anmeldeinformationen des Domänenadministrators angeben. Beachten Sie, dass die Anmeldeinformationen des Domänenadministrators nicht in Azure AD Connect oder Azure AD gespeichert werden, sondern nur zur Erstellung des Computerkontos und zur Konfiguration der Kerberos-SPNs verwendet werden, wie zuvor beschrieben wurde.
+Fahren Sie mit dem Assistenten fort, bis Sie zur Seite „Einmaliges Anmelden aktivieren“ gelangen. Für jede AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie die nahtlose einmalige Anmeldung aktivieren möchten, müssen Sie die Anmeldeinformationen des Domänenadministrators angeben. Beachten Sie, dass die Anmeldeinformationen des Domänenadministrators nicht in Azure AD Connect oder Azure AD gespeichert werden, sondern nur zur Erstellung des Computerkontos und zur Konfiguration der Kerberos-SPNs verwendet werden, wie zuvor beschrieben wurde.
 
-Nun ist die nahtlose einmalige Anmeldung für Ihren Mandanten aktiviert. Beachten Sie, dass Sie erst die Schritte im nächsten Abschnitt durchführen müssen, bevor Ihre Benutzer von dieser Funktion profitieren können.
+Nach Abschluss des Assistenten ist nahtloses einmaliges Anmelden für Ihren Mandanten aktiviert. Beachten Sie, dass Sie erst die Schritte im nächsten Abschnitt durchführen müssen, bevor Ihre Benutzer von dieser Funktion profitieren können.
 
 ## <a name="rolling-the-feature-out-to-your-users"></a>Bereitstellen der Funktion für Ihre Benutzer
 
@@ -142,10 +146,10 @@ Da die für die nahtlose einmalige Anmeldung verwendeten Azure AD-URLs einen Pun
 ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso6.png)  
 4. Aktivieren Sie die Richtlinie, und geben Sie die folgenden Werte bzw. Daten in das Dialogfeld ein. Hierbei handelt es sich um die Azure AD-URLs, an die die Kerberos-Tickets gesendet werden.
 
-        Value: https://autologon.microsoftazuread-sso.com  
-        Data: 1  
-        Value: https://aadg.windows.net.nsatc.net  
-        Data: 1  
+        Value: https://autologon.microsoftazuread-sso.com
+        Data: 1
+        Value: https://aadg.windows.net.nsatc.net
+        Data: 1
 5. Klicken Sie zweimal nacheinander auf **OK******.
 
 Diese sollte wie folgt aussehen:
@@ -155,29 +159,26 @@ Diese sollte wie folgt aussehen:
 >[!NOTE]
 >Standardmäßig verwendet Chrome den gleichen Satz vertrauenswürdiger Website-URLs wie Internet Explorer. Wenn Sie andere Einstellungen für Chrome konfiguriert haben, müssen Sie diese Einstellungen separat aktualisieren.
 
-## <a name="troubleshooting-seamless-sso"></a>Behebung von Problemen in Bezug auf die nahtlose einmalige Anmeldung
+## <a name="disabling-azure-ad-seamless-sso"></a>Deaktivieren des nahtlose einmaligen Anmeldens mit Azure AD
 
-Verwenden Sie die folgende Checkliste zur Behebung von Problemen in Bezug auf die nahtlose einmalige Anmeldung:
+Nahtloses einmaliges Anmelden mit Azure AD kann über Azure AD Connect deaktiviert werden.
 
-1. Überprüfen Sie, ob die Funktion zur nahtlosen einmaligen Anmeldung für Ihren Mandanten im Azure AD Connect-Tool aktiviert ist. Wenn Sie die Funktion (z.B. aufgrund eines blockierten Ports) nicht aktivieren können, vergewissern Sie sich, dass Sie alle [Voraussetzungen](#pre-requisites) erfüllen. Wenn die Probleme in Verbindung mit der Aktivierung der Funktion weiterhin bestehen, wenden Sie sich an den Microsoft-Support.
-2. Beide Dienst-URLs („https://autologon.microsoftazuread-sso.com“ und „https://aadg.windows.net.nsatc.net“) sind als Teil der Intranetzoneneinstellungen definiert.
-3. Stellen Sie sicher, dass der Unternehmensdesktop mit der AD-Domäne verknüpft ist.
-4. Stellen Sie sicher, dass der Benutzer mit einem AD-Domänenkonto beim Desktop angemeldet ist.
-5. Stellen Sie sicher, dass das Benutzerkonto aus einer AD-Gesamtstruktur stammt, in der das nahtlose einmalige Anmelden eingerichtet wurde.
-6. Stellen Sie sicher, dass der Desktop mit dem Unternehmensnetzwerk verbunden ist.
-7. Stellen Sie sicher, dass die Uhrzeit des Desktops mit der Uhrzeit von Active Directory und der der Domänencontroller synchronisiert ist und diese nicht mehr als 5 Minuten voneinander abweichen.
-8. Bereinigen Sie Ihren Desktop von vorhandenen Kerberos-Tickets. Dies lässt sich durch Ausführung des Befehls **klist-Bereinigung** über eine Eingabeaufforderung erreichen.
-9. Überprüfen Sie die Protokolle der Konsole des Browsers (unter „Entwicklertools“), um potenzielle Probleme zu ermitteln.
+Führen Sie Azure AD Connect aus, wählen Sie „Benutzeranmeldung ändern“, und klicken Sie auf „Weiter“. Deaktivieren Sie dann die Option „Einmaliges Anmelden aktivieren“. Setzen Sie den Assistenten fort. Nach Abschluss des Assistenten ist nahtloses einmaliges Anmelden für Ihren Mandanten deaktiviert. Allerdings wird auf dem Bildschirm die folgende Meldung angezeigt:
 
-### <a name="domain-controller-logs"></a>Domänencontrollerprotokolle
+„Das einmalige Anmelden (SSO) ist jetzt deaktiviert, aber zur Bereinigung müssen manuell zusätzliche Schritte ausgeführt werden. Weitere Informationen“
 
-Wenn die erfolgreiche Überwachung auf Ihrem Domänencontroller aktiviert ist, wird bei jeder nahtlosen einmaligen Anmeldung durch einen Benutzer ein Sicherheitseintrag (das dem Computerkonto **AzureADSSOAcc$** zugeordnete Ereignis 4769) im Ereignisprotokoll erfasst. Sie können diese Sicherheitsereignisse mithilfe der folgenden Abfrage abrufen:
+Diese manuellen Schritte müssen ausgeführt werden:
 
-```
-    <QueryList>
-      <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
-      </Query>
-    </QueryList>
-```
+- Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die nahtloses einmaliges Anmelden aktiviert wurde.
+  - Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Ein Fenster sollte eingeblendet werden, in das Sie Ihre Anmeldeinformationen als Azure AD-Mandantenadministrator eingeben.
+  - Rufen Sie `Get-AzureADSSOStatus` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen dieses Feature aktiviert ist.
+- Löschen Sie das Computerkonto AZUREADSSOACCT manuell aus jeder AD-Gesamtstruktur, die Sie in der Liste finden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Lesen Sie unsere [Anleitung zur Problembehandlung](active-directory-aadconnect-troubleshoot-sso.md), um zu erfahren, wie Sie häufig auftretende Probleme mit nahtlosem einmaligen Anmelden mit Azure AD beheben.
+
+## <a name="feedback"></a>Feedback
+
+Ihr Feedback ist uns sehr wichtig. Geben Sie etwaige Fragen in den nachstehenden Abschnitt „Kommentare“ ein. Nutzen Sie unser [UserVoice-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect), um sich neue Features zu wünschen.
 

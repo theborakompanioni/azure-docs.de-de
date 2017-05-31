@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: e28c1410145d8da168a73e74251ac037997d1752
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 197df490690754730425231f358fde31d17dcfad
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -45,7 +45,7 @@ B2B-Workloads umfassen Geldtransaktionen wie Aufträge und Rechnungen. Bei Notfa
 
 4. Die Geschäftskontinuität im Logic Apps-Integrationskonto unterstützt X12, AS2 und EDIFACT basierend auf B2B-Protokollen.  Ausführliche Anweisungen erhalten Sie durch Auswählen der entsprechenden Links.
 
-5. Es wird empfohlen, alle Ressourcen der primären Region auch in einer sekundären Region bereitzustellen. Zu den Ressourcen der primären Region gehören Azure SQL-Datenbank oder Azure DocumentDB, Azure Service Bus/Azure Event Hubs für Messaging, Azure API Management sowie die Logik-Apps-Funktion von Azure App Service.   
+5. Es wird empfohlen, alle Ressourcen der primären Region auch in einer sekundären Region bereitzustellen. Zu den Ressourcen der primären Region gehören Azure SQL-Datenbank oder Azure Cosmos DB, Azure Service Bus/Azure Event Hubs für Messaging, Azure API Management sowie die Logik-Apps-Funktion von Azure App Service.   
 
 6. Stellen Sie eine Verbindung zwischen der primären Region und der sekundären Region her. Erstellen Sie eine Logik-App in einer sekundären Region, um den Ausführungsstatus per Pull von der primären Region abzurufen. Sie muss einen Trigger und eine Aktion enthalten. Der Trigger muss mit dem Integrationskonto der primären Region verbunden werden. Die Aktion muss mit dem Integrationskonto der sekundären Region verbunden werden. Basierend auf dem angegebenen Zeitintervall fragt der Trigger die Ausführungsstatustabelle der primären Region ab und ruft gegebenenfalls die neuen Datensätze per Pull ab. Die Aktion aktualisiert sie im Integrationskonto der sekundären Region. Mit diesem Prozess wird der inkrementelle Laufzeitstatus der primären Region in die sekundäre Region übertragen.
 

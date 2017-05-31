@@ -17,10 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: dd14d137c23fbccb3616b60db8a63e668ae7ea80
-ms.lasthandoff: 01/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 624bdc7877d5048da08897f868272fd8e8f3f7b6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -38,16 +39,16 @@ In diesem Tutorial machen Sie sich zuerst mit den Grundlagen des [IoT Gateway St
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>Lektion 1: Konfigurieren Ihres NUC-Geräts
-![Lektion&1;: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
+![Lektion 1: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
 
-In dieser Lektion richten Sie Intel NUC (Next Unit of Computing) im Kit als Azure IoT Gateway ein, installieren das Azure IoT Gateway SDK-Paket auf dem NUC und führen eine Beispiel-App aus, um die Gatewayfunktionalität zu überprüfen.
+In dieser Lektion richten Sie Intel NUC (Next Unit of Computing) im Kit als Azure IoT Gateway ein, installieren das Azure IoT Edge-Paket auf dem NUC und führen eine Beispiel-App aus, um die Gatewayfunktionalität zu überprüfen.
 
 *Geschätzter Zeitaufwand*: 15 Minuten.
 
 [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
 
 ## <a name="lesson-2-create-your-iot-hub"></a>Lektion 2: Erstellen des IoT Hub
-![Lektion&2;: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
+![Lektion 2: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
 
 In dieser Lektion installieren Sie die Tools und Software auf dem Hostcomputer. Anschließend erstellen Sie ein kostenloses Azure-Konto, stellen Ihren Azure IoT Hub bereit und erstellen Ihr erstes Gerät im IoT Hub.
 
@@ -68,7 +69,7 @@ Erstellen Sie Ihre Ressourcengruppe, stellen Sie Ihren ersten Azure IoT Hub bere
 Wechseln Sie zu [Erstellen eines IoT Hub und Registrieren Ihres Geräts](iot-hub-gateway-kit-c-lesson2-register-device.md).
 
 ## <a name="lesson-3-receive-messages-from-sensortag-and-read-messages-from-your-iot-hub"></a>Lektion 3: Empfangen von Nachrichten von SensorTag und Lesen von Nachrichten von Ihrem IoT Hub
-In dieser Lektion verwenden Sie Skripts zum Automatisieren der Konfiguration und der Ausführung einer BLE-Beispielanwendung in Ihrem Gateway. Für solche Anwendungen wird eine Modulsammlung zum Aggregieren und Transformieren von Daten, Verarbeiten von Befehlen oder Durchführen einer beliebigen Zahl von verwandten Aufgaben verwendet. Die Module kommunizieren miteinander über einen Nachrichtenbroker. Die Beispielanwendung verfügt über ein BLE-Modul und ein IoT Hub-Modul. Das BLE-Modul empfängt Daten vom BLE SensorTag. Das IoT Hub-Modul packt die empfangenen Daten und sendet sie über das Gatewayframework, das über das Azure IoT Gateway SDK bereitgestellt wird, an Ihren IoT Hub.
+In dieser Lektion verwenden Sie Skripts zum Automatisieren der Konfiguration und der Ausführung einer BLE-Beispielanwendung in Ihrem Gateway. Für solche Anwendungen wird eine Modulsammlung zum Aggregieren und Transformieren von Daten, Verarbeiten von Befehlen oder Durchführen einer beliebigen Zahl von verwandten Aufgaben verwendet. Die Module kommunizieren miteinander über einen Nachrichtenbroker. Die Beispielanwendung verfügt über ein BLE-Modul und ein IoT Hub-Modul. Das BLE-Modul empfängt Daten vom BLE SensorTag. Das IoT Hub-Modul packt die empfangenen Daten und sendet sie über das Gatewayframework, das über Azure IoT Edge bereitgestellt wird, an Ihren IoT Hub.
 
 ![Lektion 3: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson3.png)
 

@@ -1,30 +1,31 @@
 ---
-title: "Bereitstellen von Durchsatz für Azure DocumentDB | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie bereitgestellten Durchsatz für Ihre DocumentDB-Sammlung festlegen."
-services: documentdb
+title: "Bereitstellen von Durchsatz für Azure Cosmos DB | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie bereitgestellten Durchsatz für Ihre Azure Cosmos DB-Sammlung festlegen."
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: f98def7f-f012-4592-be03-f6fa185e1b1e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: abdf0af8a85db19c68a0d74c0477d798c0fd03fc
-ms.openlocfilehash: 8ff2fc6106438e35b93112a6dc97814ba79b06fc
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 5258ba0bc37442c983d91c5dd7435fd5fbefd56f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="set-throughput-for-azure-documentdb-collections"></a>Festlegen von Durchsatz für Azure DocumentDB-Sammlungen
+# <a name="set-throughput-for-azure-cosmos-db-collections"></a>Festlegen von Durchsatz für Azure Cosmos DB-Sammlungen
 
-Sie können den Durchsatz für Ihre DocumentDB-Sammlungen im Azure-Portal oder mithilfe der Clients-SDKs festlegen. 
+Sie können den Durchsatz für Ihre Azure Cosmos DB-Sammlungen im Azure-Portal oder mithilfe der Clients-SDKs festlegen. 
 
 In der folgenden Tabelle sind die für Sammlungen verfügbaren Durchsätze aufgeführt:
 
@@ -54,8 +55,8 @@ In der folgenden Tabelle sind die für Sammlungen verfügbaren Durchsätze aufge
 ## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Festlegen des Durchsatzes mithilfe des Azure-Portals
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in einem neuen Fenster.
-2. Klicken Sie in der linken Leiste auf **NoSQL (DocumentDB)**, oder klicken Sie unten auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, und klicken Sie dann auf **NoSQL (DocumentDB)**.
-3. Wählen Sie Ihr DocumentDB-Konto aus.
+2. Klicken Sie in der linken Leiste auf **Azure Cosmos DB**, oder klicken Sie unten auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, und klicken Sie dann auf **Azure Cosmos DB**.
+3. Wählen Sie Ihr Cosmos DB-Konto aus.
 4. Klicken Sie wie im folgenden Screenshot gezeigt im neuen Fenster unter **Sammlungen** auf **Scale** (Staffelung).
 5. Wählen Sie im neuen Fenster aus der Dropdownliste Ihre Sammlung aus, ändern Sie den Wert **Durchsatz**, und klicken Sie anschließend auf **Speichern**.
 
@@ -83,9 +84,9 @@ await client.ReplaceOfferAsync(offer);
 
 **Kann der Durchsatz auf unter 400 RU/s festgelegt werden?**
 
-400 RU/s ist der in DocumentDB verfügbare minimale Durchsatz für Sammlungen mit nur einer Partition (2.500 RU/s ist der minimale Durchsatz für partitionierte Sammlungen). Die Anforderungseinheiten werden in Intervallen von 100 RU/s festgelegt, der Durchsatz kann jedoch nicht auf 100 RU/s oder einen anderen Wert unter 400 RU/s festgelegt werden. Wenn Sie nach einer kostengünstigen Methode zum Entwickeln und Testen von DocumentDB suchen, können Sie den kostenlosen [DocumentDB-Emulator](documentdb-nosql-local-emulator.md) verwenden, der lokal kostenfrei bereitgestellt werden kann. 
+400 RU/s ist der in Cosmos DB verfügbare minimale Durchsatz für Sammlungen mit nur einer Partition (2500 RU/s ist der minimale Durchsatz für partitionierte Sammlungen). Die Anforderungseinheiten werden in Intervallen von 100 RU/s festgelegt, der Durchsatz kann jedoch nicht auf 100 RU/s oder einen anderen Wert unter 400 RU/s festgelegt werden. Wenn Sie nach einer kostengünstigen Methode zum Entwickeln und Testen von Cosmos DB suchen, können Sie den kostenlosen [Azure Cosmos DB-Emulator](documentdb-nosql-local-emulator.md) verwenden, der lokal kostenfrei bereitgestellt werden kann. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Bereitstellung und zur weltweiten Skalierung mit DocumentDB finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
+Weitere Informationen zur Bereitstellung und zur weltweiten Skalierung mit Cosmos DB finden Sie unter [Partitionieren und Skalieren von Daten in Cosmos DB](documentdb-partition-data.md).
 

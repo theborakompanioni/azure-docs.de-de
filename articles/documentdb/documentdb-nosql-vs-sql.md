@@ -1,14 +1,14 @@
 ---
-title: Wann sollten NoSQL und SQL verwendet werden? | Microsoft Docs
-description: "Informieren Sie sich über die Vorteile, die die Verwendung nicht relationaler NoSQL-Lösungen gegenüber SQL-Lösungen bietet. Finden Sie heraus, ob sich Ihr Szenario am besten mit einem Microsoft Azure NoSQL-Dienst oder mit einer SQL Server-Lösung umsetzen lässt."
+title: NoSQL im Vergleich zu SQL und Azure Cosmos DB | Microsoft-Dokumentation
+description: "Informieren Sie sich über die Vorteile, die die Verwendung nicht relationaler NoSQL-Lösungen gegenüber SQL-Lösungen und Azure Cosmos DB bietet. Erfahren Sie, wie Azure Cosmos DB die Vorteile von NoSQL und SQL bereitstellt."
 keywords: nosql vs sql, when to use NoSQL, sql vs nosql
-services: documentdb
+services: cosmosdb
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 71ef1798-d709-4ccb-9f5c-57948fb96229
-ms.service: documentdb
+ms.service: cosmosdb
 ms.custom: overview
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -16,14 +16,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 84b0b4121e8fc10bdfd3b5daf7fff280dc301d28
-ms.lasthandoff: 11/17/2016
-
+redirect_url: https://aka.ms/cosmosdb
+ROBOTS: NOINDEX, NOFOLLOW
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 9062bbc9b7ae2f3f38bf55d3e37986238a145819
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 ---
-# <a name="nosql-vs-sql"></a>NoSQL im Vergleich zu SQL
+# <a name="nosql-vs-sql-and-azure-cosmos-db"></a>NoSQL im Vergleich zu SQL und Azure Cosmos DB
 SQL Server und relationale Datenbanken (RDBMS) werden seit über 20 Jahren erfolgreich eingesetzt. Da jedoch immer größere Datenmengen und immer unterschiedlichere Datentypen mit immer höherer Geschwindigkeit verarbeitet werden müssen, haben sich die Datenspeicheranforderungen für Anwendungsentwickler geändert. Um diese neuen Anforderungen zu erfüllen, erfreuen sich NoSQL-Datenbanken immer größerer Beliebtheit, mit denen unstrukturierte und heterogene Daten im jeweils erforderlichen Umfang gespeichert werden können. Für die meisten Entwickler sind relationale Datenbanken die Standardoption, da eine Tabellenstruktur leicht verständlich und vertraut ist, aber es gibt zahlreiche Gründe, über den Tellerrand relationaler Datenbanken hinweg zu schauen.
 
 Bei NoSQL handelt es sich um eine Datenbankkategorie, die sich erheblich von SQL-Datenbanken unterscheidet. NoSQL wird häufig im Zusammenhang mit „Nicht SQL“-Datenverwaltungssystemen oder einem Ansatz an die Datenverwaltung verwendet, der „nicht nur SQL“ beinhaltet. Die NoSQL-Kategorie umfasst eine Reihe von Technologien, darunter u. a. Dokumentdatenbanken, Schlüsselwertspeicher, spaltenbasierte Speicher und Diagrammdatenbanken, die häufig bei Gaming-Apps, sozialen Apps und IoT-Apps eingesetzt werden.
@@ -41,7 +43,7 @@ Wie würden Sie diese Daten speichern? Wenn Sie mit SQL vertraut sind, beginnen 
 
 So weit, so gut. Machen Sie sich nun einmal Gedanken über die Struktur eines einzelnen Beitrags, und wie Sie ihn anzeigen können. Wenn Sie den Beitrag und die zugehörigen Bilder, Audio- und Videoinhalte, Kommentare, Punkte und Benutzerinformationen auf einer Website oder in einer Anwendung anzeigen möchten, müssten Sie eine Abfrage mit acht Tabellenjoins ausführen, um die Inhalte abzurufen. Stellen Sie sich jetzt einen Stream aus Beiträgen vor, die dynamisch geladen und auf dem Bildschirm angezeigt werden. Dabei wird schnell klar, dass Tausende von Abfragen und eine Vielzahl von Joins erforderlich sind, um die Aufgabe auszuführen.
 
-Jetzt könnten Sie eine relationale Lösung wie SQL Server verwenden, um Daten zu speichern und sie mit Joins abzufragen, da SQL [als JSON formatierte](https://msdn.microsoft.com/library/dn921897.aspx) dynamische Daten unterstützt – es gibt jedoch eine weitere Möglichkeit, eine NoSQL-Option, die den Ansatz für dieses spezielle Szenario vereinfacht. Indem Sie ein einzelnes Dokument wie das folgende verwenden und in DocumentDB speichern, einem Azure NoSQL-Dokumentdatenbank-Dienst, können Sie die Leistung steigern und den gesamten Beitrag mit einer einzigen Abfrage und ohne Joins abrufen. Dieser Ansatz ist einfacher und ermöglicht es Ihnen, eine höhere Leistung zu erzielen.
+Jetzt könnten Sie eine relationale Lösung wie SQL Server verwenden, um Daten zu speichern und sie mit Joins abzufragen, da SQL [als JSON formatierte](https://msdn.microsoft.com/library/dn921897.aspx) dynamische Daten unterstützt – es gibt jedoch eine weitere Möglichkeit, eine NoSQL-Option, die den Ansatz für dieses spezielle Szenario vereinfacht. Indem Sie ein einzelnes Dokument wie das folgende verwenden und in Azure Cosmos DB speichern, einem Azure NoSQL-Dokumentdatenbank-Dienst, können Sie die Leistung steigern und den gesamten Beitrag mit einer einzigen Abfrage und ohne Joins abrufen. Dieser Ansatz ist einfacher und ermöglicht es Ihnen, eine höhere Leistung zu erzielen.
 
     {
         "id":"ew12-res2-234e-544f",
@@ -70,7 +72,7 @@ Diese Lösung kann anschließend mit weiteren Azure-Diensten erweitert werden:
 * [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) kann zum Speichern enorm großer Datenmengen (z.B. Anmeldeinformationen) sowie von Daten zum Analysieren der Nutzung eingesetzt werden.
 * Mit [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) können Sie wichtige Einblicke und Feedback zum Prozess erhalten, um die richtigen Inhalte für die richtigen Benutzer bereitzustellen.
 
-Diese Social Engagement-Website ist nur ein Szenario, in dem eine NoSQL-Datenbank das ideale Datenmodell ist. Weitere Informationen zu diesem Szenario und zum Erstellen eines Datenmodells für DocumentDB in Anwendungen für soziale Medien finden Sie unter [Going social with DocumentDB (DocumentDB für soziale Medien)](documentdb-social-media-apps.md). 
+Diese Social Engagement-Website ist nur ein Szenario, in dem eine NoSQL-Datenbank das ideale Datenmodell ist. Weitere Informationen zu diesem Szenario und zum Erstellen eines Datenmodells für Azure Cosmos DB in Anwendungen für soziale Medien finden Sie unter [Soziale Medien mit Azure Cosmos DB](documentdb-social-media-apps.md). 
 
 ## <a name="nosql-vs-sql-comparison"></a>NoSQL und SQL im Vergleich
 In der folgenden Tabelle sind die wesentlichen Unterschiede zwischen NoSQL und SQL aufgeführt. 
@@ -82,18 +84,18 @@ Wenn sich Ihre Anforderungen am besten mit einer NoSQL-Datenbank erfüllen lasse
 ## <a name="what-are-the-microsoft-azure-nosql-offerings"></a>Welche NoSQL-Angebote gibt es von Microsoft Azure?
 Azure bietet vier vollständig verwaltete NoSQL-Dienste: 
 
-* [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)
+* [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)
 * [Azure Table Storage](https://azure.microsoft.com/services/storage/)
 * [Azure HBase als Teil von HDInsight](https://azure.microsoft.com/services/hdinsight/)
 * [Azure Redis Cache](https://azure.microsoft.com/services/cache/)
 
 Nachfolgend sind die wichtigsten Unterscheidungsmerkmale der einzelnen Dienste dargestellt. Mit welchem Dienst lassen sich die Anforderungen Ihrer Anwendung am besten erfüllen? 
 
-![NoSQL im Vergleich zu SQL: wann sollten die NoSQL-Angebote von Microsoft Azure (einschließlich DocumentDB, Table Storage, HBase als Teil von HDInsight und Redis Cache) verwendet werden?](./media/documentdb-nosql-vs-sql/nosql-vs-sql-documentdb-storage-hbase-hdinsight-redis-cache.png)
+![NoSQL im Vergleich zu SQL: wann sollten die NoSQL-Angebote von Microsoft Azure (einschließlich Azure Cosmos DB, Table Storage, HBase als Teil von HDInsight und Redis Cache) verwendet werden?](./media/documentdb-nosql-vs-sql/nosql-vs-sql-documentdb-storage-hbase-hdinsight-redis-cache.png)
 
 Wenn Ihre Anwendungsanforderungen mit mehreren Diensten erfüllt werden können, finden Sie in den folgenden Themen weitere Informationen: 
 
-* [DocumentDB-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) und [DocumentDB use cases](documentdb-use-cases.md) (DocumentDB-Anwendungsfälle)
+* [Azure Cosmos DB-Anwendungsfälle](documentdb-use-cases.md)
 * [Get started with Azure table storage (Erste Schritte mit Azure Table Storage)](../storage/storage-dotnet-how-to-use-tables.md)
 * [What is HBase in HDInsight (Was ist HBase in HDInsight?)](../hdinsight/hdinsight-hbase-overview.md)
 * [Redis Cache-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/redis-cache/)
@@ -120,7 +122,7 @@ Wir möchten Sie einladen, mehr über unsere SQL- und NoSQL-Produkte zu erfahren
 
 * Sie können sich bei allen Azure-Diensten für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren, um eine Gutschrift in Höhe von 200 US-Dollar zu erhalten, die Sie für die Nutzung der Azure-Dienste ausgeben können.
   
-  * [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)
+  * [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)
   * [Azure HBase als Teil von HDInsight](https://azure.microsoft.com/services/hdinsight/)
   * [Azure Redis Cache](https://azure.microsoft.com/services/cache/)
   * [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)
