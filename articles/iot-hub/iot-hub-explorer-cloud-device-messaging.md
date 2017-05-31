@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 38121cccc81ef82226e9ea7cbc197e294bb723e3
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: a7abb8fb279e134b7f23df779f1c4548a9feb82d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -55,13 +56,13 @@ Um Nachrichten zu überwachen, die von Ihrem Gerät an Ihren IoT Hub gesendet we
 1. Führen Sie den folgenden Befehl aus:
 
    ```bash
-   iothub-explorer monitor-events <device-id> --login <IoTHubConnectionString>
+   iothub-explorer monitor-events <device-id> --login "<IoTHubConnectionString>"
    ```
 
    > [!Note]
-   > Rufen Sie `<device-id>` und `<IoTHubConnectionString>` von Ihrem IoT Hub ab. Stellen Sie sicher, dass Sie das vorherige Tutorial abgeschlossen haben.
+   > Rufen Sie `<device-id>` und `<IoTHubConnectionString>` von Ihrem IoT Hub ab. Stellen Sie sicher, dass Sie das vorherige Tutorial abgeschlossen haben. Sie können auch versuchen, `iothub-explorer monitor-events <device-id> --login "HostName=<my-hub>.azure-devices.net;SharedAccessKeyName=<my-policy>;SharedAccessKey=<my-policy-key>"` zu verwenden, wenn Sie `HostName`, `SharedAccessKeyName` und `SharedAccessKey` haben.
 
-## <a name="send-cloud-to-device-messages"></a>Senden von Cloud-zu-Gerät-Nachrichten
+## <a name="send-cloud-to-device-messages"></a>Senden von C2D-Nachrichten.
 
 Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgendermaßen vor:
 

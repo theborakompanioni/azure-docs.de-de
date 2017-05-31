@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: fbc3807351a9d83e4bcc5ba0661001754621f430
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 7a9ec95348f4aa8a14a716a758fb362c1ede61b3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -112,10 +113,7 @@ Diese Anleitung hilft Ihnen bei der Integration Ihres Azure AD-Mandanten in die 
    2. Installieren und Ausführen von Azure AD Connect: Installieren Sie Azure AD Connect, indem Sie die Anleitung unter [Benutzerdefinierte Installation von Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md) befolgen.
    3. Überprüfen und verwalten Sie die Verzeichnissynchronisierung. In diesem Schritt sind Anweisungen zum einmaligen Anmelden enthalten.
    
-   > [!NOTE]
-   > Konfigurieren Sie die Partnerbeziehung mit AD FS, wie im oben verlinkten Dokument beschrieben. Sie müssen keine Preview-Funktionen konfigurieren.
-   > 
-   > 
+   Konfigurieren Sie auch den Verbund mit AD FS wie unter [Benutzerdefinierte Installation von Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md) beschrieben.
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Ausführen eines Upgrades des Schemas der Active Directory Domain Services
 > [!NOTE]
@@ -220,7 +218,7 @@ Sie müssen Ihr Gerät registrieren, bevor Sie auf diese Anwendung zugreifen kö
 
 Dieses iOS-Gerät mit Ihrem Arbeitsplatz verknüpfen
 
-**Wenn Sie ein Windows 8.1-Gerät verwenden**, können Sie Ihr Gerät über **PC-Einstellungen**> **Netzwerk** > **Arbeitsplatz** verknüpfen.
+**Wenn Sie ein Windows 8.1-Gerät verwenden**, können Sie Ihr Gerät über **PC-Einstellungen**> **Netzwerk** >  **Arbeitsplatz** verknüpfen.
 
 Hierbei gibt „**relying party trust name**“ den Namen des Vertrauensstellungsobjekts der vertrauenden Seite Ihrer Anwendung in AD FS an.
 **yourdomain.com** steht für den Domänennamen, den Sie mit Azure Active Directory konfiguriert haben. Beispiel: contoso.com.

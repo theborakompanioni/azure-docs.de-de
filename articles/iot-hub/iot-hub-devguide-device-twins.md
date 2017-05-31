@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 03/09/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: e72fcd696a4f21aa4b2cff7ae7178dbc372f1929
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 5bda9ce182c93d23bf29fd211ccdeb6facacbb7e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -161,6 +162,45 @@ Das Lösungs-Back-End greift mithilfe folgender atomarer Vorgänge, die über HT
         }
 3. **Ersetzen gewünschter Eigenschaften**. Dieser Vorgang ermöglicht dem Lösungs-Back-End, alle vorhandenen gewünschten Eigenschaften vollständig zu überschreiben und ein neues JSON-Dokument für `properties/desired` bereitzustellen.
 4. **Ersetzen von Tags**. Dieser Vorgang ermöglicht es dem Lösungs-Back-End, alle vorhandenen Tags vollständig zu überschreiben und ein neues JSON-Dokument für `tags` bereitzustellen.
+5. **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig werden keine Zwillingsbenachrichtigungen gesendet, und es existieren noch keine solchen Routen. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie z.B. interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, empfehlen wir Ihnen, D2C-Nachrichten zu verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
+
+    - Eigenschaften
+
+    | Name | Wert |
+    | --- | --- |
+    $content-type | Anwendung/json |
+    $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | UTF-8 |
+    deviceId | ID des Geräts |
+    hubName | Name des IoT Hub |
+    operationTimestamp | ISO8601-Zeitstempel des Vorgangs |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" oder "updateTwin" |
+
+    Nachrichtensystemeigenschaften ist das Symbol `'$'` vorangestellt.
+
+    - body
+        
+    Dieser Abschnitt enthält alle Zwillingsänderungen in einem JSON-Format. Er verwendet das gleiche Format wie ein Patch, jedoch mit dem Unterschied, dass alle Zwillingsabschnitte enthalten sein können (Tags, properties.reported, properties.desired) und dass die $metadata-Elemente enthalten sind. Beispiel:
+    ```
+    {
+        "properties": {
+            "desired": {
+                "$metadata": {
+                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
+                },
+                "$version": 1
+            },
+            "reported": {
+                "$metadata": {
+                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
+                },
+                "$version": 1
+            }
+        }
+    }
+    ``` 
 
 Alle oben genannten Vorgänge unterstützen [optimistische Parallelität][lnk-concurrency] und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Sicherheit][lnk-security] definiert.
 

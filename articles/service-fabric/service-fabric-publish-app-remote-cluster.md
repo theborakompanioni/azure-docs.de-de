@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 4ee53679ca6f42f2181e6552fce89c18f289a116
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: c440c520d84fc503ff9e705555449e92555d4721
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="publish-an-application-to-a-remote-cluster-by-using-visual-studio"></a>Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio
+# <a name="deploy-and-remove-applications-using-visual-studio"></a>Bereitstellen und Entfernen von Anwendungen mit Visual Studio
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -44,17 +45,15 @@ Ein Ordner im Service Fabric-Anwendungsprojekt mit dem Namen **PublishProfiles**
 * Pfad zu einer Anwendungsparameterdatei
 * Upgradeeinstellungen
 
-Standardmäßig enthält Ihre Anwendung zwei Veröffentlichungsprofile: „Local.xml“ und „Cloud.xml“. Sie können weitere Profile hinzufügen, indem Sie eine der Standarddateien kopieren und einfügen.
+Standardmäßig enthält Ihre Anwendung drei Veröffentlichungsprofile: Local.1Node.xml, Local.5Node.xml und Cloud.xml. Sie können weitere Profile hinzufügen, indem Sie eine der Standarddateien kopieren und einfügen.
 
 ### <a name="application-parameter-files"></a>Anwendungsparameterdateien
 Der Ordner **ApplicationParameters** im Service Fabric-Anwendungsprojekt enthält XML-Dateien für benutzerdefinierte Werte für die Anwendungsmanifestparameter. Anwendungsmanifestdateien können parametrisiert werden, sodass Sie verschiedene Werte für Bereitstellungseinstellungen verwenden können. Weitere Informationen zur Parametrisierung Ihrer Anwendung finden Sie unter [Verwalten mehrerer Umgebungen in Service Fabric](service-fabric-manage-multiple-environment-app-configuration.md).
 
 > [!NOTE]
 > Für Actor-Dienste sollten Sie das Projekt zuerst erstellen, bevor Sie versuchen, die Datei in einem Editor oder über das Dialogfeld „Veröffentlichen“ zu bearbeiten. Der Grund ist, dass eine Teil der Manifestdateien während der Erstellung generiert wird.
-> 
-> 
 
-## <a name="to-publish-an-application-by-using-the-publish-service-fabric-application-dialog-box"></a>So veröffentlichen Sie eine Anwendung mit dem Dialogfeld „Service Fabric-Anwendung veröffentlichen“
+## <a name="to-publish-an-application-using-the-publish-service-fabric-application-dialog-box"></a>So veröffentlichen Sie eine Anwendung mit dem Dialogfeld Service Fabric-Anwendung veröffentlichen
 Folgende Schritte zeigen die Veröffentlichung einer Anwendung über das Dialogfeld **Service Fabric-Anwendung veröffentlichen** in den Visual Studio Service Fabric-Tools.
 
 1. Wählen Sie im Kontextmenü des Service Fabric-Anwendungsprojekts die Option **Veröffentlichen...**, um das Dialogfeld **Service Fabric-Anwendung veröffentlichen** anzuzeigen.
@@ -91,9 +90,9 @@ Folgende Schritte zeigen die Veröffentlichung einer Anwendung über das Dialogf
 6. Wenn Sie alle erforderlichen Einstellungen festgelegt haben, klicken Sie auf die Schaltfläche **Veröffentlichen** , um die Anwendung im ausgewählten Service Fabric-Cluster zu veröffentlichen. Die von Ihnen festgelegten Einstellungen werden auf den Veröffentlichungsprozess angewendet.
 
 ## <a name="publish-to-an-arbitrary-cluster-endpoint-including-party-clusters"></a>Veröffentlichen auf einem beliebigen Clusterendpunkt (einschließlich Party Cluster)
-Die Veröffentlichungsoberfläche von Visual Studio ist zum Veröffentlichen auf Remoteclustern optimiert, das einem Ihrer Azure-Abonnements zugeordnet ist. Es ist aber möglich, die Veröffentlichung auf beliebigen Endpunkten durchzuführen (z. B. Service Fabric-Party Clustern), indem die XML-Datei mit dem Veröffentlichungsprofil direkt bearbeitet wird. Wie oben beschrieben, werden standardmäßig zwei Veröffentlichungsprofile bereitgestellt: **Local.xml** und **Cloud.xml**. Sie können aber gern weitere Profile für unterschiedliche Umgebungen erstellen. Es kann beispielsweise sein, dass Sie ein Profil für die Veröffentlichung auf Partyclustern erstellen möchten, z.B. **Party.xml**.
+Die Veröffentlichungsoberfläche von Visual Studio ist zum Veröffentlichen auf Remoteclustern optimiert, das einem Ihrer Azure-Abonnements zugeordnet ist. Es ist aber möglich, die Veröffentlichung auf beliebigen Endpunkten durchzuführen (z. B. Service Fabric-Party Clustern), indem die XML-Datei mit dem Veröffentlichungsprofil direkt bearbeitet wird. Wie oben beschrieben, werden standardmäßig drei Veröffentlichungsprofile bereitgestellt: **Local.1Node.xml**, **Local.5Node.xml** und **Cloud.xml**. Sie können aber gern weitere Profile für unterschiedliche Umgebungen erstellen. Es kann beispielsweise sein, dass Sie ein Profil für die Veröffentlichung auf Partyclustern erstellen möchten, z.B. **Party.xml**.
 
-Wenn Sie eine Verbindung mit einem nicht geschützten Cluster herstellen, benötigen Sie lediglich den Cluster-Verbindungsendpunkt, z. B. `partycluster1.eastus.cloudapp.azure.com:19000`. In diesem Fall sieht der Verbindungsendpunkt im Veröffentlichungsprofil etwa wie folgt aus:
+Wenn Sie eine Verbindung mit einem nicht geschützten Cluster herstellen, benötigen Sie lediglich den Cluster-Verbindungsendpunkt, z.B. `partycluster1.eastus.cloudapp.azure.com:19000`. In diesem Fall sieht der Verbindungsendpunkt im Veröffentlichungsprofil etwa wie folgt aus:
 
 ```XML
 <ClusterConnectionParameters ConnectionEndpoint="partycluster1.eastus.cloudapp.azure.com:19000" />

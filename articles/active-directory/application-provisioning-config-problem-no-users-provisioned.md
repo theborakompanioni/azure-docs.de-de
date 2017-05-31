@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 05/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a51fb6e5a10e09205822e055659794aea2f6a4fb
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 0b63c7d15ca7570033a889dc1b57ebd202f4627b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/17/2017
 
 Nachdem die automatische Bereitstellung für eine Anwendung konfiguriert wurde (einschließlich der Überprüfung, ob die Anmeldeinformationen für die App gültig sind, die Azure AD bereitgestellt wurden, um die Verbindung mit der Anwendung herzustellen). Anschließend wird durch Folgendes bestimmt, ob Benutzer und/oder Gruppen für die App bereitgestellt wurden:
 
--   Welche Benutzer und Gruppen wurden der Anwendung **zugewiesen**. Weitere Informationen zur Zuweisung finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in der Azure Active Directory-Vorschau](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
+-   Welche Benutzer und Gruppen wurden der Anwendung **zugewiesen**. Weitere Informationen zur Zuweisung finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
 -   Ob **Attributzuordnungen** aktiviert und so konfiguriert sind, dass gültige Attribute von Azure AD mit der App synchronisiert werden. Weitere Informationen zu Attributzuordnungen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings).
 

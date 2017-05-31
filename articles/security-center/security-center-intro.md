@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 05/08/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 3155990d977d8b0849c9e0be92db11ad6567cd6e
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: fd52bd8e14ca9bdcd06fc820e5e03fb5feccc72f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -112,10 +113,10 @@ Klicken Sie auf die Kachel **Empfehlungen** , um eine Liste mit Empfehlungen zu 
 
 ![Sicherheitsempfehlungen in Azure Security Center][5]
 
-### <a name="resource-health"></a>Ressourcenintegrität
-Die Kachel **Sicherheitsintegrität der Ressource** zeigt den Sicherheitsstatus der Umgebung nach Ressourcentyp an, einschließlich der VMs, Webanwendungen und anderer Ressourcen.   
+### <a name="security-state-of-azure-resources"></a>Sicherheitsstatus der Azure-Ressourcen
+Der Abschnitt **Prävention** des Dashboards zeigt den Sicherheitsstatus der Umgebung nach Ressourcentyp an, einschließlich der VMs, Webanwendungen und anderer Ressourcen.   
 
-Wählen Sie auf der Kachel **Sicherheitsintegrität von Ressourcen** einen Ressourcentyp aus, um weitere Informationen anzuzeigen, einschließlich einer Liste aller potenziellen Sicherheitsrisiken, die erkannt wurden. (Im folgenden Beispiel ist **Compute** ausgewählt.)
+Wählen Sie unter **Prävention** einen Ressourcentyp aus, um weitere Informationen anzuzeigen, einschließlich einer Liste aller potenziellen Sicherheitsrisiken, die erkannt wurden. (Im folgenden Beispiel ist **Compute** ausgewählt.)
 
 ![Kachel „Ressourcenintegrität“][6]
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 8ee0301a48265b91f951c96c3339a3c3e3bdb1cb
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cea4531175df2cc39790497dc049d27e23ffa0c6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,9 +33,9 @@ In diesem Artikel wird das Verfahren zum Verwenden dieser Vorlagen und Skripts b
 Sie finden vordefinierte [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) und [PowerShell-Skripts](https://github.com/Azure/azure-devtestlab/tree/master/Scripts) im öffentlichen [Github-Repository](https://github.com/Azure/azure-devtestlab). Diese können Sie unverändert übernehmen oder an Ihre Anforderungen anpassen und in einem eigenen [privaten Git-Repository](devtest-lab-add-artifact-repo.md) speichern. 
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>Schritt 2: Bearbeiten der Azure Resource Manager-Vorlagen
-Unter [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md) erfahren Sie, wie Sie mit Azure Resource Manager-Vorlagen in DevTest Labs die Infrastruktur und Konfiguration einer Azure-Lösung definieren und wiederholt mehrere VMs in einem konsistenten Zustand bereitstellen.
+Folgen Sie den Schritten unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template), wenn Sie noch nie eine Vorlage erstellt haben.
 
-Wenn Sie z.B. ein neues virtuelles Netzwerk erstellt haben und dieses auf alle vorhandenen Labs anwenden möchten, können Sie hierfür einfach eine Azure Resource Manager-Vorlage verwenden.
+Unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) finden Sie weitere zuverlässige und leicht anzuwendende Richtlinien und Vorschläge zum Erstellen einer Azure Resource Manager-Vorlage. Normalerweise verwenden Sie eine der angegebenen Vorgehensweisen oder eines der Beispiele, um die Vorlage Ihren Wünschen entsprechend zu modifizieren.
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>Schritt 3: Bereitstellen von Ressourcen mit PowerShell
 Nachdem Sie die Vorlagen und Skripts angepasst haben, führen Sie die erforderlichen Schritte zum [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) aus. Der Artikel enthält allgemeine Informationen zur Verwendung von Azure PowerShell mit Azure Resource Manager-Vorlagen, um Ressourcen in Azure bereitzustellen.

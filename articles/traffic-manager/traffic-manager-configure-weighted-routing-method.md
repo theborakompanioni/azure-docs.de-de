@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: dc2111a34fa0292a21510bbd84089979faf1cb71
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 7aa4c9120d44ff1b3e59a57090ea04e3f8021fc4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 ---
 
@@ -34,7 +35,7 @@ Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe
 2. Suchen Sie auf der Suchleiste des Portals die **Traffic Manager-Profile**, und klicken Sie dann auf den Namen des Profils, für das Sie die Routingmethode konfigurieren möchten.
 3. Stellen Sie auf dem Blatt **Traffic Manager-Profil** sicher, dass die Clouddienste sowie die Websites, die Ihre Konfiguration beinhalten soll, vorhanden sind.
 4. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**, und nehmen Sie auf dem Blatt **Konfiguration** die folgenden Einstellungen vor:
-    1. Überprüfen Sie in den Einstellungen der **Routingmethode für Datenverkehr**, ob die Routingmethode für Datenverkehr **Failover** ist. Klicken Sie andernfalls in der Dropdownliste auf **Failover** .
+    1. Überprüfen Sie in den Einstellungen der **Routingmethode für Datenverkehr**, ob die Routingmethode für Datenverkehr **Weighted** ist. Klicken Sie andernfalls in der Dropdownliste auf **Weighted** .
     2. Legen Sie die **Überwachungseinstellungen für Endpunkt** für alle Endpunkte in diesem Profil wie folgt identisch fest:
         1. Wählen Sie das entsprechende **Protokoll** aus, und geben Sie die Nummer für den **Port** an. 
         2. Geben Sie unter **Pfad** einen Schrägstrich */* ein. Sie müssen einen Pfad und einen Dateinamen angeben, um Endpunkte zu überwachen. Ein Schrägstrich „/“ ist ein gültiger Eintrag für den relativen Pfad und bedeutet, dass sich die Datei im Stammverzeichnis (Standardwert) befindet.

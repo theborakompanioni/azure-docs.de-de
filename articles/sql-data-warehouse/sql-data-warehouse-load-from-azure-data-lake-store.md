@@ -15,10 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: aca0e4cfdcfb3e3ed2e69ad8153b4c965b299806
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: cb2d789a53ee2fa16db8d2553086a18043d4976e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 
@@ -161,7 +162,7 @@ Eine externe Tabelle lässt sich sehr einfach erstellen, es gibt jedoch einige F
 Das Laden von Daten mit PolyBase ist stark typisiert. Das bedeutet, dass jede Zeile der erfassten Daten der Tabellenschemadefinition entsprechen muss.
 Zeilen, die der Schemadefinition nicht entsprechen, werden nicht geladen.
 
-Mithilfe des Ablehnungstyps und des Ablehnungswerts können Sie definieren, wie viele Zeilen oder wie viel Prozent der Daten in der endgültigen Tabelle vorhanden sein müssen.
+Mithilfe des Optionen „REJECT_TYPE“ und „REJECT_VALUE“ können Sie definieren, wie viele Zeilen oder wie viel Prozent der Daten in der endgültigen Tabelle vorhanden sein müssen.
 Wird während des Ladevorgangs der Ablehnungswert erreicht, ist der Vorgang nicht erfolgreich. Die Ablehnung von Zeilen ist in den meisten Fällen auf einen Konflikt mit der Schemadefinition zurückzuführen.
 Wenn also beispielsweise eine Spalte fälschlicherweise mit einem int-Schema versehen wird, obwohl es sich bei den Daten in der Datei um eine Zeichenfolge handelt, können die Zeilen nicht geladen werden.
 

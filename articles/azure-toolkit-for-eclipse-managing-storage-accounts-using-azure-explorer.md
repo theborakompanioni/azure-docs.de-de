@@ -1,5 +1,5 @@
 ---
-title: "Verwalten von Speicherkonten mit Azure-Explorer für Eclipse | Microsoft-Dokumentation"
+title: "Verwalten von Speicherkonten mithilfe von Azure-Explorer für Eclipse | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Ihre Azure Storage-Konten mit Azure-Explorer für Eclipse verwalten."
 services: 
 documentationcenter: java
@@ -14,85 +14,96 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 3c95ddde2909cd8dee055724ba01f22647627bd3
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 5b3014b5aca368be8ea46863c83665abde10fed5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 
-# <a name="managing-storage-accounts-using-the-azure-explorer-for-eclipse"></a>Verwalten von Speicherkonten mit Azure-Explorer für Eclipse
+# <a name="manage-storage-accounts-by-using-the-azure-explorer-for-eclipse"></a>Verwalten von Speicherkonten mithilfe von Azure-Explorer für Eclipse
 
-Der Azure-Explorer gehört zum Azure-Toolkit für Eclipse und bietet Java-Entwicklern eine einfach zu bedienende Lösung für das Verwalten von Speicherkonten in ihrem Azure-Konto innerhalb der IDE von Eclipse.
+Der Azure-Explorer gehört zum Azure-Toolkit für Eclipse und bietet Java-Entwicklern eine einfach zu bedienende Lösung zum Verwalten von Speicherkonten in ihrem Azure-Konto innerhalb der integrierten Entwicklungsumgebung (IDE) von Eclipse.
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
 [!INCLUDE [azure-toolkit-for-eclipse-show-azure-explorer](../includes/azure-toolkit-for-eclipse-show-azure-explorer.md)]
 
-## <a name="creating-a-storage-account-in-eclipse"></a>Erstellen eines Speicherkontos in Eclipse
+## <a name="create-a-storage-account-in-eclipse"></a>Erstellen eines Speicherkontos in Eclipse
 
-Die folgenden Schritte begleiten Sie durch die Schritte zum Erstellen eines Speicherkontos mit dem Azure-Explorer.
+Gehen Sie folgendermaßen vor, um ein Speicherkonto mit dem Azure-Explorer zu erstellen:
 
-1. Melden Sie sich beim Azure-Konto gemäß den Anweisungen im Artikel [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse] an.
+1. Melden Sie sich beim Azure-Konto gemäß den Anweisungen in [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse] an.
 
-1. Erweitern Sie in der Ansicht des **Azure-Explorers** den Knoten **Azure**. Klicken Sie mit der rechten Maustaste auf **Speicherkonten**, und klicken Sie dann auf **Speicherkonto erstellen**.
-   ![Menü „Speicherkonto erstellen“][CS01]
+2. Erweitern Sie in der Ansicht des **Azure-Explorers** den Knoten **Azure**. Klicken Sie mit der rechten Maustaste auf **Speicherkonten**, und klicken Sie dann auf **Speicherkonto erstellen**.
 
-1. Wenn das Dialogfeld **Speicherkonto erstellen** angezeigt wird, geben Sie die folgenden Optionen an: ![Dialogfeld „Speicherkonto erstellen“][CS02]
+   ![Befehl „Speicherkonto erstellen“][CS01]
 
-   a. **Name:** Geben Sie den Namen des neuen Speicherkontos an.
+3. Geben Sie im Dialogfeld **Speicherkonto erstellen** folgende Details an:
 
-   b. **Abonnement:** Wählen Sie das Azure-Abonnement aus, das Sie für das neue Speicherkonto verwenden möchten.
+   ![Dialogfeld „Neues Speicherkonto erstellen“][CS02]
 
-   c. **Ressourcengruppe:** Geben Sie die Ressourcengruppe für den virtuellen Computer an. Sie müssen eine der folgenden Optionen auswählen:
-      * **Neu erstellen:** gibt an, dass Sie eine neue Ressourcengruppe erstellen möchten
-      * **Vorhandene verwenden:** gibt an, dass Sie in einer Liste von Ressourcengruppen, die Ihrem Azure-Konto zugeordnet sind, eine Auswahl treffen möchten
+   * **Name:** Geben Sie den Namen des neuen Speicherkontos an.
 
-   d. **Standort:** Geben Sie den Standort an, an dem Ihr Speicherkonto erstellt wird, z.B. „USA, Westen“.
+   * **Abonnement:** Geben Sie das Azure-Abonnement an, das Sie für das neue Speicherkonto verwenden möchten.
 
-   e. **Kontoart:** Geben Sie den Typ des zu erstellenden Speicherkontos an, z.B. „Blob Storage“. (Weitere Informationen finden Sie unter [Informationen zu Azure Storage-Konten].)
+   * **Ressourcengruppe:** Geben Sie die Ressourcengruppe für Ihren virtuellen Computer an. Wählen Sie eine der folgenden Optionen:
+      * **Create New**: Gibt an, dass Sie eine neue Ressourcengruppe erstellen möchten.
+      * **Vorhandene verwenden:** Geben Sie an, dass Sie in einer Liste von Ressourcengruppen, die Ihrem Azure-Konto zugeordnet sind, eine Auswahl treffen möchten.
 
-   f. **Leistung:** Geben Sie an, welches Speicherkontoangebot für den ausgewählten Herausgeber verwendet werden soll, z.B. „Premium“. (Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage].)
+   * **Standort:** Geben Sie den Standort an, an dem Ihr Speicherkonto erstellt wird, z.B. „USA, Westen“.
 
-   g. **Replikation:** Geben Sie die Replikation des Speicherkontos an, z.B. „Zonenredundant“. (Weitere Informationen finden Sie unter [Azure Storage-Replikation].)
+   * **Kontoart:** Geben Sie den Typ des zu erstellenden Speicherkontos an (z.B. „Blob-Speicher“). Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten].
 
-1. Nachdem Sie alle oben genannten Optionen angegeben haben, klicken Sie auf **Erstellen**.
+   * **Leistung:** Geben Sie an, welches Speicherkontoangebot vom ausgewählten Herausgeber verwendet werden soll (z.B. „Premium“). Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage].
 
-## <a name="creating-a-storage-container-in-eclipse"></a>Erstellen eines Speichercontainers in Eclipse
+   * **Replikation**: Gibt die Replikation des Speicherkontos an (z.B. „zonenredundant“). Weitere Informationen finden Sie unter [Azure-Speicherreplikation].
 
-Die folgenden Schritte begleiten Sie durch die Schritte zum Erstellen eines Speichercontainers mit dem Azure-Explorer.
+4. Nachdem Sie alle vorhergehenden Optionen angegeben haben, klicken Sie auf **Erstellen**.
 
-1. Klicken Sie im Azure-Explorer mit der rechten Maustaste auf das Speicherkonto, in dem Sie einen Container erstellen möchten, und klicken Sie dann auf **Blobcontainer erstellen**.
-   ![Menü „Blobcontainer erstellen“][CC01]
+## <a name="create-a-storage-container-in-eclipse"></a>Erstellen eines Speichercontainers in Eclipse
 
-1. Wenn das Dialogfeld **Blobcontainer erstellen** angezeigt wird, geben Sie den Namen für Ihren Container ein, und klicken Sie dann auf **OK**. (Ausführliche Informationen zum Benennen von Containern und Blobs finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese].) ![Dialogfeld zum Erstellen eines Speichercontainers][CC02]
+Gehen Sie folgendermaßen vor, um einen Speichercontainer mit dem Azure-Explorer zu erstellen:
 
-## <a name="deleting-a-storage-container-in-eclipse"></a>Löschen eines Speichercontainers in Eclipse
+1. Klicken Sie in der **Azure-Explorer**-Ansicht mit der rechten Maustaste auf das Speicherkonto, in dem Sie einen Container erstellen möchten, und klicken Sie dann auf **Blobcontainer erstellen**.
 
-Um mit dem Azure-Explorer einen Speichercontainer zu löschen, führen Sie die folgenden Schritte aus:
+   ![Befehl „Blobcontainer erstellen“][CC01]
 
-1. Klicken Sie im Azure-Explorer mit der rechten Maustaste auf den Speichercontainer, und klicken Sie dann auf **Löschen**.
-   ![Menü zum Löschen eines Speichercontainers][DC01]
+2. Geben Sie im Dialogfeld **Blobcontainer erstellen** den Namen für Ihren Container ein, und klicken Sie dann auf **OK**. Weitere Informationen zum Benennen von Speichercontainern finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese].
 
-1. Klicken Sie auf **OK**, wenn Sie gefragt werden, ob der Speichercontainer gelöscht werden soll.
-   ![Dialogfeld zum Löschen eines Speichercontainers][DC02]
+   ![Dialogfeld „Blobcontainer erstellen“][CC02]
 
-## <a name="deleting-a-storage-account-in-eclipse"></a>Löschen eines Speicherkontos in Eclipse
+## <a name="delete-a-storage-container-in-eclipse"></a>Löschen eines Speichercontainers in Eclipse
 
-Um mit dem Azure-Explorer ein Speicherkonto zu löschen, führen Sie die folgenden Schritte aus:
+Gehen Sie folgendermaßen vor, um einen Speichercontainer mit dem Azure-Explorer zu löschen:
 
-1. Klicken Sie in der Ansicht des **Azure-Explorers** mit der rechten Maustaste auf das Speicherkonto, und wählen Sie **Löschen** aus.
-   ![Menü zum Löschen eines Speicherkontos][DS01]
+1. Klicken Sie in der **Azure-Explorer**-Ansicht mit der rechten Maustaste auf den Speichercontainer, und klicken Sie dann auf **Löschen**.
 
-1. Klicken Sie auf **OK**, wenn Sie gefragt werden, ob das Speicherkonto gelöscht werden soll.
-   ![Dialogfeld zum Löschen eines Speicherkontos][DS02]
+   ![Befehl „Speichercontainer löschen“][DC01]
 
-## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu Azure Storage-Konten sowie Größen und Preisen finden Sie unter den folgenden Links:
+2. Klicken Sie im Bestätigungsfenster auf **OK**.
+
+   ![Bestätigungsfenster für „Speichercontainer löschen“][DC02]
+
+## <a name="delete-a-storage-account-in-eclipse"></a>Löschen eines Speicherkontos in Eclipse
+
+Gehen Sie folgendermaßen vor, um ein Speicherkonto mit dem Azure-Explorer zu löschen:
+
+1. Klicken Sie in der **Azure-Explorers**-Ansicht mit der rechten Maustaste auf das Speicherkonto, und klicken Sie dann auf **Löschen**.
+
+   ![Befehl „Speicherkonto löschen“][DS01]
+
+2. Klicken Sie im Bestätigungsfenster auf **OK**.
+
+   ![Bestätigungsfenster für „Speicherkonto löschen“][DS02]
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu Azure Storage-Konten sowie Größen und Preisen finden Sie in den folgenden Ressourcen:
 
 * [Einführung in Microsoft Azure Storage]
-* [Informationen zu Azure Storage-Konten]
+* [Informationen zu Azure-Speicherkonten]
 * Größen für Azure Storage-Konten
   * [Größen für Windows-Speicherkonten in Azure]
   * [Größen für Linux-Speicherkonten in Azure]
@@ -100,17 +111,17 @@ Weitere Informationen zu Azure Storage-Konten sowie Größen und Preisen finden 
   * [Preise von Windows-Speicherkonten]
   * [Preise von Linux-Speicherkonten]
 
-Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
+Weitere Informationen zu Azure-Toolkits für Java-IDEs finden Sie in den folgenden Ressourcen:
 
 * [Azure-Toolkit für Eclipse]
   * [Neuerungen im Azure-Toolkit für Eclipse]
-  * [Installieren des Azure-Toolkits für Eclipse]
-  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse] (Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse)
+  * [Installation des Azure Toolkit für Eclipse]
+  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]
   * [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
 * [Azure Toolkit für IntelliJ]
   * [Neuerungen im Azure-Toolkit für IntelliJ]
   * [Installieren des Azure Toolkit für IntelliJ]
-  * [Azure Sign In Instructions for the Azure Toolkit for IntelliJ] (Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ)
+  * [Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ]
   * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
@@ -121,10 +132,10 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
 [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Installation des Azure Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md (Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse)
-[Azure Sign In Instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md (Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ)
+[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
 [Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
@@ -132,9 +143,9 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Java-Tools für Visual Studio Team Services]: https://java.visualstudio.com/
 
 [Einführung in Microsoft Azure Storage]: /azure/storage/storage-introduction
-[Informationen zu Azure Storage-Konten]: /azure/storage/storage-create-storage-account
-[Azure Storage-Replikation]: /azure/storage/storage-redundancy
-[Skalierbarkeits- und Leistungsziele für Azure Storage]: /azure/storage/storage-scalability-targets
+[Informationen zu Azure-Speicherkonten]: /azure/storage/storage-create-storage-account
+[Azure-Speicherreplikation]: /azure/storage/storage-redundancy
+[Skalierbarkeits- und Leistungsziele für Azure-Speicher]: /azure/storage/storage-scalability-targets
 [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese]: http://go.microsoft.com/fwlink/?LinkId=255555
 
 [Größen für Windows-Speicherkonten in Azure]: /azure/virtual-machines/virtual-machines-windows-sizes

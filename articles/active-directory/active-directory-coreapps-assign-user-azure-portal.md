@@ -1,5 +1,5 @@
 ---
-title: Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in der Azure Active Directory-Vorschau | Microsoft Docs
+title: Assign a user or group to an enterprise app in Azure Active Directory | Microsoft Docs
 description: "Auswählen einer Unternehmens-App zum Zuweisen eines Benutzers oder einer Gruppe in der Azure Active Directory-Vorschau"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 18330aa5e0fe8e3bbad6c266f823a4969b9b8b6c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: ee784704ada9238b5cd048f99aaa4cb192ec7d57
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory-preview"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in der Azure Active Directory-Vorschau
-In der Azure Active Directory-Vorschau (Azure AD) können Sie Ihren Unternehmensanwendungen auf einfache Weise einen Benutzer oder eine Gruppe zuzuweisen. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)  Sie müssen über die geeigneten Berechtigungen zum Verwalten der Unternehmens-App verfügen. In der aktuellen Vorschau müssen Sie als globaler Administrator für das Verzeichnis konfiguriert sein.
+# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
+In Azure Active Directory (Azure AD) können Sie Ihren Unternehmensanwendungen auf einfache Weise einen Benutzer oder eine Gruppe zuweisen. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
 
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app"></a>Wie weise ich Benutzerzugriff für eine Unternehmens-App zu?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
@@ -47,9 +49,4 @@ In der Azure Active Directory-Vorschau (Azure AD) können Sie Ihren Unternehmens
 * [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App](active-directory-coreapps-disable-app-azure-portal.md)
 * [Ändern des Namens oder Logos einer Unternehmens-App](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

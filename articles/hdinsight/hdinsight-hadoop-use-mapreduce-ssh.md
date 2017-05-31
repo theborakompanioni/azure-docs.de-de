@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2017
+ms.date: 05/03/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: fbf33ea6a6362857bf4bc92055cabd9b099a6d0c
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 04d5b7ea9835e3196bbe300384e9097d7c667e3f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -27,74 +28,72 @@ ms.lasthandoff: 04/12/2017
 
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-In diesem Artikel erfahren Sie, wie Sie mit Secure Shell (SSH) eine Verbindung mit einem Hadoop-Cluster in HDInsight herstellen und anschließend MapReduce-Aufträge mithilfe von Hadoop-Befehlen übermitteln.
+In diesem Artikel wird erläutert, wie MapReduce-Jobs aus einer Secure Shell-Verbindung (SSH) an HDInsight übermittelt werden können.
 
 > [!NOTE]
 > Wenn Sie bereits mit der Verwendung von Linux-basierten Hadoop-Servern vertraut sind, Ihnen HDInsight jedoch neu ist, finden Sie weitere Informationen unter [Tipps zu Linux-basiertem HDInsight](hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Voraussetzungen
 
-Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
-
 * Einen Linux-basierten HDInsight-Cluster (Hadoop in HDInsight)
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
-* Einen SSH-Client. Windows-Benutzer müssen einen Client herunterladen, z. B [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+* Einen SSH-Client. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a id="ssh"></a>Verbinden mit SSH
 
-Stellen Sie mithilfe des SSH-Befehls eine Verbindung zum vollqualifizierten Domänennamen (FQDN) des HDInsight-Clusters her. Der FQDN entspricht dem Namen, den Sie dem Cluster zugewiesen haben, gefolgt von **.azurehdinsight.net**. Mithilfe des folgenden Befehls wird z. B. eine Verbindung mit einem Cluster namens **myhdinsight** hergestellt:
+Stellen Sie mithilfe von SSH eine Verbindung zum Cluster her. Mithilfe des folgenden Befehls wird z.B. eine Verbindung mit einem Cluster namens **myhdinsight** hergestellt:
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
 
-**Wenn Sie beim Erstellen des HDInsight-Clusters einen Zertifikatschlüssel für die SSH-Authentifizierung** angegeben haben, müssen Sie möglicherweise den Speicherort des privaten Schlüssels im Clientsystem angeben. Beispiel:
+**Wenn Sie einen Zertifikatschlüssel für die SSH-Authentifizierung** verwenden, müssen Sie möglicherweise den Speicherort des privaten Schlüssels im Clientsystem angeben. Beispiel:
 
     ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 
-**Wenn Sie beim Erstellen des HDInsight-Clusters ein Kennwort für die SSH-Authentifizierung** angegeben haben, müssen Sie nach der entsprechenden Aufforderung das Kennwort angeben.
+**Wenn Sie ein Kennwort für die SSH-Authentifizierung verwenden**, müssen Sie dieses angeben, wenn Sie dazu aufgefordert werden.
 
 Weitere Informationen zum Verwenden von SSH mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a id="hadoop"></a>Verwenden von Hadoop-Befehlen
 
-1. Nachdem die Verbindung mit dem HDInsight-Cluster hergestellt wurde, verwenden Sie den folgenden **Hadoop** -Befehl, um einen MapReduce-Auftrag zu starten:
+1. Nachdem die Verbindung mit dem HDInsight-Cluster hergestellt wurde, verwenden Sie den folgenden Befehl, um einen MapReduce-Auftrag zu starten:
 
-    ```
+    ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Dadurch wird die Klasse **wordcount** gestartet, die in der Datei **hadoop-mapreduce-examples.jar** enthalten ist. Sie verwendet als Eingabe das Dokument **/example/data/gutenberg/davinci.txt**, und die Ausgabe wird im Verzeichnis **/example/data/WordCountOutput** gespeichert.
+    Dieser Befehl ruft die `wordcount`-Klasse auf, die sich in der Datei `hadoop-mapreduce-examples.jar` befindet. Der Befehl verwendet das Dokument `/example/data/gutenberg/davinci.txt` als Eingabe, und die Ausgabe wird in `/example/data/WordCountOutput` gespeichert.
 
     > [!NOTE]
     > Weitere Informationen über diesen MapReduce-Auftrag und die Beispieldaten finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md).
 
-2. Der Auftrag gibt während der Verarbeitung Details aus und gibt ähnliche Informationen wie die folgenden zurück, wenn der Auftrag abgeschlossen ist:
+2. Der Auftrag gibt während der Verarbeitung Details aus und gibt ähnliche Informationen wie den folgenden Text zurück, wenn der Auftrag abgeschlossen ist:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
 
-3. Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien, die unter **wasbs://example/data/WordCountOutput** gespeichert sind:
+3. Wenn der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien:
 
-    ```
+    ```bash
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Daraufhin sollten zwei Dateien angezeigt werden: **_SUCCESS** und **part-r-00000**. Die Datei **part-r-00000** enthält die Ausgabe für diesen Auftrag.
+    Dieser Befehl zeigt die beiden Dateien, `_SUCCESS` und `part-r-00000` an. Die Datei `part-r-00000` enthält die Ausgabe für diesen Auftrag.
 
     > [!NOTE]
     > Einige MapReduce-Aufträge teilen die Ergebnisse möglicherweise auf mehrere **part-r-#####** -Dateien auf. Verwenden Sie in diesem Fall das Suffix "#####", um die Reihenfolge der Dateien anzugeben.
 
 4. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
 
-    ```
+    ```bash
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Dadurch werden eine Liste mit in der Datei **wasbs://example/data/gutenberg/davinci.txt** enthaltenen Wörtern und die Häufigkeit ihres jeweiligen Auftretens angezeigt. Im Folgenden finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
+    Dieser Befehl zeigt eine Liste mit in der Datei **wasbs://example/data/gutenberg/davinci.txt** enthaltenen Wörtern und die Häufigkeit ihres jeweiligen Vorkommens an. Im folgenden Text finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
 
         wreathed        3
         wreathing       1

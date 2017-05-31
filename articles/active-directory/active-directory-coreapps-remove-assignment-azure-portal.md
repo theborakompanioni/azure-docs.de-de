@@ -1,5 +1,5 @@
 ---
-title: Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in der Azure Active Directory-Vorschau | Microsoft Docs
+title: Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in Azure Active Directory | Microsoft-Dokumentation
 description: Entfernen der Zugriffszuweisung eines Benutzers oder einer Gruppe aus einer Unternehmens-App in Azure Active Directory
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b38a613a1f93d9c36254f7642655f716e048e9e3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 02f122acfb53c2107e2b0af66c6195aa127a2c77
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory-preview"></a>Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in der Azure Active Directory-Vorschau
-In der Azure Active Directory-Vorschau (Azure AD) können Sie auf einfache Weise eine Benutzer- oder Gruppenzuweisung für den Zugriff auf eine Ihrer Unternehmensanwendungen entfernen. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)  Sie müssen über die geeigneten Berechtigungen zum Verwalten der Unternehmens-App verfügen. In der aktuellen Vorschau müssen Sie als globaler Administrator für das Verzeichnis konfiguriert sein.
+# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in Azure Active Directory
+In Azure Active Directory (Azure AD) können Sie auf einfache Weise eine Benutzer- oder Gruppenzuweisung für den Zugriff auf eine Ihrer Unternehmensanwendungen entfernen. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment"></a>Wie entferne ich eine Benutzer- oder Gruppenzuweisung?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
@@ -43,9 +45,4 @@ In der Azure Active Directory-Vorschau (Azure AD) können Sie auf einfache Weise
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](active-directory-coreapps-assign-user-azure-portal.md)
 * [Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App](active-directory-coreapps-disable-app-azure-portal.md)
 * [Ändern des Namens oder Logos einer Unternehmens-App](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -14,32 +14,31 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/04/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: a1a2102f2d26a3e739d2112e2e05332a708227d8
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: bbcd13ce55668ce9fe0b1f769c8ab1411afe51cb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
-Dieses Dokument erläutert den Zugriff auf Protokolle für YARN (Yet Another Resource Negotiator)-Anwendungen, die auf einem Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
+
+Dieser Artikel erläutert den Zugriff auf Protokolle für YARN-Anwendungen (Yet Another Resource Negotiator), die in einem Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
-
-## <a name="prerequisites"></a>Voraussetzungen
-* Ein Linux-basierter HDInsight-Cluster.
-* Sie müssen einen [SSH-Tunnel erstellen](hdinsight-linux-ambari-ssh-tunnel.md) , bevor Sie auf die Webbenutzeroberfläche für ResourceManager-Protokolle zugreifen können.
+> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
+
 Der [YARN Timeline Server](http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) bietet über zwei Schnittstellen allgemeine Informationen zu abgeschlossenen Anwendungen sowie frameworkspezifische Anwendungsinformationen. Dies bedeutet Folgendes:
 
 * Speicherung und Abruf allgemeiner Anwendungsinformationen zu HDInsight-Clustern sind für Versionen ab 3.1.1.374 aktiviert.
 * Die frameworkspezifische Anwendungsinformationskomponente des Timeline Servers steht für HDInsight-Cluster derzeit nicht zur Verfügung.
 
-Zu den allgemeinen Informationen zu Anwendungen zählen die folgenden Datenarten:
+Zu den allgemeinen Informationen zu Anwendungen zählen die folgenden Datentypen:
 
 * Die Anwendungs-ID, ein eindeutiger Bezeichner einer Anwendung
 * Der Benutzer, der die Anwendung gestartet hat
@@ -48,17 +47,17 @@ Zu den allgemeinen Informationen zu Anwendungen zählen die folgenden Datenarten
 
 ## <a name="YARNAppsAndLogs"></a>YARN-Anwendungen und -Protokolle
 
-YARN unterstützt mehrere Programmierungsmodelle (u. a. MapReduce), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. Dies erfolgt über einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
+YARN unterstützt mehrere Programmierungsmodelle (u. a. MapReduce), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. YARN verwendet einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
 
-Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Dies ermöglicht einer Anwendung das Wiederholen eines Vorgangs, wenn es zu einem Absturz oder einem Verlust der Kommunikation zwischen einem AM und einem RM kommt. Jeder Versuch wird in einem Container ausgeführt. In gewisser Weise stellt ein Container den Kontext für die Standardeinheit für Aufgaben, die von einer YARN-Anwendung ausgeführt werden. Alle Aufgaben, die im Kontext eines Containers erledigt werden, erfolgen auf dem einzelnen Workerknoten, auf dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [YARN-Konzepte][YARN-concepts].
+Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Tritt bei einer Anwendung ein Fehler auf, kann ein neuer Versuch unternommen werden. Jeder Versuch wird in einem Container ausgeführt. In gewisser Weise stellt ein Container den Kontext für die Standardeinheit für Aufgaben, die von einer YARN-Anwendung ausgeführt werden. Alle Aufgaben, die im Kontext eines Containers erledigt werden, erfolgen auf dem einzelnen Workerknoten, auf dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [YARN-Konzepte][YARN-concepts].
 
-Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation][log-aggregation] ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch die Protokollaggregationsfunktion wird der Zugriff auf Anwendungsprotokolle deterministischer. Sie aggregiert Protokolle in allen Containern auf einem Workerknoten und speichert sie als eine aggregierte Protokolldatei pro Workerknoten. Das Protokoll wird, nachdem eine Anwendung beendet wurde, im Standarddateisystem gespeichert. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Arbeitsknoten vorhandenen Container werden zu einer zentralen Datei zusammengeführt. Dies mündet in einer Protokolldatei pro Workerknoten, die von Ihrer Anwendung genutzt wird. Log Aggregation ist für HDInsight-Cluster (ab Version 3.0) standardmäßig aktiviert. Zusammengeführte Protokolle befinden sich im Standardcontainer Ihres Clusters am folgenden Speicherort:
+Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation][log-aggregation] ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch die Protokollaggregationsfunktion wird der Zugriff auf Anwendungsprotokolle deterministischer. Sie aggregiert Protokolle in allen Containern auf einem Workerknoten und speichert sie als eine aggregierte Protokolldatei pro Workerknoten. Das Protokoll wird, nachdem eine Anwendung beendet wurde, im Standarddateisystem gespeichert. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Workerknoten vorhandenen Container werden immer zu einer zentralen Datei zusammengeführt. Daher wird nur ein Protokoll pro Workerknoten von Ihrer Anwendung genutzt. Die Protokollaggregation ist für HDInsight-Cluster ab Version 3.0 standardmäßig aktiviert. Aggregierte Protokolle befinden sich im Standardspeicher für den Cluster. Der folgende Pfad ist der HDFS-Pfad für die Protokolle:
 
-    wasbs:///app-logs/<user>/logs/<applicationId>
+    /app-logs/<user>/logs/<applicationId>
 
-An diesem Speicherort ist *user* der Name des Benutzers, der die Anwendung gestartet hat. *applicationId* ist der eindeutige Bezeichner einer Anwendung gemäß der Zuweisung durch den YARN Resource Manager (RM).
+`user` steht hier für den Namen des Benutzers, der die Anwendung gestartet hat. `applicationId` ist der eindeutige Bezeichner, der einer Anwendung durch den YARN-RM zugewiesen wird.
 
-Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in [TFile][T-file] geschrieben werden, einem nach Container indiziertem [Binärformat][binary-format]. Sie müssen die YARN-ResourceManager-Protokolle oder CLI-Tools verwenden, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
+Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in [TFile][T-file] geschrieben werden, einem nach Container indiziertem [Binärformat][binary-format]. Verwenden Sie die YARN-ResourceManager-Protokolle oder CLI-Tools, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
 
 ## <a name="yarn-cli-tools"></a>YARN-CLI-Tools
 
@@ -69,12 +68,11 @@ Sie können diese Protokolle im Nur-Text-Format anzeigen, indem Sie einen der fo
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Beim Ausführen dieser Befehle müssen Sie &lt;AnwendungsID>, den &lt;Benutzer,-der-die-Anwendung-gestartet-hat>, die &lt;ContainerID> und die &lt;Workerknotenadresse> angeben.
+Geben Sie beim Ausführen dieser Befehle die &lt;AnwendungsID>, den &lt;Benutzer,-der-die-Anwendung-gestartet-hat>, die &lt;ContainerID> und die &lt;Workerknotenadresse> an.
 
 ## <a name="yarn-resourcemanager-ui"></a>YARN-ResourceManager-Benutzeroberfläche
-Die YARN-ResourceManager-Benutzeroberfläche wird im Hauptknoten des Clusters ausgeführt, und der Zugriff erfolgt über die Ambari-Webbenutzeroberfläche; Sie müssen jedoch erst einen [SSH-Tunnel erstellen](hdinsight-linux-ambari-ssh-tunnel.md) , bevor Sie auf die ResourceManager-Benutzeroberfläche zugreifen können.
 
-Nachdem Sie einen SSH-Tunnel erstellt haben, zeigen Sie die YARN-Protokolle mithilfe folgender Schritte an:
+Die YARN-ResourceManager-Benutzeroberfläche wird im Cluster-Hauptknoten ausgeführt. Der Zugriff erfolgt über die Ambari-Webbenutzeroberfläche. Führen Sie die folgenden Schritte aus, um die YARN-Protokolle anzeigen:
 
 1. Navigieren Sie in Ihrem Webbrowser zu „https://CLUSTERNAME.azurehdinsight.net“. Ersetzen Sie CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
 2. Wählen Sie aus der Liste der Dienste auf der linken Seite den Dienst **YARN**aus.
