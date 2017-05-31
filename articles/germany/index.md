@@ -67,7 +67,7 @@ ms.lasthandoff: 05/03/2017
 
 ---
 
-<h2>Referenz</h2>
+<h2>Referenzen</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -92,8 +92,8 @@ ms.lasthandoff: 05/03/2017
                         <p><a href="/azure/germany/germany-services-database">Datenbank</a></p>
                         <p><a href="/azure/germany/germany-services-networking">Netzwerk</a></p>
                         <p><a href="/azure/germany/germany-services-securityandidentity">Sicherheit und Identität</a></p>
-                        <p><a href="/azure/germany/germany-services-webandmobile">Web und mobil</a></p>
-                        <p><a href="/azure/germany/germany-services-iot">Internet of Things (IoT)</a></p>
+                        <p><a href="/azure/germany/germany-services-webandmobile">Web und Mobil</a></p>
+                        <p><a href="/azure/germany/germany-services-iot">Internet der Dinge (IoT)</a></p>
                      </div>
                 </div>
             </div>
