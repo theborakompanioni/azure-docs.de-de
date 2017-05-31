@@ -1,6 +1,6 @@
 ---
 title: Grundlegendes zum Zugriff auf Ressourcen in Azure | Microsoft Docs
-description: "In diesem Thema werden Konzepte zum Einsatz von Abonnementadministratoren erklärt, um den Zugriff auf Ressourcen im ganzen Azure-Portal zu steuern."
+description: "In diesem Thema werden Konzepte zum Einsatz von Abonnementadministratoren erklärt, um den Zugriff auf Ressourcen im gesamten Azure-Portal zu steuern."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 05/08/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 9906aa7ac4296089fd2e41897323e757b181a022
-ms.lasthandoff: 02/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: d9143c1ec2075f71659e8deaadc93d1972ea9a85
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---

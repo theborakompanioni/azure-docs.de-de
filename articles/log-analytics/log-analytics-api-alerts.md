@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2017
+ms.date: 05/12/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: db3a68e532775728099854a46d1ad0841e38b4a8
-ms.openlocfilehash: 3161a05a051ba741cf76e149f7b5e5a4324be0a4
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 5ce72ffef4394bf3bbe39fa420c4fcaa965ae35c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -69,6 +70,9 @@ Im Folgenden finden Sie eine Beispielantwort für einen Zeitplan.
 ### <a name="creating-a-schedule"></a>Erstellen eines Zeitplans
 Verwenden Sie die Put-Methode mit der eindeutigen Zeitplan-ID, um einen neuen Zeitplan zu erstellen.  Beachten Sie, dass zwei Zeitpläne dieselbe ID haben können, auch wenn sie unterschiedlichen gespeicherten Suchvorgängen zugeordnet sind.  Wenn Sie einen Zeitplan in der OMS-Konsole erstellen, wird für die Zeitplan-ID eine GUID erstellt.
 
+> [!NOTE]
+> Die Namen aller gespeicherten Suchvorgänge, Zeitpläne und Aktionen, die mit der Log Analytics-API erstellt werden, müssen in Kleinbuchstaben geschrieben werden.
+
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
@@ -107,6 +111,9 @@ Verwenden Sie die Get-Methode mit der Aktions-ID, um eine bestimmte Aktion für 
 
 ### <a name="creating-or-editing-actions"></a>Erstellen oder Bearbeiten von Aktionen
 Verwenden Sie die Put-Methode mit einer Aktions-ID, die für den Zeitplan eindeutig ist, um eine neue Aktion zu erstellen.  Wenn Sie eine Aktivität in der OMS-Konsole erstellen, wird eine GUID für die Aktions-ID erstellt.
+
+> [!NOTE]
+> Die Namen aller gespeicherten Suchvorgänge, Zeitpläne und Aktionen, die mit der Log Analytics-API erstellt werden, müssen in Kleinbuchstaben geschrieben werden.
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID für die gleiche gespeicherte Suche, um diesen Zeitplan zu bearbeiten.  Der Hauptteil der Anforderung muss das ETag des Zeitplans enthalten.
 

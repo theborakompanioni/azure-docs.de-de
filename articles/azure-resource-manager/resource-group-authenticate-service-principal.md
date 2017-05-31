@@ -12,22 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/03/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: eb6bddbe4220418f7c525985ab6a15524589829e
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 2f8067a1a4ff7abfc41b28cbfd3482be11ae0e23
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell
-> [!div class="op_single_selector"]
-> * [PowerShell](resource-group-authenticate-service-principal.md)
-> * [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
-> * [Portal](resource-group-create-service-principal-portal.md)
-> 
-> 
 
 Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine Identität für die App einrichten und sie mit ihren eigenen Anmeldeinformationen authentifizieren. Diese Identität wird als Dienstprinzipal bezeichnet. Dieser Ansatz ermöglicht Ihnen Folgendes:
 
@@ -43,8 +38,30 @@ Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlic
 
 Fahren Sie nun mit dem Abschnitt für eine [kennwortbasierte](#create-service-principal-with-password) oder [zertifikatbasierte](#create-service-principal-with-certificate) Authentifizierung fort.
 
+## <a name="powershell-commands"></a>PowerShell-Befehle
+
+Zum Einrichten eines Dienstprinzipals verwenden Sie diese Befehle:
+
+| Befehl | Beschreibung |
+| ------- | ----------- | 
+| [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) | Erstellt einen Azure Active Directory-Dienstprinzipal. |
+| [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | Weist dem angegebenen Dienstprinzipal die angegebene RBAC-Rolle im angegebenen Bereich zu. |
+
+
 ## <a name="create-service-principal-with-password"></a>Erstellen eines Dienstprinzipals mit Kennwort
-Das folgende Skript erstellt eine Identität für Ihre Anwendung und weist sie für den angegebenen Bereich der Rolle „Mitwirkender“ zu:
+
+Um einen Dienstprinzipal mit der Rolle „Mitwirkender“ für Ihr Abonnement zu erstellen, verwenden Sie Folgendes: 
+
+```powershell
+Login-AzureRmAccount
+$sp = New-AzureRmADServicePrincipal -DisplayName exampleapp -Password "{provide-password}"
+Sleep 20
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+```
+
+Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
+
+Mit dem folgenden Skript können Sie einen anderen Bereich als das standardmäßige Abonnement angeben und die Rollenzuweisung erneut versuchen, falls ein Fehler auftritt:
 
 ```powershell
 Param (
@@ -62,14 +79,14 @@ Param (
 
  [Parameter(Mandatory=$true)]
  [String] $Password
- )
+)
 
  Login-AzureRmAccount
  Import-Module AzureRM.Resources
 
  if ($SubscriptionId -eq "") 
  {
-    $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+    $SubscriptionId = (Get-AzureRmContext).Subscription.Id
  }
  else
  {
@@ -85,11 +102,9 @@ Param (
     $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
  }
 
- # Create Azure Active Directory application with password
- $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -Password $Password
-
+ 
  # Create Service Principal for the AD app
- $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $Password
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -98,8 +113,8 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
+    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
     $Retries++;
  }
 ```
@@ -108,7 +123,6 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 
 * Um der Identität Zugriff auf das Standardabonnement zu gewähren, müssen Sie weder den Parameter ResourceGroup noch SubscriptionId angeben.
 * Geben Sie den Parameter ResourceGroup nur an, wenn Sie den Bereich der Rollenzuweisung auf eine Ressourcengruppe begrenzen möchten.
-* Bei Anwendungen mit nur einem Mandanten werden Startseite und Bezeichner-URIs nicht überprüft.
 *  In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
 * Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
@@ -129,7 +143,22 @@ Die Mandanten-ID ist nicht empfindlich, Sie können sie also direkt in Ihr Skrip
 ```
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Erstellen eines Dienstprinzipals mit selbstsigniertem Zertifikat
-Um ein selbstsigniertes Zertifikat und einen Dienstprinzipal mit Azure PowerShell 2.0 unter Windows 10 oder Windows Server 2016 Technical Preview zu generieren, verwenden Sie folgendes Skript:
+
+Um einen Dienstprinzipal mit einem selbstsignierten Zertifikat und der Rolle „Mitwirkender“ für Ihr Abonnement zu erstellen, verwenden Sie Folgendes: 
+
+```powershell
+Login-AzureRmAccount
+$cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
+$keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+
+$sp = New-AzureRMADServicePrincipal -DisplayName exampleapp -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
+Sleep 20
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+```
+
+Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
+
+Mit dem folgenden Skript können Sie einen anderen Bereich als das standardmäßige Abonnement angeben und die Rollenzuweisung erneut versuchen, falls ein Fehler auftritt. Sie müssen über Azure PowerShell 2.0 unter Windows 10 oder Windows Server 2016 verfügen.
 
 ```powershell
 Param (
@@ -151,7 +180,7 @@ Param (
 
  if ($SubscriptionId -eq "") 
  {
-    $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+    $SubscriptionId = (Get-AzureRmContext).Subscription.Id
  }
  else
  {
@@ -170,10 +199,7 @@ Param (
  $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
  $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
 
- # Use Key credentials
- $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $ApplicationDisplayName) -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -182,8 +208,8 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
+    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
     $Retries++;
  }
 ```
@@ -192,8 +218,7 @@ Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 
 * Um der Identität Zugriff auf das Standardabonnement zu gewähren, müssen Sie weder den Parameter ResourceGroup noch SubscriptionId angeben.
 * Geben Sie den Parameter ResourceGroup nur an, wenn Sie den Bereich der Rollenzuweisung auf eine Ressourcengruppe begrenzen möchten.
-* Bei Anwendungen mit nur einem Mandanten werden Startseite und Bezeichner-URIs nicht überprüft.
-*  In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
+* In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
 * Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
@@ -277,10 +302,7 @@ Param (
  $KeyCredential.KeyId = $KeyId
  $KeyCredential.CertValue = $KeyValue
 
- # Use Key credentials
- $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -KeyCredentials $keyCredential
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -300,8 +322,7 @@ Param (
 Bitte beachten Sie bezüglich des Skripts folgende Punkte:
 
 * Der Zugriff ist auf das Abonnement beschränkt.
-* Bei Anwendungen mit nur einem Mandanten werden Startseite und Bezeichner-URIs nicht überprüft.
-*  In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
+* In diesem Beispiel fügen Sie den Dienstprinzipal der Rolle „Mitwirkender“ hinzu. Informationen zu den anderen Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
 * Das Skript befindet sich 15 Sekunden lang im Ruhezustand und schafft damit Zeit für die Verteilung des neuen Dienstprinzipals in Azure Active Directory. Falls das Skript nicht lange genug wartet, sehen Sie folgende Fehlermeldung: „PrincipalNotFound: Principal {id} does not exist in the directory.“ (PrincipalNotFound: Prinzipal {id} ist im Verzeichnis nicht vorhanden.).
 * Wenn Sie dem Dienstprinzipal Zugriff auf weitere Abonnements oder Ressourcengruppen erteilen müssen, führen Sie das `New-AzureRMRoleAssignment`-Cmdlet erneut mit unterschiedlichen Bereichen aus.
 
@@ -426,5 +447,6 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 * Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 * Eine ausführlichere Erläuterung zu Anwendungen und Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md). 
 * Weitere Informationen zur Azure Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+* Eine Liste der verfügbaren Aktionen, die Benutzern erteilt oder verweigert werden können, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../active-directory/role-based-access-control-resource-provider-operations.md).
 
 

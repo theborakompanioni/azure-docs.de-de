@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/06/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 6d878b00094f573adc440d2384c426506fea0a40
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 9ea3896f73e0e97b89743d8b17c8fd1e723153c3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -120,6 +121,52 @@ Das folgende Beispiel zeigt die Ausgabedaten:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
+Wenn ein Gerät Zwillingsdaten aufweist, werden die Zwillingsdaten zusammen mit den Gerätedaten exportiert. Das folgende Beispiel zeigt dieses Format. Alle Daten aus der Zeile „twinETag“ bis zum Ende sind Zwillingsdaten.
+```
+{
+   "id":"export-6d84f075-0",
+   "eTag":"MQ==",
+   "status":"enabled",
+   "statusReason":"firstUpdate",
+   "authentication":null,
+   "twinETag":"AAAAAAAAAAI=",
+   "tags":{
+      "Location":"LivingRoom"
+   },
+   "properties":{
+      "desired":{
+         "Thermostat":{
+            "Temperature":75.1,
+            "Unit":"F"
+         },
+         "$metadata":{
+            "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+            "$lastUpdatedVersion":2,
+            "Thermostat":{
+               "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+               "$lastUpdatedVersion":2,
+               "Temperature":{
+                  "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+                  "$lastUpdatedVersion":2
+               },
+               "Unit":{
+                  "$lastUpdated":"2017-03-09T18:30:52.3167248Z",
+                  "$lastUpdatedVersion":2
+               }
+            }
+         },
+         "$version":2
+      },
+      "reported":{
+         "$metadata":{
+            "$lastUpdated":"2017-03-09T18:30:51.1309437Z"
+         },
+         "$version":1
+      }
+   }
+}
+```
+
 Wenn Sie Zugriff auf diese Daten im Code benötigen, können Sie diese Daten mithilfe der **ExportImportDevice** -Klasse problemlos deserialisieren. Der folgende C#-Codeausschnitt zeigt, wie Geräte-Informationen gelesen werden, die zuvor in einen Blockblob exportiert wurden:
 
 ```csharp
@@ -170,6 +217,8 @@ Der folgende C#-Codeausschnitt zeigt, wie ein Importauftrag ausgelöst wird:
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
+Diese Methode kann auch verwendet werden, um die Daten für den Gerätezwilling zu importieren. Das Format für die Dateneingabe entspricht demjenigen, das im Abschnitt für **ExportDevicesAsync** gezeigt wurde. Auf diese Weise können die exportierten Daten auch wieder importiert werden. $metadata ist optional.
+
 ## <a name="import-behavior"></a>Importverhalten
 
 Sie können die **ImportDevicesAsync** -Methode zum Anwenden der folgenden Massenvorgänge auf Ihre Identitätsregistrierung verwenden:
@@ -179,18 +228,21 @@ Sie können die **ImportDevicesAsync** -Methode zum Anwenden der folgenden Masse
 * Massenstatusänderungen (Aktivieren oder Deaktivieren von Geräten)
 * Massenzuweisung neuer Geräteauthentifizierungsschlüssel
 * Automatische Massenneugenerierung von Geräteauthentifizierungsschlüsseln
+* Massenaktualisierung von Zwillingsdaten
 
 Sie können eine beliebige Kombination der obigen Vorgänge innerhalb eines einzelnen Aufrufs von **ImportDevicesAsync** ausführen. Sie können beispielsweise gleichzeitig neue Geräte registrieren oder vorhandene Geräte aktualisieren und löschen. Bei Verwendung zusammen mit der **ExportDevicesAsync** -Methode können Sie alle Ihre Geräte vollständig von einem IoT Hub zu einem anderen migrieren.
+
+Wenn die Importdatei Zwillingsmetadaten angibt, dann überschreiben diese Metadaten die vorhandenen Metadaten des Zwillings. Falls nicht, werden nur die `lastUpdateTime`-Metadaten mit der aktuellen Uhrzeit aktualisiert. 
 
 Verwenden Sie die optionale **importMode**-Eigenschaft in den Importserialisierungsdaten für jedes Gerät, um den Importprozess gerätebezogen zu steuern. Die **importMode** -Eigenschaft hat die folgenden Optionen:
 
 | importMode | Beschreibung |
 | --- | --- |
-| **createOrUpdate** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag** -Werts überschrieben. |
-| **create** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
+| **createOrUpdate** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag** -Werts überschrieben. <br> Der Benutzer kann optional Zwillingsdaten mit den Gerätedaten angeben. Das ETag des Zwillings wird, sofern angegeben, unabhängig vom Geräte-ETag verarbeitet. Wenn ein Konflikt mit dem ETag des vorhandenen Zwillings vorliegt, wird ein Fehler in die Protokolldatei geschrieben. |
+| **create** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br> Der Benutzer kann optional Zwillingsdaten mit den Gerätedaten angeben. Das ETag des Zwillings wird, sofern angegeben, unabhängig vom Geräte-ETag verarbeitet. Wenn ein Konflikt mit dem ETag des vorhandenen Zwillings vorliegt, wird ein Fehler in die Protokolldatei geschrieben. |
 | **update** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen durch die bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag**-Werts überschrieben. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
 | **updateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen durch die bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
-| **createOrUpdateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
+| **createOrUpdateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. <br> Der Benutzer kann optional Zwillingsdaten mit den Gerätedaten angeben. Das ETag des Zwillings wird, sofern angegeben, unabhängig vom Geräte-ETag verarbeitet. Wenn ein Konflikt mit dem ETag des vorhandenen Zwillings vorliegt, wird ein Fehler in die Protokolldatei geschrieben. |
 | **delete** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es ohne Berücksichtigung des **ETag**-Werts gelöscht. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
 | **deleteIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es nur gelöscht, wenn es eine Übereinstimmung mit einem **ETag** gibt. Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem ETag gibt, wird ein Fehler in die Protokolldatei geschrieben. |
 
@@ -355,11 +407,11 @@ In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Identitätsregi
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [IoT Hub-Entwicklerhandbuch][lnk-devguide]
-* [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
+* [Simulieren eines Geräts mit IoT Edge][lnk-iotedge]
 
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-monitor]: iot-hub-operations-monitoring.md
 
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

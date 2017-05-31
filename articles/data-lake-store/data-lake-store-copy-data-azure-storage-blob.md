@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/06/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
-ms.openlocfilehash: 9f8635cd028d7d0d6a69faf6c2dc1de05dc5bb36
-ms.lasthandoff: 12/02/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: c7ccd172440ae36844c7a5863a9f9d55a05411f9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -175,6 +176,9 @@ In diesem Abschnitt erfahren Sie, wie Sie AdlCopy verwenden, um Daten mithilfe d
 ## <a name="performance-considerations-for-using-adlcopy"></a>Überlegungen zur Leistung bei Verwendung von AdlCopy
 
 AdlCopy unterstützt das Kopieren von Daten mit Tausenden von Dateien und Ordnern. Sollten beim Kopieren eines großen Datasets jedoch Probleme auftreten, können Sie die Dateien/Ordner auf kleinere Unterordner verteilen. AdlCopy wurde für Ad-hoc-Kopien konzipiert. Wenn Sie wiederholt Daten kopieren möchten, sollten Sie die Verwendung von [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) in Betracht ziehen, da diese Lösung eine umfassende Verwaltung rund um Kopiervorgänge bietet.
+
+## <a name="release-notes"></a>Versionshinweise
+* 1.0.13: Wenn Sie Daten über mehrere Adlcopy-Befehle auf dasselbe Azure Data Lake Store-Konto kopieren möchten, müssen Sie Ihre Anmeldeinformationen nicht mehr für jede Ausführung neu eingeben. Diese Informationen werden nun von Adlcopy über mehrere Ausführungen zwischengespeichert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)

@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/12/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 61f09a6f103b9cedaf19f1128a21fa8d5df974a1
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: ff505246bef15d180e3844558d68a425df60c35f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -102,7 +103,7 @@ Da Sie jetzt den Wiederherstellungspunkt ausgewählt haben, wählen Sie jetzt ei
    * Wiederherstellen des gesamten virtuellen Computers
    * Wiederherstellen von gesicherten Datenträgern
 
-Das Portal bietet für wiederhergestellte VMs die Option „Schnellerfassung“. Wenn Sie die VM-Konfiguration oder Namen der Ressourcen anpassen möchten, die beim Erstellen einer neuen VM-Auswahl erstellt wurden, verwenden Sie PowerShell oder das Portal zum Wiederherstellen gesicherter Datenträger, und verwenden Sie PowerShell-Befehle, um sie der Auswahl der VM-Konfiguration anzufügen. Alternativ können Sie eine Vorlage verwenden, die zum Wiederherstellungsdatenträger gehört, um den wiederhergestellten virtuellen Computer anzupassen. Weitere Informationen zum Wiederherstellen von virtuellen Computern mit mehreren Netzwerkkarten oder Lastenausgleichsmodulen finden Sie unter [Wiederherstellen eines virtuellen Computers mit speziellen Netzwerkkonfigurationen](#restoring-vms-with-special-network-configurations). 
+Das Portal bietet für wiederhergestellte VMs die Option „Schnellerfassung“. Wenn Sie die VM-Konfiguration oder Namen der Ressourcen anpassen möchten, die beim Erstellen einer neuen VM-Auswahl erstellt wurden, verwenden Sie PowerShell oder das Portal zum Wiederherstellen gesicherter Datenträger, und verwenden Sie PowerShell-Befehle, um sie der Auswahl der VM-Konfiguration anzufügen. Alternativ können Sie eine Vorlage verwenden, die zum Wiederherstellungsdatenträger gehört, um den wiederhergestellten virtuellen Computer anzupassen. Weitere Informationen zum Wiederherstellen von virtuellen Computern mit mehreren Netzwerkkarten oder Lastenausgleichsmodulen finden Sie unter [Wiederherstellen eines virtuellen Computers mit speziellen Netzwerkkonfigurationen](#restoring-vms-with-special-network-configurations). Wenn Ihre Windows-VM [HUB-Lizenzierung](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, müssen Sie wie nachfolgend angegeben Datenträger wiederherstellen und mithilfe von PowerShell bzw. einer Vorlage die VM erstellen. Stellen Sie dabei sicher, dass Sie beim Erstellen der VM für „LicenseType“ den Wert „Windows_Server“ festlegen, um von den verfügbaren HUB-Vorteilen auf einer wiederhergestellten VM zu profitieren. 
  
 ## <a name="create-a-new-vm-from-restore-point"></a>Erstellen eines neuen virtuellen Computer über einen Wiederherstellungspunkt
 Falls noch nicht geschehen, [wählen Sie einen Wiederherstellungspunkt aus](#restoring-vms-with-special-network-configurations), bevor Sie mit der Erstellung eines neuen virtuellen Computers beginnen. Sobald der Wiederherstellungspunkt ausgewählt wurde, geben Sie auf dem Blatt **Konfiguration wiederherstellen** Werte für jedes der folgenden Felder ein, bzw. wählen Sie sie aus:
@@ -194,6 +195,7 @@ Akzeptieren Sie nach der Eingabe der erforderlichen Werte die *Geschäftsbedingu
 * Erweiterungen, die während der Konfiguration der Sicherung vorhanden waren, werden zwar installiert, aber nicht aktiviert. Installieren Sie Erweiterungen neu, wenn Probleme auftreten. 
 * Wenn die gesicherte VM über eine statische IP-Adresse verfügt, erhält die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte beim Erstellen wiederhergestellter virtueller Computer zu vermeiden. Erfahren Sie mehr über das [Hinzufügen einer statischen IP-Adresse für wiederhergestellte virtuelle Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 * Für wiederhergestellte virtuelle Computer ist kein Verfügbarkeitswert festgelegt. Es wird empfohlen, die Option zur Datenträgerwiederherstellung zu verwenden und [Verfügbarkeitsgruppen hinzuzufügen](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set), wenn Sie einen virtuellen Computer mithilfe von PowerShell oder Vorlagen aus wiederhergestellten Datenträgern erstellen. 
+
 
 ## <a name="backup-for-restored-vms"></a>Sicherung für wiederhergestellte virtuelle Computer
 Wenn Sie den virtuellen Computer in derselben Ressourcengruppe mit dem Namen des ursprünglich gesicherten virtuellen Computers wiederhergestellt haben, wird der virtuelle Computer nach der Wiederherstellung weiterhin gesichert. Wenn Sie entweder den virtuellen Computer in einer anderen Ressourcengruppe wiederhergestellt oder einen anderen Namen dafür angegeben haben, wird er als neuer virtueller Computer behandelt, und Sie müssen die Sicherung dafür einrichten.

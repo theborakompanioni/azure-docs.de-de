@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 864526efd2bc90bdd4beeb4c81173e85eee6f34b
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 44e0d7c920bc32bf3293ca5ab197b6d2332a43f8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -35,7 +36,6 @@ ms.lasthandoff: 04/27/2017
 > * [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
 
-
 Es existieren zwei Aktivitätstypen, die Sie in einer Azure Data Factory-Pipeline verwenden können.
 
 - [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) zum Verschieben von Daten zwischen [unterstützten Quell- und Senkendatenspeichern](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
@@ -51,7 +51,7 @@ Die folgende exemplarische Vorgehensweise bietet Schritt-für-Schritt-Anleitunge
 > - Die benutzerdefinierten .NET Aktivitäten können nur in Windows-basierten HDInsight-Clustern ausgeführt werden. Eine Umgehung dieser Einschränkung ist das Verwenden der Map-/Reduce-Aktivität zum Ausführen von benutzerdefiniertem Java-Code in einem Linux-basierten HDInsight-Cluster. Eine weitere Option ist das Verwenden eines Azure Batch-Pools mit VMs zum Ausführen benutzerdefinierter Aktivitäten anstelle eines HDInsight-Clusters.
 > - Ein Datenverwaltungsgateway kann nicht über eine benutzerdefinierte Aktivität verwendet werden, um auf lokale Datenquellen zuzugreifen. Das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) unterstützt derzeit nur die Kopieraktivität und die Aktivität mit gespeicherten Prozeduren in Data Factory.   
 
-## <a name="walkthrough"></a>Exemplarische Vorgehensweise
+## <a name="walkthrough-create-a-custom-activity"></a>Exemplarische Vorgehensweise: Erstellen einer benutzerdefinierten Aktivität
 ### <a name="prerequisites"></a>Voraussetzungen
 * Visual Studio 2012/2013/2015
 * Laden Sie das [Azure .NET SDK][azure-developer-center] herunter, und installieren Sie es.
@@ -63,7 +63,7 @@ Erstellen Sie für das Tutorial ein Azure Batch-Konto mit einem VM-Pool. Gehen S
 
 1. Erstellen Sie über das **Azure-Portal** ein [Azure Batch-Konto](http://portal.azure.com). Anweisungen finden Sie im Artikel [Erstellen und Verwalten eines Azure Batch-Kontos][batch-create-account].
 2. Notieren Sie sich den Azure Batch-Kontonamen, Kontoschlüssel, URI und Poolnamen. Sie benötigen diese Angaben, um einen verknüpften Azure Batch-Dienst zu erstellen.
-    1. Auf der Startseite des Azure Batch-Kontos wird eine **URL** im folgenden Format angezeigt: `https://myaccount.westus.batch.azure.com`. In diesem Beispiel ist **myaccount** der Name des Azure Batch-Kontos. Der URI, den Sie in der Definition für den verknüpften Dienst verwenden, ist die URL ohne den Kontonamen. Beispiel: `https://westus.batch.azure.com`.
+    1. Auf der Startseite des Azure Batch-Kontos wird eine **URL** im folgenden Format angezeigt: `https://myaccount.westus.batch.azure.com`. In diesem Beispiel ist **myaccount** der Name des Azure Batch-Kontos. Der URI, den Sie in der Definition für den verknüpften Dienst verwenden, ist die URL ohne den Kontonamen. Beispiel: `https://<region>.batch.azure.com`.
     2. Klicken Sie links im Menü auf **Schlüssel**, und kopieren Sie den **PRIMÄREN ZUGRIFFSSCHLÜSSEL**.
     3. Klicken Sie zum Verwenden eines vorhandenen Pools im Menü auf **Pools**, und notieren Sie sich die **ID** des Pools. Fahren Sie mit dem nächsten Schritt fort, falls Sie keinen vorhandenen Pool besitzen.     
 2. Erstellen Sie einen **Azure Batch-Pool**.
@@ -88,7 +88,7 @@ Hier sind die beiden allgemeinen Schritte angegeben, die Sie im Rahmen dieser ex
 1. Erstellen Sie eine benutzerdefinierte Aktivität, die eine einfache Logik für die Datentransformation/-verarbeitung enthält.
 2. Erstellen Sie eine Instanz von Azure Data Factory mit einer Pipeline, die die benutzerdefinierte Aktivität verwendet.
 
-## <a name="create-a-custom-activity"></a>Erstellen einer benutzerdefinierten Aktivität
+### <a name="create-a-custom-activity"></a>Erstellen einer benutzerdefinierten Aktivität
 Um eine benutzerdefinierte .NET-Aktivität zu erstellen, müssen Sie ein **.NET-Klassenbibliotheksprojekt** mit einer Klasse erstellen, die die **IDotNetActivity**-Schnittstelle implementiert. Diese Schnittstelle verfügt lediglich über eine Methode: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) , und ihre Signatur ist:
 
 ```csharp
@@ -112,10 +112,10 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
 ### <a name="procedure"></a>Vorgehensweise
 1. Erstellen Sie ein **.NET-Klassenbibliotheksprojekt** .
    <ol type="a">
-     <li>Starten Sie <b>Visual Studio 2015</b>, <b>Visual Studio 2013</b> oder <b>Visual Studio 2012</b>.</li>
+     <li>Starten Sie <b>Visual Studio 2017</b>, <b>Visual Studio 2015</b>, <b>Visual Studio 2013</b> oder <b>Visual Studio 2012</b>.</li>
      <li>Klicken Sie auf <b>Datei</b>, zeigen Sie auf <b>Neu</b>, und klicken Sie auf <b>Projekt</b>.</li>
      <li>Erweitern Sie <b>Vorlagen</b>, und wählen Sie <b>Visual C#</b> aus. In dieser exemplarischen Vorgehensweise verwenden Sie C#, Sie können jedoch jede .NET-Sprache verwenden, um benutzerdefinierte Aktivität zu entwickeln.</li>
-     <li>Wählen Sie in der Liste mit den Projekttypen auf der rechten Seite den Eintrag <b>Klassenbibliothek</b> aus.</li>
+     <li>Wählen Sie in der Liste mit den Projekttypen auf der rechten Seite den Eintrag <b>Klassenbibliothek</b> aus. Wählen Sie in VS 2017 <b>Klassenbibliothek (.NET Framework)</b>  aus.</li>
      <li>Geben Sie <b>MyDotNetActivity</b> als <b>Namen</b> ein.</li>
      <li>Wählen Sie <b>C:\ADFGetStarted</b> als <b>Speicherort</b>.</li>
      <li>Klicken Sie auf <b>OK</b> , um das Projekt zu erstellen.</li>
@@ -137,16 +137,27 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
 5. Fügen Sie die folgenden **using** -Anweisungen der Quelldatei im Projekt hinzu.
 
     ```csharp
-    using System.IO;
-    using System.Globalization;
-    using System.Diagnostics;
-    using System.Linq;
 
-    using Microsoft.Azure.Management.DataFactories.Models;
-    using Microsoft.Azure.Management.DataFactories.Runtime;
+// Comment these lines if using VS 2017
+using System.IO;
+using System.Globalization;
+using System.Diagnostics;
+using System.Linq;
+// --------------------
 
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+// Comment these lines if using <= VS 2015
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// ---------------------
+
+using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.Azure.Management.DataFactories.Runtime;
+
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
     ```
 6. Ändern Sie den Namen des **Namespace** in **MyDotNetActivityNS**.
 
@@ -378,14 +389,13 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     > Alle Dateien in der ZIP-Datei für die benutzerdefinierte Aktivität müssen sich auf der **obersten Ebene** befinden und dürfen keine Unterordner besitzen.
 
     ![Binäre Ausgabedateien](./media/data-factory-use-custom-activities/Binaries.png)
-14. Erstellen Sie einen Blobcontainer mit dem Namen **customactivitycontainer**, sofern er noch nicht vorhanden ist.
+14. Erstellen Sie einen Blobcontainer mit dem Namen **customactivitycontainer**, sofern er noch nicht vorhanden ist.    
 15. Laden Sie „MyDotNetActivity.zip“ als Blob in den customactivitycontainer in einem Azure-Blobspeicher für **allgemeine Zwecke** hoch (keinen Blobspeicher vom Typ „Hot/Cool“), auf den von AzureStorageLinkedService verwiesen wird.  
 
-> [!NOTE]
-> Wenn Sie dieses .NET-Aktivitätsprojekt einer Lösung in Visual Studio hinzufügen, die ein Data Factory-Projekt enthält, und dem .NET-Aktivitätsprojekt einen Verweis vom Data Factory-Anwendungsprojekt hinzufügen, müssen Sie die letzten beiden Schritte nicht durchführen (ZIP-Datei selbst erstellen und in den Azure-Blobspeicher für allgemeine Zwecke hochladen). Beim Veröffentlichen von Data Factory-Entitäten mit Visual Studio werden diese Schritte automatisch durch den Veröffentlichungsprozess ausgeführt. In den Artikeln [Erstellen der ersten Pipeline mit Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) und [Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md) erfahren Sie mehr über das Erstellen und Veröffentlichen von Data Factory-Entitäten mit Visual Studio.  
+> [!IMPORTANT]
+> Wenn Sie dieses .NET-Aktivitätsprojekt einer Lösung in Visual Studio hinzufügen, die ein Data Factory-Projekt enthält, und dem .NET-Aktivitätsprojekt einen Verweis vom Data Factory-Anwendungsprojekt hinzufügen, müssen Sie die letzten beiden Schritte nicht durchführen (ZIP-Datei selbst erstellen und in den Azure-Blobspeicher für allgemeine Zwecke hochladen). Beim Veröffentlichen von Data Factory-Entitäten mit Visual Studio werden diese Schritte automatisch durch den Veröffentlichungsprozess ausgeführt. Weitere Informationen finden Sie im Abschnitt [Data Factory-Projekt in Visual Studio](#data-factory-project-in-visual-studio).
 
-
-## <a name="create-a-data-factory"></a>Erstellen einer Data Factory 
+## <a name="create-a-pipeline-with-custom-activity"></a>Erstellen einer Pipeline mit benutzerdefinierter Aktivität
 Sie haben eine benutzerdefinierte Aktivität erstellt und die ZIP-Datei mit Binärdateien in einen Blobcontainer in einem Azure Storage-Konto für **allgemeine Zwecke** hochgeladen. In diesem Abschnitt erstellen Sie eine Instanz von Azure Data Factory mit einer Pipeline, die die benutzerdefinierte Aktivität verwendet.
 
 Das Eingabedataset für die benutzerdefinierte Aktivität stellt Blobs (Dateien) im Ordner „customactivityinput“ des adftutorial-Containers im Blobspeicher dar. Das Ausgabedataset für die Aktivität stellt Ausgabeblobs im Ordner „customactivityoutput“ des adftutorial-Containers im Blobspeicher dar.
@@ -650,7 +660,21 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
 
 Unter [Überwachen und Verwalten von Pipelines](data-factory-monitor-manage-pipelines.md) finden Sie eine ausführliche Anleitung zum Überwachen von Datasets und Pipelines.      
 
-### <a name="data-factory-and-batch-integration"></a>Integration von Data Factory und Batch
+## <a name="data-factory-project-in-visual-studio"></a>Data Factory-Projekt in Visual Studio  
+Statt mit dem Azure-Portal können Sie Data Factory-Entitäten mithilfe von Visual Studio erstellen und veröffentlichen. Ausführliche Informationen zum Erstellen und Veröffentlichen von Data Factory-Entitäten mit Visual Studio finden Sie in den Artikeln [Erstellen der ersten Pipeline mit Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) und [Kopieren von Daten aus Azure Blob Storage in Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md).
+
+Führen Sie die folgenden zusätzlichen Schritte aus, wenn Sie ein Data Factory-Projekt in Visual Studio erstellen:
+ 
+1. Fügen Sie das Data Factory-Projekt der Visual Studio-Projektmappe hinzu, die das Projekt mit der benutzerdefinierten Aktivität enthält. 
+2. Fügen Sie einen Verweis auf die .NET-Aktivität aus dem Data Factory-Projekt hinzu. Klicken Sie mit der rechten Maustaste auf das Data Factory-Projekt, zeigen Sie auf **Hinzufügen**, und klicken Sie dann auf **Verweis**. 
+3. Wählen Sie im Dialogfeld **Verweis hinzufügen** das Projekt **MyDotNetActivity** aus, und klicken Sie auf **OK**.
+4. Erstellen und veröffentlichen Sie die Projektmappe.
+
+    > [!IMPORTANT]
+    > Bei der Veröffentlichung von Data Factory-Entitäten wird automatisch eine ZIP-Datei für Sie erstellt und in den Blobcontainer „customactivitycontainer“ hochgeladen. Wenn der Blobcontainer nicht vorhanden ist, wird er auch automatisch erstellt.  
+
+
+## <a name="data-factory-and-batch-integration"></a>Integration von Data Factory und Batch
 Der Data Factory-Dienst erstellt in Azure Batch einen Auftrag mit dem Namen **adf-poolname: job-xxx**. Klicken Sie im Menü links auf **Aufträge**. 
 
 ![Azure Data Factory – Batch-Aufträge](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
@@ -880,7 +904,7 @@ Verwenden Sie in der **Pipeline-JSON-Datei**den mit HDInsight verknüpften (beda
 ```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>Erstellen einer benutzerdefinierten Aktivität mit dem .NET SDK
-Der folgende Code erstellt die Data Factory anhand der exemplarischen Vorgehensweise in diesem Artikel mithilfe des .NET SDK. Sie finden [in diesem Artikel](data-factory-copy-activity-tutorial-using-dotnet-api.md) weitere Informationen zur Verwendung des SDK zum programmgesteuerten Erstellen von Pipelines.
+In der exemplarischen Vorgehensweise in diesem Artikel erstellen Sie eine Data Factory mit einer Pipeline, die die benutzerdefinierte Aktivität mithilfe des Azure-Portals verwendet. Der folgende Code zeigt, wie die Data Factory stattdessen mit dem .NET-SDK erstellt wird. Weitere Informationen zur Verwendung des SDK für die programmgesteuerte Erstellung von Pipelines finden Sie im Artikel [Erstellen einer Pipeline mit einer Kopieraktivität durch die .NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md). 
 
 ```csharp
 using System;
@@ -1119,8 +1143,11 @@ namespace DataFactoryAPITestApp
 }
 ```
 
+## <a name="debug-custom-activity-in-visual-studio"></a>Debuggen von benutzerdefinierten Aktivitäten in Visual Studio
+Das Beispiel [Azure Data Factory – Lokale Umgebung](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) in GitHub enthält ein Tool, mit dem Sie benutzerdefinierte .NET-Aktivitäten in Visual Studio debuggen können.  
 
-## <a name="examples"></a>Beispiele
+
+## <a name="sample-custom-activities-on-github"></a>Benutzerdefinierte Beispielaktivitäten in GitHub
 | Beispiel | Aktion der benutzerdefinierten Aktivität |
 | --- | --- |
 | [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in den Azure-Blobspeicher herunter. |
@@ -1128,8 +1155,6 @@ namespace DataFactoryAPITestApp
 | [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Ruft ein R-Skript auf, indem „RScript.exe“ in Ihrem HDInsight-Cluster ausgeführt wird, in dem R bereits installiert ist. |
 | [Anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Verwendet andere Assemblyversionen als das Data Factory-Startprogramm |
 | [Erneutes Verarbeiten eines Modells in Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Erneutes Verarbeiten eines Modells in Azure Analysis Services |
-| [Lokales Debuggen benutzerdefinierter Aktivitäten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFCustomActivityRunner) | Die benutzerdefinierte Aktivitätsausführung ermöglicht Ihnen das Debuggen benutzerdefinierter .NET-Aktivitäten von Azure Data Factory (ADF) mithilfe der in Ihrer Pipeline konfigurierten Informationen. | 
-
 
 [batch-net-library]: ../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../batch/batch-account-create-portal.md

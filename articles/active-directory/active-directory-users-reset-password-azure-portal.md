@@ -1,4 +1,5 @@
 ---
+
 title: "Zurücksetzen von Kennwörtern in Azure Active Directory | Microsoft-Dokumentation"
 description: "Erläutert, wie Sie in Azure Active Directory das Kennwort für einen Benutzer zurücksetzen."
 services: active-directory
@@ -12,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 15cb521e928bab6c7966d19e74d9ae3bca99ef34
-ms.openlocfilehash: a5e48f43751e90f41ffd61049a17af3ff48d132e
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: b460232b4d47e6a70fb31f6c3917f359b49df338
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory---public-preview"></a>Zurücksetzen des Kennworts für einen Benutzer in der Azure Active Directory – Public Preview
+# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-users-reset-password-azure-portal.md)
 > * [Klassisches Azure-Portal](active-directory-create-users-reset-password.md)

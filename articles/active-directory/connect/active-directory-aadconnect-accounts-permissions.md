@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 4ef0118435020edc3a922c88a5a55400992cbc09
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 366c2c43ec50b0b6c47a25ea9b0e9d7109827429
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -66,7 +67,7 @@ Das [Konto](#active-directory-account) , das für Lese- und Schreibvorgänge in 
 | Zurücksetzen des Kennworts |Vorbereitung für das Aktivieren des Rückschreibens von Kennwörtern |
 
 ## <a name="custom-settings-installation"></a>Installation mit benutzerdefinierten Einstellungen
-Wenn Sie benutzerdefinierte Einstellungen verwenden, muss das Konto für die Verbindung mit Active Directory vor der Installation erstellt werden. Die Berechtigungen, die Sie diesem Konto erteilen müssen, finden Sie unter [Erstellen des AD DS-Kontos](#create-the-ad-ds-account).
+Wenn Sie vorher benutzerdefinierte Einstellungen verwendet haben, musste das Konto für die Verbindung mit Active Directory vor der Installation erstellt werden. Die Berechtigungen, die Sie diesem Konto erteilen müssen, finden Sie unter [Erstellen des AD DS-Kontos](#create-the-ad-ds-account). Bei Azure AD Connect Version 1.1.524.0 und höher haben Sie die Option, das Konto durch den Azure AD Connect-Assistenten für Sie erstellen zu lassen.
 
 | Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen | Verwendung |
 | --- | --- | --- | --- |
@@ -86,9 +87,11 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 
 | Feature | Berechtigungen |
 | --- | --- |
+| Funktion „msDS-ConsistencyGuid“ |Schreibberechtigungen für das Attribut „msDS-ConsistencyGuid-in“, das unter [Entwurfskonzepte – Verwendung von „msDS-ConsistencyGuid“ als „sourceAnchor“](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
 | Kennwortsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
-| Rückschreiben von Kennwörtern |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions) für Benutzer dokumentiert sind |
+| Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
+| Rückschreiben von Kennwörtern |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords.md) für Benutzer dokumentiert sind |
 | Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md)beschrieben |
 | Gruppenrückschreiben |Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten in der Organisationseinheit, in der sich die Verteilergruppen befinden sollen. |
 
@@ -179,11 +182,13 @@ Zur Verwendung durch den Synchronisierungsdienst wird ein Konto in Azure AD ers
 
 ![AD-Konto](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
 
-Der Name des Servers, auf dem das Konto verwendet wird, kann im zweiten Teil des Benutzernamens identifiziert werden. In der Abbildung oben heißt der Server „FABRIKAMCON“. Wenn Sie über Stagingserver verfügen, erhält jeder Server ein eigenes Konto. Es besteht eine Beschränkung auf 10 Synchronisierungsdienstkonten in Azure AD.
+Der Name des Servers, auf dem das Konto verwendet wird, kann im zweiten Teil des Benutzernamens identifiziert werden. In der Abbildung oben heißt der Server „FABRIKAMCON“. Wenn Sie über Stagingserver verfügen, erhält jeder Server ein eigenes Konto.
 
 Das Dienstkonto wird mit einem langen, komplexen Kennwort erstellt, das nicht abläuft. Diesem wird eine besondere Rolle **Konten für die Verzeichnissynchronisierungsaufgaben** zugewiesen, die nur über Berechtigungen zur Ausführung von Verzeichnissynchronisierungsaufgaben verfügt. Diese besondere integrierte Rolle kann nicht außerhalb des Azure AD Connect-Assistenten gewährt werden, und das Azure-Portal zeigt dieses Konto nur mit der Rolle **Benutzer**an.
 
-![AD-Kontenrolle](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccountrole.png)
+Es besteht eine Beschränkung auf 20 Synchronisierungsdienstkonten in Azure AD. Um die Liste der vorhandenen Azure AD-Dienstkonten in Azure AD abzurufen, führen Sie das folgende Azure AD PowerShell-Cmdlet aus: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+
+Um nicht verwendete Azure AD-Dienstkonten zu entfernen, führen Sie das folgende Azure AD PowerShell-Cmdlet aus: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](../active-directory-aadconnect.md).

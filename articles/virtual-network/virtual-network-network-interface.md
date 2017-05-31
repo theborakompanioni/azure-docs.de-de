@@ -1,6 +1,6 @@
 ---
-title: Azure-Netzwerkschnittstellen | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie Netzwerkschnittstellen (NICs) erstellen und löschen und wie Sie ihnen öffentliche und private IP-Adressen zuweisen. Außerdem erfahren Sie, wie Sie NICs an virtuelle Azure-Computer anfügen und trennen."
+title: "Erstellen, Ändern und Löschen von Azure-Netzwerkschnittstellenkarten | Microsoft-Dokumentation"
+description: "Erfahren Sie, was Netzwerkschnittstellenkarten (Network Interface Cards, NICs) sind und wie Sie sie erstellen, ihre Einstellungen ändern und sie löschen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -13,312 +13,180 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2017
+ms.date: 05/04/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ec3c593c0fb6a92b65284285b330e20f788b84c5
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: f1fb0f6348b579121be64bff4411952026f8528d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
 
-# <a name="network-interfaces"></a>Netzwerkschnittstellen
+# <a name="create-change-or-delete-network-interfaces"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellenkarten
 
-Hier finden Sie Informationen zu Netzwerkschnittstellen (NICs) und zu deren Verwendung. Bei einer NIC handelt es sich um eine Verbindung zwischen einem virtuellen Azure-Computer (Virtual Machine, VM) und dem zugrunde liegenden Softwarenetzwerk. Die folgende Abbildung veranschaulicht die Funktionen einer NIC:
+Erfahren Sie, wie Sie Netzwerkschnittstellenkarten (NICs) erstellen, ihre Einstellungen ändern und sie löschen. Eine NIC ermöglicht einem virtuellen Azure-Computer (VM) die Kommunikation mit dem Internet, Azure und lokalen Ressourcen. Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine NIC mit Standardeinstellungen. Sie können nach Wunsch NICs mit benutzerdefinierten Einstellungen erstellen und VMs bei deren Erstellung eine oder mehrere hinzufügen. Sie können auch die Standardeinstellungen vorhandener NICs ändern. In diesem Artikel wird erläutert, wie Sie NICs mit benutzerdefinierten Einstellungen erstellen, vorhandene NIC-Einstellungen ändern, z. B. die Netzwerkfilterzuweisung (Netzwerksicherheitsgruppen), Subnetzzuweisung, DNS-Servereinstellungen und IP-Weiterleitung, und NICs löschen. 
 
-![Netzwerkschnittstelle](./media/virtual-network-network-interface/nic.png)
+Informationen zum Hinzufügen, Ändern oder Entfernen von IP-Adressen für eine NIC finden Sie im Artikel [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Informationen zum Hinzufügen von NICs zu oder Entfernen von NICs von VMs finden Sie im Artikel zum [Hinzufügen und Entfernen von NICs](virtual-network-network-interface-vm.md). 
 
-In diesem Artikel erfahren Sie, wie Sie die in der Abbildung gezeigten Konzepte verwenden. Klicken Sie auf eines der folgenden Konzepte, um direkt zum entsprechenden Abschnitt des Artikels zu gelangen:
 
-- [Netzwerkschnittstellen:](#nics) Eine NIC ist mit einem Subnetz in einem virtuellen Azure-Netzwerk (VNET) verbunden. In der Abbildung verfügt **VM1** über zwei angefügte NICs und **VM2** über eine einzelne angefügte NIC. Jede NIC ist mit dem gleichen VNET, aber mit unterschiedlichen Subnetzen verbunden. In diesem Abschnitt wird erläutert, wie Sie vorhandene NICs auflisten und NICs erstellen, ändern und löschen.
-- [IP-Konfigurationen:](#ip-configs) Jeder NIC ist mindestens eine IP-Konfiguration zugeordnet. Jeder IP-Konfiguration ist eine private IP-Adresse zugewiesen. Einer IP-Konfiguration kann auch eine private IP-Adresse zugeordnet werden. In der Abbildung ist **NIC1** und **NIC3** jeweils eine IP-Konfiguration zugeordnet. **NIC2** sind hingegen zwei IP-Konfigurationen zugeordnet. Bei NIC1 und NIC3 sind der zugewiesenen IP-Konfiguration öffentliche IP-Adressen zugewiesen. Bei NIC2 ist hingegen keiner der IP-Konfigurationen eine öffentliche IP-Adresse zugewiesen. Dieser Abschnitt enthält Schritte zum Erstellen, Ändern und Löschen von IP-Konfigurationen, denen mithilfe statischer oder dynamischer Zuweisungsmethoden private IP-Adressen zugewiesen wurden. Darüber hinaus erfahren Sie in diesem Abschnitt, wie Sie einer IP-Konfiguration öffentliche IP-Adressen zuordnen und die Zuordnung öffentlicher IP-Adressen aufheben.
-- [Netzwerksicherheitsgruppen:](#nsgs) Netzwerksicherheitsgruppen (NSGs) enthalten mindestens eine Ein- oder Ausgangssicherheitsregel. Mit diesen Regeln wird gesteuert, welche Art von eingehendem und ausgehendem Datenverkehr für eine Netzwerkschnittstelle und/oder für ein Subnetz zulässig ist. In der Abbildung ist **NIC1** und **NIC3** eine NSG zugeordnet. Bei **NIC2** ist dies nicht der Fall. In diesem Abschnitt erfahren Sie, wie Sie die NSGs anzeigen, die auf eine NIC angewendet wurden, wie Sie einer NIC eine NSG hinzufügen und wie Sie eine NSG von einer NIC entfernen.
-- [Virtuelle Computer:](#vms) An einen virtuellen Computer ist mindestens eine NIC angefügt. Je nach Größe des virtuellen Computers können aber auch mehrere NICs angefügt sein. Informationen zur unterstützten NIC-Anzahl der einzelnen VM-Größen finden Sie im entsprechenden Artikel für [Windows](../virtual-machines/windows/sizes.md) bzw. für [Linux](../virtual-machines/linux/sizes.md). In diesem Abschnitt erfahren Sie, wie Sie virtuelle Computer mit einzelnen oder mehreren NICs erstellen und wie Sie NICs an vorhandene virtuelle Computer anfügen und NICs von vorhandenen virtuellen Computern trennen.
+## <a name="before"></a>Voraussetzungen
 
-Falls Sie noch nicht mit NICs und virtuellen Computern in Azure vertraut sind, empfiehlt es sich, vor der Lektüre dieses Artikels zunächst die Übung unter [Erstellen Ihres ersten virtuellen Netzwerks](virtual-network-get-started-vnet-subnet.md) zu absolvieren. In dieser Übung werden Sie an VNETs und virtuelle Computer herangeführt.
+Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Abschnitten dieses Artikels durchführen:
 
-Dieser Artikel bezieht sich auf VNETs und NICs, die im Rahmen des Azure Resource Manager-Bereitstellungsmodells erstellt wurden. Microsoft empfiehlt für die Erstellung von Ressourcen die Verwendung des Resource Manager-Bereitstellungsmodells (anstelle des klassischen Bereitstellungsmodells). Die Unterschiede zwischen den beiden Modellen werden im Artikel [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) erläutert.
+- Lesen Sie den Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits), um mehr über Einschränkungen von NICs zu erfahren.
+- Melden Sie sich mit einem Azure-Konto beim Azure-Portal, der Azure-Befehlszeilenschnittstelle (CLI) oder bei Azure PowerShell an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
+- Bei Verwenden von PowerShell zum Ausführen der Aufgaben in diesem Artikel installieren und konfigurieren Sie Azure PowerShell gemäß den Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Cmdlets installiert haben. Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
+- Bei Verwenden der Azure CLI zum Ausführen der Aufgaben in diesem Artikel installieren und konfigurieren Sie die Azure CLI gemäß den Anweisungen im Artikel zum [Installieren und Konfigurieren der Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure CLI installiert haben. Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> --help`.
 
-In den restlichen Abschnitten dieses Artikels finden Sie Anleitungen für sämtliche NIC-bezogene Aufgaben. Die einzelnen Abschnitte enthalten jeweils Folgendes:
-- Schritte zum Ausführen der Aufgabe innerhalb des Azure-Portals. Um die Schritte ausführen zu können, müssen Sie beim [Azure-Portal](http://portal.azure.com) angemeldet sein. Falls Sie noch nicht über ein Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
-- Befehle zum Ausführen der Aufgabe mithilfe von Azure PowerShell sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie PowerShell gemäß der Anleitung im Artikel [Get started with Azure PowerShell cmdlets](/powershell/azure/overview) (Erste Schritte mit Azure PowerShell-Cmdlets). Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
-- Befehle zum Ausführen der Aufgabe mithilfe der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) sowie Links zur Befehlsreferenz für den Befehl. Installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle gemäß der Anleitung im Artikel [Install Azure CLI 2.0](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) (Installieren von Azure CLI 2.0). Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> -h`.
-
-## <a name="nics"></a>Netzwerkschnittstellen
-Mithilfe der Schritte in den folgenden Abschnitten können Sie Netzwerkschnittstellen und Einstellungen erstellen, anzeigen, ändern und löschen:
-
-### <a name="create-nic"></a>Erstellen einer Netzwerkschnittstelle
-
-Eine NIC kann an einen virtuellen Computer angefügt oder eigenständig sein. Informationen zum Anfügen einer NIC an einen virtuellen Computer finden Sie im Abschnitt [Anfügen einer NIC an einen virtuellen Computer](#vm-attach-nic) dieses Artikels.
-
-Gehen Sie zum Erstellen einer NIC wie folgt vor:
+## <a name="create-nic"></a>Erstellen einer NIC
+Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine NIC mit Standardeinstellungen. Wenn Sie lieber alle NIC-Einstellungen selbst angeben möchten, können Sie eine NIC mit benutzerdefinierten Einstellungen erstellen und an die VM bei deren Erstellung anfügen. Sie können außerdem eine NIC erstellen und an einen vorhandenen virtuellen Computer anfügen. Informationen zum Erstellen einer VM mit einer vorhandenen NIC oder zum Hinzufügen oder Entfernen von NICs bei vorhandenen VMs finden Sie im Artikel zum [Hinzufügen und Entfernen von NICs](virtual-network-network-interface-vm.md). Vor dem Erstellen einer NIC müssen Sie über ein virtuelles Netzwerk (VNet) am selben Standort und im selben Abonnement verfügen, in dem Sie eine NIC erstellen. Informationen zum Erstellen eines VNet finden Sie im Artikel [Erstellen eines VNet](virtual-networks-create-vnet-arm-pportal.md).
 
 1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie auf dem daraufhin angezeigten Blatt **Netzwerkschnittstellen** auf **+ Hinzufügen**.
 4. Das Blatt **Netzwerkschnittstelle erstellen** wird angezeigt. Geben Sie hier Werte für die folgenden Einstellungen an, und klicken Sie anschließend auf **Erstellen**:
 
-    |**Einstellung**|**Erforderlich?**|**Details**|
+    |Einstellung|Erforderlich|Details|
     |---|---|---|
-    |**Name**|Ja|Nach Erstellung der NIC kann der Name nicht mehr geändert werden. Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Benennungsvorschläge finden Sie im Artikel [Naming conventions](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions) (Benennungskonventionen).|
-    |**Virtuelles Netzwerk**|Ja|Eine NIC kann nur mit einem VNET verbunden werden, das sich im gleichen Abonnement und am gleichen Standort befindet wie die NIC. Der virtuelle Computer, an den die NIC angefügt ist, muss sich ebenfalls am gleichen Standort und im gleichen Abonnement befinden wie die NIC. Sind keine VNETs aufgeführt, müssen Sie eines erstellen. Gehen Sie zum Erstellen eines VNETs gemäß der Anleitung im Artikel [Erstellen eines virtuellen Netzwerks im Azure-Portal](virtual-networks-create-vnet-arm-pportal.md) vor. Nach der Erstellung einer NIC können Sie das VNET, mit dem sie verbunden ist, nicht mehr ändern.|
-    |**Subnetz**|Ja|Wählen Sie ein Subnetz innerhalb des ausgewählten VNETs aus. Das Subnetz, mit dem die NIC verbunden ist, kann nach der Erstellung geändert werden.|
-    |**Zuweisung der privaten IP-Adresse**|Ja| Eine private IP-Adresse wird der NIC bei ihrer Erstellung vom Azure-DHCP-Server zugewiesen. Der DHCP-Server weist eine verfügbare Adresse aus dem Subnetzadressbereich zu, der für das Subnetz definiert ist, mit dem Sie die NIC verbinden. **Dynamisch:** Azure kann einer NIC eine andere Adresse zuweisen, wenn der virtuelle Computer, an den sie angefügt ist, gestartet wird, nachdem er sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befand. Die Adresse bleibt unverändert, wenn der virtuelle Computer neu gestartet wird, ohne sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befunden zu haben. **Statisch:** Statische Adressen bleiben unverändert, bis Sie sie ändern oder die NIC gelöscht wird. Die Zuweisungsmethode kann nach Erstellung der NIC geändert werden.|
-    |**Netzwerksicherheitsgruppe**|Nein|Mithilfe von Netzwerksicherheitsgruppen können Sie den ein- und ausgehenden Netzwerkdatenverkehr für eine NIC steuern. Weitere Informationen zu NSGs finden Sie im Artikel [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-nsg.md). Auf eine NIC kann maximal eine Netzwerksicherheitsgruppe (NSG) angewendet werden. Maximal eine NSG kann auch auf das Subnetz angewendet werden, mit dem die NIC verbunden ist. Wenn eine NSG auf eine NIC und auf das Subnetz angewendet wird, mit dem sie verbunden ist, kommt es manchmal zu unerwarteten Ergebnissen. Informationen zum Behandeln von Problemen mit NSGs, die auf NICs angewendet wurden, finden Sie im Artikel [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface).|
-    |**Abonnement**|Ja| Der virtuelle Computer, an den Sie eine NIC anfügen, und das VNET, mit dem Sie eine Verbindung herstellen, müssen sich im gleichen Abonnement befinden.|
-    |**Ressourcengruppe**|Ja| Die NIC kann sich in der gleichen (oder in einer anderen) Ressourcengruppe befinden wie der virtuelle Computer, an den Sie sie anfügen, oder wie das VNET, mit dem Sie eine Verbindung herstellen.|
-    |**Standort**|Ja|Der virtuelle Computer, an den Sie eine NIC anfügen, und das VNET, mit dem Sie eine Verbindung herstellen, müssen sich am gleichen Standort befinden.|
+    |Name|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Im Laufe der Zeit verfügen Sie wahrscheinlich über mehrere NICs in Ihrem Azure-Abonnement. Lesen Sie den Artikel zu [Benennungskonventionen](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions) mit Vorschlägen zum Festlegen einer Benennungskonvention zum Vereinfachen der Verwaltung mehrerer NICs. Nach Erstellung der NIC kann der Name nicht mehr geändert werden.|
+    |Virtuelles Netzwerk|Ja|Wählen Sie ein VNet, mit dem die NIC verbunden werden soll. Eine NIC kann nur mit einem VNET verbunden werden, das sich im gleichen Abonnement und am gleichen Standort befindet wie die NIC. Nach der Erstellung einer NIC können Sie das VNET, mit dem sie verbunden ist, nicht mehr ändern. Der virtuelle Computer, dem Sie die NIC hinzufügen, muss sich ebenfalls am gleichen Standort und im gleichen Abonnement befinden wie die NIC.|
+    |Subnetz|Ja|Wählen Sie ein Subnetz innerhalb des ausgewählten VNETs aus. Das Subnetz, mit dem die NIC verbunden ist, kann nach der Erstellung geändert werden.|
+    |Zuweisung der privaten IP-Adresse|Ja| Wählen Sie aus den folgenden Methoden für die Zuweisung: **Dynamisch:** Bei Wahl dieser Option weist Azure automatisch eine verfügbare Adresse aus dem Adressraum des Subnetzes zu, das Sie ausgewählt haben. Azure kann einer NIC eine andere Adresse zuweisen, wenn der zugehörige virtuelle Computer gestartet wird, nachdem er sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befand. Die Adresse bleibt unverändert, wenn der virtuelle Computer neu gestartet wird, ohne sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befunden zu haben. **Statisch:** Bei Wahl dieser Option müssen Sie eine verfügbare IP-Adresse innerhalb des Adressraums des ausgewählten Subnetzes manuell zuweisen. Statische Adressen bleiben unverändert, bis Sie sie ändern oder die NIC gelöscht wird. Die Zuweisungsmethode kann nach Erstellung der NIC geändert werden. Der DHCP-Server von Azure weist diese Adresse der NIC innerhalb des Betriebssystems des virtuellen Computers zu.|
+    |Netzwerksicherheitsgruppe|Nein| Belassen Sie diese Einstellung auf **Keine** festgelegt, wählen Sie eine vorhandene Netzwerksicherheitsgruppe (NSG), oder erstellen Sie eine NSG. NSGs ermöglichen das Filtern des in die NIC eingehenden und aus ihr ausgehenden Netzwerkdatenverkehrs. Weitere Informationen zu NSGs finden Sie im Artikel [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-nsg.md). Informationen zum Erstellen einer NSG finden Sie im Artikel zum [Erstellen einer NSG](virtual-networks-create-nsg-arm-pportal.md). Sie können auf eine NIC eine oder keine NSG anwenden. Maximal eine NSG kann auch auf das Subnetz angewendet werden, mit dem die NIC verbunden ist. Wenn eine NSG auf eine NIC und auf das Subnetz angewendet wird, mit dem die NIC verbunden ist, kommt es mitunter zu unerwarteten Ergebnissen. Informationen zum Behandeln von Problemen mit NSGs, die auf NICs und Subnetze angewendet werden, finden Sie im Artikel zur [Problembehandlung von Netzwerksicherheitsgruppen](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface).|
+    |Abonnement|Ja|Wählen Sie eines Ihrer Azure-[Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) aus. Der virtuelle Computer, an den Sie eine NIC anfügen, und das VNET, mit dem Sie eine Verbindung herstellen, müssen sich im gleichen Abonnement befinden.|
+    |Ressourcengruppe|Ja|Wählen Sie eine vorhandene [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) aus, oder erstellen Sie eine. Eine NIC kann sich in der gleichen (oder in einer anderen) Ressourcengruppe befinden wie der virtuelle Computer, an den Sie sie anfügen, oder wie das VNET, mit dem Sie eine Verbindung herstellen.|
+    |Ort|Ja|Der virtuelle Computer, an den Sie eine NIC anfügen, und das VNet, mit dem Sie eine Verbindung herstellen, müssen sich am gleichen [Standort](https://azure.microsoft.com/regions) (auch als Region bezeichnet) befinden.|
 
-Das Azure-Portal erstellt eine primäre IP-Konfiguration namens **ipconfig1** mit einer dynamischen privaten IP-Adresse und ordnet sie der NIC zu, die Sie erstellen. Weitere Informationen zu IP-Konfigurationen finden Sie in diesem Artikel im Abschnitt [IP-Konfigurationen](#ip-configs). Beim Erstellen der NIC können Sie weder den Namen der vom Portal erstellten IP-Konfiguration angeben noch eine statische private IP-Adresse oder eine öffentliche IP-Adresse zuweisen. Wenn Sie die NIC mithilfe von PowerShell oder mithilfe der Befehlszeilenschnittstelle erstellen, können Sie den Namen der IP-Konfiguration und eine statische private IP-Adresse angeben sowie eine öffentliche IP-Adresse zuweisen. Sie können nach der Erstellung der NIC die Zuweisungsmethode für die private IP-Adresse ändern sowie festlegen, ob der NIC eine öffentliche IP-Adresse zugeordnet sein soll. Eine Anleitung zum Ändern der Einstellungen einer bereits erstellten NIC finden Sie in diesem Artikel im Abschnitt [Ändern einer IP-Konfiguration](#change-ip-config).
+Das Portal ermöglicht nicht das Zuweisen einer öffentlichen IP-Adresse zur NIC bei deren Erstellung. Es weist jedoch einer NIC eine öffentliche IP-Adresse zu, wenn Sie eine VM im Portal erstellen. Informationen zum Hinzufügen einer öffentlichen IP-Adresse zur NIC nach deren Erstellung finden Sie im Artikel zum [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Wenn Sie eine NIC mit einer öffentlichen IP-Adresse erstellen möchten, müssen Sie zum Erstellen der NIC die CLI oder PowerShell verwenden.
 
 >[!Note]
-> Azure weist der NIC erst dann eine MAC-Adresse zu, wenn die NIC an einen virtuellen Computer angefügt wurde und der virtuelle Computer erstmals gestartet wird. Die MAC-Adresse, die Azure der NIC zuweist, kann nicht angegeben werden. Die MAC-Adresse bleibt der NIC zugewiesen, bis die NIC gelöscht oder die private IP-Adresse, die der primären IP-Konfiguration der primären NIC zugewiesen ist, geändert wird. Weitere Informationen zu IP-Konfigurationen finden Sie in diesem Artikel im Abschnitt [IP-Konfigurationen](#ip-configs).
+> Azure weist der NIC erst dann eine MAC-Adresse zu, wenn die NIC an einen virtuellen Computer angefügt wurde und der virtuelle Computer erstmals gestartet wird. Die MAC-Adresse, die Azure der NIC zuweist, kann nicht angegeben werden. Die MAC-Adresse bleibt der NIC zugewiesen, bis die NIC gelöscht oder die private IP-Adresse, die der primären IP-Konfiguration der primären NIC zugewiesen ist, geändert wird. Weitere Informationen zu IP-Adressen und IP-Konfigurationen finden Sie im Artikel [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
 
-|**Tool**|**Befehl**|
-|:---|:---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/nic)|
+**Befehle**
 
-### <a name="view-nics"></a>Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen
+|Tool|Befehl|
+|---|---|
+|Befehlszeilenschnittstelle (CLI)|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/new-azurermnetworkinterface/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 
-Gehen Sie zum Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen wie folgt vor:
+## <a name="view-nics"></a>Anzeigen von NIC-Einstellungen
+
+Sie können die meisten Einstellungen für eine NIC anzeigen und ändern.
 
 1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 3. Klicken Sie auf dem daraufhin angezeigten Blatt **Netzwerkschnittstellen** auf die NIC, deren Einstellungen Sie anzeigen oder ändern möchten.
 4. Auf dem Blatt, das für die ausgewählte NIC angezeigt wird, stehen folgende Einstellungen zur Verfügung:
-    - **Übersicht:** Liefert Informationen zur NIC. Hierzu zählen beispielsweise die zugewiesenen IP-Adressen, das VNET/Subnetz, mit dem die NIC verbunden ist, und der virtuelle Computer, an den die NIC angefügt ist (sofern zutreffend). Die folgende Abbildung zeigt die Übersichtseinstellungen für eine NIC namens **mywebserver256**:   ![Übersicht über die Netzwerkschnittstelle](./media/virtual-network-network-interface/nic-overview.png)
-    - **IP-Konfigurationen:** Einer NIC ist mindestens eine IP-Konfiguration zugewiesen, sie kann aber auch über mehrere zugewiesene IP-Konfigurationen verfügen. Informationen zur maximal unterstützten Anzahl von IP-Konfigurationen für eine NIC finden Sie im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Jeder IP-Konfiguration ist eine private IP-Adresse zugewiesen. Optional kann ihr auch eine öffentliche IP-Adresse zugeordnet sein. Führen Sie zum Ändern der Anzeige die Schritte im Abschnitt [Hinzufügen einer sekundären IP-Konfiguration zu einer NIC](#create-ip-config), [Ändern einer IP-Konfiguration](#change-ip-config) oder [Löschen einer IP-Konfiguration](#delete-ip-config) dieses Artikels aus.
-    - **DNS-Server:** Sie können angeben, welcher DNS-Server einer NIC durch die Azure-DHCP-Server zugewiesen wird. Wählen Sie zwischen dem internen Azure-DNS-Server und einem benutzerdefinierten DNS-Server. Führen Sie zum Ändern der Anzeige die Schritte im Abschnitt [Ändern der DNS-Einstellungen für eine NIC](#dns) dieses Artikels aus.
-    - **Netzwerksicherheitsgruppe (NSG):** Gibt Aufschluss darüber, ob der NIC eine NSG zugeordnet ist. Falls der NIC eine NSG zugeordnet ist, wird der Name der zugeordneten NSG angezeigt. Führen Sie zum Ändern der Anzeige die Schritte im Abschnitt [Zuordnen einer NSG zu einer Netzwerkschnittstelle oder Aufheben der NSG-Zuordnung](#associate-nsg) dieses Artikels aus.
-    - **Eigenschaften:** Zeigt wichtige Einstellungen für die NIC an (unter anderem die MAC-Adresse und das Abonnement, dem sie angehört). Sie können eine NIC in eine andere Ressourcengruppe oder in ein anderes Abonnement verschieben. Dabei müssen jedoch auch alle Ressourcen verschoben werden, die mit der NIC in Verbindung stehen. Wenn die NIC also etwa an einen virtuellen Computer angefügt ist, müssen Sie auch den virtuellen Computer sowie alle damit zusammenhängenden Ressourcen verschieben. Informationen zum Verschieben einer NIC finden Sie im Artikel [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal). In dem Artikel erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure-Befehlszeilenschnittstelle verschieben.
-    - **Effektive Sicherheitsregeln:** Sicherheitsregeln werden aufgelistet, wenn die NIC an einen aktiven virtuellen Computer angefügt und der NIC und/oder dem Subnetz, mit dem sie verbunden ist, eine NSG zugeordnet ist. Weitere Informationen zur Anzeige finden Sie im Artikel [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface). Weitere Informationen zu NSGs finden Sie im Artikel [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
-    - **Effektive Routen:** Routen werden aufgelistet, wenn die NIC an einen aktiven virtuellen Computer angefügt ist. Bei den Routen handelt es sich um eine Kombination aus den Azure-Standardrouten, benutzerdefinierten Routen und BGP-Routen, die ggf. für das Subnetz vorhanden sind, mit dem die NIC verbunden ist. Weitere Informationen zur Anzeige finden Sie im Artikel [Problembehandlung bei Routen über das Azure-Portal](virtual-network-routes-troubleshoot-portal.md#view-effective-routes-for-a-network-interface). Weitere Informationen zu benutzerdefinierten Routen finden Sie im Artikel [Benutzerdefinierte Routen und IP-Weiterleitung](virtual-networks-udr-overview.md).
+    - **Übersicht:** Liefert Informationen zur NIC. Hierzu zählen beispielsweise die zugewiesenen IP-Adressen, das VNet/Subnetz, mit dem die NIC verbunden ist, und der virtuelle Computer, an den die NIC angefügt ist (sofern zutreffend). Die folgende Abbildung zeigt die Übersichtseinstellungen für eine NIC namens **mywebserver256**:   ![Übersicht über die Netzwerkschnittstellenkarte](./media/virtual-network-network-interface/nic-overview.png) Sie können eine NIC in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben, indem Sie neben dem Namen der **Ressourcengruppe** oder des **Abonnements** auf **Ändern** klicken. Wenn Sie die NIC verschieben, müssen Sie alle Ressourcen in ihrem Zusammenhang verschieben. Wenn die NIC also etwa an einen virtuellen Computer angefügt ist, müssen Sie auch den virtuellen Computer sowie alle anderen damit zusammenhängenden Ressourcen verschieben. Informationen zum Verschieben einer NIC finden Sie im Artikel [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal). Hier erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure CLI verschieben.
+    - **IP-Konfigurationen:** Öffentliche und private IP-Adressen werden einer oder mehreren IP-Konfigurationen für eine NIC zugewiesen. Weitere Informationen zur maximal unterstützten Anzahl von IP-Konfigurationen für eine NIC finden Sie im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Jeder IP-Konfiguration ist eine private IP-Adresse zugewiesen. Optional kann ihr auch eine öffentliche IP-Adresse zugeordnet sein. Führen Sie zum Hinzufügen, Ändern oder Löschen von IP-Konfigurationen für die NIC die Schritte in den Abschnitten [Hinzufügen einer sekundären IP-Konfiguration zu einer NIC](virtual-network-network-interface-addresses.md#create-ip-config), [Ändern einer IP-Konfiguration](virtual-network-network-interface-addresses.md#change-ip-config) oder [Löschen einer IP-Konfiguration](virtual-network-network-interface-addresses.md#delete-ip-config) im Artikel [Hinzufügen, Ändern und Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md) aus. Die IP-Weiterleitung und Subnetzzuweisung werden auch in diesem Abschnitt konfiguriert. Weitere Informationen zu diesen Einstellungen finden Sie im Abschnitt [Aktivieren und Deaktivieren der IP-Weiterleitung](#ip-forwarding) und [Ändern der Subnetzzuweisung](#subnet) in diesem Artikel.
+    - **DNS-Server:** Sie können angeben, welcher DNS-Server einer NIC durch die Azure-DHCP-Server zugewiesen wird. Die NIC kann die Einstellung für das VNet übernehmen, mit dem sie verbunden ist. Sie kann auch eine benutzerdefinierte Einstellung haben, die die Einstellung für das VNet überschreibt, mit dem die NIC verbunden ist. Führen Sie zum Ändern der Anzeige die Schritte im Abschnitt [Ändern von DNS-Servern](#dns) dieses Artikels aus.
+    - **Netzwerksicherheitsgruppe (NSG):** Gibt Aufschluss darüber, welche NSG der NIC zugeordnet ist (falls vorhanden). Eine NSG enthält ein- und ausgehende Regeln zum Filtern von Netzwerkdatenverkehr für die NIC. Falls der NIC eine NSG zugeordnet ist, wird der Name der zugeordneten NSG angezeigt. Führen Sie zum Ändern der Anzeige die Schritte im Abschnitt [Zuordnen einer NSG zu einer Netzwerkschnittstelle oder Aufheben der NSG-Zuordnung](#associate-nsg) dieses Artikels aus.
+    - **Eigenschaften:** Zeigt wichtige Einstellungen für die NIC an, so z.B. die MAC-Adresse (leer, wenn die NIC an keine VM angefügt ist) und das Abonnement, dem sie angehört.
+    - **Effektive Sicherheitsregeln:** Sicherheitsregeln werden aufgelistet, wenn die NIC an einen aktiven virtuellen Computer angefügt und der NIC und/oder dem Subnetz, mit dem sie verbunden ist, eine NSG zugeordnet ist. Weitere Informationen zu den angezeigten Informationen finden Sie im Artikel [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](virtual-network-nsg-troubleshoot-portal.md#view-effective-security-rules-for-a-network-interface). Weitere Informationen zu NSGs finden Sie im Artikel [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
+    - **Effektive Routen:** Routen werden aufgelistet, wenn die NIC an einen aktiven virtuellen Computer angefügt ist. Bei den Routen handelt es sich um eine Kombination aus den Azure-Standardrouten, benutzerdefinierten Routen und BGP-Routen, die ggf. für das Subnetz vorhanden sind, mit dem die NIC verbunden ist. Weitere Informationen zur Anzeige finden Sie im Artikel [Problembehandlung bei Routen über das Azure-Portal](virtual-network-routes-troubleshoot-portal.md#view-effective-routes-for-a-network-interface). Weitere Informationen zu Azure-Standardeinstellungen und benutzerdefinierten Routen finden Sie im Artikel [Benutzerdefinierte Routen und IP-Weiterleitung](virtual-networks-udr-overview.md).
     - **Allgemeine Azure Resource Manager-Einstellungen:** Weitere Informationen zu allgemeinen Azure Resource Manager-Einstellungen finden Sie unter [Aktivitätsprotokolle](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [Zugriffssteuerung](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [Tags](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags), [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Exportieren der Vorlage aus der Ressourcengruppe](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
-|**Tool**|**Befehl**|
+**Befehle**
+
+|Tool|Befehl|
 |---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list): Anzeigen von im Abonnement enthaltenen NICs. [az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show): Anzeigen der Einstellungen für eine NIC.|
-|**PowerShell**|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface): Anzeigen von im Abonnement enthaltenen NICs oder der Einstellungen für eine NIC.|
+|Befehlszeilenschnittstelle (CLI)|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list): Anzeigen von im Abonnement enthaltenen NICs. [az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show): Anzeigen der Einstellungen für eine NIC.|
+|PowerShell|[Get-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json): Anzeigen von im Abonnement enthaltenen NICs oder der Einstellungen für eine NIC.|
 
-### <a name="dns"></a>Ändern der DNS-Einstellungen für eine NIC
+## <a name="dns"></a>Ändern von DNS-Servern
 
-Führen Sie zum Ändern der DNS-Einstellungen für eine NIC die folgenden Schritte aus. Der DNS-Server wird dem virtuellen Computer durch den Azure-DHCP-Server zugewiesen. Weitere Informationen zu Namensauflösungseinstellungen für eine NIC finden Sie im Artikel [Namensauflösung für virtuelle Computer und Rolleninstanzen](virtual-networks-name-resolution-for-vms-and-role-instances.md).
+Der DNS-Server wird vom Azure-DHCP-Server der NIC innerhalb des VM-Betriebssystems zugewiesen. Der DNS-Server entspricht der geltenden DNS-Servereinstellung für eine NIC. Weitere Informationen zu Namensauflösungseinstellungen für eine NIC finden Sie im Artikel [Namensauflösung für virtuelle Computer und Rolleninstanzen](virtual-networks-name-resolution-for-vms-and-role-instances.md). Die NIC kann die Einstellungen des VNet übernehmen oder eigene eindeutige Einstellungen verwenden, die die Einstellung für das VNet überschreiben.
 
-1. Führen Sie für die NIC, deren Einstellungen Sie ändern möchten, die Schritte 1 bis 3 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie auf dem Blatt für die ausgewählte NIC auf **DNS-Server**.
-3. Klicken Sie anschließend auf eine der folgenden Optionen:
-    - **Von virtuellem Netzwerk erben** (Standardeinstellung): Wählen Sie diese Option, wenn die DNS-Servereinstellung des virtuellen Netzwerks übernommen werden soll, mit dem die NIC verbunden ist. Auf der VNET-Ebene ist entweder ein benutzerdefinierter DNS-Server oder der von Azure bereitgestellte DNS-Server definiert. Der von Azure bereitgestellte DNS-Server kann Namen für Ressourcen auflösen, die mit dem gleichen VNET verbunden sind, aber nicht für Ressourcen, die mit anderen VNETs verbunden sind.
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+3. Klicken Sie auf dem daraufhin angezeigten Blatt **Netzwerkschnittstellen** auf die NIC, deren Einstellungen Sie anzeigen oder ändern möchten.
+4. Klicken Sie auf dem Blatt für die ausgewählte NIC unter **EINSTELLUNGEN** auf **DNS-Server**.
+5. Klicken Sie anschließend auf eine der folgenden Optionen:
+    - **Von virtuellem Netzwerk erben** (Standardeinstellung): Wählen Sie diese Option, wenn die DNS-Servereinstellung des virtuellen Netzwerks übernommen werden soll, mit dem die NIC verbunden ist. Auf der VNET-Ebene ist entweder ein benutzerdefinierter DNS-Server oder der von Azure bereitgestellte DNS-Server definiert. Der von Azure bereitgestellte DNS-Server kann Hostnamen für Ressourcen auflösen, die mit demselben VNet verbunden sind. Vollqualifizierte Domänennamen (FQDNs) müssen zum Auflösen für Ressourcen verwendet werden, die mit anderen VNets verbunden sind.
     - **Benutzerdefiniert:** Sie können einen eigenen DNS-Server für eine VNET-übergreifende Namensauflösung konfigurieren. Geben Sie die IP-Adresse des Servers ein, den Sie als DNS-Server verwenden möchten. Die von Ihnen angegebene DNS-Serveradresse wird nur dieser NIC zugewiesen und überschreibt alle DNS-Einstellungen für das VNET, mit dem die NIC verbunden ist.
-4. Klicken Sie auf **Speichern**.
+6. Klicken Sie auf **Speichern**.
 
-|**Tool**|**Befehl**|
+**Befehle**
+
+|Tool|Befehl|
 |---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|PowerShell|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-### <a name="ip-forwarding"></a>Ändern der IP-Weiterleitung für eine NIC
+## <a name="ip-forwarding"></a>Aktivieren und Deaktivieren der IP-Weiterleitung
 
 Eine IP-Weiterleitung ermöglicht dem virtuellen Computer, an den eine NIC angefügt ist, Folgendes:
 - Empfangen von Netzwerkdatenverkehr, der nicht für eine der IP-Adressen bestimmt ist, die einer der IP-Konfigurationen für die NIC zugewiesen ist
-- Senden von Netzwerkdatenverkehr mit einer IP-Quelladresse, die nicht der Adresse entspricht, die einer der zugehörigen IP-Konfigurationen zugewiesen ist
+- Senden von Netzwerkdatenverkehr mit einer IP-Quelladresse, die nicht der Adresse entspricht, die den IP-Konfigurationen einer NIC zugewiesen ist
 
 Die Einstellung muss für jede an den virtuellen Computer angefügte NIC aktiviert werden, die Datenverkehr empfängt, den der virtuelle Computer weiterleiten muss. Ein virtueller Computer kann Datenverkehr unabhängig davon weiterleiten, ob er über mehrere angefügte NICs oder nur über eine einzelne angefügte NIC verfügt. Bei der IP-Weiterleitung handelt es sich zwar um eine Azure-Einstellung, auf dem virtuellen Computer muss aber auch eine Anwendung ausgeführt werden, die den Datenverkehr weiterleiten kann – beispielsweise eine Firewall, ein WAN-Optimierer oder ein Lastenausgleich. Wenn ein virtueller Computer Netzwerkanwendungen ausführt, wird er häufig als virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) bezeichnet. Eine Liste mit bereitstellungsbereiten NVAs finden Sie im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances). Die IP-Weiterleitung wird in der Regel mit benutzerdefinierten Routen verwendet. Weitere Informationen zu benutzerdefinierten Routen finden Sie im Artikel [Benutzerdefinierte Routen und IP-Weiterleitung](virtual-networks-udr-overview.md).
 
-Führen Sie zum Ändern der IP-Weiterleitungseinstellungen für eine NIC die folgenden Schritte aus:
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+3. Klicken Sie auf dem daraufhin angezeigten Blatt **Netzwerkschnittstellen** auf die NIC, für die Sie die IP-Weiterleitung aktivieren oder deaktivieren möchten.
+4. Klicken Sie auf dem Blatt der ausgewählten NIC im Abschnitt **EINSTELLUNGEN** auf **IP-Konfigurationen**.
+5. Klicken Sie auf **Aktiviert** oder **Deaktiviert** (Standardeinstellung), um die Einstellung zu ändern.
+6. Klicken Sie auf **Speichern**.
 
-1. Führen Sie für die NIC, die Sie anpassen möchten, die Schritte 1 bis 3 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie auf dem Blatt für die ausgewählte NIC auf „IP-Konfigurationen“.
-3. Klicken Sie auf **Aktiviert** oder **Deaktiviert** (Standardeinstellung), um die Einstellung zu ändern.
-4. Klicken Sie auf **Speichern**.
+**Befehle**
 
-|**Tool**|**Befehl**|
+|Tool|Befehl|
 |---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|PowerShell|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-### <a name="subnet"></a>Ändern des Subnetzes, mit dem eine NIC verbunden ist
+## <a name="subnet"></a>Ändern der Subnetzzuweisung
 
-Im Gegensatz zum VNET können Sie das Subnetz ändern, mit dem eine NIC verbunden ist. Wenn Sie das Subnetz ändern möchten, müssen allen der NIC zugeordneten IP-Konfigurationen dynamische private IP-Adressen zugewiesen sein. Gehen Sie zum Ändern der Subnetzes, mit dem eine NIC verbunden ist, wie folgt vor:
+Im Gegensatz zum VNET können Sie das Subnetz ändern, mit dem eine NIC verbunden ist.
 
-1. Führen Sie für die NIC, die Sie mit einem anderen Subnetz verbinden möchten, die Schritte 1 bis 3 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie auf dem Blatt für die ausgewählte NIC auf **IP-Konfigurationen**. Falls einer der privaten IP-Adressen für eine der aufgeführten IP-Konfigurationen eine private IP-Adresse mit der statischen Methode zugewiesen wurde, muss die Methode mithilfe der folgenden Schritte auf „Dynamisch“ festgelegt werden. Falls die Adressen mithilfe der dynamischen Methode zugewiesen wurden, fahren Sie mit Schritt 3 fort:
-    - Klicken Sie in der Liste mit den IP-Konfigurationen auf die statische IP-Adresse für die IP-Konfiguration, die Sie ändern möchten.
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+3. Klicken Sie auf dem daraufhin angezeigten Blatt **Netzwerkschnittstellen** auf die NIC, deren Einstellungen Sie anzeigen oder ändern möchten.
+4. Klicken Sie auf dem Blatt für die ausgewählte NIC unter **EINSTELLUNGEN** auf **IP-Konfigurationen**. Falls neben privaten IP-Adressen für aufgeführte IP-Konfigurationen **(Statisch)** angegeben ist, müssen Sie die IP-Adresszuweisungsmethode in „Dynamisch“ ändern, indem Sie die folgenden Schritte ausführen. Alle privaten IP-Adressen müssen mit der dynamischen Zuweisungsmethode zugewiesen werden, um die Subnetzzuweisung für die NIC zu ändern. Falls die Adressen mithilfe der dynamischen Methode zugewiesen wurden, fahren Sie mit Schritt 5 fort. Falls Adressen mit der statischen Zuordnungsmethode zugewiesen wurden, führen Sie die folgenden Schritte aus, um die Zuweisungsmethode in „Dynamisch“ zu ändern:
+    - Klicken Sie in der Liste mit den IP-Konfigurationen auf die IP-Konfiguration, deren IP-Adresszuweisungsmethode Sie ändern möchten.
     - Klicken Sie auf dem Blatt, das für die IP-Konfiguration angezeigt wird, unter der Zuweisungsmethode**** auf **Dynamisch**.
     - Klicken Sie auf **Speichern**.
-3. Wählen Sie in der Dropdownliste **Subnetz** das Subnetz aus, mit dem Sie die NIC verbinden möchten.
-4. Klicken Sie auf **Speichern**. Neue dynamische Adressen werden aus dem Subnetzadressbereich zugewiesen. Bei Bedarf können Sie anschließend statische IP-Adressen aus dem neuen Subnetzadressbereich zuweisen.
+5. Wählen Sie in der Dropdownliste **Subnetz** das Subnetz aus, mit dem Sie die NIC verbinden möchten.
+6. Klicken Sie auf **Speichern**. Neue dynamische Adressen werden aus dem Subnetzadressbereich des neuen Subnetzes zugewiesen. Nach dem Zuweisen der NIC zu einem neuen Subnetz können Sie nach Wunsch eine statische IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen. Weitere Informationen zum Hinzufügen, Ändern und Entfernen von IP-Adressen für eine NIC finden Sie im Artikel [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
 
-|**Tool**|**Befehl**|
+**Befehle**
+
+|Tool|Befehl|
 |---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 
-### <a name="delete-nic"></a>Löschen einer Netzwerkschnittstelle
+## <a name="delete-nic"></a>Löschen einer NIC
 
-Sie können eine NIC löschen, sofern sie an keinen virtuellen Computer angefügt ist. Sollte sie an einen virtuellen Computer angefügt sein, kann sie erst gelöscht werden, nachdem sie von dem virtuellen Computer getrennt wurde. Die Schritte zum Trennen einer NIC von einem virtuellen Computer finden Sie in diesem Artikel im Abschnitt [Trennen einer NIC von einem virtuellen Computer](#vm-detach-nic).
+Sie können eine NIC löschen, sofern sie an keinen virtuellen Computer angefügt ist. Sollte sie an einen virtuellen Computer angefügt sein, müssen Sie den virtuellen Computer zunächst in den Zustand „Beendet (Zuordnung aufgehoben)“ versetzen und dann die NIC vom virtuellen Computer trennen, ehe Sie die NIC löschen können. Die Schritte zum Trennen einer NIC von einem virtuellen Computer finden Sie im Abschnitt [Trennen einer NIC von einem virtuellen Computer](virtual-network-network-interface-vm.md#vm-remove-nic) im Artikel [Hinzufügen und Entfernen von Netzwerkschnittstellenkarten](virtual-network-network-interface-vm.md). Beim Löschen eines virtuellen Computers werden alle an ihn angefügten NICs getrennt, ohne dass diese gelöscht werden.
 
-1. Führen Sie für die NIC, die Sie löschen möchten, die Schritte 1 und 2 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie mit der rechten Maustaste auf die NIC, die Sie löschen möchten, und klicken Sie anschließend auf **Löschen**.
-3. Klicken Sie auf **Ja**, um das Löschen der NIC zu bestätigen.
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+3. Klicken Sie mit der rechten Maustaste auf die NIC, die Sie löschen möchten, und klicken Sie anschließend auf **Löschen**.
+4. Klicken Sie auf **Ja**, um das Löschen der NIC zu bestätigen.
 
 Wenn Sie eine NIC löschen, werden alle ihr zugewiesenen MAC- und IP-Adressen freigegeben.
 
-|**Tool**|**Befehl**|
+**Befehle**
+
+|Tool|Befehl|
 |---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
+|PowerShell|[Remove-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.1.0/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-## <a name="ip-configs"></a>IP-Konfigurationen
-Jede NIC verfügt über mindestens eine IP-Konfiguration (die so genannte **primäre** Konfiguration). Zusätzlich können einer NIC *sekundäre* IP-Konfigurationen zugeordnet werden. Die Anzahl von IP-Adressen, die Sie einer NIC zuweisen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Für jede IP-Konfiguration gilt Folgendes:
-- Ihr ist eine einzelne private IP-Adresse zugewiesen (entweder mit der statischen oder mit der dynamischen Zuweisungsmethode). Dynamische IP-Adressen können sich ändern, wenn ein virtueller Computer gestartet wird, der sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befand. Statische IP-Adressen werden von einer NIC erst freigegeben, wenn die NIC gelöscht wird.
-- Ihr kann eine einzelne öffentliche IP-Adresse zugeordnet sein.
-
-Die Azure-DHCP-Server weisen der NIC innerhalb des Betriebssystems des virtuellen Computers die private IP-Adresse für die primäre IP-Konfiguration der NIC zu.
-
-In Szenarien wie den folgenden kann es hilfreich sein, einer NIC mehrere IP-Adressen zuzuweisen:
-- Hosten mehrerer Websites oder Dienste mit unterschiedlichen IP-Adressen und SSL-Zertifikaten auf einem einzelnen Server
-- Verwenden eines virtuellen Computers als virtuelles Netzwerkgerät (etwa als Firewall oder Lastenausgleich)
-- Fähigkeit zum Hinzufügen einer privaten IP-Adresse für eine der NICs zu einem Azure Load Balancer-Back-End-Pool hinzufügen. Bisher konnte nur die primäre IP-Adresse für die primäre NIC einem Back-End-Pool hinzugefügt werden. Weitere Informationen dazu, wie in Konfigurationen mit mehreren IPs ein Lastenausgleich durchgeführt werden kann, finden Sie im Artikel [Load balancing multiple IP configurations](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Lastenausgleich bei Konfigurationen mit mehreren IPs).
-
-Die Anzahl öffentlicher IP-Adressen, die im Rahmen eines Abonnements verwendet werden können, sowie die Anzahl privater IP-Adressen, die einer NIC zugewiesen werden können, sind begrenzt. Weitere Informationen zu diesen Einschränkungen finden Sie im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-
-### <a name="create-ip-config"></a>Hinzufügen einer sekundären IP-Konfiguration zu einer NIC
-
-Einer NIC können beliebig viele IP-Konfigurationen hinzugefügt werden (im Rahmen der im Artikel [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) aufgeführten Grenzwerte). Gehen Sie wie folgt vor, um einer NIC eine IP-Konfiguration hinzuzufügen:
-
-1. Führen Sie für die NIC, der Sie eine IP-Konfiguration hinzufügen möchten, die Schritte 1 bis 3 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie auf dem Blatt für die ausgewählte NIC auf **IP-Konfigurationen**.
-3. Klicken Sie auf dem Blatt, das für IP-Konfigurationen geöffnet wird, auf **+ Hinzufügen**.
-4. Geben Sie Folgendes an, und klicken Sie anschließend auf **OK**, um das Blatt **IP-Konfiguration hinzufügen** zu schließen:
-
-    |**Einstellung**|**Erforderlich?**|**Details**|
-    |---|---|---|
-    |**Name**|Ja|Muss für die NIC eindeutig sein.|
-    |**Typ**|Ja|Da Sie die IP-Konfiguration einer vorhandenen NIC hinzufügen und jede NIC über eine primäre IP-Konfiguration verfügen muss, steht nur die Option **Sekundär** zur Verfügung.|
-    |**Zuweisung der privaten IP-Adresse**|Ja|Adressen vom Typ **Dynamisch** können sich ändern, wenn der virtuelle Computer neu gestartet wird, nachdem er sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befand. Adressen vom Typ **Statisch** werden erst freigegeben, wenn die NIC gelöscht wird. Geben Sie eine IP-Adresse aus dem Subnetzadressbereich an, die derzeit nicht von einer anderen IP-Konfiguration verwendet wird.|
-    |**Öffentliche IP-Adresse**|Nein|**Deaktiviert:** Der IP-Konfiguration ist derzeit keine öffentliche IP-Adressressource zugeordnet. **Aktiviert:** Wählen Sie eine vorhandene öffentliche IP-Adresse aus, oder erstellen Sie eine neue. Eine Anleitung zur Erstellung einer öffentlichen IP-Adresse finden Sie im Artikel [Public IP addresses](virtual-network-public-ip-address.md#create) (Öffentliche IP-Adressen).|
-5. Fügen Sie dem Betriebssystem des virtuellen Computers manuell sekundäre private IP-Adressen hinzu, wie im Artikel [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals](virtual-network-multiple-ip-addresses-portal.md#os-config) beschrieben. Fügen Sie dem Betriebssystem des virtuellen Computers keine öffentlichen IP-Adressen hinzu.
-
-|**Tool**|**Befehl**|
-|---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|**PowerShell**|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
-
-### <a name="change-ip-config"></a>Ändern einer IP-Konfiguration
-
-Gehen Sie zum Ändern der Einstellungen für private und öffentliche IP-Adressen einer beliebigen primären oder sekundären IP-Konfiguration wie folgt vor:
-
-1. Führen Sie für die NIC, die Sie anpassen möchten, die Schritte 1 bis 3 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie auf dem Blatt für die ausgewählte NIC auf **IP-Konfigurationen**.
-3. Klicken Sie auf dem Blatt, das für IP-Konfigurationen geöffnet wird, in der Liste auf die IP-Konfiguration, die Sie ändern möchten.
-4. Ändern Sie die Einstellungen nach Bedarf. Informationen zu den Einstellungen finden Sie in diesem Artikel im Abschnitt [Hinzufügen einer IP-Konfiguration](#create-ip-config). Klicken Sie anschließend auf **Speichern**, um das Blatt für die ausgewählte IP-Konfiguration zu schließen.
-
->[!NOTE]
->Falls die primäre NIC über mehrere IP-Konfigurationen verfügt und Sie die private IP-Adresse der primären IP-Konfiguration ändern, müssen Sie unter Windows alle sekundären IP-Adressen manuell wieder der NIC zuweisen. (Unter Linux ist dies nicht erforderlich.) Wie Sie IP-Adressen im Rahmen eines Betriebssystems manuell einer NIC zuweisen, erfahren Sie im Artikel [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals](virtual-network-multiple-ip-addresses-portal.md#os-config). Fügen Sie dem Betriebssystem des virtuellen Computers keine öffentlichen IP-Adressen hinzu.
-
->[!WARNING]
->Die obigen Schritte dürfen zum Ändern der privaten IP-Adresse einer sekundären IP-Konfiguration, die einer sekundären NIC zugeordnet ist, nur durchgeführt werden, nachdem der virtuelle Computer beendet und seine Zuordnung aufgehoben wurde.
-
-|**Tool**|**Befehl**|
-|---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
-
-### <a name="delete-ip-config"></a>Löschen einer sekundären IP-Konfiguration aus einer NIC
-
-Führen Sie die folgenden Schritte aus, um eine sekundäre IP-Konfiguration aus einer NIC zu löschen:
-
-1. Führen Sie für die NIC, die Sie anpassen möchten, die Schritte 1 bis 3 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie auf dem Blatt für die ausgewählte NIC auf **IP-Konfigurationen**.
-3. Klicken Sie mit der rechten Maustaste auf die sekundäre IP-Konfiguration, die Sie löschen möchten, und klicken Sie anschließend auf **Löschen**. Falls der Konfiguration eine öffentliche IP-Adressressource zugeordnet war, wird die Zuweisung der Ressource zur IP-Konfiguration aufgehoben, die Ressource wird jedoch nicht gelöscht.
-4. Schließen Sie das Blatt **IP-Konfigurationen**.
-
-|**Tool**|**Befehl**|
-|---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|**PowerShell**|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
-
-
-## <a name="nsgs"></a>Netzwerksicherheitsgruppen
-Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Ein- und Ausgangsregeln, die Netzwerkdatenverkehr für eine NIC zulassen oder verweigern. Einer NIC und dem Subnetz, mit dem die NIC verbunden ist, muss nicht unbedingt eine NSG zugeordnet sein. Es ist jedoch möglich, einer NIC und/oder dem Subnetz, mit dem die NIC verbunden ist, eine NSG zuzuordnen. NSGs mit Regeln, die für alle mit dem Subnetz verbundenen NICs gelten, werden üblicherweise Subnetzen zugeordnet. Eine NSG mit präziseren Regeln kann dann auf einzelne NICs angewendet werden. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie im Artikel [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
-
-### <a name="associate-nsg"></a>Zuordnen einer NSG zu einer Netzwerkschnittstelle oder Aufheben der NSG-Zuordnung
-
-Führen Sie die folgenden Schritte aus, um eine NSG einer NIC zuzuordnen oder um die Zuordnung einer NSG zu einer NIC aufzuheben:
-
-1. Führen Sie für die NIC, der Sie eine NSG zuordnen oder für die Sie die Zuordnung einer NSG aufheben möchten, die Schritte 1 bis 3 im Abschnitt [Anzeigen und Ändern von Netzwerkschnittstellen und Einstellungen](#view-nics) dieses Artikels aus.
-2. Klicken Sie auf dem Blatt für die ausgewählte NIC auf **Netzwerksicherheitsgruppe**. Im oberen Bereich des daraufhin angezeigten Blatts befindet **Bearbeiten**. Falls der NIC derzeit keine NSG zugeordnet ist, wird für **Netzwerksicherheitsgruppe** der Text *Keine* angezeigt. Falls einer NIC bereits eine NSG zugeordnet ist, wird für **Netzwerksicherheitsgruppe** der *Name der NSG* angezeigt.
-3. Klicken Sie auf **Bearbeiten**.
-4. Klicken Sie auf **Netzwerksicherheitsgruppen**. Sollten keine Netzwerksicherheitsgruppen aufgeführt werden, sind in Ihrem Abonnement keine vorhanden. Führen Sie zum Erstellen einer NSG die Schritte im Artikel [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md) aus.
-5. Klicken Sie auf dem angezeigten Blatt **Netzwerksicherheitsgruppe auswählen** in der Liste auf eine vorhandene NSG, um sie der NIC zuzuordnen, oder klicken Sie auf **Keine**, um die Zuordnung einer NSG aufzuheben, die derzeit einer NIC zugeordnet ist.
-6. Klicken Sie auf **Speichern**.
-
-|**Tool**|**Befehl**|
-|---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
-
-## <a name="vms"></a>Anfügen von NICs an einen virtuellen Computer oder Trennen von NICs von einem virtuellen Computer
-
-Sie können eine vorhandene NIC an einen virtuellen Computer anfügen, wenn Sie diesen erstellen, oder eine vorhandene NIC an einen vorhandenen virtuellen Computer anfügen. Außerdem können Sie eine NIC von einem vorhandenen virtuellen Computer trennen, sofern dieser über mindestens zwei NICs verfügt. Das Portal erstellt zwar eine NIC, wenn Sie einen virtuellen Computer erstellen, Folgendes ist über das Portal jedoch nicht möglich:
-
-- Angeben einer vorhandenen NIC, um sie beim Erstellen des virtuellen Computers anzufügen
-- Erstellen eines virtuellen Computers mit mehreren angefügten NICs
-- Angeben eines Namens für die NIC (wird vom Portal mit einem Standardnamen erstellt)
-- Angeben, dass zum Zuweisen der privaten IP-Adresse die statische Methode verwendet werden soll. Das Portal weist automatisch eine dynamische private IP-Adresse zu. Die Zuweisungsmethode kann jedoch geändert werden, nachdem das Portal die NIC erstellt hat.
-
-Sie können PowerShell oder die Befehlszeilenschnittstelle verwenden, um eine NIC oder einen virtuellen Computer mit den zuvor erwähnten Attributen zu erstellen, für die das Portal nicht verwendet werden kann. Berücksichtigen Sie bei den Aufgaben in den folgenden Abschnitten die folgenden Einschränkungen und Verhaltensweisen:
-
-- Unterschiedliche VM-Größen unterstützen unterschiedlich viele NICs. Weitere Informationen zur unterstützten NIC-Anzahl der einzelnen VM-Größen finden Sie im entsprechenden Artikel für [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
-- In der Vergangenheit konnten NICs nur zu virtuellen Computern hinzugefügt werden, die mehrere NICs unterstützt haben und mit mindestens zwei NICs erstellt wurden. Es konnte keine NIC zu einem virtuellen Computer hinzugefügt werden, der mit einer NIC erstellt wurde, auch wenn die Größe des virtuellen Computers mehrere NICs unterstützte. Im Gegenzug konnten Sie nur NICs von einem virtuellen Computer mit mindestens drei angefügten NICs entfernen, da an virtuellen Computern, die mit zwei NICs erstellt wurden, immer mindestens zwei NICS angefügt sein mussten. Keine dieser Einschränkungen trifft noch zu. Sie können jetzt einen virtuellen Computer mit einer beliebigen Anzahl von NICs erstellen (bis zu der Anzahl, die von der Größe des virtuellen Computers unterstützt wird) und eine beliebige Anzahl von NICs hinzufügen oder entfernen, solange der virtuelle Computer immer mindestens eine angefügte NIC aufweist. 
-- Standardmäßig wird die erste NIC, die an einen virtuellen Computer angefügt wird, als die *primäre* NIC definiert. Alle anderen NICs, die an den virtuellen Computer angefügt werden, sind *sekundäre* NICs.
-- Standardmäßig wird sämtlicher ausgehende Datenverkehr des virtuellen Computers über die IP-Adresse gesendet, die der primären IP-Konfiguration der primären NIC zugewiesen ist. Sie können selbstverständlich im Betriebssystem des virtuellen Computers steuern, welche IP-Adresse für ausgehenden Datenverkehr verwendet wird.
-- In der Vergangenheit mussten alle virtuellen Computer in der gleichen Verfügbarkeitsgruppe über eine einzelne NIC (oder über mehrere NICs) verfügen. Inzwischen kann eine Verfügbarkeitsgruppe virtuelle Computer mit einer beliebigen Anzahl von NICs enthalten. Ein virtueller Computer kann allerdings nur zum Zeitpunkt der Erstellung zu einer Verfügbarkeitsgruppe hinzugefügt werden. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie im Artikel [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) Artikel.
-- An den gleichen virtuellen Computer angefügte NICs können zwar mit unterschiedlichen Subnetzen eines VNETs verbunden sein, die NICs müssen jedoch alle mit dem gleichen VNET verbunden sein.
-- Sie können eine beliebige IP-Adresse für eine beliebige IP-Konfiguration einer beliebigen primären oder sekundären NIC einem Back-End-Pool von Azure Load Balancer hinzufügen. Bisher konnte nur die primäre IP-Adresse für die primäre NIC einem Back-End-Pool hinzugefügt werden.
-- Beim Löschen eines virtuellen Computers werden die an ihn angefügten NICs nicht gelöscht. Wenn ein virtueller Computer gelöscht wird, werden die NICs vom virtuellen Computer getrennt. Sie können die NICs an andere virtuelle Computer anfügen oder löschen.
-
-### <a name="vm-create"></a>Anfügen von NICs beim Erstellen eines virtuellen Computers
-
-Über das Azure-Portal ist es nicht möglich, vorhandene NICs an einen neuen virtuellen Computer anzufügen oder einen virtuellen Computer mit mehreren NICs zu erstellen. Mit dem folgenden Befehl der Azure-Befehlszeilenschnittstelle bzw. mit dem folgenden PowerShell-Befehl können Sie vorhandene NICs beim Erstellen eines virtuellen Computers anfügen:
-
-- **Befehlszeilenschnittstelle:** [az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#create)
-- **PowerShell:** [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)
-
-### <a name="vm-view-nic"></a>Anzeigen von NICs, die an einen virtuellen Computer angefügt sind
-
-1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement die Rolle „Besitzer“, „Mitwirkender“ oder „Netzwerkmitwirkender“ zugewiesen ist, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
-2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Virtuelle Computer* ein. Wenn **Virtuelle Computer** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
-3. Klicken Sie auf dem daraufhin angezeigten Blatt **Virtuelle Computer** auf den Namen des virtuellen Computers, für den Sie angefügte Netzwerkschnittstellen anzeigen möchten.
-4. Klicken Sie auf dem Blatt **Virtueller Computer**, das für den ausgewählten virtuellen Computer angezeigt wird, auf **Netzwerkschnittstellen**.
-
-|**Tool**|**Befehl**|
-|---|---|
-|**BEFEHLSZEILENSCHNITTSTELLE (CLI)**|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
-|**PowerShell**|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm)|
-
-### <a name="vm-attach-nic"></a>Anfügen einer NIC an einen vorhandenen virtuellen Computer
-
-Der virtuelle Computer, an den Sie eine NIC anfügen möchten, muss mehrere NICs unterstützen und sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden. NICs können nicht über das Azure-Portal an einen vorhandenen virtuellen Computer angefügt werden. Verwenden Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle bzw. den folgenden PowerShell-Befehl, um NICs an virtuelle Computer anzufügen:
-
-- **Befehlszeilenschnittstelle:** [az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add)
-- **PowerShell:** [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface)
-
-### <a name="vm-detach-nic"></a>Trennen einer NIC von einem vorhandenen virtuellen Computer
-
-Der virtuelle Computer, von dem Sie eine NIC trennen möchten, muss sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden und über mindestens zwei angefügte NICs verfügen. Sie können jede beliebige NIC trennen, an den virtuellen Computer muss aber immer mindestens eine NIC angefügt sein. Wenn Sie eine primäre NIC trennen, weist Azure das Primärattribut einer verbleibenden angefügten NIC zu, die am längsten an den virtuellen Computer angefügt ist. Sie können allerdings auch selbst eine beliebige NIC als primäre NIC festlegen. Über das Azure-Portal können Sie weder NICs von einem virtuellen Computer trennen noch das Primärattribut für eine NIC festlegen. Diese beiden Aktionen können jedoch über die Befehlszeilenschnittstelle oder mithilfe von PowerShell ausgeführt werden. Verwenden Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle bzw. den folgenden PowerShell-Befehl, um NICs von virtuellen Computern zu trennen:
-
-- **Befehlszeilenschnittstelle:** [az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove)
-- **PowerShell:** [Remove-AzureRMVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In den folgenden Artikeln erfahren Sie, wie Sie mithilfe von Skripts einen virtuellen Computer mit mehreren NICs oder IP-Konfigurationen erstellen:
+In den folgenden Artikeln erfahren Sie, wie Sie virtuelle Computer mit mehreren NICs oder IP-Adressen erstellen:
 
-|**Aufgabe**|**Tool**|
+**Befehle**
+
+|Task|Tool|
 |---|---|
-|**Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)**|[Befehlszeilenschnittstelle](virtual-network-deploy-multinic-arm-cli.md) und [PowerShell](virtual-network-deploy-multinic-arm-ps.md)|
-|**Erstellen eines virtuellen Computers mit einer einzelnen NIC und mehreren zugewiesenen IP-Adressen**|[Befehlszeilenschnittstelle](virtual-network-multiple-ip-addresses-cli.md) und [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)|[BEFEHLSZEILENSCHNITTSTELLE (CLI)](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+||[PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|Erstellen eines virtuellen Computers mit einer NIC und mehreren IP-Adressen|[BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-network-multiple-ip-addresses-cli.md)|
+||[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
 

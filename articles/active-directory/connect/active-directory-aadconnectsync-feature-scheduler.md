@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/28/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: feb6e388a98cd6e133d010cada97f895140c3f4f
-ms.openlocfilehash: ee9a3b605c5445007f880a37e96c2326dd7c9b89
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: fe7f508ed1c4eb57663f7e252d286719af03dbb1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -45,7 +46,7 @@ Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerSh
 
 Wenn beim Ausführen dieses Cmdlets die Meldung angezeigt wird, dass der **** Befehl oder das Cmdlet zur Synchronisierung nicht verfügbar ist, ist das PowerShell-Modul nicht geladen. Dieses Problem kann auftreten, wenn Sie Azure AD Connect auf einem Domänencontroller oder einem Server mit höherer PowerShell-Einschränkungsebene ausführen als in den Standardeinstellungen festgelegt. Wenn dieser Fehler angezeigt wird, führen Sie `Import-Module ADSync` aus, um das Cmdlet verfügbar zu machen.
 
-* **AllowedSyncCycleInterval**. Das häufigste von Azure AD zugelassene Synchronisierungsintervall. Eine höhere Synchronisierungsfrequenz als diese Einstellung wird nicht unterstützt.
+* **AllowedSyncCycleInterval**. Das kürzeste in Azure AD zulässige Zeitintervall zwischen Synchronisierungszyklen. Eine höhere Synchronisierungsfrequenz als diese Einstellung wird nicht unterstützt.
 * **CurrentlyEffectiveSyncCycleInterval**. Der momentan verwendete Zeitplan. Er weist den gleichen Wert auf wie CustomizedSyncInterval (falls festgelegt), falls er keine höhere Häufigkeit als AllowedSyncInterval aufweist. Wenn Sie einen älteren Build als 1.1.281 verwenden und CustomizedSyncCycleInterval ändern, tritt diese Änderung nach dem nächsten Synchronisierungszyklus in Kraft. Ab Build 1.1.281 wird die Änderung sofort wirksam.
 * **CustomizedSyncCycleInterval**. Wenn der Scheduler mit einer beliebigen anderen Häufigkeit als der Standardfrequenz von 30 Minuten ausgeführt werden soll, konfigurieren Sie diese Einstellung. In der Abbildung oben wurde der Scheduler stattdessen auf einmal pro Stunde festgelegt. Wenn Sie diese Einstellung auf einen niedrigeren Wert als „AllowedSyncInterval“ festlegen, wird stattdessen „AllowedSyncInterval“ verwendet.
 * **NextSyncCyclePolicyType**. Entweder „Delta“ oder „Initial“. Legt fest, ob bei der nächsten Ausführung nur Deltaänderungen verarbeitet werden sollen oder ob bei der nächsten Ausführung ein vollständiger Import mit Synchronisierung stattfinden soll. Mit der zweiten Option werden auch neue oder geänderte Regeln erneut verarbeitet.

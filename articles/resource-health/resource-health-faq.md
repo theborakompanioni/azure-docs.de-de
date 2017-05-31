@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 06/01/2016
 ms.author: BernardoAMunoz
-translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 570688ae363e223d792bec8e6b13d4ec50412130
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 41522a85cac05304b3ae60c45b48920eefbe8f5c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -61,7 +62,7 @@ Resource Health führt auf der Grundlage des [Ressourcentyps](resource-health-ch
 Es gibt drei verschiedene Integritätsstatus:
 1. Verfügbar: In der Azure-Plattform liegen keine bekannten Probleme vor, die diese Ressource beeinträchtigen könnten.
 2. Nicht verfügbar: Resource Health hat Probleme festgestellt, die die Ressource beeinträchtigen.
-3. Unbekannt: Resource Health kann die Integrität einer Ressource nicht bestimmen, da es zu ihr keine Informationen mehr erhält. 
+3. Unbekannt: Resource Health kann die Integrität einer Ressource nicht bestimmen, da der Dienst keine Informationen mehr zur Ressource erhält. 
 
 ## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Was bedeutet der unbekannte Status? Stimmt mit meiner Ressource etwas nicht?
 Der Integritätsstatus wird auf „Unbekannt“ festgelegt, wenn Resource Health zu einer bestimmten Ressource keine Informationen mehr erhält. Dieser Status ist zwar keine definitive Angabe des Ressourcenzustands, aber in Fällen, in denen Sie auf Probleme stoßen, kann er auf ein Azure-Problem hinweisen.

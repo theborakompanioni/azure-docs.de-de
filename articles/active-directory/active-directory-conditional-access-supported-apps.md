@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 569777b7034ebeccddf6d9ef89ee2f9fb667cc3f
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 40eb1d80830818a492c78d5091aaa9cca8d48f16
+ms.contentlocale: de-de
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -68,7 +69,7 @@ Exchange stellt zwei Hauptkategorien von Protokollen bereit. Sehen Sie sich die 
 * **Ältere Protokolle**: Sie können ältere Protokolle mit AD FS blockieren. Damit wird der Zugriff für ältere Office-Clients wie z.B. Office 2013 ohne moderne Authentifizierung und frühere Versionen von Office blockiert.
 
 ### <a name="use-ad-fs-to-block-legacy-protocol"></a>Einsatz von AD FS zum Blockieren von älteren Protokollen
-Sie können die folgenden Beispielregeln zum Blockieren des Zugriffs über ältere Protokolle auf AD FS-Ebene verwenden. Wählen Sie aus zwei gängigen Konfigurationen.
+Sie können die folgenden Beispielregeln für die Ausstellungsautorisierung zum Blockieren des Zugriffs über ältere Protokolle auf AD FS-Ebene verwenden. Wählen Sie aus zwei gängigen Konfigurationen.
 
 #### <a name="option-1-allow-exchange-activesync-and-allow-legacy-apps-but-only-on-the-intranet"></a>Option 1: Exchange ActiveSync zulassen und ältere Apps nur im Intranet zulassen
 Durch Anwenden der folgenden drei Regeln auf die AD FS-Vertrauensstellung der vertrauenden Seite für die Microsoft Office 365 Identity Platform wird Exchange ActiveSync-Datenverkehr zugelassen, ebenso wie Browserdatenverkehr und mit moderner Authentifizierung geschützter Datenverkehr. Der Zugriff älterer Apps auf das Extranet wird blockiert.

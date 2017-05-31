@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte mit dem bedingten Zugriff in Azure Active Directory – Vorschau | Microsoft-Dokumentation"
+title: Erste Schritte mit dem bedingten Zugriff in Azure Active Directory | Microsoft-Dokumentation
 description: Testen Sie den bedingten Zugriff mit einer Ortsbedingung.
 services: active-directory
 keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: ae60cd810b4beb26f714e2ea2566e5354c482fa8
-ms.openlocfilehash: 3022f5e27ddaf125161bbf7132b41a27024f40b6
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 52b65b24867906d0c574a323904d980e126bcbd2
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
-# <a name="get-started-with-conditional-access-in-azure-active-directory---preview"></a>Erste Schritte mit dem bedingten Zugriff in Azure Active Directory – Vorschau
-
-Das in diesem Thema beschriebene Verhalten befindet sich derzeit in der [Vorschauphase](active-directory-preview-explainer.md).
+# <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Erste Schritte mit dem bedingten Zugriff in Azure Active Directory
 
 Beim bedingten Zugriff handelt es sich um eine Funktion von Azure Active Directory, mit der Sie Bedingungen festlegen können, unter denen autorisierte Benutzer auf Ihre Apps zugreifen können. 
 
@@ -160,10 +160,5 @@ Die mehrstufige Authentifizierung sollte nur bei einem Verbindungsversuch erford
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum bedingten Zugriff finden Sie unter [Conditional access in Azure Active Directory - preview](active-directory-conditional-access-azure-portal.md) (Bedingter Zugriff in Azure Active Directory – Vorschau).
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

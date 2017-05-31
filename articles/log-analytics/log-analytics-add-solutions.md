@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/05/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 7899df8a09b6f5c8bc916bb6ad872afa3844e425
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 00fb88afe9ee107543aa7557ff0953d066d05bfd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -69,7 +70,7 @@ Sie können Verwaltungslösungen aus Azure Marketplace installieren, indem Sie u
 
 ## <a name="offers-and-pricing-tiers"></a>Angebote und Tarife
 
-In der folgenden Tabelle erfahren Sie, welche Verwaltungslösungen zu den einzelnen Operations Management- und Sicherheitsangeboten gehören.
+In der folgenden Tabelle erfahren Sie, welche Verwaltungslösungen zu den einzelnen Operations Management Suite-Angeboten gehören.
 In der Tabelle sind außerdem die verfügbaren Tarife für die einzelnen Verwaltungslösungen angegeben.
 Alle Lösungen in der folgenden Tabelle sind im Azure-Portal und im Lösungskatalog des Log Analytics-Portals verfügbar.
 

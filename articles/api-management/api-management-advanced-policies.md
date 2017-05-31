@@ -3,7 +3,7 @@ title: Erweiterte Richtlinien in Azure API Management | Microsoft-Dokumentation
 description: "Erfahren Sie mehr über die erweiterten Richtlinien, die für die Verwendung in Azure API Management verfügbar sind."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 8a13348b-7856-428f-8e35-9e4273d94323
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: bfadac7b34eca2ef1f9bcabc6e267ca9572990b8
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: f9272946fe4a03a732aa686680bba054c8ef1688
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
@@ -35,18 +36,20 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   [Wiederholen](#Retry) – Wiederholt die Ausführung der eingeschlossenen Richtlinienanweisungen, falls und bis die Bedingung erfüllt ist. Die Ausführung wird mit den angegebenen Zeitintervallen und bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt.  
   
--   [Zurückgegebene Antwort](#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück.  
+-   [Zurückgegebene Antwort](#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück. 
   
 -   [Unidirektionale Anforderung senden](#SendOneWayRequest) – sendet eine Anforderung an die angegebene URL, ohne auf eine Antwort zu warten.  
   
 -   [Sendeanforderung](#SendRequest) – Sendet eine Anforderung an die angegebene URL.  
-  
--   [Variable festlegen](api-management-advanced-policies.md#set-variable) – Speichert einen Wert in einer benannten [Kontext](api-management-policy-expressions.md#ContextVariables)variablen, um später darauf zugreifen zu können.  
-  
+
+-   [HTTP-Proxy festlegen](#SetHttpProxy): Sie können weitergeleitete Anforderungen über einen HTTP-Proxy leiten.  
+
 -   [Anforderungsmethode festlegen](#SetRequestMethod) – Dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.  
   
 -   [Statuscode festlegen](#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.  
   
+-   [Variable festlegen](api-management-advanced-policies.md#set-variable) – Speichert einen Wert in einer benannten [Kontext](api-management-policy-expressions.md#ContextVariables)variablen, um später darauf zugreifen zu können.  
+
 -   [Ablaufverfolgung](#Trace) – Fügt eine Zeichenfolge in der Ausgabe für den [API-Inspektor](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) hinzu.  
   
 -   [Warten](#Wait) – Wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.  
@@ -620,6 +623,144 @@ status code and media type. If no example or schema found, the content is empty.
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
+##  <a name="SetHttpProxy"></a> HTTP-Proxy festlegen  
+ Die `proxy`-Richtlinie können Sie zum Routen von Anforderungen, die an das Back-End weitergeleitet wurden, über einen HTTP-Proxy verwenden. Nur HTTP (nicht HTTPS) wird zwischen dem Gateway und dem Proxy unterstützt. Nur Standard- und NTLM-Authentifizierung.
+  
+### <a name="policy-statement"></a>Richtlinienanweisung  
+  
+```xml  
+<proxy url="http://hostname-or-ip:port" username="username" password="password" />  
+  
+```  
+  
+### <a name="example"></a>Beispiel  
+Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.md) als Werte für Benutzername und Kennwort, um zu vermeiden, dass vertrauliche Informationen im Richtliniendokument gespeichert werden.  
+  
+```xml  
+<proxy url="http://192.168.1.1:8080" username={{username}} password={{password}} />
+  
+```  
+  
+### <a name="elements"></a>Elemente  
+  
+|Element|Beschreibung|Erforderlich|  
+|-------------|-----------------|--------------|  
+|proxy|Stammelement|Ja|  
+
+### <a name="attributes"></a>Attribute  
+  
+|Attribut|Beschreibung|Erforderlich|Standard|  
+|---------------|-----------------|--------------|-------------|  
+|url="string"|Proxy-URL im Format http://host:port.|Ja|N/V|  
+|username="string"|Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird.|Nein|N/V|  
+|password="string"|Kennwort, das für die Authentifizierung mit dem Proxy verwendet wird.|Nein|N/V|  
+
+### <a name="usage"></a>Verwendung  
+ Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+  
+-   **Richtlinienabschnitte:** inbound  
+  
+-   **Richtlinienbereiche:** alle Bereiche  
+
+##  <a name="SetRequestMethod"></a> Anforderungsmethode festlegen  
+ Mit der `set-method`-Richtlinie können Sie die HTTP-Anforderungsmethode für eine Anforderung ändern.  
+  
+### <a name="policy-statement"></a>Richtlinienanweisung  
+  
+```xml  
+<set-method>METHOD</set-method>  
+  
+```  
+  
+### <a name="example"></a>Beispiel  
+ Diese Beispielrichtlinie, in der die `set-method`-Richtlinie verwendet wird, veranschaulicht ein Beispiel zum Senden einer Nachricht an einen Slack-Chatraum, wenn der HTTP-Antwortcode größer als oder gleich 500 ist. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+  
+```xml  
+<choose>  
+    <when condition="@(context.Response.StatusCode >= 500)">  
+      <send-one-way-request mode="new">  
+        <set-url>https://hooks.slack.com/services/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</set-url>  
+        <set-method>POST</set-method>  
+        <set-body>@{  
+                return new JObject(  
+                        new JProperty("username","APIM Alert"),  
+                        new JProperty("icon_emoji", ":ghost:"),  
+                        new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",  
+                                                context.Request.Method,  
+                                                context.Request.Url.Path + context.Request.Url.QueryString,  
+                                                context.Request.Url.Host,  
+                                                context.Response.StatusCode,  
+                                                context.Response.StatusReason,  
+                                                context.User.Email  
+                                                ))  
+                        ).ToString();  
+            }</set-body>  
+      </send-one-way-request>  
+    </when>  
+</choose>  
+  
+```  
+  
+### <a name="elements"></a>Elemente  
+  
+|Element|Beschreibung|Erforderlich|  
+|-------------|-----------------|--------------|  
+|set-method|Stammelement Mit dem Wert des Elements wird die HTTP-Methode angegeben.|Ja|  
+  
+### <a name="usage"></a>Verwendung  
+ Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+  
+-   **Richtlinienabschnitte:** inbound, on-error  
+  
+-   **Richtlinienbereiche:** alle Bereiche  
+  
+##  <a name="SetStatus"></a> Statuscode festlegen  
+ Mit der `set-status`-Richtlinie wird der HTTP-Statuscode auf den angegebenen Wert festgelegt.  
+  
+### <a name="policy-statement"></a>Richtlinienanweisung  
+  
+```xml  
+<set-status code="" reason=""/>  
+  
+```  
+  
+### <a name="example"></a>Beispiel  
+ Dieses Beispiel zeigt, wie Sie eine 401-Antwort zurückgeben, wenn das Autorisierungstoken ungültig ist. Weitere Informationen finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+  
+```xml  
+<choose>  
+  <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
+    <return-response response-variable-name="existing response variable">  
+      <set-status code="401" reason="Unauthorized" />  
+      <set-header name="WWW-Authenticate" exists-action="override">  
+        <value>Bearer error="invalid_token"</value>  
+      </set-header>  
+    </return-response>  
+  </when>  
+</choose>  
+  
+```  
+  
+### <a name="elements"></a>Elemente  
+  
+|Element|Beschreibung|Erforderlich|  
+|-------------|-----------------|--------------|  
+|set-status|Stammelement|Ja|  
+  
+### <a name="attributes"></a>Attribute  
+  
+|Attribut|Beschreibung|Erforderlich|Standard|  
+|---------------|-----------------|--------------|-------------|  
+|code="integer"|Der zurückzugebende HTTP-Statuscode.|Ja|–|  
+|reason="string"|Eine Beschreibung des Grunds zum Zurückgeben des Statuscodes.|Ja|N/V|  
+  
+### <a name="usage"></a>Verwendung  
+ Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+  
+-   **Richtlinienabschnitte:** outbound, backend, on-error  
+  
+-   **Richtlinienbereiche:** alle Bereiche  
+
 ##  <a name="set-variable"></a> Variable festlegen  
  Mit der `set-variable`-Richtlinie wird eine [Kontext](api-management-policy-expressions.md#ContextVariables)variable deklariert und einem Wert zugewiesen, der über einen [Ausdruck](api-management-policy-expressions.md) oder ein Zeichenfolgenliteral angegeben wird. Wenn der Ausdruck ein Literal enthält, wird die Konvertierung in eine Zeichenfolge durchgeführt, und der Typ des Werts lautet `System.String`.  
   
@@ -720,106 +861,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   System.Char?  
   
 -   System.DateTime?  
-  
-##  <a name="SetRequestMethod"></a> Anforderungsmethode festlegen  
- Mit der `set-method`-Richtlinie können Sie die HTTP-Anforderungsmethode für eine Anforderung ändern.  
-  
-### <a name="policy-statement"></a>Richtlinienanweisung  
-  
-```xml  
-<set-method>METHOD</set-method>  
-  
-```  
-  
-### <a name="example"></a>Beispiel  
- Diese Beispielrichtlinie, in der die `set-method`-Richtlinie verwendet wird, veranschaulicht ein Beispiel zum Senden einer Nachricht an einen Slack-Chatraum, wenn der HTTP-Antwortcode größer als oder gleich 500 ist. Weitere Informationen zu diesem Beispiel finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
-  
-```xml  
-<choose>  
-    <when condition="@(context.Response.StatusCode >= 500)">  
-      <send-one-way-request mode="new">  
-        <set-url>https://hooks.slack.com/services/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</set-url>  
-        <set-method>POST</set-method>  
-        <set-body>@{  
-                return new JObject(  
-                        new JProperty("username","APIM Alert"),  
-                        new JProperty("icon_emoji", ":ghost:"),  
-                        new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",  
-                                                context.Request.Method,  
-                                                context.Request.Url.Path + context.Request.Url.QueryString,  
-                                                context.Request.Url.Host,  
-                                                context.Response.StatusCode,  
-                                                context.Response.StatusReason,  
-                                                context.User.Email  
-                                                ))  
-                        ).ToString();  
-            }</set-body>  
-      </send-one-way-request>  
-    </when>  
-</choose>  
-  
-```  
-  
-### <a name="elements"></a>Elemente  
-  
-|Element|Beschreibung|Erforderlich|  
-|-------------|-----------------|--------------|  
-|set-method|Stammelement Mit dem Wert des Elements wird die HTTP-Methode angegeben.|Ja|  
-  
-### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
-  
--   **Richtlinienabschnitte:** inbound, on-error  
-  
--   **Richtlinienbereiche:** alle Bereiche  
-  
-##  <a name="SetStatus"></a> Statuscode festlegen  
- Mit der `set-status`-Richtlinie wird der HTTP-Statuscode auf den angegebenen Wert festgelegt.  
-  
-### <a name="policy-statement"></a>Richtlinienanweisung  
-  
-```xml  
-<set-status code="" reason=""/>  
-  
-```  
-  
-### <a name="example"></a>Beispiel  
- Dieses Beispiel zeigt, wie Sie eine 401-Antwort zurückgeben, wenn das Autorisierungstoken ungültig ist. Weitere Informationen finden Sie unter [Verwenden externer Dienste über den Azure API Management-Dienst](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
-  
-```xml  
-<choose>  
-  <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
-    <return-response response-variable-name="existing response variable">  
-      <set-status code="401" reason="Unauthorized" />  
-      <set-header name="WWW-Authenticate" exists-action="override">  
-        <value>Bearer error="invalid_token"</value>  
-      </set-header>  
-    </return-response>  
-  </when>  
-</choose>  
-  
-```  
-  
-### <a name="elements"></a>Elemente  
-  
-|Element|Beschreibung|Erforderlich|  
-|-------------|-----------------|--------------|  
-|set-status|Stammelement|Ja|  
-  
-### <a name="attributes"></a>Attribute  
-  
-|Attribut|Beschreibung|Erforderlich|Standard|  
-|---------------|-----------------|--------------|-------------|  
-|code="integer"|Der zurückzugebende HTTP-Statuscode.|Ja|–|  
-|reason="string"|Eine Beschreibung des Grunds zum Zurückgeben des Statuscodes.|Ja|N/V|  
-  
-### <a name="usage"></a>Verwendung  
- Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
-  
--   **Richtlinienabschnitte:** outbound, backend, on-error  
-  
--   **Richtlinienbereiche:** alle Bereiche  
-  
+
 ##  <a name="Trace"></a> Ablaufverfolgung  
  Mit der `trace`-Richtlinie wird der Ausgabe für den [API-Inspektor](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) eine Zeichenfolge hinzugefügt. Die Richtlinie wird nur ausgeführt, wenn die Ablaufverfolgung ausgelöst wird, d.h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf `true` festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der dem Administratorkonto zugeordnet ist.  
   

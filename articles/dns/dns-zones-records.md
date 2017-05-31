@@ -15,10 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f15654f621bafb2617bdb456bbda0233db656be5
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 ---
 
@@ -66,9 +67,11 @@ Diese Einschränkungen ergeben sich aus den DNS-Standards und sind keine Einschr
 
 ### <a name="ns-records"></a>NS-Einträge
 
-Ein Satz von NS-Einträgen wird automatisch an der Spitze jeder Zone erstellt (name = „@“) und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).  Sie können die Gültigkeitsdauer dieses Eintragssatzes ändern. Allerdings können Sie keine Einträge ändern, die vorkonfiguriert sind, um auf die Azure DNS-Namenserver zu verweisen, die der Zone zugewiesen sind.
+Der NS-Datensatz am Zonen-Apex (Name „@“) wird automatisch bei jeder DNS-Zone erstellt und automatisch gelöscht, wenn die Zone gelöscht wird (er kann nicht separat gelöscht werden).
 
-Sie können andere NS-Einträge innerhalb der Zone erstellen und löschen (nicht an der Zonenspitze).  Dadurch können Sie untergeordnete Zonen konfigurieren (siehe [Delegieren von Unterdomänen in Azure DNS](dns-domain-delegation.md).)
+Dieser Datensatz enthält die Namen der Azure-DNS-Namensserver, die der Zone zugewiesen sind. Sie können diesem NS-Datensatz weitere Namensserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern. 
+
+Beachten Sie, dass dies nur für den NS-Datensatz am Zonen-Apex gilt. Andere NS-Datensätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen erstellt, geändert und gelöscht werden.
 
 ### <a name="soa-records"></a>SOA-Einträge
 

@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 05/09/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: b9eb9c7f59d0936364bad788ed3b6635b2453739
-ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0fa44799a0bd49d3d96a1916f32e6452405abce8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -24,7 +26,7 @@ ms.openlocfilehash: 9bcad7aaf7f1bd8c51dbfa88381276a70a4def5c
 
 Mit der rollenbasierten Zugriffssteuerung können Mandantenadministratoren vorübergehend erhöhte Zugriffsrechte erhalten, damit sie höhere Berechtigungen als üblich erteilen können. Ein Mandantenadministrator kann seine Rechte bei Bedarf auf die Rolle des Benutzerzugriffsadministrators erhöhen. Diese Rolle bietet dem Mandantenadministrator die Berechtigung, sich selbst oder anderen Benutzern Rollen im Bereich „/“ zu gewähren.
 
-Dieses Feature ist wichtig, weil es dem Mandantenadministrator die Anzeige aller Abonnements ermöglicht, die in einer Organisation vorhanden sind. Zudem erlaubt es Automatisierungs-Apps (z.B. Fakturierung und Überwachung) den Zugriff auf alle Abonnements und die Bereitstellung einer exakten Übersicht über den Organisationsstatus im Hinblick auf Abrechnung oder Asset Management.  
+Dieses Feature ist wichtig, weil es dem Mandantenadministrator die Anzeige aller Abonnements ermöglicht, die in einer Organisation vorhanden sind. Zudem erlaubt es Automatisierungs-Apps (z.B. zur Fakturierung und Überwachung) den Zugriff auf alle Abonnements und die Bereitstellung einer exakten Übersicht über den Organisationsstatus im Hinblick auf Abrechnung oder Asset Management.  
 
 ## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>Verwenden von elevateAccess zum Erteilen von Zugriff an den Mandanten
 
@@ -106,9 +108,4 @@ Beim Aufruf von *elevateAccess* erstellen Sie eine Rollenzuweisung für sich sel
 - Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit REST](role-based-access-control-manage-access-rest.md).
 
 - [Verwalten von Zugriffszuweisungen](role-based-access-control-manage-assignments.md) im Azure-Portal
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -13,16 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/17/2017
+ms.date: 05/16/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 466595773663d43ad8e25fa9ec0ec0163a3f5962
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 1782c7e5f7cd710d6e17a26197f9fcc84c967902
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="create-an-analysis-services-server"></a>Erstellen eines Analysis Services-Servers
+# <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Erstellen eines Azure Analysis Services-Servers im Azure-Portal
 In diesem Artikel werden die Schritte zum Erstellen einer Analysis Services-Serverressource in Ihrem Azure-Abonnement beschrieben.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -33,11 +34,11 @@ Zunächst benötigen Sie Folgendes:
 * **Ressourcengruppe:** Verwenden Sie eine bereits vorhandene Ressourcengruppe, oder [erstellen Sie eine neue Ressourcengruppe](../azure-resource-manager/resource-group-overview.md).
 
 > [!NOTE]
-> Bei der Erstellung eines Analysis Services-Servers wird unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Weitere Informationen finden Sie unter [Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/).
+> Wenn Sie einen Server erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Weitere Informationen finden Sie unter [Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/).
 > 
 > 
 
-## <a name="create-an-analysis-services-server"></a>Erstellen eines Analysis Services-Servers
+## <a name="to-create-a-server-in-azure-portal"></a>Erstellen eines Servers im Azure-Portal
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **+ Neu** > **Intelligence + Analyse** > **Analysis Services**.
 3. Füllen Sie auf dem Blatt **Analysis Services** die erforderlichen Felder aus, und klicken Sie dann auf **Erstellen**.
@@ -48,19 +49,12 @@ Zunächst benötigen Sie Folgendes:
    * **Abonnement:** Wählen Sie das Abonnement aus, für das dieser Server in Rechnung gestellt wird.
    * **Ressourcengruppe:** Diese Container sind auf das Verwalten einer Azure-Ressourcensammlung ausgelegt. Weitere Informationen finden Sie unter [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md).
    * **Standort:** An diesem Standort des Azure-Rechenzentrums wird der Server gehostet. Wählen Sie einen Standort in der Nähe Ihrer größten Benutzerbasis aus.
-   * **Tarif:** Wählen Sie einen Tarif aus. Tabellenmodelle bis zu 100 GB werden unterstützt. Weitere Informationen finden Sie unter [Azure Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/).
+   * **Tarif:** Wählen Sie einen Tarif aus. Tabellenmodelle von bis zu 400 GB werden unterstützt. Weitere Informationen finden Sie unter [Azure Analysis Services – Preise](https://azure.microsoft.com/pricing/details/analysis-services/).
 4. Klicken Sie auf **Erstellen**.
 
 Die Erstellung dauert in der Regel weniger als eine Minute, meist nur wenige Sekunden. Wenn Sie **Add to Portal** (Zu Portal hinzufügen) ausgewählt haben, navigieren Sie zu Ihrem Portal, um den neuen Server anzuzeigen. Oder navigieren Sie zu **Weitere Dienste** > **Analysis Services**, um zu überprüfen, ob der Server bereit ist.
 
  ![Dashboard](./media/analysis-services-create-server/aas-create-server-dashboard.png)
-
-## <a name="automate-server-creation"></a>Automatisieren der Serverbereitstellung
-Sie können die Serverbereitstellung mithilfe von Azure Resource Manager-Vorlagendateien dynamisch automatisieren. Weitere Informationen erhalten Sie in diesem hilfreichen Video.
-
->[!VIDEO https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation/player]
->
->
 
 
 ## <a name="next-steps"></a>Nächste Schritte

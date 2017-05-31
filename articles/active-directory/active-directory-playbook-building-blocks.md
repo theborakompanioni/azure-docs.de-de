@@ -1,31 +1,33 @@
 ---
+
 title: Bausteine eines Azure Active Directory-PoC-Playbooks | Microsoft-Dokumentation
 description: "Untersuchen und schnelles Implementieren von Szenarien mit Identitäts- und Zugriffsverwaltung"
 services: active-directory
 keywords: Azure Active Directory, Playbook, Proof of Concept, PoC
 documentationcenter: 
 author: dstefanMSFT
-manager: asuthar
+manager: femila
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/12/2017
+ms.date: 05/04/2017
 ms.author: dstefan
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b6f26a338450619cef012467bf78b9469622ba08
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 9c81bc0c702d559eee8b5fbf2a0508697f4276a0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
-## <a name="catalog-of-actors"></a>Katalog mit Akteuren
+## <a name="catalog-of-roles"></a>Katalog mit Rollen
 
-| Akteur | Beschreibung | PoC-Verantwortung |
+| Rolle | Beschreibung | Verantwortung für Proof of Concept (PoC) |
 | --- | --- | --- |
 | **Identitätsarchitektur / Entwicklerteam** | Dieses Team ist üblicherweise für den Entwurf der Lösung zuständig, implementiert Prototypen, erteilt Genehmigungen und übergibt fertige Produkte schließlich an das operative Geschäftsteam. | Das Entwicklerteam stellt die Umgebungen bereit und bewertet verschiedene Szenarien hinsichtlich der Verwaltbarkeit. |
 | **Lokales Team für Identitätsvorgänge** | Dieses Team verwaltet vor Ort die verschiedenen Identitätsquellen: Active Directory-Gesamtstrukturen, LDAP-Verzeichnisse, Personalverwaltungssysteme und Verbundidentitätsanbieter. | Zugriff auf lokale Ressourcen, die in PoC-Szenarien erforderlich sind, wird von diesem Team bereitgestellt.<br/>Die Beteiligung dieses Teams sollte auf ein Mindestmaß beschränkt werden.|
@@ -184,7 +186,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Schritt | Ressourcen |
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#the-new-and-improved-application-gallery) |
+| Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer (Zugriff erforderlich) an. |  |
@@ -210,7 +212,7 @@ Geschätzter Zeitaufwand: 30 Minuten
 | Voraussetzung | Ressourcen |
 | --- | --- |
 | Halten Sie die Liste der Zielanwendungen und die genauen Anmelde-URLs bereit. Als Beispiel können Sie Twitter verwenden. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Registrieren bei Twitter](https://twitter.com/signup?lang=en) |
-| Freigegebene Anmeldeinformationen für diese SaaS-Anwendung. | [Gemeinsame Nutzung von Konten mit Azure AD](active-directory-sharing-accounts.md)<br/>[Azure AD automated password roll-over for Facebook, Twitter and LinkedIn now in preview! - Enterprise Mobility and Security Blog](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) (Automatisierte Kennwortaktivierung für Facebook, Twitter und LinkedIn als Vorschau) |
+| Freigegebene Anmeldeinformationen für diese SaaS-Anwendung. | [Gemeinsame Nutzung von Konten mit Azure AD](active-directory-sharing-accounts.md)<br/>[Automatisierte Azure AD-Kennwortrollover für Facebook, Twitter und LinkedIn ab sofort in der Vorschau! – Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Anmeldeinformationen für mindestens zwei Teammitglieder, die auf das gleiche Konto zugreifen werden. Sie müssen einer Sicherheitsgruppe angehören. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
 | Lokaler Administratorzugriff auf einen Computer zum Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer, Chrome oder Firefox | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
@@ -219,7 +221,7 @@ Geschätzter Zeitaufwand: 30 Minuten
 | Schritt | Ressourcen |
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#the-new-and-improved-application-gallery) |
+| Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu, während Sie ihnen Anmeldeinformationen zuweisen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
 | Melden Sie sich als verschiedene Benutzer an, die auf die App als **das gleiche freigegebene Konto** zugreifen.  |  |
@@ -287,7 +289,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 | Hinzufügen eines generischen LDAP-Connectors | [Technische Referenz für den generischen LDAP-Connector: Erstellen eines neuen Connectors](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
 | Erstellen Sie Ausführungsprofile für den erstellten Connector (vollständiger Import, Deltaimport, vollständige Synchronisierung, Deltasynchronisierung, Export). | [Create a Management Agent Run Profile](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx) (Erstellen eines Management-Agent-Ausführungsprofils)<br/> [Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | Führen Sie ein Profil für den vollständigen Import aus. Überprüfen Sie, dass sich im Connectorbereich Objekte befinden. | [Search for a Connector Space Object](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx) (Suchen nach einem Objekt des Connectorbereichs)<br/>[Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager: Connectorbereich durchsuchen](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| Erstellen Sie Synchronisierungsregeln, damit die Objekte im Metaverse über die erforderlichen Attribute für die Workloads verfügen. | [Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration: Änderungen an Synchronisierungsregeln](/connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
+| Erstellen Sie Synchronisierungsregeln, damit die Objekte im Metaverse über die erforderlichen Attribute für die Workloads verfügen. | [Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration: Änderungen an Synchronisierungsregeln](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
 | Starten Sie den vollständigen Synchronisierungszyklus. | [Azure AD Connect Sync: Scheduler: Starten des Schedulers](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
 | Führen Sie bei Problemen die Problembehandlung aus. | [Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
 | Überprüfen Sie, ob der LDAP-Benutzer sich anmelden und auf die Anwendung zugreifen kann. | https://myapps.microsoft.com |
@@ -381,8 +383,8 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Voraussetzung | Ressourcen |
 | --- | --- |
 | Aktivieren Sie die Self-Service-Kennwortverwaltung in Ihrem Mandanten. | [Azure Active Directory – Zurücksetzen von Kennwörtern für IT-Administratoren](active-directory-passwords.md) |
-| Aktivieren Sie das Kennwortrückschreiben, um Kennwörter lokal zu verwalten. Hinweis: Dies erfordert bestimmte Azure AD Connect-Versionen. | [Voraussetzungen für das Zurückschreiben von Kennwörtern](active-directory-passwords-getting-started.md#writeback-prerequisites) |
-| Identifizieren Sie die PoC-Benutzer, die diese Funktion verwenden werden, und stellen Sie sicher, dass sie Mitglied einer Sicherheitsgruppe sind. Bei diesen Benutzern muss es sich um Nicht-Administratoren handeln, da die Funktion sonst nicht vollständig vorgestellt werden kann. | [Anpassen: Azure AD-Kennwortverwaltung: Zugriff auf die Kennwortrücksetzung beschränken](active-directory-passwords-customize.md#restrict-access-to-password-reset) |
+| Aktivieren Sie das Kennwortrückschreiben, um Kennwörter lokal zu verwalten. Hinweis: Dies erfordert bestimmte Azure AD Connect-Versionen. | [Voraussetzungen für das Zurückschreiben von Kennwörtern](active-directory-passwords-writeback.md) |
+| Identifizieren Sie die PoC-Benutzer, die diese Funktion verwenden werden, und stellen Sie sicher, dass sie Mitglied einer Sicherheitsgruppe sind. Bei diesen Benutzern muss es sich um Nicht-Administratoren handeln, da die Funktion sonst nicht vollständig vorgestellt werden kann. | [Anpassen: Azure AD-Kennwortverwaltung: Zugriff auf die Kennwortrücksetzung beschränken](active-directory-passwords-writeback.md) |
 
 
 ### <a name="steps"></a>Schritte

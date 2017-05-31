@@ -18,10 +18,11 @@ ms.workload: na
 ms.date: 4/14/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 6f09d2244d0a1f6dbd7cff164c6d9e35379ee131
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: acd5221b5cef9f64d681af9cbe7ea431334948b5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -51,9 +52,9 @@ Verbinden Sie Raspberry Pi mit einem von Ihnen erstellten IoT Hub. Führen Sie a
 * Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Pi
 * Senden von Sensordaten an Ihren IoT Hub
 
-## <a name="what-you-need"></a>Voraussetzungen
+## <a name="what-you-need"></a>Erforderliches Element
 
-![Voraussetzungen](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
+![Erforderliches Element](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
 * Raspberry Pi 2- oder Raspberry Pi 3-Platine.
 * Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
@@ -106,7 +107,7 @@ Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
    ![Aktivieren von I2C und SSH auf Raspberry Pi](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-Weitere Referenzdokumente zum Aktivieren von SSH und I2C finden Sie auf[raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) und unter [RASPI-CONFIG](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2).
+Weitere Referenzdokumente zum Aktivieren von SSH und I2C finden Sie auf[raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) und unter [RASPI-CONFIG](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
 
 ### <a name="connect-the-sensor-to-pi"></a>Verbinden des Sensors mit Pi
 
@@ -132,18 +133,40 @@ Nachdem Sie den BME280 erfolgreich mit Ihrem Raspberry Pi verbunden haben, sollt
 
 ![Verbindung zwischen Pi und BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
-Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. Verwenden Sie das Ethernet-Kabel zum Verbinden von Pi mit Ihrem verkabelten Netzwerk, oder befolgen Sie die [Anweisungen der Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/), um Pi mit Ihrem WLAN zu verbinden.
+### <a name="connect-pi-to-the-network"></a>Verbindung zwischen Pi und dem Netzwerk
+
+Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. Verwenden Sie das Ethernet-Kabel zum Verbinden von Pi mit Ihrem verkabelten Netzwerk, oder befolgen Sie die [Anweisungen der Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/), um Pi mit Ihrem WLAN zu verbinden. Notieren Sie sich die [IP-Adresse von Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address), nachdem es eine Verbindung zum Netzwerk hergestellt hat.
 
 ![Mit verkabeltem Netzwerk verbunden](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
+> [!NOTE]
+> Stellen Sie sicher, dass der Raspberry Pi mit dem gleichen Netzwerk wie der Computer verbunden ist. Wenn der Computer beispielsweise mit einem Drahtlosnetzwerk und Pi mit einem verkabelten Netzwerk verbunden ist, wird in der Ausgabe des devdisco-Befehls die IP-Adresse möglicherweise nicht angezeigt.
 
 ## <a name="run-a-sample-application-on-pi"></a>Ausführen einer Beispielanwendung auf Pi
 
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>Klonen der Beispielanwendung und Installieren der Pakete mit den erforderlichen Komponenten
 
 1. Verwenden Sie einen der folgenden SSH-Clients auf Ihrem Hostcomputer, um die Verbindung mit Ihrem Raspberry Pi herzustellen.
-    - [PuTTY](http://www.putty.org/) für Windows.
-    - Den integrierten SSH-Client unter Ubuntu oder macOS.
+    - [PuTTY](http://www.putty.org/) für Windows. Sie benötigen die IP-Adresse von Pi, um eine SSH-Verbindung herzustellen.
+    - Den integrierten SSH-Client unter Ubuntu oder macOS. Möglicherweise müssen Sie `ssh pi@<ip address of pi>` ausführen, um eine SSH-Verbindung mit Pi herzustellen.
+
+   > [!NOTE] 
+   Der Standardbenutzername ist `pi`, und das Kennwort ist `raspberry`.
+
+1. Installieren von Node.js und NPM auf Pi
+   
+   Prüfen Sie zunächst Ihre Version von „node.js“ mit dem folgenden Befehl. 
+   
+   ```bash
+   node -v
+   ```
+
+   Wenn die Version niedriger als 4.x ist, oder sich kein „node.js“ auf Ihrem Pi befindet, führen Sie den folgenden Befehl aus, um „node.js“ zu installieren oder zu aktualisieren.
+
+   ```bash
+   curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
+   sudo apt-get -y install nodejs
+   ```
 
 1. Klonen Sie die Beispielanwendung durch Ausführen des folgenden Befehls:
 
@@ -154,8 +177,8 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. 
 1. Installieren Sie alle Pakete über den folgenden Befehl. Dazu gehören das Azure IoT-Geräte-SDK, die BME280-Sensorbibliothek und die Pi-Bibliothek zur Verkabelung.
 
    ```bash
-   cd iot-hub-node-raspberry-pi-clientapp
-   npm install
+   cd iot-hub-node-raspberrypi-client-app
+   sudo npm install
    ```
    > [!NOTE] 
    Je nach Netzwerkverbindung kann das Abschließen dieses Installationsvorgangs mehrere Minuten dauern.

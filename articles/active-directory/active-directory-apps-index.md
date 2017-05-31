@@ -11,12 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 564dd782834898709f89f85e10627d07b17138ce
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 3f6ae31f577eb1bc70a06e183518aadbc6279159
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -138,7 +139,7 @@ Automatisieren Sie das Erstellen, Warten und Entfernen von Benutzeridentitäten 
 | Weitere Informationen zur Funktionsweise und Antworten auf häufig gestellte Fragen |[Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md) |
 | Konfigurieren der Zuordnung von Informationen zwischen Azure AD und Ihrer SaaS-App |[Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Schreiben von Ausdrücken für Attributzuordnungen](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
 | Aktivieren der automatisierten Bereitstellung in jeder App, die das SCIM-Protokoll unterstützt |[Einrichten der automatischen Bereitstellung von Benutzern für SCIM-fähige Apps](active-directory-scim-provisioning.md) |
-| Erhalten von Benachrichtigungen bei Bereitstellungsfehlern |[Bereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md) |
+| Berichterstellung zu und Problembehandlung bei Benutzerbereitstellungen |[Berichterstellung zur automatischen Benutzerbereitstellung](active-directory-saas-provisioning-reporting.md)<br><br>[Benachrichtigungen zu Bereitstellungen](active-directory-saas-account-provisioning-notifications.md)<br><br>[Problembehandlung bei Benutzerbereitstellungen](active-directory-application-provisioning-content-map.md) |
 | Einschränken der für eine Anwendung bereitgestellten Benutzer basierend auf deren Attributwerten |[Bereichsfilter](active-directory-saas-scoping-filters.md) |
 
 Die automatisierte Benutzerbereitstellung steht für alle Editionen von Azure AD für bis zu zehn Apps pro Benutzer zur Verfügung. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) unterstützt eine unbegrenzte Anzahl von Anwendungen. Wenn Ihre Organisation [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) oder [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) verwendet, können Sie [die Benutzerbereitstellung anhand von Gruppen verwalten](#managing-access-to-applications).
@@ -168,16 +169,16 @@ Um Sie bei der Verwaltung des Zugriffs auf Ressourcen zu unterstützen, ermögli
 Gruppenbasierte Anwendungszugriffsverwaltung steht für [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) und [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) zur Verfügung. Self-Service-Gruppenverwaltung, Self-Service-Anwendungsverwaltung und dynamische Gruppen sind Features von [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) .
 
 ### <a name="b2b-collaboration-enable-partner-access-to-applications"></a>B2B-Zusammenarbeit: Aktivieren des Partnerzugriffs auf Anwendungen
-Wenn Ihr Unternehmen eine Partnerschaft mit anderen Unternehmen eingegangen ist, müssen Sie wahrscheinlich den Partnerzugriff auf Ihre Unternehmensanwendungen verwalten. Die Azure Active Directory B2B-Zusammenarbeit bietet eine einfache und sichere Möglichkeit zum Teilen Ihrer Apps mit Partnern. Diese Funktion steht derzeit als Vorschau zur Verfügung.
+Wenn Ihr Unternehmen eine Partnerschaft mit anderen Unternehmen eingegangen ist, müssen Sie wahrscheinlich den Partnerzugriff auf Ihre Unternehmensanwendungen verwalten. Die Azure Active Directory B2B-Zusammenarbeit bietet eine einfache und sichere Möglichkeit zum Teilen Ihrer Apps mit Partnern.
 
 | Artikelleitfaden |  |
 |:---:| --- |
 | Überblick über die verschiedenen Azure AD-Features zur Verwaltung externer Benutzer wie Partner, Kunden usw. |[Vergleich von Funktionen zum Verwalten externer Identitäten in Azure AD](active-directory-b2b-compare-external-identities.md) |
-| Einführung in die Vorschau der B2B-Zusammenarbeit und erste Schritte |[Vorschau der Azure AD B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud](active-directory-b2b-what-is-azure-ad-b2b.md)<br /><br />[Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-collaboration-overview.md) |
-| Tiefer gehende Details zur Azure AD B2B-Zusammenarbeit und deren Verwendung |[Vorschau der Azure AD B2B-Zusammenarbeit: Funktionsweise](active-directory-b2b-how-it-works.md)<br /><br />[Vorschau der Azure AD B2B-Zusammenarbeit: Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)<br /><br />[Ausführliche exemplarische Vorgehensweise zur Verwendung der Vorschau der Azure AD B2B-Zusammenarbeit](active-directory-b2b-detailed-walkthrough.md) |
+| Einführung in die B2B-Zusammenarbeit und erste Schritte |[Vorschau der Azure AD B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud](active-directory-b2b-what-is-azure-ad-b2b.md)<br /><br />[Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-collaboration-overview.md) |
+| Tiefer gehende Details zur Azure AD B2B-Zusammenarbeit und deren Verwendung |[Vorschau der Azure AD B2B-Zusammenarbeit: Funktionsweise](active-directory-b2b-how-it-works.md)<br /><br />[Aktuelle Einschränkungen der Azure AD B2B-Zusammenarbeit](active-directory-b2b-current-limitations.md)<br /><br />[Ausführliche exemplarische Vorgehensweise zur Verwendung der Azure AD B2B-Zusammenarbeit](active-directory-b2b-detailed-walkthrough.md) |
 | Referenzartikel mit technischen Details zur Funktionsweise der Azure AD B2B-Zusammenarbeit |[Vorschau der Azure AD B2B-Zusammenarbeit: CSV-Dateiformat](active-directory-b2b-references-csv-file-format.md)<br /><br />[Vorschau der Azure AD B2B-Zusammenarbeit: Objektattributänderungen für externe Benutzer](active-directory-b2b-references-external-user-object-attribute-changes.md)<br /><br />[Benutzertokenformat für Partnerbenutzer](active-directory-b2b-references-external-user-token-format.md) |
 
-Die Vorschau der B2B-Zusammenarbeit ist zurzeit für [alle Editionen von Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)verfügbar.
+Die B2B-Zusammenarbeit ist zurzeit für [alle Editionen von Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) verfügbar.
 
 ### <a name="access-panel-a-portal-for-accessing-apps-and-self-service-features"></a>Zugriffsbereich: Ein Portal für den Zugriff auf Apps und Self-Service-Funktionen
 Der Azure AD-Zugriffsbereich ist der Bereich, in dem Endbenutzer ihre Apps starten und auf die Self-Service-Funktionen zugreifen können, die ihnen das Verwalten ihrer Apps und Gruppenmitgliedschaften erlauben. Zusätzlich zum Zugriffsbereich sind in der folgenden Liste weitere Optionen für den Zugriff auf SSO-fähige Apps enthalten.

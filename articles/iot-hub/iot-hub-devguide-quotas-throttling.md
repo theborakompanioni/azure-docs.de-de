@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: e9171844e2fbac7a4e734be9144b30d1bbd0397f
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: f36ce029acebfccdfa84122a86ea3a642c048b8c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -75,7 +76,13 @@ IoT Hub erzwingt andere Grenzwerte für die verschiedenen Funktionen.
 | Regeln für die Nachrichtenweiterleitung | Kostenpflichtige SKU-Hubs haben möglicherweise 100 Weiterleitungsregeln. Kostenfreie SKU-Hubs haben möglicherweise fünf Weiterleitungsregeln. |
 
 > [!NOTE]
-> Derzeit können höchstens 500.000 Geräte mit einem einzelnen IoT Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/en-us/support/options/).
+> Derzeit können höchstens 500.000 Geräte mit einem einzelnen IoT Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/en-us/support/options/).
+
+## <a name="latency"></a>Latenz
+IoT Hub sorgt bei allen Vorgängen für eine möglichst niedrige Latenz. Aufgrund von Netzwerkbedingungen und anderen nicht vorhersehbaren Faktoren kann eine maximale Latenz jedoch nicht garantiert werden. Vermeiden Sie beim Entwurf Ihrer Lösung Annahmen über die maximale Latenz von IoT Hub-Vorgängen. Stellen Sie Ihren IoT Hub in der Azure-Region in möglichst geringer Entfernung zu Ihren Geräten bereit, und erwägen Sie den Einsatz von Azure IoT Edge, um Vorgänge, für die die Latenz von Bedeutung ist, auf dem Gerät oder auf einem Gateway in der Nähe des Geräts auszuführen.
+
+Mehrere IoT Hub-Einheiten wirken sich wie zuvor beschrieben auf die Drosselung aus, bieten jedoch keine zusätzlichen Vorteile oder Garantien in Bezug auf die Latenz.
+Wenden Sie sich im Falle eines unerwarteten Anstiegs der Vorgangslatenz an den [Microsoft-Support](https://azure.microsoft.com/en-us/support/options/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:

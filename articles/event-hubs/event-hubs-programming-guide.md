@@ -1,6 +1,6 @@
 ---
 title: "Programmierhandbuch für Azure Event Hubs | Microsoft Docs"
-description: Beschreibt die Programmierung mit Azure Event Hubs unter Verwendung des Azure .NET SDK.
+description: "Schreiben von Code für Azure Event Hubs unter Verwendung des Azure .NET SDK."
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/10/2017
+ms.date: 05/17/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d8a767e9149c6c5eca5b22f094ae924135fa7a2d
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 6d0a1501b97ddb2c819361b00a85ebec12f7b50e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="event-hubs-programming-guide"></a>Programmierleitfaden für Event Hubs
+
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs und dem Azure .NET SDK. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
+
 Sie senden Ereignisse entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung an einen Event Hub. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und sind besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Messagingkanal verfügen.
 
 Event Hubs werden mit der [NamespaceManager][] -Klasse erstellt und verwaltet. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) und [EventData][]. [EventHubClient][] stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData][]-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData][]-Objekt werden weitere Eigenschaften hinzugefügt, wenn es einen Event Hub durchläuft.
 
 ## <a name="get-started"></a>Erste Schritte
+
 Die .NET-Klassen, die Event Hubs unterstützen, werden in der Assembly „Microsoft.ServiceBus.dll“ bereitgestellt. Der einfachste Weg zum Verweisen auf die Service Bus-API und Konfigurieren Ihrer Anwendung mit allen Service Bus-Abhängigkeiten ist das Herunterladen des [Service Bus-NuGet-Pakets](https://www.nuget.org/packages/WindowsAzure.ServiceBus). Alternativ dazu können Sie die [Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) in Visual Studio verwenden. Geben Sie hierzu im Fenster der [Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein:
 
 ```

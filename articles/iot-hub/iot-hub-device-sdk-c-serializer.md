@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
-translationtype: Human Translation
-ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
-ms.openlocfilehash: 587412f02c6bb6bd2c5b1896a890607fa1c058f8
-ms.lasthandoff: 02/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 0c192a9c5e738d92d02fb1a16a80569c9f80d732
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -435,7 +436,7 @@ Mitunter sollen jedoch nur *einige* Eigenschaften des Modells an die Cloud gesen
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven**t mit **Temperature**und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt das gleiche serialisierte Ereignis generieren, da wir **SERIALIZE** auf andere Weise aufgerufen haben.
+Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven**t mit **Temperature** und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt das gleiche serialisierte Ereignis generieren, da wir **SERIALIZE** auf andere Weise aufgerufen haben.
 
 Hierbei ist Folgendes entscheidend: Wenn Sie mehrere Datenereignisse an **SERIALIZE** übergeben, wird davon ausgegangen, dass jedes Ereignis eine Eigenschaft in einem einzelnen JSON-Objekt ist.
 
@@ -672,9 +673,9 @@ Weitere Informationen zum Entwickeln für IoT Hub finden Sie im Artikel zu den [
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
+* [Simulieren eines Geräts mit Azure IoT Edge][lnk-iotedge]
 
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

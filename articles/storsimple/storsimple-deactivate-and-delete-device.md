@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 05/17/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 80fde4dfe7de89dffd39242d94fe46f68e41d611
-ms.openlocfilehash: 833dee54ef9de46c50e9e760594359baf4f89b5e
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -29,7 +30,7 @@ Möglicherweise möchten Sie ein StorSimple-Gerät außer Betrieb nehmen (z. B.
 Wenn Sie ein Gerät deaktivieren, sind alle Daten, die lokal auf dem Gerät gespeichert wurden, nicht mehr zugänglich. Nur Daten auf dem Gerät, die in der Cloud gespeichert wurden, können wiederhergestellt werden.  
 
 > [!WARNING]
-> Die Deaktivierung ist ein ENDGÜLTIGER Vorgang und kann nicht rückgängig gemacht werden. Ein deaktiviertes Gerät kann nicht mit dem StorSimple Manager-Dienst registriert werden, es sei denn, die Werkseinstellungen werden zunächst zurückgesetzt. 
+> Die Deaktivierung ist ein ENDGÜLTIGER Vorgang und kann nicht rückgängig gemacht werden. Ein deaktiviertes Gerät kann erst beim StorSimple Manager-Dienst registriert werden, wenn es auf die Standardwerkseinstellungen zurückgesetzt wurde. 
 > 
 > Das Zurücksetzen der Werkseinstellungen löscht alle Daten, die lokal auf Ihrem Gerät gespeichert wurden. Daher ist es wichtig, dass Sie von allen Daten eine Momentaufnahme in der Cloud machen, bevor Sie ein Gerät deaktivieren. Dadurch können Sie alle Daten zu einem späteren Zeitpunkt wiederherstellen.
 > 

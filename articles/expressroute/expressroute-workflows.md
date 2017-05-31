@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/12/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 570a98aafca6babc5a7089880d4120c2a8f4a0d8
-ms.openlocfilehash: 5a275620639a801d7e60ef9ada1af29062dfe440
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -34,7 +36,7 @@ Die folgende Abbildung und die dazugehörigen Schritte veranschaulichen die Aufg
    
    * Privates Azure-Peering aktivieren – Sie müssen dieses Peering aktivieren, um eine Verbindung mit virtuellen Computern/Clouddiensten herzustellen, die in virtuellen Netzwerken bereitgestellt werden.
    * Öffentliches Azure-Peering aktivieren – sie müssen das öffentliche Azure-Peering aktivieren, wenn Sie eine Verbindung mit Azure-Diensten herstellen möchten, die unter öffentlichen IP-Adressen gehostet werden. Dies ist eine Voraussetzung, damit auf Azure-Ressourcen zugegriffen werden kann, wenn Sie das Standardrouting für privates Azure-Peering aktiviert haben.
-   * Microsoft-Peering aktivieren – Sie müssen das Microsoft-Peering aktivieren, um auf Office 365 und CRM-Onlinedienste zugreifen zu können. 
+   * Microsoft-Peering aktivieren – Sie müssen dieses Peering aktivieren, um auf Office 365 und Dynamics 365 zugreifen zu können. 
      
      > [!IMPORTANT]
      > Verwenden Sie für die Verbindung mit Microsoft unbedingt einen anderen Proxy/Edge als für das Internet. Wenn Sie denselben Edge für ExpressRoute und das Internet verwenden, führt das zu asymmetrischem Routing und Konnektivitätsausfällen für Ihr Netzwerk.
@@ -115,10 +117,5 @@ Wenn der Zustand der angekündigten öffentlichen Präfixe *validation needed* l
   * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md)
   * [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

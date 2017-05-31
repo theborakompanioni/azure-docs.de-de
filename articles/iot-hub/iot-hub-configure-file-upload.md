@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: b1e32eef393aa213cac6af68821ad0572e4a3c92
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: b958487c80207002e0642b8af8486f53266dd563
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -58,7 +59,7 @@ Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahr
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [IoT Hub-Entwicklerhandbuch][lnk-devguide]
-* [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
+* [Simulieren eines Geräts mit IoT Edge][lnk-iotedge]
 * [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
@@ -72,6 +73,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-monitor]: iot-hub-operations-monitoring.md
 
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 [lnk-securing]: iot-hub-security-ground-up.md
 

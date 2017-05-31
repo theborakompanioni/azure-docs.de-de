@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 02/07/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 177c622171c4b0e1813c85d1c22bda87aeafce06
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: f824f80aaba2cd2de7590ecf4560bb5559a66e82
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -59,7 +61,7 @@ Wenn Sie mehrere Gesamtstrukturen besitzen und keine Benutzer zwischen Gesamtstr
 
 Wenn Sie Benutzer zwischen Gesamtstrukturen und Domänen verschieben, müssen Sie ein Attribut finden, das nicht geändert wird oder während des Verschiebevorgangs zusammen mit den Benutzern verschoben werden kann. Ein empfohlenes Verfahren ist die Einführung eines synthetischen Attributs. Ein Attribut, das etwas Ähnliches wie eine GUID enthält, wäre geeignet. Beim Erstellen des Objekts wird eine neue GUID erstellt und dem Benutzer zugewiesen. Im Synchronisierungsmodulserver kann eine benutzerdefinierte Synchronisierungsregel erstellt werden, um diesen Wert basierend auf **objectGUID** zu erstellen und das ausgewählte Attribut in ADDS zu aktualisieren. Wenn Sie das Objekt verschieben, stellen Sie sicher, dass Sie auch den Inhalt dieses Werts kopieren.
 
-Eine andere Lösung ist, ein vorhandenes Attribut zu wählen, von dem Sie wissen, dass es nicht geändert wird. Zu den häufig verwendeten Attributen zählt **employeeID**. Wenn Sie ein Attribut in Betracht ziehen, das Buchstaben enthält, stellen Sie sicher, dass keine Möglichkeit besteht, dass sich die Groß-/Kleinschreibung für den Wert des Attributs ändern kann. Zu schlechten Attributen, die nicht verwendet werden sollten, gehören Attribute mit dem Namen des Benutzers. Durch Hochzeit oder Scheidung könnte sich der Name ändern, und dies ist für dieses Attribut nicht zulässig. Dies ist auch ein Grund, warum Attribute wie **userPrincipalName**, **mail** und **targetAddress** im Installations-Assistenten von Azure AD Connect nicht einmal ausgewählt werden können. Diese Attribute enthalten außerdem das "@"-Zeichen, das in sourceAnchor nicht zulässig ist.
+Eine andere Lösung ist, ein vorhandenes Attribut zu wählen, von dem Sie wissen, dass es nicht geändert wird. Zu den häufig verwendeten Attributen zählt **employeeID**. Wenn Sie ein Attribut in Betracht ziehen, das Buchstaben enthält, stellen Sie sicher, dass keine Möglichkeit besteht, dass sich die Groß-/Kleinschreibung für den Wert des Attributs ändern kann. Zu schlechten Attributen, die nicht verwendet werden sollten, gehören Attribute mit dem Namen des Benutzers. Durch Hochzeit oder Scheidung könnte sich der Name ändern, und dies ist für dieses Attribut nicht zulässig. Dies ist auch ein Grund, warum Attribute wie **userPrincipalName**, **mail** und **targetAddress** im Installations-Assistenten von Azure AD Connect nicht einmal ausgewählt werden können. Diese Attribute enthalten außerdem das „@“-Zeichen, das in „sourceAnchor“ nicht zulässig ist.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Ändern des Attributs sourceAnchor
 Der Wert des Attributs sourceAnchor kann nicht geändert werden, nachdem das Objekt in Azure AD erstellt und die Identität synchronisiert wurde.
@@ -69,6 +71,64 @@ Aus diesem Grund gelten die folgenden Einschränkungen für Azure AD Connect:
 * Das Attribut sourceAnchor kann nur bei der Erstinstallation festgelegt werden. Diese Option ist schreibgeschützt, wenn Sie den Installations-Assistenten erneut ausführen. Wenn Sie diese Einstellung ändern müssen, müssen Sie deinstallieren und neu installieren.
 * Wenn Sie einen anderen Azure AD Connect-Server installieren, müssen Sie das gleiche Attribut sourceAnchor wie zuvor auswählen. Wenn Sie zuvor bereits DirSync verwendet haben und zu Azure AD wechseln, müssen Sie **objectGUID** verwenden, da dieses Attribut von DirSync verwendet wird.
 * Wenn der Wert für „sourceAnchor“ geändert wird, nachdem das Objekt nach Azure AD exportiert wurde, meldet die Azure AD Connect-Synchronisierung einen Fehler und lässt keine weiteren Änderungen am Objekt zu, bevor das Problem behoben und die Änderung von „sourceAnchor2 im Quellverzeichnis wieder rückgängig gemacht wurde.
+
+## <a name="using-msds-consistencyguid-as-sourceanchor"></a>Verwendung von „msDS-ConsistencyGuid“ in „sourceAnchor“
+Standardmäßig verwendet Azure AD Connect (Version 1.1.486.0 und älter) „objectGUID“ als „sourceAnchor“-Attribut. „objectGUID“ wird vom System generiert. Sie können den jeweiligen Wert nicht bei der Erstellung lokaler AD-Objekte festlegen. Wie im Abschnitt [sourceAnchor](#sourceanchor) erläutert, gibt es verschiedene Szenarien, in denen Sie den Wert von „sourceAnchor“ festlegen müssen. Wenn die Szenarien auf Sie zutreffen, müssen Sie ein konfigurierbares AD-Attribut (z.B. „msDS-ConsistencyGuid“) als „sourceAnchor“-Attribut verwenden.
+
+Azure AD Connect (Version 1.1.524.0 und höher) ermöglicht nun die Verwendung von „msDS-ConsistencyGuid“ als „sourceAnchor“-Attribut. Bei der Verwendung dieser Funktion konfiguriert Azure AD Connect die Synchronisierungsregeln automatisch wie folgt:
+
+1. „msDS-ConsistencyGuid“ wird als „sourceAnchor“-Attribut für Benutzerobjekte verwendet. „objectGUID“ wird für andere Objekttypen verwendet.
+
+2. Für jedes lokale AD-Benutzerobjekt, dessen „msDS-ConsistencyGuid“-Attribut nicht aufgefüllt ist, schreibt Azure AD Connect den zugehörigen Wert von „objectGUID“ in das Attribut „msDS-ConsistencyGuid“ im lokalen Active Directory zurück. Nachdem das Attribut „msDS-ConsistencyGuid“ aufgefüllt wurde, exportiert Azure AD Connect das Objekt nach Azure AD.
+
+>[!NOTE]
+> Sobald ein lokales AD-Objekt in Azure AD Connect importiert (d.h., in den AD-Connectorbereich importiert und in die Metaverse projiziert) wurde, können Sie den zugehörigen Wert von „sourceAnchor“ nicht mehr ändern. Um den Wert von „sourceAnchor“ für ein bestimmtes lokales AD-Objekt festzulegen, konfigurieren Sie das jeweilige „msDS-ConsistencyGuid“-Attribut, bevor es in Azure AD Connect importiert wird.
+
+### <a name="how-to-enable-the-consistencyguid-feature"></a>Gewusst wie: Aktivieren der Funktion „ConsistencyGuid“
+Die Funktion kann derzeit nur bei der Neuinstallation von Azure AD Connect aktiviert werden.
+
+#### <a name="express-installation"></a>Express-Installation
+Bei der Installation von Azure AD Connect mit dem Express-Modus legt der Azure AD Connect-Assistent automatisch das am besten geeignete AD-Attribut fest, das mit folgender Logik als „sourceAnchor“-Attribut verwendet werden soll:
+
+* Zunächst fragt der Azure AD Connect-Assistent Ihren Azure AD-Mandanten ab, um das AD-Attribut abzurufen, das in der vorherigen Installation von Azure AD Connect (sofern vorhanden) als „sourceAnchor“-Attribut verwendet wurde. Sind diese Informationen verfügbar, verwendet Azure AD Connect dasselbe AD-Attribut. Wenn die Informationen nicht verfügbar sind, werden folgende Schritte durchgeführt:
+
+* Der Assistent überprüft den Status des Attributs „msDS-ConsistencyGuid“ in Ihrem lokalen Active Directory. Wenn das Attribut in keinem Objekt im Verzeichnis konfiguriert ist, verwendet der Assistent „msDS-ConsistencyGuid“ als „sourceAnchor“-Attribut. Wenn das Attribut in einem oder in mehreren Objekten im Verzeichnis konfiguriert ist, folgert der Assistent daraus, dass das Attribut von anderen Anwendungen verwendet wird und nicht als „sourceAnchor“-Attribut infrage kommt.
+
+* In diesem Fall greift der Assistent auf „objectGUID“ als „sourceAnchor“-Attribut zurück.
+
+* Nachdem das Attribut „sourceAnchor“ festgelegt wurde, speichert der Assistent die Informationen in Ihrem Azure AD-Mandanten. Die Informationen werden für eine spätere Installation von Azure AD Connect verwendet.
+
+  >[!NOTE]
+  > Nur bei neueren Versionen von Azure AD Connect (1.1.524.0 und höher) werden Informationen über das verwendete „sourceAnchor“-Attribut in Ihrem Azure AD-Mandanten gespeichert. Bei älteren Versionen von Azure AD Connect ist dies nicht der Fall.
+
+Nach Abschluss der Express-Installation informiert der Assistent Sie darüber, welches Attribut als Quellankerattribut ausgewählt wurde.
+
+![Angabe des für „sourceAnchor“ ausgewählten AD-Attributs im Assistenten](./media/active-directory-aadconnect-design-concepts/consistencyGuid-01.png)
+
+#### <a name="custom-installation"></a>Benutzerdefinierte Installation
+Wenn Sie Azure AD Connect mit benutzerdefiniertem Modus installieren, bietet der Azure AD Connect-Assistent bei der Konfiguration des „sourceAnchor“-Attributs zwei Optionen:
+
+![Benutzerdefinierte Installation – Konfiguration von „sourceAnchor“](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
+
+| Einstellung | Beschreibung |
+| --- | --- |
+| Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent dieselbe [Logik wie bei der Auswahl des Attributs „sourceAnchor“ bei der Express-Installation](#express-installation) an. Ähnlich wie bei der Express-Installation informiert der Assistent Sie nach Abschluss der benutzerdefinierten Installation darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
+| Ein bestimmtes Attribut | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD-Attribut als „sourceAnchor“-Attribut angeben möchten. |
+
+### <a name="permission-required"></a>Erforderliche Berechtigung
+Damit diese Funktion verwendet werden kann, muss dem AD DS-Konto zum Synchronisieren mit dem lokalen Active Directory die Berechtigung zum Schreiben in das Attribut „msDS-ConsistencyGuid“ im lokalen Active Directory gewährt werden.
+
+### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Auswirkungen auf die AD FS-Konfiguration oder Verbundkonfiguration eines Drittanbieters
+Wenn Sie lokale AD FS-Bereitstellungen mit Azure AD Connect verwalten, ändert Azure AD Connect die Anspruchsregeln automatisch dahingehend, dass dasselbe AD-Attribut für „sourceAnchor“ verwendet wird. Dadurch wird sichergestellt, dass der von AD FS generierte Anspruch „ImmutableID“ den „sourceAnchor“-Werten entspricht, die nach Azure AD exportiert werden.
+
+Wenn Sie AD FS außerhalb von Azure AD Connect verwalten oder Drittanbieter-Verbundserver für die Authentifizierung verwenden, müssen Sie die Anspruchsregeln für den Anspruch „ImmutableID“ manuell aktualisieren, sodass er den nach Azure AD exportierten Werten von „sourceAnchor“ entspricht. Dies wird im Abschnitt [Ändern von AD FS-Anspruchsregeln](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims) des Artikels beschrieben. Nach Abschluss der Installation gibt der Assistent folgende Warnung aus:
+
+![Verbundkonfiguration eines Drittanbieters](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
+
+### <a name="adding-new-directories-to-existing-deployment"></a>Hinzufügen von neuen Verzeichnissen zur vorhandenen Bereitstellung
+Nehmen wir an, Sie haben Azure AD Connect mit aktivierter „ConsistencyGuid“-Funktion bereitgestellt und möchten nun ein anderes Verzeichnis zur Bereitstellung hinzufügen. Wenn Sie versuchen, das Verzeichnis hinzuzufügen, überprüft der Azure AD Connect-Assistent den Status des Attributs „msDS-ConsistencyGuid“ im Verzeichnis. Wenn das Attribut in einem oder in mehreren Objekten im Verzeichnis konfiguriert ist, folgert der Assistent daraus, dass das Attribut von anderen Anwendungen verwendet wird und gibt die in der nachfolgenden Abbildung dargestellte Fehlermeldung aus. Wenn Sie sicher sind, dass das Attribut nicht von vorhandenen Anwendungen verwendet wird, wenden Sie sich an den Support, um Informationen zum Unterdrücken der Fehlermeldung zu erhalten.
+
+![Hinzufügen von neuen Verzeichnissen zur vorhandenen Bereitstellung](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
 
 ## <a name="azure-ad-sign-in"></a>Azure AD-Anmeldung
 Bei der Integration Ihres lokalen Verzeichnisses in Azure AD ist es wichtig zu wissen, wie sich die Synchronisierungseinstellungen auf die Art und Weise auswirken, in der ein Benutzer sich authentifiziert. Azure AD verwendet einen Benutzerprinzipalname (User Principal Name, UPN, ), um den Benutzer zu authentifizieren. Wenn Sie jedoch Ihre Benutzer synchronisieren, müssen Sie das Attribut, das als Wert für „userPrincipalName“ verwendet werden soll, sehr sorgfältig auswählen.
@@ -95,10 +155,5 @@ Azure AD Connect erkennt, ob Sie eine nicht routingfähige Domänenumgebung ausf
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
