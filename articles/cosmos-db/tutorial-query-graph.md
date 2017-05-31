@@ -1,14 +1,14 @@
 ---
 title: "Wie werden Abfragen von Diagrammdaten in Azure Cosmos DB durchgeführt? | Microsoft Docs"
 description: "Erfahren Sie, wie Sie Abfragen von Diagrammdaten in Azure Cosmos DB durchführen."
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na

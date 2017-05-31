@@ -1,13 +1,13 @@
 ---
 title: "Azure CLI-Beispiele für Azure Cosmos DB | Microsoft-Dokumentation"
 description: "Azure CLI-Beispiele – Erstellen und Verwalten von Konten, Datenbanken, Containern, Regionen und Firewalls von Azure Cosmos DB"
-services: cosmosdb
+services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: azurecli
 ms.topic: article

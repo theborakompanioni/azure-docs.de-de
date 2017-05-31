@@ -1,13 +1,13 @@
 ---
 title: "Azure PowerShell-Beispiele für Azure Cosmos DB | Microsoft-Dokumentation"
 description: 'Azure PowerShell-Beispiele: Skripts, die Ihnen beim Erstellen und Verwalten von Azure Cosmos DB-Konten helfen.'
-services: cosmosdb
+services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: na
 ms.topic: article

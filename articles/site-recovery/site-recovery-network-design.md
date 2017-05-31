@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: pratshar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6e6d05d7a7595e17d026be6a448b2fa2cca9b816
 ms.openlocfilehash: a62fe406af18c9c7d9b58839bfa0d6e785b614ef
+ms.contentlocale: de-de
 ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="designing-your-network-for-disaster-recovery"></a>Entwerfen Ihres Netzwerks für die Notfallwiederherstellung
+
 Dieser Artikel richtet sich an IT-Experten, die für die Erstellung der Architektur, Implementierung und Unterstützung der Infrastruktur für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) verantwortlich sind und Microsoft Azure Site Recovery (ASR) einsetzen möchten, um ihre BCDR-Dienste zu unterstützen und zu verbessern. In diesem Artikel werden Praxisaspekte für die System Center Virtual Machine Manager-Serverbereitstellung, die Vor- und Nachteile von gestreckten Subnetzen im Vergleich mit dem Subnetzfailover und der Aufbau einer Notfallwiederherstellung für virtuelle Websites unter Microsoft Azure beschrieben.
 
 ## <a name="overview"></a>Übersicht
