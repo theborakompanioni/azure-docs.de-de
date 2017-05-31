@@ -12,15 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 05/11/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2e0147d9f848f5610604e93dacd40713c3b149fe
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: e9cb2f03600d49123693fcc88742d6fc75d9de16
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Erstellen einer Smooth Streaming Windows Store-Anwendung
+
 Mit dem Smooth Streaming Client SDK für Windows 8 können Entwickler Windows Store-Anwendungen erstellen, die Smooth Streaming-Inhalte bedarfsgesteuert und live wiedergeben können. Neben der Wiedergabe von Smooth Streaming-Inhalten bietet das SDK zahlreiche weitere Funktionen wie Microsoft PlayReady-Schutz, Qualitätsstufeneinschränkung, Live DVR, Wechsel von Audiodatenströmen, Überwachen von Statusaktualisierungen (z. B. Qualitätsstufenänderungen) und Fehlerereignissen usw. Weitere Informationen zu den unterstützten Funktionen finden Sie in den [Versionshinweisen](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Weitere Informationen finden Sie im [Player Framework für Windows 8](http://playerframework.codeplex.com/). 
 
 Dieses Lernprogramm enthält vier Lektionen:
@@ -43,6 +46,7 @@ Die fertige Lösung für jede Lektion können Sie von der Website mit den MSDN-C
 * [Lektion 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – ein Smooth Streaming-Media Player für Windows 8 mit Titelauswahl
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Lektion 1: Erstellen einer grundlegenden Smooth Streaming Store-Anwendung
+
 In dieser Lektion erstellen Sie eine Windows Store-Anwendung mit einem MediaElement-Steuerelement für die Wiedergabe von Smooth Stream-Inhalten.  Die aktive Anwendung sieht folgendermaßen aus:
 
 ![Beispiel für Smooth Streaming Windows Store-Anwendung][PlayerApplication]
@@ -89,49 +93,49 @@ Nachdem Sie die Verweise hinzugefügt haben, müssen Sie die Zielplattform (x64 
 
 1. Doppelklicken Sie im Projektmappen-Explorer auf **MainPage.xaml** , um die Datei in der Entwurfsansicht zu öffnen.
 2. Suchen Sie die Tags **&lt;Grid&gt;** und **&lt;/Grid&gt;** in der XAML-Datei, und fügen Sie zwischen diesen Tags folgenden Code ein:
-   
-     <Grid.RowDefinitions>
-   
-         <RowDefinition Height="20"/>    <!-- spacer -->
-         <RowDefinition Height="50"/>    <!-- media controls -->
-         <RowDefinition Height="100*"/>  <!-- media element -->
-         <RowDefinition Height="80*"/>   <!-- media stream and track selection -->
-         <RowDefinition Height="50"/>    <!-- status bar -->
-     </Grid.RowDefinitions>
-   
-     <StackPanel Name="spMediaControl" Grid.Row="1" Orientation="Horizontal">
-         <TextBlock x:Name="tbSource" Text="Source :  " FontSize="16" FontWeight="Bold" VerticalAlignment="Center" />
-         <TextBox x:Name="txtMediaSource" Text="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
-         <Button x:Name="btnSetSource" Content="Set Source" Width="111" Height="43" Click="btnSetSource_Click"/>
-         <Button x:Name="btnPlay" Content="Play" Width="111" Height="43" Click="btnPlay_Click"/>
-         <Button x:Name="btnPause" Content="Pause"  Width="111" Height="43" Click="btnPause_Click"/>
-         <Button x:Name="btnStop" Content="Stop"  Width="111" Height="43" Click="btnStop_Click"/>
-         <CheckBox x:Name="chkAutoPlay" Content="Auto Play" Height="55" Width="Auto" IsChecked="{Binding AutoPlay, ElementName=mediaElement, Mode=TwoWay}"/>
-         <CheckBox x:Name="chkMute" Content="Mute" Height="55" Width="67" IsChecked="{Binding IsMuted, ElementName=mediaElement, Mode=TwoWay}"/>
-     </StackPanel>
-   
-     <StackPanel Name="spMediaElement" Grid.Row="2" Height="435" Width="1072"
-                 HorizontalAlignment="Center" VerticalAlignment="Center">
-         <MediaElement x:Name="mediaElement" Height="356" Width="924" MinHeight="225"
-                       HorizontalAlignment="Center" VerticalAlignment="Center" 
-                       AudioCategory="BackgroundCapableMedia" />
-         <StackPanel Orientation="Horizontal">
-             <Slider x:Name="sliderProgress" Width="924" Height="44"
-                     HorizontalAlignment="Center" VerticalAlignment="Center"
-                     PointerPressed="sliderProgress_PointerPressed"/>
-             <Slider x:Name="sliderVolume" 
-                     HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical" 
-                     Height="79" Width="148" Minimum="0" Maximum="1" StepFrequency="0.1" 
-                     Value="{Binding Volume, ElementName=mediaElement, Mode=TwoWay}" 
-                     ToolTipService.ToolTip="{Binding Value, RelativeSource={RelativeSource Mode=Self}}"/>
+
+         <Grid.RowDefinitions>
+
+            <RowDefinition Height="20"/>    <!-- spacer -->
+            <RowDefinition Height="50"/>    <!-- media controls -->
+            <RowDefinition Height="100*"/>  <!-- media element -->
+            <RowDefinition Height="80*"/>   <!-- media stream and track selection -->
+            <RowDefinition Height="50"/>    <!-- status bar -->
+         </Grid.RowDefinitions>
+
+         <StackPanel Name="spMediaControl" Grid.Row="1" Orientation="Horizontal">
+            <TextBlock x:Name="tbSource" Text="Source :  " FontSize="16" FontWeight="Bold" VerticalAlignment="Center" />
+            <TextBox x:Name="txtMediaSource" Text="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
+            <Button x:Name="btnSetSource" Content="Set Source" Width="111" Height="43" Click="btnSetSource_Click"/>
+            <Button x:Name="btnPlay" Content="Play" Width="111" Height="43" Click="btnPlay_Click"/>
+            <Button x:Name="btnPause" Content="Pause"  Width="111" Height="43" Click="btnPause_Click"/>
+            <Button x:Name="btnStop" Content="Stop"  Width="111" Height="43" Click="btnStop_Click"/>
+            <CheckBox x:Name="chkAutoPlay" Content="Auto Play" Height="55" Width="Auto" IsChecked="{Binding AutoPlay, ElementName=mediaElement, Mode=TwoWay}"/>
+            <CheckBox x:Name="chkMute" Content="Mute" Height="55" Width="67" IsChecked="{Binding IsMuted, ElementName=mediaElement, Mode=TwoWay}"/>
          </StackPanel>
-     </StackPanel>
-   
-     <StackPanel Name="spStatus" Grid.Row="4" Orientation="Horizontal">
-         <TextBlock x:Name="tbStatus" Text="Status :  " 
-            FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
-         <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
-     </StackPanel>
+
+         <StackPanel Name="spMediaElement" Grid.Row="2" Height="435" Width="1072"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <MediaElement x:Name="mediaElement" Height="356" Width="924" MinHeight="225"
+                          HorizontalAlignment="Center" VerticalAlignment="Center" 
+                          AudioCategory="BackgroundCapableMedia" />
+            <StackPanel Orientation="Horizontal">
+                <Slider x:Name="sliderProgress" Width="924" Height="44"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        PointerPressed="sliderProgress_PointerPressed"/>
+                <Slider x:Name="sliderVolume" 
+                        HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical" 
+                        Height="79" Width="148" Minimum="0" Maximum="1" StepFrequency="0.1" 
+                        Value="{Binding Volume, ElementName=mediaElement, Mode=TwoWay}" 
+                        ToolTipService.ToolTip="{Binding Value, RelativeSource={RelativeSource Mode=Self}}"/>
+            </StackPanel>
+         </StackPanel>
+
+         <StackPanel Name="spStatus" Grid.Row="4" Orientation="Horizontal">
+            <TextBlock x:Name="tbStatus" Text="Status :  " 
+               FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
+         </StackPanel>
    
    Das MediaElement-Steuerelement dient zur Wiedergabe von Medien. Mit dem Schieberegler sliderProgress wird in der nächsten Lektion der Medienstatus gesteuert.
 3. Drücken Sie **STRG+S** , um die Datei zu speichern.
@@ -145,33 +149,35 @@ In dieser XAML-Datei sind den Steuerelementen einige Ereignishandler zugeordnet.
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Code anzeigen**.
 2. Fügen Sie am Anfang der Datei die folgende using-Anweisung hinzu:
    
-     using Windows.Media;
+        using Windows.Media;
 3. Fügen Sie am Anfang der **MainPage** -Klasse das folgende Datenmember hinzu:
    
-     private MediaExtensionManager extensions = new MediaExtensionManager();
+         private MediaExtensionManager extensions = new MediaExtensionManager();
 4. Fügen Sie am Ende des **MainPage** -Konstruktors die beiden folgenden Zeilen hinzu:
    
-     extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");   extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
-5. Fügen Sie am Ende der **MainPage** -Klasse den folgenden Code ein:
+        extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
+        extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+5. Fügen Sie am Ende der **MainPage**-Klasse den folgenden Code ein:
    
-   # <a name="region-ui-button-click-events"></a>region UI Button Click Events
-     private void btnPlay_Click(object sender, RoutedEventArgs e)   {
-   
+         # region UI Button Click Events
+         private void btnPlay_Click(object sender, RoutedEventArgs e)
+         {
+
          mediaElement.Play();
          txtStatus.Text = "MediaElement is playing ...";
-     }
-   
-     private void btnPause_Click(object sender, RoutedEventArgs e)   {
-   
+         }
+         private void btnPause_Click(object sender, RoutedEventArgs e)
+         {
+
          mediaElement.Pause();
          txtStatus.Text = "MediaElement is paused";
-     }
-   
-     private void btnSetSource_Click(object sender, RoutedEventArgs e)   {
-   
+         }
+         private void btnSetSource_Click(object sender, RoutedEventArgs e)
+         {
+
          sliderProgress.Value = 0;
          mediaElement.Source = new Uri(txtMediaSource.Text);
-   
+
          if (chkAutoPlay.IsChecked == true)
          {
              txtStatus.Text = "MediaElement is playing ...";
@@ -180,22 +186,22 @@ In dieser XAML-Datei sind den Steuerelementen einige Ereignishandler zugeordnet.
          {
              txtStatus.Text = "Click the Play button to play the media source.";
          }
-     }
-   
-     private void btnStop_Click(object sender, RoutedEventArgs e)   {
-   
+         }
+         private void btnStop_Click(object sender, RoutedEventArgs e)
+         {
+
          mediaElement.Stop();
          txtStatus.Text = "MediaElement is stopped";
-     }
-   
-     private void sliderProgress_PointerPressed(object sender, PointerRoutedEventArgs e)   {
-   
+         }
+         private void sliderProgress_PointerPressed(object sender, PointerRoutedEventArgs e)
+         {
+
          txtStatus.Text = "Seek to position " + sliderProgress.Value;
          mediaElement.Position = new TimeSpan(0, 0, (int)(sliderProgress.Value));
-     }
-   
-   # <a name="endregion"></a>endregion
-   Der Ereignishandler sliderProgress_PointerPressed wird hier definiert.  Damit er einwandfrei funktioniert, sind einige weitere Schritte erforderlich, die in der nächsten Lektion dieses Lernprogramms behandelt werden.
+         }
+         # endregion
+
+Der Ereignishandler sliderProgress_PointerPressed wird hier definiert.  Damit er einwandfrei funktioniert, sind einige weitere Schritte erforderlich, die in der nächsten Lektion dieses Lernprogramms behandelt werden.
 6. Drücken Sie **STRG+S** , um die Datei zu speichern.
 
 Die fertige CodeBehind-Datei sieht folgendermaßen aus:
@@ -214,6 +220,7 @@ Die fertige CodeBehind-Datei sieht folgendermaßen aus:
 Sie haben Lektion 1 abgeschlossen.  In dieser Lektion haben Sie ein MediaElement-Steuerelement für die Wiedergabe von Smooth Streaming-Inhalten verwendet.  In der nächsten Lektion fügen Sie einen Schieberegler hinzu, um den Fortschritt des Smooth Streaming-Inhalts zu steuern.
 
 ## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>Lektion 2: Hinzufügen eines Schiebereglers zum Steuern des Medienstatus
+
 In Lektion 1 haben Sie eine Windows Store-Anwendung mit einem MediaElement-XAML-Steuerelement für die Wiedergabe von Smooth Streaming-Medieninhalten erstellt.  Es umfasst einige grundlegende Medienfunktionen wie Start, Stopp und Pause.  In dieser Lektion fügen Sie ein Schieberegler-Steuerelement zum Steuern der Anwendung hinzu.
 
 In diesem Lernprogramm verwenden wir einen Timer, um die Schiebereglerposition je nach der aktuellen Position des MediaElement-Steuerelements zu aktualisieren.  Bei Live-Inhalten müssen auch die Start- und Endzeit des Schiebereglers aktualisiert werden.  Dies kann besser im Ereignis "Update der adaptiven Quelle" verarbeitet werden.
@@ -233,34 +240,37 @@ Diese Lektion enthält die folgenden Prozeduren:
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Code anzeigen**.
 2. Fügen Sie am Anfang der Datei die folgende using-Anweisung hinzu:
-   
-     using Microsoft.Media.AdaptiveStreaming;
+
+        using Microsoft.Media.AdaptiveStreaming;
 3. Fügen Sie am Anfang der MainPage-Klasse die folgenden Datenmember hinzu:
-   
-     private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
-     private IAdaptiveSourceManager adaptiveSourceManager;
+
+         private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
+         private IAdaptiveSourceManager adaptiveSourceManager;
 4. Fügen Sie im **MainPage**-Konstruktor den folgenden Code nach der Zeile **this.Initialize Components();** und den in der vorherigen Lektion geschriebenen Registrierungscodezeilen hinzu:
-   
-     // Ruft die Standardinstanz von AdaptiveSourceManager ab, die Smooth // Streaming-Medienquellen verwaltet.
-     adaptiveSourceManager = AdaptiveSourceManager.GetDefault(); // Legt den Eigenschaftsschlüsselwert auf die AdaptiveSourceManager-Standardinstanz fest.
-     // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" muss hartcodiert sein.
-     propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
+
+        // Gets the default instance of AdaptiveSourceManager which manages Smooth 
+        //Streaming media sources.
+        adaptiveSourceManager = AdaptiveSourceManager.GetDefault();
+        // Sets property key value to AdaptiveSourceManager default instance.
+        // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
+        propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
 5. Ändern Sie innerhalb des **MainPage** -Konstruktors die beiden RegisterByteStreamHandler-Methoden, indem Sie die forth-Parameter hinzufügen:
-   
-     // Registriert den Smooth Streaming-Bytedatenstrom-Handler für die Erweiterung „.ism“ und // die MIME-Typen „text/xml“ sowie „application/vnd.ms-ss“ und übergibt das Eigenschaftsset. 
-     // http://*.ism/manifest-URI-Ressourcen werden vom Bytedatenstrom-Handler aufgelöst.
-     extensions.RegisterByteStreamHandler(
-   
-         "Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", 
-         ".ism", 
-         "text/xml", 
-         propertySet );
-     extensions.RegisterByteStreamHandler(
-   
-         "Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", 
-         ".ism", 
-         "application/vnd.ms-sstr+xml", 
-     propertySet );
+
+         // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
+         // "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
+         // http://*.ism/manifest URI resources will be resolved by Byte-stream handler.
+         extensions.RegisterByteStreamHandler(
+
+            "Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", 
+            ".ism", 
+            "text/xml", 
+            propertySet );
+         extensions.RegisterByteStreamHandler(
+
+            "Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", 
+            ".ism", 
+            "application/vnd.ms-sstr+xml", 
+         propertySet);
 6. Drücken Sie **STRG+S** , um die Datei zu speichern.
 
 **So fügen Sie den Ereignishandler für die Ebene des Managers der adaptiven Quelle hinzu**
@@ -271,16 +281,18 @@ Diese Lektion enthält die folgenden Prozeduren:
      private AdaptiveSource adaptiveSource = null;
 3. Fügen Sie am Ende der **MainPage** -Klasse den folgenden Ereignishandler hinzu:
    
-   # <a name="region-adaptive-source-manager-level-events"></a>region Adaptive Source Manager Level Events
-     private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)   {
-   
-         adaptiveSource = args.AdaptiveSource;
-     }
-   
-   # <a name="endregion-adaptive-source-manager-level-events"></a>endregion Adaptive Source Manager Level Events
+         # region Adaptive Source Manager Level Events
+         private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
+         {
+
+            adaptiveSource = args.AdaptiveSource;
+         }
+
+         # endregion Adaptive Source Manager Level Events
 4. Fügen Sie am Ende des **MainPage** -Konstruktors die folgende Zeile hinzu, um das Ereignis "Adaptive Quelle öffnen" zu abonnieren:
    
-   adaptiveSourceManager.AdaptiveSourceOpenedEvent +=   new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
+         adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
+           new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
 5. Drücken Sie **STRG+S** , um die Datei zu speichern.
 
 **So fügen Sie die Ereignishandler für die Ebene der adaptiven Quelle hinzu**
@@ -290,36 +302,39 @@ Diese Lektion enthält die folgenden Prozeduren:
    
      private AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate;   private Manifest manifestObject;
 3. Fügen Sie am Ende der **MainPage** -Klasse die folgenden Ereignishandler hinzu:
-   
-   # <a name="region-adaptive-source-level-events"></a>region Adaptive Source Level Events
-     private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)   {
-   
-         adaptiveSource = args.AdaptiveSource;
-         manifestObject = args.AdaptiveSource.Manifest;
-     }
-   
-     private void mediaElement_AdaptiveSourceStatusUpdated(AdaptiveSource sender, AdaptiveSourceStatusUpdatedEventArgs args)   {
-   
-         adaptiveSourceStatusUpdate = args;
-     }
-   
-     private void mediaElement_AdaptiveSourceFailed(AdaptiveSource sender, AdaptiveSourceFailedEventArgs args)   {
-   
-         txtStatus.Text = "Error: " + args.HttpResponse;
-     }
-   
-   # <a name="endregion-adaptive-source-level-events"></a>endregion Adaptive Source Level Events
+
+         # region Adaptive Source Level Events
+         private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
+         {
+
+            adaptiveSource = args.AdaptiveSource;
+            manifestObject = args.AdaptiveSource.Manifest;
+         }
+
+         private void mediaElement_AdaptiveSourceStatusUpdated(AdaptiveSource sender, AdaptiveSourceStatusUpdatedEventArgs args)
+         {
+
+            adaptiveSourceStatusUpdate = args;
+         }
+
+         private void mediaElement_AdaptiveSourceFailed(AdaptiveSource sender, AdaptiveSourceFailedEventArgs args)
+         {
+
+            txtStatus.Text = "Error: " + args.HttpResponse;
+         }
+
+         # endregion Adaptive Source Level Events
 4. Fügen Sie am Ende der **mediaElement AdaptiveSourceOpened** -Methode den folgenden Code hinzu, um die Ereignisse zu abonnieren:
    
-     adaptiveSource.ManifestReadyEvent +=
-   
-                 mediaElement_ManifestReady;
-     adaptiveSource.AdaptiveSourceStatusUpdatedEvent += 
-   
-         mediaElement_AdaptiveSourceStatusUpdated;
-     adaptiveSource.AdaptiveSourceFailedEvent += 
-   
-         mediaElement_AdaptiveSourceFailed;
+         adaptiveSource.ManifestReadyEvent +=
+
+                    mediaElement_ManifestReady;
+         adaptiveSource.AdaptiveSourceStatusUpdatedEvent += 
+
+            mediaElement_AdaptiveSourceStatusUpdated;
+         adaptiveSource.AdaptiveSourceFailedEvent += 
+
+            mediaElement_AdaptiveSourceFailed;
 5. Drücken Sie **STRG+S** , um die Datei zu speichern.
 
 Die gleichen Ereignisse stehen auch auf der Ebene des Managers für adaptive Quellen zur Verfügung, die zum Verarbeiten von Funktionen verwendet werden kann, die allen Medienelementen in der App gemein sind. Jede adaptive Quelle enthält eigene Ereignisse, und alle Ereignisse der adaptiven Quelle werden vom Manager der adaptiven Quelle weitergegeben.
@@ -328,130 +343,151 @@ Die gleichen Ereignisse stehen auch auf der Ebene des Managers für adaptive Que
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Code anzeigen**.
 2. Fügen Sie am Ende der **MainPage** -Klasse die folgenden Ereignishandler hinzu:
-   
-   # <a name="region-media-element-event-handlers"></a>region Media Element Event Handlers
-     private void MediaOpened(object sender, RoutedEventArgs e)   {
-   
-         txtStatus.Text = "MediaElement opened";
-     }
-   
-     private void MediaFailed(object sender, ExceptionRoutedEventArgs e)   {
-   
-         txtStatus.Text= "MediaElement failed: " + e.ErrorMessage;
-     }
-   
-     private void MediaEnded(object sender, RoutedEventArgs e)   {
-   
-         txtStatus.Text ="MediaElement ended.";
-     }
-   
-   # <a name="endregion-media-element-event-handlers"></a>endregion Media Element Event Handlers
+
+         # region Media Element Event Handlers
+         private void MediaOpened(object sender, RoutedEventArgs e)
+         {
+
+            txtStatus.Text = "MediaElement opened";
+         }
+
+         private void MediaFailed(object sender, ExceptionRoutedEventArgs e)
+         {
+
+            txtStatus.Text= "MediaElement failed: " + e.ErrorMessage;
+         }
+
+         private void MediaEnded(object sender, RoutedEventArgs e)
+         {
+
+            txtStatus.Text ="MediaElement ended.";
+         }
+
+         # endregion Media Element Event Handlers
 3. Fügen Sie am Ende des **MainPage** -Konstruktors den folgenden Code hinzu, um die Ereignisse zu abonnieren:
-   
-     mediaElement.MediaOpened += MediaOpened;   mediaElement.MediaEnded += MediaEnded;   mediaElement.MediaFailed += MediaFailed;
+
+         mediaElement.MediaOpened += MediaOpened;
+         mediaElement.MediaEnded += MediaEnded;
+         mediaElement.MediaFailed += MediaFailed;
 4. Drücken Sie **STRG+S** , um die Datei zu speichern.
 
 **So fügen Sie Code für den Schieberegler hinzu**
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Code anzeigen**.
 2. Fügen Sie am Anfang der Datei die folgende using-Anweisung hinzu:
-   
-     using Windows.UI.Core;
+      
+        using Windows.UI.Core;
 3. Fügen Sie innerhalb der **MainPage** -Klasse die folgenden Datenmember hinzu:
    
-     public static CoreDispatcher _dispatcher;   private DispatcherTimer sliderPositionUpdateDispatcher;
+         public static CoreDispatcher _dispatcher;
+         private DispatcherTimer sliderPositionUpdateDispatcher;
 4. Fügen Sie am Ende des **MainPage** -Konstruktors den folgenden Code hinzu:
    
-     _dispatcher = Window.Current.Dispatcher;   PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);   sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
+         _dispatcher = Window.Current.Dispatcher;
+         PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
+         sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
 5. Fügen Sie am Ende der **MainPage** -Klasse den folgenden Code hinzu:
-   
-   # <a name="region-slidermediaplayer"></a>region sliderMediaPlayer
-     private double SliderFrequency(TimeSpan timevalue)   {
-   
-         long absvalue = 0;
-         double stepfrequency = -1;
-   
-         if (manifestObject != null)
+
+         # region sliderMediaPlayer
+         private double SliderFrequency(TimeSpan timevalue)
          {
-             absvalue = manifestObject.Duration - (long)manifestObject.StartTime;
+
+            long absvalue = 0;
+            double stepfrequency = -1;
+
+            if (manifestObject != null)
+            {
+                absvalue = manifestObject.Duration - (long)manifestObject.StartTime;
+            }
+            else
+            {
+                absvalue = mediaElement.NaturalDuration.TimeSpan.Ticks;
+            }
+
+            TimeSpan totalDVRDuration = new TimeSpan(absvalue);
+
+            if (totalDVRDuration.TotalMinutes >= 10 && totalDVRDuration.TotalMinutes < 30)
+            {
+               stepfrequency = 10;
+            }
+            else if (totalDVRDuration.TotalMinutes >= 30 
+                     && totalDVRDuration.TotalMinutes < 60)
+            {
+                stepfrequency = 30;
+            }
+            else if (totalDVRDuration.TotalHours >= 1)
+            {
+                stepfrequency = 60;
+            }
+
+            return stepfrequency;
          }
-         else
+
+         void updateSliderPositionoNTicks(object sender, object e)
          {
-             absvalue = mediaElement.NaturalDuration.TimeSpan.Ticks;
+
+            sliderProgress.Value = mediaElement.Position.TotalSeconds;
          }
-   
-         TimeSpan totalDVRDuration = new TimeSpan(absvalue);
-   
-         if (totalDVRDuration.TotalMinutes >= 10 && totalDVRDuration.TotalMinutes < 30)
+
+         public void setupTimer()
          {
-            stepfrequency = 10;
+
+            sliderPositionUpdateDispatcher = new DispatcherTimer();
+            sliderPositionUpdateDispatcher.Interval = new TimeSpan(0, 0, 0, 0, 300);
+            startTimer();
          }
-         else if (totalDVRDuration.TotalMinutes >= 30 
-                  && totalDVRDuration.TotalMinutes < 60)
+
+         public void startTimer()
          {
-             stepfrequency = 30;
+
+            sliderPositionUpdateDispatcher.Tick += updateSliderPositionoNTicks;
+            sliderPositionUpdateDispatcher.Start();
          }
-         else if (totalDVRDuration.TotalHours >= 1)
+
+         // Slider start and end time must be updated in case of live content
+         public async void setSliderStartTime(long startTime)
          {
-             stepfrequency = 60;
+
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                TimeSpan timespan = new TimeSpan(adaptiveSourceStatusUpdate.StartTime);
+                double absvalue = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero);
+                sliderProgress.Minimum = absvalue;
+            });
          }
-   
-         return stepfrequency;
-     }
-   
-     void updateSliderPositionoNTicks(object sender, object e)   {
-   
-         sliderProgress.Value = mediaElement.Position.TotalSeconds;
-     }
-   
-     public void setupTimer()   {
-   
-         sliderPositionUpdateDispatcher = new DispatcherTimer();
-         sliderPositionUpdateDispatcher.Interval = new TimeSpan(0, 0, 0, 0, 300);
-         startTimer();
-     }
-   
-     public void startTimer()   {
-   
-         sliderPositionUpdateDispatcher.Tick += updateSliderPositionoNTicks;
-         sliderPositionUpdateDispatcher.Start();
-     }
-   
-     // Start- und Endzeit des Schiebereglers müssen bei Live-Inhalten aktualisiert werden   public async void setSliderStartTime(long startTime)   {
-   
-         await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+
+         // Slider start and end time must be updated in case of live content
+         public async void setSliderEndTime(long startTime)
          {
-             TimeSpan timespan = new TimeSpan(adaptiveSourceStatusUpdate.StartTime);
-             double absvalue = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero);
-             sliderProgress.Minimum = absvalue;
-         });
-     }
+
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                TimeSpan timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime);
+                double absvalue = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero);
+                sliderProgress.Maximum = absvalue;
+            });
+         }
+
+         # endregion sliderMediaPlayer
+      
+>[!NOTE]
+>Mit CoreDispatcher werden Änderungen am UI-Thread aus dem Nicht-UI-Thread übernommen. Bei einem Engpass des Dispatcher-Threads kann der Entwickler festlegen, das vom Dispatcher bereitgestellte UI-Element zu verwenden, das aktualisiert werden soll.  Beispiel:
    
-     // Start- und Endzeit des Schiebereglers müssen bei Live-Inhalten aktualisiert werden   public async void setSliderEndTime(long startTime)   {
-   
-         await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-         {
-             TimeSpan timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime);
-             double absvalue = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero);
-             sliderProgress.Maximum = absvalue;
-         });
-     }
-   
-   # <a name="endregion-slidermediaplayer"></a>endregion sliderMediaPlayer
-   **Hinweis:** Mit CoreDispatcher werden Änderungen am UI-Thread aus dem Nicht-UI-Thread übernommen. Bei einem Engpass des Dispatcher-Threads kann der Entwickler festlegen, das vom Dispatcher bereitgestellte UI-Element zu verwenden, das aktualisiert werden soll.  Beispiel:
-   
-     await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
-   
-       timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime); 
-     double absvalue  = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero); 
-   
-       sliderProgress.Maximum = absvalue; }); 
+         await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
+
+         timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime); 
+         double absvalue  = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero); 
+
+         sliderProgress.Maximum = absvalue; }); 
 6. Fügen Sie am Ende der **mediaElement_AdaptiveSourceStatusUpdated**-Methode den folgenden Code hinzu:
-   
-     setSliderStartTime(args.StartTime);   setSliderEndTime(args.EndTime);
+
+         setSliderStartTime(args.StartTime);
+         setSliderEndTime(args.EndTime);
 7. Fügen Sie am Ende der **MediaOpened** -Methode den folgenden Code hinzu:
-   
-   sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan); sliderProgress.Width = mediaElement.Width; setupTimer();
+
+         sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
+         sliderProgress.Width = mediaElement.Width;
+         setupTimer();
 8. Drücken Sie **STRG+S** , um die Datei zu speichern.
 
 **So kompilieren und testen Sie die Anwendung**
@@ -476,16 +512,16 @@ Smooth Streaming kann Inhalte mit Audiospuren in mehreren Sprachen streamen, die
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Ansicht-Designer**.
 2. Suchen Sie nach &lt;Grid.RowDefinitions&gt;, und ändern Sie die RowDefinitions wie folgt:
    
-        <Grid.RowDefinitions>            
+         <Grid.RowDefinitions>            
             <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
+         </Grid.RowDefinitions>
 3. Fügen Sie innerhalb der Tags &lt;Grid&gt;&lt;/Grid&gt; den folgenden Code hinzu, um ein Listenfeld zu definieren, damit Benutzer die Liste mit den verfügbaren Datenströmen sehen und Datenströme auswählen können:
-   
-        <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
+
+         <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
@@ -507,7 +543,7 @@ Smooth Streaming kann Inhalte mit Audiospuren in mehreren Sprachen streamen, die
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
-        </Grid>
+         </Grid>
 4. Drücken Sie **STRG+S** , um die Änderungen zu speichern.
 
 **So ändern Sie die CodeBehind-Datei**
@@ -561,10 +597,10 @@ Smooth Streaming kann Inhalte mit Audiospuren in mehreren Sprachen streamen, die
         #endregion class Stream
 3. Fügen Sie am Anfang der MainPage-Klasse die folgenden Variablendefinitionen hinzu:
    
-        private List<Stream> availableStreams;
-        private List<Stream> availableAudioStreams;
-        private List<Stream> availableTextStreams;
-        private List<Stream> availableVideoStreams;
+         private List<Stream> availableStreams;
+         private List<Stream> availableAudioStreams;
+         private List<Stream> availableTextStreams;
+         private List<Stream> availableVideoStreams;
 4. Fügen Sie innerhalb der MainPage-Klasse den folgenden Bereich hinzu:
    
         #region stream selection
@@ -743,7 +779,7 @@ Eine Smooth Streaming-Präsentation kann mehrere Videodateien enthalten, die in 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MainPage.xaml**, und klicken Sie anschließend auf **Ansicht-Designer**.
 2. Suchen Sie das &lt;Grid&gt;-Tag mit dem Namen **gridStreamAndBitrateSelection**, und fügen Sie am Ende des Tags den folgenden Code hinzu:
    
-        <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
+         <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
              <TextBlock Name="tbBitRate" Text="Available Bitrates:" FontSize="16" VerticalAlignment="Center"/>
              <Button Name="btnChangeTracks" Content="Submit" Click="btnChangeTrack_Click" />
@@ -756,7 +792,7 @@ Eine Smooth Streaming-Präsentation kann mehrere Videodateien enthalten, die in 
                  </DataTemplate>
              </ListBox.ItemTemplate>
          </ListBox>
-        </StackPanel>
+         </StackPanel>
 3. Drücken Sie **STRG+S** , um die Änderungen zu speichern.
 
 **So ändern Sie die CodeBehind-Datei**
@@ -903,20 +939,20 @@ Eine Smooth Streaming-Präsentation kann mehrere Videodateien enthalten, die in 
         #endregion track selection
 5. Suchen Sie die mediaElement_ManifestReady-Methode, und fügen Sie den folgenden Code am Ende der Funktion hinzu:
    
-        getTracks(manifestObject);
-        refreshAvailableTracksListBoxItemSource();
+         getTracks(manifestObject);
+         refreshAvailableTracksListBoxItemSource();
 6. Suchen Sie innerhalb der MainPage-Klasse den Klickereignisbereich für UI-Schaltflächen, und fügen Sie die folgende Funktionsdefinition hinzu:
    
-        private void btnChangeStream_Click(object sender, RoutedEventArgs e)
-        {
+         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
+         {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
-   
+
             // Create a list of the selected streams
             createSelectedStreamsList(selectedStreams);
-   
+
             // Change streams on the presentation
             changeStreams(selectedStreams);
-        }
+         }
 
 **So kompilieren und testen Sie die Anwendung**
 
@@ -940,10 +976,5 @@ Sie haben Lektion 4 abgeschlossen.  In dieser Lektion haben Sie die Funktion zu
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2017
+ms.date: 05/10/2017
 ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6c0c6b24f9d669e7ed45e6b2acf2e75390e5e1f4
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 2bfbb3b8f7282ec8ae8abe9597230a3485221ecf
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -44,13 +45,13 @@ Künftig werden wir eine Betriebssystemupdate-Richtlinie unterstützen, die Upda
 
 In der Zwischenzeit haben wir [ein Skript bereitgestellt](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/), mit denen ein Clusteradministrator das Patchen jedes Knotens auf sichere Weise manuell starten kann.
 
-### <a name="can-i-use-large-virtual-scale-sets-in-my-sf-cluster"></a>Kann ich große virtuelle Skalierungsgruppen in meinem SF-Cluster verwenden? 
+### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Kann ich große VM-Skalierungsgruppen in meinem SF-Cluster verwenden? 
 
 **Kurze Antwort**: Nein. 
 
-**Lange Antwort**: Obwohl Sie mit großen virtuellen Skalierungsgruppen (VMSS) eine VMSS mit bis zu 1.000 VM-Instanzen skalieren können, geschieht dies mithilfe von Platzierungsgruppen (PGs). Fehlerdomänen (FDs) und Upgradedomänen (UDs) sind nur innerhalb einer Platzierungsgruppe konsistent. Service Fabric verwendet FDs und UDs für Platzierungsentscheidungen, die Ihre Dienstreplikate/Dienstinstanzen betreffen. Da die FDs und UDs nur innerhalb einer Platzierungsgruppe vergleichbar sind, kann SF sie nicht verwenden. Wenn beispielsweise VM1 in PG1 über eine Topologie FD=0 und VM9 in PG2 über eine Topologie FD=4 verfügt, bedeutet dies nicht, dass VM1 und VM2 sich in zwei verschiedenen Hardwareracks befinden, daher kann SF die FD-Werte in diesem Fall nicht für Platzierungsentscheidungen verwenden.
+**Lange Antwort:** Obwohl Sie dank großer VM-Skalierungsgruppen eine VM-Skalierungsgruppe mit bis zu 1.000 VM-Instanzen skalieren können, werden dazu Platzierungsgruppen (PGs) verwendet. Fehlerdomänen (FDs) und Upgradedomänen (UDs) sind nur innerhalb einer Platzierungsgruppe konsistent. Service Fabric verwendet FDs und UDs für Platzierungsentscheidungen, die Ihre Dienstreplikate/Dienstinstanzen betreffen. Da die FDs und UDs nur innerhalb einer Platzierungsgruppe vergleichbar sind, kann SF sie nicht verwenden. Wenn beispielsweise VM1 in PG1 über eine Topologie FD=0 und VM9 in PG2 über eine Topologie FD=4 verfügt, bedeutet dies nicht, dass VM1 und VM2 sich in zwei verschiedenen Hardwareracks befinden, daher kann SF die FD-Werte in diesem Fall nicht für Platzierungsentscheidungen verwenden.
 
-Es gibt derzeit andere Probleme mit großen VMSS, z.B. den Mangel an Unterstützung von Ebene-4-Lastenausgleich. Hier erfahren Sie [Näheres zu großen VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md).
+Es gibt derzeit andere Probleme mit großen VM-Skalierungsgruppen, z.B. den Mangel an Unterstützung von Ebene-4-Lastenausgleich. Weitere Informationen finden Sie unter [Näheres zu großen Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md).
 
 
 
@@ -76,6 +77,17 @@ Im Allgemeinen nicht. Service Fabric speichert den Zustand auf lokalen, kurzlebi
 
 Wenn Sie Cluster erstellen möchten, um Ihre Anwendung vor der Bereitstellung zu testen, empfiehlt es sich, diese Cluster dynamisch als Teil Ihrer [Continuous Integration/Continuous Deployment-Pipeline](service-fabric-set-up-continuous-integration.md) zu erstellen.
 
+## <a name="container-support"></a>Containerunterstützung
+
+### <a name="why-are-my-containers-that-are-deployed-to-sf-are-unable-to-resolve-dns-addresses"></a>Warum können meine Container, die in SF bereitgestellt werden, keine DNS-Adressen auflösen?
+
+Dieses Problem wurde für Cluster gemeldet, die Version 5.6.204.9494 verwenden. 
+
+**Abhilfemaßnahmen:** Befolgen Sie die Angaben in [diesem Dokument](service-fabric-dnsservice.md), um den DNS-Service Fabric-Dienst in Ihrem Cluster zu aktivieren.
+
+**Behebung:** Führen Sie ein Upgrade auf eine unterstützte Clusterversion über 5.6.204.9494 durch, sobald diese verfügbar ist. Wenn für Ihren Cluster automatische Upgrades festgelegt wurden, wird der Cluster automatisch auf die Version aktualisiert, in der dieses Problem behoben wurde.
+
+  
 ## <a name="application-design"></a>Anwendungsentwurf
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Was ist die beste Möglichkeit, Daten über Partitionen einer zuverlässigen Sammlung hinweg abzufragen?

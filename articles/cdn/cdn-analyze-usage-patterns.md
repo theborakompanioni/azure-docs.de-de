@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ec6a021e087d9218856370e8bf067359de54bdb9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 41d63ef88e9f0caf3d5f74841ec4670875fdaad1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Analysieren von Azure CDN-Verwendungsmustern
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)] Die nachstehende Anleitung umfasst die Schritte zum Anzeigen der Kernberichte für Verizon-Profile über das Verwaltungsportal. Zudem können Sie für Verizon- und Akamai-Profile Basisanalysedaten [über das Azure-Portal](cdn-log-analysis.md) in Storage, Event Hub oder Log Analytics exportieren.
 
 Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzeigen:
 
@@ -32,7 +34,7 @@ Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzei
 * Cachetrefferquote
 * Übertragene IPV4-/IPV6-Daten
 
-## <a name="accessing-advanced-http-reports"></a>Aufrufen erweiterter HTTP-Berichte
+## <a name="accessing-core-reports"></a>Zugreifen auf Kernberichte
 1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten** .
    
     ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-reports/cdn-manage-btn.png)
@@ -136,10 +138,5 @@ Dieser Bericht zeigt die Verteilung des Datenverkehrs in IPV4 und IPV6.
 
 ## <a name="considerations"></a>Überlegungen
 Berichte können nur über die letzten 18 Monate generiert werden.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

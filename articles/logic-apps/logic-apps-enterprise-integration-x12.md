@@ -5,7 +5,7 @@ services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
 manager: anneta
-editor: cgronlun
+editor: 
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.service: logic-apps
 ms.workload: integration
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 2c20d4c764129004b4e757854bcd1ecb106cecff
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d30cbc1cfd095ab9e8321a723335ebab593ee5fe
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -163,7 +164,7 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 | Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
 | Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
 | Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen und Leerzeichen. |
-| Richtlinie für nachfolgende Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der empfangene Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** , um Austauschvorgänge mit oder ohne nachgestellte Trennzeichen zu akzeptieren. <p>Wählen Sie **Erforderlich** aus, wenn der Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
+| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der empfangene Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** , um Austauschvorgänge mit oder ohne nachgestellte Trennzeichen zu akzeptieren. <p>Wählen Sie **Erforderlich** aus, wenn der Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
 
 ### <a name="internal-settings"></a>Interne Einstellungen
 
@@ -285,7 +286,7 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 | Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
 | Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
 | Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen. |
-| Richtlinie für nachfolgende Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der gesendete Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** aus, um Austauschvorgänge mit und ohne nachgestellte Trennzeichen zu senden. <p>Wählen Sie **Erforderlich** aus, wenn der gesendete Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
+| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der gesendete Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** aus, um Austauschvorgänge mit und ohne nachgestellte Trennzeichen zu senden. <p>Wählen Sie **Erforderlich** aus, wenn der gesendete Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
 
 ## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
 
@@ -296,6 +297,9 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 2.    Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie auf dem Blatt Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus.
 
     ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+
+## <a name="view-the-swagger"></a>Anzeigen von Swagger
+Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/x12/). 
 
 ## <a name="learn-more"></a>Weitere Informationen
 * [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  

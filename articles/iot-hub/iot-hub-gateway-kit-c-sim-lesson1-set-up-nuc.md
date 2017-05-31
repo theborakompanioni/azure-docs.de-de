@@ -17,10 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
-ms.openlocfilehash: 399ac2d571b65503da7d9cc47d2dec9aa5e4c3d7
-ms.lasthandoff: 01/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b87974be9570f7d03fe84ae0a1d1fa7e346ff189
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.lasthandoff: 01/25/2017
 ## <a name="what-you-will-do"></a>Aufgaben
 
 - Einrichten von Intel NUC als IoT Gateway
-- Installieren des Azure IoT Gateway SDK-Pakets auf einem Intel NUC
+- Installieren des Azure IoT Edge-Pakets auf einem Intel NUC
 - Ausführen einer „hello_world“-Beispielanwendung auf einem Intel NUC, um die Gatewayfunktionalität zu überprüfen
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
@@ -86,9 +87,9 @@ Hierfür benötigen Sie eine Tastatur und einen Monitor, um die IP-Adresse Ihres
    Es ist effizienter und produktiver, Vorgänge für den Intel NUC auf einem Hostcomputer durchzuführen. Sie benötigen die IP-Adresse, den Benutzernamen und das Kennwort, um über den SSH-Client eine Verbindung mit dem NUC herzustellen. Hier ist ein Beispiel für die Verwendung des SSH-Clients unter MacOS.
    ![SSH-Client unter MacOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
-## <a name="install-the-azure-iot-gateway-sdk-package"></a>Installieren des Azure IoT Gateway SDK-Pakets
+## <a name="install-the-azure-iot-edge-package"></a>Installieren des Azure IoT Edge-Pakets
 
-Das Azure IoT Gateway SDK-Paket enthält die vorkompilierten Binärdateien des SDK und die jeweiligen Abhängigkeiten. Diese Binärdateien sind das Azure IoT Gateway SDK, das Azure IoT SDK und die entsprechenden Tools. Das Paket enthält auch eine „hello_world“-Beispielanwendung, die zum Überprüfen der Gatewayfunktionalität verwendet wird. Das SDK ist der Kern des Gateways. Führen Sie diese Schritte aus, um das Paket zu installieren:
+Das Azure IoT Edge-Paket enthält die vorkompilierten Binärdateien des SDK und die jeweiligen Abhängigkeiten. Diese Binärdateien sind Azure IoT Edge, das Azure IoT SDK und die entsprechenden Tools. Das Paket enthält auch eine „hello_world“-Beispielanwendung, die zum Überprüfen der Gatewayfunktionalität verwendet wird. IoT Edge ist die Kernkomponente des Gateways. Führen Sie diese Schritte aus, um das Paket zu installieren:
 
 1. Fügen Sie das IoT-Cloudrepository hinzu, indem Sie die folgenden Befehle in einem Terminalfenster ausführen:
 
@@ -115,9 +116,9 @@ Das Azure IoT Gateway SDK-Paket enthält die vorkompilierten Binärdateien des S
 
    Nach dem Installieren des Pakets soll der Intel NUC als Gateway fungieren.
 
-## <a name="run-the-azure-iot-gateway-sdk-helloworld-sample-application"></a>Ausführen der „hello_world“-Beispielanwendung des Azure IoT Gateway SDK
+## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>Ausführen der „hello_world“-Beispielanwendung von Azure IoT Edge
 
-Navigieren Sie zu `azureiotgatewaysdk/samples`, und führen Sie die „hello_world“-Beispielanwendung aus. Bei dieser Beispielanwendung wird ein Gateway aus der Datei `hello_world.json` erstellt, und die grundlegenden Komponenten der Azure IoT Gateway SDK-Architektur werden verwendet, um alle fünf Sekunden eine „hello world“-Nachricht in einer Datei zu protokollieren.
+Navigieren Sie zu `azureiotgatewaysdk/samples`, und führen Sie die „hello_world“-Beispielanwendung aus. Bei dieser Beispielanwendung wird ein Gateway aus der Datei `hello_world.json` erstellt, und die grundlegenden Komponenten der Azure IoT Edge-Architektur werden verwendet, um alle fünf Sekunden eine „hello world“-Nachricht in einer Datei zu protokollieren.
 
 Sie können die „hello_world“-Beispielanwendung mit dem folgenden Befehl ausführen:
 

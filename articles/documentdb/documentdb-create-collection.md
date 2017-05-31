@@ -1,60 +1,61 @@
 ---
-title: Erstellen einer DocumentDB-Datenbank und -Sammlung | Microsoft Docs
-description: "Erfahren Sie, wie Sie NoSQL-Datenbanken und JSON-Dokumentsammlungen mit dem Onlinedienstportal für die cloudbasierte Dokumentendatenbank Azure DocumentDB erstellen. Holen Sie sich noch heute eine kostenlose Testversion."
-services: documentdb
+title: Erstellen einer Azure Cosmos DB-Datenbank und -Sammlung | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Datenbanken und Container mit dem Onlinedienstportal für die cloudbasierte Dokumentendatenbank Azure Cosmos DB erstellen. Holen Sie sich noch heute eine kostenlose Testversion."
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: b81ad2f6-df7f-4c6d-8ca9-f8a9982d647e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 05/10/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 97b634b10f75dd10c9cf4b61a5b9674f7ee73e00
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 596a4ce9d315e7c6c41a43860469c339c7e96ac5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="how-to-create-a-documentdb-collection-and-database-using-the-azure-portal"></a>So erstellen Sie eine DocumentDB-Sammlung und -Datenbank über das Azure-Portal
-Um Microsoft Azure DocumentDB zu verwenden, müssen Sie über ein [DocumentDB-Konto](documentdb-create-account.md), eine Datenbank, eine Sammlung und Dokumente verfügen. In diesem Thema wird die Erstellung einer DocumentDB-Sammlung im Azure-Portal beschrieben.
+# <a name="how-to-create-an-azure-cosmos-db-collection-and-database-using-the-azure-portal"></a>Erstellen einer Azure Cosmos DB-Sammlung und -Datenbank mit dem Azure-Portal
+Um Microsoft Azure Cosmos DB zu verwenden, müssen Sie über ein [Azure Cosmos DB-Konto](documentdb-create-account.md), eine Datenbank, eine Sammlung und Dokumente verfügen. In diesem Thema wird die Erstellung einer Azure Cosmos DB-Sammlung im Azure-Portal beschrieben.
 
-Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist eine DocumentDB-Sammlung?](#what-is-a-documentdb-collection).
+Sie wissen nicht, was eine Sammlung ist? Weitere Informationen finden Sie unter [Was ist eine Azure Cosmos DB-Sammlung?](#what-is-a-documentdb-collection).
 
 Es gibt zwei Möglichkeiten zum Erstellen einer Sammlung im Portal: mithilfe der Schaltfläche „Sammlung hinzufügen“ oder mit dem [Daten-Explorer (Vorschau)](#data-explorer).
 
 ## <a name="create-a-colletion-using-add-collection-button"></a>Erstellen einer Sammlung mithilfe der Schaltfläche „Sammlung hinzufügen“
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Navigationsleiste auf **DocumentDB (NoSQL)**, und wählen Sie anschließend auf dem Blatt **DocumentDB (NoSQL)** das Konto aus, dem Sie eine Sammlung hinzufügen möchten. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Navigationsleiste auf **Azure Cosmos DB**, und wählen Sie anschließend auf dem Blatt **Azure Cosmos DB** das Konto aus, dem Sie eine Sammlung hinzufügen möchten. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
 
-   ![Screenshot mit „DocumentDB-Konten“ in der Navigationsleiste, mit dem Konto im Blatt „DocumentDB-Konten“ und mit der Datenbank im Blatt „DocumentDB-Konten“ im Fokus „Datenbanken“](./media/documentdb-create-collection/docdb-database-creation-1-2.png)
+   ![Screenshot mit „Azure Cosmos DB-Konten“ in der Navigationsleiste, mit dem Konto im Blatt „Azure Cosmos DB-Konten“ und mit der Datenbank im Blatt „Azure Cosmos DB-Konten“ im Fokus „Datenbanken“](./media/documentdb-create-collection/docdb-database-creation-1-2.png)
 
-   Wenn **DocumentDB (NoSQL)** nicht in der Navigationsleiste angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
-2. Klicken Sie auf dem Blatt **DocumentDB-Konto** für das ausgewählte Konto auf **Sammlung hinzufügen**.
+   Wenn **Azure Cosmos DB** nicht in der Navigationsleiste angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **Azure Cosmos DB**. Wenn keine Konten aufgeführt sind, müssen Sie [ein DocumentDB-Konto erstellen](documentdb-create-account.md).
+2. Klicken Sie auf dem Blatt **Azure Cosmos DB-Konto** für das ausgewählte Konto auf **Sammlung hinzufügen**.
 
-    ![Screenshot mit „DocumentDB-Konten“ in der Navigationsleiste, mit dem Konto im Blatt „DocumentDB-Konten“ und mit der Datenbank im Blatt „DocumentDB-Konten“ im Fokus „Datenbanken“](./media/documentdb-create-collection/docdb-database-creation-3.png)
+    ![Screenshot mit „Azure Cosmos DB-Konten“ in der Navigationsleiste, mit dem Konto im Blatt „Azure Cosmos DB-Konten“ und mit der Datenbank im Blatt „Azure Cosmos DB-Konten“ im Fokus „Datenbanken“](./media/documentdb-create-collection/docdb-database-creation-3.png)
 3. Geben Sie auf dem Blatt **Sammlung hinzufügen** im Feld **Sammlungs-ID** die ID für Ihre neue Sammlung ein. Der Namen einer Sammlung muss zwischen 1 und 255 Zeichen lang sein und darf weder `/ \ # ?` noch nachstehende Leerzeichen enthalten. Wenn der Name überprüft wurde, wird im ID-Feld ein grünes Häkchen angezeigt.
 
-    ![Screenshot mit Schaltfläche „Sammlung hinzufügen“ auf dem Blatt „Datenbank“, mit den Einstellungen im Blatt „Sammlung hinzufügen“ und Schaltfläche „OK“ – Azure-Portal für DocumentDB – Cloudbasierte Datenbankerstellung für NoSQL-JSON-Datenbanken](./media/documentdb-create-collection/docdb-collection-creation-5-8.png)
-4. Die Voreinstellung für **Speicherkapazität** ist **250 GB**, um partitionierte Sammlungen verarbeiten zu können.
+    ![Screenshot mit Schaltfläche „Sammlung hinzufügen“ auf dem Blatt „Datenbank“, mit den Einstellungen im Blatt „Sammlung hinzufügen“ und Schaltfläche „OK“ – Azure-Portal für Azure Cosmos DB – Cloudbasierte Datenbankerstellung für NoSQL-JSON-Datenbanken](./media/documentdb-create-collection/docdb-collection-creation-5-8.png)
+4. Die Voreinstellung für **Speicherkapazität** ist **Unbegrenzt**, um partitionierte Sammlungen verarbeiten zu können.
 
     Legen Sie die Speicherkapazität auf **10 GB** fest, wenn Sie eine [einzelne Partitionssammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) mit einem Durchsatz von 400 bis 10.000 Anforderungseinheiten pro Sekunde (Request Unit, RU/s) verwenden möchten. Eine Anforderungseinheit (Request Unit, RU) entspricht dem Durchsatz des Lesevorgangs eines Dokuments mit 1 KB. Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](documentdb-request-units.md).
 
-    Legen Sie die Speicherkapazität auf **250 GB** fest, wenn Sie eine [partitionierte Sammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) verwenden möchten, die skaliert werden kann, um eine unbegrenzte Menge an Speicher über mehrere Partitionen verteilt zu verarbeiten. Es werden Durchsatzebenen ab 2.500 Anforderungseinheiten pro Sekunde unterstützt.
+    Legen Sie die Speicherkapazität auf **Unbegrenzt** fest, wenn Sie eine [partitionierte Sammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) verwenden möchten, die skaliert werden kann, um eine unbegrenzte Menge an Speicher über mehrere Partitionen verteilt zu verarbeiten. Es werden Durchsatzstufen ab 2.500 Anforderungseinheiten pro Sekunde unterstützt.
 
-    Legen Sie die Speicherkapazität auf **Benutzerdefiniert** fest, wenn Sie einen anderen Betrag als 10 GB oder 250 GB bereitstellen möchten. DocumentDB ist praktisch unbegrenzt skalierbar. Sie sollten daher die angeforderte Speichergröße und den Durchsatzwert in die Supportanfrage einschließen.
+    Legen Sie die Speicherkapazität auf **Benutzerdefiniert** fest, wenn Sie einen anderen Betrag als 10 GB oder 250 GB bereitstellen möchten. Azure Cosmos DB ist praktisch unbegrenzt skalierbar. Sie sollten daher die angeforderte Speichergröße und den Durchsatzwert in die Supportanfrage einschließen.
 
-6. Geben Sie im Feld **Partitionsschlüssel** einen Partitionsschlüssel für die Sammlung ein. Dies ist für partitionierte Sammlungen erforderlich und für Sammlungen mit einer einzelnen Partition optional. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. Weitere Informationen zum Auswählen eines Partitionsschlüssels finden Sie unter [Entwerfen für Partitionierung](documentdb-partition-data.md#designing-for-partitioning).
+6. Geben Sie im Feld **Partitionsschlüssel** einen Partitionsschlüssel für die Sammlung ein. Dies ist für partitionierte Sammlungen erforderlich und für Sammlungen mit einer einzelnen Partition optional. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. Weitere Informationen zum Auswählen eines Partitionsschlüssels finden Sie unter [Entwerfen für Partitionierung](../cosmos-db/partition-data.md#designing-for-partitioning).
 7. Erstellen Sie auf dem Blatt **Datenbank** entweder eine neue Datenbank, oder verwenden Sie eine vorhandene Datenbank. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/ \ # ?` noch nachgestellte Leerzeichen enthalten. Klicken Sie außerhalb des Textfelds, damit der Name überprüft wird. Nach der Überprüfung des Namens wird im Feld ein grünes Häkchen angezeigt.
 8. Klicken Sie am unteren Bildschirmrand auf **OK**, um die neue Sammlung zu erstellen.
 9. Die neue Sammlung wird jetzt im Fokus **Sammlungen** auf dem Blatt **Übersicht** angezeigt.
 
-    ![Screenshot mit der neuen Sammlung in Blatt „Datenbank“ – Azure-Portal für DocumentDB – Cloudbasierte Datenbankerstellung für NoSQL-JSON-Datenbanken](./media/documentdb-create-collection/docdb-collection-creation-9.png)
+    ![Screenshot mit der neuen Sammlung in Blatt „Datenbank“ – Azure-Portal für Azure Cosmos DB – Cloudbasierte Datenbankerstellung für NoSQL-JSON-Datenbanken](./media/documentdb-create-collection/docdb-collection-creation-9.png)
 10. **Optional:** Klicken Sie im Menü „Ressource“ auf **Skalieren**, um den Durchsatz für Sammlungen im Portal zu ändern.
 
     ![Screenshot des Menüs „Ressource“ mit Auswahl von „Skalieren“](./media/documentdb-create-collection/docdb-collection-creation-scale.png)
@@ -67,14 +68,14 @@ Die andere Methode zum Erstellen einer Sammlung im Portal ist der Daten-Explorer
  ![Screenshot der Schaltfläche „Neue Sammlung“ im Portal](./media/documentdb-create-collection/azure-documentdb-data-explorer.png)
 
 
-## <a name="what-is-a-documentdb-collection"></a>Was ist eine DocumentDB-Sammlung?
+## <a name="what-is-an-azure-cosmos-db-collection"></a>Was ist eine Azure Cosmos DB-Sammlung?
 Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Eine Sammlung ist eine abrechnungsfähige Entität, bei der die [Kosten](documentdb-performance-levels.md) durch den bereitgestellten Durchsatz der Sammlung bestimmt werden. Sammlungen können eine/n oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten.
 
-Sammlungen werden von DocumentDB automatisch in einen oder mehrere physische Server partitioniert. Wenn Sie eine Sammlung erstellen, können Sie den bereitgestellten Durchsatz in Form von Anforderungseinheiten pro Sekunde und einer Partitionsschlüsseleigenschaft angeben. Der Wert dieser Eigenschaft wird von DocumentDB zum Verteilen von Dokumenten zwischen Partitionen und zum Weiterleiten von Anforderungen wie Abfragen verwendet. Der Partitionsschlüssel fungiert außerdem als die Transaktionsgrenze für gespeicherte Prozeduren und Trigger. Jede Sammlung hat eine reservierte Durchsatzmenge, die für diese Sammlung spezifisch ist und die nicht mit anderen Sammlungen im gleichen Konto gemeinsam genutzt wird. Daher können Sie Ihre Anwendung sowohl im Hinblick auf Speicher als auch Durchsatz horizontal hochskalieren.
+Sammlungen werden von Azure Cosmos DB automatisch in einen oder mehrere physische Server partitioniert. Wenn Sie eine Sammlung erstellen, können Sie den bereitgestellten Durchsatz in Form von Anforderungseinheiten pro Sekunde und einer Partitionsschlüsseleigenschaft angeben. Der Wert dieser Eigenschaft wird von Azure Cosmos DB zum Verteilen von Dokumenten zwischen Partitionen und zum Weiterleiten von Anforderungen wie Abfragen verwendet. Der Partitionsschlüssel fungiert außerdem als die Transaktionsgrenze für gespeicherte Prozeduren und Trigger. Jede Sammlung hat eine reservierte Durchsatzmenge, die für diese Sammlung spezifisch ist und die nicht mit anderen Sammlungen im gleichen Konto gemeinsam genutzt wird. Daher können Sie Ihre Anwendung sowohl im Hinblick auf Speicher als auch Durchsatz horizontal hochskalieren.
 
-Sammlungen sind nicht identisch mit Tabellen in relationalen Datenbanken. Sammlungen erzwingen kein Schema. Als Datenbank erzwingt DocumentDB grundsätzlich keine Schemas, es handelt sich um eine schemafreie Datenbank. Daher können Sie unterschiedliche Arten von Dokumenten mit unterschiedlichen Schemas in derselben Sammlung speichern. Falls gewünscht, können Sie Sammlungen auch verwenden, um wie bei Tabellen Objekte eines einzelnen Typs zu speichern. Das geeignetste Modell ist nur davon abhängig, wie die Daten zusammen in Abfragen und Transaktionen angezeigt werden.
+Sammlungen sind nicht identisch mit Tabellen in relationalen Datenbanken. Sammlungen erzwingen kein Schema. Als Datenbank erzwingt Azure Cosmos DB grundsätzlich keine Schemas, es handelt sich um eine schemafreie Datenbank. Daher können Sie unterschiedliche Arten von Dokumenten mit unterschiedlichen Schemas in derselben Sammlung speichern. Falls gewünscht, können Sie Sammlungen auch verwenden, um wie bei Tabellen Objekte eines einzelnen Typs zu speichern. Das geeignetste Modell ist nur davon abhängig, wie die Daten zusammen in Abfragen und Transaktionen angezeigt werden.
 
-## <a name="other-ways-to-create-a-documentdb-collection"></a>Weitere Methoden zum Erstellen einer DocumentDB-Sammlung
+## <a name="other-ways-to-create-an-azure-cosmos-db-collection"></a>Weitere Methoden zum Erstellen einer Azure Cosmos DB-Sammlung
 Sammlungen müssen nicht über das Portal erstellt werden, sondern können auch mithilfe der [DocumentDB SDKs](documentdb-sdk-dotnet.md) und der REST-API erstellt werden.
 
 * Ein C#-Codebeispiel finden Sie in den [C#-Sammlungsbeispielen](documentdb-dotnet-samples.md#collection-examples).

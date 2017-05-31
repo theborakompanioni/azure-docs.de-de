@@ -16,18 +16,18 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: df1778b6a3e74d79e55dcc18c4faff7944063a2f
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
-## <a name="10-introduction"></a>1.0 Einführung
-### <a name="11-overview"></a>1.1 Übersicht
+## <a name="introduction"></a>Einführung
+### <a name="overview"></a>Übersicht
 Microsoft hat eine Reihe von Whitepapers, Sicherheitsübersichten, bewährten Methoden und Prüflisten entwickelt, um aktuelle und zukünftige Azure-Kunden dabei zu unterstützen, die verschiedenen sicherheitsbezogenen Funktionen zu verstehen und zu verwenden, die in und um die Azure Platform herum verfügbar sind. Die Themen variieren in Bezug auf Umfang und Reichweite und werden regelmäßig aktualisiert. Dieses Dokument ist Teil dieser Serie, wie im folgenden Abschnitt zusammengefasst.
-### <a name="12-azure-platform"></a>1.2 Azure Platform
+### <a name="azure-platform"></a>Azure Platform
 Azure ist eine offene und flexible Clouddienstplattform, die eine sehr breite Palette an Betriebssystemen, Programmiersprachen, Frameworks, Tools, Datenbanken und Geräten unterstützt.
 
 Dazu zählen z. B.:
@@ -43,7 +43,7 @@ Wenn Sie IT-Ressourcen erstellen oder zu einem Cloudanbieter migrieren, verlasse
 
 Die Infrastruktur von Azure ist von den Hardwareressourcen bis zu den Anwendungen vollständig auf das gleichzeitige Hosten von Millionen von Kunden ausgelegt und stellt für Unternehmen eine vertrauenswürdige Grundlage zur Erfüllung ihrer Sicherheitsanforderungen dar. Darüber hinaus bietet Azure Ihnen ein breites Spektrum an konfigurierbaren Sicherheitsoptionen, die Sie selbst steuern können, um die Sicherheit an die individuellen Anforderungen Ihrer Bereitstellungen anzupassen. Dieses Dokument unterstützt Sie dabei, die folgenden Anforderungen zu erfüllen.
 
-### <a name="13-abstract"></a>1.3 Zusammenfassung
+### <a name="abstract"></a>Zusammenfassung
 Die Überwachung und Protokollierung von sicherheitsbezogenen Ereignissen und zugehörigen Warnungen sind wichtige Komponenten einer effektiven Datenschutzstrategie. Sicherheitsprotokolle und Berichte bieten Ihnen einen elektronischen Datensatz zu verdächtigen Aktivitäten und helfen Ihnen bei der Erkennung von Mustern, die möglicherweise auf erfolglose oder erfolgreiche externe Eindringversuche in das Netzwerk sowie auf interne Angriffe hinweisen. Sie können im Rahmen der Überwachung entsprechende Benutzeraktivitäten überwachen, die Einhaltung gesetzlicher Bestimmungen dokumentieren, forensische Analyse durchführen und vieles mehr. Warnungen stellen eine sofortige Benachrichtigung beim Auftreten von Sicherheitsereignissen dar.
 
 Microsoft Azure-Dienste und -Produkte bieten Ihnen konfigurierbare Optionen für die Überwachung und Protokollierung der Sicherheit, damit Sie Lücken in Ihren Sicherheitsrichtlinien und -mechanismen identifizieren und behandeln können, um Verstöße zu vermeiden. Microsoft-Dienste bieten einige (und in gewissen Fällen auch alle) der folgenden Optionen: zentrale Überwachungs-, Protokollierungs- und Analysesysteme für eine kontinuierliche Sichtbarkeit, zeitnahe Warnungen und Berichte, die Sie beim Verwalten großer Informationsmengen unterstützen, die von Geräten und Diensten generiert werden.
@@ -55,7 +55,7 @@ Dieses Whitepaper dient als Einführung in das Generieren, Erfassen und Analysie
 > [!Note]
 > Einige Empfehlungen in diesem Artikel können unter Umständen zu einer erhöhten Daten-, Netzwerk- oder Serverressourcenauslastung führen, was mit zusätzlichen Lizenz- oder Abonnementkosten verbunden sein kann.
 
-## <a name="20-types-of-logs-in-azure"></a>2.0 Protokolltypen in Azure
+## <a name="types-of-logs-in-azure"></a>Protokolltypen in Azure
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Protokolle stellen Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Protokolldaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
 
 Azure führt für jeden Azure-Dienst eine umfassende Protokollierung durch. Diese Protokolle gliedern sich in diese Haupttypen:
@@ -79,7 +79,7 @@ Die folgende Tabelle enthält die wichtigsten Protokolltypen, die in Azure verf�
 |[Application Insight](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)|Protokolle, Ausnahmen und benutzerdefinierte Diagnosen|    Erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen.|    REST-API, [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
 |Prozessdaten/Sicherheitswarnung|    Azure Security Center-Warnung, OMS-Warnung|    Sicherheitsinformationen und Warnungen|     REST-APIs, JSON|
 
-### <a name="21-activity-log"></a>2.1 Aktivitätsprotokoll
+### <a name="activity-log"></a>Aktivitätsprotokoll
 Das [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokoll“ oder „Vorgangsprotokoll“ bezeichnet, da es [Ereignisse der Steuerungsebene](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/) für Ihre Abonnements enthält. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET).
 
 Hier beziehen sich PUT, POST, DELETE auf alle Schreibvorgänge, die das Aktivitätsprotokoll für die Ressourcen enthält. Sie können z. B. bei der Problembehandlung mithilfe der Aktivitätsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
@@ -105,7 +105,7 @@ Integrationsszenarien
 -    Exportieren des Aktivitätsprotokolls mit Protokollprofilen in [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 
 Sie können ein Speicherkonto oder [Event Hub-Namespace](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)-Zugriff auf beide Abonnements.
-### <a name="22-azure-diagnostic-logs"></a>2.2 Azure-Diagnoseprotokolle
+### <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 Azure-Diagnoseprotokolle werden von einer Ressource ausgegeben und stellen umfangreiche, in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. ([Windows-Systemereignisprotokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events) sind beispielsweise eine Diagnoseprotokollkategorie für virtuelle Computer; [Blob-, Tabellen- und Warteschlangenprotokolle](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account) sind Diagnoseprotokollkategorien für Speicherkonten.) Darüber hinaus unterscheiden sich Diagnoseprotokolle vom Aktivitätsprotokoll, das Informationen zu den Vorgängen liefert, die auf Ressourcen in Ihrem Abonnement ausgeführt wurden.
 
 ![Azure-Diagnoseprotokolle](./media/azure-log-audit/azure-log-audit-fig2.png)
@@ -148,7 +148,7 @@ Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen: Azure-Portal, di
 |||Microsoft.StreamAnalytics/streamingjobs|Erstellen|
 |SERVICE BUS|[Azure Service Bus Diagnoseprotokolle](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
-### <a name="23-azure-active-directory-reporting"></a>2.3 Azure Active Directory-Berichterstellung
+### <a name="azure-active-directory-reporting"></a>Azure Active Directory-Berichterstellung
 Azure Active Directory (Azure AD) umfasst Sicherheits-, Aktivitäts- und Prüfberichte für Ihr Verzeichnis. Der [Azure Active Directory-Überwachungsbericht](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) hilft Kunden, privilegierte Aktionen zu bestimmen, die in ihrem Azure Active Directory aufgetreten sind. Privilegierte Aktionen umfassen Änderungen zur Rechteerweiterung (z. B. das Erstellen von Rollen oder Zurücksetzen von Kennwörtern), das Ändern von Richtlinienkonfigurationen (z. B. Kennwortrichtlinien) oder Änderungen an der Verzeichniskonfiguration (z. B. Änderungen an Domänenverbundeinstellungen).
 
 Die Berichte enthalten den Überwachungsdatensatz für den Ereignisnamen, den Akteur, der die Aktion ausgeführt hat, die von der Änderung betroffene Zielressource sowie Datum und Uhrzeit (in UTC). Kunden können die Liste mit den Überwachungsereignissen für ihre Azure Active Directory-Instanz über das [Azure-Portal](https://portal.azure.com/) abrufen, wie in [Anzeigen von Überwachungsprotokollen](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal) beschrieben. Hier sehen Sie eine Liste der enthaltenen Berichte:
@@ -174,7 +174,7 @@ Ereignisse im Azure AD-Überwachungsbericht werden für 180 Tage beibehalten.
 
 Kunden, die ihre Überwachungsereignisse für längere Zeit speichern möchten, können mithilfe der Reporting-API regelmäßig [Überwachungsereignisse](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events) in einen separaten Datenspeicher abrufen.
 
-### <a name="24-virtual-machine-logs-using-azure-diagnostics"></a>2.4 Virtual Machine-Protokolle mit der Azure-Diagnose
+### <a name="virtual-machine-logs-using-azure-diagnostics"></a>Virtual Machine-Protokolle mit der Azure-Diagnose
 Die [Azure-Diagnose](https://docs.microsoft.com/azure/azure-diagnostics) ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden [Web- und Workerrollen von Azure Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) unterstützt.
 
 ![Virtual Machine-Protokolle mit der Azure-Diagnose](./media/azure-log-audit/azure-log-audit-fig3.png)
@@ -191,7 +191,7 @@ Sie können die Azure-Diagnose wie folgt auf einem virtuellen Computer aktiviere
 
 -    [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-### <a name="25-storage-analytics"></a>2.5 Speicheranalyse
+### <a name="storage-analytics"></a>Speicheranalyse
 Die [Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren. Die Protokollierung der Speicheranalyse ist für [Blob-, Warteschlangen- und Tabellenspeicherdienste](https://docs.microsoft.com/azure/storage/storage-introduction) nicht verfügbar. Die Speicheranalyse protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst.
 
 Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn beispielsweise ein Speicherkonto Aktivität im Blob-Endpunkt, jedoch nicht im Tabellen- oder Warteschlangenendpunkt aufweist, werden nur Protokolle für den Blob-Dienst erstellt.
@@ -220,7 +220,7 @@ Die folgenden Typen authentifizierter und anonymer Anforderungen werden protokol
 |     Anforderungen von Analysedaten |     Mit Fehlercode 304 (Nicht geändert) misslungene GET-Anforderungen |
 | Anforderungen, die durch die Speicheranalyse selbst erfolgen, z. B. Protokollerstellung oder -löschung, werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) dokumentiert. | Alle anderen misslungenen anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) dokumentiert. |
 
-### <a name="26-azure-networking-logs"></a>2.6 Azure-Netzwerkprotokolle
+### <a name="azure-networking-logs"></a>Azure-Netzwerkprotokolle
 Die Netzwerkprotokollierung und -überwachung in Azure ist umfassend und unterteilt sich in zwei übergeordnete Kategorien:
 
 -    [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Die szenariobasierte Netzwerküberwachung wird mit den Features in Network Watcher bereitgestellt. Dieser Dienst umfasst die Paketerfassung, „Nächster Hop“, die IP-Datenflussüberprüfung, die Sicherheitsgruppenansicht und NSG-Datenflussprotokolle. Die Überwachung auf Szenarioebene bietet im Gegensatz zur Überwachung einzelner Netzwerkressourcen eine End-to-End-Ansicht der Netzwerkressourcen.
@@ -233,7 +233,7 @@ Network Watcher ist ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene
 
 **NSG-Datenflussprotokollierung**: Mithilfe von Datenflussprotokollen für Netzwerksicherheitsgruppen können Sie Protokolle zum Datenverkehr erfassen, der von den Sicherheitsregeln in der Gruppe zugelassen oder verweigert wird. Diese Datenflussprotokolle sind im JSON-Format verfasst und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
-### <a name="27-network-security-group-flow-logging"></a>2.7 Protokollieren des Datenflusses von Netzwerksicherheitsgruppen
+### <a name="network-security-group-flow-logging"></a>Protokollieren des Datenflusses von Netzwerksicherheitsgruppen
 
 [Datenflussprotokolle für Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Datenflussprotokolle sind im JSON-Format verfasst und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
@@ -267,7 +267,7 @@ Zusätzlich zu den vorangehenden Protokollierungsfunktionen umfasst Network Watc
 
 -    [Grenzwerte für Netzwerkabonnements](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
 
-### <a name="28-application-insight"></a>2.8 Application Insights
+### <a name="application-insight"></a>Application Insights
 
 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Verwenden Sie ihn, um Ihre aktiven Webanwendung zu überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.
 
@@ -315,7 +315,7 @@ Application Insights ist für Entwicklerteams konzipiert und hilft Ihnen dabei, 
 |[REST-API](https://dev.applicationinsights.io/)|Schreiben Sie Code zum Ausführen von Abfragen für Ihre Metriken und Rohdaten.||
 |[Fortlaufendem Export](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-export-telemetry)|Exportieren Sie große Mengen von Rohdaten in den Speicher, wenn sie eintreffen.||
 
-### <a name="29-azure-security-center-alerts"></a>2.9 Azure Security Center-Warnungen
+### <a name="azure-security-center-alerts"></a>Azure Security Center-Warnungen
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) erfasst, analysiert und vereinigt automatisch Protokolldaten von Ihren Azure-Ressourcen, vom Netzwerk und von verbundenen Partnerlösungen, z. B. Lösungen zum Schutz von Firewalls und Endpunkten, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen des Problems benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden.
 
 Bei der Bedrohungserkennung von Security Center werden automatisch Sicherheitsinformationen von Ihren Azure-Ressourcen, aus dem Netzwerk und von verbundenen Partnerlösungen gesammelt. Diese Informationen, bei denen es sich häufig um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren. Sicherheitswarnungen werden in Security Center zusammen mit Empfehlungen zur Lösung der Bedrohung priorisiert.
@@ -334,7 +334,7 @@ Für Security Center werden professionelle Sicherheitsanalysen genutzt, die weit
 Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung (Security Information and Event Management) als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mit der Azure-Protokollintegration können Kunden Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen gesammelte Sicherheitsereignisse für den virtuellen Computer nahezu in Echtzeit mit ihrer Protokollanalyse oder SIEM-Lösung synchronisieren.
 
 
-## <a name="30-log-analytics"></a>3.0 Log Analytics
+## <a name="log-analytics"></a>Log Analytics
 
 Log Analytics ist ein Dienst in der [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview), mit dem Sie Daten sammeln und analysieren können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert werden. Der Dienst bietet Echtzeiteinblicke mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards, sodass Sie Millionen von Datensätzen über all Ihre Workloads und Server hinweg unabhängig vom physischen Standort analysieren können.
 
@@ -388,7 +388,7 @@ Bei den verbundenen Quellen handelt es sich um die Computer und anderen Ressourc
 ||Microsoft.Web/<br>sites/<br>slots|||||
 
 
-## <a name="40-log-integration-with-on-premises-siem-systems"></a>4.0 Protokollintegration mit lokalen SIEM-Systemen
+## <a name="log-integration-with-on-premises-siem-systems"></a>Protokollintegration mit lokalen SIEM-Systemen
 Mit der [Azure-Protokollintegration](https://www.microsoft.com/download/details.aspx?id=53324) können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen **SIEM-Systeme** (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) integrieren.
 
 ![Protokollintegration](./media/azure-log-audit/azure-log-audit-fig9.png)

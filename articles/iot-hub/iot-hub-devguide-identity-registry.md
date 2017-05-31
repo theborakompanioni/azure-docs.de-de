@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 75a2fa16a7e33cf85746538e120ca90a389b05c5
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 25183c6c3c69f7d4c2872252197e2dc8662fefd4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -83,7 +84,7 @@ Sie können einen Massenimport von Geräteidentitäten in die Identitätsregistr
 
 ## <a name="device-provisioning"></a>Gerätebereitstellung
 
-Die Gerätedaten, die von einer bestimmten IoT-Lösung gespeichert werden, richten sich nach den jeweiligen Anforderungen der Lösung. Von einer Lösung müssen aber mindestens die Geräteidentitäten und Authentifizierungsschlüssel gespeichert werden. Azure IoT Hub enthält eine Identitätsregistrierung, die Werte für jedes Gerät speichern kann, z.B. IDs, Authentifizierungsschlüssel und Statuscodes. Eine Lösung kann andere Azure-Dienste wie Azure Table Storage, Azure Blob Storage oder Azure DocumentDB nutzen, um zusätzliche Gerätedaten zu speichern.
+Die Gerätedaten, die von einer bestimmten IoT-Lösung gespeichert werden, richten sich nach den jeweiligen Anforderungen der Lösung. Von einer Lösung müssen aber mindestens die Geräteidentitäten und Authentifizierungsschlüssel gespeichert werden. Azure IoT Hub enthält eine Identitätsregistrierung, die Werte für jedes Gerät speichern kann, z.B. IDs, Authentifizierungsschlüssel und Statuscodes. Eine Lösung kann andere Azure-Dienste wie Azure Table Storage, Azure Blob Storage oder Azure Cosmos DB nutzen, um zusätzliche Gerätedaten zu speichern.
 
 *Gerätebereitstellung* ist der Prozess des Hinzufügens der ersten Gerätedaten zu den Speichern in Ihrer Lösung. Damit ein neues Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie der IoT Hub-Identitätsregistrierung eine neue Geräte-ID und Schlüssel hinzufügen. Im Rahmen des Bereitstellungsprozesses müssen Sie unter Umständen gerätespezifische Daten in anderen Lösungsspeichern initialisieren.
 
@@ -99,6 +100,50 @@ Eine komplexere Implementierung kann die Informationen aus der [Vorgangsüberwac
 
 > [!NOTE]
 > Wenn für eine IoT-Lösung der Geräteverbindungsstatus ausschließlich dazu benötigt wird, um zu bestimmen, ob C2D-Nachrichten gesendet werden müssen, und wenn Nachrichten nicht an große Gruppen von Geräten übertragen werden, sollten Sie die Verwendung einer kurzen Ablaufzeit in Betracht ziehen. Dieses Muster erzielt dasselbe Ergebnis wie beim Aufrechterhalten der Registrierung des Geräteverbindungsstatus mit dem Taktmuster, dies jedoch effizienter. Es ist auch durch die Anforderung von Nachrichtenbestätigungen möglich, vom IoT Hub darüber benachrichtigt zu werden, von welchen Geräten Nachrichten empfangen werden können und welche nicht online oder ausgefallen sind.
+
+## <a name="device-lifecycle-notifications"></a>Benachrichtigungen zum Lebenszyklus von Geräten
+
+IoT Hub kann Ihre IoT-Lösung benachrichtigen, wenn eine Geräteidentität erstellt oder gelöscht wird, indem Lebenszyklusbenachrichtigungen vom Gerät gesendet werden. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen und die Datenquelle auf *DeviceLifecycleEvents* festlegen. Standardmäßig werden keine Lebenszyklusbenachrichtigungen gesendet, da es noch keine solchen Routen gibt. Die Lebenszyklusbenachrichtigung umfasst Eigenschaften und einen Textkörper.
+
+- Eigenschaften
+
+Nachrichtensystemeigenschaften ist das Symbol `'$'` vorangestellt.
+
+| Name | Wert |
+| --- | --- |
+$content-type | Anwendung/json |
+$iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
+$iothub-message-source | deviceLifecycleEvents |
+$content-encoding | utf-8 |
+opType | „createDeviceIdentity“ oder „deleteDeviceIdentity“ |
+hubName | Name des IoT Hub |
+deviceId | ID des Geräts |
+operationTimestamp | ISO8601-Zeitstempel des Vorgangs |
+iothub-message-schema | deviceLifecycleNotification |
+
+- body
+
+Dieser Abschnitt hat das JSON-Format und stellt den Zwilling der erstellten Geräteidentität dar. Beispiel:
+``` 
+{
+    "deviceId":"11576-ailn-test-0-67333793211",
+    "etag":"AAAAAAAAAAE=",
+    "properties": {
+        "desired": {
+            "$metadata": {
+                "$lastUpdated": "2016-02-30T16:24:48.789Z"
+            },
+            "$version": 1
+        },
+        "reported": {
+            "$metadata": {
+                "$lastUpdated": "2016-02-30T16:24:48.789Z"
+            },
+            "$version": 1
+        }
+    }
+}
+```
 
 ## <a name="reference-topics"></a>Referenzthemen:
 

@@ -1,13 +1,13 @@
 ---
-title: "Ausführen eines Hadoop-Auftrags mit Azure DocumentDB und HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie einen einfachen Hive-, Pig- und MapReduce-Auftrag mit DocumentDB und Azure HDInsight ausführen können."
-services: documentdb
+title: "Ausführen eines Hadoop-Auftrags mit Azure Cosmos DB und HDInsight | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie einen einfachen Hive-, Pig- und MapReduce-Auftrag mit Azure Cosmos DB und Azure HDInsight ausführen können."
+services: cosmosdb
 author: dennyglee
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: 06f0ea9d-07cb-4593-a9c5-ab912b62ac42
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
@@ -15,31 +15,32 @@ ms.topic: article
 ms.date: 09/20/2016
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 9304acd9f99b7f492a37bc4243ed8fb617998c6f
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a4d5e13cb2851787abcaff0c1971f63af9bf75dd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="DocumentDB-HDInsight"></a>Ausführen eines Auftrags von Apache Hive, Pig oder Hadoop mithilfe von DocumentDB und HDInsight
-In diesem Tutorial erfahren Sie, wie Sie [Apache Hive][apache-hive]-, [Apache Pig][apache-pig]- und [Apache Hadoop][apache-hadoop]-MapReduce-Aufträge in Azure HDInsight mit dem Hadoop-Connector von DocumentDB ausführen können. Der Hadoop-Connector der DocumentDB ermöglicht es dieser, sowohl als Quelle als auch als Senke für Hive-, Pig- und MapReduce-Jobs zu fungieren. In diesem Lernprogramm wird DocumentDB sowohl als Datenquelle als auch als Ziel für Hadoop-Jobs verwendet.
+# <a name="Azure Cosmos DB-HDInsight"></a>Ausführen eines Auftrags von Apache Hive, Pig oder Hadoop mithilfe von Azure Cosmos DB und HDInsight
+In diesem Tutorial erfahren Sie, wie Sie [Apache Hive][apache-hive]-, [Apache Pig][apache-pig]- und [Apache Hadoop][apache-hadoop]-MapReduce-Aufträge in Azure HDInsight mit dem Hadoop-Connector von Cosmos DB ausführen können. Der Hadoop-Connector von Cosmos DB ermöglicht es Cosmos DB, sowohl als Quelle als auch als Senke für Hive-, Pig- und MapReduce-Aufträge zu fungieren. In diesem Lernprogramm wird Cosmos DB sowohl als Datenquelle als auch als Ziel für Hadoop-Aufträge verwendet.
 
 Nach Abschluss dieses Lernprogramms können Sie die folgenden Fragen beantworten:
 
-* Wie werden Daten von DocumentDB mithilfe eines Hive-, Pig- oder MapReduce-Jobs geladen?
-* Wie werden Daten in DocumentDB mit einem Hive-, Pig- oder MapReduce-Job gespeichert?
+* Wie werden Daten von Cosmos DB mithilfe eines Hive-, Pig- oder MapReduce-Aufträge geladen?
+* Wie werden Daten in Cosmos DB mit einem Hive-, Pig- oder MapReduce-Auftrag gespeichert?
 
-Es wird empfohlen, dass Sie sich zunächst das folgende Video anschauen, in dem die Bearbeitung eines Hive-Jobs mit DocumentDB und HDInsight beschrieben wird.
+Es wird empfohlen, dass Sie sich zunächst das folgende Video anschauen, in dem die Bearbeitung eines Hive-Auftrags mit Cosmos DB und HDInsight beschrieben wird.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Use-Azure-DocumentDB-Hadoop-Connector-with-Azure-HDInsight/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Use-Azure-Cosmos DB-Hadoop-Connector-with-Azure-HDInsight/player]
 >
 >
 
-Kehren Sie anschließend zu diesem Artikel zurück. Hier erhalten Sie umfassende Informationen darüber, wie Sie Analysejobs für die DocumentDB-Daten ausführen können.
+Kehren Sie anschließend zu diesem Artikel zurück. Hier erhalten Sie umfassende Informationen darüber, wie Sie Analysejobs für die Cosmos DB-Daten ausführen können.
 
 > [!TIP]
-> In diesem Lernprogramm wird davon ausgegangen, dass Sie bereits über Erfahrungen im Umgang mit Apache Hadoop, Hive, und/oder Pig verfügen. Wenn Sie noch nicht mit Apache Hadoop, Hive und Pig vertraut sind, empfiehlt es sich, die [Apache Hadoop-Dokumentation][apache-hadoop-doc] zu lesen. In diesem Lernprogramm wird ebenfalls davon ausgegangen, dass Sie bereits über Erfahrung mit DocumentDB sowie ein DocumentDB-Konto verfügen. Wenn Sie noch nicht mit DocumentDB vertraut sind oder noch kein DocumentDB-Konto besitzen, erhalten Sie weitergehende Informationen auf der Seite [Erste Schritte][getting-started].
+> In diesem Lernprogramm wird davon ausgegangen, dass Sie bereits über Erfahrungen im Umgang mit Apache Hadoop, Hive, und/oder Pig verfügen. Wenn Sie noch nicht mit Apache Hadoop, Hive und Pig vertraut sind, empfiehlt es sich, die [Apache Hadoop-Dokumentation][apache-hadoop-doc] zu lesen. In diesem Tutorial wird ebenfalls davon ausgegangen, dass Sie bereits über Erfahrung mit Cosmos DB sowie ein Cosmos DB-Konto verfügen. Wenn Sie noch nicht mit Cosmos DB vertraut sind oder noch kein Cosmos DB-Konto besitzen, erhalten Sie weitergehende Informationen auf der Seite [Erste Schritte][getting-started].
 >
 >
 
@@ -64,7 +65,7 @@ Sie haben nicht die Zeit, das gesamte Lernprogramm zu bearbeiten und möchten le
 ## <a name="Prerequisites"></a>Voraussetzungen
 Vor dem Ausführen der Anweisungen zu diesem Lernprogramm, müssen Sie sicherstellen, dass Sie über Folgendes verfügen:
 
-* Ein DocumentDB-Konto, eine Datenbank und eine Auflistung mit Dokumenten. Weitere Informationen finden Sie unter [Erste Schritte mit DocumentDB][getting-started]. Importieren Sie Beispieldaten in Ihr DocumentDB-Konto mit dem [DocumentDB-Importtool][documentdb-import-data].
+* Ein Cosmos DB-Konto, eine Datenbank und eine Sammlung mit Dokumenten. Weitere Informationen finden Sie unter [Erste Schritte mit Cosmos DB][getting-started]. Importieren Sie Beispieldaten in Ihr Cosmos DB-Konto mit dem [Cosmos DB-Importtool][documentdb-import-data].
 * Durchsatz. Lese- und Schreibvorgänge aus HDInsight werden gegen die zugeteilten Anforderungseinheiten Ihrer Sammlungen aufgerechnet.
 * Kapazität für eine zusätzliche gespeicherte Prozedur innerhalb einer jeden Ausgabeauflistung. Die gespeicherten Prozeduren werden für die Übertragung von resultierenden Dokumenten verwendet.
 * Kapazität für die resultierenden Dokumente aus den Hive-, Pig- oder MapReduce-Jobs.
@@ -109,7 +110,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 8. Geben Sie auf dem gleichen Blatt einen **Standardcontainer** und einen **Ort** an. Klicken Sie anschließend auf **Auswählen**.
 
    > [!NOTE]
-   > Wählen Sie aus Leistungsgründen einen Ort aus, der sich in der Nähe der Region Ihres DocumentDB-Konto befindet.
+   > Wählen Sie aus Leistungsgründen einen Ort aus, der sich in der Nähe der Region Ihres Cosmos DB-Konto befindet.
    >
    >
 9. Klicken Sie auf **Preise** , und wählen Sie Anzahl und Art der Knoten aus. Sie können die Standardkonfiguration beibehalten und die Anzahl von Workerknoten später skalieren.
@@ -162,7 +163,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
     ![Diagramm für Azure PowerShell][azure-powershell-diagram]
 
-## <a name="RunHive"></a>Schritt 3: Ausführen eines Hive-Auftrags mit DocumentDB und HDInsight
+## <a name="RunHive"></a>Schritt 3: Ausführen eines Hive-Auftrags mit Cosmos DB und HDInsight
 > [!IMPORTANT]
 > Alle durch < > gekennzeichneten Variablen müssen mithilfe der entsprechenden Konfigurationseinstellungen eingetragen werden.
 >
@@ -263,7 +264,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
    ![Ergebnisse der Hive-Abfrage][image-hive-query-results]
 
-## <a name="RunPig"></a>Schritt 4: Ausführen eines Pig-Auftrags mit DocumentDB und HDInsight
+## <a name="RunPig"></a>Schritt 4: Ausführen eines Pig-Auftrags mit Cosmos DB und HDInsight
 > [!IMPORTANT]
 > Alle durch < > gekennzeichneten Variablen müssen mithilfe der entsprechenden Konfigurationseinstellungen eingetragen werden.
 >
@@ -277,7 +278,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
 2. <p>Beginnen Sie mit dem Erstellen der Abfragezeichenfolge. Eine Pig-Abfrage wird geschrieben, welche die systemgenerierten Zeitstempel (_ts) aller Dokumente und die eindeutige ids (_rid) aus einer DocumentDB-Auflistung aufnimmt, alle Dokumente minutengenau aufeinander abstimmt und die Ergebnisse dann in einer neuen DocumentDB-Auflistung abspeichert.</p>
-    <p>Laden Sie zunächst die Dokumente aus DocumentDB in HDInsight. Fügen Sie <strong>nach</strong> dem Codeausschnitt von Nr. 1 dem PowerShell-Skript-Bereich den folgenden Codeausschnitt hinzu. Achten Sie darauf, dass eine DocumentDB-Abfrage zum optionalen DocumentDB-Abfrageparameter hinzugefügt wird, um die Dokumente gemäß _ts und _rid zu verkürzen.</p>
+    <p>Laden Sie zunächst die Dokumente aus Cosmos DB in HDInsight. Fügen Sie <strong>nach</strong> dem Codeausschnitt von Nr. 1 dem PowerShell-Skript-Bereich den folgenden Codeausschnitt hinzu. Achten Sie darauf, dass eine DocumentDB-Abfrage zum optionalen DocumentDB-Abfrageparameter hinzugefügt wird, um die Dokumente gemäß _ts und _rid zu verkürzen.</p>
 
    > [!NOTE]
    > Ja, das Hinzufügen mehrerer Auflistungen ist als Eingabe zulässig: </br>
@@ -287,7 +288,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
     Die Dokumente werden in Umlauf gebracht und über mehrere Auflistungen hinweg verteilt. Ein Batch von Dokumenten wird in einer Auflistung gespeichert. Ein zweiter Batch von Dokumenten wird dann in der nächsten Auflistung gespeichert usw.
 
-        # Load data from DocumentDB. Pass DocumentDB query to filter transferred data to _rid and _ts.
+        # Load data from Cosmos DB. Pass DocumentDB query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "DocumentDB_timestamps = LOAD '<DocumentDB Endpoint>' USING com.microsoft.azure.documentdb.pig.DocumentDBLoader( " +
                                                         "'<DocumentDB Primary Key>', " +
                                                         "'<DocumentDB Database Name>', " +
@@ -308,7 +309,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
    >
    >
 
-        # Store output data to DocumentDB.
+        # Store output data to Cosmos DB.
         $queryStringPart3 = "STORE by_minute_count INTO '<DocumentDB Endpoint>' " +
                             "USING com.microsoft.azure.documentdb.pig.DocumentDBStorage( " +
                                 "'<DocumentDB Primary Key>', " +
@@ -361,7 +362,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
         $TallyPropertiesJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/TallyProperties-v01.jar" -ClassName "TallyProperties" -Arguments "<DocumentDB Endpoint>","<DocumentDB Primary Key>", "<DocumentDB Database Name>","<DocumentDB Input Collection Name>","<DocumentDB Output Collection Name>","<[Optional] DocumentDB Query>"
 
    > [!NOTE]
-   > TallyProperties-v01.jar geht mit der benutzerdefinierten Installation des DocumentDB-Hadoop-Connectors einher.
+   > TallyProperties-v01.jar geht mit der benutzerdefinierten Installation des Cosmos DB-Hadoop-Connectors einher.
    >
    >
 3. Fügen Sie den folgenden Befehl hinzu, um den MapReduce-Job zu übermitteln.
@@ -383,8 +384,8 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
 
    1. Klicken Sie im linken Bereich auf <strong>Durchsuchen</strong>.
    2. Klicken Sie oben rechts im Suchbereich auf <strong>Alles</strong>.
-   3. Suchen Sie nach und klicken Sie auf <strong>DocumentDB-Konten</strong>.
-   4. Suchen Sie als Nächstes das <strong>DocumentDB-Konto</strong>, anschließend die <strong>DocumentDB-Datenbank</strong> und die <strong>DocumentDB-Sammlung</strong>, die mit der im MapReduce-Job angegebenen Ausgabesammlung verknüpft ist.
+   3. Suchen Sie nach <strong>Cosmos DB-Konten</strong>, und klicken Sie anschließend darauf.
+   4. Suchen Sie als Nächstes das <strong>Cosmos DB-Konto</strong>, anschließend die <strong>Cosmos DB-Datenbank</strong> und die <strong>DocumentDB-Sammlung</strong>, die mit der im MapReduce-Auftrag angegebenen Ausgabesammlung verknüpft ist.
    5. Klicken Sie abschließend auf <strong>Dokument-Explorer</strong> unter <strong>Entwicklertools</strong>.
 
       Sie sehen die Ergebnisse des MapReduce-Jobs.
@@ -392,7 +393,7 @@ Dieses Tutorial verwendet Skriptaktionen aus dem Azure-Portal, um Ihren HDInsigh
       ![Ergebnisse der MapReduce-Abfrage][image-mapreduce-query-results]
 
 ## <a name="NextSteps"></a>Nächste Schritte
-Glückwunsch! Sie haben soeben mithilfe von Azure-DocumentDB und HDInsight Ihre ersten Hive-, Pig- und MapReduce-Jobs ausgeführt.
+Glückwunsch! Sie haben soeben mithilfe von Azure Cosmos DB und HDInsight Ihre ersten Hive-, Pig- und MapReduce-Aufträge ausgeführt.
 
 Der Hadoop-Connector steht im Rahmen von "Open Source" zur Verfügung. Wenn Sie möchten, können Sie in [GitHub][documentdb-github] einen Beitrag veröffentlichen.
 

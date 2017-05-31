@@ -1,32 +1,34 @@
 ---
-title: "Änderungsfeed für HL7 FHIR-Ressourcen – Azure DocumentDB | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von Azure Logic Apps, DocumentDB und Service Bus Änderungsbenachrichtigungen für HL7 FHIR-Krankenakten einrichten."
+title: "Änderungsfeed für HL7 FHIR-Ressourcen – Azure Cosmos DB | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe von Azure Logic Apps, Azure Cosmos DB und Service Bus Änderungsbenachrichtigungen für HL7 FHIR-Krankenakten einrichten."
 keywords: HL7 FHIR
-services: documentdb
+services: cosmosdb
 author: hedidin
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: 0d25c11f-9197-419a-aa19-4614c6ab2d06
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-translationtype: Human Translation
-ms.sourcegitcommit: c25274ad48edb0c89e3f177277af1a4ae5fb3eec
-ms.openlocfilehash: dafd6aa1172661e82bccb35dc29fd59b2c04dd6e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 634216e4653b26e27c3144c5002b8e66617461c9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
 
-# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-documentdb"></a>Benachrichtigen von Patienten über Änderungen an HL7 FHIR-Krankenakten mithilfe von Logic Apps und DocumentDB
+# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Benachrichtigen von Patienten über Änderungen an HL7 FHIR-Krankenakten mithilfe von Logic Apps und Azure Cosmos DB
 
 Azure-MVP Howard Edidin wurde kürzlich von einem Unternehmen aus dem Gesundheitswesen kontaktiert, das seinem Patientenportal eine neue Funktion hinzufügen wollte. Das Unternehmen wollte Benachrichtigungen an Patienten senden, wenn deren Krankenakte aktualisiert wurde, und die Patienten sollten in der Lage sein, diese Updates zu abonnieren. 
 
-In diesem Artikel wird die Änderungsfeed-Benachrichtigungslösung erläutert, die mithilfe von DocumentDB, Logic Apps und Service Bus für dieses Unternehmen erstellt wurde. 
+In diesem Artikel wird die Änderungsfeed-Benachrichtigungslösung erläutert, die mithilfe von Azure Cosmos DB, Logic Apps und Service Bus für dieses Unternehmen erstellt wurde. 
 
 ## <a name="project-requirements"></a>Anforderungen des Projekts
 - Anbieter senden HL7-Ressourcen als C-CDA-Dokumente (Consolidated-Clinical Document Architecture) im XML-Format. Zu C-CDA-Dokumenten zählen nahezu alle Arten von klinischen Dokumenten – etwa Informationen zu Familienanamnese und Impfungen, aber auch Verwaltungs-, Workflow- und Finanzdokumente. 
@@ -38,15 +40,15 @@ In diesem Artikel wird die Änderungsfeed-Benachrichtigungslösung erläutert, d
 Für das Projekt waren folgende allgemeine Workflowschritte erforderlich: 
 1. Konvertieren von C-CDA-Dokumenten in FHIR-Ressourcen
 2. Ausführen wiederholter Triggerabfragen für geänderte FHIR-Ressourcen 
-2. Aufrufen einer benutzerdefinierten Anwendung (FhirNotificationApi), um eine Verbindung mit DocumentDB herzustellen und mittels Abfrage zu überprüfen, ob neue oder geänderte Dokumente vorliegen
+2. Aufrufen einer benutzerdefinierten Anwendung (FhirNotificationApi), um eine Verbindung mit Azure Cosmos DB herzustellen und mittels Abfrage zu überprüfen, ob neue oder geänderte Dokumente vorliegen
 3. Speichern der Antwort in der Service Bus-Warteschlange
 4. Abrufen neuer Nachrichten in der Service Bus-Warteschlange
 5. Senden von E-Mail-Benachrichtigungen an Patienten
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 Für diese Lösung sind drei Logik-Apps erforderlich, um die oben genannten Anforderungen zu erfüllen und den Lösungsworkflow abzuschließen. Folgende Logik-Apps werden benötigt:
-1. **HL7 FHIR-Zuordnungs-App**: Empfängt das HL7-C-CDA-Dokument, transformiert es in die FHIR-Ressource und speichert es in DocumentDB.
-2. **EGA-App**: Fragt das DocumentDB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Diese Logik-App verwendet eine [API-App](#api-app), um neue und geänderte Dokumente abzurufen.
+1. **HL7 FHIR-Zuordnungs-App**: Empfängt das HL7-C-CDA-Dokument, transformiert es in die FHIR-Ressource und speichert es in Azure Cosmos DB.
+2. **EGA-App**: Fragt das Azure Cosmos DB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Diese Logik-App verwendet eine [API-App](#api-app), um neue und geänderte Dokumente abzurufen.
 3. **Prozessbenachrichtigungs-App**: Sendet eine E-Mail-Benachrichtigung mit den FHIR-Ressourcendokumenten als Nachrichtentext.
 
 ![Die drei Logik-Apps dieser FHIR HL7-Lösung für das Gesundheitswesen](./media/documentdb-change-feed-hl7-fhir-logic-apps/documentdb-health-care-solution-hl7-fhir.png)
@@ -55,12 +57,12 @@ Für diese Lösung sind drei Logik-Apps erforderlich, um die oben genannten Anfo
 
 ### <a name="azure-services-used-in-the-solution"></a>In der Lösung verwendete Azure-Dienste
 
-#### <a name="documentdb"></a>DocumentDB
-DocumentDB ist das Repository für die FHIR-Ressourcen, wie in der folgenden Abbildung zu sehen.
+#### <a name="azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB-API
+Azure Cosmos DB ist das Repository für die FHIR-Ressourcen, wie in der folgenden Abbildung zu sehen.
 
-![Das in diesem HL7 FHIR-Gesundheitstutorial verwendete Azure DocumentDB-Konto](./media/documentdb-change-feed-hl7-fhir-logic-apps/documentdb-account.png)
+![Das in diesem HL7 FHIR-Gesundheitstutorial verwendete Azure Cosmos DB-Konto](./media/documentdb-change-feed-hl7-fhir-logic-apps/documentdb-account.png)
 
-#### <a name="logic-apps"></a>Logic Apps
+#### <a name="logic-apps"></a>Logik-Apps
 Logik-Apps wickeln den Workflowprozess ab. Die folgenden Screenshots zeigen die für diese Lösung erstellten Logik-Apps. 
 
 
@@ -69,9 +71,9 @@ Logik-Apps wickeln den Workflowprozess ab. Die folgenden Screenshots zeigen die 
     ![Die Logik-App zum Empfangen von HL7 FHIR-Krankenakten](./media/documentdb-change-feed-hl7-fhir-logic-apps/documentdb-hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **EGA-App**: Fragt das DocumentDB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Den Code für die GetNewOrModifiedFHIRDocuments-App finden Sie weiter unten.
+2. **EGA-App**: Fragt das Azure Cosmos DB-FHIR-Repository ab und speichert die Antwort in einer Service Bus-Warteschlange. Den Code für die GetNewOrModifiedFHIRDocuments-App finden Sie weiter unten.
 
-    ![Die Logik-App zum Abfragen von Azure DocumentDB](./media/documentdb-change-feed-hl7-fhir-logic-apps/documentdb-hl7-fhir-logic-apps-api-app.png)
+    ![Die Logik-App zum Abfragen von Azure Cosmos DB](./media/documentdb-change-feed-hl7-fhir-logic-apps/documentdb-hl7-fhir-logic-apps-api-app.png)
 
 3. **Prozessbenachrichtigungs-App**: Sendet eine E-Mail-Benachrichtigung mit den FHIR-Ressourcendokumenten als Nachrichtentext.
 
@@ -85,9 +87,9 @@ Die folgende Abbildung zeigt die Patientenwarteschlange. Der Wert der Tag-Eigens
 <a id="api-app"></a>
 
 #### <a name="api-app"></a>API-App
-Eine API-App stellt eine Verbindung mit DocumentDB her und fragt neue oder geänderte FHIR-Dokumente nach Ressourcentyp ab. Diese App verfügt über einen Controller (**FhirNotificationApi**) mit einem Vorgang (**GetNewOrModifiedFhirDocuments**). Weitere Informationen finden Sie unter [Quelle für die API-App](#api-app-source).
+Eine API-App stellt eine Verbindung mit Azure Cosmos DB her und fragt neue oder geänderte FHIR-Dokumente nach Ressourcentyp ab. Diese App verfügt über einen Controller (**FhirNotificationApi**) mit einem Vorgang (**GetNewOrModifiedFhirDocuments**). Weitere Informationen finden Sie unter [Quelle für die API-App](#api-app-source).
 
-Wir verwenden die [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx)-Klasse aus der DocumentDB-.NET-API. Weitere Informationen finden Sie im [Artikel zum Änderungsfeed in DocumentDB](https://docs.microsoft.com/en-us/azure/documentdb/documentdb-change-feed). 
+Wir verwenden die [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx)-Klasse aus der Azure Cosmos DB-.NET-API. Weitere Informationen finden Sie im [Artikel zum Änderungsfeed](https://docs.microsoft.com/azure/documentdb/documentdb-change-feed). 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>GetNewOrModifiedFhirDocuments-Vorgang
 
@@ -225,17 +227,12 @@ Die folgende Abbildung zeigt alle im Azure-Portal ausgeführten Azure-Dienste f�
 
 ## <a name="summary"></a>Zusammenfassung
 
-- Sie haben gelernt, dass DocumentDB native Unterstützung für Benachrichtigungen für neue oder geänderte Dokumente bietet und wie einfach sich diese nutzen lassen. 
+- Sie haben gelernt, dass Azure Cosmos DB native Unterstützung für Benachrichtigungen für neue oder geänderte Dokumente bietet und wie einfach sich diese nutzen lassen. 
 - Mit Logic Apps können Sie Workflows erstellen, ohne Code schreiben zu müssen.
 - Und über Azure Service Bus-Warteschlangen können Sie die Verteilung der HL7 FHIR-Dokumente abwickeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu DocumentDB finden Sie auf der [Homepage von DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/). Weitere Informationen zur Logic Apps finden Sie unter [Logic Apps](https://azure.microsoft.com/en-us/services/logic-apps/).
+Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Azure Cosmos DB-Startseite](https://azure.microsoft.com/services/documentdb/). Weitere Informationen zur Logic Apps finden Sie unter [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

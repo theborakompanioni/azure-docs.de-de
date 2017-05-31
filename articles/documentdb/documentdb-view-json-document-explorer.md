@@ -1,24 +1,25 @@
 ---
-title: 'Azure DocumentDB-Portaltool: Dokument-Explorer | Microsoft Docs'
-description: Sie erhalten Informationen zum DocumentDB-Dokument-Explorer, einem Tool im Azure-Portal zum Anzeigen von JSON-Code und Bearbeiten, Erstellen und Hochladen von JSON-Dokumenten mit DocumentDB (NoSQL-Dokumentdatenbank).
+title: 'Azure Cosmos DB-Portaltool: Dokument-Explorer | Microsoft-Dokumentation'
+description: Sie erhalten Informationen zum Azure Cosmos DB-Dokument-Explorer, einem Tool im Azure-Portal zum Anzeigen von JSON-Code und Bearbeiten, Erstellen und Hochladen von Dokumenten.
 keywords: JSON-Anzeige
-services: documentdb
+services: cosmosdb
 author: kirillg
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 029d81b3-6382-4799-a1bd-0dcbccd9968d
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: kirillg
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4338fc03664175b7c27a48f1ab682179c1035313
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 77f8512d9fa47eee25596aa3c407fd6889edbe0e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -27,14 +28,14 @@ ms.lasthandoff: 04/20/2017
 Dieser Artikel bietet einen Überblick über die beiden Möglichkeiten zum Erstellen, Bearbeiten und Abfragen von Dokumenten im Portal: [Dokument-Explorer](#launch-document-explorer) und [Daten-Explorer (Vorschau)](#data-explorer).
 
 > [!NOTE]
-> Dokument-Explorer ist für DocumentDB-Konten mit Protokollunterstützung für MongoDB nicht aktiviert. Diese Seite wird aktualisiert, wenn dieses Feature aktiviert wurde.
+> Dokument-Explorer ist für Azure Cosmos DB-Konten mit Protokollunterstützung für MongoDB nicht aktiviert. Diese Seite wird aktualisiert, wenn dieses Feature aktiviert wurde.
 
 <a id="launch-document-explorer"></a>
 
 ## <a name="launch-document-explorer-in-the-azure-portal"></a>Starten von Dokument-Explorer im Azure-Portal
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png). 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich auf ![Azure Cosmos DB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **Azure Cosmos DB**. 
 
-    Wenn **NoSQL (DocumentDB)** nicht angezeigt wird, klicken Sie unten auf **Weitere Dienste** und dann auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png).
+    Wenn **Azure Cosmos DB** nicht angezeigt wird, klicken Sie unten auf **Weitere Dienste** und dann auf ![Azure Cosmos DB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **Azure Cosmos DB**.
 2. Wählen Sie den Kontonamen. 
 3. Klicken Sie im Ressourcenmenü auf **Dokument-Explorer**. 
    
@@ -58,7 +59,7 @@ Dieser Artikel bietet einen Überblick über die beiden Möglichkeiten zum Erste
    > 
    > 
    
-    Wenn Sie bereits über Daten aus JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeichern, Amazon DynamoDB, HBase oder anderen DocumentDB-Sammlungen verfügen, können Sie das [Datenmigrationstool](documentdb-import-data.md) von DocumentDB verwenden, um Ihre Daten schnell zu importieren.
+    Wenn Sie bereits über Daten aus JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeichern, Amazon DynamoDB, HBase oder anderen DocumentDB-API-Sammlungen verfügen, können Sie das [Datenmigrationstool](documentdb-import-data.md) der DocumentDB-API verwenden, um Ihre Daten schnell zu importieren.
 
 ## <a name="edit-a-json-document"></a>Bearbeiten eines JSON-Dokuments
 1. [Starten Sie den Dokument-Explorer](#launch-document-explorer).
@@ -70,7 +71,7 @@ Dieser Artikel bietet einen Überblick über die beiden Möglichkeiten zum Erste
    
     ![Screenshot des Dokument-Explorers – Befehl "Verwerfen"](./media/documentdb-view-JSON-document-explorer/discardedit.png)
 
-## <a name="delete-a-document-from-documentdb"></a>Löschen eines Dokuments in DocumentDB
+## <a name="delete-a-document-from-cosmos-db"></a>Löschen eines Dokuments in Cosmos DB
 1. [Starten Sie den Dokument-Explorer](#launch-document-explorer).
 2. Wählen Sie das Dokument im **Dokument-Explorer** aus, klicken Sie auf **Löschen**, und bestätigen Sie anschließend den Löschvorgang. Nach der Bestätigung wird das Dokument sofort aus der Liste im Dokument-Explorer entfernt.
    
@@ -107,7 +108,7 @@ Standardmäßig lädt der Dokument-Explorer die ersten 100 Dokumente in die aus
    
    ![Screenshot des Dokument-Explorers – Blatt „Einstellungen“](./media/documentdb-view-JSON-document-explorer/documentexplorerfiltersettings2.png)
    
-   Dokument-Explorer aktualisiert die Ergebnisse automatisch mit Dokumenten, die für die Filterabfrage eine Übereinstimmung ergeben. Weitere Informationen zur DocumentDB-SQL-Grammatik finden Sie im Artikel [SQL-Abfrage und SQL-Syntax in DocumentDB](documentdb-sql-query.md). Alternativ können Sie sich auch den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) ausdrucken.
+   Dokument-Explorer aktualisiert die Ergebnisse automatisch mit Dokumenten, die für die Filterabfrage eine Übereinstimmung ergeben. Weitere Informationen zur DocumentDB-API-SQL-Grammatik finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md). Alternativ können Sie sich auch den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) ausdrucken.
    
    Mit den Dropdownlistenfeldern **Datenbank** und **Sammlung** können Sie die Sammlung, aus der aktuell Dokumente angezeigt werden, ganz einfach ändern, ohne den Dokument-Explorer schließen und neu starten zu müssen.  
    
@@ -157,18 +158,18 @@ Die andere Methode zum Erstellen, Bearbeiten und Abfragen von Dokumenten im Port
 ![Screenshot der Schaltfläche „Neue Sammlung“ im Portal](./media/documentdb-view-JSON-document-explorer/azure-documentdb-data-explorer.png)
 
 ## <a name="work-with-json-documents-outside-the-portal"></a>Verwenden von JSON-Dokumenten außerhalb des Portals
-Der Dokument-Explorer im Azure-Portal ist nur eine Möglichkeit zur Verwendung von Dokumenten in DocumentDB. Für die Arbeit mit Dokumenten können Sie auch die [REST-API](https://msdn.microsoft.com/library/azure/mt489082.aspx) oder die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Beispielcode finden Sie unter [.NET SDK-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples) sowie unter [Node.js SDK-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples).
+Der Dokument-Explorer im Azure-Portal ist nur eine Möglichkeit zur Verwendung von Dokumenten in Cosmos DB. Für die Arbeit mit Dokumenten können Sie auch die [REST-API](https://msdn.microsoft.com/library/azure/mt489082.aspx) oder die [Client-SDKs](documentdb-sdk-dotnet.md) verwenden. Beispielcode finden Sie unter [.NET SDK-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples) sowie unter [Node.js SDK-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples).
 
-Wenn Sie Dateien aus einer anderen Quelle (JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeicher, Amazon DynamoDB oder HBase) importieren oder migrieren müssen, können Sie das DocumentDB- [Datenmigrationstool](documentdb-import-data.md) nutzen, um Ihre Daten schnell in DocumentDB zu importieren.
+Wenn Sie Dateien aus einer anderen Quelle (JSON-Dateien, MongoDB, SQL Server, CSV-Dateien, Azure-Tabellenspeicher, Amazon DynamoDB oder HBase) importieren oder migrieren müssen, können Sie das Cosmos DB- [Datenmigrationstool](documentdb-import-data.md) nutzen, um Ihre Daten schnell in Cosmos DB zu importieren.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 **Symptom**: Dokument-Explorer gibt **Keine Dokumente gefunden** zurück.
 
 **Lösung**: Stellen Sie sicher, dass Sie das richtige Abonnement sowie die richtige Datenbank und Sammlung, wo die Dokumente eingefügt wurden, ausgewählt haben. Überprüfen Sie außerdem, ob Sie innerhalb Ihrer Durchsatzkontingente arbeiten. Wenn Sie bei maximalem Durchsatz arbeiten und gedrosselt werden, senken Sie die Anwendungsnutzung, um unterhalb des Maximaldurchsatzes für die Sammlung zu arbeiten.
 
-**Erklärung**: Das Portal ist eine Anwendung wie jede andere, die Aufrufe an Ihre DocumentDB-Datenbank und Sammlung richtet. Wenn Ihre Anfragen derzeit aufgrund von Aufrufen von einer separaten Anwendung gedrosselt sind, kann das Portal auch gedrosselt werden, sodass Ressourcen nicht im Portal angezeigt werden. Um das Problem zu lösen, beheben Sie die Ursache für den hohen Durchsatz, und aktualisieren Sie dann das Portalblatt. Informationen zum Messen und Senken der Durchsatznutzung finden Sie im Abschnitt [Durchsatz](documentdb-performance-tips.md#throughput) des Artikels [Leistungstipps](documentdb-performance-tips.md).
+**Erklärung**: Das Portal ist eine Anwendung wie jede andere, die Aufrufe an Ihre Cosmos DB-Datenbank und Sammlung richtet. Wenn Ihre Anfragen derzeit aufgrund von Aufrufen von einer separaten Anwendung gedrosselt sind, kann das Portal auch gedrosselt werden, sodass Ressourcen nicht im Portal angezeigt werden. Um das Problem zu lösen, beheben Sie die Ursache für den hohen Durchsatz, und aktualisieren Sie dann das Portalblatt. Informationen zum Messen und Senken der Durchsatznutzung finden Sie im Abschnitt [Durchsatz](documentdb-performance-tips.md#throughput) des Artikels [Leistungstipps](documentdb-performance-tips.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur im Dokument-Explorer unterstützten DocumentDB-SQL-Grammatik finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md). Alternativ können Sie sich auch den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) ausdrucken.
+Weitere Informationen zur im Dokument-Explorer unterstützten DocumentDB-API-SQL-Grammatik finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md). Alternativ können Sie sich auch den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) ausdrucken.
 
 

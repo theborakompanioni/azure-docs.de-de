@@ -1,13 +1,13 @@
 ---
-title: Herstellen einer Verbindung zwischen DocumentDB und Azure Search unter Verwendung von Indexern | Microsoft Docs
-description: Dieser Artikel veranschaulicht die Verwendung des Azure-Such-Indexers mit DocumentDB als Datenquelle.
-services: documentdb
+title: Herstellen einer Verbindung zwischen Azure Cosmos DB und Azure Search unter Verwendung von Indexern | Microsoft-Dokumentation
+description: Dieser Artikel veranschaulicht die Verwendung des Azure-Such-Indexers mit Azure Cosmos DB als Datenquelle.
+services: cosmosdb
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: fdef3d1d-b814-4161-bdb8-e47d29da596f
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,22 +16,23 @@ ms.date: 01/10/2017
 ms.author: mimig
 redirect_url: https://docs.microsoft.com/azure/search/search-howto-index-documentdb
 ROBOTS: NOINDEX, NOFOLLOW
-translationtype: Human Translation
-ms.sourcegitcommit: 9a5416b1c26d1e8eaecec0ada79d357f32ca5ab1
-ms.openlocfilehash: c318d7133e26ec3a39d6fc97b0693b44d742d456
-ms.lasthandoff: 01/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b3a62c693ff672458955789cde9d5be96cac9c58
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="connecting-documentdb-with-azure-search-using-indexers"></a>Herstellen einer Verbindung zwischen DocumentDB und Azure Search unter Verwendung von Indexern
-Wenn Sie ein hervorragendes Suchverlaufsverhalten in Bezug auf DocumentDB-Daten implementieren möchten, verwenden Sie den Azure Search Indexer für DocumentDB! In diesem Artikel erfahren Sie, wie Sie Azure DocumentDB mit der Azure-Suche integrieren, ohne dass Sie Code zum Beibehalten der Indexdienst-Infrastruktur schreiben müssen!
+# <a name="connecting-azure-cosmos-db-with-azure-search-using-indexers"></a>Verbinden von Azure Cosmos DB mit Azure Search mithilfe von Indexern
+Wenn Sie ein hervorragendes Suchverlaufsverhalten in Bezug auf Cosmos DB-Daten implementieren möchten, verwenden Sie den Azure Search Indexer für Cosmos DB! In diesem Artikel erfahren Sie, wie Sie Azure Cosmos DB in Azure Search integrieren, ohne Code zum Beibehalten der Indizierungsinfrastruktur schreiben zu müssen.
 
-Zur Realisierung müssen Sie [ein Azure Search-Konto einrichten](../search/search-create-service-portal.md) (Sie müssen kein Upgrade auf die Standardsuche durchführen) und anschließend die [Azure Search-REST-API](https://msdn.microsoft.com/library/azure/dn798935.aspx) aufrufen, um eine DocumentDB-**Datenquelle** und einen **Indexer** für diese Datenquelle zu erstellen.
+Zur Realisierung müssen Sie [ein Azure Search-Konto einrichten](../search/search-create-service-portal.md) (Sie müssen kein Upgrade auf die Standardsuche durchführen) und anschließend die [Azure Search-REST-API](https://msdn.microsoft.com/library/azure/dn798935.aspx) aufrufen, um eine Azure Cosmos DB-**Datenquelle** und einen **Indexer** für diese Datenquelle zu erstellen.
 
 Um Anforderungen für die Interaktion mit den REST-APIs zu senden, können Sie [Postman](https://www.getpostman.com/), [Fiddler](http://www.telerik.com/fiddler) oder ein anderes Tool verwenden.
 
-## <a name="a-idconceptsaazure-search-indexer-concepts"></a><a id="Concepts"></a>Azure Search Indexer-Konzepte
-Azure Search unterstützt die Erstellung und Verwaltung von Datenquellen (einschließlich DocumentDB) und von Indexern, die gegenläufig zu diesen Datenquellen fungieren.
+## <a id="Concepts"></a>Azure Search Indexer-Konzepte
+Azure Search unterstützt die Erstellung und Verwaltung von Datenquellen (einschließlich Cosmos DB) und von Indexern, die für diese Datenquellen ausgeführt werden.
 
 Eine **Datenquelle** gibt an, welche Daten indiziert werden müssen, und sie legt die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (wie z.B. geänderte oder gelöschte Dokumente in der Sammlung). Die Datenquelle wird als unabhängige Ressource definiert, sodass sie von mehreren Indexern verwendet werden kann.
 
@@ -41,7 +42,7 @@ Ein **Indexer** beschreibt, wie die Daten von der Datenquelle in einen Zielsuchi
 * Einen Index mit Änderungen an der Datenquelle nach einem Zeitplan synchronisieren. Der Zeitplan ist Teil der Indexer-Definition.
 * Bedarfs-Updates für einen Index je nach Notwendigkeit abrufen.
 
-## <a name="a-idcreatedatasourceastep-1-create-a-data-source"></a><a id="CreateDataSource"></a>Schritt 1: Erstellen einer Datenquelle
+## <a id="CreateDataSource"></a>Schritt 1: Erstellen einer Datenquelle
 Stellen Sie eine HTTP POST-Anforderung zum Erstellen einer neuen Datenquelle im Azure-Suchdienst einschließlich der folgenden Anforderungsheader aus.
 
     POST https://[Search service name].search.windows.net/datasources?api-version=[api-version]
@@ -52,22 +53,22 @@ Stellen Sie eine HTTP POST-Anforderung zum Erstellen einer neuen Datenquelle im 
 
 Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Felder enthalten sollte:
 
-* **Name**: Wählen Sie einen beliebigen Namen für Ihre DocumentDB-Datenbank.
+* **Name**: Wählen Sie einen Namen für Ihre Cosmos DB-Datenbank aus.
 * **Typ**: Verwenden Sie `documentdb`.
 * **Anmeldeinformationen**:
   
-  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen zur Azure DocumentDB-Datenbank im folgenden Format an: `AccountEndpoint=<DocumentDB endpoint url>;AccountKey=<DocumentDB auth key>;Database=<DocumentDB database id>`
+  * **ConnectionString**: Erforderlich. Geben Sie die Verbindungsinformationen für Ihre Azure Cosmos DB-Datenbank im folgenden Format an: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
 * **Container**:
   
-  * **Name**: Erforderlich. Geben Sie die ID der zu indizierenden DocumentDB-Sammlung an.
+  * **Name**: Erforderlich. Geben Sie die ID der zu indizierenden DocumentDB-API-Sammlung an.
   * **Abfrage**: Optional. Sie können eine Abfrage spezifizieren, um ein beliebiges JSON-Dokument in ein Flatfile-Schema zu reduzieren, welches Azure Search indizieren kann.
 * **dataChangeDetectionPolicy**: Optional. Siehe [Richtlinie zur Erkennung von Datenänderungen](#DataChangeDetectionPolicy) weiter unten.
 * **dataDeletionDetectionPolicy**: Optional. Siehe [Richtlinie zur Erkennung von Datenlöschungen](#DataDeletionDetectionPolicy) weiter unten.
 
 Nachfolgend sehen Sie ein [Beispiel für einen Anforderungstext](#CreateDataSourceExample).
 
-### <a name="a-iddatachangedetectionpolicyacapturing-changed-documents"></a><a id="DataChangeDetectionPolicy"></a>Erfassen von geänderten Dokumenten
-Die Richtlinie zum Erkennen von Datenänderungen dient einer effizienten Identifizierung geänderter Datenelemente. Derzeit ist die einzige unterstützte Richtlinie die `High Water Mark`-Richtlinie, die die `_ts` zuletzt modifizierte Zeitstempeleigenschaft verwendet, welche von DocumentDB bereitgestellt wird. Dies wird wie folgt spezifiziert:
+### <a id="DataChangeDetectionPolicy"></a>Erfassen von geänderten Dokumenten
+Die Richtlinie zum Erkennen von Datenänderungen dient einer effizienten Identifizierung geänderter Datenelemente. Derzeit ist die einzige unterstützte Richtlinie die `High Water Mark`-Richtlinie, die die `_ts` zuletzt modifizierte Zeitstempeleigenschaft verwendet, welche von Cosmos DB bereitgestellt wird. Dies wird wie folgt spezifiziert:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -78,7 +79,7 @@ Sie müssen `_ts` außerdem in der Projektion und der `WHERE`-Klausel für Ihre 
 
     SELECT s.id, s.Title, s.Abstract, s._ts FROM Sessions s WHERE s._ts >= @HighWaterMark
 
-### <a name="a-iddatadeletiondetectionpolicyacapturing-deleted-documents"></a><a id="DataDeletionDetectionPolicy"></a>Erfassen von gelöschten Dokumenten
+### <a id="DataDeletionDetectionPolicy"></a>Erfassen von gelöschten Dokumenten
 Wenn Zeilen aus der Quelltabelle gelöscht werden, sollten Sie diese Zeilen auch aus dem Suchindex löschen. Die Richtlinie zum Erkennen von Datenlöschungen dient einer effizienten Identifizierung gelöschter Datenelemente. Zurzeit ist `Soft Delete` die einzige unterstützte Richtlinie (die Löschung wird durch ein bestimmtes Kennzeichen markiert). Diese wird folgendermaßen festgelegt:
 
     {
@@ -92,8 +93,8 @@ Wenn Zeilen aus der Quelltabelle gelöscht werden, sollten Sie diese Zeilen auch
 > 
 > 
 
-### <a name="a-idleveagingqueriesaleveraging-queries"></a><a id="LeveagingQueries"></a>Verwenden von Abfragen
-Neben dem Erfassen geänderter und gelöschter Dokumente können mit einer DocumentDB-Abfrage auch geschachtelte Eigenschaften vereinfacht, Arrays entladen, JSON-Eigenschaften geplant und die zu indizierenden Daten gefiltert werden. Das Bearbeiten der zu indizierenden Daten kann die Leistung des Azure Search-Indexers verbessern.
+### <a id="LeveagingQueries"></a>Verwenden von Abfragen
+Neben dem Erfassen geänderter und gelöschter Dokumente können mit einer DocumentDB-API-Abfrage auch geschachtelte Eigenschaften vereinfacht, Arrays entladen, JSON-Eigenschaften geplant und die zu indizierenden Daten gefiltert werden. Das Bearbeiten der zu indizierenden Daten kann die Leistung des Azure Search-Indexers verbessern.
 
 Beispieldokument:
 
@@ -128,7 +129,7 @@ Abfrage zur Filterung:
     SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark
 
 
-### <a name="a-idcreatedatasourceexamplearequest-body-example"></a><a id="CreateDataSourceExample"></a>Beispiel für Anforderungstext
+### <a id="CreateDataSourceExample"></a>Beispiel für Anforderungstext
 Anhand des folgenden Beispiels wird eine Datenquelle mit einer benutzerdefinierten Abfrage und Richtlinienhinweisen erstellt:
 
     {
@@ -155,7 +156,7 @@ Anhand des folgenden Beispiels wird eine Datenquelle mit einer benutzerdefiniert
 ### <a name="response"></a>Antwort
 Sie erhalten die Antwort "HTTP 201 Created", wenn die Datenquelle erfolgreich erstellt wurde.
 
-## <a name="a-idcreateindexastep-2-create-an-index"></a><a id="CreateIndex"></a>Schritt 2: Erstellen eines Index
+## <a id="CreateIndex"></a>Schritt 2: Erstellen eines Index
 Erstellen Sie einen Azure Search-Zielindex, wenn Sie bislang noch über keinen verfügen. Sie können dies auf der [Azure-Portal-Benutzeroberfläche](../search/search-create-index-portal.md) tun, oder indem Sie [Index-API erstellen](https://msdn.microsoft.com/library/azure/dn798941.aspx) verwenden.
 
     POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
@@ -182,7 +183,7 @@ Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Que
 | GeoJSON-Objekte z. B. { „Typ“: „Punkt“, „Koordinaten“: [ long, lat ] } |Edm.GeographyPoint |
 | Andere JSON-Objekte |N/V |
 
-### <a name="a-idcreateindexexamplearequest-body-example"></a><a id="CreateIndexExample"></a>Beispiel für Anforderungstext
+### <a id="CreateIndexExample"></a>Beispiel für Anforderungstext
 Anhand des folgenden Beispiels wird ein Index mit einer ID und einem Beschreibungsfeld erstellt:
 
     {
@@ -205,7 +206,7 @@ Anhand des folgenden Beispiels wird ein Index mit einer ID und einem Beschreibun
 ### <a name="response"></a>Antwort
 Sie erhalten die Antwort "HTTP 201 Created", wenn der Index erfolgreich erstellt wurde.
 
-## <a name="a-idcreateindexerastep-3-create-an-indexer"></a><a id="CreateIndexer"></a>Schritt 3: Erstellen eines Indexers
+## <a id="CreateIndexer"></a>Schritt 3: Erstellen eines Indexers
 Sie können einen neuen Indexer innerhalb des Azure-Suchdiensts mithilfe einer HTTP POST-Anforderung mit den folgenden Headern erstellen.
 
     POST https://[Search service name].search.windows.net/indexers?api-version=[api-version]
@@ -219,13 +220,13 @@ Der Anforderungstext umfasst die Indexerdefinition, welche die folgenden Felder 
 * **targetIndexName**: Erforderlich. Der Name eines vorhandenen Indexes.
 * **Zeitplan**: Optional. Siehe [Indizierungszeitplan](#IndexingSchedule) weiter unten.
 
-### <a name="a-idindexingschedulearunning-indexers-on-a-schedule"></a><a id="IndexingSchedule"></a>Ausführen von Indexern nach einem Zeitplan
+### <a id="IndexingSchedule"></a>Ausführen von Indexern nach einem Zeitplan
 Ein Indexer kann optional einen Zeitplan angeben. Wenn ein Zeitplan vorliegt, wird der Indexer regelmäßig gemäß Zeitplan ausgeführt. Der Zeitplan besitzt die folgenden Attribute:
 
 * **Intervall**: Erforderlich. Ein Zeitdauerwert, der ein Intervall oder den Zeitraum für Indexer-Ausführungen angibt. Das kleinste zulässige Intervall beträgt 5 Minuten. Das längste ist ein Tag. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Das Muster hierfür lautet wie folgt: `P(nD)(T(nH)(nM))`. Beispiele: `PT15M` = alle 15 Minuten, `PT2H` = alle 2 Stunden.
 * **startTime**: Erforderlich. Ein UTC-DateTime-Wert, der angibt, wann die Ausführung des Indexers beginnen soll.
 
-### <a name="a-idcreateindexerexamplearequest-body-example"></a><a id="CreateIndexerExample"></a>Beispiel für Anforderungstext
+### <a id="CreateIndexerExample"></a>Beispiel für Anforderungstext
 Anhand des folgenden Beispiels wird ein Indexer erstellt. Dieser kopiert Daten aus der Sammlung, die von der `myDocDbDataSource`-Datenquelle referenziert wird, nach einem Zeitplan in den `mySearchIndex`-Index. Der Zeitplan beginnt am 1. Jan. 2015 UTC und wird stündlich ausgeführt.
 
     {
@@ -238,7 +239,7 @@ Anhand des folgenden Beispiels wird ein Indexer erstellt. Dieser kopiert Daten a
 ### <a name="response"></a>Antwort
 Sie erhalten die Antwort "HTTP 201 Created", wenn der Indexer erfolgreich erstellt wurde.
 
-## <a name="a-idrunindexerastep-4-run-an-indexer"></a><a id="RunIndexer"></a>Schritt 4: Ausführen ein Indexers
+## <a id="RunIndexer"></a>Schritt 4: Ausführen ein Indexers
 Zusätzlich zur Ausführung in regelmäßigen Abständen nach einem Zeitplan kann ein Indexer bei Bedarf auch aufgerufen werden, indem die folgende HTTP POST-Anforderung ausgegeben wird:
 
     POST https://[Search service name].search.windows.net/indexers/[indexer name]/run?api-version=[api-version]
@@ -247,7 +248,7 @@ Zusätzlich zur Ausführung in regelmäßigen Abständen nach einem Zeitplan kan
 ### <a name="response"></a>Antwort
 Sie erhalten die Antwort "HTTP 202 Accepted", wenn der Indexer erfolgreich aufgerufen wurde.
 
-## <a name="a-namegetindexerstatusastep-5-get-indexer-status"></a><a name="GetIndexerStatus"></a>Schritt 5: Abrufen des Indexerstatus
+## <a name="GetIndexerStatus"></a>Schritt 5: Abrufen des Indexerstatus
 Sie können eine HTTP GET-Anforderung ausgeben, um den aktuellen Status und den Ausführungsverlauf eines Indexers abzurufen:
 
     GET https://[Search service name].search.windows.net/indexers/[indexer name]/status?api-version=[api-version]
@@ -286,10 +287,10 @@ Die Antwort sollte etwa wie folgt aussehen:
 
 Der Ausführungsverlauf enthält bis zu 50 der jüngsten abgeschlossenen Ausführungen. Diese sind in umgekehrter chronologischer Reihenfolge sortiert (somit ist die neueste Ausführung als Erstes in der Antwort aufgelistet).
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>Nächste Schritte
-Glückwunsch! Sie wissen nun, wie Azure DocumentDB mit Azure Search unter Verwendung des Indexers für DocumentDB integriert wird.
+## <a name="NextSteps"></a>Nächste Schritte
+Glückwunsch! Sie wissen nun, wie Azure Cosmos DB mit dem Indexer für Cosmos DB in Azure Search integriert wird.
 
-* Weitere Informationen zu Azure DocumentDB finden Sie auf der [Seite zum DocumentDB-Dienst](https://azure.microsoft.com/services/documentdb/).
+* Weitere Informationen zu Cosmos DB finden Sie auf der [Seite über den Azure Cosmos DB-Dienst](https://azure.microsoft.com/services/documentdb/).
 * Weitere Informationen zu Azure Search finden Sie auf der [Seite des Search-Diensts](https://azure.microsoft.com/services/search/).
 
 

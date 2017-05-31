@@ -1,13 +1,13 @@
 ---
-title: Informationen zum sicheren Zugriff auf Daten in DocumentDB | Microsoft Docs
-description: "Informationen zu Zugriffssteuerungskonzepten in DocumentDB, darunter Hauptschlüssel, Schlüssel mit Leseberechtigung, Benutzer und Berechtigungen."
-services: documentdb
+title: Informationen zum sicheren Zugriff auf Daten in Azure Cosmos DB | Microsoft-Dokumentation
+description: "Informationen zu Zugriffssteuerungskonzepten in Azure Cosmos DB, darunter Hauptschlüssel, Schlüssel mit Leseberechtigung, Benutzer und Berechtigungen."
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 8641225d-e839-4ba6-a6fd-d6314ae3a51c
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 7ab474747c74295a5dba9a6f3ad32000a7551a9c
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 88a30be874fb6890c9c56a16f1dad2318a571fbb
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="securing-access-to-documentdb-data"></a>Sicherer Zugriff auf Daten in DocumentDB
-Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)gespeicherte Daten.
+# <a name="securing-access-to-azure-cosmos-db-data"></a>Sichern des Zugriffs auf Azure Cosmos DB-Daten
+Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) gespeicherte Daten.
 
-DocumentDB verwendet zwei Arten von Schlüsseln, um Benutzer zu authentifizieren und den Zugriff auf Daten und Ressourcen zu ermöglichen. 
+Azure Cosmos DB verwendet zwei Arten von Schlüsseln, um Benutzer zu authentifizieren und den Zugriff auf Daten und Ressourcen zu ermöglichen. 
 
 |Schlüsseltyp|Ressourcen|
 |---|---|
@@ -44,7 +44,7 @@ Hauptschlüssel ermöglichen den Zugriff auf alle Verwaltungsressourcen für das
 
 Jedes Konto umfasst zwei Hauptschlüssel: einen primären und einen sekundären Schlüssel. Dank der Verwendung von zwei Schlüsseln können Sie Schlüssel neu generieren oder ersetzen und trotzdem ohne Unterbrechung auf Ihr Konto und Ihre Daten zugreifen. 
 
-Neben den beiden Hauptschlüsseln für das DocumentDB-Konto stehen noch zwei schreibgeschützte Schlüssel zur Verfügung. Diese schreibgeschützten Schlüssel ermöglichen ausschließlich Lesevorgänge für das Konto. Schreibgeschützte Schlüssel bieten keinen Zugriff auf Leseberechtigungsressourcen.
+Neben den beiden Hauptschlüsseln für das Cosmos DB-Konto stehen noch zwei schreibgeschützte Schlüssel zur Verfügung. Diese schreibgeschützten Schlüssel ermöglichen ausschließlich Lesevorgänge für das Konto. Schreibgeschützte Schlüssel bieten keinen Zugriff auf Leseberechtigungsressourcen.
 
 Primäre, sekundäre und schreibgeschützte Hauptschlüssel sowie Hauptschlüssel mit Lese-/Schreibzugriff können über das Azure-Portal abgerufen und neu generiert werden. Eine entsprechende Anleitung finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys).
 
@@ -56,11 +56,11 @@ Der Hauptschlüssel kann ganz einfach gewechselt werden. Rufen Sie über das Azu
 
 ### <a name="code-sample-to-use-a-master-key"></a>Codebeispiel für die Verwendung eines Hauptschlüssels
 
-Das folgende Codebeispiel veranschaulicht, wie mit einem DocumentDB-Kontoendpunkt und einem Hauptschlüssel eine DocumentClient-Instanz instanziiert und eine Datenbank erstellt wird. 
+Das folgende Codebeispiel veranschaulicht, wie mit einem Cosmos DB-Kontoendpunkt und einem Hauptschlüssel eine DocumentClient-Instanz instanziiert und eine Datenbank erstellt wird. 
 
 ```csharp
 //Read the DocumentDB endpointUrl and authorization keys from config.
-//These values are available from the Azure portal on the NOSQL (DocumentDB) account blade under "Keys".
+//These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
 //NB > Keep these values in a safe and secure location. Together they provide Administrative access to your DocDB account.
 
 private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -87,33 +87,33 @@ Ressourcentoken ermöglichen den Zugriff auf die Anwendungsressourcen in einer D
 - Verwenden ein Hashressourcentoken, das speziell für den Benutzer, die Ressource und die Berechtigung erstellt wird.
 - Verfügen über einen anpassbaren Gültigkeitszeitraum. Die Gültigkeitsdauer beträgt standardmäßig eine Stunde. Die Tokengültigkeitsdauer kann aber explizit auf bis zu fünf Stunden festgelegt werden.
 - Stellen eine sichere Alternative zur Weitergabe des Hauptschlüssels dar. 
-- Ermöglichen Clients das Lesen, Schreiben und Löschen von Ressourcen im DocumentDB-Konto gemäß den gewährten Berechtigungen.
+- Ermöglichen Clients das Lesen, Schreiben und Löschen von Ressourcen im Cosmos DB-Konto gemäß den gewährten Berechtigungen.
 
-Mit einem Ressourcentoken (durch Erstellung von DocumentDB-Benutzern und -Berechtigungen) können Sie einem Client, dem Sie den Hauptschlüssel nicht anvertrauen können, Zugriff auf Ressourcen in Ihrem DocumentDB-Konto gewähren.  
+Mit einem Ressourcentoken (durch Erstellung von Cosmos DB-Benutzern und -Berechtigungen) können Sie einem Client, dem Sie den Hauptschlüssel nicht anvertrauen können, Zugriff auf Ressourcen in Ihrem Cosmos DB-Konto gewähren.  
 
-DocumentDB-Ressourcentoken stellen eine sichere Alternative dar, um Clients das Lesen, Schreiben und Löschen von Ressourcen in einem DocumentDB-Konto gemäß den gewährten Berechtigungen und ohne Hauptschlüssel oder schreibgeschützten Schlüssel zu ermöglichen.
+Cosmos DB-Ressourcentoken stellen eine sichere Alternative dar, um Clients das Lesen, Schreiben und Löschen von Ressourcen in einem Cosmos DB-Konto gemäß den gewährten Berechtigungen und ohne Hauptschlüssel oder schreibgeschützten Schlüssel zu ermöglichen.
 
 Hier sehen Sie ein typisches Design, bei dem Ressourcentoken angefordert, generiert und an Clients übermittelt werden können:
 
 1. Ein Mid-Tier-Dienst dient zum Freigeben von Benutzerfotos für eine mobile Anwendung. 
-2. Der Mid-Tier-Dienst verfügt über den Hauptschlüssel des DocumentDB-Kontos.
+2. Der Mid-Tier-Dienst verfügt über den Hauptschlüssel des Cosmos DB-Kontos.
 3. Die Foto-App ist auf mobilen Endbenutzergeräten installiert. 
 4. Bei der Anmeldung richtet die Fotoapp die Identität des Benutzers mit dem Mid-Tier-Dienst ein. Dieser Mechanismus der Identitätseinrichtung hängt nur von der Anwendung ab.
 5. Nachdem die Identität eingerichtet wurde, fordert der Mid-Tier-Dienst Berechtigungen auf Grundlage der Identität an.
 6. Der Mid-Tier-Dienst sendet einen Ressourcentoken an die Phoneapp zurück.
-7. Die Phoneapp kann weiterhin den Ressourcentoken für direkten Zugriff auf DocumentDB-Ressourcen mit den Berechtigungen verwenden, die durch das Ressourcentoken für einen bestimmten Zeitraum definiert sind. 
+7. Die Phoneapp kann weiterhin den Ressourcentoken für direkten Zugriff auf Cosmos DB-Ressourcen mit den Berechtigungen verwenden, die durch das Ressourcentoken für einen bestimmten Zeitraum definiert sind. 
 8. Wenn das Ressourcentoken abläuft, tritt bei anschließenden Anforderungen die Ausnahme 401 (nicht autorisierter Zugriff) auf.  An dieser Stelle richtet die Phoneapp die Identität erneut ein und fordert ein neues Ressourcentoken an.
 
-    ![Workflow der DocumentDB-Ressourcentoken](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
+    ![Workflow der Azure Cosmos DB-Ressourcentoken](./media/documentdb-secure-access-to-data/resourcekeyworkflow.png)
 
-Die Generierung und Verwaltung von Ressourcentoken wird von den nativen DocumentDB-Clientbibliotheken übernommen. Bei Verwendung von REST müssen Sie allerdings die Anforderungs-/Authentifizierungsheader erstellen. Weitere Informationen zum Erstellen von Authentifizierungsheadern für REST finden Sie unter [Access Control on DocumentDB Resources](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources) (Zugriffssteuerung für DocumentDB-Ressourcen) oder im [Quellcode für unsere SDKs](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
+Die Generierung und Verwaltung von Ressourcentoken wird von den nativen Cosmos DB-Clientbibliotheken übernommen. Bei Verwendung von REST müssen Sie allerdings die Anforderungs-/Authentifizierungsheader erstellen. Weitere Informationen zum Erstellen von Authentifizierungsheadern für REST finden Sie unter [Access Control on Cosmos DB Resources](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources) (Zugriffssteuerung für Cosmos DB-Ressourcen) oder im [Quellcode für unsere SDKs](https://github.com/Azure/azure-documentdb-node/blob/master/source/lib/auth.js).
 
 Ein Beispiel für einen Dienst der mittleren Ebene, der zum Generieren oder Vermitteln von Ressourcentoken dient, finden Sie unter der [ResourceTokenBroker-App](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
 <a id="users"></a>
 
 ## <a name="users"></a>Benutzer
-DocumentDB-Benutzer werden einer DocumentDB-Datenbank zugeordnet.  Jede Datenbank kann null oder mehr DocumentDB-Benutzer enthalten.  Das folgende Codebeispiel veranschaulicht das Erstellen einer DocumentDB-Benutzerressource.
+Cosmos DB-Benutzer werden einer Cosmos DB-Datenbank zugeordnet.  Jede Datenbank kann null oder mehr Cosmos DB-Benutzer enthalten.  Das folgende Codebeispiel veranschaulicht das Erstellen einer Cosmos DB-Benutzerressource.
 
 ```csharp
 //Create a user.
@@ -126,21 +126,21 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 ```
 
 > [!NOTE]
-> Jeder DocumentDB-Benutzer verfügt über eine PermissionsLink-Eigenschaft, mit deren Hilfe die Liste mit den [Berechtigungen](#permissions) abgerufen werden kann, die dem Benutzer zugeordnet sind.
+> Jeder Cosmos DB-Benutzer verfügt über eine PermissionsLink-Eigenschaft, mit deren Hilfe die Liste mit den [Berechtigungen](#permissions) abgerufen werden kann, die dem Benutzer zugeordnet sind.
 > 
 > 
 
 <a id="permissions"></a>
 
 ## <a name="permissions"></a>Berechtigungen
-Eine DocumentDB-Berechtigungsressource ist einem DocumentDB-Benutzer zugeordnet.  Jeder Benutzer kann null oder mehr DocumentDB-Berechtigungen enthalten.  Eine Berechtigungsressource ermöglicht den Zugriff auf ein Sicherheitstoken, das der Benutzer beim Zugriff auf eine bestimmte Anwendungsressource benötigt.
+Eine Cosmos DB-Berechtigungsressource ist einem Cosmos DB-Benutzer zugeordnet.  Jeder Benutzer kann null oder mehr Cosmos DB-Berechtigungen enthalten.  Eine Berechtigungsressource ermöglicht den Zugriff auf ein Sicherheitstoken, das der Benutzer beim Zugriff auf eine bestimmte Anwendungsressource benötigt.
 Von einer Berechtigungsressource können zwei Zugriffsebenen bereitgestellt werden:
 
 * Alle: Der Benutzer verfügt über Vollzugriff auf die Ressource.
 * Lesen: Der Benutzer kann die Inhalte der Ressource nur lesen und keine Schreib-, Aktualisierungs- oder Löschvorgänge für die Ressource vornehmen.
 
 > [!NOTE]
-> Zum Ausführen von gespeicherten DocumentDB-Prozeduren muss der Benutzer über uneingeschränkte Berechtigung für die Sammlung verfügen, in dem die gespeicherte Prozedur ausgeführt wird.
+> Zum Ausführen von gespeicherten Cosmos DB-Prozeduren muss der Benutzer über uneingeschränkte Berechtigung für die Sammlung verfügen, in dem die gespeicherte Prozedur ausgeführt wird.
 > 
 > 
 
@@ -165,7 +165,7 @@ Falls Sie einen Partitionsschlüssel für Ihre Sammlung angegeben haben, müssen
 
 ### <a name="code-sample-to-read-permissions-for-user"></a>Codebeispiel für das Lesen von Berechtigungen für einen Benutzer
 
-Um alle einem bestimmten Benutzer zugeordneten Berechtigungsressourcen abzurufen, stellt DocumentDB für jedes Benutzerobjekt einen Berechtigungsfeed zur Verfügung.  Der folgende Codeausschnitt zeigt, wie die dem oben erstellten Benutzer zugeordnete Berechtigung abgerufen, eine Berechtigungsliste erstellt und ein neuer DocumentClient für den Benutzer instanziiert werden kann.
+Um alle einem bestimmten Benutzer zugeordneten Berechtigungsressourcen abzurufen, stellt Cosmos DB für jedes Benutzerobjekt einen Berechtigungsfeed zur Verfügung.  Der folgende Codeausschnitt zeigt, wie die dem oben erstellten Benutzer zugeordnete Berechtigung abgerufen, eine Berechtigungsliste erstellt und ein neuer DocumentClient für den Benutzer instanziiert werden kann.
 
 ```csharp
 //Read a permission feed.
@@ -182,7 +182,7 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur DocumentDB-Datenbanksicherheit finden Sie unter [DocumentDB NoSQL database security](documentdb-nosql-database-security.md) (DocumentDB: NoSQL-Datenbanksicherheit).
-* Informationen zum Verwalten von Hauptschlüsseln und schreibgeschützten Schlüsseln finden Sie unter [Verwalten eines DocumentDB-Kontos](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys).
-* Informationen zum Erstellen von DocumentDB-Autorisierungstoken finden Sie unter [Access Control on DocumentDB Resources](https://docs.microsoft.com/en-us/rest/api/documentdb/access-control-on-documentdb-resources) (Zugriffssteuerung für DocumentDB-Ressourcen).
+* Weitere Informationen zur Cosmos DB-Datenbanksicherheit finden Sie unter [Cosmos DB: Datenbanksicherheit](documentdb-nosql-database-security.md).
+* Informationen zum Verwalten von Hauptschlüsseln und schreibgeschützten Schlüsseln finden Sie unter [Verwalten eines Azure Cosmos DB-Kontos](documentdb-manage-account.md#a-idkeysaview-copy-and-regenerate-access-keys).
+* Informationen zum Erstellen von Azure Cosmos DB-Autorisierungstoken finden Sie unter [Access Control on Azure Cosmos DB Resources](https://docs.microsoft.com/rest/api/documentdb/access-control-on-documentdb-resources) (Zugriffssteuerung für Azure Cosmos DB-Ressourcen).
 

@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 02bf4191e60bfe7a49a37eed10f7571e08502150
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b665f45c66b35ab93e19ed1b54a6e215c93dcf57
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -26,8 +29,8 @@ Der v2.0-Endpunkt kann Azure AD als Identity-as-a-Service-Lösung mit den Indus
 
 > [!NOTE]
 > Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
-> 
-> 
+>
+>
 
 ## <a name="the-basics"></a>Die Grundlagen
 In fast allen OAuth- und OpenID Connect-Vorgängen sind vier Beteiligte am Austausch involviert:
@@ -37,7 +40,7 @@ In fast allen OAuth- und OpenID Connect-Vorgängen sind vier Beteiligte am Austa
 * Der **Autorisierungsserver** ist der v2.0-Endpunkt.  Er ist verantwortlich für das Sicherstellen der Identität des Benutzers, das Erteilen und Widerrufen des Zugriffs auf Ressourcen und das Ausstellen von Token.  Er ist auch als Identitätsanbieter bekannt und verarbeitet auf sichere Weise alles im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen zwischen den Beteiligten in einem Vorgang.
 * Beim **Ressourcenbesitzer** handelt es sich normalerweise um den Endbenutzer.  Diese Person besitzt die Daten und hat die Möglichkeit, Dritten den Zugriff auf die Daten oder die Ressource zu gewähren.
 * Der **OAuth-Client** ist Ihre App, die durch ihre Anwendungs-ID identifiziert wird.  Dies ist normalerweise der Beteiligte, mit dem der Endbenutzer interagiert, und der Token vom Autorisierungsserver anfordert.  Der Client muss vom Besitzer der Ressource die Berechtigung zum Zugriff darauf erhalten.
-* Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind.  Er vertraut dem Autorisierungsserver, dass der OAuth-Client sicher authentifizert und autorisiert wird, und verwendet Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
+* Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind.  Er vertraut dem Autorisierungsserver, dass der OAuth-Client sicher authentifiziert und autorisiert wird, und verwendet Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
 
 ## <a name="app-registration"></a>App-Registrierung
 Jede App, die den v2.0-Endpunkt nutzt, muss vor der Interaktion mit OAuth oder OpenID Connect unter [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) registriert werden.  Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
@@ -79,12 +82,5 @@ Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der
 * [Erstellen von Web-Apps mit OpenID Connect](active-directory-v2-protocols-oidc.md)
 * [Erstellen von Apps mit einer einzigen Seite mit dem impliziten OAuth 2.0-Fluss](active-directory-v2-protocols-implicit.md)
 * [Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Clientanmeldeinformations-Flow](active-directory-v2-protocols-oauth-client-creds.md)
-* Abrufen von Token in einer Web-API mit dem OAuth 2.0-Fluss "Im-Auftrag-von" (in Kürze verfügbar)
-
-<!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* [Abrufen von Token in einer Web-API mit dem „Im Namen von“-Fluss von OAuth 2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)
 

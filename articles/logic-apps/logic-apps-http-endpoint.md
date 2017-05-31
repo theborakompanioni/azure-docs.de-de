@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: jehollan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e0bf2edebfda479532a2ce71deff4623179910f3
-ms.lasthandoff: 04/03/2017
+ms.author: LADocs; jehollan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 32a5cfdb520c745dbd0fa5c433849bd3783a364e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -275,6 +276,10 @@ Das JSON-Schema für die **Response**-Aktion sieht jetzt so aus:
 #### <a name="q-what-about-url-security"></a>F: Wie sieht es mit der URL-Sicherheit aus?
 
 A: Azure generiert sicher Rückruf-URLs für Logik-Apps über eine Shared Access Signature (SAS). Diese Signatur wird als Abfrageparameter übergeben und muss geprüft werden, bevor Ihre Logik-App ausgelöst werden kann. Azure generiert die Signatur durch eine eindeutige Kombination aus einem geheimen Schlüssel pro Logik-App, dem Namen des Triggers und dem ausgeführten Vorgang. Nur wenn ein Benutzer Zugriff auf den geheimen Logik-App-Schlüssel hat, kann er eine gültige Signatur generieren.
+
+   > [!NOTE]
+   > Für Produktions-/Sicherheitssysteme wird dringend davon abgeraten, die Logik-App direkt über den Browser aufzurufen, da der Schlüssel für den gemeinsamen Zugriff in die URL eingefügt wird und es nicht möglich ist, Richtlinien für sichere Inhalte zu verwalten, da die Domänen von Logik-App-Kunden gemeinsam verwendet werden.
+
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>F: Kann ich weitere HTTP-Endpunkte konfigurieren?
 

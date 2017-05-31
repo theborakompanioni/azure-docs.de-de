@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: fa9e86552f61693b953f636bff3cd9d869feba23
-ms.openlocfilehash: 14c179d76664876695f2974de44e6bc000942184
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: a78679782f538121c2451a6e2d1519f457ad057c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -43,7 +44,7 @@ Stellen Sie vor dem Vornehmen von Änderungen an der Filterung sicher, dass Sie 
 
 Da bei der Filterung viele Objekte gleichzeitig entfernt werden können, sollten Sie darauf achten, dass Ihre neuen Filter korrekt sind, bevor Sie mit dem Exportieren von Änderungen nach Azure AD beginnen. Es wird dringend empfohlen, nach dem Durchführen der Konfigurationsschritte die [Überprüfungsschritte](#apply-and-verify-changes) auszuführen, bevor Sie exportieren und Änderungen an Azure AD vornehmen.
 
-Um das versehentliche Löschen von vielen Objekten zu verhindern, ist das Feature zum [Verhindern versehentlicher Löschungen](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) standardmäßig aktiviert. Wenn Sie aufgrund einer Filterung viele Objekte löschen (standardmäßig&500;), müssen Sie die Schritte in diesem Artikel ausführen, damit die Löschvorgänge auch für Azure AD gelten.
+Um das versehentliche Löschen von vielen Objekten zu verhindern, ist das Feature zum [Verhindern versehentlicher Löschungen](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) standardmäßig aktiviert. Wenn Sie aufgrund einer Filterung viele Objekte löschen (standardmäßig 500), müssen Sie die Schritte in diesem Artikel ausführen, damit die Löschvorgänge auch für Azure AD gelten.
 
 Wenn Sie einen älteren Build als November 2015 nutzen ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), eine Änderung an der Filterkonfiguration vornehmen und die Synchronisierung von Kennwörtern verwenden, müssen Sie eine vollständige Synchronisierung aller Kennwörter auslösen, nachdem Sie die Konfiguration abgeschlossen haben. Informationen zu Schritten zum Auslösen einer vollständigen Kennwortsynchronisierung finden Sie unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Falls Sie Version 1.0.9125 oder höher verwenden, wird mit der normalen Aktion **Vollständige Synchronisierung** auch berechnet, ob Kennwörter synchronisiert werden sollen. Dieser zusätzliche Schritt ist nicht mehr erforderlich.
 
@@ -76,7 +77,7 @@ Nachdem Sie alle Änderungen an der Filterung vorgenommen haben, sollten Sie nic
 ## <a name="filtering-options"></a>Filteroptionen
 Sie können die folgenden Filterkonfigurationstypen auf das Tool für die Verzeichnissynchronisierung anwenden:
 
-* [**Gruppenbasiert:**](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups) Die auf einer einzelnen Gruppe basierende Filterung kann nur bei der Erstinstallation mit dem Installations-Assistenten konfiguriert werden. Dies wird in diesem Artikel nicht weiter beschrieben.
+* [**Gruppenbasiert:**](#group-based-filtering) Die auf einer einzelnen Gruppe basierende Filterung kann nur bei der Erstinstallation mit dem Installations-Assistenten konfiguriert werden.
 * [**Domänenbasiert:**](#domain-based-filtering) Bei dieser Option können Sie auswählen, welche Domänen mit Azure AD synchronisiert werden. Außerdem können Sie Domänen zur Konfiguration des Synchronisierungsmoduls hinzufügen und daraus entfernen, wenn Sie Änderungen an Ihrer lokalen Infrastruktur vornehmen, nachdem Sie die Azure AD Connect-Synchronisierung installiert haben.
 * [**Organisationseinheitenbasiert:**](#organizational-unitbased-filtering) Bei dieser Option können Sie auswählen, welche Organisationseinheiten mit Azure AD synchronisiert werden. Diese Option ist für alle Objekttypen in den ausgewählten Organisationseinheiten vorhanden.
 * [**Attributbasiert:**](#attribute-based-filtering) Bei dieser Option können Sie Objekte basierend auf den Attributwerten der Objekte filtern. Sie können auch unterschiedliche Filter für unterschiedliche Objekttypen verwenden.
@@ -210,8 +211,9 @@ Im folgenden Beispiel werden alle Benutzer herausgefiltert (nicht synchronisiert
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
 4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User DoNotSyncFilter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 50), und klicken Sie auf **Weiter**.  
    ![Eingehend 1 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
-5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **ExtensionAttribute15** aus. Stellen Sie sicher, dass der **Operator** auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **NoSync** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
-   ![Eingehend 2 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
+5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **ExtensionAttribute15** aus. Stellen Sie sicher, dass der **Operator** auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **NoSync** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.
+     
+![Eingehend 2 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
 6. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
 7. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Textfeld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
    ![Eingehend 3 Transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
@@ -229,14 +231,16 @@ Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das d
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
 4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Sales sync*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 51), und klicken Sie auf **Weiter**.  
    ![Eingehend 4 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
-5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **department** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **Sales** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
-   ![Eingehend 5 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
+5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **department** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **Sales** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.
+     
+![Eingehend 5 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
 6. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
 7. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **False** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
    ![Eingehend 6 Transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png)  
    Dies ist ein Sonderfall, in dem cloudFiltered explizit auf **FALSE** festgelegt wird.
-8. Wir müssen jetzt die Synchronisierungsregel „catch-all“ erstellen, die alles abdeckt. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Catch-all filter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 99). Sie haben einen Rangfolgewert ausgewählt, der höher (niedrigere Rangfolge) als der für die vorherige Synchronisierungsregel ist. Sie haben aber auch Platz gelassen, sodass Sie später noch weitere Filterregeln für die Synchronisierung hinzufügen können, wenn Sie zusätzliche Abteilungen synchronisieren möchten. Klicken Sie auf **Weiter**.  
-   ![Eingehend 7 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
+8. Wir müssen jetzt die Synchronisierungsregel „catch-all“ erstellen, die alles abdeckt. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Catch-all filter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 99). Sie haben einen Rangfolgewert ausgewählt, der höher (niedrigere Rangfolge) als der für die vorherige Synchronisierungsregel ist. Sie haben aber auch Platz gelassen, sodass Sie später noch weitere Filterregeln für die Synchronisierung hinzufügen können, wenn Sie zusätzliche Abteilungen synchronisieren möchten. Klicken Sie auf **Weiter**.
+     
+![Eingehend 7 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
 9. Lassen Sie **Scoping filter** leer, und klicken Sie auf **Next**. Ein leerer Filter gibt an, dass die Regel nicht auf alle Objekte angewendet wird.
 10. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
 11. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **True** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
@@ -295,7 +299,7 @@ Jetzt ist es an der Zeit, den Scheduler wieder zu aktivieren.
 2. Suchen Sie direkt unterhalb der **Aufgabenplanungsbibliothek** nach der Aufgabe mit dem Namen **Azure AD-Synchronisierungsplaner**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Aktivieren** aus.
 
 ## <a name="group-based-filtering"></a>Gruppenbasierte Filterung
-Die gruppenbasierte Filterung kann bei der erstmaligen Installation von Azure AD Connect als benutzerdefinierte Installation konfiguriert werden. Die Option ist für Pilotbereitstellungen gedacht, bei denen nur ein kleiner Satz von Objekten synchronisiert werden soll. Wenn Sie die gruppenbasierte Filterung deaktiviert haben, können Sie sie nicht mehr aktivieren. Die Verwendung der gruppenbasierten Filterung in einer benutzerdefinierten Konfiguration wird *nicht unterstützt*. Die Konfiguration dieses Features wird nur mit dem Installations-Assistenten unterstützt. Wenn Sie Ihr Pilotprojekt abgeschlossen haben, sollten Sie eine der anderen Filteroptionen in diesem Thema verwenden.
+Die gruppenbasierte Filterung kann bei der erstmaligen Installation von Azure AD Connect als [benutzerdefinierte Installation](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups) konfiguriert werden. Die Option ist für Pilotbereitstellungen gedacht, bei denen nur ein kleiner Satz von Objekten synchronisiert werden soll. Wenn Sie die gruppenbasierte Filterung deaktiviert haben, können Sie sie nicht mehr aktivieren. Die Verwendung der gruppenbasierten Filterung in einer benutzerdefinierten Konfiguration wird *nicht unterstützt*. Die Konfiguration dieses Features wird nur mit dem Installations-Assistenten unterstützt. Wenn Sie Ihr Pilotprojekt abgeschlossen haben, sollten Sie eine der anderen Filteroptionen in diesem Thema verwenden. Wenn Sie die organisationseinheitenbasierte Filterung zusammen mit der gruppenbasierten Filterung verwenden, müssen die Organisationseinheiten mit den Gruppen- und Mitgliedsobjekten eingeschlossen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).

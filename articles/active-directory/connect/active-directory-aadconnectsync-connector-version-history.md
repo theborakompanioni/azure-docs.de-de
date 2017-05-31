@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2017
+ms.date: 05/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 244ca634cfd47ee37e3845380ac05dc68d406621
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 3c91cb00d6535a4bc01a3b95547ef940cbff7fcb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -38,11 +39,35 @@ Verwandte Links:
 * [PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md) – Referenzdokumentation
 * [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
 
+## <a name="115220"></a>1.1.522.0
+
+### <a name="enhancements"></a>Verbesserungen:
+
+* SQL (generisch):
+  * **Szenario: wieder implementiert:** „*“-Feature
+  * **Lösungsbeschreibung:** geänderter Ansatz für die [Behandlung referenzierter, mehrwertiger Attribute](active-directory-aadconnectsync-connector-genericsql.md)
+
+
+### <a name="fixed-issues"></a>Behobene Probleme:
+
+* Webdienste (generisch):
+  * Fehler beim Importieren der Serverkonfiguration, wenn der WebService-Connector vorhanden ist.
+  * Der WebService-Connector funktioniert nicht mit mehreren Webdiensten.
+
+* SQL (generisch):
+  * Für referenzierte Einzelwertattribute werden keine Objekttypen aufgeführt.
+  * Der Deltaimport bei der Strategie der Änderungsnachverfolgung löscht Objekte, wenn der Wert aus der mehrwertigen Tabelle entfernt wird.
+  * OverflowException im GSQL-Connector mit DB2 bei AS/400
+
+Lotus:
+  * Eine Option zum Aktivieren/Deaktivieren der Suche von Organisationseinheiten vor dem Öffnen der Seite „GlobalParameters“ wurde hinzugefügt.
+
 ## <a name="114430"></a>1.1.443.0
 
 Veröffentlicht: März 2017
 
 ### <a name="enhancements"></a>Verbesserungen
+
 * SQL (generisch):</br>
   **Symptome des Szenarios:** Für den SQL-Connector gibt es eine bekannte Einschränkung, bei der nur ein Verweis auf einen Objekttyp zulässig und ein Querverweis mit Membern erforderlich ist. </br>
   **Lösungsbeschreibung:** Im Verarbeitungsschritt für Verweise, bei denen die Option „*“ gewählt wird, werden ALLE Kombinationen von Objekttypen an das Synchronisierungsmodul zurückgegeben.

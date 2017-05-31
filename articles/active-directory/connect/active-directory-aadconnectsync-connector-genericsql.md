@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 05/11/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 7185ab62ee0e4383a7128fe731bd68da0ae87e66
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: b7e99f8a4d7bc1cd30c71ce08ad38c13203f8b69
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -121,6 +122,7 @@ Auf dieser Seite können Sie jeweils das Anker- und DN-Attribut für die erkannt
 * Mehrwertige und boolesche Attribute werden nicht aufgeführt.
 * Für DN und Anker kann nicht das gleiche Attribut verwendet werden, es sei denn, auf der Konnektivitätsseite wurde die Option **DN is Anchor** (DN ist Anker) aktiviert.
 * Ist auf der Konnektivitätsseite die Option **DN is Anchor** (DN ist Anker) aktiviert, wird auf dieser Seite nur das DN-Attribut benötigt. Dieses Attribut wird dann auch als Ankerattribut verwendet.
+
   ![schema3b](./media/active-directory-aadconnectsync-connector-genericsql/schema3b.png)
 
 ### <a name="schema-4-define-attribute-type-reference-and-direction"></a>Schema 4 (Definieren von Attributtyp, Verweis und Richtung)
@@ -130,7 +132,8 @@ Auf dieser Seite können Sie für die Attribute jeweils den Attributtyp (beispie
 
 * **DataType**: Dient dazu, den Attributtyp den Typen zuzuordnen, die dem Synchronisierungsmodul bekannt sind. Standardmäßig wird der im SQL-Schema erkannte Typ verwendet, „Datum/Uhrzeit“ und „Verweis“ sind jedoch nicht so einfach erkennbar. Hierfür muss **DateTime** oder **Reference** angegeben werden.
 * **Direction**: Die Richtung des Attributs kann auf „Import“, „Export“ oder „ImportExport“ festgelegt werden. „ImportExport“ ist die Standardeinstellung.
-  ![schema4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
+
+![schema4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
 
 Hinweise:
 
@@ -150,6 +153,12 @@ Seit dem Update vom März 2017 steht nun eine Option für „*“ zur Verfügung
 
 ![globalparameters3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
 
+>[!IMPORTANT]
+ Ab Mai 2017 wurde die Option „*“ (**beliebige Option**) geändert, um auch Import- und Exportflows zu unterstützen. Wenn Sie diese Option verwenden möchten, muss Ihre mehrwertige Tabelle/Sicht ein Attribut mit dem Objekttyp enthalten.
+
+![](./media/active-directory-aadconnectsync-connector-genericsql/any-02.png)
+
+ </br> Wenn „*“ ausgewählt wird, muss auch der Name der Spalte mit dem Objekttyp angegeben werden.</br> ![](./media/active-directory-aadconnectsync-connector-genericsql/any-03.png)
 
 Nach dem Import wird etwas Ähnliches wie in der folgenden Abbildung angezeigt:
 
@@ -162,8 +171,7 @@ Auf der Seite für globale Parameter können Sie den Deltaimport, das Datums-/Uh
 
 ![globalparameters1](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters1.png)
 
->[!IMPORTANT]
- „*“ (**jede Option**) kann nicht für Export- oder Löschvorgänge verwendet werden.
+
 
 Der generische SQL-Connector unterstützt folgende Methoden für den Deltaimport:
 

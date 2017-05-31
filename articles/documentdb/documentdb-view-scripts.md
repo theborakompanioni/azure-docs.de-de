@@ -1,34 +1,35 @@
 ---
-title: 'Azure DocumentDB-Portaltool: Skript-Explorer | Microsoft Docs'
-description: "Erfahren Sie mehr über den DocumentDB-Skript-Explorer, ein Azure-Portaltool zum Verwalten von serverseitigen DocumentDB-Programmierartefakten, z.B. gespeicherte JavaScript-Prozeduren, Trigger und benutzerdefinierte Funktionen."
+title: 'Azure Cosmos DB-Portaltool: Skript-Explorer | Microsoft-Dokumentation'
+description: "Erfahren Sie mehr über den Azure Cosmos DB-Skript-Explorer, ein Azure-Portaltool zum Verwalten von serverseitigen Azure Cosmos DB-Programmierartefakten, z. B. gespeicherte JavaScript-Prozeduren, Trigger und benutzerdefinierte Funktionen."
 keywords: JavaScript-Editor
-services: documentdb
+services: cosmosdb
 author: kirillg
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: 9d0620da-2449-4c17-82a4-24aaa46e9b3e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: kirillg
-translationtype: Human Translation
-ms.sourcegitcommit: 429687c6e5a196a3b489dc4dd79ae886b7ad9c38
-ms.openlocfilehash: ccff673996d53d2b3b2c177bfb6fff01613b7097
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e9c3e92dd1c35ff6893565e61f7e7b940b6ede7e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="create-and-run-stored-procedures-triggers-and-user-defined-functions-using-the-documentdb-script-explorer"></a>Erstellen und Ausführen von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen mit dem DocumentDB-Skript-Explorer
-Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)-Skript-Explorer, einen JavaScript-Editor im Azure-Portal, der Ihnen die Anzeige von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z.B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen. Im Artikel [DocumentDB-serverseitige Programmierung: gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
+# <a name="create-and-run-stored-procedures-triggers-and-user-defined-functions-using-the-azure-cosmos-db-script-explorer"></a>Erstellen und Ausführen von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen mit dem Azure Cosmos DB-Skript-Explorer
+Dieser Artikel bietet eine Übersicht über den [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)-Skript-Explorer, einen JavaScript-Editor im Azure-Portal, der Ihnen die Anzeige von serverseitigen Cosmos DB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen. Im Artikel [Gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über die serverseitige Cosmos DB-Programmierung.
 
 ## <a name="launch-script-explorer"></a>Starten des Skript-Explorers 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png). 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich auf ![Azure Cosmos DB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **Azure Cosmos DB**. 
 
-    Wenn **NoSQL (DocumentDB)** nicht angezeigt wird, klicken Sie unten auf **Weitere Dienste** und dann auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png).
+    Wenn **Azure Cosmos DB** nicht angezeigt wird, klicken Sie unten auf **Weitere Dienste** und dann auf ![Azure Cosmos DB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **Azure Cosmos DB**.
 2. Klicken Sie im Ressourcenmenü auf **Skript-Explorer**.
    
     ![Screenshot des Skript-Explorer-Befehls](./media/documentdb-view-scripts/scriptexplorercommand.png)
@@ -47,7 +48,7 @@ Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](htt
     ![Screenshot des Befehls Aktualisieren in Skript-Explorer](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
 
 ## <a name="create-view-and-edit-stored-procedures-triggers-and-user-defined-functions"></a>Erstellen, Anzeigen und Bearbeiten von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen
-Mit dem Skript-Explorer können Sie problemlos CRUD-Vorgänge an serverseitigen Programmierartefakten in DocumentDB durchführen.  
+Mit dem Skript-Explorer können Sie problemlos CRUD-Vorgänge an serverseitigen Programmierartefakten in Cosmos DB durchführen.  
 
 * Um ein Skript zu erstellen, klicken Sie im Skript-Explorer auf den entsprechenden Erstellungsbefehl, geben Sie eine ID an, geben Sie den Inhalt des Skripts ein, und klicken Sie auf **Speichern**.
   
@@ -109,6 +110,5 @@ Der Skript-Explorer im Azure-Portal ist nur eine Möglichkeit, mit gespeicherten
 ## <a name="next-steps"></a>Nächste Schritte
 Im Artikel [Gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
 
-Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist ebenfalls eine hilfreiche Ressource, um mehr über DocumentDB zu erfahren.  
 
 

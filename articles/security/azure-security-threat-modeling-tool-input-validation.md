@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: rodsan
-translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 19b03b14dc3b04472cd2ae59d38422edce47ef35
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 59f92f94bcd9e01aeaedf7df01ac194c774e5f8d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 03/15/2017
 | Webanwendung. | <ul><li>[Deaktivieren der XSLT-Skripterstellung für alle Transformationen, die nicht vertrauenswürdige Stylesheets verwenden](#disable-xslt)</li><li>[Sicherstellen, dass jede Seite, die von Benutzern steuerbare Inhalte enthalten könnte, von der automatischen MIME-Ermittlung abgemeldet wird](#out-sniffing)</li><li>[Absichern oder Deaktivieren der XML-Entitätsauflösung](#xml-resolution)</li><li>[Anwendungen, die „http.sys“ verwenden, überprüfen die Kanonisierungstransformation](#app-verification)</li><li>[Sicherstellen, dass entsprechende Kontrolle gelten, wenn Dateien vom Benutzer akzeptiert werden](#controls-users)</li><li>[Sicherstellen, dass typsichere Parameter für den Datenzugriff in Webanwendungen verwendet werden](#typesafe)</li><li>[Verwenden separater Modellbindungsklassen oder Bindungsfilterlisten, um Sicherheitslücken bei der MVC-Massenzuweisung vorzubeugen](#binding-mvc)</li><li>[Codieren nicht vertrauenswürdiger Webausgabe vor dem Rendering](#rendering)</li><li>[Ausführen der Eingabeüberprüfung und Filtern von Modelleigenschaften aller Zeichenfolgentypen](#typemodel)</li><li>[Anwenden der Bereinigung auf Felder, die alle Zeichen akzeptieren, z. B. Rich-Text-Editor](#richtext)</li><li>[Kein Zuweisen von DOM-Elementen, die keine integrierte Codierung aufweisen](#inbuilt-encode)</li><li>[Überprüfen, ob alle Umleitungen innerhalb der Anwendung geschlossen sind oder sicher ausgeführt werden](#redirect-safe)</li><li>[Implementieren der Eingabeüberprüfung für alle Zeichenfolgentypparameter, die von Controllermethoden akzeptiert werden](#string-method)</li><li>[Festlegen einer Obergrenze für Timeouts bei der Verarbeitung regulärer Ausdrücke, um DoS aufgrund ungültiger Ausdrücke zu verhindern ](#dos-expression)</li><li>[Vermeiden der Verwendung von Html.Raw in Razor-Ansichten](#html-razor)</li></ul> | 
 | Datenbank | <ul><li>[Unterlassen dynamischer Abfragen in gespeicherten Prozeduren](#stored-proc)</li></ul> | 
 | Web-API | <ul><li>[Sicherstellen, dass die Modellvalidierung auf Web-API-Methoden erfolgt ist](#validation-api)</li><li>[Implementieren der Eingabeüberprüfung für alle Zeichenfolgentypparameter, die von Web-API-Methoden akzeptiert werden](#string-api)</li><li>[Sicherstellen, dass typsichere Parameter in Web-API für den Datenzugriff verwendet werden](#typesafe-api)</li></ul> | 
-| Azure DocumentDB | <ul><li>[Verwenden parametrisierter SQL-Abfragen für DocumentDB](#sql-docdb)</li></ul> | 
+| Azure DocumentDB | <ul><li>[Verwenden parametrisierter SQL-Abfragen für Azure Cosmos DB](#sql-docdb)</li></ul> | 
 | WCF | <ul><li>[WCF-Eingabeüberprüfung durch Schemabindung](#schema-binding)</li><li>[WCF – Eingabeüberprüfung über Parameterinspektoren](#parameters)</li></ul> | 
 
 ## <a id="disable-xslt"></a>Deaktivieren der XSLT-Skripterstellung für alle Transformationen, die nicht vertrauenswürdige Stylesheets verwenden
@@ -351,7 +352,7 @@ myCommand.Fill(userDataset);
 ```
 Im vorigen Codebeispiel darf der Eingabewert darf nicht mehr als 11 Zeichen umfassen. Wenn der Typ oder die Länger der Daten nicht dem vom Parameter definierten Wert entspricht, wird von die Klasse „SqlParameter“ eine Ausnahme ausgelöst. 
 
-## <a id="binding-mvc"></a>Verwenden separater Modellbindungsklassen oder Bindungsfilterlisten, um Sicherheitslücken bei der MVC-Massenszuweisung vorzubeugen
+## <a id="binding-mvc"></a>Verwenden separater Modellbindungsklassen oder Bindungsfilterlisten, um Sicherheitslücken bei der MVC-Massenzuweisung vorzubeugen
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -654,7 +655,7 @@ myCommand.Fill(userDataset);
 ```
 Im vorigen Codebeispiel darf der Eingabewert darf nicht mehr als 11 Zeichen umfassen. Wenn der Typ oder die Länger der Daten nicht dem vom Parameter definierten Wert entspricht, wird von die Klasse „SqlParameter“ eine Ausnahme ausgelöst. 
 
-## <a id="sql-docdb"></a>Verwenden parametrisierter SQL-Abfragen für DocumentDB
+## <a id="sql-docdb"></a>Verwenden parametrisierter SQL-Abfragen für Cosmos DB
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -662,8 +663,8 @@ Im vorigen Codebeispiel darf der Eingabewert darf nicht mehr als 11 Zeichen umfa
 | SDL-Phase               | Entwickeln |  
 | Technologien | Allgemein |
 | Attribute              | –  |
-| Referenzen              | [Ankündigung: SQL-Parametrisierung in DocumentDB ](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
-| Schritte | DocumentDB unterstützt zwar nur schreibgeschützte Abfragen, jedoch ist SQL-Einschleusung weiterhin möglich, wenn Abfragen durch die Verkettung von Benutzereingaben erstellt werden. Benutzer können Zugriff auf Daten erlangen, auf die sie in der gleichen Auflistung nicht zugreifen dürfen, indem sie schädliche SQL-Abfragen erstellen. Verwenden Sie parametrisierte SQL-Abfragen, wenn Abfragen basierend auf Benutzereingaben erstellt werden. |
+| Referenzen              | [Ankündigung: SQL-Parametrisierung in Cosmos DB](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
+| Schritte | Cosmos DB unterstützt zwar nur schreibgeschützte Abfragen, jedoch ist SQL-Einschleusung weiterhin möglich, wenn Abfragen durch die Verkettung von Benutzereingaben erstellt werden. Benutzer können Zugriff auf Daten erlangen, auf die sie in der gleichen Auflistung nicht zugreifen dürfen, indem sie schädliche SQL-Abfragen erstellen. Verwenden Sie parametrisierte SQL-Abfragen, wenn Abfragen basierend auf Benutzereingaben erstellt werden. |
 
 ## <a id="schema-binding"></a>WCF-Eingabeüberprüfung durch Schemabindung
 

@@ -1,48 +1,49 @@
 ---
-title: "Überwachen von Anforderungen, Nutzung und Speicher in DocumentDB | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Ihr DocumentDB-Konto anhand von Leistungsmetriken (z. B. Anforderungen und Serverfehler) und Nutzungsmetriken (z. B. Speicherbelegung) überwachen."
-services: documentdb
+title: "Überwachen von Anforderungen, Nutzung und Speicher in Azure Cosmos DB | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Ihr Azure Cosmos DB-Konto anhand von Leistungsmetriken (z. B. Anforderungen und Serverfehler) und Nutzungsmetriken (z. B. Speicherbelegung) überwachen."
+services: cosmosdb
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 4c6a2e6f-6e78-48e3-8dc6-f4498b235a9e
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: aabca8fd228b1fc7c60d295a9502dece29db1b68
-ms.lasthandoff: 01/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: b0158d0f9f0a8f66ae6dda44476efb7b1914c599
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="monitor-documentdb-requests-usage-and-storage"></a>Überwachen von Anforderungen, Nutzung und Speicher in DocumentDB
-Sie können Ihre Azure DocumentDB-Konten im [Azure-Portal](https://portal.azure.com/)überwachen. Für jedes DocumentDB-Konto sind sowohl Leistungsmetriken (wie Anforderungen und Serverfehler) als auch Nutzungsmetriken (wie belegter Speicher) verfügbar.
+# <a name="monitor-azure-cosmos-db-requests-usage-and-storage"></a>Überwachen von Anforderungen, Nutzung und Speicher in Azure Cosmos DB
+Sie können Ihre Azure Cosmos DB-Konten im [Azure-Portal](https://portal.azure.com/) überwachen. Für jedes Azure Cosmos DB-Konto sind sowohl Leistungsmetriken (wie Anforderungen und Serverfehler) als auch Nutzungsmetriken (wie belegter Speicher) verfügbar.
 
 Metriken können auf dem Blatt „Konto“, dem Blatt mit neuen Metriken oder in Azure Monitor überprüft werden.
 
 ## <a name="view-performance-metrics-on-the-metrics-blade"></a>Anzeigen von Leistungsmetriken auf dem Blatt „Metriken“
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **NoSQL (DocumentDB)** und dann auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
 2. Klicken Sie im Ressourcenmenü unter **Überwachung** auf **Metriken**.
 
-Das Blatt „Metriken“ wird geöffnet, und Sie können die zu überprüfende Sammlung auswählen. Sie können die Metriken „Verfügbarkeit“, „Anforderungen“, „Durchsatz“ und „Speicher“ überprüfen und sie mit den DocumentDB-SLAs vergleichen.
+Das Blatt „Metriken“ wird geöffnet, und Sie können die zu überprüfende Sammlung auswählen. Sie können die Metriken „Verfügbarkeit“, „Anforderungen“, „Durchsatz“ und „Speicher“ überprüfen und sie mit den Azure Cosmos DB-SLAs vergleichen.
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Anzeigen von Leistungsmetriken mithilfe der Azure-Überwachung
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Navigationsleiste auf **Überwachen**.
 2. Klicken Sie im Ressourcenmenü auf **Metriken**.
-3. Wählen Sie im Fenster **Überwachung – Metriken** im Dropdownmenü **Ressourcengruppe** die Ressourcengruppe aus, die dem DocumentDB-Konto zugeordnet ist, das Sie überwachen möchten. 
+3. Wählen Sie im Fenster **Überwachung – Metriken** im Dropdownmenü **Ressourcengruppe** die Ressourcengruppe aus, die dem Azure Cosmos DB-Konto zugeordnet ist, das Sie überwachen möchten. 
 4. Wählen Sie im Dropdownmenü **Ressource** das zu überwachende Datenbankkonto aus.
 5. Wählen Sie in der Liste mit **verfügbaren Metriken** die anzuzeigenden Metriken aus. Verwenden Sie die STRG-TASTE, um mehrere Metriken auszuwählen. 
 
     Die Metriken werden im Fenster **Diagrammausgabe** angezeigt. 
 
 ## <a name="view-performance-metrics-on-the-account-blade"></a>Anzeigen von Leistungsmetriken auf dem Blatt „Konto“
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **NoSQL (DocumentDB)** und dann auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB** und dann auf den Namen des Azure Cosmos DB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
 2. Der Fokus **Überwachung** zeigt standardmäßig folgende Kacheln an:
    
    * Gesamtanforderungen des aktuellen Tags.
@@ -80,7 +81,7 @@ Sie können diesen Bereich jetzt wie jeden anderen Metrikbereich behandeln und i
     ![Screenshot des Diagramms "Anforderungen insgesamt" und des Diagramms "Anforderungen insgesamt – letzte Stunde"](./media/documentdb-monitor-accounts/madocdb8.png)  
 
 ## <a name="set-up-alerts-in-the-portal"></a>Einrichten von Warnungen im Portal
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, dann auf **DocumentDB (NoSQL)** und anschließend auf den Namen des DocumentDB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, dann auf **Azure Cosmos DB** und anschließend auf den Namen des Azure Cosmos DB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
 2. Klicken Sie im Ressourcenmenü auf **Warnungsregeln** , um das Blatt „Warnungsregeln“ zu öffnen.  
    ![Screenshot des ausgewählten Warnungsregelnteils](./media/documentdb-monitor-accounts/madocdb10.5.png)
 3. Klicken Sie auf dem Blatt **Warnungsregeln** auf **Warnung hinzufügen**.  
@@ -95,7 +96,7 @@ Sie können diesen Bereich jetzt wie jeden anderen Metrikbereich behandeln und i
    * Weitere E-Mail-Adressen für Warnbenachrichtigungen.  
      ![Screenshot des Blatts "Warnungsregel hinzufügen"](./media/documentdb-monitor-accounts/madocdb12.png)
 
-## <a name="monitor-documentdb-programatically"></a>Programmgesteuertes Überwachen von DocumentDB
+## <a name="monitor-azure-cosmos-db-programatically"></a>Programmgesteuertes Überwachen von Azure Cosmos DB
 Die im Portal für Konten verfügbaren Metriken, z. B. für die Speichernutzung von Konten und die Gesamtzahl der Anforderungen, stehen über die DocumentDB-APIs nicht zur Verfügung. Sie können jedoch mithilfe der DocumentDB-APIs die Nutzungsdaten auf Sammlungsebene abrufen. Gehen Sie zum Abrufen von Daten auf Sammlungsebene wie folgt vor:
 
 * Führen Sie zur Verwendung der REST-API [einen GET-Befehl für die Sammlung](https://msdn.microsoft.com/library/mt489073.aspx)aus. Die Kontingent- und Nutzungsinformationen für die Sammlung werden in den Headern „x-ms-resource-quota“ und „x-ms-resource-usage“ in der Antwort zurückgegeben.
@@ -123,6 +124,6 @@ Wenn in den Überwachungskacheln die Meldung **Keine Daten verfügbar** angezeig
    ![Screenshot der aktualisierten Kachel „Anforderungen insgesamt – letzte Stunde“](./media/documentdb-monitor-accounts/documentdb-no-available-data-fixed.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Kapazitätsplanung für DocumentDB finden Sie unter [DocumentDB capacity planner calculator](https://www.documentdb.com/capacityplanner) (DocumentDB Capacity Planner-Rechner).
+Weitere Informationen zur Kapazitätsplanung für Azure Cosmos DB finden Sie unter [Azure Cosmos DB capacity planner calculator](https://www.documentdb.com/capacityplanner) (Azure Cosmos DB Capacity Planner-Rechner).
 
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: markvi;andkjell
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 9238141fc56abcb618d71e4bfd1eccb77f282c71
-ms.lasthandoff: 03/08/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 08df9939eb31c224d62d96a0d034d1cda10ba270
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -102,6 +103,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | msExchAuditOwner |X | | | |
 | msExchBlockedSendersHash |X |X | | |
 | msExchBypassAudit |X | | | |
+| msExchBypassModerationLink | | |X |Verfügbar in Azure AD Connect, Version 1.1.524.0 |
 | msExchCoManagedByLink | | |X | |
 | msExchDelegateListLink |X | | | |
 | msExchELCExpirySuspensionEnd |X | | | |
@@ -373,7 +375,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 Diese Gruppe umfasst einen Satz von Attributen. Es handelt sich um die Attribute, die für eine generische Workload oder Anwendung mindestens benötigt werden. Dieser Attributsatz kann für eine oben nicht aufgeführte Workload oder für eine Nicht-Microsoft-App verwendet werden. Der Satz wird explizit für Folgendes verwendet:
 
 * Yammer (nur „Benutzer“ wird genutzt)
-* [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office&365; (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office&365;))](http://go.microsoft.com/fwlink/?LinkId=747036)
+* [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office 365 (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))](http://go.microsoft.com/fwlink/?LinkId=747036)
 
 Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen.
 
@@ -430,6 +432,18 @@ Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschr
 | msExchUCVoiceMailSettings |X | | |Aktivieren von Unified Messaging (UM) – Online-Voicemail: Wird von Microsoft Lync Server-Integration verwendet, um Lync Server lokal zu melden, dass der Benutzer Voicemail in Onlinediensten verwendet. |
 | msExchUserHoldPolicies |X | | |Beweissicherungsverfahren: Ermöglicht Clouddiensten, zu bestimmen, welche Benutzer einem Beweissicherungsverfahren unterliegen. |
 | proxyAddresses |X |X |X |Nur die x500-Adresse von Exchange Online wird eingefügt. |
+
+## <a name="exchange-mail-public-folder"></a>Öffentliche Exchange-E-Mail-Ordner
+Diese Attribute werden vom lokalen Active Directory mit Azure AD synchronisiert, wenn Sie den **öffentlichen Exchange-E-Mail-Ordner** aktivieren.
+
+| Attributname | PublicFolder | Kommentar |
+| --- | :---:| --- |
+| displayName | X |  |
+| mail | X |  |
+| msExchRecipientTypeDetails | X |  |
+| objectGUID | X |  |
+| proxyAddresses | X |  |
+| targetAddress | X |  |
 
 ## <a name="device-writeback"></a>Geräterückschreiben
 Geräteobjekte werden in Active Directory erstellt. Bei diesen Objekten kann es sich um mit Azure AD verknüpfte Geräte oder um in eine Domäne eingebundene Windows 10-Computer handeln.

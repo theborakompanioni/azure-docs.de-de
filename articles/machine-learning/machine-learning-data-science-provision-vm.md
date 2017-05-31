@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 8df9fbf4b09cb63cafc9d43592edc68068a28f14
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1469e7a2f5f41ef52c0ff77e6e70378951594135
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -159,7 +159,7 @@ Mehrere Azure-Tools werden auf dem virtuellen Computer installiert:
 * **AzCopy**wird zum Verschieben von Daten in Ihr und aus Ihrem Microsoft Azure Storage-Konto verwendet. Geben Sie **Azcopy** in einer Befehlszeile ein, um die Nutzung anzuzeigen. 
 * **Microsoft Azure-Speicher-Explorer**: Wird verwendet, um die Objekte zu durchsuchen, die in Ihrem Azure Storage-Konto gespeichert sind, und Daten in Ihren Azure-Speicher und heraus zu übertragen. Sie können **Speicher-Explorer** in das Suchfeld eingeben oder über das Windows-Startmenü auf dieses Tool zugreifen. 
 * **Adlcopy**: Wird zum Verschieben von Daten in Azure Data Lake verwendet. Geben Sie **adlcopy** in einer Befehlszeile ein, um die Nutzung anzuzeigen. 
-* **dtui**: Wird zum Verschieben von Daten in und aus Azure DocumentDB verwendet, einer NoSQL-Datenbank in der Cloud. Geben Sie **dtui** in eine Befehlszeile ein. 
+* **dtui**: Wird zum Verschieben von Daten in und aus Azure Cosmos DB verwendet, einer NoSQL-Datenbank in der Cloud. Geben Sie **dtui** in eine Befehlszeile ein. 
 * **Microsoft-Datenverwaltungsgateway**: Ermöglicht das Verschieben von Daten zwischen lokalen Datenquellen und der Cloud. Es wird in Tools wie Azure Data Factory verwendet. 
 * **Microsoft Azure PowerShell**: Ein Tool zur Verwaltung Ihrer Azure-Ressourcen in der PowerShell-Skriptsprache, das auch auf Ihrem virtuellen Computer installiert ist. 
 

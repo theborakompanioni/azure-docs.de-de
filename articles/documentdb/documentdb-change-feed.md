@@ -1,61 +1,62 @@
 ---
-title: "Verwenden der Unterstützung von Änderungsfeeds in Azure DocumentDB | Microsoft-Dokumentation"
-description: "Verwenden Sie die Azure DocumentDB-Unterstützung von Änderungsfeeds, um Änderungen in DocumentDB-Dokumenten nachzuverfolgen, eine ereignisbasierte Verarbeitung (wie mit Triggern) durchzuführen und Caches und Analysesysteme auf dem neuesten Stand zu halten."
+title: "Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB | Microsoft-Dokumentation"
+description: "Verwenden Sie die Azure Cosmos DB-Unterstützung von Änderungsfeeds, um Änderungen in Dokumenten nachzuverfolgen, eine ereignisbasierte Verarbeitung (wie mit Triggern) durchzuführen und Caches und Analysesysteme auf dem neuesten Stand zu halten."
 keywords: "Änderungsfeed"
-services: documentdb
+services: cosmosdb
 author: arramac
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: 2d7798db-857f-431a-b10f-3ccbc7d93b50
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 1ddf62c155264c5f76d8fd738b979c21cb527962
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: d702bdd4d1db89c6714d4dca132dcd896c1ece4d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="working-with-the-change-feed-support-in-azure-documentdb"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure DocumentDB
-[Azure DocumentDB](documentdb-introduction.md) ist ein schneller und flexibler NoSQL-Datenbankdienst, der zum Speichern von großen Mengen von Transaktionsdaten und operativen Daten mit einer planbaren Latenz im einstelligen Millisekundenbereich für Lese- und Schreibvorgänge verwendet wird. Dadurch eignet sich die Lösung besonders gut für IoT-, Spiele-, Einzelhandels- und operative Protokollierungsanwendungen. Ein gängiges Entwurfsmuster in diesen Anwendungen ist, Änderungen an DocumentDB-Daten nachzuverfolgen und materialisierte Sichten zu aktualisieren, Echtzeitanalysen auszuführen, Daten in Cold Storage zu archivieren und Benachrichtigungen aufgrund bestimmter Ereignisse basierend auf diesen Änderungen auszulösen. Die DocumentDB-Unterstützung von **Änderungsfeeds** ermöglicht Ihnen das Erstellen effizienter und skalierbarer Lösungen für jedes dieser Muster.
+# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
+[Azure Cosmos DB](../cosmos-db/introduction.md) ist ein schneller und flexibler, weltweit replizierter Datenbankdienst, der zum Speichern von großen Mengen von Transaktionsdaten und operativen Daten mit einer planbaren Latenz im einstelligen Millisekundenbereich für Lese- und Schreibvorgänge verwendet wird. Dadurch eignet sich die Lösung besonders gut für IoT-, Spiele-, Einzelhandels- und operative Protokollierungsanwendungen. Ein gängiges Entwurfsmuster in diesen Anwendungen ist, Änderungen an Azure Cosmos DB-Daten nachzuverfolgen und materialisierte Sichten zu aktualisieren, Echtzeitanalysen auszuführen, Daten in Cold Storage zu archivieren und Benachrichtigungen aufgrund bestimmter Ereignisse basierend auf diesen Änderungen auszulösen. Die **Unterstützung von Änderungsfeeds** in Azure Cosmos DB ermöglicht Ihnen das Erstellen effizienter und skalierbarer Lösungen für jedes dieser Muster.
 
-Durch die Unterstützung von Änderungsfeeds bietet DocumentDB eine Liste von Dokumenten in einer DocumentDB-Sammlung, die in der Reihenfolge sortiert ist, in der die Dokumente geändert wurden. Dieser Feed kann verwendet werden, um die Sammlung auf Änderungen an Daten zu überwachen und Aktionen wie die folgenden auszuführen:
+Durch die Unterstützung von Änderungsfeeds bietet Azure Cosmos DB eine Liste von Dokumenten in einer Azure Cosmos DB-Sammlung, die in der Reihenfolge sortiert ist, in der die Dokumente geändert wurden. Dieser Feed kann verwendet werden, um die Sammlung auf Änderungen an Daten zu überwachen und Aktionen wie die folgenden auszuführen:
 
 * Auslösen eines Aufrufs einer API, wenn ein Dokument eingefügt oder geändert wird
 * Ausführen der Verarbeitung in Echtzeit (Datenstrom) bei Aktualisierungen
 * Synchronisieren von Daten mit einem Cache, einer Suchmaschine oder einem Data Warehouse
 
-Änderungen in DocumentDB bleiben erhalten und können asynchron verarbeitet werden und über einen oder mehrere Consumer für eine parallele Verarbeitung verteilt werden. Betrachten wir nun die APIs für den Änderungsfeed und wie Sie sie zum Erstellen von skalierbaren Echtzeitanwendungen verwenden können.
+Änderungen in Azure Cosmos DB bleiben erhalten und können asynchron verarbeitet werden und über einen oder mehrere Consumer für eine parallele Verarbeitung verteilt werden. Betrachten wir nun die APIs für den Änderungsfeed und wie Sie sie zum Erstellen von skalierbaren Echtzeitanwendungen verwenden können. In diesem Artikel wird die Arbeit mit räumlichen Daten mit der DocumentDB-API für Azure Cosmos DB veranschaulicht. 
 
-![Verwenden des DocumentDB-Änderungsfeeds für Echtzeitanalysen und ereignisgesteuerte Computingszenarien](./media/documentdb-change-feed/changefeed.png)
+![Verwenden des Azure Cosmos DB-Änderungsfeeds für Echtzeitanalysen und ereignisgesteuerte Computingszenarien](./media/documentdb-change-feed/changefeed.png)
 
 ## <a name="use-cases-and-scenarios"></a>Anwendungsfälle und -szenarien
 Ein Änderungsfeed ermöglicht eine effiziente Verarbeitung großer Datasets mit vielen Schreibvorgängen und bietet eine Alternative zum Abfragen des gesamten Datasets, um Änderungen zu identifizieren. Sie können beispielsweise die folgenden Aufgaben effizient ausführen:
 
-* Aktualisieren eines Caches, eines Suchindex oder eines Data Warehouse mit in Azure DocumentDB gespeicherten Daten.
-* Implementieren von Datentiering und -archivierung auf Anwendungsebene, d.h. Speichern von „aktiven Daten“ in DocumentDB und Auslagern von „inaktiven Daten“ in [Azure Blob Storage](../storage/storage-introduction.md) oder [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
+* Aktualisieren eines Caches, eines Suchindex oder eines Data Warehouse mit in Azure Cosmos DB gespeicherten Daten.
+* Implementieren von Datentiering und -archivierung auf Anwendungsebene, d. h. Speichern von „aktiven Daten“ in Azure Cosmos DB und Auslagern von „inaktiven Daten“ in [Azure Blob Storage](../storage/storage-introduction.md) oder [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
 * Implementieren von Batchanalysen der Daten unter Verwendung von [Apache Hadoop](documentdb-run-hadoop-with-hdinsight.md).
-* Implementieren von [Lambda-Pipelines in Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) mit DocumentDB. DocumentDB bietet eine skalierbare Datenbanklösung, die die Erfassung und Abfrage verarbeiten kann, und implementiert Lambda-Architekturen mit geringen Gesamtkosten. 
-* Ausführen von Migrationen zu einem anderen Azure DocumentDB-Konto mit einem anderen Partitionierungsschema ohne Ausfallzeit.
+* Implementieren von [Lambda-Pipelines in Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) mit Azure Cosmos DB. Azure Cosmos DB bietet eine skalierbare Datenbanklösung, die die Erfassung und Abfrage verarbeiten kann, und implementiert Lambda-Architekturen mit geringen Gesamtkosten. 
+* Ausführen von Migrationen zu einem anderen Azure Cosmos DB-Konto mit einem anderen Partitionierungsschema ohne Ausfallzeit.
 
-**Lambda-Pipelines mit Azure DocumentDB für die Erfassung und Abfrage:**
+**Lambda-Pipelines mit Azure Cosmos DB für die Erfassung und Abfrage:**
 
-![Azure DocumentDB-basierte Lambda-Pipeline für die Erfassung und Abfrage](./media/documentdb-change-feed/lambda.png)
+![Azure Cosmos DB-basierte Lambda-Pipeline für die Erfassung und Abfrage](./media/documentdb-change-feed/lambda.png)
 
-Sie können DocumentDB zum Empfangen und Speichern von Ereignisdaten von Geräten, Sensoren, Infrastrukturen und Anwendungen verwenden und diese Ereignisse in Echtzeit mit [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/hdinsight-storm-overview.md) oder [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) verarbeiten. 
+Sie können Azure Cosmos DB zum Empfangen und Speichern von Ereignisdaten von Geräten, Sensoren, Infrastrukturen und Anwendungen verwenden und diese Ereignisse in Echtzeit mit [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/hdinsight-storm-overview.md) oder [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) verarbeiten. 
 
-In Web-Apps und mobilen Apps können Sie Ereignisse wie Änderungen am Profil, an den Voreinstellungen oder am Speicherort des Kunden nachverfolgen, um bestimmte Aktionen wie das Senden von Pushbenachrichtigungen an deren Geräte mit [Azure Functions](../azure-functions/functions-bindings-documentdb.md) oder [App Services](https://azure.microsoft.com/services/app-service/) auszulösen. Wenn Sie DocumentDB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
+In Web-Apps und mobilen Apps können Sie Ereignisse wie Änderungen am Profil, an den Voreinstellungen oder am Speicherort des Kunden nachverfolgen, um bestimmte Aktionen wie das Senden von Pushbenachrichtigungen an deren Geräte mit [Azure Functions](../azure-functions/functions-bindings-documentdb.md) oder [App Services](https://azure.microsoft.com/services/app-service/) auszulösen. Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 
-## <a name="how-change-feed-works-in-azure-documentdb"></a>Funktionsweise von Änderungsfeeds in Azure DocumentDB
-DocumentDB bietet die Möglichkeit, Aktualisierungen an einer DocumentDB-Sammlung inkrementell zu lesen. Dieser Änderungsfeed weist die folgenden Eigenschaften auf:
+## <a name="how-change-feed-works-in-azure-cosmos-db"></a>Funktionsweise von Änderungsfeeds in Azure Cosmos DB
+Azure Cosmos DB bietet die Möglichkeit, Aktualisierungen an einer Azure Cosmos DB-Sammlung inkrementell zu lesen. Dieser Änderungsfeed weist die folgenden Eigenschaften auf:
 
-* Änderungen bleiben in DocumentDB erhalten und können asynchron verarbeitet werden.
+* Änderungen bleiben in Azure Cosmos DB erhalten und können asynchron verarbeitet werden.
 * Änderungen an Dokumenten in einer Sammlung sind sofort im Änderungsfeed verfügbar.
 * Jede Änderung an einem Dokument wird nur einmal im Änderungsfeed angezeigt. Nur die letzte Änderung für ein bestimmtes Dokument ist im Änderungsprotokoll enthalten. Zwischenzeitliche Änderungen sind möglicherweise nicht verfügbar.
 * Der Änderungsfeed ist anhand der Reihenfolge der Änderungen innerhalb der einzelnen Partitionsschlüsselwerte sortiert. Es gibt keine festgelegte Reihenfolge über Partitionsschlüsselwerte hinweg.
@@ -63,17 +64,17 @@ DocumentDB bietet die Möglichkeit, Aktualisierungen an einer DocumentDB-Sammlun
 * Änderungen sind in Abschnitten von Partitionsschlüsselbereichen verfügbar. Auf diese Weise können Änderungen aus umfangreichen Sammlungen parallel von mehreren Consumern/Servern verarbeitet werden.
 * Anwendungen können mehrere Änderungsfeeds gleichzeitig für dieselbe Sammlung anfordern.
 
-Der Änderungsfeed in DocumentDB ist standardmäßig für alle Konten aktiviert und verursacht keine zusätzlichen Kosten für Ihr Konto. Sie können Ihren [bereitgestellten Durchsatz](documentdb-request-units.md) in Ihrer Schreibregion oder einer [Leseregion](documentdb-distribute-data-globally.md) zum Lesen aus dem Änderungsfeed verwenden, so wie es bei allen anderen Vorgängen von DocumentDB möglich ist. Der Änderungsfeed enthält Einfüge- und Aktualisierungsvorgänge, die an Dokumenten in der Sammlung vorgenommen wurden. Sie können Löschvorgänge durch ein Kennzeichen für „vorläufiges Löschen“ erfassen, dass den gelöschten Text in Ihren Dokumenten ersetzt. Alternativ können Sie über die [TTL-Funktion](documentdb-time-to-live.md) einen begrenzten Ablaufzeitraum für Ihre Dokumente festlegen, z.B. 24 Stunden. Verwenden Sie den Wert dieser Eigenschaft, um Löschvorgänge zu erfassen. Mit dieser Lösung müssen Sie Änderungen in einem kürzeren Zeitraum als der TTL-Ablaufzeitraum verarbeiten. Der Änderungsfeed ist für jeden Partitionsschlüsselbereich innerhalb der Dokumentsammlung verfügbar. Daher kann er für eine parallele Verarbeitung über einen oder mehrere Consumer verteilt werden. 
+Der Änderungsfeed in Azure Cosmos DB ist standardmäßig für alle Konten aktiviert und verursacht keine zusätzlichen Kosten für Ihr Konto. Sie können Ihren [bereitgestellten Durchsatz](documentdb-request-units.md) in Ihrer Schreibregion oder einer [Leseregion](documentdb-distribute-data-globally.md) zum Lesen aus dem Änderungsfeed verwenden, so wie es bei allen anderen Vorgängen von Azure Cosmos DB möglich ist. Der Änderungsfeed enthält Einfüge- und Aktualisierungsvorgänge, die an Dokumenten in der Sammlung vorgenommen wurden. Sie können Löschvorgänge durch ein Kennzeichen für „vorläufiges Löschen“ erfassen, dass den gelöschten Text in Ihren Dokumenten ersetzt. Alternativ können Sie über die [TTL-Funktion](documentdb-time-to-live.md) einen begrenzten Ablaufzeitraum für Ihre Dokumente festlegen, z.B. 24 Stunden. Verwenden Sie den Wert dieser Eigenschaft, um Löschvorgänge zu erfassen. Mit dieser Lösung müssen Sie Änderungen in einem kürzeren Zeitraum als der TTL-Ablaufzeitraum verarbeiten. Der Änderungsfeed ist für jeden Partitionsschlüsselbereich innerhalb der Dokumentsammlung verfügbar. Daher kann er für eine parallele Verarbeitung über einen oder mehrere Consumer verteilt werden. 
 
-![Verteilte Verarbeitung des DocumentDB-Änderungsfeeds](./media/documentdb-change-feed/changefeedvisual.png)
+![Verteilte Verarbeitung des Azure Cosmos DB-Änderungsfeeds](./media/documentdb-change-feed/changefeedvisual.png)
 
-Im folgenden Abschnitt wird der Zugriff auf den Änderungsfeed unter Verwendung der DocumentDB-REST-API und des SDKs beschrieben. Für .NET-Anwendungen empfiehlt sich die Verwendung der [Change Feed Processor-Bibliothek]() zum Verarbeiten von Ereignissen aus dem Änderungsfeed.
+Im folgenden Abschnitt wird der Zugriff auf den Änderungsfeed unter Verwendung der Azure Cosmos DB-REST-API und des SDKs beschrieben. Für .NET-Anwendungen empfiehlt sich die Verwendung der [Change Feed Processor-Bibliothek]() zum Verarbeiten von Ereignissen aus dem Änderungsfeed.
 
 ## <a id="rest-apis"></a>Arbeiten mit der REST-API und dem SDK
-DocumentDB bietet elastische Container für Speicher und Durchsatz, die **Sammlungen** genannt werden. Daten in Sammlungen sind logisch mit [Partitionsschlüsseln](documentdb-partition-data.md) gruppiert, um Skalierbarkeit und eine bessere Leistung zu ermöglichen. DocumentDB bietet verschiedene APIs für den Zugriff auf diese Daten, einschließlich Suchvorgänge anhand der ID (Lesen/Abrufen), Abfragen und Lesefeeds (Scans). Sie können einen Änderungsfeed erhalten, indem Sie zwei neue Anforderungsheader in die `ReadDocumentFeed`-API von DocumentDB aufnehmen. Der Änderungsfeed kann über Partitionsschlüsselbereiche hinweg parallel verarbeitet werden.
+Azure Cosmos DB bietet elastische Container für Speicher und Durchsatz, die **Sammlungen** genannt werden. Daten in Sammlungen sind logisch mit [Partitionsschlüsseln](documentdb-partition-data.md) gruppiert, um Skalierbarkeit und eine bessere Leistung zu ermöglichen. Azure Cosmos DB bietet verschiedene APIs für den Zugriff auf diese Daten, einschließlich Suchvorgänge anhand der ID (Lesen/Abrufen), Abfragen und Lesefeeds (Scans). Sie können einen Änderungsfeed erhalten, indem Sie zwei neue Anforderungsheader in die DocumentDB-`ReadDocumentFeed`-API aufnehmen. Der Änderungsfeed kann über Partitionsschlüsselbereiche hinweg parallel verarbeitet werden.
 
 ### <a name="readdocumentfeed-api"></a>ReadDocumentFeed-API
-Betrachten wir nun kurz die Funktionsweise von ReadDocumentFeed. DocumentDB unterstützt über die `ReadDocumentFeed`-API das Lesen eines Feeds von Dokumenten in einer Sammlung. Die folgende Anforderung gibt z.B. eine Seite von Dokumenten in der `serverlogs`-Sammlung zurück. 
+Betrachten wir nun kurz die Funktionsweise von ReadDocumentFeed. Azure Cosmos DB unterstützt über die `ReadDocumentFeed`-API das Lesen eines Feeds von Dokumenten in einer Sammlung. Die folgende Anforderung gibt z.B. eine Seite von Dokumenten in der `serverlogs`-Sammlung zurück. 
 
     GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/serverlogs HTTP/1.1
     x-ms-date: Tue, 22 Nov 2016 17:05:14 GMT
@@ -89,7 +90,7 @@ Die Ergebnisse können mithilfe des `x-ms-max-item-count`-Headers begrenzt werde
 
 **Serieller Dokumentlesefeed**
 
-Sie können den Feed von Dokumenten auch mithilfe eines der unterstützten [DocumentDB-SDKs](documentdb-sdk-dotnet.md) abrufen. Der folgende Codeausschnitt zeigt z.B., wie ReadDocumentFeed in .NET ausgeführt wird.
+Sie können den Feed von Dokumenten auch mithilfe eines der unterstützten [Azure Cosmos DB-SDKs](documentdb-sdk-dotnet.md) abrufen. Der folgende Codeausschnitt zeigt z.B., wie ReadDocumentFeed in .NET ausgeführt wird.
 
     FeedResponse<dynamic> feedResponse = null;
     do
@@ -99,11 +100,11 @@ Sie können den Feed von Dokumenten auch mithilfe eines der unterstützten [Docu
     while (feedResponse.ResponseContinuation != null);
 
 ### <a name="distributed-execution-of-readdocumentfeed"></a>Verteilte Ausführung von ReadDocumentFeed
-Bei Sammlungen, die Terabytes von Daten oder mehr enthalten bzw. viele Aktualisierungen erfassen, ist die serielle Ausführung von Lesefeeds über einen einzelnen Clientcomputer möglicherweise nicht praktikabel. Um diese Big Data-Szenarien zu unterstützen, stellt DocumentDB APIs zum transparenten Verteilen von `ReadDocumentFeed`-Aufrufen über mehrere Leser/Consumer von Clients bereit. 
+Bei Sammlungen, die Terabytes von Daten oder mehr enthalten bzw. viele Aktualisierungen erfassen, ist die serielle Ausführung von Lesefeeds über einen einzelnen Clientcomputer möglicherweise nicht praktikabel. Um diese Big Data-Szenarien zu unterstützen, stellt Azure Cosmos DB APIs zum transparenten Verteilen von `ReadDocumentFeed`-Aufrufen über mehrere Leser/Consumer von Clients bereit. 
 
 **Verteilter Dokumentlesefeed**
 
-Für die skalierbare Verarbeitung von inkrementellen Änderungen unterstützt DocumentDB ein Modell mit horizontaler Hochskalierung für die Änderungsfeed-API basierend auf Partitionsschlüsselbereichen.
+Für die skalierbare Verarbeitung von inkrementellen Änderungen unterstützt Azure Cosmos DB ein Modell mit horizontaler Hochskalierung für die Änderungsfeed-API basierend auf Partitionsschlüsselbereichen.
 
 * Sie können eine Liste der Partitionsschlüsselbereiche für eine Sammlung durch Ausführen eines `ReadPartitionKeyRanges`-Aufrufs abrufen. 
 * Für jeden Partitionsschlüsselbereich können Sie `ReadDocumentFeed` ausführen, um die Dokumente mit Partitionsschlüsseln innerhalb dieses Bereichs zu lesen.
@@ -169,7 +170,7 @@ Diese Anforderung gibt die folgende Antwort mit Metadaten über die Partitionssc
     </tr>        
 </table>
 
-Sie können eines der unterstützten [DocumentDB-SDKs](documentdb-sdk-dotnet.md) verwenden. Der folgende Codeausschnitt zeigt z.B., wie Partitionsschlüsselbereiche in .NET abgerufen werden.
+Sie können eines der unterstützten [Azure Cosmos DB-SDKs](documentdb-sdk-dotnet.md) verwenden. Der folgende Codeausschnitt zeigt z.B., wie Partitionsschlüsselbereiche in .NET abgerufen werden.
 
     string pkRangesResponseContinuation = null;
     List<PartitionKeyRange> partitionKeyRanges = new List<PartitionKeyRange>();
@@ -185,10 +186,10 @@ Sie können eines der unterstützten [DocumentDB-SDKs](documentdb-sdk-dotnet.md)
     }
     while (pkRangesResponseContinuation != null);
 
-DocumentDB unterstützt das Abrufen von Dokumenten pro Partitionsschlüsselbereich durch Festlegen des optionalen `x-ms-documentdb-partitionkeyrangeid`-Headers. 
+Azure Cosmos DB unterstützt das Abrufen von Dokumenten pro Partitionsschlüsselbereich durch Festlegen des optionalen `x-ms-documentdb-partitionkeyrangeid`-Headers. 
 
 ### <a name="performing-an-incremental-readdocumentfeed"></a>Ausführen eines inkrementellen ReadDocumentFeed
-ReadDocumentFeed unterstützt die folgenden Szenarien/Aufgaben für die inkrementelle Verarbeitung von Änderungen in den DocumentDB-Sammlungen:
+ReadDocumentFeed unterstützt die folgenden Szenarien/Aufgaben für die inkrementelle Verarbeitung von Änderungen in den Azure Cosmos DB-Sammlungen:
 
 * Lesen aller Änderungen an Dokumenten von Beginn an, also ab der Sammlungserstellung.
 * Lesen aller Änderungen an zukünftigen Aktualisierungen von Dokumenten ab dem aktuellen Zeitpunkt.
@@ -309,7 +310,7 @@ Das .NET SDK enthält die Hilfsklassen [CreateDocumentChangeFeedQuery](https://m
         return checkpoints;
     }
 
-Und der folgende Codeausschnitt zeigt, wie die Änderungen in Echtzeit mit DocumentDB mithilfe der Unterstützung von Änderungsfeeds und der vorhergehenden Funktion verarbeitet werden. Der erste Aufruf gibt alle Dokumente in der Sammlung zurück, und der zweite gibt nur die beiden Dokumente zurück, die seit dem letzten Prüfpunkt erstellt wurden.
+Und der folgende Codeausschnitt zeigt, wie die Änderungen in Echtzeit mit Azure Cosmos DB mithilfe der Unterstützung von Änderungsfeeds und der vorhergehenden Funktion verarbeitet werden. Der erste Aufruf gibt alle Dokumente in der Sammlung zurück, und der zweite gibt nur die beiden Dokumente zurück, die seit dem letzten Prüfpunkt erstellt wurden.
 
     // Returns all documents in the collection.
     Dictionary<string, string> checkpoints = await GetChanges(client, collection, new Dictionary<string, string>());
@@ -332,7 +333,7 @@ Sie können den Änderungsfeed auch mithilfe von clientseitiger Logik filtern, u
     }
 
 ## <a id="change-feed-processor"></a>Change Feed Processor-Bibliothek
-Die [Change Feed Processor-Bibliothek von DocumentDB](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor) kann zum Verteilen der Ereignisverarbeitung vom Änderungsfeed auf mehrere Consumer verwendet werden. Sie sollten diese Implementierung verwenden, wenn Sie Leser für Änderungsfeeds auf der .NET-Plattform erstellen. Mit der `ChangeFeedProcessorHost`-Klasse wird eine threadsichere Laufzeitumgebung mit mehreren Prozessen für Ereignisprozessorimplementierungen bereitgestellt, die auch die Erstellung von Prüfpunkten und die Leaseverwaltung für Partitionen ermöglicht.
+Die [Change Feed Processor-Bibliothek von Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor) kann zum Verteilen der Ereignisverarbeitung vom Änderungsfeed auf mehrere Consumer verwendet werden. Sie sollten diese Implementierung verwenden, wenn Sie Leser für Änderungsfeeds auf der .NET-Plattform erstellen. Mit der `ChangeFeedProcessorHost`-Klasse wird eine threadsichere Laufzeitumgebung mit mehreren Prozessen für Ereignisprozessorimplementierungen bereitgestellt, die auch die Erstellung von Prüfpunkten und die Leaseverwaltung für Partitionen ermöglicht.
 
 Zur Verwendung der [`ChangeFeedProcessorHost`](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor/DocumentDB.ChangeFeedProcessor/ChangeFeedEventHost.cs)-Klasse können Sie [`IChangeFeedObserver`](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor/DocumentDB.ChangeFeedProcessor/IChangeFeedObserver.cs) implementieren. Diese Schnittstelle enthält drei Methoden:
 
@@ -340,13 +341,13 @@ Zur Verwendung der [`ChangeFeedProcessorHost`](https://github.com/Azure/azure-do
 * CloseAsync
 * ProcessEventsAsync
 
-Instanziieren Sie zum Starten der Ereignisverarbeitung die ChangeFeedProcessorHost-Klasse, und geben Sie die entsprechenden Parameter für Ihre DocumentDB-Sammlung an. Rufen Sie anschließend `RegisterObserverAsync` auf, um Ihre `IChangeFeedObserver`-Implementierung bei der Runtime zu registrieren. An diesem Punkt versucht der Host, einen Lease für jeden Partitionsschlüsselbereich in der DocumentDB-Sammlung abzurufen, indem ein „gieriger“ Algorithmus verwendet wird. Diese Leases gelten für einen bestimmten Zeitraum und müssen anschließend erneuert werden. Wenn neue Knoten (hier: Workerinstanzen) in den Onlinezustand versetzt werden, geben sie Leasereservierungen heraus. Im Laufe der Zeit wird die Arbeitsauslastung dann auf die Knoten verteilt, da jeder Knoten versucht, mehr Leases zu erlangen.
+Instanziieren Sie zum Starten der Ereignisverarbeitung die ChangeFeedProcessorHost-Klasse, und geben Sie die entsprechenden Parameter für Ihre Azure Cosmos DB-Sammlung an. Rufen Sie anschließend `RegisterObserverAsync` auf, um Ihre `IChangeFeedObserver`-Implementierung bei der Runtime zu registrieren. An diesem Punkt versucht der Host, einen Lease für jeden Partitionsschlüsselbereich in der Azure Cosmos DB-Sammlung abzurufen, indem ein „gieriger“ Algorithmus verwendet wird. Diese Leases gelten für einen bestimmten Zeitraum und müssen anschließend erneuert werden. Wenn neue Knoten (hier: Workerinstanzen) in den Onlinezustand versetzt werden, geben sie Leasereservierungen heraus. Im Laufe der Zeit wird die Arbeitsauslastung dann auf die Knoten verteilt, da jeder Knoten versucht, mehr Leases zu erlangen.
 
-![Verwenden des Change Feed Processor-Hosts von DocumentDB](./media/documentdb-change-feed/changefeedprocessor.png)
+![Verwenden des Change Feed Processor-Hosts von Azure Cosmos DB](./media/documentdb-change-feed/changefeedprocessor.png)
 
-Im Laufe der Zeit wird somit ein Gleichgewicht erreicht. Diese dynamische Funktion ermöglicht, dass die CPU-basierte automatische Skalierung sowohl beim zentralen Herunterskalieren als auch beim zentralen Hochskalieren auf Consumer angewendet wird. Wenn Änderungen in DocumentDB schneller verfügbar sind, als sie von den Consumern verarbeitet werden können, kann der CPU-Anstieg auf den Consumern verwendet werden, um eine automatische Skalierung in Bezug auf die Anzahl der Workerinstanzen auszulösen.
+Im Laufe der Zeit wird somit ein Gleichgewicht erreicht. Diese dynamische Funktion ermöglicht, dass die CPU-basierte automatische Skalierung sowohl beim zentralen Herunterskalieren als auch beim zentralen Hochskalieren auf Consumer angewendet wird. Wenn Änderungen in Azure Cosmos DB schneller verfügbar sind, als sie von den Consumern verarbeitet werden können, kann der CPU-Anstieg auf den Consumern verwendet werden, um eine automatische Skalierung in Bezug auf die Anzahl der Workerinstanzen auszulösen.
 
-Die `ChangeFeedProcessorHost`-Klasse implementiert zudem unter Verwendung einer separaten DocumentDB-Sammlung von Leases ein Verfahren für die Prüfpunktausführung. Bei diesem Verfahren wird der Offset pro Partition gespeichert, damit jeder Consumer ermitteln kann, wie der letzte Prüfpunkt des vorherigen Consumers lautete. Da Partitionen per Lease zwischen Knoten wechseln, ist dies das Synchronisierungsverfahren, das die Auslastungsverteilung ermöglicht.
+Die `ChangeFeedProcessorHost`-Klasse implementiert zudem unter Verwendung einer separaten Azure Cosmos DB-Sammlung von Leases ein Verfahren für die Prüfpunktausführung. Bei diesem Verfahren wird der Offset pro Partition gespeichert, damit jeder Consumer ermitteln kann, wie der letzte Prüfpunkt des vorherigen Consumers lautete. Da Partitionen per Lease zwischen Knoten wechseln, ist dies das Synchronisierungsverfahren, das die Auslastungsverteilung ermöglicht.
 
 
 Dies ist ein Codeausschnitt für einen einfachen Change Feed Processor-Host, der Änderungen an der Konsole ausgibt:
@@ -373,7 +374,7 @@ Dies ist ein Codeausschnitt für einen einfachen Change Feed Processor-Host, der
     }
 ```
 
-Der folgende Codeausschnitt zeigt, wie Sie einen neuen Host registrieren, um auf Änderungen an einer DocumentDB-Sammlung zu lauschen. Hier konfigurieren wir eine separate Sammlung, um die Leases für Partitionen mehrerer Consumer zu verwalten:
+Der folgende Codeausschnitt zeigt, wie Sie einen neuen Host registrieren, um auf Änderungen an einer Azure Cosmos DB-Sammlung zu lauschen. Hier konfigurieren wir eine separate Sammlung, um die Leases für Partitionen mehrerer Consumer zu verwalten:
 
 ```cs
     string hostName = Guid.NewGuid().ToString();
@@ -397,10 +398,10 @@ Der folgende Codeausschnitt zeigt, wie Sie einen neuen Host registrieren, um auf
     await host.RegisterObserverAsync<DocumentFeedObserver>();
 ```
 
-Dieser Artikel enthält eine exemplarische Vorgehensweise zur DocumentDB-Unterstützung von Änderungsfeeds. Zudem wird das Nachverfolgen von Änderungen an DocumentDB-Daten mithilfe der DocumentDB-REST-API und/oder des SDKs erläutert. 
+Dieser Artikel enthält eine exemplarische Vorgehensweise zur Azure Cosmos DB-Unterstützung von Änderungsfeeds. Zudem wird das Nachverfolgen von Änderungen an Azure Cosmos DB-Daten mithilfe der REST-API und/oder des SDKs erläutert. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Probieren Sie die [Codebeispiele für den DocumentDB-Änderungsfeed auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed) aus.
-* Erfahren Sie mehr über [das Ressourcenmodell und die Hierarchie von DocumentDB](documentdb-resources.md).
-* Lernen Sie die Codierung mit den [DocumentDB SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) kennen.
+* Probieren Sie die [Codebeispiele für den Azure Cosmos DB-Änderungsfeed auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed) aus.
+* Erfahren Sie mehr über das [Ressourcenmodell und die Hierarchie von Azure Cosmos DB](documentdb-resources.md).
+* Lernen Sie die Codierung mit den [Azure Cosmos DB SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) kennen.
 

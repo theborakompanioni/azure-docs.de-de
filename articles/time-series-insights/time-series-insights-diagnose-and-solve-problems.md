@@ -16,40 +16,40 @@ ms.workload: big-data
 ms.date: 04/24/2017
 ms.author: venkatja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 46d58e94f3fede3f7f19de8d97e23ac6910bc12a
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 4b8d5fdab1744b2db658917f91d6dac05db30d2f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 05/12/2017
 
 ---
-# <a name="diagnose-and-solve-problems"></a>Diagnose und Problembehandlung
+# <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung
 
-## <a name="i-do-not-see-my-data"></a>Ich sehe meine Daten nicht.
-Die folgenden Gründe könnten möglicherweise die Ursache sein, warum Sie Ihre Daten nicht in Ihrer Umgebung im [Time Series-Insights-Portal](https://insights.timeseries.azure.com) sehen.
+## <a name="i-dont-see-my-data"></a>Ich sehe meine Daten nicht.
+Es folgen einige mögliche Ursachen dafür, warum Sie Ihre Daten nicht in Ihrer Umgebung im [Azure Time Series Insights-Portal](https://insights.timeseries.azure.com) sehen.
 
-### <a name="does-your-event-source-have-data-in-json-format"></a>Enthält Ihre Ereignisquelle Daten im JSON-Format?
-Azure Time Series Insights unterstützt derzeit nur JSON-Daten. JSON-Beispiele finden Sie im Abschnitt *Unterstützte JSON-Formen* [hier](time-series-insights-send-events.md#supported-json-shapes).
+### <a name="your-event-source-doesnt-have-data-in-json-format"></a>Ihre Ereignisquelle enthält keine Daten im JSON-Format.
+Azure Time Series Insights unterstützt derzeit nur JSON-Daten. JSON-Beispiele finden Sie unter [Unterstützte JSON-Formen](time-series-insights-send-events.md#supported-json-shapes).
 
-### <a name="when-registering-your-event-source-did-you-provide-the-key-with-required-permissions"></a>Haben sie bei der Registrierung Ihrer Ereignisquelle den Schlüssel mit den erforderlichen Berechtigungen bereitgestellt?
-1. Für IoTHub müssen Sie den Schlüssel mit *Dienstverbindungsberechtigung* bereitstellen.
+### <a name="when-you-registered-your-event-source-you-didnt-provide-the-key-that-has-the-required-permission"></a>Sie haben bei der Registrierung der Ereignisquelle keinen Schlüssel mit den erforderlichen Berechtigungen angegeben.
+* Für IoT Hub müssen Sie einen Schlüssel mit der Berechtigung **Dienstverbindung** bereitstellen.
 
-   ![Berechtigung zur Verbindung mit dem IotHub-Dienst](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
+   ![Berechtigung zur Verbindung mit dem IoT Hub-Dienst](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
-   Wie in der vorherigen Abbildung dargestellt, würde die Richtlinie „iothubowner“ oder „service“ funktionieren, da beide mit der Berechtigung „Dienstverbindung“ ausgestattet sind.
-2. Bei EventHub müssen Sie den Schlüssel mit der Berechtigung *Lauschen* bereitstellen.
+   Wie in der vorherigen Abbildung dargestellt, würden die Richtlinien **iothubowner** und **service** funktionieren, da beide die Berechtigung **Dienstverbindung** einschließen.
+* Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
 
    ![Event Hub-Lauschberechtigung](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)
 
-   Wie in der vorherigen Abbildung dargestellt, würde die Richtlinie „lesen“ oder „verwalten“ funktionieren, da beide mit der Berechtigung „Lesen“ ausgestattet sind.
+   Wie in der vorherigen Abbildung dargestellt, würden die Richtlinien **read** oder **write** funktionieren, da beide die Berechtigung **Lauschen** einschließen.
 
-### <a name="are-you-sure-that-the-consumer-group-provided-is-exclusive-to-time-series-insights"></a>Sind Sie sicher, dass die bereitgestellte Consumergruppe exklusiv für Time Series Insights gilt?
-Bei IoTHub oder EventHub müssen Sie während der Registrierung die Consumergruppe angeben, die beim Lesen Ihrer Daten verwendet werden soll. Diese Consumergruppe darf nicht freigegeben werden. Wenn diese freigegeben wird, trennt der zugrunde liegende Event Hub willkürlich automatisch einen der Leser.
+### <a name="the-provided-consumer-group-is-not-exclusive-to-time-series-insights"></a>Die bereitgestellte Consumergruppe ist für Time Series Insights nicht exklusiv.
+Bei IoT Hub oder Event Hub müssen Sie während der Registrierung die Consumergruppe angeben, die beim Lesen Ihrer Daten verwendet werden soll. Diese Consumergruppe darf nicht freigegeben werden. Wenn diese freigegeben wird, trennt der zugrunde liegende Event Hub automatisch einen zufälligen Leser.
 
-## <a name="i-see-my-data-but-there-is-a-lag"></a>Ich sehe meine Daten zwar, jedoch nur mit Verzögerung.
-Die folgenden Gründe könnten möglicherweise die Ursache sein, warum Sie einen Teil der Daten nicht in Ihrer Umgebung im [Time Series-Insights-Portal](https://insights.timeseries.azure.com) sehen.
+## <a name="i-see-my-data-but-theres-a-lag"></a>Ich sehe meine Daten zwar, jedoch nur mit Verzögerung.
+Es folgen einige mögliche Ursachen dafür, warum ein Teil der Daten nicht in Ihrer Umgebung im [Time Series Insights-Portal](https://insights.timeseries.azure.com) angezeigt wird.
 
-### <a name="your-environment-might-be-getting-throttled"></a>Ihre Umgebung wird möglicherweise gedrosselt.
-Der Einschränkungsgrenzwert wird basierend auf der Art und Kapazität der Umgebungs-SKU erzwungen. Alle Ereignisquellen in der Umgebung gemeinsam nutzen diese Kapazität. Wenn Ihre Event Hub-/IoT Hub-Ereignisquelle Daten per Push über die erzwungenen Grenzwerte hinaus überträgt, sehen Sie die Drosselung und Verzögerung.
+### <a name="your-environment-is-getting-throttled"></a>Ihre Umgebung wird gedrosselt.
+Der Drosselungsgrenzwert wird basierend auf dem Typ und der Kapazität der Umgebungs-SKU erzwungen. Alle Ereignisquellen in der Umgebung nutzen diese Kapazität gemeinsam. Wenn Ihre Event Hub-/IoT Hub-Ereignisquelle Daten per Push über die erzwungenen Grenzwerte hinaus überträgt, treten die Drosselung und eine Verzögerung ein.
 
 Die folgende Abbildung zeigt eine Time Series Insights-Umgebung mit SKU S1 und Kapazität 3. Es können 3 Millionen Ereignisse pro Tag eingehen.
 
@@ -57,22 +57,27 @@ Die folgende Abbildung zeigt eine Time Series Insights-Umgebung mit SKU S1 und K
 
 Nehmen wir an, dass diese Umgebung Nachrichten von einem Event Hub mit der in folgender Abbildung gezeigten Eingangsrate erfasst:
 
-![Aktuelle Kapazität der Umgebungs-SKU](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)
+![Beispielerfassungsrate für einen Event Hub](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)
 
-Wie in der Abbildung dargestellt wird, beträgt die tägliche Eingangsrate ca. 67.000 Nachrichten. Diese Rate übersetzt ungefähr 46 Nachrichten pro Minute. Wenn jede Event Hub-Nachricht auf ein einzelnes Time Series Insights-Ereignis reduziert wird, wird keine Drosselung auf diese Umgebung angewendet. Wenn jede Event Hub-Nachricht auf 100 Time Series Insights-Ereignisse reduziert wird, sollten 4.600 Ereignisse pro Minute erfasst werden. Eine S1-SKU-Umgebung mit einer Kapazität von drei kann lediglich 2.100 Ereignisse pro Minute erfassen. (1 Mio. Ereignisse pro Tag => 700 Ereignisse pro Minute, 3 Einheiten => 2.100 Ereignisse pro Minute) Die Verzögerung tritt daher aufgrund der Drosselung auf. Einen Überblick über die Funktionsweise der Vereinfachungslogik finden Sie im Abschnitt *Unterstützte JSON-Formen* [hier](time-series-insights-send-events.md#supported-json-shapes).
+Wie in der Abbildung dargestellt wird, beträgt die tägliche Eingangsrate ca. 67.000 Nachrichten. Diese Rate übersetzt ungefähr 46 Nachrichten pro Minute. Wenn jede Event Hub-Nachricht auf ein einzelnes Time Series Insights-Ereignis reduziert wird, wird keine Drosselung auf diese Umgebung angewendet. Wenn jede Event Hub-Nachricht auf 100 Time Series Insights-Ereignisse reduziert wird, sollten 4.600 Ereignisse pro Minute erfasst werden. Eine SKU S1-Umgebung mit einer Kapazität von 3 kann nur 2.100 Ereignisse pro Minute erfassen (1 Mio. Ereignisse pro Tag = 700 Ereignisse pro Minute von 3 Einheiten = 2.100 Ereignisse pro Minute). Daher tritt aufgrund der Drosselung eine Verzögerung auf. 
 
-#### <a name="recommended-steps"></a>Empfohlene Schritte
-Um die Verzögerung zu beheben, erhöhen Sie die SKU-Kapazität Ihrer Umgebung. [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md)
-
-### <a name="you-might-be-pushing-historical-data-and-hence-the-slow-ingress"></a>Die langsame Erfassung ist möglicherweise auf eine Pushübertragung von Verlaufsdaten zurückzuführen.
-Wenn Sie eine Verbindung zu einer vorhandenen Ereignisquelle herstellen, besteht die Wahrscheinlichkeit, dass Ihr Event Hub/IoT Hub bereits Daten darin enthält. Die Umgebung beginnt daher mit dem Abruf von Daten am Anfang der Beibehaltungsdauer für Nachrichten aus der Ereignisquelle. Dieses Verhalten ist das Standardverhalten und kann nicht überschrieben werden. Eine Drosselung kann möglicherweise belegt sein und dauert möglicherweise eine Weile, bis die Erfassung von Verlaufsdaten aufgefangen ist.
+Eine Übersicht über die Funktionsweise der Vereinfachungslogik finden Sie unter [Unterstützte JSON-Formen](time-series-insights-send-events.md#supported-json-shapes).
 
 #### <a name="recommended-steps"></a>Empfohlene Schritte
-Um die Verzögerung zu beheben, führen Sie die folgenden Schritte aus:
-1. Erhöhen Sie die SKU-Kapazität auf den maximal zulässigen Wert (in diesem Fall 10). Sobald die Kapazität erhöht wird, startet der Erfassungsvorgang wesentlich schneller mit dem Abfangen. Sie können visualisieren, wie schnell der Auffangvorgang über das Verfügbarkeitsdiagramm im [Time Series-Insights-Portal](https://insights.timeseries.azure.com) erfolgen soll. Die erhöhte Kapazität wird Ihnen in Rechnung gestellt.
-2. Sobald die Verzögerung abgefangen wird, verringern Sie die SKU-Kapazität wieder auf die normale Eingangsrate.
+Um die Verzögerung zu beheben, erhöhen Sie die SKU-Kapazität Ihrer Umgebung. Weitere Informationen finden Sie unter [Skalieren der Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md).
 
-## <a name="my-event-source-timestamp-property-name-setting-does-not-work"></a>Meine Einstellung für den *Namen für die Zeitstempeleigenschaft* der Ereignisquelle funktioniert nicht.
+### <a name="youre-pushing-historical-data-and-causing-slow-ingress"></a>Sie übertragen Verlaufsdaten und verursachen damit eine langsamere Erfassung.
+Wenn Sie eine Verbindung mit einer vorhandenen Ereignisquelle herstellen, besteht die Möglichkeit, dass Ihr Event Hub oder IoT Hub darin bereits Daten aufbewahrt. Die Umgebung beginnt daher mit dem Abrufen von Daten am Anfang der Vermerkdauer für Nachrichten aus der Ereignisquelle. 
+
+Dieses Verhalten ist das Standardverhalten und kann nicht überschrieben werden. Möglicherweise lösen Sie damit eine Drosselung aus, sodass es eine Weile dauert, bis die Erfassung von Verlaufsdaten abgeschlossen ist.
+
+#### <a name="recommended-steps"></a>Empfohlene Schritte
+Führen Sie zum Beheben dieser Verzögerung die folgenden Schritte aus:
+1. Erhöhen Sie die SKU-Kapazität auf den maximal zulässigen Wert (in diesem Fall 10). Sobald die Kapazität erhöht wird, schließt der Erfassungsvorgang wesentlich schneller die alten Daten ab. Sie können die Verarbeitungsgeschwindigkeit der alten Daten über das Verfügbarkeitsdiagramm im [Time Series Insights-Portal](https://insights.timeseries.azure.com) visualisieren. Die erhöhte Kapazität wird Ihnen in Rechnung gestellt.
+2. Sobald die Verzögerung abgefangen wurde, können Sie die SKU-Kapazität wieder auf die normale Erfassungsrate verringern.
+
+## <a name="my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Meine Einstellung für den *Namen für die Zeitstempeleigenschaft* der Ereignisquelle funktioniert nicht.
 Stellen Sie sicher, dass Name und Wert den folgenden Regeln entsprechen:
-1. Beachten Sie beim Namen der Zeitstempeleigenschaft die __Groß-/Kleinschreibung__.
-2. Der Wert für die Zeitstempeleigenschaft, der als JSON-Zeichenfolge von Ihrer Ereignisquelle eingeht, sollte das Format __JJJJ-MM-TTTHH:mm:ss.FFFFFFFK__ aufweisen. Ein Beispiel für eine solche Zeichenfolge ist „2008-04-12T12:53Z“.
+* Beachten Sie beim Namen der Zeitstempeleigenschaft die _Groß-/Kleinschreibung_.
+* Der Wert für die Zeitstempeleigenschaft, der als JSON-Zeichenfolge von Ihrer Ereignisquelle eingeht, sollte das Format _JJJJ-MM-TTTHH:mm:ss.FFFFFFFK_ aufweisen. Ein Beispiel für eine solche Zeichenfolge ist „2008-04-12T12:53Z“.
+

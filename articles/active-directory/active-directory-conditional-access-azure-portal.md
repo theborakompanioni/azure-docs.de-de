@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/02/2017
+ms.date: 05/11/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 85a59eddf3c453ee112f279d439c94853b2f62b5
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="conditional-access-in-azure-active-directory---preview"></a>Bedingter Zugriff in Azure Active Directory – Vorschau
+# <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-conditional-access-azure-portal.md)
-> * [Klassisches Azure-Portal](active-directory-conditional-access.md)
-
-
-Das in diesem Thema beschriebene Verhalten befindet sich derzeit in der [Vorschauphase](active-directory-preview-explainer.md).
+> * [klassischen Azure-Portal](active-directory-conditional-access.md)
 
 In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory das einmalige Anmelden an Geräten, Apps und Diensten an jedem Ort. Aufgrund der steigenden Zahl von Geräten (z.B. „BYOD“), das Arbeiten außerhalb von Unternehmensnetzwerken und der Nutzung von SaaS-Apps von Drittanbietern, gelten für IT-Spezialisten zwei gegensätzliche Zielsetzungen:
 
@@ -117,13 +114,17 @@ Durch die Auswahl von „Cloud-Apps“ definieren Sie den Umfang der Cloud-Apps,
 
 - **Wie**: Solange der Zugriff auf Ihre Apps unter Bedingungen erfolgt, die Sie kontrollieren können, ist es ggf. nicht erforderlich, weitere Kontrollen für den Zugriff auf Cloud-Apps durch Ihre Benutzer einzubauen. Es sieht aber schon anders aus, wenn der Zugriff auf Ihre Cloud-Apps beispielsweise über Netzwerke, die nicht vertrauenswürdig sind, oder über nicht konforme Geräte erfolgt. In einer Bedingungsanweisung können Sie bestimmte Zugriffsbedingungen definieren, für die zusätzliche Anforderungen in Bezug auf die Durchführung des Zugriffs auf Ihre Apps gelten.
 
-    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/01.png)
+    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/21.png)
 
 
 ## <a name="conditions"></a>Bedingungen
 
 In der aktuellen Implementierung von Azure Active Directory können Sie Bedingungen für die folgenden Bereiche definieren:
 
+- **Anmelderisiko:** Das Anmelderisiko ist ein Objekt, mit dem Azure Active Directory die Wahrscheinlichkeit dafür ermittelt, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. In diesem Objekt wird die Wahrscheinlichkeit (hoch, mittel oder niedrig) in Form eines Attributs mit dem Namen [Risikostufe für die Anmeldung](active-directory-reporting-risk-events.md#risk-level) gespeichert. Dieses Objekt wird bei einer Anmeldung eines Benutzers generiert, wenn von Azure Active Directory Anmelderisiken erkannt wurden. Weitere Informationen finden Sie unter [Riskante Anmeldungen](active-directory-identityprotection.md#risky-sign-ins).  
+Sie können die berechnete Anmelderisikostufe als Bedingung in einer Richtlinie für den bedingten Zugriff verwenden. 
+
+    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/22.png)
 
 - **Geräteplattformen**: Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird (Android, iOS, Windows Phone, Windows). Sie können die Geräteplattformen angeben, die in eine Richtlinie einbezogen bzw. davon ausgeschlossen werden.  
 Ändern Sie zum Verwenden von Geräteplattformen in der Richtlinie zuerst die Option „Konfigurieren“ in **Ja**, und wählen Sie dann einige oder alle Geräteplattformen aus, für die die Richtlinie gelten soll. Wenn Sie nur eine Geräteplattform auswählen, gilt die Richtlinie nur für die jeweilige Plattform. In diesem Fall sind Anmeldungen an anderen unterstützten Plattformen von der Richtlinie nicht betroffen.
@@ -140,65 +141,6 @@ Sie können entweder alle Standorte oder alle vertrauenswürdigen IPs einbinden,
 Die Legacyauthentifizierung bezieht sich auf Clients, für die eine einfache Authentifizierung verwendet wird, z.B. ältere Office-Clients, für die keine moderne Authentifizierung genutzt wird. Für die Legacyauthentifizierung wird der bedingte Zugriff derzeit nicht unterstützt.
 
     ![Bedingungen](./media/active-directory-conditional-access-azure-portal/04.png)
-
-
-## <a name="what-you-should-know"></a>Wichtige Informationen
-
-### <a name="do-i-need-to-assign-a-user-to-my-policy"></a>Muss ich meiner Richtlinie einen Benutzer zuweisen?
-
-Beim Konfigurieren einer Richtlinie für den bedingten Zugriff sollten Sie ihr mindestens eine Gruppe zuweisen. Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet.
-
-Wenn Sie einer Richtlinie mehrere Benutzer und Gruppen zuweisen möchten, sollten Sie klein anfangen, indem Sie nur einen Benutzer oder eine Gruppe zuweisen und anschließend die Konfiguration testen. Wenn die Richtlinie wie erwartet funktioniert, können Sie ihr weitere Zuweisungen hinzufügen.  
-
-
-### <a name="how-are-assignments-evaluated"></a>Wie werden Zuweisungen ausgewertet?
-
-Alle Zuweisungen sind logisch per **UND**-Operator verbunden. Wenn Sie mehr als eine Zuweisung konfiguriert haben, müssen die Bedingungen aller Zuweisungen erfüllt sein, damit die Richtlinie ausgelöst wird.  
-
-Falls Sie eine Standortbedingung konfigurieren müssen, die für alle Verbindungen von außerhalb des Organisationsnetzwerks gelten, können Sie dies wie folgt erreichen:
-
-- Einschließen: **All locations** (Alle Standorte)
-- Ausschließen: **All trusted IPs** (Alle vertrauenswürdigen IPs)
-
-### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Was passiert, wenn Sie im klassischen Azure-Portal und im Azure-Portal Richtlinien konfiguriert haben?  
-Beide Richtlinien werden von Azure Active Directory erzwungen, und ein Benutzer erhält nur dann Zugriff, wenn alle Anforderungen erfüllt sind.
-
-### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Was passiert, wenn Sie im Intune Silverlight-Portal und im Azure-Portal über Richtlinien verfügen?
-Beide Richtlinien werden von Azure Active Directory erzwungen, und ein Benutzer erhält nur dann Zugriff, wenn alle Anforderungen erfüllt sind.
-
-### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Was passiert, wenn ich mehrere Richtlinien für denselben Benutzer konfiguriert habe?  
-Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewertet, und es wird sichergestellt, dass alle Anforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird.
-
-
-### <a name="does-conditional-access-work-with-exchange-activesync"></a>Funktioniert der bedingte Zugriff mit Exchange ActiveSync?
-
-Ja, Sie können Exchange ActiveSync in einer Richtlinie für den bedingten Zugriff verwenden.
-
-
-### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>Was geschieht, wenn ich die mehrstufige Authentifizierung oder ein kompatibles Gerät benötige?
-
-Derzeit wird der Benutzer unabhängig vom Gerät zur mehrstufigen Authentifizierung aufgefordert.
-
-
-## <a name="what-you-should-avoid-doing"></a>Das sollten Sie vermeiden
-
-Das Framework für bedingten Zugriff bietet Ihnen mehr Flexibilität bei der Konfiguration. Mehr Flexibilität bedeutet jedoch auch, dass Sie jede Konfigurationsrichtlinie vor dem Freigeben sorgfältig prüfen sollten, um unerwünschte Ergebnisse zu vermeiden. Achten Sie in diesem Fall besonders auf Zuweisungen, die sich auf komplette Sätze auswirken, z.B. **alle Benutzer/Gruppen/Cloud-Apps**.
-
-Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
-
-
-**Für alle Benutzer, alle Cloud-Apps:**
-
-- **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
-
-- **Erfordert kompatibles Gerät:** Für Benutzer, die ihre Geräte noch nicht registriert haben, blockiert diese Richtlinie den gesamten Zugriff, einschließlich des Zugriffs auf das Intune-Portal. Wenn Sie ein Administrator ohne registriertes Gerät sind, verhindert diese Richtlinie auch, dass Sie in das Azure-Portal zurückkehren und die Richtlinie ändern können.
-
-- **Erfordert Domänenbeitritt:** Diese Richtlinie blockiert potenziell den Zugriff für alle Benutzer in Ihrer Organisation, wenn Sie noch nicht über in die Domäne eingebundene Geräte verfügen.
-
-
-**Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:**
-
-- **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
 
 
 ## <a name="common-scenarios"></a>Gängige Szenarien
@@ -228,3 +170,4 @@ Viele Intune-Kunden nutzen den bedingten Zugriff, um sicherzustellen, dass nur v
 
 Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
 
+Ausführliche Informationen darüber, was Sie wissen sollten und was Sie beim Konfigurieren von Richtlinien für den bedingten Zugriff vermeiden sollten, finden Sie unter 

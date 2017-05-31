@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: aca6cd69647406d0140d8b0d0cba8e4690b04ae1
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: ce71f8cd842746e6e236f4a2034ba3ee3001586c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -43,27 +44,27 @@ Mit Service Map können Sie Azure-Migrationen effektiv planen, beschleunigen und
 Wenn Sie Azure Site Recovery verwenden und Hilfe beim Definieren der Wiederherstellungsreihenfolge für Ihre Anwendungsumgebung benötigen, kann der Service Map Ihnen automatisch zeigen, welche Systeme auf welche Weise voneinander abhängig sind, damit Sie sicherstellen können, dass Ihr Wiederherstellungsplan zuverlässig ist.  Wählen Sie einen wichtigen Server aus, und zeigen Sie die zugehörigen Clients an, um die Front-End-Systeme zu identifizieren, die erst dann wiederhergestellt werden sollten, wenn der wichtige Server wiederhergestellt und verfügbar ist.  Umgekehrt können Sie sich die Back-End-Abhängigkeiten eines wichtigen Servers ansehen, um die Systeme zu identifizieren, die wiederhergestellt werden müssen, bevor das untersuchte System wiederhergestellt werden kann.
 
 ### <a name="patch-management"></a>Patchverwaltung
-Service Map erweitert die Verwendung des OMS-Tools zur Bewertung von Systemupdates durch die Anzeige, welche anderen Teams und Server von Ihrem Dienst abhängig sind, damit Sie diese benachrichtigen können, bevor Sie Ihre Systeme zum Patchen herunterfahren.  Service Map erweitert auch die Patchverwaltung in der OMS durch die Anzeige, ob Ihre Dienste verfügbar und ordnungsgemäß verbunden sind, nachdem die Patches aufgespielt und die Dienste neu gestartet wurden.
+Service Map erweitert die Verwendung des OMS-Tools zur Bewertung von Systemupdates durch die Anzeige, welche anderen Teams und Server von Ihrem Dienst abhängig sind. Auf diese Weise können Sie sie benachrichtigen, bevor Sie Ihre Systeme zum Patchen herunterfahren.  Service Map erweitert auch die Patchverwaltung in der OMS durch die Anzeige, ob Ihre Dienste verfügbar und ordnungsgemäß verbunden sind, nachdem die Patches aufgespielt und die Dienste neu gestartet wurden.
 
 
 ## <a name="mapping-overview"></a>Übersicht über die Zuordnung
-Service Map-Agents sammeln Informationen über alle über TCP verbundenen Prozesse auf dem Server, auf dem sie installiert sind, sowie Informationen zu den eingehenden und ausgehenden Verbindungen für jeden Prozess.  Aus der Computerliste auf der linken Seite der Service Map-Lösung können Computer mit Service Map-Agents ausgewählt werden, um deren Abhängigkeiten während eines ausgewählten Zeitraums zu visualisieren.  Die Abhängigkeitszuordnungen gelten für einen bestimmten Computer und zeigen alle Computer an, die direkte TCP-Clients oder -Server dieses Computers sind.
+Service Map-Agents sammeln Informationen über alle über TCP verbundenen Prozesse auf dem Server, auf dem sie installiert sind, und Informationen zu den eingehenden und ausgehenden Verbindungen für jeden Prozess.  Aus der Computerliste auf der linken Seite der Service Map-Lösung können Computer mit Service Map-Agents ausgewählt werden, um deren Abhängigkeiten während eines ausgewählten Zeitraums zu visualisieren.  Die Abhängigkeitszuordnungen gelten für einen bestimmten Computer und zeigen alle Computer an, die direkte TCP-Clients oder -Server dieses Computers sind.
 
 ![Service Map-Übersicht](media/oms-service-map/service-map-overview.png)
 
 Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozesse mit aktiven Netzwerkverbindungen während des ausgewählten Zeitraums anzuzeigen.  Wenn ein Remotecomputer mit einem Service Map-Agent erweitert wird, um Details zu den Prozessen anzuzeigen, werden nur die Prozesse angezeigt, die mit dem untersuchten Computer kommunizieren.  Die Anzahl der Front-End-Computer ohne Agents, die eine Verbindung mit dem untersuchten Computer herstellen, wird links neben den Prozessen angegeben, mit denen eine Verbindung hergestellt wird.  Wenn der untersuchte Computer eine Verbindung mit einem Back-End-Computer ohne Agent herstellt, wird dieser Back-End-Server zusammen mit anderen Verbindungen mit derselben Portnummer einer Serverportgruppe hinzugefügt.
 
-Standardmäßig zeigt Service Map Abhängigkeitsinformationen der letzten 10 Minuten an.  Mithilfe der Zeitauswahl in der linken oberen Ecke können Zuordnungen nach historischen Zeiträumen (max. eine Stunde) abgefragt werden, um zu zeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.    Service Map-Daten werden in kostenpflichtigen Arbeitsbereichen 30 Tage lang gespeichert, in kostenlosen Arbeitsbereichen 7 Tage lang.
+Standardmäßig zeigt Service Map Abhängigkeitsinformationen der letzten 30 Minuten an.  Mithilfe der Zeitauswahl in der linken oberen Ecke können Zuordnungen nach historischen Zeiträumen (maximal eine Stunde) abgefragt werden, um zu zeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.    Service Map-Daten werden in kostenpflichtigen Arbeitsbereichen 30 Tage lang gespeichert, in kostenlosen Arbeitsbereichen 7 Tage lang.
 
 ## <a name="status-badges-and-border-coloring"></a>Statusbadges und Rahmenfarbe
-Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste der Statusbadges mit Statusinformationen über den Server angezeigt.  Die Badges weisen darauf hin, dass relevante Informationen für den Server aus einer der OMS-Lösungsintegrationen vorliegen.  Indem Sie auf einen Badge klicken, gelangen Sie direkt zu den Statusdetails im rechten Bereich.  Aktuell sind folgende Statusbadges verfügbar: Warnungen, Änderungen, Sicherheit und Updates.
+Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste der Statusbadges mit Statusinformationen über den Server angezeigt.  Die Badges weisen darauf hin, dass relevante Informationen für den Server aus einer der OMS-Lösungsintegrationen vorliegen.  Durch Klicken auf einen Badge gelangen Sie direkt zu den Statusdetails im rechten Bereich.  Aktuell sind folgende Statusbadges verfügbar: Warnungen, Änderungen, Sicherheit und Updates.
 
 Basierend auf den Schweregrad der Statusbadges können die Computerknotenrahmen rot (kritisch), gelb (Warnung) oder blau (Information) sein.  Die Farbe stellt den schwerwiegendsten Status aller Statusbadges dar.  Ein grauer Rahmen gibt an, dass ein Knoten keine aktuellen Statusindikatoren aufweist.
 
 ![Statusbadges](media/oms-service-map/status-badges.png)
 
 ## <a name="role-icons"></a>Rollensymbole
-Bestimmte Prozesse haben bestimmte Rollen auf Computern: Webserver, Anwendungsserver, Datenbank usw.  Die Dienstzuordnung versehen Prozess- und Computerfelder mit Rollensymbolen, damit die Rolle eines Prozesses oder Servers auf einen Blick erkannt werden kann.
+Bestimmte Prozesse haben bestimmte Rollen auf Computern: Webserver, Anwendungsserver, Datenbank usw.  Service Map versieht Prozess- und Computerfelder mit Rollensymbolen, damit die Rolle eines Prozesses oder Servers auf einen Blick erkannt werden kann.
 
 | Rollensymbol | Beschreibung |
 |:--|:--|
@@ -88,17 +89,17 @@ Clientgruppen sind die Felder auf der Karte, die Clientcomputer ohne Dependency-
 
 ![Clientgruppen](media/oms-service-map/client-groups.png)
 
-Um die IP-Adressen der Server in einer Clientgruppe anzuzeigen, wählen Sie die Gruppe aus.  Im Eigenschaftenbereich werden die Inhalte der Gruppe aufgeführt.
+Um die IP-Adressen der Server in einer Clientgruppe anzuzeigen, wählen Sie die Gruppe aus.  Im Eigenschaftenbereich sind die Inhalte der Gruppe aufgeführt.
 
 ![Eigenschaften von Clientgruppen](media/oms-service-map/client-group-properties.png)
 
 ## <a name="server-port-groups"></a>Serverportgruppen
-Serverportgruppen sind Felder, die Serverports auf Servern darstellen, die über keinen Dependency-Agent verfügen.  Das Feld enthält den Serverport zusammen mit der Anzahl von Servern mit Verbindungen zu diesem Port.  Erweitern Sie das Feld, um die einzelnen Server und Verbindungen anzuzeigen.  Wenn das Feld nur einen Server enthält, wird der Name oder die IP-Adresse aufgeführt.
+Serverportgruppen sind Felder, die Serverports auf Servern darstellen, die über keinen Dependency-Agent verfügen.  Das Feld enthält den Serverport zusammen mit der Anzahl von Servern mit Verbindungen zu diesem Port.  Erweitern Sie das Feld, um die einzelnen Server und Verbindungen anzuzeigen.  Wenn das Feld nur einen Server enthält, ist der Name oder die IP-Adresse aufgeführt.
 
 ![Serverportgruppen](media/oms-service-map/server-port-groups.png)
 
 ## <a name="context-menu"></a>Kontextmenü
-Indem Sie in einem beliebigen Server auf die drei Punkte oben rechts klicken, wird das Kontextmenü für diesen Server angezeigt.
+Wenn Sie in einem beliebigen Server auf die drei Punkte oben rechts klicken, wird das Kontextmenü für diesen Server angezeigt.
 
 ![Verbindungsfehler](media/oms-service-map/context-menu.png)
 
@@ -106,10 +107,10 @@ Indem Sie in einem beliebigen Server auf die drei Punkte oben rechts klicken, wi
 Über „Serverzuordnung laden“ gelangen Sie zu einer neuen Zuordnung mit dem ausgewählten Server als neuem untersuchten Computer.
 
 ### <a name="showhide-self-links"></a>Selbstverlinkungen ein-/ausblenden
-Über „Selbstverlinkungen einblenden“ wird der Serverknoten mit allen Selbstverlinkungen (TCP-Verbindungen, die bei Prozessen auf dem Server starten und enden) neu gezeichnet.  Wenn Selbstverlinkungen angezeigt werden, ändert sich die Option im Menü zu „Selbstverlinkungen ausblenden“, wodurch Benutzer die Anzeige der Selbstverlinkungen ein- bzw. ausschalten können.
+Über „Selbstverlinkungen einblenden“ wird der Serverknoten mit allen Selbstverlinkungen (TCP-Verbindungen, die bei Prozessen auf dem Server starten und enden) neu gezeichnet.  Wenn Selbstverlinkungen angezeigt werden, ändert sich die Option im Menü in „Selbstverlinkungen ausblenden“, sodass Benutzer die Anzeige der Selbstverlinkungen ein- bzw. ausschalten können.
 
 ## <a name="computer-summary"></a>Computerzusammenfassung
-Der Computerzusammenfassungsbereich enthält eine Übersicht des Betriebssystems des Servers und der Zahl der Abhängigkeiten zusammen mit einer Vielzahl von Daten aus anderen OMS-Lösungen, einschließlich Leistungsmetriken, Änderungsnachverfolgung, Sicherheit, Updates etc.
+Der Computerzusammenfassungsbereich enthält eine Übersicht des Betriebssystems des Servers und der Zahl der Abhängigkeiten sowie Daten aus anderen OMS-Lösungen, einschließlich Leistungsmetriken, Änderungsnachverfolgung, Sicherheit, Updates usw.
 
 ![Computerzusammenfassung](media/oms-service-map/machine-summary.png)
 
@@ -127,7 +128,7 @@ Der Übersichtsbereich für einen Prozess bietet zusätzliche Informationen übe
 ![Prozessübersicht](media/oms-service-map/process-summary.png)
 
 ## <a name="oms-alerts-integration"></a>Integration von OMS-Warnungen
-Service Map ist in OMS-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden.  Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungenbereich werden die Warnungen aufgelistet.
+Service Map ist in OMS-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden.  Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet.
 
 ![Computerwarnungenbereich](media/oms-service-map/machine-alerts.png)
 
@@ -142,6 +143,17 @@ Beachten Sie: Damit Service Map relevante Warnungen anzeigen kann, muss die Warn
 Service Map ist in die Protokollsuche integriert, um die Anzahl aller verfügbaren Protokollereignisse für den ausgewählten Server während des ausgewählten Zeitraums anzuzeigen.  Sie können auf eine beliebige Zeile in der Liste der Ereignisanzahl klicken, um zur Protokollsuche zu wechseln und die einzelnen Protokollereignisse anzuzeigen.
 
 ![Protokollereignisse](media/oms-service-map/log-events.png)
+
+## <a name="oms-service-desk-integration"></a>Integration von OMS-Service Desk
+Die Integration von Service Map in den IT Service Management Connector erfolgt automatisch, wenn beide Lösungen in Ihrem OMS-Arbeitsbereich aktiviert und konfiguriert sind.  Die Integration in Service Map wird als „Service Desk“ bezeichnet.  [Weitere Informationen zum Aktivieren und Konfigurieren des ITSM Connectors.](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)
+
+Im Service Desk-Bereich wird eine Liste aller IT Service Management-Ereignisse für den ausgewählten Server im ausgewählten Zeitraum angezeigt.  Für den Server wird ein Symbol angezeigt, wenn aktuelle Elemente vorliegen, und im Service Desk-Bereich werden die Elemente aufgelistet.
+![Service Desk-Bereich](media/oms-service-map/service-desk.png)
+
+Klicken Sie auf „Arbeitselement anzeigen“, um das Element in der verbundenen ITSM-Lösung zu öffnen.
+
+Klicken Sie auf „In Protokollsuche anzeigen“, um die Details des Elements in der Protokollsuche anzuzeigen.
+
 
 ## <a name="oms-change-tracking-integration"></a>Integration der OMS-Änderungsnachverfolgung
 Die Integration von Service Map in die Änderungsnachverfolgung erfolgt automatisch, wenn beide Lösungen im OMS-Arbeitsbereich aktiviert und konfiguriert werden.
@@ -172,7 +184,7 @@ Im Computerupdatebereich werden Daten aus der Updateverwaltungslösung von OMS f
 ![Bereich für die Änderungsnachverfolgung auf einem Computer](media/oms-service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
-Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../log-analytics/log-analytics-log-searches.md) zur Verfügung.  Dies kann in verschiedenen Szenarien von Nutzen sein, wie z.B. Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
+Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../log-analytics/log-analytics-log-searches.md) zur Verfügung.  Diese Daten können in verschiedenen Szenarien von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
 Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers oder beim Onboarding in Service Map generiert werden, wird pro Stunde ein Datensatz für jeden eindeutigen Computer und jeden eindeutigen Prozess generiert.  Die Eigenschaften der Datensätze sind in den folgenden Tabellen aufgeführt.  Die Felder und Werte in den ServiceMapComputer_CL-Ereignissen sind Feldern der Computerressource in der ServiceMap ARM-API zugeordnet.  Die Felder und Werte in den ServiceMapProcess_CL-Ereignissen sind Feldern der Prozessressource in der ServiceMap ARM-API zugeordnet.  Das Feld „ResourceName_s“ entspricht dem Namensfeld in der entsprechenden ARM-Ressource. Hinweis: Mit dem Anwachsen des Service Map-Features können sich diese Felder ändern.
 
@@ -182,7 +194,7 @@ Es gibt intern generierte Eigenschaften, mit denen Sie eindeutige Prozessen und 
 - Computer: Verwenden Sie „ResourceId“ oder „ResourceName_s“ zur eindeutigen Identifizierung eines Computers in einem OMS-Arbeitsbereich.
 - Process – Verwenden Sie „ResourceId“ zur eindeutigen Identifizierung eines Prozesses in einem OMS-Arbeitsbereich. „ResourceName_s“ ist innerhalb des Kontexts des Computers, auf dem der Prozess ausgeführt wird (MachineResourceName_s), eindeutig. 
 
-Da für einen bestimmten Prozess und Computer in einem bestimmten Zeitraum möglicherweise mehrere Datensätze vorhanden sind, können Abfragen mehrere Datensätze für denselben Computer oder Prozess zurückgeben. Wenn nur der aktuellste Datensatz zurückgegeben werden soll, fügen Sie „| dedup ResourceId“ zur Abfrage hinzu.
+Da für einen bestimmten Prozess und Computer in einem bestimmten Zeitraum möglicherweise mehrere Datensätze vorhanden sind, können Abfragen mehrere Datensätze für denselben Computer oder Prozess zurückgeben. Wenn nur der aktuellste Datensatz zurückgegeben werden soll, fügen Sie der Abfrage „| dedup ResourceId“ hinzu.
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL-Datensätze
 Datensätze des Typs **ServiceMapComputer_CL** enthalten Bestandsdaten für Server mit Service Map-Agents.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:

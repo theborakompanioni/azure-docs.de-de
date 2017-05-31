@@ -1,33 +1,34 @@
 ---
-title: 'Azure DocumentDB-Portaltool: Abfrage-Explorer | Microsoft Docs'
-description: "Sie erhalten Informationen zum DocumentDB-Abfrage-Explorer, einem SQL-Abfrage-Editor im Azure-Portal zum Schreiben von SQL-Abfragen und Ausführen dieser Abfragen für eine NoSQL-DocumentDB-Sammlung."
+title: 'Azure Cosmos DB-Portaltool: Abfrage-Explorer | Microsoft-Dokumentation'
+description: "Sie erhalten Informationen zum Azure Cosmos DB-Abfrage-Explorer, einem SQL-Abfrage-Editor im Azure-Portal zum Schreiben von SQL-Abfragen und Ausführen dieser Abfragen für eine Azure Cosmos DB-Sammlung."
 keywords: SQL-Abfragen schreiben, SQL-Abfrage-Editor
-services: documentdb
+services: cosmosdb
 author: kirillg
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: ac378240-b11f-4522-ae9f-09da3a6f9c16
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: kirillg
-translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: c4c2cd8ddcb541b2619f7e1b140222899f15f87c
-ms.lasthandoff: 02/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 77389c6d0779a08b8d717076fc5678d3d7fb3b0c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="write-edit-and-run-sql-queries-for-documentdb-using-query-explorer-in-the-azure-portal"></a>Schreiben, Bearbeiten und Ausführen von SQL-Abfragen für DocumentDB mit dem Abfrage-Explorer im Azure-Portal
-Dieser Artikel enthält eine Übersicht über den Abfrage-Explorer von [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). Hierbei handelt es sich um ein Tool im Azure-Portal, mit dem Sie SQL-Abfragen für eine [DocumentDB-Sammlung](documentdb-create-collection.md) schreiben und bearbeiten und darauf anwenden können.
+# <a name="write-edit-and-run-sql-queries-for-azure-cosmos-db-using-query-explorer-in-the-azure-portal"></a>Schreiben, Bearbeiten und Ausführen von SQL-Abfragen für Azure Cosmos DB mit dem Abfrage-Explorer im Azure-Portal
+Dieser Artikel enthält eine Übersicht über den Abfrage-Explorer von [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/). Hierbei handelt es sich um ein Tool im Azure-Portal, mit dem Sie SQL-Abfragen für eine [DocumentDB-Sammlung](documentdb-create-collection.md) schreiben und bearbeiten und darauf anwenden können.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png). 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich auf ![Azure Cosmos DB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **Azure Cosmos DB**. 
 
-    Wenn **NoSQL (DocumentDB)** nicht angezeigt wird, klicken Sie unten auf **Weitere Dienste** und dann auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png).
+    Wenn **Azure Cosmos DB** nicht angezeigt wird, klicken Sie unten auf **Weitere Dienste** und dann auf ![Azure Cosmos DB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **Azure Cosmos DB**.
 2. Klicken Sie im Ressourcenmenü auf **Abfrage-Explorer**. 
    
     ![Screenshot: Azure-Portal mit hervorgehobenem Abfrage-Explorer](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
@@ -68,11 +69,11 @@ Wenn eine Abfrage mit Fehlern abgeschlossen wird, zeigt der Abfrage-Explorer ein
 
 ![Screenshot der Abfrage-Explorers – Abfragefehler](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
-## <a name="run-documentdb-sql-queries-outside-the-portal"></a>Ausführen von DocumentDB-SQL-Abfragen außerhalb des Portals
-Der Abfrage-Explorer im Azure-Portal ist nur eine Möglichkeit, um SQL-Abfragen für DocumentDB auszuführen. Sie können SQL-Abfragen auch mit der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder den [Client-SDKs](documentdb-sdk-dotnet.md) ausführen. Weitere Informationen zur Verwendung dieser oder anderer Methoden finden Sie unter [Ausführen von SQL-Abfragen](documentdb-sql-query.md#ExecutingSqlQueries)
+## <a name="run-documentdb-api-sql-queries-outside-the-portal"></a>Ausführen von DocumentDB-API-SQL-Abfragen außerhalb des Portals
+Der Abfrage-Explorer im Azure-Portal ist nur eine Möglichkeit, um SQL-Abfragen für Cosmos DB auszuführen. Sie können SQL-Abfragen auch mit der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder den [Client-SDKs](documentdb-sdk-dotnet.md) ausführen. Weitere Informationen zur Verwendung dieser oder anderer Methoden finden Sie unter [Ausführen von SQL-Abfragen](documentdb-sql-query.md#ExecutingSqlQueries)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur DocumentDB-SQL-Grammatik, die im Abfrage-Explorer unterstützt wird, finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md), oder drucken Sie sich den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) aus.
+Weitere Informationen zur DocumentDB-API-SQL-Grammatik, die im Abfrage-Explorer unterstützt wird, finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md), oder drucken Sie sich den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) aus.
 Sie können auch experimentieren, indem Sie auf den [Query Playground](https://www.documentdb.com/sql/demo) zugreifen, um Abfragen online mit einem Beispieldataset zu testen.
 
 

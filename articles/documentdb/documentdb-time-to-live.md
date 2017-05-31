@@ -1,33 +1,34 @@
 ---
-title: "Festlegen einer Gültigkeitsdauer für den Ablauf von Daten in DocumentDB | Microsoft Docs"
-description: "Mit TTL bietet Microsoft Azure DocumentDB die Möglichkeit, im System vorhandene Dokumente nach einem bestimmten Zeitraum automatisch zu löschen."
-services: documentdb
+title: "Festlegen einer Gültigkeitsdauer für den Ablauf von Daten in Azure Cosmos DB | Microsoft-Dokumentation"
+description: "Mit TTL bietet Microsoft Azure Cosmos DB die Möglichkeit, im System vorhandene Dokumente nach einem bestimmten Zeitraum automatisch zu löschen."
+services: cosmosdb
 documentationcenter: 
 keywords: "Gültigkeitsdauer (Time To Live, TTL)"
 author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/13/2017
 ms.author: arramac
-translationtype: Human Translation
-ms.sourcegitcommit: 1ad5307054dbd860f9c65db4b82ea5f560a554c8
-ms.openlocfilehash: 14a06dd20547f2910b2321372b27d9f777e54cc7
-ms.lasthandoff: 01/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 7a1d4c722fdb926c43b23e333f9fa558ba163b65
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="expire-data-in-documentdb-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in DocumentDB-Sammlungen
+# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
 
-Mit der Gültigkeitsdauer (Time To Live, TTL) bietet Microsoft Azure DocumentDB die Möglichkeit, Dokumente nach einem bestimmten Zeitraum automatisch aus der Datenbank endgültig zu löschen. Die standardmäßige Gültigkeitsdauer kann auf Sammlungsebene festgelegt und für individuelle Dokumente überschrieben werden. Nach dem Festlegen der Gültigkeitsdauer (auf Sammlungs- oder Dokumentebene) werden Dokumente, die nach dem in Sekunden angegebenen Zeitraum (beginnend ab der letzten Änderung) vorhanden sind, von DocumentDB automatisch entfernt.
+Mit der Gültigkeitsdauer (Time To Live, TTL) bietet Microsoft Azure Cosmos DB die Möglichkeit, Dokumente nach einem bestimmten Zeitraum automatisch aus der Datenbank endgültig zu löschen. Die standardmäßige Gültigkeitsdauer kann auf Sammlungsebene festgelegt und für individuelle Dokumente überschrieben werden. Nach dem Festlegen der Gültigkeitsdauer (auf Sammlungs- oder Dokumentebene) werden Dokumente, die nach dem in Sekunden angegebenen Zeitraum (beginnend ab der letzten Änderung) vorhanden sind, von Cosmos DB automatisch entfernt.
 
-Die Gültigkeitsdauer in DocumentDB basiert auf einem Offset für den letzten Änderungszeitpunkt eines Dokuments. Zu diesem Zweck wird das für jedes Dokument vorhandene Feld `_ts` verwendet. Bei dem Feld „_ts“ handelt es sich um einen Epochenzeitstempel im Unix-Format zur Darstellung von Datum und Uhrzeit. Das Feld `_ts` wird bei jeder Änderung eines Dokuments aktualisiert. 
+Die Gültigkeitsdauer in Cosmos DB basiert auf einem Offset für den letzten Änderungszeitpunkt eines Dokuments. Zu diesem Zweck wird das für jedes Dokument vorhandene Feld `_ts` verwendet. Bei dem Feld „_ts“ handelt es sich um einen Epochenzeitstempel im Unix-Format zur Darstellung von Datum und Uhrzeit. Das Feld `_ts` wird bei jeder Änderung eines Dokuments aktualisiert. 
 
 ## <a name="ttl-behavior"></a>TTL-Verhalten
 Das TTL-Feature wird über TTL-Eigenschaften auf zwei Ebenen (Sammlungsebene und Dokumentebene) gesteuert. Die Werte werden in Sekunden festgelegt und fungieren als Delta für den letzten Änderungszeitpunkt des Dokuments (aus dem Feld `_ts`).
@@ -53,10 +54,10 @@ Die obige Logik wird in der folgenden Matrix veranschaulicht:
 | TTL = n für das Dokument |Auf der Dokumentebene kann nichts überschrieben werden. Der TTL-Wert für ein Dokument wird vom System nicht interpretiert. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall -1 und laufen nie ab. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall n von der Sammlung. |
 
 ## <a name="configuring-ttl"></a>Konfigurieren von TTL
-Die Gültigkeitsdauer ist in DocumentDB-Sammlungen und für alle Dokumente standardmäßig deaktiviert.
+Die Gültigkeitsdauer ist in Cosmos DB-Sammlungen und für alle Dokumente standardmäßig deaktiviert.
 
 ## <a name="enabling-ttl"></a>Aktivieren von TTL
-Um TTL für eine Sammlung (oder für die Dokumente in einer Sammlung) zu aktivieren, müssen Sie die DefaultTTL-Eigenschaft einer Auflistung entweder auf „-1“ oder auf eine positive Zahl ungleich Null festlegen. Wenn DefaultTTL auf „-1“ festgelegt wird, laufen die Dokumente in der Sammlung standardmäßig nicht ab, der DocumentDB-Dienst überwacht die Sammlung aber auf Dokumente, bei denen diese Standardeinstellung überschrieben wurde.
+Um TTL für eine Sammlung (oder für die Dokumente in einer Sammlung) zu aktivieren, müssen Sie die DefaultTTL-Eigenschaft einer Auflistung entweder auf „-1“ oder auf eine positive Zahl ungleich Null festlegen. Wenn DefaultTTL auf „-1“ festgelegt wird, laufen die Dokumente in der Sammlung standardmäßig nicht ab, der Cosmos DB-Dienst überwacht die Sammlung aber auf Dokumente, bei denen diese Standardeinstellung überschrieben wurde.
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -162,7 +163,7 @@ Die Dokumente sind sofort abgelaufen, sobald die Gültigkeitsdauer (TTL) verstri
 
 **Hat die Gültigkeitsdauer für ein Dokument Auswirkung auf die Gebühren für Anforderungseinheiten?**
 
-Nein, Löschungen gemäß Gültigkeitsdauer (TTL) abgelaufener Dokumente in DocumentDB haben keine Auswirkungen auf RU-Gebühren.
+Nein, Löschungen gemäß Gültigkeitsdauer (TTL) abgelaufener Dokumente in Cosmos DB haben keine Auswirkungen auf RU-Gebühren.
 
 **Gilt das TTL-Feature nur für vollständige Dokumente oder kann ich einen Ablauf für individuelle Dokumenteigenschaftswerte konfigurieren?**
 
@@ -173,6 +174,6 @@ TTL gilt für das gesamte Dokument. Soll nur ein Teil eines Dokuments ablaufen, 
 Ja. Als [Festlegung der Indizierungsrichtlinie](documentdb-indexing-policies.md) der Sammlung kommt „Lazy“ oder „Consistent“ infrage. Beim Versuch, DefaultTTL für eine Sammlung mit der Indizierung „None“ festzulegen, tritt ein Fehler auf. Gleiches gilt, wenn Sie versuchen, die Indizierung für eine Auflistung zu deaktivieren, für die DefaultTTL bereits festgelegt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure DocumentDB finden Sie auf der [*Dokumentationsseite*](https://azure.microsoft.com/documentation/services/documentdb/) des Diensts.
+Weitere Informationen zu Azure Cosmos DB finden Sie auf der [*Dokumentationsseite*](https://azure.microsoft.com/documentation/services/documentdb/) des Diensts.
 
 

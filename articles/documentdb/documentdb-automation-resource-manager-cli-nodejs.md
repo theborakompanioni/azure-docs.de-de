@@ -1,37 +1,42 @@
 ---
-title: "DocumentDB-Automatisierung – Resource Manager – Azure CLI 1.0 | Microsoft-Dokumentation"
-description: "Verwenden Sie Azure-Ressourcen-Manager-Vorlagen oder die CLI zur Bereitstellung eines DocumentDB-Datenbankkontos. DocumentDB ist eine cloudbasierte NoSQL-Datenbank für JSON-Daten."
-services: documentdb
+title: "Azure Cosmos DB-Automatisierung – Resource Manager – Azure CLI 1.0 | Microsoft-Dokumentation"
+description: Verwenden Sie Azure Resource Manager-Vorlagen oder die CLI zur Bereitstellung eines Azure Cosmos DB-Datenbankkontos. Azure Cosmos DB ist eine global verteilte cloudbasierte Datenbank.
+services: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-resource-manager
 documentationcenter: 
 ms.assetid: eae5eec6-0e27-442c-abfc-ef6b7fd3f8d2
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: mimig
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0959dace90686324b9fe4360f4696f8d85c3a9e7
-ms.lasthandoff: 03/31/2017
+redirect_url: https://aka.ms/acdbclisamples
+ROBOTS: NOINDEX, NOFOLLOW
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 80902661eb811bdd8f6e00bcd5f61a8939a4e47c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="automate-documentdb-account-creation-using-azure-cli-10-and-azure-resource-manager-templates"></a>Automatisieren der Erstellung von DocumentDB-Konten mithilfe der Azure CLI 1.0 und Azure Resource Manager-Vorlagen
+# <a name="automate-azure-cosmos-db-account-creation-using-azure-cli-10-and-azure-resource-manager-templates"></a>Automatisieren der Erstellung von Azure Cosmos DB-Konten mithilfe der Azure CLI 1.0 und Azure Resource Manager-Vorlagen
 > [!div class="op_single_selector"]
 > * [Azure-Portal](documentdb-create-account.md)
 > * [Azure CLI 1.0](documentdb-automation-resource-manager-cli-nodejs.md)
 > * [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 > * [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 
-In diesem Artikel erfahren Sie, wie Sie ein Azure DocumentDB-Konto mithilfe von Azure Resource Manager-Vorlagen oder direkt mit der Azure CLI 1.0 (Command-Line Interface, Befehlszeilenschnittstelle) erstellen können. Weitere Informationen zum Erstellen eines DocumentDB-Kontos über das Azure Portal finden Sie unter [Erstellen eines DocumentDB-Kontos über das Azure-Portal](documentdb-create-account.md).
+In diesem Artikel erfahren Sie, wie Sie ein Azure Cosmos DB DocumentDB-API-Konto mithilfe von Azure Resource Manager-Vorlagen oder direkt mit der Azure CLI 1.0 (Command-Line Interface, Befehlszeilenschnittstelle) erstellen können. Informationen zum Erstellen eines Azure Cosmos DB-Kontos mithilfe des Azure-Portals finden Sie unter [Erstellen eines Azure Cosmos DB-Datenbankkontos mithilfe des Azure-Portals](documentdb-create-account.md).
 
-DocumentDB-Datenbankkonten sind derzeit die einzige DocumentDB-Ressource, die mithilfe von Resource Manager-Vorlagen und der Azure CLI 1.0 erstellt werden kann.
+Datenbankkonten für die Azure Cosmos DB DocumentDB-API und MongoDB-API sind derzeit die einzige Azure Cosmos DB-Ressourcen, die mithilfe von Resource Manager-Vorlagen und der Azure CLI 1.0 erstellt werden können.
+
+Informationen zum Erstellen eines Azure Cosmos DB DocumentDB-API-, Tabellen-API-, Graph-API- oder MongoDB-Kontos mithilfe der CLI 2.0 finden Sie unter [Erstellen eines Azure DocumentDB-Kontos mithilfe der Azure CLI](documentdb-automation-resource-manager-cli.md).
 
 ## <a name="getting-ready"></a>Vorbereitung
 Vor der Verwendung der Azure CLI 1.0 mit Azure-Ressourcengruppen benötigen Sie die richtige Version und ein Azure-Konto. Wenn Sie nicht über die Azure CLI 1.0 verfügen, [installieren Sie sie](../cli-install-nodejs.md).
@@ -97,7 +102,7 @@ Die folgende Ausgabe wird zurückgegeben:
 Sie können ggf. zum Standardbefehlssatz wechseln, indem Sie `azure config mode asm` eingeben.
 
 ### <a name="create-or-retrieve-your-resource-group"></a>Erstellen oder Abrufen der Ressourcengruppe
-Wenn Sie ein DocumentDB-Konto erstellen möchten, benötigen Sie zuerst eine Ressourcengruppe. Wenn Sie den Namen der gewünschten Ressourcengruppe bereits kennen, fahren Sie mit [Schritt 2](#create-documentdb-account-cli)fort.
+Wenn Sie ein Azure Cosmos DB-Konto erstellen möchten, benötigen Sie zuerst eine Ressourcengruppe. Wenn Sie den Namen der gewünschten Ressourcengruppe bereits kennen, fahren Sie mit [Schritt 2](#create-documentdb-account-cli)fort.
 
 Wenn Sie eine Liste aller aktuellen Ressourcengruppen anzeigen möchten, führen Sie den folgenden Befehl aus, und notieren Sie sich den Namen der gewünschten Ressourcengruppe:
 
@@ -108,7 +113,7 @@ Wenn Sie eine Ressourcengruppe erstellen möchten, führen Sie den folgenden Bef
     azure group create <resourcegroupname> <resourcegrouplocation>
 
 * `<resourcegroupname>` darf nur alphanumerische Zeichen, Punkte, Unterstriche, den Bindestrich „-“ und Klammern enthalten und darf nicht mit einem Punkt enden.
-* `<resourcegrouplocation>` muss einer der Regionen entsprechen, in denen DocumentDB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
+* `<resourcegrouplocation>` muss einer der Regionen entsprechen, in denen Azure Cosmos DB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
 
 Beispieleingabe:
 
@@ -131,17 +136,17 @@ Die folgende Ausgabe wird erzeugt:
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).
 
 ## <a name="understanding-resource-manager-templates-and-resource-groups"></a>Grundlegendes zu Resource Manager-Vorlagen und -Ressourcengruppen
-Die meisten Anwendungen basieren auf einer Kombination verschiedener Ressourcentypen (z. B. mindestens ein DocumentDB-Konto, Speicherkonten, ein virtuelles Netzwerk oder ein Content Delivery Network). Die standardmäßige Azure-Service-Management-API und das Azure-Portal stellte diese Elemente mithilfe eines Ansatzes auf Dienstbasis dar. Bei dieser Vorgehensweise müssen Sie die einzelnen Dienste einzeln und nicht als eine logische Bereitstellungseinheit bereitstellen und verwalten (oder weitere Tools suchen, die dies ermöglichen).
+Die meisten Anwendungen basieren auf einer Kombination verschiedener Ressourcentypen (z. B. mindestens ein Azure Cosmos DB-Konto, Speicherkonten, ein virtuelles Netzwerk oder ein Content Delivery Network). Die standardmäßige Azure-Service-Management-API und das Azure-Portal stellte diese Elemente mithilfe eines Ansatzes auf Dienstbasis dar. Bei dieser Vorgehensweise müssen Sie die einzelnen Dienste einzeln und nicht als eine logische Bereitstellungseinheit bereitstellen und verwalten (oder weitere Tools suchen, die dies ermöglichen).
 
 *Azure-Ressourcen-Manager-Vorlagen* ermöglichen es Ihnen, diese verschiedenen Ressourcen als eine logische Bereitstellungseinheit auf deklarative Weise bereitzustellen und zu verwalten. Anstatt Azure imperativisch mitzuteilen, wie ein Befehl nach dem anderen bereitgestellt wird, beschreiben Sie die gesamte Bereitstellung in einer JSON-Datei – alle Ressourcen und zugeordnete Konfigurations- und Bereitstellungsparameter – und geben an Azure weiter, dass diese Ressourcen als eine Gruppe bereitgestellt werden sollen.
 
 Weitere Informationen zu Azure-Ressourcengruppen und ihrer Nutzung finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
-## <a id="quick-create-documentdb-account"></a>Aufgabe: Erstellen eines DocumentDB-Kontos für eine einzelne Region
-Befolgen Sie die Anweisungen in diesem Abschnitt, um ein DocumentDB-Konto für eine einzelne Region zu erstellen. Hierfür können Sie die Azure CLI 1.0 mit oder ohne Resource Manager-Vorlagen verwenden.
+## <a id="quick-create-documentdb-account"></a>Aufgabe: Erstellen eines Azure Cosmos DB-Kontos für eine einzelne Region
+Befolgen Sie die Anweisungen in diesem Abschnitt, um ein Azure Cosmos DB-Konto für eine einzelne Region zu erstellen. Hierfür können Sie die Azure CLI 1.0 mit oder ohne Resource Manager-Vorlagen verwenden.
 
-### <a id="create-single-documentdb-account-cli-arm"></a> Erstellen eines DocumentDB-Kontos für eine einzelne Region per Azure CLI 1.0 ohne Resource Manager-Vorlagen
-Erstellen Sie ein DocumentDB-Konto in der neuen oder vorhandenen Ressourcengruppe, indem Sie den folgenden Befehl an der Eingabeaufforderung eingeben:
+### <a id="create-single-documentdb-account-cli-arm"></a> Erstellen eines Azure Cosmos DB-Kontos für eine einzelne Region mithilfe von Azure CLI 1.0 ohne Resource Manager-Vorlagen
+Erstellen Sie ein Azure Cosmos DB-Konto in der neuen oder vorhandenen Ressourcengruppe, indem Sie den folgenden Befehl an der Eingabeaufforderung eingeben:
 
 > [!TIP]
 > Wenn Sie diesen Befehl in Azure PowerShell oder Windows PowerShell ausführen, erhalten Sie eine Fehlermeldung über ein unerwartetes Token. Führen Sie den Befehl stattdessen an der Windows-Eingabeaufforderung aus.
@@ -152,9 +157,9 @@ Erstellen Sie ein DocumentDB-Konto in der neuen oder vorhandenen Ressourcengrupp
 
 * `<resourcegroupname>` darf nur alphanumerische Zeichen, Punkte, Unterstriche, den Bindestrich „-“ und Klammern enthalten und darf nicht mit einem Punkt enden.
 * `<resourcegrouplocation>` ist die Region der aktuellen Ressourcengruppe.
-* `<ip-range-filter>` gibt die Gruppe der IP-Adressen oder IP-Adressbereiche im CIDR-Format an, die als Liste der zulässigen Client-IPs für ein bestimmtes Datenbankkonto aufgenommen wird. IP-Adressen und -Adressbereiche müssen durch Kommas voneinander getrennt werden, und sie dürfen keine Leerzeichen enthalten. Weitere Informationen finden Sie unter [DocumentDB – Firewallunterstützung](documentdb-firewall-support.md).
+* `<ip-range-filter>` gibt die Gruppe der IP-Adressen oder IP-Adressbereiche im CIDR-Format an, die als Liste der zulässigen Client-IPs für ein bestimmtes Datenbankkonto aufgenommen wird. IP-Adressen und -Adressbereiche müssen durch Kommas voneinander getrennt werden, und sie dürfen keine Leerzeichen enthalten. Weitere Informationen finden Sie im Artikel zur [Azure Cosmos DB-Firewallunterstützung](documentdb-firewall-support.md).
 * `<databaseaccountname>` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein.
-* `<databaseaccountlocation>` muss einer der Regionen entsprechen, in denen DocumentDB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
+* `<databaseaccountlocation>` muss einer der Regionen entsprechen, in denen Azure Cosmos DB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
 
 Beispieleingabe:
 
@@ -178,10 +183,10 @@ Bei der Bereitstellung Ihres neuen Kontos wird die folgende Ausgabe erzeugt:
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).
 
-Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
+Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Cosmos DB-Konten** überprüfen.
 
-### <a id="create-single-documentdb-account-cli-arm"></a> Erstellen eines DocumentDB-Kontos für eine einzelne Region über die Azure CLI 1.0 mit Resource Manager-Vorlagen
-Mit der Anleitung in diesem Abschnitt wird beschrieben, wie Sie ein DocumentDB-Konto mithilfe einer Azure Resource Manager-Vorlage und einer optionalen Parameterdatei erstellen. In beiden Fällen handelt es sich um JSON-Dateien. Mithilfe einer Vorlage können Sie genaue Vorgaben machen und diese ohne Fehler wiederverwenden.
+### <a id="create-single-documentdb-account-cli-arm"></a> Erstellen eines Azure Cosmos DB-Kontos für eine einzelne Region mithilfe von Azure CLI 1.0 mit Resource Manager-Vorlagen
+In diesem Abschnitt wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage und einer optionalen Parameterdatei (beides JSON-Dateien) ein Azure Cosmos DB-Konto erstellen. Mithilfe einer Vorlage können Sie genaue Vorgaben machen und diese ohne Fehler wiederverwenden.
 
 Erstellen Sie eine lokale Vorlagendatei mit folgendem Inhalt: Geben Sie der Datei den Namen "azuredeploy.json".
 
@@ -217,7 +222,7 @@ Erstellen Sie eine lokale Vorlagendatei mit folgendem Inhalt: Geben Sie der Date
         ]
     }
 
-failoverPriority muss auf 0 festgelegt werden, da dies ein Konto für eine einzelne Region ist. Eine failoverPriority von 0 bedeutet, dass diese Region als [Schreibregion für das DocumentDB-Konto][scaling-globally] beibehalten werden soll.
+failoverPriority muss auf 0 festgelegt werden, da dies ein Konto für eine einzelne Region ist. Eine failoverPriority von 0 bedeutet, dass diese Region als [Schreibregion für das Azure Cosmos DB-Konto][scaling-globally] beibehalten werden soll.
 Sie können den Wert an der Befehlszeile eingeben oder eine Parameterdatei erstellen, um den Wert anzugeben.
 
 Wenn Sie eine Parameterdatei erstellen möchten, kopieren Sie den folgenden Inhalt in eine neue Datei, und geben Sie ihr den Namen "azuredeploy.parameters.json". Wenn Sie den Datenbankkontonamen an der Eingabeaufforderung angeben möchten, können Sie den Vorgang ohne Erstellen dieser Datei fortsetzen.
@@ -235,9 +240,9 @@ Wenn Sie eine Parameterdatei erstellen möchten, kopieren Sie den folgenden Inha
         }
     }
 
-Ändern Sie in der Datei „azuredeploy.parameters.json“ das Feld mit dem Wert `"samplearmacct"` in den gewünschten Datenbanknamen, und speichern Sie die Datei. `"databaseAccountName"` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein. Aktualisieren Sie das Feld mit dem Wert `"locationName1"` in die Region, in der Sie das DocumentDB-Konto erstellen möchten.
+Ändern Sie in der Datei „azuredeploy.parameters.json“ das Feld mit dem Wert `"samplearmacct"` in den gewünschten Datenbanknamen, und speichern Sie die Datei. `"databaseAccountName"` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein. Aktualisieren Sie das Feld mit dem Wert `"locationName1"` in die Region, in der Sie das Azure Cosmos DB-Konto erstellen möchten.
 
-Wenn Sie ein DocumentDB-Konto in der Ressourcengruppe erstellen möchten, führen Sie den folgenden Befehl aus, und geben Sie den Pfad der Vorlagendatei, den Pfad der Parameterdatei oder den Parameterwert, den Namen der Ressourcengruppe für die Bereitstellung und einen Bereitstellungsnamen (-n ist optional) an.
+Wenn Sie ein Azure Cosmos DB-Konto in der Ressourcengruppe erstellen möchten, führen Sie den folgenden Befehl aus, und geben Sie den Pfad der Vorlagendatei, den Pfad der Parameterdatei oder den Parameterwert, den Namen der Ressourcengruppe für die Bereitstellung und einen Bereitstellungsnamen (-n ist optional) an.
 
 So verwenden Sie eine Parameterdatei
 
@@ -245,7 +250,7 @@ So verwenden Sie eine Parameterdatei
 
 * `<PathToTemplate>` ist der Pfad zur Datei „azuredeploy.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
 * `<PathToParameterFile>` ist der Pfad zur Datei „azuredeploy.parameters.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
-* `<resourcegroupname>` ist der Name der vorhandenen Ressourcengruppe, der ein DocumentDB-Datenbankkonto hinzugefügt werden soll.
+* `<resourcegroupname>` ist der Name der vorhandenen Ressourcengruppe, der ein Azure Cosmos DB-Datenbankkonto hinzugefügt werden soll.
 * `<deploymentname>` ist der optionale Name der Bereitstellung.
 
 Beispieleingabe:
@@ -290,9 +295,9 @@ Bei der Bereitstellung des Kontos werden folgende Informationen angezeigt:
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).  
 
-Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
+Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Cosmos DB-Konten** überprüfen.
 
-## <a id="quick-create-documentdb-with-mongodb-api-account"></a>Aufgabe: Erstellen einer DocumentDB-Instanz für eine einzelne Region: API für MongoDB-Konto
+## <a id="quick-create-documentdb-with-mongodb-api-account"></a>Aufgabe: Erstellen einer Azure Cosmos DB-Instanz für eine einzelne Region: API für MongoDB-Konto
 Befolgen Sie die Anweisungen in diesem Abschnitt, um eine API für das MongoDB-Konto für eine einzelne Region zu erstellen. Hierfür können Sie die Azure CLI 1.0 mit Resource Manager-Vorlagen verwenden.
 
 ### <a id="create-single-documentdb-with-mongodb-api-account-cli-arm"></a> Erstellen eines MongoDB-Kontos für eine einzelne Region über die Azure CLI 1.0 mit Resource Manager-Vorlagen
@@ -333,9 +338,9 @@ Erstellen Sie eine lokale Vorlagendatei mit folgendem Inhalt: Geben Sie der Date
         ]
     }
 
-Die Variante muss auf MongoDB festgelegt werden, um anzugeben, dass dieses Konto MongoDB-APIs unterstützt. Wenn keine Varianteneigenschaft angegeben ist, wird standardmäßig ein natives DocumentDB-Konto verwendet.
+Die Variante muss auf MongoDB festgelegt werden, um anzugeben, dass dieses Konto MongoDB-APIs unterstützt. Wenn keine Varianteneigenschaft angegeben ist, wird standardmäßig ein Azure Cosmos DB DocumentDB-API-Konto verwendet.
 
-failoverPriority muss auf 0 festgelegt werden, da dies ein Konto für eine einzelne Region ist. Eine failoverPriority von 0 bedeutet, dass diese Region als [Schreibregion für das DocumentDB-Konto][scaling-globally] beibehalten werden soll.
+failoverPriority muss auf 0 festgelegt werden, da dies ein Konto für eine einzelne Region ist. Eine failoverPriority von 0 bedeutet, dass diese Region als [Schreibregion für das Azure Cosmos DB-Konto][scaling-globally] beibehalten werden soll.
 Sie können den Wert an der Befehlszeile eingeben oder eine Parameterdatei erstellen, um den Wert anzugeben.
 
 Wenn Sie eine Parameterdatei erstellen möchten, kopieren Sie den folgenden Inhalt in eine neue Datei, und geben Sie ihr den Namen "azuredeploy.parameters.json". Wenn Sie den Datenbankkontonamen an der Eingabeaufforderung angeben möchten, können Sie den Vorgang ohne Erstellen dieser Datei fortsetzen.
@@ -353,9 +358,9 @@ Wenn Sie eine Parameterdatei erstellen möchten, kopieren Sie den folgenden Inha
         }
     }
 
-Ändern Sie in der Datei „azuredeploy.parameters.json“ das Feld mit dem Wert `"samplearmacct"` in den gewünschten Datenbanknamen, und speichern Sie die Datei. `"databaseAccountName"` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein. Aktualisieren Sie das Feld mit dem Wert `"locationName1"` in die Region, in der Sie das DocumentDB-Konto erstellen möchten.
+Ändern Sie in der Datei „azuredeploy.parameters.json“ das Feld mit dem Wert `"samplearmacct"` in den gewünschten Datenbanknamen, und speichern Sie die Datei. `"databaseAccountName"` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein. Aktualisieren Sie das Feld mit dem Wert `"locationName1"` in die Region, in der Sie das Azure Cosmos DB-Konto erstellen möchten.
 
-Wenn Sie ein DocumentDB-Konto in der Ressourcengruppe erstellen möchten, führen Sie den folgenden Befehl aus, und geben Sie den Pfad der Vorlagendatei, den Pfad der Parameterdatei oder den Parameterwert, den Namen der Ressourcengruppe für die Bereitstellung und einen Bereitstellungsnamen (-n ist optional) an.
+Wenn Sie ein Azure Cosmos DB-Konto in der Ressourcengruppe erstellen möchten, führen Sie den folgenden Befehl aus, und geben Sie den Pfad der Vorlagendatei, den Pfad der Parameterdatei oder den Parameterwert, den Namen der Ressourcengruppe für die Bereitstellung und einen Bereitstellungsnamen (-n ist optional) an.
 
 So verwenden Sie eine Parameterdatei
 
@@ -363,7 +368,7 @@ So verwenden Sie eine Parameterdatei
 
 * `<PathToTemplate>` ist der Pfad zur Datei „azuredeploy.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
 * `<PathToParameterFile>` ist der Pfad zur Datei „azuredeploy.parameters.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
-* `<resourcegroupname>` ist der Name der vorhandenen Ressourcengruppe, der ein DocumentDB-Datenbankkonto hinzugefügt werden soll.
+* `<resourcegroupname>` ist der Name der vorhandenen Ressourcengruppe, der ein Azure Cosmos DB-Datenbankkonto hinzugefügt werden soll.
 * `<deploymentname>` ist der optionale Name der Bereitstellung.
 
 Beispieleingabe:
@@ -408,13 +413,13 @@ Bei der Bereitstellung des Kontos werden folgende Informationen angezeigt:
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).  
 
-Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
+Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Cosmos DB-Konten** überprüfen.
 
-## <a id="create-multi-documentdb-account"></a>Aufgabe: Erstellen eines DocumentDB-Kontos für mehrere Regionen
-DocumentDB bietet die Möglichkeit zum [globalen Verteilen von Daten][distribute-globally] auf verschiedene [Azure-Regionen](https://azure.microsoft.com/regions/#services). Beim Erstellen eines DocumentDB-Kontos können Sie die Regionen angeben, in denen der Dienst vorhanden sein soll. Befolgen Sie die Anweisungen in diesem Abschnitt, um ein DocumentDB-Konto für mehrere Regionen zu erstellen. Hierfür können Sie die Azure CLI 1.0 mit oder ohne Resource Manager-Vorlagen verwenden.
+## <a id="create-multi-documentdb-account"></a>Aufgabe: Erstellen eines Azure Cosmos DB-Kontos für mehrere Regionen
+Azure Cosmos DB bietet die Möglichkeit zum [globalen Verteilen von Daten][distribute-globally] auf verschiedene [Azure-Regionen](https://azure.microsoft.com/regions/#services). Beim Erstellen eines Azure Cosmos DB-Kontos können Sie die Regionen angeben, in denen der Dienst vorhanden sein soll. Befolgen Sie die Anweisungen in diesem Abschnitt, um ein Azure Cosmos DB-Konto für mehrere Regionen zu erstellen. Hierfür können Sie die Azure CLI 1.0 mit oder ohne Resource Manager-Vorlagen verwenden.
 
-### <a id="create-multi-documentdb-account-cli"></a> Erstellen eines DocumentDB-Kontos für mehrere Regionen über die Azure CLI 1.0 ohne Resource Manager-Vorlagen
-Erstellen Sie ein DocumentDB-Konto in der neuen oder vorhandenen Ressourcengruppe, indem Sie den folgenden Befehl an der Eingabeaufforderung eingeben:
+### <a id="create-multi-documentdb-account-cli"></a> Erstellen eines Azure Cosmos DB-Kontos für mehrere Regionen mithilfe von Azure CLI 1.0 ohne Resource Manager-Vorlagen
+Erstellen Sie ein Azure Cosmos DB-Konto in der neuen oder vorhandenen Ressourcengruppe, indem Sie den folgenden Befehl an der Eingabeaufforderung eingeben:
 
 > [!TIP]
 > Wenn Sie diesen Befehl in Azure PowerShell oder Windows PowerShell ausführen, erhalten Sie eine Fehlermeldung über ein unerwartetes Token. Führen Sie den Befehl stattdessen an der Windows-Eingabeaufforderung aus.
@@ -425,9 +430,9 @@ Erstellen Sie ein DocumentDB-Konto in der neuen oder vorhandenen Ressourcengrupp
 
 * `<resourcegroupname>` darf nur alphanumerische Zeichen, Punkte, Unterstriche, den Bindestrich „-“ und Klammern enthalten und darf nicht mit einem Punkt enden.
 * `<resourcegrouplocation>` ist die Region der aktuellen Ressourcengruppe.
-* `<ip-range-filter>` gibt die Gruppe der IP-Adressen oder IP-Adressbereiche im CIDR-Format an, die als Liste der zulässigen Client-IPs für ein bestimmtes Datenbankkonto aufgenommen wird. IP-Adressen und -Adressbereiche müssen durch Kommas voneinander getrennt werden, und sie dürfen keine Leerzeichen enthalten. Weitere Informationen finden Sie unter [DocumentDB – Firewallunterstützung](documentdb-firewall-support.md).
+* `<ip-range-filter>` gibt die Gruppe der IP-Adressen oder IP-Adressbereiche im CIDR-Format an, die als Liste der zulässigen Client-IPs für ein bestimmtes Datenbankkonto aufgenommen wird. IP-Adressen und -Adressbereiche müssen durch Kommas voneinander getrennt werden, und sie dürfen keine Leerzeichen enthalten. Weitere Informationen finden Sie im Artikel zur [Azure Cosmos DB-Firewallunterstützung](documentdb-firewall-support.md).
 * `<databaseaccountname>` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein.
-* `<databaseaccountlocation1>` und `<databaseaccountlocation2>` müssen Regionen entsprechen, in denen DocumentDB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
+* `<databaseaccountlocation1>` und `<databaseaccountlocation2>` müssen Regionen entsprechen, in denen Azure Cosmos DB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
 
 Beispieleingabe:
 
@@ -451,10 +456,10 @@ Bei der Bereitstellung Ihres neuen Kontos wird die folgende Ausgabe erzeugt:
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).
 
-Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
+Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Cosmos DB-Konten** überprüfen.
 
-### <a id="create-multi-documentdb-account-cli-arm"></a> Erstellen eines DocumentDB-Kontos für mehrere Regionen über die Azure CLI 1.0 mit Resource Manager-Vorlagen
-Mit der Anleitung in diesem Abschnitt wird beschrieben, wie Sie ein DocumentDB-Konto mithilfe einer Azure Resource Manager-Vorlage und einer optionalen Parameterdatei erstellen. In beiden Fällen handelt es sich um JSON-Dateien. Mithilfe einer Vorlage können Sie genaue Vorgaben machen und diese ohne Fehler wiederverwenden.
+### <a id="create-multi-documentdb-account-cli-arm"></a> Erstellen eines Azure Cosmos DB-Kontos für mehrere Regionen mithilfe von Azure CLI 1.0 mit Resource Manager-Vorlagen
+In diesem Abschnitt wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage und einer optionalen Parameterdatei (beides JSON-Dateien) ein Azure Cosmos DB-Konto erstellen. Mithilfe einer Vorlage können Sie genaue Vorgaben machen und diese ohne Fehler wiederverwenden.
 
 Erstellen Sie eine lokale Vorlagendatei mit folgendem Inhalt: Geben Sie der Datei den Namen "azuredeploy.json".
 
@@ -497,9 +502,9 @@ Erstellen Sie eine lokale Vorlagendatei mit folgendem Inhalt: Geben Sie der Date
         ]
     }
 
-Die obige Vorlagendatei kann verwendet werden, um ein DocumentDB-Konto mit zwei Regionen zu erstellen. Um das Konto mit mehr Regionen zu erstellen, fügen Sie es dem Array „locations“ und anschließend die entsprechenden Parameter hinzu.
+Die obige Vorlagendatei kann verwendet werden, um ein Azure Cosmos DB-Konto mit zwei Regionen zu erstellen. Um das Konto mit mehr Regionen zu erstellen, fügen Sie es dem Array „locations“ und anschließend die entsprechenden Parameter hinzu.
 
-Für eine der Regionen muss failoverPriority den Wert 0 aufweisen. Hiermit wird angegeben, dass diese Region als [Schreibregion für das DocumentDB-Konto][scaling-globally] beibehalten werden soll. Die Werte für die Failoverpriorität müssen unter den Standorten eindeutig sein, und der höchste Wert für die Failoverpriorität muss kleiner als die Gesamtzahl von Regionen sein. Sie können den Wert an der Befehlszeile eingeben oder eine Parameterdatei erstellen, um den Wert anzugeben.
+Für eine der Regionen muss failoverPriority den Wert 0 aufweisen. Hiermit wird angegeben, dass diese Region als [Schreibregion für das Azure Cosmos DB-Konto][scaling-globally] beibehalten werden soll. Die Werte für die Failoverpriorität müssen unter den Standorten eindeutig sein, und der höchste Wert für die Failoverpriorität muss kleiner als die Gesamtzahl von Regionen sein. Sie können den Wert an der Befehlszeile eingeben oder eine Parameterdatei erstellen, um den Wert anzugeben.
 
 Wenn Sie eine Parameterdatei erstellen möchten, kopieren Sie den folgenden Inhalt in eine neue Datei, und geben Sie ihr den Namen "azuredeploy.parameters.json". Wenn Sie den Datenbankkontonamen an der Eingabeaufforderung angeben möchten, können Sie den Vorgang ohne Erstellen dieser Datei fortsetzen.
 
@@ -519,9 +524,9 @@ Wenn Sie eine Parameterdatei erstellen möchten, kopieren Sie den folgenden Inha
         }
     }
 
-Ändern Sie in der Datei „azuredeploy.parameters.json“ das Feld mit dem Wert `"samplearmacct"` in den gewünschten Datenbanknamen, und speichern Sie die Datei. `"databaseAccountName"` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein. Ändern Sie die Wertfelder `"locationName1"` und `"locationName2"` in die Region, in der Sie das DocumentDB-Konto erstellen möchten.
+Ändern Sie in der Datei „azuredeploy.parameters.json“ das Feld mit dem Wert `"samplearmacct"` in den gewünschten Datenbanknamen, und speichern Sie die Datei. `"databaseAccountName"` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein. Aktualisieren Sie das Feld mit dem Wert `"locationName1"` und `"locationName2"` in die Region, in der Sie das Azure Cosmos DB-Konto erstellen möchten.
 
-Wenn Sie ein DocumentDB-Konto in der Ressourcengruppe erstellen möchten, führen Sie den folgenden Befehl aus, und geben Sie den Pfad der Vorlagendatei, den Pfad der Parameterdatei oder den Parameterwert, den Namen der Ressourcengruppe für die Bereitstellung und einen Bereitstellungsnamen (-n ist optional) an.
+Wenn Sie ein Azure Cosmos DB-Konto in der Ressourcengruppe erstellen möchten, führen Sie den folgenden Befehl aus, und geben Sie den Pfad der Vorlagendatei, den Pfad der Parameterdatei oder den Parameterwert, den Namen der Ressourcengruppe für die Bereitstellung und einen Bereitstellungsnamen (-n ist optional) an.
 
 So verwenden Sie eine Parameterdatei
 
@@ -529,7 +534,7 @@ So verwenden Sie eine Parameterdatei
 
 * `<PathToTemplate>` ist der Pfad zur Datei „azuredeploy.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
 * `<PathToParameterFile>` ist der Pfad zur Datei „azuredeploy.parameters.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
-* `<resourcegroupname>` ist der Name der vorhandenen Ressourcengruppe, der ein DocumentDB-Datenbankkonto hinzugefügt werden soll.
+* `<resourcegroupname>` ist der Name der vorhandenen Ressourcengruppe, der ein Azure Cosmos DB-Datenbankkonto hinzugefügt werden soll.
 * `<deploymentname>` ist der optionale Name der Bereitstellung.
 
 Beispieleingabe:
@@ -575,13 +580,13 @@ Bei der Bereitstellung des Kontos werden folgende Informationen angezeigt:
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).  
 
-Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com)auf dem Blatt **DocumentDB-Konten** überprüfen.
+Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im Zustand **Wird erstellt**, bis es in den Zustand **Online** wechselt und verwendet werden kann. Sie können den Status des Kontos im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Cosmos DB-Konten** überprüfen.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn Sie Fehlermeldungen wie `Deployment provisioning state was not successful` beim Erstellen Ihrer Ressourcengruppe oder Ihres Datenbankkontos erhalten, haben Sie einige Möglichkeiten für die Problembehandlung.
 
 > [!NOTE]
-> Enthält der Name des Datenbankkontos ungültige Zeichen oder wird ein Ort angegeben, an dem DocumentDB nicht verfügbar ist, führt das zu einem Bereitstellungsfehler. Namen von Datenbankkonten dürfen nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und müssen zwischen 3 und 50 Zeichen lang sein. Alle gültigen Orte für Datenbank-Konten sind auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services)aufgeführt.
+> Enthält der Name des Datenbankkontos ungültige Zeichen oder wird ein Ort angegeben, an dem Azure Cosmos DB nicht verfügbar ist, führt das zu einem Bereitstellungsfehler. Namen von Datenbankkonten dürfen nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und müssen zwischen 3 und 50 Zeichen lang sein. Alle gültigen Orte für Datenbank-Konten sind auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services)aufgeführt.
 >
 >
 
@@ -600,24 +605,21 @@ Wenn Sie Fehlermeldungen wie `Deployment provisioning state was not successful` 
     ![Screenshot des Azure-Portals mit dem Navigationspfad zur Bereitstellungsfehlermeldung](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie nun über ein DocumentDB-Datenbankkonto verfügen, besteht der nächste Schritt darin, eine DocumentDB-Datenbank zu erstellen. Mit einer der folgenden Methoden können Sie eine Datenbank erstellen:
+Nachdem Sie nun über ein Azure Cosmos DB-Konto verfügen, ist der nächste Schritt die Erstellung einer Azure Cosmos DB-Datenbank. Mit einer der folgenden Methoden können Sie eine Datenbank erstellen:
 
-* Im Azure-Portal, wie unter [Erstellen einer DocumentDB-Sammlung und -Datenbank mit dem Azure-Portal](documentdb-create-collection.md) beschrieben
+* Das Azure-Portal, wie unter [Erstellen einer Azure Cosmos DB-Sammlung und -Datenbank mit dem Azure-Portal](documentdb-create-collection.md) beschrieben.
 * Mit den C# .NET-Beispielen im Projekt [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) des Repositorys [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) auf GitHub.
-* Die [DocumentDB-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx). DocumentDB verfügt über SDKs für .NET, Java, Python, Node.js und JavaScript-API.
+* Mit den [Azure Cosmos DB DocumentDB-API-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx). Azure Cosmos DB DocumentDB-APIs verfügen über API-SDKs für .NET, Java, Python, Node.js und JavaScript.
 
 Nach dem Erstellen der Datenbank müssen Sie der Datenbank [mindestens eine Sammlung hinzufügen](documentdb-create-collection.md) und den Sammlungen dann [Dokumente hinzufügen](documentdb-view-json-document-explorer.md).
 
-Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#ExecutingSqlQueries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) verwenden.
+Wenn eine Sammlung Dokumente enthält, können Sie in [SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#ExecutingSqlQueries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) verwenden.
 
-Weitere Informationen zu DocumentDB finden Sie in folgenden Ressourcen:
-
-* [Lernpfad für DocumentDB](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
-* [Ressourcenmodell und Konzepte von DocumentDB](documentdb-resources.md)
+Weitere Informationen zu Azure Cosmos DB finden Sie in der [Azure Cosmos DB-Einführung mit mehreren Modellen](../cosmos-db/introduction.md).
 
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[distribute-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally
-[scaling-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
+[distribute-globally]: https://azure.microsoft.com/documentation/articles/documentdb-distribute-data-globally
+[scaling-globally]: https://azure.microsoft.com/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
 

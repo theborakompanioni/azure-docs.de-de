@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 05/11/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: cf3c1a3c669e0da810c32939492cb262e76492c7
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 945da7ce2ab5f2d479d96a6ed2896a0ba7e0747e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -90,20 +91,51 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 * [Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
 ## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Redis Cache und VNets auf?
-Beim Hosten von Azure Redis Cache in einem VNet werden die in der folgenden Tabelle angegebenen Ports verwendet. Wenn diese Ports gesperrt sind, funktioniert der Cache möglicherweise nicht ordnungsgemäß. Eine bestehende Sperre für mindestens einen dieser Ports ist die häufigste Fehlkonfiguration, die beim Verwenden von Azure Redis Cache in einem VNet auftritt.
+Beim Hosten von Azure Redis Cache in einem VNET werden die in den folgenden Tabellen angegebenen Ports verwendet. 
+
+>[!IMPORTANT]
+>Wenn diese Ports gesperrt sind, funktioniert der Cache möglicherweise nicht ordnungsgemäß. Eine bestehende Sperre für mindestens einen dieser Ports ist die häufigste Fehlkonfiguration, die beim Verwenden von Azure Redis Cache in einem VNet auftritt.
+> 
+> 
+
+- [Anforderungen für ausgehende Ports](#outbound-port-requirements)
+- [Anforderungen für eingehende Ports](#inbound-port-requirements)
+
+### <a name="outbound-port-requirements"></a>Anforderungen für ausgehende Ports
+
+Es liegen Anforderungen für sieben ausgehende Ports vor.
+
+- Gegebenenfalls können alle ausgehenden Verbindungen mit dem Internet über das lokale Überwachungsgerät eines Clients hergestellt werden.
+- Über drei dieser Ports wird Datenverkehr an Azure-Endpunkte für Azure Storage und Azure DNS weitergeleitet.
+- Die restlichen Ports sind Portbereiche und werden für die interne Kommunikation im Redis-Subnetz verwendet. Für die interne Kommunikation im Redis-Subnetz müssen keine NSG-Regeln für das Subnetz definiert werden.
 
 | Port(s) | Richtung | Transportprotokoll | Zweck | Remote-IP |
 | --- | --- | --- | --- | --- |
 | 80, 443 |Ausgehend |TCP |Redis-Abhängigkeiten von Azure Storage/PKI (Internet) |* |
 | 53 |Ausgehend |TCP/UDP |Redis-Abhängigkeiten von DNS (Internet/VNet) |* |
-| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 8443 |Eingehend/ausgehend |TCP |Implementierungsdetail für Redis |VIRTUAL_NETWORK |
-| 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich |AZURE_LOADBALANCER |
-| 10221-10231 |Eingehend/ausgehend |TCP |Implementierungsdetail für Redis (kann den Remoteendpunkt auf VIRTUAL_NETWORK beschränken) |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 13000-13999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich |VIRTUAL_NETWORK, AZURE_LOADBALANCER |
-| 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich |AZURE_LOADBALANCER |
-| 20226 |Eingehend und ausgehend |TCP |Implementierungsdetail für Redis-Cluster |VIRTUAL_NETWORK |
+| 8443 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |
+| 10221-10231 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |
+| 20226 |Ausgehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
+| 13000-13999 |Ausgehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
+| 15000-15999 |Ausgehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
+
+
+### <a name="inbound-port-requirements"></a>Anforderungen für eingehende Ports
+
+Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anforderungen in diesen Bereichen gehen entweder von anderen im gleichen VNET gehosteten Diensten ein oder erfolgen über die interne Kommunikation im Redis-Subnetz.
+
+| Port(s) | Richtung | Transportprotokoll | Zweck | Remote-IP |
+| --- | --- | --- | --- | --- |
+| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich |Virtuelles Netzwerk, Azure Load Balancer |
+| 8443 |Eingehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
+| 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich |Azure Load Balancer |
+| 10221-10231 |Eingehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz), Azure Load Balancer |
+| 13000-13999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich |Virtuelles Netzwerk, Azure Load Balancer |
+| 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich |Virtuelles Netzwerk, Azure Load Balancer |
+| 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich |Azure Load Balancer |
+| 20226 |Eingehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
+
+### <a name="additional-vnet-network-connectivity-requirements"></a>Zusätzliche VNET-Netzwerkverbindungsanforderungen
 
 Es gibt Netzwerkverbindungsanforderungen für Azure Redis Cache, die ursprünglich nicht von einem virtuellen Netzwerk erfüllt werden konnten. Azure Redis Cache erfordert bei Verwendung in einem virtuellen Netzwerk, dass alle folgenden Voraussetzungen erfüllt sind.
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: b319970e0fd744b21bd0362f1de500a0f182d52e
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1bafa072519cff1599a0cae1d361207ad0fa35d5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -70,7 +71,7 @@ Falls Sie sich für die Codierung von X12-Nachrichten nach Vereinbarungsname ent
 
 ![Name der X12-Vereinbarung und zu codierende XML-Nachricht eingeben](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
-#### <a name="encode-x12-messages-by-identities"></a>Encode to X&12; message by identities (X12-Nachricht nach Identitäten codieren)
+#### <a name="encode-x12-messages-by-identities"></a>Encode to X 12 message by identities (X12-Nachricht nach Identitäten codieren)
 
 Falls Sie sich für die Codierung von X12-Nachrichten nach Identitäten entschieden haben, geben Sie den Absenderqualifizierer und -bezeichner und den Empfängerqualifizierer und -bezeichner gemäß der Konfiguration in Ihrer X12-Vereinbarung ein. Wählen Sie die zu codierende XML-Nachricht aus.
    
@@ -92,6 +93,9 @@ Der Connector zum Codieren von X12-Nachrichten führt folgende Aufgaben aus:
 * Anforderung einer technischen Bestätigung und/oder einer Funktionsbestätigung (sofern konfiguriert)
   * Eine technische Bestätigung wird als Ergebnis der Headerüberprüfung generiert. Die technische Bestätigung meldet den Status der Verarbeitung eines Austauschheaders und -nachspanns durch den Adressempfänger.
   * Eine Funktionsbestätigung wird als Ergebnis der Textüberprüfung generiert. Die Funktionsbestätigung meldet jeden Fehler, der bei der Verarbeitung des empfangenen Dokuments aufgetreten ist.
+
+## <a name="view-the-swagger"></a>Anzeigen von Swagger
+Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/x12/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 
