@@ -1,13 +1,13 @@
 ---
 title: Erstellen einer Azure Cosmos DB-.NET-Anwendung mit der Graph-API | Microsoft-Dokumentation
 description: "Hier finden Sie ein .NET-Codebeispiel, das Sie zum Herstellen einer Verbindung mit und zum Abfragen von Azure Cosmos DB verwenden können."
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -37,11 +37,11 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a name="add-a-graph"></a>Hinzufügen eines Graphs
 
-[!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
@@ -142,7 +142,7 @@ Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren und die neuen G
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

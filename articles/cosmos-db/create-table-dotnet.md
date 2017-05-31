@@ -1,13 +1,13 @@
 ---
 title: Erstellen einer Azure Cosmos DB-.NET-Anwendung mit der Table-API | Microsoft-Dokumentation
 description: Erste Schritte mit der Table-API von Cosmos DB mithilfe von .NET
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -37,11 +37,11 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmosdb-create-dbaccount-table.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
 ## <a name="add-a-table"></a>Hinzufügen einer Tabelle
 
-[!INCLUDE [cosmosdb-create-table](../../includes/cosmosdb-create-table.md)]
+[!INCLUDE [cosmos-db-create-table](../../includes/cosmos-db-create-table.md)]
 
 ## <a name="add-sample-data"></a>Hinzufügen von Beispieldaten
 
@@ -142,7 +142,7 @@ Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeig
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

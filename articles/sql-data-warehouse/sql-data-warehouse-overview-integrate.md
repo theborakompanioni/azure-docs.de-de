@@ -3,7 +3,7 @@ title: "Erstellen von integrierten Lösungen mit SQL Data Warehouse | Microsoft 
 description: "Tools und Partner mit Lösungen, die in SQL Data Warehouse integriert werden können. "
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f

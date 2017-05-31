@@ -1,14 +1,14 @@
 ---
 title: "Azure CLI-Skript: Skalieren des Durchsatzes für Azure Cosmos DB-Container | Microsoft-Dokumentation"
 description: "Azure CLI-Skriptbeispiel: Skalieren des Durchsatzes für Azure Cosmos DB-Container"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: sample
 ms.devlang: azurecli
 ms.topic: sample

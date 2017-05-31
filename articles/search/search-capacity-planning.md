@@ -15,9 +15,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 02/08/2017
 ms.author: heidist
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08682b7986cc2210ed21f254e2a9a63b5355e583
 ms.openlocfilehash: bfed40417d800e86de7ef437c42162b1e1a0d886
+ms.contentlocale: de-de
 ms.lasthandoff: 02/24/2017
 
 ---
@@ -75,7 +76,7 @@ Allgemeine Empfehlungen für hohe Verfügbarkeit sind:
 
 Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für Azure Search sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.
 
-### <a name="index-availability-during-a-rebuild"></a>Indexverfügbarkeit während einer Neuerstellung###
+### <a name="index-availability-during-a-rebuild"></a>Indexverfügbarkeit während einer Neuerstellung
 
 Die hohe Verfügbarkeit von Azure Search gilt für Abfragen und Indexaktualisierungen ohne Indexneuerstellung. Wenn Sie ein Feld löschen, einen Datentyp ändern oder ein Feld umbenennen, müssen Sie den Index neu erstellen. Um den Index neu zu erstellen, müssen Sie ihn löschen, neu erstellen und die Daten neu laden.
 

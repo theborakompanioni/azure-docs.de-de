@@ -100,15 +100,19 @@ Um ein Zertifikat sicher auf den virtuellen Computer zu übertragen, können Sie
 Verwenden Sie dazu den folgenden JSON-Code:
 
 ```json
-        "secrets": [ {
-              "sourceVault": {
-                      "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
-          },
-          "vaultCertificates": [ {
-                      "certificateUrl": "https://mykeyvault1.vault.azure.net/secrets/{secretname}/{secret-version}",
-                  "certificateStore": "certificateStoreName"
-          } ]
-        } ]
+"secrets": [
+    {
+        "sourceVault": {
+            "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
+        },
+        "vaultCertificates": [
+            {
+                "certificateUrl": "https://mykeyvault1.vault.azure.net/secrets/{secretname}/{secret-version}",
+                "certificateStore": "certificateStoreName"
+            }
+        ]
+    }
+]
 ```
 
 Der Code ist für Windows und Linux geeignet.
@@ -122,42 +126,42 @@ Weitere Informationen finden Sie unter [Create or update a set](https://msdn.mic
 
     Verwenden Sie die folgenden PowerShell-Befehle:
 
-  ```powershell
-  Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+    ```powershell
+    Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-  Login-AzureRmAccount
+    Login-AzureRmAccount
 
-  Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-  ```
+    Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
+    ```
 
-  Mit diesem Befehl erhalten Sie die Eingabe für die Azure Resource Manager-Vorlage.
+    Mit diesem Befehl erhalten Sie die Eingabe für die Azure Resource Manager-Vorlage.
 
-  Ein Beispiel für die Erstellung eines selbstsignierten Zertifikats in einem Schlüsseltresor finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+    Ein Beispiel für die Erstellung eines selbstsignierten Zertifikats in einem Schlüsseltresor finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
 
 2.  Ändern Sie die Resource Manager-Vorlage.
 
-  Fügen Sie **virtualMachineProfile** die folgende Eigenschaft als Teil der VM-Skalierungsgruppenressource hinzu:
+    Fügen Sie **virtualMachineProfile** die folgende Eigenschaft als Teil der VM-Skalierungsgruppenressource hinzu:
 
-  ```json 
-  "osProfile": {
-              "computerNamePrefix": "[variables('namingInfix')]",
-              "adminUsername": "[parameters('adminUsername')]",
-              "adminPassword": "[parameters('adminPassword')]",
-              "secrets": [
-                {
-                  "sourceVault": {
+    ```json 
+    "osProfile": {
+        "computerNamePrefix": "[variables('namingInfix')]",
+        "adminUsername": "[parameters('adminUsername')]",
+        "adminPassword": "[parameters('adminPassword')]",
+        "secrets": [
+            {
+                "sourceVault": {
                     "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                  },
-                  "vaultCertificates": [
+                },
+                "vaultCertificates": [
                     {
-                      "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                      "certificateStore": "My"
+                        "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
+                        "certificateStore": "My"
                     }
-                  ]
-                }
-              ]
+                ]
             }
-  ```
+        ]
+    }
+    ```
   
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Kann ich ein SSH-Schlüsselpaar für die SSH-Authentifizierung mit einer Linux-VM-Skalierungsgruppe über eine Resource Manager-Vorlage angeben?  
@@ -168,20 +172,20 @@ Schließen Sie **osProfile** in Ihre Vorlage ein:
 
 ```json 
 "osProfile": {
-          "computerName": "[variables('vmName')]",
-          "adminUsername": "[parameters('adminUserName')]",
-          "linuxConfiguration": {
-            "disablePasswordAuthentication": "true",
-            "ssh": {
-              "publicKeys": [
+    "computerName": "[variables('vmName')]",
+    "adminUsername": "[parameters('adminUserName')]",
+    "linuxConfiguration": {
+        "disablePasswordAuthentication": "true",
+        "ssh": {
+            "publicKeys": [
                 {
-                  "path": "[variables('sshKeyPath')]",
-                  "keyData": "[parameters('sshKeyData')]"
+                    "path": "[variables('sshKeyPath')]",
+                    "keyData": "[parameters('sshKeyData')]"
                 }
-              ]
-            }
-          }
+            ]
         }
+    }
+}
 ```
  
 Dieser JSON-Block wird in der  [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) verwendet.
@@ -204,13 +208,15 @@ Wenn Sie für die virtuellen Computer nur mit einem öffentlichen SSH-Schlüssel
 Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linux-Computers im Nur-Text-Format angeben:
 
 ```json
-"linuxConfiguration": {  
-          "ssh": {  
-            "publicKeys": [ {  
-              "path": "path",
-              "keyData": "publickey"
-            } ]
-          }
+"linuxConfiguration": {
+    "ssh": {
+        "publicKeys": [
+            {
+                "path": "path",
+                "keyData": "publickey"
+            }
+        ]
+    }
 ```
  
 linuxConfiguration-Elementname | Erforderlich | Typ | Beschreibung
@@ -224,7 +230,7 @@ Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](
  
 ### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wenn ich `Update-AzureRmVmss` ausführe, nachdem ich mehrere Zertifikate aus dem gleichen Schlüsseltresor hinzugefügt habe, erhalte ich die folgende Meldung:
  
-  Update-AzureRmVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, dies ist unzulässig.
+>Update-AzureRmVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, dies ist unzulässig.
  
 Dieser Fall kann eintreten, wenn Sie versuchen, den gleichen Tresor erneut hinzuzufügen, anstatt ein neues Zertifikat für den vorhandenen Quelltresor zu verwenden. Die Befehl `Add-AzureRmVmssSecret` funktioniert nicht ordnungsgemäß, wenn Sie zusätzliche Geheimnisse hinzufügen.
  
@@ -404,28 +410,28 @@ Eine VM-Skalierungsgruppe kann einer Azure AD-Domäne (Azure Active Directory) d
 Verwenden Sie zum Definieren einer Erweiterung die JsonADDomainExtension-Eigenschaft:
 
 ```json
-                    "extensionProfile": {
-                        "extensions": [
-                            {
-                                "name": "joindomain",
-                                "properties": {
-                                    "publisher": "Microsoft.Compute",
-                                    "type": "JsonADDomainExtension",
-                                    "typeHandlerVersion": "1.3",
-                                    "settings": {
-                                        "Name": "[parameters('domainName')]",
-                                        "OUPath": "[variables('ouPath')]",
-                                        "User": "[variables('domainAndUsername')]",
-                                        "Restart": "true",
-                                        "Options": "[variables('domainJoinOptions')]"
-                                    },
-                                    "protectedsettings": {
-                                        "Password": "[parameters('domainJoinPassword')]"
-                                    }
-                                }
-                            }
-                        ]
-                    }
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "joindomain",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "JsonADDomainExtension",
+                "typeHandlerVersion": "1.3",
+                "settings": {
+                    "Name": "[parameters('domainName')]",
+                    "OUPath": "[variables('ouPath')]",
+                    "User": "[variables('domainAndUsername')]",
+                    "Restart": "true",
+                    "Options": "[variables('domainJoinOptions')]"
+                },
+                "protectedsettings": {
+                    "Password": "[parameters('domainJoinPassword')]"
+                }
+            }
+        }
+    ]
+}
 ```
  
 ### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>Meine VM-Skalierungsgruppenerweiterung versucht, etwas installieren, das einen Neustart erfordert. Beispiel: "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools"
@@ -467,7 +473,7 @@ Zum Ausführen eines benutzerdefinierten Skripts, das in einem privaten Speicher
 
 Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewendet werden, indem im Abschnitt „networkInterfaceConfigurations“ des Netzwerkprofils darauf verwiesen wird. Beispiel:
 
-```
+```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
@@ -540,34 +546,39 @@ Informationen zum Ändern der Anzahl von virtuellen Computern in einer VM-Skalie
 Warnungen für angegebene Schwellenwerte können mit einer gewissen Flexibilität gehandhabt werden. So können Sie beispielsweise benutzerdefinierte Webhooks definieren. Das folgende Webhookbeispiel stammt aus einer Resource Manager-Vorlage:
 
 ```json
-   {
-         "type": "Microsoft.Insights/autoscaleSettings",
-           "apiVersion": "[variables('insightsApi')]",
-                 "name": "autoscale",
-                   "location": "[parameters('resourceLocation')]",
-                     "dependsOn": [
-                         "[concat('Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]"
-                 ],
-                 "properties": {
-                         "name": "autoscale",
-                     "targetResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-                     "enabled": true,
-                     "notifications": [{
-                               "operation": "Scale",
-                              "email": {
-                                     "sendToSubscriptionAdministrator": true,
-                                     "sendToSubscriptionCoAdministrators": true,
-                                     "customEmails": [
-                                        "youremail@address.com"
-                                     ]},
-                              "webhooks": [{
-                                    "serviceUri": "https://events.pagerduty.com/integration/0b75b57246814149b4d87fa6e1273687/enqueue",
-                                    "properties": {
-                                        "key1": "custommetric",
-                                        "key2": "scalevmss"
-                                    }
-                                    }
-                              ]}],
+{
+    "type": "Microsoft.Insights/autoscaleSettings",
+    "apiVersion": "[variables('insightsApi')]",
+    "name": "autoscale",
+    "location": "[parameters('resourceLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]"
+    ],
+    "properties": {
+        "name": "autoscale",
+        "targetResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
+        "enabled": true,
+        "notifications": [
+            {
+                "operation": "Scale",
+                "email": {
+                    "sendToSubscriptionAdministrator": true,
+                    "sendToSubscriptionCoAdministrators": true,
+                    "customEmails": [
+                        "youremail@address.com"
+                    ]
+                },
+                "webhooks": [
+                    {
+                        "serviceUri": "https://events.pagerduty.com/integration/0b75b57246814149b4d87fa6e1273687/enqueue",
+                        "properties": {
+                            "key1": "custommetric",
+                            "key2": "scalevmss"
+                        }
+                    }
+                ]
+            }
+        ],
 ```
 
 In diesem Beispiel wird bei Erreichen eines Schwellenwerts eine Warnung an „Pagerduty.com“ ausgegeben.
@@ -603,12 +614,12 @@ Weitere Informationen finden Sie unter [Manage all VMs in a set](https://docs.mi
 Erstellen Sie zum Aktivieren der Startdiagnose zunächst ein Speicherkonto. Fügen Sie dann den folgenden JSON-Block unter **virtualMachineProfile** in die VM-Skalierungsgruppe ein, und aktualisieren Sie die VM-Skalierungsgruppe:
 
 ```json
-      "diagnosticsProfile": {
-        "bootDiagnostics": {
-          "enabled": true,
-          "storageUri": "http://yourstorageaccount.blob.core.windows.net"
-        }
-      }
+"diagnosticsProfile": {
+    "bootDiagnostics": {
+        "enabled": true,
+        "storageUri": "http://yourstorageaccount.blob.core.windows.net"
+    }
+}
 ```
 
 Beim Erstellen eines neuen virtuellen Computers zeigt die InstanceView-Eigenschaft des virtuellen Computers die Details für den Screenshot usw. an. Hier sehen Sie ein Beispiel:
