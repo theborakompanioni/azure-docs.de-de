@@ -1,6 +1,6 @@
 ---
-title: Azure Germany data trustee | Microsoft Docs
-description: This article provides information about the data trustee model.
+title: "Datentreuhänder für Azure Deutschland | Microsoft-Dokumentation"
+description: "Dieser Artikel enthält Informationen zum Datentreuhändermodell."
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,36 +15,35 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 300852b99424f501f790cd976c07abf6dc149a03
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: eefe5b04bfb994dea42dfe43638ed7c9ec3df6fd
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 
 ---
-# <a name="data-trustee-principle"></a>Data trustee principle
+# <a name="data-trustee-principle"></a>Das Microsoft Datentreuhänderprinzip
 
-To help meet the needs of customers and prospective customers in the European Union (EU), the European Free Trade Association (EFTA), and the UK, along with their concerns about security and privacy of their online data, Microsoft has developed Microsoft Azure Germany, which comprises industry-leading cloud services **hosted and operated entirely under special security measures in Germany**. 
+Microsoft hat Azure Deutschland entwickelt, um die Anforderungen von Kunden und potenziellen Kunden in der Europäischen Union (European Union, EU), der Europäischen Freihandelszone (European Free Trade Association, EFTA) und dem Vereinigten Königreich (United Kingdom, UK) zu erfüllen. Diese Anforderungen beziehen sich unter anderem darauf, Bedenken hinsichtlich Sicherheit und Schutz von Onlinedaten gerecht zu werden. Azure Deutschland umfasst branchenführende Clouddienste, die *unter Anwendung spezieller Sicherheitsmaßnahmen vollständig in Deutschland gehostet und betrieben werden*.
 
-Thereby, a local company controls access to customer data, so long as access is not granted by the customer or end user. This ensures that the data owners keep sovereignty and the decision-making powers over their data – especially against third parties such as domestic or foreign supervisory and law enforcement authorities, which may only access customer data in regulatory and compliant cases under the requirements of the German law.
+Ist ein Zugriff auf Kundendaten erforderlich, so muss der Benutzer zunächst eine Genehmigung für ein gewisses Zeitfenster erteilen. Ein deutsches Unternehmen gewährleistet hierbei als Datentreuhänder, dass der Zugriff gemäß deutschem Recht erfolgt. Dieses Modell stellt sicher, dass die Datenbesitzer die Verfügungs- und Entscheidungsgewalt über ihre Daten behalten – insbesondere gegenüber Dritten, z.B. in- oder ausländischen Aufsichts- und Strafverfolgungsbehörden. Diese Behörden können nur in berechtigten Fällen gemäß den Vorgaben der deutschen Gesetzgebung auf Kundendaten zugreifen.
 
-Azure Germany offers a separate instance of Microsoft Azure services from within German datacenters. The datacenters are located in two German locations, Frankfurt/Main and Magdeburg, which ensure that customer data remains in Germany and are connected to one another through a private network. All customer data is exclusively stored in those datacenters in Germany.
-A designated German company — the German data trustee — controls access to customer data and the systems and infrastructure that hold customer data. 
+Azure Deutschland bietet eine separate Instanz von Microsoft Azure-Diensten aus deutschen Rechenzentren an. Die Rechenzentren befinden sich an zwei Orten, nämlich in Frankfurt/Main und Magdeburg. Dieser Aufbau stellt sicher, dass Kundendaten in Deutschland georedundant gespeichert werden können und über ein privates Netzwerk miteinander verbunden sind. Alle Kundendaten werden ausschließlich in diesen Rechenzentren gespeichert. Ein speziell hierfür benanntes deutsches Unternehmen – der deutsche Datentreuhänder – regelt den Zugriff auf die Kundendaten sowie auf Systeme und Infrastruktur, die Kundendaten enthalten. 
 
-The German data trustee is an independent company that is headquartered, incorporated, owned, and controlled in Germany and is subject to German law. For Microsoft Azure Germany, T-Systems International, a subsidiary company of Deutsche Telekom, has been contracted as the data trustee. The main characteristic of the data trustee model is that Microsoft is only granted access to customer data in contractually compliant cases by and under the supervision of the German data trustee or by the customer itself. At the same time, Microsoft Azure Germany integrates and unifies state-of-the-art security measures as well as global standards for datacenters.
+Der deutsche Datentreuhänder ist ein unabhängiges Unternehmen mit Hauptsitz in Deutschland, das im deutschen Handelsregister eingetragen ist, sich in deutschem Besitz befindet, in Deutschland geleitet wird und dem deutschen Recht unterliegt. Mit der Datentreuhänderschaft für Microsoft Azure Deutschland wurde T-Systems International, eine Tochtergesellschaft der Deutschen Telekom, vertraglich beauftragt. Das wesentliche Merkmal des Datentreuhändermodells besteht darin, dass Microsoft nur in vertragsgemäßen Fällen und ausschließlich durch den Datentreuhänder oder Kunden bzw. unter Aufsicht des Datentreuhänders oder Kunden Zugriff auf Kundendaten erhält. Gleichzeitig integriert Microsoft Azure Deutschland Sicherheitsmaßnahmen nach neuestem Stand der Technik und globale Standards für Rechenzentren.
 
-Microsoft administers all aspects of operation and provision of Azure Germany services that do not require access to customer data. It ensures that there is no connection with other Microsoft global cloud services. Microsoft remains responsible to its customers for SLAs (Service Level Agreements), as well as for most operational aspects that do not enable access to customer data.
+Microsoft verwaltet alle Aspekte von Betrieb und Bereitstellung der Azure Deutschland-Dienste, die keinen Zugriff auf Kundendaten erfordern. Es wird sichergestellt, dass keine Verbindung mit anderen globalen Clouddiensten von Microsoft besteht. Microsoft bleibt seinen Kunden gegenüber verantwortlich für die Erfüllung der Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) und für die meisten betrieblichen Aspekte, die keinen Zugriff auf Kundendaten erfordern.
 
-In contrast, the German data trustee is responsible for all tasks and processes that require physical or logical access to infrastructure in Germany storing customer data, and the data trustee controls all access to customer data other than access initiated by the customer or end users. 
-
+Dagegen ist der deutsche Datentreuhänder für alle Aufgaben und Prozesse verantwortlich, die physischen oder logischen Zugriff auf die Infrastruktur und Daten der Kunden in Deutschland erfordern. Der Datentreuhänder regelt alle Zugriffe auf Kundendaten, die nicht vom Kunden oder von Endbenutzern eingeleitet werden. 
 
 
-In total, the following features are characteristic for Azure Germany:
 
-* All data provided by the customer through its use of Azure Germany is stored in German datacenters only.
-* Datacenters are located in Germany and (physical) access is monitored and controlled through a well-known German data trustee (T-Systems International).
-* Depending on the service used, there is constant data synchronization between both datacenters in Germany in order to ensure continuity of business processes and to enable emergency recovery.
-* Access to customer data is under the control of the data trustee.
-* The data trustee operates under German law.
+Die folgenden Merkmale sind charakteristisch für Azure Deutschland:
 
-If you need more information, you can find more details in the [Microsoft Trustee Compliance model](https://gallery.technet.microsoft.com/Cloud-Germany-Compliance-4161d8df).
+* Alle Daten, die der Kunde durch die Verwendung von Azure Deutschland bereitstellt, werden ausschließlich in deutschen Rechenzentren gespeichert.
+* Physische Zugriffe auf die Rechenzentren werden von einem bekannten deutschen Datentreuhänder überwacht und gesteuert.
+* Abhängig vom genutzten Dienst werden die Daten ständig zwischen den Rechenzentren synchronisiert, um die Kontinuität von Geschäftsprozessen sicherzustellen und die Wiederherstellung im Notfall zu ermöglichen.
+* Der Zugriff auf Kundendaten steht unter der Kontrolle des Datentreuhänders.
+* Der Datentreuhänder handelt nach deutschem Recht.
+
+Weitere Informationen finden Sie unter [Microsoft Cloud Germany - Compliance in the cloud for organizations in EU/EFTA](https://gallery.technet.microsoft.com/Cloud-Germany-Compliance-4161d8df) (Microsoft Cloud Deutschland – Konformität in der Cloud für Organisationen in EU/EFTA).

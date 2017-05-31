@@ -1,6 +1,6 @@
 ---
-title: Azure Germany compute services | Microsoft Docs
-description: This provides a comparision of compute services for Azure Germany
+title: Computedienste von Microsoft Azure Deutschland | Microsoft-Dokumentation
+description: "Vergleich der Computedienste für Azure Deutschland"
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,46 +15,46 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 9773a5fd55d5a16ac8abee45f059c9701b6c0464
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 1084b330a15764117ec123fb0c3c674941e29455
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
 
-# <a name="azure-germany-compute-services"></a>Azure Germany compute services
-## <a name="virtual-machines"></a>Virtual machines
-For details on this service and how to use it, see [Azure Virtual Machines Sizes](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+# <a name="azure-germany-compute-services"></a>Computedienste von Microsoft Azure Deutschland
+## <a name="virtual-machines"></a>Virtual Machines
+Ausführliche Informationen zum Azure Virtual Machines-Dienst und seiner Verwendung finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-### <a name="variations"></a>Variations
-These products (VMs) are available in Azure Germany:
+### <a name="variations"></a>Abweichungen
+Diese Produkte (virtuelle Computer) sind in Azure Deutschland verfügbar:
 
-| Products (VMs) | Germany Central | Germany Northeast |
+| Produkte | Deutschland, Mitte | Deutschland, Nordosten |
 | --- | --- | --- |
-| Basic_A0 | Y | Y |
-| Basic_A1 | Y | Y |
-| Basic_A2 | Y | Y |
-| Basic_A3 | Y | Y |
-| Basic_A4 | Y | Y |
+| Basic_A0 | J | J |
+| Basic_A1 | J | J |
+| Basic_A2 | J | J |
+| Basic_A3 | J | J |
+| Basic_A4 | J | J |
 |  |   |   |
-| Standard_A1_v2 | Y | Y |
-| Standard_A2_v2 | Y | Y |
-| Standard_A4_v2 | Y | Y |
-| Standard_A8_v2 | Y | Y |
-| Standard_A2m_v2 | Y | Y |
-| Standard_A4m_v2 | Y | Y |
-| Standard_A8m_v2 | Y | Y |
+| Standard_A1_v2 | J | J |
+| Standard_A2_v2 | J | J |
+| Standard_A4_v2 | J | J |
+| Standard_A8_v2 | J | J |
+| Standard_A2m_v2 | J | J |
+| Standard_A4m_v2 | J | J |
+| Standard_A8m_v2 | J | J |
 |  |   |   |
-| Standard_D1_v2 | Y | Y |
-| Standard_D2_v2 | Y | Y |
-| Standard_D3_v2 | Y | Y |
-| Standard_D4_v2 | Y | Y |
-| Standard_D5_v2 | Y | Y |
-| Standard_DS1_v2 | Y | Y |
-| Standard_DS2_v2 | Y | Y |
-| Standard_DS3_v2 | Y | Y |
-| Standard_DS4_v2 | Y | Y |
-| Standard_DS5_v2 | Y | Y |
+| Standard_D1_v2 | J | J |
+| Standard_D2_v2 | J | J |
+| Standard_D3_v2 | J | J |
+| Standard_D4_v2 | J | J |
+| Standard_D5_v2 | J | J |
+| Standard_DS1_v2 | J | J |
+| Standard_DS2_v2 | J | J |
+| Standard_DS3_v2 | J | J |
+| Standard_DS4_v2 | J | J |
+| Standard_DS5_v2 | J | J |
 |  |   |   |
 | Standard_D1 | N | N |
 | Standard_D2 | N | N |
@@ -65,36 +65,36 @@ These products (VMs) are available in Azure Germany:
 | Standard_DS3 | N | N |
 | Standard_DS4 | N | N |
 |  |   |   |
-| Standard_A0 | Y | Y |
-| Standard_A1 | Y | Y |
-| Standard_A2 | Y | Y |
-| Standard_A3 | Y | Y |
-| Standard_A5 | Y | Y |
-| Standard_A4 | Y | Y |
-| Standard_A6 | Y | Y |
-| Standard_A7 | Y | Y |
+| Standard_A0 | J | J |
+| Standard_A1 | J | J |
+| Standard_A2 | J | J |
+| Standard_A3 | J | J |
+| Standard_A5 | J | J |
+| Standard_A4 | J | J |
+| Standard_A6 | J | J |
+| Standard_A7 | J | J |
 |  |   |   |
-| Standard_F1 | Y | Y |
-| Standard_F2 | Y | Y |
-| Standard_F4 | Y | Y |
-| Standard_F8 | Y | Y |
-| Standard_F16 | Y | Y |
-| Standard_F1s | Y | Y |
-| Standard_F2s | Y | Y |
-| Standard_F4s | Y | Y |
-| Standard_F8s | Y | Y |
-| Standard_F16s | Y | Y |
+| Standard_F1 | J | J |
+| Standard_F2 | J | J |
+| Standard_F4 | J | J |
+| Standard_F8 | J | J |
+| Standard_F16 | J | J |
+| Standard_F1s | J | J |
+| Standard_F2s | J | J |
+| Standard_F4s | J | J |
+| Standard_F8s | J | J |
+| Standard_F16s | J | J |
 |  |   |   |
-| Standard_D11_v2 | Y | Y |
-| Standard_D12_v2 | Y | Y |
-| Standard_D13_v2 | Y | Y |
-| Standard_D14_v2 | Y | Y |
-| Standard_D15_v2 | Y | Y |
-| Standard_DS11_v2 | Y | Y |
-| Standard_DS12_v2 | Y | Y |
-| Standard_DS13_v2 | Y | Y |
-| Standard_DS14_v2 | Y | Y |
-| Standard_DS15_v2 | Y | Y |
+| Standard_D11_v2 | J | J |
+| Standard_D12_v2 | J | J |
+| Standard_D13_v2 | J | J |
+| Standard_D14_v2 | J | J |
+| Standard_D15_v2 | J | J |
+| Standard_DS11_v2 | J | J |
+| Standard_DS12_v2 | J | J |
+| Standard_DS13_v2 | J | J |
+| Standard_DS14_v2 | J | J |
+| Standard_DS15_v2 | J | J |
 |  |   |   |
 | Standard_D11 | N | N |
 | Standard_D12 | N | N |
@@ -105,16 +105,16 @@ These products (VMs) are available in Azure Germany:
 | Standard_DS13 | N | N |
 | Standard_DS14 | N | N |
 |  |   |   |
-| Standard_G1 | Y | N |
-| Standard_G2 | Y | N |
-| Standard_G3 | Y | N |
-| Standard_G4 | Y | N |
-| Standard_G5 | Y | N |
-| Standard_GS1 | Y | N |
-| Standard_GS2 | Y | N |
-| Standard_GS3 | Y | N |
-| Standard_GS4 | Y | N |
-| Standard_GS5 | Y | N |
+| Standard_G1 | J | N |
+| Standard_G2 | J | N |
+| Standard_G3 | J | N |
+| Standard_G4 | J | N |
+| Standard_G5 | J | N |
+| Standard_GS1 | J | N |
+| Standard_GS2 | J | N |
+| Standard_GS3 | J | N |
+| Standard_GS4 | J | N |
+| Standard_GS5 | J | N |
 |  |   |   |
 | Standard_L4 | N | N |
 | Standard_L8 | N | N |
@@ -144,8 +144,8 @@ These products (VMs) are available in Azure Germany:
 
 
 
-## <a name="next-steps"></a>Next steps
-For supplemental information and updates, subscribe to the [Azure Germany Blog](https://blogs.msdn.microsoft.com/azuregermany/)
+## <a name="next-steps"></a>Nächste Schritte
+Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 
 
 

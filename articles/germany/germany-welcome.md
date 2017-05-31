@@ -1,6 +1,6 @@
 ---
-title: Azure Germany overview | Microsoft Docs
-description: This article provides an overview of the Azure Germany cloud capabilities and the trustworthy design and security used to support compliance requirements for german data privacy regulations
+title: "Azure Deutschland im Überblick | Microsoft-Dokumentation"
+description: "Dieser Artikel enthält einen Überblick über Azure Deutschland-Cloudfunktionen, den vertrauenswürdigen Aufbau und die Sicherheitsmerkmale, die die Complianceanforderungen deutscher Datenschutzrichtlinien unterstützen."
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,49 +15,43 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: e9fd3a6e343ce3e7aeaf4cfe348674992e1c0d81
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: ba13298654a5f73fcdfcb6e09b06bcbf08159bfc
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
 
-# <a name="welcome-to-azure-germany"></a>Welcome to Azure Germany
-## <a name="overview"></a>Overview
-Microsoft Azure Germany delivers a cloud platform built upon the [foundational principles of security, privacy & control, compliance, and transparency](https://azure.microsoft.com/overview/clouds/germany/). Azure Germany is a physically isolated instance of Microsoft Azure that employs world-class security and [compliance services](https://azure.microsoft.com/support/trust-center/compliance/) critical to German data privacy regulations for all systems and applications built on its architecture. Operated by a data trustee, Azure Germany supports multiple hybrid scenarios for building and deploying solutions on-premises or in the cloud. Customers can also take advantage of the instant scalability and guaranteed uptime of a hyper-scale cloud service.
+# <a name="welcome-to-azure-germany"></a>Willkommen bei Azure Deutschland
+## <a name="overview"></a>Übersicht
+Microsoft Azure Deutschland bietet eine Cloudplattform, die auf den [grundlegenden Prinzipien von Sicherheit, Datenschutz, Compliance und Transparenz](https://azure.microsoft.com/overview/clouds/germany/) beruht. Azure Deutschland ist eine physisch isolierte Instanz von Microsoft Azure. Es basiert auf Sicherheits- und [Compliancediensten](https://azure.microsoft.com/support/trust-center/compliance/), die für alle auf dieser Architektur beruhenden Systeme und Anwendungen hinsichtlich deutscher Datenschutzbestimmungen von entscheidender Bedeutung sind. Azure Deutschland wird von einem Datentreuhänder überwacht und unterstützt verschiedene Hybridszenarien für die Erstellung und Bereitstellung von Lösungen lokal oder in der Cloud. Sie können auch die sofortige Skalierbarkeit und garantierte Verfügbarkeit eines überaus skalierbaren Clouddiensts nutzen.
 
-Azure Germany includes the core components of Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and Software-as-a-Service (SaaS).  This includes infrastructure, network, storage, data management, identity management, and many other services.
+Azure Deutschland umfasst die Hauptkomponenten von Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS) und Software-as-a-Service (SaaS). Zu diesen Komponenten gehören Infrastruktur, Netzwerk, Speicher, Datenverwaltung, Identitätsverwaltung und viele andere Dienste.
 
-Azure Germany supports most of the same great features that global Azure customers have leveraged like geo-synchronous data replication and auto scaling. 
+Azure Deutschland unterstützt im Wesentlichen dieselben hervorragenden Funktionen, die von Kunden der globalen Azure-Umgebung genutzt wurden, wie etwa geografisch synchrone Datenreplikation und automatische Skalierung. 
 
-* See the [regions page](https://azure.microsoft.com/regions/services) for the most up-to-date services that are generally available.
-* [Sign up for a trial](https://azure.microsoft.com/free/germany/)
-* Already have an Azure Germany account? [Sign in!](https://portal.microsoftazure.de/)
+## <a name="azure-germany-documentation"></a>Azure Deutschland-Dokumentation
+Diese Website beschreibt den Funktionsumfang der Dienste von [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/) und enthält allgemeine Informationen für alle Kunden. Bevor Sie speziell regulierte Daten in Ihr Azure Deutschland-Abonnement einfügen, sollten Sie sich mit den Funktionen von Azure Deutschland vertraut machen.
 
+Auf der [Complianceseite von Microsoft Azure Trust Center](http://www.microsoft.com/TrustCenter/Compliance/default.aspx) finden Sie aktuelle Informationen zu den Azure Deutschland-Diensten, die spezifischen Akkreditierungen und Regulierungen unterliegen. Gegebenenfalls sind weitere Microsoft-Dienste verfügbar, die jedoch nicht zu den in Azure Deutschland vorhandenen Diensten gehören oder Gegenstand dieser Dokumentation sind. Azure Deutschland-Dienste ermöglichen unter anderem die Verwendung verschiedener zusätzlicher Ressourcen, Anwendungen oder Dienste, die von Drittanbietern (oder von Microsoft im Rahmen separater Nutzungsbedingungen und Datenschutzrichtlinien) bereitgestellt werden. Auch diese sind nicht Gegenstand dieser Dokumentation. Die Bedingungen solcher (etwa über den Azure Marketplace angebotenen) Zusatzangebote müssen von Ihnen eigenverantwortlich geprüft werden, um sicherzustellen, dass sie Ihre Complianceanforderungen erfüllen.
 
-## <a name="azure-germany-documentation"></a>Azure Germany documentation
-This site describes the capabilities of [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/) services, and provides general guidance applicable to all customers. Before including specifically regulated data in your Azure Germany subscription, you should familiarize yourself with the Azure Germany capabilities.
+Azure Deutschland ist für Kunden und Partner weltweit verfügbar, die in der EU/EFTA, einschließlich Großbritannien, geschäftlich tätig sind.
 
-Refer to the [Microsoft Azure Trust Center Compliance Page](http://www.microsoft.com/TrustCenter/Compliance/default.aspx) for current information on the Azure Germany services covered under specific accreditations and regulations. Additional Microsoft services might also be available, but are not within the scope of the Azure Germany covered services and are not addressed by this document. Azure Germany services might also permit you to use various additional resources, applications, or services that are provided by third parties — or by Microsoft under separate terms of use and privacy policies — which are not included in the scope of this documentation. You are responsible for reviewing the terms of all such “add-on” offerings, such as Marketplace offerings, to ensure that they meet your needs regarding compliance.
+## <a name="general-guidance-for-customers"></a>Allgemeine Richtlinien für Kunden
+Bei den meisten der derzeit verfügbaren technischen Inhalte wird davon ausgegangen, dass Anwendungen für die globale Azure-Umgebung und nicht für Azure Deutschland entwickelt werden. Es ist unbedingt sicherzustellen, dass sich Entwickler über die wichtigsten Unterschiede der Anwendungen, die für das Hosting in Azure Deutschland entwickelt wurden, im Klaren sind:
 
-Azure Germany is available to eligible customers and partners globally who intend to do business in the EU/EFTA including UK.
+* Bestimmte Dienste und Funktionen, die in bestimmten Regionen der globalen Azure-Umgebung vorhanden sind, sind möglicherweise in Azure Deutschland nicht verfügbar. Auf der Seite [Regionen](https://azure.microsoft.com/regions/services) finden Sie aktuelle Dienste, die allgemein verfügbar sind. 
+* Für Funktionen in Azure Deutschland gibt es zudem hinsichtlich der Konfiguration Unterschiede zur globalen Azure-Umgebung. Aus diesem Grund sollten Sie Ihren Beispielcode, Ihre Konfigurationen und Schritte überprüfen, um sicherzustellen, dass Sie diese innerhalb der Azure Deutschland-Umgebung erstellen und ausführen.
+* Informationen zur Abgrenzung von Azure Deutschland sowie Anleitungen und bewährte Methoden zu den durch Kunden regulierten und/oder gesteuerten Daten finden Sie in der technischen Dienstdokumentation zu Azure Deutschland auf dieser Website.
 
-## <a name="general-guidance-for-customers"></a>General guidance for customers
-Most of the technical content that is available currently assumes that applications are being developed for global Azure rather than for Microsoft Azure Germany. It’s important for you to ensure that developers are aware of key differences for applications developed to be hosted in Azure Germany.
+## <a name="next-steps"></a>Nächste Schritte
+Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 
-* First, there are services and feature differences. This means that certain features that are in specific regions of global Azure may not be available in Azure Germany. See the [regions page](https://azure.microsoft.com/regions/services) for the most up-to-date services that are generally available. 
-* Second, for features that are offered in Azure Germany, there are configuration differences from global Azure.  Therefore, you should review your sample code, configurations, and steps to ensure that you are building and executing within the Azure Germany environment.
-* Third, you should refer to the Azure Germany technical services documentation available from this site for information that identifies the Azure Germany boundary and customer regulated/controlled data guidance and best practices.
+Wenn Sie mehr über Azure Deutschland erfahren möchten, verwenden Sie die folgenden Links:
 
-## <a name="next-steps"></a>Next steps
-For supplemental information and updates, subscribe to the [Azure Germany Blog](https://blogs.msdn.microsoft.com/azuregermany/)
-
-If you are interested in learning more about Azure Germany please use the following links.
-
-* **[Sign up for a trial](https://azure.microsoft.com/free/germany/)**
-* **[Acquiring and accessing Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)**
-* **[Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/compliance/)**
-
+* [Registrieren für eine Testversion](https://azure.microsoft.com/free/germany/)
+* [Anmelden](https://portal.microsoftazure.de/) (wenn Sie bereits ein Azure Deutschland-Konto besitzen)
+* [Erwerben von und Zugreifen auf Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/) 
 
 
 

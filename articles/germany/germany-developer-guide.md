@@ -1,6 +1,6 @@
 ---
-title: Azure Germany developer guide | Microsoft Docs
-description: This article compares features and provides guidance on developing applications for Azure Germany.
+title: Azure Deutschland-Entwicklerhandbuch | Microsoft-Dokumentation
+description: "Dieser Artikel enthält einen Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland."
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,45 +15,41 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 8ad915941189cacd6637d7ed9bc870d46b2d95b2
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 5faafd1be168d7acc6cfaee8448f9a780ba23149
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 
 ---
-# <a name="azure-germany-developer-guide"></a>Azure Germany developer guide
-The Azure Germany environment is a physical instance that is separate from the rest of the Microsoft network. This guide discusses the differences that application developers and administrators must understand to interact and work with separate regions of Azure.
+# <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
+Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
 
-## <a name="overview"></a>Overview
-Azure Germany is a separate instance of the Microsoft Azure service. It addresses the security and compliance needs of customers to follow German data privacy regulations. Azure Germany offers physical and network isolation from global Azure deployments and provides a data trustee acting under German law.
+## <a name="overview"></a>Übersicht
+Microsoft bietet verschiedene Tools, die Entwicklern beim Erstellen und Bereitstellen von Cloudanwendungen für die globalen Microsoft Azure-Dienste („globale Azure-Umgebung“) und Microsoft Azure Deutschland-Dienste helfen. Azure Deutschland berücksichtigt die Sicherheits- und Complianceanforderungen der Kunden, um den deutschen Datenschutzbestimmungen gerecht zu werden. Azure Deutschland ist physisch wie auch netzwerkseitig von Bereitstellungen in der globalen Azure-Umgebung isoliert und stellt einen Datentreuhänder zur Verfügung, der nach deutschem Recht handelt.
 
-Microsoft provides various tools to help developers create and deploy cloud applications to the global Microsoft Azure service ("global Azure") and Microsoft Azure Germany services.
+Bei der Erstellung und Bereitstellung von Anwendungen müssen Entwickler die Unterschiede zwischen Azure Deutschland und der globalen Azure-Umgebung kennen. Dies gilt insbesondere für die folgenden Bereiche: Einrichtung und Konfiguration der Programmierumgebung, Konfiguration der Endpunkte, Erstellung von Anwendungen sowie deren Bereitstellung als Dienste für Azure Deutschland.
 
-When developers create and deploy applications to Azure Germany, as opposed to global Azure, they need to know the key differences between the two services. The specific areas to understand are: setting up and configuring their programming environment, configuring endpoints, writing applications, and deploying the applications as services to Azure Germany.
+Dieses Handbuch fasst die Unterschiede zusammen. Es ergänzt die Informationen, die auf den Websites [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/ "Microsoft Azure Deutschland") und [Erste Schritte mit Azure](https://azure.microsoft.com/documentation/) verfügbar sind. 
 
-The information in this document summarizes the differences between the two services. It supplements the information that's available on the [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/ "Azure Germany") site and the [Azure Documentation Center](https://azure.microsoft.com/documentation/). 
+Offizielle Informationen sind möglicherweise auch an anderer Stelle verfügbar, z.B.:
+* [Die vertrauenswürdige Cloud](https://azure.microsoft.com/support/trust-center/ "Die vertrauenswürdige Cloud") 
+* [Microsoft Azure-Blog](https://azure.microsoft.com/blog/ "Microsoft Azure-Blog")
+* [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/ "Azure Deutschland-Blog")
 
-Official information might also be available in other locations, such as the
-* [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure Trust Center"), 
-* [Azure Blogs](https://azure.microsoft.com/blog/ "Azure Blogs"), or
-* [Azure Germany Blog](https://blogs.msdn.microsoft.com/azuregermany/ "Azure Germany Blog")
+## <a name="guidance-for-developers"></a>Leitfaden für Entwickler
+Bei den meisten der derzeit verfügbaren technischen Inhalte wird davon ausgegangen, dass Anwendungen für die globale Azure-Umgebung und nicht für Azure Deutschland entwickelt werden. Aus diesem Grund ist es wichtig, zwei Hauptunterschiede bei Anwendungen zu kennen, die Sie zum Hosten in Azure Deutschland entwickeln:
 
-This content is intended for partners and developers who are deploying to Microsoft Azure Germany.
+* Bestimmte Dienste und Funktionen, die in bestimmten Regionen der globalen Azure-Umgebung vorhanden sind, sind möglicherweise in Azure Deutschland nicht verfügbar.
+* Die Featurekonfigurationen in Azure Deutschland können sich von denen in der globalen Azure-Umgebung unterscheiden. Sie sollten Ihren Beispielcode, Ihre Konfigurationen und Schritte überprüfen, um sicherzustellen, dass die Erstellung und Ausführung innerhalb der Cloud Services-Umgebung von Azure Deutschland erfolgt.
 
-## <a name="guidance-for-developers"></a>Guidance for developers
-Most of the currently available technical content assumes that applications are being developed for global Azure rather than for Azure Germany. For this reason, it’s important to be aware of two key differences in applications that you develop for hosting in Azure Germany.
-
-* Certain services and features that are in specific regions of global Azure might not be available in Azure Germany.
-* Feature configurations in Azure Germany might differ from those in global Azure. Therefore, it's important to review your sample code, configurations, and steps to ensure that you are building and executing within the Azure Germany Cloud Services environment.
-
-Currently, Germany Central and Germany Northeast are the regions that are available in Azure Germany. For regions and available services, see [Products available by region](https://azure.microsoft.com/regions/services).
+Aktuell sind in Azure Deutschland die Regionen „Deutschland, Mitte“ und „Deutschland, Nordosten“ verfügbar. Regionen und verfügbare Dienste finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services).
 
 
-## <a name="endpoint-mapping"></a>Endpoint mapping
-To learn about mapping global Azure and Azure SQL Database endpoints to Azure Germany-specific endpoints, see the following table:
+## <a name="endpoint-mapping"></a>Endpunktzuordnung
+In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunkten in der globalen Azure-Umgebung und Azure SQL-Datenbank-Endpunkten zu Azure Deutschland-spezifischen Endpunkten:
 
-| Name | Azure Germany endpoint |
+| Name | Azure Deutschland-Endpunkt |
 | --- | --- |
 | ActiveDirectoryServiceEndpointResourceId | https://management.core.cloudapi.de/ |
 | GalleryUrl                               | https://gallery.cloudapi.de/ |
@@ -70,14 +66,14 @@ To learn about mapping global Azure and Azure SQL Database endpoints to Azure Ge
 | AzureKeyVaultServiceEndpointResourceId   | https://vault.microsoftazure.de |
 
 
-## <a name="next-steps"></a>Next steps
-For more information about Azure Germany, see the following resources:
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu Azure Deutschland finden Sie in den folgenden Ressourcen:
 
-* [Sign up for a trial](https://azure.microsoft.com/free/germany/)
-* [Acquiring Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
-* Already have an Azure Germany account? [Sign in!](https://portal.microsoftazure.de/)
-* [Azure Germany Overview](./germany-welcome.md)
-* [Azure Germany Blog](http://blogs.msdn.microsoft.com/azuregermany/)
-* [Azure Compliance](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+* [Registrieren Sie sich für eine Testversion](https://azure.microsoft.com/free/germany/)
+* [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)
+* Wenn Sie schon ein Azure Deutschland-Konto haben, können Sie diese [Anmeldeseite](https://portal.microsoftazure.de/) nutzen.
+* [Welcome to Azure Germany](./germany-welcome.md) (Willkommen bei Azure Deutschland)
+* [Azure Deutschland-Blog](http://blogs.msdn.microsoft.com/azuregermany/)
+* [Microsoft Trust Center (Azure-Konformität)](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 

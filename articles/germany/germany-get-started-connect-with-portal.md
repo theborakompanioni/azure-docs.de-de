@@ -1,6 +1,6 @@
 ---
-title: Connect with the Azure Germany portal | Microsoft Docs
-description: Information on managing your subscription in Azure Germany by connecting via the portal
+title: "Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal | Microsoft-Dokumentation"
+description: "Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über das Portal"
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,30 +15,30 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 0b8b033976f91785b210c4e7dd5e446ef3cd1b73
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: ba5e9db85d179b0f5b5db875a93e00ca95d3dbcc
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
 
-# <a name="connecting-with-the-azure-germany-portal"></a>Connecting with the Azure Germany portal
+# <a name="connect-to-azure-germany-by-using-the-azure-portal"></a>Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal
 
-The portal is the primary way that most people connect to Azure Germany.  To connect, browse to the portal at [https://portal.microsoftazure.de/](https://portal.microsoftazure.de/). 
+Das [Azure-Portal](https://portal.microsoftazure.de/) ist für die meisten Benutzer der einfachste Weg zum Herstellen einer Verbindung mit Azure Deutschland. 
 
 > [!NOTE]
-> Please note that only the new (Azure Resource Manager) portal is available for Azure Germany!
+> Nur das neue Portal (in dem das Azure Resource Manager-Bereitstellungsmodell verwendet wird) ist für Azure Deutschland verfügbar.
 >
 
-Subscriptions can be created for your account by connecting to [https://account.windowsazure.de](https://account.windowsazure.de).
+Um Abonnements für Ihr Konto zu erstellen, rufen Sie die Seite [Willkommen bei Microsoft Azure!](https://account.windowsazure.de) auf.
 
 
-### <a name="next-steps"></a>Next steps
-For more information about connecting to Azure Germany, see the following resources:
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zum Herstellen der Verbindung mit Azure Deutschland finden Sie in den folgenden Ressourcen:
 
-* [Connect to Azure Germany with PowerShell](./germany-get-started-connect-with-ps.md)
-* [Connect to Azure Germany with Azure CLI](./germany-get-started-connect-with-cli.md)
-* [Connect to Azure Germany with Visual Studio](./germany-get-started-connect-with-vs.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über PowerShell](./germany-get-started-connect-with-ps.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über die Azure CLI](./germany-get-started-connect-with-cli.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über Visual Studio](./germany-get-started-connect-with-vs.md)
 
 
 

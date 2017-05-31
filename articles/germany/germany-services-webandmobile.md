@@ -1,6 +1,6 @@
 ---
-title: Azure Germany Web, Mobile and API | Microsoft Docs
-description: This provides a comparision of features and guidance on developing applications for Azure Germany
+title: Webdienste und Mobile Services von Azure Deutschland | Microsoft-Dokumentation
+description: "Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland"
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 123de49e58d26703a8807362f64892a73c3077e1
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 065845ef5167592802ee09de58f016bb364bbdc9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/03/2017
 
 ---
-# <a name="azure-germany-web-and-mobile-services"></a>Azure Germany web and mobile services
-## <a name="app-services"></a>App Services
-### <a name="variations"></a>Variations
-Azure App Services is generally available in Azure Germany.
+# <a name="azure-germany-web-and-mobile-services"></a>Webdienste und Mobile Services von Azure Deutschland
+## <a name="app-service"></a>App Service
+Azure App Service ist in Azure Deutschland allgemein verfügbar.
+### <a name="variations"></a>Abweichungen
+Die Adressen, die in Azure Deutschland für Azure App Service-Apps erstellt werden, unterscheiden sich von den Adressen, die für die globale Azure-Umgebung erstellt werden:
 
-The addresses for Azure App Service apps created in Azure Germany are different from those created for global Azure:
-
-| Service Type | Global Azure | Azure Germany |
+| Dienstart | Globale Azure-Umgebung | Azure Deutschland |
 | --- | --- | --- |
 | App Service |*.azurewebsites.net |*.azurewebsites.de|
 
 
 
-## <a name="next-steps"></a>Next steps
-For supplemental information and updates, subscribe to the [Azure Germany Blog](https://blogs.msdn.microsoft.com/azuregermany/).
+## <a name="next-steps"></a>Nächste Schritte
+Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 
 
 

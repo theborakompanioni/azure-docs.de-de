@@ -1,6 +1,6 @@
 ---
-title: Connect to Azure Germany via Visual Studio | Microsoft Docs
-description: Information on managing your subscription in Azure Germany by connecting with Visual Studio
+title: "Herstellen einer Verbindung mit Azure Deutschland über Visual Studio | Microsoft-Dokumentation"
+description: "Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über Visual Studio"
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,22 +15,22 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 1f48f331b4f7b0af728d206a050854ae0a04fb95
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 07b15fa7211d1af4042d7b412dfc56d1cc7a0025
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
 
 
-# <a name="connect-to-azure-germany-via-visual-studio"></a>Connect to Azure Germany via Visual Studio
-Visual Studio is used by developers to easily manage their Azure subscriptions while building solutions.  Visual Studio does not currently allow you to configure a connection to Azure Germany in the user interface.  
+# <a name="connect-to-azure-germany-by-using-visual-studio"></a>Herstellen einer Verbindung mit Azure Deutschland über Visual Studio
+Entwickler verwenden Visual Studio beim Erstellen von Lösungen zur einfachen Verwaltung ihrer Azure-Abonnements. Sie können derzeit in der Visual Studio-Benutzeroberfläche keine Verbindung mit Azure Deutschland konfigurieren.  
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
-Visual Studio 2017 requires a configuration file for Visual Studio to connect to Azure Germany.  With this file in place, Visual Studio connects to Azure Germany instead of to global Azure.
+Visual Studio 2017 benötigt zum Herstellen einer Verbindung mit Azure Deutschland eine Konfigurationsdatei für Visual Studio. Wenn diese Datei vorhanden ist, stellt Visual Studio eine Verbindung mit Azure Deutschland statt mit der globalen Azure-Umgebung her.
 
-### <a name="create-a-configuration-file-for-azure-germany"></a>Create a configuration file for Azure Germany
-Create a file named **AadProvider.Configuration.json** with the following content:
+### <a name="create-a-configuration-file-for-azure-germany"></a>Erstellen einer Konfigurationsdatei für Azure Deutschland
+Erstellen Sie eine Datei namens **AadProvider.Configuration.json** mit folgendem Inhalt:
 
         {
           "AuthenticationQueryParameters":null,
@@ -50,38 +50,38 @@ Create a file named **AadProvider.Configuration.json** with the following conten
           "VisualStudioOnlineAudience":"499b84ac-1321-427f-aa17-267ca6975798"
         }
 
-### <a name="updating-visual-studio-for-azure-germany"></a>Updating Visual Studio for Azure Germany
+### <a name="update-visual-studio-for-azure-germany"></a>Aktualisieren von Visual Studio für Azure Deutschland
 
-1.    Close Visual Studio.
-2.    Place **AadProvider.Configuration.json** created in the previous step into **%localappdata%\\.IdentityService\AadConfigurations**.  Create this folder if not present.
-3.    Launch Visual Studio and begin using your Azure Germany account.
+1.    Schließen Sie Visual Studio.
+2.    Legen Sie die Datei **AadProvider.Configuration.json** in **%localappdata%\\.IdentityService\AadConfigurations** ab. Erstellen Sie diesen Ordner, wenn er nicht vorhanden ist.
+3.    Starten Sie Visual Studio, und beginnen Sie mit der Verwendung Ihres Azure Deutschland-Kontos.
 
 > [!NOTE]
-> With the configuration file, only Azure Germany subscriptions are accessible.  You still see subscriptions that you configured previously but they do not work because Visual Studio is now connected to Azure Germany instead of global Azure.  Remove the file to connect to global Azure.
+> Mit der Konfigurationsdatei ist nur der Zugriff auf Azure Deutschland-Abonnements möglich. Zuvor konfigurierte Abonnements werden zwar noch angezeigt, funktionieren jedoch nicht, da Visual Studio jetzt mit Azure Deutschland statt mit der globalen Azure-Umgebung verbunden ist. Um eine Verbindung mit der globalen Azure-Umgebung herzustellen, entfernen Sie die Datei.
 > 
 > 
 
-### <a name="reverting-visual-studio-connection-to-azure-germany"></a>Reverting Visual Studio connection to Azure Germany
-To enable Visual Studio to connect to global Azure, you need to remove the configuration file that enables connection to Azure Germany.
+### <a name="revert-a-visual-studio-connection-to-azure-germany"></a>Zurücksetzen einer Visual Studio-Verbindung auf Azure Deutschland
+Damit Visual Studio eine Verbindung mit der globalen Azure-Umgebung herstellen kann, müssen Sie die Konfigurationsdatei entfernen, die eine Verbindung mit Azure Deutschland ermöglicht.
 
-1.    Close Visual Studio.
-2.    Delete or rename this folder: **%localappdata%\.IdentityService\AadConfigurations**
-3.    Restart Visual Studio and begin using your global Azure account.
+1.    Schließen Sie Visual Studio.
+2.    Löschen Sie den Ordner **%localappdata%\.IdentityService\AadConfigurations**, oder benennen Sie ihn um.
+3.    Starten Sie Visual Studio neu, und beginnen Sie mit der Verwendung Ihres Kontos für die globale Azure-Umgebung.
 
 > [!NOTE]
-> Once this configuration has been reverted, your Azure Germany subscriptions no longer accessible.
+> Nachdem Sie diese Konfiguration zurückgesetzt haben, können Sie nicht mehr auf Ihre Azure Deutschland-Abonnements zugreifen.
 > 
 >
 
 ## <a name="visual-studio-2015"></a>Visual Studio 2015
-Visual Studio 2015 requires a registry change for Visual Studio to connect to Azure Germany.  Once this registry key is set Visual Studio connects to Azure Germany instead of global Azure.
+Visual Studio 2015 benötigt zum Herstellen einer Verbindung mit Azure Deutschland eine Registrierungsänderung für Visual Studio. Sobald dieser Registrierungsschlüssel festgelegt ist, stellt Visual Studio eine Verbindung mit Azure Deutschland statt mit der globalen Azure-Umgebung her.
 
-### <a name="updating-visual-studio-for-azure-germany"></a>Updating Visual Studio for Azure Germany
-To enable Visual Studio to connect to Azure Germany, you need to update the registry.
+### <a name="update-visual-studio-for-azure-germany"></a>Aktualisieren von Visual Studio für Azure Deutschland
+Sie müssen die Registrierung aktualisieren, damit Visual Studio eine Verbindung mit Azure Deutschland herstellen kann.
 
-1. Close Visual Studio.
-2. Create a text file named **VisualStudioForAzureGermany.reg**
-3. Copy and paste the following text into **VisualStudioForAzureGermany.reg**:
+1. Schließen Sie Visual Studio.
+2. Erstellen Sie eine Textdatei mit dem Namen **VisualStudioForAzureGermany.reg**.
+3. Kopieren Sie den folgenden Text, und fügen Sie ihn in **VisualStudioForAzureGermany.reg** ein:
    
         Windows Registry Editor Version 5.00
  
@@ -94,20 +94,20 @@ To enable Visual Studio to connect to Azure Germany, you need to update the regi
         "GraphUrl"="graph.cloudapi.de"
         "AadApplicationTenant"="f577cd82-810c-43f9-a1f6-0cc532871050"
 
-4. Save and then run the file by double-clicking it.  You are prompted to merge the file into your registry.
-5. Launch Visual Studio and begin using [Cloud Explorer](../vs-azure-tools-resources-managing-with-cloud-explorer.md) with your Azure Germany account.
+4. Speichern Sie die Datei, und doppelklicken Sie anschließend darauf, um sie auszuführen. Sie werden aufgefordert, die Datei in der Registrierung zusammenzuführen.
+5. Starten Sie Visual Studio. Nun können Sie den [Cloud-Explorer](../vs-azure-tools-resources-managing-with-cloud-explorer.md) mit Ihrem Azure Deutschland-Konto verwenden.
 
 > [!NOTE]
-> Once this registry key is set, only Azure Germany subscriptions are accessible.  You still see subscriptions that you configured previously but they do not work because Visual Studio is now connected to Azure Germany instead of global Azure.  See the following section for steps to revert the changes.
+> Nach dem Festlegen dieses Registrierungsschlüssels können Sie nur auf Azure Deutschland-Abonnements zugreifen. Zuvor konfigurierte Abonnements werden zwar noch angezeigt, funktionieren jedoch nicht, da Visual Studio jetzt mit Azure Deutschland statt mit der globalen Azure-Umgebung verbunden ist. Um eine Verbindung mit der globalen Azure-Umgebung herzustellen, machen Sie die Änderungen rückgängig.
 > 
 > 
 
-### <a name="reverting-visual-studio-connection-to-azure-germany"></a>Reverting Visual Studio Connection to Azure Germany
-To enable Visual Studio to connect to global Azure, you need to remove the registry settings that enable connection to Azure Germany.
+### <a name="revert-a-visual-studio-connection-to-azure-germany"></a>Zurücksetzen einer Visual Studio-Verbindung auf Azure Deutschland
+Damit Visual Studio eine Verbindung mit der globalen Azure-Umgebung herstellen kann, müssen Sie die Registrierungseinträge entfernen, die eine Verbindung mit Azure Deutschland ermöglichen.
 
-1. Close Visual Studio.
-2. Create a text file named **VisualStudioForAzureGermany_Remove.reg**
-3. Copy and paste the following text into **VisualStudioForAzureGermany_Remove.reg**:
+1. Schließen Sie Visual Studio.
+2. Erstellen Sie eine Textdatei mit dem Namen **VisualStudioForAzureGermany_Remove.reg**.
+3. Kopieren Sie den folgenden Text, und fügen Sie ihn in **VisualStudioForAzureGermany_Remove.reg** ein:
    
         Windows Registry Editor Version 5.00
    
@@ -119,20 +119,20 @@ To enable Visual Studio to connect to global Azure, you need to remove the regis
         "EnableAzureRMIdentity"=-
         "GraphUrl"=-
         
-4. Save and then run the file by double-clicking it.  You are prompted to merge the file into your registry.
-5. Launch Visual Studio.
+4. Speichern Sie die Datei, und doppelklicken Sie anschließend darauf, um sie auszuführen. Sie werden aufgefordert, die Datei in der Registrierung zusammenzuführen.
+5. Starten Sie Visual Studio.
 
 > [!NOTE]
-> Once this registry key has been reverted, your Azure Germany subscriptions show but are not accessible.  They can safely be removed.
+> Nach dem Zurücksetzen dieses Registrierungsschlüssels werden Ihre Azure Deutschland-Abonnements zwar angezeigt, der Zugriff darauf ist jedoch nicht möglich. Sie können diese sicher entfernen.
 > 
 > 
 
-### <a name="next-steps"></a>Next steps
-For more information about connecting to Azure Germany, see the following resources:
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zum Herstellen der Verbindung mit Azure Deutschland finden Sie in den folgenden Ressourcen:
 
-* [Connect to Azure Germany with PowerShell](./germany-get-started-connect-with-ps.md)
-* [Connect to Azure Germany with Azure CLI](./germany-get-started-connect-with-cli.md)
-* [Connect to Azure Germany with Portal](./germany-get-started-connect-with-portal.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über PowerShell](./germany-get-started-connect-with-ps.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über die Azure CLI](./germany-get-started-connect-with-cli.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal](./germany-get-started-connect-with-portal.md)
 
 
 
