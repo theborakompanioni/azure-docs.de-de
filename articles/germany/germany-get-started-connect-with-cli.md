@@ -1,6 +1,6 @@
 ---
-title: Connect to Azure Germany with Azure CLI | Microsoft Docs
-description: Information on managing your subscription in Azure Germany by connecting with the Azure CLI
+title: "Herstellen einer Verbindung mit Azure Deutschland über die Azure CLI | Microsoft-Dokumentation"
+description: "Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über die Azure CLI"
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,83 +15,79 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 99e9e2d202501bd8e86c31de6323cdb2ea130286
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 51021bc01256ac0d1319ca90fd81baa8e509f28d
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
 
 
-# <a name="connect-to-azure-germany-with-azure-command-line-interface-cli"></a>Connect to Azure Germany with Azure Command Line Interface (CLI)
-To use Azure CLI, you need to connect to Azure Germany instead of global Azure. The Azure CLI can be used to manage a large subscription through script or to access features that are not currently available in the Azure portal. If you have used Azure CLI in global Azure, it is mostly the same.  
+# <a name="connect-to-azure-germany-by-using-azure-cli"></a>Herstellen einer Verbindung mit Azure Deutschland über die Azure CLI
+Um die Azure-Befehlszeilenschnittstelle (Azure CLI) zu verwenden, müssen Sie eine Verbindung mit Azure Deutschland anstelle der globalen Azure-Umgebung herstellen. Sie können darüber die Azure-Befehlszeilenschnittstelle z. B. zum Verwalten eines umfangreichen Abonnements über Skripts oder für den Zugriff auf Features verwenden, die derzeit im Azure-Portal nicht verfügbar sind. Wenn Sie die Azure-Befehlszeilenschnittstelle bereits in der globalen Azure-Umgebung verwendet haben, ist das Vorgehen größtenteils identisch.  
 
 ## <a name="azure-cli-20"></a>Azure CLI 2.0
-There are multiple ways to [install the Azure CLI v2](https://docs.microsoft.com/cli/azure/install-az-cli2).  
+Es gibt mehrere Möglichkeiten zum [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).  
 
-To connect to Azure Germany, you set the cloud:
+Zum Herstellen einer Verbindung mit Azure Deutschland müssen Sie die richtige Cloudumgebung festlegen:
 
 ```
 az cloud set --name AzureGermanCloud
 ```
 
-After the cloud has been set, you can continue logging in:
+Nach dem Festlegen der Cloud können Sie sich anmelden:
 
 ```
 az login --username your-user-name@your-tenant.onmicrosoft.de
 ```
 
-To confirm the cloud has correctly been set to AzureGermanCloud, run this command:
+Um zu überprüfen, ob die Cloudumgebung ordnungsgemäß auf AzureGermanCloud festgelegt ist, führen Sie einen der folgenden Befehle aus und überprüfen dann, ob das Flag `isActive` für das Element AzureGermanCloud auf `true` festgelegt ist:
 
 ```
 az cloud list
 ```
 
-or
-
 ```
 az cloud list --output table
 ```
 
-and verify that the `isActive` flag is set to `true` for the AzureGermanCloud item.
+## <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+Es gibt mehrere Möglichkeiten zum [Installieren von Azure CLI 1.0](../xplat-cli-install.md). Wenn Node.js bereits installiert ist, ist die Installation des npm-Pakets die einfachste Möglichkeit.
 
-## <a name="azure-cli-10"></a>Azure CLI 1.0
-There are multiple ways to [install the Azure CLI v1](../xplat-cli-install.md). If you already have Node installed, the easiest way is to install the npm package:
-
-To install the CLI from an npm package, make sure you have downloaded and installed the [latest Node.js and npm](https://nodejs.org/en/download/package-manager/). Then, run **npm install** to install the azure-cli package:
+Um CLI aus einem npm-Paket zu installieren, müssen Sie die aktuellen Versionen von [Node.js und npm](https://nodejs.org/en/download/package-manager/) herunterladen und installieren. Führen Sie anschließend zum Installieren des Azure CLI-Pakets **npm install** aus:
 
 ```bash
 npm install -g azure-cli
 ```
 
-On Linux distributions, you might need to use **sudo** to successfully run the **npm** command, as follows:
+Bei Linux-Distributionen müssen Sie möglicherweise **sudo** wie folgt verwenden, um den Befehl **npm** erfolgreich ausführen zu können:
 
 ```bash
 sudo npm install -g azure-cli
 ```
 
 > [!NOTE]
-> If you need to install or update Node.js and npm on your Linux distribution or OS, we recommend that you install the most recent Node.js LTS version (4.x). If you use an older version, you might get installation errors.
+> Falls Sie Node.js und npm für Ihre Linux-Distribution oder Ihr Betriebssystem installieren oder aktualisieren müssen, wird die Installation der aktuellsten LTS-Version von Node.js (4.x) empfohlen. Wenn Sie eine ältere Version verwenden, kommt es möglicherweise zu Fehlern bei der Installation.
 
 
-Once you have the Azure CLI installed, you need to log in to Azure Germany:
+Melden Sie sich nach der Installation von Azure CLI bei Azure Deutschland an:
 
 ```
 azure login --username your-user-name@your-tenant.onmicrosoft.de  --environment AzureGermanCloud
 ```
 
-Once you are logged in, you can run Azure CLI commands as you normally would:
+Nachdem Sie angemeldet sind, können Sie Befehle der Azure-Befehlszeilenschnittstelle wie gewohnt ausführen:
 
 ```
 azure webapp list my-resource-group
 ```
 
-### <a name="next-steps"></a>Next steps
-For more information about connecting to Azure Germany, see the following resources:
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zum Herstellen der Verbindung mit Azure Deutschland finden Sie in den folgenden Ressourcen:
 
-* [Connect to Azure Germany with PowerShell](./germany-get-started-connect-with-ps.md)
-* [Connect to Azure Germany with Visual Studio](./germany-get-started-connect-with-vs.md)
-* [Connect to Azure Germany with Portal](./germany-get-started-connect-with-portal.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über PowerShell](./germany-get-started-connect-with-ps.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über Visual Studio](./germany-get-started-connect-with-vs.md)
+* [Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal](./germany-get-started-connect-with-portal.md)
 
 
 

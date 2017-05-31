@@ -1,6 +1,6 @@
 ---
-title: Azure Germany Storage | Microsoft Docs
-description: This provides a comparision of storage services for Azure Germany
+title: Speicherdienste von Azure Deutschland | Microsoft-Dokumentation
+description: "Vergleich der Speicherdienste für Azure Deutschland"
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,46 +15,46 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 423bc0273b3a81d2d534e14bbe10fc7d15871490
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 2b30e44eda0bd80bb9f209dc2193c6d6e7602284
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
 
-# <a name="azure-germany-storage"></a>Azure Germany Storage
-## <a name="azure-storage"></a>Azure Storage
-For details on this service and how to use it, see [Azure Storage global documentation](../storage/index.md).
+# <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
+## <a name="storage"></a>Storage
+Einzelheiten zu Azure Storage und seiner Verwendung finden Sie in der [globalen Dokumentation zu Storage](../storage/index.md).
 
-Data stored in Azure storage is replicated to ensure high availability. For geo-redundant storage (GRS) and read-access geo-redundant storage (RA-GRS) Azure uses *pairing regions* where data is replicated between. For Azure Germany these pairing regions are:
+Die in Azure Storage gespeicherten Daten werden repliziert, um eine hohe Verfügbarkeit sicherzustellen. Bei georedundanten Speichern und georedundanten Speichern mit Lesezugriff repliziert Azure Daten zwischen den *Regionspaaren*. Bei Azure Deutschland sind folgende Regionspaare verfügbar:
 
-| Primary Region | Secondary (Pairing) Region |
+| Primäre Region | Sekundäre (zugehörige) Region |
 | --- | --- |
-| Germany Central | Germany Northeast |
-| Germany Northeast | Germany Central |
+| Deutschland, Mitte | Deutschland, Nordosten |
+| Deutschland, Nordosten | Deutschland, Mitte |
 
-Please notice that all replication of data will assure that the data stays within German borders. Primary and secondary regions are paired to ensure necessary distance between datacenters to ensure availability in the event of an area-wide outage or disaster. For geo-redundant, high availability storage, select either geo-redundant storage (GRS) or read-access geo-redundant storage (RA-GRS) when creating a new storage account.  
+Bei der Datenreplikation werden die Daten innerhalb deutscher Grenzen gehalten. Die primäre und sekundäre Region werden einander zugeordnet, um sicherzustellen, dass ausreichend Abstand zwischen den Rechenzentren besteht, um bei einem Ausfall eines großen Gebiets oder bei einem Notfall die Verfügbarkeit sicherzustellen. Wählen Sie bei georedundanten Speichern mit hoher Verfügbarkeit beim Erstellen eines Speicherkontos entweder georedundante Speicher oder georedundante Speicher mit Lesezugriff aus.  
 
-Azure Storage Service Encryption (SSE) safeguards data at rest within Azure storage accounts. When enabled, Azure automatically encrypts data prior to persisting to storage. Data is encrypted using 256-bit AES encryption. SSE supports encryption of block blobs, append blobs, and page blobs.
+Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konten. Wenn Sie diese Funktion aktivieren, verschlüsselt Azure automatisch Daten, bevor sie in den Speicher eingefügt werden. Die Daten werden mithilfe einer 256-Bit-AES-Verschlüsselung verschlüsselt. Die Speicherdienstverschlüsselung unterstützt die Verschlüsselung von Block-, Anfüge- und Seitenblobs.
 
-### <a name="storage-service-availability-by-azure-germany-region"></a>Storage service availability by Azure Germany region
+### <a name="storage-service-availability-by-azure-germany-region"></a>Speicherdienstverfügbarkeit nach Azure Deutschland-Region
 
-| Service | Germany Central | Germany Northeast |
+| Dienst | Deutschland, Mitte | Deutschland, Nordosten |
 | --- | --- | --- | --- |
-| [Blob Storage](../storage/storage-introduction.md#blob-storage) |GA |GA |
-| [Table Storage](../storage/storage-introduction.md#table-storage) |GA  |GA |
-| [Queue Storage](../storage/storage-introduction.md#queue-storage) |GA | GA |
-| [File Storage](../storage/storage-introduction.md#file-storage) |GA |GA |
-| [Hot/Cool Blob Storage](../storage/storage-blob-storage-tiers.md) |GA |GA |
-| [Storage Service Encryption](../storage/storage-service-encryption.md) |GA |GA |
-| [Premium Storage](../storage/storage-premium-storage.md) |GA |GA |
-| Blob Import/Export |NA |NA |
-| StorSimple |NA |NA |
+| [Blob Storage](../storage/storage-introduction.md#blob-storage) |Allgemein verfügbar |Allgemein verfügbar |
+| [Table Storage](../storage/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
+| [Queue Storage](../storage/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
+| [File Storage](../storage/storage-introduction.md#file-storage) |Allgemein verfügbar |Allgemein verfügbar |
+| [Hot/Cold Blob Storage](../storage/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Storage Service Encryption](../storage/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Storage Premium](../storage/storage-premium-storage.md) |Allgemein verfügbar |Allgemein verfügbar |
+| Import/Export |Nicht verfügbar |Nicht verfügbar |
+| StorSimple |Nicht verfügbar |Nicht verfügbar |
 
-### <a name="variations"></a>Variations
-The URLs for storage accounts in Azure Germany are different from those in global Azure:
+### <a name="variations"></a>Abweichungen
+Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen in der globalen Azure-Umgebung:
 
-| Service Type | global Azure | Azure Germany |
+| Dienstart | Globale Azure-Umgebung | Azure Deutschland |
 | --- | --- | --- |
 | Blob Storage | *.blob.core.windows.net | *.blob.core.cloudapi.de |
 | Queue Storage | *.queue.core.windows.net | *.queue.core.cloudapi.de |
@@ -62,20 +62,20 @@ The URLs for storage accounts in Azure Germany are different from those in globa
 | File Storage | *.file.core.windows.net | *.file.core.cloudapi.de | 
 
 > [!NOTE]
-> All of your scripts and code need to account for the appropriate endpoints.  See [Configure Azure Storage Connection Strings](../storage/storage-configure-connection-string.md). 
+> Ihre gesamten Skripts und Ihr Code müssen die passenden Endpunkte berücksichtigen. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage/storage-configure-connection-string.md). 
 >
 >
 
-For more information on APIs see the [Cloud Storage Account Constructor](https://msdn.microsoft.com/en-us/library/azure/mt616540.aspx).
+Weitere Informationen zu APIs finden Sie unter [CloudStorageAccount-Konstruktor](https://msdn.microsoft.com/library/azure/mt616540.aspx).
 
-The endpoint suffix to use in these overloads is *core.cloudapi.de*.
+Das zu verwendende Endpunktsuffix für diese Überladungen lautet *core.cloudapi.de*.
 
 > [!NOTE]
-> If error 53 "The network path was not found." is returned while [Mounting the file share](../storage/storage-dotnet-how-to-use-files.md#mount-the-file-share). It could be due to firewall blocking the outbound port. Try mounting the file share on VM that's in the same Azure Subscription as storage account.
+> Wenn während der [Einbindung der Dateifreigabe](../storage/storage-dotnet-how-to-use-files.md#mount-the-file-share) der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) zurückgegeben wird, blockiert möglicherweise eine Firewall den ausgehenden Port. Versuchen Sie, die Dateifreigabe auf einem virtuellen Computer einzubinden, der sich im selben Azure-Abonnement wie das Speicherkonto befindet.
 >
 >
 
 
-## <a name="next-steps"></a>Next Steps
-For supplemental information and updates, subscribe to the [Azure Germany Blog](https://blogs.msdn.microsoft.com/azuregermany/).
+## <a name="next-steps"></a>Nächste Schritte
+Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 

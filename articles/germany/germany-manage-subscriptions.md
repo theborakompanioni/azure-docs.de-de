@@ -1,6 +1,6 @@
 ---
-title: Azure Germany subscriptions | Microsoft Docs
-description: Information on managing your subscription in Azure Germany
+title: Azure Deutschland-Abonnements | Microsoft-Dokumentation
+description: Informationen zum Verwalten Ihres Abonnements in Azure Deutschland
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,32 +15,32 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 3683570abce30acfad055a138cc0613fcc683642
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 034a5d6ebf144b60a64dc1a105b91092ea404008
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
 
-# <a name="managing-and-connecting-to-your-subscription-in-azure-germany"></a>Managing and connecting to your subscription in Azure Germany
-Azure Germany has unique URLs and endpoints for managing your environment. It is important to use the right connections to manage your environment through the portal or PowerShell. Once you are connected to the Azure Germany environment, the normal operations for managing a service works if the component has been deployed.
+# <a name="manage-and-connect-to-your-subscription-in-azure-germany"></a>Verwalten Ihres Abonnements und Herstellen einer Verbindung mit Ihrem Abonnement in Azure Deutschland
+Azure Deutschland verfügt über eindeutige URLs und Endpunkte für die Verwaltung Ihrer Umgebung. Es ist wichtig, dass die richtigen Verbindungen zum Verwalten der Umgebung über das Azure-Portal oder PowerShell verwendet werden. Nach dem Herstellen der Verbindung mit der Azure Deutschland-Umgebung können die normalen Vorgänge zum Verwalten der Dienste durchgeführt werden, sofern die Komponente bereitgestellt wurde.
 
-## <a name="connecting-via-the-portal"></a>Connecting via the portal
-The portal is the primary way that most people connect to Azure Germany.  To connect, browse to the portal at [https://portal.microsoftazure.de](https://portal.microsoftazure.de). 
+## <a name="connect-by-using-the-portal"></a>Herstellen einer Verbindung mithilfe des Portals
+Das [Portal](https://portal.microsoftazure.de) ist für die meisten Benutzer der einfachste Weg zum Herstellen einer Verbindung mit Azure Deutschland. 
 
 > [!NOTE]
-> Please note that only the new (Azure Resource Manager) portal is available for Azure Germany!
+> Nur das neue Portal (in dem das Azure Resource Manager-Bereitstellungsmodell verwendet wird) ist für Azure Deutschland verfügbar.
 >
 
-## <a name="creating-subscriptions"></a>Creating subscriptions
-Subscriptions can be created for your account by connecting to [https://account.windowsazure.de](https://account.windowsazure.de).
+## <a name="create-subscriptions"></a>Erstellen von Abonnements
+Um Abonnements für Ihr Konto zu erstellen, rufen Sie die Seite [Willkommen bei Microsoft Azure!](https://account.windowsazure.de) auf.
 
-## <a name="free-account"></a>Free account
-Free accounts for Azure Germany are available. Please use [this link](https://azure.microsoft.com/free/germany/).
+## <a name="create-a-free-account"></a>Erstellen eines kostenlosen Kontos
+Für Azure Deutschland sind auch [kostenlose Testkonten](https://azure.microsoft.com/free/germany/) verfügbar.
 
 
-## <a name="next-steps"></a>Next steps
-For supplemental information and updates, subscribe to the [Azure Germany Blog](https://blogs.msdn.microsoft.com/azuregermany/).
+## <a name="next-steps"></a>Nächste Schritte
+Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 
 
 

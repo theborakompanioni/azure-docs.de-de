@@ -1,6 +1,6 @@
 ---
-title: Azure Germany Internet of Things | Microsoft Docs
-description: This provides a starting point for the IoT Suite for Azure Germany
+title: IoT-Dienste von Azure Deutschland | Microsoft-Dokumentation
+description: "Ihr Einstiegspunkt in die IoT Suite für Azure Deutschland"
 services: germany
 cloud: na
 documentationcenter: na
@@ -15,64 +15,64 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 9726fba35274d75341ebfe5afbf4f44116e9fded
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d1c98667f35db4873202ff5e32361cc872aa2d47
 ms.contentlocale: de-de
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 05/03/2017
 
 ---
-# <a name="azure-iot-services-in-azure-iot-suite"></a>Azure IoT services in Azure IoT Suite
+# <a name="azure-germany-iot-services"></a>IoT-Dienste von Azure Deutschland
 
-All the required services for Azure IoT Suite are available in Azure Germany. 
+##<a name="iot-suite"></a>IoT Suite
+Alle Dienste der Azure IoT Suite sowie IoT Hub, Stream Analysis und Event Hub sind in Azure Deutschland verfügbar. 
 
-## <a name="preconfigured-solutions"></a>Preconfigured solutions
-You might want to start with one of the preconfigured solutions: 
+### <a name="variations"></a>Abweichungen
+Die Homepage für die Azure IoT Suite in Azure Deutschland unterscheidet sich von der Seite in der globalen Azure-Umgebung. Besuchen Sie die Seite [http://www.azureiotsuite.de](http://www.azureiotsuite.de), und befolgen Sie die Anweisungen. 
 
-### <a name="remote-monitoring"></a>Remote monitoring
-The IoT Suite remote monitoring preconfigured solution is an implementation of an end-to-end monitoring solution for multiple machines running in remote locations. The solution combines key Azure services to provide a generic implementation of the business scenario. You can use the solution as a starting point for your own implementation and customize it to meet your own specific business requirements.
+## <a name="preconfigured-solutions"></a>Vorkonfigurierte Lösungen
+Es empfiehlt sich, mit einer der folgenden vorkonfigurierten Lösungen zu beginnen. 
 
-### <a name="predictive-maintenance"></a>Predictive maintenance
-The IoT Suite predictive maintenance preconfigured solution is an end-to-end solution for a business scenario that predicts the point at which a failure is likely to occur. You can use this preconfigured solution proactively for activities such as optimizing maintenance. The solution combines key Azure IoT Suite services, such as IoT Hub, Stream analytics, and an Azure Machine Learning workspace. This workspace contains a model, based on a public sample data set, to predict the Remaining Useful Life (RUL) of an aircraft engine. The solution fully implements the IoT business scenario as a starting point for you to plan and implement a solution that meets your own specific business requirements.
+### <a name="remote-monitoring"></a>Remoteüberwachung
+Die vorkonfigurierte Lösung für die IoT Suite-Remoteüberwachung ist eine Implementierung einer End-to-End-Überwachungslösung für mehrere Computer, die an Remotestandorten ausgeführt werden. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Einstiegspunkt für Ihre Implementierung verwenden und dann an Ihre speziellen Geschäftsanforderungen anpassen.
+
+### <a name="predictive-maintenance"></a>Predictive Maintenance
+Die vorkonfigurierte Predictive Maintenance-Lösung in der IoT Suite ist eine End-to-End-Lösung für ein Geschäftsszenario, bei dem der Zeitpunkt prognostiziert wird, zu dem voraussichtlich ein Fehler auftritt. Sie können diese vorkonfigurierte Lösung beispielsweise zur Optimierung von Wartungsroutinen nutzen. Bei dieser Lösung werden zentrale Azure IoT Suite-Dienste wie Azure IoT Hub, Stream Analytics und ein Machine Learning-Arbeitsbereich kombiniert. Der Arbeitsbereich enthält ein Modell zum Vorhersagen der verbleibenden Lebensdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks auf der Grundlage eines öffentlichen Datasets mit Beispielwerten. Bei der Lösung wird das IoT-Geschäftsszenario vollständig als Ausgangspunkt implementiert, damit Sie eine Lösung planen und implementieren können, die Ihre speziellen Geschäftsanforderungen erfüllt.
 
 
-### <a name="variations"></a>Variations
+## <a name="deploying-the-preconfigured-solutions"></a>Bereitstellen der vorkonfigurierten Lösungen
 
-The start page for the Azure IoT Suite is different from global Azure. Use [http://www.azureiotsuite.de](http://www.azureiotsuite.de) and follow the instructions. 
+Beide Lösungen können auf zwei Arten bereitgestellt werden: über die Website oder über PowerShell.
 
-## <a name="deploy-the-preconfigured-solutions"></a>Deploy the preconfigured solutions
+### <a name="deploy-via-website"></a>Bereitstellen über die Website
 
-Both solutions can be deployed in two ways, via website or via PowerShell.
+Befolgen Sie die Anweisungen im [Tutorial für die vorkonfigurierten Lösungen](../iot-suite/iot-suite-getstarted-preconfigured-solutions.md), das über die zuvor erwähnte Homepage abgerufen werden kann.
 
-### <a name="deploy-solution-via-website"></a>Deploy solution via website
+### <a name="deploy-via-powershell"></a>Bereitstellen über PowerShell
 
-Follow the instructions in the [tutorial for the preconfigured solutions](../iot-suite/iot-suite-getstarted-preconfigured-solutions.md) with the starting page given above.
-
-### <a name="deploy-solution-with-powershell"></a>Deploy solution with PowerShell
-
-There is the full version (using Resource Manager templates and Visual Studio) for the *Remote Monitoring* solution. Download from the [Azure-IoT-Remote-Monitoring repository on GitHub](https://github.com/Azure/azure-iot-remote-monitoring). The PowerShell deployment is ready for other environments like Azure Germany. Provide the *Environment* parameter "AzureGermanCloud", so it looks similar to this:
+Für die *Remoteüberwachungslösung* wird eine Vollversion (mit Azure Resource Manager-Vorlagen und Visual Studio) benötigt. Laden Sie sich das [Azure IoT-Remoteüberwachungs-Repository von GitHub](https://github.com/Azure/azure-iot-remote-monitoring) herunter. Die PowerShell-Bereitstellung ist für andere Umgebungen wie Azure Deutschland einsatzbereit. Geben Sie den *Umgebungsparameter* „AzureGermanCloud“ nach folgendem Muster ein:
 
     build.cmd cloud debug AzureGermanCloud
 
-For using the Bing Maps, you have to make an additional step since this service is currently not available in Azure Germany and therefore cannot be subscribed automatically. You can solve this by subscribing to the service in global Azure and use the service there. 
+Bing Karten ist derzeit nicht in Azure Deutschland verfügbar und kann aus diesem Grund nicht automatisch abonniert werden. Sie können dieses Problem beheben, indem Sie den Dienst in der globalen Azure-Umgebung abonnieren und auch dort verwenden. 
 
 > [!NOTE]
-> When using Bing Maps the way it is described here, you are leaving the environment for Azure Germany!
+> Bei der Nutzung von Bing Karten gemäß der hier beschriebenen Art und Weise verlassen Sie die Azure Deutschland-Umgebung.
 
-Here is how to do it:
+Gehen Sie hierzu wie folgt vor:
 
-1. Create a Bing Maps API in the global Azure portal by clicking `+ New`, search for *Bing Maps API for Enterprise* and follow the prompts to create.
-2. Get your Bing Maps API for Enterprise QueryKey from global Azure portal: 
-    1. Navigate to the Resource Group where your Bing Maps API for Enterprise is in the global Azure portal.
-    2. Click **All Settings**, then **Key Management**. 
-    3. You see two keys: MasterKey and QueryKey. Copy the value for QueryKey.
-3. Pull down the latest code from the [Azure-IoT-Remote-Monitoring repository on GitHub](https://github.com/Azure/azure-iot-remote-monitoring)
-4. Run a cloud deployment in your environment following commandline deployment guidance in the `/docs/` repository folder. 
-5. After you've run the deployment, look in your root folder for the ***.user.config** file created during deployment. Open this file in a text editor. 
-6. Change the following line to include the value you copied for your QueryKey: `<setting name="MapApiQueryKey" value="" />`
-7. Redeploy the solution by repeating step 4.
+1. Erstellen Sie eine Bing Karten-API im globalen Azure-Portal, indem Sie auf **+ Neu** klicken, nach **Bing Karten-API für Unternehmen** suchen und die Anweisungen befolgen.
+2. Rufen Sie Ihren Bing Karten-API für Unternehmen-Schlüssel aus dem globalen Azure-Portal ab: 
+    1. Navigieren Sie zur Ressourcengruppe, in der sich Ihre Bing Karten-API für Unternehmen im globalen Azure-Portal befindet.
+    2. Klicken Sie auf **Alle Einstellungen** > **Schlüsselverwaltung**. 
+    3. Sie sehen zwei Schlüssel: „MasterKey“ und „QueryKey“. Kopieren Sie den Wert für „QueryKey“.
+3. Besorgen Sie sich den aktuellen Code aus dem [Azure IoT-Remoteüberwachungs-Repository auf GitHub](https://github.com/Azure/azure-iot-remote-monitoring).
+4. Führen Sie eine Cloudbereitstellung in Ihrer Umgebung aus, indem Sie die Anleitung zur Befehlszeilenbereitstellung im Repositoryordner `/docs/` befolgen. 
+5. Wenn Sie die Bereitstellung ausgeführt haben, suchen Sie im Stammordner nach der Datei **.user.config**, die während der Bereitstellung erstellt wurde. Öffnen Sie diese Datei in einem Texteditor. 
+6. Ändern Sie die folgende Zeile so ab, dass sie den oben kopierten „QueryKey“-Wert enthält: `<setting name="MapApiQueryKey" value="" />`
+7. Stellen Sie die Lösung erneut bereit, indem Sie Schritt 4 wiederholen.
  
 
 
-## <a name="next-steps"></a>Next steps
-For supplemental information and updates, subscribe to the [Azure Germany Blog](https://blogs.msdn.microsoft.com/azuregermany/).
+## <a name="next-steps"></a>Nächste Schritte
+Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 
