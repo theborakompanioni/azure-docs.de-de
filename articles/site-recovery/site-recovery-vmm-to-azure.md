@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-=article
 ms.date: 04/05/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 8b0985ec5b4fec39e9277b81f7bbecc7d50065e1
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 7de37f106e33d425b3b497cec640bac3fa4afa74
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -289,6 +290,8 @@ Site Recovery verfügt über einen Kapazitätsplaner, der Sie dabei unterstützt
 
 ## <a name="enable-replication"></a>Replikation aktivieren
 
+Bevor Sie starten, stellen Sie sicher, dass Ihr Azure-Benutzerkonto die erforderlichen [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) zum Aktivieren der Replikation eines neuen virtuellen Computers in Azure besitzt.
+
 Aktivieren Sie die Replikation jetzt wie folgt:
 
 1. Klicken Sie auf **Schritt 2: Replizieren Sie die Anwendung** > **Quelle**. Klicken Sie nach der erstmaligen Aktivierung der Replikation im Tresor auf **+Replizieren**, um die Replikation für weitere Computer zu aktivieren.
@@ -350,7 +353,25 @@ Beachten Sie Folgendes:
      * Wenn der virtuelle Computer über mehrere Netzwerkkarten verfügt, werden alle mit dem gleichen Netzwerk verbunden.
 
      ![Replikation aktivieren](./media/site-recovery-vmm-to-azure/test-failover4.png)
+
 4. Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert wird.
+
+#### <a name="managed-disks"></a>Verwaltete Datenträger
+
+Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie die Einstellung „Verwaltete Datenträger verwenden“ für den virtuellen Computer auf „Ja“ festlegen, wenn Sie Ihrem Computer bei der Migration zu Azure verwaltete Datenträger anfügen möchten. Managed Disks vereinfacht die Datenträgerverwaltung für Azure-IaaS-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. [Weitere Informationen zu Managed Disks](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview).
+
+   - Verwaltete Datenträger werden erstellt und nur beim Failover zu Azure an den virtuellen Computer angefügt. Beim Aktivieren des Schutzes werden Daten von lokalen Computern weiterhin auf Speicherkonten repliziert.
+   Verwaltete Datenträger können nur für virtuelle Computer erstellt werden, die über das Resource Manager-Bereitstellungsmodell bereitgestellt werden.  
+
+  > [!NOTE]
+  > Ein Failback von Azure zur lokalen Hyper-V-Umgebung wird für Computer mit verwalteten Datenträgern derzeit nicht unterstützt. Legen Sie „Verwaltete Datenträger verwenden“ nur dann auf „Ja“ fest, wenn Sie beabsichtigen, diesen Computer zu Azure zu migrieren.
+
+   - Wenn Sie „Verwaltete Datenträger verwenden“ auf „Ja“ festlegen, stehen nur Verfügbarkeitsgruppen in der Ressourcengruppe zur Auswahl, bei denen „Verwaltete Datenträger verwenden“ auf „Ja“ festgelegt ist. Der Grund hierfür ist, dass virtuelle Computer mit verwalteten Datenträgern nur in Verfügbarkeitsgruppen enthalten sein können, deren Eigenschaft „Verwaltete Datenträger verwenden“ auf „Ja“ festgelegt ist. Stellen Sie sicher, dass die Eigenschaft „Verwaltete Datenträgern verwenden“ der erstellten Verfügbarkeitsgruppen Ihrer Absicht entspricht, verwaltete Datenträger beim Failover zu verwenden.  In gleicher Weise gilt: Wenn Sie „Verwaltete Datenträger verwenden“ auf „Nein“ festlegen, stehen nur Verfügbarkeitsgruppen in der Ressourcengruppe zur Auswahl, deren Eigenschaft „Verwaltete Datenträger verwenden“ auf „Nein“ festgelegt ist. [Weitere Informationen zu verwalteten Datenträgern und Verfügbarkeitsgruppen](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set).
+
+  > [!NOTE]
+  > Wenn das für die Replikation verwendete Speicherkonto zu einem beliebigen Zeitpunkt mit der Speicherdienstverschlüsselung verschlüsselt wurde, tritt bei der Erstellung verwalteter Datenträger während des Failovers ein Fehler auf. Sie können entweder „Verwaltete Datenträger verwenden“ auf „Nein“ festlegen und den Failoverversuch wiederholen oder den Schutz für den virtuellen Computer deaktivieren und diesen in einem Speicherkonto schützen, für das die Speicherdienstverschlüsselung zu keinem Zeitpunkt aktiviert war.
+  > [Weitere Informationen zu Speicherdienstverschlüsselung und verwalteten Datenträgern](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption).
+
 
 ## <a name="test-the-deployment"></a>Testen der Bereitstellung
 

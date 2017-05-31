@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: b77a20274e22827aaa8aa4d354b62d086a19b206
-ms.openlocfilehash: 6fefb9cfa96b0a6b7acfe4d7fcb17cb13ec240a0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -28,7 +30,12 @@ Diese Seite enthält Schnittstellen- und Routingkonfigurationsbeispiele für Rou
 > 
 > 
 
+## <a name="mtu-and-tcp-mss-settings-on-router-interfaces"></a>Einstellungen für MTU und TCP MSS für Routerschnittstellen
+* Die MTU (Maximum Transmission Unit, Maximale Übertragungseinheit) für die ExpressRoute-Schnittstelle ist 1.500, also der übliche MTU-Standardwert für eine Ethernetschnittstelle eines Routers. Nur wenn Ihr Router standardmäßig einen anderen MTU-Wert aufweist, müssen Sie einen Wert für die Routerschnittstelle angeben.
+* Im Gegensatz zu einem Azure VPN Gateway muss der TCP MSS-Wert (Maximum Segment Size, maximale Segmentgröße) für eine ExpressRoute-Verbindung nicht angegeben werden.
+
 Die unten aufgeführten Beispiele zur Routerkonfiguration gelten für alle Peerings. Unter [ExpressRoute-Peerings](expressroute-circuit-peerings.md) und [Routinganforderungen für ExpressRoute](expressroute-routing.md) finden Sie weitere Details.
+
 
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE-basierte Router
 Die Beispiele in diesem Abschnitt beziehen sich auf Router, auf denen die IOS-XE-Betriebssystemfamilie ausgeführt wird.
@@ -206,10 +213,5 @@ Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

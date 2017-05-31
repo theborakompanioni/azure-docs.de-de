@@ -16,14 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: daabc3ccda51cfd165e2ae6e1d329e866b3ebbcb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 0a344f3254802f787472a6d7cf91d658259955dc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
 
-# <a name="monitor-an-azure-container-service-kubenrnetes-cluster-using-sysdig"></a>Überwachen eines Azure Container Service-Kubernetes-Clusters mithilfe von Sysdig
+# <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>Überwachen eines Azure Container Service-Kubernetes-Clusters mithilfe von Sysdig
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie mit [Azure Container Service einen Kubernetes-Cluster erstellt haben](container-service-kubernetes-walkthrough.md).
@@ -89,9 +91,4 @@ $ kubectl create -f sysdig-daemonset.yaml
 Sobald die Agents nach der Installation ausgeführt werden, übermitteln sie Daten an Sysdig.  Kehren Sie zum [Sysdig-Dashboard](https://app.sysdigcloud.com) zurück, und sehen Sie sich die Informationen zu Ihren Containern an.
 
 Mithilfe des [Dashboarderstellungs-Assistenten](https://app.sysdigcloud.com/#/dashboards/new) können Sie auch Kubernetes-spezifische Dashboards installieren.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

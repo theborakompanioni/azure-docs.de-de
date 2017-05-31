@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/17/2017
 ms.author: asgang
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 06ac75a40ed1dc97046836388bb7938dabd2b9ac
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: f78a857a795031f6188635091c76431cd5440d1c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -39,6 +40,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes bereits durchgefüh
 #### <a name="before-you-start"></a>Vorbereitung
 Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 
+* Ihr Azure-Benutzerkonto benötigt bestimmte [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) zum Aktivieren der Replikation eines neuen virtuellen Computers in Azure.
 * VMware-VMs werden alle 15 Minuten ermittelt. Es kann 15 Minuten oder länger dauern, bis sie nach der Ermittlung im Portal angezeigt werden. Ebenso kann Ermittlung 15 Minuten oder länger dauern, wenn Sie einen neuen vCenter-Server oder vSphere-Host hinzufügen.
 * Es kann auch 15 Minuten oder länger dauern, bis Umgebungsänderungen auf dem virtuellen Computer (z.B. die Installation von VMware-Tools) im Portal aktualisiert werden.
 * Sie können den Zeitpunkt der letzten Ermittlung für die VMware-VMs im Feld für den vCenter-Server oder den vSphere-Host **Last Contact At** (Letzter Kontakt um) im Blatt **Configuration Servers** (Konfigurationsserver) überprüfen.
@@ -105,19 +107,20 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen. B
 ![Replikation aktivieren](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
 
 *Ressourcengruppe*
-   
-  * Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der der Computer dann nach dem Failover angehört. Sie können diese Einstellung jederzeit vor dem Failover ändern. 
-  
+
+  * Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der der Computer dann nach dem Failover angehört. Sie können diese Einstellung jederzeit vor dem Failover ändern.
+
 > [!NOTE]
 > Wenn Sie den Computer nach dem Failover in eine andere Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des Computers nicht mehr.
- 
+
 *Verfügbarkeitsgruppen*
 
-Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Beachten Sie folgende Punkte bei der Auswahl einer Verfügbarkeitsgruppe:
+Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss.
+Beachten Sie folgende Punkte bei der Auswahl einer Verfügbarkeitsgruppe:
 
 * Es werden nur Verfügbarkeitsgruppen aufgeführt, die der angegebenen Ressourcengruppe angehören.  
-* Computer mit unterschiedlichen virtuellen Netzwerken dürfen nicht zur gleichen Verfügbarkeitsgruppe gehören. 
-* Einer Verfügbarkeitsgruppe dürfen nur virtuelle Computer mit der gleichen Größe angehören. 
+* Computer mit unterschiedlichen virtuellen Netzwerken dürfen nicht zur gleichen Verfügbarkeitsgruppe gehören.
+* Einer Verfügbarkeitsgruppe dürfen nur virtuelle Computer mit der gleichen Größe angehören.
 
 *Netzwerkeigenschaften*
 

@@ -12,19 +12,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/15/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 750dfb2ff8b4d82b2f42518c3873a32d6be0bc20
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 18fffb6cae9107b9301ff702d483b598836ac180
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
 # <a name="move-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Verschieben von Daten in lokales/aus lokalem Oracle mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
-Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in eine Oracle-Datenbank oder aus einer Oracle-Datenbank in einen beliebigen unterstützten Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
+## <a name="supported-scenarios"></a>Unterstützte Szenarien
+Sie können Daten **aus Oracle-Datenbank** in die folgenden Datenspeicher kopieren:
+
+[!INCLUDE [data-factory-supported-sink](../../includes/data-factory-supported-sinks.md)]
+
+Sie können Daten aus den folgenden Datenspeichern **in Oracle-Datenbank** kopieren:
+
+[!INCLUDE [data-factory-supported-sources](../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Data Factory unterstützt das Herstellen einer Verbindung mit lokalen Oracle-Datenquellen mithilfe des Datenverwaltungsgateways. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) erfahren Sie etwas über das Datenverwaltungsgateway, und unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie schrittweise Anleitungen für das Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten.
@@ -37,11 +45,16 @@ Das Gateway ist auch erforderlich, wenn Oracle auf einem virtuellen Azure IaaS-C
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
 Dieser Connector für Oracle unterstützt zwei Treiberversionen:
 
-- **Microsoft-Treiber für Oracle (empfohlen)**: Ab Datenverwaltungsgateway, Version 2.7, wird zusammen mit dem Gateway automatisch ein Microsoft-Treiber für Oracle installiert. Sie müssen also nicht zusätzlich den Treiber behandeln, um eine Verbindung mit Oracle herzustellen, und Sie erhalten mit diesem Treiber eine bessere Kopierleistung. Oracle Database Version 10g Release 2 und höher werden unterstützt.
+- **Microsoft-Treiber für Oracle (empfohlen)**: Ab Datenverwaltungsgateway, Version 2.7, wird zusammen mit dem Gateway automatisch ein Microsoft-Treiber für Oracle installiert. Sie müssen also nicht zusätzlich den Treiber behandeln, um eine Verbindung mit Oracle herzustellen, und Sie erhalten mit diesem Treiber eine bessere Kopierleistung. Folgende Versionen von Oracle-Datenbanken werden unterstützt:
+    - Oracle 12c R1 (12.1)
+    - Oracle 11g R1, R2 (11.1, 11.2)
+    - Oracle 10g R1, R2 (10.1, 10.2)
+    - Oracle 9i R1, R2 (9.0.1, 9.2)
+    - Oracle 8i R3 (8.1.7)
 
-    > [!IMPORTANT]
-    > Derzeit unterstützt der Microsoft-Treiber für Oracle nur das Kopieren von Daten aus Oracle, nicht jedoch das Schreiben in Oracle. Beachten Sie, dass die Funktion zum Testen der Verbindung auf der Registerkarte für die Datenverwaltungsgateway-Diagnose diesen Treiber nicht unterstützt. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
-    >
+> [!IMPORTANT]
+> Derzeit unterstützt der Microsoft-Treiber für Oracle nur das Kopieren von Daten aus Oracle, nicht jedoch das Schreiben in Oracle. Beachten Sie, dass die Funktion zum Testen der Verbindung auf der Registerkarte für die Datenverwaltungsgateway-Diagnose diesen Treiber nicht unterstützt. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
+>
 
 - **Oracle Data Provider für .NET:** Sie können auch Oracle Data Provider zum Kopieren von Daten aus/in Oracle verwenden. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die geeignete Version (32/64 Bit) auf dem Computer, auf dem das Gateway installiert ist. [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
 
@@ -60,11 +73,12 @@ Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
-1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert.
+1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten. 
+2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus Oracle-Datenbank in Azure Blob Storage kopieren, erstellen Sie zwei verknüpfte Dienste, um Oracle-Datenbank und Ihr Azure Storage-Konto mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Oracle sind, finden Sie im Abschnitt [Eigenschaften von verknüpften Diensten](#linked-service-properties).
+3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um die Tabelle mit den Eingabedaten in Oracle-Datenbank anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben eines Blobcontainers und des Ordners, in dem die aus Oracle-Datenbank kopierten Daten enthalten sind. Informationen zu Dataseteigenschaften, die spezifisch für Oracle sind, finden Sie im Abschnitt [Dataseteigenschaften](#dataset-properties).
+4. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „OracleSource“ als Quelle und „BlobSink“ als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure Blob Storage zu Oracle-Datenbank durchführen, verwenden Sie entsprechend „BlobSource“ und „OracleSink“ in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Oracle-Datenbank sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken. 
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus einer lokalen Oracle-Datenbank finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples).
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus einer lokalen Oracle-Datenbank finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-oracle-database).
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden:
 
@@ -145,7 +159,7 @@ Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wir
 | sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein |
 | sliceIdentifierColumnName |Geben Sie einen Spaltennamen an, den die Kopieraktivität mit einem automatisch generierten Slicebezeichner füllen soll, der bei erneuter Ausführung zum Bereinigen der Daten eines bestimmten Slices verwendet wird. |Spaltenname einer Spalte mit binärem Datentyp (32). |Nein |
 
-## <a name="json-examples"></a>JSON-Beispiele
+## <a name="json-examples-for-copying-data-to-and-from-oracle-database"></a>JSON-Beispiele zum Kopieren von Daten in bzw. aus Oracle-Datenbank
 Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer Oracle-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.   
 
 ## <a name="example-copy-data-from-oracle-to-azure-blob"></a>Beispiel: Kopieren von Daten aus Oracle in ein Azure-Blob

@@ -1,13 +1,13 @@
 ---
-title: Architekturen mit mehreren Mastern mit Azure DocumentDB | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie Anwendungsarchitekturen mit lokalen Lese- und Schreibvorgängen über mehrere geografische Regionen hinweg mit Azure DocumentDB entwerfen."
-services: documentdb
+title: Architekturen mit mehreren Mastern mit Azure Cosmos DB | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Anwendungsarchitekturen mit lokalen Lese- und Schreibvorgängen über mehrere geografische Regionen hinweg mit Azure Cosmos DB entwerfen."
+services: cosmosdb
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: 706ced74-ea67-45dd-a7de-666c3c893687
-ms.service: documentdb
+ms.service: cosmosdb
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,20 +15,21 @@ ms.workload: na
 ms.date: 01/25/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: d6292567bbf7afd71b21be3b236537c609c63644
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: e0648e80d4bef0a98854a85e36bc48dcc209eb47
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="multi-master-globally-replicated-database-architectures-with-documentdb"></a>Global replizierte Datenbank-Architekturen mit mehreren Mastern mit DocumentDB
-DocumentDB unterstützt die sofort einsetzbare [globale Replikation](documentdb-distribute-data-globally.md), bei der Sie Daten mit geringer Wartezeit beim Zugriff an allen Orten der Workload auf mehrere Regionen verteilen können. Dieses Modell wird häufig für Herausgeber-/Verbraucherworkloads verwendet, bei denen sich ein „Writer“ in einer bestimmten geografischen Region und global verteilte Leser in anderen Regionen (Leseregionen) befinden. 
+# <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Global replizierte Datenbankarchitekturen mit mehreren Mastern mit Cosmos DB
+Azure Cosmos DB unterstützt die sofort einsetzbare [globale Replikation](documentdb-distribute-data-globally.md), bei der Sie Daten mit kürzer Wartezeit beim Zugriff an allen Orten der Workload auf mehrere Regionen verteilen können. Dieses Modell wird häufig für Herausgeber-/Verbraucherworkloads verwendet, bei denen sich ein „Writer“ in einer bestimmten geografischen Region und global verteilte Leser in anderen Regionen (Leseregionen) befinden. 
 
-Sie können auch die Unterstützung für die globale Replikation von DocumentDB verwenden, um Anwendungen zu erstellen, bei denen Writer und Leser global verteilt sind. In diesem Dokument wird ein Muster beschrieben, das den lokalen Schreib- und Lesezugriff für verteilte Writer per Azure DocumentDB ermöglicht.
+Sie können auch die Unterstützung für die globale Replikation von Cosmos DB nutzen, um Anwendungen zu erstellen, bei denen Writer und Leser global verteilt sind. In diesem Dokument wird ein Muster beschrieben, das den lokalen Schreib- und Lesezugriff für verteilte Writer per Azure Cosmos DB ermöglicht.
 
 ## <a id="ExampleScenario"></a>Inhaltsveröffentlichung – Beispielszenario
-Wir sehen uns ein Szenario aus der Praxis an, um zu beschreiben, wie Sie mit DocumentDB global verteilte Lese-/Schreibmuster mit mehreren Regionen bzw. Mastern verwenden können. Stellen Sie sich eine Plattform für die Inhaltsveröffentlichung vor, die auf DocumentDB basiert. Hier sind einige Anforderungen aufgeführt, die von dieser Plattform erfüllt werden müssen, um sowohl für Herausgeber als auch für Verbraucher für eine hohe Benutzerfreundlichkeit zu sorgen.
+Wir sehen uns ein Szenario aus der Praxis an, um zu beschreiben, wie Sie mit Cosmos DB global verteilte Lese-/Schreibmuster mit mehreren Regionen bzw. Mastern verwenden können. Stellen Sie sich eine Plattform für die Inhaltsveröffentlichung vor, die auf Azure Cosmos DB basiert. Hier sind einige Anforderungen aufgeführt, die von dieser Plattform erfüllt werden müssen, um sowohl für Herausgeber als auch für Verbraucher für eine hohe Benutzerfreundlichkeit zu sorgen.
 
 * Autoren und Abonnenten sind weltweit verteilt 
 * Autoren müssen Artikel in ihrer lokalen (nächstgelegenen) Region veröffentlichen (schreiben)
@@ -37,9 +38,9 @@ Wir sehen uns ein Szenario aus der Praxis an, um zu beschreiben, wie Sie mit Doc
 * Abonnenten müssen Artikel aus ihrer lokalen Region lesen können. Außerdem sollte es möglich sein, Rezensionen für diese Artikel hinzuzufügen. 
 * Alle Benutzer, einschließlich des Autors der Artikel, sollten alle Rezensionen anzeigen können, die an Artikel einer lokalen Region angefügt sind. 
 
-Wenn wir von Millionen von Verbrauchern und Herausgebern mit Milliarden von Artikeln ausgehen, wird schnell klar, dass wir die Skalierungsprobleme lösen und den lokalen Zugriff sicherstellen müssen. Wie bei den meisten Problemen mit der Skalierbarkeit liegt die Lösung in einer guten Partitionierungsstrategie. Als Nächstes sehen wir uns an, wie Artikel, Rezensionen und Benachrichtigungen als Dokumente modelliert werden, DocumentDB-Konten konfiguriert werden und eine Datenzugriffsschicht implementiert wird. 
+Wenn wir von Millionen von Verbrauchern und Herausgebern mit Milliarden von Artikeln ausgehen, wird schnell klar, dass wir die Skalierungsprobleme lösen und den lokalen Zugriff sicherstellen müssen. Wie bei den meisten Problemen mit der Skalierbarkeit liegt die Lösung in einer guten Partitionierungsstrategie. Als Nächstes sehen wir uns an, wie Artikel, Rezensionen und Benachrichtigungen als Dokumente modelliert werden, Azure Cosmos DB-Konten konfiguriert werden und eine Datenzugriffsschicht implementiert wird. 
 
-Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
+Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](documentdb-partition-data.md).
 
 ## <a id="ModelingNotifications"></a>Modellieren von Benachrichtigungen
 Benachrichtigungen sind Datenfeeds für einen bestimmten Benutzer. Daher gelten die Zugriffsmuster für Benachrichtigungsdokumente immer im Kontext eines einzelnen Benutzers. Beispielsweise „posten Sie eine Benachrichtigung für einen Benutzer“ oder „rufen alle Benachrichtigungen für einen bestimmten Benutzer ab“. Die optimale Wahl eines Partitionierungsschlüssels für diesen Typ wäre also `UserId`.
@@ -92,11 +93,13 @@ Abonnements können für verschiedene Kriterien erstellt werden, z.B. eine besti
     }
 
 ## <a id="ModelingArticles"></a>Modellieren von Artikeln
-Nachdem ein Artikel über Benachrichtigungen identifiziert wurde, basieren die nachfolgenden Abfragen normalerweise auf der `ArticleId`. Die Wahl von `ArticleID` als Partitionsschlüssel ermöglicht daher die beste Verteilung für die Speicherung von Artikeln in einer DocumentDB-Sammlung. 
+Nachdem ein Artikel über Benachrichtigungen identifiziert wurde, basieren die nachfolgenden Abfragen normalerweise auf der `Article.Id`. Die Wahl von `Article.Id` als Partitionsschlüssel ermöglicht daher die beste Verteilung für die Speicherung von Artikeln in einer Azure Cosmos DB-Sammlung. 
 
     class Article 
     { 
-        // Unique ID for Article public string Id { get; set; }
+        // Unique ID for Article 
+        public string Id { get; set; }
+        
         public string PartitionKey 
         { 
             get 
@@ -162,8 +165,8 @@ Nun sehen wir uns die wichtigsten Methoden für den Datenzugriff an, die wir imp
         public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId); 
     }
 
-## <a id="Architecture"></a>Konfiguration des DocumentDB-Kontos
-Zum Sicherstellen von lokalen Lese- und Schreibvorgängen müssen wir die Daten nicht nur nach dem Partitionsschlüssel partitionieren, sondern auch basierend auf dem geografischen Zugriffsmuster für die Regionen. Das Modell basiert darauf, dass für jede Region ein Azure DocumentDB-Datenbankkonto mit Georeplikation verwendet wird. Bei zwei Regionen lautet die Einrichtung für Schreibvorgänge in mehreren Regionen beispielsweise wie folgt:
+## <a id="Architecture"></a>Azure DB Cosmos-Kontokonfiguration
+Zum Sicherstellen von lokalen Lese- und Schreibvorgängen müssen wir die Daten nicht nur nach dem Partitionsschlüssel partitionieren, sondern auch basierend auf dem geografischen Zugriffsmuster für die Regionen. Das Modell basiert darauf, dass für jede Region ein Azure Cosmos DB-Datenbankkonto mit Georeplikation verwendet wird. Bei zwei Regionen lautet die Einrichtung für Schreibvorgänge in mehreren Regionen beispielsweise wie folgt:
 
 | Kontoname | Schreibregion | Leseregion |
 | --- | --- | --- |
@@ -172,7 +175,7 @@ Zum Sicherstellen von lokalen Lese- und Schreibvorgängen müssen wir die Daten 
 
 Im folgenden Diagramm ist dargestellt, wie Lese- und Schreibvorgänge mit dieser Einrichtung in einer typischen Anwendung durchgeführt werden:
 
-![Azure DocumentDB-Architektur mit mehreren Mastern](./media/documentdb-multi-region-writers/documentdb-multi-master.png)
+![Azure Cosmos DB-Architektur mit mehreren Mastern](./media/documentdb-multi-region-writers/documentdb-multi-master.png)
 
 Dieser Codeausschnitt zeigt, wie Sie die Clients auf einer Datenzugriffsschicht für die Region `West US` initialisieren.
     
@@ -309,12 +312,15 @@ Zum Lesen von Benachrichtigungen und Rezensionen müssen Sie aus beiden Regionen
         return reviews;
     }
 
-Indem Sie einen guten Partitionierungsschlüssel und eine Partitionierung wählen, die auf einem statischen Konto basiert, können Sie also lokale Schreib- und Lesevorgänge in mehreren Regionen mit Azure DocumentDB erreichen.
+Indem Sie einen guten Partitionierungsschlüssel und eine Partitionierung wählen, die auf einem statischen Konto basiert, können Sie also lokale Schreib- und Lesevorgänge in mehreren Regionen mit Azure Cosmos DB erreichen.
 
 ## <a id="NextSteps"></a>Nächste Schritte
-In diesem Artikel wurde beschrieben, wie Sie mit DocumentDB global verteilte Lese-/Schreibmuster für mehrere Regionen verwenden können, und als Beispiel wurde die Inhaltsveröffentlichung genutzt.
+In diesem Artikel wurde beschrieben, wie Sie mit Azure Cosmos DB global verteilte Lese-/Schreibmuster für mehrere Regionen verwenden können, und als Beispiel wurde die Inhaltsveröffentlichung genutzt.
 
-* Informieren Sie sich, wie die [globale Verteilung](documentdb-distribute-data-globally.md) von DocumentDB unterstützt wird.
-* Informieren Sie sich über [automatische und manuelle Failover in Azure DocumentDB](documentdb-regional-failovers.md).
-* Informieren Sie sich über die [globale Konsistenz mit DocumentDB](documentdb-consistency-levels.md).
-* Entwickeln Sie Ihre Umgebung mit mehreren Regionen mit dem [Azure DocumentDB-SDK](documentdb-developing-with-multiple-regions.md).
+* Erfahren Sie, wie Azure Cosmos DB die [globale Verteilung](documentdb-distribute-data-globally.md) unterstützt.
+* Informieren Sie sich über [automatische und manuelle Failover in Azure Cosmos DB](documentdb-regional-failovers.md).
+* Erfahren Sie mehr über die [globale Konsistenz bei Azure Cosmos DB](documentdb-consistency-levels.md).
+* Entwickeln Sie mit mehreren Regionen mit der [DocumentDB-API für Azure Cosmos DB](../cosmos-db/tutorial-global-distribution-documentdb.md).
+* Entwickeln Sie mit mehreren Regionen mit der [MongoDB-API für Azure Cosmos DB](../cosmos-db/tutorial-global-distribution-MongoDB.md).
+* Entwickeln Sie mit mehreren Regionen mit der [Tabellen-API für Azure Cosmos DB](../cosmos-db/tutorial-global-distribution-table.md).
+

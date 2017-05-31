@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 7914b9f1f747d246f58c19b7faf56357bd39a201
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 8271c10cceb7a98879b06704b65a716cd9ac6822
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -42,6 +42,19 @@ Geben Sie in einer PowerShell-Befehlszeile den folgenden Befehl zur Anmeldung be
 
 ```powershell
 Login-AzureRmAccount
+```
+
+Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch die Anmeldung bei Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Führen Sie den folgenden Befehl aus, um eine Liste der Azure-Abonnements anzuzeigen, die Sie verwenden können:
+
+```powershell
+Get-AzureRMSubscription
+```
+
+Führen Sie den folgenden Befehl aus, um das Abonnement auszuwählen, das Sie zum Ausführen der Befehle zum Erstellen Ihres IoT Hubs verwenden möchten. Sie können entweder den Abonnementnamen oder die ID aus der Ausgabe des vorherigen Befehls verwenden:
+
+```powershell
+Select-AzureRMSubscription `
+    -SubscriptionName "{your subscription name}"
 ```
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
@@ -111,7 +124,7 @@ Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artike
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
+* [Simulieren eines Geräts mit IoT Edge][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -122,5 +135,5 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

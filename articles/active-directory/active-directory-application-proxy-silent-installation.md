@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 05/03/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
-ms.openlocfilehash: cf00d47efc613f7bdc152c1b5f0d0830fb44a785
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: f4d72d4d11ee64e3431879f6ad1b5d8d091a0c87
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="how-to-silently-install-the-azure-ad-application-proxy-connector"></a>Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
-Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation zum Installieren und Registrieren des Azure AD-Anwendungsproxyconnectors ermöglicht.
+# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
+Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation und Registrierung des Azure AD-Anwendungsproxyconnectors ermöglicht.
 
 Diese Funktion ist in folgenden Fällen nützlich:
 
@@ -30,10 +32,9 @@ Diese Funktion ist in folgenden Fällen nützlich:
 * Integrieren der Connectorinstallation und Registrierung als Teil einer anderen Prozedur.
 * Erstellen eines standardmäßigen Serverimages, das die Connectorbits enthält, aber nicht registriert ist.
 
-## <a name="enabling-access"></a>Aktivieren des Zugriffs
-Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Für das Funktionieren des Anwendungsproxyconnectors muss dieser im Azure AD-Verzeichnis durch einen globalen Administrator mit Kennwort registriert werden. Diese Informationen werden normalerweise während der Installation des Connectors in einem Popupdialogfeld eingegeben. Stattdessen können Sie mit Windows PowerShell ein Anmeldeinformationsobjekt erstellen, um die Registrierungsinformationen einzugeben. Sie können jedoch auch ein eigenes Token erstellen und zur Eingabe der Registrierungsinformationen verwenden.
+Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Für das Funktionieren des Anwendungsproxyconnectors muss dieser im Azure AD-Verzeichnis durch einen globalen Administrator mit Kennwort registriert werden. Diese Informationen werden normalerweise während der Installation des Connectors in einem Popupdialogfeld eingegeben. Sie können jedoch mit Windows PowerShell ein Anmeldeinformationsobjekt erstellen, um die Registrierungsinformationen einzugeben, oder auch ein eigenes Token erstellen und zur Eingabe der Registrierungsinformationen verwenden.
 
-## <a name="step-1--install-the-connector-without-registration"></a>Schritt 1: Installieren des Connectors ohne Registrierung
+## <a name="install-the-connector"></a>Installieren des Connectors
 Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registrieren:
 
 1. Öffnen Sie eine Eingabeaufforderung.
@@ -41,20 +42,20 @@ Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registriere
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="step-2-register-the-connector-with-azure-active-directory"></a>Schritt 2: Registrieren des Connectors in Azure Active Directory
-Dies lässt sich mit einer folgenden Methoden bewirken:
+## <a name="register-the-connector-with-azure-ad"></a>Registrieren des Connectors bei Azure AD
+Es gibt zwei Methoden zum Registrieren des Connectors:
 
-* Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekts
+* Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekt
 * Registrieren des Connectors mithilfe eines offline erstellten Tokens
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekts
-1. Erstellen Sie das Windows PowerShell-Anmeldeinformationsobjekt durch Ausführen des folgenden Befehls, wobei \<username\> und \<password\> durch den Benutzernamen und das Kennwort für das betreffende Verzeichnis ersetzt werden müssen:
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekt
+1. Erstellen Sie das Windows PowerShell-Anmeldeinformationsobjekt, indem Sie den folgenden Befehl ausführen. Ersetzen Sie *\<Benutzername\>* und *\<Kennwort\>* durch den Benutzernamen und das Kennwort für Ihr Verzeichnis:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Wechseln Sie zu **C:\Programme\Microsoft AAD App Proxy Connector**, und führen Sie das Skript mithilfe des zuvor erstellten PowerShell-Anmeldeinformationsobjekts aus, wobei „$cred“ für den Namen des erstellten PowerShell-Anmeldeinformationsobjekts steht:
+2. Wechseln Sie zu **C:\Programme\Microsoft AAD App Proxy Connector**, und führen Sie das Skript mithilfe des zuvor erstellten PowerShell-Anmeldeinformationsobjekts aus. Ersetzen Sie *$cred* durch den Namen des zuvor erstellten PowerShell-Anmeldeinformationsobjekts:
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
@@ -128,10 +129,5 @@ Dies lässt sich mit einer folgenden Methoden bewirken:
 * [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 * [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/11/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 942e3b4fbc9a954eae0cc609e800d0fe0b882475
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: 1436b39fdb9a66a00903442496cc5203b47c1bcb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -30,7 +30,7 @@ Die Ressourcengruppe ist der Lebenszykluscontainer für die Anwendung und ihre R
 
 ## <a name="example-template"></a>Beispielvorlage
 
-Um eine andere Ressource als Ziel festzulegen, müssen Sie während der Bereitstellung eine geschachtelte oder verknüpfte Vorlage verwenden. Der `Microsoft.Resources/deployments`-Ressourcentyp stellt einen `resourceGroup`-Parameter bereit, mit dem Sie eine andere Ressourcengruppe als diejenige angeben können, die von der übergeordneten Vorlage verwendet wird. Alle Ressourcengruppen müssen vorhanden sein, bevor Sie die Bereitstellung ausführen. Im folgenden Beispiel werden zwei Speicherkonten bereitgestellt: eins in der während der Bereitstellung angegebenen Ressourcengruppe und eins in einer Ressourcengruppe namens `crossResourceGroupDeployment`:
+Um eine andere Ressource als Ziel festzulegen, müssen Sie während der Bereitstellung eine geschachtelte oder verknüpfte Vorlage verwenden. Der Ressourcentyp `Microsoft.Resources/deployments` bietet einen `resourceGroup`-Parameter, mit dem Sie eine andere Ressourcengruppe für die geschachtelte Bereitstellung angeben können. Alle Ressourcengruppen müssen vorhanden sein, bevor Sie die Bereitstellung ausführen. Im folgenden Beispiel werden zwei Speicherkonten bereitgestellt: eins in der während der Bereitstellung angegebenen Ressourcengruppe und eins in einer Ressourcengruppe namens `crossResourceGroupDeployment`:
 
 ```json
 {
@@ -123,3 +123,4 @@ Nach Abschluss der Bereitstellung werden zwei Ressourcengruppen angezeigt. Jede 
 * Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-powershell-sas-token.md).
+

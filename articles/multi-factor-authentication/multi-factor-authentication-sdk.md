@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 05/03/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: e793478028cee273a07e3665d409a669bdadc758
-ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 281f9c61a30a20027f69808600373aa272255ef6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -34,10 +36,10 @@ Da die APIs keinen Zugriff auf in Azure Active Directory registrierte Benutzer h
 > Um das SDK herunterzuladen, müssen Sie einen Azure Multi-Factor Authentication-Anbieter erstellen, auch wenn Sie über Azure MFA-, AAD Premium- oder EMS-Lizenzen verfügen. Wenn Sie zu diesem Zweck einen Azure Multi-Factor Authentication-Anbieter erstellen und bereits über Lizenzen verfügen, erstellen Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer**. Verknüpfen Sie den Anbieter anschließend mit dem Verzeichnis, in dem die Lizenzen für Azure MFA, Azure AD Premium oder EMS enthalten sind. Diese Konfiguration stellt sicher, dass nur Kosten berechnet werden, wenn die Anzahl eindeutiger Benutzer, die das SDK verwenden, die Anzahl Ihrer Lizenzen übersteigt.
 
 
-## <a name="download-the-azure-multi-factor-authentication-sdk"></a>Herunterladen des Azure Multi-Factor Authentication-SDK
+## <a name="download-the-sdk"></a>Herunterladen des SDK
 Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter](multi-factor-authentication-get-started-auth-provider.md).  Dies erfordert ein vollständiges Azure-Abonnement, auch wenn Sie über Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen verfügen.  Um das SDK herunterzuladen, navigieren Sie zum Verwaltungsportal für die Multi-Factor Authentication. Zum Portal gelangen Sie entweder direkt über den MFA-Anbieter oder indem Sie auf der Seite mit den MFA-Diensteinstellungen auf den Link **Portal aufrufen** klicken.
 
-### <a name="to-download-the-azure-multi-factor-authentication-sdk-from-the-azure-classic-portal"></a>So laden Sie das Azure Multi-Factor Authentication SDK aus dem klassischen Azure-Portal herunter
+### <a name="download-from-the-azure-classic-portal"></a>Herunterladen vom klassischen Azure-Portal
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator an.
 2. Wählen Sie im linken Bereich **Active Directory**aus.
 3. Klicken Sie auf der Seite „Active Directory“ oben auf **Anbieter für mehrstufige Authentifizierung**.
@@ -47,7 +49,7 @@ Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter
 6. Wählen Sie die gewünschte Sprache, und klicken Sie auf einen der zugehörigen Downloadlinks.
 7. Speichern Sie den Download.
 
-### <a name="to-download-the-azure-multi-factor-authentication-sdk-via-the-service-settings"></a>So laden Sie das Azure Multi-Factor Authentication-SDK über die Diensteinstellungen herunter
+### <a name="download-from-the-service-settings"></a>Herunterladen von den Diensteinstellungen
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator an.
 2. Wählen Sie im linken Bereich **Active Directory**aus.
 3. Doppelklicken Sie auf Ihre Instanz von Azure AD.
@@ -60,11 +62,11 @@ Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter
 8. Wählen Sie die gewünschte Sprache, und klicken Sie auf einen der zugehörigen Downloadlinks.
 9. Speichern Sie den Download.
 
-## <a name="contents-of-the-azure-multi-factor-authentication-sdk"></a>Inhalt des Azure Multi-Factor Authentication-SDK
-Das SDK enthält die folgenden Elemente:
+## <a name="whats-in-the-sdk"></a>Was bietet das SDK?
+Das SDK enthält Folgendes:
 
 * **README**. Erläutert, wie die Multi-Factor Authentication-APIs in einer neuen oder vorhandenen Anwendung verwendet werden.
-* **Quelldatei(en)** für Multi-Factor Authentication.
+* **Quelldateien** für Multi-Factor Authentication.
 * **Clientzertifikat** für die Kommunikation mit dem Multi-Factor Authentication-Dienst.
 * **Privater Schlüssel** für das Zertifikat.
 * **Aurufergebnisse.** Eine Liste mit Aurufergebniscodes. Um diese Datei zu öffnen, verwenden Sie eine Anwendung mit Textformatierung wie WordPad. Verwenden Sie die Aufrufergebniscodes, um die Implementierung der Multi-Factor Authentication in Ihrer Anwendung zu testen und Probleme zu behandeln. Dies sind keine Authentifizierungsstatuscodes.
@@ -73,7 +75,7 @@ Das SDK enthält die folgenden Elemente:
 > [!WARNING]
 > Das Client-Zertifikat ist ein eindeutiges, privates Zertifikat, das speziell für Sie generiert wurde. Geben Sie diese Datei nicht frei und verlieren Sie sie nicht. Sie ist der Schlüssel zum Gewährleisten der Sicherheit der Kommunikation mit dem Multi-Factor Authentication-Dienst.
 
-## <a name="code-sample-standard-mode-phone-verification"></a>Codebeispiel: Telefonüberprüfung im Standardmodus
+## <a name="code-sample"></a>Codebeispiel
 Dieses Codebeispiel veranschaulicht, wie in Ihrer Anwendung mithilfe der APIs im Azure Multi-Factor Authentication-SDK ein Sprachanruf im Standardmodus zur Überprüfung hinzugefügt werden kann. Der Standardmodus besteht aus einem Telefonanruf, auf den der Benutzer durch Drücken der #-Taste reagiert.
 
 Dieses Beispiel verwendet das C# .NET 2.0 Multi-Factor Authentication SDK in einer einfachen ASP.NET-Anwendung mit serverseitiger C#-Logik, aber der Prozess ist in anderen Sprachen sehr ähnlich. Da das SDK Quelldateien und keine ausführbaren Dateien enthält, können Sie die Dateien direkt in der Anwendung erstellen, darauf verweisen oder sie dort einbinden.
@@ -88,7 +90,7 @@ Der clientseitige Code enthält keine Elemente, die für Multi-Factor Authentica
 
 Der serverseitige Code fügt den Standard-Authentifizierungsmodus in Schritt 2 hinzu. Er erstellt ein PfAuthParams-Objekt mit den Parametern, die für die Überprüfung im Standardmodus erforderlich sind: Benutzername, Telefonnummer, Modus und Pfad zum Clientzertifikat (CertFilePath), der bei jedem Aufruf erforderlich ist. Eine Demonstration aller Parameter in PfAuthParams finden Sie in der Beispieldatei im SDK.
 
-Als Nächstes übergibt der Code das PfAuthParams-Objekt an die pf_authenticate()-Funktion. Der Rückgabewert gibt den Erfolg oder Misserfolg der Authentifizierung an. Die Ausgangsparameter "callStatus" und "errorID" enthalten zusätzliche Informationen zu den Anrufergebnissen. Die Anrufergebniscodes sind in der Anrufergebnisdatei im SDK dokumentiert.
+Als Nächstes übergibt der Code das PfAuthParams-Objekt an die pf_authenticate()-Funktion. Der Rückgabewert gibt den Erfolg oder Misserfolg der Authentifizierung an. Die Ausgangsparameter „callStatus“ und „errorID“ enthalten zusätzliche Informationen zu den Anrufergebnissen. Die Anrufergebniscodes sind in der Anrufergebnisdatei im SDK dokumentiert.
 
 Diese minimale Implementierung lässt sich in einigen wenigen Zeilen schreiben. Der Produktionscode enthält jedoch normalerweise eine komplexere Fehlerbehandlung, zusätzlichen Datenbankcode und ein optimiertes Bedienungserlebnis.
 
@@ -184,9 +186,4 @@ Im folgenden serverseitigen Code wird Multi-Factor Authentication in Schritt 2 k
 
         }
     }
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

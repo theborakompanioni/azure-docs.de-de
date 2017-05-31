@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: d47a28b31569d26a7752fc830989e8050153be46
-ms.lasthandoff: 05/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 2fad3e3fb88d447b377ccfce052035640c1360c3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -37,8 +38,8 @@ Die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ei
 ## <a name="azure-iot-device-sdks"></a>Azure IoT-Geräte-SDKs
 Es sind _Geräte-SDKs_ für mehrere Sprachen verfügbar, mit denen Sie [Geräte-Apps](#device-app) erstellen können, die mit IoT Hub interagieren. In den IoT Hub-Tutorials wird veranschaulicht, wie Sie diese Geräte-SDKs verwenden. Den Quellcode und weitere Informationen zu den Geräte-SDKs finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-gateway-sdk"></a>Azure IoT Gateway SDK
-Mit diesem SDK können Sie Anwendungen schreiben, mit denen Geräte mit Gatewayverbindung mit [IoT Hub](#iot-hub) kommunizieren können. In den Tutorials zum IoT Hub Gateway wird veranschaulicht, wie Sie dieses SDK verwenden. Den Quellcode und weitere Informationen zum Azure IoT Gateway SDK finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-gateway-sdk).
+## <a name="azure-iot-edge"></a>Azure IoT Edge
+Mit IoT Edge können Sie Anwendungen schreiben, anhand derer Geräte mit Gatewayverbindung mit [IoT Hub](#iot-hub) kommunizieren können. In den IoT Edge-Tutorials wird veranschaulicht, wie Sie diesen Dienst verwenden. Den Quellcode und weitere Informationen zu Azure IoT Edge finden Sie in [diesem GitHub-Repository](https://github.com/Azure/iot-edge).
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT-Dienst-SDKs
 Es sind _Dienst-SDKs_ für mehrere Sprachen verfügbar, mit denen Sie [Back-End-Apps](#back-end-app) erstellen können, die mit IoT Hub interagieren. In den IoT Hub-Tutorials wird veranschaulicht, wie Sie diese Dienst-SDKs verwenden. Den Quellcode und weitere Informationen zu den Dienst-SDKs finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-sdks).
@@ -79,7 +80,7 @@ Sie können Verbindungszeichenfolgen in Ihrem App-Code verwenden, um die Informa
 Sie können benutzerdefinierte [Endpunkte](iot-hub-devguide-endpoints.md) auf einen IoT Hub erstellen, um von einer [Routingregel](#routing-rules) versendete Nachrichten weiterzuleiten. Benutzerdefinierte Endpunkte stellen eine direkte Verbindung mit einem Event Hub, einer Service Bus-Warteschlange oder einem Service Bus-Thema her.
 
 ## <a name="custom-gateway"></a>Benutzerdefiniertes Gateway
-Mit einem Gateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Sie können das [Azure IoT Gateway SDK](#azure-iot-gateway-sdk) zum Erstellen von benutzerdefinierten Gateways verwenden, bei denen benutzerdefinierte Logik implementiert wird, um Nachrichten und benutzerdefinierte Protokollkonvertierungen zu verarbeiten.
+Mit einem Gateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Sie können [Azure IoT Edge](#azure-iot-gateway-sdk) zum Erstellen von benutzerdefinierten Gateways verwenden, bei denen benutzerdefinierte Logik implementiert wird, um Nachrichten und benutzerdefinierte Protokollkonvertierungen zu verarbeiten und andere Edge-Verarbeitungsvorgänge durchzuführen.
 
 ## <a name="data-point-message"></a>Datenpunktnachricht
 Eine Datenpunktnachricht ist eine [D2C-Nachricht](#device-to-cloud), die [Telemetriedaten](#telemetry) wie Windgeschwindigkeit oder Temperatur enthält.
@@ -105,8 +106,8 @@ Bezieht sich auf Informationen zum Gerätezustand, z.B. die derzeit verwendete V
 ## <a name="device-data"></a>Gerätedaten
 Gerätedaten sind Daten, die pro Gerät in der IoT Hub-[Identitätsregistrierung](#identity-registry) gespeichert werden. Es ist möglich, diese Daten zu importieren und zu exportieren.
 
-## <a name="device-explorer"></a>Geräte-Explorer
-Der [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) ist ein Tool, das unter Windows ausgeführt wird und Ihnen das Verwalten von Geräten in der [Identitätsregistrierung](#identity-registry) und das Senden und Empfangen von Nachrichten für Ihre Geräte ermöglicht.
+## <a name="device-explorer"></a>Device Explorer
+Der [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) ist ein Tool, das unter Windows ausgeführt wird und Ihnen das Verwalten von Geräten in der [Identitätsregistrierung](#identity-registry) und das Senden und Empfangen von Nachrichten für Ihre Geräte ermöglicht.
 
 ## <a name="device-identities-rest-api"></a>Geräteidentitäten – REST-API
 Mit der [REST-API für Geräteidentitäten](https://docs.microsoft.com/rest/api/iothub/iothubresource) können Sie Ihre Geräte, die in der [Identitätsregistrierung](#identity-registry) registriert sind, mit einer REST-API verwalten. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
@@ -190,7 +191,7 @@ Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](iot-hub-devguide-jobs.md) A
 Die [Aufträge-REST-API](https://docs.microsoft.com/rest/api/iothub/jobapi) ermöglicht die Verwaltung von [Aufträgen](#job), die in Ihrer IoT-Hub-Instanz ausgeführt werden.
 
 ## <a name="module"></a>Modul
-Im [Azure IoT Gateway SDK](iot-hub-linux-gateway-sdk-get-started.md) ist ein [Modul](iot-hub-linux-gateway-sdk-get-started.md#azure-iot-gateway-sdk-concepts) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Das Azure IoT Gateway SDK enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.
+In [Azure IoT Edge](iot-hub-linux-gateway-sdk-get-started.md) ist ein [Modul](iot-hub-linux-gateway-sdk-get-started.md) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Azure IoT Edge enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).

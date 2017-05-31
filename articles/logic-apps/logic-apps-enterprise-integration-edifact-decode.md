@@ -1,6 +1,6 @@
 ---
 title: "Decodieren von EDIFACT-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Überprüfen von EDI und Generieren von XML-Code für Transaktionssätze mit dem EDIFACT-Nachrichtendecoder im Enterprise Integration Pack für Azure Logic Apps"
+description: "Überprüfen von EDI und Generieren von Bestätigungen mit dem EDIFACT-Nachrichtendecoder im Enterprise Integration Pack für Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -13,18 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
-ms.author: padmavc
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 176963837f4f3fc8b89e31000ef8722ef3258b11
-ms.lasthandoff: 03/10/2017
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 39d9661adc90e6113e2152d844473f9f4caa755a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
 
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von EDIFACT-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
 
-Mit dem Connector „EDIFACT-Nachricht decodieren“ können Sie EDI- und partnerspezifische Eigenschaften überprüfen sowie ein XML-Dokument für jeden Transaktionssatz und eine Bestätigung für verarbeitete Transaktionen generieren. Um diesen Connector verwenden zu können, müssen Sie ihn einem vorhandenen Trigger in Ihrer Logik-App hinzufügen.
+Mit dem Connector zum Decodieren von EDIFACT-Nachrichten können Sie EDI- und partnerspezifische Eigenschaften überprüfen, Austauschvorgänge in Transaktionssätze aufteilen oder gesamte Austauschvorgänge beibehalten und Bestätigungen für verarbeitete Transaktionen generieren. Um diesen Connector verwenden zu können, müssen Sie ihn einem vorhandenen Trigger in Ihrer Logik-App hinzufügen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -72,9 +73,9 @@ Sie benötigen Folgendes:
 
 Der Connector „EDIFACT-Nachricht decodieren“ führt folgende Aufgaben aus: 
 
-* Auflösen der Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner
-* Aufteilen mehrerer Austauschvorgänge in einer einzelnen Nachricht in separate Vorgänge
-* Überprüfen des Umschlags anhand der Handelspartnervereinbarung
+* Überprüfen des Umschlags anhand der Handelspartnervereinbarung.
+* Auflösen der Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner.
+* Aufteilen eines Austauschs in mehrere Transaktionen, wenn der Austausch entsprechend der Konfiguration der Empfangseinstellungen der Vereinbarung mehr als eine Transaktion aufweist.
 * Disassemblieren des Austauschs
 * Überprüfung von EDI- und partnerspezifischen Eigenschaften, einschließlich:
   * Überprüfung der Struktur des Austauschumschlags
@@ -85,15 +86,21 @@ Der Connector „EDIFACT-Nachricht decodieren“ führt folgende Aufgaben aus:
   * Überprüfen der Austauschkontrollnummer in Bezug auf zuvor empfangene Austauschvorgänge 
   * Überprüfen der Gruppenkontrollnummer in Bezug auf andere Gruppenkontrollnummern im Austausch 
   * Überprüfen der Transaktionssatz-Kontrollnummer in Bezug auf andere Transaktionssatz-Kontrollnummern in dieser Gruppe
-* Generieren eines XML-Dokuments für jeden Transaktionssatz
-* Konvertieren des gesamten Austauschs in XML 
-  * Austausch in Transaktionssätze trennen – Transaktionssatz bei Fehler anhalten: Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument. Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, hält die EDIFACT-Decodierung nur diese Transaktionssätze an. 
-  * Austausch in Transaktionssätze trennen – Austausch bei Fehler anhalten: Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument.  Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, hält die EDIFACT-Decodierung den gesamten Austausch an.
-  * Austausch beibehalten – Transaktionssätze bei Fehler anhalten: Erstellt ein XML-Dokument für den gesamten Batchaustausch. Die EDIFACT-Decodierung hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen, während alle weiteren Transaktionssätze verarbeitet werden.
-  * Austausch beibehalten – Austausch bei Fehler anhalten: Erstellt ein XML-Dokument für den gesamten Batchaustausch. Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, hält die EDIFACT-Decodierung den gesamten Austausch an. 
+* Trennen des Austauschs in Transaktionssätze oder Beibehalten des gesamten Austauschs:
+  * Austausch in Transaktionssätze trennen – Transaktionssätze bei Fehler anhalten: Trennt jeden Austausch in Transaktionssätze und analysiert jeden Transaktionssatz. 
+  Die Aktion „X12 decodieren“ gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
+  * Austausch in Transaktionssätze trennen – Austausch bei Fehler anhalten: Trennt jeden Austausch in Transaktionssätze und analysiert jeden Transaktionssatz. 
+  Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion „X12 decodieren“ alle Transaktionssätze in diesem Austausch in `badMessages` aus.
+  * Austausch beibehalten – Transaktionssätze bei Fehler anhalten: Behält den Austausch bei und verarbeitet den gesamten Batchaustausch. 
+  Die Aktion „X12 decodieren“ gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
+  * Austausch beibehalten – Austausch bei Fehler anhalten: Behält den Austausch bei und verarbeitet den gesamten Batchaustausch. 
+  Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion „X12 decodieren“ alle Transaktionssätze in diesem Austausch in `badMessages` aus.
 * Generieren einer technischen Bestätigung (Kontrollbestätigung) und/oder einer Funktionsbestätigung (sofern konfiguriert)
   * Eine technische Bestätigung (Kontrollbestätigung) meldet die Ergebnisse einer Syntaxüberprüfung des vollständigen empfangenen Austauschs.
   * Eine Funktionsbestätigung bestätigt das Akzeptieren oder Ablehnen eines empfangenen Austauschs oder einer Gruppe.
+
+## <a name="view-swagger-file"></a>Anzeigen der Swagger-Datei
+Informationen zum Anzeigen der Details zu Swagger für den EDIFACT-Connector finden Sie unter [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 

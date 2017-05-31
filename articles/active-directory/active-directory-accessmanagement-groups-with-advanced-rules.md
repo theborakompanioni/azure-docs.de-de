@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Attributen zum Erstellen erweiterter Regeln | Microsoft-Dokumentation
-description: "Vorgehensweisen zum Erstellen erweiterter Regeln für eine Gruppe, einschließlich unterstützter Ausdrucksregeloperatoren und -parameter."
+title: "Dynamisches Auffüllen von Gruppen anhand von Benutzerattributen in Azure Active Directory | Microsoft-Dokumentation"
+description: "Anleitungen zum Erstellen erweiterter Regeln für eine Gruppenmitgliedschaft, einschließlich unterstützter Ausdrucksregeloperatoren und -parameter"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/14/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 24f56b68a9313ed1bce859b9343a14de83d9b600
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: b0c8eb46b6c01662f0b53213843f8a7ad295e5aa
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
-# <a name="using-attributes-to-create-advanced-rules"></a>Verwenden von Attributen zum Erstellen erweiterter Regeln
-Im klassischen Azure-Portal haben Sie die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Azure Active Directory-Gruppen (Azure AD) aktivieren können.  
+# <a name="populate-groups-dynamically-based-on-user-attributes"></a>Dynamisches Auffüllen von Gruppen anhand von Benutzerattributen 
+Im klassischen Azure-Portal haben Sie die Möglichkeit, komplexere attributbasierte, dynamische Mitgliedschaften für Azure Active Directory-Gruppen (Azure AD) zu aktivieren.  
 
 Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamischen Gruppenregeln in einem Verzeichnis, um zu ermitteln, ob die Attributänderung des Benutzers Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer eine Regel für eine Gruppe erfüllt, wird er als Mitglieder zu dieser Gruppe hinzugefügt. Wenn er die Regel einer Gruppe nicht mehr erfüllt, deren Mitglied er ist, wird er aus dieser Gruppe entfernt.
 
 > [!NOTE]
-> Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuweisung zu Anwendungen derzeit nicht unterstützt.
+> Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. 
 >
 > Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
 >

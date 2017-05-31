@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2017
+ms.date: 05/12/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: e98fa067c0ed385fe20f66645311c9fd51cd6456
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: a8e35456af8c9f2cf1bf9e9c364e33641f29a477
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/11/2017
 In diesem Thema erfahren Sie, wie Sie die Azure-Ressourcen-Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource zu erstellen.
 
 ## <a name="resource-iteration"></a>Ressourceniteration
-Fügen Sie zum Erstellen mehrerer Instanzen eines Ressourcentyps ein `copy`-Element zum Ressourcentyp hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten. Resource Manager erstellt die Ressourcen gleichzeitig. Aus diesem Grund ist die Reihenfolge, in der sie erstellt werden, nicht garantiert. Informationen zum Erstellen iterierter Ressourcen in Folge finden Sie unter [Sequenzielle Schleifen für Azure Resource Manager-Vorlagen](resource-manager-sequential-loop.md). 
+Fügen Sie zum Erstellen mehrerer Instanzen eines Ressourcentyps ein `copy`-Element zum Ressourcentyp hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten. Resource Manager erstellt die Ressourcen gleichzeitig. Aus diesem Grund ist die Reihenfolge, in der sie erstellt werden, nicht garantiert. Um Ressourcen durch mehrfaches Durchlaufen zu erstellen, finden Sie unter [Serielle Kopie](#serial-copy). 
 
 Die Ressource zum mehrfachen Erstellen übernimmt das folgende Format:
 
@@ -109,6 +109,152 @@ Namen:
 * storagecontoso
 * storagefabrikam
 * storagecoho
+
+## <a name="serial-copy"></a>Serielle Kopie
+
+Wenn Sie das copy-Element verwenden, um mehrere Instanzen eines Ressourcentyps zu erstellen, stellt Resource Manager diese Instanzen standardmäßig parallel bereit. Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird.
+
+Resource Manager bietet Eigenschaften für das copy-Element, mit denen Sie mehrere Instanzen seriell bereitstellen können. Legen Sie im copy-Element `mode` auf **serial** und `batchSize` auf die Anzahl von Instanzen fest, die gleichzeitig bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn das vorherige Batch abgeschlossen wurde.
+
+```json
+"copy": {
+    "name": "iterator",
+    "count": "[parameters('numberToDeploy')]",
+    "mode": "serial",
+    "batchSize": 2
+},
+```
+
+Die mode-Eigenschaft akzeptiert auch **parallel**, wobei es sich um den Standardwert handelt.
+
+Um das serielle Kopieren zu testen, ohne tatsächlich Ressourcen zu erstellen, verwenden Sie folgende Vorlage, die leere geschachtelte Vorlagen bereitstellt:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "numberToDeploy": {
+      "type": "int",
+      "minValue": 2,
+      "defaultValue": 5
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "name": "[concat('loop-', copyIndex())]",
+      "copy": {
+        "name": "iterator",
+        "count": "[parameters('numberToDeploy')]",
+        "mode": "serial",
+        "batchSize": 1
+      },
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [],
+          "outputs": {
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
+```
+
+Beachten Sie im Bereitstellungsverlauf, dass die geschachtelten Bereitstellungen sequenziell verarbeitet werden.
+
+![Serielle Bereitstellung](./media/resource-group-create-multiple/serial-copy.png)
+
+Das folgende Beispiel bietet ein etwas realistischeres Szenario und stellt gleichzeitig zwei Instanzen eines virtuellen Linux-Computers aus einer geschachtelten Vorlage bereit:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "User name for the Virtual Machine."
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Password for the Virtual Machine."
+            }
+        },
+        "dnsLabelPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        },
+        "ubuntuOSVersion": {
+            "type": "string",
+            "defaultValue": "16.04.0-LTS",
+            "allowedValues": [
+                "12.04.5-LTS",
+                "14.04.5-LTS",
+                "15.10",
+                "16.04.0-LTS"
+            ],
+            "metadata": {
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+            }
+        }
+    },
+    "variables": {
+        "templatelink": "https://raw.githubusercontent.com/rjmax/Build2017/master/Act1.TemplateEnhancements/Chapter03.LinuxVM.json"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-01-01",
+            "name": "[concat('nestedDeployment',copyIndex())]",
+            "type": "Microsoft.Resources/deployments",
+            "copy": {
+                "name": "myCopySet",
+                "count": 4,
+                "mode": "serial",
+                "batchSize": 2
+            },
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('templatelink')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "adminUsername": {
+                        "value": "[parameters('adminUsername')]"
+                    },
+                    "adminPassword": {
+                        "value": "[parameters('adminPassword')]"
+                    },
+                    "dnsLabelPrefix": {
+                        "value": "[parameters('dnsLabelPrefix')]"
+                    },
+                    "ubuntuOSVersion": {
+                        "value": "[parameters('ubuntuOSVersion')]"
+                    },
+                    "index":{
+                        "value": "[copyIndex()]"
+                    }
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Abhängigkeit von Ressourcen in einer Schleife
 Sie geben an, dass eine Ressource nach einer anderen Ressource bereitgestellt wird, indem Sie das `dependsOn`-Element verwenden. Um eine Ressource bereitzustellen, die von der Sammlung von Ressourcen in einer Schleife abhängt, geben Sie den Namen der Kopierschleife im dependsOn-Element an. Das folgende Beispiel zeigt, wie drei Speicherkonten vor dem Bereitstellen des virtuellen Computers bereitgestellt werden. Die vollständige Definition des virtuellen Computers ist dabei nicht angegeben. Beachten Sie, dass „name“ für das copy-Element auf `storagecopy` und auch das dependsOn-Element für die virtuellen Computer auf `storagecopy` festgelegt ist.
@@ -198,7 +344,6 @@ Das folgende Beispiel zeigt die Implementierung:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-* Informationen zum Erstellen iterierter Ressourcen in Folge finden Sie unter [Sequenzielle Schleifen für Azure Resource Manager-Vorlagen](resource-manager-sequential-loop.md).
 * Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
 

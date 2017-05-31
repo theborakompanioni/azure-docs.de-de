@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/10/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: c579c0866387a5eff17b4dbfe25a6cb7d1d47700
-ms.openlocfilehash: 4adf15e4767344d450b7411733a5d2f09cb9f06b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 7288f8fa173f8018570cd17aa7274f56a4eead41
+ms.contentlocale: de-de
+ms.lasthandoff: 05/15/2017
 
 
 ---
@@ -30,7 +32,7 @@ Mit Mandanteneinschränkungen können Organisationen eine Liste mit Mandanten an
 
 In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Office 365, das Feature sollte aber auch für jede andere SaaS-Cloud-App verwendet werden können, die moderne Authentifizierungsprotokolle mit Azure AD für einmaliges Anmelden verwendet. Falls Sie SaaS-Apps mit einem Azure AD-Mandanten verwenden, der nicht dem von Office 365 verwendeten Mandanten entspricht, müssen Sie sicherstellen, dass alle erforderlichen Mandanten zugelassen sind. Weitere Informationen zu SaaS-Cloud-Apps finden Sie im [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/).
 
-## <a name="how-does-it-work"></a>Funktionsweise
+## <a name="how-it-works"></a>So funktioniert's
 
 Die Lösung umfasst folgende Komponenten: 
 
@@ -101,7 +103,7 @@ Der Administrator für den Mandanten, der als Restricted-Access-Context-Mandant 
 
 Genau wie bei anderen Berichten im Azure-Portal können Sie auch hier mithilfe von Filtern den gewünschten Umfang des Berichts angeben. Der Bericht kann nach einem Benutzer, einer Anwendung, einem Client oder einem Zeitraum gefiltert werden.
 
-## <a name="office-365-support-for-tenant-restrictions"></a>Office 365-Unterstützung für Mandanteneinschränkungen
+## <a name="office-365-support"></a>Unterstützung für Office 365
 
 Zur vollständigen Unterstützung von Mandanteneinschränkungen müssen Office 365-Anwendungen zwei Kriterien erfüllen:
 
@@ -112,7 +114,7 @@ Aktuelle Informationen zu den Office-Clients, die die moderne Authentifizierung 
 
 Mandanteneinschränkungen werden derzeit von browserbasierten Office 365-Anwendungen unterstützt. Hierzu zählen beispielsweise das Office-Portal sowie Yammer, SharePoint-Websites und Outlook im Web. Bei Fat Clients (Outlook, Skype for Business, Word, Excel, PowerPoint usw.) können Mandanteneinschränkungen nur erzwungen werden, wenn die moderne Authentifizierung verwendet wird.  
 
-Outlook- und Skype for Business-Clients, die die moderne Authentifizierung unterstützen, können für Mandanten, bei denen keine moderne Authentifizierung aktiviert ist, weiterhin ältere Protokolle verwenden und dadurch die Mandanteneinschränkungen umgehen. Bei Outlook unter Windows können Kunden ggf. Einschränkungen implementieren, die verhindern, dass Endbenutzer ihren Profilen nicht genehmigte E-Mail-Konten hinzufügen. Informationen hierzu finden Sie beispielsweise unter der Gruppenrichtlinieneinstellung [Das Hinzufügen nicht standardmäßiger Exchange-Konten verhindern](http://gpsearch.azurewebsites.net/default.aspx?ref=1). Für Outlook auf Windows-fremden Plattformen und für Skype for Business auf allen Plattformen werden die Mandanteneinschränkungen voraussichtlich vollständig unterstützt, wenn die moderne Authentifizierung die dienstweite Standardeinstellung darstellt.
+Outlook- und Skype for Business-Clients, die die moderne Authentifizierung unterstützen, können für Mandanten, bei denen keine moderne Authentifizierung aktiviert ist, weiterhin ältere Protokolle verwenden und dadurch die Mandanteneinschränkungen umgehen. Bei Outlook unter Windows können Kunden ggf. Einschränkungen implementieren, die verhindern, dass Endbenutzer ihren Profilen nicht genehmigte E-Mail-Konten hinzufügen. Informationen hierzu finden Sie beispielsweise unter der Gruppenrichtlinieneinstellung [Das Hinzufügen nicht standardmäßiger Exchange-Konten verhindern](http://gpsearch.azurewebsites.net/default.aspx?ref=1). Für Outlook auf Plattformen, bei denen es sich nicht um Windows handelt, und für Skype for Business auf allen Plattformen ist vollständige Unterstützung für Mandanteneinschränkungen zurzeit nicht verfügbar.
 
 ## <a name="testing"></a>Testen
 
@@ -122,20 +124,15 @@ Wenn Sie die Mandanteneinschränkungen ausprobieren möchten, bevor Sie sie für
 
 Fiddler ist ein kostenloser Web Debugging Proxy, mit dem Sie HTTP/HTTPS-Datenverkehr erfassen und modifizieren können, um beispielsweise HTTP-Header einzufügen. Gehen Sie wie folgt vor, um Fiddler zum Testen von Mandanteneinschränkungen zu konfigurieren:
 
-1.  [Laden Sie Fiddler herunter, und installieren Sie es.](http://www.telerik.com/fiddler)
-2.  Konfigurieren Sie Fiddler wie in der [Hilfedokumentation](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
-3.  Konfigurieren Sie Fiddler mithilfe von benutzerdefinierten Regeln so, dass die Header *Restrict-Access-To-Tenants* und *Restrict-Access-Context* eingefügt werden:
+1.    [Laden Sie Fiddler herunter, und installieren Sie es.](http://www.telerik.com/fiddler)
+2.    Konfigurieren Sie Fiddler wie in der [Hilfedokumentation](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS) beschrieben für die Entschlüsselung von HTTPS-Datenverkehr.
+3.    Konfigurieren Sie Fiddler mithilfe von benutzerdefinierten Regeln so, dass die Header *Restrict-Access-To-Tenants* und *Restrict-Access-Context* eingefügt werden:
   1. Wählen Sie im Fiddler Web Debugger-Tool das Menü **Rules** (Regeln) und anschließend **Customize Rules...** (Regeln anpassen...) aus, um die Datei „CustomRules“ zu öffnen.
   2. Fügen Sie am Anfang der Funktion *OnBeforeRequest* die folgenden Zeilen hinzu. Ersetzen Sie \<tenant domain\> durch eine bei Ihrem Mandanten registrierte Domäne (beispielsweise „contoso.onmicrosoft.com“). Ersetzen Sie \<directory ID\> durch den Azure AD-GUID Ihres Mandanten.
 
   ```
-  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){
-      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";
-      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";
-  }
+  if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
   ```
-  >[!NOTE]
-  > Der obige Codeausschnitt muss als einzelne Zeile angegeben werden. Ein Wagenrücklauf wird frühestens nach der schließenden Klammer verwendet.
 
   Falls Sie mehrere Mandanten zulassen möchten, trennen Sie die einzelnen Mandantennamen jeweils durch ein Komma. Beispiel:
 
@@ -151,8 +148,8 @@ Nachdem Sie Fiddler konfiguriert haben, können Sie Datenverkehr erfassen, indem
 
 Abhängig von den Funktionen Ihrer Proxyinfrastruktur können Sie unter Umständen einen gestaffelten Rollout der Einstellungen für Ihre Benutzer durchführen. Dabei sollten Sie folgende allgemeine Optionen berücksichtigen:
 
-1.  Verwenden Sie PAC-Dateien, um Testbenutzer an eine Testproxyinfrastruktur weiterzuleiten, während normale Benutzer weiterhin die Produktionsproxyinfrastruktur verwenden.
-2.  Einige Proxyserver unterstützen möglicherweise verschiedene Konfigurationen mit Gruppen.
+1.    Verwenden Sie PAC-Dateien, um Testbenutzer an eine Testproxyinfrastruktur weiterzuleiten, während normale Benutzer weiterhin die Produktionsproxyinfrastruktur verwenden.
+2.    Einige Proxyserver unterstützen möglicherweise verschiedene Konfigurationen mit Gruppen.
 
 Spezifische Details finden Sie in der Dokumentation Ihres Proxyservers.
 
@@ -161,9 +158,4 @@ Spezifische Details finden Sie in der Dokumentation Ihres Proxyservers.
 - Lesen Sie [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) (Aktualisierte moderne Authentifizierung für Office 365).
 
 - Informieren Sie sich über die [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 05/16/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 0637fb4d7c6cb8c3cfd4aab5d06571bd83f59683
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 183cb2ad4f2a80f9a0e1e7a33f1cacae006c0df4
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -113,7 +114,7 @@ Data Factory verwendet standardmäßig eine einzelne Cloud-DMU, um eine einzelne
 Für die **cloudDataMovementUnits**-Eigenschaft **sind folgende Werte zulässig**: 1 (Standard), 2, 4, 8, 16 und 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster.
 
 > [!NOTE]
-> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP in Blob Storage/Data Lake Store/Azure SQL-Datenbank kopieren**.
+> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus „Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP“ in „Blob Storage/Data Lake Store/Azure SQL-Datenbank“ kopieren**.
 >
 >
 
@@ -307,15 +308,15 @@ Wenn Sie Daten aus **Blob Storage** in **SQL Data Warehouse** kopieren, können 
 * Informationen zu **lokalen relationalen Datenbanken** wie SQL Server und Oracle, für die das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
 
 ### <a name="nosql-stores"></a>NoSQL-Speicher
-*(Table Storage und Azure DocumentDB)*
+*(Einschließlich Table Storage und Azure Cosmos DB)*
 
 * **Table Storage:**
   * **Partition**: Das Schreiben von Daten in überlappende Partitionen beeinträchtigt die Leistung erheblich. Sortieren Sie Ihre Daten anhand des Partitionsschlüssels, sodass sie effizient partitionsweise eingefügt werden. Sie können die Logik auch so anpassen, dass die Daten in eine einzelne Partition geschrieben werden.
-* **DocumentDB:**
-  * **Batchgröße:** Die **writeBatchSize**-Eigenschaft legt die Anzahl paralleler Anforderungen fest, die zum Erstellen von Dokumenten an den DocumentDB-Dienst gerichtet werden. Durch Erhöhen des Werts für **writeBatchSize** können Sie die Leistung verbessern, da mehr parallele Anforderungen an DocumentDB gesendet werden. Achten Sie jedoch darauf, dass beim Schreiben in DocumentDB keine Drosselung (Fehlermeldung: „Anforderungsrate ist groß“) auftritt. Eine Drosselung kann verschiedene Ursachen haben. Hierzu zählen etwa die Dokumentgröße, die Anzahl von Begriffen in Dokumenten und die Indizierungsrichtlinie der Zielsammlung. Verwenden Sie ggf. eine bessere Sammlung (beispielsweise S3), um einen höheren Durchsatz zu erzielen.
+* Für **Azure Cosmos DB**:
+  * **Batchgröße:** Die Eigenschaft **writeBatchSize** legt die Anzahl paralleler Anforderungen fest, die zum Erstellen von Dokumenten an den Azure Cosmos DB-Dienst gerichtet werden. Sie können eine bessere Leistung erzielen, wenn Sie **writeBatchSize** heraufsetzen, da mehr parallele Anforderungen an Azure Cosmos DB gesendet werden. Achten Sie jedoch darauf, dass beim Schreiben in Azure Cosmos DB keine Drosselung (Fehlermeldung: „Anforderungsrate ist groß“) auftritt. Eine Drosselung kann verschiedene Ursachen haben. Hierzu zählen etwa die Dokumentgröße, die Anzahl von Begriffen in Dokumenten und die Indizierungsrichtlinie der Zielsammlung. Verwenden Sie ggf. eine bessere Sammlung (beispielsweise S3), um einen höheren Durchsatz zu erzielen.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Hinweise zur Serialisierung und Deserialisierung
-Serialisierung und Deserialisierung können auftreten, wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist. Derzeit unterstützt die Kopieraktivität Avro- und Textdatenformate wie etwa CSV und TSV.
+Serialisierung und Deserialisierung können auftreten, wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist. Weitere Informationen zu den unterstützten Dateiformaten für Kopieraktivitäten finden Sie unter [Unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md).
 
 **Kopierverhalten:**
 
@@ -339,7 +340,7 @@ Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopierakti
 ## <a name="considerations-for-column-mapping"></a>Hinweise zur Spaltenzuordnung
 Mit der **columnMappings** -Eigenschaft der Kopieraktivität können Eingabespalten ganz oder teilweise den Ausgabespalten zugeordnet werden. Nach dem Lesen der Daten aus der Quelle muss der Datenverschiebungsdienst eine Spaltenzuordnung für die Daten vornehmen, bevor sie in die Senke geschrieben werden. Dieser zusätzliche Verarbeitungsaufwand reduziert den Kopierdurchsatz.
 
-Falls es sich bei Ihrem Quelldatenspeicher um einen abfragbaren Speicher (beispielsweise um einen relationalen Speicher wie SQL-Datenbank oder SQL Server) oder um einen NoSQL-Speicher (etwa um Table Storage oder DocumentDB) handelt, empfiehlt es sich unter Umständen, die Logik für Filterung und Neuanordnung von Spalten in die **query** -Eigenschaft auszulagern, anstatt die Spaltenzuordnung zu verwenden. Dadurch erfolgt die Projektion, während der Datenverschiebungsdienst Daten aus dem Quelldatenspeicher liest, was deutlich effizienter ist.
+Falls es sich bei Ihrem Quelldatenspeicher um einen abfragbaren Speicher (beispielsweise um einen relationalen Speicher wie die SQL-Datenbank oder SQL Server) oder um einen NoSQL-Speicher (etwa um Table Storage oder Azure Cosmos DB) handelt, empfiehlt es sich unter Umständen, die Logik für Filterung und Neuanordnung von Spalten in die **query**-Eigenschaft auszulagern, anstatt die Spaltenzuordnung zu verwenden. Dadurch erfolgt die Projektion, während der Datenverschiebungsdienst Daten aus dem Quelldatenspeicher liest, was deutlich effizienter ist.
 
 ## <a name="considerations-for-data-management-gateway"></a>Hinweise zum Datenverwaltungsgateway
 Empfehlungen für die Gatewayeinrichtung finden Sie unter [Überlegungen zur Verwendung des Datenverwaltungsgateways](data-factory-data-management-gateway.md#considerations-for-using-gateway).
@@ -406,7 +407,7 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 * Azure Storage (einschließlich Blob Storage und Table Storage): [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/storage-performance-checklist.md)
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
 * Azure SQL Data Warehouse: Die Leistung wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
-* Azure DocumentDB: [Leistungsebenen in DocumentDB](../documentdb/documentdb-performance-levels.md)
+* Azure Cosmos DB: [Leistungsstufen in Azure Cosmos DB](../documentdb/documentdb-performance-levels.md)
 * Lokale SQL Server-Instanz: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 * Lokaler Dateiserver: [Performance Tuning for File Servers](https://msdn.microsoft.com/library/dn567661.aspx)
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 05/15/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 9b75d0ede3ec1b291936ee0a53778afe10ba91db
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: 9932ac04699f49b7a3ea3dabe4d380fdc4d05ec1
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -939,21 +939,21 @@ Eine Zeichenfolge mit mindestens der angegebenen Zeichenanzahl.
 <a id="replace" />
 
 ## <a name="replace"></a>replace
-`replace(originalString, oldCharacter, newCharacter)`
+`replace(originalString, oldString, newString)`
 
-Gibt eine neue Zeichenfolge zurück, in der alle Instanzen eines Zeichens in der angegebenen Zeichenfolge durch ein anderes Zeichen ersetzt wurden.
+Gibt eine neue Zeichenfolge zurück, in der alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden.
 
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| originalString |Ja |string |Der Wert, für den alle Instanzen eines Zeichens durch ein anderes Zeichen ersetzt werden sollen. |
-| oldCharacter |Ja |string |Das Zeichen, das aus der ursprünglichen Zeichenfolge entfernt werden soll. |
-| newCharacter |Ja |string |Das Zeichen, das für das entfernte Zeichen eingefügt werden soll. |
+| originalString |Ja |string |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
+| oldString |Ja |string |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
+| newString |Ja |string |Die Zeichenfolge, die anstelle der entfernten Zeichenfolge eingefügt werden soll. |
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird veranschaulicht, wie Sie alle Bindestriche aus einer vom Benutzer angegebenen Zeichenfolge entfernen.
+Das folgende Beispiel zeigt, wie Sie aus einer von einem Benutzer bereitgestellten Zeichenfolge alle Gedankenstriche entfernen und einen Teil der Zeichenfolge durch eine andere Zeichenfolge ersetzen.
 
 ```json
 {
@@ -967,9 +967,13 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie alle Bindestriche aus einer 
     },
     "resources": [],
     "outputs": {
-        "stringOutput": {
+        "firstOutput": {
             "type": "string",
             "value": "[replace(parameters('testString'),'-', '')]"
+        },
+        "secodeOutput": {
+            "type": "string",
+            "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
         }
     }
 }

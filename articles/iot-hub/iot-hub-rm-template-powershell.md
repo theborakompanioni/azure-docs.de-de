@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: dc9f9c39a8eb644229887f76b5c441d4211af059
-ms.openlocfilehash: 6f9c36239f8485313066a594eea74bfcd168536e
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: d55de6c3f49abf3ac117dcb265dd7f1bcaa05f24
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -45,20 +46,33 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a name="connect-to-your-azure-subscription"></a>Verbinden mit Ihrem Azure-Abonnement
 Geben Sie in einer PowerShell-Befehlszeile den folgenden Befehl zur Anmeldung bei Ihrem Azure-Abonnement ein:
 
-```
+```powershell
 Login-AzureRmAccount
+```
+
+Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch die Anmeldung bei Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Führen Sie den folgenden Befehl aus, um eine Liste der Azure-Abonnements anzuzeigen, die Sie verwenden können:
+
+```powershell
+Get-AzureRMSubscription
+```
+
+Führen Sie den folgenden Befehl aus, um das Abonnement auszuwählen, das Sie zum Ausführen der Befehle zum Erstellen Ihres IoT Hubs verwenden möchten. Sie können entweder den Abonnementnamen oder die ID aus der Ausgabe des vorherigen Befehls verwenden:
+
+```powershell
+Select-AzureRMSubscription `
+    -SubscriptionName "{your subscription name}"
 ```
 
 Mit den folgenden Befehlen können Sie ermitteln, wo Sie einen IoT-Hub und die derzeit unterstützten API-Versionen bereitstellen können:
 
-```
+```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).Locations
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
 ```
 
 Erstellen Sie mit dem folgenden Befehl an einem Speicherort, der IoT Hub unterstützt, eine Ressourcengruppe, die Ihren IoT-Hub enthalten soll. Dieses Beispiel erstellt eine Ressourcengruppe namens **MyIoTRG1**:
 
-```
+```powershell
 New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
@@ -67,7 +81,7 @@ Verwenden Sie eine JSON-Vorlage, um einen IoT Hub in der Ressourcengruppe zu ers
 
 1. Erstellen Sie mithilfe eines Texteditors eine Azure Resource Manager-Vorlage namens **template.json** mit der folgenden Ressourcendefinition, um einen neuen Standard-IoT Hub zu erstellen. In diesem Beispiel wird der IoT Hub in der Region **USA, Osten** hinzugefügt, es werden zwei Consumergruppen (**cg1** und **cg2**) auf dem Event Hub-kompatiblen Endpunkt erstellt, und es wird die API-Version **2016-02-03** verwendet. Diese Vorlage erwartet auch, dass Sie den IoT Hub-Namen als Parameter **hubName**übergeben. Die aktuelle Liste der Standorte, die IoT Hub unterstützen, finden Sie unter [Azure-Status][lnk-status].
    
-    ```
+    ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
@@ -119,7 +133,7 @@ Verwenden Sie eine JSON-Vorlage, um einen IoT Hub in der Ressourcengruppe zu ers
 2. Speichern Sie die Azure Resource Manager-Vorlagendatei auf Ihrem lokalen Computer. In diesem Beispiel wird davon ausgegangen, dass Sie sie im Ordner **c:\templates** speichern.
 3. Führen Sie den folgenden Befehl zum Bereitstellen Ihres neuen IoT-Hubs aus, der den Namen des IoT-Hubs als Parameter übergibt. In diesem Beispiel lautet der Name des IoT Hubs **abcmyiothub** (beachten Sie, dass dieser Name global eindeutig sein muss und daher Ihren Namen oder Ihre Initialen enthalten sollte):
    
-    ```
+    ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
 4. Die Ausgabe zeigt die Schlüssel für den IoT-Hub an, den Sie erstellt haben.
@@ -143,7 +157,7 @@ Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artike
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
+* [Simulieren eines Geräts mit Azure IoT Edge][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -157,5 +171,5 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
 

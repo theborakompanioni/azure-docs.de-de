@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 05/17/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: e89ec01cb47a87a45378f73d138224095bcbebed
-ms.openlocfilehash: 201d98c4f4ff29393ad308824ed0575f1ff602ee
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 9046879158a4617d478bcf1157d5ead3c1054fd8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
 # <a name="load-balance-containers-in-a-kubernetes-cluster-in-azure-container-service"></a>Lastenausgleich für Container in einem Kubernetes-Cluster in Azure Container Service 
 Dieser Artikel behandelt den Lastenausgleich für einen Kubernetes-Cluster in Azure Container Service. Der Lastenausgleich stellt eine extern aufrufbare IP-Adresse für den Dienst bereit und verteilt den Netzwerkdatenverkehr auf die Pods, die auf Agent-VMs ausgeführt werden.
 
-Sie können einen Kubernetes-Dienst so einrichten, dass er [Azure Load Balancer](../load-balancer/load-balancer-overview.md) zum Verwalten des externen Netzwerkdatenverkehrs (TCP oder UDP) verwendet. Mit der zusätzlichen Konfiguration sind der Lastenausgleich und die Weiterleitung von HTTP- oder HTTPS-Datenverkehr oder komplexere Szenarien möglich.
+Sie können einen Kubernetes-Dienst so einrichten, dass er [Azure Load Balancer](../load-balancer/load-balancer-overview.md) zum Verwalten des externen Netzwerkdatenverkehrs (TCP) verwendet. Mit der zusätzlichen Konfiguration sind der Lastenausgleich und die Weiterleitung von HTTP- oder HTTPS-Datenverkehr oder komplexere Szenarien möglich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Bereitstellen eines Kubernetes-Clusters](container-service-kubernetes-walkthrough.md) in Azure Container Service
@@ -34,7 +35,7 @@ Sie können einen Kubernetes-Dienst so einrichten, dass er [Azure Load Balancer]
 
 ## <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Standardmäßig enthält ein in Azure Container Service bereitgestellter Kubernetes-Cluster einen Azure-Lastenausgleich mit Internetzugriff für die Agent-VMs. (Eine separate Lastenausgleichsressource ist für die Master-VMs konfiguriert.) Azure Load Balancer ist ein Layer-4-Lastenausgleich (TCP, UDP).
+Standardmäßig enthält ein in Azure Container Service bereitgestellter Kubernetes-Cluster einen Azure-Lastenausgleich mit Internetzugriff für die Agent-VMs. (Eine separate Lastenausgleichsressource ist für die Master-VMs konfiguriert.) Azure Load Balancer ist eine Layer-4-Lastenausgleichskomponente. Derzeit unterstützt Load Balancer nur TCP-Datenverkehr in Kubernetes.
 
 Beim Erstellen eines Kubernetes-Diensts können Sie Azure Load Balancer automatisch so konfigurieren, dass er den Zugriff auf den Dienst erlaubt. Zum Konfigurieren des Lastenausgleichs setzen Sie `type` des Diensts auf `LoadBalancer`. Der Lastenausgleich erstellt eine Regel zum Zuordnen einer IP-Adresse und einer Portnummer des eingehenden Dienstdatenverkehrs zu den privaten IP-Adressen und Portnummern der Pods in Agent-VMs (und umgekehrt für den Antwortdatenverkehr). 
 

@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 05/16/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 446a7b585ca1204d49d76f71106799cbd2b0aa70
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 3013607e62a3ac532cb0c035130fe35e503a345c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -40,6 +41,7 @@ Das [Azure-DataFactory-Repository auf GitHub](https://github.com/azure/azure-dat
 | [Hybride Pipeline mit lokalem Hortonworks Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |Das Beispiel verwendet einen lokalen Hadoop-Cluster als Computeziel für Aufträge, die in Data Factory ausgeführt werden, genauso als ob Sie andere Computeziele wie einen HDInsight-basierten Hadoop-Cluster in der Cloud hinzufügen würden. |
 | [JSON-Konvertierungstool](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |Mit diesem Tool können Sie JSONs aus Versionen, die älter sind als die 2015-07-01-preview bis zur neuesten oder der 2015-07-01-preview (Standard) konvertieren. |
 | [U-SQL-Beispieleingabedatei](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |Diese Datei ist eine Beispieldatei, die von einer U-SQL-Aktivität verwendet wird. |
+| [Löschen einer Blobdatei](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | Dieses Beispiel zeigt eine C#-Datei, die im Rahmen der benutzerdefinierten .net-Aktivität von ADF verwendet werden kann, um Dateien aus dem Quellspeicherort in Azure Blob Storage zu löschen, nachdem die Dateien kopiert wurden.|
 
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 Auf GitHub finden Sie die folgenden Azure Resource Manager-Vorlagen für Data Factory.
@@ -102,6 +104,7 @@ Folgendes muss auf Ihrem Computer installiert sein:
    4. Wählen Sie die **Ressourcengruppe** für die Data Factory aus.
    5. Wählen Sie **USA, Westen**, **USA, Osten** oder **Europa, Norden** als **Region** aus.
    6. Klicken Sie auf **Weiter**.
+
 6. Geben Sie auf der Seite **Datenspeicher konfigurieren** eine vorhandene **Azure SQL-Datenbank** und ein **Azure Storage-Konto** an, oder erstellen Sie eine Datenbank und einen Speicher, und klicken Sie dann auf „Weiter“.
 7. Übernehmen Sie auf der Seite **Compute konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**.
 8. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen, und klicken Sie auf **Weiter**.

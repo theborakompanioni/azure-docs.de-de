@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/12/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7be3471cd5cd22b5d05aed6e2cb51840a20bb89b
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: b7b7347fef8ea6f6bf643e98bbcc0a6292c083ed
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -224,10 +224,11 @@ Der Mobilitätsdienst muss auf jeder VMware-VM installiert sein, die Sie replizi
 
 Vorbereitung:
 
+- Ihr Azure-Benutzerkonto benötigt bestimmte [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) zum Aktivieren der Replikation eines neuen virtuellen Computers in Azure.
 - Beim Hinzufügen oder Ändern von VMs kann es 15 Minuten oder auch länger dauern, bis Änderungen wirksam werden und im Portal sichtbar sind.
 - Sie können den letzten Zeitpunkt der Ermittlung für VMs unter **Konfigurationsserver** > **Letzter Kontakt um** überprüfen.
 - Wenn Sie VMs hinzufügen möchten, ohne auf die planmäßige Ermittlung zu warten, markieren Sie den Konfigurationsserver (nicht darauf klicken) und klicken auf **Refresh** (Aktualisieren).
-* Wenn eine VM für die Pushinstallation vorbereitet wurde, installiert der Prozessserver automatisch den Mobilitätsdienst, sobald Sie die Replikation aktivieren.
+- Wenn eine VM für die Pushinstallation vorbereitet wurde, installiert der Prozessserver automatisch den Mobilitätsdienst, sobald Sie die Replikation aktivieren.
 
 
 ### <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
@@ -298,9 +299,22 @@ Wir empfehlen Ihnen, die VM-Eigenschaften zu überprüfen und die erforderlichen
      - Wenn beispielsweise ein Quellcomputer zwei Netzwerkadapter besitzt und der Zielcomputer aufgrund seiner Größe vier Netzwerkadapter unterstützt, erhält der Zielcomputer zwei Netzwerkadapter. Wenn der Quellcomputer dagegen zwei Netzwerkadapter besitzt und der Zielcomputer aufgrund seiner Größe nur einen Adapter unterstützt, erhält der Zielcomputer nur einen Adapter.     
    - Wenn der virtuelle Computer über mehrere Netzwerkadapter verfügt, werden alle mit dem gleichen Netzwerk verbunden.
    - Wenn der virtuelle Computer über mehrere Netzwerkadapter verfügt, wird der erste, der in der Liste angezeigt wird, zum *Standard*-Netzwerkadapter im virtuellen Azure-Computer.
-5. Unter **Datenträger** werden das VM-Betriebssystem und die Datenträger angezeigt, die repliziert werden.
+4. Unter **Datenträger** werden das VM-Betriebssystem und die Datenträger angezeigt, die repliziert werden.
 
-## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
+#### <a name="managed-disks"></a>Verwaltete Datenträger
+
+Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie die Einstellung „Verwaltete Datenträger verwenden“ für den virtuellen Computer auf „Ja“ festlegen, wenn Sie Ihrem Computer beim Failover zu Azure verwaltete Datenträger anfügen möchten. Managed Disks vereinfacht die Datenträgerverwaltung für Azure-IaaS-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. Weitere Informationen zu [Managed Disks](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview).
+
+   - Verwaltete Datenträger werden erstellt und nur beim Failover zu Azure an den virtuellen Computer angefügt. Beim Aktivieren des Schutzes werden Daten von lokalen Computern weiterhin auf Speicherkonten repliziert.  Verwaltete Datenträger können nur für virtuelle Computer erstellt werden, die über das Resource Manager-Bereitstellungsmodell bereitgestellt werden.  
+
+   - Wenn Sie „Verwaltete Datenträger verwenden“ auf „Ja“ festlegen, stehen nur Verfügbarkeitsgruppen in der Ressourcengruppe zur Auswahl, bei denen „Verwaltete Datenträger verwenden“ auf „Ja“ festgelegt ist. Der Grund hierfür ist, dass virtuelle Computer mit verwalteten Datenträgern nur in Verfügbarkeitsgruppen enthalten sein können, deren Eigenschaft „Verwaltete Datenträger verwenden“ auf „Ja“ festgelegt ist. Stellen Sie sicher, dass die Eigenschaft „Verwaltete Datenträgern verwenden“ der erstellten Verfügbarkeitsgruppen Ihrer Absicht entspricht, verwaltete Datenträger beim Failover zu verwenden.  In gleicher Weise gilt: Wenn Sie „Verwaltete Datenträger verwenden“ auf „Nein“ festlegen, stehen nur Verfügbarkeitsgruppen in der Ressourcengruppe zur Auswahl, deren Eigenschaft „Verwaltete Datenträger verwenden“ auf „Nein“ festgelegt ist. [Weitere Informationen zu verwalteten Datenträgern und Verfügbarkeitsgruppen](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set).
+
+  > [!NOTE]
+  > Wenn das für die Replikation verwendete Speicherkonto zu einem beliebigen Zeitpunkt mit der Speicherdienstverschlüsselung verschlüsselt wurde, tritt bei der Erstellung verwalteter Datenträger während des Failovers ein Fehler auf. Sie können entweder „Verwaltete Datenträger verwenden“ auf „Nein“ festlegen und den Failoverversuch wiederholen oder den Schutz für den virtuellen Computer deaktivieren und diesen in einem Speicherkonto schützen, für das die Speicherdienstverschlüsselung zu keinem Zeitpunkt aktiviert war.
+  > [Weitere Informationen zu Speicherdienstverschlüsselung und verwalteten Datenträgern](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption).
+
+
+## <a name="run-a-test-failover"></a>Durchführen eines Test-Failovers
 
 
 Führen Sie nach Abschluss der Einrichtung ein Testfailover durch, um sicherzustellen, dass alles wie erwartet funktioniert. Bevor Sie beginnen, verschaffen Sie sich schnell einen Überblick per Video

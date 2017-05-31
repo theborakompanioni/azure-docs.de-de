@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 58ee6e9cc14b01f10e20dfc3f289bfc6cc386e2a
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: d66489b43e983f313028a846d2b7da1534c86b53
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -147,7 +148,7 @@ Nein. Sie können kein benutzerdefiniertes DNS-Suffix für die VNets angeben.
 Ja. Alle Netzwerkschnittstellen (NICs) einer VM, die mit dem Resource Manager-Bereitstellungsmodell bereitgestellt wurden, müssen mit einem VNet verbunden sein. VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden, können optional mit einem VNet verbunden werden.
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Wie lauten die unterschiedlichen Typen von IP-Adressen, die ich VMs zuweisen kann?
-* **Privat:** Wird allen NICs jeder einzelnen VM zugewiesen. Die Adresse wird entweder mit der statischen oder der dynamischen Zuteilungsmethode zugewiesen. Private IP-Adressen werden aus dem Bereich zugewiesen, den Sie in den Subnetzeinstellungen Ihres VNet angegeben haben. Für Ressourcen, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden, werden auch dann private IP-Adressen verwendet, wenn keine Verbindung mit einem VNet besteht. Eine dynamische private IP-Adresse bleibt einer Ressource zugewiesen, bis die Zuordnung der Ressource aufgehoben (VMs) oder gelöscht wird (VMs oder Clouddienst-Bereitstellungsslots). Eine statische private IP-Adresse bleibt einer Ressource so lange zugewiesen, bis die Ressource gelöscht wird.
+* **Privat:** Wird allen NICs jeder einzelnen VM zugewiesen. Die Adresse wird entweder mit der statischen oder dynamischen Methode zugewiesen. Private IP-Adressen werden aus dem Bereich zugewiesen, den Sie in den Subnetzeinstellungen Ihres VNet angegeben haben. Mit dem klassischen Bereitstellungsmodell bereitgestellten Ressourcen werden private IP-Adressen zugewiesen, selbst wenn keine Verbindung mit einem VNet besteht. Eine mit der dynamischen Methode zugewiesene private IP-Adresse bleibt einer Ressource zugewiesen, bis die Zuordnung der Ressource aufgehoben (VMs) oder gelöscht wird (VMs oder Clouddienst-Bereitstellungsslots). Eine mit der dynamischen Methode zugewiesene private IP-Adresse ändert sich möglicherweise, wenn eine VM neu gestartet wird, nachdem diese im Zustand „Beendet (Zuordnung aufgehoben)“ war. Eine mit der statischen Methode zugewiesene private IP-Adresse bleibt einer Ressource so lange zugewiesen, bis die Ressource gelöscht wird. Wenn Sie sicherstellen müssen, dass sich die private IP-Adresse einer Ressource nicht ändert, bis die Ressource gelöscht wird, weisen Sie mit der statischen Methode eine private IP-Adresse zu.
 * **Öffentlich:** Kann optional NICs von VMs zugewiesen werden, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt wurden. Die Adresse kann mit der statischen oder der dynamischen Zuteilungsmethode zugewiesen werden. Alle VMs und Cloud Services-Rolleninstanzen, die über das klassische Bereitstellungsmodell bereitgestellt werden, sind in einem Clouddienst vorhanden, dem eine *dynamische* öffentliche virtuelle IP-Adresse (VIP) zugewiesen ist. Eine öffentliche *statische* IP-Adresse, die als [reservierte IP-Adresse](virtual-networks-reserved-public-ip.md) bezeichnet wird, kann optional als VIP zugewiesen werden. Sie können öffentliche IP-Adressen einzelnen VMs oder Cloud Services-Rolleninstanzen zuweisen, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Diese Adressen werden als [ILPIP-Adressen](virtual-networks-instance-level-public-ip.md) (Instance Level Public IP, öffentliche IP auf Instanzebene) bezeichnet und können dynamisch zugewiesen werden.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Kann ich eine private IP-Adresse für einen virtuellen Computer reservieren, den ich zu einem späteren Zeitpunkt erstelle?

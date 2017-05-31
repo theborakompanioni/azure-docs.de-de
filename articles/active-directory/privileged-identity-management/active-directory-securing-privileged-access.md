@@ -12,41 +12,46 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 05/16/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 936e152304dc4a4a3bd95c7bfba071a02a20d0dd
-ms.lasthandoff: 01/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: c96a0bd6710d60629bc631fe7e1f642cdb2bada6
+ms.contentlocale: de-de
+ms.lasthandoff: 05/17/2017
 
 
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Sichern des privilegierten Zugriffs in Azure AD
 Das Sichern des privilegierten Zugriffs ist ein entscheidender erster Schritt, um die geschäftlichen Ressourcen in einem modernen Unternehmen zu schützen. Mit privilegierten Konten werden IT-Systeme verwaltet. Cyberkriminelle versuchen diese Konten anzugreifen, um Zugriff auf die Daten und Systeme eines Unternehmens zu erhalten. Zum Schutz des privilegierten Zugriffs empfiehlt es sich, Konten und Systeme zu isolieren, um sie vor dem Zugriff durch böswillige Benutzer zu schützen.
 
-Über Clouddienste erhalten immer mehr Benutzer privilegierten Zugriff. Hierzu gehören globale Administratoren von Office&365;, Azure-Abonnementadministratoren und Benutzer die administrativen Zugriff zu virtuellen Computern oder SaaS-Apps besitzen.
+Über Clouddienste erhalten immer mehr Benutzer privilegierten Zugriff. Hierzu gehören globale Administratoren von Office 365, Azure-Abonnementadministratoren und Benutzer die administrativen Zugriff zu virtuellen Computern oder SaaS-Apps besitzen.
 
 Microsoft empfiehlt, der Roadmap unter [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx)(Sichern des privilegierten Zugriffs) zu folgen.
 
-Für Kunden, die Azure Active Directory für die Verwaltung des Zugriffs auf Azure, Office 365 oder andere Microsoft-Dienste und -Anwendungen verwenden, gelten diese Prinzipien unabhängig davon, ob die Benutzerkonten über Active Directory oder Azure Active Directory verwaltet und authentifiziert werden. In den folgenden Abschnitten finden Sie weitere Informationen zu den Azure AD-Features, die das Sichern des privilegierten Zugriffs unterstützen.
+Für Kunden, die Azure Active Directory, Office 365 oder andere Microsoft-Dienste und -Anwendungen verwenden, gelten diese Prinzipien unabhängig davon, ob die Benutzerkonten über Active Directory oder Azure Active Directory verwaltet und authentifiziert werden. In den folgenden Abschnitten finden Sie weitere Informationen zu den Azure AD-Features, die das Sichern des privilegierten Zugriffs unterstützen.
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
-Um die Sicherheit der Administratorauthentifizierung zu erhöhen, sollten Sie Multi-Factor Authentication (MFA) erfordern, bevor Berechtigungen gewährt werden. MFA ist eine Methode zum Überprüfen der Identität, für die mehr als nur ein Benutzername und ein Kennwort erforderlich ist. Sie bietet eine zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen.
+## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+Um die Sicherheit der Administratorauthentifizierung zu erhöhen, sollten Sie eine Überprüfung in zwei Schritten anfordern, bevor Berechtigungen gewährt werden. Die Überprüfung in zwei Schritten ist eine Methode zum Überprüfen der Identität, für die mehr als nur ein Benutzername und ein Kennwort erforderlich ist. Sie bietet eine zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen.
 
-Azure Multi-Factor Authentication hilft beim Schutz des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren. Sie bietet eine leistungsfähige Authentifizierung mittels verschiedener einfacher Überprüfungsoptionen: Telefonanruf, SMS, Benachrichtigung in der mobilen App, Überprüfungscode und Drittanbieter-OATH-Token.
+Azure Multi-Factor Authentication (MFA) ist eine Lösung von Microsoft zur Überprüfung in zwei Schritten, die zum Schutz des Zugriffs auf Daten und Anwendungen beiträgt und gleichzeitig ein einfaches Anmeldeverfahren für Benutzer bietet. Sie bietet eine leistungsstarke Authentifizierung durch eine Auswahl von einfachen Überprüfungsoptionen. Hierzu zählen Folgende:
 
-Eine Übersicht über die Funktionsweise von Azure Multi-Factor Authentication finden Sie im folgenden Video.
+- Telefonanrufe
+- Textnachrichten
+- Benachrichtigungen in mobilen Apps
+- Überprüfungscodes in mobilen Apps
+- Drittanbieter-OATH-Token
+
+Eine Übersicht über die Funktionsweise von Azure Multi-Factor Authentication finden Sie im folgenden Video:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Windows-Azure-Multi-Factor-Authentication/player]
-> 
-> 
 
-Weitere Informationen finden Sie unter [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/)(MFA für Office 365 und MFA für Azure).
+Weitere Informationen finden Sie unter [MFA für Office 365 und MFA für Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/).
 
 ## <a name="time-bound-privileges"></a>Zeitgebundene Berechtigungen
 Einige Organisationen stellen möglicherweise fest, dass zu viele Benutzer Rollen mit hohen Berechtigungen innehaben. Möglicherweise wurden Benutzer für eine bestimmte Aktivität zu einer Rolle hinzugefügt, beispielsweise zur Anmeldung bei einem Dienst, haben diese Berechtigung später aber nicht mehr häufig verwendet.
 
-Um Berechtigungen nicht unnötig lange zu gewähren und den Einblick in die Verwendung der Berechtigungen zu erhöhen, sollten Sie Just-In-Time-Berechtigungen für Benutzer einrichten, die die Nutzung der Berechtigung auf die Dauer der Aufgabenausführung beschränken. Für Azure Active Directory und Microsoft Online Services können Sie [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)verwenden.
+Um Berechtigungen nicht unnötig lange zu gewähren und den Einblick in die Verwendung der Berechtigungen zu erhöhen, sollten Sie Just-In-Time-Berechtigungen (JIT) für Benutzer einrichten, die die Nutzung der Berechtigung auf die Dauer der Aufgabenausführung beschränken. Für Azure Active Directory und Microsoft Online Services können Sie [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)verwenden.
 
 ![PIM-Dashboard][2]
 
@@ -66,7 +71,7 @@ Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory beim Auth
 * Aktivieren von [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * Aktivieren der [Steuerung des bedingten Zugriffs](../active-directory-conditional-access.md)
 
-Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersecurity solutions](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)(Cybersicherheitslösungen).
+Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersecurity solutions](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)(Cybersicherheitslösungen).
 
 <!--Image references-->
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png

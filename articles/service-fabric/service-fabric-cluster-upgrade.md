@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: 0231c3148d03ffef0a518a68bb79398462da2605
-ms.openlocfilehash: 89721efbb9f05871716ca1b16ad0d54eaf1ffd62
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: 0b63228e5b09f5d22fc55818986a0a2eb1204278
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -163,7 +164,7 @@ Wenn die Clusterintegritätsrichtlinien erfüllt sind, wird das Upgrade als erfo
 Sie können nicht nur den Clusterupgrademodus festlegen, sondern in einem aktiven Cluster auch folgende Konfigurationen ändern:
 
 ### <a name="certificates"></a>Zertifikate
-Über das Portal können Sie nun Zertifikate für den Cluster und Client mühelos hinzufügen oder löschen.  [In diesem Dokument finden Sie ausführliche Anweisungen](service-fabric-cluster-security-update-certs-azure.md)
+Über das Portal können Sie nun Zertifikate für den Cluster und Client mühelos hinzufügen oder löschen. [In diesem Dokument finden Sie ausführliche Anweisungen](service-fabric-cluster-security-update-certs-azure.md)
 
 ![Screenshot mit dem Zertifikatfingerabdruck im Azure-Portal.][CertificateUpgrade]
 
@@ -206,7 +207,7 @@ Sie können benutzerdefinierte Integritätsrichtlinien angeben oder die aktuelle
 Informationen zu den anpassbaren Einstellungen und zur jeweiligen Vorgehensweise finden Sie unter [Customize Service Fabric cluster settings and Fabric Upgrade policy](service-fabric-cluster-fabric-settings.md) (Anpassen der Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie).
 
 ### <a name="os-patches-on-the-vms-that-make-up-the-cluster"></a>Betriebssystem-Patches auf den virtuellen Computern, die den Cluster bilden
-Diese Funktion ist als automatisierte Funktion für die Zukunft geplant. Derzeit sind Sie jedoch noch selbst für das Patching Ihrer virtuellen Computer verantwortlich. Dies muss jeweils für eine VM erfolgen, sodass immer nur eine außer Betrieb genommen wird.
+Verwenden Sie die [Anwendung für die Patchorchestrierung](service-fabric-patch-orchestration-application.md), die Sie in Ihrem Cluster installieren können, um Patches von Windows Update auf orchestrierte Weise in Ihrem Cluster zu installieren und dafür zu sorgen, dass die Dienste jederzeit verfügbar bleiben. 
 
 ### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>Aktualisierung des Betriebssystems auf den virtuellen Computern, die den Cluster bilden
 Wenn Sie das verwendete Betriebssystemimage auf den virtuellen Computern des Clusters aktualisieren müssen, muss das jeweils auf den einzelnen virtuellen Computern nacheinander erfolgen. Dabei sind Sie für dieses Upgrade zuständig, dies kann derzeit noch nicht automatisiert werden.

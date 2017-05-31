@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/12/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f9dc195040d0fa1321dff9ec97d9ca1e4770d325
+ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
+ms.openlocfilehash: fde08bfc3a73c54ee53b5d8efffd3001894416b3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -74,11 +74,23 @@ Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihr Kennwort
 
     Es gibt für jeden dieser Fälle eine spezifische Meldung, die den Benutzer darüber informiert, was zur Problemlösung unternommen werden kann.
 
-## <a name="scenarios-supported-for-password-writeback"></a>Unterstützte Szenarien für die Kennwortrückschreibung
+## <a name="configuring-password-writeback"></a>Konfigurieren des Kennwortrückschreibens
 
 Es empfiehlt sich, das automatische Update von [Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md) zu verwenden, wenn Sie das Kennwortrückschreiben nutzen möchten.
 
-Weitere Informationen zum [Supportlebenszyklus von DirSync und Azure AD Sync](connect/active-directory-aadconnect-dirsync-deprecated.md)
+DirSync und Azure AD Sync stellen keine unterstützten Tools für die Aktivierung des Kennwortrückschreibens mehr dar. Im Artikel [Durchführen eines Upgrades von DirSync und Azure AD Sync](connect/active-directory-aadconnect-dirsync-deprecated.md) finden Sie weitere Informationen zur Umstellung.
+
+Bei den folgenden Schritten wird davon ausgegangen, dass Azure AD Connect bereits mithilfe der [Express](./connect/active-directory-aadconnect-get-started-express.md)- oder [benutzerdefinierten](./connect/active-directory-aadconnect-get-started-custom.md) Einstellungen in Ihrer Umgebung konfiguriert wurde.
+
+1. Um das Kennwortrückschreiben zu konfigurieren und zu aktivieren, melden Sie sich bei Ihrem Azure AD Connect-Server an, und starten Sie den **Azure AD Connect**-Konfigurations-Assistenten.
+2. Klicken Sie auf der Willkommensseite auf **Konfigurieren**.
+3. Klicken Sie auf dem Bildschirm „Weitere Aufgaben“ auf **Synchronisierungsoptionen anpassen**, und wählen Sie dann **Weiter** aus.
+4. Geben Sie auf dem Bildschirm „Mit Azure AD verbinden“ die Anmeldeinformationen eines globalen Administrators ein, und wählen Sie **Weiter** aus.
+5. Auf den Bildschirmen „Verzeichnisse verbinden“ und „Filtern von Domänen und Organisationseinheiten“ können Sie **Weiter** auswählen.
+6. Aktivieren Sie auf dem Bildschirm „Optionale Features“ das Kontrollkästchen **Kennwortrückschreiben**, und klicken Sie auf **Weiter**.
+   ![Aktivieren des Kennwortrückschreibens in Azure AD Connect][Writeback]
+7. Klicken Sie auf dem Bildschirm „Bereit zur Konfiguration“ auf **Konfigurieren**, und warten Sie, bis der Vorgang abgeschlossen ist.
+8. Wenn die Konfiguration abgeschlossen ist, können Sie auf **Beenden** klicken.
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Lizenzierungsanforderungen für das Kennwortrückschreiben
 
@@ -183,4 +195,4 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
 
-
+[Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Aktivieren des Kennwortrückschreibens in Azure AD Connect"

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/05/2016
 ms.author: v-sharos@microsoft.com
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 27231cef19e7f624c2c09b0aae2ea3d503fb8e3d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: 8824568e9e4204a567cc08a10608cf835aa7164b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -188,13 +189,19 @@ Die Speicherstaffelung erfolgt folgendermaßen:
 6. Microsoft Azure erstellt mehrere Replikate der Daten im Rechenzentrum und einem Remoterechenzentrum, um sicherzustellen, dass die Daten wiederhergestellt werden können, wenn ein Notfall eintritt. 
 7. Wenn der Dateiserver in der Cloud gespeicherte Daten anfordert, gibt StorSimple diese nahtlos zurück und speichert eine Kopie auf der SSD-Ebene des StorSimple-Geräts.
 
+#### <a name="how-storsimple-manages-cloud-data"></a>Verwaltung von Clouddaten durch StorSimple
+
+StorSimple dedupliziert Kundendaten über alle Momentaufnahmen und die primären Daten hinweg (Daten, die von Hosts geschrieben werden). Wenngleich die Deduplizierung für optimale Speichereffizienz sorgt, erschwert sie die Frage, was sich in der Cloud befindet. Die mehrstufigen primären Daten und die Momentaufnahmedaten überschneiden sich. Ein einzelner Datenblock in der Cloud kann gleichzeitig für mehrstufige primäre Daten verwendet und durch verschiedene Momentaufnahmen referenziert werden. Jede Cloudmomentaufnahme stellt sicher, dass eine Kopie aller Point-in-Time-Daten in der Cloud verbleibt, bis diese Momentaufnahme gelöscht wird.
+
+Daten werden nur aus der Cloud gelöscht, wenn keine Verweise auf diese Daten vorliegen. Wenn beispielsweise eine Cloudmomentaufnahme aller Daten im StorSimple-Gerät erstellt wird und Sie dann einige primäre Daten löschen, ist die Abnahme der _primären Daten_ sofort erkennbar. Die _Clouddaten_, die sowohl die mehrstufigen Daten als auch die Sicherungen enthalten, bleiben dieselben. Dies liegt daran, dass über eine Momentaufnahme weiterhin auf die Clouddaten verwiesen wird. Nachdem die Cloudmomentaufnahme gelöscht wurde (sowie jede weitere Momentaufnahme, die auf dieselben Daten verweist), nimmt der Cloudverbrauch ab. Bevor Clouddaten entfernt werden, muss sichergestellt werden, dass keine Momentaufnahmen weiterhin auf diese Daten verweisen. Dieser Prozess wird als _Garbage Collection_ bezeichnet und ist ein Hintergrunddienst, der auf dem Gerät ausgeführt wird. Das Entfernen von Clouddaten erfolgt nicht sofort, weil der Garbage Collection-Dienst vor dem Löschen auf andere Verweise auf diese Daten überprüft. Die Geschwindigkeit der Garbage Collection hängt von der Gesamtzahl der Momentaufnahmen und der Gesamtmenge an Daten ab. Typischerweise werden die Clouddaten in weniger als einer Woche bereinigt.
+
+
 ### <a name="thin-provisioning"></a>Schlanke Speicherzuweisung
-Schlanke Speicherzuweisung ist eine Virtualisierungstechnologie, bei der der verfügbare Speicher die physischen Ressourcen zu überschreiten scheint. Anstatt ausreichend Speicher im Voraus zu reservieren, verwendet StorSimple die schlanke Bereitstellung, um nur eben genug Speicher zum Erfüllen der aktuellen Anforderungen zuzuweisen. Die Elastizität von Cloudspeicher ermöglicht diesen Ansatz, weil StorSimple den Cloudspeicher vergrößern oder verkleinern kann, um sich ändernde Anforderungen zu erfüllen. 
+Schlanke Speicherzuweisung ist eine Virtualisierungstechnologie, bei der der verfügbare Speicher die physischen Ressourcen zu überschreiten scheint. Anstatt ausreichend Speicher im Voraus zu reservieren, verwendet StorSimple die schlanke Bereitstellung, um nur eben genug Speicher zum Erfüllen der aktuellen Anforderungen zuzuweisen. Die Elastizität von Cloudspeicher ermöglicht diesen Ansatz, weil StorSimple den Cloudspeicher vergrößern oder verkleinern kann, um sich ändernde Anforderungen zu erfüllen.
 
 > [!NOTE]
 > Lokale Volumes werden nicht mit schlanker Speicherzuweisung bereitgestellt. Der für ein rein lokales Volume reservierte Speicher wird in seiner Gesamtheit bereitgestellt, wenn das Volume erstellt wird.
-> 
-> 
+
 
 ### <a name="deduplication-and-compression"></a>Deduplizierung und Komprimierung
 Microsoft Azure StorSimple arbeitet mit Deduplizierung und Datenkomprimierung, um Speicheranforderungen weiter zu verringern.
@@ -203,8 +210,7 @@ Durch Deduplizierung wird die Datenmenge verringert, indem Redundanz im gespeich
 
 > [!NOTE]
 > Daten auf lokalen Volumes werden nicht dedupliziert oder komprimiert. Sicherungen lokaler Volumes werden hingegen dedupliziert und komprimiert.
-> 
-> 
+
 
 ## <a name="storsimple-workload-summary"></a>StorSimple-Workload – Übersicht
 In der folgenden Tabelle finden Sie eine Übersicht über die unterstützten StorSimple-Workloads.

@@ -16,9 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/10/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: d8289128414bc67a7c064c827a9bec047f6f22bc
-ms.openlocfilehash: 1462ee0e247fb5d590a70d23ece5723a065b4140
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
+ms.openlocfilehash: e8838095d621957fe6b4ee50464154617e1c4740
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -68,9 +70,12 @@ Wenn Sie den Basisserver nicht in Azure ausführen möchten, können Sie den Ser
 Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Deduplizierung verwenden. Lesen Sie die weiteren Informationen zur Zusammenarbeit von [DPM und Deduplizierung](https://technet.microsoft.com/library/dn891438.aspx) bei Bereitstellung auf Hyper-V-VMs.
 
 > [!NOTE]
-> Es ist nicht möglich, Azure Backup Server auf einem Computer zu installieren, der als Domänencontroller ausgeführt wird.
->
->
+> Azure Backup Server ist für die Ausführung auf einem dedizierten Server konzipiert, der nur zu einem Zweck verwendet wird. Azure Backup Server kann nicht auf folgenden Computern installiert werden:
+> - Einem Computer, der als Domänencontroller ausgeführt wird
+> - Einem Computer, auf dem die Anwendungsserverrolle installiert ist
+> - Eine Computer, der als System Center Operations Manager-Verwaltungsserver fungiert
+> - Einem Computer, auf dem Exchange Server ausgeführt wird
+> - Einem Computer, der einen Knoten eines Clusters darstellt
 
 Sie müssen Azure Backup Server in eine Domäne einbinden. Wenn Sie den Server in eine andere Domäne verschieben möchten, wird empfohlen, den Server vor der Installation von Azure Backup Server in eine neue Domäne einzubinden. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
@@ -275,9 +280,4 @@ In den folgenden Artikeln finden Sie zusätzliche Informationen zum Workloadschu
 * [SQL Server-Sicherung](backup-azure-backup-sql.md)
 * [SharePoint Server-Sicherung](backup-azure-backup-sharepoint.md)
 * [Sicherung eines anderen Servers](backup-azure-alternate-dpm-server.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

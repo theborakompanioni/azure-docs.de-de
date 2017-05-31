@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 04/20/2017
 ms.author: markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 34146bd110661c12c4ec1e11d34d7bdfa3cac688
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
+ms.openlocfilehash: faa3c9d5de759e4d8c0589153ea93e83a580f983
+ms.contentlocale: de-de
+ms.lasthandoff: 05/16/2017
 
 
 ---
@@ -94,6 +95,7 @@ Um dieses Problem zu beheben und eine sichere Verbindung zu erstellen, laden Sie
   ![Dialogfeld „Zertifikat“ mit Fehler ](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
   Der ausgewählte Zertifikatspeicher wird im **Zertifikatimport-Assistenten** angezeigt. Klicken Sie auf **Weiter**.
+
 
   ![Dialogfeld „Zertifikat“ mit Fehler ](./media/backup-azure-backup-server-vmware/certificate-import-wizard2.png)
 
@@ -260,7 +262,7 @@ Installieren Sie [Update 1 für Microsoft Azure Backup Server](https://support.m
 
 ## <a name="add-the-vcenter-server-to-azure-backup-server"></a>Hinzufügen des vCenter-Servers zu Azure Backup Server
 
-So öffnen Sie den Assistenten zum Hinzufügen von Produktionsservern
+So öffnen Sie den Assistenten zum Hinzufügen von Produktionsservern:
 
 1. Klicken Sie in der Azure Backup Server-Konsole auf **Verwaltung**, dann auf **Produktionsserver** und anschließend auf **Hinzufügen**.
 
