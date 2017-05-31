@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2017
 ms.author: joflore
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: f318499ac18a9d03bb108675de199481ab52fd1c
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0c586692720512d2822e67994e22e1f6d50fd921
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -28,20 +28,43 @@ Dieser Artikel beschreibt die Kennwortrichtlinien und Komplexitätsanforderungen
 
 ## <a name="administrator-password-policy-differences"></a>Unterschiede zu Richtlinien für Administratorkennwörter
 
-Microsoft erzwingt eine starke Standardrichtlinie für das Kennwortzurücksetzen für Azure-Administratorrollen (Beispiel: globaler Administrator, Helpdeskadministrator, Kennwortadministrator usw.).
+Microsoft erzwingt eine starke Standardrichtlinie mit **zweistufiger Überprüfung** für die Kennwortzurücksetzung für Azure-Administratorrollen (Beispiel: globaler Administrator, Helpdeskadministrator, Kennwortadministrator usw.).
 
 Damit wird verhindert, dass Administratoren Sicherheitsfragen verwenden, und Folgendes erzwungen.
 
-Die Richtlinie für die einstufige Überprüfung erfordert die Angabe eines Elements der Authentifizierungsdaten. Sie gilt in folgenden Situationen:
+Die Richtlinie für die zweistufige Überprüfung erfordert die Angabe von zwei Elementen der Authentifizierungsdaten (E-Mail-Adresse **und** Telefonnummer). Sie gilt in folgenden Situationen:
+
+* Alle Azure-Administratorrollen
+  * Helpdeskadministrator
+  * Dienstunterstützungsadministrator
+  * Abrechnungsadministrator
+  * Partnersupport der Ebene 1
+  * Partnersupport der Ebene 2
+  * Exchange-Dienstadministrator
+  * Lync-Dienstadministrator
+  * Benutzerkontoadministrator
+  * Verzeichnis schreiben
+  * Globaler Administrator/Unternehmensadministrator
+  * SharePoint-Dienstadministrator
+  * Complianceadministrator
+  * Anwendungsadministrator
+  * Sicherheitsadministrator
+  * Administrator für privilegierte Rollen
+  * Intune-Dienstadministrator
+  * Dienstadministrator des Anwendungsproxys
+  * CRM-Dienstadministrator
+  * Power BI-Dienstadministrator
+  
+* Die 30 Tage einer Testversion sind abgelaufen, **ODER**
+* Es ist eine benutzerdefinierte Domäne (contoso.com) vorhanden, **ODER**
+* Azure AD Connect synchronisiert Identitäten aus Ihrem lokalen Verzeichnis.
+
+### <a name="exceptions"></a>Ausnahmen
+Die Richtlinie für die einstufige Überprüfung erfordert die Angabe von einem Element der Authentifizierungsdaten (E-Mail-Adresse **oder** Telefonnummer). Sie gilt in folgenden Situationen:
 
 * Erste 30 Tage einer Testversion **ODER**
 * Es ist keine benutzerdefinierte Domäne (*.onmicrosoft.com) vorhanden, **UND** Azure AD Connect synchronisiert keine Identitäten.
 
-Die Richtlinie für die zweistufige Überprüfung erfordert die Angabe von zwei Elementen der Authentifizierungsdaten. Sie gilt in folgenden Situationen:
-
-* Die 30 Tage einer Testversion sind abgelaufen, **ODER**
-* Es ist eine benutzerdefinierte Domäne (contoso.com) vorhanden, **ODER**
-* Azure AD Connect synchronisiert Identitäten aus Ihrem lokalen Verzeichnis.
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName-Richtlinien, die für alle Benutzerkonten gelten
 
@@ -107,7 +130,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD
+Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
 * [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
@@ -118,3 +141,4 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
 * [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
+

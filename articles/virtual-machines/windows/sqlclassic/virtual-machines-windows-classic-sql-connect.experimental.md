@@ -18,7 +18,7 @@ experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.translationtype: Human Translation
 ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 4218b6d274abbeda542c1507aec998ba56f5c145
+ms.openlocfilehash: 67b328cb754e49fe1dea9d57f74dd31793acd93c
 ms.contentlocale: de-de
 ms.lasthandoff: 05/12/2017
 
@@ -50,7 +50,7 @@ Die Weise, wie ein Client Verbindungen mit SQL Server auf einem virtuellen Compu
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Verbinden mit SQL Server im selben Clouddienst
-Im gleichen Clouddienst können mehrere virtuelle Computer erstellt werden. Das Konzept dieses Szenarios mit virtuellen Computern ist unter [Verbinden virtueller Computer mit einem virtuellen Netzwerk oder Clouddienst](../classic/connect-vms.md#connect-vms-in-a-standalone-cloud-service)erläutert. Dieses Szenario bedeutet, dass ein Client auf einem virtuellen Computer versucht, eine Verbindung mit SQL Server auf einem anderen virtuellen Computer im selben Clouddienst herzustellen.
+Im gleichen Clouddienst können mehrere virtuelle Computer erstellt werden. Das Konzept dieses Szenarios mit virtuellen Computern ist unter [Verbinden virtueller Computer mit einem virtuellen Netzwerk oder Clouddienst](../classic/connect-vms.md#connect-vms-in-a-standalone-cloud-service)erläutert. In diesem Szenario versucht ein Client auf einem virtuellen Computer, eine Verbindung mit SQL Server auf einem anderen virtuellen Computer im selben Clouddienst herzustellen.
 
 In diesem Szenario können Sie die Verbindung mit dem virtuellen Computer **Name** (im Portal auch als **Computername** oder **Hostname** dargestellt) herstellen. Dies ist der Name, den Sie für den virtuellen Computer während der Erstellung angegeben haben. Beispiel: Wenn Sie dem virtuellen SQL-Computer den Namen **mysqlvm**gegeben haben, könnte ein virtueller Clientcomputer im selben Clouddienst mit der folgenden Verbindungszeichenfolge eine Verbindung herstellen:
 
@@ -65,26 +65,26 @@ Beispiel: Ein klassischer virtueller Computer mit dem Namen **mysqlvm** mit eine
 
     "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-Zwar wird so die Konnektivität für Clients über das Internet ermöglicht, dies bedeutet jedoch nicht, dass jeder Verbindungen mit ihrem SQL Server herstellen kann. Clients von außerhalb benötigen den richtigen Benutzernamen und das entsprechende Kennwort. Zur weiteren Erhöhung der Sicherheit können Sie einen anderen als den bekannten Port 1433 für den öffentlichen Endpunkt des virtuellen Computers verwenden. Nach Möglichkeit sollten Sie dem Endpunkt auch eine ACL hinzufügen, um den Datenverkehr auf die von Ihnen zugelassenen Clients einzuschränken. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)
+Zwar wird durch diese Verbindungszeichenfolge die Konnektivität für Clients über das Internet ermöglicht, dies bedeutet jedoch nicht, dass jeder Verbindungen mit Ihrer SQL Server-Instanz herstellen kann. Clients von außerhalb benötigen den richtigen Benutzernamen und das entsprechende Kennwort. Zur weiteren Erhöhung der Sicherheit können Sie einen anderen als den bekannten Port 1433 für den öffentlichen Endpunkt des virtuellen Computers verwenden. Nach Möglichkeit sollten Sie dem Endpunkt auch eine ACL hinzufügen, um den Datenverkehr auf die von Ihnen zugelassenen Clients einzuschränken. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)
 
 > [!NOTE]
-> Sie müssen beachten, dass beim Einsatz dieser Technik für die Kommunikation mit SQL Server für alle ausgehenden Daten aus dem Azure-Rechenzentrum normale [Preise für ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/)gelten.
+> Beim Einsatz dieser Technik für die Kommunikation mit SQL Server gelten für alle ausgehenden Daten aus dem Azure-Rechenzentrum normale [Preise für ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/).
 > 
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-virtual-network"></a>Verbinden mit SQL Server innerhalb des gleichen virtuellen Netzwerks
 [Virtuelles Netzwerk](../../../virtual-network/virtual-networks-overview.md) gibt die Möglichkeit zu weiteren Szenarien. Sie können Verbindungen mit VMs innerhalb des gleichen virtuellen Netzwerks herstellen, selbst wenn diese VMs in verschiedenen Clouddiensten ausgeführt werden. Mithilfe eines [Site-to-Site-VPN](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)können Sie eine hybride Architektur erstellen, die VMs mit lokalen Netzwerken und Computern verbindet.
 
-Virtuelle Netzwerke ermöglichen auch das Einbinden Ihrer Azure-VMs in eine Domäne. Dies ist die einzige Möglichkeit, wie Sie Windows-Authentifizierung mit SQL Server verwenden können. Für alle anderen Verbindungsszenarien muss SQL-Authentifizierung mit Benutzernamen und Kennwörtern verwendet werden.
+Virtuelle Netzwerke ermöglichen auch das Einbinden Ihrer Azure-VMs in eine Domäne. Der Beitritt zu einer Domäne ist die einzige Möglichkeit, wie Sie die Windows-Authentifizierung mit SQL Server verwenden können. Für alle anderen Verbindungsszenarien muss SQL-Authentifizierung mit Benutzernamen und Kennwörtern verwendet werden.
 
-Wenn Sie eine Domänenumgebung mit Windows-Authentifizierung konfigurieren möchten, müssen Sie die Schritte in diesem Artikel zum Konfigurieren des öffentlichen Endpunkts oder der SQL-Authentifizierung und der entsprechenden Anmeldeinformationen nicht ausführen. In diesem Szenario können Sie eine Verbindung mit Ihrer SQL Server-Instanz herstellen, indem Sie den Namen des virtuellen SQL Server-Computers in der Verbindungszeichenfolge angeben. Im folgenden Beispiel wird angenommen, dass darüber hinaus Windows-Authentifizierung konfiguriert und dem Benutzer Zugriff auf die SQL Server-Instanz erteilt wurde.
+Wenn Sie eine Domänenumgebung mit Windows-Authentifizierung konfigurieren möchten, müssen Sie den öffentlichen Endpunkt oder die SQL-Authentifizierung und die entsprechenden Anmeldeinformationen nicht konfigurieren. In diesem Szenario können Sie eine Verbindung mit Ihrer SQL Server-Instanz herstellen, indem Sie den Namen des virtuellen SQL Server-Computers in der Verbindungszeichenfolge angeben. Im folgenden Beispiel wird angenommen, dass die Windows-Authentifizierung konfiguriert und dem Benutzer Zugriff auf die SQL Server-Instanz erteilt wurde.
 
     "Server=mysqlvm;Integrated Security=true"
 
 ## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Schritte zum Konfigurieren von SQL Server-Konnektivität in einer Azure-VM
 Die folgenden Schritte veranschaulichen, wie Sie mithilfe von SQL Server Management Studio (SSMS) über das Internet eine Verbindung mit der SQL Server-Instanz herstellen. Mit den gleichen Schritten ermöglichen Sie jedoch auch den Zugriff der lokal und in Azure ausgeführten Anwendungen auf den virtuellen SQL Server-Computer.
 
-Bevor Sie eine Verbindung mit der Instanz von SQL Server über einen anderen virtuellen Computer oder über das Internet herstellen können, müssen Sie folgende Aufgaben abschließen, die in den nächsten Abschnitten beschrieben werden:
+Bevor Sie eine Verbindung mit der SQL Server-Instanz über einen anderen virtuellen Computer oder über das Internet herstellen können, müssen Sie folgende Aufgaben abschließen:
 
 * [Erstellen eines TCP-Endpunkts für den virtuellen Computer](#create-a-tcp-endpoint-for-the-virtual-machine)
 * [Öffnen der TCP-Ports in der Windows-Firewall](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
@@ -107,7 +107,7 @@ Der Verbindungspfad wird von folgendem Diagramm zusammengefasst:
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie außerdem AlwaysOn-Verfügbarkeitsgruppen zum Erzielen von hoher Verfügbarkeit und Notfallwiederherstellung einsetzen möchten, sollten Sie die Implementierung eines Listeners in Erwägung ziehen. Datenbankclients stellen dann Verbindungen mit dem Listener anstelle direkter Verbindungen mit den SQL Server-Instanzen her. Der Listener leitet Clients auf das primäre Replikat in der Verfügbarkeitsgruppe um. Weitere Informationen finden Sie unter [Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure](../classic/ps-sql-int-listener.md).
 
-Es ist wichtig, alle bewährten Sicherheitsmethoden für SQL Server bei der Ausführung auf virtuellen Azure-Computern durchzuarbeiten. Weitere Informationen finden Sie unter [Sicherheitsüberlegungen für SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-security.md).
+Es ist wichtig, alle Best Practices für Sicherheit bei SQL Server bei der Ausführung auf virtuellen Azure-Computern durchzuarbeiten. Weitere Informationen finden Sie unter [Sicherheitsüberlegungen für SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-security.md).
 
 [Sehen Sie sich den Lernpfad](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) für SQL Server auf virtuellen Azure-Computern an. 
 

@@ -13,19 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 05/10/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a6549999003d4b1c8e2b8a8e2a2fafef942bce43
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: e940a5653d81852c6440829010ec86bcadeadca7
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
 
 # <a name="migrate-from-amazon-web-services-aws-to-azure-managed-disks"></a>Migrieren von Amazon Web Services (AWS) zu Azure Managed Disks
 
-Sie können eine Amazon Web Services-EC2-Instanz (AWS) zu Azure migrieren, indem Sie die VHD hochladen. Wenn Sie mehrere virtuelle Computer aus dem gleichen Image in Azure erstellen möchten, müssen Sie den virtuellen Computer zuerst generalisieren und dann die generalisierte VHD in ein lokales Verzeichnis exportieren. Sobald die VHD hochgeladen wurde, können Sie einen neuen virtuellen Azure-Computer erstellen, der [Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zum Speichern verwendet. Dank Azure Managed Disks ist es nicht mehr erforderlich, Speicherkonten für Azure-IaaS-VMs zu verwalten. Sie müssen nur den Typ (Premium oder Standard) und die benötigte Größe des Datenträgers angeben, der anschließend von Azure erstellt und verwaltet wird. 
+Sie können eine Amazon Web Services-EC2-Instanz (AWS) zu Azure migrieren, indem Sie die virtuelle Festplatte (VHD) hochladen. Wenn Sie mehrere virtuelle Computer aus dem gleichen Image in Azure erstellen möchten, müssen Sie den virtuellen Computer zuerst generalisieren und dann die generalisierte VHD in ein lokales Verzeichnis exportieren. Sobald die VHD hochgeladen wurde, können Sie einen neuen virtuellen Azure-Computer erstellen, der [Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zum Speichern verwendet. Dank Azure Managed Disks ist es nicht mehr erforderlich, Speicherkonten für Azure-IaaS-VMs zu verwalten. Sie müssen lediglich die Art (Premium oder Standard) und die benötigte Größe des Datenträgers angeben, und Azure erstellt und verwaltet ihn für Sie. 
 
 Bevor Sie den Vorgang starten, lesen Sie die Informationen in diesem Artikel: [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
@@ -40,7 +41,7 @@ Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalisieren des virtuellen Windows-Computers mithilfe von Sysprep
+## <a name="generalize-the-vm"></a>Generalisieren des virtuellen Computers
 
 Beim Generalisieren eines virtuellen Computers mithilfe von Sysprep werden alle computerspezifischen und persönlichen Informationen von der VHD entfernt, und der Computer wird auf die Verwendung als Image vorbereitet. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx)(in englischer Sprache).
 
@@ -62,7 +63,7 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 
 
 
-## <a name="export-the-vhd-from-an-ec2-instance"></a>Exportieren der VHD aus einer EC2-Instanz
+## <a name="export-the-vhd-from-aws"></a>Exportieren der VHD aus AWS
 
 1.    Bei Verwendung von Amazon Web Services (AWS) exportieren Sie die EC2-Instanz in eine VHD in einem Amazon S3-Bucket. Befolgen Sie die in der Amazon-Dokumentation unter „Exporting Amazon EC2 Instances (Exportieren von Amazon EC2-Instanzen)“ beschriebenen Schritte, um die Amazon EC2-CLI (Befehlszeilenschnittstelle) zu installieren, und führen Sie den Befehl „create-instance-export-task“ zum Exportieren der EC2-Instanz in eine VHD-Datei aus. Verwenden Sie für die Variable „DISK_IMAGE_FORMAT“ unbedingt „VHD“, wenn Sie den Befehl „create-instance-export-task“ ausführen. Die exportierte VHD-Datei wird im Amazon S3-Bucket gespeichert, der während dieses Prozesses angegeben wurde.
 
@@ -75,7 +76,12 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 
 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="upload-the-vhd"></a>Hochladen der VHD
+
+Sie müssen sich bei Azure anmelden, ein Speicherkonto erstellen und die VHD in das Speicherkonto hochladen, bevor Sie das Image erstellen können. 
+
+### <a name="log-in-to-azure"></a>Anmelden an Azure
+
 Wenn Sie PowerShell noch nicht installiert haben, finden Sie entsprechende Informationen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 1. Öffnen Sie Azure PowerShell, und melden Sie sich bei Ihrem Azure-Konto an. Ein Popupfenster wird geöffnet, in das Sie die Anmeldeinformationen für Ihr Azure-Konto eingeben können.
@@ -94,7 +100,7 @@ Wenn Sie PowerShell noch nicht installiert haben, finden Sie entsprechende Infor
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="get-the-storage-account"></a>Abrufen des Speicherkontos
+### <a name="get-the-storage-account"></a>Abrufen des Speicherkontos
 Sie benötigen ein Speicherkonto in Azure, in dem das hochgeladene VM-Image gespeichert wird. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. 
 
 Wenn Sie die VHD zum Erstellen eines verwalteten Datenträgers für einen virtuellen Computer verwenden, muss der Standort des Speicherkontos dem Standort entsprechen, an dem Sie den virtuellen Computer erstellen.
@@ -136,9 +142,9 @@ Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
    * **Standard_RAGRS:** georedundanter Speicher mit Lesezugriff 
    * **Premium_LRS:** lokal redundanter Premium-Speicher 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>Hochladen der VHD in Ihr Speicherkonto
+### <a name="upload-the-vhd"></a>Hochladen der VHD 
 
-Verwenden Sie das Cmdlet [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd), um die VHD in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei **myVHD.vhd** aus `"C:\Users\Public\Documents\Virtual hard disks\"` in das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** hochgeladen. Die Datei wird im Container **mycontainer** abgelegt. Der neue Dateiname lautet **myUploadedVHD.vhd**.
+Verwenden Sie das Cmdlet [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd), um die VHD in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei **myVHD.vhd** aus `"C:\Users\Public\Documents\Virtual hard disks\"` in das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** hochgeladen. Die Datei wird im Container **mycontainer** gespeichert. Der neue Dateiname lautet **myUploadedVHD.vhd**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -178,9 +184,9 @@ Sie können eine VHD zudem mit den folgenden Tools in ein Speicherkonto hochlade
 
     Wir empfehlen das Verwenden des Import/Export-Diensts, wenn die geschätzte Hochladedauer sieben Tage überschreitet. Sie können mithilfe von [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) die Dauer anhand der Datengröße und Übertragungseinheit schätzen. 
 
-    Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Sie benötigen ein Tool wie AzCopy zum Kopieren zwischen Standardspeicherkonto und Premium-Speicherkonto.
+    Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Für die Verwendung von Storage Premium benötigen Sie ein Tool wie AzCopy zum Kopieren zwischen dem Storage Standard- und dem Storage Premium-Konto.
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Erstellen eines verwalteten Images anhand der hochgeladenen VHD 
+## <a name="create-an-image"></a>Erstellen eines Images 
 
 Erstellen Sie ein verwaltetes Image mithilfe Ihrer generalisierten Betriebssystem-VHD.
 
@@ -203,7 +209,7 @@ Erstellen Sie ein verwaltetes Image mithilfe Ihrer generalisierten Betriebssyste
     $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ```
 
-## <a name="setup-some-variables-for-the-image"></a>Erstellen einiger Variablen für das Image
+## <a name="create-vm-from-image"></a>Erstellen einer VM aus einem Image
 
 Zunächst müssen wir grundlegende Informationen zum Image erfassen und eine Variable für das Image erstellen. In diesem Beispiel wird ein verwaltetes VM-Image mit dem Namen **myImage** verwendet, das sich in der Ressourcengruppe **myResourceGroup** in der Region **USA, Westen-Mitte** befindet. 
 
@@ -214,7 +220,7 @@ $imageName = "myImage"
 $image = Get-AzureRMImage -ImageName $imageName -ResourceGroupName $rgName
 ```
 
-## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 Erstellen Sie das VNet und das Subnetz des [virtuellen Netzwerks](../../virtual-network/virtual-networks-overview.md).
 
 1. Erstellen Sie das Subnetz. Mit diesem Beispielbefehl wird ein Subnetz namens **mySubnet** mit dem Adresspräfix **10.0.0.0/24** erstellt.  
@@ -231,7 +237,7 @@ Erstellen Sie das VNet und das Subnetz des [virtuellen Netzwerks](../../virtual-
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
 
-## <a name="create-a-public-ip-address-and-network-interface"></a>Erstellen einer öffentlichen IP-Adresse und einer Netzwerkschnittstelle
+### <a name="create-a-public-ip-and-nic"></a>Erstellen einer öffentlichen IP-Adresse und NIC
 
 Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
 
@@ -250,7 +256,7 @@ Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/virtual-netw
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>Erstellen einer Netzwerksicherheitsgruppe und einer RDP-Regel
+### <a name="create-nsg"></a>NSG erstellen
 
 Damit Sie sich über RDP bei Ihrem virtuellen Computer anmelden können, benötigen Sie eine Netzwerksicherheitsregel (Network Security Rule, NSG), die RDP-Zugriff auf Port 3389 zulässt. 
 
@@ -269,7 +275,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-## <a name="create-a-variable-for-the-virtual-network"></a>Erstellen einer Variablen für das virtuelle Netzwerk
+### <a name="create-network-variables"></a>Erstellen von Netzwerkvariablen
 
 Erstellen einer Variablen für das abgeschlossene virtuelle Netzwerk 
 
@@ -278,7 +284,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ```
 
-## <a name="get-the-credentials-for-the-vm"></a>Abrufen der Anmeldeinformationen für die VM
+### <a name="get-the-credentials"></a>Abrufen der Anmeldeinformationen 
 
 Mit dem folgenden Cmdlet wird ein Fenster geöffnet, in dem Sie einen neuen Benutzernamen und ein Kennwort als lokales Administratorkonto für den Remotezugriff auf die VM eingeben. 
 
@@ -286,7 +292,7 @@ Mit dem folgenden Cmdlet wird ein Fenster geöffnet, in dem Sie einen neuen Benu
 $cred = Get-Credential
 ```
 
-## <a name="set-variables-for-the-vm-name-computer-name-and-the-size-of-the-vm"></a>Festlegen von Variablen für den VM-Namen, Computernamen und die VM-Größe
+### <a name="set-vm-variables"></a>Festlegen von VM-Variablen 
 
 1. Erstellen Sie Variablen für den VM- und Computernamen. In diesem Beispiel wird der VM-Name als **myVM** und der Name des Computers als **myComputer** festgelegt.
 
@@ -306,7 +312,7 @@ $cred = Get-Credential
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 ```
 
-## <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>Festlegen des VM-Images als Quellimage für die neue VM
+### <a name="set-the-vm-image"></a>Festlegen des VM-Images 
 
 Legen Sie das Quellimage mithilfe der ID des verwalteten VM-Images fest.
 
@@ -314,7 +320,7 @@ Legen Sie das Quellimage mithilfe der ID des verwalteten VM-Images fest.
 $vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
 ```
 
-## <a name="set-the-os-configuration-and-add-the-nic"></a>Legen Sie die Betriebssystemkonfiguration fest, und fügen Sie die Netzwerkkarte hinzu.
+### <a name="set-the-os-configuration"></a>Festlegen der Betriebssystemkonfiguration 
 
 Geben Sie den Speichertyp (PremiumLRS oder StandardLRS) und die Größe des Betriebssystem-Datenträgers ein. Bei diesem Beispiel wird der Kontotyp auf **PremiumLRS**, die Datenträgergröße auf **128GB** und das Datenträgercaching auf **ReadWrite** festgelegt.
 
@@ -328,7 +334,7 @@ $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName 
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 ```
 
-## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
+### <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
 Erstellen Sie die neue VM mithilfe der Konfiguration, die Sie erstellt und in der Variablen **$vm** gespeichert haben.
 
@@ -336,7 +342,7 @@ Erstellen Sie die neue VM mithilfe der Konfiguration, die Sie erstellt und in de
 New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>Stellen Sie sicher, dass der virtuelle Computer erstellt wurde
+## <a name="verify-the-vm"></a>Überprüfen des virtuellen Computers
 Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen anzeigen:
 
 ```powershell

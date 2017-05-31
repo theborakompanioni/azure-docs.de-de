@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 05/10/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: f89375510cdcb89d800edc2513f34e601f52efe9
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 20257c872eaa2e7610e525c4686350c206628974
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -94,8 +94,8 @@ Für virtuelle Windows-Computer:
 
 Für virtuelle Linux-Computer:
 
-* Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub.
-* [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , um anzugeben, dass der Agent installiert wurde.
+* Installieren Sie den neuesten Agent aus dem Repository der Distribution. Es wird **dringend empfohlen**, den Agent nur über das Repository der Distribution zu installieren. Ausführliche Informationen zum Paketnamen finden Sie unter [Linux agent repository](https://github.com/Azure/WALinuxAgent) (Repository für Linux-Agent). 
+* Für klassische virtuelle Computer [aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde.
 
 ### <a name="updating-the-vm-agent"></a>Aktualisieren des VM-Agents
 Für virtuelle Windows-Computer:

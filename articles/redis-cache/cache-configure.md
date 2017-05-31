@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 05/02/2017
+ms.date: 05/11/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 031fa71b8f5aac558569eea7001e16df4cae917c
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: fefa78f7e0ba4bd40e6c0985080403237d6eb916
+ms.contentlocale: de-de
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -482,11 +483,7 @@ Weitere Informationen zu Redis-Befehlen finden Sie unter [http://redis.io/comman
 Über die **Redis-Konsole**, die für Caches vom Typ "Standard" und "Premium" zur Verfügung steht, können Sie Befehle sicher auf Ihre Azure Redis Cache-Instanzen anwenden.
 
 > [!IMPORTANT]
-> Die Redis-Konsole kann nicht mit VNET, Clustering und anderen Datenbanken als 0 verwendet werden. 
-> 
-> * [VNET](cache-how-to-premium-vnet.md) : Wenn der Cache Teil eines VNET ist, haben nur Clients im VNET Zugriff auf den Cache. Da die Redis-Konsole den Client "Redis-cli.exe" verwendet, der auf virtuellen Computern gehostet wird, die nicht Teil des VNET sind, kann sie keine Verbindung mit dem Cache herstellen.
-> * [Clustering:](cache-how-to-premium-clustering.md) Die Redis-Konsole verwendet den Client „Redis-cli.exe“, der Clustering derzeit nicht unterstützt. Das Hilfsprogramm „redis-cli“ in der [unstable-Verzweigung](http://redis.io/download) des Redis-Repositorys auf GitHub implementiert grundlegende Unterstützung, wenn es mit der Option `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](http://redis.io/topics/cluster-tutorial) unter [Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) (Ausprobieren des Clusters) auf [http://redis.io](http://redis.io).
-> * Die Redis-Konsole stellt jedes Mal, wenn Sie einen Befehl senden, eine neue Verbindung der Datenbank 0 her. Sie können den Befehl `SELECT` nicht verwenden, um eine andere Datenbank auszuwählen, da die Datenbank bei jedem Befehl auf 0 zurückgesetzt wird. Informationen zum Ausführen von Redis-Befehlen, einschließlich des Wechsels zu einer anderen Datenbank, finden Sie unter [Wie führe ich Redis-Befehle aus?](cache-faq.md#how-can-i-run-redis-commands)
+> Die Redis-Konsole kann nicht mit [VNET](cache-how-to-premium-vnet.md) verwendet werden. Wenn der Cache zu einem virtuellen Netzwerk gehört, haben nur Clients in diesem virtuellen Netzwerk Zugriff auf den Cache. Da die Redis-Konsole in Ihrem lokalen Browser ausgeführt wird, der sich außerhalb des VNET befindet, kann sie keine Verbindung mit Ihrem Cache herstellen.
 > 
 > 
 

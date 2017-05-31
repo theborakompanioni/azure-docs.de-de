@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 9a8073baea9a6ff2ecf443b516665adb10de4815
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: a2307f7055966ec7146b5da0b4daf1ad469abe2b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms-for-linux"></a>Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe für Linux
@@ -32,7 +33,7 @@ Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details
 ## <a name="access-to-the-rdma-network"></a>Zugreifen auf das RDMA-Netzwerk
 Sie können Cluster mit RDMA-fähigen virtuellen Linux-Computern erstellen, auf denen eine der folgenden unterstützten Linux-HPC-Distributionen und eine unterstützte MPI-Implementierung ausgeführt werden, um von den Vorteilen des Azure RDMA-Netzwerks zu profitieren. Bereitstellungsoptionen und Beispielkonfigurationsschritte finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) .
 
-* **Distributionen:** Sie müssen virtuelle Computer auf der Grundlage von RDMA-fähigen SLES-basierten (SUSE Linux Enterprise Server) oder OpenLogic CentOS-basierten HPC-Images aus dem Azure Marketplace bereitstellen. Die folgenden Marketplace-Images unterstützen RDMA-Verbindungen:
+* **Distributionen:** Sie müssen virtuelle Computer auf der Grundlage von RDMA-fähigen SLES-basierten (SUSE Linux Enterprise Server) oder Rogue Wave Software (früher OpenLogic) CentOS-basierten HPC-Images aus dem Azure Marketplace bereitstellen. Die folgenden Marketplace-Images unterstützen RDMA-Verbindungen:
   
     * SLES 12 SP1 für HPC, SLES 12 SP1 für HPC (Premium)
     

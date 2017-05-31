@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
-ms.openlocfilehash: 202134cd03bf776c1d646ae24c09a79e14fdc5d3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -33,14 +35,13 @@ Ferner wird gezeigt, wie Sie zum Debuggen Haltepunkte festlegen.
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Die folgenden Tools müssen installiert werden:
+Die folgenden Tools müssen installiert sein.
 
-* [Visual Studio 2015 Update 2](https://go.microsoft.com/fwlink/?LinkId=691978)
-* Installieren von [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
+* [Neueste Version von Visual Studio](https://www.visualstudio.com/downloads/)
 * [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 
 Um Docker-Container lokal ausführen zu können, benötigen Sie einen lokalen Docker-Client.
-Sie können die veröffentlichte [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) verwenden, wofür Hyper-V deaktiviert werden muss. Sie können auch die [Betaversion von Docker für Windows](https://beta.docker.com) nutzen, die Hyper-V verwendet und Windows 10 erfordert.
+Sie können die [Docker Toolbox](https://www.docker.com/products/docker-toolbox) verwenden, wofür Hyper-V deaktiviert werden muss. Sie können auch [Docker für Windows](https://www.docker.com/get-docker) nutzen, das Hyper-V verwendet und Windows 10 erfordert.
 
 Wenn Sie Docker Toolbox verwenden, müssen Sie [den Docker-Client konfigurieren](vs-azure-tools-docker-setup.md).
 
@@ -115,9 +116,4 @@ Die [Visual Studio 2015 Tools für Docker](https://aka.ms/DockerToolsForVS)biete
 * [Developing .NET apps in containers, Channel 9 (Entwickeln von .NET-Apps in Containern)](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)
 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

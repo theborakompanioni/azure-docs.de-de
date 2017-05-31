@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 6196cb7fa13cf664faa72b7f5f5e0645e4402739
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 0c62f84993c83619cd55f9081450deaf0b21c090
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -112,6 +113,10 @@ Führen Sie diese Schritte aus, um Ihren Cluster auf eine unterstützte Version 
 > Wenn Sie einen Cluster ohne Internetverbindung ausführen, müssen Sie dem Service Fabric-Teamblog entnehmen, ob ein neues Release verfügbar ist. Das System zeigt keine Clusterintegritätswarnung an, um Sie über ein neues Release zu unterrichten.  
 >
 >
+
+#### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatische Bereitstellung im Vergleich zur manuellen Bereitstellung
+Richten Sie Service Fabric-Updatedienst ein, um das automatische Herunterladen und Registrieren für die neueste Codeversion zu aktivieren. Anweisungen finden Sie in der Datei „Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt“ im [eigenständigen Paket](service-fabric-cluster-standalone-package-contents.md).
+Befolgen Sie für die manuelle Vorgehensweise die Anweisungen unten.
 
 Ändern Sie die Clusterkonfiguration, um die folgende Eigenschaft auf „false“ festzulegen, bevor Sie mit dem Konfigurationsupgrade beginnen.
 

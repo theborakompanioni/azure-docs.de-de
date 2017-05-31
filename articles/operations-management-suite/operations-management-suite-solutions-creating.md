@@ -15,10 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e391dc0f88bd7e065f968a490b3c1ddb1fa75978
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 312f84fe2aaf3f63fe2b8d818786ef1c570ccfe1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -51,7 +52,7 @@ Können bestimmte benötigte Daten nicht über eine der verfügbaren Datenquelle
 ### <a name="log-searches"></a>Protokollsuchvorgänge
 [Protokollsuchen](../log-analytics/log-analytics-log-searches.md) dienen dazu, Daten aus dem Log Analytics-Repository zu extrahieren und zu analysieren.  Sie werden von Ansichten und Warnungen verwendet und ermöglichen Benutzern außerdem, Ad-hoc-Analysen von Daten im Repository auszuführen.  
 
-Sie sollten alle Abfragen definieren, die Sie für den Benutzer als hilfreich erachten, auch wenn sie nicht von Ansichten oder Warnungen verwendet werden.  Sie stehen den Benutzern im Portal als gespeicherte Suchvorgänge zur Verfügung, und Sie können sie auch zu einer [Visualisierungskomponente „Liste der Abfragen“](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) in Ihrer benutzerdefinierte Ansicht hinzufügen.
+Sie sollten alle Abfragen definieren, die Sie für den Benutzer als hilfreich erachten, auch wenn sie nicht von Ansichten oder Warnungen verwendet werden.  Sie stehen den Benutzern im Portal als gespeicherte Suchvorgänge zur Verfügung, und Sie können sie auch einer [Visualisierungskomponente „Liste der Abfragen“](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) in Ihrer benutzerdefinierte Ansicht hinzufügen.
 
 ### <a name="alerts"></a>Warnungen
 [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md) identifizieren Probleme über [Protokollsuchvorgänge](#log-searches) in den Daten des Repositorys.  Entweder benachrichtigen sie den Benutzer oder führen automatisch eine Aktion als Antwort aus. Sie sollten verschiedene Warnungsbedingungen für Ihre Anwendung definieren und entsprechende Warnungsregeln zu Ihrer Lösungsdatei hinzufügen.

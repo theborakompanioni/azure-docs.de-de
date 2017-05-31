@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: d716f11818bc0ad6dd9e5f93951b011dd6774c7b
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: b059cfdcf21d8b61589a5edf3bd1832070e564e3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -35,6 +36,12 @@ Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature,
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
+
+## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
+
+Der Anbieter **Microsoft.Insights** muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Um den Provider zu registrieren, wechseln Sie zu **Abonnements**, und wählen Sie das Abonnement aus, für das Sie die Datenflussprotokollierung aktivieren möchten. Wählen Sie auf dem Blatt **Abonnement** die Option **Ressourcenanbieter** aus. Durchsuchen Sie die Liste der Anbieter, und vergewissern Sie sich, dass der Anbieter **microsoft.insights** registriert ist. Klicken Sie andernfalls auf **Registrieren**.
+
+![Anzeigen von Anbietern][providers]
 
 ## <a name="enable-flow-logs"></a>Aktivieren von Flowprotokollen
 
@@ -93,4 +100,4 @@ Erfahren Sie, wie Sie [Ihre NSG-Flowprotokolle mit Power BI visualisieren](netwo
 [4]: ./media/network-watcher-nsg-flow-logging-portal/figure4.png
 [5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
 [6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
-
+[providers]: ./media/network-watcher-nsg-flow-logging-portal/providers.png

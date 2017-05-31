@@ -11,12 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f2640725660f5f5d5da0badafc55afc7079d5d24
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 847bc76c37ed929851712ba1c12463a01032e267
+ms.contentlocale: de-de
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -28,7 +29,7 @@ In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuel
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0:](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](nsg-quickstart.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -38,35 +39,45 @@ Zum Erstellen einer Netzwerksicherheitsgruppe und der zugehörigen Regeln müsse
 azure config mode arm
 ```
 
-Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Beispielparameternamen zählen `myResourceGroup`, `myNetworkSecurityGroup` und `myVnet`.
+Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind etwa *myResourceGroup*, *myNetworkSecurityGroup* oder *myVnet*.
 
-Erstellen Sie die Netzwerksicherheitsgruppe, und geben Sie Ihre eigenen Werte für Namen und Speicherort ein. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens `myNetworkSecurityGroup` im Speicherort `WestUS` erstellt:
+Erstellen Sie die Netzwerksicherheitsgruppe, und geben Sie Ihre eigenen Werte für Namen und Speicherort ein. Im folgenden Beispiel wird die Netzwerksicherheitsgruppe *myNetworkSecurityGroup* am Standort *USA, Osten* erstellt:
 
 ```azurecli
-azure network nsg create --resource-group myResourceGroup --location westus \
+azure network nsg create \
+    --resource-group myResourceGroup \
+    --location eastus \
     --name myNetworkSecurityGroup
 ```
 
-Fügen Sie eine Regel hinzu, um HTTP-Datenverkehr an Ihren Webserver zuzulassen (oder passen Sie die Regel für Ihr eigenes Szenario an, beispielsweise für SSH-Zugriff oder Datenbankverbindungen). Im folgenden Beispiel wird eine Regel namens `myNetworkSecurityGroupRule` erstellt, um TCP-Datenverkehr an Port 80 zuzulassen:
+Fügen Sie eine Regel hinzu, um HTTP-Datenverkehr an Ihren Webserver zuzulassen (oder passen Sie die Regel für Ihr eigenes Szenario an, beispielsweise für SSH-Zugriff oder Datenbankverbindungen). Im folgenden Beispiel wird die Regel *myNetworkSecurityGroupRule* erstellt, um TCP-Datenverkehr an Port 80 zuzulassen:
 
 ```azurecli
-azure network nsg rule create --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-    --protocol tcp --direction inbound --priority 1000 \
-    --destination-port-range 80 --access allow
+azure network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name myNetworkSecurityGroupRule \
+    --protocol tcp \
+    --direction inbound \
+    --priority 1000 \
+    --destination-port-range 80 \
+    --access allow
 ```
 
-Ordnen Sie die Netzwerksicherheitsgruppe der VM-Netzwerkschnittstelle zu. Im folgenden Beispiel wird die vorhandene Netzwerkschnittstelle `myNic` Ihrer Netzwerksicherheitsgruppe `myNetworkSecurityGroup` zugewiesen:
+Ordnen Sie die Netzwerksicherheitsgruppe der VM-Netzwerkschnittstelle zu. Im folgenden Beispiel wird die vorhandene Netzwerkschnittstelle *myNic* Ihrer Netzwerksicherheitsgruppe *myNetworkSecurityGroup* zugewiesen:
 
 ```azurecli
-azure network nic set --resource-group myResourceGroup \
-    --network-security-group-name myNetworkSecurityGroup --name myNic
+azure network nic set \
+    --resource-group myResourceGroup \
+    --network-security-group-name myNetworkSecurityGroup \
+    --name myNic
 ```
 
-Alternativ dazu können Sie Ihre Netzwerksicherheitsgruppe dem Subnetz Ihres virtuellen Netzwerks zuordnen statt der Netzwerkschnittstelle eines einzelnen virtuellen Computers. Im folgenden Beispiel wird das vorhandene Subnetz `mySubnet` im virtuellen Netzwerk `myVnet` Ihrer Netzwerksicherheitsgruppe `myNetworkSecurityGroup` zugewiesen:
+Alternativ dazu können Sie Ihre Netzwerksicherheitsgruppe dem Subnetz Ihres virtuellen Netzwerks zuordnen statt der Netzwerkschnittstelle eines einzelnen virtuellen Computers. Im folgenden Beispiel wird das vorhandene Subnetz *mySubnet* im virtuellen Netzwerk *myVnet* Ihrer Netzwerksicherheitsgruppe *myNetworkSecurityGroup* zugewiesen:
 
 ```azurecli
-azure network vnet subnet set --resource-group myResourceGroup \
+azure network vnet subnet set \
+    --resource-group myResourceGroup \
     --network-security-group-name myNetworkSecurityGroup \
     --vnet-name myVnet --name mySubnet
 ```
