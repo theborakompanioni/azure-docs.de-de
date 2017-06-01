@@ -130,6 +130,8 @@
     items:
     - name: Übersicht über die Erstellung virtueller Computer
       href: creation-choices.md
+    - name: Erstellen eines virtuellen Computers aus einer speziellen VHD
+      href: create-vm-specialized.md
     - name: Erstellen eines virtuellen Computers mit einer Vorlage
       href: ps-template.md
     - name: 'Erstellen eines virtuellen Computers mit C#'
@@ -215,20 +217,6 @@
       href: expand-data-disks.md
     - name: Verwenden von „D“ als Datenträger für Daten
       href: change-drive-letter.md
-    - name: Erstellen von virtuellen Computern mit nicht verwalteten Datenträgern
-      items:
-      - name: Hochladen einer VHD-Datei
-        href: upload-image.md
-      - name: Erstellen eines nicht verwalteten Images
-        href: capture-image.md
-      - name: Erstellen eines nicht verwalteten virtuellen Computers auf der Grundlage einer generalisierten VHD
-        href: create-vm-generalized.md
-      - name: Kopieren eines virtuellen Computers
-        href: vhd-copy.md
-      - name: Erstellen eines virtuellen Computers aus einer speziellen VHD
-        href: create-vm-specialized.md
-      - name: Anfügen eines nicht verwalteten Datenträgers
-        href: attach-disk-portal.md
   - name: VM-Netzwerk
     href: ps-common-network-ref.md
     items:
@@ -341,10 +329,8 @@
       items:
       - name: Migrieren von Amazon Web Services (AWS) zu Azure
         href: aws-to-azure.md
-    - name: Hochladen und Erstellen eines virtuellen Computers auf der Grundlage einer generalisierten VHD
-      href: upload-generalized-managed.md
-    - name: Hochladen und Erstellen eines virtuellen Computers auf der Grundlage einer speziellen VHD
-      href: upload-specialized.md
+      - name: Hochladen und Erstellen eines virtuellen Computers auf der Grundlage einer generalisierten VHD
+        href: upload-generalized-managed.md
     - name: Migrieren von der klassischen Bereitstellung zum Azure Resource Manager
       href: migration-classic-resource-manager-overview.md
       items:

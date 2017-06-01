@@ -64,7 +64,6 @@
 #### [Portal](resource-group-create-service-principal-portal.md)
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
-### [Sicherheitshinweise](best-practices-resource-manager-security.md)
 
 ## Festlegen von Ressourcenrichtlinien
 ### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
