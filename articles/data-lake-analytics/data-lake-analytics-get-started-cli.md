@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 4db7d45678c592749831c6b12d38363134da9e93
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: eeaa5641a4bcea0e8b46e85e40ff5b92113446c1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -35,41 +36,41 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 * **Azure-Befehlszeilenschnittstelle**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
   * Laden Sie für diese Demo die **Vorabversion** [Azure Command-line Tools (CLI) for Data Lake](https://github.com/MicrosoftBigData/AzureDataLake/releases) herunter, und installieren Sie sie.
 * **Authentifizierung**. Verwenden Sie den folgenden Befehl:
-  
+
         azure login
     Weitere Informationen zur Authentifizierung mit einem Geschäfts- oder Schulkonto finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md).
 * **Wechseln Sie in den Azure-Ressourcen-Manager-Modus**, indem Sie den folgenden Befehl ausführen:
-  
+
         azure config mode arm
 
 ## <a name="create-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
 Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Zum Erstellen eines Data Lake Analytics-Kontos müssen Sie Folgendes angeben:
 
 * **Azure-Ressourcengruppe**: Es muss ein Data Lake Analytics-Konto in einer Azure-Ressourcengruppe erstellt werden. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.  
-  
+
     So listen Sie die Ressourcengruppen in Ihrem Abonnement auf:
-  
-        azure group list 
-  
+
+        azure group list
+
     So erstellen Sie eine neue Ressourcengruppe:
-  
+
         azure group create -n "<Resource Group Name>" -l "<Azure Location>"
 * **Name des Data Lake Analytics-Kontos**
 * **Standort**: eines der Azure-Rechenzentren, die Data Lake Analytics unterstützen.
 * **Data Lake-Standardkonto**: Jedes Data Lake Analytics-Konto verfügt über ein Data Lake-Standardkonto.
-  
+
     So listen Sie das vorhandene Data Lake-Konto auf
-  
+
         azure datalake store account list
-  
+
     So erstellen Sie ein neues Data Lake-Konto
-  
+
         azure datalake store account create "<Data Lake Store Account Name>" "<Azure Location>" "<Resource Group Name>"
-  
+
   > [!NOTE]
   > Der Data Lake-Kontoname darf nur Kleinbuchstaben und Zahlen enthalten.
-  > 
-  > 
+  >
+  >
 
 **So erstellen Sie ein Data Lake Analytics-Konto**
 
@@ -82,13 +83,13 @@ Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Zu
 
 > [!NOTE]
 > Der Data Lake Analytics-Kontoname darf nur Kleinbuchstaben und Zahlen enthalten.
-> 
-> 
+>
+>
 
 ## <a name="upload-data-to-data-lake-store"></a>Hochladen von Daten in den Data Lake-Speicher
-In diesem Tutorial verarbeiten Sie einige Suchprotokolle.  Das Suchprotokoll kann entweder in einem Data Lake-Speicher oder einem Azure-BLOB-Speicher gespeichert werden. 
+In diesem Tutorial verarbeiten Sie einige Suchprotokolle.  Das Suchprotokoll kann entweder in einem Data Lake-Speicher oder einem Azure-BLOB-Speicher gespeichert werden.
 
-Das Azure-Portal enthält eine Benutzeroberfläche zum Kopieren einiger Beispieldatendateien in das Data Lake-Standardkonto. Hierzu gehört auch eine Suchprotokolldatei. Weitere Informationen zum Hochladen von Daten in das Data Lake-Standardspeicherkonto finden Sie unter [Vorbereiten von Quelldaten](data-lake-analytics-get-started-portal.md#prepare-source-data).
+Das Azure-Portal enthält eine Benutzeroberfläche zum Kopieren einiger Beispieldatendateien in das Data Lake-Standardkonto. Hierzu gehört auch eine Suchprotokolldatei. Weitere Informationen zum Hochladen von Daten in das Data Lake-Standardspeicherkonto finden Sie unter [Vorbereiten von Quelldaten](data-lake-analytics-get-started-portal.md).
 
 Zum Hochladen von Dateien über die Befehlszeilenschnittstelle verwenden Sie den folgenden Befehl:
 
@@ -103,7 +104,7 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 **So erstellen Sie ein Skript für Data Lake Analytics-Aufträge**
 
 * Erstellen Sie mit dem folgenden U-SQL-Skript eine Textdatei, und speichern Sie die Textdatei auf der Arbeitsstation:
-  
+
         @searchlog =
             EXTRACT UserId          int,
                     Start           DateTime,
@@ -114,27 +115,27 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
                     ClickedUrls     string
             FROM "/Samples/Data/SearchLog.tsv"
             USING Extractors.Tsv();
-  
+
         OUTPUT @searchlog   
             TO "/Output/SearchLog-from-Data-Lake.csv"
         USING Outputters.Csv();
-  
-    Mit diesem U-SQL-Skript wird die Quelldatei mithilfe von **Extractors.Tsv()** gelesen, und anschließend wird eine CSV-Datei mithilfe von **Outputters.Csv()** erstellt. 
-  
+
+    Mit diesem U-SQL-Skript wird die Quelldatei mithilfe von **Extractors.Tsv()** gelesen, und anschließend wird eine CSV-Datei mithilfe von **Outputters.Csv()** erstellt.
+
     Ändern Sie die beiden Pfade nur, wenn Sie die Quelldatei an einen anderen Speicherort kopieren.  Data Lake Analytics erstellt den Ausgabeordner, falls er nicht vorhanden ist.
-  
-    Es ist einfacher, für Dateien, die unter Data Lake-Standardkonten gespeichert sind, relative Pfade zu verwenden. Sie können aber auch absolute Pfade verwenden.  Beispiel: 
-  
+
+    Es ist einfacher, für Dateien, die unter Data Lake-Standardkonten gespeichert sind, relative Pfade zu verwenden. Sie können aber auch absolute Pfade verwenden.  Beispiel:
+
         adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-  
+
     Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkonten zuzugreifen.  Die Syntax für Dateien, die unter dem verknüpften Azure-Speicherkonto gespeichert werden, lautet wie folgt:
-  
+
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-  
+
   > [!NOTE]
   > Azure-BLOB-Container mit öffentlichen Blobs oder Zugriffsberechtigungen für öffentliche Container werden derzeit nicht unterstützt.      
-  > 
-  > 
+  >
+  >
 
 **So übermitteln Sie den Auftrag**
 
@@ -162,5 +163,4 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 * Informationen zum Erlernen von U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 * Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
-
 
