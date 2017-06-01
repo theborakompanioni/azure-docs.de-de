@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 62f674945745eb019c92173798b6eef43337c9f3
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 09ececc567c09ea4e0b77d4d37445b7c232de23c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -188,7 +188,7 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
 
 1. [Erstellen Sie ein Cosmos DB-Konto mit Protokollunterstützung für MongoDB](../documentdb/documentdb-create-mongodb-account.md).
 2. [Erstellen Sie eine Cosmos DB-Sammlung und -Datenbank](../documentdb/documentdb-create-collection.md). Der Name der Sammlung spielt keine Rolle, aber Sie benötigen den Namen der Datenbank, wenn Sie eine Verbindung von „Sails.js“ herstellen.
-3. [Suchen Sie nach den Verbindungsinformationen für Ihre Cosmos DB-Datenbank](../documentdb/documentdb-connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize).
+3. [Suchen Sie nach den Verbindungsinformationen für Ihre Cosmos DB-Datenbank](../cosmos-db/connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize).
 2. Installieren Sie den MongoDB-Adapter über das Befehlszeilenterminal:
 
         npm install sails-mongo --save
@@ -206,7 +206,7 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
         },
 
     > [!NOTE] 
-    > Die Option `ssl: true` ist wichtig, da sie [für Cosmos DB erforderlich ist](../documentdb/documentdb-connect-mongodb-account.md#connection-string-requirements). 
+    > Die Option `ssl: true` ist wichtig, da sie [für Cosmos DB erforderlich ist](../cosmos-db/connect-mongodb-account.md#connection-string-requirements). 
     >
     >
 

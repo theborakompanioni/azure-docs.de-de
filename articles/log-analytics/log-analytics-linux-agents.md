@@ -3,7 +3,7 @@ title: Verbinden von Linux-Computern mit Azure Log Analytics | Microsoft-Dokumen
 description: "Mit Log Analytics können Sie von Linux-Computern generierte Daten sammeln und auf sie reagieren."
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: b01b0d3d61168c1eec52f3fd040b829e0c51a878
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 10da54ebce28dfdcd0f793b1c717e738150b72ae
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -750,7 +751,7 @@ Lesen Sie die folgenden Abschnitte, um mehr über die derzeitigen Einschränkung
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 Möglicherweise sind weitere Schritte für in Azure ausgeführte virtuelle Linux-Computer erforderlich, um Datensammlungen durch Azure Diagnostics und Operations Management Suite zuzulassen. **Version 2.2** der Diagnoseerweiterung für Linux ist für die Kompatibilität mit dem OMS-Agent für Linux erforderlich.
 
-Weitere Informationen zum Installieren und Konfigurieren der Diagnoseerweiterung für Linux finden Sie unter [Use the Azure CLI command to enable Linux Diagnostic Extension (Verwenden des Azure-CLI-Befehls zum Aktivieren der Linux-Diagnoseerweiterung)](../virtual-machines/linux/classic/diagnostic-extension.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension).
+Weitere Informationen zum Installieren und Konfigurieren der Diagnoseerweiterung für Linux finden Sie unter [Use the Azure CLI command to enable Linux Diagnostic Extension (Verwenden des Azure-CLI-Befehls zum Aktivieren der Linux-Diagnoseerweiterung)](../virtual-machines/linux/classic/diagnostic-extension-v2.md#use-the-azure-cli-command-to-enable-the-linux-diagnostic-extension).
 
 **Aktualisieren der Linux-Diagnose-Erweiterung von 2.0 auf 2.2 Azure-Befehlszeilenschnittstelle ASM:**
 

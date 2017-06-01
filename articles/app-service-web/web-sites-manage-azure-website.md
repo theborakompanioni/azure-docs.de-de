@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
-translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 50630084a3df9bc1fed27efb41bc557d0e03916f
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 08a84ace63465e7c058add69a25687fe46c7ea07
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -45,8 +46,8 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com/) , um verschiedene Ko
 
 Zusätzlich zu diesen grundlegenden Konfigurationseinstellungen können Sie Folgendes festlegen:
 
-* **Secure Socket Layer (SSL)** -Verschlüsselung. Um SSL mit einem benutzerdefinierten Domänennamen zu verwenden, müssen Sie ein SSL-Zertifikat anfordern und Ihre Web-App entsprechend konfigurieren. Weitere Informationen finden Sie unter [Aktivieren von HTTPS für eine Web-App in Azure App Service](web-sites-configure-ssl-certificate.md).
-* **Benutzerdefinierte Domänennamen.**  Zu Ihrer Web-App gibt es automatisch eine Unterdomäne unter azurewebsites.net. Sie können einen benutzerdefinierten Domänennamen zuweisen, beispielsweise contoso.com. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](web-sites-custom-domain-name.md).
+* **Secure Socket Layer (SSL)** -Verschlüsselung. Um SSL mit einem benutzerdefinierten Domänennamen zu verwenden, müssen Sie ein SSL-Zertifikat anfordern und Ihre Web-App entsprechend konfigurieren. Weitere Informationen finden Sie unter [Aktivieren von HTTPS für eine Web-App in Azure App Service](app-service-web-tutorial-custom-ssl.md).
+* **Benutzerdefinierte Domänennamen.** Zu Ihrer Web-App gibt es automatisch eine Unterdomäne unter azurewebsites.net. Sie können einen benutzerdefinierten Domänennamen zuweisen, beispielsweise contoso.com. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](app-service-web-tutorial-custom-domain.md).
 
 Sprachspezifische Konfiguration:
 

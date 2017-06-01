@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d6d506eef720488969c5b33fe4b94c02752c6b58
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 6adc34f208c6c4363b73f6e42b4a4d6ae2e4483f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -30,7 +31,7 @@ Wenn Sie eine Livewebsite und deren Domänenname zu App Service migrieren, wird 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits wissen, wie [eine benutzerdefinierte Domäne manuell App Service zugeordnet wird](web-sites-custom-domain-name.md).
+In diesem Artikel wird davon ausgegangen, dass Sie bereits wissen, wie [eine benutzerdefinierte Domäne manuell App Service zugeordnet wird](app-service-web-tutorial-custom-domain.md).
 
 ## <a name="bind-the-domain-name-preemptively"></a>Binden des Domänennamens bereits im Vorfeld
 
@@ -43,7 +44,7 @@ Wenn Sie schließlich den DNS-Eintrag so ändern, dass er auf Ihre App Service-A
 
 Führen Sie die folgenden Schritte aus:
 
-1. Erstellen Sie zunächst einen TXT-Überprüfungseintrag mit Ihrer DNS-Registrierung, wie unter [Erstellen von DNS-Einträgen](web-sites-custom-domain-name.md#createdns) beschrieben.
+1. Erstellen Sie zunächst einen TXT-Überprüfungseintrag mit Ihrer DNS-Registrierung, wie unter [Erstellen von DNS-Einträgen](app-service-web-tutorial-custom-domain.md#create-a) beschrieben.
 Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „&lt;*App-Name*>.azurewebsites.net“ übernommen.
 Die folgende Tabelle enthält einige Beispiele:  
  
@@ -70,16 +71,16 @@ Die folgende Tabelle enthält einige Beispiele:
     </tr>
     </table>
 
-2. Fügen Sie anschließend Ihrer Azure-App den benutzerdefinierten Domänennamen hinzu, wie unter [Aktivieren des benutzerdefinierten Domänennamens für Ihre App](web-sites-custom-domain-name.md#enable) beschrieben.
+2. Fügen Sie anschließend Ihrer Azure-App den benutzerdefinierten Domänennamen hinzu, wie unter [Aktivieren des benutzerdefinierten Domänennamens für Ihre App](app-service-web-tutorial-custom-domain.md#enable-a) beschrieben.
 
     Ihre benutzerdefinierte Domäne ist nun in Ihrer Azure-App aktiviert. Nun müssen Sie nur noch den DNS-Eintrag bei Ihrer Domänenregistrierungsstelle aktualisieren.
 
-3. Aktualisieren Sie abschließend den DNS-Eintrag Ihrer Domäne, sodass dieser auf Ihre Azure-App verweist, wie in [Erstellen von DNS-Einträgen](web-sites-custom-domain-name.md#createdns) beschrieben. 
+3. Aktualisieren Sie abschließend den DNS-Eintrag Ihrer Domäne, sodass dieser auf Ihre Azure-App verweist, wie in [Erstellen von DNS-Einträgen](app-service-web-tutorial-custom-domain.md#create-a) beschrieben. 
 
     Der Benutzerdatenverkehr sollte umgehend nach der DNS-Verteilung an Ihre Azure-App umgeleitet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern, indem Sie [ein SSL-Zertifikat in Azure erwerben](web-sites-purchase-ssl-web-site.md) oder [ein SSL-Zertifikat von einer anderen Stelle verwenden](web-sites-configure-ssl-certificate.md).
+Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern, indem Sie [ein SSL-Zertifikat in Azure erwerben](web-sites-purchase-ssl-web-site.md) oder [ein SSL-Zertifikat von einer anderen Stelle verwenden](app-service-web-tutorial-custom-ssl.md).
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.

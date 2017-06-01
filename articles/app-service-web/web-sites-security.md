@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: eaf3df69428124127ef3daf134bc948cd0988ec6
-ms.openlocfilehash: c1956e97444077f197ab5d0fd67097ddea0f7244
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 3071bf565b14966de2293205026c4524d7b0f0c5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -35,7 +36,7 @@ Da der App Service die Azure-VMs, den Speicher, Netzwerkschnittstellen, Web-Fram
 * Ihre App Service-Apps sowohl vom Internet als auch von den Azure-Ressourcen anderer Kunden isoliert sind.
 * Die Kommunikation der geheimen Schlüssel (z. B. Verbindungszeichenfolgen) zwischen Ihrer App Service-App und anderen Azure-Ressourcen (z. B. SQL-Datenbank) in einer Ressourcengruppe, innerhalb von Azure bleibt und Netzwerkgrenzen nicht überschreitet. Geheime Schlüssel immer verschlüsselt sind.
 * Die gesamte Kommunikation zwischen Ihrer App Service-App und externen Ressourcen, z. B. PowerShell-Verwaltung, Befehlszeilenschnittstelle, Azure-SDKs, REST-APIs und Hybrid-Verbindungen ordnungsgemäß verschlüsselt ist.
-* Das&24;-Stunden-Threat Management schützt die App Service-Ressourcen vor Malware, verteilten Denial-of-Service (DDoS), Man-in-the-Middle (MITM) und anderen Bedrohungen. 
+* Das 24-Stunden-Threat Management schützt die App Service-Ressourcen vor Malware, verteilten Denial-of-Service (DDoS), Man-in-the-Middle (MITM) und anderen Bedrohungen. 
 
 Weitere Informationen zur Infrastruktur und Plattform-Sicherheit in Azure finden Sie unter [Azure Trust Center](/support/trust-center/security/).
 
@@ -56,7 +57,7 @@ Eine der einfachsten Möglichkeiten, mit der Sie Ihre App Service-App auf Sicher
 Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://security-forms.azure.com/penetration-testing/terms) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
 
 ## <a name="https"></a> Sichere Kommunikation mit Kunden
-Wenn Sie den Domänennamen **\*.azurewebsites.net** nutzen, der für Ihre App Service-App erstellt wurde, können Sie HTTPS sofort verwenden, da ein SSL-Zertifikat für alle Domänennamen in **\*.azurewebsites.net** bereitgestellt wird. Wenn Ihre Website einen [kundenspezifischen Domänennamen](web-sites-custom-domain-name.md) verwendet, können Sie ein SSL-Zertifikat hochladen, um für die kundenspezifische Domäne [HTTPS zu aktivieren](web-sites-configure-ssl-certificate.md).
+Wenn Sie den Domänennamen **\*.azurewebsites.net** nutzen, der für Ihre App Service-App erstellt wurde, können Sie HTTPS sofort verwenden, da ein SSL-Zertifikat für alle Domänennamen in **\*.azurewebsites.net** bereitgestellt wird. Wenn Ihre Website einen [kundenspezifischen Domänennamen](app-service-web-tutorial-custom-domain.md) verwendet, können Sie ein SSL-Zertifikat hochladen, um für die kundenspezifische Domäne [HTTPS zu aktivieren](app-service-web-tutorial-custom-ssl.md).
 
 Aktivieren von [HTTPS](https://en.wikipedia.org/wiki/HTTPS) kann gegen MITM-Angriffe auf die Kommunikation zwischen Ihrer Anwendung und deren Benutzern schützen.
 

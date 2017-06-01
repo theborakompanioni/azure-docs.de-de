@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8928581d9636f571008f965185eeb61b414a16e7
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: da9e5f015f93090f4efb00f6c3af07ba2f5503bc
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -138,6 +138,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
  1. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
  2. Klicken Sie auf **Weiter**.
 
+
 5. Melden Sie sich zum Konfigurieren von SSO für Ihre Anwendung mit Administratorrechten beim Atlassian-Portal an.
 
 6. Klicken Sie im linken Navigationsbereich im Authentifizierungsabschnitt auf **Domänen**.
@@ -253,7 +254,7 @@ Melden Sie sich mit Administratorrechten bei Ihrer Atlassian Cloud-Instanz an, u
  
 4. Klicken Sie auf die Schaltfläche **Benutzer erstellen**. Dadurch wird die E-Mail-Einladung an den Benutzer gesendet, und nach der Annahme der Einladung ist der Benutzer im System aktiv. 
 
-### <a name="assig-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Atlassian Cloud gewähren.
 
