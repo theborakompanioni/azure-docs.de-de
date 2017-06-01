@@ -3,8 +3,8 @@ title: "Verwenden von U-SQL-Fensterfunktionen für Azure Data Lake Analytics-Auf
 description: 'Erfahren Sie, wie Sie U-SQL-Fensterfunktionen verwenden. '
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: a5e14b32-d5eb-4f4b-9258-e257359f9988
 ms.service: data-lake-analytics
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data`
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 5137ccfd2c809fe17cc7fdf06941ebd797288d81
-ms.openlocfilehash: 7afbd2de08b5702371ef7dc8676fcd8d75d5e7fd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 55d19a00198f1943a8196d31399c617397b4e5d2
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -25,110 +27,65 @@ Fensterfunktionen wurden 2003 in den ISO/ANSI SQL-Standard eingeführt. U-SQL ü
 
 Fensterfunktionen werden verwendet, um Berechnungen in Gruppen von Zeilen durchzuführen, die *Fenster*genannt werden. Fenster werden von der OVER-Klausel definiert. Fensterfunktionen bieten für verschiedene wichtige Szenarien Lösungen auf überaus effiziente Weise.
 
-In diesem Leitfaden werden zwei Beispieldatasets verwendet, mit deren Hilfe Sie ein Beispielszenario durchlaufen, in dem Sie Fensterfunktionen anwenden können. Weitere Informationen finden Sie in der [U-SQL-Referenz](http://go.microsoft.com/fwlink/p/?LinkId=691348).
-
 Die Fensterfunktionen sind in die folgenden Kategorien unterteilt: 
 
 * [Berichtsaggregationsfunktionen](#reporting-aggregation-functions), z.B. SUM oder AVG
 * [Rangfolgefunktionen](#ranking-functions), z.B. DENSE_RANK, ROW_NUMBER, NTILE und RANK
 * [Analysefunktionen](#analytic-functions), z.B. Summenverteilung oder Perzentile, greifen ohne Verwendung einer Selbstverknüpfung auf Daten in einer vorherigen Zeile (im gleichen Resultset) zu
 
-**Voraussetzungen:**
-
-* Durchlaufen Sie die folgenden beiden Tutorials:
-  
-  * [Erste Schritte mit Azure Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-  * [Erste Schritte mit U-SQL für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-get-started.md).
-* Erstellen Sie ein Data Lake Analytic-Konto gemäß den Anweisungen unter [Erste Schritte mit Azure Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* Erstellen Sie ein Visual Studio-U-SQL-Projekt gemäß den Anweisungen unter [Erste Schritte mit U-SQL für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-get-started.md).
-
 ## <a name="sample-datasets"></a>Beispieldatasets
 In diesem Tutorial werden zwei Datasets verwendet:
 
-* QueryLog 
+### <a name="the-querylog-sample-dataset"></a>Das Beispieldataset „QueryLog“
   
-    „QueryLog“ enthält eine Übersicht, wonach Benutzer in der Suchmaschine gesucht haben. Jedes Abfrageprotokoll enthält Folgendes:
+„QueryLog“ enthält eine Übersicht, wonach Benutzer in der Suchmaschine gesucht haben. Jedes Abfrageprotokoll enthält Folgendes:
   
-    - Query – was der Benutzer suchte.
-    - Latency – Zeit, bis der Benutzer die Antwort erhalten hat, in Millisekunden.
-    - Vertical – welche Art von Inhalt den Benutzer interessierte (Weblinks, Bilder, Videos).
-  
-    Kopieren Sie das folgende Skript, und fügen Sie es in Ihr U-SQL-Projekt ein, um das Rowset „QueryLog“ zu erstellen:
-  
-    ```
-    @querylog = 
-        SELECT * FROM ( VALUES
-            ("Banana"  , 300, "Image" ),
-            ("Cherry"  , 300, "Image" ),
-            ("Durian"  , 500, "Image" ),
-            ("Apple"   , 100, "Web"   ),
-            ("Fig"     , 200, "Web"   ),
-            ("Papaya"  , 200, "Web"   ),
-            ("Avocado" , 300, "Web"   ),
-            ("Cherry"  , 400, "Web"   ),
-            ("Durian"  , 500, "Web"   ) )
-        AS T(Query,Latency,Vertical);
-    ```
+* Query: Die Suche des Benutzers
+* Latency: Zeit, bis der Benutzer die Antwort erhalten hat, in Millisekunden
+* Vertical: Die Art von Inhalt, die den Benutzer interessierte (Weblinks, Bilder, Videos)  
+ 
+```
+@querylog = 
+    SELECT * FROM ( VALUES
+        ("Banana"  , 300, "Image" ),
+        ("Cherry"  , 300, "Image" ),
+        ("Durian"  , 500, "Image" ),
+        ("Apple"   , 100, "Web"   ),
+        ("Fig"     , 200, "Web"   ),
+        ("Papaya"  , 200, "Web"   ),
+        ("Avocado" , 300, "Web"   ),
+        ("Cherry"  , 400, "Web"   ),
+        ("Durian"  , 500, "Web"   ) )
+    AS T(Query,Latency,Vertical);
+```
 
-    In der Praxis sind die Daten normalerweise in einer Datei gespeichert. Auf diese Daten in einer Datei mit Tabstopptrennzeichen wird über den folgenden Code zugegriffen: 
+## <a name="the-employees-sample-dataset"></a>Das Beispieldataset „Employees“
   
-    ```
-    @querylog = 
-    EXTRACT 
-        Query    string, 
-        Latency  int, 
-        Vertical string
-    FROM "/Samples/QueryLog.tsv"
-    USING Extractors.Tsv();
-    ```
-* Employees
+Das Dataset „Employees“ enthält die folgenden Felder:
   
-    Das Dataset „Employees“ enthält die folgenden Felder:
-  
-        - EmpID - Employee ID.
-        - EmpName  Employee name.
-        - DeptName - Department name. 
-        - DeptID - Deparment ID.
-        - Salary - Employee salary.
-  
-    Kopieren Sie das folgende Skript, und fügen Sie es in Ihr U-SQL-Projekt ein, um das Rowset „Employees“ zu erstellen:
-  
-        @employees = 
-            SELECT * FROM ( VALUES
-                (1, "Noah",   "Engineering", 100, 10000),
-                (2, "Sophia", "Engineering", 100, 20000),
-                (3, "Liam",   "Engineering", 100, 30000),
-                (4, "Emma",   "HR",          200, 10000),
-                (5, "Jacob",  "HR",          200, 10000),
-                (6, "Olivia", "HR",          200, 10000),
-                (7, "Mason",  "Executive",   300, 50000),
-                (8, "Ava",    "Marketing",   400, 15000),
-                (9, "Ethan",  "Marketing",   400, 10000) )
-            AS T(EmpID, EmpName, DeptName, DeptID, Salary);
-  
-    Die folgende Anweisung veranschaulicht das Erstellen des Rowsets, indem es aus einer Datendatei extrahiert wird.
-  
-        @employees = 
-        EXTRACT 
-            EmpID    int, 
-            EmpName  string, 
-            DeptName string, 
-            DeptID   int, 
-            Salary   int
-        FROM "/Samples/Employees.tsv"
-        USING Extractors.Tsv();
+* EmpID: Mitarbeiter-ID
+* EmpName: Mitarbeitername
+* DeptName: Abteilungsname 
+* DeptID: Abteilungs-ID
+* Salary: Mitarbeitergehalt
 
-Wenn Sie die Beispiele im Tutorial testen, müssen Sie die Rowsetdefinitionen einschließen. U-SQL erfordert, dass Sie nur die Rowsets definieren, die verwendet werden. Einige Beispiele benötigen nur ein Rowset.
-
-Fügen Sie die folgende Anweisung hinzu, um das Ergebnisrowset in einer Datendatei auszugeben:
-
-    OUTPUT @result TO "/wfresult.csv" 
-        USING Outputters.Csv();
-
- Die meisten Beispiele verwenden die Variable **@result** für die Ergebnisse.
+```
+@employees = 
+    SELECT * FROM ( VALUES
+        (1, "Noah",   "Engineering", 100, 10000),
+        (2, "Sophia", "Engineering", 100, 20000),
+        (3, "Liam",   "Engineering", 100, 30000),
+        (4, "Emma",   "HR",          200, 10000),
+        (5, "Jacob",  "HR",          200, 10000),
+        (6, "Olivia", "HR",          200, 10000),
+        (7, "Mason",  "Executive",   300, 50000),
+        (8, "Ava",    "Marketing",   400, 15000),
+        (9, "Ethan",  "Marketing",   400, 10000) )
+    AS T(EmpID, EmpName, DeptName, DeptID, Salary);
+```  
 
 ## <a name="compare-window-functions-to-grouping"></a>Vergleichen von Fensterfunktionen mit einer Gruppierung
-Fensterfunktionen und Gruppierung sind zwar konzeptionell verwandt, aber auch unterschiedlich. Es empfiehlt sich, diese Beziehung zu verstehen.
+Fensterfunktionen und Gruppierung sind konzeptionell verwandt. Es empfiehlt sich, diese Beziehung zu verstehen.
 
 ### <a name="use-aggregation-and-grouping"></a>Verwenden von Aggregation und Gruppierung
 Die folgende Abfrage verwendet eine Aggregation, um die Summe der Gehälter aller Mitarbeiter zu berechnen:
@@ -138,21 +95,12 @@ Die folgende Abfrage verwendet eine Aggregation, um die Summe der Gehälter alle
             SUM(Salary) AS TotalSalary
         FROM @employees;
 
-> [!NOTE]
-> Anweisungen zum Testen und Überprüfen der Ausgabe finden Sie unter [Erste Schritte mit U-SQL für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-get-started.md).
-> 
-> 
-
 Das Ergebnis ist eine einzelne Zeile mit einer einzelnen Spalte. $165000 ist die Summe der Gehaltswerte in der gesamten Tabelle. 
 
 | TotalSalary |
 | --- |
 | 165000 |
 
-> [!NOTE]
-> Wenn Sie noch nicht mit Fensterfunktionen vertraut sind, ist es hilfreich, die Werte in den Ausgaben zu speichern.  
-> 
-> 
 
 Die folgende Anweisung verwendet die GROUP BY-Klausel, um die gesamten Gehaltskosten für jede Abteilung zu berechnen:
 
@@ -316,8 +264,6 @@ Die Ergebnisse:
 | 8 |Ava |Marketing |400 |15000 |10000 |
 | 9 |Ethan |Marketing |400 |10000 |10000 |
 
-Um das höchste Gehalt jeder Abteilung zu suchen, ersetzen Sie MIN durch MAX, und führen Sie die Abfrage erneut aus.
-
 ## <a name="ranking-functions"></a>Rangfolgefunktionen
 Rangfolgefunktionen geben gemäß der Definition der Klauseln PARTITION BY und OVER für jede Zeile in jeder Partition einen Rangfolgewert (LONG) zurück. Die Reihenfolge der Ränge wird über ORDER BY in der OVER-Klausel gesteuert.
 
@@ -391,7 +337,7 @@ DENSE_RANK entspricht RANK, außer dass nicht zum nächsten ROW_NUMBER-Wert gesp
   * Kombinationen von Werten in der Partitionsspalte und den ORDER BY-Spalten sind eindeutig.
 
 ### <a name="ntile"></a>NTILE
-Mit NTILE werden die Zeilen in einer sortierten Partition auf eine angegebene Anzahl von Gruppen verteilt. Die Gruppen sind beginnend mit&1; nummeriert. 
+Mit NTILE werden die Zeilen in einer sortierten Partition auf eine angegebene Anzahl von Gruppen verteilt. Die Gruppen sind beginnend mit 1 nummeriert. 
 
 Im folgenden Beispiel wird die Menge der Zeilen in jeder Partition (Vertical) in vier Gruppen geteilt, nach Latenz sortiert, und die Gruppennummer für jede Zeile wird zurückgegeben. 
 
@@ -422,12 +368,15 @@ Die Ergebnisse:
 NTILE verwendet den „numgroups“-Parameter. „numgroups“ ist eine positive ganze Zahl (int) oder ein Konstantenausdruck vom Typ „long“, der die Anzahl der Gruppen angibt, in die jede Partition unterteilt werden muss. 
 
 * Wenn die Anzahl der Zeilen in der Partition von „numgroups“ gleichmäßig geteilt werden kann, haben die Gruppen dieselbe Größe. 
-* Wenn die Anzahl der Zeilen in der Partition von „numgroups“ nicht gleichmäßig geteilt werden kann, sind das Ergebnis Gruppen mit zwei Größen, die sich in einem Element unterscheiden. Größere Gruppen stehen in der von der OVER-Klausel angegebenen Reihenfolge vor kleineren Gruppen. 
+* Wenn die Anzahl der Zeilen in einer Partition nicht von „numgroups“ geteilt werden kann, haben die Gruppen eine leicht unterschiedliche Größe. Größere Gruppen stehen in der von der OVER-Klausel angegebenen Reihenfolge vor kleineren Gruppen. 
 
 Beispiel:
 
-* In 4 Gruppen unterteilte 100 Zeilen: [25, 25, 25, 25]
-* In 4 Gruppen unterteilte 102 Zeilen: [26, 26, 25, 25]
+    100 rows divided into 4 groups: 
+    [ 25, 25, 25, 25 ]
+
+    102 rows divided into 4 groups: 
+    [ 26, 26, 25, 25 ]
 
 ### <a name="top-n-records-per-partition-via-rank-denserank-or-rownumber"></a>Top N Datensätze pro Partition über RANK, DENSE_RANK oder ROW_NUMBER
 Viele Benutzer möchten nur die oberste n Zeilen pro Gruppe auswählen. Dies ist mit dem herkömmlichen GROUP BY nicht möglich. 
@@ -549,7 +498,12 @@ Analysefunktionen dienen zum Verstehen der Verteilung von Werten in Fenstern. Da
 * PERCENTILE_DISC
 
 ### <a name="cumedist"></a>CUME_DIST
-CUME_DIST berechnet die relative Position eines angegebenen Werts in einer Gruppe von Werten. Berechnet wird den Prozentsatz der Abfragen mit einer Latenz kleiner gleich der aktuellen Abfragelatenz im selben „Vertical“. CUME_DIST für eine Zeile R ist bei angenommener aufsteigender Reihenfolge die Anzahl von Zeilen mit Werten kleiner gleich dem Wert von R dividiert durch die Anzahl von Zeilen, die im Resultset der Partition ausgewertet werden. CUME_DIST gibt Zahlen im Bereich 0 < x < = 1 zurück.
+
+CUME_DIST berechnet die relative Position eines angegebenen Werts in einer Gruppe von Werten. Berechnet wird den Prozentsatz der Abfragen mit einer Latenz kleiner gleich der aktuellen Abfragelatenz im selben „Vertical“. 
+
+CUME_DIST für eine Zeile R ist bei angenommener aufsteigender Reihenfolge die Anzahl von Zeilen mit Werten kleiner gleich dem Wert von R dividiert durch die Anzahl von Zeilen, die im Resultset der Partition ausgewertet werden. 
+
+CUME_DIST gibt Zahlen im Bereich 0 < x < = 1 zurück.
 
 **Syntax:**
 
@@ -581,7 +535,7 @@ Die Ergebnisse:
 | Papaya |200 |Web |0,5 |
 | Apple |100 |Web |0.166666666666667 |
 
-Es gibt in der Partition sechs Zeilen mit dem Partitionsschlüssel „Web“ (ab der&4;. Zeile nach unten):
+Es gibt in der Partition sechs Zeilen mit dem Partitionsschlüssel „Web“
 
 * Es gibt sechs Zeilen mit einem Wert kleiner gleich 500, sodass der CUME_DIST-Wert 6/6=1 entspricht.
 * Es gibt fünf Zeilen mit einem Wert kleiner gleich 400, sodass der CUME_DIST-Wert 5/6=0,83 entspricht.
@@ -601,7 +555,7 @@ Hinweis: Wenn auf die SELECT-Anweisung nicht OUTPUT folgt, ist die ORDER BY-Klau
 ### <a name="percentrank"></a>PERCENT_RANK
 PERCENT_RANK berechnet den relativen Rang einer Zeile innerhalb einer Gruppe von Zeilen. Mit PERCENT_RANK können Sie den relativen Rang eines Werts innerhalb eines Resultsets oder einer Partition ermitteln. Der von PERCENT_RANK zurückgegebene Wertebereich ist größer als 0 und kleiner gleich 1. Im Gegensatz zu CUME_DIST ist PERCENT_RANK für die erste Zeile immer 0.
 
-** Syntax:**
+**.Syntax:**
 
     PERCENT_RANK() 
         OVER (
@@ -653,9 +607,13 @@ Diese beiden Funktionen berechnen ein Perzentil basierend auf einer kontinuierli
 
 **numeric_literal**: das zu berechnende Perzentil. Der Wert muss im Bereich von 0,0 bis 1,0 liegen.
 
-WITHIN GROUP (ORDER BY <identifier> [ ASC | DESC ]): Gibt eine Liste von numerischen Werten für die Sortierung und Berechnung des Perzentils an. Nur ein Spaltenbezeichner ist zulässig. Der Ausdruck muss in einen numerischen Datentyp ausgewertet werden. Andere Datentypen sind nicht zulässig. Die Standardsortierreihenfolge ist aufsteigend.
+    WITHIN GROUP (ORDER BY <identifier> [ ASC | DESC ])
 
-OVER ([ PARTITION BY <Bezeichner,>…[n] ] ): Teilt das Eingaberowset in Partitionen gemäß dem Partitionsschlüssel auf, für den die Perzentilfunktion gilt. Weitere Informationen finden Sie im Abschnitt RANGFOLGE dieses Dokuments.
+Gibt eine Liste von numerischen Werten für die Sortierung und Berechnung des Perzentils an. Nur ein einziger Spaltenbezeichner ist zulässig. Der Ausdruck muss in einen numerischen Datentyp ausgewertet werden. Andere Datentypen sind nicht zulässig. Die Standardsortierreihenfolge ist aufsteigend.
+
+    OVER ([ PARTITION BY <identifier,>…[n] ] )
+
+Teilt das Eingaberowset in Partitionen gemäß dem Partitionsschlüssel auf, für den die Perzentilfunktion gilt. Weitere Informationen finden Sie im Abschnitt RANGFOLGE dieses Dokuments.
 Hinweis: Alle NULL-Werte im Dataset werden ignoriert.
 
 **PERCENTILE_CONT** berechnet ein Perzentil basierend auf einer kontinuierlichen Verteilung der Spaltenwerte. Das Ergebnis wird interpoliert und entspricht ggf. keinem der spezifischen Werte in der Spalte. 
@@ -695,21 +653,10 @@ Da die Werte für PERCENTILE_CONT interpoliert werden können, ist der Median f�
 
 PERCENTILE_DISC interpoliert keine Werte, weshalb der Median für „Web“ 200 ist und so tatsächlich einem Wert in den Eingabezeilen entspricht.
 
-## <a name="see-also"></a>Siehe auch
-* [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
-* [Erste Schritte mit Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-get-started-powershell.md)
+## <a name="see-also"></a>Weitere Informationen
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Verwenden interaktiver Lernprogramme zu Azure Data Lake Analytics](data-lake-analytics-use-interactive-tutorials.md)
-* [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
 * [Erste Schritte mit Azure Data Lake Analytics-U-SQL-Sprache](data-lake-analytics-u-sql-get-started.md)
-* [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
-* [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-* [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

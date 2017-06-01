@@ -12,28 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2016
+ms.date: 05/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: d15020779b398dbcd055352dbf38822b1bd02b7c
-ms.openlocfilehash: 0f0cf786f91c75f7a514790dccfbfc1f05b67e56
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 36de09434ae5082e5f92dcc9a82bba88f5b89c85
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory 
 
-Das neue Azure-Portal verfügt über verbesserte Tools für die Verwaltung von Unternehmensanwendungen, von denen Sie einige bereits im klassischen Azure-Portal verwendet haben. Es sind auch einige neue Features und Funktionen vorhanden, um die Verwaltung von Apps einfacher und effizienter zu gestalten.
+Azure AD hat die Tools für die Verwaltung von Unternehmensanwendungen verbessert. Mit neuen Features und Funktionen ist die Verwaltung von Apps einfacher und effizient.
 
-Hier sind einige Verbesserungen für Azure AD im Azure-Portal angegeben:
+Hier sind einige Verbesserungen für Azure AD im [Azure-Portal](https://portal.azure.com) angegeben.
 
-- Neue und verbesserte Oberfläche für den Anwendungskatalog mit einem vereinfachten Modell für die Anwendungserstellung und Unterstützung für alle Anwendungstypen, die Sie bereits aus dem klassischen Portal kennen. 
-- Brandneue Schnellstartoberfläche, damit Sie schnell mit einer Pilotversion Ihrer neuen Anwendung starten können. 
-- Möglichkeit zum Konfigurieren von Self-Service-Richtlinien mit wenigen Klicks. 
-- Deutliche Verbesserungen in Bezug auf den Anwendungsproxy, die Konfiguration des einmaligen Anmeldens und „Bring Your Own Application“-Umgebungen, damit Sie in unserem neuen Portal mehr Arbeit in kürzerer Zeit erledigen können. Lesen Sie weiter, um sich über diese interessanten Neuerungen zu informieren!
+- Eine verbesserte Oberfläche für den Anwendungskatalog mit einem vereinfachten Modell für die Anwendungserstellung und Unterstützung für alle Anwendungstypen, die Sie bereits kennen. 
+- Brandneue Schnellstartoberfläche, damit Sie schnell mit einer Pilotversion Ihrer Anwendung starten können 
+- Konfigurieren von Self-Service-Richtlinien mit wenigen Klicks 
+- Verbesserungen in Bezug auf den Anwendungsproxy, die Konfiguration des einmaligen Anmeldens und von „Bring Your Own Application“-Umgebungen, damit Sie mehr Arbeit in kürzerer Zeit erledigen können.
 
-## <a name="the-new-and-improved-application-gallery"></a>Neuer und verbesserter Anwendungskatalog
+## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Verbesserungen im Azure Active Directory-Anwendungskatalog
 
-Es ist jetzt noch einfacher, Ihre Lieblingsanwendungen hinzuzufügen, indem Sie unsere neue optimierte Benutzeroberfläche verwenden. Dabei spielt es keine Rolle, ob die Anwendungen aus unserem umfangreichen Katalog, stammen, ob es benutzerdefinierte Anwendungen sind, die Sie in die Cloud erweitern, oder ob es sich um von Ihnen entwickelte brandneue Anwendungen handelt.  Sie können diese neue Benutzeroberfläche aufrufen, indem Sie in der Übersicht mit den **Unternehmensanwendungen** oder auf den Blättern von **Alle Anwendungen** auf die Schaltfläche **Hinzufügen** klicken.
+Fügen Sie Ihre bevorzugten Anwendungen hinzu, egal ob diese aus dem [Anwendungskatalog](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) stammen, benutzerdefinierte Anwendungen sind, die Sie in die Cloud erweitern, oder neue Anwendungen, die Sie entwickeln.  Sie können diese neue Benutzeroberfläche aufrufen, indem Sie in der Übersicht mit den **Unternehmensanwendungen** oder auf den Blättern von **Alle Anwendungen** auf **Hinzufügen** klicken.
  
   ![Hinzufügen einer Anwendung](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
@@ -148,17 +150,12 @@ Nachdem Sie viele neue Anwendungen hinzugefügt haben, kann es sein, dass Sie es
 
 ##<a name="feedback"></a>Feedback
 
-Wir hoffen, Ihnen gefällt die aktualisierte Vorschauoberfläche. Es wäre schön, wenn Sie uns weiter Feedback senden würden! Feedback und Verbesserungsvorschläge können Sie uns im [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal) über den Abschnitt **Verwaltungsportal** zukommen lassen.  Wir haben großen Spaß daran, jeden Tag neue Dinge zu entwickeln, und Ihr Feedback hilft uns, die nächsten Ziele anzugehen und zu definieren.
+Wir hoffen, Ihnen gefällt die verbesserte Azure AD-Benutzeroberfläche. Es wäre schön, wenn Sie uns weiter Feedback senden würden! Feedback und Verbesserungsvorschläge können Sie uns im [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal) über den Abschnitt **Verwaltungsportal** zukommen lassen.  Wir haben großen Spaß daran, jeden Tag neue Dinge zu entwickeln, und Ihr Feedback hilft uns, die nächsten Ziele anzugehen und zu definieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md).
 
 
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

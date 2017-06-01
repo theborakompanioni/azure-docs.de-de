@@ -1,5 +1,5 @@
 ---
-title: "Veröffentlichen eines Docker-Containers mit dem Azure-Toolkit für Eclipse | Microsoft-Dokumentation"
+title: "Veröffentlichen eines Docker-Containers mithilfe des Azure-Toolkits für Eclipse | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mit dem Azure-Toolkit für Eclipse eine Web-App in Microsoft Azure als Docker-Container veröffentlichen."
 services: 
 documentationcenter: java
@@ -14,140 +14,159 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f738647fa1dad757b53611c7d4abe2dd99fe8838
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 746bb0a073396b84fa8592adda6748a2a5692ee8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
 
-# <a name="how-to-publish-a-web-app-as-a-docker-container-using-the-azure-toolkit-for-eclipse"></a>Informationen zum Veröffentlichen einer Web-App als Docker-Container mit dem Azure-Toolkit für Eclipse
+# <a name="publish-a-web-app-as-a-docker-container-by-using-the-azure-toolkit-for-eclipse"></a>Veröffentlichen einer Web-App als Docker-Container mit dem Azure-Toolkit für Eclipse
 
-Docker-Container sind eine weit verbreitete Methode zur Bereitstellung von Webanwendungen, in denen Entwickler alle Projektdateien und Abhängigkeiten in einem einzelnen Paket für die Bereitstellung auf einem Server konsolidieren können. Das Azure-Toolkit für Eclipse vereinfacht diesen Vorgang für Java-Entwickler durch Hinzufügen des Features *Als Docker-Container veröffentlichen* zur Bereitstellung in Microsoft Azure. In diesem Artikel lernen Sie die Schritte kennen, die zum Veröffentlichen Ihrer Anwendungen in Azure als Docker-Container erforderlich sind.
+Docker-Container sind eine weit verbreitete Methode zum Bereitstellen von Webanwendungen. Mithilfe von Docker-Containern können Entwickler ihre Projektdateien und Abhängigkeiten für die Bereitstellung auf einem Server in einem einzelnen Paket zusammenfassen. Mit dem Azure-Toolkit für Eclipse wird dieser Prozess für Java-Entwickler vereinfacht, indem Features vom Typ *Als Docker-Container veröffentlichen* für die Bereitstellung in Microsoft Azure hinzugefügt werden. In diesem Artikel werden die Schritte beschrieben, die zum Veröffentlichen Ihrer Anwendungen in Azure als Docker-Container erforderlich sind.
 
 > [!NOTE]
->
 > Weitere Informationen zu Docker finden Sie auf der [Docker-Website].
 >
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
-## <a name="publishing-your-web-app-to-azure-using-a-docker-container"></a>Veröffentlichen Ihre Web-App in Azure mithilfe eines Docker-Containers
+## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Veröffentlichen Ihrer Web-App in Azure mithilfe eines Docker-Containers
 
 1. Öffnen Sie Ihr Web-App-Projekt in Eclipse.
 
-1. Verwenden Sie eine der folgenden Methoden zum Starten des Assistenten „Publish as Docker Container“:
+2. Wählen Sie eine der Optionen, um den Assistenten **Publish as Docker Container** (Als Docker-Container veröffentlichen) zu starten:
 
-   * Klicken Sie in der Ansicht **Navigator** mit der rechten Maustaste auf Ihr Projekt. Klicken Sie auf **Azure** und dann auf **Publish as Docker Container**:  ![Publish as Docker Container][PUB01]
+   * Klicken Sie in der Ansicht **Navigator** mit der rechten Maustaste auf Ihr Projekt, und klicken Sie dann auf **Azure** und **Publish as Docker Container** (Als Docker-Container veröffentlichen).
 
-   * Klicken Sie auf der Eclipse-Symbolleiste auf das Menü **Publish**. Klicken Sie dann auf **Publish as Docker Container**:  ![Publish as Docker Container][PUB02]
+      ![Navigator-Ansicht „Publish as Docker Container“ (Als Docker-Container veröffentlichen)][PUB01]
 
-1. Sobald der Assistent **Deploy Docker Container on Azure** angezeigt wird, sehen Sie ein Dialogfeld ähnlich wie in der folgenden Abbildung: ![Deploy Docker Container on Azure Wizard][PUB03]
+   * Klicken Sie auf der Eclipse-Symbolleiste auf die Schaltfläche **Publish** (Veröffentlichen) und anschließend auf **Publish as Docker Container** (Als Docker-Container veröffentlichen).
 
-   a. Geben Sie in das Textfeld **Docker ImageName** einen eindeutigen Namen für den Docker-Host ein. (Der Assistent erstellt automatisch einen Namen für Sie, den Sie aber auf Wunsch ändern können.)
-
-   b. Das Fenster **Hosts** zeigt alle Docker-Hosts, die Sie erstellt haben.
-      * Wenn Sie keine Docker-Hosts erstellt haben, ist dieser Abschnitt des Dialogfelds leer.
-      * Wenn Sie bereits einen Docker-Host erstellt haben, können Sie Ihre Web-App in einem vorhandenen Host bereitstellen. Führen Sie andernfalls die nachstehenden Schritte zum Erstellen eines neuen Docker-Hosts aus.
-
-1. Um einen neuen Docker-Host zu erstellen, klicken Sie auf die Schaltfläche **Add**. Dadurch wird das Dialogfeld **Create Docker Host** geöffnet.
-      ![Assistent „Deploy Docker Container on Azure“][PUB04]
-
-   a. Geben Sie die folgenden Optionen für den Docker-Host an. (Der Assistent generiert die meisten Optionen automatisch für Sie. Doch können nach Wunsch alle Optionen anpassen.)
-
-      * **Name**: Dies ist ein eindeutiger Name für den Docker-Host. (Dieser ist nicht identisch mit dem Namen des Docker-Images, den Sie zuvor angegeben haben.)
-
-      * **Subscription**: Geben Sie das Azure-Abonnement an, das Sie für den Host verwenden möchten.
+      ![Eclipse-Symbolleiste „Publish as Docker Container“ (Als Docker-Container veröffentlichen)][PUB02]
       
-      * **Region**: Geben Sie die geografische Region an, in der sich der Host befindet.
+    Der Assistent **Deploy Docker Container on Azure** (Docker-Container in Azure bereitstellen) wird geöffnet.
+
+    ![Assistent „Deploy Docker Container on Azure“ (Docker-Container in Azure bereitstellen)][PUB03]
+
+3. Gehen Sie im Fenster **Type an image name, select the artifact's path and check a Docker host to be used** (Geben Sie einen Imagenamen ein, wählen Sie den Pfad des Artefakts aus, und aktivieren Sie den gewünschten Docker-Host) wie folgt vor:
+
+    a. Geben Sie im Feld **Docker image name** (Docker-Imagename) einen eindeutigen Namen für Ihren Docker-Host ein. (Der Assistent gibt automatisch einen Namen vor, aber Sie können den Namen ändern.)
+
+    b. Im Bereich **Hosts** werden die Docker-Hosts angezeigt, die Sie bereits erstellt haben. Führen Sie einen der folgenden Schritte aus:
+
+    * Wenn Sie über einen vorhandenen Docker-Host verfügen, können Sie Ihre Web-App darauf bereitstellen.
+    * Um einen neuen Docker-Host zu erstellen, klicken Sie auf **Add** (Hinzufügen).  
       
-      * Auf der Registerkarte **OS and Size**:
-         * **Host OS**: Geben Sie das Betriebssystem des virtuellen Computers an, auf dem sich Ihr Host befinden soll.
-         * **Size**: Geben Sie die Größe des virtuellen Computers für Ihren Host an.
+    Das Dialogfeld **Create Docker Host** (Docker-Host erstellen) wird geöffnet.
 
-      * Auf der Registerkarte **Resource Group**:
-         * **New resource group**: Ermöglicht Ihnen die Erstellung einer neuen Ressourcengruppe für den Host.
-         * **Existing resource group**: Erlaubt das Angeben einer in Ihrem Azure-Konto vorhandenen Ressourcengruppe.
+    ![Assistent „Deploy Docker Container on Azure“ (Docker-Container in Azure bereitstellen)][PUB04a]
 
-      * Auf der Registerkarte **Network**:
-         * **New virtual network**: Ermöglicht Ihnen das Erstellen eines neuen virtuellen Netzwerks für Ihren Host.
-         * **Existing virtual network**: Erlaubt das Angeben eines in Ihrem Azure-Konto vorhandenen virtuellen Netzwerks.
+4. Geben Sie im Fenster **Configure the new virtual machine** (Neuen virtuellen Computer konfigurieren) die folgenden Optionen für Ihren Docker-Host an. (Der Assistent generiert die meisten Optionen für Sie automatisch, aber Sie können sie ändern.)
 
-      * Auf der Registerkarte **Storage**:
-         * **New storage account**: Ermöglicht Ihnen die Erstellung eines neuen Speicherkontos für den Host.
-         * **Existing storage account**: Erlaubt das Angeben eines in Ihrem Azure-Konto vorhandenen Speicherkontos.
+   a. **Name**: Geben Sie einen eindeutigen Name für den Docker-Host ein. (Dieser ist nicht mit dem Namen des Docker-Image identisch, den Sie zuvor angegeben haben.)
 
-   b. Nachdem Sie die oben genannten Optionen angegeben haben, klicken Sie auf **Weiter**.
+   b. **Abonnement**: Geben Sie das Azure-Abonnement ein, das Sie für Ihren Host verwenden.
 
-   c. Wählen Sie eine der folgenden Optionen für die VM-Anmeldung Ihres Docker-Hosts:    ![Docker-Host erstellen][PUB05]
+   c. **Region**: Geben Sie die geografische Region ein, in der sich Ihr Host befindet.
 
-      * **Import credentials from Azure Key Vault**: Ermöglicht Ihnen das Angeben zuvor gespeicherter Anmeldeinformationen, die in Ihrem Azure-Abonnement gespeichert sind.
+   d. Auf der Registerkarte **Host-BS und Größe**:
+     * **Host OS** (Hostbetriebssystem): Geben Sie das Betriebssystem für den virtuellen Computer ein, der Ihren Host enthält.
+     * **Größe**: Geben Sie die Größe des virtuellen Computers für Ihren Host ein.
 
-      > [!NOTE]
-      > Auf einen Azure Key Vault, der in einem bestimmten Konto oder Dienstprinzipal erstellt wird, kann ein anderes Konto oder ein anderer Dienstprinzipal, das bzw. der dasselbe Abonnement nutzt, nicht automatisch zugreifen. Damit ein anderes Konto oder ein anderer Dienstprinzipal den Schlüsseltresor verwenden kann, müssen Sie im Azure-Portal das Konto oder den Dienstprinzipal hinzufügen.
+   e. Auf der Registerkarte **Ressourcengruppe**:
+     * **Neue Ressourcengruppe**: Erstellen Sie eine neue Ressourcengruppe für Ihren Host.
+     * **Vorhandene Ressourcengruppe**: Geben Sie eine vorhandene Ressourcengruppe Ihres Azure-Kontos ein.
 
-      * **New log in credentials**: Ermöglicht Ihnen das Erstellen neuer Anmeldeinformationen, wofür Sie die folgenden Optionen auf der Registerkarte **VM Credentials** angeben müssen:
-         * **Username**: Gibt den Benutzernamen für die Anmeldung bei Ihrer VM an.
-         * **Password** und **Confirm**: Gibt das Kennwort für die Anmeldung bei Ihrer VM an.
-         * **SSH**: Gibt die SSH-Einstellungen (Secure Shell) für den Docker-Host an. Sie können aus den folgenden Optionen wählen:
-            * **None**: Gibt an, dass Ihr virtueller Computer keine SSH-Verbindungen zulässt.
-            * **Auto-generate**: Mithilfe dieser Option werden die erforderlichen Einstellungen zum Herstellen einer Verbindung über SSH automatisch erstellt.
-            * **Import from directory**: Ermöglicht Ihnen das Angeben eines Verzeichnisses, das zuvor gespeicherte SSH-Einstellungen enthält. Genauer gesagt, muss das Verzeichnis die folgenden beiden Dateien enthalten:
-               * *id_rsa*: Diese Datei enthält die RSA-Kennung eines Benutzers.
-               * *id_rsa.pub*: Diese Datei enthält den öffentlichen RSA-Schlüssel, der für die Authentifizierung verwendet werden soll.
+   f. Auf der Registerkarte **Netzwerk**:
+     * **Neues virtuelles Netzwerk**: Erstellen Sie ein neues virtuelles Netzwerk für Ihren Host.
+     * **Existing virtual network** (Vorhandenes virtuelles Netzwerk): Geben Sie ein vorhandenes virtuelles Netzwerk Ihres Azure-Kontos ein.
+
+   g. Auf der Registerkarte **Storage**:
+     * **Neues Speicherkonto**: Erstellen Sie ein neues Speicherkonto für Ihren Host.
+     * **Vorhandenes Speicherkonto**: Geben Sie ein vorhandenes Speicherkonto Ihres Azure-Kontos ein.
+
+5. Klicken Sie auf **Weiter**.
+
+
+6. Wählen Sie im Fenster **Configure log in credentials and port settings** (Anmeldeinformationen und Porteinstellungen konfigurieren) eine der folgenden Optionen aus:
+
+    * **Import credentials from Azure Key Vault** (Anmeldeinformationen aus Azure Key Vault importieren): Gibt zuvor gespeicherte Anmeldeinformationen an, die in Ihrem Azure-Abonnement gespeichert sind.
+
+      >[!NOTE]
+      >Auf einem Azure Key Vault-Tresor, der in einem bestimmten Konto oder Dienstprinzipal erstellt wird, kann kein anderes Konto und kein anderer Dienstprinzipal desselben Abonnements automatisch zugreifen. Damit ein anderes Konto oder ein anderer Dienstprinzipal den Key Vault-Schlüsseltresor verwenden kann, müssen Sie im Azure-Portal das Konto oder den Dienstprinzipal hinzufügen.
+
+    * **New log in credentials** (Neue Anmeldeinformationen): Erstellt neue Anmeldeinformationen. Gehen Sie bei Auswahl dieser Option wie folgt vor:
+    
+      * Wählen Sie auf der Registerkarte **VM-Anmeldeinformationen** eine der folgenden Optionen für die Anmeldung beim virtuellen Computer Ihres Docker-Hosts:
+
+          * **Benutzername**: Geben Sie den Benutzernamen für die Anmeldungsinformationen bei Ihrem virtuellen Computer an.
+          * **Kennwort** und **Bestätigen**: Geben Sie das Kennwort für Ihre VM-Anmeldeinformationen ein.
+          * **SSH**: Geben Sie die SSH-Einstellungen (Secure Shell) für Ihren Docker-Host ein. Sie können zwischen folgenden Optionen wählen:
+            * **Keine**: Gibt an, dass Ihr virtueller Computer keine SSH-Verbindungen zulässt.
+            * **Automatisch generieren**: Mit dieser Option werden die erforderlichen Einstellungen zum Herstellen einer Verbindung über SSH automatisch erstellt.
+            * **Import from directory** (Aus Verzeichnis importieren): Gibt ein Verzeichnis an, das zuvor gespeicherte SSH-Einstellungen enthält. Das Verzeichnis muss die folgenden beiden Dateien enthalten:
+                * *id_rsa*: Enthält die RSA-Kennung eines Benutzers.
+                * *id_rsa.pub*: Enthält den öffentlichen RSA-Schlüssel, der für die Authentifizierung verwendet wird.
         
-      * Geben Sie auf der Registerkarte **Docker Daemon Access** die folgenden Optionen an: ![Docker-Host erstellen][PUB06]
+        ![Erstellen eines Docker-Hosts][PUB05]
 
-         * **Docker Daemon port**: Gibt den eindeutigen TCP-Port für den Docker-Host an.
-         * **TLS Security**: Gibt die Transport Layer Security-Einstellungen für den Docker-Host an. Sie können aus den folgenden Optionen wählen:
-            * **None**: Gibt an, dass Ihr virtueller Computer keine TLS-Verbindungen zulässt.
-            * **Auto-generate**: Mithilfe dieser Option werden die erforderlichen Einstellungen zum Herstellen einer Verbindung über TLS automatisch erstellt.
-            * **Import from directory**: Ermöglicht Ihnen das Angeben eines Verzeichnisses, das zuvor gespeicherte TLS-Einstellungen enthält. Genauer gesagt, muss das Verzeichnis die folgenden sechs Dateien enthalten:
-               * *ca.pem* und *ca-key.pem*: Diese Dateien enthalten das Zertifikat und den öffentlichen Schlüssel für die TLS-Zertifizierungsstelle.
-               * *cert.pem* und *key.pem*: Diese Dateien enthalten das Clientzertifikat und einen öffentlichen Schlüssel für die TLS-Authentifizierung.
-               * *server.pem* und *server-key.pem*: Diese Dateien enthalten das Serverzertifikat und den öffentlichen Schlüssel für den Host.
+      * Geben Sie auf der Registerkarte **Docker-Daemon-Anmeldeinformationen** die folgenden Optionen an:
 
-   d. Nachdem Sie alle oben genannten Optionen eingegeben haben, klicken Sie auf **Fertig stellen**.
+          * **Docker-Daemon-Port**: Geben Sie den eindeutigen TCP-Port für den Docker-Host an.
+          * **TLS-Sicherheit**: Geben Sie die Transport Layer Security-Einstellungen für Ihren Docker-Host an. Sie können zwischen folgenden Optionen wählen:
+            * **Keine**: Gibt an, dass Ihr virtueller Computer keine TLS-Verbindungen zulässt.
+            * **Automatisch generieren**: Mit dieser Option werden die erforderlichen Einstellungen zum Herstellen einer Verbindung über TLS automatisch erstellt.
+            * **Import from directory** (Aus Verzeichnis importieren): Gibt ein Verzeichnis an, das zuvor gespeicherte TLS-Einstellungen enthält. Genauer gesagt muss das Verzeichnis die folgenden sechs Dateien enthalten:
+                * *ca.pem* und *ca-key.pem*: Enthalten das Zertifikat und den öffentlichen Schlüssel für die TLS-Zertifizierungsstelle.
+                * *cert.pem* und *key.pem*: Enthalten das Clientzertifikat und einen öffentlichen Schlüssel für die TLS-Authentifizierung.
+                * *server.pem* und *server-key.pem*: Enthalten das Serverzertifikat und den öffentlichen Schlüssel für den Host.
 
-1. Wenn der Assistent **Deploy Docker Container on Azure** erneut angezeigt wird, klicken Sie auf **Next**.
-   ![Assistent „Deploy Docker Container on Azure“][PUB07]
+        ![Erstellen eines Docker-Hosts][PUB06]
 
-1. Legen Sie auf der letzten Seite des Assistenten die folgenden Optionen fest:
+7. Klicken Sie nach dem Eingeben aller erforderlichen Informationen auf **Fertig stellen**.
 
-   * **Docker container name**: Dies ist der eindeutige Name des Docker-Containers.
+8. Klicken Sie im Assistenten **Deploy Docker Container on Azure** (Docker-Container in Azure bereitstellen) auf **Weiter**.
 
-   * Wählen Sie eines der folgenden Docker-Images aus:
+   ![Assistent „Deploy Docker Container on Azure“ (Docker-Container in Azure bereitstellen)][PUB07]
 
-      * **Predefined Docker image**: Ermöglicht Ihnen die Angabe eines bereits in Azure vorhandenen Docker-Images.
+9. Im Fenster **Configure the Docker container to be created** (Zu erstellenden Docker-Container konfigurieren) tun Sie Folgendes:
 
-      > [!NOTE]
-      > Die Liste der Docker-Images in diesem Dropdownmenü besteht aus mehrere Images, für deren Patching das Azure-Toolkit konfiguriert ist, damit Ihr Artefakt automatisch bereitgestellt wird.
+   a. Geben Sie im Feld **Docker container name** (Name des Docker-Containers) einen eindeutigen Namen für Ihren Docker-Container ein.
 
-      * **Custom Dockerfile**: Ermöglicht Ihnen das Angeben einer zuvor auf Ihrem lokalen Computer gespeicherten Dockerfile.
+   b. Wählen Sie eines der folgenden Docker-Images aus:
+     * **Predefined Docker image** (Vordefiniertes Docker-Image): Gibt ein bereits in Azure vorhandenes Docker-Image an.
 
-      > [!NOTE]
-      > Dies ist ein komplexeres Feature für Entwickler, die ihre eigenen Dockerfile bereitstellen möchten. Es ist jedoch Aufgabe von Entwickler, die diese Option wählen, dafür zu sorgen, dass ihre Dockerfile ordnungsgemäß erstellt wurde. Das Azure-Toolkit überprüft nicht den Inhalt einer benutzerdefinierten Dockerfile, sodass die Bereitstellung fehlschlagen kann, wenn die Dockerfile Probleme verursacht. Darüber hinaus erwartet das Azure Toolkit, dass die benutzerdefinierte Dockerfile ein Web-App-Artefakt enthält, und versucht, eine HTTP-Verbindung zu öffnen. Wenn Entwickler einen anderen Typ von Artefakt veröffentlichen, erhalten sie nach der Bereitstellung ggf. harmlose Fehlermeldungen.
+       >[!NOTE]
+       >Die Liste mit den Docker-Images in diesem Feld enthält mehrere Images, für deren Patching das Azure-Toolkit konfiguriert ist, damit Ihr Artefakt automatisch bereitgestellt wird.
 
-   * **Port settings**: Gibt die eindeutige TCP-Portbindung für den Docker-Container an.
-   ![Assistent „Deploy Docker Container on Azure“][PUB08]
+     * **Custom Dockerfile** (Benutzerdefinierte Dockerfile): Gibt eine zuvor auf Ihrem lokalen Computer gespeicherte Dockerfile an.
 
-1. Nachdem Sie alle zuvor genannten Schritte ausgeführt haben, klicken Sie auf **Finish**.
+       >[!NOTE]
+       >Dies ist eine komplexere Funktion für Entwickler, die ihre eigene Dockerfile bereitstellen möchten. Es ist jedoch Aufgabe von Entwickler, die diese Option wählen, dafür zu sorgen, dass ihre Dockerfile ordnungsgemäß erstellt wurde. Das Azure-Toolkit überprüft nicht den Inhalt einer benutzerdefinierten Dockerfile, sodass die Bereitstellung möglicherweise fehlschlägt, wenn die Dockerfile Probleme verursacht. Weil vom Azure-Toolkit erwartet wird, dass die benutzerdefinierte Dockerfile ein Web-App-Artefakt enthält, wird außerdem versucht, eine HTTP-Verbindung zu öffnen. Wenn Entwickler eine andere Art von Artefakt veröffentlichen, können nach der Bereitstellung womöglich harmlose Fehler auftreten.
 
-Das Azure-Toolkit beginnt, Ihre Web-App in einem Docker-Container in Azure bereitzustellen. 
+   c. **Porteinstellungen**: Geben Sie die eindeutige TCP-Portbindung für Ihren Docker-Container ein.
 
-## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
+     ![Fenster „Configure the Docker container to be created“ (Zu erstellenden Docker-Container konfigurieren)][PUB08]
+
+10. Nachdem Sie alle obigen Schritte abgeschlossen haben, können Sie auf **Fertig stellen** klicken.
+
+Das Azure-Toolkit beginnt damit, Ihre Web-App in einem Docker-Container in Azure bereitzustellen. 
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie in den folgenden Ressourcen:
 
 * [Azure-Toolkit für Eclipse]
   * [Neuerungen im Azure-Toolkit für Eclipse]
-  * [Installieren des Azure-Toolkits für Eclipse]
-  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]
+  * [Installation des Azure Toolkit für Eclipse]
+  * [Anleitung zur Anmeldung für das Azure-Toolkit für Eclipse]
   * [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
 * [Azure Toolkit für IntelliJ]
   * [Neuerungen im Azure-Toolkit für IntelliJ]
   * [Installieren des Azure Toolkit für IntelliJ]
-  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ]
+  * [Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ]
   * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
@@ -160,10 +179,10 @@ Zusätzliche Ressourcen für Docker finden Sie auf der offiziellen [Docker-Websi
 [Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
 [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Installation des Azure Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Anleitung zur Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
 [Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
@@ -185,4 +204,3 @@ Zusätzliche Ressourcen für Docker finden Sie auf der offiziellen [Docker-Websi
 [PUB06]: ./media/azure-toolkit-for-eclipse-publish-as-docker-container/PUB06.png
 [PUB07]: ./media/azure-toolkit-for-eclipse-publish-as-docker-container/PUB07.png
 [PUB08]: ./media/azure-toolkit-for-eclipse-publish-as-docker-container/PUB08.png
-

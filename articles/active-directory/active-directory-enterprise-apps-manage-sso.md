@@ -1,5 +1,5 @@
 ---
-title: "Verwaltung der einmaligen Anmeldung für Unternehmens-Apps in der Azure Active Directory Preview | Microsoft Docs"
+title: "Verwaltung des einmaligen Anmeldens für Unternehmens-Apps in Azure Active Directory | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mithilfe von Azure Active Directory das einmalige Anmelden für Unternehmens-Apps verwalten."
 services: active-directory
 documentationcenter: 
@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2f03079498568f52802b34ce57242a414e648fe3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 118b77064a96585b0d5b951ca56313776021624e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="preview-managing-single-sign-on-for-enterprise-apps-in-the-new-azure-portal"></a>Vorschau: Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal
+# <a name="managing-single-sign-on-for-enterprise-apps"></a>Verwalten des einmaligen Anmeldens für Unternehmens-Apps
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-enterprise-apps-manage-sso.md)
-> * [Klassisches Azure-Portal](active-directory-sso-integrate-saas-apps.md)
+> * [klassischen Azure-Portal](active-directory-sso-integrate-saas-apps.md)
 > 
-> 
 
-Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der Einstellungen für einmaliges Anmelden für Anwendungen, insbesondere für solche, die aus dem [Anwendungskatalog von Azure Active Directory (Azure AD)](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. Die Azure AD-Verwaltungsfunktionen für einmaliges Anmelden liegen derzeit als öffentliche Vorschau vor, und dieser Artikel beschreibt die neuen Funktionen sowie einige temporäre Einschränkungen, die nur während des Vorschauzeitraums gelten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)
+Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der Einstellungen für einmaliges Anmelden für Anwendungen, insbesondere für solche, die aus dem [Anwendungskatalog von Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. 
 
-## <a name="finding-your-apps-in-the-new-portal"></a>Suchen Ihrer Apps im neuen Portal
-Ab September 2016 können alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) innerhalb des [klassischen Azure-Portals](https://manage.windowsazure.com) für einmaliges Anmelden konfiguriert wurden, im Azure-Portal angezeigt und verwaltet werden.
-
-Diese Anwendungen finden Sie im Abschnitt **Unternehmensanwendungen** des Azure-Portals. Einen Link dazu finden Sie in der Liste **Weitere Dienste** im [Portal](https://portal.azure.com). Unternehmens-Apps sind Apps, die bereitgestellt wurden und von Benutzern in Ihrer Organisation verwendet werden.
+## <a name="finding-your-apps"></a>Suchen Ihrer Apps
+## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
+Alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) konfiguriert werden, können im [Azure-Portal](https://portal.azure.com) angezeigt und verwaltet werden. Die Anwendungen können im Abschnitt **Weitere Dienste** &gt; **Unternehmensanwendungen** im Portal gefunden werden. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden.
 
 ![Blatt „Unternehmensanwendungen“][1]
 
@@ -65,14 +65,10 @@ Hier werden Ihrem Azure AD-Verzeichnis alle Details zu den Domänen und URLs der
 ### <a name="user-attributes"></a>Benutzerattribute
 Hier können Administratoren die Attribute anzeigen und bearbeiten, die im SAML-Token gesendet werden, das Azure AD für die Anwendung immer dann ausstellt, wenn sich Benutzer anmelden.
 
-Für die erste Vorschauversion ist die **Benutzer-ID** das einzige unterstützte Attribut, das bearbeitet werden kann. Der Wert dieses Attributs ist das Feld in Azure AD, das jeden Benutzer innerhalb der Anwendung eindeutig identifiziert. Wenn die Anwendung beispielsweise mit der E-Mail-Adresse als Benutzername und eindeutiger Bezeichner bereitgestellt wurde, wird der Wert auf das Feld „user.mail“ in Azure AD festgelegt.
-
-Das Bearbeiten zusätzlicher Attribute wird in einer nachfolgenden Vorschau unterstützt.
+Die **Benutzer-ID** ist das einzige unterstützte Attribut, das bearbeitet werden kann. Der Wert dieses Attributs ist das Feld in Azure AD, das jeden Benutzer innerhalb der Anwendung eindeutig identifiziert. Wenn die Anwendung beispielsweise mit der E-Mail-Adresse als Benutzername und eindeutiger Bezeichner bereitgestellt wurde, wird der Wert auf das Feld „user.mail“ in Azure AD festgelegt.
 
 ### <a name="saml-signing-certificate"></a>SAML-Signaturzertifikat
 Dieser Abschnitt zeigt die Details des Zertifikats, das Azure AD zum Signieren der SAML-Token verwendet, die immer dann an die Anwendung ausgegeben werden, wenn sich der Benutzer authentifiziert. Dort können die Eigenschaften des aktuellen Zertifikats einschließlich des Ablaufdatums überprüft werden.
-
-Die Möglichkeit zum Rollover des Zertifikats und zur Verwaltung zusätzlicher Optionen wird in einer nachfolgenden Vorschauversion unterstützt. Beachten Sie, dass die vollständige Verwaltung von Zertifikaten im [klassischen Azure-Portal](active-directory-sso-certs.md)weiterhin möglich ist.
 
 ### <a name="application-configuration"></a>Anwendungskonfiguration
 Der letzte Abschnitt enthält die Dokumentation und/oder die erforderlichen Steuerelemente zum Konfigurieren der Anwendung selbst für die Verwendung von Azure Active Directory als Identitätsanbieter.
@@ -80,7 +76,7 @@ Der letzte Abschnitt enthält die Dokumentation und/oder die erforderlichen Steu
 Das Flyoutmenü **Anwendung konfigurieren** enthält neue präzise, eingebettete Anweisungen für die Konfiguration der Anwendung. Dies ist ein weiteres neues Feature, das nur im neuen Azure-Portal verfügbar ist.
 
 > [!NOTE]
-> Ein vollständiges Beispiel für eine eingebettete Dokumentation finden Sie in der Salesforce.com-Anwendung. Die Dokumentation für zusätzliche Apps wird während der Vorschau fortlaufend ergänzt.
+> Ein vollständiges Beispiel für eine eingebettete Dokumentation finden Sie in der Salesforce.com-Anwendung. Die Dokumentation für zusätzliche Apps wird fortlaufend ergänzt.
 > 
 > 
 
@@ -96,14 +92,13 @@ Wenn der Modus für die Anmeldung über einen Link von der Anwendung unterstütz
 
 ![Verknüpfte Anmeldung][5]
 
+##<a name="feedback"></a>Feedback
+
+Wir hoffen, Ihnen gefällt die verbesserte Azure AD-Benutzeroberfläche. Es wäre schön, wenn Sie uns weiter Feedback senden würden! Feedback und Verbesserungsvorschläge können Sie uns im [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal) über den Abschnitt **Verwaltungsportal** zukommen lassen.  Wir haben großen Spaß daran, jeden Tag neue Dinge zu entwickeln, und Ihr Feedback hilft uns, die nächsten Ziele anzugehen und zu definieren.
+
 [1]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.PNG
 [3]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.PNG
 [4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
 [5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

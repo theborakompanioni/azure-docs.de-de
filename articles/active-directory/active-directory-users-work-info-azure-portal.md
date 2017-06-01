@@ -1,5 +1,6 @@
 ---
-title: "Hinzufügen oder Ändern von Arbeitsinformationen für einen Benutzer in der Azure Active Directory-Vorschau | Microsoft Docs"
+
+title: "Hinzufügen oder Ändern von Arbeitsinformationen für einen Benutzer in Azure Active Directory | Microsoft-Dokumentation"
 description: "Erläutert, wie Sie in Azure Active Directory Telefonnummern, Abteilungsnamen und andere Arbeitsinformationen für einen Benutzer hinzufügen."
 services: active-directory
 documentationcenter: 
@@ -12,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 05/04/2017
 ms.author: curtand;jeffsta
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b344136bdcfba22416933ced9a91ef2a82082d11
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: a7197ed0f08d38bb604641115a424b98ba5b5908
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory-preview"></a>Hinzufügen oder Ändern von Arbeitsinformationen für einen Benutzer in der Azure Active Directory-Vorschau
-In diesem Artikel wird erläutert, wie Sie in der Azure Active Directory-Vorschau Arbeitsinformationen wie z.B. Telefonnummern oder Abteilungsnamen für einen Benutzer hinzufügen oder ändern. [Was enthält die Vorschauversion?](active-directory-preview-explainer.md) Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-external-azure-portal.md).
+# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory"></a>Hinzufügen oder Ändern von Arbeitsinformationen für einen Benutzer in Azure Active Directory
+In diesem Artikel wird erläutert, wie Sie in Azure Active Directory Arbeitsinformationen wie z.B. Telefonnummern oder Abteilungsnamen für einen Benutzer hinzufügen oder ändern. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-external-azure-portal.md).
 
 ## <a name="to-change-work-information"></a>Ändern von Arbeitsinformationen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
@@ -39,9 +41,9 @@ In diesem Artikel wird erläutert, wie Sie in der Azure Active Directory-Vorscha
 6. Fügen Sie Arbeitsinformationen hinzu, oder ändern Sie Arbeitsinformationen. Wählen Sie dann in der Befehlsleiste **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Hinzufügen neuer Benutzer in der Azure Active Directory-Vorschau](active-directory-users-create-azure-portal.md)
-* [Zurücksetzen des Kennworts für einen Benutzer in der Azure Active Directory-Vorschau](active-directory-users-reset-password-azure-portal.md)
-* [Zuweisen eines Benutzers zu Administratorrollen in der Azure Active Directory-Vorschau](active-directory-users-assign-role-azure-portal.md)
-* [Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in der Azure Active Directory-Vorschau](active-directory-users-profile-azure-portal.md)
-* [Löschen eines Benutzers aus einem Verzeichnis in der Azure Active Directory-Vorschau](active-directory-users-delete-user-azure-portal.md)
+* [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md)
+* [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
+* [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
+* [Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in Azure Active Directory](active-directory-users-profile-azure-portal.md)
+* [Löschen eines Benutzers aus einem Verzeichnis in Azure Active Directory](active-directory-users-delete-user-azure-portal.md)
 

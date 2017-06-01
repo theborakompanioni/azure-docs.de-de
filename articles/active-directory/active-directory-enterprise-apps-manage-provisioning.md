@@ -1,6 +1,6 @@
 ---
-title: "Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in der Azure Active Directory-Vorschau | Microsoft Docs"
-description: "Erfahren Sie, wie Sie mithilfe der Azure Active Directory-Vorschau die Benutzerkontobereitstellung für Unternehmens-Apps verwalten."
+title: "Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in Azure Active Directory| Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benutzerkontobereitstellung für Unternehmens-Apps verwalten."
 services: active-directory
 documentationcenter: 
 author: asmalser
@@ -12,23 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/12/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 6cb0269e87f7ecffe7030b86237fb88fd58ef77b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="preview-managing-user-account-provisioning-for-enterprise-apps-in-the-new-azure-portal"></a>Vorschau: Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal
-Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der automatischen Bereitstellung und der Aufhebung der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen – insbesondere für Anwendungen, die aus der Kategorie „Vorgestellt“ des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. Diese Verwaltungsfunktionen im neuen Azure-Portal liegen derzeit als öffentliche Vorschau vor, und dieser Artikel beschreibt die neuen Funktionen sowie einige temporäre Einschränkungen, die während des Vorschauzeitraums gelten. [Was enthält die Vorschauversion?](active-directory-preview-explainer.md)
+# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
+Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der automatischen Bereitstellung und der Aufhebung der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen – insbesondere für Anwendungen, die aus der Kategorie „Vorgestellt“ des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md).
 
-Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md).
-
-## <a name="finding-your-apps-in-the-new-portal"></a>Suchen Ihrer Apps im neuen Portal
-Ab September 2016 können alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) innerhalb des [klassischen Azure-Portals](https://manage.windowsazure.com) für einmaliges Anmelden konfiguriert wurden, im neuen Azure-Portal angezeigt und verwaltet werden.
-
-Diese Anwendungen finden Sie im Abschnitt **Unternehmensanwendungen** des neuen Azure-Portals. Dieser kann über das Menü **Weitere Dienste** im linken Navigationsbereich aufgerufen werden. Unternehmens-Apps sind Apps, die bereitgestellt wurden und von Benutzern in Ihrer Organisation verwendet werden.
+## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
+Alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) konfiguriert werden, können im [Azure-Portal](https://portal.azure.com) angezeigt und verwaltet werden. Die Anwendungen können im Abschnitt **Weitere Dienste** &gt; **Unternehmensanwendungen** im Portal gefunden werden. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden.
 
 ![Blatt „Unternehmensanwendungen“][0]
 
@@ -59,16 +57,16 @@ Zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-A
 
 ![Blatt „Anwendungsressource“][2]
 
-Zu den unterstützten Anpassungen während der ersten Vorschau gehören:
+Unterstützte Anpassungen umfassen:
 
 * Aktivieren und Deaktivieren von Zuordnungen für bestimmte Objekte, z. B. das Azure AD-Benutzerobjekt an das Benutzerobjekt der SaaS-App.
 * Bearbeiten der Attribute, die vom Azure AD-Benutzerobjekt an das Benutzerobjekt der App übermittelt werden. Weitere Informationen zur Attributzuordnung finden Sie unter [Grundlegendes zu Attributzuordnungstypen](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
-* Filtern der Bereitstellungsaktionen, die Azure AD für die Zielanwendung ausführen soll; dies ist eine neue Funktion im Azure-Portal. Anstatt eine vollständige Synchronisierung von Objekten durch Azure AD zuzulassen können Sie die ausgeführten Aktionen beschränken. Beispiel: Wenn Sie nur **Aktualisieren**auswählen, aktualisiert Azure AD nur vorhandene Benutzerkonten in einer Anwendung und erstellt keine neuen. Wird nur **Erstellen**ausgewählt, erstellt Azure nur neue Benutzerkonten, aktualisiert jedoch keine vorhandenen Konten. Dieses Feature ermöglicht Administratoren das Erstellen verschiedener Zuordnungen für die Kontoerstellung und das Aktualisieren von Workflows. Die uneingeschränkte Möglichkeit zum Erstellen mehrerer Zuordnungen pro App ist für einen späteren Zeitpunkt im Vorschauzeitraum geplant.
+* Filtern Sie die Bereitstellungsaktionen, die Azure AD für die Zielanwendung ausführt. Anstatt eine vollständige Synchronisierung von Objekten durch Azure AD zuzulassen können Sie die ausgeführten Aktionen beschränken. Beispiel: Wenn Sie nur **Aktualisieren**auswählen, aktualisiert Azure AD nur vorhandene Benutzerkonten in einer Anwendung und erstellt keine neuen. Wird nur **Erstellen**ausgewählt, erstellt Azure nur neue Benutzerkonten, aktualisiert jedoch keine vorhandenen Konten. Dieses Feature ermöglicht Administratoren das Erstellen verschiedener Zuordnungen für die Kontoerstellung und das Aktualisieren von Workflows.
 
 ### <a name="settings"></a>Einstellungen
 In diesem Abschnitt können Administratoren den Azure AD-Bereitstellungsdienst für die ausgewählte Anwendung starten und beenden. Außerdem haben sie die Möglichkeit, den Bereitstellungscache zu leeren und den Dienst neu zu starten.
 
-Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen Sie den Bereitstellungsstatus** **auf **Ein** fest, um den Dienst zu aktivieren. Daraufhin führt der Azure AD-Bereitstellungsdienst eine anfängliche Synchronisierung durch. Hierzu liest er die im Abschnitt **Benutzer und Gruppen** zugewiesenen Benutzer, fragt die Zielanwendung für diese Benutzer ab und führt dann die im Azure AD-Abschnitt **Zuordnungen** definierten Bereitstellungsaktionen durch. Während dieses Vorgangs speichert der Bereitstellungsdienst Daten im Cache dazu, welche Benutzerkonten er verwaltet, damit die Bereitstellung nicht verwalteter Konten innerhalb der Zielanwendungen, die nicht im Zuweisungsumfang enthalten waren, nicht aufgehoben wird. Nach der anfänglichen Synchronisierung synchronisiert der Bereitstellungsdienst automatisch Benutzer- und Gruppenobjekte in einem Intervall von 10 Minuten.
+Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen Sie den Bereitstellungsstatus**** auf **Ein** fest, um den Dienst zu aktivieren. Daraufhin führt der Azure AD-Bereitstellungsdienst eine anfängliche Synchronisierung durch. Hierzu liest er die im Abschnitt **Benutzer und Gruppen** zugewiesenen Benutzer, fragt die Zielanwendung für diese Benutzer ab und führt dann die im Azure AD-Abschnitt **Zuordnungen** definierten Bereitstellungsaktionen durch. Während dieses Vorgangs speichert der Bereitstellungsdienst Daten im Cache dazu, welche Benutzerkonten er verwaltet, damit die Bereitstellung nicht verwalteter Konten innerhalb der Zielanwendungen, die nicht im Zuweisungsumfang enthalten waren, nicht aufgehoben wird. Nach der anfänglichen Synchronisierung synchronisiert der Bereitstellungsdienst automatisch Benutzer- und Gruppenobjekte in einem Intervall von 10 Minuten.
 
 Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst lediglich angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wird der Status wieder zu „Ein“ geändert, fährt der Dienst fort, wo er unterbrochen wurde.
 
@@ -79,12 +77,12 @@ Dieser Abschnitt enthält weitere Details zum Vorgang des Bereitstellungsdiensts
 
 Es wird ein Link zum **Bericht über die Bereitstellungsaktivität** bereitgestellt. Dieser Bericht enthält ein Protokoll zu allen Benutzern und Gruppen, die zwischen Azure AD und der Zielanwendung erstellt, aktualisiert und entfernt wurden. Darüber hinaus wird ein Link zum **Fehlerbericht der Bereitstellung** bereitgestellt. Dieser enthält detaillierte Fehlermeldungen für Benutzer- und Gruppenobjekte, die nicht gelesen, erstellt, aktualisiert oder entfernt werden konnten. 
 
+##<a name="feedback"></a>Feedback
+
+Wir hoffen, dass Sie mit Ihren Erfahrungen mit Azure AD zufrieden sind. Es wäre schön, wenn Sie uns weiter Feedback senden würden! Feedback und Verbesserungsvorschläge können Sie uns im [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal) über den Abschnitt **Verwaltungsportal** zukommen lassen.  Wir haben großen Spaß daran, jeden Tag neue Dinge zu entwickeln, und Ihr Feedback hilft uns, die nächsten Ziele anzugehen und zu definieren.
+
+
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 5cbe0b7f71f8dfd6f3a41fa6ff4b0c6ab5e6985d
-ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 1c3118bc66afe7ef4f04d86d9b598128d1aadf82
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -25,7 +27,7 @@ ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 
 In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** und **Media Encoder Premium Workflow** verglichen.
 
-### <a name="a-idbillingabilling-meter-used-by-each-encoder"></a><a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
+### <a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
 | Medienprozessorname | Geltende Preise | Hinweise |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |Codierungsaufgaben werden basierend auf der Gesamtdauer in Minuten für die Ausgabe aller Mediendateien in Rechnung gestellt. Den entsprechenden Kostensatz finden Sie [hier][1] in der Spalte „ENCODER“. |
@@ -105,7 +107,9 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 | MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs® und D10 eingeschlossen) |Nein |Ja |
 | MPEG-1 |Nein |Ja |
 | Windows Media Video/VC-1 |Nein |Ja |
-| Erstellung von JPEG-Miniaturansichten |Nein |Ja |
+| Erstellung von JPEG-Miniaturansichten |Ja |Ja |
+| Erstellung von PNG-Miniaturansichten |Ja |Ja |
+| Erstellung von BMP-Miniaturansichten |Ja |Nein |
 
 ### <a name="output-audio-codecs"></a>Codecs für Audioausgabe
 | Codecs für Audioausgabe | Media Encoder Standard | Media Encoder Premium Workflow |
@@ -133,9 +137,4 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

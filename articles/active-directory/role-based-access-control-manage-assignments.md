@@ -1,4 +1,5 @@
 ---
+
 title: "Anzeigen von Zugriffszuweisungen für Azure-Ressourcen | Microsoft Docs"
 description: "Anzeigen und Verwalten aller RBAC-Zuweisungen für alle Benutzer oder Gruppen im Azure-Portal"
 services: active-directory
@@ -12,21 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/21/2017
+ms.date: 05/04/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 82f084b220ba321945975c8d1a6d22e419acf5e4
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: e3b31a3db4b8f435c29cbc9dbdd09d100e821026
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal---public-preview"></a>Anzeigen von Zugriffszuweisungen für Benutzer und Gruppen im Azure-Portal – öffentliche Vorschau
+# <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Anzeigen von Zugriffszuweisungen für Benutzer und Gruppen im Azure-Portal
 > [!div class="op_single_selector"]
 > * [Verwalten des Zugriffs nach Benutzer oder Gruppe](role-based-access-control-manage-assignments.md)
 > * [Verwalten des Zugriffs nach Ressource](role-based-access-control-configure.md)
 
-Mit der rollenbasierten Zugriffssteuerung (RBAC) in der Vorschau von Azure Active Directory können Sie den Zugriff auf Ihre Azure-Ressourcen verwalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)
+Mit der rollenbasierten Zugriffssteuerung (RBAC) von Azure Active Directory können Sie den Zugriff auf Ihre Azure-Ressourcen verwalten. 
 
 Der Zugriff kann mit RBAC sehr detailliert zugewiesen werden, denn es gibt zwei Möglichkeiten zum Einschränken der Berechtigungen:
 

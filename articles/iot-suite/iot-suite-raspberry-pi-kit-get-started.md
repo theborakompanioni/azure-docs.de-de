@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/26/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 0235058d17a55562271c0a98c47b9b12f8d27be6
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 5efb78c2c514bd0b21be842ddee5465fe4e4dcf9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -30,9 +30,9 @@ In den Tutorials in diesem Abschnitt wird erklärt, wie Sie ein Raspberry Pi 3-G
 
 | Tutorial | Hinweise | Sprachen |
 | -------- | ----- | --------- |
-| Simulierte Telemetrie (einfach)| Simuliert Sensordaten. Verwendet ein eigenständiges Raspberry Pi. | [C][lnk-c-simulator] [Node.js][lnk-node-simulator] |
-| Echter Sensor (mittel) | Verwendet Daten eines BME280-Sensors, der mit Ihrem Raspberry Pi verbunden ist. | [C][lnk-c-basic] [Node.js][lnk-node-basic] |
-| Implementieren eines Firmwareupdates (fortgeschritten)| Verwendet Daten eines BME280-Sensors, der mit Ihrem Raspberry Pi verbunden ist. Ermöglicht Remoteupdates der Firmware auf Ihrem Raspberry Pi. | [C][lnk-c-advanced] [Node.js][lnk-node-advanced] |
+| Simulierte Telemetrie (einfach)| Simuliert Sensordaten. Verwendet ein eigenständiges Raspberry Pi. | [C][lnk-c-simulator], [Node.js][lnk-node-simulator] |
+| Echter Sensor (mittel) | Verwendet Daten eines BME280-Sensors, der mit Ihrem Raspberry Pi verbunden ist. | [C][lnk-c-basic], [Node.js][lnk-node-basic] |
+| Implementieren eines Firmwareupdates (fortgeschritten)| Verwendet Daten eines BME280-Sensors, der mit Ihrem Raspberry Pi verbunden ist. Ermöglicht Remoteupdates der Firmware auf Ihrem Raspberry Pi. | [C][lnk-c-advanced], [Node.js][lnk-node-advanced] |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,7 @@
 ---
-title: Anzeigen aller vorhandenen Gruppen in der Azure Active Directory-Vorschau | Microsoft Docs
-description: Anzeigen von oder Suchen nach Gruppen in der Azure Active Directory-Vorschau
+
+title: Anzeigen aller vorhandenen Gruppen in Azure Active Directory | Microsoft-Dokumentation
+description: Anzeigen von oder Suchen nach Gruppen in Azure Active Directory
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: 3546ae6951a514108e62f8840a601930aa1ac4c2
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 1cc8b9194433840df9ce16baf1a0ec2c3dd08ad9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Anzeigen von oder Suchen nach Ihren Benutzergruppen in Azure Active Directory
-In diesem Artikel wird erläutert, wie Sie alle Gruppen in der Azure Active Directory-Vorschau (Azure AD) anzeigen. [Was enthält die Vorschauversion?](active-directory-preview-explainer.md) Ein Feature der Benutzerverwaltung von Azure Active Directory (Azure AD) ist die Möglichkeit, Gruppen zu erstellen, die Sie mit Benutzern auffüllen können. Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. für das Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt.
+In diesem Artikel wird erläutert, wie Sie alle Gruppen in Azure Active Directory (Azure AD) anzeigen. Eines der Features der Benutzerverwaltung von Azure AD ist, dass Sie Gruppen verwenden können, um Verwaltungsaufgaben auszuführen, z.B. gleichzeitig einer Anzahl von Benutzern Lizenzen und Berechtigungen zuweisen.
 
 ## <a name="how-do-i-see-all-the-groups"></a>Wie zeige ich alle Gruppen an?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.

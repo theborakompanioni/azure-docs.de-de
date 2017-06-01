@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/29/2016
+ms.date: 05/08/2017
 ms.author: kyliel
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 2d44a2d9a247ffce8bcf35152170562ac0b86710
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 7a92105f9d7be88311f2ecd89b22e35f3ad3bbac
+ms.contentlocale: de-de
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -40,7 +41,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente 
 >
 >
 
-Diese Aufgabe umfasst die folgenden fünf Schritte.
+Diese Aufgabe umfasst die folgenden fünf Schritte:
 
 ## <a name="step-1-prepare-the-image-for-upload"></a>Schritt 1: Vorbereiten des hochzuladenden Images
 Führen Sie auf dem virtuellen Computer, auf dem Sie das FreeBSD-Betriebssystem installiert haben, die folgenden Schritte aus:
@@ -51,12 +52,7 @@ Führen Sie auf dem virtuellen Computer, auf dem Sie das FreeBSD-Betriebssystem 
         # service netif restart
 2. Aktivieren Sie SSH.
 
-    SSH wird nach der Installation von einem Datenträger standardmäßig aktiviert. Falls das Feature aus irgendeinem Grund nicht aktiviert ist oder Sie die virtuelle FreeBSD-Festplatte direkt verwenden, geben Sie Folgendes ein:
-
-        # echo 'sshd_enable="YES"' >> /etc/rc.conf
-        # ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
-        # ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-        # service sshd restart
+    Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt. Standardmäßig ist es nach der Installation von FreeBSD-Datenträger aktiviert. 
 3. Richten Sie eine serielle Konsole ein.
 
         # echo 'console="comconsole vidconsole"' >> /boot/loader.conf
@@ -66,16 +62,16 @@ Führen Sie auf dem virtuellen Computer, auf dem Sie das FreeBSD-Betriebssystem 
     Das Stammkonto ist in Azure deaktiviert. sudo muss daher mit einem nicht privilegierten Benutzer verwendet werden, um Befehle mit erhöhten Berechtigungen auszuführen.
 
         # pkg install sudo
-   ;
+   
 5. Voraussetzungen für den Azure-Agent:
 
         # pkg install python27  
-        # pkg install Py27-setuptools27   
+        # pkg install Py27-setuptools  
         # ln -s /usr/local/bin/python2.7 /usr/bin/python   
         # pkg install git
 6. Installieren Sie den Azure-Agent.
 
-    Die neueste Version des Azure-Agents finden Sie immer auf [github](https://github.com/Azure/WALinuxAgent/releases). Die Version 2.0.10+ unterstützt offiziell FreeBSD 10 und 10.1, und die Version 2.1.4 unterstützt offiziell FreeBSD 10.2 und neuere Versionen.
+    Die neueste Version des Azure-Agents finden Sie immer auf [github](https://github.com/Azure/WALinuxAgent/releases). Die Version 2.0.10 und höher unterstützt offiziell FreeBSD 10 und 10.1, und die Version 2.1.4 und höher (inklusive 2.2.x) unterstützt offiziell FreeBSD 10.2 und spätere Versionen.
 
         # git clone https://github.com/Azure/WALinuxAgent.git  
         # cd WALinuxAgent  
@@ -108,8 +104,8 @@ Führen Sie auf dem virtuellen Computer, auf dem Sie das FreeBSD-Betriebssystem 
         # waagent -version
         WALinuxAgent-2.1.4 running on freebsd 10.3
         Python: 2.7.11
-        # service –e | grep waagent
-        /etc/rc.d/waagent
+        # ps auxw | grep waagent
+        root   639   0.0  0.5 104620 17520 u0- I    05:17    0:00.20 python /usr/local/sbin/waagent -daemon (python2.7)
         # cat /var/log/waagent.log
 7. Heben Sie die Bereitstellung des Systems auf.
 

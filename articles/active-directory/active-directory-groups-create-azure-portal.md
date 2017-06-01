@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Gruppe für Benutzer in der Azure Active Directory-Vorschau | Microsoft-Dokumentation"
+title: "Erstellen einer Gruppe für Benutzer in Azure Active Directory | Microsoft-Dokumentation"
 description: "Erstellen einer Gruppe in Azure Active Directory und Hinzufügen von Mitgliedern zur Gruppe"
 services: active-directory
 documentationcenter: 
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: 4b85a754dfa9632f27308a3d9234213533dea4c4
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 9636d26ec62bb83b30fdc4ae8b1701da8ab532e8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/01/2017
 >
 >
 
-In diesem Artikel wird erläutert, wie Sie eine neue Gruppe in der Azure Active Directory-Vorschau (Azure AD) erstellen und auffüllen. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. für das Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt.
+In diesem Artikel wird erläutert, wie Sie eine neue Gruppe in Azure Active Directory erstellen und auffüllen. Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. für das Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt.
 
 ## <a name="how-do-i-create-a-group"></a>Wie erstelle ich eine Gruppe?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
