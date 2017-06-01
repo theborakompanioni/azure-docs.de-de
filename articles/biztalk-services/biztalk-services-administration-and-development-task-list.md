@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1013419f9283c3e81a6a6e8ed56a34d6ee5937ea
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Aufgabenliste für Verwaltung und Entwicklung in BizTalk Services
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 ## <a name="getting-started"></a>Erste Schritte
 Bei der Arbeit mit Microsoft Azure BizTalk Services sind verschiedene lokale und cloudbasierte Komponenten zu berücksichtigen. Betrachten Sie zunächst den folgenden Prozessablauf:  
 
@@ -53,10 +58,5 @@ Bei der Arbeit mit Microsoft Azure BizTalk Services sind verschiedene lokale und
 [Erlernen und Erstellen von Nachrichtenzuordnungen und -transformationen](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
 [Verwenden des BizTalk Adapter Service](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
 [BizTalk Services-Dokumentation](http://go.microsoft.com/fwlink/p/?LinkID=303664)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

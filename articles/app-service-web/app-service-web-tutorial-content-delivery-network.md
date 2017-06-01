@@ -1,13 +1,15 @@
 ---
 title: "Hinzufügen eines Content Delivery Network (CDN) zu einer Azure App Service-Instanz | Microsoft-Dokumentation"
 description: "Fügen Sie einer Azure App Service-Instanz ein Content Delivery Network (CDN) hinzu, um Ihre statischen Dateien über Server zwischenzuspeichern und bereitzustellen, die von Ihren weltweiten Kunden jeweils nicht weit entfernt sind."
-services: app-service
+services: app-service\web
 author: syntaxc4
 ms.author: cfowler
 ms.date: 05/01/2017
-ms.topic: hero-article
+ms.topic: article
 ms.service: app-service-web
 manager: erikre
+ms.workload: web
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 7208abc0e6eaa9067c5bb36a09e1bfd276fe0b0c
