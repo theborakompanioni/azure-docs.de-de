@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 21cdfbbc457aad1cd3b1a5b20745eee4286a78bb
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: cf2a063acb2a36af2ff71f45159b2e23c9971b32
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -94,8 +94,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 * **Benutzerdefiniertes Setup des DNS-Servers**: Der API Management-Dienst hängt von mehreren Azure-Diensten ab. Wenn API Management in einem VNet mit einem benutzerdefiniertem DNS-Server gehostet wird, muss es die Hostnamen dieser Azure-Dienste auflösen können. Orientieren Sie sich beim benutzerdefinierten DNS-Setup an [diesen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) Anweisungen. Sehen Sie sich zur Bezugnahme die nachstehende Tabelle mit den Ports und anderen Netzwerkanforderungen an.
 
 > [!IMPORTANT]
-> Wenn Sie einen benutzerdefinierten DNS-Server für das VNET verwenden, wird empfohlen, diesen **vor** dem Bereitstellen eines API Management-Diensts einzurichten. Andernfalls muss der CloudService, in dem der Dienst gehostet wird, neu gestartet werden, damit die neuen DNS-Servereinstellungen übernommen werden.
->
+> Wenn Sie (einen) benutzerdefinierte DNS-Server für das VNET verwenden, wird empfohlen, diesen **vor** dem Bereitstellen eines API Management-Diensts einzurichten. Andernfalls müssen Sie den API Management-Dienst jedes Mal aktualisieren, wenn Sie den/die DNS-Server durch Ausführen der [Operation „Netzwerkkonfiguration anwenden“](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementservices#ApiManagementServices_ApplyNetworkConfigurationUpdates) ändern.
 
 * **Für API Management erforderliche Ports**: Ein- und ausgehender Datenverkehr im Subnetz, in dem API Management bereitgestellt ist, kann mithilfe einer [Netzwerksicherheitsgruppe][Network Security Group] gesteuert werden. Wenn diese Ports nicht verfügbar sind, funktioniert API Management möglicherweise nicht ordnungsgemäß und kann möglicherweise nicht mehr aufgerufen werden. Eine bestehende Sperre für mindestens einen dieser Ports ist eine weitere gängige Fehlkonfiguration, die beim Verwenden von API Management in einem VNet auftritt.
 
@@ -109,13 +108,14 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | * / 1433 |Ausgehend |TCP |Abhängigkeit von Azure SQL |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / 11000 - 11999 |Ausgehend |TCP |Abhängigkeit von Azure SQL V12 |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / 14000 - 14999 |Ausgehend |TCP |Abhängigkeit von Azure SQL V12 |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
-| * / 9350 - 9354 |Ausgehend |TCP |Abhängigkeit von Service Bus |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
-| * / 5671 |Ausgehend |AMQP |Abhängigkeit für Richtlinie zum Anmelden bei Event Hub |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
+| * / 5671 |Ausgehend |AMQP |Abhängigkeit für Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | 6381 - 6383/6381 - 6383 |Ein- und ausgehend |UDP |Abhängigkeit von Redis-Cache |VIRTUAL_NETWORK/VIRTUAL_NETWORK |Extern & Intern |-
 | */445 |Ausgehend |TCP |Abhängigkeit von Azure File Share für GIT |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / * | Eingehend |TCP |Lastenausgleich von Azure-Infrastruktur | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK |Extern & Intern |
 
 * **SSL-Funktionalität**: Zum Aktivieren der Erstellung und Überprüfung von SSL-Zertifikatketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung mit ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com.
+
+* **Metriken und Systemüberwachung**: ausgehende Netzwerkverbindung zu Azure Monitoring-Endpunkten, die zu den folgenden Domänen auflösen: global.metrics.nsatc.net, shoebox2.metrics.nsatc.net, prod3.metrics.nsatc.net.
 
 * **Setup von Express Route**: Eine gängige Kundenkonfiguration sieht das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen. Bei diesem Datenverkehr funktioniert die Verbindung mit Azure API Management nicht mehr, da ausgehender Datenverkehr entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt wird, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren. Die Lösung besteht darin, mindestens eine benutzerdefinierte Route (User-Defined Route, [UDR][UDRs]) im Subnetz zu definieren, das den Azure API Management-Dienst enthält. Eine benutzerdefinierte Route definiert subnetzspezifische Routen, die anstelle der Standardroute berücksichtigt werden.
   Nach Möglichkeit sollte die folgende Konfiguration verwendet werden:

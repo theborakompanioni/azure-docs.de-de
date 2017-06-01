@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2016
+ms.date: 05/04/2017
 ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3349f890391aec7fc6361b149d148d828cbe3b97
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c4e482e9f985553938ce132c617ba0b1a2128106
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,7 +34,7 @@ Diese Funktion kann zusammen mit der Funktion „[Bring your own app](http://blo
 In Azure Active Directory gibt es zwei Anwendungsfälle für SCIM:
 
 * **Bereitstellen von Benutzern und Gruppen für Anwendungen, die SCIM unterstützen** : Anwendungen, die SCIM 2.0 unterstützen und ein OAuth-Bearertoken zum Authentifizieren verwenden, können sofort mit Azure AD eingesetzt werden.
-* **Erstellen einer eigenen Bereitstellungslösung für Anwendungen, die eine andere API-basierte Bereitstellung unterstützen** : Für Anwendungen ohne SCIM können Sie einen SCIM-Endpunkt erstellen, der zwischen dem SCIM-Endpunkt von Azure AD und der API übersetzt, die die betreffende Anwendung zum Bereitstellen von Benutzern unterstützt.  Um die Entwicklung eines SCIM-Endpunkts zu erleichtern, stellen wir Ihnen CLI-Bibliotheken (Command Line Interface, Befehlszeilenschnittstelle) sowie Codebeispiele zur Verfügung, die das Bereitstellen eines SCIM-Endpunkts und das Übersetzen von SCIM-Nachrichten veranschaulichen.  
+* **Erstellen einer eigenen Bereitstellungslösung für Anwendungen, die eine andere API-basierte Bereitstellung unterstützen**: Für Anwendungen ohne SCIM können Sie einen SCIM-Endpunkt erstellen, der zwischen dem SCIM-Endpunkt von Azure AD und der API übersetzt, die die betreffende Anwendung zum Bereitstellen von Benutzern unterstützt.  Um die Entwicklung eines SCIM-Endpunkts zu erleichtern, stellen wir Ihnen CLI-Bibliotheken (Command Line Interface, Befehlszeilenschnittstelle) sowie Codebeispiele zur Verfügung, die das Bereitstellen eines SCIM-Endpunkts und das Übersetzen von SCIM-Nachrichten veranschaulichen.  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Bereitstellen von Benutzern und Gruppen für Anwendungen, die SCIM unterstützen
 Azure Active Directory kann so konfiguriert werden, dass zugewiesene Benutzer und Gruppen automatisch für Anwendungen bereitgestellt werden, die einen [SCIM 2.0-Webdienst (System for Cross-domain Identity Management)](https://tools.ietf.org/html/draft-ietf-scim-api-19) implementieren und OAuth-Bearertoken für die Authentifizierung akzeptieren. Im Rahmen der SCIM 2.0-Spezifikation müssen Anwendungen die folgenden Anforderungen erfüllen:
@@ -116,16 +118,16 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 2. Navigieren Sie zu **Active Directory > Verzeichnis > [Ihr Verzeichnis] > Anwendungen**, und wählen Sie **Hinzufügen > Anwendung aus dem Katalog hinzufügen** aus.
 3. Wählen Sie links die Registerkarte **Benutzerdefiniert** , geben Sie einen Namen wie „SCIM Test App“ ein, und klicken Sie auf das Häkchensymbol, um ein App-Objekt zu erstellen. Beachten Sie, dass mit dem erstellten Anwendungsobjekt die Ziel-App dargestellt werden soll, für die Sie das einmalige Anmelden bereitstellen und implementieren möchten, und nicht nur der SCIM-Endpunkt.
 
-![][2]
+  ![][2]
 
-1. Klicken Sie im angezeigten Fenster auf die zweite Schaltfläche **Kontobereitstellung konfigurieren** .
+4. Klicken Sie im angezeigten Fenster auf die zweite Schaltfläche **Kontobereitstellung konfigurieren** .
 2. Geben Sie im Dialogfeld die über das Internet zugängliche URL und den Port Ihres SCIM-Endpunkts ein. Dies kann beispielsweise http://testmachine.contoso.com:9000 oder http://<IP-Adresse>:9000/ sein, wobei <IP-Adresse> für die über das Internet zugängliche IP-Adresse steht.  
-3. Klicken Sie auf **Weiter** und auf die Schaltfläche **Test starten**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn die Versuche fehlschlagen, werden Diagnoseinformationen angezeigt.  
-4. Falls die Verbindungsherstellung mit Ihrem Webdienst erfolgreich ist, klicken Sie auf den restlichen Bildschirmen auf **Weiter** und dann auf **Abschließen**, um das Dialogfeld zu schließen.
-5. Klicken Sie im angezeigten Bildschirm auf die dritte Schaltfläche **Konten zuweisen** . Weisen Sie im angezeigten Abschnitt „Benutzer und Gruppen“ die Benutzer und Gruppen zu, die Sie für die Anwendung bereitstellen möchten.
-6. Klicken Sie nach dem Zuweisen der Benutzer und Gruppen am oberen Rand des Bildschirms auf die Registerkarte **Konfigurieren** .
-7. Vergewissern Sie sich, dass der Status unter **Kontobereitstellung**auf „Ein“ festgelegt ist. 
-8. Klicken Sie unter **Extras** auf **Kontobereitstellung neu starten**, um den Bereitstellungsprozess zu starten.
+5. Klicken Sie auf **Weiter** und auf die Schaltfläche **Test starten**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn die Versuche fehlschlagen, werden Diagnoseinformationen angezeigt.  
+6. Falls die Verbindungsherstellung mit Ihrem Webdienst erfolgreich ist, klicken Sie auf den restlichen Bildschirmen auf **Weiter** und dann auf **Abschließen**, um das Dialogfeld zu schließen.
+7. Klicken Sie im angezeigten Bildschirm auf die dritte Schaltfläche **Konten zuweisen** . Weisen Sie im angezeigten Abschnitt „Benutzer und Gruppen“ die Benutzer und Gruppen zu, die Sie für die Anwendung bereitstellen möchten.
+8. Klicken Sie nach dem Zuweisen der Benutzer und Gruppen am oberen Rand des Bildschirms auf die Registerkarte **Konfigurieren** .
+9. Vergewissern Sie sich, dass der Status unter **Kontobereitstellung**auf „Ein“ festgelegt ist. 
+10. Klicken Sie unter **Extras** auf **Kontobereitstellung neu starten**, um den Bereitstellungsprozess zu starten.
 
 Beachten Sie, dass fünf bis zehn Minuten verstreichen dürfen, bevor der Bereitstellungsprozess damit beginnt, die Anforderungen an den SCIM-Endpunkt zu senden.  Eine Zusammenfassung der Verbindungsversuche wird auf der Registerkarte „Dashboard“ der Anwendung bereitgestellt, und Sie können einen Bericht mit den Bereitstellungsaktivitäten und alle Bereitstellungsfehler über die Registerkarte „Berichte“ des Verzeichnisses herunterladen.
 
@@ -678,9 +680,4 @@ In der Abbildung unten sind die Nachrichten dargestellt, die von Azure Active Di
 [3]: ./media/active-directory-scim-provisioning/scim-figure-3.PNG
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

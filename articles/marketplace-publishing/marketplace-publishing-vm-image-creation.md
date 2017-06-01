@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f18b8ef62c82e2b307173971a7251a3aa8f84d69
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 8f87f2c0caccded5b0f24052deee6cefaad08013
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -356,9 +356,9 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Azure-Speicher-Ex
 
     f. Überprüfen Sie im **generierten Shared Access Signature-URI dieses Containers**Folgendes (wie oben beschrieben):
 
-        - Stellen Sie sicher, dass Ihr Imagedateiname und **.vhd** im URI enthalten sind.
-        - Stellen Sie sicher, dass am Ende der Signatur **=rl** angezeigt wird. Dies ist der Beweis, dass der Zugriff für „Lesen“ und „Auflisten“ erfolgreich bereitgestellt wurde.
-        - Stellen Sie sicher, dass am Ende der Signatur **sr=c** angezeigt wird. Dies beweist, dass Sie auf Containerebene Zugriff haben.
+       - Stellen Sie sicher, dass Ihr Imagedateiname und **.vhd** im URI enthalten sind.
+       - Stellen Sie sicher, dass am Ende der Signatur **=rl** angezeigt wird. Dies ist der Beweis, dass der Zugriff für „Lesen“ und „Auflisten“ erfolgreich bereitgestellt wurde.
+       - Stellen Sie sicher, dass am Ende der Signatur **sr=c** angezeigt wird. Dies beweist, dass Sie auf Containerebene Zugriff haben.
 
 11.    Um sicherzustellen, dass der generierte Shared Access Signature-URI funktioniert, klicken Sie auf **In Browser testen**. Der Downloadvorgang sollte gestartet werden.
 

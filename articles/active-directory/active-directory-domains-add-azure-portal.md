@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen eines benutzerdefinierten Domänennamens zur Azure Active Directory-Vorschau | Microsoft Docs"
+title: "Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory | Microsoft Docs"
 description: "Erfahren Sie, wie Sie Azure Active Directory die Domänennamen Ihres Unternehmens hinzufügen und den Domänennamen überprüfen."
 services: active-directory
 documentationcenter: 
@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 05/04/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
-ms.openlocfilehash: 5153926f34961a397ef9632ca1f8ac868ba1986e
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 8f61e947d9667f5047729ac19dc2bf1e03a48c6b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="add-a-custom-domain-name-to-azure-active-directory-preview"></a>Hinzufügen eines benutzerdefinierten Domänennamens zur Azure Active Directory-Vorschau
+# <a name="add-a-custom-domain-name-to-azure-active-directory"></a>Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-domains-add-azure-portal.md)
 > * [klassischen Azure-Portal](active-directory-add-domain.md)
 > 
-> 
 
-Sie verfügen über mindestens einen Domänennamen, den Ihre Organisation zu geschäftlichen Zwecken verwendet, und Ihre Benutzer melden sich unter Verwendung Ihres geschäftlichen Domänennamens bei Ihrem Unternehmensnetzwerk an. Mit der Azure Active Directory-Vorschau (Azure AD) können Sie den Namen Ihrer Unternehmensdomäne nun auch Azure AD hinzufügen. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Dadurch können Sie in dem Verzeichnis Benutzernamen zuweisen, die Ihren Benutzern vertraut sind (etwa „alice@contoso.com“). Der Prozess ist ganz einfach:
+Sie verfügen über mindestens einen Domänennamen, den Ihre Organisation zu geschäftlichen Zwecken verwendet, und Ihre Benutzer melden sich unter Verwendung Ihres geschäftlichen Domänennamens bei Ihrem Unternehmensnetzwerk an. Mit Azure Active Directory (Azure AD) können Sie den Namen Ihrer Unternehmensdomäne nun auch Azure AD hinzufügen. Dadurch können Sie in dem Verzeichnis Benutzernamen zuweisen, die Ihren Benutzern vertraut sind (etwa „alice@contoso.com“). Der Prozess ist ganz einfach:
 
 1. Fügen Sie Ihrem Verzeichnis den benutzerdefinierten Domänennamen hinzu.
 2. Fügen Sie bei der Domänennamen-Registrierungsstelle einen DNS-Eintrag für den Domänennamen hinzu.

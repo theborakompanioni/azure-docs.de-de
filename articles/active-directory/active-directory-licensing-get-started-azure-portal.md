@@ -1,6 +1,6 @@
 ---
 
-title: Erste Schritte mit der Lizenzierung in der Azure Active Directory-Vorschau | Microsoft-Dokumentation
+title: Erste Schritte mit der Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
 description: "Beschreibung der Azure Active Directory-Lizenzierung, der Funktionsweise, der ersten Schritte und der bewährten Methoden – einschließlich Office 365, Microsoft Intune und Azure Active Directory Premium und Basic"
 services: active-directory
 keywords: "Azure AD-Lizenzierung"
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 05/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 3bad24f35cf7867f1e02e8470c602a7f6a9ce8fb
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8e9d6900910f45b5f17600fc5608191871c5ab21
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
 
-# <a name="license-yourself-and-your-users-in-azure-active-directory-preview"></a>Lizenzieren von sich selbst und Ihrer Benutzer in der Azure Active Directory-Vorschau
+# <a name="license-yourself-and-your-users-in-azure-active-directory"></a>Lizenzieren Sie sich selbst und Ihre Benutzer in Azure Active Directory
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
@@ -59,7 +60,7 @@ Jedes Abonnement umfasst einen oder mehrere Dienstpläne, die jeweils die enthal
 
 Zwar ist nur der Erwerb eines Abonnements erforderlich, um kostenpflichtige Funktionen zu konfigurieren, die Verwendung Ihrer kostenpflichtigen Azure AD-Funktionen erfordert jedoch die Verteilung von Lizenzen an die richtigen Personen. Im Allgemeinen muss allen Benutzern, die Zugriff haben sollen oder die über kostenpflichtige Azure AD-Funktionen verwaltet werden, eine Lizenz zugewiesen werden. Die Lizenzzuweisung ist eine Zuordnung zwischen einem Benutzer und einem erworbenen Dienst wie Azure AD Premium, Basic oder Enterprise Mobility Suite.
 
-Es ist einfach zu verwalten, welche Benutzer im Verzeichnis eine Lizenz erhalten sollen. Hierzu können Sie Lizenzen entweder Gruppen im Azure-Portal zuweisen oder sie über das Portal, mithilfe von PowerShell oder über APIs direkt den richtigen Personen zuweisen. Wenn einer Gruppe Lizenzen zugewiesen werden, wird allen Mitgliedern der Gruppe eine Lizenz zugewiesen. Wenn Benutzer der Gruppe hinzugefügt oder aus der Gruppe entfernt werden, werden sie der entsprechenden Lizenz zugewiesen oder davon entfernt. Für die Gruppenzuweisung kann jede verfügbare Gruppenverwaltung genutzt werden, die Ihnen zur Verfügung steht und die mit der gruppenbasierten Zuweisung zu Anwendungen konsistent ist. Durch diesen Ansatz können Sie Regeln so einrichten, dass alle Benutzer in Ihrem Verzeichnis automatisch zugewiesen werden, dass sichergestellt ist, dass jeder in der entsprechenden Position über eine Lizenz verfügt, oder dass die Entscheidung an andere Manager in der Organisation delegiert wird. 
+Es ist einfach zu verwalten, welche Benutzer im Verzeichnis eine Lizenz erhalten sollen. Hierzu können Sie Lizenzen entweder Gruppen im Azure-Portal zuweisen (dieses Feature befindet sich in der öffentlichen Vorschau) oder sie über das Portal, mithilfe von PowerShell oder über APIs direkt, den richtigen Personen zuweisen. Wenn einer Gruppe Lizenzen zugewiesen werden, wird allen Mitgliedern der Gruppe eine Lizenz zugewiesen. Wenn Benutzer der Gruppe hinzugefügt oder aus der Gruppe entfernt werden, werden sie der entsprechenden Lizenz zugewiesen oder davon entfernt. Für die Gruppenzuweisung kann jede verfügbare Gruppenverwaltung genutzt werden, die Ihnen zur Verfügung steht und die mit der gruppenbasierten Zuweisung zu Anwendungen konsistent ist. Durch diesen Ansatz können Sie Regeln so einrichten, dass alle Benutzer in Ihrem Verzeichnis automatisch zugewiesen werden, dass sichergestellt ist, dass jeder in der entsprechenden Position über eine Lizenz verfügt, oder dass die Entscheidung an andere Manager in der Organisation delegiert wird. 
 
 Ausführliche Informationen zur Lizenzzuweisung zu Gruppen (einschließlich erweiterter Szenarien und Office 365-Lizenzierungsszenarien) finden Sie in [diesem Artikel](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-assignment-azure-portal).
 

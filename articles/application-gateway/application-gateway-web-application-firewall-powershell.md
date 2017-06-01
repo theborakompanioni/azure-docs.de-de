@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 05/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 52b7728c3fc702e37f5c5fe3d6544117a11464e8
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: c23e7404f9eee6f1246cafc72c6733546cc82934
+ms.contentlocale: de-de
+ms.lasthandoff: 05/04/2017
 
 
 ---
@@ -26,6 +27,8 @@ ms.lasthandoff: 03/30/2017
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-web-application-firewall-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-web-application-firewall-powershell.md)
+
+Erfahren Sie, wie Sie ein durch eine Web Application Firewall aktiviertes Anwendungsgateway erstellen oder eine Web Application Firewall zu einem vorhandenen Anwendungsgateway hinzufügen.
 
 Die Web Application Firewall (WAF) in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen.
 
@@ -39,65 +42,53 @@ Der folgende Artikel zeigt, wie Sie die [Web Application Firewall einem vorhande
 
 Wenn Sie [Erstellen eines Anwendungsgateway mit PowerShell](application-gateway-create-gateway-arm.md)gelesen haben, kennen Sie die SKU-Einstellungen, die beim Erstellen eines Anwendungsgateways konfiguriert werden müssen. Die WAF bietet zusätzliche Einstellungen, die Sie beim Konfigurieren der SKU auf einem Anwendungsgateway definieren müssen. Am Anwendungsgateway selbst sind keine zusätzlichen Änderungen erforderlich.
 
-**SKU**: Ein normales Anwendungsgateway ohne WAF unterstützt die Größen **Standard\_Small**, **Standard\_Medium** und **Standard\_Large**. Mit der Einführung der WAF gibt es zwei zusätzliche SKUs: **WAF\_Medium** und **WAF\_Large**. Die WAF wird auf kleinen Anwendungsgateways nicht unterstützt.
-
-**Tier**: Verfügbare Werte sind **Standard** oder **WAF**. Bei Verwendung der Web Application Firewall muss **WAF** ausgewählt werden.
-
-**Mode** : Diese Einstellung ist der Modus der WAF. Zulässige Werte sind **Detection** (Erkennung) und **Prevention** (Schutz). Wenn die WAF im Erkennungsmodus eingerichtet wird, werden alle Bedrohungen in einer Protokolldatei gespeichert. Im Schutzmodus werden Ereignisse ebenfalls protokolliert, aber der Angreifer erhält zudem die Antwort 403 (nicht autorisiert) vom Anwendungsgateway.
+| **Einstellung** | **Details**
+|---|---|
+|**SKU** |Ein normales Anwendungsgateway ohne WAF unterstützt die Größen **Standard\_Small**, **Standard\_Medium** und **Standard\_Large**. Mit der Einführung der WAF gibt es zwei zusätzliche SKUs: **WAF\_Medium** und **WAF\_Large**. Die WAF wird auf kleinen Anwendungsgateways nicht unterstützt.|
+|**Tier** | Verfügbare Werte sind **Standard** oder **WAF**. Bei Verwendung der Web Application Firewall muss **WAF** ausgewählt werden.|
+|**Mode** | Diese Einstellung ist der Modus der WAF. Zulässige Werte sind **Detection** (Erkennung) und **Prevention** (Schutz). Wenn die WAF im Erkennungsmodus eingerichtet wird, werden alle Bedrohungen in einer Protokolldatei gespeichert. Im Schutzmodus werden Ereignisse ebenfalls protokolliert, aber der Angreifer erhält zudem die Antwort 403 (nicht autorisiert) vom Anwendungsgateway.|
 
 ## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>Hinzufügen der Web Application Firewall zu einem vorhandenen Anwendungsgateway
 
 Stellen Sie sicher, dass Sie die neueste Version von Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>Schritt 1
+1. Melden Sie sich beim Azure-Konto an.
 
-Melden Sie sich beim Azure-Konto an.
+    ```powershell
+    Login-AzureRmAccount
+    ```
 
-```powershell
-Login-AzureRmAccount
-```
+2. Wählen Sie das Abonnement aus, das für dieses Szenario verwendet werden soll.
 
-### <a name="step-2"></a>Schritt 2
+    ```powershell
+    Select-AzureRmSubscription -SubscriptionName "<Subscription name>"
+    ```
 
-Wählen Sie das Abonnement aus, das für dieses Szenario verwendet werden soll.
+3. Rufen Sie das Gateway ab, dem Sie die Web Application Firewall hinzufügen möchten.
 
-```powershell
-Select-AzureRmSubscription -SubscriptionName "<Subscription name>"
-```
+    ```powershell
+    $gw = Get-AzureRmApplicationGateway -Name "AdatumGateway" -ResourceGroupName "MyResourceGroup"
+    ```
 
-### <a name="step-3"></a>Schritt 3
+1. Konfigurieren Sie die Web Application Firewall-SKU. Die verfügbaren Größen sind **WAF\_Large** und **WAF\_Medium**. Bei Verwendung von Web Application Firewall muss die Ebene **WAF** ausgewählt sein, und beim Einrichten der SKU muss die Kapazität bestätigt werden.
 
-Rufen Sie das Gateway ab, dem Sie die Web Application Firewall hinzufügen möchten.
+    ```powershell
+    $gw | Set-AzureRmApplicationGatewaySku -Name WAF_Large -Tier WAF -Capacity 2
+    ```
 
-```powershell
-$gw = Get-AzureRmApplicationGateway -Name "AdatumGateway" -ResourceGroupName "MyResourceGroup"
-```
+1. Konfigurieren Sie die WAF-Einstellungen, wie im folgenden Beispiel definiert:
 
-### <a name="step-4"></a>Schritt 4
+   Für **FirewallMode** lauten die verfügbaren Werte „Prevention“ und „Detection“.
 
-Konfigurieren Sie die Web Application Firewall-SKU. Die verfügbaren Größen sind **WAF\_Large** und **WAF\_Medium**. Bei Verwendung von Web Application Firewall muss die Ebene **WAF** ausgewählt sein, und beim Einrichten der SKU muss die Kapazität bestätigt werden.
+    ```powershell
+    $gw | Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention
+    ```
 
-```powershell
-$gw | Set-AzureRmApplicationGatewaySku -Name WAF_Large -Tier WAF -Capacity 2
-```
+1. Aktualisieren Sie das Anwendungsgateway mit den im vorherigen Schritt definierten Einstellungen.
 
-### <a name="step-5"></a>Schritt 5
-
-Konfigurieren Sie die WAF-Einstellungen, wie im folgenden Beispiel definiert:
-
-Für **WafMode** lauten die verfügbaren Werte „Prevention“ und „Detection“.
-
-```powershell
-$gw | Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode Prevention
-```
-
-### <a name="step-6"></a>Schritt 6
-
-Aktualisieren Sie das Anwendungsgateway mit den im vorherigen Schritt definierten Einstellungen.
-
-```powershell
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
-```
+    ```powershell
+    Set-AzureRmApplicationGateway -ApplicationGateway $gw
+    ```
 
 Dieser Befehl aktualisiert das Anwendungsgateway mit der Web Application Firewall. Es wird empfohlen, die [Application Gateway-Diagnose](application-gateway-diagnostics.md) anzuzeigen, um die Anzeige von Protokollen für Ihr Anwendungsgateway nachzuvollziehen. Aufgrund der Art der WAF-Sicherheit müssen Protokolle regelmäßig überprüft werden, um sich über die Sicherheitslage Ihrer Webanwendungen zu informieren.
 
@@ -107,35 +98,19 @@ Die folgenden Schritte führen Sie durch den gesamten Prozess zum Erstellen eine
 
 Stellen Sie sicher, dass Sie die neueste Version von Azure PowerShell verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>Schritt 1
+1. Melden Sie sich bei Azure an, indem Sie `Login-AzureRmAccount` ausführen. Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.
 
-Anmelden an Azure
+1. Überprüfen Sie die Abonnements für das Konto, indem Sie `Get-AzureRmSubscription` ausführen.
 
-```powershell
-Login-AzureRmAccount
-```
+1. Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
-Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.
+    ```powershell
+    Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
+    ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Überprüfen Sie die Abonnements für das Konto.
-
-```powershell
-Get-AzureRmSubscription
-```
-
-### <a name="step-3"></a>Schritt 3
-
-Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
-
-```powershell
-Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
-```
-
-### <a name="step-4"></a>Schritt 4
-
-Erstellen Sie eine Ressourcengruppe. (Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.)
+Erstellen Sie eine Ressourcengruppe für das Anwendungsgateway.
 
 ```powershell
 New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
@@ -148,154 +123,67 @@ Im obigen Beispiel haben wir eine Ressourcengruppe namens „appgw-RG“ mit dem
 > [!NOTE]
 > Wenn Sie einen benutzerdefinierten Test für Ihr Anwendungsgateway konfigurieren müssen, finden Sie unter [Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure-Ressourcen-Manager](application-gateway-create-probe-ps.md)weitere Informationen. Weitere Informationen finden Sie unter [Benutzerdefinierte Tests und Systemüberwachung](application-gateway-probe-overview.md) .
 
-### <a name="step-5"></a>Schritt 5
+### <a name="configure-virtual-network"></a>Konfigurieren des virtuellen Netzwerks
 
-Weisen Sie einen Adressbereich für das Subnetz zu, das für das Anwendungsgateway verwendet werden soll.
+Für Application Gateway ist ein eigenes Subnetz erforderlich. In diesem Schritt erstellen Sie ein virtuelles Netzwerk mit einem Adressbereich von 10.0.0.0/16 sowie zwei Subnetze: eines für das Anwendungsgateway und das andere für die Back-End-Poolmitglieder.
 
 ```powershell
+# Create a subnet configuration object for the application gateway subnet. A subnet for an application should have a minimum of 28 mask bits. This value leaves 10 available addresses in the subnet for Application Gateway instances. With a smaller subnet, you may not be able to add more instance of your application gateway in the future.
 $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
-```
 
-> [!NOTE]
-> Ein Subnetz für eine Anwendung sollte mindestens 28 Maskenbits aufweisen. Bei diesem Wert verbleiben 10 verfügbare Adressen im Subnetz für Application Gateway-Instanzen. Mit einem kleineren Subnetz können Sie später möglicherweise keine weiteren Instanzen Ihres Anwendungsgateways hinzufügen.
-
-
-### <a name="step-6"></a>Schritt 6
-
-Weisen Sie einen Adressbereich zu, der für den Back-End-Adresspool verwendet werden soll.
-
-```powershell
+# Create a subnet configuration object for the backend pool members subnet
 $nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
-```
 
-### <a name="step-7"></a>Schritt 7
-
-Erstellen Sie ein virtuelles Netzwerk mit den vorhergehenden Subnetzen in der Ressourcengruppe, die Sie im Schritt [Erstellen der Ressourcengruppe](#create-the-resource-group)
-
-```powershell
+# Create the virtual network with the previous created subnets
 $vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
 ```
 
-### <a name="step-8"></a>Schritt 8
+### <a name="configure-public-ip-address"></a>Konfigurieren der öffentlichen IP-Adresse
 
-Rufen Sie die virtuelle Netzwerkressource und die Subnetzressourcen ab, die in den folgenden Schritten verwendet werden sollen:
-
-```powershell
-$vnet = Get-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
-$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
-$nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
-```
-
-### <a name="step-9"></a>Schritt 9
-
-Erstellen Sie eine öffentliche IP-Ressource, die für das Anwendungsgateway verwendet werden soll. Diese öffentliche IP-Adresse wird in einem der folgenden Schritte verwendet:
+Um externe Anforderungen zu verarbeiten, erfordert das Anwendungsgateway eine öffentliche IP-Adresse. Diese öffentliche IP-Adresse darf nicht `DomainNameLabel` definiert haben, um vom Anwendungsgateway verwendet zu werden.
 
 ```powershell
+# Create a public IP address for use with the application gateway. Defining the domainnamelabel during creation is not supported for use with application gateway
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name 'appgwpip' -Location "West US" -AllocationMethod Dynamic
 ```
 
-> [!IMPORTANT]
-> Application Gateway unterstützt nicht die Verwendung einer öffentlichen IP-Adresse, die mit einer definierten Domänenbezeichnung erstellt wird. Nur eine öffentliche IP-Adresse mit einer dynamisch erstellten Domänenbezeichnung wird unterstützt. Wenn Sie einen benutzerfreundlichen DNS-Namen für das Anwendungsgateway benötigen, wird empfohlen, einen cname-Datensatz als Alias zu verwenden.
-
-
-### <a name="step-10"></a>Schritt 10
-
-Sie müssen alle Konfigurationselemente einrichten, bevor Sie das Anwendungsgateway erstellen. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Application Gateway-Ressource benötigt werden.
-
-Erstellen Sie eine Anwendungsgateway-IP-Konfiguration. So wird konfiguriert, welches Subnetz vom Anwendungsgateway verwendet wird. Beim Starten des Anwendungsgateways wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
+### <a name="configure-the-application-gateway"></a>Konfigurieren des Anwendungsgateways
 
 ```powershell
+# Create a IP configuration. This configures what subnet the Application Gateway uses. When Application Gateway starts, it picks up an IP address from the subnet configured and routes network traffic to the IP addresses in the back-end IP pool.
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
-```
 
-### <a name="step-11"></a>Schritt 11
-
-Konfigurieren Sie den Back-End-IP-Adresspool mit den IP-Adressen der Back-End-Webserver. Dies sind die IP-Adressen, die den Netzwerkdatenverkehr vom Front-End-IP-Endpunkt empfangen. Sie ersetzen die folgenden IP-Adressen durch die IP-Adressendpunkte Ihrer eigenen Anwendung.
-
-```powershell
+# Create a backend pool to hold the addresses or NICs for the application that application gateway is protecting.
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
-```
 
-### <a name="step-12"></a>Schritt 12
-
-Laden Sie das Zertifikat hoch, das auf den SSL-fähigen Ressourcen des Back-End-Pools verwendet werden soll.
-
-```powershell
+# Upload the authenication certificate that will be used to communicate with the backend servers
 $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile <full path to .cer file>
-```
 
-### <a name="step-13"></a>Schritt 13
-
-Konfigurieren Sie die HTTP-Einstellungen auf dem Back-End des Anwendungsgateways. Weisen Sie den HTTP-Einstellungen das Zertifikat zu, das im vorherigen Schritt hochgeladen wurde.
-
-```powershell
+# Conifugre the backend HTTP settings to be used to define how traffic is routed to the backend pool. The authenication certificate used in the previous step is added to the backend http settings.
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
-```
 
-### <a name="step-14"></a>Schritt 14
-
-Konfigurieren Sie den Front-End-IP-Port für den öffentlichen IP-Endpunkt. Dieser Port ist der Port, mit dem Endbenutzer eine Verbindung herstellen.
-
-```powershell
+# Create a frontend port to be used by the listener.
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
-```
 
-### <a name="step-15"></a>Schritt 15
-
-Erstellen Sie eine Front-End-IP-Konfiguration. Diese Einstellung ordnet dem Front-End des Anwendungsgateways eine private oder öffentliche IP-Adresse zu. Im folgenden Schritt wird die öffentliche IP-Adresse aus dem vorherigen Schritt der Front-End-IP-Konfiguration zugeordnet.
-
-```powershell
+# Create a frontend IP configuration to associate the public IP address with the application gateway
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
-```
 
-### <a name="step-16"></a>Schritt 16
-
-Konfigurieren Sie das Zertifikat für das Anwendungsgateway. Dieses Zertifikat wird zum Entschlüsseln und erneuten Verschlüsseln des Datenverkehrs auf dem Anwendungsgateway verwendet.
-
-```powershell
+# Configure the certificate for the application gateway. This certificate is used to decrypt and re-encrypt the traffic on the application gateway.
 $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
-```
 
-### <a name="step-17"></a>Schritt 17
-
-Erstellen Sie den HTTP-Listener für das Anwendungsgateway. Weisen Sie die zu verwendende Front-End-IP-Konfiguration, den Port und das SSL-Zertifikat zu.
-
-```powershell
+# Create the HTTP listener for the application gateway. Assign the front-end ip configuration, port, and ssl certificate to use.
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
-```
 
-### <a name="step-18"></a>Schritt 18
-
-Erstellen Sie eine Routingregel für den Lastenausgleich, durch die das Verhalten des Lastenausgleichs konfiguriert wird. In diesem Beispiel wird eine Roundrobin-Basisregel erstellt.
-
-```powershell
+#Create a load balancer routing rule that configures the load balancer behavior. In this example, a basic round robin rule is created.
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
-```
 
-### <a name="step-19"></a>Schritt 19
-
-Konfigurieren Sie die Instanzgröße des Anwendungsgateways.
-
-```powershell
+# Configure the SKU of the application gateway
 $sku = New-AzureRmApplicationGatewaySku -Name WAF_Medium -Tier WAF -Capacity 2
-```
 
-> [!NOTE]
-> Sie können zwischen **WAF\_Medium** und **WAF\_Large** wählen. Der Tarif lautet bei Verwendung der WAF immer **WAF**. Die Kapazität ist eine beliebige Zahl zwischen 1 und 10.
-
-### <a name="step-20"></a>Schritt 20
-
-Konfigurieren Sie den Modus für die WAF. Die zulässigen Werte lauten **Prevention** (Schutz) und **Detection** (Erkennung).
-
-```powershell
+#Configure the waf configuration settings.
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
-```
 
-### <a name="step-21"></a>Schritt 21
-
-Erstellen Sie ein Anwendungsgateway mit allen Konfigurationselementen aus den vorherigen Schritten. In diesem Beispiel heißt das Anwendungsgateway „appgwtest“.
-
-```powershell
+# Create the application gateway utilizing all the previously created configuration objects
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert
 ```
 

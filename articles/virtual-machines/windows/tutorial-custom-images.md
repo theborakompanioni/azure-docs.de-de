@@ -13,21 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 05/08/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: ab19073735816ebb32a9840ec03b31b358ccb565
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 773b37ec8f775d68f1faca0d252f3064c7de0317
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/09/2017
 
 ---
 
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe von PowerShell
 
-In diesem Tutorial erfahren Sie, wie Sie ein eigenes benutzerdefiniertes Image eines virtuellen Azure-Computers definieren. Benutzerdefinierte Images ermöglichen Ihnen die Erstellung von virtuellen Computern unter Verwendung eines Images, das Sie bereits konfiguriert haben. Benutzerdefinierte Images können zum Bootstrapping des Vorabladens von Binärdateien und Anwendungen, Anwendungskonfigurationen, VM-Datenträgerdefinitionen und anderen Betriebssystemkonfigurationen verwendet werden. Beim Erstellen eines benutzerdefinierten Images werden der virtuelle Computer, den Sie anpassen, und alle angefügten Datenträger in das Image einbezogen.
+Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. In diesem Tutorial erstellen Sie ein eigenes benutzerdefiniertes Image eines virtuellen Azure-Computers. Folgendes wird vermittelt:
 
-Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](/powershell/azure/overview)-Modul ausgeführt werden.
+> [!div class="checklist"]
+> * Sysprep und Generalisieren virtueller Computer
+> * Erstellen eines benutzerdefinierten Images
+> * Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image
+> * Liste aller Images in Ihrem Abonnement
+> * Löschen eines Images
+
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -169,11 +176,40 @@ New-AzureRmVM `
     -VM $vmConfig
 ```
 
+## <a name="image-management"></a>Verwaltung von Images 
+
+Hier sind einige Beispiele für allgemeine Aufgaben der Imageverwaltung und ihre Ausführung mithilfe von PowerShell.
+
+Auflisten aller Images nach Namen.
+
+```powershell
+$images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
+$images.name
+```
+
+Löschen eines Images. Dieses Beispiel löscht das Image mit dem Namen *myOldImage* aus *myResourceGroup*.
+
+```powershell
+Remove-AzureRmImage `
+    -ImageName myOldImage `
+    -ResourceGroupName myResourceGroup
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zum Erstellen von benutzerdefinierten VM-Images erhalten. Im nächsten Tutorial erhalten Sie Informationen zu hoch verfügbaren virtuellen Computern.
+In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Es wurde Folgendes vermittelt:
 
-[Erstellen eines hoch verfügbaren virtuellen Computers](tutorial-availability-sets.md)
+> [!div class="checklist"]
+> * Sysprep und Generalisieren virtueller Computer
+> * Erstellen eines benutzerdefinierten Images
+> * Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image
+> * Liste aller Images in Ihrem Abonnement
+> * Löschen eines Images
+
+Im nächsten Tutorial erhalten Sie Informationen zu hoch verfügbaren virtuellen Computern.
+
+> [!div class="nextstepaction"]
+> [Erstellen eines hoch verfügbaren virtuellen Computers](tutorial-availability-sets.md)
 
 
 

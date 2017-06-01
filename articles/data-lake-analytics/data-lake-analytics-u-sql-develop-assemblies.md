@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/30/2016
 ms.author: jejiang
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 98b04d28d1b905dad19ad6cf608733c6554f01cf
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -32,8 +34,8 @@ Die einfachste Möglichkeit zur Verwendung von benutzerdefiniertem Code ist die 
 Zur Kompensierung dieser Nachteile können Sie CodeBehind in Assemblys verwandeln und diese im Data Lake Analytics-Katalog registrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++
-* Microsoft Azure SDK für .NET, Version 2.5 oder höher.  Führen Sie die Installation mit dem Webplattform-Installer durch.
+* Visual Studio 2017, Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++
+* Microsoft Azure SDK für .NET, Version 2.5 oder höher.  Führen Sie die Installation mit dem Webplattform-Installer oder dem Visual Studio-Installer durch.
 * Data Lake Analytics-Konto.  Weitere Informationen finden Sie unter [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md).
 * Arbeiten Sie das Lernprogramm [Erste Schritte mit U-SQL-Studio für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) durch.
 * Stelle Sie eine Verbindung zu Azure her.
@@ -79,8 +81,3 @@ Siehe [Verwenden der Azure Data Lake-Tools für Visual Studio Code](data-lake-an
 * [Verwenden von Data Lake-Tools für Visual Studio zum Entwickeln von U-SQL-Anwendungen](data-lake-analytics-data-lake-tools-get-started.md)
 * [Verwenden des Azure Data Lake Analytics-Katalogs (U-SQL)](data-lake-analytics-use-u-sql-catalog.md)
 * [Verwenden der Azure Data Lake-Tools für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
-

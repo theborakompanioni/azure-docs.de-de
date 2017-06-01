@@ -1,6 +1,6 @@
 ---
 
-title: Attributbasierte dynamische Gruppenmitgliedschaft in der Azure Active Directory-Vorschau | Microsoft-Dokumentation
+title: Attributbasierte dynamische Gruppenmitgliedschaft in Azure Active Directory | Microsoft-Dokumentation
 description: "Erstellen erweiterter Regeln für eine dynamische Gruppenmitgliedschaft, einschließlich unterstützter Ausdrucksregeloperatoren und -parameter"
 services: active-directory
 documentationcenter: 
@@ -13,20 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6ef550047a28a6070cad5da2e00cf18fbca3f9fa
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: da03dc8afa58ddfe97301dabed186ed325410937
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory-preview"></a>Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in der Azure Active Directory-Vorschau
-Im Azure-Portal haben Sie die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Gruppen in der Azure Active Directory-Vorschau (Azure AD) aktivieren können. [Was enthält die Vorschauversion?](active-directory-preview-explainer.md) 
-
-In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft erläutert.
+# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory
+In Azure Active Directory (Azure AD) können Sie erweiterte Regeln für die Aktivierung von komplexen, attributbasierten dynamischen Mitgliedschaften für Gruppen erstellen. In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft erläutert.
 
 ## <a name="to-create-the-advanced-rule"></a>So erstellen Sie eine erweiterte Regel
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.

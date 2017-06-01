@@ -13,30 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/18/2017
+ms.date: 05/02/2017
 ms.author: davidmu
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: e1b3e9756e149c5cba67f8b5c37e1d153dbf81ab
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 7fd0ace35cfe0286c874e4a75b733053aa945d39
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 ---
 
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Verwalten von virtuellen Azure-Netzwerken und virtuellen Windows-Computern mit Azure PowerShell
 
-In diesem Tutorial erfahren Sie, wie Sie mehrere virtuelle Computer (VMs) in einem virtuellen Netzwerk (VNET) erstellen und die Netzwerkverbindung zwischen ihnen konfigurieren. Nach Abschluss des Tutorials kann über das Internet über Port 80 für HTTP-Verbindungen auf einen virtuellen Front-End-Computer zugegriffen werden. Ein virtueller Back-End-Computer mit einer SQL Server-Datenbank ist isoliert, und der Zugriff ist nur über den virtuellen Front-End-Computer an Port 1433 möglich.
+Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommunikation. In diesem Tutorial erstellen Sie mehrere virtuelle Computer (VMs) in einem virtuellen Netzwerk und konfigurieren die Netzwerkverbindung zwischen ihnen. Folgendes wird vermittelt:
 
-Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](/powershell/azure/overview)-Modul ausgeführt werden.
+> [!div class="checklist"]
+> * Erstellen eines virtuellen Netzwerks
+> * Erstellen von Subnetzen in virtuellen Netzwerken
+> * Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen
+> * Anzeigen der Datenverkehrsregeln in Aktion
+
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 ## <a name="create-vnet"></a>Erstellen des VNET
 
 Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Bei einem VNet handelt es sich um eine logische Isolation von der dedizierten Azure-Cloud für Ihr Abonnement. Ein VNET umfasst Subnetze, Regeln für die Verbindung mit diesen Subnetzen und Verbindungen von den virtuellen Computern zu den Subnetzen.
 
-Vor der Erstellung anderer Azure-Ressourcen müssen Sie zunächst mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *westus* eine Ressourcengruppe mit dem Namen *myRGNetwork*:
+Vor der Erstellung anderer Azure-Ressourcen müssen Sie zunächst mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *EastUS* eine Ressourcengruppe mit dem Namen *myRGNetwork*:
 
 ```powershell
-New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location westus
+New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
 Ein Subnetz ist eine untergeordnete Ressource eines VNet und hilft, die Segmente von Adressräumen innerhalb eines CIDR-Blocks mithilfe von IP-Adressenpräfixen zu definieren. NICs können zu Subnetzen hinzugefügt und mit virtuellen Computern verbunden werden, sodass sie Konnektivität für verschiedene Workloads bereitstellen.
@@ -54,7 +60,7 @@ Erstellen Sie ein VNet mit dem Namen *MyVNet* unter Angabe von *MyFrontendSubnet
 ```powershell
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $frontendSubnet
@@ -69,7 +75,7 @@ Erstellen Sie mit [New-AzureRmPublicIpAddress](/powershell/module/azurerm.networ
 ```powershell
 $pip = New-AzureRmPublicIpAddress `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -AllocationMethod Static `
   -Name myPublicIPAddress
 ```
@@ -80,7 +86,7 @@ Erstellen Sie mit [New-AzureRmNetworkInterface](/powershell/module/azurerm.netwo
 ```powershell
 $frontendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myFrontendNic `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id
@@ -122,7 +128,7 @@ $frontendVM = Add-AzureRmVMNetworkInterface `
     -Id $frontendNic.Id
 New-AzureRmVM `
     -ResourceGroupName myRGNetwork `
-    -Location westus `
+    -Location EastUS `
     -VM $frontendVM
 ```
 
@@ -184,7 +190,7 @@ Fügen Sie mit [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.netw
 ```powershell
 $nsgBackend = New-AzureRmNetworkSecurityGroup `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myBackendNSG `
   -SecurityRules $nsgBackendRule
 ```
@@ -213,7 +219,7 @@ Erstellen Sie *myBackendNic*:
 ```powershell
 $backendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -Name myBackendNic `
   -SubnetId $vnet.Subnets[1].Id
 ```
@@ -254,7 +260,7 @@ $backendVM = Add-AzureRmVMNetworkInterface `
   -Id $backendNic.Id
 New-AzureRmVM `
   -ResourceGroupName myRGNetwork `
-  -Location westus `
+  -Location EastUS `
   -VM $backendVM
 ```
 
@@ -262,6 +268,16 @@ In dem verwendeten Image ist SQL Server installiert, wird aber in diesem Tutoria
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Informationen zum Erstellen und Schützen von Azure-Netzwerken in Bezug auf virtuelle Computer erhalten. Im nächsten Tutorial erfahren Sie mehr über das Überwachen der VM-Sicherheit mit Azure Security Center.
+In diesem Tutorial haben Sie Azure-Netzwerke in Bezug auf virtuelle Computer erstellt und erhalten. 
 
-[Verwalten der Sicherheit virtueller Computer](./tutorial-azure-security.md)
+> [!div class="checklist"]
+> * Erstellen eines virtuellen Netzwerks
+> * Erstellen von Subnetzen in virtuellen Netzwerken
+> * Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen
+> * Anzeigen der Datenverkehrsregeln in Aktion
+
+Im nächsten Tutorial erhalten Sie Informationen zum Überwachen der Sicherung von Daten auf virtuellen Computern mit Azure Backup. verfügbar.
+
+> [!div class="nextstepaction"]
+> [Back up Windows virtual machines in Azure (Sichern virtueller Windows-Computer in Azure)](./tutorial-backup-vms.md)
+

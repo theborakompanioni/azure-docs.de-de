@@ -11,23 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 05/03/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 179dc3fa0c1ab534cb1116269832f3bc81c4c434
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 ---
 
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 
-In diesem Artikel wird beschrieben, wie Probleme bei einem Azure Traffic Manager-Profil mit dem Status „Heruntergestuft“ behoben werden können. Für dieses Szenario nehmen wir an, Sie haben ein Traffic Manager-Profil konfiguriert, das auf einige Ihrer in cloudapp.net gehosteten Dienste verweist. Bei der Überprüfung der Integrität von Traffic Manager stellen Sie fest, dass der Status „Heruntergestuft“ angezeigt wird.
+In diesem Artikel wird beschrieben, wie Probleme bei einem Azure Traffic Manager-Profil mit dem Status „Heruntergestuft“ behoben werden können. Für dieses Szenario nehmen wir an, Sie haben ein Traffic Manager-Profil konfiguriert, das auf einige Ihrer in cloudapp.net gehosteten Dienste verweist. Wenn die Integrität von Traffic Manager den Status **Heruntergestuft** anzeigt, könnte der Status einer oder mehrerer Endpunkte **Heruntergestuft** sein:
 
-![Status „Heruntergestuft“](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degraded.png)
+![Heruntergestufter Endpunktstatus](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Auf der Registerkarte „Endpunkte“ dieses Profils können Sie sehen, dass für einen oder mehrere Endpunkte der Status „Offline“ angezeigt wird:
+Wenn die Integrität von Traffic Manager den Status **Inaktiv** anzeigt, sind möglicherweise beide Endpunkte **Deaktiviert**:
 
-![Offline](./media/traffic-manager-troubleshooting-degraded/traffic-manager-offline.png)
+![Traffic Manager-Status Inaktiv](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
 ## <a name="understanding-traffic-manager-probes"></a>Hinweise zu Traffic Manager-Tests
 
@@ -94,9 +96,4 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 [Azure Traffic Manager-Cmdlets][1]
 
 [1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 

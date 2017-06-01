@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 05/04/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 82bc44b20158a22dfae0d6c8fbf5f1c1f4577c91
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 3d0508c5cc31ab9fda728596895aaab8e4cb7814
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -117,20 +118,20 @@ Jede Interaktion in dem in Abbildung X gezeigten Diagramm stellt eine Zugriffss
 
 1. Bedingter Zugriff auf lokal gehostete Anwendungen: Sie können registrierte Geräte mit Zugriffsrichtlinien für Anwendungen verwenden, die für die Verwendung von AD FS mit Windows Server 2012 R2 konfiguriert sind. Weitere Informationen zum Einrichten des bedingten Zugriffs für lokale Systeme finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access.md).
 
-2. Steuerung des Zugriffs auf das Azure-Verwaltungsportal: Azure verfügt auch über die Fähigkeit zum Steuern des Zugriffs auf das Verwaltungsportal mit rollenbasierter Zugriffssteuerung (RBAC, Role Based Access Control). Diese Methode ermöglicht dem Unternehmen, die Menge der Vorgänge zu beschränken, die eine einzelne Person ausführen kann, wenn sie auf das Azure-Verwaltungsportal zugreift. Durch Einsatz von RBAC zur Steuerung des Zugriffs auf das Portal können IT-Administratoren mithilfe folgender Ansätze zur Zugriffsverwaltung den Zugriff delegieren:
+2. Zugriffssteuerung auf das Azure-Portal: Mit Azure können Sie auch den Zugriff auf das Portal mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) steuern. Diese Methode ermöglicht dem Unternehmen, die Menge der Vorgänge zu beschränken, die eine einzelne Person im Azure-Portal ausführen kann. Durch Einsatz von RBAC zur Steuerung des Zugriffs auf das Portal können IT-Administratoren mithilfe folgender Ansätze zur Zugriffsverwaltung den Zugriff delegieren:
 
 * Gruppenbasierte Rollenzuweisung: Sie können Azure AD-Gruppen den Zugriff zuweisen, die von Ihrem lokalen Active Directory aus synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation in Tools und Prozesse zum Verwalten von Gruppen vorgenommen hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
 * Nutzen Sie integrierte Rollen in Azure: Sie können diese drei Rollen verwenden – Besitzer, Mitwirkender und Leser, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
 * Präziser Zugriff auf Ressourcen: Sie können Benutzern und Gruppen Rollen für bestimmte Abonnements, Ressourcengruppen oder eine einzelne Azure-Ressource, z.B. eine Website oder eine Datenbank, zuweisen. Auf diese Weise können Sie sicherstellen, dass Benutzer Zugriff auf alle Ressourcen haben, die sie benötigen, und keinen Zugriff auf Ressourcen, die sie nicht verwalten müssen.
 
 > [!NOTE]
-> Weitere Informationen zu dieser Funktion finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/) . Entwickler, die Anwendungen erstellen und die Zugriffssteuerung hierfür anpassen möchten, können auch die Anwendungsrollen aus Azure AD für die Autorisierung verwenden. Lesen Sie dieses [WebApp-RoleClaims-DotNet-Beispiel](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) , um zu erfahren, wie Sie Ihre App so erstellen, dass sie diese Funktion nutzt.
+> Wenn Sie die Anwendungen erstellen und die Zugriffssteuerung hierfür anpassen möchten, können Sie auch die Anwendungsrollen aus Azure AD für die Autorisierung verwenden. Lesen Sie dieses [WebApp-RoleClaims-DotNet-Beispiel](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) , um zu erfahren, wie Sie Ihre App so erstellen, dass sie diese Funktion nutzt.
 >
 >
 
-3.Bedingter Zugriff für Office 365-Anwendungen mit Microsoft Intune: IT-Administratoren können Geräterichtlinien für den bedingten Zugriff bereitstellen, um Unternehmensressourcen zu schützen und gleichzeitig Information-Workern auf kompatiblen Geräten den Zugriff auf die Dienste zu gestatten. Weitere Informationen finden Sie unter [Geräterichtlinien für den bedingten Zugriff auf Office 365-Dienste](active-directory-conditional-access-device-policies.md).
+3. Bedingter Zugriff für Office 365-Anwendungen mit Microsoft Intune: IT-Administratoren können Geräterichtlinien für den bedingten Zugriff bereitstellen, um Unternehmensressourcen zu schützen und gleichzeitig Information-Workern auf kompatiblen Geräten den Zugriff auf die Dienste zu gestatten. Weitere Informationen finden Sie unter [Geräterichtlinien für den bedingten Zugriff auf Office 365-Dienste](active-directory-conditional-access-device-policies.md).
 
-4.Bedingter Zugriff für SaaS-Apps: [Dieses Feature](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für Multi-Factor Authentication und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören. Die Regeln für die mehrstufige Authentifizierung können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen.
+4. Bedingter Zugriff für SaaS-Apps: [Dieses Feature](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für Multi-Factor Authentication und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören. Die Regeln für die mehrstufige Authentifizierung können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen.
 
 Da die Optionen zur Zugriffssteuerung einem mehrstufigen Ansatz unterliegen, ist ein Vergleich dieser Optionen für diese Aufgabe nicht machbar. Stellen Sie sicher, dass Sie alle verfügbaren Optionen für jedes Szenario nutzen, das die Steuerung des Zugriffs auf Ihre Ressourcen erfordert.
 

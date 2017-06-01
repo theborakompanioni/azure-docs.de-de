@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2017
+ms.date: 05/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a7240c52e9351a60e3cf577d8112862c7dc8d913
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: d4c509c43ff647f3d9b96ffd136073312a81049b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -115,8 +116,7 @@ Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem 
 Bei der Gruppenlizenzzuweisung erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Wenn sich Ihre Benutzer an unterschiedlichen Standorten befinden, achten Sie darauf, diese in Ihren Benutzerobjekten richtig anzugeben, bevor Sie Gruppen mit Lizenzen Benutzer hinzufügen.
 
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Verwenden von PowerShell, um anzuzeigen, wer über geerbte direkte Lizenzen verfügt
-
-Während des Vorschauzeitraums einer Azure AD-Version kann PowerShell nicht verwendet werden, um Gruppenlizenzzuweisungen vollständig zu steuern. Es kann aber verwendet werden, um grundlegende Informationen zu Benutzerstatus abzurufen und zu ermitteln, ob Lizenzen aus einer Gruppe geerbt oder direkt zugewiesen wurden. Das folgende Codebeispiel zeigt, wie ein Administrator einen einfachen Bericht zu Lizenzzuweisungen erstellen kann.
+Während der öffentlichen Vorschau können Gruppenlizenzzuweisungen nicht vollständig mithilfe von PowerShell gesteuert werden. Es kann aber verwendet werden, um grundlegende Informationen zu Benutzerstatus abzurufen und zu ermitteln, ob Lizenzen aus einer Gruppe geerbt oder direkt zugewiesen wurden. Das folgende Codebeispiel zeigt, wie ein Administrator einen einfachen Bericht zu Lizenzzuweisungen erstellen kann.
 
 1. Führen Sie das `connect-msolservice`-Cmdlet aus, um die Authentifizierung durchzuführen und eine Verbindung mit Ihrem Mandanten herzustellen.
 

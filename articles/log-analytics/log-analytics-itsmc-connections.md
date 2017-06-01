@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: v-jysur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 283ae010aafe309bb09f7c49248b61717cb56dd0
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 732d968112913b252b40a37abc24f4de5d37999f
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/08/2017
 
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>Verbinden von ITSM-Produkten/-Diensten mit dem IT Service Management-Connector (Vorschau)
@@ -95,9 +95,8 @@ Führen Sie das Skript nach Bereitstellung der folgenden erforderlichen Details 
 - Ressourcengruppenname
 - Ort
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
-- URL für Bereitstellung
-- Websitename für Ihre Web-App
-- Name des BizTalk-Diensts.
+- Präfix des Namens der Website für Ihre Web-App
+- Service Bus-Namespace.
 
 Das Skript erstellt die Web-App mit dem Namen, den Sie (zusammen mit einigen zusätzlichen Zeichenfolgen zum Sicherstellen der Eindeutigkeit) angegeben haben. Es generiert die **Web-App-URL**, **Client-ID** und das **Clientgeheimnis**.
 

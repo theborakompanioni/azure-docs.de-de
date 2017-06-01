@@ -13,13 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 05/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 6c92292a67d14ac43c0fe5dbe7e14672c74b216b
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: cf460eed4bd290fbdcb9670a4ec4999f4c96c275
+ms.contentlocale: de-de
+ms.lasthandoff: 05/05/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Analysieren von Flugverspätungsdaten mit Hive in Linux-basiertem HDInsight
@@ -76,7 +77,7 @@ Hier erfahren Sie, wie Sie Flugverspätungsdaten mithilfe von Hive in einem Linu
     unzip FILENAME.zip
     ```
 
-    Dieser Befehl extrahiert eine CSV-Datei, die ungefähr 60MB groß ist.
+    Dieser Befehl extrahiert eine CSV-Datei, die ungefähr 60 MB groß ist.
 
 4. Verwenden Sie den folgenden Befehl, um ein Verzeichnis in HDInsight-Speicher zu erstellen, und kopieren Sie dann die Datei in das Verzeichnis:
 
@@ -157,7 +158,7 @@ Importieren Sie mit den folgenden Schritten Daten aus der CSV-Datei in eine Hive
     FROM delays_raw;
     ```
 
-2. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y**
+2. Drücken Sie zum Speichern der Datei **STRG+X** und anschließend **Y**.
 
 3. Starten Sie Hive mit dem folgenden Befehl, und führen Sie die Datei **flightdelays.hql** aus:
 
@@ -194,7 +195,7 @@ Importieren Sie mit den folgenden Schritten Daten aus der CSV-Datei in eine Hive
 
 Wenn Sie bereits über eine SQL-Datenbank verfügen, müssen Sie den Namen des Servers abrufen. Hierzu können Sie im [Azure-Portal](https://portal.azure.com) durch Auswahl von **SQL-Datenbanken** den Servernamen finden und dann nach dem Namen der Datenbank filtern, die Sie verwenden möchten. Der Name des Servers ist in der Spalte **SERVER** aufgelistet.
 
-Wenn Sie noch nicht über eine SQL-Datenbank verfügen, nutzen Sie die Informationen in [SQL-Datenbank-Tutorial: Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](../sql-database/sql-database-get-started.md) , um eine Datenbank zu erstellen. Sie müssen den für die Datenbank verwendeten Servernamen speichern.
+Wenn Sie noch nicht über eine SQL-Datenbank verfügen, nutzen Sie die Informationen in [SQL-Datenbank-Tutorial: Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](../sql-database/sql-database-get-started.md) , um eine Datenbank zu erstellen. Speichern Sie den für die Datenbank verwendeten Servernamen.
 
 ## <a name="create-a-sql-database-table"></a>Erstellen einer SQL-Datenbanktabelle
 
@@ -237,16 +238,16 @@ Wenn Sie noch nicht über eine SQL-Datenbank verfügen, nutzen Sie die Informati
     GO
     ```
 
-    Nach Eingabe der Anweisung `GO` werden die vorherigen Anweisungen ausgewertet. So wird eine Tabelle namens **delays** mit einem gruppierten Index erstellt.
+    Nach Eingabe der Anweisung `GO` werden die vorherigen Anweisungen ausgewertet. Diese Abfrage erstellt eine Tabelle mit dem Namen **delays** mit einem gruppierten Index.
 
-    Stellen Sie wie folgt sicher, dass die Tabelle erstellt wurde:
+    Stellen Sie mit der folgenden Abfrage sicher, dass die Tabelle erstellt wurde:
 
     ```
     SELECT * FROM information_schema.tables
     GO
     ```
 
-    Die Ausgabe sieht in etwa wie folgt aus:
+    Die Ausgabe sieht in etwa wie folgender Text aus:
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE

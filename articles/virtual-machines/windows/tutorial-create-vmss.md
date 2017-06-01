@@ -13,20 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 05/02/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: bbd4f044d85f2e22f27edc44b91fd42aef304ed2
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8a5f6e8bf01c8bc38f3fd327acd0ddc8f9cdd7de
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 ---
 
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hoch verfügbaren App unter Windows
-In diesem Tutorial erfahren Sie, wie sich mithilfe von VM-Skalierungsgruppen in Azure die Anzahl der virtuellen Computer (VMs), auf denen Ihre App ausgeführt wird, schnell skalieren lässt. Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. Um eine VM-Skalierungsgruppe in Aktion zu sehen, erstellen Sie eine einfache IIS-Website, die auf mehreren virtuellen Windows-Computern ausgeführt wird.
+Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl der virtuellen Computer in der Skalierungsgruppe manuell skalieren oder basierend auf CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine Skalierungsgruppe für virtuelle Computer bereit. Folgendes wird vermittelt:
 
-Die Schritte in diesem Tutorial können mit dem neuesten [Azure PowerShell](/powershell/azureps-cmdlets-docs/)-Modul ausgeführt werden.
+> [!div class="checklist"]
+> * Verwenden der Benutzerdefinierten Skripterweiterung zum Definieren einer IIS-Website zur Skalierung
+> * Erstellen eines Lastenausgleichs für Ihre Skalierungsgruppe
+> * Erstellen einer Skalierungsgruppe für virtuelle Computer
+> * Erhöhen oder Verringern der Anzahl der Instanzen in einer Skalierungsgruppe
+> * Erstellen von Regeln zur automatischen Skalierung
+
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 
 ## <a name="scale-set-overview"></a>Übersicht über Skalierungsgruppen
@@ -38,10 +45,10 @@ Bei Verwendung eines Azure-Plattformimages unterstützen Skalierungsgruppen bis 
 
 
 ## <a name="create-an-app-to-scale"></a>Erstellen einer App für die Skalierung
-Bevor Sie eine Skalierungsgruppe erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *westus* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*.
+Bevor Sie eine Skalierungsgruppe erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *EastUS* eine Ressourcengruppe mit dem Namen *myResourceGroupAutomate*:
 
 ```powershell
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location westus
+New-AzureRmResourceGroup -ResourceGroupName myResourceGroupScaleSet -Location EastUS
 ```
 
 In einem früheren Tutorial haben Sie das [Automatisieren der VM-Konfiguration](tutorial-automate-vm-deployment.md) mithilfe der benutzerdefinierten Skripterweiterung kennengelernt. Erstellen Sie die Skalierungsgruppenkonfiguration, und wenden Sie dann eine benutzerdefinierte Skripterweiterung zur Installation und Konfiguration von IIS an:
@@ -49,7 +56,7 @@ In einem früheren Tutorial haben Sie das [Automatisieren der VM-Konfiguration](
 ```powershell
 # Create a config object
 $vmssConfig = New-AzureRmVmssConfig `
-    -Location WestUS `
+    -Location EastUS `
     -SkuCapacity 2 `
     -SkuName Standard_DS2 `
     -UpgradePolicyMode Automatic
@@ -78,7 +85,7 @@ Erstellen Sie einen Load Balancer, der eine öffentliche IP-Adresse hat und Webd
 # Create a public IP address
 $publicIP = New-AzureRmPublicIpAddress `
   -ResourceGroupName myResourceGroupScaleSet `
-  -Location westus `
+  -Location EastUS `
   -AllocationMethod Static `
   -Name myPublicIP
 
@@ -92,7 +99,7 @@ $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPo
 $lb = New-AzureRmLoadBalancer `
   -ResourceGroupName myResourceGroupScaleSet `
   -Name myLoadBalancer `
-  -Location westus `
+  -Location EastUS `
   -FrontendIpConfiguration $frontendIP `
   -BackendAddressPool $backendPool
 
@@ -142,7 +149,7 @@ $subnet = New-AzureRmVirtualNetworkSubnetConfig `
 $vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName "myResourceGroupScaleSet" `
   -Name "myVnet" `
-  -Location "westus" `
+  -Location "EastUS" `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $subnet
 $ipConfig = New-AzureRmVmssIpConfig `
@@ -194,7 +201,7 @@ $scaleset = Get-AzureRmVmss `
   -VMScaleSetName myScaleSet
 
 # Loop through the instanaces in your scale set
-for ($i=0; $i -le ($set.Sku.Capacity - 1); $i++) {
+for ($i=0; $i -le ($scaleset.Sku.Capacity - 1); $i++) {
     Get-AzureRmVmssVM -ResourceGroupName myResourceGroupScaleSet `
       -VMScaleSetName myScaleSet `
       -InstanceId $i
@@ -284,6 +291,17 @@ Add-AzureRmAutoscaleSetting `
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie erfahren, wie Sie eine VM-Skalierungsgruppe erstellen. Im nächsten Tutorial erhalten Sie weitere Informationen zu den Konzepten des Lastenausgleichs für virtuelle Computer.
+In diesem Tutorial haben Sie eine Skalierungsgruppe für virtuelle Computer bereitgestellt. Es wurde Folgendes vermittelt:
 
-[Lastenausgleich für virtuelle Computer](tutorial-load-balancer.md)
+> [!div class="checklist"]
+> * Verwenden der Benutzerdefinierten Skripterweiterung zum Definieren einer IIS-Website zur Skalierung
+> * Erstellen eines Lastenausgleichs für Ihre Skalierungsgruppe
+> * Erstellen einer Skalierungsgruppe für virtuelle Computer
+> * Erhöhen oder Verringern der Anzahl der Instanzen in einer Skalierungsgruppe
+> * Erstellen von Regeln zur automatischen Skalierung
+
+Im nächsten Tutorial erhalten Sie weitere Informationen zu den Konzepten des Lastenausgleichs für virtuelle Computer.
+
+> [!div class="nextstepaction"]
+> [Lastenausgleich für virtuelle Computer](tutorial-load-balancer.md)
+

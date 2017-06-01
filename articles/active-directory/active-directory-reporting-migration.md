@@ -1,4 +1,5 @@
 ---
+
 title: "Speicherorte von Aktivitätsberichten im Azure-Portal | Microsoft-Dokumentation"
 description: "Erfahren Sie, wo Azure Active Directory-Aktivitätsberichte im Azure-Portal gespeichert werden."
 services: active-directory
@@ -12,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2017
+ms.date: 05/04/2017
 ms.author: dhanyahk;markvi
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: f2f5ed98df88df69ee300c9da94ad013a631b3b9
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 7f6d82d211e9b3d25b0efe62ab8dd32f827b08ef
+ms.contentlocale: de-de
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -124,8 +126,8 @@ Sie können im Azure-Portal auf dem Blatt **Azure Active Directory** unter **SIC
 
 Weitere Informationen zu Sicherheitsberichten finden Sie unter:
 
-- [Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal – Vorschau](active-directory-reporting-security-user-at-risk.md)
-- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal – Vorschau](active-directory-reporting-security-risky-sign-ins.md)
+- [Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal](active-directory-reporting-security-user-at-risk.md)
+- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md)
 
 
 ## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Aktivitätsberichte im klassischen Azure-Portal im Vergleich zum Azure-Portal
