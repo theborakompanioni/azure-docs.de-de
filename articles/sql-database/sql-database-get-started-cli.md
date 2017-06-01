@@ -16,10 +16,11 @@ ms.devlang: azurecli
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: fb0cd3898703b9acf54d7ff70774bd090d39f0e5
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: dccebad561b04306126f986193a57aee176aaa0d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -27,15 +28,17 @@ ms.lasthandoff: 04/22/2017
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Verwendung der Azure CLI zum Bereitstellen einer Azure SQL-Datenbank in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) auf einem [logischen SQL-Datenbankserver](sql-database-features.md) ausführlich beschrieben.
 
-Für dieses Schnellstarttutorial muss die aktuelle Version von [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) installiert sein. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Für diesen Schnellstart ist Version 2.0.4 oder höher der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
-```azurecli
+```azure-cli
 az login
 ```
 
@@ -43,7 +46,7 @@ az login
 
 Definieren Sie Variablen zur Verwendung in den Skripts dieses Schnellstarts.
 
-```azurecli
+```azure-cli
 # The data center and resource name for your resources
 export resourcegroupname = myResourceGroup
 export location = westeurope
@@ -63,14 +66,14 @@ export databasename = mySampleDatabase
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `westeurope` erstellt.
 
-```azurecli
+```azurazure-cliecli
 az group create --name $resourcegroupname --location $location
 ```
 ## <a name="create-a-logical-server"></a>Erstellen eines logischen Servers
 
 Erstellen Sie mit dem Befehl [az sql server create](/cli/azure/sql/server#create) einen [logischen Azure SQL-Datenbankserver](sql-database-features.md). Ein logischer Server enthält eine Gruppe von Datenbanken, die als Gruppe verwaltet werden. Im folgenden Beispiel wird in Ihrer Ressourcengruppe ein zufällig benannter Server mit einem Administrator namens `ServerAdmin` und dem Kennwort `ChangeYourAdminPassword1` erstellt. Ersetzen Sie ggf. diese vordefinierten Werte.
 
-```azurecli
+```azure-cli
 az sql server create --name $servername --resource-group $resourcegroupname --location $location \
     --admin-user $adminlogin --admin-password $password
 ```
@@ -79,7 +82,7 @@ az sql server create --name $servername --resource-group $resourcegroupname --lo
 
 Erstellen Sie mit dem Befehl [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) eine [Azure SQL-Datenbank-Firewallregel auf Serverebene](sql-database-firewall-configure.md). Eine Firewallregel auf Serverebene lässt zu, dass eine externe Anwendung wie SQL Server Management Studio oder das SQLCMD-Hilfsprogramm über die Firewall des SQL-Datenbank-Dienstes eine Verbindung mit einer SQL-Datenbank herstellt. Im folgenden Beispiel wird die Firewall nur für andere Azure-Ressourcen geöffnet. Ändern Sie die IP-Adresse in eine für Ihre Umgebung geeignete Adresse, um die externe Konnektivität zu ermöglichen. Verwenden Sie 0.0.0.0 als IP-Startadresse und 255.255.255.255 als Endadresse, wenn Sie alle IP-Adressen öffnen möchten.  
 
-```azurecli
+```azure-cli
 az sql server firewall-rule create --resource-group $resourcegroupname --server $servername \
     -n AllowYourIp --start-ip-address $startip --end-ip-address $endip
 ```
@@ -92,7 +95,7 @@ az sql server firewall-rule create --resource-group $resourcegroupname --server 
 
 Erstellen Sie mit dem Befehl [az sql db create](/cli/azure/sql/db#create) auf dem Server eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Ersetzen Sie diese vordefinierten Werte wie gewünscht (andere Schnellstarts in dieser Sammlung bauen auf den Werten dieses Schnellstarts auf).
 
-```azurecli
+```azure-cli
 az sql db create --resource-group $resourcegroupname --server $servername \
     --name $databasename --sample-name AdventureWorksLT --service-objective S0
 ```

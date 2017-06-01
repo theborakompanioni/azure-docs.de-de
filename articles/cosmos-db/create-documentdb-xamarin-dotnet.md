@@ -1,13 +1,13 @@
 ---
 title: 'Azure Cosmos DB: Erstellen einer Web-App mit Xamarin und Authentifizierung mit Facebook | Microsoft-Dokumentation'
 description: "Veranschaulichung eines .NET-Codebeispiels, das Sie zur Verbindung mit und Abfrage von Azure Cosmos DB verwenden können"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 80aa96973799584118125829f9479fbd14431ac0
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: c8e2e688a7a8b99272c304df37ceff0f9ec52b19
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
-In diesem Schnellstart wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto, eine Dokumentendatenbank und eine Sammlung mithilfe des Azure-Portals erstellen. Anschließend erstellen Sie eine Web-App für To-Do-Listen mit der [.NET-API von DocumentDB](../documentdb/documentdb-sdk-dotnet.md), [Xamarin](https://www.xamarin.com/) und dem Authentifizierungsmodul von Azure Cosmos DB. Die Web-App implementiert ein Datenmuster pro Benutzer, mit dem sich Benutzer über die Authentifizierung mit Facebook anmelden und ihre eigenen To-Do-Elemente verwalten können.
+In diesem Schnellstart wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto, eine Dokumentendatenbank und eine Sammlung mithilfe des Azure-Portals erstellen. Anschließend erstellen Sie eine Web-App für To-Do-Listen mit der [.NET-API von DocumentDB](documentdb-sdk-dotnet.md), [Xamarin](https://www.xamarin.com/) und dem Authentifizierungsmodul von Azure Cosmos DB. Die Web-App implementiert ein Datenmuster pro Benutzer, mit dem sich Benutzer über die Authentifizierung mit Facebook anmelden und ihre eigenen To-Do-Elemente verwalten können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,11 +37,11 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-collection"></a>Hinzufügen einer Sammlung
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
@@ -114,7 +114,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -128,5 +128,5 @@ Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem
 In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto sowie eine Sammlung mit dem Daten-Explorer erstellen und eine Xamarin-App erstellen und bereitstellen können. Jetzt können Sie zusätzliche Daten in Ihr Cosmos DB-Konto importieren. 
 
 > [!div class="nextstepaction"]
-> [Import data into Azure Cosmos DB (Importieren von Daten in Azure Cosmos DB)](../documentdb/documentdb-import-data.md)
+> [Import data into Azure Cosmos DB (Importieren von Daten in Azure Cosmos DB)](import-data.md)
 

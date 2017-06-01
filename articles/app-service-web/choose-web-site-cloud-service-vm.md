@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2f5e6d100effee99b1a1576c0e21f1a311f8131b
-ms.lasthandoff: 12/08/2016
-
+ms.custom: mvc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 17289f6401b36ff6e6a201564aa387f42c712699
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
@@ -51,7 +52,7 @@ In der folgenden Tabelle werden die Funktionen von App Service, Cloud Services, 
 | Integrierte Unterstützung von MySQL-as-a-Service |X |X |X | |Cloud Services können in MySQL-as-a-Service über Angebote von ClearDB integriert werden, jedoch nicht als Bestandteil des Azure-Portal-Workflows. |
 | Unterstützung von ASP.NET, klassischem ASP, Node.js, PHP, Python |X |X |X |X |Service Fabric unterstützt die Erstellung eines Web-Front-Ends mit [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md). Zudem können Sie jede Art von Anwendung (Node.js, Java usw.) als [ausführbare Gastanwendungsdatei](../service-fabric/service-fabric-deploy-existing-app.md) bereitstellen. |
 | Horizontale Skalierung auf mehrere Instanzen ohne erneute Bereitstellung |X |X |X |X |Bei virtuellen Computern ist eine horizontale Skalierung auf mehrere Instanzen möglich. Die Dienste, die auf diesen Computern ausgeführt werden, müssen jedoch so geschrieben werden, dass sie diese horizontale Skalierung unterstützen. Sie müssen einen Lastenausgleich konfigurieren, um Anforderungen über die Computer weiterzuleiten. Zudem müssen Sie eine Affinitätsgruppe erstellen, um gleichzeitigen Neustarts aller Instanzen aufgrund von Wartungs- oder Hardware-Fehlern vorzubeugen. |
-| SSL-Unterstützung |X |X |X |X |Für App Service-Web-Apps wird SSL für benutzerdefinierte Domänen nur in den Modi "Basic" und "Standard" unterstützt. Weitere Informationen zur Verwendung von SSL mit Web-Apps finden Sie unter [Konfigurieren eines SSL-Zertifikats für eine Azure-Website](web-sites-configure-ssl-certificate.md). |
+| SSL-Unterstützung |X |X |X |X |Für App Service-Web-Apps wird SSL für benutzerdefinierte Domänen nur in den Modi "Basic" und "Standard" unterstützt. Weitere Informationen zur Verwendung von SSL mit Web-Apps finden Sie unter [Konfigurieren eines SSL-Zertifikats für eine Azure-Website](app-service-web-tutorial-custom-ssl.md). |
 | Visual Studio-Integration |X |X |X |X | |
 | Remotedebugging |X |X |X | | |
 | Bereitstellung von Code mit TFS |X |X |X |X | |

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 1915201480f57c5f132e13bb5ce4283fbea975fe
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: b2b19a6f2ea20c414119e9dfbf84fda92dd93402
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -31,7 +33,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 * **Grundlegende Kenntnisse des Data Lake Analytics-Auftragsprozesses**. Siehe [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md).
 * **Data Lake Analytics-Konto**. Siehe [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account).
-* **Kopieren der Beispieldaten in das Data Lake Store-Standardkonto**.  Siehe [Vorbereiten von Quelldaten](data-lake-analytics-get-started-portal.md#prepare-source-data)
+* **Kopieren der Beispieldaten in das Data Lake Store-Standardkonto**.  Siehe [Vorbereiten von Quelldaten](data-lake-analytics-get-started-portal.md)
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Übermitteln eines Data Lake Analytics-Auftrags
 Nun erstellen Sie einen U-SQL-Auftrag mit einem ungültigen Quelldateinamen.  
@@ -40,7 +42,7 @@ Nun erstellen Sie einen U-SQL-Auftrag mit einem ungültigen Quelldateinamen.
 
 1. Klicken Sie im Azure-Portal in der oberen linken Ecke auf **Microsoft Azure** .
 2. Klicken Sie auf die Kachel mit Ihrem Data Lake Analytics-Kontonamen.  Der Name wurde hier angeheftet, als das Konto erstellt wurde.
-   Falls das Konto hier nicht angeheftet ist, siehe [Öffnen eines Data Lake Analytics-Kontos im Portal](data-lake-analytics-manage-use-portal.md#access-adla-account).
+   Falls das Konto hier nicht angeheftet ist, siehe [Öffnen eines Data Lake Analytics-Kontos im Portal](data-lake-analytics-manage-use-portal.md#manage-data-sources).
 3. Klicken Sie im oberen Menü auf **Neuer Auftrag** .
 4. Geben Sie den Auftragsnamen und das folgende U-SQL-Skript ein:
 
@@ -102,9 +104,4 @@ Im letzten Abschnitt haben Sie ohne Erfolg einen Auftrag übermittelt.
 * [Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Erste Schritte mit Azure Data Lake Analytics und U-SQL mithilfe von Visual Studio](data-lake-analytics-u-sql-get-started.md)
 * [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c6de21da824a6e81c38f36c41c05ddd704fadcb6
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: e2bfbdd5ca8ec178c2c32c7b52637a8ec7e88a4c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -345,7 +346,6 @@ Wenn Sie Ihre Vorlage im Marketplace veröffentlichen möchten, richten Sie unte
 **Anpassen einer Lösungsvorlage für den Marketplace**
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Empfehlungen für die Sicherheitseinstellungen im Azure-Ressourcen-Manager finden Sie unter [Sicherheitsaspekte für Azure-Ressourcen-Manager](best-practices-resource-manager-security.md)
 * Informationen zur Freigabe des Status in Vorlagen finden Sie unter [Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-state.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 

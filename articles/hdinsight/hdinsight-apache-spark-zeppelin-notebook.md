@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: a5494f16e3398be507080dd4fac591144f69d9fc
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: bc1b22b6269dc42add45a63d12c6c733e9d8c6ab
 ms.contentlocale: de-de
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -48,12 +48,12 @@ HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von
    > 
 2. Erstellen Sie ein neues Notebook. Klicken Sie im Headerbereich auf **Notebook**, und wählen Sie die Option **Neue Notiz erstellen** aus.
    
-    ![Erstellen eines neuen Zeppelin Notebooks](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.createnewnote.png "Erstellen eines neuen Zeppelin Notebooks")
+    ![Erstellen eines neuen Zeppelin Notebooks](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Erstellen eines neuen Zeppelin Notebooks")
    
     Geben Sie einen Namen für das Notebook ein, und klicken Sie dann auf **Create Note** (Notiz erstellen).
 3. Stellen Sie außerdem sicher, dass im Header des Notebooks der Status „Verbunden“ angezeigt wird. Dies wird durch einen grünen Punkt in der oberen rechten Ecke angezeigt.
    
-    ![Zeppelin Notebook-Status](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.newnote.connected.png "Zeppelin Notebook-Status")
+    ![Zeppelin Notebook-Status](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin Notebook-Status")
 4. Laden Sie Beispieldaten in eine temporäre Tabelle. Wenn Sie einen Spark-Cluster in HDInsight erstellen, wird die Beispieldatei **hvac.csv** in das zugeordnete Speicherkonto unter **\HdiSamples\SensorSampleData\hvac** kopiert.
    
     Fügen Sie in den leeren Absatz, der im neuen Notebook standardmäßig erstellt wird, den folgenden Codeausschnitt ein.
@@ -82,7 +82,7 @@ HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von
    
     Drücken Sie **UMSCHALT+EINGABETASTE**, oder klicken Sie auf die Schaltfläche **Wiedergeben** für den Absatz, um den Codeausschnitt auszuführen. Der Status in der rechten Ecke des Absatzes sollte sich entsprechend ändern: BEREIT, AUSSTEHEND, WIRD AUSGEFÜHRT bis zu BEENDET. Die Ausgabe wird unten im Absatz angezeigt. Der Screenshot sieht folgendermaßen aus:
    
-    ![Erstellen einer temporären Tabelle auf der Grundlage von Rohdaten](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.note.loaddDataintotable.png "Erstellen einer temporären Tabelle auf der Grundlage von Rohdaten")
+    ![Erstellen einer temporären Tabelle auf der Grundlage von Rohdaten](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Erstellen einer temporären Tabelle auf der Grundlage von Rohdaten")
    
     Sie können auch einen Titel für jeden Absatz angeben. Klicken Sie in der rechten Ecke auf das Symbol **Einstellungen** und dann auf **Titel anzeigen**.
 5. Sie können jetzt Spark-SQL-Anweisungen für die **hvac** -Tabelle ausführen. Fügen Sie die folgende Abfrage in einen neuen Absatz ein. Mit der Abfrage werden die Gebäude-ID und der Unterschied zwischen den Ziel- und Ist-Temperaturen für jedes Gebäude an einem bestimmten Datum abgerufen. Drücken Sie **UMSCHALT+EINGABETASTE**.
@@ -94,7 +94,7 @@ HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von
    
     Im folgenden Screenshot ist die Ausgabe dargestellt.
    
-    ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.note.sparksqlquery1.png "Ausführen einer Spark SQL-Anweisung mit dem Notebook")
+    ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Ausführen einer Spark SQL-Anweisung mit dem Notebook")
    
      Klicken Sie auf die Anzeigeoptionen (im Rechteck hervorgehoben), um für eine Ausgabe zwischen unterschiedlichen Darstellungen zu wechseln. Klicken Sie auf **Einstellungen** , um auszuwählen, worum es sich bei den Schlüsseln und Werten in der Ausgabe handelt. Im obigen Screenshot werden **buildingID** als Schlüssel und der Mittelwert von **temp_diff** als Wert verwendet.
 6. Sie können auch Spark-SQL-Anweisungen ausführen, indem Sie die Variablen in der Abfrage verwenden. Der nächste Codeausschnitt zeigt, wie Sie eine Variable ( **Temp**) in der Abfrage mit den möglichen Werten definieren, die für die Abfrage verwendet werden sollen. Beim ersten Ausführen der Abfrage wird automatisch eine Dropdownliste mit den Werten aufgefüllt, die Sie für die Variable angegeben haben.
@@ -104,7 +104,7 @@ HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von
    
     Fügen Sie diesen Codeausschnitt in einen neuen Absatz ein, und drücken Sie **UMSCHALT+EINGABETASTE**. Im folgenden Screenshot ist die Ausgabe dargestellt.
    
-    ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.note.sparksqlquery2.png "Ausführen einer Spark SQL-Anweisung mit dem Notebook")
+    ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Ausführen einer Spark SQL-Anweisung mit dem Notebook")
    
     Für nachfolgende Abfragen können Sie einen neuen Wert aus der Dropdownliste auswählen und die Abfrage erneut ausführen. Klicken Sie auf **Einstellungen** , um auszuwählen, worum es sich bei den Schlüsseln und Werten in der Ausgabe handelt. Im obigen Screenshot werden **buildingID** als Schlüssel, der Mittelwert von **temp_diff** als Wert und **targettemp** als Gruppe verwendet.
 7. Starten Sie den Livy-Interpreter neu, um die Anwendung zu beenden. Öffnen Sie zu diesem Zweck die Einstellungen des Interpreters, indem Sie oben rechts auf den Namen des angemeldeten Benutzers und dann auf **Interpreter** klicken.
@@ -112,7 +112,7 @@ HDInsight Spark-Cluster enthalten Zeppelin Notebooks, die Sie zum Ausführen von
     ![Starten des Interpreters](./media/hdinsight-apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive-Ausgabe")
 8. Scrollen Sie zu den Einstellungen des Livy-Interpreters, und klicken Sie dann auf **Neu starten**.
    
-    ![Neustarten des Livy-Interpreters](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.zeppelin.restart.interpreter.png "Neustarten des Zeppelin-Interpreters")
+    ![Neustarten des Livy-Interpreters](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Neustarten des Zeppelin-Interpreters")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Wie verwende ich externe Pakete mit dem Notebook?
 Sie können das Zeppelin Notebook in einem Apache Spark-Cluster in HDInsight (Linux) konfigurieren, um externe, von der Community bereitgestellte Pakete zu verwenden, die nicht im Lieferumfang des Clusters enthalten sind. Sie können das [Maven Repository](http://search.maven.org/) nach einer vollständigen Liste der verfügbaren Pakete durchsuchen. Sie können die Liste der verfügbaren Pakete auch aus anderen Quellen abrufen. Beispielsweise steht eine vollständige Liste der von der Community bereitgestellten Pakete auf [Spark-Pakete](http://spark-packages.org/)zur Verfügung.
@@ -159,7 +159,7 @@ In diesem Fall müssen Sie die folgenden Schritte ausführen, bevor Sie mit dem 
     ![Starten des Interpreters](./media/hdinsight-apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive-Ausgabe")
 2. Scrollen Sie zu den Einstellungen des Livy-Interpreters, und klicken Sie dann auf **Neu starten**.
    
-    ![Neustarten des Livy-Interpreters](./media/hdinsight-apache-spark-zeppelin-notebook/hdispark.zeppelin.restart.interpreter.png "Neustarten des Zeppelin-Interpreters")
+    ![Neustarten des Livy-Interpreters](./media/hdinsight-apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Neustarten des Zeppelin-Interpreters")
 3. Führen Sie eine Codezelle über ein vorhandenes Zeppelin Notebook aus. Im HDInsight-Cluster wird eine neue Livy-Sitzung erstellt.
 
 ## <a name="seealso"></a>Weitere Informationen

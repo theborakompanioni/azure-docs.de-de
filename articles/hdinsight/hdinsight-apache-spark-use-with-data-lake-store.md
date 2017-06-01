@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c801dc221d4aaa2c3ed0a7d10c5d58065b26e427
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 24e0372f024e574d049c63f444b5e8f6b0dfd065
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -28,8 +29,6 @@ ms.lasthandoff: 03/22/2017
 In diesem Tutorial verwenden Sie das mit HDInsight Spark-Clustern verfügbare Jupyter Notebook, um einen Auftrag auszuführen, der Daten aus einem Data Lake Store-Konto liest.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/pricing/free-trial/)(in englischer Sprache).
 
 * Azure Data Lake Store-Konto. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-get-started-portal.md)aus.
 
@@ -83,7 +82,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Store als zusätzlichen Speicher 
 
 3. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und dann auf **PySpark**.
 
-    ![Erstellen eines neuen Jupyter Notebooks](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.note.jupyter.createnotebook.png "Erstellen eines neuen Jupyter Notebooks")
+    ![Erstellen eines neuen Jupyter Notebooks](./media/hdinsight-apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Erstellen eines neuen Jupyter Notebooks")
 
 4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark-, und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
 
@@ -91,7 +90,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Store als zusätzlichen Speicher 
 
     Bei jedem Ausführen eines Auftrags in Jupyter wird in der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der rechten oberen Ecke einen ausgefüllten Kreis neben dem Text **PySpark** . Wenn der Auftrag abgeschlossen ist, wird ein Kreis ohne Füllung angezeigt.
 
-     ![Status eines Jupyter Notebook-Auftrags](./media/hdinsight-apache-spark-use-with-data-lake-store/hdispark.jupyter.job.status.png "Status eines Jupyter Notebook-Auftrags")
+     ![Status eines Jupyter Notebook-Auftrags](./media/hdinsight-apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Status eines Jupyter Notebook-Auftrags")
 
 5. Verwenden Sie die Datei **HVAC.csv** , die Sie in das Data Lake Store-Konto kopiert haben, um Beispieldaten in eine temporäre Tabelle zu laden. Sie können mithilfe des folgenden URL-Musters auf die Daten im Data Lake-Speicherkonto zugreifen.
 
@@ -131,11 +130,11 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Store als zusätzlichen Speicher 
 
 7. Nachdem der Auftrag erfolgreich abgeschlossen wurde, wird die folgende tabellarische Ausgabe standardmäßig angezeigt.
 
-      ![Tabellenausgabe des Abfrageergebnisses](./media/hdinsight-apache-spark-use-with-data-lake-store/tabular.output.png "Tabellenausgabe des Abfrageergebnisses")
+      ![Tabellenausgabe des Abfrageergebnisses](./media/hdinsight-apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Tabellenausgabe des Abfrageergebnisses")
 
      Sie können die Ergebnisse auch in anderen Visualisierungen anzeigen. Beispielsweise würde ein Bereichsdiagramm für dieselbe Ausgabe wie folgt aussehen.
 
-     ![Bereichsdiagramm des Abfrageergebnisses](./media/hdinsight-apache-spark-use-with-data-lake-store/area.output.png "Bereichsdiagramm des Abfrageergebnisses")
+     ![Bereichsdiagramm des Abfrageergebnisses](./media/hdinsight-apache-spark-use-with-data-lake-store/jupyter-area-output.png "Bereichsdiagramm des Abfrageergebnisses")
 
 8. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Dadurch wird das Notebook heruntergefahren und geschlossen.
 

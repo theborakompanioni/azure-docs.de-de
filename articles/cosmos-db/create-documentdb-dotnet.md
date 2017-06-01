@@ -1,13 +1,13 @@
 ---
 title: 'Azure Cosmos DB: Erstellen einer Web-App mit .NET und der DocumentDB-API | Microsoft-Dokumentation'
 description: "Hier finden Sie ein .NET-Codebeispiel, das Sie zum Herstellen einer Verbindung mit und zum Abfragen der Azure Cosmos DB DocumentDB-API verwenden können."
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.custom: quick start connect
 ms.workload: 
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2c05863d8a891f8edf95afa73782e2d498c9bc4e
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 899c710318fee46a93b3f54a68cb9027589f7177
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
-In diesem Schnellstart wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto, eine Dokumentendatenbank und eine Sammlung mithilfe des Azure-Portals erstellen. Sie erstellen dann eine Web-App für To-Do-Listen basierend auf der [DocumentDB .NET-API](../documentdb/documentdb-sdk-dotnet.md), wie im folgenden Screenshot gezeigt, und stellen diese anschließend bereit. 
+In diesem Schnellstart wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto, eine Dokumentendatenbank und eine Sammlung mithilfe des Azure-Portals erstellen. Sie erstellen dann eine Web-App für To-Do-Listen basierend auf der [DocumentDB .NET-API](documentdb-sdk-dotnet.md), wie im folgenden Screenshot gezeigt, und stellen diese anschließend bereit. 
 
 ![To-Do-App mit Beispieldaten](./media/create-documentdb-dotnet/azure-comosdb-todo-app-list.png)
 
@@ -37,14 +37,17 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+<a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
+<a id="create-collection"></a>
 ## <a name="add-a-collection"></a>Hinzufügen einer Sammlung
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
+<a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>Hinzufügen von Beispieldaten
 
 Sie können nun mithilfe des Daten-Explorers Daten zu einer neuen Sammlung hinzufügen.
@@ -142,7 +145,7 @@ Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeig
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -156,7 +159,7 @@ Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem
 In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Sammlung mit dem Daten-Explorer erstellen und eine Web-App ausführen. Jetzt können Sie zusätzliche Daten in Ihr Cosmos DB-Konto importieren. 
 
 > [!div class="nextstepaction"]
-> [Import data into Azure Cosmos DB (Importieren von Daten in Azure Cosmos DB)](../documentdb/documentdb-import-data.md)
+> [Import data into Azure Cosmos DB (Importieren von Daten in Azure Cosmos DB)](import-data.md)
 
 
 

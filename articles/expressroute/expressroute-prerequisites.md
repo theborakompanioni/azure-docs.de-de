@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 679b6962633cd734a1b1e339e8422da5b9c4ddfd
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 873a3b83bf85c7e2d6d299bd25ebb135c300aacb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -33,8 +33,8 @@ Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRou
 
 ## <a name="connectivity-provider"></a>Konnektivitätsanbieter
 
-* Sie können mit einem [ExpressRoute-Konnektivitätspartner](expressroute-locations.md#partners) zusammenarbeiten, um eine Verbindung mit der Microsoft Cloud herzustellen. Zum Einrichten einer Verbindung zwischen Ihrem lokalen Netzwerk und Microsoft stehen Ihnen [drei Möglichkeiten](expressroute-introduction.md)zur Verfügung. 
-* Wenn Ihr Anbieter kein ExpressRoute-Konnektivitätspartner ist, können Sie die Verbindung zur Microsoft Cloud über einen [Cloud-Exchange-Anbieter](expressroute-locations.md#c1partners)herstellen.
+* Sie können mit einem [ExpressRoute-Konnektivitätspartner](expressroute-locations.md#partners) zusammenarbeiten, um eine Verbindung mit der Microsoft Cloud herzustellen. Zum Einrichten einer Verbindung zwischen Ihrem lokalen Netzwerk und Microsoft stehen Ihnen [drei Möglichkeiten](expressroute-introduction.md)zur Verfügung.
+* Wenn Ihr Anbieter kein ExpressRoute-Konnektivitätspartner ist, können Sie die Verbindung zur Microsoft Cloud über einen [Cloud-Exchange-Anbieter](expressroute-locations.md#connectivity-through-exchange-providers)herstellen.
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 * **Redundante Konnektivität**: Eine redundante physische Verbindung zwischen Ihnen und Ihrem Anbieter ist nicht erforderlich. Für Microsoft ist es aber erforderlich, dass zwischen den Routern von Microsoft und den Peering-Routern redundante BGP-Sitzungen eingerichtet werden, auch wenn [zum Cloud-Exchange nur eine physische Verbindung besteht](expressroute-faqs.md#onep2plink).

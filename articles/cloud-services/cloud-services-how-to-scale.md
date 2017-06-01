@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 488b16623300d80a53a61badee420de106c418b0
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: c7fb1c796556baf09a34c4bc6ed71964071d5874
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 ---
 
@@ -42,9 +43,6 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 * Sie können Ressourcen skalieren, die mit Ihrem Clouddienst verknüpft sind. Weitere Informationen zum Verknüpfen von Ressourcen finden Sie unter [Verknüpfen einer Ressource mit einem Clouddienst](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service).
 
 * Um die Hochverfügbarkeit Ihrer Anwendung zu gewährleisten, sollte diese mit mindestens zwei Rolleninstanzen bereitgestellt werden. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
-
-> [!WARNING]
-> Automatische Skalierung funktioniert nur mit klassischen Azure Storage-Konten. Sie funktioniert nicht mit Azure Resource Manager-Speicherkonten.
 
 ## <a name="schedule-scaling"></a>Zeitplan (Skalierung)
 In der Standardeinstellung folgen alle Rollen keinem bestimmten Zeitplan. Daher gelten alle geänderten Einstellungen für alle Uhrzeiten und alle Tage im Laufe des Jahres. Wenn Sie möchten, können Sie manuelle oder automatische Skalierung für einen der folgenden Modi einrichten:
