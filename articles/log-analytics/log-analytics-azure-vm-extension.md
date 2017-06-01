@@ -100,7 +100,7 @@ Verwenden Sie für virtuelle Resource Manager-Computer das folgende PowerShell-B
 
 ```PowerShell
 Login-AzureRMAccount
-Select-AzureSubscription -SubscriptionId "**"
+Select-AzureRMSubscription -SubscriptionId "**"
 
 $workspaceName = "your workspace name"
 $VMresourcegroup = "**"
