@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a7b55e3949cf8406f7c62e9dfd6cc1567d3a5996
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 52b7360230efd0a63e411339fe32f929a905391d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -49,8 +50,6 @@ Um Dateien und Ordner von einem Server oder Client in Azure zu sichern, müssen 
 
 ## <a name="download-the-vault-credential-file"></a>Herunterladen der Datei mit Tresoranmeldeinformationen
 Der lokale Computer muss bei einem Sicherungstresor authentifiziert werden, bevor Daten in Azure gesichert werden können. Die Authentifizierung erfolgt mithilfe von *Tresoranmeldeinformationen*. Die Datei mit Tresoranmeldeinformationen wird über einen sicheren Kanal aus dem klassischen Portal heruntergeladen. Der private Schlüssel des Zertifikats ist nicht dauerhaft im Verwaltungsportal oder im Dienst gespeichert.
-
-Erfahren Sie mehr über die [Verwendung von Tresoranmeldeinformationen zum Authentifizieren bei dem Backupdienst](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file).
 
 ### <a name="to-download-the-vault-credential-file-to-a-local-machine"></a>So laden Sie die Datei mit den Tresoranmeldeinformationen auf einen lokalen Computer herunter
 1. Klicken Sie im linken Navigationsbereich auf **Recovery Services**, und wählen Sie den von Ihnen erstellten Sicherungstresor aus.
@@ -117,6 +116,7 @@ Wenn die erste Sicherung von der Sicherungsrichtlinie abgeschlossen wird, werden
 4. Klicken Sie auf der Seite „Elemente für Sicherung auswählen“ auf **Elemente hinzufügen**.
 5. Wählen Sie die Dateien und Ordner aus, die Sie sichern möchten, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Weiter**.
+
 7. Geben Sie auf der Seite **Sicherungszeitplan angeben** den **Sicherungszeitplan** an, und klicken Sie auf **Weiter**.
 
     Sie können tägliche (maximal drei pro Tag) oder wöchentliche Sicherungen planen.

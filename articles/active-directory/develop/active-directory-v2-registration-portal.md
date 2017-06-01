@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 19d8d860e39139d3003c216659b7203e2482154e
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: b961254274409215d79b5cb2c9ee230a97b42769
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -45,10 +48,5 @@ Wenn Sie „Live SDK-Unterstützung“ aktivieren, werden alle von Ihnen erstell
 Wenn Sie die Live SDK-Unterstützung deaktivieren, wird der geheime Schlüssel der Anwendung nur in den Azure AD-Datenspeicher geschrieben.  Der Azure AD-Datenspeicher umfasst Vorschriften auf Unternehmensebene, die das Einhalten bestimmter Standards wie z. B. FISMA ermöglichen.  Wenn Sie die Live SDK-Unterstützung aktivieren, kann Ihre Anwendung eventuell keine Kompatibilität mit einigen dieser Standards erzielen.
 
 Wenn Sie ausschließlich den v2.0-Endpunkt von Azure AD verwenden möchten, können Sie die Live SDK-Unterstützung problemlos deaktivieren.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

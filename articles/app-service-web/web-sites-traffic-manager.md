@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e5711e9c9d3ff70b38a4d19aa6be7b037cdb38aa
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 25502e4124442ed1853e3c3d9226107328c29316
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -48,7 +49,7 @@ Beachten Sie die folgenden Aspekte, wenn Sie Azure Traffic Manager mit Azure ver
 * Sie können in einem Profil nur einen Web-App-Endpunkt pro Region angeben. Wenn Sie eine Web-App als Endpunkt für eine Region auswählen, stehen die verbleibenden Websites in dieser Region nicht mehr für dieses Profil zur Auswahl zur Verfügung.
 * Die Web-App-Endpunkte, die Sie in einem Azure Traffic Manager-Profil festlegen, werden im Abschnitt **Domänennamen** auf der Konfigurationsseite für die Web-App im Profil angezeigt, dort jedoch nicht konfiguriert.
 * Nachdem Sie einem Profil eine Web-App hinzugefügt haben, wird in der **Website-URL** im Dashboard der Portalseite der Web-App die benutzerdefinierte Domänen-URL der Web-App angezeigt, wenn Sie diese eingerichtet haben. Anderenfalls wird die URL des Traffic Manager-Profils angezeigt (z. B. `contoso.trafficmgr.com`). Sowohl der direkte Domänenname der Web-App als auch die Traffic Manager-URL werden auf der Konfigurationsseite der Web-App im Abschnitt **Domänennamen** angezeigt.
-* Ihre benutzerdefinierten Domänennamen funktionieren wie erwartet. Sie fügen sie Ihren Web-Apps hinzu, müssen jedoch auch die DNS-Zuordnung konfigurieren, um auf die Traffic Manager-URL zu verweisen. Informationen zum Einrichten einer benutzerdefinierten Domäne für eine Azure-Web-App finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Azure-Website](web-sites-custom-domain-name.md).
+* Ihre benutzerdefinierten Domänennamen funktionieren wie erwartet. Sie fügen sie Ihren Web-Apps hinzu, müssen jedoch auch die DNS-Zuordnung konfigurieren, um auf die Traffic Manager-URL zu verweisen. Informationen zum Einrichten einer benutzerdefinierten Domäne für eine Azure-Web-App finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Azure-Website](app-service-web-tutorial-custom-domain.md).
 * Sie können einem Azure Traffic Manager-Profil nur Web-Apps hinzufügen, die sich im Standardmodus befinden.
 
 ## <a name="next-steps"></a>Nächste Schritte

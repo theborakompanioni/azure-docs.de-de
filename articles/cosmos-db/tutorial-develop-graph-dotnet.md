@@ -1,13 +1,13 @@
 ---
 title: 'Azure Cosmos DB: Entwickeln mit der Graph-API in .NET | Microsoft-Dokumentation'
 description: "Erfahren Sie, wie Sie mit der DocumentDB-API von Azure Cosmos DB unter Verwendung von .NET entwickeln können."
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: cc8df0be-672b-493e-95a4-26dd52632261
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 64c412fc6b47da73e5430a4db4c007e4cf95aa47
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 94909fd1db426267eb60e5d7f4d753de82ca0377
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -45,7 +45,7 @@ Gremlin ist eine funktionale Programmiersprache, die Schreibvorgänge (DML) sowi
 Stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 * Ein aktives Azure-Konto. Wenn Sie keines besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren. 
-    * Als Alternative können Sie den [Azure DocumentDB-Emulator](../documentdb/documentdb-nosql-local-emulator.md) für dieses Tutorial verwenden.
+    * Als Alternative können Sie den [Azure DocumentDB-Emulator](local-emulator.md) für dieses Tutorial verwenden.
 * [Visual Studio](http://www.visualstudio.com/)
 
 ## <a name="create-database-account"></a>Erstellen eines Datenbankkontos
@@ -55,11 +55,11 @@ Zunächst erstellen wir ein Azure Cosmos DB-Konto im Azure-Portal.
 > [!TIP]
 > * Besitzen Sie bereits ein Azure Cosmos DB-Konto? Wenn dies der Fall ist, fahren Sie mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort.
 > * Besaßen Sie einmal ein Azure DocumentDB-Konto? Wenn dies der Fall ist, ist Ihr Konto jetzt ein Azure Cosmos DB-Konto, und Sie können mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fortfahren.  
-> * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](../documentdb/documentdb-nosql-local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort. 
+> * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort. 
 >
 > 
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a id="SetupVS"></a>Einrichten Ihrer Visual Studio-Projektmappe
 1. Öffnen Sie auf Ihrem Computer **Visual Studio**.
@@ -98,7 +98,7 @@ DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
 
 ## <a id="create-database"></a>Erstellen einer Datenbank 
 
-Als Nächstes erstellen Sie eine Azure Cosmos DB-[Datenbank](../documentdb/documentdb-resources.md#databases) mithilfe der [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx)- oder [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx)-Methode der **DocumentClient**-Klasse aus dem [DocumentDB-.NET-SDK](../documentdb/documentdb-sdk-dotnet.md).  
+Als Nächstes erstellen Sie eine Azure Cosmos DB-[Datenbank](documentdb-resources.md#databases) mithilfe der [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx)- oder [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx)-Methode der **DocumentClient**-Klasse aus dem [DocumentDB-.NET-SDK](documentdb-sdk-dotnet.md).  
 
 ```csharp 
 Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "graphdb" }); 
@@ -286,5 +286,5 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Diagrammen mit Gremlin implementieren. 
 
 > [!div class="nextstepaction"]
-> [Abfragen mit Gremlin](tutorial-query-graph.md)
+> [Query using Gremlin (Abfragen mithilfe von Gremlin)](tutorial-query-graph.md)
 

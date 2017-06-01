@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 6563d1520149ae5ced7e2de80686ef1624ebb651
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3ae3e5d55454a33a35950057667f9648b63bb331
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
@@ -111,19 +111,7 @@ Nennen Sie Ihre Ressourcengruppe **myResourceGroup**, und klicken Sie anschließ
 
 ### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
-Ihre Azure Web-App benötigt außerdem einen _App Service-Plan_. 
-
-> [!NOTE]
-> Ein App Service-Plan stellt die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Apps teilen sich die durch den Plan definierten Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten. 
->
-> In App Service-Plänen wird Folgendes definiert:
->
-> - Region („Europa, Norden“, „USA, Osten“, „Asien, Südosten“)
-> - Instanzgröße (klein, mittel, groß)
-> - Skalierung (Instanzenanzahl) 
-> - SKU (Free, Shared, Basic, Standard, Premium)
->
->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
 Klicken Sie neben **App Service-Plan** auf **Neu**. 
 

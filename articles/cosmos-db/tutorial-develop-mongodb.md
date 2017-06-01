@@ -2,13 +2,13 @@
 title: "Verwenden der Azure Cosmos DB-API für MongoDB zum Erstellen einer Web-App | Microsoft-Dokumentation"
 description: "Ein Azure Cosmos DB-Tutorial, das mithilfe der API für MongoDB eine Onlinedatenbank-Web-App erstellt."
 keywords: MongoDB-Beispiele
-services: cosmosdb
+services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
 editor: 
 documentationcenter: 
 ms.assetid: 61a2ab3a-2fc3-4d49-a263-ed87c66628f6
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7d78ac544c7e001444c5112b20824f75f9723652
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: d92244361cf86ee8b3c8dc2384f3085644b92e60
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
-In diesem Tutorial wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto im Azure-Portal und wie Sie eine Datenbank und eine Sammlung zum Speichern von Daten mit der [MongoDB-API](../documentdb/documentdb-protocol-mongodb.md) erstellen. 
+In diesem Tutorial wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto im Azure-Portal und wie Sie eine Datenbank und eine Sammlung zum Speichern von Daten mit der [MongoDB-API](mongodb-introduction.md) erstellen. 
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -44,11 +44,11 @@ Zunächst erstellen wir ein Azure Cosmos DB-Konto im Azure-Portal.
 > [!TIP]
 > * Besitzen Sie bereits ein Azure Cosmos DB-Konto? Wenn dies der Fall ist, fahren Sie mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort.
 > * Besaßen Sie einmal ein Azure DocumentDB-Konto? Wenn dies der Fall ist, ist Ihr Konto jetzt ein Azure Cosmos DB-Konto, und Sie können mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fortfahren.  
-> * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](../documentdb/documentdb-nosql-local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort. 
+> * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort. 
 >
 >
 
-[!INCLUDE [cosmosdb-create-dbaccount-mongodb](../../includes/cosmosdb-create-dbaccount-mongodb.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
@@ -225,6 +225,6 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 Sie können mit dem nächsten Tutorial fortfahren und die MongoDB-Daten in Azure Cosmos DB importieren.  
 
 > [!div class="nextstepaction"]
-> [Importieren von Daten aus MongoDB in Azure Cosmos DB](../documentdb/documentdb-mongodb-migrate.md)
+> [Importieren von Daten aus MongoDB in Azure Cosmos DB](mongodb-migrate.md)
 
 

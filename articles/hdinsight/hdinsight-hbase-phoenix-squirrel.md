@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/09/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: de997066642c72a0a9e1d7210a96a3904580e6ed
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4371092aa31db444c4ca0374b4b2e7d700029a8b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -30,7 +31,7 @@ Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in HDInsight 
 >
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date). Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md).
+> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date). Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md).
 >
 
 
@@ -207,6 +208,7 @@ Eine Möglichkeit zum Erstellen eines X.509-Zertifikats ist mithilfe des Tools z
   >     java.exe -jar [der Pfad der SQuirreL-JAR-Datei]
 5. Klicken Sie auf **OK** , um das Zielverzeichnis zu erstellen.
 6. Die Standardeinstellung ist die Installation der Basis- und Standardpakete.  Klicken Sie auf **Weiter**.
+
 7. Klicken Sie zwei Mal auf **Weiter** und anschließend auf **Fertig**.
 
 **Installation der Phoenix-Treiber**

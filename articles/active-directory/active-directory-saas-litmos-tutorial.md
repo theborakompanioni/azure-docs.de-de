@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
-ms.openlocfilehash: 84cd0c3eb2753a209d0aebda405f0b98a487140d
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 2c967d759806b47862179ecf9e9a89801134192a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -138,6 +139,7 @@ Im Rahmen der Konfiguration müssen Sie die **SAML-Tokenattribute** für Ihre Li
     2. Fügen Sie im Textfeld **Antwort-URL** den Wert ein, den Sie im vorherigen Schritt in der Litmos-Anwendung kopiert haben.
    
     3. Klicken Sie auf **Weiter**.
+
 9. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Litmos** die folgenden Schritte aus:
    
     ![Azure AD – einmaliges Anmelden][2] 
@@ -174,7 +176,7 @@ Im Rahmen der Konfiguration müssen Sie die **SAML-Tokenattribute** für Ihre Li
     | --- | --- |
     | E-Mail |user.mail |
     | Vorname |user.givenname |
-    | Lastname |user.surname |
+    | Nachname |user.surname |
     
     Führen Sie für jede Datenzeile in der Tabelle oben die folgenden Schritte aus:
     
@@ -190,7 +192,7 @@ Im Rahmen der Konfiguration müssen Sie die **SAML-Tokenattribute** für Ihre Li
    ![Einmaliges Anmelden konfigurieren][16]
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.  
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.  
 
 ![Azure AD-Benutzer erstellen][20]
 

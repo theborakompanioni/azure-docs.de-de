@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 7b1bfcc8163d7166831123524f3ec53f4a3dfe09
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 6bab6cbd84c55e668f2caf9b9f94621eec982203
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -38,9 +38,6 @@ Sie können einen nicht verwalteten Datenträger nicht in einen verwalteten Date
 
 ## <a name="convert-vm-to-azure-managed-disks"></a>Konvertieren einer VM in Azure Managed Disks
 In diesem Abschnitt wird beschrieben, wie Sie für Ihre vorhandenen Azure-VMs die Konvertierung von nicht verwalteten Datenträgern in verwaltete Datenträger durchführen. Sie können diesen Prozess verwenden, um die Konvertierung von nicht verwalteten Premium-Datenträgern (SSD) in verwaltete Premium-Datenträger oder von nicht verwalteten Standard-Datenträgern (HDD) in verwaltete Standard-Datenträger durchzuführen.
-
-> [!IMPORTANT]
-> Nach Abschluss des folgenden Verfahrens ist ein einzelnes Blockblob vorhanden, das im vhds-Standardcontainer verbleibt. Der Name der Datei lautet „VMName.xxxxxxx.status“. Achten Sie darauf, dass Sie dieses verbleibende Statusobjekt nicht löschen. Dieser Vorgang wird in Zukunft ggf. noch weiter verbessert.
 
 1. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm#deallocate) auf. Im folgenden Beispiel wird die Zuordnung für die VM `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben:
 

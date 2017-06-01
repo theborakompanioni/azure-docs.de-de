@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 05/22/2017
 ms.author: cynthn
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: b3bb7d9d14293aae78c3a1c2ac6badcc48dcbe2c
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: bfa4135600cb94d3947323219969872c2da7912b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -36,7 +36,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines virtuellen Computers in einer Verfügbarkeitsgruppe
 > * Überprüfen der verfügbaren VM-Größen
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. Sie können auch [Cloud Shell](/azure/cloud-shell/quickstart) in Ihrem Browser verwenden.
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. 
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
 
 ## <a name="availability-set-overview"></a>Übersicht über Verfügbarkeitsgruppen
 
@@ -53,7 +56,7 @@ Eine Verfügbarkeitsgruppe können Sie mithilfe von [az vm availability-set crea
 
 Erstellen Sie eine Ressourcengruppe.
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
 ```
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
-ms.author: femila
+ms.date: 05/23/2017
+ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: e8d3eb7e336383eb639e55656b26d881e8c2adb0
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 8e8723c6dc81012a0dddd4e0a28c4d4af6828c6c
 ms.contentlocale: de-de
-ms.lasthandoff: 03/28/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -35,7 +35,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **Rechnungsadministrator**: Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dienstintegrität.
 
-* **Complianceadministrator**: Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen innerhalb von Office 365 Security & Compliance Center und Exchange Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1).
+* **Complianceadministrator**: Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen innerhalb von Office 365 Security & Compliance Center und Exchange Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **CRM-Dienstadministrator:** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft CRM Online, wenn der Dienst vorhanden ist, sowie die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -139,6 +139,20 @@ Die folgenden Administratorrollen sind verfügbar:
 
 ## <a name="details-about-the-global-administrator-role"></a>Details zur globalen Administratorrolle
 Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Standardmäßig wird der Person, die sich für ein Azure-Abonnement registriert, die globale Administratorrolle für das Verzeichnis zugewiesen. Nur globale Administratoren können weitere Administratorrollen zuweisen.
+
+### <a name="to-add-a-colleague-as-a-global-administrator"></a>Hinzufügen eines Kollegen als globalen Administrator
+
+1. Melden Sie sich beim [Azure Active Directory Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator für das Mandantenverzeichnis konfiguriert ist.
+
+   ![Öffnen des Azure AD Admin Center](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
+
+2. Wählen Sie **Benutzer und Gruppen &gt; Alle Benutzer** aus.
+
+3. Suchen Sie den Benutzer, der als globaler Administrator festgelegt werden soll, und öffnen Sie das Blatt für diesen Benutzer.
+
+4. Wählen Sie auf dem Blatt „Benutzer“ die Option **Verzeichnisrolle** aus.
+ 
+5. Wählen Sie auf dem Blatt „Verzeichnisrolle“ die Rolle **Globaler Administrator** aus, und speichern Sie sie.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Zuweisen oder Entfernen von Administratorrollen
 Um zu erfahren, wie in Azure Active Directory einem Benutzer Administratorrollen zugewiesen werden, lesen Sie [Zuweisen eines Benutzers zu Administratorrollen in der Azure Active Directory-Vorschau](active-directory-users-assign-role-azure-portal.md).

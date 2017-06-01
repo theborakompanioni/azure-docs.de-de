@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo;aelnably
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: c4e7ee86ad9dc7a51fff9e948757faaf5ca9b9c4
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: fb38555f1f299352f06deae1ca231895163068e5
 ms.contentlocale: de-de
-ms.lasthandoff: 04/22/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
@@ -92,7 +92,7 @@ Klicken Sie nach dem Klicken auf **Überprüfen** auf die Schaltfläche **Aktual
 ## <a name="step-5---assign-certificate-to-app-service-app"></a>Schritt 5: Zuweisen des Zertifikats zur App Service-App
 
 > [!NOTE]
-> Bevor Sie die Schritte in diesem Abschnitt ausführen, müssen Sie einen benutzerdefinierten Domänennamen mit Ihrer App verknüpft haben. Weitere Informationen finden Sie unter **[Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App](web-sites-custom-domain-name.md)**.
+> Bevor Sie die Schritte in diesem Abschnitt ausführen, müssen Sie einen benutzerdefinierten Domänennamen mit Ihrer App verknüpft haben. Weitere Informationen finden Sie unter **[Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App](app-service-web-tutorial-custom-domain.md)**.
 >
 
 Klicken Sie im **[Azure-Portal](https://portal.azure.com/)** auf der linken Seite auf **App Service**.

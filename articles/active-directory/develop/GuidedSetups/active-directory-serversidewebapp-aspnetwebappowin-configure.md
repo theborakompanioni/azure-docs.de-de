@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6f50ced708cb79a39e190657e4720c515c09990f
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: ad4160abfef748033eeb84a2f07a37124ce3b4b1
 ms.contentlocale: de-de
 
 
@@ -47,14 +48,14 @@ Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* reg
 <add key="Tenant" value="common" />
 <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" /> 
 ```
-9. Ersetzen Sie `ClientId` durch die Anwendungs-ID, die Sie gerade registriert haben.
-10. Ersetzen Sie `redirectUri` durch die SSL-URL Ihres Projekts. 
+<!-- Workaround for Docs conversion bug -->
+<ol start="9">
+<li>
+Ersetzen Sie `ClientId` durch die Anwendungs-ID, die Sie gerade registriert haben.
+</li>
+<li>
+Ersetzen Sie `redirectUri` durch die SSL-URL Ihres Projekts.
+</li>
+</ol>
 <!-- End Docs -->
-
-> Hinweis
-> ### <a name="restricting-users-from-only-one-organization-to-sign-in-to-your-application"></a>Beschränken der Anmeldung bei Ihrer Anwendung auf ausschließlich Benutzer in einer Organisation
-> Standardmäßig können sich sowohl persönliche Konten (z.B. outlook.com, live.com u.a.) als auch Geschäfts,- Schul- und Unikonten von Unternehmen oder Organisationen, die in Azure Active Directory integriert wurden, bei Ihrer Anwendung anmelden. Wenn Sie möchten, dass Ihre Anwendung nur Anmeldungen aus einer Organisation akzeptiert, ersetzen Sie den `Tenant`-Parameter in `web.config` `Common` durch den Mandantennamen der Organisation, z.B. `contoso.onmicrosoft.com`. Ändern Sie danach das *ValidateIssuer*-Argument in Ihrer OWIN-Klasse „Startup“ in `true`.
-Um nur Benutzer in einer Liste angegebener Organisationen zuzulassen, legen Sie `ValidateIssuer` auf `true` fest, und legen Sie mithilfe des `ValidIssuers`-Parameters eine Liste mit Organisationen fest.
-Eine andere Möglichkeit ist das Implementieren einer benutzerdefinierten Methode, um mit `IssuerValidator parameter` die Aussteller zu überprüfen. Weitere Informationen zu `TokenValidationParameters` finden Sie in [diesem MSDN-Artikel](https://msdn.microsoft.com/en-us/library/system.identitymodel.tokens.tokenvalidationparameters(v=vs.114).aspx).
-
 

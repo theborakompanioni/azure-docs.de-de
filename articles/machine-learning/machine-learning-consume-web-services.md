@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/05/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: f4f3caed8390ba3a80d6cf1282f4d2751c67ae6b
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 650ac9e8607c7c3b26cc2eebfe78169331800edd
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -76,7 +77,7 @@ So finden Sie die benötigten Informationen
 Die Informationen befinden sich auf diesen Seiten:
 
 * Den **Primary key** (Primärschlüssel) finden Sie auf der Seite **Consume**.
-* Den **Request URI** (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
+* Den **Request URI**  (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
 * **Anforderungsheader**, **Antwortheader** und **Text** der erwarteten API stehen auf der Seite **Swagger API** zur Verfügung.
 
 ### <a name="information-locations-in-machine-learning-studio-classic-web-service-only"></a>Auffinden von Information in Machine Learning Studio (nur klassischer Webdienst)
@@ -91,7 +92,7 @@ So finden Sie die benötigten Informationen in Machine Learning Studio
 Die Informationen befinden sich auf diesen Seiten:
 
 * Der **API-Schlüssel** ist im **Dashboard** des Diensts verfügbar. 
-* Den **Request URI** (Anforderungs-URI) finden Sie auf der API-Hilfeseite.
+* Den **Request URI**  (Anforderungs-URI) finden Sie auf der API-Hilfeseite.
 * **Anforderungsheader**, **Antwortheader** und **Text** der erwarteten API stehen auf der API-Hilfeseite zur Verfügung.
 
 Um die API-Hilfeseite zuzugreifen, klicken Sie entsprechend Ihrer Aufgabe entweder auf den Link **REQUEST/RESPONSE** oder **BATCH EXECUTION**.
@@ -106,7 +107,7 @@ So finden Sie die benötigten Informationen im Azure Machine Learning Web Servic
 Die Informationen befinden sich auf diesen Seiten:
 
 * Den **Primary key** (Primärschlüssel) finden Sie auf der Seite **Consume**.
-* Den **Request URI** (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
+* Den **Request URI**  (Anforderungs-URI) finden Sie auf der Seite **Consume**. 
 * **Anforderungsheader**, **Antwortheader** und **Text** der erwarteten API stehen auf der Seite **Swagger API** zur Verfügung.
 
 In den folgenden beiden Beispielen wird die Sprache C# verwendet, um den erforderlichen Code zu veranschaulichen.
@@ -150,7 +151,7 @@ Das folgende Beispiel zeigt die API-Antwort für den Dienst.
             ],
             "ColumnTypes": [
               "Numeric"
-            ].
+            ],
           "Values": [
             [
               "0"
@@ -159,10 +160,11 @@ Das folgende Beispiel zeigt die API-Antwort für den Dienst.
               "1"
             ]
           ]
-        }
-      },
+         }
+       },
       "GlobalParameters": {}
-    }
+     }
+   }
 
 Es folgt das Codebeispiel für die C#-Implementierung. Für einen klassischen Webdienst finden Sie Codebeispiele unten auf der **API-Hilfeseite** oder unten auf der Seite **Consume**. Für einen neuen Webdienst finden Sie Codebeispiele unten auf der Seite **Consume**.
 

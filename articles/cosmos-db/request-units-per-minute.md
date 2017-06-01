@@ -1,13 +1,13 @@
 ---
 title: 'Azure Cosmos DB: Anforderungseinheiten pro Minute (RU/Min.) | Microsoft-Dokumentation'
 description: "Erfahren Sie, wie Sie mithilfe von Anforderungseinheiten pro Minute die Kosten senken können."
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: arnomicrosoft
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: acomet
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 878b7335fb5e09bc8704f7211cc6293ad6ea4bea
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: ea63b988a72801ae4c288048021a915b20a34794
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -112,7 +112,7 @@ await client.ReplaceOfferAsync(offerV2);
 
 In diesem Abschnitt erhalten Sie einen Überblick über Szenarien, die sich für die Aktivierung von Anforderungseinheiten pro Minute eignen.
 
-**Entwicklungs- und Testumgebung:** Gut geeignet. Wenn Sie Ihre Anwendung während der Entwicklungsphase mit verschiedenen Workloads testen, können Sie mit RUs/Min. die notwendige Flexibilität in dieser Phase erzielen. Der [Emulator](../documentdb/documentdb-nosql-local-emulator.md) ist ein gutes kostenloses Tool zum Testen von Azure Cosmos DB. Wenn Sie jedoch in einer Cloudumgebung beginnen möchten, erzielen Sie mit RUs/Min. mehr Flexibilität für Ihre Ad-hoc-Leistungsanforderungen. Sie haben mehr Zeit für die Entwicklung und müssen sich zunächst weniger Gedanken um die Leistungsanforderungen machen. Es empfiehlt sich, mit der Mindestbereitstellung von RUs/Sek. zu beginnen und RUs/Min. zu aktivieren.
+**Entwicklungs- und Testumgebung:** Gut geeignet. Wenn Sie Ihre Anwendung während der Entwicklungsphase mit verschiedenen Workloads testen, können Sie mit RUs/Min. die notwendige Flexibilität in dieser Phase erzielen. Der [Emulator](local-emulator.md) ist ein gutes kostenloses Tool zum Testen von Azure Cosmos DB. Wenn Sie jedoch in einer Cloudumgebung beginnen möchten, erzielen Sie mit RUs/Min. mehr Flexibilität für Ihre Ad-hoc-Leistungsanforderungen. Sie haben mehr Zeit für die Entwicklung und müssen sich zunächst weniger Gedanken um die Leistungsanforderungen machen. Es empfiehlt sich, mit der Mindestbereitstellung von RUs/Sek. zu beginnen und RUs/Min. zu aktivieren.
 
 **Unvorhersehbare Anforderungen mit Lastspitzen und minutengenauer Granularität:** Gut geeignet – Einsparungen: 25-75%. Unserer Erfahrung nach stellen RUs/Min. hier eine erhebliche Verbesserung dar, und die meisten Produktionsszenarien fallen in diese Gruppe. Wenn Sie über eine IoT-Workload verfügen, in der einige Male innerhalb einer Minute Lastspitzen auftreten, weil Abfragen ausgeführt werden, während das System gleichzeitig eine Masseneinfügung durchführt, benötigen Sie zusätzliche Kapazität zur Verarbeitung der Lastspitzenanforderungen. Es wird empfohlen, Ihre Ressourcenanforderungen mithilfe der folgenden Schritte zu optimieren.
 
@@ -175,8 +175,8 @@ var query = client.CreateDocumentQuery<Book>(
 
 In diesem Artikel wurde beschrieben, wie die Partitionierung in Azure Cosmos DB funktioniert, wie Sie partitionierte Sammlungen erstellen und wie Sie einen sinnvollen Partitionsschlüssel für Ihre Anwendung auswählen.
 
-* Nutzen Sie Azure Cosmos DB, um Skalierungs- und Leistungstests durchzuführen. Ein Beispiel finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](../documentdb/documentdb-performance-testing.md).
-* Beginnen Sie mit dem Schreiben von Code mit den [SDKs](../documentdb/documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx).
-* Erfahren Sie mehr über den [bereitgestellten Durchsatz](../documentdb/documentdb-request-units.md) in Azure Cosmos DB. 
+* Nutzen Sie Azure Cosmos DB, um Skalierungs- und Leistungstests durchzuführen. Ein Beispiel finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
+* Beginnen Sie mit dem Schreiben von Code mit den [SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx).
+* Erfahren Sie mehr über den [bereitgestellten Durchsatz](request-units.md) in Azure Cosmos DB. 
 
 

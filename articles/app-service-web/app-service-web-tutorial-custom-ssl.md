@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: cephalin
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: a0e245121f2a9ff4109b281cd7286ed601bf64ac
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c5ec6dc244cc70591806dab171a289a0e55ff0a0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
@@ -45,7 +45,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Stellen Sie vor der Ausführung dieses Tutorials sicher, dass Sie folgende Seiten gelesen haben:
 
 - [Erstellen einer App Service-App](/azure/app-service/)
-- [Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer Web-App](web-sites-custom-domain-name.md)
+- [Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer Web-App](app-service-web-tutorial-custom-domain.md)
 - Erwerben eines SSL-Zertifikats von einer vertrauenswürdigen Zertifizierungsstelle
 
 <a name="requirements"></a>
