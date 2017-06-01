@@ -1,13 +1,13 @@
 ---
 title: Partitionierung und horizontale Skalierung in Azure Cosmos DB | Microsoft-Dokumentation
 description: "Erfahren Sie, wie die Partitionierung in Azure Cosmos DB funktioniert, wie Partitionierung und Partitionsschlüssel konfiguriert werden und wie Sie den richtigen Partitionsschlüssel für Ihre Anwendung auswählen."
-services: cosmosdb
+services: cosmos-db
 author: arramac
 manager: jhubbard
 editor: monicar
 documentationcenter: 
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 920c6f810e723712b72f642b783f093bb5d4f7d4
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: cd3b13b9988f51fd3755ced48714fdc18cf1ea3c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -66,7 +66,7 @@ Cosmos DB arbeitete mit hashbasierter Partitionierung. Wenn Sie ein Element schr
 Azure Cosmos DB-Container können „festgelegt“ oder „unbegrenzt“ erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Bei einigen APIs kann der Partitionsschlüssel für Container mit fester Größe weggelassen werden. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 2.500 RU/Sek. angeben.
 
 ## <a name="partitioning-and-provisioned-throughput"></a>Partitionierung und bereitgestellter Durchsatz
-Cosmos DB ist auf vorhersagbare Leistung ausgelegt. Wenn Sie einen Container erstellen, reservieren Sie Durchsatz in Form von **[Anforderungseinheiten](../documentdb/documentdb-request-units.md) pro Sekunde mit einem möglichen zusätzlichen RU-Wert pro Minute**. Jeder Anforderung wird eine Gebühr für Anforderungseinheiten zugewiesen, die sich proportional zur vom Vorgang genutzten Menge an Systemressourcen wie CPU, Arbeitsspeicher und E/A verhält. Der Lesevorgang eines 1 KB großen Dokuments mit Sitzungskonsistenz beansprucht eine Anforderungseinheit. Ein Lesevorgang entspricht einer RU, unabhängig von der Anzahl der gespeicherten Elemente oder der Anzahl gleichzeitiger Anforderungen, die parallel ausgeführt werden. Größere Elemente erfordern mehr Anforderungseinheiten. Wenn Sie die Größe Ihrer Entitäten sowie die von Ihrer Anwendung benötigte Anzahl an Lesevorgängen kennen, können Sie Ihrer Anwendung für den Lesevorgang exakt den benötigten Durchsatz bereitstellen. 
+Cosmos DB ist auf vorhersagbare Leistung ausgelegt. Wenn Sie einen Container erstellen, reservieren Sie Durchsatz in Form von **[Anforderungseinheiten](request-units.md) pro Sekunde mit einem möglichen zusätzlichen RU-Wert pro Minute**. Jeder Anforderung wird eine Gebühr für Anforderungseinheiten zugewiesen, die sich proportional zur vom Vorgang genutzten Menge an Systemressourcen wie CPU, Arbeitsspeicher und E/A verhält. Der Lesevorgang eines 1 KB großen Dokuments mit Sitzungskonsistenz beansprucht eine Anforderungseinheit. Ein Lesevorgang entspricht einer RU, unabhängig von der Anzahl der gespeicherten Elemente oder der Anzahl gleichzeitiger Anforderungen, die parallel ausgeführt werden. Größere Elemente erfordern mehr Anforderungseinheiten. Wenn Sie die Größe Ihrer Entitäten sowie die von Ihrer Anwendung benötigte Anzahl an Lesevorgängen kennen, können Sie Ihrer Anwendung für den Lesevorgang exakt den benötigten Durchsatz bereitstellen. 
 
 > [!NOTE]
 > Um den vollständigen Durchsatz des Containers zu erreichen, müssen Sie einen Partitionsschlüssel auswählen, der Ihnen ermöglicht, Anforderungen gleichmäßig zwischen einigen unterschiedlichen Partitionsschlüsselwerten zu verteilen.
@@ -78,7 +78,7 @@ Cosmos DB ist auf vorhersagbare Leistung ausgelegt. Wenn Sie einen Container ers
 Sie können das Azure-Portal oder die Azure-Befehlszeilenschnittstelle verwenden, um Container zu erstellen und jederzeit zu skalieren. Dieser Abschnitt zeigt, wie Sie Container erstellen und den Durchsatz sowie die Partitionsschlüsseldefinition in jeder der unterstützten APIs angeben.
 
 ### <a name="documentdb-api"></a>DocumentDB-API
-Das folgende Beispiel zeigt, wie Sie mit der DocumentDB-API einen Container (bzw. eine Sammlung) erstellen. Weitere Informationen erhalten Sie unter [Partitionieren mit der DocumentDB-API](../documentdb/documentdb-partition-data.md).
+Das folgende Beispiel zeigt, wie Sie mit der DocumentDB-API einen Container (bzw. eine Sammlung) erstellen. Weitere Informationen erhalten Sie unter [Partitionieren mit der DocumentDB-API](partition-data.md).
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -207,8 +207,8 @@ Sie können auch einen kombinierten/abgestuften Ansatz verwenden, in dem kleine 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Übersicht über Konzepte und bewährte Methoden für die Partitionierung mit einer beliebigen Azure Cosmos DB-API erhalten. 
 
-* Erfahren Sie mehr über den [bereitgestellten Durchsatz in Azure Cosmos DB](../documentdb/documentdb-request-units.md).
-* Erfahren Sie mehr über die [globale Verteilung in Azure Cosmos DB](../documentdb/documentdb-distribute-data-globally.md).
+* Erfahren Sie mehr über den [bereitgestellten Durchsatz in Azure Cosmos DB](request-units.md).
+* Erfahren Sie mehr über die [globale Verteilung in Azure Cosmos DB](distribute-data-globally.md).
 
 
 

@@ -13,13 +13,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 05/07/2017
-ms.author: meetb;carlrab;sstein
+ms.date: 05/24/2017
+ms.author: meetb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 2c0dc1bef0bf2b7b78e8858943ad6e0ede214681
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 693bfdf7bb3d9d72fbd6ac42734ca261af7b492d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -27,10 +27,13 @@ ms.lasthandoff: 05/08/2017
 
 In diesem Schnellstart wird veranschaulicht, wie Sie [PHP](http://php.net/manual/en/intro-whatis.php) nutzen, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen. Anschließend können Sie Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über MacOS-, Windows- und Ubuntu Linux-Plattformen verwenden.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
 - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
+- [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md)
 
 ## <a name="install-php-and-database-communications-software"></a>Installieren von PHP und Datenbankkommunikationssoftware
 
