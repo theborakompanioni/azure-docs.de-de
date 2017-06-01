@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeeda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 215f9baeda7cd0bcf3fd66893919575647849e7d
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 9de6a57671cf65c4aa5d8695d21e0932175b1183
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Anpassung der Benutzeroberfläche durch eine benutzerdefinierte Richtlinie
@@ -30,14 +30,6 @@ Nach Durchführung dieses Artikels haben Sie eine benutzerdefinierte Registrieru
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie fortfahren, müssen Sie den Abschnitt [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) lesen.  Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
-
-### <a name="confirming-your-b2c-tenant"></a>Bestätigen Ihres B2C-Mandanten
-
-Da sich benutzerdefinierte Richtlinien noch in der privaten Vorschau befinden, vergewissern Sie sich, dass Ihr Azure AD B2C-Mandant für den Upload benutzerdefinierter Richtlinien aktiviert ist:
-
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) [in den Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und öffnen Sie das Blatt „Azure AD B2C“.
-1. Klicken Sie auf **Alle Richtlinien**.
-1. Stellen Sie sicher, dass **Richtlinie hochladen** verfügbar ist.  Wenn die Schaltfläche deaktiviert ist, senden Sie eine E-Mail an AADB2CPreview@microsoft.com.
 
 ## <a name="the-page-ui-customization-feature"></a>Das Anpassungsfeature für die Seiten-UI
 

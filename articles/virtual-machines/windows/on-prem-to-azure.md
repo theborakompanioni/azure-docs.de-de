@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 9da3cf830857211fe414f55e250e222b9d17438b
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 098904d8b5262d8a19d1c10003e0bcaa668ef2dc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -42,7 +43,7 @@ Sie können sowohl generalisierte als auch spezialisierte VHDs hochladen.
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Sie verfügen über eine AWS EC2-Instanzen, die Sie zu Azure Managed Disks migrieren möchten.                                     | [Migrieren von Amazon Web Services (AWS) zu Azure Managed Disks](aws-to-azure.md)                           |
 | Sie verfügen über eine VM von einer anderen Virtualisierungsplattform, die Sie als Image zum Erstellen weiterer Azure-VMs nutzen möchten. | [Upload a generalized VHD to Azure and create a new VM using Managed Disks](upload-generalized-managed.md) (Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM mithilfe von Managed Disks) |
-| Sie habe eine besonders angepasste VM, die Sie in Azure neu erstellen möchten.                                                      | [Upload a specialized VHD to Azure and create a new VM using Managed Disks](upload-specialized.md) (Hochladen einer spezialisierten VHD in Azure und Erstellen einer neuen VM mithilfe von Managed Disks)         |
+| Sie habe eine besonders angepasste VM, die Sie in Azure neu erstellen möchten.                                                      | [Upload a specialized VHD to Azure and create a new VM using Managed Disks](create-vm-specialized.md) (Hochladen einer spezialisierten VHD in Azure und Erstellen einer neuen VM mithilfe von Managed Disks)         |
 
 
 ## <a name="overview-of-managed-disks"></a>Managed Disks (verwaltete Datenträger): Übersicht

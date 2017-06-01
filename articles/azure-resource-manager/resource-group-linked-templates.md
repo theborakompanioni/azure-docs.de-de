@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 05/24/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 78b8902927977c3b7dca3bd6e24633858ef8e6e9
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 9ab6d3e5e41f155b1404cee8a555078409c09c60
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -33,7 +33,7 @@ Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitst
 ```json
 "resources": [ 
   { 
-      "apiVersion": "2015-01-01", 
+      "apiVersion": "2017-05-10", 
       "name": "linkedTemplate", 
       "type": "Microsoft.Resources/deployments", 
       "properties": { 
@@ -53,7 +53,7 @@ Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitst
 Wie andere Ressourcentypen können Sie Abhängigkeiten zwischen der verknüpften Vorlage und anderen Ressourcen festlegen. Wenn also andere Ressourcen einen Ausgabewert aus der verknüpften Vorlage benötigen, können Sie sicherstellen, dass die verknüpfte Vorlage vor ihnen bereitgestellt wird. Wenn andererseits die verknüpfte Vorlage von anderen Ressourcen abhängig ist, können Sie sicherstellen, dass andere Ressourcen vor der verknüpften Vorlage bereitgestellt werden. Sie können mit der folgenden Syntax einen Wert aus einer verknüpften Vorlage abrufen:
 
 ```json
-"[reference('linkedTemplate').outputs.exampleProperty]"
+"[reference('linkedTemplate').outputs.exampleProperty.value]"
 ```
 
 Der Resource Manager-Dienst muss auf die verknüpfte Vorlage zugreifen können. Sie können keine lokale Datei und keine Datei, die nur in Ihrem lokalen Netzwerk verfügbar ist, für die verknüpfte Vorlage angeben. Sie können nur einen URI-Wert bereitstellen, der entweder **http** oder **https** enthält. Eine Option besteht darin, Ihre verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden, wie im folgenden Beispiel gezeigt:
@@ -75,7 +75,7 @@ Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer an
 },
 "resources": [
     {
-        "apiVersion": "2015-01-01",
+        "apiVersion": "2017-05-10",
         "name": "linkedTemplate",
         "type": "Microsoft.Resources/deployments",
         "properties": {
@@ -101,7 +101,7 @@ Im nächsten Beispiel wird die **parametersLink** -Eigenschaft genutzt, um eine 
 ```json
 "resources": [ 
   { 
-     "apiVersion": "2015-01-01", 
+     "apiVersion": "2017-05-10", 
      "name": "linkedTemplate", 
      "type": "Microsoft.Resources/deployments", 
      "properties": { 
@@ -142,116 +142,6 @@ Sie können auch [deployment()](resource-group-template-functions-deployment.md#
 }
 ```
 
-## <a name="conditionally-linking-to-templates"></a>Bedingtes Verknüpfen mit Vorlagen
-Sie können eine Verknüpfung mit verschiedenen Vorlagen erstellen, indem Sie einen Parameterwert übergeben, der zum Erstellen des URIs der verknüpften Vorlage verwendet wird. Dieser Ansatz eignet sich gut, wenn Sie während der Bereitstellung angeben müssen, welche verknüpfte Vorlage verwendet werden soll. Geben Sie beispielsweise eine Vorlage an, die für ein vorhandenes Speicherkonto verwendet werden soll, und geben Sie eine andere Vorlage an, die für ein neues Speicherkonto verwendet werden soll.
-
-Im folgenden Beispiel sehen Sie einen Parameter für einen Speicherkontonamen und einen Parameter, der angibt, ob das Speicherkonto neu oder bereits vorhanden ist.
-
-```json
-"parameters": {
-    "storageAccountName": {
-        "type": "String"
-    },
-    "newOrExisting": {
-        "type": "String",
-        "allowedValues": [
-            "new",
-            "existing"
-        ]
-    }
-},
-```
-
-Sie erstellen eine Variable für den Vorlagen-URI mit dem Wert des neuen oder vorhandenen Parameters.
-
-```json
-"variables": {
-    "templatelink": "[concat('https://raw.githubusercontent.com/exampleuser/templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
-},
-```
-
-Sie geben diesen Variablenwert für die Bereitstellungsressource an.
-
-```json
-"resources": [
-    {
-        "apiVersion": "2015-01-01",
-        "name": "linkedTemplate",
-        "type": "Microsoft.Resources/deployments",
-        "properties": {
-            "mode": "incremental",
-            "templateLink": {
-                "uri": "[variables('templatelink')]",
-                "contentVersion": "1.0.0.0"
-            },
-            "parameters": {
-                "StorageAccountName": {
-                    "value": "[parameters('storageAccountName')]"
-                }
-            }
-        }
-    }
-],
-```
-
-Der URI wird in eine Vorlage aufgelöst, die entweder den Namen **existingStorageAccount.json** oder **newStorageAccount.json** hat. Erstellen Sie Vorlagen für diese URIs.
-
-Das folgende Beispiel zeigt die Vorlage **existingStorageAccount.json** :
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "String"
-    }
-  },
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "storageAccountInfo": {
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
-      "type" : "object"
-    }
-  }
-}
-```
-
-Das nächste Beispiel zeigt die Vorlage **newStorageAccount.json** . Beachten Sie, dass das Speicherkontoobjekt wie die Vorlage für das vorhandene Speicherkonto in den Ausgaben zurückgegeben wird. Die Mastervorlage kann mit beiden verknüpften Vorlagen verwendet werden.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[parameters('StorageAccountName')]",
-      "apiVersion": "2016-01-01",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    }
-  ],
-  "outputs": {
-    "storageAccountInfo": {
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')),providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
-      "type" : "object"
-    }
-  }
-}
-```
-
 ## <a name="complete-example"></a>Vollständiges Beispiel
 Die folgenden Beispielvorlagen zeigen eine vereinfachte Anordnung verknüpfter Vorlagen zum Erläutern verschiedener Konzepte in diesem Artikel. Es wird davon ausgegangen, dass die Vorlagen demselben Container in einem Speicherkonto mit aktiviertem öffentlichen Zugriff hinzugefügt wurden. Im Abschnitt **outputs** übergibt die verknüpfte Vorlage einen Wert zurück an die Hauptvorlage.
 
@@ -266,7 +156,7 @@ Die Datei **parent.json** besteht aus Folgendem:
   },
   "resources": [
     {
-      "apiVersion": "2015-01-01",
+      "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
