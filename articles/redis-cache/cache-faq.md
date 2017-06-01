@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 05/25/2017
 ms.author: sdanie
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: cbd764b3c6ce912c825aa2756ac6f35c23d047bf
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: eeddc0da23192a0082f2fcddbb0cc5f3e4a72074
 ms.contentlocale: de-de
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -77,8 +77,6 @@ Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fra
 In den häufig gestellten Fragen in diesem Abschnitt werden allgemeine Fragen zur Überwachung und Problembehandlung behandelt. Weitere Informationen zur Überwachung und Problembehandlung Ihrer Azure Redis Cache-Instanzen finden Sie unter [Überwachen von Azure Redis Cache](cache-how-to-monitor.md) und [Problembehandlung für Azure Redis Cache](cache-how-to-troubleshoot.md).
 
 * [Wie überwache ich die Integrität und Leistung meines Caches?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
-* [Die Einstellungen meines Speicherkontos für die Cachediagnose haben sich geändert. Was ist passiert?](#my-cache-diagnostics-storage-account-settings-changed-what-happened)
-* [Warum ist die Diagnose für einige neue Caches aktiviert, für andere dagegen nicht?](#why-are-diagnostics-enabled-for-some-new-caches-but-not-others)
 * [Warum kommt es zu Timeouts?](#why-am-i-seeing-timeouts)
 * [Warum wurde mein Client vom Cache getrennt?](#why-was-my-client-disconnected-from-the-cache)
 
@@ -427,12 +425,6 @@ Das **Ressourcenmenü** von Redis Cache enthält auch mehrere Tools zur Überwac
 * **Neue Supportanfrage** bietet Optionen, um eine Supportanfrage für Ihren Cache zu öffnen.
 
 Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Redis Cache-Instanzen zu überwachen und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen. Weitere Informationen finden Sie im Abschnitt „Einstellungen zu Support und Problembehandlung“ des Artikels [Gewusst wie: Konfigurieren von Azure Redis Cache](cache-configure.md).
-
-### <a name="my-cache-diagnostics-storage-account-settings-changed-what-happened"></a>Die Einstellungen meines Speicherkontos für die Cachediagnose haben sich geändert. Was ist passiert?
-Für Caches innerhalb der gleichen Region und des gleichen Abonnements gelten die gleichen Diagnosespeichereinstellungen. Wenn die Konfiguration geändert wird (durch Aktivieren/Deaktivieren der Diagnose oder Ändern des Speicherkontos), gilt diese Änderung für alle Caches dieses Abonnements in dieser Region. Wenn sich die Diagnoseeinstellungen für Ihren Cache geändert haben, überprüfen Sie, ob sich die Diagnoseeinstellungen für einen anderen Cache im selben Abonnement und derselben Region geändert haben. Eine Möglichkeit besteht darin, die Überwachungsprotokolle für Ihren Cache auf ein `Write DiagnosticSettings`-Ereignis zu überprüfen. Weitere Informationen zum Arbeiten mit Überwachungsprotokollen finden Sie unter [Anzeigen von Ereignissen und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md) und [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md). Weitere Informationen zum Überwachen von Azure Redis Cache-Ereignissen finden Sie unter [Vorgänge und Warnungen](cache-how-to-monitor.md#operations-and-alerts).
-
-### <a name="why-are-diagnostics-enabled-for-some-new-caches-but-not-others"></a>Warum ist die Diagnose für einige neue Caches aktiviert, für andere dagegen nicht?
-Caches in derselben Region und im selben Abonnement haben die gleichen Diagnosespeichereinstellungen. Wenn Sie einen neuen Cache in derselben Region und im selben Abonnement wie einen anderen Cache erstellen, für den die Diagnose aktiviert ist, wird die Diagnose für den neuen Cache mit denselben Einstellungen aktiviert.
 
 <a name="cache-timeouts"></a>
 

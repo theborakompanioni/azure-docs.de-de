@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: e820ca068bd9be151c4241bb233806847855933c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: ad0610c1aed8e21f322516a4b7ea41bf55cc200e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -43,7 +45,7 @@ Erfahren Sie, wie Sie Websiteprotokolle mit Azure Data Lake Analytics analysiere
 * **Data Lake Analytics-Konto.**  Weitere Informationen finden Sie unter [Erstellen eines Azure Data Lake Analytics-Kontos](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account).
 
     Für die Data Lake-Tools wird das Erstellen von Data Lake Analytics-Konten nicht unterstützt.  Sie müssen sie also mit dem Azure-Portal oder über Azure PowerShell, das .NET SDK oder die Azure-Befehlszeilenschnittstelle erstellen.
-* **Upload der Beispieldaten in das Data Lake Analytics-Konto.** Weitere Informationen finden Sie unter [So kopieren Sie Beispieldatendateien](data-lake-analytics-get-started-portal.md#prepare-source-data).
+* **Upload der Beispieldaten in das Data Lake Analytics-Konto.** Weitere Informationen finden Sie unter [So kopieren Sie Beispieldatendateien](data-lake-analytics-get-started-portal.md).
 
     Zum Ausführen eines Data Lake Analytics-Auftrags benötigen Sie einige Daten. Auch wenn die Data Lake-Tools das Hochladen von Daten unterstützen, verwenden Sie das Portal zum Hochladen der Beispieldaten, um das Durcharbeiten dieses Tutorials zu vereinfachen.
 
@@ -200,9 +202,4 @@ Weitere Themen zur Entwicklung:
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Erste Schritte mit Azure Data Lake Analytics-U-SQL-Sprache](data-lake-analytics-u-sql-get-started.md)
 * [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

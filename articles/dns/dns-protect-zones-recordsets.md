@@ -13,9 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: f5865e07df4e1f253079ac1c8b257e2525da5ef3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -221,11 +223,5 @@ Es ist möglich, beide Ansätze – Ressourcensperren sowie benutzerdefinierte R
 
 * Weitere Informationen zum Arbeiten mit RBAC finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
 * Weitere Informationen zum Arbeiten mit Ressourcensperren finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
-* Weitere Informationen zum Sichern Ihrer Azure-Ressourcen finden Sie unter [Sicherheitsaspekte für Azure Resource Manager](../best-practices-resource-manager-security.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

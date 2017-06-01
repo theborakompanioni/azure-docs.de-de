@@ -1,5 +1,5 @@
 ---
-title: Automatisches Skalieren eines Clouddiensts im (klassischen) Portal | Microsoft Docs
+title: Automatisches Skalieren eines Clouddiensts im Portal | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie mit dem Portal Regeln für die automatische Skalierung für eine Clouddienst-Webrolle oder -Workerrolle in Azure konfigurieren."
 services: cloud-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 7891fbd326340ed102f885e84993ef987e044023
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: e746decaea19477e52aba3ce714d8dd10140602e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/23/2017
 
 ---
 
@@ -44,19 +45,16 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 
 * Um die Hochverfügbarkeit Ihrer Anwendung zu gewährleisten, sollte diese mit mindestens zwei Rolleninstanzen bereitgestellt werden. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
-> [!WARNING]
-> Automatische Skalierung funktioniert nur mit klassischen Azure Storage-Konten. Sie funktioniert nicht mit Azure Resource Manager-Speicherkonten.
-
 
 ## <a name="where-scale-is-located"></a>Aufrufen der Funktion für die Skalierung
 Nachdem Sie Ihren Clouddienst ausgewählt haben, sollte das Blatt für den Clouddienst angezeigt werden.
 
 1. Wählen Sie auf dem Blatt für den Clouddienst auf der Kachel **Rollen und Instanzen** den Namen des Clouddiensts aus.   
    **WICHTIG**: Sie müssen auf die Clouddienstrolle klicken, nicht auf die Rolleninstanz unterhalb der Rolle.
-   
+
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Wählen Sie die Kachel **Skalieren** aus.
-   
+
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatisches Skalieren
@@ -78,25 +76,25 @@ Nachdem Sie das Profil und die Regeln konfiguriert haben, wählen Sie oben das S
 Das Profil legt die Mindest- und Höchstanzahl von Instanzen für die Skalierung fest und bestimmt zudem, wann dieser Skalierungsbereich aktiv ist.
 
 * **Always**
-  
+
     Dieser Bereich von Instanzen bleibt immer verfügbar.  
-  
+
     ![Clouddienst, der immer skaliert wird](./media/cloud-services-how-to-scale-portal/select-always.png)
 * **Serie**
-  
+
     Wählen Sie eine Reihe von Wochentagen zum Skalieren aus.
-  
+
     ![Clouddienst, der mit einem Wiederholungsplan skaliert wird](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
 * **Festes Datum**
-  
+
     Ein fester Datumsbereich zum Skalieren der Rolle.
-  
+
     ![CLouddienst, der mit einem festen Datum skaliert wird](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
 Nachdem Sie das Profil konfiguriert haben, wählen Sie unten auf dem Profilblatt die Schaltfläche **OK** aus.
 
 #### <a name="rule"></a>Regel
-Regeln werden einem Profil hinzugefügt und stellen eine Bedingung dar, die die Skalierung auslöst. 
+Regeln werden einem Profil hinzugefügt und stellen eine Bedingung dar, die die Skalierung auslöst.
 
 Der Trigger der Regel basiert auf einer Metrik des Clouddiensts (CPU-Auslastung, Datenträgeraktivität oder Netzwerkaktivität), der Sie einen bedingten Wert hinzufügen können. Darüber hinaus kann der Trigger auch auf einer Nachrichtenwarteschlange oder der Metrik einer anderen mit Ihrem Abonnement verknüpften Azure-Ressource basieren.
 
@@ -109,12 +107,11 @@ Navigieren Sie zu [Skalierungseinstellungen](#where-scale-is-located), und legen
 
 ![Clouddienst-Skalierungseinstellungen mit Profil und Regel](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-Durch diese Einstellung wird die automatische Skalierung von der Rolle entfernt. Danach können Sie die Anzahl der Instanzen direkt angeben. 
+Durch diese Einstellung wird die automatische Skalierung von der Rolle entfernt. Danach können Sie die Anzahl der Instanzen direkt angeben.
 
 1. Die Skalierungsoption (manuell oder automatisch).
 2. Eine Schieberegler für die Rolleninstanz, um die Instanzen festzulegen, auf die skaliert werden soll.
 3. Instanzen der Rolle, auf die skaliert werden soll.
 
 Nachdem Sie die Skalierungseinstellungen konfiguriert haben, wählen Sie oben das Symbol **Speichern** aus.
-
 
