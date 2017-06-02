@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 8252bc979fdeb034384fc65e416643de8ef97031
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 02c0d1834ee5e4b6aeebccc0d25bba49f8e5afe2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -145,7 +145,7 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
                 <div class="card">
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
-                        <p><a href="/cli/azure/iot">Azure-Befehlszeilenschnittstelle</a></p>
+                        <p><a href="/cli/azure/iot">Azure CLI 2.0</a></p>
                     </div>
                 </div>
             </div>
@@ -159,11 +159,10 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
                         <h3>Sprachen</h3>
                         <p><a href="/dotnet/api/microsoft.azure.devices">.NET (Dienst)</a></p>
                         <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Geräte)</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-c/index.html">C-Geräte-SDK</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (Dienst)</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (Geräte)</a></p>
-                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.11/index.html">Knoten (Dienst)</a></p>
-                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iot-device/1.1.12/index.html">Knoten (Geräte)</a></p>
-                        <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDKs</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdk-node/">Node.js-SDKs</a></p>
                         <p><a href="http://azure.github.io/iot-edge/">Azure IoT Edge</a></p>
                     </div>
                 </div>
@@ -178,6 +177,7 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
                         <h3>REST</h3>
                         <p><a href="/rest/api/iothub/iothubresource">REST (Ressourcenanbieter)</a></p>
                         <p><a href="/rest/api/iothub/deviceapi">REST (Geräteidentitäten)</a></p>
+                        <p><a href="/rest/api/iothub/devicetwinapi">REST (Gerätezwillinge)</a></p>
                         <p><a href="/rest/api/iothub/httpruntime">REST (Device Messaging)</a></p>
                         <p><a href="/rest/api/iothub/jobapi">REST (Aufträge)</a></p>
                     </div>

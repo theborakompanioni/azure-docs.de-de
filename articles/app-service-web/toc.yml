@@ -278,8 +278,6 @@
         href: app-service-web-open-source-technologies-faq.md
       - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
         href: app-service-web-configuration-and-management-faq.md
-      - name: Weitere häufig gestellte Fragen
-        href: app-service-web-others-faq.md
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/app-service/
   - name: Informationen zum Kontingent
