@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: e2ccb78da419b12a9845d720efb5b0229d4f455b
+ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
 
 
@@ -35,8 +36,6 @@ Ein vorhandener virtueller Computer, der mit dem klassischen Portal, mit Azure C
 Wenn Sie über ein aktuelles Abonnement von Trend Micro für eine lokale Lösung verfügen, können Sie es zum Schützen Ihrer virtuellen Azure-Computer verwenden. Wenn Sie noch kein Kunde sind, können Sie sich für ein Testabonnement registrieren. Weitere Informationen zu dieser Lösung finden Sie im Trend Micro-Blogbeitrag [Microsoft Azure VM Agent Extension For Deep Security](http://go.microsoft.com/fwlink/p/?LinkId=403945)(Microsoft Azure-VM-Agent-Erweiterung für Deep Security, in englischer Sprache).
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Installieren von Deep Security Agent auf einem neuen virtuellen Computer
-
-<!-- old portal [Azure classic portal](http://manage.windowsazure.com) -->
 
 Mit dem [Azure-Portal](http://portal.azure.com) können Sie die Trend Micro-Sicherheitserweiterung installieren, wenn Sie ein Image aus dem **Marketplace** zum Erstellen des virtuellen Computers verwenden. Wenn Sie einen einzelnen virtuellen Computer erstellen, ist die Verwendung des Portals eine einfache Möglichkeit, den Trend Micro-Schutz hinzuzufügen.
 

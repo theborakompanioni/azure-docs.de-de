@@ -56,12 +56,12 @@ Eine Verfügbarkeitsgruppe können Sie mithilfe von [az vm availability-set crea
 
 Erstellen Sie eine Ressourcengruppe.
 
-```azurecli-interactive
+```azurecli-interactive 
 az group create --name myResourceGroupAvailability --location eastus
 ```
 
 
-```azurecli
+```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupAvailability \
     --name myAvailabilitySet \
@@ -77,7 +77,7 @@ Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sich
 
 Beim Erstellen eines virtuellen Computers mit [az vm create](/cli/azure/vm#create) legen Sie die Verfügbarkeitsgruppe mit dem Parameter `--availability-set` fest, um den Namen der Verfügbarkeitsgruppe anzugeben.
 
-```azurecli
+```azurecli-interactive 
 for i in `seq 1 2`; do
    az vm create \
      --resource-group myResourceGroupAvailability \
@@ -99,7 +99,7 @@ Sie werden beim Hinzufügen virtueller Computer feststellen, dass eine bestimmte
 
 Sie können der Verfügbarkeitsgruppe später weitere virtuelle Computer hinzufügen. Dazu müssen Sie jedoch wissen, welche VM-Größen in der Hardware verfügbar sind. Verwenden Sie [az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes), um alle verfügbaren Größen im Hardwarecluster für die Verfügbarkeitsgruppe aufzulisten.
 
-```azurecli
+```azurecli-interactive 
 az vm availability-set list-sizes \
      --resource-group myResourceGroupAvailability \
      --name myAvailabilitySet \

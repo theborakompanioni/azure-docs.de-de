@@ -80,7 +80,7 @@ Dieses Skript startet alle virtuellen Computer in der Ressourcengruppe neu und s
 
 Nach der Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppen, VMs und alle zugehörigen Ressourcen entfernt werden.
 
-```azurecli
+```azurecli-interactive 
 az group delete -n myResourceGroup --no-wait --yes
 ```
 

@@ -10,6 +10,7 @@
 ### [Erweiterte Bedrohungserkennung](azure-threat-detection.md)
 ### [Protokollierung und Überwachung](azure-log-audit.md)
 ### [Isolation in der öffentlichen Cloud](azure-isolation.md)
+### [Technische Sicherheitsfunktionen](azure-security-technical-capabilities.md)
 
 # Erste Schritte
 ## [Erste Schritte mit Azure-Sicherheit](azure-security-getting-started.md)
@@ -18,6 +19,7 @@
 
 ## Netzwerksicherheit
 ### [Bewährte Methoden für die Netzwerksicherheit](azure-security-network-security-best-practices.md)
+###[Azure-Netzwerksicherheit](azure-network-security.md)
 ### [Sicherheit von Grenzen](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Sichere Hybrid-Netzwerkarchitektur](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
 

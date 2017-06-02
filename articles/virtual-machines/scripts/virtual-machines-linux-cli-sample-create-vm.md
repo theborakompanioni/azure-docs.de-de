@@ -42,7 +42,7 @@ Dieses Skript erstellt eine Azure-VM mit einem Ubuntu-Betriebssystem. Nach dem A
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
-```azurecli
+```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 

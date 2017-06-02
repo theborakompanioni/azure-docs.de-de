@@ -13,14 +13,12 @@
     href: sql-database-get-started-cli.md
   - name: Erstellen einer Datenbank – PowerShell
     href: sql-database-get-started-powershell.md
-  - name: Verwalten
+  - name: Herstellen der Verbindung und Abfragen
     items:
     - name: SSMS
       href: sql-database-connect-query-ssms.md
     - name: VS-Code
       href: sql-database-connect-query-vscode.md
-  - name: Verbinden
-    items:
     - name: .NET
       href: sql-database-connect-query-dotnet.md
     - name: PHP
@@ -37,7 +35,7 @@
   items:
   - name: '1: Erstellen/Entwerfen einer neuen SQL-Datenbank'
     href: sql-database-design-first-database.md
-  - name: '2: Migrieren einer vorhandenen SQL Server-Instanz'
+  - name: '2: Migrieren einer SQL Server-Datenbank'
     href: sql-database-migrate-your-sql-server-database.md
   - name: '3: Sichern Ihrer SQL-Datenbank'
     href: sql-database-security-tutorial.md
@@ -45,6 +43,8 @@
     href: sql-database-performance-tutorial.md
   - name: '5: Verwalten einer mehrinstanzenfähigen App'
     href: sql-database-multi-tenant-application.md
+  - name: '6: Implementieren einer geografisch verteilten Datenbank'
+    href: sql-database-implement-geo-distributed-database.md 
   - name: Wingtip SaaS-Tutorials
     items:
     - name: Wingtip SaaS-Einführung
@@ -55,15 +55,15 @@
       href: sql-database-saas-tutorial-provision-and-catalog.md
     - name: Überwachen der Leistung
       href: sql-database-saas-tutorial-performance-monitoring.md
+    - name: Überwachen mit Log Analytics
+      href: sql-database-saas-tutorial-log-analytics.md
     - name: Wiederherstellen einzelner Mandanten
       href: sql-database-saas-tutorial-restore-single-tenant.md
     - name: Verwalten von Mandantenschemas
       href: sql-database-saas-tutorial-schema-management.md
     - name: Ausführen von Ad-hoc-Analysen
       href: sql-database-saas-tutorial-adhoc-analytics.md
-    - name: Überwachen mit Log Analytics
-      href: sql-database-saas-tutorial-log-analytics.md
-    - name: Verwalten von Mandantenanalysen
+    - name: Ausführen von Mandantenanalysen
       href: sql-database-saas-tutorial-tenant-analytics.md
 - name: Beispiele
   items:
@@ -145,7 +145,7 @@
       href: sql-database-ssms-mfa-authentication.md
     - name: Überwachung
       href: sql-database-auditing.md
-    - name: Überwachung und TDS
+    - name: Tabellenüberwachung und TDS
       href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
     - name: Bedrohungserkennung
       href: sql-database-threat-detection.md
@@ -355,6 +355,8 @@
       href: sql-database-xevent-code-event-file.md
     - name: Erweiterte Ereignisse – Ringpuffer
       href: sql-database-xevent-code-ring-buffer.md
+    - name: Diagnoseprotokollierung
+      href: sql-database-metrics-diag-logging.md
   - name: Verwalten
     items:
     - name: Azure-Automatisierung

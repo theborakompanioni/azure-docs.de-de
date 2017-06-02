@@ -116,7 +116,7 @@
 ### [Stichproben](app-insights-sampling.md)
 
 ## Verwalten
-### [Verwalten von Preisen und Kontingenten](app-insights-pricing.md)
+### [Verwalten von Preisen und Datenvolumen](app-insights-pricing.md)
 ### [Überwachung der Anwendungsleistung mithilfe von Application Insights für SCOM](app-insights-scom.md)
 
 ## Export

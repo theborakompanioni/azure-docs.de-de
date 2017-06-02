@@ -47,7 +47,7 @@ Sie können die virtuelle Festplatte, die wir verwendet haben, unter „https://
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
-```azurecli
+```azurecli-interactive 
 az group delete -n az-cli-vhd
 ```
 
