@@ -7,6 +7,7 @@
 ## [Planung und Entwurf für VPN Gateway](vpn-gateway-plan-design.md)
 ## [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md)
 ## [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md)
+## [Informationen zu kryptografischen Anforderungen](vpn-gateway-about-compliance-crypto.md)
 ## [Informationen zu BGP und VPN Gateway](vpn-gateway-bgp-overview.md)
 ## [Informationen zu hoch verfügbaren Verbindungen](vpn-gateway-highlyavailable.md)
 
@@ -29,37 +30,41 @@
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+## Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
+### [PowerShell](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 ## Konfigurieren einer VNet-zu-VNet-Verbindung zwischen Bereitstellungsmodellen
 ### [Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 ## [Konfigurieren von parallel bestehenden Site-to-Site- und ExpressRoute-Verbindungen](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-## Konfigurieren der Tunnelerzwingung
-### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
-### [PowerShell (klassisch)](vpn-gateway-about-forced-tunneling.md)
 ## Mehrere Site-to-Site-Verbindungen konfigurieren
 ### [Azure-Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [PowerShell (klassisch)](vpn-gateway-multi-site.md)
+## Verbinden mehrerer richtlinienbasierter VPN-Geräte
+### [PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
 ## [Konfigurieren von BGP für ein VPN-Gateway](vpn-gateway-bgp-resource-manager-ps.md)
+## Konfigurieren der Tunnelerzwingung
+### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
+### [PowerShell (klassisch)](vpn-gateway-about-forced-tunneling.md)
 ## [Konfigurieren hochverfügbarer Aktiv/Aktiv-Verbindungen](vpn-gateway-activeactive-rm-powershell.md)
+## Verwalten von Azure-VPN-Gateways
+### [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
+### [Löschen von Gateways mit dem Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+### [Löschen von Gateways mit PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+### [Löschen von Gateways mit PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## Ändern der Einstellungen des lokalen Netzwerkgateways
 ### [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 ### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [Überprüfen einer VPN Gateway-Verbindung](vpn-gateway-verify-connection-resource-manager.md)
-## [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
-## Löschen eines VPN-Gateways
-### [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## Problembehandlung
 ### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
 
 # Referenz
-## [PowerShell](/powershell/module/azurerm.network)
-## [PowerShell (klassisch)](/powershell/module/azure/?view=azuresmps-3.7.0)
-## [REST](https://docs.microsoft.com/rest/api/network/virtualnetworkgateways)
+## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
+## [PowerShell (klassisch)](/powershell/module/azure/?view=azuresmps-3.7.0#networking)
+## [REST](/rest/api/network/virtualnetworkgateways)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/jj154113)
-## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network/vnet-gateway)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/vnet-gateway)
 
 # Verwandte Themen
 ## [Virtual Network](/azure/virtual-network/)
