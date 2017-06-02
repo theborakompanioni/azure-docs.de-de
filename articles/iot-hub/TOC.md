@@ -12,10 +12,6 @@
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### Verwenden eines simulierten Gateways
-#### [Simulation unter Linux](iot-hub-linux-iot-edge-get-started.md)
-#### [Simulation unter Windows](iot-hub-windows-iot-edge-get-started.md)
-
 ### Verwenden eines physischen Geräts
 #### [Raspberry Pi mit Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [Raspberry Pi mit C](iot-hub-raspberry-pi-kit-c-get-started.md)
@@ -31,6 +27,8 @@
 ##### [Einrichten von Intel NUC als Gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [Herstellen einer Verbindung zwischen Gateway und IoT Hub](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [Verwenden des Gateways für die Datenkonvertierung](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+
+### [Verwenden eines Onlinegerätesimulators](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ## [Verwalten von Cloudgerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
 ## [Speichern von IoT Hub-Nachrichten im Azure-Datenspeicher](iot-hub-store-data-in-azure-table-storage.md)
@@ -48,15 +46,21 @@
 ### [Unterstützung zusätzlicher Protokolle](iot-hub-protocol-gateway.md)
 ## [Entwickeln](iot-hub-how-to.md)
 ### [Entwicklerhandbuch](iot-hub-devguide.md)
-#### [Senden und Empfangen von Nachrichten](iot-hub-devguide-messaging.md)
 #### [D2C-Featureleitfaden](iot-hub-devguide-d2c-guidance.md)
 #### [C2D-Featureleitfaden](iot-hub-devguide-c2d-guidance.md)
+#### [Senden und Empfangen von Nachrichten](iot-hub-devguide-messaging.md)
+##### [Senden von D2C-Nachrichten an IoT Hub](iot-hub-devguide-messages-d2c.md)
+##### [Lesen von D2C-Nachrichten vom integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md)
+##### [Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten](iot-hub-devguide-messages-read-custom.md)
+##### [Senden von C2D-Nachrichten von IoT Hub](iot-hub-devguide-messages-c2d.md)
+##### [Erstellen und Lesen von IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md)
 #### [Hochladen von Dateien von einem Gerät](iot-hub-devguide-file-upload.md)
 #### [Verwalten von Geräteidentitäten](iot-hub-devguide-identity-registry.md)
 #### [Verwalten des Zugriffs auf IoT Hub](iot-hub-devguide-security.md)
 #### [Grundlegendes zu Gerätezwillingen](iot-hub-devguide-device-twins.md)
 #### [Aufrufen von direkten Methoden auf einem Gerät](iot-hub-devguide-direct-methods.md)
 #### [Planen von Aufträgen auf mehreren Geräten](iot-hub-devguide-jobs.md)
+#### [Auswählen eines Kommunikationsprotokolls](iot-hub-devguide-protocols.md)
 #### [IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md)
 #### [Abfragesprache](iot-hub-devguide-query-language.md)
 #### [Kontingente und Drosselung](iot-hub-devguide-quotas-throttling.md)
@@ -119,18 +123,22 @@
 ### [Sicherheitsarchitektur](iot-hub-security-architecture.md)
 ### [Schützen Ihrer IoT-Bereitstellung](iot-hub-security-deployment.md)
 ## IoT Edge
+### Erste Schritte
+#### [Linux](iot-hub-linux-iot-edge-get-started.md)
+#### [Windows](iot-hub-windows-iot-edge-get-started.md)
 ### Simulieren eines Geräts
 #### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
 #### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
 ### [Verwenden eines echten Geräts](iot-hub-iot-edge-physical-device.md)
 
 # Referenz
-## [Azure CLI 2.0 (Vorschau)](/cli/azure/iot)
+## [Azure CLI 2.0](/cli/azure/iot)
 ## [.NET (Dienst)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (Geräte)](/dotnet/api/microsoft.azure.devices.client)
 ## [Java (Dienst)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (Geräte)](/java/api/com.microsoft.azure.sdk.iot.device)
-## [Azure IoT SDKs](http://azure.github.io/azure-iot-sdks/)
+## [Node.js-SDKs](http://azure.github.io/azure-iot-sdk-node/)
+## [C-Geräte-SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (Ressourcenanbieter)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST (Geräteidentitäten)](https://docs.microsoft.com/rest/api/iothub/deviceapi)
