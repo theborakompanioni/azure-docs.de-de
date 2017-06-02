@@ -42,7 +42,7 @@ Dieses Skript erstellt einen virtuellen Computer aus einer Momentaufnahme eines 
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
 
-```azurecli
+```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 

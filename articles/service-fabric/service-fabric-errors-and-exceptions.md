@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/16/2017
+ms.date: 06/01/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 491f61afe899c746c193f0d3703d3212f9258e63
 ms.openlocfilehash: 578046d6939b90cb58d457087bb465006630b4c1
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -47,10 +49,5 @@ Einige häufige [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.f
 | InvalidX509Store |Der X509-Zertifikatspeicher kann nicht geöffnet werden. |
 | InvalidSubjectName |Der Antragstellername ist ungültig. |
 | InvalidAllowedCommonNameList |Das Format der Zeichenfolge der Liste allgemeiner Namen ist ungültig. Es sollte eine durch Trennzeichen getrennte Liste sein. |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

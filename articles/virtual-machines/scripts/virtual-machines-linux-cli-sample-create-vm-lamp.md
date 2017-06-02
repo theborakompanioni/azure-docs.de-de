@@ -46,7 +46,7 @@ Verwenden Sie folgenden Code zum Herstellen einer Verbindung mit den virtuellen 
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, die Skalierungsgruppe und die virtuellen Computer sowie alle zugehörigen Ressourcen zu entfernen.
 
-```azurecli
+```azurecli-interactive 
 az group delete -n myResourceGroup
 ```
 
