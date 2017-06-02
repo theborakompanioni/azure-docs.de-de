@@ -17,12 +17,22 @@
 ### [Windows Server im klassischen Portal](backup-client-automation-classic.md)
 
 ## Azure Backup Server
-### [Vorbereiten der Sicherung von Azure Backup Server-Workloads im Azure-Portal](backup-azure-microsoft-azure-backup.md)
-### [Vorbereiten der Sicherung von Azure Backup Server-Workloads im klassischen Portal](backup-azure-microsoft-azure-backup-classic.md)
-### [Sichern eines VMware-Servers mit Azure Backup Server](backup-azure-backup-server-vmware.md)
-### [Sichern von Exchange mit Azure Backup Server](backup-azure-exchange-mabs.md)
-### [Sichern einer SharePoint-Farm mit Azure Backup Server](backup-azure-backup-sharepoint-mabs.md)
-### [Sichern von SQL mit Azure Backup Server](backup-azure-sql-mabs.md)
+### [Azure Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md)
+### Installieren oder Aktualisieren
+#### [Vorbereiten der Sicherung von Azure Backup Server-Workloads im Azure-Portal](backup-azure-microsoft-azure-backup.md)
+#### [Vorbereiten der Sicherung von Azure Backup Server-Workloads im klassischen Portal](backup-azure-microsoft-azure-backup-classic.md)
+#### [Hinzufügen von Speicher zu Azure Backup Server](backup-mabs-add-storage.md)
+#### [Upgraden von Azure Backup Server auf v.2](backup-mabs-upgrade-to-v2.md)
+#### [Unbeaufsichtigte Installation von Azure Backup Server](backup-mabs-unattended-install.md)
+### Schützen von Workloads
+#### [Sichern eines VMware-Servers mit Azure Backup Server](backup-azure-backup-server-vmware.md)
+#### [Sichern von Exchange mit Azure Backup Server](backup-azure-exchange-mabs.md)
+#### [Sichern einer SharePoint-Farm mit Azure Backup Server](backup-azure-backup-sharepoint-mabs.md)
+#### [Sichern von SQL mit Azure Backup Server](backup-azure-sql-mabs.md)
+#### [Schützen des Systemstatus und Bare-Metal-Recovery](backup-mabs-system-state-and-bmr.md)
+### Problembehandlung
+#### [Behandeln von Problemen mit Azure Backup Server](backup-azure-mabs-troubleshoot.md)
+
 
 ## Data Protection Manager
 ### [Vorbereiten von DPM-Workloads im Azure-Portal](backup-azure-dpm-introduction.md)
@@ -33,19 +43,25 @@
 ### [Verwenden von DPM zum Sichern einer SharePoint-Farm](backup-azure-backup-sharepoint.md)
 
 ## Virtuelle Azure-Computer
-### [Vorbereiten virtueller Azure-Computer](backup-azure-vms-prepare.md)
-### [Vorbereiten von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms-prepare.md)
-### [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
-### [Sichern virtueller Azure-Computer im Sicherungstresor](backup-azure-vms.md)
-### [Sichern von virtuellen Computern in einem Recovery Services-Tresor](backup-azure-arm-vms.md)
-### [Sichern und Wiederherstellen verschlüsselter virtueller Computer](backup-azure-vms-encryption.md)
-### [Verwalten und Überwachen von Azure-VM-Sicherungen im klassischen Portal](backup-azure-manage-vms-classic.md)
-### [Verwalten von Azure-VM-Sicherungen im Azure-Portal](backup-azure-manage-vms.md)
-### [Überwachen von Warnungen für Azure-VM-Sicherungen im Azure-Portal](backup-azure-monitor-vms.md)
-### [Wiederherstellen von Dateien aus Azure-VM-Sicherungen](backup-azure-restore-files-from-vm.md)
-### [Wiederherstellen virtueller Computer in Azure](backup-azure-restore-vms.md)
-### [Wiederherstellen der mit Azure Resource Manager bereitgestellten virtuellen Computer im Azure-Portal](backup-azure-arm-restore-vms.md)
-### [Wiederherstellen von Key Vault-Schlüssel und -Geheimnis für verschlüsselte virtuelle Computer mithilfe von Azure Backup](backup-azure-restore-key-secret.md)
+### Vorbereiten des virtuellen Computers
+#### [Vorbereiten virtueller Azure-Computer](backup-azure-vms-prepare.md)
+#### [Vorbereiten von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms-prepare.md)
+### Planen der Umgebung
+#### [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
+### Sichern von Servern und Workloads
+#### [Sichern virtueller Azure-Computer im Sicherungstresor](backup-azure-vms.md)
+#### [Sichern von virtuellen Computern in einem Recovery Services-Tresor](backup-azure-arm-vms.md)
+#### [Sichern verschlüsselter virtueller Computer](backup-azure-vms-encryption.md)
+### Verwalten und Überwachen virtueller Computer
+#### [Verwalten und Überwachen von Azure-VM-Sicherungen im klassischen Portal](backup-azure-manage-vms-classic.md)
+#### [Verwalten von Azure-VM-Sicherungen im Azure-Portal](backup-azure-manage-vms.md)
+#### [Überwachen von Warnungen für Azure-VM-Sicherungen im Azure-Portal](backup-azure-monitor-vms.md)
+### Wiederherstellen von Daten von virtuellen Computern
+#### [Wiederherstellen von Dateien aus Azure-VM-Sicherungen](backup-azure-restore-files-from-vm.md)
+#### [Wiederherstellen virtueller Computer in Azure](backup-azure-restore-vms.md)
+#### [Wiederherstellen der mit Azure Resource Manager bereitgestellten virtuellen Computer im Azure-Portal](backup-azure-arm-restore-vms.md)
+#### [Wiederherstellen von Key Vault-Schlüssel und -Geheimnis für verschlüsselte virtuelle Computer mithilfe von Azure Backup](backup-azure-restore-key-secret.md)
+#### [Wiederherstellen verschlüsselter virtueller Computer](backup-azure-vms-encryption.md)
 
 ## Azure SQL-Datenbank
 ### [Konfigurieren der langfristigen Sicherungsaufbewahrung](../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
@@ -66,7 +82,6 @@
 ## Problembehandlung
 ### [Probleme bei der Azure-VM-Sicherung im Azure-Portal](backup-azure-vms-troubleshoot.md)
 ### [Probleme bei der Azure-VM-Sicherung im klassischen Portal](backup-azure-vms-troubleshoot-classic.md)
-### [Azure Backup Server](backup-azure-mabs-troubleshoot.md)
 ### [Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Langsame Sicherung von Dateien und Ordnern in Azure Backup](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 

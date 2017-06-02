@@ -1,13 +1,14 @@
 # Übersicht
 ## [Was ist Site Recovery?](site-recovery-overview.md)
-## [Wie funktioniert Site Recovery?](site-recovery-components.md)
+## [Wie funktioniert Site Recovery?](site-recovery-azure-to-azure-architecture.md)
 ## [Wie funktioniert die Hyper-V-Replikation in Azure?](site-recovery-hyper-v-azure-architecture.md)
 ## [Welche Workloads können Sie schützen?](site-recovery-workload.md)
-## [Site Recovery-Supportmatrix](site-recovery-support-matrix-to-azure.md)
+## [Site Recovery-Supportmatrix](site-recovery-support-matrix-azure-to-azure.md)
 ## [HÄUFIG GESTELLTE FRAGEN](site-recovery-faq.md)
 ## [Ansehen einer Einführung](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # Erste Schritte
+## [Replizieren virtueller Azure-Computer (Vorschau)](site-recovery-azure-to-azure.md)
 ## [Replizieren von VMware-VMs in Azure](site-recovery-vmware-to-azure.md)
 ## [Replizieren physischer Server in Azure](site-recovery-physical-servers-to-azure.md)
 ## [Replizieren von Hyper-V-VMs in Azure (mit VMM)](site-recovery-vmm-to-azure.md)
@@ -18,9 +19,10 @@
 
 # Anleitung
 ## Planen
-### [Voraussetzungen für die Azure-Replikation](site-recovery-prereq.md)
-### [Planen der Netzwerkinfrastruktur](site-recovery-network-design.md)
-### [Planen der Netzwerkzuordnung](site-recovery-network-mapping.md)
+### [Voraussetzungen für die Azure-Replikation](site-recovery-azure-to-azure-prereq.md)
+### [Planen ausgehender Netzwerkverbindungen für virtuelle Azure-Computer (Vorschau)](site-recovery-azure-to-azure-networking-guidance.md)
+### [Planen der Netzwerkinfrastruktur für lokale Computer](site-recovery-network-design.md)
+### [Planen der Netzwerkzuordnung](site-recovery-network-mapping-azure-to-azure.md)
 ### [Planen der Kapazität und Skalieren der VMware-Replikation in Azure](site-recovery-plan-capacity-vmware.md)
 ### [Deployment Planner für die VMware-Replikation in Azure](site-recovery-deployment-planner.md)
 ### [Capacity Planner für die Hyper-V-Replikation](site-recovery-capacity-planner.md)
@@ -33,19 +35,21 @@
 ### [Bereitstellen des Mobilitätsdiensts für die VMware-Replikation](site-recovery-vmware-to-azure-install-mob-svc.md)
 #### [Bereitstellen des Mobilitätsdiensts mithilfe von System Center Configuration Manager](site-recovery-install-mobility-service-using-sccm.md)
 #### [Bereitstellen des Mobilitätsdiensts mithilfe von Azure Automation DSC](site-recovery-automate-mobility-service-install.md)
-### [Replikation aktivieren](site-recovery-replicate-vmware-to-azure.md)
+### [Replikation aktivieren](site-recovery-replicate-azure-to-azure.md)
 ## Failover und Failback
-### [Ausführen eines Failovers für geschützte Computer](site-recovery-failover.md)
 ### [Einrichten von Wiederherstellungsplänen](site-recovery-create-recovery-plans.md)
 #### [Hinzufügen von Azure-Runbooks zu Wiederherstellungsplänen](site-recovery-runbook-automation.md)
 ### [Ausführen eines Testfailovers](site-recovery-test-failover-to-azure.md)
-### [Erneutes Schützen von Computern nach einem Failover](site-recovery-how-to-reprotect.md)
+### [Ausführen eines Failovers für geschützte Computer](site-recovery-failover.md)
+### [Erneutes Schützen von Computern nach einem Failover](site-recovery-how-to-reprotect-azure-to-azure.md)
 ### [Failback von Azure](site-recovery-failback-azure-to-vmware.md)
 
 ## Migrieren
 ### [Migrieren zu Azure](site-recovery-migrate-to-azure.md)
 ### [Zwischen Azure-Regionen migrieren](site-recovery-migrate-azure-to-azure.md)
 ### [Migrieren von AWS Windows-Instanzen zu Azure](site-recovery-migrate-aws-to-azure.md)
+### [Replizieren migrierter Computer in einer anderen Azure-Region](site-recovery-azure-to-azure-after-migration.md)
+
 ## Workloads
 ### [Active Directory und DNS](site-recovery-active-directory.md)
 ### [SQL Server](site-recovery-sql.md)
@@ -68,7 +72,9 @@
 ### [Verwalten eines horizontal hochskalierten Prozessservers](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
 ### [Verwalten von vCenter-Servern](site-recovery-vmware-to-azure-manage-vCenter.md)
 ### [Entfernen von Servern und Deaktivieren des Schutzes](site-recovery-manage-registration-and-protection.md)
-## [Überwachen und Behandeln von Problemen](site-recovery-monitoring-and-troubleshooting.md)
+## Überwachen und Behandeln von Problemen
+### [Probleme bei der Replikation virtueller Azure-Computer](site-recovery-azure-to-azure-troubleshoot-errors.md)
+### [Probleme bei der Replikation zwischen einem lokalen Standort und Azure](site-recovery-monitoring-and-troubleshooting.md)
 
 # Referenz
 ## [PowerShell](/powershell/module/azurerm.siterecovery)

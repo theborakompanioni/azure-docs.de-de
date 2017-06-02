@@ -61,6 +61,9 @@
 ### [Ansichten](operations-management-suite-solutions-resources-views.md)
 ### [bewährten Methoden](operations-management-suite-solutions-best-practices.md)
 
+## Verwaltungsszenarien
+### [Sammeln von Analysedaten aus Runbook](operations-management-suite-runbook-datacollect.md)
+
 ## [Integrieren in OMS](operations-management-suite-integration.md)
 
 # Referenz
