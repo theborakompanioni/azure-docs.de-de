@@ -36,11 +36,12 @@
 ### [Verwalten von Azure Automation-Daten](automation-managing-data.md)
 ### [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](automation-invoke-runbook-from-omsla-alert.md)
 ## Bereitstellen der Konfigurationsverwaltung (DSC)
-### [Übersicht über das Konfigurieren des gewünschten Zustands (Desired State Configuration, DSC)](automation-dsc-overview.md)
+### [Übersicht über das Konfigurieren des gewünschten Zustands (DSC)](automation-dsc-overview.md)
 ### [Erste Schritte](automation-dsc-getting-started.md)
 ### [Aufnehmen von Computern in die Verwaltung](automation-dsc-onboarding.md)
 ### [Kompilieren von DSC-Konfigurationen](automation-dsc-compile.md)
 ### [Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md)
+### [Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics](automation-dsc-diagnostics.md)
 ## Verwalten von Automation-Objekten
 ### [Zertifikate](automation-certificates.md)
 ### [Verbindungen](automation-connections.md)
