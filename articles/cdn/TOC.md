@@ -6,7 +6,7 @@
 
 # Anleitung
 ## Integrieren
-### [Web-Apps](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [Web-Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Speicher](cdn-create-a-storage-account-with-cdn.md)
 ### [Cross-Origin Resource Sharing](cdn-cors.md)
@@ -53,10 +53,10 @@
 ## [REST](/rest/api/cdn/)
 
 # Ressourcen
-##  [Rules Engine reference](cdn-rules-engine-reference.md) (Regelmodul – Referenz)
-### [Rules Engine conditional expressions](cdn-rules-engine-reference-conditional-expressions.md) (Regelmodul – Bedingte Ausdrücke)
-### [Rules Engine match conditions](cdn-rules-engine-reference-match-conditions.md) (Regelmodul – Übereinstimmungsbedingungen)
-### [Rules Engine features](cdn-rules-engine-reference-features.md) (Regelmodul – Features)
+##  [Regelmodul – Referenz](cdn-rules-engine-reference.md)
+### [Regelmodul – Bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
+### [Regelmodul – Übereinstimmungsbedingungen](cdn-rules-engine-reference-match-conditions.md)
+### [Regelmodul – Features](cdn-rules-engine-reference-features.md)
 ## [Azure CDN-POP-Standorte](cdn-pop-locations.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=cdn)
 ## [Preise](https://azure.microsoft.com/pricing/details/cdn/)
