@@ -30,6 +30,10 @@ Dieses Beispielskript erstellt eine Azure-Funktionen-App, die einen Container f√
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="sample-script"></a>Beispielskript
 
 Dieses Skript erstellt eine Azure-Funktionen-App mithilfe des [Verbrauchsplans](../functions-scale.md#consumption-plan).

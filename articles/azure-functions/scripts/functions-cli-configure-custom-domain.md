@@ -13,7 +13,7 @@ ms.workload: na
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 04/09/2017
+ms.date: 06/01/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
@@ -28,6 +28,10 @@ ms.lasthandoff: 05/15/2017
 Dieses Beispielskript erstellt eine Funktionen-App mit den zugehörigen Ressourcen und ordnet ihr dann `www.<yourdomain>` zu. Um eine benutzerdefinierte Domäne zuzuordnen, muss Ihre Funktionen-App in einem App Service-Plan und nicht in einem Verbrauchsplan erstellt werden. Azure Functions unterstützt nur die Zuordnung einer benutzerdefinierten Domäne mithilfe eines A-Eintrags.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>Beispielskript
 

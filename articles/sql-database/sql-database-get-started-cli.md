@@ -38,7 +38,7 @@ Für diesen Schnellstart ist Version 2.0.4 oder höher der Azure CLI erforderlic
 
 Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
-```azure-cli
+```azurecli-interactive
 az login
 ```
 
@@ -46,7 +46,7 @@ az login
 
 Definieren Sie Variablen zur Verwendung in den Skripts dieses Schnellstarts.
 
-```azure-cli
+```azurecli-interactive
 # The data center and resource name for your resources
 export resourcegroupname = myResourceGroup
 export location = westeurope
@@ -66,14 +66,14 @@ export databasename = mySampleDatabase
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `westeurope` erstellt.
 
-```azurazure-cliecli
+```azurecli-interactive
 az group create --name $resourcegroupname --location $location
 ```
 ## <a name="create-a-logical-server"></a>Erstellen eines logischen Servers
 
 Erstellen Sie mit dem Befehl [az sql server create](/cli/azure/sql/server#create) einen [logischen Azure SQL-Datenbankserver](sql-database-features.md). Ein logischer Server enthält eine Gruppe von Datenbanken, die als Gruppe verwaltet werden. Im folgenden Beispiel wird in Ihrer Ressourcengruppe ein zufällig benannter Server mit einem Administrator namens `ServerAdmin` und dem Kennwort `ChangeYourAdminPassword1` erstellt. Ersetzen Sie ggf. diese vordefinierten Werte.
 
-```azure-cli
+```azurecli-interactive
 az sql server create --name $servername --resource-group $resourcegroupname --location $location \
     --admin-user $adminlogin --admin-password $password
 ```
@@ -82,7 +82,7 @@ az sql server create --name $servername --resource-group $resourcegroupname --lo
 
 Erstellen Sie mit dem Befehl [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) eine [Azure SQL-Datenbank-Firewallregel auf Serverebene](sql-database-firewall-configure.md). Eine Firewallregel auf Serverebene lässt zu, dass eine externe Anwendung wie SQL Server Management Studio oder das SQLCMD-Hilfsprogramm über die Firewall des SQL-Datenbank-Dienstes eine Verbindung mit einer SQL-Datenbank herstellt. Im folgenden Beispiel wird die Firewall nur für andere Azure-Ressourcen geöffnet. Ändern Sie die IP-Adresse in eine für Ihre Umgebung geeignete Adresse, um die externe Konnektivität zu ermöglichen. Verwenden Sie 0.0.0.0 als IP-Startadresse und 255.255.255.255 als Endadresse, wenn Sie alle IP-Adressen öffnen möchten.  
 
-```azure-cli
+```azurecli-interactive
 az sql server firewall-rule create --resource-group $resourcegroupname --server $servername \
     -n AllowYourIp --start-ip-address $startip --end-ip-address $endip
 ```
@@ -95,7 +95,7 @@ az sql server firewall-rule create --resource-group $resourcegroupname --server 
 
 Erstellen Sie mit dem Befehl [az sql db create](/cli/azure/sql/db#create) auf dem Server eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Ersetzen Sie diese vordefinierten Werte wie gewünscht (andere Schnellstarts in dieser Sammlung bauen auf den Werten dieses Schnellstarts auf).
 
-```azure-cli
+```azurecli-interactive
 az sql db create --resource-group $resourcegroupname --server $servername \
     --name $databasename --sample-name AdventureWorksLT --service-objective S0
 ```
@@ -108,7 +108,7 @@ Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf.
 > Wenn Sie planen, mit den nachfolgenden Schnellstarts fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
 >
 
-```azurecli
+```azurecli-interactive
 az group delete --name $resourcegroupname
 ```
 

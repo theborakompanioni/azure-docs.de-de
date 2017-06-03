@@ -1,21 +1,21 @@
 ### <a name="noconnection"></a>So ändern Sie die IP-Adresspräfixe eines Gateways des lokalen Netzwerks: Keine Gatewayverbindung
 
-- So fügen Sie weitere Adresspräfixe hinzu:
+So fügen Sie weitere Adresspräfixe hinzu:
 
-  ```powershell
-  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
-  ```
+```powershell
+$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+-AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+```
 
-- So entfernen Sie Adresspräfixe:<br>
-  Lassen Sie die Präfixe weg, die Sie nicht mehr benötigen. In diesem Beispiel wird das Präfix „20.0.0.0/24“ (aus dem vorherigen Beispiel) nicht mehr benötigt. Daher wird das lokale Netzwerkgateway aktualisiert und das Präfix weggelassen.
+So entfernen Sie Adresspräfixe:<br>
+Lassen Sie die Präfixe weg, die Sie nicht mehr benötigen. In diesem Beispiel wird das Präfix „20.0.0.0/24“ (aus dem vorherigen Beispiel) nicht mehr benötigt. Daher wird das lokale Netzwerkgateway aktualisiert und das Präfix weggelassen.
 
-  ```powershell
-  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
-  ```
+```powershell
+$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+-AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
+```
 
 ### <a name="withconnection"></a>So ändern Sie die IP-Adresspräfixe eines Gateways des lokalen Netzwerks: Vorhandene Gatewayverbindung
 
