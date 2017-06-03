@@ -12,9 +12,10 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/16/2017
 ms.author: rachelap
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 0cd7e7c55e77863c142800cdc11d6ea144c38293
+ms.contentlocale: de-de
 ms.lasthandoff: 03/18/2017
 
 
@@ -98,7 +99,7 @@ public static Mail Run(TraceWriter log, string input, out Mail message)
 ```javascript
 module.exports = function (context, input) {    
     var message = {
-        to: "recipient@contoso.com",
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: "sender@contoso.com",        
         subject: "Azure news",
         content: [{
@@ -119,3 +120,4 @@ Informationen zu anderen Bindungen und Triggern für Azure Functions finden Sie 
 - [Bewährte Methoden für Azure Functions](functions-best-practices.md) enthält eine Auflistung bewährter Methoden zur Verwendung beim Erstellen von Azure Functions.
 
 - [Azure Functions: Entwicklerhandbuch](functions-reference.md) ist eine Programmiererreferenz zum Codieren von Funktionen sowie Definieren von Triggern und Bindungen.
+

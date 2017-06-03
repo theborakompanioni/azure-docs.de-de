@@ -42,7 +42,7 @@ Dieses CLI-Beispielskript erstellt zwei Pools für elastische Datenbanken, versc
 
 Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe und alle damit verbundenen Ressourcen entfernt werden.
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

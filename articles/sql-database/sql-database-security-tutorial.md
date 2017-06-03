@@ -112,7 +112,7 @@ Führen Sie die folgenden Schritte aus, um einen Benutzer mit SQL-Authentifizier
 3. Geben Sie im Abfragefenster die folgende Abfrage ein:
 
     ```sql
-    CREATE USER 'ApplicationUserUser' WITH PASSWORD = 'strong_password';
+    CREATE USER ApplicationUserUse' WITH PASSWORD = 'YourStrongPassword1';
     ```
 
 4. Klicken Sie auf der Symbolleiste auf **Ausführen**, um den Benutzer zu erstellen.
@@ -120,8 +120,8 @@ Führen Sie die folgenden Schritte aus, um einen Benutzer mit SQL-Authentifizier
 5. Standardmäßig kann der Benutzer eine Verbindung zur Datenbank herstellen, besitzt jedoch keine Berechtigungen zum Lesen oder Schreiben von Daten. Um dem neu erstellten Benutzer diese Berechtigungen zu gewähren, führen Sie die folgenden zwei Befehle in einem neuen Abfragefenster aus.
 
     ```sql
-    ALTER ROLE db_datareader ADD MEMBER 'ApplicationUserUser';
-    ALTER ROLE db_datawriter ADD MEMBER 'ApplicationUserUser';
+    ALTER ROLE db_datareader ADD MEMBER ApplicationUserUser;
+    ALTER ROLE db_datawriter ADD MEMBER ApplicationUserUser;
     ```
 
 Es wird empfohlen, diese Nichtadministratorkonten für die Verbindung mit Ihrer Datenbank auf Datenbankebene zu erstellen, es sei denn, Sie müssen Administratoraufgaben wie die Erstellung von neuen Benutzern ausführen. Informationen zur Authentifizierung mit Azure Active Directory finden Sie im [Azure Active Directory-Tutorial](./sql-database-aad-authentication-configure.md).

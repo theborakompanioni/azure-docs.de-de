@@ -11,14 +11,15 @@ ms.assetid: 3dc9b7a3-4b10-423a-8e44-9174aca5cf3d
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 04/18/2016
+ms.date: 05/08/2017
 ms.author: ninarn
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: 66f7cc63d311b6b5cd223fe0d8a9bf9f636abef1
+ms.contentlocale: de-de
 ms.lasthandoff: 04/20/2017
 
 
@@ -30,7 +31,7 @@ In diesem Thema erfahren Sie, wie Sie skalierbare [Pools für elastische Datenba
 
 Bei der Erstellung eines Pools für elastische Datenbanken gibt es zwei Möglichkeiten: Sie können einen Pool von Grund auf neu erstellen, wenn Sie genau wissen, wie der Pool aussehen soll. Sie können aber auch mit einer Empfehlung des Diensts beginnen. SQL-Datenbank verfügt über integrierte Intelligenz, die auf der Grundlage der Telemetriedaten Ihrer bisherigen Datenbanknutzung ein Setup für einen Pool für elastische Datenbanken empfiehlt, falls dieses für Sie kostengünstiger ist.
 
-Auf einem Server können mehrere Pools erstellt werden, es ist jedoch nicht möglich, Datenbanken von verschiedenen Servern im gleichen Pool zusammenzufassen. 
+Auf einem Server können mehrere Pools erstellt werden, es ist jedoch nicht möglich, Datenbanken von verschiedenen Servern im gleichen Pool zusammenzufassen.
 
 > [!NOTE]
 > Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „Indien, Westen“. Dort befinden sie sich derzeit in der Vorschauphase.  Die allgemeine Verfügbarkeit von elastischen Pools in dieser Region wird so bald wie möglich bereitgestellt.
@@ -158,7 +159,7 @@ Sie können das Diagramm und das Metrikblatt bearbeiten, um andere Metriken wie 
 
     ![Klicken auf „Bearbeiten“](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
 
-    
+
 
 3. Klicken Sie dann auf **OK**.
 

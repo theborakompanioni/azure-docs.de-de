@@ -36,11 +36,13 @@ Vor dem Ausführen dieses Beispiels benötigen Sie Folgendes:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anleitung auf dem Bildschirm. 
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
@@ -50,7 +52,7 @@ Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Res
 
 Im folgenden Beispiel wird eine Ressourcengruppe `myResourceGroup` erstellt:
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
@@ -59,7 +61,7 @@ Functions verwenden ein Azure Storage-Konto, um den Status und andere Informatio
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<storage_name>` durch Ihren eigenen eindeutigen Speicherkontonamen. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
 
-```azurecli
+```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
 ```
 
@@ -89,7 +91,7 @@ Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funkt
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch Ihren eigenen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. 
 
-```azurecli
+```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup --consumption-plan-location westeurope
 ```
 Standardmäßig wird eine Funktionen-App mit dem Hostingplan „Verbrauch“ erstellt, was bedeutet, dass Ressourcen nach Bedarf dynamisch von den Funktionen hinzugefügt werden, und Sie nur dann bezahlen, wenn Funktionen ausgeführt werden. Weitere Informationen finden Sie unter [Auswählen des richtigen Serviceplans](functions-scale.md). 
@@ -120,7 +122,7 @@ Nun, da Sie eine Funktionen-App haben, können Sie den eigentlichen Funktionscod
 
 Es gibt mehrere Möglichkeiten, den Funktionscode in der neuen Funktionen-App zu erstellen. In diesem Thema wird eine Verbindung mit einem Beispielrepository in GitHub hergestellt. Ersetzen Sie wie zuvor im folgenden Code den Platzhalter `<app_name>` durch den Namen der Funktionen-App, die Sie erstellt haben. 
 
-```azurecli
+```azurecli-interactive
 az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --repo-url https://github.com/Azure-Samples/functions-quickstart --branch master --manual-integration
 ```
 Nachdem die Bereitstellungsquelle festgelegt wurde, zeigt die Azure-CLI Informationen ähnlich wie im folgenden Beispiel (zwecks besserer Lesbarkeit wurden NULL-Werte entfernt):
@@ -160,7 +162,7 @@ Wenn Sie keine cURL in der Befehlszeile zur Verfügung haben, geben Sie einfach 
 
 Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie den folgenden Befehl ausführen, um alle erstellten Ressourcen dieses Schnellstarts zu löschen:
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 Geben Sie `y` ein, wenn Sie dazu aufgefordert werden.
