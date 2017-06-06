@@ -81,8 +81,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSql** ein.
    2. Geben Sie eine **Beschreibung** ein (optional).
    3. Ändern Sie **Startdatum/-zeit** und **Enddatum/-zeit** so, dass das Enddatum auf den heutigen Tag und das Startdatum auf fünf Tage vor dem heutigen Tag festgelegt ist.  
-   4. Klicken Sie auf **Weiter**.
-  
+   4. Klicken Sie auf **Weiter**.  
       
       ![Copy Tool - Properties page](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. 
@@ -118,8 +117,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    3. Wählen Sie Ihr Azure- **Abonnement**aus.  
    4. Wählen Sie **Servername** und **Datenbank** aus.
    5. Geben Sie **Benutzername** und **Kennwort** ein.
-   6. Klicken Sie auf **Weiter**.
-  
+   6. Klicken Sie auf **Weiter**.  
       
       ![Copy Tool - specify Azure SQL database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. Wählen Sie auf der Seite **Tabellenzuordnung** für das Feld **Ziel** in der Dropdownliste die Option **emp** aus, und klicken Sie auf den **Pfeil nach unten** (optional), um das Schema und eine Vorschau der Daten anzuzeigen.
