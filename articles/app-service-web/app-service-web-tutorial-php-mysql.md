@@ -50,6 +50,8 @@ Installieren Sie vor der Ausführung dieses Beispiels zunächst die folgenden er
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
 ## <a name="prepare-local-mysql"></a>Vorbereiten der lokalen MySQL-Instanz
 
 In diesem Schritt erstellen Sie eine Datenbank auf einem lokalen MySQL-Server für die Verwendung in diesem Tutorial.
@@ -156,7 +158,7 @@ In diesem Schritt erstellen Sie eine MySQL-Datenbank in [Azure-Datenbank für My
 
 Als Nächstes werden mit Azure CLI 2.0 in einem Terminalfenster die Ressourcen erstellt, die zum Hosten der PHP-Anwendung in Azure App Service benötigt werden. Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm. 
 
-```azurecli 
+```azurecli-interactive 
 az login 
 ``` 
 
@@ -166,7 +168,7 @@ Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine [Re
 
 Im folgenden Beispiel wird eine Ressourcengruppe in der Region „Europa, Norden“ erstellt:
 
-```azurecli
+```azurecli-interactive
 az group create --name myResourceGroup --location "North Europe"
 ```
 
@@ -178,7 +180,7 @@ Erstellen Sie mit dem Befehl [az mysql server create](/cli/azure/mysql/server#cr
 
 Ersetzen Sie im folgenden Befehl den Platzhalter _&lt;mysql_server_name>_ durch Ihren eigenen eindeutigen MySQL-Servernamen. Dieser Name ist Teil des Hostnamens des MySQL-Servers `<mysql_server_name>.database.windows.net` und muss daher global eindeutig sein. Ersetzen Sie auf gleiche Weise _&lt;admin_user>_ und _&lt;admin_password>_ durch Ihre eigenen Werte.
 
-```azurecli
+```azurecli-interactive
 az mysql server create \
     --name <mysql_server_name> \
     --resource-group myResourceGroup \
@@ -206,7 +208,7 @@ Nach dem Erstellen des MySQL-Servers zeigt die Azure-Befehlszeilenschnittstelle 
 
 Erstellen Sie mit dem Befehl [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#create) eine Firewallregel für Ihren MySQL-Server, um Clientverbindungen zuzulassen. 
 
-```azurecli
+```azurecli-interactive
 az mysql server firewall-rule create \
     --name allIPs \
     --server <mysql_server_name> \
@@ -332,7 +334,7 @@ Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/p
 
 Im folgenden Beispiel wird der App Service-Plan _myAppServicePlan_ mit dem Tarif **FREE** erstellt:
 
-```azurecli
+```azurecli-interactive
 az appservice plan create \
     --name myAppServicePlan \
     --resource-group myResourceGroup \
@@ -363,7 +365,7 @@ Nachdem Sie nun einen App Service-Plan erstellt haben, können Sie innerhalb des
 
 Ersetzen Sie im folgenden Befehl den Platzhalter _&lt;appname>_ durch den eindeutigen Namen Ihrer App. Da dieser eindeutige Name als Teil des Standarddomänennamens für die Web-App verwendet wird, muss er für alle Apps in Azure eindeutig sein. Später können Sie der Web-App einen beliebigen benutzerdefinierten DNS-Eintrag zuordnen, bevor Sie sie für Ihre Benutzer verfügbar machen. 
 
-```azurecli
+```azurecli-interactive
 az appservice web create \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -393,7 +395,7 @@ Sie legen die von der Anwendung benötigte PHP-Version mit dem Befehl [az appser
 
 Der folgende Befehl legt die PHP-Version auf _7.0_ fest.
 
-```azurecli
+```azurecli-interactive
 az appservice web config update \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -408,7 +410,7 @@ In App Service werden Umgebungsvariablen als _App-Einstellungen_ mithilfe des Be
 
 Mit dem folgenden Befehl können Sie die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfigurieren. Ersetzen Sie die Platzhalter _&lt;appname>_, _&lt;mysql_server_name>_, _&lt;phpapp_user>_ und _&lt;phpapp_password>_.
 
-```azurecli
+```azurecli-interactive
 az appservice web config appsettings update \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -440,7 +442,7 @@ php artisan key:generate --show
 
 Legen Sie den Anwendungsschlüssel in Ihrer App Service-Web-App mit dem Befehl [az appservice web config appsettings update](/cli/azure/appservice/web/config/appsettings#update) fest. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;outputofphpartisankey:generate>_.
 
-```azurecli
+```azurecli-interactive
 az appservice web config appsettings update \
     --name <app_name> \
     --resource-group myResourceGroup \
@@ -483,13 +485,13 @@ Für FTP und lokales Git muss zur Authentifizierung Ihrer Bereitstellung ein Ber
 
 Wenn Sie zuvor bereits einen Benutzernamen und ein Kennwort für die Bereitstellung erstellt haben, können Sie den folgenden Befehl verwenden, um den Benutzernamen anzuzeigen:
 
-```azurecli
+```azurecli-interactive
 az appservice web deployment user show
 ```
 
 Wenn Sie noch nicht über einen Bereitstellungsbenutzer verfügen, führen Sie den Befehl [az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set) aus, um Ihre Anmeldeinformationen für die Bereitstellung zu erstellen. 
 
-```azurecli
+```azurecli-interactive
 az appservice web deployment user set \
     --user-name <username> \
     --password <minimum-8-char-capital-lowercase-number>
@@ -507,7 +509,7 @@ Bei der Bereitstellung Ihrer Anwendung im Azure App Service haben Sie verschiede
 
 Konfigurieren Sie mit dem Befehl [az appservice web source-control config-local-git](/cli/azure/appservice/web/source-control#config-local-git) den lokalen Git-Zugriff auf die Azure-Web-App. 
 
-```azurecli
+```azurecli-interactive
 az appservice web source-control config-local-git \
     --name <app_name> \
     --resource-group myResourceGroup
@@ -718,7 +720,7 @@ Wenn Ihre PHP-Anwendung in Azure App Service ausgeführt wird, können Sie die K
 
 Verwenden Sie zum Starten des Streamings von Protokolldateien den Befehl [az appservice web log tail](/cli/azure/appservice/web/log#tail).
 
-```azurecli 
+```azurecli-interactive 
 az appservice web log tail \
     --name <app_name> \
     --resource-group myResourceGroup 
@@ -763,7 +765,7 @@ Die Registerkarten auf dem Blatt zeigen die vielen tollen Features, mit denen Si
  
 Wenn Sie diese Ressourcen nicht für ein anderes Tutorial benötigen (siehe [Nächste Schritte](#next)), können Sie sie löschen, indem Sie den folgenden Befehl ausführen: 
   
-```azurecli 
+```azurecli-interactive
 az group delete --name myResourceGroup 
 ``` 
 

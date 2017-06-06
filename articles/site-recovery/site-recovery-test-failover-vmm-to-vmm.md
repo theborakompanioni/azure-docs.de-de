@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/15/2017
+ms.date: 06/05/2017
 ms.author: pratshar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b1a5b2879a7b98ec4ad3e8ebbc9e95c0740d89f
 ms.openlocfilehash: 3aaa005319b1ce2a10cd913c63b31860d31b797e
+ms.contentlocale: de-de
 ms.lasthandoff: 02/23/2017
 
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 02/23/2017
 > * [Testfailover (VMM zu VMM)](./site-recovery-test-failover-vmm-to-vmm.md)
 
 
-Dieser Artikel enthält Informationen und Anweisungen zum Ausführen eines Testfailovers oder eines DR-Drills von virtuellen Computern und physischen Servern, die mit Site Recovery und einem mithilfe von VMM verwalteten lokalen Speicherort als Wiederherstellungsstandort geschützt sind. 
+Dieser Artikel enthält Informationen und Anweisungen zum Ausführen eines Testfailovers oder eines DR-Drills von virtuellen Computern und physischen Servern, die mit Site Recovery und einem mithilfe von VMM verwalteten lokalen Speicherort als Wiederherstellungsstandort geschützt sind.
 
 Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
 
@@ -49,7 +50,7 @@ Ein Testfailover wird ausgeführt, um Ihre Replikationsstrategie zu überprüfen
 Wenn die am Test-Failover beteiligten virtuellen Computer DHCP nutzen, muss innerhalb des für das Test-Failover erstellten isolierten Netzwerks ein DHCP-Testserver erstellt werden.
 
 ### <a name="prepare-active-directory"></a>Vorbereiten von Active Directory
-Wenn Sie ein Test-Failover durchführen möchten, um eine Anwendung zu testen, muss in der Testumgebung eine Kopie der Active Directory-Produktionsumgebung vorhanden sein. Unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Details. 
+Wenn Sie ein Test-Failover durchführen möchten, um eine Anwendung zu testen, muss in der Testumgebung eine Kopie der Active Directory-Produktionsumgebung vorhanden sein. Unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Details.
 
 ### <a name="prepare-dns"></a>Vorbereiten von DNS
 Gehen Sie wie folgt vor, um einen DNS-Server für das Test-Failover vorzubereiten:
@@ -76,9 +77,9 @@ Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan d
 
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Test Failover**veröffentlichen.
 1. Geben Sie auf dem Blatt **Testfailover** an, wie die virtuellen Computer nach dem Testfailover mit Netzwerken verbunden werden sollen. Weitere Details finden Sie in den [Netzwerkoptionen](#network-options-in-site-recovery).
-1. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . 
+1. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** .
 1. Vergewissern Sie sich anschließend, dass die virtuellen Computer erfolgreich starten.
-1. Klicken Sie anschließend im Wiederherstellungsplan auf **Cleanup test failover** (Testfailover bereinigen). Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Test-Failover. Dadurch werden die während des Testfailovers erstellten virtuellen Computer und Netzwerke gelöscht. 
+1. Klicken Sie anschließend im Wiederherstellungsplan auf **Cleanup test failover** (Testfailover bereinigen). Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Test-Failover. Dadurch werden die während des Testfailovers erstellten virtuellen Computer und Netzwerke gelöscht.
 
 
 ## <a name="network-options-in-site-recovery"></a>Netzwerkoptionen in Site Recovery
@@ -97,10 +98,10 @@ Beim einem Test-Failover werden Sie zum Auswählen von Netzwerkeinstellungen fü
 >
 
 
-## <a name="test-failover-to-a-production-network-on-recovery-site"></a>Testfailover auf ein Produktionsnetzwerk am Wiederherstellungsstandort 
+## <a name="test-failover-to-a-production-network-on-recovery-site"></a>Testfailover auf ein Produktionsnetzwerk am Wiederherstellungsstandort
 Beim Durchführen eines Testfailovers wird empfohlen, ein anderes Netzwerk als das Site Recovery-Netzwerk für die Produktion zu wählen, das Sie in **Netzwerkzuordnung** angegeben haben. Beachten Sie folgende Punkte, wenn Sie wirklich die End-to-End-Netzwerkkonnektivität auf einem virtuellen Computer bewerten möchten, für den ein Failover durchgeführt wurde:
 
-1. Der primäre virtuelle Computer muss heruntergefahren werden, wenn Sie das Testfailover durchführen. Andernfalls werden zwei virtuelle Computer mit derselben Identität gleichzeitig im selben Netzwerk ausgeführt, was unerwünschte Folgen nach sich ziehen kann. 
+1. Der primäre virtuelle Computer muss heruntergefahren werden, wenn Sie das Testfailover durchführen. Andernfalls werden zwei virtuelle Computer mit derselben Identität gleichzeitig im selben Netzwerk ausgeführt, was unerwünschte Folgen nach sich ziehen kann.
 1. Änderungen, die Sie auf virtuellen Computern mit Testfailover vornehmen, würden verloren gehen, wenn Sie die virtuellen Computer mit Testfailover bereinigen. Diese Änderungen werden nicht wieder auf dem primären virtuellen Computer repliziert.
 1. Diese Art des Testens von Leads führt zu einem Ausfall Ihrer Produktionsanwendung. Benutzer der Anwendung sollten aufgefordert werden, die Anwendung während des DR-Drills nicht zu verwenden.  
 

@@ -3,7 +3,7 @@ title: Senden von Ereignissen an Azure Event Hubs mithilfe von Java | Microsoft-
 description: Erste Schritte zum Senden an Event Hubs mit Java
 services: event-hubs
 documentationcenter: 
-author: jtaubensee
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: jotaub;sethm
+ms.author: sethm
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
 ms.openlocfilehash: 45776b0920f65ae9749b00978656bcefa2bf01a8
@@ -22,6 +22,7 @@ ms.lasthandoff: 05/04/2017
 
 
 ---
+
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von Java
 
 ## <a name="introduction"></a>Einführung

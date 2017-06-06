@@ -2,6 +2,6 @@
 
 Führen Sie zum Bereinigen der Ressourcen den folgenden Befehl aus:
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
