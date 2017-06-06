@@ -31,7 +31,7 @@ Die folgenden Schritte zeigen, wie Sie eine Clientanwendung erstellen, die mit d
 
 Erstellen Sie ein Startprojekt in Visual Studio 2015 oder Visual Studio 2017, und fügen Sie die NuGet-Pakete für den IoT Hub-Geräteclient hinzu.
 
-1. Erstellen Sie in Visual Studio&2015; eine C-Konsolenanwendung mit Visual C++ in der **Win32-Konsolenanwendungsvorlage**. Geben Sie dem Projekt den Namen **RMDevice**.
+1. Erstellen Sie in Visual Studio 2015 eine C-Konsolenanwendung mit Visual C++ in der **Win32-Konsolenanwendungsvorlage**. Geben Sie dem Projekt den Namen **RMDevice**.
 2. Stellen Sie auf der Seite **Anwendungseinstellungen** im **Win32-Anwendungsassistenten** sicher, dass **Konsolenanwendung** ausgewählt ist, und deaktivieren Sie die Kontrollkästchen **Vorkompilierter Header** und Prüfungen für den **Security Development Lifecycle (SDL)**.
 3. Löschen Sie im **Projektmappen-Explorer**die Dateien „stdafx.h“, „targetver.h“ und „stdafx.cpp“.
 4. Benennen Sie im **Projektmappen-Explorer**die Datei „RMDevice.cpp“ in „RMDevice.c“ um.
