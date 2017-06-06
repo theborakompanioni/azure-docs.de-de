@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 1/10/2017
+ms.date: 06/05/2017
 ms.author: anoopkv
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f849ea027022cc753bf818d7980170b5875221f0
 ms.openlocfilehash: 47431f934f092ea7c614599b6c8e3fe3a946a955
+ms.contentlocale: de-de
+ms.lasthandoff: 02/13/2017
 
 ---
 
@@ -81,10 +83,4 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
 ## <a name="next-steps"></a>Nächste Schritte
 
 Als Nächstes können Sie [Ihre Zielumgebung](./site-recovery-prepare-target-physical-to-azure.md) in Azure einrichten.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
