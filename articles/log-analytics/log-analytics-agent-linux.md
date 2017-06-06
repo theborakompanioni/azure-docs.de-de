@@ -277,7 +277,7 @@ Die Agentpakete können mithilfe von dpkg oder rpm oder durch Ausführen der SH-
 1. Führen Sie die Integration des OMS-Diensts mit dem OMS-Agent für Linux mit dem folgenden Befehl mit der Option `-v` erneut durch. Dadurch wird die ausführliche Ausgabe des Agents über eine Proxy-Verbindung an den OMS-Dienst möglich.
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
-2. Lesen Sie den Abschnitt [Konfigurieren des Agents für die Verwendung mit einem HTTP-Proxyserver](#configuring the-agent-for-use-with-a-http-proxy-server), um sicherzustellen, dass der Agent ordnungsgemäß für die Kommunikation über einen Proxyserver konfiguriert wurde.    
+2. Lesen Sie den Abschnitt [Konfigurieren des Agents für die Verwendung mit einem HTTP-Proxyserver(#configuring the-agent-for-use-with-a-http-proxy-server), um sicherzustellen, dass der Agent ordnungsgemäß für die Kommunikation über einen Proxyserver konfiguriert wurde.    
 * Vergewissern Sie sich erneut, dass die folgenden OMS-Dienstendpunkte in der Zulassungsliste enthalten sind:
 
     |Agent-Ressource| Ports |  
