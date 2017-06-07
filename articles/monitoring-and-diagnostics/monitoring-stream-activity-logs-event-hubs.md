@@ -12,11 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 6/06/2017
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 51a7a274c0cdbec169154bd1100abb4534283cff
 ms.openlocfilehash: ac478dc5c6691ef9f6c4829bd47a81912774d032
+ms.contentlocale: de-de
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -54,7 +56,7 @@ Falls bereits ein Protokollprofil vorhanden ist, müssen Sie dieses zuerst entfe
 3. Verwenden Sie `Set-AzureRmLogProfile`, um ein Profil zu erstellen:
 
 ```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
 ```
 
 Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format: {Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}. Beispiel: 
@@ -79,10 +81,5 @@ Das Schema für das Aktivitätsprotokoll finden Sie [hier](monitoring-overview-a
 * [Archivieren Sie das Aktivitätsprotokoll mithilfe eines Speicherkontos.](monitoring-archive-activity-log.md)
 * [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](monitoring-overview-activity-logs.md)
 * [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](insights-auditlog-to-webhook-email.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

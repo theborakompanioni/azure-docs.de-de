@@ -37,9 +37,9 @@ Installieren Sie vor der Ausführung dieses Beispiels zunächst die folgenden er
 1. [Herunterladen und Installieren von Docker Community Edition](https://www.docker.com/community-edition)
 1. [Herunterladen und Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>Testen der lokalen PostgreSQL-Installation und Erstellen einer Datenbank
 In diesem Schritt stellen Sie sicher, dass die lokale PostgreSQL-Datenbank ausgeführt wird.

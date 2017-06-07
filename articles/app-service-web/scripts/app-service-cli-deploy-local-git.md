@@ -30,6 +30,10 @@ Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="sample-script"></a>Beispielskript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-local-git/deploy-local-git.sh?highlight=3-5 "Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository")]

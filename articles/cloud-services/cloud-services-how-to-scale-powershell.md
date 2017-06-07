@@ -3,7 +3,7 @@ title: Skalieren eines Azure-Clouddiensts in Windows PowerShell | Microsoft-Doku
 description: (Klassisch) Hier erfahren Sie, wie Sie mithilfe von PowerShell eine Web- oder Workerrolle in Azure horizontal herunter- oder hochskalieren.
 services: cloud-services
 documentationcenter: 
-author: seanmck
+author: mmccrory
 manager: timlt
 editor: 
 ms.assetid: ee37dd8c-6714-4c61-adb8-03d6bbf76c9a
@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
-ms.author: seanmck
-translationtype: Human Translation
+ms.author: mmccrory
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4acea8e7f4714754e6b3e54e9aaa622219ca9f7f
 ms.openlocfilehash: f16d981a0dc33295c1981d9c282beb1d3243d9ef
+ms.contentlocale: de-de
+ms.lasthandoff: 12/03/2016
 
 
 ---
@@ -79,9 +81,4 @@ Sie können eine Rolle auf die gleiche Weise horizontal herunterskalieren, indem
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die automatische Skalierung für Clouddienste kann über PowerShell nicht konfiguriert werden. Informationen zum automatischen Skalieren eines Clouddiensts finden Sie [hier](cloud-services-how-to-scale-portal.md).
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

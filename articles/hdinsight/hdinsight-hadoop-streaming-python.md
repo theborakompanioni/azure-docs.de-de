@@ -165,7 +165,7 @@ Verwenden Sie das folgende PowerShell-Skript, um Dateien hochzuladen, den Auftra
 3. Um sicherzustellen, dass „mapper.py“ und „reducer.py“ über die richtigen Zeilenenden verfügen, verwenden Sie folgende Befehle:
 
     ```bash
-    perl -pi -e 's/\r\n/\n/g' mappery.py
+    perl -pi -e 's/\r\n/\n/g' mapper.py
     perl -pi -e 's/\r\n/\n/g' reducer.py
     ```
 
