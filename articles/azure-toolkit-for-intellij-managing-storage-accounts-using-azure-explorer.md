@@ -145,7 +145,7 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Einführung in Microsoft Azure Storage]: /azure/storage/storage-introduction
 [Informationen zu Azure-Speicherkonten]: /azure/storage/storage-create-storage-account
 [Azure-Speicherreplikation]: /azure/storage/storage-redundancy
-[Skalierbarkeits- und Leistungsziele für Azure-Speicher]: /azure/storage/storage-scalability-targets
+[Skalierbarkeits- und Leistungsziele für Azure Storage]: /azure/storage/storage-scalability-targets
 [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese]: http://go.microsoft.com/fwlink/?LinkId=255555
 
 [Größen für Windows-Speicherkonten in Azure]: /azure/virtual-machines/virtual-machines-windows-sizes
