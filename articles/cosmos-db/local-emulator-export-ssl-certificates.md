@@ -62,7 +62,6 @@ Sie können beide Zertifikate erneut generieren, indem Sie im Azure Cosmos DB-Em
 
 4. Klicken Sie auf **Weiter**.
 
-
     ![Exportieren des lokalen Azure Cosmos DB-Emulators, Schritt 4](./media/local-emulator/database-local-emulator-export-step-4.png)
 
 5. Klicken Sie auf **Nein, privaten Schlüssel nicht exportieren** und dann auf **Weiter**.
