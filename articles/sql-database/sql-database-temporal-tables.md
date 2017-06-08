@@ -8,16 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: c8c0f232-0751-4a7f-a36e-67a0b29fa1b8
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
 ms.date: 01/10/2017
 ms.author: bonova
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: e00345ddd9e52e2613789ba78c48e8f993d2415c
+ms.contentlocale: de-de
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -197,10 +199,5 @@ Mit temporalen Tabellen mit Systemversionsverwaltung kann die Verlaufstabelle di
 ## <a name="next-steps"></a>Nächste Schritte
 Ausführliche Informationen zu temporalen Tabellen finden Sie in der [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn935015.aspx).
 Auf Channel 9 können Sie einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) hören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) sehen.
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
