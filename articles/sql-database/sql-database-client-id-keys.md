@@ -9,16 +9,18 @@ editor:
 tags: 
 ms.assetid: b43e43bb-6660-49e6-b069-abde97eb5770
 ms.service: sql-database
-ms.custom: development
+ms.custom: develop apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
 ms.openlocfilehash: 321b1630680f8bd4271f863b2cbe39be1a00cb89
+ms.contentlocale: de-de
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -74,10 +76,5 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 ## <a name="see-also"></a>Siehe auch
 * [Erstellen einer SQL-Datenbank mit C#](sql-database-get-started-csharp.md)
 * [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
