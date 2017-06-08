@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 06/07/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 0cb1b04bcfab1f1864ae0ce867be02a8bf8c827c
+ms.contentlocale: de-de
 ms.lasthandoff: 04/12/2017
 
 
@@ -80,12 +81,12 @@ Nachfolgend wird ausführlich beschrieben, wie die Kennwortsynchronisierung zwis
 
 1. Der Kennwortsynchronisierungs-Agent auf dem AD Connect-Server fordert alle zwei Minuten gespeicherte Kennworthashes (das Attribut „unicodePwd“) von einem Domänencontroller über das standardmäßige Replikationsprotokoll [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) an, um Daten zwischen den Domänencontrollern zu synchronisieren. Das Dienstkonto muss die AD-Berechtigungen „Verzeichnisänderungen replizieren“ und „Verzeichnisänderungen replizieren: Alle“ haben (die bei der Installation standardmäßig erteilt werden), um die Kennworthashes abzurufen.
 2. Vor dem Senden verschlüsselt der Domänencontroller den MD4-Kennworthash mithilfe eines Schlüssels, bei dem es sich um einen [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt)-Hash des RPC-Sitzungsschlüssel und einen Salt-Wert handelt. Anschließend wird das Ergebnis über RPC an den Kennwortsynchronisierungs-Agent gesendet. Der Domänencontroller übergibt auch mithilfe des Replikationsprotokolls des Domänencontrollers den Salt-Wert an den Synchronisierungs-Agent, damit der Agent den Umschlag entschlüsseln kann.
-3.    Sobald der Kennwortsynchronisierungs-Agent über den verschlüsselten Umschlag verfügt, verwendet er [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) und den Salt-Wert, um einen Schlüssel zum Rückentschlüsseln der empfangenen Daten in ihr ursprüngliches MD4-Format zu generieren. Zu keinem Zeitpunkt verfügt der Kennwortsynchronisierungs-Agent über Zugriff auf das unverschlüsselte Kennwort. Die Nutzung von MD5 durch den Kennwortsynchronisierungs-Agent dient ausschließlich zur Kompatibilität des Replikationsprotokolls mit dem Domänencontroller und erfolgt nur lokal zwischen dem Domänencontroller und dem Kennwortsynchronisierungs-Agent.
-4.    Der Kennwortsynchronisierungs-Agent erweitert den binären 16-Byte-Kennworthash auf 64 Bytes, indem zunächst der Hash in eine hexadezimale 32-Byte-Zeichenfolge umgewandelt wird, die anschließend mithilfe der UTF-16-Codierung wieder in das Binärformat konvertiert wird.
-5.    Der Kennwortsynchronisierungs-Agent fügt der 64-Byte-Binärdatei einen Salt-Wert (der Länge 10 Byte) hinzu, um den ursprünglichen Hash weiter zu schützen.
-6.    Der Kennwortsynchronisierungs-Agent kombiniert anschließend den MD4-Hash mit dem Salt-Wert und gibt das Ergebnis in die [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt)-Funktion ein. Hierzu werden 1.000 Iterationen des mit [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) verschlüsselten Hashalgorithmus verwendet. 
-7.    Der Kennwortsynchronisierungs-Agent verwendet den resultierenden 32-Byte-Hash, mit dem (für die Verwendung durch Azure AD) der Salt-Wert und die Anzahl der SHA256-Iterationen verkettet werden. Anschließend wird die Zeichenfolge aus Azure AD Connect über SSL an Azure AD übertragen.</br> 
-8.    Wenn ein Benutzer sich bei Azure AD anzumelden versucht und sein Kennwort eingibt, durchläuft das Kennwort denselben aus MD4+Salt+PBKDF2+HMAC-SHA256 bestehenden Prozess. Wenn der resultierende Hash dem in Azure AD gespeicherten Hash entspricht, hat der Benutzer das richtige Kennwort eingegeben, woraufhin er authentifiziert wird. 
+3.  Sobald der Kennwortsynchronisierungs-Agent über den verschlüsselten Umschlag verfügt, verwendet er [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) und den Salt-Wert, um einen Schlüssel zum Rückentschlüsseln der empfangenen Daten in ihr ursprüngliches MD4-Format zu generieren. Zu keinem Zeitpunkt verfügt der Kennwortsynchronisierungs-Agent über Zugriff auf das unverschlüsselte Kennwort. Die Nutzung von MD5 durch den Kennwortsynchronisierungs-Agent dient ausschließlich zur Kompatibilität des Replikationsprotokolls mit dem Domänencontroller und erfolgt nur lokal zwischen dem Domänencontroller und dem Kennwortsynchronisierungs-Agent.
+4.  Der Kennwortsynchronisierungs-Agent erweitert den binären 16-Byte-Kennworthash auf 64 Bytes, indem zunächst der Hash in eine hexadezimale 32-Byte-Zeichenfolge umgewandelt wird, die anschließend mithilfe der UTF-16-Codierung wieder in das Binärformat konvertiert wird.
+5.  Der Kennwortsynchronisierungs-Agent fügt der 64-Byte-Binärdatei einen Salt-Wert (der Länge 10 Byte) hinzu, um den ursprünglichen Hash weiter zu schützen.
+6.  Der Kennwortsynchronisierungs-Agent kombiniert anschließend den MD4-Hash mit dem Salt-Wert und gibt das Ergebnis in die [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt)-Funktion ein. Hierzu werden 1.000 Iterationen des mit [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) verschlüsselten Hashalgorithmus verwendet. 
+7.  Der Kennwortsynchronisierungs-Agent verwendet den resultierenden 32-Byte-Hash, mit dem (für die Verwendung durch Azure AD) der Salt-Wert und die Anzahl der SHA256-Iterationen verkettet werden. Anschließend wird die Zeichenfolge aus Azure AD Connect über SSL an Azure AD übertragen.</br> 
+8.  Wenn ein Benutzer sich bei Azure AD anzumelden versucht und sein Kennwort eingibt, durchläuft das Kennwort denselben aus MD4+Salt+PBKDF2+HMAC-SHA256 bestehenden Prozess. Wenn der resultierende Hash dem in Azure AD gespeicherten Hash entspricht, hat der Benutzer das richtige Kennwort eingegeben, woraufhin er authentifiziert wird. 
 
 >[!Note] 
 >Der ursprüngliche MD4-Hash wird nicht an Azure AD übertragen. Stattdessen wird der SHA256-Hash des ursprünglichen MD4-Hashs übertragen. Daher kann der Hash, wenn er in Azure AD gespeichert ist, nicht für einen lokalen Pass-the-Hash-Angriff verwendet werden.

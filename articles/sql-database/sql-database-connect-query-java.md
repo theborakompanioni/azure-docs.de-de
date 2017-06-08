@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start connect, mvc
+ms.custom: develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
@@ -73,7 +73,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 
 6. Überprüfen Sie die vollständige **JDBC**-Verbindungszeichenfolge.
 
-    ![Verbindungszeichenfolge für JDBC](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)    
+    ![Verbindungszeichenfolge für JDBC](./media/sql-database-connect-query-jdbc/jdbc-connection-string.png)   
 
 ### <a name="create-maven-project"></a>**Erstellen eines Maven-Projekts**
 Erstellen Sie über das Terminal ein neues Maven-Projekt. 
@@ -295,7 +295,7 @@ public class App {
                         int count = prep.executeUpdate();
                         System.out.println("Deleted: " + count + " row(s)");
                 }
-        }        
+        }       
         catch (Exception e) {
                 e.printStackTrace();
         }
