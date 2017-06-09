@@ -1,23 +1,24 @@
 ---
 title: Verwenden des Azure-Portals zum Erstellen von SQL-Datenbankwarnungen | Microsoft Docs
 description: "Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind."
-author: aamalvea
+author: CarlRabeler
 manager: jhubbard
 editor: 
 services: sql-database
 documentationcenter: 
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & manage
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
-ms.author: aamalvea
-translationtype: Human Translation
+ms.author: carlrab
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2679681c77dd6a3410bbe6ddbcf562924b13bfe6
 ms.openlocfilehash: afa21052281200768db24ce35a94097f23f23efe
+ms.contentlocale: de-de
 ms.lasthandoff: 11/17/2016
 
 
@@ -74,7 +75,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 
 ## <a name="sql-database-alert-values-and-thresholds"></a>Werte und Schwellenwerte für SQL-Datenbankwarnungen
 
-| Ressourcentyp    | Metrikname | Anzeigename | Aggregationstyp | Mindestzeitfenster für Warnungen|
+| Ressourcentyp | Metrikname | Anzeigename | Aggregationstyp | Mindestzeitfenster für Warnungen|
 | --- | --- | --- | --- | --- |
 | SQL database | cpu_percent | CPU-Prozentsatz | Durchschnitt | 5 Minuten |
 | SQL database | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 5 Minuten |
@@ -91,7 +92,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 | SQL database | sessions_percent | Sitzungen in Prozent | Durchschnitt | 5 Minuten |
 | SQL database | dtu_limit | DTU-Grenzwert | Durchschnitt | 5 Minuten |
 | SQL database | dtu_used | DTU-Verbrauch | Durchschnitt | 5 Minuten |
-||||||               
+||||||           
 | SQL Data Warehouse | cpu_percent | CPU-Prozentsatz | Durchschnitt | 10 Minuten |
 | SQL Data Warehouse | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 10 Minuten |
 | SQL Data Warehouse | storage | Datenbankgröße gesamt | Maximum | 10 Minuten |
@@ -102,7 +103,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 | SQL Data Warehouse | dwu_limit | DWU-Grenzwert | Maximum | 10 Minuten |
 | SQL Data Warehouse | dwu_consumption_percent | DWU in Prozent | Durchschnitt | 10 Minuten |
 | SQL Data Warehouse | dwu_used | DWU-Verbrauch | Durchschnitt | 10 Minuten |
-||||||                     
+||||||               
 | Elastischer Pool | cpu_percent | CPU-Prozentsatz | Durchschnitt | 5 Minuten |
 | Elastischer Pool | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 5 Minuten |
 | Elastischer Pool | log_write_percent | E/A-Prozentsatz für Protokoll | Durchschnitt | 5 Minuten |

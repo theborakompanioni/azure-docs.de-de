@@ -276,7 +276,6 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
 2. Klicken Sie auf der Seite **Einführung** auf **Weiter**. Geben Sie auf der Seite **Namen der Verfügbarkeitsgruppe angeben** unter **Name der Verfügbarkeitsgruppe** den Namen für die Verfügbarkeitsgruppe ein (beispielsweise **AG1**). Klicken Sie auf **Weiter**.
 
-
     ![Assistent für neue Verfügbarkeitsgruppen, Namen der Verfügbarkeitsgruppe angeben](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
 3. Wählen Sie auf der Seite **Datenbanken auswählen** Ihre Datenbank aus, und klicken Sie auf **Weiter**.

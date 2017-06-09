@@ -8,24 +8,25 @@ manager: jhubbard
 editor: monicar
 ms.assetid: a60b75ac-cf27-4d73-8322-ee4d4c448aa2
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: monitor & manage
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 155e9ddb48c65ad1648e18eb306c9badc2cb27e8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 071cc504cc4111e20391af86ffdc7819644ec434
+ms.contentlocale: de-de
+ms.lasthandoff: 12/14/2016
 
 
 ---
 # <a name="sql-database-performance-insight"></a>Einblicke in die SQL-Datenbankleistung
 Die Azure SQL-Datenbank bietet Leistungstools, mit denen Sie die Leistung Ihrer Datenbanken ermitteln und anhand von intelligenten Optimierungsaktionen und Empfehlungen verbessern können. 
 
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu Ihrer Datenbank, und klicken Sie auf **Alle Einstellungen > Leistung** > **Übersicht**, um die Seite **Leistung** zu öffnen. 
+1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu Ihrer Datenbank, und klicken Sie auf **Alle Einstellungen** > **Leistung** > **Übersicht**, um die Seite **Leistung** zu öffnen. 
 2. Klicken Sie auf **Empfehlungen**, um den [SQL-Datenbankratgeber](#sql-database-advisor) zu öffnen, und klicken Sie auf **Abfragen**, um [Query Performance Insight](#query-performance-insight) zu öffnen.
    
     ![Anzeigen der Leistung](./media/sql-database-performance/entries.png)
@@ -56,6 +57,6 @@ Mithilfe von [Query Performance Insight](sql-database-query-performance.md) kön
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md)
-* [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool.md)
+* [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md)
 
 
