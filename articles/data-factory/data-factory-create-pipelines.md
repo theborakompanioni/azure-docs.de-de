@@ -117,7 +117,7 @@ Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Je
     },
     "policy":
     {
-    }
+    },
     "scheduler":
     {
     }
