@@ -157,7 +157,7 @@ Alle Abfragen für die temporale Tabelle filtern automatisch Zeilen mit Verlaufs
 Das folgende Bild zeigt den Abfrageplan für eine einfache Abfrage:
 
 ````
-SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
+SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 ````
 
 Der Abfrageplan enthält einen zusätzlichen Filter, der auf die Spalte mit dem Zeitraumende (ValidTo) im Operator „Clustered Index Scan“ für die Verlaufstabelle angewendet wird (siehe Hervorhebung). In diesem Beispiel wird davon ausgegangen, dass in der Tabelle „WebsiteUserInfo“ eine Beibehaltungsdauer von einem MONAT festgelegt wurde.
