@@ -150,7 +150,7 @@ Alle NSGs enthalten eine Gruppe von Standardregeln. Die Standardregeln können z
 
 ### <a name="create-network-security-groups"></a>Erstellen von Netzwerksicherheitsgruppen
 
-Eine Netzwerksicherheitsgruppe kann mithilfe des Befehls [az vm create](/cli/azure/vm#create) zum gleichen Zeitpunkt erstellt werden wie ein virtueller Computer. Dabei wird die NSG der Netzwerkschnittstelle des virtuellen Computers zugewiesen, und zum Zulassen des Datenverkehrs an Port *22* von jedem Ziel wird automatisch eine NSG-Regel erstellt. Weiter oben in diesem Tutorial wurde die Front-End-NSG automatisch mit dem virtuellen Front-End-Computer erstellt. Für Port 22 wurde ebenfalls automatisch eine NSG-Regel erstellt. 
+Eine Netzwerksicherheitsgruppe kann mithilfe des Befehls [az vm create](/cli/azure/vm#create) zum gleichen Zeitpunkt erstellt werden wie ein virtueller Computer. Dabei wird die NSG der Netzwerkschnittstelle des virtuellen Computers zugewiesen, und zum Zulassen des Datenverkehrs an Port *22* von jeder Quelle wird automatisch eine NSG-Regel erstellt. Weiter oben in diesem Tutorial wurde die Front-End-NSG automatisch mit dem virtuellen Front-End-Computer erstellt. Für Port 22 wurde ebenfalls automatisch eine NSG-Regel erstellt. 
 
 In einigen Fällen kann es hilfreich sein, vorab eine Netzwerksicherheitsgruppe zu erstellen, beispielsweise wenn keine SSH-Standardregeln erstellt werden sollen oder wenn die Netzwerksicherheitsgruppe an ein Subnetz angefügt werden soll. 
 
