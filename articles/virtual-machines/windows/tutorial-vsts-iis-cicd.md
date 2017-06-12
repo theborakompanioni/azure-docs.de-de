@@ -45,7 +45,7 @@ Erstellen Sie zum Verwalten des Codecommitprozesses, der Builddefinitionen und d
 
 1. Öffnen Sie Ihr Team Services-Dashboard in einem Webbrowser, und wählen Sie **Neues Projekt**.
 2. Geben Sie für **Projektname** den Namen *myWebApp* ein. Übernehmen Sie alle anderen Standardwerte, um die *Git*-Versionskontrolle und den Arbeitselementprozess *Agile* zu verwenden.
-3. Wählen Sie die Option für die Freigabe für**** *Teammitglieder*, und wählen Sie anschließend **Erstellen**.
+3. Wählen Sie die Option für **die Freigabe** für *Teammitglieder*, und wählen Sie anschließend **Erstellen**.
 5. Nachdem das Projekt erstellt wurde, wählen Sie die Option **Initialize with a README or gitignore** (Mit einer INFODATEI oder gitignore initialisieren) und anschließend **Initialisieren**.
 6. Wählen Sie im neuen Projekt im oberen Bereich **Dashboards** und anschließend **In Visual Studio öffnen**.
 
@@ -61,7 +61,7 @@ Im vorherigen Schritt haben Sie ein Projekt in Team Services erstellt. Im letzte
 
     ![Erstellen der Projektmappe für die Webanwendung](media/tutorial-vsts-iis-cicd/new_solution.png)
 
-3. Wählen Sie die ****Webvorlagen und dann die Vorlage für die **ASP.NET-Webanwendung** aus.
+3. Wählen Sie die **Webvorlagen** und dann die Vorlage für die **ASP.NET-Webanwendung** aus.
     1. Geben Sie einen Namen für Ihre Anwendung ein, z.B. *myWebApp*, und deaktivieren Sie das Kontrollkästchen für **Projektmappenverzeichnis erstellen**.
     2. Wenn die Option verfügbar ist, deaktivieren Sie das Kontrollkästchen **Application Insights zum Projekt hinzufügen**. Application Insights setzt voraus, dass Sie Ihre Webanwendung mit Azure Application Insights autorisieren. Überspringen Sie zur Vereinfachung dieses Tutorials diesen Prozess.
     3. Klicken Sie auf **OK**.
@@ -149,7 +149,7 @@ Fügen Sie nach Erstellung der Bereitstellungsgruppe die einzelnen IIS-Instanzen
 
 1. Fügen Sie zurück in der **PowerShell-Administratorsitzung** auf dem virtuellen Computer das aus Team Services kopierte Skript ein, und führen Sie es aus.
 2. Wenn Sie aufgefordert werden, Tags für den Agent zu konfigurieren, wählen Sie *J*, und geben Sie *Web* ein.
-3. Wenn Sie zur Eingabe des Benutzerkontos aufgefordert werden, drücken Sie die EINGABETASTE**, um die Standardwerte zu übernehmen.
+3. Wenn Sie zur Eingabe des Benutzerkontos aufgefordert werden, drücken Sie die *EINGABETASTE* , um die Standardwerte zu übernehmen.
 4. Warten Sie, bis die Ausführung des Skripts mit der Meldung *Service vstsagent.account.computername started successfully* (Dienst „vstsagent.account.computername“ wurde erfolgreich gestartet.) abgeschlossen wird.
 5. Öffnen Sie im Menü **Build und Release** auf der Seite **Bereitstellungsgruppen** die Bereitstellungsgruppe *myIIS*. Überprüfen Sie auf der Registerkarte **Computer**, ob Ihr virtueller Computer aufgeführt ist.
 
