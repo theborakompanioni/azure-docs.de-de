@@ -8,7 +8,7 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 4. Wählen Sie auf dem Blatt **Service Bus-Namespace** die Option **Warteschlangen** aus, und klicken Sie anschließend auf **Warteschlange hinzufügen**.
    
     ![„Warteschlangen“ wählen][createqueue2]
-5. Geben Sie den Warteschlangennamen **** ein, und lassen Sie die anderen Werte unverändert.
+5. Geben Sie den **Warteschlangennamen** ein, und lassen Sie die anderen Werte unverändert.
    
     ![„Neu“ wählen][createqueue3]
 6. Klicken Sie im unteren Bereich des Blatts auf **Erstellen**.
