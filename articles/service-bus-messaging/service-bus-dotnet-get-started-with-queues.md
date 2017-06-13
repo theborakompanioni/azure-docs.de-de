@@ -102,7 +102,7 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
         }
     }
     ```
-3. Führen Sie das Programm aus, und überprüfen Sie das Azure-Portal. Klicken Sie auf dem Übersichtsblatt**** des Namespaces auf den Namen Ihrer Warteschlange. Unter **Anzahl aktiver Nachrichten** sollte nun der Wert „1“ angezeigt werden.
+3. Führen Sie das Programm aus, und überprüfen Sie das Azure-Portal. Klicken Sie auf dem **Übersichtsblatt** des Namespaces auf den Namen Ihrer Warteschlange. Unter **Anzahl aktiver Nachrichten** sollte nun der Wert „1“ angezeigt werden.
    
       ![Nachrichtenanzahl][queue-message]
 
