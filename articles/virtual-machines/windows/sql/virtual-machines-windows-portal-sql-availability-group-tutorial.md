@@ -132,7 +132,7 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben**** eine Freigabe.
+   Erstellen Sie mithilfe des **Assistenten zum Erstellen von Ordnerfreigaben** eine Freigabe.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
@@ -162,7 +162,7 @@ Legen Sie als Nächstes das Clusterquorum fest.
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/52-configurequorum.png)
 
-1. Klicken Sie im Assistenten zum Konfigurieren des Clusterquorums**** auf **Weiter**.
+1. Klicken Sie im **Assistenten zum Konfigurieren des Clusterquorums** auf **Weiter**.
 
 1. Wählen Sie unter **Quorumkonfigurationsoption auswählen** die Option **Quorumzeugen auswählen** aus, und klicken Sie anschließend auf **Weiter**.
 
@@ -234,7 +234,7 @@ Repeat these steps on the second SQL Server.
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Erstellen Sie mithilfe des Assistenten zum Erstellen von Ordnerfreigaben**** eine Freigabe.
+   Erstellen Sie mithilfe des **Assistenten zum Erstellen von Ordnerfreigaben** eine Freigabe.
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner der Datenbanksicherung, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
