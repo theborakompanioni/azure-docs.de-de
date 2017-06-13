@@ -66,7 +66,7 @@ Wählen Sie zum Erstellen eines generischen SQL-Connectors im **Synchronisierung
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericsql/createconnector.png)
 
 ### <a name="connectivity"></a>Konnektivität
-Der Connector verwendet eine ODBC-DSN-Datei für die Konnektivität. Erstellen Sie die DSN-Datei mithilfe von **ODBC Data Sources** (ODBC-Datenquellen) (im Startmenü unter **Verwaltungstools**). Erstellen Sie im Verwaltungstool einen **** Datei-DSN, um ihn für den Connector bereitzustellen.
+Der Connector verwendet eine ODBC-DSN-Datei für die Konnektivität. Erstellen Sie die DSN-Datei mithilfe von **ODBC Data Sources** (ODBC-Datenquellen) (im Startmenü unter **Verwaltungstools**). Erstellen Sie im Verwaltungstool einen **Datei-DSN** , um ihn für den Connector bereitzustellen.
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericsql/connectivity.png)
 
@@ -210,7 +210,7 @@ Wählen Sie auf der Seite mit den Partitionen und Hierarchien alle Objekttypen a
 
 ![partitions1](./media/active-directory-aadconnectsync-connector-genericsql/partitions1.png)
 
-Darüber hinaus können Sie die auf der Konnektivitätsseite**** oder auf der Seite mit den globalen Parametern**** definierten Werte überschreiben.
+Darüber hinaus können Sie die auf der **Konnektivitätsseite** oder auf der Seite mit den globalen **Parametern** definierten Werte überschreiben.
 
 ![partitions2](./media/active-directory-aadconnectsync-connector-genericsql/partitions2.png)
 

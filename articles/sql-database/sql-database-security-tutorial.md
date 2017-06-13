@@ -178,9 +178,9 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 1. Navigieren Sie zum Konfigurationsblatt der SQL-Datenbank, die Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**.
 
     ![Navigationsbereich](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
-2. Aktivieren Sie die Überwachung auf dem Blatt für die Konfiguration der **Überwachung und Bedrohungserkennung******. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
+2. Aktivieren Sie die **Überwachung auf dem Blatt für die Konfiguration** der **Überwachung und Bedrohungserkennung**. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
 
-3. Aktivieren Sie **** die Bedrohungserkennung.
+3. Aktivieren **Sie** die Bedrohungserkennung.
 
 4. Konfigurieren Sie die Liste der E-Mail-Empfänger, die bei Erkennung anormaler Datenbankaktivitäten einen Sicherheitshinweis erhalten sollen.
 
