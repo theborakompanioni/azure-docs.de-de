@@ -170,8 +170,8 @@ Die Datei **parent.json** besteht aus Folgendem:
   ],
   "outputs": {
     "result": {
-      "type": "object",
-      "value": "[reference('linkedTemplate').outputs.result]"
+      "type": "string",
+      "value": "[reference('linkedTemplate').outputs.result.value]"
     }
   }
 }
