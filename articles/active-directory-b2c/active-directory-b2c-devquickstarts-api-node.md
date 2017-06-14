@@ -3,7 +3,7 @@ title: "Azure AD B2C: Schützen einer Web-API mit Node.js | Microsoft Docs"
 description: Erstellen einer Node.js-Web-API, die Token von einem B2C-Mandanten akzeptiert
 services: active-directory-b2c
 documentationcenter: 
-author: xerners
+author: dstrockis
 manager: mbaldwin
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a

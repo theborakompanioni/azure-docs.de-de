@@ -4,7 +4,7 @@ description: "Enthält Informationen zu Problembehandlungsschritten, mit denen S
 services: backup
 documentationcenter: 
 author: genlin
-manager: jimpark
+manager: cshepard
 editor: 
 ms.assetid: e379180a-db13-4e0c-90e4-28e5dd6f5b14
 ms.service: backup
@@ -12,11 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 06/13/2017
 ms.author: genli
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: ac68ae449a03b6d9e77e6093531a47c905654f16
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -87,9 +89,4 @@ Anhand der folgenden Indikatoren können Sie den Engpass identifizieren und dann
 
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung angezeigt**. Die Daten werden immer noch übertragen. Die Netzwerkbandbreite oder die Datenmenge könnte möglicherweise Verzögerungen verursachen.
 * **Auf der Benutzeroberfläche wird der Status der Datenübertragung nicht angezeigt**. Öffnen Sie die Protokolle unter „C:\Microsoft Azure Recovery Services Agent\Temp“, und suchen Sie in den Protokollen nach dem Eintrag „FileProvider::EndData“. Dieser Eintrag verdeutlicht, dass die Datenübertragung abgeschlossen ist und der Katalogisierungsvorgang durchgeführt wird. Brechen Sie die Sicherungsaufträge nicht ab. Warten Sie stattdessen noch ein wenig, bis die Katalogisierung beendet ist. Wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support), wenn das Problem weiterhin besteht.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
