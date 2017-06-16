@@ -8,7 +8,7 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
@@ -108,8 +108,8 @@ Folgende Datenträger befinden sich nach einem Failover auf dem virtuellen Azure
 
 **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | ---
-DISK0 |    C:\ | Betriebssystem-Datenträger
-Disk1 |    E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
+DISK0 | C:\ | Betriebssystem-Datenträger
+Disk1 | E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
 Disk2 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 Disk3 | G:\ | Benutzerdatenbank 2
 
@@ -141,13 +141,13 @@ Es gibt zwei Möglichkeiten, um diesen Pfad zu erstellen:
 3. Führen Sie den folgenden sqlcmd-Befehl aus, um den tempdb-Pfad in den neuen Pfad zu ändern.
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;        
-        GO        
-        ALTER DATABASE tempdb        
+        USE master;     
+        GO      
+        ALTER DATABASE tempdb       
         MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO        
-        ALTER DATABASE tempdb        
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');        
+        GO      
+        ALTER DATABASE tempdb       
+        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
         GO
 
 
@@ -173,9 +173,9 @@ Im vorherigen Beispiel lautet die Datenträgerkonfiguration des virtuellen Azure
 **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
-Disk1 |    E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
-Disk2 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
-Disk3 |    G:\ | Benutzerdatenbank 2
+Disk1 | E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
+Disk2 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
+Disk3 | G:\ | Benutzerdatenbank 2
 
 
 #### <a name="vmware-to-azure"></a>VMware zu Azure
@@ -186,8 +186,8 @@ Datenträger auf dem virtuellen VMWare-Computer (ursprünglicher Speicherort) na
 **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
-Disk1 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
-Disk2 |    G:\ | Benutzerdatenbank 2
+Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
+Disk2 | G:\ | Benutzerdatenbank 2
 
 #### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
 Beim Failback auf den ursprünglichen Speicherort bleibt die Datenträgerkonfiguration des virtuellen Failbackcomputers mit der Datenträgerkonfiguration für den ursprünglichen virtuellen Computer für Hyper-V identisch. Datenträger, die für „Hyper-V auf Azure“ ausgeschlossen wurden, sind daher auf dem virtuellen Failbackcomputer nicht verfügbar.
@@ -196,7 +196,7 @@ Datenträger auf dem virtuellen Hyper-V-Computer (ursprünglicher Speicherort) n
 
 **Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
-DB-Disk0-OS | DISK0 |    C:\ | Betriebssystem-Datenträger
+DB-Disk0-OS | DISK0 |   C:\ | Betriebssystem-Datenträger
 DB-Disk1 | Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank 1
 DB-Disk2 (ausgeschlossener Datenträger) | Disk2 | E:\ | Temporäre Dateien
 DB-Disk3 (ausgeschlossener Datenträger) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad F:\MSSQL\Data\)

@@ -11,12 +11,13 @@ ms.service: site-recovery
 ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.workload: required
+ms.workload: storage-backup-recovery
 ms.date: 02/22/2017
 ms.author: ruturajd@microsoft.com
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 198caeea693fbc48b6e0eb1c9c8ee559e0553261
+ms.contentlocale: de-de
 ms.lasthandoff: 03/31/2017
 
 
@@ -33,7 +34,7 @@ In diesem Tutorial erfahren Sie, wie Sie Azure Automation-Runbooks in Wiederhers
 
     ![](media/site-recovery-runbook-automation-new/essentials-rp.PNG)
 - - -
-1. Klicken Sie auf die Schaltfläche „Anpassen“, um mit dem Hinzufügen eines Runbooks zu beginnen. 
+1. Klicken Sie auf die Schaltfläche „Anpassen“, um mit dem Hinzufügen eines Runbooks zu beginnen.
 
     ![](media/site-recovery-runbook-automation-new/customize-rp.PNG)
 
@@ -41,10 +42,10 @@ In diesem Tutorial erfahren Sie, wie Sie Azure Automation-Runbooks in Wiederhers
 1. Klicken Sie mit der rechten Maustaste auf die Startgruppe 1, und wählen Sie die Option „Nachfolgende Aktion hinzufügen“.
 2. Wählen Sie auf dem neuen Blatt ein Skript aus.
 3. Geben Sie dem Skript den Namen „Hello World“.
-4. Wählen Sie einen Automation-Kontonamen aus. 
+4. Wählen Sie einen Automation-Kontonamen aus.
     >[!NOTE]
     > Ein Automation-Konto kann sich an einem beliebigen geografischen Standort befinden, aber es muss unter demselben Abonnement wie der Site Recovery-Tresor vorhanden sein.
-    
+
 5. Wählen Sie im Automation-Konto ein Runbook aus. Dieses Runbook ist das Skript, das während der Ausführung des Wiederherstellungsplans nach der Wiederherstellung der ersten Gruppe ausgeführt wird.
 
     ![](media/site-recovery-runbook-automation-new/update-rp.PNG)
@@ -71,13 +72,13 @@ Hier ist ein Beispiel für die Kontextvariable angegeben:
         "VmMap":{"7a1069c6-c1d6-49c5-8c5d-33bfce8dd183":
 
                 { "SubscriptionId":"7a1111111-c1d6-49c5-8c5d-111ce8dd183",
-                
+
                 "ResourceGroupName":"ContosoRG",
-                
+
                 "CloudServiceName":"pod02hrweb-Chicago-test",
 
                 "RoleName":"Fabrikam-Hrweb-frontend-test",
-                
+
                 "RecoveryPointId":"TimeStamp"}
 
                 }
@@ -165,15 +166,15 @@ Rufen Sie im Skript die Werte der Variablen ab, indem Sie den folgenden Referenz
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
     $NSGRGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSGRG"
 
-    $NSGnameVar = Get-AutomationVariable -Name $NSGValue 
+    $NSGnameVar = Get-AutomationVariable -Name $NSGValue
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
 ```
 
 Als Nächstes können Sie die Variablen im Runbook einsetzen und die NSG auf die Netzwerkschnittstelle des virtuellen Computers anwenden, für den das Failover durchgeführt wurde.
 
 ```
-     InlineScript { 
-         if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
+     InlineScript {
+        if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
             $NSG = Get-AzureRmNetworkSecurityGroup -Name $Using:NSGname -ResourceGroupName $Using:NSGRGname
             Write-output $NSG.Id
             #Apply the NSG to a network interface
@@ -213,17 +214,17 @@ Stellen Sie sich ein Szenario vor, bei dem nur ein Skript für bestimmte VMs ein
 3. Verwenden Sie diese Variable in Ihrem Runbook, und wenden Sie die NSG auf dem virtuellen Computer an, wenn eine VMGUID im Wiederherstellungsplankontext enthalten ist.
 
     ```
-        $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName 
+        $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
     ```
 
 4. Führen Sie in Ihrem Runbook einen Schleife durch die VMs des Wiederherstellungsplankontexts durch, und überprüfen Sie, ob die VM auch in **$VMDetailsObj** enthalten ist. Wenn ja, wenden Sie die NSG an, indem Sie auf die Eigenschaften der Variablen zugreifen.
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
         $vmMap = $RecoveryPlanContext.VmMap
-           
+
         foreach($VMID in $VMinfo) {
             Write-output $VMDetailsObj.value.$VMID
-            
+
             if ($VMDetailsObj.value.$VMID -ne $Null) { #If the VM exists in the context, this will not b Null
                 $VM = $vmMap.$VMID
                 # Access the properties of the variable

@@ -38,7 +38,7 @@ Für diesen Schnellstart ist Version 2.0.4 oder höher der Azure CLI erforderlic
 
 Melden Sie sich mit dem Befehl [az login](/cli/azure/#login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
-```azurecli-interactive
+```azurecli
 az login
 ```
 

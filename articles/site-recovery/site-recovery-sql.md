@@ -8,7 +8,7 @@ manager: gauravd
 editor: 
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
@@ -101,18 +101,18 @@ Richten Sie für den ordnungsgemäßen Betrieb von SQL Server Active Directory a
 Bei den Anweisungen in diesem Artikel wird davon ausgegangen, dass am sekundären Standort ein Domänencontroller verfügbar ist. [weiteren Informationen](site-recovery-active-directory.md) zum Schützen von Active Directory mit Site Recovery.
 
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>Integration in Always On von SQL Server für die Replikation in Azure 
+## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>Integration in Always On von SQL Server für die Replikation in Azure
 
 Das müssen Sie tun:
 
-1. Importieren Sie Skripts in Ihr Azure Automation-Konto. Hier sind die Skripts zum Durchführen eines Failovers für die SQL-Verfügbarkeitsgruppe auf einem [mit Resource Manager erstellten virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) und einem [klassischen virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1). 
+1. Importieren Sie Skripts in Ihr Azure Automation-Konto. Hier sind die Skripts zum Durchführen eines Failovers für die SQL-Verfügbarkeitsgruppe auf einem [mit Resource Manager erstellten virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) und einem [klassischen virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
     [![Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. Fügen Sie ASR-SQL-FailoverAG als vorausgehende Aktion der ersten Gruppe des Wiederherstellungsplans hinzu.
 
-1. Befolgen Sie die im Skript verfügbaren Anweisungen, um eine Automation-Variable zu erstellen, um den Namen der Verfügbarkeitsgruppen bereitzustellen. 
+1. Befolgen Sie die im Skript verfügbaren Anweisungen, um eine Automation-Variable zu erstellen, um den Namen der Verfügbarkeitsgruppen bereitzustellen.
 
 ### <a name="steps-to-do-a-test-failover"></a>Schritte zum Testfailover
 
@@ -124,13 +124,13 @@ SQL Always On bietet keine native Unterstützung für ein Testfailover. Daher em
 
     ![Wiederherstellen von Daten aus der Azure-Sicherung ](./media/site-recovery-sql/restore-from-backup.png)
 
-1. [Erzwingen Sie ein Quorum](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) auf dem virtuellen Computer, der aus einer Sicherung wiederhergestellt wurde. 
+1. [Erzwingen Sie ein Quorum](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) auf dem virtuellen Computer, der aus einer Sicherung wiederhergestellt wurde.
 
-1. Aktualisieren Sie die IP-Adresse der Listener in eine IP-Adresse, die im Testfailovernetzwerk verfügbar ist. 
- 
+1. Aktualisieren Sie die IP-Adresse der Listener in eine IP-Adresse, die im Testfailovernetzwerk verfügbar ist.
+
     ![Aktualisieren Sie die Listener-IP-Adresse](./media/site-recovery-sql/update-listener-ip.png)
 
-1. Schalten Sie die Listener online. 
+1. Schalten Sie die Listener online.
 
     ![Onlineschalten des Listeners](./media/site-recovery-sql/bring-listener-online.png)
 
@@ -144,7 +144,7 @@ SQL Always On bietet keine native Unterstützung für ein Testfailover. Daher em
 
 ### <a name="steps-to-do-a-failover"></a>Schritte zum Failover
 
-Sobald Sie das Skript im Wiederherstellungsplan hinzugefügt haben und den Wiederherstellungsplan durch ein Testfailover validiert haben, können Sie das Failover des Wiederherstellungsplans durchführen. 
+Sobald Sie das Skript im Wiederherstellungsplan hinzugefügt haben und den Wiederherstellungsplan durch ein Testfailover validiert haben, können Sie das Failover des Wiederherstellungsplans durchführen.
 
 
 ## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>Integration in SQL Server Always On für die Replikation an einem sekundären lokalen Standort
@@ -155,7 +155,7 @@ Wenn die SQL Server-Instanz Verfügbarkeitsgruppen für hohe Verfügbarkeit (ode
 1. Erstellen Sie ein virtuelles Netzwerk am sekundären Standort.
 1. Richten Sie eine Site-to-Site-VPN-Verbindung zwischen dem virtuellen Netzwerk und dem primären Standort ein.
 1. Erstellen Sie einen virtuellen Computer am Wiederherstellungsstandort, und installieren Sie SQL Server.
-1. Erweitern Sie die vorhandenen Always On-Verfügbarkeitsgruppen auf die neue SQL Server-VM. Konfigurieren Sie diese SQL Server-Instanz als asynchrone Replikatkopie. 
+1. Erweitern Sie die vorhandenen Always On-Verfügbarkeitsgruppen auf die neue SQL Server-VM. Konfigurieren Sie diese SQL Server-Instanz als asynchrone Replikatkopie.
 1. Erstellen Sie einen Verfügbarkeitsgruppenlistener, oder aktualisieren Sie den vorhandenen Listener, sodass er den asynchronen virtuellen Replikatcomputer enthält.
 1. Stellen Sie sicher, dass die Anwendungsfarm mit dem Listener konfiguriert ist. Sollte die Farm mit dem Namen des Datenbankservers konfiguriert sein, aktualisieren Sie sie so, dass sie den Listener verwendet. Andernfalls muss dieser Schritt nach dem Failover durchgeführt werden.
 
