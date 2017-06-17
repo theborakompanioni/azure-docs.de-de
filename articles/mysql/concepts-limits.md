@@ -5,10 +5,8 @@ services: mysql
 author: jasonh
 ms.author: kamathsun
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
 ms.topic: article
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
@@ -47,9 +45,9 @@ Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgen
 
 ## <a name="preview-functional-limitations"></a>Funktionale Beschränkungen der Vorschau:
 ### <a name="scale-operations"></a>Skalierungsvorgänge:
-1.    Die dynamische Skalierung von Servern über verschiedene Diensttarife hinweg, d.h. ein Wechsel zwischen den Diensttarifen „Basic“ und „Standard“, wird derzeit nicht unterstützt.
-2.    Die dynamische bedarfsgesteuerte Steigerung des Speichers auf vorab erstellten Servern wird derzeit nicht unterstützt.
-3.    Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
+1.  Die dynamische Skalierung von Servern über verschiedene Diensttarife hinweg, d.h. ein Wechsel zwischen den Diensttarifen „Basic“ und „Standard“, wird derzeit nicht unterstützt.
+2.  Die dynamische bedarfsgesteuerte Steigerung des Speichers auf vorab erstellten Servern wird derzeit nicht unterstützt.
+3.  Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen:
 - Die automatisierte Migration zwischen Hauptversionen von Datenbankmodulen wird derzeit nicht unterstützt.
@@ -58,8 +56,8 @@ Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgen
 - Die dynamische Verschiebung von vorab erstellten Servern zwischen Abonnement- und Ressourcengruppen wird derzeit nicht unterstützt.
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung:
-1.    Die Wiederherstellung in anderen Diensttarifen und/oder Compute-Einheiten und Speichergrößen ist nicht zulässig.
-2.    Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
+1.  Die Wiederherstellung in anderen Diensttarifen und/oder Compute-Einheiten und Speichergrößen ist nicht zulässig.
+2.  Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte:
 [Verfügbare Funktionen in den einzelnen Diensttarifen](concepts-service-tiers.md)

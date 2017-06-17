@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/22/2017
+ms.date: 06/16/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
@@ -155,7 +155,7 @@ Durch das Deaktivieren wird eine Topologie unterbrochen, bis sie beendet oder er
 
 Storm-Topologien werden, nachdem sie einmal gestartet wurden, so lange ausgeführt, bis sie beendet werden. Führen Sie zum Beenden einer Topologie den folgenden Befehl aus:
 
-    storm stop TOPOLOGYNAME
+    storm kill TOPOLOGYNAME
 
 ### <a name="rebalance"></a>Ausgleichen
 

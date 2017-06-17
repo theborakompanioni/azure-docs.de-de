@@ -5,12 +5,9 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: portal
 ms.date: 05/10/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
@@ -40,7 +37,7 @@ Mithilfe der folgenden Schritte wird der Status des Beispielservers zu einem bes
 
 2. Suchen Sie den Server für Azure-Datenbank für MySQL. Wählen Sie im linken Bereich **All resources** (Alle Ressourcen) und anschließend den Server in der Liste aus.
 
-3.    Klicken Sie oben auf dem Serverübersichtsblatt auf der Symbolleiste auf **Wiederherstellen**. Das Blatt „Wiederherstellen“ wird geöffnet.
+3.  Klicken Sie oben auf dem Serverübersichtsblatt auf der Symbolleiste auf **Wiederherstellen**. Das Blatt „Wiederherstellen“ wird geöffnet.
 ![Klicken auf die Schaltfläche „Wiederherstellen“](./media/howto-restore-server-portal/click-restore-button.png)
 
 4. Geben Sie im Formular „Wiederherstellen“ die erforderlichen Informationen ein:

@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
+ms.contentlocale: de-de
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -30,8 +32,8 @@ Im Folgenden erfahren Sie, wie Sie eine Gutschrift oder Rückerstattung im Auftr
 
 > [!NOTE]
 > Wenn Microsoft von einem Kunden oder einem Azure-Reseller um eine Rückerstattung oder eine Gutschrift gebeten wird, wenden wir dieselben Richtlinien an wie bei der Bereitstellung der Azure-Dienste. Für den Fall, dass gemäß unseren Richtlinien eine Erstattung oder Gutschrift zu entrichten ist (und Sie uns in Ihrem Namen autorisieren), diese Erstattung oder Gutschrift an den Kunden oder Azure-Reseller zu leisten, werden wir diesen Vorgang proaktiv abwickeln. Ist gemäß unseren Richtlinien keine Rückerstattung oder Gutschrift zu zahlen, bitten wir den Kunden oder Azure-Reseller unter Umständen, sich direkt mit Ihnen in Verbindung zu setzen.
-> 
-> 
+>
+>
 
   ![1_RequestRefund][1]
 
@@ -39,12 +41,12 @@ Im Folgenden erfahren Sie, wie Sie eine Gutschrift oder Rückerstattung im Auftr
 2. Wählen Sie in der Dropdownliste **Problemtyp** den Eintrag **Kundenverwaltung** aus.
 3. Wählen Sie im Feld **Kategorie** die Option **Genehmigen oder Anfordern einer Rückerstattung für Kunden** aus.
 4. Klicken Sie auf **Anfrage starten**.
-   
+
    ![2_RequestRefund][2]
 
 1. Angeben von Kontaktinformationen
 2. Geben Sie in das Feld **Was ist das Problem?** die folgenden Informationen ein:
-   
+
    * Die Abonnement-ID des betroffenen Kunden
    * Den Namen des Kunden
    * Welchen Betrag die Gutschrift aufweisen soll
@@ -83,8 +85,8 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 
 > [!NOTE]
 > Sie können für die Überprüfung Ihre Telefonnummer oder Ihre E-Mail-Adresse angeben.
-> 
-> 
+>
+>
 
 ![protectacct][6]
 
@@ -121,9 +123,4 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 [6]: ./media/marketplace-publishing-support-common-issues/protectacct.png
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

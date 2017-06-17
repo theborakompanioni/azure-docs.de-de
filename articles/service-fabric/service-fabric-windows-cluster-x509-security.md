@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2017
+ms.date: 06/16/2017
 ms.author: ryanwi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 51ed17ab8f036f00b285232500dc9f606f2a7e2f
+ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
 
 
@@ -49,7 +50,7 @@ Laden Sie als Erstes das [Paket mit dem eigenständigen Cluster](service-fabric-
             {
                 "CertificateThumbprint": "[Thumbprint]",
                 "IsAdmin": false
-            }, 
+            },
             {
                 "CertificateThumbprint": "[Thumbprint]",
                 "IsAdmin": true
@@ -58,17 +59,17 @@ Laden Sie als Erstes das [Paket mit dem eigenständigen Cluster](service-fabric-
         "ClientCertificateCommonNames": [
             {
                 "CertificateCommonName": "[CertificateCommonName]",
-                "CertificateIssuerThumbprint" : "[Thumbprint]",
+                "CertificateIssuerThumbprint": "[Thumbprint]",
                 "IsAdmin": true
             }
-        ]
-        "ReverseProxyCertificate":{
+        ],
+        "ReverseProxyCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
             "X509StoreName": "My"
         }
     }
-}
+},
 ```
 
 In diesem Abschnitt werden die Zertifikate beschrieben, die Sie zum Schützen des eigenständigen Windows-Clusters benötigen. Wenn Sie ein Zertifikat für Cluster angeben, legen Sie den Wert von **ClusterCredentialType** auf _**X509**_ fest. Wenn Sie das Serverzertifikat für externe Verbindungen angeben, legen Sie **ServerCredentialType** auf _**X509**_ fest. Auch wenn es nicht zwingend erforderlich ist, empfehlen wir beide Zertifikate für einen ordnungsgemäß gesicherten Cluster. Wenn Sie diese Werte auf *X509* gesetzt haben, müssen Sie auch die entsprechenden Zertifikate angeben, weil Service Fabric andernfalls eine Ausnahme ausgelöst. In einigen Szenarien möchten Sie möglicherweise nur _ClientCertificateThumbprints_ oder _ReverseProxyCertificate_ angeben. Sie dürfen in diesen Szenarien _ClusterCredentialType_ oder _ServerCredentialType_ nicht auf _X509_ festlegen.
