@@ -5,20 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 06/16/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
 ms.openlocfilehash: 07b14394b0e07fd78d70d77aeef8a2feb17284e0
+ms.contentlocale: de-de
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Verzeichnisintegration zwischen Azure MFA-Server und Active Directory
@@ -95,7 +96,7 @@ Attribute können manuell eingegeben werden und müssen nicht mit einem Attribut
 | Durchwahl |Geben Sie den Attributnamen des Attributs ein, das die private Durchwahl-Telefonnummer in einem Benutzerdatensatz enthält.  Der Wert des Felds „Durchwahl“ wird nur als Durchwahl für die Haupttelefonnummer verwendet.  Der Standardwert lautet „blank“. <br><br>Wenn das Extension-Attribut nicht angegeben wird, können Durchwahlnummern als Teil des phone-Attributs eingefügt werden. Stellen Sie der Durchwahl in diesem Fall ein „x“ voran, damit sie richtig analysiert wird.  Beispielsweise ergibt sich für 555-123-4567 x890 der Teil 555-123-4567 als Telefonnummer und 890 als Durchwahl. |
 | Schaltfläche „Standardeinstellungen wiederherstellen“ |Klicken Sie auf **Standardeinstellungen wiederherstellen**, um alle Attribute auf ihren Standardwert zurückzusetzen.  Die Standardwerte sollten für das normale Active Directory- oder ADAM-Schema richtig funktionieren. |
 
-Klicken Sie zum Bearbeiten von Attributen auf der Registerkarte „Attribute“ auf **Bearbeiten**.  Ein Fenster wird angezeigt, in dem Sie die Attribute bearbeiten. Wählen Sie **...** neben einem Attribut aus, um ein Fenster zu öffnen, in dem Sie die Anzeige der Attribute auswählen können. 
+Klicken Sie zum Bearbeiten von Attributen auf der Registerkarte „Attribute“ auf **Bearbeiten**.  Ein Fenster wird angezeigt, in dem Sie die Attribute bearbeiten. Wählen Sie **...** neben einem Attribut aus, um ein Fenster zu öffnen, in dem Sie die Anzeige der Attribute auswählen können.
 
 ![Bearbeiten von Attributen](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
 
@@ -138,5 +139,4 @@ Mit den Schaltflächen „Nach oben“ und „Nach unten“ kann der Administrat
 Zusätzliche Multi-Factor Authentication-Server können als RADIUS-Backupproxy, LDAP-Proxy oder für die IIS-Authentifizierung eingerichtet werden. Die Konfiguration der Synchronisierung wird für alle Agents gemeinsam genutzt. Der Multi-Factor Authentication-Server-Dienst wird aber unter Umständen nur für einen der Agents ausgeführt. Auf dieser Registerkarte können Sie den Multi-Factor Authentication-Server auswählen, der für die Synchronisierung aktiviert werden soll.
 
 ![Multi-Factor Authentication-Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
-
 
