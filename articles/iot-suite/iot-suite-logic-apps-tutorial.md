@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 06/16/2017
 ms.author: corywink
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
+ms.contentlocale: de-de
 ms.lasthandoff: 03/10/2017
 
 
@@ -53,7 +54,7 @@ Richten Sie zunächst die Logik-App ein, die mit der vorkonfigurierten Lösung v
 6. Wählen Sie **Anfordern** aus. Diese Aktion gibt an, dass eine eingehende HTTP-Anforderung mit einer bestimmten JSON-formatierten Nutzlast als Trigger fungiert.
 7. Fügen Sie folgenden Code in den Anforderungstext des JSON-Schemas ein:
    
-    ```
+    ```json
     {
       "$schema": "http://json-schema.org/draft-04/schema#",
       "id": "/",
@@ -109,14 +110,14 @@ In diesem Abschnitt verbinden Sie Ihre vorkonfigurierte Lösung mit der Logik-Ap
 
 1. Verwenden Sie Ihren Git-Client zum Klonen der neuesten Version des Github-Repositorys [azure-iot-remote-monitoring][lnk-rmgithub]. Beispiel:
    
-    ```
+    ```cmd
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
 2. Öffnen Sie in Visual Studio **RemoteMonitoring.sln** in der lokalen Kopie des Repositorys.
 3. Öffnen Sie im Ordner **Infrastructure\\Repository** die Datei **ActionRepository.cs**.
 4. Aktualisieren Sie das Wörterbuch **ActionIds** mit **HTTP Post an diese URL**, die Sie folgendermaßen in Ihrer Logik-App notiert haben:
    
-    ```
+    ```csharp
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
         { "Send Message", "<Http Post to this URL>" },
@@ -132,9 +133,9 @@ In diesem Abschnitt stellen Sie die aktualisierte Version der Remoteüberwachung
 2. Befolgen Sie für eine [lokale Bereitstellung][lnk-localdeploy] die entsprechenden Anweisungen.
 3. Für eine Bereitstellung in der Cloud und die Aktualisierung Ihrer vorhandenen Cloudbereitstellung befolgen Sie die Anweisung zur [Cloudbereitstellung][lnk-clouddeploy]. Verwenden Sie den Namen der ursprünglichen Bereitstellung als Bereitstellungsnamen. Wenn beispielsweise die ursprüngliche Bereitstellung **demologicapp**hieß, verwenden Sie den folgenden Befehl:
    
-   ``
+   ```cmd
    build.cmd cloud release demologicapp
-   ``
+   ```
    
    Wenn das Buildskript ausgeführt wird, vergewissern Sie sich, dass Sie dasselbe Azure-Konto und -Abonnement bzw. dieselbe Region und Active Directory-Instanz wie bei der Bereitstellung der Lösung verwenden.
 

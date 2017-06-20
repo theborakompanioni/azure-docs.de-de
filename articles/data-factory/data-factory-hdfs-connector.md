@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/20/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
@@ -357,7 +357,7 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
 **Auf dem Gatewaycomputer:**
 
-1.    Führen Sie das Dienstprogramm **Ksetup** aus, um den Kerberos-KDC-Server und -Bereich zu konfigurieren.
+1.  Führen Sie das Dienstprogramm **Ksetup** aus, um den Kerberos-KDC-Server und -Bereich zu konfigurieren.
 
     Der Computer muss als Mitglied einer Arbeitsgruppe konfiguriert werden, da sich Kerberos-Bereiche von Windows-Domänen unterscheiden. Sie erreichen dies, indem Sie den Kerberos-Bereich einrichten und einen KDC-Server hinzufügen, wie im Folgenden erläutert. Ersetzen Sie *REALM.COM* durch Ihren eigenen Bereich.
 
@@ -366,7 +366,7 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
     Nach Ausführung dieser beiden Befehle **starten Sie den Computer neu**.
 
-2.    Überprüfen Sie die Konfiguration mit dem Befehl **Ksetup**. Die Ausgabe sollte wie folgt sein:
+2.  Überprüfen Sie die Konfiguration mit dem Befehl **Ksetup**. Die Ausgabe sollte wie folgt sein:
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -380,8 +380,8 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 ### <a name="kerberos-mutual-trust"></a>Option 2: Aktivieren der gegenseitigen Vertrauensstellung zwischen der Windows-Domäne und dem Kerberos-Bereich
 
 #### <a name="requirement"></a>Anforderung:
-*    Der Gatewaycomputer muss einer Windows-Domäne beitreten.
-*    Sie benötigen die Berechtigung zum Aktualisieren der Einstellungen des Domänencontrollers.
+*   Der Gatewaycomputer muss einer Windows-Domäne beitreten.
+*   Sie benötigen die Berechtigung zum Aktualisieren der Einstellungen des Domänencontrollers.
 
 #### <a name="how-to-configure"></a>Konfiguration:
 
@@ -390,7 +390,7 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
 **Auf dem KDC-Server:**
 
-1.    Bearbeiten Sie die KDC-Konfiguration in der Datei **krb5.conf** mithilfe der folgenden Konfigurationsvorlage so, dass KDC der Windows-Domäne vertraut. Standardmäßig befindet sich die Konfiguration unter **/etc/krb5.conf**.
+1.  Bearbeiten Sie die KDC-Konfiguration in der Datei **krb5.conf** mithilfe der folgenden Konfigurationsvorlage so, dass KDC der Windows-Domäne vertraut. Standardmäßig befindet sich die Konfiguration unter **/etc/krb5.conf**.
 
             [logging]
              default = FILE:/var/log/krb5libs.log
@@ -428,24 +428,24 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
   Führen Sie nach der Konfiguration einen **Neustart** des KDC-Diensts aus.
 
-2.    Bereiten Sie mit dem folgenden Befehl einen Prinzipal namens **krbtgt/REALM.COM@AD.COM** auf dem KDC-Server vor:
+2.  Bereiten Sie mit dem folgenden Befehl einen Prinzipal namens **krbtgt/REALM.COM@AD.COM** auf dem KDC-Server vor:
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.    Fügen Sie in der HDFS-Dienstkonfigurationsdatei **hadoop.security.auth_to_local** diese Zeichenfolge hinzu: `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`.
+3.  Fügen Sie in der HDFS-Dienstkonfigurationsdatei **hadoop.security.auth_to_local** diese Zeichenfolge hinzu: `RULE:[1:$1@$0](.*@AD.COM)s/@.*//`.
 
 **Auf dem Domänencontroller:**
 
-1.    Führen Sie die folgenden **Ksetup**-Befehle aus, um einen Bereichseintrag hinzuzufügen:
+1.  Führen Sie die folgenden **Ksetup**-Befehle aus, um einen Bereichseintrag hinzuzufügen:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.    Richten Sie eine Vertrauensstellung zwischen der Windows-Domäne und dem Kerberos-Bereich ein. [password] ist das Kennwort für den Prinzipal **krbtgt/REALM.COM@AD.COM**.
+2.  Richten Sie eine Vertrauensstellung zwischen der Windows-Domäne und dem Kerberos-Bereich ein. [password] ist das Kennwort für den Prinzipal **krbtgt/REALM.COM@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.    Wählen Sie den in Kerberos verwendeten Verschlüsselungsalgorithmus aus.
+3.  Wählen Sie den in Kerberos verwendeten Verschlüsselungsalgorithmus aus.
 
     1. Wechseln Sie zu „Server-Manager > Gruppenrichtlinienverwaltung > Domäne > Gruppenrichtlinienobjekte > Standard- oder aktive Domänenrichtlinie“, und wählen Sie „Bearbeiten“.
 
@@ -459,7 +459,7 @@ Zur Einrichtung der lokalen Umgebung für die Verwendung der Kerberos-Authentifi
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.    Erstellen Sie die Zuordnung zwischen dem Domänenkonto und dem Kerberos-Prinzipal, um den Kerberos-Prinzipal in der Windows-Domäne verwenden zu können.
+4.  Erstellen Sie die Zuordnung zwischen dem Domänenkonto und dem Kerberos-Prinzipal, um den Kerberos-Prinzipal in der Windows-Domäne verwenden zu können.
 
     1. Starten Sie „Verwaltung > **Active Directory-Benutzer und -Computer**“.
 

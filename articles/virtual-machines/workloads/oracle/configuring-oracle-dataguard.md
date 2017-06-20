@@ -23,7 +23,7 @@ ms.lasthandoff: 05/16/2017
 
 ---
 
-# <a name="implement-oracle-data-guard-on-azure-linux-vm"></a>Implementieren von Oracle Data Guard in Azure-Linux-VMs
+# <a name="implement-oracle-data-guard-on-azure-linux-vm"></a>Implementieren von Oracle Data Guard in Azure-Linux-VMs 
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Bereitstellung einer Oracle 12c-Datenbank über das Marketplace-Katalogimage mithilfe der Azure CLI beschrieben. Nachdem die Oracle-Datenbank erstellt wurde, beschreibt dieses Dokument alle Schritte für das Installieren und Konfigurieren von Data Guard auf virtuellen Azure-Computern.
 
