@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
-ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: e37e79f3990d920a656330c4f4c5cf7748183441
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -50,7 +52,7 @@ Möchten Sie sich lieber ein Video ansehen? Sehen Sie sich das folgende Video au
 [Azure Automation DSC](automation-dsc-overview.md) ist eine cloudbasierte Lösung für PowerShell DSC, mit der für Unternehmensumgebungen erforderliche Dienste bereitgestellt werden.  Sie können Ihre DSC-Ressourcen in Azure Automation verwalten und Konfigurationen auf virtuelle oder physische Computer anwenden, mit denen sie von einem DSC-Pullserver in der Azure-Cloud abgerufen werden.  Außerdem werden darüber Berichtdienste bereitgestellt, mit denen Sie über wichtige Ereignisse informiert werden, z. B. bei einer Abweichung der Knoten von ihrer zugewiesenen Konfiguration und bei Anwendung einer neuen Konfiguration. 
 
 ## <a name="creating-your-own-dsc-configurations-with-azure-automation"></a>Erstellen eigener DSC-Konfigurationen mit Azure Automation
-[DSC-Konfigurationen](automation-dsc-overview.md#azure-automation-dsc-terms) wird der gewünschte Zustand eines Knotens angegeben.  Für mehrere Knoten kann die gleiche Konfiguration angewendet werden, um sicherzustellen, dass alle über einen identischen Zustand verfügen.  Sie können eine Konfiguration mit einem beliebigen Text-Editor auf Ihrem lokalen Computer erstellen und dann in Azure Automation importieren, wo Sie sie kompilieren und auf Knoten anwenden können.
+[DSC-Konfigurationen](automation-dsc-overview.md) wird der gewünschte Zustand eines Knotens angegeben.  Für mehrere Knoten kann die gleiche Konfiguration angewendet werden, um sicherzustellen, dass alle über einen identischen Zustand verfügen.  Sie können eine Konfiguration mit einem beliebigen Text-Editor auf Ihrem lokalen Computer erstellen und dann in Azure Automation importieren, wo Sie sie kompilieren und auf Knoten anwenden können.
 
 ## <a name="getting-modules-and-configurations"></a>Abrufen von Modulen und Konfigurationen
 Sie können [PowerShell-Module](automation-runbook-gallery.md#modules-in-powershell-gallery) mit Cmdlets abrufen, die Sie in Ihren Runbooks und DSC-Konfigurationen aus dem [PowerShell-Katalog](http://www.powershellgallery.com/) verwenden können. Sie starten diesen Katalog über das Azure-Portal und importieren Module direkt in Azure Automation. Sie können sie auch herunterladen und manuell importieren. Die Module können nicht direkt über das Azure-Portal installiert werden, Sie können sie jedoch herunterladen und installieren wie alle anderen Module auch. 
@@ -83,10 +85,5 @@ Um mehr über Azure Automation zu erfahren und Ihre eigenen Runbooks zu erstelle
 
 ## <a name="can-i-provide-feedback"></a>Kann ich Feedback geben?
 **Bitte geben Sie uns Feedback!** Wenn Sie nach einer Azure Automation-Runbook-Lösung oder einem Integrationsmodul suchen, senden Sie im Script Center eine Skriptanforderung. Wenn Sie Feedback oder Vorschläge zu Features für Azure Automation haben, veröffentlichen Sie sie auf [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback). Vielen Dank! 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

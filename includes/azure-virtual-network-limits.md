@@ -43,5 +43,5 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
 | Sekundäre IP-Konfigurationen pro virtuellem Netzwerk |1000 |an den Support wenden |
 
-[Wenden Sie sich an den Support](../articles/azure-supportability/how-to-create-azure-support-request.md), falls Sie Limits der Standardwerte erhöhen müssen.
+[Wenden Sie sich an den Support](../articles/azure-supportability/resource-manager-core-quotas-request.md ), falls Sie Limits der Standardwerte erhöhen müssen.
 

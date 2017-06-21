@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 06/19/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c67ada15c11b81021ff5e6f6e5edc5cb530ece98
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 7bbf70786bff83ad3cfae9cb9b893f41736874b5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -169,6 +169,6 @@ Wenn Sie lediglich den neu erstellten Server löschen möchten:
 3.  Bestätigen Sie, dass Sie den Server wirklich löschen möchten, und zeigen Sie die darunter liegenden betroffenen Datenbanken an. Geben Sie im Textfeld **mypgserver-20170401** ein, und klicken Sie dann auf „Löschen“.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Migrieren Sie die Datenbank durch [Exportieren und Importieren](./howto-migrate-using-export-and-import.md) oder durch [Sichern und Wiederherstellen](./howto-migrate-using-dump-and-restore.md).
-- Weitere Informationen zum Erstellen einer Azure-Datenbank für PostgreSQL-Server mithilfe der Azure-CLI finden Sie unter [Erstellen eines PostgreSQL-Servers – CLI](./quickstart-create-server-database-azure-cli.md).
-- Eine technische Übersicht finden Sie unter [Was ist Azure-Datenbank für PostgreSQL?](./overview.md).
+> [!div class="nextstepaction"]
+> [Migrieren der Datenbank mit Export und Import](./howto-migrate-using-export-and-import.md)
+

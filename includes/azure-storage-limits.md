@@ -9,7 +9,7 @@
 | Maximale Größe eines Blockblobs |50.000 x 100 MB (ca. 4,75 TB) |
 | Maximale Größe eines Blocks in einem Anfügeblob |4 MB |
 | Maximale Größe eines Anfügeblobs |50.000 x 4 MB (ca. 195 GB) |
-| Max. Größe eines Seitenblobs |1 TB |
+| Max. Größe eines Seitenblobs |8 TB |
 | Maximale Größe einer Tabellenentität |1 MB |
 | Max. Anzahl von Eigenschaften in einer Tabellenentität |252 |
 | Maximale Größe einer Nachricht in einer Warteschlange |64 KB |

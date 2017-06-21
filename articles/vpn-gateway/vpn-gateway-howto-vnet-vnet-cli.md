@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 0b82a0c4e140d2084d7570f8c7eab1f809f15d9d
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: a05c878f876eadc5160ef9765f764595cade76a9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -28,10 +28,10 @@ ms.lasthandoff: 05/23/2017
 Dieser Artikel zeigt, wie Sie eine VPN-Gatewayverbindung zwischen virtuellen Netzwerken erstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und die Verwendung der Azure CLI. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
-> * [Resource Manager – Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Resource Manager – PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-> * [Resource Manager – Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
-> * [Klassisch – Azure-Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
+> * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Verbinden von verschiedenen Bereitstellungsmodellen – Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
@@ -146,7 +146,7 @@ In den Beispielen werden die folgenden Werte verwendet:
 7. Erstellen Sie das virtuelle Netzwerkgateway für Ihr TestVNet1. VNet-zu-VNet-Konfigurationen erfordern einen routenbasierten VPN-Typ. Wenn Sie diesen Befehl mit dem Parameter „--no-wait“ ausführen, wird kein Feedback bzw. keine Ausgabe angezeigt. Der Parameter „--no-wait“ ermöglicht die Erstellung des Gateways im Hintergrund. Das bedeutet nicht, dass die Erstellung des VPN Gateways sofort abgeschlossen ist. Das Erstellen eines Gateways kann je nach verwendeter Gateway-SKU häufig mindestens 45 Minuten dauern.
 
   ```azurecli
-  az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku Standard --vpn-type RouteBased --no-wait
+  az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
 ### <a name="TestVNet4"></a>Schritt 3: Erstellen und Konfigurieren von „TestVNet4“
@@ -181,7 +181,7 @@ In den Beispielen werden die folgenden Werte verwendet:
 6. Erstellen Sie das virtuelle Netzwerkgateway für „TestVNet4“.
 
   ```azurecli
-  az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku Standard --vpn-type RouteBased --no-wait
+  az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
 ### <a name="step-4---create-the-connections"></a>Schritt 4: Erstellen der Verbindungen
@@ -318,10 +318,10 @@ Dieser Schritt muss im Kontext des neuen Abonnements, Abonnement 5, ausgeführt 
 6. Erstellen des TestVNet5-Gateways
 
   ```azurecli
-  az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku Standard --vpn-type RouteBased --no-wait
+  az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-6---create-the-connections"></a>Schritt 6: Erstellen der Verbindungen
+### <a name="step-8---create-the-connections"></a>Schritt 8: Erstellen der Verbindungen
 
 Wir haben diesen Schritt in zwei CLI-Sitzungen mit den Bezeichnungen **[Abonnement 1]** und **[Abonnement 5]** aufgeteilt, da sich die Gateways in unterschiedlichen Abonnements befinden. Zum Wechseln zwischen Abonnements führen Sie „az account list --all“ aus, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und führen dann „az account set --subscription <subscriptionID>“ aus, um zum Abonnement zu wechseln, das Sie verwenden möchten.
 
@@ -371,3 +371,4 @@ Wir haben diesen Schritt in zwei CLI-Sitzungen mit den Bezeichnungen **[Abonneme
 
 * Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie in der [Dokumentation zu virtuellen Computern](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 * Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
+
