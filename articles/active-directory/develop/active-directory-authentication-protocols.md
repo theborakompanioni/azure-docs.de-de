@@ -2,7 +2,7 @@
 title: Azure Active Directory-Authentifizierungsprotokolle | Microsoft Docs
 description: "Eine Übersicht über die von Azure Active Directory (AD) unterstützten Authentifizierungsprotokolle"
 documentationcenter: dev-center-name
-author: bryanla
+author: priyamohanram
 services: active-directory
 manager: mbaldwin
 editor: 

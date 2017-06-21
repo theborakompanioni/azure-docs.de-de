@@ -3,7 +3,7 @@ title: Erste Schritte in Azure AD Xamarin | Microsoft-Dokumentation
 description: "Erstellen Sie Xamarin-Anwendungen, die für die Anmeldung in Azure AD integriert sind und über OAuth durch Azure AD geschützte APIs aufrufen."
 services: active-directory
 documentationcenter: xamarin
-author: dstrockis
+author: jmprieur
 manager: mbaldwin
 editor: 
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: jmprieur
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9c40d273f102339fac8ea633c870b869d10106a7

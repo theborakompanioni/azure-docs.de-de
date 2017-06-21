@@ -3,7 +3,7 @@ title: "Schnellstart für die Azure AD Graph-API | Microsoft Docs"
 description: "Die Azure Active Directory Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über OData-REST-API-Endpunkte. Anwendungen können die Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen."
 services: active-directory
 documentationcenter: n/a
-author: PatAltimore
+author: viv-liu
 manager: mbaldwin
 editor: 
 tags: 
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
-ms.author: patricka
+ms.author: viviali
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f

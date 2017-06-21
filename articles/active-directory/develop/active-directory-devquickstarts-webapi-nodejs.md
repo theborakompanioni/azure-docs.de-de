@@ -3,7 +3,7 @@ title: Erste Schritte in Azure AD Node.js | Microsoft-Dokumentation
 description: "In diesem Thema erfahren Sie, wie Sie eine Node.js-REST-Web-API erstellen, die für die Authentifizierung in Azure AD integriert wird."
 services: active-directory
 documentationcenter: nodejs
-author: brandwe
+author: navyasric
 manager: mbaldwin
 editor: 
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: xerners
+ms.author: nacanuma
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228

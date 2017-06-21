@@ -3,7 +3,7 @@ title: 'Azure Active Directory: v2.0-Android-App | Microsoft Docs'
 description: "Es wird beschrieben, wie Sie eine Android-App erstellen, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch mit ihrem Geschäfts-, Schul- oder Unikonto anmelden können, und die die Graph-API mithilfe von Drittanbieterbibliotheken aufruft."
 services: active-directory
 documentationcenter: 
-author: brandwe
+author: danieldobalian
 manager: mbaldwin
 editor: 
 ms.assetid: 16294c07-f27d-45c9-833f-7dbb12083794
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
-ms.author: brandwe
+ms.author: dadobali
 ms.custom: aaddev
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
