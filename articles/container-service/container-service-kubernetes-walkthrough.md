@@ -18,10 +18,10 @@ ms.date: 05/08/2017
 ms.author: anhowe
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2ec155129374c03ba7e0ecaa5d2bf29a1d3111aa
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 0604a85192ed632b621113b98cc44172c584ea01
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -78,7 +78,7 @@ az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --
 Nach einigen Minuten ist der Befehl abgeschlossen, und Sie sollten über einen funktionierenden Kubernetes-Cluster verfügen.
 
 > [!IMPORTANT]
-> Wenn Ihr Konto nicht über die erforderlichen Berechtigungen zum Erstellen eines Azure AD-Dienstprinzipals verfügt, erzeugt der Befehl einen Fehler wie etwa `Insufficient privileges to complete the operation.`. Weitere Informationen erhalten Sie unter [Informationen zum Dienstprinzipal für einen Kubernetes-Cluster](container-service-kubernetes-service-principal.md).
+> Wenn Ihr Konto nicht über die Berechtigungen zum Erstellen des Azure AD-Dienstprinzipals verfügt, generiert der Befehl einen Fehler ähnlich diesem: **Nicht genügend Berechtigungen zum Abschließen des Vorgangs**. Weitere Informationen finden Sie im Artikel zum [Dienstprinzipal für einen Kubernetes-Cluster](container-service-kubernetes-service-principal.md).
 > 
 
 

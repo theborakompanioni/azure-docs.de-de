@@ -10,18 +10,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
-ms.custom: quick start manage
+ms.custom: quick start manage, mvc
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 05/24/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 45405c7bb9993d1fd529b25b599c3cd7f459843c
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 82c8a34fcccb6d19dc82110a6d95a80d748835f0
 ms.contentlocale: de-de
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -29,10 +29,13 @@ ms.lasthandoff: 04/20/2017
 
 [Visual Studio Code](https://code.visualstudio.com/docs) ist ein grafischer Code-Editor für Linux, Mac OS und Windows, der Erweiterungen unterstützt, z.B. die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und SQL Data Warehouse. In diesem Schnellstart wird veranschaulicht, wie Sie Visual Studio Code zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten in der Datenbank abzufragen, einzufügen, zu aktualisieren und zu löschen.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
 - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
+- [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md)
 
 Stellen Sie zunächst sicher, dass Sie die neueste Version von [Visual Studio Code](https://code.visualstudio.com/Download) installiert und die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) geladen haben. Eine Installationsanleitung für die mssql-Erweiterung finden Sie unter [Install VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) (Installieren von VS Code) und [mssql for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) (mssql für Visual Studio Code). 
 
@@ -97,17 +100,15 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenba
 
 4. Befolgen Sie die Eingabeaufforderungen, um die Verbindungseigenschaften für das neue Verbindungsprofil anzugeben. Drücken Sie nach dem Angeben der einzelnen Werte die **EINGABETASTE**, um fortzufahren. 
 
-   In der folgenden Tabelle sind die Verbindungsprofileigenschaften beschrieben.
-
-   | Einstellung | Beschreibung |
-   |-----|-----|
-   | **Servername** | Geben Sie den vollqualifizierten Servernamen ein, z.B. **mynewserver20170313.database.windows.net**. |
-   | **Datenbankname** | Geben Sie den Datenbanknamen ein, z.B. **mySampleDatabase**. |
-   | **Authentifizierung** | Auswählen der SQL-Anmeldung |
-   | **Benutzername** | Geben Sie Ihr Serveradministratorkonto ein. |
-   | **Kennwort (SQL-Anmeldung)** | Geben Sie das Kennwort für Ihr Serveradministratorkonto ein. | 
-   | **Kennwort speichern?** | Wählen Sie **Ja** oder **Nein**. |
-   | **[Optional] Geben Sie einen Namen für dieses Profil ein** | Geben Sie einen Namen für das Verbindungsprofil ein, z.B. **mySampleDatabase**. 
+   | Einstellung       | Empfohlener Wert | Beschreibung |
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **Servername | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
+   | **Datenbankname** | mySampleDatabase | Der Name der Datenbank, mit der eine Verbindung hergestellt werden soll. |
+   | **Authentifizierung** | SQL-Anmeldung| In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
+   | **Benutzername** | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
+   | **Kennwort (SQL-Anmeldung)** | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
+   | **Kennwort speichern?** | Ja oder nein | Wählen Sie „Ja“ aus, wenn Sie das Kennwort nicht jedes Mal erneut eingeben möchten. |
+   | **Geben Sie einen Namen für dieses Profil ein.** | Ein Profilname, z.B. **mySampleDatabase** | Ein gespeicherter Profilname beschleunigt die Verbindungsherstellung bei nachfolgenden Anmeldungen. | 
 
 5. Drücken Sie die Taste **ESC**, um die Meldung mit dem Hinweis, dass das Profil erstellt und die Verbindung dafür hergestellt wurde, zu schließen.
 

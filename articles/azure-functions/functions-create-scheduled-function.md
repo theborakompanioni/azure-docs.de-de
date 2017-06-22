@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 1478a2eedad496d3113fef28920d10859d11b1ce
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: f35f693131bd1f4f47b161afb0a4f38d4f00bbd6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -47,18 +47,20 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
 ## <a name="create-a-timer-triggered-function"></a>Erstellen einer Funktion mit Auslösung per Timer
 
-1. Erweitern Sie Ihre Funktionen-App, klicken Sie neben den **Funktionen** auf die Schaltfläche **+**, und klicken Sie anschließend auf die Vorlage **TimerTrigger** für die gewünschte Sprache. Verwenden Sie dann die in der Tabelle angegebenen Einstellungen, und klicken Sie anschließend auf **Erstellen**:
+1. Erweitern Sie Ihre Funktionen-App, klicken Sie neben den **Funktionen** auf die Schaltfläche **+**, und klicken Sie anschließend auf die Vorlage **TimerTrigger** für die gewünschte Sprache. Verwenden Sie anschließend die Proxyeinstellungen wie in der Tabelle angegeben:
 
-| Einstellung | Empfohlener Wert | Beschreibung |
-|---|---|---|
-| **Name Ihrer Funktion** | TimerTriggerCSharp1 | Definiert den Namen der Funktion mit Auslösung per Timer |
-| **[Zeitplan](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression), der die minütliche Ausführung der Funktion festlegt. |
+    ![Erstellen Sie im Azure-Portal eine Funktion mit Auslösung per Timer.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
 
-Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
+    | Einstellung | Empfohlener Wert | Beschreibung |
+    |---|---|---|
+    | **Name Ihrer Funktion** | TimerTriggerCSharp1 | Definiert den Namen der Funktion mit Auslösung per Timer |
+    | **[Zeitplan](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression), der die minütliche Ausführung der Funktion festlegt. |
 
-1. Überprüfen Sie, ob die Funktion ausgeführt wird, indem Sie sich die Nachverfolgungsinformationen in den Protokollen ansehen.
+2. Klicken Sie auf **Erstellen**. Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
 
-![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+3. Überprüfen Sie, ob die Funktion ausgeführt wird, indem Sie sich die Nachverfolgungsinformationen in den Protokollen ansehen.
+
+    ![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
 Jetzt können Sie den Zeitplan der Funktion anpassen, sodass sie nicht mehr so häufig ausgeführt wird, z.B. nur noch stündlich. 
 

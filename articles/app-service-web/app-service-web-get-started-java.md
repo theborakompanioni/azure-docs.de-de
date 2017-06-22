@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: cephalin;robmcm
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 75e51ca45a899c6b6fa123346aa3c5860fd1600d
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 1249d7ac42bec02227d47500fe3aabb601a36f88
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="create-your-first-java-web-app-in-azure-in-five-minutes"></a>Erstellen Ihrer ersten Java-Web-App in Azure in fünf Minuten
@@ -30,7 +30,7 @@ Dieser Schnellstart hilft Ihnen bei der Bereitstellung Ihrer ersten Java-Web-App
 
 ![Navigieren zur Web-App](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Tutorial wird veranschaulicht, wie Sie die Eclipse-IDE für Java EE-Entwickler verwenden, um eine Java-Web-App zu erstellen und in Azure bereitzustellen. Wenn Sie Eclipse noch nicht installiert haben, können Sie die Anwendung kostenlos von „http://www.eclipse.org/“ herunterladen.
 
@@ -155,7 +155,7 @@ Klicken Sie nach Abschluss aller obigen Schritte auf **Deploy** (Bereitstellen),
 
 ![Bereitstellen der Web-App in Azure](./media/app-service-web-get-started-java/deploy-web-app-to-azure.png)
 
-Glückwunsch! Sie haben Ihre Web-App erfolgreich in Azure bereitgestellt! Sie können eine Vorschau der Web-App auf der Azure-Website anzeigen:
+Glückwunsch! Sie haben Ihre Web-App erfolgreich in Azure bereitgestellt! Sie können nun die Web-App auf der Azure-Website anzeigen:
 
 ![Navigieren zur Web-App](./media/app-service-web-get-started-java/browse-web-app-1.png)
 

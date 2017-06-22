@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 05/05/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f8279eb672e58c7718ffb8e00a89bc1fce31174f
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 84f9677daebe13f54a54802b1b16cc6487a0b845
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -344,18 +344,24 @@ Zur Bewältigung einer variablen, kontinuierlichen Auslastung wird in der Regel 
 
 ## <a name="pool-network-configuration"></a>Konfiguration von Poolnetzwerken
 
-Wenn Sie in Azure Batch einen Pool mit Computeknoten erstellen, können Sie mithilfe der APIs die ID eines [virtuellen Azure-Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) angeben, in dem die Computeknoten des Pools erstellt werden sollen.
+Wenn Sie einen Pool mit Computeknoten in Azure Batch erstellen, können Sie eine Subnetz-ID eines [virtuellen Azure-Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) festlegen, in dem die Computeknoten des Pools erstellt werden sollen.
 
 * Das VNet muss folgende Eigenschaften aufweisen:
 
    * Es muss sich in derselben Azure-**Region** wie das Azure Batch-Konto befinden.
    * Es muss sich im selben **Abonnement** wie das Azure Batch-Konto befinden.
 
-* Das VNet sollte über genügend freie **IP-Adressen** verfügen, um die `targetDedicated`-Eigenschaft des Pools zu ermöglichen. Wenn das Subnetz nicht über genügend freie IP-Adressen verfügt, belegt der Batch-Dienst teilweise die Computeknoten im Pool und gibt einen Anpassungsfehler zurück.
+* Welche Art von VNET unterstützt wird, hängt davon ab, wie Pools für das Batch-Konto zugewiesen werden:
+    - Wenn die Eigenschaft **poolAllocationMode** bei der Erstellung des Batch-Kontos auf „BatchService“ festgelegt ist, muss es sich bei dem angegebenen VNET um ein klassisches VNET handeln.
+    - Wenn die Eigenschaft **poolAllocationMode** bei der Erstellung des Batch-Kontos auf „UserSubscription“ festgelegt ist, kann es sich bei dem angegebenen VNET um ein klassisches VNET oder um ein Azure Resource Manager-VNET handeln. Pools müssen mit einer VM-Konfiguration erstellt werden, um ein VNET verwenden zu können. Pools mit einer Clouddienstkonfiguration werden nicht unterstützt.
+
+* Wenn die Eigenschaft **poolAllocationMode** bei der Erstellung des Batch-Kontos auf „BatchService“ festgelegt ist, müssen Sie dem Batch-Dienstprinzipal Zugriffsberechtigungen für das VNET erteilen. Der Batch-Dienstprinzipal („Microsoft Azure Batch“ oder „MicrosoftAzureBatch“) muss für das angegebene VNET über die Rolle [Mitwirkender für klassische virtuelle Computer](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/#classic-virtual-machine-contributor) der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verfügen. Falls die angegebene RBAC-Rolle nicht bereitgestellt wird, gibt der Batch-Dienst „400 – Ungültige Anforderung“ zurück.
+
+* Im angegebenen Subnetz müssen genügend freie **IP-Adressen** für die Gesamtanzahl von Zielknoten (Summe der Pooleigenschaften `targetDedicatedNodes` und `targetLowPriorityNodes`) zur Verfügung stehen. Wenn das Subnetz nicht über genügend freie IP-Adressen verfügt, belegt der Batch-Dienst teilweise die Computeknoten im Pool und gibt einen Anpassungsfehler zurück.
 
 * Das angegebene Subnetz muss die Kommunikation mit dem Batch-Dienst zulassen, um Aufgaben für die Computeknoten planen zu können. Falls die Kommunikation mit den Computeknoten durch eine dem VNET zugeordnete **Netzwerksicherheitsgruppe (NSG)** verhindert wird, legt der Batch-Dienst den Zustand der Computeknoten auf **Nicht verwendbar** fest.
 
-* Falls dem angegebenen VNET NSGs zugeordnet sind, muss die eingehende Kommunikation aktiviert sein. Für Linux- und Windows-Pools müssen die Ports 29876 und 29877 aktiviert sein. Sie können Port 22 oder 3389 für SSH in Linux-Pools bzw. für RDP in Windows-Pools optional aktivieren (oder selektiv filtern).
+* Falls dem angegebenen VNET Netzwerksicherheitsgruppen (NSGs) zugeordnet sind, müssen einige reservierte Systemports für die eingehende Kommunikation aktiviert werden. Aktivieren Sie für Pools, die mit einer VM-Konfiguration erstellt wurden, die Ports 29876 und 29877 sowie den Port 22 für Linux und den Port 3389 für Windows. Aktivieren Sie für Pools, die mit einer Clouddienstkonfiguration erstellt wurden, die Ports 10100, 20100 und 30100. Ermöglichen Sie außerdem ausgehende Verbindungen mit Azure Storage an Port 443.
 
 Zusätzliche Einstellungen für das VNET sind abhängig vom Poolzuordnungsmodus des Batch-Kontos.
 
@@ -415,16 +421,24 @@ Es kann vorkommen, dass Sie in Ihrer Batch-Lösung sowohl Task- als auch Anwendu
 ### <a name="task-failure-handling"></a>Behandeln von Taskfehlern
 Bei Taskfehlern wird zwischen folgenden Kategorien unterschieden:
 
-* **Planungsfehler**
+* **Fehler bei der Vorverarbeitung**
 
-    Wenn die Übertragung von Dateien, die für einen Task angegeben sind, aus irgendeinem Grund nicht erfolgreich durchgeführt werden kann, wird für den Task ein *Planungsfehler* festgelegt.
+    Falls ein Task nicht gestartet werden kann, wird für den Task ein Fehler bei der Vorverarbeitung festgelegt.  
 
-    Planungsfehler können auftreten, wenn die Ressourcendateien des Tasks verschoben wurden, das Speicherkonto nicht mehr zur Verfügung steht oder ein anderes Problem aufgetreten ist, das ein erfolgreiches Kopieren von Dateien auf den Knoten verhindert hat.
+    Fehler bei der Vorverarbeitung können auftreten, wenn die Ressourcendateien des Tasks verschoben wurden, das Speicherkonto nicht mehr zur Verfügung steht oder ein anderes Problem aufgetreten ist, das ein erfolgreiches Kopieren von Dateien auf den Knoten verhindert hat.
+
+* **Fehler beim Hochladen von Dateien**
+
+    Falls für einen Task angegebene Dateien nicht hochgeladen werden können, wird für den Task ein Fehler beim Hochladen von Dateien festgelegt.
+
+    Fehler beim Hochladen von Dateien können auftreten, wenn die für den Zugriff auf Azure Storage angegebene SAS ungültig ist oder keine Schreibberechtigungen umfasst, das Speicherkonto nicht mehr zur Verfügung steht oder ein anderes Problem aufgetreten ist, das ein erfolgreiches Kopieren von Dateien des Knotens verhindert hat.    
+
 * **Anwendungsfehler**
 
     Ein Fehler kann auch beim in der Befehlszeile des Tasks angegebenen Prozess auftreten. Der Prozess gilt als nicht erfolgreich, wenn der Exitcode, der vom durch den Task ausgeführten Prozess zurückgegeben wird, ungleich Null ist (siehe *Exitcodes für Tasks* im nächsten Abschnitt).
 
     Batch kann so konfiguriert werden, dass der Task im Falle eines Anwendungsfehlers automatisch mit einer bestimmten Häufigkeit wiederholt wird.
+
 * **Einschränkungsfehler**
 
     Mit der Einschränkung *maxWallClockTime*können Sie die maximale Ausführungsdauer für einen Auftrag oder Task angeben. Dies kann nützlich sein für das Beenden von Tasks, bei denen kein Fortschritt stattfindet.
@@ -435,6 +449,7 @@ Bei Taskfehlern wird zwischen folgenden Kategorien unterschieden:
 * `stderr` und `stdout`
 
     Während der Ausführung generiert eine Anwendung unter Umständen eine Diagnoseausgabe für die Problembehandlung. Wie bereits unter [Dateien und Verzeichnisse](#files-and-directories) erwähnt, schreibt der Batch-Dienst eine Standardausgabe und eine Standardfehlerausgabe in die Dateien `stdout.txt` und `stderr.txt` im Taskverzeichnis auf dem Computeknoten. Diese Dateien können Sie über das Azure-Portal oder über ein Batch SDK herunterladen. So können Sie diese und andere Dateien beispielsweise mithilfe von [ComputeNode.GetNodeFile][net_getfile_node] und [CloudTask.GetNodeFile][net_getfile_task] in der .NET-Bibliothek von Batch zu Problembehandlungszwecken abrufen.
+
 * **Exitcodes für Tasks**
 
     Wie bereits erwähnt, wird ein Task vom Batch-Dienst als nicht erfolgreich gekennzeichnet, wenn der vom Task ausgeführte Prozess einen Exitcode ungleich Null zurückgibt. Wenn ein Task einen Prozess ausführt, füllt Batch die Exitcode-Eigenschaft des Tasks mit dem *Rückgabecode des Prozesses*auf. Wichtig ist hierbei, dass der Exitcode eines Tasks **nicht** vom Batch-Dienst bestimmt wird. Der Exitcode eines Tasks wird vom Prozess selbst bestimmt oder von dem Betriebssystem, unter dem der Prozess ausgeführt wird.
@@ -445,7 +460,7 @@ Tasks werden gelegentlich nicht erfolgreich ausgeführt oder unterbrochen. Unter
 Außerdem können zeitweilig Probleme auftreten, die dazu führen, dass eine Aufgabe nicht mehr reagiert oder zu lange dauert. Sie können das maximale Ausführungsintervall für einen Task festlegen. Wenn das maximale Ausführungsintervall überschritten wird, unterbricht der Batch-Dienst die Taskanwendung.
 
 ### <a name="connecting-to-compute-nodes"></a>Herstellen einer Verbindung mit Computeknoten
-Sie können weitere Debug- und Problembehandlungsmaßnahmen durchführen, indem Sie sich per Remotezugriff an einem Computeknoten anmelden. Sie können das Azure-Portal verwenden, um eine RDP-Datei (Remotedesktopprotokoll) für Windows-Knoten herunterzuladen und Secure Shell (SSH)-Verbindungsinformationen für Linux-Knoten abzurufen. Hierfür können Sie auch die Batch-APIs verwenden – beispielsweise mit [Batch .NET][net_rdpfile] oder [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes).
+Sie können weitere Debug- und Problembehandlungsmaßnahmen durchführen, indem Sie sich per Remotezugriff an einem Computeknoten anmelden. Sie können das Azure-Portal verwenden, um eine RDP-Datei (Remotedesktopprotokoll) für Windows-Knoten herunterzuladen und Secure Shell (SSH)-Verbindungsinformationen für Linux-Knoten abzurufen. Hierfür können Sie auch die Batch-APIs verwenden – beispielsweise mit [Batch .NET][net_rdpfile] oder [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
 > Um über RDP oder SSH eine Verbindung mit einem Knoten herzustellen, müssen Sie zuerst einen Benutzer auf dem Knoten erstellen. Zu diesem Zweck können Sie das Azure-Portal verwenden, über die Batch REST-API [einem Knoten ein Benutzerkonto hinzufügen][rest_create_user], die Methode [ComputeNode.CreateComputeNodeUser][net_create_user] in Batch .NET aufrufen oder die Methode [add_user][py_add_user] im Batch Python-Modul aufrufen.

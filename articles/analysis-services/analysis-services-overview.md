@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/16/2017
+ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 89c19e9b64fc4e1fea68c717fd5f5e0e054ac10c
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: cc85ae1c6642e763e57327c151ec68845f7673f7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -55,11 +55,9 @@ Azure Analysis Services unterstützt tabellarische Modelle mit den Kompatibilit�
 ## <a name="data-sources"></a>Datenquellen
 Auf Servern in Azure bereitgestellte Datenmodelle unterstützen das Herstellen von Verbindungen mit lokalen Datenquellen in der Organisation oder mit Datenquellen in der Cloud. Kombinieren Sie Daten aus lokalen und Clouddatenquellen für eine hybride BI-Lösung.
 
-![Datenquellen](./media/analysis-services-overview/aas-overview-data-sources.png)
+Da sich der Server in der Cloud befindet, können Clouddatenquellen nahtlos verbunden werden. Beim Verbinden mit lokalen Datenquellen gewährleistet das [lokale Datengateway](analysis-services-gateway.md) schnelle, sichere Verbindungen mit dem Server in der Cloud.
 
-Da sich der Server in der Cloud befindet, können Clouddatenquellen nahtlos verbunden werden. Beim Verbinden mit lokalen Datenquellen gewährleistet das [lokale Datengateway](analysis-services-gateway.md) schnelle, sichere Verbindungen mit dem Analysis Services-Server in der Cloud.
-
-\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.
+Weitere Informationen zu den unterstützten lokalen Datenquellen finden Sie unter [Datenquellenverbindungen](analysis-services-datasource.md).
 
 
 ## <a name="explore-your-data-from-anywhere"></a>Datenanalysen von überall aus
