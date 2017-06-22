@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/08/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 63b6086b7bab5cb61ed6f4a229afd1ffa44cc31e
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 3011fd608ba83561c319e57c8a7b5a4f3c4c2284
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/18/2017
 
 Die [vorkonfigurierte Connected Factory-Lösung][lnk-preconfigured-solutions] der IoT Suite ist eine Komplettlösung für die Industrie, die:
 
-* eine Verbindung mit simulierten Industriegeräten mit OPC UA-Servern in simulierten Fertigungsstrecken im Werk und mit echten OPC UA-Servergeräten herstellt.
+* eine Verbindung mit simulierten Industriegeräten mit OPC UA-Servern in simulierten Fertigungsstrecken im Werk und mit echten OPC UA-Servergeräten herstellt. Weitere Informationen zu OPC UA finden Sie in den [FAQ][lnk-faq].
 * betriebliche KPIs und OEE dieser Geräte und Fertigungsstrecken anzeigt.
 * veranschaulicht, wie eine cloudbasierte Anwendung für die Interaktion mit OPC UA-Serversystemen verwendet werden kann.
 * das Herstellen einer Verbindung mit eigenen OPC UA-Servergeräten ermöglicht.
@@ -132,3 +132,4 @@ Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu di
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
+[lnk-faq]: iot-suite-faq.md

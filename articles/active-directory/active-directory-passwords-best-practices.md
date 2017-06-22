@@ -6,19 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+editor: gahug
 ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 05/25/2017
 ms.author: joflore
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 6cc1589f2ebad9267334f70926be369b32c8e075
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 5bd17fc68447b8387dfaad33fe2d0055596ec086
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -41,7 +43,7 @@ Die meisten Kunden führen die hier angegebenen Schritte aus, um für ein reibun
 
 ## <a name="email-based-rollout"></a>E-Mail-basierte Einführung
 
-Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisungen der einfachste Weg ist, um Benutzer über die Nutzung von SSPR zu informieren. Wir haben drei einfache E-Mails erstellt, die Sie beim Rollout als Vorlagen verwenden können:
+Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisungen der einfachste Weg ist, um Benutzer über die Nutzung von SSPR zu informieren. [Wir haben drei einfache E-Mails erstellt, die Sie beim Rollout als Vorlagen verwenden können:](https://onedrive.live.com/?authkey=%21AD5ZP%2D8RyJ2Cc6M&id=A0B59A91C740AB16%2125063&cid=A0B59A91C740AB16)
 
 * E-Mail-Vorlage **Coming Soon** (In Kürze verfügbar): Kann in den Wochen bzw. Tagen vor dem Rollout eingesetzt werden, um die Benutzer darüber zu informieren, dass bald eine Aufgabe erledigt werden muss.
 * E-Mail-Vorlage **Available Now** (Jetzt verfügbar): Kann am Tag der Einführung eingesetzt werden, um Benutzer zum Registrieren und Bestätigen ihrer Authentifizierungsdaten zu bewegen, damit sie SSPR bei Bedarf nutzen können.

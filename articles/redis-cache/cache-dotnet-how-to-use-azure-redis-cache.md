@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/11/2017
+ms.date: 05/30/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 1d208f931af4704528309780b45e170627f1753c
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: db851023c8620bec6583184326029d1a3e99ad88
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -37,7 +38,7 @@ Microsoft Azure Redis Cache ist in den folgenden Ebenen verfügbar:
 
 * **Basic** – Einzelner Knoten. Mehrere Größen bis zu 53 GB.
 * **Standard** – Zwei Knoten: Primär/Replikat. Mehrere Größen bis zu 53 GB. 99,9 % SLA
-* **Premium** – Zwei Knoten (Primär/Replikat) mit bis zu 10 Shards. Mehrere Größen von 6 GB bis zu 530 GB (für mehr wenden Sie sich an uns). Alle Funktionen der Standard-Ebene und weitere umfassen die Unterstützung für [Redis-Cluster](cache-how-to-premium-clustering.md), [Redis-Persistenz](cache-how-to-premium-persistence.md), und [Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9 % SLA
+* **Premium** – Zwei Knoten (Primär/Replikat) mit bis zu 10 Shards. Mehrere Größen von 6 GB bis 530 GB. Alle Funktionen der Standard-Ebene und weitere umfassen die Unterstützung für [Redis-Cluster](cache-how-to-premium-clustering.md), [Redis-Persistenz](cache-how-to-premium-persistence.md), und [Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9 % SLA
 
 Diese Ausführungen unterscheiden sich hinsichtlich der Features und des Preises. Weitere Informationen zu Preisen finden Sie unter [Cache – Preisübersicht][Cache Pricing Details].
 

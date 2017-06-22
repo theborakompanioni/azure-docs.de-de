@@ -1,5 +1,4 @@
 ---
-
 title: "Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation"
 description: "Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal."
 services: active-directory
@@ -16,10 +15,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 19cd81c1e6020523d1bea3ec76c957ce22f931ca
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0e8ae05b5f8644d4dfd0e6205224cabfb0919531
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -37,6 +36,17 @@ Die Architektur für die Berichterstellung in Azure Active Directory umfasst die
     - **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter „Benutzer mit Risikomarkierung“.
 
 In diesem Thema erhalten Sie einen Überblick über die Anmeldeaktivitäten.
+
+## <a name="pre-requisite"></a>Voraussetzung
+
+### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+* Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
+* Globale Administratoren
+* Jeder Benutzer (Nicht-Administratoren) kann auf seine eigenen Anmeldungen zugreifen. 
+
+### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
+* Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Anmeldeaktivitäten angezeigt werden kann.
+
 
 ## <a name="signs-in-activities"></a>Anmeldeaktivitäten
 

@@ -15,25 +15,28 @@ ms.workload: NA
 ms.date: 03/23/2017
 ms.author: subramar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 00c1f10f7df865344233143ce9cdf546e64acca0
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: e2d21b28c482427c60f708171336e6901b50e544
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Unterschiede zwischen Service Fabric unter Linux (Vorschau) und Windows (allgemein verfügbar)
 
-Da es sich bei Service Fabric unter Linux um eine Vorschauversion handelt, werden einige Features zwar unter Windows unterstützt, aber noch nicht unter Linux. Beide Featuresätze werden vollständig unterstützt, wenn Service Fabric unter Linux den Status der allgemeinen Verfügbarkeit erreicht.
+Da es sich bei Service Fabric unter Linux um eine Vorschauversion handelt, werden einige Features zwar unter Windows unterstützt, aber noch nicht unter Linux. Beide Featuresätze werden vollständig unterstützt, wenn Service Fabric unter Linux den Status der allgemeinen Verfügbarkeit erreicht. Bei künftigen Versionen nähern sich die Features immer weiter an. Zwischen den aktuellen verfügbaren Versionen (d.h. zwischen Version 5.6 unter Windows und Version 5.5 unter Linux) bestehen die folgenden Unterschiede: 
 
-* Reliable Collections – also zuverlässige Sammlungen – werden unter Linux nicht unterstützt. (Dies gilt auch für zustandsbehaftete Reliable Services.)
-* Reverseproxy ist unter Linux nicht verfügbar.
-* Unter Linux ist kein eigenständiges Installationsprogramm verfügbar.
-* Die XML-Schemaüberprüfung für Manifestdateien wird unter Linux nicht durchgeführt. 
-* Die Konsolenumleitung wird unter Linux nicht unterstützt. 
-* Fault Analysis Service (FAS) ist unter Linux nicht verfügbar.
-* Azure Active Directory-Unterstützung ist unter Linux nicht verfügbar.
-* Einige CLI-Entsprechungen von PowerShell-Befehlen sind nicht verfügbar.
+* Reliable Collections und zustandsbehaftete Reliable Services 
+* ReverseProxy 
+* Eigenständiges Installationsprogramm 
+* XML-Schemaüberprüfung für Manifestdateien 
+* Konsolenumleitung 
+* Fault Analysis Service (FAS)
+* Docker Compose sowie Volume- und Protokollierungstreiber für Container 
+* Ressourcenkontrolle für Container und Dienste 
+* DNS-Dienst
+* Unterstützung für Azure Active Directory
+* CLI-Entsprechungen von bestimmten PowerShell-Befehlen 
 * Für einen Linux-Cluster kann nur eine Teilmenge von PowerShell-Befehlen ausgeführt werden (im nächsten Abschnitt beschrieben).
 
 >[!NOTE]

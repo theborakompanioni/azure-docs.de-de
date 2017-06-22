@@ -14,15 +14,14 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
     Der Hotfixeintrag wird angezeigt (etwa das **kumulative Softwarepaket-Update 4.0 für die StorSimple 8000-Serie**).
    
     ![Katalog durchsuchen](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
-4. Klicken Sie auf **Hinzufügen**. Das Update wird dem Warenkorb hinzugefügt.
-5. Suchen Sie in der obigen Tabelle nach weiteren Hotfixes (**4011841**), und fügen Sie sie jeweils dem Warenkorb hinzu.
-6. Klicken Sie auf **Warenkorb anzeigen**.
-7. Klicken Sie auf **Download**. Geben Sie einen lokalen Speicherort an, oder klicken Sie auf **Durchsuchen** , und navigieren Sie zum gewünschten lokalen Speicherort für den Download. Die Updates werden heruntergeladen und am angegebenen Speicherort in einem nach dem Update benannten Unterordner gespeichert. Der Ordner kann auch in eine Netzwerkfreigabe kopiert werden, auf die vom Gerät aus zugegriffen werden kann.
+
+4. Klicken Sie auf **Download**. Geben Sie einen lokalen Speicherort an, oder klicken Sie auf **Durchsuchen** , und navigieren Sie zum gewünschten lokalen Speicherort für den Download. Klicken Sie auf die Dateien, um sie in den Ordner am angegebenen Speicherort herunterzuladen. Der Ordner kann auch in eine Netzwerkfreigabe kopiert werden, auf die vom Gerät aus zugegriffen werden kann.
+5. Suchen Sie in der Tabelle oben nach zusätzlichen Hotfixes (**4011841**), und laden Sie die entsprechenden Dateien in die angegebenen Ordner herunter (wie in der obigen Tabelle aufgeführt).
 
 > [!NOTE]
 > Der Zugriff auf die Hotfixes muss über beide Controller möglich sein, um die Erkennung von Fehlermeldungen des Peercontrollers zu ermöglichen.
 >
-> Die Hotfixes müssen in drei separate Ordner kopiert werden: Das Gerätesoftwareupdate kann beispielsweise in den Ordner _FirstOrderUpdate_ kopiert werden. Alle anderen unterbrechungsfreien Updates können in den Ordner _SecondOrderUpdate_ kopiert werden, und Wartungsmodusupdates können in den Ordner _ThirdOrderUpdate_ kopiert werden.
+> Die Hotfixes müssen in drei separate Ordner kopiert werden: Das Gerätesoftware- oder CIS- bzw. MDS-Agent-Update kann beispielsweise in den Ordner _FirstOrderUpdate_ kopiert werden. Alle anderen unterbrechungsfreien Updates können in den Ordner _SecondOrderUpdate_ kopiert werden, und Wartungsmodusupdates können in den Ordner _ThirdOrderUpdate_ kopiert werden.
 
 #### <a name="to-install-and-verify-regular-mode-hotfixes"></a>So installieren und überprüfen Sie Hotfixes für den normalen Modus
 
@@ -79,10 +78,10 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     Controller1Events   :
     ```
 
-    > [!NOTE] 
+    > [!NOTE]
     > In manchen Fällen gibt das Cmdlet `False` zurück, wenn das Update noch ausgeführt wird. Um sicherzustellen, dass das Update abgeschlossen ist, warten Sie einige Minuten, führen Sie diesen Befehl erneut aus, und überprüfen Sie, ob `RunInProgress` gleich `False` ist. Wenn dies der Fall ist, wurde das Hotfix abgeschlossen.
 
-1. Überprüfen Sie nach dem Abschließen des Softwareupdates die Versionen der Systemsoftware. Geben Sie Folgendes ein:
+6. Überprüfen Sie nach dem Abschließen des Softwareupdates die Versionen der Systemsoftware. Geben Sie Folgendes ein:
    
     `Get-HcsSystem`
    
@@ -94,9 +93,12 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     Wenn sich die Versionsnummern nach dem Anwenden des Updates nicht ändern, konnte der Hotfix nicht angewendet werden. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
      
     > [!IMPORTANT]
-    > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie die verbleibenden Updates anwenden können.
+    > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie das nächste Update anwenden können.
      
-7. Wiederholen Sie die Schritte 3 bis 5, um die zweitrangigen Updates zu installieren. **Bei zweitrangigen Updates können Sie mehrere Updates installieren, indem Sie das `Start-HcsHotfix cmdlet` ausführen und auf den Ordner mit den zweitrangigen Updates verweisen. Das Cmdlet führt alle Updates aus, die in dem Ordner verfügbar sind.** Falls ein Update bereits installiert ist, wird dies von der Aktualisierungslogik erkannt, und das entsprechende Update wird nicht angewendet. Nachdem alle Hotfixes installiert wurden, verwenden Sie das Cmdlet `Get-HcsSystem`. Die Versionen sollten wie folgt aussehen:
+7. Wiederholen Sie die Schritte 3 bis 5, um den in den Ordner _FirstOrderUpdate_ heruntergeladenen CIS/MDS-Agent zu installieren. 
+8. Wiederholen Sie die Schritte 3 bis 5, um die zweitrangigen Updates zu installieren. **Bei zweitrangigen Updates können Sie mehrere Updates installieren, indem Sie das `Start-HcsHotfix cmdlet` ausführen und auf den Ordner mit den zweitrangigen Updates verweisen. Das Cmdlet führt alle Updates aus, die in dem Ordner verfügbar sind.** Falls ein Update bereits installiert ist, wird dies von der Aktualisierungslogik erkannt, und das entsprechende Update wird nicht angewendet. 
+
+Nachdem alle Hotfixes installiert wurden, verwenden Sie das Cmdlet `Get-HcsSystem`. Die Versionen sollten wie folgt aussehen:
 
    * `CisAgentVersion:  1.0.9441.0`
    * `MdsAgentVersion: 35.2.2.0`
