@@ -72,9 +72,10 @@
 ### [Verwalten eines horizontal hochskalierten Prozessservers](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
 ### [Verwalten von vCenter-Servern](site-recovery-vmware-to-azure-manage-vCenter.md)
 ### [Entfernen von Servern und Deaktivieren des Schutzes](site-recovery-manage-registration-and-protection.md)
-## Überwachen und Behandeln von Problemen
+## Problembehandlung
+### [Erfassen von Protokollen](site-recovery-monitoring-and-troubleshooting.md)
 ### [Probleme bei der Replikation virtueller Azure-Computer](site-recovery-azure-to-azure-troubleshoot-errors.md)
-### [Probleme bei der Replikation zwischen einem lokalen Standort und Azure](site-recovery-monitoring-and-troubleshooting.md)
+### [Probleme bei der Replikation zwischen einem lokalen Standort und Azure](site-recovery-vmware-to-azure-protection-troubleshoot.md)
 
 # Referenz
 ## [PowerShell](/powershell/module/azurerm.siterecovery)

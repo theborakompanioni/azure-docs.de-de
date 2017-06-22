@@ -30,31 +30,34 @@
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-## Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
-### [PowerShell](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 ## Konfigurieren einer VNet-zu-VNet-Verbindung zwischen Bereitstellungsmodellen
 ### [Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
-## [Konfigurieren von parallel bestehenden Site-to-Site- und ExpressRoute-Verbindungen](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
+## Konfigurieren von parallel bestehenden Site-to-Site- und ExpressRoute-Verbindungen
+### [PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## Mehrere Site-to-Site-Verbindungen konfigurieren
 ### [Azure-Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [PowerShell (klassisch)](vpn-gateway-multi-site.md)
 ## Verbinden mehrerer richtlinienbasierter VPN-Geräte
 ### [PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
-## [Konfigurieren von BGP für ein VPN-Gateway](vpn-gateway-bgp-resource-manager-ps.md)
+## Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
+### [PowerShell](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+## Konfigurieren hochverfügbarer Aktiv/Aktiv-Verbindungen
+### [PowerShell](vpn-gateway-activeactive-rm-powershell.md)
+## Konfigurieren von BGP für ein VPN-Gateway
+### [PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
 ## Konfigurieren der Tunnelerzwingung
 ### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [PowerShell (klassisch)](vpn-gateway-about-forced-tunneling.md)
-## [Konfigurieren hochverfügbarer Aktiv/Aktiv-Verbindungen](vpn-gateway-activeactive-rm-powershell.md)
-## Verwalten von Azure-VPN-Gateways
-### [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
-### [Löschen von Gateways mit dem Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-### [Löschen von Gateways mit PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-### [Löschen von Gateways mit PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## Ändern der Einstellungen des lokalen Netzwerkgateways
 ### [PowerShell](vpn-gateway-modify-local-network-gateway.md)
-### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](vpn-gateway-modify-local-network-gateway-cli.md)
+### [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [Überprüfen einer VPN Gateway-Verbindung](vpn-gateway-verify-connection-resource-manager.md)
+## [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md)
+## Löschen eines VPN-Gateways
+### [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## Problembehandlung
 ### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
