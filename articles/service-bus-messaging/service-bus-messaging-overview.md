@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 05/25/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: d987aa22379ede44da1b791f034d713a49ad486a
-ms.openlocfilehash: 16afaa32ebbf2723a6dc5eea8e668b7fc971b43e
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 3a4382979dd6e18c0e94b4a989bb8289882eeb89
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -31,7 +32,7 @@ Der Absender der Nachricht kann auch eine Vielzahl von Übermittlungsmerkmalen a
 Service Bus unterstützt zwei unterschiedliche Muster für das Messaging: *Azure Relay* und *Service Bus-Messaging*.
 
 ## <a name="azure-relay"></a>Azure Relay
-Die [WCF Relay-Komponente](../service-bus-relay/service-bus-relay-overview.md) von Service Bus ist ein zentralisierter Dienst (aber mit starkem Lastenausgleich), der viele verschiedene Transportprotokolle und Webdienststandards unterstützt. Dies schließt SOAP, WS-* und sogar REST ein. Der [Relaydienst](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) stellt unterschiedliche Relayverbindungsoptionen bereit und kann bei der Aushandlung von direkten Peer-to-Peer-Verbindungen behilflich sein, sofern diese möglich sind. Service Bus ist für .NET-Entwickler optimiert, die die Windows Communication Foundation (WCF) verwenden, und zwar sowohl im Hinblick auf die Leistung als auch auf die Nutzbarkeit. Der vollständige Zugriff auf den dazugehörigen Relaydienst wird über SOAP- und REST-Schnittstellen bereitgestellt. So kann jede SOAP- oder REST-Programmierumgebung für die Integration in Service Bus integriert werden.
+Die [WCF Relay-Komponente](../service-bus-relay/relay-what-is-it.md) von Azure Relay ist ein zentralisierter Dienst (aber mit starkem Lastenausgleich), der viele verschiedene Transportprotokolle und Webdienststandards unterstützt. Dies schließt SOAP, WS-* und sogar REST ein. Der [Relaydienst](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) stellt unterschiedliche Relayverbindungsoptionen bereit und kann bei der Aushandlung von direkten Peer-to-Peer-Verbindungen behilflich sein, sofern diese möglich sind. Service Bus ist für .NET-Entwickler optimiert, die die Windows Communication Foundation (WCF) verwenden, und zwar sowohl im Hinblick auf die Leistung als auch auf die Nutzbarkeit. Der vollständige Zugriff auf den dazugehörigen Relaydienst wird über SOAP- und REST-Schnittstellen bereitgestellt. So kann jede SOAP- oder REST-Programmierumgebung für die Integration in Service Bus integriert werden.
 
 Der Relaydienst unterstützt herkömmliches unidirektionales Messaging, Anforderungs-/Antwortmessaging und Peer-to-Peer-Messaging. Er unterstützt außerdem die Ereignisverteilung im Internetumfang, um Veröffentlichen-/Abonnieren-Szenarios und bidirektionale Socketkommunikation für erhöhte Punkt-zu-Punkt-Effizienz zu ermöglichen. Im Relaymessaging stellt ein lokaler Dienst eine Verbindung zu dem Relaydienst über einen ausgehenden Port her und erstellt einen bidirektionalen Socket für die mit einer bestimmten Rendezvous-Adresse gekoppelte Kommunikation. Der Client kann dann mit dem lokalen Dienst durch das Senden von Nachrichten an den Relaydienst unter Verwendung der Rendezvousadresse kommunizieren. Der Relaydienst leitet dann Nachrichten an den lokalen Dienst über den bidirektionalen, bereits vorhandenen Socket weiter. Der Client benötigt keine direkte Verbindung zum lokalen Dienst und muss auch nicht wissen, wo der Dienst angesiedelt ist, und für den lokalen Dienst sind keine geöffneten eingehenden Ports in der Firewall notwendig.
 
@@ -47,7 +48,7 @@ Die Hauptkomponenten der Brokermessaging-Infrastruktur von Service Bus sind Wart
 Wie bei der WCF Relay-Infrastruktur wird auch das Brokermessaging für WCF- und .NET Framework-Programmierer und über REST bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen:
+Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen.
 
 * [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)

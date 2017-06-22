@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ff4bf9c9e3bfbd0e51cdb91be85dec15db6cd758
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 8c51af189e8086a509d44546882e1b26605dddae
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -107,13 +108,13 @@ Mit einer Netzwerksicherheitsgruppe (NSG) wird eingehender und ausgehender Daten
 6. Klicken Sie auf **OK**.
 
 
-## <a name="view-the-ngix-welcome-page"></a>Anzeigen der NGINX-Willkommensseite
+## <a name="view-the-nginx-welcome-page"></a>Anzeigen der NGINX-Willkommensseite
 
-Nachdem NGINX installiert und Port 80 für Ihre VM geöffnet wurde, ist der Zugriff auf den Webserver aus dem Internet möglich. Öffnen Sie einen Webbrowser, und geben Sie die öffentliche IP-Adresse der VM ein. Sie finden die öffentliche IP-Adresse im Azure-Portal auf dem Blatt der VM.
+Nachdem NGINX installiert und Port 80 für Ihre VM geöffnet wurde, ist der Zugriff auf den Webserver aus dem Internet möglich. Öffnen Sie einen Webbrowser, und geben Sie die öffentliche IP-Adresse der VM ein. Sie finden die öffentliche IP-Adresse im Azure-Portal auf dem Blatt des virtuellen Computers.
 
 ![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png) 
 
-## <a name="delete-virtual-machine"></a>Löschen des virtuellen Computers
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Ressourcengruppe, VM und alle zugehörigen Ressourcen nicht mehr benötigt werden, löschen Sie sie. Wählen Sie hierzu die Ressourcengruppe auf dem Blatt für virtuelle Computer aus, und klicken Sie auf **Löschen**.
 

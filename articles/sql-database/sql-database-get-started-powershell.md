@@ -9,17 +9,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: quick start create
+ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9a8cf3ad9c252b6a1ace1e7f3cf191428b228d80
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d1acc548dca4c89572eece8dbdae0eae4853a97c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -27,9 +28,9 @@ ms.lasthandoff: 04/27/2017
 
 PowerShell dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Verwendung von PowerShell zum Bereitstellen einer Azure SQL-Datenbank in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) auf einem [logischen SQL-Datenbankserver](sql-database-features.md) ausführlich beschrieben.
 
-Für dieses Tutorial muss die aktuelle Version von [Azure PowerShell](/powershell/azure/overview) installiert sein. 
-
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 4.0 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -92,14 +93,15 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
-## <a name="create-a-blank-database"></a>Leere Datenbank erstellen
+## <a name="create-a-database-in-the-server-with-sample-data"></a>Erstellen einer Datenbank auf dem Server mit Beispieldaten
 
-Erstellen Sie auf dem Server mit dem Befehl [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) eine leere SQL-­Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt. Ersetzen Sie ggf. diesen vordefinierten Wert.
+Erstellen Sie auf dem Server mit dem Befehl [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Ersetzen Sie diese vordefinierten Werte wie gewünscht (andere Schnellstarts in dieser Sammlung bauen auf den Werten dieses Schnellstarts auf).
 
 ```powershell
 New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `
     -ServerName $servername `
     -DatabaseName $databasename `
+    -SampleName "AdventureWorksLT" `
     -RequestedServiceObjectiveName "S0"
 ```
 

@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: b8d2b49a416883376302c9b3cc5924877b404a95
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Editionsübersicht
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk Services bietet mehrere Editionen. Nutzen Sie die Informationen in diesem Artikel, um zu ermitteln, welche Edition sich für Ihr Szenario und Ihre geschäftlichen Anforderungen am besten eignet.
 
 ## <a name="compare-the-editions"></a>Vergleich der Editionen
@@ -70,7 +75,7 @@ In der folgenden Tabelle sind die Unterschiede aufgeführt:
 <td>1 Premium-Einheit</td>
 </tr>
 <tr>
-<td><strong>Skalierung</strong></td>
+<td><strong>Skalieren</strong></td>
 <td>Keine Skalierung</td>
 <td>Keine Skalierung</td>
 <td>Ja, in Schritten von jeweils 1 Basic-Einheit</td>
@@ -120,7 +125,7 @@ Einschließlich TPM-Vereinbarungen</td>
 <td>500</td>
 </tr>
 <tr>
-<td><strong>BizTalk-Adapterdienstverbindungen zu lokalen Branchensystemen</strong></td>
+<td><strong>BizTalk Adapter Service-Verbindungen mit lokalen Branchensystemen</strong></td>
 <td>Nicht enthalten</td>
 <td>1 Verbindung</td>
 <td>2 Verbindungen</td>
@@ -144,7 +149,7 @@ Einschließlich TPM-Vereinbarungen</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Enthalten</td>
+<td>Included</td>
 </tr>
 <tr>
 <td><strong>Hohe Verfügbarkeit</strong>
@@ -155,7 +160,7 @@ Informationen zur Vereinbarung zum Servicelevel (SLA) finden Sie unter <a HREF="
 <td>Nicht enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Enthalten</td>
+<td>Included</td>
 </tr>
 <tr>
 <td><strong>Sichern und Wiederherstellen</strong></td>
@@ -163,15 +168,15 @@ Informationen zur Vereinbarung zum Servicelevel (SLA) finden Sie unter <a HREF="
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Enthalten</td>
+<td>Included</td>
 </tr>
 <tr>
-<td><strong>Tracking</strong></td>
+<td><strong>Nachverfolgung</strong></td>
 <td>Nicht enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Enthalten</td>
+<td>Included</td>
 </tr>
 <tr>
 <td><strong>Archivierung</strong><br/><br/>
@@ -180,7 +185,7 @@ Einschließlich Empfangsnachweis und Herunterladen nachverfolgter Nachrichten</t
 <td>Enthalten</td>
 <td>Nicht enthalten</td>
 <td>Nicht enthalten</td>
-<td>Enthalten</td>
+<td>Included</td>
 </tr>
 <tr>
 <td><strong>Verwendung von benutzerdefiniertem Code</strong></td>
@@ -188,7 +193,7 @@ Einschließlich Empfangsnachweis und Herunterladen nachverfolgter Nachrichten</t
 <td>Enthalten</td>
 <td>Enthalten</td>
 <td>Enthalten</td>
-<td>Enthalten</td>
+<td>Included</td>
 </tr>
 <tr>
 <td><strong>Verwendung von Transformationen, einschließlich benutzerdefiniertem XSLT</strong></td>
@@ -251,10 +256,5 @@ Um Azure BizTalk Services im Azure-Portal zu erstellen, wechseln Sie zu [BizTalk
 * [BizTalk Services: Drosselung](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Name und Schlüssel des Ausstellers](biztalk-issuer-name-issuer-key.md)<br/>
 * [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

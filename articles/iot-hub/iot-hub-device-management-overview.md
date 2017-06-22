@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: briz
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 352c42ddeef5537f9b912ddfe6a72b6b5342835b
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 7ae476dbaf51ae90cc3c5948b0ec8901d7a536da
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -64,7 +65,7 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
     *Weitere nützliche Informationen*: [Verwenden von direkten Methoden][lnk-c2d-methods], [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Planen und Übermitteln von Aufträgen][lnk-jobs], [Planen von Aufträgen auf mehreren Geräten][lnk-jobs-devguide]
 * **Überwachung:** Überwachen Sie die allgemeine Geräteintegrität und den Status laufender Vorgänge, und weisen Sie Bediener auf Probleme hin, die ggf. ihre Aufmerksamkeit erfordern.  Wenden Sie den Gerätezwilling an, um es Geräten zu ermöglichen, Bedingungen und den Status von Updatevorgängen in Echtzeit zu melden. Erstellen Sie leistungsfähige Dashboardberichte, die mithilfe von Abfragen für den Gerätezwilling über neueste Probleme informieren.
   
-    *Weitere nützliche Informationen*: [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [IoT Hub-Abfragesprache für Gerätezwillinge und Aufträge][lnk-query-language]
+    *Weitere nützliche Informationen:* [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query-language].
 * **Ausmusterung:** Geräte werden nach einem Fehler oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb gesetzt.  Verwenden Sie zur Verwaltung von Geräteinformationen den Gerätezwilling, falls das physische Gerät ausgetauscht wird (oder das Archiv, falls das Gerät ausgemustert wird). Verwenden Sie die IoT Hub-Identitätsregistrierung zum sicheren Sperren von Geräteidentitäten und Anmeldeinformationen.
   
     *Weitere nützliche Informationen*: [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Verwalten von Geräteidentitäten][lnk-identity-registry]

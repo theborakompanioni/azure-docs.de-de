@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 299a6fb23cd0fa725324bbdbdc669ff125a99d1b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Konfigurieren von BizTalk Services im Azure-Portal
 
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
+
 > [!TIP]
 > Für die Anmeldung beim Azure-Portal benötigen Sie ein Azure-Konto und ein Azure-Abonnement. Wenn Sie noch kein Konto haben, können Sie in wenigen Minuten ein kostenloses Testkonto erstellen. Siehe [Kostenlose Azure-Testversion](http://go.microsoft.com/fwlink/p/?LinkID=239738).
-> 
-> 
+
 
 ## <a name="create-a-biztalk-service"></a>Erstellen eines BizTalk Service
 Je nach gewählter Edition stehen unter Umständen nicht alle BizTalk Service-Einstellungen zur Verfügung.
@@ -33,7 +37,7 @@ Je nach gewählter Edition stehen unter Umständen nicht alle BizTalk Service-Ei
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885)an.
 2. Wählen Sie im unteren Navigationsbereich **NEU** aus:  
    ![Schaltfläche "Neu" auswählen][NEWButton]
-3. Wählen Sie **APP SERVICES** > **BIZTALK SERVICE** > ** BENUTZERDEFINIERT ERSTELLEN**:  
+3. Wählen Sie **APP SERVICES** > **BIZTALK SERVICE** >  **BENUTZERDEFINIERT ERSTELLEN**:  
    !["BizTalk Service" und "Benutzerdefiniert erstellen" auswählen][NewBizTalkService]
 4. Geben Sie die Einstellungen für den BizTalk Service ein:
    
@@ -65,10 +69,8 @@ Je nach gewählter Edition stehen unter Umständen nicht alle BizTalk Service-Ei
     </td>
     </tr>
     </table>
-   Wählen Sie den Pfeil für "Weiter" aus.
-5. Geben Sie die Speicher- und Datenbankeinstellungen ein:
-   
-    <table border="1">
+Wählen Sie den Pfeil für "Weiter" aus.
+5. Geben Sie die Speicher- und Datenbankeinstellungen ein:  <table border="1">
     <tr>
     <td><strong>Speicherkonto für die Überwachung/Archivierung</strong></td>
     <td>Wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. <br/><br/>Wenn Sie ein neues Speicherkonto erstellen, geben Sie den <strong>Speicherkontonamen</strong> ein.</td>
@@ -78,21 +80,19 @@ Je nach gewählter Edition stehen unter Umständen nicht alle BizTalk Service-Ei
     <td>Sie können eine vorhandene Azure SQL-Datenbank verwenden, wenn sie nicht bereits von einem anderen BizTalk Service genutzt wird. Sie benötigen den Anmeldenamen und das Kennwort, der bzw. das beim Erstellen des Azure SQL-Datenbankservers eingegeben wurde.<br/><br/><strong>TIPP</strong> Erstellen Sie die Nachverfolgungsdatenbank und das Speicherkonto für die Überwachung/Archivierung in derselben Region wie den BizTalk-Dienst.</td>
     </tr>
     </table>
-   Wählen Sie den Pfeil für "Weiter" aus.
-6. Geben Sie die Datenbankeinstellungen ein:
-   
-    <table border="1">
+Wählen Sie den Pfeil für "Weiter" aus.
+6. Geben Sie die Datenbankeinstellungen ein:  <table border="1">
     <tr>
     <td><strong>Name</strong></td>
     <td>Verfügbar, wenn im vorherigen Bildschirm <strong>Eine neue SQL-Datenbankinstanz erstellen</strong> ausgewählt wurde.
     <br/><br/>
-    Geben Sie den Namen der SQL-Datenbank ein, die vom BizTalk-Dienst verwendet werden soll.</td>
+Geben Sie den Namen der SQL-Datenbank ein, die vom BizTalk-Dienst verwendet werden soll.</td>
     </tr>
     <tr>
     <td><strong>Server</strong></td>
     <td>Verfügbar, wenn im vorherigen Bildschirm <strong>Eine neue SQL-Datenbankinstanz erstellen</strong> ausgewählt wurde.
     <br/><br/>
-    Wählen Sie einen vorhandenen SQL-Datenbankserver aus, oder erstellen Sie einen neuen.</td>
+Wählen Sie einen vorhandenen SQL-Datenbankserver aus, oder erstellen Sie einen neuen.</td>
     </tr>
     <tr>
     <td><strong>Serveranmeldename</strong></td>
@@ -120,7 +120,7 @@ Abhängig vom Status des BizTalk Service können einige Vorgänge nicht abgeschl
 * [Hinzufügen eines produktionsreifen Zertifikats](#AddCert)
 * [Abrufen des Access Control-Namespace](#ACS)
 
-#### <a name="a-nameinstallcertainstall-the-certificate-on-a-local-computer"></a><a name="InstallCert"></a>Installieren des Zertifikats auf einem lokalen Computer
+#### <a name="InstallCert"></a>Installieren des Zertifikats auf einem lokalen Computer
 Im Rahmen der BizTalk Service-Bereitstellung wird ein selbstsigniertes Zertifikat erstellt und Ihrem BizTalk Service-Abonnement zugewiesen. Sie müssen dieses Zertifikat herunterladen und auf den Computern installieren, von denen aus Sie entweder BizTalk Service-Anwendungen bereitstellen oder Nachrichten an einen BizTalk Service-Endpunkt senden.
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885)an.
@@ -130,13 +130,13 @@ Im Rahmen der BizTalk Service-Bereitstellung wird ein selbstsigniertes Zertifika
    ![SSL-Zertifikat ändern][QuickGlance]
 5. Doppelklicken Sie auf das Zertifikat, und durchlaufen Sie den Assistenten zum Installieren des Zertifikats. Stellen Sie sicher, dass das Zertifikat im Speicher für **vertrauenswürdige Stammzertifizierungsstellen** installiert wird.
 
-#### <a name="a-nameaddcertaadd-a-production-ready-certificate"></a><a name="AddCert"></a>Hinzufügen eines produktionsreifen Zertifikats
+#### <a name="AddCert"></a>Hinzufügen eines produktionsreifen Zertifikats
 Das selbstsignierte Zertifikat, das bei der Erstellung von BizTalk Services automatisch erstellt wird, ist nur für den Einsatz in Entwicklungsumgebungen gedacht. Für Produktionsszenarien muss es durch ein produktionsreifes Zertifikat ersetzt werden.
 
 1. Klicken Sie auf der Registerkarte **Dashboard** auf **SSL-Zertifikat aktualisieren**.
 2. Navigieren Sie zu Ihrem privaten SSL-Zertifikat (*Zertifikatname*.pfx), das den Namen Ihres BizTalk-Diensts enthält, geben Sie das Kennwort ein, und klicken Sie auf das Häkchen.
 
-#### <a name="a-nameacsaget-the-access-control-namespace"></a><a name="ACS"></a>Abrufen des Access Control-Namespace
+#### <a name="ACS"></a>Abrufen des Access Control-Namespace
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885)an.
 2. Wählen Sie im linken Navigationsbereich **BIZTALK SERVICES** und anschließend Ihren BizTalk-Dienst aus.
 3. Klicken Sie in der Taskleiste auf **Verbindungsinformationen**:  
@@ -171,7 +171,7 @@ Diese Anforderungen gelten nicht für die Free Edition.
 <td>Azure-Abonnement</td>
 <td>Das Abonnement bestimmt, wer sich beim Azure-Portal anmelden kann. Der Kontoinhaber erstellt das Abonnement unter <a HREF="https://account.windowsazure.com/Subscriptions">Azure-Abonnements</a>.
 <br/><br/>
-Das Azure-Konto kann über mehrere Abonnements verfügen und von jeder berechtigten Person verwaltet werden. Beispielsweise kann der Azure-Kontoinhaber ein Abonnement namens <em>BizTalkServiceSubscription</em> erstellen und den BizTalk-Administratoren in Ihrem Unternehmen (z.B. ContosoBTSAdmins@live.com)) Zugriff auf dieses Abonnement gewähren. In diesem Szenario melden sich die BizTalk-Administratoren beim Azure-Portal an und haben uneingeschränkte Administratorrechte für alle gehosteten Dienste des Abonnements, einschließlich Azure BizTalk Services. Die BizTalk-Administratoren sind nicht die Azure-Kontoinhaber und haben daher keinen Zugriff auf Abrechnungsinformationen.
+Das Azure-Konto kann über mehrere Abonnements verfügen und von jeder berechtigten Person verwaltet werden. Beispielsweise kann der Azure-Kontoinhaber ein Abonnement namens <em>BizTalkServiceSubscription</em> erstellen und den BizTalk-Administratoren in Ihrem Unternehmen (z.B. ContosoBTSAdmins@live.com) Zugriff auf dieses Abonnement gewähren. In diesem Szenario melden sich die BizTalk-Administratoren beim Azure-Portal an und haben uneingeschränkte Administratorrechte für alle gehosteten Dienste des Abonnements, einschließlich Azure BizTalk Services. Die BizTalk-Administratoren sind nicht die Azure-Kontoinhaber und haben daher keinen Zugriff auf Abrechnungsinformationen.
 <br/><br/>Weitere Informationen finden Sie unter 
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Verwalten von Abonnements und Speicherkonten im Azure-Portal</a>.
 </td>
@@ -271,9 +271,4 @@ Nachdem Sie jetzt einen BizTalk Service erstellt haben, machen Sie sich noch mit
 [QuickGlance]: ./media/biztalk-provision-services/WABS_QuickGlance.png
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -16,10 +16,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 4065682658bdd99066266b8b4e5e4c4605ff3db9
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d8c49272789e7d33c6f0684875765a1ecea5a2ff
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -38,6 +38,10 @@ Die Architektur für die Berichterstellung in Azure AD umfasst die folgenden Kom
 
 In diesem Thema erhalten Sie einen Überblick über die Überwachungsaktivitäten.
  
+## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+* Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
+* Globale Administratoren
+* Einzelne Benutzer (Nicht-Administratoren) können eigene Aktivitäten anzeigen.
 
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
@@ -102,10 +106,11 @@ Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filterop
 - Core directory (Kernverzeichnis)
 - Self-service password management (Self-Service-Kennwortverwaltung)
 - Self-Service-Gruppenverwaltung
-- Kontobereitstellung
-- Automated password rollover (Automatisiertes Kennwortrollover)
-- Invited users (Eingeladene Benutzer)
+- Kontobereitstellung: Automated password rollover (Automatisiertes Kennwortrollover)
+- Invited Users (Eingeladene Benutzer)
 - MIM service (MIM-Dienst)
+- Schutz der Identität (Identity Protection)
+- B2C
 
 Bei Verwendung des Filters **Aktivitätsressourcentyp** können Sie eine der folgenden Filteroptionen auswählen:
 
@@ -124,148 +129,9 @@ Wenn Sie als **Aktivitätsressourcentyp** die Option **Gruppe** auswählen, erha
 - O365
 
 
-
-
 Der Filter **Aktivität** basiert auf der getroffenen Auswahl für „Kategorie“ und „Aktivitätsressourcentyp“. Sie können entweder eine bestimmte Aktivität verwenden oder alle auswählen. 
 
-| Aktivitätskategorie| Aktivitätsressourcentyp| Aktivität |
-| :-- | :-: | :-- |
-| Kernverzeichnis| Group| Delete Group Settings (Gruppeneinstellungen löschen)|
-| Kernverzeichnis| Verzeichnis| Domäne aktualisieren|
-| Kernverzeichnis| Verzeichnis| Partner aus Unternehmen entfernen|
-| Kernverzeichnis| Benutzer| Rolle aktualisieren|
-| Kernverzeichnis| Benutzer| Add Role From Template (Rolle aus Vorlage hinzufügen)|
-| Kernverzeichnis| Group| Add App Role Assignment To Group (App-Rollenzuweisung zu Gruppe hinzufügen)|
-| Kernverzeichnis| Group| Start Applying Group Based License To Users (Starten der gruppenbasierten Lizenzzuweisung zu Benutzern)|
-| Kernverzeichnis| Anwendung| Dienstprinzipal hinzufügen|
-| Kernverzeichnis| Richtlinie| Richtlinie aktualisieren|
-| Kernverzeichnis| Richtlinie| Richtlinie dem Dienstprinzipal hinzufügen|
-| Kernverzeichnis| Gerät| Add Registered Owner To Device (Registrierten Besitzer zu Gerät hinzufügen)|
-| Kernverzeichnis| Gerät| Add Registered Users To Device (Registrierte Benutzer zu Gerät hinzufügen)|
-| Kernverzeichnis| Gerät| Update Device Configuration (Gerätekonfiguration aktualisieren)|
-| Self-Service-Kennwortverwaltung| Benutzer| Reset Password (Self-Service) (Kennwort zurücksetzen (Self-Service))|
-| Self-Service-Kennwortverwaltung| Benutzer| Unlock User Account (Self-Service) (Benutzerkonto entsperren (Self-Service))|
-| Self-Service-Kennwortverwaltung| Benutzer| Reset Password (By Admin) (Kennwort zurücksetzen (durch Administrator))|
-| Self-Service-Gruppenverwaltung| Group| Delete A Pending Request To Join A Group (Ausstehende Gruppenbeitrittsanforderung löschen)|
-| Kontobereitstellung| Anwendung| Process Escrow (Hinterlegung verarbeiten)|
-| Automatisiertes Kennwortrollover| Anwendung| Automatisiertes Kennwortrollover|
-| Invited Users (Eingeladene Benutzer)| Andere| Verarbeitete Batch-Einladungen|
-| Kernverzeichnis| Verzeichnis| Remove Verified Domain (Überprüfte Domäne entfernen)|
-| Kernverzeichnis| Verzeichnis| Add Unverified Domain (Nicht überprüfte Domäne hinzufügen)|
-| Kernverzeichnis| Verzeichnis| Add Verified Domain (Überprüfte Domäne hinzufügen)|
-| Kernverzeichnis| Verzeichnis| Verzeichnisfunktion für Mandanten festlegen|
-| Kernverzeichnis| Verzeichnis| DirSyncEnabled-Flag festlegen|
-| Kernverzeichnis| Verzeichnis| Unternehmenseinstellungen erstellen|
-| Kernverzeichnis| Verzeichnis| Unternehmenseinstellungen aktualisieren|
-| Kernverzeichnis| Verzeichnis| Unternehmenseinstellungen löschen|
-| Kernverzeichnis| Verzeichnis| Zulässigen Datenspeicherort für Unternehmen festlegen|
-| Kernverzeichnis| Verzeichnis| Funktion für multinationales Unternehmen auf „Aktiviert“ festlegen|
-| Kernverzeichnis| Benutzer| Benutzer aktualisieren|
-| Kernverzeichnis| Benutzer| Benutzer löschen|
-| Kernverzeichnis| Group| Mitglied aus Gruppe entfernen|
-| Kernverzeichnis| Group| Set Group License (Gruppenlizenz festlegen)|
-| Kernverzeichnis| Group| Create Group Settings (Gruppeneinstellungen erstellen)|
-| Kernverzeichnis| Anwendung| Update Service Principal (Dienstprinzipal aktualisieren)|
-| Kernverzeichnis| Anwendung| Anwendung löschen|
-| Kernverzeichnis| Anwendung| Anwendung aktualisieren|
-| Kernverzeichnis| Anwendung| Dienstprinzipal entfernen|
-| Kernverzeichnis| Anwendung| Anmeldeinformationen für Dienstprinzipal hinzufügen|
-| Kernverzeichnis| Anwendung| Remove App Role Assignment From Service Principal (App-Rollenzuweisung von Dienstprinzipal entfernen)|
-| Kernverzeichnis| Anwendung| Besitzer aus Anwendung entfernen|
-| Kernverzeichnis| Gerät| Registrierten Besitzer aus Gerät entfernen|
-| Self-Service-Kennwortverwaltung| Benutzer| Self-Serve Password Reset Flow Activity Progress (Aktivitätsstatus des Self-Service-Kennwortzurücksetzungsablaufs)|
-| Kontobereitstellung| Anwendung| Verwaltung|
-| Kontobereitstellung| Anwendung| Directory Operation (Verzeichnisvorgang)|
-| MIM Service (MIM-Dienst)| Group| Mitglied entfernen|
-| Kernverzeichnis| Richtlinie| Richtlinie löschen|
-| Invited Users (Eingeladene Benutzer)| Benutzer| Viral Tenant Creation (Erstellung von viralem Mandanten)|
-| Kernverzeichnis| Verzeichnis| Externe geheime Schlüssel aktualisieren|
-| Kernverzeichnis| Verzeichnis| Eigenschaften für Rights Management festlegen|
-| Kernverzeichnis| Verzeichnis| Update Company (Unternehmen aktualisieren)|
-| Kernverzeichnis| Benutzer| Benutzer hinzufügen|
-| Kernverzeichnis| Benutzer| Convert Federated User To Managed (Verbundbenutzer in verwalteten Benutzer konvertieren)|
-| Kernverzeichnis| Benutzer| Create Application Password For User (Anwendungskennwort für Benutzer erstellen)|
-| Kernverzeichnis| Group| Mitglied zur Gruppe hinzufügen|
-| Kernverzeichnis| Group| Gruppe hinzufügen|
-| Kernverzeichnis| Anwendung| Consent To Application (Anwendung zustimmen)|
-| Kernverzeichnis| Anwendung| Anwendung hinzufügen|
-| Kernverzeichnis| Anwendung| Add Owner To Service Principal (Besitzer zu Dienstprinzipal hinzufügen)|
-| Kernverzeichnis| Anwendung| Remove Oauth2Permissiongrant (Oauth2Permissiongrant entfernen)|
-| Kernverzeichnis| Richtlinie| Richtlinien-Anmeldeinformationen entfernen|
-| Kernverzeichnis| Gerät| Delete Device Configuration (Gerätekonfiguration löschen)|
-| Self-Service-Gruppenverwaltung| Group| Set Dynamic Group Properties (Dynamische Gruppeneigenschaften festlegen)|
-| Self-Service-Gruppenverwaltung| Group| Update Lifecycle Management Policy (Richtlinie für Lebenszyklusverwaltung aktualisieren)|
-| Kontobereitstellung| Anwendung| Synchronization Rule Action (Synchronisierungsregelaktion)|
-| Invited Users (Eingeladene Benutzer)| Andere| Batch-Einladungen hochgeladen|
-| MIM Service (MIM-Dienst)| Group| Mitglied hinzufügen|
-| Kernverzeichnis| Benutzer| Lizenzeigenschaften festlegen|
-| Kernverzeichnis| Benutzer| Benutzer wiederherstellen|
-| Kernverzeichnis| Benutzer| Remove Member From Role (Mitglied aus Rolle entfernen)|
-| Kernverzeichnis| Benutzer| Remove App Role Assignment From User (App-Rollenzuweisung von Benutzer entfernen)|
-| Kernverzeichnis| Benutzer| Remove Scoped Member From Role (Zugeordnetes Mitglied aus Rolle entfernen)|
-| Kernverzeichnis| Group| Gruppe aktualisieren|
-| Kernverzeichnis| Group| Add Owner To Group (Besitzer zu Gruppe hinzufügen)|
-| Kernverzeichnis| Group| Finish Applying Group Based License To Users (Gruppenbasierte Lizenzzuweisung zu Benutzern fertig stellen)|
-| Kernverzeichnis| Group| Remove App Role Assignment From Group (App-Rollenzuweisung von Gruppe entfernen)|
-| Kernverzeichnis| Group| Set Group To Be Managed By User (Gruppe für Verwaltung durch Benutzer festlegen)|
-| Kernverzeichnis| Anwendung| Add Oauth2Permissiongrant (Oauth2Permissiongrant hinzufügen)|
-| Kernverzeichnis| Anwendung| Add App Role Assignment To Service Principal (App-Rollenzuweisung zu Dienstprinzipal hinzufügen)|
-| Kernverzeichnis| Anwendung| Anmeldeinformationen für Dienstprinzipal entfernen|
-| Kernverzeichnis| Richtlinie| Richtlinie aus Dienstprinzipal entfernen|
-| Kernverzeichnis| Gerät| Gerät aktualisieren|
-| Kernverzeichnis| Gerät| Gerät hinzufügen|
-| Kernverzeichnis| Gerät| Add Device Configuration (Gerätekonfiguration hinzufügen)|
-| Self-Service-Kennwortverwaltung| Benutzer| Change Password (Self-Service) (Kennwort ändern (Self-Service))|
-| Self-Service-Kennwortverwaltung| Benutzer| User Registered For Self-Service Password Reset (Für Self-Service-Kennwortzurücksetzung registrierter Benutzer)|
-| Self-Service-Gruppenverwaltung| Group| Approve A Pending Request To Join A Group (Ausstehende Gruppenbeitrittsanforderung genehmigen)|
-| Kernverzeichnis| Verzeichnis| Remove Unverified Domain (Nicht überprüfte Domäne entfernen)|
-| Kernverzeichnis| Verzeichnis| Domäne überprüfen|
-| Kernverzeichnis| Verzeichnis| Domänenauthentifizierung festlegen|
-| Kernverzeichnis| Verzeichnis| Kennwortrichtlinie festlegen|
-| Kernverzeichnis| Verzeichnis| Partner zu Unternehmen hinzufügen|
-| Kernverzeichnis| Verzeichnis| Promote Company To Partner (Unternehmen zu Partner heraufstufen)|
-| Kernverzeichnis| Verzeichnis| Set Partnership (Partnerschaft festlegen)|
-| Kernverzeichnis| Verzeichnis| Schwellenwert für versehentliches Löschen festlegen|
-| Kernverzeichnis| Verzeichnis| Partner tiefer stufen|
-| Invited Users (Eingeladene Benutzer)| Benutzer| Externen Benutzer einladen|
-| Kontobereitstellung| Anwendung| Import|
-| Kernverzeichnis| Anwendung| Remove Owner From Service Principal (Besitzer aus Dienstprinzipal entfernen)|
-| Kernverzeichnis| Gerät| Registrierte Benutzer aus Gerät entfernen|
-| Kernverzeichnis| Verzeichnis| Unternehmensinformationen festlegen|
-| Kernverzeichnis| Verzeichnis| Verbundeinstellungen für Domäne festlegen|
-| Kernverzeichnis| Verzeichnis| Unternehmen erstellen|
-| Kernverzeichnis| Verzeichnis| Rights Management-Eigenschaften bereinigen|
-| Kernverzeichnis| Verzeichnis| DirSync-Funktion festlegen|
-| Kernverzeichnis| Verzeichnis| Per E-Mail verifizierte Domäne überprüfen|
-| Kernverzeichnis| Benutzer| Benutzerlizenz ändern|
-| Kernverzeichnis| Benutzer| Benutzerkennwort ändern|
-| Kernverzeichnis| Benutzer| Benutzerkennwort zurücksetzen|
-| Kernverzeichnis| Benutzer| Add App Role Assignment Grant To User (App-Rollenzuweisungsgewährung zu Benutzer hinzufügen)|
-| Kernverzeichnis| Benutzer| Add Member To Role (Mitglied zu Rolle hinzufügen)|
-| Kernverzeichnis| Benutzer| Delete Application Password For User (Anwendungskennwort für Benutzer löschen)|
-| Kernverzeichnis| Benutzer| Benutzeranmeldeinformationen aktualisieren|
-| Kernverzeichnis| Benutzer| Set User Manager (Benutzer-Manager festlegen)|
-| Kernverzeichnis| Benutzer| Add Scoped Member To Role (Zugeordnetes Mitglied zu Rolle hinzufügen)|
-| Kernverzeichnis| Group| Gruppe löschen|
-| Kernverzeichnis| Group| Remove Owner From Group (Besitzer aus Gruppe entfernen)|
-| Kernverzeichnis| Group| Update Group Settings (Gruppeneinstellungen aktualisieren)|
-| Kernverzeichnis| Anwendung| Besitzer der Anwendung hinzufügen|
-| Kernverzeichnis| Anwendung| Zustimmung widerrufen|
-| Kernverzeichnis| Richtlinie| Richtlinie hinzufügen|
-| Kernverzeichnis| Gerät| Gerät löschen|
-| Self-Service-Kennwortverwaltung| Benutzer| Blocked From Self-Service Password Reset (Von Self-Service-Kennwortzurücksetzung ausgeschlossen)|
-| Self-Service-Gruppenverwaltung| Group| Request To Join A Group (Gruppenbeitritt anfordern)|
-| Self-Service-Gruppenverwaltung| Group| Create Lifecycle Management Policy (Richtlinie für Lebenszyklusverwaltung erstellen)|
-| Self-Service-Gruppenverwaltung| Group| Reject A Pending Request To Join A Group (Ausstehende Gruppenbeitrittsanforderung ablehnen)|
-| Self-Service-Gruppenverwaltung| Group| Cancel A Pending Request To Join A Group (Ausstehende Gruppenbeitrittsanforderung abbrechen)|
-| Self-Service-Gruppenverwaltung| Group| Renew Group (Gruppe erneuern)|
-| Kontobereitstellung| Anwendung| Export|
-| Kontobereitstellung| Anwendung| Andere|
-| Invited Users (Eingeladene Benutzer)| Benutzer| Redeem External User Invite (Externe Benutzereinladung einlösen)|
-| Invited Users (Eingeladene Benutzer)| Benutzer| Viral User Creation (Erstellung von viralem Benutzer)|
-| Invited Users (Eingeladene Benutzer)| Benutzer| Externen Benutzer einer Anwendung zuweisen|
-
-
+Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md#list-of-audit-report-events) lesen.
 
 
 ## <a name="audit-logs-shortcuts"></a>Verknüpfungen für Überwachungsprotokolle
@@ -274,9 +140,6 @@ Neben **Azure Active Directory** bietet das Azure-Portal noch zwei weitere Einst
 
 - Benutzer und Gruppen
 - Unternehmensanwendungen
-
-Eine vollständige Liste mit den Überwachungsberichtsaktivitäten finden Sie in der [Liste der Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md#list-of-audit-report-events).
-
 
 ### <a name="users-and-groups-audit-logs"></a>Überwachungsprotokolle für Benutzer und Gruppen
 

@@ -9,32 +9,33 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
+ms.custom: scale out apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/22/2017
+ms.topic: article
+ms.date: 05/24/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 31be50ca3f64cc183e516f1b0f06f5a4265f6103
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: bf003a3677ed27bc833de59ef61f7637a6899d37
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="run-ad-hoc-analytics-queries-across-all-wingtip-saas-tenants"></a>Ausführen von Ad-hoc-Analyseabfragen über alle Wingtip-SaaS-Mandanten hinweg
 
-In diesem Tutorial erstellen Sie eine Datenbank für Ad-hoc-Analysen und führen mehrere Abfragen für alle Mandanten aus. Diese Abfragen können Einblicke geben, die sonst in den tagtäglichen operativen Daten der Wingtip Tickets Platform-App (WTP) verborgen bleiben.
+In diesem Tutorial erstellen Sie eine Datenbank für Ad-hoc-Analysen und führen mehrere Abfragen für alle Mandanten aus. Diese Abfragen können Einblicke geben, die sonst in den tagtäglichen operativen Daten der Wingtip-SaaS-App verborgen bleiben.
 
 Zum Ausführen von Ad-hoc-Analyseabfragen (für mehrere Mandanten) verwendet die Wingtip-SaaS-App eine [elastische Abfrage](sql-database-elastic-query-overview.md) zusammen mit einer Analysedatenbank.
 
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
 
+> * Informationen zu den globalen Sichten in jeder Datenbank, die mandantenübergreifende Abfragen ermöglichen
 > * Bereitstellen einer Ad-hoc-Analysedatenbank
 > * Ausführen verteilter Abfragen für alle Mandantendatenbanken
 
@@ -57,23 +58,19 @@ Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugr
 Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)
 
 
-## <a name="explore-the-global-views-in-the-tenant-databases"></a>Untersuchen der globalen Sichten in den Mandantendatenbanken
+## <a name="explore-the-global-views"></a>Untersuchen der globalen Sichten
 
-Die Wingtip-SaaS-Anwendung wird basierend auf dem Modell „ein Mandant pro Datenbank“ erstellt, sodass das Mandantendatenbank-Schema aus Sicht eines einzelnen Mandanten definiert wird. Die mandantenspezifischen Informationen sind in einer Tabelle (*Venue*) vorhanden, die immer über eine einzelne Zeile verfügt und außerdem als Heap ohne Primärschlüssel konzipiert ist.  Andere Tabellen im Schema müssen nicht mit der Tabelle *Venue* verknüpft werden, da bei normaler Nutzung kein Zweifel besteht, zu welchem Mandanten die Daten gehören.  Beim Durchführen von Abfragen übergreifend für alle Datenbanken ist das Korrelieren von Daten aus Tabellen in der Datenbank auf einem bestimmten Mandanten aber wichtig. Zur Vereinfachung dieses Vorgangs wird der Mandantendatenbank eine Gruppe von Sichten hinzugefügt, die eine „globale“ Sicht jedes Mandanten ermöglichen. Diese globalen Sichten projizieren eine Mandanten-ID in jede Tabelle, für die globale Abfragen durchgeführt werden. Auf diese Weise können Daten jedes Mandanten leicht identifiziert werden. Zur Vereinfachung wurden diese Sichten in allen Mandantendatenbanken vorab erstellt (sowie auch die „goldene“ Datenbank, damit diese Sichten als neue Mandanten verfügbar sind).
+Die Wingtip-SaaS-Anwendung wird basierend auf dem Modell „ein Mandant pro Datenbank“ erstellt, sodass das Mandantendatenbank-Schema aus Sicht eines einzelnen Mandanten definiert wird. Die mandantenspezifischen Informationen sind in einer Tabelle (*Venue*) vorhanden, die immer über eine einzelne Zeile verfügt und außerdem als Heap ohne Primärschlüssel konzipiert ist.  Andere Tabellen im Schema müssen nicht mit der Tabelle *Venue* verknüpft werden, da bei normaler Nutzung kein Zweifel besteht, zu welchem Mandanten die Daten gehören.  Beim Durchführen von Abfragen übergreifend für alle Datenbanken ist das Korrelieren von Daten aus Tabellen in der Datenbank auf einem bestimmten Mandanten aber wichtig. Zur Vereinfachung dieses Vorgangs wird der Mandantendatenbank eine Gruppe von Sichten hinzugefügt, die eine „globale“ Sicht jedes Mandanten ermöglichen. Diese globalen Sichten projizieren eine Mandanten-ID in jede Tabelle, für die globale Abfragen durchgeführt werden. Auf diese Weise können Daten jedes Mandanten leicht identifiziert werden. Zur Vereinfachung wurden diese Sichten in allen Mandantendatenbanken vorab erstellt (sowie auch die „goldene“ Datenbank, damit diese globalen Sichten als neue Mandanten verfügbar sind).
 
 1. Öffnen Sie SSMS, und [stellen Sie eine Verbindung mit dem Server „tenants1-&lt;BENUTZER&gt;“ her](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 1. Erweitern Sie die Option **Datenbanken**, klicken Sie mit der rechten Maustaste auf **contosoconcerthall**, und wählen Sie **Neue Abfrage**.
-1. Führen Sie die folgenden Abfragen aus, um die globalen Sichten zu untersuchen:
+1. Führen Sie die folgenden Abfragen aus, um den Unterschied zwischen den Tabellen mit einem einzelnen Mandanten und den globalen Sichten zu untersuchen:
 
    ```T-SQL
    -- This is the base Venue table, that has no VenueId associated.
    SELECT * FROM Venue
 
    -- Notice the plural name 'Venues'. This view projects a VenueId column.
-   -- In the sample database we calculated an integer id from a hash of the Venue name,
-   -- but any approach could be used to introduce a unique value.
-   -- This is similar to how we create the tenant key in the catalog,
-   -- but there is no requirement that the catalog key and this id be the same.
    SELECT * FROM Venues
 
    -- The base Events table which has no VenueId column.
@@ -83,7 +80,9 @@ Die Wingtip-SaaS-Anwendung wird basierend auf dem Modell „ein Mandant pro Date
    SELECT * FROM VenueEvents
    ```
 
-Gehen Sie wie folgt vor, um eine Sicht zu untersuchen und sich über die Erstellung zu informieren:
+In der Beispieldatenbank haben wir eine ganzzahlige ID aus einem Hash des Namens des Veranstaltungsorts errechnet. Für die Einführung eines eindeutigen Werts kann jedoch jeder Ansatz verwendet werden. Dieser Vorgang ähnelt der Erstellung des Mandantenschlüssels im Katalog. Es ist jedoch keine Voraussetzung, dass Katalogschlüssel und Mandanten-ID in der *adhocanalytics*-Datenbank identisch sind.
+
+Gehen Sie wie folgt vor, um eine *Sicht* zu untersuchen und sich über die Erstellung zu informieren:
 
 1. Erweitern Sie im **Objekt-Explorer** die Option **contosoconcethall** > **Sichten**:
 
@@ -98,26 +97,29 @@ Führen Sie dies für alle *Sichten* durch, um Informationen zur Erstellung zu e
 
 In dieser Übung wird die Datenbank *adhocanalytics* bereitgestellt. Diese Datenbank enthält das Schema, das zum Abfragen aller Mandantendatenbanken verwendet wird. Die Datenbank wird auf dem vorhandenen Katalogserver bereitgestellt. Dies ist der Server, der alle verwaltungsbezogenen Datenbanken enthält.
 
-1. Öffnen Sie ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* in der *PowerShell ISE*, und legen Sie folgende Werte fest:
-   * **$DemoScenario** = 2, **Ad-hoc-Analysedatenbank bereitstellen**.
-
-1. Scrollen Sie im Skript nach unten zum SQL-Skript mit dem Schema für die Datenbank.  Prüfen Sie das Skript, und achten Sie auf Folgendes:
+1. Öffnen Sie „...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Deploy-AdhocAnalyticsDB.ps1*“.
+1. Scrollen Sie nach unten zum Abschnitt, in dem `$commandText` dem SQL-Skript zugewiesen wird. Prüfen Sie das Skript, und achten Sie auf Folgendes:
 
    1. Für die elastische Abfrage werden datenbankbezogene Anmeldeinformationen verwendet, um auf die einzelnen Mandantendatenbanken zuzugreifen. Diese Anmeldeinformationen müssen in allen Datenbanken verfügbar sein, und im Normalfall sollten die Rechte gewährt werden, die zum Aktivieren dieser Ad-hoc-Abfragen mindestens erforderlich sind.
    1. Die externe Datenquelle, die für die Verwendung der Mandanten-Shardzuordnung in der Katalogdatenbank definiert ist.  Indem sie als externe Datenquelle verwendet wird, werden Abfragen auf alle Datenbanken verteilt, die bei Ausgabe der Abfrage im Katalog registriert sind.
    1. Die externen Tabellen, die auf die globalen Sichten aus dem vorherigen Abschnitt verweisen.
    1. Die lokale Tabelle *VenueTypes*, die erstellt und mit Daten gefüllt wird.  Da diese Referenzdatentabelle in allen Mandantendatenbanken enthalten ist, kann sie hier als lokale Tabelle dargestellt werden. Für einige Abfragen kann dies zu einer Verringerung der Datenmenge führen, die zwischen den Mandantendatenbanken und der Datenbank *adhocanalytics* verschoben wird.
 
+
+1. Öffnen Sie nun „...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1*“ in der *PowerShell ISE*, und legen Sie folgende Werte fest:
+   * **$DemoScenario** = 2, **Ad-hoc-Analysedatenbank bereitstellen**.
+
 1. Drücken Sie **F5**, um das Skript auszuführen und die Datenbank *adhocanalytics* zu erstellen.
 
    Es ist in Ordnung, hier Warnungen vom Typ *Der RPC-Server ist nicht verfügbar* zu ignorieren.
 
-
 Sie verfügen nun über eine *adhocanalytics*-Datenbank, mit der Sie verteilte Abfragen ausführen und Einblicke in alle Mandanten erhalten können.
+
+![adhocanalytics-Datenbank](media/sql-database-saas-tutorial-adhoc-analytics/adhocanalytics.png)
 
 ## <a name="run-ad-hoc-analytics-queries"></a>Ausführen von Ad-hoc-Analyseabfragen
 
-In dieser Übung werden Ad-hoc-Analyseabfragen ausgeführt, um Einblicke in die Mandanten der WTP-Anwendung zu erhalten.
+Führen Sie nach der Einrichtung der *adhocanalytics*-Datenbank einige Ad-hob-Abfragen aus:
 
 1. Öffnen Sie ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalyticsQueries.sql* in SSMS.
 1. Stellen Sie sicher, dass Sie mit der **adhocanalytics**-Datenbank verbunden sind.
@@ -141,6 +143,6 @@ Absolvieren des [Tutorials zu Mandantenanalysen](sql-database-saas-tutorial-tena
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Zusätzliche Tutorials, die auf der ersten Wingtip-SaaS-Anwendungsbereitstellung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastische Abfrage](sql-database-elastic-query-overview.md)
 

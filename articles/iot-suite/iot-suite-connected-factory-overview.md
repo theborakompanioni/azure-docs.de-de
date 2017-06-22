@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 90ed1d5ca50bfb19a9d1c5d258e9588e05893270
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 97da0f4dc5d5528bfb803eefe9037651939a8efd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -84,7 +84,7 @@ Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Dies ist
 
 Im Dashboard werden die folgenden Informationen angezeigt:
 
-* Ein Bereich mit der **Werksliste**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. 
+* Ein Bereich mit der **Werksliste**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. Weitere Informationen zu OPC UA finden Sie in den [FAQ][lnk-faq].
 * Eine **Karte** mit den Standorten der einzelnen Geräte, die mit der Lösung verbunden sind. Für die Lösung kann die Bing Maps-API zum Ausgeben von Informationen auf der Karte verwendet werden. Wenn Ihr Abonnement für die Bing Maps Enterprise-API aktiviert ist, wird dieses Feature automatisch verwendet. Wenn nicht, helfen Ihnen die Informationen zur Verwendung einer dynamischen Karte in den [häufig gestellten Fragen][lnk-faq] weiter.
 * Ein Bereich **Warnungen** zum Anzeigen von Warnungen, die generiert werden, wenn ein Telemetrie- oder OEE/KPI-Wert einen bestimmten Schwellenwert überschreitet.
 * Ein Bereich **Overall Equipment Effectiveness**, in dem die OEE-Werte für das gesamte Unternehmen oder das jeweils angezeigte Werk, die Fertigungsstrecke oder die Station angegeben werden. Dieser Wert wird über die Stationsansicht auf Unternehmensebene aggregiert. Der OEE-Wert und die Elemente, aus denen dieser Wert besteht, können weiter analysiert werden.
@@ -274,7 +274,7 @@ Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [
 Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und können nun mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu die folgenden Artikel:
 
 * [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise][lnk-rm-walkthrough]
-* [Verbinden Ihres Geräts mit der vorkonfigurierten Connected Factory-Lösung][lnk-connect-cf]
+* [Verbinden Ihres Geräts mit der vorkonfigurierten verbundenen Werkslösung][lnk-connect-cf]
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 
 [img-cf-home]:media/iot-suite-connected-factory-overview/cf-dashboard.png

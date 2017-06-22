@@ -1,25 +1,25 @@
 ---
 title: 'Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET | Microsoft-Dokumentation'
 description: "Erfahren Sie, wie Sie mit der Tabellen-API von Azure Cosmos DB unter Verwendung von .NET entwickeln können."
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 4b22cb49-8ea2-483d-bc95-1172cd009498
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fff65034ea725fced95a291a8f206b993e8404a4
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 061e79be546a80d254f2915313d747cf69cee9d2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
@@ -48,12 +48,12 @@ Sie können Azure Table Storage weiterhin für Tabellen mit hohen Speicheranford
 
 Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur „Premium Table“-Vorschau folgende Vorteile:
 
-- Sofort einsetzbare [globale Verteilung](../documentdb/documentdb-distribute-data-globally.md) mit Multihosting und [automatischen und manuellen Failovers](../documentdb/documentdb-regional-failovers.md)
+- Sofort einsetzbare [globale Verteilung](distribute-data-globally.md) mit Multihosting und [automatischen und manuellen Failovers](regional-failover.md)
 - Unterstützung für automatische schemaunabhängige Indizierung aller Eigenschaften („sekundäre Indizes“) und schnelle Abfragen 
 - Unterstützung für eine beliebige Anzahl von Regionen übergreifende [unabhängige Skalierung von Speicher und Durchsatz](partition-data.md)
-- Unterstützung für [dedizierten Durchsatz pro Tabelle](../documentdb/documentdb-request-units.md), der von Hundertern auf Millionen Anforderungen pro Sekunde skaliert werden kann
-- Unterstützung für [fünf optimierbare Konsistenzebenen](../documentdb/documentdb-consistency-levels.md) zur Abstimmung von Verfügbarkeit, Latenz und Konsistenz basierend auf Ihren Anwendungsanforderungen
-- 99,99 % Verfügbarkeit innerhalb einer einzelnen Region sowie die Möglichkeit zum Hinzufügen weiterer Regionen für höhere Verfügbarkeit und [branchenführende umfassende SLAs](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) zu allgemeiner Verfügbarkeit
+- Unterstützung für [dedizierten Durchsatz pro Tabelle](request-units.md), der von Hundertern auf Millionen Anforderungen pro Sekunde skaliert werden kann
+- Unterstützung für [fünf optimierbare Konsistenzebenen](consistency-levels.md) zur Abstimmung von Verfügbarkeit, Latenz und Konsistenz basierend auf Ihren Anwendungsanforderungen
+- 99,99 % Verfügbarkeit innerhalb einer einzelnen Region sowie die Möglichkeit zum Hinzufügen weiterer Regionen für höhere Verfügbarkeit und [branchenführende umfassende SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zu allgemeiner Verfügbarkeit
 - Arbeiten mit dem vorhandenen Azure Storage-.NET-SDK und keine Änderungen am Code der Anwendung
 
 Während der Vorschau unterstützt Azure Cosmos DB die Tabellen-API mit dem .NET-SDK. Sie können das [Azure Storage Preview-SDK](https://aka.ms/premiumtablenuget) von NuGet herunterladen. Das SDK hat die gleichen Klassen- und Methodensignaturen wie das [Azure Storage-SDK](https://www.nuget.org/packages/WindowsAzure.Storage), kann aber auch mithilfe der Tabellen-API eine Verbindung mit Konten von Azure Cosmos DB herstellen.
@@ -77,11 +77,11 @@ Zunächst erstellen wir ein Azure Cosmos DB-Konto im Azure-Portal.
 > [!TIP]
 > * Besitzen Sie bereits ein Azure Cosmos DB-Konto? Wenn dies der Fall ist, fahren Sie mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort.
 > * Besaßen Sie einmal ein Azure DocumentDB-Konto? Wenn dies der Fall ist, ist Ihr Konto jetzt ein Azure Cosmos DB-Konto, und Sie können mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fortfahren.  
-> * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](../documentdb/documentdb-nosql-local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort. 
+> * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort. 
 >
 >
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmosdb-create-dbaccount-table.md)] 
+[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
@@ -143,9 +143,9 @@ Azure Cosmos DB unterstützt eine Reihe von Funktionen, die nicht in der Azure T
 | TableConnectionMode  | Azure Cosmos DB unterstützt zwei Konnektivitätsmodi. Im `Gateway`-Modus werden Anforderungen immer an das Azure Cosmos DB-Gateway gerichtet, das sie an die entsprechenden Datenpartitionen weiterleitet. Im `Direct`-Konnektivitätsmodus ruft der Client die Zuordnung von Tabellen zu Partitionen ab, und Anforderungen werden direkt an Datenpartitionen gerichtet. `Direct` (Standard) wird empfohlen.  |
 | TableConnectionProtocol | Azure Cosmos DB unterstützt zwei Verbindungsprotokolle – `Https` und `Tcp`. `Tcp` ist der Standard und wird empfohlen, da es einfacher ist. |
 | TablePreferredLocations | Durch Trennzeichen getrennte Liste der bevorzugten Standorte (Multihosting) für Lesevorgänge. Jedem Azure Cosmos DB-Konto können 1-30+ Regionen zugeordnet werden. Jede Clientinstanz kann eine Teilmenge dieser Regionen in der bevorzugten Reihenfolge für Lesevorgänge mit geringer Latenz angeben. Die Regionen müssen mit ihren [Anzeigenamen](https://msdn.microsoft.com/library/azure/gg441293.aspx) benannt sein, z.B. `West US`. Siehe auch [How to setup Azure Cosmos DB global distribution using the Table API](tutorial-global-distribution-table.md) (Einrichten der globalen Verteilung für Azure Cosmos DB mit der Tabellen-API).
-| TableConsistencyLevel | Um Latenz, Konsistenz und Verfügbarkeit aufeinander abzustimmen, haben Sie fünf klar definierte Konsistenzebenen zur Auswahl: `Strong`, `Session`, `Bounded-Staleness`, `ConsistentPrefix` und `Eventual`. Der Standardwert ist `Session`. Die Auswahl der Konsistenzebene sorgt in Setups mit mehreren Regionen für einen deutlichen Leistungsunterschied. Weitere Informationen finden Sie unter [Einstellbare Datenkonsistenzebenen in DocumentDB](../documentdb/documentdb-consistency-levels.md). |
-| TableThroughput | Reservierter Durchsatz für die Tabelle, ausgedrückt in Anforderungseinheiten (RU) pro Sekunde. Einzelne Tabellen können Hunderte Millionen von RU/s unterstützen. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](../documentdb/documentdb-request-units.md). Der Standardwert ist `400`. |
-| TableIndexingPolicy | Konsistente und automatische sekundäre Indizierung aller Spalten in Tabellen | Der Spezifikation der Indizierungsrichtlinie entsprechende JSON-Zeichenfolge. Unter [Indizierungsrichtlinien für DocumentDB](../documentdb/documentdb-indexing-policies.md) erfahren Sie, wie Sie die Indizierungsrichtlinie ändern können, um bestimmte Spalten ein- bzw. auszuschließen. | Automatische Indizierung aller Eigenschaften (Hashwert für Zeichenfolgen und Bereich für Zahlen) |
+| TableConsistencyLevel | Um Latenz, Konsistenz und Verfügbarkeit aufeinander abzustimmen, haben Sie fünf klar definierte Konsistenzebenen zur Auswahl: `Strong`, `Session`, `Bounded-Staleness`, `ConsistentPrefix` und `Eventual`. Der Standardwert ist `Session`. Die Auswahl der Konsistenzebene sorgt in Setups mit mehreren Regionen für einen deutlichen Leistungsunterschied. Weitere Informationen finden Sie unter [Einstellbare Datenkonsistenzebenen in DocumentDB](consistency-levels.md). |
+| TableThroughput | Reservierter Durchsatz für die Tabelle, ausgedrückt in Anforderungseinheiten (RU) pro Sekunde. Einzelne Tabellen können Hunderte Millionen von RU/s unterstützen. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](request-units.md). Der Standardwert ist `400`. |
+| TableIndexingPolicy | Konsistente und automatische sekundäre Indizierung aller Spalten in Tabellen | Der Spezifikation der Indizierungsrichtlinie entsprechende JSON-Zeichenfolge. Unter [Indizierungsrichtlinien für DocumentDB](indexing-policies.md) erfahren Sie, wie Sie die Indizierungsrichtlinie ändern können, um bestimmte Spalten ein- bzw. auszuschließen. | Automatische Indizierung aller Eigenschaften (Hashwert für Zeichenfolgen und Bereich für Zahlen) |
 | TableQueryMaxItemCount | Konfigurieren Sie die maximale Anzahl von Elementen, die in einem einzelnen Roundtrip pro Tabellenabfrage zurückgegeben werden. Der Standardwert ist `-1`, sodass Azure Cosmos DB den Wert zur Laufzeit dynamisch bestimmen kann. |
 | TableQueryEnableScan | Wenn die Abfrage den Index für keinen Filter verwenden kann, führen Sie sie dennoch über eine Überprüfung aus. Der Standardwert ist `false`.|
 | TableQueryMaxDegreeOfParallelism | Der Grad der Parallelität für die Ausführung einer partitionsübergreifenden Abfrage. `0` ist seriell ohne Vorabruf, `1` ist seriell mit Vorabruf, und höhere Werte steigern den Grad der Parallelität. Der Standardwert ist `-1`, sodass Azure Cosmos DB den Wert zur Laufzeit dynamisch bestimmen kann. |
@@ -201,11 +201,11 @@ table.CreateIfNotExists();
 Bei den Methoden zum Erstellen von Tabellen gibt es einen wichtigen Unterschied. Im Gegensatz zu dem verbrauchsbasierten Modell für Transaktionen von Azure Storage reserviert Azure Cosmos DB Durchsatz. Das Reservierungsmodell hat zwei wichtige Vorteile:
 
 * Ihr Durchsatz ist dediziert/reserviert, damit Sie nie gedrosselt werden, wenn Ihre Anforderungsrate höchstens dem bereitgestellten Durchsatz entspricht.
-* Das Reservierungsmodell ist [kostengünstiger für Workloads mit hohem Durchsatz](../documentdb/documentdb-key-value-store-cost.md).
+* Das Reservierungsmodell ist [kostengünstiger für Workloads mit hohem Durchsatz](key-value-store-cost.md).
 
 Sie können den Standarddurchsatz konfigurieren, indem Sie die Einstellung für `TableThroughput` im Hinblick auf RUs (Anforderungseinheiten) pro Sekunde konfigurieren. 
 
-Ein Lesevorgang für eine 1-KB-Entität ist als 1 RU normalisiert, und andere Vorgänge sind basierend auf ihrer CPU-, Arbeitsspeicher- und IOPS-Auslastung auf einen festen RU-Wert normalisiert. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](../documentdb/documentdb-request-units.md).
+Ein Lesevorgang für eine 1-KB-Entität ist als 1 RU normalisiert, und andere Vorgänge sind basierend auf ihrer CPU-, Arbeitsspeicher- und IOPS-Auslastung auf einen festen RU-Wert normalisiert. Weitere Informationen zu [Anforderungseinheiten in Azure Cosmos DB](request-units.md).
 
 > [!NOTE]
 > Das Table Storage-SDK unterstützt das Ändern des Durchsatzes derzeit zwar nicht, doch Sie können den Durchsatz sofort jederzeit mittels Azure-Portal oder Azure CLI ändern.
@@ -308,7 +308,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-In der Vorschau unterstützt Azure Cosmos DB die gleiche Abfragefunktionalität wie Azure Table Storage für die Tabellen-API. Azure Cosmos DB unterstützt auch Sortieren, Aggregieren, räumliche Abfrage, Hierarchie und eine Vielzahl von integrierten Funktionen. Die zusätzliche Funktionalität wird in einem zukünftigen Dienstupdate in der Tabellen-API bereitgestellt. Unter [SQL-Abfrage und SQL-Syntax in DocumentDB](../documentdb/documentdb-sql-query.md) finden Sie eine Übersicht dieser Funktionen. 
+In der Vorschau unterstützt Azure Cosmos DB die gleiche Abfragefunktionalität wie Azure Table Storage für die Tabellen-API. Azure Cosmos DB unterstützt auch Sortieren, Aggregieren, räumliche Abfrage, Hierarchie und eine Vielzahl von integrierten Funktionen. Die zusätzliche Funktionalität wird in einem zukünftigen Dienstupdate in der Tabellen-API bereitgestellt. Unter [SQL-Abfrage und SQL-Syntax in DocumentDB](documentdb-sql-query.md) finden Sie eine Übersicht dieser Funktionen. 
 
 ## <a name="replace-an-entity"></a>Ersetzen einer Entität
 Um eine Entität zu aktualisieren, rufen Sie sie aus dem Tabellendienst ab, ändern Sie das Entitätsobjekt, und speichern Sie die Änderungen dann im Tabellendienst. Mit dem folgenden Code wird die Telefonnummer eines vorhandenen Kunden geändert. 

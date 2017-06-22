@@ -10,28 +10,32 @@ manager: jhubbard
 editor: 
 ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
 ms.service: sql-database
-ms.custom: quick start manage
+ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/15/2017
+ms.date: 05/26/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 9ffad92e668b76c9a4e2941b20d075bf52132d16
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 05cbc0c80a4e622f537772c698e2711a7a85c00d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten
 
-[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) ist ein Verwaltungstool zum Erstellen und Verwalten von SQL Server-Ressourcen über die Benutzeroberfläche oder in Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie SSMS zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten in der Datenbank abzufragen, einzufügen, zu aktualisieren und zu löschen. 
+[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) ist eine integrierte Umgebung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis SQL-Datenbank für Microsoft Windows. In diesem Schnellstart wird veranschaulicht, wie Sie SSMS zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten in der Datenbank abzufragen, einzufügen, zu aktualisieren und zu löschen. 
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
 - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
 - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
+- [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md)
 
 Stellen Sie zunächst sicher, dass Sie die neueste Version von [SSMS](https://msdn.microsoft.com/library/mt238290.aspx) installiert haben. 
 
@@ -43,11 +47,11 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der Abbildung unten dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen.
 
-   ![Verbindungsinformationen](./media/sql-database-connect-query-ssms/connection-information.png) 
+   ![Verbindungsinformationen](./media/sql-database-get-started-portal/server-name.png) 
 
 4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen. 
 
-## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>Herstellen einer Verbindung mit Ihrer Datenbank im logischen SQL-Datenbankserver
+## <a name="connect-to-your-database"></a>Verbinden mit der Datenbank
 
 Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver einzurichten. 
 
@@ -58,11 +62,14 @@ Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure S
 1. Öffnen Sie SQL Server Management Studio.
 
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
-   - **Servertyp**: Geben Sie das Datenbankmodul ein.
-   - **Servername**: Geben Sie den vollqualifizierten Servernamen ein, z.B. **mynewserver20170313.database.windows.net**.
-   - **Authentifizierung**: Geben Sie die SQL Server-Authentifizierung an.
-   - **Anmeldung**: Geben Sie Ihr Serveradministratorkonto ein.
-   - **Kennwort**: Geben Sie das Kennwort für Ihr Serveradministratorkonto ein.
+
+   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **Servertyp** | Datenbankmodul | Dieser Wert ist erforderlich. |
+   | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
+   | **Authentifizierung** | SQL Server-Authentifizierung | In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
+   | **Anmeldung** | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
+   | **Kennwort** | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
    ![Verbindung mit dem Server herstellen](./media/sql-database-connect-query-ssms/connect.png)  
 
