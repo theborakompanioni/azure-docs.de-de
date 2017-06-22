@@ -11,7 +11,7 @@ keywords: Azure Functions, Functions, Ereignisverarbeitung, Cosmos DB, dynamisch
 ms.assetid: 
 ms.service: functions
 ms.devlang: multiple
-ms.topic: ms-hero
+ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/08/2017
@@ -164,3 +164,4 @@ Weitere Informationen zu Azure Functions finden Sie in den folgenden Themen:
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
+
