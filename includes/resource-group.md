@@ -1,0 +1,1 @@
+Eine [Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview#terminology) ist ein logischer Container, in dem Azure-Ressourcen wie Web-Apps, Datenbanken und Speicherkonten bereitgestellt und verwaltet werden.
