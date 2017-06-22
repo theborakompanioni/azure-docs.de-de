@@ -1,8 +1,6 @@
 --- 
 layout: HubPage
 hide_bc: true
-experimental: true
-experiment_id: 81ba5f65-59fb-4d
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 ms.translationtype: Human Translation
