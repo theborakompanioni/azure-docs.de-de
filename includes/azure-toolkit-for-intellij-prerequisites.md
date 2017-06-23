@@ -1,4 +1,4 @@
-### <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Für das Azure-Toolkit für IntelliJ sind folgende Softwarekomponenten notwendig:
 
 * IntelliJ IDEA Ultimate Edition – kann unter <https://www.jetbrains.com/idea/download/> heruntergeladen werden.
