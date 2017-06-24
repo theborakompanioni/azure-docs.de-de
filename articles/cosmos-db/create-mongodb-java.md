@@ -11,7 +11,7 @@ ms.service: cosmos-db
 ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: java
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
@@ -92,7 +92,7 @@ Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Da
 
     ```java
     Document queryResult = collection.find(Filters.eq("fruit", "apple")).first();
-    System.out.println(queryResult.toJson());        
+    System.out.println(queryResult.toJson());       
     ```
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
