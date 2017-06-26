@@ -11,7 +11,7 @@
 ### [Erstellen eines eigenständigen Automation-Kontos](automation-create-standalone-account.md)
 ### [Erstellen eines Azure AD-Benutzerkontos](automation-create-aduser-account.md)
 ### [Konfigurieren der Authentifizierung mit AWS](automation-config-aws-account.md)
-### [Erstellen eines ausführenden Azure-Kontos mit PowerShell](automation-update-account-powershell.md)
+### [Erstellen des ausführenden Automation-Kontos](automation-create-runas-account.md)
 ### [Überprüfen der Konfiguration eines Automation-Kontos](automation-verify-runas-authentication.md)
 ### [Verwalten der rollenbasierten Zugriffssteuerung in Azure](automation-role-based-access-control.md)
 ### [Verwalten eines Automation-Kontos](automation-manage-account.md)
@@ -56,12 +56,12 @@
 ### [Wartung nach Azure-VM-Warnung](automation-azure-vm-alert-integration.md)
 ### [Starten und Beenden von VMs mit JSON-Tags](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [Entfernen von Ressourcengruppen](automation-scenario-remove-resourcegroup.md)
-### [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 ### [Integration der Quellcodeverwaltung mit GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md)
 ### [Integration der Quellcodeverwaltung mit VSTS](automation-scenario-source-control-integration-with-VSTS.md)
 ## Lösungen
 ### [Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md)
 ### [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)
+### [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 ## Überwachen
 ### [Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics](automation-manage-send-joblogs-log-analytics.md)
 ### [Aufheben der Verknüpfung eines Azure Automation-Kontos mit Log Analytics](automation-unlink-from-log-analytics.md)

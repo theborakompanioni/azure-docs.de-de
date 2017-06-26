@@ -5,6 +5,7 @@
 # Erste Schritte
 ## [Erstellen einer Registrierung im Portal](container-registry-get-started-portal.md)
 ## [Erstellen einer Registrierung mit Azure-CLI 2.0](container-registry-get-started-azure-cli.md)
+## [Erstellen einer Registrierung mit Azure PowerShell](container-registry-get-started-powershell.md)
 ## [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md)
 ## [Anzeigen von Repositorys](container-registry-repositories.md)
 

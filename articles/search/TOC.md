@@ -78,6 +78,7 @@
 ## [Dienst-REST (Vorschau)](search-api-2015-02-28-preview.md)
 ## [Preise](https://azure.microsoft.com/pricing/details/search/)
 ## Demo-Websites
+### [Search Analyzer Demo](http://alice.unearth.ai/)
 ### [Auftragsauflistungs-App](http://aka.ms/azjobsdemo)
 ### [Live-Demo-Apps](https://searchsamples.azurewebsites.net/)
 ## Trainingsmaterialien und Tutorials

@@ -21,6 +21,9 @@
 ### [Ändern der Mandanten-ID](key-vault-subscription-move-fix.md)
 ### [Verfügbarkeit und Redundanz](key-vault-disaster-recovery-guidance.md)
 ### [Schützen Ihrer Key Vault-Instanz](key-vault-secure-your-key-vault.md)
+### [Übersicht über Sicherheitsumgebungen (Security Worlds)](key-vault-ovw-security-worlds.md)
+### [Vorläufiges Löschen der Übersicht](key-vault-ovw-soft-delete.md)
+### [Übersicht über Speicherkontoschlüssel](key-vault-ovw-storage-keys.md)
 
 ## Automatisieren
 ### [Azure Automation](automation-manage-key-vault.md)
@@ -43,7 +46,7 @@
 ## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # Ressourcen
-## [Informationen zu Schlüsseln und Geheimnissen](https://msdn.microsoft.com/en-us/library/azure/dn903623)
+## [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [Codebeispiele](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [Preise](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [Blog](http://blogs.technet.com/b/kv/)

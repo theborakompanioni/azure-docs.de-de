@@ -140,6 +140,14 @@
       href: csharp-template.md
     - name: Erstellen eines virtuellen Computers mit Chef
       href: chef-automation.md
+    - name: Erstellen eines virtuellen Computers mit Python
+      href: python.md
+    - name: Erstellen eines virtuellen Computers mit Terraform
+      items:
+      - name: Installieren und konfigurieren
+        href: ../terraform-install-configure.md
+      - name: Erstellen der grundlegenden Infrastruktur
+        href: ../terraform-create-complete-vm.md      
     - name: 'Erstellen eines virtuellen Computers, auf dem gängige Anwendungsframeworks ausgeführt werden'
       href: app-frameworks.md
     - name: Verschieben einer VM zwischen Abonnements
@@ -185,13 +193,10 @@
       href: capture-image-resource.md
     - name: Erstellen eines virtuellen Computers auf der Grundlage eines Images für einen verwalteten Datenträger
       href: create-vm-generalized-managed.md
+    - name: Erstellen eines Images mit Packer
+      href: build-image-with-packer.md
   - name: Verwalten von VM-Speicher
     items:
-    - name: Azure Managed Disks
-      href: ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      items:
-      - name: Häufig gestellte Fragen
-        href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Erstellen eines verwalteten Datenträgers
       href: create-managed-disk-ps.md
     - name: Migrieren von virtuellen Computern zu Managed Disks
@@ -215,6 +220,8 @@
       href: expand-os-disk.md
     - name: Erweitern eines Datenträgers für Daten
       href: expand-data-disks.md
+    - name: Hinzufügen einer Dateifreigabe
+      href: mount-azure-file-storage.md
     - name: Verwenden von „D“ als Datenträger für Daten
       href: change-drive-letter.md
   - name: VM-Netzwerk
@@ -348,6 +355,8 @@
         href: migration-classic-resource-manager-faq.md
   - name: Problembehandlung
     items:
+    - name: Informationen zum Systemneustart
+      href: understand-vm-reboot.md
     - name: Remotedesktopverbindungen
       href: troubleshoot-rdp-connection.md
       items:

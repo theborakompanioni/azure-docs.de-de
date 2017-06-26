@@ -1,4 +1,5 @@
 # [Übersicht](active-directory-developers-guide.md)
+## [Warum Azure AD?](https://azure.microsoft.com/develop/identity/signin/)
 ## [Authentifizierungsgrundlagen](active-directory-authentication-scenarios.md)
 ## [App-Typen](active-directory-authentication-scenarios.md#application-types-and-scenarios)
 # Erste Schritte
@@ -71,6 +72,7 @@
 ### [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md)
 ### [Rollover von Signaturschlüsseln](active-directory-signing-key-rollover.md)
 ### [Verbundmetadaten](active-directory-federation-metadata.md)
+### [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md)
 ## [Anwendungsobjekte](active-directory-application-objects.md)
 ### [Apps und Azure AD](active-directory-how-applications-are-added.md)
 ## [Anwendungsmanifest](active-directory-application-manifest.md)
@@ -101,4 +103,5 @@
 #### [Gewähren von OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
 #### [„Im Auftrag von“-Oauth 2.0-Ablauf](active-directory-v2-protocols-oauth-on-behalf-of.md)
 #### [Tokenreferenz](active-directory-v2-tokens.md)
+#### [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md)
 ### [Bereiche](active-directory-v2-scopes.md)

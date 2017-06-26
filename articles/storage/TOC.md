@@ -1,6 +1,7 @@
 # Übersicht
 
 ## [Einführung](storage-introduction.md)
+## [Wählen von Blobs, Dateien oder Datenträgern](storage-decide-blobs-files-disks.md)
 
 # Erste Schritte
 
@@ -50,6 +51,7 @@
 ### [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/linux/add-disk.md)
 ### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 ### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md)
+### [Verwenden von verwalteten Datenträgern mit Resource Manager-Vorlagen](storage-using-managed-disks-template-deployments.md)
 
 # Anleitung
 ## [Erstellen Sie ein Speicherkonto](storage-create-storage-account.md)
@@ -70,7 +72,8 @@
 ### [Beispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## Verwenden von Dateien
 ### [Übersicht](/rest/api/storageservices/File-Service-Concepts)
-### [Problembehandlung für Azure Files](storage-troubleshoot-file-connection-problems.md)
+### [Problembehandlung für Azure Files – Windows](storage-troubleshoot-windows-file-connection-problems.md)
+### [Problembehandlung für Azure Files – Linux](storage-troubleshoot-linux-file-connection-problems.md)
 ### [Beispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## Verwenden von Datenträgern
 ### [Datenträger und virtuelle Festplatten für virtuelle Windows-Computer](storage-about-disks-and-vhds-windows.md)
@@ -109,6 +112,7 @@
 ## Schützen
 ### [Sicherheitsleitfaden](storage-security-guide.md)
 ### [Verschlüsselung für ruhende Daten](storage-service-encryption.md)
+### [Verschlüsselung ruhender Daten mit Kundenschlüsseln](storage-service-encryption-customer-managed-keys.md)
 ### [Authentifizierung mit gemeinsam verwendetem Schlüssel](https://msdn.microsoft.com/library/dd179428.aspx)
 ### [Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md)
@@ -130,7 +134,8 @@
 ### [Leitfaden zur Notfallwiederherstellung](storage-disaster-recovery-guidance.md)
 ## Übertragen von Daten
 ### [Verschieben von Daten in und aus Storage](storage-moving-data.md)
-### [Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
+### [AzCopy unter Windows](storage-use-azcopy.md)
+### [AzCopy unter Linux](storage-use-azcopy-linux.md)
 ### [Verwenden des Import/Export-Diensts](storage-import-export-service.md)
 ### [Verwenden des Import/Export-Tools](storage-import-export-tool-how-to.md)
 #### [Einrichten des Import/Export-Tools](storage-import-export-tool-setup.md)

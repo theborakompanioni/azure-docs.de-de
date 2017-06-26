@@ -48,7 +48,7 @@
 #### [Vorbereiten von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms-prepare.md)
 ### Planen der Umgebung
 #### [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
-### Sichern von Servern und Workloads
+### Sichern virtueller Computer
 #### [Sichern virtueller Azure-Computer im Sicherungstresor](backup-azure-vms.md)
 #### [Sichern von virtuellen Computern in einem Recovery Services-Tresor](backup-azure-arm-vms.md)
 #### [Sichern verschlüsselter virtueller Computer](backup-azure-vms-encryption.md)
