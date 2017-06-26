@@ -1,14 +1,16 @@
-- name: "Custom Decision Service"
+- name: Custom Decision Service
   href: ../index.md
-- name: "Overview"
+- name: Übersicht
   href: custom-decision-service-overview.md
-- name: "Get started"
+- name: Erste Schritte
   items:
-  - name: "Call API from a browser"
+  - name: Anwendung registrieren
+    href: custom-decision-service-get-started-register.md
+  - name: Aufrufen einer API in einem Browser
     href: custom-decision-service-get-started-browser.md
-  - name: "Call API from an app"
+  - name: Aufrufen einer API in einer App
     href: custom-decision-service-get-started-app.md
-- name: "Tutorial"
+- name: Tutorial
   href: custom-decision-service-tutorial.md
-- name: "API reference"
+- name: API-Referenz
   href: custom-decision-service-api-reference.md

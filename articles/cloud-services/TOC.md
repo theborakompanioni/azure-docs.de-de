@@ -102,7 +102,11 @@
 ### [Häufige Bereitstellungsprobleme](cloud-services-troubleshoot-deployment-problems.md)
 ### [Fehler beim Starten der Rolle](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [Anleitungen zur Notfallwiederherstellung](cloud-services-disaster-recovery-guidance.md)
-### [Häufig gestellte Fragen zu Cloud Services](cloud-services-faq.md)
+### Häufig gestellte Fragen zu Cloud Services
+#### [Häufig gestellte Fragen zur Anwendungs- Dienstverfügbarkeit](cloud-services-application-and-service-availability-faq.md)
+#### [Häufig gestellte Fragen zu Konfiguration und Verwaltung](cloud-services-configuration-and-management-faq.md)
+#### [Häufig gestellte Fragen zu Konnektivität und Netzwerken](cloud-services-connectivity-and-networking-faq.md)
+#### [Häufig gestellte Fragen zur Bereitstellung](cloud-services-deployment-faq.md)
 
 # Referenz
 ## [CSDEF (XML-Schema)](https://msdn.microsoft.com/library/azure/ee758711)

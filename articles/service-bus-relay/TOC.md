@@ -4,6 +4,7 @@
 
 # Erste Schritte
 ## [Erstellen eines Namespaces](relay-create-namespace-portal.md)
+## [Erstellen einer hybriden lokalen/Cloudanwendung](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hybridverbindungen
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Knoten](relay-hybrid-connections-node-get-started.md)

@@ -140,6 +140,12 @@
       href: move-vm.md
     - name: Erstellen eines hoch verfügbaren virtuellen Computers
       href: create-cli-complete.md
+    - name: Terraform
+      items:
+      - name: Installieren und konfigurieren
+        href: ../terraform-install-configure.md
+      - name: Erstellen der grundlegenden Infrastruktur
+        href: ../terraform-create-complete-vm.md
     - name: Ansible
       items:
       - name: Installieren und konfigurieren
@@ -202,6 +208,8 @@
       href: upload-vhd.md
     - name: Erfassen eines vorhandenen virtuellen Computers in einem Image
       href: capture-image.md
+    - name: Erstellen eines Images mit Packer
+      href: build-image-with-packer.md
     - name: Erstellen von Azure-Images
       items:
       - name: Ubuntu
@@ -312,7 +320,11 @@
   - name: Ausführen von Anwendungen
     items:
     - name: Cloud Foundry
-      href: cloudfoundry-get-started.md
+      items:
+      - name: Übersicht
+        href: cloudfoundry-get-started.md
+      - name: Bereitstellen Ihrer ersten App
+        href: cloudfoundry-deploy-your-first-app.md
     - name: Virtuelle Data Science-Computer – Übersicht
       href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: MongoDB
@@ -366,6 +378,8 @@
       href: migration-classic-resource-manager-faq.md
   - name: Problembehandlung
     items:
+    - name: Informationen zum Systemneustart
+      href: understand-vm-reboot.md
     - name: SSH-Verbindungen
       href: troubleshoot-ssh-connection.md
       items:

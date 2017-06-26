@@ -4,8 +4,6 @@
   items:
   - name: Informationen zu Functions
     href: functions-overview.md
-  - name: Functions Runtime
-    href: functions-runtime-overview.md
   - name: 'Auswahl zwischen Flow, Logic Apps, Functions und WebJobs'
     href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: Schnellstarts
@@ -15,8 +13,8 @@
     href: functions-create-first-azure-function.md
   - name: Erstellen von Funktionen – Azure-CLI
     href: functions-create-first-azure-function-azure-cli.md
-#  - name: Create function - Visual Studio
-#    href: functions-create-your-first-function-visual-studio.md
+  - name: Erstellen von Funktionen – Visual Studio
+    href: functions-create-your-first-function-visual-studio.md
   - name: Trigger
     items:
     - name: Timer
@@ -33,16 +31,16 @@
       href: functions-integrate-storage-queue-output-binding.md
     - name: Cosmos DB
       href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: Beispiele
-  items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: functions-cli-samples.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: '1: Verwenden von Azure Functions mit Logic Apps'
     href: functions-twitter-email.md
   - name: '2: Erstellen einer serverlosen API'
     href: functions-create-serverless-api.md
+- name: Beispiele
+  items:
+  - name: Azure-Befehlszeilenschnittstelle
+    href: functions-cli-samples.md
 - name: Konzepte
   items:
   - name: Verbrauchs- und App Service-Pläne
@@ -51,36 +49,49 @@
     href: functions-triggers-bindings.md
   - name: Sprachen
     items:
-    - name: 'Konzepte der C#-Funktionen'
+    - name: 'C#-Skript'
+ 
       href: functions-reference-csharp.md
-    - name: 'Konzepte der F#-Funktionen'
+    - name: Klassenbibliothek von .NET
+      href: functions-dotnet-class-library.md
+    - name: 'F#'
       href: functions-reference-fsharp.md
-    - name: Konzepte der JavaScript-Funktionen
+    - name: JavaScript
       href: functions-reference-node.md    
+  - name: Überlegungen zur Leistung
+    href: functions-best-practices.md 
+  - name: Functions-Proxys
+    href: functions-proxies.md 
+  - name: Functions Runtime
+    href: functions-runtime-overview.md
 - name: Anleitungen
   items:
-  - name: Entwicklerhandbuch
-    href: functions-reference.md
-  - name: Testen von Azure Functions
-    href: functions-test-a-function.md
-  - name: Lokales Entwickeln und Debuggen
-    href: functions-run-local.md
-  - name: Konfigurieren der Einstellungen für eine Funktionen-App
+  - name: Entwickeln
+    items: 
+     - name: Entwicklerhandbuch
+       href: functions-reference.md
+     - name: Testen von Funktionen
+       href: functions-test-a-function.md
+     - name: Lokales Entwickeln und Debuggen
+       href: functions-run-local.md
+  - name: Bereitstellen
+    items:
+    - name: Kontinuierliche Bereitstellung
+      href: functions-continuous-deployment.md
+    - name: Automatische Ressourcenbereitstellung
+      href: functions-infrastructure-as-code.md
+    - name: Lokale Funktionen
+      href: functions-runtime-install.md
+  - name: Konfigurieren
     href: functions-how-to-use-azure-function-app-settings.md
-  - name: Continuous Deployment für Azure Functions
-    href: functions-continuous-deployment.md
-  - name: Automatische Ressourcenbereitstellung
-    href: functions-infrastructure-as-code.md
-  - name: Überwachen von Azure Functions
+  - name: Überwachen
     href: functions-monitoring.md
-  - name: Installieren der Functions Runtime
-    href: functions-runtime-install.md
-  - name: Verbinden mit SQL Database
-    href: functions-scenario-database-table-cleanup.md
-  - name: Erstellen einer Open API 2.0-Definition
-    href: functions-api-definition-getting-started.md     
-  - name: Bewährte Methoden für Azure Functions
-    href: functions-best-practices.md     
+  - name: Integrieren
+    items:   
+    - name: Verbinden mit SQL Database
+      href: functions-scenario-database-table-cleanup.md
+    - name: Erstellen einer Open API 2.0-Definition
+      href: functions-api-definition-getting-started.md         
 - name: Referenz
   items:
   - name: Bindungen
@@ -117,10 +128,14 @@
   items:
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/functions/
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/regions/services/
   - name: MSDN-Forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: Twitter
+    href: https://twitter.com/azurefunctions
   - name: Azure Functions-GitHub-Repository
     href: https://github.com/Azure/Azure-Functions/
   - name: Dienstupdates

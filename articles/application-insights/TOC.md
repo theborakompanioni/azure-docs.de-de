@@ -43,6 +43,7 @@
 ### Azure
 #### [Profiler](app-insights-profiler.md)
 #### [Diagnose](app-insights-azure-diagnostics.md)
+#### [Vorschauen](app-insights-previews.md)
 
 ### ASP.NET
 #### [Erweitern der Telemetriedaten](app-insights-asp-net-more.md)
@@ -91,8 +92,9 @@
 
 ### Verwendung
 #### [Übersicht](app-insights-usage-overview.md)
-#### [Aufbewahrung](app-insights-usage-retention.md)
 #### [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
+#### [Aufbewahrung](app-insights-usage-retention.md)
+#### [Arbeitsmappen](app-insights-usage-workbooks.md)
 
 ### Analyse
 
@@ -108,6 +110,7 @@
 ### [Erstellen von Ressourcen](app-insights-powershell-script-create-resource.md)
 ### [Festlegen von Benachrichtigungen](app-insights-powershell-alerts.md)
 ### [Holen Sie sich Azure-Diagnose](app-insights-powershell-azure-diagnostics.md)
+### [Automatisieren mit Microsoft Flow](app-insights-automate-with-flow.md)
 
 ## Entwickeln
 

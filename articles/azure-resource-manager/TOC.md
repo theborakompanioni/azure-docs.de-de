@@ -1,6 +1,6 @@
 # Übersicht
 ## [Was ist Resource Manager?](resource-group-overview.md)
-## [Unterstützte Dienste](resource-manager-supported-services.md)
+## [Ressourcenanbieter und -typen](resource-manager-supported-services.md)
 ## [Resource Manager-Bereitstellung und klassische Bereitstellung](resource-manager-deployment-model.md)
 ## [Abonnementgovernance](resource-manager-subscription-governance.md)
 ## [Verwaltete Anwendungen](managed-application-overview.md)
@@ -67,12 +67,13 @@
 
 ## Festlegen von Ressourcenrichtlinien
 ### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
-### [Richtlinienzuweisung mit dem Portal](resource-manager-policy-portal.md)
-### [Richtlinienzuweisung mit Skripts](resource-manager-policy-create-assign.md)
-### [Tagrichtlinien für Ressourcen](resource-manager-policy-tags.md)
-### [Speicherrichtlinien](resource-manager-policy-storage.md)
-### [Richtlinien für virtuelle Linux-Computer](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Richtlinien für virtuelle Windows-Computer](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Zuweisen von Richtlinien über das Portal](resource-manager-policy-portal.md)
+### [Zuweisen von Richtlinien über Skripts](resource-manager-policy-create-assign.md)
+### Beispiele
+#### [Ressourcentags](resource-manager-policy-tags.md)
+#### [Speicher](resource-manager-policy-storage.md)
+#### [Linux-VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Windows-VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## Verwenden verwalteter Anwendungen
 ### [Veröffentlichen der verwalteten Anwendung](managed-application-publishing.md)

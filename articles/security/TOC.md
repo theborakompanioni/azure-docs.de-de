@@ -11,6 +11,7 @@
 ### [Protokollierung und Überwachung](azure-log-audit.md)
 ### [Isolation in der öffentlichen Cloud](azure-isolation.md)
 ### [Technische Sicherheitsfunktionen](azure-security-technical-capabilities.md)
+### [Governance in Azure](governance-in-azure.md)
 
 # Erste Schritte
 ## [Erste Schritte mit Azure-Sicherheit](azure-security-getting-started.md)

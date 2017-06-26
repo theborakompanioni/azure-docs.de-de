@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 02c0d1834ee5e4b6aeebccc0d25bba49f8e5afe2
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: d42045b1c354b7bd5f9299181aefd6d98fda382b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 06/07/2017
 
 ---
 
@@ -43,14 +43,14 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
         </div>
         </a>
     </li>
-     <li>
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=iot-hub">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="/media/common/i_video.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -62,17 +62,17 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
         </a>
     </li>
     <li>
-        <a href="/azure/iot-hub/iot-hub-csharp-csharp-getstarted">
+        <a href="/azure/iot-hub/iot-hub-get-started-simulated">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/dotnet.svg" alt="" />
+                            <img src="/media/common/i_get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit IoT Hub mithilfe von .NET</h3>
+                        <h3>Erste Schritte mit einem simulierten Gerät</h3>
                     </div>
                 </div>
             </div>
@@ -80,17 +80,17 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
         </a>
     </li>
     <li>
-        <a href="/azure/iot-hub/iot-hub-java-java-getstarted">
+        <a href="/azure/iot-hub/iot-hub-get-started-physical">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/java.svg" alt="" />
+                            <img src="/media/common/i_get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit IoT Hub mithilfe von Java</h3>
+                        <h3>Erste Schritte mit einem physischen Gerät</h3>
                     </div>
                 </div>
             </div>
@@ -98,35 +98,17 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
         </a>
     </li>
     <li>
-        <a href="/azure/iot-hub/iot-hub-node-node-getstarted">
+        <a href="/azure/iot-hub/iot-hub-devguide">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/nodejs.svg" alt="" />
+                            <img src="/media/common/i_road-map.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit IoT Hub mithilfe von Node.js</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/iot-hub/iot-hub-device-sdk-c-intro">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/c.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Erste Schritte mit IoT Hub mithilfe von C</h3>
+                        <h3>Entwicklerhandbuch lesen</h3>
                     </div>
                 </div>
             </div>
@@ -145,7 +127,7 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
                 <div class="card">
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
-                        <p><a href="/cli/azure/iot">Azure CLI 2.0</a></p>
+                        <p><a href="/cli/azure/iot">Azure-Befehlszeilenschnittstelle</a></p>
                     </div>
                 </div>
             </div>
@@ -186,6 +168,4 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
         </div>
     </li>
 </ul>
-
-
 

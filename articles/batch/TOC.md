@@ -22,6 +22,8 @@
 ### [Virtuelle Computer mit niedriger Priorität](batch-low-pri-vms.md)
 ### [Verwalten von Batch-Konten mit Batch Management .NET](batch-management-dotnet.md)
 ### [Persistente Aufträge und Aufgabenausgabe](batch-task-output.md)
+#### [Beibehalten der Ausgabe mit Batch-API](batch-task-output-files.md)
+#### [Beibehalten der Ausgabe mit der Dateikonventionenbibliothek](batch-task-output-file-conventions.md)
 ### [Ausführen von MPI-Aufträgen in Batch](batch-mpi.md)
 ### [Abhängigkeiten von Aufgaben](batch-task-dependencies.md)
 ### [Benutzerkonten zum Ausführen von Aufgaben](batch-user-accounts.md)
