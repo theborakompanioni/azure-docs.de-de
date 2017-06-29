@@ -1,6 +1,6 @@
 ## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
 
-In diesem Abschnitt verwenden Sie ein Node.js-Tool mit dem Namen [iothub-explorer][iot-hub-explorer] zum Erstellen einer Geräteidentität für dieses Tutorial.
+In diesem Abschnitt verwenden Sie ein Node.js-Tool mit dem Namen [iothub-explorer][iot-hub-explorer] zum Erstellen einer Geräteidentität für dieses Tutorial. Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
 
 1. Führen Sie in der Befehlszeilenumgebung Folgendes aus:
 

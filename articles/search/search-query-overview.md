@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: ashmaka
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a6e9e504f4ccb8fb1e0a151dcfe76339fcc8051a
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: a22b82829df4659681940267e64c98d345453958
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -62,4 +62,10 @@ Weitere Informationen zum Paging von Suchergebnissen finden Sie im Artikel [Anor
 ## <a name="hit-highlighting"></a>Treffermarkierung
 In Azure Search ist das Hervorheben der exakten Menge von Suchergebnissen, die mit der Suchabfrage übereinstimmen, dank der Parameter `highlight`, `highlightPreTag` und `highlightPostTag` einfach. Sie können angeben, für welche *durchsuchbaren* Felder der gefundene Text hervorgehoben werden soll. Außerdem können Sie die genauen Zeichenfolgentags angeben, die am Anfang und Ende des von Azure Search zurückgegebenen Übereinstimmungstexts angefügt werden sollen.
 
+## <a name="try-out-query-syntax"></a>Ausprobieren der Abfragesyntax
 
+Die beste Möglichkeit, Syntaxunterschiede zu verstehen, besteht darin, Abfragen zu senden und die Ergebnisse zu überprüfen.
+
++ Verwenden Sie den [Suchexplorer](search-explorer.md) im Azure-Portal. Durch die Bereitstellung [des Beispielindex](search-get-started-portal.md) können Sie den Index mithilfe der Tools im Portal in wenigen Minuten abfragen.
+
++ Verwenden Sie [Fiddler](search-fiddler.md) oder Chrome Postman, um Abfragen an einen Index zu senden, den Sie in Ihren Suchdienst hochgeladen haben. Beide Tools unterstützen REST-Aufrufe an einen HTTP-Endpunkt. 

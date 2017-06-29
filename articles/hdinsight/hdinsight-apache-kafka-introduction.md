@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 06/15/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: f3e1cfb23a28d0d1fc7a60bdc8b282b72984fd03
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: f6a49be148ded1a90a642b83d3d70a83e572f4e4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>Einführung in Apache Kafka in HDInsight (Vorschau)
@@ -39,6 +39,12 @@ Kafka verfügt über die folgenden Features:
 * Geordnete Bereitstellung: In jeder Partition werden die Datensätze im Datenstrom in der Reihenfolge gespeichert, in der sie empfangen wurden. Indem ein Consumerprozess pro Partition zugeordnet wird, können Sie sicherstellen, dass die Datensätze in der richtigen Reihenfolge verarbeitet werden.
 
 * Fehlertoleranz: Partitionen können zwischen Knoten repliziert werden, um für Fehlertoleranz zu sorgen.
+
+* Integration von Azure Managed Disks: Verwaltete Datenträger bieten eine bessere Skalierung und einen höheren Durchsatz für die Datenträger, die von den virtuellen Computern im HDInsight-Cluster verwendet werden.
+
+    Verwaltete Datenträger sind für Kafka in HDInsight standardmäßig aktiviert. Die Anzahl der pro Knoten verwendeten Datenträger kann während der HDInsight-Erstellung konfiguriert werden. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks](../storage/storage-managed-disks-overview.md).
+
+    Informationen zum Konfigurieren von verwalteten Datenträgern mit Kafka in HDInsight finden Sie unter [Erhöhen der Skalierbarkeit von Kafka in HDInsight](hdinsight-apache-kafka-scalability.md).
 
 ## <a name="use-cases"></a>Anwendungsfälle
 

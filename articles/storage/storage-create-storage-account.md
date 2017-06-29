@@ -12,13 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+f1_keywords:
+- sql13.swb.windowsazurestorage.connect.f1
 ms.date: 01/23/2017
 ms.author: robinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 33988eaaf926dcd91a1e63ae766e815cda93cf03
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 16d9fa8a7b7593f222976897bddf615c28109540
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -89,7 +91,7 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
 
 ## <a name="manage-your-storage-account"></a>Verwalten von Speicherkonten
 ### <a name="change-your-account-configuration"></a>Ändern der Kontokonfiguration
-Nach dem Erstellen eines Speicherkontos können Sie seine Konfiguration ändern. So können Sie beispielsweise die für das Konto verwendete Replikationsoption oder den Zugriffsstufe für ein BLOB-Speicherkonto ändern. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf **Alle Einstellungen** und anschließend auf **Konfiguration**, um die Kontokonfiguration anzuzeigen oder zu ändern.
+Nach dem Erstellen eines Speicherkontos können Sie seine Konfiguration ändern. So können Sie beispielsweise die für das Konto verwendete Replikationsoption oder den Zugriffsstufe für ein BLOB-Speicherkonto ändern. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, suchen und klicken Sie unter **EINSTELLUNGEN** auf **Konfiguration**, um die Kontokonfiguration anzuzeigen oder zu ändern.
 
 > [!NOTE]
 > Abhängig von der beim Erstellen des Speicherkontos ausgewählten Leistungsstufe sind einige Replikationsoptionen unter Umständen nicht verfügbar.

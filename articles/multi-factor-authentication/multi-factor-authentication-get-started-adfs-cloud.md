@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/09/2017
+ms.date: 05/29/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 60e8bf883a09668100df8fb51572f9ce0856ccb3
-ms.openlocfilehash: 9eb32ac7936ad54d487dc15d3ef320ec279ce0bc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 6cf4ec4f777ea1f2b852945ab82da2547946f378
+ms.contentlocale: de-de
+ms.lasthandoff: 06/08/2017
 
 ---
 
@@ -88,15 +90,12 @@ Da die Ansprüche jetzt vorhanden sind, können wir vertrauenswürdige IPs konfi
 3. Wählen Sie unter „Verzeichnis“ das Verzeichnis aus, in dem Sie vertrauenswürdige IPs einrichten möchten.
 4. Klicken Sie im ausgewählten Verzeichnis auf **Konfigurieren**.
 5. Klicken Sie im Abschnitt „Multi-Factor Authentication“ auf **Diensteinstellungen verwalten**.
-6. Wählen Sie auf der Seite „Diensteinstellungen“ unter den vertrauenswürdigen IPs die Option **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen**.
+6. Wählen Sie auf der Seite „Diensteinstellungen“ unter den vertrauenswürdigen IPs die Option **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen**.  
+
    ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
+   
 7. Klicken Sie auf **Speichern**.
 8. Sobald die Updates angewendet wurden, klicken Sie auf **Schließen**.
 
 Fertig! An diesem Punkt sollten Office 365-Partnerbenutzer nur MFA verwenden müssen, wenn ein Anspruch von außerhalb des Unternehmensintranets stammt.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

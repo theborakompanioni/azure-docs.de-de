@@ -15,10 +15,10 @@ ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 745e115409a5b1e5e4f343ca0a5bb922272d3020
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 80fd9d79652e4f0d9c4c524e3a762bcc3462bb53
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -74,7 +74,7 @@ Wir beginnen mit einer leeren Vorlage, die nur die grundlegenden Abschnitte eine
        {
          "name": "string",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-05-01",
+         "apiVersion": "2016-12-01",
          "sku": {
            "name": "string"
          },
@@ -102,6 +102,8 @@ Wir beginnen mit einer leeren Vorlage, die nur die grundlegenden Abschnitte eine
    }
    ```
 
+  VS-Code kann darauf hinweisen, dass 2016-12-01 keine gültige API-Version ist. Wenn Sie eine Versionsnummer aus der Referenzdokumentation der Vorlage verwenden, können Sie diese Warnung ignorieren. Diese Warnung wird angezeigt, wenn das Schema nicht mit der letzten Versionsnummer des Ressourcenanbieters aktualisiert wurde. 
+  
   Das obige Beispiel enthält viele Platzhalterwerte und einige Eigenschaften, die Sie in Ihrem Speicherkonto unter Umständen nicht benötigen.
 
 ## <a name="set-values-for-storage-account"></a>Festlegen von Werten für das Speicherkonto
@@ -117,7 +119,7 @@ Sie können nun die Werte für Ihr Speicherkonto festlegen.
      {
        "name": "string",
        "type": "Microsoft.Storage/storageAccounts",
-       "apiVersion": "2016-05-01",
+       "apiVersion": "2016-12-01",
        "sku": {
          "name": "string"
        },
@@ -156,7 +158,7 @@ Ihre Vorlage sieht jetzt wie folgt aus:
     {
       "name": "string",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "string"
       },
@@ -199,7 +201,7 @@ Ihre Vorlage sieht jetzt wie folgt aus:
     {
       "name": "string",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "string"
       },
@@ -328,7 +330,7 @@ Nach Abschluss der Schritte in diesem Artikel sieht Ihre Vorlage nun wie folgt a
     {
       "name": "[variables('storageName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "[parameters('storageSKU')]"
       },

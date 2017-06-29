@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 06/12/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
-ms.openlocfilehash: 5c030f463b21284c15752cf95aa1f9a75f17ffb0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 6f95cf7631664f4630edbbcdadfd1d98105fdb98
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -25,14 +27,18 @@ Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschl
 
 In diesem Artikel wird erläutert, wie Daten in Azure Security Center verwaltet und geschützt werden.
 
+>[!NOTE] 
+>Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
+>
+
 
 ## <a name="data-sources"></a>Datenquellen
 Azure Security Center analysiert Daten aus den folgenden Quellen, um über den Sicherheitsstatus zu informieren, Sicherheitslücken zu identifizieren, Gegenmaßnahmen zu empfehlen und aktive Bedrohungen zu erkennen:
 
 - Azure Services: Verwendet Informationen zur Konfiguration von Azure-Diensten, die Sie bereitgestellt haben. Hierzu wird mit dem Ressourcenanbieter des Diensts kommuniziert.
 - Netzwerkdatenverkehr: Verwendet Metadatenstichproben des Netzwerkdatenverkehrs aus der Infrastruktur von Microsoft wie etwa Quelle/Ziel, IP/Port, Paketgröße und Netzwerkprotokoll.
-- Partnerlösungen: Verwendet Sicherheitswarnungen von integrierten Partnerlösungen (beispielsweise Firewalls und Antischadsoftwarelösungen).
-- Ihre virtuellen Computer: Verwendet Konfigurationsinformationen und Informationen zu Sicherheitsereignissen – beispielsweise Windows-Ereignis- und Überwachungsprotokolle, IIS-Protokolle, Syslog-Nachrichten und Absturzabbilddateien von Ihren virtuellen Computern.
+- Partnerlösungen: Verwendet Sicherheitswarnungen von integrierten Partnerlösungen (beispielsweise Firewalls und Antischadsoftwarelösungen). 
+- Ihre virtuellen Computer und Server: Verwendet Konfigurationsinformationen und Informationen zu Sicherheitsereignissen – beispielsweise Windows-Ereignis- und Überwachungsprotokolle, IIS-Protokolle, Syslog-Nachrichten und Absturzabbilddateien von Ihren virtuellen Computern. Außerdem kann Azure Security Center bei Erstellung einer Warnung eine Momentaufnahme des betroffenen VM-Datenträgers generieren und zu Untersuchungszwecken warnungsbezogene Computerartefakte wie etwa eine Registrierungsdatei aus dem VM-Datenträger extrahieren.
 
 
 ## <a name="data-protection"></a>Datenschutz
@@ -43,19 +49,32 @@ Azure Security Center analysiert Daten aus den folgenden Quellen, um über den S
 **Datennutzung:** Microsoft nutzt mandantenübergreifende Muster und Informationen zu Bedrohungen (Threat Intelligence), um die Funktionen für Prävention und Erkennung zu verbessern. Dies erfolgt in Übereinstimmung mit den in unserer [Datenschutzerklärung](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx) beschriebenen Datenschutzzusagen.
 
 ## <a name="data-location"></a>Speicherort der Daten
-**Ihre Speicherkonten:** Ein Speicherkonto wird für jede Region angegeben, in der virtuelle Computer ausgeführt werden. So können Sie Daten in derselben Region speichern, in der auch der virtuelle Computer angeordnet ist, von dem die Daten erfasst werden. Diese Daten, z.B. Absturzabbilddateien, werden in Ihrem Speicherkonto dauerhaft gespeichert. Momentaufnahmen von VM-Datenträgern werden im gleichen Speicherkonto gespeichert wie der VM-Datenträger.
 
-**Azure Security Center-Speicher:** Informationen zu Sicherheitswarnungen (einschließlich Partnerwarnungen, Empfehlungen und Informationen zum Sicherheitsintegritätsstatus) werden zentral gespeichert (aktuell in den USA). Diese Informationen können auch verwandte Konfigurationsinformationen und Sicherheitsereignisse umfassen, die je nach Bedarf von Ihren virtuellen Computern erfasst werden, um für Sie die Sicherheitswarnung, die Empfehlung oder den Sicherheitsintegritätsstatus bereitzustellen.
+**Ihre Arbeitsbereiche**: Ein Arbeitsbereich wird für die folgenden geografischen Räume angegeben, und die von Ihren virtuellen Azure-Computern erfassten Daten, einschließlich von Absturzabbildern und einigen Typen von Warnungsdaten, werden im nächstgelegenen Arbeitsbereich gespeichert. 
 
+| Geografischer Raum VM                        | Geografischer Raum Arbeitsbereich |
+|-------------------------------|---------------|
+| USA, Brasilien, Kanada | USA |
+| Europa, Vereinigtes Königreich        | Europa        |
+| Asien-Pazifik, Japan, Indien    | Asien-Pazifik  |
+| Australien                     | Australien     |
+
+ 
+Momentaufnahmen von VM-Datenträgern werden im gleichen Speicherkonto gespeichert wie der VM-Datenträger.
+ 
+Bei virtuellen Computern und Servern, die in anderen Umgebungen ausgeführt werden, z.B. lokal, können Sie den Arbeitsbereich und die Region für die Speicherung der erfassten Daten angeben. 
+
+**Azure Security Center-Speicher**: Informationen zu Sicherheitswarnungen, einschließlich von Partnerwarnungen, werden dem Standort der verknüpften Azure-Ressource entsprechend gespeichert, während Informationen zum Sicherheitsintegritätsstatus sowie Empfehlungen dem Kundenstandort entsprechend in den USA oder in Europa zentral gespeichert werden.
 Azure Security Center erfasst kurzlebige Kopien Ihrer Absturzabbilddateien und analysiert sie, um nach Spuren von Exploitversuchen und erfolgreichen Kompromittierungen zu suchen. Azure Security Center führt diese Analyse in dem geografischen Raum durch, in dem sich auch der Arbeitsbereich befindet, und löscht die kurzlebigen Kopien nach Abschluss der Analyse.
 
-Computerartefakte werden zentral in der Region gespeichert, in der sich auch der virtuelle Computer befindet.
+Computerartefakte werden zentral in der Region gespeichert, in der sich auch der virtuelle Computer befindet. 
 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Verwalten der Datensammlung von virtuellen Computern
-Wenn Sie sich für die Aktivierung von Azure Security Center entscheiden, wird die Datensammlung für alle Ihre Abonnements aktiviert. Sie können die Datensammlung auch in Azure Security Center im Abschnitt „Sicherheitsrichtlinie“ aktivieren. Wenn die Datensammlung aktiviert ist, stellt Azure Security Center den Azure-Überwachungs-Agent auf allen vorhandenen unterstützten VMs sowie auf allen neuen VMs bereit, die erstellt werden. Die Sicherheitsüberwachungserweiterung von Azure sucht in ETW-Ablaufverfolgungen (Event Tracing for Windows, [Ereignisablaufverfolgung für Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx)) nach verschiedenen sicherheitsbezogenen Konfigurationen und Ereignissen. Außerdem löst das Betriebssystem während der Ausführung des Computers Ereignisprotokollereignisse aus. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen, angemeldeter Benutzer und Mandanten-ID. Der Azure-Überwachungs-Agent liest Ereignisprotokolleinträge und ETW-Ablaufverfolgungen und kopiert diese zur Analyse in Ihr Speicherkonto.
 
-Die Datensammlung von virtuellen Computern kann jederzeit deaktiviert werden. Dadurch werden sämtliche Überwachungs-Agents entfernt, die von Azure Security Center zuvor installiert wurden. Momentaufnahmen von VM-Datenträgern sowie die Artefaktsammlung sind auch bei deaktivierter Datensammlung aktiviert.
+Wenn Sie Security Center in Azure aktivieren, wird die Datensammlung für alle Ihre Azure-Abonnements aktiviert. Sie können die Datensammlung für Ihre Abonnements auch in Azure Security Center im Abschnitt „Sicherheitsrichtlinie“ aktivieren. Wenn die Datensammlung aktiviert ist, stellt Azure Security Center den Microsoft Monitoring Agent auf allen vorhandenen unterstützten virtuellen Azure-Computern sowie auf allen neuen virtuellen Computern bereit, die erstellt werden. Der Microsoft Monitoring Agent sucht in ETW-Ablaufverfolgungen (Event Tracing for Windows, [Ereignisablaufverfolgung für Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx)) nach verschiedenen sicherheitsbezogenen Konfigurationen und Ereignissen. Außerdem löst das Betriebssystem während der Ausführung des Computers Ereignisprotokollereignisse aus. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen, angemeldeter Benutzer und Mandanten-ID. Der Microsoft Monitoring Agent liest Ereignisprotokolleinträge und ETW-Ablaufverfolgungen und kopiert diese zur Analyse in Ihren Arbeitsbereich bzw. in Ihre Arbeitsbereiche. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich bzw. in Ihre Arbeitsbereiche.
+
+Wenn Sie Azure Security Center Free verwenden, können Sie die Datensammlung von virtuellen Computern in der Sicherheitsrichtlinie deaktivieren. Die Datensammlung ist für Abonnements des Standard-Tarifs erforderlich. Momentaufnahmen von VM-Datenträgern sowie die Artefaktsammlung sind auch bei deaktivierter Datensammlung aktiviert.
 
 
 ## <a name="see-also"></a>Siehe auch
@@ -67,9 +86,4 @@ In diesem Dokument haben Sie erfahren, wie Daten in Azure Security Center verwal
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

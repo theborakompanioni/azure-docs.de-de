@@ -10,23 +10,23 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 1691ef4a3de8f17d61aeead05b7d9eaeadc2d58a
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: d78808421dd5acd907aa9e9000bb3b770a42c061
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-7-create-key-performance-indicators"></a>Lektion 7: Erstellen von Key Performance Indicators
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-In dieser Lektion erstellen Sie Key Performance Indicators (KPIs). KPIs werden verwendet, um die Leistung eines Werts zu messen, der von dem *Base*-Measure definiert wird.Dies geschieht anhand eines *Target*-Werts, der ebenfalls von einem Measure oder einem absoluten Wert definiert wird. Mit KPIs können Geschäftsleuten in Berichterstellungsclientanwendungen Zusammenfassungen von Geschäftserfolgen schnell und einfach verstehen bzw. Trends erkennen. Weitere Informationen finden Sie unter [KPIs](https://docs.microsoft.com/sql/analysis-services/tabular-models/kpis-ssas-tabular)
+In dieser Lektion erstellen Sie Key Performance Indicators (KPIs). KPIs werden verwendet, um die Leistung eines Werts zu messen, der von dem *Base*-Measure definiert wird. Dies geschieht anhand eines *Target*-Werts, der ebenfalls von einem Measure oder einem absoluten Wert definiert wird. Mit KPIs können Geschäftsleuten in Berichterstellungsclientanwendungen Zusammenfassungen von Geschäftserfolgen schnell und einfach verstehen bzw. Trends erkennen. Weitere Informationen finden Sie unter [KPIs](https://docs.microsoft.com/sql/analysis-services/tabular-models/kpis-ssas-tabular)
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
@@ -47,7 +47,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
     InternetCurrentQuarterSalesPerformance :=DIVIDE([InternetCurrentQuarterSales]/[InternetPreviousQuarterSalesProportionToQTD],BLANK())  
     ```
 
-    Dieses Measure fungiert als Base-Measure für den KPI.  
+    Dieses Measure fungiert als Basiskennzahl für den KPI.  
   
 4.  Klicken Sie mit der rechten Maustaste auf **InternetCurrentQuarterSalesPerformance** > **KPI erstellen**.   
   
@@ -60,7 +60,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
     ![aas-lektion7-kpi](../tutorials/media/aas-lesson7-kpi.png)
     
     > [!TIP]  
-    > Beachten Sie die erweiterbare Beschriftung **Beschreibungen** unter den verfügbaren Symbolarten. Dies können Sie dazu verwenden, Beschreibungen der verschiedenen KPI-Elemente einzugeben, damit diese in Clientanwendungen besser voneinander unterschieden werden können.  
+    > Beachten Sie die erweiterbare Beschriftung **Beschreibungen** unter den verfügbaren Symbolarten. Verwenden Sie Beschreibungen der verschiedenen KPI-Elemente, damit diese in Clientanwendungen besser voneinander unterschieden werden können.  
   
 9. Klicken Sie auf **OK**, um den KPI fertigzustellen.  
   

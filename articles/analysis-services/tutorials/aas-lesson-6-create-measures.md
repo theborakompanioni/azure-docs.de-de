@@ -10,20 +10,23 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: c4977758997c91f0191e0367fb57923f43080b56
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 90833fa9744eac298b0da82cd3d12f27cc237510
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-6-create-measures"></a>Lektion 6: Erstellen von Measures
-In dieser Lektion erstellen Sie Measures, die im Modell enthalten sein sollen. Ähnlich wie die berechneten Spalten, die Sie erstellt haben, ist ein Measure eine Berechnung, die mithilfe einer DAX-Formel erstellt wird. Im Gegensatz zu berechneten Spalten werden Measures jedoch anhand eines vom Benutzer ausgewählten *Filters* ausgewertet – z.B. eine bestimmte Spalte oder ein Slicer, der zum Feld „Zeilenbeschriftungen“ in einer PivotTable hinzugefügt wird. Anschließend wird vom angewendeten Measure ein Wert für jede Zelle im Filter berechnet. Measures sind leistungsstarke, flexible Berechnungen, die Sie in fast allen Tabellenmodellen für dynamische Berechnungen von numerischen Daten einschließen können. Weitere Informationen finden Sie unter [Measures](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular).
+
+[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+
+In dieser Lektion erstellen Sie Measures, die im Modell enthalten sein sollen. Ähnlich wie die berechneten Spalten, die Sie erstellt haben, ist ein Measure eine Berechnung, die mithilfe einer DAX-Formel erstellt wird. Im Gegensatz zu berechneten Spalten werden Measures anhand eines vom Benutzer ausgewählten *Filters* ausgewertet. Ein Beispiel ist eine bestimmte Spalte oder ein Slicer, die bzw. der im Feld für Zeilenbezeichnungen in einer PivotTable hinzugefügt wurde. Anschließend wird vom angewendeten Measure ein Wert für jede Zelle im Filter berechnet. Measures sind leistungsstarke, flexible Berechnungen, die Sie in fast allen Tabellenmodellen für dynamische Berechnungen von numerischen Daten einschließen können. Weitere Informationen finden Sie unter [Measures](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular).
   
 Verwenden Sie das *Measureraster*, um Measures zu erstellen. Standardmäßig verfügt jede Tabelle über ein leeres Measureraster; allerdings erstellen Sie normalerweise nicht für jede Tabelle Measures. Das Measureraster wird in der Datenansicht unter einer Tabelle im Modell-Designer in der Datensicht angezeigt. Klicken Sie auf das Menü **Tabelle**, und klicken Sie dann auf **Measureraster anzeigen**, um das Measureraster für eine Tabelle anzuzeigen oder auszublenden.  
   
@@ -54,12 +57,12 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
     
       ![aas-lektion6-neuesmeasure](../tutorials/media/aas-lesson6-newmeasure.png) 
     
-    Im Gegensatz zu berechneten Spalten können Sie mit Measureformeln den Measurenamen gefolgt von einem Komma, gefolgt vom Formelausdruck eingeben.
+    Im Gegensatz zu berechneten Spalten können Sie mit Measureformeln den Measurenamen gefolgt von einem Doppelpunkt, gefolgt vom Formelausdruck eingeben.
 
   
 #### <a name="to-create-a-daysincurrentquarter-measure-in-the-dimdate-table"></a>So erstellen Sie ein DaysInCurrentQuarter-Measure in der DimDate-Tabelle  
   
-1.  Klicken Sie, solange die **DimDate**-Tabelle noch im Modell-Designer aktiv ist, im Measureraster auf die leere Zelle unter dem Measure, das Sie gerade erstellt haben.  
+1.  Klicken Sie, solange die **DimDate**-Tabelle noch im Modell-Designer aktiv ist, im Measureraster auf die leere Zelle unter dem Measure, das Sie erstellt haben.  
   
 2.  Geben Sie in der Bearbeitungsleiste folgende Formel ein:  
   
@@ -67,7 +70,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
     DaysInCurrentQuarter:=COUNTROWS( DATESBETWEEN( 'DimDate'[Date], STARTOFQUARTER( LASTDATE('DimDate'[Date])), ENDOFQUARTER('DimDate'[Date])))
     ```
   
-    Bei der Erstellung eines Vergleichsverhältnisses zwischen einem nicht abgeschlossenen Zeitraum und dem vorherigen Zeitraum muss die Formel den Anteil des verstrichenen Zeitraums in Betracht ziehen und mit dem gleichen Anteil des vorherigen Zeitraums vergleichen. In diesem Fall gibt [DaysCurrentQuarterToDate]/[DaysInCurrentQuarter] den Anteil des verstrichenen Zeitraums im aktuellen Zeitraum an.  
+    Bei der Erstellung eines Vergleichsverhältnisses zwischen einem nicht abgeschlossenen Zeitraum und dem vorherigen Zeitraum muss die Formel den Anteil des verstrichenen Zeitraums berechnen und mit dem gleichen Anteil des vorherigen Zeitraums vergleichen. In diesem Fall gibt [DaysCurrentQuarterToDate]/[DaysInCurrentQuarter] den Anteil des verstrichenen Zeitraums im aktuellen Zeitraum an.  
   
 #### <a name="to-create-an-internetdistinctcountsalesorder-measure-in-the-factinternetsales-table"></a>So erstellen Sie ein InternetDistinctCountSalesOrder-Measure in der FactInternetSales-Tabelle  
   

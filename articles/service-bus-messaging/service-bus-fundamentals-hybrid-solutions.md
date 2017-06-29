@@ -12,22 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/08/2017
+ms.date: 06/15/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 4d7523c2bd865039cc989b3d6a288f870288b102
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: af8b10f0a460e695a39879718174e81f78934ef8
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="azure-service-bus"></a>Azure-Servicebus
+
 Ob eine Anwendung oder ein Dienst in einer Cloud betrieben wird oder lokal installiert ist – sie bzw. er muss oft mit anderen Anwendungen oder Diensten interagieren. Microsoft Azure stellt Service Bus als umfangreich einsetzbare Lösung bereit. Der vorliegende Artikel bietet einen Überblick über diese Technologie und beschreibt, wann Sie den Einsatz von Service Bus in Erwägung ziehen sollten.
 
 ## <a name="service-bus-fundamentals"></a>Service Bus – Grundlagen
-Verschiedene Situationen erfordern verschiedene Kommunikationsarten. Manchmal ist die beste Lösung, Anwendungen Nachrichten über einfache Warteschlangen senden und empfangen zu lassen. In anderen Situationen ist eine normale Warteschlange nicht genug, sondern eine Warteschlange mit einem Veröffentlichungs- und Abonnementsmechanismus ist besser geeignet. In manchen Fällen ist nur eine Verbindung zwischen den Anwendungen erforderlich. Warteschlangen sind nicht erforderlich. Service Bus bietet alle drei Optionen, sodass Ihre Anwendungen auf mehrere verschiedene Arten miteinander interagieren können.
 
-Service Bus ist ein Clouddienst mit mehreren Mandanten. Das bedeutet, dass der Dienst von mehreren Benutzern gemeinsam genutzt wird. Jeder Benutzer, z.B. auch ein Anwendungsentwickler, erstellt einen *Namespace* und definiert dann die erforderlichen Kommunikationsmechanismen innerhalb dieses Namespace. Abbildung 1 zeigt, wie dies aussieht.
+Verschiedene Situationen erfordern verschiedene Kommunikationsarten. Manchmal ist die beste Lösung, Anwendungen Nachrichten über einfache Warteschlangen senden und empfangen zu lassen. In anderen Situationen ist eine normale Warteschlange nicht genug, sondern eine Warteschlange mit einem Veröffentlichungs- und Abonnementsmechanismus ist besser geeignet. In manchen Fällen ist nur eine Verbindung zwischen den Anwendungen erforderlich. Warteschlangen werden nicht benötigt. Service Bus bietet alle drei Optionen, sodass Ihre Anwendungen auf mehrere verschiedene Arten miteinander interagieren können.
+
+Service Bus ist ein Clouddienst mit mehreren Mandanten. Das bedeutet, dass der Dienst von mehreren Benutzern gemeinsam genutzt wird. Jeder Benutzer, z.B. ein Anwendungsentwickler, erstellt einen *Namespace* und definiert dann die erforderlichen Kommunikationsmechanismen innerhalb dieses Namespace. In Abbildung 1 ist diese Architektur dargestellt.
 
 ![][1]
 
@@ -41,11 +44,12 @@ Innerhalb eines Namespace können Sie eine oder mehr Instanzen von drei verschie
 
 Wenn Sie eine Warteschlange, ein Thema oder ein Relais erstellen, geben Sie diesem Objekt einen Namen. In Kombination mit der Bezeichnung Ihres Namespace ist dieser Name ein eindeutiger Bezeichner für das Objekt. Anwendungen können diesen Namen an Service Bus übermitteln und dann mithilfe der Warteschlange, des Themas oder des Relays miteinander kommunizieren. 
 
-Für die Verwendung eines dieser Objekte im Relayszenario können Windows-Anwendungen Windows Communication Foundation (WCF) nutzen. Für Warteschlangen und Themen können Windows-Anwendungen eine über Service Bus definierte Messaging-API verwenden. Damit diese Objekte von Nicht-Windows-Anwendungen einfacher verwendet werden können, stellt Microsoft SDKs für Java, Node.js und andere Sprachen bereit. Sie können auch mithilfe von [REST-APIs](/rest/api/servicebus/) über HTTP(s) auf Warteschlangen und Themen zugreifen. 
+Für die Verwendung eines dieser Objekte im Relayszenario können Windows-Anwendungen Windows Communication Foundation (WCF) nutzen. Dieser Dienst wird als [WCF Relay](../service-bus-relay/relay-what-is-it.md) bezeichnet. Für Warteschlangen und Themen können Windows-Anwendungen eine über Service Bus definierte Messaging-API verwenden. Damit diese Objekte von Nicht-Windows-Anwendungen einfacher verwendet werden können, stellt Microsoft SDKs für Java, Node.js und andere Sprachen bereit. Sie können auch mithilfe von [REST-APIs](/rest/api/servicebus/) über HTTP(s) auf Warteschlangen und Themen zugreifen. 
 
 Es ist wichtig zu verstehen, dass, obwohl Service Bus selbst in einer Cloud (in den Azure-Rechenzentren von Microsoft) ausgeführt wird, die Anwendungen, die es verwenden, überall laufen können. Sie können Service Bus zum Verbinden von Anwendungen auf Azure oder innerhalb Ihres eigenen Datencenters verwenden. Sie können damit auch eine Anwendung, die auf Azure oder einer anderen Cloud-Plattform läuft, mit einer lokalen Anwendung oder mit Tablets oder Telefonen verbinden. Es ist auch möglich, Haushaltsgeräte, Sensoren und andere Vorrichtungen mit einer zentralen Anwendung oder miteinander zu verbinden. Service Bus ist ein Kommunikationsmechanismus in der Cloud, auf den praktisch von überall aus zugegriffen werden kann. Wie Sie es verwenden, hängt davon ab, was Ihre Anwendungen leisten müssen.
 
 ## <a name="queues"></a>Warteschlangen
+
 Angenommen, Sie entscheiden sich dafür, zwei Anwendungen über eine Service Bus-Warteschlange miteinander zu verbinden. Abbildung 2 illustriert diese Situation.
 
 ![][2]
@@ -54,28 +58,29 @@ Angenommen, Sie entscheiden sich dafür, zwei Anwendungen über eine Service Bus
 
 Der Vorgang ist einfach: Ein Sender sendet eine Nachricht an eine Service Bus-Warteschlange, und ein Empfänger greift diese Nachricht zu einem späteren Zeitpunkt auf. Eine Warteschlange kann einen einzelnen Empfänger besitzen, wie in Abbildung 2 dargestellt. Alternativ können auch mehrere Anwendungen aus der gleichen Warteschlange lesen. Im zweiten Fall wird jede Nachricht nur von einem einzelnen Empfänger gelesen. Bei einem Multicastdienst empfiehlt sich stattdessen die Verwendung eines Themas.
 
-Jede Nachricht besteht aus zwei Teilen: einem Satz von Eigenschaften (jede davon ist ein Paar aus Schlüssel und Wert) und einer Nutzlast der Nachricht. Die Nutzlast kann binärer Art, Text oder sogar XML sein. Die Art der Verwendung richtet sich danach, welche Aufgaben in der Anwendung ausgeführt werden sollen. Wenn eine Anwendung z.B. eine Nachricht über einen kürzlich erfolgten Verkauf sendet, kann die Nachricht die Eigenschaften *Verkäufer=„Ava“* und *Menge=10000 enthalten*. Der Nachrichtentext kann ein gescanntes Bild des unterzeichneten Verkaufsvertrags enthalten oder auch leer sein.
+Jede Nachricht besteht aus zwei Teilen: einem Satz von Eigenschaften (jede davon ist ein Paar aus Schlüssel und Wert) und einer Nutzlast der Nachricht. Die Nutzlast kann binärer Art, Text oder sogar XML sein. Die Art der Verwendung richtet sich danach, welche Aufgaben in der Anwendung ausgeführt werden sollen. Wenn eine Anwendung z.B. eine Nachricht über einen kürzlich erfolgten Verkauf sendet, kann die Nachricht die Eigenschaften **Verkäufer=„Ava“** und **Menge=10000 enthalten**. Der Nachrichtentext kann ein gescanntes Bild des unterzeichneten Verkaufsvertrags enthalten oder auch leer sein.
 
-Ein Empfänger kann eine Nachricht von einem Servicebus auf zwei verschiedene Arten lesen. Bei Verwendung der ersten Option, *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, wird eine Nachricht aus der Warteschlange entfernt und sofort gelöscht. Dies ist einfach, aber wenn der Empfänger ausfällt, bevor die Verarbeitung der Nachricht abgeschlossen ist, geht die Nachricht verloren. Da die Nachricht dann aus der Warteschlange entfernt worden ist, kann kein anderer Empfänger auf sie zugreifen. 
+Ein Empfänger kann eine Nachricht von einem Servicebus auf zwei verschiedene Arten lesen. Bei Verwendung der ersten Option, *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, wird eine Nachricht aus der Warteschlange entfernt und sofort gelöscht. Diese Option ist unkompliziert, aber wenn der Empfänger ausfällt, bevor die Verarbeitung der Nachricht abgeschlossen ist, geht die Nachricht verloren. Da die Nachricht dann aus der Warteschlange entfernt worden ist, kann kein anderer Empfänger auf sie zugreifen. 
 
 Die zweite Option, *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, dient zur Lösung dieses Problems. Wie bei **ReceiveAndDelete** wird auch bei **PeekLock** eine gelesene Nachricht aus der Warteschlange entfernt. Die Nachricht wird allerdings nicht gelöscht, sondern gesperrt und für andere Empfänger unsichtbar gemacht. Anschließend wird auf eines von drei Ereignissen gewartet.
 
 * Wenn der Empfänger die Nachricht erfolgreich verarbeitet, wird die Meldung [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) ausgegeben, und die Warteschlange löscht die Nachricht. 
 * Wenn der Empfänger entscheidet, dass er die Nachricht nicht erfolgreich verarbeiten kann, wird die Meldung [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) ausgegeben. In diesem Falle hebt die Warteschlange die Sperrung der Nachricht auf und macht sie für andere Empfänger verfügbar.
-* Wenn der Empfänger innerhalb eines konfigurierbaren Zeitraums (standardmäßig 60 Sekunden) keine der beiden Meldungen ausgibt, nimmt die Warteschlange an, dass der Empfänger ausgefallen ist. In diesem Fall verhält sie sich so, als hätte der Empfänger **Abandon**aufgerufen, sodass die Nachricht für andere Empfänger verfügbar wird.
+* Wenn der Empfänger innerhalb eines konfigurierbaren Zeitraums (standardmäßig 60 Sekunden) keine der beiden Meldungen aufruft, nimmt die Warteschlange an, dass der Empfänger ausgefallen ist. In diesem Fall verhält sie sich so, als hätte der Empfänger **Abandon**aufgerufen, sodass die Nachricht für andere Empfänger verfügbar wird.
 
-Beachten Sie, was geschieht: Dieselbe Nachricht kann zweimal ausgegeben werden, möglicherweise sogar an zwei verschiedene Empfänger. Anwendungen, die Servicebus-Warteschlangen verwenden, müssen darauf vorbereitet sein. Um die Erkennung von Duplikaten zu erleichtern, verfügt jede Nachricht über die eindeutige Eigenschaft [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) , die standardmäßig gleich bleibt – unabhängig davon, wie oft die Nachricht aus einer Warteschlange gelesen wird. 
+Beachten Sie, was geschieht: Dieselbe Nachricht kann zweimal ausgegeben werden, möglicherweise sogar an zwei verschiedene Empfänger. Anwendungen, die Service Bus-Warteschlangen verwenden, müssen darauf vorbereitet sein. Um die Erkennung von Duplikaten zu erleichtern, verfügt jede Nachricht über die eindeutige Eigenschaft [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) , die standardmäßig gleich bleibt – unabhängig davon, wie oft die Nachricht aus einer Warteschlange gelesen wird. 
 
 Warteschlangen sind in einigen Situationen sinnvoll. Sie ermöglichen eine Kommunikation zwischen Anwendungen auch dann, wenn beide zur selben Zeit ausgeführt werden, was bei Batch- und Mobilanwendungen sehr praktisch sein kann. Eine Warteschlange mit mehreren Empfängern bietet auch automatischen Lastenausgleich, da gesendete Nachrichten zwischen diesen Empfängern verteilt werden.
 
 ## <a name="topics"></a>Themen
+
 So hilfreich sie generell auch sind – Warteschlangen sind nicht immer die beste Lösung. Manchmal sind Servicebus-Themen besser. Abbildung 3 illustriert diesen Gedanken.
 
 ![][3]
 
-**Abbildung 3: Auf Grundlage des in einer Abonnementanwendung definierten Filters kann diese einige oder alle Nachrichten empfangen, die an ein Service Bus-Thema gesendet wurden.**
+**Abbildung 3: Auf Grundlage des in einer Abonnementanwendung definierten Filters kann diese einige oder alle Nachrichten empfangen, die an ein Service Bus-Thema gesendet wurden.**
 
-Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachrichten an ein Thema auf dieselbe Weise, auf die sie Nachrichten an eine Warteschlange schicken, und diese Nachrichten sehen genauso aus wie bei den Warteschlangen. Der große Unterschied ist, dass bei Themen jede empfangende Anwendung durch Definieren eines *Filters* ihr eigenes *Abonnement* erstellen kann. Ein Abonnement sieht dann nur die Nachrichten, die auf diesen Filter passen. Abbildung 3 zeigt z. B. einen Sender und ein Thema mit drei Abonnenten, jeder mit seinem eigenen Filter:
+Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachrichten an ein Thema auf dieselbe Weise, auf die sie Nachrichten an eine Warteschlange schicken, und diese Nachrichten sehen genauso aus wie bei den Warteschlangen. Der Unterschied liegt darin, dass bei Themen jede empfangende Anwendung durch Definieren eines *Filters* ihr eigenes *Abonnement* erstellen kann. Ein Abonnent sieht dann nur die Nachrichten, die mit diesem Filter übereinstimmen. Abbildung 3 zeigt z. B. einen Sender und ein Thema mit drei Abonnenten, jeder mit seinem eigenen Filter:
 
 * Abonnent 1 empfängt nur Nachrichten, die die Eigenschaft *Verkäufer="Ava"*haben.
 * Abonnent 2 empfängt Nachrichten, die die Eigenschaft *Verkäufer=„Ruby“* und/oder eine Eigenschaft namens *Menge* haben, deren Wert größer ist als 100.000. Ruby könnte die Vertriebschefin sein, die sowohl ihre eigenen Verkäufe als auch diejenigen anderer Verkäufer ab einer bestimmten Menge sehen möchte.
@@ -84,7 +89,8 @@ Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachr
 Wie bei Warteschlangen können Abonnenten eines Themas Nachrichten entweder über [ReceiveAndDelete oder über PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) lesen. Anders als bei Warteschlangen kann jedoch eine einzelne an ein Thema gesendete Nachricht von mehreren Abonnements empfangen werden. Dieser Ansatz, der allgemein als *Veröffentlichen und Abonnieren* (oder *Pub/Sub*) bezeichnet wird, ist sinnvoll, wenn mehrere Anwendungen an den gleichen Nachrichten interessiert sind. Durch Definition eines passenden Filters kann jeder Abonnent genau den Teil aus der Nachricht herausziehen, den er mitbekommen muss.
 
 ## <a name="relays"></a>Relays
-Sowohl Warteschlangen als auch Themen ermöglichen eine asynchrone unidirektionale Kommunikation über einen Broker. Der Verkehr fließt in nur eine Richtung, und es besteht keine direkte Verbindung zwischen Sendern und Empfängern. Aber was tun, wenn dies nicht genug ist? Angenommen, Ihre Anwendungen sollen Nachrichten sowohl senden als auch empfangen, oder sie möchten vielleicht eine direkte Verbindung zwischen ihnen herstellen, ohne einen Broker zum Speichern der Nachrichten zu verwenden. Für solche Szenarien bietet Service Bus *Relays*an, wie in Abbildung 4 gezeigt.
+
+Sowohl Warteschlangen als auch Themen ermöglichen eine asynchrone unidirektionale Kommunikation über einen Broker. Der Verkehr fließt in nur eine Richtung, und es besteht keine direkte Verbindung zwischen Sendern und Empfängern. Aber was tun, wenn Sie diese Verbindung nicht möchten? Angenommen, Ihre Anwendungen sollen Nachrichten sowohl senden als auch empfangen, oder sie möchten vielleicht eine direkte Verbindung zwischen ihnen herstellen, ohne einen Broker zum Speichern der Nachrichten zu verwenden. Für solche Szenarien bietet Service Bus *Relays*an, wie in Abbildung 4 gezeigt.
 
 ![][4]
 
@@ -96,16 +102,18 @@ Nehmen wir an, Sie möchten zwei lokale Anwendungen miteinander verbinden, die b
 
 Ein Service Bus Relay kann diese Hilfestellung leisten. Zur bidirektionalen Kommunikation über ein Relay baut jede Anwendung eine ausgehende TCP-Verbindung mit Service Bus auf und hält diese offen. Jede Kommunikation zwischen den beiden Anwendungen läuft über diese beiden Verbindungen. Da jede Verbindung innerhalb des Rechenzentrums hergestellt wurde, erlaubt die Firewall, dass eingehender Datenverkehr an jede Anwendung gesendet wird, ohne dass neue Ports geöffnet werden müssen. Dieser Ansatz löst auch das NAT-Problem, da jede Anwendung während der gesamten Kommunikation einen konstanten Endpunkt in der Cloud aufweist. Durch den Datenaustausch über das Relay können die Anwendungen die Probleme vermeiden, die die Kommunikation erschweren können. 
 
-Um Service Bus Relay verwenden zu können, nutzen die Anwendungen Windows Communication Foundation (WCF). Service Bus bietet WCF-Anbindungen, die den Windows-Anwendungen die Interaktion über Relays erleichtern. Anwendungen, die WCF bereits verwenden, geben normalerweise nur eine dieser Anbindungen an und kommunizieren dann miteinander über ein Relay. Anders als bei Warteschlangen und Themen erfordert die Verwendung von Relays mit Windows-fremden Anwendungen einigen Programmieraufwand (sofern sie überhaupt möglich ist), da hierfür keine Standardbibliotheken zur Verfügung stehen.
+Um Service Bus Relay verwenden zu können, nutzen die Anwendungen Windows Communication Foundation (WCF). Service Bus bietet WCF-Anbindungen, die den Windows-Anwendungen die Interaktion über Relays erleichtern. Anwendungen, die WCF bereits verwenden, geben normalerweise eine dieser Anbindungen an und kommunizieren dann miteinander über ein Relay. Anders als bei Warteschlangen und Themen erfordert die Verwendung von Relays mit Windows-fremden Anwendungen einigen Programmieraufwand (sofern sie überhaupt möglich ist), da hierfür keine Standardbibliotheken zur Verfügung stehen.
 
 Im Gegensatz zu Warteschlangen und Themen werden Relays nicht explizit durch Anwendungen erstellt. Wenn eine Anwendung zum Empfangen von Nachrichten eine TCP-Verbindung mit Service Bus aufbaut, wird ein Relay automatisch erstellt. Wenn die Verbindung ausfällt, wird das Relay gelöscht. Damit eine Anwendung ein von einem bestimmten Listener erzeugtes Relay finden kann, bietet Service Bus eine Registry, die es Anwendungen erlaubt, ein bestimmtes Relay anhand seines Namens zu finden.
 
-Relays sind die richtige Lösung, wenn direkte Kommunikation zwischen Anwendungen erforderlich ist. Denken Sie z. B. an ein Fluglinien-Reservierungssystem, das in einem lokalen Rechenzentrum läuft und auf das von Eincheck-Terminals, Mobilgeräten und anderen Computern zugegriffen wird. Anwendungen, die auf all diesen Systemen laufen, könnten auf Service Bus Relay in der Cloud vertrauen, um immer dann zu kommunizieren, wenn sie gerade ausgeführt werden.
+Relays sind die richtige Lösung, wenn direkte Kommunikation zwischen Anwendungen erforderlich ist. Denken Sie z. B. an ein Fluglinien-Reservierungssystem, das in einem lokalen Rechenzentrum läuft und auf das von Eincheck-Terminals, Mobilgeräten und anderen Computern zugegriffen wird. Anwendungen, die auf allen diesen Systemen ausgeführt werden, könnten auf Service Bus Relay in der Cloud vertrauen, um immer dann zu kommunizieren, wenn sie gerade ausgeführt werden.
 
 ## <a name="summary"></a>Zusammenfassung
-Das Verbinden von Anwendungen zählte schon immer zur Erstellung von Komplettlösungen und die Palette von Szenarien, in denen erforderlich ist, dass Anwendungen und Dienste miteinander kommunizieren, nimmt stetig zu, da Anwendungen und Geräte in zunehmenden Maße mit dem Internet verbunden sind. Service Bus stellt cloudbasierte Technologien bereit, um diese Aufgabe über Warteschlangen, Themen und Relays zu bewältigen und damit diese wesentliche Funktion leichter und breiter verfügbar zu machen.
+
+Das Verbinden von Anwendungen zählte schon immer zur Erstellung von Komplettlösungen. Die Palette von Szenarien, in denen Anwendungen und Dienste miteinander kommunizieren müssen, nimmt stetig zu, da Anwendungen und Geräte in zunehmendem Maße mit dem Internet verbunden sind. Service Bus stellt cloudbasierte Technologien bereit, um diese Kommunikation über Warteschlangen, Themen und Relays zu bewältigen und damit diese wesentliche Funktion leichter und breiter verfügbar zu machen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie nun mit den Grundlagen von Azure Service Bus vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
 * Verwenden von [Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)

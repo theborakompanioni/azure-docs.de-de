@@ -35,7 +35,7 @@
 1. Klicken Sie auf **Geräte-Explorer**.
 1. Klicken Sie im Geräte-Explorer-Bereich auf **Hinzufügen**, um Ihrem IoT Hub ein Gerät hinzuzufügen.
 
-   **Geräte-ID**: Die ID des neuen Geräts.
+   **Geräte-ID**: Die ID des neuen Geräts. Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
 
    **Authentifizierungstyp**: Wählen Sie die Option **Symmetrischer Schlüssel**.
 

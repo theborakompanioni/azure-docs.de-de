@@ -4,7 +4,7 @@ description: "Dieses Dokument dient Ihnen als Hilfe bei den ersten Schritten mit
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 754796ef-a43e-468a-86c9-04a2eda55b5b
 ms.service: operations-management-suite
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2017
+ms.date: 06/13/2017
 ms.author: yurid
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 5753511d26c06f385fd4ff717d8592c321338172
 ms.contentlocale: de-de
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -139,6 +139,12 @@ Sie können die Untersuchung fortsetzen, indem Sie auf die einzelnen Computer kl
 ### <a name="threat-intelligence"></a>Threat Intelligence
 
 Mithilfe der Threat Intelligence-Option in der Sicherheits- und Überwachungslösung von OMS können IT-Administratoren Sicherheitsrisiken für die Umgebung erkennen. So können sie etwa ermitteln, ob ein bestimmter Computer Teil eines Botnets ist. Computer können Knoten in einem Botnet werden, wenn Angreifer illegal Schadsoftware installieren, die diesen Computer heimlich mit einem Steuerknoten verbindet. Die Option ermöglicht auch die Erkennung potenzieller Bedrohungen aus verdeckten Kommunikationskanälen wie dem Darknet. Weitere Informationen zu Threat Intelligence finden Sie im Artikel [Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-responding-alerts.md).
+
+In einigen Szenarien sehen Sie möglicherweise eine potenziell böswillige IP-Adresse, auf die einer der überwachten Computer zugegriffen hat:
+
+![Threat Intelligence-Karte](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
+
+Diese Warnung und andere derselben Kategorie werden über die OMS-Sicherheit generiert, wobei [Microsoft Threat Intelligence](https://youtu.be/O4WtxgUrDc8) verwendet wird. Die Threat Intelligence-Daten werden von Microsoft gesammelt und von führenden Threat Intelligence-Anbietern erworben. Diese Daten werden regelmäßig aktualisiert und an sich schnell entwickelnde Bedrohungen angepasst. Es empfiehlt sich eine Kombination mit anderen Quellen von Sicherheitsinformationen, wenn eine Sicherheitswarnung [untersucht](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) wird. 
 
 ### <a name="baseline-assessment"></a>Baselinebewertung
 

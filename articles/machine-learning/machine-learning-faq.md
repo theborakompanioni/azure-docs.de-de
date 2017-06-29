@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/23/2017
+ms.date: 06/02/2017
 ms.author: garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: bb4d64f799027c9af74fd50ab724449bdede7804
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 0a1e23cd52ab5c10791a11d93753b54eb1c1b71a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -47,7 +47,7 @@ Weitere Informationen zu Machine Learning Studio finden Sie unter [Was ist Machi
 
 Mit dem Machine Learning-API-Dienst können Sie Ihre Vorhersagemodelle, z.B. in Machine Learning Studio erstellte Modelle, als skalierbare, fehlertolerante Webdienste bereitstellen. Die vom Machine Learning-API-Dienst erstellten Webdienste sind REST-APIs. Sie bieten eine Schnittstelle für die Kommunikation zwischen externen Anwendungen und Ihren Predictive Analytics-Modellen.
 
-Weitere Informationen finden Sie unter [Verbinden mit einem Machine Learning-Webdienst](machine-learning-connect-to-azure-machine-learning-web-service.md).
+Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](machine-learning-consume-web-services.md).
 
 **Wo sind meine klassischen Webdienste aufgeführt? Wo sind meine neuen (Azure Resource Manager-basierten) Webdienste aufgeführt?**
 
@@ -221,7 +221,7 @@ Informationen hierzu finden Sie unter [Einschränkungen für Azure-Abonnements](
 ### <a name="use"></a>Verwenden Sie
 **Wann sollte ich mein Vorhersagemodell als Stapelausführungsdienst oder als Anfrage-Antwort-Dienst ausführen?**
 
-Der Anfrage-Antwort-Dienst (Request Response Service, RRS) ist ein hoch skalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in der Experimentumgebung erstellt und bereitgestellt wurden. Der Stapelausführungsdienst (Batch Execution Service, BES) dient zur asynchronen Bewertung eines Stapels von Datensätzen. Die Eingabe für BES gleicht der für RRS verwendeten Dateneingabe. BES liest im Gegensatz zu RRS einen Block von Einträgen aus einer Vielzahl von Quellen, z.B. Azure-Blobspeicher, Azure-Tabellenspeicher, Azure SQL-Datenbank, HDInsight (Hive-Abfrage) und HTTP-Quellen. Weitere Informationen finden Sie unter [Verwenden von Machine Learning-Webdiensten](machine-learning-consume-web-services.md).
+Der Anfrage-Antwort-Dienst (Request Response Service, RRS) ist ein hoch skalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in der Experimentumgebung erstellt und bereitgestellt wurden. Der Stapelausführungsdienst (Batch Execution Service, BES) dient zur asynchronen Bewertung eines Stapels von Datensätzen. Die Eingabe für BES gleicht der für RRS verwendeten Dateneingabe. BES liest im Gegensatz zu RRS einen Block von Einträgen aus einer Vielzahl von Quellen, z.B. Azure-Blobspeicher, Azure-Tabellenspeicher, Azure SQL-Datenbank, HDInsight (Hive-Abfrage) und HTTP-Quellen. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](machine-learning-consume-web-services.md).
 
 **Wie aktualisiere ich das Modell für den bereitgestellten Webdienst?**
 
@@ -287,7 +287,7 @@ Nein.
 ## <a name="security-and-availability"></a>Sicherheit und Verfügbarkeit
 **Wer hat standardmäßig Zugriff auf den HTTP-Endpunkt für den Webdienst? Wie kann ich den Zugriff auf den Endpunkt einschränken?**
 
-Nach der Bereitstellung eines Webdiensts wird ein Standardendpunkt für den Dienst erstellt. Der Standardendpunkt kann über seinen API-Schlüssel aufgerufen werden. Sie können zusätzliche Endpunkte mit eigenen Schlüsseln im klassischen Azure-Portal oder programmgesteuert mithilfe der APIs der Webdienstverwaltung hinzufügen. Zugriffsschlüssel sind erforderlich, um Aufrufe für den Webdienst durchzuführen. Weitere Informationen finden Sie unter [Verbinden mit einem Machine Learning-Webdienst](machine-learning-connect-to-azure-machine-learning-web-service.md).
+Nach der Bereitstellung eines Webdiensts wird ein Standardendpunkt für den Dienst erstellt. Der Standardendpunkt kann über seinen API-Schlüssel aufgerufen werden. Sie können zusätzliche Endpunkte mit eigenen Schlüsseln im klassischen Azure-Portal oder programmgesteuert mithilfe der APIs der Webdienstverwaltung hinzufügen. Zugriffsschlüssel sind erforderlich, um Aufrufe für den Webdienst durchzuführen. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](machine-learning-consume-web-services.md).
 
 **Was passiert, wenn mein Azure-Speicherkonto nicht gefunden werden kann?**
 

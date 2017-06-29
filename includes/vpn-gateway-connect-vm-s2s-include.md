@@ -1,6 +1,6 @@
 Sie können eine Verbindung mit einer VM herstellen, die in Ihrem VNet bereitgestellt wird, indem Sie eine Remotedesktopverbindung mit Ihrer VM herstellen. Die beste Möglichkeit zur anfänglichen Sicherstellung, dass eine Verbindung mit Ihrer VM hergestellt werden kann, ist die Verwendung der privaten IP-Adresse anstelle des Computernamens. Auf diese Weise können Sie testen, ob die Verbindungsherstellung möglich ist, anstatt zu überprüfen, ob die Namensauflösung richtig konfiguriert ist.
 
-1. Ermitteln Sie die private IP-Adresse. Sie können die private IP-Adresse einer VM ermitteln, indem Sie sich entweder die Eigenschaften für die VM im Azure-Portal ansehen oder PowerShell verwenden.
+1. Ermitteln Sie die private IP-Adresse. Sie können die private IP-Adresse eines virtuellen Computers auf verschiedene Weise ermitteln. Unten werden die Schritte für das Azure-Portal und PowerShell gezeigt.
 
   - Azure-Portal: Suchen Sie im Azure-Portal nach Ihrem virtuellen Computer. Zeigen Sie die Eigenschaften für die VM an. Die private IP-Adresse ist aufgeführt.
 

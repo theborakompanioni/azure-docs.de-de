@@ -10,23 +10,23 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: d61ad247d795c210350c6681087b811c1fa39a70
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 6f47de43ff8d94de22f8b7c12fa0707a8d7ffbbc
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-12-analyze-in-excel"></a>Lektion 12: Analysieren in Excel
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-In dieser Lektion verwenden Sie die Funktion „In Excel analysieren“ in SSDT, um Microsoft Excel zu öffnen, automatisch eine Datenquellenverbindung mit dem Arbeitsbereichsmodell herzustellen und automatisch eine PivotTable zum Arbeitsblatt hinzuzufügen. Die Funktion „In Excel analysieren“ bietet eine schnelle und einfache Möglichkeit, vor der Bereitstellung ihres Modells die Wirksamkeit Ihres Modelldesigns zu testen. In dieser Lektion führen Sie keine Datenanalyse durch. Der Zweck dieser Lektion ist, Sie als Urheber des Modells mit den Tools vertraut zu machen ,die Sie zum Testen Ihres Modelldesigns verwenden können. Im Gegensatz zur Verwendung der Funktion „In Excel analysieren“, die für Urheber von Modellen gedacht ist, verwenden Endbenutzer Clientanwendungen für die Berichterstellung, wie Excel oder Power BI, um eine Verbindung herzustellen und bereitgestellte Modelldaten zu durchsuchen.  
+In dieser Lektion verwenden Sie die Funktion „In Excel analysieren“, um Microsoft Excel zu öffnen, automatisch eine Verbindung mit dem Arbeitsbereichsmodell herzustellen und automatisch eine PivotTable zum Arbeitsblatt hinzuzufügen. Die Funktion „In Excel analysieren“ bietet eine schnelle und einfache Möglichkeit, vor der Bereitstellung ihres Modells die Wirksamkeit Ihres Modelldesigns zu testen. In dieser Lektion führen Sie keine Datenanalyse durch. Der Zweck dieser Lektion ist, Sie als Urheber des Modells mit den Tools vertraut zu machen ,die Sie zum Testen Ihres Modelldesigns verwenden können.   
   
 Excel muss auf dem gleichen Computer wie SSDT installiert sein, um diese Lektion abschließen zu können.
   
@@ -44,9 +44,9 @@ In den ersten Aufgaben durchsuchen Sie Ihr Modell mithilfe der Standardperspekti
   
 2.  Klicken Sie im Dialogfeld **In Excel analysieren** auf **OK**.  
   
-    In Excel wird eine neue Arbeitsmappe geöffnet. Mithilfe des aktuellen Benutzerkontos wird eine Datenquellenverbindung hergestellt. Die Standardperspektive wird verwendet, um anzeigbare Felder zu definieren. Dem Arbeitsblatt wird automatisch eine PivotTable hinzugefügt.  
+    Excel wird mit einer neuen Arbeitsmappe geöffnet. Mithilfe des aktuellen Benutzerkontos wird eine Datenquellenverbindung hergestellt. Die Standardperspektive wird verwendet, um anzeigbare Felder zu definieren. Dem Arbeitsblatt wird automatisch eine PivotTable hinzugefügt.  
   
-3.  Beachten Sie, dass in Excel in der **PivotTable-Feldliste** die Measuregruppen **DimDate** und **FactInternetSales** angezeigt werden, sowie die Tabellen **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** und **FactInternetSales** mit allen entsprechenden Spalten.  
+3.  In Excel werden unter **PivotTable-Feldliste** die Measuregruppen **DimDate** und **FactInternetSales** angezeigt. Außerdem werden die folgenden Tabellen mit den entsprechenden Spalten angezeigt: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** und **FactInternetSales**.  
   
 4.  Schließen Sie Excel, ohne die Arbeitsmappe zu speichern.  
   
@@ -65,15 +65,15 @@ In den ersten Aufgaben durchsuchen Sie Ihr Modell mithilfe der Standardperspekti
 4.  Schließen Sie Excel, ohne die Arbeitsmappe zu speichern.  
   
 ## <a name="browse-by-using-roles"></a>Durchsuchen mithilfe von Rollen  
-Rollen sind ein wesentlicher Bestandteil tabellarischer Modelle. Ohne mindestens eine Rolle, zu der Benutzer als Mitglieder hinzugefügt sind, können Benutzer nicht mit ihrem Modell auf Daten zugreifen und diese analysieren. Die Funktion „In Excel analysieren“ bietet eine Möglichkeit, die Rollen zu testen, die Sie definiert haben.  
+Rollen sind ein wesentlicher Bestandteil tabellarischer Modelle. Ohne mindestens eine Rolle, zu der Benutzer als Mitglieder hinzugefügt werden, können Benutzer nicht mit Ihrem Modell auf Daten zugreifen und diese analysieren. Die Funktion „In Excel analysieren“ bietet eine Möglichkeit, die Rollen zu testen, die Sie definiert haben.  
   
 #### <a name="to-browse-by-using-the-sales-manager-user-role"></a>So durchsuchen Sie mithilfe der Sales Manager-Benutzerrolle  
   
 1.  Klicken Sie in SSDT auf das Menü **Modell**, und klicken Sie dann auf **In Excel analysieren**.  
   
-2.  Wählen Sie im Dialogfeld **In Excel analysieren** unter **Geben Sie den Benutzernamen oder die Rolle für die Verbindung mit dem Modell an** **Rolle** aus, wählen Sie anschließend im Dropdownlistenfeld **Sales Manager** aus, und klicken Sie auf **OK**.  
+2.  Wählen Sie unter **Geben Sie den Benutzernamen oder die Rolle für die Verbindung mit dem Modell an** die Option **Rolle** aus, wählen Sie anschließend im Dropdownlistenfeld **Sales Manager** aus, und klicken Sie auf **OK**.  
   
-    In Excel wird eine neue Arbeitsmappe geöffnet. Eine PivotTable wird automatisch erstellt. Die PivotTable-Feldliste enthält alle Datenfelder, die im neuen Modell verfügbar sind.  
+    Excel wird mit einer neuen Arbeitsmappe geöffnet. Eine PivotTable wird automatisch erstellt. Die PivotTable-Feldliste enthält alle Datenfelder, die im neuen Modell verfügbar sind.  
       
 3.  Schließen Sie Excel, ohne die Arbeitsmappe zu speichern.  
   

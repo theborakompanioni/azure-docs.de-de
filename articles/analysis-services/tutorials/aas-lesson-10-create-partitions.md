@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 74a9577e2fb5cc83dd3f01d8ff87374240798700
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: df74d9cbdcf4916c24955e491767589e72389155
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-10-create-partitions"></a>Lektion 10: Erstellen von Partitionen
@@ -53,9 +53,9 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
 
     ![AAS-Lektion10-Zeilen-filtern](../tutorials/media/aas-lesson10-filter-rows.png)
     
-    Beachten Sie, dass im Abfrage-Editor bei ANGEWENDETE SCHRITTE ein weiterer Schritt mit dem Namen „Gefilterte Zeilen“ angezeigt wird. Dies ist der Filter, den Sie angewendet haben, um nur die Bestelldaten von 2010 auszuwählen.
+    Im Abfrage-Editor wird unter ANGEWENDETE SCHRITTE ein weiterer Schritt mit dem Namen „Gefilterte Zeilen“ angezeigt. Mit diesem Filter werden nur Bestelldaten aus 2010 ausgewählt.
 
-8.  Klicken Sie auf **Import** (Importieren), um die Abfrage auszuführen.
+8.  Klicken Sie auf **Importieren**.
 
     Beachten Sie, dass der Abfrageausdruck im Partitions-Manager jetzt über eine zusätzliche Gefilterte-Zeilen-Klausel verfügt.
 
@@ -113,7 +113,7 @@ Beachten Sie, dass im Partitions-Manager in der Spalte **Zuletzt verarbeitet** f
   
     Wenn Sie zur Eingabe von Identitätswechsel-Anmeldeinformationen aufgefordert werden, geben Sie den Windows-Benutzernamen und das Kennwort ein, die Sie in Lektion 2 angegeben haben.  
   
-    Das Dialogfeld **Datenverarbeitung** mit Prozessdetails für jede Partition wird angezeigt. Beachten Sie, dass für jede Partition eine andere Anzahl von Zeilen übertragen wird. Dies liegt daran, dass jede Partition nur die Zeilen für das Jahr enthält, die in der WHERE-Klausel der SQL-Anweisung angegebenen wurden. Sobald die Verarbeitung abgeschlossen ist, schließen Sie das Dialogfeld „Datenverarbeitung“.  
+    Das Dialogfeld **Datenverarbeitung** mit Prozessdetails für jede Partition wird angezeigt. Beachten Sie, dass für jede Partition eine andere Anzahl von Zeilen übertragen wird. Jede Partition enthält nur die Zeilen für das Jahr, das in der WHERE-Klausel der SQL-Anweisung angegebenen wurde. Sobald die Verarbeitung abgeschlossen ist, schließen Sie das Dialogfeld „Datenverarbeitung“.  
   
     ![AAS-Lektion10-Verarbeitung-abgeschlossen](../tutorials/media/aas-lesson10-process-complete.png)
   

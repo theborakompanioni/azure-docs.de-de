@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 2058e74c1c2e719e879a3808d24790bfe86a9e1b
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: fde5cd9a9efc3a13e731a91962ced5c086a72355
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Ergänzende Lektion – Detailzeilen
@@ -42,7 +42,7 @@ Schauen Sie sich das Measure „InternetTotalSales“ an, bevor Sie einen Detail
 
     ![aas-lektion-detail-zeilen-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. Doppelklicken Sie in der PivotTable auf einen aggregierten Wert für ein Jahr und einen Regionsnamen. Hier doppelklicken Sie auf den Wert für Australien und das Jahr 2014. Ein neues Blatt wird geöffnet, das viele Daten enthält, aber nicht wirklich hilfreich ist.
+3. Doppelklicken Sie in der PivotTable auf einen aggregierten Wert für ein Jahr und einen Regionsnamen. Hier doppelklicken Sie auf den Wert für Australien und das Jahr 2014. Ein neues Blatt wird geöffnet, das Daten enthält, die aber nicht wirklich hilfreich sind.
 
     ![aas-lektion-detail-zeilen-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   

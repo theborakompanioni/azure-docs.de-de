@@ -1,7 +1,7 @@
 ---
-title: Erste Schritte mit Apache Storm in Azure HDInsight | Microsoft-Dokumentation
-description: Erste Schritte mit Big Data-Analysen in HDInsight unter Linux mit Apache Storm und den Storm-Starter-Beispielen. Erfahren Sie, wie Sie Storm zur Verarbeitung von Daten in Echtzeit verwenden.
-keywords: Apache Storm, Apache Storm-Tutorial, Big Data-Analysen, Storm Starter
+title: "Storm-Starter-Beispiele für Apache Storm in HDInsight - Azure | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie mit Apache Storm und den Storm-Starter-Beispielen für HDInsight Big Data-Analysen durchführen und Daten in Echtzeit verarbeiten."
+keywords: Storm-Starter, Apache Storm-Beispiel
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017,hdinsightactive
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 5976051ea06896e4158071cb6839ba415b4622d2
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 5936a45973eb41d2c5b3a1a47c663e393e628f54
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 ---
-#<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Erste Schritte mit Storm-Starter-Beispielen für die Big Data-Analyse in Linux-basiertem HDInsight
+#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Erste Schritte mit Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele
+
+Erfahren Sie, wie Sie Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele verwenden.
 
 Apache Storm ist ein skalierbares, fehlertolerantes, verteiltes Echtzeit-Berechnungssystem für die Verarbeitung von Datenströmen. Mit Storm in Azure HDInsight können Sie einen cloudbasierten Storm-Cluster erstellen, der Big Data-Analysen in Echtzeit durchführt.
 
@@ -84,7 +86,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
     > [!NOTE]
     > Das Erstellen des Clusters kann bis zu 20 Minuten dauern.
 
-## <a name="run-a-storm-starter-sample-on-hdinsight"></a>Ausführen eines Storm Starter-Beispiels in HDInsight
+## <a name="run-a-storm-starter-sample-on-hdinsight"></a>Ausführen eines Storm-Starter-Beispiels in HDInsight
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her:
 
@@ -106,9 +108,9 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
     > [!NOTE]
     > Wenn Ihre eigenen Topologien an den Cluster gesendet werden, müssen Sie zuerst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Kopieren Sie die Datei mit dem Befehl `scp`. Beispiel: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
     >
-    > Das Beispiel "WordCount" und andere Storm-Starter-Beispiele sind unter `/usr/hdp/current/storm-client/contrib/storm-starter/`bereits auf dem Cluster enthalten.
+    > Das Beispiel „WordCount“ und andere Storm-Starter-Beispiele sind unter `/usr/hdp/current/storm-client/contrib/storm-starter/` bereits im Cluster enthalten.
 
-Wenn Sie die Quelle für die Storm Starter-Beispiele anzeigen möchten, finden Sie den Code unter [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter). Dieser Link gilt für Storm 1.0.x, das mit HDInsight 3.5 bereitgestellt wird. Verwenden Sie für andere Versionen von Storm die Schaltfläche __Verzweigung__ am oberen Rand der Seite zum Auswählen einer anderen Storm-Version.
+Wenn Sie die Quelle für die Storm-Starter-Beispiele anzeigen möchten, finden Sie den Code unter [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter). Dieser Link gilt für Storm 1.0.x, das mit HDInsight 3.5 bereitgestellt wird. Verwenden Sie für andere Versionen von Storm die Schaltfläche __Verzweigung__ am oberen Rand der Seite zum Auswählen einer anderen Storm-Version.
 
 ## <a name="monitor-the-topology"></a>Überwachen der Topologie
 

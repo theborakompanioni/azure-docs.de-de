@@ -1,6 +1,6 @@
 ## <a name="typical-output"></a>Typische Ausgabe
 
-Im Anschluss sehen Sie ein Beispiel für die Ausgabe, die vom Hello World-Beispiel in die Protokolldatei geschrieben wird. Die Ausgabe ist für bessere Lesbarkeit formatiert:
+Im Anschluss sehen Sie ein Beispiel für die Ausgabe, die vom „Hallo Welt“-Beispiel in die Protokolldatei geschrieben wird. Die Ausgabe ist für bessere Lesbarkeit formatiert:
 
 ```json
 [{
@@ -36,9 +36,9 @@ In diesem Abschnitt werden einige wichtige Teile des Codes im hello\_world-Beisp
 
 ### <a name="iot-edge-gateway-creation"></a>IoT Edge-Gatewayerstellung
 
-Der Entwickler muss den *Gatewayprozess*schreiben. Dieses Programm erstellt die interne Infrastruktur (den Broker), lädt die IoT Edge-Module und richtet alles ordnungsgemäß ein. IoT Edge stellt die Funktion **Gateway\_Create\_From\_JSON** bereit, mit der Sie einen Bootstrapvorgang für ein Gateway auf der Grundlage einer JSON-Datei ausführen können. Bei der Verwendung der Funktion **Gateway\_Create\_From\_JSON** müssen Sie ihr den Pfad zu einer JSON-Datei übergeben, die die zu ladenden IoT Edge-Module angibt.
+Sie müssen einen *Gatewayprozess* implementieren. Dieses Programm erstellt die interne Infrastruktur (den Broker), lädt die IoT Edge-Module und konfiguriert den Gatewayprozess. IoT Edge stellt die Funktion **Gateway\_Create\_From\_JSON** bereit, mit der Sie einen Bootstrapvorgang für ein Gateway auf der Grundlage einer JSON-Datei ausführen können. Zur Verwendung der Funktion **Gateway\_Create\_From\_JSON** übergeben Sie ihr den Pfad zu einer JSON-Datei, die die zu ladenden IoT Edge-Module angibt.
 
-Sie finden den Code für den Gatewayprozess im Hello World-Beispiel in der [main.c][lnk-main-c]-Datei. Zur besseren Lesbarkeit zeigt der folgende Ausschnitt eine verkürzte Version des Codes für den Gatewayprozess. Dieses Beispielprogramm erstellt ein Gateway und wartet dann darauf, dass der Benutzer die **EINGABETASTE** drückt, woraufhin es das Gateway entfernt.
+Sie finden den Code für den Gatewayprozess im *Hallo Welt*-Beispiel in der [main.c][lnk-main-c]-Datei. Zur besseren Lesbarkeit zeigt der folgende Ausschnitt eine verkürzte Version des Codes für den Gatewayprozess. Dieses Beispielprogramm erstellt ein Gateway und wartet dann darauf, dass der Benutzer die **EINGABETASTE** drückt, woraufhin es das Gateway entfernt.
 
 ```c
 int main(int argc, char** argv)
@@ -62,9 +62,9 @@ int main(int argc, char** argv)
 Die JSON-Einstellungsdatei enthält eine Liste zu ladender IoT Edge-Module und die Verknüpfungen zwischen den Modulen. Jedes IoT Edge-Modul muss Folgendes angeben:
 
 * **Name:** Ein eindeutiger Name für das Modul.
-* **Ladeprogramm:** Ein Ladeprogramm, das das gewünschte Modul laden kann. Ladeprogramme sind ein Erweiterungspunkt zum Laden von verschiedenen Modultypen. Wir stellen Ladeprogramme für die Verwendung mit Modulen bereit, die in nativem C, Node.js, Java und .Net geschrieben wurden. Das Hello World-Beispiel verwendet nur das native C-Ladeprogramm, da es sich bei allen Modulen in diesem Beispiel um dynamische, in C geschriebene Bibliotheken handelt. Weitere Informationen zur Verwendung von IoT Edge-Modulen in anderen Sprachen finden Sie in den Beispielen für [Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/), [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample) und [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample).
-    * **Name**: Der Name des Ladeprogramms, der für das Laden des Moduls verwendet wurde
-    * **Einstiegspunkt:** Der Pfad zu der Bibliothek, die das Modul enthält Unter Linux ist diese Bibliothek eine SO-Datei, unter Windows eine DLL-Datei. Abhängig von der Art des verwendeten Ladeprogramms wird jeweils ein spezifischer Einstiegspunkt verwendet. Der Einstiegspunkt für das Node.js-Ladeprogramm ist eine JS-Datei. Der Einstiegspunkt des Java-Ladeprogramms ist eine Kombination aus Klassenpfad und Klassenname. Der Einstiegspunkt des .NET-Ladeprogramms ist eine Kombination aus Assembly- und Klassenname.
+* **Ladeprogramm:** Ein Ladeprogramm, das das gewünschte Modul laden kann. Ladeprogramme sind ein Erweiterungspunkt zum Laden von verschiedenen Modultypen. IoT Edge stellt Ladeprogramme für die Verwendung mit Modulen bereit, die in nativem C, Node.js, Java und .NET geschrieben wurden. Das Hello World-Beispiel verwendet nur das native C-Ladeprogramm, da es sich bei allen Modulen in diesem Beispiel um dynamische, in C geschriebene Bibliotheken handelt. Weitere Informationen zur Verwendung von IoT Edge-Modulen in anderen Sprachen finden Sie in den Beispielen für [Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/), [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample) und [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample).
+    * **Name:** Der Name des Ladeprogramms, der für das Laden des Moduls verwendet wurde.
+    * **Einstiegspunkt:** Der Pfad zu der Bibliothek, die das Modul enthält Unter Linux ist diese Bibliothek eine SO-Datei, unter Windows eine DLL-Datei. Abhängig von der Art des verwendeten Ladeprogramms wird jeweils ein spezifischer Einstiegspunkt verwendet. Der Einstiegspunkt für das Node.js-Ladeprogramm ist eine JS-Datei. Der Einstiegspunkt des Java-Ladeprogramms ist ein Klassenpfad und ein Klassenname. Der Einstiegspunkt des .NET-Ladeprogramms ist ein Assemblyname und ein Klassenname.
 
 * **args**: alle Konfigurationsinformationen, die das Modul benötigt.
 
@@ -98,10 +98,10 @@ Der folgende Code zeigt den JSON-Code, der verwendet wurde, um alle IoT Edge-Mod
 
 Die JSON-Datei enthält auch die Verknüpfungen zwischen den Modulen, die an den Broker übergeben werden. Ein Link besitzt zwei Eigenschaften:
 
-* **source:** Ein Modulname aus dem Abschnitt `modules` (oder „\*“).
+* **source**: Ein Modulname aus dem Abschnitt `modules` (oder „`\*`“).
 * **sink:** Ein Modulname aus dem Abschnitt `modules`.
 
-Jeder Link definiert eine Nachrichtenroute und eine Richtung. Nachrichten aus dem Modul `source` werden an das Modul `sink` übermittelt. `source` kann auf „\*“ festgelegt werden, um anzugeben, dass `sink` Nachrichten von jedem beliebigen Modul empfängt.
+Jeder Link definiert eine Nachrichtenroute und eine Richtung. Nachrichten aus dem Modul **source** werden an das Modul **sink** übermittelt. Sie können das Modul **source** auf `\*` festlegen. Dadurch wird angegeben, dass das Modul **sink** Nachrichten von jedem Modul erhält.
 
 Der folgende Code zeigt den JSON-Code zum Konfigurieren der Verknüpfungen zwischen den Modulen, die im hello\_world-Beispiel unter Linux verwendet wurden. Jede vom Modul `hello_world` erzeugte Nachricht wird vom Modul `logger` verarbeitet.
 
@@ -223,14 +223,13 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung von Azure IoT Edge finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie ein einfaches IoT Edge-Gateway ausgeführt, das Nachrichten in eine Protokolldatei schreibt. Informationen zum Ausführen eines Beispiels, das Nachrichten an einen IoT Hub sendet, finden Sie unter [IoT Edge – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux][lnk-gateway-simulated-linux] oder [IoT Edge – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Windows][lnk-gateway-simulated-windows].
 
-* [IoT Edge – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux][lnk-gateway-simulated].
-* [Azure IoT Edge][lnk-iot-edge] auf GitHub.
 
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/iot-edge/blob/master/samples/hello_world/src/main.c
 [lnk-helloworld-c]: https://github.com/Azure/iot-edge/blob/master/modules/hello_world/src/hello_world.c
 [lnk-logger-c]: https://github.com/Azure/iot-edge/blob/master/modules/logger/src/logger.c
 [lnk-iot-edge]: https://github.com/Azure/iot-edge/
-[lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-iot-edge-simulated-device.md
+[lnk-gateway-simulated-linux]: ../articles/iot-hub/iot-hub-linux-iot-edge-simulated-device.md
+[lnk-gateway-simulated-windows]: ../articles/iot-hub/iot-hub-windows-iot-edge-simulated-device.md

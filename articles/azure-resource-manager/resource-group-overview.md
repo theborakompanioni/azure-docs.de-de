@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/09/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 4b7192b22d1583be2b2ab027b040c9a2fce8a293
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: db97edd3c4fbfdbe955c49cc9a58de30c5085305
+ms.contentlocale: de-de
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -81,39 +82,9 @@ Beim Erstellen einer Ressourcengruppe müssen Sie einen Standort für die Ressou
 ## <a name="resource-providers"></a>Ressourcenanbieter
 Jeder Ressourcenanbieter stellt einen Satz mit Ressourcen und Vorgängen für die Verwendung eines Azure-Diensts bereit. Wenn Sie beispielsweise Schlüssel und geheime Schlüssel speichern möchten, verwenden Sie den Ressourcenanbieter **Microsoft.KeyVault** . Dieser Ressourcenanbieter bietet einen Ressourcentyp mit dem Namen **vaults** zum Erstellen des Schlüsseltresors an. 
 
-Bevor Sie mit der Bereitstellung Ihrer Ressourcen beginnen, ist es ratsam, sich über die verfügbaren Ressourcenanbieter zu informieren. Wenn Sie die Namen der Ressourcenanbieter und Ressourcen kennen, können Sie besser definieren, welche Ressourcen Sie unter Azure bereitstellen möchten.
+Der Name eines Ressourcentyps hat folgendes Format: **{Ressourcenanbieter}/{Ressourcentyp}**. Der Schlüsseltresortyp lautet beispielsweise **Microsoft.KeyVault\vaults**.
 
-Sie können alle Ressourcenanbieter über das Portal anzeigen. Wählen Sie auf dem Blatt für Ihr Abonnement die Option **Ressourcenanbieter** aus:
-
-![Anzeigen der Ressourcenanbieter](./media/resource-group-overview/view-resource-providers.png)
-
-Sie können alle Ressourcenanbieter mit dem folgenden PowerShell-Cmdlet abrufen:
-
-```powershell
-Get-AzureRmResourceProvider -ListAvailable
-```
-
-Mit der Azure-Befehlszeilenschnittstelle 2.0 rufen Sie alle Ressourcenanbieter mit dem folgenden Befehl ab:
-
-```azurecli
-az provider list
-```
-
-In der zurückgegebenen Liste können Sie den gewünschten Ressourcenanbieter auswählen.
-
-Fügen Sie dem Befehl den Anbieternamespace hinzu, um Details zu einem Ressourcenanbieter abzurufen. Mit dem Befehl werden die unterstützten Ressourcentypen für den Ressourcenanbieter und die unterstützten Standorte und API-Versionen für jeden Ressourcentyp zurückgegeben. Mit dem folgenden PowerShell-Cmdlet erhalten Sie Details zu „Microsoft.Compute“:
-
-```powershell
-(Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
-```
-
-Mit der Azure-Befehlszeilenschnittstelle 2.0 rufen Sie die unterstützten Ressourcentypen, Standorte und API-Versionen für „Microsoft.Compute“ mit dem folgenden Befehl ab:
-
-```azurecli
-az provider show --namespace Microsoft.Compute
-```
-
-Weitere Informationen finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
+Bevor Sie mit der Bereitstellung Ihrer Ressourcen beginnen, ist es ratsam, sich über die verfügbaren Ressourcenanbieter zu informieren. Wenn Sie die Namen der Ressourcenanbieter und Ressourcen kennen, können Sie besser definieren, welche Ressourcen Sie unter Azure bereitstellen möchten. Außerdem müssen Sie die gültigen Speicherorte und API-Versionen für jeden Ressourcentyp kennen. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](resource-manager-supported-services.md).
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 Mit dem Resource Manager können Sie eine Vorlage (im JSON-Format) erstellen, mit der die Infrastruktur und Konfiguration der Azure-Lösung definiert wird. Mit einer Vorlage können Sie die Lösung während ihres Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Wenn Sie eine Lösung über das Portal erstellen, enthält sie automatisch eine Bereitstellungsvorlage. Sie müssen die Vorlage nicht völlig neu erstellen, weil Sie mit der Vorlage für Ihre Lösung beginnen und sie dann an die speziellen Anforderungen anpassen können. Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](resource-manager-export-template.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.

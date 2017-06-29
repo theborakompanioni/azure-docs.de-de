@@ -15,23 +15,23 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: eb85d8ef6b29605d7e26b0d2139a4a95c35141fb
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: b004310a3b2667134c9ad890bd907dc8ae439dd9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Enthält Informationen zur Verwendung des Azure-Portals zum Erstellen von Azure Data Lake Analytics-Konten, zum Definieren von Aufträgen in [U-SQL](data-lake-analytics-u-sql-get-started.md) und zum Übermitteln von Aufträgen an den Data Lake Analytics-Dienst. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial wird ein **Azure-Abonnement** benötigt. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/pricing/free-trial/)(in englischer Sprache).
+Für dieses Tutorial wird ein **Azure-Abonnement** benötigt. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="create-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
+## <a name="create-a-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
 
 Nun erstellen Sie gleichzeitig ein Data Lake Analytics- und ein Data Lake Store-Konto.  Dieser Schritt ist einfach und dauert nur etwa 60 Sekunden.
 
@@ -46,38 +46,32 @@ Nun erstellen Sie gleichzeitig ein Data Lake Analytics- und ein Data Lake Store-
 4. Wählen Sie optional einen Tarif für Ihr Data Lake Analytics-Konto aus.
 5. Klicken Sie auf **Erstellen**. 
 
-## <a name="create-and-submit-data-lake-analytics-jobs"></a>Erstellen und Übermitteln von Data Lake Analytics-Aufträgen
-Nachdem Sie die Quelldaten vorbereitet haben, können Sie mit dem Entwickeln eines U-SQL-Skripts beginnen.  
 
-**So senden Sie einen Auftrag**
+## <a name="your-first-u-sql-script"></a>Ihr erstes U-SQL-Skript
 
-1. Klicken Sie im Data Lake Analytics-Konto auf **Neuer Auftrag**.
-2. Geben Sie den **Auftragsnamen**und das folgende U-SQL-Skript ein:
+Der folgende Text ist ein sehr einfaches U-SQL-Skript. Es definiert lediglich ein kleines Dataset im Skript. Anschließend wird dieses Dataset als Datei mit dem Namen `/data.csv` in den standardmäßigen Data Lake Store geschrieben.
 
 ```
-@searchlog =
-    EXTRACT UserId          int,
-            Start           DateTime,
-            Region          string,
-            Query           string,
-            Duration        int?,
-            Urls            string,
-            ClickedUrls     string
-    FROM "/Samples/Data/SearchLog.tsv"
-    USING Extractors.Tsv();
-
-OUTPUT @searchlog   
-    TO "/Output/SearchLog-from-Data-Lake.csv"
+@a  = 
+    SELECT * FROM 
+        (VALUES
+            ("Contoso", 1500.0),
+            ("Woodgrove", 2700.0)
+        ) AS 
+              D( customer, amount );
+OUTPUT @a
+    TO "/data.csv"
     USING Outputters.Csv();
 ```
 
+## <a name="submit-a-u-sql-job"></a>Senden eines U-SQL-Auftrags
 
-Mit diesem U-SQL-Skript wird die Quelldatei mithilfe von **Extractors.Tsv()** gelesen, und anschließend wird eine CSV-Datei mithilfe von **Outputters.Csv()** erstellt.
-
-1. Klicken Sie auf **Auftrag senden**.   
-2. Warten Sie, bis sich der Auftragsstatus in **Erfolgreich**ändert.
-3. Falls für den Auftrag ein Fehler auftritt, helfen Ihnen die Informationen unter [Überwachung und Problembehandlung für Data Lake Analytics-Aufträge](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md) weiter.
-4. Klicken Sie auf die Registerkarte **Ausgabe** und dann auf `SearchLog-from-Data-Lake.csv`. 
+1. Klicken Sie im Data Lake Analytics-Konto auf **Neuer Auftrag**.
+2. Fügen Sie den Text des oben gezeigten U-SQL-Skripts ein. 
+3. Klicken Sie auf **Auftrag senden**.   
+4. Warten Sie, bis sich der Auftragsstatus in **Erfolgreich** ändert.
+5. Falls für den Auftrag ein Fehler auftritt, helfen Ihnen die Informationen unter [Überwachung und Problembehandlung für Data Lake Analytics-Aufträge](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md) weiter.
+6. Klicken Sie auf die Registerkarte **Ausgabe** und dann auf `SearchLog-from-Data-Lake.csv`. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

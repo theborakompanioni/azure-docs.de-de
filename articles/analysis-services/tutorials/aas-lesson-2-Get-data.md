@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 492bfd19c2b364089e13f7ae53010cb5ce14123d
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -63,11 +63,11 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-Nachdem Sie auf OK geklickt haben, öffnet sich der Abfrage-Editor, wo Sie im nächsten Abschnitt die zu importierenden Daten filtern können.
+Wenn Sie auf „OK“ geklickt haben, wird der Abfrage-Editor geöffnet. Im nächsten Abschnitt wählen Sie nur die Daten aus, die Sie importieren möchten.
 
   
 ## <a name="filter-the-table-data"></a>Filtern der Tabellendaten  
-Tabellen in der AdventureWorksDW2014-Beispieldatenbank enthalten Daten, die nicht in Ihr Modell übernommen werden müssen. Um den vom Modell verwendeten In-Memory-Speicher zu sparen, sollten Sie die unnötige Daten wenn möglich herausfiltern. Dabei werden einige der Spalten aus den Tabellen herausgefiltert, damit sie nach der Bereitstellung nicht in die Arbeitsbereichsdatenbank oder die Modelldatenbank importiert werden. 
+Tabellen in der AdventureWorksDW2014-Beispieldatenbank enthalten Daten, die nicht in Ihr Modell übernommen werden müssen. Um den vom Modell verwendeten In-Memory-Speicher zu sparen, sollten Sie unnötige Daten wenn möglich herausfiltern. Dabei werden einige der Spalten aus den Tabellen herausgefiltert, damit sie nach der Bereitstellung nicht in die Arbeitsbereichsdatenbank oder die Modelldatenbank importiert werden. 
   
 #### <a name="to-filter-the-table-data-before-importing"></a>So filtern Sie die Tabellendaten vor dem Importieren  
   

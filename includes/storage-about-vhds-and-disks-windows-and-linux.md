@@ -27,7 +27,7 @@ Weitere Informationen zur Verwendung von Standardspeicher mit VM-Datenträgern f
 
 ### <a name="premium-storage"></a>Storage Premium 
 
-Storage Premium basiert auf SSDs und unterstützt Datenträger mit hoher Leistung und geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Storage Premium steht für virtuelle Azure-Computer vom Typ DS, DSv2, GS und FS zur Verfügung. Weitere Informationen finden Sie unter [Storage Premium](../articles/storage/storage-premium-storage.md).
+Storage Premium basiert auf SSDs und unterstützt Datenträger mit hoher Leistung und geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Storage Premium steht für virtuelle Azure-Computer vom Typ DS, DSv2, GS, Ls und FS zur Verfügung. Weitere Informationen finden Sie unter [Storage Premium](../articles/storage/storage-premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Nicht verwaltete Datenträger
 
@@ -50,6 +50,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung von Storage Premium und St
 | Datenträgertyp | Solid-State-Laufwerke (SSD) | Festplattenlaufwerke (HDD)  |
 | Übersicht  | SSD-basierte Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer mit E/A-intensiven Workloads oder zum Hosten unternehmenskritischer Produktionsumgebungen | HDD-basierte, kostengünstige Datenträgerunterstützung für Entwicklungs-/Testszenarien mit virtuellen Computern |
 | Szenario  | Produktionsworkloads und leistungsabhängige Workloads | Entwicklung/Test, nicht kritischer, <br>seltener Zugriff |
-| Datenträgergröße | P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB | Nicht verwaltete Datenträger: 1 GB bis 1 TB <br><br>Verwaltete Datenträger:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB |
-| Max. Durchsatz pro Datenträger | 200 MB/s | 60 MB/s |
-| Max. IOPS pro Datenträger | 5000 IOPS | 500 IOPS |
+| Datenträgergröße | P4: 32 GB<br>P6: 64 GB<br>P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB<br>P40: 2048 GB<br>P50: 4095 GB | Nicht verwaltete Datenträger: 1 GB bis 4 TB (4095 GB) <br><br>Verwaltete Datenträger:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB <br>S40: 2048 GB<br>S50: 4095 GB| 
+| Max. Durchsatz pro Datenträger | 250 MB/s | 60 MB/s | 
+| Max. IOPS pro Datenträger | 7500 IOPS | 500 IOPS | 
+

@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 597b12b98edb07e453fc3cd5a0884c584a5bfd14
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 3491aa53a55d988876710c0ac19383e642dda27b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -61,7 +61,7 @@ Klonen Sie jetzt eine Graph-API-App aus GitHub, legen Sie die Verbindungszeichen
 
 Es folgt ein kurzer Überblick zu dem, was in der App geschieht. Öffnen Sie die Datei „Program.cs“. Sie stellen fest, dass mit diesen Codezeilen die Azure Cosmos DB-Ressourcen erstellt werden. 
 
-* Der DocumentClient wird initialisiert. In der Vorschauversion wurde eine Graph-Erweiterungs-API für den DocumentDB-Client hinzugefügt. Wir arbeiten mit einem eigenständigen Graph-Client, der von DocumentDB-Client und -Ressourcen entkoppelt ist.
+* Der DocumentClient wird initialisiert. In der Vorschauversion wurde eine Graph-Erweiterungs-API für den Azure Cosmos DB-Client hinzugefügt. Wir arbeiten mit einem eigenständigen Graph-Client, der von Azure Cosmos DB-Client und -Ressourcen entkoppelt ist.
 
     ```csharp
     using (DocumentClient client = new DocumentClient(

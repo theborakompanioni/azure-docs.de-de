@@ -16,10 +16,10 @@ ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9d3029817cae6570ff8871fbcb068250544595d7
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 75c2e0f119ac5669c3ab5bd528899d6e4b7818c9
 ms.contentlocale: de-de
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -577,6 +577,9 @@ Zunächst skalieren wir den Vorgang zentral auf 100 DWUs herunter, damit wir ein
 6. Skalieren Sie Ihr Data Warehouse zurück auf 400 DWUs. Beachten Sie, dass für 100 DWUs Ihrer Azure SQL Data Warehouse-Instanz jeweils ein weiterer Computeknoten hinzugefügt wird.
 
 7. Führen Sie die Abfrage erneut aus! Es sollte ein deutlicher Unterschied zu sehen sein. 
+
+    > [!NOTE]
+    > Da die Abfrage eine große Datenmenge zurückgibt, kann die Bandbreitenverfügbarkeit des Computers, auf dem SSMS ausgeführt wird, zu Leistungsengpässen führen. Dies kann dazu führen, dass Sie keine Leistungsverbesserungen feststellen können.
 
 > [!NOTE]
 > SQL Data Warehouse verwendet einen MPP-Ansatz (Massively Parallel Processing). Bei Abfragen, die Millionen von Zeilen durchsuchen oder Analysefunktionen dafür ausführen, kommt die Leistungsstärke von Azure SQL Data Warehouse voll zur Geltung.

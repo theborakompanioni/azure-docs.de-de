@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: charwen,cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ec9da5c9818f03a85e858800bd38be49d8ed14e6
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: ffa791cf4c4be15645a67fef4e94bf6ebdc42a6a
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -41,7 +42,7 @@ Das Konfigurieren paralleler Site-to-Site-VPN- und ExpressRoute-Verbindungen bie
 * **Das einfache SKU-Gateway wird nicht unterstützt.** Sie müssen für das [ExpressRoute-Gateway](expressroute-about-virtual-network-gateways.md) und das [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) jeweils ein anderes Gateway als ein einfaches SKU-Gateway verwenden.
 * **Nur das routenbasierte VPN-Gateway wird unterstützt.** Sie müssen ein routenbasiertes [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden.
 * **Für das VPN-Gateway sollte eine statische Route konfiguriert werden.** Wenn Ihr lokales Netzwerk mit ExpressRoute und einem Standort-zu-Standort-VPN verbunden ist, müssen Sie eine statische Route in Ihrem lokalen Netzwerk konfiguriert haben, um die Standort-zu-Standort-VPN-Verbindung an das öffentliche Internet weiterzuleiten.
-* **Das ExpressRoute-Gateway muss zuerst konfiguriert werden.** Vor dem Hinzufügen des Site-to-Site-VPN-Gateways muss zunächst das ExpressRoute-Gateway erstellt werden.
+* **Das ExpressRoute-Gateway muss zuerst konfiguriert und mit einer Verbindung verknüpft werden.** Vor dem Hinzufügen des Site-to-Site-VPN-Gateways muss zunächst das ExpressRoute-Gateway erstellt und mit einer Verbindung verknüpft werden.
 
 ## <a name="configuration-designs"></a>Konfigurationsentwürfe
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurieren eines Standort-zu-Standort-VPN als Failoverpfad für ExpressRoute
@@ -87,6 +88,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNETs sowie durch das Erst
   Select-AzureRmSubscription -SubscriptionName 'yoursubscription'
   $location = "Central US"
   $resgrp = New-AzureRmResourceGroup -Name "ErVpnCoex" -Location $location
+  $VNetASN = 65010
   ```
 3. Erstellen Sie ein virtuelles Netzwerk mit einem Gatewaysubnetz. Weitere Informationen zur Konfiguration des virtuellen Netzwerks finden Sie unter [Azure Virtual Network-Konfiguration](../virtual-network/virtual-networks-create-vnet-arm-ps.md).
    
@@ -136,10 +138,10 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNETs sowie durch das Erst
   New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard"
   ```
    
-    Azure VPN Gateway verfügt über Unterstützung für das BGP. Sie können im folgenden Befehl „-EnableBgp“ angeben.
+    Das Azure-VPN-Gateway unterstützt das BGP-Routingprotokoll. Sie können die AS-Nummer (ASN) für dieses virtuelle Netzwerk angeben, indem Sie den -Asn-Switch im folgenden Befehl hinzufügen. Wenn Sie diesen Parameter nicht angeben, wird standardmäßig die AS-Nummer 65515 verwendet.
 
   ```powershell
-  $azureVpn = New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard" -EnableBgp $true
+  $azureVpn = New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard" -Asn $VNetASN
   ```
    
     Sie finden die BGP-Peering-IP und die AS-Nummer, die Azure für das VPN-Gateway verwendet, unter „$azureVpn.BgpSettings.BgpPeeringAddress“ und „$azureVpn.BgpSettings.Asn“. Weitere Informationen finden Sie unter [Konfigurieren von BGP auf Azure VPN Gateways mithilfe von Azure Resource Manager und PowerShell](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md) für das Azure VPN Gateway.

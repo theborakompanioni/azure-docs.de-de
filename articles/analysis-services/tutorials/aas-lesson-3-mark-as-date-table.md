@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 80c15b2115afca7342771d3f53d1742fc347ae1c
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: c62f2726fef5219155a08b70c61162c914600d1d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-3-mark-as-date-table"></a>Lektion 3: Markieren als Datumstabelle
@@ -28,11 +28,11 @@ ms.lasthandoff: 05/05/2017
 
 In Lektion 2: Abrufen von Daten, Import einer Dimensionstabelle namens DimDate. Die in Ihrem Modell mit DimDate benannte Tabelle kann auch als eine *Datumstabelle* bekannt sein, da sie Tages- und Uhrzeitdaten enthält.  
   
-Datumstabelleneigenschaften müssen Sie immer dann angeben, wenn Sie bei Berechnungen DAX-Zeitintelligenzfunktionen verwenden, wie Sie es etwas später beim Erstellen von Measures tun werden. Zu diesen Eigenschaften zählen eine *Datumstabelle* und ein eindeutiger *Datumsspaltenbezeichner* in dieser Tabelle.
+Wenn Sie DAX-Zeitintelligenzfunktionen verwenden, wie Sie es etwas später beim Erstellen von Measures tun werden, müssen Sie Eigenschaften angeben, u.a. eine *Datumstabelle* und ein eindeutiger *Datumsspaltenbezeichner* in dieser Tabelle.
   
 In dieser Lektion markieren Sie die DimDate-Tabelle als *Datumstabelle* und die Datumsspalte (in der Datumstabelle) als die *Datumsspalte* (eindeutiger Bezeichner).  
 
-Doch bevor Sie die Datumstabelle und die Datumsspalte markieren, sollten Sie etwas aufräumen, um Ihr Modell verständlicher zu machen. Beachten Sie die Spalte **FullDateAlternateKey** in der Tabelle DimDate; sie enthält pro Tag und in der Tabelle enthaltenen Kalenderjahr eine Zeile. Diese Spalte werden Sie bei Measureformeln und in Berichten häufig benötigen. Allerdings ist FullDateAlternateKey kein guter Bezeichner für diese Spalte. Um Sie in Formeln einfacher finden und verwenden zu können, benennen Sie die Spalte in **Datum** um. Immer, wenn dies möglich ist, sollten Tabellen und Spalten so umbenannt werden, dass sie in SSDT und Client-Berichtsanwendungen wie Power BI und Excel einfacher gefunden werden können. 
+Doch bevor Sie die Datumstabelle und die Datumsspalte markieren, sollten Sie etwas aufräumen, um Ihr Modell verständlicher zu machen. Beachten Sie in der Tabelle „DimDate“ die Spalte mit dem Namen **FullDateAlternateKey**. Diese Spalte enthält eine Zeile für jeden Tag in jedem Kalenderjahr in der Tabelle. Diese Spalte werden Sie in Measureformeln und Berichten häufig benötigen. Allerdings ist FullDateAlternateKey kein guter Bezeichner für diese Spalte. Um sie in Formeln einfacher finden und verwenden zu können, benennen Sie die Spalte in **Datum** um. Immer, wenn dies möglich ist, sollten Tabellen und Spalten so umbenannt werden, dass sie in SSDT und Client-Berichtsanwendungen wie Power BI und Excel einfacher gefunden werden können. 
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **3 Minuten**  
   
@@ -43,7 +43,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
 
 1.  Klicken Sie im Modell-Designer auf die Tabelle **DimDate**.
 
-2.  Doppelklicken Sie auf den Header der Spalte **FullDateAlternateKey**, und benennen Sie sie in **Datum** um.
+2.  Doppelklicken Sie auf die Kopfzeile der Spalte **FullDateAlternateKey**, und benennen Sie sie in **Datum** um.
 
   
 ### <a name="to-set-mark-as-date-table"></a>Markieren als Datumstabelle  
@@ -52,7 +52,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
   
 2.  Klicken Sie auf das Menü **Tabelle**, klicken Sie dann auf **Datum**, und klicken Sie schließlich auf **Als Datumstabelle markieren**.  
   
-3.  Wählen Sie im Dialogfeld **Als Datumstabelle markieren** im Listenfeld **Datum** die **Datumsspalte** als eindeutigen Bezeichner. In der Regel wird diese Spalte standardmäßig ausgewählt. Klicken Sie auf **OK**. 
+3.  Wählen Sie im Dialogfeld **Als Datumstabelle markieren** im Listenfeld **Datum** die **Datumsspalte** als eindeutigen Bezeichner. In der Regel ist diese Spalte standardmäßig ausgewählt. Klicken Sie auf **OK**. 
 
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   

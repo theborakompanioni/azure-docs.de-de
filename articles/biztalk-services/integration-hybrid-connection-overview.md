@@ -14,13 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 397a922bf3bf4c39c89f5f69015de4942bda0af9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 9367d6f57e694c8a438781004ef29a09de77aaa8
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="hybrid-connections-overview"></a>Überblick über Hybridverbindungen
+
+> [!IMPORTANT]
+> BizTalk-Hybridverbindungen ist veraltet und wird durch App Service-Hybridverbindungen ersetzt. Weitere Informationen, z.B. darüber, wie Sie Ihre vorhandenen BizTalk-Hybridverbindungen verwalten, finden Sie unter [Azure App Service-Hybridverbindungen](../app-service/app-service-hybrid-connections.md).
+
 Hier werden Hybridverbindungen vorgestellt und die unterstützten Konfigurationen sowie die erforderlichen TCP-Ports aufgeführt.
 
 ## <a name="what-is-a-hybrid-connection"></a>Was ist eine Hybridverbindung
@@ -83,7 +89,7 @@ Die folgenden TCP-Ports werden von Hybridverbindungen verwendet:
 | --- | --- |
 | 9350 - 9354 |Diese Ports werden für die Datenübertragung verwendet. Der Service Bus Relay-Manager prüft Port 9350, um festzustellen, ob die TCP-Konnektivität verfügbar ist. Wenn sie verfügbar ist, wird davon ausgegangen, dass Port 9352 ebenfalls verfügbar ist. Der Datenverkehr geht über Port 9352. <br/><br/>Ausgehende Verbindungen auf diese Ports zulassen. |
 | 5671 |Wenn Port 9352 für den Datenverkehr verwendet wird, wird Port 5671 als Steuerungskanal verwendet. <br/><br/>Ausgehende Verbindungen auf diesen Port zulassen. |
-| 80, 443 |Diese Ports werden für einige Datenanfragen in Azure verwendet. Wenn die Ports 9352 und 5671 nicht verwendbar sind,* *werden für die Datenübertragung und den Steuerungskanal alternativ die Ports 80 und 443 verwendet.<br/><br/>Ausgehende Verbindungen auf diese Ports zulassen. <br/><br/>**Hinweis** Es wird nicht empfohlen, diese als alternative Ports anstelle der anderen TCP-Ports verwenden. HTTP/WebSocket wird als Protokoll anstelle des systemeigenen TCP für Datenkanäle verwendet. Dies könnte zu einer niedrigeren Leistung führen. |
+| 80, 443 |Diese Ports werden für einige Datenanfragen in Azure verwendet. Wenn die Ports 9352 und 5671 nicht verwendbar sind,** werden für die Datenübertragung und den Steuerungskanal alternativ die Ports 80 und 443 verwendet.<br/><br/>Ausgehende Verbindungen auf diese Ports zulassen. <br/><br/>**Hinweis** Es wird nicht empfohlen, diese als alternative Ports anstelle der anderen TCP-Ports verwenden. HTTP/WebSocket wird als Protokoll anstelle des systemeigenen TCP für Datenkanäle verwendet. Dies könnte zu einer niedrigeren Leistung führen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
@@ -100,9 +106,4 @@ Die folgenden TCP-Ports werden von Hybridverbindungen verwendet:
 [HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

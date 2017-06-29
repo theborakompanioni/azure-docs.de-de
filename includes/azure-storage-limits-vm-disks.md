@@ -1,6 +1,6 @@
 Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Datenträger. Zur Optimierung der Leistung sollten Sie die Anzahl stark ausgelasteter Datenträger begrenzen, die an den virtuellen Computer angefügt sind, um eine mögliche Drosselung zu vermeiden. Wenn nicht alle Datenträger gleichzeitig hoch ausgelastet sind, kann das Speicherkonto eine höhere Anzahl von Datenträgern unterstützen.
 
-* **Von Azure verwaltete Datenträger:** Der Grenzwert für die Anzahl von verwalteten Datenträger ist für das Abonnement regional. Der weiche Standardgrenzwert ist 2.000 pro Region pro Abonnement. Wenn Sie Ihren Grenzwert erhöhen möchten, wenden Sie sich an den Azure-Support.
+* **Für Azure Managed Disks:** Der Grenzwert für die Anzahl von verwalteten Datenträgern ist regional und hängt außerdem vom Speichertyp ab. Der standardmäßige und auch maximale Grenzwert liegt bei 10.000 pro Abonnement, pro Region und pro Speichertyp. Sie können beispielsweise bis zu 10.000 verwaltete Standarddatenträger und auch 10.000 verwaltete Premium-Datenträger in einem Abonnement und in einer Region erstellen. 
 
     Verwaltete Momentaufnahmen und Images werden beim Grenzwert für verwaltete Datenträger berücksichtigt.
 

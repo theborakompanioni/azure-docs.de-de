@@ -1,22 +1,24 @@
 ---
-title: Hosten mehrerer Websites mit Application Gateway| Microsoft Docs
+title: Hosten mehrerer Websites mit Azure Application Gateway | Microsoft-Dokumentation
 description: "Diese Seite bietet eine Übersicht über die Application Gateway-Unterstützung für mehrere Websites."
 documentationcenter: na
 services: application-gateway
 author: amsriva
 manager: rossort
-editor: amsriva
+editor: 
 ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 05/09/2017
 ms.author: amsriva
-translationtype: Human Translation
-ms.sourcegitcommit: 09aeb63d4c2e68f22ec02f8c08f5a30c32d879dc
-ms.openlocfilehash: 68e88483e3dc7c22968d701d9b79364bb55fb896
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 722ab9e8a13ee28342bb30f6810fa503b1aa29f2
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -126,10 +128,5 @@ Für die Routingregel ist keine Änderung erforderlich. Verwenden Sie weiterhin 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Fahren Sie nun mit dem Artikel [Erstellen eines Anwendungsgateways zum Hosten mehrerer Webanwendungen](application-gateway-create-multisite-azureresourcemanager-powershell.md) fort, um ein Anwendungsgateway zu erstellen, das mehr als eine Webanwendung hosten kann.
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

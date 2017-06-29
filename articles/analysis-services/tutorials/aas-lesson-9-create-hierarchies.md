@@ -10,23 +10,23 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: abe9edb0cbcdae18964731b1ab90a27117fc0c15
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: d628dc621335acf231342a6d9186079de16e85f4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-9-create-hierarchies"></a>Lektion 9: Erstellen von Hierarchien
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-In dieser Lektion lernen Sie, wie Sie Hierarchien erstellen können. Hierarchien sind Gruppen von Spalten, die in Ebenen aufgeteilt sind. Eine Hierarchie „Geographie“ kann z.B. in die Ebenen „Land“, „Staat/Bundesland“, „Bezirk“ und „Stadt“ unterteilt sein. Hierarchien können in einer Feldliste einer Berichterstellungsclientanwendung getrennt von anderen Spalten auftreten. So können Clientbenutzer leichter durch diese navigieren und sie in Berichte einbeziehen. Weitere Informationen finden Sie unter [Hierarchien](https://docs.microsoft.com/sql/analysis-services/tabular-models/hierarchies-ssas-tabular).
+In dieser Lektion lernen Sie, wie Sie Hierarchien erstellen können. Hierarchien sind Gruppen von Spalten, die in Ebenen aufgeteilt sind. Eine Hierarchie „Geografie“ kann z.B. in die Ebenen „Land“, „Staat/Bundesland“, „Bezirk“ und „Stadt“ unterteilt sein. Hierarchien können in einer Feldliste einer Berichterstellungsclientanwendung getrennt von anderen Spalten auftreten. So können Clientbenutzer leichter durch diese navigieren und sie in Berichte einbeziehen. Weitere Informationen finden Sie unter [Hierarchien](https://docs.microsoft.com/sql/analysis-services/tabular-models/hierarchies-ssas-tabular).
   
 Verwenden Sie den Modell-Designer unter *Diagrammansicht*, um Hierarchien zu erstellen. Das Erstellen und Verwalten von Hierarchien wird in Data View nicht unterstützt.  
   
@@ -58,7 +58,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
   
 #### <a name="to-create-hierarchies-in-the-dimdate-table"></a>So erstellen Sie Hierarchien in der Tabelle „DimDate“  
   
-1.  Erstellen Sie in der Tabelle **DimDate** eine neue Hierarchie mit dem Namen **Calendar**.  
+1.  Erstellen Sie in der Tabelle **DimDate** eine Hierarchie mit dem Namen **Calendar**.  
   
 3.  Fügen Sie folgende Spalten in dieser Reihenfolge hinzu:
 
