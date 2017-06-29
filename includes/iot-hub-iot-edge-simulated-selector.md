@@ -1,61 +1,66 @@
 > [!div class="op_single_selector"]
 > * [Linux](../articles/iot-hub/iot-hub-linux-iot-edge-simulated-device.md)
 > * [Windows](../articles/iot-hub/iot-hub-windows-iot-edge-simulated-device.md)
-> 
-> 
 
-Diese exemplarische Vorgehensweise für das [Beispiel für Clouduploads von simulierten Geräten] zeigt, wie Sie [Azure IoT Edge][lnk-sdk] verwenden, um Gerät-zu-Cloud-Telemetriedaten von simulierten Geräten an IoT Hub zu senden.
+Diese exemplarische Vorgehensweise für das [Beispiels für Clouduploads von simulierten Geräten] zeigt, wie Sie [Azure IoT Edge][lnk-sdk] verwenden, um Gerät-zu-Cloud-Telemetriedaten von simulierten Geräten an IoT Hub zu senden.
 
 Diese Anleitung umfasst:
 
-1. **Architektur**: wichtige Informationen zur Architektur des Beispiels für Clouduploads von simulierten Geräten.
-2. **Erstellen und Ausführen**: die zum Erstellen und Ausführen des Beispiels erforderlichen Schritte.
+* **Architektur:** Informationen zur Architektur des [Beispiels für Clouduploads von simulierten Geräten]
+* **Erstellen und Ausführen**: die zum Erstellen und Ausführen des Beispiels erforderlichen Schritte.
 
 ## <a name="architecture"></a>Architektur
-Das Beispiel für Clouduploads von simulierten Geräten zeigt, wie Sie IoT Edge zum Erstellen eines Gateways verwenden, das Telemetriedaten von simulierten Geräten an einen IoT Hub sendet. Die simulierten Geräte können aus folgenden Gründen nicht direkt mit IoT Hub verbunden werden:
 
-* Die Geräte verwenden kein Kommunikationsprotokoll, das von IoT Hub gelesen werden kann.
-* Die Geräte verfügen nicht über die notwendigen intelligenten Funktionen, um sich die ihnen von IoT Hub zugewiesene Identität zu merken.
+Das [Beispiels für Clouduploads von simulierten Geräten] zeigt, wie Sie ein Gateway erstellen, das Telemetriedaten von simulierten Geräten an einen IoT-Hub sendet. Ein Gerät kann möglicherweise keine direkte Verbindung mit IoT Hub herstellen, da das Gerät:
 
-Das IoT Edge-Gateway löst diese Probleme für die simulierten Geräte auf folgende Arten:
+* kein Kommunikationsprotokoll verwendet, das von IoT Hub gelesen werden kann.
+* nicht über die notwendigen intelligenten Funktionen verfügt, um sich die ihm von IoT Hub zugewiesene Identität zu merken.
 
-* Das Gateway liest das von den simulierten Geräten verwendete Protokoll, empfängt D2C-Telemetriedaten von den Geräten und leitet diese Nachrichten an IoT Hub über ein Protokoll weiter, das vom IoT-Hub gelesen werden kann.
-* Das Gateway speichert IoT Hub-Identitäten für die simulierten Geräte und fungiert als Proxy, wenn die simulierten Geräte Nachrichten an IoT Hub senden.
+Ein IoT Edge-Gateway kann diese Probleme auf folgende Weise lösen:
+
+* Das Gateway liest das von dem Gerät verwendete Protokoll, empfängt D2C-Telemetriedaten von dem Gerät und leitet diese Nachrichten an IoT Hub über ein Protokoll weiter, das vom IoT-Hub gelesen werden kann.
+
+* Das Gateway ordnet IoT Hub-Identitäten Geräten zu und fungiert als Proxy, wenn ein Gerät Nachrichten an IoT Hub sendet.
 
 Das folgende Diagramm zeigt die Hauptkomponenten des Beispiels, einschließlich der IoT Edge-Module:
 
 ![][1]
 
-> [!NOTE]
-> Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Broker, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt, wie im unten stehenden Diagramm gezeigt. Weitere Informationen finden Sie unter [Erste Schritte mit Azure IoT Edge][lnk-gw-getstarted].
-> 
-> 
+Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Broker, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt. Weitere Informationen finden Sie unter [Erste Schritte mit Azure IoT Edge][lnk-gw-getstarted].
 
 ### <a name="protocol-ingestion-module"></a>Protokollerfassungsmodul
-Dieses Modul ist der Ausgangspunkt für das Übermitteln von Daten von Geräten über das Gateway in die Cloud. Im Beispiel führt das Modul vier Aufgaben aus:
 
-1. Es erstellt simulierte Temperaturdaten. Beachten Sie, dass wenn Sie reale Geräte verwenden, das Modul die Daten aus diesen physischen Geräten liest.
-2. Es platziert die simulierten Temperaturdaten in den Inhalt einer Nachricht.
-3. Es fügt der Nachricht mit den simulierten Temperaturdaten eine Eigenschaft mit einer MAC-Pseudoadresse hinzu.
-4. Es stellt dem nächsten Modul in der Kette die Nachricht zur Verfügung.
+Dieses Modul ist der Ausgangspunkt für das Empfangen von Daten von Geräten über das Gateway in die Cloud. Im Beispiel führt das Modul Folgendes durch:
 
-> [!NOTE]
-> Das im Diagramm oben als **Protocol X ingestion** bezeichnete Modul ist ein **simuliertes Gerät** im Quellcode.
-> 
-> 
+1. Es erstellt simulierte Temperaturdaten. Wenn Sie reale Geräte verwenden, liest das Modul die Daten von diesen physischen Geräten.
+1. Er erstellt eine Nachricht.
+1. Es platziert die simulierten Temperaturdaten in den Inhalt einer Nachricht.
+1. Es fügt der Nachricht eine Eigenschaft mit einer Pseudo-MAC-Adresse hinzu.
+1. Es stellt dem nächsten Modul in der Kette die Nachricht zur Verfügung.
+
+Das im Diagramm oben als **Protocol X ingestion** bezeichnete Modul ist ein **simuliertes Gerät** im Quellcode.
 
 ### <a name="mac-lt-gt-iot-hub-id-module"></a>Modul zur Zuordnung zwischen MAC-Adressen und IoT Hub-IDs&lt;-&gt;
-Dieses Modul sucht nach Nachrichten mit einer Eigenschaft, die die vom Protokollerfassungsmodul hinzugefügte MAC-Adresse der simulierten Geräte-App enthält. Wenn das Modul eine solche Eigenschaft findet, fügt es der Nachricht eine weitere Eigenschaft mit einem IoT Hub-Geräteschlüssel hinzu und stellt die Nachricht dann dem nächsten Modul in der Kette zur Verfügung. So verknüpft das Beispiel IoT Hub-Geräteeigenschaften mit simulierten Geräten. Der Entwickler richtet die Zuordnung zwischen MAC-Adressen und IoT Hub-Identitäten manuell im Rahmen der Modulkonfiguration ein. 
+
+Dieses Modul sucht nach Nachrichten, die über eine MAC-Adresseigenschaft verfügen. Im Beispiel fügt das Protokollerfassungsmodul die MAC-Adresseigenschaft. Wenn das Modul eine solche Eigenschaft findet, fügt es der Nachricht eine weitere Eigenschaft mit einem IoT Hub-Geräteschlüssel hinzu. Das Modul stellt die Nachricht dann dem nächsten Modul in der Kette zur Verfügung.
+
+Der Entwickler richtet eine Zuordnung zwischen MAC-Adressen und IoT Hub-Identitäten ein, um IoT Hub-Geräteidentitäten simulierten Geräten zuzuordnen. Der Entwickler fügt die Zuordnung manuell als Teil der Modulkonfiguration hinzu.
 
 > [!NOTE]
-> Dieses Beispiel verwendet eine MAC-Adresse als eindeutige Geräte-ID und korreliert sie mit einer IoT Hub-Geräteidentität. Sie können jedoch auch selbst ein Modul schreiben, das eine andere eindeutige ID verwendet. Sie können z.B. Geräte mit eindeutigen Seriennummern oder Telemetriedaten mit eingebetteten eindeutigen Gerätenamen verwenden, um die IoT Hub-Geräteidentität zu bestimmen.
-> 
-> 
+> Dieses Beispiel verwendet eine MAC-Adresse als eindeutige Geräte-ID und korreliert sie mit einer IoT Hub-Geräteidentität. Sie können jedoch auch selbst ein Modul schreiben, das eine andere eindeutige ID verwendet. Ihre Geräte könnten beispielsweise eindeutige Seriennummern aufweisen, oder die Telemetriedaten enthalten einen eindeutigen eingebetteten Gerätenamen.
 
 ### <a name="iot-hub-communication-module"></a>IoT Hub-Kommunikationsmodul
-Dieses Modul akzeptiert Nachrichten mit einer vom vorherigen Modul zugewiesenen IoT Hub-Geräteidentität und sendet den Nachrichteninhalt über HTTP an IoT Hub. HTTP ist eines der drei Protokolle, die von IoT Hub gelesen werden können.
 
-Anstatt für jedes simulierte Gerät eine Verbindung mit IoT Hub zu öffnen, öffnet dieses Modul eine einzelne HTTP-Verbindung zwischen Gateway und dem IoT-Hub und stellt über diese Verbindung im Multiplexverfahren Verbindungen von allen simulierten Geräte-Apps her. So kann ein einzelnes Gateway wesentlich mehr (simulierte oder nicht simulierte) Geräte miteinander verbinden, als es durch Öffnen einer eindeutigen Verbindung für jedes Gerät möglich wäre.
+Dieses Modul akzeptiert Nachrichten mit einer Eigenschaft mit einem IoT Hub-Geräteschlüssel, die vom vorhergehenden Modul zugewiesen wurde. Das Modul sendet den Nachrichteninhalt mithilfe des HTTP-Protokolls an IoT Hub. HTTP ist eines der drei Protokolle, die von IoT Hub gelesen werden können.
+
+Statt eine Verbindung für jedes simulierte Gerät zu öffnen, öffnet dieses Modul eine einzelne HTTP-Verbindung vom Gateway zum IoT Hub. Per Multiplex nutzt das Modul dann Verbindungen von allen simulierten Geräten über diese Verbindung. Dieser Ansatz ermöglicht Verbindungen von einem einzelnen Gateway mit vielen weiteren Geräten.
+
+## <a name="before-you-get-started"></a>Bevor Sie beginnen
+
+Bevor Sie beginnen, müssen Sie Folgendes ausführen:
+
+* [Erstellen Sie einen IoT Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Der Name des Hubs wird später in dieser exemplarischen Vorgehensweise benötigt. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
+* Fügen Sie Ihrem IoT Hub zwei Geräte hinzu, und notieren Sie die IDs und Geräteschlüssel. Sie können die Tools [Device Explorer][lnk-device-explorer] oder [iothub-explorer][lnk-iothub-explorer] verwenden, um Geräte zu dem im vorherigen Schritt erstellten IoT-Hub hinzuzufügen und die zugehörigen Schlüssel abzurufen.
 
 ![][2]
 
@@ -64,6 +69,10 @@ Anstatt für jedes simulierte Gerät eine Verbindung mit IoT Hub zu öffnen, öf
 [2]: media/iot-hub-iot-edge-simulated-selector/image2.png
 
 <!-- Links -->
-[Beispiel für Clouduploads von simulierten Geräten]: https://github.com/Azure/iot-edge/blob/master/samples/simulated_device_cloud_upload/README.md
+[Beispiels für Clouduploads von simulierten Geräten]: https://github.com/Azure/iot-edge/blob/master/samples/simulated_device_cloud_upload/README.md
 [lnk-sdk]: https://github.com/Azure/iot-edge
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
+[lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
+[lnk-iothub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
+[lnk-create-hub]: ../articles/iot-hub/iot-hub-create-through-portal.md
