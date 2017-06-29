@@ -13,8 +13,9 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 06/27/2017
 ms.author: curtand;jeffsta
+ms.reviewer: jeffsta
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
 ms.openlocfilehash: f4d12e8a8e2710879c8748b120ab63179b3a4be2
@@ -23,6 +24,7 @@ ms.lasthandoff: 05/08/2017
 
 
 ---
+
 # <a name="delete-a-user-from-a-directory-in-azure-active-directory"></a>Löschen eines Benutzers aus einem Verzeichnis in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie das Kennwort für einen Benutzer in Azure Active Directory (Azure AD) zurücksetzen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md).
 
