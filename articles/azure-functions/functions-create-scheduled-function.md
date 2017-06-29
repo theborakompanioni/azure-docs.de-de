@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: f35f693131bd1f4f47b161afb0a4f38d4f00bbd6
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 4442d0038a0604d3297871907c1d05d8d3916dcf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
@@ -31,7 +31,9 @@ Erfahren Sie, wie Sie mithilfe von Azure Functions eine Funktion erstellen könn
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Für dieses Tutorial benötigen Sie Folgendes:
+
++ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -47,7 +49,11 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
 ## <a name="create-a-timer-triggered-function"></a>Erstellen einer Funktion mit Auslösung per Timer
 
-1. Erweitern Sie Ihre Funktionen-App, klicken Sie neben den **Funktionen** auf die Schaltfläche **+**, und klicken Sie anschließend auf die Vorlage **TimerTrigger** für die gewünschte Sprache. Verwenden Sie anschließend die Proxyeinstellungen wie in der Tabelle angegeben:
+1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktionen-App ist, wählen Sie **Benutzerdefinierte Funktion**. Hiermit wird der vollständige Satz von Funktionsvorlagen angezeigt.
+
+    ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-scheduled-function/add-first-function.png)
+
+2. Wählen Sie die Vorlage **TimerTrigger** für die gewünschte Sprache. Verwenden Sie anschließend die Proxyeinstellungen wie in der Tabelle angegeben:
 
     ![Erstellen Sie im Azure-Portal eine Funktion mit Auslösung per Timer.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
 

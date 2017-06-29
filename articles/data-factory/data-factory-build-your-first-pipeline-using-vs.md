@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 9d788bf8e41fe225a4c24a4f5b464e8664f3d677
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 7ea9988b02bc09626a11efb5e95c2349b378256a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -202,7 +202,7 @@ Nun erstellen Sie das Ausgabedataset, das im Azure-Blobspeicher gespeicherte Aus
     }
     ```
     Mit dem JSON-Codeausschnitt wird ein Dataset mit dem Namen **AzureBlobOutput** definiert. Es steht für Ausgabedaten, die mit der Hive-Aktivität in der Pipeline produziert werden. Sie geben an, dass die von der Hive-Aktivität produzierten Ausgabedaten im Blobcontainer `adfgetstarted` und im Ordner `partitioneddata` angeordnet werden sollen. 
-     
+    
     Der Abschnitt **availability** gibt an, dass das Ausgabe-DataSet monatlich erzeugt wird. Das Ausgabedataset ist die Grundlage für den Zeitplan der Pipeline. Die Pipeline wird monatlich zwischen dem Start- und Endzeitpunkt ausgeführt. 
 
     Im Abschnitt **Erstellen des Eingabedatasets** werden diese Eigenschaften beschrieben. Sie legen die Eigenschaft „external“ für ein Ausgabedataset nicht fest, da das Dataset von der Pipeline erstellt wird.
@@ -320,7 +320,7 @@ Beachten Sie die folgenden wichtigen Punkte:
 
 - Führen Sie einen der folgenden Schritte aus, wenn Sie eine Fehlermeldung wie **Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert** erhalten, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
     - Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren.
-        ```PowerShell    
+        ```PowerShell   
         Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         Sie können den folgenden Befehl ausführen, um sicherzustellen, dass der Data Factory-Anbieter registriert ist.

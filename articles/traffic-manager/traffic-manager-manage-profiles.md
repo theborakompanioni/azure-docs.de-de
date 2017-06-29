@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 3d30024920295298ad2a8a6e22e11ef829934255
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -45,7 +45,7 @@ Sie können ein Traffic Manager-Profil mit dem Azure-Portal erstellen. Nach dem 
 
 ## <a name="disable-enable-or-delete-a-profile"></a>Deaktivieren, Aktivieren oder Löschen von Profilen
 
-Sie können ein vorhandenes Profil deaktivieren, damit Benutzeranforderungen von Traffic Manager nicht an die konfigurierten Endpunkte geleitet werden. Wenn Sie ein Traffic Manager-Profil deaktivieren, bleiben das Profil und die Informationen im Profil erhalten und können auf der Traffic Manager-Benutzeroberfläche bearbeitet werden.  Die Weiterleitungen werden fortgesetzt, wenn Sie das Profil wieder aktivieren. Wenn Sie ein Traffic Manager-Profil im klassischen Azure-Portal erstellen, wird es automatisch aktiviert. Falls ein Profil nicht mehr erforderlich ist, können Sie es löschen.
+Sie können ein vorhandenes Profil deaktivieren, damit Benutzeranforderungen von Traffic Manager nicht an die konfigurierten Endpunkte geleitet werden. Wenn Sie ein Traffic Manager-Profil deaktivieren, bleiben das Profil und die Informationen im Profil erhalten und können auf der Traffic Manager-Benutzeroberfläche bearbeitet werden.  Die Weiterleitungen werden fortgesetzt, wenn Sie das Profil wieder aktivieren. Wenn Sie ein Traffic Manager-Profil im Azure-Portal erstellen, wird es automatisch aktiviert. Falls ein Profil nicht mehr erforderlich ist, können Sie es löschen.
 
 ### <a name="to-disable-a-profile"></a>So deaktivieren Sie ein Profil
 

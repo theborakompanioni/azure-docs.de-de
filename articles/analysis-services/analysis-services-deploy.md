@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/17/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 04b809a6fdd7b993a048a67f66a9851c2a7bf3d2
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 0b15399cade0a9dc21b2274a64172d65f2f4e877
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -29,12 +29,12 @@ Nachdem Sie im Azure-Abonnement einen Server erstellt haben, können Sie eine ta
 ## <a name="before-you-begin"></a>Voraussetzungen
 Zunächst benötigen Sie Folgendes:
 
-* **Analysis-Services-Server** in Azure. Weitere Informationen finden Sie unter [Create an Analysis Services Server in Azure](analysis-services-create-server.md) (Erstellen eines Analysis-Services-Servers in Azure, in englischer Sprache).
-* **Tabellarisches Modellprojekt** in SSDT oder ein vorhandenes tabellarisches Modell mit dem Kompatibilitätsgrad 1200 oder höhere in einer Analysis Services-Instanz. Haben Sie noch nie eines erstellt? Absolvieren Sie das [Adventure Works-Tutorial](https://msdn.microsoft.com/library/hh231691.aspx).
+* **Analysis-Services-Server** in Azure. Weitere Informationen finden Sie unter [Erstellen eines Azure Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md).
+* **Tabellarisches Modellprojekt** in SSDT oder ein vorhandenes tabellarisches Modell mit dem Kompatibilitätsgrad 1200 oder höher. Haben Sie noch nie eines erstellt? Absolvieren Sie das [Adventure Works-Tutorial](https://msdn.microsoft.com/library/hh231691.aspx).
 * **Lokales Gateway** – Wenn eine oder mehrere Datenquellen lokal im Netzwerk der Organisation vorhanden sind, müssen Sie ein [lokales Datengateway](analysis-services-gateway.md) installieren. Das Gateway ist erforderlich, damit der Server in der Cloud eine Verbindung mit den lokalen Datenquellen herstellen kann, um Daten im Modell zu verarbeiten und zu aktualisieren.
 
 > [!TIP]
-> Stellen Sie vor dem Bereitstellen sicher, dass Sie die Daten in den Tabellen verarbeiten können. Klicken Sie in SSDT auf **Modell** > **Verarbeiten** > **Alle verarbeiten**. Wenn die Verarbeitung fehlschlägt, schlägt auch die Bereitstellung fehl.
+> Stellen Sie vor dem Bereitstellen sicher, dass Sie die Daten in den Tabellen verarbeiten können. Klicken Sie in SSDT auf **Modell** > **Verarbeiten** > **Alle verarbeiten**. Wenn bei der Verarbeitung Fehler auftreten, kann die Bereitstellung nicht erfolgen.
 > 
 > 
 

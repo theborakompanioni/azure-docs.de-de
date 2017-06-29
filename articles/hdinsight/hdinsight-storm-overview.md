@@ -1,5 +1,5 @@
 ---
-title: "Was ist Apache Storm – Azure HDInsight | Microsoft-Dokumentation"
+title: "Was ist Apache Storm? – Azure HDInsight | Microsoft-Dokumentation"
 description: "Mit Apache Storm können Sie Datenströme in Echtzeit verarbeiten. Mit Azure HDInsight können Sie auf einfache Weise Storm-Cluster in der Azure-Cloud erstellen. Mit Visual Studio können Sie Storm-Lösungen mithilfe von C# erstellen und dann in Ihren HDInsight Storm-Clustern bereitstellen."
 services: hdinsight
 documentationcenter: 
@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 05/12/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9c17268d775d0c54468a38a85c746d624f449a9d
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 0d565c29767e778873dad2421c93b62455706f27
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---

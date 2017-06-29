@@ -10,27 +10,27 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 0cce578185ba7811e4b13cc061a2adcb18452b13
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 893371145d77e156843271907aeef0c3756d0403
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-5-create-calculated-columns"></a>Lektion 5: Erstellen berechneter Spalten
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-In dieser Lektion erstellen Sie neue Daten in Ihrem Modell, indem Sie berechnete Spalten hinzufügen. Sie können mithilfe des Abfrage-Editors berechnete Spalten (wie benutzerdefinierte Spalten) erstellen, wenn Sie „Daten abrufen“ verwenden, oder zu einem späteren Zeitpunkt im Modell-Designer, wie in diesem Tutorial. Weitere Informationen finden Sie unter [Berechnete Spalten](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).
+In dieser Lektion erstellen Sie Daten in Ihrem Modell, indem Sie berechnete Spalten hinzufügen. Sie können mithilfe des Abfrage-Editors berechnete Spalten (wie benutzerdefinierte Spalten) erstellen, wenn Sie „Daten abrufen“ verwenden, oder zu einem späteren Zeitpunkt im Modell-Designer, wie in diesem Tutorial. Weitere Informationen finden Sie unter [Berechnete Spalten](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).
   
-Sie erstellen fünf neue berechnete Spalten in drei verschiedenen Tabellen. Die Schritte sind für jede Aufgabe etwas anders. Hierdurch werden Sie sehen, dass es verschiedene Möglichkeiten gibt, neue Spalten zu erstellen, sie umzubenennen und an verschiedenen Positionen in einer Tabelle zu platzieren.  
+Sie erstellen fünf neue berechnete Spalten in drei verschiedenen Tabellen. Die Schritte sind für die einzelnen Aufgaben jeweils unterschiedlich, damit Sie sehen, dass es verschiedene Möglichkeiten gibt, Spalten zu erstellen, sie umzubenennen und an verschiedenen Positionen in einer Tabelle zu platzieren.  
 
-Hier benutzen Sie auch zum ersten Mal Data Analysis Expressions (DAX). DAX ist eine spezielle Sprache zum Erstellen von extrem anpassbaren Formelausdrücken für tabellarische Modelle. In diesem Tutorial verwenden Sie DAX zum Erstellen von berechneten Spalten, Measures und Rollenfiltern. Weitere Informationen finden Sie unter [DAX in tabular models (DAX in tabellarischen Modellen)](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular). 
+In dieser Lektion benutzen Sie auch zum ersten Mal Data Analysis Expressions (DAX). DAX ist eine spezielle Sprache zum Erstellen von extrem anpassbaren Formelausdrücken für tabellarische Modelle. In diesem Tutorial verwenden Sie DAX zum Erstellen von berechneten Spalten, Measures und Rollenfiltern. Weitere Informationen finden Sie unter [DAX in tabular models (DAX in tabellarischen Modellen)](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular). 
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
@@ -51,13 +51,13 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
   
     Eine neue Spalte mit dem Namen **Calculated Column 1**  (Berechnete Spalte 1) wird auf der linken Seite der Spalte **Calendar Quarter** eingefügt.  
   
-4.  Geben Sie in der Bearbeitungsleiste über der Tabelle die folgende DAX-Formel ein. Die Funktion AutoVervollständigen unterstützt Sie beim Eingeben des vollqualifizierten Namens von Spalten und Tabellen und listet die verfügbaren Funktionen auf.  
+4.  Geben Sie in der Bearbeitungsleiste über der Tabelle die folgende DAX-Formel ein: Die Funktion AutoVervollständigen unterstützt Sie beim Eingeben des vollqualifizierten Namens von Spalten und Tabellen und listet die verfügbaren Funktionen auf.  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
     ``` 
   
-    Anschließend werden Werte für alle Zeilen in der berechneten Spalte aufgefüllt. Wenn Sie durch die Tabelle scrollen, werden Sie sehen, dass die Zeilen über verschiedene Werte für diese Spalte verfügen, basierend auf den Daten in jeder Zeile.    
+    Anschließend werden Werte für alle Zeilen in der berechneten Spalte aufgefüllt. Wenn Sie durch die Tabelle scrollen, werden Sie sehen, dass die Zeilen über verschiedene Werte für diese Spalte verfügen, abhängig von den Daten in jeder Zeile.    
   
 5.  Benennen Sie diese Spalte in **MonthCalendar** um. 
 
@@ -67,7 +67,7 @@ Die berechnete Spalte „MonthCalendar“ verfügt über einen sortierbaren Name
   
 #### <a name="create-a-dayofweek-calculated-column-in-the-dimdate-table"></a>Erstellen Sie eine berechnete DayOfWeek-Spalte in der DimDate-Tabelle  
   
-1.  Klicken Sie auf das Menü **Spalte**, während die **DimDate**-Tabelle aktiv ist, und klicken Sie auf **Spalten hinzufügen**.  
+1.  Klicken Sie auf das Menü **Spalte**, während die **DimDate**-Tabelle aktiv ist, und klicken Sie auf **Spalte hinzufügen**.  
   
 2.  Geben Sie in der Bearbeitungsleiste folgende Formel ein:  
     
@@ -91,7 +91,7 @@ Die berechnete Spalte „DayOfWeek“ verfügt über einen sortierbaren Namen f�
   
 1.  Scrollen Sie in der **DimProduct**-Tabelle zur rechten Seite. Beachten Sie, dass die Spalte ganz rechts **Spalte hinzufügen** (in Kursivdruck) benannt ist, und klicken Sie auf die Spaltenüberschrift.  
   
-2.  Geben Sie in der Bearbeitungsleiste folgende Formel ein.  
+2.  Geben Sie in der Bearbeitungsleiste folgende Formel ein:  
     
     ```
     =RELATED('DimProductSubcategory'[EnglishProductSubcategoryName])  

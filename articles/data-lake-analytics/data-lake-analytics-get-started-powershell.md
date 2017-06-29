@@ -15,59 +15,61 @@ ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 6985dff332928d704f30e167c3bddb62bcc6cac1
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: faf17bcac66a70fc78bb171e172886fd2dcadca8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure PowerShell
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure PowerShell
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Es wird beschrieben, wie Sie Azure PowerShell zum Erstellen von Azure Data Lake Analytics-Konten verwenden und anschließend U-SQL-Aufträge senden und ausführen. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
-* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* **Ein Azure Data Lake Analytics-Konto**. Weitere Informationen finden Sie unter [Erste Schritte mit Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
 * **Eine Arbeitsstation mit Azure PowerShell**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
-## <a name="preparing-for-the-tutorial"></a>Vorbereiten des Tutorials
-Für die Erstellung eines Data Lake Analytics-Kontos müssen Sie zuerst Folgendes definieren:
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-* **Azure-Ressourcengruppe**: Ein Data Lake Analytics-Konto muss innerhalb einer Azure-Ressourcengruppe erstellt werden.
-* **Data Lake Analytics-Kontoname**: Der Data Lake-Kontoname darf nur Kleinbuchstaben und Zahlen enthalten.
-* **Standort**: eines der Azure-Rechenzentren, die Data Lake Analytics unterstützen.
-* **Data Lake Store-Standardkonto**: Jedes Data Lake Analytics-Konto verfügt über ein Data Lake Store-Standardkonto. Diese Konten müssen sich an demselben Standort befinden.
+In diesem Tutorial wird davon ausgegangen, dass Sie bereits mit der Verwendung von Azure PowerShell vertraut sind. Insbesondere müssen Sie wissen, wie Sie sich bei Azure anmelden. Wenn Sie Hilfe benötigen, finden Sie weitere Informationen unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps).
+
+So melden Sie sich mit einem Abonnementnamen an:
+
+```
+Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+```
+
+Anstelle des Abonnementnamens können Sie für die Anmeldung auch eine Abonnement-ID verwenden:
+
+```
+Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+Bei erfolgreicher Durchführung ähnelt die Ausgabe dieses Befehls dem folgenden Text:
+
+```
+Environment           : AzureCloud
+Account               : joe@contoso.com
+TenantId              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+SubscriptionId        : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+SubscriptionName      : ContosoSubscription
+CurrentStorageAccount :
+```
+
+## <a name="preparing-for-the-tutorial"></a>Vorbereiten des Tutorials
 
 In den PowerShell-Codeausschnitten dieses Tutorials werden die folgenden Variablen zum Speichern dieser Informationen verwendet:
 
 ```
 $rg = "<ResourceGroupName>"
-$adls = "<DataLakeAccountName>"
+$adls = "<DataLakeStoreAccountName>"
 $adla = "<DataLakeAnalyticsAccountName>"
 $location = "East US 2"
-```
-
-## <a name="create-a-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
-
-Wenn Sie nicht bereits über eine Ressourcengruppe verfügen, ist es erforderlich, eine Ressourcengruppe zu erstellen. 
-
-```
-New-AzureRmResourceGroup -Name  $rg -Location $location
-```
-
-Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto erforderlich, das zum Speichern von Protokollen verwendet wird. Sie können ein vorhandenes Konto wiederverwenden oder ein neues Konto erstellen. 
-
-```
-New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
-```
-
-Wenn eine Ressourcengruppe und ein Data Lake Store-Konto vorhanden sind, können Sie ein Data Lake Analytics-Konto erstellen.
-
-```
-New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>Abrufen von Informationen zu einem Data Lake Analytics-Konto
@@ -78,9 +80,10 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 
 ## <a name="submit-a-u-sql-job"></a>Senden eines U-SQL-Auftrags
 
-Erstellen Sie eine Textdatei mit dem folgenden U-SQL-Skript:
+Erstellen Sie eine PowerShell-Variable, die das U-SQL-Skript enthalten soll.
 
 ```
+$script = @"
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -91,26 +94,29 @@ Erstellen Sie eine Textdatei mit dem folgenden U-SQL-Skript:
 OUTPUT @a
     TO "/data.csv"
     USING Outputters.Csv();
+
+"@
 ```
 
 Senden Sie das Skript.
 
 ```
-Submit-AdlJob -AccountName $adla –ScriptPath "d:\test.usql"Submit
+$job = Submit-AdlJob -AccountName $adla –Script $script
 ```
 
-## <a name="monitor-u-sql-jobs"></a>Überwachen von U-SQL-Aufträgen
-
-Listen Sie alle Aufträge des Kontos auf. Die Ausgabe enthält die derzeit ausgeführten Aufträge sowie die Aufträge, die vor Kurzem abgeschlossen wurden.
+Alternativ können Sie das Skript als Datei speichern und mit dem folgenden Befehl senden:
 
 ```
-Get-AdlJob -Account $adla
+$filename = "d:\test.usql"
+$script | out-File $filename
+$job = Submit-AdlJob -AccountName $adla –ScriptPath $filename
 ```
 
-Rufen Sie den Status eines bestimmten Auftrags ab.
+
+Rufen Sie den Status eines bestimmten Auftrags ab. Verwenden Sie dieses Cmdlet weiterhin, bis Sie feststellen, dass der Auftrag abgeschlossen ist.
 
 ```
-Get-AdlJob -AccountName $adla -JobId $job.JobId
+$job = Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
 Anstatt immer wieder Get-AdlAnalyticsJob aufzurufen, bis ein Auftrag abgeschlossen ist, können Sie das Wait-AdlJob-Cmdlet verwenden.
@@ -119,31 +125,10 @@ Anstatt immer wieder Get-AdlAnalyticsJob aufzurufen, bis ein Auftrag abgeschloss
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Überprüfen Sie nach Abschluss des Auftrags, ob die Ausgabedatei vorhanden ist, indem Sie die Dateien eines Ordners auflisten.
+Laden Sie die Ausgabedatei herunter.
 
 ```
-Get-AdlStoreChildItem -Account $adls -Path "/"
-```
-
-Überprüfen Sie das Vorhandensein einer Datei.
-
-```
-Test-AdlStoreItem -Account $adls -Path "/data.csv"
-```
-
-## <a name="uploading-and-downloading-files"></a>Hoch- und Herunterladen von Dateien
-
-Laden Sie die Ausgabe des U-SQL-Skripts herunter.
-
-```
-Export-AdlStoreItem -AccountName $adls -Path "/data.csv"  -Destination "D:\data.csv"
-```
-
-
-Laden Sie eine Datei hoch, die als Eingabe für ein U-SQL-Skript verwendet werden soll.
-
-```
-Import-AdlStoreItem -AccountName $adls -Path "D:\data.tsv" -Destination "/data_copy.csv" 
+Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
 ## <a name="see-also"></a>Weitere Informationen

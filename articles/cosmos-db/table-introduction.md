@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2017
+ms.date: 06/09/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: d1e1f977c9023f4727d8c444b5e490e8f5ba8d9e
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 07dc5e1520cf60e19a1961ad85d2aea0cc7bd15f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/31/2017
 
 ![Azure Table Storage-API und Azure Cosmos DB](./media/table-introduction/premium-tables.png) 
 
-Azure Cosmos DB bietet die Table-API für Anwendungen, die einen Schlüssel-Wert-Speicher mit flexiblen Schemas benötigen. Die SDKs und REST-APIs von [Azure Table Storage](../storage/storage-introduction.md) können zum Arbeiten mit Azure Cosmos DB verwendet werden. Mit Azure Cosmos DB können Sie Tabellen mit hohen Durchsatzanforderungen erstellen. Azure Cosmos DB unterstützt durchsatzoptimierte Tabellen (informell als „Premium Tables“ bezeichnet), die derzeit in der öffentlichen Vorschau verfügbar sind. 
+Azure Cosmos DB stellt die Tabellen-API (Vorschauversion) für Anwendungen bereit, die einen Schlüsselwertspeicher mit flexiblem Schema, vorhersagbarer Leistung, globaler Verteilung und hohem Durchsatz benötigen. Die Tabellen-API bietet die gleiche Funktionalität wie Azure Table Storage, nutzt jedoch die Vorteile des Azure Cosmos DB-Moduls. 
 
 Sie können Azure Table Storage weiterhin für Tabellen mit hohen Speicheranforderungen und niedrigeren Durchsatzanforderungen verwenden. In einem zukünftigen Update von Azure Cosmos DB wird die Unterstützung speicheroptimierter Tabellen eingeführt, und für vorhandene und neue Azure Table Storage-Konten wird ein Upgrade auf Azure Cosmos DB durchgeführt.
 
@@ -56,3 +56,4 @@ Hier einige Hinweise, um Ihnen den Einstieg zu erleichtern:
 * Machen Sie die ersten Schritte mit [Azure Cosmos DB: Build a .NET application using the Table API (Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Table-API)](create-table-dotnet.md) mithilfe des vorhandenen .NET Table SDK.
 * Erfahren Sie mehr über die [globale Verteilung mit Azure Cosmos DB](distribute-data-globally.md).
 * Erfahren Sie mehr über den [bereitgestellten Durchsatz in Azure Cosmos DB](request-units.md).
+

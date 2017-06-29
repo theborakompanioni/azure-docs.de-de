@@ -8,17 +8,17 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/21/2017
+ms.date: 06/05/2017
 ms.author: nisoneji
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 3c72026a7a6c6b348a77560c7f35d76d93c75e17
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -140,7 +140,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Operation | StartProfiling |
 | -Server | Der vollständig qualifizierte Domänenname oder die IP-Adresse des vCenter-Servers/vSphere ESXi-Hosts, für dessen VMs die Profilerstellung durchgeführt werden soll.|
 | -User | Der Benutzername für die Herstellung der Verbindung mit dem vCenter-Server/vSphere ESXi-Host. Der Benutzer muss mindestens über Lesezugriff verfügen.|
-| -VMListFile |    Die Datei mit der Liste der VMs, für die Profile erstellt werden sollen. Der Dateipfad kann absolut oder relativ sein. Die Datei sollte einen VM-Namen bzw. eine IP-Adresse pro Zeile enthalten. Der in der Datei angegebene Name des virtuellen Computers sollte mit dem VM-Namen auf dem vCenter-Server/vSphere ESXi-Host identisch sein.<br>Die Datei „VMList.txt“ enthält beispielsweise die folgenden VMs:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
+| -VMListFile | Die Datei mit der Liste der VMs, für die Profile erstellt werden sollen. Der Dateipfad kann absolut oder relativ sein. Die Datei sollte einen VM-Namen bzw. eine IP-Adresse pro Zeile enthalten. Der in der Datei angegebene Name des virtuellen Computers sollte mit dem VM-Namen auf dem vCenter-Server/vSphere ESXi-Host identisch sein.<br>Die Datei „VMList.txt“ enthält beispielsweise die folgenden VMs:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
 | -NoOfDaysToProfile | Gibt an, wie lange die Profilerstellung durchgeführt werden soll (in Tagen). Es wird empfohlen, die Profilerstellung länger als 15 Tage durchzuführen. So kann sichergestellt werden, dass das Workloadmuster in Ihrer Umgebung im angegebenen Zeitraum eingehalten und verwendet wird, um eine genaue Empfehlung zu erhalten. |
 | -Directory | (Optional) Der UNC-Pfad (Universal Naming Convention) oder lokale Verzeichnispfad zum Speichern der Daten, die während des Profilerstellungsvorgangs generiert werden. Wenn kein Verzeichnisname angegeben ist, wird das Verzeichnis mit dem Namen „ProfiledData“ unter dem aktuellen Pfad als Standardverzeichnis verwendet. |
 | -Password | (Optional) Das Kennwort zum Herstellen der Verbindung mit dem vCenter-Server/vSphere ESXi-Host. Wenn Sie hier kein Kennwort angeben, werden Sie bei der Ausführung des Befehls zur Eingabe aufgefordert.|
@@ -205,10 +205,7 @@ Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmo
 | -StartDate | (Optional) Das Startdatum und die Uhrzeit im Format MM-TT-JJJJ:HH:MM (24-Stunden-Format). *StartDate* muss zusammen mit *EndDate* angegeben werden. Wenn „StartDate“ angegeben ist, wird der Bericht für die Profilerstellungsdaten erstellt, die zwischen „StartDate“ und „EndDate“ erfasst wurden. |
 | -EndDate | (Optional) Das Enddatum und die Uhrzeit im Format MM-TT-JJJJ:HH:MM (24-Stunden-Format). *EndDate* muss zusammen mit *StartDate* angegeben werden. Wenn „EndDate“ angegeben ist, wird der Bericht für die Profilerstellungsdaten erstellt, die zwischen „StartDate“ und „EndDate“ erfasst wurden. |
 | -GrowthFactor | (Optional) Der Zuwachsfaktor als Prozentsatz. Der Standardwert ist 30 Prozent. |
-| -UseManagedDisks | (Optional) UseManagedDisks – Ja/Nein. Die Standardeinstellung ist „Ja“. Die Anzahl der virtuellen Computer, die in einem einzelnen Speicherkonto enthalten sein können, wird basierend auf der Auswahl eines verwalteten Datenträger für das Failover bzw. Testfailover berechnet. |
-
-in einer einzelnen Speicherkontoplatzierung wird bei der Berechnung berücksichtigt, dass das Failover bzw. Testfailover von virtuellen Computern auf einem verwalteten Datenträger anstatt einem nicht verwalteten Datenträger erfolgt. |
-
+| -UseManagedDisks | (Optional) UseManagedDisks – Ja/Nein. Die Standardeinstellung ist „Ja“. Für Anzahl der virtuellen Computer in einer einzelnen Speicherkontoplatzierung wird bei der Berechnung berücksichtigt, dass das Failover bzw. Testfailover von virtuellen Computern auf einem verwalteten Datenträger statt auf einem nicht verwalteten Datenträger erfolgt. |
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
 ```
@@ -531,11 +528,11 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 
 **Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
 ---|---|---|---
-Standardspeicher | 8 KB    | 2 MBit/s | 168 GB pro Datenträger
-Premium-P10-Datenträger | 8 KB    | 2 MBit/s | 168 GB pro Datenträger
-Premium-P10-Datenträger | 16 KB | 4 MBit/s |    336 GB pro Datenträger
+Standardspeicher | 8 KB | 2 MBit/s | 168 GB pro Datenträger
+Premium-P10-Datenträger | 8 KB | 2 MBit/s | 168 GB pro Datenträger
+Premium-P10-Datenträger | 16 KB | 4 MBit/s | 336 GB pro Datenträger
 Premium-P10-Datenträger | 32 KB oder höher | 8 MBit/s | 672 GB pro Datenträger
-Premium-P20- oder -P30-Datenträger | 8 KB    | 5 MBit/s | 421 GB pro Datenträger
+Premium-P20- oder -P30-Datenträger | 8 KB  | 5 MBit/s | 421 GB pro Datenträger
 Premium-P20- oder -P30-Datenträger | 16 KB oder höher |10 MBit/s | 842 GB pro Datenträger
 
 Dies sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.

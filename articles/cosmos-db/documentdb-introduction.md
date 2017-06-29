@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 08fd1956d3c6499f059b138de22d3b104a9da6c1
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 79156c0b511dafcb43ed91800f01338dbb7ee5f3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -30,15 +30,6 @@ ms.lasthandoff: 05/31/2017
 ![Azure DocumentDB-API](./media/documentdb-introduction/cosmosdb-documentdb.png) 
 
 Mit der DocumentDB-API stellt Azure Cosmos DB umfassende und vertraute [SQL-Abfragefunktionen](documentdb-sql-query.md) mit einheitlich geringen Wartezeiten für schemalose JSON-Daten bereit. Dieser Artikel enthält eine Übersicht über die DocumentDB-API von Azure Cosmos DB. Außerdem wird beschrieben, wie Sie sie zum Speichern von sehr großen Mengen von JSON-Daten und Abfragen mit einer Wartezeit im Millisekundenbereich verwenden und das Schema leicht weiterentwickeln können. 
-
-## <a name="how-can-i-learn-about-the-documentdb-api"></a>Wo erhalte ich Informationen zur DocumentDB-API?
-Eine schnelle Möglichkeit, mehr über die DocumentDB-API zu erfahren und die Datenbank in Aktion zu sehen, bieten die drei folgenden Schritte: 
-
-1. Sehen Sie sich das zweiminütige Video [What is Azure Cosmos DB?](https://azure.microsoft.com/documentation/videos/what-is-azure-documentdb/) (Was ist Azure Cosmos DB?) an, in dem die Vorteile der Nutzung von Azure Cosmos DB vorgestellt werden.
-2. Sehen Sie sich das dreiminütige Video [Create Azure Cosmos DB on Azure](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) (Erstellen einer Azure Cosmos DB in Azure) an, in dem die ersten Schritte mit Azure Cosmos DB im Azure-Portal veranschaulicht werden.
-3. Besuchen Sie den [Query Playground](http://www.documentdb.com/sql/demo), in dem Sie die verschiedenen Aktivitäten durchlaufen können, um mehr über die umfassende Abfragefunktionalität in DocumentDB zu erfahren. Wechseln Sie dann zur Registerkarte "Sandbox", um eigene benutzerdefinierten SQL-Abfragen auszuführen und mit DocumentDB zu experimentieren.
-
-Kehren Sie dann zu diesem Artikel zurück, um ausführlichere Informationen zu erhalten.  
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Welche Funktionen und wichtigen Features sind in Azure Cosmos DB enthalten?
 Azure Cosmos DB verfügt über die DocumentDB-API über die folgenden wichtigen Funktionen und Vorteile:
@@ -78,13 +69,13 @@ Ein Datenbankkonto besteht aus einer Reihe von Datenbanken, die jeweils mehrere 
 
 ## <a name="develop"></a> Wie kann ich mit der DocumentDB-API Apps entwickeln?
 
-Mit Azure Cosmos DB werden Ressourcen über die DocumentDB-REST-API verfügbar gemacht, die von allen Sprachen aufgerufen werden kann, mit denen HTTP/HTTPS-Anforderungen möglich sind. Darüber hinaus bieten wir Programmierbibliotheken für mehrere beliebte Sprachen für die DocumentDB-API an. Die Clientbibliotheken vereinfachen viele Aspekte der Arbeit mit der API, da Details wie Zwischenspeicherung von Adressen, Ausnahmeverwaltung und automatische Wiederholungsversuche verarbeitet werden können. Bibliotheken sind aktuell für die folgenden Sprachen und Plattformen erhältlich:  
+Mit Azure Cosmos DB werden Ressourcen über die REST-APIs verfügbar gemacht, die von allen Sprachen aufgerufen werden können, mit denen HTTP/HTTPS-Anforderungen möglich sind. Darüber hinaus bieten wir Programmierbibliotheken für mehrere beliebte Sprachen für die DocumentDB-API an. Die Clientbibliotheken vereinfachen viele Aspekte der Arbeit mit der API, da Details wie Zwischenspeicherung von Adressen, Ausnahmeverwaltung und automatische Wiederholungsversuche verarbeitet werden können. Bibliotheken sind aktuell für die folgenden Sprachen und Plattformen erhältlich:  
 
 | Download | Dokumentation |
 | --- | --- |
-| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET-Bibliothek](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
+| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET-Bibliothek](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
 | [Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) |[Node.js-Bibliothek](http://azure.github.io/azure-documentdb-node/) |
-| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java-Bibliothek](http://azure.github.io/azure-documentdb-java/) |
+| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java-Bibliothek](/java/api/com.microsoft.azure.documentdb) |
 | [JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) |[JavaScript-Bibliothek](http://azure.github.io/azure-documentdb-js/) |
 | – |[Serverseitiges JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/) |
 | [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python-Bibliothek](http://azure.github.io/azure-documentdb-python/) |

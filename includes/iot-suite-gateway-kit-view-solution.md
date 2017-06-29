@@ -28,7 +28,7 @@ Um Ihrer Remoteüberwachungslösung ein Gerät hinzuzufügen, führen Sie im Lö
 
    ![Hinzufügen einer Geräte-ID][3]
 
-1. Notieren Sie sich die Anmeldeinformationen des Geräts (**Geräte-ID**, **IoT Hub-Hostname** und **Geräteschlüssel**). Ihre Clientanwendung auf dem Raspberry Pi benötigt diese Werte, um eine Verbindung mit der Remoteüberwachungslösung herzustellen. Klicken Sie anschließend auf **Fertig**.
+1. Notieren Sie sich die Anmeldeinformationen des Geräts (**Geräte-ID**, **IoT Hub-Hostname** und **Geräteschlüssel**). Ihre Clientanwendung auf dem Intel NUC benötigt diese Werte, um eine Verbindung mit der Remoteüberwachungslösung herzustellen. Klicken Sie anschließend auf **Fertig**.
 
     ![Anzeigen von Geräteanmeldeinformationen][4]
 

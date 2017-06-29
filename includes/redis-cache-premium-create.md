@@ -7,7 +7,7 @@ Zum Erstellen eines Premium-Caches melden Sie sich beim [Azure-Portal](https://p
 > 
 > 
 
-Zum Konfigurieren der Premium-Features wählen Sie zunächst auf dem Blatt **Tarif auswählen** einen der Premium-Tarife aus.
+Zum Konfigurieren der Premium-Features wählen Sie zunächst in der Dropdownliste **Tarif** einen der Premium-Tarife aus. Klicken Sie auf **Alle Preisinformationen anzeigen**, und wählen Sie auf dem Blatt **Wählen Sie Ihren Tarif** einen Tarif aus, um weitere Informationen zu den einzelnen Tarifen zu erhalten.
 
 ![Tarif auswählen](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

@@ -12,61 +12,36 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 06/16/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 1b0d278c102497eca978d8cd3fa29cd2527f186c
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 19f71e0d5a8a4642b86ae60a3ab2a4042fa2990e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="security-alerts-by-type-in-azure-security-center"></a>Sicherheitswarnungen nach Typ in Azure Security Center
-In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
+# <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
+In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
 
 > [!NOTE]
 > Führen Sie ein Upgrade auf Azure Security Center Standard durch, um erweiterte Erkennungsfunktionen einzurichten. Sie können auch eine kostenlose 60-Tage-Testversion nutzen. Wählen Sie in der [Sicherheitsrichtlinie](security-center-policies.md) den **Tarif** aus, wenn Sie ein Upgrade durchführen möchten. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 >
->
 
 ## <a name="what-type-of-alerts-are-available"></a>Welche Art von Warnungen ist verfügbar?
-Azure Security Center verfügt über viele verschiedene Warnungen, die den Phasen der „Cyber Kill Chain“ entsprechen. In der folgenden Abbildung sind verschiedene Warnungen für einige dieser Phasen enthalten.
-
-![Kill Chain](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
-
-**Ziel und Angriff**
-
-* Eingehende RDP/SSH-Angriffe
-* Anwendungs- und DDoS-Angriffe (WAF-Partner)
-* Angriffserkennung (NG Firewall-Partner)
-
-**Installation und Ausnutzung (Exploit)**
-
-* Bekannte Schadsoftwaresignaturen (AM-Partner)
-* Versuche mit In-Memory-Schadsoftware und Exploits
-* Ausführung verdächtiger Prozesse
-* Ausweichmanöver zur Vermeidung der Entdeckung
-* Seitwärtsbewegung
-* Interne Erkundung
-* Verdächtige PowerShell-Aktivität
-
-**Nach einer Sicherheitsverletzung**  
-
-* Kommunikation mit einer bekannten schädlichen IP (Herausfilterung von Daten oder Befehl und Steuerung)
-* Verwendung von kompromittierten Ressourcen zum Starten zusätzlicher Angriffe (Überwachung von ausgehenden Ports, RDP/SSH-Brute-Force-Angriffe und Spam)
-
-Jeder Phase sind unterschiedliche Arten von Angriffen zugeordnet, die jeweils auf andere Subsysteme abzielen. Security Center verfügt über drei Kategorien von Warnungen für Angriffe während dieser Phasen:
+Azure Security Center verwendet eine Vielzahl von [Erkennungsfunktionen](security-center-detection-capabilities.md), um Kunden vor potenziellen Angriffen auf ihre Umgebungen zu warnen. Diese Warnungen enthalten wichtige Informationen über den Auslöser der Warnung, die möglicherweise betroffenen Ressourcen und die Quelle des Angriffs. Die in einer Warnung enthaltenen Informationen variieren je nach Typ der Analyse, mit der die Bedrohung erkannt wird. Vorfälle können auch zusätzliche Kontextinformationen beinhalten, die bei der Untersuchung einer Bedrohung hilfreich sein können.  Dieser Artikel enthält Informationen über die folgenden Warnungstypen:
 
 * Verhaltensanalyse von VMs (Virtual Machine Behavioral Analysis, VMBA)
 * Netzwerkanalyse
 * Ressourcenanalyse
+* Kontextinformationen
 
 ## <a name="virtual-machine-behavioral-analysis"></a>Verhaltensanalyse von VMs
 In Azure Security Center kann die Verhaltensanalyse verwendet werden, um kompromittierte Ressourcen basierend auf der Analyse von VM-Ereignisprotokollen zu ermitteln. Beispiele hierfür sind Prozesserstellungsereignisse und Anmeldeereignisse. Außerdem ist eine Korrelation mit anderen Signalen vorhanden, damit weitere Beweise für eine größere Aktion ermittelt werden können.
 
 > [!NOTE]
 > Weitere Informationen zur Funktionsweise der Security Center-Erkennungsfunktionen finden Sie unter [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md).
->
 >
 
 ### <a name="crash-analysis"></a>Absturzanalyse
@@ -258,6 +233,18 @@ Diese Warnung wird ausgelöst, wenn in einer Datenbank ein Anwendungsfehler erka
 Diese Warnung wird ausgelöst, wenn ein Zugriffsereignis von einer unbekannten IP-Adresse auf dem Server entdeckt wurde, das in der letzten Periode nicht aufgetreten ist.
 
 ![Warnung vor ungewöhnlichem Zugriff](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
+
+## <a name="contextual-information"></a>Kontextinformationen
+Bei einer Untersuchung benötigen Analysten zusätzlichen Kontext, um die Art der Bedrohung und die mögliche Minderung der Auswirkungen zu bewerten.  Wenn beispielsweise eine Netzwerkanomalie erkannt wurde, ist es schwer, die zu ergreifenden Maßnahmen festzulegen, wenn die weiteren Vorgänge in Bezug auf das Netzwerk oder die betroffenen Ressourcen nicht klar sind. Zur Unterstützung in diesem Fall kann ein Sicherheitsincident Artefakte, verwandte Ereignisse und Informationen enthalten, die dem Prüfer helfen können. Ob weitere Informationen verfügbar sind, hängt vom Typ der erkannten Bedrohung und der Konfiguration Ihrer Umgebung ab. Nicht für alle Sicherheitsincidents sind weitere Informationen verfügbar.
+
+Sollten weitere Informationen verfügbar sein, wird dies im Sicherheitsincident unterhalb der Warnungsliste angezeigt. Folgende Informationen können enthalten sein:
+
+- Protokolllöschereignisse
+- Von unbekannten Geräten angeschlossene Plug & Play-Geräte
+- Warnungen, die nicht handlungsrelevant sind 
+
+![Warnung vor ungewöhnlichem Zugriff](./media/security-center-alerts-type/security-center-alerts-type-fig20.png) 
+
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in Security Center beschrieben. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:

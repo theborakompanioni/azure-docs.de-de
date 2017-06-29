@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 0ba2158a45eb4ec9254ef829894152fe92276920
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -124,6 +124,12 @@ Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die
 #### <a name="azure-monitor"></a>Azure Monitor
 
 Jedes Anwendungsgatewayprotokoll ist in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) integriert.  Dadurch können Sie Diagnoseinformationen einschließlich WAF-Warnungen und -Protokolle nachverfolgen.  Diese Funktion wird innerhalb der Application Gateway-Ressource im Portal auf der Registerkarte **Diagnose** oder direkt über den Azure Monitor-Dienst bereitgestellt. Weitere Informationen zum Aktivieren von Diagnoseprotokollen für das Anwendungsgateway finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](application-gateway-diagnostics.md).
+
+#### <a name="azure-security-center"></a>Azure Security Center
+
+[Azure Security Center](../security-center/security-center-intro.md) unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen durch größere Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Das Anwendungsgateway ist jetzt [in Azure Security Center integriert](application-gateway-integration-security-center.md). Azure Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Es kann jetzt eine WAF für das Anwendungsgateway empfohlen werden, um diese ungeschützten Ressourcen zu schützen. Sie können die WAF für das Anwendungsgateway direkt aus dem Azure Security Center erstellen.  Diese WAF-Instanzen sind in Azure Security Center integriert und senden Warnungen und Integritätsinformationen für die Berichtserstellung zurück an Azure Security Center.
+
+![Abbildung 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 
 #### <a name="logging"></a>Protokollierung
 

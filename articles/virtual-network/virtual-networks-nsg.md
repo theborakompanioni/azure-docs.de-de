@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: dfa9f6e4bc95a1cd99f84e58167192d951960a7a
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 4043c68a3c8559eab6f5e4352bb599015366e5b5
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -182,7 +183,7 @@ Wie im Diagramm dargestellt, sind die virtuellen Computer *Web1* und *Web2* mit 
 1. Trennung des Datenverkehrs zwischen WEB- und DB-Servern.
 2. Lastenausgleichsregeln leiten den am Load Balancer eingehenden Datenverkehr an alle Webserver an Port 80 weiter.
 3. Die NAT-Regeln des Load Balancers leiten Datenverkehr, der über Port 50001 beim Load Balancer eingeht, an Port 3389 auf der VM „WEB1“ weiter.
-4. Kein Zugriff auf die Front-End- oder Back-End-VMs aus dem Internet, mit Ausnahme der Anforderungen 1 und 3.
+4. Kein Zugriff auf die Front-End- oder Back-End-VMs aus dem Internet, mit Ausnahme der Anforderungen 2 und 3.
 5. Kein ausgehender Internetzugriff von den WEB- und DB-Servern.
 6. Der Zugriff aus dem FrontEnd-Subnetz ist über Port 3389 aller WEB-Server zulässig.
 7. Der Zugriff aus dem FrontEnd-Subnetz ist über Port 3389 aller DB-Server zulässig.

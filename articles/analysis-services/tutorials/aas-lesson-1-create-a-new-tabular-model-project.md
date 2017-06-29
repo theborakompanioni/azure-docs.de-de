@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 1cd24fd23f7abdfdeac171a954fd3e0ee81fbe20
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 40aac182af22d03c4cff535fd8c87b29ecae376a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-1-create-a-new-tabular-model-project"></a>Lektion 1: Erstellen eines neuen tabellarischen Modellprojekts
@@ -43,13 +43,13 @@ Dieses Thema ist die erste Lektion in einem Tutorial über tabellarische Modelle
   
 3.  Geben Sie als **Namen** **AW-Internetverkäufe** ein, und geben Sie dann einen Speicherort für die Projektdateien an.  
   
-    Standardmäßig entspricht der **Projektmappenname** dem Projektnamen; Sie können aber einen anderen Projektmappennamen erfassen.  
+    Standardmäßig entspricht der **Projektmappenname** dem Projektnamen; Sie können aber einen anderen Projektmappennamen eingeben.  
   
 4.  Klicken Sie auf **OK**.  
   
 5.  Im **Designer für tabellarische Modelle** wählen Sie im Dialogfeld **Integrierter Arbeitsbereich** aus.  
   
-    Der Arbeitsbereich umfasst eine tabellarische Modelldatenbank, die denselben Namen trägt wie der Projekt während der Modellerstellung. Integrierter Arbeitsbereich bedeutet, dass SSDT eine eingebaute Instanz verwendet und deswegen nur für die Modellerstellung kein separater Analysis Services-Server installiert werden muss.
+    Der Arbeitsbereich umfasst eine tabellarische Modelldatenbank, die denselben Namen trägt wie das Projekt während der Modellerstellung. Integrierter Arbeitsbereich bedeutet, dass SSDT eine integrierte Instanz verwendet und deswegen nur für die Modellerstellung kein separater Analysis Services-Server installiert werden muss.
       
 6.  Wählen Sie in der Option **Kompatibilitätsgrad** **SQL Server 2017 / Azure Analysis Services (1400)**.   
  
@@ -61,11 +61,11 @@ Dieses Thema ist die erste Lektion in einem Tutorial über tabellarische Modelle
 ## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Grundlagen der tabellarischen Modellerstellungsumgebung von SSDT  
 Nachdem Sie nun ein neues tabellarisches Modellprojekt erstellt haben, möchten wir uns kurz die tabellarische Modellerstellungsumgebung in SSDT ansehen.  
   
-Nachdem das Projekt erstellt wurde, wird es in SSDT geöffnet. Auf der rechten Seite in **tabellarischer Modell-Explorer** sehen Sie eine Strukturansicht der Objekte in Ihrem Modell. Die Ordner sind leer, da Sie noch keine Daten importiert haben. Ähnlich wie bei der Menüleiste können Sie mit der rechten Maustaste auf einen Objektordner klicken. In den verschiedenen Schritten in diesem Tutorial werden Sie den tabellarischen Modell-Explorer dafür verwenden, durch die verschiedenen Objekte in Ihrem Modellprojekt zu navigieren.
+Nachdem das Projekt erstellt wurde, wird es in SSDT geöffnet. Auf der rechten Seite unter **Tabellarischer Modell-Explorer** sehen Sie eine Strukturansicht der Objekte in Ihrem Modell. Die Ordner sind leer, da Sie noch keine Daten importiert haben. Ähnlich wie bei der Menüleiste können Sie mit der rechten Maustaste auf einen Objektordner klicken. In den verschiedenen Schritten in diesem Tutorial verwenden Sie den tabellarischen Modell-Explorer, um durch die verschiedenen Objekte in Ihrem Modellprojekt zu navigieren.
 
 ![aas-lesson1-tme](../tutorials/media/aas-lesson1-tme.png)
 
-Klicken Sie auf die Registerkarte **Projektmappen-Explorer**. Hier wird Ihre Datei **Model.bim** angezeigt. Wenn das Designer-Fenster nicht auf der linken Seite angezeigt wird (das leere Fenster mit der Registerkarte Model.bim), doppelklicken Sie im **Projektmappen-Explorer** unter **AW Internet-Verkaufsprojekt** auf die Datei **Model.bim**. Die Model.bim-Datei enthält alle Metadaten für Ihr Modellprojekt. 
+Klicken Sie auf die Registerkarte **Projektmappen-Explorer**. Hier wird Ihre Datei **Model.bim** angezeigt. Wenn das Designer-Fenster nicht auf der linken Seite angezeigt wird (das leere Fenster mit der Registerkarte Model.bim), doppelklicken Sie im **Projektmappen-Explorer** unter **AW Internet-Verkaufsprojekt** auf die Datei **Model.bim**. Die Datei „Model.bim“ enthält alle Metadaten für Ihr Modellprojekt. 
 
 ![aas-lesson1-se](../tutorials/media/aas-lesson1-se.png)
   
@@ -73,13 +73,13 @@ Klicken Sie auf **Model.bim**. Im **Eigenschaftenfenster** werden die Modelleige
 
 ![aas-lesson1-properties](../tutorials/media/aas-lesson1-properties.png)
   
-Wenn Sie ein neues Modell erstellen, werden bestimmte Modelleigenschaften gemäß den Datenmodellierungseinstellungen automatisch gesetzt. Diese Einstellungen können im Menü **Tools** > Dialogfeld **Optionen** festgelegt werden. Durch die Eigenschaften „Datensicherung“, „Arbeitsbereich beibehalten“ und „Arbeitsbereichsserver“ ist festgelegt, wie und wo die Datenbank des Arbeitsbereichs (Ihre Modellerstellungsdatenbank) gesichert, im Speicher gehalten und erstellt werden soll. Sie können diese Einstellungen später ändern, falls erforderlich, aber vorläufig lassen Sie diese Eigenschaften bitte unverändert.  
+Wenn Sie ein neues Modell erstellen, werden bestimmte Modelleigenschaften gemäß den Datenmodellierungseinstellungen automatisch festgelegt. Diese Einstellungen können im Menü **Tools** im Dialogfeld **Optionen** festgelegt werden. Durch die Eigenschaften „Datensicherung“, „Arbeitsbereich beibehalten“ und „Arbeitsbereichsserver“ ist festgelegt, wie und wo die Datenbank des Arbeitsbereichs (Ihre Modellerstellungsdatenbank) gesichert, im Speicher gehalten und erstellt werden soll. Sie können diese Einstellungen später ändern, falls erforderlich, aber vorläufig lassen Sie diese Eigenschaften unverändert.  
 
-Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **AW-Internetverkäufe Sales** (Projekt), und klicken Sie dann auf **Eigenschaften**. Das Dialogfeld **Eigenschaftenseiten der AW-Internetverkäufe** wird angezeigt. Hierbei handelt es sich um die erweiterten Projekteigenschaften. Sie werden einige dieser Eigenschaften später festlegen, wenn Sie das Modell bereitstellen.  
+Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **AW-Internetverkäufe Sales** (Projekt), und klicken Sie dann auf **Eigenschaften**. Das Dialogfeld **Eigenschaftenseiten der AW-Internetverkäufe** wird angezeigt. Sie legen einige dieser Eigenschaften später fest, wenn Sie das Modell bereitstellen.  
   
-Wenn Sie SSDT installiert haben, wurden der Visual Studio-Umgebung mehrere neue Menüelemente hinzugefügt. Betrachten wir nun speziell die Menüelemente zur Erstellung tabellarischer Modelle. Klicken Sie in das Menü **Modell**. Hier können Sie Daten importieren, die Daten des Arbeitsbereichs aktualisieren, mit der Funktionalität In Excel analysieren in ihrem Modell blättern, Perspektiven und Rollen erstellen, die Modellansicht auswählen und Berechnungsoptionen festlegen. Klicken Sie auf das Menü **Tabelle**. Hier können Sie Beziehungen zwischen Tabellen erstellen und verwalten, Einstellungen für Datentabellen festlegen, Partitionen erstellen und die Tabelleneigenschaften bearbeiten. Wenn Sie auf das Menü **Spalte** klicken, können Sie Spalten in eine Tabelle hinzufügen oder diese löschen oder sperren und die Sortierreihenfolge festlegen. SSDT fügt der Leiste auch einige Schaltflächen hinzu. Besonders nützlich ist die Funktion „AutoSumme“, mit der Sie für eine ausgewählte Spalte ein Standardaggregationsmaß erstellen können. Einige andere Schaltflächen der Symbolleiste bieten schnellen Zugriff auf häufig verwendete Funktionen und Befehle.  
+Wenn Sie SSDT installiert haben, wurden der Visual Studio-Umgebung mehrere neue Menüelemente hinzugefügt. Klicken Sie auf das Menü **Modell**. Hier können Sie Daten importieren, die Daten des Arbeitsbereichs aktualisieren, das Modell in Excel analysieren, Perspektiven und Rollen erstellen, die Modellansicht auswählen und Berechnungsoptionen festlegen. Klicken Sie auf das Menü **Tabelle**. Hier können Sie Beziehungen erstellen und verwalten, Einstellungen für Datentabellen festlegen, Partitionen erstellen und die Tabelleneigenschaften bearbeiten. Wenn Sie auf das Menü **Spalte** klicken, können Sie Spalten in einer Tabelle hinzufügen oder diese löschen oder fixieren und die Sortierreihenfolge festlegen. SSDT fügt der Leiste auch einige Schaltflächen hinzu. Besonders nützlich ist die Funktion „AutoSumme“, mit der Sie für eine ausgewählte Spalte ein Standardaggregationsmaß erstellen können. Einige andere Schaltflächen der Symbolleiste bieten schnellen Zugriff auf häufig verwendete Funktionen und Befehle.  
   
-Erkunden Sie einige der Dialoge und Speicherorte für verschiedene Funktionalitäten zur Erstellung von tabellarischen Modellen. Einige Elemente sind noch nicht aktiv, aber Sie können Sie bereits eine gute Vorstellung von einer Erstellungsumgebung für tabellarische Modelle verschaffen.  
+Erkunden Sie einige der Dialoge und Speicherorte für verschiedene Funktionalitäten zur Erstellung von tabellarischen Modellen. Einige Elemente sind noch nicht aktiv, aber Sie können sich bereits eine gute Vorstellung von einer Erstellungsumgebung für tabellarische Modelle verschaffen.  
   
 
 ## <a name="whats-next"></a>Wie geht es weiter?

@@ -10,28 +10,28 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: eea9b247b42db81f30b7169f71ddf0d5068f6a5e
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 085a36edd2a0e80123ac8754b438bceadfa6c0e9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="lesson-11-create-roles"></a>Lektion 11: Erstellen von Rollen
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-In dieser Lektion lernen Sie, wie Sie Rollen erstellen können. Rollen bieten Modelldatenbankobjekt- und Datensicherheit, indem Sie den Zugriff auf diejenigen Benutzer einschränken, die Rollenmember sind. Jede Rolle ist mit einer einzigen Berechtigung definiert: Keine, Lesen, Lesen und Verarbeiten, Verarbeiten und Administrator. Rollen können während des Schreibens des Modells mit dem Rollen-Manager definiert werden. Nachdem ein Modell bereitgestellt wurde, können Sie Rollen verwalten, indem Sie SSMS verwenden. Weitere Informationen finden Sie unter [Rollen](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
+In dieser Lektion lernen Sie, wie Sie Rollen erstellen können. Rollen bieten Modelldatenbankobjekt- und Datensicherheit, indem sie den Zugriff auf diejenigen Benutzer einschränken, die Mitglieder der Rolle sind. Jede Rolle ist mit einer einzigen Berechtigung definiert: Keine, Lesen, Lesen und Verarbeiten, Verarbeiten und Administrator. Rollen können während des Schreibens des Modells mit dem Rollen-Manager definiert werden. Nachdem ein Modell bereitgestellt wurde, können Sie Rollen verwalten, indem Sie SSMS verwenden. Weitere Informationen finden Sie unter [Rollen](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
   
 > [!NOTE]  
-> Das Erstellen von Rollen ist für den Abschluss dieses Tutorials nicht erforderlich. Standardmäßig erhält das Konto, mit dem Sie eingeloggt sind, Administratorberechtigungen für das Modell. Sie müssen allerdings mindestens eine Rolle mit Leseberechtigungen erstellen und dieser Rolle Benutzer hinzufügen, um es anderen Benutzern Ihrer Organisation zu ermöglichen, das Modell mit einem Berichterstellungsclient zu durchsuchen.  
+> Das Erstellen von Rollen ist für den Abschluss dieses Tutorials nicht erforderlich. Standardmäßig hat das Konto, mit dem Sie gerade angemeldet sind, Administratorberechtigungen für das Modell. Sie müssen allerdings mindestens eine Rolle mit Leseberechtigungen erstellen und dieser Rolle Benutzer hinzufügen, damit andere Benutzer in Ihrer Organisation das Modell mit einem Berichterstellungsclient durchsuchen können.  
   
-Erstellen Sie drei Rollen:  
+Sie erstellen drei Rollen:  
   
 -   **Verkaufs-Manager**: Diese Rolle kann Benutzer Ihrer Organisation beinhalten, denen Sie Leseberechtigungen für alle Modellobjekte und -daten erteilen möchten.  
   
@@ -39,7 +39,7 @@ Erstellen Sie drei Rollen:
   
 -   **Administrator**: Diese Rolle kann Benutzer beinhalten, denen Sie Administratorberechtigungen erteilen möchten. Damit haben sie unbegrenzten Zugriff und Berechtigungen, administrative Aufhaben in der Modelldatenbank auszuführen.  
   
-Da Benutzer- und Gruppenkonten Ihrer Organisation unter Windows eindeutig sind, können Sie Membern Konten Ihrer bestimmten Organisation hinzufügen. Für dieses Tutorial können Sie die Member allerdings auch leer lassen. In „Lektion 12: Analysieren in Excel“ können Sie aber trotzdem die Auswirkungen jeder Rolle testen.  
+Da Benutzer- und Gruppenkonten Ihrer Organisation unter Windows eindeutig sind, können Sie Membern Konten Ihrer bestimmten Organisation hinzufügen. Für dieses Tutorial können Sie die Member allerdings auch leer lassen. In „Lektion 12: Analysieren in Excel“ können Sie die Auswirkungen jeder Rolle testen.  
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
@@ -70,13 +70,13 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
   
 3.  Erteilen Sie der Rolle die Berechtigung **Lesen**.  
   
-4.  Klicken Sie auf die Registerkarte „Zeilenfilter“ und geben Sie dann nur für die Tabelle **DimGeography** in der Spalte DAX-Filter folgende Formel ein:  
+4.  Klicken Sie auf die Registerkarte „Zeilenfilter“, und geben Sie nur für die Tabelle **DimGeography** in der Spalte „DAX-Filter“ folgende Formel ein:  
   
     ```Administrator
     =DimGeography[CountryRegionCode] = "US" 
     ```
     
-    Eine Zeilenfilterformel muss einen Booleschen Wert ergeben (TRUE/FALSE). Mit dieser Formel geben Sie an, dass Benutzern nur Zeilen angezeigt werden, in denen der Wert des Landes/der Region „US“ entspricht.  
+    Eine Zeilenfilterformel muss einen Booleschen Wert ergeben (TRUE/FALSE). Mit dieser Formel geben Sie an, dass Benutzern nur Zeilen angezeigt werden, in denen der Wert des Landes/der Region dem Code „US“ entspricht.  
     ![aas-lektion11-rolle-filter](../tutorials/media/aas-lesson11-role-filter.png) 
   
 6.  Optional: Klicken Sie auf die Registerkarte **Member** und anschließend auf **Hinzufügen**. Geben Sie im Dialogfeld **Select Users or Groups** (Benutzer oder Gruppen auswählen) die Windows-Benutzer oder -Gruppen Ihrer Organisation ein, denen Sie die Rolle erteilen möchten.  

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: abb27292d4b5533fe6f3d66d6921fea8c82f18dd
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: dacd689576dce65bbf1a975409ea7d7f2c3ada90
+ms.contentlocale: de-de
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -47,7 +48,7 @@ Gehen Sie wie folgt vor, um die DNS-Servereinstellung für das virtuelle Netzwer
    ![Aktualisieren der DNS-Servereinstellungen für das virtuelle Netzwerk](./media/active-directory-domain-services-getting-started/update-dns.png)
 
 > [!NOTE]
-> Nach der Aktualisierung der DNS-Servereinstellungen für das virtuelle Netzwerk kann es eine Weile dauern, bis virtuelle Computer im Netzwerk die aktualisierte DNS-Konfiguration erhalten. Wenn für einen virtuellen Computer keine Verbindung mit der Domäne hergestellt werden kann, können Sie den DNS-Cache („ipconfig /flushdns“) auf dem virtuellen Computer leeren. Dieser Befehl erzwingt eine Aktualisierung der DNS-Einstellungen auf dem virtuellen Computer.
+> Virtuelle Computer im Netzwerk übernehmen die neuen DNS-Einstellungen erst bei einem Neustart. Wenn die DNS-Einstellungen sofort aktualisiert werden sollen, lösen Sie über das Verwaltungsportal, PowerShell oder CLI einen Neustart aus.
 >
 >
 

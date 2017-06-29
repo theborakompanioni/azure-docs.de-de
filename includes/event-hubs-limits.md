@@ -10,5 +10,5 @@ In der folgenden Tabelle sind für Azure Event Hubs spezifische Kontingente und 
 | Maximale Größe eines Event Hub-Namens |Entität |Statisch |- |50 Zeichen |
 | Anzahl nicht epochenbezogener Empfänger pro Consumergruppe |Entität |Statisch |- |5 |
 | Maximale Aufbewahrungsdauer von Ereignisdaten |Entität |Statisch |- |1–7 Tage |
-| Maximale Durchsatzeinheiten |Namespace |Statisch |Bei einer Überschreitung des Grenzwerts für Durchsatzeinheiten werden Ihre Daten gedrosselt, und eine **ServerBusyException**-Ausnahme wird ausgelöst. Sie können im Tarif „Standard“ eine höhere Anzahl von Durchsatzeinheiten anfordern, indem Sie ein Supportticket erstellen. Zusätzliche Durchsatzeinheiten sind für einen festgelegten Kaufpreis in 20er-Blöcken verfügbar. |20 |
+| Maximale Durchsatzeinheiten |Namespace |Statisch |Bei einer Überschreitung des Grenzwerts für Durchsatzeinheiten werden Ihre Daten gedrosselt, und eine **[ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)**-Ausnahme wird ausgelöst. Sie können im Tarif „Standard“ eine höhere Anzahl von Durchsatzeinheiten anfordern, indem Sie eine [Supportanfrage](/azure/azure-supportability/how-to-create-azure-support-request) erstellen. [Zusätzliche Durchsatzeinheiten](../articles/event-hubs/event-hubs-auto-inflate.md) sind für einen festgelegten Kaufpreis in 20er-Blöcken verfügbar. |20 |
 

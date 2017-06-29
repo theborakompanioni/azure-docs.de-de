@@ -1,6 +1,4 @@
 >[!NOTE]
-> **Benutzerdefinierte Richtlinien stehen derzeit als öffentliche Vorschauversion zur Verfügung.**
-
->[!NOTE]
-> [Benutzerdefinierte Richtlinien](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md#custom-policies) sind in erster Linie für Identitätsexperten gedacht, die komplexe Szenarien behandeln. Die [integrierten Richtlinien](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md) von Azure Active Directory B2C werden für die meisten Szenarien empfohlen und ermöglichen eine einfachere Konfiguration. Die beiden Konfigurationsansätze (integriert und benutzerdefiniert) können nebeneinander auf dem gleichen Azure Active Directory B2C-Mandanten vorhanden sein. Lesen Sie diese [Übersicht über benutzerdefinierte Richtlinien](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md), um mehr zu erfahren.
+> * **Benutzerdefinierte Richtlinien stehen derzeit als öffentliche Vorschauversion zur Verfügung.**
+> * [Benutzerdefinierte Richtlinien](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md#custom-policies) sind in erster Linie für Identitätsexperten gedacht, die mit komplexen Szenarien arbeiten. Für die meisten Szenarien werden die [integrierten Richtlinien](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md) von Azure Active Directory B2C empfohlen, da sie eine einfachere Konfiguration ermöglichen. Die beiden Konfigurationsansätze (integriert und benutzerdefiniert) können nebeneinander auf dem gleichen Azure Active Directory B2C-Mandanten vorhanden sein. Weitere Informationen finden Sie in der [Übersicht über benutzerdefinierte Richtlinien](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md).
 

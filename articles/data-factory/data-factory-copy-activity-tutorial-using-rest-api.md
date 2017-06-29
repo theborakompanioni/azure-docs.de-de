@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 070d5754049205ca70ba2e1124f087ffc9d396f3
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 08e62dba35a72a4c814b07c93304247227b1635c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -325,7 +325,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ```
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
-In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyTutorialDF**. Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispiel: eine Kopieraktivität zum Kopieren von Daten aus einer Quelle an einen Zieldatenspeicher. Eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zur Umwandlung von Eingabedaten in Produktausgabedaten. Führen Sie die folgenden Befehle zum Erstellen der Data Factory aus: 
+In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **ADFCopyTutorialDF**. Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Beispiel: eine Kopieraktivität zum Kopieren von Daten aus einer Quelle an einen Zieldatenspeicher. Eine HDInsight-Hive-Aktivität zum Ausführen eines Hive-Skripts zum Transformieren von Eingabedaten in Produktausgabedaten. Führen Sie die folgenden Befehle zum Erstellen der Data Factory aus: 
 
 1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu. 
    

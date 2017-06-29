@@ -10,16 +10,16 @@ tags:
 ms.assetid: 
 ms.service: analysis-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 81a245f985c007f490acae102f1dd5c2096150e7
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: cd74b0cb0d58036cc7b1198a58649ba38e386322
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Ergänzende Lektion – Dynamische Sicherheit
@@ -30,9 +30,9 @@ In dieser ergänzenden Lektion erstellen Sie eine zusätzliche Rolle, die dynami
   
 Fügen Sie Ihrem Modell eine Tabelle hinzu, die die Benutzernamen der Benutzer enthält, die eine Verbindung mit dem Modell herstellen, und die Modellobjekte und -daten durchsuchen, um die dynamische Sicherheit zu implementieren. Das Modell, dass Sie in diesem Tutorial erstellen, steht im Zusammenhang mit Adventure Works. Sie müssen allerdings eine Tabelle mit Benutzern aus Ihrer eigenen Domäne hinzufügen, um diese Lektion abschließen zu können. Die Kennwörter für die hinzugefügten Benutzernamen benötigen Sie nicht. Verwenden Sie die Einfügen-Funktion, um die Tabelle „EmployeeSecurity“ mit einer kleinen Benutzerauswahl aus Ihrer eigenen Domäne zu erstellen. Fügen Sie die Mitarbeiterdaten aus einer Excel-Tabelle ein. In einem realistischen Szenario wäre die Tabelle mit den Benutzernamen normalerweise eine Tabelle aus einer tatsächlichen Datenquelle, also z.B. aus einer vorhandenen DimEmployee-Tabelle.  
   
-Zur Implementierung von dynamischer Sicherheit verwenden Sie zwei DAX-Funktionen: [die Funktion USERNAME (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) und [die Funktion LOOKUPVALUE (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Diese in einem Zeilenfilter angewandten Funktionen werden in einer neuen Rolle definiert. Mit der LOOKUPVALUE-Funktion gibt die Formel einen Wert aus der Tabelle „EmployeeSecurity“ an und übergibt diesen an die USERNAME-Funktion, die angibt, dass der Benutzernamen des angemeldeten Benutzers dieser Rolle gehört. Anschließend kann der Benutzer nur noch Daten durchsuchen, die vom Zeilenfilter der Rolle angegeben werden. In diesem Szenario geben Sie an, dass die Vertriebsmitarbeiter nur die Daten zu Internetverkäufen Ihres eigenen Gebiets durchsuchen können.  
+Zur Implementierung von dynamischer Sicherheit verwenden Sie zwei DAX-Funktionen: [die Funktion USERNAME (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) und [die Funktion LOOKUPVALUE (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Diese in einem Zeilenfilter angewandten Funktionen werden in einer neuen Rolle definiert. Mit der LOOKUPVALUE-Funktion gibt die Formel einen Wert aus der Tabelle „EmployeeSecurity“ an. Die Formel übergibt diesen Wert dann an die USERNAME-Funktion, die angibt, dass der Benutzername des angemeldeten Benutzers zu dieser Rolle gehört. Anschließend kann der Benutzer nur noch Daten durchsuchen, die vom Zeilenfilter der Rolle angegeben werden. In diesem Szenario geben Sie an, dass die Vertriebsmitarbeiter nur die Daten zu Internetverkäufen Ihres eigenen Gebiets durchsuchen können.  
   
-In dieser ergänzenden Lektion führen Sie mehrere Aufgaben durch. Die Aufgaben, die sich auf dieses spezielle Szenario des tabellarischen Adventure Works-Modells beziehen, aber nicht unbedingt auf realistische Szenarios anwendbar sind, sind als solche gekennzeichnet. Jede Aufgabe enthält Zusatzinformationen zum Zweck der Aufgabe.  
+Die Aufgaben, die sich auf dieses spezielle Szenario des tabellarischen Adventure Works-Modells beziehen, aber nicht unbedingt auf realistische Szenarios anwendbar sind, sind als solche gekennzeichnet. Jede Aufgabe enthält Zusatzinformationen zum Zweck der Aufgabe.  
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **30 Minuten**  
   
@@ -59,11 +59,11 @@ Sie müssen zwei weitere Tabellen in Ihr Modell einfügen, um die dynamische Sic
 9. Nachdem die Tabelle erfolgreich importiert wurde, klicken Sie auf **Schließen**.  
 
 ## <a name="add-a-table-with-user-name-data"></a>Hinzufügen einer Tabelle mit Benutzernamendaten  
-Da die Tabelle „DimEmployee“ in der Beispieldatenbank „AdventureWorksDW“ Benutzer der AdventureWorks-Domäne enthält, und da diese Benutzernamen in Ihrer Umgebung nicht existieren, müssen Sie in Ihrem Modell eine Tabelle erstellen, die eine kleine Auswahl (drei) an tatsächlichen Benutzern Ihrer Organisation enthält. Dann können Sie diese Benutzer als Member der neuen Rolle eintragen. Sie benötigen nicht die Kennwörter der Beispielbenutzernamen, aber Sie benötigen tatsächliche Windows-Benutzernamen aus Ihrer Domäne.  
+Die Tabelle „DimEmployee“ in der Beispieldatenbank „AdventureWorksDW“ enthält Benutzer in der Domäne „AdventureWorks“. Diese Benutzernamen sind in Ihrer Umgebung nicht vorhanden. Sie müssen eine Tabelle in Ihrem Modell erstellen, die einen kleinen Teil (mindestens drei) der tatsächlichen Benutzer in Ihrer Organisation enthält. Dann können Sie diese Benutzer als Member der neuen Rolle eintragen. Sie benötigen nicht die Kennwörter der Beispielbenutzernamen, aber Sie benötigen tatsächliche Windows-Benutzernamen aus Ihrer Domäne.  
   
 #### <a name="to-add-an-employeesecurity-table"></a>So fügen Sie eine Tabelle „EmployeeSecurity“ hinzu  
   
-1.  Öffnen Sie Microsoft Excel, und erstellen Sie ein neues Arbeitsblatt.  
+1.  Öffnen Sie Microsoft Excel, und erstellen Sie ein Arbeitsblatt.  
   
 2.  Kopieren Sie die folgende Tabelle mitsamt der Überschriftenzeile, und fügen Sie diese auf dem Arbeitsblatt ein.  
 
@@ -76,7 +76,7 @@ Da die Tabelle „DimEmployee“ in der Beispieldatenbank „AdventureWorksDW“
       |3|5|<user first name>|<user last name>|\<domain\username>|  
     ```
 
-3.  Ersetzen Sie den Vornamen, Nachnamen und den Domänen-/Benutzernamen durch die Namen und Anmelde-IDs von drei Benutzern in Ihrer Organisation. Geben Sie den gleichen Benutzer für EmployeeId 1 in den ersten beiden Zeilen ein. Dadurch wird angegeben, dass der Benutzer mehr als einem Vertriebsgebiet angehört. Belassen Sie die Felder „EmployeeId“ und „SalesTerritoryId“ wie sie sind.  
+3.  Ersetzen Sie den Vornamen, Nachnamen und den Domänen-/Benutzernamen durch die Namen und Anmelde-IDs von drei Benutzern in Ihrer Organisation. Geben Sie den gleichen Benutzer in den ersten beiden Zeilen bei „EmployeeId 1“ ein, um zu zeigen, dass dieser Benutzer mehr als einem Vertriebsgebiet angehört. Belassen Sie die Felder „EmployeeId“ und „SalesTerritoryId“ wie sie sind.  
   
 4.  Speichern Sie das Arbeitsblatt unter **SampleEmployee**.  
   
@@ -99,11 +99,11 @@ Die Tabellen „FactInternetSales“, „DimGeography“ und „DimSalesTerritor
   
 #### <a name="to-create-relationships-between-the-factinternetsales-dimgeography-and-the-dimsalesterritory-table"></a>So erstellen Sie Beziehungen zwischen den Tabellen „FactInternetSales“, „DimGeography“ und „DimSalesTerritory“  
   
-1.  Klicken Sie im Model-Designer in der Diagrammansicht in der Tabelle **DimGeography** auf die Spalte **SalesTerritoryId**, halten Sie diese, und ziehen Sie den Mauszeiger zur Spalte **SalesTerritoryId** in der Tabelle **DimSalesTerritory**. Lassen Sie nun die Maustaste wieder los.  
+1.  Klicken Sie in der Diagrammansicht in der Tabelle **DimGeography** auf die Spalte **SalesTerritoryId**, halten Sie diese, und ziehen Sie den Mauszeiger zur Spalte **SalesTerritoryId** in der Tabelle **DimSalesTerritory**. Lassen Sie nun die Maustaste wieder los.  
   
 2.  Klicken Sie in der Tabelle **FactInternSales** auf die Spalte **SalesTerritoryId**, halten Sie diese, und ziehen Sie den Mauszeiger zur Spalte **SalesTerritoryId** in der Tabelle **DimSalesTerritory**. Lassen Sie nun die Maustaste wieder los.  
   
-    Beachten Sie, das die Eigenschaft „Active“ für diese Beziehung auf „FALSE“ festgelegt ist, d.h. sie ist inaktiv. Das liegt daran, dass die Tabelle „FactInternetSales“ bereits eine aktive Beziehung hat.  
+    Beachten Sie, dass die Active-Eigenschaft für diese Beziehung den Wert „False“ aufweist. Dies bedeutet, dass sie nicht aktiv ist. Die Tabelle „FactInternetSales“ verfügt bereits über eine andere aktive Beziehung.  
   
 ## <a name="hide-the-employeesecurity-table-from-client-applications"></a>Ausblenden der Tabelle „EmployeeSecurity“ aus Client-Anwendungen  
 In dieser Aufgabe blenden Sie die Tabelle „EmployeeSecurity“ aus, sodass sie nicht in der Feldliste einer Client-Anwendung angezeigt wird. Denken Sie daran, dass eine Tabelle durch die Ausblendung nicht geschützt wird. Benutzer können trotzdem Daten der Tabelle „EmployeeSecurity“ abfragen, sie müssen nur wissen wie. In einer späteren Aufgabe fügen Sie einen Filter hinzu, der Benutzer davon abhält, alle Daten der Tabelle „EmployeeSecurity“ abzufragen. Damit können Sie die Tabelle schützen.  
@@ -113,7 +113,7 @@ In dieser Aufgabe blenden Sie die Tabelle „EmployeeSecurity“ aus, sodass sie
 -   Klicken Sie im Modell-Designer in der Diagrammansicht mit der rechten Maustaste auf die Überschrift der Tabelle **Employee**, und klicken Sie dann auf **Aus Clienttools ausblenden**.  
   
 ## <a name="create-a-sales-employees-by-territory-user-role"></a>Erstellen Sie die Benutzerrolle „Sales Employees by Territory“ (Vertriebsmitarbeiter nach Gebiet)  
-In dieser Aufgabe erstellen Sie eine neue Benutzerrolle. Diese Rolle beinhaltet einen neuen Zeilenfilter, der definiert, welche Zeilen der Tabelle „DimSalesTerritory“ die Benutzer sehen können. Der Filter wird dann nach der „1:n-Beziehung“ auf alle anderen Tabellen, die mit „DimSalesTerritory“ in Verbindung stehen, angewendet. Außerdem wenden Sie einen Filter an, der die gesamte Tabelle „EmployeeSecurity“ davor schützt, von jedem Benutzer dieser Rolle abgerufen zu werden.  
+In dieser Aufgabe erstellen Sie eine Benutzerrolle. Diese Rolle beinhaltet einen neuen Zeilenfilter, der definiert, welche Zeilen der Tabelle „DimSalesTerritory“ die Benutzer sehen können. Der Filter wird dann nach der „1:n-Beziehung“ auf alle anderen Tabellen, die mit „DimSalesTerritory“ in Verbindung stehen, angewendet. Außerdem wenden Sie einen Filter an, der die gesamte Tabelle „EmployeeSecurity“ davor schützt, von jedem Benutzer dieser Rolle abgerufen zu werden.  
   
 > [!NOTE]  
 > Die Rolle „Sales Employees by Territory“, die Sie in dieser Lektion erstellen, bewirkt, dass Member nur Verkaufsdaten Ihres eigenen Gebiets durchsuchen oder abfragen können. Wenn Sie einen Benutzer als Member der Rolle „Sales Employees by Territory“ hinzufügen, der auch Member einer in [Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md) erstellten Rolle ist, erhalten Sie eine Kombination der Berechtigungen. Wenn ein Benutzer ein Member mehrerer Rollen ist, sind die Berechtigungen und Zeilenfilter jeder Rolle kumulativ. Das heißt, dass der Benutzer durch die Kombination von Rollen höhere Berechtigungen hat.  
@@ -144,7 +144,7 @@ In dieser Aufgabe erstellen Sie eine neue Benutzerrolle. Diese Rolle beinhaltet 
       =FALSE()  
     ```
   
-    Diese Formel gibt an, dass alle Spalten die Boolesche Bedingung „FALSE“ ergeben. Deshalb können für die Tabelle „EmployeeSecurity“ keine Spalten von Membern der Benutzerrolle „Sales Employees by Territory“ abgefragt werden.  
+    Diese Formel gibt an, dass alle Spalten zur booleschen Bedingung „false“ aufgelöst werden. Es können keine Spalten der Tabelle „EmployeeSecurity“ von einem Mitglied der Benutzerrolle „Sales Employees by Territory“ abgefragt werden.  
   
 9. Geben Sie für die Tabelle **DimSalesTerritory** folgende Formel ein:  
 
@@ -170,19 +170,19 @@ In dieser Aufgabe verwenden Sie die Funktion „Analysieren in Excel“ von SSDT
   
 2.  Wählen Sie im Dialogfeld **In Excel analysieren** unter **Geben Sie den Benutzernamen oder die Rolle für die Verbindung mit dem Modell** an **Andere Windows-Benutzer** aus, und klicken Sie auf **Durchsuchen**.  
   
-3.  Geben Sie im Dialogfeld **Benutzer oder Gruppe auswählen** unter **Namen des auszuwählenden Objekts eingeben** einen der Benutzernamen ein, die Sie in die Tabelle „EmployeeSecurity“ einbezogen haben, und klicken Sie **Namen überprüfen**.  
+3.  Geben Sie im Dialogfeld **Benutzer oder Gruppe auswählen** unter **Namen des auszuwählenden Objekts eingeben** einen Benutzernamen ein, den Sie in die Tabelle „EmployeeSecurity“ einbezogen haben, und klicken Sie auf **Namen überprüfen**.  
   
 4.  Klicken Sie auf **OK**, um das Dialogfeld **Benutzer oder Gruppe auswählen** zu schließen, und klicken Sie anschließend auf **OK**, um das Dialogfeld **In Excel analysieren** zu schließen.  
   
     Excel wird mit einer neuen Arbeitsmappe geöffnet. Eine PivotTable wird automatisch erstellt. Die PivotTable-Feldliste enthält die meisten Datenfelder, die im neuen Modell verfügbar sind.  
   
-    Sie erkennen, dass die Tabelle „EmployeeSecurity“ nicht in der PivotTable-Feldliste angezeigt wird. Dies liegt daran, dass Sie diese Tabelle in einem vorherigen Schritt für Clienttools ausgeblendet haben.  
+    Beachten Sie, dass die Tabelle „EmployeeSecurity“ in der Liste „PivotTable-Felder“ nicht angezeigt wird. Sie haben diese Tabelle in einer vorherigen Aufgabe in den Clienttools ausgeblendet.  
   
 5.  Wählen Sie in der Liste **Felder** unter **∑ Internet Sales** (Measures) das Measure **InternetTotalSales** aus. Das Measure wird im Feld **Values** eingegeben.  
   
 6.  Wählen Sie die Spalte **SalesTerritoryId** aus der Tabelle **DimSalesTerritory**. Die Spalte wird in den Feldern **Zeilenbeschriftung** eingegeben.  
   
-    Beachten Sie, dass Zahlen zum Internetverkauf nur für die Region angezeigt werden, der der effektive Benutzername, den Sie verwendet haben, angehört. Wenn Sie eine andere Spalte in der Tabelle „DimGeography“ als Zeilenbeschriftungsfeld auswählen, z.B. City, werden nur Städte des Verkaufsgebiets angezeigt, dem der effektive Benutzer angehört.  
+    Beachten Sie, dass Zahlen zum Internetverkauf nur für die Region angezeigt werden, der der effektive Benutzername, den Sie verwendet haben, angehört. Wenn Sie eine andere Spalte in der Tabelle „DimGeography“ als Zeilenbezeichnungsfeld auswählen, z.B. „City“, werden nur Städte des Verkaufsgebiets angezeigt, dem der effektive Benutzer angehört.  
   
     Dieser Benutzer kann keine Internetverkaufsdaten eines anderen Gebiets durchsuchen oder abfragen, dem er nicht angehört. Diese Einschränkung wird vom Zeilenfilter verursacht, der für die Tabelle „DimSalesTerritory“ in der Benutzerrolle „Sales Employees by Territory“ definiert wurde. Dieser Filter schützt Daten für alle Daten, die mit anderen Verkaufsgebieten in Verbindung stehen.  
   

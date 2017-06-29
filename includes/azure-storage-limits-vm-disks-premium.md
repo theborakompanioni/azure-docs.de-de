@@ -10,12 +10,12 @@
 
 **Nicht verwaltete Premium-VM-Datenträger: Grenzwerte pro Datenträger**
 
-| Datenträgertyp des Premium-Speichers | P10 | P20 | P30 |
-| --- | --- | --- | --- |
-| Datenträgergröße |128 GB |512 GB |1.024 GiB (1 TB) |
-| Max. IOPS pro Datenträger |500 |2.300 |5.000 |
-| Max. Durchsatz pro Datenträger |100 MB/s | 150 MB/s |200 MB/s |
-| Maximale Anzahl von Datenträgern pro Speicherkonto |280 |70 |35 |
+| Datenträgertyp des Premium-Speichers | P10 | P20 | P30 | P40 | P50 |
+| --- | --- | --- | --- | --- | --- |
+| Datenträgergröße |128 GB |512 GB |1.024 GiB (1 TB) |2.048 GiB (2 TB)|4.095 GiB (4 TB)|
+| Max. IOPS pro Datenträger |500 |2.300 |5.000 |7.500 |7.500 |
+| Max. Durchsatz pro Datenträger |100 MB/s | 150 MB/s |200 MB/s |250 MB/s |250 MB/s |
+| Maximale Anzahl von Datenträgern pro Speicherkonto |280 |70 |35 | 17 | 8 |
 
 **Nicht verwaltete Premium-VM-Datenträger: Grenzwerte pro VM**
 

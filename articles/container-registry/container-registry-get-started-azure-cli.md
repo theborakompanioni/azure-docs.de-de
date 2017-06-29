@@ -14,13 +14,14 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 06/06/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: e37a3194bb65ccf3bb6168a2f456902a9c48edc5
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 99bb3db7cc80e8426e1dca14bc3d733ee6c7342c
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Erstellen einer privaten Docker-Containerregistrierung mit der Azure CLI 2.0
@@ -45,17 +46,38 @@ Führen Sie den Befehl `az acr create` aus, um eine Containerregistrierung zu er
 >
 >
 
-Im folgenden Befehl werden die minimal erforderlichen Parameter zum Erstellen der Containerregistrierung `myRegistry1` in der Ressourcengruppe `myResourceGroup` für den Standort „USA, Süden-Mitte“ verwendet:
+Im folgenden Befehl werden die minimal erforderlichen Parameter zum Erstellen der Containerregistrierung `myRegistry1` in der Ressourcengruppe `myResourceGroup` mit dem *Basis*-SKU verwendet:
 
 ```azurecli
-az acr create -n myRegistry1 -g myResourceGroup -l southcentralus
+az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
 ```
 
 * `--storage-account-name` ist optional. Wenn nichts angegeben ist, wird in der angegebenen Ressourcengruppe ein Speicherkonto mit einem Namen erstellt, der aus dem Registrierungsnamen und einem Zeitstempel besteht.
 
-Die Ausgabe sieht in etwa wie folgt aus:
+Wenn die Registrierung erstellt wird, sieht die Ausgabe etwa wie folgt aus:
 
-![az acr create output](./media/container-registry-get-started-azure-cli/acr_create.png)
+```azurecli
+{
+  "adminUserEnabled": false,
+  "creationDate": "2017-06-06T18:36:29.124842+00:00",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ContainerRegistry
+/registries/myRegistry1",
+  "location": "southcentralus",
+  "loginServer": "myregistry1.azurecr.io",
+  "name": "myRegistry1",
+  "provisioningState": "Succeeded",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "storageAccount": {
+    "name": "myregistry123456789"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
+
+```
 
 
 Beachten Sie besonders Folgendes:
