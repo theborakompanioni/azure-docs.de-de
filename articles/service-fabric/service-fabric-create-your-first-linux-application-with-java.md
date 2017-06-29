@@ -3,7 +3,7 @@ title: Erstellen Ihrer ersten Azure-Microservices-App unter Linux mithilfe von J
 description: Erstellen und Bereitstellen einer Service Fabric-Anwendung mithilfe von Java
 services: service-fabric
 documentationcenter: java
-author: seanmck
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
@@ -12,16 +12,17 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
-ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: eedddf7a40acfba7513efd810d115f1afe2f224d
-ms.lasthandoff: 03/23/2017
+ms.date: 06/02/2017
+ms.author: ryanwi
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 4ffab9eb858b05d3f5894e8753fb0fd4f38c4087
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="create-your-first-azure-service-fabric-application"></a>Erstellen Ihrer ersten Azure Service Fabric-Anwendung
+# <a name="create-your-first-service-fabric-java-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Java-Anwendung unter Linux
 > [!div class="op_single_selector"]
 > * [C# – Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java – Linux](service-fabric-create-your-first-linux-application-with-java.md)
@@ -29,38 +30,21 @@ ms.lasthandoff: 03/23/2017
 >
 >
 
-Service Fabric bietet SDKs, mit denen sich Dienste unter Linux sowohl in .NET Core als auch in Java erstellen lassen. In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von Java eine Anwendung für Linux und einen Dienst erstellen.  
-
-> [!NOTE]
-> Java als erstklassige integrierte Programmiersprache wird nur für die Linux-Vorschauversion unterstützt (Windows-Unterstützung ist geplant). Allerdings können alle Anwendungen, einschließlich Java-Anwendungen, als ausführbare Gastdateien oder in Containern unter Windows oder Linux ausgeführt werden. Weitere Informationen finden Sie unter [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md) und [Vorschau: Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md).
->
-
-## <a name="video-tutorial"></a>Videotutorial
-
-Im folgenden Microsoft Virtual Academy-Video wird die Vorgehensweise zum Erstellen einer Java-App unter Linux veranschaulicht:  
-<center><a target="\_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
-<img src="./media/service-fabric-create-your-first-linux-application-with-java/LinuxVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
-
+Dieser Schnellstart hilft Ihnen in wenigen Minuten beim Erstellen Ihrer ersten Azure Service Fabric-Java-Anwendung in einer Linux-Entwicklungsumgebung.  Wenn Sie fertig sind, verfügen Sie über eine einfache Java-Einzeldienst-App, die im lokalen Entwicklungscluster ausgeführt wird.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Vor Beginn des Tutorials müssen Sie zunächst [Ihre Linux-Entwicklungsumgebung einrichten](service-fabric-get-started-linux.md). Bei Verwendung von Mac OS X können Sie [mithilfe von Vagrant eine Linux-One-Box-Umgebung auf einem virtuellen Computer einrichten](service-fabric-get-started-mac.md).
+Bevor Sie beginnen, installieren Sie das Service Fabric-SDK und die Azure-Befehlszeilenschnittstelle und richten einen Entwicklungscluster in Ihrer [Linux-Entwicklungsumgebung](service-fabric-get-started-linux.md) ein. Bei Verwendung von Mac OS X können Sie [mithilfe von Vagrant eine Linux-Entwicklungsumgebung auf einem virtuellen Computer einrichten](service-fabric-get-started-mac.md).
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
-Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jeweils eine bestimmte Rolle bei der Bereitstellung von Funktionen der Anwendung haben. Das Service Fabric SDK für Linux enthält ein [Yeoman](http://yeoman.io/) -Generator, mit dem Sie problemlos Ihren ersten Dienst erstellen und später weitere Dienste hinzufügen können. Im nächsten Schritt erstellen wir mithilfe von Yeoman eine Anwendung mit einem einzelnen Dienst.
+Eine Service Fabric-Anwendung enthält einen oder mehrere Dienste, die jeweils eine bestimmte Rolle bei der Bereitstellung von Funktionen der Anwendung haben. Das Service Fabric SDK für Linux enthält ein [Yeoman](http://yeoman.io/) -Generator, mit dem Sie problemlos Ihren ersten Dienst erstellen und später weitere Dienste hinzufügen können.  Sie können auch Service Fabric-Java-Anwendungen mithilfe eines Plug-Ins für Eclipse entwickeln, erstellen und bereitstellen. Weitere Informationen finden Sie unter [Erstellen und Bereitstellen Ihrer ersten Java-Anwendung mithilfe von Eclipse](service-fabric-get-started-eclipse.md). In diesem Schnellstart verwenden Sie Yeoman, um eine Anwendung mit einem einzigen Dienst zu erstellen, der einen Zählerwert speichert und abruft.
 
 1. Geben Sie in einem Terminal ``yo azuresfjava`` ein.
-2. Benennen Sie Ihre Anwendung.
-3. Wählen Sie die Art Ihres ersten Diensts aus, und benennen Sie ihn. Im Rahmen dieses Tutorials wählen wir einen Reliable Actor-Dienst aus.
-
+2. Benennen Sie Ihre Anwendung. 
+3. Wählen Sie die Art Ihres ersten Diensts aus, und benennen Sie ihn. Im Rahmen dieses Tutorials wählen Sie einen Reliable Actor-Dienst aus. Weitere Informationen zu anderen Diensttypen finden Sie unter [Übersicht über die Service Fabric-Programmiermodelle](service-fabric-choose-framework.md).
    ![Service Fabric-Yeoman-Generator für Java][sf-yeoman]
 
-> [!NOTE]
-> Weitere Informationen zu den Optionen finden Sie unter [Übersicht über die Service Fabric-Programmiermodelle](service-fabric-choose-framework.md).
->
-
 ## <a name="build-the-application"></a>Erstellen der Anwendung
-Die Yeoman-Vorlagen von Service Fabric enthalten ein Buildskript für [Gradle](https://gradle.org/). Damit können Sie die App über das Terminal erstellen.
+Die Yeoman-Vorlagen von Service Fabric enthalten ein Buildskript für [Gradle](https://gradle.org/). Damit können Sie die App über das Terminal erstellen. Um die App zu erstellen und zu packen, führen Sie Folgendes aus:
 
   ```bash
   cd myapp
@@ -76,50 +60,51 @@ Die erstellte Anwendung kann mithilfe der Azure-Befehlszeilenschnittstelle im lo
     azure servicefabric cluster connect
     ```
 
-2. Verwenden Sie das in der Vorlage bereitgestellte Installationsskript, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
+2. Führen Sie das in der Vorlage bereitgestellte Installationsskript aus, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
 
     ```bash
     ./install.sh
     ```
 
-3. Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers.
+3. Navigieren Sie in einem Browser zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers.
 
-4. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
+4. Erweitern Sie den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Starten des Testclients und Ausführen eines Failovers
-Actor-Projekte führen keine eigenständigen Aktionen durch. Sie benötigen einen anderen Dienst oder Client, der ihnen Nachrichten sendet. Die Actor-Vorlage enthält ein einfaches Testskript, das Sie für die Interaktion mit dem Actor-Dienst verwenden können.
+Akteure führen selbst keine Aktionen durch. Sie benötigen einen anderen Dienst oder Client, der ihnen Nachrichten sendet. Die Actor-Vorlage enthält ein einfaches Testskript, das Sie für die Interaktion mit dem Actor-Dienst verwenden können.
 
-1. Führen Sie das Skript mithilfe des watch-Hilfsprogramms aus, um die Ausgabe des Actor-Diensts zu erhalten.
+1. Führen Sie das Skript mithilfe des watch-Hilfsprogramms aus, um die Ausgabe des Actor-Diensts zu erhalten.  Das Testskript ruft die `setCountAsync()`-Methode für den Akteur auf, um einen Zähler zu erhöhen, und die `getCountAsync()`-Methode für den Akteur, um den neuen Zählerwert abzurufen. Anschließend wird der Wert an der Konsole angezeigt.
 
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh
     ```
 
-2. Suchen Sie in Service Fabric Explorer den Knoten, der das primäre Replikat für den Actor-Dienst hostet. Im folgenden Screenshot ist das „Node_3“:
+2. Suchen Sie in Service Fabric Explorer den Knoten, der das primäre Replikat für den Akteurdienst hostet. Im folgenden Screenshot ist das „Node_3“: Das primäre Dienstreplikat verarbeitet die Lese- und Schreibvorgänge.  Änderungen am Dienststatus werden dann an die sekundären Replikate, die auf den Knoten 0 und 1 im Screenshot unten ausgeführt werden, repliziert.
 
     ![Suchen des primären Replikats in Service Fabric Explorer][sfx-primary]
 
-3. Klicken Sie auf den Knoten, den Sie im vorherigen Schritt ermittelt haben, und wählen Sie im Aktionsmenü die Option **Deaktivieren (neu starten)** aus. Mit dieser Aktion wird einer der fünf Knoten in Ihrem lokalen Cluster neu gestartet und ein Failover auf eines der sekundären Replikate erzwungen, das auf einem anderen Knoten ausgeführt wird. Behalten Sie bei dieser Aktion die Ausgabe des Testclients im Auge, und beachten Sie, dass sich der Zähler trotz des Failovers weiter erhöht.
+3. Klicken Sie in **Knoten** auf den Knoten, den Sie im vorherigen Schritt ermittelt haben, und wählen Sie im Aktionsmenü die Option **Deaktivieren (neu starten)** aus. Mit dieser Aktion wird der Knoten, auf dem das primäre Dienstreplikat ausgeführt wird, neu gestartet und ein Failover auf eines der sekundären Replikate erzwungen, das auf einem anderen Knoten ausgeführt wird.  Dieses sekundäre Replikat wird zum primären Replikat heraufgestuft. Ein weiteres sekundäres Replikat wird auf einem anderen Knoten erstellt, und das primäre Replikat beginnt damit, Lese- und Schreibvorgänge anzunehmen. Behalten Sie beim Neustart des Knotens die Ausgabe des Testclients im Auge, und beachten Sie, dass sich der Zähler trotz des Failovers weiter erhöht.
 
-## <a name="create-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Erstellen und Bereitstellen einer Anwendung mit dem Eclipse Neon-Plug-In
-
-Service Fabric gibt Ihnen außerdem die Möglichkeit zum Erstellen und Bereitstellen von Service Fabric-Java-Anwendungen mithilfe von Eclipse. Wählen Sie bei der Installation von Eclipse die **Eclipse-IDE für Java-Entwickler**. Außerdem unterstützt Service Fabric derzeit das Plug-In für Eclipse **Neon**. Lesen Sie die ausführliche Dokumentation [Erstellen und Bereitstellen Ihrer ersten Service Fabric-Java-Anwendung mithilfe des Service Fabric-Plug-Ins für Eclipse unter Linux](service-fabric-get-started-eclipse.md).
-
-## <a name="adding-more-services-to-an-existing-application"></a>Hinzufügen weiterer Dienste zu einer vorhandenen Anwendung
-
-### <a name="using-command-line-utility"></a>Verwenden des Befehlszeilenprogramms
-Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus:
+## <a name="add-another-service-to-the-application"></a>Hinzufügen eines weiteren Diensts zur Anwendung
+Führen Sie zum Hinzufügen eines weiteren Diensts zu einer vorhandenen Anwendung mit `yo` die folgenden Schritte aus:
 1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
 2. Führen Sie `yo azuresfjava:AddService` aus.
+3. Erstellen Sie die App wie in den vorhergehenden Schritten, und stellen Sie sie bereit.
 
-### <a name="using-service-fabric-eclipse-plugin-for-java-on-linux"></a>Verwenden des Service Fabric Eclipse-Plug-Ins für Java unter Linux
-Informationen zum Hinzufügen von Diensten zu einer vorhandenen Anwendung, die mit dem Eclipse-Plug-In für Service Fabric erstellt wurde, finden Sie in [dieser](service-fabric-get-started-eclipse.md#add-a-service-fabric-service-to-your-service-fabric-application) Dokumentation.
+## <a name="remove-the-application"></a>Entfernen der Anwendung
+Verwenden Sie das in der Vorlage bereitgestellte Deinstallationsskript, um die App-Instanz zu löschen, die Registrierung des Anwendungspakets aufzuheben und das Anwendungspaket aus dem Imagespeicher des Clusters zu entfernen.
+
+```bash
+./uninstall.sh
+```
+
+Im Service Fabric Explorer werden die Anwendung und der Anwendungstyp anschließend nicht mehr im Knoten **Anwendungen** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen und Bereitstellen Ihrer ersten Service Fabric-Java-Anwendung mithilfe des Service Fabric-Plug-Ins für Eclipse unter Linux](service-fabric-get-started-eclipse.md)
+* [Erstellen Ihrer ersten Service Fabric-Java-Anwendung unter Linux mit Eclipse](service-fabric-get-started-eclipse.md)
 * [Erfahren Sie mehr über Reliable Actors.](service-fabric-reliable-actors-introduction.md)
-* [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
+* [Interagieren mit Service Fabric-Clustern mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
 * [Problembehandlung bei der Bereitstellung](service-fabric-azure-cli.md#troubleshooting)
 * Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
