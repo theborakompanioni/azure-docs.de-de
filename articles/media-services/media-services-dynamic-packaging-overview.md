@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: da455a350f61e17425cd308d0fdc8bb5294a0b76
 ms.openlocfilehash: 574921fdecdadaa48c572685f7486d4e7b1d25f4
+ms.contentlocale: de-de
 ms.lasthandoff: 01/27/2017
 
 
@@ -49,7 +50,7 @@ Zum Vorbereiten Ihres Medienobjekts auf dynamisches Streaming haben Sie zwei Mö
 2. [Verwenden Sie den Media Encoder Standard-Encoder zum Erzeugen von H.264-MP4-Sätzen mit adaptiver Bitrate](media-services-dotnet-encode-with-media-encoder-standard.md).
 3. [Streamen Sie Ihre Inhalte](media-services-deliver-content-overview.md).
 
-## <a name="a-idunsupportedformatsaformats-that-are-not-supported-by-dynamic-packaging"></a><a id="unsupported_formats"></a>Formate, die nicht von der dynamischen Paketerstellung unterstützt werden
+## <a id="unsupported_formats"></a>Formate, die nicht von der dynamischen Paketerstellung unterstützt werden
 Die folgenden Quelldateiformate werden von der dynamischen Paketerstellung nicht unterstützt:
 
 * MP4-Dateien in Dolby Digital

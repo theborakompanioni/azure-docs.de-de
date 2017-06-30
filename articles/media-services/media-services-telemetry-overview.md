@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 99c43c63f75e01713600ef5ca46a8d11e8c5c7ce
 ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
+ms.contentlocale: de-de
+ms.lasthandoff: 12/09/2016
 
 
 ---
@@ -40,7 +42,6 @@ Die folgenden Themen zeigen, wie die Telemetrie aktiviert wird:
 [Aktivieren der Telemetrie mit .NET](media-services-dotnet-telemetry.md) 
 
 [Aktivieren der Telemetrie mit REST](media-services-rest-telemetry.md)
-
 
 ## <a name="consuming-telemetry-information"></a>Verwenden von Telemetriedaten
 
@@ -67,11 +68,9 @@ Folgendes sorgt für die Effizienz vieler gängiger Abfragen:
 - Abrufen aller Daten für einen bestimmten Dienst in einem bestimmten Datumsbereich.
 - Abrufen der neuesten Daten für einen Dienst.
 
-
 ### <a name="telemetry-table-storage-output-schema"></a>Ausgabeschema des Telemetrietabellenspeichers
 
 Telemetriedaten werden in aggregierter Form in einer Tabelle „TelemetryMetrics20160321“ gespeichert, wobei „20160321“ das Datum der erstellten Tabelle ist. Das Telemetriesystem erstellt für jeden neuen Tag (Grundlage: 00:00 UTC) eine separate Tabelle. Die Tabelle wird verwendet, um wiederholte Werte wie z.B. Erfassungsbitrate innerhalb eines bestimmten Zeitfensters, gesendete Bytes usw. zu speichern. 
-
 
 Eigenschaft|Wert|Beispiele/Hinweise
 ---|---|---
@@ -83,7 +82,6 @@ Name|Der Name des Telemetrieereignisses|ChannelHeartbeat/StreamingEndpointReques
 ObservedTime|Die Uhrzeit (UTC), zu der das Telemetrieereignis aufgetreten ist.|2016-09-09T22:42:36.924Z<br/><br/>Die beobachtete Zeit wird von der Entität gemeldet, die die Telemetriedaten sendet (z.B. ein Kanal). Da zwischen Komponenten Zeitsynchronisierungsprobleme auftreten können, ist dies ein ungefährer Wert.
 ServiceID|{Service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Entitätsspezifische Eigenschaften|Gemäß der Definition durch das-Ereignis|StreamName: stream1, Bitrate 10123, …<br/><br/>Die übrigen Eigenschaften sind für den angegebenen Ereignistyp definiert. Der Azure-Tabelleninhalt besteht aus Schlüssel-Wert-Paaren.  (D.h., unterschiedliche Zeilen in der Tabelle haben unterschiedliche Sätze von Eigenschaften.)
-
 
 ### <a name="entity-specific-schema"></a>Entitätsspezifisches Schema
 
@@ -112,7 +110,6 @@ BytesSent|Aggregierte gesendete Bytes|2987358
 ServerLatency|Durchschnittliche Serverlatenz (einschließlich Speicher)|129
 E2ELatency|Durchschnittliche End-to-End-Latenz|250
 
-
 **Livekanal**
 
 Eigenschaft|Wert|Beispiele/Hinweise
@@ -138,7 +135,6 @@ UnalignedPresentationTime|Ob Fragmente (aller Qualitätsstufen/Nachverfolgungen)
 UnexpectedBitrate|„True“, wenn die berechnete/tatsächliche Bitrate für die Audio-/Videonachverfolgung > 40.000 Bit/s und IncomingBitrate == 0 OR IncomingBitrate und actualBitrate sich um 50% unterscheiden. |true
 Healthy|„True“, wenn <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> alle 0 sind.|true<br/><br/>„Healthy“ ist eine zusammengesetzte Funktion, die „false“ zurückgibt, wenn eine der folgenden Bedingungen zutrifft:<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
-
 **Livearchiv**
 
 Eigenschaft|Wert|Beispiele/Hinweise
@@ -156,7 +152,6 @@ TrackType|Typ der Nachverfolgung|Audio/Video
 CustomAttribute|Eine hexadezimale Zeichenfolge, die zwischen verschiedenen Nachverfolgungen mit gleichem Namen und gleicher Bitrate (mehrere Kamerawinkel) unterscheidet.|
 Bitrate|Nachverfolgungs-Bitrate|785000
 Healthy|„True“, wenn FragmentDiscardedCount == 0 && ArchiveAcquisitionError == „False“|„True“ (diese beiden Werte sind in der Metrik nicht vorhanden, jedoch im Quellereignis)<br/><br/>„Healthy“ ist eine zusammengesetzte Funktion, die „false“ zurückgibt, wenn eine der folgenden Bedingungen zutrifft:<br/><br/>-FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
-
 
 ## <a name="general-qa"></a>Allgemeine Fragen und Antworten
 
@@ -226,9 +221,4 @@ Das Telemetriesystem bietet weder eine Verwaltung der Datenbeibehaltung noch die
 ## <a name="provide-feedback"></a>Feedback geben
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
