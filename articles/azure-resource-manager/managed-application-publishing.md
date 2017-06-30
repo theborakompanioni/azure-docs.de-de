@@ -41,8 +41,8 @@ Der erste Schritt ist das Erstellen des Pakets für die verwaltete Anwendung, da
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
-            "storageAccountName": {
-                "type": "String"
+          "storageAccountName": {
+              "type": "String"
           }
       },
       "resources": [{
@@ -54,10 +54,10 @@ Der erste Schritt ist das Erstellen des Pakets für die verwaltete Anwendung, da
               "name": "Standard_LRS"
           },
           "kind": "Storage",
-          "properties": {        
+          "properties": {       
           }
       }],
-      "outputs": {        
+      "outputs": {      
       }
   }
   ```
@@ -102,7 +102,7 @@ Der erste Schritt ist das Erstellen des Pakets für die verwaltete Anwendung, da
               "Parameters": {
                   "storageAccountName": {
                       "value": "[parameters('storageAccountName')]"
-                  }                
+                  }             
               }
           }
       }]
@@ -118,13 +118,13 @@ Sobald alle benötigten Dateien bereitstehen, laden Sie das Paket in einen zugä
 Als Nächstes erstellen Sie eine Benutzergruppe oder Anwendung, die Sie zum Verwalten der Ressourcen für den Kunden verwenden. Diese Benutzergruppe oder Anwendung hat Berechtigungen für die verwaltete Ressourcengruppe wie von der Rolle beschrieben. Die Rolle kann eine beliebige integrierte RBAC-Rolle wie **Besitzer** oder **Mitwirkender** sein. Einem einzelnen Benutzer können auch Berechtigungen zum Verwalten der Ressourcen zugewiesen werden, in der Regel weisen Sie diese Berechtigungen jedoch einer Benutzergruppe zu. Zum Erstellen einer neuen Active Directory-Benutzergruppe verwenden Sie:
 
 ```azurecli
-az ad group create –display-name "name" –mail-nickname "nickname"
+az ad group create --display-name "name" --mail-nickname "nickname"
 ```
 
 Sie können auch eine vorhandene Gruppe verwenden. Sie benötigen die Objekt-ID der neu erstellten oder einer vorhandenen Benutzergruppe. Das folgende Beispiel zeigt, wie die Objekt-ID vom Anzeigenamen abgerufen wird, der zum Erstellen der Gruppe verwendet wurde.
 
 ```azurecli
-az ad group show –group "groupName"
+az ad group show --group "groupName"
 ```
 
 Beispiel:
@@ -210,3 +210,4 @@ Die im vorhergehenden Beispiel verwendeten Parameter sind:
 * Beispiele für die Dateien, finden Sie unter [Managed Application samples](https://github.com/Azure/azure-managedapp-samples/tree/master/samples) (Beispiele für verwaltete Anwendungen).
 * Grundlegendes zur Kundenerfahrung erfahren Sie unter [Nutzen einer verwalteten Azure-Anwendung](managed-application-consumption.md).
 * Informationen zum Erstellen einer Benutzeroberflächen-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
+
