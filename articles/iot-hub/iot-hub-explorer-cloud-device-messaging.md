@@ -70,7 +70,7 @@ Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgend
 1. Starten Sie eine Sitzung auf Ihren IoT Hub, indem Sie den folgenden Befehl ausführen:
 
    ```bash
-   iothub-explorer login <IoTHubConnectionString>
+   iothub-explorer login `<IoTHubConnectionString>`
    ```
 
 1. Senden Sie eine Nachricht an Ihr Gerät, indem Sie den folgenden Befehl ausführen:
@@ -89,3 +89,4 @@ Der Befehl lässt die LED blinken, die mit dem Gerät verbunden ist, und sendet 
 Sie haben gelernt, Gerät-zu-Cloud-Nachrichten zu überwachen und Cloud-zu-Gerät-Nachrichten zwischen dem IoT-Gerät und Azure IoT Hub zu senden.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+
