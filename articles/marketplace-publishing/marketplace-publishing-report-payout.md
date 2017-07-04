@@ -50,7 +50,7 @@ Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich e
 ## <a name="view-your-payout-reports-in-dev-center"></a>Anzeigen von Auszahlungsberichten im Dev Center
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-* Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben).  Dieser Betrag beläuft sich zumeist auf&0; $, (es sei denn, ein Kunde zahlt weit im Voraus).
+* Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben).  Dieser Betrag beläuft sich zumeist auf 0 $ (es sei denn, ein Kunde zahlt weit im Voraus).
 * Klicken Sie in den Bereichen „Anstehende Zahlungen“ oder „Letzte Zahlung“ auf den Link **Details anzeigen** , um einen Hinweis zu diesen Auszahlungen anzuzeigen.
 * Klicken Sie auf **Zahlungsaufstellungen** , um die Details unter „Einnahmen“ nach App oder Produkt anzuzeigen.
 * Klicken Sie auf den Link **Anzeigen** , um einzelne Aufstellungen anzuzeigen.
