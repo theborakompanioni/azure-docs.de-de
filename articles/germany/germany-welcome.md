@@ -35,13 +35,13 @@ Diese Website beschreibt den Funktionsumfang der Dienste von [Microsoft Azure De
 
 Auf der [Complianceseite von Microsoft Azure Trust Center](http://www.microsoft.com/TrustCenter/Compliance/default.aspx) finden Sie aktuelle Informationen zu den Azure Deutschland-Diensten, die spezifischen Akkreditierungen und Regulierungen unterliegen. Gegebenenfalls sind weitere Microsoft-Dienste verfügbar, die jedoch nicht zu den in Azure Deutschland vorhandenen Diensten gehören oder Gegenstand dieser Dokumentation sind. Azure Deutschland-Dienste ermöglichen unter anderem die Verwendung verschiedener zusätzlicher Ressourcen, Anwendungen oder Dienste, die von Drittanbietern (oder von Microsoft im Rahmen separater Nutzungsbedingungen und Datenschutzrichtlinien) bereitgestellt werden. Auch diese sind nicht Gegenstand dieser Dokumentation. Die Bedingungen solcher (etwa über den Azure Marketplace angebotenen) Zusatzangebote müssen von Ihnen eigenverantwortlich geprüft werden, um sicherzustellen, dass sie Ihre Complianceanforderungen erfüllen.
 
-Azure Deutschland ist für Kunden und Partner weltweit verfügbar, die in der EU/EFTA, einschließlich Großbritannien, geschäftlich tätig sind.
+Azure Deutschland ist für Kunden und Partner, die in der EU/EFTA einschließlich Großbritannien geschäftlich tätig sind, weltweit verfügbar.
 
 ## <a name="general-guidance-for-customers"></a>Allgemeine Richtlinien für Kunden
 Bei den meisten der derzeit verfügbaren technischen Inhalte wird davon ausgegangen, dass Anwendungen für die globale Azure-Umgebung und nicht für Azure Deutschland entwickelt werden. Es ist unbedingt sicherzustellen, dass sich Entwickler über die wichtigsten Unterschiede der Anwendungen, die für das Hosting in Azure Deutschland entwickelt wurden, im Klaren sind:
 
 * Bestimmte Dienste und Funktionen, die in bestimmten Regionen der globalen Azure-Umgebung vorhanden sind, sind möglicherweise in Azure Deutschland nicht verfügbar. Auf der Seite [Regionen](https://azure.microsoft.com/regions/services) finden Sie aktuelle Dienste, die allgemein verfügbar sind. 
-* Für Funktionen in Azure Deutschland gibt es zudem hinsichtlich der Konfiguration Unterschiede zur globalen Azure-Umgebung. Aus diesem Grund sollten Sie Ihren Beispielcode, Ihre Konfigurationen und Schritte überprüfen, um sicherzustellen, dass Sie diese innerhalb der Azure Deutschland-Umgebung erstellen und ausführen.
+* Für Funktionen in Azure Deutschland gibt es zudem hinsichtlich der Konfiguration Unterschiede zur globalen Azure-Umgebung. Aus diesem Grund sollten Sie Ihren Beispielcode, Ihre Konfigurationen und Ihre Schritte überprüfen, um sicherzustellen, dass Entwicklung und Ausführung innerhalb der Azure Deutschland-Umgebung erfolgen.
 * Informationen zur Abgrenzung von Azure Deutschland sowie Anleitungen und bewährte Methoden zu den durch Kunden regulierten und/oder gesteuerten Daten finden Sie in der technischen Dienstdokumentation zu Azure Deutschland auf dieser Website.
 
 ## <a name="next-steps"></a>Nächste Schritte
