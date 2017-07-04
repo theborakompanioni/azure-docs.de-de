@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9934902811354ffa4047d70d995a6dd44be0229b
+ms.contentlocale: de-de
 ms.lasthandoff: 03/10/2017
 
 
@@ -51,19 +52,19 @@ Sie können registrierte Geräte zudem mithilfe des Verwaltungsportals in Azure 
 
 **So aktivieren Sie den Azure Active Directory-Geräteregistrierungsdienst**
 
-1.    Melden Sie sich als Administrator beim Microsoft Azure-Portal an.
+1.  Melden Sie sich als Administrator beim Microsoft Azure-Portal an.
 
-2.    Wählen Sie im linken Bereich **Active Directory**aus.
+2.  Wählen Sie im linken Bereich **Active Directory**aus.
 
-3.    Wählen Sie auf der Registerkarte "Verzeichnis" Ihr Verzeichnis aus.
+3.  Wählen Sie auf der Registerkarte "Verzeichnis" Ihr Verzeichnis aus.
 
-4.    Klicken Sie auf **Konfigurieren**.
+4.  Klicken Sie auf **Konfigurieren**.
 
-5.    Scrollen Sie zu **Geräte**.
+5.  Scrollen Sie zu **Geräte**.
 
-6.    Wählen Sie unter BENUTZER DÜRFEN IHRE GERÄTE FÜR AZURE AD REGISTRIEREN die Option ALLE.
+6.  Wählen Sie unter BENUTZER DÜRFEN IHRE GERÄTE FÜR AZURE AD REGISTRIEREN die Option ALLE.
 
-7.    Wählen Sie die maximale Anzahl von Geräten aus, die Sie pro Benutzer autorisieren möchten.
+7.  Wählen Sie die maximale Anzahl von Geräten aus, die Sie pro Benutzer autorisieren möchten.
 
 Für die Registrierung bei Microsoft Intune oder bei der Verwaltung mobiler Geräte für Office 365 ist eine Geräteregistrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt und die Schaltfläche **KEINE** deaktiviert. Stellen Sie sicher, dass sie ordnungsgemäß konfiguriert sind und über die entsprechenden Lizenzen verfügen.
 
@@ -79,19 +80,19 @@ Standardmäßig ist die zweistufige Authentifizierung für den Dienst nicht akti
 
 **So zeigen Sie Geräteobjekte in Azure Active Directory an und verwalten sie**
  
-1.    Melden Sie sich als Administrator beim Microsoft Azure-Portal an.
+1.  Melden Sie sich als Administrator beim Microsoft Azure-Portal an.
 
-2.    Wählen Sie im linken Bereich **Active Directory**aus.
+2.  Wählen Sie im linken Bereich **Active Directory**aus.
 
-3.    Wählen Sie Ihr Verzeichnis.
+3.  Wählen Sie Ihr Verzeichnis.
 
-4.    Wählen Sie **Benutzer** aus. 
+4.  Wählen Sie **Benutzer** aus. 
 
 5.  Klicken Sie auf den Benutzer, dessen Geräte angezeigt werden sollen.
 
-6.    Wählen Sie **Geräte**.
+6.  Wählen Sie **Geräte**.
 
-7.    Wählen Sie **Registrierte Geräte**.
+7.  Wählen Sie **Registrierte Geräte**.
 
 Jetzt können Sie die registrierten Geräte des Benutzers anzeigen, blockieren oder deren Blockierung aufheben.
 Lokale, in die Domäne eingebundene und automatisch registrierte Windows 10-Geräte werden auf der Registerkarte „Benutzer“ nicht angezeigt. Verwenden Sie den PowerShell-Befehl „Get-MsolDevice“, um all Ihre Unternehmensgeräte zu finden. 

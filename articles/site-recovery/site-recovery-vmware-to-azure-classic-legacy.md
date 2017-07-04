@@ -149,9 +149,9 @@ Tabelle 2 enthält eine Zusammenfassung der Richtlinien für den Prozessserver.
 
 | **Datenänderungsrate** | **CPU** | **Arbeitsspeicher** | **Größe des Cachedatenträgers** | **Durchsatz des Cachedatenträgers** | **Eingangs-/Ausgangsbandbreite** |
 | --- | --- | --- | --- | --- | --- |
-| < 300 GB |4 vCPUs (2 Sockets * 2 Kerne mit 2,5 GHz) |4 GB |600 GB |7 bis 10 MB pro Sekunde |30 Mbit/s bzw.&21; Mbit/s |
-| 300 bis 600 GB |8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz) |6 GB |600 GB |11 bis 15 MB pro Sekunde |60 Mbit/s bzw.&42; Mbit/s |
-| 600 GB bis 1 TB |12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz) |8 GB |600 GB |16 bis 20 MB pro Sekunde |100 Mbit/s bzw.&70; Mbit/s |
+| < 300 GB |4 vCPUs (2 Sockets * 2 Kerne mit 2,5 GHz) |4 GB |600 GB |7 bis 10 MB pro Sekunde |30 Mbit/s bzw. 21 Mbit/s |
+| 300 bis 600 GB |8 vCPUs (2 Sockets * 4 Kerne mit 2,5 GHz) |6 GB |600 GB |11 bis 15 MB pro Sekunde |60 Mbit/s bzw. 42 Mbit/s |
+| 600 GB bis 1 TB |12 vCPUs (2 Sockets * 6 Kerne mit 2,5 GHz) |8 GB |600 GB |16 bis 20 MB pro Sekunde |100 Mbit/s bzw. 70 Mbit/s |
 | > 1 TB |Bereitstellen eines weiteren Prozessservers | | | | |
 
 **Tabelle 2**
@@ -393,11 +393,11 @@ Beachten Sie, dass in jedem Subnetz die ersten vier IP-Adressen für die interne
    4. Extrahieren Sie die Dateien aus dem GZIP-Installationsprogramm, indem Sie folgenden Befehl ausführen: **tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***
       ![Linux-Masterzielserver](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
    5. Stellen Sie sicher, dass Sie sich in dem Verzeichnis befinden, in das Sie den Inhalt der TAR-Datei extrahiert haben.
-   6. Kopieren Sie die Passphrase für den Konfigurationsserver mit dem Befehl **echo *`<passphrase>`* >passphrase.txt** in eine lokale Datei.
-   7. Führen Sie den Befehl **sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt** aus.
+   6. Kopieren Sie die Passphrase für den Konfigurationsserver mit dem Befehl **echo* `<passphrase>`* >passphrase.txt** in eine lokale Datei.
+   7. Führen Sie den Befehl **sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i* `<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt** aus.
 
       ![Zielserver registrieren](./media/site-recovery-vmware-to-azure-classic-legacy/linux-mt-install.png)
-7. Warten Sie etwa zehn bis&15; Minuten, und vergewissern Sie sich dann auf der Seite **Server** > **Konfigurationsserver**, dass der Masterzielserver auf der Registerkarte **Serverdetails** als registriert aufgeführt ist. Wenn Sie Linux verwenden und der Server nicht registriert wurde, führen Sie das Hostkonfigurationstool über „/usr/local/ASR/Vx/bin/hostconfigcli“ erneut aus. Sie müssen die Zugriffsberechtigungen festlegen, indem Sie chmod als root ausführen.
+7. Warten Sie etwa zehn bis 15 Minuten, und vergewissern Sie sich dann auf der Seite **Server** > **Konfigurationsserver**, dass der Masterzielserver auf der Registerkarte **Serverdetails** als registriert aufgeführt ist. Wenn Sie Linux verwenden und der Server nicht registriert wurde, führen Sie das Hostkonfigurationstool über „/usr/local/ASR/Vx/bin/hostconfigcli“ erneut aus. Sie müssen die Zugriffsberechtigungen festlegen, indem Sie chmod als root ausführen.
 
     ![Zielserver überprüfen](./media/site-recovery-vmware-to-azure-classic-legacy/target-server-list.png)
 
@@ -472,10 +472,10 @@ Site Recovery-Komponenten werden von Zeit zu Zeit aktualisiert. Neu verfügbare 
 3. Wenn Sie virtuelle Computer oder physische Server ausführen, auf denen der Mobilitätsdienst bereits installiert ist, können Sie die Updates für den Dienst wie folgt abrufen:
 
    * **Option 1**: Laden Sie die Updates herunter:
-     * [Windows Server (nur&64; Bit)](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
+     * [Windows Server (nur 64 Bit)](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
      * [CentOS 6.4, 6.5, 6.6 (nur 64 Bit)](http://download.microsoft.com/download/7/E/D/7ED50614-1FE1-41F8-B4D2-25D73F623E9B/Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz)
      * [Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit)](http://download.microsoft.com/download/5/2/6/526AFE4B-7280-4DC6-B10B-BA3FD18B8091/Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz)
-     * [SUSE Linux Enterprise Server SP3 (nur&64; Bit)](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
+     * [SUSE Linux Enterprise Server SP3 (nur 64 Bit)](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
      * Nach Aktualisierung des Prozessservers steht die aktualisierte Version des Mobilitätsdiensts auf dem Prozessserver im Ordner „C:\pushinstallsvc\repository“ zur Verfügung.
    * **Option 2**: Wenn auf einem Computer eine ältere Version des Mobilitätsdiensts installiert ist, können Sie über das Verwaltungsportal ein automatisches Upgrade des Mobilitätsdiensts auf dem Computer ausführen.
 
@@ -568,7 +568,7 @@ Die Softwarepakete zum Installieren des Mobilitätsdiensts befinden sich auf dem
 
 | Quellbetriebssystem | Mobilitätsdienstpaket auf dem Prozessserver |
 | --- | --- |
-| Windows Server (nur&64; Bit) |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe` |
+| Windows Server (nur 64 Bit) |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe` |
 | CentOS 6.4, 6.5, 6.6 (nur 64 Bit) |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz` |
 | SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz` |
 | Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz` |
@@ -630,7 +630,7 @@ Zum Aktivieren des Schutzes fügen Sie einer Schutzgruppe virtuelle Computer und
 * Virtuelle Computer werden alle 15 Minuten ermittelt, und es kann bis zu 15 Minuten dauern, bis sie nach der Ermittlung in Azure Site Recovery angezeigt werden.
 * Es kann auch bis zu 15 Minuten dauern, bis Umgebungsänderungen auf dem virtuellen Computer (z. B. Installation von VMware-Tools) in Site Recovery aktualisiert werden.
 * Sie können auf der Seite **Konfigurationsserver** im Feld **LETZTER KONTAKT UM** für den vCenter-Server/ESXi-Host den Zeitpunkt der letzten Ermittlung überprüfen.
-* Wenn Sie bereits eine Schutzgruppe erstellt haben und anschließend einen vCenter-Server oder ESXi-Host hinzufügen, dauert es&15; Minuten, bis das Azure Site Recovery-Portal aktualisiert wird und virtuelle Computer im Dialogfeld **Hinzufügen von Computern zu einer Schutzgruppe** angezeigt werden.
+* Wenn Sie bereits eine Schutzgruppe erstellt haben und anschließend einen vCenter-Server oder ESXi-Host hinzufügen, dauert es 15 Minuten, bis das Azure Site Recovery-Portal aktualisiert wird und virtuelle Computer im Dialogfeld **Hinzufügen von Computern zu einer Schutzgruppe** angezeigt werden.
 * Wenn Sie einer Schutzgruppe sofort Computer hinzufügen möchten, ohne auf die planmäßige Ermittlung zu warten, markieren Sie den Konfigurationsserver (klicken Sie nicht darauf), und klicken Sie auf die Schaltfläche **Aktualisieren** .
 * Wenn Sie einer Schutzgruppe virtuelle oder physische Computer hinzufügen, wird der Mobilitätsdienst automatisch vom Prozessserver auf den Quellserver gepusht und auf diesem installiert, sofern der Dienst nicht bereits installiert ist.
 * Damit der automatische Pushmechanismus funktioniert, stellen Sie sicher, dass Sie die geschützten Computer so eingerichtet haben, wie im vorherigen Schritt beschrieben wurde.
