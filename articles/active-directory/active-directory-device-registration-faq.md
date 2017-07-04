@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 91a4e54b3dd2e1f44a6b52c548a243ae98e3ba3f
+ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
 
 
@@ -58,17 +59,17 @@ Nur die folgenden Geräte werden in den Informationen unter BENUTZER aufgeführt
 
 Für Windows 10 und Windows Server 2016, die in die lokale AD-Domäne eingebunden sind:
 
-1.    Öffnen Sie die Eingabeaufforderung als Administrator.
+1.  Öffnen Sie die Eingabeaufforderung als Administrator.
 
-2.    Geben Sie `dsregcmd.exe /debug /leave` ein
+2.  Geben Sie `dsregcmd.exe /debug /leave` ein
 
-3.    Melden Sie sich ab und erneut an, um den geplanten Task auszulösen, der das Gerät erneut registriert. 
+3.  Melden Sie sich ab und erneut an, um den geplanten Task auszulösen, der das Gerät erneut registriert. 
 
 Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
-1.    Öffnen Sie die Eingabeaufforderung als Administrator.
-2.    Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`ein.
-3.    Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`ein.
+1.  Öffnen Sie die Eingabeaufforderung als Administrator.
+2.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`ein.
+3.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`ein.
 
 ---
 
@@ -76,13 +77,13 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 **A:**
 
--    Wenn unter Windows 10 und Windows Server 2016 wiederholt versucht wird, dasselbe Gerät zu entfernen und erneut hinzuzufügen, können doppelte Einträge auftreten. 
+-   Wenn unter Windows 10 und Windows Server 2016 wiederholt versucht wird, dasselbe Gerät zu entfernen und erneut hinzuzufügen, können doppelte Einträge auftreten. 
 
--    Wenn Sie „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet haben, erstellt jeder Windows-Benutzer, der „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet, einen neuen Gerätedatensatz mit demselben Gerätenamen.
+-   Wenn Sie „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet haben, erstellt jeder Windows-Benutzer, der „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet, einen neuen Gerätedatensatz mit demselben Gerätenamen.
 
--    Andere Windows-Plattformen, die mit der automatischen Registrierung in die lokale AD-Domäne eingebunden sind, erstellen einen neuen Gerätedatensatz mit demselben Gerätenamen für jeden Domänenbenutzer, der sich beim Gerät anmeldet. 
+-   Andere Windows-Plattformen, die mit der automatischen Registrierung in die lokale AD-Domäne eingebunden sind, erstellen einen neuen Gerätedatensatz mit demselben Gerätenamen für jeden Domänenbenutzer, der sich beim Gerät anmeldet. 
 
--    Ein AADJ-Computer, der gelöscht, neu installiert und mit demselben Namen wieder eingebunden wurde, wird als anderer Datensatz mit demselben Gerätenamen angezeigt.
+-   Ein AADJ-Computer, der gelöscht, neu installiert und mit demselben Namen wieder eingebunden wurde, wird als anderer Datensatz mit demselben Gerätenamen angezeigt.
 
 ---
 
