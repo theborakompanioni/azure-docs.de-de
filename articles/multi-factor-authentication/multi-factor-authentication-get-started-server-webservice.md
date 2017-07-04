@@ -39,7 +39,7 @@ Wenn Sie das Benutzerportal auf einem anderen Server als dem Azure Multi-Factor 
 
 Zur Verwendung der Microsoft Authenticator-App müssen folgende Voraussetzungen erfüllt sein, damit die App erfolgreich mit dem Webdienst der mobilen App kommunizieren kann:
 
-* Azure Multi-Factor Authentication-Server ab Version&6;.0
+* Azure Multi-Factor Authentication-Server ab Version 6.0
 * Installieren Sie den Webdienst der mobilen App auf einem Webserver mit Internetverbindung, auf dem Microsoft® [Internetinformationsdienste (IIS) 7.x oder höher](http://www.iis.net/) ausgeführt wird.
 * ASP.NET v4.0.30319 ist installiert, registriert und auf „Zulässig“ festgelegt.
 * Erforderliche Rollendienste umfassen ASP.NET und IIS 6-Metabasiskompatibilität.

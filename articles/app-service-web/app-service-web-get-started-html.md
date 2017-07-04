@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie einfach die Ausführung von Web-Apps in App Service ist, indem Sie eine Beispiel-App bereitstellen."
+title: Erstellen einer statischen HTML-Web-App in Azure | Microsoft-Dokumentation
+description: "Hier erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie eine statische HTML-Beispiel-App erstellen."
 services: app-service\web
 documentationcenter: 
 author: rick-anderson
@@ -12,61 +12,112 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/08/2017
+ms.date: 05/26/2017
 ms.author: riande
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 895906e1ab4bc50093ed3b18f043c3dd515ca054
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: bfa54a90af057f3c799fd8265b3cd5e053f21e69
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
-# <a name="create-a-static-html-web-app-in-azure-in-five-minutes"></a>Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten
+# <a name="create-a-static-html-web-app-in-azure"></a>Erstellen einer statischen HTML-Web-App in Azure
 
-In diesem Schnellstart wird erläutert, wie Sie eine einfache Website mit HTML und CSS an Azure bereitstellen. Sie führen die App mit einem [Azure App Service-Plan](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) aus und erstellen darin eine Web-App über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli). Sie verwenden Git, um die App an Azure bereitzustellen. Nachdem die erforderlichen Komponenten installiert wurden, kann das Tutorial in etwa fünf Minuten durchgeführt werden.
+[Azure-Web-Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching.  In diesem Schnellstart wird erläutert, wie Sie eine einfache Website mit HTML und CSS in Azure-Web-Apps bereitstellen. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen mit Git HTML-Beispielinhalt für die Web-App bereit.
 
-![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+![Startseite der Beispiel-App](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+
+Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Nachdem die erforderlichen Komponenten installiert wurden, können die Schritte in etwa fünf Minuten durchgeführt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Laden Sie vor dem Erstellen dieses Beispiels folgende Komponenten herunter und installieren Sie sie:
+So führen Sie diesen Schnellstart durch:
 
-- [Git](https://git-scm.com/)
-- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Installieren Sie Git](https://git-scm.com/)
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-Klonen Sie das Beispiel-App-Repository in einem Terminalfenster auf Ihren lokalen Computer:
+Führen Sie in einem Terminalfenster den folgenden Befehl aus, um das Beispiel-App-Repository auf Ihren lokalen Computer zu klonen.
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
+Sie verwenden dieses Terminalfenster, um alle Befehle in diesem Schnellstart auszuführen.
+
 ## <a name="view-the-html"></a>Anzeigen der HTML
 
 Navigieren Sie zum Verzeichnis mit der Beispiel-HTML. Öffnen Sie die Datei *index.html* in Ihrem Browser.
 
-![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser.png)
+![Startseite der Beispiel-App](media/app-service-web-get-started-html/hello-world-in-browser.png)
 
-[!INCLUDE [login-to-azure](../../includes/login-to-azure.md)] 
-[!INCLUDE [configure-deployment-user](../../includes/configure-deployment-user.md)] 
+[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
 
-[!INCLUDE [app-service-web-quickstart1](../../includes/app-service-web-quickstart1.md)] 
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
-Erstellen Sie eine [Web-App](app-service-web-overview.md) im App Service-Plan `quickStartPlan`. Die Web-App bietet Ihnen eine Hostingumgebung für Ihren Code sowie eine URL, unter der Sie sich die bereitgestellte App ansehen können.
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
 
-[!INCLUDE [app-service-web-quickstart2](../../includes/app-service-web-quickstart2.md)] 
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
 
-Die Seite wird als Azure App Service-Web-App ausgeführt:
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
 
-![hello-world-in-browser](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+![Leere Web-App-Seite](media/app-service-web-get-started-html/app-service-web-service-created.png)
+
+Sie haben nun eine neue leere Web-App in Azure erstellt.
+
+[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
+
+[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+
+```bash
+Counting objects: 13, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 2.07 KiB | 0 bytes/s, done.
+Total 13 (delta 2), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id 'cc39b1e4cb'.
+remote: Generating deployment script.
+remote: Generating deployment script for Web Site
+remote: Generated deployment script files
+remote: Running deployment command...
+remote: Handling Basic Web Site deployment.
+remote: KuduSync.NET from: 'D:\home\site\repository' to: 'D:\home\site\wwwroot'
+remote: Deleting file: 'hostingstart.html'
+remote: Copying file: '.gitignore'
+remote: Copying file: 'LICENSE'
+remote: Copying file: 'README.md'
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+ * [new branch]      master -> master
+```
+
+## <a name="browse-to-the-app"></a>Navigieren zur App
+
+Wechseln Sie in einem Browser zur URL der Azure-Web-App:
+
+```
+http://<app_name>.azurewebsites.net
+```
+
+Die Seite wird als Azure App Service-Web-App ausgeführt.
+
+![Startseite der Beispiel-App](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
+
+**Glückwunsch!** Sie haben Ihre erste HTML-App für App Service bereitgestellt.
 
 ## <a name="update-and-redeploy-the-app"></a>Aktualisieren und erneutes Bereitstellen der App
 
-Öffnen Sie die Datei *index.html* . Nehmen Sie eine Änderung am Markup vor. Ändern Sie zum Beispiel `Hello world!` in `Hello Azure!`.
+Öffnen Sie die Datei *index.html* in einem Text-Editor, und ändern Sie das Markup. Ändern Sie z.B. die H1-Überschrift von „Azure App Service – Statische HTML-Beispielsite“ in „Azure App Service“.
 
 Führen Sie für Ihre Änderungen in Git einen Commit aus, und übertragen Sie dann die Codeänderungen mithilfe von Push an Azure.
 
@@ -77,12 +128,26 @@ git push azure master
 
 Aktualisieren Sie nach Abschluss der Bereitstellung Ihren Browser, um die Änderungen anzuzeigen.
 
-[!INCLUDE [manage-azure-web-app](../../includes/manage-azure-web-app.md)]
+![Aktualisierte Startseite der Beispiel-App](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
+## <a name="manage-your-new-azure-web-app"></a>Verwalten Ihrer neuen Azure-Web-App
+
+Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte Web-App zu verwalten.
+
+Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-Web-App.
+
+![Portalnavigation zur Azure-Web-App](./media/app-service-web-get-started-html/portal1.png)
+
+Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen. 
+
+![App Service-Blatt im Azure-Portal](./media/app-service-web-get-started-html/portal2.png)
+
+Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App angezeigt. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Machen Sie sich mit [CLI-Skripts für Beispiel-Web-Apps](app-service-cli-samples.md) vertraut.
-- Erfahren Sie, wie Sie einen [benutzerdefinierten Domänennamen](app-service-web-tutorial-custom-domain.md) wie „contoso.com“ einer [App Service-App](app-service-web-tutorial-custom-domain.md) zuordnen.
+> [!div class="nextstepaction"]
+> [Zuordnen einer benutzerdefinierte Domäne](app-service-web-tutorial-custom-domain.md)
+
