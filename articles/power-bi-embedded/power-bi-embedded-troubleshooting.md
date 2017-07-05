@@ -15,9 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/06/2017
 ms.author: asaxton
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 1f4cf4a04e7a921f8e11c94f74d53ac80c231933
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -46,10 +48,5 @@ Falls Sie Anmeldeinformationen für eine Entwicklungs- oder eine Stagingumgebung
 ## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
 * [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
