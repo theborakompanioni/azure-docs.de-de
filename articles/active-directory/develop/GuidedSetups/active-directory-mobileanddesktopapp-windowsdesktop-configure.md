@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1530f64a38ac5e8a87f88fb97eb86aa2b67d0b12
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 12c89a6fcbb6d299b64e6b0ec9d1dba29bb41d16
 ms.contentlocale: de-de
 
 
@@ -26,9 +26,9 @@ ms.contentlocale: de-de
 ## <a name="create-an-application-express"></a>Erstellen einer Anwendung (Express)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).
-2.    Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
-3.    Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
-4.    Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
+2.  Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
+3.  Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
+4.  Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
 
 ### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Hinzufügen der Registrierungsinformationen Ihrer Anwendung zur Projektmappe (für Fortgeschrittene)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:

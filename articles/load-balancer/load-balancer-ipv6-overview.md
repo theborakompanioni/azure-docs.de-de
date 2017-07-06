@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
 ms.openlocfilehash: 3326b1ff8d1704b225cfb62886fbc992c6171211
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 
@@ -81,9 +83,4 @@ Erfahren Sie, wie Sie einen Load Balancer mit IPv6 bereitstellen.
 * [Bereitstellen eines Load Balancers mit IPv6 mithilfe einer Vorlage](load-balancer-ipv6-internet-template.md)
 * [Bereitstellen eines Load Balancers mit IPv6 mithilfe von Azure PowerShell](load-balancer-ipv6-internet-ps.md)
 * [Bereitstellen eines Load Balancers mit IPv6 mithilfe der Azure-CLI](load-balancer-ipv6-internet-cli.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

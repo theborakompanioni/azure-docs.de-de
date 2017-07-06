@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 2274f8b69e82edb2f3e24f23ac6f89dcd7dfcb17
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -32,7 +34,7 @@ In diesem Artikel werden die Elemente und Typen des XML-Schemas beschrieben, auf
 > 
 > 
 
-## <a name="a-nameassetfilesa-assetfiles-element-root-element"></a><a name="AssetFiles"></a> AssetFiles-Element (Stammelement)
+## <a name="AssetFiles"></a> AssetFiles-Element (Stammelement)
 Enthält eine Auflistung der [AssetFile-Elemente](media-services-input-metadata-schema.md#AssetFile) für den Codierauftrag.  
 
 Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
@@ -41,7 +43,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |Ein einzelnes untergeordnetes Element. Weitere Informationen finden Sie unter [AssetFile-Element](media-services-input-metadata-schema.md#AssetFile). |
 
-## <a name="a-nameassetfilea-assetfile-element"></a><a name="AssetFile"></a> AssetFile-Element
+## <a name="AssetFile"></a> AssetFile-Element
  Enthält Attribute und Elemente, mit denen eine Assetdatei beschrieben wird.  
 
  Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
@@ -71,7 +73,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | **AudioTracks**<br /><br /> minOccurs="0" | |Jede physische Assetdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dieses Element enthält eine Sammlung mit allen [AudioTracks-Elementen](media-services-input-metadata-schema.md#AudioTracks), die Teil der Assetdatei sind. |
 | **Metadaten**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Darstellung der Metadaten einer Assetdatei als Schlüssel-Wert-Zeichenfolge. Beispiel:<br /><br /> **&lt;Metadata key="language" value="eng" /&gt;** |
 
-## <a name="a-nametracktypea-tracktype"></a><a name="TrackType"></a> TrackType
+## <a name="TrackType"></a> TrackType
 Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribute
@@ -96,7 +98,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | **Disposition**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Enthält Informationen zur Darstellung (z.B. die Eignung einer bestimmten Audiospur für Zuschauer mit Sehbehinderung). |
 | **Metadaten**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Generische Schlüssel-Wert-Zeichenfolgen, die für verschiedene Informationen verwendet werden können. Beispiele: key="language" und value="eng". |
 
-## <a name="a-nameaudiotracktypea-audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a> AudioTrackType (erbt von TrackType)
+## <a name="AudioTrackType"></a> AudioTrackType (erbt von TrackType)
  **AudioTrackType** ist ein globaler komplexer Typ, der von [TrackType](media-services-input-metadata-schema.md#TrackType) erbt.  
 
  Der Typ stellt eine bestimmte Audiospur in der Assetdatei dar.  
@@ -113,7 +115,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | **Bitrate** |**xs:int** |Die durchschnittliche Audiobitrate in Bit/s gemäß Berechnung anhand der Assetdatei. Nur die elementare Datenstrom-Nutzlast wird gezählt. Der Aufwand für das Verpacken wird in diesen Wert nicht einbezogen. |
 | **BitsPerSample** |**xs:int** |Bits pro Stichprobe für den Formattyp „wFormatTag“. |
 
-## <a name="a-namevideotracktypea-videotracktype-inherits-from-tracktype"></a><a name="VideoTrackType"></a> VideoTrackType (erbt von TrackType)
+## <a name="VideoTrackType"></a> VideoTrackType (erbt von TrackType)
 **VideoTrackType** ist ein globaler komplexer Typ, der von [TrackType](media-services-input-metadata-schema.md#TrackType) erbt.  
 
 Der Typ stellt eine bestimmte Videospur in der Assetdatei dar.  
@@ -139,7 +141,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | **MaxGOPBitrate** |**xs:int** |Maximale durchschnittliche GOP-Bitrate für diese Videospur in KBit/s |
 | **HasBFrames** |**xs:int** |Videospuranzahl von B-Bildern |
 
-## <a name="a-namemetadatatypea-metadatatype"></a><a name="MetadataType"></a> MetadataType
+## <a name="MetadataType"></a> MetadataType
 **MetadataType** ist ein globaler komplexer Typ, mit dem die Metadaten einer Assetdatei als Schlüssel-Wert-Zeichenfolgen beschrieben werden. Beispiele: key="language" und value="eng".  
 
 Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
@@ -150,7 +152,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | **key**<br /><br /> Erforderlich |**xs:string** |Schlüssel des Schlüssel-Wert-Paars |
 | **value**<br /><br /> Erforderlich |**xs:string** |Wert des Schlüssel-Wert-Paars |
 
-## <a name="a-nameprogramtypea-programtype"></a><a name="ProgramType"></a> ProgramType
+## <a name="ProgramType"></a> ProgramType
 **ProgramType** ist ein globaler komplexer Typ, der ein Programm beschreibt.  
 
 ### <a name="attributes"></a>Attribute
@@ -163,7 +165,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | **StartPTS** |**xs: long** |Startzeitstempel der Darstellung (Presentation Time Stamp, PTS) |
 | **EndPTS** |**xs: long** |Endzeitstempel der Darstellung |
 
-## <a name="a-namestreamdispositiontypea-streamdispositiontype"></a><a name="StreamDispositionType"></a> StreamDispositionType
+## <a name="StreamDispositionType"></a> StreamDispositionType
 **StreamDispositionType** ist ein globaler komplexer Typ, der den Datenstrom beschreibt.  
 
 Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
@@ -183,7 +185,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services
 | **CleanEffects**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur für Bereinigungseffekte bestimmt ist. |
 | **AttachedPic**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur über Bilder verfügt. |
 
-## <a name="a-nameprogramsa-programs-element"></a><a name="Programs"></a> Programs-Element
+## <a name="Programs"></a> Programs-Element
 Wrapperelement, das mehrere **Program**-Elemente enthält.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
@@ -191,7 +193,7 @@ Wrapperelement, das mehrere **Program**-Elemente enthält.
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Enthält für Assetdateien im MPEG-TS-Format Informationen zu den Programmen in der Assetdatei. |
 
-## <a name="a-namevideotracksa-videotracks-element"></a><a name="VideoTracks"></a> VideoTracks-Element
+## <a name="VideoTracks"></a> VideoTracks-Element
  Wrapperelement, das mehrere **VideoTrack**-Elemente enthält.  
 
  Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
@@ -201,7 +203,7 @@ Wrapperelement, das mehrere **Program**-Elemente enthält.
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (erbt von TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Enthält Informationen zu den Videospuren in der Assetdatei. |
 
-## <a name="a-nameaudiotracksa-audiotracks-element"></a><a name="AudioTracks"></a> AudioTracks-Element
+## <a name="AudioTracks"></a> AudioTracks-Element
  Wrapperelement, das mehrere **AudioTrack**-Elemente enthält.  
 
  Ein XML-Beispiel finden Sie am Ende dieses Themas: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
@@ -211,7 +213,7 @@ Wrapperelement, das mehrere **Program**-Elemente enthält.
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (erbt von TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Enthält Informationen zu den Audiospuren in der Assetdatei. |
 
-## <a name="a-namecodea-schema-code"></a><a name="code"></a> Schemacode
+## <a name="code"></a> Schemacode
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
@@ -610,7 +612,7 @@ Wrapperelement, das mehrere **Program**-Elemente enthält.
     </xs:schema>  
 
 
-## <a name="a-namexmla-xml-example"></a><a name="xml"></a> XML-Beispiel
+## <a name="xml"></a> XML-Beispiel
 Unten ist ein Beispiel für die Datei mit den Eingabemetadaten angegeben.  
 
     <?xml version="1.0" encoding="utf-8"?>  
@@ -645,10 +647,5 @@ Unten ist ein Beispiel für die Datei mit den Eingabemetadaten angegeben.
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

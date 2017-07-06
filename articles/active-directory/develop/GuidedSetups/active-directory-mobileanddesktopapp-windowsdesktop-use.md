@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4c0e6cd7ec4a91040af588a406fbad8b8c1607e9
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 826ba0a00b26993d4f37f0a8ce587d7bb77e7eb4
 ms.contentlocale: de-de
 
 
@@ -27,7 +27,7 @@ ms.contentlocale: de-de
 
 Dieser Abschnitt zeigt, wie Sie die MSAL verwenden, um ein Token für die Microsoft Graph-API abzurufen.
 
-1.    Fügen Sie in `MainWindow.xaml.cs` den Verweis auf die MSAL-Bibliothek zur Klasse hinzu:
+1.  Fügen Sie in `MainWindow.xaml.cs` den Verweis auf die MSAL-Bibliothek zur Klasse hinzu:
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -104,9 +104,9 @@ Das Aufrufen der `AcquireTokenAsync`-Methode führt zum Öffnen eines Fensters, 
 `AcquireTokenSilentAsync` verarbeitet das Beziehen und Verlängern von Token ohne Eingreifen des Benutzers. Nachdem `AcquireTokenAsync` zum ersten Mal ausgeführt wurde, ist `AcquireTokenSilentAsync` die übliche Methode zum Abrufen von Token, die für den Zugriff auf geschützte Ressourcen bei nachfolgenden Aufrufen verwendet werden, da Aufrufe zum Anfordern oder Verlängern von Token automatisch erfolgen.
 Irgendwann schlägt `AcquireTokenSilentAsync` fehl, z.B. wenn sich der Benutzer abgemeldet oder sein Kennwort auf einem anderen Gerät geändert hat. Wenn die MSAL feststellt, dass das Problem durch Anfordern einer interaktiven Aktion gelöst werden kann, löst sie `MsalUiRequiredException` aus. Ihre Anwendung kann diese Ausnahme auf zwei Arten handhaben:
 
-1.    Sofortiges Aufrufen von `AcquireTokenAsync`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein Offline-Inhalt in der Anwendung für den Benutzer verfügbar ist. Das von diesem geführten Setup generierte Beispiel folgt diesem Muster. Sie können es in Aktion sehen, wenn Sie das Beispiel erstmals ausführen. Da kein Benutzer die Anwendung bisher verwendet hat, enthält `PublicClientApp.Users.FirstOrDefault()` einen NULL-Wert, und die Ausnahme `MsalUiRequiredException` wird ausgelöst. Der Code im Beispiel behandelt dann die Ausnahme durch Aufrufen von `AcquireTokenAsync`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird.
+1.  Sofortiges Aufrufen von `AcquireTokenAsync`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird. Dieses Muster wird in der Regel in Onlineanwendungen verwendet, in denen kein Offline-Inhalt in der Anwendung für den Benutzer verfügbar ist. Das von diesem geführten Setup generierte Beispiel folgt diesem Muster. Sie können es in Aktion sehen, wenn Sie das Beispiel erstmals ausführen. Da kein Benutzer die Anwendung bisher verwendet hat, enthält `PublicClientApp.Users.FirstOrDefault()` einen NULL-Wert, und die Ausnahme `MsalUiRequiredException` wird ausgelöst. Der Code im Beispiel behandelt dann die Ausnahme durch Aufrufen von `AcquireTokenAsync`, was dazu führt, dass der Benutzer zur Anmeldung aufgefordert wird.
 
-2.    Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `AcquireTokenSilentAsync` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden, z.B. wenn Offline-Inhalt in der Anwendung verfügbar ist. In diesem Fall kann der Benutzer entscheiden, wann er sich für den Zugriff auf die geschützte Ressource anmelden oder die veralteten Informationen aktualisieren möchte. Ihre Anwendung kann sich auch für einen Wiederholungsversuch von `AcquireTokenSilentAsync` entscheiden, wenn das Netzwerk wiederhergestellt wird, nachdem es vorübergehend nicht verfügbar war.
+2.  Anwendungen können dem Benutzer auch visuell zu verstehen geben, dass eine interaktive Anmeldung erforderlich ist, damit der Benutzer den richtigen Zeitpunkt zum Anmelden wählen oder die Anwendung `AcquireTokenSilentAsync` zu einem späteren Zeitpunkt wiederholen kann. Dies wird normalerweise verwendet, wenn der Benutzer andere Funktionen der Anwendung nutzen kann, ohne unterbrochen zu werden, z.B. wenn Offline-Inhalt in der Anwendung verfügbar ist. In diesem Fall kann der Benutzer entscheiden, wann er sich für den Zugriff auf die geschützte Ressource anmelden oder die veralteten Informationen aktualisieren möchte. Ihre Anwendung kann sich auch für einen Wiederholungsversuch von `AcquireTokenSilentAsync` entscheiden, wenn das Netzwerk wiederhergestellt wird, nachdem es vorübergehend nicht verfügbar war.
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Aufrufen der Microsoft Graph-API mit dem zuvor bezogenen Token

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1bafa072519cff1599a0cae1d361207ad0fa35d5
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 29d19364b9a98e351c95f13e68a2e63b9f6439f8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -42,7 +42,7 @@ Sie benötigen Folgendes:
 
 2. Da der Connector zum Codieren von X12-Nachrichten über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 
-3.    Geben Sie „x12“ als Filter in das Suchfeld ein. Wählen Sie entweder **X12 – In X12-Nachricht nach Vereinbarungsname codieren** oder **X12 – In X12-Nachricht nach Identitäten codieren** aus.
+3.  Geben Sie „x12“ als Filter in das Suchfeld ein. Wählen Sie entweder **X12 – In X12-Nachricht nach Vereinbarungsname codieren** oder **X12 – In X12-Nachricht nach Identitäten codieren** aus.
    
     ![Nach „x12“ suchen](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
@@ -57,7 +57,7 @@ Sie benötigen Folgendes:
     | Verbindungsname* |Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
     | Integrationskonto* |Geben Sie einen Namen für Ihr Integrationskonto ein. Achten Sie darauf, dass sich Ihr Integrationskonto und Ihre Logik-App am gleichen Azure-Standort befinden. |
 
-5.    Am Ende sollten Ihre Verbindungsdetails in etwa wie im folgenden Beispiel aussehen. Wählen Sie **Erstellen** aus, um die Verbindungserstellung abzuschließen.
+5.  Am Ende sollten Ihre Verbindungsdetails in etwa wie im folgenden Beispiel aussehen. Wählen Sie **Erstellen** aus, um die Verbindungserstellung abzuschließen.
 
     ![Integrationskontoverbindung erstellt](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
