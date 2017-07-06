@@ -35,7 +35,7 @@ ms.lasthandoff: 05/17/2017
 In diesem Artikel wird erläutert, wie Sie Ihrer Organisation in Azure Active Directory (Azure AD) neue Benutzer hinzufügen. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
    ![Öffnen von Benutzern und Gruppen](./media/active-directory-users-create-azure-portal/create-users-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus, und klicken Sie dann auf **Hinzufügen**.
