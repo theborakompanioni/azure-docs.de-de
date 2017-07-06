@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 4503810769d88ea554885f39902349046981ec88
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -62,10 +64,5 @@ Wir betrachten nun einige Szenarien:
 Zusammengefasst: Mobile Engagement dient nicht nur zum Sammeln von Analysen – es ist nicht „einfach nur ein weiteres Analyseprodukt von Microsoft“. Es geht um zielgerichtetes Senden von Pushbenachrichtigungen, und für diese Zielgruppenadressierung erfassen wir Verhaltensanalysedaten, aber der Schwerpunkt bleibt das Senden von Pushbenachrichtigungen, die für die App-Benutzer interessant sind und nicht als Spam verkannt werden. 
 
 Eine Zusammenfassung weiterer Details bietet Ihnen dieses [kurze Video](mobile-engagement-overview.md) zu Mobile Engagement. 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

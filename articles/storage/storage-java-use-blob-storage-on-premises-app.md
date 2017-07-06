@@ -14,9 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: marsma
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 27d088291d93ce936a9b2465a13a47e62270fb84
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -406,10 +408,5 @@ Unter den folgenden Links erhalten Sie weitere Informationen zu komplexeren Spei
 * [Referenz für Azure Storage-Client-SDKs](http://dl.windowsazure.com/storage/javadoc/)
 * [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b92cfff10dc0f10ebd4554d1614a23fb7dc46a37
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: a7920b2509fe368c6f7d55e17fe0bf0020c4562c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -41,7 +41,7 @@ Sie benötigen Folgendes:
 
 2. Da der Connector „AS2-Nachricht decodieren“ über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 
-3.    Geben Sie „AS2“ als Filter in das Suchfeld ein. Wählen Sie **AS2 – AS2-Nachricht decodieren** aus.
+3.  Geben Sie „AS2“ als Filter in das Suchfeld ein. Wählen Sie **AS2 – AS2-Nachricht decodieren** aus.
    
     ![Nach „AS2“ suchen](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage1.png)
 
@@ -56,7 +56,7 @@ Sie benötigen Folgendes:
     | Verbindungsname* |Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
     | Integrationskonto* |Geben Sie einen Namen für Ihr Integrationskonto ein. Achten Sie darauf, dass sich Ihr Integrationskonto und Ihre Logik-App am gleichen Azure-Standort befinden. |
 
-5.    Am Ende sollten Ihre Verbindungsdetails in etwa wie im folgenden Beispiel aussehen. Wählen Sie **Erstellen** aus, um die Verbindungserstellung abzuschließen.
+5.  Am Ende sollten Ihre Verbindungsdetails in etwa wie im folgenden Beispiel aussehen. Wählen Sie **Erstellen** aus, um die Verbindungserstellung abzuschließen.
 
     ![Details zur Integrationsverbindung](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage3.png)
 

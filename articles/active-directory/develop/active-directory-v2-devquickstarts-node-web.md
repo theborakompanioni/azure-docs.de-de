@@ -16,10 +16,10 @@ ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a77337b582f337723b9e4b1befb2c638870a1c4b
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -35,7 +35,7 @@ In diesem Tutorial verwenden wir Passport für die folgenden Aufgaben:
 * Anzeigen einiger Informationen zum Benutzer
 * Abmelden des Benutzers von der App
 
-**Passport** ist eine Authentifizierungs-Middleware für Node.js. Das flexible und modular aufgebaute Passport kann unauffällig in jede Express- oder Restify-basierte Webanwendung integriert werden. In Passport unterstützt ein umfassender Satz an Strategien eine Authentifizierung mittels eines Benutzernamens und Kennworts, Facebook, Twitter und anderer Optionen. Wir haben eine Strategie für Azure AD entwickelt. In diesem Artikel erfahren Sie, wie Sie das Modul installieren und dann das Azure AD-Plug-In `passport-azure-ad` hinzufügen.
+**Passport** ist eine Authentifizierungs-Middleware für Node.js. Passport ist flexibel und modular und kann unauffällig in jede Express- oder Restify-basierte Webanwendung integriert werden. Ein umfassender Satz an Strategien unterstützt in Passport die Authentifizierung mittels eines Benutzernamens und Kennworts in Facebook, Twitter und anderen Optionen. Wir haben eine Strategie für Azure AD entwickelt. In diesem Artikel erfahren Sie, wie Sie das Modul installieren und dann das Azure AD-Plug-In `passport-azure-ad` hinzufügen.
 
 ## <a name="download"></a>Download
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)verwaltet. Um dem Tutorial folgen zu können, laden Sie [das App-Gerüst als ZIP-Datei herunter](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip), oder klonen Sie das Gerüst:
@@ -133,7 +133,7 @@ Richten Sie die Express-Middleware für die Verwendung des OpenID Connect-Authen
   ));
   ```
 
-Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook usw.). Beim Schreiben von Strategien wird dieses Muster befolgt. Übergeben Sie die Strategie als `function()`, die ein Token und `done` als Parameter verwendet. Die Strategie wird zurückgegeben, nachdem sie alle ihre Aufgaben erledigt hat. Speichern Sie den Benutzer und das Token, damit Sie beides nicht mehr erfragen müssen.
+Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook usw.). Beim Schreiben von Strategien wird dieses Muster befolgt. Übergeben Sie der Strategie ein `function()`-Objekt, das ein Token und `done` als Parameter verwendet. Die Strategie wird zurückgegeben, nachdem sie alle ihre Aufgaben erledigt hat. Speichern Sie den Benutzer und das Token, damit Sie beides nicht mehr erfragen müssen.
 
   > [!IMPORTANT]
   > Der vorherige Code verwendet Benutzer, die sich bei Ihrem Server authentifizieren können. Dies wird als automatische Registrierung bezeichnet. Auf Produktionsservern erlauben Sie den Zugriff erst, nachdem ein von Ihnen gewählter Registrierungsvorgang durchlaufen wurde. Dies ist normalerweise das Muster bei Apps im Privatkundensegment. Die App ermöglicht möglicherweise die Registrierung bei Facebook, fordert aber anschließend zur Eingabe weiterer Informationen auf. Wenn Sie kein Befehlszeilenprogramm für dieses Tutorial verwenden würden, könnten Sie die E-Mail-Adresse aus dem Tokenobjekt extrahieren, das zurückgegeben wird. Dann könnten Sie den Benutzer um die Eingabe zusätzlicher Informationen bitten. Da es sich um einen Testserver handelt, fügen Sie den Benutzer direkt der Datenbank im Arbeitsspeicher hinzu.
@@ -408,7 +408,7 @@ Fügen Sie die Routen und Ansichten hinzu, die dem Benutzer Informationen anzeig
 Sie haben jetzt eine Web-App, die von branchenüblichen Protokollen geschützt wird. Sie können Benutzer in Ihrer App anhand ihres persönlichen Kontos bzw. Geschäfts-, Schul- oder Unikontos authentifizieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswerte) [als ZIP-Datei](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)bereit. Sie können sie auch von GitHub klonen:
+Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswerte) [als ZIP-Datei](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip) bereit. Sie können sie auch von GitHub klonen:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: d7325b0bb900dcaf789c01e1a9b534d7f72c8c43
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -171,10 +173,5 @@ Abfragen in Log Analytics ermöglichen nicht nur Ad-hoc-Analysen, sondern könne
 ## <a name="next-steps"></a>Nächste Schritte
 * Stellen Sie [System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh205987.aspx)bereit.
 * Registrieren Sie sich für [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics).  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

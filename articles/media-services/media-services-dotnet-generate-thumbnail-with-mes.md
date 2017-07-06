@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -172,7 +174,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
             }
         }
 
-## <a name="a-idjsonathumbnail-json-preset"></a><a id="json"></a>JSON-Voreinstellung für Miniaturansichten
+## <a id="json"></a>JSON-Voreinstellung für Miniaturansichten
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
 
     {
@@ -274,7 +276,7 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
     }
 
 
-## <a name="a-idxmlathumbnail-xml-preset"></a><a id="xml"></a>XML-Voreinstellung für Miniaturansichten
+## <a id="xml"></a>XML-Voreinstellung für Miniaturansichten
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
 
     <?xml version="1.0" encoding="utf-16"?>
@@ -373,10 +375,5 @@ Es gelten die folgenden Bedingungen:
 
 ## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
