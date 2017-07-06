@@ -95,7 +95,7 @@ In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers name
 
 Damit das einmalige Anmelden (Single Sign-On, SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Atlassian Cloud als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Atlassian Cloud muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Atlassian Cloud zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Atlassian Cloud zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Atlassian Cloud müssen Sie die folgenden Bausteine ausführen:
 
