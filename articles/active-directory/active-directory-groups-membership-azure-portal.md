@@ -29,7 +29,7 @@ Gruppen können in Azure Active Directory andere Gruppen enthalten. Nachfolgend 
 
 ## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>Wie finde ich die Gruppen, in denen meine Gruppe Mitglied ist?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
    ![Öffnen der Benutzerverwaltung](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.

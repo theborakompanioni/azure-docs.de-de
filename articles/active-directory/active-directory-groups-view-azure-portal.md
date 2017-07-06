@@ -29,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie alle Gruppen in Azure Active Director
 
 ## <a name="how-do-i-see-all-the-groups"></a>Wie zeige ich alle Gruppen an?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
    ![Öffnen von Benutzern und Gruppen](./media/active-directory-groups-view-azure-portal/search-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.
