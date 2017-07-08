@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: a5bd59cd94beaf2181b463929b0af0b9d63cf4ee
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 6e6e12f3d6d95002b223ad0fcb11d72bd920cdaf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -131,7 +131,7 @@ Wir verwenden die [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/l
         {
             /// <summary>
             ///     Gets the new or modified FHIR documents from Last Run Date 
-            ///        or create date of the collection
+            ///     or create date of the collection
             /// </summary>
             /// <param name="databaseId"></param>
             /// <param name="collectionId"></param>
@@ -156,7 +156,7 @@ Wir verwenden die [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/l
             {
                 var collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
     
-                var context = new DocumentDbContext();    
+                var context = new DocumentDbContext();  
     
                 var docs = new List<dynamic>();
     
@@ -232,7 +232,7 @@ Die folgende Abbildung zeigt alle im Azure-Portal ausgeführten Azure-Dienste f�
 - Und über Azure Service Bus-Warteschlangen können Sie die Verteilung der HL7 FHIR-Dokumente abwickeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Azure Cosmos DB-Startseite](https://azure.microsoft.com/services/documentdb/). Weitere Informationen zur Logic Apps finden Sie unter [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Azure Cosmos DB-Startseite](https://azure.microsoft.com/services/cosmos-db/). Weitere Informationen zur Logic Apps finden Sie unter [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
 
 

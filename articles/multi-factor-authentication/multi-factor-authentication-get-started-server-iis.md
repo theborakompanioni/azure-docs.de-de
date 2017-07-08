@@ -60,7 +60,7 @@ Um eine IIS-Webanwendung zu sichern, für die die integrierte Windows-HTTP-Authe
 4. Geben Sie im Dialogfeld „Basis-URL hinzufügen“ im Feld „Basis-URL“ die URL für die Website, auf der die HTTP-Authentifizierung erfolgt (z.B. „http://localhost/owa“), und einen Anwendungsnamen (optional) ein. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
 5. Passen Sie die Leerlaufzeitüberschreitung und die maximale Sitzungsdauer an, wenn die Standardwerte nicht ausreichend sind.
 6. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die Multi-Factor Authentication verwenden. Wenn eine große Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der Multi-Factor Authentication ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert.
-7. Aktivieren Sie bei Bedarf das Kontrollkästchen für das ****Cookie zur Zwischenspeicherung.
+7. Aktivieren Sie bei Bedarf das Kontrollkästchen für das **Cookie zur** Zwischenspeicherung.
 8. Klicken Sie auf **OK**.
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Aktivieren des IIS-Plug-Ins für den Azure Multi-Factor Authentication-Server

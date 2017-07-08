@@ -20,5 +20,6 @@
 ## [Hybrididentität – Entwurfshandbuch](../active-directory-hybrid-identity-design-considerations-overview.md)
 
 # Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ##[Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 

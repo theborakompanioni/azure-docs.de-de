@@ -88,10 +88,11 @@
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
 # Ressourcen
-## [Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure AD B2C-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
-## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Häufig gestellte Fragen](active-directory-b2c-faqs.md)
+## [Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [Unterstützung](active-directory-b2c-support.md)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)

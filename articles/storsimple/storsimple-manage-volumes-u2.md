@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/28/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80d58a6ab5f2148b2391d4d63e70371724e5990b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a61c57cd74a0df8363648dd8df40e433b0e6489d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -157,6 +159,7 @@ Zum Ändern eines Volumes müssen Sie dieses erweitern oder die Hosts ändern, d
    1. Wechseln Sie zu **Computerverwaltung** ->**Datenträgerverwaltung**.
    2. Klicken Sie mit der rechten Maustaste auf **Datenträgerverwaltung**, und wählen Sie **Datenträger neu einlesen** aus.
    3. Wählen Sie in der Liste der Datenträger die aktualisierten Volumes aus und dann **Volume erweitern**. Der Assistent zum Erweitern von Volumes wird gestartet. Klicken Sie auf **Weiter**.
+
    4. Schließen Sie den Assistenten unter Verwendung der angegebenen Standardwerte ab. Nach Abschluss des Assistenten sollte für das Volume die höhere Speichergröße angezeigt werden.
       
       > [!NOTE]
@@ -253,7 +256,7 @@ Führen Sie die folgenden Schritte durch, um ein Volume zu löschen.
 5. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**. Das Volume wird nun gelöscht. Auf der Seite **Volumes** wird die aktualisierte Liste der Volumes innerhalb des Containers angezeigt.
    
    > [!NOTE]
-   > Wenn Sie ein lokales Volume löschen, wird der für neue Volumes verfügbare Speicherplatz möglicherweise nicht sofort aktualisiert. Der StorSimple Manager-Dienst aktualisiert in regelmäßigen Abständen den verfügbaren lokalen Speicherplatz. Warten Sie einige Minuten, bevor Sie das neue Volume erstellen.<br>  Außerdem gilt: Wenn Sie ein lokales Volume und unmittelbar danach ein weiteres lokales Volume löschen, werden die Aufträge zur Volumelöschung nacheinander ausgeführt. Der erste Auftrag zur Volumelöschung muss abgeschlossen sein, bevor der nächste Auftrag zur Volumelöschung beginnt.
+   > Wenn Sie ein lokales Volume löschen, wird der für neue Volumes verfügbare Speicherplatz möglicherweise nicht sofort aktualisiert. Der StorSimple Manager-Dienst aktualisiert in regelmäßigen Abständen den verfügbaren lokalen Speicherplatz. Warten Sie einige Minuten, bevor Sie das neue Volume erstellen.<br> Außerdem gilt: Wenn Sie ein lokales Volume und unmittelbar danach ein weiteres lokales Volume löschen, werden die Aufträge zur Volumelöschung nacheinander ausgeführt. Der erste Auftrag zur Volumelöschung muss abgeschlossen sein, bevor der nächste Auftrag zur Volumelöschung beginnt.
    > 
    > 
 
@@ -272,10 +275,5 @@ Führen Sie die folgenden Schritte durch, um die Überwachung eines Volumes zu a
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie ein [StorSimple-Volume klonen](storsimple-clone-volume.md).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple Manager-Diensts verwalten](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -39,7 +39,7 @@ Klicken Sie im **[Azure-Portal](https://portal.azure.com/)** auf der linken Seit
 
 Klicken Sie auf den Namen der App, für die Sie Docker Hub Continuous Deployment konfigurieren möchten.
 
-Fügen Sie in den App-Einstellungen**** eine App-Einstellung mit dem Namen `DOCKER_ENABLE_CI` und dem Wert `true` hinzu.
+Fügen Sie in den **App-Einstellungen** eine App-Einstellung mit dem Namen `DOCKER_ENABLE_CI` und dem Wert `true` hinzu.
 
 ![Abbildung einfügen: App-Einstellung](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 

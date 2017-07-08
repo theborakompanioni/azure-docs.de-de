@@ -11,20 +11,19 @@ ms.service: site-recovery
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.workload: required
+ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 3bd182a775377f912914c0c7a63fe41811146e1a
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 795dd0c05daf560e5a271fef5356eb83d72a6112
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>Failback von virtuellen VMware-Computern und physischen Servern zum lokalen Standort
-> [!div class="op_single_selector"]
-> * [VMware-/physische Computer von Azure](site-recovery-how-to-failback-azure-to-vmware.md)
-> * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
+
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback auf den lokalen Standort durchführen. Befolgen Sie die Anweisungen hier, wenn Sie bereit sind, Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server wieder per Failback zurückzuführen, nachdem Sie Ihre Computer mithilfe dieses [Verweises](site-recovery-how-to-reprotect.md) erneut geschützt haben.
 
@@ -151,7 +150,8 @@ Zum Einrichten des Verwaltungsservers, auf dem der Masterzielserver als virtuell
 #### <a name="install-centos-66"></a>Installieren von CentOS 6.6
 
 1. Installieren Sie das Minimalbetriebssystem CentOS 6.6 auf der Verwaltungsserver-VM. Behalten Sie das ISO-Image im DVD-Laufwerk, und starten Sie das System. Überspringen Sie den Medientest. Wählen Sie als Sprache **US-Englisch** aus, wählen Sie **Basic Storage Devices** (Grundlegende Speichergeräte) aus, vergewissern Sie sich, dass sich auf der Festplatte keine wichtigen Daten befinden, und klicken Sie auf **Yes** (Ja), sodass alle Daten gelöscht werden. Geben Sie den Hostnamen des Verwaltungsservers ein, und wählen Sie die Netzwerkkarte des Servers aus.  Wählen Sie im Dialogfeld **Editing System** (Bearbeitungssystem) die Option **Connect automatically** (Verbindung automatisch herstellen) aus, und fügen Sie dann eine statische IP-Adresse, ein Netzwerk und DNS-Einstellungen hinzu. Legen Sie eine Zeitzone fest. Geben Sie das Stammkennwort für den Zugriff auf den Verwaltungsserver ein.
-2. Wenn Sie nach dem gewünschten Installationstyp gefragt werden, wählen Sie **Create Custom Layout** (Benutzerdefiniertes Layout erstellen) als Partition aus. Klicken Sie auf **Weiter**. Wählen Sie **Kostenlos**, und klicken Sie dann auf **Erstellen**. Erstellen Sie die Partitionen **/**, **/var/crash** und **/home** mit **FS Type:** **ext4**. Erstellen Sie die Partition „swap“ als **FS Type: swap**.
+2. Wenn Sie nach dem gewünschten Installationstyp gefragt werden, wählen Sie **Create Custom Layout** (Benutzerdefiniertes Layout erstellen) als Partition aus. Klicken Sie auf **Weiter**.
+ Wählen Sie **Kostenlos**, und klicken Sie dann auf **Erstellen**. Erstellen Sie die Partitionen **/**, **/var/crash** und **/home** mit **FS Type:** **ext4**. Erstellen Sie die Partition „swap“ als **FS Type: swap**.
 3. Wenn bereits vorhandene Geräte gefunden werden, wird eine Warnung angezeigt. Klicken Sie auf **Format** , um das Laufwerk mit den Partitionseinstellungen zu formatieren. Klicken Sie auf **Write change to disk** , um die Partitionsänderungen zu übernehmen.
 4. Wählen Sie **Install boot loader** > **Next** (Startladeprogramm installieren > Weiter) aus, um das Startladeprogramm auf der Stammpartition zu installieren.
 5. Klicken Sie nach Abschluss der Installation auf **Neu starten**.

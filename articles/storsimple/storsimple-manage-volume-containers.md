@@ -1,6 +1,6 @@
 ---
 title: Verwalten der StorSimple-Volumecontainer | Microsoft Docs
-description: "Beschreibt, wie Sie die Seite &quot;Volumecontainer&quot; des StorSimple-Manager-Dienstes zum Hinzufügen, Ändern oder Löschen eines Volumecontainers verwenden können."
+description: "Beschreibt, wie Sie die Seite \"Volumecontainer\" des StorSimple-Manager-Dienstes zum Hinzufügen, Ändern oder Löschen eines Volumecontainers verwenden können."
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/24/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4fb0f4e61ec98546e7044bf760d24a1ba932fe5b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: bb55a7a4bff0fd4319de6f6ce958686ad8a4142b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -59,10 +61,5 @@ In einem Volumecontainer sind Volumes enthalten. Er kann nur gelöscht werden, n
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Verwalten von StorSimple-Volumes](storsimple-manage-volumes.md). 
 * Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

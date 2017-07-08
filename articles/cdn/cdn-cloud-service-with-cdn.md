@@ -18,7 +18,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
 ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
 ms.contentlocale: de-de
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -159,7 +159,7 @@ Auf die gleiche Weise können Sie direkt von Ihrem CDN-Endpunkt aus auf jede öf
 * Jede Controlleraktion
 * Sofern die Abfragezeichenfolge für den CDN-Endpunkt aktiviert ist, jede URL mit Abfragezeichenfolgen
 
-Tatsächlich können Sie mit der vorstehenden Konfiguration den gesamten Cloud-Dienst von **http://*&lt;cdnName>*.azureedge.net/ **aus hosten. Wenn ich zu** http://camservice.azureedge.net/** navigiere, erhalte ich das Aktionsergebnis von Startseite/Index.
+Tatsächlich können Sie mit der vorstehenden Konfiguration den gesamten Cloud-Dienst von **http://*&lt;cdnName>*.azureedge.net/ **aus hosten. Wenn ich zu** http://camservice.azureedge.net/**, navigiere erhalte ich das Aktionsergebnis von Startseite/Index.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 

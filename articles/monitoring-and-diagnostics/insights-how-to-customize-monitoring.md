@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c9f907e55664e266fe994fb851ce744679dfb3e4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 5ccb5c0b3c2ffaf8aba855a9dbe3da9691ab149b
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
-Alle Azure-Dienste verfolgen wichtige Metriken, die Ihnen das Überwachen der Integrität, Leistung, Verfügbarkeit und Nutzung Ihrer Dienste ermöglichen. Sie können diese Metriken im Azure-Portal anzeigen, und Sie können darüber hinaus mithilfe von [REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx) oder [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) programmgesteuert auf sämtliche Metriken zugreifen.
+Alle Azure-Dienste verfolgen wichtige Metriken, die Ihnen das Überwachen der Integrität, Leistung, Verfügbarkeit und Nutzung Ihrer Dienste ermöglichen. Sie können diese Metriken im Azure-Portal anzeigen, und Sie können darüber hinaus mithilfe von [REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx) oder [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) programmgesteuert auf sämtliche Metriken zugreifen.
 
 Für einige Dienste müssen Sie möglicherweise die Diagnose aktivieren, um Metriken anzeigen zu können. Für andere Dienste, z. B. virtuelle Computer, wird ein grundlegender Satz an Metriken bereitgestellt, die Hochfrequenzmetriken müssen jedoch aktiviert werden. Weitere Informationen finden Sie unter [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md).
 
@@ -58,7 +60,7 @@ Für Ressourcen mit Kontingenten können Sie Nutzungskontingente auch auf dem Bl
 
 ![Verwendung](./media/insights-how-to-customize-monitoring/Insights_UsageChart.png)
 
-Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.com/library/azure/dn931963.aspx) oder [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) programmgesteuert auf den vollständigen Satz an Nutzungskontingenten zugreifen.
+Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.com/library/azure/dn931963.aspx) oder [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) programmgesteuert auf den vollständigen Satz an Nutzungskontingenten zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md) , wenn eine Metrik einen Schwellenwert überschreitet.
@@ -67,10 +69,5 @@ Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.
 * [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md) , um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md) , um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.
 * [Überwachen der Verfügbarkeit und Reaktionsfähigkeit einer beliebigen Webseite](../application-insights/app-insights-monitor-web-app-availability.md) mit Application Insights, um zu ermitteln, ob eine Seite offline ist.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

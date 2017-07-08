@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27d088291d93ce936a9b2465a13a47e62270fb84
+ms.sourcegitcommit: ff0c9f9c800b0e4764efb88e43087bd96fa820e9
+ms.openlocfilehash: a172b881fa38a69f4510df94f5797b7a56940c52
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -31,7 +31,7 @@ Das folgende Beispiel zeigt, wie Sie den Azure-Speicher zur Speicherung von Bild
 * Das Azure SDK ist installiert.
 * Die JAR-Datei der Azure-Bibliotheken für Java und alle sonstigen JAR-Abhängigkeiten sind installiert und im Buildpfad Ihres Java-Compilers eingebunden. Weitere Informationen zur Installation der Azure-Bibliotheken für Java finden Sie auf der [Downloadseite des Azure SDK für Java](../java-download-azure-sdk.md).
 * Ein Azure-Speicherkonto wurde eingerichtet. Der Code in diesem Artikel verwendet Kontonamen und Kontoschlüssel des Speicherkontos. Unter [Gewusst wie: Erstellen von Speicherkonten](storage-create-storage-account.md#create-a-storage-account) finden Sie Informationen zum Erstellen von Speicherkonten, und unter [Anzeigen und Verwalten von Speicherzugriffsschlüsseln](storage-create-storage-account.md#view-and-copy-storage-access-keys) erfahren Sie, wie Sie den Kontoschlüssel abrufen.
-* Sie haben eine lokale Bilddatei im Pfad „c:\\myimages\\image1.jpg“ erstellt. Alternativ können Sie den   **FileInputStream**-Konstruktor im Beispiel verändern, um einen anderen Pfad bzw. Dateinamen zu verwenden.
+* Sie haben eine lokale Bilddatei im Pfad „c:\\myimages\\image1.jpg“ erstellt. Alternativ können Sie den **FileInputStream**-Konstruktor im Beispiel verändern, um einen anderen Pfad bzw. Dateinamen zu verwenden.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 

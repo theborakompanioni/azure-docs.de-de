@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8f1c94ae5389739e03a7b1a70421e538516c873f
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 44bcf3ed1be8007a3c1ab9b727acf9a249cf84cc
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -27,7 +27,7 @@ Im [Azure-Portal](https://portal.azure.com/)können Sie die Anzahl der Instanzen
 
 Berücksichtigen Sie vor einer Skalierung basierend auf der Instanzenzahl, dass die Skalierung nicht nur von der Instanzenzahl, sondern auch vom **Tarif** beeinflusst wird. Die verschiedenen Tarife beinhalten eine unterschiedliche Anzahl von Kernen und Arbeitsspeichermenge, sodass sie für dieselbe Anzahl von Instanzen eine bessere Leistung bieten (*zentrales Hochskalieren* oder *zentrales Herunterskalieren*). Im vorliegenden Artikel wird insbesondere auf das *horizontale Hochskalieren* und das *horizontale Herunterskalieren* eingegangen.
 
-Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/library/azure/dn931953.aspx) oder [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) die manuelle oder automatische Skalierung anpassen.
+Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/library/azure/dn931953.aspx) oder [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) die manuelle oder automatische Skalierung anpassen.
 
 > [!NOTE]
 > Dieser Artikel beschreibt das Festlegen der Einstellungen für das automatische Skalieren im Portal unter [http://portal.azure.com](http://portal.azure.com). Die in diesem Portal erstellten Einstellungen für das automatische Skalieren können nicht im klassischen Portal ([http://manage.windowsazure.com](http://manage.windowsazure.com)) bearbeitet werden.

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 387b274a993454814f7238f4cd89a52351a6fc1f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 303cdffa15fdfe9b83d0612edecafc6943d218f3
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -41,10 +43,5 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in die
 | 8 |Gerätefailover |Mehrere Failover eines Volumecontainers von demselben Quellgerät auf verschiedene Zielgeräte werden nicht unterstützt. Das Failover von einem einzelnen nicht reagierenden Gerät auf mehrere Geräte führt dazu, dass die Volumecontainer auf dem ersten Gerät mit erfolgtem Failover die Dateneigentümerschaft verlieren. Wenn Sie diese Volumecontainer nach einem solchen Failover im klassischen Azure-Portal betrachten, werden sie anders angezeigt oder verhalten sie sich anders. | |Ja |Nein |
 | 9 |Installation |Während der Installation von StorSimple-Adapter für SharePoint müssen Sie die IP-Adresse eines Geräts angeben, damit die Installation erfolgreich abgeschlossen wird. | |Ja |Nein |
 | 10 |Netzwerkschnittstellen |Die Netzwerkschnittstellen DATA 2 und DATA 3 wurden in der Software ausgetauscht. |Wenden Sie sich an den Microsoft-Support, wenn Sie diese Schnittstellen konfigurieren müssen. |Ja |Nein |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

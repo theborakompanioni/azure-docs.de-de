@@ -13,13 +13,14 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/17/2017
+ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 231d9f2e4a501f20a47b1cec55c75fba4c2e57c8
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 9e9198f827d0906f65f59322126ef27ba6428d3e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -36,7 +37,7 @@ Sie haben noch kein Kit? Beginnen Sie [hier](https://azure.microsoft.com/develop
 
 * Richten Sie Intel Edison und Grove-Module ein.
 * Erstellen Sie einen IoT Hub.
-* Registrieren Sie ein Gerät für Edison in Ihrem IoT Hub.
+* Registrieren Sie ein Gerät für Edison in Ihren IoT Hub.
 * Führen Sie eine Beispielanwendung auf Edison aus, um Sensordaten an Ihren IoT Hub zu senden.
 
 Verbinden Sie Intel Edison mit einem von Ihnen erstellten IoT Hub. Führen Sie anschließend eine Beispielanwendung auf Edison aus, um Temperatur- und Luftfeuchtigkeitsdaten eines Grove-Temperatursensors zu erfassen. Senden Sie abschließend die Sensordaten an Ihren IoT Hub.
@@ -48,9 +49,9 @@ Verbinden Sie Intel Edison mit einem von Ihnen erstellten IoT Hub. Führen Sie a
 * Erfassen von Sensordaten durch Ausführen einer Beispielanwendung auf Edison
 * Senden von Sensordaten an Ihren IoT Hub
 
-## <a name="what-you-need"></a>Voraussetzungen
+## <a name="what-you-need"></a>Erforderliches Element
 
-![Voraussetzungen](media/iot-hub-intel-edison-kit-node-get-started/0_kit.png)
+![Erforderliches Element](media/iot-hub-intel-edison-kit-node-get-started/0_kit.png)
 
 * Intel Edison-Platine
 * Arduino-Erweiterungsplatine
@@ -109,11 +110,11 @@ Ihre Platine ist nun zusammengebaut.
    
    ![Grove Base Shield](media/iot-hub-intel-edison-kit-node-get-started/6_grove_base_sheild.jpg)
 
-2. Schließen Sie den Grove-Temperatursensor mit dem Grove-Kabel am Anschluss **A0** des Grove Base Shield an.
+2. Schließen Sie den Grove-Temperatursensor über das Grove-Kabel an den Port **A0** des Grove Base Shield an.
 
    ![Anschließen des Temperatursensors](media/iot-hub-intel-edison-kit-node-get-started/7_temperature_sensor.jpg)
 
-   ![Anschließen von Edison und Sensor](media/iot-hub-intel-edison-kit-node-get-started/16_edion_sensor.png)
+   ![Verbindung zwischen Edison und Sensor](media/iot-hub-intel-edison-kit-node-get-started/16_edion_sensor.png)
 
 Der Sensor ist damit betriebsbereit.
 
@@ -193,6 +194,7 @@ Glückwunsch! Sie haben Edison erfolgreich konfiguriert.
 3. Navigieren Sie zum Ordner „repo“, um den folgenden Befehl zum Installieren aller Pakete auszuführen, was einige Minuten dauern kann.
    
    ```bash
+   cd iot-hub-node-intel-edison-client-app
    npm install
    ```
 
@@ -207,9 +209,9 @@ Glückwunsch! Sie haben Edison erfolgreich konfiguriert.
 
    ![Konfigurationsdatei](media/iot-hub-intel-edison-kit-node-get-started/13_configure_file.png)
 
-   Es gibt zwei Argumente in dieser Datei, die Sie konfigurieren können. Das erste ist `INTERVAL`, welches das Zeitintervall zwischen zwei Nachrichten bestimmt, die an die Cloud gesendet werden. Das zweite heißt `SIMULATED_DATA` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen.
+   Es gibt zwei Argumente in dieser Datei, die Sie konfigurieren können. Das erste ist `INTERVAL`, welches das Zeitintervall zwischen zwei Nachrichten bestimmt, die an die Cloud gesendet werden. Das zweite heißt `simulatedData` und ist ein boolescher Wert, der bestimmt, ob simulierte Sensordaten verwendet werden sollen.
 
-   Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `SIMULATED_DATA` auf `1` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
+   Wenn Sie **keinen Sensor haben**, legen Sie den Wert von `simulatedData` auf `true` fest, damit die Beispielanwendung simulierte Sensordaten erstellt und nutzt.
 
 1. Speichern und beenden Sie durch Drücken von Control+O > EINGABETASTE > Control+X.
 
@@ -225,10 +227,11 @@ Glückwunsch! Sie haben Edison erfolgreich konfiguriert.
 
 Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichten zeigt, die an Ihren IoT Hub gesendet werden.
 
-![Ausgabe: Von Intel Edison an Ihren IoT Hub gesendete Sensordaten](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
+![Ausgabe: von Intel Edison an Ihren IoT Hub gesendete Sensordaten](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie haben eine Beispielanwendung ausgeführt, die Sensordaten sammelt und an Ihren IoT Hub sendet.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

@@ -5,6 +5,7 @@
 ## [Erstellen einer Umgebung](time-series-insights-get-started.md)
 ## [Gewähren des Datenzugriffs](time-series-insights-data-access.md)
 ## [Erstellen einer Ereignisquelle](time-series-insights-add-event-source.md)
+## [Erstellen eines Verweisdatasets](time-series-insights-add-reference-data-set.md)
 ## [Senden von Ereignissen](time-series-insights-send-events.md)
 
 # Anleitung
@@ -15,6 +16,7 @@
 ## Entwickeln
 ### [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md)
 ### [Abfragen von Daten mithilfe von C#](time-series-insights-query-data-csharp.md)
+### [Verwalten von Verweisdaten mithilfe von C#](time-series-insights-manage-reference-data-csharp.md)
 
 # Referenz
 ## [Abfrage-API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
@@ -26,4 +28,5 @@
 ## [Azure Stream Analytics-Auftrag-Auftrag](/azure/stream-analytics/)
 
 # Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preise](https://azure.microsoft.com/pricing/details/time-series-insights/)

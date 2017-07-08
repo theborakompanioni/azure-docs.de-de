@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/16/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bb836357af6d006c18db578164f02fa7bd043b45
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: bf5bd20007c186bfd01b82aa06213ef9e7424a05
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -33,8 +33,8 @@ In diesem Beispiel hat die intelligente Diagnose ein Muster von Eigenschaftswert
 
 ## <a name="diagnose-data-changes"></a>Diagnostizieren von Datenänderungen
 
-1.    Führen Sie eine Abfrage in Analytics aus, und rendern Sie sie als Zeitdiagramm. 
-2.    Klicken Sie auf einen beliebigen hervorgehobenen Spitzenpunkt (sofern vorhanden).
+1.  Führen Sie eine Abfrage in Analytics aus, und rendern Sie sie als Zeitdiagramm. 
+2.  Klicken Sie auf einen beliebigen hervorgehobenen Spitzenpunkt (sofern vorhanden).
  
     ![Spitzenpunkt](./media/app-insights-analytics-diagnostics/peak.png)
 
@@ -48,11 +48,11 @@ In diesem Beispiel hat die intelligente Diagnose ein Muster von Eigenschaftswert
 
     Beachten Sie auch die beiden Komponenten des Diagramms mit den Filtern „true“ und „false“. Die Komponente „false“ zeigt einen unveränderten Trend. Anders ausgedrückt, es liegt keine Änderung in den Telemetrieergebnissen vor, wenn die von der Diagnose als problematisch erkannte Kombination von Dimensionen ausgeschlossen wird. Im Gegensatz dazu zeigen die Ergebnisse innerhalb dieser Kombination eine erhebliche Änderung im hervorgehobenen Bereich der Untersuchung. Dies zeigt, dass die Diagnose eine Kombination von Eigenschaften gefunden hat, die die Änderung erklärt.
 
-4.    Bei einem komplexen Muster müssen Sie mit dem Mauszeiger auf **Alle anzeigen** zeigen, um die Dimensionen einzublenden.
+4.  Bei einem komplexen Muster müssen Sie mit dem Mauszeiger auf **Alle anzeigen** zeigen, um die Dimensionen einzublenden.
 
     ![Alle anzeigen](./media/app-insights-analytics-diagnostics/show-all.png)
  
-5.    Falls die Diagnose kein signifikantes Muster findet, wird die Seite „Keine Ergebnisse“ angezeigt. An diesem Punkt sollten Sie die Abfrage unter Umständen ändern. Für eine weitere Analyse und möglicherweise bessere Ergebnisse könnten Sie beispielsweise den Zeitbereich und die Klassifizierung in der Analytics-Abfrage einschränken.
+5.  Falls die Diagnose kein signifikantes Muster findet, wird die Seite „Keine Ergebnisse“ angezeigt. An diesem Punkt sollten Sie die Abfrage unter Umständen ändern. Für eine weitere Analyse und möglicherweise bessere Ergebnisse könnten Sie beispielsweise den Zeitbereich und die Klassifizierung in der Analytics-Abfrage einschränken.
 
 Da Sie nun wissen, dass eine spezifische Seite Ihrer Website zu Problemen in einem bestimmten Browser führt, können Sie direkt zu dieser problematischen Seite wechseln und die letzten Änderungen untersuchen.
 
@@ -62,7 +62,7 @@ Da Sie nun wissen, dass eine spezifische Seite Ihrer Website zu Problemen in ein
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Die intelligente Diagnose verwendet einen erweiterten, nicht überwachten Machine Learning-Algorithmus auf Basis des Vorgangs [DiffPatterns](app-insights-analytics-reference.md#evaluate-diffpatterns). Sie sucht nach möglichen Mustern, die die Datenänderung erklären könnten. Analysiert werden die Auswirkungen der einzelnen Kandidaten auf die Metrik, und das Muster, das am besten mit der Änderung korreliert, wird angezeigt.
+Die intelligente Diagnose verwendet einen erweiterten, nicht überwachten Machine Learning-Algorithmus auf Basis des Vorgangs [DiffPatterns](app-insights-analytics-reference.md#evaluate-diffpatterns_v2). Sie sucht nach möglichen Mustern, die die Datenänderung erklären könnten. Analysiert werden die Auswirkungen der einzelnen Kandidaten auf die Metrik, und das Muster, das am besten mit der Änderung korreliert, wird angezeigt.
 
 ## <a name="no-diagnostic-points"></a>Keine Diagnosepunkte?
 

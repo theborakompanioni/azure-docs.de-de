@@ -16,15 +16,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
 ms.author: chrande; glenga
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2542d8c750fc7e1bcc31a9c0eb1672402facfd58
-ms.openlocfilehash: 146884833e968767c14d7e4f924762a592e427e2
-ms.lasthandoff: 03/01/2017
+ms.custom: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 12a793c4df497f221dbd592ca3d249b8c1f65e04
+ms.contentlocale: de-de
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="schedule-code-execution-with-azure-functions"></a>Planen der Ausführung von Code mit Azure Functions
+# <a name="azure-functions-timer-trigger"></a>Azure Functions-Trigger mit Timer
+
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 Dieser Artikel erläutert das Konfigurieren und Codieren von Triggern mit Timer in Azure Functions. Azure Functions hat eine Timertriggerbindung, mit der Sie Ihren Funktionscode auf Basis eines definierten Zeitplans ausführen können. 
@@ -60,13 +62,13 @@ Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer t
 
 ```json
 "schedule": "0 0 15 * * *",
-```    
+``` 
 
 Sie könnten auch eine neue App-Einstellung für die Funktions-App mit dem Namen `WEBSITE_TIME_ZONE` hinzufügen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann könnte der folgende CRON-Ausdruck für 10:00 Uhr EST verwendet werden: 
 
 ```json
 "schedule": "0 0 10 * * *",
-```    
+``` 
 
 
 <a name="examples"></a>

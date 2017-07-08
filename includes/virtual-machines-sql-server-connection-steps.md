@@ -35,7 +35,7 @@
 3. Klicken Sie im Konsolenbereich auf **Protokolle für MSSQLSERVER** (der Standardinstanzenname). Klicken Sie im Detailbereich mit der rechten Maustaste auf **TCP**, und klicken Sie auf **Aktivieren**, wenn die Option noch nicht aktiviert ist.
    
     ![TCP aktivieren](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
-4. Klicken Sie im linken Bereich auf **SQL Server-Dienste**. Klicken Sie im Detailbereich mit der rechten Maustaste auf **SQL Server (*Instanzenname*) **(die Standardinstanz ist** SQL Server (MSSQLSERVER)**), und klicken Sie dann auf** Neu starten**, um die Instanz von SQL Server zu stoppen und neu zu starten.
+4. Klicken Sie im linken Bereich auf **SQL Server-Dienste**. Klicken Sie im Detailbereich mit der rechten Maustaste auf **SQL Server (*Instanzenname*) **(die Standardinstanz ist** SQL Server (MSSQLSERVER)**), und klicken Sie dann auf** Neu starten** , um die Instanz von SQL Server zu stoppen und neu zu starten.
    
     ![Datenbankmodul neu starten](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
 5. Schließen Sie den SQL Server-Konfigurations-Manager.

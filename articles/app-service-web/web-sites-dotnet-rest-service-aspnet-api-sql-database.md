@@ -15,10 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
-translationtype: Human Translation
-ms.sourcegitcommit: 3f6bb2604d6f20e299ae5583a0ad215f02b9b803
-ms.openlocfilehash: 016d44cb57d5ad76dc0b115be6fbac6835d84396
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 64c18f2cfabbb7af6ffd89b4c2a9095fca1cf799
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -668,8 +669,6 @@ Die Anwendung wird nun in der Cloud ausgeführt und verwendet die SQL-Datenbank 
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine echte Anwendung benötigt eine Authentifizierung und Autorisierung, und Sie würden für diesen Zweck die Mitgliedsdatenbank verwenden. Das Tutorial [Bereitstellen einer sicheren ASP.NET MVC 5-Anwendung mit Mitgliedschaft, OAuth und einer SQL-Datenbank](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) basiert auf diesem Tutorial und zeigt, wie Sie eine Webanwendung mithilfe der Mitgliedsdatenbank bereitstellen.
-
 Ferner können Daten in einer Azure-Anwendung mithilfe von Azure Storage gespeichert werden, das nichtrelationale Datenspeicherung in Form von Blobs und Tabellen bietet. Die folgenden Links bieten weitere Informationen zu WEB API, ASP.NET MVC und Microsoft Azure.
 
 * [Erste Schritte in Entity Framework mit MVC][EFCodeFirstMVCTutorial]

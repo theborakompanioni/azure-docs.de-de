@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/24/2017
 ms.author: ashmaka
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: db227bfea10255322c090e68b197cfb2dd1cf15b
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 99685748120b40cd02328f6ece0b8dde55042d61
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="what-is-azure-search"></a>Was ist Azure Search?
@@ -31,7 +31,7 @@ Lernen Sie die Features in Azure Search kennen.
 
 ### <a name="full-text-search-and-text-analysis"></a>Volltextsuche und Textanalyse
 
-[Volltextsuche](https://en.wikipedia.org/wiki/Full_text_search) ist für die meisten Apps auf Suchbasis ein primärer Anwendungsfall. In Azure Search können Abfragen in der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) formuliert werden, die über logische Operatoren, Operatoren für die Suche von Ausdrücken, Suffixoperatoren und Rangfolgenoperatoren verfügt. Die [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) ermöglicht zudem die Verwendung von Fuzzy- und NEAR-Suchen, Term Boosts und regulären Ausdrücken. Azure Search unterstützt darüber hinaus [benutzerdefinierte lexikalische Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), wodurch Ihre Anwendung komplexe Suchabfragen mit phonetischem Abgleich und regulären Ausdrücken verarbeiten kann.
+[Volltextsuche](search-lucene-query-architecture.md) ist für die meisten Apps auf Suchbasis ein primärer Anwendungsfall. In Azure Search können Abfragen in der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) formuliert werden, die über logische Operatoren, Operatoren für die Suche von Ausdrücken, Suffixoperatoren und Rangfolgenoperatoren verfügt. Die [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) ermöglicht zudem die Verwendung von Fuzzy- und NEAR-Suchen, Term Boosts und regulären Ausdrücken. Azure Search unterstützt darüber hinaus [benutzerdefinierte lexikalische Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), wodurch Ihre Anwendung komplexe Suchabfragen mit phonetischem Abgleich und regulären Ausdrücken verarbeiten kann.
 
 ### <a name="language-support"></a>Sprachunterstützung
 

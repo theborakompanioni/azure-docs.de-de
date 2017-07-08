@@ -8,17 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 563862ca-c65a-46f6-975d-10df7ff6aa9c
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.custom: develop apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: b62097f945bc5c595c0893d16bb2c1d9bbfd7a07
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 22cff47444306e599325ba3035d83a0266d69c72
+ms.contentlocale: de-de
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -41,7 +42,7 @@ Im ersten Teil dieses Artikels werden verschiedene Batchverarbeitungstechniken f
 ## <a name="batching-strategies"></a>Batchverarbeitungsstrategien
 ### <a name="note-about-timing-results-in-this-topic"></a>Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor einer Weile ermittelt und entsprechen nicht unbedingt dem Durchsatz, der heute zu erwarten ist. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
+> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor V12 ermittelt und entsprechen nicht unbedingt dem Durchsatz, der mit einer V12-Datenbank und den neuen [Dienstebenen](sql-database-service-tiers.md)erreicht wird. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
 > 
 > 
 
@@ -120,7 +121,7 @@ Die Verwendung von Transaktionen kann zwar zur Verbesserung der Leistung beitrag
 
 Das vorherige Beispiel zeigt, dass Sie jedem ADO.NET-Code mit nur zwei Zeilen eine lokale Transaktion hinzufügen können. Mit Transaktionen können Sie schnell die Leistung von Code für sequenzielle Einfüge-, Aktualisierungs- und Löschvorgänge verbessern. Die bestmögliche Leistung erzielen Sie jedoch, wenn Sie den Code noch weiter anpassen, um von clientseitiger Batchverarbeitung (etwa von Tabellenwertparametern) zu profitieren.
 
-Weitere Informationen zu Transaktionen in ADO.NET finden Sie unter [Lokale Transaktionen in ADO.NET](https://msdn.microsoft.com/library/vstudio/2k2hy99x.aspx).
+Weitere Informationen zu Transaktionen in ADO.NET finden Sie unter [Lokale Transaktionen in ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
 ### <a name="table-valued-parameters"></a>Tabellenwertparameter
 Tabellenwertparameter unterstützen benutzerdefinierte Tabellentypen als Parameter in Transact-SQL-Anweisungen, gespeicherten Prozeduren und Funktionen. Mithilfe dieser clientseitigen Batchverarbeitungstechnik können Sie innerhalb des Tabellenwertparameters mehrere Datenzeilen senden. Zur Verwendung von Tabellenwertparametern müssen Sie zunächst einen Tabellentyp definieren. Die folgende Transact-SQL-Anweisung erstellt einen Tabellentyp namens **MyTableType**:
@@ -619,6 +620,6 @@ Die folgende Liste enthält eine Zusammenfassung der in diesem Thema behandelten
 * Erwägen Sie für weitere Szenarien eine größen- und zeitabhängige Pufferung als Implementierungsoption für die Batchverarbeitung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) und [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool.md).
+In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) und [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md).
 
 

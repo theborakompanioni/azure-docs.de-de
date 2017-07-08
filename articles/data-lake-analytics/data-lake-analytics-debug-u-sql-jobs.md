@@ -14,17 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: a5bb452582f05981a17c2514e0e40db0571bf61d
-ms.openlocfilehash: f9b485bfbfbeb8a95ae1908ef6b1733b9cc6999a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: aac455520ab62d69b406a254a54b0f000ea2e5bc
+ms.contentlocale: de-de
+ms.lasthandoff: 06/26/2017
 
 
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
-
-Erfahren Sie, wie Sie mithilfe der Azure Data Lake Tools für Visual Studio U-SQL-Aufträge debuggen, bei denen Fehler im benutzerdefinierten Code aufgetreten sind.
-
-## <a name="background"></a>Hintergrund
 
 U-SQL bietet ein Erweiterbarkeitsmodell über C#: Benutzer können benutzerdefinierten C#-Code schreiben, z.B. Extrahierungs- und Reduzierungsfunktionen, um eine bessere Erweiterbarkeit zu erzielen (weitere Informationen finden Sie unter [Benutzerdefinierter Code in U-SQL](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#user-defined-functions---udf)). Allerdings lassen sich Fehler im Code nicht immer vermeiden, und das Debuggen in großen Datensystemen ist schwierig, weil viele Systeme nur wenig Debuginformationen zur Laufzeit bereitstellen, wie z.B. Protokolle usw. 
 
@@ -34,15 +32,10 @@ Das folgende Video zeigt die Verwendung von **Debuggen von Vertexfehlern** in de
 
 > [!VIDEO https://e0d1.wpc.azureedge.net/80E0D1/OfficeMixProdMediaBlobStorage/asset-d3aeab42-6149-4ecc-b044-aa624901ab32/b0fc0373c8f94f1bb8cd39da1310adb8.mp4?sv=2012-02-12&sr=c&si=a91fad76-cfdd-4513-9668-483de39e739c&sig=K%2FR%2FdnIi9S6P%2FBlB3iLAEV5pYu6OJFBDlQy%2FQtZ7E7M%3D&se=2116-07-19T09:27:30Z&rscd=attachment%3B%20filename%3DDebugyourcustomcodeinUSQLADLA.mp4]
 >
->
 
 > [!NOTE]
 > Visual Studio reagiert möglicherweise nicht mehr oder stürzt ab, wenn die beiden folgenden Windows-Updates nicht installiert sind: [Microsoft Visual C++ 2015 Redistributable Update 2](https://www.microsoft.com/download/details.aspx?id=51682), [Universelle C-Runtime für Windows](https://www.microsoft.com/download/details.aspx?id=50410&wa=wsignin1.0).
 > 
-> 
-
-## <a name="prerequisites"></a>Voraussetzungen
-* Lektüre des Artikels [Erste Schritte](data-lake-analytics-data-lake-tools-get-started.md) .
 
 ## <a name="download-failed-vertex-to-local"></a>Herunterladen eines fehlerhaften Vertex auf das lokale System
 
@@ -127,13 +120,7 @@ Nachdem Sie das Debuggen abgeschlossen haben, können Sie den fehlerhaften Auftr
 
 * [U-SQL-Programmierbarkeitshandbuch](data-lake-analytics-u-sql-programmability-guide.md)
 * [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-* [Tutorial: Erste Schritte mit Azure Data Lake Analytics-U-SQL-Sprache](data-lake-analytics-u-sql-get-started.md)
 * [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

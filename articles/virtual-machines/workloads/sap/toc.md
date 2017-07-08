@@ -22,10 +22,12 @@
 ### [Sicherung auf Dateiebene](sap-hana-backup-file-level.md)
 ### [Sicherungen von Speichermomentaufnahmen](sap-hana-backup-storage-snapshots.md)
 ## SAP Netweaver
-### [Bereitstellungshandbuch für SAP IDES unter Windows/SQL Server SAP CALe](sap-cal-ides-erp6-ehp7-sp3-sql.md)
+### [Bereitstellungshandbuch für SAP IDES unter Windows/SQL Server SAP CALe](cal-ides-erp6-erp7-sp3-sql.md)
 ### [Übersicht und Architektur](suse-quickstart.md)
 ### [Planen und Implementieren](planning-guide.md)
 ### [Hohe Verfügbarkeit](high-availability-guide.md)
 ### [Multi-SID-Konfigurationen](high-availability-multi-sid.md)
 ### [Bereitstellungshandbuch](deployment-guide.md)
 ### [DBMS-Bereitstellungshandbuch](dbms-guide.md)
+# Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

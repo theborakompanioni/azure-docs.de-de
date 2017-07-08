@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 842f6667d79d6a2cf3ab6fb7ccff575055585dca
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 9b23f34300248ff87ed4a6abbeb6cfdda6570581
 ms.contentlocale: de-de
 
 
@@ -26,9 +26,9 @@ ms.contentlocale: de-de
 ## <a name="create-an-application-express"></a>Erstellen einer Anwendung (Express)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
-2.    Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
-3.    Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
-4.    Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
+2.  Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
+3.  Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
+4.  Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
 
 ### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Hinzufügen der Registrierungsinformationen Ihrer Anwendung zur Projektmappe (für Fortgeschrittene)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
@@ -36,8 +36,8 @@ Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* reg
 2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein. 
 3. Stellen Sie sicher, dass die Option für geführtes Setup deaktiviert ist.
 4. Klicken Sie auf `Add Platforms`, wählen Sie `Native Application` aus, und klicken Sie auf „Speichern“.
-5.    Öffnen Sie `MainActivity` (unter `app` > `java` > *`{host}.{namespace}`*).
-6.    Ersetzen Sie die *[hier die Anwendung-ID eingeben]* in der Zeile, die mit `final static String CLIENT_ID` beginnt, durch die Anwendungs-ID, die Sie gerade registriert haben:
+5.  Öffnen Sie `MainActivity` (unter `app` > `java` > *`{host}.{namespace}`*).
+6.  Ersetzen Sie die *[hier die Anwendung-ID eingeben]* in der Zeile, die mit `final static String CLIENT_ID` beginnt, durch die Anwendungs-ID, die Sie gerade registriert haben:
 
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";

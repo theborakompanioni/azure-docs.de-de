@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2017
+ms.date: 06/22/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 8564f75f4e90aa7c3b4f93823b5202354c8bba3a
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: 9cecbfd1fd5db8fffc9fbdfb2d6ca949b6ff385a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -58,11 +58,6 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Funktioniert der bedingte Zugriff mit Exchange ActiveSync?
 
 Ja, Sie können Exchange ActiveSync in einer Richtlinie für den bedingten Zugriff verwenden.
-
-
-### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>Was geschieht, wenn ich die mehrstufige Authentifizierung oder ein kompatibles Gerät benötige?
-
-Derzeit wird der Benutzer unabhängig vom Gerät zur mehrstufigen Authentifizierung aufgefordert.
 
 
 ## <a name="what-you-should-avoid-doing"></a>Das sollten Sie vermeiden

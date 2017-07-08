@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 7d58748c4b0195246fffafe2e5544678b83dfd60
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 51459dae8d09d7051ab74c9fe57cc29e38b8b9ab
+ms.contentlocale: de-de
+ms.lasthandoff: 06/14/2017
 
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
@@ -65,7 +66,7 @@ Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gate
 * Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Konfigurieren der API-Einstellungen](api-management-howto-create-apis.md#configure-api-settings).
 * Verwenden Sie die gegenseitige SSL-Authentifizierung wie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben.
 * Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. Wenn Sie über eine API Management-Instanz des Standard- oder Premium-Tarifs verfügen, bleibt die IP-Adresse des Gateways unverändert. Sie können Ihre Positivliste so konfigurieren, dass diese IP-Adresse zugelassen wird. Sie können die IP-Adresse Ihrer API Management-Instanz im Azure-Portal auf dem Dashboard abrufen.
-* Verbinden Sie Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz. 
+* Verbinden Sie Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Wie kopiere ich meine API Management-Dienstinstanz in eine neue Instanz?
 Wenn Sie eine API Management-Instanz in eine neue Instanz kopieren möchten, haben Sie verschiedene Möglichkeiten. Ihre Möglichkeiten:
@@ -94,6 +95,7 @@ Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](https://ms
 2. Legen Sie den Kontext auf das Abonnement fest, das den Dienst enthält. Verwenden Sie hierfür `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
 3. Rufen Sie mithilfe von `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` eine URL für einmaliges Anmelden ab.
 4. Greifen Sie über die URL auf das Verwaltungsportal zu.
+
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Weshalb ist die Richtlinie, die ich hinzufügen möchte, im Richtlinien-Editor nicht verfügbar?
 Ist die Richtlinie, die Sie hinzufügen möchten, im Richtlinien-Editor abgeblendet, stellen Sie sicher, dass Sie sich im richtigen Bereich für die Richtlinie befinden. Jede Richtlinienanweisung ist für die Verwendung in bestimmten Bereichen und Richtlinienabschnitten vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie unter [API Management policies](https://msdn.microsoft.com/library/azure/dn894080.aspx) (API Management-Richtlinien) im Abschnitt „Verwendung“ der jeweiligen Richtlinie.
 
@@ -103,6 +105,7 @@ Für die API-Versionsverwaltung in API Management stehen verschiedene Optionen z
 * Sie können in API Management APIs für verschiedene Versionen konfigurieren. Sie verfügen beispielsweise über zwei verschiedene APIs: MyAPIv1 und MyAPIv2. Ein Entwickler kann die Version auswählen, die er verwenden möchte.
 * Sie können Ihre API auch mit einer Dienst-URL konfigurieren, die kein Versionssegment enthält. Beispiel: https://my.api. Konfigurieren Sie dann für jede Vorlage vom Typ [URL umschreiben](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) der einzelnen Vorgänge ein Versionssegment. Sie haben beispielsweise einen Vorgang mit einer [URL-Vorlage](api-management-howto-add-operations.md#url-template) namens „/resource“ und eine Vorlage vom Typ [URL umschreiben](api-management-howto-add-operations.md#rewrite-url-template) mit dem Namen „/v1/Resource“. Sie können den Versionssegmentwert für jeden Vorgang separat ändern.
 * Wenn Sie ein Standardversionssegment in der Dienst-URL der API beibehalten möchten, können Sie für ausgewählte Vorgänge eine Richtlinie festlegen, die unter Verwendung der Richtlinie [Set backend service](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) (Back-End-Dienst festlegen) den Anforderungspfad für das Back-End ändert.
+
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Wie richte ich mehrere Umgebungen in einer einzelnen API ein?
 Wenn Sie in einer API mehrere Umgebungen einrichten möchten, beispielsweise eine Testumgebung und eine Produktionsumgebung, haben Sie zwei Möglichkeiten. Ihre Möglichkeiten:
 
@@ -129,7 +132,7 @@ Sie können die IP-Adresse (bzw. die Adressen bei Bereitstellungen in mehreren R
 Informationen zum Konfigurieren eines OAuth 2.0-Autorisierungsservers mit AD FS-Sicherheit (Active Directory Federation Services, Active Directory-Verbunddienste) finden Sie unter [Using AD FS in API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/) (Verwenden von AD FS in API Management).
 
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>Welche Routingmethode verwendet API Management in Bereitstellungen an mehreren geografischen Standorten?
-API Management verwendet die [Routingmethode für Leistungsdatenverkehr](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method) in Bereitstellungen an mehreren geografischen Standorten. Eingehender Datenverkehr wird zum nächstgelegenen API-Gateway weitergeleitet. Wenn eine Region offline geht, wird der eingehende Datenverkehr automatisch an das nächstgelegene Gateway weitergeleitet. Weitere Informationen zu Routingmethoden finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md).
+API Management verwendet die [Routingmethode für Leistungsdatenverkehr](../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method) in Bereitstellungen an mehreren geografischen Standorten. Eingehender Datenverkehr wird zum nächstgelegenen API-Gateway weitergeleitet. Wenn eine Region offline geht, wird der eingehende Datenverkehr automatisch an das nächstgelegene Gateway weitergeleitet. Weitere Informationen zu Routingmethoden finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md).
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Kann ich eine Azure Resource Manager-Vorlage zum Erstellen einer API Management-Dienstinstanz verwenden?
 Ja. Weitere Informationen finden Sie in den Schnellstartvorlagen für den [Azure API Management-Dienst](http://aka.ms/apimtemplate).

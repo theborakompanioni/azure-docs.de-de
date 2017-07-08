@@ -15,6 +15,9 @@
 ### [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
+## Erfassen von Ereignissen
+### [Aktivieren der Event Hubs-Erfassung über das Azure-Portal](event-hubs-capture-enable-through-portal.md)
+### [Aktivieren der Event Hubs-Erfassung mithilfe einer Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 ## [Programmierleitfaden](event-hubs-programming-guide.md)
 
 # Anleitung
@@ -31,10 +34,9 @@
 ### [Leitfaden zum AMQP 1.0-Protokoll](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## Verwalten
 ### [Event Hubs-Verwaltungsbibliotheken](event-hubs-management-libraries.md)
-### Archivieren
-#### [Event Hubs-Archiv](event-hubs-archive-overview.md)
-#### [Aktivieren des Event Hubs-Archivs mithilfe einer Vorlage](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
-#### [Verwenden von Python zum Aktivieren des Event Hubs-Archivs](event-hubs-archive-python.md)
+### Erfassen
+#### [Event Hubs-Erfassung](event-hubs-capture-overview.md)
+#### [Erfassen von Event Hubs-Daten mithilfe von Python](event-hubs-capture-python.md)
 ### [Verwenden von PowerShell zur Bereitstellung von Entitäten](event-hubs-manage-with-ps.md) 
 ### [Streamen von Azure-Diagnosedaten mit Event Hubs](event-hubs-streaming-azure-diags-data.md)
 ### [Erstellen und Bereitstellen eines Event Hubs mithilfe einer Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub.md)
@@ -54,9 +56,10 @@
 ## [Quotas](event-hubs-quotas.md)
 
 # Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Codebeispiele](event-hubs-samples.md)
-## [Preise](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [Preise](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)

@@ -105,5 +105,6 @@
 
 
 # Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ##[Häufig gestellte Fragen zu Azure AD Connect](active-directory-aadconnect-faq.md)
 ##[DirSync – Veraltet](active-directory-aadconnect-dirsync-deprecated.md)

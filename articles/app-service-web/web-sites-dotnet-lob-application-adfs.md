@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 22fe6397120c36e1aa716f4711fbe9e7c72d17e8
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 1895094b28d9596eec644078b6f9a877b526b89e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -286,11 +287,14 @@ Da Sie Gruppenmitgliedschaften als Rollenansprüche in die RP-Vertrauensstellung
         return View();
     }
    
-    <mark>[Authorize(Roles="Domänenadministratoren")]</mark>
-    public ActionResult Contact()  {      ViewBag.Message = "Ihre Kontaktseite.";
+    <mark>[Authorize(Roles="Domain Admins")]</mark>
+    public ActionResult Contact()
+    {
+        ViewBag.Message = "Your contact page.";
    
         return View();
-    }  </pre>
+    }
+    </pre>
    
     Da ich in meiner AD FS-Testumgebung dem Element **Testgruppe** den Eintrag **Testbenutzer** hinzugefügt habe, verwende ich die Testgruppe zum Testen der Autorisierung in `About`. Für `Contact` teste ich den negativen Fall für **Domänenadministratoren**. Dies ist eine Gruppe, denen der **Testbenutzer** nicht angehört.
 3. Starten Sie den Debugger durch Drücken von `F5` , melden Sie sich an, und klicken Sie auf **Info**. Sie sollten jetzt die Seite `~/About/Index` sehen können, wenn der authentifizierte Benutzer für diese Aktion berechtigt ist.
@@ -350,7 +354,6 @@ Azure App Service-Web-Apps unterstützen zwei Methoden für den Zugriff auf loka
 <a name="bkmk_resources"></a>
 
 ## <a name="further-resources"></a>Weitere Ressourcen
-* [Schützen der Anwendung durch SSL und das Authorize-Attribut](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute)
 * [Authentifizieren mit lokaler Active Directory-Instanz in Ihrer Azure-App](web-sites-authentication-authorization.md)
 * [Erstellen einer Azure-Branchen-App mit Azure Active Directory-Authentifizierung](web-sites-dotnet-lob-application-azure-ad.md)
 * [Use the On-Premises Organizational Authentication Option (ADFS) With ASP.NET in Visual Studio 2013 (Verwenden der lokalen Organisationsauthentifizierungsoption (ADFS) mit ASP.NET in Visual Studio 2013, in englischer Sprache)](http://www.cloudidentity.com/blog/2014/02/12/use-the-on-premises-organizational-authentication-option-adfs-with-asp-net-in-visual-studio-2013/)

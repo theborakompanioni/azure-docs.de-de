@@ -13,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 4394a5ddd17e635661cd89b42f76b0558ffa17ab
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 32c6d4ed5470077856d4ab175a5df5188b3690a6
+ms.contentlocale: de-de
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -67,7 +68,7 @@ Es gibt zwei Hauptursachen für dieses Problem:
 
 -   Abhängig von den in Internet Explorer aktivierten Sicherheitseinstellungen, d. h., wenn die Website nicht Teil einer **Vertrauenswürdigen Zone** ist, wird die Ausführung unseres Skripts für die Anwendung in einigen Fällen blockiert.
 
-  *  Weisen Sie den Benutzer zum Beheben dieses Problems an, **die Website der Anwendung** der Liste **Vertrauenswürdige Sites** in den **Internet Explorer-Sicherheitseinstellungen** hinzuzufügen. Für eine detaillierte Anleitung können Sie den Benutzer auf den Artikel [Wie füge ich eine Website zur Liste vertrauenswürdiger Sites hinzu](https://answers.microsoft.com/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) verweisen.
+  *  Weisen Sie den Benutzer zum Beheben dieses Problems an, **die Website der Anwendung** der Liste **Vertrauenswürdige Sites** in den **Internet Explorer-Sicherheitseinstellungen** hinzuzufügen. Für eine detaillierte Anleitung können Sie den Benutzer auf den Artikel [Wie füge ich eine Website zur Liste vertrauenswürdiger Sites hinzu](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) verweisen.
 
 -   In seltenen Fällen kann die Internet Explorer-Sicherheitsüberprüfung dazu führen, dass die Seite langsamer als die Ausführung unseres Skripts geladen wird.
 
@@ -97,7 +98,7 @@ Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die
 
 5.  Wenn Sie im Browser zur Auswahl aufgefordert werden, wählen Sie die Option zum **Aktivieren** oder **Zulassen** der Erweiterung aus.
 
-6.  Führen Sie nach der Installation einen **Neustart** der Browsersitzung durch.
+6.  Führen Sie nach der Installation einen **Neustart** Ihrer Browsersitzung durch.
 
 7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie die für kennwortbasiertes SSO konfigurierten Anwendungen **starten** können.
 

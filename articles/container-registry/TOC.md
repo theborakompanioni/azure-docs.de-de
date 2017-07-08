@@ -25,7 +25,8 @@
 ## [Container Service](/azure/container-service/)
 
 # Ressourcen
-## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preise](https://azure.microsoft.com/pricing/details/container-registry/)
+## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-container-registry)

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6e476e1dc550f246027c015dee75850236baa9a9
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: da848aec495a8248fd4791f350d439e937831d01
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -43,8 +44,10 @@ Führen Sie die folgenden Aufgaben durch, um ein neues Git-Repository zu erstell
 1. Starten Sie eine Befehlszeile wie **GitBash** (Windows) oder **Bash** (Unix Shell). Auf OS X-Systemen können Sie auf die Befehlszeile über die **Terminal** -Anwendung zugreifen.
 2. Navigieren Sie zum Verzeichnis, in dem sich der bereitzustellende Inhalt befinden wird.
 3. Verwenden Sie den folgenden Befehl, um ein neues Git-Repository zu initialisieren.
-   
-        git init
+
+```bash  
+git init
+```
 
 ## <a name="Step2"></a>Schritt 2: Ausführen eines Commits für die Inhalte
 App Service unterstützt in verschiedenen Programmiersprachen erstellte Anwendungen. 
@@ -54,11 +57,15 @@ App Service unterstützt in verschiedenen Programmiersprachen erstellte Anwendun
    * Erstellen Sie mit einem Text-Editor eine neue Datei namens **index.html** im Stammverzeichnis des Git-Repositorys.
    * Geben Sie den folgenden Text als Inhalt der Datei „index.html“ ein, und speichern Sie die Datei: *Hello Git!*
 2. Stellen Sie mit der Befehlszeile sicher, dass Sie sich im Stammverzeichnis Ihres Git-Repositorys befinden. Verwenden Sie dann den folgenden Befehl, um dem Repository Dateien hinzuzufügen:
-   
-        git add -A 
+
+```bash  
+git add -A
+```
 3. Übernehmen Sie dann die Änderungen am Repository mithilfe des folgenden Befehls:
-   
-        git commit -m "Hello Azure App Service"
+
+```bash  
+git commit -m "Hello Azure App Service"
+```  
 
 ## <a name="Step3"></a>Schritt 3: Aktivieren des App Service-App-Repositorys
 Führen Sie die folgenden Schritte durch, um ein Git-Repository für Ihre App Service-App zu aktivieren.
@@ -88,10 +95,11 @@ Führen Sie die folgenden Schritte durch, um Ihre App mit einem lokalen Git in A
    > 
    > 
 4. Übertragen Sie die Inhalte mit dem neuen Remoteverweis **azure** , den Sie gerade erstellt haben, in App Service.
-   
-        git push azure master
-   
-    Sie werden zum Eingeben des Kennworts aufgefordert, das zuvor beim Zurücksetzen Ihrer Anmeldeinformationen für die Bereitstellung im Azure-Portal erstellt wurde. Geben Sie das Kennwort ein (beachten Sie, dass Gitbash keine Sternchen in der Konsole anzeigt, wenn Sie Ihr Kennwort eingeben). 
+
+```bash  
+git push azure master
+```
+    You will be prompted for the password you created earlier when you reset your deployment credentials in the Azure Portal. Enter the password (note that Gitbash does not echo asterisks to the console as you type your password). 
 5. Kehren Sie zu Ihrer App im Azure-Portal zurück. Ein Protokolleintrag des letzten Pushvorgangs sollte auf dem Blatt **Bereitstellungen** angezeigt werden. 
    
     ![](./media/app-service-deploy-local-git/deployment_history.png)
@@ -121,8 +129,9 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
 
 **Lösung**: Führen Sie den Pushvorgang unter Angabe der Hauptverzweigung erneut durch. Beispiel:
 
-    git push azure master
-
+```bash  
+git push azure master
+```
 - - -
 **Symptom**: src refspec [branchname] does not match any.
 
@@ -130,8 +139,9 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
 
 **Lösung**: Führen Sie den Pushvorgang unter Angabe der Hauptverzweigung erneut durch. Beispiel:
 
-    git push azure master
-
+```bash  
+git push azure master
+```
 - - -
 **Symptom:** Fehler bei RPC; Ergebnis = 22, HTTP-Code = 502.
 
@@ -139,8 +149,9 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
 
 **Lösung:** Ändern Sie die Git-Konfiguration auf dem lokalen Computer, sodass der postBuffer größer ist.
 
-    git config --global http.postBuffer 524288000
-
+```bash  
+git config --global http.postBuffer 524288000
+```
 - - -
 **Symptom**: Fehler – Änderungen an Remote-Repository vorgenommen, die Web-App wurde jedoch nicht aktualisiert.
 

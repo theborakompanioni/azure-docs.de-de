@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d7325b0bb900dcaf789c01e1a9b534d7f72c8c43
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/06/2017
 
 
 ---

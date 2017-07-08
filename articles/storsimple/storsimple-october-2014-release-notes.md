@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6d3f4908fd8e245960ba1b1b1244aafeb06922eb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4dfd3973593a94adfc15a6e15d69c697e13998af
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -94,10 +96,5 @@ Diese Version wendet auch ein kumulatives Firmwareupdate zur Behebung von Zuverl
 
 ## <a name="virtual-device-updates-in-the-october-release"></a>Updates für das virtuelle Gerät in der Oktober-Version
 Diese Version enthält keine Updates für das virtuelle Gerät. Durch die Installation des Updates ändert sich die Softwareversion des virtuellen Geräts nicht.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

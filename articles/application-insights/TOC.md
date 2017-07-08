@@ -1,6 +1,6 @@
 # Übersicht
 ## [Was ist Application Insights?](app-insights-overview.md)
-## [Leistungsüberwachung in einem DevOps-Zyklus](app-insights-detect-triage-diagnose.md)
+## [Übersicht über die Leistungsüberwachung für DevOps](app-insights-detect-triage-diagnose.md)
 
 # Erste Schritte
 ## Überwachen von Azure
@@ -80,7 +80,6 @@
 #### [Suchen,](app-insights-diagnostic-search.md)
 #### [Metriken](app-insights-metrics-explorer.md)
 #### [Livestream](app-insights-live-stream.md)
-
 #### [Anwendungszuordnung](app-insights-app-map.md)
 #### [HockeyApp-Daten](app-insights-hockeyapp-bridge-app.md)
 
@@ -93,6 +92,7 @@
 ### Verwendung
 #### [Übersicht](app-insights-usage-overview.md)
 #### [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
+#### [Trichter](app-insights-understand-usage-patterns.md)
 #### [Aufbewahrung](app-insights-usage-retention.md)
 #### [Arbeitsmappen](app-insights-usage-workbooks.md)
 
@@ -111,6 +111,7 @@
 ### [Festlegen von Benachrichtigungen](app-insights-powershell-alerts.md)
 ### [Holen Sie sich Azure-Diagnose](app-insights-powershell-azure-diagnostics.md)
 ### [Automatisieren mit Microsoft Flow](app-insights-automate-with-flow.md)
+### [Automatisieren mit einer Azure-Logik-App](automate-with-logic-apps.md)
 
 ## Entwickeln
 
@@ -154,6 +155,7 @@
 ## [Telemetriekorrelation](application-insights-correlation.md)
 
 # Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 
 ## [Sprachen und Plattformen](app-insights-platforms.md)
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/11/2016
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 94a4d2b85c845b135201fd919e8eac64a5e1cb37
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 2bcdff44f6c3169779c3dd018706eea8275825ca
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -29,15 +29,6 @@ Leistungsindikatoren werden auf dem Blatt „Server“ angezeigt, das eine nach 
 ![In Application Insights gemeldete Leistungsindikatoren](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
 (Leistungsindikatoren sind für Azure-Web-Apps nicht verfügbar. Sie können jedoch [Azure-Diagnosedaten an Application Insights senden](app-insights-azure-diagnostics.md).)
-
-## <a name="configure"></a>Konfigurieren
-Wenn Application Insights-Statusmonitor noch nicht auf den Server-Computern installiert ist, müssen Sie ihn installieren, damit Leistungsindikatoren angezeigt werden.
-
-Laden Sie das [Installationsprogramm für den Statusmonitor](http://go.microsoft.com/fwlink/?LinkId=506648) herunter, und führen Sie es auf jeder Serverinstanz aus. Wenn der Monitor bereits installiert ist, müssen Sie ihn nicht erneut installieren.
-
-* *Ich [habe das Application Insights SDK in meiner Anwendung während der Entwicklung installiert](app-insights-asp-net.md). Benötige ich dennoch den Statusmonitor?*
-  
-    Ja, der Statusmonitor wird zum Erfassen von Leistungsindikatoren für ASP.NET-Webanwendungen benötigt. Wie Sie möglicherweise bereits wissen, kann der Statusmonitor auch zum [Überwachen von bereits aktiven Webanwendungen](app-insights-monitor-performance-live-website-now.md) verwendet werden, ohne dass das SDK während der Entwicklung installiert werden muss.
 
 ## <a name="view-counters"></a>Anzeigen von Indikatoren
 Auf dem Blatt „Server“ wird ein Standardsatz von Leistungsindikatoren angezeigt. 

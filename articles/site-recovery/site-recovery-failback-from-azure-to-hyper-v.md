@@ -14,21 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 3/31/2017
 ms.author: ruturajd
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ecfe9d512b0ffc891120d899f0541d3d3c9f6498
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 3116e2c15242ea7be8eeb77281b40bc4b38b846e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/15/2017
 
 
 ---
 
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Failback in Site Recovery für virtuelle Hyper-V-Computer
 
-> [!div class="op_single_selector"]
-> * [VMware-/physische Computer von Azure](site-recovery-how-to-failback-azure-to-vmware.md)
-> * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
-
-In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer, die von Site Recovery geschützt werden, ein Failback durchführen. 
+In diesem Artikel wird beschrieben, wie Sie für virtuelle Computer, die von Site Recovery geschützt werden, ein Failback durchführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Stellen Sie sicher, dass der VMM-Server/Hyper-V-Server am primären Standort verbunden ist.
@@ -55,7 +52,7 @@ Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Rep
 
     - **Daten nur während Failover synchronisieren (vollständiger Download)**: Verwenden Sie diese Option, wenn Sie über einen längeren Zeitraum Azure verwendet haben. Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und keine Zeit mit der Prüfsummenberechnung verschwendet werden soll. Mit der Option wird ein Download des Datenträgers durchgeführt. Sie ist auch nützlich, wenn der lokale virtuelle Computer gelöscht wurde.
 
-    >[!NOTE] 
+    >[!NOTE]
     >Es wird empfohlen, diese Option zu verwenden, wenn Sie Azure bereits seit einer Weile nutzen (mindestens einen Monat) oder wenn der lokale virtuelle Computer gelöscht wurde. Mit dieser Option werden keine Prüfsummenberechnungen durchgeführt.
     >
     >
@@ -99,6 +96,4 @@ Wenn Sie den Schutz zwischen einem [Hyper-V-Standort und Azure](site-recovery-hy
 Nach Abschluss des Failbackauftrags führen Sie einen **Commit** für den virtuellen Computer aus. Der Commit löscht den virtuellen Azure-Computer und seine Datenträger und bereitet den virtuellen Computer dafür vor, erneut geschützt zu werden.
 
 Nach dem **Commit** können Sie das *umgekehrte Replizieren* initiieren. Dadurch wird der erneute Schutz des virtuellen Computers von einem lokalen Standort nach Azure gestartet. Beachten Sie, dass dadurch nur die Änderungen repliziert werden, da der virtuelle Computer in Azure deaktiviert wurde und daher nur differenzielle Änderungen sendet.
-
-
 

@@ -18,7 +18,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
 ms.openlocfilehash: f36d5da78818410e028a73a36a502a758400e5a5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -200,8 +200,8 @@ Weitere Informationen finden Sie unter [Verzeichniserweiterungen](active-directo
 ### <a name="enabling-single-sign-on-sso"></a>Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO)
 Das Konfigurieren des einmaligen Anmeldens zur Verwendung mit der Kennwortsynchronisierung oder Passthrough-Authentifizierung ist ein einfacher Prozess, den Sie nur einmal für jede Gesamtstruktur durchführen müssen, die mit Azure AD synchronisiert wird. Die Konfiguration umfasst zwei Schritte:
 
-1.    Erstellen des erforderlichen Computerkontos in Ihrer lokalen Active Directory-Instanz
-2.    Konfigurieren der Intranetzone der Clientcomputer zur Unterstützung des einmaligen Anmeldens
+1.  Erstellen des erforderlichen Computerkontos in Ihrer lokalen Active Directory-Instanz
+2.  Konfigurieren der Intranetzone der Clientcomputer zur Unterstützung des einmaligen Anmeldens
 
 #### <a name="create-the-computer-account-in-active-directory"></a>Erstellen des Computerkontos in Active Directory
 Für jede Gesamtstruktur, die in Azure AD Connect hinzugefügt wurde, müssen Sie Domänenadministrator-Anmeldeinformationen angeben, damit das Computerkonto in jeder Gesamtstruktur erstellt werden kann. Die Anmeldeinformationen werden nur zum Erstellen des Kontos verwendet und nicht für andere Vorgänge gespeichert oder genutzt. Fügen Sie die Anmeldeinformationen einfach wie folgt auf der Seite **Einmaliges Anmelden aktivieren** des Azure AD Connect-Assistenten hinzu:
@@ -215,20 +215,20 @@ Für jede Gesamtstruktur, die in Azure AD Connect hinzugefügt wurde, müssen Si
 Damit der Client in der Intranetzone automatisch angemeldet wird, müssen Sie dafür sorgen, dass zwei URLs Teil der Intranetzone sind. So wird sichergestellt, dass der in die Domäne eingebundene Computer automatisch ein Kerberos-Ticket an Azure AD sendet, wenn eine Verbindung mit dem Unternehmensnetzwerk besteht.
 Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 
-1.    Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
-2.    Bearbeiten Sie die Gruppenrichtlinie, die auf alle Benutzer angewendet wird. Beispiel: Standardrichtlinie der Domäne.
-3.    Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite**, und wählen Sie wie in der folgenden Abbildung dargestellt die Option **Liste der Site zu Zonenzuweisungen**.
-4.    Aktivieren Sie die Richtlinie, und geben Sie die folgenden beiden Elemente in das Dialogfeld ein.
+1.  Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
+2.  Bearbeiten Sie die Gruppenrichtlinie, die auf alle Benutzer angewendet wird. Beispiel: Standardrichtlinie der Domäne.
+3.  Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite**, und wählen Sie wie in der folgenden Abbildung dargestellt die Option **Liste der Site zu Zonenzuweisungen**.
+4.  Aktivieren Sie die Richtlinie, und geben Sie die folgenden beiden Elemente in das Dialogfeld ein.
 
-        Wert: `https://autologon.microsoftazuread-sso.com`  
-        Data 1  
-        Wert: `https://aadg.windows.net.nsatc.net`  
-        Data 1
+        Value: `https://autologon.microsoftazuread-sso.com`  
+        Data: 1  
+        Value: `https://aadg.windows.net.nsatc.net`  
+        Data: 1
 
-5.    Es sollte in etwa wie folgt aussehen:  
+5.  Es sollte in etwa wie folgt aussehen:  
 ![Intranetzonen](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.    Klicken Sie zweimal auf **OK**.
+6.  Klicken Sie zweimal auf **OK**.
 
 ## <a name="configuring-federation-with-ad-fs"></a>Konfigurieren des Verbunds mit AD FS
 Das Konfigurieren von AD FS mit Azure AD Connect ist mit nur wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:

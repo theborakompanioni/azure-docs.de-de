@@ -15,10 +15,10 @@ ms.workload: search
 ms.date: 05/01/2017
 ms.author: brjohnst
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ea3fc801074bb6d7e7c32574bc94702c79a61185
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -259,7 +259,7 @@ Beim Erstellen eines Indexes können die folgenden Attribute festgelegt werden. 
 
 `name` : Legt den Feldnamen fest.
 
-`type` : Legt den Datentyp des Feldes fest. Eine Liste der unterstützten Typen finden Sie unter [Unterstützte Datentypen](#DataTypes) .
+`type` : Legt den Datentyp des Feldes fest.
 
 `searchable` : Markiert das Feld als in die Volltextsuche einbeziehbar. Es wird während der Indizierung somit Analysen wie etwa der Worttrennung unterzogen. Wenn Sie ein Feld vom Typ `searchable` auf einen Wert wie "sonniger Tag" setzen, wird es zunächst in die einzelnen Token "sonniger" und "Tag" unterteilt. Dies ermöglicht die Volltextsuche nach diesen Begriffen. Felder vom Typ `Edm.String` oder `Collection(Edm.String)` haben standardmäßig das Attribut `searchable`. Andere Feldtypen können das Attribut `searchable`nicht haben.
 
@@ -1461,7 +1461,7 @@ Darüber hinaus ist die URL-Codierung nur erforderlich, wenn Sie die REST-API di
 > 
 > 
 
-`$filter=[string]` (optional): Ein strukturierter Suchbegriff in standardmäßiger OData-Syntax. Details zur Teilmenge der von Azure Search unterstützten Grammatik von OData-Ausdrücken finden Sie unter [OData-Ausdruckssyntax](#ODataExpressionSyntax) .
+`$filter=[string]` (optional): Ein strukturierter Suchbegriff in standardmäßiger OData-Syntax.
 
 > [!NOTE]
 > Wenn Sie **Search** mithilfe von „POST“ aufrufen, heißt dieser Parameter nicht `filter`, sondern `$filter`.

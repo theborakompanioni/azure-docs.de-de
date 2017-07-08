@@ -216,14 +216,15 @@
 ## [StorSimple 5000–7000-Serie](http://onlinehelp.storsimple.com)
 
 # Ressourcen
-## [Preise](https://azure.microsoft.com/pricing/details/storsimple/)
-## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
-## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=storsimple)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Marketingblog](http://blogs.technet.com/b/cis/)
 ## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [Preise](https://azure.microsoft.com/pricing/details/storsimple/)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=storsimple)
 ## [Supportblog](http://blogs.msdn.com/b/storsimple/)
 ## [Drittanbieterhinweise](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
 
