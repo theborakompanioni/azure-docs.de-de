@@ -26,3 +26,5 @@
 # Verwandte Themen
 ## [Azure Active Directory](/azure/active-directory/)
 ## [Rollenbasierte Zugriffssteuerung](../role-based-access-control-what-is.md)
+# Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

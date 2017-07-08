@@ -40,7 +40,7 @@ Im Nutzungsmodell von **Microsoft Power BI Embedded** liegt die Verantwortung f�
 Wie bei jedem anderen Azure-Dienst werden Ressourcen für Power BI Embedded über die [Azure Resource Manager-APIs](https://msdn.microsoft.com/library/mt712306.aspx)bereitgestellt. In diesem Fall ist die Ressource, die Sie bereitstellen, eine **Power BI-Arbeitsbereichssammlung**.
 
 ## <a name="workspace-collection"></a>Arbeitsbereichssammlung
-Eine **Arbeitsbereichssammlung** ist der oberste Azure-Container für Ressourcen, der 0 oder mehr **Arbeitsbereiche** enthält.  Eine **Arbeitsbereichssammlung** **** umfasst alle Azure-Standardeigenschaften sowie die folgenden:
+Eine **Arbeitsbereichssammlung** ist der oberste Azure-Container für Ressourcen, der 0 oder mehr **Arbeitsbereiche** enthält.  Eine **Arbeitsbereichssammlung** **Sammlung** umfasst alle Azure-Standardeigenschaften sowie die folgenden:
 
 * **Zugriffsschlüssel** – Schlüssel, die beim sicheren Aufrufen der Power BI-APIs verwendet werden (in einem späteren Abschnitt beschrieben).
 * **Benutzer** – AAD-Benutzer (Azure Active Directory), die über Administratorrechte verfügen, um die Power BI-Arbeitsbereichssammlung über das Azure-Portal oder die Azure Resource Manager-API zu verwalten.

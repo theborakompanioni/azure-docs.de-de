@@ -134,13 +134,13 @@
       href: create-vm-specialized.md
     - name: Erstellen eines virtuellen Computers mit einer Vorlage
       href: ps-template.md
-    - name: 'Erstellen eines virtuellen Computers mit C#'
+    - name: 'Erstellen/Verwalten eines virtuellen Computers mit C#'
       href: csharp.md
     - name: 'Erstellen eines virtuellen Computers mit C# und einer Vorlage'
       href: csharp-template.md
     - name: Erstellen eines virtuellen Computers mit Chef
       href: chef-automation.md
-    - name: Erstellen eines virtuellen Computers mit Python
+    - name: Erstellen/Verwalten eines virtuellen Computers mit Python
       href: python.md
     - name: Erstellen eines virtuellen Computers mit Terraform
       items:
@@ -173,8 +173,6 @@
       href: cli-manage.md
     - name: Verwalten von virtuellen Computern mithilfe der Befehlszeilenschnittstelle
       href: cli-deploy-templates.md
-    - name: 'Verwalten von virtuellen Computern mithilfe von C#'
-      href: csharp-manage.md
   - name: Verbinden mit RDP
     items:
     - name: Anmelden an einer VM
@@ -187,6 +185,8 @@
       href: hybrid-use-benefit-licensing.md
     - name: Verwenden von Windows-Clientimages
       href: client-images.md
+    - name: Herunterladen einer VHD-Datei
+      href: download-vhd.md
     - name: Vorbereiten einer VHD für den Upload
       href: prepare-for-upload-vhd-image.md
     - name: Erstellen eines Images für einen verwalteten Datenträger
@@ -366,15 +366,22 @@
         href: troubleshoot-specific-rdp-errors.md
     - name: Zurücksetzen des RDP-Kennworts
       href: reset-rdp.md
+    - name: Zurücksetzen der NIC
+      href: reset-network-interface.md
     - name: Startdiagnose
  
       href: boot-diagnostics.md
     - name: Erstellen eines virtuellen Computers
       href: troubleshoot-deployment-new-vm.md
+    - name: Bereitstellungsprobleme
+ 
+      href: troubleshoot-deploy-vm.md
     - name: Neustart oder Größenänderung eines virtuellen Computers
       href: restart-resize-error-troubleshooting.md
     - name: Anwendungszugriff
       href: troubleshoot-app-connection.md
+    - name: Aktivierungsprobleme
+      href: troubleshoot-activation-problems.md
     - name: Fehler bei der Zuordnung
       href: allocation-failure.md
     - name: Erneutes Bereitstellen eines virtuellen Computers
@@ -409,6 +416,8 @@
   items:
   - name: Verfassen von Vorlagen
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
   - name: Communityvorlagen
     href: https://azure.microsoft.com/documentation/templates
   - name: Preise

@@ -58,7 +58,7 @@ Mithilfe des Bibliotheksteuerelements auf der linken Seite des Editors können S
 1. Klicken Sie im Bibliotheksteuerelement auf das Textfeld für die Suche, und geben Sie **Write-Output**ein.  Die Suchergebnisse werden darunter angezeigt. <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 2. Führen Sie einen Bildlauf zum Ende der Liste durch.  Sie können entweder mit der rechten Maustaste auf **Write-Output** klicken und **Zur Canvas hinzufügen** auswählen, oder Sie können auf die Auslassungspunkte neben dem Cmdlet klicken und **Zur Canvas hinzufügen** auswählen.
 3. Klicken Sie in der Canvas auf die Aktivität **Write-Output**.  Dadurch wird das Blatt für die Konfigurationssteuerung geöffnet, auf dem Sie die Aktivität konfigurieren können.
-4. Die Bezeichnung **** ist standardmäßig auf den Namen des Cmdlets festgelegt, kann aber in einen aussagekräftigeren Wert geändert werden. Legen Sie ihn auf *Write Hello World to output*fest.
+4. Die **Bezeichnung** ist standardmäßig auf den Namen des Cmdlets festgelegt, kann aber in einen aussagekräftigeren Wert geändert werden. Legen Sie ihn auf *Write Hello World to output*fest.
 5. Klicken Sie auf **Parameter** , um Parameterwerte für das Cmdlet anzugeben.  
    Einige Cmdlets verfügen über mehrere Parametersätze, und Sie müssen auswählen, welchen Sie verwenden möchten. **Write-Output** besitzt in diesem Fall lediglich einen einzelnen Parametersatz, sodass Sie keinen auswählen müssen. <br> ![Write-Output-Eigenschaften](media/automation-first-runbook-graphical/write-output-properties-b.png)
 6. Wählen Sie den **InputObject** -Parameter aus.  Dies ist der Parameter, in dem wir den Text angeben, der an den Ausgabestream gesendet werden soll.
@@ -167,7 +167,7 @@ Das Runbook startet den virtuellen Computer derzeit in der Ressourcengruppe, die
 In diesem Schritt passen wir das Runbook so an, dass nur dann versucht wird, den virtuellen Computer zu starten, wenn dieser noch nicht gestartet ist.  Zu diesem Zweck fügen Sie dem Runbook ein **Get-AzureRmVM**-Cmdlet hinzu, das den Instanzebenenstatus des virtuellen Computers abruft. Anschließend fügen Sie ein PowerShell-Workflow-Codemodul namens **Get Status** mit einem PowerShell-Codeausschnitt hinzu, mit dem ermittelt wird, ob der virtuelle Computer ausgeführt wird oder beendet ist.  Eine bedingte Verknüpfung des Moduls **Get Status** führt **Start-AzureRmVM** nur dann aus, wenn der aktuelle Ausführungszustand angibt, dass der virtuelle Computer beendet ist.  Schließlich geben wir mithilfe des PowerShell-Cmdlets „Write-Output“ noch eine Nachricht aus, die darüber informiert, ob der virtuelle Computer erfolgreich gestartet wurde.
 
 1. Öffnen Sie **MyFirstRunbook** im grafischen Editor.
-2. Entfernen Sie die Verknüpfung zwischen **Specify Subscription Id** und **Start-AzureRmVM**, indem Sie auf die Verknüpfung klicken und die ENTF-TASTE** drücken.
+2. Entfernen Sie die Verknüpfung zwischen **Specify Subscription Id** und **Start-AzureRmVM**, indem Sie auf die Verknüpfung klicken und die *ENTF-TASTE* drücken.
 3. Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Get-AzureRm** ein.
 4. Fügen Sie dem Zeichenbereich **Get-AzureRmVM** hinzu.
 5. Wählen Sie **Get-AzureRmVM** und anschließend **Parametersatz** aus, um die Sätze für **Get-AzureRmVM** anzuzeigen.  Wählen Sie den Parametersatz **GetVirtualMachineInResourceGroupNameParamSet** aus.  Beachten Sie, dass neben **ResourceGroupName** und **Name** jeweils ein Ausrufezeichen angezeigt wird.  Das bedeutet, dass es sich dabei um erforderliche Parameter handelt.  Beachten Sie außerdem, dass für beide ein Zeichenfolgenwert erwartet wird.
@@ -202,9 +202,9 @@ In diesem Schritt passen wir das Runbook so an, dass nur dann versucht wird, den
 23. Legen Sie die **Datenquelle** für **InputObject** auf **PowerShell-Ausdruck** fest, und geben Sie den Ausdruck *"$VMName could not start."* ein.
 24. Verknüpfen Sie **Start AzureRmVM** mit **Notify VM Started** und **Notify VM Start Failed**.
 25. Wählen Sie die Verknüpfung mit **Notify VM Started** aus, und legen Sie **Bedingung anwenden** auf **True** fest.
-26. Geben Sie als Bedingungsausdruck ****Folgendes ein: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*.  Dieses Write-Output-Steuerelement wird nur ausgeführt, wenn der virtuelle Computer erfolgreich gestartet wurde.
+26. Geben Sie als **Bedingungsausdruck** Folgendes ein: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*.  Dieses Write-Output-Steuerelement wird nur ausgeführt, wenn der virtuelle Computer erfolgreich gestartet wurde.
 27. Wählen Sie die Verknüpfung mit **Notify VM Start Failed** aus, und legen Sie **Bedingung anwenden** auf **True** fest.
-28. Geben Sie als Bedingungsausdruck ****Folgendes ein: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true*.  Dieses Write-Output-Steuerelement wird nur ausgeführt, wenn der virtuelle Computer nicht erfolgreich gestartet wurde.
+28. Geben Sie als **Bedingungsausdruck** Folgendes ein: *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true*.  Dieses Write-Output-Steuerelement wird nur ausgeführt, wenn der virtuelle Computer nicht erfolgreich gestartet wurde.
 29. Speichern Sie das Runbook, und öffnen Sie den Testbereich.
 30. Wenn Sie nun das Runbook starten, während der virtuellen Computer beendet ist, wird der virtuelle Computer gestartet.
 

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: pratshar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e6d05d7a7595e17d026be6a448b2fa2cca9b816
-ms.openlocfilehash: a62fe406af18c9c7d9b58839bfa0d6e785b614ef
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 2d8d0feb5c391017e02413b009aafe4d5c012976
 ms.contentlocale: de-de
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -41,7 +41,7 @@ Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederhers
 
 Beim Entwerfen des Netzwerks für den Wiederherstellungsstandort haben Administratoren zwei Möglichkeiten:
 
-* Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. Weitere Informationen finden Sie [hier](site-recovery-test-failover-vmm-to-vmm.md#preparing-infrastructure-for-test-failover).
+* Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. Weitere Informationen finden Sie [hier](site-recovery-test-failover-vmm-to-vmm.md#prepare-the-infrastructure-for-test-failover).
 * Verwenden des gleichen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei bestimmten Szenarien ziehen es Administratoren vor, die IP-Adressen beizubehalten, die sie am primären Standort verwenden, und zwar auch nach dem Failover. Bei einem normalen Szenario muss ein Administrator die Routen aktualisieren, um den neuen Standort der IP-Adressen anzugeben. Aber bei diesem Szenario, bei dem ein gestrecktes VLAN zwischen dem primären und sekundären Standort bereitgestellt wird, ist das Beibehalten der IP-Adressen für die virtuellen Computer eine attraktive Option. Das Beibehalten der gleichen IP-Adressen vereinfacht den Wiederherstellungsprozess, da alle netzwerkbezogenen Schritte nach dem Failover entfallen.
 
 Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederherstellung planen, ist eine der wichtigsten Fragen, wie die Anwendungen nach Abschluss des Failovers erreichbar sind. Moderne Anwendungen sind fast immer zu einem gewissen Grad von Netzwerken abhängig, sodass mit dem physischen Verschieben eines Diensts von einem Standort zum anderen fast immer besondere Netzwerkanforderungen verbunden sind. Es gibt zwei Hauptverfahren, wie dieses Problem bei Lösungen für die Notfallwiederherstellung gelöst wird. Der erste Ansatz besteht in der Verwaltung fester IP-Adressen. Trotz der Verschiebung der Dienste und der Tatsache, dass sich die Hostserver an verschiedenen physischen Standorten befinden, nehmen die Anwendungen die IP-Adresskonfiguration mit sich an den neuen Speicherort. Beim zweiten Ansatz ist eine vollständige Änderung der IP-Adresse während des Übergangs auf den wiederhergestellten Standort erforderlich. Jeder Ansatz verfügt über mehrere Implementierungsvarianten, die unten zusammengefasst sind.

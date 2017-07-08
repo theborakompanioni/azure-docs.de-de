@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/15/2016
 ms.author: deli
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f2fcfecf0d888997b0b0061dc9ed2a8f862d78b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/06/2017
 
 
 ---

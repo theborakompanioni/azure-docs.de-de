@@ -41,10 +41,11 @@
 ## [Azure DNS](/azure/dns/)
 
 # Ressourcen
-## [Preise](https://azure.microsoft.com/pricing/details/traffic-manager/)
-## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
-## [Diensteinschränkungen](../azure-subscription-service-limits.md#traffic-manager-limits)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Preise](https://azure.microsoft.com/pricing/details/traffic-manager/)
+## [Diensteinschränkungen](../azure-subscription-service-limits.md#traffic-manager-limits)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=traffic-manager)
+## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=traffic-manager)

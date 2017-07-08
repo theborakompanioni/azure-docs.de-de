@@ -1,10 +1,9 @@
 # Übersicht
 ## [Was ist Azure Active Directory?](active-directory-whatis.md)
-## [Wählen der Edition](active-directory-editions.md)
+## [Auswählen einer Edition](active-directory-editions.md)
 ## [Informationen zur Azure-Identitätsverwaltung](identity-fundamentals.md)
 ## [Grundlegendes zu Azure-Identitätslösungen](understand-azure-identity-solutions.md)
-## [Vorschau der Azure-Portal-Benutzeroberfläche](active-directory-preview-explainer.md)
-
+## [Auswählen einer Hybrididentitätslösung](choose-hybrid-identity-solution.md)
 
 # Erste Schritte
 ## [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
@@ -13,14 +12,16 @@
 ## Verwalten der Azure AD-Lizenzierung
 ### [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [Klassisches Portal](active-directory-licensing-what-is.md)
-## [Beschaffen von Azure für Ihre Organisation](sign-up-organization.md)
+### [Zuweisen von Lizenzen mithilfe von Gruppen](active-directory-licensing-whatis-azure-portal.md)
+#### [Zuweisen von Lizenzen zu einer Gruppe](active-directory-licensing-group-assignment-azure-portal.md)
+#### [Bestimmen und Beheben von Lizenzproblemen in einer Gruppe](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
+#### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
+#### [PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
 ## [Häufig gestellte Fragen](active-directory-faq.md)
 ## [Erhalten von Support für Azure Active Directory](active-directory-troubleshooting-support-howto.md)
 ## [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
-## Steuerelemente von Azure AD
-### [Abschließen einer Zugriffsüberprüfung](active-directory-azure-ad-controls-complete-an-access-review.md)
-### [Erstellen einer Zugriffsüberprüfung](active-directory-azure-ad-controls-create-an-access-review.md)
-### [Durchführen einer Zugriffsüberprüfung](active-directory-azure-ad-controls-perform-an-access-review.md)
+
 
 
 # Anleitung
@@ -53,9 +54,7 @@
 ### Hinzufügen von Benutzern
 #### [Azure-Portal](active-directory-users-create-azure-portal.md)
 #### [Klassisches Portal](active-directory-create-users.md)
-### Steuerelemente von Azure AD
-#### [Gastzugriff mit Zugriffsüberprüfungen](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-#### [Verwaltung des Benutzerzugriffs mit Überprüfungen](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+
 
 ### [Zuweisen von Lizenzen mithilfe von Gruppen](active-directory-licensing-whatis-azure-portal.md)
 #### [Zuweisen von Lizenzen zu einer Gruppe](active-directory-licensing-group-assignment-azure-portal.md)
@@ -106,11 +105,13 @@
 ### [Gefährdete Benutzer](active-directory-reporting-security-user-at-risk.md)
 ### [Riskante Anmeldungen](active-directory-reporting-security-risky-sign-ins.md)
 ### [Risikoereignisse](active-directory-reporting-risk-events.md)
-### [Benannte Speicherorte](active-directory-named-locations.md)
-### [Berichtmigration](active-directory-reporting-migration.md)
 ### [Aufbewahrung](active-directory-reporting-retention.md)
 ### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
 ### [Häufig gestellte Fragen](active-directory-reporting-faq.md)
+### Aufgaben
+#### [Konfigurieren benannter Orte](active-directory-named-locations.md)
+#### [Suchen nach Aktivitätsberichten](active-directory-reporting-migration.md)
+#### [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](active-directory-reporting-power-bi-content-pack-how-to.md)  
 ### Problembehandlung
 #### [Fehlende Überwachungsdaten](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Fehlende Daten in den Downloads](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -188,8 +189,7 @@
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
-### Steuerelemente von Azure AD
-####[Verwalten von Programmen und Steuerelementen](active-directory-azure-ad-controls-manage-programs-and-controls.md)
+
 
 ### [Remotezugriff auf Apps mit dem Anwendungsproxy](active-directory-application-proxy-get-started.md)
 #### Erste Schritte
@@ -215,6 +215,7 @@
 ##### [Native Client-Apps](active-directory-application-proxy-native-client.md)
 ##### [Installation im Hintergrund](active-directory-application-proxy-silent-installation.md)
 ##### [Benutzerdefinierte Startseite](application-proxy-office365-app-launcher.md)
+##### [Übersetzen von Inline-Links](application-proxy-link-translation.md)
 #### Veröffentlichen von exemplarische Vorgehensweisen
 ##### [Remotedesktop](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
@@ -399,9 +400,10 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
 # Ressourcen
-## [Preise](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Azure-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+## [Preise](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
-## [Azure-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)

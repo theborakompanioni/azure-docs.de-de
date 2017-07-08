@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 6d048b73528d1812f1be9585d30812ca4aeaa397
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: f0609465edde67a9e11af86c3265ea29a737fc85
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 ---
 
@@ -50,7 +51,7 @@ Bei der Verwendung von Azure-Endpunkten erkennt Traffic Manager, wenn eine „kl
 Externe Endpunkte werden für Dienste außerhalb von Azure verwendet. Beispielsweise ein Dienst, der lokal oder von einem anderen Anbieter gehostet wird. Externe Endpunkte können allein oder in Kombination mit Azure-Endpunkten in demselben Traffic Manager-Profil verwendet werden. Die Kombination von Azure-Endpunkten mit externen Endpunkten ermöglicht unterschiedliche Szenarios:
 
 * Verwenden Sie Azure zum Bereitstellen einer erhöhten Redundanz für eine vorhandene lokale Anwendung in einem Aktiv/Aktiv- oder Aktiv/Passiv-Failovermodell.
-* Erweitern Sie eine vorhandene lokale Anwendung zur Reduzierung der Anwendungslatenz für Benutzer auf der ganzen Welt auf zusätzliche geografische Standorte in Azure. Weitere Informationen finden Sie unter [Traffic Manager Leistungsdatenverkehrrouting](traffic-manager-routing-methods.md#performance-traffic-routing-method).
+* Erweitern Sie eine vorhandene lokale Anwendung zur Reduzierung der Anwendungslatenz für Benutzer auf der ganzen Welt auf zusätzliche geografische Standorte in Azure. Weitere Informationen finden Sie unter [Traffic Manager Leistungsdatenverkehrrouting](traffic-manager-routing-methods.md#a-name--performanceaperformance-traffic-routing-method).
 * Verwenden Sie Azure zum Bereitstellen zusätzlicher Kapazität für eine vorhandene lokale Anwendung, entweder fortlaufend oder als „Burst-to-Cloud“ für Spitzenlasten.
 
 In bestimmten Fällen ist es hilfreich, externe Endpunkte zum Verweisen auf Azure-Dienste zu verwenden (Beispiele unter [Häufig gestellte Fragen](traffic-manager-faqs.md#traffic-manager-endpoints)). Die Integritätsprüfungen werden dann mit der Rate der Azure-Endpunkte berechnet, nicht mit der Rate der externen Endpunkte. Wenn Sie den zugrunde liegenden Dienst beenden oder löschen, werden die entsprechenden Integritätsprüfungen im Gegensatz zu Azure-Endpunkten aber weiter berechnet, bis Sie den Endpunkt in Traffic Manager deaktivieren oder löschen.
@@ -95,5 +96,4 @@ Wenn alle Endpunkte eines Profils deaktiviert werden oder das Profil selbst deak
 * Informationen zur [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md)
 * Informationen zu [Endpunktüberwachung und automatisches Failover](traffic-manager-monitoring.md)von Traffic Manager
 * Informationen zu Traffic Manager- [Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
-
 

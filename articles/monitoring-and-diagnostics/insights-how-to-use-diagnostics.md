@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2015
+ms.date: 06/06/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c30ffa9e392bb6411312b0789ae6e8218f770bc1
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: b82bb1ab419831e803689edb2a2a7fe256dde5a2
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="enable-monitoring-and-diagnostics"></a>Aktivieren von Überwachung und Diagnose
-Im [Azure-Portal](https://portal.azure.com)können Sie eine umfangreiche, regelmäßig durchgeführte Erfassung von Überwachungs- und Diagnosedaten konfigurieren. Es ist auch möglich, die Diagnose mit [REST-API](https://msdn.microsoft.com/library/azure/dn931932.aspx) oder [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) programmgesteuert zu konfigurieren.
+Im [Azure-Portal](https://portal.azure.com)können Sie eine umfangreiche, regelmäßig durchgeführte Erfassung von Überwachungs- und Diagnosedaten konfigurieren. Es ist auch möglich, die Diagnose mit [REST-API](https://msdn.microsoft.com/library/azure/dn931932.aspx) oder [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) programmgesteuert zu konfigurieren.
 
 Diagnose-, Überwachungs- und Metrikdaten werden in Azure in einem Speicherkonto Ihrer Wahl gespeichert. Auf diese Weise können Sie zum Lesen der Daten ein beliebiges Tool einsetzen – von einem Speicher-Explorer über Power BI bis hin zu einem Drittanbietertool.
 
@@ -65,10 +67,5 @@ Beachten Sie, dass derzeit bestimmte Linux-Distributionen nicht unterstützt wer
 * [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md) , um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
 * [Nachverfolgen des Dienststatus](insights-service-health.md) , um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die bei Azure aufgetreten sind.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -251,7 +251,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal eine neue API-App
 3. Klicken Sie auf das Einstellungsmenüelement **Anmeldeinformationen für die Bereitstellung** , und geben Sie einen Benutzernamen und ein Kennwort für die Veröffentlichung von Dateien in Ihrer API-App ein. 
    
     ![Anmeldeinformationen für die Bereitstellung zurücksetzen][deployment-credentials]
-4. Klicken Sie in den Einstellungen auf das Menüelement **Bereitstellungsquelle** . Klicken Sie dort auf die Schaltfläche **Quelle auswählen**, wählen Sie die Option **Lokales Git-Repository**, und klicken Sie dann auf **OK**. Dadurch wird ein in Azure ausgeführtes Git-Repository erstellt, das Ihrer API-App zugeordnet ist. Jedes Mal, wenn Sie für Ihren Code ein Commit in der Hauptverzweigung ** Ihres Git-Repositorys ausführen, wird der Code in der Liveinstanz Ihrer ausgeführten API-App veröffentlicht. 
+4. Klicken Sie in den Einstellungen auf das Menüelement **Bereitstellungsquelle** . Klicken Sie dort auf die Schaltfläche **Quelle auswählen**, wählen Sie die Option **Lokales Git-Repository**, und klicken Sie dann auf **OK**. Dadurch wird ein in Azure ausgeführtes Git-Repository erstellt, das Ihrer API-App zugeordnet ist. Jedes Mal, wenn Sie für Ihren Code ein Commit in der Hauptverzweigung *master* Ihres Git-Repositorys ausführen, wird der Code in der Liveinstanz Ihrer ausgeführten API-App veröffentlicht. 
    
     ![Neues lokales Git-Repository einrichten][select-git-repo]
 5. Kopieren Sie die neue URL des Git-Repositorys in die Zwischenablage. Speichern Sie sie, da Sie sie in Kürze benötigen. 

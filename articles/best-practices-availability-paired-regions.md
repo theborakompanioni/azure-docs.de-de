@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: 43e0bb0c921be3992321d0a202fce1fa09053f99
-ms.openlocfilehash: 67edd136737e6af372c3c898c34a8bc6681a8c6d
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 32bff438c2e56b1c21aa907b6bff6c1d1e879de3
+ms.contentlocale: de-de
+ms.lasthandoff: 06/14/2017
 
 ---
 
@@ -35,9 +36,19 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 
 | Gebiet | Regionspaare |  |
 |:--- |:--- |:--- |
+| Asien |Ostasien |Südostasien |
+| Australien |Australien (Osten) |Australien (Südosten) |
+| Brasilien |Brasilien, Süden (1) |USA (Mitte/Süden) |
+| Kanada |Kanada, Mitte |Kanada, Osten |
+| China |China, Norden |China, Osten|
+| Europa |Nordeuropa |Westeuropa |
+| Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
+| Indien |Indien (Mitte) |Indien, Süden |
+| Japan |Japan Ost |Japan (Westen) |
+| Korea |Korea, Mitte |Korea, Süden |
 | Nordamerika |USA (Mitte/Norden) |USA (Mitte/Süden) |
 | Nordamerika |USA (Ost) |USA (West) |
-| Nordamerika |USA (Ost 2) |USA, Mitte |
+| Nordamerika |USA (Ost) 2 |USA (Mitte) |
 | Nordamerika |USA, Westen 2 |USA, Westen-Mitte |
 | Europa |Nordeuropa |Westeuropa |
 | Asien |Südostasien |Ostasien |
@@ -49,6 +60,8 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 | Indien |Indien (Mitte) |Indien, Süden |
 | Kanada |Kanada, Mitte |Kanada, Osten |
 | UK |UK, Westen |UK, Süden |
+| Korea |Korea, Mitte |Korea, Süden |
+| Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
 
 Tabelle 1: Übersicht über Azure-Regionspaare
 

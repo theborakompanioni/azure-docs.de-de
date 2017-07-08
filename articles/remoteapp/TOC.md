@@ -67,7 +67,8 @@
 ### [Behandeln von Problemen mit einer Cloudsammlung](remoteapp-cloudtrouble.md)
 
 # Ressourcen
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=remoteapp)
-## [Preise](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
+## [Preise](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=remoteapp)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)

@@ -108,7 +108,7 @@ Mit der Geräteverwaltungsfunktion von IoT Hub können Sie Ihre Geräteeigenscha
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Die vorkonfigurierte Lösung verwendet drei [Azure Stream Analytics][lnk-asa]-Aufträge (ASA), um den Telemetriedatenstrom von den Geräten zu filtern:
 
-* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine Azure Cosmos DB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum Ändern des Gerätestatus**** ausgeführt wurde.
+* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine Azure Cosmos DB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum **Ändern des Gerätestatus** ausgeführt wurde.
 * *Telemetrieauftrag* – Sendet alle Telemetrierohdaten zu Cold Storage-Zwecken an den Azure-Blobspeicher und berechnet Telemetrieaggregationen, die im Lösungsdashboard angezeigt werden.
 * *Regelauftrag* – Filtert den Telemetriedatenstrom, um Werte zu identifizieren, die Regelschwellenwerte überschreiten, und gibt die Daten an einen Event Hub aus. Wenn eine Regel ausgelöst wird, wird das Ereignis in der Dashboardansicht des Lösungsportals als neue Zeile der Alarmverlaufstabelle angezeigt. Diese Regeln können auf der Grundlage der Einstellungen, die im Lösungsportal in den Ansichten **Regeln** und **Aktionen** definiert sind, auch eine Aktion auslösen.
 
@@ -119,7 +119,7 @@ Bei dieser vorkonfigurierten Lösung bildet der Ereignisprozessor einen Teil des
 
 Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventProcessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. **EventProcessorHost** verwendet Folgendes:
 - Die Daten vom Typ **DeviceInfo**, um die Gerätedaten in der Cosmos DB-Datenbank zu aktualisieren.
-- Die**** Regeldaten, um die Logik-App aufzurufen und die Warnungsanzeige im Lösungsportal zu aktualisieren.
+- Die **Regeldaten** , um die Logik-App aufzurufen und die Warnungsanzeige im Lösungsportal zu aktualisieren.
 
 ## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>Geräteidentitätsregistrierung, Gerätezwilling und Cosmos DB
 Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.

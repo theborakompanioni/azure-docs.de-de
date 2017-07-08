@@ -65,8 +65,9 @@
 ## [REST](/rest/api/notificationhubs)
 
 # Ressourcen
-## [Preise](https://azure.microsoft.com/pricing/details/notification-hubs/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs)
+## [Preise](https://azure.microsoft.com/pricing/details/notification-hubs/)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=notification-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-notificationhub)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=notification-hubs)
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=notification-hubs)

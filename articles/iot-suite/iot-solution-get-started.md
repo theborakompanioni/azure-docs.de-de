@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2016
 ms.author: harikm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c6366d42b91748963ec14c258f92746e5d2fde92
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 031b492df1f186087e7b91102cbb44f552999293
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -51,7 +51,7 @@ Auf Ihrem Gerät:
    
    Der Vorgang umfasst zwei Schritte: Installieren Sie das Zertifikat in **Vertrauenswürdige Personen**. Installieren Sie dann die App.
 
-*Sind beim Starten der App unter Windows 10 Mobile Probleme aufgetreten?*  Vielleicht liegt Ihr Telefon ein oder zwei Updates zurück. Vergewissern Sie sich, dass Sie über die aktuellen Updates verfügen, oder installieren Sie:
+*Sind beim Starten der App unter Windows 10 Mobile Probleme aufgetreten?* Vielleicht liegt Ihr Telefon ein oder zwei Updates zurück. Vergewissern Sie sich, dass Sie über die aktuellen Updates verfügen, oder installieren Sie:
 
 * [Microsoft.NET.Native.Framework.1.2.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Framework.1.2.appx) 
 * [Microsoft.NET.Native.Runtime.1.1.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Runtime.1.1.appx) 

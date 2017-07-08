@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/18/2017
 ms.author: karolz
-translationtype: Human Translation
-ms.sourcegitcommit: d7f7b157d8d6fb54259c8f23d5005509f4eb7872
-ms.openlocfilehash: 22acb6afbfbfff753e71b5e821385798cc76ffdd
-ms.lasthandoff: 01/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 08f7b57985382f2abbb90ba1e13a30f40b38917f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -53,15 +54,15 @@ EventFlow-Binärdateien sind als Gruppe von NuGet-Paketen verfügbar. Klicken Si
 
 Der Dienst, von dem EventFlow gehostet wird, sollte – je nach Quelle und Ziel für die Anwendungsprotokolle – die richtigen Pakete enthalten. Fügen Sie die folgenden Pakete hinzu: 
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource` 
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 
     * (zur Erfassung von Daten über die EventSource-Klasse des Diensts und über standardmäßige EventSources, z.B. *Microsoft-ServiceFabric-Services* und *Microsoft-ServiceFabric-Actors*)
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` 
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` 
     * (Wir senden die Protokolle an eine Azure Application Insights-Ressource.)  
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` 
     * (Ermöglicht die Initialisierung der EventFlow-Pipeline über die Service Fabric-Dienstkonfiguration und meldet Probleme in Bezug auf das Senden von Diagnosedaten als Service Fabric-Integritätsberichte.)
 
 > [!NOTE]
-> Für das `Microsoft.Diagnostics.EventFlow.Input.EventSource`-Paket muss das Dienstprojekt auf .NET Framework 4.6 oder höher ausgerichtet sein. Achten Sie darauf, in den Projekteigenschaften das richtige Zielframework festzulegen, bevor Sie dieses Paket installieren. 
+> Für das `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`-Paket muss das Dienstprojekt auf .NET Framework 4.6 oder höher ausgerichtet sein. Achten Sie darauf, in den Projekteigenschaften das richtige Zielframework festzulegen, bevor Sie dieses Paket installieren. 
 
 Nachdem alle Pakete installiert wurde, ist der nächste Schritt das Konfigurieren und Aktivieren von EventFlow im Dienst.
 
@@ -176,3 +177,4 @@ Starten Sie Ihren Dienst, und sehen Sie sich die Informationen im Fenster für d
 <!--Image references-->
 [1]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/eventflow-nugets.png
 [2]: ./media/service-fabric-diagnostics-collect-logs-without-an-agent/ai-traces.png
+

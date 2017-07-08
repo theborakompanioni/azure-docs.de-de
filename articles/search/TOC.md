@@ -73,21 +73,22 @@
 ## [REST (Verwaltung)](/rest/api/searchmanagement)
 
 # Ressourcen
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=search)
 ## [API-Versionen](search-api-versions.md)
-## [Dienst-REST (Vorschau)](search-api-2015-02-28-preview.md)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preise](https://azure.microsoft.com/pricing/details/search/)
+## [Dienst-REST (Vorschau)](search-api-2015-02-28-preview.md)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=search)
+## Trainingsmaterialien und Tutorials
 ## Demo-Websites
-### [Search Analyzer Demo](http://alice.unearth.ai/)
+## Partner und Community
+### [Azure Search – GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [Azure Search – GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [Auftragsauflistungs-App](http://aka.ms/azjobsdemo)
 ### [Live-Demo-Apps](https://searchsamples.azurewebsites.net/)
-## Trainingsmaterialien und Tutorials
-### [Virtual Academy](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)
-### [Videos und Tutorials](search-video-demo-tutorial-list.md)
-### [Azure Search – GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-## Partner und Community
 ### [Modellieren von relationalen Daten](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
 ### [Faceting mit mehreren Ebenen](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
+### [Search Analyzer Demo](http://alice.unearth.ai/)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
-### [Azure Search – GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [Videos und Tutorials](search-video-demo-tutorial-list.md)
+### [Virtual Academy](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)

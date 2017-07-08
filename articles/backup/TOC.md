@@ -91,6 +91,8 @@
 ## [Löschen eines Azure Backup-Tresors](backup-azure-delete-vault.md)
 ## [Rollenbasierte Zugriffssteuerung](backup-rbac-rs-vault.md)
 ## [Sicherheit für Hybrid-Sicherungen](backup-azure-security-feature.md)
+## [Konfigurieren von Azure Backup-Berichten](backup-azure-configure-reports.md)
+## [Datenmodell für Azure Backup-Berichte](backup-azure-reports-data-model.md)
 ## [Konfigurieren der Offlinesicherung](backup-azure-backup-import-export.md)
 ## [Ersetzen der Bandbibliothek](backup-azure-backup-cloud-as-tape.md)
 ## [Anwendungskonsistente Sicherungen von virtuellen Linux-Computern](backup-azure-linux-app-consistent.md)
@@ -100,7 +102,8 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.recoveryservices.backup)
 
 # Ressourcen
-## [Preise](https://azure.microsoft.com/pricing/details/backup/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
-## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=backup)
+## [Preise](https://azure.microsoft.com/pricing/details/backup/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=backup)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=backup)

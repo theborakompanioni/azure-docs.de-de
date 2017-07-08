@@ -99,3 +99,5 @@
 #### [Verbinden eines Computers mit einem virtuellen Netzwerk](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Nächste Schritte](azure-operations-guide.md#next-steps)
+# Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

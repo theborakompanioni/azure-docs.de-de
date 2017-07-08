@@ -16,9 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 11/17/2016
 ms.author: keikhara
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
 ms.openlocfilehash: f10236ab89339234a32abf42c42083e233ab3a52
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -116,9 +118,4 @@ Was funktioniert? Was fehlt? Was benötigen Sie noch, was nützlich für Sie sei
 ## <a name="next-steps"></a>Nächste Schritte
 
  Nachdem Sie OMS für die Überwachung Ihrer Container eingerichtet haben, [sehen Sie sich Ihr Container-Dashboard an](../log-analytics/log-analytics-containers.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

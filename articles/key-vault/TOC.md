@@ -14,16 +14,18 @@
 ### [Diensteinschränkungen](key-vault-service-limits.md)
 ### [HSM-geschützte Schlüssel](key-vault-hsm-protected-keys.md)
 ### [Migrieren zu .NET 2.0](key-vault-dotnet2api-release-notes.md)
+### Übersichten
+#### [Übersicht über Sicherheitsumgebungen (Security Worlds)](key-vault-ovw-security-worlds.md)
+#### [Vorläufiges Löschen der Übersicht](key-vault-ovw-soft-delete.md)
+#### [Übersicht über die Drosselung](key-vault-ovw-throttling.md)
 
 ## Verwalten
 ### [Azure Key Vault-Protokollierung](key-vault-logging.md)
 ### [Zugreifen hinter Firewalls](key-vault-access-behind-firewall.md)
 ### [Ändern der Mandanten-ID](key-vault-subscription-move-fix.md)
+### [Gewähren von Zugriff mithilfe von Gruppen](key-vault-group-permissions-for-apps.md)
 ### [Verfügbarkeit und Redundanz](key-vault-disaster-recovery-guidance.md)
 ### [Schützen Ihrer Key Vault-Instanz](key-vault-secure-your-key-vault.md)
-### [Übersicht über Sicherheitsumgebungen (Security Worlds)](key-vault-ovw-security-worlds.md)
-### [Vorläufiges Löschen der Übersicht](key-vault-ovw-soft-delete.md)
-### [Übersicht über Speicherkontoschlüssel](key-vault-ovw-storage-keys.md)
 
 ## Automatisieren
 ### [Azure Automation](automation-manage-key-vault.md)
@@ -47,7 +49,8 @@
 
 # Ressourcen
 ## [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
-## [Codebeispiele](https://www.microsoft.com/download/details.aspx?id=45343)
-## [Preise](https://azure.microsoft.com/pricing/details/key-vault/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](http://blogs.technet.com/b/kv/)
+## [Codebeispiele](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [Foren](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
+## [Preise](https://azure.microsoft.com/pricing/details/key-vault/)

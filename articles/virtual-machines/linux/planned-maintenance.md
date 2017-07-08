@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2017
 ms.author: zivr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 28c2fb5a67eca0c5ab2f0299bba7c11375e10558
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: f5e52f4642b85a75f0c9f1892fbf0e565aa8b35b
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/03/2017
 
 Microsoft Azure führt regelmäßig weltweit Updates aus, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur zu verbessern, die virtuellen Computern unterliegt. Diese Updates reichen von Patches für Softwarekomponenten in der Hostumgebung (Betriebssystem, Hypervisor und diverse auf dem Host bereitgestellte Agents), Aktualisierungen von Netzwerkkomponenten bis hin zur Außerbetriebnahme von Hardware.
 
-Die Mehrheit dieser Updates wird ohne Auswirkungen auf gehostete virtuelle Computer oder Clouddienste ausgeführt.
+Die Mehrheit dieser Updates wird ohne Auswirkungen auf gehostete virtuelle Computer oder Cloud Services ausgeführt.
 
 Es gibt jedoch Situationen, in denen Updates Auswirkungen auf gehostete virtuelle Computer haben:
 
@@ -36,4 +36,5 @@ Es gibt jedoch Situationen, in denen Updates Auswirkungen auf gehostete virtuell
 
 -   Neustarten von virtuellen Computern zu Wartungszwecken, wobei ein Neustart oder eine erneute Bereitstellung auf gehosteten virtuellen Computern erforderlich ist.
 
-Beachten Sie, dass auf dieser Seite beschrieben wird, wie Microsoft Azure die geplante Wartung ausführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../windows/manage-availability.md).
+Beachten Sie, dass auf dieser Seite beschrieben wird, wie Microsoft Azure die geplante Wartung ausführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../linux/manage-availability.md).
+

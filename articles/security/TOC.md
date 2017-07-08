@@ -42,6 +42,7 @@
 #### [Erste Schritte mit der Azure-Protokollintegration](security-azure-log-integration-get-started.md)
 #### [Integrieren von Azure Active Directory-Überwachungsprotokollen](security-azure-log-integration-ad.md)
 #### [Integrieren von Security Center-Warnungen](security-azure-log-integration-security-center.md)
+#### [Integrieren von Protokollen aus Key Vault mithilfe von Event Hubs](security-azure-log-integration-keyvault-eventhub.md)
 #### [Häufig gestellte Fragen](security-azure-log-integration-faq.md)
 
 ## Identitätsverwaltung
@@ -72,9 +73,10 @@
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # Ressourcen
-## [Blog zu Sicherheit und Compliance](http://blogs.msdn.com/b/azuresecurity/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MVP-Programm für die Azure-Sicherheit](azure-security-mvp.md)
 ## [Cybersecurity-Consulting](azure-security-cyber-services.md)
+## [Blog zu Sicherheit und Compliance](http://blogs.msdn.com/b/azuresecurity/)
 ## [Sicherheitskurse der Virtual Academy](security-microsoft-virtual-academy.md)
 ## [Sicherheitsvideos auf Channel 9](security-channel-nine.md)
 ## [Threat Modeling Tool](azure-security-threat-modeling-tool.md)

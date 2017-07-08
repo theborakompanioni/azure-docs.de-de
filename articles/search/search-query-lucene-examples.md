@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: liamca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0740bc1f9e8b8be3c59518d9b23b8a1411c6d16a
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: bfb6fc04d3aa4937336083d04137e22694e5146c
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search
 Beim Erstellen von Abfragen für Azure Search können Sie entweder die standardmäßige [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx) oder alternativ dazu den [Lucene-Abfrageparser in Azure Search](https://msdn.microsoft.com/library/azure/mt589323.aspx) verwenden. Der Lucene-Abfrageparser unterstützt komplexere Abfragekonstrukte, beispielsweise feldbezogene Abfragen, Fuzzysuche, NEAR-Suche, Begriffsverstärkung (Term Boosting) und die Suche nach regulären Ausdrücken.
 
-In diesem Artikel können Sie Beispiele durchlaufen, in denen die Abfragesyntax von Lucene und die Ergebnisse nebeneinander dargestellt werden. Die Beispiele werden für einen vorab geladenen Suchindex in [JSFiddle](https://jsfiddle.net/)ausgeführt, einem Online-Code-Editor zum Testen von Skripts und HTML. Hintergrundinformationen zur Abfrageverarbeitung finden Sie unter [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md).
+In diesem Artikel können Sie Beispiele durchlaufen, in denen die Abfragesyntax von Lucene und die Ergebnisse nebeneinander dargestellt werden. Die Beispiele werden für einen vorab geladenen Suchindex in [JSFiddle](https://jsfiddle.net)ausgeführt, einem Online-Code-Editor zum Testen von Skripts und HTML. Hintergrundinformationen zur Abfrageverarbeitung finden Sie unter [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md).
 
 Klicken Sie mit der rechten Maustaste auf die URLs im Abfragebeispiel, um JSFiddle in einem separaten Browserfenster zu öffnen.
 

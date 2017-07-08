@@ -32,3 +32,5 @@
 ## [Verwalten von Herausgeberprofilen](./cloud-partner-portal-manage-publisher-profile.md)
 ## [Verwalten von Benutzern](./cloud-partner-portal-manage-users.md)
 ## [Erhalten von Support](./cloud-partner-portal-support-for-cloud-partner-portal.md)
+# Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

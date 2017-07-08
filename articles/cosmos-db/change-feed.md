@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 8e0516585e2191caaef70bc973f027925df91bf6
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: d04d1240fb353a973953b2a90eadc65705219edb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -167,7 +167,7 @@ Diese Anforderung gibt die folgende Antwort mit Metadaten über die Partitionssc
     <tr>
         <td>minInclusive</td>
         <td>Der minimale Partitionsschlüssel-Hashwert für den Partitionsschlüsselbereich. Zur internen Verwendung.</td>
-    </tr>        
+    </tr>       
 </table>
 
 Sie können eines der unterstützten [Azure Cosmos DB-SDKs](documentdb-sdk-dotnet.md) verwenden. Der folgende Codeausschnitt zeigt z.B., wie Partitionsschlüsselbereiche in .NET abgerufen werden.
@@ -402,5 +402,5 @@ Dieser Artikel enthält eine exemplarische Vorgehensweise zur Azure Cosmos DB-Un
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Probieren Sie die [Codebeispiele für den Azure Cosmos DB-Änderungsfeed auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed) aus.
-* Lernen Sie die Codierung mit den [Azure Cosmos DB SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) kennen.
+* Lernen Sie die Codierung mit den [Azure Cosmos DB SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](/rest/api/documentdb/) kennen.
 

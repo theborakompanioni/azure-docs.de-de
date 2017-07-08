@@ -63,6 +63,10 @@
 ## [Gateway-SKUs (alt)](vpn-gateway-about-skus-legacy.md)
 ## Problembehandlung
 ### [Überprüfen des VPN-Durchsatzes an ein VNET](vpn-gateway-validate-throughput-to-vnet.md)
+### [Von der Community vorgeschlagene VPN- oder Firewallgeräteeinstellungen](vpn-gateway-third-party-settings.md)
+### [Point-to-Site-Verbindungsproblem](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+### [Site-to-Site-Verbindung wird zeitweilig getrennt](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+### [Site-to-Site-Verbindung kann nicht hergestellt werden](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
 
 # Referenz
 ## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
@@ -80,6 +84,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway)

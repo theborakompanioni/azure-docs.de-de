@@ -51,6 +51,7 @@
 ## [Machine Learning](/azure/machine-learning/)
 
 # Ressourcen
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Häufig gestellte Fragen](iot-suite-faq.md)
 ## [Lernpfad für IoT Suite](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 

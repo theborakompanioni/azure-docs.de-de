@@ -15,26 +15,17 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6bfbb0b5eaae3fb3ce45d719ea1d3dec48ed0467
-ms.openlocfilehash: 359aaa1af6765270d9fe0f449007fcb4323b0ad4
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 74196c7d3989cc748a27026c04ea837b29a2785f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/05/2017
 
 
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Ein- und Ausschalten von Geräten der StorSimple 8000-Serie
 ## <a name="overview"></a>Übersicht
 Im Rahmen des normalen Systembetriebs ist es nicht erforderlich, ein Microsoft Azure StorSimple-Gerät herunterzufahren. Möglicherweise müssen Sie jedoch ein neues Gerät oder ein Gerät, das heruntergefahren werden musste, einschalten. Im Allgemeinen müssen Sie Geräte herunterfahren, wenn Sie fehlerhafte Hardware austauschen, eine Einheit physisch verschieben oder ein Gerät außer Betrieb nehmen müssen. Dieses Tutorial beschreibt das erforderliche Verfahren zum Einschalten und Herunterfahren von StorSimple-Geräten in verschiedenen Szenarien.
-
-Die folgende Tabelle führt verschiedene Szenarien auf, in denen StorSimple-Geräte eingeschaltet und heruntergefahren werden müssen, und bietet Links zu den jeweiligen Verfahren.
-
-| Szenario | Referenzthemen |
-|:--- |:--- |
-| Einschalten eines neuen Geräts |[Einschalten eines neuen Geräts](#turn-on-a-new-device)<ul><li>[Neues Gerät nur mit primärem Gehäuse](#new-device-with-primary-enclosure-only)</li><li>[Neues Gerät mit EBOD-Gehäuse](#new-device-with-ebod-enclosure)</li></ul> |
-| Einschalten eines Geräts nach dem Herunterfahren |[Einschalten eines Geräts nach dem Herunterfahren](#turn-on-a-device-after-shutdown)<ul><li>[Gerät nur mit primärem Gehäuse](#device-with-primary-enclosure-only)</li><li>[Gerät mit EBOD-Gehäuse](#device-with-ebod-enclosure)</li></ul> |
-| Einschalten eines Geräts nach einem Stromausfall |[Einschalten eines Geräts nach einem Stromausfall](#turn-on-a-device-after-a-power-loss)<ul><li>[Gerät nur mit primärem Gehäuse](#8100)</li><li>[Gerät mit EBOD-Gehäuse](#8600)</li></ul> |
-| Einschalten eines Geräts nach Unterbrechung der Verbindung von primärem Gehäuse und EBOD |[Einschalten eines Geräts nach Unterbrechung der Verbindung von primärem Gehäuse und EBOD](#turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost) |
-| Herunterfahren eines ausgeführten Geräts |[Ausschalten eines ausgeführten Geräts](#turn-off-a-running-device)<ul><li>[Gerät nur mit primärem Gehäuse](#8100a)</li><li>[Gerät mit EBOD-Gehäuse](#8600a)</li></ul> |
 
 ## <a name="turn-on-a-new-device"></a>Einschalten eines neuen Geräts
 Die Schritte zum erstmaligen Einschalten eines StorSimple-Geräts unterscheiden sich, je nachdem, ob es sich um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In den folgenden Abschnitten werden die detaillierten Schritte für beide Modelle beschrieben.

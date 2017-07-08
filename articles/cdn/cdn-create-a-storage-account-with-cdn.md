@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0ea23f4f59737123f4400dafc7506e121f24ae34
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 35896cc9891e2439df004cc4eab339219d47b805
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -42,7 +42,7 @@ Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator 
     
     Das Blatt **Speicherkonto erstellen** wird angezeigt.   
 
-       ![Create Storage Account][create-new-storage-account]  
+    ![Speicherkonto erstellen][create-new-storage-account]  
 
 3. Geben Sie in das Feld **Name** den Namen einer Unterdomäne ein. Dieser Eintrag kann 3 bis 24 Kleinbuchstaben und Zahlen enthalten.
    
@@ -75,7 +75,7 @@ Mit der neuesten Integration können Sie jetzt CDN für Ihr Speicherkonto aktivi
     - **CDN-Endpunktname:** Geben Sie einen Endpunktnamen Ihrer Wahl ein.
 
     > [!TIP]
-       > Für den erstellten CDN-Endpunkt wird standardmäßig der Hostname Ihres Speicherkontos als Ursprung verwendet.
+    > Für den erstellten CDN-Endpunkt wird standardmäßig der Hostname Ihres Speicherkontos als Ursprung verwendet.
 
     ![CDN – Erstellen eines neuen Endpunkts][cdn-new-endpoint-creation]
 
@@ -123,3 +123,4 @@ Ein bereits im CDN zwischengespeichertes Objekt bleibt zwischengespeichert, bis 
 [cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
 [cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
 [cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 
+

@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 12/15/2016
 ms.author: eugenesh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 82c9d68bc3f1650648fac0597f4a329ef053b109
+ms.sourcegitcommit: 9b56317fe8326a20fccfff4687f518d1e847122f
+ms.openlocfilehash: af9da85c37211d2436c23cc05400031c661ef51e
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 07/06/2017
 
 
 ---

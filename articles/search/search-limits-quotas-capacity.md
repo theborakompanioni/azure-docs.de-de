@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/23/2017
+ms.date: 06/07/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 08682b7986cc2210ed21f254e2a9a63b5355e583
-ms.openlocfilehash: c7094a92355a199e9b94bc695c8499271b9adc39
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: d41a02b837d2cd0c478abdcf3068a5ccf7ed1b6f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -40,12 +41,12 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
 ## <a name="per-index-limits"></a>Nach Indexlimits
-Es gibt eine&1;:1-Entsprechung zwischen Grenzwerten für Indizes und Grenzwerten für Indexer. Bei einem Grenzwert von 200 Indizes beträgt die maximale Zahl von Indexern für den gleichen Dienst auch 200.
+Es gibt eine 1:1-Entsprechung zwischen Grenzwerten für Indizes und Grenzwerten für Indexer. Bei einem Grenzwert von 200 Indizes beträgt die maximale Zahl von Indexern für den gleichen Dienst auch 200.
 
 | Ressource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
 | Index: maximale Anzahl von Feldern pro Index |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
-| Index: maximale Anzahl von Bewertungsprofilen pro Index |16 |16 |16 |16 |16 |16 |
+| Index: maximale Anzahl von Bewertungsprofilen pro Index |100 |100 |100 |100 |100 |100 |
 | Index: maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |
 | Indexer: maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |– <sup>2</sup> |
 | Indexer: maximale Ausführungszeit |3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |– <sup>2</sup> |

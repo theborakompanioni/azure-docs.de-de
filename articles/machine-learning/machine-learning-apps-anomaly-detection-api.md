@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 04/24/2017
+ms.date: 06/05/2017
 ms.author: alok;rotimpe
-translationtype: Human Translation
-ms.sourcegitcommit: a384756abaca45fc6863f8bc59dc3d6cb4fa974a
-ms.openlocfilehash: ae9a4f99d5b38944f38534021523e2153ce7f0d0
-ms.lasthandoff: 01/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 5ddc02905fbb7f9f7c5deb9b970101788d824642
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -61,17 +62,19 @@ Der Webdienst stellt eine REST-basierte API über HTTPS bereit, die auf untersch
 Um die API aufrufen zu können, müssen Sie die Endpunktposition und den API-Schlüssel kennen.  Beides ist zusammen mit dem Beispielcode für das Aufrufen der API auf der Seite der [AzureML-Webdienste](https://services.azureml.net/webservices/) verfügbar.  Navigieren Sie zu der gewünschten API, und klicken Sie dann auf die Registerkarte „Nutzen“, um sie zu finden.  Beachten Sie, dass Sie die API als Swagger-API (d.h. mit dem URL-Parameter `format=swagger`) oder als Nicht-Swagger-API (d.h. ohne `format`-URL-Parameter) aufrufen können.  Im Beispielcode wird das Swagger-Format verwendet.  Im Folgenden finden Sie ein Beispiel für eine Anforderung und Antwort im Nicht-Swagger-Format.  Diese Beispiele gelten für den Saisonabhängigkeits-Endpunkt.  Der Nicht-Saisonabhängigkeits-Endpunkt ist ähnlich.
 
 ### <a name="sample-request-body"></a>Inhalt der Beispielanforderung
-Die Anforderung enthält zwei Objekte: `input1` und `GlobalParameters`.  In der folgenden Beispielanforderung werden einige Parameter explizit gesendet, andere hingegen nicht (scrollen Sie nach unten, um eine vollständige Liste von Parametern für jeden Endpunkt anzuzeigen).  Parameter, die nicht explizit in der Anforderung gesendet werden, verwenden die unten angegebenen Standardwerte.
+Die Anforderung enthält zwei Objekte: `Inputs` und `GlobalParameters`.  In der folgenden Beispielanforderung werden einige Parameter explizit gesendet, andere hingegen nicht (scrollen Sie nach unten, um eine vollständige Liste von Parametern für jeden Endpunkt anzuzeigen).  Parameter, die nicht explizit in der Anforderung gesendet werden, verwenden die unten angegebenen Standardwerte.
 
     {
-        "input1": {
-            "ColumnNames": ["Time", "Data"],
-            "Values": [
-                ["5/30/2010 18:07:00", "1"],
-                ["5/30/2010 18:08:00", "1.4"],
-                ["5/30/2010 18:09:00", "1.1"]
-            ]
-        },
+                "Inputs": {
+                        "input1": {
+                                "ColumnNames": ["Time", "Data"],
+                                "Values": [
+                                        ["5/30/2010 18:07:00", "1"],
+                                        ["5/30/2010 18:08:00", "1.4"],
+                                        ["5/30/2010 18:09:00", "1.1"]
+                                ]
+                        }
+                },
         "GlobalParameters": {
             "tspikedetector.sensitivity": "3",
             "zspikedetector.sensitivity": "3",

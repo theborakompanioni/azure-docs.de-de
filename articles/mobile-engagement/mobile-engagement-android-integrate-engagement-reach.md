@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 06/27/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd8ba95ee1fb2703926fb35cdb49e6a503637a7d
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -28,11 +29,6 @@ ms.lasthandoff: 11/17/2016
 > 
 
 ## <a name="standard-integration"></a>Standardintegration
-Das Reach SDK erfordert **Android Support-Bibliothek (Version 4)**.
-
-Die schnellste Möglichkeit zum Hinzufügen der Bibliothek zum Projekt in **Eclipse** erfolgt über `Right click on your project -> Android Tools -> Add Support Library...`.
-
-Wenn Sie kein Eclipse verwenden, können Sie die entsprechenden Anweisungen [hier]lesen.
 
 Kopieren Sie die Reach-Ressourcendateien aus dem SDK in Ihr Projekt:
 
@@ -107,10 +103,6 @@ Bearbeiten Sie Ihre `AndroidManifest.xml`-Datei:
           <uses-permission android:name="android.permission.VIBRATE" />
   
   Ohne diese Berechtigung verhindert Android, dass Systembenachrichtigungen angezeigt werden, wenn Sie die Option zum Klingeln oder Vibrieren im Reichweitenkampagnen-Manager aktiviert haben.
-* Wenn Sie Ihre Anwendung mithilfe von **ProGuard** erstellt haben und Fehler in Bezug auf die Android Support-Bibliothek oder die Engagement-JAR-Datei aufgetreten sind, fügen Sie die folgenden Zeilen zur Datei `proguard.cfg` hinzu:
-  
-          -dontwarn android.**
-          -keep class android.support.v4.** { *; }
 
 ## <a name="native-push"></a>Systemeigener Push
 Nachdem Sie das Reach-Modul konfiguriert haben, müssen Sie den systemeigenen Push konfigurieren, um Kampagnen auf dem Gerät empfangen zu können.
@@ -243,7 +235,7 @@ Wenn die Überlagerung nicht zu Ihrer Aktivität hinzugefügt werden soll, und S
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="a-namecategoriesa-categories"></a><a name="categories"></a> Kategorien
+#### <a name="categories"></a> Kategorien
 Wenn Sie die bereitgestellten Layouts ändern, verändern Sie das Aussehen Ihrer gesamten Benachrichtigungen. Mithilfe von Kategorien können Sie verschiedene zielgerichtete Layouts (Verhaltensweisen) für Benachrichtigungen definieren. Eine Kategorie kann beim Erstellen einer Reach-Kampagne angegeben werden. Bedenken Sie, dass Sie mithilfe von Kategorien auch Ankündigungen und Umfragen anpassen können (dies wird weiter unten in diesem Dokument beschrieben).
 
 Sie müssen beim Initialisieren der Anwendung einen Aufruf hinzufügen, um einen Kategoriehandler für Ihre Benachrichtigungen zu registrieren.
@@ -636,7 +628,7 @@ Hier folgt der interessante Teil der Implementierung:
 
 Wenn Sie aufgerufen `actionContent(this)` und dann die Aktivität beendet haben, kann `exitContent(this)` ohne Auswirkungen sicher aufgerufen werden.
 
-[hier]:http://developer.android.com/tools/extras/support-library.html#Downloading
+[here]:http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]:https://developer.amazon.com/sdk/adm.html
 
