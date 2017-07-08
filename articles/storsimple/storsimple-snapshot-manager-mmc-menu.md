@@ -4,7 +4,7 @@ description: "Beschreibt die Verwendung der Standardmenüaktionen der Microsoft 
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
 ms.service: storsimple
@@ -12,17 +12,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/25/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b2be03e12b2deaecb352f8703650cf23cdefdebd
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Verwenden der MMC-Menüaktionen im StorSimple Snapshot Manager
+
 ## <a name="overview"></a>Übersicht
-In StorSimple Snapshot Manager werden die folgenden Aktionen in allen Aktionsmenüs und allen Varianten des Bereichs **Aktionen** aufgeführt. 
+In StorSimple Snapshot Manager werden die folgenden Aktionen in allen Aktionsmenüs und allen Varianten des Bereichs **Aktionen** aufgeführt.
 
 * Ansicht
 * New Window from Here 
@@ -99,10 +102,5 @@ Mit der Aktion **Liste exportieren** können Sie eine Liste in einer Datei mit k
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen über die [Benutzeroberfläche des StorSimple Snapshot Managers](storsimple-use-snapshot-manager.md).
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

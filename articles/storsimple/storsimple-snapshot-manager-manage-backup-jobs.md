@@ -4,7 +4,7 @@ description: "Beschreibt, wie das MMC-Snap-in von StorSimple Snapshot Manager zu
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/26/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: b31f6d51399dc0533d8cbefcafc3b55762cb6cf1
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen
+
 ## <a name="overview"></a>Übersicht
 Der Knoten **Aufträge** im Fensterbereich **Bereich** zeigt Sicherungsaufträge in den Phasen **Geplant**, **Letzte 24 Stunden** und **Wird ausgeführt**, die Sie interaktiv oder durch eine konfigurierte Richtlinie initiiert haben. 
 
@@ -38,9 +41,7 @@ Verwenden Sie das folgende Verfahren, um geplante Sicherungsaufträge anzuzeigen
    * **Letzte Ausführung** – das Datum und die Uhrzeit der letzten geplanten Momentaufnahme
      
      > [!NOTE]
-     > Bei einmaligen Momentaufnahmen sind die Informationen **Nächste Ausführung** und **Letzte Ausführung** identisch. 
-     > 
-     > 
+     > Bei einmaligen Momentaufnahmen sind die Informationen **Nächste Ausführung** und **Letzte Ausführung** identisch.
      
      ![Geplante Sicherungsaufträge](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
 3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse** , und wählen Sie aus den Menüoptionen.
@@ -63,14 +64,14 @@ Verwenden Sie das folgende Verfahren zum Anzeigen von Sicherungs- und Wiederhers
      ![Aufträge, die in den letzten 24 Stunden ausgeführt wurden](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
 3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse**, und wählen Sie aus den Menüoptionen.
    
-    ![Löschen eines Auftrags](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png) 
+    ![Löschen eines Auftrags](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>Anzeigen aktuell ausgeführter Aufträge
 Verwenden Sie das folgende Verfahren zum Anzeigen von Aufträgen, die derzeit ausgeführt werden.
 
 #### <a name="to-view-currently-running-jobs"></a>So zeigen Sie aktuell ausgeführte Aufträge an:
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
-2. Erweitern Sie im Fenster **Bereich** den Knoten **Aufträge**, und klicken Sie auf **Wird ausgeführt**. Abhängig von den unter **Ansicht** angegebenen Optionen werden im Bereich **Ergebnisse** die folgenden Informationen angezeigt: 
+2. Erweitern Sie im Fenster **Bereich** den Knoten **Aufträge**, und klicken Sie auf **Wird ausgeführt**. Abhängig von den unter **Ansicht** angegebenen Optionen werden im Bereich **Ergebnisse** die folgenden Informationen angezeigt:
    
    * **Name** – der Name der geplanten Momentaufnahme.
    * **Gestartet** – das Datum und die Startzeit der Momentaufnahme.
@@ -87,10 +88,5 @@ Verwenden Sie das folgende Verfahren zum Anzeigen von Aufträgen, die derzeit au
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten des Sicherungkatalogs](storsimple-snapshot-manager-manage-backup-catalog.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

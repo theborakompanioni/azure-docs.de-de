@@ -4,7 +4,7 @@ description: Beschreibt, wie das StorSimple Snapshot Manager-MMC-Snap-in zum Ers
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
 ms.service: storsimple
@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/12/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9cf39b922e51dd60b5b2c51cb7030436c60232a5
 ms.openlocfilehash: 88fc29b81c9502374a25cb34175ad1ee7c25423f
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -93,9 +95,4 @@ Verwenden Sie das folgende Verfahren, um eine Sicherungsrichtlinie zu löschen.
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen](storsimple-snapshot-manager-manage-backup-jobs.md).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

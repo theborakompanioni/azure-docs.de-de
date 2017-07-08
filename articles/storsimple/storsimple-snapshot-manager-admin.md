@@ -4,7 +4,7 @@ description: "Bietet eine Übersicht und Links zu weiteren Informationen zu Verw
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carolz
+manager: timlt
 editor: 
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/18/2016
+ms.date: 06/05/2016
 ms.author: v-sharos
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5e3528d490cd11fab3fb10126713f81694d7e2d0
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung
+
 ## <a name="overview"></a>Übersicht
 StorSimple Snapshot Manager ist ein Microsoft Management Console (MMC)-Snap-In, das den Datenschutz und die Sicherungsverwaltung in einer Microsoft Azure StorSimple-Umgebung vereinfacht. Mit dem StorSimple Snapshot Manager können Sie Microsoft Azure StorSimple-Daten im Rechenzentrum und in der Cloud als eine einzelne integrierte Speicherlösung verwalten und somit die Sicherungsprozesse vereinfachen und die Kosten senken.
 
@@ -39,8 +42,7 @@ Dieser Artikel enthält Links zu Tutorials, in denen der StorSimple Snapshot Man
 
 > [!NOTE]
 > StorSimple Snapshot Manager eignet sich nicht zur Verwaltung von Microsoft Azure StorSimple Virtual Arrays (auch bekannt als lokale virtuelle StorSimple-Geräte).
-> 
-> 
+
 
 ## <a name="storsimple-snapshot-manager-tasks-and-workflows"></a>StorSimple Snapshot Manager-Aufgaben und -Workflows
 Sie können StorSimple Snapshot Manager zum Überwachen und Verwalten bevorstehender, aktueller und abgeschlossener Sicherungsaufträge verwenden. Darüber hinaus stellt StorSimple Snapshot Manager einen Katalog von bis zu 64 abgeschlossenen Sicherungen bereit. Sie können in diesem Katalog nach Volumes oder einzelnen Dateien suchen und diese wiederherstellen. 
@@ -60,10 +62,5 @@ Sie können StorSimple Snapshot Manager zum Überwachen und Verwalten bevorstehe
 
 ## <a name="next-steps"></a>Nächste Schritte
 [StorSimple Snapshot Manager herunterladen](https://www.microsoft.com/download/details.aspx?id=44220).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
