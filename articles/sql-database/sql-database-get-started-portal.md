@@ -104,7 +104,7 @@ Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern
    > Sie benötigen diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen.
    > 
 
-   ![Servername](./media/sql-database-get-started-portal/server-name.png) 
+   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 2. Klicken Sie auf der Symbolleiste wie in der obigen Abbildung dargestellt auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
 

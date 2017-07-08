@@ -64,7 +64,6 @@ Im folgenden Beispiel wird ein Cluster mit dem Namen *myK8sCluster* mit einem Li
 az acs create --orchestrator-type=kubernetes \
     --resource-group myResourceGroup \
     --name=myK8sCluster \
-    --agent-count=2 \
     --generate-ssh-keys 
 ```
 
