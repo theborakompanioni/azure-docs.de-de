@@ -198,7 +198,7 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
     ```html
     <p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
     ```
-12. Sie haben nun Ihre GUI implementiert. Drücken Sie F5****, um Ihre Anwendung auszuführen und zu prüfen, ob diese korrekt angezeigt wird.
+12. Sie haben nun Ihre GUI implementiert. Drücken Sie **F5** , um Ihre Anwendung auszuführen und zu prüfen, ob diese korrekt angezeigt wird.
     
     ![][17]
 
