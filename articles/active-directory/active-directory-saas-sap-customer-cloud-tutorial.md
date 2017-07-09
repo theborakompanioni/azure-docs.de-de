@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 22665107cdf689042a5b0eee34eaeacc0434fbc4
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -80,11 +82,11 @@ Zum Konfigurieren der Integration von SAP Cloud for Customer in Azure AD müssen
 
 6. Geben Sie in das Suchfeld **SAP Cloud for Customer**ein.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_01.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_01.png)
 
 7. Wählen Sie im Ergebnisbereich **SAP Cloud for Customer** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
-    ![Active Directory](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_02.png)
+    ![Active Directory](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_02.png)
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei SAP Cloud for Customer basierend auf einem Testbenutzer mit dem Namen Britta Simon.
@@ -106,15 +108,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **SAP Cloud for Customer** im Menü oben auf **Attribute**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_80.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_80.png) 
 
 2. Wählen Sie aus der Attributliste „SAML-Tokenattribute“ das Attribut „nameidentifier“ aus, und klicken Sie auf **Bearbeiten**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_84.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_84.png) 
 
 3. Führen Sie im Dialogfeld **Benutzerattribut bearbeiten** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_85.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_85.png) 
 
     a. Wählen Sie aus der Liste **Attributwert** die Funktion **ExtractMailPrefix()** aus.
 
@@ -130,11 +132,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SAP Cloud for Customer anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_03.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_03.png) 
 
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_04.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_04.png) 
    
     a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der SAP Cloud for Customer-Anwendung verwendet wird, nach folgendem Muster ein: `https://<server name>.crm.ondemand.com`
    
@@ -142,11 +144,12 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für SAP Cloud for Customer** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_05.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_05.png)
    
     a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
-    b. Klicken Sie auf **Next**.
+    b. Klicken Sie auf **Weiter**.
+
 
 5. Führen Sie zum Konfigurieren von SSO die folgenden Schritte aus:
    
@@ -156,7 +159,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
    
     c. Klicken Sie auf **New Identity Provider** (Neuer Identitätsanbieter), und wählen Sie die XML-Metadatendatei aus, die Sie aus dem klassischen Azure-Portal heruntergeladen haben. Beim Importieren der Metadaten lädt das System automatisch das erforderliche Signatur- und Verschlüsselungszertifikat hoch.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_54.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
    
     d. Azure AD erfordert die Assertion Consumer Service-URL des Elements in der SAML-Anforderung. Aktivieren Sie daher das Kontrollkästchen **Include Assertion Consumer Service URL** (Assertion Consumer Service-URL aufnehmen).
    
@@ -166,11 +169,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
    
     g. Klicken Sie auf die Registerkarte **My System** (Mein System).
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_52.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
    
     h. Kopieren Sie die **SSO-URL**, und fügen Sie sie in das Textfeld **Azure AD Sign On URL** (Azure AD-Anmelde-URL) ein.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_53.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
    
     i. Geben Sie an, ob der Mitarbeiter manuell zwischen der Anmeldung mit Benutzer-ID und Kennwort oder SSO wählen kann. Aktivieren Sie dazu die Option **Manual Identity Provider Selection** (Manuelle Auswahl des Identitätsanbieters).
    
@@ -208,21 +211,21 @@ In diesem Abschnitt erstellen Sie im klassischen Azure-Portal einen Testbenutzer
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_09.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_09.png) 
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_03.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_03.png) 
 
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_04.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_04.png) 
 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_05.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_05.png) 
    
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
    
@@ -230,7 +233,7 @@ In diesem Abschnitt erstellen Sie im klassischen Azure-Portal einen Testbenutzer
    
     c. Klicken Sie auf **Weiter**.
 
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_06.png) 
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_06.png) 
    
     a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
@@ -244,11 +247,11 @@ In diesem Abschnitt erstellen Sie im klassischen Azure-Portal einen Testbenutzer
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_07.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_07.png) 
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_08.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_08.png) 
    
     a. Notieren Sie den Wert von **Neues Kennwort**.
    
@@ -275,7 +278,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **SAP Cloud for Customer**aus.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_50.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_50.png) 
 
 3. Klicken Sie im oberen Menü auf **Benutzer**.
    
@@ -298,24 +301,19 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SAP Cloud for Customer“ klicken,
 
 <!--Image references-->
 
-[1]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_01.png
-[2]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_02.png
-[3]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_03.png
-[4]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_04.png
+[1]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_100.png
+[6]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_05.png
+[10]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_06.png
+[11]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_07.png
+[20]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_100.png
 
-[200]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_200.png
-[201]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_201.png
-[203]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+[200]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_201.png
+[203]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_203.png
+[204]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_204.png
+[205]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_205.png
 

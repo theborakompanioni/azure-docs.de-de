@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/17/2016
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: ac5a64b759376c06e058ae015b73f1b73b7d1e7b
-ms.openlocfilehash: 8f3c0f7a1b16afdbada39017d28bed49620cc34c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 2e5dbaf595e3d3cd7dee09431fbb1cb6f2403ef4
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -172,18 +174,8 @@ Unter „Job Detail“ (Auftragsdetails) werden die detaillierten Informationen 
     Es zeigt die Ausführungsdetails zu den Scheitelpunkten. Das Auftragsprofil archiviert jedes Ausführungsprotokoll von Scheitelpunkten, wie z.B. die gelesene bzw. geschriebene Gesamtdatenmenge, die Laufzeit, den Status usw. Durch diese Sicht erhalten Sie weitere Informationen zur Ausführung eines Auftrags. Weitere Informationen finden Sie unter [Use the Vertex Execution View in Data Lake Tools for Visual Studio (Verwenden der Scheitelpunktausführungsansicht in Data Lake-Tools für Visual Studio)](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
-* Informationen zu den ersten Schritten der Entwicklung von U-SQL-Anwendungen finden Sie unter [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* Informationen zum Erlernen von U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
-* Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 * Informationen zum Protokollieren von Diagnoseinformationen finden Sie unter [Accessing diagnostic logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md)
 * Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Weitere Informationen zur Verwendung der Scheitelpunktausführungsansicht finden Sie unter [Verwenden der Scheitelpunktausführungsansicht in Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
-* Informationen über Data Lake-Tools für Visual Studio-Code finden Sie unter [Use the Azure Data Lake Tools for Visual Studio Code (Verwenden der Azure Data Lake-Tools für Visual Studio-Code)](data-lake-analytics-data-lake-tools-for-vscode.md).
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 
