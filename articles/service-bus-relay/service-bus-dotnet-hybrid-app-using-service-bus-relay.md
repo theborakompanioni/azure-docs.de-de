@@ -209,7 +209,7 @@ Bei diesem Projekt handelt es sich um eine Visual Studio-Konsolenanwendung, bei 
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
     </appSettings>
     ```
-14. Drücken Sie STRG+UMSCHALT+B****, oder klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die Anwendung zu erstellen und Ihre bisherige Arbeit zu überprüfen.
+14. Drücken Sie **STRG+UMSCHALT+B** , oder klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die Anwendung zu erstellen und Ihre bisherige Arbeit zu überprüfen.
 
 ## <a name="create-an-aspnet-application"></a>Erstellen einer ASP.NET-Anwendung
 
@@ -316,7 +316,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der von Ih
 
    </table>
    ```
-8. Drücken Sie STRG+UMSCHALT+B****, um das Projekt zu erstellen und Ihre bisherige Arbeit zu überprüfen.
+8. Drücken Sie **STRG+UMSCHALT+B** , um das Projekt zu erstellen und Ihre bisherige Arbeit zu überprüfen.
 
 ### <a name="run-the-app-locally"></a>Lokales Ausführen der App
 
@@ -398,7 +398,7 @@ Im nächsten Schritt wird der lokale Produktserver mit der ASP.NET-Webanwendung 
 
 ## <a name="run-the-project-locally"></a>Lokales Ausführen des Projekts
 
-Drücken Sie F5****, um die Anwendung in Visual Studio lokal zu testen. Zuerst muss der lokale Server (**ProductsServer**) gestartet werden, gefolgt von der Anwendung **ProductsPortal** in einem Browserfenster. Dieses Mal werden Sie feststellen, dass in der Produktbestandsliste Daten aus dem lokalen Produktdienstsystem aufgeführt werden.
+Drücken Sie **F5** , um die Anwendung in Visual Studio lokal zu testen. Zuerst muss der lokale Server (**ProductsServer**) gestartet werden, gefolgt von der Anwendung **ProductsPortal** in einem Browserfenster. Dieses Mal werden Sie feststellen, dass in der Produktbestandsliste Daten aus dem lokalen Produktdienstsystem aufgeführt werden.
 
 ![][10]
 

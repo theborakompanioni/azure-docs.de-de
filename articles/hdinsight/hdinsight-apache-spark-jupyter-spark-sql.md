@@ -106,7 +106,7 @@ In diesem Artikel verwenden Sie den **PySpark**-Kernel in dem Notebook, aus dem 
 
     ![Eingeben eines Namens für das Jupyter Notebook, aus dem eine interaktive Spark-Abfrage ausgeführt werden soll](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "Eingeben eines Namens für das Jupyter Notebook, aus dem eine interaktive Spark-Abfrage ausgeführt werden soll")
 
-5. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie UMSCHALT+EINGABE****, um den Code auszuführen. Mit dem Code werden die Typen importiert, die für dieses Szenario benötigt werden:
+5. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE** , um den Code auszuführen. Mit dem Code werden die Typen importiert, die für dieses Szenario benötigt werden:
 
         from pyspark.sql.types import *
 

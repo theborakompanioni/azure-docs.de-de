@@ -60,7 +60,7 @@ Wenn der Gatewaystatus zu *Verbindung wird hergestellt*wechselt, können Sie die
 ## <a name="site-to-site-connections"></a>Standort-zu-Standort-Verbindungen
 
 ### <a name="step-1-gather-information-for-your-vpn-device-configuration"></a>Schritt 1: Sammeln von Konfigurationsinformationen für Ihr VPN-Gerät
-Wenn Sie eine Standort-zu-Standort-Verbindung erstellen, sammeln Sie nach der Gatewayerstellung die Konfigurationsinformationen für Ihr VPN-Gerät. Diese Informationen finden Sie auf der Dashboardseite **** für Ihr virtuelles Netzwerk:
+Wenn Sie eine Standort-zu-Standort-Verbindung erstellen, sammeln Sie nach der Gatewayerstellung die Konfigurationsinformationen für Ihr VPN-Gerät. Diese Informationen finden Sie auf der **Dashboardseite** für Ihr virtuelles Netzwerk:
 
 1. **Gateway-IP-Adresse**: Die IP-Adresse befindet sich auf der **Dashboardseite**. Sie wird erst nach Abschluss der Gatewayerstellung angezeigt.
 2. **Gemeinsam verwendeter Schlüssel**: Klicken Sie am unteren Bildschirmrand auf **Schlüssel verwalten**. Klicken Sie auf das Symbol neben dem Schlüssel, um ihn in die Zwischenablage zu kopieren. Fügen Sie den Schlüssel anschließend ein, und speichern Sie ihn. Diese Schaltfläche funktioniert nur, wenn ein einzelner Standort-zu-Standort-VPN-Tunnel vorhanden ist. Sind mehrere Site-to-Site-VPN-Tunnel vorhanden, muss die API oder das PowerShell-Cmdlet *Get Virtual Network Gateway Shared Key* verwendet werden.
@@ -101,9 +101,9 @@ Führen Sie zum Bearbeiten oder Hinzufügen der Bereiche für ein lokales Netzwe
 3. Nehmen Sie auf der Seite **Den Adressraum angeben** die gewünschten Änderungen vor. Klicken Sie anschließend auf das Häkchen, um die Konfiguration zu speichern.
 
 ## <a name="how-to-view-gateway-traffic"></a>Anzeigen des Gatewaydatenverkehrs
-Das Gateway und den Gatewaydatenverkehr können Sie auf der Dashboardseite **** von Virtual Network anzeigen.
+Das Gateway und den Gatewaydatenverkehr können Sie auf der **Dashboardseite** von Virtual Network anzeigen.
 
-Auf der Dashboardseite **** wird Folgendes angezeigt:
+Auf der **Dashboardseite** wird Folgendes angezeigt:
 
 * Die ein- und ausgehende Datenmenge, die über das Gateway abgewickelt wird.
 * Die Namen der DNS-Server, die für Ihr virtuelles Netzwerk angegeben sind.

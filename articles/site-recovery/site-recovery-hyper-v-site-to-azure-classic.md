@@ -179,10 +179,10 @@ Schutzgruppen sind logische Gruppen virtueller Computer, für die die gleichen S
 2. Fügen Sie auf der Registerkarte **Schutzgruppen** eine neue Schutzgruppe hinzu. Geben Sie einen Namen, den Hyper-V-Quellstandort, das Ziel in **Azure**, den Namen Ihres Azure Site Recovery-Abonnements und das Azure-Speicherkonto an.
 
     ![Schutzgruppe](./media/site-recovery-hyper-v-site-to-azure-classic/protection-group.png)
-3. Legen Sie unter **Replikationseinstellungen** die Kopierhäufigkeit**** fest, um anzugeben, wie oft geänderte Daten zwischen Quelle und Ziel synchronisiert werden sollen. Verfügbare Optionen sind 30 Sekunden, fünf Minuten und 15 Minuten.
+3. Legen Sie unter **Replikationseinstellungen** die **Kopierhäufigkeit** fest, um anzugeben, wie oft geänderte Daten zwischen Quelle und Ziel synchronisiert werden sollen. Verfügbare Optionen sind 30 Sekunden, fünf Minuten und 15 Minuten.
 4. Geben Sie unter **Wiederherstellungspunkte beibehalten für** an, für wie viele Stunden der Wiederherstellungsverlauf gespeichert werden soll.
 5. Unter **Häufigkeit von anwendungskonsistenten Momentaufnahmen** können Sie angeben, ob Momentaufnahmen erstellt werden sollen, bei denen mithilfe des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) sichergestellt wird, dass sich die Anwendungen bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Standardmäßig werden solche Momentaufnahmen nicht erstellt. Stellen Sie sicher, dass der Wert geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte. Dies wird nur für virtuelle Computer mit einem Windows-Betriebssystem unterstützt.
-6. Geben Sie im Feld für die Startzeit der ersten Replikation **** an, wann die erste Replikation der virtuellen Computer in der Schutzgruppe an Azure gesendet werden soll.
+6. Geben Sie im Feld für die **Startzeit der ersten Replikation** an, wann die erste Replikation der virtuellen Computer in der Schutzgruppe an Azure gesendet werden soll.
 
     ![Schutzgruppe](./media/site-recovery-hyper-v-site-to-azure-classic/protection-group2.png)
 
