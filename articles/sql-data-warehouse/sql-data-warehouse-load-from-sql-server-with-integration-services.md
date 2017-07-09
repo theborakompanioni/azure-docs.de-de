@@ -71,7 +71,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Services (SSIS)-Projekt. Anschließend öffnet Visual Studio den Designer für das einzelne neue SSIS-Paket (Package.dtsx) des Projekts. Daraufhin stehen folgende Bildschirmbereiche zur Verfügung:
 
-* Links befindet sich die Toolbox **** mit den SSIS-Komponenten.
+* Links befindet sich die **Toolbox** mit den SSIS-Komponenten.
 * In der Mitte befindet sich die Entwurfsoberfläche mit mehreren Registerkarten. In der Regel verwenden Sie mindestens die Registerkarten **Ablaufsteuerung** und **Datenfluss**.
 * Auf der rechten Seite befinden sich der **Projektmappen-Explorer** und der Bereich **Eigenschaften**.
   
@@ -88,7 +88,7 @@ Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Servi
     ![][09]
 
 ## <a name="step-3-configure-the-source-adapter"></a>Schritt 3: Konfigurieren des Quelladapters
-1. Doppelklicken Sie auf den Quelladapter, um den ADO.NET-Quellen-Editor ****zu öffnen.
+1. Doppelklicken Sie auf den Quelladapter, um den **ADO.NET-Quellen-Editor** zu öffnen.
    
     ![][03]
 2. Klicken Sie auf der Registerkarte **Verbindungs-Manager** des **ADO.NET-Quellen-Editors** neben der Liste **ADO.NET-Verbindungs-Manager** auf die Schaltfläche **Neu**, um das Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** zu öffnen. Erstellen Sie dann Verbindungseinstellungen für die SQL Server-Datenbank, die in diesem Tutorial als Datenquelle fungiert.
@@ -101,8 +101,8 @@ Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Servi
    
    1. Wählen Sie unter **Anbieter**den Datenanbieter „SqlClient“ aus.
    2. Geben Sie unter **Servername**den SQL Server-Namen ein.
-   3. Wählen Sie im Abschnitt für die Serveranmeldung **** Authentifizierungsinformationen aus, oder geben Sie sie ein.
-   4. Wählen Sie im Abschnitt für die Datenbankverbindung **** die AdventureWorks-Beispieldatenbank aus.
+   3. Wählen Sie im **Abschnitt für die Serveranmeldung** Authentifizierungsinformationen aus, oder geben Sie sie ein.
+   4. Wählen Sie im Abschnitt für die **Datenbankverbindung** die AdventureWorks-Beispieldatenbank aus.
    5. Klicken Sie auf **Test Connection**.
       
        ![][06]
@@ -127,7 +127,7 @@ Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Servi
     In einem SSIS-Paket wird zwischen Quelle und Ziel üblicherweise eine ganze Reihe verschiedener Komponenten aus der SSIS-Toolbox verwendet, um die Daten beim Durchlaufen des SSIS-Datenflusses neu zu strukturieren, zu transformieren und zu bereinigen. Hier verbinden wir die Quelle allerdings direkt mit dem Ziel, um das Beispiel möglichst einfach zu halten.
 
 ## <a name="step-5-configure-the-destination-adapter"></a>Schritt 5: Konfigurieren des Zieladapters
-1. Doppelklicken Sie auf den Zieladapter, um den ADO.NET-Ziel-Editor ****zu öffnen.
+1. Doppelklicken Sie auf den Zieladapter, um den **ADO.NET-Ziel-Editor** zu öffnen.
    
     ![][11]
 2. Klicken Sie auf der Registerkarte **Verbindungs-Manager** des **ADO.NET-Ziel-Editors** neben der Liste **Verbindungs-Manager** auf die Schaltfläche **Neu**, um das Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** zu öffnen. Erstellen Sie dann Verbindungseinstellungen für die Azure SQL Data Warehouse-Datenbank, die in diesem Tutorial als Datenziel fungiert.
@@ -136,7 +136,7 @@ Visual Studio wird geöffnet und erstellt ein neues SQL Server Integration Servi
    1. Wählen Sie unter **Anbieter**den Datenanbieter „SqlClient“ aus.
    2. Geben Sie unter **Servername**den SQL Data Warehouse-Namen ein.
    3. Wählen Sie im Abschnitt **Am Server anmelden** die Option **SQL Server-Authentifizierung** aus, und geben Sie die Authentifizierungsinformationen ein.
-   4. Wählen Sie im Abschnitt für die Datenbankverbindung **** eine vorhandene SQL Data Warehouse-Datenbank aus.
+   4. Wählen Sie im Abschnitt für die **Datenbankverbindung** eine vorhandene SQL Data Warehouse-Datenbank aus.
    5. Klicken Sie auf **Test Connection**.
    6. Klicken Sie im Dialogfeld mit den Ergebnissen des Verbindungstests auf **OK**, um zum Dialogfeld **Verbindungs-Manager** zurückzukehren.
    7. Klicken Sie im Dialogfeld **Verbindungs-Manager** auf **OK**, um zum Dialogfeld **ADO.NET-Verbindungs-Manager konfigurieren** zurückzukehren.
