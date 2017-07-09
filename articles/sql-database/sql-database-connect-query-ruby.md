@@ -16,17 +16,16 @@ ms.topic: hero-article
 ms.date: 05/24/2017
 ms.author: andrela
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 2d1092af00c1bce3e47d980a512a25eff1f0d9b6
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: c5d09cf03c87c8da1d8588be62fea3f0cc3eec4f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 06/22/2017
 
 ---
 
 # <a name="azure-sql-database-use-ruby-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Ruby zum Herstellen einer Verbindung und Abfragen von Daten
 
-In diesem Schnellstart wird veranschaulicht, wie Sie mit [Ruby](https://Ruby.org) eine Verbindung mit einer Azure SQL-Datenbank herstellen und anschließend Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über die Plattformen MacOS und Ubuntu Linux verwenden können.
+In diesem Schnellstart wird veranschaulicht, wie Sie mit [Ruby](https://www.ruby-lang.org) eine Verbindung mit einer Azure SQL-Datenbank herstellen und anschließend Transact-SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank über die Plattformen MacOS und Ubuntu Linux verwenden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

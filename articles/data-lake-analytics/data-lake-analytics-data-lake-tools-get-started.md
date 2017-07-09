@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/06/2017
-ms.author: edmaca, yanacai
+ms.date: 06/28/2017
+ms.author: saveenr, yanacai
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: b2fd62683f0272da271eebeb6eb3a71388ecb59e
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 401e2d84e5e2eb9f66a16b299fbb93bd1943e04b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -33,7 +33,7 @@ Erfahren Sie, wie Sie mit Visual Studio Azure Data Lake Analytics-Konten erstell
 
 * **Visual Studio:** alle Editionen außer Express werden unterstützt.
     * Visual Studio 2017
-    * Visual Studio 2015 Update 4
+    * Visual Studio 2015
     * Visual Studio 2013
 * **Microsoft Azure SDK für .NET**, Version 2.7.1 oder höher.  Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx)durch.
 * Ein **Data Lake Analytics**-Konto. Informationen zum Erstellen eines Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md).
@@ -89,10 +89,10 @@ OUTPUT @a
 
     ![U-SQL Visual Studio Data Lake Analytics-Diagramm zur Auftragsleistung](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-   *  **Auftragszusammenfassung** enthält die Zusammenfassung des Auftrags.   
+   * **Auftragszusammenfassung** enthält die Zusammenfassung des Auftrags.   
    * **Auftragsdetails** zeigt ausführlichere Informationen zum Auftrag an, einschließlich Skript, Ressourcen und Scheitelpunkten.
-   *  **Auftragsdiagramm** visualisiert den Fortschritt des Auftrags.
-   *  **Metadatenvorgänge** zeigt alle Aktionen, die auf den U-SQL-Katalog ausgeführt wurden.
+   * **Auftragsdiagramm** visualisiert den Fortschritt des Auftrags.
+   * **Metadatenvorgänge** zeigt alle Aktionen, die auf den U-SQL-Katalog ausgeführt wurden.
    * **Daten** zeigt alle Eingaben und Ausgaben.
    * **Diagnose** enthält eine erweiterte Analyse für die Optimierung der Ausführung und Leistung des Auftrags.
 
