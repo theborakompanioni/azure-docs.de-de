@@ -160,7 +160,7 @@ Bevor Sie mit HPC Cluster Manager Azure-Knoten bereitstellen und Aufträge über
     
     b. Klicken Sie auf **Next** , um den Standardvorlagennamen zu akzeptieren.
     
-    c. Geben Sie auf der Seite **** zur Angabe von Abonnementinformationen Ihre Azure-Abonnement-ID (zu finden in den Azure-Kontoinformationen) ein. Klicken Sie dann neben **Verwaltungszertifikat** auf **Durchsuchen**, und wählen Sie **Default HPC Azure Management** (HPC Azure-Standardverwaltung). Klicken Sie auf **Weiter**.
+    c. Geben Sie auf der Seite zur Angabe von **Abonnementinformationen** Ihre Azure-Abonnement-ID (zu finden in den Azure-Kontoinformationen) ein. Klicken Sie dann neben **Verwaltungszertifikat** auf **Durchsuchen**, und wählen Sie **Default HPC Azure Management** (HPC Azure-Standardverwaltung). Klicken Sie auf **Weiter**.
     
     ![Knotenvorlage][config_hpc12]
     
