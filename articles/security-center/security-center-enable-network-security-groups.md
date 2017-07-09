@@ -35,7 +35,7 @@ Sollten keine Netzwerksicherheitsgruppen aktiviert sein, stellt Security Center 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** aus, ob **Netzwerksicherheitsgruppen** in Subnetzen oder auf virtuellen Computern aktiviert werden sollen.
    ![Aktivieren von Netzwerksicherheitsgruppen][1]
-2. Daraufhin wird das Blatt zum Konfigurieren fehlender Netzwerksicherheitsgruppen **** für Subnetze oder virtuelle Computer geöffnet (je nachdem, welche Empfehlung Sie ausgewählt haben). Wählen Sie ein Subnetz oder einen virtuellen Computer aus, um eine Netzwerksicherheitsgruppe dafür zu konfigurieren.
+2. Daraufhin wird das Blatt zum **Konfigurieren fehlender Netzwerksicherheitsgruppen** für Subnetze oder virtuelle Computer geöffnet (je nachdem, welche Empfehlung Sie ausgewählt haben). Wählen Sie ein Subnetz oder einen virtuellen Computer aus, um eine Netzwerksicherheitsgruppe dafür zu konfigurieren.
 
    ![Konfigurieren der NSG (Subnetz)][2]
 
