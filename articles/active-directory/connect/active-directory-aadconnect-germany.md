@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: a6bb1c4b3a4972cdab9b99c548ef918a4d1070a0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 780728950199bac6a317767ef1db4462b3fe6ffd
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -35,8 +37,7 @@ Derzeit müssen viele Szenarien in [Microsoft Cloud Deutschland](https://www.mic
 * Folgende Funktionen stehen nicht zur Verfügung:
   * Azure AD Connect Health
   * Automatische Aktualisierungen
-  * Rückschreiben von Kennwörtern
-
+ 
 ## <a name="download"></a>Download
 Sie können Azure AD Connect über das Blatt „Azure AD Connect“ im Portal herunterladen.  In der Anleitung unten ist angegeben, wie Sie das Blatt „Azure AD Connect“ finden.
 
@@ -64,10 +65,5 @@ Die Dokumentation zur Installation von Azure AD Connect finden Sie [hier](active
 
 ## <a name="advanced-features-and-additional-information"></a>Erweiterte Funktionen und zusätzliche Informationen
 Falls Sie weitere Informationen und eine Anleitung zu benutzerdefinierten Einstellungen oder erweiterten Konfigurationseinstellungen benötigen, sollten Sie mit [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)beginnen.  Diese Seite enthält Informationen und Links zu weiteren Anleitungen.
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

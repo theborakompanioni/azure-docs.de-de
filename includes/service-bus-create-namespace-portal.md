@@ -1,5 +1,3 @@
-## <a name="create-a-service-namespace"></a>Erstellen eines Dienstnamespaces
-
 Um mit der Verwendung von Service Bus-Warteschlangen in Azure beginnen zu können, müssen Sie zuerst einen Namespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. 
 
 So erstellen Sie einen Namespace
@@ -16,6 +14,7 @@ So erstellen Sie einen Namespace
 8. Klicken Sie auf **Erstellen**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
 
 ### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
+
 1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
 2. Klicken Sie auf dem Blatt „Namespace“ auf **Richtlinien für gemeinsamen Zugriff**.
 3. Klicken Sie auf dem Blatt **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
