@@ -22,7 +22,8 @@ ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Tutorial: Azure Active Directory-Integration mit Qlik Sense Enterprise
+<a id="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise" class="xliff"></a>
+# Tutorial: Azure Active Directory-Integration mit Qlik Sense Enterprise
 In diesem Tutorial erfahren Sie, wie Sie Qlik Sense Enterprise in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Qlik Sense Enterprise in Azure AD bietet die folgenden Vorteile:
@@ -33,7 +34,8 @@ Die Integration von Qlik Sense Enterprise in Azure AD bietet die folgenden Vorte
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+## Voraussetzungen
 Um die Azure AD-Integration mit Qlik Sense Enterprise konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
@@ -49,7 +51,8 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
 * Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
+<a id="scenario-description" class="xliff"></a>
+## Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -57,7 +60,8 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 1. Hinzufügen von Qlik Sense Enterprise aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>Hinzufügen von Qlik Sense Enterprise aus dem Katalog
+<a id="adding-qlik-sense-enterprise-from-the-gallery" class="xliff"></a>
+## Hinzufügen von Qlik Sense Enterprise aus dem Katalog
 Zum Konfigurieren der Integration von Qlik Sense Enterprise in Azure AD müssen Sie Qlik Sense Enterprise aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Qlik Sense Enterprise aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -87,7 +91,8 @@ Zum Konfigurieren der Integration von Qlik Sense Enterprise in Azure AD müssen 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-qliksense-enterprise-tutorial/tutorial_qliksenseenterprise_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+<a id="configuring-and-testing-azure-ad-single-sign-on" class="xliff"></a>
+## Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Qlik Sense Enterprise basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Qlik Sense Enterprise als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Qlik Sense Enterprise muss eine Linkbeziehung eingerichtet werden.
@@ -102,7 +107,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Qlik Sense
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+<a id="configuring-azure-ad-single-sign-on" class="xliff"></a>
+### Konfigurieren des einmaligen Anmeldens von Azure AD
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Qlik Sense Enterprise-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Qlik Sense Enterprise die folgenden Schritte aus:**
@@ -240,7 +246,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+<a id="creating-an-azure-ad-test-user" class="xliff"></a>
+### Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -295,10 +302,12 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
    
     b. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-qlik-sense-enterprise-test-user"></a>Erstellen eines Qlik Sense Enterprise-Testbenutzers
+<a id="creating-an-qlik-sense-enterprise-test-user" class="xliff"></a>
+### Erstellen eines Qlik Sense Enterprise-Testbenutzers
 In diesem Abschnitt erstellen Sie in Qlik Sense Enterprise einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom Qlik Sense Enterprise-Supportteam unterstützen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+<a id="assigning-the-azure-ad-test-user" class="xliff"></a>
+### Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Qlik Sense Enterprise gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -323,12 +332,14 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-## <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+<a id="testing-single-sign-on" class="xliff"></a>
+## Testen der einmaligen Anmeldung
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Qlik Sense Enterprise“ klicken, sollten Sie automatisch bei Ihrer Qlik Sense Enterprise-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+<a id="additional-resources" class="xliff"></a>
+## Zusätzliche Ressourcen
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 

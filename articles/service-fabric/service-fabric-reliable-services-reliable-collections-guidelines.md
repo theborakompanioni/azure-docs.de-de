@@ -22,7 +22,8 @@ ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
+<a id="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric" class="xliff"></a>
+# Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
 Dieser Abschnitt enthält Richtlinien für die Verwendung von Reliable State Manager und Reliable Collections. Er soll Benutzern helfen, häufige Fehlerquellen zu vermeiden.
 
 Die Richtlinien werden als einfache Empfehlungen präsentiert********.
@@ -50,7 +51,8 @@ Hier folgen einige Punkte, die es zu beachten gilt:
   Dies bedeutet, dass Datenversionen, die von einem einzelnen sekundären Replikat gelesen werden, falsch weiterverarbeitet werden können.
   Da Lesevorgänge von primären Replikaten immer stabil sind, können hier nie fehlerhafte Versionen auftreten.
 
-### <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+### Nächste Schritte
 * [Arbeiten mit Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transaktionen und Sperren](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * [Reliable State Manager und Reliable Collection – ausführliche Informationen](service-fabric-reliable-services-reliable-collections-internals.md)
