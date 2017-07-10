@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: e917385cb9afc13ba459aed48e5f06cc156efac5
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 3dfe8571114d936cc07d887392ec294ec8a67120
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 ---
 
@@ -43,11 +44,11 @@ Auch wenn die Verwendung von Funktionen wie **Date.GetDate()** oder **Math.rando
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Hinzufügen benutzerdefinierter JavaScript-Funktionen im Azure-Portal
 Führen Sie die unten angegebenen Schritte aus, um eine einfache benutzerdefinierte JavaScript-Funktion unter einem vorhandenen Stream Analytics-Auftrag zu erstellen:
 
-1.    Suchen Sie den Stream Analytics-Auftrag im Azure-Portal.
+1.  Suchen Sie den Stream Analytics-Auftrag im Azure-Portal.
 2.  Wählen Sie unter **Auftragstopologie** Ihre Funktion aus. Eine leere Liste von Funktionen wird angezeigt.
-3.    Wählen Sie zum Erstellen einer neuen benutzerdefinierten Funktion **Hinzufügen** aus.
-4.    Wählen Sie auf dem Blatt **Neue Funktion** als **Funktionstyp** die Option **JavaScript** aus. Eine Standardfunktionsvorlage wird im Editor angezeigt.
-5.    Geben Sie **hex2Int** als **UDF-Alias** ein, und ändern Sie die Funktionsimplementierung wie folgt:
+3.  Wählen Sie zum Erstellen einer neuen benutzerdefinierten Funktion **Hinzufügen** aus.
+4.  Wählen Sie auf dem Blatt **Neue Funktion** als **Funktionstyp** die Option **JavaScript** aus. Eine Standardfunktionsvorlage wird im Editor angezeigt.
+5.  Geben Sie **hex2Int** als **UDF-Alias** ein, und ändern Sie die Funktionsimplementierung wie folgt:
 
     ```
     // Convert Hex value to integer.
@@ -56,13 +57,13 @@ Führen Sie die unten angegebenen Schritte aus, um eine einfache benutzerdefinie
     }
     ```
 
-6.    Wählen Sie **Speichern**aus. Ihre Funktion wird in der Liste der Funktionen angezeigt.
-7.    Wählen Sie die neue **hex2Int**-Funktion aus, und überprüfen Sie die Funktionsdefinition. Bei allen Funktionen wird dem Funktionsalias ein **UDF**-Präfix hinzugefügt. Sie müssen das Präfix beim Aufruf der Funktion in der Stream Analytics-Abfrage *einschließen*. Rufen Sie in diesem Fall **UDF.hex2Int** aus.
+6.  Wählen Sie **Speichern**aus. Ihre Funktion wird in der Liste der Funktionen angezeigt.
+7.  Wählen Sie die neue **hex2Int**-Funktion aus, und überprüfen Sie die Funktionsdefinition. Bei allen Funktionen wird dem Funktionsalias ein **UDF**-Präfix hinzugefügt. Sie müssen das Präfix beim Aufruf der Funktion in der Stream Analytics-Abfrage *einschließen*. Rufen Sie in diesem Fall **UDF.hex2Int** aus.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Aufrufen benutzerdefinierter JavaScript-Funktionen in einer Abfrage
 
 1. Wählen Sie im Abfrage-Editor unter **Auftragstopologie** die Option **Abfrage** aus.
-2.    Bearbeiten Sie die Abfrage, und rufen Sie anschließend die benutzerdefinierte Funktion wie folgt auf:
+2.  Bearbeiten Sie die Abfrage, und rufen Sie anschließend die benutzerdefinierte Funktion wie folgt auf:
 
     ```
     SELECT
@@ -74,8 +75,8 @@ Führen Sie die unten angegebenen Schritte aus, um eine einfache benutzerdefinie
         InputStream
     ```
 
-3.    Klicken Sie zum Hochladen der Beispieldatendatei mit der rechten Maustaste auf die Auftragseingabe.
-4.    Wählen Sie zum Testen der Abfrage **Testen** aus.
+3.  Klicken Sie zum Hochladen der Beispieldatendatei mit der rechten Maustaste auf die Auftragseingabe.
+4.  Wählen Sie zum Testen der Abfrage **Testen** aus.
 
 
 ## <a name="supported-javascript-objects"></a>Unterstützte JavaScript-Objekte
@@ -144,7 +145,7 @@ Weitere Hilfe finden Sie in unserem [Azure Stream Analytics-Forum](https://socia
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
-* [Erste Schritte mit Azure Stream Analytics](stream-analytics-get-started.md)
+* [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referenz zur Stream Analytics-Abfragesprache)
 * [Azure Stream Analytics management REST API reference](https://msdn.microsoft.com/library/azure/dn835031.aspx) (Referenz zur Azure Stream Analytics-Verwaltungs-REST-API)

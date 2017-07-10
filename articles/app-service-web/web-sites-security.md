@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3071bf565b14966de2293205026c4524d7b0f0c5
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b70d74441f3d6d9793ae516b3f04e36e786a9a8f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -38,7 +38,7 @@ Da der App Service die Azure-VMs, den Speicher, Netzwerkschnittstellen, Web-Fram
 * Die gesamte Kommunikation zwischen Ihrer App Service-App und externen Ressourcen, z. B. PowerShell-Verwaltung, Befehlszeilenschnittstelle, Azure-SDKs, REST-APIs und Hybrid-Verbindungen ordnungsgemäß verschlüsselt ist.
 * Das 24-Stunden-Threat Management schützt die App Service-Ressourcen vor Malware, verteilten Denial-of-Service (DDoS), Man-in-the-Middle (MITM) und anderen Bedrohungen. 
 
-Weitere Informationen zur Infrastruktur und Plattform-Sicherheit in Azure finden Sie unter [Azure Trust Center](/support/trust-center/security/).
+Weitere Informationen zur Infrastruktur und Plattform-Sicherheit in Azure finden Sie unter [Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
 
 #### <a name="application-security"></a>Anwendungssicherheit
 Während Azure dafür verantwortlich ist, die Infrastruktur und Plattform zu sichern, auf der Ihre Anwendung ausgeführt wird, ist es Ihre Aufgabe die Anwendung selbst zu sichern. Das heißt, Sie müssen Ihren Anwendungscode und den Inhalt in einer sicheren Weise entwickeln, bereitstellen und verwalten. Ansonsten kann Ihr Anwendungscode oder Inhalt noch immer anfällig für Sicherheitsrisiken sein, wie z. B.:
