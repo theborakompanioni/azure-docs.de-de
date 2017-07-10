@@ -21,7 +21,8 @@ ms.lasthandoff: 04/03/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Tutorial: Azure Active Directory-Integration mit Fuse
+<a id="tutorial-azure-active-directory-integration-with-fuse" class="xliff"></a>
+# Tutorial: Azure Active Directory-Integration mit Fuse
 
 In diesem Tutorial erfahren Sie, wie Sie Fuse in Azure Active Directory (Azure AD) integrieren.
 
@@ -33,7 +34,8 @@ Die Integration von Fuse in Azure AD bietet die folgenden Vorteile:
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+## Voraussetzungen
 
 Um die Azure AD-Integration mit Fuse konfigurieren zu können, benötigen Sie Folgendes:
 
@@ -52,13 +54,15 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
+<a id="scenario-description" class="xliff"></a>
+## Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Fuse aus dem Katalog
 2. Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
 
-## <a name="add-fuse-from-the-gallery"></a>Hinzufügen von Fuse aus dem Katalog
+<a id="add-fuse-from-the-gallery" class="xliff"></a>
+## Hinzufügen von Fuse aus dem Katalog
 Zum Konfigurieren der Integration von Fuse in Azure AD müssen Sie Fuse aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Fuse aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -83,12 +87,13 @@ Zum Konfigurieren der Integration von Fuse in Azure AD müssen Sie Fuse aus dem 
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_0001.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+<a id="configure-and-test-azure-ad-single-sign-on" class="xliff"></a>
+##  Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD bei Fuse basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
 Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Fuse als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Fuse muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Fuse zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Fuse zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD bei Fuse sind die folgenden Bausteine erforderlich:
 
@@ -98,7 +103,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD bei Fuse
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+<a id="configure-azure-ad-single-sign-on" class="xliff"></a>
+### Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) mit Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer Fuse-Anwendung.
 
@@ -153,7 +159,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) mit Azure AD im 
 
     • Die heruntergeladene **Zertifikatsdatei** • Die **SAML-Dienst-URL für einmaliges Anmelde** • Die **SAML-Entitäts-ID** • Die **Abmelde-URL**
   
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+<a id="create-an-azure-ad-test-user" class="xliff"></a>
+### Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
 
 ![Azure AD-Benutzer erstellen][100]
@@ -180,11 +187,13 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
   3. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
   4. Klicken Sie auf **Erstellen**. 
 
-### <a name="create-a-fuse-test-user"></a>Erstellen eines Fuse-Testbenutzers
+<a id="create-a-fuse-test-user" class="xliff"></a>
+### Erstellen eines Fuse-Testbenutzers
 
 In diesem Abschnitt erstellen Sie in Fuse einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom [Fuse-Supportteam](mailto:support@fusion-universal.com) unterstützen.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+<a id="assign-the-azure-ad-test-user" class="xliff"></a>
+### Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Fuse gewähren.
 
@@ -214,14 +223,16 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+<a id="test-single-sign-on" class="xliff"></a>
+### Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Fuse“ klicken, sollten Sie automatisch bei Ihrer Fuse-Anwendung angemeldet werden.
 
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+<a id="additional-resources" class="xliff"></a>
+## Weitere Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)

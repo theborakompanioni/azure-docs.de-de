@@ -22,7 +22,8 @@ ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jive"></a>Tutorial: Azure Active Directory-Integration mit Jive
+<a id="tutorial-azure-active-directory-integration-with-jive" class="xliff"></a>
+# Tutorial: Azure Active Directory-Integration mit Jive
 In diesem Tutorial erfahren Sie, wie Sie Jive in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Jive in Azure AD bietet die folgenden Vorteile:
@@ -33,7 +34,8 @@ Die Integration von Jive in Azure AD bietet die folgenden Vorteile:
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+## Voraussetzungen
 Um die Azure AD-Integration mit Jive konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
@@ -49,7 +51,8 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
 * Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
+<a id="scenario-description" class="xliff"></a>
+## Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -57,7 +60,8 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 1. Hinzufügen von Jive über den Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-jive-from-the-gallery"></a>Hinzufügen von Jive über den Katalog
+<a id="adding-jive-from-the-gallery" class="xliff"></a>
+## Hinzufügen von Jive über den Katalog
 Um die Integration von Jive in Azure AD zu konfigurieren, müssen Sie Jive über den Katalog zu Ihrer Liste mit verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um Jive über den Katalog hinzuzufügen:**
@@ -82,12 +86,13 @@ Um die Integration von Jive in Azure AD zu konfigurieren, müssen Sie Jive über
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-jive-tutorial/tutorial_jive_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+<a id="configuring-and-testing-azure-ad-single-sign-on" class="xliff"></a>
+## Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Jive mithilfe eines Testbenutzers namens Britta Simon.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Jive als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Jive muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Jive zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Jive zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Jive müssen die folgenden Schritte ausgeführt werden:
 
@@ -98,7 +103,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Jive müs
 5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 6. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+<a id="configuring-azure-ad-single-sign-on" class="xliff"></a>
+### Konfigurieren des einmaligen Anmeldens von Azure AD
 Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und in Ihrer Jive-Anwendung zu konfigurieren.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Jive die folgenden Schritte aus:**
@@ -152,7 +158,8 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 10. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+<a id="creating-an-azure-ad-test-user" class="xliff"></a>
+### Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -200,10 +207,12 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
    
     b. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-a-jive-test-user"></a>Erstellen eines Jive-Testbenutzers
+<a id="creating-a-jive-test-user" class="xliff"></a>
+### Erstellen eines Jive-Testbenutzers
 In diesem Abschnitt erstellen Sie in Jive einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom Jive-Supportteam unterstützen.
 
-### <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+<a id="configuring-user-provisioning" class="xliff"></a>
+### Konfigurieren der Benutzerbereitstellung
 In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Directory-Benutzerkonten für Jive aktivieren.  
 Im Rahmen dieses Verfahrens werden Sie zur Angabe eines Benutzersicherheitstokens aufgefordert, das Sie von „Jive.com“ anfordern müssen.
 
@@ -211,7 +220,8 @@ Der folgende Screenshot zeigt ein Beispiel für das entsprechende Dialogfeld in 
 
 ![Benutzerbereitstellung konfigurieren](./media/active-directory-saas-jive-tutorial/IC698794.png "Benutzerbereitstellung konfigurieren")
 
-#### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
+<a id="to-configure-user-provisioning-perform-the-following-steps" class="xliff"></a>
+#### So konfigurieren Sie die Benutzerbereitstellung
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Jive** auf **Benutzerbereitstellung konfigurieren**, um das Dialogfeld **Benutzerbereitstellung konfigurieren** zu öffnen.
 2. Legen Sie auf der Seite **Geben Sie Ihre Jive-Anmeldeinformationen ein, um die automatische Benutzerbereitstellung zu aktivieren** die folgenden Konfigurationseinstellungen fest:
    
@@ -231,11 +241,12 @@ Der folgende Screenshot zeigt ein Beispiel für das entsprechende Dialogfeld in 
 
     e. Klicken Sie auf **Weiter**, um die **Bestätigungsseite** zu öffnen.
 
-3. Klicken Sie auf der Bestätigungsseite **** auf das Häkchen, um die Konfiguration zu speichern.
+3. Klicken Sie auf der **Bestätigungsseite** auf das Häkchen, um die Konfiguration zu speichern.
 
 Sie können nun ein Testkonto erstellen und nach 10 Minuten überprüfen, ob das Konto mit „Jive.com“ synchronisiert wurde.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+<a id="assigning-the-azure-ad-test-user" class="xliff"></a>
+### Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Jive gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -256,12 +267,14 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+<a id="testing-single-sign-on" class="xliff"></a>
+### Testen der einmaligen Anmeldung
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Jive“ klicken, sollten Sie automatisch bei Ihrer Jive-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+<a id="additional-resources" class="xliff"></a>
+## Weitere Ressourcen
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
