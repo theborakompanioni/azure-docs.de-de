@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 02c854727e5185968dba49233df82ea6ff336ec8
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: d7a5620aef1f28ea065ec10ce095f7f3904a8060
 ms.contentlocale: de-de
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -68,8 +68,8 @@ Ein Nebeneffekt der Pufferung ist, dass die Ausgabe **um denselben Zeitraum verz
 Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Einführung in Stream Analytics](stream-analytics-introduction.md)
-* [Erste Schritte mit Stream Analytics](stream-analytics-get-started.md)
+* [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
+* [Erste Schritte mit Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [REST-API-Referenz für die Stream Analytics-Verwaltung](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenz zur REST-API für die Stream Analytics-Verwaltung](https://msdn.microsoft.com/library/azure/dn835031.aspx)

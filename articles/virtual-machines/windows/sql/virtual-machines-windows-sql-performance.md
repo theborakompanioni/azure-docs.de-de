@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/28/2017
+ms.date: 06/27/2017
 ms.author: jroth
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: d09d2317fc7b94f7b63712e7309a49e16fd1aaa2
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9704c6cc846df5a8e129f48ea6378140c8338279
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -165,8 +165,6 @@ Für manche Bereitstellungen können durch Verwendung erweiterter Konfigurations
 * **SQL Server-Datendateien in Azure**: Das neue Feature [SQL Server-Datendateien in Microsoft Azure](https://msdn.microsoft.com/library/dn385720.aspx)ist ab SQL Server 2014 verfügbar. Das Ausführen von SQL Server mit Datendateien in Azure zeigt vergleichbare Leistungseigenschaften wie die Verwendung von Azure-Datenträgern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Ausführliche Informationen zu SQL Server und Storage Premium finden Sie im Artikel [Verwenden von Azure Storage Premium mit SQL Server auf virtuellen Computern](../classic/sql-server-premium-storage.md).
 
 Best Practices für die Sicherheit finden Sie unter [Sicherheitsüberlegungen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-security.md).
 
