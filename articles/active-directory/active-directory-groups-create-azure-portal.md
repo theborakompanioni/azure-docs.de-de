@@ -23,7 +23,8 @@ ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory
+<a id="create-a-group-and-add-members-in-azure-active-directory" class="xliff"></a>
+# Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-groups-create-azure-portal.md)
 > * [Klassisches Azure-Portal](active-directory-accessmanagement-manage-groups.md)
@@ -33,9 +34,10 @@ ms.lasthandoff: 05/08/2017
 
 In diesem Artikel wird erläutert, wie Sie eine neue Gruppe in Azure Active Directory erstellen und auffüllen. Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. für das Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt.
 
-## <a name="how-do-i-create-a-group"></a>Wie erstelle ich eine Gruppe?
+<a id="how-do-i-create-a-group" class="xliff"></a>
+## Wie erstelle ich eine Gruppe?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
    ![Öffnen der Benutzerverwaltung](./media/active-directory-groups-create-azure-portal/search-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.
@@ -53,7 +55,8 @@ In diesem Artikel wird erläutert, wie Sie eine neue Gruppe in Azure Active Dire
 
    ![Bestätigen der Gruppenerstellung](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+## Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Anzeigen vorhandener Gruppen](active-directory-groups-view-azure-portal.md)
