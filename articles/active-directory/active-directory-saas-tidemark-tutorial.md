@@ -22,7 +22,8 @@ ms.lasthandoff: 02/17/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>Tutorial: Azure Active Directory-Integration mit Tidemark
+<a id="tutorial-azure-active-directory-integration-with-tidemark" class="xliff"></a>
+# Tutorial: Azure Active Directory-Integration mit Tidemark
 Dieses Tutorial soll Ihnen zeigen, wie Sie Tidemark in Azure Active Directory (Azure AD) integrieren können.
 
 Die Integration von Tidemark in Azure AD bietet die folgenden Vorteile:
@@ -33,7 +34,8 @@ Die Integration von Tidemark in Azure AD bietet die folgenden Vorteile:
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+## Voraussetzungen
 Um die Azure AD-Integration mit Tidemark konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
@@ -48,7 +50,8 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
 * Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
+<a id="scenario-description" class="xliff"></a>
+## Beschreibung des Szenarios
 Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. 
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -56,7 +59,8 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 * Hinzufügen von Tidemark aus dem Katalog
 * Konfigurieren und Testen der einmaligen Anmeldung (SSO) von Azure AD
 
-## <a name="add-tidemark-from-the-gallery"></a>Hinzufügen von Tidemark aus dem Katalog
+<a id="add-tidemark-from-the-gallery" class="xliff"></a>
+## Hinzufügen von Tidemark aus dem Katalog
 Zum Konfigurieren der Integration von Tidemark in Azure AD müssen Sie Tidemark aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Tidemark aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -81,12 +85,13 @@ Zum Konfigurieren der Integration von Tidemark in Azure AD müssen Sie Tidemark 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tidemark-tutorial/tutorial_tidemark_02.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+<a id="configure-and-test-azure-ad-single-sign-on" class="xliff"></a>
+## Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden (SSO) von Azure AD in Tidemark konfiguriert und getestet werden kann.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Tidemark als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Tidemark muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Tidemark zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Tidemark zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Tidemark müssen Sie die folgenden Schritte ausführen:
 
@@ -96,7 +101,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Tidemark 
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+<a id="configure-azure-ad-single-sign-on" class="xliff"></a>
+### Konfigurieren des einmaligen Anmeldens in Azure AD
 Das Ziel dieses Abschnitts ist, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Tidemark-Anwendung zu konfigurieren.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Tidemark die folgenden Schritte aus:**
@@ -124,7 +130,8 @@ Das Ziel dieses Abschnitts ist, das einmalige Anmelden von Azure AD im klassisch
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+<a id="create-an-azure-ad-test-user" class="xliff"></a>
+### Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -164,14 +171,16 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   1. Notieren Sie den Wert von **Neues Kennwort**.
   2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="create-a-tidemark-test-user"></a>Erstellen eines Tidemark-Testbenutzers
+<a id="create-a-tidemark-test-user" class="xliff"></a>
+### Erstellen eines Tidemark-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Tidemark. Wenden Sie sich an das Supportteam von Tidemark, um die Benutzer unter dem Tidemark-Konto hinzuzufügen. 
 
 >[!NOTE]
 >Setzen Sie sich mit dem Supportteam von Tidemark in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen. 
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+<a id="assign-the-azure-ad-test-user" class="xliff"></a>
+### Zuweisen des Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) bei Azure zu ermöglichen, indem sie Zugriff auf Tidemark erhält.
 
 ![Benutzer zuweisen][200] 
@@ -192,12 +201,14 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
    
     ![Benutzer zuweisen][205]
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+<a id="test-single-sign-on" class="xliff"></a>
+### Testen des einmaligen Anmeldens
 Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Tidemark“ klicken, sollten Sie automatisch in Ihrer Tidemark-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+<a id="additional-resources" class="xliff"></a>
+## Weitere Ressourcen
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
