@@ -1,5 +1,5 @@
 ---
-title: Verwenden des E-Mail-Diensts SendGrid (PHP) | Microsoft Docs
+
 description: Erfahren Sie, wie Sie E-Mails mit dem SendGrid-E-Mail-Dienst in Azure senden. Die Codebeispiele wurden in PHP geschrieben.
 documentationcenter: php
 services: 
