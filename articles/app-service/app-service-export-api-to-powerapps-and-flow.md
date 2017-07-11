@@ -22,9 +22,13 @@ ms.lasthandoff: 05/11/2017
 
 
 ---
-# <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportieren einer in Azure gehosteten API in PowerApps und Microsoft Flow
+<a id="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow" class="xliff"></a>
 
-## <a name="creating-custom-connectors-for-powerapps-and-microsoft-flow"></a>Erstellen von benutzerdefinierten Connectors für PowerApps und Microsoft Flow
+# Exportieren einer in Azure gehosteten API in PowerApps und Microsoft Flow
+
+<a id="creating-custom-connectors-for-powerapps-and-microsoft-flow" class="xliff"></a>
+
+## Erstellen von benutzerdefinierten Connectors für PowerApps und Microsoft Flow
 
 [PowerApps](https://powerapps.com) ist ein Dienst zum Erstellen und Verwenden benutzerdefinierter Branchen-Apps, die eine Verbindung mit Ihren Daten herstellen und plattformübergreifend verwendet werden können. [Microsoft Flow](https://flow.microsoft.com) ermöglicht die problemlose Automatisierung von Workflows und Geschäftsprozessen zwischen Ihren bevorzugten Apps und Diensten. Sowohl PowerApps als auch Microsoft Flow verfügt über verschiedene integrierte Connectors für Datenquellen wie Office 365, Dynamics 365 und Salesforce. Benutzer müssen aber auch Datenquellen und APIs nutzen können, die von ihrer Organisation erstellt werden.
 
@@ -36,7 +40,9 @@ Weitere Informationen zu diesen Diensten finden Sie unter den folgenden Links:
 - [Was ist App Service?](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
 - [Übersicht zu Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)
 
-## <a name="sharing-an-api-definition"></a>Gemeinsames Verwenden einer API-Definition
+<a id="sharing-an-api-definition" class="xliff"></a>
+
+## Gemeinsames Verwenden einer API-Definition
 
 APIs werden häufig mithilfe eines [Open API-Dokuments](https://www.openapis.org/) (manchmal auch „Swagger-Dokument“ genannt) beschrieben. Dieses Dokument enthält alle Informationen zu den verfügbaren Vorgängen und zur Strukturierung der Daten. PowerApps und Microsoft Flow können benutzerdefinierte Connectors für jedes beliebige Open API 2.0-Dokument erstellen. Nach der Erstellung kann ein benutzerdefinierter Connector auf die gleiche Weise verwendet werden wie einer der integrierten Connectors und schnell in eine Anwendung integriert werden.
 
@@ -51,7 +57,9 @@ Diese beiden Schritte müssen in einer Organisation unter Umständen von zwei ve
 > Da eine Kopie der API-Definition verwendet wird, kommen Aktualisierungen oder wichtige Änderungen erst mit einer gewissen Verzögerung bei PowerApps und Microsoft Flow an. Wenn eine neue Version der API verfügbar wird, sollten diese Schritte für die neue Version wiederholt werden. 
 
 <a name="export"></a>
-## <a name="retrieving-the-api-definition-from-app-service-or-azure-functions"></a>Abrufen der API-Definition aus App Service oder Azure Functions
+<a id="retrieving-the-api-definition-from-app-service-or-azure-functions" class="xliff"></a>
+
+## Abrufen der API-Definition aus App Service oder Azure Functions
 
 In diesem Abschnitt exportieren Sie die API-Definition für Ihre App Service-API zur späteren Verwendung in PowerApps.
 
@@ -61,9 +69,9 @@ In diesem Abschnitt exportieren Sie die API-Definition für Ihre App Service-API
     
     Wählen Sie bei Verwendung von Azure Functions die Option **Funktionen-App-Einstellungen** und anschließend **API-Metadaten konfigurieren** aus.
 
-2. Falls eine API-Definition bereitgestellt wurde, wird eine Schaltfläche zum Exportieren in PowerApps und Microsoft Flow**** angezeigt. Klicken Sie auf diese Schaltfläche, um den Exportvorgang zu starten.
+2. Falls eine API-Definition bereitgestellt wurde, wird eine Schaltfläche zum **Exportieren in PowerApps und Microsoft Flow** angezeigt. Klicken Sie auf diese Schaltfläche, um den Exportvorgang zu starten.
 
-3. Sie können wählen, ob Sie die API-Definition herunterladen**** oder einen Link anfordern ****möchten. Für beide Fälle wird das Ergebnis im nächsten Abschnitt bereitgestellt. Wählen Sie eine der Optionen aus, und befolgen Sie die Anweisungen.
+3. Sie können wählen, ob **Sie die API-Definition herunterladen** oder **einen Link** anfordern möchten. Für beide Fälle wird das Ergebnis im nächsten Abschnitt bereitgestellt. Wählen Sie eine der Optionen aus, und befolgen Sie die Anweisungen.
  
 4. Falls Ihre API-Definition Sicherheitsdefinitionen enthält, werden diese in Schritt 2 angegeben. Während des Imports werden sie von PowerApps und Microsoft Flow erkannt, und Sie werden zur Angabe von Sicherheitsinformationen aufgefordert. Diese werden von den Diensten für die Anmeldung von Benutzern verwendet, damit sie auf die API zugreifen können. Falls Ihre API eine Authentifizierung erfordert, stellen Sie sicher, dass sie in Ihrem Open API-Dokument als _Sicherheitsdefinition_ erfasst ist.
 
@@ -76,7 +84,9 @@ https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutor
 > Falls die API-Definition von einer anderen Person in PowerApps importiert wird, stellen Sie zusätzlich zur API-Definitionsdatei auch die Client-ID und den geheimen Clientschlüssel **der neuen Registrierung** sowie die Ressourcen-URL Ihrer API bereit. Achten Sie auf eine sichere Verwaltung dieser Geheimnisse. **Geben Sie die Sicherheitsanmeldeinformationen der API nicht weiter.**
 
 <a name="import"></a>
-## <a name="importing-the-api-definition-into-powerapps-and-microsoft-flow"></a>Importieren der API-Definition in PowerApps und Microsoft Flow
+<a id="importing-the-api-definition-into-powerapps-and-microsoft-flow" class="xliff"></a>
+
+## Importieren der API-Definition in PowerApps und Microsoft Flow
 
 In diesem Abschnitt erstellen Sie mithilfe der zuvor abgerufenen API-Definition einen benutzerdefinierten Connector in PowerApps und Microsoft Flow. Da benutzerdefinierte Connectors von den beiden Diensten gemeinsam genutzt werden, muss die Definition nur einmal importiert werden. Weitere Informationen zu benutzerdefinierten Connectors finden Sie unter [Registrieren und Verwenden von benutzerdefinierten Connectors in PowerApps] und [Registrieren und Verwenden von benutzerdefinierten Connectors in Microsoft Flow].
 
