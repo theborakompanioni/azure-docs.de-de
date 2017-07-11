@@ -22,7 +22,8 @@ ms.lasthandoff: 01/24/2017
 
 
 ---
-# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurieren von Reliable Actors –ReliableDictionaryActorStateProvider
+<a id="configuring-reliable-actors--reliabledictionaryactorstateprovider" class="xliff"></a>
+# Konfigurieren von Reliable Actors –ReliableDictionaryActorStateProvider
 Sie können die Standardkonfiguration von „ReliableDictionaryActorStateProvider“ ändern, indem Sie die Datei „settings.xml“, die im Stammverzeichnis des Visual Studio-Pakets im Ordner „Config“ generiert wurde, für den betreffenden Actor ändern.
 
 Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „settings.xml“ nach vordefinierten Abschnittsnamen und nutzt die Konfigurationswerte beim Erstellen der zugrunde liegenden Laufzeitkomponenten.
@@ -34,12 +35,14 @@ Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „settings
 
 Es gibt auch globale Einstellungen, die sich auf die Konfiguration von ReliableDictionaryActorStateProvider auswirken.
 
-## <a name="global-configuration"></a>Globale Konfiguration
+<a id="global-configuration" class="xliff"></a>
+## Globale Konfiguration
 Die globale Konfiguration wird im Clustermanifest für den Cluster im Abschnitt KtlLogger angegeben. So können für das freigegebene Protokoll der Speicherort und die Größe sowie die vom Protokollierungstool verwendeten globalen Speicherlimits konfiguriert werden. Beachten Sie, dass sich die Änderungen im Clustermanifest auf alle Dienste auswirken, die ReliableDictionaryActorStateProvider und zuverlässige zustandsbehaftete Dienste verwenden.
 
 Das Clustermanifest ist eine einzelne XML-Datei mit Einstellungen und Konfigurationen, die für alle Knoten und Dienste im Cluster gelten. Die Datei heißt normalerweise „ClusterManifest.xml“. Mit dem PowerShell-Befehl Get-ServiceFabricClusterManifest können Sie das Clustermanifest für Ihren Cluster sehen.
 
-### <a name="configuration-names"></a>Konfigurationsnamen
+<a id="configuration-names" class="xliff"></a>
+### Konfigurationsnamen
 | Name | Unit | Standardwert | Hinweise |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobytes |8388608 |KB-Mindestwert, der im Kernelmodus dem Schreibpuffer-Speicherpool des Protokollierungstools zugeordnet wird. Dieser Speicherpool wird zum Zwischenspeichern von Zustandsinformationen verwendet, bevor auf den Datenträger geschrieben wird. |
@@ -48,7 +51,8 @@ Das Clustermanifest ist eine einzelne XML-Datei mit Einstellungen und Konfigurat
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad zur freigegebenen Protokolldatei an. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht den SharedLogPath angeben. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 | SharedLogSizeInMB |Megabytes |8192 |Gibt den MB-Wert für den Festplattenspeicher an, der für das freigegebene Protokoll statisch zugeordnet wird. Der Wert muss größer oder gleich 2.048 sein. |
 
-### <a name="sample-cluster-manifest-section"></a>Beispiel für einen Clustermanifestabschnitt
+<a id="sample-cluster-manifest-section" class="xliff"></a>
+### Beispiel für einen Clustermanifestabschnitt
 ```xml
    <Section Name="KtlLogger">
      <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
@@ -59,28 +63,34 @@ Das Clustermanifest ist eine einzelne XML-Datei mit Einstellungen und Konfigurat
    </Section>
 ```
 
-### <a name="remarks"></a>Hinweise
+<a id="remarks" class="xliff"></a>
+### Hinweise
 Das Protokollierungstool verfügt über einen globalen Pool mit Speicher, der aus einem nicht ausgelagerten Kernelspeicher zugeordnet wird. Dieser ist für alle Reliable Services auf einem Knoten zum Zwischenspeichern von Zustandsdaten verfügbar, bevor diese in das dedizierte, dem Reliable Service-Replikat zugeordnete Protokoll geschrieben werden. Die Poolgröße wird mit WriteBufferMemoryPoolMinimumInKB und den Einstellungen von WriteBufferMemoryPoolMaximumInKB gesteuert. Mit WriteBufferMemoryPoolMinimumInKB wird sowohl die Anfangsgröße des Speicherpools als auch die kleinste Größe angegeben, auf die der Speicherpool verkleinert werden kann. WriteBufferMemoryPoolMaximumInKB ist die maximale Größe, auf die der Speicherpool anwachsen kann. Jedes geöffnete Reliable Services-Replikat kann die Größe des Speicherpools um einen vom System bestimmten Betrag maximal auf die in WriteBufferMemoryPoolMaximumInKB angegebene Größe erhöhen. Falls der Bedarf an Speicher aus dem Speicherpool die Verfügbarkeit übersteigt, werden Speicheranforderungen zurückgestellt, bis wieder Speicher verfügbar ist. Falls der Schreibpuffer-Speicherpool zu klein für eine bestimmte Konfiguration ist, kann dies die Leistung negativ beeinträchtigen.
 
 Die Einstellungen von SharedLogId und SharedLogPath werden immer zusammen verwendet, um die GUID und den Speicherort für das standardmäßige freigegebene Protokoll für alle Knoten im Cluster zu definieren. Das standardmäßige freigegebene Protokoll wird für alle Reliable Services verwendet, bei denen die Einstellungen nicht in der Datei „Settings.xml“ für den jeweiligen Dienst angegeben werden. Um die beste Leistung zu erzielen, sollten freigegebene Protokolldateien auf Datenträgern gespeichert werden, die ausschließlich für die freigegebene Protokolldatei verwendet werden. So werden Konflikte reduziert.
 
 Mit SharedLogSizeInMB wird die Menge an Festplattenspeicher angegeben, die für das standardmäßige freigegebene Protokoll auf allen Knoten vorab zugewiesen werden soll.  „SharedLogId“ und „SharedLogPath“ müssen nicht angegeben werden, um „SharedLogSizeInMB“ angeben zu können.
 
-## <a name="replicator-security-configuration"></a>Replicator-Sicherheitskonfiguration
+<a id="replicator-security-configuration" class="xliff"></a>
+## Replicator-Sicherheitskonfiguration
 Replicator-Sicherheitskonfigurationen werden verwendet, um den während der Replikation verwendeten Kommunikationskanal zu schützen. Dies bedeutet, dass Dienste ihren gegenseitigen Replikationsdatenverkehr nicht erkennen können. Dadurch wird sichergestellt, dass die Daten nicht nur hochverfügbar, sondern auch sicher sind.
 Standardmäßig wird die Replikationssicherheit durch einen leeren Sicherheitskonfigurationsabschnitt verhindert.
 
-### <a name="section-name"></a>Name des Abschnitts
+<a id="section-name" class="xliff"></a>
+### Name des Abschnitts
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-## <a name="replicator-configuration"></a>Replicator-Konfiguration
+<a id="replicator-configuration" class="xliff"></a>
+## Replicator-Konfiguration
 Replicator-Konfigurationen werden zum Konfigurieren des Replicators verwendet, der dafür verantwortlich ist, den Status des Actor-Statusanbieters durch Replizieren und persistentes Speichern hochzuverlässig zu machen.
 Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollte ausreichen. Dieser Abschnitt befasst sich mit zusätzlichen Konfigurationen, die zum Optimieren des Replicators verfügbar sind.
 
-### <a name="section-name"></a>Name des Abschnitts
+<a id="section-name" class="xliff"></a>
+### Name des Abschnitts
 &lt;ActorName&gt;ServiceReplicatorConfig
 
-### <a name="configuration-names"></a>Konfigurationsnamen
+<a id="configuration-names" class="xliff"></a>
+### Konfigurationsnamen
 | Name | Unit | Standardwert | Hinweise |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekunden |0,015 |So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet. |
@@ -94,7 +104,8 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 | SharedLogId |GUID |"" |Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden. |
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 
-## <a name="sample-configuration-file"></a>Beispiel einer Konfigurationsdatei
+<a id="sample-configuration-file" class="xliff"></a>
+## Beispiel einer Konfigurationsdatei
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -115,7 +126,8 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 </Settings>
 ```
 
-## <a name="remarks"></a>Anmerkungen
+<a id="remarks" class="xliff"></a>
+## Anmerkungen
 Der Parameter „BatchAcknowledgementInterval“ steuert die Replikationslatenz. Der Wert "0" ergibt die geringstmögliche Latenz, allerdings auf Kosten des Durchsatzes (da eine größer Anzahl von Bestätigungsnachrichten gesendet und verarbeitet werden muss, von denen jede weniger Bestätigungen enthält).
 Je größer der Wert für "BatchAcknowledgementInterval" ist, um so höher ist der Gesamtdurchsatz der Replikation, zu Lasten einer höheren Vorgangslatenz. Daraus ergibt sich direkt die Latenz von Transaktions-Commits.
 

@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
@@ -22,19 +22,23 @@ ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Azure Data Factory .NET SDK
-## <a name="overview"></a>Übersicht
+<a id="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk" class="xliff"></a>
+# Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Azure Data Factory .NET SDK
+<a id="overview" class="xliff"></a>
+## Übersicht
 Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen, überwachen und verwalten. Dieser Artikel enthält eine exemplarische Vorgehensweise, die Sie befolgen können, um eine .NET-Beispielkonsolenanwendung zu erstellen, die eine Data Factory erstellt und überwacht. 
 
 > [!NOTE]
 > In diesem Artikel wird nicht die gesamte Data Factory-.NET-API behandelt. In der [.NET-API-Referenz für die Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) finden Sie eine umfassende Dokumentation zur .NET-API für die Data Factory. 
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+## Voraussetzungen
 * Visual Studio 2012, 2013 oder 2015
 * Laden Sie das [Azure .NET SDK](http://azure.microsoft.com/downloads/)herunter, und installieren Sie es.
 * Azure PowerShell. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) zum Installieren von Azure PowerShell auf Ihrem Computer. Azure PowerShell wird zum Erstellen einer Azure Active Directory-Anwendung benötigt.
 
-### <a name="create-an-application-in-azure-active-directory"></a>Erstellen einer Anwendung in Azure Active Directory
+<a id="create-an-application-in-azure-active-directory" class="xliff"></a>
+### Erstellen einer Anwendung in Azure Active Directory
 Erstellen Sie eine Azure Active Directory-Anwendung, erstellen Sie einen Dienstprinzipal für die Anwendung, und weisen Sie ihn der Rolle **Data Factory-Mitwirkender** zu.
 
 1. Starten Sie **PowerShell**.
@@ -90,7 +94,7 @@ Erstellen Sie eine Azure Active Directory-Anwendung, erstellen Sie einen Dienstp
 9. Rufen Sie die Anwendungs-ID ab.
 
     ```PowerShell
-    $azureAdApplication    
+    $azureAdApplication 
     ```
     Notieren Sie sich die Anwendungs-ID (applicationID) aus der Ausgabe.
 
@@ -101,7 +105,8 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
 * Anwendungs-ID
 * Kennwort (angegeben im ersten Befehl)
 
-## <a name="walkthrough"></a>Exemplarische Vorgehensweise
+<a id="walkthrough" class="xliff"></a>
+## Exemplarische Vorgehensweise
 In der exemplarischen Vorgehensweise erstellen Sie eine Data Factory mit einer Pipeline, die eine Kopieraktivität beinhaltet. Bei der Kopieraktivität werden Daten aus einem Ordner in Azure Blob Storage in einen anderen, ebenfalls in Blob Storage befindlichen Ordner kopiert. 
 
 Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie basiert auf einem global verfügbaren Dienst, mit dem Daten zwischen verschiedenen Datenspeichern sicher, zuverlässig und skalierbar kopiert werden können. Ausführliche Informationen zur Kopieraktivität finden Sie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) .
@@ -458,7 +463,8 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
     * Pipeline: **PipelineBlobSample**
 19. Vergewissern Sie sich, dass im Ordner **apifactoryoutput** im Container **adftutorial** eine Ausgabedatei erstellt wird.
 
-## <a name="get-a-list-of-failed-data-slices"></a>Abrufen einer Liste von fehlerhaften Datenslices 
+<a id="get-a-list-of-failed-data-slices" class="xliff"></a>
+## Abrufen einer Liste von fehlerhaften Datenslices 
 
 ```csharp
 // Parse the resource path
@@ -497,7 +503,8 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+## Nächste Schritte
 Sehen Sie sich das folgende Beispiel für die Erstellung einer Pipeline mithilfe des .NET-SDK an, das Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert: 
 
 - [Erstellen einer Pipeline zum Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-activity-tutorial-using-dotnet-api.md)
