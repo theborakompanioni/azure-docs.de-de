@@ -1,302 +1,190 @@
 ---
-title: "Lesevorgänge mit Python über Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
-description: "Unter der Annahme, dass keine Vorkenntnisse vorhanden sind, wird erläutert, wie ein Python-Codebeispiel zum Schreiben und Lesen von Daten aus einer Tabelle in Azure-Datenbank für PostgreSQL ausgeführt wird."
+title: "Herstellen einer Verbindung mit Azure-Datenbank für PostgreSQL per Python | Microsoft-Dokumentation"
+description: "Enthält ein Python-Codebeispiel, das Sie nutzen können, um zu den Daten von Azure-Datenbank für PostgreSQL eine Verbindung herzustellen und Abfragen dafür durchzuführen."
 services: postgresql
-author: MightyPen
-ms.author: genemi
+author: SaloniSonpal
+ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: postgresql-database
-ms.custom: quick start connect
-ms.workload: drivers
-ms.tgt_pltfrm: na
+ms.custom: mvc
 ms.devlang: python
-ms.topic: article
-ms.date: 05/10/2017
+ms.topic: hero-article
+ms.date: 06/23/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 42f5e8191e52d1e2a4502a961158b6fec1c061d1
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 0027d25bcaa3376c5a29299f3ec88809ebf1d2d8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/26/2017
 
 ---
-# <a name="python-reading-from-azure-database-for-postgresql"></a>Lesevorgänge mit Python über Azure-Datenbank für PostgreSQL
+<a id="azure-database-for-postgresql-use-python-to-connect-and-query-data" class="xliff"></a>
 
+# Azure-Datenbank für PostgreSQL: Verwenden von Python zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
+In diesem Schnellstart wird veranschaulicht, wie Sie [Python](https://python.org) nutzen, um eine Verbindung mit einer Azure-Datenbank für PostgreSQL herzustellen. Anschließend können Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank auf MacOS-, Ubuntu Linux- und Windows-Plattformen verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Python-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
 
-Dieser Artikel bietet einen kurzen Überblick über das Python-Programm, das eine SQL SELECT-Anweisung zum Lesen einer Zeile aus einer Tabelle verwendet. In dem Artikel wird zudem erläutert, wie die Anforderungen zum Ausführen des Python-Programms ermittelt und die entsprechenden Komponenten installiert werden können.
+<a id="prerequisites" class="xliff"></a>
 
-Unsere Python-Beispielprogramm und die beschriebenen Python-bezogenen Tools sind alle gleichermaßen für verschiedene Plattformen wie Linux, Mac und Windows geeignet. 
+## Voraussetzungen
+In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
+- [Erstellen einer Datenbank – Portal](quickstart-create-server-database-portal.md)
+- [Erstellen einer Datenbank – CLI](quickstart-create-server-database-azure-cli.md)
 
+Außerdem benötigen Sie:
+- Installation von [Python](https://www.python.org/downloads/)
+- Installation des [pip](https://pip.pypa.io/en/stable/installing/)-Pakets (pip ist bereits installiert, wenn Sie Binärdateien der Version Python 2 (mindestens 2.7.9) oder Python 3 (mindestens 3.4) verwenden, die Sie von [python.org](https://python.org) heruntergeladen haben, aber Sie müssen pip aktualisieren.)
 
-## <a name="install-the-python-interpreter"></a>Installieren des Python-Interpreter
+<a id="install-the-python-connection-libraries-for-postgresql" class="xliff"></a>
 
+## Installieren der Python-Verbindungsbibliotheken für PostgreSQL
+Installieren Sie das [psycopg2](http://initd.org/psycopg/docs/install.html)-Paket, mit dem Sie eine Verbindung für die Datenbank herstellen und diese abfragen können. psycopg2 ist [unter PyPI](https://pypi.python.org/pypi/psycopg2/) in Form von [wheel](http://pythonwheels.com/)-Paketen für die gängigen Plattformen (Linux, OSX, Windows) verfügbar. Sie können „pip install“ also verwenden, um die Binärversion des Moduls einschließlich aller Abhängigkeiten abzurufen:
 
-Das Python-Codebeispiel in diesem Artikel wurde für den Python-Interpreter Version 2.7 geschrieben und kann nicht von Version 3.x ausgeführt werden.
+```cmd
+pip install psycopg2
+```
+Stellen Sie sicher, dass Sie eine aktuelle Version von pip verwenden (ein Upgrade ist beispielsweise mit `pip install -U pip` möglich).
 
-Über den folgenden Link kann der Python-Interpreter Version 2.7 heruntergeladen und installiert werden:
+<a id="get-connection-information" class="xliff"></a>
 
-- [Download des Python-Interpreter über python.org](https://www.python.org/downloads/)
+## Abrufen von Verbindungsinformationen
+Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure-Datenbank für PostgreSQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
-Stellen Sie nach der Installation sicher, dass Sie den Interpreter finden und über eine Befehlszeile ausführen können. Verwenden Sie z.B. folgenden Befehl:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem Server **mypgserver-20170401**, den Sie soeben erstellt haben.
+3. Klicken Sie auf den Servernamen **mypgserver-20170401**.
+4. Wählen Sie die Seite **Übersicht** des Servers aus. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
+ ![Azure-Datenbank für PostgreSQL – Anmeldename des Serveradministrators](./media/connect-python/1-connection-string.png)
+5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
+   
+<a id="connect-create-table-and-insert-data" class="xliff"></a>
 
-`python.exe -?`
+## Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
+Verwenden Sie den folgenden Code, um die Verbindung herzustellen und die Daten zu laden, indem Sie die Funktion [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) mit der **INSERT**-SQL-Anweisung nutzen. Die Funktion [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) wird verwendet, um die SQL-Abfrage für die PostgreSQL-Datenbank auszuführen. Ersetzen Sie die Parameter „host“, „dbname“, „user“ und „password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben.
 
-
-## <a name="install-pipexe-the-python-module-installer"></a>Installieren des Installationsprogramms für das Python-Modul (pip.exe)
-
-
-Bei der Installation des Python-Interpreter wird möglicherweise auch pip.exe installiert, womöglich in einem Unterverzeichnis mit dem Namen *Skripts/*. Mit Pip.exe werden spezielle Python-Module installiert. Stellen Sie sicher, dass Sie pip.exe finden und ausführen können.
-
-`pip.exe`
-
-Wenn pip.exe nicht ausgeführt werden kann, prüfen Sie, ob die Programmdatei des Python-Dienstprogramms mit dem Namen **get-pip.py** vorhanden ist. Wenn get-pip.py vorhanden ist, können Sie die Datei zum Abrufen von pip.exe ausführen:
-
-`python.exe get-pip.py`
-
-
-## <a name="install-psycopg-the-connection-module"></a>Installieren Sie das Verbindungsmodul psycopg.
-
-
-Unser Python-Programm benötigt ein Modul, das eine Verbindung zwischen unserem Programm und dem Azure-Datenbank für PostgreSQL-Server herstellen kann. Der Name des Verbindungsmoduls lautet **psycopg2**. Weitere Details finden Sie hier:
-
-- [psycopg2-Website](http://initd.org/psycopg/)
-
-Installieren Sie psycopg2, indem Sie den folgenden pip.exe-Installationsbefehl verwenden:
-
-`pip.exe install psycopg2`
-
-
-## <a name="create-an-azure-database-for-postgresql-server"></a>Erstellen eines Servers für Azure-Datenbank für PostgreSQL
-
-
-Wenn Sie noch keinen Zugriff auf einen Azure-Datenbank für PostgreSQL-Server haben, lesen Sie die Dokumentation, in der die Methoden zum Erstellen eines Servers erläutert werden:
-
-- [Erstellen eines Servers für Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals](quickstart-create-server-database-portal.md)
-- [Erstellen eines Servers für Azure-Datenbank für PostgreSQL mithilfe der Azure CLI](quickstart-create-server-database-azure-cli.md)
-
-
-## <a name="obtain-the-connection-string-values"></a>Abrufen der Werte der Verbindungszeichenfolge
-
-
-Über das Azure-Portal können Sie die Werte der Verbindungszeichenfolge für Ihren Azure-Datenbank für PostgreSQL-Server abrufen. Sie benötigen die Parameterwerte, die in der folgenden Tabelle beschrieben werden.
-
-- Spalte *Name* &ndash; Zeigt die Parameterbezeichner an, die psycopg2 benötigt.
-- Spalte *-Symbol* &ndash; Zeigt die Parameterbezeichner an, die von unserem Python-Beispielprogramm *PythonDriver.py* benötigt werden.
-
-
-| Name | -Symbol | Beispielwert |
-| :--  | :--     | :--           |
-| host | -h | myazurepostgresql.database.windows.net |
-| user | -U | myalias@myazurepostgresql |
-| dbname | -d angeben, | postgres<br />*(Alle PostgreSQL-Server verfügen über eine Datenbank mit dem Namen **postgres**.)* |
-| port | -p | 5432 *(wahrscheinlich dieser bestimmte Wert 5432)* |
-| password | -P | MySecretPassword |
-||||
-
-
-## <a name="the-python-sample-program"></a>Das Python-Beispielprogramm
-
-
-Dieser Abschnitt enthält den Quellcode für unser Python-Beispielprogramm. Sie können das Programm weiter unten in diesem Artikel ausführen.
-
-```python
-# PythonDriver.py
-# Python version 2.7
-
+```Python
 import psycopg2
-import sys
-import getopt
 
-def main():
+# Update connection string information obtained from the portal
+host = "mypgserver-20170401.postgres.database.azure.com"
+user = "mylogin@mypgserver-20170401"
+dbname = "mypgsqldb"
+password = "<server_admin_password>"
 
-    host = ""
-    user = ""
-    dbname = ""
-    port = ""
-    password = ""
+# Construct connection string
+conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn = psycopg2.connect(conn_string) 
+print "Connection established"
 
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "h:U:d:p:P:", [])
-    except getopt.GetoptError as exc:
-        print str(exc)
-        usage()
-        exit(2)
+cursor = conn.cursor()
 
-    for o, a in opts:
-        if o == "-h": host = str(a)
-        if o == "-U": user = str(a)
-        if o == "-d": dbname = str(a)
-        if o == "-p": port = str(a)
-        if o == "-P": password = str(a)
+# Drop previous table of same name if one exists
+cursor.execute("DROP TABLE IF EXISTS inventory;")
+print "Finished dropping table (if existed)"
 
-    conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+# Create table
+cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+print "Finished creating table"
 
-    try:
-        # Create a connection.  Raise an exception if cannot connect.
-        conn = psycopg2.connect(conn_string) 
-        cursor = conn.cursor()
+# Insert some data into table
+cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
+cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
+cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
+print "Inserted 3 rows of data"
 
-        #cursor.execute("DROP TABLE testpy1;")
-        #conn.commit()
-
-        cursor.execute("CREATE TABLE testpy1 (id serial PRIMARY KEY, num integer, data varchar);")
-
-        cursor.execute("INSERT INTO testpy1 (num, data) VALUES (%s, %s)", (100, "First'row"))
-        cursor.execute("INSERT INTO testpy1 (num, data) VALUES (%s, %s)", (110, "Second_row"))
-        conn.commit()
-
-        cursor.execute("SELECT id, num, data FROM testpy1;")
-        result = cursor.fetchone()
-
-        # Optionally, you can comment these clean-up lines to leave
-        # the testpy1 table available for your inspection by pgAdmin. 
-        cursor.execute("DROP TABLE testpy1;")
-        conn.commit()
-
-    except Exception as exc:
-        print "FAILED ", exc
-        exit(1)
-
-    print "SUCCESS: ", result
-
-if __name__ == "__main__":
-    main()
+conn.commit()
 ```
 
+<a id="read-data" class="xliff"></a>
 
-## <a name="command-lines-to-run-the-sample-program"></a>Befehlszeilen zum Ausführen des Beispielprogramms
+## Lesen von Daten
+Verwenden Sie den folgenden Code, um die eingefügten Daten mit der Funktion [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) per **SELECT**-SQL-Anweisung zu lesen. Diese Funktion akzeptiert eine Abfrage und gibt ein Resultset zurück, das mithilfe von [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) durchlaufen werden kann. Ersetzen Sie die Parameter „host“, „dbname“, „user“ und „password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben.
 
+```Python
+import psycopg2
 
-In diesem Abschnitt werden die Befehlszeilen aufgeführt, die zum Testen des Python-Beispielprogramms zusammen mit der Ausgabe der eigentlichen Bestätigung verwendet werden.
+# Update connection string information obtained from the portal
+host = "mypgserver-20170401.postgres.database.azure.com"
+user = "mylogin@mypgserver-20170401"
+dbname = "mypgsqldb"
+password = "<server_admin_password>"
 
-Bei den zuvor beschriebenen Parametern müssen Sie die hier angezeigten Beispielwerte durch die tatsächlichen Werte der Verbindungszeichenfolge ersetzen.
+# Construct connection string
+conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn = psycopg2.connect(conn_string) 
+print "Connection established"
 
-Die genaue Syntax zur Ausführung des vorangehenden Python-Beispielprogramms kann geringfügig abweichen. Die genaue Syntax hängt von Ihrem Betriebssystem und dem von Ihnen verwendeten Konsolentyp ab.
+cursor = conn.cursor()
 
+# Fetch all rows from table
+cursor.execute("SELECT * FROM inventory;")
+rows = cursor.fetchall()
 
-#### <a name="windows-cmdexe-console"></a>Windows-Konsole cmd.exe
+# Print all rows
+for row in rows:
+    print "Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))
 
-
-Der folgende Codeblock stellt einen tatsächlichen Testlauf des Python-Beispielprogramms dar. Eine einfache cmd.exe-Befehlszeile wurde verwendet. Nach jedem Zeilenfortsetzungszeichen „^“ wurde Folgendes eingegeben:
-
-1. Die Eingabetaste wurde gedrückt.
-2. Der Ausdruck **Mehr?** wurde angezeigt.
-3. Ein anderer Teil der gesamten Zeile wurde eingegeben usw.
-
-Diese Zeilenfortsetzungsmethode wurde verwendet, um zu verhindern, dass das Beispiel so umfassend wird, dass die Darstellung hier oder der Druck beeinträchtigt wird.
-
-```cmd
-set Prompt=[$P\]$_$+$G$G$S
-
-[C:\Users\myalias\AppData\Local\Programs\Python\Python27\]
->> .\python.exe ".\_myalias\PythonDriver.py" ^
-More?  -h myazurepostgresql.database.windows.net ^
-More?  -p 5432 ^
-More?  -d postgres ^
-More?  -U myalias@myazurepostgresql ^
-More?  -P mySecretPassword
-SUCCESS:  (1, 100, "First'row")
-
-[C:\Users\myalias\AppData\Local\Programs\Python\Python27\]
->>
+conn.commit()
 ```
 
-Die Zeile **ERFOLGREICH** kann als Bestätigung betrachtet werden, dass die Anwendung ausgeführt wurde.
+<a id="update-data" class="xliff"></a>
 
-Als alternatives Verfahren könnte die gesamte Befehlszeile in eine BAT-Datei eingefügt werden. Anschließend könnte die BAT-Datei über die Befehlszeile cmd.exe ausgeführt werden.
+## Aktualisieren von Daten
+Verwenden Sie den folgenden Code, um die Bestandszeile, die Sie zuvor mit der Funktion [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) eingefügt haben, per **UPDATE**-SQL-Anweisung zu aktualisieren. Ersetzen Sie die Parameter „host“, „dbname“, „user“ und „password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben.
 
+```Python
+import psycopg2
 
-#### <a name="powershell-file"></a>PowerShell-Datei
+# Update connection string information obtained from the portal
+host = "mypgserver-20170401.postgres.database.azure.com"
+user = "mylogin@mypgserver-20170401"
+dbname = "mypgsqldb"
+password = "<server_admin_password>"
 
+# Construct connection string
+conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn = psycopg2.connect(conn_string) 
+print "Connection established"
 
-In der PowerShell-Konsole werden keine Zeilenfortsetzungszeichen in der Befehlszeile unterstützt. Aus diesem Grund haben wir in diesem PowerShell-Abschnitt die Befehle in eine PowerShell-Datei eingefügt. Dann haben wir die Datei über die PowerShell-Befehlszeile ausgeführt.
+cursor = conn.cursor()
 
-Kopieren Sie den folgenden Code in eine Datei namens *PythonDriverRun.ps1*.
+# Update a data row in the table
+cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (200, "banana"))
+print "Updated 1 row of data"
 
-```powershell
-# PythonDriverRun.ps1
-cd C:\Users\myalias\AppData\Local\Programs\Python\Python27\
-
-.\python.exe `
- .\_myalias\PythonDriver.py `
- -h myazurepostgresql.database.windows.net `
- -p 5432 `
- -d postgres `
- -U myalias@myazurepostgresql `
- -P mySecretPassword
+conn.commit()
 ```
 
-Führen Sie PythonDriverRun.ps1 aus, wie nachfolgend dargestellt wird. Die Zeile **ERFOLGREICH** kann als Bestätigung betrachtet werden, dass das Programm den Druckvorgang ausführt.
+<a id="delete-data" class="xliff"></a>
 
-```cmd
-[C:\Users\myalias\AppData\Local\Programs\Python\Python27\]
-0 >> .\_myalias\PythonDriverRun.ps1
-SUCCESS:  (1, 100, "First'row")
+## Löschen von Daten
+Verwenden Sie den folgenden Code, um ein Bestandselement, das Sie zuvor mit der Funktion [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) eingefügt haben, per **DELETE**-SQL-Anweisung zu löschen. Ersetzen Sie die Parameter „host“, „dbname“, „user“ und „password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben.
 
-[C:\Users\myalias\AppData\Local\Programs\Python\Python27\]
-0 >>
+```Python
+import psycopg2
+
+# Update connection string information obtained from the portal
+host = "mypgserver-20170401.postgres.database.azure.com"
+user = "mylogin@mypgserver-20170401"
+dbname = "mypgsqldb"
+password = "<server_admin_password>"
+
+# Construct connection string
+conn_string = "host={0} user={1} dbname={2} password={3}".format(host, user, dbname, password)
+conn = psycopg2.connect(conn_string) 
+print "Connection established"
+
+cursor = conn.cursor()
+
+# Delete data row from table
+cursor.execute("DELETE FROM inventory WHERE name = %s;", ("orange",))
+print ("Deleted 1 row of data")
+
+conn.commit()
 ```
 
-Wenn Sie PythonDriverRun.ps1 direkt über die PowerShell-Befehlszeile ausführen möchten, müssen Sie ein „&“-Zeichen gefolgt von einem Leerzeichen voranstellen. Ohne das führende „&“ wird die Bestätigungsmeldung zu schnell ausgeblendet.
+<a id="next-steps" class="xliff"></a>
 
-```
-[C:\Users\myalias\AppData\Local\Programs\Python\Python27\]
-0 >> & .\python.exe ".\_myalias\PythonDriver.py" -h myazurepostgresql.database.windows.net -p 5432 -d postgres -U myalias@myazurepostgresql -P mySecretPassword
-SUCCESS:  (1, 100, "First'row")
-```
-
-
-## <a name="install-pgadmin-to-inspect-your-server"></a>Installieren von pgAdmin zur Überprüfung des Servers
-
-
-Wenn das Programm PythonDriverRun.ps1 beendet wird, wird es automatisch bereinigt, indem die von der Anwendung erstellte Tabelle „testpy1“ gelöscht wird. Sie können mithilfe eines „#“-Zeichens außerhalb der Quellcodezeile kommentieren, die die Anweisung **DROP TABLE** ausgibt. Bei dieser Option würde die Tabelle bestehen bleiben, damit Sie die Tabelle anschließend überprüfen können.
-
-Mit dem Tool pgAdmin können Sie einen beliebigen PostgreSQL-Server und die Objekte auf dem Server überprüfen. Benutzer von Microsoft SQL Server oder Azure SQL-Datenbank können Ähnlichkeiten zwischen SQL Server Management Studio (SSMS) und pgAdmin feststellen.
-
-Bei Bedarf können Sie **pgAdmin** installieren, um den Server und Ihre **testpy1**-Tabelle zu überprüfen.
-
-
-#### <a name="1-install-pgadmin"></a>1. Installieren Sie pgAdmin.
-
-
-Installationsanweisungen für pgAdmin finden Sie unter folgendem Link:
-
-- [http://www.pgadmin.org/](http://www.pgadmin.org/)
-
-Der Name der ausführbaren Datei ist möglicherweise nicht nur einfach „pgAdmin.exe“, sondern auch **pgAdmin4.exe**.
-
-Um pgAdmin4.exe auf einem Windows-Computer auszuführen, geben Sie den folgenden Befehl in solch einem Muster in einer Befehlszeile ein:
-
-`"C:\Program Files (x86)\pgAdmin 4\v1\runtime\pgAdmin4.exe"`
-
-
-#### <a name="2-connect-pgadmin-to-your-server"></a>2. Stellen Sie eine Verbindung zwischen pgAdmin und Ihrem Server her.
-
- 
-Wenn die Benutzeroberfläche von pgAdmin angezeigt wird, navigieren Sie zum **Browser**-Bereich. Klicken Sie dann mit der rechten Maustaste auf **Server** > **Erstellen** > **Server**. Hier bedeutet *Erstellen*, dass eine *Verbindung* zu einem beliebigen vorhandenen PostgreSQL-Server, einschließlich einem Azure-Datenbank für PostgreSQL-Server, hergestellt wird.
-
-Wenn die Verbindung hergestellt wurde, wird die Objektstruktur im **Browser**-Bereich angezeigt.
-
-
-#### <a name="3-navigate-in-the-pgadmin-tree-to-your-table"></a>3. Navigieren Sie in der pgAdmin-Struktur zu Ihrer Tabelle.
-
-
-Um die Tabelle anzuzeigen, erweitern Sie die Strukturelemente wie folgt:
-
-- **Server** &gt; *[IhrServerhier]* &gt; **Datenbanken** &gt; postgres &gt; **Schemas** &gt; Öffentlich &gt; **Tabellen** &gt; testpy1
-
-![pgAdmin mit „testpy1“-Tabelle in der Struktur](./media/connect-python/pgAdmin-postgresql-table-testpy1.jpg)
-
-
-#### <a name="4-drop-the-testpy1-table"></a>4. Löschen Sie die Tabelle „testpy1“.
-
-
-Klicken Sie zur endgültigen Bereinigung mit der rechten Maustaste auf den Knoten „testpy1“ und dann auf **Löschen**.
-
-
-## <a name="next-steps"></a>Nächste Schritte
-
-- [Verbindung zwischen Python und der Azure SQL-Datenbank](../sql-database/sql-database-connect-query-python.md)
-- [Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL](concepts-connection-libraries.md)
+## Nächste Schritte
+> [!div class="nextstepaction"]
+> [Migrieren der Datenbank mit Export und Import](./howto-migrate-using-export-and-import.md)
 
