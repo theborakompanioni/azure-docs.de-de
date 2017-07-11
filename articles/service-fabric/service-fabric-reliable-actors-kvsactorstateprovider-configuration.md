@@ -22,7 +22,8 @@ ms.lasthandoff: 01/24/2017
 
 
 ---
-# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurieren von Reliable Actors – KVSActorStateProvider
+<a id="configuring-reliable-actors--kvsactorstateprovider" class="xliff"></a>
+# Konfigurieren von Reliable Actors – KVSActorStateProvider
 Sie können die Standardkonfiguration von KVSActorStateProvider ändern, indem Sie die Datei „settings.xml“, die im Stammverzeichnis des Visual Studio-Pakets im Ordner „Config“ generiert wurde, für den betreffenden Actor ändern.
 
 Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „settings.xml“ nach vordefinierten Abschnittsnamen und nutzt die Konfigurationswerte beim Erstellen der zugrunde liegenden Laufzeitkomponenten.
@@ -32,21 +33,26 @@ Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „settings
 > 
 > 
 
-## <a name="replicator-security-configuration"></a>Replicator-Sicherheitskonfiguration
+<a id="replicator-security-configuration" class="xliff"></a>
+## Replicator-Sicherheitskonfiguration
 Replicator-Sicherheitskonfigurationen werden verwendet, um den während der Replikation verwendeten Kommunikationskanal zu sichern. Dies bedeutet, dass Dienste ihren gegenseitigen Replikationsdatenverkehr nicht erkennen können. Dadurch wird sichergestellt, dass die Daten nicht nur hochverfügbar, sondern auch sicher sind.
 Standardmäßig wird die Replikationssicherheit durch einen leeren Sicherheitskonfigurationsabschnitt verhindert.
 
-### <a name="section-name"></a>Name des Abschnitts
+<a id="section-name" class="xliff"></a>
+### Name des Abschnitts
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-## <a name="replicator-configuration"></a>Replicator-Konfiguration
+<a id="replicator-configuration" class="xliff"></a>
+## Replicator-Konfiguration
 Replicator-Konfigurationen konfigurieren den Replicator, der dafür verantwortlich ist, den Status des Actor-Status-Anbieters hochverfügbar zu machen.
 Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollte ausreichen. Dieser Abschnitt befasst sich mit zusätzlichen Konfigurationen, die zum Optimieren des Replicators verfügbar sind.
 
-### <a name="section-name"></a>Name des Abschnitts
+<a id="section-name" class="xliff"></a>
+### Name des Abschnitts
 &lt;ActorName&gt;ServiceReplicatorConfig
 
-### <a name="configuration-names"></a>Konfigurationsnamen
+<a id="configuration-names" class="xliff"></a>
+### Konfigurationsnamen
 | Name | Unit | Standardwert | Hinweise |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekunden |0,015 |So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet. |
@@ -56,20 +62,24 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 | MaxPrimaryReplicationQueueSize |Anzahl der Vorgänge |1024 |Die maximale Anzahl der Vorgänge in der primären Warteschlange. Ein Vorgang wird freigegeben, nachdem der primäre Replicator eine Bestätigung von allen sekundären Replicators empfangen hat. Dieser Wert muss größer als 64 und eine Potenz von 2 sein. |
 | MaxSecondaryReplicationQueueSize |Anzahl der Vorgänge |2048 |Die maximale Anzahl der Vorgänge in der sekundären Warteschlange. Ein Vorgang wird freigegeben, nachdem sein Zustand durch Persistenz hochverfügbar gemacht wurde. Dieser Wert muss größer als 64 und eine Potenz von 2 sein. |
 
-## <a name="store-configuration"></a>Speicherkonfiguration
+<a id="store-configuration" class="xliff"></a>
+## Speicherkonfiguration
 Speicherkonfigurationen werden zum Konfigurieren des lokalen Speichers verwendet, der zum Beibehalten des zu replizierenden Status verwendet wird.
 Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollte ausreichen. Dieser Abschnitt befasst sich mit zusätzlichen Konfigurationen, die zum Optimieren des lokalen Speichers verfügbar sind.
 
-### <a name="section-name"></a>Name des Abschnitts
+<a id="section-name" class="xliff"></a>
+### Name des Abschnitts
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
-### <a name="configuration-names"></a>Konfigurationsnamen
+<a id="configuration-names" class="xliff"></a>
+### Konfigurationsnamen
 | Name | Unit | Standardwert | Hinweise |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Millisekunden |200 |Legt das maximale Batchverarbeitungsintervall für permanente Commits des lokalen Speichers fest. |
 | MaxVerPages |Anzahl von Seiten |16384 |Die maximale Anzahl von Versionsseiten in der lokalen Speicherdatenbank. Sie bestimmt die maximale Anzahl von ausstehenden Transaktionen. |
 
-## <a name="sample-configuration-file"></a>Beispiel für eine Konfigurationsdatei
+<a id="sample-configuration-file" class="xliff"></a>
+## Beispiel für eine Konfigurationsdatei
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -91,7 +101,8 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
    </Section>
 </Settings>
 ```
-## <a name="remarks"></a>Anmerkungen
+<a id="remarks" class="xliff"></a>
+## Anmerkungen
 Der Parameter „BatchAcknowledgementInterval“ steuert die Replikationslatenz. Der Wert "0" ergibt die geringstmögliche Latenz, allerdings auf Kosten des Durchsatzes (da eine größer Anzahl von Bestätigungsnachrichten gesendet und verarbeitet werden muss, von denen jede weniger Bestätigungen enthält).
 Je größer der Wert für "BatchAcknowledgementInterval" ist, um so höher ist der Gesamtdurchsatz der Replikation, zu Lasten einer höheren Vorgangslatenz. Daraus ergibt sich direkt die Latenz von Transaktions-Commits.
 

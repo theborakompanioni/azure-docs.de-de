@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
@@ -22,7 +22,8 @@ ms.lasthandoff: 06/14/2017
 
 
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der .NET-API
+<a id="tutorial-create-a-pipeline-with-copy-activity-using-net-api" class="xliff"></a>
+# Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der .NET-API
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
@@ -44,13 +45,15 @@ Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten
 > 
 > Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+## Voraussetzungen
 * Verschaffen Sie sich unter [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) einen Überblick über das Tutorial, und führen Sie die Schritte aus, die zur Erfüllung der **Voraussetzungen** erforderlich sind.
 * Visual Studio 2012, 2013 oder 2015
 * Herunterladen und Installieren des [Azure .NET SDK](http://azure.microsoft.com/downloads/)
 * Azure PowerShell. Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) zum Installieren von Azure PowerShell auf Ihrem Computer. Azure PowerShell wird zum Erstellen einer Azure Active Directory-Anwendung benötigt.
 
-### <a name="create-an-application-in-azure-active-directory"></a>Erstellen einer Anwendung in Azure Active Directory
+<a id="create-an-application-in-azure-active-directory" class="xliff"></a>
+### Erstellen einer Anwendung in Azure Active Directory
 Erstellen Sie eine Azure Active Directory-Anwendung, erstellen Sie einen Dienstprinzipal für die Anwendung, und weisen Sie ihn der Rolle **Data Factory-Mitwirkender** zu.
 
 1. Starten Sie **PowerShell**.
@@ -117,7 +120,8 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
 * Anwendungs-ID
 * Kennwort (angegeben im ersten Befehl)
 
-## <a name="walkthrough"></a>Exemplarische Vorgehensweise
+<a id="walkthrough" class="xliff"></a>
+## Exemplarische Vorgehensweise
 1. Erstellen Sie mithilfe von Visual Studio 2012/2013/2015 eine C# .NET-Konsolenanwendung.
    1. Starten Sie **Visual Studio** (2012/2013/2015).
    2. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.
@@ -516,7 +520,8 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
    * Pipeline: **PipelineBlobSample**
 20. Stellen Sie sicher, dass die zwei Mitarbeiterdatensätze in der Tabelle **emp** in der angegebenen Azure SQL-Datenbank erstellt werden.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+## Nächste Schritte
 Eine vollständige Dokumentation zu .NET API für Data Factory finden Sie in der [.NET API-Referenz für Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
 
 In diesem Tutorial haben Sie Azure Blob Storage als Quelldatenspeicher und Azure SQL-Datenbank als Zieldatenspeicher in einem Kopiervorgang verwendet. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Ziele für die Kopieraktivität unterstützt werden: 

@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
@@ -22,7 +22,8 @@ ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten 
+<a id="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data" class="xliff"></a>
+# Tutorial: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
@@ -44,12 +45,14 @@ Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten
 > [!NOTE] 
 > Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md). 
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+## Voraussetzungen
 * Lesen Sie sich die [Tutorialübersicht und die Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
 * Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer. In diesem Tutorial stellen Sie Data Factory-Entitäten mithilfe von PowerShell bereit. 
 * Optional: Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
-## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
+<a id="in-this-tutorial" class="xliff"></a>
+## Dieses Lernprogramm umfasst folgende Punkte
 In diesem Tutorial erstellen Sie eine Data Factory mit den folgenden Data Factory-Entitäten:
 
 | Entität | Beschreibung |
@@ -66,7 +69,8 @@ Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline k
 
 Der folgende Abschnitt enthält die vollständige Resource Manager-Vorlage zum Definieren von Data Factory-Entitäten, damit Sie das Tutorial schnell durchlaufen und die Vorlage testen können. Informationen zum Definieren der einzelnen Data Factory-Entitäten finden Sie im Abschnitt [Data Factory-Entitäten in der Vorlage](#data-factory-entities-in-the-template).
 
-## <a name="data-factory-json-template"></a>Data Factory-JSON-Vorlage
+<a id="data-factory-json-template" class="xliff"></a>
+## Data Factory-JSON-Vorlage
 Das Grundgerüst einer Resource Manager-Vorlage zum Definieren einer Data Factory sieht wie folgt aus: 
 
 ```json
@@ -280,7 +284,8 @@ Erstellen Sie im Ordner **C:\ADFGetStarted** eine JSON-Datei namens **ADFCopyTut
   }
 ```
 
-## <a name="parameters-json"></a>Parameter (JSON)
+<a id="parameters-json" class="xliff"></a>
+## Parameter (JSON)
 Erstellen Sie eine JSON-Datei namens **ADFCopyTutorialARM-Parameters.json** mit Parametern für die Azure Resource Manager-Vorlage. 
 
 > [!IMPORTANT]
@@ -313,12 +318,13 @@ Erstellen Sie eine JSON-Datei namens **ADFCopyTutorialARM-Parameters.json** mit 
 > 
 > 
 
-## <a name="create-data-factory"></a>Erstellen einer Data Factory
+<a id="create-data-factory" class="xliff"></a>
+## Erstellen einer Data Factory
 1. Starten Sie **Azure PowerShell** , und führen Sie den folgenden Befehl aus:
    * Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
    
     ```PowerShell
-    Login-AzureRmAccount       
+    Login-AzureRmAccount    
     ```  
    * Führen Sie den folgenden Befehl aus, um alle Abonnements für dieses Konto anzuzeigen:
    
@@ -336,7 +342,8 @@ Erstellen Sie eine JSON-Datei namens **ADFCopyTutorialARM-Parameters.json** mit 
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
     ```
 
-## <a name="monitor-pipeline"></a>Überwachen der Pipeline
+<a id="monitor-pipeline" class="xliff"></a>
+## Überwachen der Pipeline
 
 1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **Data Factorys**, oder klicken Sie auf **Weitere Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys**.
@@ -356,8 +363,10 @@ Weitere Informationen zum Verwenden der Blätter im Azure-Portal zum Überwachen
 
 Weitere Informationen zum Verwenden der Anwendung „Überwachung und Verwaltung“ zum Überwachen Ihrer Datenpipelines finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
-## <a name="data-factory-entities-in-the-template"></a>Data Factory-Entitäten in der Vorlage
-### <a name="define-data-factory"></a>Definieren einer Data Factory
+<a id="data-factory-entities-in-the-template" class="xliff"></a>
+## Data Factory-Entitäten in der Vorlage
+<a id="define-data-factory" class="xliff"></a>
+### Definieren einer Data Factory
 Das folgende Beispiel zeigt, wie Sie in der Resource Manager-Vorlage eine Data Factory definieren:  
 
 ```json
@@ -378,7 +387,8 @@ Das folgende Beispiel zeigt, wie Sie in der Resource Manager-Vorlage eine Data F
 
 Hierbei handelt es sich um eine eindeutige Zeichenfolge auf Grundlage der Ressourcengruppen-ID.  
 
-### <a name="defining-data-factory-entities"></a>Definieren von Data Factory-Entitäten
+<a id="defining-data-factory-entities" class="xliff"></a>
+### Definieren von Data Factory-Entitäten
 In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert: 
 
 1. [Mit Azure Storage verknüpfter Dienst](#azure-storage-linked-service)
@@ -387,7 +397,8 @@ In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert:
 4. [Azure SQL-Dataset](#azure-sql-dataset)
 5. [Datenpipeline mit einer Kopieraktivität](#data-pipeline)
 
-#### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
+<a id="azure-storage-linked-service" class="xliff"></a>
+#### Mit Azure Storage verknüpfter Dienst
 Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der Data Factory. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) einen Container erstellt und Daten in dieses Speicherkonto hochgeladen. In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure Storage verknüpften Diensts finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service). 
 
 ```json
@@ -410,7 +421,8 @@ Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der
 
 Die Verbindungszeichenfolge (connectionString) enthält die Parameter „storageAccountName“ und „storageAccountKey“. Die Werte für diese Parameter werden mithilfe einer Konfigurationsdatei übergeben. In der Definition werden außerdem die in der Vorlage definierten Variablen „azureStorageLinkedService“ und „dataFactoryName“ verwendet. 
 
-#### <a name="azure-sql-database-linked-service"></a>Mit Azure SQL-Datenbank verknüpfter Dienst
+<a id="azure-sql-database-linked-service" class="xliff"></a>
+#### Mit Azure SQL-Datenbank verknüpfter Dienst
 AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die aus Blob Storage kopierten Daten werden in dieser Datenbank gespeichert. Sie haben im Rahmen der Schritte zur Erfüllung der [Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) die EMP-Tabelle in dieser Datenbank erstellt. In diesem Abschnitt geben Sie den Namen der Azure SQL Server-Instanz, den Datenbanknamen, den Benutzernamen und das Benutzerkennwort an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure SQL verknüpften Diensts finden Sie unter [Mit Azure SQL verknüpfter Dienst](data-factory-azure-sql-connector.md#linked-service-properties).  
 
 ```json
@@ -433,7 +445,8 @@ AzureSqlLinkedService verknüpft Azure SQL-Datenbank mit der Data Factory. Die a
 
 Die Verbindungszeichenfolge (connectionString) enthält die Parameter „sqlServerName“, „databaseName“, „sqlServerUserName“ und „sqlServerPassword“, deren Werte mithilfe einer Konfigurationsdatei übergeben werden. In der Definition werden außerdem folgende Variablen aus der Vorlage verwendet: „azureSqlLinkedServiceName“ und „dataFactoryName“.
 
-#### <a name="azure-blob-dataset"></a>Azure-Blobdataset
+<a id="azure-blob-dataset" class="xliff"></a>
+#### Azure-Blobdataset
 Der mit Azure Storage verknüpfte Dienst gibt die Verbindungszeichenfolge an, die der Data Factory-Dienst zur Laufzeit für die Herstellung einer Verbindung zu Ihrem Azure Storage-Konto verwendet. In der Definition des Azure-Blobdatasets geben Sie die Namen des Blobcontainers, des Ordners und der Datei mit den Eingabedaten an. Informationen zu JSON-Eigenschaften zum Definieren eines Azure-Blobdatasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure-Blob“](data-factory-azure-blob-connector.md#dataset-properties). 
 
 ```json
@@ -475,7 +488,8 @@ Der mit Azure Storage verknüpfte Dienst gibt die Verbindungszeichenfolge an, di
 }
 ```
 
-#### <a name="azure-sql-dataset"></a>Azure SQL-Dataset
+<a id="azure-sql-dataset" class="xliff"></a>
+#### Azure SQL-Dataset
 In diesem Abschnitt geben Sie den Namen der Tabelle in Azure SQL-Datenbank an, die die kopierten Daten aus Azure Blob Storage enthält. Informationen zu JSON-Eigenschaften zum Definieren eines Azure SQL-Datasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure SQL“](data-factory-azure-sql-connector.md#dataset-properties). 
 
 ```json
@@ -511,7 +525,8 @@ In diesem Abschnitt geben Sie den Namen der Tabelle in Azure SQL-Datenbank an, d
 }
 ```
 
-#### <a name="data-pipeline"></a>Datenpipeline
+<a id="data-pipeline" class="xliff"></a>
+#### Datenpipeline
 In diesem Abschnitt definieren Sie eine Pipeline, die Daten aus dem Azure-Blobdataset in das Azure SQL-Dataset kopiert. Informationen zu JSON-Elementen zum Definieren einer Pipeline für dieses Beispiel finden Sie unter [Pipeline-JSON](data-factory-create-pipelines.md#pipeline-json). 
 
 ```json
@@ -569,7 +584,8 @@ In diesem Abschnitt definieren Sie eine Pipeline, die Daten aus dem Azure-Blobda
 }
 ```
 
-## <a name="reuse-the-template"></a>Wiederverwenden der Vorlage
+<a id="reuse-the-template" class="xliff"></a>
+## Wiederverwenden der Vorlage
 In diesem Tutorial haben Sie eine Vorlage zum Definieren von Data Factory-Entitäten und eine Vorlage zum Übergeben von Parameterwerten erstellt. Die Pipeline kopiert Daten aus einem Azure Storage-Konto in eine mithilfe von Parametern angegebene Azure SQL-Datenbank-Instanz. Mit der gleichen Vorlage können Sie Data Factory-Entitäten in unterschiedlichen Umgebungen bereitstellen. Hierzu müssen Sie lediglich eine Parameterdatei für die jeweilige Umgebung erstellen und beim Bereitstellen in dieser Umgebung verwenden.     
 
 Beispiel:  
@@ -588,7 +604,8 @@ Der erste Befehl verwendet eine Parameterdatei für die Entwicklungsumgebung, de
 
 Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Angenommen, Sie müssen zahlreiche Data Factorys mit einer Pipeline oder mehreren Pipelines erstellen, die die gleiche Logik implementieren, aber die einzelnen Data Factorys verwenden jeweils andere Storage- und SQL-Datenbank-Konten. In diesem Szenario können Sie zur Erstellung der Data Factorys die gleiche Vorlage in der gleichen Umgebung (Entwicklungs-, Test- oder Produktionsumgebung) mit unterschiedlichen Parameterdateien verwenden.   
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+## Nächste Schritte
 In diesem Tutorial haben Sie Azure Blob Storage als Quelldatenspeicher und Azure SQL-Datenbank als Zieldatenspeicher in einem Kopiervorgang verwendet. Die folgende Tabelle enthält eine Liste der Datenspeicher, die als Quellen oder Ziele für die Kopieraktivität unterstützt werden: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]

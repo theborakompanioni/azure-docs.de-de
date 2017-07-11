@@ -24,17 +24,20 @@ ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="about-azure-storage-accounts"></a>Informationen zu Azure-Speicherkonten
+<a id="about-azure-storage-accounts" class="xliff"></a>
+# Informationen zu Azure-Speicherkonten
 [!INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-## <a name="overview"></a>Übersicht
+<a id="overview" class="xliff"></a>
+## Übersicht
 Ein Azure-Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer Azure Storage-Datenobjekte sowie für den Zugriff darauf bereit. Alle Objekte in einem Speicherkonto werden zusammen als Gruppe abgerechnet. Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Kontobesitzer verfügbar.
 
 [!INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
 
-## <a name="storage-account-billing"></a>Speicherkontoabrechnung
+<a id="storage-account-billing" class="xliff"></a>
+## Speicherkontoabrechnung
 [!INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
 > [!NOTE]
@@ -42,7 +45,8 @@ Ein Azure-Speicherkonto stellt einen eindeutigen Namespace zum Speichern Ihrer A
 > 
 > 
 
-## <a name="storage-account-endpoints"></a>Speicherkontoendpunkte
+<a id="storage-account-endpoints" class="xliff"></a>
+## Speicherkontoendpunkte
 Jedes Objekt, das Sie in Azure Storage speichern, verfügt über eine eindeutige URL-Adresse. Der Name des Speicherkontos bildet die Unterdomäne dieser Adresse. Die Kombination aus Unterdomäne und Domänenname, die für jeden Dienst spezifisch ist, bildet einen *Endpunkt* für Ihr Speicherkonto.
 
 Wenn Ihr Speicherkonto beispielsweise *meinspeicherkonto*heißt, dann sind die Standardendpunkte für Ihr Speicherkonto wie folgt:
@@ -61,7 +65,8 @@ Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhän
 
 Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Informationen zu klassischen Speicherkonten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md) . Für Resource Manager-Speicherkonten wurde diese Funktion im [Azure-Portal](https://portal.azure.com) noch nicht hinzugefügt, Sie können jedoch PowerShell für die Konfiguration verwenden. Weitere Informationen finden Sie unter dem Cmdlet [Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx) .  
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+<a id="create-a-storage-account" class="xliff"></a>
+## Erstellen Sie ein Speicherkonto.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie im Menü „Hub“ die Option **Neu** -> **Speicher** -> **Speicherkonto**.
 3. Geben Sie einen Namen für Ihr Speicherkonto ein. Unter [Speicherkontoendpunkte](#storage-account-endpoints) finden Sie Details dazu, wie der Name des Speicherkontos zum Adressieren Ihrer Objekte in Azure Storage verwendet wird.
@@ -89,8 +94,10 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
 9. Wählen Sie den geografischen Standort für das Speicherkonto aus. Unter [Azure-Regionen](https://azure.microsoft.com/regions/#services) finden Sie weitere Informationen dazu, welche Dienste in welcher Region verfügbar sind.
 10. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.
 
-## <a name="manage-your-storage-account"></a>Verwalten von Speicherkonten
-### <a name="change-your-account-configuration"></a>Ändern der Kontokonfiguration
+<a id="manage-your-storage-account" class="xliff"></a>
+## Verwalten von Speicherkonten
+<a id="change-your-account-configuration" class="xliff"></a>
+### Ändern der Kontokonfiguration
 Nach dem Erstellen eines Speicherkontos können Sie seine Konfiguration ändern. So können Sie beispielsweise die für das Konto verwendete Replikationsoption oder den Zugriffsstufe für ein BLOB-Speicherkonto ändern. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, suchen und klicken Sie unter **EINSTELLUNGEN** auf **Konfiguration**, um die Kontokonfiguration anzuzeigen oder zu ändern.
 
 > [!NOTE]
@@ -102,18 +109,21 @@ Durch Änderung der Replikationsoption ändert sich auch der Preis. Weitere Info
 
 Wenn Sie für BLOB-Speicherkonten die Zugriffsstufen ändern, fallen unter Umständen zusätzlich zur Preisänderung weitere Gebühren für die Änderung an. Weitere Informationen hierzu finden Sie unter [Blob-Speicherkonten – Preise und Abrechnung](storage-blob-storage-tiers.md#pricing-and-billing) .
 
-### <a name="manage-your-storage-access-keys"></a>Verwalten von Speicherzugriffsschlüsseln
+<a id="manage-your-storage-access-keys" class="xliff"></a>
+### Verwalten von Speicherzugriffsschlüsseln
 Wenn Sie ein Speicherkonto erstellen, generiert Azure zwei 512-Bit-Speicherzugriffsschlüssel, die für die Authentifizierung verwendet werden, wenn der Zugriff auf das Speicherkonto erfolgt. Durch Bereitstellen von zwei Speicherzugriffsschlüsseln ermöglicht Azure Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Speicherdiensts oder Zugriff auf diesen Dienst.
 
 > [!NOTE]
 > Sie sollten das Weitergeben von Speicherzugriffsschlüsseln an andere vermeiden. Um den Zugriff auf Speicherressourcen zu gewähren, ohne den Zugriffsschlüssel weiterzugeben, verwenden Sie eine *Shared Access Signature*. Eine Shared Access Signature (SAS) bietet Zugriff auf eine Ressource in Ihrem Konto für ein von Ihnen definiertes Zeitintervall und mit den von Ihnen festgelegten Berechtigungen. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) .
 > 
 > 
-
-#### <a name="view-and-copy-storage-access-keys"></a>Anzeigen und Kopieren von Speicherzugriffsschlüssel
+<a id="view-and-copy-storage-access-keys"/></a>
+<a id="view-and-copy-storage-access-keys" class="xliff"></a>
+#### Anzeigen und Kopieren von Speicherzugriffsschlüssel
 Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, klicken Sie auf **Alle Einstellungen** und anschließend auf **Zugriffsschlüssel**, um Ihre Kontozugriffsschlüssel anzuzeigen, zu kopieren und erneut zu generieren. Das Blatt **Zugriffsschlüssel** enthält auch vorkonfigurierte Verbindungszeichenfolgen, in denen Ihre primären und sekundären Schlüssel verwendet werden, die Sie zur Nutzung in der Anwendung kopieren können.
 
-#### <a name="regenerate-storage-access-keys"></a>Erneutes Generieren von Speicherzugriffsschlüsseln
+<a id="regenerate-storage-access-keys" class="xliff"></a>
+#### Erneutes Generieren von Speicherzugriffsschlüsseln
 Sie sollten die Zugriffsschlüssel für Ihr Speicherkonto regelmäßig ändern, um dafür zu sorgen, dass Ihre Speicherverbindungen sicher sind. Zwei Zugriffsschlüssel werden zugewiesen, um es Ihnen zu ermöglichen, Verbindungen zum Speicherkonto mit einem Zugriffsschlüssel aufrecht zu erhalten, während Sie den anderen Zugriffsschlüssel neu generieren.
 
 > [!WARNING]
@@ -134,7 +144,8 @@ Mit dem folgenden Prozess wechseln Sie Ihre Speicherzugriffsschlüssel:
 3. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
 4. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
 
-## <a name="delete-a-storage-account"></a>Löschen eines Speicherkontos
+<a id="delete-a-storage-account" class="xliff"></a>
+## Löschen eines Speicherkontos
 Um ein Speicherkonto zu entfernen, das Sie nicht mehr verwenden, wechseln Sie im [Azure-Portal](https://portal.azure.com)zum entsprechenden Speicherkonto, und klicken Sie auf **Löschen**. Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto.
 
 > [!WARNING]
@@ -156,7 +167,8 @@ Wenn das Speicherkonto das klassische Bereitstellungsmodell verwendet, können S
 
 Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Azure-Computern](http://azure.microsoft.com/documentation/services/virtual-machines/).
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+## Nächste Schritte
 * Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Blob Storage: Cool and Hot tiers (Azure Blob Storage: Stufen für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data))](storage-blob-storage-tiers.md)
 * [Azure Storage-Replikation](storage-redundancy.md)
