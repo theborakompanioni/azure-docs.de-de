@@ -22,8 +22,12 @@ ms.lasthandoff: 02/11/2017
 
 
 ---
-# <a name="understand-your-azure-marketplace-payout-reports"></a>Grundlegendes zu Azure Marketplace-Auszahlungsberichten
-## <a name="access-and-view-your-payout-reports"></a>Öffnen und Anzeigen von Auszahlungsberichten
+<a id="understand-your-azure-marketplace-payout-reports" class="xliff"></a>
+
+# Grundlegendes zu Azure Marketplace-Auszahlungsberichten
+<a id="access-and-view-your-payout-reports" class="xliff"></a>
+
+## Öffnen und Anzeigen von Auszahlungsberichten
 Während des Übergangs zum Dev Center können einige Ihrer Auszahlungsberichte ggf. im Dev Center unter https://dev.windows.com/en-us zu finden sein, während andere ggf. weiter im Veröffentlichungsportal unter https://publish.windowsazure.com zu finden sind.
 
 Auszahlungsberichte stehen jetzt im **Dev Center** für alle Marketplace-Angebote zur Verfügung, denen moderne Auszahlungsmethoden zugeordnet sind. Hierzu gehören zurzeit Folgende:
@@ -38,7 +42,9 @@ Für folgende Angebote stehen die Auszahlungsberichte weiterhin im **Veröffentl
 
 Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich etwaiger Rückerstattungen berechnet.
 
-### <a name="access-payout-reports-in-dev-center"></a>Zugriff auf Auszahlungsberichte im Dev Center
+<a id="access-payout-reports-in-dev-center" class="xliff"></a>
+
+### Zugriff auf Auszahlungsberichte im Dev Center
 1. Navigieren Sie unter https://dev.windows.com/en-us zum Dev Center.
 2. Klicken Sie auf **Dashboard**.
 
@@ -47,7 +53,9 @@ Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich e
 
     ![DashboardPayoutSummary][2]
 
-## <a name="view-your-payout-reports-in-dev-center"></a>Anzeigen von Auszahlungsberichten im Dev Center
+<a id="view-your-payout-reports-in-dev-center" class="xliff"></a>
+
+## Anzeigen von Auszahlungsberichten im Dev Center
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
 * Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben).  Dieser Betrag beläuft sich zumeist auf 0 $ (es sei denn, ein Kunde zahlt weit im Voraus).
@@ -60,7 +68,9 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
-## <a name="view-your-payout-reports-in-publishing-portal"></a>Anzeigen von Auszahlungsberichten im Veröffentlichungsportal
+<a id="view-your-payout-reports-in-publishing-portal" class="xliff"></a>
+
+## Anzeigen von Auszahlungsberichten im Veröffentlichungsportal
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
 1. Navigieren Sie zum Veröffentlichungsportal: https://publish.windowsazure.com.
@@ -69,7 +79,9 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 
     ![accessingpayoutreport][5]
 
-### <a name="read-your-payout-reports"></a>Lesen von Auszahlungsberichten
+<a id="read-your-payout-reports" class="xliff"></a>
+
+### Lesen von Auszahlungsberichten
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
 * Wenn Sie nach Posten für ein bestimmtes Quartal suchen möchten, wählen Sie in der Dropdownliste den Auszahlungsbericht für das betreffende Quartal aus. Wenn Sie sich also beispielsweise für Posten zwischen April und Juni 2015 interessieren, wählen Sie in der Dropdownliste den entsprechenden Datumsbereich aus.
@@ -78,7 +90,9 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 * Der Bereich mit der Finanzübersicht zeigt Salden sowie Soll und Haben nach Kategorie.
 * Posten zeigen einzelne Transaktionen.
 
-## <a name="definitions"></a>Definitionen
+<a id="definitions" class="xliff"></a>
+
+## Definitionen
 **Bereich mit der Finanzübersicht:**
 
 ![financialdefinitions][7]
@@ -87,7 +101,9 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 
 ![ledgerdefinitions][8]
 
-## <a name="payout-questions"></a>Fragen zur Auszahlung
+<a id="payout-questions" class="xliff"></a>
+
+## Fragen zur Auszahlung
 Wenden Sie sich bei Fragen zu Ihren Auszahlungen an unser Supportteam.
 
 ![payoutquestions][9]
@@ -97,7 +113,9 @@ Wenden Sie sich bei Fragen zu Ihren Auszahlungen an unser Supportteam.
 3. Wählen Sie **Auf Auszahlungen bezogene Anfragen**aus.
 4. Klicken auf **Anforderung starten**.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Erstellen Sie bei anderen Problemen eine Supportanfrage unter <https://portal.azure.com>.
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png
