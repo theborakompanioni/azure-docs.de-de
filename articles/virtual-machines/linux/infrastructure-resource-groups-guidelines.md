@@ -25,6 +25,7 @@ ms.lasthandoff: 05/11/2017
 
 ---
 <a id="azure-resource-group-guidelines-for-linux-vms" class="xliff"></a>
+
 # Richtlinien für die Azure-Ressourcengruppen für Linux-VMs 
 
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
@@ -32,6 +33,7 @@ ms.lasthandoff: 05/11/2017
 In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung logisch aufbauen und alle Komponenten in Ressourcengruppen zusammenfassen.
 
 <a id="implementation-guidelines-for-resource-groups" class="xliff"></a>
+
 ## Implementierungsrichtlinien für Ressourcengruppen
 Entscheidungen:
 
@@ -46,6 +48,7 @@ Aufgaben:
 * Erstellen Sie den Satz von Ressourcengruppen anhand Ihrer Benennungskonvention. Sie können die Azure-Befehlszeilenschnittstelle oder das Portal verwenden.
 
 <a id="resource-groups" class="xliff"></a>
+
 ## Ressourcengruppen
 In Azure fassen Sie zusammengehörige Ressourcen wie Speicherkonten, virtuelle Netzwerke und virtuelle Computer (VMs) logisch zusammen, um sie als eine Einheit bereitzustellen, zu verwalten und zu warten. Auf diese Weise können Sie Anwendungen leichter bereitstellen und gleichzeitig alle zugehörigen Ressourcen verwaltungstechnisch zusammenhalten oder anderen Benutzern Zugriff auf die Ressourcengruppe gewähren. Namen von Ressourcengruppen dürfen maximal 90 Zeichen lang sein. Ausführlichere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
@@ -59,6 +62,7 @@ Sie können beim Entwerfen Ihrer Umgebung mit Ressourcengruppen zwischen zwei ve
 Wenn Sie Ihre Umgebung horizontal hochskalieren möchten, vereinfachen zentralisierte Ressourcengruppen für Ihre virtuellen Netzwerke und Subnetze die Erstellung von standortübergreifenden Netzwerkverbindungen für hybride Verbindungsoptionen. Der alternative Ansatz für jede Anwendung ist das Arbeiten mit einem eigenen virtuellen Netzwerk, das konfiguriert und gewartet werden muss. [Rollenbasierte Zugriffssteuerungen](../../active-directory/role-based-access-control-what-is.md) bieten eine differenzierte Möglichkeit, den Zugriff auf Ressourcengruppen zu steuern. Bei Produktionsanwendungen können Sie steuern, welche Benutzer auf diese Ressourcen zugreifen dürfen. Für die zentralen Infrastrukturressourcen können Sie festlegen, dass ausschließlich Infrastrukturtechniker mit Infrastrukturressourcen arbeiten dürfen. Ihre Anwendungsbesitzer haben nur Zugriff auf die Anwendungskomponenten innerhalb ihrer Ressourcengruppe, nicht aber auf die zentrale Azure-Infrastruktur Ihrer Umgebung. Berücksichtigen Sie beim Entwerfen Ihrer Umgebung die Benutzer, die auf die Ressourcen zugreifen müssen, und entwerfen Sie Ihre Ressourcengruppen entsprechend. 
 
 <a id="next-steps" class="xliff"></a>
+
 ## Nächste Schritte
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
