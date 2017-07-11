@@ -23,17 +23,23 @@ ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="docker-hub-continuous-deployment-with-azure-web-app-on-linux"></a>Docker Hub Continuous Deployment mit Azure-Web-App unter Linux
+<a id="docker-hub-continuous-deployment-with-azure-web-app-on-linux" class="xliff"></a>
+
+# Docker Hub Continuous Deployment mit Azure-Web-App unter Linux
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
 In diesem Tutorial konfigurieren Sie Continuous Deployment für ein benutzerdefiniertes Containerimage in [Docker Hub](https://hub.docker.com).
 
-## <a name="step-1---log-in-to-azure"></a>Schritt 1: Anmelden bei Azure
+<a id="step-1---log-in-to-azure" class="xliff"></a>
+
+## Schritt 1: Anmelden bei Azure
 
 Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
-## <a name="step-2---enable-docker-hub-continuous-deployment"></a>Schritt 2: Aktivieren von Docker Hub Continuous Deployment
+<a id="step-2---enable-docker-hub-continuous-deployment" class="xliff"></a>
+
+## Schritt 2: Aktivieren von Docker Hub Continuous Deployment
 
 Klicken Sie im **[Azure-Portal](https://portal.azure.com/)** auf der linken Seite auf **App Service**.
 
@@ -43,7 +49,9 @@ Fügen Sie in den **App-Einstellungen** eine App-Einstellung mit dem Namen `DOCK
 
 ![Abbildung einfügen: App-Einstellung](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
-## <a name="step-3---add-a-web-hook-to-docker-hub"></a>Schritt 3: Hinzufügen eines Webhooks zu Docker Hub
+<a id="step-3---add-a-web-hook-to-docker-hub" class="xliff"></a>
+
+## Schritt 3: Hinzufügen eines Webhooks zu Docker Hub
 
 Klicken Sie auf der Docker Hub-Seite auf **Webhooks** und anschließend auf **CREATE A WEBHOOK** (WEBHOOK ERSTELLEN).
 
@@ -59,7 +67,9 @@ Sie können `publishingusername` und `publishingpwd` durch Herunterladen des Web
 
 Wenn das Image aktualisiert wird, wird die Web-App automatisch mit dem neuen Image aktualisiert.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 * [Was ist Azure-Web-App unter Linux?](./app-service-linux-intro.md)
 * [Erstellen von Apps in Azure-Web-App unter Linux](./app-service-linux-how-to-create-web-app.md)
 * [Verwenden der PM2-Konfiguration für Node.js in Azure-Web-App unter Linux](app-service-linux-using-nodejs-pm2.md)
