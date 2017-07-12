@@ -13,18 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/30/2017
+ms.date: 07/03/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: aa27689f564aedf61174fecaae76b5bf60951482
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 8b2fbc230faf01797109114d6ebdffe5ec50e48b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Was sind VM-Skalierungsgruppen in Azure?
+<a id="what-are-virtual-machine-scale-sets-in-azure" class="xliff"></a>
+
+# Was sind VM-Skalierungsgruppen in Azure?
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
 
 Bei Anwendungen, für die Computeressourcen horizontal herunter- und hochskaliert werden müssen, werden Skalierungsoperationen implizit über Fehler- und Updatedomänen ausgeglichen. Eine weitergehende Einführung in das Thema „Skalierungsgruppen“ finden Sie in [dieser Ankündigung im Azure-Blog](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/).
@@ -34,16 +36,20 @@ Die folgenden Videos enthalten weitere Informationen zu Skalierungsgruppen:
 * [Mark Russinovich spricht über Azure-Skalierungsgruppen](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)  
 * [VM-Skalierungsgruppen mit Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-## <a name="creating-and-managing-scale-sets"></a>Erstellen und Verwalten von Skalierungsgruppen
+<a id="creating-and-managing-scale-sets" class="xliff"></a>
+
+## Erstellen und Verwalten von Skalierungsgruppen
 Eine Skalierungsgruppe können Sie im [Azure-Portal](https://portal.azure.com) wie folgt erstellen: Wählen Sie **Neu** aus, und geben Sie **Skalierung** in die Suchleiste ein. In den Ergebnissen wird **VM-Skalierungsgruppe** aufgeführt. Sie können anschließend die Pflichtfelder ausfüllen, um Ihre Skalierungsgruppe anzupassen und bereitzustellen. Im Portal stehen auch Optionen zum Einrichten grundlegender Regeln für die automatische Skalierung auf der Grundlage der CPU-Auslastung zur Verfügung.
 
 VM-Skalierungsgruppen können genau wie einzelne virtuelle Azure Resource Manager-Computer mithilfe von JSON-Vorlagen und [REST-APIs](https://msdn.microsoft.com/library/mt589023.aspx) definiert und bereitgestellt werden. Ihnen stehen daher alle Standardbereitstellungsmethoden von Azure Resource Manager zur Verfügung. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Eine Reihe von Beispielvorlagen für VM-Skalierungsgruppen finden Sie im [GitHub-Repository für Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates). (Suchen Sie nach Vorlagen mit **vmss** im Titel.)
 
-Über eine Schaltfläche gelangen Sie auf den Detailseiten für diese Vorlagen zum Bereitstellungsfeature des Portals. Zum Bereitstellen der Skalierungsgruppe klicken Sie auf diese Schaltfläche und geben dann alle Parameter an, die im Portal erforderlich sind. Wenn Sie nicht wissen, ob eine Ressource Großbuchstaben oder eine gemischte Groß- und Kleinschreibung unterstützt, ist es sicherer, für die Parameterwerte nur Kleinbuchstaben und Zahlen zu verwenden. Unter [VM Scale Set Template Dissection](https://channel9.msdn.com/Blogs/Azure/VM-Scale-Set-Template-Dissection/player) (Analyse einer VM-Skalierungsgruppenvorlage) finden Sie eine anschauliche Videoanalyse einer Skalierungsgruppenvorlage.
+Bei den Schnellstartvorlagenbeispielen steht in der Infodatei für jede Vorlage eine Schaltfläche vom Typ „In Azure bereitstellen“ zur Verfügung, die eine Verknüpfung mit dem Portalbereitstellungsfeature herstellt. Zum Bereitstellen der Skalierungsgruppe klicken Sie auf diese Schaltfläche und geben dann alle Parameter an, die im Portal erforderlich sind. 
 
-## <a name="scaling-a-scale-set-out-and-in"></a>Horizontales Hoch- und Herunterskalieren einer Skalierungsgruppe
+<a id="scaling-a-scale-set-out-and-in" class="xliff"></a>
+
+## Horizontales Hoch- und Herunterskalieren einer Skalierungsgruppe
 Sie können die Kapazität einer Skalierungsgruppe im Azure-Portal ändern, indem Sie unter **Einstellungen** auf den Abschnitt **Skalierung** klicken. 
 
 Wenn Sie die Kapazität einer Skalierungsgruppe über die Befehlszeile ändern möchten, können Sie den Befehl **scale** der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-cli) verwenden. Verwenden Sie beispielsweise den folgenden Befehl, um für eine Skalierungsgruppe eine Kapazität von zehn virtuellen Computern festzulegen:
@@ -64,7 +70,9 @@ Wenn Sie die Anzahl virtueller Computern in einer Skalierungsgruppe mit einer Az
 
 Wenn Sie eine Azure Resource Manager-Vorlage erneut bereitstellen, um die Kapazität zu ändern, können Sie eine viel kleinere Vorlage definieren, die nur das **SKU**-Eigenschaftspaket mit der aktualisierten Kapazität enthält. Ein entsprechendes Beispiel finden Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing).
 
-## <a name="autoscale"></a>Autoscale
+<a id="autoscale" class="xliff"></a>
+
+## Autoscale
 
 Eine Skalierungsgruppe kann bei der Erstellung im Azure-Portal optional mit Einstellungen für die automatische Skalierung konfiguriert werden. Die Anzahl virtueller Computer kann dann auf der Grundlage der CPU-Auslastung erhöht oder verringert werden. 
 
@@ -83,19 +91,23 @@ $profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -
 Add-AzureRmAutoscaleSetting -Location $location -Name "autosetting1" -ResourceGroup $rgname -TargetResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -AutoscaleProfiles $profile1
 ```
 
- Eine Liste mit gültigen Metriken für die Skalierung finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (unter der Überschrift „Microsoft.Compute/virtualMachineScaleSets“). Es sind auch komplexere Optionen für die automatische Skalierung verfügbar – etwa für die automatische Skalierung nach Zeitplan und für die Verwendung von Webhooks zur Integration in Warnsysteme.
+Eine Liste mit gültigen Metriken für die Skalierung finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (unter der Überschrift „Microsoft.Compute/virtualMachineScaleSets“). Es sind auch komplexere Optionen für die automatische Skalierung verfügbar – etwa für die automatische Skalierung nach Zeitplan und für die Verwendung von Webhooks zur Integration in Warnsysteme.
 
-## <a name="monitoring-your-scale-set"></a>Überwachen der Skalierungsgruppe
+<a id="monitoring-your-scale-set" class="xliff"></a>
+
+## Überwachen der Skalierungsgruppe
 Im [Azure-Portal](https://portal.azure.com) werden die Skalierungsgruppen und die dazugehörigen Eigenschaften aufgeführt. Darüber hinaus unterstützt das Portal auch Verwaltungsvorgänge. Sie können Verwaltungsvorgänge sowohl für Skalierungsgruppen als auch für einzelne virtuelle Computer innerhalb einer Skalierungsgruppe ausführen. Darüber hinaus wird im Portal ein Graph zur Ressourcennutzung bereitgestellt, den Sie anpassen können. 
 
 Zum Anzeigen oder Bearbeiten der zugrunde liegenden JSON-Definition einer Azure-Ressource können Sie auch den [Azure-Ressourcen-Explorer](https://resources.azure.com) verwenden. Bei Skalierungsgruppen handelt es sich um eine Ressource unter dem Azure-Ressourcenanbieter „Microsoft.Compute“. Dort können Sie sie durch Erweitern folgender Links anzeigen:
 
 **Abonnements** > **Ihr Abonnement** > **resourceGroups** > **providers** > **Microsoft.Compute** > **virtualMachineScaleSets** > **Ihre Skalierungsgruppe** > usw.
 
-## <a name="scale-set-scenarios"></a>Szenarien für Skalierungsgruppen
+<a id="scale-set-scenarios" class="xliff"></a>
+
+## Szenarien für Skalierungsgruppen
 Dieser Abschnitt enthält einige typische Szenarien für Skalierungsgruppen. Einige auf höherer Ebene angesiedelte Azure-Dienste (wie Batch, Service Fabric und Azure Container Service) verwenden diese Szenarien.
 
-* **Herstellen einer Verbindung mit Skalierungsgruppeninstanzen mithilfe von RDP oder SSH:** Eine Skalierungsgruppe wird in einem virtuellen Netzwerk erstellt, und den einzelnen virtuellen Computern in der Skalierungsgruppe werden keine öffentlichen IP-Adressen zugeordnet. Mit dieser Richtlinie werden Kosten und Verwaltungsvorgänge vermieden, die anfallen, wenn allen Knoten im Computenetz separate öffentliche IP-Adressen zugeordnet werden. Sie können über andere Ressourcen in Ihrem virtuellen Netzwerk (beispielsweise Load Balancer und eigenständige virtuelle Computer), denen öffentliche IP-Adressen zugeordnet werden können, eine Verbindung mit diesen virtuellen Computern herstellen.
+* **Herstellen einer Verbindung mit Skalierungsgruppeninstanzen mithilfe von RDP oder SSH:** Eine Skalierungsgruppe wird in einem virtuellen Netzwerk erstellt, und den einzelnen virtuellen Computern in der Skalierungsgruppe werden nicht standardmäßig öffentliche IP-Adressen zugeordnet. Mit dieser Richtlinie werden Kosten und Verwaltungsvorgänge vermieden, die anfallen, wenn allen Knoten im Computenetz separate öffentliche IP-Adressen zugeordnet werden. Falls direkte externe Verbindungen mit Computern in Skalierungsgruppen hergestellt werden müssen, können Sie für eine Skalierungsgruppe die automatische Zuweisung öffentlicher IP-Adressen zu neuen virtuellen Computern konfigurieren. Alternativ können Sie über andere Ressourcen in Ihrem virtuellen Netzwerk (beispielsweise Load Balancer und eigenständige virtuelle Computer), denen öffentliche IP-Adressen zugeordnet werden können, eine Verbindung mit diesen virtuellen Computern herstellen. 
 * **Herstellen einer Verbindung mit virtuellen Computern mithilfe von NAT-Regeln:** Sie können eine öffentliche IP-Adresse erstellen, sie einem Load Balancer zuweisen und einen NAT-Pool für eingehenden Datenverkehr definieren. Dadurch werden Ports der IP-Adresse einem Port auf einem virtuellen Computer in der Skalierungsgruppe zugeordnet. Beispiel:
   
   | Quelle | Quellport | Ziel | Zielport |
@@ -122,13 +134,17 @@ Dieser Abschnitt enthält einige typische Szenarien für Skalierungsgruppen. Ein
   
    In [diesem Beispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) des Konzepts stellt [Azure Container Service](https://azure.microsoft.com/services/container-service/) einen Cluster auf der Grundlage von Skalierungsgruppen mit einem Containerorchestrator bereit.
 
-## <a name="scale-set-performance-and-scale-guidance"></a>Anleitung zur Leistungsfähigkeit und Skalierung von Skalierungsgruppen
+<a id="scale-set-performance-and-scale-guidance" class="xliff"></a>
+
+## Anleitung zur Leistungsfähigkeit und Skalierung von Skalierungsgruppen
 * Eine Skalierungsgruppe unterstützt bis zu 1.000 virtuelle Computer. Wenn Sie eigene benutzerdefinierte VM-Images erstellen und hochladen, beträgt der Grenzwert 100. Informationen zu Aspekten, die bei der Nutzung großer Skalierungsgruppen zu berücksichtigen sind, finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md).
 * Für die Verwendung von Skalierungsgruppen müssen Sie vorab keine Azure-Speicherkonten erstellen. Da Skalierungsgruppen Azure Managed Disks unterstützen, sind Leistungsbedenken in Bezug auf die Anzahl von Datenträgern pro Speicherkonto kein Thema. Weitere Informationen finden Sie unter [Azure-VM-Skalierungsgruppen und verwaltete Datenträger](virtual-machine-scale-sets-managed-disks.md).
 * Erwägen Sie die Verwendung von Azure Storage Premium anstelle von Azure Storage, um eine schnellere und besser vorhersagbare VM-Bereitstellung und eine höhere E/A-Leistung zu erreichen.
 * Wie viele virtuelle Computer Sie erstellen können, hängt vom Kernkontingent der Region ab, in der Sie sie bereitstellen. Unter Umständen müssen Sie das Limit für das Computekontingent durch den Kundensupport erhöhen lassen. Das gilt auch, wenn Sie bereits über ein hohes Limit an Kernen verfügen, die für Azure Cloud Services genutzt werden können. Ihr Kontingent können Sie über die Azure-Befehlszeile mithilfe des folgenden Befehls abfragen: `azure vm list-usage`. Sie können aber auch den folgenden PowerShell-Befehl ausführen: `Get-AzureRmVMUsage`.
 
-## <a name="frequently-asked-questions-for-scale-sets"></a>Häufig gestellte Fragen zu Skalierungsgruppen
+<a id="frequently-asked-questions-for-scale-sets" class="xliff"></a>
+
+## Häufig gestellte Fragen zu Skalierungsgruppen
 **F.** Wie viele virtuelle Computer können in einer Skalierungsgruppe enthalten sein?
 
 **A.** Eine Skalierungsgruppe kann zwischen 0 und 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 100 virtuelle Computer (benutzerdefinierte Images) enthalten. 

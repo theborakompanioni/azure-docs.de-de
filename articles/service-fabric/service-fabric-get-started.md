@@ -12,17 +12,19 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 06/20/2017
 ms.author: ryanwi, mikhegn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 25243603abd2f30adc11640f00b782c8d827796e
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 926dfe3de0715f855e6d5b57f10c2366cda8583b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/21/2017
 
 
 ---
-# <a name="prepare-your-development-environment"></a>Vorbereiten Ihrer Entwicklungsumgebung
+<a id="prepare-your-development-environment" class="xliff"></a>
+
+# Vorbereiten Ihrer Entwicklungsumgebung
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
@@ -32,8 +34,12 @@ ms.lasthandoff: 05/26/2017
 
  Zum Entwickeln und Ausführen von [Azure Service Fabric-Anwendungen][1] müssen Sie auf dem Entwicklungscomputer die Laufzeit, das SDK und die Tools installieren. Sie müssen auch die Ausführung der im SDK enthaltenen Windows PowerShell-Skripts aktivieren.
 
-## <a name="prerequisites"></a>Voraussetzungen
-### <a name="supported-operating-system-versions"></a>Unterstützte Betriebssystemversionen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
+<a id="supported-operating-system-versions" class="xliff"></a>
+
+### Unterstützte Betriebssystemversionen
 Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 
 * Windows 7
@@ -47,51 +53,56 @@ Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 > 
 > 
 
-## <a name="install-the-sdk-and-tools"></a>Installieren des SDKs und der Tools
-### <a name="to-use-visual-studio-2017"></a>So verwenden Sie Visual Studio 2017
+<a id="install-the-sdk-and-tools" class="xliff"></a>
+
+## Installieren des SDKs und der Tools
+<a id="to-use-visual-studio-2017" class="xliff"></a>
+
+### So verwenden Sie Visual Studio 2017
 Service Fabric-Tools sind Bestandteil der Workload für die Azure-Entwicklung und -Verwaltung in Visual Studio 2017. Aktivieren Sie diese Workload im Rahmen der Visual Studio-Installation.
 Zudem müssen Sie das Microsoft Azure Service Fabric SDK mithilfe des Webplattform-Installers installieren.
 
 * [Installieren des Microsoft Azure Service Fabric-SDKs][core-sdk]
 
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>So verwenden Sie Visual Studio 2015 (erfordert mindestens Visual Studio 2015 Update 2)
+<a id="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later" class="xliff"></a>
+
+### So verwenden Sie Visual Studio 2015 (erfordert mindestens Visual Studio 2015 Update 2)
 Für Visual Studio 2015 werden Service Fabric-Tools zusammen mit dem SDK mithilfe des Webplattform-Installers installiert:
 
 * [Installieren des Microsoft Azure Service Fabric-SDKs und der Tools][full-bundle-vs2015]
 
-### <a name="sdk-installation-only"></a>Nur SDK-Installation
+<a id="sdk-installation-only" class="xliff"></a>
+
+### Nur SDK-Installation
 Wenn Sie nur das SDK benötigen, können Sie dieses Paket installieren:
 * [Installieren des Microsoft Azure Service Fabric-SDKs][core-sdk]
 
-> [!WARNING]
-> Kunden haben uns darauf hingewiesen, dass bei Verwendung dieser Startlinks Installationsfehler auftreten können (insbesondere bei Verwendung des Chrome-Browsers). Diese Fehler des Webplattform-Installers sind bekannt und werden momentan behoben.  Probieren Sie die folgenden Problemumgehungen aus:
->- Verwenden Sie die obigen Links in Internet Explorer oder Edge. Oder:
->- Starten Sie den Webplattform-Installer über das Startmenü, suchen Sie nach „Service Fabric“, und installieren Sie das SDK.
-> 
-> Wir entschuldigen uns für die Unannehmlichkeiten. 
-
 Aktuelle Versionen:
-* Service Fabric SDK 2.6.210
-* Service Fabric-Runtime: 5.6.210
+* Service Fabric SDK 2.6.220
+* Service Fabric-Runtime 5.6.220
 * Visual Studio 2015-Tools: 1.6.50508.2
 * Visual Studio 2017 Update 2
 
 Aktuelle Vorschauversionen:
-* Service Fabric SDK 255.255.2709.255
-* Service Fabric-Runtime: 255.255.5709.255
+* Service Fabric SDK 255.255.2718.255
+* Service Fabric-Runtime 255.255.5718.255
 * Visual Studio 2015-Tools: 1.6.50509.5
 * Visual Studio 2017 Update 3 Preview 1
 
 Eine Liste mit unterstützten Versionen finden Sie unter [Service Fabric-Unterstützung](service-fabric-support.md).
 
-## <a name="enable-powershell-script-execution"></a>Aktivieren der PowerShell-Skriptausführung
+<a id="enable-powershell-script-execution" class="xliff"></a>
+
+## Aktivieren der PowerShell-Skriptausführung
 Service Fabric verwendet Windows PowerShell-Skripts zum Erstellen eines lokalen Entwicklungsclusters und zum Bereitstellen von Anwendungen aus Visual Studio. Die Ausführung dieser Skripts wird von Windows standardmäßig blockiert. Um die Skripts zu aktivieren, müssen Sie die PowerShell-Ausführungsrichtlinie ändern. Öffnen Sie PowerShell als Administrator, und geben Sie folgenden Befehl ein:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Nachdem Sie die Entwicklungsumgebung eingerichtet haben, können Sie nun mit dem Erstellen und Ausführen von Apps beginnen.
 
 * [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)

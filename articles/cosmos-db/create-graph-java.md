@@ -13,23 +13,27 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 06/27/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: e02dfacd7f67c6c935243a916140c8b29fb14f9d
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: d9619bd9a012a347634282788b3a318886967a3f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="azure-cosmos-db-build-a-java-application-using-the-graph-api"></a>Azure Cosmos DB: Erstellen einer Java-Anwendung mit der Graph-API
+<a id="azure-cosmos-db-build-a-java-application-using-the-graph-api" class="xliff"></a>
+
+# Azure Cosmos DB: Erstellen einer Java-Anwendung mit der Graph-API
 
 Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
 Dieser Schnellstart veranschaulicht, wie Sie ein Azure Cosmos DB-Konto für die Graph-API (Vorschau), eine Datenbank und einen Graph mithilfe des Azure-Portals erstellen können. Anschließend erstellen Sie eine Konsolen-App mithilfe des Open-Source-Software-Treibers (OSS) [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) und führen diese aus.  
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 
 * Bevor Sie dieses Beispiel ausführen können, müssen folgende Voraussetzungen erfüllt sein:
    * JDK 1.7 und höher (Führen Sie `apt-get install default-jdk` aus, wenn Sie nicht über JDK verfügen.) Legen Sie zudem Umgebungsvariablen wie `JAVA_HOME` fest.
@@ -37,15 +41,21 @@ Dieser Schnellstart veranschaulicht, wie Sie ein Azure Cosmos DB-Konto für die 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
+<a id="create-a-database-account" class="xliff"></a>
+
+## Erstellen eines Datenbankkontos
 
 [!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
-## <a name="add-a-graph"></a>Hinzufügen eines Graphs
+<a id="add-a-graph" class="xliff"></a>
+
+## Hinzufügen eines Graphs
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
+<a id="clone-the-sample-application" class="xliff"></a>
+
+## Klonen der Beispielanwendung
 
 Nun klonen wir eine Graph-API-App (Vorschau) aus Github, legen die Verbindungszeichenfolge fest und führen sie aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
@@ -57,11 +67,13 @@ Nun klonen wir eine Graph-API-App (Vorschau) aus Github, legen die Verbindungsze
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git
     ```
 
-## <a name="review-the-code"></a>Überprüfen des Codes
+<a id="review-the-code" class="xliff"></a>
+
+## Überprüfen des Codes
 
 Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Datei `Program.java`. Dort finden Sie folgende Codezeilen. 
 
-* Gremlin `Client` wird aus der Konfiguration in `src/remote-secure.yaml` initialisiert, die Sie zuvor festgelegt haben.
+* `Client` von Gremlin wird aus der Konfiguration in `src/remote.yaml` initialisiert.
 
     ```java
     Cluster cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -69,7 +81,7 @@ Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Da
     Client client = cluster.connect();
     ```
 
-* Es werden einige Schritte mit Gremlin mithilfe der `client.submit`-Methode ausgeführt.
+* Eine Reihe von Gremlin-Schritten wird mit mithilfe der `client.submit`-Methode ausgeführt.
 
     ```java
     ResultSet results = client.submit("g.V()");
@@ -81,7 +93,9 @@ Es folgt ein kurzer Überblick zu den Ereignissen in der App. Öffnen Sie die Da
         System.out.println(result.toString());
     }
     ```
-## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
+<a id="update-your-connection-string" class="xliff"></a>
+
+## Aktualisieren der Verbindungszeichenfolge
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
 
@@ -89,9 +103,9 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“](./media/create-graph-java/keys.png)
 
-2. Öffnen Sie die Datei `src/remote-secure.yaml`. 
+2. Öffnen Sie die Datei `src/remote.yaml` . 
 
-3. Füllen Sie die Konfigurationen *Host*, *Port*, *Benutzername*, *Kennwort*, *connectionPool* und *Serialisierungsprogramm* in der Datei `src/remote-secure.yaml` aus:
+3. Füllen Sie die Konfigurationen *Host*, *Port*, *Benutzername*, *Kennwort*, *connectionPool* und *Serialisierungsprogramm* in der Datei `src/remote.yaml` aus:
 
     Einstellung|Empfohlener Wert|Beschreibung
     ---|---|---
@@ -102,15 +116,19 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     ConnectionPool|{enableSsl: true}|Die Verbindungspooleinstellung für SSL
     serializer|{ className:org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Auf diesen Wert festlegen
 
-## <a name="run-the-console-app"></a>Ausführen der Konsolenanwendung
+<a id="run-the-console-app" class="xliff"></a>
 
-1. Führen Sie `mvn package` in einem Terminal aus, um erforderliche NPM-Module zu installieren
+## Ausführen der Konsolenanwendung
+
+1. Führen Sie `mvn package` in einem Terminal aus, um erforderliche Java-Pakete zu installieren.
 
 2. Führen Sie `mvn exec:java -D exec.mainClass=GetStarted.Program` in einem Terminal aus, um Ihre Java-Anwendung zu starten.
 
 Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeigen, abzufragen, anzupassen und mit ihnen zu arbeiten. 
 
-## <a name="browse-using-the-data-explorer"></a>Durchsuchen mit dem Daten-Explorer
+<a id="browse-using-the-data-explorer" class="xliff"></a>
+
+## Durchsuchen mit dem Daten-Explorer
 
 Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren und die neuen Graph-Daten durchsuchen und abfragen.
 
@@ -118,18 +136,24 @@ Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren und die neuen G
 
     Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
 
-## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
+
+## Überprüfen von SLAs im Azure-Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+<a id="clean-up-resources" class="xliff"></a>
+
+## Bereinigen von Ressourcen
 
 Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen im Azure-Portal. Führen Sie dazu folgende Schritte durch: 
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource. 
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Graph mit dem Daten-Explorer erstellen und eine App ausführen. Nun können Sie komplexere Abfragen erstellen und leistungsfähige Logik zum Traversieren von Diagrammen mit Gremlin implementieren. 
 

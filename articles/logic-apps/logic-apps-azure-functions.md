@@ -23,7 +23,9 @@ ms.lasthandoff: 03/10/2017
 
 ---
 
-# <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Hinzufügen von benutzerdefiniertem Code für Logik-Apps über Azure Functions
+<a id="add-and-run-custom-code-for-logic-apps-through-azure-functions" class="xliff"></a>
+
+# Hinzufügen von benutzerdefiniertem Code für Logik-Apps über Azure Functions
 
 Sie können über Azure Functions benutzerdefinierte Funktionen erstellen, um benutzerdefinierte C#- oder Node.js-Codeausschnitte auszuführen. 
 [Azure Functions](../azure-functions/functions-overview.md) ermöglicht Computing ohne Server in Microsoft Azure und ist für die folgenden Aufgaben nützlich:
@@ -32,7 +34,9 @@ Sie können über Azure Functions benutzerdefinierte Funktionen erstellen, um be
 * Berechnungen in einem Workflow
 * Erweiterung der Funktionalität von Logik-Apps um Funktionen, die in C# oder Node.js unterstützt werden
 
-## <a name="create-custom-functions-for-your-logic-apps"></a>Erstellen von benutzerdefinierten Funktionen für Ihre Logik-Apps
+<a id="create-custom-functions-for-your-logic-apps" class="xliff"></a>
+
+## Erstellen von benutzerdefinierten Funktionen für Ihre Logik-Apps
 
 Es wird empfohlen, eine Funktion im Azure Functions-Portal aus den Vorlagen für **generische Knotenwebhooks** oder **generische C#-Webhooks** zu erstellen. Das Ergebnis ist eine automatisch ausgefüllte Vorlage, die `application/json` von einer Logik-App akzeptiert. Funktionen, die Sie mit diesen Vorlagen erstellen, werden automatisch ermittelt und im Logik-Apps-Designer unter **Azure Functions in my region** (Azure Functions in meiner Region) angezeigt.
 
@@ -49,19 +53,25 @@ function start(req, res){
 }
 ```
 
-## <a name="call-azure-functions-from-logic-apps"></a>Aufrufen von Azure Functions aus Logik-Apps
+<a id="call-azure-functions-from-logic-apps" class="xliff"></a>
+
+## Aufrufen von Azure Functions aus Logik-Apps
 
 Um die Container in Ihrem Abonnement aufzulisten und die Funktion auszuwählen, die Sie aufrufen möchten, klicken Sie im Logik-App-Designer auf das Menü **Aktionen**, und treffen Sie Ihre Auswahl unter **Azure Functions in my Region** (Azure-Funktionen in meiner Region).
 
-Nachdem Sie die Funktion ausgewählt haben, werden Sie aufgefordert, ein Eingabenutzlastobjekt anzugeben. Dieses Objekt ist die Nachricht, die von der Logik-App an die Funktion gesendet wird. Es muss ein JSON-Objekt sein. Wenn Sie beispielsweise das Datum der letzten Änderung**** von einem Salesforce-Trigger übergeben möchten, kann die Funktionsnutzlast unter Umständen wie im folgenden Beispiel aussehen:
+Nachdem Sie die Funktion ausgewählt haben, werden Sie aufgefordert, ein Eingabenutzlastobjekt anzugeben. Dieses Objekt ist die Nachricht, die von der Logik-App an die Funktion gesendet wird. Es muss ein JSON-Objekt sein. Wenn Sie beispielsweise das Datum der **letzten Änderung** von einem Salesforce-Trigger übergeben möchten, kann die Funktionsnutzlast unter Umständen wie im folgenden Beispiel aussehen:
 
 ![Datum der letzten Änderung][1]
 
-## <a name="trigger-logic-apps-from-a-function"></a>Auslösen von Logik-Apps aus einer Funktion
+<a id="trigger-logic-apps-from-a-function" class="xliff"></a>
+
+## Auslösen von Logik-Apps aus einer Funktion
 
 Sie können eine Logik-App aus einer Funktion heraus auslösen. Weitere Informationen finden Sie unter [Logic-Apps als aufrufbare Endpunkte](logic-apps-http-endpoint.md). Erstellen Sie eine Logik-App, die einen manuellen Trigger aufweist, und generieren Sie in der Funktion einen HTTP POST-Aufruf, um die URL mit der Nutzlast, die Sie an die Logik-App senden möchten, manuell auszulösen.
 
-### <a name="create-a-function-from-logic-app-designer"></a>Erstellen einer Funktion im Logik-App-Designer
+<a id="create-a-function-from-logic-app-designer" class="xliff"></a>
+
+### Erstellen einer Funktion im Logik-App-Designer
 
 Sie können auch eine Node.js-Webhookfunktion direkt im Designer erstellen. Wählen Sie zunächst **Azure Functions in my region** (Azure Functions in meiner Region) und dann einen Container für Ihre Funktion aus. Wenn noch kein Container vorhanden ist, müssen Sie ihn im [Azure Functions-Portal](https://functions.azure.com/signin)erstellen. Klicken Sie anschließend auf **Neu erstellen**.  
 

@@ -5,7 +5,9 @@ sql-database-resource-limits.md
 sql-database-service-tiers.md  
 -->
  
-### <a name="basic-elastic-pool-limits"></a>Grenzwerte für elastische Pools – Basic
+<a id="basic-elastic-pool-limits" class="xliff"></a>
+
+### Grenzwerte für elastische Pools – Basic
 
 | Poolgröße (eDTUs)  | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
@@ -20,7 +22,9 @@ sql-database-service-tiers.md
 | Max. Datenspeicher pro Datenbank | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 
 ||||||||
 
-### <a name="standard-elastic-pool-limits"></a>Grenzwerte für elastische Pools – Standard
+<a id="standard-elastic-pool-limits" class="xliff"></a>
+
+### Grenzwerte für elastische Pools – Standard
 
 | Poolgröße (eDTUs)  | **50** | **100** | **200**** | **300**** | **400**** | **800****| 
 |:---|---:|---:|---:| ---: | ---: | ---: | 
@@ -35,7 +39,9 @@ sql-database-service-tiers.md
 | Max. Datenspeicher pro Datenbank | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB |
 ||||||||
 
-### <a name="standard-elastic-pool-limits-continued"></a>Grenzwerte für elastische Pools – Standard (Fortsetzung) 
+<a id="standard-elastic-pool-limits-continued" class="xliff"></a>
+
+### Grenzwerte für elastische Pools – Standard (Fortsetzung) 
 
 | Poolgröße (eDTUs)  |  **1200**** | **1600**** | **2000**** | **2500**** | **3000**** |
 |:---|---:|---:|---:| ---: | ---: |
@@ -50,22 +56,26 @@ sql-database-service-tiers.md
 | Max. Datenspeicher pro Datenbank | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB | 
 ||||||||
 
-### <a name="premium-elastic-pool-limits"></a>Grenzwerte für elastische Pools – Premium
+<a id="premium-elastic-pool-limits" class="xliff"></a>
+
+### Grenzwerte für elastische Pools – Premium
 
 | Poolgröße (eDTUs)  | **125** | **250** | **500** | **1000** | **1500*****| 
 |:---|---:|---:|---:| ---: | ---: | 
-| Max. Datenspeicher pro Pool* | 250 GB | 500 GB | 750 GB | 750 GB | 1,5 TB | 
+| Max. Datenspeicher pro Pool* | 250 GB | 500 GB | 750 GB | 1 TB | 1,5 TB | 
 | Max. In-Memory-OLTP-Speicher pro Pool | 1 GB| 2 GB| 4 GB| 10 GB| 12 GB| 
 | Max. Anzahl Datenbanken pro Pool | 50 | 100 | 100 | 100 | 100 |  
 | Max. gleichzeitige Worker pro Pool (Anforderungen) | 200 | 400 | 800 | 1600 |  2400 | 
 | Max. gleichzeitige Anmeldungen pro Pool | 200 | 400 | 800 | 1600 |  2400 |
 | Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 | 30000 | 
-| Min. Anz. von eDTUs pro Datenbank | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000, 1500 | 
-| Max. Anz. von eDTUs pro Datenbank | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000, 1500 |
+| Min. Anz. von eDTUs pro Datenbank | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000 | 
+| Max. Anz. von eDTUs pro Datenbank | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000 |
 | Max. Datenspeicher pro Datenbank | 500 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
-### <a name="premium-elastic-pool-limits-continued"></a>Grenzwerte für elastische Pools – Premium (Fortsetzung) 
+<a id="premium-elastic-pool-limits-continued" class="xliff"></a>
+
+### Grenzwerte für elastische Pools – Premium (Fortsetzung) 
 
 | Poolgröße (eDTUs) | **2000***** | **2500***** | **3000***** | **3500***** | **4000*****|
 |:---|---:|---:|---:| ---: | ---: | 
@@ -80,7 +90,9 @@ sql-database-service-tiers.md
 | Max. Datenspeicher pro Datenbank | 500 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
-### <a name="premium-rs-elastic-pool-limits"></a>Grenzwerte für elastische RS-Pools – Premium
+<a id="premium-rs-elastic-pool-limits" class="xliff"></a>
+
+### Grenzwerte für elastische RS-Pools – Premium
 
 | Poolgröße (eDTUs)  | **125** | **250** | **500** | **1000** |
 |:---|---:|---:|---:| ---: | ---: | 
@@ -101,5 +113,5 @@ sql-database-service-tiers.md
 >
 >\*\* Die minimale bzw. maximale Anzahl von eDTUs pro Datenbank ab 200 eDTUs befindet sich in der öffentlichen Vorschauphase.
 >
->\*\*\* Die standardmäßige maximale Datenspeicherkapazität pro Pool für Premium-Pools mit 1.500 oder mehr eDTUs beträgt 750 GB. Für die Nutzung einer höheren maximalen Datenspeichergröße pro Pool muss die entsprechende Größe explizit mit dem Azure-Portal oder [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) ausgewählt werden. Premium-Pools mit einer Speicherkapazität von mehr als 750 GB sind derzeit in folgenden Regionen in der öffentlichen Vorschau verfügbar: USA, Osten 2; USA, Westen; USA Gov Virginia; Europa, Westen; Deutschland, Mitte; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Die maximale Speicherkapazität pro Pool für alle anderen Regionen ist derzeit auf 750 GB beschränkt.
+>\*\*\* Die standardmäßige maximale Datenspeicherkapazität pro Pool für Premium-Pools mit 500 oder mehr eDTUs beträgt 750 GB. Für die Nutzung einer höheren maximalen Datenspeichergröße pro Premium-Pool für 1.000 oder mehr eDTUs muss die entsprechende Größe explizit mit dem Azure-Portal oder [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) ausgewählt werden. Premium-Pools mit einer Speicherkapazität von mehr als 1.000 GB sind derzeit in folgenden Regionen in der öffentlichen Vorschau verfügbar: USA, Osten 2; USA, Westen; USA Gov Virginia; Europa, Westen; Deutschland, Mitte; Asien, Südosten; Japan, Osten; Australien, Osten; Kanada, Mitte und Kanada, Osten. Die maximale Speicherkapazität pro Pool für alle anderen Regionen ist derzeit auf 750 GB beschränkt.
 >

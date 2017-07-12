@@ -13,21 +13,26 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/20/2017
+ms.date: 06/28/2017
 ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 6c0b381772a6c8ea64bbcf6455fe630b0ca2916a
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: a42138ae234313c7c6cbfcaa8b851ad47f82133b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="get-started-using-r-server-on-hdinsight"></a>Erste Schritte mit R Server in HDInsight
+<a id="get-started-using-r-server-on-hdinsight" class="xliff"></a>
 
-HDInsight umfasst eine R Server-Option für die Integration in Ihren HDInsight-Cluster. Dadurch können R-Skripts Spark und MapReduce verwenden, um verteilte Berechnungen auszuführen. In diesem Dokument erfahren Sie, wie Sie eine R Server-Instanz in einem HDInsight-Cluster erstellen und dann ein R-Skript ausführen, das die Verwendung von Spark für verteilte R-Berechnungen veranschaulicht.
+# Erste Schritte mit R Server in HDInsight
 
-## <a name="prerequisites"></a>Voraussetzungen
+HDInsight umfasst eine R Server-Option für die Integration in Ihren HDInsight-Cluster. Mit dieser Option können R-Skripts Spark und MapReduce verwenden, um verteilte Berechnungen auszuführen. In diesem Dokument erfahren Sie, wie Sie eine R Server-Instanz in einem HDInsight-Cluster erstellen und dann ein R-Skript ausführen, das die Verwendung von Spark für verteilte R-Berechnungen veranschaulicht.
+
+
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 
 * **Ein Azure-Abonnement**: Bevor Sie mit diesem Tutorial beginnen, müssen Sie über ein Azure-Abonnement verfügen. Weitere Informationen finden Sie im Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (Anfordern einer kostenlosen Azure-Version zum Testen von Hadoop in HDInsight).
 * **Ein Secure Shell-Client (SSH)**: Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -37,7 +42,9 @@ HDInsight umfasst eine R Server-Option für die Integration in Ihren HDInsight-C
 > Für die Schritte in diesem Dokument wird davon ausgegangen, dass Sie ein Kennwort verwenden.
 
 
-## <a name="automated-cluster-creation"></a>Automatisierte Clustererstellung
+<a id="automated-cluster-creation" class="xliff"></a>
+
+## Automatisierte Clustererstellung
 
 Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie Azure Resource Manager-Vorlagen, das SDK und PowerShell verwenden.
 
@@ -46,11 +53,14 @@ Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie Azure Re
 * Informationen zur R Server-Bereitstellung mit PowerShell finden Sie im Artikel [Creating an R Server on HDInsight with PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) (Erstellen einer R Server-Instanz unter HDInsight mit PowerShell).
 
 
-## <a name="create-the-cluster-using-the-azure-portal"></a>Erstellen des Clusters mit dem Azure-Portal
+<a name="create-hdi-custer-with-aure-portal"></a>
+<a id="create-the-cluster-using-the-azure-portal" class="xliff"></a>
+
+## Erstellen des Clusters mit dem Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-2. Wählen Sie **NEU**, **Intelligence + Analyse** und dann **HDInsight**.
+2. Klicken Sie auf **NEU** -> **Intelligence und Analyse** -> **HDInsight**.
 
     ![Bild der Erstellung eines neuen Clusters](./media/hdinsight-hadoop-r-server-get-started/newcluster.png)
 
@@ -83,7 +93,7 @@ Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie Azure Re
 
         ![SSH-Befehlszeile in Windows](./media/hdinsight-hadoop-r-server-get-started/sshcmdline.png)
 
-    * Dadurch wird eine Datei mit einem privaten Schlüssel und eine Datei mit einem öffentlichen Schlüssel mit dem Namen <Dateiname_privater_Schlüssel>.pub erstellt, z.B. „furiosa“ und „furiosa.pub“.
+    * Mit diesem Befehl wird eine Datei mit einem privaten Schlüssel und eine Datei mit einem öffentlichen Schlüssel mit dem Namen „<Dateiname_privater_Schlüssel>.pub“ erstellt, z.B. „furiosa“ und „furiosa.pub“.
 
         ![SSH-Verzeichnis](./media/hdinsight-hadoop-r-server-get-started/dir.png)
 
@@ -108,7 +118,7 @@ Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie Azure Re
       > [!NOTE]
       > Wenn Sie **Neu** auswählen, müssen Sie einen Namen für das neue Speicherkonto eingeben. Wenn der Name akzeptiert wurde, wird ein grünes Häkchen angezeigt.
 
-      Als **Standardcontainer** wird standardmäßig der Name des Clusters verwendet. Ändern Sie diesen Wert nicht.
+      Als **Standardcontainer** wird standardmäßig der Name des Clusters verwendet. Ändern Sie diesen Standardwert nicht.
 
       Wenn eine neue Speicherkontooption ausgewählt wurde, wird eine Aufforderung zum Auswählen von **Standort** angezeigt, um die Region für die Erstellung des Speicherkontos auszuwählen.  
 
@@ -127,7 +137,7 @@ Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie Azure Re
     ![Clusterzusammenfassung](./media/hdinsight-hadoop-r-server-get-started/clustersummary.png)
 
    > [!NOTE]
-   > Bei Bedarf können Sie im Portal die Größe Ihres Clusters später ändern („Cluster -> Einstellungen -> Cluster skalieren“), um die Anzahl der Workerknoten zu erhöhen oder zu verringern.  Dies kann nützlich sein, um den Cluster herunterzufahren, wenn er nicht verwendet wird, oder zum Hinzufügen von Kapazität zum Erfüllen der Anforderungen größerer Aufgaben.
+   > Bei Bedarf können Sie im Portal die Größe Ihres Clusters später ändern (**Cluster** -> **Einstellungen** -> **Cluster skalieren**), um die Anzahl von Workerknoten zu erhöhen oder zu verringern.  Diese Größenänderung kann zum Herunterfahren des Clusters nützlich sein, wenn er nicht verwendet wird, oder zum Hinzufügen von Kapazität zum Erfüllen der Anforderungen größerer Aufgaben.
    >
    >
 
@@ -144,52 +154,210 @@ Sie können die HDInsight R Server-Erstellung automatisieren, indem Sie Azure Re
 
      Klicken Sie auf die Schaltfläche **Auswählen** , um die Konfiguration der Knotenpreise zu speichern.
 
-   Beachten Sie, dass auch ein Link zum **Herunterladen von Vorlage und Parametern** vorhanden ist. Klicken Sie auf diesen Link, um Skripts anzuzeigen, mit denen Sie die Erstellung eines Clusters mit der ausgewählten Konfiguration automatisieren können. Diese Skripts sind auch über den Azure-Portal-Eintrag Ihres Clusters verfügbar, nachdem dieser erstellt wurde.
+   Es ist auch ein Link zum **Herunterladen von Vorlage und Parametern** vorhanden. Klicken Sie auf diesen Link, um Skripts anzuzeigen, mit denen Sie die Erstellung eines Clusters mit der ausgewählten Konfiguration automatisieren können. Diese Skripts sind auch über den Azure-Portal-Eintrag Ihres Clusters verfügbar, nachdem dieser erstellt wurde.
 
    > [!NOTE]
    > Die Erstellung des Clusters dauert in der Regel ca. 20 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen überprüfen**.
    >
    >
 
-## <a name="connect-to-rstudio-server"></a>Herstellen einer Verbindung mit RStudio Server
+<a name="connect-to-rstudio-server"></a>
+<a id="connect-to-rstudio-server" class="xliff"></a>
 
-Wenn Sie sich für die Einbeziehung der RStudio Server Community Edition in Ihre Installation entschieden haben, können Sie über zwei verschiedene Methoden auf die RStudio-Anmeldung zugreifen.
+## Herstellen einer Verbindung mit RStudio Server
 
-1. Entweder verwenden Sie die folgende URL (bei der **CLUSTERNAME** für den Namen des erstellten Clusters steht):
+Wenn Sie sich für den Einschluss der RStudio Server Community Edition in Ihre Installation entschieden haben, können Sie über zwei verschiedene Methoden auf die RStudio-Anmeldung zugreifen.
+
+1. Verwenden Sie die folgende URL (bei der **CLUSTERNAME** für den Namen des erstellten Clusters steht):
 
     https://**CLUSTERNAME**.azurehdinsight.net/rstudio/
 
-2. Oder Sie öffnen den Eintrag für Ihren Cluster im Azure-Portal, indem Sie den Quicklink für die R Server-Dashboards aufrufen und dann das RStudio-Dashboard auswählen:
+2. Öffnen Sie den Eintrag für Ihren Cluster im Azure-Portal, rufen Sie den Quicklink für die **R Server-Dashboards** auf, und wählen Sie dann das **R Studio-Dashboard** aus:
 
      ![Zugriff auf das RStudio-Dashboard](./media/hdinsight-getting-started-with-r/rstudiodashboard1.png)
 
      ![Zugriff auf das RStudio-Dashboard](./media/hdinsight-getting-started-with-r/rstudiodashboard2.png)
 
    > [!IMPORTANT]
-   > Unabhängig von der gewählten Zugriffsmethode müssen Sie sich bei der ersten Anmeldung zweimal authentifizieren.  Bei der ersten Authentifizierung geben Sie die Benutzer-ID und das Kennwort für den Clusteradministrator an. Bei der zweiten Aufforderung geben Sie die Benutzer-ID und das Kennwort für SSH an. Bei nachfolgenden Anmeldungen sind nur die Benutzer-ID und das Kennwort für SSH erforderlich.
+   > Unabhängig von der verwendeten Zugriffsmethode müssen Sie sich bei der ersten Anmeldung zweimal authentifizieren.  Bei der ersten Authentifizierung geben Sie die *Benutzer-ID* und das *Kennwort für den Clusteradministrator* an. Bei der zweiten Aufforderung geben Sie die *Benutzer-ID* und das *Kennwort für SSH* an. Bei nachfolgenden Anmeldungen sind nur die *Benutzer-ID* und das *Kennwort für SSH* erforderlich.
 
-## <a name="connect-to-the-r-server-edge-node"></a>Herstellen einer Verbindung mit dem R Server-Edgeknoten
+<a name="connect-to-edge-node"></a>
+<a id="connect-to-the-r-server-edge-node" class="xliff"></a>
 
-Stellen Sie über SSH eine Verbindung mit dem R Server-Edgeknoten des HDInsight-Clusters her:
+## Herstellen einer Verbindung mit dem R Server-Edgeknoten
+
+Stellen Sie mit dem folgenden Befehl über SSH eine Verbindung mit dem R Server-Edgeknoten des HDInsight-Clusters her:
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
 > [!NOTE]
-> Sie finden die Adresse `USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net` auch im Azure-Portal, indem Sie den Cluster und dann **Alle Einstellungen**, **Apps** und **R Server** auswählen. Dadurch werden die SSH-Endpunktinformationen für den Edgeknoten angezeigt.
+> Sie finden die Adresse `USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net` auch im Azure-Portal, indem Sie den Cluster und dann **Alle Einstellungen** -> **Apps** -> **R Server** auswählen. Dadurch werden die SSH-Endpunktinformationen für den Edgeknoten angezeigt.
 >
 > ![Bild des SSH-Endpunkts für den Edgeknoten](./media/hdinsight-hadoop-r-server-get-started/sshendpoint.png)
 >
 >
 
-Wenn Sie zum Schutz Ihres SSH-Benutzerkontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen öffentlichen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um den passenden privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Wenn Sie zum Schutz Ihres SSH-Benutzerkontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen öffentlichen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um den passenden privaten Schlüssel anzugeben. Beispiel:
 
-Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+    ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+
+Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Nachdem die Verbindung hergestellt wurde, wird eine Eingabeaufforderung wie die folgende angezeigt:
 
-`username@ed00-myrser:~$`
+    sername@ed00-myrser:~$
 
-## <a name="use-the-r-console"></a>Verwenden der R-Konsole
+<a name="enable-concurrent-users"></a>
+<a id="enable-multiple-concurrent-users" class="xliff"></a>
+
+## Aktivieren mehrerer gleichzeitiger Benutzer
+
+Sie können mehrere gleichzeitige Benutzern aktivieren, indem Sie mehr Benutzer für den Edgeknoten hinzufügen, auf dem die RStudio Community-Version ausgeführt wird.
+
+Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie zwei Benutzer (einen HTTP-Benutzer und einen SSH-Benutzer) angeben:
+
+![Gleichzeitiger Benutzer 1](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-1.png)
+
+- **Benutzername für Clusteranmeldung**: ein HTTP-Benutzer für die Authentifizierung über das HDInsight-Gateway, das zum Schutz der von Ihnen erstellten HDInsight-Cluster verwendet wird. Mit diesem HTTP-Benutzer wird auf die Ambari- und die YARN-Benutzeroberfläche sowie auf andere UI-Komponenten zugegriffen.
+- **SSH-Benutzername (Secure Shell)**: ein SSH-Benutzer für den Zugriff auf den Cluster über Secure Shell. Dieser Benutzer ist ein Benutzer im Linux-System für alle Hauptknoten, Workerknoten und Edgeknoten. Somit können Sie Secure Shell zum Zugreifen auf einen beliebigen Knoten in einem Remotecluster verwenden.
+
+Die R Studio Server Community-Version, die im Cluster vom Typ „Microsoft R Server in HDInsight“ verwendet wird, akzeptiert für die Anmeldung nur Linux-Benutzernamen und -Kennwörter. Die Übergabe von Token wird nicht unterstützt. Wenn Sie einen neuen Cluster erstellt haben und R Studio für den Zugriff darauf verwenden möchten, müssen Sie sich zweimal anmelden.
+
+- Melden Sie sich zunächst mit den HTTP-Benutzeranmeldeinformationen über das HDInsight-Gateway an: 
+
+    ![Gleichzeitiger Benutzer 2a](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-2a.png)
+
+- Verwenden Sie dann die SSH-Benutzeranmeldeinformationen für die Anmeldung bei RStudio:
+  
+    ![Gleichzeitiger Benutzer 2b](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-2b.png)
+
+Derzeit kann bei der Bereitstellung eines HDInsight-Clusters nur ein SSH-Benutzerkonto erstellt werden. Um mehreren Benutzern den Zugriff auf Microsoft R Server in HDInsight-Clustern zu ermöglichen, müssen wir zusätzliche Benutzer im Linux-System erstellen.
+
+Da RStudio Server Community auf dem Edgeknoten des Clusters ausgeführt wird, müssen mehrere Schritte ausgeführt werden:
+
+1. Anmelden beim Edgeknoten mit dem erstellten SSH-Benutzer
+2. Hinzufügen weiterer Linux-Benutzer im Edgeknoten
+3. Verwenden der RStudio Community-Version mit dem erstellten Benutzer
+
+<a id="step-1-use-the-created-ssh-user-to-log-in-to-the-edge-node" class="xliff"></a>
+
+### Schritt 1: Anmelden beim Edgeknoten mit dem erstellten SSH-Benutzer
+
+Laden Sie ein SSH-Tool (z.B. PuTTY) herunter, und verwenden Sie den vorhandenen SSH-Benutzer für die Anmeldung. Befolgen Sie dann die Anweisungen unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md), um auf den Edgeknoten zuzugreifen. Die Edgeknotenadresse für den Cluster „R Server in HDInsight“ lautet *clustername-ed-ssh.azurehdinsight.net*
+
+
+<a id="step-2-add-more-linux-users-in-edge-node" class="xliff"></a>
+
+### Schritt 2: Hinzufügen weiterer Linux-Benutzer im Edgeknoten
+
+Fügen Sie zum Hinzufügen eines Benutzers zum Edgeknoten die folgenden Befehle aus:
+
+    sudo useradd yournewusername -m
+    sudo passwd yourusername
+
+Daraufhin sollte Folgendes zurückgegeben werden: 
+
+![Gleichzeitiger Benutzer 3](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-3.png)
+
+Wenn Sie aufgefordert werden, das aktuelle Kerberos-Kennwort einzugeben, drücken Sie einfach die EINGABETASTE, um die Aufforderung zu ignorieren****. Die `-m`-Option im Befehl `useradd` gibt an, dass das System für den Benutzer einen Basisordner erstellt, der für die RStudio Community-Version erforderlich ist.
+
+
+<a id="step-3-use-rstudio-community-version-with-the-user-created" class="xliff"></a>
+
+### Schritt 3: Verwenden der RStudio Community-Version mit dem erstellten Benutzer
+
+Melden Sie sich mit dem erstellten Benutzer bei RStudio an:
+
+![Gleichzeitiger Benutzer 4](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-4.png)
+
+Beachten Sie, dass RStudio angibt, dass Sie den neuen Benutzer (in diesem Fall etwa *sshuser6*) für die Anmeldung beim Cluster verwenden: 
+
+![Gleichzeitiger Benutzer 5](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-5.png)
+
+Sie können sich auch gleichzeitig in einem anderen Browserfenster mit den ursprünglichen Anmeldeinformationen (standardmäßig *sshuser*) anmelden.
+
+Sie können einen Auftrag mithilfe von scaleR-Funktionen senden. Hier sehen Sie ein Beispiel für die zum Ausführen eines Auftrags verwendeten Befehle:
+
+    # Set the HDFS (WASB) location of example data.
+    bigDataDirRoot <- "/example/data"
+
+    # Create a local folder for storaging data temporarily.
+    source <- "/tmp/AirOnTimeCSV2012"
+    dir.create(source)
+
+    # Download data to the tmp folder.
+    remoteDir <- "http://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012"
+    download.file(file.path(remoteDir, "airOT201201.csv"), file.path(source, "airOT201201.csv"))
+    download.file(file.path(remoteDir, "airOT201202.csv"), file.path(source, "airOT201202.csv"))
+    download.file(file.path(remoteDir, "airOT201203.csv"), file.path(source, "airOT201203.csv"))
+    download.file(file.path(remoteDir, "airOT201204.csv"), file.path(source, "airOT201204.csv"))
+    download.file(file.path(remoteDir, "airOT201205.csv"), file.path(source, "airOT201205.csv"))
+    download.file(file.path(remoteDir, "airOT201206.csv"), file.path(source, "airOT201206.csv"))
+    download.file(file.path(remoteDir, "airOT201207.csv"), file.path(source, "airOT201207.csv"))
+    download.file(file.path(remoteDir, "airOT201208.csv"), file.path(source, "airOT201208.csv"))
+    download.file(file.path(remoteDir, "airOT201209.csv"), file.path(source, "airOT201209.csv"))
+    download.file(file.path(remoteDir, "airOT201210.csv"), file.path(source, "airOT201210.csv"))
+    download.file(file.path(remoteDir, "airOT201211.csv"), file.path(source, "airOT201211.csv"))
+    download.file(file.path(remoteDir, "airOT201212.csv"), file.path(source, "airOT201212.csv"))
+
+    # Set directory in bigDataDirRoot to load the data.
+    inputDir <- file.path(bigDataDirRoot,"AirOnTimeCSV2012")
+
+    # Create the directory.
+    rxHadoopMakeDir(inputDir)
+
+    # Copy the data from source to input.
+    rxHadoopCopyFromLocal(source, bigDataDirRoot)
+
+    # Define the HDFS (WASB) file system.
+    hdfsFS <- RxHdfsFileSystem()
+
+    # Create info list for the airline data.
+    airlineColInfo <- list(
+    DAY_OF_WEEK = list(type = "factor"),
+    ORIGIN = list(type = "factor"),
+    DEST = list(type = "factor"),
+    DEP_TIME = list(type = "integer"),
+    ARR_DEL15 = list(type = "logical"))
+
+    # Get all the column names.
+    varNames <- names(airlineColInfo)
+
+    # Define the text data source in HDFS.
+    airOnTimeData <- RxTextData(inputDir, colInfo = airlineColInfo, varsToKeep = varNames, fileSystem = hdfsFS)
+
+    # Define the text data source in local system.
+    airOnTimeDataLocal <- RxTextData(source, colInfo = airlineColInfo, varsToKeep = varNames)
+
+    # Specify the formula to use.
+    formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
+
+    # Define the Spark compute context.
+    mySparkCluster <- RxSpark()
+
+    # Set the compute context.
+    rxSetComputeContext(mySparkCluster)
+
+    # Run a logistic regression.
+    system.time(
+        modelSpark <- rxLogit(formula, data = airOnTimeData)
+    )
+
+    # Display a summary.
+    summary(modelSpark)
+
+
+Beachten Sie, dass die übermittelten Aufträge auf der YARN-Benutzeroberfläche unter anderen Benutzernamen angezeigt werden:
+
+![Gleichzeitiger Benutzer 6](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-6.png)
+
+Beachten Sie außerdem, dass die neu hinzugefügten Benutzer nicht über Stammberechtigungen im Linux-System verfügen, aber den gleichen Zugriff auf alle Dateien im HDFS- und WASB-Remotespeicher haben.
+
+
+<a name="use-r-console"></a>
+<a id="use-the-r-console" class="xliff"></a>
+
+## Verwenden der R-Konsole
 
 1. Verwenden Sie in der SSH-Sitzung den folgenden Befehl, um die R-Konsole zu starten:  
 
@@ -224,9 +392,12 @@ Nachdem die Verbindung hergestellt wurde, wird eine Eingabeaufforderung wie die 
 
     rxHadoopListFiles("wasbs:///")
 
-## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Verwenden von R Server in HDI in einer Remote-Instanz von Microsoft R Server oder Microsoft R Client
 
-Bezüglich des vorherigen Abschnitts zur Verwendung eines öffentlichen/privaten Schlüsselpaars zum Zugreifen auf den Cluster ist es auch möglich, den Zugriff auf den HDI Hadoop Spark-Rechenkontext von einer auf einem Desktop- oder Laptopcomputer ausgeführten Remoteinstanz von Microsoft R Server oder Microsoft R Client einzurichten. Weitere Informationen finden Sie im Unterabschnitt **Using Microsoft R Server as a Hadoop Client** (Verwenden von Microsoft R Server als Hadoop-Client) in [Create a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark) (Erstellen eines Rechenkontexts für Spark). Hierfür müssen Sie die folgenden Optionen beim Definieren des RxSpark-Rechenkontexts auf Ihrem Laptop angeben: hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches und sshProfileScript. Beispiel:
+<a id="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client" class="xliff"></a>
+
+## Verwenden von R Server in HDI in einer Remote-Instanz von Microsoft R Server oder Microsoft R Client
+
+Es ist möglich, den Zugriff auf den HDI Hadoop Spark-Computekontext von einer auf einem Desktop- oder Laptopcomputer ausgeführten Remoteinstanz von Microsoft R Server oder Microsoft R Client einzurichten. Weitere Informationen finden Sie im Unterabschnitt **Using Microsoft R Server as a Hadoop Client** (Verwenden von Microsoft R Server als Hadoop-Client) in [Create a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md) (Erstellen eines Rechenkontexts für Spark). Hierfür müssen Sie die folgenden Optionen beim Definieren des RxSpark-Rechenkontexts auf Ihrem Laptop angeben: hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches und sshProfileScript. Beispiel:
 
 
     myNameNode <- "default"
@@ -252,11 +423,13 @@ Bezüglich des vorherigen Abschnitts zur Verwendung eines öffentlichen/privaten
     )
 
 
-## <a name="use-a-compute-context"></a>Verwenden eines Rechenkontexts
+<a id="use-a-compute-context" class="xliff"></a>
+
+## Verwenden eines Rechenkontexts
 
 Mit einem Rechenkontext können Sie steuern, ob die Berechnung lokal auf dem Edgeknoten ausgeführt oder auf die Knoten im HDInsight-Cluster verteilt wird.
 
-1. Verwenden Sie über RStudio Server oder die R-Konsole (in einer SSH-Sitzung) Folgendes, um Beispieldaten in den Standardspeicher für HDInsight zu laden:
+1. Verwenden Sie über RStudio Server oder die R-Konsole (in einer SSH-Sitzung) den folgenden Code, um Beispieldaten in den Standardspeicher für HDInsight zu laden:
 
         # Set the HDFS (WASB) location of example data
         bigDataDirRoot <- "/example/data"
@@ -376,13 +549,15 @@ Mit einem Rechenkontext können Sie steuern, ob die Berechnung lokal auf dem Edg
    > Sie können auch MapReduce verwenden, um die Berechnung auf Clusterknoten zu verteilen. Weitere Informationen zum Rechenkontext finden Sie unter [Rechenkontextoptionen für R Server in HDInsight](hdinsight-hadoop-r-server-compute-contexts.md).
 
 
-## <a name="distribute-r-code-to-multiple-nodes"></a>Verteilen von R-Code auf mehrere Knoten
+<a id="distribute-r-code-to-multiple-nodes" class="xliff"></a>
 
-Mit R Server können Sie mithilfe von `rxExec` vorhandenen R-Code einfach nutzen und auf mehreren Knoten im Cluster ausführen. Dies ist nützlich für Parameterbereinigungen oder für Simulationen. Im folgenden Beispiel wird die Verwendung von `rxExec` veranschaulicht:
+## Verteilen von R-Code auf mehrere Knoten
+
+Mit R Server können Sie mithilfe von `rxExec` vorhandenen R-Code einfach nutzen und auf mehreren Knoten im Cluster ausführen. Diese Funktion ist nützlich für Parameterbereinigungen oder für Simulationen. Im folgenden Code wird die Verwendung von `rxExec` veranschaulicht:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Wenn Sie noch den Spark- oder MapReduce-Kontext verwenden, wird der nodename-Wert für die Workerknoten zurückgegeben, auf denen der `(Sys.info()["nodename"])`-Code ausgeführt wurde. In einem Cluster mit vier Knoten könnten Sie z.B. eine Ausgabe wie die folgende erhalten:
+Wenn Sie noch den Spark- oder MapReduce-Kontext verwenden, gibt dieser Befehl den nodename-Wert für die Workerknoten zurück, auf denen der `(Sys.info()["nodename"])`-Code ausgeführt wird. In einem Cluster mit vier Knoten erwarten Sie beispielsweise eine Ausgabe wie die folgende:
 
     $rxElem1
         nodename
@@ -401,11 +576,13 @@ Wenn Sie noch den Spark- oder MapReduce-Kontext verwenden, wird der nodename-Wer
     "wn3-myrser"
 
 
-## <a name="accessing-data-in-hive-and-parquet"></a>Zugriff auf Daten in Hive und Parquet
+<a id="accessing-data-in-hive-and-parquet" class="xliff"></a>
+
+## Zugriff auf Daten in Hive und Parquet
 
 Ein Feature in R Server 9.1 bietet direkten Zugriff auf Daten in Hive und Parquet, um diese für ScaleR-Funktionen im Spark-Rechenkontext zu verwenden. Diese Funktionalität steht über die neuen ScaleR-Datenquellenfunktionen namens „RxHiveData“ und „RxParquetData“ zur Verfügung, die Daten unter Verwendung von Spark SQL direkt in einen Spark-Dataframe laden, um sie mit ScaleR zu analysieren.  
 
-Der nachfolgende Beispielcode zeigt die Verwendung der neuen Funktionen:
+Der nachfolgende Code zeigt die Verwendung der neuen Funktionen:
 
     #Create a Spark compute context:
     myHadoopCluster <- rxSparkConnect(reset = TRUE)
@@ -441,11 +618,13 @@ Der nachfolgende Beispielcode zeigt die Verwendung der neuen Funktionen:
 Zusätzliche Informationen zur Verwendung dieser neuen Funktionen finden Sie in der Onlinehilfe zu R Server über die Befehle `?RxHivedata` und `?RxParquetData`.  
 
 
-## <a name="install-r-packages"></a>Installieren von R-Paketen
+<a id="install-additional-r-packages-on-the-edge-node" class="xliff"></a>
+
+## Installieren zusätzlicher R-Pakete auf dem Edgeknoten
 
 Falls Sie zusätzliche R-Pakete auf dem Edgeknoten installieren möchten, können Sie `install.packages()` direkt in der R-Konsole verwenden, wenn Sie über SSH eine Verbindung mit dem Edgeknoten hergestellt haben. Wenn Sie jedoch R-Pakete auf den Workerknoten des Clusters installieren möchten, müssen Sie eine Skriptaktion verwenden.
 
-Skriptaktionen sind Bash-Skripts, mit denen Konfigurationsänderungen am HDInsight-Cluster vorgenommen werden oder zusätzliche Software installiert wird. In diesem Fall werden sie zum Installieren zusätzlicher R-Pakete genutzt. Gehen Sie folgendermaßen vor, um zusätzliche Pakete mit einer Skriptaktion zu installieren:
+Skriptaktionen sind Bash-Skripts, mit denen Konfigurationsänderungen am HDInsight-Cluster vorgenommen werden oder zusätzliche Software (etwa zusätzliche R-Pakete) installiert wird. Gehen Sie folgendermaßen vor, um zusätzliche Pakete mit einer Skriptaktion zu installieren:
 
 > [!IMPORTANT]
 > Skriptaktionen können nur zum Installieren zusätzlicher R-Pakete verwendet werden, nachdem der Cluster erstellt wurde. Verwenden Sie dieses Verfahren nicht bei der Clustererstellung, da für das Skript R Server vollständig installiert und konfiguriert sein muss.
@@ -474,10 +653,10 @@ Skriptaktionen sind Bash-Skripts, mit denen Konfigurationsänderungen am HDInsig
 
    * **Parameter**: Die zu installierenden R-Pakete. Beispiel: `bitops stringr arules`
 
-   * **Speichern Sie diese Skript**: Diese Option muss **aktiviert** sein.  
+   * **Speichern Sie diese Skriptaktion...**: Diese Option muss **aktiviert** sein.  
 
    > [!NOTE]
-   > 1. Standardmäßig werden alle R-Pakete über eine Momentaufnahme des Microsoft MRAN-Repositorys erstellt, die der installierten Version von R Server entspricht.  Wenn Sie neuere Versionen von Paketen installieren möchten, besteht das Risiko von Inkompatibilitäten. Eine Installation ist jedoch möglich, indem `useCRAN` als erstes Element der Paketliste angegeben wird, z.B. `useCRAN bitops, stringr, arules`.  
+   > 1. Standardmäßig werden alle R-Pakete über eine Momentaufnahme des Microsoft MRAN-Repositorys erstellt, die der installierten Version von R Server entspricht. Wenn Sie neuere Versionen der Pakete installieren möchten, besteht das Risiko von Inkompatibilitäten. Diese Art von Installation ist jedoch möglich, wenn Sie `useCRAN` als erstes Element der Paketliste angeben, z.B. `useCRAN bitops, stringr, arules`.  
    > 2. Für einige R-Pakete werden zusätzliche Linux-Systembibliotheken benötigt. Um Ihnen die Arbeit zu erleichtern, haben wird die abhängigen Komponenten für die 100 populärsten R-Pakete für Sie vorinstalliert. Wenn für die R-Pakete, die Sie installieren, weitere Bibliotheken hinzugefügt werden müssen, müssen Sie das hier verwendete Basisskript herunterladen und Schritte zum Installieren der Systembibliotheken hinzufügen. Dann müssen Sie das geänderte Skript in einen öffentlichen Blobcontainer im Azure-Speicher hochladen und das geänderte Skript zum Installieren der Pakete verwenden.
    >    Weitere Informationen zum Entwickeln von Skriptaktionen finden Sie unter [Entwickeln von Skriptaktionen](hdinsight-hadoop-script-actions-linux.md).  
    >
@@ -487,7 +666,10 @@ Skriptaktionen sind Bash-Skripts, mit denen Konfigurationsänderungen am HDInsig
 
 4. Wählen Sie **Erstellen** aus, um das Skript auszuführen. Nach Abschluss der Skriptausführung sind die R-Pakete auf allen Workerknoten verfügbar.
 
-## <a name="using-microsoft-r-server-operationalization"></a>Verwenden der Microsoft R Server-Operationalisierung
+
+<a id="using-microsoft-r-server-operationalization" class="xliff"></a>
+
+## Verwenden der Microsoft R Server-Operationalisierung
 
 Nach Abschluss der Datenmodellierung können Sie das Modell operationalisieren, um Vorhersagen zu treffen. Führen Sie zum Konfigurieren der Microsoft R Server-Operationalisierung die folgenden Schritte aus:
 
@@ -519,11 +701,13 @@ Als optionalen Schritt können Sie die Diagnoseprüfungen ausführen, indem Sie 
 
 ![Diagnose für Operationalisierung](./media/hdinsight-hadoop-r-server-get-started/admin-util-diagnostics.png)
 
-In dieser Phase ist die Konfiguration der Operationalisierung abgeschlossen. Nun können Sie das Paket „mrsdeploy“ auf Ihrem RClient zum Herstellen einer Verbindung mit der Operationalisierung auf dem Edgeknoten verwenden und mit der Verwendung seiner Features wie [Remoteausführung](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution) und [Webdienste](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette) beginnen. Je nachdem, ob Ihr Cluster in einem virtuellen Netzwerk eingerichtet ist, müssen Sie über die SSH-Anmeldung ein Tunneling für die Portweiterleitung einrichten. Dies wird in den folgenden Abschnitten erläutert.
+In dieser Phase ist die Konfiguration der Operationalisierung abgeschlossen. Nun können Sie das Paket „mrsdeploy“ auf Ihrem RClient zum Herstellen einer Verbindung mit der Operationalisierung auf dem Edgeknoten verwenden und mit der Verwendung seiner Features wie [Remoteausführung](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution) und [Webdienste](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette) beginnen. Je nachdem, ob Ihr Cluster in einem virtuellen Netzwerk eingerichtet ist, müssen Sie über die SSH-Anmeldung ein Tunneling für die Portweiterleitung einrichten. Die Einrichtung dieses Tunnels wird in den folgenden Abschnitten erläutert.
 
-### <a name="rserver-cluster-on-virtual-network"></a>RServer-Cluster in virtuellem Netzwerk
+<a id="rserver-cluster-on-virtual-network" class="xliff"></a>
 
-Stellen Sie sicher, dass Sie Datenverkehr über Port 12.800 zum Edgeknoten zulassen. Auf diese Weise können Sie den Edgeknoten zum Herstellen der Verbindung mit dem Feature „Operationalisierung“ verwenden.
+### RServer-Cluster in virtuellem Netzwerk
+
+Stellen Sie sicher, dass Sie Datenverkehr über Port 12800 zum Edgeknoten zulassen. Auf diese Weise können Sie den Edgeknoten zum Herstellen der Verbindung mit dem Feature „Operationalisierung“ verwenden.
 
 
     library(mrsdeploy)
@@ -535,9 +719,11 @@ Stellen Sie sicher, dass Sie Datenverkehr über Port 12.800 zum Edgeknoten zulas
     )
 
 
-Wenn über „remoteLogin()“ keine Verbindung mit dem Edgeknoten hergestellt werden kann, Sie aber über SSH eine Verbindung mit dem Edgeknoten aufbauen können, müssen Sie überprüfen, ob die Regel zum Zulassen von Datenverkehr über Port 12.800 ordnungsgemäß festgelegt wurde oder nicht. Wenn das Problem weiter bestehen sollte, können Sie es umgehen, indem Sie über SSH das Tunneling der Portweiterleitung einrichten.
+Wenn über `remoteLogin()` keine Verbindung mit dem Edgeknoten hergestellt werden kann, Sie aber über SSH eine Verbindung mit dem Edgeknoten aufbauen können, müssen Sie überprüfen, ob die Regel zum Zulassen von Datenverkehr über Port 12800 ordnungsgemäß festgelegt wurde. Wenn das Problem weiterhin besteht, können Sie es umgehen, indem Sie über SSH das Tunneling der Portweiterleitung einrichten. Anweisungen finden Sie im folgenden Abschnitt.
 
-### <a name="rserver-cluster-not-set-up-on-virtual-network"></a>Nicht im virtuellen Netzwerk eingerichteter RServer-Cluster
+<a id="rserver-cluster-not-set-up-on-virtual-network" class="xliff"></a>
+
+### Nicht im virtuellen Netzwerk eingerichteter RServer-Cluster
 
 Wenn Ihr Cluster nicht im VNET eingerichtet wurde oder Sie Probleme mit der Konnektivität über das VNET haben, können Sie das Tunneling der SSH-Portweiterleitung nutzen:
 
@@ -547,7 +733,7 @@ Dieses kann auch in Putty eingerichtet werden.
 
 ![SSH-Verbindung in Putty](./media/hdinsight-hadoop-r-server-get-started/putty.png)
 
-Sobald Ihre SSH-Sitzung aktiv ist, wird der Datenverkehr in der SSH-Sitzung vom Port 12800 des Computers zum Port 12800 des Edgeknotens weitergeleitet. Stellen Sie sicher, dass Sie `127.0.0.1:12800` in der „remoteLogin()“-Methode verwenden. Hierdurch erfolgt eine Anmeldung bei der Operationalisierung des Edgeknotens über Portweiterleitung.
+Sobald Ihre SSH-Sitzung aktiv ist, wird der Datenverkehr in der SSH-Sitzung vom Port 12800 des Computers zum Port 12800 des Edgeknotens weitergeleitet. Stellen Sie sicher, dass Sie `127.0.0.1:12800` in der `remoteLogin()`-Methode verwenden. Hierdurch erfolgt eine Anmeldung bei der Operationalisierung des Edgeknotens über Portweiterleitung.
 
 
     library(mrsdeploy)
@@ -559,9 +745,13 @@ Sobald Ihre SSH-Sitzung aktiv ist, wird der Datenverkehr in der SSH-Sitzung vom 
     )
 
 
-## <a name="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes"></a>Skalieren von Computeknoten für die Microsoft R Server-Operationalisierung auf HDInsight-Workerknoten
+<a id="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes" class="xliff"></a>
 
-### <a name="decommission-the-worker-nodes"></a>Außerbetriebsetzen der Workerknoten
+## Skalieren von Computeknoten für die Microsoft R Server-Operationalisierung auf HDInsight-Workerknoten
+
+<a id="decommission-the-worker-nodes" class="xliff"></a>
+
+### Außerbetriebsetzen der Workerknoten
 
 Microsoft R Server wird derzeit nicht über Yarn verwaltet. Wenn die Workerknoten nicht außer Betrieb gesetzt werden, funktioniert der Yarn-Ressourcen-Manager nicht wie erwartet, da er die vom Server belegten Ressourcen nicht ermitteln kann. Um diese Situation zu vermeiden, empfehlen wir die Außerbetriebnahme der Workerknoten, bevor Sie die Serverknoten horizontal hochskalieren.
 
@@ -580,8 +770,9 @@ Schritte zur Außerbetriebnahme von Workerknoten:
 * Heben Sie die Auswahl der Workerknoten auf, und wählen Sie die Hauptknoten aus.
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Alle Komponenten beenden** aus.
 
+<a id="configure-compute-nodes-on-each-decommissioned-worker-nodes" class="xliff"></a>
 
-### <a name="configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Konfigurieren von Computeknoten auf allen außer Betrieb gesetzten Workerknoten
+### Konfigurieren von Computeknoten auf allen außer Betrieb gesetzten Workerknoten
 
 1. Stellen Sie per SSH eine Verbindung mit jedem außer Betrieb gesetzten Workerknoten her.
 2. Führen Sie das Verwaltungshilfsprogramm mit `dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll` aus.
@@ -589,7 +780,9 @@ Schritte zur Außerbetriebnahme von Workerknoten:
 4. Geben Sie „c“ zum Auswählen dieser Option ein: „C. Compute node“. Hiermit wird der Serverknoten für den Workerknoten konfiguriert.
 5. Beenden Sie das Verwaltungshilfsprogramm.
 
-### <a name="add-compute-nodes-details-on-web-node"></a>Hinzufügen von Details zu Computeknoten auf Webknoten
+<a id="add-compute-nodes-details-on-web-node" class="xliff"></a>
+
+### Hinzufügen von Details zu Computeknoten auf Webknoten
 
 Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Computeknoten konfiguriert wurden, kehren Sie zum Edgeknoten zurück und fügen die IP-Adressen der außer Betrieb gesetzten Workerknoten der Konfiguration des Webknotens von Microsoft R Server hinzu:
 
@@ -599,11 +792,17 @@ Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Comp
 
     ![Außerbetriebnahme von Workerknoten über die Befehlszeile](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
 
-## <a name="troubleshoot"></a>Problembehandlung
+
+<a id="troubleshoot" class="xliff"></a>
+
+## Problembehandlung
 
 Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
 
-## <a name="next-steps"></a>Nächste Schritte
+
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 Jetzt sollten Sie verstehen, wie Sie einen neuen HDInsight-Cluster erstellen, der R Server enthält, und Sie sollten die Grundlagen der Verwendung der R-Konsole aus einer SSH-Sitzung kennen. In den folgenden Themen werden andere Methoden zum Verwalten von und Arbeiten mit R Server unter HDInsight erläutert:
 

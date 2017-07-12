@@ -13,16 +13,18 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 06/23/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: f92d71542a2aa797b84f8742f74a02fea895e25a
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 80d4aced5e4f4b053b3b5f30a6fc383f1c4d6d27
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="start-with-apache-kafka-preview-on-hdinsight"></a>Erste Schritte mit Apache Kafka (Vorschau) in HDInsight
+<a id="start-with-apache-kafka-preview-on-hdinsight" class="xliff"></a>
+
+# Erste Schritte mit Apache Kafka (Vorschau) in HDInsight
 
 Erfahren Sie, wie Sie ein [Apache Kafka](https://kafka.apache.org)-Cluster in Azure HDInsight erstellen und verwenden. Kafka ist eine verteilte Open Source-Streamingplattform, die für HDInsight verfügbar ist. Diese wird häufig als Nachrichtenbroker eingesetzt, da sie eine ähnliche Funktionalität wie eine Veröffentlichen-Abonnieren-Nachrichtenwarteschlange aufweist.
 
@@ -31,13 +33,17 @@ Erfahren Sie, wie Sie ein [Apache Kafka](https://kafka.apache.org)-Cluster in Az
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) oder ein gleichwertiges Kit, z.B. OpenJDK.
 
 * [Apache Maven](http://maven.apache.org/) 
 
-## <a name="create-a-kafka-cluster"></a>Erstellen eines Kafka-Clusters
+<a id="create-a-kafka-cluster" class="xliff"></a>
+
+## Erstellen eines Kafka-Clusters
 
 Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Kafka in HDInsight“ zu erstellen:
 
@@ -68,25 +74,36 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Kafka in HDInsig
      
     ![Auswählen des Clustertyps](./media/hdinsight-apache-kafka-get-started/set-hdinsight-cluster-type.png)
 
-    > [!NOTE]
-    > Wenn Ihr Azure-Abonnement keinen Zugriff auf die Vorschau von Kafka hat, werden Anweisungen zum Zugriff auf die Vorschau angezeigt. Die angezeigten Anweisungen ähneln der folgenden Abbildung:
-    >
-    > ![Vorschaunachricht: Wenn Sie einen verwalteten Apache Kafka-Cluster in HDInsight bereitstellen möchten, senden Sie uns eine E-Mail, um den Zugriff auf die Vorschau anzufordern.](./media/hdinsight-apache-kafka-get-started/no-kafka-preview.png)
-
 4. Legen Sie nach dem Auswählen des Clustertyps mit der Schaltfläche __Auswählen__ den Clustertyp fest. Schließen Sie dann mit der Schaltfläche __Weiter__ die grundlegende Konfiguration ab.
 
 5. Wählen Sie auf dem Blatt **Speicher** ein Speicherkonto aus, oder erstellen Sie eines. Behalten Sie für die Schritte in diesem Dokument für die weiteren Felder auf diesem Blatt die Standardwerte bei. Speichern Sie mit der Schaltfläche __Weiter__ die Speicherkonfiguration.
 
     ![Festlegen der Speicherkontoeinstellungen für HDInsight](./media/hdinsight-apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. Überprüfen Sie auf dem Blatt **Zusammenfassung** die Konfiguration für den Cluster. Ändern Sie ggf. falsche Einstellungen mithilfe der Link zum __Bearbeiten__. Verwenden Sie abschließend die Schaltfläche__Erstellen__, um den Cluster zu erstellen.
+6. Wählen Sie im Blatt __Anwendungen (optional)__ zum Fortfahren __Weiter__ aus. Für dieses Beispiel sind keine Anwendungen erforderlich.
+
+7. Wählen Sie im Blatt __Clustergröße__ die Option __Weiter__ aus, um fortzufahren.
+
+    > [!WARNING]
+    > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten.
+
+    ![Festlegen der Kafka-Clustergröße](./media/hdinsight-apache-kafka-get-started/kafka-cluster-size.png)
+
+    > [!NOTE]
+    > Der Eintrag für Datenträger pro Workerknoten steuert die Skalierbarkeit von Kafka in HDInsight. Weitere Informationen finden Sie unter [Konfigurieren von Speicher und Skalierbarkeit von Kafka in HDInsight](hdinsight-apache-kafka-scalability.md).
+
+8. Wählen Sie im Blatt __Erweiterte Einstellungen__ die Option __Weiter__ aus, um fortzufahren.
+
+9. Überprüfen Sie auf dem Blatt **Zusammenfassung** die Konfiguration für den Cluster. Ändern Sie ggf. falsche Einstellungen mithilfe der Link zum __Bearbeiten__. Verwenden Sie abschließend die Schaltfläche__Erstellen__, um den Cluster zu erstellen.
    
     ![Zusammenfassung der Clusterkonfiguration](./media/hdinsight-apache-kafka-get-started/hdinsight-configuration-summary.png)
    
     > [!NOTE]
     > Das Erstellen des Clusters kann bis zu 20 Minuten dauern.
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+<a id="connect-to-the-cluster" class="xliff"></a>
+
+## Verbinden mit dem Cluster
 
 Verwenden Sie SSH auf Ihrem Client, um eine Verbindung mit dem Cluster herzustellen:
 
@@ -113,9 +130,9 @@ Verwenden Sie die folgenden Schritte, um Umgebungsvariablen zu erstellen, die di
 2. Verwenden Sie die folgenden Befehle, um die Umgebungsvariablen mit den von Ambari abgerufenen Informationen festzulegen. Ersetzen Sie __CLUSTERNAME__ durch den Namen des Kafka-Clusters. Ersetzen Sie __PASSWORD__ durch das Anmeldekennwort (Administrator), das Sie beim Erstellen des Clusters verwendet haben.
 
     ```bash
-    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
+    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
 
-    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G http://headnodehost:8080/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
+    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
 
     echo '$KAFKAZKHOSTS='$KAFKAZKHOSTS
     echo '$KAFKABROKERS='$KAFKABROKERS
@@ -134,12 +151,14 @@ Verwenden Sie die folgenden Schritte, um Umgebungsvariablen zu erstellen, die di
     >
     > Sie sollten die Zookeeper- und Broker-Hostinformationen kurz vor ihrer Nutzung abrufen, um sicherzustellen, dass Sie über gültige Informationen verfügen.
 
-## <a name="create-a-topic"></a>Erstellen eines Themas
+<a id="create-a-topic" class="xliff"></a>
+
+## Erstellen eines Themas
 
 Kafka speichert Datenströme in Kategorien, die als *Themen* bezeichnet werden. Verwenden Sie für eine SSH-Verbindung mit einem Clusterhauptknoten ein in Kafka enthaltenes Skript, um ein Thema zu erstellen:
 
 ```bash
-/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
 ```
 
 Mit diesem Befehl wird eine Verbindung mit Zookeeper hergestellt, indem die in `$KAFKAZKHOSTS` gespeicherten Informationen verwendet werden. Anschließend wird ein Kafka-Thema mit dem Namen **test** erstellt. Sie können überprüfen, ob das Thema erstellt wurde, indem Sie das folgende Skript zum Auflisten von Themen verwenden:
@@ -150,7 +169,9 @@ Mit diesem Befehl wird eine Verbindung mit Zookeeper hergestellt, indem die in `
 
 In der Ausgabe dieses Befehls werden die Kafka-Themen aufgelistet, und das Thema **test** sollte in der Liste enthalten sein.
 
-## <a name="produce-and-consume-records"></a>Erstellen und Nutzen von Datensätzen
+<a id="produce-and-consume-records" class="xliff"></a>
+
+## Erstellen und Nutzen von Datensätzen
 
 Bei Kafka werden *Datensätze* in Themen gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer rufen Datensätze von Kafka-*Brokern* ab. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Broker.
 
@@ -167,14 +188,16 @@ Mit den folgenden Schritten können Sie Datensätze im zuvor erstellten Testthem
 2. Verwenden Sie ein in Kafka enthaltenes Skript, um Datensätze aus dem Thema zu lesen:
    
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic test --from-beginning
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
    
     Die Datensätze werden mit dem Befehl aus dem Thema abgerufen und angezeigt. Mit `--from-beginning` wird der Consumer angewiesen, am Anfang des Datenstroms zu beginnen, damit alle Datensätze abgerufen werden.
 
 3. Drücken Sie __STRG+C__, um den Consumer zu beenden.
 
-## <a name="producer-and-consumer-api"></a>Producer- und Consumer-API
+<a id="producer-and-consumer-api" class="xliff"></a>
+
+## Producer- und Consumer-API
 
 Sie können Datensätze mit den [Kafka-APIs](http://kafka.apache.org/documentation#api) auch programmgesteuert erstellen und verwenden. Verwenden Sie die folgenden Schritte, um den Download für die Erstellung eines Java-basierten Producers und Consumers durchzuführen:
 
@@ -223,7 +246,9 @@ Sie können Datensätze mit den [Kafka-APIs](http://kafka.apache.org/documentati
 
 6. Drücken Sie __STRG+C__, um den Consumer zu beenden.
 
-### <a name="multiple-consumers"></a>Mehrere Consumer
+<a id="multiple-consumers" class="xliff"></a>
+
+### Mehrere Consumer
 
 Ein wichtiges Konzept bei Kafka ist, dass für Consumer beim Lesen von Datensätzen eine Consumergruppe (per Gruppen-ID definiert) verwendet wird. Das Verwenden derselben Gruppe mit mehreren Consumern führt zu Lesevorgängen mit Lastenausgleich aus einem Thema. Jeder Consumer in der Gruppe erhält einen Teil der Datensätze. Führen Sie die folgenden Schritte aus, um diesen Vorgang in Aktion zu sehen:
 
@@ -245,7 +270,9 @@ Der Verbrauch durch die Clients in derselben Gruppe wird über die Partitionen f
 
 Datensätze werden in Kafka in der Reihenfolge gespeichert, in der sie in einer Partition empfangen werden. Erstellen Sie eine Consumergruppe, bei der die Anzahl von Consumerinstanzen mit der Anzahl von Partitionen übereinstimmt, um für Datensätze *in einer Partition* eine geordnete Bereitstellung zu erzielen. Erstellen Sie eine Consumergruppe mit nur einer Consumerinstanz, um für Datensätze *im Thema* eine geordnete Bereitstellung zu erzielen.
 
-## <a name="streaming-api"></a>Streaming-API
+<a id="streaming-api" class="xliff"></a>
+
+## Streaming-API
 
 Die Streaming-API wurde Kafka in Version 0.10.0 hinzugefügt. In früheren Versionen wurde für die Datenstromverarbeitung Apache Spark oder Storm verwendet.
 
@@ -272,7 +299,7 @@ Die Streaming-API wurde Kafka in Version 0.10.0 hinzugefügt. In früheren Versi
 4. Nachdem das Kopieren der Datei mit dem Befehl `scp` abgeschlossen wurde, können Sie per SSH eine Verbindung mit dem Cluster herstellen. Verwenden Sie dann folgenden Befehl, um das Thema `wordcounts` zu erstellen:
 
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic wordcounts --zookeeper $KAFKAZKHOSTS
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic wordcounts --zookeeper $KAFKAZKHOSTS
     ```
 
 5. Starten Sie als Nächstes den Streamingprozess mit dem folgenden Befehl:
@@ -320,20 +347,29 @@ Die Streaming-API wurde Kafka in Version 0.10.0 hinzugefügt. In früheren Versi
 
 7. Verwenden Sie die Tastenkombination __STRG+C__, um den Consumer zu beenden, und anschließend den Befehl `fg`, um die Streaming-Hintergrundaufgabe wieder in der Vordergrund zu verlagern. Verwenden Sie zum Beenden auch hier wieder __STRG+C__.
 
-## <a name="delete-the-cluster"></a>Löschen des Clusters
+<a id="delete-the-cluster" class="xliff"></a>
+
+## Löschen des Clusters
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="troubleshoot"></a>Problembehandlung
+<a id="troubleshoot" class="xliff"></a>
+
+## Problembehandlung
 
 Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-administer-use-portal-linux.md#create-clusters) an.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 In diesem Dokument wurden die Grundlagen der Arbeit mit Apache Kafka in HDInsight beschrieben. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten:
 
+* [Ensure high availability of your data with Kafka on HDInsight](hdinsight-apache-kafka-high-availability.md) (Sicherstellen der hohen Verfügbarkeit von Daten mit Kafka in HDInsight)
+* [Erhöhen der Skalierbarkeit durch Konfigurieren von verwalteten Datenträgern mit Kafka in HDInsight](hdinsight-apache-kafka-scalability.md)
 * [Apache Kafka-Dokumentation](http://kafka.apache.org/documentation.html) unter „kafka.apache.org“.
 * [Verwenden von MirrorMaker zum Erstellen eines Replikats von Kafka in HDInsight](hdinsight-apache-kafka-mirroring.md)
 * [Verwenden von Apache Storm mit Kafka in HDInsight](hdinsight-apache-storm-with-kafka.md)
 * [Verwenden von Apache Spark mit Kafka in HDInsight](hdinsight-apache-spark-with-kafka.md)
 * [Herstellen einer Verbindung mit Kafka über eine Azure Virtual Network-Instanz](hdinsight-apache-kafka-connect-vpn-gateway.md)
+
