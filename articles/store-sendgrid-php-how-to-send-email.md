@@ -37,7 +37,7 @@ SendGrid ist ein [cloudbasierter E-Mail-Dienst], der zuverlässige [transaktiona
 Weitere Informationen finden Sie unter [https://sendgrid.com][https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>Erstellen eines SendGrid-Kontos
-[!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
+[!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up-2.md)]
 
 ## <a name="using-sendgrid-from-your-php-application"></a>Verwenden von SendGrid aus der PHP-Anwendung
 Die Verwendung von SendGrid in Azure-PHP-Anwendungen erfordert keine besondere Konfiguration oder Programmierung. Da es sich bei SendGrid um einen Dienst handelt, kann auf ihn von einer Cloudanwendung auf dieselbe Weise zugegriffen werden wie von einer lokalen Anwendung.
