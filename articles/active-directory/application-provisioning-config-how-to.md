@@ -11,23 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
 ms.openlocfilehash: d24031955f57794d6796ea37d8d1b0984f066286
+ms.contentlocale: de-de
 ms.lasthandoff: 04/20/2017
-
 
 ---
 
-# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung
+<a id="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application" class="xliff"></a>
+
+# Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung
 
 Die *Bereitstellung von Benutzerkonten* umfasst das Erstellen, Aktualisieren und/oder Deaktivieren der Benutzerkontodatensätze im lokalen Benutzerprofilspeicher einer Anwendung. Die meisten Cloud- und SaaS-Anwendungen speichern die Benutzerrolle und Berechtigungen im eigenen lokalen Benutzerprofilspeicher. Das Vorkommen eines solchen Benutzerdatensatzes im lokalen Speicher ist *erforderlich*, damit das einmalige Anmelden und der Zugriff funktionieren.
 
 Die Registerkarte **Bereitstellung** im linken Navigationsbereich für eine Unternehmens-App im Azure-Portal zeigt an, welche Bereitstellungsmodi für diese App unterstützt werden. Dies kann einer von zwei Werten sein:
 
-## <a name="configuring-an-application-for-manual-provisioning"></a>Konfigurieren einer Anwendung für die manuelle Bereitstellung
+<a id="configuring-an-application-for-manual-provisioning" class="xliff"></a>
+
+## Konfigurieren einer Anwendung für die manuelle Bereitstellung
 
 *Manuelle* Bereitstellung bedeutet, dass Benutzerkonten mithilfe der von dieser App bereitgestellten Methoden manuell erstellt werden müssen. Dies könnte das Anmelden bei einem Verwaltungsportal für diese App sowie das Hinzufügen von Benutzern über eine webbasierte Benutzeroberfläche bedeuten. Es könnte auch das Hochladen eines Arbeitsblatts mit Benutzerkontodetails bedeuten, bei dem ein von dieser Anwendung bereitgestellter Mechanismus verwendet wird. Die verfügbaren Mechanismen können Sie über die für die Anwendung bereitgestellte Dokumentation ermitteln, oder wenden Sie sich an den Entwickler der App.
 
@@ -35,7 +39,9 @@ Wenn für eine bestimmte Anwendung nur der Modus „Manuell“ angezeigt wird, b
 
 Wenn Sie die Unterstützung für die automatische Bereitstellung für eine bestimmte App anfordern möchten, können Sie eine unter <http://aka.ms/aadapprequest> eine Anforderung ausfüllen.
 
-## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurieren einer Anwendung für die automatische Bereitstellung
+<a id="configuring-an-application-for-automatic-provisioning" class="xliff"></a>
+
+## Konfigurieren einer Anwendung für die automatische Bereitstellung
 
 *Automatisch* bedeutet, dass für diese Anwendung ein Azure AD-Bereitstellungsconnector entwickelt wurde. Weitere Informationen zum Azure AD-Bereitstellungsdienst und dessen Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
 
@@ -52,7 +58,9 @@ App-Tutorials finden Sie unter [Liste der Tutorials zur Integration von SaaS-App
 
 Es ist beim Einrichten der Bereitstellung wichtig zu beachten, dass die Attributzuordnungen und Workflows überprüft und konfiguriert werden, die festlegen, welche Benutzereigenschaften (oder Gruppeneigenschaften) von Azure AD zur Anwendung gelangen. Dazu zählt das Festlegen der „übereinstimmenden Eigenschaft“, mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden. Weitere Informationen zu diesem wichtigen Vorgang.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
 

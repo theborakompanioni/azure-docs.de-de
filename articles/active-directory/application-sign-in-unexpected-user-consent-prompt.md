@@ -11,23 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: f32de2a8868d853e7720cffa23df6b3c59ab4a49
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
-
 
 ---
 
-# <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Unerwartete Aufforderung zur Genehmigung bei der Anmeldung bei einer Anwendung
+<a id="unexpected-consent-prompt-when-signing-in-to-an-application" class="xliff"></a>
+
+# Unerwartete Aufforderung zur Genehmigung bei der Anmeldung bei einer Anwendung
 
 Viele Anwendungen, die in Azure Active Directory integriert sind, erfordern Berechtigungen für verschiedene Ressourcen, um ausgeführt werden zu können. Wenn diese Ressourcen auch in Azure Active Directory integriert sind, werden Berechtigungen für den Zugriff darauf häufig mithilfe des allgemeinen Azure AD-Genehmigungsframeworks angefordert. 
 
 Dies führt zum Anzeigen einer Aufforderung zur Genehmigung bei der ersten Nutzung der Anwendung, was häufig nur einmal erfolgt. 
 
-## <a name="scenarios-in-which-users-see-consent-prompts"></a>Szenarien, in denen Benutzern Aufforderungen zur Genehmigung angezeigt werden
+<a id="scenarios-in-which-users-see-consent-prompts" class="xliff"></a>
+
+## Szenarien, in denen Benutzern Aufforderungen zur Genehmigung angezeigt werden
 
 Zusätzliche Aufforderungen können in verschiedenen Szenarien erwartet werden:
 
@@ -43,7 +47,9 @@ Zusätzliche Aufforderungen können in verschiedenen Szenarien erwartet werden:
 
 * Der Entwickler hat die Anwendung so konfiguriert, dass bei jeder Nutzung eine Aufforderung zur Genehmigung angezeigt wird (Hinweis: Dies ist nicht empfehlenswert).
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 -   [Apps, Berechtigungen und Zustimmung in Azure Active Directory (Endpunkt, Version 1.0)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 

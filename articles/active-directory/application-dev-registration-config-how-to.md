@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: 3578684ac8c92ff195b19740b28ef9adebdc7309
+ms.contentlocale: de-de
 ms.lasthandoff: 04/14/2017
-
 
 ---
 
-# <a name="how-to-select-permissions-for-a-given-api"></a>Auswählen von Berechtigungen für eine bestimmte API
+<a id="how-to-select-permissions-for-a-given-api" class="xliff"></a>
+
+# Auswählen von Berechtigungen für eine bestimmte API
 
 Sie können die Authentifizierungsendpunkte für Ihre Anwendung im [Azure-Portal](https://portal.azure.com) ermitteln.
 
@@ -35,6 +37,8 @@ Sie können die Authentifizierungsendpunkte für Ihre Anwendung im [Azure-Portal
 
 -   Verwenden Sie den spezifischen Endpunkt für das verwendete Authentifizierungsprotokoll zusammen mit der Anwendungs-ID, um die spezifische Authentifizierungsanfrage für Ihre Anwendung zu erstellen.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide#authentication-and-authorization-protocols)
 

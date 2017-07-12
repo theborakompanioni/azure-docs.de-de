@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
@@ -19,14 +19,17 @@ ms.openlocfilehash: 7c4e2f084571a2146e5013f24bd5da55319118af
 ms.contentlocale: de-de
 ms.lasthandoff: 07/06/2017
 
-
 ---
 
-# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
+<a id="cant-access-this-corporate-application-error-when-using-an-application-proxy-application" class="xliff"></a>
+
+# Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
 In diesem Artikel erhalten Sie Unterstützung bei der Problembehandlung von häufigen Fehlern, wenn der Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ in einer Azure AD-Anwendungsproxyanwendung auftritt.
 
-## <a name="overview"></a>Übersicht
+<a id="overview" class="xliff"></a>
+
+## Übersicht
 Wenn dieser Fehler angezeigt wird, wird auch ein Statuscode auf der Seite freigegeben. Es handelt sich bei dem Code wahrscheinlich um einen der folgenden:
 
 -   **Gatewaytimeout:** Der Anwendungsproxydienst kann den Connector nicht erreichen. Dies deutet in der Regel auf ein Problem mit der Connectorzuweisung, dem Connector selbst oder den Netzwerkregeln für den Connector hin.
@@ -41,12 +44,16 @@ Den Code finden Sie im Text der Fehlermeldung im Feld „Statuscode“ unten lin
 
 Informationen zur Behandlung der grundlegenden Ursache für diesen Fehler und weitere Informationen zu den vorgeschlagenen Fehlerbehebungen finden Sie im entsprechenden Abschnitt weiter unten.
 
-## <a name="gateway-timeout-errors"></a>Fehler „Gatewaytimeout“
+<a id="gateway-timeout-errors" class="xliff"></a>
+
+## Fehler „Gatewaytimeout“
 
 Ein Gatewaytimeout tritt auf, wenn der Dienst versucht, den Connector zu erreichen, und dies nicht innerhalb des Timeoutfensters möglich ist. Dies wird normalerweise durch eine Anwendung verursacht, die einer Connectorgruppe ohne funktionierende Connectors zugewiesen ist, oder wenn einige vom Connector benötigte Ports geschlossen sind.
 
 
-## <a name="bad-gateway-errors"></a>Fehler „Ungültiges Gateway“
+<a id="bad-gateway-errors" class="xliff"></a>
+
+## Fehler „Ungültiges Gateway“
 
 Der Fehler „Ungültiges Gateway“ gibt an, dass der Connector die Back-End-Anwendung nicht erreichen kann. Stellen Sie sicher, dass Sie die richtige Anwendung veröffentlicht haben. Häufige Ursachen dieses Fehlers:
 
@@ -58,7 +65,9 @@ Der Fehler „Ungültiges Gateway“ gibt an, dass der Connector die Back-End-An
 
 -   Probleme mit der Back-End-Anwendung
 
-## <a name="forbidden-errors"></a>Fehler „Verboten“
+<a id="forbidden-errors" class="xliff"></a>
+
+## Fehler „Verboten“
 
 Wenn der Fehler „Verboten“ angezeigt wird, wurde der Benutzer der Anwendung nicht zugewiesen. Dies kann entweder Azure Active Directory oder die Back-End-Anwendung betreffen.
 
@@ -66,11 +75,15 @@ Informationen über das Zuweisen von Benutzern zur Anwendung in Azure finden Sie
 
 Wenn Sie bestätigen, dass der Benutzer der Anwendung in Azure zugewiesen ist, überprüfen Sie die Benutzerkonfiguration in der Back-End-Anwendung. Wenn Sie eingeschränkte Kerberos-Delegierung/integrierte Windows-Authentifizierung verwenden, finden Sie nützliche Informationen auf unserer Seite zur KCD-Problembehandlung.
 
-## <a name="check-the-applications-internal-url"></a>Überprüfen der internen URL der Anwendung
+<a id="check-the-applications-internal-url" class="xliff"></a>
+
+## Überprüfen der internen URL der Anwendung
 
 Als ersten schnellen Schritt können Sie die interne URL überprüfen und korrigieren, indem Sie die Anwendung über **Unternehmensanwendungen** öffnen und dann das Menü **Anwendungsproxy** auswählen. Stellen Sie sicher, dass die richtige interne URL aus Ihrem lokalen Netzwerk für den Zugriff auf die Anwendung verwendet wird.
 
-## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Überprüfen, ob die Anwendung einer funktionierenden Connectorgruppe zugewiesen wurde
+<a id="check-the-application-is-assigned-to-a-working-connector-group" class="xliff"></a>
+
+## Überprüfen, ob die Anwendung einer funktionierenden Connectorgruppe zugewiesen wurde
 
 So überprüfen Sie, ob die Anwendung einer funktionierenden Connectorgruppe zugewiesen wurde
 
@@ -90,17 +103,23 @@ So überprüfen Sie, ob die Anwendung einer funktionierenden Connectorgruppe zug
 
 Testen Sie nach dem Ausführen der Schritte die Anwendung erneut, um sicherzustellen, dass die Anwendung einer Gruppe funktionierender Connectors zugewiesen ist. Wenn der Fehler immer noch auftritt, fahren Sie mit dem nächsten Abschnitt fort.
 
-## <a name="check-all-required-ports-are-whitelisted"></a>Überprüfen, ob alle erforderlichen Ports in der Zulassungsliste enthalten sind
+<a id="check-all-required-ports-are-whitelisted" class="xliff"></a>
+
+## Überprüfen, ob alle erforderlichen Ports in der Zulassungsliste enthalten sind
 
 Informationen zur Überprüfung, ob alle erforderlichen Ports geöffnet sind, finden Sie in unserer Dokumentation zum Öffnen von Ports. Wenn alle erforderlichen Ports geöffnet sind, fahren Sie mit dem nächsten Abschnitt fort.
 
-## <a name="check-for-other-connector-errors"></a>Überprüfen auf andere Connectorfehler
+<a id="check-for-other-connector-errors" class="xliff"></a>
+
+## Überprüfen auf andere Connectorfehler
 
 Wenn keine der oben genannten Schritte das Problem beheben, sollten Sie im nächsten Schritt nach Problemen oder Fehlern mit dem Connector selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors) aufgeführt. 
 
 Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermitteln. Anhand vieler Fehlermeldungen können Sie genauere Empfehlungen für Fehlerbehebungen erhalten. Informationen zum Verständnis der Protokolle finden Sie in der [Connectordokumentation](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood).
 
-## <a name="additional-resolutions"></a>Weitere Lösungen
+<a id="additional-resolutions" class="xliff"></a>
+
+## Weitere Lösungen
 
 Wenn die oben genannten Schritte das Problem nicht beheben konnten, können einige andere Ursachen vorliegen. So identifizieren Sie das Problem
 
@@ -112,6 +131,8 @@ Wenn die Fehlermeldung weiterhin angezeigt wird, wechseln Sie zum Computer, auf 
 
 Wenn die Anwendung von diesem Computer aus erreicht werden kann, sollten Sie nach Problemen und Fehlern des Connectors selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors) aufgeführt. Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermitteln. Anhand vieler Fehlermeldungen können Sie genauere Empfehlungen für Fehlerbehebungen erhalten. Informationen zum Verständnis der Protokolle finden Sie in der [Connectordokumentation](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors#under-the-hood).
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
 

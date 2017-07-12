@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
 ms.openlocfilehash: 922774c2482737537b64787ae473231ec1fbb68e
+ms.contentlocale: de-de
 ms.lasthandoff: 04/14/2017
-
 
 ---
 
-# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Gewähren von Berechtigungen für eine benutzerdefiniert entwickelte Anwendung
+<a id="how-to-grant-permissions-to-a-custom-developed-application" class="xliff"></a>
+
+# Gewähren von Berechtigungen für eine benutzerdefiniert entwickelte Anwendung
 
 Wenn Sie im Vorfeld Berechtigungen für Ihre App gewähren möchten oder ein Fehler auftritt, den Sie keiner App zugeteilt haben, führen Sie die unten stehenden Schritte aus.
 
-## <a name="how-to-perform-admin-consent-for-your-application"></a>Ausführen der Administratorzustimmung für Ihre Anwendung
+<a id="how-to-perform-admin-consent-for-your-application" class="xliff"></a>
+
+## Ausführen der Administratorzustimmung für Ihre Anwendung
 
 Dies entspricht dem Erteilen der Zustimmung zur Anwendung für alle Benutzer in Ihrer Organisation.
 
@@ -35,11 +39,15 @@ Dies entspricht dem Erteilen der Zustimmung zur Anwendung für alle Benutzer in 
 
 Alternativ können Sie eine Anforderung an *login.microsoftonline.com* mit Ihrer App-Konfiguration erstellen und an *&prompt=admin\_consent* anfügen. Nach der Anmeldung als Administrator sollte die App-Zustimmung für alle Benutzer erteilt sein.
 
-## <a name="how-to-force-user-consent-for-your-application"></a>Erzwingen der Benutzerzustimmung für Ihre Anwendung
+<a id="how-to-force-user-consent-for-your-application" class="xliff"></a>
+
+## Erzwingen der Benutzerzustimmung für Ihre Anwendung
 
 * Fügen Sie *&prompt=consent* an Autorisierungsanforderungen an, die bei jeder Authentifizierung Zustimmung durch die Endbenutzer erfordern.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 [Genehmigen und Integrieren von Apps in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
 

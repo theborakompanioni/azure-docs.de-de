@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 43ed4b0e96c583d8fd9da57eec40ddd2e96fee2f
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-to-assign-users-to-applications"></a>Zuweisen von Benutzern zu Anwendungen
+<a id="how-to-assign-users-to-applications" class="xliff"></a>
+
+# Zuweisen von Benutzern zu Anwendungen
 
 In diesem Artikel erhalten Sie Informationen zum Zuweisen von Benutzern zu einer Anwendung in Ihrem Mandanten.
 
-## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Wie werden Benutzer einer Anwendung in Azure AD zugewiesen?
+<a id="how-do-users-get-assigned-to-an-application-in-azure-ad" class="xliff"></a>
+
+## Wie werden Benutzer einer Anwendung in Azure AD zugewiesen?
 
 Damit Benutzer Zugriff auf eine Anwendung haben, müssen sie dieser zunächst zugewiesen werden. Die Zuweisung kann durch einen Administrator, einen Vertreter des Unternehmens oder manchmal auch durch den Benutzer selbst erfolgen. Nachfolgend sind die verschiedenen Möglichkeiten aufgeführt, wie Benutzer Anwendungen zugewiesen werden können:
 
@@ -59,6 +63,8 @@ Damit Benutzer Zugriff auf eine Anwendung haben, müssen sie dieser zunächst zu
 
 10. Ein Benutzer [gibt selbst seine Zustimmung zu einer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent), indem er sich bei der Anwendung anmeldet.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md)
 

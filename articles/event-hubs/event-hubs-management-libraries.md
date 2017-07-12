@@ -20,20 +20,25 @@ ms.openlocfilehash: a9023448c4ced1edf54c84bb103454cbd76fbfba
 ms.contentlocale: de-de
 ms.lasthandoff: 04/12/2017
 
-
 ---
 
-# <a name="event-hubs-management-libraries"></a>Event Hubs-Verwaltungsbibliotheken
+<a id="event-hubs-management-libraries" class="xliff"></a>
+
+# Event Hubs-Verwaltungsbibliotheken
 
 Die Event Hubs-Verwaltungsbibliotheken können dynamisch Event Hubs-Namespaces und -Entitäten bereitstellen. Dies ermöglicht komplexe Bereitstellungen und Messagingszenarien sowie eine programmgesteuerte Bestimmung der bereitzustellenden Entitäten. Die Bibliotheken sind derzeit für .NET verfügbar.
 
-## <a name="supported-functionality"></a>Unterstützte Funktionen
+<a id="supported-functionality" class="xliff"></a>
+
+## Unterstützte Funktionen
 
 * Erstellen, Aktualisieren und Löschen von Namespaces
 * Erstellen, Aktualisieren und Löschen von Event Hubs
 * Erstellen, Aktualisieren und Löschen von Consumergruppen
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 
 Zur Verwendung von Event Hubs-Verwaltungsbibliotheken müssen Sie zunächst eine Authentifizierung mit Azure Active Directory (AAD) durchführen. AAD erfordert, dass Sie sich als Dienstprinzipal authentifizieren. Dadurch erhalten Sie Zugriff auf Ihre Azure-Ressourcen. Informationen zum Erstellen eines Dienstprinzipals finden Sie in einem der folgenden Artikel:  
 
@@ -43,13 +48,15 @@ Zur Verwendung von Event Hubs-Verwaltungsbibliotheken müssen Sie zunächst eine
 
 In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` (Mandanten-ID) und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Für die Ressourcengruppe, für die die Ausführung erfolgen soll, müssen Sie über Berechtigungen vom Typ „Besitzer“ verfügen.
 
-## <a name="programming-pattern"></a>Muster für die Programmierung
+<a id="programming-pattern" class="xliff"></a>
+
+## Muster für die Programmierung
 
 Das Muster zum Bearbeiten einer beliebigen Event Hubs-Ressource folgt einem gemeinsamen Protokoll:
 
 1. Rufen Sie mithilfe der Bibliothek `Microsoft.IdentityModel.Clients.ActiveDirectory` ein Token aus Azure Active Directory ab.
     ```csharp
-    var context = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
     var result = await context.AcquireTokenAsync(
         "https://management.core.windows.net/",
@@ -79,7 +86,9 @@ Das Muster zum Bearbeiten einer beliebigen Event Hubs-Ressource folgt einem geme
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 * [.NET-Verwaltungsbeispiel](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
 * [Microsoft.Azure.Management.EventHub-Referenz](/dotnet/api/Microsoft.Azure.Management.EventHub) 
 

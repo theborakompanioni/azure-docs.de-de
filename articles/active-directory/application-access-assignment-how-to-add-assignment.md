@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 972ed736e63089a69726de5d26236b930b390a10
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung
+<a id="how-to-assign-users-and-groups-to-an-application" class="xliff"></a>
+
+# Zuweisen von Benutzern und Gruppen zu einer Anwendung
 
 Damit Benutzer eine der folgenden Aktionen für eine bestimmte Anwendung durchführen können, müssen Sie **sie zunächst der Anwendung zuweisen**, um ihnen Zugriff darauf zu gewähren:
 
@@ -33,7 +35,9 @@ Damit Benutzer eine der folgenden Aktionen für eine bestimmte Anwendung durchf�
 
 -   Eine Anwendung wird in ihrem [Startprogramm für Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) angezeigt.
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Methoden zum Zuweisen von Anwendungen mit Azure Active Directory 
+<a id="methods-to-assign-applications-with-azure-active-directory" class="xliff"></a>
+
+## Methoden zum Zuweisen von Anwendungen mit Azure Active Directory 
 
 Zum Zuweisen von Anwendungen mit Azure Active Directory stehen 3 Möglichkeiten zur Verfügung:
 
@@ -43,7 +47,9 @@ Zum Zuweisen von Anwendungen mit Azure Active Directory stehen 3 Möglichkeiten 
 
 -   [Aktivieren des Self-Service-Anwendungszugriffs, um Benutzern die Suche ihrer eigenen Anwendungen zu ermöglichen](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>Direktes Zuweisen eines Benutzers als Administrator
+<a id="assign-a-user-directly-as-an-administrator" class="xliff"></a>
+
+## Direktes Zuweisen eines Benutzers als Administrator
 
 Führen Sie die folgenden Schritte aus, um einer Anwendung einen oder mehrere Benutzer direkt zuzuweisen:
 
@@ -81,7 +87,9 @@ Führen Sie die folgenden Schritte aus, um einer Anwendung einen oder mehrere Be
 
 Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen mit den Verfahren starten, die im Abschnitt mit der Lösungsbeschreibung beschrieben wurden.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Direktes Zuweisen einer Gruppe zu einer Anwendung als Administrator
+<a id="assign-a-group-directly-to-an-application-as-an-administrator" class="xliff"></a>
+
+## Direktes Zuweisen einer Gruppe zu einer Anwendung als Administrator
 
 Um einer Anwendung eine oder mehrere Gruppen direkt zuzuweisen, führen Sie folgende Schritte aus:
 
@@ -119,7 +127,9 @@ Um einer Anwendung eine oder mehrere Gruppen direkt zuzuweisen, führen Sie folg
 
 Nach kurzer Zeit können die Benutzer in den ausgewählten Gruppen diese Anwendungen mit den Verfahren starten, die im Abschnitt mit der Lösungsbeschreibung beschrieben wurden. Bei dynamischen Gruppen kann bei der Verarbeitung dieser Zuweisungen eine zusätzliche Verzögerung entstehen, bevor sie für Benutzer in den zugewiesenen Gruppen angezeigt werden.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Aktivieren des Self-Service-Anwendungszugriffs, um Benutzern die Suche ihrer eigenen Anwendungen zu ermöglichen
+<a id="enable-self-service-application-access-to-allow-users-to-find-their-own-applications" class="xliff"></a>
+
+## Aktivieren des Self-Service-Anwendungszugriffs, um Benutzern die Suche ihrer eigenen Anwendungen zu ermöglichen
 
 Der Self-Service-Anwendungszugriff bietet die Möglichkeit, dass Benutzer Anwendungen selbst ermitteln können und dass die entsprechende Geschäftseinheit den Zugriff auf diese Anwendungen optional genehmigen kann. Sie können festlegen, dass die Mitarbeiter der Geschäftseinheit direkt über ihren Zugriffsbereich die den Benutzern zugewiesenen Anmeldeinformationen für Anwendungen mit einmaligem Anmelden per Kennwort verwalten können.
 
@@ -164,6 +174,8 @@ Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, könne
 
 Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen, d.h., wenn Sie mehrere genehmigende Personen angeben, kann jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 

@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: c04cfea4c6c0a8211db2579eccc0c05a93cc0a35
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
-
 
 ---
 
-# <a name="error-on-an-applications-page-after-signing-in"></a>Fehler auf der Seite einer Anwendung nach dem Anmelden
+<a id="error-on-an-applications-page-after-signing-in" class="xliff"></a>
+
+# Fehler auf der Seite einer Anwendung nach dem Anmelden
 
 In diesem Szenario hat Azure AD den Benutzer angemeldet, die Anwendung zeigt jedoch einen Fehler an, durch den der Benutzer den Anmeldevorgang nicht ordnungsgemäß abschließen kann. Bei diesem Szenario liegt das Problem darin, dass die Anwendung die Antwort von Azure AD nicht annimmt.
 
@@ -33,7 +35,9 @@ Es gibt mehrere mögliche Gründe, warum die Anwendung die Antwort von Azure AD 
 
 -   Teilen Sie die SAML-Antwort dem Hersteller der Anwendung mit, um zu erfahren, welche Elemente fehlen.
 
-## <a name="missing-attributes-in-the-saml-response"></a>Fehlende Attribute in der SAML-Antwort
+<a id="missing-attributes-in-the-saml-response" class="xliff"></a>
+
+## Fehlende Attribute in der SAML-Antwort
 
 Führen Sie die folgenden Schritte aus, um in der Azure AD-Konfiguration, die in der Azure AD-Antwort gesendet werden soll, ein Attribut hinzuzufügen:
 
@@ -65,11 +69,15 @@ Führen Sie die folgenden Schritte aus, um in der Azure AD-Konfiguration, die in
 
 Bei der nächsten Anmeldung des Benutzers bei der Anwendung sendet Azure AD das neue Attribut in der SAML-Antwort.
 
-## <a name="the-application-expects-a-different-user-identifier-value-or-format"></a>Anderer Wert oder anderes Format für die Benutzer-ID von der Anwendung erwartet
+<a id="the-application-expects-a-different-user-identifier-value-or-format" class="xliff"></a>
+
+## Anderer Wert oder anderes Format für die Benutzer-ID von der Anwendung erwartet
 
 Beim Anmelden bei der Anwendung tritt ein Fehler auf, da in der SAML-Antwort Attribute wie z.B. Rollen fehlen oder die Anwendung ein anderes Format für das EntityID-Attribut erwartet.
 
-## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Fügen Sie in der Konfiguration der Azure AD-Anwendung ein Attribut hinzu:
+<a id="add-an-attribute-in-the-azure-ad-application-configuration" class="xliff"></a>
+
+## Fügen Sie in der Konfiguration der Azure AD-Anwendung ein Attribut hinzu:
 
 Um den Benutzer-ID-Wert zu ändern, führen Sie die folgenden Schritte aus:
 
@@ -91,13 +99,17 @@ Um den Benutzer-ID-Wert zu ändern, führen Sie die folgenden Schritte aus:
 
 8.  Wählen Sie unter **Benutzerattribute** in der Dropdownliste **Benutzer-ID** den eindeutigen Bezeichner für die Benutzer aus.
 
-## <a name="change-entityid-user-identifier-format"></a>Ändern des Formats für EntityID (Benutzer-ID)
+<a id="change-entityid-user-identifier-format" class="xliff"></a>
+
+## Ändern des Formats für EntityID (Benutzer-ID)
 
 Wenn die Anwendung ein anderes Format für das EntityID-Attribut erwartet, können Sie das Format für EntityID (Benutzer-ID), das von Azure AD nach der Benutzerauthentifizierung in der Antwort an die Anwendung gesendet wird, nicht auswählen.
 
 In Azure AD wird das Format für das NameID-Attribut (Benutzer-ID) auf Grundlage des ausgewählten Werts oder des Formats festgelegt, das von der Anwendung in der SAML-Authentifizierungsanforderung angefordert wird. Weitere Informationen finden Sie im Artikel [SAML-Protokoll für einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) im Abschnitt zu NameIDPolicy.
 
-## <a name="the-application-expects-a-different-signature-method-for-the-saml-response"></a>Andere Signaturmethode für die SAML-Antwort von der Anwendung erwartet
+<a id="the-application-expects-a-different-signature-method-for-the-saml-response" class="xliff"></a>
+
+## Andere Signaturmethode für die SAML-Antwort von der Anwendung erwartet
 
 Eventuell müssen Sie ändern, welche Teile des SAML-Tokens von Azure Active Directory digital signiert werden. Führen Sie die folgenden Schritte aus:
 
@@ -129,7 +141,9 @@ Eventuell müssen Sie ändern, welche Teile des SAML-Tokens von Azure Active Dir
 
 Bei der nächsten Anmeldung des Benutzers bei der Anwendung signiert Azure AD den ausgewählten Teil der SAML-Antwort.
 
-## <a name="the-application-expects-the-signing-algorithm-to-be-sha-1"></a>Signaturalgorithmus SHA-1 von der Anwendung erwartet
+<a id="the-application-expects-the-signing-algorithm-to-be-sha-1" class="xliff"></a>
+
+## Signaturalgorithmus SHA-1 von der Anwendung erwartet
 
 Standardmäßig signiert Azure AD das SAML-Token mit dem sichersten Algorithmus. Das Ändern des Signaturalgorithmus in SHA-1 wird nicht empfohlen, sofern dies nicht von der Anwendung erfordert wird.
 
@@ -157,6 +171,8 @@ Um den Signaturalgorithmus zu ändern, führen Sie die folgenden Schritte aus:
 
 Bei der nächsten Anmeldung des Benutzers bei der Anwendung signiert Azure AD das SAML-Token mit dem Algorithmus SHA-1.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)
 

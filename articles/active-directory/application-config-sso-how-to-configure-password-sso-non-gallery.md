@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 03200aeb1b6ca6f01a78c95e9014f5290c114e6a
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
+<a id="how-to-configure-password-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
+
+# Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
 Zusätzlich zu den Auswahlmöglichkeiten im Azure AD-Anwendungskatalog können Sie auch eine **nicht im Katalog enthaltene Anwendung** hinzufügen, wenn die gewünschte Anwendung im Katalog nicht aufgeführt wird. Auf diese Weise können Sie Anwendungen hinzufügen, die in Ihrer Organisation bereits vorhanden sind. Sie können auch Anwendungen eines Anbieters hinzufügen, der noch nicht im [Azure AD-Anwendungskatalog](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery) gelistet ist.
 
@@ -53,7 +55,9 @@ Diese Option eignet sich hervorragend dazu, jede beliebige Anwendung schnell in 
 
 Im Folgenden wird beschrieben, wie Sie das [kennwortbasierte einmalige Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) bei einer beliebigen Anwendung aktivieren, die Sie über das Feature zum **Hinzufügen einer nicht im Katalog enthaltenen Anwendung** hinzugefügt haben.
 
-## <a name="overview-of-steps-required"></a>Übersicht über die erforderlichen Schritte
+<a id="overview-of-steps-required" class="xliff"></a>
+
+## Übersicht über die erforderlichen Schritte
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
@@ -67,7 +71,9 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
     -   [Direktes Zuweisen einer Anwendung zu einer Gruppe](#assign-an-application-to-a-group-directly)
 
-## <a name="add-a-non-gallery-application"></a>Hinzufügen einer nicht im Katalog enthaltenen Anwendung
+<a id="add-a-non-gallery-application" class="xliff"></a>
+
+## Hinzufügen einer nicht im Katalog enthaltenen Anwendung
 
 Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
 
@@ -87,7 +93,9 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird das Konfigurationsblatt der Anwendung angezeigt.
 
-## <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
+
+## Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 
@@ -115,7 +123,9 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
 11. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
 
-## <a name="assign-a-user-to-an-application-directly"></a>Direktes Zuweisen eines Benutzers zu einer Anwendung
+<a id="assign-a-user-to-an-application-directly" class="xliff"></a>
+
+## Direktes Zuweisen eines Benutzers zu einer Anwendung
 
 Um einer Anwendung einen oder mehrere Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus:
 
@@ -151,7 +161,9 @@ Um einer Anwendung einen oder mehrere Benutzer direkt zuzuweisen, führen Sie fo
 
 15. Klicken Sie auf die Schaltfläche **Zuweisen**, um die Anwendung den ausgewählten Benutzern zuzuweisen.
 
-## <a name="assign-an-application-to-a-group-directly"></a>Direktes Zuweisen einer Anwendung zu einer Gruppe
+<a id="assign-an-application-to-a-group-directly" class="xliff"></a>
+
+## Direktes Zuweisen einer Anwendung zu einer Gruppe
 
 Um einer Anwendung eine oder mehrere Gruppen direkt zuzuweisen, führen Sie folgende Schritte aus:
 
@@ -189,6 +201,8 @@ Um einer Anwendung eine oder mehrere Gruppen direkt zuzuweisen, führen Sie folg
 
 Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriffsbereich starten.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 

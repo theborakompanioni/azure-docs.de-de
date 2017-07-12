@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
@@ -19,14 +19,17 @@ ms.openlocfilehash: 32c6d4ed5470077856d4ab175a5df5188b3690a6
 ms.contentlocale: de-de
 ms.lasthandoff: 06/13/2017
 
-
 ---
 
-# <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
+<a id="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application" class="xliff"></a>
+
+# Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
 
 In diesem Artikel finden Sie Informationen zu den häufig auftretenden Problemen beim Konfigurieren des **einmaligen Anmeldens per Kennwort** für eine Azure AD-Kataloganwendung.
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Die Anmeldeinformationen wurden angegeben, werden aber von der Erweiterung nicht gesendet
+<a id="credentials-are-filled-in-but-the-extension-does-not-submit-them" class="xliff"></a>
+
+## Die Anmeldeinformationen wurden angegeben, werden aber von der Erweiterung nicht gesendet
 
 Dies geschieht normalerweise, wenn der Hersteller kürzlich die Anmeldungsseite geändert hat, um ein Feld hinzuzufügen, einen zugrunde liegenden Bezeichner geändert hat, den wir zum Erkennen der Felder für Benutzername und Kennwort verwenden, oder die Funktionsweise der Anmeldung für die Anwendung geändert hat. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
 
@@ -34,7 +37,9 @@ Microsoft verfügt zwar über Technologien, um diese Störungen der Integration 
 
 Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Die Anmeldeinformationen wurden angegeben und gesendet, die Seite gibt jedoch an, dass die Anmeldeinformationen falsch sind
+<a id="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect" class="xliff"></a>
+
+## Die Anmeldeinformationen wurden angegeben und gesendet, die Seite gibt jedoch an, dass die Anmeldeinformationen falsch sind
 
 Um dieses Problem zu beheben, überprüfen Sie zuerst Folgendes:
 
@@ -62,7 +67,9 @@ Microsoft verfügt zwar über Technologien, um diese Störungen der Integration 
 
 Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Die Erweiterung funktioniert in Chrome und Firefox, jedoch nicht in Internet Explorer.
+<a id="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer" class="xliff"></a>
+
+## Die Erweiterung funktioniert in Chrome und Firefox, jedoch nicht in Internet Explorer.
 
 Es gibt zwei Hauptursachen für dieses Problem:
 
@@ -76,7 +83,9 @@ Es gibt zwei Hauptursachen für dieses Problem:
 
 Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Überprüfen Sie, ob die Anmeldeseite der Anwendung vor Kurzem geändert wurde oder ein zusätzliches Feld erfordert.
+<a id="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field" class="xliff"></a>
+
+## Überprüfen Sie, ob die Anmeldeseite der Anwendung vor Kurzem geändert wurde oder ein zusätzliches Feld erfordert.
 
 Wenn die Anmeldeseite der Anwendung erheblich geändert wurde, kann dies in einigen Fällen zur Unterbrechung unserer Integration führen. Dies kann beispielsweise vorkommen, wenn ein Anwendungshersteller ein Anmeldefeld, ein Captcha oder Multi-Factor Authentication hinzufügt. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
 
@@ -84,7 +93,9 @@ Microsoft verfügt zwar über Technologien, um diese Störungen der Integration 
 
 Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
+<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
+
+## Installieren der Browsererweiterung für den Zugriffsbereich
 
 Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
 
@@ -108,7 +119,9 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 -   [Zugriffsbereichserweiterung für Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 
 

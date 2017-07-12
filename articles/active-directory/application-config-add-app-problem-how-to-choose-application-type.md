@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 1acd4119ebf9c9fd364d0eddd970c362756309ee
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Auswählen des zu verwendenden Anwendungstyps beim Hinzufügen einer Anwendung
+<a id="how-to-choose-which-application-type-to-use-when-adding-an-application" class="xliff"></a>
+
+# Auswählen des zu verwendenden Anwendungstyps beim Hinzufügen einer Anwendung
 
 Dieser Artikel bietet Informationen zu den vier wichtigsten Typen von Anwendungen, die Sie in Azure AD integrieren können:
 
@@ -29,7 +31,9 @@ Dieser Artikel bietet Informationen zu den vier wichtigsten Typen von Anwendunge
 * Gründe für die Auswahl der Anwendungen
 * Konfigurieren der grundlegenden Eigenschaften der jeweiligen Anwendung, z.B. die Art der **Bereitstellung** von Benutzern oder die zu verwendende Technologie für das **einmalige Anmelden**
 
-## <a name="supported-application-types-in-azure-ad"></a>In Azure AD unterstützte Anwendungstypen
+<a id="supported-application-types-in-azure-ad" class="xliff"></a>
+
+## In Azure AD unterstützte Anwendungstypen
 
 Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinzufügen**-Funktion unter **Unternehmensanwendungen** hinzufügen können. Diese umfassen:
 
@@ -41,7 +45,9 @@ Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinz
 
 -   **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Alle gewünschten Weblinks und alle Anwendungen, die Felder für Benutzername und Kennwort generieren, SAML- oder OpenID Connect-Protokolle oder SCIM unterstützen und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
 
-## <a name="features-and-capabilities-supported-by-all-the-above-application-types"></a>Von allen oben genannten Anwendungstypen unterstützte Features und Funktionen
+<a id="features-and-capabilities-supported-by-all-the-above-application-types" class="xliff"></a>
+
+## Von allen oben genannten Anwendungstypen unterstützte Features und Funktionen
 
 Die folgenden Funktionen werden von allen vier oben genannten Anwendungstypen in Azure AD unterstützt:
 
@@ -61,13 +67,17 @@ Die folgenden Funktionen werden von allen vier oben genannten Anwendungstypen in
 
 -   **Anzeigen von Berechtigungen**: Erhalten Sie in einer zentralen Ansicht Einblick in alle [OAuth2-Berechtigungen](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent), auf die eine Anwendung in Ihrem Verzeichnis zugreifen kann.
 
-## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Von bestimmten Anwendungstypen unterstützte Modi für das einmalige Anmelden und die Bereitstellung
+<a id="single-sign-on-and-provisioning-modes-supported-by-specific-application-types" class="xliff"></a>
+
+## Von bestimmten Anwendungstypen unterstützte Modi für das einmalige Anmelden und die Bereitstellung
 
 Die Tabelle unten beschreibt die verschiedenen Modi für das einmalige Anmelden und die Bereitstellung, die von den oben genannten Anwendungstypen unterstützt werden. In dieser Tabelle erfahren Sie, welche Anwendung Sie hinzufügen müssen, um ein bestimmtes Ziel zu erreichen.
 
   ![Tabelle der Anwendungstypen](./media/application-tables/table1.png)
 
-## <a name="how-to-choose-a-single-sign-on-mode"></a>Auswählen eines Modus für das einmalige Anmelden
+<a id="how-to-choose-a-single-sign-on-mode" class="xliff"></a>
+
+## Auswählen eines Modus für das einmalige Anmelden
 
 Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure AD-Anwendungen aufgeführt.
 
@@ -98,7 +108,9 @@ Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure A
    >
    >
 
-## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Modi für das einmalige Anmelden für benutzerdefiniert entwickelte Anwendungen
+<a id="single-sign-on-modes-for-custom-developed-applications" class="xliff"></a>
+
+## Modi für das einmalige Anmelden für benutzerdefiniert entwickelte Anwendungen
 
 [Benutzerdefiniert entwickelte Anwendungen](#_Custom-Developed_Applications) unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Diese umfassen:
 
@@ -112,7 +124,9 @@ Hier werden die unterstützten Modi für das **einmalige Anmelden** für Azure A
 
 Weitere Informationen zum Erstellen einer benutzerdefiniert entwickelten Anwendung, die diese Modi für das einmalige Anmelden unterstützt, finden Sie im [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Festlegen des Modus für das einmalige Anmelden für eine Anwendung
+<a id="how-to-set-an-applications-single-sign-on-mode" class="xliff"></a>
+
+## Festlegen des Modus für das einmalige Anmelden für eine Anwendung
 
 Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, führen Sie folgende Schritte aus:
 
@@ -132,7 +146,9 @@ Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, f�
 
 7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
-## <a name="how-to-choose-a-provisioning-mode"></a>Auswählen eines Bereitstellungsmodus
+<a id="how-to-choose-a-provisioning-mode" class="xliff"></a>
+
+## Auswählen eines Bereitstellungsmodus
 
 -   **Manuelle Bereitstellung**: Wählen Sie den Bereitstellungsmodus [Manuell](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) aus, wenn Sie bereits über vorhandene Konten verfügen oder Konten für diese Anwendung außerhalb von Azure AD verwalten möchten.
 
@@ -150,7 +166,9 @@ Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, f�
    >
    >
 
-## <a name="how-to-set-an-applications-provisioning-mode"></a>Festlegen des Bereitstellungsmodus einer Anwendung
+<a id="how-to-set-an-applications-provisioning-mode" class="xliff"></a>
+
+## Festlegen des Bereitstellungsmodus einer Anwendung
 
 Um den **Bereitstellungsmodus** für eine Anwendung festzulegen, führen Sie folgende Schritte aus:
 
@@ -172,6 +190,8 @@ Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, f�
 
 7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Bereitstellung**.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md)
 

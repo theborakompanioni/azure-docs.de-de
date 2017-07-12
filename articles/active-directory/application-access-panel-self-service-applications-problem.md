@@ -11,23 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 4d8c241344485e50a1afde3cd67adf3d0a7c041f
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="problem-using-self-service-application-access"></a>Probleme beim Self-Service-Anwendungszugriff
+<a id="problem-using-self-service-application-access" class="xliff"></a>
+
+# Probleme beim Self-Service-Anwendungszugriff
 
 Der Self-Service-Anwendungszugriff bietet die Möglichkeit, dass Benutzer Anwendungen selbst ermitteln können und die entsprechende Geschäftseinheit den Zugriff auf diese Anwendungen optional genehmigen kann. Sie können der Geschäftseinheit ermöglichen, die Anmeldeinformationen zu verwalten, die Benutzern zugewiesen wurden, damit diese über ihren Zugriffsbereich direkt auf Anwendungen mit einmaligem Anmelden per Kennwort zugreifen können.
 
 Damit Ihre Benutzer über ihren Zugriffsbereich Anwendungen selbst ermitteln können, müssen Sie den **Self-Service-Anwendungszugriff** auf alle Anwendungen aktivieren, die Benutzer selbst ermitteln und für die sie den Zugriff anfordern können sollen.
 
-## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten
+<a id="general-issues-to-check-first" class="xliff"></a>
+
+## Allgemeine Probleme, die zuerst überprüft werden sollten
 
 -   Stellen Sie sicher, dass der Self-Service-Anwendungszugriff ordnungsgemäß konfiguriert ist. Informationen hierzu finden Sie unter „Konfigurieren des Self-Service-Anwendungszugriffs“.
 
@@ -37,7 +41,9 @@ Damit Ihre Benutzer über ihren Zugriffsbereich Anwendungen selbst ermitteln kö
 
 -   Wenn der Self-Service-Anwendungszugriff erst kürzlich konfiguriert wurde, sollte sich der Benutzer vom Zugriffsbereich abmelden und nach einigen Minuten wieder anmelden, um festzustellen, ob die Änderungen am Self-Service-Zugriff angezeigt werden.
 
-## <a name="how-to-configure-self-service-application-access"></a>Konfigurieren des Self-Service-Anwendungszugriffs
+<a id="how-to-configure-self-service-application-access" class="xliff"></a>
+
+## Konfigurieren des Self-Service-Anwendungszugriffs
 
 Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff auf eine Anwendung zu aktivieren:
 
@@ -80,7 +86,9 @@ Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, könne
 
 Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen, d.h., wenn Sie mehrere genehmigende Personen angeben, kann jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird 
+<a id="if-these-troubleshooting-steps-do-not-resolve-the-issue" class="xliff"></a>
+
+## Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird 
 
 Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
@@ -96,6 +104,8 @@ Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen, d.h
 
 -   Fiddler-Ablaufverfolgungen
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](active-directory-accessmanagement-self-service-group-management.md)
 

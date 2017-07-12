@@ -15,18 +15,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 02/02/2017
-ms.author: rasquill
+ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 7a989ffd72dd3636419dfb91f696f0e38f9271c2
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 ---
-# <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
+<a id="add-a-disk-to-a-linux-vm" class="xliff"></a>
+
+# Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. 
 
-## <a name="quick-commands"></a>Schnellbefehle
+<a id="quick-commands" class="xliff"></a>
+
+## Schnellbefehle
 Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
 
 Für verwaltete Datenträger:
@@ -43,12 +48,16 @@ az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM
   --new --size-gb 50
 ```
 
-## <a name="attach-a-managed-disk"></a>Anfügen eines verwalteten Datenträgers
+<a id="attach-a-managed-disk" class="xliff"></a>
+
+## Anfügen eines verwalteten Datenträgers
 
 Durch die Verwendung von verwalteten Datenträgern können Sie sich auf Ihre virtuellen Computer und die zugehörigen Datenträger konzentrieren und müssen sich nicht um Azure Storage-Konten kümmern. Sie können einen verwalteten Datenträger schnell erstellen und an einen virtuellen Computer anfügen, indem Sie die gleiche Azure-Ressourcengruppe verwenden. Alternativ dazu können Sie eine beliebige Anzahl von Datenträgern erstellen und diese dann anfügen.
 
 
-### <a name="attach-a-new-disk-to-a-vm"></a>Anfügen eines neuen Datenträgers an einen virtuellen Computer
+<a id="attach-a-new-disk-to-a-vm" class="xliff"></a>
+
+### Anfügen eines neuen Datenträgers an einen virtuellen Computer
 
 Wenn Sie nur einen neuen Datenträger für Ihren virtuellen Computer benötigen, können Sie den Befehl `az vm disk attach` verwenden.
 
@@ -57,7 +66,9 @@ az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
   --new --size-gb 50
 ```
 
-### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers 
+<a id="attach-an-existing-disk" class="xliff"></a>
+
+### Anfügen eines vorhandenen Datenträgers 
 
 In vielen Fällen fügen Sie Datenträger an, die bereits erstellt wurden. Hierbei müssen Sie zunächst die Datenträger-ID suchen und diese an den Befehl `az vm disk attach` übergeben. Im folgenden Beispiel wird ein Datenträger verwendet, der mit `az disk create -g myResourceGroup -n myDataDisk --size-gb 50` erstellt wurde.
 
@@ -95,7 +106,9 @@ Die Ausgabe sieht in etwa wie folgt aus (Sie können die Option `-o table` bei j
 ```
 
 
-## <a name="attach-an-unmanaged-disk"></a>Anfügen eines nicht verwalteten Datenträgers
+<a id="attach-an-unmanaged-disk" class="xliff"></a>
+
+## Anfügen eines nicht verwalteten Datenträgers
 
 Das Anfügen eines neuen Datenträgers lässt sich schnell erledigen, wenn Sie den Datenträger im gleichen Speicherkonto erstellen können, in dem sich auch Ihr virtueller Computer befindet. Geben Sie `azure vm disk attach-new` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
 
@@ -104,7 +117,9 @@ az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM
   --new --size-gb 50
 ```
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
+<a id="connect-to-the-linux-vm-to-mount-the-new-disk" class="xliff"></a>
+
+## Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
 > [!NOTE]
 > In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 > 
@@ -310,7 +325,9 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 > 
 > Die **nofail**-Option stellt sicher, dass der virtuelle Computer gestartet wird, selbst wenn das Dateisystem beschädigt oder der Datenträger zur Startzeit nicht vorhanden ist. Ohne diese Option können Verhalten auftreten, die unter [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (Aufgrund von FSTAB-Fehler keine SSH-Verbindung mit Linux-VM möglich) beschrieben sind.
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP-Unterstützung für Linux in Azure
+<a id="trimunmap-support-for-linux-in-azure" class="xliff"></a>
+
+### TRIM/UNMAP-Unterstützung für Linux in Azure
 Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann Kosten sparen, wenn Sie große Dateien erstellen und diese dann löschen.
 
 Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
@@ -336,10 +353,14 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
     sudo fstrim /datadrive
     ```
 
-## <a name="troubleshooting"></a>Problembehandlung
+<a id="troubleshooting" class="xliff"></a>
+
+## Problembehandlung
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 * Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
 * Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
 * Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) für zusätzliche Leistung.

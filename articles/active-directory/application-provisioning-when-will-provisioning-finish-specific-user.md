@@ -11,20 +11,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: b1f16079ad13c4e45f93a7e5e3d29568738e03cf
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
-
 
 ---
 
-# <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann
+<a id="find-out-when-a-specific-user-will-be-able-to-access-an-application" class="xliff"></a>
+
+# Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann
 Bei Verwendung der automatischen Benutzerbereitstellung mit einer Anwendung stellt Azure AD in regelmäßigen Zeitintervallen (in der Regel alle 10 Minuten) automatisch Benutzerkonten in einer App, die auf Dingen wie [Benutzer- und Gruppenzuordnung](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) basiert, bereit und aktualisiert diese.
 
-## <a name="how-long-does-it-take"></a>Wie lange dauert es?
+<a id="how-long-does-it-take" class="xliff"></a>
+
+## Wie lange dauert es?
 
 Der Zeitaufwand für die Bereitstellung eines bestimmten Benutzers hängt hauptsächlich davon ab, ob bereits eine anfängliche vollständige Synchronisierung erfolgt ist.
 
@@ -32,7 +36,9 @@ Die erste Synchronisierung zwischen Azure AD und einer App kann zwischen 20 Minu
 
 Nachfolgende Synchronisierungen nach der anfänglichen Synchronisierung werden schneller durchgeführt (z. B. innerhalb von 10 Minuten), da der Bereitstellungsdienst Wasserzeichen speichert, die den Status beider Systeme nach der Erstsynchronisierung darstellen, wodurch die Leistung nachfolgender Synchronisierungen verbessert wird.
 
-## <a name="how-to-check-the-status-of-a-user"></a>Überprüfen des Benutzerstatus
+<a id="how-to-check-the-status-of-a-user" class="xliff"></a>
+
+## Überprüfen des Benutzerstatus
 
 Informationen zum Bereitstellungsstatus für einen ausgewählten Benutzer finden Sie in den Überwachungsprotokollen in Azure AD.
 
@@ -47,6 +53,8 @@ Die Überwachungsprotokolle für die Bereitstellung zeichnen alle Vorgänge auf,
 * Vergleichen der Benutzerobjekte zwischen dem System
 * Hinzufügen, Aktualisieren oder Deaktivieren des Benutzerkontos im Zielsystem auf Basis des Vergleichs
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
 

@@ -21,9 +21,10 @@ ms.openlocfilehash: a20017a63ebed745e2d101d556e93594325533dc
 ms.contentlocale: de-de
 ms.lasthandoff: 03/18/2017
 
-
 ---
-# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>An- und Abmeldung bei Java-Web-Apps mit Azure AD
+<a id="java-web-app-sign-in-and-sign-out-with-azure-ad" class="xliff"></a>
+
+# An- und Abmeldung bei Java-Web-Apps mit Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Azure Active Directory (Azure AD) erleichtert die Auslagerung der Identitätsverwaltung für Web-Apps, indem eine einmalige An- und Abmeldung (Single Sign-on und Single Sign-out) mit nur wenigen Codezeilen ermöglicht wird. Mithilfe der Microsoft-Implementierung der von der Community gestützten Azure Active Directory Authentication Library for Java (ADAL4J) können Sie Benutzern das An- und Abmelden bei Java-Web-Apps ermöglichen.
@@ -34,14 +35,18 @@ Dieser Artikel beschreibt, wie die ADAL4J für die folgenden Zwecke genutzt werd
 * Anzeigen von Benutzerinformationen
 * Abmelden von Benutzer von den Apps
 
-## <a name="before-you-get-started"></a>Bevor Sie beginnen
+<a id="before-you-get-started" class="xliff"></a>
+
+## Bevor Sie beginnen
 
 * Laden Sie das [Anwendungsgerüst](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) oder [vollständige Beispiel](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip) herunter.
 * Außerdem benötigen Sie einen Azure AD-Mandanten, bei dem Sie die App registrieren. Wenn Sie noch nicht über einen Mandanten verfügen, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
 Wenn Sie bereit sind, führen Sie die Verfahren in den folgenden neun Abschnitten aus.
 
-## <a name="step-1-register-the-new-app-with-azure-ad"></a>Schritt 1: Registrieren der neuen App bei Azure AD
+<a id="step-1-register-the-new-app-with-azure-ad" class="xliff"></a>
+
+## Schritt 1: Registrieren der neuen App bei Azure AD
 Um die App für die Authentifizierung von Benutzern einzurichten, registrieren Sie sie zunächst bei Ihrem Mandanten, indem Sie wie folgt vorgehen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -56,7 +61,9 @@ Um die App für die Authentifizierung von Benutzern einzurichten, registrieren S
 
 Wenn Sie sich im Portal der App befinden, erstellen und kopieren Sie auf der Seite **Einstellungen** einen Schlüssel für die App. Sie benötigen den Schlüssel in Kürze.
 
-## <a name="step-2-set-up-the-app-to-use-the-adal4j-and-prerequisites-by-using-maven"></a>Schritt 2: Einrichten der App für die Verwendung der ADAL4J und erforderlichen Komponenten mithilfe von Maven
+<a id="step-2-set-up-the-app-to-use-the-adal4j-and-prerequisites-by-using-maven" class="xliff"></a>
+
+## Schritt 2: Einrichten der App für die Verwendung der ADAL4J und erforderlichen Komponenten mithilfe von Maven
 In diesem Schritt konfigurieren Sie die ADAL4J für die Verwendung des Authentifizierungsprotokolls OpenID Connect. Mithilfe der ADAL4J können Sie An- und Abmeldeanforderungen erstellen, Benutzersitzungen verwalten, Benutzerinformationen abrufen usw.
 
 Öffnen oder erstellen Sie `pom.xml` im Stammverzeichnis des Projekts, suchen Sie `// TODO: provide dependencies for Maven`, und ersetzen Sie es durch Folgendes:
@@ -171,7 +178,9 @@ In diesem Schritt konfigurieren Sie die ADAL4J für die Verwendung des Authentif
     </project>
 ```
 
-## <a name="step-3-create-the-java-web-app-files-web-inf"></a>Schritt 3: Erstellen der Java-Web-App-Dateien (WEB-INF)
+<a id="step-3-create-the-java-web-app-files-web-inf" class="xliff"></a>
+
+## Schritt 3: Erstellen der Java-Web-App-Dateien (WEB-INF)
 In diesem Schritt konfigurieren Sie die Java-Web-App für die Verwendung des OpenID Connect-Authentifizierungsprotokolls. Die ADAL4J wird u.a. für das Erstellen von Anmelde- und Abmeldeanforderungen, das Verwalten der Benutzersitzung und das Abrufen von Benutzerinformationen verwendet.
 
 1. Öffnen Sie unter „\webapp\WEB-INF\,“ die Datei „web.xml“, und geben Sie die Konfigurationswerte für die App in den XML-Code ein. Die XML-Datei muss den folgenden Code enthalten:
@@ -186,7 +195,7 @@ In diesem Schritt konfigurieren Sie die Java-Web-App für die Verwendung des Ope
         <display-name>Archetype Created Web Application</display-name>
         <context-param>
             <param-name>authority</param-name>
-            <param-value>https://login.windows.net/</param-value>
+            <param-value>https://login.microsoftonline.com/</param-value>
         </context-param>
         <context-param>
             <param-name>tenant</param-name>
@@ -260,7 +269,9 @@ In diesem Schritt konfigurieren Sie die Java-Web-App für die Verwendung des Ope
 
  Dieser Code weist die Web-App an, Spring zu verwenden, und gibt den Speicherort der JSP-Datei an, die Sie im nächsten Abschnitt schreiben.
 
-## <a name="step-4-create-the-jsp-view-files-for-basicfilter-mvc"></a>Schritt 4: Erstellen der JSP-Ansichtsdateien (für BasicFilter MVC)
+<a id="step-4-create-the-jsp-view-files-for-basicfilter-mvc" class="xliff"></a>
+
+## Schritt 4: Erstellen der JSP-Ansichtsdateien (für BasicFilter MVC)
 Das Einrichten Ihrer Web-App in der WEB-INF-Datei ist zur Hälfte geschafft. Als Nächstes erstellen Sie die JSP-Dateien für den BasicFilter MVC (Model View Controller), der die Web-App ausführt. Im Verlauf der Konfiguration haben wir auf das Erstellen der Dateien hingewiesen.
 
 Zuvor haben Sie Java in den XML-Konfigurationsdateien informiert, dass Sie über eine `/`-Ressource verfügen, die JSP-Dateien lädt, und eine `/secure`-Ressource haben, die einen Filter durchläuft, den Sie „BasicFilter“ genannt haben.
@@ -330,7 +341,9 @@ Führen Sie folgende Schritte aus, um die JSP-Dateien zu erstellen:
 
 Jetzt müssen Sie noch die Java-Dateien so einrichten, dass das Servlet seine Aufgaben erledigen kann.
 
-## <a name="step-5-create-some-java-helper-files-for-basicfilter-mvc"></a>Schritt 5: Erstellen von Java-Hilfsdateien (für BasicFilter MVC)
+<a id="step-5-create-some-java-helper-files-for-basicfilter-mvc" class="xliff"></a>
+
+## Schritt 5: Erstellen von Java-Hilfsdateien (für BasicFilter MVC)
 Unser Ziel in diesem Schritt ist das Erstellen von Java-Dateien für die folgenden Aufgaben:
 
 * An- und Abmeldung des Benutzers ermöglichen
@@ -725,7 +738,9 @@ So schreiben Sie einige Java-Dateien für diese Aufgabe
 
     ```
 
-## <a name="step-6-create-the-java-graph-api-model-files-for-basicfilter-mvc"></a>Schritt 6: Erstellen der Java-Graph-API-Modelldateien (für BasicFilter MVC)
+<a id="step-6-create-the-java-graph-api-model-files-for-basicfilter-mvc" class="xliff"></a>
+
+## Schritt 6: Erstellen der Java-Graph-API-Modelldateien (für BasicFilter MVC)
 Wie bereits erwähnt, wird die Graph-API zum Abrufen von Daten zum angemeldeten Benutzer verwendet. Um diesen Vorgang zu vereinfachen, erstellen Sie sowohl eine Datei, die ein Verzeichnisobjekt darstellt, als auch eine Datei, die den Benutzer darstellt, damit das OO-Muster von Java genutzt werden kann.
 
 1. Erstellen Sie eine Datei namens „DirectoryObject.java“, die grundlegende Informationen zu jedem „DirectoryObject“ speichert. Sie können diese Datei später für andere Graph-Abfragen verwenden, die Sie ggf. ausführen. Fügen Sie zum Erstellen der Datei den folgenden Code ein:
@@ -1296,7 +1311,9 @@ Wie bereits erwähnt, wird die Graph-API zum Abrufen von Daten zum angemeldeten 
 
     ```
 
-## <a name="step-7-create-the-authentication-model-and-controller-files-for-basicfilter"></a>Schritt 7: Erstellen des Authentifizierungsmodells und der Controllerdateien (für BasicFilter)
+<a id="step-7-create-the-authentication-model-and-controller-files-for-basicfilter" class="xliff"></a>
+
+## Schritt 7: Erstellen des Authentifizierungsmodells und der Controllerdateien (für BasicFilter)
 Java kann, wie Sie sehen, viel Code umfassen, aber Sie haben es fast geschafft. Bevor Sie das BasicFilter-Servlet zum Verarbeiten der Anforderungen schreiben, müssen Sie einige Hilfsdateien erstellen, die von der ADAL4J benötigt werden.
 
 1. Erstellen Sie eine Datei namens „AuthHelper.java“, die Methoden bietet, mit denen der Status des angemeldeten Benutzers bestimmt werden kann. Dabei handelt es sich um diese Methoden:
@@ -1448,7 +1465,9 @@ Java kann, wie Sie sehen, viel Code umfassen, aber Sie haben es fast geschafft. 
 
     ```
 
-## <a name="step-8-create-the-basicfilter-file-for-basicfilter-mvc"></a>Schritt 8: Erstellen einer BasicFilter-Datei (für BasicFilter MVC)
+<a id="step-8-create-the-basicfilter-file-for-basicfilter-mvc" class="xliff"></a>
+
+## Schritt 8: Erstellen einer BasicFilter-Datei (für BasicFilter MVC)
 Sie können jetzt die Datei „BasicFilter.java“ erstellen, die die Anforderungen der JSP View-Dateien verarbeitet. Fügen Sie zum Erstellen der Datei den folgenden Code ein:
 
 ```Java
@@ -1700,7 +1719,9 @@ Dieses Servlet stellt alle Methoden bereit, deren Ausführung die ADAL4J von der
 * **createSessionPrincipal()**: Erstellt einen Sitzungsprinzipal für den Zugriff auf die Graph-API.
 * **getRedirectUrl()**: Ruft die Umleitungs-URL ab und vergleicht sie mit dem Wert, den Sie im Portal eingegeben haben.
 
-## <a name="step-9-compile-and-run-the-sample-in-tomcat"></a>Schritt 9: Kompilieren und Ausführen des Beispiels in Tomcat
+<a id="step-9-compile-and-run-the-sample-in-tomcat" class="xliff"></a>
+
+## Schritt 9: Kompilieren und Ausführen des Beispiels in Tomcat
 
 1. Wechseln Sie zu Ihrem Stammverzeichnis.
 2. Führen Sie den folgenden Befehl aus, um mit `maven` das gerade zusammengestellte Beispiel zu erstellen:
@@ -1715,7 +1736,9 @@ In Ihrem Verzeichnis „/targets“ sollte sich nun die Datei „adal4jsample.wa
 > Mit den neuesten Tomcat-Servern können WAR-Dateien einfach bereitgestellt werden. Navigieren Sie einfach zu „http://localhost:8080/manager/“, und führen Sie die Schritte zum Hochladen der Datei „adal4jsample.war“ aus. Sie wird automatisch mit dem richtigen Endpunkt bereitgestellt.
 
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Sie haben nun eine funktionierende Java-Anwendung, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann. Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen.
 
 Als zusätzliche Referenz können Sie das vollständige Beispiel (ohne Ihre Konfigurationswerte) auf zwei Weisen abrufen:

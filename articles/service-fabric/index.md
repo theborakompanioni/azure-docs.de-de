@@ -19,7 +19,9 @@ ms.contentlocale: de-de
 ms.lasthandoff: 06/23/2017
 
 ---
-#<a name="service-fabric-documentation"></a>Service Fabric-Dokumentation
+<a id="service-fabric-documentation" class="xliff"></a>
+
+#Service Fabric-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe von Service Fabric skalierbare und zuverlässige Microservices verpacken, bereitstellen und verwalten. Anhand von Tutorials, API-Referenzen und Codebeispielen wird gezeigt, wie Sie mithilfe dieser Middlewareplattform cloudbasierte Anwendungen erstellen und verwalten.
 

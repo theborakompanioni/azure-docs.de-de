@@ -11,23 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: 5ccb9e920ce8e1c95b9ce0ffc8626f2dcf3783d8
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Der falsche Satz von Benutzern wird für eine Azure AD-Kataloganwendung bereitgestellt
+<a id="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application" class="xliff"></a>
+
+# Der falsche Satz von Benutzern wird für eine Azure AD-Kataloganwendung bereitgestellt
 
 Welche Benutzer für die App bereitgestellt werden, hängt in erster Linie davon ab, welche Benutzer und Gruppen der App **zugewiesen** wurden.
 
 Mithilfe der unten aufgeführten Ressourcen erfahren Sie, wie Sie überprüfen, welche Benutzer und Gruppen einer Anwendung in Azure Active Directory zugewiesen wurden.
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>Direktes Zuweisen eines Benutzers als Administrator
+<a id="assign-a-user-directly-as-an-administrator" class="xliff"></a>
+
+## Direktes Zuweisen eines Benutzers als Administrator
 
 Führen Sie die folgenden Schritte aus, um einer Anwendung einen oder mehrere Benutzer direkt zuzuweisen:
 
@@ -65,7 +69,9 @@ Führen Sie die folgenden Schritte aus, um einer Anwendung einen oder mehrere Be
 
 Wenn die Bereitstellung konfiguriert ist und für eine App bereits ausgeführt wird, sollten neue Benutzer nach etwa 10 Minuten für die App bereitgestellt werden. Suchen Sie in den **Überwachungsprotokollen** nach Details.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Direktes Zuweisen einer Gruppe zu einer Anwendung als Administrator
+<a id="assign-a-group-directly-to-an-application-as-an-administrator" class="xliff"></a>
+
+## Direktes Zuweisen einer Gruppe zu einer Anwendung als Administrator
 
 Um einer Anwendung eine oder mehrere Gruppen direkt zuzuweisen, führen Sie folgende Schritte aus:
 
@@ -110,6 +116,8 @@ Wenn die Bereitstellung konfiguriert ist und für eine App bereits ausgeführt w
 
 Wenn die Bereitstellung von Gruppen aktiviert ist, überprüfen Sie auf jeden Fall die Attributzuordnungen, um sicherzustellen, dass ein entsprechendes Feld für die „übereinstimmende ID“ verwendet wird. Dies kann der Anzeigename oder der E-Mail-Alias sein, da die Gruppe und ihre Mitglieder nicht bereitgestellt werden, wenn die entsprechende Eigenschaft leer ist oder nicht für eine Gruppe in Azure AD aufgefüllt wurde.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md)
 

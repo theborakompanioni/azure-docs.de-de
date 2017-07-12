@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
@@ -19,16 +19,19 @@ ms.openlocfilehash: 759631bca9b29134098dba55ef07513d0ee42549
 ms.contentlocale: de-de
 ms.lasthandoff: 05/26/2017
 
-
 ---
 
-# <a name="problem-installing-the-application-access-panel-browser-extension"></a>Problem beim Installieren der Browsererweiterung für den Anwendungszugriffsbereich
+<a id="problem-installing-the-application-access-panel-browser-extension" class="xliff"></a>
+
+# Problem beim Installieren der Browsererweiterung für den Anwendungszugriffsbereich
 
 Der Zugriffsbereich ist ein webbasiertes Portal, mit dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über den Zugriffsbereich auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
 
 Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für den Zugriffsbereich
+<a id="meeting-browser-requirements-for-the-access-panel" class="xliff"></a>
+
+## Erfüllen der Browseranforderungen für den Zugriffsbereich
 
 Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
@@ -42,7 +45,9 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 **Hinweis**: Die Erweiterung für kennwortbasiertes SSO steht für Edge unter Windows 10 zur Verfügung, sobald Browsererweiterungen von Edge unterstützt werden.
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
+<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
+
+## Installieren der Browsererweiterung für den Zugriffsbereich
 
 Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
 
@@ -66,7 +71,9 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 -   [Zugriffsbereichserweiterung für Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Einrichten einer Gruppenrichtlinie für Internet Explorer
+<a id="setting-up-a-group-policy-for-internet-explorer" class="xliff"></a>
+
+## Einrichten einer Gruppenrichtlinie für Internet Explorer
 
 Sie können eine Gruppenrichtlinie einrichten, um die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer zu installieren.
 
@@ -78,11 +85,15 @@ Die folgenden Voraussetzungen müssen erfüllt sein:
 
 Das Tutorial [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie](active-directory-saas-ie-group-policy.md) bietet Ihnen Schritt-für-Schritt-Anweisungen zum Konfigurieren der Gruppenrichtlinie und Bereitstellen der Gruppenrichtlinie für Benutzer.
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Problembehandlung für den Zugriffsbereich in Internet Explorer
+<a id="troubleshoot-the-access-panel-in-internet-explorer" class="xliff"></a>
+
+## Problembehandlung für den Zugriffsbereich in Internet Explorer
 
 Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
+<a id="if-these-troubleshooting-steps-do-not-resolve-the-issue" class="xliff"></a>
+
+## Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
 
 Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
@@ -98,6 +109,8 @@ Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung
 
 -   Fiddler-Ablaufverfolgungen
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
