@@ -14,14 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 815ada25a548ddf419ac073f57a5153f60a40a58
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 67dbb0c4066002256efbab6061157c641527e441
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="manage-your-storsimple-device-controllers"></a>Verwalten von StorSimple-Gerätecontrollern
-## <a name="overview"></a>Übersicht
+<a id="manage-your-storsimple-device-controllers" class="xliff"></a>
+
+# Verwalten von StorSimple-Gerätecontrollern
+<a id="overview" class="xliff"></a>
+
+## Übersicht
 In diesem Tutorial werden die verschiedenen Vorgänge beschrieben, die auf den Gerätecontrollern von StorSimple durchgeführt werden können. Die Controller in Ihrem StorSimple-Gerät sind redundante Controller (Peer-Controller) in einer Aktiv/Passiv-Konfiguration. Es ist jeweils nur ein Controller aktiv, der alle Datenträger- und Netzwerkvorgänge verarbeitet. Der andere Controller befindet sich im passiven Modus. Wenn der aktive Controller ausfällt, wird automatisch der passive Controller aktiviert.
 
 Dieses Tutorial enthält eine Schritt-für-Schritt-Anleitung zum Verwalten der Gerätecontroller mit folgenden Verfahren:
@@ -37,7 +43,9 @@ In diesem Tutorial lernen Sie Folgendes:
 * Herunterfahren eines StorSimple-Geräts
 * Zurücksetzen des StorSimple-Geräts auf die Herstellerstandards
 
-## <a name="restart-or-shut-down-a-single-controller"></a>Neustarten oder Herunterfahren eines einzelnen Controllers
+<a id="restart-or-shut-down-a-single-controller" class="xliff"></a>
+
+## Neustarten oder Herunterfahren eines einzelnen Controllers
 Während des normalen Betriebs ist das Neustarten oder Herunterfahren eines Controllers normalerweise nicht erforderlich. Das Herunterfahren eines einzelnen Gerätecontrollers muss nur in Fällen durchgeführt werden, in denen eine ausgefallene Komponente der Gerätehardware ausgetauscht werden muss. Der Neustart eines Controllers kann auch erforderlich sein, wenn die Leistung durch übermäßige Arbeitsspeicherauslastung oder einen fehlerhaften Controller beeinträchtigt ist. Unter Umständen müssen Sie einen Controller auch nach einem erfolgreichen Controlleraustausch neu starten, um den neuen Controller zu aktivieren und zu testen.
 
 Das Neustarten eines Geräts hat keine schädlichen Auswirkungen auf verbundene Initiatoren, sofern der passive Controller verfügbar ist. Wenn kein passiver Controller verfügbar ist oder wenn er ausgeschaltet ist, kann das Neustarten des aktiven Controllers zu Störungen des Diensts und zu Ausfällen führen.
@@ -52,7 +60,9 @@ Sie können einen einzelnen Gerätecontroller neu starten oder herunterfahren, i
 
 Führen Sie die unten angegebenen Schritte aus, um Gerätecontroller über das klassischen Azure-Portal zu verwalten.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-classic-portal"></a>Neustarten oder Herunterfahren eines Controller im klassischen Portal
+<a id="to-restart-or-shut-down-a-controller-in-classic-portal" class="xliff"></a>
+
+#### Neustarten oder Herunterfahren eines Controller im klassischen Portal
 1. Navigieren Sie zu **Geräte > Wartung**.
 2. Wechseln Sie zu **Hardwarestatus**, und stellen Sie sicher, dass der Status beider Controller auf Ihrem Gerät **Fehlerfrei** lautet.
    
@@ -76,18 +86,20 @@ Führen Sie die unten angegebenen Schritte aus, um Gerätecontroller über das k
    2. Wählen Sie in der Dropdownliste **Aktion auswählen** die Option **Controller neu starten** oder **Controller herunterfahren** aus.
       
        ![Neustarten des passiven StorSimple-Gerätecontrollers](./media/storsimple-manage-device-controller/IC766020.png)
-   3. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-manage-device-controller/IC740895.png) zu erstellen und zu verwalten.
+   3. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-manage-device-controller/IC740895.png)zu erstellen und zu verwalten.
 
 Der Controller wird neu gestartet bzw. heruntergefahren. In der folgenden Tabelle ist zusammengefasst, was abhängig von den Einstellungen passiert, die Sie im Dialogfeld **Controller-Einstellungen ändern** gewählt haben.  
 
-| Auswahl # | Gewählte Einstellung | Ausgeführte Aktion |
+| Auswahlnr. | Gewählte Einstellung | Ausgeführte Aktion |
 | --- | --- | --- |
 | 1. |Neustarten des passiven Controllers |Es wird ein Auftrag zum Neustarten des Controllers erstellt, und Sie werden benachrichtigt, nachdem die Erstellung erfolgreich abgeschlossen wurde. Hiermit wird der Neustart des Controllers initiiert. Sie können den Neustartprozess überwachen, indem Sie auf **Dienst > Dashboard > Vorgangsprotokolle anzeigen** zugreifen und dann nach den Parametern für Ihren Dienst filtern. |
 | 2. |Neustarten des aktiven Controllers |Die folgende Warnung wird angezeigt: „Wenn Sie den aktiven Controller neu starten, erfolgt ein Failover des Geräts auf den passiven Controller. Möchten Sie fortfahren?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
 | 3. |Herunterfahren des passiven Controllers |Die folgende Meldung wird angezeigt: „Nach dem Herunterfahren müssen Sie den Netzschalter Ihres Controllers betätigen, um ihn zu aktivieren. Sind Sie sicher, dass Sie diesen Controller herunterfahren möchten?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
 | 4. |Herunterfahren des aktiven Controllers |Die folgende Meldung wird angezeigt: „Nach dem Herunterfahren müssen Sie den Netzschalter Ihres Controllers betätigen, um ihn zu aktivieren. Sind Sie sicher, dass Sie diesen Controller herunterfahren möchten?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
 
-#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>So starten Sie einen Controller in Windows PowerShell für StorSimple neu oder fahren ihn herunter
+<a id="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple" class="xliff"></a>
+
+#### So starten Sie einen Controller in Windows PowerShell für StorSimple neu oder fahren ihn herunter
 Führen Sie die folgenden Schritte aus, um einen einzelnen Controller auf dem StorSimple-Gerät über das klassische Azure-Portal herunterzufahren oder neu zu starten.
 
 1. Greifen Sie auf das Gerät zu, indem Sie die serielle Konsole oder eine Telnet-Sitzung von einem Remotecomputer verwenden. Stellen Sie eine Verbindung mit Controller 0 oder Controller 1 her, indem Sie die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)ausführen.
@@ -105,7 +117,9 @@ Führen Sie die folgenden Schritte aus, um einen einzelnen Controller auf dem St
      
        Der Controller, mit dem Sie verbunden sind, wird neu gestartet. Wenn Sie den aktiven Controller neu starten, wird vor dem Neustart ein Failover zum passiven Controller durchgeführt.
 
-## <a name="shut-down-a-storsimple-device"></a>Herunterfahren eines StorSimple-Geräts
+<a id="shut-down-a-storsimple-device" class="xliff"></a>
+
+## Herunterfahren eines StorSimple-Geräts
 In diesem Abschnitt wird erklärt, wie Sie ein aktives oder ausgefallenes StorSimple-Gerät über einen Remotecomputer herunterfahren. Ein Gerät wird ausgeschaltet, nachdem beide Gerätecontroller heruntergefahren wurden. Ein Gerät wird heruntergefahren, wenn das Gerät physisch bewegt oder außer Betrieb genommen wird.
 
 > [!IMPORTANT]
@@ -113,7 +127,9 @@ In diesem Abschnitt wird erklärt, wie Sie ein aktives oder ausgefallenes StorSi
 > 
 > 
 
-#### <a name="to-shut-down-a-storsimple-device"></a>So fahren Sie ein StorSimple-Gerät herunter
+<a id="to-shut-down-a-storsimple-device" class="xliff"></a>
+
+#### So fahren Sie ein StorSimple-Gerät herunter
 1. Verwenden Sie das Verfahren [Neustarten oder Herunterfahren eines Controllers](#restart-or-shut-down-a-single-controller) , um den passiven Controller auf Ihrem Gerät zu identifizieren und herunterzufahren. Sie können diesen Vorgang im klassischen Azure-Portal oder in Windows PowerShell für StorSimple durchführen.
 2. Wiederholen Sie den obigen Schritt, um den aktiven Controller herunterzufahren.
 3. Achten Sie hierbei auf die Rückwandplatine des Geräts. Nachdem die beiden Controller vollständig heruntergefahren wurden, sollten die Status-LEDs für beide Controller rot blinken. Wenn Sie das Gerät nun vollständig ausschalten müssen, bewegen Sie die Schalter an beiden Modulen (Power and Cooling Modules, PCMs) in die Position AUS. Das Gerät sollte hierdurch ausgeschaltet werden.
@@ -136,7 +152,9 @@ In diesem Abschnitt wird erklärt, wie Sie ein aktives oder ausgefallenes StorSi
 
 1. After both the controllers are completely shut down, the status LEDs on both should be blinking red. If you need to turn off the device completely at this time, flip the power switches on both Power and Cooling Modules (PCMs) to the OFF position.-->
 
-## <a name="reset-the-device-to-factory-default-settings"></a>Zurücksetzen des Geräts auf die werkseitigen Standardeinstellungen
+<a id="reset-the-device-to-factory-default-settings" class="xliff"></a>
+
+## Zurücksetzen des Geräts auf die werkseitigen Standardeinstellungen
 > [!IMPORTANT]
 > Wenn Sie Ihr Gerät auf die werkseitigen Standardeinstellungen zurücksetzen möchten, wenden Sie sich an den Microsoft Support. Das folgende Verfahren sollte nur in Verbindung mit dem Microsoft Support verwendet werden.
 > 
@@ -147,7 +165,9 @@ Durch Zurücksetzen eines Geräts werden standardmäßig alle Daten und Einstell
 
 Führen Sie die folgenden Schritte aus, um das Microsoft Azure StorSimple-Gerät auf die werkseitigen Standardeinstellungen zurückzusetzen:
 
-### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>So setzen Sie das Gerät in Windows PowerShell für StorSimple auf die Standardeinstellungen zurück
+<a id="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple" class="xliff"></a>
+
+### So setzen Sie das Gerät in Windows PowerShell für StorSimple auf die Standardeinstellungen zurück
 1. Greifen Sie über die serielle Konsole auf das Gerät zu. Überprüfen Sie die Bannermeldung, um sicherzustellen, dass Sie mit dem aktiven Controller verbunden sind.
 2. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d.h. die **Anmeldung mit Vollzugriff**.
 3. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein, um den gesamten Cluster zurückzusetzen, sodass alle Daten, Metadaten und Controllereinstellungen entfernt werden:
@@ -164,50 +184,49 @@ Führen Sie die folgenden Schritte aus, um das Microsoft Azure StorSimple-Gerät
    > 
    > 
 
-## <a name="questions-and-answers-about-managing-device-controllers"></a>Fragen und Antworten zur Verwaltung von Gerätecontrollern
+<a id="questions-and-answers-about-managing-device-controllers" class="xliff"></a>
+
+## Fragen und Antworten zur Verwaltung von Gerätecontrollern
 In diesem Abschnitt haben wir einige der häufig gestellten Fragen zur Verwaltung von StorSimple-Gerätecontrollern zusammengefasst.
 
-**F.**  Was passiert, wenn beide Controller auf meinem Gerät fehlerfrei und eingeschaltet sind und ich den aktiven Controller neu starte oder herunterfahre?
+**F.** Was passiert, wenn beide Controller auf meinem Gerät fehlerfrei und eingeschaltet sind und ich den aktiven Controller neu starte oder herunterfahre?
 
-**A.**  Wenn beide Controller auf Ihrem Gerät fehlerfrei und eingeschaltet sind, werden Sie zur Bestätigung aufgefordert. Sie können wie folgt vorgehen:
+**A.** Wenn beide Controller auf Ihrem Gerät fehlerfrei und eingeschaltet sind, werden Sie zur Bestätigung aufgefordert. Sie können wie folgt vorgehen:
 
 * **Aktiven Controller neu starten** – Sie werden benachrichtigt, dass der Neustart eines aktiven Controllers bewirkt, dass das Gerät ein Failover auf den passiven Controller durchführt. Der Controller wird neu gestartet.
 * **Aktiven Controller herunterfahren** – Sie werden benachrichtigt, dass das Herunterfahren eines aktiven Controllers zu Ausfallzeiten führt. Außerdem müssen Sie den Ein/Aus-Schalter am Gerät betätigen, um den Controller einzuschalten.
 
-**F.**  Was passiert, wenn der passive Controller auf meinem Gerät nicht verfügbar oder ausgeschaltet ist und ich den aktiven Controller neu starte oder herunterfahre?
+**F.** Was passiert, wenn der passive Controller auf meinem Gerät nicht verfügbar oder ausgeschaltet ist und ich den aktiven Controller neu starte oder herunterfahre?
 
-**A.**  Wenn der passive Controller auf dem Gerät nicht verfügbar oder ausgeschaltet ist, ist der Ablauf in den unten angegebenen Fällen wie folgt:
+**A.** Wenn der passive Controller auf dem Gerät nicht verfügbar oder ausgeschaltet ist, ist der Ablauf in den unten angegebenen Fällen wie folgt:
 
 * **Aktiven Controller neu starten** – Sie werden benachrichtigt, dass das Fortsetzen des Vorgangs zu einer vorübergehenden Störung des Diensts führt, und Sie werden zur Bestätigung aufgefordert.
 * **Aktiven Controller herunterfahren** – Sie werden benachrichtigt, dass das Fortsetzen des Vorgangs zu Ausfallzeiten führt und dass Sie den Ein/Aus-Schalter an einem oder beiden Controllern betätigen müssen, um das Gerät einzuschalten. Sie werden aufgefordert, diesen Schritt zu bestätigen.
 
-**F.**  In welchen Fällen kann das Neustarten oder Herunterfahren des Controllers nicht fortgesetzt werden?
+**F.** In welchen Fällen kann das Neustarten oder Herunterfahren des Controllers nicht fortgesetzt werden?
 
-**A.**  Beim Neustarten oder Herunterfahren eines Controllers kann in den folgenden Fällen ein Fehler auftreten:
+**A.** Beim Neustarten oder Herunterfahren eines Controllers kann in den folgenden Fällen ein Fehler auftreten:
 
 * Es wird ein Update des Geräts durchgeführt.
 * Es wird bereits ein Neustart des Controllers durchgeführt.
 * Das Herunterfahren des Controllers wird bereits durchgeführt.
 
-**F.**  Wie kann ermittelt werden, ob ein Controller neu gestartet oder heruntergefahren wurde?
+**F.** Wie kann ermittelt werden, ob ein Controller neu gestartet oder heruntergefahren wurde?
 
-**A.**  Sie können den Controllerstatus auf der Seite „Wartung“ überprüfen. Mit dem Controllerstatus wird angegeben, ob ein Controller neu gestartet oder heruntergefahren wurde. Außerdem enthält die Seite „Warnungen“ eine Warnung vom Typ „Information“, wenn der Controller neu gestartet oder heruntergefahren wurde. Die Vorgänge des Neustartens und Herunterfahrens von Controllern werden zudem in den Vorgangsprotokollen aufgezeichnet. Weitere Informationen zu Vorgangsprotokollen finden Sie unter [Anzeigen der Vorgangsprotokolle](storsimple-service-dashboard.md#view-the-operations-logs).
+**A.** Sie können den Controllerstatus auf der Seite „Wartung“ überprüfen. Mit dem Controllerstatus wird angegeben, ob ein Controller neu gestartet oder heruntergefahren wurde. Außerdem enthält die Seite „Warnungen“ eine Warnung vom Typ „Information“, wenn der Controller neu gestartet oder heruntergefahren wurde. Die Vorgänge des Neustartens und Herunterfahrens von Controllern werden zudem in den Vorgangsprotokollen aufgezeichnet. Weitere Informationen zu Vorgangsprotokollen finden Sie unter [Anzeigen der Vorgangsprotokolle](storsimple-service-dashboard.md#view-the-operations-logs).
 
-**F.**  Wirkt sich ein Failover des Controllers auf die Ein- und Ausgabe aus?
+**F.** Wirkt sich ein Failover des Controllers auf die Ein- und Ausgabe aus?
 
-**A.**  Die TCP-Verbindungen zwischen Initiatoren und aktivem Controller werden bei einem Failover des Controllers zurückgesetzt, aber wiederhergestellt, wenn der passive Controller den Betrieb übernimmt. Im Verlauf dieses Vorgangs kann es zu einer vorübergehenden Pause (weniger als 30 Sekunden) bei der E/A-Aktivität zwischen Initiatoren und dem Gerät kommen.
+**A.** Die TCP-Verbindungen zwischen Initiatoren und aktivem Controller werden bei einem Failover des Controllers zurückgesetzt, aber wiederhergestellt, wenn der passive Controller den Betrieb übernimmt. Im Verlauf dieses Vorgangs kann es zu einer vorübergehenden Pause (weniger als 30 Sekunden) bei der E/A-Aktivität zwischen Initiatoren und dem Gerät kommen.
 
-**F.**  Wie kann ich den Controller wieder in Betrieb nehmen, nachdem er heruntergefahren und entfernt wurde?
+**F.** Wie kann ich den Controller wieder in Betrieb nehmen, nachdem er heruntergefahren und entfernt wurde?
 
 **A.** Wenn Sie einen Controller wieder in Betrieb nehmen möchten, müssen Sie ihn wie unter [Ersetzen des Controllermoduls auf dem StorSimple-Gerät](storsimple-controller-replacement.md).
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 * [Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md), falls ein Problem mit Ihren StorSimple-Gerätecontrollern auftritt, das Sie mit den Verfahren in diesem Tutorial nicht beheben können.
 * Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
