@@ -22,8 +22,8 @@ ms.lasthandoff: 05/03/2017
 
 
 ---
-# <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
-Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
+# <a name="azure-germany-developer-guide"></a>Azure Deutschland-Entwicklerhandbuch
+-Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit separaten Regionen von Azure zu interagieren und zu arbeiten.
 
 ## <a name="overview"></a>Übersicht
 Microsoft bietet verschiedene Tools, die Entwicklern beim Erstellen und Bereitstellen von Cloudanwendungen für die globalen Microsoft Azure-Dienste („globale Azure-Umgebung“) und Microsoft Azure Deutschland-Dienste helfen. Azure Deutschland berücksichtigt die Sicherheits- und Complianceanforderungen der Kunden, um den deutschen Datenschutzbestimmungen gerecht zu werden. Azure Deutschland ist physisch wie auch netzwerkseitig von Bereitstellungen in der globalen Azure-Umgebung isoliert und stellt einen Datentreuhänder zur Verfügung, der nach deutschem Recht handelt.
