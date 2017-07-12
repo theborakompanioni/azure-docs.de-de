@@ -15,17 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/05/2017
+ms.date: 06/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e75bc8b74f965a0d4509b6967f1cdc7fa32eec56
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 93ea31b4469f21e92337a768668ae6d93bbc6ba6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="use-the-beeline-client-with-apache-hive"></a>Verwenden des Beeline-Clients mit Apache Hive
+<a id="use-the-beeline-client-with-apache-hive" class="xliff"></a>
+
+# Verwenden des Beeline-Clients mit Apache Hive
 
 Erfahren Sie, wie Sie [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) verwenden, um Hive-Abfragen unter HDInsight auszuführen.
 
@@ -33,7 +35,7 @@ Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enth
 
 | Ausführungsort von Beeline | Parameter |
 | --- | --- | --- |
-| Eine SSH-Verbindung mit einem Haupt- oder Edgeknoten | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin` |
+| Eine SSH-Verbindung mit einem Haupt- oder Edgeknoten | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'` |
 | Außerhalb des Clusters | `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password` |
 
 > [!NOTE]
@@ -56,22 +58,20 @@ Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enth
 
 ## <a id="beeline"></a>Verwenden von Beeline
 
-1. Wenn Sie Beeline starten, müssen Sie eine Verbindungszeichenfolge für HiveServer2 in Ihrem HDInsight-Cluster bereitstellen. Daneben müssen Sie den Kontonamen für die Anmeldung beim Cluster angeben (in der Regel `admin`). Wenn Sie den Befehl von außerhalb des Clusters ausführen, müssen Sie zudem das Kennwort für die Anmeldung beim Cluster bereitstellen. In der folgenden Tabelle finden Sie das Format für Verbindungszeichenfolgen und die Parameter, die Sie verwenden müssen:
+1. Wenn Sie Beeline starten, müssen Sie eine Verbindungszeichenfolge für HiveServer2 in Ihrem HDInsight-Cluster bereitstellen. Wenn Sie den Befehl von außerhalb des Clusters ausführen möchten, müssen Sie zudem den Kontonamen (standardmäßig `admin`) und das Kennwort für die Anmeldung beim Cluster angeben. In der folgenden Tabelle finden Sie das Format für Verbindungszeichenfolgen und die Parameter, die Sie verwenden müssen:
 
     | Ausführungsort von Beeline | Parameter |
     | --- | --- | --- |
-    | Eine SSH-Verbindung mit einem Haupt- oder Edgeknoten | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin` |
+    | Eine SSH-Verbindung mit einem Haupt- oder Edgeknoten | `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'` |
     | Außerhalb des Clusters | `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password` |
 
     Der folgende Befehl kann beispielsweise verwendet werden, um Beeline aus einer SSH-Sitzung für den Cluster zu starten:
 
     ```bash
-    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin
+    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-    Mit diesem Befehl wird der Beeline-Client gestartet und eine Verbindung mit HiveServer2 auf dem Hauptknoten des Clusters hergestellt. Mit dem `-n`-Parameter wird das Anmeldekonto für den Cluster bereitgestellt. Der Standardanmeldename ist `admin`. Wenn Sie während der Clustererstellung einen anderen Namen verwendet haben, verwenden sie diesen anstelle von `admin`.
-
-    Nach Abschluss des Befehls gelangen Sie zur Eingabeaufforderung `jdbc:hive2://headnodehost:10001/>`.
+    Mit diesem Befehl wird der Beeline-Client gestartet und eine Verbindung mit HiveServer2 auf dem Hauptknoten des Clusters hergestellt. Nach Abschluss des Befehls gelangen Sie zur Eingabeaufforderung `jdbc:hive2://headnodehost:10001/>`.
 
 2. Beeline-Befehle beginnen mit dem Zeichen `!`, z.B. `!help` zum Anzeigen der Hilfe. Jedoch kann `!` bei einigen Befehlen ausgelassen werden. `help` funktioniert beispielsweise auch.
 
@@ -193,10 +193,10 @@ Verwenden Sie die folgenden Schritte, um eine Datei zu erstellen und sie dann mi
 
 3. Verwenden Sie **STRG**+**_X**, um die Datei zu speichern. Geben Sie dann **Y** ein, und drücken Sie die EINGABETASTE****.
 
-4. Verwenden Sie Folgendes, um die Datei mit Beeline auszuführen: Ersetzen Sie **HOSTNAME** durch den Namen, den Sie bereits für den Hauptknoten abgerufen haben, und **PASSWORD** durch das Kennwort des Administratorkontos:
+4. Verwenden Sie Folgendes, um die Datei mit Beeline auszuführen:
 
     ```bash
-    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -n admin -i query.hql
+    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
     ```
 
     > [!NOTE]
@@ -232,6 +232,15 @@ Wenn Sie Beeline lokal installiert haben oder über ein Docker-Image wie z.B. [s
 Ersetzen Sie `clustername` in der Verbindungszeichenfolge durch den Namen des HDInsight-Clusters.
 
 Ersetzen Sie `admin` durch Ihren Clusteranmeldenamen und `password` durch das zugehörige Kennwort.
+
+## <a id="sparksql"></a>Verwenden von Beeline mit Spark
+
+Spark stellt eine eigene Implementierung von HiveServer2 bereit, die häufig als Spark Thrift-Server bezeichnet wird. Bei diesem Dienst wird Spark SQL anstelle von Hive zum Auflösen von Abfragen verwendet und ermöglicht je nach Abfrage ggf. eine bessere Leistung.
+
+Verwenden Sie Port `10002` anstelle von `10001`, um eine Verbindung mit dem Spark Thrift-Server eines Spark für HDInsight-Clusters herzustellen. Beispiel: `beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`.
+
+> [!IMPORTANT]
+> Der Spark Thrift-Server ist nicht direkt über das Internet zugänglich. Sie können nur aus einer SSH-Sitzung oder in demselben Azure Virtual Network des HDInsight-Clusters eine Verbindung damit herstellen.
 
 ## <a id="summary"></a><a id="nextsteps"></a>Nächste Schritte
 

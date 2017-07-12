@@ -14,14 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="configuring-an-app-service-environment"></a>Konfigurieren einer App Service-Umgebung
-## <a name="overview"></a>Übersicht
+<a id="configuring-an-app-service-environment" class="xliff"></a>
+
+# Konfigurieren einer App Service-Umgebung
+<a id="overview" class="xliff"></a>
+
+## Übersicht
 Eine Azure App Service-Umgebung (ASE) besteht aus mehreren Hauptkomponenten:
 
 * Computeressourcen, die unter dem gehosteten Dienst der App Service-Umgebung ausgeführt werden
@@ -30,7 +36,9 @@ Eine Azure App Service-Umgebung (ASE) besteht aus mehreren Hauptkomponenten:
 * Einem Azure Virtual Network (VNet) vom Typ „Klassisch“ (V1) oder „Resource Manager“ (V2) 
 * Einem Subnetz mit darin ausgeführtem gehosteten Dienst der App Service-Umgebung
 
-### <a name="compute-resources"></a>Computeressourcen
+<a id="compute-resources" class="xliff"></a>
+
+### Computeressourcen
 Sie verwenden die Computeressourcen für Ihre vier Ressourcenpools.  Jede App Service-Umgebung verfügt über eine Gruppe von Front-Ends und drei mögliche Workerpools. Sie müssen nicht alle drei Workerpools verwenden und können auch nur einen oder zwei nutzen.
 
 Die Hosts in den Ressourcenpools (Front-Ends und Worker) sind für die Mandanten nicht direkt zugänglich. Sie können nicht das Remotedesktopprotokoll (RDP) verwenden, um eine Verbindung damit herzustellen, die Bereitstellung zu ändern oder als Administrator dafür zu fungieren.
@@ -66,13 +74,19 @@ Wenn für Ihre Apps mehr Computeressourcen erforderlich sind, sind die vorstehen
 
 Wenn Sie für Metriken eines Computeressourcenpools Regeln für eine automatische Skalierung festlegen möchten, sollten Sie den erforderlichen Zeitaufwand für die Bereitstellung beachten. Weitere Einzelheiten zur automatischen Skalierung von App Service-Umgebungen finden Sie unter [Automatische Skalierung und App Service-Umgebungen][ASEAutoscale].
 
-### <a name="storage"></a>Speicher
+<a id="storage" class="xliff"></a>
+
+### Speicher
 Jede App Service-Umgebung ist mit 500 GB Speicherplatz konfiguriert. Dieser Speicherplatz wird von allen Apps in der App Service-Umgebung verwendet. Er ist Teil der App Service-Umgebung, und derzeit ist eine Umstellung auf Ihren Speicherplatz nicht möglich. Wenn Sie Anpassungen am Routing oder an der Sicherheit Ihres virtuellen Netzwerks vornehmen, muss sichergestellt sein, dass weiterhin auf Azure Storage zugegriffen werden kann. Andernfalls ist die App Service-Umgebung nicht funktionsfähig.
 
-### <a name="database"></a>Datenbank
+<a id="database" class="xliff"></a>
+
+### Datenbank
 Die Datenbank enthält Informationen, die die Umgebung definieren, und außerdem Details zu den darin ausgeführten Apps. Dies ist ein Teil des Azure-Abonnements. Es besteht keine Möglichkeit, diesen Teil direkt zu ändern. Wenn Sie Anpassungen am Routing oder an der Sicherheit Ihres virtuellen Netzwerks vornehmen, muss sichergestellt sein, dass weiterhin auf SQL Azure zugegriffen werden kann. Andernfalls ist die App Service-Umgebung nicht funktionsfähig.
 
-### <a name="network"></a>Netzwerk
+<a id="network" class="xliff"></a>
+
+### Netzwerk
 Beim VNet, das mit Ihrer App Service-Umgebung verwendet wird, kann es sich um ein Netzwerk handeln, das Sie beim Erstellen der App Service-Umgebung eingerichtet haben, oder um ein bereits vorab erstelltes Netzwerk. Wenn Sie das Subnetz während der Erstellung der App Service-Umgebung erstellen, wird erzwungen, dass sich die App Service-Umgebung in derselben Ressourcengruppe wie das virtuelle Netzwerk befindet. Wenn sich die von Ihrer App Service-Umgebung verwendete Ressourcengruppe von der Ihres VNET unterscheiden soll, müssen Sie Ihre App Service-Umgebung mithilfe einer Resource Manager-Vorlage erstellen.
 
 Für das virtuelle Netzwerk, das für eine App Service-Umgebung verwendet wird, gelten einige Einschränkungen:
@@ -92,14 +106,18 @@ Zum Beispiel können Sie mithilfe der VNET-Integration ein virtuelles Netzwerk i
 
 Falls Ihr virtuelles Netzwerk mit einem ExpressRoute-VPN konfiguriert ist, müssen Sie mit einigen Routinganforderungen einer App Service-Umgebung vertraut sein. Es gibt einige Konfigurationen für benutzerdefiniertes Routing (UDR, User-Defined Routing), die nicht mit einer App Service-Umgebung kompatibel sind. Weitere Informationen zur Ausführung einer ASE in einem virtuellen Netzwerk mit ExpressRoute finden Sie unter [Details zur Netzwerkkonfiguration für App Service-Umgebungen mit ExpressRoute][ExpressRoute].
 
-#### <a name="securing-inbound-traffic"></a>Sichern des eingehenden Datenverkehrs
+<a id="securing-inbound-traffic" class="xliff"></a>
+
+#### Sichern des eingehenden Datenverkehrs
 Es gibt zwei Hauptmethoden, um eingehenden Datenverkehr für Ihre ASE zu steuern.  Sie können Netzwerksicherheitsgruppen (NSGs) verwenden, um zu steuern, welche IP-Adressen auf Ihre ASE zugreifen können. Dies ist unter [Steuern des eingehenden Datenverkehrs in einer App Service-Umgebung](app-service-app-service-environment-control-inbound-traffic.md) beschrieben. Außerdem können Sie die ASE mit einem internen Load Balancer (ILB) konfigurieren.  Sie können diese Funktionen auch zusammen nutzen, wenn Sie den Zugriff auf die ILB-ASE mit NSGs einschränken möchten.
 
 Wenn Sie eine ASE erstellen, wird im virtuellen Netzwerk eine VIP erstellt.  Es gibt zwei VIP-Typen: extern und intern.  Wenn Sie eine ASE mit einer externen VIP erstellen, kann auf Ihre Apps in der ASE mit einer über das Internet routbaren IP-Adresse zugegriffen werden. Bei Auswahl der internen Option wird die ASE mit einem ILB konfiguriert und ist nicht direkt über das Internet zugänglich.  Für eine ILB-ASE ist trotzdem eine externe VIP erforderlich, aber sie wird nur für den Zugriff zum Durchführen der Azure-Verwaltung und -Wartung verwendet.  
 
 Während der ILB-ASE-Erstellung geben Sie die von der ILB-ASE verwendete Unterdomäne an und müssen Ihr eigenes DNS für die angegebene Unterdomäne verwalten.  Da Sie den Namen der Unterdomäne festlegen, müssen Sie auch das für den HTTPS-Zugriff verwendete Zertifikat verwalten.  Nach der ASE-Erstellung werden Sie aufgefordert, das Zertifikat anzugeben.  Weitere Informationen zur Erstellung und Verwendung einer ILB-ASE finden Sie unter [Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung][ILBASE]. 
 
-## <a name="portal"></a>Portal
+<a id="portal" class="xliff"></a>
+
+## Portal
 Sie können die App Service-Umgebung mit der Benutzeroberfläche im Azure-Portal verwalten und überwachen. Wenn für Sie eine App Service-Umgebung vorhanden ist, sehen Sie normalerweise in der Randleiste das App Service-Symbol. Im Azure-Portal werden App Service-Umgebungen mit folgendem Symbol dargestellt:
 
 ![Symbol „App Service-Umgebung“][1]
@@ -110,7 +128,9 @@ Um die Benutzeroberfläche zu öffnen, in der Ihre App Service-Umgebungen aufgel
 
 Das erste Blatt zeigt einige Eigenschaften der App Service-Umgebung zusammen mit einem Metrikdiagramm pro Ressourcenpool. Einige Eigenschaften im Block **Zusammenfassung** sind auch Links, mit denen Sie das entsprechende Blatt öffnen können. Sie können z.B. auf den Namen des **virtuellen Netzwerks** klicken und dadurch die Benutzeroberfläche für das virtuelle Netzwerk öffnen, in dem Ihre App Service-Umgebung ausgeführt wird. Mit **App Service-Pläne** und **Apps** öffnen Sie jeweils Blätter mit Auflistungen dieser in Ihrer App Service-Umgebung enthaltenen Elemente.  
 
-### <a name="monitoring"></a>Überwachung
+<a id="monitoring" class="xliff"></a>
+
+### Überwachung
 Mit den Diagrammen können Sie eine Reihe von Leistungsmetriken im jeweiligen Ressourcenpool verfolgen. Für den Front-End-Pool können Sie die durchschnittliche CPU- und Speicherauslastung überwachen. Für Workerpools können Sie die verwendete Menge und die verfügbare Menge überwachen.
 
 Die Worker in einem Workerpool können von mehreren App Service-Plänen genutzt werden. Die Workload wird nicht auf dieselbe Weise verteilt wie bei Front-End-Servern. Daher liefern die CPU- und die Arbeitsspeicherauslastung keine vergleichbaren nützlichen Informationen. Es ist wichtiger zu verfolgen, wie viele Worker verwendet wurden und wie viele verfügbar sind. Dies gilt besonders, wenn Sie das System für die Nutzung durch andere Personen verwalten.  
@@ -123,7 +143,9 @@ Bei den gerade diskutierten Metriken handelt es sich um Metriken für App Servic
 
 In einer ASE sind alle App Service-Pläne dedizierte App Service-Pläne. Die einzigen Apps, die auf den zugeordneten Hosts des App Service-Plans ausgeführt werden, sind also die Apps in diesem App Service-Plan. Um die Details zu Ihrem App Service-Plan anzuzeigen, rufen Sie den App Service-Plan aus einer beliebigen Liste in der Benutzeroberfläche der App Service-Umgebung heraus auf oder nutzen die Funktion zum Durchsuchen von App Service-Plänen **** (Auflistung aller Pläne).   
 
-### <a name="settings"></a>Einstellungen
+<a id="settings" class="xliff"></a>
+
+### Einstellungen
 Das Blatt „App Service-Umgebung“ enthält einen Abschnitt **Einstellungen** , auf dem Optionen zu verschiedenen wichtigen Funktionen festgelegt werden können:
 
 **Einstellungen** > **Eigenschaften**: Das Blatt **Einstellungen** wird automatisch angezeigt, wenn Sie das Blatt „App Service-Umgebung“ öffnen. Im oberen Bereich finden Sie **Eigenschaften**. Einige Elemente sind identisch mit dem, was Sie unter **Zusammenfassung** sehen. Sehr nützlich sind jedoch die Optionen **Virtuelle IP-Adresse** und **Ausgehende IP-Adressen**.
@@ -138,7 +160,9 @@ Das Grundlagenblatt für jeden Ressourcenpool enthält ein Diagramm mit den Metr
 
 ![Benutzeroberfläche mit Einstellungen für Workerpool][5]
 
-### <a name="portal-scale-capabilities"></a>Skalierungsfunktionen im Portal
+<a id="portal-scale-capabilities" class="xliff"></a>
+
+### Skalierungsfunktionen im Portal
 Es gibt drei Skalierungsvorgänge:
 
 * Ändern der Anzahl von IP-Adressen in der App Service-Umgebung, die für die IP-SSL-Nutzung zur Verfügung stehen
@@ -155,11 +179,13 @@ Um den Skalierungsvorgang auf dem Blatt „App Service-Umgebung“ zu verwenden,
 
 ![Benutzeroberfläche „Skalieren“][6]
 
-Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** / ** Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Horizontal hochskalieren** bzw. **Einstellungen** > **Zentral hochskalieren**. Auf dem Blatt **Horizontal hochskalieren** können Sie die Anzahl von Instanzen steuern. **Zentral hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
+Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu **Einstellungen** > **Front-End-Pool** /  **Workerpools**. Öffnen Sie anschließend den Pool, den Sie ändern möchten. Wählen Sie **Einstellungen** > **Horizontal hochskalieren** bzw. **Einstellungen** > **Zentral hochskalieren**. Auf dem Blatt **Horizontal hochskalieren** können Sie die Anzahl von Instanzen steuern. **Zentral hochskalieren** ermöglicht die Festlegung der Ressourcengröße.  
 
 ![Benutzeroberfläche „Skalierungseinstellungen“][7]
 
-## <a name="fault-tolerance-considerations"></a>Aspekte der Fehlertoleranz
+<a id="fault-tolerance-considerations" class="xliff"></a>
+
+## Aspekte der Fehlertoleranz
 Sie können eine App Service-Umgebung für die Verwendung von bis zu 55 Computeressourcen konfigurieren. Von diesen 55 Computeressourcen können nur 50 zum Hosten von Workloads eingesetzt werden. Dies hat zwei Gründe. Es sind mindestens zwei Front-End-Computeressourcen erforderlich.  So bleiben bis zu 53 zur Unterstützung der Workerpoolzuweisung übrig. Um Fehlertoleranz bereitzustellen, muss nach den folgenden Regeln eine zusätzliche Computeressource zugewiesen werden:
 
 * Jeder Workerpool benötigt mindestens eine weitere Computeressource, der keine Workload zugewiesen werden kann.
@@ -180,12 +206,16 @@ Es sind mindestens zwei Front-End-Server und zwei Worker erforderlich.  Die obig
 
 Der Aspekt der Fehlertoleranz ist wichtig, und Sie müssen ihn im Auge behalten, wenn Sie bei der Skalierung bestimmte Schwellenwerte überschreiten. Wenn Sie ausgehend von 20 Instanzen mehr Kapazität hinzufügen möchten, sollten Sie 22 oder mehr Instanzen wählen, weil bei 21 die Kapazität nicht steigt. Dasselbe trifft zu, wenn Sie 40 Instanzen überschreiten. Die nächste Anzahl, bei der die Kapazität steigt, ist 42.  
 
-## <a name="deleting-an-app-service-environment"></a>Löschen einer App Service-Umgebung
+<a id="deleting-an-app-service-environment" class="xliff"></a>
+
+## Löschen einer App Service-Umgebung
 Wenn Sie eine App Service-Umgebung löschen möchten, verwenden Sie einfach die Aktion **Löschen** im oberen Bereich des Blatts „App Service-Umgebung“. Wenn Sie dies tun, werden Sie aufgefordert, den Namen Ihrer App Service-Umgebung einzugeben. Auf diese Weise bestätigen Sie, dass Sie diesen Schritt wirklich ausführen möchten. Beachten Sie Folgendes: Beim Löschen einer App Service-Umgebung wird auch ihr gesamter Inhalt gelöscht.  
 
 ![Benutzeroberfläche „App Service-Umgebung löschen“][9]  
 
-## <a name="getting-started"></a>Erste Schritte
+<a id="getting-started" class="xliff"></a>
+
+## Erste Schritte
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer App Service-Umgebung](app-service-web-how-to-create-an-app-service-environment.md).
 
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service](../app-service/app-service-value-prop-what-is.md).
@@ -217,9 +247,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
