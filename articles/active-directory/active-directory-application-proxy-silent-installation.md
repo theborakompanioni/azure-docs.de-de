@@ -20,9 +20,10 @@ ms.openlocfilehash: f4d72d4d11ee64e3431879f6ad1b5d8d091a0c87
 ms.contentlocale: de-de
 ms.lasthandoff: 05/15/2017
 
-
 ---
-# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
+<a id="silently-install-the-azure-ad-application-proxy-connector" class="xliff"></a>
+
+# Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
 Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation und Registrierung des Azure AD-Anwendungsproxyconnectors ermöglicht.
 
 Diese Funktion ist in folgenden Fällen nützlich:
@@ -34,7 +35,9 @@ Diese Funktion ist in folgenden Fällen nützlich:
 
 Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Für das Funktionieren des Anwendungsproxyconnectors muss dieser im Azure AD-Verzeichnis durch einen globalen Administrator mit Kennwort registriert werden. Diese Informationen werden normalerweise während der Installation des Connectors in einem Popupdialogfeld eingegeben. Sie können jedoch mit Windows PowerShell ein Anmeldeinformationsobjekt erstellen, um die Registrierungsinformationen einzugeben, oder auch ein eigenes Token erstellen und zur Eingabe der Registrierungsinformationen verwenden.
 
-## <a name="install-the-connector"></a>Installieren des Connectors
+<a id="install-the-connector" class="xliff"></a>
+
+## Installieren des Connectors
 Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registrieren:
 
 1. Öffnen Sie eine Eingabeaufforderung.
@@ -42,13 +45,17 @@ Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registriere
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>Registrieren des Connectors bei Azure AD
+<a id="register-the-connector-with-azure-ad" class="xliff"></a>
+
+## Registrieren des Connectors bei Azure AD
 Es gibt zwei Methoden zum Registrieren des Connectors:
 
 * Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekt
 * Registrieren des Connectors mithilfe eines offline erstellten Tokens
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekt
+<a id="register-the-connector-using-a-windows-powershell-credential-object" class="xliff"></a>
+
+### Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekt
 1. Erstellen Sie das Windows PowerShell-Anmeldeinformationsobjekt, indem Sie den folgenden Befehl ausführen. Ersetzen Sie *\<Benutzername\>* und *\<Kennwort\>* durch den Benutzernamen und das Kennwort für Ihr Verzeichnis:
    
         $User = "<username>"
@@ -59,7 +66,9 @@ Es gibt zwei Methoden zum Registrieren des Connectors:
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>Registrieren des Connectors mithilfe eines offline erstellten Tokens
+<a id="register-the-connector-using-a-token-created-offline" class="xliff"></a>
+
+### Registrieren des Connectors mithilfe eines offline erstellten Tokens
 1. Erstellen Sie mithilfe der AuthenticationContext-Klasse ein Offlinetoken, indem Sie die Werte in dem Codeausschnitt verwenden:
 
         using System;
@@ -72,7 +81,7 @@ Es gibt zwei Methoden zum Registrieren des Connectors:
         /// <summary>
         /// The AAD authentication endpoint uri
         /// </summary>
-        static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.windows.net/common/oauth2/token?api-version=1.0");
+        static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.microsoftonline.com/common/oauth2/token?api-version=1.0");
 
         /// <summary>
         /// The application ID of the connector in AAD
@@ -124,7 +133,9 @@ Es gibt zwei Methoden zum Registrieren des Connectors:
 
    `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
 
-## <a name="next-steps"></a>Nächste Schritte 
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte 
 * [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
 * [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 * [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)

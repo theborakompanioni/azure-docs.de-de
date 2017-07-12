@@ -3,7 +3,7 @@ title: "Navigieren zu und Auswählen von Windows-VM-Images | Microsoft Docs"
 description: "Erfahren Sie, wie Sie den Herausgeber, das Angebot und die SKU für Images ermitteln, wenn Sie mit dem Resource Manager-Bereitstellungsmodell einen virtuellen Windows-Computer erstellen."
 services: virtual-machines-windows
 documentationcenter: 
-author: squillace
+author: dlepow
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,18 +14,22 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2016
-ms.author: rasquill
-translationtype: Human Translation
+ms.author: danlep
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 28bb214570fcca94c5ceb6071c4851b81ec00c8d
+ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
 
-
 ---
-# <a name="navigate-and-select-windows-virtual-machine-images-in-azure-with-powershell"></a>Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell
+<a id="navigate-and-select-windows-virtual-machine-images-in-azure-with-powershell" class="xliff"></a>
+
+# Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell
 In diesem Thema wird beschrieben, wie Sie Herausgeber von VM-Images sowie entsprechende Angebote, SKUs und Versionen für jeden Ort finden, an dem Sie Bereitstellungen ins Auge fassen. Beispielsweise sind einige der häufig verwendeten Windows-VM-Images:
 
-## <a name="table-of-commonly-used-windows-images"></a>Tabelle mit häufig verwendeten Windows-Images
+<a id="table-of-commonly-used-windows-images" class="xliff"></a>
+
+## Tabelle mit häufig verwendeten Windows-Images
 | PublisherName | Angebot | Sku |
 |:--- |:--- |:--- |:--- |
 | MicrosoftDynamicsNAV |DynamicsNAV |2015 |
@@ -39,7 +43,9 @@ In diesem Thema wird beschrieben, wie Sie Herausgeber von VM-Images sowie entspr
 | MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |
 | MicrosoftWindowsServerHPCPack |WindowsServerHPCPack |2012R2 |
 
-## <a name="find-azure-images-with-powershell"></a>Suchen nach Azure-Images mit PowerShell
+<a id="find-azure-images-with-powershell" class="xliff"></a>
+
+## Suchen nach Azure-Images mit PowerShell
 > [!NOTE]
 > Installieren und konfigurieren Sie die [neueste Version von Azure PowerShell](/powershell/azure/overview). Wenn Sie Azure PowerShell-Module vor Version 1.0 nutzen, verwenden Sie die folgenden Befehle, zunächst müssen Sie jedoch `Switch-AzureMode AzureResourceManager`ausführen. 
 > 
@@ -132,6 +138,8 @@ Windows-Server-Technical-Preview
 
 Wenn Sie den gewählten SKU-Namen aus dieser Liste kopieren, besitzen Sie alle Informationen für das PowerShell-Cmdlet `Set-AzureRMVMSourceImage` oder eine Ressourcengruppenvorlage.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Jetzt können Sie genau das Datenträgerabbild auswählen, das Sie verwenden möchten. Um anhand der soeben gefundenen Imageinformationen schnell einen virtuellen Computer zu erstellen oder eine Vorlage mit diesen Imageinformationen zu verwenden, lesen Sie die Informationen unter [Erstellen einer Windows-VM mit Resource Manager und PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

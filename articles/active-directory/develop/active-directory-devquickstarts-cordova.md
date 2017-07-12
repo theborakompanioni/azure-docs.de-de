@@ -21,9 +21,10 @@ ms.openlocfilehash: 4a80252f139d653ff8788b3c1a6a075448cb48e7
 ms.contentlocale: de-de
 ms.lasthandoff: 02/14/2017
 
-
 ---
-# <a name="integrate-azure-ad-with-an-apache-cordova-app"></a>Integrieren von Azure AD in eine Apache Cordova-App
+<a id="integrate-azure-ad-with-an-apache-cordova-app" class="xliff"></a>
+
+# Integrieren von Azure AD in eine Apache Cordova-App
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -45,7 +46,9 @@ Für die Umsetzung dieser Verbesserungen sind folgende Schritte erforderlich:
 3. Hinzufügen von Code, um das Token zum Abfragen der Graph-API und zum Anzeigen von Ergebnissen zu verwenden
 4. Erstellen des Cordova-Bereitstellungsprojekts mit allen abzudeckenden Plattformen, Hinzufügen des Cordova ADAL-Plug-Ins und Testen der Lösung in Emulatoren
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Einen Azure AD-Mandanten, unter dem Sie über ein Konto mit Rechten für die App-Entwicklung verfügen
@@ -83,7 +86,9 @@ Für jede Zielplattform gelten unterschiedliche Voraussetzungen:
 
   Das Android SDK stellt keine standardmäßige Emulatorinstanz bereit. Erstellen Sie eine Instanz, indem Sie `android avd` über das Terminal ausführen und dann **Erstellen** auswählen, wenn Sie die Android-App in einem Emulator ausführen möchten. Wir empfehlen, mindestens die API-Ebene 19 zu verwenden. Weitere Informationen zum Android-Emulator und zu den Optionen für die Erstellung finden Sie auf der Android-Website unter [AVD Manager](http://developer.android.com/tools/help/avd-manager.html).
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>Schritt 1: Registrieren einer Anwendung in Azure AD
+<a id="step-1-register-an-application-with-azure-ad" class="xliff"></a>
+
+## Schritt 1: Registrieren einer Anwendung in Azure AD
 Dieser Schritt ist optional. In diesem Tutorial werden vorab bereitgestellte Werte verwendet, mit denen Sie das Beispiel in Aktion sehen können, ohne selbst etwas in Ihrem eigenen Mandanten bereitstellen zu müssen. Es empfiehlt sich jedoch, diesen Schritt auszuführen und sich mit dem Prozess vertraut zu machen, da sie ihn bei der Erstellung eigener Anwendungen benötigen.
 
 Azure AD stellt Token nur für bekannte Anwendungen aus. Bevor Sie Azure AD über Ihre App nutzen können, müssen Sie dafür einen Eintrag in Ihrem Mandanten erstellen. Gehen Sie wie folgt vor, um in Ihrem Mandanten eine neue Anwendung zu registrieren:
@@ -103,12 +108,16 @@ Um `DirSearchClient Sample` ausführen zu können, müssen Sie der neu erstellte
 1. Wählen Sie auf der Seite **Einstellungen** zunächst **Erforderliche Berechtigungen** und dann **Hinzufügen** aus.  
 2. Wählen Sie für die Azure Active Directory-Anwendung als API die Option **Microsoft Graph** aus, und fügen Sie unter **Delegierte Berechtigungen** die Berechtigung **Als angemeldeter Benutzer auf das Verzeichnis zugreifen** hinzu.  Mit dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
 
-## <a name="step-2-clone-the-sample-app-repository"></a>Schritt 2: Klonen des Beispiel-App-Repositorys
+<a id="step-2-clone-the-sample-app-repository" class="xliff"></a>
+
+## Schritt 2: Klonen des Beispiel-App-Repositorys
 Geben Sie in der Shell oder über die Befehlszeile den folgenden Befehl ein:
 
     git clone -b skeleton https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova.git
 
-## <a name="step-3-create-the-cordova-app"></a>Schritt 3: Erstellen der Cordova-App
+<a id="step-3-create-the-cordova-app" class="xliff"></a>
+
+## Schritt 3: Erstellen der Cordova-App
 Cordova-Anwendungen können auf unterschiedliche Weise erstellt werden. In diesem Tutorial verwenden wir die Cordova-Befehlszeilenschnittstelle (Command-Line Interface, CLI).
 
 1. Geben Sie in der Shell oder über die Befehlszeile den folgenden Befehl ein:
@@ -140,13 +149,15 @@ Cordova-Anwendungen können auf unterschiedliche Weise erstellt werden. In diese
 
         cordova plugin add cordova-plugin-ms-adal
 
-## <a name="step-4-add-code-to-authenticate-users-and-obtain-tokens-from-azure-ad"></a>Schritt 4: Hinzufügen von Code zum Authentifizieren von Benutzern und zum Abrufen von Token aus Azure AD
+<a id="step-4-add-code-to-authenticate-users-and-obtain-tokens-from-azure-ad" class="xliff"></a>
+
+## Schritt 4: Hinzufügen von Code zum Authentifizieren von Benutzern und zum Abrufen von Token aus Azure AD
 Die Anwendung, die Sie in diesem Tutorial entwickeln, bietet ein einfaches Feature zum Durchsuchen des Verzeichnisses. Der Benutzer kann den Alias eines beliebigen Benutzers im Verzeichnis eingeben und einige grundlegende Attribute anzeigen. Das Startprojekt enthält die Definition der grundlegenden Benutzeroberfläche der App (in „www/index.html“) und das Gerüst, das aus einfachen App-Ereigniszyklen, Benutzeroberflächenbindungen und der Anzeigelogik für Ergebnisse (in „www/js/index.js“) besteht. Nur die Logik zum Implementieren von Identitätsaufgaben muss noch hinzugefügt werden.
 
 Als Erstes müssen Sie in Ihrem Code die Protokollwerte einführen, die Azure AD verwendet, um Ihre App und die Zielressourcen zu identifizieren. Diese Werte werden später zum Erstellen der Tokenanforderungen verwendet. Fügen Sie den folgenden Codeausschnitt am Anfang der Datei „index.js“ ein:
 
 ```javascript
-var authority = "https://login.windows.net/common",
+var authority = "https://login.microsoftonline.com/common",
     redirectUri = "http://MyDirectorySearcherApp",
     resourceUri = "https://graph.windows.net",
     clientId = "a5d92493-ae5a-4a9f-bcbf-9f1d354067d3",
@@ -238,14 +249,18 @@ Nachdem wir nun über das Token verfügen, können wir die Graph-API aufrufen un
 ```
 Über die Ausgangspunktdateien wird eine einfache Benutzeroberfläche für die Eingabe eines Benutzeralias in ein Textfeld bereitgestellt. Die Methode verwendet diesen Wert, um eine Abfrage zu erstellen, mit dem Zugriffstoken zu kombinieren, an Microsoft Graph zu senden und die Ergebnisse zu analysieren. Mit der bereits in der Ausgangspunktdatei vorhandenen `renderData`-Methode werden die Ergebnisse visualisiert.
 
-## <a name="step-5-run-the-app"></a>Schritt 5: Ausführen der App
+<a id="step-5-run-the-app" class="xliff"></a>
+
+## Schritt 5: Ausführen der App
 Ihre App ist jetzt für die Ausführung bereit. Die Bedienung ist einfach: Geben Sie nach dem Start der App den Alias des Benutzers ein, nach dem Sie suchen möchten, und klicken Sie anschließend auf die Schaltfläche. Sie werden aufgefordert, sich zu authentifizieren. Nach erfolgreicher Authentifizierung und dem erfolgreichen Abschluss der Suche werden die Attribute des gesuchten Benutzers angezeigt.
 
 Bei den nachfolgenden Suchen wird die Suche durchgeführt, ohne dass eine Aufforderung erscheint, da das zuvor abgerufene Token bereits im Cache vorhanden ist.
 
 Die genauen Schritte zum Ausführen der App variieren je nach Plattform.
 
-### <a name="windows-10"></a>Windows 10
+<a id="windows-10" class="xliff"></a>
+
+### Windows 10
    Tablet/PC: `cordova run windows --archs=x64 -- --appx=uap`
 
    Mobile (erfordert ein mit dem PC verbundenes Gerät mit Windows 10 Mobile): `cordova run windows --archs=arm -- --appx=uap --phone`
@@ -253,20 +268,26 @@ Die genauen Schritte zum Ausführen der App variieren je nach Plattform.
    > [!NOTE]
    > Bei der ersten Ausführung werden Sie ggf. aufgefordert, sich für eine Entwicklerlizenz zu registrieren. Weitere Informationen finden Sie unter [Anfordern einer Entwicklerlizenz](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
 
-### <a name="windows-81-tabletpc"></a>Windows 8.1-Tablet/PC
+<a id="windows-81-tabletpc" class="xliff"></a>
+
+### Windows 8.1-Tablet/PC
    `cordova run windows`
 
    > [!NOTE]
    > Bei der ersten Ausführung werden Sie ggf. aufgefordert, sich für eine Entwicklerlizenz zu registrieren. Weitere Informationen finden Sie unter [Anfordern einer Entwicklerlizenz](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
 
-### <a name="windows-phone-81"></a>Windows Phone 8.1
+<a id="windows-phone-81" class="xliff"></a>
+
+### Windows Phone 8.1
    Ausführung auf einem verbundenen Gerät: `cordova run windows --device -- --phone`
 
    Ausführung im Standardemulator: `cordova emulate windows -- --phone`
 
    Verwenden Sie `cordova run windows --list -- --phone`, um alle verfügbaren Ziele anzuzeigen, und `cordova run windows --target=<target_name> -- --phone`, um die Anwendung auf einem bestimmten Gerät oder in einem bestimmten Emulator auszuführen (beispielsweise `cordova run windows --target="Emulator 8.1 720P 4.7 inch" -- --phone`).
 
-### <a name="android"></a>Android
+<a id="android" class="xliff"></a>
+
+### Android
    Ausführung auf einem verbundenen Gerät: `cordova run android --device`
 
    Ausführung im Standardemulator: `cordova emulate android`
@@ -275,7 +296,9 @@ Die genauen Schritte zum Ausführen der App variieren je nach Plattform.
 
    Verwenden Sie `cordova run android --list`, um alle verfügbaren Ziele anzuzeigen, und `cordova run android --target=<target_name>`, um die Anwendung auf einem bestimmten Gerät oder in einem bestimmten Emulator auszuführen (beispielsweise `cordova run android --target="Nexus4_emulator"`).
 
-### <a name="ios"></a>iOS
+<a id="ios" class="xliff"></a>
+
+### iOS
    Ausführung auf einem verbundenen Gerät: `cordova run ios --device`
 
    Ausführung im Standardemulator: `cordova emulate ios`
@@ -287,7 +310,9 @@ Die genauen Schritte zum Ausführen der App variieren je nach Plattform.
 
     Use `cordova run --help` to see additional build and run options.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Das vollständige Beispiel (ohne Ihre Konfigurationswerte) steht in [GitHub](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova/tree/complete/DirSearchClient) zur Verfügung.
 
 Nun können Sie sich anspruchsvolleren (und interessanteren) Szenarien widmen. Empfehlung: [Schützen einer Node.js-Web-API mit Azure AD](active-directory-devquickstarts-webapi-nodejs.md)

@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 5b133afd82afecbfab250c2760404a4173086fa5
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
-
 
 ---
 
-# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Keine funktionierende Connectorgruppe für eine Anwendungsproxyanwendung gefunden
+<a id="no-working-connector-group-found-for-an-application-proxy-application" class="xliff"></a>
+
+# Keine funktionierende Connectorgruppe für eine Anwendungsproxyanwendung gefunden
 
 Dieser Artikel unterstützt Sie beim Beheben häufiger Probleme, die auftreten können, wenn für eine Anwendungsproxyanwendung, die mit Azure Active Directory integriert wird, kein Connector erkannt wird.
 
-## <a name="overview-of-steps"></a>Übersicht über die Schritte
+<a id="overview-of-steps" class="xliff"></a>
+
+## Übersicht über die Schritte
 Wenn für Ihre Anwendung kein funktionierender Connector in einer Connectorgruppe vorhanden ist, gibt es verschiedene Methoden, um das Problem zu beheben:
 
 -   Wenn sich kein Connector in der Gruppe befindet, haben Sie die folgenden Möglichkeiten:
@@ -48,7 +52,9 @@ Ausführliche Informationen zu den jeweiligen Optionen finden Sie unten im entsp
 
    ![Connectorgruppenverwaltung im Azure-Portal](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
-## <a name="download-a-new-connector"></a>Herunterladen eines neuen Connectors
+<a id="download-a-new-connector" class="xliff"></a>
+
+## Herunterladen eines neuen Connectors
 
 Verwenden Sie die Schaltfläche „Connector herunterladen“ am Seitenanfang, um einen neuen Connector herunterzuladen.
 
@@ -56,17 +62,23 @@ Beachten Sie Folgendes: Der Connector muss auf einem Computer mit uneingeschrän
 
    ![Herunterladen des Connectors aus dem Azure-Portal](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
-## <a name="move-an-active-connector"></a>Verschieben eines aktiven Connectors
+<a id="move-an-active-connector" class="xliff"></a>
+
+## Verschieben eines aktiven Connectors
 
 Wenn Sie über einen aktiven Connector verfügen, der dieser Gruppe angehören sollte und uneingeschränkten Zugriff auf die Back-End-Anwendung hat, können Sie den Connector in die zugewiesene Gruppe verschieben. Klicken Sie hierzu auf den Connector. Verwenden Sie im Feld „Connectorgruppe“ die Dropdownliste, um die richtige Gruppe auszuwählen, und klicken Sie dann auf „Speichern“.
 
-## <a name="resolve-an-inactive-connector"></a>Beheben eines inaktiven Connectors
+<a id="resolve-an-inactive-connector" class="xliff"></a>
+
+## Beheben eines inaktiven Connectors
 
 Wenn die einzigen Connectors in der Gruppe inaktiv sind, befinden sie sich voraussichtlich auf einem Computer, bei dem die Blockierung nicht für alle erforderlichen Ports aufgehoben wurde.
 
 Weitere Informationen zur Untersuchung dieses Problems finden Sie im Dokument zur Problembehandlung bei Ports.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
 
 

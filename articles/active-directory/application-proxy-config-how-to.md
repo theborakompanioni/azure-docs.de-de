@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: 9abec188a5677942fd9eb9192c4067d2851a1969
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
-
 
 ---
 
-# <a name="how-to-configure-an-application-proxy-application"></a>Konfigurieren einer Anwendungsproxyanwendung
+<a id="how-to-configure-an-application-proxy-application" class="xliff"></a>
+
+# Konfigurieren einer Anwendungsproxyanwendung
 
 In diesem Artikel wird das Konfigurieren einer Anwendungsproxyanwendung in Azure AD erläutert, um Ihre lokalen Anwendungen in der Cloud verfügbar zu machen.
 
-## <a name="recommended-documents"></a>Empfohlene Dokumente 
+<a id="recommended-documents" class="xliff"></a>
+
+## Empfohlene Dokumente 
 
 Informationen zu den Erstkonfigurationen und zur Erstellung einer Anwendungsproxyanwendung über das Administratorportal finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
 
@@ -33,7 +37,9 @@ Ausführliche Informationen zum Konfigurieren von Connectors finden Sie unter [A
 
 Informationen zum Hochladen von Zertifikaten und Verwenden von benutzerdefinierten Domänen finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains).
 
-## <a name="create-the-applicationsetting-the-urls"></a>Erstellen der Anwendung/Festlegen der URLs
+<a id="create-the-applicationsetting-the-urls" class="xliff"></a>
+
+## Erstellen der Anwendung/Festlegen der URLs
 
 Wenn Sie die Schritte in der Dokumentation [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) befolgen und beim Erstellen der Anwendung einen Fehler erhalten, finden Sie weitere Informationen und Vorschläge zur Behebung der Anwendung in den Fehlerdetails. Die meisten Fehlermeldungen enthalten eine empfohlene Problemlösung. Stellen Sie Folgendes sicher, um häufige Fehler zu vermeiden:
 
@@ -51,13 +57,17 @@ Die Fehlermeldung sollte beim Erstellen der Anwendung in der oberen rechten Ecke
 
    ![Benachrichtigungsaufforderung](./media/application-proxy-config-how-to/error-message.png)
 
-## <a name="configure-connectorsconnector-groups"></a>Konfigurieren von Connectors/Connectorgruppen
+<a id="configure-connectorsconnector-groups" class="xliff"></a>
+
+## Konfigurieren von Connectors/Connectorgruppen
 
 Wenn Sie aufgrund einer Warnung zu Connectors oder Connectorgruppen Probleme beim Konfigurieren Ihrer Anwendung haben, finden Sie weitere Informationen zum Herunterladen von Connectors in den Anweisungen zum Aktivieren des Anwendungsproxys. Weitere Informationen zu Connectors finden Sie in der [Connectors-Dokumentation](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
 
 Wenn die Connectors inaktiv sind, bedeutet dies, dass sie den Dienst nicht erreichen können. Der Grund hierfür ist häufig, dass die erforderlichen Ports nicht geöffnet sind. Eine Liste der erforderlichen Ports finden Sie im Abschnitt „Voraussetzungen“ der Dokumentation zum Aktivieren des Anwendungsproxys.
 
-## <a name="upload-certificates-for-custom-domains"></a>Hochladen von Zertifikaten für benutzerdefinierte Domänen
+<a id="upload-certificates-for-custom-domains" class="xliff"></a>
+
+## Hochladen von Zertifikaten für benutzerdefinierte Domänen
 
 Benutzerdefinierte Domänen bieten Ihnen die Möglichkeit, die Domäne Ihrer externen URLs anzugeben. Sie müssen das Zertifikat für diese Domäne hochladen, damit Sie benutzerdefinierte Domänen verwenden können. Informationen zu benutzerdefinierten Domänen und Zertifikaten finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains). 
 
@@ -73,6 +83,8 @@ Die Fehlermeldung wird in der oberen rechten Ecke angezeigt, während Sie versuc
 
    ![Benachrichtigungsaufforderung](./media/application-proxy-config-how-to/error-message2.png)
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md)
 

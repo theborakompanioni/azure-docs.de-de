@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
 ms.openlocfilehash: b89569b818b0e2c79934a842fdc428011674c000
+ms.contentlocale: de-de
 ms.lasthandoff: 04/17/2017
-
 
 ---
 
-# <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Probleme beim Anmelden bei einer Anwendung über den Zugriffsbereich
+<a id="problems-signing-in-to-an-application-from-the-access-panel" class="xliff"></a>
+
+# Probleme beim Anmelden bei einer Anwendung über den Zugriffsbereich
 
 Der Zugriffsbereich ist ein webbasiertes Portal, in dem Benutzer mit einem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. 
 
@@ -37,7 +39,9 @@ Es gibt drei Kategorien von Apps, die für einen Benutzer angezeigt werden könn
 
 -   Anwendungen mit vorhandenen SSO-Lösungen
 
-## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten
+<a id="general-issues-to-check-first" class="xliff"></a>
+
+## Allgemeine Probleme, die zuerst überprüft werden sollten
 
 -   Stellen Sie sicher, dass Sie einen **Browser** verwenden, der die Mindestanforderungen für den Zugriffsbereich erfüllt.
 
@@ -59,7 +63,9 @@ Es gibt drei Kategorien von Apps, die für einen Benutzer angezeigt werden könn
 
 -   Löschen Sie auch die Cookies in Ihrem Browser, und versuchen Sie sich erneut anzumelden.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für den Zugriffsbereich
+<a id="meeting-browser-requirements-for-the-access-panel" class="xliff"></a>
+
+## Erfüllen der Browseranforderungen für den Zugriffsbereich
 
 Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
@@ -73,7 +79,9 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 **Hinweis**: Die Erweiterung für kennwortbasiertes SSO steht für Edge unter Windows 10 zur Verfügung, sobald Browsererweiterungen von Edge unterstützt werden.
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
+<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
+
+## Installieren der Browsererweiterung für den Zugriffsbereich
 
 Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
 
@@ -97,7 +105,9 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 -   [Zugriffsbereichserweiterung für Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurieren von einmaligem Anmelden im Verbund für eine Azure AD-Kataloganwendung
+<a id="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application" class="xliff"></a>
+
+## Konfigurieren von einmaligem Anmelden im Verbund für eine Azure AD-Kataloganwendung
 
 Für alle Anwendungen im Azure AD-Katalog mit Enterprise Single Sign-On ist ein Schritt-für-Schritt-Tutorial verfügbar. In der [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) finden Sie ausführliche schrittweise Anweisungen.
 
@@ -115,7 +125,9 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
 -   [Zuweisen von Benutzern zur Anwendung](#assign-users-to-the-application)
 
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>Hinzufügen einer Anwendung aus dem Azure AD-Katalog
+<a id="add-an-application-from-the-azure-ad-gallery" class="xliff"></a>
+
+### Hinzufügen einer Anwendung aus dem Azure AD-Katalog
 
 Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
 
@@ -139,7 +151,9 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird das Konfigurationsblatt der Anwendung angezeigt.
 
-### <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Konfigurieren von einmaligem Anmelden für eine Anwendung aus dem Azure AD-Katalog
+<a id="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery" class="xliff"></a>
+
+### Konfigurieren von einmaligem Anmelden für eine Anwendung aus dem Azure AD-Katalog
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 
@@ -185,7 +199,9 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
 15. Weisen Sie der Anwendung Benutzer zu.
 
-### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Auswählen der Benutzer-ID und Hinzufügen von Benutzerattributen, die an die Anwendung gesendet werden
+<a id="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application" class="xliff"></a>
+
+### Auswählen der Benutzer-ID und Hinzufügen von Benutzerattributen, die an die Anwendung gesendet werden
 
 Führen Sie die folgenden Schritte aus, um die Benutzer-ID auszuwählen oder Benutzerattribute hinzuzufügen:
 
@@ -220,7 +236,9 @@ Führen Sie die folgenden Schritte aus, um die Benutzer-ID auszuwählen oder Ben
 
    2. Klicken Sie auf **Speichern**. Das neue Attribut wird in der Tabelle angezeigt.
 
-### <a name="download-the-azure-ad-metadata-or-certificate"></a>Herunterladen der Azure AD-Metadaten oder des Zertifikats
+<a id="download-the-azure-ad-metadata-or-certificate" class="xliff"></a>
+
+### Herunterladen der Azure AD-Metadaten oder des Zertifikats
 
 Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifikats aus Azure AD die folgenden Schritte aus:
 
@@ -244,7 +262,9 @@ Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifik
 
     Azure AD stellt keine URL zum Abrufen der Metadaten bereit. Die Metadaten können nur als XML-Datei abgerufen werden.
 
-## <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung
+<a id="how-to-configure-federated-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
+
+## Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung
 
 Zum Konfigurieren einer Anwendung, die nicht im Katalog enthalten ist, benötigen Sie Azure AD Premium, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -256,7 +276,9 @@ Zum Konfigurieren einer Anwendung, die nicht im Katalog enthalten ist, benötige
 
 -   [Konfigurieren von Azure AD-Metadatenwerten in der Anwendung (Anmelde-URL, Aussteller, Abmelde-URL und Zertifikat)](#configuring-single-sign-on)
 
-### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Konfigurieren der Metadatenwerte für die Anwendung in Azure AD (Anmelde-URL, ID, Antwort-URL)
+<a id="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url" class="xliff"></a>
+
+### Konfigurieren der Metadatenwerte für die Anwendung in Azure AD (Anmelde-URL, ID, Antwort-URL)
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden für eine nicht im Azure AD-Katalog aufgeführte Anwendung zu konfigurieren:
 
@@ -298,7 +320,9 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden für eine nich
 
 14. Klicken Sie auf **&lt;Anwendungsname&gt; konfigurieren** , um auf die Dokumentation zum Konfigurieren des einmaligen Anmeldens in der Anwendung zuzugreifen. Außerdem sind Azure AD-URLs und das Zertifikat für die Anwendung erforderlich.
 
-### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Auswählen der Benutzer-ID und Hinzufügen von Benutzerattributen, die an die Anwendung gesendet werden
+<a id="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application" class="xliff"></a>
+
+### Auswählen der Benutzer-ID und Hinzufügen von Benutzerattributen, die an die Anwendung gesendet werden
 
 Führen Sie die folgenden Schritte aus, um die Benutzer-ID auszuwählen oder Benutzerattribute hinzuzufügen:
 
@@ -333,7 +357,9 @@ Führen Sie die folgenden Schritte aus, um die Benutzer-ID auszuwählen oder Ben
 
    2. Klicken Sie auf **Speichern**. Das neue Attribut wird in der Tabelle angezeigt.
 
-### <a name="download-the-azure-ad-metadata-or-certificate"></a>Herunterladen der Azure AD-Metadaten oder des Zertifikats
+<a id="download-the-azure-ad-metadata-or-certificate" class="xliff"></a>
+
+### Herunterladen der Azure AD-Metadaten oder des Zertifikats
 
 Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifikats aus Azure AD die folgenden Schritte aus:
 
@@ -357,7 +383,9 @@ Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifik
 
     Azure AD stellt keine URL zum Abrufen der Metadaten bereit. Die Metadaten können nur als XML-Datei abgerufen werden.
 
-## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
+<a id="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application" class="xliff"></a>
+
+## Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
@@ -365,7 +393,9 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
 -   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application)
 
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>Hinzufügen einer Anwendung aus dem Azure AD-Katalog
+<a id="add-an-application-from-the-azure-ad-gallery" class="xliff"></a>
+
+### Hinzufügen einer Anwendung aus dem Azure AD-Katalog
 
 Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
 
@@ -389,7 +419,9 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird das Konfigurationsblatt der Anwendung angezeigt.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
+
+### Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 
@@ -415,7 +447,9 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
 10. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
 
-## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
+<a id="how-to-configure-password-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
+
+## Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
@@ -423,7 +457,9 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
 -   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application-for-password-single-sign-on)
 
-### <a name="add-a-non-gallery-application"></a>Hinzufügen einer nicht im Katalog enthaltenen Anwendung
+<a id="add-a-non-gallery-application" class="xliff"></a>
+
+### Hinzufügen einer nicht im Katalog enthaltenen Anwendung
 
 Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
 
@@ -443,7 +479,9 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird das Konfigurationsblatt der Anwendung angezeigt.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
+
+### Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 
@@ -471,7 +509,9 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
 11. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
 
-## <a name="how-to-assign-a-user-to-an-application-directly"></a>Direktes Zuweisen eines Benutzers zu einer Anwendung
+<a id="how-to-assign-a-user-to-an-application-directly" class="xliff"></a>
+
+## Direktes Zuweisen eines Benutzers zu einer Anwendung
 
 Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus:
 
@@ -509,7 +549,9 @@ Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus
 
 Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriffsbereich starten.
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
+<a id="if-these-troubleshooting-steps-do-not-the-resolve-the-issue" class="xliff"></a>
+
+## Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
 
 Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
@@ -525,7 +567,9 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriff
 
 -   Fiddler-Ablaufverfolgungen
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 
 

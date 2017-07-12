@@ -11,17 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: bbd57547a0cc486a9cf7c8030dccaaf6f46c9860
+ms.contentlocale: de-de
 ms.lasthandoff: 04/11/2017
-
 
 ---
 
-# <a name="problem-signing-in-to-the-access-panel-website"></a>Problem beim Anmelden bei der Website des Zugriffsbereichs
+<a id="problem-signing-in-to-the-access-panel-website" class="xliff"></a>
+
+# Problem beim Anmelden bei der Website des Zugriffsbereichs
 
 Der Zugriffsbereich ist ein webbasiertes Portal, in dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über den Zugriffsbereich auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
 
@@ -35,7 +37,9 @@ Benutzer können sich beim Zugriffsbereich anmelden, wenn sie über ein Geschäf
 
 Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Portal oder eine Office 365-Anwendung verwendet hat, kann dieser Benutzer den Zugriffsbereich nutzen, ohne sich erneut anmelden zu müssen. Benutzer, die nicht authentifiziert sind, werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
 
-## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten 
+<a id="general-issues-to-check-first" class="xliff"></a>
+
+## Allgemeine Probleme, die zuerst überprüft werden sollten 
 
 -   Stellen Sie sicher, dass der Benutzer sich bei der **richtigen URL** anmeldet: <https://myapps.microsoft.com>.
 
@@ -55,7 +59,9 @@ Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und d
 
 -   Stellen Sie sicher, dass der Benutzer die Cookies im Browser gelöscht hat, bevor er versucht, sich erneut anzumelden.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für den Zugriffsbereich
+<a id="meeting-browser-requirements-for-the-access-panel" class="xliff"></a>
+
+## Erfüllen der Browseranforderungen für den Zugriffsbereich
 
 Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des kennwortbasierten einmaligen Anmeldens (Single Sign-On, SSO) im Zugriffsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
@@ -72,7 +78,9 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 >
 >
 
-## <a name="problems-with-the-users-account"></a>Probleme mit dem Konto des Benutzers
+<a id="problems-with-the-users-account" class="xliff"></a>
+
+## Probleme mit dem Konto des Benutzers
 
 Der Zugriff auf den Zugriffsbereich kann aufgrund eines Problems mit dem Benutzerkonto blockiert sein. Im Folgenden finden Sie einige Möglichkeiten, Probleme mit Benutzerkonten und Kontoeinstellungen zu lösen:
 
@@ -94,7 +102,9 @@ Der Zugriff auf den Zugriffsbereich kann aufgrund eines Problems mit dem Benutze
 
 -   [Zuweisen einer Lizenz zu einem Benutzer](#assign-a-user-a-license)
 
-### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Überprüfen, ob ein Benutzerkonto in Azure Active Directory vorhanden ist
+<a id="check-if-a-user-account-exists-in-azure-active-directory" class="xliff"></a>
+
+### Überprüfen, ob ein Benutzerkonto in Azure Active Directory vorhanden ist
 
 Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die folgenden Schritte aus:
 
@@ -112,7 +122,9 @@ Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die 
 
 7.  Überprüfen Sie die Eigenschaften des Benutzerobjekts, um sicherzustellen, dass diese ordnungsgemäß festgelegt sind und keine Daten fehlen.
 
-### <a name="check-a-users-account-status"></a>Überprüfen des Status eines Benutzerkontos
+<a id="check-a-users-account-status" class="xliff"></a>
+
+### Überprüfen des Status eines Benutzerkontos
 
 Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Schritte aus:
 
@@ -132,7 +144,9 @@ Um den Status eines Benutzerkontos zu überprüfen, führen Sie die folgenden Sc
 
 8.  Stellen Sie unter **Einstellungen** sicher, dass die Option **Anmeldung blockieren** auf **Nein** festgelegt ist.
 
-### <a name="reset-a-users-password"></a>Zurücksetzen des Kennworts für einen Benutzer
+<a id="reset-a-users-password" class="xliff"></a>
+
+### Zurücksetzen des Kennworts für einen Benutzer
 
 Um das Kennwort eines Benutzers zurückzusetzen, führen Sie die folgenden Schritte aus:
 
@@ -156,7 +170,9 @@ Um das Kennwort eines Benutzers zurückzusetzen, führen Sie die folgenden Schri
 
 10. Teilen Sie dem Benutzer das neue Kennwort mit, da dieser das Kennwort bei der nächsten Anmeldung bei Azure Active Directory ändern muss.
 
-### <a name="enable-self-service-password-reset"></a>Aktivieren der Self-Service-Kennwortzurücksetzung
+<a id="enable-self-service-password-reset" class="xliff"></a>
+
+### Aktivieren der Self-Service-Kennwortzurücksetzung
 
 Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgenden Bereitstellungsschritte aus:
 
@@ -164,7 +180,9 @@ Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgen
 
 -   [Aktivieren von Benutzern für das Zurücksetzen oder Ändern ihrer lokalen Active Directory-Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
 
-### <a name="check-a-users-multi-factor-authentication-status"></a>Überprüfen des Multi-Factor Authentication-Status eines Benutzers
+<a id="check-a-users-multi-factor-authentication-status" class="xliff"></a>
+
+### Überprüfen des Multi-Factor Authentication-Status eines Benutzers
 
 Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
@@ -191,7 +209,9 @@ Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führ
    >
    >
 
-### <a name="check-a-users-authentication-contact-info"></a>Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers
+<a id="check-a-users-authentication-contact-info" class="xliff"></a>
+
+### Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers
 
 Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Factor Authentication, bedingten Zugriff, Identity Protection und Kennwortzurücksetzung verwendet werden, führen Sie die folgenden Schritte aus:
 
@@ -213,7 +233,9 @@ Um die Kontaktinformationen eines Benutzers zu überprüfen, die für Multi-Fact
 
 9.  **Überprüfen** Sie die für den Benutzer registrierten Daten, und aktualisieren Sie sie ggf.
 
-### <a name="check-a-users-group-memberships"></a>Überprüfen der Gruppenmitgliedschaften eines Benutzers
+<a id="check-a-users-group-memberships" class="xliff"></a>
+
+### Überprüfen der Gruppenmitgliedschaften eines Benutzers
 
 Um die Gruppenmitgliedschaften eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
@@ -231,7 +253,9 @@ Um die Gruppenmitgliedschaften eines Benutzers zu überprüfen, führen Sie die 
 
 7.  Klicken Sie auf **Gruppen**, um zu ermitteln, in welchen Gruppen der Benutzer Mitglied ist.
 
-### <a name="check-a-users-assigned-licenses"></a>Überprüfen der zugewiesenen Lizenzen eines Benutzers
+<a id="check-a-users-assigned-licenses" class="xliff"></a>
+
+### Überprüfen der zugewiesenen Lizenzen eines Benutzers
 
 Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die einem Benutzer zugewiesen sind:
 
@@ -249,7 +273,9 @@ Führen Sie die folgenden Schritte aus, um die Lizenzen zu überprüfen, die ein
 
 7.  Klicken Sie auf **Lizenzen**, um anzuzeigen, welche Lizenzen dem Benutzer derzeit zugewiesen sind.
 
-### <a name="assign-a-user-a-license"></a>Zuweisen einer Lizenz zu einem Benutzer 
+<a id="assign-a-user-a-license" class="xliff"></a>
+
+### Zuweisen einer Lizenz zu einem Benutzer 
 
 Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus:
 
@@ -275,7 +301,9 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 
 11. Klicken Sie auf die Schaltfläche **Zuweisen**, um dem Benutzer diese Lizenzen zuzuweisen.
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
+<a id="if-these-troubleshooting-steps-do-not-resolve-the-issue" class="xliff"></a>
+
+## Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
 
 Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
@@ -291,6 +319,8 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 
 -   Fiddler-Ablaufverfolgungen
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 
