@@ -14,25 +14,33 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fefebeae665ccd14f15b0197241b30d33830fd09
 ms.openlocfilehash: 9973da827ea5a9311904d7d6d4c22d59b5e2d0ce
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 
 ---
-# <a name="how-to-use-azure-file-storage-from-python"></a>Gewusst wie: Verwenden von Azure File Storage mit Python
+<a id="how-to-use-azure-file-storage-from-python" class="xliff"></a>
+
+# Gewusst wie: Verwenden von Azure File Storage mit Python
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
-## <a name="overview"></a>Übersicht
+<a id="overview" class="xliff"></a>
+
+## Übersicht
 In diesem Artikel wird die Durchführung gängiger Szenarios mit File Storage demonstriert. Die Beispiele sind in Python geschrieben und verwenden das [Microsoft Azure Storage-SDK für Python]. Die hier beschriebenen Szenarios umfassen das Hochladen, Auflisten, Herunterladen und Löschen von Dateien.
 
 [!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-share"></a>Erstellen einer Freigabe
+<a id="create-a-share" class="xliff"></a>
+
+## Erstellen einer Freigabe
 Das **FileService** -Objekt ermöglicht das Arbeiten mit Freigaben, Verzeichnissen und Dateien. Der folgende Code erstellt ein **FileService** -Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure-Speicher zugreifen möchten, den folgenden Code hinzu:
 
 ```python
@@ -42,7 +50,7 @@ from azure.storage.file import FileService
 Der folgende Code erstellt ein **FileService** -Objekt unter Verwendung des Speicherkontonamens und Kontoschlüssels.  Ersetzen Sie „myaccount“ und „mykey“ durch Ihren Kontonamen und Schlüssel.
 
 ```python
-file_service = **FileService** (account_name='myaccount', account_key='mykey')
+file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 Im folgenden Codebeispiel können Sie die Freigabe mithilfe eines **FileService** -Objekts erstellen, falls sie nicht vorhanden ist.
@@ -51,7 +59,9 @@ Im folgenden Codebeispiel können Sie die Freigabe mithilfe eines **FileService*
 file_service.create_share('myshare')
 ```
 
-## <a name="upload-a-file-into-a-share"></a>Hochladen einer Datei in eine Freigabe
+<a id="upload-a-file-into-a-share" class="xliff"></a>
+
+## Hochladen einer Datei in eine Freigabe
 Eine Azure-Dateispeicherfreigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. In diesem Abschnitt erfahren Sie, wie Sie eine Datei vom lokalen Speicher in das Stammverzeichnis einer Freigabe hochladen.
 
 Verwenden Sie zum Erstellen einer Datei und zum Hochladen von Daten die Methoden **create\_file\_from\_path**, **create\_file\_from\_stream**, **create\_file\_from\_bytes** oder **create\_file\_from\_text**. Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MB übersteigt.
@@ -70,14 +80,18 @@ file_service.create_file_from_path(
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
-## <a name="how-to-create-a-directory"></a>Erstellen eines Verzeichnisses
+<a id="how-to-create-a-directory" class="xliff"></a>
+
+## Erstellen eines Verzeichnisses
 Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure File Storage können Sie so viele Verzeichnisse erstellen, wie in Ihrem Konto zugelassen sind. Mit dem folgenden Code wird ein Unterverzeichnis mit dem Namen **sampledir** im Stammverzeichnis erstellt.
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
 ```
 
-## <a name="how-to-list-files-and-directories-in-a-share"></a>Auflisten von Dateien und Verzeichnissen in einer Freigabe
+<a id="how-to-list-files-and-directories-in-a-share" class="xliff"></a>
+
+## Auflisten von Dateien und Verzeichnissen in einer Freigabe
 Verwenden Sie zum Auflisten der Dateien und Verzeichnisse in einer Freigabe die Methode **list\_directories\_and\_files**. Diese Methode gibt einen Generator zurück. Der folgende Code gibt den **Namen** der einzelnen Dateien und Verzeichnisse in einer Freigabe an der Konsole aus.
 
 ```python
@@ -86,7 +100,9 @@ for file_or_dir in generator:
     print(file_or_dir.name)
 ```
 
-## <a name="download-files"></a>Herunterladen von Dateien
+<a id="download-files" class="xliff"></a>
+
+## Herunterladen von Dateien
 Verwenden Sie zum Herunterladen von Daten aus einer Datei **get\_file\_to\_path**, **get\_file\_to\_stream**, **get\_file\_to\_bytes** oder **get\_file\_to\_text**. Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MB übersteigt.
 
 Das folgende Beispiel verwendet **get\_file\_to\_path**, um den Inhalt der Datei **myfile** herunterzuladen und in der Datei **out-sunset.png** zu speichern.
@@ -95,14 +111,18 @@ Das folgende Beispiel verwendet **get\_file\_to\_path**, um den Inhalt der Datei
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
-## <a name="delete-a-file"></a>Löschen von Dateien
+<a id="delete-a-file" class="xliff"></a>
+
+## Löschen von Dateien
 Um eine Datei zu löschen, rufen Sie **delete_file** auf.
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen von File Storage vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr zu erfahren.
 
 * [Python Developer Center](/develop/python/)
@@ -112,9 +132,4 @@ Nachdem Sie sich nun mit den Grundlagen von File Storage vertraut gemacht haben,
 
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
