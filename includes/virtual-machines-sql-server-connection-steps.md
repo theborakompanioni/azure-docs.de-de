@@ -1,4 +1,5 @@
 <a id="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine" class="xliff"></a>
+
 ### Öffnen der TCP-Ports in der Windows-Firewall für die Standardinstanz des Datenbankmoduls
 1. Herstellen der Verbindung mit dem virtuellen Computer über Remotedesktop Weitere Informationen zum Herstellen einer Verbindung mit dem virtuellen Computer finden Sie unter [Öffnen der VM mit Remotedesktop](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop).
 2. Geben Sie nach der Anmeldung auf dem Startbildschirm **WF.msc**ein, und drücken Sie dann die EINGABETASTE.
@@ -29,6 +30,7 @@
 Öffnen Sie gegebenenfalls zusätzliche Ports für andere Komponenten. Weitere Informationen finden Sie unter [Konfigurieren der Windows-Firewall für den SQL Server-Zugriff](http://msdn.microsoft.com/library/cc646023.aspx).
 
 <a id="configure-sql-server-to-listen-on-the-tcp-protocol" class="xliff"></a>
+
 ### Konfigurieren von SQL Server für das Lauschen des TCP-Protokolls
 1. Geben Sie während der Verbindung mit dem virtuellen Computer auf der Startseite **SQL Server-Konfigurations-Manager** ein, und drücken Sie die EINGABETASTE.
    
@@ -45,6 +47,7 @@
 Weitere Informationen zur Aktivierung von Protokollen für SQL Server-Datenbankmodule finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](http://msdn.microsoft.com/library/ms191294.aspx).
 
 <a id="configure-sql-server-for-mixed-mode-authentication" class="xliff"></a>
+
 ### Konfigurieren von SQL Server für die Authentifizierung mit gemischtem Modus
 Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentifizierung nutzen. Um eine Verbindung zum Datenbankmodul von einem anderen Computer aus herzustellen, konfigurieren Sie SQL Server für die Authentifizierung mit gemischtem Modus. Die Authentifizierung mit gemischtem Modus ermöglicht sowohl die SQL Server-Authentifizierung als auch die Windows-Authentifizierung.
 
@@ -72,6 +75,7 @@ Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentif
 7. Klicken Sie im Dialogfeld von SQL Server Management Studio auf **Ja** , um zu bestätigen, dass SQL Server neu gestartet werden soll.
 
 <a id="create-sql-server-authentication-logins" class="xliff"></a>
+
 ### Erstellen von Anmeldenamen für die SQL Server-Authentifizierung
 Um von einem anderen Computer aus eine Verbindung zum Datenbankmodul herzustellen, müssen Sie mindestens einen Anmeldenamen für die SQL Server-Authentifizierung erstellen.
 
