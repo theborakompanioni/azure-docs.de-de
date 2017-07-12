@@ -12,34 +12,45 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/23/2017
+ms.date: 06/21/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: ff8d911750a551f4a099fcba13841c98881104a9
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: b4d5ab66db64a50d1b87edd4bf445e49004e67b4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
-# <a name="update-management-solution-in-oms"></a>Lösung für die Updateverwaltung in OMS
-Mit der Lösung für die Updateverwaltung in OMS können Sie Updates für Ihre Windows- und Linux-Computer verwalten.  Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell bewerten und den Installationsvorgang initiieren, der für die Serverupdates erforderlich ist. 
+<a id="update-management-solution-in-oms" class="xliff"></a>
 
-## <a name="solution-components"></a>Lösungskomponenten
+# Lösung für die Updateverwaltung in OMS
 
-Für Computer, die mit OMS verwaltet werden, wird Folgendes verwendet, um Bewertungen und Updatebereitstellungen durchzuführen: 
+![Symbol für die Updateverwaltung](./media/oms-solution-update-management/update-management-symbol.png)
+
+Mit der Lösung für die Updateverwaltung in OMS können Sie Updates für Ihre Windows- und Linux-Computer verwalten.  Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell bewerten und den Installationsvorgang initiieren, der für die Serverupdates erforderlich ist.
+
+
+<a id="solution-overview" class="xliff"></a>
+
+## Lösungsübersicht
+Für Computer, die mit OMS verwaltet werden, wird Folgendes verwendet, um Bewertungen und Updatebereitstellungen durchzuführen:
 
 * OMS-Agent für Windows oder Linux
-* PowerShell Desired State Configuration (DSC) für Linux 
-* Automation Hybrid Runbook Worker 
+* PowerShell Desired State Configuration (DSC) für Linux
+* Automation Hybrid Runbook Worker
 * Microsoft Update oder Windows Server Update Services für Windows-Computer
 
 Die folgenden Abbildungen enthalten eine konzeptionelle Darstellung des Verhaltens und des Datenflusses. Es wird gezeigt, wie die Lösung alle verbundenen Windows Server- und Linux-Computer eines Arbeitsbereichs bewertet und Updates darauf anwendet.    
 
-#### <a name="windows-server"></a>Windows Server
+<a id="windows-server" class="xliff"></a>
+
+#### Windows Server
 ![Prozessablauf der Windows Server-Updateverwaltung](media/oms-solution-update-management/update-mgmt-windows-updateworkflow.png)
 
-#### <a name="linux"></a>Linux
+<a id="linux" class="xliff"></a>
+
+#### Linux
 ![Prozessablauf der Linux-Updateverwaltung](media/oms-solution-update-management/update-mgmt-linux-updateworkflow.png)
 
 Nachdem der Computer einen Scanvorgang durchgeführt hat, um die Konformität für das Update zu überprüfen, leitet der OMS-Agent die Informationen gesammelt an OMS weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle zwölf Stunden durchgeführt.  Zusätzlich zum Scanzeitplan wird der Scanvorgang für die Updatekonformität innerhalb von 15 Minuten initiiert, wenn der Microsoft Monitoring Agent (MMA) neu gestartet wird – jeweils vor und nach der Installation des Updates.  Bei einem Linux-Computer wird der Konformitätsscan standardmäßig alle drei Stunden durchgeführt, und bei einem MMA-Neustart erfolgt innerhalb von 15 Minuten ein Konformitätsscan.  
@@ -50,15 +61,17 @@ Sie können Softwareupdates auf Computern bereitstellen und installieren, für d
 
 Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führt der Zielcomputer die Bereitstellung parallel aus.  Zuerst wird ein Scanvorgang durchgeführt, um sicherzustellen, dass die Updates weiterhin erforderlich sind, und anschließend werden sie installiert.  Beachten Sie folgenden wichtigen Hinweis: Für WSUS-Clientcomputer schlägt die Updatebereitstellung fehl, wenn die Updates in WSUS nicht genehmigt sind.  Die Ergebnisse der angewendeten Updates werden an OMS weitergeleitet, damit sie in den Dashboards verarbeitet und zusammengefasst werden können (oder per Ereignissuche).     
 
-## <a name="prerequisites"></a>Voraussetzungen
-* Die Lösung unterstützt die Durchführung von Updatebewertungen für Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2008 R2 und höher.  Server Core- und Nano Server-Installationsoptionen werden nicht unterstützt.
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
+* Die Lösung unterstützt die Durchführung von Updatebewertungen für Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2008 R2 SP1 und höher.  Server Core- und Nano Server-Installationsoptionen werden nicht unterstützt.
 
     > [!NOTE]
-    > Damit die Bereitstellung von Updates für Windows Server 2008 R2 unterstützt wird, sind .NET Framework 4.5 und WMF 5.0 oder höher erforderlich.
+    > Damit die Bereitstellung von Updates für Windows Server 2008 R2 SP1 unterstützt wird, sind .NET Framework 4.5 und WMF 5.0 oder höher erforderlich.
     >  
 * Windows-Clientbetriebssysteme werden nicht unterstützt.  
 * Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen.  
-  
+
     > [!NOTE]
     > Der Windows-Agent kann nicht gleichzeitig mit System Center Configuration Manager verwaltet werden.  
     >
@@ -66,19 +79,26 @@ Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führ
 * Red Hat Enterprise 6 (x86/x64) und 7 (x64)
 * SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)
 * Ubuntu 12.04 LTS und höher (x86/x64)  
+    > [!NOTE]  
+    > Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Informationen zu dieser Konfiguration finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+
 * Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.  
 
     > [!NOTE]
     > Ein OMS-Agent für Linux, der für das Melden an mehrere OMS-Arbeitsbereiche konfiguriert ist, wird für diese Lösung nicht unterstützt.  
-    > 
+    >
 
 Weitere Informationen dazu, wie Sie den OMS-Agent für Linux installieren und die aktuelle Version herunterladen, finden Sie im Artikel zum [Operations Management Suite-Agent für Linux](https://github.com/microsoft/oms-agent-for-linux).  Informationen zur Installation des OMS-Agents für Windows finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agents.md).  
 
-## <a name="solution-components"></a>Lösungskomponenten
-Diese Lösung besteht aus den folgenden Ressourcen, die Ihrem Automation-Konto hinzugefügt werden, und direkt verbundenen Agents oder mit Operations Manager verbundenen Verwaltungsgruppen. 
+<a id="solution-components" class="xliff"></a>
 
-### <a name="management-packs"></a>Management Packs
-Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit einem OMS-Arbeitsbereich verbunden ist, werden in Operations Manager die folgenden Management Packs installiert.  Diese Management Packs werden nach dem Hinzufügen dieser Lösung auch auf direkt verbundenen Windows-Computern installiert. Für diese Management Packs fällt kein Konfigurations- oder Verwaltungsaufwand an. 
+## Lösungskomponenten
+Diese Lösung besteht aus den folgenden Ressourcen, die Ihrem Automation-Konto hinzugefügt werden, und direkt verbundenen Agents oder mit Operations Manager verbundenen Verwaltungsgruppen.
+
+<a id="management-packs" class="xliff"></a>
+
+### Management Packs
+Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit einem OMS-Arbeitsbereich verbunden ist, werden in Operations Manager die folgenden Management Packs installiert.  Diese Management Packs werden nach dem Hinzufügen dieser Lösung auch auf direkt verbundenen Windows-Computern installiert. Für diese Management Packs fällt kein Konfigurations- oder Verwaltungsaufwand an.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -86,13 +106,17 @@ Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit einem OMS-Arbei
 
 Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../log-analytics/log-analytics-om-agents.md).
 
-### <a name="hybrid-worker-groups"></a>Hybrid Worker-Gruppen
+<a id="hybrid-worker-groups" class="xliff"></a>
+
+### Hybrid Worker-Gruppen
 Nachdem Sie diese Lösung aktiviert haben, werden alle direkt mit dem OMS-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die in dieser Lösung enthaltenen Runbooks zu unterstützen.  Für jeden von der Lösung verwalteten Windows-Computer wird dieser auf dem Blatt „Hybrid Runbook Worker Groups“ (Hybrid-Runbook-Workergruppen) des Automation-Kontos aufgeführt. Die Benennungskonvention lautet *Hostname FQDN_GUID*.  Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen, da der Vorgang fehlschlägt. Diese Gruppen sind nur für die Unterstützung der Verwaltungslösung bestimmt.   
 
 Aber Sie können die Windows-Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, solange Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden.  Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.  
 
-## <a name="configuration"></a>Konfiguration
-Führen Sie die folgenden Schritte aus, um die Lösung für die Updateverwaltung dem OMS-Arbeitsbereich hinzuzufügen und zu bestätigen, dass die Agents Meldungen senden. Bereits mit dem Arbeitsbereich verbundene Windows-Agents werden automatisch ohne weitere Konfiguration hinzugefügt. 
+<a id="configuration" class="xliff"></a>
+
+## Konfiguration
+Führen Sie die folgenden Schritte aus, um die Lösung für die Updateverwaltung dem OMS-Arbeitsbereich hinzuzufügen und zu bestätigen, dass die Agents Meldungen senden. Bereits mit dem Arbeitsbereich verbundene Windows-Agents werden automatisch ohne weitere Konfiguration hinzugefügt.
 
 Sie können die Lösung mithilfe der folgenden Methoden bereitstellen:
 
@@ -101,7 +125,9 @@ Sie können die Lösung mithilfe der folgenden Methoden bereitstellen:
 
 Falls Sie in derselben Ressourcengruppe und Region bereits ein Automation-Konto mit einem OMS-Arbeitsbereich verknüpft haben, wird die Konfiguration bei Auswahl von „Automation + Control“ überprüft und nur die Lösung installiert und für beide Dienste konfiguriert.  Für die Auswahl der Lösung für die Updateverwaltung im Azure Marketplace gilt dasselbe Verhalten.  Wenn Sie diese Dienste unter Ihrem Abonnement nicht bereitgestellt haben, können Sie die Schritte auf dem Blatt **Neue Lösung erstellen** ausführen und bestätigen, dass Sie die anderen vorab ausgewählten empfohlenen Lösungen installieren möchten.  Optional können Sie Ihrem OMS-Arbeitsbereich mit den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../log-analytics/log-analytics-add-solutions.md) beschriebenen Schritten die Lösung für die Updateverwaltung hinzufügen.  
 
-### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>Bestätigen der Verbindung von OMS-Agents und der Operations Manager-Verwaltungsgruppe mit OMS
+<a id="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms" class="xliff"></a>
+
+### Bestätigen der Verbindung von OMS-Agents und der Operations Manager-Verwaltungsgruppe mit OMS
 
 Nach einigen Minuten können Sie die folgende Protokollsuche durchführen, um zu bestätigen, dass der direkt verbundene OMS-Agent für Linux und Windows jeweils mit OMS kommuniziert:
 
@@ -114,14 +140,24 @@ Auf einem Windows-Computer können Sie Folgendes überprüfen, um für den Agent
 1.  Öffnen Sie in der Systemsteuerung den Microsoft Monitoring Agent. Auf der Registerkarte **Azure Log Analytics (OMS)** wird vom Agent folgende Meldung angezeigt: **The Microsoft Monitoring Agent has successfully connected to the Microsoft Operations Management Suite service** (Für den Microsoft Monitoring Agent wurde die Verbindung mit dem Microsoft Operations Management Suite-Dienst erfolgreich hergestellt).   
 2.  Öffnen Sie das Windows-Ereignisprotokoll, navigieren Sie zu **Anwendungs- und Dienstprotokolle\Operations Manager**, und suchen Sie nach der Ereignis-ID 3000 und 5002 (Service Connector-Quellinstanz).  Mit diesen Ereignissen wird angegeben, dass für den Computer die Registrierung beim OMS-Arbeitsbereich und die Konfiguration durchgeführt wurden.  
 
-Falls der Agent nicht mit dem OMS-Dienst kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, sollten Sie für die Firewall bzw. den Proxyserver die Richtigkeit der Konfiguration sicherstellen, indem Sie die Vorgehensweise unter [Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics](../log-analytics/log-analytics-proxy-firewall.md) verwenden.
-  
-Für neu hinzugefügte Linux-Agents wird der Status **Aktualisiert** angezeigt, nachdem eine Bewertung durchgeführt wurde.  Dieser Vorgang kann bis zu sechs Stunden dauern. 
+Falls der Agent nicht mit dem OMS-Dienst kommunizieren kann und für die Kommunikation mit dem Internet über eine Firewall oder einen Proxyserver konfiguriert ist, sollten Sie für die Firewall bzw. den Proxyserver die Richtigkeit der Konfiguration sicherstellen, indem Sie [Netzwerkkonfiguration für Windows-Agent](../log-analytics/log-analytics-windows-agents.md#network) oder [Netzwerkkonfiguration für Linux-Agent](../log-analytics/log-analytics-agent-linux.md#network) durchgehen.
+
+> [!NOTE]
+> Wenn Ihre Linux-Systeme für die Kommunikation mit einem Proxy oder OMS-Gateway konfiguriert sind und Sie diese Lösung einführen, aktualisieren Sie die *proxy.conf*-Berechtigungen, um der Gruppe „omiuser“ Leseberechtigungen für die Datei zu gewähren. Führen Sie hierzu die folgenden Befehle aus:  
+> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`  
+> `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
+
+
+Für neu hinzugefügte Linux-Agents wird der Status **Aktualisiert** angezeigt, nachdem eine Bewertung durchgeführt wurde.  Dieser Vorgang kann bis zu sechs Stunden dauern.
 
 Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mit OMS kommuniziert, helfen Ihnen die Informationen unter [Überprüfen der Operations Manager-Integration für OMS](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms) weiter.
 
-## <a name="data-collection"></a>Datensammlung
-### <a name="supported-agents"></a>Unterstützte Agents
+<a id="data-collection" class="xliff"></a>
+
+## Datensammlung
+<a id="supported-agents" class="xliff"></a>
+
+### Unterstützte Agents
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
 | Verbundene Quelle | Unterstützt | Beschreibung |
@@ -131,32 +167,42 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 | Operations Manager-Verwaltungsgruppe |Ja |Die Lösung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe.<br>Es ist keine direkte Verbindung von Operations Manager mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an das OMS-Repository weitergeleitet. |
 | Azure-Speicherkonto |Nein |Azure-Speicher enthält keine Informationen zu Systemupdates. |
 
-### <a name="collection-frequency"></a>Sammlungshäufigkeit
-Für jeden verwalteten Windows-Computer wird zweimal pro Tag ein Scanvorgang durchgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn ja, wird ein Konformitätsscan initiiert.  Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang durchgeführt. 
+<a id="collection-frequency" class="xliff"></a>
+
+### Sammlungshäufigkeit
+Für jeden verwalteten Windows-Computer wird zweimal pro Tag ein Scanvorgang durchgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn ja, wird ein Konformitätsscan initiiert.  Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang durchgeführt.
 
 Es kann zwischen 30 Minuten und sechs Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.   
 
-## <a name="using-the-solution"></a>Verwenden der Lösung
+<a id="using-the-solution" class="xliff"></a>
+
+## Verwenden der Lösung
 Wenn Sie dem OMS-Arbeitsbereich die Lösung für die Updateverwaltung hinzufügen, wird Ihrem OMS-Dashboard die Kachel **Update Management** (Updateverwaltung) hinzugefügt. Auf dieser Kachel werden ein Zahlenwert und eine grafische Darstellung der Anzahl von Computern in Ihrer Umgebung und jeweils die Updatekonformität angezeigt.<br><br>
 ![Kachel mit Zusammenfassung zur Updateverwaltung](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 
-## <a name="viewing-update-assessments"></a>Anzeigen von Updatebewertungen
-Klicken Sie auf die Kachel **Updateverwaltung**, um das Dashboard **Update Management** (Updateverwaltung) zu öffnen.<br><br> ![Dashboard mit Zusammenfassung zur Updateverwaltung](./media/oms-solution-update-management/update-management-dashboard.png)<br> 
+<a id="viewing-update-assessments" class="xliff"></a>
+
+## Anzeigen von Updatebewertungen
+Klicken Sie auf die Kachel **Updateverwaltung**, um das Dashboard **Update Management** (Updateverwaltung) zu öffnen.<br><br> ![Dashboard mit Zusammenfassung zur Updateverwaltung](./media/oms-solution-update-management/update-management-dashboard.png)<br>
 
 Dieses Dashboard enthält eine ausführliche Auflistung des Updatestatus, kategorisiert nach Betriebssystemtyp und Updateklassifizierung: kritisch, Sicherheitsupdate oder Sonstiges (z.B. Definitionsupdate). Wenn die Kachel **Updatebereitstellungen** ausgewählt ist, werden Sie auf die Seite „Updatebereitstellungen“ weitergeleitet, auf der Sie Zeitpläne, derzeit ausgeführte Bereitstellungen und abgeschlossene Bereitstellungen anzeigen oder eine neue Bereitstellung planen können.  
 
 Sie können eine Protokollsuche ausführen, mit der alle Datensätze zurückgegeben werden, indem Sie auf die jeweilige Kachel klicken. Um eine Abfrage einer bestimmten Kategorie und mit vordefinierten Kriterien auszuführen, wählen Sie diese in der Liste der Spalte **Häufige Updateabfragen** aus.    
 
-## <a name="installing-updates"></a>Installieren von Updates
-Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, installieren Sie die erforderlichen Updates, indem Sie eine *Updatebereitstellung* erstellen.  Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer.  Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen.  Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).  Wenn Sie Computergruppen in Ihre Updatebereitstellung einbinden, wird die Gruppenmitgliedschaft nur einmal beim Erstellen des Zeitplans ausgewertet.  Nachfolgende Änderungen einer Gruppe werden nicht widergespiegelt.  Löschen Sie die geplante Updatebereitstellung, und erstellen Sie sie neu, um dieses Problem zu umgehen. 
+<a id="installing-updates" class="xliff"></a>
+
+## Installieren von Updates
+Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, installieren Sie die erforderlichen Updates, indem Sie eine *Updatebereitstellung* erstellen.  Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer.  Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen.  Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).  Wenn Sie Computergruppen in Ihre Updatebereitstellung einbinden, wird die Gruppenmitgliedschaft nur einmal beim Erstellen des Zeitplans ausgewertet.  Nachfolgende Änderungen einer Gruppe werden nicht widergespiegelt.  Löschen Sie die geplante Updatebereitstellung, und erstellen Sie sie neu, um dieses Problem zu umgehen.
 
 > [!NOTE]
 > Über den Azure Marketplace bereitgestellte Windows-VMs sind standardmäßig so konfiguriert, dass sie automatisch Updates von Windows Update Service erhalten.  Dieses Verhalten ändert sich nicht, nachdem Sie Ihrem Arbeitsbereich diese Lösung oder Windows-VMs hinzugefügt haben.  Wenn Sie Updates für diese Lösung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).  
 
 Für virtuelle Computer, die basierend auf den über den Azure Marketplace erhältlichen On-Demand-RHEL-Images (Red Hat Enterprise Linux) erstellt werden, werden sie für den Zugriff auf die in Azure bereitgestellte [Red Hat-Updateinfrastruktur (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) registriert.  Alle anderen Linux-Distributionen müssen über das Onlinedateirepository der Distributionen gemäß den unterstützten Methoden aktualisiert werden.  
 
-### <a name="viewing-update-deployments"></a>Anzeigen von Updatebereitstellungen
+<a id="viewing-update-deployments" class="xliff"></a>
+
+### Anzeigen von Updatebereitstellungen
 Klicken Sie auf die Kachel **Bereitstellung aktualisieren**, um die Liste mit den vorhandenen Updatebereitstellungen anzuzeigen.  Sie sind nach dem Status gruppiert: **Geplant**, **Wird ausgeführt** und **Abgeschlossen**.<br><br> ![Seite mit Zeitplan für Updatebereitstellungen](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
 
 Die Eigenschaften, die für die Updatebereitstellung angezeigt werden, sind in der folgenden Tabelle beschrieben.
@@ -179,10 +225,12 @@ Wählen Sie eine abgeschlossene Updatebereitstellung aus, um den Detailbildschir
 | Linux-Computer |Listet die Anzahl von Linux-Computern der Updatebereitstellung nach Status auf.  Klicken Sie auf einen Status, um eine Protokollsuche auszuführen, bei der alle Updatedatensätze mit diesem Status für die Updatebereitstellung zurückgegeben werden. |
 | Installationsstatus des Computers |Listet die Computer auf, die an der Updatebereitstellung beteiligt sind, und den Prozentsatz der Updates, die erfolgreich installiert wurden. Klicken Sie auf einen der Einträge, um eine Protokollsuche durchzuführen, bei der alle fehlenden und kritischen Updates zurückgegeben werden. |
 | **Ansicht „Updates“** | |
-| Windows-Updates |Listet Windows-Updates, die Teil der Updatebereitstellung sind, und den Installationsstatus für jedes Update auf.  Wählen Sie ein Update aus, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für das jeweilige Update zurückgegeben werden. Klicken Sie auf den Status, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für die Bereitstellung zurückgegeben werden. | 
-| Linux-Updates |Listet Linux-Updates, die Teil der Updatebereitstellung sind, und den Installationsstatus für jedes Update auf.  Wählen Sie ein Update aus, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für das jeweilige Update zurückgegeben werden. Klicken Sie auf den Status, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für die Bereitstellung zurückgegeben werden. | 
+| Windows-Updates |Listet Windows-Updates, die Teil der Updatebereitstellung sind, und den Installationsstatus für jedes Update auf.  Wählen Sie ein Update aus, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für das jeweilige Update zurückgegeben werden. Klicken Sie auf den Status, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für die Bereitstellung zurückgegeben werden. |
+| Linux-Updates |Listet Linux-Updates, die Teil der Updatebereitstellung sind, und den Installationsstatus für jedes Update auf.  Wählen Sie ein Update aus, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für das jeweilige Update zurückgegeben werden. Klicken Sie auf den Status, um eine Protokollsuche durchzuführen, bei der alle Updatedatensätze für die Bereitstellung zurückgegeben werden. |
 
-### <a name="creating-an-update-deployment"></a>Erstellen einer Updatebereitstellung
+<a id="creating-an-update-deployment" class="xliff"></a>
+
+### Erstellen einer Updatebereitstellung
 Erstellen Sie eine neue Updatebereitstellung, indem Sie oben auf dem Bildschirm auf die Schaltfläche **Hinzufügen** klicken, um die Seite **New Update Deployment** (Neue Updatebereitstellung) zu öffnen.  Sie müssen Werte für die Eigenschaften in der folgenden Tabelle angeben.
 
 | Eigenschaft | Beschreibung |
@@ -196,15 +244,21 @@ Erstellen Sie eine neue Updatebereitstellung, indem Sie oben auf dem Bildschirm 
 
 <br><br> ![Seite „New Update Deployment“ (Neue Updatebereitstellung)](./media/oms-solution-update-management/update-newupdaterun-page.png)
 
-### <a name="time-range"></a>Zeitbereich
-Standardmäßig umfasst der Bereich der Daten, die mit der Lösung für die Updateverwaltung analysiert werden, alle verbundenen Verwaltungsgruppen, die innerhalb des letzten Tags generiert wurden. 
+<a id="time-range" class="xliff"></a>
+
+### Zeitbereich
+Standardmäßig umfasst der Bereich der Daten, die mit der Lösung für die Updateverwaltung analysiert werden, alle verbundenen Verwaltungsgruppen, die innerhalb des letzten Tags generiert wurden.
 
 Um den Zeitraum der Daten zu ändern, wählen Sie oben im Dashboard die Option **Data based on** (Daten basierend auf). Sie können Einträge auswählen, die innerhalb der letzten sieben Tage, eines Tages oder der letzten sechs Stunden erstellt oder aktualisiert wurden. Außerdem können Sie **Benutzerdefiniert** auswählen und einen benutzerdefinierten Datumsbereich angeben.
 
-## <a name="log-analytics-records"></a>Log Analytics-Datensätze
+<a id="log-analytics-records" class="xliff"></a>
+
+## Log Analytics-Datensätze
 Mit der Lösung für die Updateverwaltung werden zwei Arten von Datensätzen im OMS-Repository erstellt.
 
-### <a name="update-records"></a>Updatedatensätze
+<a id="update-records" class="xliff"></a>
+
+### Updatedatensätze
 Ein Datensatz vom Typ **Update** wird für jedes Update erstellt, dass auf jedem Computer entweder installiert ist oder benötigt wird. Die Eigenschaften der Updatedatensätze sind in der folgenden Tabelle aufgeführt.
 
 | Eigenschaft | Beschreibung |
@@ -233,11 +287,11 @@ Ein Datensatz vom Typ **Update** wird für jedes Update erstellt, dass auf jedem
 | UpdateID |GUID zur eindeutigen Identifizierung des Updates |
 | UpdateState |Gibt an, ob das Update auf diesem Computer installiert ist.<br>Mögliche Werte:<br>- Installiert: Das Update ist auf diesem Computer installiert.<br>- Erforderlich: Das Update ist nicht installiert und wird auf diesem Computer benötigt. |
 
-Wenn Sie eine Protokollsuche durchführen, bei der Datensätze mit dem Typ **Update** zurückgegeben werden, können Sie die Ansicht **Updates** wählen. Darin werden mehrere Kacheln angezeigt, auf denen die von der Suche zurückgegebenen Updates zusammengefasst sind. Sie können auf die Einträge der Kacheln **Fehlende und angewendete Updates** und **Erforderliche und optionale Updates** klicken, um die Ansicht auf die jeweiligen Updates zu begrenzen. Wählen Sie die Ansicht **Liste** oder **Tabelle**, um die einzelnen Datensätze zurückzugeben.<br> 
+Wenn Sie eine Protokollsuche durchführen, bei der Datensätze mit dem Typ **Update** zurückgegeben werden, können Sie die Ansicht **Updates** wählen. Darin werden mehrere Kacheln angezeigt, auf denen die von der Suche zurückgegebenen Updates zusammengefasst sind. Sie können auf die Einträge der Kacheln **Fehlende und angewendete Updates** und **Erforderliche und optionale Updates** klicken, um die Ansicht auf die jeweiligen Updates zu begrenzen. Wählen Sie die Ansicht **Liste** oder **Tabelle**, um die einzelnen Datensätze zurückzugeben.<br>
 
 ![Ansicht „Update“ der Protokollsuche mit Datensatztyp „Update“](./media/oms-solution-update-management/update-la-view-updates.png)  
 
-In der Ansicht **Tabelle** können Sie für einen Datensatz jeweils auf die **KBID** klicken, um den KB-Artikel im Browser zu öffnen. So können Sie die Details des jeweiligen Updates schnell anzeigen und lesen.<br> 
+In der Ansicht **Tabelle** können Sie für einen Datensatz jeweils auf die **KBID** klicken, um den KB-Artikel im Browser zu öffnen. So können Sie die Details des jeweiligen Updates schnell anzeigen und lesen.<br>
 
 ![Ansicht „Tabelle“ der Protokollsuche mit Kacheln – Datensatztyp „Updates“](./media/oms-solution-update-management/update-la-view-table.png)
 
@@ -245,7 +299,9 @@ Klicken Sie in der Ansicht **Liste** auf den Link **Ansicht** neben der KBID, um
 
 ![Ansicht „Liste“ der Protokollsuche mit Kacheln – Datensatztyp „Updates“](./media/oms-solution-update-management/update-la-view-list.png)
 
-### <a name="updatesummary-records"></a>UpdateSummary-Datensätze
+<a id="updatesummary-records" class="xliff"></a>
+
+### UpdateSummary-Datensätze
 Ein Datensatz vom Typ **UpdateSummary** wird für jeden Windows-Agent-Computer erstellt. Dieser Datensatz wird jedes Mal aktualisiert, wenn der Computer auf erforderliche Updates untersucht wird. Die Eigenschaften der **UpdateSummary**-Datensätze sind in der folgenden Tabelle aufgeführt.
 
 | Eigenschaft | Beschreibung |
@@ -268,45 +324,52 @@ Ein Datensatz vom Typ **UpdateSummary** wird für jeden Windows-Agent-Computer e
 | WindowsUpdateSetting |Einstellung für die Vorgehensweise des Computers beim Installieren wichtiger Updates<br>Mögliche Werte:<br>- Deaktiviert<br>- Vor der Installation benachrichtigen<br>- Geplante Installation |
 | WSUSServer |URL des WSUS-Servers, wenn der Computer für dessen Nutzung konfiguriert ist |
 
-## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
-Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensätze, die mit dieser Lösung erfasst wurden. 
+<a id="sample-log-searches" class="xliff"></a>
+
+## Beispiele für Protokollsuchen
+Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensätze, die mit dieser Lösung erfasst wurden.
 
 | Abfrage | Beschreibung |
 | --- | --- |
-|Windows-basierte Servercomputer, für die Updates erforderlich sind |`Type:Update OSType!=Linux UpdateState=Needed Optional=false Approved!=false | measure count() by Computer` |
-|Linux-Server, für die Updates erforderlich sind | `Type:Update OSType=Linux UpdateState!="Not needed" | measure count() by Computer` |
-| Alle Computer, auf denen Updates fehlen |`Type=Update UpdateState=Needed Optional=false | select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate` |
-| Fehlende Updates für einen bestimmten Computer (Ersetzen Sie den Wert durch den Namen Ihres eigenen Computers.) |`Type=Update UpdateState=Needed Optional=false Computer="COMPUTER01.contoso.com" | select Computer,Title,KBID,Product,UpdateSeverity,PublishedDate` |
-| Alle Computer, auf denen kritische Updates oder Sicherheitsupdates fehlen |`Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates"`) |
-| Für Computer erforderliche kritische Updates oder Sicherheitsupdates, die manuell angewendet wurden |`Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") Computer IN {Type=UpdateSummary WindowsUpdateSetting=Manual | Distinct Computer} | Distinct KBID` |
-| Fehlerereignisse für Computer, auf denen erforderliche kritische oder Sicherheitsupdates fehlen |`Type=Event EventLevelName=error Computer IN {Type=Update (Classification="Security Updates" OR Classification="Critical Updates") UpdateState=Needed Optional=false | Distinct Computer}` |
-| Alle Computer, auf denen Updaterollups fehlen |`Type=Update Optional=false Classification="Update Rollups" UpdateState=Needed| select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate` |
-| Eindeutig identifizierbare fehlende Updates auf allen Computern |`Type=Update UpdateState=Needed Optional=false | Distinct Title` |
-| Windows-basierter Servercomputer mit Updates, für die bei einer Updateausführung ein Fehler aufgetreten ist | `Type:UpdateRunProgress InstallationStatus=failed | measure count() by Computer, Title, UpdateRunName` |
-| Linux-Server mit Updates, für die bei einer Updateausführung ein Fehler aufgetreten ist |`Type:UpdateRunProgress InstallationStatus=failed | measure count() by Computer, Product, UpdateRunName` |
-| WSUS-Computermitgliedschaft |`Type=UpdateSummary | measure count() by WSUSServer` |
-| Konfiguration automatischer Updates |`Type=UpdateSummary | measure count() by WindowsUpdateSetting` |
-| Computer, auf denen automatische Updates deaktiviert wurden |`Type=UpdateSummary WindowsUpdateSetting=Manual` |
-| Liste mit allen Linux-Computern, für die ein Paketupdate verfügbar ist |`Type=Update and OSType=Linux and UpdateState!="Not needed" | measure count() by Computer` |
-| Liste mit allen Linux-Computern, für die ein Paketupdate zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist |`Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") | measure count() by Computer` |
-| Liste mit allen Paketen, für die ein Update verfügbar ist |Type=Update and OSType=Linux and UpdateState!="Not needed" |
-| Liste mit allen Paketen, für die ein Update zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist |`Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates")` |
-| Liste mit den Updatebereitstellungen, bei denen Computer geändert wurden |`Type:UpdateRunProgress | measure Count() by UpdateRunName` |
-|Computer, die bei dieser Updateausführung aktualisiert wurden (Ersetzen Sie den Wert durch den Namen Ihrer Updatebereitstellung.) |`Type:UpdateRunProgress UpdateRunName="DeploymentName" | measure Count() by Computer` |
-| Liste mit allen „Ubuntu“-Computern mit verfügbaren Updates |`Type=Update and OSType=Linux and OSName = Ubuntu &| measure count() by Computer` |
+| Type:Update OSType!=Linux UpdateState=Needed Optional=false Approved!=false &#124; measure count() by Computer |Windows-basierte Servercomputer, für die Updates erforderlich sind |
+| Type:Update OSType=Linux UpdateState!="Not needed" &#124; measure count() by Computer |Linux-Server, für die Updates erforderlich sind | 
+| Type=Update UpdateState=Needed Optional=false &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |Alle Computer, auf denen Updates fehlen |
+| Type=Update UpdateState=Needed Optional=false Computer="COMPUTER01.contoso.com" &#124; select Computer,Title,KBID,Product,UpdateSeverity,PublishedDate |Fehlende Updates für einen bestimmten Computer (Ersetzen Sie den Wert durch den Namen Ihres eigenen Computers.)|
+| Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") |Alle Computer, auf denen kritische Updates oder Sicherheitsupdates fehlen | 
+| Type=Update UpdateState=Needed Optional=false (Classification="Security Updates" OR Classification="Critical Updates") Computer IN {Type=UpdateSummary WindowsUpdateSetting=Manual &#124; Distinct Computer} &#124; Distinct KBID |Für Computer erforderliche kritische Updates oder Sicherheitsupdates, die manuell angewendet wurden |
+| Type=Event EventLevelName=error Computer IN {Type=Update (Classification="Security Updates" OR Classification="Critical Updates") UpdateState=Needed Optional=false &#124; Distinct Computer} |Fehlerereignisse für Computer, auf denen erforderliche kritische oder Sicherheitsupdates fehlen |
+| Type=Update Optional=false Classification="Update Rollups" UpdateState=Needed &#124; select Computer,Title,KBID,Classification,UpdateSeverity,PublishedDate |Alle Computer, auf denen Updaterollups fehlen | 
+| Type=Update UpdateState=Needed Optional=false &#124; Distinct Title |Eindeutig identifizierbare fehlende Updates auf allen Computern | 
+| Type:UpdateRunProgress InstallationStatus=failed &#124; measure count() by Computer, Title, UpdateRunName |Windows-basierter Servercomputer mit Updates, für die bei einer Updateausführung ein Fehler aufgetreten ist | 
+| Type:UpdateRunProgress InstallationStatus=failed &#124; measure count() by Computer, Product, UpdateRunName |Linux-Server mit Updates, für die bei einer Updateausführung ein Fehler aufgetreten ist | 
+| Type=UpdateSummary &#124; measure count() by WSUSServer |WSUS-Computermitgliedschaft | 
+| Type=UpdateSummary &#124; measure count() by WindowsUpdateSetting |Konfiguration automatischer Updates | 
+| Type=UpdateSummary WindowsUpdateSetting=Manual |Computer, auf denen automatische Updates deaktiviert wurden | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" &#124; measure count() by Computer |Liste mit allen Linux-Computern, für die ein Paketupdate verfügbar ist | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") &#124; measure count() by Computer |Liste mit allen Linux-Computern, für die ein Paketupdate zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" |Liste mit allen Paketen, für die ein Update verfügbar ist | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |Liste mit allen Paketen, für die ein Update zur Behebung von kritischen oder sicherheitsrelevanten Sicherheitsrisiken verfügbar ist | 
+| Type:UpdateRunProgress &#124; measure Count() by UpdateRunName |Liste mit den Updatebereitstellungen, bei denen Computer geändert wurden | 
+| Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |Computer, die bei dieser Updateausführung aktualisiert wurden (Ersetzen Sie den Wert durch den Namen Ihrer Updatebereitstellung.) | 
+| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Liste mit allen „Ubuntu“-Computern mit verfügbaren Updates | 
 
-## <a name="troubleshooting"></a>Problembehandlung 
+<a id="troubleshooting" class="xliff"></a>
+
+## Problembehandlung
 
 Dieser Abschnitt enthält Informationen zum Durchführen der Problembehandlung mit der Lösung für die Updateverwaltung.  
 
-### <a name="how-do-i-troubleshoot-update-deployments"></a>Wie kann ich die Problembehandlung für Updatebereitstellungen durchführen?
+<a id="how-do-i-troubleshoot-update-deployments" class="xliff"></a>
+
+### Wie kann ich die Problembehandlung für Updatebereitstellungen durchführen?
 Sie können die Ergebnisse des Runbooks, das für die Bereitstellung von Updates der geplanten Updatebereitstellung zuständig ist, über das Blatt „Aufträge“ Ihres Automation-Kontos anzeigen, das mit dem OMS-Arbeitsbereich für diese Lösung verknüpft ist.  Das Runbook **Patch-MicrosoftOMSComputer** ist ein untergeordnetes Runbook, das auf einen bestimmten verwalteten Computer ausgerichtet ist. Beim Überprüfen des ausführlichen Datenstroms werden detaillierte Informationen zur Bereitstellung angezeigt.  In der Ausgabe wird angegeben, welche erforderlichen Updates zutreffen, und der Downloadstatus, der Installationsstatus und weitere Details werden aufgeführt.<br><br> ![Auftragsstatus der Updatebereitstellung](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
 
 Weitere Informationen finden Sie unter [Runbookausgabe und -meldungen in Azure Automation](../automation/automation-runbook-output-and-messages.md).   
-  
-## <a name="next-steps"></a>Nächste Schritte
+
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 * Verwenden Sie die Protokollsuche in [Log Analytics](../log-analytics/log-analytics-log-searches.md), um ausführliche Daten zu Updates anzuzeigen.
 * [Erstellen Sie eigene Dashboards](../log-analytics/log-analytics-dashboards.md), um die Einhaltung der erforderlichen Updates für Ihre verwalteten Computer anzuzeigen.
 * [Erstellen Sie Warnungen](../log-analytics/log-analytics-alerts.md), wenn kritische Updates für Computer als fehlend erkannt werden oder für einen Computer die automatischen Updates deaktiviert sind.  
-
 

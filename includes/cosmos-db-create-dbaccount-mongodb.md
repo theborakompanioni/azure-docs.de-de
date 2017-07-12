@@ -9,7 +9,7 @@
        
     In diesem Schnellstart werden wir mit der MongoDB-API programmieren, sodass Sie **MongoDB** auswählen, wenn Sie das Formular ausfüllen. Beachten Sie, dass Azure Cosmos DB eine hoch verfügbare, weltweit verteilte Datenbank-Dienstplattform für Ihre unternehmenskritischen Anwendungen bereitstellen kann, wenn Sie über Diagrammdaten aus einer Social Media-App, Dokumentdaten aus einer Katalog-App oder Schlüssel-/Wertdaten (Tabelle) verfügen.
 
-    Füllen Sie das Blatt „Neues Konto“ mithilfe der Informationen im Screenshot als Leitfaden aus. Sie wählen eindeutige Werte aus, da Sie Ihr Konto einrichten, sodass Ihre Werte mit dem Screenshot nicht genau übereinstimmen.
+    Füllen Sie das Blatt **Neues Konto** mithilfe der Informationen in der Tabelle aus.
  
     ![Screenshot des Blatts „Neue Azure Cosmos DB“](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
    

@@ -16,14 +16,16 @@ ms.date: 05/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: 4b15801b2ddda0dfd61b025535e379d9a8eed287
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 477f618c09c8cf572a16d142f63c9b3553050b20
 ms.contentlocale: de-de
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
-# <a name="connect-your-simulated-device-to-your-iot-hub-using-net"></a>Herstellen einer Verbindung zwischen dem simulierten Gerät und Ihrem IoT-Hub mit .NET
+<a id="connect-your-simulated-device-to-your-iot-hub-using-net" class="xliff"></a>
+
+# Herstellen einer Verbindung zwischen dem simulierten Gerät und Ihrem IoT-Hub mit .NET
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Am Ende dieses Tutorials verfügen Sie über drei .NET-Konsolen-Apps:
@@ -56,7 +58,9 @@ Sie haben nun Ihren IoT-Hub erstellt und verfügen über den Hostnamen und die I
 [!INCLUDE [iot-hub-get-started-create-device-identity-csharp](../../includes/iot-hub-get-started-create-device-identity-csharp.md)]
 
 <a id="D2C_csharp"></a>
-## <a name="receive-device-to-cloud-messages"></a>Empfangen von Gerät-an-Cloud-Nachrichten
+<a id="receive-device-to-cloud-messages" class="xliff"></a>
+
+## Empfangen von Gerät-an-Cloud-Nachrichten
 In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die D2C-Nachrichten (Device-to-Cloud) aus IoT Hub liest. Ein IoT-Hub macht einen mit [Azure Event Hubs][lnk-event-hubs-overview] kompatiblen Endpunkt verfügbar, der Ihnen das Lesen von D2C-Nachrichten ermöglicht. Zur Vereinfachung wird in diesem Tutorial ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Informationen dazu, wie Sie eine Verarbeitung von D2C-Nachrichten mit Skalierbarkeit erzielen, finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten][lnk-process-d2c-tutorial]. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs][lnk-eventhubs-tutorial]. (Dieses Tutorial gilt für die mit IoT Hub Event Hubs kompatiblen Endpunkte.)
 
 > [!NOTE]
@@ -126,7 +130,9 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die D2C-Nachrichten (D
     Task.WaitAll(tasks.ToArray());
    ```
 
-## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
+<a id="create-a-simulated-device-app" class="xliff"></a>
+
+## Erstellen einer simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine .NET-Konsolenanwendung, die ein Gerät simuliert, das D2C-Nachrichten (Device to Cloud, Gerät zu Cloud) an einen IoT-Hub sendet.
 
 1. Fügen Sie in Visual Studio in der aktuellen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung (.NET Framework** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Stellen Sie sicher, dass .NET-Framework-Version 4.5.1 oder höher verwendet wird. Nennen Sie das Projekt **SimulatedDevice**.
@@ -182,7 +188,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolenanwendung, die ein Gerät si
     }
    ```
     Diese Methode sendet jede Sekunde eine neue D2C-Nachricht. Die Nachricht enthält ein JSON-serialisiertes Objekt mit der Geräte-ID sowie zufällig generierten Zahlen, um einen Temperatur- und Feuchtigkeitssensor zu simulieren.
-7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
    
    ```csharp
    Console.WriteLine("Simulated device\n");
@@ -192,7 +198,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolenanwendung, die ein Gerät si
    Console.ReadLine();
    ```
    
-   In der Standardeinstellung erstellt die **Create**-Methode eine **DeviceClient**-Instanz, die das AMQP-Protokoll für die Kommunikation mit dem IoT Hub verwendet. Um das MQTT- oder HTTP-Protokoll zu verwenden, nutzen Sie die Überschreibung der **Create**-Methode, bei der Sie das Protokoll angeben können. Wenn Sie das HTTP-Protokoll verwenden, müssen Sie Ihrem Projekt auch das NuGet-Paket **Microsoft.AspNet.WebApi.Client** hinzufügen, um den **System.Net.Http.Formatting**-Namespace einzuschließen.
+   Die **Create**-Methode in einer .NET Framework-App erstellt standardmäßig eine **DeviceClient**-Instanz, die das AMQP-Protokoll für die Kommunikation mit IoT Hub verwendet. (UWP- und PCL-Clients nutzen standardmäßig HTTP.) Um das MQTT- oder HTTP-Protokoll zu verwenden, nutzen Sie die Überschreibung der **Create**-Methode, bei der Sie das Protokoll angeben können. Wenn Sie das HTTP-Protokoll verwenden, müssen Sie Ihrem Projekt auch das NuGet-Paket **Microsoft.AspNet.WebApi.Client** hinzufügen, um den **System.Net.Http.Formatting**-Namespace einzuschließen.
 
 Dieses Tutorial führt Sie durch die Schritte zum Erstellen einer IoT Hub-App für ein simuliertes Gerät. Sie können auch die Visual Studio-Erweiterung für den [verknüpften Dienst für Azure IoT Hub][lnk-connected-service] verwenden, um Ihrer Geräte-App den erforderlichen Code hinzuzufügen.
 
@@ -201,7 +207,9 @@ Dieses Tutorial führt Sie durch die Schritte zum Erstellen einer IoT Hub-App f�
 > 
 > 
 
-## <a name="run-the-apps"></a>Ausführen der Apps
+<a id="run-the-apps" class="xliff"></a>
+
+## Ausführen der Apps
 Sie können die Apps nun ausführen.
 
 1. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen**. Wählen Sie **Mehrere Startprojekte**, und wählen Sie dann für die Projekte **ReadDeviceToCloudMessages** und **SimulatedDevice** als Aktion die Option **Starten** aus.
@@ -214,7 +222,9 @@ Sie können die Apps nun ausführen.
    
     ![Kachel „Verwendung“ im Azure-Portal][43]
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 In diesem Tutorial haben Sie im Azure-Portal einen IoT-Hub konfiguriert und anschließend in der Identitätsregistrierung des IoT-Hubs eine Geräteidentität erstellt. Sie haben diese Geräteidentität verwendet, um die SimulatedDevice-App für das Senden von D2C-Nachrichten an den IoT-Hub zu aktivieren. Sie haben außerdem eine App erstellt, mit der die vom IoT-Hub empfangenen Nachrichten angezeigt werden. 
 
 Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:

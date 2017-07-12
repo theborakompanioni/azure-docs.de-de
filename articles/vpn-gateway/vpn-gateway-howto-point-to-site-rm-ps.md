@@ -13,17 +13,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/15/2017
+ms.date: 06/27/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 6d5572a2fa7a89d51ec62e3ae05bdc9939ca3a24
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7abc3f238d08694c9f7359479cdce07bfb3d87bd
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung (P2S) mit einem VNet mithilfe von PowerShell
+<a id="configure-a-point-to-site-connection-to-a-vnet-using-powershell" class="xliff"></a>
+
+# Konfigurieren einer Point-to-Site-VPN-Verbindung (P2S) mit einem VNet mithilfe von PowerShell
 
 
 In diesem Artikel wird beschrieben, wie Sie ein VNet mit einer P2S-Verbindung im Resource Manager-Bereitstellungsmodell per PowerShell erstellen. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
@@ -49,7 +51,9 @@ P2S-Verbindungen erfordern Folgendes:
 * Ein VPN-Clientkonfigurationspaket muss generiert und auf jedem Clientcomputer installiert werden, der eine Verbindung herstellen wird. Das Clientkonfigurationspaket konfiguriert den nativen VPN-Client, der sich bereits im Betriebssystem befindet, mit den notwendigen Informationen für die Herstellung einer Verbindung mit dem VNET.
 
 
-## <a name="before-beginning"></a>Vorbereitungen
+<a id="before-beginning" class="xliff"></a>
+
+## Vorbereitungen
 
 * Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) registrieren.
 * Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen zum Installieren von PowerShell-Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azure/overview) (Übersicht über Azure PowerShell).
@@ -151,7 +155,9 @@ In diesem Abschnitt melden Sie sich an und deklarieren die für diese Konfigurat
 
 ## <a name="Certificates"></a>3 – Generieren von Zertifikaten
 
-Zertifikate werden von Azure zur Authentifizierung von VPN-Clients für Point-to-Site-VPNs verwendet. Sie laden die Informationen des öffentlichen Schlüssels des Stammzertifikats in Azure hoch. Der öffentliche Schlüssel wird dann als „vertrauenswürdig“ betrachtet. Clientzertifikate müssen über das vertrauenswürdige Stammzertifikat erstellt und dann auf jedem Clientcomputer installiert werden, der sich im persönlichen Zertifikatspeicher des aktuellen Benutzers befindet. Mit diesem Zertifikat wird der Client authentifiziert, wenn er eine Verbindung mit dem VNET initiiert. Weitere Informationen zum Generieren und Installieren von Zertifikaten finden Sie unter [Zertifikate für Point-to-Site-Verbindungen](vpn-gateway-certificates-point-to-site.md).
+Zertifikate werden von Azure zur Authentifizierung von VPN-Clients für Point-to-Site-VPNs verwendet. Sie laden die Informationen des öffentlichen Schlüssels des Stammzertifikats in Azure hoch. Der öffentliche Schlüssel wird dann als „vertrauenswürdig“ betrachtet. Clientzertifikate müssen über das vertrauenswürdige Stammzertifikat erstellt und dann auf jedem Clientcomputer installiert werden, der sich im persönlichen Zertifikatspeicher des aktuellen Benutzers befindet. Mit diesem Zertifikat wird der Client authentifiziert, wenn er eine Verbindung mit dem VNET initiiert. 
+
+Wenn Sie selbstsignierte Zertifikate verwenden, müssen diese anhand bestimmter Parameter erstellt werden. Sie können ein selbstsigniertes Zertifikat anhand der Anweisungen für [PowerShell und Windows 10](vpn-gateway-certificates-point-to-site.md) erstellen. Falls Sie nicht Windows 10 besitzen, können Sie [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) verwenden. Beim Erstellen von selbstsignierten Stammzertifikaten und Clientzertifikaten müssen Sie unbedingt die Schritte in den Anweisungen ausführen. Andernfalls sind die erstellten Zertifikate nicht mit P2S-Verbindungen kompatibel, und Ihnen wird ein Verbindungsfehler angezeigt.
 
 ### <a name="cer"></a>Schritt 1: Beschaffen der CER-Datei für das Stammzertifikat
 
@@ -258,7 +264,9 @@ Wenn Sie eine P2S-Verbindung mit einem anderen Clientcomputer als dem für die G
 
 Sie können vertrauenswürdige Stammzertifikate hinzufügen und aus Azure entfernen. Wenn Sie ein Stammzertifikat entfernen, können Clients, für die über diesen Stamm ein Zertifikat generiert wurde, nicht authentifiziert werden und somit auch keine Verbindung herstellen. Wenn Sie für einen Client die Authentifizierung und Verbindungsherstellung durchführen möchten, müssen Sie ein neues Clientzertifikat installieren, das aus einem für Azure vertrauenswürdigen (hochgeladenen) Stammzertifikat generiert wurde.
 
-### <a name="to-add-a-trusted-root-certificate"></a>So fügen Sie ein vertrauenswürdiges Stammzertifikat hinzu
+<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
+
+### So fügen Sie ein vertrauenswürdiges Stammzertifikat hinzu
 
 Sie können Azure bis zu 20 CER-Stammzertifikatdateien hinzufügen. Gehen Sie zum Hinzufügen eines Stammzertifikats wie folgt vor:
 
@@ -289,7 +297,9 @@ Sie können Azure bis zu 20 CER-Stammzertifikatdateien hinzufügen. Gehen Sie zu
   -VirtualNetworkGatewayName "VNet1GW"
   ```
 
-### <a name="to-remove-a-root-certificate"></a>So entfernen Sie ein Stammzertifikat
+<a id="to-remove-a-root-certificate" class="xliff"></a>
+
+### So entfernen Sie ein Stammzertifikat
 
 1. Deklarieren Sie die Variablen.
 
@@ -317,7 +327,9 @@ Sie können Clientzertifikate sperren. Anhand der Zertifikatsperrliste können S
 
 Üblicherweise wird das Stammzertifikat zum Verwalten des Zugriffs auf Team- oder Organisationsebene verwendet. Eine genauer abgestufte Steuerung des Zugriffs für einzelne Benutzer erfolgt hingegen mit gesperrten Clientzertifikaten.
 
-### <a name="to-revoke-a-client-certificate"></a>So sperren Sie ein Clientzertifikat
+<a id="to-revoke-a-client-certificate" class="xliff"></a>
+
+### So sperren Sie ein Clientzertifikat
 
 1. Rufen Sie den Fingerabdruck des Clientzertifikats ab. Weitere Informationen finden Sie unter [Vorgehensweise: Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Kopieren Sie ihn in einen Text-Editor, und entfernen Sie alle Leerzeichen, sodass eine fortlaufende Zeichenfolge entsteht. Diese wird im nächsten Schritt als Variable deklariert.
@@ -343,7 +355,9 @@ Sie können Clientzertifikate sperren. Anhand der Zertifikatsperrliste können S
   ```
 6. Nachdem der Fingerabdruck hinzugefügt wurde, kann das Zertifikat nicht mehr zum Herstellen einer Verbindung verwendet werden. Clients, die versuchen, unter Verwendung dieses Zertifikats eine Verbindung herzustellen, erhalten eine Meldung mit dem Hinweis, dass das Zertifikat nicht mehr gültig ist.
 
-### <a name="to-reinstate-a-client-certificate"></a>So reaktivieren Sie ein Clientzertifikat
+<a id="to-reinstate-a-client-certificate" class="xliff"></a>
+
+### So reaktivieren Sie ein Clientzertifikat
 
 Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus der Liste der gesperrten Clientzertifikate entfernen.
 
@@ -371,5 +385,8 @@ Sie können ein Clientzertifikat reaktivieren, indem Sie den Fingerabdruck aus d
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/linux/azure-vm-network-overview.md).
+

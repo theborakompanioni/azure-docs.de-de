@@ -16,14 +16,16 @@ ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0736a6f9790b70686c4d936f2af80d5e42b89615
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 49eb2e4f7d57de44a3b7a877dfdd138f4c374436
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/29/2017
 
 ---
 
-# <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
+<a id="welcome-to-azure-cosmos-db" class="xliff"></a>
+
+# Willkommen bei Azure Cosmos DB
 
 Azure Cosmos DB ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Mit einem Klick ermöglicht Azure Cosmos DB Ihnen, Durchsatz und Speicher elastisch und unabhängig voneinander über eine beliebige Anzahl von geografischen Azure-Regionen hinweg zu skalieren. Azure Cosmos DB bietet Ihnen mit umfassenden [Vereinbarungen zum Servicelevel](https://aka.ms/acdbsla) (Service Level Agreements, SLAs) Durchsatz-, Wartezeit-, Verfügbarkeits- und Konsistenzgarantien wie kein anderer Datenbankdienst.
 
@@ -33,11 +35,13 @@ Azure Cosmos DB enthält ein ressourcengesteuertes, vom Schema unabhängiges Dat
 
 Azure Cosmos DB wurde Ende 2010 eingeführt, um die Problembereiche zu beseitigen, mit denen sich Entwickler umfangreicher Anwendungen bei Microsoft konfrontiert sahen. Da die Erstellung weltweit verteilter Anwendungen nicht nur für Microsoft Probleme mit sich bringt, haben wir den Dienst extern allen Azure-Entwicklern in Form von Azure DocumentDB zur Verfügung gestellt. Mit Azure Cosmos DB ist der nächste große Schritt in der Entwicklung von DocumentDB geschafft, daher machen wir Azure Cosmos DB jetzt für Sie verfügbar. Im Rahmen dieser Version von Azure Cosmos DB werden DocumentDB-Kunden (mit ihren Daten) automatisch zu Azure Cosmos DB-Kunden. Der Übergang erfolgt reibungslos, und Sie erhalten nun Zugriff auf eine breitere Palette neuer Funktionen von Azure Cosmos DB. 
 
-## <a name="capability-comparison"></a>Vergleich der Funktionen
+<a id="capability-comparison" class="xliff"></a>
+
+## Vergleich der Funktionen
 
 Azure Cosmos DB kombiniert die besten Funktionen relationaler und nicht relationaler Datenbanken.
 
-| Funktionen | Relationale Datenbanken    | Nicht relationale Datenbanken (NoSQL) |     Azure Cosmos DB |
+| Funktionen | Relationale Datenbanken | Nicht relationale Datenbanken (NoSQL) |  Azure Cosmos DB |
 | --- | --- | --- | --- |
 | Globale Verteilung | x | x | ✓ Sofort einsatzbereit, mehr als 30 Regionen, Multihosting |
 | Horizontale Skalierung | x | ✓  | ✓ Speicher und Durchsatz unabhängig voneinander skalieren | 
@@ -46,7 +50,9 @@ Azure Cosmos DB kombiniert die besten Funktionen relationaler und nicht relation
 | Datenmodell + API | Relational + SQL | API mit mehreren Modellen + OSS-API | API mit mehreren Modellen + SQL-API + OSS-API (weitere demnächst verfügbar) |
 | SLAs | ✓  | x | ✓ Umfassende SLAs für Wartezeit, Durchsatz, Konsistenz, Verfügbarkeit |
 
-## <a name="key-capabilities"></a>Wichtige Funktionen
+<a id="key-capabilities" class="xliff"></a>
+
+## Wichtige Funktionen
 Als global verteilter Datenbankdienst bietet Azure Cosmos DB die folgenden Funktionen, die Ihnen bei der Erstellung skalierbarer, global verteilter, extrem reaktionsschneller Anwendungen helfen:
 
 * [**Globale, sofort einsatzbereite Verteilung**](#global-distribution)
@@ -86,7 +92,9 @@ Als global verteilter Datenbankdienst bietet Azure Cosmos DB die folgenden Funkt
 
 <a id="global-distribution"></a>
 
-## <a name="global-distribution"></a>Globale Verteilung
+<a id="global-distribution" class="xliff"></a>
+
+## Globale Verteilung
 Azure Cosmos DB-Container werden auf zwei Dimensionen verteilt: 
 
 1. Innerhalb einer bestimmten Region werden alle Ressourcen mithilfe von Ressourcenpartitionen horizontal partitioniert (lokale Verteilung). 
@@ -101,7 +109,9 @@ Die globale Verteilung von Ressourcen in Cosmos DB ist [sofort einsetzbar](distr
 Unabhängig von der Datenmenge oder der Anzahl der Regionen garantiert Cosmos DB, dass jede neu zugeordnete Region innerhalb von weniger als einer Stunde im 99. Perzentil mit der Verarbeitung von Clientanforderungen beginnen kann. Dies erfolgt durch die Parallelisierung des Seedings und Kopieren der Daten aus allen Quellressourcenpartitionen in die neu zugeordnete Region. Kunden können eine vorhandene Region auch entfernen oder eine Region, die ihrem Datenbankkonto zugeordnet war, offline schalten.
 
 <a id="data-models"></a>
-## <a name="multi-model-multi-api-support"></a>Unterstützung mehrerer Modelle und mehrerer APIs
+<a id="multi-model-multi-api-support" class="xliff"></a>
+
+## Unterstützung mehrerer Modelle und mehrerer APIs
  Azure Cosmos DB unterstützt mehrere Datenmodelle, einschließlich Dokumenten-, Schlüssel-Wert-, Graph- und spaltenbasierte Datenmodelle. Das grundlegende Inhaltsmodell des Cosmos DB-Datenbankmoduls basiert auf Atom-Datensatz-Sequenz (Atom-Record-Sequence, ARS). Atome bestehen aus einem kleinen Satz von primitiven Typen, z.B. Zeichenfolge, boolesch und Zahl. Datensätze sind Strukturen, die aus diese Typen bestehen. Sequenzen sind Arrays, die aus Atomen, Datensätzen oder Sequenzen bestehen. 
  
  Das Datenbankmodul kann verschiedene Datenmodelle effizient übersetzen und auf das ARS-basierte Datenmodell projizieren. Auf das Kerndatenmodell von Cosmos DB kann nativ über dynamisch geschriebene Programmiersprachen zugegriffen werden, und es kann in der vorliegenden Form als JSON verfügbar gemacht werden. 
@@ -109,21 +119,27 @@ Unabhängig von der Datenmenge oder der Anzahl der Regionen garantiert Cosmos DB
  Der Dienst unterstützt zudem beliebte Datenbank-APIs für Datenzugriff und Abfragen. Das Cosmos DB-Datenbankmodul unterstützt derzeit [DocumentDB SQL](documentdb-introduction.md), [MongoDB](mongodb-introduction.md), [Azure-Tabellen](table-introduction.md) (Vorschauversion) und [Gremlin](graph-introduction.md) (Vorschauversion). Sie können weiterhin Anwendungen mit gängigen OSS-APIs erstellen und alle Vorteile des kampferprobten und vollständig verwalteten, global verteilten Datenbankdiensts nutzen. 
 
 <a id="horizontal-scale"></a>
-## <a name="horizontal-scaling-of-storage-and-throughput"></a>Horizontale Skalierung von Speicher und Durchsatz
+<a id="horizontal-scaling-of-storage-and-throughput" class="xliff"></a>
+
+## Horizontale Skalierung von Speicher und Durchsatz
 Alle Daten in einem Cosmos DB-Container (z.B. eine Dokumentensammlung, eine Tabelle oder ein Graph) werden horizontal partitioniert und transparent durch Ressourcenpartitionen verwaltet. Eine Ressourcenpartition ist ein konsistenter und hoch verfügbarer Container mit Daten, die durch einen [vom Kunden angegebenen Partitionsschlüssel](partition-data.md) partitioniert sind. Sie stellt ein einziges Systemimage für eine Auswahl seiner verwalteten Ressourcen bereit, und ist eine grundlegende Einheit für Skalierbarkeit und Verteilung. Cosmos DB wurde entwickelt, damit Sie den Durchsatz auf der Grundlage der Datenverkehrsmuster der Anwendung über verschiedene geografische Regionen hinweg elastisch skalieren können, um schwankende Workloads zu unterstützen, die sowohl hinsichtlich der Geographie als auch der Zeiten variieren. Der Dienst verwaltet die Partitionen transparent und ohne die Verfügbarkeit, die Konsistenz, die Wartezeit oder den Durchsatz eines Cosmos DB-Containers zu beeinträchtigen.  
  
 ![Azure Cosmos DB ist horizontal skalierbar](./media/introduction/azure-cosmos-db-partitioning.png) 
 
 Sie können den Durchsatz eines Azure Cosmos DB-Containers elastisch skalieren, indem Sie programmgesteuert Durchsatz unter Verwendung von [Anforderungseinheiten pro Sekunde (RU/s)](request-units.md) bereitstellen. Intern verwaltet der Dienst Ressourcenpartitionen transparent, um den Durchsatz für einen bestimmten Container zu erreichen. Cosmos DB stellt sicher, dass der Durchsatz in allen dem Container zugeordneten Regionen zur Verwendung verfügbar ist. Der neue Durchsatz wird nach der Änderung des konfigurierten Durchsatzwerts innerhalb von fünf Sekunden wirksam. 
 
-Sie können Durchsatz für einen Cosmos DB-Container sowohl pro Sekunde als auch [pro Minute (RU/m)](request-units-per-minute.md) bereitstellen. Der bereitgestellte Durchsatz mit minutengenauer Granularität dient zur Verarbeitung unerwarteter Lastspitzen in der Workload, für die der Durchsatz mit sekundengenauer Granularität bereitgestellt wurde. 
+Sie können Durchsatz für einen Cosmos DB-Container sowohl pro Sekunde als auch [pro Minute (RU/Min.)](request-units-per-minute.md) bereitstellen. Der bereitgestellte Durchsatz mit minutengenauer Granularität dient zur Verarbeitung unerwarteter Lastspitzen in der Workload, für die der Durchsatz mit sekundengenauer Granularität bereitgestellt wurde. 
 
 <a id="low-latency"></a>
-## <a name="low-latency-guarantees-at-the-99th-percentile"></a>Garantien geringer Wartezeit im 99. Perzentil
+<a id="low-latency-guarantees-at-the-99th-percentile" class="xliff"></a>
+
+## Garantien geringer Wartezeit im 99. Perzentil
 Als Teil der SLAs garantiert Cosmos DB seinen Kunden geringe End-to-End-Wartezeit im 99. Perzentil. Für ein typisches 1-KB-Element garantiert Cosmos DB eine End-to-End-Wartezeit für Lesevorgänge von weniger als 10 ms und für indizierte Schreibvorgänge von weniger als 15 ms im 99. Perzentil innerhalb derselben Azure-Region. Die mittlere Wartezeit liegt deutlich niedriger (unter 5 ms).  Durch eine obere Grenze der Anforderungsverarbeitung für jede Datenbanktransaktion erlaubt Cosmos DB es Clients, klar zwischen Transaktionen mit hoher Wartezeit und einer nicht verfügbaren Datenbank zu unterscheiden.
 
 <a id="high-availability"></a>
-## <a name="transparent-multi-homing-and-9999-high-availability"></a>Transparentes Multihosting und hohe Verfügbarkeit zu 99,99 %
+<a id="transparent-multi-homing-and-9999-high-availability" class="xliff"></a>
+
+## Transparentes Multihosting und hohe Verfügbarkeit zu 99,99 %
 Sie können den Regionen, die Ihrem Azure Cosmos DB-Datenbankkonto zugeordnet sind, dynamisch „Prioritäten“ zuweisen. Prioritäten werden verwendet, um die Anforderungen bei regionalen Ausfällen an bestimmte Regionen weiterzuleiten. Im unwahrscheinlichen Falle eines regionalen Notfalls führt Cosmos DB automatisch ein Failover in der Reihenfolge der Prioritäten aus.
 
 Um die End-to-End-Verfügbarkeit der Anwendung zu testen, können Sie [manuell ein Failover auslösen](regional-failover.md) (begrenzt auf zwei Vorgänge innerhalb einer Stunde). Cosmos DB garantiert, dass während eines manuellen regionalen Failovers keine Daten verloren gehen. Für den Fall, dass ein regionaler Notfall auftritt, garantiert Cosmos DB eine obere Begrenzung des Datenverlusts während des vom System initiierten automatischen Failovers. Sie müssen die Anwendung nach einem regionalen Failover nicht erneut bereitstellen und die Verfügbarkeits-SLAs werden von Azure Cosmos DB eingehalten. 
@@ -131,7 +147,9 @@ Um die End-to-End-Verfügbarkeit der Anwendung zu testen, können Sie [manuell e
 In diesem Szenario ermöglicht Cosmos DB Ihnen die Interaktion mit Ressourcen über logische (regionsunabhängige) oder physische (regionsspezifische) Endpunkte. Ersteres ermöglicht transparentes Multihosting der Anwendung im Falle eines Failovers. Letzteres bietet präzise Steuerungsmöglichkeiten für die Anwendung, um Lese- und Schreibvorgänge an bestimmte Regionen umzuleiten. Cosmos DB garantiert eine 99,99 % Verfügbarkeits-SLA für jedes Datenbankkonto. Die Verfügbarkeitsgarantien sind unabhängig von Skalierung (bereitgestellter Durchsatz und Speicher), Anzahl der Regionen oder geografischer Entfernung zwischen Regionen, die einer bestimmten Datenbank zugeordnet sind. 
 
 <a id="consistency"></a>
-## <a name="multiple-well-defined-consistency-models"></a>Mehrere, klar definierte Konsistenzmodelle
+<a id="multiple-well-defined-consistency-models" class="xliff"></a>
+
+## Mehrere, klar definierte Konsistenzmodelle
 Kommerziell verteilte Datenbanken werden in zwei Kategorien unterteilt: Datenbanken, die keinerlei klar definierte, belegbare Konsistenzoptionen bieten, und Datenbanken, die zwei gegensätzliche Programmierbarkeitsoptionen (starke Konsistenz oder letztliche Konsistenz) bieten. Erstere liefern Anwendungsentwicklern minuziöse Replikationsprotokolle und bürden ihnen die schwierige Aufgabe auf, zwischen Konsistenz, Verfügbarkeit, Wartezeit und Durchsatz abzuwägen. Letztere setzen die Anwendungsentwickler unter Druck, eine der beiden Extreme auszuwählen. Trotz der Fülle der Untersuchungen und Vorschläge für mehr als 50 Konsistenzmodelle war die verteilte Datenbankcommunity nicht in der Lage, Konsistenzebenen über starke und letztliche Konsistenz kommerzialisieren. 
 
 Cosmos DB bietet Ihnen die Auswahl zwischen [fünf klar definierten Konsistenzmodellen](consistency-levels.md) aus dem gesamten Konsistenzspektrum – starke Konsistenz, Konsistenz mit begrenzter Veraltung, [Sitzungskonsistenz](http://dl.acm.org/citation.cfm?id=383631), Präfixkonsistenz und letztliche Konsistenz. 
@@ -142,19 +160,21 @@ Die folgende Tabelle zeigt die speziellen Garantien der einzelnen Konsistenzeben
  
 **Konsistenzebenen und Garantien**
 
-| Konsistenzebene    | Garantien |
+| Konsistenzebene | Garantien |
 | --- | --- |
 | STARK (Strong) | Linearisierbarkeit |
-| Begrenzte Veraltung (Bounded staleness)    | Präfixkonsistenz. Lesevorgänge bleiben hinter Schreibvorgängen um Präfix k oder Intervall t zurück |
-| Sitzung    | Präfixkonsistenz. Monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen |
-| Präfixkonsistenz    | Die zurückgegebenen Updates sind ein bestimmtes Präfix aller Updates ohne Lücken |
-| Letztlich (Eventual)    | Lesevorgänge in falscher Reihenfolge |
+| Begrenzte Veraltung (Bounded staleness) | Präfixkonsistenz. Lesevorgänge bleiben hinter Schreibvorgängen um Präfix k oder Intervall t zurück |
+| Sitzung   | Präfixkonsistenz. Monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen |
+| Präfixkonsistenz | Die zurückgegebenen Updates sind ein bestimmtes Präfix aller Updates ohne Lücken |
+| Letztlich (Eventual)  | Lesevorgänge in falscher Reihenfolge |
 
 Sie können die Standardkonsistenzebene für Ihr Cosmos DB-Konto konfigurieren (und die Konsistenz später für eine bestimmte Leseanforderung außer Kraft setzen). Intern gilt die Standardkonsistenzebene für Daten in den Partitionssätzen, die sich auf mehrere Regionen erstrecken können. 
 
 
 <a id="sla"></a>
-## <a name="guaranteed-service-level-agreements"></a>Garantierte Vereinbarungen zum Servicelevel (SLA)
+<a id="guaranteed-service-level-agreements" class="xliff"></a>
+
+## Garantierte Vereinbarungen zum Servicelevel (SLA)
 
 Cosmos DB ist der erste verwaltete Datenbankdienst, der [SLA-Garantien](https://aka.ms/acdbsla) für Verfügbarkeit, Durchsatz, niedrige Wartezeit und Konsistenz mit 99,99 Prozent anbietet.
 * Verfügbarkeit: Verfügbarkeits-SLA mit 99,99 Prozent Betriebszeit für jeden Vorgang auf Daten- und Steuerungsebene.
@@ -164,16 +184,22 @@ Cosmos DB ist der erste verwaltete Datenbankdienst, der [SLA-Garantien](https://
 
 
 <a id="schema-free"></a>
-## <a name="schema-free"></a>Schemafrei
+<a id="schema-free" class="xliff"></a>
+
+## Schemafrei
 
 Sowohl bei relationalen als auch NoSQL-Datenbanken sind Sie gezwungen, sich mit Schema- und Indexverwaltung, Versionsverwaltung und Migration auseinanderzusetzen. All dies ist in einem global verteilten Setup äußerst schwierig. Aber keine Sorge – Cosmos DB beseitigt dieses Problem. Bei Cosmos DB brauchen Sie keine Schemas und Indizes zu verwalten, sich nicht mit Schemaversionsverwaltung auseinanderzusetzen und sich keine Gedanken um Anwendungsausfallzeiten während der Migration von Schemas zu machen. Das Cosmos DB-Datenbankmodul ist komplett schemaunabhängig – alle erfassten Daten werden automatisch und ohne Schema oder Indizes erfasst, was extrem schnelle Abfragen ermöglicht. 
 
 <a id="tco"></a>
-## <a name="low-cost-of-ownership"></a>Niedrige Betriebskosten
+<a id="low-cost-of-ownership" class="xliff"></a>
+
+## Niedrige Betriebskosten
 
  Wenn alle Aspekte der Gesamtbetriebskosten (TCO) berücksichtigt werden, können verwaltete Clouddienste wie Azure Cosmos DB fünf-bis zehnmal kosteneffektiver als die lokal oder auf virtuellen Computern ausgeführten OSS-Vergleichssysteme sein. Und Azure Cosmos DB ist bei großen Workloads zwei bis drei Mal günstiger als DynamoDB. Weitere Informationen finden Sie im [TCO-Whitepaper](https://aka.ms/documentdb-tco-paper). 
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 
 * [Erste Schritte mit der DocumentDB-API von Azure Cosmos DB](create-documentdb-dotnet.md)

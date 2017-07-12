@@ -16,13 +16,16 @@ ms.topic: get-started-article
 ms.date: 02/27/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: a6a8300046a0f17061e74b793b254cdca1e1a265
-ms.lasthandoff: 04/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 9119a4523c66415925223b5de10ca0fb4a7147b2
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
+<a id="deploying-active-directory-federation-services-in-azure" class="xliff"></a>
+
+# Bereitstellen von Active Directory-Verbunddiensten in Azure
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche hohe Verfügbarkeit mit wenig Aufwand erzielt werden.
 Die Bereitstellung von AD FS in Azure hat mehrere Vorteile, von denen hier einige aufgeführt sind:
 
@@ -31,7 +34,9 @@ Die Bereitstellung von AD FS in Azure hat mehrere Vorteile, von denen hier einig
 * **Standortübergreifende Redundanz** : Mit der geografischen Redundanz von Azure können Sie sicher sein, dass Ihre Infrastruktur weltweit eine hohe Verfügbarkeit aufweist.
 * **Einfache Verwaltung** : Dank der stark vereinfachten Verwaltungsfunktionen im Azure-Portal ist die Verwaltung der Infrastruktur sehr einfach und problemlos. 
 
-## <a name="design-principles"></a>Entwurfsprinzipien
+<a id="design-principles" class="xliff"></a>
+
+## Entwurfsprinzipien
 ![Bereitstellungsentwurf](./media/active-directory-aadconnect-azure-adfs/deployment.png)
 
 Im obigen Diagramm ist die empfohlene grundlegende Topologie dargestellt, mit der Sie die Bereitstellung Ihrer AD FS-Infrastruktur in Azure beginnen können. Die Prinzipien hinter den verschiedenen Komponenten der Topologie sind unten angegeben:
@@ -44,10 +49,14 @@ Im obigen Diagramm ist die empfohlene grundlegende Topologie dargestellt, mit de
 * **Speicherkonten**: Es wird empfohlen, zwei Speicherkonten zu verwenden. Die Verwendung von nur einem Speicherkonto kann zur Schaffung einer einzelnen Fehlerquelle führen und bewirken, dass die Bereitstellung in dem unwahrscheinlichen Fall, dass das Speicherkonto ausfällt, nicht mehr verfügbar ist. Bei zwei Speicherkonten kann jedem Fehlerpunkt ein Speicherkonto zugeordnet werden.
 * **Netzwerktrennung**: Webanwendungsproxy-Server müssen in einem separaten DMZ-Netzwerk bereitgestellt werden. Sie können ein virtuelles Netzwerk in zwei Subnetze unterteilen und Webanwendungsproxy-Server dann in einem isolierten Subnetz bereitstellen. Sie können die Netzwerksicherheitsgruppen-Einstellungen für jedes Subnetz leicht konfigurieren und zwischen den beiden Subnetzen nur die erforderliche Kommunikation zulassen. Weitere Details sind unten jeweils für die einzelnen Bereitstellungsszenarien angegeben.
 
-## <a name="steps-to-deploy-ad-fs-in-azure"></a>Schritte zum Bereitstellen von AD FS in Azure
+<a id="steps-to-deploy-ad-fs-in-azure" class="xliff"></a>
+
+## Schritte zum Bereitstellen von AD FS in Azure
 Mit den Schritten dieser Anleitung wird die unten dargestellte AD FS-Infrastruktur in Azure bereitgestellt.
 
-### <a name="1-deploying-the-network"></a>1. Bereitstellen des Netzwerks
+<a id="1-deploying-the-network" class="xliff"></a>
+
+### 1. Bereitstellen des Netzwerks
 Wie oben beschrieben, können Sie entweder zwei Subnetze in einem einzelnen virtuellen Netzwerk oder zwei gänzlich unterschiedliche virtuelle Netzwerke (VNet) erstellen. In diesem Artikel geht es um die Bereitstellung eines einzelnen virtuellen Netzwerks und die Unterteilung in zwei Subnetze. Dies ist derzeit ein einfacherer Ansatz, da bei zwei separaten VNets ein VNet-zu-VNet-Gateway für die Kommunikation erforderlich wäre.
 
 **1.1 Erstellen eines virtuellen Netzwerks**
@@ -99,12 +108,16 @@ Wir benötigen eine Verbindung mit einem lokalen Ort, um den Domänencontroller 
 Es wird empfohlen, ExpressRoute zu verwenden. ExpressRoute ermöglicht Ihnen das Herstellen privater Verbindungen zwischen Azure-Datencentern und einer Infrastruktur, die sich bei Ihnen vor Ort oder in einer Datenzusammenstellungsumgebung befindet. ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Sie bieten mehr Zuverlässigkeit, eine höhere Geschwindigkeit, niedrigere Latenzzeiten und mehr Sicherheit als herkömmliche Verbindungen über das Internet.
 Die Verwendung von ExpressRoute wird zwar empfohlen, aber Sie können eine beliebige Verbindungsmethode wählen, die für Ihr Unternehmen am besten geeignet ist. Weitere Informationen zu ExpressRoute und den verschiedenen Verbindungsoptionen mit ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](https://aka.ms/Azure/ExpressRoute).
 
-### <a name="2-create-storage-accounts"></a>2. Erstellen von Speicherkonten
+<a id="2-create-storage-accounts" class="xliff"></a>
+
+### 2. Erstellen von Speicherkonten
 Sie können zwei Speicherkonten erstellen, um für eine hohe Verfügbarkeit zu sorgen und die Abhängigkeit von einem einzelnen Speicherkonto zu vermeiden. Teilen Sie die Computer in jeder Verfügbarkeitsgruppe in zwei Gruppen, und weisen Sie jeder Gruppe dann ein separates Speicherkonto zu.
 
 ![Speicherkonten erstellen](./media/active-directory-aadconnect-azure-adfs/storageaccount1.png)
 
-### <a name="3-create-availability-sets"></a>3. Erstellen von Verfügbarkeitsgruppen
+<a id="3-create-availability-sets" class="xliff"></a>
+
+### 3. Erstellen von Verfügbarkeitsgruppen
 Erstellen Sie für jede Rolle (DC/AD FS und WAP) Verfügbarkeitsgruppen, die jeweils mindestens zwei Computer enthalten. So erzielen Sie für jede Rolle ein höhere Verfügbarkeit. Beim Erstellen der Verfügbarkeitsgruppen ist es sehr wichtig, Entscheidungen zu den folgenden Komponenten zu treffen:
 
 * **Fehlerdomänen**: Virtuelle Computer einer Fehlerdomäne nutzen die gleiche Stromquelle und den gleichen physischen Netzwerkswitch. Mindestens zwei Fehlerdomänen werden empfohlen. Der Standardwert ist 3. Sie können ihn für diese Bereitstellung beibehalten.
@@ -119,7 +132,9 @@ Erstellen Sie die folgenden Verfügbarkeitsgruppen:
 | contosodcset |DC/ADFS |3 |5 |
 | contosowapset |WAP |3 |5 |
 
-### <a name="4-deploy-virtual-machines"></a>4. Bereitstellen von virtuellen Computern
+<a id="4-deploy-virtual-machines" class="xliff"></a>
+
+### 4. Bereitstellen von virtuellen Computern
 Der nächste Schritt ist die Bereitstellung von virtuellen Computern, auf denen die verschiedenen Rollen in Ihrer Infrastruktur gehostet werden. Es wird empfohlen, in jeder Verfügbarkeitsgruppe mindestens zwei Computer zu verwenden. Erstellen Sie vier virtuelle Computer für die grundlegende Bereitstellung.
 
 | Computer | Rolle | Subnetz | Verfügbarkeitsgruppe | Speicherkonto | IP-Adresse |
@@ -135,7 +150,9 @@ Nach Abschluss der Bereitstellung sollte der Bereich für virtuelle Computer wie
 
 ![Bereitgestellte virtuelle Computer](./media/active-directory-aadconnect-azure-adfs/virtualmachinesdeployed_noadfs.png)
 
-### <a name="5-configuring-the-domain-controller--ad-fs-servers"></a>5. Konfigurieren des Domänencontrollers/AD FS-Servers
+<a id="5-configuring-the-domain-controller--ad-fs-servers" class="xliff"></a>
+
+### 5. Konfigurieren des Domänencontrollers/AD FS-Servers
  Um jede eingehende Anforderung authentifizieren zu können, muss AD FS mit dem Domänencontroller Kontakt aufnehmen. Es wird empfohlen, ein Replikat des Domänencontrollers in Azure bereitzustellen, um für die Authentifizierung den aufwändigen Weg von Azure zum lokalen DC zu vermeiden. Um eine hohe Verfügbarkeit zu erzielen, ist es ratsam, eine Verfügbarkeitsgruppe mit mindestens zwei Domänencontrollern zu erstellen.
 
 | Domänencontroller | Rolle | Speicherkonto |
@@ -146,7 +163,9 @@ Nach Abschluss der Bereitstellung sollte der Bereich für virtuelle Computer wie
 * Stufen Sie die beiden Server als Replikatdomänencontroller mit DNS hoch.
 * Konfigurieren Sie die AD FS-Server, indem Sie die AD FS-Rolle mit dem Server-Manager installieren.
 
-### <a name="6-deploying-internal-load-balancer-ilb"></a>6. Bereitstellen des internen Load Balancers (ILB)
+<a id="6-deploying-internal-load-balancer-ilb" class="xliff"></a>
+
+### 6. Bereitstellen des internen Load Balancers (ILB)
 **6.1. Erstellen des ILB**
 
 Wählen Sie zum Bereitstellen eines ILB im Azure-Portal die Option „Lastenausgleichsmodule“, und klicken Sie auf „Hinzufügen“ (+).
@@ -162,9 +181,9 @@ Wählen Sie zum Bereitstellen eines ILB im Azure-Portal die Option „Lastenausg
 * **Schema**: Wählen Sie „Intern“, da dieser Load Balancer vor den AD FS-Servern angeordnet wird und NUR für interne Netzwerkverbindungen bestimmt ist.
 * **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, in dem Sie AD FS bereitstellen möchten.
 * **Subnetz**: Wählen Sie hier das interne Subnetz aus.
-* **IP-Adresszuweisung**: Wählen Sie „Dynamisch“.
+* **IP-Adresszuweisung**: Statisch
 
-![Interner Load Balancer](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
+![Interner Lastenausgleich](./media/active-directory-aadconnect-azure-adfs/ilbdeployment1.png)
 
 Nach dem Klicken auf „Erstellen“ und der Bereitstellung des ILB sollte er in der Liste mit den Load Balancern angezeigt werden:
 
@@ -207,7 +226,9 @@ Um den Datenverkehr effektiv ausgleichen zu können, sollte der ILB mit Lastenau
 Wechseln Sie auf Ihren DNS-Server, und erstellen Sie einen CNAME für den ILB. Der CNAME sollte für den Verbunddienst gelten, und die IP-Adresse sollte auf die IP-Adresse des ILB verweisen. Wenn die ILB-DIP-Adresse beispielsweise 10.3.0.8 lautet und der installierte Verbunddienst „fs.contoso.com“ ist, sollten Sie einen CNAME für „fs.contoso.com“ erstellen, für den auf 10.3.0.8 verwiesen wird.
 So wird sichergestellt, dass die gesamte Kommunikation mit „fs.contoso.com“ über den ILB läuft und richtig weitergeleitet wird.
 
-### <a name="7-configuring-the-web-application-proxy-server"></a>7. Konfigurieren des Webanwendungsproxy-Servers
+<a id="7-configuring-the-web-application-proxy-server" class="xliff"></a>
+
+### 7. Konfigurieren des Webanwendungsproxy-Servers
 **7.1. Konfigurieren der Webanwendungsproxy-Server für die Verbindung mit AD FS-Servern**
 
 Erstellen Sie für den ILB einen Eintrag unter „%systemroot%\system32\drivers\etc\hosts“, um sicherzustellen, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen. Beachten Sie, dass der Distinguished Name (DN) der Verbunddienstname sein sollte, z.B. „fs.contoso.com“. Der IP-Eintrag sollte der IP-Adresse (in diesem Beispiel 10.3.0.8) des ILB entsprechen.
@@ -217,7 +238,9 @@ Erstellen Sie für den ILB einen Eintrag unter „%systemroot%\system32\drivers\
 Nachdem Sie sichergestellt haben, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen können, können Sie als Nächstes die Webanwendungsproxy-Server installieren. Webanwendungsproxy-Server werden nicht mit der Domäne verknüpft. Installieren Sie die Webanwendungsproxy-Rollen auf den beiden Webanwendungsproxy-Servern, indem Sie die Remotezugriffsrolle auswählen. Sie werden vom Server-Manager durch die Schritte der WAP-Installation geführt.
 Weitere Informationen zur Bereitstellen von WAP finden Sie unter [Installieren und Konfigurieren des Webanwendungsproxy-Servers](https://technet.microsoft.com/library/dn383662.aspx).
 
-### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Bereitstellen des (öffentlichen) Load Balancers mit Internetzugriff
+<a id="8--deploying-the-internet-facing-public-load-balancer" class="xliff"></a>
+
+### 8.  Bereitstellen des (öffentlichen) Load Balancers mit Internetzugriff
 **8.1.  Erstellen des (öffentlichen) Load Balancers mit Internetzugriff**
 
 Wählen Sie im Azure-Portal die Option „Lastenausgleichsmodule“, und klicken Sie dann auf „Hinzufügen“. Geben Sie im Bereich „Lastenausgleich erstellen“ die folgenden Informationen ein:
@@ -262,7 +285,9 @@ Führen Sie die gleichen Schritte wie für den ILB aus, um die Lastenausgleichsr
 
 ![Ausgleichsregeln für Load Balancer mit Internetzugriff konfigurieren](./media/active-directory-aadconnect-azure-adfs/elbdeployment7.png)
 
-### <a name="9-securing-the-network"></a>9. Schützen des Netzwerks
+<a id="9-securing-the-network" class="xliff"></a>
+
+### 9. Schützen des Netzwerks
 **9.1. Schützen des internen Subnetzes**
 
 Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient zu schützen (in der unten angegebenen Reihenfolge).
@@ -292,7 +317,9 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 > 
 > 
 
-### <a name="10-test-the-ad-fs-sign-in"></a>10. Testen der AD FS-Anmeldung
+<a id="10-test-the-ad-fs-sign-in" class="xliff"></a>
+
+### 10. Testen der AD FS-Anmeldung
 Die einfachste Möglichkeit zum Testen von AD FS ist die Verwendung der Seite „IdpInitiatedSignon.aspx“. Hierfür ist es erforderlich, in den AD FS-Eigenschaften „IdpInitiatedSignOn“ zu aktivieren. Führen Sie die unten angegebenen Schritte aus, um Ihr AD FS-Setup zu überprüfen.
 
 1. Führen Sie das unten angegebene Cmdlet auf dem AD FS-Server aus, und verwenden Sie PowerShell, um es auf „Aktiviert“ festzulegen.
@@ -306,7 +333,9 @@ Bei einer erfolgreichen Anmeldung wird die folgende Erfolgsmeldung angezeigt:
 
 ![Erfolgreiche Durchführung testen](./media/active-directory-aadconnect-azure-adfs/test2.png)
 
-## <a name="template-for-deploying-ad-fs-in-azure"></a>Vorlage für die Bereitstellung von AD FS in Azure
+<a id="template-for-deploying-ad-fs-in-azure" class="xliff"></a>
+
+## Vorlage für die Bereitstellung von AD FS in Azure
 Durch die Vorlage wird eine Konfiguration mit sechs Computern (je zwei für Domänencontroller, AD FS und WAP) bereitgestellt.
 
 [AD FS in Azure – Bereitstellungsvorlage](https://github.com/paulomarquesc/adfs-6vms-regular-template-based)
@@ -341,7 +370,9 @@ Sie können ein vorhandenes virtuelles Netzwerk verwenden oder beim Bereitstelle
 | AdminUserName |Name des lokalen Administrators der virtuellen Computer |
 | AdminPassword |Kennwort für das lokale Administratorkonto der virtuellen Computer |
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+<a id="additional-resources" class="xliff"></a>
+
+## Zusätzliche Ressourcen
 * [Verfügbarkeitsgruppen](https://aka.ms/Azure/Availability) 
 * [Azure-Lastenausgleich](https://aka.ms/Azure/ILB)
 * [Interner Load Balancer](https://aka.ms/Azure/ILB/Internal)
@@ -350,7 +381,9 @@ Sie können ein vorhandenes virtuelles Netzwerk verwenden oder beim Bereitstelle
 * [Virtuelle Azure-Netzwerke](https://aka.ms/Azure/VNet)
 * [AD FS- und Webanwendungsproxy-Links](http://aka.ms/ADFSLinks) 
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 * [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
 * [Gebietsübergreifende, hochverfügbare AD FS-Bereitstellung in Azure mit Azure Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)

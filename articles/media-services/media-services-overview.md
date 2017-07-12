@@ -12,25 +12,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/05/2017
+ms.date: 06/29/2017
 ms.author: juliako;anilmur
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 0a84e69f33ae30040c2365e6a5180e17e8df7539
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 42baa7a6e80468e47dda1e652fc2bbd20e5a4ee6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="azure-media-services-overview-and-common-scenarios"></a>Azure Media Services – Übersicht und häufige Szenarios
+<a id="azure-media-services-overview-and-common-scenarios" class="xliff"></a>
 
-Microsoft Azure Media Services ist eine erweiterbare, cloudbasierte Plattform, die Entwicklern das Erstellen von skalierbaren Medienverwaltungslösungen und Bereitstellungsanwendungen ermöglicht. Media Services basiert auf REST-APIs, mit denen Sie auf sichere Weise Video- oder Audioinhalte hochladen, speichern, codieren und paketieren können – sowohl für eine bedarfsgesteuerte als auch für eine Livestreaming-basierte Bereitstellung auf verschiedenen Clients (z. B. TV, PC und mobile Geräte).
+# Azure Media Services – Übersicht und häufige Szenarios
+
+Microsoft Azure Media Services ist eine erweiterbare, cloudbasierte Plattform, die Entwicklern das Erstellen von skalierbaren Medienverwaltungslösungen und Bereitstellungsanwendungen ermöglicht. Media Services basiert auf REST-APIs, mit denen Sie auf sichere Weise Video- oder Audioinhalte hochladen, speichern, codieren und verpacken können – sowohl für eine bedarfsgesteuerte als auch für eine auf Livestreaming basierende Bereitstellung auf verschiedenen Clients (z.B. TV, PC und mobile Geräte).
 
 Sie können mithilfe von Media Services vollständige End-to-End-Workflows erstellen. Es ist auch möglich, Drittanbieterkomponenten für einige Elemente Ihres Workflows zu nutzen. Beispielsweise können Sie die Codierung mit einem Encoder eines Drittanbieters durchführen. Anschließend sorgen Sie mit Media Services für Upload, Schutz, Paketierung und Bereitstellung.
 
 Sie können Ihre Inhalte live streamen oder sie bei Bedarf bereitstellen. In diesem Thema werden allgemeine Szenarien für die Übermittlung von Inhalten [live](media-services-overview.md#live_scenarios) oder [bei Bedarf](media-services-overview.md#vod_scenarios) gezeigt. Das Thema enthält außerdem Links zu anderen relevanten Themen.
 
-## <a name="sdks-and-tools"></a>SDKs und Tools
+<a id="sdks-and-tools" class="xliff"></a>
+
+## SDKs und Tools
 
 Zum Entwickeln von Media Services-Lösungen können Sie folgende Komponenten verwenden:
 
@@ -52,14 +56,17 @@ Klicken Sie auf Bild, um es in voller Größe anzeigen.
 
 Sie können das gesamte Modell [hier](https://media.windows.net/API/$metadata?api-version=2.15) anzeigen.  
 
+<a id="media-services-learning-paths" class="xliff"></a>
 
-## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
+## Media Services-Lernpfade
 Sie können sich die AMS-Lernpfade hier ansehen:
 
 * [Media Services - Live Streaming (in englischer Sprache)](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 * [Media Services - on Demand Streaming (in englischer Sprache)](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 
 Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
 
@@ -70,12 +77,14 @@ Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
     Informieren Sie sich auch darüber, wie Sie [programmgesteuert eine Verbindung herstellen](media-services-dotnet-connect-programmatically.md) können.
 4. Einen Standard- oder Premium-Streamingendpunkt im Status „Gestartet“.  Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten](https://docs.microsoft.com/en-us/azure/media-services/media-services-portal-manage-streaming-endpoints).
 
-## <a name="concepts-and-overview"></a>Konzepte und Übersicht
+<a id="concepts-and-overview" class="xliff"></a>
+
+## Konzepte und Übersicht
 Azure Media Services-Konzepte finden Sie unter [Konzepte](media-services-concepts.md).
 
-Eine Reihe mit Vorgehensweisen (Gewusst wie), in der die wichtigsten Komponenten von Azure Media Services beschrieben werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)(Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet eine hervorragende Übersicht über die Konzepte und verwendet das AMSE-Tool, um die AMS-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
+Eine Reihe mit Vorgehensweisen (Gewusst wie), in der die wichtigsten Komponenten von Azure Media Services beschrieben werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)(Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet eine hervorragende Übersicht über die Konzepte und verwendet das AMSE-Tool, um die AMS-Aufgaben zu erläutern. Beim AMSE-Tool handelt es sich um ein Windows-Tool. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
 
-## <a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
+## <a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben
 In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevanten Themen bereitgestellt. Das folgende Diagramm zeigt die Hauptbestandteile der Media Services-Plattform, die am Bereitstellen von On-Demand-Inhalten beteiligt sind.
 
 ![VoD-Workflow](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
@@ -83,7 +92,9 @@ In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevant
 >[!NOTE]
 >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen.
 
-### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Schützen von Inhalte im Speicher und Übermitteln von Streamingmedien ohne Verschlüsselung
+<a id="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted" class="xliff"></a>
+
+### Schützen von Inhalte im Speicher und Übermitteln von Streamingmedien ohne Verschlüsselung
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch.
 
     Es wird empfohlen, eine Speicherverschlüsselung auf Medienobjekte anzuwenden, um Ihre Inhalte beim Hochladen und während der Speicherung zu schützen.
@@ -96,7 +107,9 @@ In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevant
 4. Veröffentlichen Sie das Medienobjekt durch Erstellen eines OnDemand-Locators.
 5. Streamen Sie die veröffentlichten Inhalte.
 
-### <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>Schützen von Inhalten im Speicher, Übermitteln dynamisch verschlüsselter Streamingmedien
+<a id="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media" class="xliff"></a>
+
+### Schützen von Inhalten im Speicher, Übermitteln dynamisch verschlüsselter Streamingmedien
 
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch. Wenden Sie die Speicherverschlüsselung auf das Medienobjekt an.
 2. Codieren Sie das Medienobjekt in einen Satz von MP4-Dateien mit adaptiver Bitrate. Wenden Sie die Speicherverschlüsselung auf das Ausgabemedienobjekt an.
@@ -106,7 +119,9 @@ In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevant
 6. Veröffentlichen Sie das Medienobjekt durch Erstellen eines OnDemand-Locators.
 7. Streamen Sie die veröffentlichten Inhalte.
 
-### <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Gewinnen nützlicher Erkenntnisse aus Ihren Videos mithilfe von Media Analytics
+<a id="use-media-analytics-to-derive-actionable-insights-from-your-videos" class="xliff"></a>
+
+### Gewinnen nützlicher Erkenntnisse aus Ihren Videos mithilfe von Media Analytics
 Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Weitere Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md).
 
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch.
@@ -119,7 +134,9 @@ Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit de
    * **Videozusammenfassung** – [Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung](media-services-video-summarization.md)
 3. Media Analytics-Medienprozessoren generieren MP4- oder JSON-Dateien. Wenn ein Medienprozessor eine MP4-Datei erstellt hat, können Sie die Datei progressiv herunterladen. Wenn ein Medienprozessor eine JSON-Datei erstellt hat, können Sie die Datei aus dem Azure-Blobspeicher herunterladen.
 
-### <a name="deliver-progressive-download"></a>Bereitstellen eines progressiven Downloads
+<a id="deliver-progressive-download" class="xliff"></a>
+
+### Bereitstellen eines progressiven Downloads
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch.
 2. Codieren Sie das Medienobjekt in eine einzelne MP4-Datei.
 3. Veröffentlichen Sie das Medienobjekt durch Erstellen eines OnDemand- oder SAS-Locators.
@@ -159,29 +176,57 @@ Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten da
 
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
-### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)
+<a id="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through" class="xliff"></a>
+
+### Arbeiten mit Kanälen, die Livedatenströme mit Mehrfachbitraten von lokalen Encodern empfangen (Pass-Through)
 Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die am **Pass-Through-Workflow** beteiligt sind:
 
 ![Liveworkflow][live-overview2]
 
 Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md).
 
-### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden
+<a id="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services" class="xliff"></a>
+
+### Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden
 Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die in Livestreaming-Workflows beteiligt sind, wenn ein Kanal zum Ausführen der Livecodierung mit Media Services aktiviert ist.
 
 ![Liveworkflow][live-overview1]
 
 Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
-## <a name="consuming-content"></a>Nutzung von Inhalten
+<a id="supported-media-processors" class="xliff"></a>
+
+## Unterstützte Medienprozessoren
+
+|Name|Status|Rechenzentren
+|---|---|---|
+|Azure Media Face Detector|Vorschau|Alle|
+|Azure Media Hyperlapse|Vorschau|Alle|
+|Azure Media Indexer|Allgemein verfügbar|Alle|
+|Azure Media Motion Detector|Vorschau|Alle|
+|Azure Media OCR|Vorschau|Alle|
+|Azure Media Redactor|Vorschau|Alle|
+|Azure Media Stabilizer|Vorschau|Alle|
+|Azure Media Video Thumbnails|Vorschau|Alle|
+|Media Encoder Standard|Allgemein verfügbar|Alle|
+|Media Indexer v2|Vorschau|Alle mit Ausnahme der Regionen für China und die US-Regierung|
+|Media Encoder Premium Workflow|Allgemein verfügbar|Alle mit Ausnahme von China|
+
+<a id="consuming-content" class="xliff"></a>
+
+## Nutzung von Inhalten
 Azure Media Services stellt die Tools zur Verfügung, die zum Erstellen leistungsstarker, dynamischer Clientplayeranwendungen für die gängigsten Plattformen erforderlich sind, darunter: iOS-Geräte, Android-Geräte, Windows, Windows Phone, Xbox und Set-Top-Boxen. Das Thema enthält Links zu SDKs und Player-Frameworks, mit denen Sie Ihre eigenen Clientanwendungen entwickeln können, die Streamingmedien aus Media Services verarbeiten.
 
 [Entwickeln von Videoplayeranwendungen](media-services-develop-video-players.md)
 
-## <a name="enabling-azure-cdn"></a>Aktivieren von Azure CDN
+<a id="enabling-azure-cdn" class="xliff"></a>
+
+## Aktivieren von Azure CDN
 Von Media Services wird die Integration mit Azure CDN unterstützt. Informationen zum Aktivieren von Azure CDN finden Sie unter [Verwalten von Streamingendpunkten in Media Services-Konten](media-services-portal-manage-streaming-endpoints.md).
 
-## <a name="scaling-a-media-services-account"></a>Skalieren eines Media Services-Kontos
+<a id="scaling-a-media-services-account" class="xliff"></a>
+
+## Skalieren eines Media Services-Kontos
 
 Sie können **Media Services** skalieren, indem Sie die Anzahl **reservierter Einheiten für das Streaming** und die Anzahl **reservierter Einheiten für die Codierung** angeben, die für Ihr Konto bereitgestellt werden sollen.
 
@@ -190,13 +235,19 @@ Media Services-Kunden wählen je nach ihren Anforderungen entweder einen **Stand
 
 [Dieses Thema](media-services-portal-scale-streaming-endpoints.md) enthält Links zu relevanten Themen.
 
-## <a name="support"></a>Support
+<a id="support" class="xliff"></a>
+
+## Support
 [Azure-Support](https://azure.microsoft.com/support/options/) bietet Supportoptionen für Azure, Media Services eingeschlossen.
 
-## <a name="provide-feedback"></a>Feedback geben
+<a id="provide-feedback" class="xliff"></a>
+
+## Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="service-level-agreement-sla"></a>Vereinbarung zum Servicelevel (SLA)
+<a id="service-level-agreement-sla" class="xliff"></a>
+
+## Vereinbarung zum Servicelevel (SLA)
 * Media Services gewährleistet eine Verfügbarkeit von 99,9 % für die REST-API-Transaktionen zur Media Services-Codierung.
 * Das Streaming sorgt für eine erfolgreiche Verarbeitung von Dienstanforderungen mit einer garantierten Verfügbarkeit von 99,9% für vorhandene Medieninhalte, wenn ein Standard- oder Premium-Streamingendpunkt erworben wird.
 * Für Livekanäle wird garantiert, dass ausgeführte Kanäle mindestens 99,9 % der Zeit über externe Konnektivität verfügen.

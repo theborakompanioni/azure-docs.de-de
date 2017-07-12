@@ -16,17 +16,21 @@ ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: venkatja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: d7c01e18355b66670c9ab7d964f5cdb7ba72bb8f
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9f2d3b57a42efb7b04566278d3267b3cdbed713a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/01/2017
 
 ---
-# <a name="send-events-to-a-time-series-insights-environment-via-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung per Event Hub
+<a id="send-events-to-a-time-series-insights-environment-via-event-hub" class="xliff"></a>
 
-In diesem Tutorial wird erläutert, wie Sie Event Hub erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen. Wenn Sie bereit über einen Event Hub mit Ereignissen im JSON-Format verfügen, können Sie dieses Tutorial überspringen und sich Ihre Umgebung im [Time Series-Explorer](https://insights.timeseries.azure.com) ansehen.
+# Senden von Ereignissen an die Azure Time Series Insights-Umgebung per Event Hub
 
-## <a name="configure-an-event-hub"></a>Konfigurieren eines Event Hubs
+In diesem Tutorial wird erläutert, wie Sie Event Hub erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, sehen Sie sich Ihre Umgebung in [Time Series Insights](https://insights.timeseries.azure.com) an.
+
+<a id="configure-an-event-hub" class="xliff"></a>
+
+## Konfigurieren eines Event Hubs
 1. Führen Sie zum Erstellen eines Event Hubs die in der [Event Hub-Dokumentation](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) beschriebenen Schritte aus.
 
 2. Erstellen Sie eine Consumergruppe, die ausschließlich von Ihrer Time Series Insights-Ereignisquelle verwendet wird.
@@ -36,20 +40,24 @@ In diesem Tutorial wird erläutert, wie Sie Event Hub erstellen und konfiguriere
 
   ![Auswählen der Event Hub-Consumergruppe](media/send-events/consumer-group.png)
 
-3. Erstellen Sie auf dem Event Hub die Richtlinie „MySendPolicy“. Diese wird im Beispiel weiter unten zum Senden von Ereignissen verwendet.
+3. Erstellen Sie auf dem Event Hub die Richtlinie „MySendPolicy“. Diese wird im CSharp-Beispiel zum Senden von Ereignissen verwendet.
 
   ![Auswählen von „SAS-Richtlinien“ und Klicken auf „Hinzufügen“](media/send-events/shared-access-policy.png)  
 
   ![Hinzufügen der neuen SAS-Richtlinie](media/send-events/shared-access-policy-2.png)  
 
-## <a name="create-time-series-insights-event-source"></a>Erstellen der Time Series Insights-Ereignisquelle
+<a id="create-time-series-insights-event-source" class="xliff"></a>
+
+## Erstellen der Time Series Insights-Ereignisquelle
 1. Falls Sie noch keine Ereignisquelle erstellt haben, führen Sie die Schritte in [dieser Anleitung](time-series-insights-add-event-source.md) aus.
 
-2. Geben Sie „deviceTimestamp“ als Name der timestamp-Eigenschaft an. Diese Eigenschaft wird im Beispiel weiter unten als tatsächlicher Zeitstempel verwendet. Bei der timestamp-Eigenschaft muss die Groß-/Kleinschreibung beachtet werden, und Werte müssen das Format __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ besitzen, wenn sie als JSON an Event Hub gesendet werden. Sollte die Eigenschaft im Ereignis nicht vorhanden sein, wird der Zeitpunkt verwendet, zu dem das Ereignis der Warteschlange für Event Hub hinzugefügt wurde.
+2. Geben Sie „deviceTimestamp“ als Name der timestamp-Eigenschaft an. Diese Eigenschaft wird im CSharp-Beispiel als tatsächlicher Zeitstempel verwendet. Bei der timestamp-Eigenschaft muss die Groß-/Kleinschreibung beachtet werden, und Werte müssen das Format __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ besitzen, wenn sie als JSON an Event Hub gesendet werden. Sollte die Eigenschaft im Ereignis nicht vorhanden sein, wird der Zeitpunkt verwendet, zu dem der Event Hub in die Warteschlange eingereiht wurde.
 
   ![Erstellen der Ereignisquelle](media/send-events/event-source-1.png)
 
-## <a name="run-sample-code-to-push-events"></a>Ausführen von Beispielcode, um Ereignisse mithilfe von Push zu übertragen
+<a id="sample-code-to-push-events" class="xliff"></a>
+
+## Beispielcode zum Übertragen von Ereignissen mithilfe von Push
 1. Navigieren Sie zur Event Hub-Richtlinie „MySendPolicy“, und kopieren Sie die Verbindungszeichenfolge mit dem Richtlinienschlüssel.
 
   ![Kopieren der MySendPolicy-Verbindungszeichenfolge](media/send-events/sample-code-connection-string.png)
@@ -123,50 +131,68 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-## <a name="supported-json-shapes"></a>Unterstützte JSON-Formen
-### <a name="sample-1"></a>Beispiel 1
+<a id="supported-json-shapes" class="xliff"></a>
 
-#### <a name="input"></a>Eingabe
+## Unterstützte JSON-Formen
+<a id="sample-1" class="xliff"></a>
+
+### Beispiel 1
+
+<a id="input" class="xliff"></a>
+
+#### Eingabe
 
 Ein einfaches JSON-Objekt.
 
 ```json
 {
-    "deviceId":"device1",
-    "deviceTimestamp":"2016-01-08T01:08:00Z"
+    "id":"device1",
+    "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---1-event"></a>Ausgabe: ein Ereignis
+<a id="output---1-event" class="xliff"></a>
 
-|deviceId|deviceTimestamp|
+#### Ausgabe: ein Ereignis
+
+|id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 
-### <a name="sample-2"></a>Beispiel 2
+<a id="sample-2" class="xliff"></a>
 
-#### <a name="input"></a>Eingabe
+### Beispiel 2
+
+<a id="input" class="xliff"></a>
+
+#### Eingabe
 Ein JSON-Array mit zwei JSON-Objekten. Jedes JSON-Objekt wird in ein Ereignis konvertiert.
 ```json
 [
     {
-        "deviceId":"device1",
-        "deviceTimestamp":"2016-01-08T01:08:00Z"
+        "id":"device1",
+        "timestamp":"2016-01-08T01:08:00Z"
     },
     {
-        "deviceId":"device2",
-        "deviceTimestamp":"2016-01-17T01:17:00Z"
+        "id":"device2",
+        "timestamp":"2016-01-17T01:17:00Z"
     }
 ]
 ```
-#### <a name="output---2-events"></a>Ausgabe: zwei Ereignisse
+<a id="output---2-events" class="xliff"></a>
 
-|deviceId|deviceTimestamp|
+#### Ausgabe: zwei Ereignisse
+
+|id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
-### <a name="sample-3"></a>Beispiel 3
+<a id="sample-3" class="xliff"></a>
 
-#### <a name="input"></a>Eingabe
+### Beispiel 3
+
+<a id="input" class="xliff"></a>
+
+#### Eingabe
 
 Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enthält.
 ```json
@@ -174,52 +200,58 @@ Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enth�
     "location":"WestUs",
     "events":[
         {
-            "deviceId":"device1",
-            "deviceTimestamp":"2016-01-08T01:08:00Z"
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z"
         },
         {
-            "deviceId":"device2",
-            "deviceTimestamp":"2016-01-17T01:17:00Z"
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z"
         }
     ]
 }
 
 ```
-#### <a name="output---2-events"></a>Ausgabe: zwei Ereignisse
+<a id="output---2-events" class="xliff"></a>
+
+#### Ausgabe: zwei Ereignisse
 Beachten Sie, dass die location-Eigenschaft in die einzelnen Ereignisse kopiert wird.
 
-|location|events.deviceId|events.deviceTimestamp|
+|location|events.id|events.timestamp|
 |--------|---------------|----------------------|
 |WestUs|device1|2016-01-08T01:08:00Z|
 |WestUs|device2|2016-01-08T01:17:00Z|
 
-### <a name="sample-4"></a>Beispiel 4
+<a id="sample-4" class="xliff"></a>
 
-#### <a name="input"></a>Eingabe
+### Beispiel 4
+
+<a id="input" class="xliff"></a>
+
+#### Eingabe
 
 Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enthält. Diese Eingabe zeigt, dass die globalen Eigenschaften vom komplexen JSON-Objekt dargestellt werden können.
 
 ```json
 {
     "location":"WestUs",
-    "manufacturerInfo":{
+    "manufacturer":{
         "name":"manufacturer1",
         "location":"EastUs"
     },
     "events":[
         {
-            "deviceId":"device1",
-            "deviceTimestamp":"2016-01-08T01:08:00Z",
-            "deviceData":{
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z",
+            "data":{
                 "type":"pressure",
                 "units":"psi",
                 "value":108.09
             }
         },
         {
-            "deviceId":"device2",
-            "deviceTimestamp":"2016-01-17T01:17:00Z",
-            "deviceData":{
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z",
+            "data":{
                 "type":"vibration",
                 "units":"abs G",
                 "value":217.09
@@ -228,14 +260,18 @@ Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enth�
     ]
 }
 ```
-#### <a name="output---2-events"></a>Ausgabe: zwei Ereignisse
+<a id="output---2-events" class="xliff"></a>
 
-|location|manufacturerInfo.name|manufacturerInfo.location|events.deviceId|events.deviceTimestamp|events.deviceData.type|events.deviceData.units|events.deviceData.value|
+#### Ausgabe: zwei Ereignisse
+
+|location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 * Anzeigen Ihrer Umgebung im [Time Series Insights-Portal](https://insights.timeseries.azure.com)
 
