@@ -14,17 +14,23 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
 ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
+ms.contentlocale: de-de
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Verwenden des E-Mail-Diensts SendGrid aus PHP
+<a id="how-to-use-the-sendgrid-email-service-from-php" class="xliff"></a>
+
+# Verwenden des E-Mail-Diensts SendGrid aus PHP
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in PHP geschrieben.
 Beschrieben werden die Szenarien **Erstellen einer E-Mail**, **Senden einer E-Mail** und **Hinzufügen von Anlagen**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
 
-## <a name="what-is-the-sendgrid-email-service"></a>Was ist der SendGrid-E-Mail-Dienst?
+<a id="what-is-the-sendgrid-email-service" class="xliff"></a>
+
+## Was ist der SendGrid-E-Mail-Dienst?
 SendGrid ist ein [cloudbasierter E-Mail-Dienst], der zuverlässige [transaktionale E-Mail-Übermittlung], Skalierbarkeit und Echtzeitanalysen mit flexiblen APIs bietet, die die benutzerdefinierte Integration erleichtern. Häufige Verwendungsszenarien für SendGrid:
 
 * Automatisches Versenden von Empfangsbestätigungen an Kunden
@@ -36,16 +42,24 @@ SendGrid ist ein [cloudbasierter E-Mail-Dienst], der zuverlässige [transaktiona
 
 Weitere Informationen finden Sie unter [https://sendgrid.com][https://sendgrid.com].
 
-## <a name="create-a-sendgrid-account"></a>Erstellen eines SendGrid-Kontos
-[!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign.md)]
+<a id="create-a-sendgrid-account" class="xliff"></a>
 
-## <a name="using-sendgrid-from-your-php-application"></a>Verwenden von SendGrid aus der PHP-Anwendung
+## Erstellen eines SendGrid-Kontos
+[!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
+
+<a id="using-sendgrid-from-your-php-application" class="xliff"></a>
+
+## Verwenden von SendGrid aus der PHP-Anwendung
 Die Verwendung von SendGrid in Azure-PHP-Anwendungen erfordert keine besondere Konfiguration oder Programmierung. Da es sich bei SendGrid um einen Dienst handelt, kann auf ihn von einer Cloudanwendung auf dieselbe Weise zugegriffen werden wie von einer lokalen Anwendung.
 
-## <a name="how-to-send-an-email"></a>Senden von E-Mails
+<a id="how-to-send-an-email" class="xliff"></a>
+
+## Senden von E-Mails
 E-Mails können Sie entweder über SMTP oder über die von SendGrid bereitgestellte Web-API senden.
 
-### <a name="smtp-api"></a>SMTP-API
+<a id="smtp-api" class="xliff"></a>
+
+### SMTP-API
 Wenn Sie eine E-Mail über die SendGrid-SMTP-API senden möchten, verwenden Sie *Swift Mailer*– eine komponentenbasierte Bibliothek zum Senden von E-Mails aus PHP-Anwendungen. Sie können die *Swift Mailer*-Bibliothek unter [http://swiftmailer.org/download][http://swiftmailer.org/download] v5.3.0 herunterladen (verwenden Sie [Composer], um Swift Mailer zu installieren). Das Versenden von E-Mails mithilfe der Bibliothek umfasst das Erstellen von Instanzen der Klassen <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_Mailer</span> und <span class="auto-style2">Swift\_Message</span>, das Festlegen der entsprechenden Eigenschaften und das Aufrufen der Methode <span class="auto-style2">Swift\_Mailer::send</span>.
 
     <?php
@@ -108,7 +122,9 @@ Wenn Sie eine E-Mail über die SendGrid-SMTP-API senden möchten, verwenden Sie 
          print_r($failures);
      }
 
-### <a name="web-api"></a>Web-API
+<a id="web-api" class="xliff"></a>
+
+### Web-API
 Um E-Mails über die SendGrid-Web-API zu versenden, verwenden Sie die [Curl-Funktion][curl function] von PHP.
 
     <?php
@@ -151,8 +167,12 @@ Um E-Mails über die SendGrid-Web-API zu versenden, verwenden Sie die [Curl-Funk
 
 Die Web-API von SendGrid ist einer REST-API sehr ähnlich, obwohl es sich nicht wirklich um eine RESTful-API handelt, da in den meisten Aufrufen die Verben GET und POST austauschbar sind.
 
-## <a name="how-to-add-an-attachment"></a>Hinzufügen von Anlagen
-### <a name="smtp-api"></a>SMTP-API
+<a id="how-to-add-an-attachment" class="xliff"></a>
+
+## Hinzufügen von Anlagen
+<a id="smtp-api" class="xliff"></a>
+
+### SMTP-API
 Das Senden einer Anlage mithilfe der SMTP-API umfasst eine zusätzliche Codezeile im Beispielskript zum Senden einer E-Mail mit Swift Mailer.
 
     <?php
@@ -224,7 +244,9 @@ Die zusätzliche Codezeile lautet wie folgt:
 
 Diese Codezeile ruft die Attach-Methode für das Objekt <span class="auto-style2">Swift\_Message</span> auf und verwendet die statische Methode <span class="auto-style2">fromPath</span> für die Klasse <span class="auto-style2">Swift\_Attachment</span>, um eine Datei abzurufen und einer Nachricht anzuhängen.
 
-### <a name="web-api"></a>Web-API
+<a id="web-api" class="xliff"></a>
+
+### Web-API
 Das Senden einer Anlage mithilfe der Web-API ähnelt dem Senden einer E-Mail mithilfe der Web-API. Beachten Sie jedoch, dass im folgenden Beispiel das Parameterarray das folgende Element enthalten muss:
 
     'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
@@ -275,7 +297,9 @@ Beispiel:
      // print everything out
      print_r($response);
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Verwenden von Filtern zur Aktivierung von Fußzeilen sowie für Nachverfolgungen und Analysen
+<a id="how-to-use-filters-to-enable-footers-tracking-and-analytics" class="xliff"></a>
+
+## Verwenden von Filtern zur Aktivierung von Fußzeilen sowie für Nachverfolgungen und Analysen
 SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von "Filtern". Hierbei handelt es sich um Einstellungen, die zu einer E-Mail-Nachricht hinzugefügt werden können, um spezifische Funktionen wie etwa Aktivierung von Klickprotokollierung, Google Analytics, Abonnement-Tracking usw. zu ermöglichen.
 
 Filter können mithilfe der Eigenschaft filters auf eine Nachricht angewendet werden. Jeder Filter wird durch einen Hash mit filterspezifischen Einstellungen festgelegt. Im folgenden Beispiel wird der Filter für Fußzeilen aktiviert und eine Textnachricht angegeben, die an das Ende der E-Mail angefügt wird.
@@ -379,7 +403,9 @@ Beispiel:
 
      print_r($response);
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des E-Mail-Dienstes SendGrid vertraut sind, finden Sie unter diesen Links weitere Informationen.
 
 * SendGrid-Dokumentation: <https://sendgrid.com/docs>
@@ -398,9 +424,4 @@ Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/ph
 [transaktionale E-Mail-Übermittlung]: https://sendgrid.com/transactional-email
 [sendgrid-php-Bibliothek]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
 [Composer]: https://getcomposer.org/download/
-
-
-
-<!--HONumber=Feb17_HO3--->
-
 
