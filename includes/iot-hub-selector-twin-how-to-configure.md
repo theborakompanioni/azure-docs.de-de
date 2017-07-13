@@ -1,10 +1,13 @@
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-how-to-configure.md)
-> * [C#](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
+> * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
+> * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-how-to-configure.md)
 > 
 > 
 
-## <a name="introduction"></a>Einführung
+## Einführung
+<a id="introduction" class="xliff"></a>
+
 Unter [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)][lnk-twin-tutorial] wurde beschrieben, wie Sie Gerätemetadaten über Ihr Lösungs-Back-End mit *Tags* festlegen, Gerätebedingungen über eine Geräte-App mit *gemeldeten Eigenschaften* melden und diese Informationen mit einer SQL-ähnlichen Sprache abfragen.
 
 In diesem Tutorial wird beschrieben, wie Sie die *gewünschten Eigenschaften* des Gerätezwillings zusammen mit *gemeldeten Eigenschaften* verwenden, um für Geräte-Apps die Remotekonfiguration durchzuführen. Genauer gesagt wird in diesem Tutorial veranschaulicht, wie die gemeldeten und gewünschten Eigenschaften eines Gerätezwillings eine mehrschrittige Konfiguration einer Geräteanwendung ermöglichen und für das Lösungs-Back-End die Ermittlung des Status dieses Vorgangs über alle Geräte hinweg möglich machen. Weitere Informationen zur Rolle der Gerätekonfiguration finden Sie unter [Übersicht über die Geräteverwaltung mit IoT Hub][lnk-dm-overview].

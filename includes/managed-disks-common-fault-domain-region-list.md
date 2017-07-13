@@ -1,4 +1,5 @@
-### <a name="number-of-fault-domains-per-region"></a>Anzahl der Fehlerdomänen pro Region
+### Anzahl der Fehlerdomänen pro Region
+<a id="number-of-fault-domains-per-region" class="xliff"></a>
 
 | Region              | Maximale Anzahl von Fehlerdomänen  |
 |---------------------|-------------------------|
@@ -18,12 +19,15 @@
 | UK, Süden            | 2                       |
 | UK, Westen             | 2                       |
 |                     |                         |
-| Ostasien           | 3                       |
+| Ostasien           | 2                       |
 | Südostasien     | 2                       |
 | Japan Ost          | 2                       |
 | Japan (Westen)          | 2                       |
 | Indien, Süden         | 2                       |
 | Indien (Mitte)       | 2                       |
+| Indien, Westen          | 2                       |
+| Korea, Mitte       | 2                       |
+| Korea, Süden         | 2                       |
 |                     |                         |
 | Australien (Osten)      | 2                       |
 | Australien (Südosten) | 2                       |

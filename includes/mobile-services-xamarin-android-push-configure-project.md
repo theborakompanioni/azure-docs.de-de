@@ -28,14 +28,15 @@
     Dies ermöglicht Ihnen den Zugriff auf die mobile Clientinstanz vom Pushhandler-Dienstprozess aus.
 4. Fügen Sie der **OnCreate**-Methode den folgenden Code hinzu, nachdem **MobileServiceClient** erstellt wurde:
    
-     // Set the current instance of TodoActivity.
-     instance = this;
+       // Set the current instance of TodoActivity.
+       instance = this;
    
-     // Make sure the GCM client is set up correctly.
-     GcmClient.CheckDevice(this); GcmClient.CheckManifest(this);
+       // Make sure the GCM client is set up correctly.
+       GcmClient.CheckDevice(this);
+       GcmClient.CheckManifest(this);
    
-     // Register the app for push notifications.
-     GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
+       // Register the app for push notifications.
+       GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
 
 Die **ToDoActivity** ist damit für das Hinzufügen von Pushbenachrichtigungen vorbereitet.
 

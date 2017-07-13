@@ -15,14 +15,15 @@ ms.topic: get-started-article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 42dcc653b50698cf8ce8145dfb51f27be7ece440
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4d7704c03bece51957efa2a56577b8808cc62c79
 ms.contentlocale: de-de
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Zugriffsprobleme auf einem Windows-Gerät
+# Zugriffsprobleme auf einem Windows-Gerät
+<a id="you-cant-get-there-from-here-on-a-windows-device" class="xliff"></a>
 
 Beim Versuch, beispielsweise auf das SharePoint Online-Intranet Ihrer Organisation zuzugreifen, erscheint unter Umständen eine Seite mit dem Hinweis auf ein *Zugriffsproblem*. Diese Seite wird angezeigt, weil der Administrator eine Richtlinie für bedingten Zugriff konfiguriert hat, die unter bestimmten Bedingungen den Zugriff auf Ressourcen Ihrer Organisation unterbindet. Es kann zwar sein, dass sich das Problem nur in Zusammenarbeit mit dem Helpdesk oder Administrator beheben lässt, Sie können jedoch zunächst selbst ein paar Dinge ausprobieren.
 
@@ -39,7 +40,8 @@ Beim Versuch, beispielsweise auf das SharePoint Online-Intranet Ihrer Organisati
 
 
 
-## <a name="supported-browser"></a>Unterstützte Browser
+## Unterstützte Browser
+<a id="supported-browser" class="xliff"></a>
 
 Wenn Ihr Administrator eine Richtlinie für bedingten Zugriff konfiguriert hat, können Sie nur über einen unterstützten Browser auf die Ressourcen Ihrer Organisation zugreifen. Auf Windows-Geräten werden ausschließlich **Internet Explorer** und **Edge** unterstützt.
 
@@ -47,10 +49,11 @@ Sie können ganz einfach ermitteln, ob das Ressourcenzugriffsproblem auf einen n
 
 ![Meldung vom Typ „Zugriff nicht möglich“ für nicht unterstützte Browser](./media/active-directory-conditional-access-device-remediation/02.png "Szenario")
 
-Die einzige Abhilfe ist die Verwendung eines Browsers, der von der Anwendung für Ihre Geräteplattform unterstützt wird. Eine vollständige Liste mit unterstützten Browsern finden Sie unter [Unterstützte Browser](active-directory-conditional-access-supported-apps.md#supported-browsers).  
+Die einzige Abhilfe ist die Verwendung eines Browsers, der von der Anwendung für Ihre Geräteplattform unterstützt wird. Eine vollständige Liste mit unterstützten Browsern finden Sie unter [Unterstützte Browser](active-directory-conditional-access-supported-apps.md#supported-browsers-for-device-based-policies).  
 
 
-## <a name="supported-versions-of-windows"></a>Unterstützte Windows-Versionen
+## Unterstützte Windows-Versionen
+<a id="supported-versions-of-windows" class="xliff"></a>
 
 Das Windows-Betriebssystem auf Ihrem Gerät muss folgende Kriterien erfüllen: 
 
@@ -58,7 +61,8 @@ Das Windows-Betriebssystem auf Ihrem Gerät muss folgende Kriterien erfüllen:
 - Wenn sich auf Ihrem Gerät ein Windows-Serverbetriebssystem befindet, muss es sich dabei mindestens um Windows Server 2008 R2 handeln. 
 
 
-## <a name="compliant-device"></a>Kompatibles Gerät
+## Kompatibles Gerät
+<a id="compliant-device" class="xliff"></a>
 
 Der Administrator hat unter Umständen eine Richtlinie für bedingten Zugriff konfiguriert, die dafür sorgt, dass auf die Ressourcen Ihrer Organisation nur über kompatible Geräte zugegriffen werden kann. Kompatible Geräte müssen entweder Ihrem lokalen Active Directory oder Ihrem Azure Active Directory angehören.
 
@@ -67,7 +71,8 @@ Sie können ganz einfach ermitteln, ob das Ressourcenzugriffsproblem auf ein nic
 ![Meldungen vom Typ „Zugriff nicht möglich“ für nicht registrierte Geräte](./media/active-directory-conditional-access-device-remediation/01.png "Szenario")
 
 
-### <a name="is-your-device-joined-to-an-on-premises-active-directory"></a>Gehört Ihr Gerät einem lokalen Active Directory an?
+### Gehört Ihr Gerät einem lokalen Active Directory an?
+<a id="is-your-device-joined-to-an-on-premises-active-directory" class="xliff"></a>
 
 **Falls Ihr Gerät einem lokalen Active Directory in Ihrer Organisation angehört, gehen Sie wie folgt vor:**
 
@@ -79,7 +84,8 @@ Sie können ganz einfach ermitteln, ob das Ressourcenzugriffsproblem auf ein nic
 6. Sollte wieder die gleiche Seite angezeigt werden, klicken Sie auf den Link **Weitere Details**, und wenden Sie sich mit diesen Details an Ihren Administrator.
 
 
-### <a name="is-your-device-not-joined-to-an-on-premises-active-directory"></a>Gehört Ihr Gerät keinem lokalen Active Directory an?
+### Gehört Ihr Gerät keinem lokalen Active Directory an?
+<a id="is-your-device-not-joined-to-an-on-premises-active-directory" class="xliff"></a>
 
 Falls Ihr Gerät keinem lokalen Active Directory angehört und über Windows 10 verfügt, haben Sie zwei Möglichkeiten:
 
@@ -94,7 +100,8 @@ Mögliche Szenarien:
 
 
 
-#### <a name="azure-ad-join-on-windows-10"></a>Azure AD Join unter Windows 10
+#### Azure AD Join unter Windows 10
+<a id="azure-ad-join-on-windows-10" class="xliff"></a>
 
 Die Schritte, die zur Verknüpfung Ihres Geräts mit Azure AD ausgeführt werden müssen, sind abhängig von der Windows 10-Version, die auf dem Gerät ausgeführt wird. Führen Sie den Befehl **winver** aus, um die Version Ihres Windows 10-Betriebssystems zu ermitteln: 
 
@@ -121,7 +128,8 @@ Die Schritte, die zur Verknüpfung Ihres Geräts mit Azure AD ausgeführt werden
 6. Versuchen Sie erneut, auf die Anwendung zuzugreifen.
 
 
-#### <a name="workplace-join-on-windows-81"></a>Workplace Join unter Windows 8.1
+#### Workplace Join unter Windows 8.1
+<a id="workplace-join-on-windows-81" class="xliff"></a>
 
 Wenn das Gerät keiner Domäne angehört und über Windows 8.1 verfügt, können Sie mit den folgenden Schritten eine Arbeitsplatzeinbindung und eine Registrierung bei Microsoft Intune durchführen:
 
@@ -134,7 +142,8 @@ Wenn das Gerät keiner Domäne angehört und über Windows 8.1 verfügt, können
 
 
 
-#### <a name="add-your-work-or-school-account-to-windows"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos zu Windows 
+#### Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos zu Windows
+<a id="add-your-work-or-school-account-to-windows" class="xliff"></a> 
 
 
 **Windows 10 Anniversary Update (Version 1607):**
@@ -158,7 +167,8 @@ Wenn das Gerät keiner Domäne angehört und über Windows 8.1 verfügt, können
 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access.md)
 
 
