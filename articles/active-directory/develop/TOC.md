@@ -1,109 +1,218 @@
 # [Übersicht](active-directory-developers-guide.md)
+
 ## [Warum Azure AD?](https://azure.microsoft.com/develop/identity/signin/)
+
 ## [Authentifizierungsgrundlagen](active-directory-authentication-scenarios.md)
+
 ## [App-Typen](active-directory-authentication-scenarios.md#application-types-and-scenarios)
+
 # Erste Schritte
+
 ## Mobile Apps und Desktop-Apps
+
 ### [Übersicht](active-directory-authentication-scenarios.md#native-application-to-web-api)
+
 ### [iOS](active-directory-devquickstarts-ios.md)
+
 ### [Android](active-directory-devquickstarts-android.md)
+
 ### [.NET](active-directory-devquickstarts-dotnet.md)
+
 ### [Windows](active-directory-devquickstarts-windowsstore.md)
+
 ### [Xamarin](active-directory-devquickstarts-xamarin.md)
+
 ### [Cordova](active-directory-devquickstarts-cordova.md)
+
 ### [OAuth 2.0](active-directory-protocols-oauth-code.md)
+
 ## Web-Apps
+
 ### [Übersicht](active-directory-authentication-scenarios.md#web-browser-to-web-application)
+
 ### [ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)
+
 ### [Java](active-directory-devquickstarts-webapp-java.md)
+
 ### [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)
+
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
+
 ## Einzelseiten-Apps
+
 ### [Übersicht](active-directory-authentication-scenarios.md#single-page-application-spa)
+
 ### [Angular JS](active-directory-devquickstarts-angular.md)
+
 ### [JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)
+
 ## Web-APIs
+
 ### [Übersicht](active-directory-authentication-scenarios.md#web-application-to-web-api)
+
 ### [ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)
+
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
+
 ## Dienst zu Dienst
+
 ### [Übersicht](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)
+
 ### [.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)
+
 ### [OAuth 2.0-Clientanmeldeinformationen](active-directory-protocols-oauth-service-to-service.md)
+
 # Anleitungen
+
 ## [Anwendungsregistrierung](active-directory-integrating-applications.md)
+
 ## [Mehrinstanzenfähige Apps](active-directory-devhowto-multi-tenant-overview.md)
+
 ## OAuth und OpenID Connect
+
 ### [OpenID Connect-Protokoll](active-directory-protocols-openid-connect-code.md)
+
 ### [OAuth 2.0-Autorisierungscodeberechtigung](active-directory-protocols-oauth-code.md)
+
 ### [Implizite OAuth 2.0-Gewährung](active-directory-dev-understanding-oauth2-implicit-grant.md)
+
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
+
 ### [Anpassen von Ansprüchen](active-directory-saml-claims-customization.md)
+
 ### [Debuggen von SAML-basierten SSO](active-directory-saml-debugging.md)
+
 ### [SAML-Protokoll für einmaliges Anmelden](active-directory-single-sign-on-protocol-reference.md)
+
 ### [SAML-Protokoll für einmaliges Abmelden](active-directory-single-sign-out-protocol-reference.md)
+
 ### [Erstellen eines Mandanten](active-directory-howto-tenant.md)
+
 ## [Brandingrichtlinien](active-directory-branding-guidelines.md)
+
 ## Mobil- und Desktop-SSO
+
 ### [Aktivieren von SSO unter Android](active-directory-sso-android.md)
+
 ### [Aktivieren von SSO unter iOS](active-directory-sso-ios.md)
+
 ## [Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md)
+
 ## [Benutzerbereitstellung mit SCIM](../active-directory-scim-provisioning.md)
+
 ## [Azure AD Graph-API](active-directory-graph-api.md)
+
 ### [Erste Schritte mit AAD Graph](active-directory-graph-api-quickstart.md)
+
 ## [AppSource-Zertifizierung](active-directory-devhowto-appsource-certified.md)
+
 ## [Azure AD-App-Katalog](active-directory-app-gallery-listing.md)
+
 ## [Office 365-Verkäuferdashboard](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+
 ## Arbeiten mit Visual Studio
+
 ### [Erste Schritte mit verbundenen Visual Studio-Diensten](vs-active-directory-dotnet-getting-started.md)
+
 ### [Fehler während der Authentifizierungserkennung](vs-active-directory-error.md)
+
 ### [Erste Schritte mit WebApi](vs-active-directory-webapi-getting-started.md)
+
 ### [Was ist mit meinem Web-API-Projekt passiert?](vs-active-directory-webapi-what-happened.md)
+
 ## [ADFS für Windows Server](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
+
 # Referenz
+
 ## [Authentifizierungsbibliotheken (ADAL)](active-directory-authentication-libraries.md)
+
 ## [Codebeispiele](active-directory-code-samples.md)
+
 ## [Glossar](active-directory-dev-glossary.md)
+
 ## [Authentifizierungsprotokolle](active-directory-authentication-protocols.md)
+
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
+
 ### [OAuth](active-directory-protocols-oauth-code.md)
+
 ### [Bedienen von Dienstaufrufen](active-directory-protocols-oauth-service-to-service.md)
+
 ### [„Im Auftrag von“-Ablauf](active-directory-protocols-oauth-on-behalf-of.md)
+
 ### [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md)
+
 ### [Rollover von Signaturschlüsseln](active-directory-signing-key-rollover.md)
+
 ### [Verbundmetadaten](active-directory-federation-metadata.md)
+
 ### [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md)
+
 ## [Anwendungsobjekte](active-directory-application-objects.md)
+
 ### [Apps und Azure AD](active-directory-how-applications-are-added.md)
+
 ## [Anwendungsmanifest](active-directory-application-manifest.md)
+
 ## [Tokengültigkeitsdauer](../active-directory-configurable-token-lifetimes.md)
+
 ## [Diensteinschränkungen](../active-directory-service-limits-restrictions.md)
+
 # v2.0-Endpunkt
+
 ## [Übersicht](active-directory-appmodel-v2-overview.md)
+
 ### [App-Typen](active-directory-v2-flows.md)
+
 ### [Einschränkungen](active-directory-v2-limitations.md)
+
 ### [v1-v2-Vergleich](active-directory-v2-compare.md)
+
 ## Erste Schritte
+
 ### Mobile Apps und Desktop-Apps
-#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+
+#### [iOS](guidedsetups/active-directory-ios.md)
+
 #### [Android](guidedsetups/active-directory-android.md)
+
 #### [Windows Desktop .NET](guidedsetups/active-directory-windesktop.md)
+
 ### Web-Apps
-#### [JavaScript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+
+#### [JavaScript SPA](guidedsetups/active-directory-javascriptspa.md)
+
 #### [ASP.NET Web Server](guidedsetups/active-directory-aspnetwebapp.md)
+
 #### [NodeJS-Web-App](active-directory-v2-devquickstarts-node-web.md)
+
 ## Anleitungen
+
 ### [Registrieren einer App](active-directory-v2-app-registration.md)
+
 ## Referenz
+
 ### [Authentifizierungsbibliotheken](active-directory-v2-libraries.md)
+
 ### [v2.0-Authentifizierungsprotokolle](active-directory-v2-protocols.md)
+
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
+
 #### [OAuth 2.0-Autorisierungscodeberechtigung](active-directory-v2-protocols-oauth-code.md)
+
 #### [Implizite OAuth 2.0-Gewährung](active-directory-v2-protocols-implicit.md)
+
 #### [Gewähren von OAuth 2.0-Clientanmeldeinformationen](active-directory-v2-protocols-oauth-client-creds.md)
+
 #### [„Im Auftrag von“-Oauth 2.0-Ablauf](active-directory-v2-protocols-oauth-on-behalf-of.md)
+
 #### [Tokenreferenz](active-directory-v2-tokens.md)
+
 #### [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md)
+
 ### [Bereiche](active-directory-v2-scopes.md)
+
 # Ressourcen
+
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+
