@@ -1,6 +1,6 @@
 ---
 title: Einrichten Ihrer Entwicklungsumgebung unter Linux | Microsoft Docs
-description: "Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen lokalen Entwicklungscluster unter Linux. Nach Abschluss des Setups können Sie mit der Erstellung von Clientanwendungen beginnen."
+description: Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen lokalen Entwicklungscluster unter Linux. Nach Abschluss des Setups können Sie mit der Erstellung von Clientanwendungen beginnen.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
