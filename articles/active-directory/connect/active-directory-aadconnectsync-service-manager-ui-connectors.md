@@ -12,22 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 6d893efd775ff6b55524ba3a621d8248adbdd432
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 ---
-# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager
+# Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager
+<a id="using-connectors-with-the-azure-ad-connect-sync-service-manager" class="xliff"></a>
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
 Die Registerkarte „Connectors“ wird verwendet, um alle Systeme zu verwalten, mit denen das Synchronisierungsmodul verbunden ist.
 
-## <a name="connector-actions"></a>Connectoraktionen
+## Connectoraktionen
+<a id="connector-actions" class="xliff"></a>
 | Aktion | Kommentar |
 | --- | --- |
 | Erstellen |Nicht verwenden. Verwenden Sie den Installations-Assistenten zum Verbinden mit weiteren Active Directory-Gesamtstrukturen. |
@@ -42,7 +45,8 @@ Die Registerkarte „Connectors“ wird verwendet, um alle Systeme zu verwalten,
 | Schema aktualisieren |Aktualisiert das zwischengespeicherte Schema. Es wird empfohlen, die Option im Installations-Assistenten zu verwenden, da damit auch die Synchronisierungsregeln aktualisiert werden. |
 | [Connectorbereich durchsuchen](#search-connector-space) |Wird verwendet, um Objekte zu finden und um [ein Objekt und dessen Daten durch das System zu verfolgen](#follow-an-object-and-its-data-through-the-system). |
 
-### <a name="delete"></a>Löschen
+### Löschen
+<a id="delete" class="xliff"></a>
 Die Löschaktion wird für zwei verschiedene Dinge verwendet.  
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
 
@@ -52,12 +56,14 @@ Mit der Option **Delete Connector and connector space** (Connector und Connector
 
 Mit beiden Optionen werden alle Objekte synchronisiert und die Metaverse-Objekte aktualisiert. Bei dieser Aktion handelt es sich um einen Vorgang mit langer Ausführungsdauer.
 
-### <a name="configure-run-profiles"></a>Ausführungsprofile konfigurieren
+### Ausführungsprofile konfigurieren
+<a id="configure-run-profiles" class="xliff"></a>
 Mit dieser Option können Sie die für einen Connector konfigurierten Ausführungsprofile anzeigen.
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
 
-### <a name="search-connector-space"></a>Connectorbereich durchsuchen
+### Connectorbereich durchsuchen
+<a id="search-connector-space" class="xliff"></a>
 Die Aktion zum Durchsuchen des Connectorbereichs ist nützlich, um nach Objekten zu suchen und Probleme zu behandeln.
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
@@ -68,7 +74,8 @@ Wenn Sie beispielsweise eine Unterstruktur durchsuchen, erhalten Sie alle Objekt
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
 In dieser Tabelle können Sie ein Objekt auswählen, **Eigenschaften** auswählen und das Objekt aus dem Quellconnectorbereich durch das Metaverse bis zum Zielconnectorbereich [verfolgen](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
 
-### <a name="changing-the-ad-ds-account-password"></a>Ändern des AD DS-Kontokennworts
+### Ändern des AD DS-Kontokennworts
+<a id="changing-the-ad-ds-account-password" class="xliff"></a>
 Wenn Sie das Kontokennwort ändern, kann Synchronisierungsdienst Änderungen an einem lokalen AD nicht mehr importieren oder exportieren.   Folgendes könnte angezeigt werden:
 
 - Der Schritte zum Importieren/Exportieren für den AD-Connector löst den Fehler „no-start-credentials“ aus.
@@ -90,7 +97,8 @@ Um das Problem zu beheben, aktualisieren Sie das AD DS-Benutzerkonto wie folgt:
 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

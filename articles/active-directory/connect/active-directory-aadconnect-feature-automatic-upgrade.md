@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9541cd195e8afa6e692a5a0214b0d614e429c33b
 ms.openlocfilehash: 234f06a858987b03ec2ed0bbe0899423d8f0bcdd
-
+ms.contentlocale: de-de
+ms.lasthandoff: 12/20/2016
 
 ---
-# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
+# Azure AD Connect: Automatisches Upgrade
+<a id="azure-ad-connect-automatic-upgrade" class="xliff"></a>
 Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
 
-## <a name="overview"></a>Übersicht
+## Übersicht
+<a id="overview" class="xliff"></a>
 Noch nie konnten Sie so leicht sicherstellen, dass Ihre Azure AD Connect-Installation immer auf dem neuesten Stand ist  – mit dem **automatischen Upgradefeature** . Dieses Feature ist standardmäßig für Express-Installationen und DirSync-Upgrades aktiviert. Wenn eine neue Version veröffentlicht wird, erfolgt ein automatisches Upgrade Ihrer Installation.
 
 Das automatische Upgrade ist in folgenden Fällen standardmäßig aktiviert:
@@ -47,7 +50,8 @@ Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastru
 
 Wenn auf dem Server die **Synchronization Service Manager** -Benutzeroberfläche geöffnet ist, wird das Upgrade angehalten, bis die Benutzeroberfläche geschlossen wird.
 
-## <a name="troubleshooting"></a>Problembehandlung
+## Problembehandlung
+<a id="troubleshooting" class="xliff"></a>
 Wenn das automatische Upgrade Ihrer Connect-Installation nicht wie erwartet funktioniert, befolgen Sie diese Schritte, um herauszufinden, wo der Fehler liegen könnte.
 
 Ein automatisches Upgrade wird voraussichtlich nicht direkt am Erscheinungstag einer neuen Version versucht. Upgrades unterliegen einer beabsichtigten Zufälligkeit – Sie müssen sich also keine Sorgen machen, wenn Ihre Installation nicht sofort aktualisiert wird.
@@ -97,11 +101,7 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeNotSupportedStagingModeEnabled |Der Server ist auf den [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode)festgelegt. |
 | UpgradeNotSupportedUserWritebackEnabled |Sie haben das Feature [Benutzerrückschreiben](active-directory-aadconnect-feature-preview.md#user-writeback) aktiviert. |
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

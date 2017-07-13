@@ -12,22 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 7f50ce0d4842bde809664c392ebee5425a70e6f0
+ms.contentlocale: de-de
 ms.lasthandoff: 03/08/2017
 
 ---
-# <a name="using-the-sync-service-manager-operations-tab"></a>Verwenden der Registerkarte „Vorgänge“ von Synchronization Service Manager
+# Verwenden der Registerkarte „Vorgänge“ von Synchronization Service Manager
+<a id="using-the-sync-service-manager-operations-tab" class="xliff"></a>
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
 
 Die Registerkarte „Vorgänge“ zeigt die Ergebnisse der letzten Vorgänge. Diese Registerkarte ist sehr wichtig, um Probleme zu verstehen und zu beheben.
 
-## <a name="understand-the-information-visible-in-the-operations-tab"></a>Grundlagen zu den Informationen, die in der Registerkarte „Vorgänge“ angezeigt werden
+## Grundlagen zu den Informationen, die in der Registerkarte „Vorgänge“ angezeigt werden
+<a id="understand-the-information-visible-in-the-operations-tab" class="xliff"></a>
 Die obere Hälfte zeigt alle Ausführungen in chronologischer Reihenfolge. Standardmäßig enthält das Vorgangsprotokoll Informationen der letzten sieben Tage. Diese Einstellung kann mit dem [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) geändert werden. Suchen Sie nach Ausführungen ohne Erfolgsstatus. Die Sortierung kann durch Klicken auf die Kopfzeilen geändert werden.
 
 Die Spalte **Status** zeigt die wichtigste Information und das schwerwiegendste Problem einer Ausführung an. Hier folgt eine kurze Zusammenfassung der häufigsten Status, in der Reihenfolge ihrer Untersuchungspriorität (bei „*“ gibt es mehrere mögliche Fehlerzeichenfolgen).
@@ -44,7 +47,8 @@ Wenn Sie eine Zeile auswählen, wird der untere Bereich aktualisiert, und die De
 
 Weitere Informationen finden Sie unter [Problembehandlung: Ein Objekt wird nicht synchronisiert](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

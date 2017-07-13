@@ -11,18 +11,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 27cc51d3f9220756fc1188f978dc158f17037bc3
+ms.contentlocale: de-de
 ms.lasthandoff: 03/30/2017
 
-
 ---
-# <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
+# Häufig gestellte Fragen zu Azure Active Directory Connect
+<a id="frequently-asked-questions-for-azure-active-directory-connect" class="xliff"></a>
 
-## <a name="general-installation"></a>Allgemeine Installation
+## Allgemeine Installation
+<a id="general-installation" class="xliff"></a>
 **F: Ist die Installation möglich, wenn der globale Azure AD-Administrator 2FA aktiviert hat?**  
 Dies wird in den Builds ab Februar 2016 unterstützt.
 
@@ -37,7 +39,8 @@ Ja. Nach der Installation des Agents können Sie den Registrierungsprozess absch
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
-## <a name="network"></a>Netzwerk
+## Netzwerk
+<a id="network" class="xliff"></a>
 **F: Die maximale Länge für offene Verbindungen in meinem Netzwerk wird durch eine Firewall, ein Netzwerkgerät o. ä. eingeschränkt. Wie hoch sollte der clientseitige Schwellenwert für die Zeitüberschreitung bei der Verwendung von Azure AD Connect sein?**  
 Für Netzwerksoftware, physische Geräte und alle anderen Komponenten, durch die die maximale Länge von offenen Verbindungen eingeschränkt wird, sollte ein Schwellenwert von mindestens 5 Minuten (300 Sekunden) für die Konnektivität zwischen dem Server, auf dem der Azure AD Connect-Client installiert ist, und Azure Active Directory verwendet werden. Dies gilt auch für alle zuvor veröffentlichten Microsoft Identity-Synchronisierungswerkzeuge.
 
@@ -47,18 +50,21 @@ Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen/Domänen mit 
 **F: Werden NetBios mit punktierten Namen unterstützt?**  
 Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen/Domänen, deren NetBios-Name einen Punkt enthält.
 
-## <a name="federation"></a>Verbund
+## Verbund
+<a id="federation" class="xliff"></a>
 **F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich aufgefordert werde, mein Office 365-Zertifikat zu erneuern?**  
 Befolgen Sie die Anweisungen, die Sie im Thema [Erneuern von Zertifikaten](active-directory-aadconnect-o365-certs.md) finden, um Ihr Zertifikat zu erneuern.
 
 **F: Für die vertrauende Seite für Office 365 habe ich „Vertrauende Seite automatisch aktualisieren“ festgelegt. Muss ich bestimmte Maßnahmen ergreifen, wenn mein Tokensignaturzertifikat automatisch verlängert wird?**  
 Befolgen Sie die Anweisungen im Artikel [Erneuern von Zertifikaten](active-directory-aadconnect-o365-certs.md).
 
-## <a name="environment"></a>Environment
+## Environment
+<a id="environment" class="xliff"></a>
 **F: Kann der Server nach der Installation von Azure AD umbenannt werden?**  
 Nein. Wenn Sie den Namen des Servers ändern, kann das Synchronisierungsmodul keine Verbindung zur SQL-Datenbank herstellen, und der Dienst kann nicht gestartet werden.
 
-## <a name="identity-data"></a>Identitätsdaten
+## Identitätsdaten
+<a id="identity-data" class="xliff"></a>
 **F: Warum entspricht das UPN (UserPrincipalName)-Attribut in Azure AD dem lokalen UPN?**  
 Informationen hierzu finden Sie in diesen Artikeln:
 
@@ -75,7 +81,8 @@ Nein, dies wird derzeit nicht unterstützt.
 
 
 
-## <a name="custom-configuration"></a>Benutzerdefinierte Konfiguration
+## Benutzerdefinierte Konfiguration
+<a id="custom-configuration" class="xliff"></a>
 **F: Wo sind die PowerShell-Cmdlets für Azure AD Connect dokumentiert?**  
 Mit Ausnahme der auf dieser Website dokumentierten Cmdlets werden keine PowerShell-Cmdlets in Azure AD Connect zur Verwendung für Kunden unterstützt.
 
@@ -93,7 +100,8 @@ Nein.
 
 
 
-## <a name="troubleshooting"></a>Problembehandlung
+## Problembehandlung
+<a id="troubleshooting" class="xliff"></a>
 **F: Wie erhalte ich Hilfe zu Azure AD Connect?**
 
 [Durchsuchen der Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)

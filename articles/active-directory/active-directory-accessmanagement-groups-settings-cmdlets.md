@@ -20,9 +20,9 @@ ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
 ms.contentlocale: de-de
 ms.lasthandoff: 05/05/2017
 
-
 ---
-# <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
+# Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
+<a id="azure-active-directory-cmdlets-for-configuring-group-settings" class="xliff"></a>
 
 > [!IMPORTANT]
 > Dieser Inhalt gilt nur für einheitliche Gruppen, die auch als Office 365-Gruppen bezeichnet werden. 
@@ -31,14 +31,16 @@ Office 365-Gruppeneinstellungen werden mithilfe eines Settings- und eines Settin
 
 Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Informationen zu diesem Modul und eine Anleitung zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie unter [Azure Active Directory PowerShell, Version 2](https://docs.microsoft.com/powershell/azuread/). Sie können die Version 2 des Moduls [hier](https://www.powershellgallery.com/packages/AzureAD/) herunterladen.
 
-## <a name="retrieve-a-specific-settings-value"></a>Rufen Sie einen speziellen Einstellungswert ab:
+## Rufen Sie einen speziellen Einstellungswert ab:
+<a id="retrieve-a-specific-settings-value" class="xliff"></a>
 Wenn Sie den Namen der Einstellung kennen, die Sie abrufen möchten, können Sie das untenstehende Cmdlet verwenden, um den aktuellen Einstellungswert abzurufen. In diesem Beispiel rufen wir den Wert für eine Einstellung namens „UsageGuidelinesUrl“ ab. Sie können weiter unten in diesem Artikel mehr zu Verzeichniseinstellungen und deren Namen lesen.
 
 ```powershell
 (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
 ```
 
-## <a name="create-settings-at-the-directory-level"></a>Erstellen von Einstellungen auf Verzeichnisebene
+## Erstellen von Einstellungen auf Verzeichnisebene
+<a id="create-settings-at-the-directory-level" class="xliff"></a>
 Über diese Schritte werden auf Verzeichnisebene Einstellungen erstellt, die für alle einheitlichen Gruppen im Verzeichnis gelten.
 
 1. In den DirectorySettings-Cmdlets müssen Sie die ID des SettingsTemplate-Objekts angeben, das Sie verwenden möchten. Wenn Sie diese ID nicht kennen, gibt dieses Cmdlet die Liste aller Einstellungsvorlagen zurück:
@@ -76,7 +78,7 @@ Wenn Sie den Namen der Einstellung kennen, die Sie abrufen möchten, können Sie
 5. Zum Schluss wenden Sie die Einstellungen an:
   
   ```
-  New-AzureADDirectorySetting -DirectorySetting $settings
+  New-AzureADDirectorySetting -DirectorySetting $setting
   ```
 
 Nach erfolgreichem Abschluss gibt das Cmdlet die ID des neuen Einstellungsobjekts zurück:
@@ -103,7 +105,8 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>EnableGroupCreation<li>Typ: Boolescher Wert<li>Standard: True | Boolescher Wert, der angibt, ob Benutzer, die keine Administratoren sind, neue einheitliche Gruppen erstellen können. |
 
 
-## <a name="read-settings-at-the-directory-level"></a>Lesen von Einstellungen auf Verzeichnisebene
+## Lesen von Einstellungen auf Verzeichnisebene
+<a id="read-settings-at-the-directory-level" class="xliff"></a>
 Mit diesen Schritten werden auf Verzeichnisebene Einstellungen gelesen, die für alle Office-Gruppen im Verzeichnis gelten.
 
 1. Lesen aller vorhandenen Verzeichniseinstellungen:
@@ -143,7 +146,8 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen gelesen, die für
   EnableGroupCreation           True
   ```
 
-## <a name="update-settings-for-a-specific-group"></a>Aktualisieren von Einstellungen für eine bestimmte Gruppe
+## Aktualisieren von Einstellungen für eine bestimmte Gruppe
+<a id="update-settings-for-a-specific-group" class="xliff"></a>
 
 1. Suchen der Einstellungsvorlage mit dem Namen „Groups.Unified.Guest“
   ```
@@ -179,7 +183,8 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen gelesen, die für
   25651479-a26e-4181-afce-ce24111b2cb5             08d542b9-071f-4e16-94b0-74abb372e3d9 {class SettingValue {...
   ```
 
-## <a name="update-settings-at-the-directory-level"></a>Aktualisieren von Einstellungen auf Verzeichnisebene
+## Aktualisieren von Einstellungen auf Verzeichnisebene
+<a id="update-settings-at-the-directory-level" class="xliff"></a>
 
 Mit diesen Schritten werden auf Verzeichnisebene Einstellungen aktualisiert, die für alle einheitlichen Gruppen im Verzeichnis gelten. In diesen Beispielen wird davon ausgegangen, dass in Ihrem Verzeichnis bereits ein „Settings“-Objekt vorhanden ist.
 
@@ -204,16 +209,19 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen aktualisiert, die
   Set-AzureADDirectorySetting -Id c391b57d-5783-4c53-9236-cefb5c6ef323 -DirectorySetting $Setting
   ```
 
-## <a name="remove-settings-at-the-directory-level"></a>Entfernen von Einstellungen auf Verzeichnisebene
+## Entfernen von Einstellungen auf Verzeichnisebene
+<a id="remove-settings-at-the-directory-level" class="xliff"></a>
 Mit diesen Schritten werden auf Verzeichnisebene Einstellungen entfernt, die für alle Office-Gruppen im Verzeichnis gelten.
   ```
   Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
   ```
 
-## <a name="cmdlet-syntax-reference"></a>Referenz der Cmdletsyntax
+## Referenz der Cmdletsyntax
+<a id="cmdlet-syntax-reference" class="xliff"></a>
 Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azure Active Directory-Cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="additional-reading"></a>Zusätzliche Lektüre
+## Zusätzliche Lektüre
+<a id="additional-reading" class="xliff"></a>
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)

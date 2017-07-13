@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
 ms.openlocfilehash: d999cc5ce3527539bbdf868912d5b2f6f470c21e
+ms.contentlocale: de-de
 ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Einführung in die Benutzeroberfläche von Azure AD Connect Synchronization Service Manager
+# Einführung in die Benutzeroberfläche von Azure AD Connect Synchronization Service Manager
+<a id="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui" class="xliff"></a>
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
@@ -32,7 +34,8 @@ Sie starten die Benutzeroberfläche von **Synchronization Service Manager** übe
 
 Klicken Sie auf die Links oben in diesem Thema, um weitere Informationen zu den verschiedenen Registerkarten auf der Benutzeroberfläche zu erhalten.
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
