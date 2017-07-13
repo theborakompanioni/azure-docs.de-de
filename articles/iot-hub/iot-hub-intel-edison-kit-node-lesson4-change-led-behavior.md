@@ -4,7 +4,7 @@ description: "Passen Sie die Nachrichten an, um das Ein- und Aus-Verhalten der L
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Steuern der LED mit Arduino
 ROBOTS: NOINDEX
@@ -17,24 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 9a2c6dfe5d85a4da9714f9b8942cb2baf1a98466
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="change-the-on-and-off-behavior-of-the-led"></a>Ändern des Ein- und Aus-Verhaltens der LED
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="change-the-on-and-off-behavior-of-the-led" class="xliff"></a>
+
+# Ändern des Ein- und Aus-Verhaltens der LED
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Passen Sie die Nachrichten an, um das Ein- und Aus-Verhalten der LED zu ändern. Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshooting].
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 Verwenden zusätzlicher Funktionen, um das Ein- und Aus-Verhalten der LED zu ändern
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Sie müssen [Ausführen einer Beispielanwendung auf dem Intel Edison zum Empfangen von C2D-Nachrichten][receive-cloud-to-device-messages] erfolgreich abgeschlossen haben.
 
-## <a name="add-functions-to-appjs-and-gulpfilejs"></a>Hinzufügen von Funktionen zu „app.js“ und „gulpfile.js“
+<a id="add-functions-to-appjs-and-gulpfilejs" class="xliff"></a>
+
+## Hinzufügen von Funktionen zu „app.js“ und „gulpfile.js“
 1. Öffnen Sie die Beispielanwendung in Visual Studio Code, indem Sie die folgenden Befehle ausführen:
 
    ```bash
@@ -88,7 +98,9 @@ Sie müssen [Ausführen einer Beispielanwendung auf dem Intel Edison zum Empfang
    ```
 6. Speichern Sie alle Änderungen.
 
-### <a name="deploy-and-run-the-sample-application"></a>Bereitstellen und Ausführen der Beispielanwendung
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+### Bereitstellen und Ausführen der Beispielanwendung
 Führen Sie den folgenden Befehl aus, um die Beispielanwendung auf dem Edison bereitzustellen und auszuführen:
 
 ```bash
@@ -101,7 +113,9 @@ Die LED sollte zwei Sekunden lang eingeschaltet und dann zwei Sekunden lang ausg
 
 Glückwunsch! Sie haben die Nachrichten, die von IoT Hub an den Edison gesendet werden, erfolgreich angepasst.
 
-### <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+### Zusammenfassung
 In diesem optionalen Abschnitt wird gezeigt, wie Nachrichten angepasst werden, damit die Beispielanwendung das Ein- und Aus-Verhalten der LED auf andere Weise steuern kann.
 
 <!-- Images and links -->

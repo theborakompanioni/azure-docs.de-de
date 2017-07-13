@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/28/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
@@ -20,14 +20,17 @@ ms.openlocfilehash: fe7f508ed1c4eb57663f7e252d286719af03dbb1
 ms.contentlocale: de-de
 ms.lasthandoff: 05/16/2017
 
-
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect Sync: Scheduler
+<a id="azure-ad-connect-sync-scheduler" class="xliff"></a>
+
+# Azure AD Connect Sync: Scheduler
 Dieses Thema beschreibt den integrierten Scheduler in Azure AD Connect Sync (auch bekannt als Synchronisierungsmodul).
 
 Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
 
-## <a name="overview"></a>Übersicht
+<a id="overview" class="xliff"></a>
+
+## Übersicht
 Azure AD Connect Sync synchronisiert Änderungen in Ihrem lokalen Verzeichnis mithilfe eines Schedulers. Es gibt zwei Schedulerprozesse: einen für die Kennwortsynchronisierung und einen anderen für die Objekt-/Attributsynchronisierung sowie für Wartungstasks. In diesem Thema wird letzterer behandelt.
 
 In früheren Versionen war der Scheduler für Objekte und Attribute nicht in das Synchronisierungsmodul integriert. Das Modul verwendete die Windows-Aufgabenplanung oder einen separaten Windows-Dienst, um den Synchronisierungsprozess auslösen. Ab den 1.1-Versionen ist der Scheduler in das Synchronisierungsmodul integriert und kann angepasst werden. Die neue Standardeinstellung für die Synchronisierungsfrequenz ist 30 Minuten.
@@ -39,7 +42,9 @@ Der Scheduler ist für zwei Tasks zuständig:
 
 Der Scheduler selbst wird immer ausgeführt, kann jedoch so konfiguriert werden, dass er nur einen oder keinen dieser Tasks ausführt. Wenn Sie beispielsweise einen eigenen Prozess für den Synchronisierungszyklus verwenden, können Sie diesen Task im Scheduler deaktivieren, den Wartungstask aber weiterhin ausführen.
 
-## <a name="scheduler-configuration"></a>Schedulerkonfiguration
+<a id="scheduler-configuration" class="xliff"></a>
+
+## Schedulerkonfiguration
 Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerShell, und führen Sie `Get-ADSyncScheduler`aus. Die Ausgabe ähnelt der folgenden Abbildung:
 
 ![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings2016.png)
@@ -69,7 +74,9 @@ In früheren Builds von Azure AD Connect **isStagingModeEnabled** wurde im Set-A
 
 Die Konfiguration des Schedulers wird in Azure AD gespeichert. Wenn Sie über einen Stagingserver verfügen, wirken sich alle Änderungen am primären Server auch auf den Stagingserver aus (mit Ausnahme von „IsStagingModeEnabled“).
 
-### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
+<a id="customizedsynccycleinterval" class="xliff"></a>
+
+### CustomizedSyncCycleInterval
 Syntax: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
 T - Tage, HH - Stunden, mm - Minuten, ss - Sekunden
 
@@ -79,7 +86,9 @@ Beispiel: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`
 Beispiel: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
 Ändert den Scheduler so, dass er täglich ausgeführt wird.
 
-### <a name="disable-the-scheduler"></a>Deaktivieren des Schedulers  
+<a id="disable-the-scheduler" class="xliff"></a>
+
+### Deaktivieren des Schedulers  
 Wenn Sie Änderungen an der Konfiguration vornehmen müssen, sollten Sie den Scheduler deaktivieren, z.B. wenn Sie [die Filterung konfigurieren](active-directory-aadconnectsync-configure-filtering.md) oder [Änderungen an Synchronisierungsregeln vornehmen](active-directory-aadconnectsync-change-the-configuration.md).
 
 Führen Sie `Set-ADSyncScheduler -SyncCycleEnabled $false` aus, um den Scheduler zu deaktivieren.
@@ -88,7 +97,9 @@ Führen Sie `Set-ADSyncScheduler -SyncCycleEnabled $false` aus, um den Scheduler
 
 Wenn Sie die Änderungen vorgenommen haben, denken Sie daran, den Scheduler mit `Set-ADSyncScheduler -SyncCycleEnabled $true` erneut zu aktivieren.
 
-## <a name="start-the-scheduler"></a>Starten des Schedulers
+<a id="start-the-scheduler" class="xliff"></a>
+
+## Starten des Schedulers
 Der Scheduler wird standardmäßig alle 30 Minuten ausgeführt. In einigen Fällen möchten Sie vielleicht einen Synchronisierungszyklus zwischen den geplanten Zyklen ausführen, oder Sie müssen einen anderen Typ ausführen.
 
 **Deltasynchronisierungszyklus**  
@@ -115,7 +126,9 @@ Wenn Sie eine dieser Änderungen vorgenommen haben, müssen Sie einen vollständ
 
 Um einen vollständigen Synchronisierungszyklus zu initiieren, führen Sie an einer PowerShell-Eingabeaufforderung den Befehl `Start-ADSyncSyncCycle -PolicyType Initial` aus. Mit diesem Befehl wird ein vollständiger Synchronisierungszyklus gestartet.
 
-## <a name="stop-the-scheduler"></a>Beenden des Schedulers
+<a id="stop-the-scheduler" class="xliff"></a>
+
+## Beenden des Schedulers
 Wenn der Scheduler gerade einen Synchronisierungszyklus ausführt, müssen Sie diesen beenden. Dies ist zum Beispiel der Fall, wenn Sie beim Starten des Installations-Assistenten den folgenden Fehler erhalten:
 
 ![SyncCycleRunningError](./media/active-directory-aadconnectsync-feature-scheduler/synccyclerunningerror.png)
@@ -128,12 +141,16 @@ Während ein Synchronisierungszyklus ausgeführt wird, sind Änderungen an der K
 
 Der Scheduler ist noch immer aktiv und wird bei der nächsten Gelegenheit wieder gestartet.
 
-## <a name="custom-scheduler"></a>Benutzerdefinierter Scheduler
+<a id="custom-scheduler" class="xliff"></a>
+
+## Benutzerdefinierter Scheduler
 Die in diesem Abschnitt dokumentierten Cmdlets stehen nur in Build [1.1.130.0](active-directory-aadconnect-version-history.md#111300) und höher zur Verfügung.
 
 Wenn der integrierte Scheduler Ihre Anforderungen nicht erfüllt, können Sie die Connectors mithilfe von PowerShell planen.
 
-### <a name="invoke-adsyncrunprofile"></a>Invoke-ADSyncRunProfile
+<a id="invoke-adsyncrunprofile" class="xliff"></a>
+
+### Invoke-ADSyncRunProfile
 Sie können ein Profil für einen Connector auf folgende Weise starten:
 
 ```
@@ -157,7 +174,9 @@ Es empfiehlt sich, die Connectors in der folgenden Reihenfolge zu planen:
 
 Der integrierte Scheduler führt die Connectors in dieser Reihenfolge aus.
 
-### <a name="get-adsyncconnectorrunstatus"></a>Get-ADSyncConnectorRunStatus
+<a id="get-adsyncconnectorrunstatus" class="xliff"></a>
+
+### Get-ADSyncConnectorRunStatus
 Sie können das Synchronisierungsmodul auch überwachen, um zu ermitteln, ob es beschäftigt ist oder im Leerlauf befindet. Das Cmdlet gibt ein leeres Ergebnis zurück, wenn sich das Synchronisierungsmodul im Leerlauf befindet und keinen Connector ausführt. Wenn ein Connector ausgeführt wird, gibt das Cmdlet den Namen des Connectors zurück.
 
 ```
@@ -167,10 +186,14 @@ Get-ADSyncConnectorRunStatus
 ![Status der Connectorausführung](./media/active-directory-aadconnectsync-feature-scheduler/getconnectorrunstatus.png)  
 In der obigen Abbildung weist die erste Zeile darauf hin, dass sich das Synchronisierungsmodul im Leerlauf befindet. Die zweite Zeile bedeutet, dass der Azure AD-Connector ausgeführt wird.
 
-## <a name="scheduler-and-installation-wizard"></a>Scheduler und Installations-Assistent
+<a id="scheduler-and-installation-wizard" class="xliff"></a>
+
+## Scheduler und Installations-Assistent
 Wenn Sie den Installations-Assistenten starten, wird der Scheduler vorübergehend unterbrochen. Der Grund für dieses Verhalten ist die Annahme, dass Sie Konfigurationsänderungen vornehmen möchten, und diese Einstellungen können nicht angewendet werden, solange das Synchronisierungsmodul aktiv ausgeführt wird. Lassen Sie daher den Installations-Assistenten nicht geöffnet, da er alle Synchronisierungsaktionen auf dem Synchronisierungsmodul verhindert.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

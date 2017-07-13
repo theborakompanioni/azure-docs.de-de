@@ -12,28 +12,37 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08ec09275bbcaffaf25cf45a0f2f466fdeb60dc5
 ms.openlocfilehash: 954923e699ef2160b0a16cb369f8a86b3beacd39
-
+ms.contentlocale: de-de
+ms.lasthandoff: 02/07/2017
 
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration
+<a id="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration" class="xliff"></a>
+
+# Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration
 Dieses Thema dient zur Beschreibung der unterstützten und nicht unterstützten Änderungen der Azure AD Connect-Synchronisierung.
 
 Die von Azure AD Connect erstellte Konfiguration funktioniert in der vorliegenden Form für die meisten Umgebungen, die ein lokales Active Directory-Verzeichnis mit Azure AD synchronisieren. In einigen Fällen müssen jedoch einige Änderungen an einer Konfiguration vorgenommen werden, um bestimmte Anforderungen zu erfüllen.
 
-## <a name="changes-to-the-service-account"></a>Änderungen des Dienstkontos
+<a id="changes-to-the-service-account" class="xliff"></a>
+
+## Änderungen des Dienstkontos
 Die Azure AD Connect-Synchronisierung läuft unter einem Dienstkonto, das vom Installations-Assistenten erstellt wurde. Dieses Dienstkonto enthält die Verschlüsselungsschlüssel für die von der Synchronisierung verwendete Datenbank. Es ist mit einem 127 Zeichen langen Kennwort erstellt, das nicht abläuft.
 
 * Das Ändern oder Zurücksetzen des Kennworts des Dienstkontos wird **nicht unterstützt** . Dadurch würden die Verschlüsselungsschlüssel gelöscht, und der Dienst wäre nicht in der Lage, auf die Datenbank zuzugreifen und zu starten.
 
-## <a name="changes-to-the-scheduler"></a>Änderungen am Scheduler
+<a id="changes-to-the-scheduler" class="xliff"></a>
+
+## Änderungen am Scheduler
 Ab den Versionen von Build 1.1 (Februar 2016) können Sie den [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) so konfigurieren, dass ein anderer Synchronisierungszyklus als der Standardwert von 30 Minuten verwendet wird.
 
-## <a name="changes-to-synchronization-rules"></a>Änderungen an Synchronisierungsregeln
+<a id="changes-to-synchronization-rules" class="xliff"></a>
+
+## Änderungen an Synchronisierungsregeln
 Der Installations-Assistent verfügt über eine Konfiguration, die für die meisten gängigen Szenarien funktioniert. Falls Sie Änderungen an der Konfiguration vornehmen müssen, müssen Sie diese Regeln befolgen, um weiterhin über eine unterstützte Konfiguration zu verfügen.
 
 * Sie können [Attributflüsse ändern](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) , wenn die standardmäßig festgelegten direkten Attributflüsse für Ihre Organisation nicht geeignet sind.
@@ -45,7 +54,9 @@ Der Installations-Assistent verfügt über eine Konfiguration, die für die meis
 > [!WARNING]
 > Die standardmäßigen Synchronisierungsregeln verfügen über einen Fingerabdruck. Wenn Sie diese Regeln ändern, stimmt der Fingerabdruck nicht mehr überein. In Zukunft treten unter Umständen Probleme auf, wenn Sie eine neue Version von Azure AD Connect anwenden möchten. Führen Sie Änderungen nur wie in diesem Artikel beschrieben durch.
 
-### <a name="disable-an-unwanted-sync-rule"></a>Deaktivieren Sie eine unerwünschte Synchronisierungsregel
+<a id="disable-an-unwanted-sync-rule" class="xliff"></a>
+
+### Deaktivieren Sie eine unerwünschte Synchronisierungsregel
 Löschen Sie keine standardmäßige Synchronisierungsregel. Sie wird beim nächsten Upgrade wiederhergestellt.
 
 In einigen Fällen erstellt der Installations-Assistent eine Konfiguration, die für Ihre Topologie nicht funktioniert. Falls Sie beispielsweise über eine Topologie mit Kontoressourcengesamtstruktur verfügen, das Schema in der Kontogesamtstruktur aber um das Exchange-Schema erweitert haben, werden sowohl für die Kontogesamtstruktur als auch für die Ressourcengesamtstruktur Regeln für Exchange erstellt. In diesem Fall müssen Sie die Synchronisierungsregel für Exchange deaktivieren.
@@ -54,7 +65,9 @@ In einigen Fällen erstellt der Installations-Assistent eine Konfiguration, die 
 
 In der Abbildung oben wurde mit dem Installations-Assistenten ein altes Exchange 2003-Schema in der Kontogesamtstruktur gefunden. Diese Schemaerweiterung wurde hinzugefügt, bevor die Ressourcengesamtstruktur in die Umgebung von Fabrikam eingeführt wurde. Um sicherzustellen, dass keine Attribute aus der alten Exchange-Implementierung synchronisiert werden, sollte die Synchronisierungsregel wie gezeigt deaktiviert werden.
 
-### <a name="change-an-out-of-box-rule"></a>Ändern einer standardmäßigen Regel
+<a id="change-an-out-of-box-rule" class="xliff"></a>
+
+### Ändern einer standardmäßigen Regel
 Ändern Sie eine standardmäßige Regel nur dann, wenn Sie die Verknüpfungsregel ändern müssen. Wenn Sie einen Attributfluss ändern müssen, sollten Sie eine Synchronisierungsregel erstellen, die Vorrang vor den standardmäßigen Regeln hat. Die einzige Regel, die Sie im Grunde klonen müssen, ist die Regel **In from AD - User Join**. Alle anderen Regeln können Sie mit einer Regel mit höherer Priorität außer Kraft setzen.
 
 Wenn Sie Änderungen an einer standardmäßigen Regel vornehmen müssen, erstellen Sie eine Kopie der standardmäßigen Regel und deaktivieren Sie die ursprüngliche Regel. Nehmen Sie an der geklonten Regel dann die gewünschten Änderungen vor. Der Synchronisierungsregel-Editor unterstützt Sie bei diesen Schritten. Wenn Sie eine standardmäßige Regel öffnen, wird dieses Dialogfeld angezeigt:   
@@ -65,14 +78,11 @@ Wählen Sie **Ja** , um eine Kopie der Regel zu erstellen. Die geklonte Regel wi
 
 Nehmen Sie an dieser geklonten Regel die erforderlichen Änderungen für Bereich, Verknüpfung und Transformationen vor.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 **Übersichtsthemen**
 
 * [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

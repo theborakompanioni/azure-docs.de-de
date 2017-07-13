@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie Intel NUC als IoT Gateway zwischen ein
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: yjianfeng
+manager: timlt
 tags: 
 keywords: IoT Gateway, Intel NUC, NUC-Computer, DE3815TYKE
 ROBOTS: NOINDEX
@@ -23,18 +23,23 @@ ms.openlocfilehash: b87974be9570f7d03fe84ae0a1d1fa7e346ff189
 ms.contentlocale: de-de
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# <a name="set-up-intel-nuc-as-an-iot-gateway"></a>Einrichten von Intel NUC als IoT Gateway
+<a id="set-up-intel-nuc-as-an-iot-gateway" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>Aufgaben
+# Einrichten von Intel NUC als IoT Gateway
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Einrichten von Intel NUC als IoT Gateway
 - Installieren des Azure IoT Edge-Pakets auf einem Intel NUC
 - Ausführen einer „hello_world“-Beispielanwendung auf einem Intel NUC, um die Gatewayfunktionalität zu überprüfen
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 In dieser Lektion lernen Sie Folgendes:
 
@@ -42,7 +47,9 @@ In dieser Lektion lernen Sie Folgendes:
 - Installieren und Aktualisieren der erforderlichen Pakete auf dem Intel NUC mit dem Smart Package Manager
 - Ausführen einer „hello_world“-Beispielanwendung, um die Gatewayfunktionalität zu überprüfen
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 - Ein Intel NUC Kit DE3815TYKE mit der Intel IoT Gateway Software Suite (Wind River Linux *7.0.0.13) ist vorinstalliert.
 - Ein Ethernet-Kabel
@@ -52,7 +59,9 @@ In dieser Lektion lernen Sie Folgendes:
 
 ![Gateway-Kit](media/iot-hub-gateway-kit-lessons/lesson1/kit_without_sensortag.png)
 
-## <a name="connect-intel-nuc-with-the-peripherals"></a>Verbinden des Intel NUC mit den Peripheriegeräten
+<a id="connect-intel-nuc-with-the-peripherals" class="xliff"></a>
+
+## Verbinden des Intel NUC mit den Peripheriegeräten
 
 Die folgende Abbildung ist ein Beispiel für einen Intel NUC, der mit verschiedenen Peripheriegeräten verbunden ist:
 
@@ -63,7 +72,9 @@ Die folgende Abbildung ist ein Beispiel für einen Intel NUC, der mit verschiede
 
 ![Verbindung des Intel NUC mit Peripheriegeräten](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
 
-## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>Herstellen der Verbindung mit dem Intel NUC-System vom Hostcomputer aus per Secure Shell (SSH)
+<a id="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh" class="xliff"></a>
+
+## Herstellen der Verbindung mit dem Intel NUC-System vom Hostcomputer aus per Secure Shell (SSH)
 
 Hierfür benötigen Sie eine Tastatur und einen Monitor, um die IP-Adresse Ihres NUC-Geräts abzurufen. Falls Ihnen die IP-Adresse bereits bekannt ist, können Sie mit Schritt 3 dieses Abschnitts fortfahren.
 
@@ -87,7 +98,9 @@ Hierfür benötigen Sie eine Tastatur und einen Monitor, um die IP-Adresse Ihres
    Es ist effizienter und produktiver, Vorgänge für den Intel NUC auf einem Hostcomputer durchzuführen. Sie benötigen die IP-Adresse, den Benutzernamen und das Kennwort, um über den SSH-Client eine Verbindung mit dem NUC herzustellen. Hier ist ein Beispiel für die Verwendung des SSH-Clients unter MacOS.
    ![SSH-Client unter MacOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
-## <a name="install-the-azure-iot-edge-package"></a>Installieren des Azure IoT Edge-Pakets
+<a id="install-the-azure-iot-edge-package" class="xliff"></a>
+
+## Installieren des Azure IoT Edge-Pakets
 
 Das Azure IoT Edge-Paket enthält die vorkompilierten Binärdateien des SDK und die jeweiligen Abhängigkeiten. Diese Binärdateien sind Azure IoT Edge, das Azure IoT SDK und die entsprechenden Tools. Das Paket enthält auch eine „hello_world“-Beispielanwendung, die zum Überprüfen der Gatewayfunktionalität verwendet wird. IoT Edge ist die Kernkomponente des Gateways. Führen Sie diese Schritte aus, um das Paket zu installieren:
 
@@ -116,7 +129,9 @@ Das Azure IoT Edge-Paket enthält die vorkompilierten Binärdateien des SDK und 
 
    Nach dem Installieren des Pakets soll der Intel NUC als Gateway fungieren.
 
-## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>Ausführen der „hello_world“-Beispielanwendung von Azure IoT Edge
+<a id="run-the-azure-iot-edge-helloworld-sample-application" class="xliff"></a>
+
+## Ausführen der „hello_world“-Beispielanwendung von Azure IoT Edge
 
 Navigieren Sie zu `azureiotgatewaysdk/samples`, und führen Sie die „hello_world“-Beispielanwendung aus. Bei dieser Beispielanwendung wird ein Gateway aus der Datei `hello_world.json` erstellt, und die grundlegenden Komponenten der Azure IoT Edge-Architektur werden verwendet, um alle fünf Sekunden eine „hello world“-Nachricht in einer Datei zu protokollieren.
 
@@ -133,10 +148,14 @@ Die Beispielanwendung erzeugt die folgende Ausgabe, wenn die Gatewayfunktionalit
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md).
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 
 Glückwunsch! Sie haben die Einrichtung des Intel NUC als Gateway abgeschlossen. Sie können jetzt mit der nächsten Lektion fortfahren, um den Hostcomputer einzurichten, einen Azure IoT Hub zu erstellen und das logische Azure IoT Hub-Gerät zu registrieren.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Vorbereiten des Hostcomputers und von Azure IoT Hub](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
 

@@ -4,7 +4,7 @@ description: "Sie überwachen D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud)
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Daten in der Cloud, Datensammlung in der Cloud, IoT-Clouddienst, IoT-Daten
 ROBOTS: NOINDEX
@@ -17,26 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 7a49a15b00bf25c9416235f41da8cc86e54d0062
+ms.contentlocale: de-de
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="read-messages-persisted-in-azure-storage"></a>Lesen von Nachrichten in Azure Storage
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="read-messages-persisted-in-azure-storage" class="xliff"></a>
+
+# Lesen von Nachrichten in Azure Storage
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Sie überwachen die D2C-Nachrichten, die von Ihrem Arduino-Board Adafruit Feather M0 WiFi an IoT Hub gesendet werden, während diese in Azure Table Storage geschrieben werden.
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshooting].
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel erfahren Sie, wie Sie den Gulp-Task „read-message“ zum Lesen von Nachrichten verwenden, die in Azure Table Storage gespeichert sind.
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Bevor Sie diesen Prozess starten, müssen Sie den Abschnitt [Ausführen der Azure-Beispielanwendung blink auf Ihrem Arduino-Board][run-blink-application] erfolgreich abgeschlossen haben.
 
-## <a name="read-new-messages-from-your-storage-account"></a>Lesen neuer Nachrichten aus dem Speicherkonto
+<a id="read-new-messages-from-your-storage-account" class="xliff"></a>
+
+## Lesen neuer Nachrichten aus dem Speicherkonto
 Im vorherigen Artikel haben Sie eine Beispielanwendung auf dem Arduino-Board ausgeführt. Die Beispielanwendung hat Nachrichten an Ihre Azure IoT Hub-Instanz gesendet. Die an Ihren IoT-Hub gesendeten Nachrichten wurden über die Azure-Funktionen-App in Azure Table Storage gespeichert. Sie benötigen die Azure Storage-Verbindungszeichenfolge für das Lesen von Nachrichten aus Azure Table Storage.
 
 Gehen Sie folgendermaßen vor, um Nachrichten zu lesen, die in Azure Table Storage gespeichert sind:
@@ -76,10 +86,14 @@ Gehen Sie folgendermaßen vor, um Nachrichten zu lesen, die in Azure Table Stora
 
    ![gulp run --read-storage][gulp-run]
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben das Arduino-Board erfolgreich mit Ihrer IoT Hub-Instanz in der Cloud verbunden und die Beispielanwendung blink verwendet, um D2C-Nachrichten zu senden. Sie können die Azure-Funktionen-App auch dazu verwenden, eingehende IoT Hub-Nachrichten in Azure Table Storage zu speichern. Sie können nun C2D-Nachrichten von IoT Hub an das Arduino-Board senden.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Senden von C2D-Nachrichten][send-cloud-to-device-messages]
 <!-- Images and links -->
 

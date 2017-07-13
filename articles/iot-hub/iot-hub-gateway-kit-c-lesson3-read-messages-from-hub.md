@@ -4,7 +4,7 @@ description: "Führen Sie Beispielcode auf Ihrem Hostcomputer aus, um die Nachri
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Daten in der Cloud, Datensammlung in der Cloud, IoT-Clouddienst, IoT-Daten
 ROBOTS: NOINDEX
@@ -17,31 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 0a5dd7e010ba46b724bb6a2526dc2a2730acc10f
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
-
 
 ---
 
-# <a name="read-messages-from-your-iot-hub"></a>Lesen von Nachrichten von Ihrem IoT Hub
+<a id="read-messages-from-your-iot-hub" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>Aufgaben
+# Lesen von Nachrichten von Ihrem IoT Hub
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Führen Sie Beispielcode auf Ihrem Hostcomputer aus, um Nachrichten vom IoT Hub zu lesen.
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 Verwenden des Gulp-Tools zum Lesen von Nachrichten vom IoT Hub
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 - Die BLE-Beispielanwendung, die Sie in Lektion 3 erfolgreich ausgeführt haben.
 
-## <a name="get-your-iot-hub-and-device-connection-strings"></a>Abrufen der IoT Hub- und Geräteverbindungszeichenfolgen
+<a id="get-your-iot-hub-and-device-connection-strings" class="xliff"></a>
+
+## Abrufen der IoT Hub- und Geräteverbindungszeichenfolgen
 
 Die Geräteverbindungszeichenfolge wird von Ihrem Gerät (TI SensorTag oder simuliertes Gerät) zum Herstellen der Verbindung mit Ihrem IoT Hub verwendet. Die IoT Hub-Verbindungszeichenfolge wird verwendet, um die Identitätsregistrierung in Ihrem IoT Hub zum Verwalten der Geräte zu verwenden, die für das Herstellen der Verbindung mit Ihrem IoT Hub zulässig sind.
 
@@ -60,7 +70,9 @@ Die Geräteverbindungszeichenfolge wird von Ihrem Gerät (TI SensorTag oder simu
 
    `{my hub name}` ist der Name, den Sie in Lektion 2 angegeben haben.
 
-## <a name="configure-the-device-connection-for-the-sample-code"></a>Konfigurieren der Geräteverbindung für den Beispielcode
+<a id="configure-the-device-connection-for-the-sample-code" class="xliff"></a>
+
+## Konfigurieren der Geräteverbindung für den Beispielcode
 
 Aktualisieren Sie die Gerätekonfigurationsdatei `config-azure.json`, damit Sie Nachrichten vom IoT Hub auf Ihrem Hostcomputer lesen können. Gehen Sie dazu folgendermaßen vor:
 
@@ -79,7 +91,9 @@ Aktualisieren Sie die Gerätekonfigurationsdatei `config-azure.json`, damit Sie 
 
    Ersetzen Sie `[IoT hub connection string]` durch die IoT Hub-Verbindungszeichenfolge, die Sie abgerufen haben.
 
-## <a name="read-messages-from-your-iot-hub"></a>Lesen von Nachrichten von Ihrem IoT Hub
+<a id="read-messages-from-your-iot-hub" class="xliff"></a>
+
+## Lesen von Nachrichten von Ihrem IoT Hub
 
 Stellen Sie bei Verwendung eines TI SensorTag sicher, dass Sie das SensorTag-Gerät bereits eingeschaltet haben. Führen Sie die Gatewaybeispielanwendung aus, und lesen Sie die IoT Hub-Nachrichten mit dem folgenden Befehl:
 
@@ -93,11 +107,15 @@ Alle Nachrichten, die gesendet und empfangen werden, werden auf dem Hostcomputer
 
 ![BLE-Beispielanwendung mit gesendeten und empfangenen Nachrichten](media/iot-hub-gateway-kit-lessons/lesson3/gulp_run_read_hub.png)
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 
 Sie haben einen Beispielcode ausgeführt, um Nachrichten von Ihrem IoT Hub zu lesen. Sie können jetzt die Nachrichten lesen, die in Ihrem Azure-Tabellenspeicher gespeichert sind.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Erstellen einer Azure-Funktionen-App und eines Azure Storage-Kontos](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
 
 

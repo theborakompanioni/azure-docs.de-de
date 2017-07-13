@@ -4,7 +4,7 @@ description: "Stellen Sie eine Beispielanwendung auf Raspberry Pi 3 bereit, die 
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Blinken LED Cloud Pi, LED blinken aus Cloud
 ROBOTS: NOINDEX
@@ -17,24 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 985ba895bfcad1611bebe80a6c2fc8ffed780da5
+ms.contentlocale: de-de
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>Ausführen einer Beispielanwendung zum Senden von D2C-Nachrichten
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="run-a-sample-application-to-send-device-to-cloud-messages" class="xliff"></a>
+
+# Ausführen einer Beispielanwendung zum Senden von D2C-Nachrichten
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 In diesem Artikel wird erläutert, wie Sie eine Beispielanwendung auf dem Pi 3 bereitstellen und ausführen, die Nachrichten an IoT Hub sendet. Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 Sie erfahren, wie Sie das Gulp-Tool zum Bereitstellen und Ausführen der Node.js-Beispielanwendung auf Pi verwenden.
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 * Bevor Sie mit dieser Aufgabe beginnen, müssen Sie [Create an Azure function app and a storage account to process and store IoT hub messages](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md) (Erstellen einer Azure-Funktionen-App und eines Speicherkontos zum Verarbeiten und Speichern von IoT Hub-Nachrichten) erfolgreich abgeschlossen haben.
 
-## <a name="get-your-iot-hub-and-device-connection-strings"></a>Abrufen der IoT Hub- und Geräteverbindungszeichenfolgen
+<a id="get-your-iot-hub-and-device-connection-strings" class="xliff"></a>
+
+## Abrufen der IoT Hub- und Geräteverbindungszeichenfolgen
 Die Geräteverbindungszeichenfolge dient zum Verbinden des Pi mit IoT Hub. Die IoT Hub-Verbindungszeichenfolge wird verwendet, um die Identitätsregistrierung in Ihrem IoT Hub zum Verwalten der Geräte zu verwenden, die für das Herstellen der Verbindung mit Ihrem IoT Hub zulässig sind. 
 
 * Listen Sie alle IoT Hubs der Ressourcengruppe auf, indem Sie den folgenden Azure-Befehlszeilenschnittstellen-Befehl ausführen:
@@ -61,7 +71,9 @@ az iot device show-connection-string --hub-name {my hub name} --device-id myrasp
 
 Verwenden Sie `myraspberrypi` als Wert von `{device id}`, sofern Sie ihn nicht geändert haben.
 
-## <a name="configure-the-device-connection"></a>Konfigurieren der Geräteverbindung
+<a id="configure-the-device-connection" class="xliff"></a>
+
+## Konfigurieren der Geräteverbindung
 1. Führen Sie zum Initialisieren der Konfigurationsdatei die folgenden Befehle aus:
    
    ```bash
@@ -94,22 +106,30 @@ Verwenden Sie `myraspberrypi` als Wert von `{device id}`, sofern Sie ihn nicht g
 
 Aktualisieren Sie die Datei `config-raspberrypi.json` so, dass Sie die Beispielanwendung auf Ihrem Computer bereitstellen können.
 
-## <a name="deploy-and-run-the-sample-application"></a>Bereitstellen und Ausführen der Beispielanwendung
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## Bereitstellen und Ausführen der Beispielanwendung
 Führen Sie den folgenden Befehl aus, um die Beispielanwendung auf dem Pi bereitzustellen und auszuführen:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-## <a name="verify-that-the-sample-application-works"></a>Überprüfen, ob die Beispielanwendung ordnungsgemäß ausgeführt wird
+<a id="verify-that-the-sample-application-works" class="xliff"></a>
+
+## Überprüfen, ob die Beispielanwendung ordnungsgemäß ausgeführt wird
 Die mit dem Pi verbundene LED sollte alle zwei Sekunden blinken. Bei jedem Blinken der LED sendet die Beispielanwendung eine Nachricht an IoT Hub und überprüft, ob die Nachricht erfolgreich an IoT Hub gesendet wurde. Darüber hinaus wird jede von IoT Hub empfangene Nachricht im Konsolenfenster ausgegeben. Die Beispielanwendung wird automatisch beendet, nachdem 20 Nachrichten gesendet wurden.
 
 ![Beispielanwendung mit gesendeten und empfangenen Nachrichten](media/iot-hub-raspberry-pi-lessons/lesson3/gulp_run_c.png)
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben die neue Beispielanwendung blink auf dem Pi bereitgestellt und ausgeführt, um D2C-Nachrichten an IoT Hub zu senden. Sie können nun Nachrichten überwachen, wenn sie in das Speicherkonto geschrieben werden.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Lesen von Nachrichten in Azure Storage](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
 
 

@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 9245a2ce63746f039a3015a5a0cda2ff05cf950e
+ms.contentlocale: de-de
 ms.lasthandoff: 03/14/2017
 
-
 ---
-# <a name="generic-ldap-connector-technical-reference"></a>Technische Referenz für den generischen LDAP-Connector
+<a id="generic-ldap-connector-technical-reference" class="xliff"></a>
+
+# Technische Referenz für den generischen LDAP-Connector
 Dieser Artikel beschreibt den generischen LDAP-Connector. Der Artikel bezieht sich auf folgende Produkte:
 
 * Microsoft Identity Manager 2016 (MIM2016)
@@ -33,7 +35,9 @@ Der Connector steht für MIM2016 und FIM2010R2 im [Microsoft Download Center](ht
 Bei Verweisen auf IETF-RFCs wird in diesem Dokument folgendes Format verwendet: (RFC [RFC-Nummer]/[Abschnitt des RFC-Dokuments]), also beispielsweise: (RFC 4512/4.3).
 Weitere Informationen finden Sie unter „http://tools.ietf.org/html/rfc4500“. (4500 muss durch die korrekte RFC-Nummer ersetzt werden.)
 
-## <a name="overview-of-the-generic-ldap-connector"></a>Übersicht über den generischen LDAP-Connector
+<a id="overview-of-the-generic-ldap-connector" class="xliff"></a>
+
+## Übersicht über den generischen LDAP-Connector
 Der generische LDAP-Connector ermöglicht die Integration des Synchronisierungsdiensts in einen LDAP-Server (Version&3;).
 
 Bestimmte Vorgänge und Schema-Elemente (etwa zum Ausführen eines Deltaimports) werden in den IETF-RFCs nicht behandelt. Für diese Vorgänge werden nur explizit angegebene LDAP-Verzeichnisse unterstützt.
@@ -47,7 +51,9 @@ Im Anschluss finden Sie einen allgemeinen Überblick über die von der aktuellen
 | Vorgänge |Die folgenden Vorgänge werden für alle LDAP-Verzeichnisse unterstützt:  <li>Vollständiger Import</li><li>Export</li>Die folgenden Vorgänge werden nur für die angegebenen Verzeichnisse unterstützt:<li>Deltaimport</li><li>Kennwort festlegen, Kennwort ändern</li> |
 | Schema |<li>Das Schema wird auf der Grundlage des LDAP-Schemas (RFC3673 und RFC4512/4.2) ermittelt.</li><li>Unterstützt strukturelle Klassen, Erweiterungsklassen und die Objektklasse „extensibleObject“ (RFC4512/4.3).</li> |
 
-### <a name="delta-import-and-password-management-support"></a>Unterstützung von Deltaimport und Kennwortverwaltung
+<a id="delta-import-and-password-management-support" class="xliff"></a>
+
+### Unterstützung von Deltaimport und Kennwortverwaltung
 Unterstützte Verzeichnisse für Deltaimport und Kennwortverwaltung:
 
 * Microsoft Active Directory Lightweight Directory Services (AD LDS)
@@ -93,23 +99,33 @@ Unterstützte Verzeichnisse für Deltaimport und Kennwortverwaltung:
   * Unterstützt alle Vorgänge für den Deltaimport
   * Unterstützt Kennwort festlegen und Kennwort ändern
 
-### <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+### Voraussetzungen
 Zur Verwendung des Connectors muss auf dem Synchronisierungsserver Folgendes vorhanden sein:
 
 * Microsoft .NET 4.5.2 Framework oder eine höhere Version
 
-### <a name="detecting-the-ldap-server"></a>Erkennen des LDAP-Servers
+<a id="detecting-the-ldap-server" class="xliff"></a>
+
+### Erkennen des LDAP-Servers
 Der Connector greift zur Erkennung und Identifizierung des LDAP-Servers auf verschiedene Techniken zurück. Der Connector verwenden den Stamm-DSE und den Anbieternamen/die Version und durchsucht das Schema nach eindeutigen Objekten und Attributen, die für bestimmte LDAP-Server typisch sind. Die gefundenen Daten werden vorab in die Konfigurationsoptionen des Connectors eingefügt.
 
-### <a name="connected-data-source-permissions"></a>Berechtigungen für die verbundene Datenquelle
+<a id="connected-data-source-permissions" class="xliff"></a>
+
+### Berechtigungen für die verbundene Datenquelle
 Zur Durchführung von Import- und Exportvorgängen für die Objekte im verbundenen Verzeichnis muss das Connectorkonto über ausreichende Berechtigungen verfügen. Der Connector benötigt Schreibberechtigungen für den Export und Leseberechtigungen für den Import. Die Berechtigungen werden in der Verwaltungsumgebung des Zielverzeichnisses konfiguriert.
 
-### <a name="ports-and-protocols"></a>Ports und Protokolle
+<a id="ports-and-protocols" class="xliff"></a>
+
+### Ports und Protokolle
 Der Connector verwendet die in der Konfiguration angegebene Portnummer. Diese ist standardmäßig auf 389 (LDAP) bzw. auf 636 (LDAPS) festgelegt.
 
 Bei Verwendung von LDAPS muss SSL 3.0 oder TLS verwendet werden. SSL 2.0 wird nicht unterstützt und kann nicht aktiviert werden.
 
-### <a name="required-controls-and-features"></a>Erforderliche Steuerelemente und Features
+<a id="required-controls-and-features" class="xliff"></a>
+
+### Erforderliche Steuerelemente und Features
 Damit der Connector ordnungsgemäß verwendet werden kann, müssen auf dem LDAP-Server folgende LDAP-Steuerelemente/-Features verfügbar sein:   
 `1.3.6.1.4.1.4203.1.5.3` True/False-Filter
 
@@ -135,7 +151,9 @@ Sind in der Konfiguration des Connectors beide Optionen aktiviert, wird „paged
 
 Der Connector versucht die auf dem Server vorhandenen Optionen zu erkennen. Falls die Optionen nicht erkannt werden können, wird in den Connectoreigenschaften auf der globalen Seite eine Warnung angezeigt. Nicht alle LDAP-Server geben sämtliche unterstützte Steuerelemente/Features an, und der Connector kann unter Umständen ungeachtet dieser Warnung problemlos verwendet werden.
 
-### <a name="delta-import"></a>Deltaimport
+<a id="delta-import" class="xliff"></a>
+
+### Deltaimport
 Der Deltaimport ist nur verfügbar, wenn ein Supportverzeichnis erkannt wurde. Momentan werden folgende Methoden verwendet:
 
 * LDAP-Zugriffsprotokoll. Siehe [http://www.openldap.org/doc/admin24/overlays.html#Access Logging](http://www.openldap.org/doc/admin24/overlays.html#Access Logging)
@@ -143,17 +161,23 @@ Der Deltaimport ist nur verfügbar, wenn ein Supportverzeichnis erkannt wurde. M
 * Zeitstempel. Für Novell/NetIQ eDirectory verwendet der Connector den letzten Datums-/Uhrzeitwert zum Abrufen erstellter und aktualisierter Objekte. Novell/NetIQ eDirectory bietet keine entsprechende Möglichkeit zum Abrufen gelöschter Objekte. Diese Option kann auch verwendet werden, wenn auf dem LDAP-Server keine andere Deltaimportmethode aktiv ist. Mit dieser Option können keine gelöschten Objekte importiert werden.
 * USNChanged. Siehe [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
 
-### <a name="not-supported"></a>Nicht unterstützt
+<a id="not-supported" class="xliff"></a>
+
+### Nicht unterstützt
 Folgende LDAP-Features werden nicht unterstützt:
 
 * LDAP-Verweise zwischen Servern (RFC 4511/4.1.10)
 
-## <a name="create-a-new-connector"></a>Erstellen eines neuen Connectors
+<a id="create-a-new-connector" class="xliff"></a>
+
+## Erstellen eines neuen Connectors
 Wählen Sie zum Erstellen eines generischen LDAP-Connectors im Synchronisierungsdienst****die Option **Verwaltungs-Agent** und anschließend **Erstellen** aus. Wählen Sie den Connector **Generisch, LDAP (Microsoft)** aus.
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericldap/createconnector.png)
 
-### <a name="connectivity"></a>Konnektivität
+<a id="connectivity" class="xliff"></a>
+
+### Konnektivität
 Auf der Konnektivitätsseite müssen Informationen zu Host, Port und Bindung angegeben werden. Abhängig von der ausgewählten Bindung müssen in den folgenden Abschnitten ggf. zusätzliche Informationen angegeben werden.
 
 ![Konnektivität](./media/active-directory-aadconnectsync-connector-genericldap/connectivity.png)
@@ -175,7 +199,9 @@ Aktivieren Sie das Kontrollkästchen **Betriebsattribute in Schema einschließen
 
 Aktivieren Sie das Kontrollkästchen **Erweiterbare Attribute in Schema einschließen**, wenn erweiterbare Objekte (RFC4512/4.3) verwendet werden. Dadurch kann jedes Attribut für alle Objekte verwendet werden. Bei Verwendung dieser Option wird das Schema ziemlich groß. Daher wird empfohlen, die Option deaktiviert zu lassen, sofern das Feature nicht vom verbundenen Dienst verwendet wird.
 
-### <a name="global-parameters"></a>Globale Parameter
+<a id="global-parameters" class="xliff"></a>
+
+### Globale Parameter
 Die Seite mit den globalen Parametern dient zum Konfigurieren des DN für das Delta-Änderungsprotokoll sowie zusätzlicher LDAP-Features. Die Seite wird vorab mit den Informationen des LDAP-Servers aufgefüllt.
 
 ![Konnektivität](./media/active-directory-aadconnectsync-connector-genericldap/globalparameters.png)
@@ -213,14 +239,18 @@ Der Wert ist standardmäßig auf **userPassword** festgelegt, kann jedoch bei Be
 
 In der Liste mit zusätzlichen Partitionen können weitere Namespaces hinzugefügt werden, die nicht automatisch erkannt wurden. Diese Einstellung kann beispielsweise hilfreich sein, wenn mehrere Server einen logischen Cluster bilden und alle gleichzeitig importiert werden sollen. Active Directory kann mehrere Domänen in einer einzelnen Gesamtstruktur enthalten, wobei alle Domänen das gleiche Schema verwenden. Dies kann durch Eingabe zusätzlicher Namespaces in das Feld simuliert werden. Jeder Namespace kann Daten von verschiedenen Servern importieren und wird auf der Seite zum Konfigurieren von Partitionen und Hierarchien weiter konfiguriert. Drücken Sie STRG+EINGABETASTE, um eine neue Zeile zu erhalten.
 
-### <a name="configure-provisioning-hierarchy"></a>Konfigurieren der Bereitstellungshierarchie
+<a id="configure-provisioning-hierarchy" class="xliff"></a>
+
+### Konfigurieren der Bereitstellungshierarchie
 Auf dieser Seite können Sie die DN-Komponente (beispielsweise die Organisationseinheit) dem bereitzustellenden Objekttyp (z.B. „organizationalUnit“) zuordnen.
 
 ![Bereitstellungshierarchie](./media/active-directory-aadconnectsync-connector-genericldap/provisioninghierarchy.png)
 
 Durch Konfigurieren der Bereitstellungshierarchie können Sie den Connector so konfigurieren, dass er bei Bedarf automatisch eine Struktur erstellt. Wenn also beispielsweise der Namespace „dc=contoso,dc=com“ vorhanden ist und das neue Objekt „cn=Joe, ou=Seattle, c=US, dc=contoso, dc=com“ bereitgestellt wird, kann der Connector für die USA ein Objekt vom Typ „Land“ und eine Organisationseinheit für Seattle erstellen, falls diese noch nicht im Verzeichnis vorhanden sind.
 
-### <a name="configure-partitions-and-hierarchies"></a>Konfigurieren von Partitionen und Hierarchien
+<a id="configure-partitions-and-hierarchies" class="xliff"></a>
+
+### Konfigurieren von Partitionen und Hierarchien
 Wählen Sie auf der Seite für Partitionen und Hierarchien alle Namespaces mit Objekten aus, die Sie importieren und exportieren möchten.
 
 ![Partitionen](./media/active-directory-aadconnectsync-connector-genericldap/partitions.png)
@@ -236,7 +266,9 @@ Seit dem Update des generischen LDAP-Connectors vom März 2017 können Suchvorg�
 
 ![Nur in ausgewählten Containern suchen](./media/active-directory-aadconnectsync-connector-genericldap/partitions-only-selected-containers.png)
 
-### <a name="configure-anchors"></a>Konfigurieren von Ankern
+<a id="configure-anchors" class="xliff"></a>
+
+### Konfigurieren von Ankern
 Diese Seite besitzt immer einen vorkonfigurierten Wert und kann nicht geändert werden. Wenn der Serveranbieter erkannt wurden, wird für den Anker unter Umständen ein unveränderliches Attribut (etwa die GUID für ein Objekt) verwendet. Falls die Informationen nicht erkannt wurden oder kein unveränderliches Attribut verfügbar ist, verwendet der Connector den DN (Distinguished Name) als Anker.
 
 ![Anker](./media/active-directory-aadconnectsync-connector-genericldap/anchors.png)
@@ -258,16 +290,22 @@ Im Anschluss finden Sie eine Liste mit LDAP-Servern und verwendetem Anker:
 | RadiantOne VDS |dn |
 | Sun One Directory Server |dn |
 
-## <a name="other-notes"></a>Sonstige Hinweise
+<a id="other-notes" class="xliff"></a>
+
+## Sonstige Hinweise
 Dieser Abschnitt enthält Angaben zu spezifischen Aspekten des Connectors sowie andere wissenswerte Informationen.
 
-### <a name="delta-import"></a>Deltaimport
+<a id="delta-import" class="xliff"></a>
+
+### Deltaimport
 Das Deltawasserzeichen in Open LDAP ist ein Datums-/Uhrzeitwert im UTC-Format. Daher müssen die Uhren zwischen dem FIM-Synchronisierungsdienst und Open LDAP synchronisiert werden. Andernfalls werden unter Umständen einige Einträge im Delta-Änderungsprotokoll ausgelassen.
 
 Bei Novell eDirectory erkennt der Deltaimport keine Objektlöschungen. Aus diesem Grund muss in regelmäßigen Abständen ein vollständiger Import ausgeführt werden, um alle gelöschten Objekte zu finden.
 
 Bei Verzeichnissen mit einem datums-/uhrzeitbasierten Delta-Änderungsprotokoll wird dringend empfohlen, in regelmäßigen Abständen einen vollständigen Import auszuführen. Dadurch können Abweichungen zwischen dem LDAP-Server und dem aktuellen Inhalt des Connectorbereichs ermittelt werden.
 
-## <a name="troubleshooting"></a>Problembehandlung
+<a id="troubleshooting" class="xliff"></a>
+
+## Problembehandlung
 * Informationen zum Aktivieren der Protokollierung für die Behandlung von Connectorproblemen finden Sie unter [Vorgehensweise: Aktivieren der ETW-Ablaufverfolgung für Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).
 

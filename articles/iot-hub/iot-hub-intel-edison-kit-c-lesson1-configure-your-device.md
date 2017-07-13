@@ -4,7 +4,7 @@ description: Konfigurieren von Intel Edison zur erstmaligen Verwendung
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Arduino-Setup, Arduino mit PC verbinden, Setup von Arduino, Arduino-Platine
 ROBOTS: NOINDEX
@@ -17,24 +17,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 800f1aed6d30d2bb871a6a9b55b6b95308932211
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="configure-your-intel-edison"></a>Konfigurieren von Intel Edison
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="configure-your-intel-edison" class="xliff"></a>
+
+# Konfigurieren von Intel Edison
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Sie konfigurieren Intel Edison für die erstmalige Verwendung, indem Sie die Platine einbauen, diese einschalten und das Konfigurationstool in Ihrem Desktopbetriebssystem mit dem Ziel installieren, die Firmware von Edison einzuspielen, das dazugehörige Kennwort festzulegen und sie mit dem WLAN zu verbinden. Sollten Probleme auftreten, finden Sie Lösungen auf der [Seite zur Problembehandlung][troubleshooting].
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 
 * Einbauen und Einschalten der Edison-Platine
 * Einspielen der Edison-Firmware, Festlegen des Kennworts und Herstellen der WLAN-Verbindung
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Für diesen Vorgang benötigen Sie die folgenden Teile aus dem Intel Edison Starter Kit:
 
 * Intel® Edison-Modul
@@ -54,7 +62,9 @@ Außerdem benötigen Sie:
 * Eine WLAN-Verbindung für Edison
 * Eine Internetverbindung zum Herunterladen des Konfigurationstools
 
-## <a name="assemble-your-board"></a>Zusammenbauen der Platine
+<a id="assemble-your-board" class="xliff"></a>
+
+## Zusammenbauen der Platine
 
 In diesem Abschnitt wird beschrieben, wie Sie das Intel® Edison-Modul an der Erweiterungsplatine anbringen.
 
@@ -80,7 +90,9 @@ Ihre Platine ist nun zusammengebaut.
 
    ![Zusammengebaute Platine](media/iot-hub-intel-edison-lessons/lesson1/assembled_board.jpg)
 
-## <a name="power-up-edison"></a>Einschalten des Edison
+<a id="power-up-edison" class="xliff"></a>
+
+## Einschalten des Edison
 
 1. Stecken Sie das Netzteil ein.
 
@@ -93,7 +105,9 @@ Ihre Platine ist nun zusammengebaut.
    > [!NOTE]
    > Wenn Sie kein Gleichstromnetzteil haben, können Sie die Platine über einen USB-Anschluss mit Strom versorgen. Im Abschnitt `Connect Edison to your computer` finden Sie ausführliche Informationen hierzu. Die Stromversorgung Ihrer Platine auf diese Weise kann zu einem unvorhersehbaren Verhalten führen, insbesondere bei Verwenden eines WLAN oder Ansteuern von Motoren.
 
-## <a name="connect-edison-to-your-computer"></a>Verbinden von Edison mit Ihrem Computer
+<a id="connect-edison-to-your-computer" class="xliff"></a>
+
+## Verbinden von Edison mit Ihrem Computer
 
 1. Drücken Sie den Mikroschalter in Richtung der beiden Micro-USB-Anschlüsse herunter, um Edison in den Gerätemodus zu versetzen. Unterschiede zwischen dem Geräte- und Hostmodus werden [hier](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode) erläutert.
 
@@ -109,23 +123,31 @@ Ihre Platine ist nun zusammengebaut.
 
 4. Sie wissen, dass Ihre Platine vollständig initialisiert wurde, wenn auf dem Computer ein neues Laufwerk bereitgestellt und angezeigt wird (ähnlich wie beim Einsetzen einer SD-Karte in Ihren Computer).
 
-## <a name="download-and-run-the-configuration-tool"></a>Herunterladen und Ausführen des Konfigurationstools
+<a id="download-and-run-the-configuration-tool" class="xliff"></a>
+
+## Herunterladen und Ausführen des Konfigurationstools
 Laden Sie über [diesen Link](https://software.intel.com/en-us/iot/hardware/edison/downloads) das neueste Konfigurationstool herunter, das unter der Überschrift `Installers` aufgeführt ist. Führen Sie das Tool aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Klicken Sie bei Bedarf auf „Weiter“.
 
-### <a name="flash-firmware"></a>Einspielen der Firmware
+<a id="flash-firmware" class="xliff"></a>
+
+### Einspielen der Firmware
 1. Klicken Sie auf der Seite `Set up options` auf `Flash Firmware`.
 2. Wählen Sie das Image aus, das auf Ihre Platine eingespielt werden soll, indem Sie einen der folgenden Schritte ausführen:
    - Wählen Sie zum Herunterladen und Einspielen des neuesten von Intel angebotenen Firmware-Images auf Ihrer Platine `Download the latest image version xxxx` aus.
    - Um auf Ihre Platine ein Image einzuspielen, das Sie bereits auf Ihrem Computer gespeichert haben, wählen Sie `Select the local image` aus. Navigieren Sie zum Image, das Sie auf Ihre Platine einspielen möchten, und wählen Sie es aus.
 3. Das Setuptool versucht, das Einspielen auf Ihre Platine durchzuführen. Der gesamte Einspielvorgang kann bis zu 10 Minuten dauern.
 
-### <a name="set-password"></a>Festlegen des Kennworts
+<a id="set-password" class="xliff"></a>
+
+### Festlegen des Kennworts
 1. Klicken Sie auf der Seite `Set up options` auf `Enable Security`.
 2. Sie können für die Intel® Edison-Platine einen benutzerdefinierten Namen festlegen. Dies ist optional.
 3. Geben Sie ein Kennwort für die Platine ein, und klicken Sie auf `Set password`.
 4. Notieren Sie sich das Kennwort, das später verwendet wird.
 
-### <a name="connect-wi-fi"></a>Verbinden mit dem WLAN
+<a id="connect-wi-fi" class="xliff"></a>
+
+### Verbinden mit dem WLAN
 1. Klicken Sie auf der Seite `Set up options` auf `Connect Wi-Fi`. Warten Sie bis zu einer Minute, während der Computer verfügbare WLAN-Netzwerke sucht.
 2. Wählen Sie in der Dropdownliste `Detected Networks` Ihr Netzwerk aus.
 3. Wählen Sie in der Dropdownliste `Security` den Sicherheitstyp des Netzwerks aus.
@@ -137,10 +159,14 @@ Laden Sie über [diesen Link](https://software.intel.com/en-us/iot/hardware/edis
 
 Glückwunsch! Sie haben Edison erfolgreich konfiguriert.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 In diesem Artikel haben Sie erfahren, wie Sie die Edison-Platine einbauen, ihre Firmware einspielen, ein Kennwort festlegen und mithilfe des Konfigurationstools eine WLAN-Verbindung herstellen. Beachten Sie, dass die LED noch nicht leuchtet. Der nächste Schritt ist das Installieren der erforderlichen Tools und Software als Vorbereitung für eine Beispielanwendung, die auf Edison ausgeführt wird.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Abrufen der Tools][get-the-tools]
 <!-- Images and links -->
 

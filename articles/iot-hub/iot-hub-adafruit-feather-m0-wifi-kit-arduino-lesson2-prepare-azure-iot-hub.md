@@ -4,7 +4,7 @@ description: Erstellen Sie eine Ressourcengruppe, erstellen Sie eine Azure IoT H
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Herstellen der Verbindung von Arduino mit der Cloud, Azure IoT Hub, Internet der Dinge-Cloud, Azure IoT Hub Gerät erstellen, Arduino-Cloud"
 ROBOTS: NOINDEX
@@ -17,32 +17,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
 ms.openlocfilehash: ac9421be9211d53f8b5239c356201ee3efd27999
+ms.contentlocale: de-de
 ms.lasthandoff: 03/10/2017
 
-
 ---
-# <a name="create-your-iot-hub-and-register-your-adafruit-feather-m0-wifi-arduino-board"></a>Erstellen des IoT Hub und Registrieren des Adafruit Feather M0 WiFi-Arduino-Boards
+<a id="create-your-iot-hub-and-register-your-adafruit-feather-m0-wifi-arduino-board" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>Aufgaben
+# Erstellen des IoT Hub und Registrieren des Adafruit Feather M0 WiFi-Arduino-Boards
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 * Erstellen Sie eine Ressourcengruppe.
 * Erstellen Sie einen Azure IoT Hub in der Ressourcengruppe.
 * Fügen Sie Ihr Arduino-Board mithilfe der Azure-Befehlszeilenschnittstelle (Azure-CLI) dem Azure IoT Hub hinzu.
 
 Wenn Sie dem IoT Hub das Arduino-Board mithilfe der Azure-CLI hinzufügen, generiert der Dienst einen Schlüssel zum Authentifizieren des Arduino-Boards beim Dienst. Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshoot].
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 * Erstellen einer IoT Hub-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 * Erstellen einer Geräteidentität für das Arduino-Board im Azure IoT Hub
 
-## <a name="what-you-need"></a>Erforderliche Komponenten
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliche Komponenten
 * Ein Azure-Konto
 * Ein Computer mit installierter Azure-CLI
 
-## <a name="create-your-iot-hub"></a>Erstellen Ihres IoT-Hubs
+<a id="create-your-iot-hub" class="xliff"></a>
+
+## Erstellen Ihres IoT-Hubs
 Mit einem Azure IoT Hub können Sie Millionen von IoT-Assets verbinden, überwachen und verwalten. Gehen Sie zum Erstellen Ihres IoT-Hubs wie folgt vor:
 
 1. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
@@ -86,7 +96,9 @@ Standardmäßig erstellt das Tool eine IoT Hub-Instanz unter dem Tarif „Free�
 > Der Name des IoT Hub muss global eindeutig sein.
 > Sie können unter Ihrem Azure-Abonnement nur eine einzelne F1-Edition von Azure IoT Hub erstellen.
 
-## <a name="register-your-arduino-board-in-your-iot-hub"></a>Registrieren des Arduino-Boards in Ihrem IoT Hub
+<a id="register-your-arduino-board-in-your-iot-hub" class="xliff"></a>
+
+## Registrieren des Arduino-Boards in Ihrem IoT Hub
 Jedes Gerät, das Nachrichten an Ihren IoT-Hub sendet und Nachrichten von Ihrem IoT-Hub empfängt, muss mit einer eindeutigen ID registriert werden.
 
 Registrieren Sie das Arduino-Board mit dem folgenden Befehl bei der IoT Hub-Instanz:
@@ -95,10 +107,14 @@ Registrieren Sie das Arduino-Board mit dem folgenden Befehl bei der IoT Hub-Inst
 az iot device create --device-id mym0wifi --hub-name {my hub name}
 ```
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben eine IoT Hub-Instanz erstellt und Ihr Arduino-Board mit einer Geräteidentität bei der IoT Hub-Instanz registriert. Informieren Sie sich im Anschluss darüber, wie Sie Nachrichten vom Arduino-Board an die IoT Hub-Instanz senden.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Erstellen einer Azure-Funktionen-App und eines Azure Storage-Kontos zum Verarbeiten und Speichern von IoT Hub-Nachrichten][process-and-store-iot-hub-messages]
 
 

@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi;andkjell
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
 ms.openlocfilehash: 3623537c80bd0e4190d1e51f289a4b194c13878d
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect-Synchronisierung: Technische Konzepte
+<a id="azure-ad-connect-sync-technical-concepts" class="xliff"></a>
+
+# Azure AD Connect-Synchronisierung: Technische Konzepte
 Dieser Artikel ist eine Zusammenfassung des Themas [Grundlegendes zur Architektur](active-directory-aadconnectsync-technical-concepts.md).
 
 Azure AD Connect-Synchronisierung basiert auf einer zuverlässigen Plattform für die Metaverzeichnissynchronisierung.
@@ -38,7 +40,9 @@ Die folgenden Abschnitte bieten weitere Details zu den folgenden Aspekten des FI
 * Metaverse
 * Bereitstellung
 
-## <a name="connector"></a>Connector
+<a id="connector" class="xliff"></a>
+
+## Connector
 Die zur Kommunikation mit einem verbundenen Verzeichnis verwendeten Codemodule werden „Connectors“ genannt (zuvor als Verwaltungs-Agents (Management Agents, MAs) bezeichnet).
 
 Sie werden auf dem Computer installiert, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird.
@@ -50,23 +54,31 @@ Der Connector ist für alle Funktionen verantwortlich, die den Import in das Sys
 
 Es treten nur geplante Import- und Exportvorgänge auf, was eine weitere Isolierung gegenüber Änderungen ermöglicht, die im System auftreten, da Änderungen nicht automatisch auf die verbundene Datenquelle übertragen werden. Außerdem können Entwickler auch ihre eigenen Connectors erstellen, um sich mit praktisch jeder Datenquelle verbinden zu können.
 
-## <a name="attribute-flow"></a>Attributfluss
+<a id="attribute-flow" class="xliff"></a>
+
+## Attributfluss
 Das Metaverse ist die konsolidierte Ansicht sämtlicher verknüpfter Identitäten aus benachbarten Connectorbereichen. In der obigen Abbildung wird der eingehende und ausgehende Attributfluss durch Linien mit Pfeilspitzen dargestellt. Beim Attributfluss handelt es sich um den Vorgang des Kopierens oder Umwandelns von Daten von einem System in ein anderes. Es werden ein- und ausgehende Attributflüsse unterschieden.
 
 Ein Attributfluss tritt bidirektional zwischen Connectorbereich und Metaverse auf, wenn die Ausführung von Synchronisierungsvorgängen (vollständig oder Delta) geplant ist. 
 
 Ein Attributfluss tritt nur auf, wenn diese Synchronisierungen ausgeführt werden. Attributflüsse werden in Synchronisierungsregeln definiert. Diese können eingehend (ISR im obigen Bild) oder ausgehend (OSR im obigen Bild) sein.
 
-## <a name="connected-system"></a>Verbundenes System
+<a id="connected-system" class="xliff"></a>
+
+## Verbundenes System
 Verbundenes System (d. h. verbundenes Verzeichnis) bezieht sich auf das Remotesystem, mit dem die Azure AD Connect-Synchronisierung eine Verbindung hergestellt hat und aus dem sie Identitätsdaten liest bzw. in das sie diese Daten schreibt.
 
-## <a name="connector-space"></a>Connectorbereich
+<a id="connector-space" class="xliff"></a>
+
+## Connectorbereich
 Jede verbundene Datenquelle wird als gefilterte Teilmenge der Objekte und Attribute im Connectorbereich dargestellt.
 So kann der Synchronisierungsdienst lokal ausgeführt werden, ohne das Remotesystem beim Synchronisieren der Objekte zu kontaktieren, und die Interaktion wird auf Importe und Exporte beschränkt.
 
 Wenn die Datenquelle und der Connector in der Lage sind, eine Liste der Änderungen (einen Deltaimport) bereitzustellen, wird die Betriebseffizienz erheblich gesteigert, da nur seit dem letzten Abrufzyklus vorgenommene Änderungen ausgetauscht werden. Der Connectorbereich isoliert die verbundene Datenquelle von der automatischen Übertragung von Änderungen durch die Anforderung, dass Import- und Exportvorgänge gemäß dem Connectorplan erfolgen. Mit dieser zusätzlichen Versicherung können Sie unbesorgt testen, die Vorschau anzeigen oder das nächste Update bestätigen.
 
-## <a name="metaverse"></a>Metaverse
+<a id="metaverse" class="xliff"></a>
+
+## Metaverse
 Das Metaverse ist die konsolidierte Ansicht sämtlicher verknüpfter Identitäten aus benachbarten Connectorbereichen.
 
 Da Identitäten miteinander verknüpft sind und die Autorität für verschiedene Attribute durch Importflusszuordnungen zugewiesen ist, beginnt das zentrale Metaverseobjekt, die Informationen aus mehreren Systemen zu aggregieren. Aus diesem Objektattributfluss sammeln Zuordnungen Informationen zu ausgehenden Systemen.
@@ -78,14 +90,18 @@ Objekte im Metaverse können nicht direkt bearbeitet werden. Alle Daten im Objek
 Beim Ermitteln neuer Datenquellen mit möglicherweise vorher vorhandenen Objekten, die verwaltet werden müssen, wendet die Azure AD Connect-Synchronisierung einen als Verknüpfungsregel bezeichneten Vorgang an, um potenzielle Kandidaten auszuwerten, zu denen ein Link hergestellt werden soll.
 Nach der Herstellung des Links wird diese Auswertung nicht erneut vorgenommen, und der normale Attributfluss kann zwischen der remote verbundenen Datenquelle und dem Metaverse auftreten.
 
-## <a name="provisioning"></a>Bereitstellung
+<a id="provisioning" class="xliff"></a>
+
+## Bereitstellung
 Wenn eine autoritative Quelle ein neues Objekt im Metaverse abbildet, kann ein neues Connectorbereichsobjekt in einem anderen Connector erstellt werden, der eine per Downstream verbundene Datenquelle darstellt.
 
 So wird inhärent eine Verknüpfung hergestellt, und der Attributfluss kann bidirektional fortgeführt werden.
 
 Wenn eine Regel bestimmt, dass ein neues Connectorbereichsobjekt erstellt werden muss, wird dies als Bereitstellung bezeichnet. Da dieser Vorgang nur im Connectorbereich stattfindet, wird er erst in die verbundene Datenquelle übertragen, wenn ein Export vorgenommen wird.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+<a id="additional-resources" class="xliff"></a>
+
+## Zusätzliche Ressourcen
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 

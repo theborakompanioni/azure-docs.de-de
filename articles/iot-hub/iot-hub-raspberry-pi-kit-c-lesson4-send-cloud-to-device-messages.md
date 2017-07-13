@@ -4,7 +4,7 @@ description: "Eine Beispielanwendung wird auf dem Pi ausgeführt und überwacht 
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Cloud-zu-Gerät, Nachricht aus der Cloud"
 ROBOTS: NOINDEX
@@ -17,31 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
 ms.openlocfilehash: 3a6957ebbb239eacb4fce696b7fcfd02e690310b
+ms.contentlocale: de-de
 ms.lasthandoff: 02/17/2017
 
-
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>Ausführen einer Beispielanwendung zum Empfangen von C2D-Nachrichten
+<a id="run-a-sample-application-to-receive-cloud-to-device-messages" class="xliff"></a>
+
+# Ausführen einer Beispielanwendung zum Empfangen von C2D-Nachrichten
 In diesem Artikel stellen Sie eine Beispielanwendung auf dem Raspberry Pi 3 bereit. Die Beispielanwendung überwacht eingehende Nachrichten von IoT Hub. Sie führen außerdem auf dem Computer einen Gulp-Task aus, um Nachrichten vom Pi an IoT Hub zu senden. Wenn die Beispielanwendung die Nachrichten empfängt, blinkt die LED. Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 * Verbinden der Beispielanwendung mit IoT Hub
 * Bereitstellen und Ausführen der Beispielanwendung
 * Senden von Nachrichten von IoT Hub an den Pi, damit die LED blinkt
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 * Überwachen von eingehenden Nachrichten von IoT Hub
 * Senden von C2D-Nachrichten von IoT Hub zum Pi
 
-## <a name="what-you-need"></a>Erforderliche Komponenten
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliche Komponenten
 * Raspberry Pi 3, bereit zur Verwendung. Informationen zum Einrichten des Pi finden Sie unter [Konfigurieren Ihres Geräts](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md).
 * Ein in Ihrem Azure-Abonnement erstellter IoT Hub. Informationen zur Erstellung von IoT Hub finden Sie unter [Create your IoT hub and register Raspberry Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md) (Erstellen von IoT Hub und Registrieren des Raspberry Pi 3).
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>Verbinden der Beispielanwendung mit IoT Hub
+<a id="connect-the-sample-application-to-your-iot-hub" class="xliff"></a>
+
+## Verbinden der Beispielanwendung mit IoT Hub
 1. Stellen Sie sicher, dass Sie sich im Repositoryordner `iot-hub-c-raspberrypi-getting-started` befinden. Öffnen Sie die Beispielanwendung in Visual Studio Code, indem Sie die folgenden Befehle ausführen:
 
    ```bash
@@ -70,7 +80,9 @@ In diesem Artikel lernen Sie Folgendes:
 > [!NOTE]
 > Führen Sie außerdem **gulp install-tools** aus, falls Sie dies in Lektion 1 noch nicht getan haben.
 
-## <a name="deploy-and-run-the-sample-application"></a>Bereitstellen und Ausführen der Beispielanwendung
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## Bereitstellen und Ausführen der Beispielanwendung
 Führen Sie die folgenden Befehle aus, um die Beispielanwendung auf dem Pi bereitzustellen und auszuführen:
 
 ```
@@ -85,9 +97,13 @@ Die LED sollte alle zwei Sekunden blinken, da der Gulp-Task 20 Nachrichten von I
 
 ![Beispielanwendung mit gulp-Befehl und blink-Nachrichten](media/iot-hub-raspberry-pi-lessons/lesson4/gulp_blink_c.png)
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben erfolgreich Nachrichten von IoT Hub an den Pi gesendet, damit die LED blinkt. Die nächste Aufgabe ist optional: das Ändern des Ein- und Ausschaltverhaltens der LED.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Change the on and off behavior of the LED](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md) (Ändern des Ein- und Aus-Verhaltens der LED)
 

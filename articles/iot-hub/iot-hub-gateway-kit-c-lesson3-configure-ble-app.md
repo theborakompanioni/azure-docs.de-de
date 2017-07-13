@@ -4,7 +4,7 @@ description: "Führen Sie eine BLE-Beispielanwendung aus, um Daten vom BLE Senso
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "BLE-App, Sensorüberwachungs-App, Sensordatenerfassung, Daten von Sensoren, Sensordaten in die Cloud"
 ROBOTS: NOINDEX
@@ -17,16 +17,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: a9f689c0b231af3cdf9257e2179bf86ff7bc9a31
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="configure-and-run-a-ble-sample-application"></a>Konfigurieren und Ausführen einer BLE-Beispielanwendung
+<a id="configure-and-run-a-ble-sample-application" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>Aufgaben
+# Konfigurieren und Ausführen einer BLE-Beispielanwendung
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Klonen Sie das Beispielrepository. 
 - Richten Sie die Verbindung zwischen SensorTag und Intel NUC ein. 
@@ -34,19 +38,25 @@ ms.lasthandoff: 01/25/2017
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 In diesem Artikel lernen Sie Folgendes:
 
 - Konfigurieren und Ausführen der BLE-Beispielanwendung
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 Sie müssen Folgendes erfolgreich abgeschlossen haben:
 
 - [Create your Azure IoT hub and register your device](iot-hub-gateway-kit-c-lesson2-register-device.md) (Erstellen einer IoT Hub-Instanz und Registrieren Ihres Geräts)
 
-## <a name="clone-the-sample-repository-to-the-host-computer"></a>Klonen des Beispielrepositorys auf dem Hostcomputer
+<a id="clone-the-sample-repository-to-the-host-computer" class="xliff"></a>
+
+## Klonen des Beispielrepositorys auf dem Hostcomputer
 
 Führen Sie diese Schritte auf dem Hostcomputer aus, um das Beispielrepository zu klonen:
 
@@ -58,7 +68,9 @@ Führen Sie diese Schritte auf dem Hostcomputer aus, um das Beispielrepository z
    cd iot-hub-c-intel-nuc-gateway-getting-started
    ```
 
-## <a name="set-up-the-connectivity-between-sensortag-and-intel-nuc"></a>Richten Sie die Verbindung zwischen SensorTag und Intel NUC ein.
+<a id="set-up-the-connectivity-between-sensortag-and-intel-nuc" class="xliff"></a>
+
+## Richten Sie die Verbindung zwischen SensorTag und Intel NUC ein.
 
 Führen Sie diese Schritte auf dem Hostcomputer aus, um die Verbindung einzurichten:
 
@@ -106,7 +118,9 @@ Führen Sie diese Schritte auf dem Hostcomputer aus, um die Verbindung einzurich
 
    Ersetzen Sie `{mac address}` durch die MAC-Adresse, die Sie im vorherigen Schritt ermittelt haben.
 
-## <a name="get-the-connection-string-of-sensortag"></a>Abrufen der Verbindungszeichenfolge des SensorTag
+<a id="get-the-connection-string-of-sensortag" class="xliff"></a>
+
+## Abrufen der Verbindungszeichenfolge des SensorTag
 
 Führen Sie den folgenden Befehl auf dem Hostcomputer aus, um die Azure IoT Hub-Verbindungszeichenfolge von SensorTag abzurufen:
 
@@ -116,7 +130,9 @@ az iot device show-connection-string --hub-name {IoT hub name} --device-id mydev
 
 `{IoT hub name}` ist der IoT Hub-Name, den Sie verwendet haben. Verwenden Sie „iot-gateway“ als Wert von `{resource group name}` und „mydevice“ als Wert von `{device id}`, wenn Sie den Wert in Lektion 2 nicht geändert haben.
 
-## <a name="configure-the-ble-sample-application"></a>Konfigurieren der BLE-Beispielanwendung
+<a id="configure-the-ble-sample-application" class="xliff"></a>
+
+## Konfigurieren der BLE-Beispielanwendung
 
 Führen Sie diese Schritte auf dem Hostcomputer aus, um die BLE-Beispielanwendung zu konfigurieren und auszuführen:
 
@@ -148,7 +164,9 @@ Führen Sie diese Schritte auf dem Hostcomputer aus, um die BLE-Beispielanwendun
       gulp run
       ```
 
-## <a name="verify-that-the-ble-sample-application-works"></a>Überprüfen, ob die BLE-Beispielanwendung richtig ausgeführt wird
+<a id="verify-that-the-ble-sample-application-works" class="xliff"></a>
+
+## Überprüfen, ob die BLE-Beispielanwendung richtig ausgeführt wird
 
 Folgendes sollte angezeigt werden:
 
@@ -156,9 +174,13 @@ Folgendes sollte angezeigt werden:
 
 Die Beispielanwendung sammelt weiter Temperaturdaten und sendet sie an Ihren IoT Hub. Die Beispielanwendung wird nach 40 Sekunden automatisch beendet.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 
 Sie haben die Verbindung zwischen SensorTag und Intel NUC erfolgreich eingerichtet und eine BLE-Beispielanwendung ausgeführt, mit der Daten vom SensorTag-Gerät erfasst und an Ihren IoT Hub gesendet werden. Als Nächstes können Sie sich nun damit vertraut machen, wie Sie überprüfen, ob der IoT Hub die Daten empfangen hat.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Read messages from your IoT hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) (Lesen von Nachrichten von Ihrem IoT Hub)

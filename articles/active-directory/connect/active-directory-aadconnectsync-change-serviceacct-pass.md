@@ -13,16 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 4e9412caa9fed15f42a04260f12fa802caf7a2e2
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
-
 ---
-# <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Ändern des Kennworts für das Azure AD Connect-Synchronisierungsdienstkonto
+<a id="changing-the-azure-ad-connect-sync-service-account-password" class="xliff"></a>
+
+# Ändern des Kennworts für das Azure AD Connect-Synchronisierungsdienstkonto
 Wenn Sie das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung ändern, kann der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung erneut initialisiert wurde. 
 
 Azure AD Connect verwendet als Teil der Synchronisierungsdienste einen Verschlüsselungsschlüssel zum Speichern der Kennwörter für die AD DS- und Azure AD-Dienstkonten.  Diese Konten werden verschlüsselt, bevor sie in der Datenbank gespeichert werden. 
@@ -31,7 +33,9 @@ Der verwendete Verschlüsselungsschlüssel wird über [Windows-Datenschutz (DPAP
 
 Wenn Sie das Kennwort des Dienstkontos ändern müssen, können Sie hierzu die Verfahren unter [Verwerfen des Verschlüsselungsschlüssels für die Azure AD Connect-Synchronisierung](#abandoning-the-azure-ad-connect-sync-encryption-key) verwenden.  Diese Verfahren sollten auch verwendet werden, wenn Sie den Verschlüsselungsschlüssel aus irgendeinem Grund verwerfen müssen.
 
-##<a name="issues-that-arise-from-changing-the-password"></a>Durch das Ändern des Kennworts entstehende Probleme
+<a id="issues-that-arise-from-changing-the-password" class="xliff"></a>
+
+##Durch das Ändern des Kennworts entstehende Probleme
 Es gibt zwei Dinge, die beim Ändern des Kennwort für das Dienstkonto durchgeführt werden müssen.
 
 Zunächst müssen Sie das Kennwort im Windows-Dienststeuerungs-Manager ändern.  Bis dieses Problem behoben ist, werden Ihnen folgende Fehler angezeigt:
@@ -48,13 +52,17 @@ Ihnen werden beispielsweise folgende Fehler angezeigt:
 
 Um sicherzustellen, dass Sie diese Fehler nicht erhalten, führen Sie beim Ändern des Kennworts die Verfahren unter [Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung](#abandoning-the-azure-ad-connect-sync-encryption-key) aus.
  
-## <a name="abandoning-the-azure-ad-connect-sync-encryption-key"></a>Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung
+<a id="abandoning-the-azure-ad-connect-sync-encryption-key" class="xliff"></a>
+
+## Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung
 >[!IMPORTANT]
 >Die folgenden Verfahren gelten nur für Azure AD Connect Build 1.1.443.0 oder früher.
 
 Verwenden Sie die folgenden Verfahren, um den Verschlüsselungsschlüssel zu verwerfen.
 
-### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>So verwerfen Sie den Verschlüsselungsschlüssel
+<a id="what-to-do-if-you-need-to-abandon-the-encryption-key" class="xliff"></a>
+
+### So verwerfen Sie den Verschlüsselungsschlüssel
 
 Wenn Sie den Verschlüsselungsschlüssel verwerfen müssen, verwenden Sie dazu die folgenden Verfahren.
 
@@ -66,7 +74,9 @@ Wenn Sie den Verschlüsselungsschlüssel verwerfen müssen, verwenden Sie dazu d
 
 4. [Starten des Synchronisierungsdiensts](#start-the-synchronization-service)
 
-#### <a name="abandon-the-existing-encryption-key"></a>Verwerfen des vorhandenen Verschlüsselungsschlüssels
+<a id="abandon-the-existing-encryption-key" class="xliff"></a>
+
+#### Verwerfen des vorhandenen Verschlüsselungsschlüssels
 Verwerfen Sie den vorhandenen Verschlüsselungsschlüssel, damit der neue Verschlüsselungsschlüssels erstellt werden kann:
 
 1. Melden Sie sich bei Ihrem Azure AD Connect-Server als Administrator an.
@@ -79,7 +89,9 @@ Verwerfen Sie den vorhandenen Verschlüsselungsschlüssel, damit der neue Versch
 
 ![Hilfsprogramm für den Verschlüsselungsschlüssel der Azure AD Connect-Synchronisierung](media/active-directory-aadconnectsync-encryption-key/key5.png)
 
-#### <a name="provide-the-password-of-the-ad-ds-account"></a>Angeben des Kennworts für das AD DS-Konto
+<a id="provide-the-password-of-the-ad-ds-account" class="xliff"></a>
+
+#### Angeben des Kennworts für das AD DS-Konto
 Da die in der Datenbank gespeicherten vorhandenen Kennwörter nicht mehr entschlüsselt werden können, müssen Sie dem Synchronisierungsdienst das Kennwort des AD DS-Kontos bereitstellen. Der Synchronisierungsdienst verschlüsselt die Kennwörter mithilfe des neuen Verschlüsselungsschlüssels:
 
 1. Starten Sie den Synchronization Service Manager („START“ > „Synchronisierungsdienst“).
@@ -92,7 +104,9 @@ Da die in der Datenbank gespeicherten vorhandenen Kennwörter nicht mehr entschl
 7. Klicken Sie auf **OK**, um das neue Kennwort zu speichern und das Popupdialogfeld zu schließen.
 ![Hilfsprogramm für den Verschlüsselungsschlüssel der Azure AD Connect-Synchronisierung](media/active-directory-aadconnectsync-encryption-key/key6.png)
 
-#### <a name="reinitialize-the-password-of-the-azure-ad-sync-account"></a>Erneutes Initialisieren des Kennworts für das Azure AD-Synchronisierungskonto
+<a id="reinitialize-the-password-of-the-azure-ad-sync-account" class="xliff"></a>
+
+#### Erneutes Initialisieren des Kennworts für das Azure AD-Synchronisierungskonto
 Sie können dem Synchronisierungsdienst das Kennwort des Azure AD-Dienstkontos nicht direkt bereitstellen. Stattdessen müssen Sie das Azure AD-Dienstkonto über das Cmdlet **Add-ADSyncAADServiceAccount** erneut initialisieren. Das Cmdlet setzt das Kontokennwort zurück und stellt es dem Synchronisierungsdienst zur Verfügung:
 
 1. Starten Sie eine neue PowerShell-Sitzung auf dem Azure AD Connect-Server.
@@ -101,16 +115,21 @@ Sie können dem Synchronisierungsdienst das Kennwort des Azure AD-Dienstkontos n
 ![Hilfsprogramm für den Verschlüsselungsschlüssel der Azure AD Connect-Synchronisierung](media/active-directory-aadconnectsync-encryption-key/key7.png)
 4. Wenn der Vorgang erfolgreich ist, wird Ihnen die PowerShell-Eingabeaufforderung angezeigt.
 
-#### <a name="start-the-synchronization-service"></a>Starten des Synchronisierungsdiensts
+<a id="start-the-synchronization-service" class="xliff"></a>
+
+#### Starten des Synchronisierungsdiensts
 Der Synchronisierungsdienst besitzt jetzt Zugriff auf den Verschlüsselungsschlüssel und alle erforderlichen Kennwörter. Daher können Sie den Dienst im Windows-Dienststeuerungs-Manager neu starten:
 
 
 1. Wechseln Sie zum Windows-Dienststeuerungs-Manager („START“ → „Dienste“).
 2. Wählen Sie **Microsoft Azure AD-Synchronisierung**, und klicken Sie auf „Neu starten“.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 **Übersichtsthemen**
 
 * [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+

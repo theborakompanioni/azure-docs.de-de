@@ -4,7 +4,7 @@ description: Konfigurieren Sie Adafruit Feather M0 WiFi zur erstmaligen Verwendu
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Arduino-Setup, Arduino mit PC verbinden, Setup von Arduino, Arduino-Platine
 ROBOTS: NOINDEX
@@ -17,18 +17,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 3789c07cd6142ba5b6a58a67813c0ead6b87bd76
+ms.contentlocale: de-de
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="configure-your-device"></a>Konfigurieren Ihres Geräts
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="configure-your-device" class="xliff"></a>
+
+# Konfigurieren Ihres Geräts
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Konfigurieren Sie Ihre Adafruit Feather M0 WiFi Arduino-Platine zur erstmaligen Verwendung, indem Sie die Platine einbauen und einschalten. Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md).
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Für diesen Vorgang benötigen Sie die folgenden Teile aus Ihrem Adafruit Feather M0 WiFi Starter Kit:
 
 * Adafruit Feather M0 WiFi-Platine
@@ -42,13 +48,17 @@ Außerdem benötigen Sie:
 * Eine Drahtlosverbindung für Ihre Arduino-Platine
 * Eine Internetverbindung zum Herunterladen des Konfigurationstools
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 
 * Wie Sie Ihre Arduino-Platine für die folgenden Lektionen einbauen und einschalten
 * Wie Sie unter Ubuntu Berechtigungen für den seriellen Anschluss hinzufügen
 
-## <a name="connect-your-arduino-board-to-your-computer"></a>Verbinden der Arduino-Platine mit dem Computer
+<a id="connect-your-arduino-board-to-your-computer" class="xliff"></a>
+
+## Verbinden der Arduino-Platine mit dem Computer
 
 1. Stecken Sie das Micro-USB-Kabel in den oberen Micro-USB-Anschluss ein.
 
@@ -58,7 +68,9 @@ In diesem Artikel lernen Sie Folgendes:
 
    ![USB-Anschluss des Computers][computer-usb]
 
-## <a name="add-serial-port-permissions-on-ubuntu"></a>Hinzufügen von Berechtigungen für den seriellen Anschluss unter Ubuntu
+<a id="add-serial-port-permissions-on-ubuntu" class="xliff"></a>
+
+## Hinzufügen von Berechtigungen für den seriellen Anschluss unter Ubuntu
 
 Sie können diesen Abschnitt überspringen, wenn Sie Windows oder MacOS verwenden. Für Ubuntu müssen Sie die folgenden Schritte ausführen, um sicherzustellen, dass der normale Linux-Benutzer über die Berechtigungen für den USB-Anschluss Ihrer Arduino-Platine verfügt.
 
@@ -90,12 +102,16 @@ Sie können diesen Abschnitt überspringen, wenn Sie Windows oder MacOS verwende
 
 3. Sie müssen sich ab- und erneut anmelden, damit diese Änderung wirksam wird, und das Setup abschließen.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 In diesem Artikel haben Sie erfahren, wie Sie Ihre Arduino-Platine konfigurieren. Der nächste Schritt ist das Installieren der erforderlichen Tools und Software als Vorbereitung für die Ausführung einer Beispielanwendung auf der Arduino-Platine.
 
 ![Hardware ist bereit][hardware-is-ready]
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Abrufen der Tools][get-the-tools]
 <!-- Images and links -->
 

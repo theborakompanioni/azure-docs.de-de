@@ -4,7 +4,7 @@ description: "Passen Sie die Nachrichten an, um das Ein- und Aus-Verhalten der L
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Steuern der LED mit Arduino
 ROBOTS: NOINDEX
@@ -17,24 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 3585dfbac8816140c0a62931920aff1a6bf7d540
+ms.contentlocale: de-de
 ms.lasthandoff: 01/24/2017
 
-
 ---
-# <a name="change-the-on-and-off-behavior-of-the-led"></a>Ändern des Ein- und Aus-Verhaltens der LED
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="change-the-on-and-off-behavior-of-the-led" class="xliff"></a>
+
+# Ändern des Ein- und Aus-Verhaltens der LED
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Passen Sie die Nachrichten an, um das Ein- und Aus-Verhalten der LED zu ändern. Wenn Probleme auftreten, suchen Sie auf der [Problembehandlungsseite](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md) nach Lösungen für Ihr Arduino-Board Adafruit Feather M0 WiFi.
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 Verwenden zusätzlicher Arduino-Funktionen, um das Ein- und Aus-Verhalten der LED zu ändern
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Sie müssen [Ausführen einer Beispielanwendung auf dem Arduino-Board zum Empfangen von C2D-Nachrichten][receive-cloud-to-device-messages] erfolgreich abgeschlossen haben.
 
-## <a name="add-functions-to-mainc-and-gulpfilejs"></a>Hinzufügen von Funktionen zu „main.c“ und „gulpfile.js“
+<a id="add-functions-to-mainc-and-gulpfilejs" class="xliff"></a>
+
+## Hinzufügen von Funktionen zu „main.c“ und „gulpfile.js“
 1. Öffnen Sie die Beispielanwendung in Visual Studio Code, indem Sie die folgenden Befehle ausführen:
 
    ```bash
@@ -92,7 +102,9 @@ Sie müssen [Ausführen einer Beispielanwendung auf dem Arduino-Board zum Empfan
    ```
 6. Speichern Sie alle Änderungen.
 
-### <a name="deploy-and-run-the-sample-application"></a>Bereitstellen und Ausführen der Beispielanwendung
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+### Bereitstellen und Ausführen der Beispielanwendung
 Führen Sie den folgenden Befehl aus, um die Beispielanwendung auf dem Arduino-Board bereitzustellen und auszuführen:
 
 ```bash
@@ -110,7 +122,9 @@ Die LED sollte zwei Sekunden lang eingeschaltet und dann zwei Sekunden lang ausg
 
 Glückwunsch! Sie haben die Nachrichten, die von IoT Hub an das Arduino-Board gesendet werden, erfolgreich angepasst.
 
-### <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+### Zusammenfassung
 In diesem optionalen Abschnitt wird gezeigt, wie Nachrichten angepasst werden, damit die Beispielanwendung das Ein- und Aus-Verhalten der LED auf andere Weise steuern kann.
 
 <!-- Images and links -->

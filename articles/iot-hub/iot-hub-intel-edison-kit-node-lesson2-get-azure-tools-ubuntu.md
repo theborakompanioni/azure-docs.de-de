@@ -4,7 +4,7 @@ description: Installieren Sie unter Ubuntu Python und die Azure-Befehlszeilensch
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Azure CLI, IoT-Clouddienst, Arduino Cloud
 ROBOTS: NOINDEX
@@ -17,32 +17,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 1b3ee6667c8ba376bbbd7a2bb61e85ec17b61b4d
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="get-azure-tools-ubuntu-1604"></a>Abrufen der Azure-Tools (Ubuntu 16.04)
+<a id="get-azure-tools-ubuntu-1604" class="xliff"></a>
+
+# Abrufen der Azure-Tools (Ubuntu 16.04)
 > [!div class="op_single_selector"]
 > * [Windows 7 und höher][windows]
 > * [Ubuntu 16.04][ubuntu]
 > * [macOS 10.10][macos]
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Installieren der Azure-Befehlszeilenschnittstelle (Azure-CLI). Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshooting].
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 * Installieren der Azure-Befehlszeilenschnittstelle
 * Hinzufügen einer IoT-Untergruppe zur Azure-CLI
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 * Ein Ubuntu-Computer mit Internetverbindung
 * Ein aktives Azure-Abonnement. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Testkonto](http://azure.microsoft.com/pricing/free-trial/) erstellen.
 
-## <a name="install-the-azure-cli"></a>Installieren der Azure-Befehlszeilenschnittstelle
+<a id="install-the-azure-cli" class="xliff"></a>
+
+## Installieren der Azure-Befehlszeilenschnittstelle
 Die Azure-CLI bietet eine plattformübergreifende Befehlszeile für Azure, sodass Sie Ressourcen direkt über die Befehlszeile bereitstellen und verwalten können.
 
 Führen Sie zum Installieren der aktuellen Azure-CLI die folgenden Schritte aus:
@@ -68,10 +78,14 @@ Wenn die Installation erfolgreich war, wird die folgende Ausgabe angezeigt.
 
 ![Ausgabe, die für eine erfolgreiche Installation steht](media/iot-hub-intel-edison-lessons/lesson2/az_iot_help_ubuntu.png)
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben die Azure-CLI installiert. Die nächste Aufgabe besteht in der Erstellung des Azure IoT-Hubs und der Geräteidentität mithilfe der Azure-CLI.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Erstellen der IoT Hub-Instanz und Registrieren des Intel Edison][create-your-iot-hub-and-register-intel-edison]
 
 

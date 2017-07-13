@@ -4,7 +4,7 @@ description: Speichern Sie Nachrichten von Intel NUC in Ihrer IoT Hub-Instanz, s
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Daten aus der Cloud abrufen, IoT-Clouddienst
 ROBOTS: NOINDEX
@@ -17,28 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 293343e5db58bebc8c2e27d54d6396212fe6d3a1
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
-
 
 ---
 
-# <a name="read-messages-persisted-in-azure-table-storage"></a>Lesen von Nachrichten in Azure Table Storage
+<a id="read-messages-persisted-in-azure-table-storage" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>Aufgaben
+# Lesen von Nachrichten in Azure Table Storage
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Führen Sie die Gatewaybeispielanwendung auf dem Gateway aus, über das Nachrichten an Ihren IoT Hub gesendet werden.
 - Führen Sie dann einen Beispielcode auf Ihrem Hostcomputer aus, um die Nachrichten in Ihrem Azure-Tabellenspeicher zu lesen. 
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 Verwenden des Gulp-Tools zum Ausführen des Beispielcodes, um Nachrichten in Ihrem Azure-Tabellenspeicher Storage zu lesen.
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 Sie haben die folgenden Aufgaben erfolgreich durchgeführt:
 
@@ -46,7 +54,9 @@ Sie haben die folgenden Aufgaben erfolgreich durchgeführt:
 - [Ausführen der Gatewaybeispielanwendung](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
 - [Lesen von Nachrichten von Ihrem IoT Hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)
 
-## <a name="get-your-azure-storage-connection-strings"></a>Abrufen von Azure-Speicherverbindungszeichenfolgen
+<a id="get-your-azure-storage-connection-strings" class="xliff"></a>
+
+## Abrufen von Azure-Speicherverbindungszeichenfolgen
 
 Am Anfang dieser Lektion haben Sie erfolgreich ein Azure Storage-Konto erstellt. Führen Sie die folgenden Befehle aus, um die Verbindungszeichenfolge des Azure Storage-Kontos abzurufen:
 
@@ -64,7 +74,9 @@ az storage account show-connection-string -g iot-gateway -n {storage name}
 
 Verwenden Sie „iot-gateway“ als Wert von `{resource group name}`, sofern Sie diesen nicht in Lektion 2 geändert haben.
 
-## <a name="configure-the-device-connection"></a>Konfigurieren der Geräteverbindung
+<a id="configure-the-device-connection" class="xliff"></a>
+
+## Konfigurieren der Geräteverbindung
 
 Aktualisieren Sie die Datei `config-azure.json` so, dass mit dem auf dem Hostcomputer ausgeführten Beispielcode die Nachricht in Ihrem Azure-Tabellenspeicher gelesen werden kann. Gehen Sie folgendermaßen vor, um die Geräteverbindung zu konfigurieren:
 
@@ -83,7 +95,9 @@ Aktualisieren Sie die Datei `config-azure.json` so, dass mit dem auf dem Hostcom
 
    `[IoT hub connection string]` sollte bereits in Lektion&3; im Abschnitt [Read messages from your IoT hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) (Lesen von Nachrichten von Ihrem IoT Hub) ersetzt worden sein.
 
-## <a name="read-messages-in-your-azure-table-storage"></a>Lesen von Nachrichten in Ihrem Azure-Tabellenspeicher
+<a id="read-messages-in-your-azure-table-storage" class="xliff"></a>
+
+## Lesen von Nachrichten in Ihrem Azure-Tabellenspeicher
 
 Führen Sie die Gatewaybeispielanwendung aus, und lesen Sie die Azure-Tabellenspeicher-Nachrichten mit dem folgenden Befehl:
 
@@ -99,6 +113,8 @@ Alle gesendeten und empfangenen Nachrichten werden auf dem Hostcomputer sofort i
    ![Gulp-Lesevorgang](media/iot-hub-gateway-kit-lessons/lesson4/gulp_run_read_table.png)
 
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 
 Sie haben den Beispielcode zum Lesen der Nachrichten in Ihrem Azure-Tabellenspeicher nach dem Speichern mit der Azure-Funktionen-Anwendung ausgeführt.

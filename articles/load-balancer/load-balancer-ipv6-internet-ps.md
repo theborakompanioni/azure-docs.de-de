@@ -15,14 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 5eff828095cd58732c78d4af43b5ff5420dfe8fd
+ms.contentlocale: de-de
 ms.lasthandoff: 01/24/2017
 
 ---
 
-# <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager
+<a id="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager" class="xliff"></a>
+
+# Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
@@ -31,7 +34,9 @@ ms.lasthandoff: 01/24/2017
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für hohe Verfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
-## <a name="example-deployment-scenario"></a>Beispielszenario für die Bereitstellung
+<a id="example-deployment-scenario" class="xliff"></a>
+
+## Beispielszenario für die Bereitstellung
 
 Das folgende Diagramm veranschaulicht die Lösung mit Lastenausgleich, die in diesem Artikel bereitgestellt wird.
 
@@ -45,7 +50,9 @@ In diesem Szenario erstellen Sie die folgenden Azure-Ressourcen:
 * zwei virtuelle Computer (VMs)
 * eine virtuelle Netzwerkschnittstelle für jeden virtuellen Computer mit zugewiesenen IPv4- und IPv6-Adressen
 
-## <a name="deploying-the-solution-using-the-azure-powershell"></a>Bereitstellen der Lösung mithilfe von Azure PowerShell
+<a id="deploying-the-solution-using-the-azure-powershell" class="xliff"></a>
+
+## Bereitstellen der Lösung mithilfe von Azure PowerShell
 
 Die folgenden Schritte zeigen, wie Sie einen internen Load Balancer mit Internetzugriff mit dem Azure Resource Manager und PowerShell erstellen. Mit Azure Resource Manager werden die einzelnen Ressourcen erstellt sowie individuell konfiguriert und dann zusammengeführt, um eine Ressource zu erstellen.
 
@@ -59,7 +66,9 @@ Zum Bereitstellen eines Load Balancers erstellen und konfigurieren Sie die folge
 
 Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Managers für Load Balancer](load-balancer-arm.md).
 
-## <a name="set-up-powershell-to-use-resource-manager"></a>Einrichten von PowerShell für die Verwendung des Resource Managers
+<a id="set-up-powershell-to-use-resource-manager" class="xliff"></a>
+
+## Einrichten von PowerShell für die Verwendung des Resource Managers
 
 Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Resource Manager-Moduls für PowerShell verfügen.
 
@@ -89,7 +98,9 @@ Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Reso
     New-AzureRmResourceGroup -Name NRP-RG -location "West US"
     ```
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Erstellen eines virtuellen Netzwerks und einer öffentlichen IP-Adresse für den Front-End-IP-Adresspool
+<a id="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool" class="xliff"></a>
+
+## Erstellen eines virtuellen Netzwerks und einer öffentlichen IP-Adresse für den Front-End-IP-Adresspool
 
 1. Erstellen Sie ein virtuelles Netzwerk mit einem Subnetz.
 
@@ -108,7 +119,9 @@ Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Reso
     > [!IMPORTANT]
     > Der Load Balancer verwendet die Domänenbezeichnung der öffentlichen IP-Adresse als Präfix seines vollqualifizierten Domänennamens (FQDN). In diesem Beispiel lauten die FQDNs *lbnrpipv4.westus.cloudapp.azure.com* und *lbnrpipv6.westus.cloudapp.azure.com*.
 
-## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Erstellen einer Front-End-IP-Konfiguration und eines Back-End-Adresspools
+<a id="create-a-front-end-ip-configurations-and-a-back-end-address-pool" class="xliff"></a>
+
+## Erstellen einer Front-End-IP-Konfiguration und eines Back-End-Adresspools
 
 1. Erstellen Sie die Front-End-Adresskonfiguration, die die öffentlichen IP-Adressen verwendet, die Sie erstellt haben.
 
@@ -124,7 +137,9 @@ Stellen Sie sicher, dass Sie über die neueste Produktionsversion des Azure Reso
     $backendpoolipv6 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv6"
     ```
 
-## <a name="create-lb-rules-nat-rules-a-probe-and-a-load-balancer"></a>Erstellen von LB-Regeln, NAT-Regeln, Test und Load Balancer
+<a id="create-lb-rules-nat-rules-a-probe-and-a-load-balancer" class="xliff"></a>
+
+## Erstellen von LB-Regeln, NAT-Regeln, Test und Load Balancer
 
 In diesem Beispiel werden die folgenden Elemente erstellt:
 
@@ -172,12 +187,14 @@ In diesem Beispiel werden die folgenden Elemente erstellt:
     $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName NRP-RG -Name 'myNrpIPv6LB' -Location 'West US' -FrontendIpConfiguration $FEIPConfigv4,$FEIPConfigv6 -InboundNatRule $inboundNATRule1v6,$inboundNATRule1v4 -BackendAddressPool $backendpoolipv4,$backendpoolipv6 -Probe $healthProbe,$RDPprobe -LoadBalancingRule $lbrule1v4,$lbrule1v6,$RDPrule
     ```
 
-## <a name="create-nics-for-the-back-end-vms"></a>Erstellen von NICs für die Back-End-VMs
+<a id="create-nics-for-the-back-end-vms" class="xliff"></a>
+
+## Erstellen von NICs für die Back-End-VMs
 
 1. Rufen Sie das virtuelle Netzwerk und das zugehörige Subnetz ab, in denen die Netzwerkkarten erstellt werden sollen.
 
     ```powershell
-    $vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
+    $vnet = Get-AzureRmVirtualNetwork -Name VNet -ResourceGroupName NRP-RG
     $backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
     ```
 
@@ -193,7 +210,9 @@ In diesem Beispiel werden die folgenden Elemente erstellt:
     $nic2 = New-AzureRmNetworkInterface -Name 'myNrpIPv6Nic1' -IpConfiguration $nic2IPv4,$nic2IPv6 -ResourceGroupName NRP-RG -Location 'West US'
     ```
 
-## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Erstellen von virtuellen Computern und Zuweisen der neu erstellten NICs
+<a id="create-virtual-machines-and-assign-the-newly-created-nics" class="xliff"></a>
+
+## Erstellen von virtuellen Computern und Zuweisen der neu erstellten NICs
 
 Weitere Informationen zum Erstellen eines virtuellen Computers finden Sie unter [Erstellen und Vorkonfigurieren eines virtuellen Windows-Computers mit Resource Manager und Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
@@ -228,7 +247,9 @@ Weitere Informationen zum Erstellen eines virtuellen Computers finden Sie unter 
     New-AzureRmVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 [Erste Schritte zum Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-ps.md)
 

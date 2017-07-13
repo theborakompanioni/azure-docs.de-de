@@ -4,7 +4,7 @@ description: "Laden Sie die erforderlichen Tools und die Software für die erste
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Arduino-Entwicklungstools, IoT-Entwicklung, IoT-Software, Internet der Dinge Software, Git auf Ubuntu installieren, Node.js installieren Ubuntu
 ROBOTS: NOINDEX
@@ -17,24 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: c56699b81d83119ca1822c2efa6b2380b3619290
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="get-the-tools-ubuntu-1604"></a>Herunterladen der Tools (Ubuntu 16.04)
+<a id="get-the-tools-ubuntu-1604" class="xliff"></a>
+
+# Herunterladen der Tools (Ubuntu 16.04)
 
 > [!div class="op_single_selector"]
 > * [Windows 7 oder höher][windows]
 > * [Ubuntu 16.04][ubuntu]
 > * [macOS 10.10][macos]
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Laden Sie die Entwicklungstools und die Software für die erste Beispielanwendung für Ihren Intel Edison herunter. Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshooting].
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 
 * Installieren von Git und Node.js
@@ -44,12 +50,16 @@ In diesem Artikel lernen Sie Folgendes:
   * Die erforderliche Minimalversion von Node.js ist 4.5 LTS.
   * [NPM](https://www.npmjs.com) ist einer der Paket-Manager für Node.js.
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Um diesen Vorgang abzuschließen, benötigen Sie Folgendes:
 * Eine Internetverbindung zum Herunterladen der Entwicklungstools und der Software
 * Einen Computer mit Ubuntu 16.04 oder höher
 
-## <a name="install-git-nodejs-and-npm"></a>Installieren von Git, Node.js und NPM
+<a id="install-git-nodejs-and-npm" class="xliff"></a>
+
+## Installieren von Git, Node.js und NPM
 Verwenden Sie die Tastenkombination `Ctrl + Alt + T`, um ein Terminal zu öffnen, und führen Sie die folgenden Befehle aus:
 
 ```bash
@@ -59,7 +69,9 @@ sudo apt-get install -y nodejs
 sudo apt-get install git
 ```
 
-## <a name="install-additional-nodejs-development-tools"></a>Installieren zusätzlicher Node.js-Entwicklungstools
+<a id="install-additional-nodejs-development-tools" class="xliff"></a>
+
+## Installieren zusätzlicher Node.js-Entwicklungstools
 Verwenden Sie zum Automatisieren der Bereitstellung der Beispielanwendung auf dem Edison [gulp.js](http://gulpjs.com).
 
 Installieren Sie `gulp`, indem Sie den folgenden Befehl im Terminal ausführen:
@@ -70,13 +82,19 @@ sudo npm install -g gulp
 
 Wenn bei der Installation von Node.js und diesen zusätzlichen Entwicklungstools unter Ubuntu Probleme auftreten, finden Sie in der [Anleitung zur Problembehandlung][troubleshooting] Lösungen für häufiger auftretende Probleme.
 
-## <a name="install-visual-studio-code"></a>Installieren von Visual Studio Code
+<a id="install-visual-studio-code" class="xliff"></a>
+
+## Installieren von Visual Studio Code
 [Laden](https://code.visualstudio.com/docs/setup/linux) Sie Visual Studio Code herunter, und installieren Sie die Software. Visual Studio Code ist ein einfacher, aber leistungsstarker Quellcode-Editor für Windows, Linux und macOS. Sie verwenden diesen Editor in diesem Tutorial, um den Beispielcode zu bearbeiten.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben die erforderlichen Entwicklungstools und die Software für die erste Beispielanwendung installiert. Die nächste Aufgabe besteht im Erstellen, Bereitstellen und Ausführen der Beispielanwendung auf dem Edison.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Erstellen und Bereitstellen der Beispielanwendung blink][create-and-deploy-the-blink-application]
 <!-- Images and links -->
 

@@ -4,7 +4,7 @@ description: "Ausführen einer Beispiel-App für ein simuliertes Gerät zum Send
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Daten in die Cloud
 ROBOTS: NOINDEX
@@ -17,35 +17,45 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 873f3cef8cb1d115f77f0d3fa2c4b50391f66d91
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="configure-and-run-a-simulated-device-sample-app"></a>Konfigurieren und Ausführen einer Beispiel-App für ein simuliertes Gerät
+<a id="configure-and-run-a-simulated-device-sample-app" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>Aufgaben
+# Konfigurieren und Ausführen einer Beispiel-App für ein simuliertes Gerät
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Klonen Sie das Beispielrepository.
 - Verwenden Sie die Azure-CLI, um Ihre IoT Hub-Informationen und die Informationen zum logischen Gerät für die Beispiel-App für ein simuliertes Gerät abzurufen. Konfigurieren Sie die Beispielanwendung für das simulierte Gerät, und führen Sie sie aus.
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 In diesem Artikel lernen Sie Folgendes:
 
 - Konfigurieren und Ausführen der Beispielanwendung für das simulierte Gerät
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 Sie müssen Folgendes erfolgreich abgeschlossen haben:
 
 - [Create an IoT hub and register your device](iot-hub-gateway-kit-c-sim-lesson2-register-device.md) (Erstellen eines IoT Hub und Registrieren Ihres Geräts)
 
-## <a name="clone-the-sample-repository-to-the-host-computer"></a>Klonen des Beispielrepositorys auf dem Hostcomputer
+<a id="clone-the-sample-repository-to-the-host-computer" class="xliff"></a>
+
+## Klonen des Beispielrepositorys auf dem Hostcomputer
 
 Führen Sie diese Schritte auf dem Hostcomputer aus, um das Beispielrepository zu klonen:
 
@@ -57,7 +67,9 @@ Führen Sie diese Schritte auf dem Hostcomputer aus, um das Beispielrepository z
    cd iot-hub-c-intel-nuc-gateway-getting-started
    ```
 
-## <a name="configure-the-simulated-device-and-your-nuc"></a>Konfigurieren des simulierten Geräts und Ihres NUC
+<a id="configure-the-simulated-device-and-your-nuc" class="xliff"></a>
+
+## Konfigurieren des simulierten Geräts und Ihres NUC
 
 1. Öffnen Sie die Konfigurationsdatei `config.json` in Visual Studio Code, indem Sie den folgenden Befehl ausführen:
 
@@ -89,7 +101,9 @@ Führen Sie diese Schritte auf dem Hostcomputer aus, um das Beispielrepository z
 5. Suchen Sie nach der folgenden Codezeile, und ersetzen Sie `[device hostname or IP address]` durch die IP-Adresse oder den Hostnamen des Intel NUC.
    ![Screenshot der Gatewaykonfiguration](media/iot-hub-gateway-kit-lessons/lesson3/config_gateway.png)
 
-## <a name="get-the-connection-string-of-your-iot-hub-logical-device"></a>Abrufen der Verbindungszeichenfolge des logischen IoT Hub-Geräts
+<a id="get-the-connection-string-of-your-iot-hub-logical-device" class="xliff"></a>
+
+## Abrufen der Verbindungszeichenfolge des logischen IoT Hub-Geräts
 
 Führen Sie den folgenden Befehl auf dem Hostcomputer aus, um die Azure IoT Hub-Verbindungszeichenfolge des logischen Geräts abzurufen:
 
@@ -99,7 +113,9 @@ az iot device show-connection-string --hub-name {IoT hub name} --device-id mydev
 
 `{IoT hub name}` ist der IoT Hub-Name, den Sie verwendet haben. Verwenden Sie „iot-gateway“ als Wert von `{resource group name}` und „mydevice“ als Wert von `{device id}`, wenn Sie den Wert in Lektion 2 nicht geändert haben.
 
-## <a name="configure-the-simulated-device-cloud-upload-sample-application"></a>Konfigurieren der Cloudupload-Beispielanwendung für das simulierte Gerät
+<a id="configure-the-simulated-device-cloud-upload-sample-application" class="xliff"></a>
+
+## Konfigurieren der Cloudupload-Beispielanwendung für das simulierte Gerät
 
 Führen Sie diese Schritte auf dem Hostcomputer aus, um die Cloudupload-Beispielanwendung für das simulierte Gerät zu konfigurieren und auszuführen:
 
@@ -126,7 +142,9 @@ Führen Sie diese Schritte auf dem Hostcomputer aus, um die Cloudupload-Beispiel
    gulp run
    ```
 
-## <a name="verify-the-sample-application-works"></a>Überprüfen, ob die Beispielanwendung richtig ausgeführt wird
+<a id="verify-the-sample-application-works" class="xliff"></a>
+
+## Überprüfen, ob die Beispielanwendung richtig ausgeführt wird
 
 Die Ausgabe sollte in etwa wie folgt aussehen:
 
@@ -134,9 +152,13 @@ Die Ausgabe sollte in etwa wie folgt aussehen:
 
 Die Anwendung sendet Temperaturdaten an Ihren IoT Hub. Der Vorgang ist 40 Sekunden lang aktiv.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 
 Sie haben die Cloudupload-Beispielanwendung, mit der Daten an Ihren IoT Hub mit dem simulierten Gerät gesendet werden, erfolgreich konfiguriert und ausgeführt.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Read messages from your IoT hub](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md) (Lesen von Nachrichten von Ihrem IoT Hub)

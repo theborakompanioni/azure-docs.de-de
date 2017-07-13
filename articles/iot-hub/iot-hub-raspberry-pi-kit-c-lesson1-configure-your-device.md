@@ -4,7 +4,7 @@ description: "Konfigurieren Sie den Raspberry Pi 3 für die erstmalige Verwendun
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Raspbian installieren, Raspbian-Download, Installation von Raspbian, Raspbian-Setup, Raspberry Pi-Installation, Betriebssystem Raspberry Pi installieren, Raspberry Pi SD-Karteninstallation, Raspberry Pi verbinden, Verbindung für Raspberry Pi herstellen, Raspberry Pi-Verbindung"
 ROBOTS: NOINDEX
@@ -17,18 +17,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5b80d471c78973f8c2f6b1ad4e1240c66f0505ef
 ms.openlocfilehash: 3e34b8202794bc969bf41765ce519d083037ab46
+ms.contentlocale: de-de
 ms.lasthandoff: 02/21/2017
 
-
 ---
-# <a name="configure-your-device"></a>Konfigurieren Ihres Geräts
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="configure-your-device" class="xliff"></a>
+
+# Konfigurieren Ihres Geräts
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Führen Sie die erste Konfiguration von Pi durch, und installieren Sie das Raspbian-Betriebssystem. Raspbian ist ein kostenloses Betriebssystem, das für die Raspberry Pi-Hardware optimiert ist. Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 
 * Installieren von Raspbian auf dem Raspberry Pi
@@ -36,7 +42,9 @@ In diesem Artikel lernen Sie Folgendes:
 * Herstellen der Netzwerkverbindung für den Raspberry Pi mit einem Ethernet-Kabel oder per WLAN
 * Hinzufügen einer LED zur Steckplatine und Herstellen der Verbindung mit dem Raspberry Pi
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Für diesen Vorgang benötigen Sie die folgenden Teile aus Ihrem Raspberry Pi 3 Starter Kit:
 
 * Raspberry Pi-3-Board
@@ -57,7 +65,9 @@ Außerdem benötigen Sie:
 * Einen Computer (Windows, Mac oder Linux). Der Computer wird für die Installation von Raspbian auf der microSD-Karte verwendet.
 * Eine Internetverbindung zum Herunterladen der notwendigen Tools und der Software
 
-## <a name="install-raspbian-on-the-microsd-card"></a>Installieren von Raspbian auf der microSD-Karte
+<a id="install-raspbian-on-the-microsd-card" class="xliff"></a>
+
+## Installieren von Raspbian auf der microSD-Karte
 Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 1. Laden Sie Raspbian herunter.
@@ -75,7 +85,9 @@ Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 ![SD-Karte einlegen](media/iot-hub-raspberry-pi-lessons/lesson1/insert_sdcard.jpg)
 
-## <a name="turn-on-pi"></a>Pi einschalten
+<a id="turn-on-pi" class="xliff"></a>
+
+## Pi einschalten
 Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung.
 
 ![Verbindung mit der Stromversorgung](media/iot-hub-raspberry-pi-lessons/lesson1/micro_usb_power_on.jpg)
@@ -83,21 +95,31 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung.
 > [!NOTE]
 > Es ist wichtig, die Stromversorgung im Kit zu verwenden, die mindestens 2 A liefert. So wird sichergestellt, dass der Raspberry genügend Strom erhält und richtig funktioniert.
 
-## <a name="enable-ssh"></a>Aktivieren von SSH
+<a id="enable-ssh" class="xliff"></a>
+
+## Aktivieren von SSH
 Ab der Version vom November 2016 ist bei Raspbian der SSH-Server standardmäßig deaktiviert. Er muss manuell aktiviert werden. Weitere Informationen finden Sie in den [offiziellen Anweisungen](https://www.raspberrypi.org/documentation/remote-access/ssh/). Sie können auch einen Monitor anschließen und zu **Preferences > Raspberry Pi Configuration** (Voreinstellungen > Raspberry Pi-Konfiguration) wechseln, um SSH zu aktivieren.
 
-## <a name="connect-raspberry-pi-3-to-the-network"></a>Verbinden des Raspberry Pi 3 mit dem Netzwerk
+<a id="connect-raspberry-pi-3-to-the-network" class="xliff"></a>
+
+## Verbinden des Raspberry Pi 3 mit dem Netzwerk
 Sie können den Raspberry Pi mit einem Kabelnetzwerk oder mit einem Drahtlosnetzwerk verbinden. Stellen Sie sicher, dass der Raspberry Pi mit dem gleichen Netzwerk wie der Computer verbunden ist. Beispielsweise können Sie den Raspberry Pi mit dem gleichen Switch verbinden, mit dem der Computer verbunden ist.
 
-### <a name="connect-to-a-wired-network"></a>Herstellen der Verbindung mit einem Kabelnetzwerk
+<a id="connect-to-a-wired-network" class="xliff"></a>
+
+### Herstellen der Verbindung mit einem Kabelnetzwerk
 Verwenden Sie ein Ethernet-Kabel, um den Raspberry Pi mit dem Kabelnetzwerk zu verbinden. Die zwei LEDs auf dem Raspberry Pi leuchten, wenn die Verbindung hergestellt ist.
 
 ![Herstellen einer Verbindung per Ethernet-Kabel](media/iot-hub-raspberry-pi-lessons/lesson1/connect_ethernet.jpg)
 
-### <a name="connect-to-a-wireless-network"></a>Herstellen der Verbindung mit einem WLAN
+<a id="connect-to-a-wireless-network" class="xliff"></a>
+
+### Herstellen der Verbindung mit einem WLAN
 Führen Sie die [Anweisungen](https://www.raspberrypi.org/learning/software-guide/wifi/) der Raspberry Pi Foundation aus, um den Pi mit einem Drahtlosnetzwerk (WLAN) zu verbinden. Bei dieser Vorgehensweise ist es erforderlich, dass Sie zuerst einen Monitor und eine Tastatur an den Raspberry Pi anschließen.
 
-## <a name="connect-the-led-to-pi"></a>Verbinden der LED mit dem Raspberry Pi
+<a id="connect-the-led-to-pi" class="xliff"></a>
+
+## Verbinden der LED mit dem Raspberry Pi
 Zum Ausführen dieser Aufgabe verwenden Sie die [Steckplatine](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard), die Anschlusskabel, die LED und den Widerstand. Verbinden Sie diese mit den GPIO-Ports ([General-Purpose Input/Output](https://www.raspberrypi.org/documentation/usage/gpio/)) des Raspberry Pi.
 
 ![Steckplatine, LED und Widerstand](media/iot-hub-raspberry-pi-lessons/lesson1/breadboard_led_resistor.jpg)
@@ -112,12 +134,16 @@ Beachten Sie, dass die LED-Polarität wichtig ist. Diese Polaritätskonfiguratio
 
 Glückwunsch! Sie haben den Raspberry Pi erfolgreich konfiguriert.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 In diesem Artikel haben Sie erfahren, wie Sie den Raspberry Pi konfigurieren, indem Sie Raspbian installieren, den Pi mit einem Netzwerk verbinden und eine LED mit dem Pi verbinden. Beachten Sie, dass die LED noch nicht leuchtet. Der nächste Schritt ist das Installieren der erforderlichen Tools und Software als Vorbereitung für eine Beispielanwendung, die auf dem Raspberry Pi ausgeführt wird.
 
 ![Hardware ist bereit](media/iot-hub-raspberry-pi-lessons/lesson1/hardware_ready.jpg)
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Abrufen der Tools](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
 
 

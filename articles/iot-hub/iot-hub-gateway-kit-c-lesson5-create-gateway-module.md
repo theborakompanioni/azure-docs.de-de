@@ -4,7 +4,7 @@ description: "Erstellen Sie ein Modul und fügen Sie es einer Beispiel-App hinzu
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: 
 ROBOTS: NOINDEX
@@ -23,28 +23,37 @@ ms.openlocfilehash: 5e28422158684c3aaf0ac3fdf5b19c80fbccfb02
 ms.contentlocale: de-de
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# <a name="lesson-5-create-your-first-azure-iot-gateway-module"></a>Lektion 5: Erstellen Ihres ersten Azure IoT-Gateway-Moduls
+<a id="lesson-5-create-your-first-azure-iot-gateway-module" class="xliff"></a>
+
+# Lektion 5: Erstellen Ihres ersten Azure IoT-Gateway-Moduls
 Während Sie mit Azure IoT Edge in Java, .NET oder Node.js geschriebene Module erstellen können, führt Sie dieses Tutorial durch die Schritte zum Erstellen eines Moduls in C.
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Kompilieren Sie, und führen Sie die Beispiel-App „hello_world“ auf Intel NUC aus.
 - Erstellen Sie ein Modul, und kompilieren Sie es auf Intel NUC.
 - Fügen Sie das neue Modul der Beispiel-App „hello_world“ hinzu, und führen Sie das Beispiel auf Intel NUC aus. Das neue Modul gibt „hello_world“-Meldungen mit einem Zeitstempel aus.
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 - Kompilieren und Ausführen einer Beispiel-App auf Intel NUC.
 - Erstellen eines Moduls.
 - Hinzufügen eines Moduls zu einer Beispiel-App.
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 Auf dem Hostcomputer installiertes Azure IoT Edge
 
-## <a name="folder-structure"></a>Ordnerstruktur
+<a id="folder-structure" class="xliff"></a>
+
+## Ordnerstruktur
 
 In Lektion 5 befinden sich im Unterordner des Beispielcodes, den Sie in Lektion 1 geklont haben, ein Ordner `module` und ein Ordner `sample`.
 
@@ -53,7 +62,9 @@ In Lektion 5 befinden sich im Unterordner des Beispielcodes, den Sie in Lektion 
 - Ordner `module/my_module` enthält den Quellcode und das Skript zum Erstellen des Moduls.
 - Ordner `sample` enthält den Quellcode und das Skript zum Erstellen der Beispiel-App.
 
-## <a name="compile-and-run-the-helloworld-sample-app-on-intel-nuc"></a>Kompilieren und Ausführen der Beispiel-App „hello_world“ auf Intel NUC
+<a id="compile-and-run-the-helloworld-sample-app-on-intel-nuc" class="xliff"></a>
+
+## Kompilieren und Ausführen der Beispiel-App „hello_world“ auf Intel NUC
 
 Das Beispiel `hello_world` erstellt ein Gateway auf der Grundlage der Datei `hello_world.json`, die die zwei vordefinierten Module angibt, die der App zugeordnet sind. Das Gateway protokolliert alle 5 Sekunden eine „hello world“-Meldung in einer Datei. In diesem Abschnitt kompilieren Sie die `hello_world`-App mit ihrem Standardmodul und führen sie aus.
 
@@ -100,7 +111,9 @@ Führen Sie zum Kompilieren und Ausführen der `hello_world`-App diese Schritte 
 
    ![run_sample](media/iot-hub-gateway-kit-lessons/lesson5/run_sample.png)
 
-## <a name="create-a-new-module-and-compile-it-on-intel-nuc"></a>Erstellen eines neuen Moduls und dessen Kompilierung auf Intel NUC
+<a id="create-a-new-module-and-compile-it-on-intel-nuc" class="xliff"></a>
+
+## Erstellen eines neuen Moduls und dessen Kompilierung auf Intel NUC
 
 Die folgenden Schritte führen Sie durch das Erstellen eines neuen Moduls und dessen Kompilierung auf Intel NUC. Das Modul gibt Meldungen mit einem Zeitstempel aus, sobald es sie empfängt. In diesem Abschnitt erstellen Sie Ihr erstes benutzerdefiniertes Gatewaymodul.
 
@@ -208,7 +221,9 @@ Jetzt erstellen wir ein auf der Vorlage basierendes Modul:
 
    Der Befehl überträgt den Quellcode an Intel NUC und führt `build.sh` aus, um das Modul zu kompilieren.
 
-## <a name="add-the-module-to-the-helloworld-sample-app-and-run-the-app-on-intel-nuc"></a>Fügen Sie das Modul der Beispiel-App „hello_world“ hinzu, und führen Sie die App auf Intel NUC aus.
+<a id="add-the-module-to-the-helloworld-sample-app-and-run-the-app-on-intel-nuc" class="xliff"></a>
+
+## Fügen Sie das Modul der Beispiel-App „hello_world“ hinzu, und führen Sie die App auf Intel NUC aus.
 
 Führen Sie diese Aufgabe in folgenden Schritten aus:
 
@@ -275,7 +290,9 @@ Führen Sie diese Aufgabe in folgenden Schritten aus:
 
 Herzlichen Glückwunsch. Sie können nun das Verhalten dieses neuen Moduls beobachten: Es gibt einfach „hello world“-Meldungen mit einem Zeitstempel aus, ein anderes Ergebnis als beim ursprünglichen „hello_world“-Modul.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 Sie haben ein neues Modul erstellt, es dem „hello_world“-Beispiel hinzugefügt und die Beispiel-App mit dem neuen Modul auf Ihrem Gateway ausgeführt. Wenn Sie weitere Informationen zu Azure IoT-Gateway-Modulen wünschen, finden Sie hier weitere Modulbeispiele: [https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules](https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules).
 

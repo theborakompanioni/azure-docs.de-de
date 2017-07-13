@@ -4,7 +4,7 @@ description: "Laden Sie die erforderlichen Tools und die Software für die erste
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Arduino-Entwicklungstools, IoT-Entwicklung, IoT-Software, Internet der Dinge Software, Git auf mac installieren, Node.js installieren mac
 ROBOTS: NOINDEX
@@ -17,26 +17,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 6bfefbdb7728d375ea05a17978ece84aaf8e2821
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="get-the-tools-macos-1010"></a>Herunterladen der Tools (macOS 10.10)
+<a id="get-the-tools-macos-1010" class="xliff"></a>
+
+# Herunterladen der Tools (macOS 10.10)
 > [!div class="op_single_selector"]
 > * [Windows 7 oder höher][windows]
 > * [Ubuntu 16.04][ubuntu]
 > * [macOS 10.10][macos]
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 Laden Sie die Entwicklungstools und die Software für die erste Beispielanwendung für Ihren Intel Edison herunter. Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshooting].
 
 > [!NOTE]
 > Obwohl die Programmiersprache der Hauptlogik C ist, werden in den Lektionen Node.js-Tools zum Erstellen und Bereitstellen der Beispielanwendungen verwendet.
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 
 * Installieren von Git und Node.js
@@ -46,12 +52,16 @@ In diesem Artikel lernen Sie Folgendes:
   * Die erforderliche Minimalversion von Node.js ist 4.5 LTS.
   * [NPM](https://www.npmjs.com) ist einer der Paket-Manager für Node.js.
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 Um diesen Vorgang abzuschließen, benötigen Sie Folgendes:
 * Eine Internetverbindung zum Herunterladen der Entwicklungstools und der Software
 * Einen Mac, auf dem macOS Yosemite (10.10) oder höher ausgeführt wird
 
-## <a name="install-git-and-nodejs"></a>Installieren von Git und Node.js
+<a id="install-git-and-nodejs" class="xliff"></a>
+
+## Installieren von Git und Node.js
 Verwenden Sie zum Installieren von Git und Node.js das [Homebrew](http://brew.sh) Paketverwaltungs-Hilfsprogramm. Führen Sie dazu diese Schritte aus:
 
 1. Installieren Sie Homebrew. Wenn Sie Homebrew bereits installiert haben, gehen Sie zu Schritt 2.
@@ -68,7 +78,9 @@ Verwenden Sie zum Installieren von Git und Node.js das [Homebrew](http://brew.sh
    brew install node git
    ```
 
-## <a name="install-additional-nodejs-development-tools"></a>Installieren zusätzlicher Node.js-Entwicklungstools
+<a id="install-additional-nodejs-development-tools" class="xliff"></a>
+
+## Installieren zusätzlicher Node.js-Entwicklungstools
 Verwenden Sie zum Automatisieren der Bereitstellung der Beispielanwendung auf Ihrem Edison [gulp.js](http://gulpjs.com).
 
 Installieren Sie `gulp`, indem Sie den folgenden Befehl im Terminal ausführen:
@@ -79,13 +91,19 @@ sudo npm install -g gulp
 
 Wenn bei der Installation von Node.js und diesen zusätzlichen Entwicklungstools unter macOS Probleme auftreten, finden Sie in der [Anleitung zur Problembehandlung][troubleshooting] Lösungen für häufiger auftretende Probleme.
 
-## <a name="install-visual-studio-code"></a>Installieren von Visual Studio Code
+<a id="install-visual-studio-code" class="xliff"></a>
+
+## Installieren von Visual Studio Code
 [Laden](https://code.visualstudio.com/docs/setup/osx) Sie Visual Studio Code herunter, und installieren Sie die Software. Visual Studio Code ist ein einfacher, aber leistungsstarker Quellcode-Editor für Windows, Linux und macOS. Sie verwenden diesen Editor in diesem Tutorial, um den Beispielcode zu bearbeiten.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben die erforderlichen Entwicklungstools und die Software für die erste Beispielanwendung installiert. Die nächste Aufgabe besteht im Erstellen, Bereitstellen und Ausführen der Beispielanwendung auf dem Edison.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Erstellen und Bereitstellen der Blinkanwendung][create-and-deploy-the-blink-application]
 <!-- Images and links -->
 

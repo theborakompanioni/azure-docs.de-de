@@ -4,7 +4,7 @@ description:
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Azure IoT Hub, Internet der Dinge Cloud, Azure IoT Hub Gerät erstellen, TI SensorTag, TI BLE"
 ROBOTS: NOINDEX
@@ -17,17 +17,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 759085dcb4993d38f79cb19efe58e1a968ddb682
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
-
 
 ---
 
-# <a name="create-your-azure-iot-hub-and-register-your-device"></a>Erstellen einer Azure IoT Hub-Instanz und Registrieren Ihres Geräts
+<a id="create-your-azure-iot-hub-and-register-your-device" class="xliff"></a>
 
-## <a name="what-you-will-do"></a>Aufgaben
+# Erstellen einer Azure IoT Hub-Instanz und Registrieren Ihres Geräts
+
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Erstellen einer Ressourcengruppe
 - Erstellen Ihrer ersten IoT Hub-Instanz
@@ -37,19 +41,25 @@ Wenn Sie Ihr Gerät bei der IoT Hub-Instanz registrieren, generiert der Azure Io
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 In dieser Lektion lernen Sie Folgendes:
 
 - Erstellen einer IoT Hub-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 - Registrieren eines Geräts bei einer IoT Hub-Instanz.
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 - Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](http://azure.microsoft.com/pricing/free-trial/) erstellen.
 - Die Azure-Befehlszeilenschnittstelle muss installiert sein.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+<a id="create-an-iot-hub" class="xliff"></a>
+
+## Erstellen eines IoT Hubs
 
 Gehen Sie zum Erstellen einer IoT Hub-Instanz wie folgt vor:
 
@@ -94,7 +104,9 @@ Standardmäßig erstellt das Tool eine IoT Hub-Instanz unter dem Tarif „Free�
 > [!NOTE]
 > Der Name des IoT Hub muss global eindeutig sein. Sie können unter Ihrem Azure-Abonnement nur eine einzelne F1-Edition von Azure IoT Hub erstellen.
 
-## <a name="register-your-device-in-your-iot-hub"></a>Registrieren Ihres Geräts bei der IoT Hub-Instanz
+<a id="register-your-device-in-your-iot-hub" class="xliff"></a>
+
+## Registrieren Ihres Geräts bei der IoT Hub-Instanz
 
 Jedes Gerät, das Nachrichten an Ihren IoT-Hub sendet und Nachrichten von Ihrem IoT-Hub empfängt, muss mit einer eindeutigen ID registriert werden.
 Registrieren Sie Ihr Gerät mit dem folgenden Befehl bei der IoT Hub-Instanz:
@@ -103,9 +115,13 @@ Registrieren Sie Ihr Gerät mit dem folgenden Befehl bei der IoT Hub-Instanz:
 az iot device create --device-id mydevice --hub-name {my hub name} --resource-group iot-gateway
 ```
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 
 Sie haben eine IoT Hub-Instanz erstellt und Ihr logisches Gerät mit einer Geräteidentität bei der IoT Hub-Instanz registriert. Als Nächstes können Sie sich nun damit vertraut machen, wie Sie eine Gatewaybeispielanwendung konfigurieren und ausführen, um Daten von Ihrem physischen Gerät an die IoT Hub-Instanz in der Cloud zu senden.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Konfigurieren und Ausführen der Cloudupload-Beispielanwendung für das simulierte Gerät](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)

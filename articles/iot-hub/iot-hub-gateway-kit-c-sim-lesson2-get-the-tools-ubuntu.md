@@ -4,7 +4,7 @@ description: "Installieren Sie die Tools und die Software auf dem Hostcomputer u
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "IoT-Entwicklung, IoT-Software, IoT-Clouddienst, Internet der Dinge Software, Azure CLI, Git unter Ubuntu installieren, Gulp ausführen, Node.js installieren Ubuntu"
 ROBOTS: NOINDEX
@@ -17,26 +17,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: f09ad1624f8a7ce4e1b13217d085cfc172d870ca
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="get-the-tools-ubuntu-1604"></a>Herunterladen der Tools (Ubuntu 16.04)
+<a id="get-the-tools-ubuntu-1604" class="xliff"></a>
+
+# Herunterladen der Tools (Ubuntu 16.04)
 > [!div class="op_single_selector"]
 > * [Windows 7 oder höher](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
 > * [macOS 10.10](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-mac.md)
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 
 - Installieren von Git, Node.js, Gulp und Python
 - Installieren der Azure-Befehlszeilenschnittstelle (Azure-CLI). 
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md).
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 
 In dieser Lektion lernen Sie Folgendes:
 
@@ -52,12 +58,16 @@ In dieser Lektion lernen Sie Folgendes:
   - Die Azure-CLI bietet eine plattformübergreifende Befehlszeile für Azure. So können Sie Ressourcen direkt über die Befehlszeile bereitstellen und verwalten.
 - Erstellen einer IoT Hub-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 
 - Eine Internetverbindung zum Herunterladen der Tools und der Software
 - Einen Computer mit Ubuntu 16.04 oder höher
 
-## <a name="install-git-and-nodejs"></a>Installieren von Git und Node.js
+<a id="install-git-and-nodejs" class="xliff"></a>
+
+## Installieren von Git und Node.js
 
 Gehen Sie zum Installieren von Git oder Node.js wie folgt vor:
 
@@ -71,7 +81,9 @@ Gehen Sie zum Installieren von Git oder Node.js wie folgt vor:
    sudo apt-get install git
    ```
 
-## <a name="install-nodejs-development-tools"></a>Installieren von Node.js-Entwicklungstools
+<a id="install-nodejs-development-tools" class="xliff"></a>
+
+## Installieren von Node.js-Entwicklungstools
 
 Verwenden Sie [gulp.js](http://gulpjs.com/), um die Bereitstellung und Ausführung von Skripts zu automatisieren.
 
@@ -86,7 +98,9 @@ Wenn bei der Installation Probleme auftreten, helfen Ihnen die Lösungen für h�
 > [!Note]
 > Node, NPM und Gulp sind für die Ausführung von Automatisierungsskripts, die mit Node.js entwickelt wurden, erforderlich.
 
-## <a name="install-the-azure-cli"></a>Installieren der Azure-Befehlszeilenschnittstelle
+<a id="install-the-azure-cli" class="xliff"></a>
+
+## Installieren der Azure-Befehlszeilenschnittstelle
 
 Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
 
@@ -112,16 +126,22 @@ Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
 Wenn die Installation erfolgreich war, wird die folgende Ausgabe angezeigt.
 ![Überprüfen der Azure CLI-Installation](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_ubuntu.png)
 
-### <a name="install-visual-studio-code"></a>Installieren von Visual Studio Code
+<a id="install-visual-studio-code" class="xliff"></a>
+
+### Installieren von Visual Studio Code
 
 Sie verwenden später in diesem Tutorial Visual Studio Code, um Konfigurationsdateien zu bearbeiten.
 
 [Laden](https://code.visualstudio.com/docs/setup/linux) Sie Visual Studio Code herunter, und installieren Sie die Software.
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 
 Sie haben die erforderlichen Tools und Software auf Ihrem Hostcomputer installiert. Als Nächstes verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Erstellen eines IoT Hub und Registrieren Ihres Geräts](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
