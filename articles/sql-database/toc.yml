@@ -2,424 +2,429 @@
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zu SQL-Datenbank
-    href: sql-database-technical-overview.md
+    - name: Informationen zu SQL-Datenbank
+      href: sql-database-technical-overview.md
 - name: Schnellstarts
   expanded: true
   items:
-  - name: Erstellen einer Datenbank – Portal
-    href: sql-database-get-started-portal.md
-  - name: Erstellen einer Datenbank – Azure-CLI
-    href: sql-database-get-started-cli.md
-  - name: Erstellen einer Datenbank – PowerShell
-    href: sql-database-get-started-powershell.md
-  - name: Verbinden und abfragen
-    items:
-    - name: SSMS
-      href: sql-database-connect-query-ssms.md
-    - name: VS-Code
-      href: sql-database-connect-query-vscode.md
-    - name: .NET
-      href: sql-database-connect-query-dotnet.md
-    - name: PHP
-      href: sql-database-connect-query-php.md
-    - name: Node.js
-      href: sql-database-connect-query-nodejs.md
-    - name: Java
-      href: sql-database-connect-query-java.md
-    - name: Python
-      href: sql-database-connect-query-python.md
-    - name: Ruby
-      href: sql-database-connect-query-ruby.md
+    - name: Erstellen einer Datenbank – Portal
+      href: sql-database-get-started-portal.md
+    - name: Erstellen einer Datenbank – Azure-CLI
+      href: sql-database-get-started-cli.md
+    - name: Erstellen einer Datenbank – PowerShell
+      href: sql-database-get-started-powershell.md
+    - name: Verbinden und abfragen
+      items:
+        - name: SSMS
+          href: sql-database-connect-query-ssms.md
+        - name: VS-Code
+          href: sql-database-connect-query-vscode.md
+        - name: .NET mit Visual Studio
+          href: sql-database-connect-query-dotnet-visual-studio.md
+        - name: .NET Core
+          href: sql-database-connect-query-dotnet-core.md
+        - name: PHP
+          href: sql-database-connect-query-php.md
+        - name: Node.js
+          href: sql-database-connect-query-nodejs.md
+        - name: Java
+          href: sql-database-connect-query-java.md
+        - name: Python
+          href: sql-database-connect-query-python.md
+        - name: Ruby
+          href: sql-database-connect-query-ruby.md
 - name: Lernprogramme
   items:
-  - name: '1: Entwerfen einer Datenbank mithilfe von SSMS'
-    href: sql-database-design-first-database.md
-  - name: '1: Entwerfen einer Datenbank mithilfe von .NET'
-    href: sql-database-design-first-database-csharp.md
-  - name: '2: Migrieren einer SQL Server-Datenbank'
-    href: sql-database-migrate-your-sql-server-database.md
-  - name: '3: Sichern Ihrer SQL-Datenbank'
-    href: sql-database-security-tutorial.md
-  - name: '4: Verbessern der Leistung der SQL-Datenbank'
-    href: sql-database-performance-tutorial.md
-  - name: '5: Verwalten einer mehrinstanzenfähigen App'
-    href: sql-database-multi-tenant-application.md
-  - name: '6: Implementieren einer geografisch verteilten Datenbank'
-    href: sql-database-implement-geo-distributed-database.md 
+    - name: '1: Entwerfen einer Datenbank mithilfe von SSMS'
+      href: sql-database-design-first-database.md
+    - name: '1: Entwerfen einer Datenbank mithilfe von .NET'
+      href: sql-database-design-first-database-csharp.md
+    - name: '2: Migrieren einer SQL Server-Datenbank'
+      href: sql-database-migrate-your-sql-server-database.md
+    - name: '3: Sichern Ihrer SQL-Datenbank'
+      href: sql-database-security-tutorial.md
+    - name: '4: Verbessern der Leistung der SQL-Datenbank'
+      href: sql-database-performance-tutorial.md
+    - name: '5: Verwalten einer mehrinstanzenfähigen App'
+      href: sql-database-multi-tenant-application.md
+    - name: '6: Implementieren einer geografisch verteilten Datenbank'
+      href: sql-database-implement-geo-distributed-database.md
 - name: Beispiele
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: sql-database-cli-samples.md
-  - name: PowerShell
-    href: sql-database-powershell-samples.md 
+    - name: Azure-Befehlszeilenschnittstelle
+      href: sql-database-cli-samples.md
+    - name: PowerShell
+      href: sql-database-powershell-samples.md
 - name: Konzepte
   items:
-  - name: Datenbanken und Server
-    items:
-    - name: Übersicht
-      href: sql-database-servers-databases.md
-    - name: Dienstebenen
-      href: sql-database-service-tiers.md
-    - name: Elastische Pools
-      href: sql-database-elastic-pool.md
-    - name: Verbindungsarchitektur
-      href: sql-database-connectivity-architecture.md 
-    - name: DTUs und eDTUs
-      href: sql-database-what-is-a-dtu.md
-    - name: DTU-Vergleichstest
-      href: sql-database-benchmark-overview.md
-    - name: Einschränkungen
-      href: sql-database-resource-limits.md
-    - name: PaaS oder IaaS
-      href: sql-database-paas-vs-sql-server-iaas.md  
-    - name: Features
-      href: sql-database-features.md
-  - name: Sicherheit
-    items:
-    - name: Übersicht
-      href: sql-database-security-overview.md
-    - name: Zugriffssteuerung
-      href: sql-database-control-access.md
-    - name: Firewallregeln
-      href: sql-database-firewall-configure.md
-    - name: Azure AD
-      href: sql-database-aad-authentication.md
-    - name: Anmeldungen und Benutzer
-      href: sql-database-manage-logins.md
-    - name: Mehrstufige Authentifizierung
-      href: sql-database-ssms-mfa-authentication.md
-    - name: Überwachung
-      href: sql-database-auditing.md
-    - name: Tabellenüberwachung und TDS
-      href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
-    - name: Bedrohungserkennung
-      href: sql-database-threat-detection.md
-    - name: TDE mit SQL-Datenbank
-      href: https://msdn.microsoft.com/library/dn948096
-    - name: Always Encrypted
-      href: https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine
-    - name: Datenmaskierung
-      href: sql-database-dynamic-data-masking-get-started.md
-  - name: Geschäftskontinuität
-    items:
-    - name: Übersicht
-      href: sql-database-business-continuity.md
-    - name: Datenbanksicherungen
-      href: sql-database-automated-backups.md
-    - name: Sicherungsaufbewahrung
-      href: sql-database-long-term-retention.md
-    - name: Datenbankwiederherstellung
-      href: sql-database-recovery-using-backups.md
-    - name: Failovergruppen
-      href: sql-database-geo-replication-overview.md
-    - name: Konfigurieren der Sicherheit
-      href: sql-database-geo-replication-security-config.md
-    - name: App-Design und Wiederherstellung
-      href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-    - name: App-Design und Pools
-      href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-    - name: App-Design und App-Upgrades
-      href: sql-database-manage-application-rolling-upgrade.md
-    - name: Wiederherstellen nach einem Ausfall
-      href: sql-database-disaster-recovery.md
-    - name: Durchführen des Notfallwiederherstellungsverfahrens
-      href: sql-database-disaster-recovery-drills.md
-  - name: Laden und Verschieben von Daten
-    items:
-    - name: Migrieren einer SQL Server-Datenbank
-      href: sql-database-cloud-migrate.md
-    - name: T-SQL-Änderungen
-      href: sql-database-transact-sql-information.md
-    - name: Kopieren einer Datenbank
-      href: sql-database-copy.md
-    - name: Importieren einer Datenbank
-      href: sql-database-import.md
-    - name: Exportieren einer Datenbank
-      href: sql-database-export.md
-    - name: Synchronisieren von Daten
-      href: sql-database-sync-data.md
-  - name: Überwachen & optimieren
-    items:
-    - name: Übersicht
-      href: sql-database-troubleshoot-performance.md
-    - name: Leistungsüberwachung
- 
-      href: sql-database-single-database-monitor.md
-    - name: Empfehlungen zur Leistung
-      href: sql-database-advisor.md
-    - name: Automatische Optimierung
-      href: sql-database-automatic-tuning.md
-    - name: Manuelles Optimieren
-      href: sql-database-performance-guidance.md
-    - name: Verwenden des Abfragespeichers
-      href: sql-database-operate-query-store.md
-    - name: Erweiterte Ereignisse
-      href: sql-database-xevent-db-diff-from-svr.md
-    - name: Kompatibilitätsgrade
-      href: sql-database-compatibility-level-query-performance-130.md
-    - name: Überwachen von In-Memory
-      href: sql-database-in-memory-oltp-monitoring.md
-  - name: Horizontales Skalieren von Apps
-    items:
-    - name: SaaS-Entwurfsmuster
-      href: sql-database-design-patterns-multi-tenancy-saas-applications.md
-    - name: SaaS-App-Sicherheit
-      href: sql-database-elastic-tools-multi-tenant-row-level-security.md
-    - name: Sharddatenbanken
-      href: sql-database-elastic-scale-introduction.md
-    - name: Elastische Clientbibliothek
-      href: sql-database-elastic-database-client-library.md
-    - name: Shardzuordnungen
-      href: sql-database-elastic-scale-shard-map-management.md
-    - name: Abfragerouting
-      href: sql-database-elastic-scale-data-dependent-routing.md
-    - name: Verwalten von Anmeldeinformationen
-      href: sql-database-elastic-scale-manage-credentials.md
-    - name: Shardabfragen
-      href: sql-database-elastic-scale-multishard-querying.md
-    - name: Elastische Tools
-      href: sql-database-elastic-scale-glossary.md
-    - name: Verschieben von Sharddaten
-      href: sql-database-elastic-scale-overview-split-and-merge.md
-    - name: Elastische Clientbibliothek – Dapper
-      href: sql-database-elastic-scale-working-with-dapper.md
-    - name: Elastische Tools – häufig gestellte Fragen
-      href: sql-database-elastic-scale-faq.md
-    - name: Elastische Abfragen
-      href: sql-database-elastic-query-overview.md
-    - name: Horizontale Daten
-      href: sql-database-elastic-query-horizontal-partitioning.md
-    - name: Vertikale Daten
-      href: sql-database-elastic-query-vertical-partitioning.md
-    - name: Transaktionen
-      href: sql-database-elastic-transactions-overview.md
-    - name: Elastische Aufträge
-      href: sql-database-elastic-jobs-overview.md
-  - name: Entwickeln von Datenbanken
-    items:
-    - name: JSON-Daten
-      href: sql-database-json-features.md
-    - name: In-Memory
-      href: sql-database-in-memory.md
-    - name: Temporäre Tabellen
- 
-      href: sql-database-temporal-tables.md
-    - name: Aufbewahrungsrichtlinien
-      href: sql-database-temporal-tables-retention-policy.md
-    - name: Konfigurieren von In-Memory
-      href: sql-database-in-memory-oltp-migration.md
-  - name: Entwickeln von Apps
-    items:
-    - name: Übersicht
-      href: sql-database-develop-overview.md
-    - name: Konnektivität
-      href: sql-database-libraries.md
-    - name: Authentifizieren der App
- 
-      href: sql-database-client-id-keys.md
-    - name: Fehlermeldungen
-      href: sql-database-develop-error-messages.md
-    - name: Batchverarbeitung für Leistungsdaten
-      href: sql-database-use-batching-to-improve-performance.md
-    - name: Konnektivitätsleitfaden
-      href: sql-database-connectivity-issues.md
-    - name: Ports – ADO.NET
-      href: sql-database-develop-direct-route-ports-adonet-v12.md
+    - name: Datenbanken und Server
+      items:
+        - name: Übersicht
+          href: sql-database-servers-databases.md
+        - name: Dienstebenen
+          href: sql-database-service-tiers.md
+        - name: Elastische Pools
+          href: sql-database-elastic-pool.md
+        - name: Verbindungsarchitektur
+          href: sql-database-connectivity-architecture.md
+        - name: DTUs und eDTUs
+          href: sql-database-what-is-a-dtu.md
+        - name: DTU-Vergleichstest
+          href: sql-database-benchmark-overview.md
+        - name: Einschränkungen
+          href: sql-database-resource-limits.md
+        - name: PaaS oder IaaS
+          href: sql-database-paas-vs-sql-server-iaas.md
+        - name: Features
+          href: sql-database-features.md
+    - name: Sicherheit
+      items:
+        - name: Übersicht
+          href: sql-database-security-overview.md
+        - name: Zugriffssteuerung
+          href: sql-database-control-access.md
+        - name: Firewallregeln
+          href: sql-database-firewall-configure.md
+        - name: Azure AD
+          href: sql-database-aad-authentication.md
+        - name: Anmeldungen und Benutzer
+          href: sql-database-manage-logins.md
+        - name: Mehrstufige Authentifizierung
+          href: sql-database-ssms-mfa-authentication.md
+        - name: Überwachung
+          href: sql-database-auditing.md
+        - name: Tabellenüberwachung und TDS
+          href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
+        - name: Bedrohungserkennung
+          href: sql-database-threat-detection.md
+        - name: TDE mit SQL-Datenbank
+          href: 'https://msdn.microsoft.com/library/dn948096'
+        - name: Always Encrypted
+          href: >-
+            https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine
+        - name: Datenmaskierung
+          href: sql-database-dynamic-data-masking-get-started.md
+    - name: Geschäftskontinuität
+      items:
+        - name: Übersicht
+          href: sql-database-business-continuity.md
+        - name: Datenbanksicherungen
+          href: sql-database-automated-backups.md
+        - name: Sicherungsaufbewahrung
+          href: sql-database-long-term-retention.md
+        - name: Datenbankwiederherstellung
+          href: sql-database-recovery-using-backups.md
+        - name: Failovergruppen
+          href: sql-database-geo-replication-overview.md
+        - name: Konfigurieren der Sicherheit
+          href: sql-database-geo-replication-security-config.md
+        - name: App-Design und Wiederherstellung
+          href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+        - name: App-Design und Pools
+          href: >-
+            sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+        - name: App-Design und App-Upgrades
+          href: sql-database-manage-application-rolling-upgrade.md
+        - name: Wiederherstellen nach einem Ausfall
+          href: sql-database-disaster-recovery.md
+        - name: Durchführen des Notfallwiederherstellungsverfahrens
+          href: sql-database-disaster-recovery-drills.md
+    - name: Laden und Verschieben von Daten
+      items:
+        - name: Migrieren einer SQL Server-Datenbank
+          href: sql-database-cloud-migrate.md
+        - name: T-SQL-Änderungen
+          href: sql-database-transact-sql-information.md
+        - name: Kopieren einer Datenbank
+          href: sql-database-copy.md
+        - name: Importieren einer Datenbank
+          href: sql-database-import.md
+        - name: Exportieren einer Datenbank
+          href: sql-database-export.md
+        - name: Synchronisieren von Daten
+          href: sql-database-sync-data.md
+    - name: Überwachen & optimieren
+      items:
+        - name: Übersicht
+          href: sql-database-troubleshoot-performance.md
+        - name: Leistungsüberwachung
+          href: sql-database-single-database-monitor.md
+        - name: Empfehlungen zur Leistung
+          href: sql-database-advisor.md
+        - name: Automatische Optimierung
+          href: sql-database-automatic-tuning.md
+        - name: Manuelles Optimieren
+          href: sql-database-performance-guidance.md
+        - name: Verwenden des Abfragespeichers
+          href: sql-database-operate-query-store.md
+        - name: Erweiterte Ereignisse
+          href: sql-database-xevent-db-diff-from-svr.md
+        - name: Kompatibilitätsgrade
+          href: sql-database-compatibility-level-query-performance-130.md
+        - name: Überwachen von In-Memory
+          href: sql-database-in-memory-oltp-monitoring.md
+    - name: Horizontales Hochskalieren von Apps
+      items:
+        - name: Übersicht
+          href: sql-database-elastic-scale-introduction.md
+        - name: SaaS-Entwurfsmuster
+          href: sql-database-design-patterns-multi-tenancy-saas-applications.md
+        - name: SaaS-App-Sicherheit
+          href: sql-database-elastic-tools-multi-tenant-row-level-security.md
+        - name: Elastische Clientbibliothek
+          href: sql-database-elastic-database-client-library.md
+        - name: Shardzuordnungen
+          href: sql-database-elastic-scale-shard-map-management.md
+        - name: Abfragerouting
+          href: sql-database-elastic-scale-data-dependent-routing.md
+        - name: Verwalten von Anmeldeinformationen
+          href: sql-database-elastic-scale-manage-credentials.md
+        - name: Shardabfragen
+          href: sql-database-elastic-scale-multishard-querying.md
+        - name: Elastische Tools
+          href: sql-database-elastic-scale-glossary.md
+        - name: Verschieben von Sharddaten
+          href: sql-database-elastic-scale-overview-split-and-merge.md
+        - name: Elastische Clientbibliothek – Dapper
+          href: sql-database-elastic-scale-working-with-dapper.md
+        - name: Elastische Tools – häufig gestellte Fragen
+          href: sql-database-elastic-scale-faq.md
+        - name: Elastische Abfragen
+          href: sql-database-elastic-query-overview.md
+        - name: Horizontale Daten
+          href: sql-database-elastic-query-horizontal-partitioning.md
+        - name: Vertikale Daten
+          href: sql-database-elastic-query-vertical-partitioning.md
+        - name: Transaktionen
+          href: sql-database-elastic-transactions-overview.md
+        - name: Elastische Aufträge
+          href: sql-database-elastic-jobs-overview.md
+    - name: Entwickeln von Datenbanken
+      items:
+        - name: JSON-Daten
+          href: sql-database-json-features.md
+        - name: In-Memory
+          href: sql-database-in-memory.md
+        - name: Temporäre Tabellen
+          href: sql-database-temporal-tables.md
+        - name: Aufbewahrungsrichtlinien
+          href: sql-database-temporal-tables-retention-policy.md
+        - name: Konfigurieren von In-Memory
+          href: sql-database-in-memory-oltp-migration.md
+    - name: Entwickeln von Apps
+      items:
+        - name: Übersicht
+          href: sql-database-develop-overview.md
+        - name: Konnektivität
+          href: sql-database-libraries.md
+        - name: Authentifizieren der App
+          href: sql-database-client-id-keys.md
+        - name: Fehlermeldungen
+          href: sql-database-develop-error-messages.md
+        - name: Batchverarbeitung für Leistungsdaten
+          href: sql-database-use-batching-to-improve-performance.md
+        - name: Konnektivitätsleitfaden
+          href: sql-database-connectivity-issues.md
+        - name: Ports – ADO.NET
+          href: sql-database-develop-direct-route-ports-adonet-v12.md
 - name: Anleitungen
   items:
-  - name: Datenbanken und Server
-    items:
-    - name: Elastische Pools – Portal
-      href: sql-database-elastic-pool-manage-portal.md
-    - name: Elastische Pools – PowerShell
-      href: sql-database-elastic-pool-manage-powershell.md
-    - name: Elastische Pools – T-SQL
-      href: sql-database-elastic-pool-manage-tsql.md
-    - name: 'Elastische Pools – C#'
-      href: sql-database-elastic-pool-manage-csharp.md
-  - name: Sicherheit
-    items:
-    - name: Konfigurieren der Azure AD-Authentifizierung
-      href: sql-database-aad-authentication-configure.md
-    - name: Bedingter Zugriff
-      href: sql-database-conditional-access.md
-    - name: Always Encrypted-Zertifikatspeicher
-      href: sql-database-always-encrypted.md
-    - name: Always Encrypted Key Vault
-      href: sql-database-always-encrypted-azure-key-vault.md
-    - name: Konfigurieren der Maskierung
-      href: sql-database-dynamic-data-masking-get-started-portal.md
-    - name: Konfigurieren der mehrstufigen Authentifizierung
-      href: sql-database-ssms-mfa-authentication-configure.md
-  - name: Geschäftskontinuität
-    items:
-    - name: Konfigurieren eines Tresors – Sicherungen
-      href: sql-database-long-term-backup-retention-configure.md
-    - name: Georeplikation – Portal
-      href: sql-database-geo-replication-portal.md
-    - name: Georeplikation – T-SQ L- Konfigurieren
-      href: sql-database-geo-replication-transact-sql.md
-    - name: Georeplikation-– T-SQL - Konfigurieren
-      href: sql-database-geo-replication-failover-transact-sql.md
-    - name: Wiederherstellen einer einzelnen Tabelle
-      href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
-  - name: Laden und Verschieben von Daten
-    items:
-    - name: Laden von Daten mit BCP
-      href: sql-database-load-from-csv-with-bcp.md
-    - name: Laden von Daten mit ADF
-      href: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-    - name: Synchronisieren von Daten
-      href: sql-database-get-started-sql-data-sync.md
-  - name: Überwachen & optimieren
-    items:
-    - name: Überwachen und Verbessern der Leistung
-      href: sql-database-performance.md
-    - name: Verwenden der Statistik zur Abfrageleistung
-      href: sql-database-query-performance.md
-    - name: Anwendung von Empfehlungen zur Leistung
-      href: sql-database-advisor-portal.md
-    - name: Aktivieren der automatischen Optimierung
-      href: sql-database-automatic-tuning-enable.md
-    - name: Verwenden von DMVs zum Überwachen der Leistung
-      href: sql-database-monitoring-with-dmvs.md
-    - name: Erstellen von Warnungen
-      href: sql-database-insights-alerts-portal.md
-    - name: Erweiterte Ereignisse – Ereignisdatei
-      href: sql-database-xevent-code-event-file.md
-    - name: Erweiterte Ereignisse – Ringpuffer
-      href: sql-database-xevent-code-ring-buffer.md
-    - name: Diagnoseprotokollierung
-      href: sql-database-metrics-diag-logging.md
-    - name: Behandeln von Konnektivitätsproblemen
-      href: sql-database-troubleshoot-common-connection-issues.md
-    - name: Azure-Automatisierung
-      href: sql-database-manage-automation.md
-    - name: Azure RemoteApp
-      href: sql-database-ssms-remoteapp.md
-  - name: Horizontales Hochskalieren von Apps
-    items:
-    - name: Erstellen einer App mit Sharding
-      href: sql-database-elastic-scale-get-started.md
-    - name: Verschieben von Sharddaten
-      href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
-    - name: Sicherheitskonfiguration
-      href: sql-database-elastic-scale-split-merge-security-configuration.md
-    - name: Hinzufügen eines Shards
-      href: sql-database-elastic-scale-add-a-shard.md
-    - name: Beheben von Problemen bei der Shardzuordnung
-      href: sql-database-elastic-database-recovery-manager.md
-    - name: Migrieren von Sharddatenbanken
-      href: sql-database-elastic-convert-to-use-elastic-tools.md
-    - name: Erstellen von Leistungsindikatoren
-      href: sql-database-elastic-database-perf-counters.md
-    - name: Verwenden von Entity Framework
-      href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
-    - name: Upgraden von Clients
-      href: sql-database-elastic-scale-upgrade-client-library.md
-    - name: Installieren eines elastischen Auftrags
-      href: sql-database-elastic-jobs-service-installation.md
-    - name: Erstellen eines Auftrags – Portal
-      href: sql-database-elastic-jobs-create-and-manage.md
-    - name: Erstellen eines Auftrags – PowerShell
-      href: sql-database-elastic-jobs-powershell.md
-    - name: Erstellen eines Auftrags – Beispiel-App
-      href: sql-database-elastic-jobs-getting-started.md
-    - name: Deinstallieren eines elastischen Auftrags
-      href: sql-database-elastic-jobs-uninstall.md
-    - name: Abfragen horizontaler Daten
-      href: sql-database-elastic-query-getting-started.md
-    - name: Abfragen vertikaler Daten
-      href: sql-database-elastic-query-getting-started-vertical.md
-    - name: SaaS-App-Tutorial
-      href: sql-database-wtp-overview.md
-  - name: Entwickeln von Apps
-    items:
-    - name: C und C ++
-      href: sql-database-develop-cplusplus-simple.md
-    - name: Excel
-      href: sql-database-connect-excel.md
-    - name: 'Erstellen einer Datenbank mit C#'
-      href: sql-database-get-started-csharp.md
+    - name: Datenbanken und Server
+      items:
+        - name: Elastische Pools – Portal
+          href: sql-database-elastic-pool-manage-portal.md
+        - name: Elastische Pools – PowerShell
+          href: sql-database-elastic-pool-manage-powershell.md
+        - name: Elastische Pools – T-SQL
+          href: sql-database-elastic-pool-manage-tsql.md
+    - name: Sicherheit
+      items:
+        - name: Konfigurieren der Azure AD-Authentifizierung
+          href: sql-database-aad-authentication-configure.md
+        - name: Bedingter Zugriff
+          href: sql-database-conditional-access.md
+        - name: Always Encrypted-Zertifikatspeicher
+          href: sql-database-always-encrypted.md
+        - name: Always Encrypted Key Vault
+          href: sql-database-always-encrypted-azure-key-vault.md
+        - name: Konfigurieren der Maskierung
+          href: sql-database-dynamic-data-masking-get-started-portal.md
+        - name: Konfigurieren der mehrstufigen Authentifizierung
+          href: sql-database-ssms-mfa-authentication-configure.md
+    - name: Geschäftskontinuität
+      items:
+        - name: Konfigurieren eines Tresors – Sicherungen
+          href: sql-database-long-term-backup-retention-configure.md
+        - name: Georeplikation – Portal
+          href: sql-database-geo-replication-portal.md
+        - name: Georeplikation – T-SQ L- Konfigurieren
+          href: sql-database-geo-replication-transact-sql.md
+        - name: Georeplikation-– T-SQL - Konfigurieren
+          href: sql-database-geo-replication-failover-transact-sql.md
+        - name: Wiederherstellen einer einzelnen Tabelle
+          href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
+    - name: Laden und Verschieben von Daten
+      items:
+        - name: Laden von Daten mit BCP
+          href: sql-database-load-from-csv-with-bcp.md
+        - name: Laden von Daten mit ADF
+          href: >-
+            ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+        - name: Synchronisieren von Daten
+          href: sql-database-get-started-sql-data-sync.md
+    - name: Überwachen & optimieren
+      items:
+        - name: Überwachen und Verbessern der Leistung
+          href: sql-database-performance.md
+        - name: Verwenden der Statistik zur Abfrageleistung
+          href: sql-database-query-performance.md
+        - name: Anwendung von Empfehlungen zur Leistung
+          href: sql-database-advisor-portal.md
+        - name: Aktivieren der automatischen Optimierung
+          href: sql-database-automatic-tuning-enable.md
+        - name: Verwenden von DMVs zum Überwachen der Leistung
+          href: sql-database-monitoring-with-dmvs.md
+        - name: Erstellen von Warnungen
+          href: sql-database-insights-alerts-portal.md
+        - name: Erweiterte Ereignisse – Ereignisdatei
+          href: sql-database-xevent-code-event-file.md
+        - name: Erweiterte Ereignisse – Ringpuffer
+          href: sql-database-xevent-code-ring-buffer.md
+        - name: Diagnoseprotokollierung
+          href: sql-database-metrics-diag-logging.md
+        - name: Behandeln von Konnektivitätsproblemen
+          href: sql-database-troubleshoot-common-connection-issues.md
+        - name: Azure-Automatisierung
+          href: sql-database-manage-automation.md
+        - name: Azure RemoteApp
+          href: sql-database-ssms-remoteapp.md
+    - name: Horizontales Hochskalieren von Apps
+      items:
+        - name: Erstellen einer App mit Sharding
+          href: sql-database-elastic-scale-get-started.md
+        - name: Verschieben von Sharddaten
+          href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
+        - name: Sicherheitskonfiguration
+          href: sql-database-elastic-scale-split-merge-security-configuration.md
+        - name: Hinzufügen eines Shards
+          href: sql-database-elastic-scale-add-a-shard.md
+        - name: Beheben von Problemen bei der Shardzuordnung
+          href: sql-database-elastic-database-recovery-manager.md
+        - name: Migrieren von Sharddatenbanken
+          href: sql-database-elastic-convert-to-use-elastic-tools.md
+        - name: Erstellen von Leistungsindikatoren
+          href: sql-database-elastic-database-perf-counters.md
+        - name: Verwenden von Entity Framework
+          href: >-
+            sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
+        - name: Upgraden von Clients
+          href: sql-database-elastic-scale-upgrade-client-library.md
+        - name: Installieren eines elastischen Auftrags
+          href: sql-database-elastic-jobs-service-installation.md
+        - name: Erstellen eines Auftrags – Portal
+          href: sql-database-elastic-jobs-create-and-manage.md
+        - name: Erstellen eines Auftrags – PowerShell
+          href: sql-database-elastic-jobs-powershell.md
+        - name: Erstellen eines Auftrags – Beispiel-App
+          href: sql-database-elastic-jobs-getting-started.md
+        - name: Deinstallieren eines elastischen Auftrags
+          href: sql-database-elastic-jobs-uninstall.md
+        - name: Abfragen horizontaler Daten
+          href: sql-database-elastic-query-getting-started.md
+        - name: Abfragen vertikaler Daten
+          href: sql-database-elastic-query-getting-started-vertical.md
+        - name: SaaS-App-Tutorial
+          href: sql-database-wtp-overview.md
+    - name: Entwickeln von Apps
+      items:
+        - name: C und C ++
+          href: sql-database-develop-cplusplus-simple.md
+        - name: Excel
+          href: sql-database-connect-excel.md
 - name: Referenz
   items:
-  - name: PowerShell
-    href: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/#sql
-  - name: PowerShell (elastische Datenbank)
-    href: https://docs.microsoft.com/en-us/powershell/module/elasticdatabasejobs/#elasticdatabasejobs
-  - name: Azure CLI 2.0
-    href: /cli/azure/sql
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.sql.models
-  - name: Java
-    href: /java/api/com.microsoft.azure.management.sql
-  - name: Node.js
-    href: https://msdn.microsoft.com/library/mt652093.aspx
-  - name: Python
-    href: https://msdn.microsoft.com/library/mt652092.aspx
-  - name: Ruby
-    href: https://msdn.microsoft.com/library/mt691981.aspx
-  - name: PHP
-    href: https://msdn.microsoft.com/library/dn865013.aspx
-  - name: T-SQL
-    href: https://msdn.microsoft.com/library/bb510741.aspx
-  - name: REST
-    href: https://msdn.microsoft.com/library/mt163571.aspx
-  - name: SQL Server-Tools
-    href: https://msdn.microsoft.com/library/mt238365.aspx
-  - name: SQL Server Management Studio (SSMS)
-    href: https://msdn.microsoft.com/library/mt238290.aspx
-  - name: SQL Server Data Tools (SSDT)
-    href: https://msdn.microsoft.com/library/mt204009.aspx
-  - name: BCP
-    href: https://msdn.microsoft.com/library/ms162802.aspx
-  - name: SQLCMD
-    href: https://msdn.microsoft.com/library/ms162773.aspx
-  - name: SqlPackage
-    href: https://msdn.microsoft.com/hh550080.aspx
-  - name: Paket mit der SQL-Datenbank-Verwaltungsbibliothek
-    href: https://www.nuget.org/packages/Microsoft.Azure.Management.Sql
-  - name: SQL Server-Treiber
-    href: https://msdn.microsoft.com/library/mt654049.aspx
-    items:
-    - name: ADO.NET
-      href: https://msdn.microsoft.com/library/mt657768.aspx
-    - name: JDBC
-      href: https://msdn.microsoft.com/library/mt484311.aspx
-    - name: ODBC
-      href: https://msdn.microsoft.com/library/mt654048.aspx
+    - name: PowerShell
+      href: 'https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/#sql'
+    - name: PowerShell (elastische Datenbank)
+      href: >-
+        https://docs.microsoft.com/en-us/powershell/module/elasticdatabasejobs/#elasticdatabasejobs
+    - name: Azure CLI 2.0
+      href: /cli/azure/sql
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.sql.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.sql
+    - name: Node.js
+      href: 'https://msdn.microsoft.com/library/mt652093.aspx'
+    - name: Python
+      href: 'https://msdn.microsoft.com/library/mt652092.aspx'
+    - name: Ruby
+      href: 'https://msdn.microsoft.com/library/mt691981.aspx'
+    - name: PHP
+      href: 'https://msdn.microsoft.com/library/dn865013.aspx'
+    - name: T-SQL
+      href: 'https://msdn.microsoft.com/library/bb510741.aspx'
+    - name: REST
+      href: 'https://msdn.microsoft.com/library/mt163571.aspx'
+    - name: SQL Server-Tools
+      href: 'https://msdn.microsoft.com/library/mt238365.aspx'
+    - name: SQL Server Management Studio (SSMS)
+      href: 'https://msdn.microsoft.com/library/mt238290.aspx'
+    - name: SQL Server Data Tools (SSDT)
+      href: 'https://msdn.microsoft.com/library/mt204009.aspx'
+    - name: BCP
+      href: 'https://msdn.microsoft.com/library/ms162802.aspx'
+    - name: SQLCMD
+      href: 'https://msdn.microsoft.com/library/ms162773.aspx'
+    - name: SqlPackage
+      href: 'https://msdn.microsoft.com/hh550080.aspx'
+    - name: Paket mit der SQL-Datenbank-Verwaltungsbibliothek
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Sql'
+    - name: SQL Server-Treiber
+      href: 'https://msdn.microsoft.com/library/mt654049.aspx'
+      items:
+        - name: ADO.NET
+          href: 'https://msdn.microsoft.com/library/mt657768.aspx'
+        - name: JDBC
+          href: 'https://msdn.microsoft.com/library/mt484311.aspx'
+        - name: ODBC
+          href: 'https://msdn.microsoft.com/library/mt654048.aspx'
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Häufig gestellte Fragen
-    href: sql-database-faq.md
-  - name: Öffentliche Datasets
-    href: sql-database-public-data-sets.md  
-  - name: Behandeln von Konnektivitätsproblemen
-    href: https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/sql-database/
-  - name: MSDN-Forum
-    href: https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/sql-azure
-  - name: Videos
-    href: https://azure.microsoft.com/documentation/videos/index/?services=sql-database
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?service=sql-database
-  - name: Anleitung zur Architektur
-    href: https://docs.microsoft.com/sql/#pivot=architecture
-  - name: Kundenimplementierungen
-    href: sql-database-customer-implementations.md
-  - name: Beispielanwendungen
-    items:
-    - name: Tailspin Surveys
-      href: https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md
-    - name: Contoso Clinic
-      href: https://github.com/Microsoft/azure-sql-security-sample
-    - name: Telemetrie in Pools für elastische Datenbanken
-      href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
-    - name: Benutzerdefiniertes Dashboard für Pools für elastische Datenbanken
-      href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Häufig gestellte Fragen
+      href: sql-database-faq.md
+    - name: Öffentliche Datasets
+      href: sql-database-public-data-sets.md
+    - name: Behandeln von Konnektivitätsproblemen
+      href: >-
+        https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/sql-azure'
+    - name: Videos
+      href: >-
+        https://azure.microsoft.com/documentation/videos/index/?services=sql-database
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: Anleitung zur Architektur
+      href: 'https://docs.microsoft.com/sql/#pivot=architecture'
+    - name: Kundenimplementierungen
+      href: sql-database-customer-implementations.md
+    - name: Beispielanwendungen
+      items:
+        - name: Tailspin Surveys
+          href: >-
+            https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md
+        - name: Contoso Clinic
+          href: 'https://github.com/Microsoft/azure-sql-security-sample'
+        - name: Telemetrie in Pools für elastische Datenbanken
+          href: >-
+            https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
+        - name: Benutzerdefiniertes Dashboard für Pools für elastische Datenbanken
+          href: >-
+            https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
