@@ -229,14 +229,6 @@
           href: sql-database-develop-direct-route-ports-adonet-v12.md
 - name: Anleitungen
   items:
-    - name: Datenbanken und Server
-      items:
-        - name: Elastische Pools – Portal
-          href: sql-database-elastic-pool-manage-portal.md
-        - name: Elastische Pools – PowerShell
-          href: sql-database-elastic-pool-manage-powershell.md
-        - name: Elastische Pools – T-SQL
-          href: sql-database-elastic-pool-manage-tsql.md
     - name: Sicherheit
       items:
         - name: Konfigurieren der Azure AD-Authentifizierung
