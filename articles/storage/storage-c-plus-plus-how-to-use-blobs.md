@@ -20,14 +20,15 @@ ms.openlocfilehash: 8571011cac1182a5bfdfe722c194fcd681712a02
 ms.contentlocale: de-de
 ms.lasthandoff: 11/17/2016
 
-
 ---
-# <a name="how-to-use-blob-storage-from-c"></a>Verwenden des Blob-Speichers mit C++
+# Verwenden des Blob-Speichers mit C++
+<a id="how-to-use-blob-storage-from-c" class="xliff"></a>
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Übersicht
+## Übersicht
+<a id="overview" class="xliff"></a>
 Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
 In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure Blob-Speicherdienst demonstriert. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück. Die behandelten Szenarien umfassen das **Hochladen**, **Auflisten**, **Herunterladen** und **Löschen** von Blobs.  
@@ -41,7 +42,8 @@ In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure Blo
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-c-application"></a>Erstellen einer C++-Anwendung
+## Erstellen einer C++-Anwendung
+<a id="create-a-c-application" class="xliff"></a>
 In diesem Handbuch werden Sie Speicherfunktionen verwenden, die innerhalb einer C++-Anwendung ausgeführt werden können.  
 
 Dafür müssen Sie die Azure-Speicherclientbibliothek für C++ installieren und ein Azure-Speicherkonto in Ihrem Azure-Abonnement erstellen.   
@@ -53,15 +55,17 @@ Zum Installieren der Azure-Speicherclientbibliothek für C++ können Sie die fol
   
      Installationspaket „wastorage“
 
-## <a name="configure-your-application-to-access-blob-storage"></a>Konfigurieren der Anwendung für den Zugriff auf Blob-Speicher
+## Konfigurieren der Anwendung für den Zugriff auf Blob-Speicher
+<a id="configure-your-application-to-access-blob-storage" class="xliff"></a>
 Fügen Sie die folgenden "include"-Anweisungen am Anfang der C++-Datei hinzu, um die Stellen anzugeben, an denen Azure-Speicher-APIs auf Blobs zugreifen sollen:  
 
 ```cpp
-include <was/storage_account.h>
-include <was/blob.h>
+#include <was/storage_account.h>
+#include <was/blob.h>
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>Einrichten einer Azure-Speicherverbindungszeichenfolge
+## Einrichten einer Azure-Speicherverbindungszeichenfolge
+<a id="setup-an-azure-storage-connection-string" class="xliff"></a>
 Ein Azure-Speicherclient verwendet eine Speicherverbindungszeichenfolge zum Speichern von Endpunkten und Anmeldeinformationen für den Zugriff auf Datenverwaltungsdienste. Bei der Ausführung in einer Clientanwendung muss die Speicherverbindungszeichenfolge in dem unten gezeigten Format angegeben werden. Dabei müssen der Name Ihres Speicherkontos und der Speicherzugriffsschlüssel für das im [Azure-Portal](https://portal.azure.com) aufgeführte Speicherkonto als Werte für *AccountName* und *AccountKey* eingegeben werden. Weitere Informationen über Speicherkonten und Zugriffsschlüssel finden Sie unter [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md). Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Verbindungszeichenfolge deklarieren:  
 
 ```cpp
@@ -80,7 +84,8 @@ Wählen Sie zum Starten des Azure-Speicheremulators die Schaltfläche **Start**,
 
 In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser zwei Methoden verwendet haben, um die Speicherverbindungszeichenfolge abzurufen.  
 
-## <a name="retrieve-your-connection-string"></a>Abrufen der Verbindungszeichenfolge
+## Abrufen der Verbindungszeichenfolge
+<a id="retrieve-your-connection-string" class="xliff"></a>
 Sie können Ihre Speicherkontoinformationen mit der Klasse **cloud_storage_account** angeben. Verwenden Sie zum Abrufen von Speicherkontoinformationen aus der Speicher-Verbindungszeichenfolge die **parse** -Methode.  
 
 ```cpp
@@ -95,7 +100,8 @@ Rufen Sie als nächstes einen Verweis auf die Klasse **cloud_blob_client** ab, d
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
 ```
 
-## <a name="how-to-create-a-container"></a>Erstellen von Containern
+## Erstellen von Containern
+<a id="how-to-create-a-container" class="xliff"></a>
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
 Dieses Beispiel zeigt, wie Sie einen Container erstellen, falls er nicht bereits vorhanden ist.  
@@ -132,7 +138,8 @@ container.upload_permissions(permissions);
 
 Jede Person im Internet kann Blobs in einem öffentlichen Container anzeigen, Sie können sie jedoch nur bearbeiten oder löschen, wenn Sie über den entsprechenden Zugriffsschlüssel verfügen.  
 
-## <a name="how-to-upload-a-blob-into-a-container"></a>Hochladen von Blobs in einen Container
+## Hochladen von Blobs in einen Container
+<a id="how-to-upload-a-blob-into-a-container" class="xliff"></a>
 Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs. In den meisten Fällen wird die Verwendung von Blockblobs empfohlen.  
 
 Rufen Sie einen Containerverweis ab und verwenden Sie diesen zum Abrufen eines Blockblobverweises, um eine Datei in einen Blockblob hochzuladen. Sobald Sie über einen Blobverweis verfügen, können Sie jeden Datenstrom in diesen hochladen, indem Sie die **upload_from_stream**-Methode aufrufen. Bei diesem Vorgang wird das Blob erstellt, falls es nicht bereits vorhanden ist, oder überschrieben, falls es vorhanden ist. Im folgenden Beispiel wird gezeigt, wie ein Blob in einen bereits erstellten Container hochgeladen wird.  
@@ -167,7 +174,8 @@ blob3.upload_text(U("other text"));
 
 Sie können wahlweise auch die **upload_from_file**-Methode verwenden, um eine Datei in ein Blockblob hochzuladen.
 
-## <a name="how-to-list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
+## Auflisten der Blobs in einem Container
+<a id="how-to-list-the-blobs-in-a-container" class="xliff"></a>
 Um die Blobs in einem Container aufzuführen, müssen Sie zuerst einen Containerverweis abrufen. Anschließend können Sie mit der **list_blobs**-Methode des Containers die darin enthaltenen Blobs und/oder Verzeichnisse abrufen. Um auf den umfassenden Satz an Eigenschaften und Methoden für ein zurückgegebenes **list_blob_item**-Objekt zuzugreifen, müssen Sie die **list_blob_item.as_blob**-Methode aufrufen, um ein **cloud_blob**-Objekt abzurufen, oder die **list_blob.as_directory**-Methode aufrufen, um ein cloud_blob_directory-Objekt abzurufen. Im folgenden Code wird gezeigt, wie der URI der einzelnen Elemente im Container **my-sample-container** abgerufen und ausgegeben wird:
 
 ```cpp
@@ -197,7 +205,8 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 Weitere Informationen zu Auflistungsvorgängen finden Sie unter [Auflisten von Azure Storage-Ressourcen in C++](storage-c-plus-plus-enumeration.md).
 
-## <a name="how-to-download-blobs"></a>Herunterladen von Blobs
+## Herunterladen von Blobs
+<a id="how-to-download-blobs" class="xliff"></a>
 Zum Herunterladen von Blobs rufen Sie zunächst einen Blobverweis ab, und rufen Sie anschließend die **download_to_stream**-Methode auf. Im folgenden Beispiel wird die **download_to_stream**-Methode verwendet, um den Blobinhalt auf ein Datenstromobjekt zu übertragen, das danach in einer lokalen Datei gespeichert werden kann.  
 
 ```cpp
@@ -245,7 +254,8 @@ azure::storage::cloud_block_blob text_blob = container.get_block_blob_reference(
 utility::string_t text = text_blob.download_text();
 ```
 
-## <a name="how-to-delete-blobs"></a>Löschen von Blobs
+## Löschen von Blobs
+<a id="how-to-delete-blobs" class="xliff"></a>
 Zum Löschen eines Blobs rufen Sie zunächst einen Blobverweis ab, und rufen Sie anschließend die **delete_blob**-Methode für diesen auf.  
 
 ```cpp
@@ -265,7 +275,8 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Nachdem Sie sich nun mit den Grundlagen von Blob-Speichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr über Azure-Speicher zu erfahren.  
 
 * [Verwenden des Warteschlangenspeichers in C++](storage-c-plus-plus-how-to-use-queues.md)

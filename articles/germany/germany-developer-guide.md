@@ -22,10 +22,12 @@ ms.lasthandoff: 05/03/2017
 
 
 ---
-# <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
+# Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
+<a id="azure-germany-developer-guide" class="xliff"></a>
 Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
 
-## <a name="overview"></a>Übersicht
+## Übersicht
+<a id="overview" class="xliff"></a>
 Microsoft bietet verschiedene Tools, die Entwicklern beim Erstellen und Bereitstellen von Cloudanwendungen für die globalen Microsoft Azure-Dienste („globale Azure-Umgebung“) und Microsoft Azure Deutschland-Dienste helfen. Azure Deutschland berücksichtigt die Sicherheits- und Complianceanforderungen der Kunden, um den deutschen Datenschutzbestimmungen gerecht zu werden. Azure Deutschland ist physisch wie auch netzwerkseitig von Bereitstellungen in der globalen Azure-Umgebung isoliert und stellt einen Datentreuhänder zur Verfügung, der nach deutschem Recht handelt.
 
 Bei der Erstellung und Bereitstellung von Anwendungen müssen Entwickler die Unterschiede zwischen Azure Deutschland und der globalen Azure-Umgebung kennen. Dies gilt insbesondere für die folgenden Bereiche: Einrichtung und Konfiguration der Programmierumgebung, Konfiguration der Endpunkte, Erstellung von Anwendungen sowie deren Bereitstellung als Dienste für Azure Deutschland.
@@ -37,7 +39,8 @@ Offizielle Informationen sind möglicherweise auch an anderer Stelle verfügbar,
 * [Microsoft Azure-Blog](https://azure.microsoft.com/blog/ "Microsoft Azure-Blog")
 * [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/ "Azure Deutschland-Blog")
 
-## <a name="guidance-for-developers"></a>Leitfaden für Entwickler
+## Leitfaden für Entwickler
+<a id="guidance-for-developers" class="xliff"></a>
 Bei den meisten der derzeit verfügbaren technischen Inhalte wird davon ausgegangen, dass Anwendungen für die globale Azure-Umgebung und nicht für Azure Deutschland entwickelt werden. Aus diesem Grund ist es wichtig, zwei Hauptunterschiede bei Anwendungen zu kennen, die Sie zum Hosten in Azure Deutschland entwickeln:
 
 * Bestimmte Dienste und Funktionen, die in bestimmten Regionen der globalen Azure-Umgebung vorhanden sind, sind möglicherweise in Azure Deutschland nicht verfügbar.
@@ -46,7 +49,8 @@ Bei den meisten der derzeit verfügbaren technischen Inhalte wird davon ausgegan
 Aktuell sind in Azure Deutschland die Regionen „Deutschland, Mitte“ und „Deutschland, Nordosten“ verfügbar. Regionen und verfügbare Dienste finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services).
 
 
-## <a name="endpoint-mapping"></a>Endpunktzuordnung
+## Endpunktzuordnung
+<a id="endpoint-mapping" class="xliff"></a>
 In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunkten in der globalen Azure-Umgebung und Azure SQL-Datenbank-Endpunkten zu Azure Deutschland-spezifischen Endpunkten:
 
 | Name | Azure Deutschland-Endpunkt |
@@ -66,7 +70,8 @@ In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunk
 | AzureKeyVaultServiceEndpointResourceId   | https://vault.microsoftazure.de |
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen zu Azure Deutschland finden Sie in den folgenden Ressourcen:
 
 * [Registrieren Sie sich für eine Testversion](https://azure.microsoft.com/free/germany/)

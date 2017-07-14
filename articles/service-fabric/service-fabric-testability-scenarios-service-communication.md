@@ -22,9 +22,8 @@ ms.lasthandoff: 11/17/2016
 
 
 ---
-<a id="service-fabric-testability-scenarios-service-communication" class="xliff"></a>
-
 # Service Fabric-Testability-Szenarien: Dienstkommunikation
+<a id="service-fabric-testability-scenarios-service-communication" class="xliff"></a>
 Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.
 
 Die Kommunikation von Dienst zu Dienst ist ein entscheidender Integrationspunkt einer Anwendung, da von jedem Dienst eine Remote-API für andere Dienste verfügbar gemacht wird. Die Verwendung einer Gruppe von API-Grenzen mit E/A erfordert häufig besondere Sorgfalt und einen relativ hohen Test- und Überprüfungsaufwand.
@@ -37,9 +36,8 @@ Es gibt viele Punkte, die beachtet werden müssen, wenn diese Dienstgrenzen in e
 
 Das Testen der Interaktion zwischen Ihren Diensten ist wichtig, um die Resilienz Ihrer Anwendung sicherzustellen. Dabei spielt es keine Rolle, ob Sie eine der integrierten Komponenten für die Dienstkommunikation von Service Fabric verwenden oder eine eigene Komponente erstellen.
 
-<a id="prepare-for-services-to-move" class="xliff"></a>
-
 ## Vorbereiten von Dienste auf das Verschieben
+<a id="prepare-for-services-to-move" class="xliff"></a>
 Dienstinstanzen können im Laufe der Zeit verschoben werden. Dies gilt insbesondere, wenn sie mit Auslastungsmetriken für einen maßgeschneiderten optimalen Lastenausgleich für Ressourcen konfiguriert werden. Service Fabric verschiebt Ihre Dienstinstanzen zur Maximierung der Verfügbarkeit sogar während Upgrades, Failovers, horizontalem Hochskalieren und verschiedenen anderen Situationen, die während der Lebensdauer eines verteilten Systems eintreten.
 
 Wenn Dienste im Cluster verschoben werden, gibt es zwei Szenarien, auf deren Behandlung Ihre Clients und Dienste bei der Kommunikation mit einem Dienst vorbereitet sein sollten:
@@ -53,9 +51,8 @@ Die ordnungsgemäße Behandlung dieser Szenarien ist wichtig dafür, dass das Sy
 * Unter Umständen kann es zu einem vorübergehenden Anstieg der Dienstwartezeit kommen, während die Dienstinstanz ihren Listener neu startet. Dies hängt davon ab, wie schnell der Dienst den Listener öffnet, nachdem die Instanz verschoben wurde.
 * Alle vorhandenen Verbindungen müssen geschlossen und wieder geöffnet werden, nachdem der Dienst einen neuen Knoten öffnet. Beim ordnungsgemäßen Herunterfahren oder Neustart eines Knotens wird Zeit dafür veranschlagt, die für das ordnungsgemäße Herunterfahren vorhandener Verbindungen anfällt.
 
-<a id="test-it-move-service-instances" class="xliff"></a>
-
 ### Testen: Verschieben von Dienstinstanzen
+<a id="test-it-move-service-instances" class="xliff"></a>
 Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Testen dieser Situationen auf unterschiedliche Weise erstellen.
 
 1. Verschieben Sie das primäre Replikat eines zustandsbehafteten Diensts.
@@ -79,16 +76,14 @@ Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Te
    
     ```
 
-<a id="maintain-service-availability" class="xliff"></a>
-
 ## Aufrechterhalten der Dienstverfügbarkeit
+<a id="maintain-service-availability" class="xliff"></a>
 Service Fabric ist eine Plattform, mit der für Ihre Dienste eine hohe Verfügbarkeit erzielt werden soll. In Extremfällen können zugrunde liegende Infrastrukturprobleme trotzdem noch zum Ausfall der Verfügbarkeit führen. Es ist wichtig, auch für diese Szenarien Tests durchzuführen.
 
 Für zustandsbehaftete Dienste wird ein quorumbasiertes System zum Replizieren des Zustands mit dem Ziel einer hohen Verfügbarkeit verwendet. Dies bedeutet, dass ein Quorum von Replikaten verfügbar sein muss, um Schreibvorgänge ausführen zu können. In seltenen Fällen, z. B. bei einem umfangreicheren Hardwarefehler, ist unter Umständen kein Quorum von Replikaten verfügbar. Sie können dann keine Schreibvorgänge ausführen, während Lesevorgänge weiterhin möglich sind.
 
-<a id="test-it-write-operation-unavailability" class="xliff"></a>
-
 ### Testen: Nichtverfügbarkeit von Schreibvorgängen
+<a id="test-it-write-operation-unavailability" class="xliff"></a>
 Mithilfe der Testability-Tools in Service Fabric können Sie als Test einen Fehler einfügen, der Quorumverlust ausgelöst. Ein solches Szenario ist zwar selten, aber es ist trotzdem ist es wichtig, dass Clients und Dienste, die von einem zustandsbehafteten Dienst abhängig sind, auf die Behandlung von Situationen vorbereitet sind, in denen keine Schreibanforderungen an den Dienst möglich sind. Außerdem ist es wichtig, dass der zustandsbehaftete Dienst selbst über diese Möglichkeit informiert ist und mit Aufrufern ordnungsgemäß kommunizieren kann.
 
 Mithilfe des PowerShell-Cmdlets **Invoke-ServiceFabricPartitionQuorumLoss** kann Quorumverlust ausgelöst werden:
@@ -101,9 +96,8 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 In diesem Beispiel wird `QuorumLossMode` auf `QuorumReplicas` festgelegt, um anzugeben, dass ein Quorumverlust ausgelöst werden soll, ohne alle Replikate herunterzufahren. Auf diese Weise sind Lesevorgänge weiterhin möglich. Um ein Szenario zu testen, in dem eine gesamte Partition nicht verfügbar ist, können Sie diesen Schalter auf `AllReplicas`festlegen.
 
-<a id="next-steps" class="xliff"></a>
-
 ## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 [Weitere Informationen zu Testability-Aktionen](service-fabric-testability-actions.md)
 
 [Weitere Informationen zu Testability-Szenarien](service-fabric-testability-scenarios.md)
