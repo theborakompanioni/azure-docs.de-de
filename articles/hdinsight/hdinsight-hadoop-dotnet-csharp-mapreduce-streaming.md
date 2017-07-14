@@ -14,7 +14,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/12/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
@@ -22,9 +22,9 @@ ms.openlocfilehash: f98d769542f5a52d659f561e970f0a7e9dce9fd9
 ms.contentlocale: de-de
 ms.lasthandoff: 05/02/2017
 
-
 ---
-# <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Verwenden von C# mit MapReduce-Streaming auf Hadoop in HDInsight
+# Verwenden von C# mit MapReduce-Streaming auf Hadoop in HDInsight
+<a id="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight" class="xliff"></a>
 
 Erfahren Sie, wie Sie C# verwenden, um eine MapReduce-Lösung in HDInsight zu erstellen.
 
@@ -33,13 +33,15 @@ Erfahren Sie, wie Sie C# verwenden, um eine MapReduce-Lösung in HDInsight zu er
 
 Mit Hadoop-Datenströmen können Sie MapReduce-Aufträge über ein Skript oder eine ausführbare Datei ausführen. In diesem Beispiel wird .NET verwendet, um die Mapper- und Reducer-Prozesse für eine Lösung zum Zählen von Wörtern zu implementieren.
 
-## <a name="net-on-hdinsight"></a>.NET in HDInsight
+## .NET in HDInsight
+<a id="net-on-hdinsight" class="xliff"></a>
 
 __Linux-basierte HDInsight__-Cluster verwenden [Mono (https://mono-project.com)](https://mono-project.com) zum Ausführen von Anwendungen für .NET. Mono-Version 4.2.1 ist in HDInsight-Version 3.5 enthalten. Weitere Informationen zu der mit HDInsight bereitgestellten Version von Mono finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md). Informationen zum Verwenden einer bestimmten Version von Mono finden Sie im Dokument [Installieren oder Aktualisieren von Mono](hdinsight-hadoop-install-mono.md).
 
 Weitere Informationen zur Kompatibilität von Mono mit .NET Framework-Versionen finden Sie unter [Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/) (Kompatibilität von Mono).
 
-## <a name="how-hadoop-streaming-works"></a>Funktionsweise von Hadoop-Datenströmen
+## Funktionsweise von Hadoop-Datenströmen
+<a id="how-hadoop-streaming-works" class="xliff"></a>
 
 Der in diesem Artikel verwendete grundlegende Prozess für das Streaming sieht wie folgt aus:
 
@@ -51,7 +53,8 @@ Der in diesem Artikel verwendete grundlegende Prozess für das Streaming sieht w
 
 Weitere Informationen zum Streaming finden Sie unter [Hadoop Streaming (https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html) (Hadoop-Datenströme).
 
-## <a name="prerequisites"></a>Voraussetzungen
+## Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
 
 * Gute Kenntnisse im Schreiben und Erstellen von C#-Code für .NET Framework 4.5. Für die Schritte in diesem Artikel wird Visual Studio 2017 verwendet.
 
@@ -61,7 +64,8 @@ Weitere Informationen zum Streaming finden Sie unter [Hadoop Streaming (https://
 
 * Hadoop für einen HDInsight-Cluster. Weitere Informationen zum Erstellen eines Clusters finden Sie unter [Erstellen eines HDInsight-Clusters](hdinsight-provision-clusters.md).
 
-## <a name="create-the-mapper"></a>Erstellen des Mappers
+## Erstellen des Mappers
+<a id="create-the-mapper" class="xliff"></a>
 
 Erstellen Sie in Visual Studio eine neue __Konsolenanwendung__ mit dem Namen __mapper__. Verwenden Sie für die Anwendung den folgenden Code:
 
@@ -98,7 +102,8 @@ namespace mapper
 
 Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/Debug/mapper.exe` im Projektverzeichnis.
 
-## <a name="create-the-reducer"></a>Erstellen des Reducers
+## Erstellen des Reducers
+<a id="create-the-reducer" class="xliff"></a>
 
 Erstellen Sie in Visual Studio eine neue __Konsolenanwendung__ mit dem Namen __reducer__. Verwenden Sie für die Anwendung den folgenden Code:
 
@@ -151,7 +156,8 @@ namespace reducer
 
 Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/Debug/reducer.exe` im Projektverzeichnis.
 
-## <a name="upload-to-storage"></a>Hochladen in den Speicher
+## Hochladen in den Speicher
+<a id="upload-to-storage" class="xliff"></a>
 
 1. Öffnen Sie den **Server-Explorer**in Visual Studio.
 
@@ -177,7 +183,8 @@ Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/De
 
     Sobald der Upload der Datei __mapper.exe__ abgeschlossen ist, wiederholen Sie den Uploadvorgang für die Datei __reducer.exe__.
 
-## <a name="run-a-job-using-an-ssh-session"></a>Ausführen eines Auftrags: Verwenden einer SSH-Sitzung
+## Ausführen eines Auftrags: Verwenden einer SSH-Sitzung
+<a id="run-a-job-using-an-ssh-session" class="xliff"></a>
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -222,7 +229,8 @@ Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/De
         yourselves      3
         youth   17
 
-## <a name="run-a-job-using-powershell"></a>Ausführen eines Auftrags: Verwenden von PowerShell
+## Ausführen eines Auftrags: Verwenden von PowerShell
+<a id="run-a-job-using-powershell" class="xliff"></a>
 
 Verwenden Sie das folgende PowerShell-Skript zum Ausführen eines MapReduce-Auftrags und zum Herunterladen der Ergebnisse.
 
@@ -240,7 +248,8 @@ Dieses Skript fordert Sie auf den Kontonamen und das Kennwort für die Clusteran
     yourselves      3
     youth   17
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 
 Weitere Informationen zum Verwenden von MapReduce mit HDInsight finden Sie unter [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md).
 
