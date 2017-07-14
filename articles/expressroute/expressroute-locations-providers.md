@@ -21,9 +21,8 @@ ms.contentlocale: de-de
 ms.lasthandoff: 07/04/2017
 
 ---
-<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
-
 # ExpressRoute-Partner und Peeringstandorte
+<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
 
 > [!div class="op_single_selector"]
 > * [Standorte nach Anbieter](expressroute-locations.md)
@@ -39,9 +38,8 @@ ExpressRoute wird in allen Azure-Regionen und an allen Standorten unterstützt. 
 
 Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen Region eine Verbindung hergestellt haben, haben Sie Zugriff auf die Azure-Dienste in allen Regionen dieser geopolitischen Region. 
 
-<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
-
 ### Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region
+<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
 Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
 
 | **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
@@ -55,9 +53,8 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | **Indien** |Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Mumbai |
 | **Südkorea** |Korea, Mitte, Korea, Süden |Busan, Seoul |
 
-<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
-
 ### Regionen und geopolitische Grenzen für nationale Clouds
+<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
 In der folgenden Tabelle finden Sie Informationen zu Regionen und geopolitischen Grenzen für nationale Clouds.
 
 | **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
@@ -73,9 +70,8 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörigen Service Providers. Sie können auch eine Tabelle anzeigen ([Standorte nach Service Provider](expressroute-locations.md#locations)), die nach Service Providern mit den jeweiligen Standorten sortiert ist. 
 
 
-<a id="production-azure" class="xliff"></a>
-
 ### Azure-Produktionsumgebungen
+<a id="production-azure" class="xliff"></a>
 | **Standort** | **Service Providers** |
 | --- | --- |
 | **Amsterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Internet Solutions - Cloud Connect, Interxion, KPN, Level 3 Communications, Megaport, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo Group |
@@ -112,13 +108,11 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 
  **+** steht für "In Kürze"
 
+### Nationale Cloudumgebungen
 <a id="national-cloud-environments" class="xliff"></a>
 
-### Nationale Cloudumgebungen
-
-<a id="us-government-cloud" class="xliff"></a>
-
 ### US-Government Cloud
+<a id="us-government-cloud" class="xliff"></a>
 | **Standort** | **Service Providers** |
 | --- | --- |
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
@@ -128,9 +122,8 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 | **Seattle** | Equinix |
 | **Washington DC** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 
-<a id="china" class="xliff"></a>
-
 ### China
+<a id="china" class="xliff"></a>
 | **Standort** | **Service Providers** |
 | --- | --- |
 | **Peking** |China Telecom |
@@ -138,9 +131,8 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 
 Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressroute/)
 
-<a id="germany" class="xliff"></a>
-
 ### Deutschland
+<a id="germany" class="xliff"></a>
 | **Standort** | **Service Providers** |
 | --- | --- |
 | **Berlin** |Colt+, e-shelter, Megaport+ |
@@ -185,9 +177,8 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 | **Toronto** | Equinix | Airgate Technologies, Inc, Cogeco Peer 1, Rogers, Thinktel, Zirro|
 | **Washington DC** |Equinix | Altice Business, Gtt Communications Inc, Epsilon, Lightower, Masergy, Windstream |
 
-<a id="expressroute-system-integrators" class="xliff"></a>
-
 ## ExpressRoute-Systemintegratoren
+<a id="expressroute-system-integrators" class="xliff"></a>
 Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihre Anforderungen problematisch sein. Alle Systemintegratoren, die in der folgenden Tabelle aufgeführt sind, können Ihnen beim Integrieren von ExpressRoute helfen.
 
 | **Kontinent** | **Systemintegratoren** |
@@ -197,9 +188,8 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 | **Europa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Nordamerika** |Avanade Inc., Equinix Professional Services, FlexManage, Perficient, Presidio |
 | **Südamerika** |Avanade Inc. |
-<a id="next-steps" class="xliff"></a>
-
 ## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 * Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 * Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 

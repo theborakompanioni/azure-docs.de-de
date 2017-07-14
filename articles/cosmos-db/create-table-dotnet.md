@@ -23,37 +23,32 @@ ms.lasthandoff: 06/23/2017
 
 
 ---
-<a id="azure-cosmos-db-build-a-net-application-using-the-table-api" class="xliff"></a>
-
 # Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Table-API
+<a id="azure-cosmos-db-build-a-net-application-using-the-table-api" class="xliff"></a>
 
 Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
 Dieser Schnellstart veranschaulicht, wie Sie ein Azure Cosmos DB-Konto und eine Tabelle in diesem Konto mithilfe des Azure-Portals erstellen können. Dann schreiben Sie Code, um Entitäten einzufügen, zu aktualisieren und zu löschen, und führen mit dem neuen Paket [Windows Azure Storage Premium Table](https://aka.ms/premiumtablenuget) (Vorschauversion) von NuGet einige Abfragen aus. Diese Bibliothek enthält dieselben Klassen- und Methodensignaturen wie das öffentliche [Windows Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage), kann aber auch eine Verbindung mit Konten von Azure Cosmos DB mithilfe der [Table-API](table-introduction.md) (Vorschauversion) herstellen. 
 
-<a id="prerequisites" class="xliff"></a>
-
 ## Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
 
 Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-<a id="create-a-database-account" class="xliff"></a>
-
 ## Erstellen eines Datenbankkontos
+<a id="create-a-database-account" class="xliff"></a>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
-<a id="add-a-table" class="xliff"></a>
-
 ## Hinzufügen einer Tabelle
+<a id="add-a-table" class="xliff"></a>
 
 [!INCLUDE [cosmos-db-create-table](../../includes/cosmos-db-create-table.md)]
 
-<a id="add-sample-data" class="xliff"></a>
-
 ## Hinzufügen von Beispieldaten
+<a id="add-sample-data" class="xliff"></a>
 
 Sie können nun mithilfe des Daten-Explorers (Vorschauversion) Daten zu einer neuen Tabelle hinzufügen.
 
@@ -66,9 +61,8 @@ Sie können nun mithilfe des Daten-Explorers (Vorschauversion) Daten zu einer ne
   
     Jetzt können Sie weitere Entitäten in Ihre Tabelle hinzufügen, diese Entitäten bearbeiten und Ihre Daten im Daten-Explorer abfragen. Im Daten-Explorer können Sie zudem Ihren Durchsatz skalieren und der Tabelle gespeicherte Prozeduren, benutzerdefinierte Funktionen und Trigger hinzufügen.
 
-<a id="clone-the-sample-application" class="xliff"></a>
-
 ## Klonen der Beispielanwendung
+<a id="clone-the-sample-application" class="xliff"></a>
 
 Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenfolge fest und führen Sie diese aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
@@ -82,9 +76,8 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
 
 3. Öffnen Sie anschließend die Projektmappendatei in Visual Studio. 
 
-<a id="review-the-code" class="xliff"></a>
-
 ## Überprüfen des Codes
+<a id="review-the-code" class="xliff"></a>
 
 Es folgt ein kurzer Überblick zu dem, was in der App geschieht. Öffnen Sie die Datei „Program.cs“. Sie stellen fest, dass mit diesen Codezeilen die Azure Cosmos DB-Ressourcen erstellt werden. 
 
@@ -115,9 +108,8 @@ Es folgt ein kurzer Überblick zu dem, was in der App geschieht. Öffnen Sie die
                 };
     ```
 
-<a id="update-your-connection-string" class="xliff"></a>
-
 ## Aktualisieren der Verbindungszeichenfolge
+<a id="update-your-connection-string" class="xliff"></a>
 
 Jetzt aktualisieren wir die Informationen zur Verbindungszeichenfolge, damit Ihre App mit Azure Cosmos DB kommunizieren kann. 
 
@@ -136,9 +128,8 @@ Jetzt aktualisieren wir die Informationen zur Verbindungszeichenfolge, damit Ihr
 
 Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
 
-<a id="run-the-web-app" class="xliff"></a>
-
 ## Ausführen der Web-App
+<a id="run-the-web-app" class="xliff"></a>
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **PremiumTableGetStarted** im **Projektmappen-Explorer**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. 
 
@@ -160,24 +151,21 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
     ![Neue Entitäten im Daten-Explorer](./media/create-table-dotnet/azure-cosmosdb-table-quickstart-data-explorer.png)
 
-<a id="review-slas-in-the-azure-portal" class="xliff"></a>
-
 ## Überprüfen von SLAs im Azure-Portal
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-<a id="clean-up-resources" class="xliff"></a>
-
 ## Bereinigen von Ressourcen
+<a id="clean-up-resources" class="xliff"></a>
 
 Wenn Sie diese App nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen im Azure-Portal. Führen Sie dazu folgende Schritte durch: 
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource. 
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
-<a id="next-steps" class="xliff"></a>
-
 ## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 
 In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Tabelle mit dem Daten-Explorer erstellen und eine App ausführen.  Jetzt können Sie Ihre Daten mit der Table-API abfragen.  
 
