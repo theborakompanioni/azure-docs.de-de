@@ -12,21 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/11/2017
 ms.author: jingwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
 ms.openlocfilehash: 6d54203797ad970d590b853b171b383708dbcb5d
+ms.contentlocale: de-de
 ms.lasthandoff: 04/12/2017
 
-
 ---
-# <a name="move-data-from-db2-using-azure-data-factory"></a>Verschieben von Daten aus DB2 mithilfe von Azure Data Factory
+<a id="move-data-from-db2-using-azure-data-factory" class="xliff"></a>
+
+# Verschieben von Daten aus DB2 mithilfe von Azure Data Factory
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden, um Daten aus einer lokalen DB2-Datenbank in einen Datenspeicher zu kopieren, der im Abschnitt [Unterstützte Quellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) in der Spalte „Senke“ aufgeführt ist. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus einer DB2-Datenbank in [unterstützte Senkendatenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats), aber nicht das Verschieben von Daten aus anderen Datenspeichern in eine DB2-Datenbank.
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 Data Factory unterstützt das Herstellen einer Verbindung mit einer lokalen DB2-Datenbank mithilfe des Datenverwaltungsgateways. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) erfahren Sie etwas über das Datenverwaltungsgateway, und unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) finden Sie schrittweise Anleitungen für das Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten.
 
 Das Gateway ist auch erforderlich, wenn DB2 auf einem virtuellen Azure IaaS-Computer gehostet wird. Sie können das Gateway auf dem gleichen virtuellen IaaS-Computer installieren wie den Datenspeicher oder auch auf einem anderen virtuellen Computer, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.
@@ -36,7 +40,9 @@ Das Datenverwaltungsgateway verfügt über einen integrierten DB2-Treiber, daher
 > [!NOTE]
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
-## <a name="supported-versions"></a>Unterstützte Versionen
+<a id="supported-versions" class="xliff"></a>
+
+## Unterstützte Versionen
 Dieser DB2-Connector unterstützt die folgenden IBM DB2-Plattformen und -Versionen mit Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 9, 10 und 11:
 
 * IBM DB2 für z/OS 11.1
@@ -50,7 +56,9 @@ Dieser DB2-Connector unterstützt die folgenden IBM DB2-Plattformen und -Version
 > [!TIP]
 > Wenn die Fehlermeldung „Das einer Anforderung zum Ausführen einer SQL-Anweisung entsprechende Paket wurde nicht gefunden. SQLSTATE=51002 SQLCODE=-805“ auftritt, verwenden Sie ein Konto mit umfangreichen Berechtigungen (Hauptbenutzer- oder Administratorkonto), um die Kopieraktivität einmal auszuführen. Das erforderliche Paket wird dann während des Kopierens automatisch erstellt. Anschließend können Sie für die folgenden Kopiervorgänge wieder das normale Benutzerkonto verwenden.
 
-## <a name="getting-started"></a>Erste Schritte
+<a id="getting-started" class="xliff"></a>
+
+## Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen DB2-Datenspeicher verschiebt. 
 
 - Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
@@ -66,7 +74,9 @@ Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für di
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für DB2-Datenspeicher verwendet werden:
 
-## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
+<a id="linked-service-properties" class="xliff"></a>
+
+## Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit DB2 verknüpften Dienst spezifisch sind.
 
 | Eigenschaft | Beschreibung | Erforderlich |
@@ -81,7 +91,9 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen DB2-Datenbank verwenden soll. |Ja |
 
 
-## <a name="dataset-properties"></a>Dataset-Eigenschaften
+<a id="dataset-properties" class="xliff"></a>
+
+## Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt "typeProperties" für ein Dataset vom Typ "RelationalTable "(wozu ein DB2-Dataset gehört) hat die folgenden Eigenschaften.
@@ -90,7 +102,9 @@ Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und 
 | --- | --- | --- |
 | tableName |Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
-## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
+<a id="copy-activity-properties" class="xliff"></a>
+
+## Eigenschaften der Kopieraktivität
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar.
 
 Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
@@ -111,7 +125,9 @@ Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** aufweist
 ```
 
 
-## <a name="json-example-copy-data-from-db2-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus DB2 nach Azure-Blob
+<a id="json-example-copy-data-from-db2-to-azure-blob" class="xliff"></a>
+
+## JSON-Beispiel: Kopieren von Daten aus DB2 nach Azure-Blob
 Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Es zeigt das Kopieren von Daten aus einer DB2-Datenbank nach Azure Blob Storage. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
@@ -298,7 +314,9 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 ```
 
 
-## <a name="type-mapping-for-db2"></a>Typzuordnung für DB2
+<a id="type-mapping-for-db2" class="xliff"></a>
+
+## Typzuordnung für DB2
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
@@ -349,12 +367,18 @@ Beim Verschieben von Daten in DB2 werden die folgenden Zuordnungen zwischen DB2-
 | xml |Byte[] |
 | Char |String |
 
-## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
+<a id="map-source-to-sink-columns" class="xliff"></a>
+
+## Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Wiederholbare Lesevorgänge aus relationalen Quellen
+<a id="repeatable-read-from-relational-sources" class="xliff"></a>
+
+## Wiederholbare Lesevorgänge aus relationalen Quellen
 Beim Kopieren von Daten aus relationalen Datenspeichern müssen Sie die Wiederholbarkeit berücksichtigen, um unbeabsichtigte Ergebnisse zu vermeiden. Sie können einen Slice in Azure Data Factory manuell erneut ausführen. Sie können auch eine Wiederholungsrichtlinie für ein Dataset konfigurieren, sodass ein Slice erneut ausgeführt wird, wenn ein Fehler auftritt. Wenn ein Slice erneut ausgeführt wird, müssen Sie sicherstellen, dass dieselben Daten gelesen werden – egal wie oft ein Slice ausgeführt wird. Weitere Informationen finden Sie unter [Wiederholbare Lesevorgänge aus relationalen Quellen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Leistung und Optimierung
+<a id="performance-and-tuning" class="xliff"></a>
+
+## Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 

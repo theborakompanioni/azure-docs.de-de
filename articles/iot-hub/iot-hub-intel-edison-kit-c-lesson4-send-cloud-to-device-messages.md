@@ -4,7 +4,7 @@ description: "Eine Beispielanwendung wird auf Edison ausgeführt und überwacht 
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Arduino-Kontroll-LED über Web, Arduino-Kontroll-LED über Web"
 ROBOTS: NOINDEX
@@ -17,31 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: b4d76eeb1bc0b406800c89c4952900350d8eafa8
+ms.contentlocale: de-de
 ms.lasthandoff: 01/25/2017
 
-
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>Ausführen einer Beispielanwendung zum Empfangen von C2D-Nachrichten
+<a id="run-a-sample-application-to-receive-cloud-to-device-messages" class="xliff"></a>
+
+# Ausführen einer Beispielanwendung zum Empfangen von C2D-Nachrichten
 In diesem Artikel stellen Sie eine Beispielanwendung auf Intel Edison bereit. Die Beispielanwendung überwacht eingehende Nachrichten von IoT Hub. Sie führen außerdem auf dem Computer einen Gulp-Task aus, um Nachrichten vom IoT Hub an Edison zu senden. Wenn die Beispielanwendung die Nachrichten empfängt, blinkt die LED. Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshooting].
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 * Verbinden der Beispielanwendung mit IoT Hub
 * Bereitstellen und Ausführen der Beispielanwendung
 * Senden von Nachrichten vom IoT Hub an Edison, damit die LED blinkt
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 * Überwachen von eingehenden Nachrichten von IoT Hub
 * Senden von C2D-Nachrichten von IoT Hub an Edison
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 * Intel Edison, bereit zur Verwendung. Informationen zum Einrichten von Edison finden Sie unter [Konfigurieren Ihres Geräts][configure-your-device].
 * Ein in Ihrem Azure-Abonnement erstellter IoT Hub. Informationen zum Erstellen der IoT Hub-Instanz finden Sie unter [Erstellen der Azure IoT Hub-Instanz][create-your-azure-iot-hub].
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>Verbinden der Beispielanwendung mit IoT Hub
+<a id="connect-the-sample-application-to-your-iot-hub" class="xliff"></a>
+
+## Verbinden der Beispielanwendung mit IoT Hub
 1. Stellen Sie sicher, dass Sie sich im Repositoryordner `iot-hub-c-edison-getting-started` befinden. Öffnen Sie die Beispielanwendung in Visual Studio Code, indem Sie die folgenden Befehle ausführen:
 
    ```bash
@@ -70,7 +80,9 @@ In diesem Artikel lernen Sie Folgendes:
    > [!NOTE]
    > Führen Sie außerdem **gulp install-tools** aus, falls Sie dies in Lektion 1 noch nicht getan haben.
 
-## <a name="deploy-and-run-the-sample-application"></a>Bereitstellen und Ausführen der Beispielanwendung
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## Bereitstellen und Ausführen der Beispielanwendung
 Führen Sie die folgenden Befehle aus, um die Beispielanwendung auf Edison bereitzustellen und auszuführen:
 
 ```bash
@@ -85,10 +97,14 @@ Die LED sollte alle zwei Sekunden blinken, da der Gulp-Task 20 Nachrichten von I
 
 ![Beispielanwendung mit gulp-Befehl und blink-Nachrichten][gulp-command-and-blink-messages]
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben erfolgreich Nachrichten von IoT Hub an Edison gesendet, damit die LED blinkt. Die nächste Aufgabe ist optional: das Ändern des Ein- und Ausschaltverhaltens der LED.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Ändern des Ein- und Aus-Verhaltens der LED][change-the-on-and-off-behavior-of-the-led]
 
 <!-- Images and links -->

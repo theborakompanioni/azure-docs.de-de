@@ -12,18 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fa1c3d9cb07d417f5dbde41d6269fb1d157c3104
 ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
-
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
-# <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
+# Unterstützung mehrerer Domänen für den Verbund mit Azure AD
+<a id="multiple-domain-support-for-federating-with-azure-ad" class="xliff"></a>
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Office 365- oder Azure AD-Domänen erstellen.
 
-## <a name="multiple-top-level-domain-support"></a>Unterstützung mehrerer Domänen der obersten Ebene
+## Unterstützung mehrerer Domänen der obersten Ebene
+<a id="multiple-top-level-domain-support" class="xliff"></a>
 Für die Erstellung mehrerer Domänen der obersten Ebene als Verbund mit Azure AD sind einige zusätzliche Konfigurationsschritte erforderlich, die nicht benötigt werden, wenn ein Verbund mit nur einer Domäne der obersten Ebene erstellt wird.
 
 Bei einem Verbund einer Domäne mit Azure AD werden für die Domäne in Azure mehrere Eigenschaften festgelegt.  Eine wichtige Eigenschaft ist die IssuerUri-Eigenschaft.  Dies ist ein URI, der von Azure AD zum Identifizieren der Domäne verwendet wird, der das Token zugeordnet ist.  Der URI muss nicht in einen bestimmten Wert aufgelöst werden, aber es muss sich um einen gültigen URI handeln.  Standardmäßig wird diese Eigenschaft von Azure AD auf den Wert des Verbunddienstbezeichners in Ihrer lokalen AD FS-Konfiguration festgelegt.
@@ -45,7 +48,8 @@ Wenn wir versuchen, die Domäne „bmfabrikam.com“ in einen Verbund zu konvert
 
 ![Partnerverbundfehler](./media/active-directory-multiple-domains/error.png)
 
-### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain-Parameter
+### SupportMultipleDomain-Parameter
+<a id="supportmultipledomain-parameter" class="xliff"></a>
 Um dieses Problem zu umgehen, müssen wir einen anderen IssuerUri hinzufügen. Hierfür können wir den Parameter `-SupportMultipleDomain` verwenden.  Dieser Parameter wird mit den folgenden Cmdlets verwendet:
 
 * `New-MsolFederatedDomain`
@@ -78,7 +82,8 @@ Unten sehen Sie die angepasste Anspruchsregel, die diese Logik implementiert:
 > 
 > 
 
-## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>Aktualisieren der Vertrauensstellung zwischen AD FS und Azure AD
+## Aktualisieren der Vertrauensstellung zwischen AD FS und Azure AD
+<a id="how-to-update-the-trust-between-ad-fs-and-azure-ad" class="xliff"></a>
 Wenn Sie die Vertrauensstellung zwischen AD FS und Ihrer Instanz von Azure AD nicht eingerichtet haben, müssen Sie diese Vertrauensstellung unter Umständen neu erstellen.  Dies liegt daran, dass für die IssuerUri der Standardwert festgelegt wird, wenn sie anfänglich ohne den Parameter `-SupportMultipleDomain` eingerichtet wird.  Im Screenshot unten ist zu sehen, dass IssuerUri auf „https://adfs.bmcontoso.com/adfs/services/trust“ festgelegt ist.
 
 Wir erhalten jetzt also den folgenden Fehler, wenn wir im Azure AD-Portal erfolgreich eine neue Domäne hinzugefügt und anschließend versucht haben, diese mit `Convert-MsolDomaintoFederated -DomainName <your domain>`zu konvertieren.
@@ -122,7 +127,8 @@ Führen Sie die folgenden Schritte aus, um die neue Domäne der obersten Ebene m
    ![Weitere Azure AD-Domäne hinzufügen](./media/active-directory-multiple-domains/add2.png)
 5. Klicken Sie auf „Installieren“.
 
-### <a name="verify-the-new-top-level-domain"></a>Überprüfen der neuen Domäne der obersten Ebene
+### Überprüfen der neuen Domäne der obersten Ebene
+<a id="verify-the-new-top-level-domain" class="xliff"></a>
 Mit dem PowerShell-Befehl `Get-MsolDomainFederationSettings -DomainName <your domain>`können Sie den aktualisierten IssuerUri anzeigen.  Im folgenden Screenshot ist dargestellt, dass die Verbundeinstellungen für die ursprüngliche Domäne „http://bmcontoso.com/adfs/services/trust“ aktualisiert wurden.
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
@@ -131,12 +137,14 @@ Außerdem wurde der IssuerUri für die neue Domäne auf „https://bmfabrikam.co
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/settings2.png)
 
-## <a name="support-for-sub-domains"></a>Unterstützung für Unterdomänen
+## Unterstützung für Unterdomänen
+<a id="support-for-sub-domains" class="xliff"></a>
 Wenn Sie eine Unterdomäne hinzufügen, erbt sie die Einstellungen der übergeordneten Domäne. Dies liegt an der Art und Weise, wie Azure AD Domänen behandelt.  Dies bedeutet, dass der IssuerUri mit den übergeordneten Elementen übereinstimmen muss.
 
 Angenommen, Sie verfügen über „bmcontoso.com“ und fügen dann „corp.bmcontoso.com“ hinzu.  Dies bedeutet, dass der IssuerUri für einen Benutzer von „corp.bmcontoso.com“ wie folgt lauten muss: **http://bmcontoso.com/adfs/services/trust**.  Mit der oben für Azure AD implementierten Standardregel wird aber ein Token mit folgendem Aussteller generiert: **http://corp.bmcontoso.com/adfs/services/trust**. Dies stimmt nicht mit dem erforderlichen Wert der Domäne überein, und bei der Authentifizierung tritt ein Fehler auf.
 
-### <a name="how-to-enable-support-for-sub-domains"></a>Aktivieren der Unterstützung für Unterdomänen
+### Aktivieren der Unterstützung für Unterdomänen
+<a id="how-to-enable-support-for-sub-domains" class="xliff"></a>
 Um dieses Problem zu umgehen, muss die AD FS-Vertrauensstellung der vertrauenden Seite für Microsoft Online aktualisiert werden.  Hierzu müssen Sie eine benutzerdefinierte Anspruchsregel so konfigurieren, dass beim Erstellen des benutzerdefinierten Issuer-Werts alle Unterdomänen aus dem UPN-Suffix des Benutzers entfernt werden. 
 
 Dies ist mit dem folgenden Anspruch möglich:
@@ -162,10 +170,5 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Anspruch zu
     ![Anspruch ersetzen](./media/active-directory-multiple-domains/sub2.png)
 
 5. Klicken Sie auf "OK".  Klicken Sie auf „Übernehmen“.  Klicken Sie auf "OK".  Schließen Sie die AD FS-Verwaltung.
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

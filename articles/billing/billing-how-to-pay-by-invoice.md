@@ -22,11 +22,15 @@ ms.lasthandoff: 04/20/2017
 
 
 ---
-# <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Stellen eines Antrags zum Zahlen eines Azure-Abonnements auf Rechnung
+<a id="submit-a-request-to-pay-azure-subscription-by-invoice" class="xliff"></a>
+
+# Stellen eines Antrags zum Zahlen eines Azure-Abonnements auf Rechnung
 
 Sie können die Zahlungsmethode für Ihr Azure-Abonnement in „Auf Rechnung“ ändern, indem Sie beim Azure-Support einen Antrag stellen. Nach Genehmigung Ihres Antrags erhalten Sie Anweisungen zum Einrichten Ihres Abonnements für die Zahlung auf Rechnung. 
 
-## <a name="request-pay-by-invoice"></a>Antrag für die Zahlung auf Rechnung
+<a id="request-pay-by-invoice" class="xliff"></a>
+
+## Antrag für die Zahlung auf Rechnung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wählen Sie **Hilfe und Support** > **Neue Supportanfrage**.
 
@@ -44,5 +48,7 @@ Sie können die Zahlungsmethode für Ihr Azure-Abonnement in „Auf Rechnung“ 
 
 Wenn Sie aufgrund der Höhe des Guthabens, das Sie benötigen, eine Guthabenprüfung durchführen müssen, können wir Ihnen einen entsprechenden Antrag senden. Nachdem Sie den Antrag eingereicht haben, kann dessen Bearbeitung 5-7 Tage dauern.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+<a id="need-help-contact-support" class="xliff"></a>
+
+## Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

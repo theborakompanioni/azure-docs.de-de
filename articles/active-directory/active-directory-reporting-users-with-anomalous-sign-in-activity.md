@@ -12,15 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2016
-ms.author: saah;kenhoff
-translationtype: Human Translation
+ms.date: 07/15/2017
+ms.author: markvi
+ms.custom: oldportal
+ms.reviewer: dhanyahk
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: acba4a4d3fa589aa1846f63883e5482e60605b70
-
+ms.contentlocale: de-de
+ms.lasthandoff: 12/28/2016
 
 ---
-# <a name="users-with-anomalous-sign-in-activity"></a>Benutzer mit anomalen Anmeldeaktivitäten
+# Benutzer mit anomalen Anmeldeaktivitäten
+<a id="users-with-anomalous-sign-in-activity" class="xliff"></a>
 Dies ist ein zusammenfassender Bericht, der verdächtige Anmeldungen aus den folgenden Berichten kombiniert:
 
 <ul><li>Anmeldungen aus unbekannten Quellen</li>
@@ -33,10 +37,5 @@ Dies ist ein zusammenfassender Bericht, der verdächtige Anmeldungen aus den fol
 
 
 ![Benutzer mit anomalen Anmeldeaktivitäten](./media/active-directory-reporting-users-with-anomalous-sign-in-activity/usersWithAnomalousSignInActivity.PNG)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

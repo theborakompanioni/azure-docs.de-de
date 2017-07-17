@@ -3,7 +3,7 @@ title: "Anleitung für Azure Active Directory-Berichte – klassisches Portal | 
 description: "Eine Anleitung mit sämtlichen Artikeln mit Bezug auf Azure Active Directory-Berichte für das klassische Azure-Portal"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 ms.assetid: b60d7f22-f271-4148-a3c8-b0ed0eccd106
 ms.service: active-directory
@@ -11,17 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: femila;markvi
+ms.custom: oldportal
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
 ms.openlocfilehash: 87a563f1e89fa1801edca557e1ef7cfdb6a9de4e
 ms.contentlocale: de-de
 ms.lasthandoff: 01/20/2017
 
-
 ---
-# <a name="azure-active-directory-classic-portal-reporting-guide"></a>Anleitung für Azure Active Directory-Berichte im klassischen Portal
+# Anleitung für Azure Active Directory-Berichte im klassischen Portal
+<a id="azure-active-directory-classic-portal-reporting-guide" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-reporting-guide.md)
 > * [klassischen Azure-Portal](active-directory-reporting-guide-classic-portal.md)

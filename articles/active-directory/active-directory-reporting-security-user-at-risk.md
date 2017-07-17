@@ -1,5 +1,4 @@
 ---
-
 title: "Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal | Microsoft-Dokumentation"
 description: "Enthält Informationen zum Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal."
 services: active-directory
@@ -11,17 +10,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 01ecb98c02b2a01007c7f76805d4db4b7aeee1f0
 ms.contentlocale: de-de
 ms.lasthandoff: 05/08/2017
 
-
 ---
-# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal
+# Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal
+<a id="users-at-risk-security-report-in-the-azure-active-directory-portal" class="xliff"></a>
 
 Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. 
 
@@ -37,7 +37,8 @@ Im Azure-Portal befinden sich die Sicherheitsberichte auf dem Blatt **Azure Acti
 
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-user-at-risk/10.png)
 
-## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
+## Azure Active Directory – Free und Basic Edition
+<a id="azure-active-directory-free-and-basic-edition" class="xliff"></a>
 
 Der Bericht „Gefährdete Benutzer“ in den Editionen Free und Basic von Azure Active Directory enthält eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden. 
 
@@ -49,7 +50,8 @@ Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen u
 
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-user-at-risk/46.png)
 
-## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – Premium Editionen
+## Azure Active Directory – Premium Editionen
+<a id="azure-active-directory-premium-editions" class="xliff"></a>
 
 Der Bericht „Gefährdete Benutzer“ in den Premium Editionen von Azure Active Directory enthält Folgendes:
 
@@ -86,7 +88,8 @@ Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **De
 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 
 - Weitere Informationen zu Azure Active Directory Identity Protection finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 

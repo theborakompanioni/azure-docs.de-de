@@ -3,8 +3,8 @@ title: Anmeldungen aus mehreren geografischen Regionen
 description: "Ein Bericht, der auf Benutzer hinweist, bei denen zwei Anmeldungen aus verschiedenen Regionen zu stammen scheinen und die Zeit zwischen den Anmeldungen es dem jeweiligen Benutzer unmöglich macht, die Entfernung zwischen diesen Regionen reisend zurückgelegt zu haben."
 services: active-directory
 documentationcenter: 
-author: SSalahAhmed
-manager: gchander
+author: MarkusVi
+manager: femila
 editor: 
 ms.assetid: 79259c8a-2388-4747-b41e-c07434ea9a02
 ms.service: active-directory
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 1de57f64692ade442f9ef8d1e3b587ffee35d7cf
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
-# <a name="sign-ins-from-multiple-geographies"></a>Anmeldungen aus mehreren geografischen Regionen
+# Anmeldungen aus mehreren geografischen Regionen
+<a id="sign-ins-from-multiple-geographies" class="xliff"></a>
 Dieser Bericht enthält erfolgreiche Anmeldungen eines Benutzers, wobei zwei Anmeldungen aus verschiedenen Regionen zu stammen scheinen, und die Zeit zwischen den Anmeldungen so kurz ist, dass der Benutzer die Entfernung zwischen diesen Regionen nicht zurückgelegt haben kann. Mögliche Ursachen:
 
 * Der Benutzer hat sein Kennwort für andere Benutzer freigegeben.
@@ -32,10 +34,5 @@ Dieser Bericht enthält erfolgreiche Anmeldungen eines Benutzers, wobei zwei Anm
 Die Ergebnisse aus diesem Bericht zeigen Ihnen die erfolgreichen Anmeldeereignisse, die Dauer zwischen den Anmeldungen, die Regionen, aus denen die Anmeldungen scheinbar erfolgten, und die geschätzte Reisezeit zwischen diesen Regionen, an. Die angezeigte Reisezeit ist lediglich eine Schätzung und unterscheidet sich möglicherweise von der tatsächlichen Reisezeit zwischen den Orten.
 
 ![Anmeldungen aus mehreren geografischen Regionen](./media/active-directory-reporting-sign-ins-from-multiple-geographies/signInsFromMultipleGeographies.PNG)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -13,21 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 9778db69e94e9f1d033cc8c16fdb9554df3eddcc
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
-
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect-Synchronisierung: Aktivieren des AD-Papierkorbs
+# Azure AD Connect-Synchronisierung: Aktivieren des AD-Papierkorbs
+<a id="azure-ad-connect-sync-enable-ad-recycle-bin" class="xliff"></a>
 Es wird empfohlen, den Active Directory-Papierkorb für Ihre lokalen Active Directory-Instanzen, die mit Azure AD synchronisiert werden, zu aktivieren. 
 
 Wenn Sie versehentlich ein lokales AD-Benutzerobjekt löschen und mit dem Feature wiederherstellen, stellt Azure AD das entsprechende Azure AD-Benutzerobjekt wieder her.  Informationen zum AD-Papierkorbfeature finden Sie im Artikel [Scenario Overview for Restoring Deleted Active Directory Objects](https://technet.microsoft.com/library/dd379542.aspx) (Szenarioübersicht über das Wiederherstellen gelöschter Active Directory-Objekte).
 
-## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Vorteile der Aktivierung des AD-Papierkorbs
+## Vorteile der Aktivierung des AD-Papierkorbs
+<a id="benefits-of-enabling-the-ad-recycle-bin" class="xliff"></a>
 Dieses Feature unterstützt Sie folgendermaßen beim Wiederherstellen von Azure AD-Benutzerobjekten:
 
 * Wenn Sie versehentlich ein lokales AD-Benutzerobjekt löschen, wird das entsprechende Azure AD-Benutzerobjekt im nächsten Synchronisierungszyklus gelöscht. Standardmäßig bewahrt Azure AD das gelöschte Azure AD-Benutzerobjekt für 30 Tage als „vorläufig gelöscht“ auf.
@@ -41,9 +43,11 @@ Dieses Feature unterstützt Sie folgendermaßen beim Wiederherstellen von Azure 
 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 **Übersichtsthemen**
 
 * [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+

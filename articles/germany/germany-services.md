@@ -22,8 +22,9 @@ ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="available-services-in-azure-germany"></a>Verfügbare Dienste in Azure Deutschland
-Azure Deutschland erweitert fortlaufend seine Dienste. Diese Dienste werden mit demselben Code bereitgestellt, der in der globalen Azure-Umgebung verwendet wird. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 
+# Verfügbare Dienste in Azure Deutschland
+<a id="available-services-in-azure-germany" class="xliff"></a>
+Azure Deutschland aktualisiert und erweitert seine Dienste fortlaufend nach dem Evergreeningkonzept. Die Dienste werden mit demselben Code bereitgestellt, der in der globalen Azure-Umgebung verwendet wird, und nach Prüfung auf lokale Implementierbarkeit in Azure Deutschland eingepflegt. In diesem Artikel werden die Dienste beschrieben, die zurzeit in Azure Deutschland verfügbar sind. 
 
 >[!NOTE]
 > Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://azure.microsoft.com/regions/services/). 
@@ -33,7 +34,8 @@ Azure Deutschland erweitert fortlaufend seine Dienste. Diese Dienste werden mit 
 Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dienste verfügen über Ressourcenanbieter und können mithilfe von PowerShell verwaltet werden. Ausführliche Informationen zu Resource Manager-Anbietern, API-Versionen und Schemas finden Sie unter [Unterstützte Resource Manager-Dienste](../azure-resource-manager/resource-manager-supported-services.md). Die als im Portal verfügbar angegebenen Dienste können im [Azure Deutschland-Portal](http://portal.microsoftazure.de/) verwaltet werden. 
 
 
-## <a name="computegermany-services-computemd"></a>[Compute](./germany-services-compute.md)
+## [Compute](./germany-services-compute.md)
+<a id="computegermany-services-computemd" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -43,7 +45,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Service Fabric | Ja | Ja |
 
 
-## <a name="networkinggermany-services-networkingmd"></a>[Netzwerk](./germany-services-networking.md)
+## [Netzwerk](./germany-services-networking.md)
+<a id="networkinggermany-services-networkingmd" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -56,7 +59,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="storagegermany-services-storagemd"></a>[Storage](./germany-services-storage.md)
+## [Storage](./germany-services-storage.md)
+<a id="storagegermany-services-storagemd" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -72,7 +76,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="web-and-mobilegermany-services-webandmobilemd"></a>[Web und mobil](./germany-services-webandmobile.md)
+## [Web und Mobil](./germany-services-webandmobile.md)
+<a id="web-and-mobilegermany-services-webandmobilemd" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -82,7 +87,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Media Services | Nein | Nein |
 
 
-## <a name="databasesgermany-services-databasemd"></a>[Datenbanken](./germany-services-database.md)
+## [Datenbanken](./germany-services-database.md)
+<a id="databasesgermany-services-databasemd" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -93,7 +99,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Azure Cosmos DB | Ja | Ja |
 
 
-## <a name="intelligence-and-analytics"></a>Informationen und Analyse
+## Informationen und Analyse
+<a id="intelligence-and-analytics" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -101,7 +108,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Power BI Pro | Ja | Ja |
 
 
-## <a name="internet-of-things-iotgermany-services-iotmd"></a>[Internet of Things (IoT)](./germany-services-iot.md)
+## [Internet der Dinge (IoT)](./germany-services-iot.md)
+<a id="internet-of-things-iotgermany-services-iotmd" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -110,7 +118,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Stream Analytics | Ja | Ja | 
 
 
-## <a name="enterprise-integration"></a>Unternehmensintegration
+## Unternehmensintegration
+<a id="enterprise-integration" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -120,7 +129,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="security-and-identitygermany-services-securityandidentitymd"></a>[Sicherheit und Identität](./germany-services-securityandidentity.md)
+## [Sicherheit und Identität](./germany-services-securityandidentity.md)
+<a id="security-and-identitygermany-services-securityandidentitymd" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -130,7 +140,8 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="monitoring-and-management"></a>Überwachung und Verwaltung
+## Überwachung und Verwaltung
+<a id="monitoring-and-management" class="xliff"></a>
 
 | Dienst | Resource Manager-fähig | Portal |
 | --- | --- | --- |
@@ -144,6 +155,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 

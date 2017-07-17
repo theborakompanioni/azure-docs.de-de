@@ -12,16 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/11/2017
 ms.author: jingwang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
 ms.openlocfilehash: 08298608c2dfbe8b7226ae13bb0fe0f9cd5cec65
+ms.contentlocale: de-de
 ms.lasthandoff: 03/29/2017
 
-
 ---
-# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
+<a id="move-data-from-a-web-table-source-using-azure-data-factory" class="xliff"></a>
+
+# Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie die Kopieraktivität in Azure Data Factory verwendet wird, um Daten aus einer Webtabelle zu einem unterstützten Senkendatenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität und der als Quellen/Senken unterstützten Datenspeichern darstellt.
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus einer Webtabelle in andere Datenspeicher, aber nicht das Verschieben aus anderen Datenspeichern in eine Webtabelle.
@@ -29,7 +31,9 @@ Data Factory unterstützt derzeit nur das Verschieben von Daten aus einer Webtab
 > [!IMPORTANT]
 > Dieser Webconnector unterstützt derzeit nur das Extrahieren von Tabelleninhalten einer HTML-Seite. Verwenden Sie zum Abrufen von Daten von einem HTTP(S)-Endpunkt stattdessen den [HTTP-Connector](data-factory-http-connector.md).
 
-## <a name="getting-started"></a>Erste Schritte
+<a id="getting-started" class="xliff"></a>
+
+## Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Cassandra-Datenspeicher verschiebt. 
 
 - Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
@@ -45,7 +49,9 @@ Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für di
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für eine Webtabelle verwendet werden:
 
-## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
+<a id="linked-service-properties" class="xliff"></a>
+
+## Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den verknüpften Webdienst spezifisch sind.
 
 | Eigenschaft | Beschreibung | Erforderlich |
@@ -54,7 +60,9 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | Url |URL der Webquelle |Ja |
 | authenticationType |Anonym |Ja |
 
-### <a name="using-anonymous-authentication"></a>Verwenden der anonymen Authentifizierung
+<a id="using-anonymous-authentication" class="xliff"></a>
+
+### Verwenden der anonymen Authentifizierung
 
 ```json
 {
@@ -71,7 +79,9 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 
-## <a name="dataset-properties"></a>Dataset-Eigenschaften
+<a id="dataset-properties" class="xliff"></a>
+
+## Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der „typeProperties“-Abschnitt für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften:
@@ -103,7 +113,9 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset un
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
+<a id="copy-activity-properties" class="xliff"></a>
+
+## Eigenschaften der Kopieraktivität
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
 Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
@@ -111,7 +123,9 @@ Eigenschaften im Abschnitt typeProperties der Aktivität können dagegen je nach
 Wenn bei der Kopieraktivität die Quelle den Typ **WebSource**hat, werden derzeit keine zusätzlichen Eigenschaften unterstützt.
 
 
-## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus einer Webtabelle in ein Azure-Blob
+<a id="json-example-copy-data-from-web-table-to-azure-blob" class="xliff"></a>
+
+## JSON-Beispiel: Kopieren von Daten aus einer Webtabelle in ein Azure-Blob
 Dieses Beispiel zeigt Folgendes:
 
 1. Einen verknüpften Dienst des Typs [Web](#linked-service-properties)
@@ -260,7 +274,9 @@ Unter [WebSource-Typeigenschaften](#copy-activity-type-properties) finden Sie di
 }
 ```
 
-## <a name="get-index-of-a-table-in-an-html-page"></a>Abrufen des Indexes einer Tabelle auf einer HTML-Seite
+<a id="get-index-of-a-table-in-an-html-page" class="xliff"></a>
+
+## Abrufen des Indexes einer Tabelle auf einer HTML-Seite
 1. Starten Sie **Excel 2016**, und wechseln Sie zur Registerkarte **Daten**.  
 2. Klicken Sie auf der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
 
@@ -288,6 +304,8 @@ Rufen Sie den Index bei Verwendung von Excel 2013 mit [Microsoft Power Query fü
 > [!NOTE]
 > Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="performance-and-tuning"></a>Leistung und Optimierung
+<a id="performance-and-tuning" class="xliff"></a>
+
+## Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 

@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure Active Directory-Berichten | Microsoft Docs
 description: "Listet die verschiedenen verfügbaren Berichte in Azure Active Directory Reporting auf"
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: 7ac99919-8df5-4424-9298-fc7c025ba949
@@ -12,21 +12,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
+ms.custom: oldportal
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: eec9b73cbaccfa50eec6f237e4d1d810c6efa1d9
 ms.openlocfilehash: e5b8ac91914203156bd395d7f462385e9f6dbcb4
 ms.contentlocale: de-de
 ms.lasthandoff: 02/24/2017
 
-
 ---
-# <a name="getting-started-with-azure-active-directory-reporting"></a>Erste Schritte mit Azure Active Directory-Berichten
-## <a name="what-it-is"></a>Funktionsbeschreibung
+# Erste Schritte mit Azure Active Directory-Berichten
+<a id="getting-started-with-azure-active-directory-reporting" class="xliff"></a>
+## Funktionsbeschreibung
+<a id="what-it-is" class="xliff"></a>
 Azure Active Directory (Azure AD) umfasst Sicherheits-, Aktivitäts- und Prüfberichte für Ihr Verzeichnis. Hier sehen Sie eine Liste der enthaltenen Berichte:
 
-### <a name="security-reports"></a>Sicherheitsberichte
+### Sicherheitsberichte
+<a id="security-reports" class="xliff"></a>
 * Anmeldungen von unbekannten Quellen
 * Anmeldungen nach mehreren Fehlern
 * Anmeldungen aus mehreren geografischen Regionen
@@ -35,7 +39,8 @@ Azure Active Directory (Azure AD) umfasst Sicherheits-, Aktivitäts- und Prüfbe
 * Anmeldungen von möglicherweise infizierten Geräten
 * Benutzer mit anomalen Anmeldeaktivitäten
 
-### <a name="activity-reports"></a>Aktivitätsberichte
+### Aktivitätsberichte
+<a id="activity-reports" class="xliff"></a>
 * Anwendungsnutzung: Zusammenfassung
 * Anwendungsnutzung: detailliert
 * Anwendungsdashboard
@@ -46,7 +51,8 @@ Azure Active Directory (Azure AD) umfasst Sicherheits-, Aktivitäts- und Prüfbe
 * Bericht zur Registrierung für die Kennwortzurücksetzung
 * Kennwortzurücksetzungsaktivität
 
-### <a name="audit-reports"></a>Prüfberichte
+### Prüfberichte
+<a id="audit-reports" class="xliff"></a>
 * Verzeichnisprüfbericht
 
 > [!TIP]
@@ -54,15 +60,18 @@ Azure Active Directory (Azure AD) umfasst Sicherheits-, Aktivitäts- und Prüfbe
 > 
 > 
 
-## <a name="how-it-works"></a>So funktioniert's
-### <a name="reporting-pipeline"></a>Berichterstellungspipeline
+## So funktioniert's
+<a id="how-it-works" class="xliff"></a>
+### Berichterstellungspipeline
+<a id="reporting-pipeline" class="xliff"></a>
 Die Berichterstellungspipeline umfasst drei wesentliche Schritte. Jedes Mal, wenn sich ein Benutzer anmeldet oder eine Authentifizierung erfolgt, geschieht Folgendes:
 
 * Erstens wird der Benutzer authentifiziert (erfolgreich oder nicht erfolgreich), und das Ergebnis wird in den Azure Active Directory-Dienstdatenbanken gespeichert.
 * In regelmäßigen Abständen werden alle aktuellen Anmeldungen verarbeitet. Dabei durchsuchen Algorithmen für Sicherheit und anomale Aktivität alle aktuellen Anmeldungen nach verdächtigen Aktivitäten.
 * Nach der Verarbeitung werden die Berichte geschrieben, zwischengespeichert und im klassischen Azure-Portal bereitgestellt.
 
-### <a name="report-generation-times"></a>Berichterstellungszeiten
+### Berichterstellungszeiten
+<a id="report-generation-times" class="xliff"></a>
 Aufgrund der großen Anzahl von Authentifizierungen und Anmeldungen, die von der Azure AD-Plattform verarbeitet werden, sind die aktuellsten verarbeiteten Anmeldungen im Durchschnitt eine Stunde alt. In seltenen Fällen kann es bis zu 8 Stunden dauern, die letzten Anmeldungen zu verarbeiten.
 
 Sie finden die aktuellste verarbeitete Anmeldung im Hilfetext am oberen Rand jedes Berichts.
@@ -74,23 +83,28 @@ Sie finden die aktuellste verarbeitete Anmeldung im Hilfetext am oberen Rand jed
 > 
 > 
 
-## <a name="getting-started"></a>Erste Schritte
-### <a name="sign-into-the-azure-classic-portal"></a>Melden Sie sich beim klassischen Azure-Portal an.
+## Erste Schritte
+<a id="getting-started" class="xliff"></a>
+### Melden Sie sich beim klassischen Azure-Portal an.
+<a id="sign-into-the-azure-classic-portal" class="xliff"></a>
 Zunächst müssen Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als globaler oder Kompatibilitätsadministrator anmelden. Sie müssen außerdem ein Azure-Abonnementdienstadministrator oder -Co-Administrator sein, bzw. das Azure-Abonnement "Zugriff auf Azure AD" benutzen.
 
-### <a name="navigate-to-reports"></a>Navigieren zu Berichten
+### Navigieren zu Berichten
+<a id="navigate-to-reports" class="xliff"></a>
 Um Berichte anzuzeigen, navigieren Sie zur Registerkarte "Berichte" am Anfang des Verzeichnisses.
 
 Wenn Sie zum ersten Mal Berichte anzeigen, müssen Sie ein Dialogfeld bestätigen, bevor Sie die Berichte anzeigen können. So wird sichergestellt, dass die Administratoren in Ihrer Organisation das Anzeigen dieser Daten akzeptieren, die in einigen Ländern als private Informationen gelten könnten.
 
 ![Dialogfeld](./media/active-directory-reporting-getting-started/dialogBox.png)
 
-### <a name="explore-each-report"></a>Untersuchen der einzelnen Berichte
+### Untersuchen der einzelnen Berichte
+<a id="explore-each-report" class="xliff"></a>
 Navigieren Sie zu jedem Bericht, um die erfassten Daten und die verarbeiteten Anmeldungen zu sehen. Sie finden [hier eine Liste aller Berichte](active-directory-reporting-guide.md).
 
 ![Alle Berichte](./media/active-directory-reporting-getting-started/reportsMain.png)
 
-### <a name="download-the-reports-as-csv"></a>Herunterladen der Berichte als CSV-Datei
+### Herunterladen der Berichte als CSV-Datei
+<a id="download-the-reports-as-csv" class="xliff"></a>
 Jeder Bericht kann als CSV-Datei (durch Trennzeichen getrennte Werte) heruntergeladen werden. Sie können diese Dateien in Excel, PowerBI oder Analyseprogrammen von Drittanbietern öffnen, um Ihre Daten näher zu analysieren.
 
 Um einen Bericht im CSV-Format herunterzuladen, navigieren Sie zum Bericht, und klicken Sie unten auf "Herunterladen".
@@ -102,8 +116,10 @@ Um einen Bericht im CSV-Format herunterzuladen, navigieren Sie zum Bericht, und 
 > 
 > 
 
-## <a name="next-steps"></a>Nächste Schritte
-### <a name="customize-alerts-for-anomalous-sign-in-activity"></a>Anpassen von Warnungen bei anomaler Anmeldungsaktivität
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+### Anpassen von Warnungen bei anomaler Anmeldungsaktivität
+<a id="customize-alerts-for-anomalous-sign-in-activity" class="xliff"></a>
 Wechseln Sie zur Registerkarte "Konfigurieren" Ihres Verzeichnisses.
 
 Führen Sie einen Bildlauf zum Abschnitt "Benachrichtigungen" aus.
@@ -112,10 +128,12 @@ Aktivieren oder deaktivieren Sie den Bereich „E-Mail-Benachrichtigungen über 
 
 ![Abschnitt "Benachrichtigungen"](./media/active-directory-reporting-getting-started/notificationsSection.png)
 
-### <a name="integrate-with-the-azure-ad-reporting-api"></a>Integrieren in die Azure AD Reporting-API
+### Integrieren in die Azure AD Reporting-API
+<a id="integrate-with-the-azure-ad-reporting-api" class="xliff"></a>
 Informationen hierzu finden Sie unter [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md).
 
-### <a name="engage-multi-factor-authentication-on-users"></a>Einbinden der mehrstufigen Authentifizierung von Benutzern
+### Einbinden der mehrstufigen Authentifizierung von Benutzern
+<a id="engage-multi-factor-authentication-on-users" class="xliff"></a>
 Wählen Sie einen Benutzer in einem Bericht aus.
 
 Klicken Sie am unteren Bildschirmrand auf die Schaltfläche "MFA aktivieren".
@@ -127,14 +145,18 @@ Klicken Sie am unteren Bildschirmrand auf die Schaltfläche "MFA aktivieren".
 > 
 > 
 
-## <a name="learn-more"></a>Weitere Informationen
-### <a name="audit-events"></a>Überwachen von Ereignissen
+## Weitere Informationen
+<a id="learn-more" class="xliff"></a>
+### Überwachen von Ereignissen
+<a id="audit-events" class="xliff"></a>
 Informationen dazu, welche Ereignisse im Verzeichnis überwacht werden, finden Sie unter [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md).
 
-### <a name="api-integration"></a>API-Integration
+### API-Integration
+<a id="api-integration" class="xliff"></a>
 Informationen hierzu finden Sie unter [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md) und in der [API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt126081.aspx).
 
-### <a name="get-in-touch"></a>Setzen Sie sich mit uns in Verbindung
+### Setzen Sie sich mit uns in Verbindung
+<a id="get-in-touch" class="xliff"></a>
 Unter der E-Mail-Adresse [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) erhalten Sie Feedback, Hilfe und Antworten auf Ihre Fragen.
 
 > [!TIP]

@@ -4,7 +4,7 @@ description: "Eine Beispielanwendung wird auf dem Adafruit Feather M0 WiFi ausge
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Arduino-Kontroll-LED über Web, Arduino-Kontroll-LED über Web"
 ROBOTS: NOINDEX
@@ -17,33 +17,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
 ms.openlocfilehash: 63113841ca836681232e0aa43b15b444f8bb92e2
+ms.contentlocale: de-de
 ms.lasthandoff: 01/28/2017
 
-
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>Ausführen einer Beispielanwendung zum Empfangen von C2D-Nachrichten
+<a id="run-a-sample-application-to-receive-cloud-to-device-messages" class="xliff"></a>
+
+# Ausführen einer Beispielanwendung zum Empfangen von C2D-Nachrichten
 In diesem Artikel stellen Sie eine Beispielanwendung auf dem Adafruit Feather M0 WiFi Arduino-Board bereit.
 
 Die Beispielanwendung überwacht eingehende Nachrichten von IoT Hub. Sie führen außerdem auf dem Computer einen Gulp-Task aus, um Nachrichten von Ihrem Arduino-Board an den IoT Hub zu senden. Wenn die Beispielanwendung die Nachrichten empfängt, blinkt die LED. Problemlösungen finden Sie auf der [Seite zur Problembehandlung][troubleshooting].
 
-## <a name="what-you-will-do"></a>Aufgaben
+<a id="what-you-will-do" class="xliff"></a>
+
+## Aufgaben
 * Verbinden der Beispielanwendung mit IoT Hub
 * Bereitstellen und Ausführen der Beispielanwendung
 * Senden Sie Nachrichten vom IoT Hub an das Arduino-Board, damit die LED blinkt.
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+<a id="what-you-will-learn" class="xliff"></a>
+
+## Sie lernen Folgendes
 In diesem Artikel lernen Sie Folgendes:
 * Überwachen von eingehenden Nachrichten von IoT Hub
 * Senden von C2D-Nachrichten von Ihrem IoT Hub an das Arduino-Board
 
-## <a name="what-you-need"></a>Erforderliches Element
+<a id="what-you-need" class="xliff"></a>
+
+## Erforderliches Element
 * Richten Sie Ihr Arduino-Board zur Verwendung ein. Informationen zum Einrichten des Arduino-Board finden Sie unter [Konfigurieren Ihres Geräts][configure-your-device].
 * Ein in Ihrem Azure-Abonnement erstellter IoT Hub. Informationen zum Erstellen der IoT Hub-Instanz finden Sie unter [Erstellen der Azure IoT Hub-Instanz][create-your-azure-iot-hub].
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>Verbinden der Beispielanwendung mit IoT Hub
+<a id="connect-the-sample-application-to-your-iot-hub" class="xliff"></a>
+
+## Verbinden der Beispielanwendung mit IoT Hub
 
 1. Stellen Sie sicher, dass Sie sich im Repositoryordner `iot-hub-c-feather-m0-getting-started` befinden.
 
@@ -101,7 +111,9 @@ In diesem Artikel lernen Sie Folgendes:
    * Ersetzen Sie **[IoT device connection string]** durch die Geräteverbindungszeichenfolge, die Sie mit dem Befehl `az iot device show-connection-string --hub-name {my hub name} --device-id {device id}` abrufen.
    * Ersetzen Sie **[IoT hub connection string]** durch die IoT Hub-Verbindungszeichenfolge, die Sie mit dem Befehl `az iot hub show-connection-string --name {my hub name}` abrufen.
 
-## <a name="deploy-and-run-the-sample-application"></a>Bereitstellen und Ausführen der Beispielanwendung
+<a id="deploy-and-run-the-sample-application" class="xliff"></a>
+
+## Bereitstellen und Ausführen der Beispielanwendung
 Führen Sie die folgenden Befehle aus, um die Beispielanwendung auf dem Arduino-Board bereitzustellen und auszuführen:
 
 ```bash
@@ -121,10 +133,14 @@ Die LED sollte alle zwei Sekunden blinken, da der Gulp-Task 20 Nachrichten von I
 
 ![Beispielanwendung mit gulp-Befehl und blink-Nachrichten][sample-application]
 
-## <a name="summary"></a>Zusammenfassung
+<a id="summary" class="xliff"></a>
+
+## Zusammenfassung
 Sie haben erfolgreich Nachrichten von Ihrem IoT Hub aus an das Arduino-Board gesendet, damit die LED blinkt. Die nächste Aufgabe ist optional: das Ändern des Ein- und Ausschaltverhaltens der LED.
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 [Ändern des Ein- und Aus-Verhaltens der LED][change-the-on-and-off-led-behavior]
 
 

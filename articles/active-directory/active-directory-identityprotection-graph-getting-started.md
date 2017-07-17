@@ -12,16 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
 ms.openlocfilehash: 9c7c10031c068eeb02b4468ec48bf60aece2f12e
+ms.contentlocale: de-de
 ms.lasthandoff: 11/17/2016
 
-
 ---
-# <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph
+<a id="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph" class="xliff"></a>
+
+# Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph
 Microsoft Graph ist der einheitliche API-Endpunkt von Microsoft und stellt die [Azure Active Directory Identity Protection](active-directory-identityprotection.md) -APIs zur Verfügung. Mit der ersten API, **identityRiskEvents**, können Sie in Microsoft Graph eine Liste von [Risikoereignissen](active-directory-identityprotection-risk-events-types.md) und zugehörige Informationen abfragen. In diesem Artikel erhalten Sie eine kurze Einführung in das Abfragen dieser API. Eine ausführliche Einführung, die vollständige Dokumentation und Informationen zum Zugriff auf Graph-Explorer finden Sie auf der Website zu [Microsoft Graph](https://graph.microsoft.io/).
 
 
@@ -36,7 +38,9 @@ Bevor Sie beginnen, benötigen Sie Folgendes:
 * Administratorrechte, um die Anwendung in Azure AD erstellen zu können
 * Den Namen der Domäne Ihres Mandanten (z.B. „contoso.onmicrosoft.com“)
 
-## <a name="add-an-application-with-a-client-secret"></a>Hinzufügen einer Anwendung mit einem geheimen Clientschlüssel
+<a id="add-an-application-with-a-client-secret" class="xliff"></a>
+
+## Hinzufügen einer Anwendung mit einem geheimen Clientschlüssel
 1. [anmelden](https://manage.windowsazure.com) . 
 2. Klicken Sie im linken Navigationsbereich auf **Active Directory**. 
    
@@ -74,7 +78,9 @@ Sie können Ihre Anwendung nun konfigurieren.
 
 ![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_07.png)
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Gewähren Ihrer Anwendung die Berechtigung zum Verwenden der API
+<a id="grant-your-application-permission-to-use-the-api" class="xliff"></a>
+
+## Gewähren Ihrer Anwendung die Berechtigung zum Verwenden der API
 1. Klicken Sie auf der Anwendungsseite im Menü oben auf **Konfigurieren**. 
    
     ![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_08.png)
@@ -95,7 +101,9 @@ Sie können Ihre Anwendung nun konfigurieren.
    
     ![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
 
-## <a name="get-an-access-key"></a>Abrufen eines Zugriffsschlüssels
+<a id="get-an-access-key" class="xliff"></a>
+
+## Abrufen eines Zugriffsschlüssels
 1. Wählen Sie auf der Anwendungsseite im Abschnitt **Schlüssel** als Dauer „1 Jahr“ aus.
    
     ![Erstellen einer Anwendung](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_13.png)
@@ -112,7 +120,9 @@ Sie können Ihre Anwendung nun konfigurieren.
    > 
 4. Kopieren Sie im Abschnitt **Eigenschaften** die **Client-ID**, und legen Sie sie an einem sicheren Speicherort ab. 
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Authentifizieren bei Microsoft Graph und Abfragen der Identitätsrisikoereignis-API
+<a id="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api" class="xliff"></a>
+
+## Authentifizieren bei Microsoft Graph und Abfragen der Identitätsrisikoereignis-API
 Sie sollten jetzt über Folgendes verfügen:
 
 * Die oben kopierte Client-ID
@@ -175,13 +185,17 @@ Fügen Sie einfach Ihre Client-ID, den Schlüssel und die Mandantendomäne hinzu
     } 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 Herzlichen Glückwunsch, Sie haben gerade Ihren ersten Aufruf an Microsoft Graph ausgeführt.  
 Sie können nun Identitätsrisikoereignisse abfragen und die Daten nach Bedarf verwenden.
 
 Weitere Informationen zu Microsoft Graph und zum Erstellen von Anwendungen mithilfe der Graph-API finden Sie in der [Dokumentation](https://graph.microsoft.io/docs) sowie auf der Website zu [Microsoft Graph](https://graph.microsoft.io/). Erstellen Sie außerdem ein Lesezeichen für die Seite [Azure AD Identity Protection-API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root). Dort werden alle in Graph verfügbaren Identity Protection-APIs aufgeführt. Wenn neue Methoden für die Verwendung von Identity Protection über APIs hinzugefügt werden, werden sie auf dieser Seite angezeigt.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+<a id="additional-resources" class="xliff"></a>
+
+## Zusätzliche Ressourcen
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 * [Arten von Risikoereignissen, die von Azure Active Directory Identity Protection erkannt werden](active-directory-identityprotection-risk-events-types.md)
 * [Microsoft Graph](https://graph.microsoft.io/)

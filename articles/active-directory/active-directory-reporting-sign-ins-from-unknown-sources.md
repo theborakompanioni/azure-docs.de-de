@@ -3,7 +3,7 @@ title: Anmeldungen aus unbekannten Quellen
 description: Ein Bericht, der auf Benutzer hinweist, die sich von einer anonymen Proxy-IP-Adresse aus erfolgreich bei Ihrem Verzeichnis angemeldet haben.
 services: active-directory
 documentationcenter: 
-author: SSalahAhmed
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: 2f045543-1578-4972-bf70-b35310f23110
@@ -20,9 +20,9 @@ ms.openlocfilehash: 90006121e4b3392f6e3ecffb4a56aca330feb02f
 ms.contentlocale: de-de
 ms.lasthandoff: 05/05/2017
 
-
 ---
-# <a name="sign-ins-from-unknown-sources"></a>Anmeldungen aus unbekannten Quellen
+# Anmeldungen aus unbekannten Quellen
+<a id="sign-ins-from-unknown-sources" class="xliff"></a>
 Dieser Bericht enthält die Benutzer, die sich erfolgreich bei Ihrem Verzeichnis angemeldet haben, während eine Client-IP-Adresse zugewiesen war, die von Microsoft als IP-Adresse eines anonymen Proxys erkannt wurde (beispielsweise eine Tor-IP-Adresse). Diese Proxys werden häufig von Benutzern verwendet, die die IP-Adresse ihres Computers verbergen möchten, und sie können in böswilliger Absicht genutzt werden.
 
 Die Ergebnisse in diesem Bericht geben an, wie oft sich ein Benutzer bei Ihrem Verzeichnis von dieser Adresse aus angemeldet hat, und weisen die IP-Adresse des Proxys aus.

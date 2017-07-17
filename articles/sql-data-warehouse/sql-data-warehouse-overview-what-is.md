@@ -16,14 +16,15 @@ ms.custom: overview
 ms.date: 2/28/2017
 ms.author: jrj;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 70e0cb62ff9da5486e956a59a110e12093e90f5d
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 575c49f83c8845edcea984459f3907490c62d269
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="what-is-azure-sql-data-warehouse"></a>Was ist Azure SQL Data Warehouse?
+# Was ist Azure SQL Data Warehouse?
+<a id="what-is-azure-sql-data-warehouse" class="xliff"></a>
 Azure SQL Data Warehouse ist eine cloudbasierte, horizontal hochskalierbare, relationale MPP-Datenbank (Massively Parallel Processing), mit der sehr große Datenvolumen verarbeitet werden können. 
 
 Für SQL Data Warehouse gilt Folgendes:
@@ -37,7 +38,8 @@ Für SQL Data Warehouse gilt Folgendes:
 
 In diesem Artikel werden die wichtigen Funktionen von SQL Data Warehouse beschrieben.
 
-## <a name="massively-parallel-processing-architecture"></a>Massively Parallel Processing-Architektur
+## Massively Parallel Processing-Architektur
+<a id="massively-parallel-processing-architecture" class="xliff"></a>
 SQL Data Warehouse ist ein verteiltes Datenbanksystem mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP). Im Hintergrund verteilt SQL Data Warehouse Ihre Daten auf viele Shared-Nothing-Speicher - und -Verarbeitungseinheiten. Die Daten werden auf einer lokal redundanten Premium-Speicherebene gespeichert, der dynamisch verknüpfte Computeknoten übergeordnet sind, die Abfragen ausführen. SQL Data Warehouse verfolgt bei der Ausführung von Lasten und komplexen T-SQL-Abfragen das Konzept „Teile und herrsche“. Anforderungen werden von einem Steuerknoten empfangen, für die Verteilung optimiert und dann an Computeknoten übergeben, die die Schritte parallel ausführen.
 
 Die Entkoppelung von Speicher und Compute ermöglicht SQL Data Warehouse Folgendes:
@@ -59,7 +61,8 @@ Im folgenden Diagramm ist die Architektur ausführlicher dargestellt:
 
 **Datenverschiebungsdienst:** Mit dem Datenverschiebungsdienst (Data Movement Service, DMS) werden Daten zwischen Knoten verschoben. Per DMS erhalten die Computeknoten Zugriff auf Daten, die sie für Verknüpfungen und Aggregationen benötigen. DMS ist kein Azure-Dienst. Es ist ein Windows-Dienst, der auf allen Knoten zusammen mit SQL-Datenbank ausgeführt wird. DMS ist ein Hintergrundprozess, mit dem nicht direkt interagiert werden kann. In Abfrageplänen sehen Sie jedoch, wann DMS-Vorgänge auftreten, da zur parallelen Ausführung der einzelnen Abfragen eine Datenverschiebung erforderlich ist.
 
-## <a name="optimized-for-data-warehouse-workloads"></a>Für Data Warehouse-Workloads optimiert
+## Für Data Warehouse-Workloads optimiert
+<a id="optimized-for-data-warehouse-workloads" class="xliff"></a>
 Das MPP-Konzept wird durch mehrere Data Warehousing-spezifische Leistungsoptimierungen unterstützt:
 
 * Einen verteilten Abfrageoptimierer und einen Satz mit komplexen Statistiken, die datenübergreifend gelten. Mit den Informationen zur Datengröße und -verteilung kann der Dienst Abfragen optimieren, indem die Kosten bestimmter Vorgänge für verteilte Abfragen bewertet werden.
@@ -67,7 +70,8 @@ Das MPP-Konzept wird durch mehrere Data Warehousing-spezifische Leistungsoptimie
 * Gruppierte **Columnstore** -Indizes werden standardmäßig verwendet. Mithilfe des spaltenbasierten Speichers erreicht SQL Data Warehouse durchschnittlich eine fünfmal höhere Komprimierung als mit dem herkömmlichen zeilenorientierten Speicher und eine bis zu zehnmal höhere Abfrageleistung (oder mehr). Analytics-Abfragen, bei denen eine große Zahl von Zeilen überprüft werden muss, funktionieren besser mit Columnstore-Indizes.
 
 
-## <a name="predictable-and-scalable-performance-with-data-warehouse-units"></a>Planbare und skalierbare Leistung mit Data Warehouse-Einheiten
+## Planbare und skalierbare Leistung mit Data Warehouse-Einheiten
+<a id="predictable-and-scalable-performance-with-data-warehouse-units" class="xliff"></a>
 Da SQL Data Warehouse auf ähnlichen Technologien basiert wie SQL-Datenbank, können Benutzer bei analytischen Abfragen eine konsistente, planbare Leistung erwarten. Beim Hinzufügen oder Entfernen von Computeknoten ist mit einer linearen Skalierung der Leistung zu rechnen. Die Zuordnung von Ressourcen zur SQL Data Warehouse-Instanz wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. DWUs sind ein Maß für zugrunde liegende Ressourcen wie CPU, Arbeitsspeicher und IOPS, die der SQL Data Warehouse-Instanz zugeordnet werden. Wenn Sie die Anzahl von DWUs erhöhen, erhöht sich auch die Anzahl von Ressourcen, und die Leistung wird gesteigert. Mit DWUs kann vor allem Folgendes sichergestellt werden:
 
 * Sie können Ihr Data Warehouse skalieren, ohne sich um die zugrunde liegende Hardware oder Software kümmern zu müssen.
@@ -84,7 +88,8 @@ Data Warehouse-Einheiten stellen ein Maß für drei Metriken bereit, die eng mit
 
 **Create Table As Select (CTAS)** : Mit CTAS wird die Fähigkeit zum Kopieren einer Tabelle gemessen. Dies umfasst das Lesen von Daten aus dem Speicher, das Verteilen auf die Knoten der Anwendung und das erneute Schreiben in den Speicher. Dies ist ein Vorgang mit hohem CPU-, E/A- und Netzwerkaufwand.
 
-## <a name="built-on-sql-server"></a>SQL Server als Grundlage
+## SQL Server als Grundlage
+<a id="built-on-sql-server" class="xliff"></a>
 SQL Data Warehouse basiert auf dem relationalen Datenbankmodul von SQL Server und enthält viele Features, die Sie von einem Data Warehouse für Unternehmen erwarten. Wenn Sie T-SQL bereits kennen, ist es einfach, Ihr Wissen auf SQL Data Warehouse zu übertragen. Die Beispiele in der gesamten Dokumentation stellen für Fortgeschrittene und Anfänger gleichermaßen eine gute Starthilfe dar. Sie können sich den Aufbau der Sprachelemente von SQL Data Warehouse generell wie folgt vorstellen:
 
 * Für SQL Data Warehouse wird die T-SQL-Syntax für viele Vorgänge verwendet. Außerdem werden viele herkömmliche SQL-Konstrukte unterstützt, z.B. gespeicherte Prozeduren, benutzerdefinierte Funktionen, Tabellenpartitionierung, Indizes und Sortierungen.
@@ -93,10 +98,12 @@ SQL Data Warehouse basiert auf dem relationalen Datenbankmodul von SQL Server un
 
 Mit Transact-SQL und der Funktionskompatibilität zwischen SQL Server, SQL Data Warehouse, SQL-Datenbank und Analytic Platform System können Sie eine Lösung entwickeln, die Ihren Bedürfnissen entspricht. Sie können entscheiden, wo Ihre Daten basierend auf der Leistung, der Sicherheit und den Skalierungsanforderungen gespeichert werden sollen, und dann Daten bei Bedarf zwischen verschiedenen Systemen übertragen.
 
-## <a name="data-protection"></a>Datenschutz
+## Datenschutz
+<a id="data-protection" class="xliff"></a>
 SQL Data Warehouse speichert alle Daten mithilfe von lokal redundantem Speicher in Azure Premium. Mehrere synchrone Kopien der Daten werden im lokalen Rechenzentrum gepflegt, um transparenten Datenschutz bei lokalen Ausfällen zu gewährleisten. Außerdem sichert SQL Data Warehouse in regelmäßigen Abständen automatisch Ihre aktiven (nicht angehaltenen) Datenbanken mithilfe von Azure Storage-Momentaufnahmen. Weitere Informationen zum Sichern und Wiederherstellen finden Sie unter [Sichern und Wiederherstellen – Übersicht][Backup and restore overview].
 
-## <a name="integrated-with-microsoft-tools"></a>Integration in Microsoft-Tools
+## Integration in Microsoft-Tools
+<a id="integrated-with-microsoft-tools" class="xliff"></a>
 In SQL Data Warehouse sind außerdem viele Tools integriert, mit denen SQL Server-Benutzer häufig vertraut sind. Zu diesen Tools zählen:
 
 **Herkömmliche SQL Server-Tools** : SQL Data Warehouse ist vollständig in SQL Server Analysis Services, Integration Services und Reporting Services integriert.
@@ -105,17 +112,20 @@ In SQL Data Warehouse sind außerdem viele Tools integriert, mit denen SQL Serve
 
 **Drittanbietertools**: Viele Anbieter von Drittanbietertools haben sich die Integration ihrer Tools in SQL Data Warehouse zertifizieren lassen. Eine vollständige Liste finden Sie unter [SQL Data Warehouse-Lösungspartner][SQL Data Warehouse solution partners].
 
-## <a name="hybrid-data-sources-scenarios"></a>Szenarien für Hybriddatenquellen
+## Szenarien für Hybriddatenquellen
+<a id="hybrid-data-sources-scenarios" class="xliff"></a>
 PolyBase ermöglicht es Ihnen, Ihre Daten aus unterschiedlichen Quellen mithilfe von vertrauten T-SQL-Befehlen zu nutzen. PolyBase ermöglicht Ihnen das Abfragen nicht relationaler Daten im Azure-Blobspeicher wie in einer normalen Tabelle. Verwenden Sie PolyBase, um nicht relationale Daten abzufragen oder nicht relationale Daten in SQL Data Warehouse zu importieren.
 
 * PolyBase verwendet externe Tabellen für den Zugriff auf nicht relationale Daten. Die Tabellendefinitionen werden im SQL Data Warehouse gespeichert, und Sie können wie bei normalen relationalen Daten auch per SQL und mit Tools darauf zugreifen.
 * PolyBase verhält sich bei der Integration agnostisch. Für alle unterstützten Quellen werden die gleichen Features und Funktionen bereitgestellt. Die von PolyBase gelesenen Daten können in verschiedenen Formaten vorliegen – unter anderem als durch Trennzeichen getrennte Dateien oder als ORC-Dateien.
 * PolyBase kann verwendet werden, um auf Blobspeicher zuzugreifen, der auch als Speicher für einen HDInsight-Cluster verwendet wird. Hierdurch erhalten Sie mit relationalen und nicht relationalen Tools Zugriff auf die gleichen Daten.
 
-## <a name="sla"></a>SLA
+## SLA
+<a id="sla" class="xliff"></a>
 SQL Data Warehouse bietet eine Vereinbarung zum Servicelevel (SLA) auf Produktebene als Teil des Microsoft Online Services-SLA. Weitere Informationen finden Sie unter [SLA für SQL Data Warehouse][SLA for SQL Data Warehouse]. Weitere Informationen zum SLA für alle anderen Produkte finden Sie auf der Azure-Seite [Service Level Agreements]. Sie können die SLAs auch auf der Seite [Volumenlizenzierung][Volume Licensing] herunterladen. 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht haben, können Sie sich nun darüber informieren, wie Sie schnell [eine SQL Data Warehouse-Instanz erstellen][create a SQL Data Warehouse] und [Beispieldaten][load sample data] laden. Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar][Azure glossary] sehr nützlich. Weitere SQL Data Warehouse-Ressourcen:  
 
 * [Kundenerfolgsgeschichten]
@@ -144,7 +154,7 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Kundenerfolgsgeschichten]: https://azure.microsoft.com/en-us/case-studies/?service=sql-data-warehouse
+[Kundenerfolgsgeschichten]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [Customer Advisory Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse

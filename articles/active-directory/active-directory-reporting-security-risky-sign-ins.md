@@ -1,5 +1,4 @@
 ---
-
 title: "Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal | Microsoft-Dokumentation"
 description: "Enthält Informationen zum Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal."
 services: active-directory
@@ -11,17 +10,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: e21b7733bc0f6b8625fbdcec3529ad603ce306c1
 ms.contentlocale: de-de
 ms.lasthandoff: 05/08/2017
 
-
 ---
-# <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
+# Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
+<a id="risky-sign-ins-report-in-the-azure-active-directory-portal" class="xliff"></a>
 
 Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. 
 
@@ -38,7 +38,8 @@ Im [Azure-Portal](https://portal.azure.com) befinden sich die Sicherheitsbericht
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-risky-sign-ins/10.png)
 
 
-## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
+## Azure Active Directory – Free und Basic Edition
+<a id="azure-active-directory-free-and-basic-edition" class="xliff"></a>
 
 In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Der Bericht über Risikoereignisse enthält Folgendes:
 
@@ -63,7 +64,8 @@ Basierend auf Ihrer Untersuchung der riskanten Anmeldung können Sie Azure Activ
 
 Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
 
-## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – Premium Editionen
+## Azure Active Directory – Premium Editionen
+<a id="azure-active-directory-premium-editions" class="xliff"></a>
 
 Der Bericht „Riskante Anmeldungen“ in den Premium Editionen von Azure Active Directory enthält Folgendes:
 
@@ -112,7 +114,8 @@ Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **De
 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 
 - Weitere Informationen zu Azure Active Directory Identity Protection finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 

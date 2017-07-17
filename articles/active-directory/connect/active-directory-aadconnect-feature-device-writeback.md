@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
@@ -20,9 +20,9 @@ ms.openlocfilehash: 310dcb176c2e1556af4ed0e0f50ea77c4644ec98
 ms.contentlocale: de-de
 ms.lasthandoff: 07/06/2017
 
-
 ---
-# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Aktivieren des Geräterückschreibens
+# Azure AD Connect: Aktivieren des Geräterückschreibens
+<a id="azure-ad-connect-enabling-device-writeback" class="xliff"></a>
 > [!NOTE]
 > Für das Geräterückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
 > 
@@ -38,10 +38,12 @@ Dies bietet zusätzliche Sicherheit und die Gewissheit, dass nur vertrauenswürd
 > <li>Geräte müssen sich in der gleichen Gesamtstruktur befinden wie die Benutzer. Da Geräte in eine einzelne Gesamtstruktur zurückgeschrieben werden müssen, unterstützt diese Funktion derzeit keine Bereitstellung mit mehreren Gesamtstrukturen für Benutzer.</li>
 > <li>In der lokalen Active Directory-Gesamtstruktur kann nur ein Konfigurationsobjekt für die Geräteregistrierung hinzugefügt werden. Diese Funktion ist nicht mit einer Topologie kompatibel, in der das lokale Active Directory mit mehreren Azure AD-Verzeichnissen synchronisiert wird.</li>> 
 
-## <a name="part-1-install-azure-ad-connect"></a>Teil 1: Installieren von Azure AD Connect
+## Teil 1: Installieren von Azure AD Connect
+<a id="part-1-install-azure-ad-connect" class="xliff"></a>
 1. Installieren Sie Azure AD Connect mit benutzerdefinierten Einstellungen oder Expresseinstellungen. Microsoft empfiehlt, zunächst alle Benutzer und Gruppen erfolgreich zu synchronisieren, bevor Sie das Geräterückschreiben aktivieren.
 
-## <a name="part-2-prepare-active-directory"></a>Teil 2: Vorbereiten von Active Directory
+## Teil 2: Vorbereiten von Active Directory
+<a id="part-2-prepare-active-directory" class="xliff"></a>
 Gehen Sie folgendermaßen vor, um die Verwendung des Geräterückschreibens vorzubereiten.
 
 1. Starten Sie auf dem Computer, auf dem Azure AD Connect installiert ist, PowerShell im erweiterten Modus.
@@ -71,7 +73,8 @@ Parameter:
 * DomainName: Active Directory-Domäne, in der Geräteobjekte erstellt werden. Hinweis: Alle Geräte für eine bestimmte Active Directory-Gesamtstruktur werden in einer einzelnen Domäne erstellt.
 * AdConnectorAccount: Active Directory-Konto, das von Azure AD Connect zum Verwalten von Objekten im Verzeichnis verwendet wird. Dies ist das Konto, das von der Azure AD Connect-Synchronisierung zum Herstellen der Verbindung mit AD verwendet wird. Wenn Sie die Installation mit den Expresseinstellungen durchgeführt haben, ist es das Konto mit dem Präfix „MSOL_“.
 
-## <a name="part-3-enable-device-writeback-in-azure-ad-connect"></a>Teil 3: Aktivieren des Geräterückschreibens in Azure AD Connect
+## Teil 3: Aktivieren des Geräterückschreibens in Azure AD Connect
+<a id="part-3-enable-device-writeback-in-azure-ad-connect" class="xliff"></a>
 Verwenden Sie das folgende Verfahren, um das Geräterückschreiben in Azure AD Connect zu aktivieren.
 
 1. Führen Sie den Installations-Assistenten erneut aus. Wählen Sie auf der Seite „Weitere Aufgaben“ die Option **Synchronisierungsoptionen anpassen**, und klicken Sie auf **Weiter**.
@@ -82,10 +85,12 @@ Verwenden Sie das folgende Verfahren, um das Geräterückschreiben in Azure AD C
    ![Benutzerdefinierte Installation – Zielgesamtstruktur für Geräterückschreiben](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
 4. Schließen Sie die Installation des Assistenten ohne zusätzliche Konfigurationsänderungen ab. Bei Bedarf finden Sie weitere Informationen unter [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md).
 
-## <a name="enable-conditional-access"></a>Aktivieren des bedingten Zugriffs
+## Aktivieren des bedingten Zugriffs
+<a id="enable-conditional-access" class="xliff"></a>
 Ausführliche Informationen zum Aktivieren dieses Szenarios finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../active-directory-conditional-access-automatic-device-registration-setup.md).
 
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>Überprüfen, ob die Geräte mit Active Directory synchronisiert werden
+## Überprüfen, ob die Geräte mit Active Directory synchronisiert werden
+<a id="verify-devices-are-synchronized-to-active-directory" class="xliff"></a>
 Das Geräterückschreiben sollte jetzt ordnungsgemäß ausgeführt werden. Bedenken Sie, dass es bis zu drei Stunden dauern kann, bis Geräteobjekte in Active Directory zurückgeschrieben werden.  Um sicherzustellen, dass Ihre Geräte ordnungsgemäß synchronisiert werden, gehen Sie nach Abschluss der Synchronisierungsregeln wie folgt vor:
 
 1. Starten Sie das Active Directory-Verwaltungscenter.
@@ -94,8 +99,10 @@ Das Geräterückschreiben sollte jetzt ordnungsgemäß ausgeführt werden. Beden
 3. Die gegenwärtig registrierten Geräte werden hier aufgeführt.
    ![Active Directory-Verwaltungscenter – Liste der registrierten Geräte](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
 
-## <a name="troubleshooting"></a>Problembehandlung
-### <a name="the-writeback-checkbox-is-still-disabled"></a>Kontrollkästchen für das Rückschreiben ist weiterhin deaktiviert
+## Problembehandlung
+<a id="troubleshooting" class="xliff"></a>
+### Kontrollkästchen für das Rückschreiben ist weiterhin deaktiviert
+<a id="the-writeback-checkbox-is-still-disabled" class="xliff"></a>
 Wenn das Kontrollkästchen für das Geräterückschreiben nicht aktiviert ist, obwohl Sie die oben beschriebenen Schritte befolgt haben, können Sie mit den folgenden Schritten nachvollziehen, was der Installations-Assistent überprüft, bevor das Kontrollkästchen aktiviert wird.
 
 Zuerst die wichtigen Dinge:
@@ -134,11 +141,13 @@ Zuerst die wichtigen Dinge:
 
 ![Problembehandlung – Überprüfen der Berechtigungen für Device Registration Configuration](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
 
-## <a name="additional-information"></a>Zusätzliche Informationen
+## Zusätzliche Informationen
+<a id="additional-information" class="xliff"></a>
 * [Verwalten von Risiken mit bedingtem Zugriff](../active-directory-conditional-access.md)
 * [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../active-directory-device-registration-on-premises-setup.md)
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
 

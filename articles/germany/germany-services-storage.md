@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 2b30e44eda0bd80bb9f209dc2193c6d6e7602284
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: ccc26feea0df4032f1ccdadbb86bd7f05a667783
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 07/12/2017
 
 ---
 
-# <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
-## <a name="storage"></a>Storage
+# Speicherdienste von Azure Deutschland
+<a id="azure-germany-storage-services" class="xliff"></a>
+## Storage
+<a id="storage" class="xliff"></a>
 Einzelheiten zu Azure Storage und seiner Verwendung finden Sie in der [globalen Dokumentation zu Storage](../storage/index.md).
 
 Die in Azure Storage gespeicherten Daten werden repliziert, um eine hohe Verfügbarkeit sicherzustellen. Bei georedundanten Speichern und georedundanten Speichern mit Lesezugriff repliziert Azure Daten zwischen den *Regionspaaren*. Bei Azure Deutschland sind folgende Regionspaare verfügbar:
@@ -37,7 +39,8 @@ Bei der Datenreplikation werden die Daten innerhalb deutscher Grenzen gehalten. 
 
 Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konten. Wenn Sie diese Funktion aktivieren, verschlüsselt Azure automatisch Daten, bevor sie in den Speicher eingefügt werden. Die Daten werden mithilfe einer 256-Bit-AES-Verschlüsselung verschlüsselt. Die Speicherdienstverschlüsselung unterstützt die Verschlüsselung von Block-, Anfüge- und Seitenblobs.
 
-### <a name="storage-service-availability-by-azure-germany-region"></a>Speicherdienstverfügbarkeit nach Azure Deutschland-Region
+### Speicherdienstverfügbarkeit nach Azure Deutschland-Region
+<a id="storage-service-availability-by-azure-germany-region" class="xliff"></a>
 
 | Dienst | Deutschland, Mitte | Deutschland, Nordosten |
 | --- | --- | --- | --- |
@@ -51,7 +54,8 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 | Import/Export |Nicht verfügbar |Nicht verfügbar |
 | StorSimple |Nicht verfügbar |Nicht verfügbar |
 
-### <a name="variations"></a>Abweichungen
+### Abweichungen
+<a id="variations" class="xliff"></a>
 Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen in der globalen Azure-Umgebung:
 
 | Dienstart | Globale Azure-Umgebung | Azure Deutschland |
@@ -71,11 +75,12 @@ Weitere Informationen zu APIs finden Sie unter [CloudStorageAccount-Konstruktor]
 Das zu verwendende Endpunktsuffix für diese Überladungen lautet *core.cloudapi.de*.
 
 > [!NOTE]
-> Wenn während der [Einbindung der Dateifreigabe](../storage/storage-dotnet-how-to-use-files.md#mount-the-file-share) der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) zurückgegeben wird, blockiert möglicherweise eine Firewall den ausgehenden Port. Versuchen Sie, die Dateifreigabe auf einem virtuellen Computer einzubinden, der sich im selben Azure-Abonnement wie das Speicherkonto befindet.
+> Wenn während der [Einbindung der Dateifreigabe](../storage/storage-dotnet-how-to-use-files.md) der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) zurückgegeben wird, blockiert möglicherweise eine Firewall den ausgehenden Port. Versuchen Sie, die Dateifreigabe auf einem virtuellen Computer einzubinden, der sich im selben Azure-Abonnement wie das Speicherkonto befindet.
 >
 >
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 

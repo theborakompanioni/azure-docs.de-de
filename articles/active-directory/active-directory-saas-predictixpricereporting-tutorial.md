@@ -22,7 +22,8 @@ ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Tutorial: Azure Active Directory-Integration mit Predictix Price Reporting
+# Tutorial: Azure Active Directory-Integration mit Predictix Price Reporting
+<a id="tutorial-azure-active-directory-integration-with-predictix-price-reporting" class="xliff"></a>
 In diesem Tutorial erfahren Sie, wie Sie Predictix Price Reporting in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Predictix Price Reporting in Azure AD bietet die folgenden Vorteile:
@@ -33,7 +34,8 @@ Die Integration von Predictix Price Reporting in Azure AD bietet die folgenden V
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+## Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
 Um die Azure AD-Integration mit Predictix Price Reporting konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
@@ -49,7 +51,8 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 * Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
 * Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
+## Beschreibung des Szenarios
+<a id="scenario-description" class="xliff"></a>
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -57,7 +60,8 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 1. Hinzufügen von Predictix Price Reporting aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-predictix-price-reporting-from-the-gallery"></a>Hinzufügen von Predictix Price Reporting aus dem Katalog
+## Hinzufügen von Predictix Price Reporting aus dem Katalog
+<a id="adding-predictix-price-reporting-from-the-gallery" class="xliff"></a>
 Zum Konfigurieren der Integration von Predictix Price Reporting in Azure AD müssen Sie Predictix Price Reporting aus dem Katalog zu Ihrer Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Predictix Price Reporting aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -88,12 +92,13 @@ Zum Konfigurieren der Integration von Predictix Price Reporting in Azure AD müs
    
     ![Anwendungen](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+<a id="configuring-and-testing-azure-ad-single-sign-on" class="xliff"></a>
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Predictix Price Reporting basierend auf einem Testbenutzer mit dem Namen „Britta Simon“.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Predictix Price Reporting als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Predictix Price Reporting muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Predictix Price Reporting zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Predictix Price Reporting zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Predictix Price Reporting sind die folgenden Bausteine erforderlich:
 
@@ -103,7 +108,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Predictix 
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### Konfigurieren des einmaligen Anmeldens von Azure AD
+<a id="configuring-azure-ad-single-sign-on" class="xliff"></a>
 In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Predictix Price Reporting-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Predictix Price Reporting die folgenden Schritte aus:**
@@ -150,7 +156,8 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### Erstellen eines Azure AD-Testbenutzers
+<a id="creating-an-azure-ad-test-user" class="xliff"></a>
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -205,10 +212,12 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
    
     b. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-predictix-price-reporting-test-user"></a>Erstellen eines Predictix Price Reporting-Testbenutzers
+### Erstellen eines Predictix Price Reporting-Testbenutzers
+<a id="creating-an-predictix-price-reporting-test-user" class="xliff"></a>
 In diesem Abschnitt erstellen Sie in Predictix Price Reporting einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das Supportteam von Predictix Price Reporting, um die Benutzer auf der Predictix Price Reporting-Plattform hinzufügen zu lassen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### Zuweisen des Azure AD-Testbenutzers
+<a id="assigning-the-azure-ad-test-user" class="xliff"></a>
 In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf Predictix Price Reporting gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -233,12 +242,14 @@ In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden vo
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### Testen der einmaligen Anmeldung
+<a id="testing-single-sign-on" class="xliff"></a>
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Predictix Price Reporting“ klicken, sollten Sie automatisch bei Ihrer Predictix Price Reporting-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## Weitere Ressourcen
+<a id="additional-resources" class="xliff"></a>
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 

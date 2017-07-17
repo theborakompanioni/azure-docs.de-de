@@ -13,7 +13,7 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 07/17/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: Human Translation
@@ -23,7 +23,9 @@ ms.contentlocale: de-de
 ms.lasthandoff: 05/31/2017
 
 ---
-# <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
+# Übersicht über virtuelle Windows-Computer in Azure
+<a id="overview-of-windows-virtual-machines-in-azure" class="xliff"></a>
+
 Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren [bedarfsgesteuerten, skalierbaren Computerressourcen](../../app-service-web/choose-web-site-cloud-service-vm.md), die von Azure angeboten werden. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. In diesem Artikel erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
 
 Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit der der virtuelle Computer betrieben wird. Der virtuelle Computer muss allerdings weiterhin verwaltet werden – beispielsweise durch Konfigurieren, Patchen und Verwalten der darauf ausgeführten Software.
@@ -36,7 +38,8 @@ Virtuelle Azure-Computer können auf vielfältige Weise genutzt werden. Hier ein
 
 Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann zentral oder horizontal hochskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
 
-## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
+## Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
+<a id="what-do-i-need-to-think-about-before-creating-a-vm" class="xliff"></a>
 Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
 
 * Die Namen Ihrer Anwendungsressourcen
@@ -47,12 +50,14 @@ Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche 
 * Die Konfiguration des virtuellen Computers nach dem Start
 * Die zugehörigen Ressourcen, die der virtuelle Computer benötigt
 
-### <a name="naming"></a>Benennung
+### Benennung
+<a id="naming" class="xliff"></a>
 Einem virtuellen Computer wird ein [Name](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zugewiesen, und im Zusammenhang mit dem Betriebssystem wird ein Computername konfiguriert. Der Name eines virtuellen Computers kann bis zu 15 Zeichen lang sein.
 
 Wenn Sie den Betriebssystem-Datenträger mithilfe von Azure erstellen, sind der Computername und der Name des virtuellen Computers identisch. Wenn Sie [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md), das ein vorab konfiguriertes Betriebssystem enthält, und auf dessen Grundlage einen virtuellen Computer erstellen, können die Namen unterschiedlich sein. Beim Hochladen einer eigenen Imagedatei empfiehlt es sich, für den Computernamen im Betriebssystem und für den Namen des virtuellen Computers den gleichen Namen zu verwenden.
 
-### <a name="locations"></a>Standorte
+### Standorte
+<a id="locations" class="xliff"></a>
 Alle in Azure erstellten Ressourcen werden auf [geografische Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt verteilt. Bei der Erstellung eines virtuellen Computers wird die Region in der Regel als **Standort** bezeichnet. Der Standort gibt für einen virtuellen Computer an, wo die virtuellen Festplatten gespeichert sind.
 
 Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügbarer Standorte abrufen können:
@@ -63,15 +68,18 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
 | REST-API |Verwenden Sie den Vorgang [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) (Standorte auflisten). |
 
-### <a name="vm-size"></a>Größe des virtuellen Computers
+### Größe des virtuellen Computers
+<a id="vm-size" class="xliff"></a>
 Die [Größe](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
 
 Bei Azure wird auf der Grundlage von Größe und Betriebssystem des virtuellen Computers ein [Stundenpreis](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) berechnet. Für angefangene Stunden werden lediglich die in Anspruch genommenen Minuten abgerechnet. Speicherplatz wird separat bewertet und in Rechnung gestellt.
 
-### <a name="vm-limits"></a>Grenzwerte für virtuelle Computer
+### Grenzwerte für virtuelle Computer
+<a id="vm-limits" class="xliff"></a>
 Für Ihr Abonnement gelten standardmäßig bestimmte [Kontingentgrenzen](../../azure-subscription-service-limits.md), die die Bereitstellung einer hohen Anzahl virtueller Computer für Ihr Projekt beeinträchtigen können. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Zur Erhöhung der Grenzwerte können Sie ein Supportticket erstellen und eine Erhöhung beantragen.
 
-### <a name="operating-system-disks-and-images"></a>Betriebssystem-Datenträger und Images
+### Betriebssystem-Datenträger und Images
+<a id="operating-system-disks-and-images" class="xliff"></a>
 Betriebssystem (Operating System, OS) und Daten werden bei virtuellen Computern auf [virtuellen Festplatten (Virtual Hard Disks, VHDs)](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) gespeichert. VHDs werden auch für die Images verwendet, die Sie auswählen können, um ein Betriebssystem zu installieren. 
 
 Azure bietet zahlreiche [Marketplace-Images](https://azure.microsoft.com/marketplace/virtual-machines/) für verschiedene Versionen und Arten von Windows Server-Betriebssystemen. Marketplace-Images werden anhand von Herausgeber, Angebot, SKU und Version (üblicherweise die aktuelle Version) identifiziert. 
@@ -86,7 +94,8 @@ Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen z
 
 Sie können auch [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account). In diesem Fall werden Herausgebername, Angebot und SKU nicht verwendet.
 
-### <a name="extensions"></a>Erweiterungen
+### Erweiterungen
+<a id="extensions" class="xliff"></a>
 Durch [Erweiterungen](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) können Sie den Funktionsumfang Ihres virtuellen Computers mittels Konfiguration nach der Bereitstellung sowie mittels automatisierter Aufgaben erweitern.
 
 Mit Erweiterungen können folgende allgemeine Aufgaben umgesetzt werden:
@@ -95,7 +104,8 @@ Mit Erweiterungen können folgende allgemeine Aufgaben umgesetzt werden:
 * **Bereitstellen und Verwalten von Konfigurationen:** Die [PowerShell-Erweiterung zum Konfigurieren des gewünschten Zustands](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) unterstützt Sie beim Einrichten der Konfiguration des gewünschten Zustands auf einem virtuellen Computer, um Konfigurationen und Umgebungen zu verwalten.
 * **Sammeln von Diagnosedaten:** Die [Azure-Diagnoseerweiterung](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) unterstützt Sie dabei, den virtuellen Computer für die Sammlung von Diagnosedaten zu konfigurieren, die zum Überwachen der Integrität Ihrer Anwendung verwendet werden können.
 
-### <a name="related-resources"></a>Zugehörige Ressourcen
+### Zugehörige Ressourcen
+<a id="related-resources" class="xliff"></a>
 Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet und müssen beim Erstellen des virtuellen Computers vorhanden sein oder erstellt werden:
 
 | Ressource | Erforderlich | Beschreibung |
@@ -107,7 +117,8 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 | [Netzwerkschnittstelle](../../virtual-network/virtual-network-network-interface.md) |Ja |Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk. |
 | [Datenträger](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nein |Der virtuelle Computer kann Datenträger enthalten, um die Speicherkapazität zu erhöhen. |
 
-## <a name="how-do-i-create-my-first-vm"></a>Wie erstelle ich meinen ersten virtuellen Computer?
+## Wie erstelle ich meinen ersten virtuellen Computer?
+<a id="how-do-i-create-my-first-vm" class="xliff"></a>
 Ein virtueller Computer kann auf unterschiedliche Weise erstellt werden. Die Vorgehensweise hängt von Ihrer Umgebung ab. 
 
 Die folgende Tabelle enthält hilfreiche Informationen zur Erstellung Ihres ersten virtuellen Computers:
@@ -122,10 +133,12 @@ Die folgende Tabelle enthält hilfreiche Informationen zur Erstellung Ihres erst
 
 Man hofft zwar immer, dass es nicht dazu kommt, gelegentlich tritt dann aber doch der eine oder andere Fehler auf. In diesem Fall finden Sie unter [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hilfreiche Informationen.
 
-## <a name="how-do-i-manage-the-vm-that-i-created"></a>Wie verwalte ich den erstellten virtuellen Computer?
+## Wie verwalte ich den erstellten virtuellen Computer?
+<a id="how-do-i-manage-the-vm-that-i-created" class="xliff"></a>
 Virtuelle Computer können über ein browserbasiertes Portal, über Befehlszeilentools mit Skriptunterstützung oder direkt über APIs verwaltet werden. Gängige Verwaltungsaufgaben sind das Abrufen von Informationen zu einem virtuellen Computer, das Anmelden bei einem virtuellen Computer, das Verwalten der Verfügbarkeit und die Durchführung von Sicherungen.
 
-### <a name="get-information-about-a-vm"></a>Abrufen von Informationen zu einem virtuellen Computer
+### Abrufen von Informationen zu einem virtuellen Computer
+<a id="get-information-about-a-vm" class="xliff"></a>
 Die folgende Tabelle enthält einige der Methoden, mit denen Sie Informationen zu einem virtuellen Computer abrufen können:
 
 | Methode | Beschreibung |
@@ -135,18 +148,22 @@ Die folgende Tabelle enthält einige der Methoden, mit denen Sie Informationen z
 | REST-API |Verwenden Sie den Vorgang [Get VM information](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) (VM-Informationen abrufen), um Informationen zu einem virtuellen Computer abzurufen. |
 | Client-SDKs |Informationen zum Verwalten von virtuellen Computern mithilfe von C# finden Sie unter [Verwalten von virtuellen Azure-Computern mit Azure Resource Manager und C#](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
 
-### <a name="log-on-to-the-vm"></a>Anmelden beim virtuellen Computer
+### Anmelden beim virtuellen Computer
+<a id="log-on-to-the-vm" class="xliff"></a>
 Verwenden Sie zum [Starten einer Remotedesktopsitzung](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) die Schaltfläche „Verbinden“ im Azure-Portal. Bei Remoteverbindungen können gelegentlich Probleme auftreten. In diesem Fall finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hilfreiche Informationen.
 
-### <a name="manage-availability"></a>Verwalten der Verfügbarkeit
+### Verwalten der Verfügbarkeit
+<a id="manage-availability" class="xliff"></a>
 Informieren Sie sich darüber, wie Sie eine [hohe Verfügbarkeit für Ihre Anwendung sicherstellen](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Diese Konfiguration umfasst das Erstellen mehrerer virtueller Computer, um zu gewährleisten, dass mindestens einer davon aktiv ist.
 
 Damit Ihre Bereitstellung den Verfügbarkeitswert von 99,95 Prozent unserer VM-Vereinbarung zum Servicelevel erreicht, müssen Sie mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer [Verfügbarkeitsgruppe](infrastructure-availability-sets-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ausführen. So wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
-### <a name="back-up-the-vm"></a>Sichern des virtuellen Computers
+### Sichern des virtuellen Computers
+<a id="back-up-the-vm" class="xliff"></a>
 Ein [Recovery Services-Tresor](../../backup/backup-introduction-to-azure-backup.md) dient zum Schutz von Daten und Assets in Azure Backup und Azure Site Recovery. Mit einem Recovery Services-Tresor können Sie [Sicherungen für mit Resource Manager bereitgestellte virtuelle Computer mithilfe von PowerShell bereitstellen und verwalten](../../backup/backup-azure-vms-automation.md). 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 * Wenn Sie virtuelle Linux-Computer verwenden möchten, sehen Sie sich [Azure und Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) an.
 * Weitere Informationen zu den Richtlinien im Zusammenhang mit der Einrichtung Ihrer Infrastruktur finden Sie unter [Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Bewährte Methoden für das Ausführen eines virtuellen Windows-Computers in Azure finden Sie [hier](guidance-compute-single-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

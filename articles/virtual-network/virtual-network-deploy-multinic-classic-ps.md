@@ -16,14 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
 ms.openlocfilehash: 6e2bb0e228aa28c79969cba07352061abbb47951
+ms.contentlocale: de-de
 ms.lasthandoff: 03/22/2017
 
-
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten über PowerShell
+<a id="create-a-vm-classic-with-multiple-nics-using-powershell" class="xliff"></a>
+
+# Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten über PowerShell
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
@@ -36,20 +38,26 @@ Sie können virtuelle Computer (VMs) in Azure erstellen und jedem virtuellen Com
 
 In den folgenden Schritten verwenden Sie eine Ressourcengruppe mit dem Namen *IaaSStory* für die Webserver und eine Ressourcengruppe mit dem Namen *IaaSStory-BackEnd* für die DB-Server.
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 
 Bevor Sie die DB-Server erstellen können, müssen Sie die Ressourcengruppe *IaaSStory* mit den erforderlichen Ressourcen für dieses Szenario erstellen. Führen Sie die folgenden Schritte aus, um diese Ressourcen zu erstellen: Erstellen Sie ein virtuelles Netzwerk, indem Sie die Schritte im Artikel [Erstellen eines virtuellen Netzwerks](virtual-networks-create-vnet-classic-netcfg-ps.md) befolgen.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-back-end-vms"></a>Erstellen der Back-End-VMs
+<a id="create-the-back-end-vms" class="xliff"></a>
+
+## Erstellen der Back-End-VMs
 Die Back-End-VMs sind auf die Erstellung der folgenden Ressourcen angewiesen:
 
 * **Back-End-Subnetz**. Die Datenbankserver gehören zum Aufteilen des Datenverkehrs einem separaten Subnetz an. Das folgende Skript erwartet dieses Subnetz in einem Vnet namens *WTestVnet*.
 * **Speicherkonto für Datenträger.** Für eine bessere Leistung verwenden die Datenträger auf den Datenbankservern Solid State Drive (SSD)-Technik. Dafür ist ein Storage Premium-Konto erforderlich. Achten Sie darauf, dass der Azure-Speicherort für die Bereitstellung Storage Premium unterstützt.
 * **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
-### <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
+<a id="step-1---start-your-script" class="xliff"></a>
+
+### Schritt 1: Starten des Skripts
 Sie können das verwendete PowerShell-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1)herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
 
 1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites)bereitgestellten Ressourcengruppe.
@@ -74,7 +82,9 @@ Sie können das verwendete PowerShell-Skript ungekürzt [hier](https://raw.githu
     $numberOfVMs           = 2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre virtuellen Computer
+<a id="step-2---create-necessary-resources-for-your-vms" class="xliff"></a>
+
+### Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre virtuellen Computer
 Sie müssen einen neuen Clouddienst und ein Speicherkonto für die Datenträger für alle virtuellen Computer erstellen. Sie müssen zudem ein Abbild und ein lokales Administratorkonto für die virtuellen Computer angeben. Führen Sie die folgenden Schritte aus, um diese Ressourcen zu erstellen:
 
 1. Erstellen Sie einen neuen Clouddienst.
@@ -112,7 +122,9 @@ Sie müssen einen neuen Clouddienst und ein Speicherkonto für die Datenträger 
     $cred = Get-Credential -Message "Enter username and password for local admin account"
     ```
 
-### <a name="step-3---create-vms"></a>Schritt 3: Erstellen von virtuellen Computern
+<a id="step-3---create-vms" class="xliff"></a>
+
+### Schritt 3: Erstellen von virtuellen Computern
 Sie müssen die gewünschte Anzahl an virtuellen Computern mithilfe einer Schleife erstellen. Erstellen Sie die erforderlichen Netzwerkkarten und virtuellen Computer innerhalb der Schleife. Führen Sie zum Erstellen der Netzwerkkarten und virtuellen Computer die folgenden Schritte aus.
 
 1. Starten Sie eine `for`-Schleife, um die Befehle zum Erstellen eines virtuellen Computers und zweier Netzwerkkarten auf Grundlage der `$numberOfVMs`-Variablen so oft wie erforderlich zu wiederholen.
@@ -136,14 +148,14 @@ Sie müssen die gewünschte Anzahl an virtuellen Computern mithilfe einer Schlei
     ```powershell
     Add-AzureProvisioningConfig -VM $vmConfig -Windows `
         -AdminUsername $cred.UserName `
-        -Password $cred.Password
+        -Password $cred.GetNetworkCredential().Password
     ```
 
 4. Legen Sie die Standard-Netzwerkkarte fest, und weisen Sie ihr eine statische IP-Adresse zu.
 
     ```powershell
-    Set-AzureSubnet            -SubnetNames $backendSubnetName -VM $vmConfig
-    Set-AzureStaticVNetIP     -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
+    Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
+    Set-AzureStaticVNetIP   -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
     ```
 
 5. Fügen Sie für jeden virtuellen Computer eine zweite Netzwerkkarte hinzu.
@@ -181,7 +193,9 @@ Sie müssen die gewünschte Anzahl an virtuellen Computern mithilfe einer Schlei
     }
     ```
 
-### <a name="step-4---run-the-script"></a>Schritt 4: Ausführen des Skripts
+<a id="step-4---run-the-script" class="xliff"></a>
+
+### Schritt 4: Ausführen des Skripts
 Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, um die Back-End-VMs mit mehreren Netzwerkkarten zu erstellen.
 
 1. Speichern Sie Ihr Skript, und führen Sie es an der **PowerShell**-Eingabeaufforderung oder in **PowerShell ISE** aus. Anfänglich wird die folgende Ausgabe angezeigt.

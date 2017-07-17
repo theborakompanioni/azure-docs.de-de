@@ -7,21 +7,23 @@ documentationcenter: na
 author: luywang
 manager: kavithag
 ms.assetid: 
-ms.service: <service per approved list>
+ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2017
 ms.author: luywang
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: 522fd46e8c0ccc64eb97ee6622e9886bb51f1e24
+ms.contentlocale: de-de
 ms.lasthandoff: 04/15/2017
 
-
 ---
-# <a name="migrating-to-premium-storage-using-azure-site-recovery"></a>Migrieren zu Storage Premium mit Azure Site Recovery
+<a id="migrating-to-premium-storage-using-azure-site-recovery" class="xliff"></a>
+
+# Migrieren zu Storage Premium mit Azure Site Recovery
 
 [Azure Storage Premium](storage-premium-storage.md) bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs), auf denen E/A-intensive Workloads ausgeführt werden. Dieser Leitfaden soll Benutzern beim Migrieren ihrer VM-Datenträger von einem Standard-Speicherkonto zu einem Storage Premium-Konto mithilfe von [Azure Site Recovery](../site-recovery/site-recovery-overview.md) als Hilfe dienen.
 
@@ -31,7 +33,9 @@ Wir empfehlen Ihnen die Migration zu Storage Premium mithilfe von Site Recovery,
 
 ![][1]
 
-## <a name="azure-site-recovery-components"></a>Azure Site Recovery-Komponenten
+<a id="azure-site-recovery-components" class="xliff"></a>
+
+## Azure Site Recovery-Komponenten
 
 Hierbei handelt es sich um die Site Recovery-Komponenten, die für dieses Migrationsszenario relevant sind.
 
@@ -50,7 +54,9 @@ Diese Grafik zeigt, wie diese Komponenten zusammenwirken.
 
 Informationen zu weiteren Komponenten für andere Szenarien finden Sie unter [Szenarioarchitektur](../site-recovery/site-recovery-vmware-to-azure.md).
 
-## <a name="azure-essentials"></a>Wichtige Azure-Komponenten
+<a id="azure-essentials" class="xliff"></a>
+
+## Wichtige Azure-Komponenten
 
 Hierbei handelt es sich um die Azure-Anforderungen für dieses Migrationsszenario.
 
@@ -59,12 +65,16 @@ Hierbei handelt es sich um die Azure-Anforderungen für dieses Migrationsszenari
 * Ein virtuelles Azure-Netzwerk (VNet), mit dem für VMs eine Verbindung hergestellt wird, wenn sie bei einem Failover erstellt werden. Das Azure VNet muss sich in derselben Region wie das VNet befinden, in dem Site Recovery ausgeführt wird.
 * Ein Azure-Speicherkonto vom Typ „Standard“, in dem die Replikationsprotokolle gespeichert werden. Dies kann dasselbe Speicherkonto wie für die zu migrierenden VM-Datenträger sein.
 
-## <a name="prerequisites"></a>Voraussetzungen
+<a id="prerequisites" class="xliff"></a>
+
+## Voraussetzungen
 
 * Kenntnis der relevanten Migrationsszenariokomponenten aus dem vorherigen Abschnitt
 * Planung der Ausfallzeit basierend auf den Informationen zu [Failovern in Site Recovery](../site-recovery/site-recovery-failover.md)
 
-## <a name="setup-and-migration-steps"></a>Setup- und Migrationsschritte
+<a id="setup-and-migration-steps" class="xliff"></a>
+
+## Setup- und Migrationsschritte
 
 Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder innerhalb derselben Region zu migrieren. Die folgende Anleitung wurde basierend auf dem Artikel [Replizieren von VMware-VMs oder physischen Servern in Azure](../site-recovery/site-recovery-vmware-to-azure.md) für dieses Migrationsszenario angepasst. Verwenden Sie zusätzlich zu der Anleitung in diesem Artikel die Links zu den ausführlichen Schritten.
 
@@ -148,7 +158,9 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 
 9. **Ausführen eines Failovers**. Führen Sie nach Abschluss des Testfailovers ein Failover durch, um Ihre Datenträger zu Storage Premium zu migrieren und die VM-Instanzen zu replizieren. Befolgen Sie die ausführlichen Schritte in [Ausführen eines Failovers](../site-recovery/site-recovery-failover.md#run-a-failover). Achten Sie darauf, die Option **Virtuelle Computer herunterfahren und die aktuellen Daten synchronisieren** auszuwählen, damit Site Recovery die geschützten VMs herunterfährt und die Daten synchronisiert und das Failover mit der neuesten Version der Daten erfolgt. Wenn Sie diese Option nicht auswählen oder der Vorgang nicht erfolgreich ausgeführt werden kann, wird das Failover für den neuesten verfügbaren Wiederherstellungspunkt der VM durchgeführt. Site Recovery erstellt eine VM-Instanz, die den Typ „Storage Premium-fähige VM“ oder einen ähnlichen Typ aufweist. Sie können sich über die Leistung und den Preis verschiedener VM-Instanzen unter [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) und [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) informieren.
 
-## <a name="post-migration-steps"></a>Schritte nach der Migration
+<a id="post-migration-steps" class="xliff"></a>
+
+## Schritte nach der Migration
 
 1. **Konfigurieren Sie replizierte VMs in der Verfügbarkeitsgruppe (falls zutreffend)**. Für Site Recovery wird das Migrieren von VMs zusammen mit der Verfügbarkeitsgruppe nicht unterstützt. Wählen Sie je nach Bereitstellungstyp Ihrer replizierten VM eine der folgenden Vorgehensweisen:
   * Für eine mit dem klassischen Bereitstellungsmodell erstellte VM: Fügen Sie die VM im Azure-Portal der Verfügbarkeitsgruppe hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../virtual-machines/windows/classic/configure-availability.md#a-idaddmachine-aoption-2-add-an-existing-virtual-machine-to-an-availability-set).
@@ -158,12 +170,16 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 
 3. **Bereinigen Sie die Azure Site Recovery-Infrastruktur**. Falls Site Recovery nicht mehr benötigt wird, können Sie die dazugehörige Infrastruktur bereinigen, indem Sie die replizierten Elemente, den Konfigurationsserver und die Wiederherstellungsrichtlinie löschen und anschließend den Azure Site Recovery-Tresor löschen.
 
-## <a name="troubleshooting"></a>Problembehandlung
+<a id="troubleshooting" class="xliff"></a>
+
+## Problembehandlung
 
 * [Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [Microsoft Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
-## <a name="next-steps"></a>Nächste Schritte
+<a id="next-steps" class="xliff"></a>
+
+## Nächste Schritte
 
 Informationen zu bestimmten Szenarios zur Migration virtueller Computer finden Sie in den folgenden Ressourcen:
 
