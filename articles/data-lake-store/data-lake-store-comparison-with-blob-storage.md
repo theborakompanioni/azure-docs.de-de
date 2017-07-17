@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
 ms.openlocfilehash: 10926263ee2657dc96fb1873733d349cf0956e92
+ms.contentlocale: de-de
 ms.lasthandoff: 01/05/2017
 
 
 ---
-# <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Vergleich von Azure Data Lake Store und Azure Blob Storage
+# Vergleich von Azure Data Lake Store und Azure Blob Storage
+<a id="comparing-azure-data-lake-store-and-azure-blob-storage" class="xliff"></a>
 In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lake Store und Azure Blob Storage zusammengefasst und einige wichtige Aspekte der Big Data-Verarbeitung aufgezeigt. Azure Blob Storage ist ein universell einsetzbarer und skalierbarer Objektspeicher, der auf eine Vielzahl von Speicherszenarien ausgelegt ist. Azure Data Lake Store ist ein hochgradig skalierbares Repository, das für Big Data-Analyseworkloads optimiert ist.
 
 |  | Azure Data Lake Store | Azure Blob Storage |
@@ -47,7 +49,8 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 | Regionale Verfügbarkeit |Siehe [hier](https://azure.microsoft.com/regions/#services) |Siehe [hier](https://azure.microsoft.com/regions/#services) |
 | Preis |Siehe [Preise](https://azure.microsoft.com/pricing/details/data-lake-store/) |Siehe [Preise](https://azure.microsoft.com/pricing/details/storage/) |
 
-### <a name="next-steps"></a>Nächste Schritte
+### Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 * [Erste Schritte mit dem Data Lake-Speicher](data-lake-store-get-started-portal.md)
 
