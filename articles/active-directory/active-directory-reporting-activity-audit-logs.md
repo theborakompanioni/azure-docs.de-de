@@ -1,5 +1,4 @@
 ---
-
 title: "Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation"
 description: "Enthält eine Einführung in die Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal."
 services: active-directory
@@ -15,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: d8c49272789e7d33c6f0684875765a1ecea5a2ff
 ms.contentlocale: de-de
 ms.lasthandoff: 05/26/2017
 
-
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
+# Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal
+<a id="audit-activity-reports-in-the-azure-active-directory-portal" class="xliff"></a> 
 
 Mit der Berichterstellungsfunktion in Azure Active Directory (Azure AD) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
@@ -38,13 +38,15 @@ Die Architektur für die Berichterstellung in Azure AD umfasst die folgenden Kom
 
 In diesem Thema erhalten Sie einen Überblick über die Überwachungsaktivitäten.
  
-## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+## Wer kann auf die Daten zugreifen?
+<a id="who-can-access-the-data" class="xliff"></a>
 * Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
 * Globale Administratoren
 * Einzelne Benutzer (Nicht-Administratoren) können eigene Aktivitäten anzeigen.
 
 
-## <a name="audit-logs"></a>Überwachungsprotokolle
+## Überwachungsprotokolle
+<a id="audit-logs" class="xliff"></a>
 
 Die Überwachungsprotokolle in Azure Active Directory enthalten Datensätze mit Systemaktivitäten, die zum Nachweisen der Konformität verwendet werden können.  
 Ihr erster Einstiegspunkt für alle Überwachungsdaten ist die Option **Überwachungsprotokolle** im Abschnitt **Aktivität** von **Azure Active Directory**.
@@ -74,7 +76,8 @@ Wenn Sie in der Listenansicht auf einen Eintrag klicken, werden die dazu verfüg
 ![Überwachungsprotokolle](./media/active-directory-reporting-activity-audit-logs/22.png "Überwachungsprotokolle")
 
 
-## <a name="filtering-audit-logs"></a>Filtern von Überwachungsprotokollen
+## Filtern von Überwachungsprotokollen
+<a id="filtering-audit-logs" class="xliff"></a>
 
 Sie können die Überwachungsdaten mit den folgenden Feldern filtern, um die gemeldeten Daten gemäß Ihren Bedürfnissen einzugrenzen:
 
@@ -134,14 +137,16 @@ Der Filter **Aktivität** basiert auf der getroffenen Auswahl für „Kategorie�
 Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md#list-of-audit-report-events) lesen.
 
 
-## <a name="audit-logs-shortcuts"></a>Verknüpfungen für Überwachungsprotokolle
+## Verknüpfungen für Überwachungsprotokolle
+<a id="audit-logs-shortcuts" class="xliff"></a>
 
 Neben **Azure Active Directory** bietet das Azure-Portal noch zwei weitere Einstiegspunkte für Überwachungsdaten:
 
 - Benutzer und Gruppen
 - Unternehmensanwendungen
 
-### <a name="users-and-groups-audit-logs"></a>Überwachungsprotokolle für Benutzer und Gruppen
+### Überwachungsprotokolle für Benutzer und Gruppen
+<a id="users-and-groups-audit-logs" class="xliff"></a>
 
 Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie beispielsweise Antworten auf folgende Fragen erhalten:
 
@@ -165,7 +170,8 @@ Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer und
 
 ![Überwachungsprotokolle](./media/active-directory-reporting-activity-audit-logs/93.png "Überwachungsprotokolle")
 
-### <a name="enterprise-applications-audit-logs"></a>Überwachungsprotokolle für Unternehmensanwendungen
+### Überwachungsprotokolle für Unternehmensanwendungen
+<a id="enterprise-applications-audit-logs" class="xliff"></a>
 
 Mit Überwachungsberichten, die auf Anwendungen basieren, können Sie beispielsweise Antworten auf folgende Fragen erhalten:
 
@@ -184,7 +190,8 @@ Dieser Ansicht kann weiter nach **Gruppen** oder **Benutzer** gefiltert werden.
 ![Überwachungsprotokolle](./media/active-directory-reporting-activity-audit-logs/25.png "Überwachungsprotokolle")
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen finden Sie unter [Anleitung für Azure Active Directory-Berichte](active-directory-reporting-guide.md).
 
 

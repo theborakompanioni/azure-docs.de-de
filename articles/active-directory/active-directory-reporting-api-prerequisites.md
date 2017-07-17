@@ -3,7 +3,7 @@ title: Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API | Mic
 description: "Erfahren Sie, welche Voraussetzungen für den Zugriff auf die Azure AD-Berichterstellungs-API gelten."
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
+ms.custom: oldportal
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b0f23cc578fb946247d492b9dee92cf7a9daafa1
 ms.contentlocale: de-de
 ms.lasthandoff: 12/28/2016
 
-
 ---
-# <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API
+# Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API
+<a id="prerequisites-to-access-the-azure-ad-reporting-api" class="xliff"></a>
 Die [Azure AD-Berichterstellungs-APIs](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieten Ihnen über einen Satz von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
 
 Die Berichterstellungs-API verwendet [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Autorisieren des Zugriffs auf die Web-APIs. 
@@ -35,7 +36,8 @@ Um auf die Berichterstellungs-API zugreifen zu können, müssen Sie folgende Sch
 
 Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
 
-## <a name="create-an-azure-ad-application"></a>Erstellen einer Azur AD-Anwendung
+## Erstellen einer Azur AD-Anwendung
+<a id="create-an-azure-ad-application" class="xliff"></a>
 Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu konfigurieren, müssen Sie sich beim klassischen Azure-Portal mit dem Konto eines Azure-Abonnementadministrators anmelden, das auch der Verzeichnisrolle „Globaler Administrator“ Ihres Azure AD-Mandanten angehört.
 
 > [!IMPORTANT]
@@ -75,7 +77,8 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
    
     c. Klicken Sie auf **Fertig stellen**.
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Gewähren von Anwendungsberechtigungen zum Verwenden der API
+## Gewähren von Anwendungsberechtigungen zum Verwenden der API
+<a id="grant-your-application-permission-to-use-the-api" class="xliff"></a>
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com/)auf **Active Directory**.
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/01.png) 
@@ -96,7 +99,8 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/10.png)
 
-## <a name="gather-configuration-settings-from-your-directory"></a>Rufen Sie Konfigurationseinstellungen aus Ihrem Verzeichnis ab.
+## Rufen Sie Konfigurationseinstellungen aus Ihrem Verzeichnis ab.
+<a id="gather-configuration-settings-from-your-directory" class="xliff"></a>
 In diesem Abschnitt wird gezeigt, wie Sie die folgenden Einstellungen aus Ihrem Verzeichnis abrufen:
 
 * Domänenname
@@ -105,7 +109,8 @@ In diesem Abschnitt wird gezeigt, wie Sie die folgenden Einstellungen aus Ihrem 
 
 Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigurieren. 
 
-### <a name="get-your-domain-name"></a>Ermitteln des Domänennamens
+### Ermitteln des Domänennamens
+<a id="get-your-domain-name" class="xliff"></a>
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com)auf **Active Directory**.
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/01.png) 
@@ -117,7 +122,8 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/12.png) 
 
-### <a name="get-the-applications-client-id"></a>Abrufen der Client-ID der Anwendung
+### Abrufen der Client-ID der Anwendung
+<a id="get-the-applications-client-id" class="xliff"></a>
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com)auf **Active Directory**.
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/01.png) 
@@ -135,7 +141,8 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/13.png)
 
-### <a name="get-the-applications-client-secret"></a>Abrufen des geheimen Clientschlüssels der Anwendung
+### Abrufen des geheimen Clientschlüssels der Anwendung
+<a id="get-the-applications-client-secret" class="xliff"></a>
 Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen neuen Schlüssel erstellen und dessen Wert beim Speichern des neuen Schlüssels speichern, weil dieser Wert später nicht mehr abgerufen werden kann.
 
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com)auf **Active Directory**.
@@ -163,7 +170,8 @@ Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen ne
    
     c. Kopieren Sie den Schlüsselwert.
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 * Möchten Sie programmgesteuert auf die Daten der Azure AD-Berichterstellungs-API zugreifen? Dann lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  
 

@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 0e8ae05b5f8644d4dfd0e6205224cabfb0919531
 ms.contentlocale: de-de
 ms.lasthandoff: 05/26/2017
 
-
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
+# Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
+<a id="sign-in-activity-reports-in-the-azure-active-directory-portal" class="xliff"></a>
 
 Mit der Azure Active Directory-Berichterstellungsfunktion (Azure AD) im [Azure-Portal](https://portal.azure.com) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
@@ -37,18 +38,22 @@ Die Architektur für die Berichterstellung in Azure Active Directory umfasst die
 
 In diesem Thema erhalten Sie einen Überblick über die Anmeldeaktivitäten.
 
-## <a name="pre-requisite"></a>Voraussetzung
+## Voraussetzung
+<a id="pre-requisite" class="xliff"></a>
 
-### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+### Wer kann auf die Daten zugreifen?
+<a id="who-can-access-the-data" class="xliff"></a>
 * Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
 * Globale Administratoren
 * Jeder Benutzer (Nicht-Administratoren) kann auf seine eigenen Anmeldungen zugreifen. 
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
+### Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
+<a id="what-azure-ad-license-do-you-need-to-access-sign-in-activity" class="xliff"></a>
 * Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Anmeldeaktivitäten angezeigt werden kann.
 
 
-## <a name="signs-in-activities"></a>Anmeldeaktivitäten
+## Anmeldeaktivitäten
+<a id="signs-in-activities" class="xliff"></a>
 
 Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
 
@@ -84,7 +89,8 @@ Wenn Sie in der Listenansicht auf einen Eintrag klicken, werden alle Details daz
 ![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/43.png "Anmeldeaktivität")
 
 
-## <a name="filtering-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
+## Filtern von Anmeldeaktivitäten
+<a id="filtering-sign-in-activities" class="xliff"></a>
 
 Sie können die Anmeldedaten mit den folgenden Feldern filtern, um die gemeldeten Daten gemäß Ihren Bedürfnissen einzugrenzen:
 
@@ -120,7 +126,8 @@ Für den Filter **Anmeldestatus** können Sie eine der folgenden Filteroptionen 
 - Fehler
 
 
-## <a name="sign-in-activities-shortcuts"></a>Optionen für Anmeldeaktivitäten
+## Optionen für Anmeldeaktivitäten
+<a id="sign-in-activities-shortcuts" class="xliff"></a>
 
 Zusätzlich zu Azure Active Directory enthält das Azure-Portal zwei weitere Einstiegspunkte für Daten zu Anmeldeaktivitäten:
 
@@ -128,7 +135,8 @@ Zusätzlich zu Azure Active Directory enthält das Azure-Portal zwei weitere Ein
 - Unternehmensanwendungen
 
 
-### <a name="users-and-groups-sign-ins-activities"></a>Anmeldeaktivitäten für Benutzer und Gruppen
+### Anmeldeaktivitäten für Benutzer und Gruppen
+<a id="users-and-groups-sign-ins-activities" class="xliff"></a>
 
 Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
 
@@ -164,7 +172,8 @@ Mit der Option **Anmeldungen** erhalten Sie eine vollständige Übersicht über 
 
 
 
-## <a name="usage-of-managed-applications"></a>Nutzung von verwalteten Anwendungen
+## Nutzung von verwalteten Anwendungen
+<a id="usage-of-managed-applications" class="xliff"></a>
 
 Mit einer anwendungsorientierten Ansicht Ihrer Anmeldedaten können Sie beispielsweise folgende Fragen beantworten:
 
@@ -197,7 +206,8 @@ Mit der Option **Anmeldungen** können Sie eine vollständige Übersicht über a
 
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 Weitere Informationen finden Sie unter [Anleitung für Azure Active Directory-Berichte](active-directory-reporting-guide.md).
 
 
