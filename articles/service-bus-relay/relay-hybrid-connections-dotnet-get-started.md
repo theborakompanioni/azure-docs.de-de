@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure Relay-Hybridverbindungen in .NET | Microsoft-Dokumentation
-description: "Gewusst wie: Schreiben einer C#-Konsolenanwendung für Hybridverbindungen"
+description: "Schreiben einer C#-Konsolenanwendung für Azure Relay-Hybridverbindungen"
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 07/07/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: d27016559ede5d810d7efcec2a3abc78334f0f0a
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
 ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -26,18 +26,21 @@ ms.lasthandoff: 03/01/2017
 # <a name="get-started-with-relay-hybrid-connections"></a>Erste Schritte mit Relay-Hybridverbindungen
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Dieses Tutorial bietet eine Einführung in [Azure Relay-Hybridverbindungen](relay-what-is-it.md#hybrid-connections) und zeigt die Erstellung einer Clientanwendung, die Nachrichten an eine entsprechende Listener-Anwendung sendet. 
+Dieses Tutorial bietet eine Einführung in [Azure Relay-Hybridverbindungen](relay-what-is-it.md#hybrid-connections) und zeigt, wie Sie eine Clientanwendung, die Nachrichten an eine entsprechende Listener-Anwendung sendet, mithilfe von .NET erstellen können. 
 
 ## <a name="what-will-be-accomplished"></a>Ziele
-Da für Hybridverbindungen sowohl eine Client- als auch eine Serverkomponente erforderlich ist, werden im Rahmen des Tutorials zwei Konsolenanwendungen erstellt. Vorgehensweise:
+Da für Hybridverbindungen sowohl eine Client- als auch eine Serverkomponente erforderlich ist, werden im Rahmen des Tutorials zwei Konsolenanwendungen erstellt. Gehen Sie wie folgt vor:
 
 1. Erstellen eines Relay-Namespace mit dem Azure-Portal
-2. Erstellen einer Hybridverbindung mit dem Azure-Portal
+2. Erstellen einer Hybridverbindung in diesem Namespace mit dem Azure-Portal
 3. Erstellen einer Serverkonsolenanwendung (Listener) zum Empfangen von Nachrichten
 4. Erstellen einer Clientkonsolenanwendung (Absender) zum Senden von Nachrichten
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. [Visual Studio 2015 oder höher](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2015 verwendet.
+
+Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
+
+1. [Visual Studio 2015 oder höher](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
 2. Ein Azure-Abonnement.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]

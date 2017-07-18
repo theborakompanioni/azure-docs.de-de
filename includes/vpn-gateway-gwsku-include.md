@@ -22,9 +22,11 @@ Die neuen Gateway-SKUs optimieren die auf den Gateways bereitgestellten Funktion
 
 | **SKU**| **Funktionen**|
 | ---    | ---         |
-| VpnGw1<br>VpnGw2<br>VpnGw3|Routenbasiertes VPN mit bis zu 30 Tunneln* <br>P2S, BGP, Aktiv/Aktiv, benutzerdefinierte IPsec-/IKE-Richtlinie, Koexistenz von ExpressRoute/VPN <br><br>* Sie können „PolicyBasedTrafficSelectors“ konfigurieren, um eine Verbindung zwischen einem routenbasierten VPN-Gateway (VpnGw1, VpnGw2, VpnGw3) und mehreren lokalen richtlinienbasierten Firewallgeräten herzustellen. Ausführliche Informationen finden Sie unter [Connect VPN gateways to multiple on-premises policy-based VPN devices using PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (Herstellen einer Verbindung zwischen VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell). |
 |Basic   | Routenbasiert: 10 Tunnel mit P2S<br>Richtlinienbasiert (IKEv1): 1 Tunnel; kein P2S|
+| VpnGw1, VpnGw2, VpnGw3 |Routenbasiertes VPN mit bis zu 30 Tunneln (*) <br>P2S, BGP, Aktiv/Aktiv, benutzerdefinierte IPsec-/IKE-Richtlinie, Koexistenz von ExpressRoute/VPN |
 |        |             |
+
+(*) Sie können „PolicyBasedTrafficSelectors“ konfigurieren, um eine Verbindung zwischen einem routenbasierten VPN-Gateway (VpnGw1, VpnGw2, VpnGw3) und mehreren lokalen richtlinienbasierten Firewallgeräten herzustellen. Ausführliche Informationen finden Sie unter [Connect VPN gateways to multiple on-premises policy-based VPN devices using PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (Herstellen einer Verbindung zwischen VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell).
 
 ###  <a name="resize"></a>Ändern der Größe von Gateway-SKUs
 

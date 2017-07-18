@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3b75c10ed0012d682562eb943cb67fc8176ddbb
-ms.lasthandoff: 12/08/2016
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: e23a4f182e6bb0ba53927aa6195967c2464e4233
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -46,7 +47,7 @@ In *Azure App Service* wird der *Mobile App*-Back-End-Code im selben Container a
 * (For Node.js) Nutzen Sie jede reine JavaScript-Bibliothek des Knotenökosystems, einschließlich gemeinsamer MVC-Bibliotheken.
 
 ## <a name="access-on-premises-data-using-vnet"></a>Zugriff auf lokale Daten über VNet
-Mit Mobile Services können Sie schon heute Hybridverbindungen für den Zugriff auf lokale Ressourcen verwenden. Es gibt jedoch Situationen, in denen eine VPN-Lösung bevorzugt wird. Mit *Azure App Service* können Sie Azure-VNet für Mobile App-Back-End-Code verwenden.
+Mit Mobile Services können Sie schon heute Hybrid Connections für den Zugriff auf lokale Ressourcen verwenden. Es gibt jedoch Situationen, in denen eine VPN-Lösung bevorzugt wird. Mit *Azure App Service* können Sie Azure-VNet für Mobile App-Back-End-Code verwenden.
 
 ## <a name="use-your-favorite-backend-language"></a>Verwenden Ihrer bevorzugten Back-End-Sprache
 *Azure App Service* bietet umfangreichere Unterstützung mit mehr Funktionen für ASP.NET- und Node.js-Plattformen, einschließlich Zugriff auf die neuesten Laufzeiten.

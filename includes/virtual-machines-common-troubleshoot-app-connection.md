@@ -113,6 +113,10 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 * Den ausgehenden Anwendungsanforderungs-Datenverkehr vom Clientcomputer zum virtuellen Azure-Computer.
 * Den eingehenden Anwendungs-Antwortdatenverkehr vom virtuellen Azure-Computer.
 
+## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Schritt 4: Wenn Sie auf die Anwendung nicht zugreifen können, überprüfen Sie die Einstellungen mithilfe der IP-Überprüfung. 
+
+Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview). 
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 [Behandeln von Problemen mit Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
 

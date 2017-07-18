@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
-ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: a38b237d5bfc0450c1ca79b53a5784dbb9bf8602
 ms.contentlocale: de-de
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 07/10/2017
 
 
 
@@ -44,7 +44,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [Data Platform Studio](htt
 ### <a name="create-or-identify-resources"></a>Erstellen oder Identifizieren von Ressourcen
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* **Lokale SQL Server-Datenbank-Instanz**: Die Daten, die in SQL Data Warehouse importiert werden sollen, müssen aus einer lokalen SQL Server-Instanz (ab Version 2008 R2) stammen. Data Platform Studio kann Daten nicht direkt aus einer Azure SQL-Datenbank-Instanz oder aus Textdateien importieren.
+* **Lokale SQL Server-Datenbank**: Die Daten, die in SQL Data Warehouse importiert werden sollen, müssen von einer lokalen SQL Server-Instanz (ab Version 2008 R2) stammen. Data Platform Studio kann Daten nicht direkt aus einer Azure SQL-Datenbank-Instanz oder aus Textdateien importieren.
 * **Azure Storage-Konto**: Data Platform Studio stellt die Daten in Azure Blob Storage bereit, bevor sie in SQL Data Warehouse geladen werden. Anstelle des klassischen Bereitstellungsmodells muss das Speicherkonto das standardmäßige Resource Manager-Bereitstellungsmodell verwenden. Sollten Sie noch nicht über ein Speicherkonto verfügen, machen Sie sich mit der Erstellung eines Speicherkontos vertraut. 
 * **SQL Data Warehouse**: Da die Daten in diesem Tutorial aus einer lokalen SQL Server-Instanz in SQL Data Warehouse verschoben werden, benötigen Sie ein Online-Data Warehouse. Sollten Sie noch nicht über ein Data Warehouse verfügen, machen Sie sich mit der Erstellung einer Azure SQL Data Warehouse-Instanz vertraut.
 

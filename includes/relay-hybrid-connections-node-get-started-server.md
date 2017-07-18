@@ -1,21 +1,25 @@
 ### <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
-* Erstellen Sie eine neue JavaScript-Datei namens `listener.js`.
+
+Erstellen Sie eine neue JavaScript-Datei namens `listener.js`.
 
 ### <a name="add-the-relay-npm-package"></a>Hinzufügen des Relay-NPM-Pakets
-* Führen Sie `npm install hyco-ws` über eine Node-Eingabeaufforderung in Ihrem Projektordner aus.
+
+Führen Sie `npm install hyco-ws` über eine Node-Eingabeaufforderung in Ihrem Projektordner aus.
 
 ### <a name="write-some-code-to-receive-messages"></a>Schreiben von Code zum Empfangen von Nachrichten
-1. Fügen Sie die folgenden `constant` am Anfang der Datei `listener.js` hinzu:
+
+1. Fügen Sie am Anfang der `listener.js`-Datei die folgende Konstante hinzu.
    
     ```js
     const WebSocket = require('hyco-ws');
     ```
-2. Fügen Sie der Datei `listener.js` die folgenden Relay-`constants` für die Hybridverbindungsdetails hinzu. Ersetzen Sie die Platzhalter in Klammern durch die entsprechenden Werte, die beim Erstellen der Hybridverbindung abgerufen wurden.
+2. Fügen Sie der Datei `listener.js` die folgenden Konstanten als Hybridverbindungsdetails hinzu. Ersetzen Sie die Platzhalter in Klammern durch die Werte, die beim Erstellen der Hybridverbindung abgerufen wurden.
    
-   1. `const ns` – der Relay-Namespace (Verwenden Sie den FQDN, z.B. `{namespace}.servicebus.windows.net`.)
+   1. `const ns` – der Relay-Namespace. Achten Sie darauf, dass Sie den vollqualifizierten Namespacenamen verwenden, wie z.B. `{namespace}.servicebus.windows.net`.
    2. `const path` – der Name der Hybridverbindung
    3. `const keyrule` – der Name des SAS-Schlüssels
    4. `const key` – der Wert des SAS-Schlüssels
+
 3. Fügen Sie der Datei `listener.js` den folgenden Code hinzu:
    
     ```js
@@ -40,7 +44,7 @@
         console.log('error' + err);
     });
     ```
-    „listener.js“ sollte nun wie folgt aussehen:
+    Die Datei „listener.js“ sollte nun wie folgt aussehen:
    
     ```js
     const WebSocket = require('hyco-ws');

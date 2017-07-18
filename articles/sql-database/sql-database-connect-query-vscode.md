@@ -18,10 +18,10 @@ ms.topic: hero-article
 ms.date: 06/20/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: ca0b1dc8fdf13112510574741a319f0fbebadf93
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -61,7 +61,7 @@ Keine besondere Konfiguration erforderlich.
 
 Keine besondere Konfiguration erforderlich.
 
-## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
+## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
@@ -69,7 +69,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der folgenden Abbildung dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen.
 
-   ![Verbindungsinformationen](./media/sql-database-get-started-portal/server-name.png) 
+   ![Verbindungsinformationen](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen. 
 

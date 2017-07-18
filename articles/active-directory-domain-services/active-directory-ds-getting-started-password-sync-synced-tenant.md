@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Domain Services: Aktivieren der Kennwortsynchronisierung | Microsoft Docs'
-description: "Erste Schritte mit Azure Active Directory-Domänendiensten"
+description: Erste Schritte mit Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,46 +12,45 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/17/2017
+ms.date: 06/30/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 4969b43831a3813a4e76c6447c252a9c458f371a
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 947ea3c9d789ecf5a754001aafcda6f8bcd41047
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="enable-password-synchronization-to-azure-ad-domain-services"></a>Aktivieren der Kennwortsynchronisierung für Azure AD-Domänendienste
-Im Rahmen der obigen Aufgaben haben Sie Azure AD-Domänendienste für Ihren Azure AD-Mandanten aktiviert. Die nächste Aufgabe besteht darin, die Synchronisierung der Kennwörter für Azure AD-Domänendienste zu aktivieren. Nach der Einrichtung der Synchronisierung von Anmeldeinformationen können sich Benutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden.
+# <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Aktivieren der Kennwortsynchronisierung für Azure Active Directory Domain Services
+In vorherigen Aufgaben haben Sie Azure Active Directory Domain Services für Ihren Azure AD-Mandanten (Azure Active Directory) aktiviert. Die nächste Aufgabe besteht darin, die Synchronisierung der Anmeldeinformationshashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services zu ermöglichen. Nach der Einrichtung der Synchronisierung von Anmeldeinformationen können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden.
 
-Die einzelnen Schritte unterscheiden sich in Abhängigkeit davon, ob Ihre Organisation über einen auf die Cloud beschränkten Azure AD-Mandanten verfügt oder ob die Synchronisierung mit Ihrem lokalen Verzeichnis über Azure AD Connect erfolgt.
+Für reine Cloudbenutzerkonten müssen andere Schritte ausgeführt werden als für Benutzerkonten, die aus Ihrem lokalen Verzeichnis mit Azure AD Connect synchronisiert werden. Wenn Ihr Azure AD-Mandant über eine Kombination aus reinen Cloudbenutzern und Benutzern aus Ihrem lokalen AD verfügt, müssen beide Schritte ausgeführt werden.
 
 <br>
 
 > [!div class="op_single_selector"]
-> * [Auf die Cloud beschränkter Azure AD-Mandant](active-directory-ds-getting-started-password-sync.md)
-> * [Synchronisierter Azure AD-Mandant](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> * **Reine Cloudbenutzerkonten:** [Synchronisieren der Kennwörter reiner Cloudbenutzerkonten mit Ihrer verwalteten Domäne](active-directory-ds-getting-started-password-sync.md)
+> * **Lokale Benutzerkonten:** [Synchronisieren der Kennwörter für synchronisierte Benutzerkonten aus Ihrem lokalen AD mit Ihrer verwalteten Domäne](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 >
 >
 
 <br>
 
-## <a name="task-5-enable-password-synchronization-to-aad-domain-services-for-a-synced-azure-ad-tenant"></a>Aufgabe 5: Aktivieren der Kennwortsynchronisierung für AAD-Domänendienste bei einem synchronisierten Azure AD-Mandanten
-Ein synchronisierter Azure AD-Mandant wird für die Synchronisierung mit dem lokalen Verzeichnis Ihres Unternehmens per Azure AD Connect festgelegt. Standardmäßig synchronisiert Azure AD Connect keine Hashes von NTLM- und Kerberos-Anmeldeinformationen für Azure AD. Zum Verwenden der Azure AD-Domänendienste müssen Sie Azure AD Connect so konfigurieren, dass Hashes von Anmeldeinformationen, die für die NTLM- und Kerberos-Authentifizierung benötigt werden, synchronisiert werden. 
+## <a name="task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad"></a>Aufgabe 5: Aktivieren der Kennwortsynchronisierung mit Ihrer verwalteten Domäne für Benutzerkonten, die mit Ihrem lokalen AD synchronisiert werden
+Ein synchronisierter Azure AD-Mandant wird für die Synchronisierung mit dem lokalen Verzeichnis Ihres Unternehmens per Azure AD Connect festgelegt. Standardmäßig synchronisiert Azure AD Connect keine NTLM- und Kerberos-Anmeldeinformationshashes mit Azure AD. Zum Verwenden der Azure AD-Domänendienste müssen Sie Azure AD Connect so konfigurieren, dass Hashes von Anmeldeinformationen, die für die NTLM- und Kerberos-Authentifizierung benötigt werden, synchronisiert werden. Die folgenden Schritte ermöglichen die Synchronisierung der erforderlichen Anmeldeinformationshashes aus Ihrem lokalen Verzeichnis mit Ihrem Azure AD-Mandanten.
 
-> [!WARNING]
-> Sie MÜSSEN die Kennwortsynchronisierung für AAD Domain Services jedes Mal aktivieren, wenn Sie die Azure AD Domain Services aktivieren. Es kann sein, dass Sie die Azure AD Domain Services für Ihr Azure AD-Verzeichnis bereits aktiviert und dann wieder deaktiviert haben. Sie müssen die Kennwortsynchronisierung beim nächsten Aktivieren der Azure AD Domain Services für das Verzeichnis dann trotzdem aktivieren.
+> [!NOTE]
+> Falls Ihre Organisation über Benutzerkonten verfügt, die aus Ihrem lokalen Verzeichnis synchronisiert werden, müssen Sie die Synchronisierung von NTLM- und Kerberos-Hashes aktivieren, um die verwaltete Domäne verwenden zu können. Ein synchronisiertes Benutzerkonto ist ein Konto, das in Ihrem lokalen Verzeichnis erstellt wurde und unter Verwendung von Azure AD Connect mit Ihrem Azure AD-Mandanten synchronisiert wird.
 >
 >
-
-Die folgenden Schritte ermöglichen die Synchronisierung der erforderlichen Hashes von Anmeldeinformationen für Ihren Azure AD-Mandanten.
 
 ### <a name="install-or-update-azure-ad-connect"></a>Installieren oder Aktualisieren von Azure AD Connect
 Installieren Sie die neueste empfohlene Version von Azure AD Connect auf einem in die Domäne eingebundenen Computer. Wenn Sie über eine vorhandene Instanz von Azure AD Connect-Setup verfügen, müssen Sie sie aktualisieren, damit die aktuelle Version von Azure AD Connect verwendet wird. Stellen Sie sicher, dass Sie stets die neueste Version von Azure AD Connect verwenden, um bekannte Probleme oder Fehler zu vermeiden, die inzwischen unter Umständen behoben wurden.
 
 **[Azure AD Connect herunterladen](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-Empfohlene Version: **1.1.281.0** – veröffentlicht am 7. September 2016.
+Empfohlene Version: **1.1.553.0** – veröffentlicht am 27. Juni 2017.
 
 > [!WARNING]
 > Sie müssen die neueste empfohlene Version von Azure AD Connect installieren, um ältere Anmeldeinformationen zu aktivieren (erforderlich für NTLM- und Kerberos-Authentifizierung) und Ihren Azure AD-Mandanten zu synchronisieren. Diese Funktionalität ist in früheren Versionen von Azure AD Connect oder im DirSync-Legacytool nicht verfügbar.

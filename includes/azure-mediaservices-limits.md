@@ -20,7 +20,7 @@
 | Richtlinien | 1,000,000<sup>(6)</sup> |
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>7</sup> |
   
-<sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar.
+<sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar. Die maximalen RU-Grenzwerte werden zurückgesetzt, wenn der Kunde den Typ ändert (z.B. von S2 zu S1). 
 
 <sup>2</sup> Diese Zahl umfasst fertig gestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. Sie können die alten Aufträge mithilfe von **IJob.Delete** oder der HTTP **DELETE**-Anforderung löschen.
 
@@ -43,6 +43,6 @@ Ab 15. Mai 2017 beträgt die für ein einzelnes Blob unterstützte maximale Grö
 
 | Reservierte Einheiten für Medien (Typ) | Maximale Eingabegröße (GB)| 
 | --- | --- | 
-|S1    | 325|
-|S2    | 640|
-|S3    | 260|
+|S1 | 325|
+|S2 | 640|
+|S3 | 260|

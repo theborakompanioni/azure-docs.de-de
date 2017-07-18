@@ -12,16 +12,16 @@ Neben beträchtlicher CPU-Leistung bietet die H-Serie verschiedene Optionen für
 
 ACU: 290 - 300
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8 |8 |56 |1000 |16 |16 x 500 |2/hoch |
-| Standard_H16 |16 |112 |2000 |32 |32 x 500 |4/sehr hoch |
-| Standard_H8m |8 |112 |1000 |16 |16 x 500 |2/hoch |
-| Standard_H16m |16 |224 |2000 |32 |32 x 500 |4/sehr hoch |
-| Standard_H16r* |16 |112 |2000 |32 |32 x 500 |4/sehr hoch |
-| Standard_H16mr* |16 |224 |2000 |32 |32 x 500 |4/sehr hoch |
+| Standard_H8 |8 |56 |1000 |16 |16 x 500 |2  |
+| Standard_H16 |16 |112 |2000 |32 |32 x 500 |4 |
+| Standard_H8m |8 |112 |1000 |16 |16 x 500 |2  |
+| Standard_H16m |16 |224 |2000 |32 |32 x 500 |4  |
+| Standard_H16r* |16 |112 |2000 |32 |32 x 500 |4  |
+| Standard_H16mr* |16 |224 |2000 |32 |32 x 500 |4 |
 
-* RDMA-fähig
+* Für MPI-Anwendungen ist ein dediziertes RDMA-Back-End-Netzwerk durch ein FDR InfiniBand-Netzwerk aktiviert, das eine äußerst geringe Latenz und eine hohe Bandbreite ermöglicht.
 
 <br>
 
@@ -31,14 +31,14 @@ ACU: 290 - 300
 
 ACU: 225
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales HDD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales HDD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs|
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A8* |8 |56 |382 |16 |16 x 500 |2/hoch |
-| Standard_A9* |16 |112 |382 |16 |16 x 500 |4/sehr hoch |
-| Standard_A10 |8 |56 |382 |16 |16 x 500 |2/hoch |
-| Standard_A11 |16 |112 |382 |16 |16 x 500 |4/sehr hoch |
+| Standard_A8* |8 |56 |382 |16 |16 x 500 |2 |
+| Standard_A9* |16 |112 |382 |16 |16 x 500 |4 |
+| Standard_A10 |8 |56 |382 |16 |16 x 500 |2  |
+| Standard_A11 |16 |112 |382 |16 |16 x 500 |4 |
 
-* RDMA-fähig
+* Für MPI-Anwendungen ist ein dediziertes RDMA-Back-End-Netzwerk durch ein FDR InfiniBand-Netzwerk aktiviert, das eine äußerst geringe Latenz und eine hohe Bandbreite ermöglicht.
 
 <br>
 
