@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2016
+ms.date: 07/17/2017
 ms.author: anandy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 9bb29624324305f5295e0a50ef79d8f4c6d063c0
+ms.contentlocale: de-de
 ms.lasthandoff: 03/21/2017
-
 
 ---    
 
@@ -65,10 +65,10 @@ Nachdem Sie die Informationen zu den AD FS-Farmservern bestätigt haben, fragt A
 
 Nachdem Sie das Zertifikat bereitgestellt haben, geht Azure AD eine Reihe von Voraussetzungen durch. Überprüfen Sie das Zertifikat, um sicherzustellen, dass es für die AD FS-Farm passend ist:
 
--    Der Antragstellername/Alternative Antragstellername für das Zertifikat ist entweder der Name des Verbunddiensts oder ein Platzhalterzertifikat.
--    Das Zertifikat ist mehr als 30 Tage gültig.
--    Die Vertrauenskette des Zertifikats ist gültig.
--    Das Zertifikat ist kennwortgeschützt.
+-   Der Antragstellername/Alternative Antragstellername für das Zertifikat ist entweder der Name des Verbunddiensts oder ein Platzhalterzertifikat.
+-   Das Zertifikat ist mehr als 30 Tage gültig.
+-   Die Vertrauenskette des Zertifikats ist gültig.
+-   Das Zertifikat ist kennwortgeschützt.
 
 ## <a name="step-3-select-servers-for-the-update"></a>Schritt 3: Auswählen von Servern für das Update
 

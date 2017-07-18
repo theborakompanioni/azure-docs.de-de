@@ -2,7 +2,7 @@
 title: Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage | Microsoft Docs
 description: Erfahren Sie, wie Sie Resource Manager-Vorlagen zur Erstellung einer Metrikwarnung verwenden, um Benachrichtungen per E-Mail oder Webhook zu empfangen.
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -19,7 +19,6 @@ ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
 ms.openlocfilehash: 4ea07a1cade7e3007b0f85214b4d41a61b527001
 ms.contentlocale: de-de
 ms.lasthandoff: 12/22/2016
-
 
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage

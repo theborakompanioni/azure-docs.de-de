@@ -2,7 +2,7 @@
 title: "Nutzen der Überwachungsdaten von Azure | Microsoft Docs"
 description: "Erfahren Sie etwas über alle zurzeit in Azure verfügbaren Überwachungsdatenquellen."
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 27a0b50107964c99334efbf457bfc2f680217ad4
+ms.contentlocale: de-de
 ms.lasthandoff: 04/25/2017
-
 
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Nutzen der Überwachungsdaten von Azure

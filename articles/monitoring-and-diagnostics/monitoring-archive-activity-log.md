@@ -2,7 +2,7 @@
 title: "Archivieren des Azure-Aktivitätsprotokolls | Microsoft Docs"
 description: "Hier erfahren Sie, wie Sie Ihr Azure-Aktivitätsprotokoll zur langfristigen Aufbewahrung in einem Speicherkonto archivieren."
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaa162df8a6cd60cb174242e6a353439f2da58b4
 ms.openlocfilehash: eb3a0ad811a4286df1bac963904bd9154c0ccfa3
-
+ms.contentlocale: de-de
+ms.lasthandoff: 12/10/2016
 
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivieren des Azure-Aktivitätsprotokolls
@@ -167,10 +168,5 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 * [Herunterladen von Blobs für die Analyse](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [Streamen des Aktivitätsprotokolls an Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
 * [Weitere Informationen zum Aktivitätsprotokoll](monitoring-overview-activity-logs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

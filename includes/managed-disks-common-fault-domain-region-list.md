@@ -1,5 +1,4 @@
-### Anzahl der Fehlerdomänen pro Region
-<a id="number-of-fault-domains-per-region" class="xliff"></a>
+### <a name="number-of-fault-domains-per-region"></a>Anzahl der Fehlerdomänen pro Region
 
 | Region              | Maximale Anzahl von Fehlerdomänen  |
 |---------------------|-------------------------|

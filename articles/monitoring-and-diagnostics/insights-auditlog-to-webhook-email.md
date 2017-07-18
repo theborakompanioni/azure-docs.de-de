@@ -1,8 +1,8 @@
 ---
 title: "Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen | Microsoft-Dokumentation"
 description: "Leiten Sie Aktivitätsprotokollereignisse für benutzerdefinierte Aktionen an andere Dienste weiter. Senden Sie z.B. SMS, melden Sie Fehler oder benachrichtigen Sie Teams über Chat/Messagingdienst."
-author: kamathashwin
-manager: carmonm
+author: johnkemnetz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: ashwink
-translationtype: Human Translation
+ms.author: johnkem
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
 ms.openlocfilehash: 4ee65a10616fff81044c181fce8708a596e9e6de
-
+ms.contentlocale: de-de
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="call-a-webhook-on-azure-activity-log-alerts"></a>Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen
@@ -123,9 +124,4 @@ Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die 
 * [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

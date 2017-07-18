@@ -1,8 +1,8 @@
 ---
 title: "Allgemeine Metriken für die automatische Skalierung in Azure Monitor | Microsoft-Dokumentation"
 description: "Erfahren Sie, welche Metriken häufig für die automatische Skalierung von Cloud Services, Virtual Machines und Web-Apps verwendet werden."
-author: kamathashwin
-manager: carolz
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/6/2016
-ms.author: ashwink
+ms.author: ancav
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 7f9fb67a28560f8cc48ba8be8011bc1991d09024
 ms.contentlocale: de-de
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Allgemeine Metriken für die automatische Skalierung in Azure Monitor

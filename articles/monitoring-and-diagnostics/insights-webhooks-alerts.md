@@ -1,7 +1,7 @@
 ---
 title: "Konfigurieren von Webhooks für Azure-Metrikwarnungen | Microsoft Docs"
 description: Umleiten von Azure-Warnungen an andere Azure-fremde Systeme.
-author: kamathashwin
+author: johnkemnetz
 manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
-ms.author: ashwink
-translationtype: Human Translation
+ms.author: johnkem
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 7282de704a1053e2052a189990fb2b30b2adad6f
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurieren eines Webhooks für eine Azure-Metrikwarnung
