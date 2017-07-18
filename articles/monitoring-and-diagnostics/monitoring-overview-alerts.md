@@ -2,7 +2,7 @@
 title: "Überblick über Warnungen in Microsoft Azure und Microsoft Azure Monitor| Microsoft-Dokumentation"
 description: "Mit Warnungen können Sie Metriken, Ereignisse oder Protokolle für Ihre Azure-Ressourcen überwachen. Lassen Sie sich benachrichtigen, wenn eine von Ihnen festgelegte Bedingung erfüllt ist."
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: 76c8feb077cca27dc96f43e708cdef4fbb0f824c
+ms.contentlocale: de-de
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?

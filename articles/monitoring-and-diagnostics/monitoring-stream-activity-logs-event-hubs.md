@@ -2,7 +2,7 @@
 title: "Streamen des Azure-Aktivitätsprotokolls an Event Hubs | Microsoft Docs"
 description: "Hier erfahren Sie, wie Sie das Azure-Aktivitätsprotokoll an Event Hubs streamen."
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 51a7a274c0cdbec169154bd1100abb4534283cff
 ms.openlocfilehash: ac478dc5c6691ef9f6c4829bd47a81912774d032
 ms.contentlocale: de-de
 ms.lasthandoff: 02/17/2017
-
 
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamen des Azure-Aktivitätsprotokolls an Event Hubs

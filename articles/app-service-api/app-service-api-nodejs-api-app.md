@@ -20,18 +20,13 @@ ms.openlocfilehash: 8a5d0c60e101f4038dff6f76c8f23dbb2b44661c
 ms.contentlocale: de-de
 ms.lasthandoff: 06/28/2017
 
-
 ---
-<a id="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure" class="xliff"></a>
-
-# Erstellen einer Node.js-RESTful-API und Bereitstellen für eine API-App in Azure
+# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Erstellen einer Node.js-RESTful-API und Bereitstellen für eine API-App in Azure
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
 In diesem Schnellstart wird gezeigt, wie Sie unter Verwendung einer [Swagger](http://swagger.io/)-Definition eine auf dem [Express](http://expressjs.com/)-Framework basierende Node.js-REST-API erstellen und als [API-App](app-service-api-apps-why-best-platform.md) in Azure bereitstellen. Sie erstellen die App mithilfe von Befehlszeilentools, konfigurieren Ressourcen über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und stellen die App mit Git bereit.  Am Ende verfügen Sie über eine Beispiel-REST-API, die in Azure ausgeführt wird.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * [Git](https://git-scm.com/)
 * [Node.js und npm](https://nodejs.org/)
@@ -42,9 +37,7 @@ In diesem Schnellstart wird gezeigt, wie Sie unter Verwendung einer [Swagger](ht
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI in Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
-<a id="prepare-your-environment" class="xliff"></a>
-
-## Vorbereiten der Umgebung
+## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 
 1. Führen Sie in einem Terminalfenster den folgenden Befehl aus, um das Beispiel auf Ihrem lokalen Computer zu klonen.
 
@@ -65,9 +58,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
     npm install -g generator-swaggerize
     ```
 
-<a id="generate-nodejs-code" class="xliff"></a>
-
-## Generieren von Node.js-Code 
+## <a name="generate-nodejs-code"></a>Generieren von Node.js-Code 
 
 In diesem Abschnitt des Tutorials wird ein API-Entwicklungsworkflow modelliert, in dem Sie zuerst Swagger-Metadaten erstellen und diese dann verwenden, um das Servercodegerüst (automatische Generierung) für die API zu erstellen. 
 
@@ -89,9 +80,7 @@ In diesem Abschnitt des Tutorials wird ein API-Entwicklungsworkflow modelliert, 
    ? Your email: frank@fabrikam.net
    ```
    
-<a id="customize-the-project-code" class="xliff"></a>
-
-## Anpassen des Projektcodes
+## <a name="customize-the-project-code"></a>Anpassen des Projektcodes
 
 1. Kopieren Sie den Ordner *lib* in den Ordner *ContactList*, der durch `yo swaggerize` erstellt wurde. Ändern Sie das Verzeichnis anschließend in *ContactList*.
 
@@ -149,6 +138,9 @@ In diesem Abschnitt des Tutorials wird ein API-Entwicklungsworkflow modelliert, 
     var swaggerize = require('swaggerize-express');
     var swaggerUi = require('swaggerize-ui'); 
     var path = require('path');
+    var fs = require("fs");
+    
+    fs.existsSync = fs.existsSync || require('path').existsSync;
 
     var app = express();
 
@@ -173,9 +165,7 @@ In diesem Abschnitt des Tutorials wird ein API-Entwicklungsworkflow modelliert, 
 
     Mit diesem Code werden kleine Änderungen vorgenommen, sodass er mit Azure App Service verwendet werden kann und eine interaktive Weboberfläche für Ihre API bereitgestellt wird.
 
-<a id="test-the-api-locally" class="xliff"></a>
-
-### Lokales Testen der API
+### <a name="test-the-api-locally"></a>Lokales Testen der API
 
 1. Starten Sie die Node.js-App.
     ```bash
@@ -239,9 +229,7 @@ In diesem Abschnitt erstellen Sie über Azure CLI 2.0 die Ressourcen zum Hosten 
 5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
 
 
-<a id="deploy-the-api-with-git" class="xliff"></a>
-
-## Bereitstellen der API mit Git
+## <a name="deploy-the-api-with-git"></a>Bereitstellen der API mit Git
 
 Stellen Sie Ihren Code für die API-App bereit, indem Sie Commits per Pushvorgang vom lokalen Git-Repository in Azure App Service übertragen.
 
@@ -268,9 +256,7 @@ Stellen Sie Ihren Code für die API-App bereit, indem Sie Commits per Pushvorgan
 
 5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
  
-<a id="test-the-api--in-azure" class="xliff"></a>
-
-## Testen der API in Azure
+## <a name="test-the-api--in-azure"></a>Testen der API in Azure
 
 1. Öffnen Sie in einem Browser http://app_name.azurewebsites.net/contacts. Es wird der gleiche JSON-Code zurückgegeben wie bei der Anforderung, die Sie weiter oben im Tutorial lokal durchgeführt haben.
 
@@ -298,9 +284,7 @@ Stellen Sie Ihren Code für die API-App bereit, indem Sie Commits per Pushvorgan
 
     Nun können Sie Updates für die Beispiel-API in Azure bereitstellen, indem Sie einfach Commits per Pushvorgang an das Azure-Git-Repository übertragen.
 
-<a id="clean-up" class="xliff"></a>
-
-## Bereinigen
+## <a name="clean-up"></a>Bereinigen
 
 Führen Sie den folgenden Azure CLI-Befehl aus, um die in diesem Schnellstart erstellten Ressourcen zu bereinigen:
 
@@ -308,9 +292,7 @@ Führen Sie den folgenden Azure CLI-Befehl aus, um die in diesem Schnellstart er
 az group delete --name myResourceGroup
 ```
 
-<a id="next-step" class="xliff"></a>
-
-## Nächster Schritt 
+## <a name="next-step"></a>Nächster Schritt 
 > [!div class="nextstepaction"]
 > [Nutzen von API-Apps über JavaScript-Clients mit CORS](app-service-api-cors-consume-javascript.md)
 

@@ -3,7 +3,7 @@ title: 'Azure AD Connect: Wiederherstellen nach einem Problem aufgrund der Local
 description: In diesem Thema wird beschrieben, wie Sie Azure AD Connect Synchronization Service wiederherstellen, wenn ein Problem aufgrund der LocalDB-Obergrenze von 10 GB auftritt.
 services: active-directory
 documentationcenter: 
-author: billmath
+author: cychua
 manager: femila
 editor: 
 ms.assetid: 41d081af-ed89-4e17-be34-14f7e80ae358
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
-ms.author: cychua
-translationtype: Human Translation
+ms.date: 07/17/2017
+ms.author: billmath
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
 ms.openlocfilehash: 533d3db2a9b49f3077b7cdb699cac797c7a931b3
+ms.contentlocale: de-de
 ms.lasthandoff: 03/24/2017
-
 
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Wiederherstellen nach einem Problem aufgrund der LocalDB-Obergrenze von 10 GB
@@ -79,13 +79,13 @@ Der Name der für Azure AD Connect erstellten Datenbank lautet **ADSync**. Um ei
 ### <a name="delete-run-history-data"></a>Löschen der Ausführungsverlaufsdaten
 Standardmäßig werden in Azure AD Connect Ausführungsverlaufsdaten der letzten sieben Tage aufbewahrt. In diesem Schritt werden die Ausführungsverlaufsdaten gelöscht, um Datenbankspeicherplatz freizugeben, damit Azure AD Connect Synchronization Service wieder mit der Synchronisierung beginnen kann.
 
-1.    Starten Sie **Synchronization Service Manager**, indem Sie zu „START“ > „Synchronization Service“ navigieren.
+1.  Starten Sie **Synchronization Service Manager**, indem Sie zu „START“ > „Synchronization Service“ navigieren.
 
-2.    Rufen Sie die Registerkarte **Vorgänge** auf.
+2.  Rufen Sie die Registerkarte **Vorgänge** auf.
 
-3.    Klicken Sie unter **Aktionen** auf **Clear Runs** (Ausführungen löschen).
+3.  Klicken Sie unter **Aktionen** auf **Clear Runs** (Ausführungen löschen).
 
-4.    Sie können entweder **Clear all runs** (Alle Ausführungen löschen) oder **Clear runs before… <date>** (Ausführungen löschen vor...) auswählen. Es wird empfohlen, zunächst Ausführungsverlaufsdaten zu löschen, die älter als zwei Tage sind. Falls weiterhin Probleme aufgrund der Datenbankgröße auftreten, wählen Sie die Option **Clear all runs** (Alle Ausführungen löschen).
+4.  Sie können entweder **Clear all runs** (Alle Ausführungen löschen) oder **Clear runs before… <date>** (Ausführungen löschen vor...) auswählen. Es wird empfohlen, zunächst Ausführungsverlaufsdaten zu löschen, die älter als zwei Tage sind. Falls weiterhin Probleme aufgrund der Datenbankgröße auftreten, wählen Sie die Option **Clear all runs** (Alle Ausführungen löschen).
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Verkürzen des Aufbewahrungszeitraums für Ausführungsverlaufsdaten
 Mit diesem Schritt soll die Wahrscheinlichkeit reduziert werden, dass nach mehreren Synchronisierungszyklen ein Problem aufgrund der Obergrenze von 10 GB auftritt.

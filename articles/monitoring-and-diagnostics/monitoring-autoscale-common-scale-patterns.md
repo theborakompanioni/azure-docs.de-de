@@ -1,8 +1,8 @@
 ---
 title: "Übersicht über allgemeine Muster zur automatischen Skalierung | Microsoft-Dokumentation"
 description: Lernen Sie allgemeine Muster zur automatischen Skalierung Ihrer Ressource in Azure kennen.
-author: rajram
-manager: rboucher
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
-ms.author: rajram
+ms.author: ancav
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: c697b49769ffbbb4aee7a482bb067990b893490c
 ms.contentlocale: de-de
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Übersicht über allgemeine Muster zur automatischen Skalierung

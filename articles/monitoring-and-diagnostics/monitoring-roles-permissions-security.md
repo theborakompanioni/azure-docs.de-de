@@ -2,7 +2,7 @@
 title: Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor | Microsoft Docs
 description: "Erfahren Sie mehr über die Verwendung der vordefinierten Rollen und Berechtigungen in Azure Monitor, um den Zugriff auf Überwachungsressourcen zu beschränken."
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: johnkem
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 26e12a27693fe94ae88b70328ed5dd0d9d5b4c10
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
@@ -169,10 +170,5 @@ Für Event Hubs können Sie einem ähnlichen Muster folgen, jedoch müssen Sie z
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu RBAC und Berechtigungen in Resource Manager](../active-directory/role-based-access-control-what-is.md)
 * [Übersicht über die Überwachung in Microsoft Azure](monitoring-overview.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
