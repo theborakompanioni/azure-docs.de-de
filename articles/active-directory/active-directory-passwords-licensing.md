@@ -13,7 +13,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
@@ -22,16 +22,17 @@ ms.openlocfilehash: 3ed13c819f8e32cab44013cdcbf1b3a921ba98b8
 ms.contentlocale: de-de
 ms.lasthandoff: 05/03/2017
 
-
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
+# Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
+<a id="licensing-requirements-for-azure-ad-self-service-password-reset" class="xliff"></a>
 
 **In Ihrer Organisation muss mindestens eine Lizenz zugewiesen sein**, damit die Kennwortzurücksetzung in Azure AD funktioniert. Auf der Benutzeroberfläche für das Zurücksetzen von Kennwörtern wird keine Einzelbenutzerlizenzierung erzwungen. Um Konformität mit Ihrer Microsoft-Lizenzvereinbarung zu gewährleisten, müssen Sie allen Benutzern Lizenzen zuweisen, die Premiumfeatures verwenden.
 
 * **Nur Cloudbenutzer:** beliebige kostenpflichtige SKU für Office 365 (O365) oder Azure AD Basic
 * **Cloudbenutzer** und/oder **lokale Benutzer**: Azure AD Premium P1 oder P2, Enterprise Mobility + Security (EMS) oder Secure Productive Enterprise (SPE)
 
-## <a name="licenses-required-for-password-writeback"></a>Erforderliche Lizenzen für das Kennwortrückschreiben
+## Erforderliche Lizenzen für das Kennwortrückschreiben
+<a id="licenses-required-for-password-writeback" class="xliff"></a>
 
 Zur Verwendung des Kennwortrückschreibens muss in Ihrem Mandanten eine der folgenden Lizenzen zugewiesen sein.
 
@@ -51,13 +52,15 @@ Weitere Informationen zur Lizenzierung, einschließlich der Kosten, finden Sie a
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Secure Productive Enterprise](https://www.microsoft.com/secure-productive-enterprise/default.aspx)
 
-## <a name="enable-group-or-user-based-licensing"></a>Aktivieren der gruppen- oder benutzerbasierten Lizenzierung
+## Aktivieren der gruppen- oder benutzerbasierten Lizenzierung
+<a id="enable-group-or-user-based-licensing" class="xliff"></a>
 
 Azure AD unterstützt jetzt die gruppenbasierte Lizenzierung, mit der Administratoren in einem Massenvorgang einer Gruppe von Benutzern Lizenzen zuweisen können, anstatt sie einzeln zuzuweisen. [Zuweisen, Prüfen und Beheben von Problemen mit Lizenzen](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)
 
 Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft „Verwendungsstandort“ für den Benutzer angeben. Die Zuweisung von Lizenzen erfolgt im Azure-Portal unter „Benutzer“ > „Profil“ > „Einstellungen“. **Bei Verwendung der Gruppenlizenzzuweisung erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses.**
 
-## <a name="next-steps"></a>Nächste Schritte
+## Nächste Schritte
+<a id="next-steps" class="xliff"></a>
 
 Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD
 
