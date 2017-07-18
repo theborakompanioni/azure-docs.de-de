@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 2/23/2017
 ms.author: markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
-ms.openlocfilehash: 916a4e837d003a73a1801dd25b8ebfbfdcd86312
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: c989ca38e2463f8365b55c509e8b2bcf4572b409
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -164,6 +165,15 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern von Dateien
 
 Der Agent wurde jetzt installiert, und Ihr Computer wurde im Tresor registriert. Sie können die Sicherung jetzt konfigurieren und planen.
 
+## <a name="network-and-connectivity-requirements"></a>Netzwerk- und Konnektivitätsanforderungen
+
+Wenn Ihr Computer/Proxy nur eingeschränkten Zugang zum Internet hat, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer/Proxy für die folgenden URLs konfiguriert sind: <br>
+    1. www.msftncsi.com
+    2. *.Microsoft.com
+    3. *.WindowsAzure.com
+    4. *.microsoftonline.com
+    5. *. windows.ne
+
 ## <a name="back-up-your-files-and-folders"></a>Sichern Ihrer Dateien und Ordner
 Die erste Sicherung umfasst zwei wichtige Aufgaben:
 
@@ -183,6 +193,7 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Age
 4. Klicken Sie auf der Seite „Elemente für Sicherung auswählen“ auf **Elemente hinzufügen**.
 5. Wählen Sie die Dateien und Ordner aus, die Sie sichern möchten, und klicken Sie auf **OK**.
 6. Klicken Sie auf **Weiter**.
+
 7. Geben Sie auf der Seite **Sicherungszeitplan angeben** den **Sicherungszeitplan** an, und klicken Sie auf **Weiter**.
 
     Sie können tägliche (maximal drei pro Tag) oder wöchentliche Sicherungen planen.

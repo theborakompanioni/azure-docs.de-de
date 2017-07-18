@@ -10,11 +10,11 @@ ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 06/19/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 7bbf70786bff83ad3cfae9cb9b893f41736874b5
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 2b81b9e1ae2abfd332bd6048b7643b4245ca374b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -104,12 +104,12 @@ Wir stellen jetzt mit dem Befehlszeilen-Hilfsprogramm psql eine Verbindung mit d
 
    ![Azure-Datenbank für PostgreSQL – Azure Shell-Bash-Eingabeaufforderung](./media/quickstart-create-database-portal/8-bash.png)
 
-3. Stellen Sie an der Cloud Shell-Eingabeaufforderung mit den psql-Befehlen eine Verbindung mit Ihrem Azure-Datenbank für PostgreSQL-Server her. Das folgende Format wird verwendet, um mit dem Hilfsprogramm [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) eine Verbindung mit einer Azure-Datenbank für PostgreSQL-Server herzustellen:
+3. Stellen Sie an der Cloud Shell-Eingabeaufforderung eine Verbindung mit Ihrem Azure-Datenbank für PostgreSQL-Server her, indem Sie die psql-Befehlszeile eingeben, wenn Sie dazu aufgefordert werden. Das folgende Format wird verwendet, um mit dem Hilfsprogramm [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) eine Verbindung mit einer Azure-Datenbank für PostgreSQL-Server herzustellen:
    ```bash
    psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
    ```
 
-   Der folgende Befehl stellt z.B. mithilfe der Zugriffsanmeldeinformationen eine Verbindung mit der Standarddatenbank **postgres** auf Ihrem PostgreSQL-Server **mypgserver-20170401.postgres.database.azure.com** her. Geben Sie Ihr Serveradministrator-Kennwort ein, wenn Sie dazu aufgefordert werden.
+   Der folgende Befehl stellt z.B. mithilfe der Zugriffsanmeldeinformationen eine Verbindung mit der Standarddatenbank **postgres** auf Ihrem PostgreSQL-Server **mypgserver-20170401.postgres.database.azure.com** her. Verwenden Sie beim Herstellen einer Verbindung immer Port **5432**. Geben Sie Ihr Serveradministrator-Kennwort ein, wenn Sie dazu aufgefordert werden. Geben Sie im Befehl wie unten gezeigt Leerzeichen zwischen den „--“-Switches ein. Verwenden Sie jedoch keine Leerzeichen zwischen den Gleichheitszeichen und den Parameterwerten.
 
    ```bash
    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres

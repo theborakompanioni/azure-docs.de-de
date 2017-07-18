@@ -1,5 +1,5 @@
 ---
-title: " Erstellen eines Azure Media Services-Kontos über das Azure-Portal | Microsoft-Dokumentations"
+title: "Erstellen eines Azure Media Services-Kontos über das Azure-Portal | Microsoft Docs"
 description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie über das Azure-Portal ein Azure Media Services-Konto erstellen."
 services: media-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 07/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 7ef0383ae88dcb8beb4b30792eaf60dec2911507
-ms.openlocfilehash: 08b8629502f99fc46fbe28ad17cd173f11259721
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9ab5368c173f016f44546d6c8acb360598f5f5ab
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals
@@ -40,13 +41,10 @@ Für den Zugriff auf Media Services sind zwei zugeordnete Konten erforderlich:
 
 * Media Services-Konto. Über Ihr Konto erhalten Sie Zugriff auf eine Reihe cloudbasierter Mediendienste in Azure. In einem Media Services-Konto wird kein Medieninhalt gespeichert. Stattdessen werden Metadaten über die Medieninhalte und Medienverarbeitungsaufträge in Ihrem Konto gespeichert. Beim Erstellen des Kontos wählen Sie eine verfügbare Media Services-Region aus. Bei der ausgewählten Region handelt es sich um ein Rechenzentrum, in dem Metadaten-Datensätze für Ihr Konto gespeichert werden.
   
-    Folgende Media Services-Regionen (AMS) sind verfügbar: "Nordeuropa", "Westeuropa", "USA, Westen", "USA, Osten", "Südostasien", "Ostasien", "Japan, Westen", "Japan, Osten". Media Services verwendet keine Affinitätsgruppen.
-  
-    AMS ist jetzt auch in den folgenden Rechenzentren verfügbar: „Brasilien, Süden“, „Indien, Westen“, „Indien, Süden“ und „Indien, Mitte“. Über das Azure-Portal können Sie nun Media Service-Konten erstellen und verschiedene hier beschriebene Aufgaben ausführen. Live Encoding ist in diesen Datencentern jedoch nicht aktiviert. Darüber hinaus sind nicht alle Arten von für die Codierung reservierten Einheiten in diesen Datencentern verfügbar.
-  
-  * „Brasilien, Süden“: Reservierte Einheiten für die Codierung stehen nur im Standard- und Basic-Tarif zur Verfügung.
-  * „Indien, Westen“, „Indien, Süden“: 
 * Ein Azure-Speicherkonto. Das Speicherkonto muss sich in der gleichen geografischen Region befinden wie das Media Services-Konto. Bei der Erstellung eines Media Services-Kontos können Sie entweder ein vorhandenes Speicherkonto in derselben Region auswählen oder ein neues Speicherkonto in derselben Region erstellen. Wenn Sie ein Media Services-Konto löschen, bleiben die Blobs im zugehörigen Speicherkonto erhalten.
+
+> [!NOTE]
+> Weitere Informationen zur Verfügbarkeit von Azure Media Services-Features in verschiedenen Regionen finden Sie unter [Availability of Media Services features across datacenters](scenarios-and-availability.md#a-idavailabilitya-availability-of-media-services-features-across-datacenters) (Datencenterübergreifende Verfügbarkeit von AMS-Features).
 
 ## <a name="create-an-ams-account"></a>Erstellen eines AMS-Kontos
 In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
@@ -74,35 +72,21 @@ In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
     >[!NOTE]
     >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
    
-    ![Media Services – Einstellungen](./media/media-services-create-account/media-services-settings.png)
-   
-    Verwenden Sie zum Verwalten Ihres AMS-Kontos (Hochladen von Videos, Codieren von Ressourcen, Überwachen des Auftragsstatus und Ähnliches) das Fenster **Einstellungen** .
+## <a name="to-manage-your-ams-account"></a>Verwalten Ihres AMS-Kontos
 
-## <a name="manage-keys"></a>Schlüssel verwalten
-Sie benötigen den Kontonamen und den Primärschlüssel, um programmgesteuert auf das Media Services-Konto zugreifen zu können.
+Wenn Sie Ihr AMS-Konto verwalten (also etwa eine programmgesteuerte Verbindung mit der AMS-API herstellen, Videos hochladen, Medienobjekte codieren, den Inhaltsschutz konfigurieren oder den Auftragsstatus überwachen) möchten, wählen Sie im linken Bereich des Portals die Option **Einstellungen** aus. Navigieren Sie unter **Einstellungen** zu einem der verfügbaren Blätter (beispielsweise **API-Zugriff**, **Medienobjekte**, **Aufträge**, **Inhaltsschutz**).
 
-1. Wählen Sie im Azure-Portal Ihr Konto aus. 
-   
-    Das Fenster **Einstellungen** wird auf der rechten Seite angezeigt. 
-2. Wählen Sie im Fenster **Einstellungen** die Option **Schlüssel** aus. 
-   
-    Im Fenster **Schlüssel verwalten** werden der Kontoname sowie der Primär- und Sekundärschlüssel angezeigt. 
-3. Kopieren Sie die Werte mithilfe der Kopierschaltfläche.
-   
-    ![Media Services – Schlüssel](./media/media-services-create-account/media-services-keys.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nun können Sie Dateien in Ihrer AMS-Konto hochladen. Weitere Informationen finden Sie unter [Upload files](media-services-portal-upload-files.md)(Hochladen von Dateien).
+
+Informationen zum programmgesteuerten Zugreifen auf die AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

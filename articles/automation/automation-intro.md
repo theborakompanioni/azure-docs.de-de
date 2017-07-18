@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: e37e79f3990d920a656330c4f4c5cf7748183441
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 6b1fb9e7ae810df21cbcd592fef2b43309e2269c
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 06/20/2017
 Microsoft Azure Automation bietet Benutzern die Möglichkeit, die manuellen, langfristigen, Fehler verursachenden und häufig wiederholten Aufgaben zu automatisieren, die für gewöhnlich in einer Cloud- und Unternehmensumgebung ausgeführt werden. Dies spart Zeit, erhöht die Zuverlässigkeit normaler Verwaltungsaufgaben und plant diese sogar so ein, dass sie in regelmäßigen Abständen automatisch ausgeführt werden. Sie können Prozesse mit Runbooks automatisieren oder die Konfigurationsverwaltung über die Konfiguration für den gewünschten Zustand automatisieren. Dieser Artikel enthält eine kurze Übersicht über Azure Automation und Antworten auf einige häufige Fragen. In anderen Artikeln dieser Bibliothek finden Sie ausführlichere Informationen zu den verschiedenen Themen.
 
 ## <a name="automating-processes-with-runbooks"></a>Automatisieren von Prozessen mit Runbooks
-Ein Runbook umfasst eine Reihe von Aufgaben, mit denen in Azure Automation ein automatisierter Prozess durchgeführt wird. Dies kann ein einfacher Prozess sein, z. B. das Starten eines virtuellen Computers oder das Erstellen eines Protokolleintrags. Sie können auch ein komplexes Runbook nutzen, in dem andere kleinere Runbooks kombiniert sind, um einen komplexen Prozess für mehrere Ressourcen oder sogar mehrere Clouds und lokale Umgebungen durchzuführen.  
+Ein Runbook umfasst eine Reihe von Aufgaben, mit denen in Azure Automation ein automatisierter Prozess durchgeführt wird. Dies kann ein einfacher Prozess sein, z.B. das Starten eines virtuellen Computers oder das Erstellen eines Protokolleintrags. Sie können auch ein komplexes Runbook nutzen, in dem andere kleinere Runbooks kombiniert sind, um einen komplexen Prozess für mehrere Ressourcen oder sogar mehrere Clouds und lokale Umgebungen durchzuführen.  
 
 Beispielsweise verfügen Sie über einen vorhandenen manuellen Prozess zum Abschneiden einer SQL-Datenbank, wenn die Gefahr besteht, dass sie die maximale Größe erreicht. Dieser Prozess umfasst mehrere Schritte, z. B. das Herstellen der Verbindung mit dem Server, das Herstellen der Verbindung mit der Datenbank, das Abrufen der aktuellen Datenbankgröße, das Prüfen der Schwellenwertüberschreitung und dann das Abschneiden und das Benachrichtigen von Benutzern. Anstatt diese Schritte manuell auszuführen, können Sie ein Runbook erstellen, mit dem diese Aufgaben als einzelner Prozess ausgeführt werden. Sie starten dazu das Runbook, geben die erforderlichen Informationen an, z. B. den Namen des SQL-Servers, den Datenbanknamen und die E-Mail-Adresse des Empfängers, und können sich dann zurücklehnen, während der Prozess durchgeführt wird. 
 

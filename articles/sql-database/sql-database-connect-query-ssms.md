@@ -18,22 +18,18 @@ ms.topic: hero-article
 ms.date: 05/26/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 29883e37f1f506f33f44cf02dbf08221274e109d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2835a72fc90d1fd39af73c6907648908e5d9fdeb
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-<a id="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data" class="xliff"></a>
-
-# Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten
+# <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten
 
 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) ist eine integrierte Umgebung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis SQL-Datenbank für Microsoft Windows. In diesem Schnellstart wird veranschaulicht, wie Sie SSMS zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten in der Datenbank abzufragen, einzufügen, zu aktualisieren und zu löschen. 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in einem der folgenden Schnellstarts erstellt wurden:
 
@@ -43,9 +39,7 @@ In diesem Schnellstart werden als Ausgangspunkt die Ressourcen verwendet, die in
 
 Stellen Sie zunächst sicher, dass Sie die neueste Version von [SSMS](https://msdn.microsoft.com/library/mt238290.aspx) installiert haben. 
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Abrufen von Verbindungsinformationen
+## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
 
@@ -53,13 +47,11 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der Abbildung unten dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen.
 
-   ![Verbindungsinformationen](./media/sql-database-get-started-portal/server-name.png) 
+   ![Verbindungsinformationen](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen haben, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen. 
 
-<a id="connect-to-your-database" class="xliff"></a>
-
-## Verbinden mit der Datenbank
+## <a name="connect-to-your-database"></a>Verbinden mit der Datenbank
 
 Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver einzurichten. 
 
@@ -91,9 +83,7 @@ Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure S
 
 5. Erweitern Sie im Objekt-Explorer die Option **Datenbanken** und anschließend die Option **mySampleDatabase**, um die Objekte in der Beispieldatenbank anzuzeigen.
 
-<a id="query-data" class="xliff"></a>
-
-## Abfragen von Daten
+## <a name="query-data"></a>Abfragen von Daten
 
 Verwenden Sie den folgenden Code, um mit der [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Transact-SQL-Anweisung die 20 wichtigsten Produkte nach Kategorie abzufragen.
 
@@ -111,9 +101,7 @@ Verwenden Sie den folgenden Code, um mit der [SELECT](https://msdn.microsoft.com
 
     ![query](./media/sql-database-connect-query-ssms/query.png)
 
-<a id="insert-data" class="xliff"></a>
-
-## Einfügen von Daten
+## <a name="insert-data"></a>Einfügen von Daten
 
 Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Transact-SQL-Anweisung ein neues Produkt in die Tabelle „SalesLT.Product“ einzufügen.
 
@@ -143,9 +131,7 @@ Verwenden Sie den folgenden Code, um mit der [INSERT](https://msdn.microsoft.com
 
     <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
 
-<a id="update-data" class="xliff"></a>
-
-## Aktualisieren von Daten
+## <a name="update-data"></a>Aktualisieren von Daten
 
 Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Anweisung zu aktualisieren.
 
@@ -161,9 +147,7 @@ Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit de
 
     <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
 
-<a id="delete-data" class="xliff"></a>
-
-## Löschen von Daten
+## <a name="delete-data"></a>Löschen von Daten
 
 Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit der [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Transact-SQL-Anweisung zu löschen.
 
@@ -178,9 +162,7 @@ Verwenden Sie den folgenden Code, um das neue zuvor hinzugefügte Produkt mit de
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Erstellen und Verwalten von Servern und Datenbanken mit Transact-SQL finden Sie unter [Learn about Azure SQL Database servers and databases](sql-database-servers-databases.md) (Informationen zu Servern und Datenbanken mit Azure SQL-Datenbank).
 - Informationen zu SSMS finden Sie unter [Verwenden von SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).

@@ -35,7 +35,7 @@ In diesem Abschnitt wird mithilfe des SQL Server-Konfigurations-Managers, der zu
 4. Wenn Sie in Objekt-Explorer den Knoten **Datenbanken**erweitern, können Sie sehen, dass die neue Datenbank erstellt wurde.
 
 ### <a name="create-a-new-sql-server-login-and-set-permissions"></a>Erstellen einer neuen SQL Server-Anmeldung und Festlegen von Berechtigungen
-Schließlich erstellen Sie eine neue SQL Server-Anmeldung mit eingeschränkten Berechtigungen. Der Azure-Dienst stellt eine Verbindung mit dem lokalen SQL Server mit dieser Anmeldung statt mit der integrierten sa-Anmeldung her, die über uneingeschränkte Berechtigungen für den Server verfügt.
+Schließlich erstellen Sie eine neue SQL Server-Anmeldung mit eingeschränkten Berechtigungen. Der Azure-Dienst stellt eine Verbindung mit dem lokalen SQL Server mit dieser Anmeldung statt mit der integrierten SA-Anmeldung her, die über uneingeschränkte Berechtigungen für den Server verfügt.
 
 1. Klicken Sie im Objekt-Explorer von SQL Server Management Studio mit der rechten Maustaste auf die Datenbank **OnPremisesDB**, und klicken Sie dann auf **Neue Abfrage**.
 2. Fügen Sie die folgende TSQL-Abfrage im Abfragefenster ein.
@@ -64,9 +64,4 @@ Schließlich erstellen Sie eine neue SQL Server-Anmeldung mit eingeschränkten B
        GO  
 3. Ersetzen Sie im obigen Skript die Zeichenfolge `<**secure_password**>` durch ein sicheres Kennwort für die neue *HybridConnectionsLogin*.
 4. **Führen** Sie die Abfrage aus, um die neue Anmeldung zu erstellen und die erforderlichen Berechtigungen für die lokale Datenbank zu erteilen.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Durchführen von Livestreaming mit lokalen Encodern über das Azure-Portal | Microsoft-Dokumentation"
+title: "Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal | Microsoft-Dokumentation"
 description: "In diesem Tutorial werden Sie durch die Schritte zum Erstellen eines Kanals geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist."
 services: media-services
 documentationcenter: 
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 0818c3124815b53119a5b2d43f16e3154afbc225
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: b28488ac9037b0f0ff7df892b9c3a61167b1eceb
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 
 ---
-# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -41,9 +43,9 @@ Wir empfehlen Ihnen dringend, die folgenden Artikel zu lesen:
 
 * [Azure Media Services RTMP Support and Live Encoders (in englischer Sprache).](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Übersicht über Livestreaming mit Azure Media Services](media-services-manage-channels-overview.md)
-* [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md)
+* [Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>Allgemeines Livestreamingszenario
+## <a id="scenario"></a>Allgemeines Livestreamingszenario
 In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von gängigen Livestreaming-Anwendungen mit Kanälen ausgeführt werden, die für die Pass-Through-Bereitstellung konfiguriert sind. In diesem Tutorial wird veranschaulicht, wie Sie einen Pass-Through-Kanal und Liveereignisse erstellen und verwalten.
 
 >[!NOTE]
@@ -69,7 +71,7 @@ In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von g
 9. Löschen Sie das Ereignis/Programm (und optional das Medienobjekt).     
 
 > [!IMPORTANT]
-> Lesen Sie sich den Artikel [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md) durch, um sich über die Konzepte und Aspekte zu informieren, die für das Livestreaming mit lokalen Encodern und Pass-Through-Kanälen wichtig sind.
+> Lesen Sie sich den Artikel [Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen](media-services-live-streaming-with-onprem-encoders.md) durch, um mehr über die Konzepte und Aspekte zu erfahren, die für das Livestreaming mit lokalen Encodern und Pass-Through-Kanälen wichtig sind.
 > 
 > 
 
@@ -153,10 +155,5 @@ Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf *
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

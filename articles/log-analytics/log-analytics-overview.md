@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 391870380280d6783223849ce383113bf1dd6d31
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 9fcf23f5ff47bd7457e5afa69eb2b9b33e0bf0fe
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -28,7 +28,7 @@ Log Analytics ist ein Dienst in [Operations Management Suite \(OMS\)](../operati
 ## <a name="is-log-analytics-for-you"></a>Ist Log Analytics für Sie interessant?
 Falls Sie derzeit über keine Überwachungslösung für Ihre Azure-Umgebung verfügen, sollten Sie mit [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) beginnen. Dieser Dienst sammelt und analysiert Überwachungsdaten für Ihre Azure-Ressourcen.  Log Analytics kann [Daten von Azure Monitor erfassen](log-analytics-azure-storage.md), mit anderen Daten abgleichen und zusätzliche Analysen bereitstellen.
 
-Falls Sie Ihre lokale Umgebung überwachen möchten oder bereits über eine Überwachungslösung mit Diensten wie Azure Monitor oder System Center Operations Manager verfügen, kann Log Analytics äußerst nützlich sein.  Der Dienst kann Daten direkt von Ihren Agents sowie von diesen anderen Tools sammeln und in einem einzelnen Repository zusammenfassen.  Analysetools in Log Analytics (wie Protokollsuche, Ansichten und Lösungen) berücksichtigen alle gesammelten Daten und bieten somit eine zentrale Analyse Ihrer gesamten Umgebung.
+Wenn Sie Ihre lokale Umgebung überwachen möchten oder bereits über eine Überwachungslösung mit Diensten wie Azure Monitor oder System Center Operations Manager verfügen, kann Log Analytics sehr hilfreich sein.  Der Dienst kann Daten direkt von Ihren Agents sowie von diesen anderen Tools sammeln und in einem einzelnen Repository zusammenfassen.  Analysetools in Log Analytics (wie Protokollsuche, Ansichten und Lösungen) berücksichtigen alle gesammelten Daten und bieten somit eine zentrale Analyse Ihrer gesamten Umgebung.
 
 
 ## <a name="using-log-analytics"></a>Verwenden von Log Analytics

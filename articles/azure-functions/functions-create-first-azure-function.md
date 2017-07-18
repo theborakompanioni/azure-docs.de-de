@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 06/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: f00ca3b8a35c0c49277457bd42fe8a314520d5a5
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 01b23996a9cd3a8368a78085dec905d020612b48
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
@@ -64,7 +63,7 @@ Eine Funktion wird in Ihrer gewählten Sprache anhand der Vorlage für eine Funk
 
     ![Kopieren der URL der Funktion aus dem Azure-Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. Fügen Sie die URL der HTTP-Anforderung in die Adresszeile des Browsers ein. Hängen Sie anschließend die Abfragezeichenfolge `&name=<yourname>` an diese URL an, und führen Sie die Anforderung aus. Hier ist die Antwort des Browsers auf die von der Funktion zurückgegebene GET-Anforderung abgebildet:
+2. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie die Abfragezeichenfolge `&name=<yourname>` an die URL an, und betätigen Sie die Taste `Enter` auf Ihrer Tastatur, um die Anforderung auszuführen. Im Folgenden finden Sie ein Beispiel der Antwort, die im Edge-Browser von der Funktion zurückgegeben wird:
 
     ![Funktionsantwort im Browser.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 

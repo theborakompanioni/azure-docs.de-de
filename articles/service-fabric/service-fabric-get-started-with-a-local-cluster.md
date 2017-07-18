@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 07/13/2017
 ms.author: ryanwi;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: c0c5ab8a9db60ff375b7d823e40f83cbc4d2b4c3
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ad284e152dcf44f27fb53340dd641d95b103db78
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
@@ -114,7 +114,7 @@ Nach dem Bereitstellen der Anwendung sehen wir uns nun die App-Details in PowerS
    
     ![Auflisten von Diensten für die Anwendung in PowerShell][ps-getsfsvc]
    
-    Die Anwendung besteht aus zwei Diensten: dem Web-Front-End- und dem zustandsbehafteten Dienst, der die Wörter verwaltet.
+    Die Anwendung besteht aus zwei Diensten: dem Web-Front-End und dem zustandsbehafteten Dienst, der die Wörter verwaltet.
 3. Sehen Sie sich schließlich die Liste mit den Partitionen für WordCountService an:
    
     ```powershell

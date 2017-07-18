@@ -1,5 +1,5 @@
 ---
-title: Abfragen des Azure Search-Indexes mit dem Azure-Portal | Microsoft Docs
+title: "Abfragen eines Index (Portal – Azure Search) | Microsoft-Dokumentation"
 description: Eingeben einer Suchabfrage in den Suchexplorer im Azure-Portal.
 services: search
 manager: jhubbard
@@ -11,15 +11,16 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 07/10/2017
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a23372112e17703a3399e1bdc9eaf73b85a1f80d
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="query-your-azure-search-index-using-the-azure-portal"></a>Abfragen des Azure Search-Indexes mit dem Azure-Portal
+# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Abfragen eines Azure Search-Index mithilfe des Suchexplorers im Azure-Portal
 > [!div class="op_single_selector"]
 > * [Übersicht](search-query-overview.md)
 > * [Portal](search-explorer.md)
@@ -28,34 +29,43 @@ ms.openlocfilehash: a23372112e17703a3399e1bdc9eaf73b85a1f80d
 > 
 > 
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihren Azure Search-Index im Azure-Portal abfragen.
+In diesem Artikel erfahren Sie, wie Sie einen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Mit dem Suchexplorer können Sie einfache oder vollständige Lucene-Abfragezeichenfolgen an einen beliebigen Index in Ihrem Dienst übermitteln.
 
-[Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md) und [füllen Sie ihn mit Daten](search-what-is-data-import.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen.
-
-## <a name="i-go-to-your-azure-search-blade"></a>I. Wechseln Sie zu Ihrem Azure Search-Blatt.
-1. Klicken Sie auf  im Menü auf der linken Seite des [Azure-Portals](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
+## <a name="open-the-service-dashboard"></a>Öffnen des Servicedashboards
+1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) auf der Navigationsleiste auf **Alle Ressourcen**.
 2. Wählen Sie Ihren Azure Search-Dienst aus.
 
-## <a name="ii-select-the-index-you-would-like-to-search"></a>II. Wählen Sie den Index aus, den Sie durchsuchen möchten.
-1. Wählen Sie in der Kachel „Indizes“ den Index aus, den Sie durchsuchen möchten.
+## <a name="select-an-index"></a>Auswählen eines Index
 
-![](./media/search-explorer/pick-index.png)
+Wählen Sie über die Kachel **Indizes** den Index aus, den Sie durchsuchen möchten.
 
-## <a name="iii-click-on-the-search-explorer-tile"></a>III. Klicken Sie auf die Kachel „Suchexplorer“.
-![](./media/search-explorer/search-explorer-tile.png)
+   ![](./media/search-explorer/pick-index.png)
 
-## <a name="iii-start-searching"></a>III. Beginnen Sie mit der Suche.
-1. Beginnen Sie mit einer Texteingabe in das Feld „*Abfragezeichenfolge*“, und drücken Sie danach auf „**Suchen**“.
+## <a name="open-search-explorer"></a>Öffnen des Suchexplorers
+
+Klicken Sie auf die Kachel für den Suchexplorer, um die Suchleiste und den Ergebnisbereich zu öffnen.
+
+   ![](./media/search-explorer/search-explorer-tile.png)
+
+## <a name="start-searching"></a>Beginnen Sie mit der Suche.
+
+Bei Verwendung des Suchexplorers können Sie [Abfrageparameter](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) angeben, um die Abfrage zu formulieren.
+
+1. Geben Sie unter **Abfragezeichenfolge** eine Abfrage ein, und klicken Sie anschließend auf **Suchen**. 
+
+   Die Abfragezeichenfolge wird automatisch in die richtige Anforderungs-URL umgewandelt, um eine HTTP-Anforderung für die Azure Search REST-API zu übermitteln.   
    
-   * Wenn Sie den Suchexplorer verwenden, können Sie alle beliebigen [Abfrageparameter](https://msdn.microsoft.com/library/dn798927.aspx)
-2. Im Abschnitt „*Ergebnisse*“ werden die Abfrageergebnisse im unformatierten JSON-Format angezeigt, das Sie bei Suchanfragen an die Azure Search REST-API in einem HTML-Antworttext erhalten würden.
-3. Die Abfragezeichenfolge wird automatisch in die richtige Anforderungs-URL gelesen, um eine HTTP-Anforderung für die Azure Search REST-API zu übermitteln.
+   Die Anforderung kann auf der Grundlage einer beliebigen gültigen einfachen oder vollständigen Lucene-Abfragesyntax erstellt werden. Das `*`-Zeichen entspricht einer leeren oder unspezifischen Suche, die alle Dokumente ohne bestimmte Reihenfolge zurückgibt.
 
-![](./media/search-explorer/search-bar.png)
+2. Im Abschnitt **Ergebnisse** werden die Abfrageergebnisse in einem JSON-Rohformat dargestellt (entsprechend der Nutzlast, die in einem HTTP-Antworttext zurückgegeben wird, wenn Anforderungen programmgesteuert ausgegeben werden).
 
+   ![](./media/search-explorer/search-bar.png)
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Die folgenden Ressourcen enthalten zusätzliche Informationen und Beispiele für die Abfragesyntax:
 
-<!--HONumber=Nov16_HO2-->
-
-
+ + [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+ + [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+ + [Beispiele für die Lucene-Abfragesyntax](https://docs.microsoft.com/azure/search/search-query-lucene-examples) 
+ + [OData-Filterausdruckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) 

@@ -6,22 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 5a338029cea5f448fc4d84a1a9c01c867ecd5028
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 52f89520fef8fc9ddb6e8e10a59ec35600affb2a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="quick-start-azure-ad-self-service-password-reset"></a>Schnellstart: Self-Service-Kennwortzurücksetzung in Azure AD
@@ -47,16 +46,16 @@ In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionier
         * Bei der Option **Bürotelefon** erhalten Benutzer einen Anruf mit einem Code unter der konfigurierten Bürotelefonnummer.
         * Unter **Sicherheitsfragen** besteht die folgende Auswahl:
             * Anzahl der für die Registrierung erforderlichen Fragen: Gibt die Mindestanzahl an, die für eine erfolgreiche Registrierung erforderlich ist. Ein Benutzer kann also auch mehr Fragen beantworten, um einen Pool mit verfügbaren Fragen zu erstellen. Sie können für diese Option einen Wert von 3 bis 5 festlegen, und der Wert muss größer oder gleich der Anzahl von Fragen sein, die für das Zurücksetzen erforderlich sind.
-            * Anzahl der für die Zurücksetzung erforderlichen Fragen: Sie können für diese Option einen Wert von 3 bis 5 Fragen festlegen, die richtig beantwortet werden müssen, bevor das Kennwort eines Benutzers zurückgesetzt oder entsperrt werden kann.
                 * Sie können benutzerdefinierte Fragen hinzufügen, indem Sie beim Auswählen der Sicherheitsfragen auf die Schaltfläche „Benutzerdefiniert“ klicken.
+            * Anzahl der für die Zurücksetzung erforderlichen Fragen: Sie können für diese Option einen Wert von 3 bis 5 Fragen festlegen, die richtig beantwortet werden müssen, bevor das Kennwort eines Benutzers zurückgesetzt oder entsperrt werden kann.
 
 4. EMPFOHLEN: Mit der Option **Anpassung** können Sie den Link „Wenden Sie sich an Ihren Administrator.“ so ändern, dass er auf eine von Ihnen definierte Seite oder E-Mail-Adresse verweist.
 
 5. OPTIONAL: Die Bildschirmansicht **Registrierung** enthält die folgenden Optionen für Administratoren:
-    * Sollen Benutzer sich bei der Anmeldung registrieren müssen?
+    * Registrierung von Benutzern bei der Anmeldung verlangen
     * Anzahl der Tage, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
 
-6. OPTIONAL: Für die Option **Benachrichtigung** werden die folgenden Optionen für Administratoren bereitgestellt:
+6. OPTIONAL: Die Bildschirmansicht **Benachrichtigung** enthält die folgenden Optionen für Administratoren:
     * Benutzer über Kennwortzurücksetzungen benachrichtigen?
     * Sollen alle Administratoren benachrichtigt werden, wenn andere Administratoren ihr Kennwort zurücksetzen?
 
@@ -67,7 +66,7 @@ In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionier
 
 ## <a name="configure-synchronization-to-existing-identity-source"></a>Konfigurieren der Synchronisierung mit der vorhandenen Identitätsquelle
 
-Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Sie [Azure AD Connect](./connect/active-directory-aadconnect.md) auf einem Server Ihrer Organisation installieren und konfigurieren. Mit dieser Anwendung wird die Synchronisierung von Benutzern und Gruppen von Ihrer vorhandenen Identitätsquelle mit Ihrer Azure AD-Domäne durchgeführt.
+Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Sie [Azure AD Connect](./connect/active-directory-aadconnect.md) auf einem Server Ihrer Organisation installieren und konfigurieren. Mit dieser Anwendung wird die Synchronisierung von Benutzern und Gruppen von Ihrer vorhandenen Identitätsquelle mit Ihrem Azure AD-Mandanten durchgeführt.
 
 * [Aktualisieren der Windows Azure Active Directory-Synchronisierung und Azure Active Directory-Synchronisierung](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](./connect/active-directory-aadconnect-get-started-express.md)
@@ -75,7 +74,7 @@ Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Si
 
 ## <a name="disabling-self-service-password-reset"></a>Deaktivieren der Self-Service-Kennwortzurücksetzung
 
-Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung** > **Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Niemand**.
+Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung > Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Niemand**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:

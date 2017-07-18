@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure IoT Hub (Python) | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie Sie Nachrichten von einem simulierten Gerät an Ihren Azure IoT Hub senden, indem Sie die Azure IoT SDKs für Python verwenden."
+description: "Hier erfahren Sie, wie Sie mithilfe der IoT-SDKs für Python D2C-Nachrichten an Azure IoT Hub senden. Erstellen Sie simulierte Geräte- und Dienst-Apps zum Registrieren Ihres Geräts, zum Senden von Nachrichten und zum Lesen von Nachrichten von IoT Hub."
 services: iot-hub
 author: dsk-2015
 manager: timlt
@@ -13,12 +13,11 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dkshir
 ms.custom: na
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 572dfc8965957c4667d4124b045ffbb835786a94
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 05268924a182575b3df66fb6dad6bcac2700ec0c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Herstellen einer Verbindung zwischen dem simulierten Gerät und Ihrem IoT Hub mit Python

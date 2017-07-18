@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: bc0c8ccad64166582dcb3f7162280a8772abc6b3
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f9dff5384838521c309a2d2a5ebb5376c90159fb
 ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>Einführung in private Docker-Containerregistrierungen
@@ -52,6 +52,8 @@ Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine 
 * **Registrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine oder mehrere Containerregistrierungen. Jede Registrierung verfügt über ein standardmäßiges Azure-[Speicherkonto](../storage/storage-introduction.md) an demselben Standort. Nutzen Sie den lokalen Speicher in räumlicher Nähe zu Ihren Containerimages, indem Sie eine Registrierung an demselben Azure-Standort wie Ihre Bereitstellungen erstellen. Ein vollständig qualifizierter Registrierungsname hat folgendes Format: `myregistry.azurecr.io`.
 
   Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/active-directory-application-objects.md) oder einem bereitgestellten Administratorkonto. Führen Sie den Standardbefehl `docker login` aus, um die Authentifizierung für eine Registrierung durchzuführen.
+
+* **Verwaltete Registrierung**: Eine Ebene, die zusätzliche Funktionen für Registrierungen in drei SKUs bietet – Basic, Standard und Premium. Die Images in diesen SKUs werden in Speicherkonten gespeichert, die vom Azure-Containerregistrierungsdienst verwaltet werden, was die Zuverlässigkeit erhöht und neue Funktionen ermöglicht. Neue Funktionen umfassen Webhookintegration, Repositoryauthentifizierung mit Azure Active Directory und Unterstützung von Löschfunktionen. Benutzer können beim Erstellen von Registrierungen entweder verwaltete Registrierungen wählen oder eine Registrierung erstellen, die von ihren eigenen Speicherkonten unterstützt wird.
 
 * **Repository**: Eine Registrierung enthält mindestens ein Repository, also eine Gruppe von Containerimages. Die Azure-Containerregistrierung unterstützt Repositorynamespaces mit mehreren Ebenen. Mit dieser Funktion können Sie Sammlungen mit Images für eine bestimmte App oder eine Sammlung von Apps für bestimmte Entwicklungs- oder Betriebsteams gruppieren. Beispiel:
 

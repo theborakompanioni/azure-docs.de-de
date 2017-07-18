@@ -16,10 +16,10 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 19014e65920b16d2efbaa475b7c17b2a4e3a8471
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a818a41e2e11926c2dee27e081ae8ffc0a4a6298
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -180,13 +180,14 @@ Die folgenden Hinweise können beim Beheben von Problemen mit der Azure CLI helf
 * Verwenden Sie `-h` , um **Hilfetext** für Befehle der Befehlszeilenschnittstelle anzuzeigen.
 * Verwenden Sie `-v` und `-vv`, um eine **ausführliche** Befehlsausgabe anzuzeigen. Wenn das `-vv`-Flag enthalten ist, zeigt die Azure CLI die tatsächlichen REST-Anforderungen und -Antworten. Mit diesen praktischen Switches können Sie die vollständige Fehlerausgabe anzeigen.
 * Mit der Option `--json` können Sie die **Befehlsausgabe als JSON** anzeigen. `az batch pool show pool001 --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter [JSON-Dateien](#json-files)).
+<!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 * Das [Batch-Forum][batch_forum] wird von Mitgliedern des Batch-Teams überwacht. Sie können dort Fragen stellen, wenn Probleme auftreten oder Sie bei einem bestimmten Vorgang Hilfe benötigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 * Weitere Informationen zu Batch-Ressourcen finden Sie in der [Übersicht über Azure Batch für Entwickler](batch-api-basics.md).
-* Unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md) erfahren Sie, wie Sie dieses Feature zum Verwalten und Bereitstellen der Anwendungen verwenden, die Sie auf Batch-Computeknoten ausführen.
+* Unter [Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen](batch-application-packages.md) erfahren Sie, wie Sie dieses Feature zum Verwalten und Bereitstellen der auf Batch-Computeknoten ausgeführten Anwendungen verwenden.
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md

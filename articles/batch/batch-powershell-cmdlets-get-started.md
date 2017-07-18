@@ -15,10 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 65c9d6c2b7a7c994a262d463d6a32b41c7e5c33a
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5e1819a9f081284fa03e9355730689629166006f
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -201,7 +202,7 @@ Erstellen Sie nun den Pool, und geben Sie das Paketverweisobjekt als Argument f�
 
     New-AzureBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 
-Weitere Informationen zu Anwendungspaketen finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
+Weitere Informationen zu Anwendungspaketen finden Sie unter [Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen](batch-application-packages.md).
 
 > [!IMPORTANT]
 > Damit Sie Anwendungspakete verwenden können, müssen Sie zunächst ein [Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen](#linked-storage-account-autostorage) .

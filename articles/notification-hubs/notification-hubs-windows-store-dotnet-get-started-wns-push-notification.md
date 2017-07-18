@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d59348a0f794b3989fe9b1ce457b2f7a85b3b7a9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 9353ad6df121ebd2e92a5d34214c32e852ed60a3
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -49,31 +51,31 @@ Sie müssen die App dem Windows Store zuordnen, um Pushbenachrichtigungen an UWP
 1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie zum [Windows-Entwicklungscenter](https://dev.windows.com/overview), melden Sie sich dort mit Ihrem Microsoft-Konto an, und klicken Sie dann auf **Neue App erstellen**.
 2. Geben Sie einen Namen für die App ein, und klicken Sie auf **App-Namen reservieren**.
    
-       ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-name.png)
+    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-name.png)
    
-       This creates a new Windows Store registration for your app.
+   Auf diese Weise wird eine neue Windows Store-Registrierung für Ihre App erstellt.
 3. Erstellen Sie in Visual Studio ein neues Visual C# Store-App-Projekt mit der Vorlage **Leere App**, und klicken Sie auf **OK**.
    
-       ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-windows-universal-app.png)
+    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-windows-universal-app.png)
 4. Übernehmen Sie die Standardwerte für die Zielversion und die Mindestversion der Plattform.
 5. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Windows Store-App-Projekt, klicken Sie auf **Store**, und klicken Sie dann auf **App mit Store verknüpfen**.
    
-       ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png)
+    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png)
 
-       The **Associate Your App with the Windows Store** wizard appears.
+   Daraufhin wird der Assistent **App mit Windows Store verknüpfen** angezeigt.
 
 1. Klicken Sie im Assistenten auf **Anmelden**. Melden Sie sich dann mit Ihrem Microsoft-Konto an.
 2. Klicken Sie auf die App, die Sie in Schritt 2 registriert haben. Klicken Sie auf **Weiter** und dann auf **Zuordnen**.
    
-       ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-app-name.png)
+    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-app-name.png)
    
-       This adds the required Windows Store registration information to the application manifest.
+   Auf diese Weise werden die erforderlichen Windows Store-Registrierungsinformationen zum Anwendungsmanifest hinzugefügt.
 3. Wechseln Sie wieder zur Seite des [Windows-Entwicklungscenters](http://go.microsoft.com/fwlink/p/?LinkID=266582) für Ihre neue App. Klicken Sie auf **Dienste** und **Pushbenachrichtigungen**, und klicken Sie dann unter **Windows-Pushbenachrichtigungsdienste (WNS) und Microsoft Azure Mobile Apps** auf **Live Services-Website**.
    
-       ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-live-services.png)
+    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-live-services.png)
 4. Notieren Sie sich auf der Registrierungsseite für Ihre App das Kennwort unter **Anwendungsgeheimnis** und die **Paketsicherheits-ID (SID)** in den Einstellungen der Plattform **Windows Store**.
    
-       ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-push-auth.png)
+    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-push-auth.png)
 
      > [AZURE.WARNING]
     Der geheime Schlüssel der Anwendung und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung.
@@ -136,7 +138,7 @@ Der Benachrichtigungshub ist nun konfiguriert, um mit dem WNS arbeiten zu könne
     Dadurch wird gewährleistet, dass der Kanal-URI bei jedem Start der Anwendung im Notification Hub registriert wird.
 6. Drücken Sie **F5** , um die App auszuführen. Ein Dialogfenster mit dem Registrierungsschlüssel wird angezeigt.
    
-       ![][19]
+     ![][19]
 
 Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 
@@ -160,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um Benachrichtigungen mithilfe einer .NE
 
 1. Klicken Sie mit der rechten Maustaste auf die Projektmappe, wählen Sie **Hinzufügen** und **Neues Projekt** aus, und klicken Sie dann unter **Visual C#** auf **Windows**, **Konsolenanwendung** und **OK**.
    
-       ![][13]
+     ![][13]
    
     Damit wird der Projektmappe eine neue Visual C#-Konsolenanwendung hinzugefügt. Sie können dies auch in einer separaten Projektmappe durchführen.
 2. Klicken Sie in Visual Studio auf **Extras**, auf **NuGet-Paket-Manager** und dann auf **Paket-Manager-Konsole**.
@@ -198,7 +200,7 @@ Führen Sie die folgenden Schritte aus, um Benachrichtigungen mithilfe einer .NE
          Console.ReadLine();
 7. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und klicken Sie auf **Als Startprojekt festlegen** , um es als Startprojekt festzulegen. Drücken Sie dann die Taste **F5** , um die Anwendung auszuführen.
    
-       ![][14]
+     ![][14]
    
     Sie erhalten eine Popupbenachrichtigung auf allen registrierten Geräten. Durch Klicken oder Tippen auf das Popupbanner wird die App geladen.
 
@@ -220,14 +222,9 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie im [Notificatio
 <!-- URLs. -->
 
 [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Verwenden von Benachrichtigungshubs zum Übermitteln von Nachrichten]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Verwenden von Benachrichtigungshubs zum Senden von neuesten Nachrichten]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
 [Toast-Katalog]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
 [Kachelkatalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [Übersicht über Signale]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

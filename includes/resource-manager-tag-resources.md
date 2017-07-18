@@ -4,7 +4,7 @@
 2. Die für die Ressource vorhandenen Tags werden angezeigt. Wenn Sie noch keine Tags angewandt haben, ist die Liste leer. 
 
      ![Anzeigen vorhandener Tags auf dem Blatt für Ressourcen oder Ressourcengruppen](./media/resource-manager-tag-resources/existing-tags.png)
-3. Geben Sie zum Hinzufügen eines Tags einen Schlüssel und einen Wert ein, oder wählen Sie im Dropdownmenü ein vorhandenes Tag aus. Wählen Sie **Speichern**aus.
+3. Geben Sie zum Hinzufügen eines Tags einen Namen und einen Wert ein, oder wählen Sie im Dropdownmenü ein vorhandenes Tag aus. Wählen Sie **Speichern**aus.
 
      ![Hinzufügen eines neuen Tags](./media/resource-manager-tag-resources/tag-resources.png)
 3. Wählen Sie zum Anzeigen aller Ressourcen mit einem Tagwert **>** (Weitere Dienste), und geben Sie im Filtertextfeld das Wort **Tags** ein. Wählen Sie die Option **Tags** aus.

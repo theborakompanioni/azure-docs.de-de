@@ -14,7 +14,7 @@ Das SDK wird nach Ablauf des 12-monatigen Benachrichtigungszeitraums deaktiviert
 
 Alle Versuche zum Herstellen einer Verbindung mit dem DocumentDB-Diensts mit einer deaktivierten SDK-Version werden abgelehnt. 
 
-**5. Werden neue Features und Funktionen allen noch aktivierten SDKs hinzugefügt?**
+**5. Werden neue Features und Funktionen auf alle noch aktivierten SDKs angewendet?**
 
 Neue Features und Funktionen werden nur neuen Versionen hinzugefügt. Wenn Sie eine alte, noch aktivierte Version des SDK verwenden, funktionieren Ihre Anforderungen an DocumentDB weiter wie bisher, doch Sie haben keinen Zugriff auf neue Funktionen.  
 

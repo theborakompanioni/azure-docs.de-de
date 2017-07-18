@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/09/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 07dc5e1520cf60e19a1961ad85d2aea0cc7bd15f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef57753aeeace0086c815d83600f92422996032a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -42,7 +42,7 @@ Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur „
 | Globale Verteilung | Einzelne Region mit einer optionalen sekundären Leseregion für hohe Verfügbarkeit. Es kann kein Failover initiiert werden | [Sofort einsetzbare globale Verteilung](distribute-data-globally.md) aus einer bis in über 30 Regionen, Unterstützung von [automatischen und manuellen Failovern](regional-failover.md) jederzeit weltweit |
 | Indizierung | Nur primärer Index für PartitionKey und RowKey. Keine sekundären Indizes | Automatische und vollständige Indizierung für alle Eigenschaften, keine Indexverwaltung |
 | Abfrage | Abfrageausführung verwendet Index für Primärschlüssel, andernfalls die Suche. | Abfragen können die automatische Indizierung für Eigenschaften für schnelle Abfragezeiten nutzen. Das Datenbankmodul von Azure Cosmos DB kann Aggregate, Geoabfragen und Sortieren unterstützen |
-| Konsistenz | Stark innerhalb der primären Region, eventuell in der sekundären Region | [Fünf wohldefinierte Konsistenzebenen](consistency-levels.md) zur Abstimmung von Verfügbarkeit, Latenz, Durchsatz und Konsistenz basierend auf Ihren Anwendungsanforderungen |
+| Konsistenz | Stark innerhalb der primären Region, eventuell in der sekundären Region | [Fünf klar definierte Konsistenzebenen](consistency-levels.md) zur Abstimmung von Verfügbarkeit, Latenz, Durchsatz und Konsistenz basierend auf Ihren Anwendungsanforderungen |
 | Preise | Speicheroptimiert  | Durchsatzoptimiert |
 | SLAs | Verfügbarkeit von 99,9 % | Verfügbarkeit von 99,99 % in einer einzelnen Region und die Möglichkeit, weitere Regionen für höhere Verfügbarkeit hinzuzufügen. [Branchenführende, umfassende SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zur allgemeinen Verfügbarkeit |
 

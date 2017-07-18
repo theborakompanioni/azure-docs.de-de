@@ -1,6 +1,6 @@
 ---
-title: "ExpressRoute-Übersicht: Erweitern Ihres lokalen Netzwerks auf Azure über eine dedizierte private Verbindung | Microsoft-Dokumentation"
-description: "In dieser technischen ExpressRoute-Übersicht wird beschrieben, wie eine ExpressRoute-Verbindung funktioniert und wie Sie Ihr lokales Netzwerk über eine dedizierte private Verbindung auf Azure erweitern."
+title: "ExpressRoute-Übersicht: Erweitern Ihres lokalen Netzwerks auf Azure über eine private Verbindung | Microsoft-Dokumentation"
+description: "In dieser technischen ExpressRoute-Übersicht wird beschrieben, wie eine ExpressRoute-Verbindung funktioniert und wie Sie Ihr lokales Netzwerk über eine private Verbindung auf Azure erweitern."
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 07/05/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: a36fce44efb3c32f83f33b19d2bca5ad73782a1b
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: d1e513933ea647a1afe9a4eb214bb9216d3bb20a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="expressroute-overview"></a>ExpressRoute-Übersicht
-Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine dedizierte private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure, Office 365 und Dynamics 365.
+Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure, Office 365 und Dynamics 365.
 
 Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden. ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Auf diese Weise können ExpressRoute-Verbindungen eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet bieten. Informationen zum Verbinden Ihres Netzwerks mit Microsoft mithilfe von ExpressRoute finden Sie unter [ExpressRoute-Konnektivitätsmodelle](expressroute-connectivity-models.md).
 
