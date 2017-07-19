@@ -34,6 +34,8 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, mit der eine Geräteid
         }
    
     Mit dieser Methode wird eine Geräteidentität mit der ID **myFirstDevice** erstellt. (Falls diese Geräte-ID in der Identitätsregistrierung bereits vorhanden ist, werden mit dem Code lediglich die vorhandenen Geräteinformationen abgerufen.) Anschließend zeigt die App den Primärschlüssel für diese Identität an. Sie verwenden diesen Schlüssel in der simulierten Geräte-App, um eine Verbindung mit Ihrem IoT-Hub herzustellen.
+[!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
+
 7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);

@@ -20,7 +20,6 @@ ms.openlocfilehash: 5281f6af0e93da7aa1c72891c179afea99c6a26c
 ms.contentlocale: de-de
 ms.lasthandoff: 05/16/2017
 
-
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (.NET)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -121,6 +120,7 @@ Verwenden Sie eine JSON-Vorlage und eine Parameterdatei, um einen IoT Hub in der
       }
     }
     ```
+  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 5. Stellen Sie über den **Server-Explorer** eine Verbindung mit Ihrem Azure-Abonnement her, und erstellen Sie in Ihrem Azure Storage-Konto einen Container namens **templates**. Legen Sie im Bereich **Eigenschaften** die Berechtigungen vom Typ **Öffentlicher Lesezugriff** für den Container **templates** auf **Blob** fest.
 6. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf den Container **templates**, und klicken Sie dann auf **BLOB-Container anzeigen**. Klicken Sie auf die Schaltfläche **Blob hochladen**, wählen Sie die beiden Dateien **parameters.json** und **templates.json** aus, und klicken Sie dann auf **Öffnen**, um die JSON-Dateien in den Container **templates** hochzuladen. Die URLs der Blobs mit den JSON-Daten lauten:
    

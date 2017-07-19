@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: bc8e3b76aad18e8d7a73de8bc12e6527e415035d
-
+ms.contentlocale: de-de
+ms.lasthandoff: 02/11/2017
 
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Bestimmen der Anforderungen an Reaktionen auf Vorfälle für Ihre Hybrid-Identitätslösung
@@ -65,10 +66,5 @@ Während der Phase der Schadensbegrenzung und Risikominderung ist es wichtig, di
 
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

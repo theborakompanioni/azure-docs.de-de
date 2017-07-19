@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
+ms.reviewer: nigu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2e229cab7b8a498d3015183d438e2bc2465822aa
 ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
@@ -21,9 +22,7 @@ ms.contentlocale: de-de
 ms.lasthandoff: 12/28/2016
 
 ---
-<a id="vulnerabilities-detected-by-azure-active-directory-identity-protection" class="xliff"></a>
-
-# Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken
+# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken
 Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die von einem Angreifer ausgenutzt werden können. Es wird empfohlen, dass Sie diese Sicherheitsrisiken entschärfen, um den Sicherheitsstatus Ihrer Organisation zu verbessern und Angreifer daran zu hindern, diese Schwachstellen auszunutzen.
 
 
@@ -33,9 +32,7 @@ Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die 
 
 Die folgenden Abschnitte bieten Ihnen eine Übersicht der Sicherheitsrisiken, die von Identity Protection gemeldet werden.
 
-<a id="multi-factor-authentication-registration-not-configured" class="xliff"></a>
-
-## Multi-Factor Authentication-Registrierung nicht konfiguriert
+## <a name="multi-factor-authentication-registration-not-configured"></a>Multi-Factor Authentication-Registrierung nicht konfiguriert
 Mit diesem Sicherheitsrisiko können Sie die Bereitstellung der Azure Multi-Factor Authentication in Ihrer Organisation besser steuern. 
 
 Azure Multi-Factor Authentication dient als zweite Sicherheitsebene für die Benutzerauthentifizierung. Sie hilft beim Schutz des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren. Sie bietet leistungsfähige Authentifizierung mittels einiger einfacher Überprüfungsoptionen – Telefonanruf, SMS oder per Benachrichtigung bzw. Überprüfungscode in einer mobilen Anwendung sowie OATH-Tokens von Drittanbietern.
@@ -44,9 +41,7 @@ Es wird empfohlen, dass Sie die Azure Multi-Factor Authentication für Anmeldung
 
 Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
 
-<a id="unmanaged-cloud-apps" class="xliff"></a>
-
-## Nicht verwaltete Cloud-Apps
+## <a name="unmanaged-cloud-apps"></a>Nicht verwaltete Cloud-Apps
 Mit diesem Sicherheitsrisiko können Sie in Ihrer Organisation nicht verwaltete Cloud-Apps identifizieren.
 
 In modernen Unternehmen sind den IT-Abteilungen häufig nicht alle Cloudanwendungen bekannt, die die Benutzer der Organisation für ihre Arbeit verwenden. Es ist verständlich, warum Administratoren sich Sorgen um den unberechtigten Zugriff auf Unternehmensdaten, mögliche Datenlecks und andere Sicherheitsrisiken machen. 
@@ -55,9 +50,7 @@ Es wird empfohlen, dass Sie in Ihrer Organisation die Cloud-App-Ermittlung einse
 
 Ausführliche Informationen finden Sie unter [Suchen nach nicht verwalteten Cloudanwendungen per Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
 
-<a id="security-alerts-from-privileged-identity-management" class="xliff"></a>
-
-## Sicherheitswarnungen von Privileged Identity Management
+## <a name="security-alerts-from-privileged-identity-management"></a>Sicherheitswarnungen von Privileged Identity Management
 Dieses Sicherheitsrisiko hilft Ihnen beim Ermitteln und Bereinigen von Warnungen zu privilegierten Identitäten in Ihrer Organisation.  
 
 Damit Benutzer privilegierte Vorgänge ausführen können, müssen Organisationen ihren Benutzern einen vorübergehenden oder dauerhaften privilegierten Zugriff auf Azure AD, Azure- oder Office 365-Ressourcen oder andere SaaS-Apps gewähren. Mit jedem dieser privilegierten Benutzer vergrößert sich die Angriffsfläche Ihrer Organisation. Dieses Sicherheitsrisiko dient Ihnen als Unterstützung beim Identifizieren von Benutzern mit nicht erforderlichem privilegiertem Zugriff und beim Treffen geeigneter Maßnahmen, um das damit verbundene Risiko zu mindern oder zu beseitigen. 
@@ -66,9 +59,7 @@ Wir empfehlen Ihrer Organisation die Verwendung von Azure AD Privileged Identity
 
 Ausführliche Informationen finden Sie unter [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
-<a id="see-also" class="xliff"></a>
-
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
 
