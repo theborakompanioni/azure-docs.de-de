@@ -13,12 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/21/2017
+ms.date: 6/17/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: e2d44f821635ce9d91b67ecdc0653e2ba9c99b01
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 2f770a8f088754e63aec40d3f670f6ae0543d6e0
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -54,10 +55,11 @@ Für diesen Vorgang benötigen Sie die folgenden Teile aus dem Feather M0 WiFi S
 
 Sie benötigen für die Entwicklungsumgebung außerdem Folgendes:
 
+* Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
 * Mac oder PC, auf dem Windows oder Ubuntu ausgeführt wird
 * WLAN, mit dem Feather M0 Wifi verbunden werden kann
 * Internetverbindung zum Herunterladen des Konfigurationstools
-* [Arduino IDE](https://www.arduino.cc/en/main/software)-Version 1.6.8 oder höher. Frühere Versionen funktionieren nicht mit der AzureIoT-Bibliothek.
+* [Arduino-IDE](https://www.arduino.cc/en/main/software) Version 1.6.8 oder höher. Frühere Versionen funktionieren nicht mit der AzureIoT-Bibliothek.
 
 
 Die folgenden Elemente sind optional, falls Sie über keinen Sensor verfügen. Sie haben auch die Möglichkeit der Verwendung von simulierten Sensordaten.
@@ -77,7 +79,7 @@ Verwenden Sie die Steckplatinen- und Jumperdrähte zum Herstellen der Verbindung
 ![Referenz der Verbindungen](media/iot-hub-adafruit-feather-m0-wifi-get-started/3_connections_on_breadboard.png)
 
 
-Für Sensorstifte verwenden Sie die folgende Verkabelung:
+Verwenden Sie für Sensorstifte die folgende Verkabelung:
 
 
 | Start (Sensor)           | Ende (Board)            | Kabelfarbe   |
@@ -120,7 +122,7 @@ Bei Verwendung von Ubuntu stellen Sie sicher, dass Sie die Berechtigungen für d
    * crw-rw---- 1 root uucp xxxxxxxx
    * crw-rw---- 1 root dialout xxxxxxxx
 
-   Beachten Sie, dass in der Ausgabe `uucp` oder `dialout` der Name des Gruppenbesitzers des USB-Anschlusses ist.
+   Beachten Sie, dass in der Ausgabe `uucp` oder `dialout` der Name des Gruppenbesitzers des USB-Ports ist.
 
 1. Fügen Sie der Gruppe den Benutzer anhand des folgenden Befehls hinzu:
 
@@ -130,7 +132,7 @@ Bei Verwendung von Ubuntu stellen Sie sicher, dass Sie die Berechtigungen für d
 
    `<group-owner-name>` ist der Name des Gruppenbesitzers, den Sie im vorherigen Schritt abgerufen haben. `<username>` ist Ihr Ubuntu-Benutzername.
 
-1. Melden Sie von Ubuntu ab, und melden Sie sich erneut an, damit die Änderung angezeigt wird.
+1. Melden Sie sich bei Ubuntu ab, und melden Sie sich erneut an, damit die Änderung angezeigt wird.
 
 ## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Erfassen von Sensordaten und Senden an Ihren IoT Hub
 
@@ -151,13 +153,13 @@ Die Beispielanwendung wird auf GitHub gehostet. Klonen Sie das Beispielrepositor
 Installieren Sie das Paket für Feather M0 Wifi in der Arduino-IDE:
 
 1. Öffnen Sie den Ordner, in dem die Beispielanwendung gespeichert ist.
-1. Öffnen Sie in der Arduino-IDE im Ordner „App“ die Datei „app.ino“.
+1. Öffnen Sie in der Arduino-IDE im Ordner „app“ die Datei „app.ino“.
 
    ![Öffnen der Beispielanwendung in der Arduino-IDE](media/iot-hub-adafruit-feather-m0-wifi-get-started/6_arduino-ide-open-sample-app.png)
 
-1. Klicken Sie auf **Tools** > **Board** > **Boards Manager**, und installieren Sie dann die `Arduino SAMD Boards`-Version `1.6.2` oder höher. 
+1. Klicken Sie auf **Tools** > **Board** > **Boards Manager**, und installieren Sie dann `Arduino SAMD Boards` Version `1.6.2` oder höher. Installieren Sie dann das `Adafruit SAMD`-Paket, um die Board-Dateidefinitionen hinzufügen.
 
-   Der Boards-Manager gibt an, dass `Arduino SAMD Boards` mit der Version `1.6.2` oder höher installiert ist.
+   Der Boards-Manager gibt an, dass `Arduino SAMD Boards` mit der Version `1.6.2` oder höher installiert ist. 
 
    ![Das esp8266-Paket ist installiert](media/iot-hub-adafruit-feather-m0-wifi-get-started/7_arduino-ide-package-url.png)
 
@@ -170,7 +172,6 @@ Installieren Sie das Paket für Feather M0 Wifi in der Arduino-IDE:
 
 1. Klicken Sie in Arduino IDE auf **Sketch (Skizze)** > **Include Library (Bibliothek einbeziehen)** > **Manage Libraries** (Bibliotheken verwalten).
 1. Suchen Sie die folgenden Bibliotheknamen einzeln. Klicken Sie für jede gefundene Bibliothek auf **Install** (Installieren).
-   * `Adafruit_WINC1500`
    * `RTCZero`
    * `NTPClient`
    * `AzureIoTHub`
@@ -179,6 +180,7 @@ Installieren Sie das Paket für Feather M0 Wifi in der Arduino-IDE:
    * `ArduinoJson`
    * `Adafruit BME280 Library`
    * `Adafruit Unified Sensor`
+1. Installieren Sie `Adafruit_WINC1500` manuell. Rufen Sie [diesen Link](https://github.com/adafruit/Adafruit_WINC1500) auf, klicken Sie auf die Schaltfläche **Klonen oder herunterladen** und anschließend auf **Download ZIP**. Wechseln Sie dann in Ihrer Arduino-IDE zu **Sketch**(Skizze) -> **Include Library**(Bibliothek einbeziehen) -> **Add .zip Library** (ZIP-Bibliothek hinzufügen) und fügen Sie die ZIP-Datei hinzu, die Sie gerade heruntergeladen haben.
 
 ### <a name="dont-have-a-real-bme280-sensor"></a>Haben Sie keinen echten BME280-Sensor?
 

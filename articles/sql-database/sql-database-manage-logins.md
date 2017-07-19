@@ -18,10 +18,10 @@ ms.workload: data-management
 ms.date: 01/23/2017
 ms.author: rickbyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: f29b2c1da0d9b761634370f5f08ea942b66d9f1f
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 51edd390c065dd7312ecc54694b5a95ecc11eab8
 ms.contentlocale: de-de
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -34,7 +34,7 @@ Wenn Firewallregeln konfiguriert wurden, können Benutzer über ein Administrato
 >
 
 > [!TIP]
-> Ein Tutorial mit SQL Server-Authentifizierung finden Sie unter [Tutorial: SQL Server-Authentifizierung](sql-database-control-access-sql-authentication-get-started.md). Ein Tutorial mit Azure Active Directory-Authentifizierung finden Sie unter [Tutorial: AAD-Authentifizierung](sql-database-control-access-aad-authentication-get-started.md).
+> Unter [Schützen der Azure SQL-Datenbank](sql-database-security-tutorial.md) finden Sie ein Tutorial.
 >
 
 
@@ -191,9 +191,7 @@ Beachten Sie beim Verwalten von Anmeldungen und Benutzern in SQL-Datenbank Folge
 
 - Weitere Informationen zu Firewallregeln finden Sie unter [Firewall für die Azure SQL-Datenbank](sql-database-firewall-configure.md).
 - Eine Übersicht über alle Sicherheitsfunktionen von SQL-Datenbank finden Sie unter [Securing your SQL Database](sql-database-security-overview.md) (Schützen Ihrer SQL-Datenbank).
-- Ein Tutorial finden Sie unter [SQL Datenbank-Tutorial: Erstellen von SQL-Datenbankbenutzerkonten für den Zugriff auf und die Verwaltung von Datenbanken](sql-database-control-access-sql-authentication-get-started.md).
+- Unter [Schützen der Azure SQL-Datenbank](sql-database-security-tutorial.md) finden Sie ein Tutorial.
 - Informationen zu Sichten und gespeicherten Prozeduren finden Sie unter [Erstellen von Sichten und gespeicherten Prozeduren](https://msdn.microsoft.com/library/ms365311.aspx).
 - Informationen zum Gewähren des Zugriffs auf ein Datenbankobjekt finden Sie unter [Erteilen des Zugriffs auf ein Datenbankobjekt](https://msdn.microsoft.com/library/ms365327.aspx).
-- Ein Tutorial mit SQL Server-Authentifizierung finden Sie unter [Tutorial: SQL Server-Authentifizierung](sql-database-control-access-sql-authentication-get-started.md).
-- Ein Tutorial mit Azure Active Directory-Authentifizierung finden Sie unter [Tutorial: AAD-Authentifizierung](sql-database-control-access-aad-authentication-get-started.md).
 

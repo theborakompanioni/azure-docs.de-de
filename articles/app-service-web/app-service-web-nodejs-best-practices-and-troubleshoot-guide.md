@@ -14,10 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: ranjithr;wadeh
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 79e5329332c457c738c082277ee7b79eb8ead049
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 656c5b3e363bd2eaa7550ffc673606d26f7d06de
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -114,7 +115,7 @@ Diese [Schemadatei](https://github.com/Azure/iisnode/blob/master/src/config/iisn
 ### <a name="my-node-application-is-making-too-many-outbound-calls"></a>Meine Node-Anwendung führt zu viele ausgehende Aufrufe durch
 Viele Anwendungen stellen im Rahmen ihres normalen Betriebs ausgehende Verbindungen her. Wenn beispielsweise eine Anforderung empfangen wird, nimmt Ihre Knoten-App in der Regel Kontakt mit einer REST-API an einem anderen Ort auf, um Informationen zur Verarbeitung der Anforderung zu erhalten. Es ist ratsam, für http- oder https-Aufrufe einen Keep-Alive-Agent zu verwenden. Beispielsweise können Sie zum Durchführen dieser ausgehenden Aufrufe das agentkeepalive-Modul als Keep-Alive-Agent verwenden. So wird sichergestellt, dass die Sockets auf der Azure-Web-App-VM wiederverwendet werden und der Mehraufwand vermieden wird, der mit der Erstellung neuer Sockets für jede ausgehende Anforderung verbunden ist. Außerdem wird sichergestellt, dass Sie eine geringere Anzahl von Sockets für ausgehende Anforderungen verwenden und daher nicht den maxSockets-Wert überschreiten, der pro VM zugeordnet ist. Die Empfehlung für Azure-Web-Apps lautet, den maxSockets-Wert für KeepAlive auf insgesamt 160 Sockets pro VM festzulegen. Dies bedeutet Folgendes: Wenn auf der VM vier „node.exe“-Instanzen ausgeführt werden, sollten Sie den maxSockets-Wert für agentKeepAlive auf 40 pro „node.exe“-Instanz festlegen, also insgesamt 160 pro VM.
 
-Beispielkonfiguration für agentKeepAlive:
+Beispielkonfiguration für [agentKeepAlive](https://www.npmjs.com/package/agentkeepalive):
 
 ```
 var keepaliveAgent = new Agent({    

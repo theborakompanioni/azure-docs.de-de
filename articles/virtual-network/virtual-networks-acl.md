@@ -1,11 +1,12 @@
 ---
-title: Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?
-description: Informationen zu ACLs
+title: Was ist eine Netzwerk-Zugriffssteuerungsliste von Azure (Access Control List, ACL)?
+description: "Erfahren Sie mehr über Zugriffssteuerungslisten in Azure"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
-editor: tysonn
+manager: timlt
+editor: 
+tags: azure-service-management
 ms.assetid: 83d66c84-8f6b-4388-8767-cd2de3e72d76
 ms.service: virtual-network
 ms.devlang: na
@@ -14,31 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 66ddcea180395b830cdb5310446e1dbc02e7d784
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 9a0c85367968c9b38104012d75b1f3975be82cc1
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="what-is-an-endpoint-access-control-list-acls"></a>Was ist eine Endpunkt-Zugriffssteuerungsliste (Access Control List, ACL)?
-Eine Endpunkt-Zugriffssteuerungsliste (ACL) trägt zur Verbesserung der Sicherheit Ihrer Azure-Bereitstellung bei. Mit einer ACL können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Diese Paketfilterungsfunktion bietet eine zusätzliche Schutzebene. Netzwerk-ACLs können nur für Endpunkte angegeben werden. Sie können keine ACL für ein virtuelles Netzwerk oder für ein bestimmtes Subnetz innerhalb eines virtuellen Netzwerks angeben.
+# <a name="what-is-an-endpoint-access-control-list"></a>Was ist eine Endpunkt-Zugriffssteuerungsliste?
 
 > [!IMPORTANT]
-> Es wird empfohlen, anstelle von ACLs möglichst Netzwerksicherheitsgruppen (NSGs) zu verwenden. Weitere Informationen zu NSGs finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](virtual-networks-nsg.md).
-> 
-> 
+> Azure verfügt über zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für das Erstellen und Verwenden von Ressourcen: Resource Manager- und klassische Bereitstellung. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells. 
 
-ACLs können mithilfe von PowerShell sowie über das Verwaltungsportal konfiguriert werden. Informationen zum Konfigurieren von Netzwerk-ACLs mittels PowerShell finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md). Informationen zum Konfigurieren von Netzwerk-ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Eine Endpunkt-Zugriffssteuerungsliste (ACL) trägt zur Verbesserung der Sicherheit Ihrer Azure-Bereitstellung bei. Mit einer ACL können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Diese Paketfilterungsfunktion bietet eine zusätzliche Schutzebene. Netzwerk-ACLs können nur für Endpunkte angegeben werden. Sie können keine ACL für ein virtuelles Netzwerk oder für ein bestimmtes Subnetz innerhalb eines virtuellen Netzwerks angeben. Es wird empfohlen, anstelle von ACLs möglichst Netzwerksicherheitsgruppen (NSGs) zu verwenden. Weitere Informationen zu NSGs finden Sie im [Überblick zu Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
+
+ACLs können mithilfe von PowerShell sowie über das Azure-Portal konfiguriert werden. Informationen zum Konfigurieren von Netzwerk-ACLs mittels PowerShell finden Sie unter [Verwalten von Endpunkt-Zugriffssteuerungslisten mit PowerShell im klassischen Bereitstellungsmodell](virtual-networks-acl-powershell.md). Informationen zum Konfigurieren von Netzwerk-ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten auf einem klassischen virtuellen Computer](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 Netzwerk-ACLs bieten folgende Möglichkeiten:
 
 * Sie können eingehenden Datenverkehr für einen Eingabeendpunkt eines virtuellen Computers selektiv auf der Grundlage des IPv4-Adressbereichs für das Remote-Subnetz zulassen oder verweigern.
 * Sie können IP-Adressen in eine Sperrliste aufnehmen.
 * Sie können pro Endpunkt eines virtuellen Computers mehrere Regeln erstellen.
-* Sie können pro Endpunkt eines virtuellen Computers bis zu 50 ACL-Regeln angeben.
 * Sie können Regel aufsteigend sortieren, um sicherzustellen, dass für einen bestimmten Endpunkt eines virtuellen Computers die richtigen Regeln angewendet werden.
 * Sie können eine ACL für eine bestimmte IPv4-Adresse des Remote-Subnetzes angeben.
+
+Informationen zu ACL-Einschränkungen finden Sie im Artikel zu [Azure-Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ## <a name="how-acls-work"></a>Funktionsweise von ACLs
 Eine ACL ist ein Objekt mit einer Regelliste. Wenn Sie eine ACL erstellen und auf einen Endpunkt eines virtuellen Computers anwenden, erfolgt die Paketfilterung auf dem Hostknoten des virtuellen Computers. Das bedeutet, dass der Hostknoten (nicht Ihr virtueller Computer) den Datenverkehr von Remote-IP-Adressen filtert und nach passenden ACL-Regeln sucht. Dadurch wird verhindert, dass Ihr virtueller Computer wertvolle CPU-Zyklen für die Paketfilterung verwendet.
@@ -85,11 +87,11 @@ Da für einen Endpunkt mehrere Regeln angegeben werden können, müssen die Rege
 | 200 |175.0.0.0/8 |80 |Zulassen |
 
 ## <a name="network-acls-and-load-balanced-sets"></a>Netzwerk-ACLs und Sätze mit Lastenausgleich
-Netzwerk-ACLs können für einen Endpunkt eines Satzes mit Lastenausgleich (LB-Satz) angegeben werden. Bei Angabe einer ACL für einen LB-Satz wird die Netzwerk-ACL auf alle virtuellen Computer in diesem LB-Satz angewendet. Ein Beispiel: Bei Erstellung eines LB-Satzes mit „Port 80“ und drei virtuellen Computern wird die Netzwerk-ACL, die auf dem Endpunkt „Port 80“ eines einzelnen virtuellen Computers erstellt wurde, automatisch auch auf die anderen virtuellen Computer angewendet.
+Netzwerk-ACLs können auf einem Endpunkt der Lastenausgleichsgruppe angegeben werden. Bei Angabe einer ACL für eine Lastenausgleichsgruppe wird die Netzwerk-ACL auf alle virtuellen Computer in dieser Lastenausgleichsgruppe angewendet. Ein Beispiel: Bei Erstellung einer Lastenausgleichsgruppe mit „Port 80“ und drei virtuellen Computern wird die Netzwerk-ACL, die auf dem Endpunkt „Port 80“ eines einzelnen virtuellen Computers erstellt wurde, automatisch auch auf die anderen virtuellen Computer angewendet.
 
 ![Netzwerk-ACLs und Sätze mit Lastenausgleich](./media/virtual-networks-acl/IC674733.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwalten von Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md)
+[Verwalten von Endpunkt-Zugriffssteuerungslisten mit PowerShell](virtual-networks-acl-powershell.md)
 
 

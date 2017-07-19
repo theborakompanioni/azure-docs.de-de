@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d967d70c7fad45f7a10a5288623440491dcfffa3
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie mehrere ausführbare Gastanwendungsdatei
 
 In dieser exemplarischen Vorgehensweise wird zwar das Bereitstellen einer Anwendung mit einem Node.js-Front-End gezeigt, die MongoDB als Datenspeicher nutzt, aber diese Schritte gelten für alle Anwendungen mit Abhängigkeiten von einer anderen Anwendung.   
 
-Das Anwendungspaket mit mehreren ausführbaren Gastanwendungsdateien kann mithilfe von Visual Studio generiert werden. Weitere Informationen finden Sie unter [Verwenden von Visual Studio zum Packen einer vorhandenen Anwendung](service-fabric-deploy-existing-app.md#use-visual-studio-to-package-an-existing-executable). Klicken Sie nach dem Hinzufügen der ersten ausführbaren Gastanwendungsdatei mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie **Hinzufügen > Neuer Service Fabric-Dienst** aus, um der Projektmappe das zweite ausführbare Gastanwendungsprojekt hinzuzufügen. Hinweis: Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert. 
+Das Anwendungspaket mit mehreren ausführbaren Gastanwendungsdateien kann mithilfe von Visual Studio generiert werden. Weitere Informationen finden Sie unter [Verwenden von Visual Studio zum Packen einer vorhandenen Anwendung](service-fabric-deploy-existing-app.md). Klicken Sie nach dem Hinzufügen der ersten ausführbaren Gastanwendungsdatei mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie **Hinzufügen > Neuer Service Fabric-Dienst** aus, um der Projektmappe das zweite ausführbare Gastanwendungsprojekt hinzuzufügen. Hinweis: Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert. 
 
 ## <a name="samples"></a>Beispiele
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)

@@ -1,5 +1,5 @@
 ---
-title: "Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank | Microsoft Docs"
+title: "Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank | Microsoft-Dokumentation"
 description: "In diesem Artikel werden die Anforderungen und allgemeinen Datenarchitekturmuster von mehrinstanzenfähigen Datenbankanwendungen, die in einer Cloudumgebung ausgeführt werden, sowie die verschiedenen Vor- und Nachteile dieser Muster erläutert. Außerdem wird beschrieben, wie diese Anforderungen mit den elastischen Pools und elastischen Tools von Azure SQL-Datenbank ohne Kompromisse erfüllt werden können."
 keywords: 
 services: sql-database
@@ -9,28 +9,29 @@ manager: jhubbard
 editor: 
 ms.assetid: 1dd20c6b-ddbb-40ef-ad34-609d398d008a
 ms.service: sql-database
-ms.custom: development
+ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
 ms.date: 02/01/2017
 ms.author: srinia
-translationtype: Human Translation
-ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
-ms.openlocfilehash: c30f1d879f46805cf802679613089a16dc47ad40
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 0f6ba62a01f3211ccaae6b6c48f72e0de54aad78
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-sql-database"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank
+# <a name="design-patterns-for-multi-tenant-saas-applications-and-azure-sql-database"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank
 Dieser Artikel enthält Informationen zu den Anforderungen und allgemeinen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service), die in einer Cloudumgebung ausgeführt werden. Zudem werden die zu berücksichtigenden Faktoren sowie die Vor- und Nachteile verschiedener Entwurfsmuster erläutert. Pools und Tools für elastische Datenbanken in Azure SQL-Datenbank können Ihnen dabei helfen, Ihre spezifischen Anforderungen zu erfüllen, ohne Abstriche bei anderen Zielen zu machen.
 
 Entwickler treffen beim Entwerfen von Mandantenmodellen für die Datenebenen von mehrinstanzenfähigen Anwendungen mitunter Entscheidungen, die ihren langfristigen Interessen entgegenwirken. Zumindest am Anfang können die Einfachheit der Entwicklung und die geringeren Kosten für den Clouddienstanbieter dem Entwickler wichtiger erscheinen als die Mandantenisolation oder die Skalierbarkeit einer Anwendung. Diese Wahl kann später zu Problemen mit der Kundenzufriedenheit führen und eine kostspielige Kurskorrektur erforderlich machen.
 
 Eine mehrinstanzenfähige Anwendung ist eine Anwendung, die in einer Cloudumgebung gehostet wird und die gleichen Dienste für Hunderte oder Tausende von Mandanten bereitstellt, die ihre Daten weder untereinander freigeben noch die Daten anderer Mandanten sehen. Ein Beispiel ist eine SaaS-Anwendung, die Dienste für Mandanten in einer in der Cloud gehosteten Umgebung bereitstellt.
 
-## <a name="multitenant-applications"></a>Mehrinstanzenfähige Anwendungen
+## <a name="multi-tenant-applications"></a>Mehrinstanzenfähige Anwendungen
 In mehrinstanzenfähigen Anwendungen können Daten und Workloads problemlos partitioniert werden. Sie können Daten und Workloads beispielsweise entlang von Mandantengrenzen partitionieren, da die meisten Anforderungen innerhalb der Grenzen eines Mandanten durchgeführt werden. Dies ist eine inhärente Eigenschaft der Daten und Workloads und begünstigt die in diesem Artikel beschriebenen Anwendungsmuster.
 
 Entwickler verwenden diesen Anwendungstyp für das gesamte Spektrum cloudbasierter Anwendungen, z.B.:
@@ -48,7 +49,7 @@ Nicht alle Anwendungen lassen sich einfach anhand einer einzelnen Eigenschaft wi
 
 Es gibt keine einzelne Partitionsstrategie, die für alle Tabellen verwendet werden kann und für die gesamte Workload der Anwendung funktioniert. Den Schwerpunkt dieses Artikels bilden mehrinstanzenfähige Anwendungen mit problemlos partitionierbaren Daten und Workloads.
 
-## <a name="multitenant-application-design-trade-offs"></a>Mehrinstanzenfähige Anwendungen – bei der Wahl des Entwurfsmusters zu berücksichtigende Faktoren
+## <a name="multi-tenant-application-design-trade-offs"></a>Mehrinstanzenfähige Anwendungen – bei der Wahl des Entwurfsmusters zu berücksichtigende Faktoren
 Das Entwurfsmuster, für das sich der Entwickler einer mehrinstanzenfähigen Anwendung entscheidet, basiert in der Regel auf folgenden Faktoren:
 
 * **Mandantenisolation**. Der Entwickler muss sicherstellen, dass kein Mandant unerwünschten Zugriff auf die Daten anderer Mandanten hat. Die Isolationsanforderung gilt auch für andere Bereiche, z.B. den Schutz vor „Noisy Neighbors“, die Möglichkeit zur Wiederherstellung der Daten eines Mandanten und die Implementierung mandantenspezifischer Anpassungen.
@@ -62,7 +63,7 @@ Ein gängiges Entwicklungsmuster besteht darin, mehrere Mandanten zusammen in ei
 
 Die Mandantenisolation ist bei mehrinstanzenfähigen SaaS-Anwendungen für Unternehmen und Organisationen oft eine grundlegende Anforderung. Die scheinbaren Vorteile der Einfachheit und Kostenersparnis können einen Entwickler dazu verleiten, die Mandantenisolation und Skalierbarkeit zu vernachlässigen. Dieser Kompromiss kann sich als kompliziert und teuer herausstellen, wenn der Umfang des Diensts zunimmt und die Anforderungen an die Mandantenisolation wichtiger werden und in der Anwendungsschicht verwaltet werden müssen. Bei mehrinstanzenfähigen Anwendungen, die einen direkt kundenorientierten Dienst für Endverbraucher bereitstellen, hat die Mandantenisolation unter Umständen jedoch eine geringere Priorität als die Optimierung der Kosten für die Cloudressourcen.
 
-## <a name="multitenant-data-models"></a>Mehrinstanzenfähige Datenmodelle
+## <a name="multi-tenant-data-models"></a>Mehrinstanzenfähige Datenmodelle
 Die allgemeinen Entwurfspraktiken für die Speicherung von Mandantendaten basieren auf den in Abbildung 1 dargestellten drei Modellen.
 
 ![Mehrinstanzenfähige Anwendungsdatenmodelle](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-multi-tenant-data-models.png)
@@ -78,7 +79,7 @@ Abbildung 1: Allgemeine Entwurfspraktiken für mehrinstanzenfähige Datenmodelle
 > 
 > 
 
-## <a name="popular-multitenant-data-models"></a>Gängige mehrinstanzenfähige Datenmodelle
+## <a name="popular-multi-tenant-data-models"></a>Gängige mehrinstanzenfähige Datenmodelle
 Es ist wichtig, die verschiedenen Arten von mehrinstanzenfähigen Datenmodellen in Bezug auf die bereits genannten Faktoren, die beim Anwendungsentwurf abzuwägen sind, zu bewerten. Auf Grundlage dieser Faktoren lassen sich die drei zuvor beschriebenen gängigsten mehrinstanzenfähigen Datenmodelle und ihre Datenbanknutzung wie in Abbildung 2 dargestellt charakterisieren.
 
 * **Isolation**. Der Grad der Isolation zwischen Mandanten kann als Maß für die mit einem Datenmodell erzielte Mandantenisolation dienen.
@@ -105,7 +106,7 @@ Die folgenden Faktoren haben ebenfalls Einfluss auf das von einem Kunden gewähl
 
 Den in Abbildung 2 dargestellten Vor- und Nachteilen zufolge muss ein ideales mehrinstanzenfähiges Modell über hervorragende Eigenschaften für die Mandantenisolation mit optimaler gemeinsamer Nutzung von Ressourcen zwischen Mandanten verfügen. Dieses Modell ist im oberen rechten Quadranten von Abbildung 2 dargestellt.
 
-## <a name="multitenancy-support-in-azure-sql-database"></a>Unterstützung der Mehrinstanzenfähigkeit in Azure SQL-Datenbank
+## <a name="multi-tenancy-support-in-azure-sql-database"></a>Unterstützung der Mehrinstanzenfähigkeit in Azure SQL-Datenbank
 Azure SQL-Datenbank unterstützt alle mehrinstanzenfähigen Anwendungsmuster, die in Abbildung 2 dargestellt sind. Mit elastischen Pools wird jetzt ein neues Anwendungsmuster unterstützt, das eine gute gemeinsame Nutzung von Ressourcen mit den Isolationsvorteilen des Ansatzes „eine Datenbank pro Mandant“ kombiniert (oberer rechter Quadrant in Abbildung 3). Tools und Funktionen für elastische Datenbanken in SQL-Datenbank können Ihnen dabei helfen, die Kosten für das Entwickeln und Betreiben einer Anwendung mit vielen Datenbanken zu reduzieren (dargestellt im schattierten Bereich in Abbildung 3). Diese Tools ermöglichen Ihnen das Erstellen und Verwalten von Anwendungen mit jedem der Muster mit mehreren Datenbanken.
 
 ![Muster in Azure SQL-Datenbank](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-patterns-sqldb.png)
@@ -156,14 +157,17 @@ Informationen zum Erstellen eines Pools für elastische Datenbanken über das Az
 Erfahren Sie, wie Sie einen [elastischen Pool überwachen und verwalten](sql-database-elastic-pool-manage-portal.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+* [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung, die Azure SQL-Datenbank verwendet – Wingtip SaaS](sql-database-saas-tutorial.md)
 * [Was ist ein elastischer Azure-Pool?](sql-database-elastic-pool.md)
 * [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
 * [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-* [Authentication in multitenant apps by using Azure Active Directory and OpenID Connect (Authentifizierung in mehrinstanzenfähigen Apps mithilfe von Azure Active Directory und OpenID Connect)](../guidance/guidance-multitenant-identity-authenticate.md)
+* [Authentifizierung in mehrinstanzenfähigen Apps mithilfe von Azure Active Directory und OpenID Connect](../guidance/guidance-multitenant-identity-authenticate.md)
 * [Tailspin-Anwendung „Surveys“](../guidance/guidance-multitenant-identity-tailspin.md)
 
 
 ## <a name="questions-and-feature-requests"></a>Fragen und Featureanfragen
+
 Falls Sie Fragen haben, finden Sie uns im [SQL-Datenbank-Forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). Featureanfragen können im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/forums/217321-sql-database/)hinzugefügt werden.
 
 

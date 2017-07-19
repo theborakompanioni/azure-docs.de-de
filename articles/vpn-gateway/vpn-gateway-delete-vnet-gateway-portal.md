@@ -1,6 +1,6 @@
 ---
 title: "Löschen eines Gateways des virtuellen Netzwerks: Azure-Portal: Resource Manager | Microsoft-Dokumentation"
-description: "Löschen Sie ein Gateway des virtuellen Netzwerks mit PowerShell im Resource Manager-Bereitstellungsmodell."
+description: "Löschen Sie ein Gateway des virtuellen Netzwerks über das Azure-Portal im Resource Manager-Bereitstellungsmodell."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2017
+ms.date: 06/20/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b4949db62ccd31cf6ce3d19df5459367cac99b59
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 5dab5330ec286872fae8a880f0afec4b2ff88f8c
+ms.contentlocale: de-de
+ms.lasthandoff: 06/23/2017
 
 
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Löschen eines Gateways für virtuelle Netzwerke über das Portal
+
 > [!div class="op_single_selector"]
-> * [Resource Manager – Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-> * [Resource Manager – PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Klassisch – PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
->
->
+> * [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
 Sie können zwischen ein paar unterschiedlichen Ansätzen wählen, wenn Sie ein Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration löschen möchten.
 
@@ -36,52 +36,29 @@ Sie können zwischen ein paar unterschiedlichen Ansätzen wählen, wenn Sie ein 
 
 - Wenn Sie einige der Ressourcen aus der Ressourcengruppe beibehalten möchten, ist das Löschen eines Gateways des virtuellen Netzwerks etwas komplizierter. Bevor Sie das Gateway des virtuellen Netzwerks löschen können, müssen Sie zuerst alle Ressourcen löschen, die von dem Gateway abhängig sind. Welche Schritte Sie ausführen, hängt vom Typ der Verbindungen ab, die Sie erstellt haben, und den abhängigen Ressourcen für jede Verbindung.
 
-##<a name="deletegw"></a>Löschen eines VPN Gateway
-
 Um ein Gateway für virtuelle Netzwerke zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway für virtuelle Netzwerke gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden.
 
-###<a name="step-1-navigate-to-the-virtual-network-gateway"></a>Schritt 1: Navigieren zum Gateway für virtuelle Netzwerke
+[!INCLUDE [delete gateway](../../includes/vpn-gateway-delete-vnet-gateway-portal-include.md)]
 
-Klicken Sie im [Azure-Portal](https://portal.azure.com) in **Alle Ressourcen** auf das zu löschende Gateway für virtuelle Netzwerke. Die Grafik für ein Gateway sieht wie folgt aus:
+Zu diesem Zeitpunkt wird das virtuelle Netzwerkgateway gelöscht. In den nächsten Schritten können Sie Ressourcen löschen, die nicht mehr verwendet werden.
 
-![Suchen des Gateways für virtuelle Netzwerke](./media/vpn-gateway-delete-vnet-gateway-portal/gw.png)
+### <a name="to-delete-the-local-network-gateway"></a>Löschen des lokalen Netzwerkgateways
 
-###<a name="step-2-delete-connections"></a>Schritt 2: Löschen von Verbindungen
-
-1. Klicken Sie auf dem Blatt für das Gateway für virtuelle Netzwerke auf **Verbindungen**, um alle Verbindungen mit dem Gateway anzuzeigen.
-2. Klicken Sie auf **...** in der Zeile mit dem Namen der Verbindung, und wählen Sie in der Dropdownliste die Option **Löschen** aus.
-3. Klicken Sie auf **Ja**, um zu bestätigen, dass Sie die Verbindung löschen möchten. Wenn Sie über mehrere Verbindungen verfügen, löschen Sie jede Verbindung.
-
-###<a name="step-3-delete-the-local-network-gateways"></a>Schritt 3: Löschen der lokalen Netzwerkgateways
-1. Suchen Sie in **Alle Ressourcen** nach den lokalen Netzwerkgateways, die den einzelnen Verbindungen zugeordnet wurden. Die Grafik für ein lokales Netzwerkgateway sieht wie folgt aus:
-
-    ![Suchen des lokalen Netzwerkgateways](./media/vpn-gateway-delete-vnet-gateway-portal/lng.png)
+1. Suchen Sie in **Alle Ressourcen** nach den lokalen Netzwerkgateways, die den einzelnen Verbindungen zugeordnet wurden.
 2. Klicken Sie auf dem Blatt **Übersicht** für das lokale Netzwerkgateway auf **Löschen**.
 
-###<a name="step-4-delete-the-virtual-network-gateway"></a>Schritt 4: Löschen des Gateways für virtuelle Netzwerke
-1. Suchen Sie in **Alle Ressourcen** nach dem zu löschenden Gateway für virtuelle Netzwerke.
-2. Klicken Sie auf dem Blatt **Übersicht** auf **Löschen**, um das Gateway zu löschen.
+### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>Löschen der öffentlichen IP-Adressressource für das Gateway
 
->[!NOTE]
-> Wenn Sie neben der S2S-Konfiguration noch über eine P2S-Konfiguration für dieses VNET verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
->
->
-
-###<a name="step-5-delete-the-public-ip-address-for-the-gateway"></a>Schritt 5: Löschen der öffentlichen IP-Adresse für das Gateway
-
-1. Suchen Sie in **Alle Ressourcen** nach der öffentlichen IP-Adresse, die dem Gateway zugewiesen wurde. Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen. Die Grafik für die öffentliche IP-Adresse sieht wie folgt aus:
-
-    ![Öffentliche IP-Adresse](./media/vpn-gateway-delete-vnet-gateway-portal/pip.png)
-
+1. Suchen Sie in **Alle Ressourcen** nach der öffentlichen IP-Adressressource, die dem Gateway zugeordnet wurde. Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen. 
 2. Klicken Sie auf der Seite **Übersicht** für die öffentliche IP-Adresse auf **Löschen** und zum Bestätigen auf **Ja**.
 
-###<a name="step-6-delete-the-gateway-subnet"></a>Schritt 6: Löschen des Gatewaysubnetzes
+### <a name="to-delete-the-gateway-subnet"></a>Löschen des Gatewaysubnetzes
 
 1. Suchen Sie in **Alle Ressourcen** nach dem virtuellen Netzwerk. 
 2. Klicken Sie auf dem Blatt **Subnetze** auf das **GatewaySubnet**, und klicken Sie anschließend auf **Löschen**. 
 3. Klicken Sie auf **Ja**, um zu bestätigen, dass Sie das Gatewaysubnetz löschen möchten.
 
-##<a name="deleterg"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
+## <a name="deleterg"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
 
 Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
 

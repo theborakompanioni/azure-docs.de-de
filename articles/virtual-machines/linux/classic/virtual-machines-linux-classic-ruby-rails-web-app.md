@@ -13,12 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: vm-linux
 ms.devlang: ruby
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 06/27/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 7b3c6da0e158c2824a5feb084a13eafe265762ce
-ms.lasthandoff: 01/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 4735a1789c33b7cc51896e26ec8e079f9b0de7d9
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -29,20 +30,24 @@ Dieses Lernprogramm wurde mit Ubuntu Server 14.04 LTS getestet. Wenn Sie eine a
 
 > [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
-> 
-> 
+>
+>
 
 ## <a name="create-an-azure-vm"></a>Erstellen einer Azure-VM
 Beginnen Sie, indem Sie eine Azure-VM mit einem Linux-Image erstellen.
 
-Zur Erstellung des virtuellen Computers können Sie das klassische Azure-Portal oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden.
+Zur Erstellung des virtuellen Computers können Sie das Azure-Portal oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden.
 
-### <a name="azure-management-portal"></a>Azure-Verwaltungsportal
-1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com)
-2. Klicken Sie auf **Neu** > **Compute** > **Virtueller Computer** > **Schnellerfassung**. Wählen Sie ein Linux-Image aus.
-3. Geben Sie ein Kennwort ein.
+### <a name="azure-portal"></a>Azure-Portal
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie auf **Neu**, und geben Sie dann „Ubuntu Server 14.04“ in das Suchfeld ein. Klicken Sie auf den Eintrag, der von der Suche zurückgegeben wird. Wählen Sie für das Bereitstellungsmodell **Klassisch** aus, und klicken Sie dann auf „Erstellen“.
+3. Geben Sie auf dem Blatt „Basics“ (Grundlagen) die Werte für die Pflichtfelder an: Name (der VM), Benutzername, Authentifizierungstyp und die dazugehörigen Anmeldeinformationen, das Azure-Abonnement, die Ressourcengruppe und den Speicherort.
 
-Nachdem der virtuelle Computer bereitgestellt wurde, klicken Sie auf den Namen des virtuellen Computers und dann auf **Dashboard**. Suchen Sie den SSH-Endpunkt, der unter **SSH-Details**aufgeführt ist.
+   ![Erstellen eines neuen Ubuntu-Images](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
+
+4. Nachdem der virtuelle Computer bereitgestellt wurde, klicken Sie auf den Namen der VM, und klicken Sie auf **Endpunkte** in der Kategorie **Einstellungen**. Suchen Sie den SSH-Endpunkt, der unter **Eigenständig** aufgeführt ist.
+
+   ![Standardendpunkt](./media/virtual-machines-linux-classic-ruby-rails-web-app/endpointsnewportal.png)
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 Befolgen Sie die Schritte unter [Erstellen eines virtuellen Linux-Computers][vm-instructions].
@@ -54,20 +59,25 @@ Nachdem der virtuelle Computer bereitgestellt wurde, können Sie den SSH-Endpunk
 ## <a name="install-ruby-on-rails"></a>Installieren von Ruby on Rails
 1. Verwenden Sie SSH zum Herstellen einer Verbindung mit dem virtuellen Computer.
 2. Verwenden Sie in der SSH-Sitzung die folgenden Befehle zur Installation von Ruby auf dem virtuellen Computer:
-   
+
         sudo apt-get update -y
         sudo apt-get upgrade -y
-        sudo apt-get install ruby ruby-dev build-essential libsqlite3-dev zlib1g-dev nodejs -y
-   
+
+        sudo apt-add-repository ppa:brightbox/ruby-ng
+        sudo apt-get update
+        sudo apt-get install ruby2.4
+
+        > [!TIP]
+        > The brightbox repository contains the current Ruby distribution.
+
     Die Installation kann einige Minuten dauern. Wenn der Vorgang abgeschlossen ist, verwenden Sie folgenden Befehl, um zu überprüfen, dass Ruby installiert ist:
-   
+
         ruby -v
-   
-    Dadurch wird die installierte Version von Ruby zurückgegeben.
+
 3. Geben Sie den folgenden Befehl für die Installation von Rails ein:
-   
+
         sudo gem install rails --no-rdoc --no-ri -V
-   
+
     Verwenden Sie die Flags "--no-rdoc" und "--no-ri", um zur Beschleunigung des Vorgangs die Installation der Dokumentation zu überspringen.
     Die Ausführung dieses Befehls dauert wahrscheinlich etwas länger. Durch Hinzufügen des Befehls „-V“ können Sie Informationen zum Installationsstatus anzeigen.
 
@@ -91,28 +101,32 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>Hinzufügen eines Endpunkts
-1. Öffnen Sie das [klassische Azure-Portal][management-portal], und wählen Sie Ihren virtuellen Computer aus.
-   
-    ![Liste der virtuellen Computer][vmlist]
-2. Wählen Sie oben auf der Seite **ENDPUNKTE** aus, und klicken Sie dann unten auf **ENDPUNKT HINZUFÜGEN**.
-   
-    ![Seite "Endpunkte"][endpoints]
-3. Wählen Sie im Dialogfeld **ENDPUNKT HINZUFÜGEN** die Option „Add a standalone endpoint“ (Eigenständigen Endpunkt hinzufügen) aus, und klicken Sie auf die Pfeilschaltfläche **Weiter**.
-   
-    ![Dialogfeld für neuen Endpunkt][new-endpoint1]
-4. Geben Sie im nächsten Dialogfeld die folgenden Informationen ein:
-   
-   * **NAME**: HTTP
-   * **PROTOKOLL**: TCP
-   * **ÖFFENTLICHER PORT**: 80
-   * **PRIVATER PORT**: 3000
-     
-     Damit wird der öffentliche Port 80 erstellt, der den Datenverkehr an den privaten Port 3000 weiterleitet, den der Rails-Server überwacht.
-     
-     ![Dialogfeld für neuen Endpunkt][new-endpoint]
-5. Klicken Sie auf das Häkchen, um den Endpunkt zu speichern.
-6. Es wird eine Meldung angezeigt, dass die **Aktualisierung in Bearbeitung**ist. Nachdem diese Meldung ausgeblendet wurde, ist der Endpunkt aktiv. Sie können nun Ihre Anwendung testen, indem Sie zum DNS-Namen des virtuellen Computers navigieren. Die Website sollte in etwa wie folgt aussehen:
-   
+1. Wechseln Sie zum [Azure-Portal] [https://portal.azure.com], und wählen Sie Ihren virtuellen Computer.
+
+2. Klicken Sie unter **Einstellungen** am linken Rand der Seite auf **Endpunkte**.
+
+3. Klicken Sie am oberen Seitenrand auf **Hinzufügen**.
+
+4. Geben Sie im Dialogfeld **Endpunkt hinzufügen** die folgenden Informationen ein:
+
+   * **Name**: HTTP
+   * **Protokoll**: TCP
+   * **Öffentlicher Port**: 80
+   * **Privater Port**: 3000
+   * **Fließende IP-Adresse**: Deaktiviert
+   * **Zugriffssteuerungsliste – Reihenfolge**: 1001, oder einen anderen Wert, der die Priorität dieser Zugriffsregel festlegt.
+   * **Zugriffssteuerungsliste – Name**: allowHTTP
+   * **Zugriffssteuerungsliste – Aktion**: Zulassen
+   * **Zugriffssteuerungsliste – Remotesubnetz**: 1.0.0.0/16
+
+     Dieser Endpunkt hat den Port 80, der den Datenverkehr an den privaten Port 3000 weiterleitet, den der Rails-Server überwacht. Die Regel für die Zugriffssteuerungslisten lässt öffentlichen Datenverkehr über Port 80 zu.
+
+     ![new-endpoint](./media/virtual-machines-linux-classic-ruby-rails-web-app/createendpoint.png)
+
+5. Klicken Sie zum Speichern der Richtlinie auf OK.
+
+6. Die Meldung **Endpunkt des virtuellen Computers wird gespeichert** sollte angezeigt werden. Nachdem diese Meldung ausgeblendet wurde, ist der Endpunkt aktiv. Sie können nun Ihre Anwendung testen, indem Sie zum DNS-Namen des virtuellen Computers navigieren. Die Website sollte in etwa wie folgt aussehen:
+
     ![Standard-Rails-Seite][default-rails-cloud]
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -129,7 +143,6 @@ Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie 
 <!-- WA.com links -->
 [blobs]:../../../storage/storage-ruby-how-to-use-blob-storage.md
 [cdn-howto]:https://azure.microsoft.com/develop/ruby/app-services/
-[management-portal]:https://manage.windowsazure.com/
 [tables]:../../../storage/storage-ruby-how-to-use-table-storage.md
 [vm-instructions]:createportal.md
 

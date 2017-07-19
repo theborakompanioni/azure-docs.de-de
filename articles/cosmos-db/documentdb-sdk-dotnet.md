@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 07/05/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 38bd198958180caece4747b972476475059191df
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: e42d4746c89614f6990cb84c0b25871a078ecbec
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**SDK-Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
 
-<tr><td>**API-Dokumentation**</td><td>[.NET API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
+<tr><td>**API-Dokumentation**</td><td>[.NET API-Referenzdokumentation](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
 
 <tr><td>**Beispiele**</td><td>[.NET-Codebeispiele](documentdb-dotnet-samples.md)</td></tr>
 
@@ -53,16 +53,22 @@ ms.lasthandoff: 05/31/2017
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
+*   Unterstützung für das Angeben von benutzerdefinierten Einstellungen vom Typ „JsonSerializerSettings“ beim Instanziieren von [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) wurde hinzugefügt.
+
+### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
+*   Es wurde ein Problem mit Auswirkung auf x64-Computer behoben, die die SSE4-Anweisung nicht unterstützen und beim Ausführen von DocumentDB API-Abfragen eine SEHException-Ausnahme auslösen.
+
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-*    Es wurde Unterstützung für das Feature „Anforderungseinheiten pro Minute“ (RU/m) hinzugefügt.
-*    Es wurde Unterstützung für eine neue Konsistenzebene mit dem Namen „ConsistentPrefix“ hinzugefügt.
-*    Es wurde Unterstützung für Abfragemetriken für einzelne Partitionen hinzugefügt.
-*    Es wurde Unterstützung für die Größenbeschränkung des Fortsetzungstoken für Abfragen hinzugefügt.
-*    Es wurde Unterstützung für eine ausführlichere Ablaufverfolgung für Anforderungsfehler hinzugefügt.
-*    Es wurden einige Leistungsverbesserungen im SDK vorgenommen.
+*   Es wurde Unterstützung für das Feature „Anforderungseinheiten pro Minute“ (RU/m) hinzugefügt.
+*   Es wurde Unterstützung für eine neue Konsistenzebene mit dem Namen „ConsistentPrefix“ hinzugefügt.
+*   Es wurde Unterstützung für Abfragemetriken für einzelne Partitionen hinzugefügt.
+*   Es wurde Unterstützung für die Größenbeschränkung des Fortsetzungstoken für Abfragen hinzugefügt.
+*   Es wurde Unterstützung für eine ausführlichere Ablaufverfolgung für Anforderungsfehler hinzugefügt.
+*   Es wurden einige Leistungsverbesserungen im SDK vorgenommen.
 
 ### <a name="a-name11341134"></a><a name="1.13.4"/>1.13.4
-* Funktionell identisch mit 1.13.4. Es wurden einige interne Änderungen vorgenommen.
+* Funktionell identisch mit 1.13.3. Es wurden einige interne Änderungen vorgenommen.
 
 ### <a name="a-name11331133"></a><a name="1.13.3"/>1.13.3
 * Funktionell identisch mit 1.13.2. Es wurden einige interne Änderungen vorgenommen.
@@ -173,7 +179,7 @@ ms.lasthandoff: 05/31/2017
   * Take-Operator, um SELECT TOP-Verhalten in LINQ zu ermöglichen
   * CompareTo-Operator, um Vergleiche von Zeichenfolgenbereichen zu ermöglichen
   * Bedingte (?) und zusammengefügte (??) Operatoren
-* **[Korrigiert]** ArgumentOutOfRangeException beim Kombinieren der Modellprojektion mit „Where-In“ in LINQ-Abfragen.  [Nr. 81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+* **[Korrigiert]** ArgumentOutOfRangeException beim Kombinieren der Modellprojektion mit „Where-In“ in LINQ-Abfragen. [Nr. 81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
 * **[Korrigiert]** Wenn SELECT nicht der letzte Ausdruck ist, nahm der LINQ-Anbieter keine Projektion an und erzeugte SELECT * falsch.  [Nr. 58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
@@ -190,11 +196,11 @@ ms.lasthandoff: 05/31/2017
 * **[Korrigiert]** Lokalisierungsprobleme bei Verwenden nicht englischer Kulturinformationen wie beispielsweise nl-NL usw. 
 
 ### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* ID-basiertes Routing
-  * Neues „UriFactory“-Hilfsprogramm zum Unterstützen des Erstellens ID-basierter Ressourcenlinks.
+* ID-basiertes Routing hinzugefügt
+  * Neues „UriFactory“-Hilfsprogramm zum Unterstützen des Erstellens ID-basierter Ressourcenlinks
   * Neue Überladungen für „DocumentClient“ zum Aufnehmen des URI.
 * „IsValid()“ und „IsValidDetailed()“ in LINQ für Geodaten hinzugefügt.
-* LINQ-Anbieterunterstützung verbessert.
+* LINQ-Anbieterunterstützung verbessert:
   * **Math:** Abs, Acos, Asin, Atan, Ceiling, Cos, Exp, Floor, Log, Log10, Pow, Round, Sign, Sin, Sqrt, Tan, Truncate
   * **String:** Concat, Contains, EndsWith, IndexOf, Count, ToLower, TrimStart, Replace, Reverse, TrimEnd, StartsWith, SubString, ToUpper
   * **Array:** Concat, Contains, Count
@@ -208,39 +214,41 @@ ms.lasthandoff: 05/31/2017
 * Unterstützung für die räumliche Indizierung und Abfrage hinzugefügt.
   * Neuer „Microsoft.Azure.Documents.Spatial“-Namespace für die Serialisierung/Deserialisierung räumlicher Typen wie Punkt und Polygon.
   * Neue „SpatialIndex“-Klasse für die Indizierung von in Cosmos DB gespeicherten GeoJSON-Daten.
-* **[Korrigiert]** Falsche SQL-Abfrage aus LINQ-Ausdruck generiert [Nr. 38](https://github.com/Azure/azure-documentdb-net/issues/38)
+* **[Korrigiert]** Falsche SQL-Abfrage aus LINQ-Ausdruck generiert [Nr. 38](https://github.com/Azure/azure-documentdb-net/issues/38).
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Abhängigkeit von Newtonsoft.Json v5.0.7 
-* Änderungen zur Unterstützung von „Order By“
+* Eine Abhängigkeit von Newtonsoft.Json v5.0.7 wurde hinzugefügt.
+* Änderungen zur Unterstützung von „Order By“ vorgenommen:
   
   * LINQ-Anbieterunterstützung für „OrderBy()“ oder „OrderByDescending()“
   * Änderung an „IndexingPolicy“ zur Unterstützung von „Order By“ 
     
-    **NB: Mögliche neue Änderung** 
+    **Mögliche neue Änderung** 
     
     Wenn Sie über vorhandenen Code verfügen, der Sammlungen mit einer benutzerdefinierten Indizierungsrichtlinie bereitstellt, muss Ihr vorhandener Code so aktualisiert werden, dass er die neue IndexingPolicy-Klasse unterstützt. Wenn Sie keine benutzerdefinierte Indizierungsrichtlinie haben, betrifft Sie diese Änderung nicht.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Unterstützung für das Partitionieren von Daten mithilfe der neuen Klassen „HashPartitionResolver“ und „RangePartitionResolver“ und von „IPartitionResolver“
-* „DataContract“-Serialisierung
-* GUID-Unterstützung in LINQ-Anbieter
-* UDF-Unterstützung in LINQ
+* Unterstützung für das Partitionieren von Daten mithilfe der neuen Klassen „HashPartitionResolver“ und „RangePartitionResolver“ und von „IPartitionResolver“ wurde hinzugefügt.
+* „DataContract“-Serialisierung wurde hinzugefügt.
+* GUID-Unterstützung in LINQ-Anbieter wurde hinzugefügt.
+* UDF-Unterstützung in LINQ wurde hinzugefügt.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Allgemeine Verfügbarkeit (GA) des SDK
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
-Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren. 
 
-Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
+Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
 <br/>
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.15.0](#1.15.0) |30. Juni 2017 |--- |
+| [1.14.1](#1.14.1) |23. Mai 2017 |--- |
 | [1.14.0](#1.14.0) |10. Mai 2017 |--- |
 | [1.13.4](#1.13.4) |09. Mai 2017 |--- |
 | [1.13.3](#1.13.3) |06. Mai 2017 |--- |

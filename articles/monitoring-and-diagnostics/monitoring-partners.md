@@ -2,7 +2,7 @@
 title: "Azure Monitor – integrierte Partnerlösungen | Microsoft Docs"
 description: "Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und wie Sie auf die jeweilige Dokumentation zur Integration der Lösungen zugreifen können."
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 5/9/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 18a45dd16e51e477758c3ba08f936a2e831dddb3
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 5914e8be1cf2671da7af1d190811e0e809039135
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
@@ -67,10 +66,7 @@ Datadog ist der weltweit führende Überwachungsdienst für Anwendungen in der C
 [Zur Dokumentation][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-OneAgent von Dynatrace lässt sich über die entsprechenden Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und Azure App Services integrieren.
-So können Leistungsmetriken zu Hosts, Netzwerk und Diensten erfasst werden.
-Neben der einfachen Anzeige von Metriken können wir auch vollständige Umgebungen detailliert visualisieren und so Transaktionen von der Clientseite bis hin zur Datenbankschicht anzeigen.
-Die auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse, einschließlich Informationen über Code und Datenbank auf Methodenebene, vereinfachen Problembehandlungen und Leistungsoptimierungen erheblich.
+OneAgent von Dynatrace lässt sich über die entsprechenden Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und Azure App Services integrieren. So kann Dynatrace OneAgent Leistungsmetriken zu Hosts, Netzwerk und Diensten erfassen. Neben der einfachen Anzeige von Metriken kann Dynatrace auch vollständige Umgebungen detailliert visualisieren und so Transaktionen von der Clientseite bis hin zur Datenbankschicht anzeigen. Die auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse, einschließlich Informationen über Code und Datenbank auf Methodenebene, vereinfachen Problembehandlungen und Leistungsoptimierungen erheblich.
 
 [Zur Dokumentation][dynatrace-doc]
 
@@ -148,7 +144,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "Einführung in CloudMonix"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Einführung in Cloudyn"
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadog-Dokumentation"
-[dynatrace-doc]: https://blog.ruxit.com/ruxit-monitoring-azure-web-apps/ "Dynatrace-Dokumentation"
+[dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace-Dokumentation"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic-Dokumentation"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie-Dokumentation"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty-Dokumentation"

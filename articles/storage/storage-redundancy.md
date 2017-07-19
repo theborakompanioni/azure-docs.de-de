@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 6a5ba89d8b17e0646cd8a6185da6d1094fd64d12
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: 0237d10ccd9424da0ec10bc2773b978ffc11a294
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/23/2017
 
 ---
 # <a name="azure-storage-replication"></a>Azure Storage-Replikation
@@ -111,7 +111,9 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 | Indien, Mitte |Indien, Süden |
 | Indien, Westen |Indien, Süden |
 | US Government, Iowa |US Government, Virginia |
-| US Government, Virginia |US Government, Iowa |
+| US Government, Virginia |US Gov Texas |
+| US Gov Texas |US Gov Arizona |
+| US Gov Arizona |US Gov Texas |
 | Kanada, Mitte |Kanada, Osten |
 | Kanada, Osten |Kanada, Mitte |
 | UK, Westen |UK, Süden |
@@ -122,6 +124,11 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 | USA, Westen-Mitte |USA, Westen 2 |
 
 Aktuelle Informationen zu von Azure unterstützten Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
+
+>[!NOTE]  
+> Die sekundäre Region von „USA Gov Virginia“ ist „USA Gov Texas“. Bisher wurde „USA Gov Iowa“ als sekundäre Region von „USA Gov Virginia“ verwendet. Speicherkonten, für die noch „USA Gov Iowa“ als sekundäre Region verwendet wird, werden auf die Verwendung von „USA Gov Texas“ als sekundäre Region umgestellt. 
+> 
+> 
 
 ## <a name="read-access-geo-redundant-storage"></a>Georedundanter Speicher mit Lesezugriff
 Georedundanter Speicher mit Lesezugriff (RA-GRS) maximiert die Verfügbarkeit für das Speicherkonto, indem ein schreibgeschützter Zugriff auf Daten am sekundären Standort zusätzlich zur von GRS gebotenen Replikation in zwei Regionen bereitgestellt wird.
@@ -135,6 +142,49 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 * Wenn Microsoft ein Failover auf die sekundäre Region initiiert, erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](storage-disaster-recovery-guidance.md). 
 * RA-GRS ist für hohe Verfügbarkeit ausgelegt. Eine Anleitung zur Skalierbarkeit finden Sie in der [Checkliste zur Leistung](storage-performance-checklist.md).
 
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+<a id="howtochange"></a>
+#### <a name="1-how-can-i-change-the-geo-replication-type-of-my-storage-account"></a>1. Wie kann ich den Georeplikationstyp meines Speicherkontos ändern?
+
+   Sie können den Georeplikationstyp Ihres Speicherkontos in LRS, GRS und RA-GRS ändern, indem Sie das [Azure-Portal](https://portal.azure.com/) oder [Azure PowerShell](storage-powershell-guide-full.md) verwenden, oder Sie können programmgesteuert vorgehen, indem Sie eine unserer vielen Speicherclientbibliotheken verwenden. Beachten Sie, dass ZRS-Konten nicht in LRS oder GRS konvertiert werden können. Ebenso kann ein vorhandenes LRS- oder GRS-Konto nicht in ein ZRS-Konto konvertiert werden.
+
+<a id="changedowntime"></a>
+#### <a name="2-will-there-be-any-down-time-if-i-change-the-replication-type-of-my-storage-account"></a>2. Kommt es zu Ausfallzeiten, wenn ich den Replikationstyp meines Speicherkontos ändere?
+
+   Nein, es kommt nicht zu Ausfallzeiten.
+
+<a id="changecost"></a>
+#### <a name="3-will-there-be-any-additional-cost-if-i-change-the-replication-type-of-my-storage-account"></a>3. Fallen zusätzliche Kosten an, wenn ich den Replikationstyp meines Speicherkontos ändere?
+
+   Ja. Wenn Sie für Ihr Speicherkonto die Umstellung von LRS auf GRS (oder RA-GRS) durchführen, fallen Zusatzgebühren für den Datenverkehr in ausgehender Richtung an, der mit dem Kopieren von vorhandenen Daten vom primären Standort an den sekundären Standort verbunden ist. Nachdem die anfänglichen Daten kopiert wurden, fallen keine zusätzlichen Ausgangsgebühren für die Georeplikation der Daten vom primären zum sekundären Standort an. Die Details zu Bandbreitengebühren finden Sie unter [Azure Blob Storage – Preise](https://azure.microsoft.com/pricing/details/storage/blobs/). Wenn Sie von GRS zu LRS wechseln, entstehen keine zusätzlichen Kosten, aber Ihre Daten werden am sekundären Standort gelöscht.
+
+<a id="ragrsbenefits"></a>
+#### <a name="4-how-can-ra-grs-help-me"></a>4. Welche Vorteile bietet RA-GRS?
+   
+   Georedundanter Speicher (GRS) ermöglicht die Replikation Ihrer Daten aus einer primären in einer sekundären Region, die Hunderte Kilometer weit von der primären Region entfernt ist. In diesem Fall sind Ihre Daten auch bei einem regionalen Komplettausfall oder einem Notfall beständig gespeichert, nach dem die primäre Region nicht mehr wiederherstellbar ist. Georedundanter Speicher mit Lesezugriff (RA-GRS) umfasst diese Optionen und bietet zusätzlich die Möglichkeit, Daten am sekundären Standort zu lesen. Einige Ideen zur Nutzung dieser Möglichkeit finden Sie unter [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS-Speicher](storage-designing-ha-apps-with-ragrs.md). 
+
+<a id="lastsynctime"></a>
+#### <a name="5-is-there-a-way-for-me-to-figure-out-how-long-it-takes-to-replicate-my-data-from-the-primary-to-the-secondary-region"></a>5. Lässt sich herausfinden, wie lange es dauert, meine Daten aus der primären Region in der sekundären Region zu replizieren?
+   
+   Wenn Sie RA-GRS nutzen, können Sie für Ihr Speicherkonto den Zeitpunkt der letzten Synchronisierung überprüfen. Der Zeitpunkt der letzten Synchronisierung ist ein Datums-/Uhrzeitwert in GMT (Greenwich Mean Time). Alle primären Schreibvorgänge vor dem Zeitpunkt der letzten Synchronisierung wurden erfolgreich an den sekundären Standort geschrieben. Dies bedeutet, dass sie am sekundären Standort zur Verfügung stehen. Primäre Schreibvorgänge, die nach dem Zeitpunkt der letzten Synchronisierung stattgefunden haben, stehen unter Umständen noch nicht zum Lesen zur Verfügung. Sie können diesen Wert mit dem [Azure-Portal](https://portal.azure.com/) oder [Azure PowerShell](storage-powershell-guide-full.md) abfragen, oder Sie können programmgesteuert vorgehen, indem Sie die REST-API oder eine unserer Speicherclientbibliotheken verwenden. 
+
+<a id="outage"></a>
+#### <a name="6-how-can-i-switch-to-the-secondary-region-if-there-is-an-outage-in-the-primary-region"></a>6. Wie kann ich zur sekundären Region wechseln, wenn es in der primären Region zu einem Ausfall kommt?
+   
+   Weitere Informationen finden Sie im Artikel [Vorgehensweise beim Ausfall von Azure Storage](storage-disaster-recovery-guidance.md).
+
+<a id="rpo-rto"></a>
+#### <a name="7-what-is-the-rpo-and-rto-with-grs"></a>7. Was ist die RPO und RTO in Bezug auf GRS?
+   
+   Recovery Point Objective (RPO): Bei GRS und RA-GRS führt der Speicherdienst eine asynchrone Georeplikation der Daten vom primären zum sekundären Standort durch. Wenn es zu einer größeren regionalen Katastrophe kommt und ein Failover durchgeführt werden muss, gehen die letzten Deltaänderungen, für die noch keine Georeplikation erfolgt ist, unter Umständen verloren. Die Anzahl von Minuten des Zeitraums, für den ein potenzieller Datenverlust auftritt, wird als RPO bezeichnet (der Zeitpunkt, bis zu dem Daten wiederhergestellt werden können). Der RPO-Wert beträgt normalerweise weniger als 15 Minuten, aber es gibt derzeit keine SLA dazu, wie lange die Georeplikation dauert.
+
+   Recovery Time Objective (RTO): Dies ist eine Kennzahl dafür, wie lange es dauert, bis das Failover durchgeführt wurde und das Speicherkonto wieder online ist, wenn ein Failover erforderlich ist. Die Zeit für das Failover umfasst Folgendes:
+    * Der Zeitraum für die Untersuchung und Ermittlung, ob die Daten am primären Standort wiederhergestellt werden können oder ob ein Failover durchgeführt werden muss.
+    * Die Zeit für das Failover des Kontos, indem die primären DNS-Einträge so geändert werden, dass sie auf den sekundären Standort verweisen.
+
+   Wir nehmen die Verantwortung für die Bewahrung Ihrer Daten sehr ernst. Falls also die Chance besteht, die Daten wiederherzustellen, stoppen wir die Durchführung des Failovers und konzentrieren uns auf die Wiederherstellung der Daten am primären Standort. Für die Zukunft ist die Bereitstellung einer API geplant, damit Sie ein Failover auf Kontoebene auslösen können, um die RTO selbst steuern zu können. Diese Option ist momentan aber noch nicht verfügbar.
+   
 ## <a name="next-steps"></a>Nächste Schritte
 * [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS-Speicher](storage-designing-ha-apps-with-ragrs.md)
 * [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)

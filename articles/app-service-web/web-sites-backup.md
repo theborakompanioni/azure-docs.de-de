@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
+ms.author: cephalin;aelnably
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 673ea14ff534f237e06dd1d00586dad5736792d5
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 891359514e776e169bf05df7b84d2b99306f98bf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -59,32 +59,35 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>Erstellen einer manuellen Sicherung
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt Ihrer App. Wählen Sie **Einstellungen** und dann **Sicherungen** aus. Das Blatt **Sicherungen** wird angezeigt.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt Ihrer App, und wählen Sie **Sicherungen** aus. Das Blatt **Sicherungen** wird angezeigt.
    
     ![Seite 'Sicherungen'][ChooseBackupsPage]
    
    > [!NOTE]
-   > Wenn diese Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können.
-   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).  
-   > ![Speicherkonto auswählen](./media/web-sites-backup/01UpgradePlan.png)
+   > Wenn die folgende Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können.
+   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md) .  
+   > ![Speicherkonto auswählen](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
-2. Klicken Sie auf dem Blatt **Sicherungen** auf **Speicher: nicht konfiguriert**, um ein Speicherkonto zu konfigurieren.
+
+2. Klicken Sie auf dem Blatt **Sicherung** auf **Konfigurieren**
+![Klicken Sie auf „Konfigurieren“](./media/web-sites-backup/ClickConfigure1.png)
+3. Klicken Sie auf dem Blatt **Sicherungskonfiguration** auf **Speicher: nicht konfiguriert**, um ein Speicherkonto zu konfigurieren.
    
     ![Speicherkonto auswählen][ChooseStorageAccount]
-3. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum gleichen Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
+4. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum selben Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
    
-    ![Speicherkonto auswählen](./media/web-sites-backup/02ChooseStorageAccount1.png)
-4. Klicken Sie auf dem geöffneten Blatt **Sicherungseinstellungen konfigurieren** auf **Datenbankeinstellungen**. Wählen Sie dann die Datenbanken aus, die in die Sicherungen einbezogen werden sollen (SQL-Datenbank, MySQL oder PostgreSQL), und klicken Sie auf **OK**.  
+    ![Speicherkonto auswählen](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
+5. Auf dem noch geöffneten Blatt **Sicherungskonfiguration** können Sie die Einstellungen für **Datenbank sichern** konfigurieren. Wählen Sie dann die Datenbanken aus, die in die Sicherungen einbezogen werden sollen (SQL-Datenbank oder MySQL), und klicken Sie auf **OK**.  
    
-    ![Speicherkonto auswählen](./media/web-sites-backup/03ConfigureDatabase.png)
+    ![Speicherkonto auswählen](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
    > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf dem Blatt **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
    > 
    > 
-5. Klicken Sie auf dem Blatt **Sicherungseinstellungen konfigurieren** auf **Speichern**.    
-6. Klicken Sie auf der Befehlsleiste des Blatts **Sicherungen** auf **Jetzt sichern**.
+6. Klicken Sie auf dem Blatt **Sicherungskonfiguration** auf **Speichern**.    
+7. Klicken Sie auf dem Blatt **Sicherungen** auf **Sichern**.
    
     ![Schaltfläche "Backup Now"][BackUpNow]
    
@@ -95,24 +98,12 @@ Sobald Speicherkonto und Container konfiguriert sind, können Sie jederzeit eine
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>Konfigurieren automatischer Sicherungen
-1. Klicken Sie auf dem Blatt **Sicherungen** auf **Zeitplan: nicht konfiguriert**. 
+1. Legen Sie auf dem Blatt **Sicherungskonfiguration** die Option **Geplante Sicherung** auf **Ein** fest. 
    
-    ![Speicherkonto auswählen](./media/web-sites-backup/05ScheduleBackup.png)
-2. Legen Sie auf dem Blatt **Einstellungen des Sicherungszeitplans** die Option **Geplante Sicherung** auf **Ein** fest. Konfigurieren Sie dann den Sicherungszeitplan wie gewünscht, und klicken Sie auf **OK**.
+    ![Speicherkonto auswählen](./media/web-sites-backup/05ScheduleBackup1.png)
+2. Optionen für den Sicherungszeitplan werden angezeigt. Legen Sie die Option **Geplante Sicherung** auf **Ein** fest, konfigurieren Sie dann den Sicherungszeitplan wie gewünscht, und klicken Sie auf **OK**.
    
     ![Automatisierte Sicherungen aktivieren][SetAutomatedBackupOn]
-3. Klicken Sie auf dem geöffneten Blatt **Sicherungseinstellungen konfigurieren** auf **Speichereinstellungen**, wählen Sie dann das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum gleichen Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
-   
-    ![Speicherkonto auswählen](./media/web-sites-backup/02ChooseStorageAccount1.png)
-4. Klicken Sie auf dem Blatt **Sicherungseinstellungen konfigurieren** auf **Datenbankeinstellungen**. Wählen Sie dann die Datenbanken aus, die in die Sicherungen einbezogen werden sollen (SQL-Datenbank, MySQL oder PostgreSQL), und klicken Sie auf **OK**. 
-   
-    ![Speicherkonto auswählen](./media/web-sites-backup/03ConfigureDatabase.png)
-   
-   > [!NOTE]
-   > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf dem Blatt **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
-   >  Bei Verwendung von [MySQL In-App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app) werden keine Datenbanken aufgelistet, da die Verbindungszeichenfolge nicht im Portal unter **Anwendungseinstellungen** verfügbar gemacht wird.
-   > 
-5. Klicken Sie auf dem Blatt **Sicherungseinstellungen konfigurieren** auf **Speichern**.    
 
 <a name="partialbackups"></a>
 
@@ -128,7 +119,7 @@ Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werde
 ### <a name="exclude-files-from-your-backup"></a>Ausschließen von Dateien aus der Sicherung
 Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Images, die einmal gesichert wurden und sich nicht ändern werden. In solchen Fällen können Sie diese Ordner und Dateien von der Speicherung in zukünftigen Sicherungen ausschließen. Um Dateien und Ordner von Ihren Sicherungen auszuschließen, erstellen Sie eine `_backup.filter`-Datei im `D:\home\site\wwwroot`-Ordner Ihrer App. Geben Sie die Liste von Dateien und Ordnern an, die Sie in dieser Datei ausschließen möchten. 
 
-Kudu zu verwenden, ist eine einfache Möglichkeit, auf Ihre Dateien zuzugreifen. Klicken Sie auf die Einstellung **Adavanced Tools (Erweiterte Tools) -> Los** für Ihre Web-App, um auf Kudu zuzugreifen.
+Kudu zu verwenden, ist eine einfache Möglichkeit, auf Ihre Dateien zuzugreifen. Klicken Sie auf die Einstellung **Erweiterte Tools -> Los** für Ihre Web-App, um auf Kudu zuzugreifen.
 
 ![Verwendung des Portals durch Kudu][kudu-portal]
 
@@ -173,19 +164,19 @@ Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unte
 
 
 <!-- IMAGES -->
-[ChooseBackupsPage]:./media/web-sites-backup/01ChooseBackupsPage.png
-[ChooseStorageAccount]:./media/web-sites-backup/02ChooseStorageAccount.png
-[IncludedDatabases]:./media/web-sites-backup/03IncludedDatabases.png
-[BackUpNow]:./media/web-sites-backup/04BackUpNow.png
-[BackupProgress]:./media/web-sites-backup/05BackupProgress.png
-[SetAutomatedBackupOn]:./media/web-sites-backup/06SetAutomatedBackupOn.png
-[Frequency]:./media/web-sites-backup/07Frequency.png
-[StartDate]:./media/web-sites-backup/08StartDate.png
-[StartTime]:./media/web-sites-backup/09StartTime.png
-[SaveIcon]:./media/web-sites-backup/10SaveIcon.png
-[ImagesFolder]:./media/web-sites-backup/11Images.png
-[LogsFolder]:./media/web-sites-backup/12Logs.png
-[GhostUpgradeWarning]:./media/web-sites-backup/13GhostUpgradeWarning.png
+[ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage1.png
+[ChooseStorageAccount]: ./media/web-sites-backup/02ChooseStorageAccount-1.png
+[IncludedDatabases]: ./media/web-sites-backup/03IncludedDatabases.png
+[BackUpNow]: ./media/web-sites-backup/04BackUpNow1.png
+[BackupProgress]: ./media/web-sites-backup/05BackupProgress.png
+[SetAutomatedBackupOn]: ./media/web-sites-backup/06SetAutomatedBackupOn1.png
+[Frequency]: ./media/web-sites-backup/07Frequency.png
+[StartDate]: ./media/web-sites-backup/08StartDate.png
+[StartTime]: ./media/web-sites-backup/09StartTime.png
+[SaveIcon]: ./media/web-sites-backup/10SaveIcon.png
+[ImagesFolder]: ./media/web-sites-backup/11Images.png
+[LogsFolder]: ./media/web-sites-backup/12Logs.png
+[GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
 [kudu-portal]:./media/web-sites-backup/kudu-portal.PNG
 
 

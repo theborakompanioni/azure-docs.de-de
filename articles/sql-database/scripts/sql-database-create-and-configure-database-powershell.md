@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skript – Erstellen einer SQL-Datenbank | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Erstellen einer SQL-Datenbank mit PowerShell"
+title: 'PowerShell-Beispiel: Erstellen einer Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: "Azure PowerShell-Beispielskript zum Erstellen einer Azure SQL-­Datenbank"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,17 +14,17 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 93abd9955c65e6ea741b7c79c3038ca46f62bccf
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 928f0285d298cad947359d8ba61553af7b8c132a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="create-a-single-sql-database-and-configure-a-firewall-rule-using-powershell"></a>Erstellen einer einzelnen SQL­Datenbank und Konfigurieren einer Firewallregel mit PowerShell
+# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Erstellen einer einzelnen Azure SQL-­Datenbank und Konfigurieren einer Firewallregel mithilfe von PowerShell
 
 Dieses PowerShell-Beispielskript erstellt eine einzelne Azure SQL-Datenbank und konfiguriert eine Firewallregel auf Serverebene. Nach erfolgreicher Ausführung des Skripts können alle Azure-Dienste und die konfigurierte IP-Adresse auf die SQL-Datenbank zugreifen. 
 

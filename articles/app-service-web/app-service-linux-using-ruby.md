@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: aelnably;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5aeef6f31dacb1b27c605d39a35a81bd0211e06a
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: ad724b99426c1873c173da905c89b471ee64ffa6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -45,11 +45,14 @@ Als Nächstes wird wie hier dargestellt das Blatt **Erstellen** geöffnet:
 
 Nachdem die Ruby-Web-App erstellt wurde, können Sie sie über Git oder FTP bereitstellen.
 
+Weitere Informationen zum Erstellen einer Ruby-App finden Sie in der [Anleitung mit den ersten Schritten](app-service-linux-ruby-get-started.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Was ist Web-Apps unter Linux?](app-service-linux-intro.md)
 * [Erstellen von Web-Apps in Web-Apps unter Linux](app-service-linux-how-to-create-web-app.md)
 * [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md)
 * [Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux](app-service-linux-faq.md)
+* [Erstellen einer Ruby-App mit Azure-Web-App unter Linux](app-service-linux-ruby-get-started.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-ruby/New-Linux.png

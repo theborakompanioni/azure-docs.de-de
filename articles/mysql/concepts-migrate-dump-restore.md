@@ -1,22 +1,19 @@
 ---
 title: "Migrieren der MySQL-Datenbank durch Sicherungen und Wiederherstellungen in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
-description: "Einführung in die Migration von Azure-Datenbank für MySQL"
+description: "In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wiederherstellen von Datenbanken in Ihrer Azure-Datenbank für MySQL beschrieben, indem Tools wie mysqldump, MySQL Workbench und PHPMyAdmin genutzt werden."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: portal
-ms.date: 05/17/2017
+ms.date: 06/13/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: c0029e025cf6d0af478d1f21dc6acc7860905a81
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 8606067a8e82c6314ab931eb4816d45755a8e04f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 
@@ -29,13 +26,36 @@ In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstel
 Um diese Anleitung schrittweise auszuführen, müssen Sie Folgendes durchgeführt haben:
 - [Erstellung eines Servers für Azure-Datenbank für MySQL – Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - Installation des Befehlszeilenprogramms [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) auf einem Computer
-- Download von MySQL-Workbench über [Herunterladen von MySQL Workbench](https://dev.mysql.com/downloads/workbench/), Toad, Navicat oder einem Drittanbietertool für MySQL
+- [Download von MySQL Workbench](https://dev.mysql.com/downloads/workbench/), Toad, Navicat oder einem anderen MySQL-Drittanbietertool zur Ausführung von Sicherungs- und Wiederherstellungsbefehlen.
 
 ## <a name="use-common-tools"></a>Verwenden von gängigen Tools
-Mithilfe von gängigen Tools wie MySQL Workbench, mysqldump, Toad oder Navicat können Sie eine Remoteverbindung zu Azure-Datenbank für MySQL herstellen und Daten in dieser wiederherstellen. Verwenden Sie diese Tools auf Ihrem Clientcomputer mit Internetverbindung, um eine Verbindung zu Azure-Datenbank für MySQL herzustellen. Um eine SSL-verschlüsselte Verbindung gemäß bewährter Sicherheitsmethoden zu verwenden, lesen Sie [Konfigurieren von SSL-Konnektivität in Azure-Datenbank für MySQL](concepts-ssl-connection-security.md). Bei der Migration auf Azure-Datenbank für MySQL müssen Sie Ihre Sicherungsdateien nicht in einen bestimmten Cloudspeicherort verschieben. 
+Mithilfe von gängigen Hilfsprogrammen und Tools wie MySQL Workbench, mysqldump, Toad oder Navicat können Sie eine Remoteverbindung zu Azure-Datenbank für MySQL herstellen und Daten darin wiederherstellen. Verwenden Sie diese Tools auf Ihrem Clientcomputer mit Internetverbindung, um eine Verbindung zu Azure-Datenbank für MySQL herzustellen. Um eine SSL-verschlüsselte Verbindung gemäß bewährter Sicherheitsmethoden zu verwenden, lesen Sie [Konfigurieren von SSL-Konnektivität in Azure-Datenbank für MySQL](concepts-ssl-connection-security.md). Bei der Migration auf Azure-Datenbank für MySQL müssen Sie Ihre Sicherungsdateien nicht in einen bestimmten Cloudspeicherort verschieben. 
+
+## <a name="common-uses-for-dump-and-restore"></a>Gängige Nutzungsszenarien für die Sicherung von Abbildern und die Wiederherstellung
+Sie können MySQL-Hilfsprogramme wie mysqldump und mysqlpump verwenden, um Datenbanken in mehreren häufigen Szenarien zu sichern und in eine Azure MySQL-Datenbank zu laden. In anderen Szenarien können Sie stattdessen den Ansatz [Importieren/Exportieren](concepts-migrate-import-export.md) verwenden.
+
+- Verwenden Sie Sicherungen von Datenbankabbildern, wenn Sie die gesamte Datenbank migrieren. Diese Empfehlung gilt, wenn Sie eine große Menge von MySQL-Daten verschieben oder die Dienstunterbrechung für Live-Websites oder -Anwendungen minimieren möchten. 
+-  Stellen Sie sicher, dass für alle Tabellen in der Datenbank das InnoDB-Speichermodul verwendet wird, wenn Daten in Azure-Datenbank für MySQL geladen werden. Azure-Datenbank für MySQL unterstützt nur das InnoDB-Speichermodul und daher keine alternativen Speichermodule. Wenn Ihre Tabellen mit anderen Speichermodulen konfiguriert werden, sollten Sie diese in das InnoDB-Modulformat konvertieren, bevor Sie die Migration zu Azure-Datenbank für MySQL durchführen.
+   Wenn Sie beispielsweise eine WordPress oder WebApp mit Verwendung der MyISAM-Tabellen nutzen, sollten Sie diese Tabellen zuerst konvertieren, indem Sie vor dem Wiederherstellen der Azure-Datenbank für MySQL die Migration zum InnoDB-Format durchführen. Verwenden Sie die `ENGINE=InnoDB`-Klausel zum Festlegen des Moduls, das beim Erstellen einer neuen Tabelle verwendet wird, und übertragen Sie die Daten vor der Wiederherstellung dann in die kompatible Tabelle. 
+
+   ```sql
+   INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
+   ```
+- Stellen Sie zur Verhinderung von Kompatibilitätsproblemen sicher, dass beim Sichern von Datenbankabbildern auf den Quell- und Zielsystemen die gleiche Version von MySQL verwendet wird. Wenn Ihr vorhandener MySQL-Server beispielsweise Version 5.7 hat, sollten Sie zu einer Azure-Datenbank für MySQL migrieren, die für die Ausführung von Version 5.7 konfiguriert ist. Der Befehl `mysql_upgrade` funktioniert auf einem Azure-Datenbank für MySQL-Server nicht und wird nicht unterstützt. Wenn Sie ein übergreifendes Upgrade für MySQL-Versionen durchführen müssen, sollten Sie die niedrigere Version Ihrer Datenbank in Ihrer eigenen Umgebung zuerst in einer höheren Version von MySQL sichern bzw. exportieren. Führen Sie anschließend `mysql_upgrade` aus, bevor Sie versuchen, die Migration zu einer Azure-Datenbank für MySQL durchzuführen.
+
+## <a name="performance-considerations"></a>Überlegungen zur Leistung
+Beachten Sie beim Sichern der Abbilder von großen Datenbanken die folgenden Aspekte, um die Leistung zu optimieren:
+-   Verwenden Sie die Option `exclude-triggers` in mysqldump, wenn Sie Sicherungsabbilder von Datenbanken erstellen. Schließen Sie Trigger aus Abbilddateien aus, um zu verhindern, dass die Triggerbefehle während der Wiederherstellung der Daten ausgelöst werden. 
+-   Vermeiden Sie die Verwendung der Option `single-transaction` in mysqldump, wenn Sie sehr große Datenbanken sichern. Das Erstellen von Sicherungsabbildern für viele Tabellen innerhalb nur einer Transaktion führt dazu, dass bei der Wiederherstellung zusätzliche Speicher- und Arbeitsspeicherressourcen verbraucht werden, und es kann zu Leistungsverzögerungen oder Ressourceneinschränkungen kommen.
+-   Verwenden Sie bei SQL-Ladevorgängen Einfügungen mit mehreren Werten, um beim Sichern von Datenbanken den Mehraufwand für die Ausführung von Anweisungen zu verringern. Wenn Sie Abbilddateien nutzen, die mit dem Hilfsprogramm mysqldump generiert wurden, sind Einfügungen mit mehreren Werten standardmäßig aktiviert. 
+-  Verwenden Sie in mysqldump die Option `order-by-primary`, wenn Sie Datenbanken sichern, damit die Skripterstellung für die Daten in der Primärschlüssel-Reihenfolge erfolgt.
+-   Verwenden Sie in mysqldump beim Erstellen von Sicherungsabbildern für Daten die Option `disable-keys`, um vor dem Laden Fremdschlüsseleinschränkungen zu deaktivieren. Das Deaktivieren von Fremdschlüsselüberprüfungen führt zu Leistungssteigerungen. Aktivieren Sie die Einschränkungen, und überprüfen Sie die Daten nach dem Laden, um die referentielle Integrität sicherzustellen.
+-   Verwenden Sie, falls zutreffend, partitionierte Tabellen.
+-   Laden Sie Daten parallel. Vermeiden Sie zu viel Parallelität, da dies zum Erreichen eines Ressourcenlimits führen kann, und überwachen Sie die Ressourcen mit den Metriken, die im Azure-Portal verfügbar sind. 
+-   Verwenden Sie in mysqlpump die Option `defer-table-indexes`, wenn Sie Sicherungsabbilder von Datenbanken erstellen, damit die Indexerstellung nach dem Laden der Tabellendaten erfolgt.
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>Erstellen einer Sicherungsdatei über die Befehlszeile „mysqldump“
-Um eine vorhandene MySQL-Datenbank lokal oder in einer VM zu sichern, führen Sie folgenden Befehl aus: 
+Führen Sie den folgenden Befehl aus, um eine vorhandene MySQL-Datenbank auf dem lokalen Server oder einem virtuellen Computer zu sichern: 
 ```bash
 $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 ```
@@ -47,7 +67,7 @@ Es müssen folgende Parameter bereitgestellt werden:
 - [backupfile.sql] Der Dateiname für die Datenbanksicherung 
 - [--opt] Die mysqldump-Option 
 
-Um eine Datenbank namens „testdb“ mit dem Benutzernamen „testuser“ ohne Kennwort als Datei mit dem Namen „testdb_backup.sql“ zu sichern, verwenden Sie folgenden Befehl. Mit diesem Befehl wird die Datenbank „testdb“ als Datei namens „testdb_backup.sql“ gesichert, die alle SQL-Anweisungen zum Neuerstellen der Datenbank enthält. 
+Um eine Datenbank namens „testdb“ mit dem Benutzernamen „testuser“ auf Ihrem MySQL-Server ohne Kennwort als Datei mit dem Namen „testdb_backup.sql“ zu sichern, verwenden Sie folgenden Befehl. Mit dem Befehl wird die Datenbank `testdb` in einer Datei mit dem Namen `testdb_backup.sql` gesichert, die alle SQL-Anweisungen enthält, die zum erneuten Erstellen der Datenbank erforderlich sind. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -66,43 +86,44 @@ Um alle Datenbanken auf dem Server gleichzeitig zu sichern, verwenden Sie die Op
 $ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 
-## <a name="create-a-database-on-the-target-azure-mysql-server"></a>Erstellen einer Datenbank auf dem Azure-MySQL-Zielserver
-Sie müssen auf dem Azure-Datenbank für MySQL-Zielserver, auf den die Daten mit MySQL Workbench, Toad, Navicat oder einem beliebigen Drittanbietertool für MySQL migriert werden sollen, eine leere Datenbank erstellen. Die Datenbank kann denselben Namen aufweisen wie die Datenbank, die die Sicherungsdaten enthält, oder Sie können eine Datenbank mit einem anderen Namen erstellen.
+## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Erstellen einer Datenbank auf dem Azure-Datenbank für MySQL-Zielserver
+Erstellen Sie eine leere Datenbank auf dem Azure-Datenbank für MySQL-Zielserver, zu dem Sie die Daten migrieren möchten. Verwenden Sie ein Tool wie MySQL Workbench, Toad oder Navicat zum Erstellen der Datenbank. Die Datenbank kann denselben Namen aufweisen wie die Datenbank, die die Sicherungsdaten enthält, oder Sie können eine Datenbank mit einem anderen Namen erstellen.
 
-![Azure-Datenbank für MySQL-Verbindungszeichenfolge](./media/concepts-migrate-import-export/p5.png)
+Ermitteln Sie zum Herstellen der Verbindung die Verbindungsinformationen auf der Seite „Eigenschaften“ in Azure-Datenbank für MySQL.
+![Ermitteln der Verbindungsinformationen im Azure-Portal](./media/concepts-migrate-dump-restore/1_server-properties-name-login.png)
 
-![MySQL Workbench-Verbindungszeichenfolge](./media/concepts-migrate-import-export/p4.png)
+Fügen Sie die Verbindungsinformationen in MySQL-Workbench hinzu.
+![MySQL Workbench-Verbindungszeichenfolge](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>Wiederherstellen der MySQL-Datenbank über die Befehlszeile oder MySQL Workbench
 Nachdem Sie die Zieldatenbank erstellt haben, können Sie mithilfe des Befehls „mysql“ oder von MySQL Workbench Daten in der jeweiligen neu erstellten Datenbank anhand der Sicherungsdatei wiederherstellen.
 ```bash
-mysql -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
+mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
-In diesem Beispiel werden die Daten auf dem Zielserver in der neu erstellten Datenbank „testdb3“ wiederhergestellt.
+In diesem Beispiel stellen Sie die Daten in der neu erstellten Datenbank auf dem Azure-Datenbank für MySQL-Server wieder her.
 ```bash
-$ mysql -u root -p testdb3 < testdb_backup.sql
+$ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p testdb < testdb_backup.sql
 ```
 
 ## <a name="export-using-phpmyadmin"></a>Exportieren mithilfe von PHPMyAdmin
 Für den Export können Sie das allgemeine Tool phpMyAdmin verwenden, das Sie eventuell bereits lokal in Ihrer Umgebung installiert haben. So exportieren Sie Ihre MySQL-Datenbank mithilfe von PHPMyAdmin:
 - Öffnen Sie phpMyAdmin.
-- Wählen Sie Ihre Datenbank aus, indem Sie auf der linken Seite des Bildschirms auf den Datenbanknamen in der Liste klicken. 
-- Klicken Sie auf den Exportlink. Hierdurch sollte ein neuer Bildschirm angezeigt werden, der besagt, dass die Sicherung der Datenbank angezeigt wird. 
-- Klicken Sie im Bereich „Export“ auf den Link „Alle auswählen“, um alle Tabellen in der Datenbank auszuwählen. 
-- Klicken Sie im Bereich „SQL-Optionen“ auf die jeweiligen Optionen. 
-- Klicken Sie auf die Option „Als Datei speichern“ und die entsprechende Komprimierungsoption. Klicken Sie dann auf die Schaltfläche „Gehe zu“. Es sollte ein Dialogfeld angezeigt werden, in dem Sie dazu aufgefordert werden, die Datei lokal zu speichern.
+- Wählen Sie Ihre Datenbank aus. Klicken Sie in der Liste links auf den Datenbanknamen. 
+- Klicken Sie auf den Link **Export**. Eine neue Seite mit dem Speicherabbild der Datenbank wird angezeigt.
+- Klicken Sie im Bereich „Export“ auf den Link **Alle auswählen**, um die Tabellen in Ihrer Datenbank auszuwählen. 
+- Klicken Sie im Bereich mit den SQL-Optionen auf die gewünschten Optionen. 
+- Klicken Sie auf die Option **Als Datei speichern** und die entsprechende Komprimierungsoption. Klicken Sie dann auf die Schaltfläche **Gehe zu**. Es sollte ein Dialogfeld angezeigt werden, in dem Sie dazu aufgefordert werden, die Datei lokal zu speichern.
 
 ## <a name="import-using-phpmyadmin"></a>Importieren mithilfe von PHPMyAdmin
 Der Import der Datenbank ist mit dem Exportvorgang vergleichbar. Führen Sie folgende Aktionen durch:
 - Öffnen Sie phpMyAdmin. 
-- Erstellen Sie eine Datenbank mit einem entsprechenden Namen, und wählen Sie sie aus, indem Sie auf der linken Seite des Bildschirms auf den Datenbanknamen in der Liste klicken. Wenn Sie den Import über eine vorhandene Datenbank neu schreiben möchten, klicken Sie auf den Datenbanknamen, aktivieren Sie alle Kontrollkästchen neben den Tabellennamen, und wählen Sie „Löschen“ aus, um alle vorhandenen Tabellen in der Datenbank zu löschen. 
-- Klicken Sie auf den SQL-Link. Daraufhin sollte ein neuer Bildschirm angezeigt werden, in dem Sie SQL-Befehle eingeben oder Ihre SQL-Datei hochladen können. 
-- Verwenden Sie die Schaltfläche „Durchsuchen“, um nach der Datenbankdatei zu suchen. 
-- Klicken Sie auf die Schaltfläche „Gehe zu“. Dies führt zum Export der Sicherung, Ausführen der SQL-Befehle und Neuerstellen Ihrer Datenbank.
+- Klicken Sie auf der phpMyAdmin-Setupseite auf **Hinzufügen**, um Ihren Azure-Datenbank für MySQL-Server hinzuzufügen. Geben Sie die Verbindungsdetails und Anmeldeinformationen an.
+- Erstellen Sie eine passend benannte Datenbank, und wählen Sie sie links auf dem Bildschirm aus. Klicken Sie zum erneuten Generieren der vorhandenen Datenbank auf den Datenbanknamen, aktivieren Sie alle Kontrollkästchen neben den Tabellennamen, und wählen Sie **Drop** (Verwerfen), um die vorhandenen Tabellen zu löschen. 
+- Klicken Sie auf den Link **SQL**, um die Seite anzuzeigen, auf der Sie SQL-Befehle eingeben oder Ihre SQL-Datei hochladen können. 
+- Verwenden Sie die Schaltfläche **Durchsuchen**, um nach der Datenbankdatei zu suchen. 
+- Klicken Sie auf die Schaltfläche **Go** (Los), um die Sicherung zu exportieren, die SQL-Befehle auszuführen und die Datenbank neu zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-[Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](quickstart-create-mysql-server-database-using-azure-portal.md) 
-[Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)
+[Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL](./howto-connection-string.md)
 

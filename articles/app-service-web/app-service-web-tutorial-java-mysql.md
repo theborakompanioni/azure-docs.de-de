@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e3a8bc6b11cccf7f6b277e800dbcedcd90e87006
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 5a6e4431ef25c66e1863a679f0db1363a83f4769
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -44,11 +44,12 @@ In diesem Tutorial lernen Sie Folgendes:
 1. [Herunterladen und Installieren von Git](https://git-scm.com/)
 1. [Herunterladen und Installieren von Java 7 JDK oder höher](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [Herunterladen, Installieren und Starten von MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-1. [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="prepare-local-mysql"></a>Vorbereiten der lokalen MySQL-Instanz 
 
@@ -56,7 +57,7 @@ In diesem Schritt erstellen Sie eine Datenbank auf einem lokalen MySQL-Server f�
 
 ### <a name="connect-to-mysql-server"></a>Herstellen einer Verbindung mit dem MySQL-Server
 
-Stellen Sie über die Befehlszeile eine Verbindung mit Ihrem lokalen MySQL-Server her:
+Stellen Sie in einem Terminalfenster eine Verbindung mit Ihrem lokalen MySQL-Server her. Sie können dieses Terminalfenster verwenden, um alle Befehle dieses Tutorials auszuführen.
 
 ```bash
 mysql -u root -p
@@ -86,7 +87,7 @@ In diesem Schritt klonen Sie die Spring Boot-Beispiel-App, konfigurieren sie fü
 
 ### <a name="clone-the-sample"></a>Klonen des Beispiels
 
-Navigieren Sie in der Eingabeaufforderung zu einem Arbeitsverzeichnis, und klonen Sie das Beispielrepository. 
+Navigieren Sie im Terminalfenster zu einem Arbeitsverzeichnis, und klonen Sie das Beispielrepository. 
 
 ```bash
 git clone https://github.com/azure-samples/mysql-spring-boot-todo
@@ -94,7 +95,7 @@ git clone https://github.com/azure-samples/mysql-spring-boot-todo
 
 ### <a name="configure-the-app-to-use-the-mysql-database"></a>Konfigurieren der App für die Verwendung der MySQL-Datenbank
 
-Aktualisieren Sie `spring.datasource.password` und den Wert in *spring-boot-mysql-todo/src/main/resources/application.properties* mit dem gleichen Stammkennwort, das zum Öffnen der MySQL-Eingabeaufforderung verwendet wurde:
+Aktualisieren Sie `spring.datasource.password` und den Wert in *spring-boot-mysql-todo/src/main/resources/application.properties* mit dem gleichen Stammkennwort, das zum Öffnen der MySQL-Aufforderung verwendet wurde:
 
 ```
 spring.datasource.password=mysqlpass
@@ -109,14 +110,14 @@ cd spring-boot-mysql-todo
 mvnw package spring-boot:run
 ```
 
-Öffnen Sie im Browser http://localhost:8080, um das Beispiel in Aktion anzuzeigen. Verwenden Sie beim Hinzufügen von Aufgaben zur Liste die folgenden SQL-Befehle in der MySQL-Eingabeaufforderung, um die in MySQL gespeicherten Daten anzuzeigen.
+Öffnen Sie im Browser http://localhost:8080, um das Beispiel in Aktion anzuzeigen. Verwenden Sie beim Hinzufügen von Aufgaben zur Liste die folgenden SQL-Befehle in der MySQL-Aufforderung, um die in MySQL gespeicherten Daten anzuzeigen.
 
 ```SQL
 use testdb;
 select * from todo_item;
 ```
 
-Beenden Sie die Anwendung, indem Sie in der Eingabeaufforderung `Ctrl`+`C` drücken. 
+Beenden Sie die Anwendung, indem Sie im Terminal `Ctrl`+`C` drücken. 
 
 ## <a name="create-an-azure-mysql-database"></a>Erstellen einer Azure MySQL-Datenbank
 

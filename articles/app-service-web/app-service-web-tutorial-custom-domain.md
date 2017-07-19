@@ -1,6 +1,6 @@
 ---
 title: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie einen vorhandenen benutzerdefinierten DNS-Domänennamen zu einer Web-App, einem Back-End einer mobilen App oder einer API-App in Azure App Service hinzufügen."
+description: "Hier erfahren Sie, wie Sie einen vorhandenen benutzerdefinierten DNS-Domänennamen einer Web-App, einem Back-End einer mobilen App oder einer API-App in Azure App Service hinzufügen."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 000440fb2c38eadc0ffdcab84a3c23bb034e834f
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: f98b876658c3257ad2b9162dea053f879ba1f1f0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/23/2017
 
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps
 
-In diesem Tutorial wird gezeigt, wie [Azure-Web-Apps](app-service-web-overview.md) ein vorhandener benutzerdefinierter DNS-Name zugeordnet wird. 
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching. In diesem Tutorial wird gezeigt, wie Azure-Web-Apps ein vorhandener benutzerdefinierter DNS-Name zugeordnet wird.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -36,51 +36,52 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Zuordnen einer Platzhalterdomäne (z.B. `*.contoso.com`) per CNAME-Eintrag
 > * Automatisieren der Domänenzuordnung mithilfe von Skripts
 
-Verwenden Sie für die Zuordnung eines benutzerdefinierten DNS-Namens zu App Service entweder einen **CNAME-Eintrag** oder einen **A-Eintrag**.
+Verwenden Sie für die Zuordnung eines benutzerdefinierten DNS-Namens zu App Service entweder einen **CNAME-Eintrag** oder einen **A-Eintrag**. 
 
 > [!NOTE]
 > Es wird empfohlen, einen CNAME-Eintrag für alle benutzerdefinierten DNS-Namen außer für Stammdomänen (z.B. `contoso.com`) zu verwenden. 
-> 
-> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Tutorial absolvieren zu können, benötigen Sie Zugriff auf die DNS-Registrierung für Ihren Domänenanbieter (z.B. GoDaddy) und die Berechtigungen zum Bearbeiten der Konfiguration für Ihre Domäne. 
+Für dieses Tutorial benötigen Sie Folgendes:
 
-Um beispielsweise DNS-Einträge für `contoso.com` und `www.contoso.com` hinzuzufügen, benötigen Sie Zugriff für die Konfiguration der DNS-Einstellungen für die Stammdomäne `contoso.com`. 
+* [Erstellen Sie eine App Service-App](/azure/app-service/), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
+* Erwerben Sie einen Domänennamen, und stellen Sie sicher, dass Sie Zugriff auf die DNS-Registrierung für Ihren Domänenanbieter (z.B. GoDaddy) haben.
 
-> [!NOTE]
-> Wenn Sie keinen Domänennamen besitzen, sollten Sie eventuell das [Tutorial zur App Service-Domäne](custom-dns-web-site-buydomains-web-app.md) absolvieren, um eine Domäne über das Azure-Portal zu erwerben. 
->
->
+  Um beispielsweise DNS-Einträge für `contoso.com` und `www.contoso.com` hinzuzufügen, müssen Sie die DNS-Einstellungen für die Stammdomäne `contoso.com` konfigurieren können.
 
-## <a name="prepare-your-app"></a>Vorbereiten Ihrer App
-Um einen benutzerdefinierten DNS-Namen zuzuordnen, muss Ihr [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) einen kostenpflichtigen Tarif (**Shared**, **Basic**, **Standard** oder **Premium**) aufweisen. In diesem Schritt stellen Sie sicher, dass sich Ihre App Service-App im richtigen Tarif befindet.
+  > [!NOTE]
+  > Falls Sie nicht über einen vorhandenen Domänennamen verfügen, können Sie erwägen, [über das Azure-Portal einen Domänennamen zu erwerben](custom-dns-web-site-buydomains-web-app.md). 
+
+## <a name="prepare-the-app"></a>Vorbereiten der App
+
+Um einer Web-App einen benutzerdefinierten DNS-Namen zuzuordnen, muss der [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) der Web-App einen kostenpflichtigen Tarif (**Shared**, **Basic**, **Standard** oder **Premium**) aufweisen. In diesem Schritt stellen Sie sicher, dass sich die App Service-App innerhalb des unterstützten Tarifs befindet.
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Öffnen Sie das Azure-Portal. Melden Sie sich hierzu mit Ihrem Azure-Konto bei [https://portal.azure.com](https://portal.azure.com) an.
+Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 
-### <a name="navigate-to-your-app"></a>Navigieren zu Ihren App
-Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer App.
+### <a name="navigate-to-the-app-in-the-azure-portal"></a>Navigieren zur App im Azure-Portal
+
+Wählen Sie im linken Menü **App Services** und anschließend den Namen der App aus.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-Dadurch gelangen Sie zum Blatt für die Verwaltung Ihrer App Service-App (_Blatt_: eine Portalseite, die horizontal geöffnet wird).  
+Die Verwaltungsseite der App Service-App wird angezeigt.  
 
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
-Scrollen Sie im linken Navigationsbereich auf dem Blatt Ihrer App zum Abschnitt **Einstellungen** und wählen Sie **Zentral hochskalieren (App Service-Plan)**.
+Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)**.
 
 ![Menü „Zentral hochskalieren“](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Stellen Sie sicher, dass sich Ihre App nicht im Tarif **Free** befindet. Der aktuelle Tarif Ihrer App wird durch einen dunkelblauen Rahmen hervorgehoben. 
+Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Stellen Sie sicher, dass sich die App nicht im Tarif **Free** befindet. Benutzerdefinierte DNS-Einträge werden im Tarif **Free** nicht unterstützt. 
 
 ![Überprüfen des Tarifs](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Benutzerdefinierte DNS-Einträge werden im Tarif **Free** nicht unterstützt. Wenn Sie Ihre App zentral hochskalieren müssen, führen Sie die Schritte im nächsten Abschnitt aus. Schließen Sie andernfalls das Blatt **Tarif auswählen** und fahren Sie mit [Zuordnen eines CNAME-Eintrags](#cname) oder [Zuordnen eines A-Eintrags](#a) fort.
+Wenn für den App Service-Plan nicht der Tarif **Free** gilt, können Sie die Seite **Preisstufe auswählen** schließen und zu [Zuordnen eines CNAME-Eintrags](#cname) springen.
 
-### <a name="scale-up-your-app-service-plan"></a>Zentrales Hochskalieren Ihres App Service-Plans
+### <a name="scale-up-the-app-service-plan"></a>Zentrales Hochskalieren des App Service-Plans
 
 Wählen Sie einen der kostenpflichtigen Tarife aus (**Shared**, **Basic**, **Standard** oder **Premium**). 
 
@@ -88,7 +89,7 @@ Klicken Sie auf **Auswählen**.
 
 ![Überprüfen des Tarifs](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-Wenn die unten stehende Benachrichtigung angezeigt wird, ist der Skalierungsvorgang abgeschlossen.
+Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvorgang abgeschlossen.
 
 ![Bestätigung des Skalierungsvorgangs](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
@@ -96,62 +97,60 @@ Wenn die unten stehende Benachrichtigung angezeigt wird, ist der Skalierungsvorg
 
 ## <a name="map-a-cname-record"></a>Zuordnen eines CNAME-Eintrags
 
-In dem Tutorialbeispiel möchten Sie einen CNAME-Eintrag für die Unterdomäne `www` (`www.contoso.com`) hinzufügen. 
+Im Tutorialbeispiel fügen Sie einen CNAME-Eintrag für die Unterdomäne `www` (z.B. `www.contoso.com`) hinzu.
 
 ### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
 
-Melden Sie sich zunächst bei der Website Ihres Domänenanbieters an.
+Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Jeder Domänenanbieter hat eine eigene Benutzeroberfläche für DNS-Einträge, daher finden Sie Informationen dazu in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
+Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
 
-Häufig finden Sie in Ihren Kontoinformationen einen Link auf diese Seite. Suchen Sie anschließend nach einem Link wie etwa **Eigene Domänen**. Suchen Sie dann nach einem Link, mit dem Sie DNS-Einträge verwalten können. Dieser Link wird möglicherweise als **Zone file** (Zonendatei), **DNS Records** (DNS-Einträge) oder **Advanced configuration** (Erweiterte Konfiguration) bezeichnet.
+Häufig finden Sie in Ihren Kontoinformationen die Seite für die Verwaltung von DNS-Einträgen. Suchen Sie anschließend nach einem Link, z.B. **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
-Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
+Der folgende Screenshot zeigt ein Beispiel für eine Seite zur Verwaltung von DNS-Einträgen:
 
 ![Beispielseite mit DNS-Einträgen](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
 
-Im Beispielscreenshot würden Sie auf **Add** (Hinzufügen) klicken, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen dazu finden Sie ebenfalls in der Dokumentation des Anbieters.
+Im Beispielscreenshot würden Sie die Option **Add** (Hinzufügen) wählen, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
 
 > [!NOTE]
-> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie auf einen gesonderten Link **Änderungen speichern** klicken. 
->
->
+> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
 
 ### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
-Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen Ihrer App (`<app_name>.azurewebsites.net`) eine Unterdomäne zuzuordnen.
+Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen der App (`<app_name>.azurewebsites.net`) eine Unterdomäne zuzuordnen.
 
-Für das Beispiel der Domäne `www.contoso.com` sollte Ihr CNAME-Eintrag den Namen `www` auf `<app_name>.azurewebsites.net` verweisen.
+Fügen Sie für das Domänenbeispiel `www.contoso.com` einen CNAME-Eintrag hinzu, mit dem der Name `www` dem Element `<app_name>.azurewebsites.net` zugeordnet wird.
 
-Die Seite Ihrer DNS-Einträge sollte in etwa wie auf dem folgenden Screenshot aussehen:
+Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
-### <a name="enable-the-cname-record-mapping-in-your-app"></a>Aktivieren der Zuordnung von CNAME-Einträgen in Ihrer App
+### <a name="enable-the-cname-record-mapping-in-azure"></a>Aktivieren der Zuordnung von CNAME-Einträgen in Azure
 
-Jetzt können Sie Ihren konfigurierten DNS-Namen zu Ihrer App hinzufügen.
-
-Klicken Sie im linken Navigationsbereich auf dem Blatt Ihrer App auf **Benutzerdefinierte Domänen**. 
+Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**. 
 
 ![Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Auf dem Blatt **Benutzerdefinierte Domänen** Ihrer App müssen Sie den vollqualifizierten benutzerdefinierten DNS-Namen (`www.contoso.com`) der Liste hinzufügen.
+Fügen Sie auf der Seite **Benutzerdefinierte Domänen** der App der Liste den vollqualifizierten benutzerdefinierten DNS-Namen (`www.contoso.com`) hinzu.
 
-Klicken Sie auf das **+**-Symbol neben **Hostnamen hinzufügen**.
+Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
 
 ![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Geben Sie den vollqualifizierten Domänennamen ein, für den Sie zuvor den CNAME-Eintrag konfiguriert haben (z.B. `www.contoso.com`), und klicken Sie dann auf **Überprüfen**.
+Geben Sie den vollqualifizierten Domänennamen ein, für den Sie einen CNAME-Eintrag hinzugefügt haben, z.B. `www.contoso.com`. 
 
-Andernfalls wird die Schaltfläche **Hostnamen hinzufügen** aktiviert. 
+Wählen Sie **Überprüfen**.
 
-Stellen Sie sicher, dass **Typ des Hostnamenseintrags** auf **CNAME-Eintrag (example.com)** festgelegt ist.
+Die Schaltfläche **Hostnamen hinzufügen** wird aktiviert. 
 
-Klicken Sie auf **Hostnamen hinzufügen**, um den DNS-Namen zu Ihrer App hinzufügen.
+Stellen Sie sicher, dass **Typ des Hostnamenseintrags** auf **CNAME (www.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
+
+Wählen Sie **Hostnamen hinzufügen**.
 
 ![Hinzufügen des DNS-Namens zur App](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Möglicherweise dauert es eine Weile, bis der neue Hostnamen auf der Seite **Benutzerdefinierte Domänen** Ihrer App berücksichtigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
 
 ![Hinzugefügter CNAME-Eintrag](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -163,15 +162,15 @@ Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt
 
 ## <a name="map-an-a-record"></a>Zuordnen eines A-Eintrags
 
-Im Beispiel dieses Tutorials fügen Sie einen A-Eintrag für die Stammdomäne `contoso.com` hinzu. 
+Im Beispiel dieses Tutorials fügen Sie einen A-Eintrag für die Stammdomäne (z.B. `contoso.com`) hinzu. 
 
 <a name="info"></a>
 
-### <a name="copy-your-apps-ip-address"></a>Kopieren der IP-Adresse Ihrer App
+### <a name="copy-the-apps-ip-address"></a>Kopieren der IP-Adresse der App
 
-Für die Zuordnung eines A-Eintrags benötigen Sie die externe IP-Adresse Ihrer App. Sie finden diese IP-Adresse auf dem Blatt **Benutzerdefinierte Domänen**.
+Für die Zuordnung eines A-Eintrags benötigen Sie die externe IP-Adresse der App. Sie finden diese IP-Adresse im Azure-Portal auf der Seite **Benutzerdefinierte Domänen** der App.
 
-Klicken Sie im linken Navigationsbereich auf dem Blatt Ihrer App auf **Benutzerdefinierte Domänen**. 
+Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**. 
 
 ![Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -181,66 +180,62 @@ Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IP-Adresse der Ap
 
 ### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
 
-Melden Sie sich zunächst bei der Website Ihres Domänenanbieters an.
+Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Jeder Domänenanbieter hat eine eigene Benutzeroberfläche für DNS-Einträge, daher finden Sie Informationen dazu in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
+Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
 
-Häufig finden Sie in Ihren Kontoinformationen einen Link auf diese Seite. Suchen Sie anschließend nach einem Link wie etwa **Eigene Domänen**. Suchen Sie dann nach einem Link, mit dem Sie DNS-Einträge verwalten können. Dieser Link wird möglicherweise als **Zone file** (Zonendatei), **DNS Records** (DNS-Einträge) oder **Advanced configuration** (Erweiterte Konfiguration) bezeichnet.
+Häufig finden Sie in Ihren Kontoinformationen die Seite für die Verwaltung von DNS-Einträgen. Suchen Sie anschließend nach einem Link, z.B. **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
-Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
+Der folgende Screenshot zeigt ein Beispiel für eine Seite zur Verwaltung von DNS-Einträgen:
 
 ![Beispielseite mit DNS-Einträgen](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
 
-Im Beispielscreenshot würden Sie auf **Add** (Hinzufügen) klicken, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen dazu finden Sie ebenfalls in der Dokumentation des Anbieters.
+Im Beispielscreenshot würden Sie die Option **Add** (Hinzufügen) wählen, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
 
 > [!NOTE]
-> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie auf einen gesonderten Link **Änderungen speichern** klicken. 
->
->
-
-<a name="create-a"></a>
+> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
 
 ### <a name="create-the-a-record"></a>Erstellen des A-Eintrags
 
-Um Ihrer App einen A-Eintrag zuzuordnen, erfordert App Service in Wirklichkeit **zwei** DNS-Einträge:
+Um einer App einen A-Eintrag zuzuordnen, sind für App Service **zwei** DNS-Einträge erforderlich:
 
-- Einen **A**-Eintrag, um die IP-Adresse Ihrer App zuzuordnen.
-- Einen **TXT**-Eintrag, um den Standardhostnamen Ihrer App `<app_name>.azurewebsites.net` zuzuordnen. Mit diesem Eintrag kann App Service überprüfen, ob Sie die benutzerdefinierte Domäne besitzen, die Sie zuordnen möchten.
+- Ein **A**-Eintrag, um die IP-Adresse der App zuzuordnen.
+- Ein **TXT**-Eintrag, um den Standardhostnamen der App `<app_name>.azurewebsites.net` zuzuordnen. App Service nutzt diesen Eintrag nur zur Konfigurationszeit, um zu bestätigen, dass sich die benutzerdefinierte Domäne in Ihrem Besitz befindet. Nachdem Ihre benutzerdefinierte Domäne überprüft und in App Service konfiguriert wurde, können Sie diesen TXT-Eintrag löschen. 
 
-Erstellen Sie für das Beispiel der Domäne `www.contoso.com` anhand der folgenden Tabelle die A- und TXT-Einträge (`@` stellt in der Regel die Stammdomäne dar). 
+Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden Tabelle die A- und TXT-Einträge (`@` stellt in der Regel die Stammdomäne dar). 
 
 | Eintragstyp | Host | Wert |
 | - | - | - |
-| A | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse Ihrer App](#info) |
+| A | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
-Die Seite Ihrer DNS-Einträge sollte in etwa wie auf dem folgenden Screenshot aussehen:
+Wenn die Einträge hinzugefügt werden, sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 
 ![Seite der DNS-Einträge](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
 <a name="enable-a"></a>
 
-### <a name="enable-the-a-record-mapping-in-your-app"></a>Aktivieren der Zuordnung von A-Einträgen in Ihrer App
+### <a name="enable-the-a-record-mapping-in-the-app"></a>Aktivieren der Zuordnung von A-Einträgen in der App
 
-Jetzt können Sie Ihren konfigurierten DNS-Namen zu Ihrer App hinzufügen.
+Fügen Sie auf der Seite **Benutzerdefinierte Domänen** der App im Azure-Portal den vollqualifizierten benutzerdefinierten DNS-Namen (z.B. `contoso.com`) der Liste hinzu.
 
-Auf der Seite **Benutzerdefinierte Domänen** Ihrer App im Azure-Portal müssen Sie den vollqualifizierten benutzerdefinierten DNS-Namen (`contoso.com`) der Liste hinzufügen.
-
-Klicken Sie auf das **+**-Symbol neben **Hostnamen hinzufügen**.
+Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
 
 ![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
 
-Geben Sie den vollqualifizierten Domänennamen ein, für den Sie zuvor den A-Eintrag konfiguriert haben (z.B. `contoso.com`), und klicken Sie dann auf **Überprüfen**.
+Geben Sie den vollqualifizierten Domänennamen ein, für den Sie den A-Eintrag konfiguriert haben, z.B. `contoso.com`.
 
-Andernfalls wird die Schaltfläche **Hostnamen hinzufügen** aktiviert. 
+Wählen Sie **Überprüfen**.
+
+Die Schaltfläche **Hostnamen hinzufügen** wird aktiviert. 
 
 Stellen Sie sicher, dass die Option **Typ des Hostnamenseintrags** auf **A-Datensatz (beispiel.com)** festgelegt ist.
 
-Klicken Sie auf **Hostnamen hinzufügen**, um den DNS-Namen zu Ihrer App hinzufügen.
+Wählen Sie **Hostnamen hinzufügen**.
 
 ![Hinzufügen des DNS-Namens zur App](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Möglicherweise dauert es eine Weile, bis der neue Hostnamen auf der Seite **Benutzerdefinierte Domänen** Ihrer App berücksichtigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
 
 ![Hinzugefügter A-Eintrag](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
@@ -252,74 +247,66 @@ Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt
 
 ## <a name="map-a-wildcard-domain"></a>Zuordnen einer Platzhalterdomäne
 
-Sie können Ihrer App Service-App auch ein [Platzhalter-DNS](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (z.B. `*.contoso.com`) zuordnen. 
-
-Die hier angegebenen Schritte zeigen, wie die Platzhalterdomäne `*.contoso.com` mittels eines CNAME-Eintrags zugeordnet wird. 
+Im Beispiel des Tutorials ordnen Sie der App Service-App einen [DNS-Platzhalternamen](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (z.B. `*.contoso.com`) zu, indem Sie einen CNAME-Eintrag hinzufügen. 
 
 ### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
 
-Melden Sie sich zunächst bei der Website Ihres Domänenanbieters an.
+Melden Sie sich bei der Website Ihres Domänenanbieters an.
 
-Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Jeder Domänenanbieter hat eine eigene Benutzeroberfläche für DNS-Einträge, daher finden Sie Informationen dazu in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
+Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
 
-Häufig finden Sie in Ihren Kontoinformationen einen Link auf diese Seite. Suchen Sie anschließend nach einem Link wie etwa **Eigene Domänen**. Suchen Sie dann nach einem Link, mit dem Sie DNS-Einträge verwalten können. Dieser Link wird möglicherweise als **Zone file** (Zonendatei), **DNS Records** (DNS-Einträge) oder **Advanced configuration** (Erweiterte Konfiguration) bezeichnet.
+Häufig enthalten Ihre Kontoinformationen eine Seite für die Verwaltung von DNS-Einträgen. Suchen Sie anschließend nach einem Link, z.B. **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
 
-Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
+Der folgende Screenshot zeigt ein Beispiel für eine Seite zur Verwaltung von DNS-Einträgen:
 
 ![Beispielseite mit DNS-Einträgen](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
 
-Im Beispielscreenshot würden Sie auf **Add** (Hinzufügen) klicken, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen dazu finden Sie ebenfalls in der Dokumentation des Anbieters.
+Im Beispielscreenshot würden Sie die Option **Add** (Hinzufügen) wählen, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
 
 > [!NOTE]
-> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie auf einen gesonderten Link **Änderungen speichern** klicken. 
->
->
+> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
 
 ### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
-Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen Ihrer App (`<app_name>.azurewebsites.net`) einen Platzhalternamen zuzuordnen.
+Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen der App (`<app_name>.azurewebsites.net`) einen Platzhalternamen zuzuordnen.
 
-Für das Beispiel der Domäne `*.contoso.com` sollte Ihr CNAME-Eintrag den Namen `*` auf `<app_name>.azurewebsites.net` verweisen.
+Im Domänenbeispiel `*.contoso.com` ordnet der CNAME-Eintrag `<app_name>.azurewebsites.net` den Namen `*` zu.
 
-Die Seite Ihrer DNS-Einträge sollte in etwa wie auf dem folgenden Screenshot aussehen:
+Wenn der CNAME-Eintrag hinzugefügt wird, sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 
-![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
-### <a name="enable-the-cname-record-mapping-in-your-app"></a>Aktivieren der Zuordnung von CNAME-Einträgen in Ihrer App
+### <a name="enable-the-cname-record-mapping-in-the-app"></a>Aktivieren der Zuordnung von CNAME-Einträgen in der App
 
-Nun können Sie eine beliebige Unterdomäne hinzufügen, die Ihrem Platzhalternamen entspricht.
+Sie können jetzt eine beliebige Unterdomäne hinzufügen, mit der der Platzhaltername der App zugeordnet wird (z.B. `sub1.contoso.com` und `sub2.contoso.com` zu `*.contoso.com`). 
 
-Für das Beispiel des Platzhalters `*.contoso.com` können Sie nun `sub1.contoso.com` und `sub2.contoso.com` hinzufügen. 
-
-Klicken Sie im linken Navigationsbereich auf dem Blatt Ihrer App auf **Benutzerdefinierte Domänen**. 
+Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**. 
 
 ![Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Klicken Sie auf das **+**-Symbol neben **Hostnamen hinzufügen**.
+Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
 
 ![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Geben Sie den vollqualifizierten Domänennamen für eine Unterdomäne ein, die Ihrer Platzhalterdomäne entspricht (z.B. `sub1.contoso.com`), und klicken Sie dann auf **Überprüfen**.
+Geben Sie einen vollqualifizierten Domänennamen ein, der zur Platzhalterdomäne passt (z.B. `sub1.contoso.com`), und wählen Sie anschließend **Überprüfen**.
 
-Andernfalls wird die Schaltfläche **Hostnamen hinzufügen** aktiviert. 
+Die Schaltfläche **Hostnamen hinzufügen** wird aktiviert. 
 
-Stellen Sie sicher, dass **Typ des Hostnamenseintrags** auf **CNAME-Eintrag (example.com)** festgelegt ist.
+Stellen Sie sicher, dass **Typ des Hostnamenseintrags** auf **CNAME (www.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
 
-Klicken Sie auf **Hostnamen hinzufügen**, um den DNS-Namen zu Ihrer App hinzufügen.
+Wählen Sie **Hostnamen hinzufügen**.
 
 ![Hinzufügen des DNS-Namens zur App](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-Möglicherweise dauert es eine Weile, bis der neue Hostnamen auf der Seite **Benutzerdefinierte Domänen** Ihrer App berücksichtigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
 
-Klicken Sie erneut auf das **+**-Symbol, um einen anderen Hostnamen hinzuzufügen, der Ihrer Platzhalterdomäne entspricht.
-
-Fügen Sie z.B. `sub2.contoso.com` mithilfe der oben genannten Schritte hinzu.
+Wählen Sie das **+**-Symbol, um einen anderen Hostnamen hinzuzufügen, der der Platzhalterdomäne entspricht. Fügen Sie beispielsweise `sub2.contoso.com` hinzu.
 
 ![Hinzugefügter CNAME-Eintrag](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 ## <a name="test-in-browser"></a>Testen im Browser
 
-Wechseln Sie in Ihrem Browser zu den DNS-Namen, die Sie zuvor konfiguriert haben (`contoso.com` und `www.contoso.com`).
+Navigieren Sie zu den DNS-Namen, die Sie zuvor konfiguriert haben, z.B. `contoso.com`, `www.contoso.com`, `sub1.contoso.com` und `sub2.contoso.com`.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -334,11 +321,11 @@ Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu
 ```bash 
 az appservice web config hostname add \
     --webapp <app_name> \
-    --resource-group <resourece_group_name> \ 
+    --resource-group <resource_group_name> \ 
     --name <fully_qualified_domain_name> 
 ``` 
 
-Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/app-service-cli-configure-custom-domain.md) 
+Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/app-service-cli-configure-custom-domain.md). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
@@ -347,7 +334,7 @@ Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu
 ```PowerShell  
 Set-AzureRmWebApp `
     -Name <app_name> `
-    -ResourceGroupName <resourece_group_name> ` 
+    -ResourceGroupName <resource_group_name> ` 
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
@@ -363,7 +350,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Zuordnen einer Platzhalterdomäne mit einem CNAME-Eintrag
 > * Automatisieren der Domänenzuordnung mithilfe von Skripts
 
-Fahren Sie mit dem nächsten Tutorial fort, um das Anbinden eines benutzerdefinierten SSL-Zertifikats zu erlernen.
+Fahren Sie mit dem nächsten Tutorial fort, um sich über das Anbinden eines benutzerdefinierten SSL-Zertifikats an eine Web-App zu informieren.
 
 > [!div class="nextstepaction"]
 > [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md)

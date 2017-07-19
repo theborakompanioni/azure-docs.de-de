@@ -13,12 +13,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 06/01/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1c1591079bf09da6fbe50d848b05ec7791657e04
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 43175672c81373b5c9cc1bddc8ce27bcaaf5ec14
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -28,14 +29,14 @@ ms.lasthandoff: 04/03/2017
 
 Die Microsoft Azure-CustomScript-Erweiterung für Linux bietet eine Möglichkeit, Ihre virtuellen Computer anzupassen, indem Sie beliebigen, in einer vom virtuellen Computer unterstützten Skriptsprache geschriebenen Code ausführen (z. B. Python, Bash usw.) Dies bietet eine sehr flexible Möglichkeit zum Automatisieren der Anwendungsbereitstellung auf verschiedenen Computern.
 
-Sie können die CustomScript-Erweiterung mit dem klassischen Azure-Portal, mit Windows PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) bereitstellen.
+Sie können die CustomScript-Erweiterung mit dem Azure-Portal, mit Windows PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure CLI) bereitstellen.
 
 In diesem Artikel verwenden wir die Azure-Befehlszeilenschnittstelle zum Bereitstellen einer einfachen LAMP-Anwendung auf einem virtuellen Ubuntu-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Erstellen Sie für dieses Beispiel zuerst zwei virtuelle Azure-Computer, auf denen Ubuntu 14.04 oder höher ausgeführt wird. Die virtuellen Computer heißen *script-vm* und *lamp-vm*. Verwenden Sie beim Erstellen der virtuellen Computer eindeutige Namen. Einer davon dient zur Ausführung der CLI-Befehle, auf dem anderen wird die LAMP-App bereitgestellt.
 
-Darüber hinaus benötigen Sie ein Azure-Speicherkonto und einen Schlüssel für den Zugriff (Sie erhalten diesen über das klassische Azure-Portal).
+Darüber hinaus benötigen Sie ein Azure-Speicherkonto und einen Schlüssel für den Zugriff (Sie erhalten diesen über das Azure-Portal).
 
 Weitere Informationen zum Erstellen von Linux-VMs auf Azure finden Sie unter [Erstellen eines virtuellen Linux-Computers](createportal.md).
 

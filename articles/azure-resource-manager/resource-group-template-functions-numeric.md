@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 66984bef9e82df80818eea31bd37de524b567b33
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: f14bc4e8091eb1f0dccb761d9df1c931b9b77732
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -51,7 +51,11 @@ Gibt die Summe der beiden angegebenen ganzen Zahlen zurück.
 |operand1 |Ja |int |Erste zu addierende Zahl. |
 |operand2 |Ja |int |Zweite zu addierende Zahl. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl, die die Summe der Parameter enthält.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel werden zwei Parameter hinzugefügt.
 
@@ -62,12 +66,14 @@ Im folgenden Beispiel werden zwei Parameter hinzugefügt.
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 5,
             "metadata": {
                 "description": "First integer to add"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Second integer to add"
             }
@@ -84,9 +90,11 @@ Im folgenden Beispiel werden zwei Parameter hinzugefügt.
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl, die die Summe der Parameter enthält.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| addResult | int | 8 |
 
 <a id="copyindex" />
 
@@ -110,7 +118,7 @@ Mit der Eigenschaft **loopName** können Sie angeben, ob sich „copyIndex“ au
  
 Eine vollständige Beschreibung der Nutzung von **copyIndex**finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-### <a name="examples"></a>Beispiele
+### <a name="example"></a>Beispiel
 
 Das folgende Beispiel enthält eine Kopierschleife und den Indexwert im Namen. 
 
@@ -146,7 +154,11 @@ Gibt die Ganzzahldivision der beiden angegebenen ganzen Zahlen zurück.
 | operand1 |Ja |int |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |int |Die Zahl, durch die geteilt wird (Divisor). Diese Zahl darf nicht 0 sein. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl, die die Division darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird ein Parameter durch einen anderen Parameter dividiert.
 
@@ -157,12 +169,14 @@ Im folgenden Beispiel wird ein Parameter durch einen anderen Parameter dividiert
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 8,
             "metadata": {
                 "description": "Integer being divided"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer used to divide"
             }
@@ -179,9 +193,11 @@ Im folgenden Beispiel wird ein Parameter durch einen anderen Parameter dividiert
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl, die die Division darstellt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| divResult | int | 2 |
 
 <a id="float" />
 
@@ -196,7 +212,10 @@ Konvertiert den Wert in eine Gleitkommazahl. Diese Funktion wird nur beim Überg
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der in eine Gleitkommazahl zu konvertierende Wert. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+Eine Gleitkommazahl.
+
+### <a name="example"></a>Beispiel
 
 Das folgende Beispiel zeigt, wie „float“ zum Übergeben von Parametern an eine Logik-App verwendet wird:
 
@@ -214,9 +233,6 @@ Das folgende Beispiel zeigt, wie „float“ zum Übergeben von Parametern an ei
         },
 ```
 
-### <a name="return-value"></a>Rückgabewert
-Eine Gleitkommazahl.
-
 <a id="int" />
 
 ## <a name="int"></a>int
@@ -230,7 +246,11 @@ Konvertiert den angegebenen Wert in eine ganze Zahl (Integer).
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in eine ganze Zahl (Integer) konvertiert werden soll. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl des konvertierten Werts.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird der vom Benutzer angegebene Parameterwert in eine ganze Zahl konvertiert.
 
@@ -239,25 +259,28 @@ Im folgenden Beispiel wird der vom Benutzer angegebene Parameterwert in eine gan
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "appId": { "type": "string" }
-    },
-    "variables": { 
-        "intValue": "[int(parameters('appId'))]"
+        "stringToConvert": { 
+            "type": "string",
+            "defaultValue": "4"
+        }
     },
     "resources": [
     ],
     "outputs": {
-        "divResult": {
+        "intResult": {
             "type": "int",
-            "value": "[variables('intValue')]"
+            "value": "[int(parameters('stringToConvert'))]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| intResult | int | 4 |
+
 
 <a id="min" />
 
@@ -272,7 +295,11 @@ Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trenn
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der kleinste Wert abgerufen werden soll. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl, die den kleinsten Wert aus der Auflistung darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird gezeigt, wie „min“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
 
@@ -300,9 +327,12 @@ Im folgenden Beispiel wird gezeigt, wie „min“ mit einem Array und einer List
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl, die den kleinsten Wert aus der Auflistung darstellt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 <a id="max" />
 
@@ -317,7 +347,11 @@ Gibt den größten Wert aus einem Array mit ganzen Zahlen oder einer durch Trenn
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der größte Wert abgerufen werden soll. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl, die den größten Wert aus der Auflistung darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird gezeigt, wie „max“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
 
@@ -345,9 +379,12 @@ Im folgenden Beispiel wird gezeigt, wie „max“ mit einem Array und einer List
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl, die den größten Wert aus der Auflistung darstellt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 <a id="mod" />
 
@@ -363,7 +400,10 @@ Gibt den Rest der Ganzzahldivision mit den beiden angegebenen ganzen Zahlen zur�
 | operand1 |Ja |int |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |int |Die Zahl, durch die dividiert wird (Divisor), darf nicht null (0) sein. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+Eine ganze Zahl, die den Rest darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird der Restbetrag der Division von einem Parameter durch einen anderen Parameter zurückgegeben.
 
@@ -374,12 +414,14 @@ Im folgenden Beispiel wird der Restbetrag der Division von einem Parameter durch
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 7,
             "metadata": {
                 "description": "Integer being divided"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer used to divide"
             }
@@ -396,8 +438,11 @@ Im folgenden Beispiel wird der Restbetrag der Division von einem Parameter durch
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
-Eine ganze Zahl, die den Rest darstellt.
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| modResult | int | 1 |
 
 <a id="mul" />
 
@@ -413,7 +458,11 @@ Gibt die Multiplikation der beiden angegebenen ganzen Zahlen zurück.
 | operand1 |Ja |int |Erste zu multiplizierende Zahl. |
 | operand2 |Ja |int |Zweite zu multiplizierende Zahl. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl, die die Multiplikation darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird ein Parameter mit einem anderen Parameter multipliziert.
 
@@ -424,12 +473,14 @@ Im folgenden Beispiel wird ein Parameter mit einem anderen Parameter multiplizie
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 5,
             "metadata": {
                 "description": "First integer to multiply"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Second integer to multiply"
             }
@@ -446,9 +497,11 @@ Im folgenden Beispiel wird ein Parameter mit einem anderen Parameter multiplizie
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl, die die Multiplikation darstellt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| mulResult | int | 15 |
 
 <a id="sub" />
 
@@ -464,7 +517,10 @@ Gibt die Differenz der beiden angegebenen ganzen Zahlen zurück.
 | operand1 |Ja |int |Zahl, von der subtrahiert wird. |
 | operand2 |Ja |int |Zahl, die subtrahiert wird. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+Eine ganze Zahl, die die Subtraktion darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird ein Parameter von einem anderen Parameter subtrahiert.
 
@@ -475,12 +531,14 @@ Im folgenden Beispiel wird ein Parameter von einem anderen Parameter subtrahiert
     "parameters": {
         "first": {
             "type": "int",
+            "defaultValue": 7,
             "metadata": {
                 "description": "Integer subtracted from"
             }
         },
         "second": {
             "type": "int",
+            "defaultValue": 3,
             "metadata": {
                 "description": "Integer to subtract"
             }
@@ -497,8 +555,11 @@ Im folgenden Beispiel wird ein Parameter von einem anderen Parameter subtrahiert
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
-Eine ganze Zahl, die die Subtraktion darstellt.
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| subResult | int | 4 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

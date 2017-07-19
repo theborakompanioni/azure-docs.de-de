@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 8ecc5208237d846d0e81914eee8874ea97744bc3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 450c60abeaaf96c7d82152d425265a6b6714f689
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -177,20 +179,29 @@ Hierbei handelt es sich um eine einfache Testclientanwendung, die separat von de
 Abschließend fasst die Anwendung den Actor-Dienst und alle ggf. später hinzugefügten Dienste in einem Paket für die Bereitstellung zusammen. Das Paket enthält die Datei *ApplicationManifest.xml* und Platzhalter für das Paket des Actor-Diensts.
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
-Das Yeoman-Gerüst enthält ein Gradle-Skript zum Erstellen der Anwendung sowie Bash-Skripts zum Bereitstellen und Aufheben der Bereitstellung der Anwendung. Um die Anwendung auszuführen, erstellen Sie diese zunächst mit Gradle:
+
+Das Yeoman-Gerüst enthält ein Gradle-Skript zum Erstellen der Anwendung sowie Bash-Skripts zum Bereitstellen und Entfernen der Anwendung. Um die Anwendung bereitzustellen, erstellen Sie diese zunächst mit Gradle:
 
 ```bash
 $ gradle
 ```
 
-Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric-Azure-CLI bereitgestellt werden kann. Das Skript „install.sh“ enthält die erforderlichen Befehle der Azure-Befehlszeilenschnittstelle zum Bereitstellen des Anwendungspakets. Führen Sie für die Bereitstellung einfach das Skript „install.sh“ aus:
+Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric-CLI-Tools bereitgestellt werden kann.
 
-```bask
+### <a name="deploy-with-xplat-cli"></a>Bereitstellen mit der XPlat-CLI
+
+Wenn Sie die XPlat-CLI verwendet, enthält das Skript „install.sh“ die erforderlichen Befehle der Azure-CLI zum Bereitstellen des Anwendungspakets. Führen Sie das Skript „install.sh“ aus, um die Anwendung bereitzustellen.
+
+```bash
 $ ./install.sh
 ```
 
+### <a name="deploy-with-azure-cli-20"></a>Bereitstellen über die Azure-CLI 2.0
 
+Wenn Sie die Azure-CLI 2.0 verwenden, lesen Sie das Referenzdokument zum Verwalten des [Lebenszykluses einer Anwendung mit der Azure-CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md).
 
-<!--HONumber=Jan17_HO4-->
+## <a name="related-articles"></a>Verwandte Artikel
 
+* [Getting started with Service Fabric and Azure CLI 2.0](service-fabric-azure-cli-2-0.md) (Erste Schritte mit Service Fabric und der Azure CLI 2.0)
+* [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
 

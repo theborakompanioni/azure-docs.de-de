@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/09/2017
+ms.date: 7/03/2017
 ms.author: negat
 ms.custom: na
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: de67dba5e615db8138957420a1db89d444a37d67
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 718732df4455831454245ea1a80d49e042c20f09
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -188,7 +188,7 @@ Schließen Sie **osProfile** in Ihre Vorlage ein:
 }
 ```
  
-Dieser JSON-Block wird in der  [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) verwendet.
+Dieser JSON-Block wird in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) verwendet.
  
 Das Betriebssystemprofil wird auch in der [GitHub-Schnellstartvorlage „grelayhost.json“](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json) verwendet.
 
@@ -495,7 +495,7 @@ Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewe
                             "loadBalancerBackendAddressPools": [
                                 {
                                     "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/loadBalancers/', variables('lbName'), '/backendAddressPools/addressPool1')]"
-                                }
+                                 }
                             ]
                         }
                     }
@@ -511,7 +511,7 @@ Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewe
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Wie führe ich ein VIP-Swap für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region aus?
 
-Informationen zum Ausführen eines VIP-Swaps für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region finden Sie unter [VIP Swap – blue-green deployment in Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) (VIP-Swap: Blaugrün-Bereitstellung in Azure Resource Manager).
+Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen. Beispiele finde Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine andere Möglichkeit besteht im Hosten Ihrer Anwendung mit dem [Azure App-Dienst](https://azure.microsoft.com/en-us/services/app-service/), der Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots bietet.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Wie gebe ich einen Bereich privater IP-Adressen für die statische private IP-Adresszuordnung an?
 
@@ -527,7 +527,49 @@ Informationen zum Bereitstellen einer VM-Skalierungsgruppe für ein vorhandenes 
 
 Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [ARM: Get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (ARM: Abrufen der privaten IP-Adressen einer VMSS).
 
+### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Kann ich Skalierungsgruppen mit beschleunigten Netzwerken verwenden?
 
+Ja. Um beschleunigte Netzwerke zu verwenden, legen Sie „enableAcceleratedNetworking“ in den Einstellungen „networkInterfaceConfigurations“ Ihrer Skalierungsgruppe auf „TRUE“ fest. Beispiel:
+```json
+"networkProfile": {
+    "networkInterfaceConfigurations": [
+    {
+        "name": "niconfig1",
+        "properties": {
+        "primary": true,
+        "enableAcceleratedNetworking" : true,
+        "ipConfigurations": [
+                ]
+            }
+            }
+        ]
+        }
+    }
+    ]
+}
+```
+
+### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>Wie kann ich den DNS-Server konfigurieren, der von einer Skalierungsgruppe verwendet wird?
+
+Um eine VM-Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie ein dnsSettings-JSON-Paket im Abschnitt „networkInterfaceConfigurations“ der Skalierungsgruppe hinzu. Beispiel:
+```json
+    "dnsSettings":{
+        "dnsServers":["10.0.0.6", "10.0.0.5"]
+    }
+```
+
+### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>Wie kann ich eine Skalierungsgruppe so konfigurieren, dass sie jeder VM eine öffentliche IP-Adresse zuordnet?
+
+Um eine VM-Skalierungsgruppe zu erstellen, die jeder VM eine öffentliche IP-Adresse zuweist, stellen Sie sicher, dass die API-Version der Ressource „Microsoft.Compute/virtualMAchineScaleSets“ „2017-03-30“ ist, und fügen Sie ein _Publicipaddressconfiguration_-JSON-Paket im „ipConfigurations“-Abschnitt der Skalierungsgruppe hinzu. Beispiel:
+
+```json
+    "publicipaddressconfiguration": {
+        "name": "pub1",
+        "properties": {
+        "idleTimeoutInMinutes": 15
+        }
+    }
+```
 
 ## <a name="scale"></a>Skalieren
 

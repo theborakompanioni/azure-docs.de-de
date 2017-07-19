@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2017
+ms.date: 06/29/2017
 ms.author: vturecek;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 6167f3edd3e99522a8997382d6569c82ea387d5c
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 2459025899a7f5ffebf44fa104ed112c0eb99dfa
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -81,7 +82,7 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
    
     ![Aktivieren des Remotedebuggens][enableremotedebugging]
    
-    Dadurch wird der Vorgang zum Aktivieren der Remotedebuggen-Erweiterung sowie der benötigten Netzwerkkonfigurationen auf Ihren Clusterknoten gestartet.
+    Dadurch wird der Vorgang zum Aktivieren der Erweiterung zum Remotedebuggen auf Ihren Clusterknoten sowie der benötigten Netzwerkkonfigurationen gestartet.
 2. Klicken Sie im **Cloud-Explorer** mit der rechten Maustaste auf den Clusterknoten, und wählen Sie **Debugger anfügen** aus.
    
     ![Debugger anfügen][attachdebugger]
@@ -127,7 +128,7 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
    
     ![Aktivieren des Remotestreaming von Ablaufverfolgungen ][enablestreamingtraces]
    
-    Dadurch wird der Vorgang zum Aktivieren der Erweiterung „Streaming von Ablaufverfolgungen“ sowie der benötigten Netzwerkkonfigurationen auf Ihren Clusterknoten gestartet.
+    Dadurch wird der Vorgang zum Aktivieren der Erweiterung zum Streaming von Ablaufverfolgungen auf Ihren Clusterknoten sowie der benötigten Netzwerkkonfigurationen gestartet.
 2. Erweitern Sie im **Cloud-Explorer** das **Knoten**-Element, klicken Sie mit der rechten Maustaste auf den Knoten, von dem aus Sie Ablaufverfolgungen streamen möchten, und wählen Sie **Streamingablaufverfolgungen anzeigen** aus.
    
     ![Remotestreaming von Ablaufverfolgungen anzeigen][viewremotestreamingtraces]

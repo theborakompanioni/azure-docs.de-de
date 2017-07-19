@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/22/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 90c4cd42aa9dcef2cda4ec66e64393bf474b6a60
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: 7be5e5095b8aa6f2ae3d8c0b636883c4ff7ced63
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -55,7 +55,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 1. Eine **Data Factory**. Eine Data Factory kann eine oder mehrere Pipelines enthalten. 
 2. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory. Wenn Sie beispielsweise Daten aus einem Azure-Blobspeicher in eine Azure SQL-Datenbank kopieren, erstellen Sie zwei verknüpfte Dienste, um Ihr Azure-Speicherkonto und die Azure SQL-Datenbank mit Ihrer Data Factory zu verknüpfen. Informationen zu Eigenschaften von verknüpften Diensten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften des verknüpften Diensts](#linked-service-properties). 
 2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im letzten Schritt erwähnt wurde, erstellen Sie ein Dataset, um den Blobcontainer und den Ordner mit den Eingabedaten anzugeben. Außerdem erstellen Sie ein weiteres Dataset zum Angeben der SQL-Tabelle in der Azure SQL-Datenbank, in der die aus dem Blobspeicher kopierten Daten enthalten sind. Informationen zu Dataset-Eigenschaften, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Dataset-Eigenschaften](#dataset-properties).
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie BlobSource als Quelle und SqlSink als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure SQL-Datenbank zu Azure Blob Storage durchführen, verwenden Sie entsprechend SqlSource und BlobSink in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.  
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im oben erwähnten Beispiel verwenden Sie „BlobSource“ als Quelle und „SqlSink“ als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure SQL-Datenbank zu Azure Blob Storage durchführen, verwenden Sie entsprechend SqlSource und BlobSink in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für Azure Blob Storage sind, finden Sie im Abschnitt [Eigenschaften der Kopieraktivität](#copy-activity-properties). Ausführliche Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke erhalten Sie, indem Sie im vorherigen Abschnitt auf den Link für Ihren Datenspeicher klicken.  
 
 Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Beispiele mit JSON-Definitionen für Data Factory-Entitäten für das Kopieren von Daten in und aus Azure Blob Storage finden Sie in diesem Artikel im Abschnitt [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-blob-storage  ).
 
@@ -226,16 +226,16 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     
 ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. Auf der Seite **File format settings** (Dateiformateinstellungen) werden die Trennzeichen und das Schema angezeigt. Diese Informationen werden vom Assistenten beim Analysieren der Datei automatisch erkannt. 
-    1. Vergewissern Sie sich, dass das **Dateiformat** auf **Textformat** festgelegt ist. In der Dropdownliste werden alle unterstützten Formate angezeigt. Zum Beispiel: JSON, Avro, ORC, Parquet. 
-    2. Vergewissern Sie sich, dass das **Spaltentrennzeichen** auf `Comma (,)` festgelegt ist. Die weiteren Spaltentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben. 
-    3. Vergewissern Sie sich, dass das **Zeilentrennzeichen** auf `Carriage Return + Line feed (\r\n)` festgelegt ist. Die weiteren Zeilentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben. 
-    4. Vergewissern Sie sich, dass die **Anzahl zu überspringender Zeilen** auf **0** festgelegt ist. Wenn Sie möchten, dass einige Zeilen am Anfang der Datei übersprungen werden sollen, geben Sie hier die Anzahl ein. 
-    5. Vergewissern Sie sich, dass **Die erste Datenzeile enthält Spaltennamen** nicht aktiviert ist. Wenn die Quelldateien in der ersten Zeile Spaltennamen enthalten, aktivieren Sie diese Option. 
-    6. Vergewissern Sie sich, dass die Option **Leeren Spaltenwert als Nullwert behandeln** aktiviert ist. 
-    7. Erweitern Sie **Erweiterte Einstellungen**, um die verfügbaren erweiterten Optionen anzuzeigen. 
-    8. Unten auf der Seite finden Sie die **Vorschau** von Daten aus der Datei „emp.txt“. 
-    9. Klicken Sie auf die unten angezeigte Registerkarte **SCHEMA**, um sich das Schema anzusehen, das der Kopier-Assistent durch Auswerten der Daten in der Quelldatei abgeleitet hat. 
-    10. Klicken Sie auf **Weiter**, nachdem Sie die Trennzeichen und Vorschaudaten geprüft haben.
+    1. Bestätigen Sie die folgenden Optionen: a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Zum Beispiel: JSON, Avro, ORC, Parquet.
+        b. Das **Spaltentrennzeichen** ist auf `Comma (,)` festgelegt. Die weiteren Spaltentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
+        c. Das **Zeilentrennzeichen** ist auf `Carriage Return + Line feed (\r\n)` festgelegt. Die weiteren Zeilentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
+        d. Die **Anzahl zu überspringender Zeilen** ist auf **0** festgelegt. Wenn Sie möchten, dass einige Zeilen am Anfang der Datei übersprungen werden sollen, geben Sie hier die Anzahl ein.
+        e.  Die Option **Die erste Datenzeile enthält Spaltennamen** ist nicht aktiviert. Wenn die Quelldateien in der ersten Zeile Spaltennamen enthalten, aktivieren Sie diese Option.
+        f. Die Option **Leeren Spaltenwert als Nullwert behandeln** ist aktiviert.
+    2. Erweitern Sie **Erweiterte Einstellungen**, um die verfügbaren erweiterten Optionen anzuzeigen.
+    3. Unten auf der Seite finden Sie die **Vorschau** von Daten aus der Datei „emp.txt“.
+    4. Klicken Sie auf die unten angezeigte Registerkarte **SCHEMA**, um sich das Schema anzusehen, das der Kopier-Assistent durch Auswerten der Daten in der Quelldatei abgeleitet hat.
+    5. Klicken Sie auf **Weiter**, nachdem Sie die Trennzeichen und Vorschaudaten geprüft haben.
     ![Kopiertool – Dateiformateinstellungen](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)  
 8. Wählen Sie auf der Seite **Zieldatenspeicher** die Option **Azure Blob Storage** aus, und klicken Sie auf **Weiter**. In dieser exemplarischen Vorgehensweise verwenden Sie den Azure Blob Storage sowohl als Quell- als auch als Zieldatenspeicher.    
     ![Kopiertool – Zieldatenspeicher auswählen](media/data-factory-azure-blob-connector/select-destination-data-store.png)
@@ -247,14 +247,14 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
    5. Klicken Sie auf **Weiter**.
      
 10. Auf der Seite für **Ausgabedatei oder -ordner auswählen**: 
-    1. Geben Sie **Ordnerpfad** als **adfblobconnector/output/{year}/{month}/{day}** an. Drücken Sie die **TAB-TASTE**. 
-    2. Wählen Sie für **Jahr** die Option **yyyy** aus. 
-    3. Vergewissern Sie sich, dass **Monat** auf **MM** festgelegt ist. 
-    4. Vergewissern Sie sich, dass **Tag** auf **dd** festgelegt ist. 
-    5. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist. 
-    6. Vergewissern Sie sich, dass das **Kopierverhalten** auf **Dateien zusammenführen** festgelegt ist. Gibt es bereits eine Ausgabedatei mit demselben Namen, wird der neue Inhalt am Ende dieser Datei hinzugefügt.  
-    7. Klicken Sie auf **Weiter**.
-     
+    6. Geben Sie **Ordnerpfad** als **adfblobconnector/output/{year}/{month}/{day}** an. Drücken Sie die **TAB-TASTE**.
+    7. Wählen Sie für **Jahr** die Option **yyyy** aus.
+    8. Vergewissern Sie sich, dass **Monat** auf **MM** festgelegt ist.
+    9. Vergewissern Sie sich, dass **Tag** auf **dd** festgelegt ist.
+    10. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist.
+    11. Vergewissern Sie sich, dass das **Kopierverhalten** auf **Dateien zusammenführen** festgelegt ist. Gibt es bereits eine Ausgabedatei mit demselben Namen, wird der neue Inhalt am Ende dieser Datei hinzugefügt.
+    12. Klicken Sie auf **Weiter**.
+    
 ![Kopiertool – Ausgabedatei- oder -ordner auswählen](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Überprüfen Sie auf der Seite **Dateiformateinstellungen** die Einstellungen, und klicken Sie auf **Weiter**. Eine der weiteren Optionen an dieser Stelle besteht darin, eine Kopfzeile (Header) zu der Ausgabedatei hinzuzufügen. Wenn Sie diese Option aktivieren, wird eine Kopfzeile hinzugefügt, die die Namen der Spalten aus dem Schema der Quelle enthält. Sie können die Standardspaltennamen ändern, wenn Sie das Schema für die Quelle anzeigen. Beispielsweise könnten Sie den Namen der ersten Spalte in „Vorname“ und den Namen der zweiten Spalte in „Nachname“ ändern. Die Ausgabedatei wird dann mit einer Kopfzeile generiert, die diese Namen als Spaltennamen enthält. 
     ![Kopiertool – Dateiformateinstellungen für das Ziel](media/data-factory-azure-blob-connector/file-format-destination.png)

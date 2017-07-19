@@ -12,12 +12,13 @@ ms.devlang: azurecli
 ms.topic: support-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/16/2016
+ms.date: 06/23/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: eeb1c6f95a254245d5598f56fb615e1c83de23d5
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 7a8653a82775e718c38f65f246d997ba61f99d58
+ms.contentlocale: de-de
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -33,19 +34,19 @@ Sie können einen virtuellen Computer mithilfe einer der folgenden Optionen erne
 - [Azure CLI 1.0](#azure-cli-10)
 - [Azure-Portal](#using-azure-portal)
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
+## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
 Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
 
-Stellen Sie mit [az vm redeploy](/cli/azure/vm#redeploy) Ihren virtuellen Computer erneut bereit. Das folgende Beispiel stellt den virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` erneut bereit:
+Stellen Sie mit [az vm redeploy](/cli/azure/vm#redeploy) Ihren virtuellen Computer erneut bereit. Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* erneut bereitgestellt:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
-## <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+## <a name="use-the-azure-cli-10"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0
 Installieren Sie die [Azure-Befehlszeilenschnittstelle 1.0](../../cli-install-nodejs.md), melden Sie sich bei einem Azure-Konto an, und stellen Sie sicher, dass der Resource Manager-Modus (`azure config mode arm`) aktiviert ist.
 
-Das folgende Beispiel stellt den virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` erneut bereit:
+Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* erneut bereitgestellt:
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 

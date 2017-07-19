@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 06/23/2017
 ms.author: raprasa
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 11e60ab8dfada4b8b0e1cd73ca60dc428364dc68
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: a438b5079ae48c82fb2dbd5ce4547302364e0ef5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -51,8 +51,9 @@ Das folgende Bild veranschaulicht regelmäßige vollständige Sicherungen aller 
 ![Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 
 ## <a name="retention-period-for-a-given-snapshot"></a>Beibehaltungsdauer einer bestimmten Momentaufnahme
-Wie oben beschrieben, erstellen wir in regelmäßigen Abständen Momentaufnahmen Ihrer Daten. Gemäß unseren Vorschriften wird die letzte Momentaufnahme bis zu 90 Tage aufbewahrt, ehe sie endgültig gelöscht wird. Wenn ein Container oder ein Konto gelöscht wird, bleibt die letzte Sicherung von Cosmos DB 90 Tage gespeichert.
+Wie oben beschrieben erstellen wir alle 4 Stunden Momentaufnahmen Ihrer Daten und behalten die letzten zwei Momentaufnahmen 30 Tage lang bei. Gemäß unseren Konformitätsbestimmungen werden Momentaufnahmen nach 90 Tagen gelöscht.
 
+Wenn Sie eigene Momentaufnahmen beibehalten möchten, können Sie die Option zum Export in eine JSON-Datei im [Datenmigrationstool](import-data.md#export-to-json-file) Azure Cosmos DB verwenden, um zusätzliche Sicherungen zu planen. 
 
 ## <a name="restore-database-from-the-online-backup"></a>Wiederherstellen einer Datenbank aus der Onlinesicherung
 Für den Fall, dass Sie Ihre Daten versehentlich löschen, können Sie [ein Supportticket anfordern](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder den [Azure Support bitten](https://azure.microsoft.com/support/options/), die Daten aus der letzten automatischen Sicherung wiederherzustellen. Damit eine bestimmte Momentaufnahme Ihrer Sicherung wiederhergestellt wird, fordert Cosmos DB an, dass die Daten mindestens für die Dauer des Sicherungszyklus dieser Momentaufnahme bei uns verfügbar waren.

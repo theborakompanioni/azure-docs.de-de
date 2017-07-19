@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/16/2017
+ms.date: 6/29/2017
 ms.author: msfussell
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: fb73507ed596a65607d60f59d6834cc8bf5734f7
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9dcec753e5f999a1bac07276373c0c25f89ec58d
 ms.contentlocale: de-de
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -57,44 +57,50 @@ Führen Sie die folgenden Befehle aus, um Docker auf Ihrem Linux-Entwicklungscom
 ```
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
-1. Geben Sie in einem Terminal `yo azuresfguest` ein.
-2. Wählen Sie für das Framework **Container** aus.
-3. Nennen Sie die Anwendung z.B. „SimpleContainerApp“.
-4. Geben Sie die URL für das Containerimage aus einem DockerHub-Repository an. Der image-Parameter hat das Format [Repository]/[Imagename].
+1. Geben Sie in einem Terminal `yo azuresfcontainer` ein.
+2. Benennen Sie die Anwendung, z.B. „meinecontainerapp“.
+3. Geben Sie die URL für das Containerimage aus einem DockerHub-Repository an. Der image-Parameter hat das Format [Repository]/[Imagename].
+4. Wenn für das Image kein Workloadeinstiegspunkt definiert ist, müssen Sie explizit Eingabebefehle angeben mit einer durch Trennzeichen getrennten Liste der Befehle, die im Container ausgeführt werden sollen, damit der Container nach dem Start weiter ausgeführt wird.
 
 ![Service Fabric-Yeoman-Generator für Container][sf-yeoman]
 
 ## <a name="deploy-the-application"></a>Bereitstellen der Anwendung
+
+### <a name="using-xplat-cli"></a>Verwendung der XPlat-CLI
 Die erstellte Anwendung kann mithilfe der Azure-Befehlszeilenschnittstelle im lokalen Cluster bereitgestellt werden.
 
 1. Stellen Sie eine Verbindung mit dem lokalen Service Fabric-Cluster her.
 
-```bash
+    ```bash
     azure servicefabric cluster connect
-```
+    ```
 
 2. Verwenden Sie das in der Vorlage bereitgestellte Installationsskript, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
 
-```bash
+    ```bash
     ./install.sh
-```
+    ```
 
 3. Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers.
 4. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 5. Verwenden Sie das in der Vorlage bereitgestellte Deinstallationsskript, um die Anwendungsinstanz zu löschen und die Registrierung des Anwendungstyps aufzuheben.
 
-```bash
+    ```bash
     ./uninstall.sh
-```
+    ```
+
+### <a name="using-azure-cli-20"></a>Mithilfe von Azure-CLI 2.0
+
+Weitere Informationen finden Sie in der Referenzdokumentation zum Verwalten eines [Anwendungslebenszyklus mit der Azure-CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md).
 
 Eine Beispielanwendung finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers).
 
 ## <a name="adding-more-services-to-an-existing-application"></a>Hinzufügen weiterer Dienste zu einer vorhandenen Anwendung
 
-Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus: 
+Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus:
 
 1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
-2. Führen Sie `yo azuresfguest:AddService` aus.
+2. Führen Sie `yo azuresfcontainer:AddService` aus.
 
 <a id="manually"></a>
 
@@ -124,6 +130,9 @@ Fügen Sie im Dienstmanifest einen `ContainerHost` für den Einstiegspunkt hinzu
 
 Sie können Eingabebefehle verwenden, indem Sie das optionale `Commands`-Element mit einer per Komma getrennten Gruppe von Befehlen für die Ausführung im Container angeben.
 
+> [!NOTE]
+> Wenn für das Image kein Workloadeinstiegspunkt definiert ist, müssen Sie explizit Eingabebefehle im `Commands`-Element angeben mit einer durch Trennzeichen getrennten Liste der Befehle, die im Container ausgeführt werden sollen, damit der Container nach dem Start weiter ausgeführt wird.
+
 ## <a name="understand-resource-governance"></a>Grundlagen der Ressourcenkontrolle
 Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen beschränkt werden, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, werden Ressourcenlimits für ein Dienstcodepaket deklariert. Ressourcenlimits können für die folgenden Ressourcen festgelegt werden:
 
@@ -135,8 +144,8 @@ Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen
 
 > [!NOTE]
 > In einer zukünftigen Version wird die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten enthalten sein, z.B. IOPS, Bit/s (Lesen/Schreiben) und andere.
-> 
-> 
+>
+>
 
 ```xml
     <ServiceManifestImport>
@@ -209,7 +218,7 @@ Wenn Sie einen Endpunkt angeben, kann Service Fabric mit dem `Endpoint`-Tag im D
     </ServiceManifestImport>
 ```
 
-Durch die Registrierung mit dem Naming Service können Sie im Code für Ihre Container per [Reverseproxy](service-fabric-reverseproxy.md) leicht eine Kommunikation von Container zu Container einrichten. Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden. Weitere Informationen finden Sie im nächsten Abschnitt. 
+Durch die Registrierung mit dem Naming Service können Sie im Code für Ihre Container per [Reverseproxy](service-fabric-reverseproxy.md) leicht eine Kommunikation von Container zu Container einrichten. Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden. Weitere Informationen finden Sie im nächsten Abschnitt.
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurieren und Festlegen von Umgebungsvariablen
 Umgebungsvariablen können für jedes Codepaket im Dienstmanifest angegeben werden, und zwar sowohl für Dienste, die in Containern bereitgestellt werden, als auch für Dienste, die als Prozesse oder ausführbare Gastanwendungsdateien bereitgestellt werden. Diese Werte von Umgebungsvariablen können im Anwendungsmanifest spezifisch überschrieben oder während der Bereitstellung als Anwendungsparameter angegeben werden.
@@ -317,4 +326,9 @@ Nachdem Sie nun einen Dienst in einem Container bereitgestellt haben, können Si
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman1.png
+
+## <a name="related-articles"></a>Verwandte Artikel
+
+* [Getting started with Service Fabric and Azure CLI 2.0](service-fabric-azure-cli-2-0.md) (Erste Schritte mit Service Fabric und der Azure CLI 2.0)
+* [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
 

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2017
+ms.date: 06/15/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 1436b39fdb9a66a00903442496cc5203b47c1bcb
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -90,7 +90,7 @@ Wenn Sie für `resourceGroup` den Namen einer nicht vorhandenen Ressourcengruppe
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Zum Bereitstellen der Beispielvorlage können Sie Azure PowerShell oder die Azure CLI verwenden. Sie müssen eine Azure PowerShell- oder Azure CLI-Version von Mai 2017 oder später verwenden. In den Beispielen wird davon ausgegangen, dass Sie die Vorlage lokal als Datei mit dem Namen **crossrgdeployment.json** gespeichert haben.
+Zum Bereitstellen der Beispielvorlage können Sie das Portal, Azure PowerShell oder die Azure CLI verwenden. Für Azure PowerShell oder Azure CLI-müssen Sie eine Version von Mai 2017 oder später verwenden. In den Beispielen wird davon ausgegangen, dass Sie die Vorlage lokal als Datei mit dem Namen **crossrgdeployment.json** gespeichert haben.
 
 Für PowerShell:
 
@@ -117,6 +117,42 @@ az group deployment create \
 ```
 
 Nach Abschluss der Bereitstellung werden zwei Ressourcengruppen angezeigt. Jede Ressourcengruppe enthält ein Speicherkonto.
+
+## <a name="use-resourcegroup-function"></a>Verwenden der resourceGroup()-Funktion
+
+Für ressourcengruppenübergreifende Bereitstellungen wird die [resouceGroup()-Funktion](resource-group-template-functions-resource.md#resourcegroup) je nachdem, wie Sie die geschachtelte Vorlage festlegen, anders aufgelöst. 
+
+Wenn Sie eine Vorlage in eine andere Vorlage einbetten, wird resouceGroup() in der geschachtelten Vorlage in die übergeordnete Ressourcengruppe aufgelöst. Eine eingebettete Vorlage verwendet das folgende Format:
+
+```json
+"apiVersion": "2017-05-10",
+"name": "embeddedTemplate",
+"type": "Microsoft.Resources/deployments",
+"resourceGroup": "crossResourceGroupDeployment",
+"properties": {
+    "mode": "Incremental",
+    "template": {
+        ...
+        resourceGroup() refers to parent resource group
+    }
+}
+```
+
+Wenn Sie einen Link zu einer getrennten Vorlage einrichten, wird resouceGroup() in der verlinkten Vorlage in die geschachtelte Ressourcengruppe aufgelöst. Eine verlinkte Vorlage verwendet das folgende Format:
+
+```json
+"apiVersion": "2017-05-10",
+"name": "linkedTemplate",
+"type": "Microsoft.Resources/deployments",
+"resourceGroup": "crossResourceGroupDeployment",
+"properties": {
+    "mode": "Incremental",
+    "templateLink": {
+        ...
+        resourceGroup() in linked template refers to linked resource group
+    }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

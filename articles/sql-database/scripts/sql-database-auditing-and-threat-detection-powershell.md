@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skript – Konfigurieren von Datenbanküberwachung und Bedrohungserkennung | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell"
+title: "PowerShell-Beispiel: Überwachung und Bedrohungserkennung in einer Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Azure PowerShell-Beispielskript zum Konfigurieren der Überwachung und Bedrohungserkennung in einer Azure SQL-Datenbank"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 5bb1f0b4b6e548cf4164dae55d13cbebb660232f
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 228772ff6710596c916165a132db31f449d0a327
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="configure-sql-database-auditing-and-threat-detection-using-powershell"></a>Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell
+# <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Konfigurieren der SQL-Datenbank-Überwachung und -Bedrohungserkennung
 
-Dieses PowerShell-Beispielskript konfiguriert Überwachung von SQL-Datenbank und Bedrohungserkennung. 
+Dieses PowerShell-Skriptbeispiel konfiguriert die SQL-Datenbank-Überwachung und -Bedrohungserkennung. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

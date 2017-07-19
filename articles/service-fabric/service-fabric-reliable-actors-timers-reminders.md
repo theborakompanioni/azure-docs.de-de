@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9d22438c6ca14ddb8843f4b72cae40e3b622e849
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 06b026ce06e0f16a77ac238de0af2263f272933c
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -228,10 +229,7 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 Wie oben gezeigt, akzeptiert die `UnregisterReminderAsync`(C#)- oder `unregisterReminderAsync`(Java)-Methode eine `IActorReminder`(C#)- oder `ActorReminder`(Java)-Schnittstelle. Die Basisklasse des Actors unterstützt die `GetReminder`(C#)- oder `getReminder`(Java)-Methode, die zum Abrufen der `IActorReminder`(C#)- oder `ActorReminder`(Java)-Schnittstelle durch Übergabe des Erinnerungsnamens verwendet werden kann. Dies ist praktisch, da der Actor die `IActorReminder`(C#)- oder `ActorReminder`(Java)-Schnittstelle nicht beibehalten muss, die bei Aufruf der `RegisterReminder`(C#)- oder `registerReminder`(Java)-Methode zurückgegeben wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
+Sie erhalten Informationen zu Reliable Actor-Ereignissen und Eintrittsinvarianz:
 * [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
 * [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
-* [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
-* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C#-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-Beispielcode](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 371976a35ae285942decaf8e22651e98f6217a95
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: b78d8d257ea31e7cb6b4e1abfb32c81fcea67b6d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -57,7 +57,7 @@ Informieren Sie sich bei [GitHub](https://github.com/jcormont/documentdb-typescr
 ### <a name="swagger-rest-api-for-documentdb"></a>Swagger-REST-API für DocumentDB
 *von Howard Edidin*
 
-Eine Swagger-Datei mit einer Azure Cosmos DB DocumentDB-REST-API, die problemlos als API-App bereitgestellt werden kann.
+Eine Swagger-Datei mit einer Azure Cosmos DB-REST-API, die problemlos als API-App für die DocumentDB-API bereitgestellt werden kann.
 
 Informieren Sie sich hierüber bei [GitHub](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi).
 
