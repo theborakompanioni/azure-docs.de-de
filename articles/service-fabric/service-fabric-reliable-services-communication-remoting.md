@@ -16,10 +16,10 @@ ms.workload: required
 ms.date: 04/20/2017
 ms.author: vturecek
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: ebca34d5bf092494ea59a4a679f7f1175577320f
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 92a8894f24c234fbf38eda086531b524cceccfc1
 ms.contentlocale: de-de
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -31,6 +31,8 @@ Die Einrichtung von Remoting für einen Dienst erfolgt in zwei einfachen Schritt
 
 1. Erstellen Sie eine Schnittstelle, die vom Dienst implementiert werden soll. Diese Schnittstelle definiert die Methoden, die für den Remoteprozeduraufruf für Ihren Dienst verfügbar sind. Bei den Methoden muss es sich um asynchrone Methoden handeln, die einen Task zurückgeben. Die Schnittstelle muss `Microsoft.ServiceFabric.Services.Remoting.IService` implementieren, um zu signalisieren, dass der Dienst über eine Remotingschnittstelle verfügt.
 2. Verwenden Sie einen Remoting-Listener in Ihrem Dienst. Dies ist eine `ICommunicationListener` -Implementierung, die Remotingfunktionen bereitstellt. Der `Microsoft.ServiceFabric.Services.Remoting.Runtime`-Namespace enthält die Erweiterungsmethode `CreateServiceRemotingListener` sowohl für zustandslose als auch für zustandsbehaftete Dienste, die zum Erstellen eines Remotinglisteners mit dem standardmäßigen Remotingtransportprotokoll verwendet werden kann.
+
+Hinweis: Der `Remoting`-Namespace steht als separates NuGet-Paket mit dem Namen `Microsoft.ServiceFabric.Services.Remoting` zur Verfügung. 
 
 Der folgende zustandslose Dienst macht beispielsweise eine einzelne Methode verfügbar, um „Hello World“ per Remoteprozeduraufruf abzurufen:
 
@@ -96,7 +98,7 @@ Alle von der Dienst-API ausgelösten Ausnahmen werden als „AggregateException�
 „ServiceProxy“ verarbeitet sämtliche Failoverausnahmen für die Dienstpartition, für die seine Erstellung erfolgt ist. Dieser Proxy löst die Endpunkte erneut auf, falls Failoverausnahmen (nicht vorübergehende Ausnahmen) vorliegen, und wiederholt den Aufruf mit dem richtigen Endpunkt. Die Anzahl der Wiederholungen bei Failoverausnahmen ist unbegrenzt.
 Im Falle vorübergehender Ausnahmen wird nur der Aufruf wiederholt.
 
-Standardparameter für die Wiederholung werden von [OperationRetrySettings] angegeben. (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) Der Benutzer kann diese Werte konfigurieren, indem das „OperationRetrySettings“-Objekt an den „ServiceProxyFactory“-Konstruktor übergeben wird.
+Standardparameter für die Wiederholung werden von [OperationRetrySettings] angegeben. (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) Der Benutzer kann diese Werte konfigurieren, indem er das Objekt „OperationRetrySettings“ an den Konstruktor „ServiceProxyFactory“ übergibt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)

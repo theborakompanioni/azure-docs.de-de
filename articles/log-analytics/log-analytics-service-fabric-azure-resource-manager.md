@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 07/05/2017
 ms.author: nini
-translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: ac94bca1657efbe0ce94db953933f026217d1c8a
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 6f864581fe1d1771371d6805407cb881fedb4187
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -29,6 +30,8 @@ ms.lasthandoff: 02/28/2017
 >
 >
 
+![Symbol Service Fabric](./media/log-analytics-service-fabric/service-fabric-assessment-symbol.png)
+
 In diesem Artikel wird beschrieben, wie Sie die Service Fabric-Lösung in Log Analytics nutzen können, um Probleme im gesamten Service Fabric-Cluster zu identifizieren und beheben.
 
 Die Service Fabric-Lösung verwendet Azure-Diagnosedaten aus den Service Fabric-VMs, die aus den Azure Diagnostics (WAD)-Tabellen gesammelt werden. Anschließend werden von Log Analytics Ereignisse des Service Fabric-Frameworks gelesen, einschließlich **Reliable Service-Ereignissen**, **Actor-Ereignissen**, **Betriebsereignissen** und **benutzerdefinierter ETW-Ereignisse**. Mit dem Lösungsdashboard können Sie wichtige Probleme und relevante Ereignisse in der Service Fabric-Umgebung anzeigen.
@@ -36,7 +39,7 @@ Die Service Fabric-Lösung verwendet Azure-Diagnosedaten aus den Service Fabric-
 Um mit der Verwendung der Lösung zu beginnen, müssen Sie das Service Fabric-Cluster mit einem Log Analytics-Arbeitsbereich verbinden. Dabei sind drei Szenarien möglich:
 
 1. Wenn Sie den Service Fabric-Cluster nicht bereitgestellt haben, führen Sie die Schritte in ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich verbunden ist*** aus, um einen neuen Cluster bereitzustellen und für das Erstellen von Berichten an Log Analytics zu konfigurieren.
-2. Wenn Sie Leistungsindikatoren von den Hosts erfassen müssen, um im Service Fabric-Cluster andere OMS-Lösungen, z. B. Sicherheit, zu verwenden, führen Sie die Schritte in ***Bereitstellen eines Service Fabric-Clusters, der mit einem OMS-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist*** aus.
+2. Wenn Sie Leistungsindikatoren von den Hosts erfassen müssen, um im Service Fabric-Cluster andere OMS-Lösungen, z.B. Sicherheit, zu verwenden, führen Sie die unter ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist*** erklärten Schritte aus.
 3. Wenn Sie den Service Fabric-Cluster bereits bereitgestellt haben und ihn mit Log Analytics verbinden möchten, führen Sie die Schritte in ***Hinzufügen eines vorhandenen Speicherkontos zu Log Analytics*** aus.
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung
@@ -46,9 +49,11 @@ Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
 2. Dem Log Analytics-Arbeitsbereich wird das Diagnosespeicherkonto hinzugefügt.
 3. Die Service Fabric-Lösung wird im Log Analytics-Arbeitsbereich aktiviert.
 
-[![In Azure bereitstellen](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-oms%2F%2Fazuredeploy.json)
+[![Bereitstellen in Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-oms%2F%2Fazuredeploy.json)
 
-Nach dem Klicken auf die obige Schaltfläche zum Bereitstellen gelangen Sie zum Azure-Portal, in dem Sie Parameter bearbeiten können. Sie müssen eine neue Ressourcengruppe erstellen, wenn Sie einen neuen Log Analytics-Arbeitsbereichsnamen eingeben: ![Service Fabric](./media/log-analytics-service-fabric/2.png)
+Nachdem Sie oben auf die Schaltfläche zum Bereitstellen geklickt haben, wird das Azure-Portal geöffnet, in dem Sie Parameter bearbeiten können. Sie müssen eine neue Ressourcengruppe erstellen, wenn Sie einen neuen Log Analytics-Arbeitsbereichsnamen eingeben:
+
+![Service Fabric](./media/log-analytics-service-fabric/2.png)
 
 ![Service Fabric](./media/log-analytics-service-fabric/3.png)
 
@@ -56,7 +61,7 @@ Akzeptieren Sie die Vertragsbedingungen, und klicken Sie auf „Erstellen“, um
 
 ![Service Fabric](./media/log-analytics-service-fabric/4.png)
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-an-oms-workspace-with-vm-extension-installed"></a>Bereitstellen eines Service Fabric-Clusters, der mit einem OMS-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist
+## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace-with-vm-extension-installed"></a>Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist.
 Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
 
 1. Ein bereits mit einem Log Analytics-Arbeitsbereich verbundener Azure Service Fabric-Cluster wird bereitgestellt. Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.
@@ -112,10 +117,10 @@ So zeigen Sie die Leistungsdaten der Knoten an:
 Mit dieser Vorlage werden einem neuen oder vorhandenen Log Analytics-Arbeitsbereich die vorhandenen Speicherkonten hinzugefügt.
 </br>
 
-[![In Azure bereitstellen](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Foms-existing-storage-account%2Fazuredeploy.json)
+[![Bereitstellen in Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Foms-existing-storage-account%2Fazuredeploy.json)
 
 > [!NOTE]
-> Wenn Sie mit einem bereits vorhandenen Log Analytics Arbeitsbereich arbeiten, aktivieren Sie beim Auswählen einer Ressourcengruppe „Vorhandene verwenden“, und suchen Sie die Ressourcengruppe, die den OMS-Arbeitsbereich enthält. Erstellen Sie andernfalls eine neue Ressourcengruppe.
+> Wenn Sie mit einem bereits vorhandenen Log Analytics Arbeitsbereich arbeiten, aktivieren Sie beim Auswählen einer Ressourcengruppe „Vorhandene verwenden“, und suchen Sie die Ressourcengruppe, die den Log Analytics-Arbeitsbereich enthält. Erstellen Sie andernfalls eine neue Ressourcengruppe.
 > ![Service Fabric](./media/log-analytics-service-fabric/8.png)
 >
 >
@@ -140,12 +145,12 @@ Nachdem die Bereitstellungen abgeschlossen wurden und die Service Fabric-Lösung
 
 Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu, wie Daten für Service Fabric erfasst werden.
 
-| Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
+| Plattform | Direkt-Agent | Operations Manager-Agent | Azure Storage | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![Nein](./media/log-analytics-malware/oms-bullet-red.png) |![Nein](./media/log-analytics-malware/oms-bullet-red.png) |![Ja](./media/log-analytics-malware/oms-bullet-green.png) |![Nein](./media/log-analytics-malware/oms-bullet-red.png) |![Nein](./media/log-analytics-malware/oms-bullet-red.png) |10 Minuten |
 
 > [!NOTE]
-> Sie können den Bereich dieser Ereignisse in der Service Fabric-Lösung ändern, indem Sie am oberen Rand des Dashboards auf **Daten basierend auf „Letzte 7 Tage“** klicken. Sie können auch Ereignisse anzeigen, die innerhalb der letzten 7 Tage, innerhalb des letzten Tags oder innerhalb der letzten sechs Stunden generiert wurden. Oder wählen Sie **Benutzerdefiniert** aus, um einen benutzerdefinierten Datumsbereich anzugeben.
+> Sie können den Bereich dieser Ereignisse in der Service Fabric-Lösung ändern, indem Sie am oberen Rand des Dashboards auf **Daten basierend auf „Letzte 7 Tage“** klicken. Sie können auch Ereignisse anzeigen, die innerhalb der letzten 7 Tage, innerhalb des letzten Tags oder innerhalb der letzten 6 Stunden generiert wurden. Oder wählen Sie **Benutzerdefiniert** aus, um einen benutzerdefinierten Datumsbereich anzugeben.
 >
 >
 

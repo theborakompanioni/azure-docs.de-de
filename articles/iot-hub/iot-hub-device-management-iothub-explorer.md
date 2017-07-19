@@ -4,7 +4,7 @@ description: "Verwenden Sie das CLI-Tool iothub-explorer mit direkten Methoden u
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Azure Iot-Geräteverwaltung, Azure IoT Hub-Geräteverwaltung, IoT-Geräteverwaltung, IoT Hub-Geräteverwaltung"
 ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/10/2017
+ms.date: 06/15/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 480f0544f155365d94b325bbf799bb999268dc31
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 2234924251447bb32d7cca0623a4e8d4f8d4e7ff
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>Verwenden von iothub-explorer für die Azure IoT Hub-Geräteverwaltung
@@ -46,7 +46,7 @@ Eine ausführlichere Erläuterung zu den Unterschieden und Anweisungen zur Verwe
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
-Sie lernen, iothub-explorer mit verschiedenen Verwaltungsoptionen zu verwenden.
+Sie lernen, iothub-explorer mit verschiedenen Verwaltungsoptionen auf Ihrem Entwicklungscomputer zu verwenden.
 
 ## <a name="what-you-do"></a>Aufgaben
 
@@ -58,7 +58,7 @@ Führen Sie iothub-explorer mit verschiedenen Verwaltungsoptionen aus.
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
-- iothub-explorer. ([Installieren von iothub-explorer](https://github.com/azure/iothub-explorer))
+- iothub-explorer. ([Installieren von iothub-explorer ](https://github.com/azure/iothub-explorer) auf dem Entwicklungscomputer)
 
 ## <a name="connect-to-your-iot-hub"></a>Herstellen einer Verbindung mit Ihrem IoT Hub
 
@@ -87,7 +87,7 @@ iothub-explorer device-method <your device Id> stop
 Legen Sie mit folgendem Befehl für die gewünschte Eigenschaft ein Intervall von 3.000 fest:
 
 ```bash
-iothub-explorer update-twin mydevice {\"properties\":{\"desired\":{\"interval\":3000}}}
+iothub-explorer update-twin <your device id> {\"properties\":{\"desired\":{\"interval\":3000}}}
 ```
 
 Diese Eigenschaft kann von Ihrem Gerät gelesen werden.
@@ -145,3 +145,4 @@ iothub-explorer query-twin "SELECT * FROM devices WHERE tags.role != 'temperatur
 Sie haben jetzt gelernt, iothub-explorer mit verschiedenen Verwaltungsoptionen zu verwenden.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

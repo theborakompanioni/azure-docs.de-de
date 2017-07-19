@@ -12,12 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 5a29d6838af7f3952ad96158e5962b17c0f4cb6b
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 35d7f6d655f53891c00ca6c736c8c12b99fdc5ef
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -158,15 +159,29 @@ public static void main(String[] args) throws Exception {
 ```
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
-Das Yeoman-Gerüst enthält ein Gradle-Skript zum Erstellen der Anwendung sowie Bash-Skripts zum Bereitstellen und Aufheben der Bereitstellung der Anwendung. Um die Anwendung auszuführen, erstellen Sie diese zunächst mit Gradle:
+
+Das Yeoman-Gerüst enthält ein Gradle-Skript zum Erstellen der Anwendung sowie Bash-Skripts zum Bereitstellen und Entfernen der Anwendung. Um die Anwendung auszuführen, erstellen Sie diese zunächst mit Gradle:
 
 ```bash
 $ gradle
 ```
 
-Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric-Azure CLI bereitgestellt werden kann. Das Skript „install.sh“ enthält die erforderlichen Befehle der Azure-Befehlszeilenschnittstelle zum Bereitstellen des Anwendungspakets. Führen Sie für die Bereitstellung das Skript „install.sh“ aus:
+Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric-Azure CLI bereitgestellt werden kann.
+
+### <a name="deploy-with-xplat-cli"></a>Bereitstellen mit der XPlat-CLI
+
+Wenn Sie die XPlat-CLI verwendet, enthält das Skript „install.sh“ die erforderlichen Befehle der Azure-CLI zum Bereitstellen des Anwendungspakets. Führen Sie das Skript „install.sh“ aus, um die Anwendung bereitzustellen.
 
 ```bash
 $ ./install.sh
 ```
+
+### <a name="deploy-with-azure-cli-20"></a>Bereitstellen über die Azure-CLI 2.0
+
+Wenn Sie die Azure-CLI 2.0 verwenden, lesen Sie das Referenzdokument zum Verwalten des [Lebenszykluses einer Anwendung mit der Azure-CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md).
+
+## <a name="related-articles"></a>Verwandte Artikel
+
+* [Getting started with Service Fabric and Azure CLI 2.0](service-fabric-azure-cli-2-0.md) (Erste Schritte mit Service Fabric und der Azure CLI 2.0)
+* [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
 

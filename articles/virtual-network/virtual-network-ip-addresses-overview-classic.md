@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 54277a39601cd7f986a8ff8f517ab02eac77309b
-ms.openlocfilehash: dfc34435ad6e8982c0298301bdefe489c37db8f1
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: c9eb4bad1c0069b3f8ed2df30ef72b2c530ffab3
+ms.contentlocale: de-de
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -167,21 +169,16 @@ Im Folgenden werden IP-Adressfeatures im Ressourcen-Manager-Bereitstellungsmodel
 
 |  | Ressource | Klassisch | Ressourcen-Manager |
 | --- | --- | --- | --- |
-| **Öffentliche IP-Adresse** |VM |Bezeichnet als ILPIP (nur dynamisch) |Bezeichnet als öffentliche IP-Adresse (dynamisch oder statisch) |
-|  |Einem virtuellen IaaS-Computer oder einer PaaS-Rolleninstanz zugewiesen |Der NIC des virtuellen Computers zugeordnet | |
-| Load Balancer mit Internetzugriff |Bezeichnet als VIP (dynamisch) oder reservierte IP-Adresse (statisch) |Bezeichnet als öffentliche IP-Adresse (dynamisch oder statisch) | |
-|  |Einem Clouddienst zugewiesen |Der Front-End-Konfiguration des Load-Balancer zugeordnet | |
+| **Öffentliche IP-Adresse** |***VM*** |Bezeichnet als ILPIP (nur dynamisch) |Bezeichnet als öffentliche IP-Adresse (dynamisch oder statisch) |
+|  ||Einem virtuellen IaaS-Computer oder einer PaaS-Rolleninstanz zugewiesen |Der NIC des virtuellen Computers zugeordnet | |
+|  |***Load Balancer mit Internetzugriff*** |Bezeichnet als VIP (dynamisch) oder reservierte IP-Adresse (statisch) |Bezeichnet als öffentliche IP-Adresse (dynamisch oder statisch) | |
+|  ||Einem Clouddienst zugewiesen |Der Front-End-Konfiguration des Load-Balancer zugeordnet | |
 |  | | | |
-| **Private IP-Adresse** |VM |Bezeichnet als DIP |Bezeichnet als private IP-Adresse |
-|  |Einem virtuellen IaaS-Computer oder einer PaaS-Rolleninstanz zugewiesen |Der NIC des virtuellen Computers zugewiesen | |
-| Interner Load Balancer (ILB) |Dem ILB (dynamisch oder statisch) zugewiesen |Der ILB-Front-End-Konfiguration (dynamisch oder statisch) zugewiesen | |
+| **Private IP-Adresse** |***VM*** |Bezeichnet als DIP |Bezeichnet als private IP-Adresse |
+|  ||Einem virtuellen IaaS-Computer oder einer PaaS-Rolleninstanz zugewiesen |Der NIC des virtuellen Computers zugewiesen | |
+|  |***Interner Load Balancer (ILB)*** |Dem ILB (dynamisch oder statisch) zugewiesen |Der ILB-Front-End-Konfiguration (dynamisch oder statisch) zugewiesen | |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Bereitstellen einer VM mit einer statischen privaten IP-Adresse](virtual-networks-static-private-ip-classic-pportal.md) mithilfe des klassischen Portals.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
+* [Bereitstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse](virtual-networks-static-private-ip-classic-pportal.md) mithilfe des Azure-Portals
 
 

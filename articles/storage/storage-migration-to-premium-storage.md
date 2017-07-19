@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 06/27/2017
 ms.author: yuemlu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 56f4245b63cecd51bf81863e15e4e72d73e671d6
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 82485e569d91a082f72725ecfb04e75f0820cf02
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -52,19 +53,19 @@ In diesem Abschnitt finden Sie die Voraussetzungen für das Ausführen der in di
 * Wenn Sie Azure-VMs unter Storage Premium nutzen möchten, müssen Sie Storage Premium-fähige VMs verwenden. Mit Storage Premium-fähigen virtuellen Computern können Sie Standard- und Storage Premium-Datenträger verwenden. Premium-Datenträger werden zukünftig mit mehreren VM-Typen verfügbar sein. Weitere Informationen zu den verfügbaren Typen und Größen von Azure-VM-Datenträgern finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md).
 
 ### <a name="considerations"></a>Überlegungen
-Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Storage Premium-Datenträger, damit Ihre Anwendung bis zu 64 TB Speicher pro virtuellem Computer nutzen kann. Mit Storage Premium können Ihre Anwendungen bis zu 80.000 IOPS (Input/Output Operations Per Second, E/A-Vorgänge pro Sekunde) pro virtuellem Computer nutzen sowie 2.000 MB Datenträgerdurchsatz pro Sekunde und virtuellem Computer mit äußerst niedriger Latenz für Lesevorgänge erzielen. Sie haben die Wahl zwischen einer Vielzahl virtueller Computer und Datenträger. Anhand der Informationen in diesem Abschnitt können Sie die Ihrer Workload am besten entsprechende Option finden.
+Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Storage Premium-Datenträger, damit Ihre Anwendung bis zu 256 TB Speicher pro virtuellem Computer nutzen kann. Mit Storage Premium können Ihre Anwendungen bis zu 80.000 IOPS (Input/Output Operations Per Second, E/A-Vorgänge pro Sekunde) pro virtuellem Computer nutzen sowie 2.000 MB Datenträgerdurchsatz pro Sekunde und virtuellem Computer mit äußerst niedriger Latenz für Lesevorgänge erzielen. Sie haben die Wahl zwischen einer Vielzahl virtueller Computer und Datenträger. Anhand der Informationen in diesem Abschnitt können Sie die Ihrer Workload am besten entsprechende Option finden.
 
 #### <a name="vm-sizes"></a>VM-Größen
 Die Größenspezifikationen der Azure-VM sind unter [Größen für virtuelle Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)aufgelistet. Sehen Sie sich die Leistungsmerkmale von virtuellen Computern für Storage Premium an, und wählen Sie die am besten für Ihre Workload geeignete VM-Größe aus. Stellen Sie sicher, dass auf Ihrem virtuellen Computer ausreichend Bandbreite zum Steuern des Datenverkehrs des Datenträgers verfügbar ist.
 
 #### <a name="disk-sizes"></a>Datenträgergrößen
-Es gibt drei Datenträgertypen, die Sie mit Ihrem virtuellen Computer verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Beschränkungen beim Auswählen des Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
+Es gibt fünf Datenträgertypen, die Sie mit Ihrem virtuellen Computer verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Beschränkungen beim Auswählen des Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
 
-| Datenträgertyp des Premium-Speichers | P10 | P20 | P30 |
-|:---:|:---:|:---:|:---:|
-| Datenträgergröße |128 GB |512 GB |1024 GB (1 TB) |
-| IOPS pro Datenträger |500 |2.300 |5.000 |
-| Durchsatz pro Datenträger |100 MB pro Sekunde |150 MB pro Sekunde |200 MB pro Sekunde |
+| Premium-Datenträgertyp  | P10   | P20   | P30            | P40            | P50            | 
+|:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
+| Datenträgergröße           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| IOPS pro Datenträger       | 500   | 2.300  | 5.000           | 7.500           | 7.500           | 
+| Durchsatz pro Datenträger | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde |
 
 Legen Sie je nach Workload fest, ob zusätzliche Datenträger für Ihren virtuellen Computer erforderlich sind. Sie können mehrere Datenträger für permanente Daten auf Ihrem virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen. ([Hier](storage-premium-storage-performance.md#disk-striping) erfahren Sie, was Datenträgerstriping ist.) Wenn Sie Daten über Storage Premium-Datenträger mithilfe von [Speicherplätzen][4] verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolumes aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Für Linux-VMs können Sie dazu das Hilfsprogramm *mdadm* verwenden. Weitere Informationen finden Sie im Artikel [Konfigurieren von Software-RAID unter Linux](../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 

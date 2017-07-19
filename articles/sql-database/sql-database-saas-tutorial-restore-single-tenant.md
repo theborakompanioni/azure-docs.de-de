@@ -9,24 +9,24 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
+ms.custom: scale out apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 8567061a98ec5a0619a8e10cb44501dd88d8166c
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 547851972f13ec69a8f65d01290874ad7d07f192
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
-# <a name="restore-a-single-tenant-database"></a>Wiederherstellen der Datenbank eines einzelnen Mandanten
+# <a name="restore-a-wingtip-saas-tenants-sql-database"></a>Wiederherstellen einer SQL-Datenbank mit Wingtip SaaS-Mandanten
 
-Die Wingtip Tickets SaaS-App wird mittels eines Datenbank-pro-Mandant-Modells erstellt, wobei jeder Mandant seine eigene Datenbank besitzt. Einer der Vorteile dieses Modells ist, dass die Daten eines einzigen Mandanten mühelos isoliert – d.h. ohne Auswirkungen auf andere Mandanten – wiederhergestellt werden können.
+Die Wingtip SaaS-App wird mittels eines Datenbank-pro-Mandant-Modells erstellt, wobei jeder Mandant seine eigene Datenbank besitzt. Einer der Vorteile dieses Modells ist, dass die Daten eines einzigen Mandanten mühelos isoliert – d.h. ohne Auswirkungen auf andere Mandanten – wiederhergestellt werden können.
 
 In diesem Tutorial lernen Sie zwei Muster der Datenwiederherstellung kennen:
 
@@ -44,7 +44,7 @@ In diesem Tutorial lernen Sie zwei Muster der Datenwiederherstellung kennen:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die WTP-App wurde bereitgestellt. Unter [Deploy and explore the WTP SaaS application (Bereitstellen und Erkunden der SaaS-Anwendung von WTP)](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Die Wingtip-SaaS-App wird bereitgestellt. Unter [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ## <a name="introduction-to-the-saas-tenant-restore-pattern"></a>Einführung in das SaaS-Muster zur Mandantenwiederherstellung
@@ -57,11 +57,11 @@ Im zweiten Muster, wo davon ausgegangen wird, dass der Mandant einen Verlust ode
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
-Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
+Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>Simulieren des versehentlichen Löschens von Daten durch den Mandanten
 
-Um diese Wiederherstellungsszenarien zu demonstrieren, müssen wir *versehentlich* einige Daten in einer der Mandantendatenbanken löschen. Sie können zwar jeden Datensatz löschen, aber der nächste Schritt richtet die Demo so ein, dass keine Blockade durch Verletzungen der referenziellen Integrität entstehen kann! Es werden auch einige Ticketkaufdaten hinzugefügt, die Sie weiter unten in den *WTP Analytics-Tutorials* verwenden können.
+Um diese Wiederherstellungsszenarien zu demonstrieren, müssen wir *versehentlich* einige Daten in einer der Mandantendatenbanken löschen. Sie können zwar jeden Datensatz löschen, aber der nächste Schritt richtet die Demo so ein, dass keine Blockade durch Verletzungen der referenziellen Integrität entstehen kann! Es werden auch einige Ticketkaufdaten hinzugefügt, die Sie weiter unten in den *Wingtip SaaS Analytics-Tutorials* verwenden können.
 
 Führen Sie das Ticketgeneratorskript aus, und erstellen Sie zusätzliche Daten. Der Ticketgenerator kauft absichtlich nicht Tickets für das letzte Ereignis jedes Mandanten.
 
@@ -148,6 +148,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Weitere Tutorials, die auf der ersten Wingtip Tickets Platform-Anwendungsbereitstellung (WTP) aufbauen](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md)
 * [Weitere Informationen zu Sicherungen für SQL-Datenbank](sql-database-automated-backups.md)
+

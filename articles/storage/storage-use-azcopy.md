@@ -1,6 +1,6 @@
 ---
-title: Kopieren oder Verschieben von Daten nach Storage mit AzCopy | Microsoft Docs
-description: Verwenden Sie das Hilfsprogramm AzCopy zum Verschieben oder Kopieren von Daten zu oder von Blob-, Tabellen- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
+title: Kopieren oder Verschieben von Daten in Azure Storage mit AzCopy unter Windows | Microsoft-Dokumentation
+description: Verwenden Sie unter Windows das Hilfsprogramm AzCopy zum Verschieben oder Kopieren von Daten zu oder von Blob-, Tabellen- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
 documentationcenter: 
 author: seguler
@@ -12,31 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 05/14/2017
 ms.author: seguler
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: f703da63c4243c73cf68d3df9953f73d2462ac1c
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 045778822022752295bb634bdf734daaf36ab938
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="transfer-data-with-the-azcopy-command-line-utility"></a>Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy
-## <a name="overview"></a>Übersicht
-AzCopy ist ein Windows Befehlszeilenprogramm, das zum Kopieren von Daten zu und von Microsoft Azure Blob, File und Table Storage entwickelt wurde, wobei durch einfache Befehle optimale Leistung erzielt wird. Sie können Daten von einem Objekt zu einem anderen innerhalb Ihres Speicherkontos oder von einem Speicherkonto zu einem anderen kopieren.
+# <a name="transfer-data-with-the-azcopy-on-windows"></a>Übertragen von Daten mit AzCopy unter Windows
+AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten zu und von Microsoft Azure Blob, File und Table Storage entwickelt wurde, wobei durch einfache Befehle optimale Leistung erzielt wird. Sie können Daten von einem Objekt zu einem anderen innerhalb Ihres Speicherkontos oder von einem Speicherkonto zu einem anderen kopieren.
 
-> [!NOTE]
-> Diese Anleitung setzt voraus, dass Sie sich bereits mit [Azure Storage](https://azure.microsoft.com/services/storage/)auskennen. Falls dies nicht der Fall sein sollte, lesen Sie bitte zunächst die Dokumentation [Einführung in Azure Storage](storage-introduction.md) . Allem voran müssen Sie ein [Konto für Azure Storage](storage-create-storage-account.md#create-a-storage-account) erstellen, um mit AzCopy arbeiten zu können.
-> 
-> 
+Es gibt zwei Versionen von AzCopy, die Sie herunterladen können. AzCopy unter Windows ist mit .NET Framework aufgebaut und bietet Windows Formatvorlage-Befehlszeilenoptionen. [AzCopy unter Linux](storage-use-azcopy-linux.md) ist mit .NET Core-Framework aufgebaut, das auf Linux-Plattformen ausgerichtet ist, die POSIX-Formatvorlage-Befehlszeilenoptionen anbieten. Dieser Artikel behandelt AzCopy unter Windows.
 
 ## <a name="download-and-install-azcopy"></a>Herunterladen und Installieren von AzCopy
-### <a name="windows"></a>Windows
-Laden Sie die [neueste Version von AzCopy](http://aka.ms/downloadazcopy)herunter.
+### <a name="azcopy-on-windows"></a>AzCopy unter Windows
+Laden Sie die [neueste Version von AzCopy unter Windows](http://aka.ms/downloadazcopy) herunter.
 
-### <a name="maclinux"></a>Mac/Linux
-AzCopy ist für Mac-/Linux-Betriebssysteme nicht verfügbar. Jedoch ist die Azure-Befehlszeilenschnittstelle eine geeignete Alternative zum Kopieren von Daten zu und von Azure Storage. Lesen Sie [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](storage-azure-cli.md) , um mehr zu erfahren.
+#### <a name="installation-on-windows"></a>Installation unter Windows
+Öffnen Sie nach dem Installieren von AzCopy unter Windows mithilfe des Installationsprogramms ein Befehlsfenster, und navigieren zum Installationsverzeichnis von AzCopy auf Ihrem Computer, in dem sich die ausführbare Datei `AzCopy.exe` befindet. Bei Bedarf können Sie den Speicherort für die AzCopy-Installation zum Systempfad hinzufügen. In der Standardeinstellung ist AzCopy in `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` oder `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` installiert.
 
 ## <a name="writing-your-first-azcopy-command"></a>Schreiben Ihres ersten AzCopy-Befehls
 Die grundlegende Syntax für AzCopy-Befehle ist:
@@ -44,8 +40,6 @@ Die grundlegende Syntax für AzCopy-Befehle ist:
 ```azcopy
 AzCopy /Source:<source> /Dest:<destination> [Options]
 ```
-
-Öffnen Sie ein Befehlsfenster, und navigieren Sie zum Installationsverzeichnis von AzCopy auf Ihrem Computer – dort befindet sich die ausführbare Datei `AzCopy.exe` . Bei Bedarf können Sie den Speicherort für die AzCopy-Installation zum Systempfad hinzufügen. In der Standardeinstellung ist AzCopy in `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` oder `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` installiert.
 
 Die folgenden Beispiele zeigen eine Vielzahl von Szenarien zum Kopieren von Daten von und zu Microsoft Azure Blobs, Dateien und Tabellen. Für eine detailliertere Erklärung der in jedem Beispiel verwendeten Parameter gehen Sie zum Abschnitt [Einführung in die Parameter](#azcopy-parameters) .
 
@@ -898,6 +892,7 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 * [Verwenden von File Storage mit .NET](storage-dotnet-how-to-use-files.md)
 * [Verwenden des Tabellenspeichers mit .NET](storage-dotnet-how-to-use-tables.md)
 * [Erstellen, Verwalten oder Löschen von Speicherkonten](storage-create-storage-account.md)
+* [Übertragen von Daten mit AzCopy unter Linux](storage-use-azcopy-linux.md)
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage-Blogbeiträge:
 * [Einführung in die Vorschau der Microsoft Azure Storage Data Movement-Bibliothek](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)

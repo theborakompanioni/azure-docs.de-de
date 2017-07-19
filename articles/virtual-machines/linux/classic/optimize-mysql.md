@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2015
+ms.date: 05/31/2017
 ms.author: ningk
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: e910c47d88434fae76f9c2d3bcb8a258d7d3fde4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 8f2ec884fa98e989448ac11675e71f39aa21fa7f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -42,27 +43,22 @@ Hinsichtlich der Anzahl der Datenträger, die Sie für verschiedene Arten von vi
 In diesem Artikel wird angenommen, dass Sie bereits einen virtuellen Linux-Computer erstellt und MySQL installiert und konfiguriert haben. Weitere Informationen zu den ersten Schritten finden Sie unter „Installieren von MySQL in Azure“.  
 
 ### <a name="set-up-raid-on-azure"></a>Einrichten von RAID in Azure
-Die folgenden Schritte beschreiben, wie Sie RAID mithilfe des klassischen Azure-Portals in Azure erstellen können. Sie können RAID auch mithilfe von Windows PowerShell-Skripts einrichten.
+Die folgenden Schritte beschreiben, wie Sie RAID mithilfe des Azure-Portals in Azure erstellen können. Sie können RAID auch mithilfe von Windows PowerShell-Skripts einrichten.
 In diesem Beispiel wird RAID 0 mit 4 Datenträgern konfiguriert.  
 
 #### <a name="add-a-data-disk-to-your-virtual-machine"></a>Hinzufügen eines Datenträgers zum virtuellen Computer
-Klicken Sie im klassischen Azure-Portal auf der Seite „Virtuelle Computer“ auf den virtuellen Computer, dem Sie einen Datenträger hinzufügen möchten. In diesem Beispiel wird der virtuelle Computer "mysqlnode1" verwendet.  
+Rufen Sie im Azure-Portal das Dashboard auf, und wählen Sie den virtuellen Computer aus, dem Sie einen Datenträger hinzufügen möchten. In diesem Beispiel wird der virtuelle Computer "mysqlnode1" verwendet.  
 
-![Virtuelle Computer][1]
+<!--![Virtual machines][1]-->
 
-Klicken Sie auf der Seite für den virtuellen Computer auf **Dashboard**.  
+Klicken Sie auf **Datenträger** und dann auf **Neuen anfügen**.
 
-![VM-Dashboard][2]
+![Virtuelle Computer – Datenträger hinzufügen](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-Disks-option.png)
 
-Klicken Sie auf der Taskleiste auf **Anfügen**.
+Erstellen Sie einen neuen 500-GB-Datenträger. Stellen Sie sicher, dass für **Hostcacheeinstellungen** die Einstellung **Keine** festgelegt ist.  Klicken Sie abschließend auf **OK**.
 
-![VM-Taskleiste][3]
+![Schließen Sie einen leeren Datenträger an.](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-attach-empty-disk.png)
 
-Klicken Sie dann auf **Leeren Datenträger anfügen**.  
-
-![Schließen Sie einen leeren Datenträger an.][4]
-
-Für Datenträger sollte für **Hostcacheeinstellungen** die Einstellung **Keine** festgelegt werden.  
 
 Dadurch wird Ihrem virtuellen Computer ein leerer Datenträger hinzugefügt. Wiederholen Sie diesen Schritt drei weitere Male, bis Sie über vier Datenträger für RAID verfügen.  
 
@@ -348,4 +344,5 @@ Weitere und detailliertere [Konfigurationsparameter für die Optimierung](http:/
 [12]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-12.png
 [13]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-14.png
+
 

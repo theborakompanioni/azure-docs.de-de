@@ -13,33 +13,45 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 07/05/2017
 ms.author: genemi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: b42d2bd64dbaf44f1be85d687b27ffe47eb0db53
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 8c4d76e371a8f48806dd2229e406a2eb1f69504e
 ms.contentlocale: de-de
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
-# <a name="connection-libraries-for-sql-database-and-sql-server"></a>Verbindungsbibliotheken für SQL-Datenbank und SQL Server
+# <a name="connectivity-libraries-and-frameworks-for-microsoft-sql-server"></a>Verbindungsbibliotheken und Frameworks für Microsoft SQL Server
 
-In diesem Thema sind die einzelnen Bibliotheken und *Treiber* aufgelistet, mit denen Clientprogramme Verbindungen mit Azure SQL-Datenbank oder Microsoft SQL Server herstellen können. 
+Sehen Sie sich unsere [Tutorials zu ersten Schritten](http://aka.ms/sqldev), um einen schnellen Einstieg in Programmiersprachen wie C#, Java, Node.js, PHP und Python zu erhalten und eine Anwendung mithilfe von SQL Server unter Linux oder Windows oder in Docker unter macOS zu erstellen.
 
-| Sprache | Plattform | Zusätzliche Ressourcen | Download |
-|:--- |:--- |:--- |:--- |
-| ADO.NET |Windows, Linux, Mac |[Microsoft ADO.NET für SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server/) |[Download](https://www.microsoft.com/net/) |
-| Java |Windows, Linux, Mac |[Microsoft JDBC Driver für SQL Server](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) |[Download](http://go.microsoft.com/fwlink/?LinkId=245496) |
-| PHP |Windows |[Microsoft PHP Driver für SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server/) |[Download](https://www.microsoft.com/download/details.aspx?id=20098) |
-| Node.js |Windows, Linux, Mac |[Node.js-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/) |[Installieren](https://docs.microsoft.com/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |
-| Python |Windows, Linux, Mac |[Python-SQL-Treiber](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/) |Installationsoptionen: <br/> \* [pymssql](https://docs.microsoft.com/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](https://docs.microsoft.com/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |
-| Ruby |Windows, Linux, Mac |[Ruby-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/) |[Installieren](https://docs.microsoft.com/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) |
-| C/C++ |Windows, Linux |[Microsoft ODBC-Treiber für SQL Server](http://docs.microsoft.com/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) |Installationsoptionen: <br/> \* [Windows](https://www.microsoft.com/download/details.aspx?id=53339) <br/> \* [Linux](https://blogs.msdn.microsoft.com/sqlnativeclient/2016/10/20/odbc-driver-13-0-for-linux-released/) |
+Die folgende Tabelle listet Verbindungsbibliotheken oder *Treiber* auf, die Clientanwendungen in einer Vielzahl von Sprachen verwenden können, um eine Verbindung mit Microsoft SQL Server herzustellen und dieses lokal oder in der Cloud auszuführen unter Linux, Windows oder in Docker. Ebenso kann eine Verbindung mit Azure SQL-Datenbank und Azure SQL Data Warehouse hergestellt werden. 
+
+| Sprache | Plattform | Zusätzliche Ressourcen | Herunterladen | Erste Schritte |
+| :-- | :-- | :-- | :-- | :-- |
+| C# | Windows, Linux, macOS | [Microsoft ADO.NET für SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Download](https://www.microsoft.com/net/download/) | [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/csharp/ubuntu)
+| Java | Windows, Linux, macOS | [Microsoft JDBC Driver für SQL Server](http://msdn.microsoft.com/library/mt484311.aspx) | [Download](http://go.microsoft.com/fwlink/?LinkId=245496) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
+| PHP | Windows, Linux, macOS| [PHP SQL-Treiber für SQL Server](http://msdn.microsoft.com/library/dn865013.aspx) | Betriebssystem: <br/> \* [Windows](https://www.microsoft.com/download/details.aspx?id=20098) <br/> \* [Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \* [macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu)
+| Node.js | Windows, Linux, macOS | [Node.js-Treiber für SQL Server](http://msdn.microsoft.com/library/mt652093.aspx) | [Installieren](https://msdn.microsoft.com/library/mt652094.aspx) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows, Linux, macOS | [Python-SQL-Treiber](http://msdn.microsoft.com/library/mt652092.aspx) | Installationsoptionen: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/python/ubuntu)
+| Ruby | Windows, Linux, macOS | [Ruby-Treiber für SQL Server](http://msdn.microsoft.com/library/mt691981.aspx) | [Installieren](https://msdn.microsoft.com/library/mt711041.aspx) | [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/ruby/ubuntu)
+| C++ | Windows, Linux, macOS | [Microsoft ODBC-Treiber für SQL Server](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) | [Download](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) |  
+
+In der folgenden Tabelle sind einige Beispiele für Frameworks und Webframeworks der objektrelationalen Abbildung (Object Relational Mapping, ORM) aufgelistet, die Clientanwendungen mit lokalem Microsoft SQL Server oder in der Cloud unter Linux, Windows oder in Docker und auch in Azure SQL-Datenbank und Azure SQL Data Warehouse verwenden können. 
+
+| Sprache | Plattform | ORM(s) |
+| :-- | :-- | :-- |
+| C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/en-us/ef)<br>[Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/index) |
+| Java | Windows, Linux, macOS |[Hibernate ORM](http://hibernate.org/orm)|
+| PHP | Windows, Linux | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
+| Node.js | Windows, Linux, macOS | [Sequelize ORM](http://docs.sequelizejs.com) |
+| Python | Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
+| Ruby | Windows, Linux, macOS | [Ruby on Rails](http://rubyonrails.org/) |
 
 ## <a name="related-links"></a>Verwandte Links
-
-- [SQL Server-Treiber](https://docs.microsoft.com/sql/connect/sql-server-drivers/) zum Herstellen einer Verbindung von einem Client
+- [SQL Server-Treiber](http://msdn.microsoft.com/library/mt654049.aspx) zum Herstellen einer Verbindung von Clientanwendungen
 - [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-connect-query-dotnet.md)
 - [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von PHP](sql-database-connect-query-php.md)
 - [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Node.js](sql-database-connect-query-nodejs.md)

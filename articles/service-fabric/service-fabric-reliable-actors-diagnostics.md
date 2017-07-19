@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 06/29/2017
 ms.author: abhisram
-translationtype: Human Translation
-ms.sourcegitcommit: 3ed67788fbbe0c4fb820cfd1525d8c9ee5154446
-ms.openlocfilehash: 1a8a36d3b6f14c75965afca970be808015059dbb
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 1c53a6bbe0152f6f2b9666e6059af7c6d02e481f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -116,7 +118,7 @@ Die Reliable Actors-Laufzeit veröffentlicht die folgenden Leistungsindikatoren 
 
 | Name der Kategorie | Name des Leistungsindikators | Beschreibung |
 | --- | --- | --- |
-| Service Fabric Actor |# Anzahl der Actor-Aufrufe, die auf die Actor-Sperre warten |Anzahl der ausstehenden Actor-Aufrufe, die darauf warten, die Pro-Actor-Sperre zu übernehmen, welche Turn-basierte Parallelität erzwingt. |
+| Service Fabric Actor |Anzahl der Actor-Aufrufe, die auf die Actor-Sperre warten |Anzahl der ausstehenden Actor-Aufrufe, die darauf warten, die Pro-Actor-Sperre zu übernehmen, welche Turn-basierte Parallelität erzwingt. |
 | Service Fabric Actor |Durchschnittliche Anzahl von Millisekunden bis zur Sperrung des Actors |Zeit (in Millisekunden), die erforderlich war, um die Sperre pro Actor zu erlangen, welche Turn-basierte Parallelität erzwingt |
 | Service Fabric Actor |Durchschnittliche Anzahl von Millisekunden, die eine Actor-Sperre hielt |Zeit (in Millisekunden), für die die Sperre pro Actor gehalten wird |
 
@@ -162,7 +164,7 @@ Wenn ein Client eine Methode über ein Actor-Proxy-Objekt aufruft, wird eine Anf
 
 | Name der Kategorie | Name des Leistungsindikators | Beschreibung |
 | --- | --- | --- |
-| Service Fabric Actor |# Anzahl von ausstehenden Anfragen |Anzahl von Anforderungen, die im Dienst verarbeitet werden |
+| Service Fabric Actor |Anzahl von ausstehenden Anfragen |Anzahl von Anforderungen, die im Dienst verarbeitet werden |
 | Service Fabric Actor |Durchschnittliche Anzahl von Millisekunden pro Anforderung |Zeit (in Millisekunden), die der Dienst zum Verarbeiten einer Anforderung erforderte |
 | Service Fabric Actor |Durchschnittliche Anzahl von Millisekunden für die Anforderungsdeserialisierung |Zeit (in Millisekunden), die erforderlich war, um die Anforderungsnachricht an den Actor zum Empfangszeitpunkt am Dienst zu deserialisieren |
 | Service Fabric Actor |Durchschnittliche Anzahl von Millisekunden für die Anwortserialisierung |Zeit (in Millisekunden), die erforderlich war, um die Antwortnachricht des Actors vor der Versendung an den Client am Dienst zu serialisieren |
@@ -172,9 +174,4 @@ Wenn ein Client eine Methode über ein Actor-Proxy-Objekt aufruft, wird eine Anf
 * [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Beispielcode](https://github.com/Azure/servicefabric-samples)
 * [EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

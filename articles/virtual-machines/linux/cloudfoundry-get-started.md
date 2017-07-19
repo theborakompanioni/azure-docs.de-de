@@ -16,15 +16,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-translationtype: Human Translation
-ms.sourcegitcommit: 89117c59ae8948eeb32b51a0ecd4fdf0a3a2edd7
-ms.openlocfilehash: d026d6d901374a91864edf9f6ee38d5450e7f179
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: fd51bf9e965d2efd5a6bea9de142ab2ec8d27836
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry in Azure
 
-Foundry Cloud ist eine Open-Source-PaaS (Platform-as-a-Service) für die Erstellung, Bereitstellung und den Betrieb von 12-Faktor-Anwendungen, die in einer Vielzahl von Sprachen und Frameworks entwickelt werden. In diesem Dokument sind die verfügbaren Optionen zum Ausführen von Cloud Foundry in Azure sowie die ersten Schritte beschrieben.
+Cloud Foundry ist eine Open Source-PaaS (Platform-as-a-Service) für die Erstellung, Bereitstellung und den Betrieb von 12-Faktor-Anwendungen, die in verschiedenen Sprachen und Frameworks entwickelt werden. In diesem Dokument sind die verfügbaren Optionen zum Ausführen von Cloud Foundry in Azure sowie die ersten Schritte beschrieben.
 
 ## <a name="cloud-foundry-offerings"></a>Cloud Foundry-Angebote
 
@@ -66,9 +68,4 @@ Cloud Foundry eignet sich gut für agile Softwareentwicklung, einschließlich de
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bereitstellen von Pivotal Cloud Foundry aus dem Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+- [Bereitstellen einer App für Cloud Foundry in Azure](./cloudfoundry-deploy-your-first-app.md)

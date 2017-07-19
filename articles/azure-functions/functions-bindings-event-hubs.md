@@ -1,6 +1,6 @@
 ---
-title: "Event Hub-Bindungen für Azure Functions | Microsoft Docs"
-description: Erfahren Sie, wie Azure Event Hub-Bindungen in Azure Functions verwendet werden.
+title: "Event Hubs-Bindungen für Azure Functions | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Azure Event Hubs-Bindungen in Azure Functions verwendet werden.
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
+ms.date: 06/20/2017
 ms.author: wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 04a8563a0035992cfa4b7d25a4edc14e1db80e44
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: eaa97e31fbc2ffb8464b5ec2bd1f0eb5c59fdbd2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
-# <a name="azure-functions-event-hub-bindings"></a>Event Hub-Bindungen für Azure Functions
+# <a name="azure-functions-event-hubs-bindings"></a>Event Hubs-Bindungen für Azure Functions
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Dieser Artikel erläutert das Konfigurieren und Codieren von [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) -Bindungen für Azure Functions.
+Dieser Artikel erläutert das Konfigurieren und Verwenden von [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)-Bindungen für Azure Functions.
 Azure Functions unterstützt Trigger- und Ausgabebindungen für Event Hubs.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
@@ -37,16 +37,16 @@ Wenn Sie mit Azure Event Hubs noch nicht vertraut sind, lesen Sie die Informatio
 <a name="trigger"></a>
 
 ## <a name="event-hub-trigger"></a>Event Hub-Trigger
-Der Event Hub-Trigger kann verwendet werden, um auf ein Ereignis zu reagieren, das an einen Event Hub-Datenstrom gesendet wird. Sie benötigen Lesezugriff auf den Event Hub, um den Trigger einzurichten.
+Der Event Hubs-Trigger kann verwendet werden, um auf ein Ereignis zu reagieren, das an einen Event Hub-Datenstrom gesendet wird. Sie benötigen Lesezugriff auf den Event Hub, um den Trigger einzurichten.
 
-Der Event Hub-Trigger zu einer Funktion verwendet das folgende JSON-Objekt im `bindings`-Array von „function.json“:
+Der Event Hubs-Funktionstrigger verwendet das folgende JSON-Objekt im `bindings`-Array von „function.json“:
 
 ```json
 {
     "type": "eventHubTrigger",
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
-    "path": "<Name of the Event Hub>",
+    "path": "<Name of the event hub>",
     "consumerGroup": "Consumer group to use - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
@@ -56,17 +56,17 @@ Der Event Hub-Trigger zu einer Funktion verwendet das folgende JSON-Objekt im `b
 `connection` muss der Name einer App-Einstellung sein, die die Zeichenfolge für die Verbindung mit dem Namespace des Event Hubs enthält.
 Kopieren Sie diese Verbindungszeichenfolge, indem Sie für den *Namespace* (nicht für den eigentlichen Event Hub) auf die Schaltfläche **Verbindungsinformationen** klicken. Diese Verbindungszeichenfolge muss mindestens über Leseberechtigungen verfügen, um den Trigger zu aktivieren.
 
-[Zusätzliche Einstellungen](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) können in einer host.json-Datei zur weiteren Feinabstimmung von Event Hub-Triggern angegeben werden.  
+[Zusätzliche Einstellungen](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) können in einer Datei vom Typ „host.json“ zur weiteren Feinabstimmung von Event Hubs-Triggern angegeben werden.  
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Triggerverwendung
-Wenn eine Event Hub-Triggerfunktion ausgelöst wird, wird die Meldung, die sie auslöst, als Zeichenfolge an die Funktion übergeben.
+Wenn eine Event Hubs-Triggerfunktion ausgelöst wird, wird die Meldung, die sie auslöst, als Zeichenfolge an die Funktion übergeben.
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Triggerbeispiel
-Angenommen, der folgende Event Hub-Trigger befindet sich im `bindings`-Array von „function.json“:
+Angenommen, der folgende Event Hubs-Trigger befindet sich im `bindings`-Array von „function.json“:
 
 ```json
 {
@@ -119,8 +119,8 @@ module.exports = function (context, myEventHubMessage) {
 
 <a name="output"></a>
 
-## <a name="event-hub-output-binding"></a>Event Hub-Ausgabebindung
-Mit der Event Hub-Ausgabebindung werden Ereignisse in einen Event Hub-Ereignisstrom geschrieben. Um Ereignisse in einen Event Hub schreiben zu können, müssen Sie über eine Sendeberechtigung verfügen.
+## <a name="event-hubs-output-binding"></a>Event Hubs-Ausgabebindung
+Mit der Event Hubs-Ausgabebindung werden Ereignisse in einen Event Hub-Ereignisstrom geschrieben. Um Ereignisse in einen Event Hub schreiben zu können, müssen Sie über eine Sendeberechtigung verfügen.
 
 Die Ausgabebindung verwendet das folgende JSON-Objekte im `bindings`-Array von „function.json“:
 
@@ -138,7 +138,7 @@ Die Ausgabebindung verwendet das folgende JSON-Objekte im `bindings`-Array von �
 Kopieren Sie diese Verbindungszeichenfolge, indem Sie für den *Namespace* (nicht für den eigentlichen Event Hub) auf die Schaltfläche **Verbindungsinformationen** klicken. Diese Verbindungszeichenfolge muss über Sendeberechtigungen zum Senden der Nachricht an den Ereignisstrom verfügen.
 
 ## <a name="output-usage"></a>Ausgabeverwendung
-Dieser Abschnitt veranschaulicht die Verwendung Ihrer Event Hub-Ausgabebindung in Ihrem Funktionscode.
+Dieser Abschnitt veranschaulicht die Verwendung Ihrer Event Hubs-Ausgabebindung in Ihrem Funktionscode.
 
 Sie können Nachrichten an die konfigurierte Event Hub-Instanz mit den folgenden Parametertypen ausgeben:
 
@@ -149,7 +149,7 @@ Sie können Nachrichten an die konfigurierte Event Hub-Instanz mit den folgenden
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Ausgabebeispiel
-Angenommen, die folgende Event Hub-Ausgabebindung befindet sich im `bindings`-Array von „function.json“:
+Angenommen, die folgende Event Hubs-Ausgabebindung befindet sich im `bindings`-Array von „function.json“:
 
 ```json
 {

@@ -12,17 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/07/2016
+ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 16000dcb751bd96fba247c6209e85c581833681d
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: a1db3dda674ffe43587333d88f3816549af3019c
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric
-Sie können beliebige Anwendungen, z. B. Node.js-, Java- oder native Anwendungen, in Azure Service Fabric ausführen. Im Zusammenhang mit Service Fabric werden diese Anwendungen als ausführbare Gastanwendungsdateien bezeichnet.
+Sie können jede Art von Code, z.B. Node.js, Java oder C++, in Azure Service Fabric als Dienst ausführen. In Service Fabric sind derartige Dienste ausführbare Gastdateien.
+
 Ausführbare Gastanwendungsdateien werden von Service Fabric wie zustandslose Dienste behandelt. Folglich werden sie basierend auf der Verfügbarkeit und anderen Metriken auf Knoten innerhalb eines Clusters platziert. In diesem Artikel wird beschrieben, wie Sie eine ausführbare Gastanwendungsdatei packen und in einem Service Fabric-Cluster bereitstellen, indem Sie Visual Studio oder ein Befehlszeilenprogramm verwenden.
 
 In diesem Artikel werden die Schritte zum Packen einer ausführbaren Gastanwendungsdatei sowie ihre Bereitstellung in Service Fabric beschrieben.  
@@ -34,6 +36,7 @@ Das Ausführen einer ausführbaren Gastanwendungsdatei in einem Service Fabric-C
 * Systemüberwachung. Die Service Fabric-Systemüberwachung erkennt, ob eine Anwendung ausgeführt wird, und stellt bei Fehlern Diagnoseinformationen bereit.   
 * Application Lifecycle Management. Zusätzlich zur Bereitstellung von Upgrades ohne Ausfallzeiten ermöglicht Service Fabric das automatische Zurücksetzen auf die vorherige Version (Rollback), wenn während eines Upgrades ein Fehler in Bezug auf die Integrität gemeldet wird.    
 * Dichte. Sie können mehrere Anwendungen in einem Cluster ausführen, sodass nicht mehr jede Anwendung auf eigener Hardware ausgeführt werden muss.
+* Auffindbarkeit: Mithilfe von REST können Sie den Service Fabric Naming Service aufrufen, um nach anderen Diensten im Cluster zu suchen. 
 
 ## <a name="samples"></a>Beispiele
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -43,7 +46,7 @@ Das Ausführen einer ausführbaren Gastanwendungsdatei in einem Service Fabric-C
 Im Rahmen der Bereitstellung einer ausführbaren Gastanwendungsdatei sollten Sie das Service Fabric-Modell für das Packen und Bereitstellen von Anwendungen kennen. Eine Beschreibung finden Sie unter [Anwendungsmodell](service-fabric-application-model.md). Das Packmodell von Service Fabric basiert auf zwei XML-Dateien: dem Anwendungs- und dem Dienstmanifest. Die Schemadefinition für die Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ wird mit dem Service Fabric SDK unter *C:\Programme\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* installiert.
 
 * **Anwendungsmanifest**: Das Anwendungsmanifest wird verwendet, um die Anwendung zu beschreiben. Es listet neben den Diensten, aus denen die Anwendung besteht, noch weitere Parameter auf, mit denen definiert wird, wie Dienste bereitgestellt werden sollen, z.B. die Anzahl von Instanzen.
-  
+
   Unter Service Fabric ist eine Anwendung eine Bereitstellungs- und Upgradeeinheit. Eine Anwendung kann als eine Einheit aktualisiert werden, wobei potenzielle Fehler und mögliche Zurücksetzungen verwaltet werden. Mit Service Fabric wird sichergestellt, dass der Upgradeprozess entweder erfolgreich ist oder – falls beim Upgrade ein Fehler auftritt – die Anwendung nicht in einem unbekannten oder instabilen Zustand verbleibt.
 * **Dienstmanifest**: Das Dienstmanifest beschreibt die Komponenten eines Diensts. Es enthält Daten, z.B. den Namen und Typ des Diensts, und den Code sowie die Konfiguration. Das Dienstmanifest enthält auch einige zusätzliche Parameter, die verwendet werden können, um den Dienst zu konfigurieren, nachdem er bereitgestellt wurde.
 
@@ -70,24 +73,23 @@ ApplicationPackageRoot enthält die Datei „ApplicationManifest.xml“, mit der
 
 > [!NOTE]
 > Sie müssen die Verzeichnisse `config` und `data` nur erstellen, wenn Sie sie benötigen.
-> 
-> 
+>
+>
 
 ## <a name="package-an-existing-executable"></a>Packen einer vorhandenen ausführbaren Datei
 Beim Packen einer ausführbaren Gastanwendungsdatei können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit der neuen Projektvorlage für Sie erstellt.
 
 > [!TIP]
-> Der einfachste Weg zum Packen einer vorhandenen ausführbaren Windows-Datei in einen Dienst ist die Verwendung von Visual Studio.
-> 
-> 
+> Der einfachste Weg zum Verpacken einer vorhandenen ausführbaren Windows-Datei in einen Dienst ist die Verwendung von Visual Studio unter Windows und von Yeoman unter Linux.
+>
 
-## <a name="use-visual-studio-to-package-an-existing-executable"></a>Verwenden von Visual Studio zum Packen einer vorhandenen ausführbaren Datei
+## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Verwenden von Visual Studio zum Verpacken und Bereitstellen einer vorhandenen ausführbaren Datei
 In Visual Studio wird eine Service Fabric-Dienstvorlage bereitgestellt, um Sie beim Bereitstellen einer ausführbaren Gastanwendung für einen Service Fabric-Cluster zu unterstützen.
 
 1. Wählen Sie **Datei** > **Neues Projekt**, und erstellen Sie eine Service Fabric-Anwendung.
 2. Wählen Sie als Dienstvorlage die Option **Guest Executable** (Ausführbare Gastdatei).
 3. Klicken Sie auf **Durchsuchen**, um den Ordner mit der ausführbaren Datei auszuwählen, und geben Sie die restlichen Parameter an, um den Dienst zu erstellen.
-   * *Codepaketverhalten*: Sie können das Codepaketverhalten so festlegen, dass der gesamte Inhalt Ihres Ordners in das Visual Studio-Projekt kopiert wird. Dies ist hilfreich, wenn sich die ausführbare Datei nicht ändert. Wenn Sie erwarten, dass sich die ausführbare Datei ändert, und neue Builds dynamisch übernehmen möchten, können Sie stattdessen auch einen Link zum Ordner angeben. Beachten Sie, dass Sie verknüpfte Ordner verwenden können, wenn Sie das Anwendungsprojekt in Visual Studio erstellen. Im Projekt wird ein Link zum Quellspeicherort erstellt, damit Sie die ausführbare Gastanwendungsdatei an der Quelle aktualisieren können. Diese Updates werden beim Buildvorgang Teil des Anwendungspakets.
+   * *Codepaketverhalten*: Sie können das Codepaketverhalten so festlegen, dass der gesamte Inhalt Ihres Ordners in das Visual Studio-Projekt kopiert wird. Dies ist hilfreich, wenn sich die ausführbare Datei nicht ändert. Wenn Sie erwarten, dass sich die ausführbare Datei ändert, und neue Builds dynamisch übernehmen möchten, können Sie stattdessen auch einen Link zum Ordner angeben. Sie können einen verknüpfte Ordner verwenden, wenn Sie das Anwendungsprojekt in Visual Studio erstellen. Im Projekt wird ein Link zum Quellspeicherort erstellt, damit Sie die ausführbare Gastanwendungsdatei an der Quelle aktualisieren können. Diese Updates werden beim Buildvorgang Teil des Anwendungspakets.
    * *Program*: Gibt die ausführbare Datei an, die zum Starten des Diensts ausgeführt werden soll.
    * *Arguments*: Gibt die Argumente an, die an die ausführbare Datei übergeben werden sollen. Dies kann eine Liste von Parametern mit Argumenten sein.
    * *WorkingFolder*: Gibt das Arbeitsverzeichnis für den Prozess an, der gestartet werden soll. Sie können drei Werte angeben:
@@ -98,6 +100,16 @@ In Visual Studio wird eine Service Fabric-Dienstvorlage bereitgestellt, um Sie b
 5. Wenn der Dienst einen Endpunkt für die Kommunikation benötigt, können Sie das Protokoll, den Port und den Typ der Datei „ServiceManifest.xml“ hinzufügen. Beispiel: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Sie können die Aktion zum Packen und Veröffentlichen jetzt für Ihren lokalen Cluster verwenden, indem Sie die Projektmappe in Visual Studio debuggen. Wenn Sie bereit sind, können Sie die Anwendung in einem Remotecluster veröffentlichen oder die Projektmappe in die Quellcodeverwaltung einchecken.
 7. Am Ende dieses Artikels wird beschrieben, wie Sie die ausführbare Gastdatei für den Dienst anzeigen, der im Service Fabric Explorer ausgeführt wird.
+
+## <a name="use-yoeman-to-package-and-deploy-an-existing-executable-on-linux"></a>Verwenden von Yeoman zum Verpacken und Bereitstellen einer vorhandenen ausführbaren Datei unter Linux
+
+Zum Erstellen und Bereitstellen einer ausführbaren Gastanwendungsdatei unter Linux wird das gleiche Verfahren verwendet wie beim Bereitstellen einer CSharp- oder Java-Anwendung.
+
+1. Geben Sie in einem Terminal `yo azuresfguest` ein.
+2. Benennen Sie Ihre Anwendung.
+3. Benennen Sie den Dienst, und geben Sie die Details der ausführbaren Datei an, einschließlich der Parameter, mit denen sie aufgerufen werden muss.
+
+Yeoman erstellt ein Anwendungspaket mit der entsprechenden Anwendung und den Manifestdateien sowie ein Installations- und ein Deinstallationsskript.
 
 <a id="manually"></a>
 
@@ -123,8 +135,8 @@ Service Fabric führt einen `xcopy`-Vorgang für den Inhalt des Stammverzeichnis
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie alle Dateien und Abhängigkeiten einbeziehen, die für die Anwendung erforderlich sind. Service Fabric kopiert den Inhalt des Anwendungspakets auf alle Knoten im Cluster, auf denen die Anwendungsdienste bereitgestellt werden sollen. Das Paket muss den gesamten Code enthalten, den die Anwendung zur Ausführung benötigt. Gehen Sie nicht davon aus, dass die Abhängigkeiten bereits installiert sind.
-> 
-> 
+>
+>
 
 ### <a name="edit-the-service-manifest-file"></a>Bearbeiten der Dienstmanifestdatei
 Im nächsten Schritt wird die Dienstmanifestdatei so bearbeitet, dass sie folgende Informationen enthält:
@@ -268,8 +280,8 @@ In der Datei `ServiceManifest.xml` kann mit dem Element `ConsoleRedirection` ein
 
 > [!WARNING]
 > Verwenden Sie die Richtlinie zur Konsolenumleitung nie in einer Anwendung, die in der Produktionsumgebung bereitgestellt wurde, da sich dies auf das Anwendungsfailover auswirken kann. Verwenden Sie diese *nur* für die lokale Entwicklung und das Debuggen.  
-> 
-> 
+>
+>
 
 ```xml
 <EntryPoint>
@@ -331,19 +343,9 @@ Wenn Sie zum Knoten navigieren und zur Anwendung wechseln, sehen Sie die wesentl
 
 ![Speicherort auf dem Datenträger](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-Wenn Sie in Server-Explorer zum jeweiligen Verzeichnis wechseln, sehen Sie das Arbeitsverzeichnis und den Protokollordner des Diensts, wie im folgenden Screenshot dargestellt.
+Wenn Sie im Server-Explorer zum jeweiligen Verzeichnis wechseln, sehen Sie das Arbeitsverzeichnis und den Protokollordner des Diensts, wie im folgenden Screenshot dargestellt: 
 
 ![Speicherort des Protokolls](./media/service-fabric-deploy-existing-app/loglocation.png)
-
-## <a name="creating-a-guest-executable-using-yeoman-for-service-fabric-on-linux"></a>Erstellen einer ausführbaren Gastanwendungsdatei mithilfe von Yeoman für Service Fabric unter Linux
-
-Zum Erstellen und Bereitstellen einer ausführbaren Gastanwendungsdatei unter Linux wird das gleiche Verfahren verwendet wie beim Bereitstellen einer CSharp- oder Java-Anwendung. 
-
-1. Geben Sie in einem Terminal `yo azuresfguest` ein.
-2. Benennen Sie Ihre Anwendung.
-3. Wählen Sie die Art Ihres ersten Diensts aus, und benennen Sie ihn. Wählen Sie **Guest Binary** (Binäre Gastdatei) für eine ausführbare Gastanwendungsdatei (und **Gastcontainer** für einen Container) aus, und geben Sie Details wie etwa den Pfad der ausführbaren Datei und die Parameter an, mit denen sie aufgerufen werden muss.
-
-Yeoman hätte ein Anwendungspaket mit der entsprechenden Anwendung und den Manifestdateien sowie ein Installations- und ein Deinstallationsskript erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowie ihre Bereitstellung in Service Fabric beschrieben. Entsprechende Informationen und Aufgaben finden Sie in den folgenden Artikeln.
@@ -352,5 +354,4 @@ In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowi
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
 * [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
-
 

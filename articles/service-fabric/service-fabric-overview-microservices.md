@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/06/2017
+ms.date: 07/02/2017
 ms.author: msfussell
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 77eb843f83bd2d246dd4943e52c1e8b2ac07a5ab
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: c90079542a91720cb60010dfd5be2cf76802cc70
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -59,12 +59,15 @@ Mit der steigenden Zahl von Cloud-Apps stellen immer mehr Entwickler fest, dass 
 ## <a name="comparison-between-application-development-approaches"></a>Vergleich zwischen Ansätzen zur Anwendungsentwicklung
 ![Service Fabric-Plattform: Anwendungsentwicklung][Image1]
 
-* Eine monolithische App enthält domänenspezifische Funktionen und ist normalerweise in Funktionsebenen unterteilt, z. B. Web, Business und Daten.
-* Sie skalieren monolithische Apps, indem Sie sie über mehrere Server, VMs bzw. Container hinweg klonen.
-* Bei einer Microservice-Anwendung werden die Funktionen auf separate kleinere Dienste aufgeteilt.
-* Beim Microservice-Ansatz erfolgt das horizontale Hochskalieren, indem jeder Dienst unabhängig bereitgestellt wird und Instanzen dieser Dienste über Server, VMs bzw. Container hinweg erstellt werden.
+1) Eine monolithische App enthält domänenspezifische Funktionen und ist normalerweise in Funktionsebenen unterteilt, z. B. Web, Business und Daten.
 
-Das Entwerfen eines Microservice-Ansatzes ist kein Patentrezept für alle Projekte. Dieser Ansatz ist jedoch enger an die oben beschriebenen geschäftlichen Ziele angelehnt. Die anfängliche Verwendung eines monolithischen Ansatzes kann akzeptabel sein, wenn Sie wissen, dass Sie später nicht die Gelegenheit haben, den Code bei Bedarf zu überarbeiten und in einen Microservice-Entwurf zu ändern. Normalerweise beginnen Sie mit einer monolithischen App und teilen diese dann nach und nach in Phasen auf. Sie beginnen hierbei mit den Funktionsbereichen, die besser skalierbar oder flexibler werden sollen.
+2) Sie skalieren monolithische Apps, indem Sie sie über mehrere Server, VMs bzw. Container hinweg klonen.
+
+3) Bei einer Microservice-Anwendung werden die Funktionen auf separate kleinere Dienste aufgeteilt.
+
+4) Beim Microservice-Ansatz erfolgt das horizontale Hochskalieren, indem jeder Dienst unabhängig bereitgestellt wird und Instanzen dieser Dienste über Server, VMs bzw. Container hinweg erstellt werden.
+
+Das Entwerfen eines Microservice-Ansatzes ist kein Patentrezept für alle Projekte. Dieser Ansatz ist jedoch enger an die oben beschriebenen geschäftlichen Ziele angelehnt. Die anfängliche Verwendung eines monolithischen Ansatzes kann akzeptabel sein, wenn Sie wissen, dass Sie später die Gelegenheit haben, den Code zu überarbeiten und in einen Microserviceentwurf zu ändern. Normalerweise beginnen Sie mit einer monolithischen Anwendung und teilen diese dann nach und nach in Phasen auf. Sie beginnen hierbei mit den Funktionsbereichen, die besser skalierbar oder flexibler werden sollen.
 
 Zusammenfassend lässt sich sagen, dass der Microservice-Ansatz darin besteht, Ihre Anwendung aus vielen kleinen Diensten zusammenzusetzen. Die Dienste werden in Containern ausgeführt, die auf einem Cluster mit Computern bereitgestellt werden. Kleinere Teams entwickeln Dienste für bestimmte Szenarien. Jeder dieser Dienste wird einzeln getestet, versioniert, bereitgestellt und skaliert, um die gesamte Anwendung weiterzuentwickeln.
 
@@ -104,7 +107,7 @@ Wir kehren noch einmal kurz zum Vergleich des monolithischen Ansatzes mit dem Mi
 
 Bei einem monolithischen Ansatz wird von der Anwendung in der Regel eine Einzeldatenbank genutzt. Der Vorteil besteht darin, dass ein einzelner Speicherort verwendet und so die Bereitstellung vereinfacht wird. Jede Komponente kann eine einzelne Tabelle zum Speichern des Zustands enthalten. Die Teams müssen den Zustand strikt trennen. Dies ist eine ziemliche Herausforderung. Die Versuchung, einer vorhandenen Kundentabelle eine neue Spalte hinzuzufügen, Tabellen zu verknüpfen und Abhängigkeiten auf der Speicherebene zu erstellen, ist natürlich groß. Wenn dies passiert, können Sie einzelne Komponenten nicht skalieren. 
 
-Beim Microservice-Ansatz verwaltet und speichert jeder Dienst seinen eigenen Zustand. Jeder Dienst ist dafür verantwortlich, Code und Zustand gemeinsam zu skalieren, um die Anforderungen des Diensts zu erfüllen. Dadurch ergibt sich allerdings der Nachteil, dass Sie zum Erstellen von Sichten oder Abfragen für die Daten Ihrer Anwendung verteilte Zustandsspeicher abfragen müssen. Normalerweise wird dies mit einem separaten Microservice gelöst, mit dem eine Sicht für eine Sammlung von Microservices erstellt wird. Falls Sie für die Daten mehrere Ad-hoc-Abfragen durchführen müssen, sollten Sie für jeden Microservice erwägen, dass dessen Daten für die Offlineanalyse in einen Data Warehousing-Dienst geschrieben werden.
+Beim Microservice-Ansatz verwaltet und speichert jeder Dienst seinen eigenen Zustand. Jeder Dienst ist dafür verantwortlich, Code und Zustand gemeinsam zu skalieren, um die Anforderungen des Diensts zu erfüllen. Dadurch ergibt sich allerdings der Nachteil, dass Sie zum Erstellen von Ansichten oder Abfragen für die Daten Ihrer Anwendung verteilte Zustandsspeicher abfragen müssen. Normalerweise wird dies mit einem separaten Microservice gelöst, mit dem eine Sicht für eine Sammlung von Microservices erstellt wird. Falls Sie für die Daten mehrere Ad-hoc-Abfragen durchführen müssen, sollten Sie für jeden Microservice erwägen, dass dessen Daten für die Offlineanalyse in einen Data Warehousing-Dienst geschrieben werden.
 
 Die Versionsverwaltung ist insbesondere für die bereitgestellte Version eines Microservice erforderlich, damit mehrere unterschiedliche Versionen bereitgestellt und parallel ausgeführt werden können. Die Versionsverwaltung unterstützt Szenarien, in denen für eine neuere Version eines Microservice während des Upgrades ein Fehler auftritt und ein Rollback zu einer vorherigen Version durchgeführt werden muss. Das andere Szenario für die Versionsverwaltung ist die Durchführung von A/B-Tests, bei denen unterschiedliche Benutzer unterschiedliche Versionen des Diensts erhalten. Es ist beispielsweise üblich, einen Microservice für eine bestimmte Gruppe von Kunden zu aktualisieren, um neue Funktionen vor dem größeren Rollout zu testen. Nach der Lebenszyklusverwaltung von Microservices geht es nun mit der Kommunikation weiter.
 
@@ -112,7 +115,7 @@ Die Versionsverwaltung ist insbesondere für die bereitgestellte Version eines M
 Auf dieses Thema muss hier nicht näher eingegangen werden, da Kommunikationsmuster in der umfangreichen Literatur beschrieben werden, die im Bereich der dienstorientierten Architektur in den letzten zehn Jahren veröffentlicht wurde. Im Allgemeinen wird für die Dienstkommunikation ein REST-Ansatz mit HTTP- und TCP-Protokollen sowie XML oder JSON als Serialisierungsformat eingesetzt. Aus Sicht der Benutzeroberfläche geht es hierbei um den Webdesignansatz. Es hindert Sie aber nichts daran, binäre Protokolle oder eigene Datenformate zu verwenden. Seien Sie darauf vorbereitet, dass die Verwendung Ihrer Microservices für Benutzer schwieriger ist, wenn diese öffentlich verfügbar sind.
 
 ### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Eindeutiger Name (URL), der zum Auflösen des Speicherorts verwendet wird
-Wir erwähnen immer wieder, dass der Microservice-Ansatz Ähnlichkeiten mit dem Web aufweist. Wie das Web auch, muss Ihr Microservice unabhängig vom Ort der Ausführung adressierbar sein. Wenn Sie anfangen, sich Gedanken über Computer und den Ort der Ausführung bestimmter Microservices zu machen, nimmt dies kein gutes Ende. 
+Wir erwähnen immer wieder, dass der Microservice-Ansatz Ähnlichkeiten mit dem Web aufweist. Wie das Web auch, muss Ihr Microservice unabhängig vom Ort der Ausführung adressierbar sein. Wenn Sie anfangen, sich Gedanken über Computer und den Ort der Ausführung bestimmter Microservices zu machen, führt dies schnell zu Problemen. 
 
 Ebenso wie der DNS eine bestimmte URL in einen bestimmten Computer auflöst, muss Ihr Microservice über einen eindeutigen Namen verfügen, damit sein aktueller Speicherort ermittelt werden kann. Für Microservices sind adressierbare Namen erforderlich, damit sie unabhängig von der Infrastruktur sind, auf der sie ausgeführt werden. Dies impliziert, dass eine Interaktion zwischen der Bereitstellung und der Ermittlung Ihres Diensts besteht, weil eine Dienstregistrierung vorhanden sein muss. In gleicher Weise muss der Registrierungsdienst Sie im Fall eines Computerausfalls darüber informieren, wo der Dienst jetzt ausgeführt wird. 
 
@@ -135,12 +138,41 @@ Azure Service Fabric ist entstanden, als Microsoft die Umstellung von „Paketpr
 
 ***Die Ziele von Service Fabric sind das Lösen der schwierigen Probleme, die mit der Erstellung und Ausführung eines Diensts verbunden sind, und die effiziente Nutzung von Infrastrukturressourcen, damit Teams geschäftliche Probleme mit einem Microservice-Ansatz lösen können.***
 
-Service Fabric verfügt über zwei grobe Bereiche für die Unterstützung der Anwendungserstellung mit einem Microservice-Ansatz:
+Service Fabric verfügt über drei allgemeine Bereiche für die Unterstützung der Anwendungserstellung mit einem Microserviceansatz:
 
-* Eine Plattform, die Systemdienste zum Bereitstellen, Upgraden, Erkennen und Neustarten ausgefallener Dienste, Ermitteln des Dienstspeicherorts, Verwalten des Zustands und Überwachen der Integrität bietet. Viele der oben beschriebenen Merkmale von Microservices sind auf diese Systemdienste zurückzuführen.
-* Programmier-APIs oder Frameworks zum Erstellen von Anwendungen als Microservices: [Reliable Actors und Reliable Services](service-fabric-choose-framework.md). Sie können natürlich beliebigen Code auswählen, um den Microservice zu erstellen. Aber wenn Sie diese APIs verwenden, wird die Aufgabe nicht nur vereinfacht, sondern es findet auch eine tiefere Integration in die Plattform statt. Beispielsweise erhalten Sie entweder Integritäts- und Diagnoseinformationen, oder Sie können die integrierte hohe Verfügbarkeit nutzen.
+* Diese Plattform bietet Systemdienste zum Bereitstellen, Upgraden, Erkennen und Neustarten ausgefallener Dienste und zum Ermitteln des Dienstes, Weiterleiten von Nachrichten,Verwalten des Zustands und Überwachen der Integrität. Viele der oben beschriebenen Merkmale von Microservices sind auf diese Systemdienste zurückzuführen.
+* Die Fähigkeit, Anwendungen entweder in Containern oder als Prozesse bereitzustellen. Service Fabric ist ein Container- und Prozessorchestrator.
+* Produktive Programmier-APIs zum Erstellen von Anwendungen als Microservices: [ASP:NET Core, Reliable Actors und Reliable Services](service-fabric-choose-framework.md). Sie können beliebigen Code auswählen, um den Microservice zu erstellen. Aber wenn Sie diese APIs verwenden, wird die Aufgabe nicht nur vereinfacht, sondern es findet auch eine tiefere Integration in die Plattform statt. Beispielsweise erhalten Sie entweder Integritäts- und Diagnoseinformationen, oder Sie können die integrierte hohe Verfügbarkeit nutzen.
 
-***Service Fabric ist agnostisch, was die Erstellung Ihres Diensts betrifft, und Sie können eine beliebige Technologie verwenden. Die Plattform verfügt aber über integrierte Programmier-APIs, die die Erstellung von Microservices vereinfachen.***
+***Service Fabric ist agnostisch, was die Erstellung Ihres Diensts betrifft, und Sie können eine beliebige Technologie verwenden. Es bietet jedoch integrierte Programmier-APIs, die die Erstellung von Microservices vereinfachen.***
+
+### <a name="migrating-existing-applications-to-service-fabric"></a>Migrieren von vorhandenen Anwendungen zu Service Fabric
+Ein wichtiger Ansatz in Service Fabric ist das Wiederverwenden von vorhandenem Code, der durch neue Microservices aktualisiert werden kann. Es gibt fünf Phasen der Aktualisierung von Anwendungen. Sie können mit jeder beliebigen Phase beginnen und aufhören. Dies sind die Phasen:
+
+1) Nehmen Sie eine herkömmliche monolithische Anwendung
+2) Lift and Shift: Verwenden Sie Container oder ausführbare Gastanwendungsdateien, um vorhandenen Code in Service Fabric zu hosten.
+3) Aktualisierung: Hinzufügen von neuen Microservices gemeinsam mit vorhandenem Code in Containern 
+4) Innovation: Aufteilen der monolithischen Anwendung in Microservices je nach Bedarf
+5) Umwandlung in Microservices: Umwandeln vorhandener monolithischer Anwendungen oder Erstellen neuer Anwendungen
+
+![Migration zu Microservices][Image3]
+
+Es ist wichtig, erneut zu betonen, dass Sie **mit jeder beliebigen Phase beginnen und aufhören** können. Sie müssen nicht alle Phasen durchführen. Schauen wir uns nun Beispiele für jede dieser Phasen an.
+
+**Lift and Shift**: Sehr viele Unternehmen verschieben Anwendungen mit der „Lift and Shift“-Methode in Container. Dafür gibt es zwei Gründe:
+
+- Kostensenkung entweder durch die Konsolidierung und das Entfernen der vorhandenen Hardware oder durch das Ausführen von Anwendungen mit höherer Dichte 
+- Konsistenter Bereitstellungvertrag zwischen der Entwicklung und Vorgängen.
+
+Der Wunsch, die Kosten zu reduzieren, ist nachvollziehbar. Bei Microsoft werden deshalb große Mengen an vorhandenen Anwendungen in Container verschoben, um Millionen von Dollar zu sparen. Konsistente Bereitstellung ist schwieriger zu bewerten, jedoch ebenso wichtig. Sie besagt, dass Entwickler weiterhin die Technologie auswählen können, die am besten zu ihren Bedürfnissen passt. Allerdings nehmen die Vorgänge nur eine Art der Bereitstellung und Verwaltung dieser Anwendungen an. So müssen die Vorgänge nicht mit unterschiedlichen, komplexen Technologien arbeiten. Zudem müssen sich Entwickler nicht nur für eine entscheiden. Im Wesentlichen wird jede Anwendung in Container in eigenständigen Bereitstellungsimages verschoben.
+
+Viele Organisationen fahren hier nicht fort. Sie können bereits von Containern profitieren und Service Fabric bietet alle Verwaltungsmöglichkeiten – von der Bereitstellung über Upgrades, Versionskontrolle und Rollbacks bis hin zur Überwachung der Integrität usw.
+
+**Aktualisierung**: Bei der Aktualisierung werden neue Dienste gemeinsam mit vorhandenem Code in Containern hinzugefügt. Wenn Sie neuen Code schreiben möchten, empfiehlt es sich, kleine Schritte auf dem Weg zu Microservices zu machen. Dies kann das Hinzufügen eines neuen REST-API-Endpunkts oder neue Geschäftslogik sein. Auf diese Weise haben Sie die ersten Schritte auf dem Weg zu Microservices gemacht und können sich gleichzeitig das Entwickeln und Bereitstellen dieser vertraut machen.
+
+**Innovation**: Erinnern Sie sich noch an die ursprünglichen, sich wandelnden Unternehmensbedürfnisse vom Anfang dieses Artikels, die den Microservicesansatz vorantreiben? In dieser Phase müssen Sie sich entscheiden: Befindet sich Ihre aktuelle Anwendung im Wandel, und wenn ja, müssen Sie die monolithische Anwendung aufteilen oder sollten Sie sich um Innovationen bemühen? Ein Beispiel: Wenn eine Datenbank zu einem Verarbeitungsengpass wird, weil Sie als Workflowwarteschlange verwendet wird. Da die Anzahl an Workflowanfragen, die die Arbeit erhöht, zur Skalierung verteilt werden muss. Für diesen bestimmten Bereich der Anwendung, der nicht die Skalierung ist, oder den Sie häufiger aktualisieren müssen, teilen Sie dies in einen Microservice auf. Schon haben Sie eine Innovation durchgeführt. 
+
+**Umwandeln in Microservices**: Wenn Ihre Anwendung komplett aus Microservices bestehen oder in Microservices unterteilt wird. Wenn Sie diesen Punkt erreicht haben, haben Sie den Weg zu Microservices abgeschlossen. Sie können hier starten. Wenn Sie dies jedoch ohne eine unterstützende Microservicesplattform machen, ist dies eine erhebliche Investition. 
 
 ### <a name="are-microservices-right-for-my-application"></a>Sind Microservices für meine Anwendung geeignet?
 Vielleicht. Als immer mehr Teams bei Microsoft damit begannen, aus geschäftlichen Gründen Anwendungen für die Cloud zu entwickeln, erkannten viele von ihnen die Vorteile eines Microservice-Ansatzes. Für Bing werden beispielsweise schon seit Jahren Microservices für die Suche entwickelt. Für andere Teams war der Microservice-Ansatz neu. Die Teams haben festgestellt, dass es schwierige Probleme außerhalb ihrer Kernkompetenzbereiche zu lösen galt. Dies sind die Gründe, warum Service Fabric immer häufiger als Technologie für die Erstellung von Diensten gewählt wird.
@@ -155,4 +187,5 @@ Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellu
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
+[Image3]: media/service-fabric-overview-microservices/microservices-migration.png
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skript – Kopieren einer SQL-Datenbank auf einen neuen Server | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Kopieren einer SQL-Datenbank auf einen neuen Server mit PowerShell"
+title: 'PowerShell-Beispiel: Kopieren einer Azure SQL-Datenbank auf einen neuen Server | Microsoft-Dokumentation'
+description: "Azure PowerShell-Beispielskript zum Kopieren einer SQL-­Datenbank auf einen neuen Server"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: cb3412398e566cc16dadc8348241a603e78a098c
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7b57e37a1bc9391c88c8170f59a39654bf895d47
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="copy-a-sql-database-to-a-new-server-using-powershell"></a>Kopieren einer SQL-Datenbank auf einen neuen Server mit PowerShell
+# <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>Kopieren einer SQL-Datenbank auf einen neuen Server mit PowerShell
 
-Dieses PowerShell-Beispielskript erstellt eine Kopie einer vorhandenen Datenbank auf einem neuen Server. 
+In diesem PowerShell-Skriptbeispiel wird eine Kopie einer vorhandenen Datenbank auf einem neuen Server erstellt. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

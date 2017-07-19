@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 307c9a377fce32c056a54d35f173efd1bafc4df5
+ms.translationtype: HT
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 75f117e206df1883ea9eb8a78f9e0ab62f569049
 ms.contentlocale: de-de
-ms.lasthandoff: 01/13/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services
@@ -61,7 +60,7 @@ Bei der Fragmented MP4-basierten Echtzeiterfassung für Microsoft Azure Media Se
 ### <a name="requirements"></a>Anforderungen
 Es folgen die detaillierten Anforderungen:
 
-1. Der Encoder SOLLTE die Übertragung starten, indem eine HTTP POST-Anforderung mit leerem "Hauptteil" (Inhaltslänge =&0;) mit der gleichen Erfassungs-URL gesendet wird. Damit kann schnell erkannt werden, ob der Echtzeiterfassungsendpunkt gültig ist und ob Authentifizierung oder andere Bedingungen erforderlich sind. Über das HTTP-Protokoll kann der Server erst eine HTTP-Antwort zurücksenden, wenn die gesamte Anforderung, einschließlich des POST-Texts, empfangen wurde. Aufgrund der Langfristigkeit von Liveereignissen kann der Encoder ohne diesen Schritt Fehler möglicherweise erst erkennen, nachdem alle Daten gesendet wurden.
+1. Der Encoder SOLLTE die Übertragung starten, indem eine HTTP POST-Anforderung mit leerem "Hauptteil" (Inhaltslänge 0) mit der gleichen Erfassungs-URL gesendet wird. Damit kann schnell erkannt werden, ob der Echtzeiterfassungsendpunkt gültig ist und ob Authentifizierung oder andere Bedingungen erforderlich sind. Über das HTTP-Protokoll kann der Server erst eine HTTP-Antwort zurücksenden, wenn die gesamte Anforderung, einschließlich des POST-Texts, empfangen wurde. Aufgrund der Langfristigkeit von Liveereignissen kann der Encoder ohne diesen Schritt Fehler möglicherweise erst erkennen, nachdem alle Daten gesendet wurden.
 2. Der Encoder MUSS alle als Ergebnis von (1) ausgegebenen Fehler oder Authentifizierungsanforderungen behandeln. Wenn (1) mit dem Antwortcode "200" erfolgreich ausgeführt wird, wird der Vorgang fortgesetzt.
 3. Der Encoder MUSS eine neue HTTP POST-Anforderung mit dem Fragmented MP4-Stream beginnen.  Die Nutzlast MUSS mit den Headerfeldern, gefolgt von Fragmenten, beginnen.  Beachten Sie, dass die Felder "ftyp", "Live Server Manifest Box" und "moov" (in dieser Reihenfolge) mit jeder Anforderung gesendet werden MÜSSEN, selbst wenn der Encoder erneut eine Verbindung herstellen muss, weil die vorhergehende Anforderung vor dem Ende des Streams beendet wurde. 
 4. Der Encoder MUSS für das Hochladen die segmentierte Transfercodierung verwenden, da es nicht möglich ist, die gesamte Inhaltslänge des Liveereignisses vorherzusagen.
@@ -162,7 +161,7 @@ Es folgt eine empfohlene Implementierung für die Erfassung von platzsparenden S
    3. In dem Zeitraum, in dem keine Signalisierungsdaten vorhanden sind, SOLLTE der Encoder die HTTP POST-Anforderung schließen.  Während die POST-Anforderung aktiv ist, SOLLTE der Encoder Daten senden. 
    4. Beim Senden von platzsparenden Fragmenten kann der Encoder den expliziten Header "Content-Length" festlegen, sofern dieser vorhanden ist.
    5. Beim Senden von platzsparenden Fragmenten über eine neue Verbindung SOLLTE der Encoder das Senden mit den Headerfeldern starten, gefolgt von den neuen Fragmenten. Dies ist notwendig für den Fall, dass inzwischen ein Failover aufgetreten ist und die neue Verbindung mit einem neuen Server hergestellt wird, auf dem die platzsparende Spur noch nicht bekannt ist.
-   6. Das Fragment der platzsparenden Spur wird für den Client zur Verfügung gestellt, wenn das Fragment der entsprechenden übergeordneten Spur mit dem gleichen oder einem größeren Zeitstempelwert für den Client zur Verfügung gestellt wird. Wenn für das platzsparende Fragment beispielsweise der Zeitstempel t = 1.000 festgelegt ist, wird erwartet, dass der Client das platzsparende Fragment mit geringer Dichte mit t = 1.000 herunterladen kann, nachdem der Client das Video-Fragment (angenommen, der Name der übergeordneten Spur lautet "Video") mit dem Zeitstempel 1.000 oder höher erkannt hat. Beachten Sie, dass das tatsächliche Signal sehr wohl auch für eine andere Position in der Zeitachse der Präsentation für seinen eigentlichen Zweck verwendet werden kann. Im Beispiel oben ist es möglich, dass das platzsparende Fragment mit t =&1;.000 eine XML-Nutzlast aufweist, die für das Einfügen einer Werbung in einer Position definiert ist, die zeitlich einige Sekunden später folgt.
+   6. Das Fragment der platzsparenden Spur wird für den Client zur Verfügung gestellt, wenn das Fragment der entsprechenden übergeordneten Spur mit dem gleichen oder einem größeren Zeitstempelwert für den Client zur Verfügung gestellt wird. Wenn für das platzsparende Fragment beispielsweise der Zeitstempel t = 1.000 festgelegt ist, wird erwartet, dass der Client das platzsparende Fragment mit geringer Dichte mit t = 1.000 herunterladen kann, nachdem der Client das Video-Fragment (angenommen, der Name der übergeordneten Spur lautet "Video") mit dem Zeitstempel 1.000 oder höher erkannt hat. Beachten Sie, dass das tatsächliche Signal sehr wohl auch für eine andere Position in der Zeitachse der Präsentation für seinen eigentlichen Zweck verwendet werden kann. Im Beispiel oben ist es möglich, dass das platzsparende Fragment mit t =1.000 eine XML-Nutzlast aufweist, die für das Einfügen einer Werbung in einer Position definiert ist, die zeitlich einige Sekunden später folgt.
    7. Die Nutzlast des platzsparenden Fragments kann je nach Szenario in unterschiedlichen Formaten vorliegen (z. B. XML, Text oder binär). 
 
 ### <a name="redundant-audio-track"></a>Redundante Audiospur

@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 97ae17912eaa7508e3ae1315800408664a340837
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 6754505e7f58a8e7305987db9204271ca9b93870
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>Optimieren Ihrer Umgebung mit der System Center Operations Manager-Bewertungslösung (Vorschau)
+
+![Symbol für System Center Operations Manager-Bewertung](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
 Sie können die System Center Operations Manager-Bewertungslösung verwenden, um die Risiken und die Integrität Ihrer System Center Operations Manager-Serverumgebungen in regelmäßigen Abständen zu bewerten. Dieser Artikel unterstützt Sie beim Installieren, Konfigurieren und Verwenden der Lösung, sodass Sie bei potenziellen Problemen korrigierende Maßnahmen ergreifen können.
 
@@ -57,7 +60,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 1. [Festlegen des ausführenden Kontos für System Center Operations Manager-Bewertung](#operations-manager-run-as-accounts-for-oms)  
 2. [Konfigurieren der System Center Operations Manager-Bewertungsregel](#configure-the-assessment-rule)
 
-# <a name="system-center-operations-manager-assessment-data-collection-details"></a>Details zur Datensammlung mit der System Center Operations Manager-Bewertung
+## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Details zur Datensammlung mit der System Center Operations Manager-Bewertung
 
 Die System Center Operations Manager-Bewertung sammelt unter Verwendung des von Ihnen aktivierten Servers über Windows PowerShell, SQL-Abfragen und Dateiinformationssammler WMI-, Registrierungs-, EventLog- und Operations Manager-Daten.
 
@@ -155,8 +158,8 @@ Die Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung de
 1. Suchen Sie in der Operations Manager-Konsole im Arbeitsbereich **Erstellung** im Bereich **Regeln** die Regel *Microsoft System Center Advisor SCOM Assessment Run Assessment Rule* (Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung der Bewertung).
 2. Wählen Sie in den Suchergebnissen die Regel aus, die den Text *Typ: Verwaltungsserver* enthält.
 3. Klicken Sie mit der rechten Maustaste auf die Regel, und klicken Sie dann auf **Außerkraftsetzungen** > **Für ein bestimmtes Objekt der Klasse: Verwaltungsserver**.
-4.    Wählen Sie in der Liste der verfügbaren Verwaltungsserver den Verwaltungsserver aus, auf dem die Regel ausgeführt werden soll.
-5.    Stellen Sie sicher, dass Sie für den Parameterwert **Aktiviert** den Außerkraftsetzungswert in **True** ändern.  
+4.  Wählen Sie in der Liste der verfügbaren Verwaltungsserver den Verwaltungsserver aus, auf dem die Regel ausgeführt werden soll.
+5.  Stellen Sie sicher, dass Sie für den Parameterwert **Aktiviert** den Außerkraftsetzungswert in **True** ändern.  
     ![Außerkraftsetzungsparameter](./media/log-analytics-scom-assessment/rule.png)
 
 Konfigurieren Sie mit dem folgenden Verfahren im gleichen Fenster die Häufigkeit für die Ausführung.
@@ -243,7 +246,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Überprüfen, ob Empfehlungen ignoriert werden
 
-1. Nach Ausführung der nächsten geplanten Bewertung (standardmäßig alle&7; Tage) werden die angegebenen Empfehlungen als „Ignoriert“ gekennzeichnet und nicht auf dem Bewertungsdashboard angezeigt.
+1. Nach Ausführung der nächsten geplanten Bewertung (standardmäßig alle 7 Tage) werden die angegebenen Empfehlungen als „Ignoriert“ gekennzeichnet und nicht auf dem Bewertungsdashboard angezeigt.
 2. Sie können folgende Protokollsuchabfragen verwenden, um alle ignorierten Empfehlungen aufzulisten.
 
     ```

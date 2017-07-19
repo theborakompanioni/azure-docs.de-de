@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 06/02/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 90b67cf3d136882d59ed7fe4210f93fb694e96a6
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 6098216f7dd901ea48fb3ab969c7934cc288b247
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -257,7 +257,8 @@ az storage blob upload \
 
  Weitere Informationen zu den verschiedenen Blobtypen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
 
-### <a name="download-blobs-from-a-container"></a>Herunterladen von Blobs aus einem Container
+
+### <a name="download-a-blob-from-a-container"></a>Herunterladen eines Blobs aus einem Container
 In diesem Beispiel wird veranschaulicht, wie Blobs aus einem Container heruntergeladen werden:
 
 ```azurecli
@@ -267,37 +268,49 @@ az storage blob download \
     --file ~/mydownloadedblob.png
 ```
 
+### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
+
+Auflisten der Blobs in einem Container mit dem Befehl [az storage blob list](/cli/azure/storage/blob#list).
+
+```azurecli
+az storage blob list \
+    --container-name mycontainer \
+    --output table
+```
+
 ### <a name="copy-blobs"></a>Kopieren von Blobs
 Sie können Blobs innerhalb oder zwischen Speicherkonten und Regionen asynchron kopieren.
 
-Im folgenden Beispiel wird veranschaulicht, wie Sie Blobs von einem Speicherkonto in ein anderes kopieren. Wir erstellen zunächst einen Container in einem anderen Konto und geben an, dass auf seine Blobs öffentlich sind anonym zugegriffen werden kann. Als Nächstes laden wir eine Datei in den Container hoch. Schließlich kopieren wird das Blob aus dem Container in den Container **mycontainer** im aktuellen Konto.
+Im folgenden Beispiel wird veranschaulicht, wie Sie Blobs von einem Speicherkonto in ein anderes kopieren. Zunächst erstellen wir einen Container im Quellspeicherkonto, der den öffentlichen Lesezugriff für seine Blobs angibt. Als Nächstes laden wir eine Datei in den Container hoch. Schließlich kopieren wird das Blob aus dem Container in das Zielspeicherkonto.
 
 ```azurecli
-# Create container in second account
+# Create container in source account
 az storage container create \
-    --account-name <accountName2> \
-    --account-key <accountKey2> \
-    --name mycontainer2 \
+    --account-name sourceaccountname \
+    --account-key sourceaccountkey \
+    --name sourcecontainer \
     --public-access blob
 
-# Upload blob to container in second account
+# Upload blob to container in source account
 az storage blob upload \
-    --account-name <accountName2> \
-    --account-key <accountKey2> \
-    --file ~/Images/HelloWorld.png \
-    --container-name mycontainer2 \
-    --name myBlockBlob2
+    --account-name sourceaccountname \
+    --account-key sourceaccountkey \
+    --container-name sourcecontainer \
+    --file ~/Pictures/sourcefile.png \
+    --name sourcefile.png
 
-# Copy blob from second account to current account
+# Copy blob from source account to destination account (destcontainer must exist)
 az storage blob copy start \
-    --source-uri https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2 \
-    --destination-blob myBlobBlob \
-    --destination-container mycontainer
+    --account-name destaccountname \
+    --account-key destaccountkey \
+    --destination-blob destfile.png \
+    --destination-container destcontainer \
+    --source-uri https://sourceaccountname.blob.core.windows.net/sourcecontainer/sourcefile.png
 ```
 
-Auf (von `--source-uri` angegebene) Quellblob-URL muss entweder öffentlich zugegriffen werden können, oder sie muss ein SAS-Token (Shared Access Signature) enthalten.
+Im oben stehenden Beispiel muss der Zielcontainer bereits im Zielspeicherkonto vorhanden sein, damit der Kopiervorgang erfolgreich durchgeführt werden kann. Darüber hinaus muss das im `--source-uri`-Argument angegebene Quellblob entweder ein Token einer Shared Access Signature (SAS) enthalten oder öffentlich zugänglich sein.
 
-### <a name="delete-a-blob"></a>Löschen eines Blobs
+### <a name="delete-a-blob"></a>Löschen eines BLOBs
 Verwenden Sie zum Löschen eines Blobs den Befehl `blob delete`:
 
 ```azurecli

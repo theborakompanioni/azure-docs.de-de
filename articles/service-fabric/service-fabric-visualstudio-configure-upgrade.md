@@ -3,8 +3,8 @@ title: "Konfigurieren von Upgrades für eine Service Fabric-Anwendung | Microsof
 description: "Erfahren Sie, wie Sie die Einstellungen für das Upgrade einer Service Fabric-Anwendung mithilfe von Microsoft Visual Studio konfigurieren."
 services: service-fabric
 documentationcenter: na
-author: cawaMS
-manager: paulyuk
+author: mikkelhegn
+manager: mfussell
 editor: tglee
 ms.assetid: 1757ba85-0b7b-4f16-8a23-2ddaa61c86c6
 ms.service: service-fabric
@@ -12,21 +12,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/18/2016
-ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 121f1d485e34ba30d3e6c2e5d91da633771e80ab
+ms.date: 06/29/2017
+ms.author: mikkelhegn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurieren von Upgrades für eine Service Fabric-Anwendung in Visual Studio
-Die Service Fabric-Tools für Azure Visual Studio bieten Upgradeunterstützung für die Veröffentlichung auf lokalen Clustern oder Remoteclustern. Es hat zwei Vorteile, die Anwendung auf eine neuere Version zu aktualisieren, anstatt die Anwendung beim Testen und Debuggen zu ersetzen:
+Die Service Fabric-Tools für Azure Visual Studio bieten Upgradeunterstützung für die Veröffentlichung auf lokalen Clustern oder Remoteclustern. Es gibt drei Szenarios, bei denen Sie die Anwendung auf eine neuere Version aktualisieren sollten, anstatt die Anwendung beim Testen und Debuggen zu ersetzen:
 
 * Anwendungsdaten gehen während des Upgrades nicht verloren.
 * Die Verfügbarkeit bleibt hoch, sodass es während des Upgrades nicht zu Dienstunterbrechungen kommt, sofern genügend Dienstinstanzen auf die Upgradedomänen verteilt sind.
-
-Für eine Anwendung können während des Upgrades Tests ausgeführt werden.
+* Für eine Anwendung können während des Upgrades Tests ausgeführt werden.
 
 ## <a name="parameters-needed-to-upgrade"></a>Erforderliche Upgradeparameter
 Sie können zwischen zwei Arten der Bereitstellung wählen: normal oder Upgrade. Eine normale Bereitstellung löscht alle vorherigen Informationen zur Bereitstellung und die Daten auf dem Cluster, während eine Upgradebereitstellung diese Daten beibehält. Beim Upgrade einer Service Fabric-Anwendung in Visual Studio müssen Sie Parameter für das Anwendungsupgrade und Richtlinien zur Integritätsprüfung angeben. Mit Parametern für das Anwendungsupgrade wird das Upgrade gesteuert, und die Richtlinien zur Integritätsprüfung bestimmen, ob die Aktualisierung erfolgreich war. Weitere Informationen finden Sie unter [Service Fabric-Anwendungsupgrade: Upgradeparameter](service-fabric-application-upgrade-parameters.md) .
@@ -88,9 +89,3 @@ Das folgende Beispiel zeigt, wie eine eindeutige Integritätsprüfungsrichtlinie
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Bereitstellen einer Anwendung finden Sie unter [Bereitstellen einer vorhandenen Anwendung in Azure Service Fabric](service-fabric-deploy-existing-app.md).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

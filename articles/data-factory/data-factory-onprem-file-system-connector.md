@@ -1,6 +1,6 @@
 ---
-title: Verschieben von Daten in ein bzw. aus einem Dateisystem mithilfe von Azure Data Factory | Microsoft-Dokumente
-description: Erfahren Sie, wie Daten mit Azure Data Factory in ein und aus einem lokalen Dateisystem verschoben werden.
+title: Kopieren von Daten in ein bzw. aus einem Dateisystem mithilfe von Azure Data Factory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Daten mit Azure Data Factory in ein und aus einem lokalen Dateisystem kopiert werden.
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: bd38aa5e4dd50b11f52afdc9dfc0f22c8c072f67
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: d25f1346ae35f7733ac3ca95c59a12616a60cc93
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="move-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Verschieben von Daten in ein und aus einem lokalen Dateisystem mit Azure Data Factory
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein und aus einem lokalen Dateisystem mit Azure Data Factory
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in ein bzw. aus einem lokalen Dateisystem zu kopieren. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien

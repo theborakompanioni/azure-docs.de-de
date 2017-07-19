@@ -3,7 +3,7 @@ title: "Referenz für Analytics in Azure Application Insights | Microsoft Docs"
 description: "Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights. "
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: eea324de-d5e5-4064-9933-beb3a97b350b
 ms.service: application-insights
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2017
+ms.date: 07/05/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3fb2464e3757d316367487506f0aca9f1c2e35cc
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: dd3478966e4e5ccc9f108940401c7ee9454087dd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -35,7 +35,7 @@ Zusätzliche Informationsquellen:
 ## <a name="index"></a>Index
 **Let** [let](#let-clause) | [materialize](#materialize) 
 
-**Abfragen und Operatoren** [as](#as-operator) | [autocluster](#evaluate-autocluster) | [basket](#evaluate-basketv2) | [count](#count-operator) | [datatable](#datatable-operator) | [diffpatterns](#evaluate-diffpatterns) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [extractcolumns](#evaluate-extractcolumns) | [find](#find-operator) | [getschema](#getschema-operator) | [join](#join-operator) | [limit](#limit-operator) | [make-series](#make-series-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [table](#table-operator) | [take](#take-operator) | [top](#top-operator) | [topnested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
+**Abfragen und Operatoren** [as](#as-operator) | [autocluster](#evaluate-autocluster_v2) | [basket](#evaluate-basketv2) | [count](#count-operator) | [datatable](#datatable-operator) | [diffpatterns](#evaluate-diffpatterns_v2) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [extractcolumns](#evaluate-extractcolumns) | [find](#find-operator) | [getschema](#getschema-operator) | [join](#join-operator) | [limit](#limit-operator) | [make-series](#make-series-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [table](#table-operator) | [take](#take-operator) | [top](#top-operator) | [topnested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **Aggregationen** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -44,7 +44,7 @@ Zusätzliche Informationsquellen:
 **Zahlen** [Arithmetische Operatoren](#arithmetic-operators) | [Numerische Literale](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 **Zahlenfolge** 
-[series_fir](#seriesfir) | [series\_fit\_line](#seriesfitline) | [series\_fit\_2lines](#seriesfit2lines) | [series_iir](#seriesiir) | [series_periods](#seriesperiods) | [series_stats](#seriesstats) | 
+[series_fir](#seriesfir) | [series\_fit\_line](#seriesfitline) | [series\_fit\_2lines](#seriesfit2lines) | [series_iir](#seriesiir) |[series_outliers](#seriesoutliers)| [series_periods](#seriesperiods) | [series_stats](#seriesstats) | 
 
 **Datum und Uhrzeit** [Datums- und Uhrzeitausdrücke](#date-and-time-expressions) | [Datums- und Uhrzeitliterale](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
@@ -318,14 +318,16 @@ datatable (Supplier: string, Fruit: string, Price:int)
 
 `evaluate` muss der letzte Operator in der Abfragepipeline sein (mit Ausnahme eines möglichen `render`-Elements). Er darf nicht in einem Funktionsrumpf erscheinen.
 
-[evaluate autocluster](#evaluate-autocluster) | [evaluate basket](#evaluate-basketv2) | [evaluate diffpatterns](#evaluate-diffpatterns) | [evaluate extractcolumns](#evaluate-extractcolumns)
+[evaluate autocluster](#evaluate-autocluster_v2) | [evaluate basket](#evaluate-basketv2) | [evaluate diffpatterns](#evaluate-diffpatterns_v2) | [evaluate extractcolumns](#evaluate-extractcolumns)
 
-#### <a name="evaluate-autocluster"></a>evaluate autocluster
+#### <a name="evaluate-autocluster-deprecated"></a>evaluate autocluster (veraltet)
      T | evaluate autocluster()
 
 Autocluster ist eine schnelle Möglichkeit, um die natürlichen Gruppierungen in einem Dataset zu suchen. So könnten Sie z.B. aus einer Masse an Anforderungsdaten schnell erkennen, dass 80% der 404-Fehler Anforderungen für eine bestimmte URL waren, die von einem Client in einer bestimmten Stadt erfolgten.
 
 Mit AutoCluster werden häufige Muster von diskreten Attributen (Dimensionen) in den Daten ermittelt, und die Ergebnisse der ursprünglichen Abfrage (ob mit 100 oder 100.000 Zeilen) werden auf eine kleine Anzahl von Mustern reduziert. AutoCluster wurde als Hilfe beim Analysieren von Fehlern (z.B. Ausnahmen, Abstürze) entwickelt, kann aber für jedes gefilterte Dataset verwendet werden. 
+
+**Diese Version von `autocluster` ist veraltet. Verwenden Sie stattdessen [autocluster_v2](#evaluate-autocluster_v2).**
 
 **Syntax**
 
@@ -374,6 +376,92 @@ Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich ü
   
     Beispiel: `T | evaluate autocluster("weight_column=sample_Count")` 
 
+<a name="evaluate-autocluster_v2"></a>
+
+#### <a name="evaluate-autoclusterv2"></a>evaluate autocluster_v2
+
+    T | evaluate autocluster_v2()
+
+Mit AutoCluster werden häufige Muster von diskreten Attributen (Dimensionen) in den Daten ermittelt, und die Ergebnisse der ursprünglichen Abfrage (ob mit 100 oder 100.000 Zeilen) werden auf eine kleine Anzahl von Mustern reduziert. AutoCluster wurde als Hilfe beim Analysieren von Fehlern (z.B. Ausnahmen, Abstürze) entwickelt, kann aber für jedes gefilterte Dataset verwendet werden. Der AutoCluster-Algorithmus wurde vom Developer Analytics-Forschungsteam (KustoML@microsoft.com) entwickelt.
+
+Dieses Plug-In ersetzt die veraltete Syntax des autocluster-Plug-Ins.     
+
+**Syntax**
+`T | evaluate autocluster_v2( arguments )`
+
+**Rückgabe** AutoCluster gibt eine (in der Regel kleine) Gruppe von Mustern zurück, in der Teile der Daten mit gemeinsamen Werten über mehrere diskrete Attribute hinweg erfasst werden. Jede Zeile in den Ergebnissen steht für ein Muster. Die erste Spalte enthält die Segment-ID. Die nächsten beiden Spalten enthalten die Anzahl und den Prozentsatz der Zeilen aus der ursprünglichen Abfrage, die mit dem Muster erfasst wurden. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder einen Platzhalterwert (standardmäßig NULL) – also variable Werte. Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich überlappen und decken normalerweise nicht alle ursprünglichen Zeilen ab. Einige Zeilen fallen ggf. nicht in eines der Muster.
+
+**Tipps** Verwenden Sie `where` und `project` im Pipe-Eingangselement, um die Daten auf den Teil zu reduzieren, der für Sie interessant ist.
+Wenn Sie eine interessante Zeile finden, können Sie dafür einen Drilldown durchführen, indem Sie die jeweiligen Werte dem `where` -Filter hinzufügen.
+
+**Argumente (alle optional)** `T | evaluate autocluster_V2([*SizeWight*,*WeightColumn*,*NumSeeds*,*CustomWildcard*,...])
+
+Alle Argumente sind optional, aber sie müssen wie oben angegeben sortiert werden. Um anzugeben, dass der Standardwert verwendet werden sollte, können Sie eine Tilde („~“) angeben (siehe Beispiele unten).
+
+**Verfügbare Argumente**
+
+- SizeWeight - 0<*double* <1 [Standardwert: 0,5] Hiermit erhalten Sie die Kontrolle über die Balance zwischen der „generischen“ (hohe Abdeckung) und „informativen“ (viele gemeinsame Werte) Vorgehensweise. Wenn Sie den Wert erhöhen, wird die Anzahl von Mustern normalerweise reduziert, und jedes Muster deckt einen größeren Prozentsatz ab. Wenn Sie den Wert verringern, werden normalerweise mehr spezifische Muster mit mehr gemeinsamen Werten und einer geringeren prozentualen Abdeckung produziert. Die Formel im Hintergrund ist ein gewichteter geometrischer Mittelwert zwischen der normalisierten generischen Punktzahl und der informativen Punktzahl mit *SizeWeight* und *1-SizeWeight* als Gewichtungen. 
+
+**Beispiel**
+`T | evaluate autocluster_v2(0.8)`
+
+- WeightColumn - *column_name*
+
+Berücksichtigt jede Zeile in der Eingabe gemäß dem angegebenen Gewicht (standardmäßig verfügt jede Spalte über eine Gewichtung von „1“). Das Argument muss ein Name einer numerischen Spalte sein (z.B. int, long, real). Eine übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
+
+**Beispiel**
+`T | evaluate autocluster_v2('~', sample_Count)`
+
+`- NumSeeds - *int* [Standardwert: 25]
+
+Die Anzahl von Startwerten bestimmt die Anzahl von anfänglichen lokalen Suchpunkten des Algorithmus. Je nach der Struktur der Daten erhöht sich beim Erhöhen der Anzahl von Startwerten in einigen Fällen die Anzahl (bzw. Qualität) von Ergebnissen, da ein größerer Suchbereich vorhanden ist. Gleichzeitig verlangsamen sich die Abfragen. Der Wert verfügt in beiden Richtungen über abnehmende Ergebnisse. Eine Verringerung unter den Wert 5 führt daher nur zu vernachlässigbaren Leistungssteigerungen, und bei einer Erhöhung auf über 50 werden nur selten weitere Muster generiert.
+
+**Beispiel**
+`T | evaluate autocluster_v2('~','~',15)`
+
+- CustomWildcard - *any_value_per_type*
+
+Legt den Platzhalterwert für einen bestimmten Typ in der Ergebnistabelle fest, der angibt, dass das aktuelle Muster keine Einschränkung für diese Spalte besitzt. Der Standard ist „null“, da der Standard eine leere Zeichenfolge ist. Ist der Standard ein gültiger Wert in den Daten, muss ein anderer Platzhalterwert verwendet werden (z.B. *).
+
+**Beispiel**
+
+`T | evaluate autocluster_v2('~','~','~',int (-1), double(-1), long(0), datetime(1900-1-1))`
+
+**Beispiel**
+```
+StormEvents 
+| where monthofyear(StartTime) == 5
+| extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
+| project State , EventType , Damage
+| evaluate autocluster_v2(0.6)
+```
+**Ergebnisse**
+|SegmentId|Count|Prozent|Zustand|EventType|Damage|
+----------|-----|-------|-----|---------|------|
+0|2.278|38,7||Hagel|NO
+1|512|8,7||Sturm|JA
+2|898|15,3|TEXAS|||
+
+**Beispiel mit benutzerdefinierten Platzhaltern**
+```
+StormEvents 
+| where monthofyear(StartTime) == 5
+| extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
+| project State , EventType , Damage 
+| evaluate autocluster_v2(0.2, '~', '~', '*')
+```
+**Ergebnisse**
+|SegmentId|Count|Prozent|Zustand|EventType|Damage|
+----------|-----|-------|-----|---------|------|
+0|2.278|38,7|\*|Hagel|NO
+1|512|8,7|\*|Sturm|JA
+2|898|15,3|TEXAS|\*|\*|
+
+**Zusätzliche Informationen**
+
+-  AutoCluster basiert zum größten Teil auf dem Seed-Expand-Algorithmus des folgenden Dokuments: [Algorithms for Telemetry Data Mining using Discrete Attributes](http://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1) (Algorithmen für Data Mining von Telemetriedaten mit diskreten Attributen). Link zum gesamten Text: [PDF](https://kusto.azurewebsites.net/docs/queryLanguage/images/queries/ICPRAM17telemetry.pdf). 
+
+
 #### <a name="evaluate-basket-deprecated"></a>evaluate basket (veraltet)
 
      T | evaluate basket()
@@ -417,9 +505,13 @@ Ersetzt die veraltete Syntax `evaluate basket`.
 
 **Rückgabe**
 
-Alle Muster, die in mehr als einem angegebenen Bruchteil (Standardwert: 0,05) der Ereignisse enthalten sind. In jedem Muster enthalten Spalten, die nicht im Muster (d.h. ohne Einschränkung auf einen bestimmten Wert) festgelegt sind, einen Platzhalterwert, der standardmäßig ein Nullwert ist (im Abschnitt „Argumente“ erfahren Sie, wie sie manuell geändert werden können).
+Der Basket gibt alle häufigen Muster zurück, die über dem Verhältnisschwellenwert (Standard: 0,05) der Zeilen liegen. Jede Zeile in den Ergebnissen steht für ein Muster.
+
+Die erste Spalte enthält die Segment-ID. Die nächsten beiden Spalten enthalten die Anzahl und den Prozentsatz der Zeilen aus der ursprünglichen Abfrage, die mit dem Muster erfasst wurden. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder einen Platzhalterwert (standardmäßig NULL) – also variable Werte.
 
 **Argumente (alle optional)**
+
+Beispiel: `T | evaluate basket_v2([Threshold, WeightColumn, MaxDimensions, CustomWildcard, CustomWildcard, ...])`
 
 Alle Argumente sind optional, müssen jedoch in der folgenden Reihenfolge festgelegt werden. Verwenden Sie das Tildesymbol „~“ (siehe folgendes Beispiel), um anzugeben, dass ein Standardwert verwendet werden soll.
 
@@ -427,32 +519,69 @@ Alle Argumente sind optional, müssen jedoch in der folgenden Reihenfolge festge
   
     Legt das minimale Verhältnis der Zeilen fest, das als häufig angesehen werden soll (Muster mit einem geringeren Verhältnis werden nicht zurückgegeben).
   
-    Beispiel: `T | evaluate basket(0.02)`
-* Gewichtungsspalte *itemCount*
+    Beispiel: `T | evaluate basket_v2(0.02)`
+* Weight column *-column_name*
   
-    Verwenden Sie dieses Argument, um Stichproben und Metrikvorabaggregation zu berücksichtigen. Jeder Zeile wird die für diese Spalte festgelegte Gewichtung zugeordnet. Standardmäßig weist jede Zeile eine Gewichtung von „1“ auf. Dies berücksichtigt das Zuordnen von Buckets oder die Aggregation der Daten, die bereits in jeder Zeile eingebettet ist.
+    Berücksichtigt jede Zeile in der Eingabe gemäß dem angegebenen Gewicht (standardmäßig verfügt jede Spalte über eine Gewichtung von „1“). Das Argument muss ein Name einer numerischen Spalte sein (z.B. int, long, real). Eine übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
   
-    Beispiel: `T | evaluate basket('~', itemCount)`
+    Beispiel: `T | evaluate basket_v2('~', sample_Count)`
 * Max. Dimensionen: 1 < *int* (Standard: 5)
   
     Legt die maximale Anzahl von nicht korrelierten Dimensionen pro Basket fest – standardmäßig begrenzt, um die Abfragelaufzeit zu verringern.
 
-    Beispiel: `T | evaluate basket('~', '~', 3)`
+    Beispiel: `T | evaluate basket_v2('~', '~', 3)`
 * Benutzerdefinierte Platzhalter-Typen: *any value per type*
   
     Legt den Platzhalterwert für einen bestimmten Typ in der Ergebnistabelle fest, der angibt, dass das aktuelle Muster keine Einschränkung für diese Spalte besitzt. Der Standard ist „null“, da der Standard eine leere Zeichenfolge ist. Ist der Standard ein gültiger Wert in den Daten, muss ein anderer Platzhalterwert verwendet werden (z.B. *).
 
     Beispiel: `T | evaluate basket_v2('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))`
 
-**Beispiel**
+**Beispiele**
 
-``` AIQL
-requests 
-| evaluate basket_v2(0.7, itemCount)
+``` 
+StormEvents 
+| where monthofyear(StartTime) == 5
+| extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
+| project State, EventType, Damage, DamageCrops
+| evaluate basket_v2(0.2)
 ```
+Ergebnisse
 
-#### <a name="evaluate-diffpatterns"></a>evaluate diffpatterns
-     requests | evaluate diffpatterns("split=success")
+|SegmentId|Count|Prozent|Zustand|EventType|Damage|DamageCrops
+----------|-----|-------|-----|---------|------|-----------
+0|4.574|77,7|||NO|0
+1|2.278|38,7||Hagel|NO|0
+2|5.675|96,4||||0
+3|2.371|40,3||Hagel||0
+4|1.279|21,7||Sturm||0
+5|2.468|41,9||Hagel|||
+6|1.310|22,3|||JA||
+7|1.291|21,9||Sturm||
+
+Beispiel mit benutzerdefinierten Platzhaltern
+```
+StormEvents 
+| where monthofyear(StartTime) == 5
+| extend Damage = iff(DamageCrops + DamageProperty > 0 , "YES" , "NO")
+| project State, EventType, Damage, DamageCrops
+| evaluate basket_v2(0.2, '~', '~', '*', int(-1))
+```
+Ergebnisse
+
+|SegmentId|Count|Prozent|Zustand|EventType|Damage|DamageCrops
+----------|-----|-------|-----|---------|------|-----------
+0|4.574|77,7|\*|\*|NO|0
+1|2.278|38,7|\*|Hagel|NO|0
+2|5.675|96,4|\*|\*|\*|0
+3|2.371|40,3|\*|Hagel|\*|0
+4|1.279|21,7|\*|Sturm|\*|0
+5|2.468|41,9|\*|Hagel|\*|-1|
+6|1.310|22,3|\*|\*|JA|-1|
+7|1.291|21,9|\*|Sturm|\*|-1|
+
+#### <a name="evaluate-diffpatterns-deprecated"></a>evaluate diffpatterns (veraltet)
+**Diese Version des diffpatterns-Plug-Ins ist veraltet. Verwenden Sie die neue Syntax für das [diffpatterns](#evaluate-diffpatterns_v2)-Plug-In**.
+requests | evaluate diffpatterns("split=success")
 
 Diffpatterns identifiziert die Unterschiede zwischen zwei Datasets mit der gleichen Struktur – z.B. das Anforderungsprotokoll zum Zeitpunkt eines Vorfalls sowie normale Anforderungsprotokolle. Diffpatterns wurde als Hilfe bei der Analyse von Fehlern entwickelt (z.B. per Vergleich von Fehlern mit Nicht-Fehlern in einem bestimmten Zeitraum). Es ist damit ggf. aber auch möglich, Unterschiede zwischen zwei beliebigen Datasets mit derselben Struktur zu ermitteln. 
 
@@ -502,6 +631,110 @@ Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich ü
     Berücksichtigt jede Zeile in der Eingabe gemäß dem angegebenen Gewicht (standardmäßig verfügt jede Spalte über eine Gewichtung von „1“). Eine übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
   
     `requests | evaluate autocluster("weight_column=itemCount")`
+
+<a name="evaluate-diffpatterns_v2"></a>
+#### <a name="evaluate-diffpatternsv2"></a>evaluate diffpatterns_v2
+'T | evaluate diffpatterns_v2(splitColumn)'
+
+Mit Diffpatterns werden zwei Datasets mit der gleichen Struktur verglichen und Muster mit diskreten Attributen (Dimensionen) ermittelt, die die Unterschiede zwischen den beiden Datasets ausmachen. Diffpatterns wurde als Hilfe bei der Analyse von Fehlern entwickelt (z.B. per Vergleich von Fehlern mit Nicht-Fehlern in einem bestimmten Zeitraum). Es ist damit ggf. aber auch möglich, Unterschiede zwischen zwei beliebigen Datasets mit derselben Struktur zu ermitteln. Der Diffpatterns-Algorithmus wurde vom Developer Analytics-Forschungsteam (KustoML@microsoft.com) entwickelt.
+
+Dieses Plug-In ersetzt die Syntax des veralteten diffpatterns-Plug-Ins.
+
+**Syntax**
+
+`T | evaluate diffpatterns_v2(SplitColumn, SplitValueA, SplitValueB [, arguments] )`
+
+**Rückgabe**
+
+Diffpatterns gibt eine (normalerweise kleine) Gruppe von Mustern zurück, in denen unterschiedliche Teile der Daten in den beiden Datasets erfasst werden (also ein Muster, bei dem ein größerer Prozentsatz der Zeilen im ersten Dataset und ein geringerer Prozentsatz der Zeilen im zweiten Dataset erfasst wird). Jede Zeile in den Ergebnissen steht für ein Muster.
+Die erste Spalte enthält die Segment-ID. Die folgenden vier Spalten enthalten die Anzahl und den Prozentsatz von Spalten der ursprünglichen Abfrage, die vom Muster in jedem Dataset erfasst werden. Die sechste Spalte enthält die Differenz (in absoluten Prozentpunkten) zwischen den beiden Datasets. Die übrigen Spalten stammen aus der ursprünglichen Abfrage.
+In jedem Muster enthalten Spalten, die nicht im Muster (d.h. ohne Einschränkung auf einen bestimmten Wert) festgelegt sind, einen Platzhalterwert, der standardmäßig NULL ist (im Abschnitt „Argumente“ erfahren Sie, wie Platzhalter manuell geändert werden können).
+Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich überlappen und decken normalerweise nicht alle ursprünglichen Zeilen ab. Einige Zeilen fallen ggf. nicht in eines der Muster.
+
+**Tipps**
+
+Verwenden Sie „where“ und „project“ im Pipe-Eingangselement, um die Daten auf den Teil zu reduzieren, der für Sie interessant ist.
+Wenn Sie eine interessante Zeile finden, können Sie dafür einen Drilldown durchführen, indem Sie die jeweiligen Werte dem `where` -Filter hinzufügen.
+
+**Erforderliche Argumente**
+
+`T | evaluate diffpatterns_v2(SplitColumn, SplitValueA, SplitValueB [, WeightColumn, Threshold, MaxDimensions, CustomWildcard, ...])` 
+
+- SplitColumn - *column_name* 
+
+Weist den Algorithmus an, wie die Abfrage in Datasets geteilt wird. Gemäß den angegebenen Werten für die Argumente SplitValueA und SplitValueB (siehe unten) teilt der Algorithmus die Abfrage in zwei Datasets („A“ und „B“) und analysiert ihre Unterschiede. Die split-Spalte muss mindestens zwei eindeutige Werte enthalten.
+
+- SplitValueA - *string*
+
+Eine Zeichenfolgendarstellung für einen der Werte in SplitColumn, der angegeben wurde. Alle Zeilen, die diesen Wert in SplitColumn enthalten, werden als Dataset „A“ angesehen.
+
+- SplitValueB - *string*
+
+Eine Zeichenfolgendarstellung für einen der Werte in SplitColumn, der angegeben wurde. Alle Zeilen, die diesen Wert in SplitColumn enthalten, werden als Dataset „B“ angesehen.
+
+**Beispiel**
+
+```
+T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns_v2(splitColumn, "Success","Failure")
+```
+**Optionale Argumente**
+
+Alle anderen Argumente sind optional, aber sie müssen wie unten angegeben sortiert werden. Um anzugeben, dass der Standardwert verwendet werden sollte, können Sie eine Tilde („~“) angeben (siehe Beispiele unten).
+
+- WeightColumn - *column_name*
+
+Berücksichtigt jede Zeile in der Eingabe gemäß dem angegebenen Gewicht (standardmäßig verfügt jede Spalte über eine Gewichtung von „1“). Das Argument muss ein Name einer numerischen Spalte sein (z.B. int, long, real). Eine übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
+
+**Beispiel**
+```
+T | extend splitColumn=iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns_v2(splitColumn, "Success","Failure", sample_Count)
+```
+- Threshold - 0.015 < double < 1 [Standardwert: 0,05]
+
+Legt die minimale Musterdifferenz (Verhältnis) zwischen den beiden Datasets fest.
+
+**Beispiel**
+```
+T | extend splitColumn = iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns_v2(splitColumn, "Success","Failure", "~", 0.04)
+```
+- MaxDimensions - 0 < int [Standardwert: unbegrenzt]
+
+Legt die maximale Anzahl von nicht korrelierten Dimensionen pro Ergebnismuster fest, und es wird ein Grenzwert angegeben, um die Laufzeit von Abfragen zu verringern.
+
+**Beispiel**
+```
+T | extend splitColumn = iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns_v2(splitColumn, "Success","Failure", "~", "~", 3)
+```
+- CustomWildcard - *any_value_per_type*
+
+Legt den Platzhalterwert für einen bestimmten Typ in der Ergebnistabelle fest, der angibt, dass das aktuelle Muster keine Einschränkung für diese Spalte besitzt. Der Standard ist „null“, da der Standard eine leere Zeichenfolge ist. Ist der Standard ein gültiger Wert in den Daten, muss ein anderer Platzhalterwert verwendet werden (z.B. *). Unten finden Sie ein Beispiel hierzu.
+
+**Beispiel**
+```
+T | extend splitColumn = iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns_v2(splitColumn, "Success","Failure", "~", "~", "~", int(-1), double(-1), long(0), datetime(1900-1-1))
+```
+
+**Beispiel**
+```
+StormEvents 
+| where monthofyear(StartTime) == 5
+| extend Damage = iff(DamageCrops + DamageProperty > 0 , 1 , 0)
+| project State , EventType , Source , Damage, DamageCrops
+| evaluate diffpatterns_v2(Damage, "0", "1" )
+```
+**Ergebnisse**
+
+|SegmentId|CountA|CountB|PercentA|PercentB|DiffAB|Zustand|EventType|Quelle|DamageCrops
+----------|------|------|--------|--------|------|-----|---------|------|-----------
+0|2.278|93|49,8|7,1|42,7||Hagel||0
+1|779|512|17,03|39,08|22,05||Sturm|||
+2|1.098|118|24,01|9,01|15|||Ausgebildeter „Spotter“|0|
+3|136|158|2,97|12,06|9,09|||Zeitung||
+4|359|214|7,85|16,34|8,49||Überschwemmung|||
+5|50|122|1,09|9,31|8,22|IOWA||||
+6|655|279|14,32|21,3|6,98|||Strafverfolgungsbehörden||
+7|150|117|3,28|8,93|5,65||Hochwasser|||
+8|362|176|7,91|13,44|5,52|||Katastrophenschutz||
 
 #### <a name="evaluate-extractcolumns"></a>evaluate extractcolumns
      exceptions | take 1000 | evaluate extractcolumns("details=json") 
@@ -2347,7 +2580,41 @@ range t from 1 to 1 step 1
 |2,0|3.0|
 |3.0|6,0|
 |4,0|10,0|
+### <a name="seriesoutliers"></a>series_outliers 
 
+Bei der Funktion „series_outliers()“ wird eine Spalte mit einem dynamischen Array als Eingabe verwendet und ein dynamisches numerisches Array gleicher Länge als Eingabe generiert. Jeder Wert des Arrays steht für eine Punktzahl, die eine mögliche Anomalie gemäß Tukey-Test angibt. Ein Wert, der höher als 1,5 oder kleiner als -1,5 ist, weist auf einen Anstieg bzw. einen Abfall der Anomalie in demselben Element der Eingabe hin.  
+
+**Syntax**  
+
+```
+series_outliers(x,kind,ignore_val,min_percentile,max_percentile)  
+```
+**Argumente** 
+* *x:* Dynamische Arrayzelle, die ein Array aus numerischen Werten ist. Für die Werte wird angenommen, dass sie äquidistant sind, da es andernfalls zu unerwarteten Ergebnissen kommt.  
+* *kind:* Algorithmus der Ausreißererkennung. Derzeit werden „tukey“ und „ctukey“ unterstützt. Der Standardwert ist „ctukey“.  
+* *ignore_val:* Numerischer Wert, der auf fehlende Werte der Serie hinweist. Standardwert ist „double(null)“.
+* *min_percentile:* Für die Berechnung des normalen Bereichs zwischen Quantilen. Standardwert ist 10 (nur „ctukey“).
+* *max_percentile:* Für die Berechnung des normalen Bereichs zwischen Quantilen. Standardwert ist 90 (nur „ctukey“).
+
+In der folgenden Tabelle sind die Unterschiede zwischen „tukey“ und „ctukey“ aufgeführt:
+
+|Algorithmus|Quantil-Standardbereich|Unterstützt benutzerdefinierten Quantilbereich|
+|---------|----------------------|------------------------------|
+|„tukey“|25%/75%|Nein|
+|„ctukey“|10%/90%|Ja|
+
+**Wichtiger Hinweis** Am besten verwenden Sie diese Funktion, indem Sie sie auf die Ergebnisse des Operators `make-series` anwenden.
+
+**Beispiele** 
+
+Folgende Eingabe:   
+```
+[30,28,5,27,31,38,29,80,25,37,30]
+``` 
+Rückgabe von „series_outliers()“:  
+[0.0,0.0,-3.206896551724138,-0.1724137931034483,0.0,2.6666666666666667,0.0,16.666666666666669,-0.4482758620689655,2.3333333333333337,0.0]
+
+Dies bedeutet, dass – verglichen zum Rest der Serie – 5 eine abnehmende Anomalie und 80 eine zunehmende Anomalie ist. 
 
 ### <a name="seriesperiods"></a>series_periods
 
@@ -3095,7 +3362,8 @@ Verwenden Sie `parsejson` zum Erstellen eines dynamischen Literals (Alias: `tody
 * `parsejson('21')` : ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
 * `parsejson('"21"')` : ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
 
-> ![HINWEIS] Doppelte Anführungszeichen (`"`) müssen zum Einschließen von Bezeichnungen und Zeichenfolgenwerten im JSON-Format verwendet werden. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
+> [!NOTE]
+> Doppelte Anführungszeichen (`"`) müssen zum Einschließen von Bezeichnungen und Zeichenfolgenwerten in JSON-Code verwendet werden. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
 > 
 
 In diesem Beispiel wird ein dynamischer Wert erstellt, und anschließend werden dessen Felder verwendet:
@@ -3279,7 +3547,7 @@ Für das folgende Beispiel gilt, dass `customDimensions.person` ein `string`-Ele
 "\"addresses\":[{\"postcode\":\"C789\",\"street\":\"high st\",\"town\":\"Cardigan\"},{\"postcode\":\"J456\",\"street\":\"low st\",\"town\":\"Jumper\"}],\"name\":\"Ada\""
 ```
 
-dann ruft das folgende Fragment zunächst den Wert des `duration`-Slots im Objekt und daraus zwei Slots ab: `duration.value` und  `duration.min` (bzw. `118.0` und `110.0`).
+dann ruft das folgende Fragment zunächst den Wert des `duration`-Slots im Objekt und daraus zwei Slots ab: `duration.value` und `duration.min` (bzw. `118.0` und `110.0`).
 
 ```AIQL
 customEvents
@@ -3288,7 +3556,8 @@ customEvents
 | extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```
 
-> ![HINWEIS] Doppelte Anführungszeichen müssen zum Einschließen von Bezeichnungen und Zeichenfolgenwerten im JSON-Format verwendet werden. 
+> [!NOTE]
+> Doppelte Anführungszeichen müssen zum Einschließen von Bezeichnungen und Zeichenfolgenwerten in JSON-Code verwendet werden. 
 >
 
 

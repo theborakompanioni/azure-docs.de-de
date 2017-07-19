@@ -9,7 +9,7 @@ editor: monicar
 tags: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial-develop, mvc
+ms.custom: mvc,scale out apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,10 +17,10 @@ ms.workload:
 ms.date: 05/08/2017
 ms.author: AyoOlubek
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 80df7b504d13fe1b3be9806eb95e3980d7790970
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 0aea69d86a51c38c99a72f46737de1eea27bef83
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -42,18 +42,21 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten:
-* PowerShell und das [aktuelle Azure PowerShell-SDK](http://azure.microsoft.com/downloads/) müssen auf Ihrem Computer installiert sein.
 
-* Die aktuelle Version von [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Bei der Installation von SQL Server Management Studio wird auch die aktuelle Version von „SQLPackage“ installiert. Dies ist ein Befehlszeilenprogramm, mit dem eine Reihe von Datenbankentwicklungsaufgaben automatisiert werden kann.
+* Die neueste Version von PowerShell und das [neueste Azure PowerShell SDK](http://azure.microsoft.com/downloads/)
 
-* [Java Runtime Environment (JRE) 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) und das [aktuelle JAVA Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) müssen auf Ihrem Computer installiert sein. 
+* Die aktuelle Version von [SQL Server Management Studio](http://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) Bei der Installation von SQL Server Management Studio wird auch die aktuelle Version von „SQLPackage“ installiert. Dies ist ein Befehlszeilenprogramm, mit dem eine Reihe von Datenbankentwicklungsaufgaben automatisiert werden kann.
 
-* [Apache Maven](https://maven.apache.org/download.cgi) muss auf Ihrem Computer installiert sein. Maven dient zum einfacheren Verwalten von Abhängigkeiten sowie Erstellen, Testen und Ausführen Ihres Java-Beispielprojekts.
+* [Java Runtime Environment (JRE) 8](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) und das [aktuelle JAVA Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+
+* [Apache Maven](https://maven.apache.org/download.cgi) Maven dient zum einfacheren Verwalten von Abhängigkeiten sowie Erstellen, Testen und Ausführen Ihres Java-Beispielprojekts.
 
 ## <a name="set-up-data-environment"></a>Einrichten der Datenumgebung
 
-Sie werden eine Datenbank pro Mandant bereitstellen. Das Datenbank-pro-Mandant-Modell bietet den höchsten Grad an Isolation zwischen Mandanten bei geringen DevOps-Kosten. Um die Kosten von Cloudressourcen zu optimieren, stellen Sie die Mandantendatenbanken auch in einem elastischen Pool bereit, sodass Sie die Preisleistung für eine Gruppe von Datenbanken optimieren können. Informationen zu anderen Datenbankbereitstellungs-Modellen [finden Sie hier](sql-database-design-patterns-multi-tenancy-saas-applications.md#multitenant-data-models). 
+Sie werden eine Datenbank pro Mandant bereitstellen. Das Datenbank-pro-Mandant-Modell bietet den höchsten Grad an Isolation zwischen Mandanten bei geringen DevOps-Kosten. Um die Kosten von Cloudressourcen zu optimieren, stellen Sie die Mandantendatenbanken auch in einem elastischen Pool bereit, sodass Sie die Preisleistung für eine Gruppe von Datenbanken optimieren können. Informationen zu anderen Datenbankbereitstellungs-Modellen [finden Sie hier](sql-database-design-patterns-multi-tenancy-saas-applications.md#multi-tenant-data-models).
 
 Führen Sie diese Schritte zum Erstellen einer SQL Server-Instanz und eines elastischen Pools aus, der alle Ihre Mandantendatenbanken hostet. 
 
@@ -71,7 +74,7 @@ Führen Sie diese Schritte zum Erstellen einer SQL Server-Instanz und eines elas
    
    # Store current client IP address (modify to include your IP address)
    $startIpAddress = 0.0.0.0 
-   $endIpAddress = 0.0.0.1
+   $endIpAddress = 0.0.0.0
    ```
    
 2. Melden Sie sich bei Azure an, und erstellen Sie eine SQL Server-Instanz und elastische Pools. 
@@ -505,6 +508,7 @@ Remove-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" `
 Versuchen Sie, mit der Java-Anwendung eine Verbindung mit „tenant1“ herzustellen. Sie erhalten eine Fehlermeldung, dass der Mandant nicht vorhanden ist.
 
 ## <a name="next-steps"></a>Nächste Schritte 
+
 In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Einrichten einer Datenbankumgebung zur Unterstützung einer mehrinstanzenfähigen SaaS-Anwendung nach dem Datenbank-pro-Mandant-Muster

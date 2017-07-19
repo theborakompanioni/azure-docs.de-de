@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 524b87d95d3060c780b296350797501847c80638
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: e3079b55036a514b31249e5930f40ab4346f437a
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Amazon Redshift zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet. 
 
-Sie können Daten von Amazon Redshift in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus Amazon Redshift in andere Datenspeicher und nicht das Verschieben aus anderen Datenspeichern in Amazon Redshift.
+Sie können Daten von Amazon Redshift in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit das Verschieben von Daten aus Amazon Redshift in andere Datenspeicher und nicht das Verschieben aus anderen Datenspeichern in Amazon Redshift.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Wenn Sie Daten in einen einem lokalen Datenspeicher verschieben möchten, installieren Sie das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) auf dem lokalen Computer. Gewähren Sie anschließend dem Datenverwaltungsgateway (verwenden Sie die IP-Adresse des Computers) den Zugriff auf Amazon Redshift-Cluster. Anweisungen finden Sie unter [Authorize access to the cluster](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) (Autorisieren des Zugriffs auf den Cluster).
-* Wenn Sie Daten in einen Azure-Datenspeicher verschieben, nutzen Sie die Auflistung der Compute-IP-Adressbereiche unter [Azure Data Center IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (IP-Adressbereiche der Microsoft Azure-Rechenzentren einschließlich SQL-Bereiche).
+* Wenn Sie Daten in einen Azure-Datenspeicher verschieben, nutzen Sie die Auflistung der Compute-IP-Adressbereiche unter [Azure Data Center IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653), um die von den Azure-Rechenzentren verwendeten Compute-IP-Adressen und SQL-Bereiche anzuzeigen.
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einer Amazon Redshift-Quelle verschiebt.
@@ -39,9 +40,9 @@ Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt: 
 
-1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang 
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert 
+1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
 Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem Amazon Redshift-Datenspeicher verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus Amazon Redshift in ein Azure-Blob](#json-example-copy-data-from-amazon-redshift-to-azure-blob). 
 
@@ -62,7 +63,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt typeProperties für ein Dataset vom Typ **RelationalTable** (wozu ein Amazon Redshift-Dataset gehört) hat die folgenden Eigenschaften.
+Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. Er bietet Informationen über den Speicherort der Daten im Datenspeicher. Der Abschnitt typeProperties für ein Dataset vom Typ **RelationalTable** (wozu ein Amazon Redshift-Dataset gehört) hat die folgenden Eigenschaften.
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
@@ -73,7 +74,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
-Wenn die Quelle der Kopieraktivität vom Typ **RelationalSource** ist (zu dem Amazon Redshift gehört), sind im Abschnitt typeProperties die folgenden Eigenschaften verfügbar:
+Wenn die Quelle der Kopieraktivität vom Typ **RelationalSource** ist (zu dem Amazon Redshift gehört), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
@@ -127,7 +128,7 @@ Das Beispiel kopiert stündlich Daten aus einem Abfrageergebnis in Amazon Redshi
 ```
 **Amazon Redshift-Eingabedataset:**
 
-Mit der Festlegung **"external": true** wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird. Legen Sie diese Eigenschaft für ein Eingabedataset, das nicht durch eine Aktivität in der Pipeline erstellt wird, auf „true“ fest.
+Die Festlegung `"external": true` teilt dem Data Factory-Dienst mit, dass dieses Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird. Legen Sie diese Eigenschaft für ein Eingabedataset, das nicht durch eine Aktivität in der Pipeline erstellt wird, auf „true“ fest.
 
 ```json
 {

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2f0b7a04f4b732277abc65dd5fe0844d6e906496
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 78025789fd03d3c3a6cfb170329d9d51ac282034
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 ---
 
@@ -118,6 +119,10 @@ Der Lastenausgleich kann mithilfe von Resource Manager-basierten Vorlagen, APIs 
 Sie können einer Gruppe von virtuellen Computern mehr als eine öffentliche IP-Adresse mit Lastenausgleich zuweisen. Mit dieser Funktion können Sie mehrere SSL-Websites und/oder mehrere Listener für SQL Server-AlwaysOn-Verfügbarkeitsgruppen in der gleichen Gruppe virtueller Computer hosten. Weitere Informationen finden Sie unter [Mehrere VIPs pro Clouddienst](load-balancer-multivip.md).
 
 [!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
+
+## <a name="limitations"></a>Einschränkungen
+
+Back-End-Pools des Load Balancer können mit Ausnahme des Basic-Tarifs beliebige VM-SKUs enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

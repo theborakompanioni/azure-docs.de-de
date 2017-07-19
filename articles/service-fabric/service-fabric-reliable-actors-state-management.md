@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 18a4ab09d83c0a664317191ef15834cc7bf335fc
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -33,7 +34,7 @@ Obwohl Akteure als zustandsbehaftet gelten, bedeutet das nicht, dass sie den Zus
 * **Flüchtiger Zustand**: Es werden mindestens drei Replikate des Zustands erstellt, und der Zustand wird nur im Arbeitsspeicher gespeichert. Dadurch wird Ausfallsicherheit bei Knotenausfällen, Akteurausfällen, Upgrades und Ressourcenausgleich gewährleistet. Der Zustand wird jedoch nicht persistent auf einem Datenträger gespeichert. Wenn alle Replikate gleichzeitig verloren gehen, geht auch der Zustand verloren.
 * **Kein persistenter Zustand**: Der Zustand wird weder repliziert noch auf den Datenträger geschrieben. Diese Ebene eignet sich für Akteure, die den Zustand nicht zuverlässig beibehalten müssen.
 
-Jede Persistenzebene stellt einfach einen anderen *Zustandsanbieter* und eine andere *Replikationskonfiguration* Ihres Diensts dar. Ob der Zustand auf einen Datenträger geschrieben wird, ist abhängig vom Zustandsanbieter – der Komponente in einer Reliable Services-Instanz, die den Zustand speichert. Die Replikation hängt davon ab, mit wie vielen Replikaten ein Dienst bereitgestellt wird. Wie bei Reliable Services können der Zustandsanbieter und die Replikatanzahl einfach manuell festgelegt werden. Das Akteurframework enthält ein Attribut, das bei Verwendung für einen Akteur automatisch einen Standardzustandsanbieter auswählt und Einstellungen für die Replikatanzahl erstellt, um eine der folgenden drei Persistenzeinstellungen zu erreichen.
+Jede Persistenzebene stellt einfach einen anderen *Zustandsanbieter* und eine andere *Replikationskonfiguration* Ihres Diensts dar. Ob der Zustand auf einen Datenträger geschrieben wird, ist abhängig vom Zustandsanbieter – der Komponente in einer Reliable Services-Instanz, die den Zustand speichert. Die Replikation hängt davon ab, mit wie vielen Replikaten ein Dienst bereitgestellt wird. Wie bei Reliable Services können der Zustandsanbieter und die Replikatanzahl einfach manuell festgelegt werden. Das Akteurframework enthält ein Attribut, das bei Verwendung für einen Akteur automatisch einen Standardzustandsanbieter auswählt und Einstellungen für die Replikatanzahl erstellt, um eine der folgenden drei Persistenzeinstellungen zu erreichen. Das StatePersistence-Attribut wird nicht von abgeleiteten Klasse geerbt. Jeder Typ „Actor“ muss seinen „StatePersistence“-Grad angeben.
 
 ### <a name="persisted-state"></a>Persistenter Zustand
 ```csharp
@@ -81,7 +82,7 @@ class MyActorImpl extends FabricActor implements MyActor
 Diese Einstellung verwendet einen rein speicherinternen Zustandsanbieter und legt die Replikatanzahl auf eins fest.
 
 ### <a name="defaults-and-generated-settings"></a>Standardeinstellungen und generierte Einstellungen
-Bei Verwendung des `StatePersistence`-Attributs wird zur Laufzeit automatisch ein Zustandsanbieter für Sie ausgewählt, wenn der Akteurdienst gestartet wird. Die Replikatanzahl wird jedoch zum Zeitpunkt der Kompilierung von den Visual Studio-Akteur-Buildtools festgelegt. Die Buildtools generieren in der Datei „ApplicationManifest.xml“ automatisch einen *Standarddienst* für den Actordienst. Für die **Mindestgröße der Replikatgruppe** und die **Zielgröße der Replikatgruppe** werden Parameter erstellt. 
+Bei Verwendung des `StatePersistence`-Attributs wird zur Laufzeit automatisch ein Zustandsanbieter für Sie ausgewählt, wenn der Akteurdienst gestartet wird. Die Replikatanzahl wird jedoch zum Zeitpunkt der Kompilierung von den Visual Studio-Akteur-Buildtools festgelegt. Die Buildtools generieren in der Datei „ApplicationManifest.xml“ automatisch einen *Standarddienst* für den Actordienst. Für die **Mindestgröße der Replikatgruppe** und die **Zielgröße der Replikatgruppe** werden Parameter erstellt.
 
 Sie können diese Parameter manuell ändern. Bei jeder Änderung des `StatePersistence`-Attributs werden die Parameter jedoch auf die Standardwerte der Replikatgruppengröße für das ausgewählte `StatePersistence`-Attribut festgelegt. Dabei werden vorherige Werte überschrieben. Das bedeutet, dass die in „ServiceManifest.xml“ festgelegten Werte *nur* zum Erstellungszeitpunkt überschrieben werden, wenn Sie den Attributwert `StatePersistence` ändern.
 
@@ -407,10 +408,8 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Akteurtypserialisierung](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
-* [Actor-Polymorphie und objektorientierte Entwurfsmuster](service-fabric-reliable-actors-polymorphism.md)
-* [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
-* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C#-Beispielcode](https://github.com/Azure/servicefabric-samples)
-* [Java-Beispielcode](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+
+Zustand, der in Reliable Actors gespeichert wurde, muss serialisiert werden, bevor er in den Datenträger geschrieben und zur hohen Verfügbarkeit repliziert wird. Erfahren Sie mehr über [Typserialisierung von Actors](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+
+Und erfahren Sie mehr über [Diagnose und Leistungsüberwachung für Reliable Actors](service-fabric-reliable-actors-diagnostics.md).
 

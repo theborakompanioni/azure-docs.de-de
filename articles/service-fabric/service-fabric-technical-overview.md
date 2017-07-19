@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/17/2017
+ms.date: 06/02/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0753be48514bd2087b52fc85d27754c28dbcd58b
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 74b60c0c4c0941a053bd124281772502d0136f23
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -65,14 +65,14 @@ Es gibt zwei Arten von Diensten:
 
 **Container:** Standardmäßig werden Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Service Fabric kann Dienste auch in Containerimages bereitstellen. Container sind eine Virtualisierungstechnologie, bei der das zugrunde liegende Betriebssystem von Anwendungen virtualisiert wird. Eine Anwendung und ihre Laufzeit, Abhängigkeiten und Systembibliotheken werden in einem Container mit privatem Vollzugriff auf die eigene isolierte Containersicht von Betriebssystemkonstrukten ausgeführt. Service Fabric unterstützt Docker-Container in Linux- und Windows Server-Containern.  Weitere Informationen finden Sie unter [Service Fabric und Container](service-fabric-containers-overview.md).
 
-**Partitionsschema:** Bei der Erstellung eines benannten Diensts geben Sie ein Partitionsschema an. Dienste mit großen Zustandsdatenmengen teilen die Daten auf verschiedene Partitionen auf, wodurch sie auf die Knoten des Clusters verteilt werden. Dadurch wird die Skalierung des Zustands des benannten Diensts ermöglicht. Innerhalb einer Partition besitzen zustandslose benannte Dienste Instanzen, wohingegen zustandsbehaftete benannte Dienste Replikate besitzen. In der Regel verfügen zustandslose benannte Dienste immer nur über eine einzelne Partition, da sie keinen internen Zustand aufweisen. Die Partitionsinstanzen sorgen für Verfügbarkeit. Wenn eine Instanz ausfällt, werden andere Instanzen weiterhin normal ausgeführt, und Service Fabric erstellt eine neue Instanz. Zustandsbehaftete benannte Dienste behalten ihren Zustand in Replikaten bei, und jede Partition verfügt über eine eigene Replikatgruppe, in der alle Zustände synchronisiert werden. Fällt ein Replikat aus, erstellt Service Fabric aus den vorhandenen Replikaten ein neues Replikat.
+**Partitionsschema:** Bei der Erstellung eines benannten Diensts geben Sie ein Partitionsschema an. Dienste mit großen Zustandsdatenmengen teilen die Daten auf verschiedene Partitionen auf, wodurch der Zustand auf die Knoten des Clusters verteilt werden. Dadurch wird die Skalierung des Zustands des benannten Diensts ermöglicht. Innerhalb einer Partition besitzen zustandslose benannte Dienste Instanzen, wohingegen zustandsbehaftete benannte Dienste Replikate besitzen. In der Regel verfügen zustandslose benannte Dienste immer nur über eine einzelne Partition, da sie keinen internen Zustand aufweisen. Die Partitionsinstanzen sorgen für Verfügbarkeit. Wenn eine Instanz ausfällt, werden andere Instanzen weiterhin normal ausgeführt, und Service Fabric erstellt eine neue Instanz. Zustandsbehaftete benannte Dienste behalten ihren Zustand in Replikaten bei, und jede Partition verfügt über eine eigene Replikatgruppe, in der alle Zustände synchronisiert werden. Fällt ein Replikat aus, erstellt Service Fabric aus den vorhandenen Replikaten ein neues Replikat.
 
 Weitere Informationen finden Sie unter [Partitionieren von Service Fabric Reliable Services](service-fabric-concepts-partitioning.md) .
 
 ## <a name="system-services"></a>Systemdienste
 In jedem Cluster werden Systemdienste erstellt, die die Plattformfunktionen von Service Fabric bereitstellen.
 
-**Naming Service**: Jeder Service Fabric-Cluster verfügt über einen Naming Service, der Dienstnamen in einen Speicherort im Cluster auflöst. Ähnlich wie bei einem Internet-Domänennamendienst (Domain Name Service, DNS) verwalten Sie die Dienstnamen und Eigenschaften für den Cluster. Mithilfe des Naming Service kommunizieren Clients sicher mit allen Knoten im Cluster, um einen Dienstnamen und seinen Speicherort aufzulösen.  Clients rufen die tatsächliche Computer-IP-Adresse und den Port ab, wo er derzeit ausgeführt wird. Sie können Dienste und Clients entwickeln, die in der Lage sind, den aktuellen Netzwerkstandort aufzulösen, auch wenn Anwendungen innerhalb des Clusters verschoben werden (beispielsweise aufgrund von Fehlern, im Zuge eines Ressourcenausgleichs oder bei einer Größenanpassung des Clusters).
+**Naming Service**: Jeder Service Fabric-Cluster verfügt über einen Naming Service, der Dienstnamen in einen Speicherort im Cluster auflöst. Ähnlich wie bei einem Internet-Domänennamendienst (Domain Name Service, DNS) verwalten Sie die Dienstnamen und Eigenschaften für den Cluster. Mithilfe des Naming Service kommunizieren Clients sicher mit allen Knoten im Cluster, um einen Dienstnamen und seinen Speicherort aufzulösen.  Anwendungen werden innerhalb des Clusters z.B. aufgrund von Fehlern, eines Ressourcenausgleichs oder einer Größenänderung des Clusters verschoben. Sie können Dienste und Clients entwickeln, die den aktuellen Netzwerkort auflösen. Clients rufen die tatsächliche Computer-IP-Adresse und den Port ab, wo er derzeit ausgeführt wird.
 
 Weitere Informationen zu Client- und Dienstkommunikations-APIs, die mit Naming Service zusammenarbeiten, finden Sie unter [Kommunikation mit Diensten](service-fabric-connect-and-communicate-with-services.md) .
 
@@ -85,7 +85,7 @@ Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdien
 ## <a name="built-in-programming-models"></a>Integrierte Programmiermodelle
 Zum Erstellen von Service Fabric-Diensten stehen .NET Framework-Programmiermodelle zur Verfügung:
 
-**Reliable Services:** Eine API zum Erstellen zustandsloser und zustandsbehafteter Dienste. Zustandsbehaftete Dienste speichern ihren Zustand in Reliable Collections (z. b. in einem Wörter oder einer Warteschlange). Sie können auch verschiedene Kommunikationsstapel verknüpfen, z. B. Web-API und Windows Communication Foundation (WCF).
+**Reliable Services:** Eine API zum Erstellen zustandsloser und zustandsbehafteter Dienste. Zustandsbehaftete Dienste speichern ihren Zustand in Reliable Collections (z. b. in einem Wörter oder einer Warteschlange). Sie können auch verschiedene Kommunikationsstapel verknüpfen, z.B. Web-API und Windows Communication Foundation (WCF).
 
 **Reliable Actors**: Eine API zum Erstellen zustandsloser und zustandsbehafteter Objekte über das Programmiermodell mit virtuellen Actors. Dieses Modell kann bei zahlreichen unabhängigen Berechnungs-/Zustandseinheiten nützlich sein. Da dieses Modell ein rundenbasiertes Threadingmodell verwendet, sollten Sie Code vermeiden, der andere Actors oder Dienste aufruft, weil ein einzelner Actor andere eingehende Anforderungen erst verarbeiten kann, wenn alle ausgehenden Anforderungen abgeschlossen sind.
 

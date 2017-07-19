@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 6/14/2017
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 31fa57771aaa2d4d6e4e0d387e045fb28e378887
-ms.lasthandoff: 04/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 31fd4523794d71b5fbf6d55ba97f3b744b8d5d38
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -28,7 +29,7 @@ Dieses Tutorial zeigt, wie Sie Code für eine einfache ASP.NET MVC 5-Anwendung
 
 Der Zweck des [WebJobs SDK](websites-webjobs-resources.md) besteht darin, den Code zu vereinfachen, den Sie für allgemeine Tasks schreiben, die ein WebJob ausführen kann, z.B. Bildverarbeitung, Warteschlangenverarbeitung, RSS-Aggregation, Dateiwartung und Senden von E-Mails. Das WebJobs SDK verfügt über integrierte Funktionen für die Arbeit mit Azure Storage und Service Bus, zum Planen von Aufgaben und Behandeln von Fehlern sowie für viele weitere allgemeine Szenarien. Darüber hinaus ist es erweiterbar, und es gibt ein [Open Source-Repository für Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview).
 
-Bei dieser Beispielanwendung handelt es sich um ein Bulletin Board für Werbung. Benutzer können Bilder für Werbeanzeigen hochladen, und ein Back-End-Prozess konvertiert die Bildern in Miniaturansichten. Auf der Seite mit der Anzeigenliste werden die Miniaturansichten angezeigt, auf der Seite mit den Anzeigendetails sind die Bilder in voller Größe zu sehen. Hier sehen Sie einen Screenshot:
+Bei dieser Beispielanwendung handelt es sich um ein Bulletin Board für Werbung. Benutzer können Bilder für Werbeanzeigen hochladen, und ein Back-End-Prozess konvertiert die Bildern in Miniaturansichten. Auf der Seite mit der Anzeigenliste werden die Vorschauminiaturen angezeigt, auf der Seite mit den Anzeigendetails sind die Bilder in voller Größe zu sehen. Hier sehen Sie einen Screenshot:
 
 ![Werbungsliste](./media/websites-dotnet-webjobs-sdk-get-started/list.png)
 
@@ -37,15 +38,13 @@ Diese Beispielanwendung funktioniert mit [Azure-Warteschlangen](http://www.asp.n
 ## <a id="prerequisites"></a>Voraussetzungen
 In diesem Tutorial wird vorausgesetzt, dass Sie mit der Arbeit mit [ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) -Projekten in Visual Studio vertraut sind.
 
-Das Tutorial wurde für Visual Studio 2013 geschrieben. Falls Sie noch nicht über Visual Studio verfügen, wird die Anwendung zusammen mit dem Azure SDK für .NET installiert.
-
-Das Tutorial kann mit Visual Studio 2015 verwendet werden. Bevor Sie die Anwendung jedoch lokal ausführen, müssen Sie den `Data Source`-Teil der Verbindungszeichenfolge "SQL Server LocalDB" in den Dateien "Web.config" und "App.config" von `Data Source=(localdb)\v11.0` zu `Data Source=(LocalDb)\MSSQLLocalDB` ändern.
+Das Tutorial wurde ursprünglich für Visual Studio 2013 geschrieben, kann jedoch mit höheren Versionen von Visual Studio verwendet werden. Beachten Sie bei der Verwendung von Visual Studio 2015 oder 2017, dass Sie den `Data Source`-Teil der Verbindungszeichenfolge „SQL Server LocalDB“ in den Dateien „Web.config“ und „App.config“ von `Data Source=(localdb)\v11.0` zu `Data Source=(LocalDb)\MSSQLLocalDB` ändern müssen, bevor Sie die Anwendung lokal ausführen.
 
 > [!NOTE]
-> <a name="note"></a>Für dieses Tutorial benötigen Sie ein Azure-Konto:
+> <a name="note"></a>Sie benötigen ein Azure-Konto, um dieses Tutorial durchführen zu können:
 >
-> * Sie können [ein Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
-> * Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
+> * Sie können [ein Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlose Azure-Dienste nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
+> * Sie können die [monatliche Azure-Gutschrift für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
 >
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 >
@@ -54,7 +53,7 @@ Das Tutorial kann mit Visual Studio 2015 verwendet werden. Bevor Sie die Anwend
 ## <a id="learn"></a>Sie lernen Folgendes
 Dieses Lernprogramm beschreibt die folgenden Aufgaben:
 
-* Ermöglichen der Azure-Entwicklung auf Ihrem Computer durch Installieren des Azure SDK.
+* Ermöglichen der Azure-Entwicklung auf Ihrem Computer durch Installieren des Azure SDK (nur für Benutzer von Visual Studio 2013 und 2015)
 * Erstellen eines Konsolenanwendungsprojekts, das automatisch als Azure WebJob bereitgestellt wird, wenn Sie das zugehörige Webprojekt bereitstellen.
 * Lokales Testen des WebJobs SDK-Back-Ends auf dem Entwicklungscomputer.
 * Veröffentlichen einer Anwendung mit einem Webauftrags-Back-End in einer Web-App in App Service.
@@ -72,21 +71,24 @@ Wenn ein Benutzer ein Bild hochlädt, speichert die Web-App das Bild in einem [A
 
 ![Contoso Ads-Architektur](./media/websites-dotnet-webjobs-sdk-get-started/apparchitecture.png)
 
-[!INCLUDE [install-sdk](../../includes/install-sdk-2015-2013.md)]
-
+[!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]  
 Die Anleitungen in diesem Tutorial gelten für das Azure SDK für .NET 2.7.1 oder höher.
 
 ## <a id="storage"></a>Erstellen eines Azure-Speicherkontos
 Azure-Speicherkonten bieten Ressourcen zum Speichern von Warteschlangen- und Blobdaten in der Cloud. Das WebJobs-SDK verwendet das Speicherkonto außerdem zum Speichern von Protokollierungsdaten für das Dashboard.
 
-In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für Anwendungsdaten und Protokolldaten sowie für Test- und Produktionsdaten erstellen. In diesem Tutorial verwenden wir nur ein einziges Konto.
+In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für Anwendungsdaten und Protokolldaten sowie für Test- und Produktionsdaten erstellen. In diesem Tutorial verwenden wir nur ein einzelnes Konto.
 
 1. Öffnen Sie das Fenster **Server-Explorer** in Visual Studio.
-2. Klicken Sie mit der rechten Maustaste auf den Knoten **Azure**, und klicken Sie dann auf **Mit Microsoft Azure verbinden**.
+2. Klicken Sie mit der rechten Maustaste auf den Knoten **Azure**, und klicken Sie dann auf **Verbindung mit Microsoft Azure-Abonnement herstellen...**.
+   
    ![Herstellen einer Verbindung mit Azure](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
+
 3. Melden Sie sich mit Ihren Azure-Anmeldeinformationen an.
 4. Klicken Sie mit der rechten Maustaste unter dem Azure-Knoten auf **Speicher**, und klicken Sie dann auf **Speicherkonto erstellen**.
+   
    ![Speicherkonto erstellen](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
+   
 5. Geben Sie im Dialogfeld **Speicherkonto erstellen** einen Namen für das Speicherkonto ein.
 
     Der Name muss eindeutig sein (kein anderes Azure Storage-Konto kann den gleichen Namen haben). Wenn der eingegebene Name bereits verwendet wird, haben Sie die Möglichkeit, ihn zu ändern.
@@ -120,18 +122,19 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
     Die Speicherverbindungszeichenfolge ist ein Beispiel, das Platzhalter für den Namen des Speicherkontos und den Zugriffsschlüssel verwendet. Sie müssen dies durch eine Verbindungszeichenfolge mit dem Namen und Schlüssel des Speicherkontos ersetzen.  
 
-    <pre class="prettyprint">&lt;connectionStrings&gt;
-      &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" /&gt;
-      &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-    &lt;/connectionStrings&gt;</pre>
-
+    ```
+    <connectionStrings>
+        <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
+        <add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+    </connectionStrings>
+    ```
     Die Speicher-Verbindungszeichenfolge hat den Namen AzureWebJobsStorage, da dies der Name ist, den das WebJobs SDK standardmäßig verwendet. Hier wird derselbe Name verwendet, sodass Sie nur einen Verbindungszeichenfolgenwert in der Azure-Umgebung festlegen müssen.
 2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste unter dem Knoten **Speicher** auf Ihr Speicherkonto, und klicken Sie anschließend auf **Eigenschaften**.
 
     ![Klicken Sie auf Benutzerkonteneigenschaften](./media/websites-dotnet-webjobs-sdk-get-started/storppty.png)
 3. Klicken Sie im Fenster **Eigenschaften** auf **Speicherkontoschlüssel** und dann auf die Auslassungspunkte.
 
-    ![Neues Speicherkonto](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+    ![Speicherkontoschlüssel](./media/websites-dotnet-webjobs-sdk-get-started/stor-account-keys.png)
 4. Kopieren Sie die **Verbindungszeichenfolge**.
 
     ![Dialogfeld "Speicherkontoschlüssel"](./media/websites-dotnet-webjobs-sdk-get-started/cpak.png)
@@ -140,16 +143,19 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
     Die Datei enthält zwei Verbindungszeichenfolgen: eine für die Anwendungsdaten und eine für die Protokollierung. Sie können separate Speicherkonten für Anwendungsdaten und Protokollierung und [mehrere Speicherkonten für Daten](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)verwenden. In diesem Tutorial verwenden Sie nur ein einziges Speicherkonto. Die Verbindungszeichenfolgen haben Platzhalter für die Speicherkontoschlüssel.
 
-      <pre class="prettyprint">&lt;configuration&gt;
-    &lt;connectionStrings&gt;
-        &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
-        &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt;
-    &lt;/connectionStrings&gt;
-        &lt;startup&gt;
-            &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
-    &lt;/startup&gt;
-   &lt;/configuration&gt;</pre>
+    ```
+    <configuration>
+        <connectionStrings>
+            <add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+            <add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
+            <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/>
+    </connectionStrings>
+        <startup>
+            <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+    </startup>
+    </configuration>
+
+    ```
 
     Standardmäßig sucht das WebJobs SDK nach Verbindungszeichenfolgen mit den Namen AzureWebJobsStorage und AzureWebJobsDashboard. Alternativ können Sie [beliebige Namen für die Verbindungszeichenfolgen vergeben und die Namen explizit an das `JobHost`-Objekt übergeben](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#config).
 7. Ersetzen Sie beide Speicher-Verbindungszeichenfolgen mit der Verbindungszeichenfolge, die Sie zuvor kopiert haben.
@@ -167,7 +173,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
     ![Konsolenfenster mit Hinweis, dass das Back-End ausgeführt wird](./media/websites-dotnet-webjobs-sdk-get-started/backendrunning.png)
 3. Klicken Sie in Ihrem Browser auf **Create an Ad** (Anzeige erstellen).
-4. Geben Sie einige Testdaten ein, wählen Sie ein hochzuladendes Bild aus, und klicken Sie auf **Erstellen**.
+4. Geben Sie einige Testdaten ein, wählen Sie ein Bild zum Hochladen aus, und klicken Sie auf **Erstellen**.
 
     ![Seite erstellen](./media/websites-dotnet-webjobs-sdk-get-started/create.png)
 
@@ -194,69 +200,10 @@ Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 Nachdem Sie einige Werbeeinblendungen unter Ausführung in der Cloud erstellt haben, können Sie das WebJobs SDK-Dashboard öffnen, um dessen umfassende Überwachungsfeatures zu erkunden.
 
 ### <a name="deploy-to-web-apps"></a>Bereitstellen in Web-Apps
+
 1. Schließen Sie Ihren Browser und das Konsolenfenster.
-2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das ContosoAdsWeb-Projekt, und klicken Sie dann auf **Veröffentlichen**.
-3. Klicken Sie im Schritt **Profil** im Assistenten **Web veröffentlichen** auf **Microsoft Azure-Web-Apps**.
-
-    ![Azure-Web-App als Veröffentlichungsziel auswählen](./media/websites-dotnet-webjobs-sdk-get-started/pubweb.png)
-4. Melden Sie sich bei Azure an, falls Sie noch nicht angemeldet sind.
-5. Klicken Sie auf **Neu**.
-
-    Das Dialogfeld sieht möglicherweise ein bisschen anders aus, je nachdem, welche Version des Azure SDK für .NET Sie installiert haben.
-
-    ![Klicken auf "Neu"](./media/websites-dotnet-webjobs-sdk-get-started/clicknew.png)
-6. Geben Sie im Dialogfeld **Web-App unter Microsoft Azure erstellen** einen eindeutigen Namen in das Feld **Web-App-Name** ein.
-
-    Die vollständige URL besteht aus der hier eingegebenen Zeichenfolge und ".azurewebsites.net" (wie neben dem Textfeld **Web-App-Name** angezeigt). Beispiel: Wenn der Web-App-Name "ContosoAds" lautet, ist die URL "ContosoAds.azurewebsites.net".
-7. Wählen Sie in der Dropdownliste [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) die Option **Neuen App Service-Plan erstellen** aus. Geben Sie einen Namen für den App Service-Plan ein, z. B. ContosoAdsPlan.
-8. Wählen Sie in der Dropdownliste [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) die Option **Neue Ressourcengruppe erstellen** aus.
-9. Geben Sie einen Namen für die Ressourcengruppe ein, z. B. ContosoAdsGroup.
-10. Wählen Sie in der Dropdownliste **Region** dieselbe Region aus, die Sie für Ihr Speicherkonto ausgewählt haben.
-
-    Mit dieser Einstellung wird das Azure-Datencenter angegeben, in dem Ihre Web-App ausgeführt wird. Wenn sich Web-App und Speicherkonto im gleichen Datencenter befinden, werden Latenz und Datenübertragungskosten minimiert.
-11. Wählen Sie in der Dropdownliste **Datenbankserver** die Option **Neuen Server erstellen** aus.
-12. Geben Sie einen Namen für den Datenbankserver sein, beispielsweise "contosoadsserver" plus eine Zahl oder Ihren Namen, damit der Servername eindeutig ist.
-
-    Ein Servername muss eindeutig sein. Er kann Kleinbuchstaben, Ziffern und Bindestriche enthalten. Ein nachgestellter Bindestrich ist nicht zulässig.
-
-    Falls Ihr Abonnement bereits einen Server enthält, können Sie auch diesen Server aus der Dropdownliste auswählen.
-13. Geben Sie unter **Datenbank-Benutzername** und **Datenbank-Kennwort** die Anmeldedaten eines Administrators ein.
-
-    Wenn Sie **New SQL Database Server** ausgewählt haben, geben Sie hier keinen vorhandenen Namen und kein vorhandenes Kennwort ein. Stattdessen definieren Sie jetzt einen neuen Namen und ein neues Kennwort zur späteren Verwendung beim Datenbankzugriff. Wenn Sie einen zuvor erstellten Server ausgewählt haben, werden Sie aufgefordert, das Kennwort für den zuvor erstellten Administratorbenutzer einzugeben.
-14. Klicken Sie auf **Erstellen**.
-
-    ![Dialogfeld "Web-App in Microsoft Azure erstellen"](./media/websites-dotnet-webjobs-sdk-get-started/newdb.png)
-
-    Visual Studio erstellt die Projektmappe, das Webprojekt, die Web-App in Azure und die Azure-SQL-Datenbankinstanz.
-15. Klicken Sie im Schritt **Verbindung** des Assistenten **Web veröffentlichen** auf **Weiter**.
-
-    ![Schritt "Verbindung"](./media/websites-dotnet-webjobs-sdk-get-started/connstep.png)
-16. Entfernen Sie im Schritt **Einstellungen** das Häkchen für **Diese Verbindungszeichenfolge zur Laufzeit verwenden**, und klicken Sie auf **Weiter**.
-
-    ![Schritt "Einstellungen"](./media/websites-dotnet-webjobs-sdk-get-started/settingsstep.png)
-
-    Sie müssen die SQL-Verbindungszeichenfolge im Veröffentlichungsdialog nicht eingeben, da Sie diesen Wert später in der Azure-Umgebung setzen werden.
-
-    Sie können die Warnungen auf dieser Seite ignorieren.
-
-    * Normalerweise verwenden Sie für die Ausführung in Azure ein anderes Speicherkonto als bei der lokalen Ausführung. Dieses Lernprogramm verwendet jedoch dasselbe Speicherkonto für beide Umgebungen. Die AzureWebJobsStorage-Verbindungszeichenfolge muss daher nicht geändert werden. Selbst wenn Sie ein anderes Speicherkonto in der Cloud verwenden wollten, müssen Sie diese Verbindungszeichenfolge nicht ändern, da die Anwendung bei der Ausführung in Azure eine Azure-Umgebungseinstellung verwendet. Dieser Punkt wird später in diesem Lernprogramm behandelt.
-    * Für dieses Lernprogramm nehmen Sie keine Änderungen am Datenmodell für die ContosoAdsContext-Datenbank vor und müssen daher keine Entity Framework Code First-Migrationen für die Bereitstellung verwenden. Code First erstellt automatisch eine neue Datenbank, wenn die Anwendung zum ersten Mal versucht, auf SQL-Daten zuzugreifen.
-
-    Für dieses Lernprogramm können Sie die Standardwerte für die Optionen unter **Dateiveröffentlichungsoptionen** verwenden.
-17. Klicken Sie im Schritt **Vorschau** auf **Vorschau starten**.
-
-    ![Klicken auf "Vorschau starten"](./media/websites-dotnet-webjobs-sdk-get-started/previewstep.png)
-
-    Sie können die Warnung ignorieren, dass keine Datenbanken veröffentlicht werden. Die Datenbank wird von Entity Framework Code First erstellt und muss daher nicht veröffentlicht werden.
-
-    Im Vorschaufenster wird angezeigt, dass Binär- und Konfigurationsdateien aus dem WebJob-Projekt in den Ordner *app_data\jobs\continuous* der Web-App kopiert werden.
-
-    ![WebJobs-Dateien im Vorschaufenster](./media/websites-dotnet-webjobs-sdk-get-started/previewwjfiles.png)
-18. Klicken Sie auf **Veröffentlichen**.
-
-    Visual Studio stellt die Anwendung bereit und öffnet die URL der Startseite im Browser.
-
-    Sie können die Web-App jedoch erst verwenden, nachdem Sie die Verbindungszeichenfolgen für die Azure-Umgebung im nächsten Abschnitt konfiguriert haben. Je nach den Web-App- und Datenbankerstellungsoptionen, die Sie zuvor ausgewählt haben, wird entweder eine Fehlerseite oder die Startseite angezeigt.
+2. Führen Sie die Schritte im Abschnitt [Veröffentlichen in Azure mit SQL-Datenbank](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase#publish-to-azure-with-sql-database) aus.
+3. Nachdem Sie die Schritte für die Bereitstellung abgeschlossen haben, fahren Sie mit den übrigen Aufgaben in diesem Artikel fort.
 
 ### <a name="configure-the-web-app-to-use-your-azure-sql-database-and-storage-account"></a>Konfigurieren Sie die Web-App zur Verwendung Ihrer Azure SQL-Datenbank und Ihres Speicherkontos.
 Sie sollten es vermeiden [sensible Daten wie Verbindungszeichenfolgen in Dateien zu lagern, die in Quellcode-Repositorys gespeichert werden](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets). Azure bietet hierfür eine Möglichkeit: Sie können die Verbindungszeichenfolge und andere Einstellungswerte in der Azure-Umgebung setzen, und die Konfigurations-APIs von ASP.NET verwenden automatisch diese Werte, wenn die Anwendung in Azure ausgeführt wird. Sie können diese Werte in Azure über den **Server-Explorer**, das Azure-Portal, Windows PowerShell oder die plattformübergreifende Befehlszeilenschnittstelle festlegen. Weitere Informationen finden Sie unter [Funktionsweise von Anwendungs- und Verbindungszeichenfolgen](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
@@ -266,10 +213,10 @@ In diesem Abschnitt verwenden Sie den **Server-Explorer** zum Festlegen der Verb
 1. Klicken Sie im **Server-Explorer** unter **Azure > App Service > {Ihre Ressourcengruppe}** mit der rechten Maustaste auf Ihre Web-App, und klicken Sie dann auf **Ansichtseinstellungen**.
 
     Das Fenster **Azure-Web-App** wird mit der Registerkarte **Konfiguration** geöffnet.
-2. Ändern Sie den Namen der DefaultConnection-Verbindungszeichenfolge zu ContosoAdsContext.
+2. Ändern Sie den Namen der Verbindungszeichenfolge „DefaultConnection“ in den Namen, die Sie beim Konfigurieren der SQL-Datenbank im Artikel [Veröffentlichen in Azure mit SQL-Datenbank](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase#publish-to-azure-with-sql-database) ausgewählt haben.
 
     Azure hat diese Verbindungszeichenfolge automatisch erstellt, als Sie die Web-App mit zugehöriger Datenbank erstellt haben, und die Verbindungszeichenfolge enthält bereits den korrekten Wert. Sie ändern also nur den Namen, nach dem Ihr Code suchen soll.
-3. Fügen Sie zwei neue Verbindungszeichenfolgen mit den Namen AzureWebJobsStorage und AzureWebJobsDashboard hinzu. Setzen Sie deren Typ auf „Benutzerdefiniert“, und legen Sie für die Verbindungszeichenfolge denselben Wert fest, den Sie zuvor in den Dateien *Web.config* und *App.config* verwendet haben. (Verwenden Sie unbedingt die komplette Verbindungszeichenfolge und nicht nur den Zugriffsschlüssel, und verwenden Sie keine Anführungszeichen.)
+3. Fügen Sie zwei neue Verbindungszeichenfolgen mit den Namen AzureWebJobsStorage und AzureWebJobsDashboard hinzu. Setzen Sie den Datenbanktyp auf **Benutzerdefiniert**, und legen Sie für die Verbindungszeichenfolge denselben Wert fest, den Sie zuvor in den Dateien *Web.config* und *App.config* verwendet haben. (Verwenden Sie unbedingt die komplette Verbindungszeichenfolge und nicht nur den Zugriffsschlüssel, und verwenden Sie keine Anführungszeichen.)
 
     Diese Verbindungszeichenfolgen werden vom WebJobs SDK verwendet, je eine für die Anwendungsdaten und für die Protokollierung. Wie Sie bereits gesehen haben, wird die Verbindungszeichenfolge für die Anwendungsdaten auch vom Code des Web-Front-Ends verwendet.
 4. Klicken Sie auf **Speichern**.
@@ -278,23 +225,22 @@ In diesem Abschnitt verwenden Sie den **Server-Explorer** zum Festlegen der Verb
 5. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf die Web-App, und klicken Sie dann auf **Beenden**.
 6. Nachdem die Web-App beendet wurde, klicken Sie mit der rechten Maustaste erneut auf die Web-App, und klicken Sie dann auf **Starten**.
 
-   Der WebJob wird bei der Veröffentlichung automatisch gestartet, wird jedoch bei Änderungen an der Konfiguration angehalten. Für einen Neustart können Sie entweder die Web-App oder den Webauftrag im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715)neu starten. Nach einer Konfigurationsänderung sollten Sie jedoch im Allgemeinen die Web-App neu starten.
+   Der WebJob wird bei der Veröffentlichung automatisch gestartet, wird jedoch bei Änderungen an der Konfiguration angehalten. Für einen Neustart können Sie entweder die Web-App oder den Webauftrag im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) neu starten. Nach einer Konfigurationsänderung sollten Sie jedoch im Allgemeinen die Web-App neu starten.
 7. Aktualisieren Sie das Browserfenster mit der Web-App-URL in der Adressleiste.
 
     Die Startseite wird angezeigt.
-8. Erstellen Sie eine Werbung wie bereits zuvor bei der lokalen Ausführung der Anwendung.
+8. Erstellen Sie eine Anzeige wie bereits zuvor bei der [lokalen Ausführung der Anwendung](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started#a-idrunarun-the-application-locally).
 
    Die Indexseite wird zunächst ohne Miniaturansicht angezeigt.
-9. Aktualisieren Sie die Seite nach wenigen Sekunden, und die Miniaturansicht erscheint.
+9. Aktualisieren Sie die Seite nach wenigen Sekunden, und die Vorschauminiatur erscheint.
 
-   Wenn die Miniaturansicht nicht angezeigt wird, müssen Sie möglicherweise einen Moment warten, bis der WebJob neu gestartet wurde. Wird die Miniaturansicht auch nach einem längeren Zeitraum nicht angezeigt, wenn Sie die Seite aktualisieren, dann wurde der WebJob möglicherweise nicht automatisch gestartet. Wechseln Sie in diesem Fall auf der Seite des [klassischen Portals](https://manage.windowsazure.com) Ihrer Web-App auf die Registerkarte „WebJobs“, und klicken Sie auf **Starten**.
+   Wenn die Vorschauminiatur nicht angezeigt wird, müssen Sie möglicherweise einen Moment warten, bis der WebJob neu gestartet wurde. Wird die Vorschauminiatur auch nach einem längeren Zeitraum nicht angezeigt, wenn Sie die Seite aktualisieren, dann wurde der WebJob möglicherweise nicht automatisch gestartet. In diesem Fall suchen Sie auf dem Blatt **App Services** im [Azure-Portal](https://portal.azure.com/) Ihre Web-App und klicken dann auf **Starten**.
 
 ### <a name="view-the-webjobs-sdk-dashboard"></a>Anzeigen des WebJobs SDK-Dashboards
-1. Wählen Sie Ihre Web-App im [klassischen Portal](https://manage.windowsazure.com)aus.
-2. Klicken Sie auf die Registerkarte **WebJobs** .
-3. Klicken Sie auf die URL in der Spalte „Protokolle“ für Ihren WebJob.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/), das **Blatt „App Services“**, suchen Sie Ihre Web-App, und wählen Sie **WebJobs** aus.
+3. Wählen Sie die Registerkarte **Protokolle** aus.
 
-    ![Registerkarte "Webaufträge"](./media/websites-dotnet-webjobs-sdk-get-started/wjtab.png)
+    ![Registerkarte „Protokolle“](./media/websites-dotnet-webjobs-sdk-get-started/log-tab.png)
 
     Das WebJobs SDK-Dashboard wird in einer neuen Browser-Registerkarte geöffnet. Das Dashboard zeigt an, dass der WebJob ausgeführt wird, und enthält außerdem eine Liste der Funktionen in Ihrem Code, die vom WebJobs SDK ausgelöst wurden.
 4. Klicken Sie auf eine der Funktionen, um Details zu deren Ausführung anzuzeigen.
@@ -306,15 +252,24 @@ In diesem Abschnitt verwenden Sie den **Server-Explorer** zum Festlegen der Verb
     Mit der Schaltfläche **Funktion abspielen** auf dieser Seite können Sie veranlassen, dass das WebJobs SDK-Framework die Funktion erneut aufruft, und können die an die Funktion übergebenen Daten zuvor ändern.
 
 > [!NOTE]
-> Nach Abschluss der Tests löschen Sie die Web-App und die SQL-Datenbankinstanz. Die Web-App ist kostenlos, aber für die SQL-Datenbankinstanz und das Speicherkonto fallen Kosten an (minimal aufgrund der kleinen Größe). Wenn Sie die Web-App laufen lassen, kann außerdem jeder, der die URL findet, Werbungen erstellen und anzeigen. Navigieren Sie im klassischen Portal zur Registerkarte **Dashboard** für Ihre Web-App, und klicken Sie dann unten auf der Seite auf **Löschen**. Dort finden Sie auch ein Kontrollkästchen, um die SQL-Datenbankinstanz ebenfalls zu löschen. Klicken Sie stattdessen auf **Anhalten** , um nur vorübergehend zu verhindern, dass andere Personen auf die Web-App zugreifen. In diesem Fall entstehen weiterhin Kosten für SQL-Datenbank und Speicherkonto. Sie können die SQL-Datenbank und das Speicherkonto auf ähnliche Weise löschen, wenn Sie diese nicht mehr benötigen.
+> Wenn Sie den Test abgeschlossen haben, können Sie die Web-App, das Speicherkonto und Ihre SQL-Datenbankinstanz löschen. Die Web-App ist kostenlos, aber für das SQL-Speicherkonto und die Datenbankinstanz fallen Gebühren an (minimal aufgrund der kleinen Größe). Wenn Sie die Web-App laufen lassen, kann außerdem jeder, der die URL findet, Werbungen erstellen und anzeigen. 
 >
 >
+
+### <a name="delete-your-web-app"></a>Löschen Ihrer Web-App
+Rufen Sie im Portal das Blatt **App Services** auf, suchen und markieren Sie Ihre Web-App, und klicken Sie dann auf **Löschen**. Klicken Sie stattdessen auf **Anhalten** , um nur vorübergehend zu verhindern, dass andere Personen auf die Web-App zugreifen. In diesem Fall entstehen weiterhin Kosten für SQL-Datenbank und Speicherkonto.
+
+### <a name="delete-your-storage-account"></a>Löschen Ihres Speicherkontos
+Anweisungen zum Löschen Ihres Speicherkontos finden Sie unter [Löschen eines Speicherkontos](https://docs.microsoft.com/azure/storage/storage-create-storage-account#delete-a-storage-account). 
+
+### <a name="delete-your-database"></a>Löschen Ihrer Datenbank
+Anweisungen zum Löschen Ihrer SQL-Datenbank finden Sie in der Dokumentation zur [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/).
 
 ## <a id="create"></a>Erstellen der Anwendung von Grund auf
 In diesem Abschnitt werden Sie die folgenden Aufgaben ausführen:
 
 * Erstellen Sie eine Visual Studio-Lösung mit einem Webprojekt.
-* Fügen Sie ein Klassenbibliotheksprojekt für die Datenzugriffsebene hinzu, das von Front-End und Back-End gemeinsam genutzt wird.
+* Fügen Sie ein Klassenbibliotheksprojekt für die Datenzugriffsebene hinzu, das vom Front-End und Back-End gemeinsam genutzt wird.
 * Fügen Sie ein Konsolenanwendungsprojekt für das Back-End hinzu und aktivieren Sie die WebJobs-Bereitstellung.
 * NuGet-Pakete hinzufügen.
 * Projektverweise setzen.
@@ -322,28 +277,25 @@ In diesem Abschnitt werden Sie die folgenden Aufgaben ausführen:
 * Prüfen Sie die Codeabschnitte, die Azure-Blobs, Warteschlangen und das WebJobs SDK verwenden.
 
 ### <a name="create-a-visual-studio-solution-with-a-web-project-and-class-library-project"></a>Erstellen einer Visual Studio-Lösung mit Webprojekt und Klassenbibliotheks-Projekt
-1. Wählen Sie in Visual Studio im Menü **Datei** die Optionen **Neu** > **Projekt**.
-2. Wählen Sie im Dialogfeld **Neues Projekt** die Optionen **Visual C#** > **Web** > **ASP.NET-Webanwendung**.
+1. Wählen Sie in Visual Studio **Datei** > **Neu** > **Projekt**.
+2. Wählen Sie im Dialogfeld **Neues Projekt** die Optionen **Visual C#** > **Web** > **ASP.NET-Webanwendung (.NET Framework)**.
 3. Nennen Sie das Projekt ContosoAdsWeb und die Lösung ContosoAdsWebJobsSDK (ändern Sie den Namen der Lösung, falls Sie diese im gleichen Ordner wie die heruntergeladene Lösung ablegen), und klicken Sie auf **OK**.
 
     ![Neues Projekt](./media/websites-dotnet-webjobs-sdk-get-started/newproject.png)
-4. Wählen Sie im Dialogfeld **Neues ASP.NET-Projekt** die MVC-Vorlage aus, und entfernen Sie unter **Microsoft Azure** das Häkchen im Kontrollkästchen **In der Cloud hosten**.
-
-    Wenn Sie **In der Cloud hosten** aktivieren, erstellt Visual Studio automatisch eine neue Azure-Web-App und eine SQL-Datenbank. Sie haben diese Komponenten bereits zuvor erstellt und müssen dies bei der Projekterstellung daher nicht erneut tun. Markieren Sie das Kontrollkästchen, um die Komponenten neu zu erstellen. Anschließend können Sie die neue Web-App und SQL-Datenbank auf dieselbe Weise konfigurieren, wie Sie dies zuvor beim Bereitstellen der Anwendung getan haben.
-5. Klicken Sie auf **Authentifizierung ändern**.
+4. Wählen Sie im Dialogfeld **Neue ASP.NET-Webanwendung** die MVC-Vorlage, und wählen Sie **Authentifizierung ändern** aus.
 
     ![Authentifizierung ändern](./media/websites-dotnet-webjobs-sdk-get-started/chgauth.png)
-6. Klicken Sie im Dialogfeld **Authentifizierung ändern** auf **Keine Authentifizierung** und dann auf **OK**.
+5. Klicken Sie im Dialogfeld **Authentifizierung ändern** auf **Keine Authentifizierung** und dann auf **OK**.
 
     ![Keine Authentifizierung](./media/websites-dotnet-webjobs-sdk-get-started/noauth.png)
-7. Klicken Sie im Dialogfeld **Neues ASP.Net-Projekt** auf **OK**.
+6. Klicken Sie im Dialogfeld **Neue ASP.NET-Webanwendung** auf **OK**.
 
     Visual Studio erstellt die Lösung und das Webprojekt.
-8. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Lösung (nicht auf das Projekt), und klicken Sie auf **Hinzufügen** > **Neues Projekt**.
-9. Wählen Sie im Dialogfeld **Neues Projekt hinzufügen** die Vorlage **Visual C#** > **Windows Desktop** > **Klassenbibliothek** aus.  
-10. Benennen Sie das Projekt *ContosoAdsCommon*, und klicken Sie auf **OK**.
+7. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Lösung (nicht auf das Projekt), und klicken Sie auf **Hinzufügen** > **Neues Projekt**.
+8. Wählen Sie im Dialogfeld **Neues Projekt hinzufügen** die Vorlage **Visual C#** > **Klassischer Windows-Desktop** > **Klassenbibliothek (.NET Framework)** aus.  
+9. Benennen Sie das Projekt *ContosoAdsCommon*, und klicken Sie auf **OK**.
 
-    Das Projekt enthält dann den Entity Framework-Kontext und das Datenmodell, die sowohl vom Front-End als auch vom Back-End verwendet werden. Alternativ könnten Sie die EF-verwandten Klassen im Webprojekt definieren und im WebJob-Projekt auf dieses Projekt verweisen. In diesem Fall würde Ihr WebJob-Projekt jedoch auf Web-Assemblys verweisen, die es nicht benötigt.
+    Das Projekt enthält dann den Entity Framework-Kontext und das Datenmodell, die sowohl vom Front-End als auch vom Back-End verwendet werden. Alternativ könnten Sie die EF-bezogenen Klassen im Webprojekt definieren und im WebJob-Projekt auf dieses Projekt verweisen. In diesem Fall würde Ihr WebJob-Projekt jedoch auf Web-Assemblys verweisen, die es nicht benötigt.
 
 ### <a name="add-a-console-application-project-that-has-webjobs-deployment-enabled"></a>Hinzufügen eines Konsolenanwendungsprojekts und Aktivieren der WebJobs-Bereitstellung
 1. Klicken Sie mit der rechten Maustaste auf das Webprojekt (nicht auf die Lösung oder das Klassenbibliothekprojekt). Klicken Sie auf **Hinzufügen** > **Neues Azure-WebJob-Projekt**.
@@ -377,11 +329,12 @@ Eine der WebJobs-SDK-Abhängigkeiten, die automatisch im WebJob-Projekt installi
 ### <a name="set-project-references"></a>Setzen von Projektverweisen
 Sowohl das Web- als auch das WebJob-Projekt verwenden die SQL-Datenbank. Daher benötigen beide Projekte einen Verweis auf das ContosoAdsCommon-Projekt.
 
-1. Fügen Sie im Projekt ContosoAdsWeb einen Verweis auf das Projekt ContosoAdsCommon ein. Klicken Sie mit der rechten Maustaste auf das ContosoAdsWeb-Projekt, und klicken Sie auf **Hinzufügen** > **Verweis**. Wählen Sie im Dialogfeld **Verweis-Manager** die Optionen **Lösung** > **Projekte** > **ContosoAdsCommon** aus, und klicken Sie auf **OK**.)
-2. Fügen Sie im Projekt ContosoAdsWebJob einen Verweis auf das Projekt ContosoAdsCommon ein.
-
+1. Fügen Sie im Projekt ContosoAdsWeb einen Verweis auf das Projekt ContosoAdsCommon ein. Klicken Sie mit der rechten Maustaste auf das ContosoAdsWeb-Projekt, und klicken Sie auf **Hinzufügen** > **Verweis**. 
+2. Wählen Sie im Dialogfeld **Verweis-Manager** die Optionen **Projekte** > **Lösung** > **ContosoAdsCommon** aus, und klicken Sie auf **OK**.)
+   
     Das WebJob-Projekt benötigt Verweise für die Arbeit mit Bildern und für den Zugriff auf Verbindungszeichenfolgen.
-3. Legen Sie im Projekt "ContosoAdsWebJob" einen Verweis auf `System.Drawing` und `System.Configuration` fest.
+
+4. Legen Sie im Projekt "ContosoAdsWebJob" einen Verweis auf `System.Drawing` und `System.Configuration` fest.
 
 ### <a name="add-code-and-configuration-files"></a>Hinzufügen von Code und Konfigurationsdateien
 Dieses Tutorial befasst sich nicht mit der [Erstellung von MVC-Controller und -Ansichten mithilfe eines Gerüsts](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started), dem [Schreiben des Entity Framework-Codes für die Verwendung mit SQL Server-Datenbanken](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc) und den [Grundsätzen asynchroner Programmierung in ASP.NET 4.5](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async). Daher müssen Sie nur noch den Code und die Konfigurationsdateien aus der heruntergeladenen Lösung in die neue Lösung kopieren. Anschließend finden Sie in den folgenden Abschnitten Hinweise zu den wichtigsten Bereichen des Codes.
@@ -392,7 +345,7 @@ Um Dateien einem Projekt oder einem Ordner hinzuzufügen, klicken Sie mit der re
 
    * *Ad.cs*
    * *ContosoAdscontext.cs*
-   * *BlobInformation.cs*<br/><br/>
+   * *BlobInformation.cs*
 2. Fügen Sie im Projekt ContosoAdsWeb die folgenden Dateien aus dem heruntergeladenen Projekt hinzu.
 
    * *Web.config*
@@ -400,7 +353,7 @@ Um Dateien einem Projekt oder einem Ordner hinzuzufügen, klicken Sie mit der re
    * Im Ordner *Controllers*: *AdController.cs*
    * Im Ordner *Views\Shared*: Datei *_Layout.cshtml*
    * Im Ordner *Views\Home*: *Index.cshtml*
-   * Im Ordner *Views\Ad* (Ordner zuerst erstellen): fünf *CSHTML*-Dateien<br/><br/>
+   * Im Ordner *Views\Ad* (Ordner zuerst erstellen): fünf *CSHTML*-Dateien
 3. Fügen Sie im Projekt ContosoAdsWebJob die folgenden Dateien aus dem heruntergeladenen Projekt hinzu.
 
    * *App.config* (ändern Sie den Dateityp-Filter zu **Alle Dateien**)
@@ -509,7 +462,7 @@ Der Code verwendet die Speicher-Verbindungszeichenfolge aus der *Web.config* -Da
         var storageAccount = CloudStorageAccount.Parse
             (ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
 
-Anschließend ruft er einen Verweis auf den *images* -Blob-Container ab, erstellt den Container, falls dieser noch nicht existiert, und setzt die Zugriffsberechtigungen für den neuen Container. Standardmäßig erlauben neue Container nur Clients mit Speicherkonto-Anmeldeinformationen den Zugriff auf Blobs. Für die Web-App müssen die Blobs öffentlich sein, damit Bilder mithilfe von URLs, die auf die Bild-Blobs zeigen, angezeigt werden können.
+Anschließend ruft er einen Verweis auf den Blobcontainer *images* ab, erstellt den Container, falls dieser noch nicht vorhanden ist, und legt die Zugriffsberechtigungen für den neuen Container fest. Standardmäßig erlauben neue Container nur Clients mit Speicherkonto-Anmeldeinformationen den Zugriff auf Blobs. Für die Web-App müssen die Blobs öffentlich sein, damit Bilder mithilfe von URLs, die auf die Bild-Blobs zeigen, angezeigt werden können.
 
         var blobClient = storageAccount.CreateCloudBlobClient();
         var imagesBlobContainer = blobClient.GetContainerReference("images");
@@ -540,9 +493,9 @@ Die Datei *Views\Home\Index.cshtml* zeigt Links zu den Kategorien auf der Starts
         <li>@Html.ActionLink("All", "Index", "Ad", null, null)</li>
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
-In der Datei *AdController.cs* ruft der Konstruktor die `InitializeStorage`-Methode auf, um Objekte der Azure-Speicherclient-Bibliothek zu erstellen, die eine API für die Arbeit mit Blobs und Warteschlangen bereitstellen.
+In der Datei *AdController.cs* ruft der Konstruktor die `InitializeStorage`-Methode auf, um Objekte der Azure Storage-Clientbibliothek zu erstellen, die eine API für die Arbeit mit Blobs und Warteschlangen bereitstellen.
 
-Anschließend ruft der Code einen Verweis auf den *images*-Blobcontainer ab, wie weiter oben in *Global.asax.cs* gezeigt. Gleichzeitig wird eine geeignete standardmäßige [Wiederholungsrichtlinie](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) für eine Web-App festgelegt. Mit der Standardrichtlinie (exponentiell ansteigende Wartezeiten) kann es passieren, dass die Webanwendung im Fall eines vorübergehenden Fehlers über eine Minute lang stehen bleibt. Die hier gezeigte Richtlinie wartet 3 Sekunden nach jedem Versuch für bis zu 3 Versuche.
+Anschließend ruft der Code einen Verweis auf den Blobcontainer *images* ab, wie weiter oben in *Global.asax.cs* gezeigt. Gleichzeitig wird eine geeignete standardmäßige [Wiederholungsrichtlinie](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) für eine Web-App festgelegt. Mit der Standardrichtlinie (exponentiell ansteigende Wartezeiten) kann es passieren, dass die Webanwendung im Fall eines vorübergehenden Fehlers über eine Minute lang stehen bleibt. Bei der hier gezeigten Richtlinie wird nach jedem Versuch drei Sekunden lang gewartet (für bis zu drei Versuche).
 
         var blobClient = storageAccount.CreateCloudBlobClient();
         blobClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSeconds(3), 3);
@@ -589,7 +542,7 @@ Nachdem die HttpPost `Create` -Methode einen Blob hochgeladen und die Datenbank 
         var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
         await thumbnailRequestQueue.AddMessageAsync(queueMessage);
 
-Der Code für die HttpPost `Edit` -Methode ist ähnlich, nur müssen hier alle vorhandenen Blobs für diese Werbung gelöscht werden, wenn der Benutzer eine neue Bilddatei auswählt.
+Der Code für die HttpPost `Edit`-Methode ist ähnlich, nur müssen hier alle vorhandenen Blobs für diese Werbung gelöscht werden, wenn der Benutzer eine neue Bilddatei auswählt.
 
         if (imageFile != null && imageFile.ContentLength != 0)
         {
@@ -686,7 +639,7 @@ Das WebJobs SDK ruft diese Methode auf, wenn eine Warteschlangen-Nachricht empfa
         [Blob("images/{BlobName}", FileAccess.Read)] Stream input,
         [Blob("images/{BlobNameWithoutExtension}_thumbnail.jpg")] CloudBlockBlob outputBlob)
 
-    Die Blobnamen stammen aus den Eigenschaften des `BlobInformation`-Objekts, das in der Warteschlangen-Nachricht empfangen wurde ((`BlobName` und `BlobNameWithoutExtension`). Sie können die `CloudBlockBlob` -Klasse für die Arbeit mit Blobs verwenden, um den kompletten Funktionsumfang der Speicherclient-Bibliothek zu nutzen. Falls Sie Code wiederverwenden möchten, der für die Arbeit mit `Stream`-Objekten geschrieben wurde, können Sie die `Stream`-Klasse verwenden.
+    Die Blobnamen stammen aus den Eigenschaften des `BlobInformation`-Objekts, das in der Warteschlangen-Nachricht empfangen wurde ((`BlobName` und `BlobNameWithoutExtension`). Sie können die `CloudBlockBlob`-Klasse für die Arbeit mit Blobs verwenden, um den kompletten Funktionsumfang der Speicherclient-Bibliothek zu nutzen. Falls Sie Code wiederverwenden möchten, der für die Arbeit mit `Stream`-Objekten geschrieben wurde, können Sie die `Stream`-Klasse verwenden.
 
 Weitere Informationen zum Schreiben von Funktionen, die Attribute des WebJobs SDK verwenden, finden Sie in den folgenden Ressourcen:
 
@@ -703,7 +656,7 @@ Weitere Informationen zum Schreiben von Funktionen, die Attribute des WebJobs SD
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Lernprogramm haben Sie erfahren, wie Sie eine einfache Anwendung mit mehreren Ebenen erstellen können, die das WebJobs SDK für die Hintergrundverarbeitung verwendet. Dieser Abschnitt enthält einige Vorschläge zur Vertiefung Ihrer Kenntnisse über ASP.NET-Anwendungen mit mehreren Ebenen und WebJobs.
+In diesem Tutorial haben Sie erfahren, wie Sie eine einfache Anwendung mit mehreren Ebenen erstellen, die das WebJobs SDK für die Hintergrundverarbeitung verwendet. Dieser Abschnitt enthält einige Vorschläge zur Vertiefung Ihrer Kenntnisse über ASP.NET-Anwendungen mit mehreren Ebenen und WebJobs.
 
 ### <a name="missing-features"></a>Fehlende Features
 Die Anwendung wurde für dieses Lernprogramm einfach gehalten. In einer echten Anwendung implementieren Sie die [Abhängigkeitseinfügung](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) sowie [Muster für Repository und Arbeitseinheit](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo) und verwenden Folgendes: [eine Schnittstelle für die Protokollierung](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), [EF Code First-Migrationen](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) zur Verwaltung von Änderungen an Datenmodellen sowie [EF-Verbindungsresilienz](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) zur Verarbeitung vorübergehender Verbindungsfehler.
@@ -719,7 +672,7 @@ Weitere Informationen finden Sie unter [Skalieren von WebJobs](websites-webjobs-
 Um sicherzustellen, dass Ihre WebJobs jederzeit und auf allen Instanzen Ihrer Web-App ausgeführt werden, müssen Sie die [AlwaysOn](http://weblogs.asp.net/scottgu/archive/2014/01/16/windows-azure-staging-publishing-support-for-web-sites-monitoring-improvements-hyper-v-recovery-manager-ga-and-pci-compliance.aspx) -Funktion aktivieren
 
 ### <a name="using-the-webjobs-sdk-outside-of-webjobs"></a>Verwenden des WebJobs-SDK außerhalb von WebJobs
-Programme, die das WebJobs SDK verwenden, müssen nicht in einem WebJob in Azure ausgeführt werden. Sie können lokal ausgeführt werden und auch in anderen Umgebungen, wie z. B. einer Cloud-Dienst-Workerrolle oder einem Windows-Dienst. Sie erreichen das Webaufträge-SDK-Dashboard jedoch nur über eine Azure-Web-App. Um das Dashboard zu verwenden, müssen Sie die Web-App mit dem von Ihnen verwendeten Speicherkonto verbinden, indem Sie die AzureWebJobsDashboard-Verbindungszeichenfolge auf der Registerkarte **Konfigurieren** im klassischen Portal festlegen. Dann können Sie das Dashboard über die folgende URL abrufen:
+Programme, die das WebJobs SDK verwenden, müssen nicht in einem WebJob in Azure ausgeführt werden. Sie können lokal ausgeführt werden und auch in anderen Umgebungen, wie z. B. einer Cloud-Dienst-Workerrolle oder einem Windows-Dienst. Sie erreichen das Webaufträge-SDK-Dashboard jedoch nur über eine Azure-Web-App. Um das Dashboard zu verwenden, müssen Sie die Web-App mit dem von Ihnen verwendeten Speicherkonto verbinden, indem Sie die AzureWebJobsDashboard-Verbindungszeichenfolge auf der Registerkarte **Konfigurieren** im klassischen Portal festlegen. Dann können Sie das Dashboard über die folgende URL aufrufen:
 
 https://{WebAppName}.scm.azurewebsites.net/azurejobs/#/functions
 

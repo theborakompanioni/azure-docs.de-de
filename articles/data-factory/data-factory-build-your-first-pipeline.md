@@ -13,12 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 590d8e7c90381c455e0145a9016bd888ab0dda2c
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: b01a03fa362f8a9677e625945a2864c77d49f1bb
+ms.contentlocale: de-de
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 02/03/2017
 > * [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
+> * [Resource Manager: Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline. Die Pipeline transformiert Eingabedaten durch Ausführen des Hive-Skripts in einem Azure HDInsight (Hadoop)-Cluster in Ausgabedaten.  
@@ -82,7 +83,7 @@ Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüll
 
 1. **Azure-Abonnement** – Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testversionskonto einrichten. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) erfahren Sie, wie Sie ein kostenloses Testkonto erhalten.
 2. **Azure Storage** – Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) . Notieren Sie sich nach Erstellung des Speicherkontos den **Kontonamen** und den **Zugriffsschlüssel**. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys).
-3. Laden Sie die Hive-Abfragedatei (**HQL**) herunter, und sehen Sie sie durch. Sie finden sie unter [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Das ist die Abfrage, die Eingabedaten in Ausgabedaten transformiert. 
+3. Laden Sie die Hive-Abfragedatei (**HQL**) herunter, und sehen Sie sie durch. Sie finden sie unter [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Diese Abfrage transformiert die Eingabedaten in Ausgabedaten. 
 4. Laden Sie die Beispieleingabedatei (**input.log**) herunter, und sehen Sie sie durch: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Erstellen Sie einen Blobcontainer namens **adfgetstarted** in Azure Blob Storage. 
 6. Laden Sie im Container **adfgetstarted** die Datei **partitionweblogs.hql** in den Ordner **script** hoch. Verwenden Sie Tools wie etwa den [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/). 
@@ -93,7 +94,7 @@ Nach dem Erfüllen der Voraussetzungen wählen Sie eines der folgenden Tools/SDK
 - [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
+- [Resource Manager: Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 Azure-Portal und Visual Studio bieten eine GUI-Methode zum Erstellen von Data Factorys. Die Optionen PowerShell, Resource Manager-Vorlage und REST-API bieten jedoch Skripting-/Programmiermethoden zum Erstellen von Data Factorys.
@@ -108,3 +109,4 @@ Azure-Portal und Visual Studio bieten eine GUI-Methode zum Erstellen von Data Fa
 
 
   
+

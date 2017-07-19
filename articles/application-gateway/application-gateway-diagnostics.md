@@ -1,6 +1,6 @@
 ---
-title: "Überwachen von Zugriff, Leistungsprotokollen, Back-End-Integrität und Metriken für Application Gateway | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Zugriffs- und Leistungsprotokolle für das Application Gateway aktivieren und verwalten."
+title: "Überwachen von Zugriffsprotokollen, Leistungsprotokollen, Back-End-Integrität und Metriken für Application Gateway | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Zugriffs- und Leistungsprotokolle für Application Gateway aktivieren und verwalten."
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -15,49 +15,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 104ef38666957c1317b41a28244e05f3132e7fbf
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 122a08fbe95e4e3c2eaba8a8d8558f2d638120d0
+ms.contentlocale: de-de
+ms.lasthandoff: 06/13/2017
 
 
 ---
-# <a name="backend-health-diagnostics-logging-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway
+# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
 
-Azure bietet die Möglichkeit, Ressourcen anhand von Protokollierung und Metriken zu überwachen. Application Gateway stellt diese Funktionen mit Back-End-Integrität, Protokollierung und Metriken bereit.
+Mit Azure Application Gateway können Sie Ressourcen auf die folgenden Arten überwachen:
 
-[**Back-End-Integrität:**](#backend-health) Application Gateway bietet über das Portal sowie mithilfe von PowerShell die Möglichkeit zur Überwachung der Integrität der Server in den Back-End-Pools. Informationen zur Integrität der Back-End-Pools sind auch über die Leistungsdiagnoseprotokolle zu finden.
+* [Back-End-Integrität](#back-end-health): Application Gateway bietet über das Azure-Portal sowie mithilfe von PowerShell die Möglichkeit zur Überwachung der Integrität der Server in den Back-End-Pools. Sie können die Integrität der Back-End-Pools auch über die Leistungsdiagnoseprotokolle ermitteln.
 
-[**Protokollierung**](#enable-logging-with-powershell): Die Protokollierung ermöglicht das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Protokollen von einer Ressource zu Überwachungszwecken.
+* [Protokolle](#diagnostic-logs): Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
-[**Metriken**](#metrics) : Application Gateway verfügt derzeit über eine Metrik. Mit dieser Metrik wird der Durchsatz des Anwendungsgateways in Bytes pro Sekunde gemessen.
+* [Metriken](#metrics): Application Gateway verfügt derzeit über eine Metrik. Mit dieser Metrik wird der Durchsatz des Anwendungsgateways in Bytes pro Sekunde gemessen.
 
-## <a name="backend-health"></a>Back-End-Integrität
+## <a name="back-end-health"></a>Back-End-Integrität
 
-Application Gateway bietet über das Portal sowie mithilfe von PowerShell oder CLI die Möglichkeit zur Überwachung der Integrität einzelner Mitglieder der Back-End-Pools. Eine Zusammenfassung der Integrität von Back-End-Pools sind auch über die Leistungsdiagnoseprotokolle zu finden. Der Back-End-Integritätsbericht gibt die Ausgabe des Application Gateway-Integritätstests an die Back-End-Instanzen wieder. Wenn der Test bestanden wurde und das Back-End Datenverkehr verarbeiten kann, gilt es als fehlerfrei; andernfalls gilt es als fehlerhaft.
+Application Gateway bietet über das Portal sowie mithilfe von PowerShell oder die Befehlszeilenschnittstelle (CLI) die Möglichkeit zur Überwachung der Integrität einzelner Mitglieder der Back-End-Pools. Eine Zusammenfassung der Integrität von Back-End-Pools können Sie auch über die Leistungsdiagnoseprotokolle ermitteln. 
+
+Der Back-End-Integritätsbericht spiegelt die Ausgabe des Application Gateway-Integritätstests an die Back-End-Instanzen wider. Wenn der Testvorgang erfolgreich ist und das Back-End Datenverkehr empfangen kann, wird es als fehlerfrei angesehen. Andernfalls wird es als nicht fehlerfrei eingestuft.
 
 > [!IMPORTANT]
-> Wenn ein Application Gateway-Subnetz eine NSG enthält, muss der Portbereich 65503 bis 65534 im Application Gateway-Subnetz für eingehenden Datenverkehr geöffnet werden. Diese Ports sind erforderlich, damit die Back-End-Integritäts-API verwendet werden kann.
+> Wenn sich eine Netzwerksicherheitsgruppe (NSG) in einem Application Gateway-Subnetz befindet, sollten Sie die Portbereiche 65503 - 65534 im Application Gateway-Subnetz für eingehenden Datenverkehr öffnen. Diese Ports sind erforderlich, damit die Back-End-Integritäts-API verwendet werden kann.
 
 
-### <a name="view-backend-health-through-the-portal"></a>Anzeigen der Back-End-Integrität über das Portal
+### <a name="view-back-end-health-through-the-portal"></a>Anzeigen der Back-End-Integrität über das Portal
 
-Zum Anzeigen der Back-End-Integrität sind keine Maßnahmen erforderlich. Navigieren Sie in einem vorhandenen Anwendungsgateway zu **Überwachung** > **Back-End-Integrität**. Jedes Mitglied im Back-End-Pool (ob NIC, IP-Adresse oder FQDN) ist auf dieser Seite aufgeführt. Der Name des Back-End-Pools, der Port, der Name der Back-End-HTTP-Einstellungen und der Integritätsstatus werden angezeigt. Gültige Werte für den Integritätsstatus sind „Fehlerfrei“, „Fehlerhaft“ und „Unbekannt“.
+Im Portal wird die Back-End-Integrität automatisch bereitgestellt. Wählen Sie in einem vorhandenen Anwendungsgateway die Option **Überwachung** > **Back-End-Integrität**. 
 
-> [!WARNING]
-> Stellen Sie bei einem Back-End-Integritätsstatus von **Unbekannt** sicher, dass der Zugriff auf das Back-End nicht durch eine Regel der Netzwerksicherheitsgruppe (NSG) oder benutzerdefiniertes DNS im VNet blockiert wird.
+Jedes Mitglied im Back-End-Pool (ob NIC, IP-Adresse oder FQDN) ist auf dieser Seite aufgeführt. Der Name des Back-End-Pools, der Port, der Name der Back-End-HTTP-Einstellungen und der Integritätsstatus werden angezeigt. Gültige Werte für den Integritätsstatus sind **Fehlerfrei**, **Fehlerhaft** und **Unbekannt**.
+
+> [!NOTE]
+> Stellen Sie beim Back-End-Integritätsstatus **Unbekannt** sicher, dass der Zugriff auf das Back-End nicht durch eine NSG-Regel, eine benutzerdefinierte Route (UDR) oder ein benutzerdefiniertes DNS im virtuellen Netzwerk blockiert ist.
 
 ![Back-End-Integrität][10]
 
-### <a name="view-backend-health-with-powershell"></a>Anzeigen der Back-End-Integrität mit PowerShell
+### <a name="view-back-end-health-through-powershell"></a>Anzeigen der Back-End-Integrität mit PowerShell
 
-Informationen zur Back-End-Integrität können auch über PowerShell abgerufen werden. Der folgende PowerShell-Code zeigt, wie mit dem Cmdlet `Get-AzureRmApplicationGatewayBackendHealth` die Back-End-Integrität abgerufen wird.
+Der folgende PowerShell-Code veranschaulicht, wie Sie die Back-End-Integrität mit dem `Get-AzureRmApplicationGatewayBackendHealth`-Cmdlet anzeigen:
 
 ```powershell
 Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
-Die Ergebnisse werden zurückgegeben. Ein Beispiel für die Antwort im folgenden Codeausschnitt dargestellt.
+### <a name="view-back-end-health-through-azure-cli-20"></a>Anzeigen der Back-End-Integrität mit Azure CLI 2.0
+
+```azurecli
+az network application-gateway show-backend-health --resource-group AdatumAppGatewayRG --name AdatumAppGateway
+```
+
+### <a name="results"></a>Ergebnisse
+
+Der folgende Codeausschnitt enthält ein Beispiel für die Antwort:
 
 ```json
 {
@@ -84,35 +97,35 @@ Die Ergebnisse werden zurückgegeben. Ein Beispiel für die Antwort im folgenden
 }
 ```
 
-## <a name="diagnostic-logging"></a>Diagnoseprotokollierung
+## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
-Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateways zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle können Sie über das Portal zugreifen, und alle Protokolle können aus einem Azure-Blob Storage extrahiert und in anderen Tools wie [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md),Excel und PowerBI angezeigt werden. In der folgenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen:
+Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateways zu verwalten und eventuelle Fehler zu beheben. Sie können auf einige dieser Protokolle über das Portal zugreifen. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excel und Power BI angezeigt werden. In der folgenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen:
 
-* **Aktivitätsprotokoll:** Sie können das Feature [Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebs- und Überwachungsprotokolle) verwenden, um alle an Ihr Azure-Abonnement übermittelten Vorgänge und deren Status anzuzeigen. Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
-* **Zugriffsprotokolle:** Sie können diese Art von Protokoll verwenden, um Anwendungsgateway-Zugriffsmuster anzuzeigen und wichtige Informationen zu analysieren, z.B. die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, den Rückgabecode sowie eingehende und ausgehende Bytes. Das Zugriffsprotokoll wird alle 300 Sekunden erstellt. Dieses Protokoll enthält einen Datensatz pro Instanz von Application Gateway. Die Application Gateway-Instanz kann anhand der instanceId-Eigenschaft identifiziert werden.
-* **Leistungsprotokolle:** Mithilfe dieses Protokolls können Sie die Leistung von Application Gateway-Instanzen anzeigen. In diesem Protokoll werden Leistungsinformationen pro Instanz erfasst, z.B. insgesamt bereitgestellte Anforderungen, Durchsatz in Byte, Anzahl von Anforderungen mit Fehlern, Anzahl von fehlerfreien und fehlerhaften Back-End-Instanzen. Das Leistungsprotokoll wird alle 60 Sekunden erstellt.
-* **Firewallprotokolle:** Mithilfe dieses Protokolls können Sie die Anforderungen anzeigen, die entweder über den Erkennungs- oder über den Schutzmodus eines Anwendungsgateways protokolliert werden, das mit Web Application Firewall konfiguriert ist.
+* **Aktivitätsprotokoll:** Sie können das Feature [Azure-Aktivitätsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebs- und Überwachungsprotokolle) verwenden, um alle an Ihr Azure-Abonnement übermittelten Vorgänge und deren Status anzuzeigen. Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
+* **Zugriffsprotokoll:** Sie können diese Art von Protokoll verwenden, um Application Gateway-Zugriffsmuster anzuzeigen und wichtige Informationen zu analysieren, z.B. die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, den Rückgabecode sowie eingehende und ausgehende Bytes. Ein Zugriffsprotokoll wird alle 300 Sekunden erstellt. Dieses Protokoll enthält einen Datensatz pro Instanz von Application Gateway. Die Application Gateway-Instanz kann anhand der instanceId-Eigenschaft identifiziert werden.
+* **Leistungsprotokoll:** Mithilfe dieses Protokolls können Sie die Leistung von Application Gateway-Instanzen anzeigen. In diesem Protokoll werden Leistungsinformationen für jede Instanz erfasst, z.B. insgesamt bereitgestellte Anforderungen, Durchsatz in Byte, Anzahl von Anforderungen mit Fehlern und die Anzahl von fehlerfreien und fehlerhaften Back-End-Instanzen. Ein Leistungsprotokoll wird alle 60 Sekunden erstellt.
+* **Firewallprotokoll:** Mithilfe dieses Protokolls können Sie die Anforderungen anzeigen, die entweder über den Erkennungs- oder über den Schutzmodus eines Anwendungsgateways protokolliert werden, das mit der Web Application Firewall konfiguriert wurde.
 
-> [!WARNING]
-> Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md) .
+> [!NOTE]
+> Protokolle sind nur für Ressourcen verfügbar, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Ein besseres Verständnis der beiden Modelle können Sie entwickeln, indem Sie den Artikel [Grundlegendes zur Bereitstellung über den Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md) lesen.
 
-Für das Speichern Ihrer Protokolle stehen drei verschiedene Optionen zur Auswahl.
+Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
-* Speicherkonto: Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
-* Event Hubs: Event Hubs sind eine hervorragende Möglichkeit für die Integration in andere SEIM-Tools, um Warnungen für Ihre Ressourcen zu erhalten.
-* Log Analytics: Log Analytics wird am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends verwendet.
+* **Speicherkonto:** Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
+* **Event Hubs:** Event Hubs sind eine hervorragende Möglichkeit für die Integration in andere SIEM-Tools (Security Information and Event Management), um Warnungen für Ihre Ressourcen zu erhalten.
+* **Log Analytics:** Log Analytics ist am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends geeignet.
 
-### <a name="enable-logging-with-powershell"></a>Aktivieren der Protokollierung mit PowerShell
+### <a name="enable-logging-through-powershell"></a>Ermöglichen der Protokollierung mit PowerShell
 
-Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressourcen aktiviert. Sie müssen die Zugriffs- und Leistungsprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie die folgenden Schritte aus, um die Protokollierung zu aktivieren:
+Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressourcen aktiviert. Sie müssen die Zugriffs- und Leistungsprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus:
 
-1. Notieren Sie sich die Ressourcen-ID Ihres Speicherkontos, unter dem die Protokolldaten gespeichert werden. Dieser Wert weist folgendes Format auf: /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Storage/storageAccounts/\<Speicherkontoname\>. Sie können jedes Speicherkonto Ihres Abonnements verwenden. Sie können das Vorschauportal verwenden, um nach diesen Informationen zu suchen.
+1. Notieren Sie sich die Ressourcen-ID Ihres Speicherkontos, unter dem die Protokolldaten gespeichert werden. Dieser Wert weist folgendes Format auf: /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Storage/storageAccounts/\<Speicherkontoname\>. Sie können jedes Speicherkonto Ihres Abonnements verwenden. Sie können das Azure-Portal verwenden, um nach diesen Informationen zu suchen.
 
-    ![Vorschauportal – Application Gateway-Diagnose](./media/application-gateway-diagnostics/diagnostics1.png)
+    ![Portal: Ressourcen-ID für Speicherkonto](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Notieren Sie sich die Ressourcen-ID Ihres Anwendungsgateways, für das die Protokollierung aktiviert werden soll. Dieser Wert weist folgendes Format auf: /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Network/applicationGateways/\<Anwendungsgatewayname\>. Sie können das Vorschauportal verwenden, um nach diesen Informationen zu suchen.
+2. Notieren Sie sich die Ressourcen-ID Ihres Anwendungsgateways, für das die Protokollierung aktiviert wird. Dieser Wert weist folgendes Format auf: /subscriptions/\<Abonnement-ID\>/resourceGroups/\<Ressourcengruppenname\>/providers/Microsoft.Network/applicationGateways/\<Anwendungsgatewayname\>. Sie können das Portal verwenden, um nach diesen Informationen zu suchen.
 
-    ![Vorschauportal – Application Gateway-Diagnose](./media/application-gateway-diagnostics/diagnostics2.png)
+    ![Portal: Ressourcen-ID für das Anwendungsgateway](./media/application-gateway-diagnostics/diagnostics2.png)
 
 3. Aktivieren Sie die Diagnoseprotokollierung mit dem folgenden PowerShell-Cmdlet:
 
@@ -123,75 +136,94 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 > [!TIP] 
 >Für Aktivitätsprotokolle ist kein separates Speicherkonto erforderlich. Für die Nutzung des Speichers für die Zugriffs- und Leistungsprotokollierung fallen Dienstgebühren an.
 
-### <a name="enable-logging-with-azure-portal"></a>Aktivieren der Protokollierung über das Azure-Portal
+### <a name="enable-logging-through-the-azure-portal"></a>Ermöglichen der Protokollierung über das Azure-Portal
 
-#### <a name="step-1"></a>Schritt 1
+1. Suchen Sie im Azure-Portal nach Ihrer Ressource, und klicken Sie auf **Diagnoseprotokolle**.
 
-Navigieren Sie im Azure-Portal zu Ihrer Ressource. Klicken Sie auf **Diagnoseprotokolle**. Wenn Sie die Diagnose zum ersten Mal konfigurieren, sieht das Blatt wie in der folgenden Abbildung dargestellt aus:
+   Für Application Gateway sind drei Protokolle verfügbar:
 
-Für Application Gateway sind 3 Protokolle verfügbar.
+   * Zugriffsprotokoll
+   * Leistungsprotokoll
+   * Firewallprotokoll
 
-* Zugriffsprotokoll
-* Leistungsprotokoll
-* Firewallprotokoll
+2. Klicken Sie auf **Diagnose aktivieren** , um die Erfassung von Daten zu starten.
 
-Klicken Sie auf **Diagnose aktivieren** , um die Erfassung von Daten zu starten.
+   ![Aktivieren der Diagnose][1]
 
-![Blatt mit Diagnoseeinstellungen][1]
+3. Auf dem Blatt **Diagnoseeinstellungen** werden die Einstellungen für die Diagnoseprotokolle angegeben. In diesem Beispiel werden die Protokolle in Log Analytics gespeichert. Klicken Sie unter **Log Analytics** auf **Konfigurieren**, um den Arbeitsbereich zu konfigurieren. Sie können auch Event Hubs und ein Speicherkonto verwenden, um die Diagnoseprotokolle zu speichern.
 
-#### <a name="step-2"></a>Schritt 2
+   ![Starten des Konfigurationsprozesses][2]
 
-Auf dem Blatt **Diagnoseeinstellungen** werden die Einstellungen für die Diagnoseprotokolle festgelegt. In diesem Beispiel wird Log Analytics zum Speichern der Protokolle verwendet. Klicken Sie unter **Log Analytics** auf **Konfigurieren**, um den Arbeitsbereich zu konfigurieren. Event Hubs und ein Speicherkonto können ebenso verwendet werden, um die Diagnoseprotokolle zu speichern.
+4. Wählen Sie einen vorhandenen OMS-Arbeitsbereich (Operations Management Suite) aus, oder erstellen Sie einen neuen. In diesem Beispiel wird ein vorhandener Arbeitsbereich verwendet.
 
-![Diagnoseblatt][2]
+   ![Optionen für OMS-Arbeitsbereiche][3]
 
-#### <a name="step-3"></a>Schritt 3
+5. Überprüfen Sie die Einstellungen, und klicken Sie auf **Speichern**.
 
-Wählen Sie einen vorhandenen OMS-Arbeitsbereich aus, oder erstellen Sie einen neuen. In diesem Beispiel wird ein vorhandener verwendet.
-
-![OMS-Arbeitsbereiche][3]
-
-#### <a name="step-4"></a>Schritt 4
-
-Wenn Sie fertig sind, bestätigen Sie die Einstellungen, und klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
-
-![Auswahl bestätigen][4]
+   ![Blatt „Diagnoseeinstellungen“ mit Auswahl][4]
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
 
-Dieses Protokoll (früher als "Betriebsprotokoll" bekannt) wird standardmäßig von Azure generiert.  Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Aktivitätsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md).
+Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Aktivitätsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md).
 
 ### <a name="access-log"></a>Zugriffsprotokoll
 
-Dieses Protokoll wird nur generiert, wenn Sie es wie in den vorherigen Schritten für die jeweiligen Application Gateways aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel gezeigt im JSON-Format protokolliert:
+Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel im JSON-Format protokolliert:
 
+
+|Wert  |Beschreibung  |
+|---------|---------|
+|instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
+|clientIP     | Ursprungs-IP für die Anforderung        |
+|clientPort     | Ursprungsport für die Anforderung       |
+|httpMethod     | Von der Anforderung verwendete HTTP-Methode       |
+|requestUri     | URI der empfangenen Anforderung        |
+|RequestQuery     | **Server-Routed**: Back-End-Poolinstanz, an die die Anforderung gesendet wurde. </br> **X-AzureApplicationGateway-LOG-ID**: Korrelations-ID, die für die Anforderung verwendet wurde. Kann für die Behandlung von Datenverkehrsproblemen auf den Back-End-Servern verwendet werden. </br>**SERVER-STATUS**: HTTP-Antwortcode, den Application Gateway vom Back-End empfangen hat.       |
+|UserAgent     | Benutzer-Agent aus dem HTTP-Anforderungsheader        |
+|httpStatus     | HTTP-Statuscode, der vom Application Gateway an den Client zurückgegeben wurde       |
+|httpVersion     | HTTP-Version der Anforderung        |
+|receivedBytes     | Größe des empfangenen Pakets in Byte        |
+|sentBytes| Größe des gesendeten Pakets in Byte|
+|timeTaken| Dauer (in Millisekunden), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
+|sslEnabled| Gibt an, ob für die Kommunikation an die Back-End-Pools SSL verwendet wurde. Gültige Werte sind „on“ und „off“.|
 ```json
 {
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
     "operationName": "ApplicationGatewayAccess",
-    "time": "2016-04-11T04:24:37Z",
+    "time": "2017-04-26T19:27:38Z",
     "category": "ApplicationGatewayAccessLog",
     "properties": {
-        "instanceId":"ApplicationGatewayRole_IN_0",
-        "clientIP":"37.186.113.170",
-        "clientPort":"12345",
-        "httpMethod":"HEAD",
-        "requestUri":"/xyz/portal",
-        "requestQuery":"",
-        "userAgent":"-",
-        "httpStatus":"200",
-        "httpVersion":"HTTP/1.0",
-        "receivedBytes":"27",
-        "sentBytes":"202",
-        "timeTaken":"359",
-        "sslEnabled":"off"
+        "instanceId": "ApplicationGatewayRole_IN_0",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off"
     }
 }
 ```
 
 ### <a name="performance-log"></a>Leistungsprotokoll
 
-Dieses Protokoll wird nur generiert, wenn Sie es wie in den vorherigen Schritten für die jeweiligen Application Gateways aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
+Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die Daten für das Leistungsprotokoll werden in Intervallen von einer Minute generiert. Die folgenden Daten werden protokolliert:
+
+
+|Wert  |Beschreibung  |
+|---------|---------|
+|instanceId     |  Application Gateway-Instanz, für die Leistungsdaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.        |
+|healthyHostCount     | Anzahl von fehlerfreien Hosts im Back-End-Pool        |
+|unHealthyHostCount     | Anzahl von fehlerhaften Hosts im Back-End-Pool        |
+|requestCount     | Anzahl von bereitgestellten Anforderungen        |
+|latency | Wartezeit (in Millisekunden) für Anforderungen von der Instanz an das Back-End, über das die Anforderungen bereitgestellt werden |
+|failedRequestCount| Anzahl von fehlerhaften Anforderungen|
+|throughput| Durchschnittlicher Durchsatz seit dem letzten Protokoll, gemessen in Bytes pro Sekunde.|
 
 ```json
 {
@@ -213,11 +245,30 @@ Dieses Protokoll wird nur generiert, wenn Sie es wie in den vorherigen Schritten
 ```
 
 > [!NOTE]
-> Latenz wird von dem Zeitpunkt, zu dem das erste Byte der HTTP-Anforderung empfangen wird, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der HTTP-Antwort gesendet wird. Es ist die Summe der Application Gateway-Verarbeitungszeit zuzüglich der Netzwerklast zum Back-End zuzüglich der Zeit für die Verarbeitung der Anforderung auf dem Back-End.
+> Latenz wird von dem Zeitpunkt, zu dem das erste Byte der HTTP-Anforderung empfangen wird, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der HTTP-Antwort gesendet wird. Dies ist die Summe der Application Gateway-Verarbeitungszeit plus Netzwerkkosten zum Back-End plus die Zeit, die das Back-End zum Verarbeiten der Anforderung benötigt.
 
 ### <a name="firewall-log"></a>Firewallprotokoll
 
-Dieses Protokoll wird nur generiert, wenn Sie es wie in den vorherigen Schritten für die jeweiligen Application Gateways aktiviert haben. Für dieses Protokoll muss zudem die Web Application Firewall auf einem Anwendungsgateway konfiguriert sein. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
+Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgateway gemäß den obigen Schritten aktiviert haben. Für dieses Protokoll muss zudem die Web Application Firewall auf einem Anwendungsgateway konfiguriert sein. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
+
+
+|Wert  |Beschreibung  |
+|---------|---------|
+|instanceId     | Application Gateway-Instanz, für die Firewalldaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.         |
+|clientIp     |   Ursprungs-IP für die Anforderung      |
+|clientPort     |  Ursprungsport für die Anforderung       |
+|requestUri     | URI der empfangenen Anforderung       |
+|ruleSetType     | Regelsatztyp: Der verfügbare Wert ist OWASP.        |
+|ruleSetVersion     | Verwendete Regelsatzversion. Verfügbare Werte sind 2.2.9 und 3.0.     |
+|ruleId     | Regel-ID des auslösenden Ereignisses        |
+|message     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
+|action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ und „Allowed“.      |
+|site     | Standort, für den das Protokoll generiert wurde. Derzeit ist nur „Global“ aufgeführt, da Regeln global sind.|
+|details     | Details zum auslösenden Ereignis        |
+|details.message     | Beschreibung der Regel        |
+|details.data     | Spezifische Daten in der Anforderung, die eine Übereinstimmung mit der Regel ergeben         |
+|details.file     | Konfigurationsdatei, die die Regel enthalten hat        |
+|details.line     | Nummer der Zeile in der Konfigurationsdatei, die das Ereignis ausgelöst hat       |
 
 ```json
 {
@@ -251,14 +302,14 @@ Dieses Protokoll wird nur generiert, wenn Sie es wie in den vorherigen Schritten
 
 Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzeigen und analysieren:
 
-* **Azure-Tools:** Rufen Sie Informationen aus den Aktivitätsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab.  Detaillierte Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md) .
-* **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing) -Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Activity Logs Content Pack for Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
+* **Azure-Tools:** Rufen Sie Informationen aus dem Aktivitätsprotokoll mit Azure PowerShell, der Azure CLI, der Azure-REST-API oder dem Azure-Portal ab. Detaillierte Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md) .
+* **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Activity Logs Content Pack for Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
 
-## <a name="view-and-analyze-the-access-performance-and-firewall-log"></a>Anzeigen und Analysieren der Zugriffs-, Leistungs- und Firewallprotokolle
+### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Anzeigen und Analysieren der Zugriffs-, Leistungs- und Firewallprotokolle
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) kann die Leistungsindikator- und Ereignisprotokolldateien aus Ihrem Blobspeicherkonto erfassen und enthält Visualisierungen und leistungsfähige Suchfunktionen, um Ihre Protokolle zu analysieren.
+Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) kann die Indikator- und Ereignisprotokolldateien aus Ihrem Blob-Speicherkonto erfassen. Die Anwendung umfasst Visualisierungen und leistungsfähige Suchfunktionen zum Analysieren Ihrer Protokolle.
 
-Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für Zugriffs- und Leistungsprotokolle abrufen. Sobald Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, PowerBI oder einem anderen Datenvisualisierungstool anzeigen.
+Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für Zugriffs- und Leistungsprotokolle abrufen. Nachdem Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, Power BI oder einem anderen Datenvisualisierungstool anzeigen.
 
 > [!TIP]
 > Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von GitHub verwenden.
@@ -267,53 +318,49 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 
 ## <a name="metrics"></a>Metriken
 
-Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistungsindikatoren im Portal anzeigen können. Für Application Gateway steht zum Zeitpunkt der Abfassung dieses Artikels eine Metrik zur Verfügung. Diese Metrik misst den Durchsatz und kann im Portal angezeigt werden. Navigieren Sie zu einem Anwendungsgateway, und klicken Sie auf **Metriken**. Wählen Sie im Abschnitt **Verfügbare Metriken** den Durchsatz aus, um die Werte anzuzeigen. In der folgenden Abbildung sehen Sie ein Beispiel mit den Filtern, die zum Anzeigen der Daten in verschiedenen Zeiträumen verwendet werden können.
+Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistungsindikatoren im Portal anzeigen können. Für Application Gateway ist derzeit eine Metrik verfügbar. Dies ist die Metrik für den Durchsatz, die Sie im Portal anzeigen können. Navigieren Sie zu einem Anwendungsgateway, und klicken Sie auf **Metriken**. Wählen Sie im Abschnitt **Verfügbare Metriken** den Durchsatz aus, um die Werte anzuzeigen. Die folgende Abbildung enthält ein Beispiel mit den Filtern, die Sie zum Anzeigen der Daten in verschiedenen Zeiträumen verwenden können.
 
-Eine Liste der aktuell unterstützten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
+![Ansicht „Metrik“ mit Filtern][5]
 
-![Metrikanzeige][5]
+Eine aktuelle Liste mit Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-### <a name="alert-rules"></a>Warnregeln
+### <a name="alert-rules"></a>Warnungsregeln
 
-Warnungsregeln können anhand der Metriken für eine Ressource gestartet werden. Dies bedeutet für Application Gateway, dass eine Warnung einen Webhook aufrufen oder eine E-Mail an einen Administrator senden kann, wenn der Durchsatz des Anwendungsgateways für einen angegebenen Zeitraum oberhalb oder unterhalb eines Schwellenwerts bzw. genau auf einem Schwellenwert liegt.
+Sie können Warnungsregeln basierend auf Metriken für eine Ressource starten. Eine Warnung kann beispielsweise einen Webhook aufrufen oder eine E-Mail an einen Administrator senden, wenn der Durchsatz des Anwendungsgateways für einen angegebenen Zeitraum oberhalb oder unterhalb eines Schwellenwerts bzw. genau auf einem Schwellenwert liegt.
 
-Das folgende Beispiel führt Sie durch die Erstellung einer Warnungsregel, die eine E-Mail an einen Administrator sendet, nachdem ein Durchsatzschwellenwert verletzt wurde.
+Im folgenden Beispiel wird schrittweise die Erstellung einer Warnungsregel beschrieben, die eine E-Mail an einen Administrator sendet, nachdem ein Durchsatzschwellenwert verletzt wurde:
 
-#### <a name="step-1"></a>Schritt 1
+1. Klicken Sie auf **Metrikwarnung hinzufügen**, um das Blatt **Regel hinzufügen** zu öffnen. Sie können dieses Blatt auch über das Blatt mit den Metriken erreichen.
 
-Klicken Sie zu Beginn auf **Metrikwarnung hinzufügen** . Dieses Blatt kann auch über das Blatt mit den Metriken aufgerufen werden.
+   ![Schaltfläche „Metrikwarnung hinzufügen“][6]
 
-![Blatt mit Warnungsregeln][6]
+2. Füllen Sie auf dem Blatt **Regel hinzufügen** die Abschnitte für den Namen, die Bedingung und die Benachrichtigung aus, und klicken Sie auf **OK**.
 
-#### <a name="step-2"></a>Schritt 2
+   * Wählen Sie in der Auswahl unter **Bedingung** einen von vier Werten aus: **Größer als**, **Größer oder gleich**, **Kleiner als** oder **Kleiner oder gleich**.
 
-Füllen Sie auf dem Blatt **Regel hinzufügen** die Abschnitte für den Namen, die Bedingung und die Benachrichtigung aus, und klicken Sie zum Abschluss auf **OK**.
+   * Wählen Sie unter **Period** (Zeitraum) einen Zeitraum zwischen fünf Minuten und sechs Stunden aus.
 
-Die Auswahl unter **Bedingung** lässt vier Werte zu: **Größer als**, **Größer oder gleich**, **Kleiner als** und **Kleiner oder gleich**.
+   * Wenn Sie **E-Mail-Besitzer, Mitwirkende und Leser** wählen, kann die E-Mail-Adresse dynamisch basierend auf den Benutzern festgelegt werden, die auf diese Ressource zugreifen können. Andernfalls können Sie im Feld **Weitere Administrator-E-Mail(s)** eine durch Kommas getrennte Liste mit Benutzern angeben.
 
-Unter **Zeitraum** können Sie einen Zeitraum von fünf Minuten bis zu sechs Stunden auswählen.
+   ![Blatt „Regel hinzufügen“][7]
 
-Durch Auswahl von **E-Mail-Besitzer, Mitwirkende und Leser** kann die E-Mail-Adresse dynamisch basierend auf den Benutzern festgelegt werden, die auf diese Ressource zugreifen können. Andernfalls können Sie im Textfeld **Weitere Administrator-E-Mail(s)** eine durch Komma getrennte Liste von Benutzern angeben.
+Wenn der Schwellenwert überschritten wird, trifft eine E-Mail ein, die in etwa wie in der folgenden Abbildung aussieht:
 
-![Blatt zum Hinzufügen von Regeln][7]
+![E-Mail zu überschrittenem Schwellenwert][8]
 
-Wenn der Schwellenwert verletzt wird, trifft eine E-Mail ein, die in etwa so aussieht wie in der folgenden Abbildung dargestellt:
+Nach dem Erstellen einer Metrikwarnung wird eine Liste mit Warnungen angezeigt. Dies ist eine Übersicht über alle Warnungsregeln.
 
-![E-Mail zu Schwellenwertverletzung][8]
+![Liste mit Warnungen und Regeln][9]
 
-Eine Liste der Warnungen wird angezeigt, sobald eine Metrikwarnung erstellt wurde. Diese zeigt eine Übersicht über alle Warnungsregeln.
+Weitere Informationen zu Warnungsbenachrichtigungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-![Warnungsregelansicht][9]
-
-Weitere Informationen zu Warnungsbenachrichtigungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
-
-Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Visualisieren von Leistungsindikator- und Ereignisprotokollen mit [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
-* Blogbeitrag [Visualize your Azure Activity Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) (Visualisieren von Azure-Aktivitätsprotokollen mit Power BI).
-* Informationen hierzu finden Sie im Blogbeitrag [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Anzeigen und Analysieren von Azure-Aktivitätsprotokollen in Power BI und mehr).
+* Blogbeitrag [Visualize your Azure activity log with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) (Visualisieren von Azure-Aktivitätsprotokollen mit Power BI)
+* Blogbeitrag [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Anzeigen und Analysieren von Azure-Aktivitätsprotokollen in Power BI und mehr)
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
 [2]: ./media/application-gateway-diagnostics/figure2.png
@@ -325,3 +372,4 @@ Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie 
 [8]: ./media/application-gateway-diagnostics/figure8.png
 [9]: ./media/application-gateway-diagnostics/figure9.png
 [10]: ./media/application-gateway-diagnostics/figure10.png
+
