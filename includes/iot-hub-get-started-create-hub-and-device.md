@@ -15,7 +15,9 @@
 
      **An Dashboard anheften**: Aktivieren Sie diese Option für den leichteren Zugriff auf Ihren IoT Hub über das Dashboard.
 
-    ![Informationen zum Erstellen des IoT Hubs eingeben](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
+   ![Informationen zum Erstellen des IoT Hubs eingeben](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
+
+   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
 3. Klicken Sie auf **Erstellen**. Die Erstellung des IoT Hubs kann mehrere Minuten dauern. Sie sehen den Fortschritt im Bereich **Benachrichtigungen**.
 
@@ -45,6 +47,8 @@
    **Connect device to IoT Hub** (Gerät mit IoT Hub verbinden): Klicken Sie auf **Aktivieren**.
 
    ![Hinzufügen eines Geräts im Geräte-Explorer Ihres IoT Hubs](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+
+   [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. Klicken Sie auf **Speichern**.
 5. Öffnen Sie das Gerät nach der Erstellung im Bereich **Geräte-Explorer**.

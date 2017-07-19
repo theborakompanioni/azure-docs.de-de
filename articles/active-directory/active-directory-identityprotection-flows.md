@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
+ms.reviewer: nigu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
@@ -21,9 +22,7 @@ ms.contentlocale: de-de
 ms.lasthandoff: 12/28/2016
 
 ---
-<a id="sign-in-experiences-with-azure-ad-identity-protection" class="xliff"></a>
-
-# Anmeldeverfahren von Azure AD Identity Protection
+# <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Anmeldeverfahren von Azure AD Identity Protection
 Azure Active Directory Identity Protection bietet folgende Möglichkeiten:
 
 * Sie können festlegen, dass sich Benutzer für die mehrstufige Authentifizierung registrieren müssen.
@@ -48,9 +47,7 @@ In diesem Thema können Sie sich einen Überblick über alle Fälle verschaffen,
 * Wiederherstellung gefährdeter Konten
 * Blockiertes gefährdetes Konto
 
-<a id="multi-factor-authentication-registration" class="xliff"></a>
-
-## Registrierung für die mehrstufige Authentifizierung
+## <a name="multi-factor-authentication-registration"></a>Registrierung für die mehrstufige Authentifizierung
 Sowohl bei der Wiederherstellung gefährdeter Konten als auch bei riskanten Anmeldungen ist die Benutzerfreundlichkeit am größten, wenn der Benutzer die Wiederherstellung selbst durchführen kann. Den Konten von Benutzern, die sich für die mehrstufige Authentifizierung registriert haben, ist bereits eine Telefonnummer zugeordnet, die für die Sicherheitsabfragen verwendet werden kann. Das gefährdete Konto kann ganz ohne Beteiligung des Helpdesks oder eines Administrators wiederhergestellt werden. Sie sollten daher unbedingt sicherstellen, dass sich die Benutzer für die mehrstufige Authentifizierung registrieren. 
 
 Administratoren haben folgende Möglichkeiten:
@@ -70,9 +67,7 @@ Administratoren haben folgende Möglichkeiten:
    
     ![Wiederherstellung](./media/active-directory-identityprotection-flows/142.png "Wiederherstellung")
 
-<a id="risky-sign-in-recovery" class="xliff"></a>
-
-## Wiederherstellung riskanter Anmeldungen
+## <a name="risky-sign-in-recovery"></a>Wiederherstellung riskanter Anmeldungen
 Wenn ein Administrator eine Richtlinie für Anmelderisiken konfiguriert hat, werden die betroffenen Benutzer benachrichtigt, wenn sie versuchen, sich anzumelden. 
 
 **Das Verfahren für riskante Anmeldungen umfasst zwei Schritte:** 
@@ -84,16 +79,12 @@ Wenn ein Administrator eine Richtlinie für Anmelderisiken konfiguriert hat, wer
    
     ![Wiederherstellung](./media/active-directory-identityprotection-flows/121.png "Wiederherstellung")
 
-<a id="risky-sign-in-blocked" class="xliff"></a>
-
-## Blockierte riskante Anmeldung
+## <a name="risky-sign-in-blocked"></a>Blockierte riskante Anmeldung
 Administratoren können auch eine Richtlinie für Anmelderisiken festlegen, um Benutzer abhängig von Risikostufe bei der Anmeldung zu blockieren. Zur Aufhebung der Blockierung muss sich der Endbenutzer an einen Administrator oder an den Helpdesk wenden oder sich an einem bekannten Standort oder mit einem bekannten Gerät anmelden. In diesem Fall ist keine selbstständige Wiederherstellung mittels mehrstufiger Authentifizierung möglich.
 
 ![Wiederherstellung](./media/active-directory-identityprotection-flows/200.png "Wiederherstellung")
 
-<a id="compromised-account-recovery" class="xliff"></a>
-
-## Wiederherstellung gefährdeter Konten
+## <a name="compromised-account-recovery"></a>Wiederherstellung gefährdeter Konten
 Wenn eine Sicherheitsrichtlinie für das Benutzerrisiko konfiguriert wurde, müssen Benutzer, die der in der Richtlinie angegebenen Risikostufe entsprechen (und somit als kompromittiert betrachtet werden), das Wiederherstellungsverfahren für kompromittierte Benutzer durchlaufen, um sich wieder anmelden zu können. 
 
 **Das Wiederherstellungsverfahren für kompromittierte Benutzer umfasst drei Schritte:**
@@ -109,23 +100,17 @@ Wenn eine Sicherheitsrichtlinie für das Benutzerrisiko konfiguriert wurde, müs
    
    ![Wiederherstellung](./media/active-directory-identityprotection-flows/111.png "Wiederherstellung")
 
-<a id="compromised-account-blocked" class="xliff"></a>
-
-## Blockiertes gefährdetes Konto
+## <a name="compromised-account-blocked"></a>Blockiertes gefährdetes Konto
 Ein Benutzer, der aufgrund einer Benutzerrisiko-Sicherheitsrichtlinie blockiert wurde, muss sich zur Aufhebung der Blockierung an einen Administrator oder an den Helpdesk wenden. In diesem Fall ist keine selbstständige Wiederherstellung mittels mehrstufiger Authentifizierung möglich.
 
 ![Wiederherstellung](./media/active-directory-identityprotection-flows/104.png "Wiederherstellung")
 
-<a id="reset-password" class="xliff"></a>
-
-## Zurücksetzen des Kennworts
+## <a name="reset-password"></a>Zurücksetzen des Kennworts
 Wenn die Anmeldung für einen kompromittierten Benutzer gesperrt ist, kann ein Administrator ein temporäres Kennwort für ihn generieren. Der Benutzer muss sein Kennwort dann bei der nächsten Anmeldung ändern.
 
 ![Wiederherstellung](./media/active-directory-identityprotection-flows/160.png "Wiederherstellung")
 
-<a id="see-also" class="xliff"></a>
-
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
 

@@ -22,14 +22,10 @@ ms.lasthandoff: 12/28/2016
 
 
 ---
-<a id="managing-owners-for-a-group" class="xliff"></a>
-
-# Verwalten von Besitzern einer Gruppe
+# <a name="managing-owners-for-a-group"></a>Verwalten von Besitzern einer Gruppe
 Wenn ein Ressourcenbesitzer einer Ressource den Zugriff auf eine Azure AD-Gruppe zugewiesen hat, wird die Mitgliedschaft der Gruppe durch den Besitzer der Gruppe verwaltet. Tatsächlich delegiert der Besitzer der Ressource die Berechtigung, dieser Ressource Benutzer zuzuweisen, an den Besitzer der Gruppe.
 
-<a id="assigning-group-ownership" class="xliff"></a>
-
-## Zuweisen des Gruppenbesitzes
+## <a name="assigning-group-ownership"></a>Zuweisen des Gruppenbesitzes
 **So fügen Sie einer Gruppe einen Besitzer hinzu**
 
 1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com)die Option **Active Directory**aus, und öffnen Sie dann das Verzeichnis Ihrer Organisation.
@@ -44,9 +40,7 @@ Wenn ein Ressourcenbesitzer einer Ressource den Zugriff auf eine Azure AD-Gruppe
 3. Wählen Sie die Registerkarte **Besitzer** aus.
 4. Wählen Sie den Besitzer aus, der aus der Gruppe entfernt werden soll, und wählen Sie dann **Entfernen**aus.
 
-<a id="additional-information" class="xliff"></a>
-
-## Zusätzliche Informationen
+## <a name="additional-information"></a>Zusätzliche Informationen
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)

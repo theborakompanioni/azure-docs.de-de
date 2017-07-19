@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: boltean
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
 ms.openlocfilehash: 8ac82da36b2edb71fcd0599dac12a3ed18e33b6f
+ms.contentlocale: de-de
 ms.lasthandoff: 03/24/2017
-
 
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
@@ -93,6 +93,8 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 * **location**. Der Standort (Azure-Region/Datencenter) für die Bereitstellung der IoT Hub-Instanz.
 * **sku-name**. Der Name der SKU, einer der folgenden: [F1, S1, S2, S3]. Die aktuelle vollständige Liste finden Sie in der Preisübersicht für IoT Hub.
 * **units**. Die Anzahl der bereitgestellten Einheiten. Bereich: F1 [1-1]; S1, S2 [1-200]; S3 [1-10]. Die IoT Hub-Einheiten basieren auf der Gesamtzahl von Nachrichten und der Anzahl von Geräten, die Sie verbinden möchten.
+
+[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 Um alle für die Erstellung verfügbaren Parameter anzuzeigen, können Sie an der Eingabeaufforderung den Hilfebefehl verwenden:
 
