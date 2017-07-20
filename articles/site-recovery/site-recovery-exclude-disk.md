@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 6e52a647e817b64e331937c0b0f1d44f9f6c11a0
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
@@ -51,7 +50,7 @@ Sie können dementsprechend anhand der folgenden Schritte einen Datenträger opt
 ## <a name="how-to-exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 
 ### <a name="vmware-to-azure"></a>VMware zu Azure
-Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-vmware-to-azure.md#enable-replication), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
+Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-vmware-to-azure.md), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
 
 ![Ausschließen von Datenträgern von der Replikation und Aktivieren der Replikation für Failbacks von VMware auf Azure](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
 
@@ -67,7 +66,7 @@ Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-vmware-to-az
 >
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
-Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-hyper-v-site-to-azure.md#enable-replication), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
+Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-hyper-v-site-to-azure.md), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
 
 ![Ausschließen von Datenträgern von der Replikation und Aktivieren der Replikation für Failbacks von Hyper-V auf Azure](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 

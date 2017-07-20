@@ -1,6 +1,6 @@
 ---
 title: "Überwachen Sie Ihre lokalen Identitätsinfrastruktur in der Cloud."
-description: "Auf der Seite &quot;Azure AD Connect Health&quot; wird der Dienst beschrieben, und es werden die Gründe für seine Verwendung erörtert."
+description: "Auf der Seite \"Azure AD Connect Health\" wird der Dienst beschrieben, und es werden die Gründe für seine Verwendung erörtert."
 services: active-directory
 documentationcenter: 
 author: karavar
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/10/2017
-ms.author: vakarand
-translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: d995918ef51f345bf76a25f9b6908cf5f4aac6c9
-ms.lasthandoff: 03/10/2017
-
+ms.date: 07/18/2017
+ms.author: billmath
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud
