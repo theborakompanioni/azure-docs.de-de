@@ -2,10 +2,8 @@
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
 > * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-getstarted.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
-> 
-> 
+> * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 
-## <a name="introduction"></a>Einführung
 Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. Von IoT Hub wird für jedes Gerät, das eine Verbindung herstellt, dauerhaft ein Gerätezwilling gespeichert.
 
 Verwenden Sie Gerätezwillinge für Folgendes:
@@ -17,8 +15,6 @@ Verwenden Sie Gerätezwillinge für Folgendes:
 
 > [!NOTE]
 > Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Weitere Informationen dazu, wann Sie Gerätezwillinge verwenden sollten, finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins].
-> 
-> 
 
 Gerätezwillinge werden in einem IoT Hub gespeichert und enthalten Folgendes:
 
@@ -33,8 +29,6 @@ Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Ge
 
 > [!NOTE]
 > Zurzeit ist der Zugriff auf Gerätezwillinge nur von Geräten aus möglich, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
-> 
-> 
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 7de37f106e33d425b3b497cec640bac3fa4afa74
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: b53e7f5454cd97f013fdce052f0a990a44958dee
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds in Azure per Site Recovery im Azure-Portal
@@ -42,7 +41,7 @@ Wenn Sie Computer zu Azure migrieren möchten (ohne Failback), erfahren Sie [in 
 Führen Sie anhand des Artikels diese Bereitstellungsschritte aus:
 
 
-1. [Erfahren Sie mehr](site-recovery-components.md#hyper-v-to-azure) über die Architektur für diese Bereitstellung. [Informieren Sie sich](site-recovery-hyper-v-azure-architecture.md) darüber hinaus über die Funktionsweise der Hyper-V-Replikation in Site Recovery.
+1. [Erfahren Sie mehr](site-recovery-components.md) über die Architektur für diese Bereitstellung. [Informieren Sie sich](site-recovery-hyper-v-azure-architecture.md) darüber hinaus über die Funktionsweise der Hyper-V-Replikation in Site Recovery.
 2. Überprüfen Sie die Voraussetzungen und Einschränkungen.
 3. Richten Sie Azure-Netzwerk- und -Speicherkonten ein.
 4. Bereiten Sie den lokalen VMM-Server und die Hyper-V-Hosts vor.
