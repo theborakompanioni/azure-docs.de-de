@@ -23,8 +23,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-# Liste mit den Connectors
-<a id="connectors-list" class="xliff"></a>
+# <a name="connectors-list"></a>Liste mit den Connectors
 > [!TIP]
 > Die [vollständige Liste von A bis Z](#az) (in diesem Thema) enthält alle verfügbaren Connectors, die Sie in Ihren Logik-Apps verwenden können. Im Artikel mit den [Connectordetails](/connectors/) sind alle in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen für jeden Connector aufgeführt.
 
@@ -40,8 +39,7 @@ Connectors sind ein wesentlicher Bestandteil der Logik-App-Erstellung. Mithilfe 
 
 Ausführlichere Informationen zu den Kosten finden Sie unter [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/) sowie unter [Preismodell für Logik-Apps](../logic-apps/logic-apps-pricing.md). 
 
-## Bekannte Connectors
-<a id="popular-connectors" class="xliff"></a>
+## <a name="popular-connectors"></a>Bekannte Connectors
 Es gibt Tausende von Anwendungen und Millionen von Ausführungen, die mithilfe dieser Connectors erfolgreich Daten und Informationen verarbeiten. Die folgende Tabelle enthält die bekanntesten Connectors und einige Favoriten unserer Benutzer:
 
 | |  |  |  |
@@ -54,8 +52,7 @@ Es gibt Tausende von Anwendungen und Millionen von Ausführungen, die mithilfe d
 |  [![API-Symbol][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Wenn Sie SharePoint verwenden und etwas automatisieren möchten, sollten Sie sich diesen Connector näher ansehen. Er eignet sich sowohl für lokale SharePoint-Instanzen als auch für SharePoint Online. | [![API-Symbol][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | Einer der am häufigsten verwendeten Connectors. Er kann eine Verbindung mit einer lokalen SQL Server-Instanz sowie mit Azure SQL-Datenbank herstellen. | 
 | [![API-Symbol][Twittericon]<br/>**Twitter**][Twitterdoc] | Melden Sie sich einfach mit einem Twitter-Konto an, und starten Sie einen neuen Workflow, wenn ein neuer Tweet gepostet wird. Die Tweets können dann in einer SQL-Datenbank oder in einer SharePoint-Liste gespeichert werden. | | | 
 
-## Integrationskonto-Connectors
-<a id="integration-account-connectors" class="xliff"></a> 
+## <a name="integration-account-connectors"></a>Integrationskonto-Connectors 
 
 Das Enterprise Integration Pack (EIP) umfasst Connectors, die in der BizTalk Server-Community bestens bekannt sind. Beim Kauf eines [Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) erhalten Sie auch folgende Connectors: 
 
@@ -65,14 +62,13 @@ Das Enterprise Integration Pack (EIP) umfasst Connectors, die in der BizTalk Ser
 [![API-Symbol][flatfileicon]<br/>**Flatfile</br>-Codierung**][flatfiledoc] | [![API-Symbol][flatfiledecodeicon]<br/>**Flatfile</br>-Decodierung**][flatfiledecodedoc] | [![API-Symbol][integrationaccounticon]<br/>**Integrations-<br/>konto**][integrationaccountdoc] | [![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc] |
 | [![API-Symbol][x12icon]<br/>**X12</br>-Decodierung**][x12decode] | [![API-Symbol][x12icon]<br/>**X12</br>-Codierung**][x12encode] | [![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc] | |
 
-## Enterprise-Connectors
-<a id="enterprise-connectors" class="xliff"></a>
+## <a name="enterprise-connectors"></a>Enterprise-Connectors
 
 Stellen Sie in Ihren Logik-Apps eine Verbindung mit Ihren Unternehmensanwendungen her.
 
 |  |  |
 | --- | --- |
-|[![API-Symbol][MQ-Symbol]<br/>**MQ**][mqdoc]|[![API-Symbol][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API Icon][MQicon]<br/>**MQ**][mqdoc]|[![API-Symbol][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>Vollständige Liste von A bis Z
@@ -91,8 +87,7 @@ Im Artikel zu den [Connectordetails](/connectors/) sind alle in Swagger definier
 > [!TIP]
 > Wenn Sie sich zunächst mit Azure Logic Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie [Logic Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-## Connectors als Trigger und Aktionen
-<a id="connectors-as-triggers-and-actions" class="xliff"></a>
+## <a name="connectors-as-triggers-and-actions"></a>Connectors als Trigger und Aktionen
 
 Ein **Trigger** startet eine Instanz Ihrer Logik-App oder führt sie aus. Einige Connectors umfassen Trigger, die Ihre App benachrichtigen, wenn bestimmte Ereignisse eintreten. Der FTP-Connector verfügt beispielsweise über den `OnUpdatedFile`-Trigger, der Ihre Logik-App startet, wenn eine Datei aktualisiert wird. 
 
@@ -112,8 +107,7 @@ Connectors bieten auch **Aktionen**, die Sie in Ihrem Workflow verwenden können
 > Ausführlichere Informationen zu Triggern und Aktionen finden Sie in der [Übersicht über Connectors](connectors-overview.md). 
 
 
-## Nachrichtenbearbeitungsaktionen
-<a id="message-manipulation-actions" class="xliff"></a>
+## <a name="message-manipulation-actions"></a>Nachrichtenbearbeitungsaktionen
 
 Logic Apps verfügt über integrierte Aktionen zum Ändern oder Bearbeiten der Nutzlastdaten. Der integrierte Connector **Datenvorgänge** enthält folgende Aktionen: 
 
@@ -126,15 +120,13 @@ Logic Apps verfügt über integrierte Aktionen zum Ändern oder Bearbeiten der N
 | **JSON analysieren** | Analysieren Sie Werte aus einem JSON-Objekt im Designer, und greifen Sie darauf zu. Wenn Ihre Azure-Funktion also beispielsweise eine JSON-Nutzlast zurückgibt, können Sie diese analysieren, um später in einem anderen Schritt auf die JSON-Eigenschaften zuzugreifen. Die Aktion prüft außerdem zur Laufzeit, ob der JSON-Code dem angegebenen Schema entspricht. | 
 | **Auswählen** | Wählen Sie bestimmte Eigenschaften eines Arrays zur weiteren Verarbeitung aus. Wenn Sie Datensätze aus SQL auflisten und dabei 15 Spalten zurückgegeben werden, haben Sie die Möglichkeit, nur einige dieser Spalten zur weiteren Verarbeitung auszuwählen. Die Ausgabe ist ein Array, das nur die ausgewählten Eigenschaften enthält. |
 
-## Benutzerdefinierte Connectors und Azure-Zertifizierung
-<a id="custom-connectors-and-azure-certification" class="xliff"></a> 
+## <a name="custom-connectors-and-azure-certification"></a>Benutzerdefinierte Connectors und Azure-Zertifizierung 
 
 Zum Aufrufen von APIs, die benutzerdefinierten Code ausführen oder nicht als Connector verfügbar sind, können Sie die Logic Apps-Plattform erweitern, indem Sie [REST-basierte API-Apps als benutzerdefinierte Connectors](../logic-apps/logic-apps-create-api-app.md) erstellen. 
 
 Wenn Sie Ihre benutzerdefinierten API-Apps öffentlich machen und für die Nutzung in Azure zur Verfügung stellen möchten, können Sie Ihre Vorschläge an das [Microsoft Azure Certified-Programm](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/) übermitteln.
 
-## Hier erhalten Sie Hilfe
-<a id="get-help" class="xliff"></a>
+## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
 Im [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) können Sie Fragen stellen, Fragen beantworten und sich über die Aktivitäten anderer Azure Logic Apps-Benutzer informieren.
 
@@ -142,8 +134,7 @@ Zur Optimierung von Azure Logic Apps und Connectors können Sie auf der [Benutze
 
 Fehlt noch ein Connector-Thema oder Details, die Ihrer Meinung nach wichtig sind? Falls ja, dann helfen Sie uns, indem Sie unsere vorhandenen Themen ergänzen oder eigene erstellen. Unsere Dokumentation basiert auf Open Source und ist auf GitHub gehostet. Beginnen Sie mit unserem [GitHub-Repository](https://github.com/Microsoft/azure-docs). 
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen Ihrer ersten Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 * [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](../logic-apps/logic-apps-create-api-app.md)
 * [Überwachen von Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
