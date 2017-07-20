@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 04/21/2017
 ms.author: sashan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: b1b67a83a25159414a80382030903d300aad71f7
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 40fe0ae04eb94322356ed19773512e3bc383639c
 ms.contentlocale: de-de
 ms.lasthandoff: 05/18/2017
 
@@ -58,7 +58,7 @@ Nach Abschluss des Failovers der Endpunkte der Anwendung und der Datenbank start
 Bei einem Ausfall in der sekundären Region wird der Replikationslink zwischen der primären und sekundären Datenbank unterbrochen, aber das Failover wird nicht ausgelöst, weil die primäre Datenbank nicht betroffen ist. Die Verfügbarkeit der Anwendung ändert sich in diesem Fall nicht, sie wird jedoch ungeschützt und mit dem erhöhten Risiko betrieben, dass beide Regionen nacheinander ausfallen.
 
 > [!NOTE]
-> Wir empfehlen ausschließlich Bereitstellungskonfigurationen mit einer einzelnen Notfallwiederherstellungsregion. Der Grund ist, dass die meisten Azure-Gebiete zwei Regionen aufweisen. Diese Konfigurationen bieten Ihrer Anwendung keinen Schutz vor einem katastrophenbedingten Ausfall beider Regionen. Im unwahrscheinlichen Fall eines solchen Ausfalls können Sie Ihre Datenbanken mithilfe eines [Geowiederherstellungsvorgangs](sql-database-disaster-recovery.md#recover-using-geo-restore) in einer dritten Region wiederherstellen.
+> Für die Notfallwiederherstellung empfehlen wir eine Konfiguration, bei der die Anwendungsbereitstellung auf zwei Regionen beschränkt ist. Der Grund ist, dass die meisten Azure-Gebiete nur zwei Regionen aufweisen. Diese Konfiguration bieten keinen Schutz Ihrer Anwendung vor einem gleichzeitigen katastrophenbedingten Ausfall beider Regionen.  Im unwahrscheinlichen Fall eines solchen Ausfalls können Sie Ihre Datenbanken mithilfe eines [Geowiederherstellungsvorgangs](sql-database-disaster-recovery.md#recover-using-geo-restore) in einer dritten Region wiederherstellen.
 >
 
 Nach Behebung der Ausfallursache wird die sekundäre Datenbank automatisch mit der primären neu synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank geringfügig beeinträchtigt sein, abhängig von der Menge der Daten, die synchronisiert werden müssen. Das folgende Diagramm zeigt einen Ausfall in der sekundären Region.

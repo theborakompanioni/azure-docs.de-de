@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 2fad3e3fb88d447b377ccfce052035640c1360c3
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c3646fef95bc06f8febe45718f4f9aeb9aefb42a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -80,7 +80,7 @@ Sie können Verbindungszeichenfolgen in Ihrem App-Code verwenden, um die Informa
 Sie können benutzerdefinierte [Endpunkte](iot-hub-devguide-endpoints.md) auf einen IoT Hub erstellen, um von einer [Routingregel](#routing-rules) versendete Nachrichten weiterzuleiten. Benutzerdefinierte Endpunkte stellen eine direkte Verbindung mit einem Event Hub, einer Service Bus-Warteschlange oder einem Service Bus-Thema her.
 
 ## <a name="custom-gateway"></a>Benutzerdefiniertes Gateway
-Mit einem Gateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Sie können [Azure IoT Edge](#azure-iot-gateway-sdk) zum Erstellen von benutzerdefinierten Gateways verwenden, bei denen benutzerdefinierte Logik implementiert wird, um Nachrichten und benutzerdefinierte Protokollkonvertierungen zu verarbeiten und andere Edge-Verarbeitungsvorgänge durchzuführen.
+Mit einem Gateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Sie können [Azure IoT Edge](#azure-iot-edge) zum Erstellen von benutzerdefinierten Gateways verwenden, bei denen benutzerdefinierte Logik implementiert wird, um Nachrichten und benutzerdefinierte Protokollkonvertierungen zu verarbeiten und andere Edge-Verarbeitungsvorgänge durchzuführen.
 
 ## <a name="data-point-message"></a>Datenpunktnachricht
 Eine Datenpunktnachricht ist eine [D2C-Nachricht](#device-to-cloud), die [Telemetriedaten](#telemetry) wie Windgeschwindigkeit oder Temperatur enthält.
@@ -188,10 +188,10 @@ Der [iothub-explorer](https://github.com/azure/iothub-explorer) ist ein plattfor
 Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). Außerdem nutzt [IoT Hub](#iot-hub) Aufträge zum [Importieren und Exportieren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
 
 ## <a name="jobs-rest-api"></a>Aufträge-REST-API
-Die [Aufträge-REST-API](https://docs.microsoft.com/rest/api/iothub/jobapi) ermöglicht die Verwaltung von [Aufträgen](#job), die in Ihrer IoT-Hub-Instanz ausgeführt werden.
+Die [Aufträge-REST-API](https://docs.microsoft.com/rest/api/iothub/jobapi) ermöglicht die Verwaltung von [Aufträgen](#job), die in Ihrer IoT Hub-Instanz ausgeführt werden.
 
 ## <a name="module"></a>Modul
-In [Azure IoT Edge](iot-hub-linux-gateway-sdk-get-started.md) ist ein [Modul](iot-hub-linux-gateway-sdk-get-started.md) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Azure IoT Edge enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.
+In [Azure IoT Edge](iot-hub-linux-iot-edge-get-started.md) ist ein [Modul](iot-hub-linux-iot-edge-get-started.md) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Azure IoT Edge enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
@@ -224,7 +224,7 @@ Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) handelt es
 Sie verwenden eine Wiederholungsrichtlinie, um [vorübergehende Fehler](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) zu verarbeiten, wenn Sie eine Verbindung mit einem Clouddienst herstellen.
 
 ## <a name="routing-rules"></a>Routingregeln
-Sie konfigurieren [Routingregeln](iot-hub-devguide-messaging.md#routing-rules) in Ihrem IoT Hub, um D2C-Nachrichten an einen [integrierten Endpunkt](#built-in-endpoints) oder [benutzerdefinierte Endpunkte](#custom-endpoints) für die Verarbeitung durch Ihr Lösungs-Back-End weiterzuleiten.
+Sie konfigurieren [Routingregeln](iot-hub-devguide-messages-read-custom.md) in Ihrem IoT Hub, um D2C-Nachrichten an einen [integrierten Endpunkt](#built-in-endpoints) oder [benutzerdefinierte Endpunkte](#custom-endpoints) für die Verarbeitung durch Ihr Lösungs-Back-End weiterzuleiten.
 
 ## <a name="sasl-plain"></a>SASL PLAIN
 SASL PLAIN ist ein Protokoll, das vom [AMQP](#advanced-message-queue-protocol)-Protokoll zum Übertragen von Sicherheitstoken verwendet wird.

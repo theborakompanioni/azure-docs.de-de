@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: rajram
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: a0a420adc57a0bcbb3779183324ab7bfafcb5bf1
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 4faccae708b5407d1eb64e746824a23688bc5834
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -52,7 +52,7 @@ Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erst
 - Öffnen Sie in Azure Monitor das Blatt „Automatisch skalieren“, und wählen Sie eine Ressource aus, die skaliert werden soll. (Die folgenden Schritte beruhen auf einem App Service-Plan, der einer Web-App zugeordnet ist. Sie können [Ihre erste ASP.NET-Web-App in Azure in fünf Minuten erstellen][4].)
 - Beachten Sie, dass die aktuelle Anzahl der Instanzen für die Ressource auf dem Blatt „Skalierungseinstellung“ 1 beträgt. Klicken Sie auf „Automatische Skalierung aktivieren“.
   ![Skalierungseinstellung für die neue Web-App][5]
-- Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf „Regel hinzufügen“. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ gesetzt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf „Hinzufügen“.
+- Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf „Regel hinzufügen“. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf „Hinzufügen“.
   ![Erstellen der Skalierungseinstellung für eine Web-App][6]
 - Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Skala in der Regel einzufügen. Klicken Sie hierzu auf „Regel hinzufügen“, und setzen Sie „Operator“ auf „Kleiner als“, „Schwellenwert“ auf „20“ und „Vorgang“ auf „Anzahl verringern um“. Sie sollten nun über eine Skalierungseinstellung verfügen, die basierend auf der CPU-Auslastung zentral hoch- bzw. herunterskaliert.
   ![Skalieren basierend auf der CPU][8]
@@ -69,7 +69,7 @@ Neben der Skalierung basierend auf der CPU können Sie auch festlegen, dass die 
 - Klicken Sie auf „Skalierungsbedingung hinzufügen“.
 - Legen Sie den Skalierungsmodus fest. Es gelten dieselben Regeln wie bei der Standardbedingung.
 - Wählen Sie für den Zeitplan „An bestimmten Tagen wiederholen“ aus.
-- Wählen Sie die Tage sowie Start- bzw. Endzeit aus, an denen bzw. an der die Skalierungsbedingung für die ausgewählten Tage angewendet werden soll.
+- Wählen Sie die Tage sowie Start- bzw. Endzeit aus, an denen bzw. zu der die Skalierungsbedingung für die ausgewählten Tage angewendet werden soll.
 
 ![Skalierungsbedingung basierend auf einem Zeitplan][9]
 ## <a name="scale-differently-on-specific-dates"></a>Individuelles Skalieren an bestimmten Daten
@@ -78,7 +78,7 @@ Neben der Skalierung basierend auf der CPU können Sie auch festlegen, dass die 
 - Klicken Sie auf „Skalierungsbedingung hinzufügen“.
 - Legen Sie den Skalierungsmodus fest. Es gelten dieselben Regeln wie bei der Standardbedingung.
 - Wählen Sie für den Zeitplan „Start-/Enddatum angeben“ aus.
-- Wählen Sie die Start- bzw. Enddaten sowie Start- bzw. Endzeit aus, an denen bzw. an der die Skalierungsbedingung für die ausgewählten Daten angewendet werden soll.
+- Wählen Sie die Start- bzw. Enddaten sowie Start- bzw. Endzeit aus, an denen bzw. zu der die Skalierungsbedingung für die ausgewählten Daten angewendet werden soll.
 
 ![Skalierungsbedingung basierend auf Daten][10]
 
@@ -123,3 +123,4 @@ Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf „A
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
+

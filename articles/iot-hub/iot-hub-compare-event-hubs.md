@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: elioda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 944f67d1d5a56c3c478da0c3af0b1f9b8797eee1
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 405dd2f8147c20ce7b96b228fdf417e86a86de92
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -34,7 +34,7 @@ Allerdings bestehen bei den Diensten viele Unterschiede, die in der folgenden Ta
 | Unterstützung für Geräteprotokolle |Unterstützt MQTT, MQTT über WebSockets, AMQP, AMQP über WebSockets und HTTP. Darüber hinaus arbeitet IoT Hub mit dem [Azure IoT-Protokollgateway][lnk-azure-protocol-gateway] zusammen, einer anpassbaren Protokollgateway-Implementierung, die benutzerdefinierte Protokolle unterstützt. |Unterstützt AMQP, AMQP über WebSockets und HTTP. |
 | Sicherheit |Ermöglicht Identität pro Gerät und widerrufbare Zugriffssteuerung. Siehe [Abschnitt über Sicherheit im IoT Hub-Entwicklerleitfaden]. |Ermöglicht Event Hub-weite [SAS-Richtlinien][Event Hubs - security] mit begrenzter Widerrufsunterstützung über [Richtlinien des Herausgebers][Event Hubs publisher policies]. Bei IoT-Lösungen ist es häufig erforderlich, eine benutzerdefinierte Lösung zur Unterstützung von Anmeldeinformationen pro Gerät und Maßnahmen zum Schutz vor Spoofing zu implementieren. |
 | Vorgangsüberwachung |Ermöglicht IoT-Lösungen, einen umfangreichen Satz von Geräte-Identitätsverwaltungs- und -verbindungsereignissen zu abonnieren, z. B. individuelle Authentifizierungsfehler, Drosselung und Ausnahmen bei ungültigen Formaten. Diese Ereignisse ermöglichen Ihnen das rasche Bestimmen von Verbindungsproblemen auf Einzelgerätebene. |Macht nur aggregierte Metriken verfügbar. |
-| Skalieren |Ist für die Unterstützung von Millionen von gleichzeitig verbundenen Geräten optimiert. |Kann eine eingeschränktere Anzahl von gleichzeitigen Verbindungen unterstützen – bis zu 5.000 AMQP-Verbindungen gemäß [Azure Service Bus-Kontingenten][Azure Service Bus quotas]. Jedoch können Sie mit Event Hubs die Partition für jede gesendete Nachricht angeben. |
+| Skalieren |Ist für die Unterstützung von Millionen von gleichzeitig verbundenen Geräten optimiert. |Misst die Verbindungen gemäß den [Azure Service Bus-Kontingenten][Azure Service Bus quotas]. Jedoch können Sie mit Event Hubs die Partition für jede gesendete Nachricht angeben. |
 | Geräte-SDKs |Bietet [Geräte-SDKs][Azure IoT SDKs] für eine Vielzahl von Plattformen und Sprachen, zusätzlich zu direkten MQTT-, AMQP- und HTTP-APIs. |Wird unter .NET, Java und C unterstützt und verfügt außerdem über AMQP- und HTTP-Sendeschnittstellen. |
 | Dateiupload |Ermöglicht IoT-Lösungen zum Hochladen von Dateien von Geräten in die Cloud. Enthält einen Dateibenachrichtigungs-Endpunkt für die Workflowintegration und eine Vorgangsüberwachungskategorie für die Debugunterstützung. | Nicht unterstützt. |
 | Weiterleiten von Nachrichten zu mehreren Endpunkten | Bis zu 10 benutzerdefinierte Endpunkte werden unterstützt. Regeln bestimmen, wie Nachrichten an die benutzerdefinierten Endpunkte weitergeleitet werden. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub][lnk-devguide-messaging]. | Hierfür muss zusätzlicher Code geschrieben und für die Nachrichtenverteilung gehostet werden. |

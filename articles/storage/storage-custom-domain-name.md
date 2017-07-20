@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 05/25/2017
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e99294069f92f51d212b38b1c5ee12232c6dc77d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: f3336d4b0036e1dc181de1f1296da521f68b9464
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 Sie können eine benutzerdefinierte Domäne für den Zugriff auf Blob-Daten in Ihrem Azure-Speicherkonto konfigurieren. Der Standardendpunkt für den Blobspeicher ist `<storage-account-name>.blob.core.windows.net`. Wenn Sie dem Blobendpunkt für Ihr Speicherkonto eine benutzerdefinierte Domäne und Unterdomäne wie **www.contoso.com** zuordnen, können Benutzer über diese Domäne auf Blobdaten in Ihrem Speicherkonto zugreifen.
 
 > [!IMPORTANT]
-> Azure Storage unterstützt noch nicht HTTPS für benutzerdefinierte Domänen. Bisher gibt es diesbezüglich noch keinen Zeitplan, den wir mitteilen könnten. Wir sind uns aber bewusst, dass unsere Kunden diese Funktionalität wünschen.
+> Azure Storage bietet noch keine native Unterstützung von HTTPS für benutzerdefinierte Domänen. Derzeit können Sie [Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS verwenden](./storage-https-custom-domain-cdn.md).
 >
 
 Die folgende Tabelle enthält einige Beispiel-URLs für Blobdaten, die sich in einem Speicherkonto namens **mystorageaccount** befinden. Die für das Speicherkonto registrierte benutzerdefinierte Domäne ist **www.contoso.com**:
@@ -70,7 +71,7 @@ In der Regel können Sie die DNS-Einstellungen Ihrer Domäne auf der Website Ihr
 1. Suchen Sie den Abschnitt zur Verwaltung von CNAMEs. Möglicherweise müssen Sie eine Seite mit erweiterten Einstellungen aufrufen und nach den Wörtern **CNAME**, **Alias** oder **Unterdomänen** suchen.
 1. Erstellen Sie einen neuen CNAME-Eintrag, und geben Sie einen Unterdomänenalias wie etwa **www** oder **photos** an. Geben Sie dann einen Hostnamen (Ihr Blob-Dienstendpunkt) im Format **mystorageaccount.blob.core.windows.net** an (hierbei ist *mystorageaccount* der Name Ihres Speicherkontos). Der zu verwendende Hostname wird im [Azure-Portal](https://portal.azure.com) im ersten Element auf dem Blatt *Benutzerdefinierte Domäne* angezeigt.
 1. Geben Sie in das Textfeld auf dem Blatt *Benutzerdefinierte Domäne* im [Azure-Portal](https://portal.azure.com) den Namen Ihrer benutzerdefinierten Domäne einschließlich Unterdomäne ein. Wenn Ihre Domäne beispielsweise **contoso.com** und Ihr Unterdomänenalias **www** lautet, geben Sie **www.contoso.com** ein. Lautet Ihre Unterdomäne **photos**, geben Sie **photos.contoso.com** ein. Die Unterdomäne ist *erforderlich*.
-1. Wählen Sie auf dem Blatt **Benutzerdefinierte Domäne** die Option *Speichern* aus, um Ihre benutzerdefinierte Domäne zu registrieren. Wenn die Registrierung erfolgreich ist, sehen Sie eine Meldung, die besagt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde.
+1. Wählen Sie auf dem Blatt **Benutzerdefinierte Domäne** die Option *Speichern* aus, um Ihre benutzerdefinierte Domäne zu registrieren. Wenn die Registrierung erfolgreich ist, wird in einer Portalbenachrichtigung angezeigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde.
 
 Sobald Ihr neuer CNAME-Eintrag über DNS weitergegeben wurde, können Ihre Benutzer Blobdaten anzeigen, indem sie Ihre benutzerdefinierten Domäne verwenden, sofern die Benutzer die entsprechenden Berechtigungen haben.
 
@@ -86,7 +87,7 @@ Die Unterdomäne **asverify** ist eine spezielle Unterdomäne, die von Azure erk
 1. Erstellen Sie einen neuen CNAME-Eintrag, und geben Sie einen Unterdomänenalias an, der die Unterdomäne *asverify* enthält. Beispielsweise **asverify.www** oder **asverify.photos**. Geben Sie dann einen Hostnamen (Ihr Blob-Dienstendpunkt) im Format **asverify.mystorageaccount.blob.core.windows.net** an (hierbei ist **mystorageaccount** der Name Ihres Speicherkontos). Der zu verwendende Hostname wird im [Azure-Portal](https://portal.azure.com) im zweiten Element auf dem Blatt *Benutzerdefinierte Domäne* angezeigt.
 1. Geben Sie in das Textfeld auf dem Blatt *Benutzerdefinierte Domäne* im [Azure-Portal](https://portal.azure.com) den Namen Ihrer benutzerdefinierten Domäne einschließlich Unterdomäne ein. Fügen Sie *asverify* nicht ein. Wenn Ihre Domäne beispielsweise **contoso.com** und Ihr Unterdomänenalias **www** lautet, geben Sie **www.contoso.com** ein. Lautet Ihre Unterdomäne **photos**, geben Sie **photos.contoso.com** ein. Die Unterdomäne ist erforderlich.
 1. Aktivieren Sie das Kontrollkästchen **Indirekte CNAME-Überprüfung verwenden**.
-1. Wählen Sie auf dem Blatt **Benutzerdefinierte Domäne** die Option *Speichern* aus, um Ihre benutzerdefinierte Domäne zu registrieren. Wenn die Registrierung erfolgreich ist, sehen Sie eine Meldung, die besagt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde. An diesem Punkt wurde Ihre benutzerdefinierte Domäne von Azure überprüft, allerdings wird der Datenverkehr zu Ihrer Domäne noch nicht zu Ihrem Speicherkonto geleitet.
+1. Wählen Sie auf dem Blatt **Benutzerdefinierte Domäne** die Option *Speichern* aus, um Ihre benutzerdefinierte Domäne zu registrieren. Wenn die Registrierung erfolgreich ist, wird in einer Portalbenachrichtigung angezeigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde. An diesem Punkt wurde Ihre benutzerdefinierte Domäne von Azure überprüft, allerdings wird der Datenverkehr zu Ihrer Domäne noch nicht zu Ihrem Speicherkonto geleitet.
 1. Kehren Sie zur Website Ihrer DNS-Registrierungsstelle zurück, und erstellen Sie einen weiteren CNAME-Eintrag, in dem Ihre Unterdomäne dem Endpunkt Ihres Blob-Diensts zugeordnet wird. Geben Sie etwa die Unterdomäne **www** oder **photos** (ohne *asverify*) und den Hostnamen **mystorageaccount.blob.core.windows.net** an (wobei **mystorageaccount** der Name Ihres Speicherkontos ist). Mit diesem Schritt ist die Registrierung Ihrer benutzerdefinierten Domäne abgeschlossen.
 1. Abschließend können Sie den von Ihnen erstellten CNAME-Eintrag löschen, der die Unterdomäne **asverify** enthält, denn dieser Eintrag war nur als zwischengeschalteter Schritt erforderlich.
 
@@ -105,6 +106,17 @@ Sie könnten beispielsweise den folgenden URI verwenden, um auf ein Webformular 
 ## <a name="deregister-a-custom-domain"></a>Aufheben der Registrierung einer benutzerdefinierten Domäne
 
 Um die Registrierung einer benutzerdefinierten Domäne für Ihren Blob Storage-Endpunkt aufzuheben, verwenden Sie eines der folgenden Verfahren.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Führen Sie im Azure-Portal folgende Schritte aus, um die Einstellung für die benutzerdefinierte Domäne zu entfernen:
+
+1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
+1. Wählen Sie unter **BLOB-DIENST** auf dem Menüblatt die Option **Benutzerdefinierte Domäne** aus, um das Blatt *Benutzerdefinierte Domäne* zu öffnen.
+1. Löschen Sie den Inhalt des Textfelds, das den Namen der benutzerdefinierten Domäne enthält.
+1. Wählen Sie die Schaltfläche **Speichern** aus.
+
+Wenn die benutzerdefinierte Domäne erfolgreich entfernt wurde, wird in einer Portalbenachrichtigung angezeigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde.
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
@@ -133,7 +145,7 @@ Verwenden Sie den CLI-Befehl [az storage account update](https://docs.microsoft.
 Verwenden Sie das PowerShell-Cmdlet [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das `-CustomDomainName`-Argument an, um die Registrierung der benutzerdefinierten Domäne zu entfernen.
 
 * Befehlsformat:
-  
+
   ```powershell
   Set-AzureRmStorageAccount `
       -ResourceGroupName "<resource-group-name>" `
@@ -150,11 +162,7 @@ Verwenden Sie das PowerShell-Cmdlet [Set-AzureRmStorageAccount](/powershell/modu
       -CustomDomainName ""
   ```
 
-### <a name="azure-portal"></a>Azure-Portal
-
-Derzeit ist es nicht möglich, über das Azure-Portal eine benutzerdefinierte Domänenregistrierung zu entfernten. Dies ist ein bekanntes Problem. Derzeit gibt es kein Datum für die Lösung dieses Problems. Dieser Artikel wird aber aktualisiert, sobald das Problem gelöst wurde. Verwenden Sie in der Zwischenzeit bitte Azure CLI 2.0 oder Azure PowerShell, um die benutzerdefinierte Domäneneinstellung zu entfernen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 * [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](../cdn/cdn-map-content-to-custom-domain.md)
-
+* [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](./storage-https-custom-domain-cdn.md)
 

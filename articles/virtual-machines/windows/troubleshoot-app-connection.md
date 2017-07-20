@@ -1,6 +1,6 @@
 ---
-title: Behandeln von Problemen beim Zugriff auf Anwendungen auf einem virtuellen Windows-Computer in Azure | Microsoft Docs
-description: "Wenn Sie auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird, nicht zugreifen können, führen Sie diese Schritte aus, um die Ursache des Problems zu ermitteln."
+title: Beheben von Problemen beim Anwendungszugriff auf einem virtuellen Windows-Computer in Azure | Microsoft-Dokumentation
+description: "Führen Sie diese ausführlichen Schritte zur Problembehandlung aus, um Probleme beim Herstellen einer Verbindung mit Anwendungen auf virtuellen Windows-Computern in Azure zu beheben."
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -13,16 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 12/20/2016
+ms.date: 05/18/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: edcea6f2cd924404ed089d71f213613b14c66d17
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 5e9f54a666799147cee8d8b5af5fd8aa3bac1780
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
-# <a name="troubleshoot-access-to-an-application-running-on-an-azure-virtual-machine"></a>Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird
+# <a name="troubleshoot-access-to-an-application-running-on-a-windows-virtual-machine-in-azure"></a>Beheben von Problemen beim Zugriff auf eine Anwendung, die auf einem virtuellen Windows-Computer in Azure ausgeführt wird
 [!INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 
 

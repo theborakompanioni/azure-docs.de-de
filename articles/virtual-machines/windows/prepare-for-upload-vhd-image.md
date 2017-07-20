@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 1/11/2017
+ms.date: 5/26/2017
 ms.author: glimoli;genli
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 104063500a33dfe55c56467517a5002c562772df
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4d8972e5a18cbe471ec4c5baa53992cc23fad129
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -260,20 +261,31 @@ Installieren Sie die neuesten Updates für Windows. Wenn dies nicht möglich ist
    * [KB3115224](https://support.microsoft.com/kb/3115224) Verbesserte Zuverlässigkeit für virtuelle Computer, die auf einem Windows Server 2012 R2- oder Windows Server 2012-Host ausgeführt werden
    * [KB3140410](https://support.microsoft.com/kb/3140410) MS16-031: Sicherheitsupdate für Microsoft Windows zum Unterbinden von Rechteerweiterungen: 8. März 2016
    * [KB3063075](https://support.microsoft.com/kb/3063075) Es werden viele Ereignisse mit ID 129 protokolliert, wenn ein virtueller Windows Server 2012 R2-Computer in Microsoft Azure ausgeführt wird
-   * [KB3137061](https://support.microsoft.com/kb/3137061) Virtuelle Microsoft Azure-Computer können nach einem Netzwerkausfall nicht wiederhergestellt werden, und es treten Probleme mit beschädigten Daten auf
    * [KB3114025](https://support.microsoft.com/kb/3114025) Geringe Leistung beim Zugriff auf den Azure-Dateispeicher über Windows 8.1 oder Server 2012 R2
    * [KB3033930](https://support.microsoft.com/kb/3033930) Hotfix erhöht die RIO-Puffergrenze von 64K pro Prozess für Azure-Dienste in Windows
    * [KB3004545](https://support.microsoft.com/kb/3004545) Sie können über eine VPN-Verbindung in Windows nicht auf virtuelle Computer zugreifen, die in Azure-Hostingdiensten gehostet werden
    * [KB3082343](https://support.microsoft.com/kb/3082343) Standortübergreifende VPN-Konnektivität geht verloren, wenn Azure-Standort-zu-Standort-VPN-Tunnel Windows Server 2012 R2 RRAS verwenden
-   * [KB3140410](https://support.microsoft.com/kb/3140410) MS16-031: Sicherheitsupdate für Microsoft Windows zum Unterbinden von Rechteerweiterungen: 8. März 2016
    * [KB3146723](https://support.microsoft.com/kb/3146723) MS16-048: Hinweise zum Sicherheitsupdate für CSRSS: 12. April 2016
    * [KB2904100](https://support.microsoft.com/kb/2904100) System friert während Datenträger-E/A-Vorgängen in Windows ein
      
 ## Ausführen von Sysprep <a id="step23"></a>    
-Wenn Sie ein Image erstellen möchten, mit dem Sie mehrere virtuelle Computer bereitstellen können, müssen Sie [das Image durch Ausführen von Sysprep](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) verallgemeinern, bevor Sie die VHD in Azure hochladen. Sie müssen Sysprep nicht ausführen, um eine spezielle VHD zu verwenden. Weitere Informationen finden Sie in den folgenden Artikeln:
+Wenn Sie ein Image erstellen möchten, mit dem Sie mehrere virtuelle Computer bereitstellen können, müssen Sie das Image durch Ausführen von Sysprep generalisieren, bevor Sie die VHD in Azure hochladen. Sie müssen Sysprep nicht ausführen, um eine spezielle VHD zu verwenden. 
+
+Sysprep entfernt unter anderem alle persönlichen Kontoinformationen, und bereitet den Computer darauf vor, als Image verwendet zu werden. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx)(in englischer Sprache).
+
+Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+
+1. Melden Sie sich bei dem virtuellen Windows-Computer an.
+2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\system32\sysprep**, und führen Sie anschließend `sysprep.exe` aus.
+3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
+4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren**.
+5. Klicken Sie auf **OK**.
    
-   * [Verallgemeinern eines virtuellen Windows-Computers mit Sysprep](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-   * [Sysprep-Unterstützung für Serverrollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+    ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
+6. Nach Abschluss von Sysprep wird die virtuelle Maschine heruntergefahren. Starten Sie den virtuellen Computer nicht neu.
+
+
+
 
 ## <a name="complete-recommended-configurations"></a>Abschließen empfohlener Konfigurationen
 Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es wird jedoch dringend empfohlen, diese Einstellungen zu konfigurieren.
@@ -299,6 +311,6 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](upload-generalized-managed.md)
 
 

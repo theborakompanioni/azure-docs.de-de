@@ -4,21 +4,21 @@ description: "Dieser Artikel enthält häufig gestellte Fragen zu Azure Site Rec
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: cfreeman
+manager: carmonm
 editor: 
 ms.assetid: 5cdc4bcd-b4fe-48c7-8be1-1db39bd9c078
-ms.service: get-started-article
+ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/21/2017
+ms.date: 05/22/2017
 ms.author: raynew
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: d3351e4a480caa1bf02e82545f130b14bf6f0910
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 4947e4a1bbf6578c2908051c6f1d28430b61cde8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -27,20 +27,19 @@ Dieser Artikel enthält häufig gestellte Fragen zur Azure Site Recovery. Sollte
 
 ## <a name="general"></a>Allgemein
 ### <a name="what-does-site-recovery-do"></a>Welche Funktion hat Site Recovery?
-Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem die Replikation von lokalen virtuellen Computern und physischen Servern in Azure oder ein sekundäres Rechenzentrum aufeinander abgestimmt werden. [detaillierte Kapazitätsplanung](site-recovery-overview.md)
+Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem die Replikation von virtuellen Azure-Computern zwischen Regionen, von lokalen virtuellen Computern und physischen Servern in Azure und von lokalen Computer in ein sekundäres Rechenzentrum orchestriert und automatisiert werden. [detaillierte Kapazitätsplanung](site-recovery-overview.md)
 
 ### <a name="what-can-site-recovery-protect"></a>Was kann mit Site Recovery geschützt werden?
+* **Virtuelle Azure-Computer:** Mit Site Recovery können alle Workloads repliziert werden, die auf einem unterstützten virtuellen Azure-Computer ausgeführt werden.
 * **Virtuelle Hyper-V-Computer**: Mit Site Recovery kann jede Workload, die auf einer Hyper-V-VM ausgeführt wird, geschützt werden.
 * **Physische Server**: Mit Site Recovery können physische Server unter Windows oder Linux geschützt werden.
 * **Virtuelle VMware-Computer**: Mit Site Recovery kann jede Workload, die auf einer VMware-VM ausgeführt wird, geschützt werden.
 
 ### <a name="does-site-recovery-support-the-azure-resource-manager-model"></a>Unterstützt Site Recovery das Azure Resource Manager-Modell?
-Außer im klassischen Azure-Portal ist Site Recovery im Azure-Portal mit Unterstützung für den Resource Manager verfügbar. Für die meisten Bereitstellungsszenarien bietet Site Recovery im Azure-Portal eine vereinfachte Bereitstellung, und Sie können VMs und physische Server in klassischen Speicher oder Resource Manager-Speicher replizieren. Folgende Bereitstellungen werden unterstützt:
+Site Recovery ist im Azure-Portal mit Unterstützung für Resource Manager verfügbar. Site Recovery unterstützt ältere Bereitstellungen im klassischen Azure-Portal. Sie können im klassischen Portal keine neuen Tresore erstellen, und neue Features werden ebenfalls nicht unterstützt.
 
-* [Replizieren von VMware-VMs oder physischen Servern in Azure im Azure-Portal](site-recovery-vmware-to-azure.md)
-* [Replizieren von Hyper-V-VMs in VMM-Clouds in Azure im Azure-Portal](site-recovery-vmm-to-azure.md)
-* [Replizieren von Hyper-V-VMs (ohne VMM) in Azure im Azure-Portal](site-recovery-hyper-v-site-to-azure.md)
-* [Replizieren von Hyper-V-VMs in VMM-Clouds an einem sekundären Standort im Azure-Portal](site-recovery-vmm-to-vmm.md)
+### <a name="can-i-replicate-azure-vms"></a>Können virtuelle Azure-Computer repliziert werden?
+Ja, Sie können die unterstützten virtuellen Azure-Computer zwischen Azure-Regionen replizieren. [detaillierte Kapazitätsplanung](site-recovery-azure-to-azure.md)
 
 ### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Was benötige ich in Hyper-V, um die Replikation mit Site Recovery zu orchestrieren?
 Was Sie für Hyper-V-Hostserver benötigen, richtet sich nach dem Bereitstellungsszenario. Sehen Sie sich die Voraussetzungen für Hyper-V an:
@@ -87,6 +86,10 @@ Die Site Recovery-Lizenz gilt pro geschützter Instanz. Eine Instanz kann ein vi
 
 - Falls ein VM-Datenträger in einem Standard-Speicherkonto repliziert wird, wird die Gebühr für Azure-Speicher auf den Speicherverbrauch erhoben. Wenn der Quelldatenträger also beispielsweise eine Größe von 1 TB hat und 400 GB davon genutzt werden, erstellt Site Recovery in Azure eine VHD mit einer Kapazität von 1 TB, es werden jedoch lediglich 400 GB (zuzüglich des benötigten Speicherplatzes für Replikationsprotokolle) in Rechnung gestellt.
 - Falls ein VM-Datenträger in einem Premium-Speicherkonto repliziert wird, wird die Gebühr für Azure-Speicher auf die Größe des bereitgestellten Speichers erhoben (auf-/abgerundet auf die nächste Storage Premium-Datenträgeroption). Wenn der Quelldatenträger also beispielsweise eine Größe von 50 GB hat, erstellt Site Recovery in Azure einen Datenträger mit einer Kapazität von 50 GB, und Azure ordnet diesen dem nächsthöheren/-niedrigeren Storage Premium-Datenträger (P10) zu.  Die Kosten werden für P10 und nicht für die Datenträgergröße von 50 GB berechnet.  [detaillierte Kapazitätsplanung](https://aka.ms/premium-storage-pricing)  Bei Verwendung von Storage Premium wird auch ein Standard-Speicherkonto für die Protokollierung der Replikation benötigt, und der von den Protokollen beanspruchte Standard-Speicherplatz wird ebenfalls in Rechnung gestellt.
+- Bis zu einem Testfailover oder einem Failover werden keine Datenträger erstellt. Im Replikationszustand werden Speichergebühren der Kategorie „Seitenblob und Datenträger“ gemäß dem [Storage-Preisrechner](https://azure.microsoft.com/en-in/pricing/calculator/) berechnet. Diese Gebühren basieren auf dem Speichertyp (Premium/Standard) und dem Datenredundanztyp (LRS, GRS, RA-GRS usw.).
+- Wenn die Option für die Verwendung von Managed Disks in einem Failover ausgewählt wurde, gelten die [Gebühren für Managed Disks](https://azure.microsoft.com/en-in/pricing/details/managed-disks/) nach einem Failover/Testfailover. Die Gebühren für Managed Disks fallen während der Replikation nicht an.
+- Wenn die Option für die Verwendung von Managed Disks in einem Failover nicht ausgewählt wurde, werden die Storage-Gebühren der Kategorie „Seitenblob und Datenträger“ nach einem Failover gemäß dem [Storage-Preisrechner](https://azure.microsoft.com/en-in/pricing/calculator/) berechnet. Diese Gebühren basieren auf dem Speichertyp (Premium/Standard) und dem Datenredundanztyp (LRS, GRS, RA-GRS usw.).
+- Die Speichertransaktionen werden während der Replikation im stabilen Zustand und für normalen Vorgänge mit virtuellen Computern nach einem Failover/Testfailover berechnet. Diese Gebühren sind jedoch unerheblich.
 
 Kosten fallen auch bei einem Testfailover an. Dabei werden die Kosten für den virtuellen Computer, für Speicher, für ausgehende Daten und für Speichertransaktionen berechnet.
 

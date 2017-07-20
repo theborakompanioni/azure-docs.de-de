@@ -4,7 +4,7 @@ description:
 services: 
 documentationcenter: 
 author: vikramdesai01
-manager: vikramdesai01
+manager: vikdesai
 editor: 
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: vikdesai
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 3453e80246393f15cf0ee2eb29b2fb1d53f77078
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 247782a86a0d20486513dff0dae0c1564b5ecb72
 ms.contentlocale: de-de
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -64,7 +64,7 @@ Die Rolle „Abrechnungsleser“ hat schreibgeschützten Zugriff auf Abrechnungs
     ![Screenshot: Inhalte, die der Abrechnungsleser im Azure-Portal sehen kann](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> Das Feature „Abrechnungsleser“ befindet sich derzeit in der Vorschau und ist nur für die globale Azure-Cloud verfügbar.
+> Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstützt noch keine Enterprise-Abonnements (EA) und keine nicht globalen Clouds.
 
 ## <a name="adding-users-to-other-roles"></a>Hinzufügen von Benutzern zu anderen Rollen
 
@@ -77,3 +77,4 @@ Lediglich der Kontoadministrator kann sich beim Kontocenter anmelden. Der Kontoa
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 
 Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+

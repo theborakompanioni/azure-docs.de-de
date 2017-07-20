@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 258ccee349e07448ebebaebe64cd6fb6888d7ed4
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 7fa853983119ef4e570b768ca177d169c6e17153
 ms.contentlocale: de-de
-ms.lasthandoff: 05/20/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -46,8 +46,8 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 
 * SAP Note [2205917] Empfohlene BS-Einstellungen für SUSE Linux Enterprise Server für SAP-Anwendungen
 * SAP Note [1944799] SAP HANA-Richtlinien für SUSE Linux Enterprise Server für SAP-Anwendungen
-* [SAP HANA SR Performance Optimized Scenario][suse-hana-ha-guide] (SAP HANA-SR-Leistung – optimiertes Szenario)  
-  Das Handbuch enthält alle erforderlichen Informationen zum lokalen Einrichten der SAP HANA-Replikation. Verwenden Sie dieses Handbuch als Grundlage.
+* [SAP HANA-SR – Leistungsoptimiertes Szenario][suse-hana-ha-guide] – das Handbuch enthält alle erforderlichen Informationen zum lokalen Einrichten der SAP HANA-Replikation. Verwenden Sie dieses Handbuch als Grundlage.
+  
 ## <a name="deploying-linux"></a>Bereitstellen von Linux
 
 Der Ressourcen-Agent für SAP HANA ist im SUSE Linux Enterprise Server für SAP-Anwendungen enthalten.

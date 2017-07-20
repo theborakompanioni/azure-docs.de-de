@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2017
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: fc5c87e45f3c92172f01a462451bc145ce8b0b16
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 9023ca104fcab29bc0b16ecd3a6584848e2d453e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="azure-webjobs-documentation-resources"></a>Dokumentationsressourcen zu Azure WebJobs
 ## <a name="overview"></a>Übersicht
-Dieses Thema enthält Links zu Dokumentationsressourcen zur Verwendung von Azure WebJobs und dem Azure WebJobs-SDK. Azure WebJobs bietet eine einfache Möglichkeit zum Ausführen von Skripts oder Programmen als Hintergrundprozesse im Kontext einer [Web-App, API-App oder mobilen App von App Service](../app-service/app-service-value-prop-what-is.md). Sie können eine ausführbare Datei, z. B. eine CMD-, BAT-, EXE (.NET)-, PS1-, SH-, PHP, PY-, JS- und JAR-Datei, hochladen und ausführen. Diese Programme werden als Webaufträge nach einem Zeitplan (Cron) oder laufend ausgeführt.
+Dieses Thema enthält Links zu Dokumentationsressourcen zur Verwendung von Azure WebJobs und dem Azure WebJobs-SDK. Azure WebJobs bietet eine einfache Möglichkeit zum Ausführen von Skripts oder Programmen als Hintergrundprozesse im Kontext einer [Web-App, API-App oder mobilen App von App Service](../app-service/app-service-value-prop-what-is.md). Sie können eine ausführbare Datei, z.B. eine CMD-, BAT-, EXE- (.NET), PS1-, SH-, PHP-, PY-, JS- und JAR-Datei, hochladen und ausführen. Diese Programme werden als Webaufträge nach einem Zeitplan (Cron) oder laufend ausgeführt.
 
-Der Zweck des [WebJobs SDK](websites-webjobs-resources.md) besteht darin, den Code zu vereinfachen, den Sie für allgemeine Tasks schreiben, die ein WebJob ausführen kann, z.B. Bildverarbeitung, Warteschlangenverarbeitung, RSS-Aggregation, Dateiwartung und Senden von E-Mails. Das WebJobs SDK verfügt über integrierte Funktionen für die Arbeit mit Azure Storage und Service Bus, zum Planen von Aufgaben und Behandeln von Fehlern sowie für viele weitere allgemeine Szenarien. Darüber hinaus ist es erweiterbar, und es gibt ein [Open Source-Repository für Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview). [Azure Functions](../azure-functions/functions-overview.md) (derzeit in der Vorschau) basiert auf einer Version des WebJobs SDK, die mit C#-Skript, Node.js und anderen Sprachen funktioniert. 
+Der Zweck des [WebJobs SDK](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk) besteht darin, den Code zu vereinfachen, den Sie für allgemeine Tasks schreiben, die ein WebJob ausführen kann, z.B. Bildverarbeitung, Warteschlangenverarbeitung, RSS-Aggregation, Dateiwartung und Senden von E-Mails. Das WebJobs SDK verfügt über integrierte Funktionen für die Arbeit mit Azure Storage und Service Bus, zum Planen von Aufgaben und Behandeln von Fehlern sowie für viele weitere allgemeine Szenarien. Darüber hinaus ist es erweiterbar, und es gibt ein [Open Source-Repository für Erweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview). [Azure Functions](../azure-functions/functions-overview.md) (derzeit in der Vorschau) basiert auf einer Version des WebJobs SDK, die mit C#-Skript, Node.js und anderen Sprachen funktioniert. 
 
 [!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
-Das Erstellen, Bereitstellen und Verwalten von WebJobs erfolgt dank der integrierten Tools in Visual Studio nahtlos. Sie können Webaufträge aus Vorlagen erstellen, veröffentlichen und verwalten (Ausführen/Anhalten/Überwachen/Debuggen). 
+Das Erstellen, Bereitstellen und Verwalten von WebJobs erfolgt dank der integrierten Tools in Visual Studio nahtlos. Sie können WebJobs aus Vorlagen erstellen, veröffentlichen und verwalten (ausführen, beenden, überwachen und debuggen). 
 
 Das WebJobs-Dashboard im Azure-Portal bietet leistungsstarke Verwaltungsfunktionen, mit denen Sie vollständige Kontrolle über die Ausführung von Webaufträgen haben, einschließlich der Möglichkeit, einzelne Funktionen innerhalb von WebJobs aufzurufen. Das Dashboard zeigt auch Funktionslaufzeiten und Protokollausgaben an. 
 
@@ -38,7 +39,7 @@ Das WebJobs-Dashboard im Azure-Portal bietet leistungsstarke Verwaltungsfunktion
 * [Azure WebJobs are awesome and you should start using them right now! (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache) (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache)](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (Blogbeitrag von Troy Hunt)
 * [Funktionen von Azure WebJobs](https://azure.microsoft.com/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [Was ist das WebJobs-SDK?](websites-dotnet-webjobs-sdk.md)
-* [Anleitungen für Hintergrundaufträge von Microsoft Patterns and Practices](/documentation/articles/best-practices-background-jobs/)
+* [Anleitungen für Hintergrundaufträge von Microsoft Patterns and Practices](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs)
 * [Ankündigung der Version 1.1.0 RTM des Microsoft Azure WebJobs-SDK](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/)
 * [Erste Schritte mit dem Azure WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 * [Verwenden von Azure-Warteschlangenspeicher mit dem WebJobs-SDK](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)

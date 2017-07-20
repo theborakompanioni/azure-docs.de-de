@@ -1,28 +1,35 @@
 ---
-title: "Überwachung, TDS-Umleitung und IP-Endpunkte für Azure SQL-Datenbank | Microsoft Docs"
+title: "Tabellenüberwachung, TDS-Umleitung und IP-Endpunkte für Azure SQL-Datenbank | Microsoft-Dokumentation"
 description: "Erfahren Sie etwas über die Überwachung, TDS-Umleitungen und IP-Endpunktänderungen beim Implementieren der Tabellenüberwachung in Azure SQL-Datenbank."
 services: sql-database
 documentationcenter: 
-author: ronitr
+author: giladm
 manager: jhubbard
 editor: 
 ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
 ms.service: sql-database
-ms.custom: security-protect
+ms.custom: security
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
-ms.author: ronitr
-translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: bcc02abb62b21aadb10e62320b02b33c3c244c17
-ms.lasthandoff: 02/17/2017
+ms.date: 05/31/2017
+ms.author: giladm
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 1447a75758475dd6536ef1bcd0e8432e5618dab8
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunktänderungen für die Überwachung
+
+# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunktänderungen für die Tabellenüberwachung
+
+> [!IMPORTANT]
+> Dieses Dokument gilt nur für die Tabellenüberwachung, die als **veraltet** gekennzeichnet ist.<br>
+> Verwenden Sie die neue Methode zur [Blobüberwachung](sql-database-auditing.md), die **keine** tiefgreifenden Änderungen an den Clientverbindungszeichenfolgen erfordert. Weitere Informationen zur Blobüberwachung finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).
+
 Die [Datenbanküberwachung](sql-database-auditing.md) erfolgt automatisch bei SQL-Clients, die eine TDS-Umleitung unterstützen. Beachten Sie, dass diese Umleitung bei Verwendung der Blobüberwachungsmethode nicht angewendet wird.
 
 ## <a id="subheading-1"></a>Unterstützung für kompatible Clients

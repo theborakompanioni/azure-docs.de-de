@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 05/30/2017
 ms.author: chrande
-translationtype: Human Translation
-ms.sourcegitcommit: bc96edb44dc8bbbbe4687806117990c9d3470fdc
-ms.openlocfilehash: adb70fc58321c11c0b57efc9810a44d0ab2c8a20
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -83,7 +84,7 @@ Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-A
 
 #### <a name="to-use-app-service-editor"></a>So verwenden Sie den App Service-Editor
 1. Klicken Sie im Azure Functions-Portal auf **Funktionen-App-Einstellungen**.
-2. Klicken Sie im Abschnitt**Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
+2. Klicken Sie im Abschnitt **Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
 3. Klicken Sie im App-Menü „Nav“ unter **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.
 4. Klicken Sie auf **Start**.
    
@@ -96,9 +97,7 @@ Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-A
 3. Navigieren Sie zu `D:\home\site\wwwroot\`, um *host.json* zu aktualisieren, oder zu `D:\home\site\wwwroot\<function_name>`, um die Dateien einer Funktion zu aktualisieren.
 4. Verschieben Sie eine Datei per Drag & Drop, die Sie im Dateiraster in den entsprechenden Ordner hochladen möchten. Es gibt zwei Bereiche im Dateiraster, in denen Sie eine Datei ablegen können. Für *ZIP* -Dateien wird ein Feld mit der Bezeichnung „Zum Hochladen und Entzippen hier ablegen“ angezeigt. Legen Sie Dateien anderer Dateitypen im Dateiraster ab, jedoch außerhalb des Felds zum Entzippen.
 
-#### <a name="to-use-ftp"></a>So verwenden Sie FTP
-1. Führen Sie die [hier](../app-service-web/web-sites-deploy.md#ftp) aufgeführten Schritte aus, um FTP zu konfigurieren.
-2. Wenn Sie mit der Website der Funktionen-App verbunden sind, kopieren Sie die aktualisierte Datei *host.json* in `/site/wwwroot`, oder kopieren Sie Funktionsdateien in `/site/wwwroot/<function_name>`.
+<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --DonnaM -->
 
 #### <a name="to-use-continuous-deployment"></a>Verwenden der kontinuierlichen Bereitstellung
 Befolgen Sie die Anweisungen im Thema [Continuous deployment for Azure Functions](functions-continuous-deployment.md)(Kontinuierliche Bereitstellung für Azure Functions).
@@ -106,8 +105,9 @@ Befolgen Sie die Anweisungen im Thema [Continuous deployment for Azure Functions
 ## <a name="parallel-execution"></a>Parallele Ausführung
 Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen.  Wenn eine Funktionen-App den [verbrauchsbasierten Hostingplan](functions-scale.md#how-the-consumption-plan-works) verwendet, kann die App automatisch horizontal hochskaliert werden.  Jede Instanz der Funktionen-App – unabhängig davon, ob die App im verbrauchsbasierten Hostingplan oder einem regulären [App Service-Hostingplan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) ausgeführt wird – kann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten.  Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Funktionen-App-Instanz variiert je nach Art des verwendeten Triggers sowie je nach den Ressourcen, die von anderen Funktionen innerhalb der Funktionen-App verwendet werden.
 
-## <a name="azure-functions-pulse"></a>Azure Functions Pulse
-Pulse ist ein Liveereignisdatenstrom, der anzeigt, wie häufig Ihre Funktion ausgeführt wird und welche Ausführungen erfolgreich oder fehlerhaft waren. Sie können auch die durchschnittliche Ausführungszeit überwachen. Wir werden im Lauf der Zeit weitere Features und Anpassungen hinzufügen. Sie können über die Registerkarte **Überwachung** auf die Seite **Pulse** zugreifen.
+## <a name="functions-runtime-versioning"></a>Versionsverwaltung der Functions-Runtime
+
+Sie können die Version der Functions-Runtime mit der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` konfigurieren. Der Wert „~1“ bedeutet beispielsweise, dass für Ihre Funktionen-App „1“ als deren Hauptversion verwendet wird. Funktionen-Apps werden auf jede neue Nebenversion aktualisiert, wenn sie freigegeben werden. Die genaue Version Ihrer Funktionen-App können Sie auf der Registerkarte **Einstellungen** im Azure-Portal anzeigen.
 
 ## <a name="repositories"></a>Repositorys
 Der Code für Azure Functions ist Open Source und in GitHub-Repositorys gespeichert:

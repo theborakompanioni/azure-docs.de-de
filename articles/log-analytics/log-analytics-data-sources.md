@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: cec0ceb0da57150e4bdd9f9a0f6d3e751c108523
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 00d030a502cf70ea9a5dea767f560cdf2919573e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -44,10 +46,13 @@ Sie konfigurieren Datenquellen über das Menü **Daten** in den **Einstellungen*
 
 ![Windows-Ereignisse konfigurieren](./media/log-analytics-data-sources/configure-events.png)
 
-1. Wählen Sie in der OMS-Konsole die Kachel **Einstellungen** aus.
+1. Klicken Sie in der OMS-Konsole auf die Kachel **Einstellungen** oder die Schaltfläche **Einstellungen** am oberen Rand des Bildschirms.
 2. Wählen Sie **Daten**aus.
 3. Klicken Sie auf die Datenquelle, die Sie konfigurieren möchten.
 4. Folgen Sie den Links in der oben stehenden Tabelle, um zur Dokumentation für jede Datenquelle zu gelangen und detaillierte Informationen zur jeweiligen Konfiguration zu erhalten.
+
+> [!NOTE]
+> Sie können derzeit Log Analytics-Datenquellen nicht im Azure-Portal konfigurieren.
 
 ## <a name="data-collection"></a>Datensammlung
 Die Konfigurationen der Datenquellen werden innerhalb weniger Minuten an Agents übermittelt, die direkt mit Log Analytics verbunden sind.  Die angegebenen Daten werden vom Agent gesammelt und in den für jede Datenquelle spezifischen Intervallen direkt an Log Analytics übermittelt.  Informationen zu diesen Spezifikationen finden Sie in der Dokumentation zu jeder Datenquelle.
@@ -63,9 +68,4 @@ Alle von Log Analytics gesammelten Daten werden im OMS-Repository als Datensätz
 * Erfahren Sie mehr über [Lösungen](log-analytics-add-solutions.md) , die Log Analytics um zusätzliche Funktionen erweitern und ebenfalls Daten für das OMS-Repository sammeln.
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 * Konfigurieren Sie [Warnungen](log-analytics-alerts.md), damit Sie bei kritischen Daten, die aus Datenquellen und Lösungen gesammelt werden, direkt benachrichtigt werden.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

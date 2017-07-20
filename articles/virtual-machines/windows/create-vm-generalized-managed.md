@@ -13,22 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/7/2017
+ms.date: 05/22/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: e308b75581ca5372a4de168895f2eeb140a69a78
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 527f3f33e2b5996c6fa7b7dc874123bba5ab39dd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
-# <a name="create-a-vm-from-a-generalized-managed-vm-image"></a>Erstellen eines virtuellen Computers auf der Grundlage eines generalisierten verwalteten VM-Images
+# <a name="create-a-vm-from-a-managed-image"></a>Erstellen eines virtuellen Computers aus einem verwalteten Image
 
 Sie können mehrere virtuelle Computer auf der Grundlage eines verwalteten VM-Images in Azure erstellen. Ein verwaltetes VM-Image enthält die erforderlichen Informationen zum Erstellen eines virtuellen Computers, einschließlich der Datenträger für Betriebssystem und Daten. Die VHDs, aus denen das Image besteht, einschließlich der Betriebssystem-Datenträger und sonstiger Datenträger, werden als verwaltete Datenträger gespeichert. 
-
-Auf einer generalisierten VM wurden alle Ihre persönlichen Kontoinformationen mit [Sysprep](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) entfernt. Sie können eine generalisierte VM erstellen, indem Sie Sysprep auf einem lokalen virtuellen Computer ausführen, dann [die VHD in Azure hochladen](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder Sysprep auf einer bestehenden Azure-VM ausführen und dann [ein Image der VM erfassen](capture-image-resource.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

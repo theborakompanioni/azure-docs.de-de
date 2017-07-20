@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -41,7 +43,7 @@ Der virtuelle Computer *VM1* gehört zum Subnetz *Subnet1* in einem VNET mit dem
 
 Obwohl in diesem Beispiel TCP-Port 3389 verwendet wird, können anhand der folgenden Schritte auch Fehler bei eingehenden und ausgehenden Verbindungen über jeden anderen Port ermittelt werden.
 
-### <a name="view-effective-security-rules-for-a-virtual-machine"></a>Anzeigen der effektiven Sicherheitsregeln für einen virtuellen Computer
+### <a name="vm"></a>Anzeigen der für einen virtuellen Computer geltenden Sicherheitsregeln
 Führen Sie die folgenden Schritte aus, um Probleme bei NSGs für einen virtuellen Computer zu beheben:
 
 Sie können die vollständige Liste der effektiven Sicherheitsregeln für eine NIC über den virtuellen Computer selbst anzeigen. Zudem können Sie NSG-Regeln für die NIC und das Subnetz auf dem Blatt für die effektiven Regeln hinzufügen, ändern und löschen, wenn Sie über die Berechtigungen zum Durchführen dieser Vorgänge verfügen.
@@ -92,7 +94,7 @@ Sie können die vollständige Liste der effektiven Sicherheitsregeln für eine N
    
     Vergewissern Sie sich, dass TCP-Port 3389 geöffnet ist, indem Sie eine RDP-Verbindung mit dem virtuellen Computer öffnen oder das Tool PsPing verwenden. Weitere Informationen zu PsPing finden Sie auf der [PsPing-Downloadseite](https://technet.microsoft.com/sysinternals/psping.aspx).
 
-### <a name="view-effective-security-rules-for-a-network-interface"></a>Anzeigen der effektiven Sicherheitsregeln für eine Netzwerkschnittstelle
+### <a name="nic"></a>Anzeigen der für eine Netzwerkschnittstelle geltenden Sicherheitsregeln
 Wenn der Datenverkehr auf dem virtuellen Computer für eine bestimmte NIC beeinträchtigt ist, können Sie eine vollständige Liste der effektiven Regeln für die NIC über den Kontext der Netzwerkschnittstellen anzeigen, indem Sie die folgenden Schritte ausführen:
 
 1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
@@ -109,7 +111,7 @@ Wenn der Datenverkehr auf dem virtuellen Computer für eine bestimmte NIC beeint
    > 
 4. Regeln für NSGs, die einer NIC und einem Subnetz zugeordnet sind, können direkt bearbeitet werden. Die entsprechenden Informationen finden Sie in Schritt 8 des Abschnitts **Anzeigen der effektiven Sicherheitsregeln für einen virtuellen Computer** in diesem Artikel.
 
-## <a name="view-effective-security-rules-for-a-network-security-group-nsg"></a>Anzeigen der effektiven Sicherheitsregeln für eine Netzwerksicherheitsgruppe (NSG)
+## <a name="nsg"></a>Anzeigen der für eine Netzwerksicherheitsgruppe (NSG) geltenden Sicherheitsregeln
 Wenn Sie NSG-Regeln ändern, können Sie die Auswirkung der für einen bestimmten virtuellen Computer hinzugefügten Regeln überprüfen. Sie können eine vollständige Liste der effektiven Sicherheitsregeln für alle NICs anzeigen, auf die eine bestimmte NSG angewendet wird, ohne auf dem Blatt der entsprechenden NSG den Kontext wechseln zu müssen. Führen Sie zur Problembehandlung der effektiven Regeln in einer NSG die folgenden Schritte aus:
 
 1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
@@ -148,10 +150,5 @@ Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Pu
 * Beim Peering von VNETs wird das Tag „VIRTUAL_NETWORK“ standardmäßig automatisch erweitert und enthält Präfixe für die per Peering verknüpften VNETs. Sie können diese Präfixe in der Liste **ExpandedAddressPrefix** anzeigen, um Probleme im Hinblick auf VNET-Peering-Verbindungen zu beheben. 
 * Effektive Sicherheitsregeln werden nur angezeigt, wenn der NIC oder dem Subnetz des virtuellen Computers eine NSG zugeordnet ist. 
 * Wenn der NIC oder dem Subnetz keine NSGs zugeordnet sind und dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen ist, sind alle Ports für den eingehenden und ausgehenden Zugriff geöffnet. Wenn der virtuelle Computer über eine öffentliche IP-Adresse verfügt, empfiehlt es sich dringend, NSGs auf die NIC oder das Subnetz anzuwenden.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
