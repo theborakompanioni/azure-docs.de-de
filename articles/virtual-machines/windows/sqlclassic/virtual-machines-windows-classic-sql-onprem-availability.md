@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/03/2017
+ms.date: 05/31/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 59ca9514c4cac97e8dd6dafc7a59406925b7b2df
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 50326a093adaf3558c56dfd0b38544f0e60be460
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -31,7 +32,7 @@ Dieses Lernprogramm setzt voraus, dass Sie über die folgenden Punkte verfügen:
 
 * Ein aktives Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Eine vorhandene, lokale AlwaysOn-Verfügbarkeitsgruppe. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/hh510230.aspx).
-* Konnektivität zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Weitere Informationen zum Erstellen dieses virtuellen Netzwerks finden Sie unter [Konfigurieren eines Standort-zu-Standort-VPN im klassischen Azure-Portal](../../../vpn-gateway/vpn-gateway-site-to-site-create.md).
+* Konnektivität zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Weitere Informationen zum Erstellen dieses virtuellen Netzwerks finden Sie unter [Erstellen einer Site-to-Site-Verbindung im Azure-Portal (klassisch)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
@@ -44,7 +45,8 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
 
 1. Erweitern Sie in SQL Server Management Studio die Option **Hohe Verfügbarkeit mit Always On** > **Verfügbarkeitsgruppen** > **[Name Ihrer Verfügbarkeitsgruppe]**.
 2. Klicken Sie mit der rechten Maustaste auf **Verfügbarkeitsreplikate**, und klicken Sie dann auf **Replikat hinzufügen**.
-3. Standardmäßig wird der **Assistent zum Hinzufügen von Replikaten zu Verfügbarkeitsgruppen** angezeigt. Klicken Sie auf **Weiter**.  Wenn Sie bei einer früheren Ausführung des Assistenten unten auf der Seite die Option **Diese Seite nicht mehr anzeigen** aktiviert haben, wird dieser Bildschirm nicht angezeigt.
+3. Standardmäßig wird der **Assistent zum Hinzufügen von Replikaten zu Verfügbarkeitsgruppen** angezeigt. Klicken Sie auf **Weiter**.
+  Wenn Sie bei einer früheren Ausführung des Assistenten unten auf der Seite die Option **Diese Seite nicht mehr anzeigen** aktiviert haben, wird dieser Bildschirm nicht angezeigt.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
 4. In diesem Fall müssen Sie Verbindungen mit allen vorhandenen sekundären Replikaten herstellen. Klicken Sie auf **Verbinden…** neben jedem Replikat, oder klicken Sie auf **Alle verbinden…** unten auf dem Bildschirm. Klicken Sie nach der Authentifizierung auf **Weiter** , um zum nächsten Bildschirm zu gelangen.
@@ -75,8 +77,10 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 11. Klicken Sie auf **Weiter**.
+
 12. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die gewünschte Methode der Datensynchronisierung aus, und klicken Sie auf **Weiter**. Für die meisten Szenarien sollten Sie **Vollständige Datensynchronisation**auswählen. Weitere Informationen zu Methoden der Datensynchronisierung finden Sie unter [Seite „Anfängliche Datensynchronisierung auswählen“ (Assistenten für AlwaysOn-Verfügbarkeitsgruppen)](https://msdn.microsoft.com/library/hh231021.aspx).
 13. Überprüfen Sie die Ergebnisse auf der Seite **Überprüfung**. Beheben Sie noch bestehende Probleme, und führen Sie die Überprüfung ggf. erneut aus. Klicken Sie auf **Weiter**.
+
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
 14. Überprüfen Sie die Einstellungen auf der Seite **Zusammenfassung**, und klicken Sie dann auf **Fertig stellen**.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
+ms.author: cephalin;aelnably
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 49aa35a42e4f6dab2f8d556f7b1b10bfdef7b7db
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 61396e8a3521c25eaf49c66a4948e520377d342a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -35,26 +35,26 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>Wiederherstellen einer App aus einer vorhandenen Sicherung
-1. Klicken Sie im Azure-Portal auf dem Blatt **Einstellungen** Ihrer App auf **Sicherungen**, um das Blatt **Sicherungen** anzuzeigen. Klicken Sie dann in der Befehlsleiste auf **Jetzt wiederherstellen** .
+1. Klicken Sie im Azure-Portal auf dem Blatt **Einstellungen** Ihrer App auf **Sicherungen**, um das Blatt **Sicherungen** anzuzeigen. Klicken Sie auf **Wiederherstellen**.
    
     !["Jetzt wiederherstellen" auswählen][ChooseRestoreNow]
 2. Wählen Sie auf dem Blatt **Wiederherstellen** zuerst die Sicherungsquelle aus.
    
-    ![](./media/web-sites-restore/021ChooseSource.png)
+    ![](./media/web-sites-restore/021ChooseSource1.png)
    
     Die Option **App-Sicherung** zeigt alle vorhandenen Sicherungen der aktuellen App, aus denen Sie eine auswählen können.
     Die Option **Speicher** ermöglicht Ihnen in einem in Ihrem Abonnement vorhandenen Azure Storage-Konto und Container das Auswählen einer Sicherungsdatei im ZIP-Format.
     Wenn Sie versuchen, eine Sicherung einer anderen Anwendung wiederherzustellen, verwenden Sie die Option **Speicher** .
 3. Geben Sie anschließend das Ziel für die App-Wiederherstellung unter **Wiederherstellungsziel**an.
    
-    ![](./media/web-sites-restore/022ChooseDestination.png)
+    ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > Wenn Sie **Überschreiben** wählen, werden alle Daten in Ihrer vorhandenen App gelöscht und überschrieben. Bevor Sie auf **OK**klicken, stellen Sie sicher, dass alles genau Ihren Vorstellungen entspricht.
    > 
    > 
    
-    Sie können **Vorhandene App** auswählen, um die App-Sicherung in einer anderen App in derselben Ressourcengruppe wiederherzustellen. Bevor Sie diese Option verwenden, sollten Sie bereits eine andere App in der Ressourcengruppe erstellt haben, deren Konfiguration derjenigen entspricht, die in der App-Sicherung definiert ist.
+    Sie können **Vorhandene App** auswählen, um die App-Sicherung in einer anderen App in derselben Ressourcengruppe wiederherzustellen. Bevor Sie diese Option verwenden, sollten Sie bereits eine andere App in der Ressourcengruppe erstellt haben, deren Datenbankkonfiguration derjenigen entspricht, die in der App-Sicherung definiert ist. Sie können auch eine **neue** App erstellen, auf der Ihr Inhalt wiederhergestellt wird.
 
 4. Klicken Sie auf **OK**.
 
@@ -86,7 +86,7 @@ Sie können App Service-Apps mithilfe der REST-API sichern und wiederherstellen 
 
 
 <!-- IMAGES -->
-[ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png
+[ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow1.png
 [ViewContainers]: ./media/web-sites-restore/03ViewContainers.png
 [StorageAccountFile]: ./media/web-sites-restore/02StorageAccountFile.png
 [BrowseCloudStorage]: ./media/web-sites-restore/03BrowseCloudStorage.png

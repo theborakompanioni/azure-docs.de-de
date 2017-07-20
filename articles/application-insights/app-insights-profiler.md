@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6a3c4273042a7684307d56341de1065ad45eb617
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: ad9174c47e1af8d5dba080ec82f2a56fbbf78782
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -26,8 +26,7 @@ ms.lasthandoff: 05/10/2017
 
 Ermitteln Sie den Zeitaufwand für die einzelnen Methoden in Ihrer Live-Webanwendung mithilfe eines Profilerstellungstools von [Azure Application Insights](app-insights-overview.md). Das Tool zeigt detaillierte Profile der aktiven Anforderungen, die von Ihrer App verarbeitet wurden, und hebt den langsamsten Pfad hervor, der die meiste Zeit beansprucht. Es wählt automatisch Beispiele mit unterschiedlichen Reaktionszeiten aus. Der Profiler verwendet verschiedene Techniken, um den Mehraufwand möglichst gering zu halten.
 
-Der Profiler kann momentan für ASP.NET-Web-Apps verwendet werden, die unter Azure App Services und mindestens unter dem Basic-Tarif ausgeführt werden. (Bei Verwendung von ASP.NET Core muss `.NetCoreApp` als Zielframework verwendet werden.)
-
+Der Profiler kann momentan für ASP.NET-Web-Apps verwendet werden, die unter Azure App Services und mindestens unter dem Basic-Tarif ausgeführt werden. 
 
 <a id="installation"></a>
 ## <a name="enable-the-profiler"></a>Aktivieren des Profilers
@@ -196,18 +195,21 @@ Erstellen Sie ein Supportticket über das Portal. Geben Sie dabei die Korrelatio
 
 ## <a name="manual-installation"></a>Manuelle Installation
 
-Wenn Sie den Profiler konfigurieren, werden an den Einstellungen der Web-App folgende Aktualisierungen vorgenommen. Sie können diese manuell vornehmen, wenn es in Ihrer Umgebung erforderlich ist, beispielsweise wenn Ihre Anwendung in einem privaten Netzwerk mit internem Lastenausgleich ausgeführt wird:
+Wenn Sie den Profiler konfigurieren, werden an den Einstellungen der Web-App folgende Aktualisierungen vorgenommen. Sie können diese manuell vornehmen, wenn es in Ihrer Umgebung erforderlich ist, beispielsweise wenn Ihre Anwendung in einer Azure App Service-Umgebung (ASE) ausgeführt wird:
 
 1. Öffnen Sie auf dem Steuerungsblatt der Web-App die Option „Einstellungen“.
 2. Legen Sie die .NET Framework-Version auf „v4.6“ fest.
 3. Legen Sie „Immer bereit“ auf „Ein“ fest.
 4. Fügen Sie die App-Einstellung __APPINSIGHTS_INSTRUMENTATIONKEY__ hinzu, und legen Sie den Wert auf den Instrumentationsschlüssel des SDKs fest.
-5. Fügen Sie in **Erweiterungen** „Application Insights“ hinzu. Die Installation dauert einige Minuten.
+5. Öffnen Sie „Erweiterte Tools“.
+6. Klicken Sie auf „Los“, um die Kudu-Website zu öffnen.
+7. Wählen Sie auf der Kudu-Website „Site extensions“ (Website-Erweiterungen) aus.
+8. Installieren Sie „__Application Insights__“ aus dem Katalog.
+9. Starten Sie die Web-App neu.
 
 ## <a id="aspnetcore"></a>Unterstützung von ASP.NET Core
 
-Mit Profiler können ASP.NET Core 1.1.2-Anwendungen für AI SDK 2.0 oder höher verwendet werden. 
-
+Die ASP.NET Core-Anwendung muss Microsoft.ApplicationInsights.AspNetCore Nuget-Paket 2.1.0-beta6 oder höher installieren, um mit dem Profiler arbeiten zu können. Ab dem 27.06.2017 werden frühere Versionen nicht mehr unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

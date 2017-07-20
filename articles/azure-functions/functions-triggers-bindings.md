@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/14/2017
+ms.date: 05/30/2017
 ms.author: donnam
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f7d0ed4f43c68c73c967a401509f1a5ccac7da0b
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -190,6 +190,23 @@ let Run(input: WorkItem, log: TraceWriter) =
     json
 ```
 
+## <a name="binding-datatype-property"></a>Binden der „dataType“-Eigenschaft
+
+Verwenden Sie die Typen in .NET, um den Datentyp für die Eingabedaten zu definieren. Verwenden Sie zum Beispiel `string`, um eine Bindung mit dem Text eines Warteschlangentriggers zu erstellen und ein Bytearray im Binärformat zu lesen.
+
+Für dynamisch typisierte Sprachen wie JavaScript verwenden Sie die `dataType`-Eigenschaft in der Bindungsdefinition. Um beispielsweise den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, verwenden Sie den Typ `binary`:
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+Andere Optionen für `dataType` sind `stream` und `string`.
+
 ## <a name="resolving-app-settings"></a>Auflösen von App-Einstellungen
 Es hat sich bewährt, Geheimnisse und Verbindungszeichenfolgen nicht in Konfigurationsdateien, sondern über App-Einstellungen zu verwalten. Dies schränkt den Zugriff auf diese Geheimnisse ein und bewirkt, dass es hinsichtlich der Sicherheit unbedenklich ist, *function.json* in einem öffentlichen Quellcodeverwaltungs-Repository zu speichern.
 
@@ -307,6 +324,19 @@ Azure Functions bietet über den `{rand-guid}`-Bindungsausdruck eine benutzerfre
 }
 ```
 
+### <a name="current-time"></a>Die aktuelle Zeit
+
+Sie können den Bindungsausdruck `DateTime` verwenden, der in `DateTime.UtcNow` aufgelöst wird.
+
+```json
+{
+  "type": "blob",
+  "name": "blobOutput",
+  "direction": "out",
+  "path": "my-output-container/{DateTime}"
+}
+```
+
 ## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>Binden an benutzerdefinierte Eingabeeigenschaften in einem Bindungsausdruck
 
 In Bindungsausdrücken kann auch auf Eigenschaften verwiesen werden, die in der Triggernutzlast definiert sind. Beispielsweise könnte es sein, dass Sie über einen Dateinamen, der in einem Webhook bereitgestellt wird, ein dynamisches Binden an eine Blob Storage-Datei vornehmen möchten.
@@ -377,6 +407,10 @@ module.exports = function (context, info) {
     context.done();
 }
 ```
+
+## <a name="configuring-binding-data-at-runtime"></a>Konfigurieren von Bindungsdaten zur Laufzeit
+
+In C# und anderen .NET-Sprachen können Sie ein imperatives Bindungsmuster verwenden, im Gegensatz zu den deklarativen Bindungen in *function.json*. Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Weitere Informationen finden Sie in der C#-Referenz für Entwickler unter [Bindung zur Laufzeit durch imperative Bindungen](functions-reference-csharp.md#imperative-bindings).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu einer bestimmten Bindung finden Sie in den folgenden Artikeln:

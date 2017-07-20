@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skript – Überwachen und Skalieren einer einzelnen SQL-Datenbank | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell"
+title: "PowerShell-Beispiel: Überwachen und Skalieren einer einzelnen Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Azure PowerShell-Beispielskript zum Überwachen und Skalieren einer einzelnen Azure SQL-Datenbank"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: fab0994ff9ec4471e0a6814e681b2d3e36433301
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: bfe2875b204d35abba12ee21c749e0a2919b2d1d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
 # <a name="monitor-and-scale-a-single-sql-database-using-powershell"></a>Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell
 
-Dieses PowerShell-Beispielskript überwacht die Leistungsmetriken einer Datenbank, skaliert sie auf eine höhere Leistungsstufe und erstellt eine Warnungsregel auf einer der Leistungsmetriken. 
+In diesem PowerShell-Beispielskript werden die Leistungsmetriken einer Datenbank überwacht, sie werden auf eine höhere Leistungsstufe skaliert und eine Warnungsregel wird auf einer der Leistungsmetriken erstellt. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 05/5/2017
+ms.date: 06/9/2017
 ms.author: LADocs; dimazaid; estfan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8446790af6af160c4b2d463191405faaed68bf0e
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 4b6f21c7949493ac1f95e7c0f255e5c96613adf1
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -56,9 +56,9 @@ Weitere Informationen zu Datengateways für andere Microsoft-Dienste finden Sie 
 
 * Sie müssen [das Datengateway bereits auf einem lokalen Computer installiert](logic-apps-gateway-install.md) haben.
 
-* Sie benötigen das Azure-Konto, für das die Geschäfts- oder Schul-E-Mail-Adresse verwendet wurde, mit der [das lokale Datengateway installiert wurde](logic-apps-gateway-install.md#requirements).
+* Wenn Sie sich beim Azure-Portal anmelden, müssen Sie das gleiche Geschäfts-, Schul- oder Unikonto verwenden, das zum [Installieren des lokalen Datengateways](logic-apps-gateway-install.md#requirements) verwendet wurde. Ihr Anmeldekonto muss auch über ein Azure-Abonnement verfügen, das Sie beim Erstellen einer Gateway-Ressource für die Gatewayinstallation im Azure-Portal verwenden müssen.
 
-* Die Gatewayinstallation darf noch nicht von einer anderen Azure-Gatewayressource beansprucht sein. Sie können Ihre Gatewayinstallation nur einer Gateway-Ressource zuordnen. Beanspruchen tritt auf, wenn Sie die Gatewayressource so erstellen, dass die Installation für andere Ressourcen nicht verfügbar ist.
+* Die Gatewayinstallation darf noch nicht von einer Azure-Gatewayressource beansprucht sein. Sie können Ihre Gatewayinstallation nur einer Azure-Gatewayressource zuordnen. Beanspruchen tritt auf, wenn Sie die Gatewayressource so erstellen, dass die Installation für andere Ressourcen nicht verfügbar ist.
 
 ## <a name="set-up-the-data-gateway-connection"></a>Einrichten der Datengatewayverbindung
 

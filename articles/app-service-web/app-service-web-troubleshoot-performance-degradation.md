@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
-ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
-ms.lasthandoff: 02/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 97ef8d2693296fc2692be46afcedfd01b07d743f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -115,6 +116,12 @@ Ausführlichen Anweisungen zum Konfigurieren der Anwendung für die Protokollier
 In Azure App Service kann eine Remoteprofilerstellung von Web-Apps, API-Apps und WebJobs ausgeführt werden. Wenn der Prozess langsamer als erwartet ausgeführt wird oder wenn die Latenz von HTTP-Anforderungen außergewöhnlich hoch und die CPU-Auslastung des Prozesses ebenfalls hoch ist, können Sie eine Remoteprofilerstellung des Prozesses ausführen und die CPU-Samplingaufruflisten abrufen, um die Prozessaktivität sowie die Hot Paths im Code zu analysieren.
 
 Weitere Informationen finden Sie unter [Remote Profiling Support in Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)(Unterstützung von Remoteprofilerstellung in Azure App Service (in englischer Sprache)).
+
+#### <a name="use-application-insights-profiler"></a>Verwenden von Application Insights Profiler
+
+Mitunter arbeitet die App Service-App langsam, da der Code nicht effektiv geschrieben wurde. Beispiele hierfür sind sequenzieller Code, der parallel ausgeführt werden kann, und unerwünschte Datenbanksperrkonflikte. Durch das Beseitigen dieser Engpässe im Code lässt sich die Leistung der App steigern, die aber ohne das Einrichten aufwendiger Ablaufverfolgungen und Protokolle schwer zu finden sind. Mit Application Insights Profiler können Sie diese Herausforderung für App Service-Apps bewältigen. 
+
+Bei minimalem Konfigurationsaufwand bietet Application Insights Profiler Statistiken zur Antwortzeit aller Webaufrufe und Ablaufverfolgungen, in denen angegeben ist, welche Codezeile die langsamen Antwortzeiten verursacht hat. Weitere Informationen finden Sie unter [Profilerstellung für Live-Azure-Web-Apps mit Application Insights](../application-insights/app-insights-profiler.md). 
 
 #### <a name="use-the-azure-app-service-support-portal"></a>Verwenden des Azure App Service-Support-Portals
 Web-Apps bietet Ihnen die Möglichkeit, Probleme im Zusammenhang mit Ihrer Web-App anhand von HTTP-Protokollen, Ereignisprotokollen, Prozesssicherungen usw. zu behandeln. Auf diese Informationen können Sie in unserem Supportportal unter „**http://&lt;Name_Ihrer_App>.scm.azurewebsites.net/Support**“ zugreifen.

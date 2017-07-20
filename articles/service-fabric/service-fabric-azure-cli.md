@@ -1,6 +1,6 @@
 ---
-title: Interagieren mit Service Fabric-Clustern mithilfe der Befehlszeilenschnittstelle | Microsoft Docs
-description: 'Gewusst wie: Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle'
+title: Erste Schritte mit der XPlat-CLI von Azure Service Fabric
+description: Erste Schritte mit der XPlat-CLI von Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,17 +12,19 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/02/2017
+ms.date: 06/29/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 615e7ea84aae45f384edb671a28e4ff98b4ade3a
-ms.openlocfilehash: d61b7a9c8199b15c8bb24e7146ea93a2f67fb0a7
-ms.lasthandoff: 02/17/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 9190b01b6ce42ea67ec7806c55a0013834d24211
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="using-the-azure-cli-to-interact-with-a-service-fabric-cluster"></a>Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
-Sie können die Azure-Befehlszeilenschnittstelle unter Linux verwenden, um von einem Linux-Computer aus mit einem Service Fabric-Cluster zu interagieren.
+
+# <a name="using-the-xplat-cli-to-interact-with-a-service-fabric-cluster"></a>Interagieren mit einem Service Fabric-Cluster mithilfe der XPlat-CLI
+
+Sie können die XPlat-CLI unter Linux verwenden, um von einem Linux-Computer aus mit einem Service Fabric-Cluster zu interagieren.
 
 Laden Sie zunächst die neueste Version der Befehlszeilenschnittstelle aus dem Git-Repository herunter, und richten Sie sie in Ihrem Pfad ein. Verwenden Sie hierzu die folgenden Befehle:
 
@@ -34,7 +36,8 @@ Laden Sie zunächst die neueste Version der Befehlszeilenschnittstelle aus dem G
  azure servicefabric
 ```
 
-Bei jedem unterstützten Befehl können Sie den Namen des Befehls eingeben, um die Hilfe für den jeweiligen Befehl aufzurufen. Für die Befehle wird die automatische Vervollständigung unterstützt. Mit dem folgenden Befehl erhalten Sie beispielsweise Hilfe zu allen Anwendungsbefehlen: 
+Bei jedem unterstützten Befehl können Sie den Namen des Befehls eingeben, um die Hilfe für den jeweiligen Befehl aufzurufen.
+Für die Befehle wird die automatische Vervollständigung unterstützt. Mit dem folgenden Befehl erhalten Sie beispielsweise Hilfe zu allen Anwendungsbefehlen: 
 
 ```sh
  azure servicefabric application 
@@ -80,55 +83,58 @@ Ersetzen Sie das PublicIPorFQDN-Tag durch die tatsächliche IP-Adresse oder den 
  azure servicefabric cluster connect --connection-endpoint http://localhost:19080 --client-connection-endpoint PublicIPorFQDN:19000
 ```
 
-Für die Interaktion mit Ihrem Linux-basierten Service Fabric-Cluster, den Sie über das Azure-Portal erstellt haben, können Sie PowerShell oder die Befehlszeilenschnittstelle verwenden. 
+Für die Interaktion mit Ihrem Linux-basierten Service Fabric-Cluster, den Sie über das Azure-Portal erstellt haben, können Sie PowerShell oder die Befehlszeilenschnittstelle verwenden.
 
 > [!WARNING]
 > Da diese Cluster nicht sicher sind, setzen Sie Ihre One-Box unter Umständen einem Risiko aus, wenn Sie die öffentliche IP-Adresse dem Clustermanifest hinzufügen.
 
-## <a name="using-the-azure-cli-to-connect-to-a-service-fabric-cluster"></a>Herstellen einer Verbindung mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="using-the-xplat-cli-to-connect-to-a-service-fabric-cluster"></a>Herstellen einer Verbindung mit einem Service Fabric-Cluster mithilfe der XPlat-CLI
+
 Mit den folgenden Befehlen der Azure-Befehlszeilenschnittstelle können Sie eine Verbindung mit einem sicheren Cluster herstellen. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
 
-```
+```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert
 ```
 
 Falls Ihr Zertifikat über Zertifizierungsstellen (Certificate Authorities, CAs) verfügt, müssen Sie den Parameter „--ca-cert-path“ hinzufügen, wie im folgenden Beispiel zu sehen: 
 
-```
+```sh
  azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
 ```
+
 Mehrere Zertifizierungsstellen können als kommagetrennte Liste angegeben werden.
 
-Falls der allgemeine Name im Zertifikat nicht dem Verbindungsendpunkt entspricht, können Sie die Überprüfung mithilfe des Parameters `--strict-ssl-false` umgehen, wie im folgenden Befehl zu sehen: 
+Falls der allgemeine Name im Zertifikat nicht dem Verbindungsendpunkt entspricht, können Sie die Überprüfung mithilfe des Parameters `--strict-ssl-false` umgehen, wie im folgenden Befehl zu sehen:
 
-```
+```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false 
 ```
 
 Wenn Sie die Überprüfung der Zertifizierungsstelle überspringen möchten, können Sie den Parameter „--reject-unauthorized-false“ hinzufügen, wie im folgenden Befehl zu sehen: 
 
-```
+```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
 ```
 
-Nach dem Herstellen der Verbindung können Sie durch Ausführen anderer Befehle über die Befehlszeilenschnittstelle mit dem Cluster interagieren. 
+Nach dem Herstellen der Verbindung können Sie durch Ausführen anderer Befehle über die Befehlszeilenschnittstelle mit dem Cluster interagieren.
 
 ## <a name="deploying-your-service-fabric-application"></a>Bereitstellen einer Service Fabric-Anwendung
+
 Führen Sie die folgenden Befehle aus, um die Service Fabric-Anwendung zu kopieren, zu registrieren und zu starten:
 
-```
+```sh
 azure servicefabric application package copy [applicationPackagePath] [imageStoreConnectionString] [applicationPathInImageStore]
 azure servicefabric application type register [applicationPathinImageStore]
 azure servicefabric application create [applicationName] [applicationTypeName] [applicationTypeVersion]
 ```
 
-
 ## <a name="upgrading-your-application"></a>Upgraden Ihrer Anwendung
+
 Der Prozess ähnelt dem [Prozess unter Windows](service-fabric-application-upgrade-tutorial-powershell.md).
 
-Erstellen, kopieren und registrieren Sie Ihre Anwendung über das Projektstammverzeichnis. Wenn der Name Ihrer Anwendungsinstanz „fabric:/MySFApp“ und der Typ „MySFApp“ lautet, sehen die entsprechenden Befehle wie folgt aus:
+Erstellen, kopieren und registrieren Sie Ihre Anwendung über das Projektstammverzeichnis. Wenn der Name Ihrer Anwendungsinstanz `fabric:/MySFApp` und der Typ „MySFApp“ lautet, sehen die entsprechenden Befehle wie folgt aus:
 
-```
+```sh
  azure servicefabric cluster connect http://localhost:19080
  azure servicefabric application package copy MySFApp fabric:ImageStore
  azure servicefabric application type register MySFApp
@@ -137,7 +143,7 @@ Erstellen, kopieren und registrieren Sie Ihre Anwendung über das Projektstammve
 
 Ändern Sie Ihre Anwendung, und erstellen Sie den geänderten Dienst neu.  Aktualisieren Sie die Manifestdatei des geänderten Diensts („ServiceManifest.xml“) mit den aktualisierten Versionen für den Dienst (und ggf. mit aktualisiertem Code, aktualisierter Konfiguration oder aktualisierten Daten). Passen Sie auch das Manifest der Anwendung („ApplicationManifest.xml“) mit der aktualisierten Versionsnummer für die Anwendung und dem geänderten Dienst an.  Führen Sie anschließend die folgenden Befehle aus, um Ihre aktualisierte Anwendung zu kopieren und registrieren:
 
-```
+```sh
  azure servicefabric cluster connect http://localhost:19080>
  azure servicefabric application package copy MySFApp fabric:ImageStore
  azure servicefabric application type register MySFApp
@@ -145,11 +151,11 @@ Erstellen, kopieren und registrieren Sie Ihre Anwendung über das Projektstammve
 
 Nun können Sie das Anwendungsupgrade mithilfe des folgenden Befehls starten:
 
-```
- azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–target-application-type-version 2.0  --rolling-upgrade-mode UnmonitoredAuto
+```sh
+ azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–target-application-type-version 2.0 --rolling-upgrade-mode UnmonitoredAuto
 ```
 
-Das Anwendungsupgrade kann daraufhin mit SFX überwacht werden. Die Aktualisierung der Anwendung dauert nur wenige Minuten.  Sie können auch eine aktualisierte Anwendung mit einem Fehler ausprobieren und die automatische Rollbackfunktion in Service Fabric testen.
+Das Anwendungsupgrade kann daraufhin mit SFX überwacht werden. Die Aktualisierung der Anwendung dauert nur wenige Minuten. Sie können auch eine aktualisierte Anwendung mit einem Fehler ausprobieren und die automatische Rollbackfunktion in Service Fabric testen.
 
 ## <a name="converting-from-pfx-to-pem-and-vice-versa"></a>Konvertieren von PFX zu PEM und umgekehrt
 
@@ -170,36 +176,43 @@ openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 Ausführliche Informationen finden Sie in der [OpenSSL-Dokumentation](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html).
 
 <a id="troubleshooting"></a>
+
 ## <a name="troubleshooting"></a>Problembehandlung
+
+
 ### <a name="copying-of-the-application-package-does-not-succeed"></a>Das Anwendungspaket kann nicht kopiert werden.
+
 Überprüfen Sie, ob `openssh` installiert ist. Diese Komponente ist unter Ubuntu Desktop standardmäßig nicht installiert. Installieren Sie sie mithilfe des folgenden Befehls:
 
-```
- sudo apt-get install openssh-server openssh-client**
+```sh
+sudo apt-get install openssh-server openssh-client**
 ```
 
-Sollte sich das Problem dadurch nicht beheben lassen, deaktivieren Sie PAM für ssh, indem Sie mithilfe der folgenden Befehle die Datei **sshd_config** ändern:
+Sollte sich das Problem dadurch nicht beheben lassen, deaktivieren Sie PAM für SSH, indem Sie mithilfe der folgenden Befehle die Datei `sshd_config` ändern:
 
 ```sh
- sudo vi /etc/ssh/sshd_config
+sudo vi /etc/ssh/sshd_config
 #Change the line with UsePAM to the following: UsePAM no
- sudo service sshd reload
+sudo service sshd reload
 ```
 
 Tritt das Problem immer noch auf, führen Sie die folgenden Befehle aus, um die Anzahl von ssh-Sitzungen zu erhöhen:
 
 ```sh
- sudo vi /etc/ssh/sshd\_config
+sudo vi /etc/ssh/sshd\_config
 # Add the following to lines:
 # MaxSessions 500
 # MaxStartups 300:30:500
- sudo service sshd reload
+sudo service sshd reload
 ```
+
 Da bei der ssh-Authentifizierung noch keine Schlüssel unterstützt werden (weil die Plattform ssh verwendet, um Pakete zu kopieren), muss stattdessen die Kennwortauthentifizierung verwendet werden.
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
-Richten Sie die Entwicklungsumgebung ein, und stellen Sie eine Service Fabric-Anwendung in einem Linux-Cluster bereit.
 
+[Richten Sie die Entwicklungsumgebung ein, und stellen Sie eine Service Fabric-Anwendung in einem Linux-Cluster bereit.](service-fabric-get-started-linux.md)
+
+## <a name="related-articles"></a>Verwandte Artikel
+
+* [Erste Schritte mit Service Fabric und der Azure CLI 2.0](service-fabric-azure-cli-2-0.md)
 

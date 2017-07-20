@@ -15,17 +15,15 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: pratshar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0df4b3535449c88f11fa7a58811f68c82549558f
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 198640030b638720863ffae05543b32692608f1b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
-# <a name="test-----failover-to-azure-in-site-recovery"></a>Testfailover in Azure in Site Recovery
-> [!div class="op_single_selector"]
-> * [Testfailover auf Azure](./site-recovery-test-failover-to-azure.md)
-> * [Testfailover (VMM zu VMM)](./site-recovery-test-failover-vmm-to-vmm.md)
+# <a name="test--failover-to-azure-in-site-recovery"></a>Testfailover auf Azure in Site Recovery
+
 
 
 Dieser Artikel enthält Informationen und Anweisungen zum Ausführen eines Testfailovers oder eines DR-Drills von virtuellen Computern und physischen Servern, die mit Site Recovery und Azure als Wiederherstellungsstandort geschützt sind.
@@ -50,7 +48,7 @@ Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan d
     1.  **Latest processed** (Zuletzt verarbeitet): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten Wiederherstellungspunkt durch, der bereits vom Site Recovery-Dienst verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer durchführen, wird zusätzlich der Zeitstempel des zuletzt verarbeiteten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen. Da keine Zeit mit der Verarbeitung nicht verarbeiteter Daten verbracht wird, bietet diese Option die Möglichkeit zum Failover mit geringem RTO-Wert (Recovery Time Objective, angestrebte Wiederherstellungszeit).
     1.    **Latest app-consistent** (Neueste anwendungskonsistente Elemente): Diese Option führt ein Failover für alle virtuellen Computer des Wiederherstellungsplans auf den letzten anwendungskonsistenten Wiederherstellungspunkt durch, der bereits von Site Recovery verarbeitet wurde. Wenn Sie das Testfailover für einen virtuellen Computer ausführen, wird zusätzlich der Zeitstempel des letzten anwendungskonsistenten Wiederherstellungspunkts angezeigt. Wenn Sie das Failover eines Wiederherstellungsplans durchführen, können Sie zu einzelnen virtuellen Computern wechseln und die Kachel **Neueste Wiederherstellungspunkte** anzeigen, um die entsprechenden Informationen abzurufen.
     1.    **Latest** (Neueste): Diese Option verarbeitet zuerst alle Daten, die an einen Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers im Site Recovery-Dienst repliziert wurden.
-    1.    **Benutzerdefiniert**: Beim Ausführen des Testfailovers für einen virtuellen Computer können Sie diese Option verwenden, um ein Failover auf einen bestimmten Wiederherstellungspunkt durchzuführen.
+    1.  **Benutzerdefiniert**: Beim Ausführen des Testfailovers für einen virtuellen Computer können Sie diese Option verwenden, um ein Failover auf einen bestimmten Wiederherstellungspunkt durchzuführen.
 1. Wählen Sie ein **virtuelles Azure-Netzwerk** aus: Stellen Sie ein virtuelles Azure-Netzwerk bereit, in dem die virtuellen Testcomputer erstellt werden. Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn das Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im ersten Subnetz (in alphabetischer Reihenfolge) erstellt. Wenn dieselbe IP-Adresse nicht im Subnetz verfügbar ist, erhält der virtuelle Computer eine andere verfügbare IP-Adresse im Subnetz. Weitere Informationen finden Sie in [diesem](#creating-a-network-for-test-failover) Abschnitt.
 1. Wenn Sie ein Failover auf Azure ausführen und die Datenverschlüsselung aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Datenverschlüsselung im Rahmen der Anbieterinstallation ausgestellt wurde. Wenn Sie die Verschlüsselung auf dem virtuellen Computer nicht aktiviert haben, können Sie diesen Schritt ignorieren.
 1. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . Der Test-Replikatcomputer wird im Azure-Portal angezeigt.
@@ -78,18 +76,18 @@ Die Auslösung eines Testfailovers ist mit den folgenden Schritten verbunden:
 In bestimmten Fällen erfordert das Failover virtueller Computer einen zusätzliche Zwischenschritt, der in der Regel ca. 8 bis 10 Minuten dauert. Das gilt für die folgenden Fälle:
 
 * VMware-VMs mit Mobility Service-Version niedriger als 9.8
-* Physische Server 
+* Physische Server
 * VMware-Linux-VMs
 * Als physische Server geschützte Hyper-V-VMs
-* VMware-VMs, bei denen die folgenden Treiber nicht als Starttreiber vorhanden sind 
-    * storvsc 
-    * vmbus 
-    * storflt 
-    * intelide 
+* VMware-VMs, bei denen die folgenden Treiber nicht als Starttreiber vorhanden sind
+    * storvsc
+    * vmbus
+    * storflt
+    * intelide
     * atapi
 * VMware-VMs, bei denen der DHCP-Dienst nicht aktiviert ist, unabhängig davon, ob DHCP oder statischen IP-Adressen verwendet werden
 
-In allen anderen Fällen ist dieser Zwischenschritt nicht erforderlich und der Zeitaufwand für das Failover deutlich niedriger. 
+In allen anderen Fällen ist dieser Zwischenschritt nicht erforderlich und der Zeitaufwand für das Failover deutlich niedriger.
 
 
 ## <a name="creating-a-network-for-test-failover"></a>Erstellen eines Netzwerks für Testfailover

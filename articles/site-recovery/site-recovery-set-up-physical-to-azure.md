@@ -11,21 +11,21 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: backup-recovery
-ms.date: 06/05/2017
+ms.workload: storage-backup-recovery
+ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f849ea027022cc753bf818d7980170b5875221f0
-ms.openlocfilehash: 47431f934f092ea7c614599b6c8e3fe3a946a955
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 49b9d2e21dbcb612828a25f21ed4382327d6f64c
 ms.contentlocale: de-de
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 06/30/2017
 
 ---
 
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Einrichten der Quellumgebung (physische Server in Azure)
 > [!div class="op_single_selector"]
-> * [Virtuelle VMware-Computer](./site-recovery-set-up-vmware-to-azure.md)
-> * [Physische Server](./site-recovery-set-up-physical-to-azure.md)
+> * [VMware zu Azure](./site-recovery-set-up-vmware-to-azure.md)
+> * [Physisch nach Azure](./site-recovery-set-up-physical-to-azure.md)
 
 Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem Replizieren von physischen Servern unter Windows oder Linux in Azure zu beginnen.
 

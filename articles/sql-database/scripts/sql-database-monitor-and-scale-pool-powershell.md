@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skript – Überwachen und Skalieren eines SQL-Datenbank-Pools für elastische Datenbanken | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Überwachen und Skalieren eines SQL-Datenbank-Pools für elastische Datenbanken mit PowerShell"
+title: "PowerShell-Beispiel: Überwachen und Skalieren eines elastischen SQL-Pools in der Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Azure PowerShell-Beispielskript zum Überwachen und Skalieren eines Pools für elastische SQL-Datenbanken in der Azure SQL-Datenbank"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,17 +14,17 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 5231f5b13c3502a5a45ceea0b329f30a2e1c311c
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 6536158d4fc2e2c8fbb4e78305d28d063eb12696
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="monitor-and-scale-a-sql-database-elastic-pool-using-powershell"></a>Überwachen und Skalieren eines SQL-Datenbank-Pools für elastische Datenbanken mit PowerShell
+# <a name="use-powershell-to-monitor-and-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Verwenden von PowerShell zum Überwachen und Skalieren eines Pools für elastische SQL-Datenbanken in der Azure SQL-Datenbank
 
 Dieses PowerShell-Beispielskript überwacht die Leistungsmetriken eines Pools für elastische Datenbanken, skaliert ihn auf eine höhere Leistungsstufe und erstellt eine Warnungsregel auf einer der Leistungsmetriken. 
 

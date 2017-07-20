@@ -12,12 +12,13 @@ ms.devlang: javascript
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 06/16/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
-ms.openlocfilehash: 312e9081c8597f59c32e99d594f2e729410986d8
-ms.lasthandoff: 12/16/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 4580bda5633f84a7c7af0dc85f3cea4951024836
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -56,7 +57,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Erste Sc
 1. Öffnen Sie die Datei „SimulatedDevice.js“ mit einem Text-Editor.
 2. Ändern Sie die **connectCallback** -Funktion, sodass sie von IoT Hub gesendete Nachrichten verarbeitet. In diesem Beispiel ruft das Gerät immer die **complete** -Funktion auf, um IoT Hub mitzuteilen, dass sie die Nachricht verarbeitet hat. Die neue Version der **connectCallback**-Funktion sieht wie der folgende Codeausschnitt aus:
    
-    ```
+    ```javascript
     var connectCallback = function (err) {
       if (err) {
         console.log('Could not connect: ' + err);
@@ -90,26 +91,26 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **sendcloudtodevicemessage**. Erstellen Sie im Ordner **sendcloudtodevicemessage** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
-    ```
+    ```shell
     npm init
     ```
 2. Führen Sie an der Eingabeaufforderung im Ordner **sendcloudtodevicemessage** den folgenden Befehl aus, um das Paket **azure-iothub** zu installieren:
    
-    ```
+    ```shell
     npm install azure-iothub --save
     ```
 3. Erstellen Sie mithilfe eines Text-Editors die Datei **SendCloudToDeviceMessage.js** im Ordner **sendcloudtodevicemessage**.
 4. Fügen Sie am Anfang der Datei **SendCloudToDeviceMessage.js** die folgenden `require`-Anweisungen hinzu:
    
-    ```
+    ```javascript
     'use strict';
    
     var Client = require('azure-iothub').Client;
     var Message = require('azure-iot-common').Message;
     ```
-5. Fügen Sie der Datei **SendCloudToDeviceMessage.js** den folgenden Code hinzu. Ersetzen Sie den Platzhalterwert für die IoT Hub-Verbindungszeichenfolge durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben. Ersetzen Sie den Platzhalter für das Zielgerät durch die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben:
+5. Fügen Sie der Datei **SendCloudToDeviceMessage.js** den folgenden Code hinzu. Ersetzen Sie den Platzhalterwert „{iot hub connection string}“ durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben. Ersetzen Sie den Platzhalter „{device id}“ durch die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben:
    
-    ```
+    ```javascript
     var connectionString = '{iot hub connection string}';
     var targetDevice = '{device id}';
    
@@ -117,7 +118,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
     ```
 6. Fügen Sie die folgende Funktion hinzu, um Ergebnisse des Vorgangs an der Konsole auszugeben:
    
-    ```
+    ```javascript
     function printResultFor(op) {
       return function printResult(err, res) {
         if (err) console.log(op + ' error: ' + err.toString());
@@ -127,7 +128,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
     ```
 7. Fügen Sie die folgende Funktion hinzu, um Übermittlungsfeedbacknachrichten an der Konsole auszugeben:
    
-    ```
+    ```javascript
     function receiveFeedback(err, receiver){
       receiver.on('message', function (msg) {
         console.log('Feedback message:')
@@ -137,7 +138,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
     ```
 8. Fügen Sie den folgenden Code hinzu, um eine Nachricht an Ihr Gerät zu senden und die Feedbacknachricht zu verarbeiten, wenn das Gerät die C2D-Nachricht bestätigt:
    
-    ```
+    ```javascript
     serviceClient.open(function (err) {
       if (err) {
         console.error('Could not connect: ' + err.message);
@@ -159,14 +160,14 @@ Sie können nun die Anwendungen ausführen.
 
 1. Führen Sie im Ordner **simulateddevice** an einer Eingabeaufforderung den folgenden Befehl aus, um Telemetriedaten an IoT Hub zu senden und auf C2D-Nachrichten zu lauschen:
    
-    ```
+    ```shell
     node SimulatedDevice.js 
     ```
    
     ![Ausführen der simulierten Geräte-App][img-simulated-device]
 2. Führen Sie im Ordner **sendcloudtodevicemessage** an einer Eingabeaufforderung den folgenden Befehl aus, um eine C2D-Nachricht zu senden, und warten Sie auf das Bestätigungsfeedback:
    
-    ```
+    ```shell
     node SendCloudToDeviceMessage.js 
     ```
    

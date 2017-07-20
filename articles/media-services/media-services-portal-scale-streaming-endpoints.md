@@ -12,11 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/04/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 9bed9392502dae01724c4ca86b8c735ab60a2882
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 76de1d40e8c24abda33e99a137f4a6c263f60a8b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -28,22 +30,25 @@ ms.openlocfilehash: 9bed9392502dae01724c4ca86b8c735ab60a2882
 > 
 > 
 
-Dieses Thema eignet sich für Kunden, deren **Streamingendpunkt** den Typ **Premium** aufweist. Weitere Informationen zu Streamingendpunkt-Typen und der CDN-Konfiguration finden Sie im Thema [Übersicht über Streamingendpunkte](media-services-portal-manage-streaming-endpoints.md).
+**Premium**-Streamingendpunkte eignen sich für erweiterte Workloads und bieten eine dedizierte und skalierbare Bandbreitenkapazität. Kunden mit einem **Premium**-Streamingendpunkt erhalten standardmäßig eine Streamingeinheit (Streaming Unit, SU). Der Streamingendpunkt kann durch Hinzufügen von SUs skaliert werden. Jede SU bietet zusätzliche Bandbreitenkapazität für die Anwendung. Weitere Informationen zu Streamingendpunkt-Typen und der CDN-Konfiguration finden Sie im Thema [Übersicht über Streamingendpunkte](media-services-portal-manage-streaming-endpoints.md).
  
-Wenn Sie über den Typ **Premium** verfügen, erhalten Sie standardmäßig 1 Streamingeinheit (SU). Wenn Sie den Streamingendpunkt skalieren müssen, führen Sie die Schritte in diesem Thema aus.
+In diesem Thema wird gezeigt, wie ein Streamingendpunkt skaliert wird.
 
 Informationen zu den Preisen finden Sie unter [Mediendienste – Preisübersicht](http://go.microsoft.com/fwlink/?LinkId=275107).
 
 ## <a name="scale-streaming-endpoints"></a>Skalieren von Streamingendpunkten
 
-Gehen Sie wie folgt vor, um Streamingeinheiten zu erstellen und ihre Anzahl zu ändern:
+Gehen Sie wie folgt vor, um die Anzahl von Streamingeinheiten zu ändern:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
 2. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**.
 3. Klicken Sie auf den Streamingendpunkt, den Sie skalieren möchten. 
+
+    [!NOTE] Sie können nur **Premium**-Streamingendpunkte skalieren.
+
 4. Verschieben Sie den Schieberegler, um die Anzahl der Streamingeinheiten anzugeben.
 
-![Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints3.png)
+    ![Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints3.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die Media Services-Lernpfade.
@@ -52,10 +57,5 @@ Gehen Sie wie folgt vor, um Streamingeinheiten zu erstellen und ihre Anzahl zu �
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 5/04/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 080b732d78731e6281e82ddc28a3e84ae8755ffa
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 0e9c10b77110efe90239863ee603acbd54b17ead
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -63,7 +63,7 @@ Benachrichtigungen der intelligenten Erkennung sind standardmäßig aktiviert un
   
   ![Einstellungen für die intelligente Erkennung](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
   
-  * Der Link **Abbestellen** in der E-Mail der intelligenten Erkennung 
+  * Über den Link **Austragen** in der E-Mail zur intelligenten Erkennung können Sie den Empfang der E-Mail-Benachrichtigungen kündigen.
 
 Pro Tag und Application Insights-Ressource wird nur eine E-Mail zu Leistungsanomalien der intelligenten Erkennung gesendet. Die E-Mail wird nur gesendet, wenn an diesem Tag mindestens ein neues Problem erkannt wurde. Sie erhalten Nachrichten nicht mehrfach. 
 

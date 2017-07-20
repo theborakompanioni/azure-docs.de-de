@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/05/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 0184e95ca56e4bc4ffbe860da2b7a5cae9b5a043
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: f5f9aa186480926df1110928983566e05f79efb8
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -25,15 +26,17 @@ ms.lasthandoff: 03/11/2017
 
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
-Die Azure SQL-Überwachungslösung in Azure Log Analytics erfasst und visualisiert wichtige SQL Azure-Leistungsmetriken. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen. Zudem können Sie Azure SQL-Datenbank und Kennzahlen für Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und visuell darstellen. Die Lösung hilft Ihnen außerdem beim Erkennen von Problemen auf jeder Stufe Ihres Anwendungsstapels.  Sie verwendet [Azure-Diagnosemetriken](log-analytics-azure-storage.md) zusammen mit Log Analytics-Ansichten, um Daten zu allen Azure SQL-Datenbanken und Pools für elastische Datenbanken in einem einzelnen Log Analytics-Arbeitsbereich darzustellen.
+![Symbol Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-symbol.png)
+
+Die Azure SQL Analytics-Lösung in Azure Log Analytics erfasst und visualisiert wichtige SQL Azure-Leistungsmetriken. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen. Zudem können Sie Azure SQL-Datenbank und Kennzahlen für Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und visuell darstellen. Die Lösung hilft Ihnen außerdem beim Erkennen von Problemen auf jeder Stufe Ihres Anwendungsstapels.  Sie verwendet [Azure-Diagnosemetriken](log-analytics-azure-storage.md) zusammen mit Log Analytics-Ansichten, um Daten zu allen Azure SQL-Datenbanken und Pools für elastische Datenbanken in einem einzelnen Log Analytics-Arbeitsbereich darzustellen.
 
 Zurzeit unterstützt diese Vorschaulösung bis zu 150.000 Azure SQL-Datenbanken und 5.000 Pools für elastische SQL-Datenbanken pro Arbeitsbereich.
 
-Die Azure SQL-Überwachungslösung unterstützt Sie wie andere für Log Analytics verfügbare Lösungen bei der Überwachung und dem Empfang von Benachrichtigungen über den Zustand der Azure-Ressourcen, in diesem Fall von Azure SQL-Datenbank. Microsoft Azure SQL-Datenbank ist ein skalierbarer relationaler Datenbankdienst, der vertraute SQL Server-ähnliche Funktionen für Anwendungen bereitstellt, die in der Azure-Cloud ausgeführt werden. Log Analytics unterstützt Sie beim Erfassen, Korrelieren und Visualisieren strukturierter und nicht strukturierter Daten.
+Die Azure SQL Analytics-Lösung unterstützt Sie wie andere für Log Analytics verfügbare Lösungen bei der Überwachung und dem Empfang von Benachrichtigungen über den Zustand der Azure-Ressourcen, in diesem Fall von Azure SQL-Datenbank. Microsoft Azure SQL-Datenbank ist ein skalierbarer relationaler Datenbankdienst, der vertraute SQL Server-ähnliche Funktionen für Anwendungen bereitstellt, die in der Azure-Cloud ausgeführt werden. Log Analytics unterstützt Sie beim Erfassen, Korrelieren und Visualisieren strukturierter und nicht strukturierter Daten.
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
-Die Azure SQL-Überwachungslösung verwendet keine Agents für die Verbindung mit dem Log Analytics-Dienst.
+Die Azure SQL Analytics-Lösung verwendet keine Agents für die Verbindung mit dem Log Analytics-Dienst.
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
@@ -47,13 +50,13 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Ein Azure-Abonnement. Falls Sie keines haben, können Sie [kostenlos](https://azure.microsoft.com/free/) eines erstellen.
-2. Einen Log Analytics-Arbeitsbereich Sie können ein vorhandenes verwenden oder [ein neues erstellen](log-analytics-get-started.md), bevor Sie diese Lösung verwenden.
-3. Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbanken und Pools für elastische Datenbanken, und [konfigurieren Sie diese so, dass ihre Daten an Log Analytics gesendet werden](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/).
+- Ein Azure-Abonnement. Falls Sie keines haben, können Sie [kostenlos](https://azure.microsoft.com/free/) eines erstellen.
+- Einen Log Analytics-Arbeitsbereich Sie können ein vorhandenes verwenden oder [ein neues erstellen](log-analytics-get-started.md), bevor Sie diese Lösung verwenden.
+- Aktivieren Sie die Azure-Diagnose für Ihre Azure SQL-Datenbanken und Pools für elastische Datenbanken, und [konfigurieren Sie diese so, dass ihre Daten an Log Analytics gesendet werden](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/).
 
 ## <a name="configuration"></a>Konfiguration
 
-Führen Sie die folgenden Schritte aus, um die Azure SQL-Überwachungslösung Ihrem Arbeitsbereich hinzuzufügen.
+Führen Sie die folgenden Schritte aus, um die Azure SQL Analytics-Lösung Ihrem Arbeitsbereich hinzuzufügen.
 
 1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem Arbeitsbereich die Azure SQL Analytics-Lösung hinzu.
 2. Klicken Sie im Azure-Portal auf **Neu** (das Symbol +), und wählen Sie dann in der Liste der Ressourcen **Überwachung und Verwaltung** aus.  
@@ -87,33 +90,16 @@ Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azu
 
 ![Kachel „Azure SQL Analytics“](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
 
-### <a name="viewing-azure-sql-monitoring-data"></a>Anzeigen der Daten der Azure SQL-Überwachung
+### <a name="viewing-azure-sql-analytics-data"></a>Anzeigen von Azure SQL Analytics-Daten
 
-Klicken Sie auf die Kachel **Azure SQL-Überwachung**, um das Dashboard „Azure SQL Analytics“ zu öffnen. Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind bis zu zehn Einträge enthalten, die die Spaltenkriterien für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, indem Sie unten in der Spalte auf **Alle anzeigen** oder auf die Spaltenüberschrift klicken.
+Klicken Sie auf die Kachel **Azure SQL Analytics**, um das Dashboard von Azure SQL Analytics zu öffnen. Das Dashboard enthält die unten festgelegten Blätter. Auf jedem Blatt werden bis zu 15 Ressourcen aufgelistet (Abonnement, Server, Pool für elastische Datenbanken und Datenbank). Klicken Sie auf eine beliebige Ressource, um deren Dashboard zu öffnen. „Pool für elastische Datenbanken“ und „Datenbank“ enthalten die Diagramme mit den Metriken der ausgewählten Ressource. Klicken Sie auf ein Diagramm, um das Dialogfeld „Protokollsuche“ zu öffnen.
 
-Lesen Sie mehr über [SQL-Datenbankoptionen und -leistung für Dienstebenen](../sql-database/sql-database-service-tiers.md).
-
-
-
-![Azure SQL Analytics-Dashboard](./media/log-analytics-azure-sql/azure-sql-dash-01.png)
-
-
-
-![Azure SQL Analytics-Dashboard](./media/log-analytics-azure-sql/azure-sql-dash-02.png)
-
-| Spalte | Beschreibung |
-| --- | --- |
-| **Azure SQL-Datenbankanalyse** | &nbsp; |
-| Die besten n Datenbanken nach DTU-Nutzung &gt; 90% | Dieser Bereich zeigt die Anzahl der Azure SQL-Datenbanken mit einer DTU-Nutzung von mehr als 90 Prozent im ausgewählten Zeitraum. Die oberste Kachel zeigt die Anzahl der Datenbanken, die während desselben angegebenen Zeitraums mehr als 90 Prozent der insgesamt zugeordneten DTU-Verfügbarkeit aller in Log Analytics überwachten Datenbanken in Anspruch genommen haben.  Klicken Sie auf einen Datenbanknamen, um eine Protokollsuche durchzuführen, die ein Liniendiagramm zeigt, in dem die DTU-Auslastung der Datenbank mit allen anderen im Arbeitsbereich überwachten Datenbanken verglichen wird. |
-| Die besten n Datenbanken nach CPU-Nutzung &gt; 90% | Dieser Bereich zeigt die Anzahl der Azure SQL-Datenbanken mit einer CPU-Nutzung von mehr als 90 Prozent im ausgewählten Zeitraum. Die oberste Kachel zeigt die Anzahl der Datenbanken, die während desselben angegebenen Zeitraums mehr als 90 Prozent der insgesamt zugeordneten CPU-Verfügbarkeit aller in Log Analytics überwachten Datenbanken in Anspruch genommen haben.  Klicken Sie auf einen Datenbanknamen, um eine Protokollsuche durchzuführen, die ein Liniendiagramm zeigt, in dem die CPU-Auslastung der Datenbank mit allen anderen im Arbeitsbereich überwachten Datenbanken verglichen wird. |
-| Die besten n Datenbanken nach Speichernutzung &gt; 90% | Dieser Bereich zeigt die Anzahl der Azure SQL-Datenbanken mit einer Speicherzuteilung von mehr als 90 Prozent im ausgewählten Zeitraum. Die oberste Kachel zeigt die Anzahl der Datenbanken, die während des angegebenen Zeitraums den Schwellenwert von 90 Prozent aller in Log Analytics überwachten Datenbanken überschritten haben.  Klicken Sie auf einen Datenbanknamen, um eine Protokollsuche durchzuführen, die ein Liniendiagramm zeigt, in dem die Speichernutzung der Datenbank mit allen anderen im Arbeitsbereich überwachten Datenbanken verglichen wird. |
-| **Pool für elastische Azure SQL-Datenbanken** | &nbsp; |
-| Die besten n Pools für elastische Datenbanken nach DTU &gt; 90% | Dieser Bereich zeigt die Anzahl der Pools für elastische Azure SQL-Datenbanken mit einer DTU-Zuteilung von mehr als 90 Prozent im ausgewählten Zeitraum. Die oberste Kachel zeigt die Anzahl der Pools für elastische Datenbanken, die während des angegebenen Zeitraums den Schwellenwert von 90 Prozent aller in Log Analytics überwachten Pools für elastische Azure SQL-Datenbanken überschritten haben.  Klicken Sie auf einen Pool für elastische Datenbanken, um eine Protokollsuche durchzuführen, die ein Liniendiagramm zeigt, in dem die Speichernutzung des Pools für elastische Datenbanken mit allen anderen im Arbeitsbereich überwachten Datenbanken verglichen wird. |
-| Die besten n Pools für elastische Datenbanken nach CPU &gt; 90% | Dieser Bereich zeigt die Anzahl der Pools für elastische Azure SQL-Datenbanken mit einer CPU-Nutzung von mehr als 90 Prozent im ausgewählten Zeitraum. Die oberste Kachel zeigt die Anzahl der Pools für elastische Datenbanken, die während des angegebenen Zeitraums den Schwellenwert von 90 Prozent aller in Log Analytics überwachten Pools für elastische Azure SQL-Datenbanken überschritten haben.  Klicken Sie auf einen Pool für elastische Datenbanken, um eine Protokollsuche durchzuführen, die ein Liniendiagramm zeigt, in dem die CPU-Nutzung des Pools für elastische Datenbanken mit allen anderen im Arbeitsbereich überwachten Datenbanken verglichen wird. |
-| Die besten n Pools für elastische Datenbanken nach Speicherverbrauch &gt; 90% | Dieser Bereich zeigt die Anzahl der Pools für elastische Azure SQL-Datenbanken mit einer Speicherzuteilung von mehr als 90 Prozent im ausgewählten Zeitraum. Die oberste Kachel zeigt die Anzahl der Pools für elastische Datenbanken, die während des angegebenen Zeitraums den Schwellenwert von 90 Prozent aller in Log Analytics überwachten Pools für elastische Datenbanken überschritten haben.  Klicken Sie auf einen Pool für elastische Datenbanken, um eine Protokollsuche durchzuführen, die ein Liniendiagramm zeigt, in dem die Speichernutzung des Pools für elastische Datenbanken mit allen anderen im Arbeitsbereich überwachten Datenbanken verglichen wird. |
-| **Azure SQL-Aktivitätsprotokolle** | &nbsp; |
-| Audit von SQL Azure-Aktivitäten | Dieser Bereich zeigt die Anzahl der Azure-Aktivitätsdatensätze im Zusammenhang mit SQL Azure im ausgewählten Zeitraum. Klicken Sie auf ein Element, um eine Protokollsuche durchzuführen, die zusätzliche Details zum Element anzeigt. |
-
+| Blatt | Beschreibung |
+|---|---|
+| Abonnements | Liste der Abonnements mit der Anzahl der verbundenen Server, Pools und Datenbanken. |
+| Server | Liste der Server mit der Anzahl der verbundenen Pools und Datenbanken. |
+| Elastische Pools | Liste der verbundenen elastische Pools mit maximaler Größe in GB und eDTU im Beobachtungszeitraum. |
+|Datenbanken | Liste der verbundenen Datenbanken mit maximaler Größe in GB und DTU im Beobachtungszeitraum.|
 
 
 ### <a name="analyze-data-and-create-alerts"></a>Analysieren von Daten und Erstellen von Warnungen
@@ -136,7 +122,7 @@ Die Lösung enthält einige *warnungsbasierte Abfragen*, wie oben gezeigt, die S
 6. Konfigurieren Sie auf der Seite **Warnungsregel hinzufügen** die entsprechenden Eigenschaften und die spezifischen Schwellenwerte nach Bedarf, und klicken Sie dann auf **Speichern**.  
 ![Warnungsregel hinzufügen](./media/log-analytics-azure-sql/create-alert02.png)
 
-### <a name="act-on-azure-sql-monitoring-data"></a>Bearbeiten der Daten der Azure SQL-Überwachung
+### <a name="act-on-azure-sql-analytics-data"></a>Bearbeiten von Azure SQL Analytics-Daten
 
 Beispiel: Eine der hilfreichsten Abfragen, die Sie durchführen können, ist der Vergleich der DTU-Auslastung für alle Pools für elastische Azure SQL-Datenbanken in allen Ihren Azure-Abonnements. DTU (Database Throughput Unit; Datenbankdurchsatzeinheit) bietet eine Möglichkeit der Beschreibung der relativen Kapazität einer Leistungsstufe von Basic-, Standard- und Premium-Datenbanken und -Pools. DTUs basieren auf einer kombinierten Messung von CPU, Arbeitsspeicher, Lese- und Schreibvorgängen. Mit steigender Anzahl der DTUs steigt auch die gemäß der Leistungsstufe bereitgestellte Leistungsfähigkeit. Beispiel: Eine Leistungsstufe mit fünf DTUs bietet fünfmal mehr Leistung als eine Leistungsstufe mit einer DTU. Ein maximales DTU-Kontingent gilt für alle Server und Pools für elastische Datenbanken.
 

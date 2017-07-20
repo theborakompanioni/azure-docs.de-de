@@ -12,43 +12,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 06/15/2017
 ms.author: raymondl;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f307a26bfbb55b395f4073f4368432ae69b867ae
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7d0b2db01427430d6b0a317cdfefc265dd4b06e2
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Aktivieren der Protokollierung für Machine Learning-Webdienste
-Dieses Dokument enthält Informationen zur Protokollierungsfunktion klassischer Webdienste. Durch Aktivieren der Protokollierung in Webdiensten erhalten Sie zusätzliche Informationen, die über die bloße Nummer und Meldung hinausgehen und Ihnen helfen können, Probleme beim Aufrufen der Machine Learning-APIs zu beheben.  
+Dieses Dokument enthält Informationen zur Protokollierungsfunktion von Machine Learning-Webdiensten. Durch die Protokollierung erhalten Sie zusätzliche Informationen, die über die Fehlernummer und eine Meldung hinausgehen und die Ihnen helfen können, Probleme beim Aufrufen der Machine Learning-APIs zu beheben.  
 
-So aktivieren Sie die Protokollierung in Webdiensten im klassischen Azure-Portal   
+## <a name="how-to-enable-logging-for-a-web-service"></a>Aktivieren der Protokollierung für einen Webdienst
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an.
-2. Klicken Sie links in der Spalte mit den Features auf **MACHINE LEARNING**.
-3. Klicken Sie auf den Namen Ihres Arbeitsbereichs und dann auf **WEBDIENSTE**.
-4. Klicken Sie in der Liste der Webdienste auf den Namen des Webdiensts.
-5. Klicken Sie in der Liste der Endpunkte auf den Namen des Endpunkts.
-6. Klicken Sie auf **KONFIGURIEREN**.
-7. Legen Sie die **ABLAUFVERFOLGUNGSEBENE DER DIAGNOSE** auf *Fehler* oder *Alle* fest, und klicken Sie dann auf **SPEICHERN**.
+Aktivieren Sie die Protokollierung im [Azure Machine Learning Web Services-Portal](https://services.azureml.net). 
 
-So aktivieren Sie die Protokollierung im Azure Machine Learning Web Services-Portal
+1. Melden Sie sich unter [https://services.azureml.net](https://services.azureml.net) Azure Machine Learning Web Services-Portal an. Bei einem klassischen Webdienst gelangen Sie auch zum Portal, indem Sie in Machine Learning Studio auf der Machine Learning-Webdienstseite auf **New Web Services Experience** (Neue Webdienstfunktion) klicken.
 
-1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal](https://services.azureml.net) an.
-2. Klicken Sie auf „Classic Web Services“.
-3. Klicken Sie in der Liste der Webdienste auf den Namen des Webdiensts.
-4. Klicken Sie in der Liste der Endpunkte auf den Namen des Endpunkts.
-5. Klicken Sie auf **Konfigurieren**.
-6. Legen Sie **Logging** auf *Error* oder *All* fest, und klicken Sie dann auf **SAVE**.
+   ![Link für neue Webdienstfunktion](media/machine-learning-web-services-logging/new-web-services-experience-link.png)
+
+2. Klicken Sie auf der oberen Menüleiste bei einem neuen Webdienst auf **Webdienste** und bei einem klassischen Webdienst auf **Classic Web Services** (Klassische Webdienste).
+
+   ![Auswählen neuer oder klassischer Webdienste](media/machine-learning-web-services-logging/select-web-service.png)
+
+3. Klicken Sie bei einem neuen Webdienst auf den Webdienstnamen. Klicken Sie bei einem klassischen Webdienst auf den Webdienstnamen, und klicken Sie anschließend auf der nächsten Seite auf den entsprechenden Endpunkt.
+
+4. Klicken Sie auf der oberen Menüleiste auf **Konfigurieren**.
+
+5. Legen Sie die Option **Protokollierung aktivieren** auf *Fehler* fest (um nur Fehler zu protokollieren) oder auf *Alle* (für eine vollständige Protokollierung).
+
+   ![Auswählen des Protokolliergrads](media/machine-learning-web-services-logging/enable-logging.png)
+
+6. Klicken Sie auf **Speichern**.
+
+7. Erstellen Sie für klassische Webdienste den Container **ml-diagnostics**.
+
+   Alle Webdienstprotokolle werden in einem Blobcontainer namens **ml-diagnostics** in dem Speicherkonto aufbewahrt, das dem Webdienst zugeordnet ist. Bei neuen Webdiensten wird dieser Container erstellt, wenn Sie das erste Mal auf den Webdienst zugreifen. Bei klassischen Webdiensten müssen Sie den Container erstellen, wenn er nicht bereits vorhanden ist. 
+
+   1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem Speicherkonto, das dem Webdienst zugeordnet ist.
+
+   2. Klicken Sie unter **Blob-Dienst** auf **Container**.
+
+   3. Wenn der Container **ml-diagnostics** nicht vorhanden ist, klicken Sie auf **+Container**, vergeben Sie für den neuen Container den Namen „ml-diagnostics“, und wählen Sie für **Zugriffstyp** die Option „Blob“ aus. Klicken Sie auf **OK**.
+
+      ![Auswählen des Protokolliergrads](media/machine-learning-web-services-logging/create-ml-diagnostics-container.png)
+
+> [!TIP]
+>
+> Bei einem klassischen Webdienst finden Sie im Webdienstdashboard in Machine Learning Studio auch einen Schalter, mit dem die Protokollierung aktiviert werden kann. Da die Protokollierung jetzt aber über das Web Services-Portal verwaltet wird, müssen Sie sie wie in diesem Artikel beschrieben über das Portal aktivieren. Wenn Sie die Protokollierung in Studio bereits aktiviert haben, deaktivieren Sie sie im Web Services-Portal, und aktivieren Sie sie erneut.
+
 
 ## <a name="the-effects-of-enabling-logging"></a>Die Auswirkungen der Aktivierung der Protokollierung
-Wenn die Protokollierung aktiviert ist, werden alle Diagnoseergebnisse/Fehler vom ausgewählten Endpunkt in dem Azure Storage-Konto protokolliert, das mit dem Arbeitsbereich des Benutzers verknüpft ist. Dieses Speicherkonto wird in der Dashboardansicht des klassischen Azure-Portals (am unteren Rand des Abschnitts „Auf einen Blick“) im Arbeitsbereich angezeigt.  
+Wenn die Protokollierung aktiviert ist, werden die Diagnoseergebnisse und Fehler vom Webdienst-Endpunkt im Blobcontainer **ml-diagnostics** in dem Azure Storage-Konto protokolliert, das mit dem Arbeitsbereich des Benutzers verknüpft ist. Dieser Container enthält die Diagnoseinformationen für alle Webdienst-Endpunkte für die Arbeitsbereiche, die diesem Speicherkonto zugeordnet sind.
 
-Die Protokolle können mit jedem der zum Durchsuchen von Azure Storage-Konten verfügbaren Tools angezeigt werden. Am einfachsten ist es, im klassischen Azure-Portal zum Speicherkonto zu navigieren und dann auf **CONTAINER** zu klicken. Sie sollten dann einen Container mit dem Namen **ml-diagnostics**sehen. Dieser Container enthält alle Diagnoseinformationen für alle Webdienst-Endpunkte für alle Arbeitsbereiche, die diesem Speicherkonto zugeordnet sind. 
+Die Protokolle können mit jedem der zum Durchsuchen von Azure Storage-Konten verfügbaren Tools angezeigt werden. Am einfachsten ist es, im Azure-Portal zum Speicherkonto zu navigieren, und dann auf **Container** und anschließend auf **ml-diagnostics** zu klicken.  
 
 ## <a name="log-blob-detail-information"></a>Protokollieren von Detailinformationen zu Blobs
-Jedes Blob im Container enthält die Diagnoseinformationen für genau eines der folgenden Ereignisse:
+Jedes Blob im Container enthält die Diagnoseinformationen für genau eine der folgenden Aktionen:
 
 * Eine Ausführung der Batch-Execution-Methode  
 * Eine Ausführung der Request-Response-Methode  
@@ -56,17 +78,14 @@ Jedes Blob im Container enthält die Diagnoseinformationen für genau eines der 
 
 Der Name der einzelnen Blobs weist ein Präfix in der folgenden Form auf: 
 
-{Arbeitsbereich-ID}-{Webdienst-ID}-{Endpunkt-ID}/{Protokolltyp}  
 
-Dabei hat „Protokolltyp“ einen der folgenden Werte:  
+`{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
-* batch  
+
+Dabei hat _Protokolltyp_ einen der folgenden Werte:  
+
+* Batch  
 * score/requests  
 * score/init  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

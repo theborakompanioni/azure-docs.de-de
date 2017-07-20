@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: robb
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 726a33b5cad8b44c520d6c59d418fec1bbfc6fa5
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 72b0c11f8bea24fc8777e3e0d7712577fab8ef97
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -31,7 +31,7 @@ Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachu
 
 
 ## <a name="azure-monitor-and-microsofts-other-monitoring-products"></a>Azure Monitor und andere Überwachungsprodukte von Microsoft
-Azure Monitor stellt Infrastrukturmetriken auf Basisebene und Protokolle für die meisten Dienste in Microsoft Azure bereit. Azure-Dienste, bei denen die Daten noch nicht in Azure Monitor gespeichert werden, werden in Zukunft darauf umgestellt. 
+Azure Monitor stellt Infrastrukturmetriken auf Basisebene und Protokolle für die meisten Dienste in Microsoft Azure bereit. Azure-Dienste, bei denen die Daten noch nicht in Azure Monitor gespeichert werden, werden in Zukunft darauf umgestellt.
 
 Microsoft stellt zusätzliche Produkte und Dienste bereit, die zusätzliche Überwachungsfunktionen für Entwickler, DevOps oder IT-Betriebe, die auch über lokale Installationen verfügen, bieten. Eine Übersicht über die Zusammenarbeit der verschiedenen Produkte und Dienste finden Sie unter [Überwachung in Microsoft Azure](monitoring-overview.md).
 
@@ -138,7 +138,7 @@ Nachverfolgung, Routing und Abfrage von Daten können ganz allgemein mit einer d
 * [PowerShell](insights-powershell-samples.md)  
 * [Plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md)
 * [REST-API](https://docs.microsoft.com/rest/api/monitor/)
-* [.NET SDK](https://msdn.microsoft.com/library/dn802153.aspx)
+* [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen

@@ -13,20 +13,21 @@ ms.devlang: na
 ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 06/20/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f3b464350f027bb1966638542fcc64d6fdc00a71
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 4d0f085423d5bd60b24d88649ee1d77bcd1d009f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/21/2017
 
 
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell
 > [!div class="op_single_selector"]
-> * [Resource Manager – Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-> * [Resource Manager – PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Klassisch – PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 >
 
@@ -39,9 +40,11 @@ Sie können zwischen ein paar unterschiedlichen Ansätzen wählen, wenn Sie ein 
 ## <a name="before-beginning"></a>Vorbereitungen
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Laden Sie die aktuellen Azure Resource Manager-PowerShell-Cmdlets herunter.
+
 Laden Sie die aktuelle Version der Azure Resource Manager-PowerShell-Cmdlets herunter, und installieren Sie sie. Weitere Informationen zum Herunterladen und Installieren der PowerShell-Cmdlets finden Sie unter [Get started with Azure PowerShell cmdlets](/powershell/azure/overview) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
-### <a name="2-connect-to-your-azure-account"></a>2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her. 
+### <a name="2-connect-to-your-azure-account"></a>2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her.
+
 Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
 ```powershell
@@ -84,57 +87,59 @@ $Conns=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | whe
 ```
 
 ### <a name="3-delete-all-connections"></a>3. Löschen Sie alle Verbindungen.
+
 Sie werden möglicherweise aufgefordert, das Löschen der einzelnen Verbindungen zu bestätigen.
 
 ```powershell
 $Conns | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 ```
 
-### <a name="4-get-the-list-of-the-corresponding-local-network-gateways"></a>4. Rufen Sie die Liste der entsprechenden lokalen Netzwerkgateways ab.
+### <a name="4-delete-the-virtual-network-gateway"></a>4. Löschen Sie das Gateway des virtuellen Netzwerks.
 
-```powershell
-$LNG=Get-AzureRmLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
-```
-    
-### <a name="5-delete-the-local-network-gateways"></a>5. Löschen Sie die lokalen Netzwerkgateways.
-Sie werden möglicherweise aufgefordert, das Löschen der einzelnen lokalen Netzwerkgateways zu bestätigen.
+Sie werden möglicherweise aufgefordert, das Löschen des Gateways zu bestätigen. Wenn Sie neben der S2S-Konfiguration noch über eine P2S-Konfiguration für dieses VNET verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
 
-```powershell
-$LNG | ForEach-Object {Remove-AzureRmLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
-```
-
-### <a name="6-delete-the-virtual-network-gateway"></a>6. Löschen Sie das Gateway des virtuellen Netzwerks.
-Sie werden möglicherweise aufgefordert, das Löschen des Gateways zu bestätigen.
-
->[!NOTE]
-> Wenn Sie neben der S2S-Konfiguration noch über eine P2S-Konfiguration für dieses VNET verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
->
->
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="7-get-the-ip-configurations-of-the-virtual-network-gateway"></a>7. Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
+An diesem Punkt wurde Ihr virtuelles Netzwerkgateway gelöscht. In den nächsten Schritten können Sie Ressourcen löschen, die nicht mehr verwendet werden.
+
+### <a name="5-delete-the-local-network-gateways"></a>5. Löschen Sie die lokalen Netzwerkgateways.
+
+Rufen Sie die Liste der entsprechenden lokalen Netzwerkgateways ab.
+
+```powershell
+$LNG=Get-AzureRmLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
+```
+
+Löschen Sie die lokalen Netzwerkgateways. Sie werden möglicherweise aufgefordert, das Löschen der einzelnen lokalen Netzwerkgateways zu bestätigen.
+
+```powershell
+$LNG | ForEach-Object {Remove-AzureRmLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
+```
+
+### <a name="6-delete-the-public-ip-address-resources"></a>6. Löschen Sie die öffentlichen IP-Adressressourcen.
+
+Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-### <a name="8-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>8. Rufen Sie die Liste der öffentlichen IP-Adressen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. 
-Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
+Rufen Sie die Liste der öffentlichen IP-Adressressourcen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-### <a name="9-delete-the-public-ips"></a>9. Löschen Sie die öffentlichen IP-Adressen.
+Löschen Sie die öffentlichen IP-Ressourcen.
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 ```
 
-### <a name="10-delete-the-gateway-subnet-and-set-the-configuration"></a>10. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -170,6 +175,7 @@ get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-obje
 ```
 
 ### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. Rufen Sie die Liste der Verbindungen in beiden Richtungen ab.
+
 Da dies eine VNet-to-VNet-Konfiguration ist, benötigen Sie die Liste der Verbindungen in beiden Richtungen.
 
 ```powershell
@@ -183,6 +189,7 @@ In diesem Beispiel überprüfen wir, ob Verbindungen mit RG2 bestehen. Führen S
  ```
 
 ### <a name="4-delete-all-connections"></a>4. Löschen Sie alle Verbindungen.
+
 Sie werden möglicherweise aufgefordert, das Löschen der einzelnen Verbindungen zu bestätigen.
 
 ```powershell
@@ -191,39 +198,36 @@ $ConnsR | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_
 ```
 
 ### <a name="5-delete-the-virtual-network-gateway"></a>5. Löschen Sie das Gateway des virtuellen Netzwerks.
-Sie werden möglicherweise aufgefordert, das Löschen des Gateways des virtuellen Netzwerks zu bestätigen.
 
->[!NOTE]
-> Wenn Sie neben der V2V-Konfiguration noch über P2S-Konfigurationen für Ihre VNETs verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
->
->
-
+Sie werden möglicherweise aufgefordert, das Löschen des Gateways des virtuellen Netzwerks zu bestätigen. Wenn Sie neben der V2V-Konfiguration noch über P2S-Konfigurationen für Ihre VNETs verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="6-get-the-ip-configurations-of-the-virtual-network-gateway"></a>6. Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
+An diesem Punkt wurde Ihr virtuelles Netzwerkgateway gelöscht. In den nächsten Schritten können Sie Ressourcen löschen, die nicht mehr verwendet werden.
+
+### <a name="6-delete-the-public-ip-address-resources"></a>6. Löschen Sie die öffentlichen IP-Adressressourcen.
+
+Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-### <a name="7-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>7. Rufen Sie die Liste der öffentlichen IP-Adressen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. 
-Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
+Rufen Sie die Liste der öffentlichen IP-Adressressourcen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-### <a name="8-delete-the-public-ips"></a>8. Löschen Sie die öffentlichen IP-Adressen.
-Sie werden möglicherweise aufgefordert, das Löschen der öffentlichen IP-Adresse zu bestätigen.
+Löschen Sie die öffentlichen IP-Ressourcen. Sie werden möglicherweise aufgefordert, das Löschen der öffentlichen IP-Adresse zu bestätigen.
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="9-delete-the-gateway-subnet-and-set-the-configuration"></a>9. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -253,33 +257,36 @@ $Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-delete-the-virtual-network-gateway"></a>2. Löschen Sie das Gateway des virtuellen Netzwerks.
+
 Sie werden möglicherweise aufgefordert, das Löschen des Gateways des virtuellen Netzwerks zu bestätigen.
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="3-get-the-ip-configurations-of-the-virtual-network-gateway"></a>3. Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
+An diesem Punkt wurde Ihr virtuelles Netzwerkgateway gelöscht. In den nächsten Schritten können Sie Ressourcen löschen, die nicht mehr verwendet werden.
+
+### <a name="3-delete-the-public-ip-address-resources"></a>3. Löschen Sie die öffentlichen IP-Adressressourcen.
+
+Rufen Sie die IP-Konfigurationen des Gateways des virtuellen Netzwerks ab.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-### <a name="4-get-the-list-of-public-ip-addresses-used-for-this-virtual-network-gateway"></a>4. Rufen Sie die Liste der öffentlichen IP-Adressen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. 
-Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
+Rufen Sie die Liste der öffentlichen IP-Adressen ab, die für dieses Gateway des virtuellen Netzwerks verwendet werden. Wenn das Gateway des virtuellen Netzwerks aktiv/aktiv war, sehen Sie zwei öffentliche IP-Adressen.
 
 ```powershell
 $PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-### <a name="5-delete-the-public-ips"></a>5. Löschen Sie die öffentlichen IP-Adressen.
-Sie werden möglicherweise aufgefordert, das Löschen der öffentlichen IP-Adresse zu bestätigen.
+Löschen Sie die öffentlichen IP-Adressen. Sie werden möglicherweise aufgefordert, das Löschen der öffentlichen IP-Adresse zu bestätigen.
 
 ```powershell
 $PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="6-delete-the-gateway-subnet-and-set-the-configuration"></a>6. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
+### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. Löschen Sie das Gatewaysubnetz, und legen Sie die Konfiguration fest.
 
 ```powershell
 $GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -297,6 +304,7 @@ Get-AzureRmResourceGroup
 ```
 
 ### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. Wählen Sie als Nächstes die Ressourcengruppe aus, die Sie löschen möchten.
+
 Wählen Sie die Ressourcengruppe aus, die Sie löschen möchten, und zeigen Sie eine Liste der in der Gruppe enthaltenen Ressourcen an. Die Ressourcengruppe im Beispiel hat den Namen „RG1“. Ändern Sie das Beispiel zum Abrufen einer Liste aller Ressourcen.
 
 ```powershell
@@ -304,9 +312,11 @@ Find-AzureRmResource -ResourceGroupNameContains RG1
 ```
 
 ### <a name="3-verify-the-resources-in-the-list"></a>3. Überprüfen Sie die Ressourcen in der Liste.
+
 Wenn die Liste zurückgegeben wird, sehen Sie sie durch, um sicherzustellen, dass Sie sowohl alle Ressourcen in der Ressourcengruppe als auch die Ressourcengruppe selbst löschen möchten. Wenn Sie einige der Ressourcen in der Ressourcengruppe beibehalten möchten, führen Sie die Schritte in den früheren Abschnitten dieses Artikels aus, um Ihr Gateway zu löschen.
 
 ### <a name="4-delete-the-resource-group-and-resources"></a>4. Löschen Sie die Ressourcengruppe und die Ressourcen.
+
 Um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu löschen, ändern Sie das Beispiel, und führen Sie es aus.
 
 ```powershell
@@ -314,6 +324,7 @@ Remove-AzureRmResourceGroup -Name RG1
 ```
 
 ### <a name="5-check-the-status"></a>5. Überprüfen Sie den Status.
+
 Azure benötigt etwas Zeit, um alle Ressourcen zu löschen. Sie können den Status der Ressourcengruppe mit diesem Cmdlet überprüfen.
 
 ```powershell
@@ -322,7 +333,8 @@ Get-AzureRmResourceGroup -ResourceGroupName RG1
 
 Als Ergebnis wird „Erfolgreich“ angezeigt.
 
-    ResourceGroupName : RG1
-    Location          : eastus
-    ProvisioningState : Succeeded
-
+```
+ResourceGroupName : RG1
+Location          : eastus
+ProvisioningState : Succeeded
+```

@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren eines eigenständigen Clusters | Microsoft Docs"
+title: "Konfigurieren Ihres eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation"
 description: "Dieser Artikel beschreibt, wie Sie einen eigenständigen oder privaten Service Fabric-Cluster konfigurieren."
 services: service-fabric
 documentationcenter: .net
@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/17/2017
+ms.date: 06/02/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 8192f9e36ebadd41d93ec3c2fa61b05e342d5bc1
-ms.lasthandoff: 03/29/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 3b65f9391a4ff5a641546f8d0048f36386a7efe8
+ms.contentlocale: de-de
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -37,7 +38,7 @@ Hierzu gehören die allgemeinen clusterspezifischen Konfigurationen, wie im folg
 
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2016-09-26",
+    "apiVersion": "01-2017",
 
 Sie können für Ihren Service Fabric-Cluster einen beliebigen Anzeigenamen festlegen, indem sie ihn der Variablen **name** zuweisen. **clusterConfigurationVersion** ist die Versionsnummer des Clusters. Sie sollten sie jedes Mal erhöhen, wenn Sie für den Service Fabric-Cluster ein Upgrade durchführen. Behalten Sie für die **apiVersion** aber den Standardwert bei.
 
@@ -87,6 +88,10 @@ Im Abschnitt **reliabilityLevel** wird die Anzahl von Systemdienstkopien definie
     "reliabilityLevel": "Bronze",
 
 Beachten Sie, dass auf einem primären Knoten nur jeweils eine einzige Kopie der Systemdienste ausgeführt wird. Daher benötigen Sie für die Zuverlässigkeitsstufe *Bronze* mindestens 3 primäre Knoten, für *Silver* mindestens 5, für *Gold* mindestens 7 und für *Platinum* mindestens 9 Knoten.
+
+Wenn Sie in Ihrer Datei „clusterConfig.json“ die Eigenschaft „reliabilityLevel“ nicht angeben, berechnet unser System auf Basis der Anzahl Ihrer primären Knotentypen den optimalen „reliabilityLevel“ für Sie. Wenn Sie beispielsweise über vier primäre Kontentypen verfügen, wird der „reliabilityLevel“ auf Bronze gesetzt, und bei fünf Knoten auf Silber. In Kürze werden wir die Option für das Konfigurieren Ihrer Zuverlässigkeitsstufe entfernen, weil der Cluster die optimale Zuverlässigkeitsstufe automatisch erkennt und verwendet.
+
+ReliabilityLevel kann aktualisiert werden. Sie können eine „clusterConfig.json“-Datei v2 erstellen und mit einem [eigenständigen Upgrade der Clusterkonfiguration](service-fabric-cluster-upgrade-windows-server.md) zentral hoch- oder herunterskalieren. Sie können auch auf „clusterConfig.json v2“ ohne Angabe von reliabilityLevel aktualisieren, damit realibilityLevel automatisch berechnet wird. 
 
 ### <a name="diagnostics"></a>Diagnose
 Im Abschnitt **diagnosticsStore** können Sie Parameter konfigurieren, um bei Knoten- und Clusterausfällen die Diagnose und Fehlerbehandlung zu ermöglichen. Dies wird im folgenden Codeausschnitt veranschaulicht. 
@@ -183,6 +188,21 @@ Im folgenden Beispiel wird gezeigt, wie Sie das freigegebene Transaktionsprotoko
             "value": "4096"
         }]
     }]
+
+### <a name="add-on-features"></a>Add-On-Funktionen
+Um Add-on-Funktionen zu konfigurieren, muss die API-Version als „04-2017“ oder höher konfiguriert sein. Weiterhin muss „addonFeatures“ konfiguriert sein:
+
+    "apiVersion": "04-2017",
+    "properties": {
+      "addOnFeatures": [
+          "DnsService",
+          "RepairManager"
+      ]
+    }
+
+### <a name="container-support"></a>Containerunterstützung
+Um bei eigenständigen Clustern die Containerunterstützung sowohl für Windows Server-Container als auch für Hyper-V-Container zu aktivieren, muss die Add-on-Funktion des „DnsService“ aktiviert sein.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die Datei „ClusterConfig.JSON“ vollständig entsprechend dem Setup für Ihren eigenständigen Cluster konfiguriert haben, können Sie den Cluster bereitstellen. Dazu befolgen Sie die Anweisungen im Artikel [Erstellen eines eigenständigen Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md), und anschließend [visualisieren Sie den Cluster mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).

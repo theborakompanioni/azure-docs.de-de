@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2017
+ms.date: 06/27/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 951a7849beb9653083ed0112dbbb6cf57175469d
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: f27bc3689f228809e9db8f61485ea0c8b4b302d1
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -31,8 +31,6 @@ Im Zusammenhang mit Richtlinien gibt es zwei wichtige Konzepte:
 * Richtlinienzuweisung: Sie wenden die Richtliniendefinition auf einen Bereich (Abonnement oder Ressourcengruppe) an.
 
 Dieses Thema beschäftigt sich mit der Richtliniendefinition. Weitere Informationen zur Richtlinienzuweisung finden Sie unter [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md) und [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).
-
-Azure stellt einige integrierte Richtliniendefinitionen bereit, um ggf. die Anzahl der zu definierenden Richtlinien zu verringern. Falls eine dieser integrierten Richtliniendefinitionen für Ihr Szenario geeignet ist, verwenden Sie diese Definition bei der Zuweisung zu einem Bereich.
 
 Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen (PUT- und PATCH-Vorgänge) ausgewertet.
 
@@ -50,6 +48,22 @@ Zum Verwenden von Richtlinien müssen Sie über die RBAC authentifiziert sein. I
 * Die Berechtigung `Microsoft.Authorization/policyassignments/write` zum Zuweisen einer Richtlinie 
 
 Diese Berechtigungen sind in der Rolle **Mitwirkender** nicht enthalten.
+
+## <a name="built-in-policies"></a>Integrierte Richtlinien
+
+Azure stellt einige integrierte Richtliniendefinitionen bereit, um ggf. die Anzahl der zu definierenden Richtlinien zu verringern. Bevor Sie mit Richtliniendefinitionen fortfahren, sollten Sie erwägen, ob die benötigte Definition bereits durch eine integrierte Richtlinie vorgegeben wird. Integrierte Richtliniendefinitionen:
+
+* Allowed locations (Zulässige Speicherorte)
+* Zulässige Ressourcentypen
+* Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)
+* Allowed virtual machine SKUs (Zulässige VM-SKUs)
+* Apply tag and default value (Tag und Standardwert anwenden)
+* Enforce tag and value (Tag und Wert erzwingen)
+* Not allowed resource types (Unzulässige Ressourcentypen)
+* Require SQL Server version 12.0 (SQL Server-Version 12.0 fordern)
+* Require storage account encryption (Speicherkontoverschlüsselung fordern)
+
+Sie können diese Richtlinien über das [Portal](resource-manager-policy-portal.md), [PowerShell](resource-manager-policy-create-assign.md#powershell) oder die [Azure-CLI](resource-manager-policy-create-assign.md#azure-cli) zuweisen.
 
 ## <a name="policy-definition-structure"></a>Struktur von Richtliniendefinitionen
 Eine Richtliniendefinition wird mithilfe von JSON erstellt. Die Richtliniendefinition enthält Elemente für Folgendes:
@@ -149,7 +163,7 @@ Folgende logische Operatoren werden unterstützt:
 
 Die **not**-Syntax kehrt das Ergebnis der Bedingung um. Die **allOf**-Syntax gleicht der logischen **And**-Operation und erfordert, dass alle Bedingungen erfüllt sind. Die **anyOf**-Syntax gleicht der logischen **Or**-Operation und erfordert, dass mindestens eine Bedingung erfüllt ist.
 
-Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt eine geschachtelte **not**-Operation innerhalb einer **And**-Operation. 
+Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt eine **not**-Operation, die in einer **allOf**-Operation geschachtelt ist. 
 
 ```json
 "if": {
@@ -194,29 +208,9 @@ Folgende Felder werden unterstützt:
 * `location`
 * `tags`
 * `tags.*` 
-* Eigenschaftenaliase
+* Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
 
-Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen Ressourcentyp. Folgende Aliase werden unterstützt:
-
-* Microsoft.CDN/profiles/sku.name
-* Microsoft.Compute/virtualMachines/imageOffer
-* Microsoft.Compute/virtualMachines/imagePublisher
-* Microsoft.Compute/virtualMachines/sku.name
-* Microsoft.Compute/virtualMachines/imageSku 
-* Microsoft.Compute/virtualMachines/imageVersion
-* Microsoft.SQL/servers/databases/edition
-* Microsoft.SQL/servers/databases/elasticPoolName
-* Microsoft.SQL/servers/databases/requestedServiceObjectiveId
-* Microsoft.SQL/servers/databases/requestedServiceObjectiveName
-* Microsoft.SQL/servers/elasticPools/dtu
-* Microsoft.SQL/servers/elasticPools/edition
-* Microsoft.SQL/servers/version
-* Microsoft.Storage/storageAccounts/accessTier
-* Microsoft.Storage/storageAccounts/enableBlobEncryption
-* Microsoft.Storage/storageAccounts/sku.name
-* Microsoft.Web/serverFarms/sku.name
-
-### <a name="effect"></a>Wirkung
+### <a name="effect"></a>Effekt
 Für eine Richtlinie werden drei Arten von Wirkungen unterstützt: `deny`, `audit` und `append`. 
 
 * **Deny** generiert ein Ereignis im Überwachungsprotokoll, und die Anforderung ist nicht erfolgreich.
@@ -237,127 +231,131 @@ Für **append**müssen Sie die folgenden Details angeben:
 
 Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein. 
 
+## <a name="aliases"></a>Aliase
+
+Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen Ressourcentyp. 
+
+**Microsoft.Cache/Redis**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Cache/Redis/enableNonSslPort | Hiermit wird festgelegt, ob der Nicht-SSL-Redis-Serverport (6379) aktiviert ist. |
+| Microsoft.Cache/Redis/shardCount | Hiermit wird die Anzahl der zu erstellenden Shards auf einem Premium-Clustercache festgelegt.  |
+| Microsoft.Cache/Redis/sku.capacity | Hiermit wird die Größe des bereitzustellenden Redis-Caches festgelegt.  |
+| Microsoft.Cache/Redis/sku.family | Hiermit wird die zu verwendende SKU-Familie festgelegt. |
+| Microsoft.Cache/Redis/sku.name | Hiermit wird der Typ des bereitzustellenden Redis-Caches festgelegt. |
+
+**Microsoft.Cdn/profiles**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.CDN/profiles/sku.name | Hiermit wird der Name des Tarifs festgelegt. |
+
+**Microsoft.Compute/disks**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imagePublisher | Hiermit wird der Herausgeber des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imageSku | Hiermit wird die SKU des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imageVersion | Hiermit wird die Version des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+
+
+**Microsoft.Compute/virtualMachines**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imagePublisher | Hiermit wird der Herausgeber des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imageSku | Hiermit wird die SKU des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imageVersion | Hiermit wird die Version des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/licenseType | Hiermit wird festgelegt, dass das Image oder der Datenträger lokal lizenziert ist. Dieser Wert wird nur für Images mit dem Betriebssystem Windows Server verwendet.  |
+| Microsoft.Compute/virtualMachines/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/virtualMachines/imagePublisher | Hiermit wird der Herausgeber des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/virtualMachines/imageSku | Hiermit wird die SKU des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/virtualMachines/imageVersion | Hiermit wird die Version des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/virtualMachines/osDisk.Uri | Hiermit wird der VHD-URI festgelegt. |
+| Microsoft.Compute/virtualMachines/sku.name | Legen Sie die Größe des virtuellen Computers fest. |
+
+**Microsoft.Compute/virtualMachines/extensions**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Compute/virtualMachines/extensions/publisher | Hiermit wird der Name des Herausgebers der Erweiterung festgelegt. |
+| Microsoft.Compute/virtualMachines/extensions/type | Hiermit wird der Typ der Erweiterung festgelegt. |
+| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | Hiermit wird die Version der Erweiterung festgelegt. |
+
+**Microsoft.Compute/virtualMachineScaleSets**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imagePublisher | Hiermit wird der Herausgeber des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imageSku | Hiermit wird die SKU des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/imageVersion | Hiermit wird die Version des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
+| Microsoft.Compute/licenseType | Hiermit wird festgelegt, dass das Image oder der Datenträger lokal lizenziert ist. Dieser Wert wird nur für Images mit dem Betriebssystem Windows Server verwendet. |
+| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | Hiermit wird das Computernamenspräfix für alle virtuellen Computer in der Skalierungsgruppe festgelegt. |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Hiermit wird der Blob-URI für das Benutzerimage festgelegt. |
+| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Hiermit werden die Container-URLs zum Speichern von Betriebssystemdatenträgern für die Skalierungsgruppe festgelegt. |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Hiermit wird die Größe der virtuellen Computer in einer Skalierungsgruppe festgelegt. |
+| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Hiermit wird die Ebene der virtuellen Computer in einer Skalierungsgruppe festgelegt. |
+  
+**Microsoft.Network/applicationGateways**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Network/applicationGateways/sku.name | Hiermit wird die Größe des Gateways festgelegt. |
+
+**Microsoft.Network/virtualNetworkGateways**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Network/virtualNetworkGateways/gatewayType | Hiermit wird der Typ des virtuellen Netzwerkgateways festgelegt. |
+| Microsoft.Network/virtualNetworkGateways/sku.name | Hiermit wird der Name der Gateway-SKU festgelegt. |
+
+**Microsoft.Sql/servers**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Sql/servers/version | Hiermit wird die Version des Servers festgelegt. |
+
+**Microsoft.Sql/databases**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Sql/servers/databases/edition | Hiermit wird die Edition der Datenbank festgelegt. |
+| Microsoft.Sql/servers/databases/elasticPoolName | Hiermit wird der Name des Pools für elastische Datenbanken festgelegt, in dem die Datenbank enthalten ist. |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Hiermit wird die ID des konfigurierten SLO der Datenbank festgelegt. |
+| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Hiermit wird der Name des konfigurierten SLO der Datenbank festgelegt.  |
+
+**Microsoft.Sql/elasticpools**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Hiermit wird die freigegebene Gesamt-DTU für den Pool für elastische Datenbanken festgelegt. |
+| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Hiermit wird die Edition des Pools für elastische Datenbanken festgelegt. |
+
+**Microsoft.Storage/storageAccounts**
+
+| Alias | Beschreibung |
+| ----- | ----------- |
+| Microsoft.Storage/storageAccounts/accessTier | Hiermit wird die Zugriffsebene für die Abrechnung festgelegt. |
+| Microsoft.Storage/storageAccounts/accountType | Hiermit wird der SKU-Name festgelegt. |
+| Microsoft.Storage/storageAccounts/enableBlobEncryption | Hiermit wird festgelegt, ob der Dienst die Daten beim Speichern im Blob-Speicherdienst verschlüsselt. |
+| Microsoft.Storage/storageAccounts/enableFileEncryption | Hiermit wird festgelegt, ob der Dienst die Daten beim Speichern im Dateispeicherdienst verschlüsselt. |
+| Microsoft.Storage/storageAccounts/sku.name | Hiermit wird der SKU-Name festgelegt. |
+| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Hiermit wird festgelegt, dass nur HTTPS-Datenverkehr zum Speicherdienst zugelassen wird. |
+
+
 ## <a name="policy-examples"></a>Beispiele für Richtlinien
 
 Die folgenden Themen enthalten Beispiele für Richtlinien:
 
 * Beispiele für Tagrichtlinien finden Sie unter [Anwenden von Ressourcenrichtlinien für Tags](resource-manager-policy-tags.md).
+* Beispiele für Benennungs- und Textmuster finden Sie unter [Anwenden von Ressourcen-Richtlinien für Namen und Text](resource-manager-policy-naming-convention.md).
 * Beispiele für Speicherrichtlinien finden Sie unter [Anwenden von Ressourcenrichtlinien auf Speicherkonten](resource-manager-policy-storage.md).
 * Beispiele für VM-Richtlinien finden Sie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Linux-Computer mit Azure Resource Manager](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) sowie unter [Anwenden von Sicherheit und Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
 
-### <a name="allowed-resource-locations"></a>Zulässige Ressourcenstandorte
-Informationen zum Angeben der zulässigen Standorte finden Sie im Beispiel des Abschnitts [Struktur von Richtliniendefinitionen](#policy-definition-structure). Verwenden Sie zum Hinzufügen dieser Richtliniendefinition die integrierte Richtlinie mit der Ressourcen-ID `/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c`.
-
-### <a name="not-allowed-resource-locations"></a>Unzulässige Ressourcenstandorte
-Mit der folgenden Richtliniendefinition können Sie angeben, welche Standorte nicht zulässig sind:
-
-```json
-{
-  "properties": {
-    "parameters": {
-      "notAllowedLocations": {
-        "type": "array",
-        "metadata": {
-          "description": "The list of locations that are not allowed when deploying resources",
-          "strongType": "location",
-          "displayName": "Not allowed locations"
-        }
-      }
-    },
-    "displayName": "Not allowed locations",
-    "description": "This policy enables you to block locations that your organization can specify when deploying resources.",
-    "policyRule": {
-      "if": {
-        "field": "location",
-        "in": "[parameters('notAllowedLocations')]"
-      },
-      "then": {
-        "effect": "deny"
-      }
-    }
-  }
-}
-```
-
-### <a name="allowed-resource-types"></a>Zulässige Ressourcentypen
-Das folgende Beispiel zeigt eine Richtlinie, die nur Bereitstellungen für die Ressourcentypen „Microsoft.Resources“, „Microsoft.Compute“, „Microsoft.Storage“ und „Microsoft.Network“ zulässt. Alle anderen werden abgelehnt:
-
-```json
-{
-  "if": {
-    "not": {
-      "anyOf": [
-        {
-          "field": "type",
-          "like": "Microsoft.Resources/*"
-        },
-        {
-          "field": "type",
-          "like": "Microsoft.Compute/*"
-        },
-        {
-          "field": "type",
-          "like": "Microsoft.Storage/*"
-        },
-        {
-          "field": "type",
-          "like": "Microsoft.Network/*"
-        }
-      ]
-    }
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
-
-### <a name="set-naming-convention"></a>Festlegen der Benennungskonvention
-Das folgende Beispiel veranschaulicht die Verwendung von Platzhalterzeichen, die von der Bedingung **like** unterstützt werden. Die Bedingung gibt an, dass die Anforderung verweigert wird, wenn der Name nicht mit dem angegebenen Muster (namePrefix\*nameSuffix) übereinstimmt:
-
-```json
-{
-  "if": {
-    "not": {
-      "field": "name",
-      "like": "namePrefix*nameSuffix"
-    }
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
-
-Verwenden Sie die match-Bedingung, um anzugeben, dass Ressourcennamen einem Muster entsprechen. Im folgenden Beispiel müssen Namen mit `contoso` beginnen und sechs zusätzliche Buchstaben enthalten:
-
-```json
-{
-  "if": {
-    "not": {
-      "field": "name",
-      "match": "contoso??????"
-    }
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
-
-Um ein Datumsmuster aus zwei Ziffern, Bindestrich, drei Buchstaben und vier Ziffern anzufordern, verwenden Sie Folgendes:
-
-```json
-{
-  "if": {
-    "field": "tags.date",
-    "match": "##-???-####"
-  },
-  "then": {
-    "effect": "deny"
-  }
-}
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nach dem Definieren einer Richtlinienregel weisen Sie sie einem Bereich zu. Wenn Sie Richtlinien über das Portal zuweisen möchten, siehe [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md). Wenn Sie Richtlinien über die REST-API, PowerShell oder die Azure-CLI zuweisen möchten, siehe [Zuweisen und Verwalten von Richtlinien mit Skripts](resource-manager-policy-create-assign.md).

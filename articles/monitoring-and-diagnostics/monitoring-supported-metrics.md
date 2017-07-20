@@ -2,7 +2,7 @@
 title: "Azure Monitor-Metriken: Unterstützte Metriken pro Ressourcentyp | Microsoft Docs"
 description: "Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp zur Verfügung stehen."
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
+ms.date: 7/05/2017
 ms.author: johnkem
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: ff47eaa27351f8d1685090edc54d90e5e91a1de0
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: b034251438c65dd13d9ca0bb116699532e3960ef
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
@@ -27,8 +26,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 > [!NOTE]
 > Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Diese Liste enthält nur Metriken der öffentlichen Vorschau, die über die öffentliche Vorschau der konsolidierten Azure Monitor-Metrikpipeline verfügbar sind.
-> 
-> 
+>
+>
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
@@ -90,8 +89,10 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
 |---|---|---|---|---|
-|CoreCount|Anzahl von Kernen|Count|Gesamt|Gesamtzahl der Kerne im Batch-Konto|
-|TotalNodeCount|Anzahl von Knoten|Count|Gesamt|Gesamtzahl der Knoten im Batch-Konto|
+|CoreCount|Dedizierte Anzahl von Kernen|Count|Gesamt|Gesamtzahl der dedizierten Kerne im Batch-Konto|
+|TotalNodeCount|Dedizierte Knotenanzahl|Count|Gesamt|Gesamtzahl der dedizierten Knoten im Batch-Konto|
+|LowPriorityCoreCount|Anzahl von LowPriority-Kernen|Count|Gesamt|Gesamtzahl der Kerne mit niedriger Priorität im Batch-Konto|
+|TotalLowPriorityNodeCount|Anzahl der Knoten mit niedriger Priorität|Count|Gesamt|Gesamtzahl der Knoten mit niedriger Priorität im Batchkonto|
 |CreatingNodeCount|Anzahl erstellter Knoten|Count|Gesamt|Anzahl von Knoten, die gerade erstellt werden|
 |StartingNodeCount|Anzahl gestarteter Knoten|Count|Gesamt|Anzahl von Knoten, die gerade gestartet werden|
 |WaitingForStartTaskNodeCount|Anzahl von Knoten, die auf den Starttask warten|Count|Gesamt|Anzahl von Knoten, die auf den Abschluss des Starttasks warten|
@@ -103,6 +104,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |RunningNodeCount|Anzahl ausgeführter Knoten|Count|Gesamt|Anzahl ausgeführter Knoten|
 |LeavingPoolNodeCount|Anzahl von Knoten, die den Pool verlassen|Count|Gesamt|Anzahl von Knoten, die den Pool verlassen|
 |UnusableNodeCount|Anzahl nicht verwendbarer Knoten|Count|Gesamt|Anzahl nicht verwendbarer Knoten|
+|PreemptedNodeCount|Anzahl der vorzeitig entfernten Knoten|Count|Gesamt|Die Anzahl der vorzeitig entfernten Knoten|
 |TaskStartEvent|Taskstartereignisse|Count|Gesamt|Gesamtanzahl gestarteter Tasks|
 |TaskCompleteEvent|Taskabschlussereignisse|Count|Gesamt|Gesamtanzahl abgeschlossener Tasks|
 |TaskFailEvent|Taskfehlerereignisse|Count|Gesamt|Gesamtanzahl von Tasks, die mit Fehlerstatus abgeschlossen wurden|
@@ -336,7 +338,41 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
 |---|---|---|---|---|
-|CustomerInsightsApiCalls|CustomerInsightsApiCalls|Count|Gesamt||
+|DCIApiCalls|Customer Insights-API-Aufrufe|Count|Gesamt||
+|DCIMappingImportOperationSuccessfulLines|Erfolgreiche Zeilen beim Zuordnen von Importvorgängen|Count|Gesamt||
+|DCIMappingImportOperationFailedLines|Fehlgeschlagene Zeilen beim Zuordnen von Importvorgängen|Count|Gesamt||
+|DCIMappingImportOperationTotalLines|Gesamte Zeilen beim Zuordnen von Importvorgängen|Count|Gesamt||
+|DCIMappingImportOperationRuntimeInSeconds|Laufzeit in Sekunden beim Zuordnen von Importvorgängen|Sekunden|Gesamt||
+|DCIOutboundProfileExportSucceeded|Ausgehender Profilexport erfolgreich|Count|Gesamt||
+|DCIOutboundProfileExportFailed|Fehler beim ausgehenden Profilexport|Count|Gesamt||
+|DCIOutboundProfileExportDuration|Dauer des ausgehenden Profilexports|Sekunden|Gesamt||
+|DCIOutboundKpiExportSucceeded|Ausgehender KPI-Export erfolgreich|Count|Gesamt||
+|DCIOutboundKpiExportFailed|Fehler beim ausgehenden KPI-Export|Count|Gesamt||
+|DCIOutboundKpiExportDuration|Dauer des ausgehenden KPI-Exports|Sekunden|Gesamt||
+|DCIOutboundKpiExportStarted|Ausgehender KPI-Export gestartet|Sekunden|Gesamt||
+|DCIOutboundKpiRecordCount|Anzahl der ausgehenden KPI-Datensätze|Sekunden|Gesamt||
+|DCIOutboundProfileExportCount|Anzahl der ausgehenden Profilexporte|Sekunden|Gesamt||
+|DCIOutboundInitialProfileExportFailed|Fehler beim ausgehenden ursprünglichen Profilexport|Sekunden|Gesamt||
+|DCIOutboundInitialProfileExportSucceeded|Ausgehender ursprünglicher Profilexport erfolgreich|Sekunden|Gesamt||
+|DCIOutboundInitialKpiExportFailed|Fehler beim ausgehenden ursprünglichen KPI-Export|Sekunden|Gesamt||
+|DCIOutboundInitialKpiExportSucceeded|Ausgehender ursprünglicher KPI-Export erfolgreich|Sekunden|Gesamt||
+|DCIOutboundInitialProfileExportDurationInSeconds|Dauer des ausgehenden ursprünglichen Profilexports in Sekunden|Sekunden|Gesamt||
+|AdlaJobForStandardKpiFailed|Fehler beim ADLA-Vorgang für Standard-KPI in Sekunden|Sekunden|Gesamt||
+|AdlaJobForStandardKpiTimeOut|Timeout bei ADLA-Vorgang für Standard-KPI in Sekunden|Sekunden|Gesamt||
+|AdlaJobForStandardKpiCompleted|ADLA-Vorgang für Standard-KPI abgeschlossen in Sekunden|Sekunden|Gesamt||
+|ImportASAValuesFailed|Anzahl der fehlgeschlagenen Importe von ASA-Werten|Count|Gesamt||
+|ImportASAValuesSucceeded|Anzahl der erfolgreichen Importe von ASA-Werten|Count|Gesamt||
+
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|JobEndedSuccess|Erfolgreiche Vorgänge|Count|Gesamt|Die Anzahl der erfolgreichen Vorgänge|
+|JobEndedFailure|Fehlgeschlagene Vorgänge|Count|Gesamt|Die Anzahl der fehlgeschlagenen Vorgänge|
+|JobEndedCancelled|Abgebrochene Vorgänge|Count|Gesamt|Die Anzahl der abgebrochenen Vorgänge|
+|JobAUEndedSuccess|Erfolgreiche AU-Zeit|Sekunden|Gesamt|Die Gesamt-AU-Zeit für erfolgreiche Vorgänge|
+|JobAUEndedFailure|Fehlgeschlagene AU-Zeit|Sekunden|Gesamt|Die Gesamt-AU-Zeit für fehlgeschlagene Vorgänge|
+|JobAUEndedCancelled|Abgebrochene AU-Zeit|Sekunden|Gesamt|Die Gesamt-AU-Zeit für abgebrochene Vorgänge|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
@@ -485,6 +521,13 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |---|---|---|---|---|
 |Durchsatz|Durchsatz|Bytes pro Sekunde|Durchschnitt||
 
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|BytesIn|BytesIn|Count|Gesamt||
+|BytesOut|BytesOut|Count|Gesamt||
+
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
@@ -548,10 +591,55 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |outgoing.mpns.dropped|Verworfene MPNS-Benachrichtigungen|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die von MPNS verworfen wurden (MPNS-Antwortheader: X-NotificationStatus: QueueFull or Suppressed).|
 |outgoing.mpns.pnserror|MPNS-Fehler|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil Fehler bei der Kommunikation mit MPNS aufgetreten sind.|
 |outgoing.mpns.authenticationerror|MPNS-Authentifizierungsfehler|Count|Gesamt|Gibt die Anzahl von Pushvorgängen an, die nicht erfolgreich waren, weil das PNS die angegebenen Anmeldeinformationen nicht akzeptiert hat oder die Anmeldeinformationen blockiert wurden.|
-|notificationhub.devices|Notification Hub-Geräte|Count|Durchschnitt|Die Anzahl der Geräte des Notification Hubs|
-|notificationhub.pushes|Notification Hub-Pushbenachrichtigungen|Count|Gesamt|Die Anzahl von Pushbenachrichtigungen im Notification Hub|
+|notificationhub.pushes|Alle ausgehenden Benachrichtigungen|Count|Gesamt|Alle ausgehenden Benachrichtigungen des Benachrichtigungs-Hub|
 |incoming.all.requests|Alle eingehenden Anforderungen|Count|Gesamt|Gesamtzahl eingehender Anforderungen für einen Notification Hub|
 |incoming.all.failedrequests|Alle eingehenden fehlerhaften Anforderungen|Count|Gesamt|Gesamtzahl eingehender fehlerhafter Anforderungen für einen Notification Hub|
+
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|qpu_metric|QPU|Count|Durchschnitt|QPU. Bereich: 0–100 für S1, 0–200 für S2 und 0–400 für S4|
+|memory_metric|Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeicher. Bereich: 0–25 GB für S1, 0–50 GB für S2 und 0–100 GB für S4|
+|TotalConnectionRequests|Total Connection Requests (Verbindungsanforderungen gesamt)|Count|Durchschnitt|Gesamtanzahl von Verbindungsanforderungen. Dies sind erhaltene Anforderungen.|
+|SuccessfullConnectionsPerSec|Successful Connections Per Sec (Erfolgreiche Verbindungen/Sek.)|Anzahl pro Sekunde|Durchschnitt|Rate der erfolgreichen Verbindungsabschlüsse|
+|TotalConnectionFailures|Total Connection Failures (Verbindungsfehler gesamt)|Count|Durchschnitt|Gesamtanzahl von fehlerhaften Verbindungsversuchen|
+|CurrentUserSessions|Aktuelle Benutzersitzungen|Count|Durchschnitt|Aktuelle Anzahl von eingerichteten Benutzersitzungen|
+|QueryPoolBusyThreads|Ausgelastete Abfragepoolthreads|Count|Durchschnitt|Anzahl von ausgelasteten Threads im Abfragethreadpool|
+|CommandPoolJobQueueLength|Warteschlangenlänge für Aufträge im Befehlspool|Count|Durchschnitt|Gibt die Anzahl von Aufträgen in der Warteschlange des Befehlsthreadpools an.|
+|ProcessingPoolJobQueueLength|Warteschlangenlänge für Verarbeitungspoolaufträge|Count|Durchschnitt|Anzahl von Nicht-E/A-Aufträgen in der Warteschlange des Verarbeitungsthreadpools|
+|CurrentConnections|Verbindung: Aktuelle Verbindungen|Count|Durchschnitt|Aktuelle Anzahl hergestellter Clientverbindungen.|
+|CleanerCurrentPrice|Arbeitsspeicher: Bereinigung – aktueller Preis|Count|Durchschnitt|Aktueller Preis des Arbeitsspeichers, $/Byte/Zeit, normalisiert auf 1000.|
+|CleanerMemoryShrinkable|Arbeitsspeicher: Bereinigung – verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die durch den Hintergrundbereinigungsprozess bereinigt wird.|
+|CleanerMemoryNonshrinkable|Arbeitsspeicher: Bereinigung – nicht verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die nicht durch den Hintergrundbereinigungsprozess bereinigt wird.|
+|MemoryUsage|Arbeitsspeicher: Speicherauslastung|Byte|Durchschnitt|Speicherauslastung des Serverprozesses, wie bei der Berechnung des Arbeitsspeicherpreises für die Bereinigung verwendet. Entspricht dem Indikator „Process\PrivateBytes“ zuzüglich der Größe der im Speicher abgebildeten Daten. Vom xVelocity-In-Memory-Analysemodul (VertiPaq) abgebildeter oder belegter Arbeitsspeicher, der über die Arbeitsspeichergrenze des xVelocity-Moduls hinausgeht, wird dabei ignoriert.|
+|MemoryLimitHard|Arbeitsspeicher: Grenzwert für den festen Speicher|Byte|Durchschnitt|Grenzwert für den festen Speicher gemäß Konfigurationsdatei.|
+|MemoryLimitHigh|Arbeitsspeicher: Obere Arbeitsspeichergrenze|Byte|Durchschnitt|Oberer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|
+|MemoryLimitLow|Arbeitsspeicher: Untere Arbeitsspeichergrenze|Byte|Durchschnitt|Unterer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|
+|MemoryLimitVertiPaq|Arbeitsspeicher: VertiPaq-Arbeitsspeichergrenze|Byte|Durchschnitt|In-Memory-Grenzwert gemäß Konfigurationsdatei.|
+|Kontingent|Arbeitsspeicher: Kontingent|Byte|Durchschnitt|Aktuelles Arbeitsspeicherkontingent in Byte. Das Arbeitsspeicherkontingent wird auch als Speicherzuweisung oder Speicherreservierung bezeichnet.|
+|QuotaBlocked|Arbeitsspeicher: Kontingent blockiert|Count|Durchschnitt|Aktuelle Anzahl von Kontingentanforderungen, die blockiert werden, bis andere Arbeitsspeicherkontingente freigegeben werden.|
+|VertiPaqNonpaged|Arbeitsspeicher: Nicht ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von Arbeitsspeicher, die im Arbeitssatz zur Verwendung durch das In-Memory-Modul gesperrt sind.|
+|VertiPaqPaged|Arbeitsspeicher: Ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von ausgelagertem Arbeitsspeicher, die für In-Memory-Daten verwendet werden.|
+|RowsReadPerSec|Verarbeitung: Gelesene Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der aus allen relationalen Datenbanken gelesenen Zeilen.|
+|RowsConvertedPerSec|Verarbeitung: Konvertierte Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der Zeilen, die bei der Verarbeitung konvertiert werden.|
+|RowsWrittenPerSec|Verarbeitung: Geschriebene Zeilen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der Zeilen, die bei der Verarbeitung geschrieben werden.|
+|CommandPoolBusyThreads|Threads: Ausgelastete Threads im Befehlspool|Count|Durchschnitt|Anzahl ausgelasteter Threads im Befehlsthreadpool.|
+|CommandPoolIdleThreads|Threads: Leerlaufthreads im Befehlspool|Count|Durchschnitt|Anzahl von Leerlaufthreads im Befehlsthreadpool.|
+|LongParsingBusyThreads|Threads: Ausgelastete lange Analysethreads|Count|Durchschnitt|Anzahl ausgelasteter Threads im Pool für lange Analysethreads.|
+|LongParsingIdleThreads|Threads: Lange Analysethreads im Leerlauf|Count|Durchschnitt|Anzahl von Leerlaufthreads im Pool für lange Analysethreads.|
+|LongParsingJobQueueLength|Threads: Warteschlangenlänge für lange Analyseaufträge|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Pools für lange Analysethreads.|
+|ProcessingPoolBusyIOJobThreads|Threads: Ausgelastete Threads für E/A-Aufträge im Verarbeitungspool|Count|Durchschnitt|Anzahl von Threads, die E/A-Aufträge im Verarbeitungsthreadpool ausführen.|
+|ProcessingPoolBusyNonIOThreads|Threads: Ausgelastete Nicht-E/A-Threads im Verarbeitungspool|Count|Durchschnitt|Anzahl von Threads, die Nicht-E/A-Aufträge im Verarbeitungsthreadpool ausführen.|
+|ProcessingPoolIOJobQueueLength|Threads: Warteschlangenlänge für E/A-Aufträge im Verarbeitungspool|Count|Durchschnitt|Anzahl von E/A-Aufträgen in der Warteschlange des Verarbeitungsthreadpools.|
+|ProcessingPoolIdleIOJobThreads|Threads: Leerlaufthreads für E/A-Aufträge im Verarbeitungspool|Count|Durchschnitt|Anzahl von Leerlaufthreads für E/A-Aufträge im Verarbeitungsthreadpool.|
+|ProcessingPoolIdleNonIOThreads|Threads: Nicht-E/A-Leerlaufthreads im Verarbeitungspool|Count|Durchschnitt|Anzahl von Leerlaufthreads im Verarbeitungsthreadpool, die für Nicht-E/A-Aufträge vorgesehen sind.|
+|QueryPoolIdleThreads|Threads: Abfragepoolthreads im Leerlauf|Count|Durchschnitt|Anzahl von Leerlaufthreads für E/A-Aufträge im Verarbeitungsthreadpool.|
+|QueryPoolJobQueueLength|Threads: Auftragswarteschlangenlänge für Abfragepool|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Abfragethreadpools.|
+|ShortParsingBusyThreads|Threads: Ausgelastete kurze Analysethreads|Count|Durchschnitt|Anzahl ausgelasteter Threads im Pool für kurze Analysethreads.|
+|ShortParsingIdleThreads|Threads: Kurze Analysethreads im Leerlauf|Count|Durchschnitt|Anzahl von Leerlaufthreads im Pool für kurze Analysethreads.|
+|ShortParsingJobQueueLength|Threads: Warteschlangenlänge für kurze Analyseaufträge|Count|Durchschnitt|Anzahl von Aufträgen in der Warteschlange des Pools für kurze Analysethreads.|
+|memory_thrashing_metric|Arbeitsspeicherüberlastung|Prozent|Durchschnitt|Durchschnittliche Arbeitsspeicherüberlastung.|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -596,17 +684,33 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
 |---|---|---|---|---|
 |cpu_percent|CPU-Prozentsatz|Prozent|Durchschnitt|CPU-Prozentsatz|
+|database_cpu_percent|CPU-Prozentsatz|Prozent|Durchschnitt|CPU-Prozentsatz|
 |physical_data_read_percent|E/A-Prozentsatz für Daten|Prozent|Durchschnitt|E/A-Prozentsatz für Daten|
+|database_physical_data_read_percent|E/A-Prozentsatz für Daten|Prozent|Durchschnitt|E/A-Prozentsatz für Daten|
 |log_write_percent|E/A-Prozentsatz für Protokoll|Prozent|Durchschnitt|E/A-Prozentsatz für Protokoll|
+|database_log_write_percent|E/A-Prozentsatz für Protokoll|Prozent|Durchschnitt|E/A-Prozentsatz für Protokoll|
 |dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|
+|database_dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|
 |storage_percent|Speicher in Prozent|Prozent|Durchschnitt|Speicher in Prozent|
 |workers_percent|Worker in Prozent|Prozent|Durchschnitt|Worker in Prozent|
+|database_workers_percent|Worker in Prozent|Prozent|Durchschnitt|Worker in Prozent|
 |sessions_percent|Sitzungen in Prozent|Prozent|Durchschnitt|Sitzungen in Prozent|
+|database_sessions_percent|Sitzungen in Prozent|Prozent|Durchschnitt|Sitzungen in Prozent|
 |eDTU_limit|eDTU-Grenzwert|Count|Durchschnitt|eDTU-Grenzwert|
 |storage_limit|Speicherbegrenzung|Byte|Durchschnitt|Speicherbegrenzung|
 |eDTU_used|eDTU-Verbrauch|Count|Durchschnitt|eDTU-Verbrauch|
 |storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|
+|database_storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|
 |xtp_storage_percent|In-Memory-OLTP-Speicher in Prozent|Prozent|Durchschnitt|In-Memory-OLTP-Speicher in Prozent|
+
+## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|
+|database_dtu_consumption_percent|DTU-Prozentsatz|Prozent|Durchschnitt|DTU-Prozentsatz|
+|storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|
+|database_storage_used|Verwendeter Speicher|Byte|Durchschnitt|Verwendeter Speicher|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
@@ -635,7 +739,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
 |BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
 
-## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites (einschließlich Functions)
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (Funktionen ausgenommen)
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
 |---|---|---|---|---|
@@ -655,6 +759,16 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|
 |AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|
 |AverageResponseTime|Durchschnittliche Antwortzeit|Sekunden|Durchschnitt|Durchschnittliche Antwortzeit|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (Funktionen)
+
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
+|---|---|---|---|---|
+|BytesReceived|Eingehende Daten|Byte|Gesamt|Eingehende Daten|
+|BytesSent|Datenausgabe|Byte|Gesamt|Datenausgabe|
+|Http5xx|HTTP-Serverfehler|Count|Gesamt|HTTP-Serverfehler|
+|MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|
+|AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|
 |FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Durchschnitt|Ausführungseinheiten für Funktion|
 |FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Durchschnitt|Ausführungsanzahl für Funktion|
 
@@ -685,5 +799,4 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 * [Informationen zu Metriken in Azure Monitor](monitoring-overview-metrics.md)
 * [Erstellen von Warnungen zu Metriken](insights-receive-alert-notifications.md)
 * [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](monitoring-overview-of-diagnostic-logs.md)
-
 

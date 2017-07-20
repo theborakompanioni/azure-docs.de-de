@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 9b0936299d506e951e45d54f630657c187ec6820
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 10ca10b2f644c29aad244abab720d2ce5586714f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -33,8 +34,10 @@ Log Analytics bietet die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
  * Protokolle für Azure-Netzwerksicherheitsgruppen
 
 ## <a name="network-performance-monitor-npm"></a>Netzwerkleistungsmonitor (NPM)
+
 Die [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md)-Verwaltungslösung ist eine Lösung zur Netzwerküberwachung, die die Integrität, Verfügbarkeit und Erreichbarkeit von Netzwerken überwacht.  Sie dient zur Überwachung der Konnektivität zwischen:
-* Public Cloud und lokaler Umgebung 
+
+* Public Cloud und lokaler Umgebung
 * Rechenzentren und Benutzerstandorten (Zweigstellen)
 * Subnetzen, die verschiedene Ebenen einer Multi-Tier-Anwendung hosten.
 
@@ -66,6 +69,8 @@ Die folgende Tabelle zeigt Datenerfassungsmethoden und andere Details zur Art de
 
 ## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Azure Application Gateway-Analyselösung in Log Analytics
 
+![Symbol für Azure Application Gateway-Analyse](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+
 Die folgenden Protokolle werden für Anwendungsgateways unterstützt:
 
 * ApplicationGatewayAccessLog
@@ -80,7 +85,7 @@ Für Anwendungsgateways werden folgende Metriken unterstützt:
 Gehen Sie folgendermaßen vor, um die Azure Application Gateway-Analyselösung zu installieren und zu konfigurieren:
 
 1. Aktivieren Sie die Azure Application Gateway-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) oder anhand des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses.
-2. Aktivieren Sie die Diagnoseprotokollierung für die [Application Gateways](../application-gateway/application-gateway-diagnostics.md), die Sie überwachen möchten. 
+2. Aktivieren Sie die Diagnoseprotokollierung für die [Application Gateways](../application-gateway/application-gateway-diagnostics.md), die Sie überwachen möchten.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Aktivieren der Azure Application Gateway-Diagnose im Portal
 
@@ -128,11 +133,13 @@ Nach dem Klicken auf die Kachel **Azure Application Gateway analytics** (Azure A
 ![Abbildung des Azure Application Gateway-Analysedashboards](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
 
 Prüfen Sie auf dem **Azure Application Gateway**-Analysedashboard die Zusammenfassungsinformationen auf einem der Blätter, und klicken Sie dann auf einen Eintrag, um ausführliche Informationen auf der Seite „Protokollsuche“ anzuzeigen.
-   
+
 Sie können auf jeder Seite für die Protokollsuche die Ergebnisse nach Zeit, detaillierte Ergebnisse und Ihren Protokollsuchverlauf anzeigen. Außerdem können Sie nach Facets filtern, um die Ergebnisse einzugrenzen.
 
 
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Analyselösung der Azure-Netzwerksicherheitsgruppe in Log Analytics
+
+![Symbol für Azure-Netzwerksicherheitsgruppen-Analyse](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
 
 Die folgenden Protokolle werden für Netzwerksicherheitsgruppen unterstützt:
 
@@ -142,7 +149,7 @@ Die folgenden Protokolle werden für Netzwerksicherheitsgruppen unterstützt:
 ### <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Networking Analytics-Lösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie die Azure-Netzwerksicherheitsgruppen-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) oder mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses. 
+1. Aktivieren Sie die Azure-Netzwerksicherheitsgruppen-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) oder mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses.
 2. Aktivieren Sie die Diagnoseprotokollierung für die [Netzwerksicherheitsgruppen](../virtual-network/virtual-network-nsg-manage-log.md)-Ressourcen, die Sie überwachen möchten.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Aktivieren der Diagnose für die Azure-Netzwerksicherheitsgruppe im Portal
@@ -162,7 +169,7 @@ Gehen Sie folgendermaßen vor, um die Azure Networking Analytics-Lösung zu inst
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Aktivieren der Azure-Netzwerkdiagnose mit PowerShell
 
-Das folgende PowerShell-Skript zeigt ein Beispiel für die Aktivierung der Diagnoseprotokollierung für die Netzwerksicherheitsgruppen: 
+Das folgende PowerShell-Skript zeigt ein Beispiel für die Aktivierung der Diagnoseprotokollierung für die Netzwerksicherheitsgruppen:
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -186,7 +193,7 @@ Nach dem Klicken auf die Kachel **Azure Network Security Group analytics** (Azur
 ![Abbildung des Azure-Netzwerksicherheitsgruppen-Analysedashboards](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
 
 Prüfen Sie im **Azure Network Security Group analytics** (Azure-Netzwerksicherheitsgruppen-Analyse)-Dashboard die Zusammenfassungsinformationen auf einem der Blätter, und klicken Sie dann auf einen Eintrag, um ausführliche Informationen auf der Seite „Protokollsuche“ anzuzeigen.
-   
+
 Sie können auf jeder Seite für die Protokollsuche die Ergebnisse nach Zeit, detaillierte Ergebnisse und Ihren Protokollsuchverlauf anzeigen. Außerdem können Sie nach Facets filtern, um die Ergebnisse einzugrenzen.
 
 ## <a name="migrating-from-the-old-networking-analytics-solution"></a>Migrieren von der alten Networking Analytics-Lösung
@@ -203,17 +210,17 @@ So verwenden Sie die aktualisierte Lösung:
 2. Aktivieren Sie die *Azure Application Gateway*- und die *Azure-Netzwerksicherheitsgruppen*-Analyselösung mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses.
 3. Aktualisieren Sie alle gespeicherten Abfragen, Dashboards oder Warnungen zur Verwendung des neuen Datentyps.
   + Der Typ lautet AzureDiagnostics. Sie können „ResourceType“ verwenden, um nach Azure-Netzwerkprotokollen zu filtern.
-  
+
     | Alternativen: | Verwendung: |
     | --- | --- |
     |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayAccess`| `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayAccess` |
     |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayPerformance` | `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayPerformance` |
     | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
-    
+
    + Ändern Sie für jedes Feld, dessen Name das Suffix „\_s“, „\_d“ oder „\_g“ enthält, das erste Zeichen in einen Kleinbuchstaben.
    + Für jedes Feld, dessen Name das Suffix „\_o“ enthält, werden die Daten basierend auf den geschachtelten Feldnamen in einzelne Felder aufgeteilt.
-4. Entfernen Sie die *Azure Networking Analytics*-Lösung (veraltet). 
-  + Wenn Sie PowerShell einsetzen, verwenden Sie `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`. 
+4. Entfernen Sie die *Azure Networking Analytics*-Lösung (veraltet).
+  + Wenn Sie PowerShell einsetzen, verwenden Sie `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`.
 
 Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht angezeigt. Sie können die Abfrage dieser Daten mithilfe des alten Typs und der alten Feldnamen fortsetzen.
 
@@ -222,5 +229,4 @@ Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md), um ausführliche Azure-Diagnosedaten anzuzeigen.
-
 

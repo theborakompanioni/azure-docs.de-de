@@ -17,10 +17,10 @@ ms.date: 05/22/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: bfa4135600cb94d3947323219969872c2da7912b
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 927eb9f4f40759c0a79daa6dd3e91e5ab0853520
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -36,10 +36,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines virtuellen Computers in einer Verfügbarkeitsgruppe
 > * Überprüfen der verfügbaren VM-Größen
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="availability-set-overview"></a>Übersicht über Verfügbarkeitsgruppen
 

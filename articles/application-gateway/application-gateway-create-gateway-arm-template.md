@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 0786e54c288f30b0039c1d0b88f5c5b5965eecef
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 46a036c5f1646197522874b1302b95947e90cdd8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -210,8 +210,15 @@ Click-to-Deploy ist eine weitere Option zum Verwenden von Azure-Ressourcen-Manag
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>Bereitstellen von Zertifikatdaten für Resource Manager-Vorlagen
 
-Wenn Sie SSL mit einer Vorlage verwenden, muss das Zertifikat nicht hochgeladen, sondern in einer base64-Zeichenfolge bereitgestellt werden. Führen Sie zum Konvertieren einer PFX- oder CER-Datei in eine base64-Zeichenfolge den folgenden PowerShell-Befehl aus. Dieser Ausschnitt konvertiert das Zertifikat in eine base64-Zeichenfolge, die für die Vorlage bereitgestellt werden kann. Die erwartete Ausgabe ist eine Zeichenfolge, die in einer Variablen gespeichert und in die Vorlage eingefügt werden kann.
+Wenn Sie SSL mit einer Vorlage verwenden, muss das Zertifikat nicht hochgeladen, sondern in einer base64-Zeichenfolge bereitgestellt werden. Führen Sie zum Konvertieren einer PFX- oder CER-Datei in eine base64-Zeichenfolge einen der folgenden Befehle aus. Mit den folgenden Befehlen wird das Zertifikat in eine base64-Zeichenfolge konvertiert, die der Vorlage bereitgestellt werden kann. Die erwartete Ausgabe ist eine Zeichenfolge, die in einer Variablen gespeichert und in die Vorlage eingefügt werden kann.
 
+### <a name="macos"></a>macOS
+```bash
+cert=$( base64 <certificate path and name>.pfx )
+echo $cert
+```
+
+### <a name="windows"></a>Windows
 ```powershell
 [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("<certificate path and name>.pfx"))
 ```

@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/05/2017
+ms.date: 06/06/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: c3af0df0f2e5a0367bef8e12edaca4937db7e39f
-ms.openlocfilehash: 50bc63845bab1322090097dd0d5736e11642a95b
-ms.lasthandoff: 01/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 9fb4d440fad8e4c5af8030c91e6871c6418ab9be
+ms.contentlocale: de-de
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -36,7 +37,7 @@ Die folgenden Softwareanforderungen gelten für Speicherclients, die auf das Sto
 
 | Unterstützte Betriebssysteme | Erforderliche Version | Weitere Anforderungen/Hinweise |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple iSCSI-Volumes werden nur für die Verwendung auf den folgenden Windows-Datenträgertypen unterstützt:<ul><li>Einfaches Volume auf Basisfestplatte</li><li>Einfaches und gespiegeltes Volume auf dynamischem Datenträger</li></ul>Die schlanke Speicherzuweisung von Windows Server 2012 und 2016 sowie ODX-Features werden unterstützt, wenn Sie ein StorSimple-iSCSI-Volume verwenden.<br><br>Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Es können damit keine teilweise bereitgestellten Volumes erstellt werden.<br><br>Das erneute Formatieren eines mit schlanker Speicherzuweisung erstellten Volumes kann lange dauern. Es wird empfohlen, das Volume zu löschen und dann ein neues Volume zu erstellen, anstatt neu zu formatieren. Falls Sie trotzdem das Neuformatieren eines Volumes vorziehen:<ul><li>Führen Sie vor der Neuformatierung den folgenden Befehl aus, um Verzögerungen bei der Freigabe von Speicherplatz zu vermeiden: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Verwenden Sie nach Abschluss der Neuformatierung den folgenden Befehl, um die Freigabe von Speicherplatz erneut zu aktivieren:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Wenden Sie das Windows Server 2012-Hotfix wie in [KB 2878635](https://support.microsoft.com/kb/2870270) beschrieben auf Ihren Windows Server-Computer an.</li></ul></li></ul></ul> Greifen Sie auf [Softwareanforderungen für optionale Komponenten](#software-requirements-for-optional-components)zu, wenn Sie StorSimple Snapshot Manager oder den StorSimple-Adapter für SharePoint konfigurieren. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple iSCSI-Volumes werden nur für die Verwendung auf den folgenden Windows-Datenträgertypen unterstützt:<ul><li>Einfaches Volume auf Basisfestplatte</li><li>Einfaches und gespiegeltes Volume auf dynamischem Datenträger</li></ul>Es werden nur die nativ im Betriebssystem vorhandenen Software-iSCSI-Initiatoren unterstützt. Hardware-iSCSI-Initiatoren werden nicht unterstützt.<br></br>Die schlanke Speicherzuweisung von Windows Server 2012 und 2016 sowie ODX-Features werden unterstützt, wenn Sie ein StorSimple-iSCSI-Volume verwenden.<br><br>Mit StorSimple können Sie Volumes mit schlanker Speicherzuweisung und vollständig bereitgestellte Volumes erstellen. Es können damit keine teilweise bereitgestellten Volumes erstellt werden.<br><br>Das erneute Formatieren eines mit schlanker Speicherzuweisung erstellten Volumes kann lange dauern. Es wird empfohlen, das Volume zu löschen und dann ein neues Volume zu erstellen, anstatt neu zu formatieren. Falls Sie trotzdem das Neuformatieren eines Volumes vorziehen:<ul><li>Führen Sie vor der Neuformatierung den folgenden Befehl aus, um Verzögerungen bei der Freigabe von Speicherplatz zu vermeiden: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Verwenden Sie nach Abschluss der Neuformatierung den folgenden Befehl, um die Freigabe von Speicherplatz erneut zu aktivieren:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Wenden Sie das Windows Server 2012-Hotfix wie in [KB 2878635](https://support.microsoft.com/kb/2870270) beschrieben auf Ihren Windows Server-Computer an.</li></ul></li></ul></ul> Greifen Sie auf [Softwareanforderungen für optionale Komponenten](#software-requirements-for-optional-components)zu, wenn Sie StorSimple Snapshot Manager oder den StorSimple-Adapter für SharePoint konfigurieren. |
 | VMWare ESX |5.5 und 6.0 |Wird für VMware vSphere als iSCSI-Client unterstützt. Die VAAI-Blockfunktion wird für VMware vSphere auf StorSimple-Geräten unterstützt. |
 | Linux RHEL/CentOS |5, 6 und 7 |Unterstützung für Linux-iSCSI-Clients mit Open-iSCSI-Initiator, Versionen 5, 6 und 7. |
 | Linux |SUSE Linux 11 | |

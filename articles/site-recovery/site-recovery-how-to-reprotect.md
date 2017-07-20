@@ -11,18 +11,20 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 02/13/2017
+ms.workload: storage-backup-recovery
+ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 3156ca5b2b8ba836e94d79a97b28bf591c799b48
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: d77f9c4e6365c95b0ea1bf4d00b9f2e9c35eefde
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Azure zu einem lokalen Standort
+
+
 
 ## <a name="overview"></a>Übersicht
 In diesem Artikel erfahren Sie, wie Sie den Schutz virtueller Azure-Computer von Azure am lokalen Standort wiederherstellen. Befolgen Sie die Anweisungen in diesem Artikel, wenn alles bereit ist, um Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort zu Azure per Failback wieder an den lokalen Standort zurückzuführen (unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-failover.md) beschrieben).
@@ -44,7 +46,7 @@ Hier sind die vorbereitenden Schritte angegeben, die Sie beim erneuten Schützen
 
 * Wenn die virtuellen Computer, für die Sie das Failback durchführen möchten, von einem vCenter-Server verwaltet werden, müssen Sie sicherstellen, dass auf den vCenter-Servern die erforderlichen Berechtigungen für die Ermittlung von virtuellen Computern vorhanden sind. [Weitere Informationen](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
 
-> [!WARNING] 
+> [!WARNING]
 > Wenn auf dem Hauptziel oder lokalen virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Aktivieren des erneuten Schutzes ein Fehler auf. Sie können vor dem Fortfahren mit dem erneuten Schützen die Momentaufnahmen aus dem Hauptziel löschen. Die Momentaufnahmen auf dem virtuellen Computer werden während des Auftrags zum erneuten Schützen automatisch zusammengeführt.
 
 * Vor dem Failback müssen Sie zwei zusätzliche Komponenten erstellen:
@@ -103,6 +105,10 @@ Klicken Sie auf die folgenden Links, um Informationen zur Installation eines Mas
 * [Installieren eines Linux-Masterzielservers](site-recovery-how-to-install-linux-master-target.md)
 
 
+### <a name="what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback"></a>Welche Datenspeichertypen werden auf dem lokalen ESXi-Host bei einem Failback unterstützt?
+
+Derzeit unterstützt ASR nur Failbacks auf einen VMFS-Datenspeicher. Ein vSAN- oder NFS-Datenspeicher wird nicht unterstützt. Beachten Sie, dass Sie auf einem vSAN- oder NFS-Datenspeicher ausgeführte virtuelle Computer schützen können. Aufgrund dieser Einschränkung wird bei NFS-Datenspeichern das Auswahleingabefeld auf der Anzeige für den erneuten Schutz leer sein, oder es wird der vSAN-Datenspeicher angezeigt, der Auftrag schlägt dann aber fehl. Wenn Sie ein Failback durchführen möchten, können Sie einen VMFS-Datenspeicher lokal erstellen und diesen für den Failback verwenden. Dieser Failback verursacht den vollständigen VMDK-Download. In zukünftigen Releases wird Unterstützung für NFS- und vSAN-Datenspeicher hinzugefügt.
+
 #### <a name="common-things-to-check-after-completing-installation-of-the-master-target-server"></a>Allgemeine Überprüfungen nach der Installation des Masterzielservers
 
 * Wenn sich der virtuelle Computer lokal auf dem vCenter-Server befindet, muss der Masterzielserver auf die VMDK des lokalen virtuellen Computers zugreifen können. Der Zugriff ist erforderlich, um die replizierten Daten auf die Datenträger des virtuellen Computers schreiben zu können. Stellen Sie sicher, dass der Datenspeicher des lokalen virtuellen Computers auf dem Host des Masterziels mit Lese-/Schreibzugriff bereitgestellt wird.
@@ -129,7 +135,7 @@ Klicken Sie auf die folgenden Links, um Informationen zur Installation eines Mas
    * Das Standardaufbewahrungsvolume für Windows ist das R-Volume.
 
    * Das Standardaufbewahrungsvolume für Linux ist „/mnt/retention“.
-   
+
    > [!IMPORTANT]
    > Sie müssen ein neues Laufwerk hinzufügen, wenn Sie einen vorhandenen CS+PS-Computer oder eine Skalierung oder einen PS+MT-Computer verwenden. Das neue Laufwerk muss die oben genannten Anforderungen erfüllen. Wenn das Aufbewahrungslaufwerk nicht vorhanden ist, werden in der Auswahl-Dropdownliste im Portal keine Laufwerke angezeigt. Nach dem Hinzufügen eines Laufwerks zum lokalen Masterziel dauert es bis zu 15 Minuten, bis das Laufwerk in der Auswahl im Portal angezeigt wird. Sie können auch den Konfigurationsserver aktualisieren, wenn das Laufwerk nach 15 Minuten nicht angezeigt wird.
 

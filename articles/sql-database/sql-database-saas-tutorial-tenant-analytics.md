@@ -1,6 +1,6 @@
 ---
 title: "Ausführen von Analyseabfragen anhand mehrerer Azure SQL-Datenbanken | Microsoft-Dokumentation"
-description: "Ausführen verteilter Abfragen für mehrere Azure SQL-Datenbanken"
+description: "Extrahieren von Daten aus Mandantendatenbanken in eine Analysedatenbank für die Offlineanalyse"
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/16/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 5331f9a7b46f1dd31d4aa246ad9d188b5a5afc19
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 4e32407d5f321198358e07980907c3420aaf56c6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>Ausführen verteilter Abfragen für mehrere Azure SQL-Datenbanken
+# <a name="extract-data-from-tenant-databases-into-an-analytics-database-for-offline-analysis"></a>Extrahieren von Daten aus Mandantendatenbanken in eine Analysedatenbank für die Offlineanalyse
 
-In diesem Tutorial führen Sie Analyseabfragen für jeden Mandanten im Katalog durch. Es wird ein elastischer Auftrag erstellt, der die Abfragen ausführt. Der Auftrag ruft Daten ab und lädt sie in eine separate Analysedatenbank, die auf dem Katalogserver erstellt wurde. Diese Datenbank kann abgefragt werden, um Einblicke zu erhalten, die sonst in den tagtäglichen operativen Daten aller Mandanten verborgen bleiben. Als Ausgabe des Auftrags wird aus den Abfrageergebnissen in der Mandantenanalysedatenbank eine Tabelle erstellt.
+In diesem Tutorial verwenden Sie einen elastischen Auftrag zum Ausführen von Abfragen für jede Mandantendatenbank. Der Auftrag extrahiert Ticketverkaufsdaten und lädt diese zur Analyse in eine Analysedatenbank (oder Data Warehouse). Die Analysedatenbank wird dann abgefragt, um Einblicke über die tagtäglichen operativen Daten aller Mandanten zu erhalten.
 
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Die Wingtip-SaaS-App wird bereitgestellt. Unter [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet](sql-database-saas-tutorial.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
-* Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Die aktuelle Version von SQL Server Management Studio (SSMS) wurde installiert. [Herunterladen und Installieren von SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 ## <a name="tenant-operational-analytics-pattern"></a>Muster der operativen Analyse der Mandanten
@@ -47,7 +47,7 @@ Einer der großen Vorteile von SaaS-Anwendungen ist, dass Sie die umfangreichen,
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen der Wingtip-Anwendungsskripts
 
-Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)
+Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)
 
 ## <a name="deploy-a-database-for-tenant-analytics-results"></a>Bereitstellen einer Datenbank für Mandantenanalyseergebnisse
 
@@ -121,3 +121,4 @@ Glückwunsch!
 
 * Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastische Aufträge](sql-database-elastic-jobs-overview.md)
+

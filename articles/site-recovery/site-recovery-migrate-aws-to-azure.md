@@ -11,13 +11,14 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: backup-recovery
-ms.date: 02/12/2017
+ms.workload: storage-backup-recovery
+ms.date: 05/31/2017
 ms.author: bsiva
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: c01805f797151f8970e1dcd2fdc58a8634fb0083
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: b2420da03b83a355215d7beeffd5b4cff10da75b
+ms.contentlocale: de-de
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -33,9 +34,9 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 
 Site Recovery kann zum Migrieren von EC2-Instanzen verwendet werden, die unter einem der folgenden Betriebssysteme ausgeführt werden:
 
-- Windows (nur&64; Bit)
+- Windows (nur 64 Bit)
     - Windows Server 2008 R2 SP1+ (nur Citrix PV- oder AWS PV-Treiber. **Instanzen mit RedHat PV-Treibern werden nicht unterstützt.**) Windows Server 2012, Windows Server 2012 R2
-- Linux (nur&64; Bit)
+- Linux (nur 64 Bit)
     - Red Hat Enterprise Linux 6.7 (nur virtualisierte HVM-Instanzen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -48,26 +49,37 @@ Für diese Bereitstellung benötigen Sie Folgendes:
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 
-1. Erstellen eines Recovery Services-Tresors
+1. Erstellen Sie einen Recovery Services-Tresor.
+2. Die Sicherheitsgruppe Ihrer EC2-Instanzen muss über Regeln verfügen, deren Konfiguration eine Kommunikation zwischen der zu migrierenden EC2-Instanz und der Instanz ermöglicht, für die die Bereitstellung auf dem Konfigurationsserver vorgesehen ist.
 
-2. Für die Sicherheitsgruppe Ihrer EC2-Instanzen müssen folgende Regeln konfiguriert sein: ![Regeln](./media/site-recovery-migrate-aws-to-azure/migration_pic1.png)
+3. Stellen Sie in der gleichen virtuellen privaten Amazon-Cloud wie Ihre EC2-Instanzen einen ASR-Konfigurationsserver bereit. Lesen Sie die Informationen zu den Voraussetzungen für Azure bei VMware oder physischen Computern für die Bereitstellung von Konfigurationsservern.
 
-3. Stellen Sie in der gleichen virtuellen privaten Amazon-Cloud wie Ihre EC2-Instanzen einen ASR-Konfigurationsserver bereit. Lesen Sie auch die Informationen zu den Voraussetzungen für Azure bei VMware oder physischen Computern für die Bereitstellung von Konfigurationsservern unter ![DeployCS](./media/site-recovery-migrate-aws-to-azure/migration_pic2.png).
+    ![DeployCS](./media/site-recovery-migrate-aws-to-azure/migration_pic2.png)
 
-4.    Nachdem Ihr Konfigurationsserver in AWS bereitgestellt und bei Ihrem Recovery Services-Tresor registriert wurde, sollten der Konfigurationsserver und der Prozessserver wie unten dargestellt in der Site Recovery-Infrastruktur angezeigt werden: ![CSinVault](./media/site-recovery-migrate-aws-to-azure/migration_pic3.png)
-  >[!NOTE]
-  >Es kann bis zu 15 Minuten dauern, bis Konfigurationsserver und Prozessserver angezeigt werden.
-  >
+4.  Nachdem Ihr Konfigurationsserver in AWS bereitgestellt und bei Ihrem Recovery Services-Tresor registriert wurde, sollten der Konfigurationsserver und der Prozessserver wie unten dargestellt in der Site Recovery-Infrastruktur angezeigt werden:
 
-5. Vergewissern Sie sich nach dem Bereitstellen des Konfigurationsservers, dass er mit den zu migrierenden virtuellen Computern kommunizieren kann.
+    ![CSinVault](./media/site-recovery-migrate-aws-to-azure/migration_pic3.png)
 
-6. [Einrichten der Replikationseinstellungen](site-recovery-setup-replication-settings-vmware.md)
+5. Vergewissern Sie sich nach dem Bereitstellen des Konfigurationsservers, dass er mit den zu migrierenden VMs kommunizieren kann. (Es kann bis zu 15 Minuten dauern, bis der Konfigurationsserver angezeigt wird.)
+
+6. [Richten Sie Replikationseinstellungen ein](site-recovery-setup-replication-settings-vmware.md).
 
 7. Aktivieren der Replikation: Aktivieren Sie die Replikation für die virtuellen Computer, die Sie migrieren möchten. Die EC2-Instanzen können anhand der privaten IP-Adressen ermittelt werden, die Sie über die EC2-Konsole abrufen können.
-![SelectVM](./media/site-recovery-migrate-aws-to-azure/migration_pic4.png)
-8. Sobald die EC2-Instanzen geschützt wurden und die Replikation in Azure abgeschlossen ist, [führen Sie ein Testfailover](site-recovery-test-failover-to-azure.md) durch, um die Leistung Ihrer Anwendung in Azure zu überprüfen. ![TFI](./media/site-recovery-migrate-aws-to-azure/migration_pic5.png)
+
+    ![SelectVM](./media/site-recovery-migrate-aws-to-azure/migration_pic4.png)
+
+8. Sobald die EC2-Instanzen geschützt wurden und die Replikation in Azure abgeschlossen ist, [führen Sie ein Testfailover aus](site-recovery-test-failover-to-azure.md), um die Leistung Ihrer Anwendung in Azure zu überprüfen.
+
+    ![TFI](./media/site-recovery-migrate-aws-to-azure/migration_pic5.png)
 
 9. Führen Sie ein Failover von AWS nach Azure für jeden virtuellen Computer durch. Optional können Sie einen Wiederherstellungsplan erstellen und ein Failover durchführen, um mehrere virtuelle Computer von AWS zu Azure zu migrieren. [hier](site-recovery-create-recovery-plans.md) .
 
-10. Für die Migration müssen Sie kein Commit für ein Failover durchführen. Wählen Sie stattdessen die Option „Migration abschließen“ für jeden Computer aus, den Sie migrieren möchten. Mit der Aktion „Migration abschließen“ wird der Migrationsprozess abgeschlossen, die Replikation für den Computer wird entfernt, und die Site Recovery-Berechnung von Kosten für den Computer wird beendet.![Migrieren](./media/site-recovery-migrate-aws-to-azure/migration_pic6.png)
+10. Für die Migration müssen Sie kein Commit für ein Failover durchführen. Wählen Sie stattdessen die Option „Migration abschließen“ für jeden Computer aus, den Sie migrieren möchten. Mit der Aktion „Migration abschließen“ wird der Migrationsprozess abgeschlossen, die Replikation für den Computer wird entfernt, und die Site Recovery-Berechnung von Kosten für den Computer wird beendet.
+
+    ![Migrieren](./media/site-recovery-migrate-aws-to-azure/migration_pic6.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Vorbereiten der migrierten Computer zum Ermöglichen der Replikation](site-recovery-azure-to-azure-after-migration.md) in einer anderen Region für die Notfallwiederherstellung
+- Schützen von Workloads durch die [Replikation virtueller Azure-Computer](site-recovery-azure-to-azure.md)
 

@@ -13,36 +13,36 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 05/23/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 8433f326f04d0585e538695c419e451323c7869b
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: fa0eeb1163c2e0ee01290b18eb696bb1b10fed5f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="how-to-generalize-and-capture-a-linux-virtual-machine"></a>Generalisieren und Erfassen eines virtuellen Linux-Computers
-Zum Wiederverwenden von virtuellen Computern (VMs), die in Azure bereitgestellt und konfiguriert wurden, erfassen Sie ein Image des virtuellen Computers. Der Prozess umfasst auch das Verallgemeinern des virtuellen Computers zum Entfernen persönlicher Kontoinformationen, bevor Sie neue virtuelle Computer aus dem Image bereitstellen. Dieser Artikel erläutert, wie Sie mithilfe von Azure CLI 2.0 ein VM-Image für einen virtuellen Computer erfassen, der Azure Managed Disks verwendet. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). In diesem Artikel wird erläutert, wie Sie mithilfe von Azure CLI 2.0 einen virtuellen Linux-Computer erfassen. Sie können diese Schritte auch mit [Azure CLI 1.0](capture-image-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
+Zum Wiederverwenden von virtuellen Computern (VMs), die in Azure bereitgestellt und konfiguriert wurden, erfassen Sie ein Image des virtuellen Computers. Der Prozess umfasst auch das Verallgemeinern des virtuellen Computers zum Entfernen persönlicher Kontoinformationen, bevor Sie neue virtuelle Computer aus dem Image bereitstellen. Dieser Artikel erläutert, wie Sie mithilfe von Azure CLI 2.0 ein VM-Image für einen virtuellen Computer erfassen, der Azure Managed Disks verwendet. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../storage/storage-managed-disks-overview.md). In diesem Artikel wird erläutert, wie Sie mithilfe von Azure CLI 2.0 einen virtuellen Linux-Computer erfassen. Sie können diese Schritte auch mit [Azure CLI 1.0](capture-image-nodejs.md) ausführen.
 
 > [!TIP]
-> Wenn Sie eine Kopie Ihrer vorhandenen Linux-VM mit spezialisiertem Zustand für das Sichern oder Debuggen erstellen möchten, finden Sie unter [Erstellen einer Kopie eines virtuellen Linux-Computers, der in Azure ausgeführt wird](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) entsprechende Anweisungen. Wenn Sie eine Linux-VHD aus einer lokalen VM hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
+> Wenn Sie eine Kopie Ihrer vorhandenen Linux-VM mit spezialisiertem Zustand für das Sichern oder Debuggen erstellen möchten, finden Sie unter [Erstellen einer Kopie eines virtuellen Linux-Computers, der in Azure ausgeführt wird](copy-vm.md) entsprechende Anweisungen. Wenn Sie eine Linux-VHD aus einer lokalen VM hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](upload-vhd.md).  
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* **Im Resource Manager-Bereitstellungsmodell erstellte Azure-VM**: Wenn Sie keine Linux-VM erstellt haben, können Sie das [Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), die [Befehlszeilenschnittstelle](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Resource Manager-Vorlagen](cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dazu verwenden. Konfigurieren Sie die VM den Anforderungen entsprechend. Sie können beispielsweise [Datenträger hinzufügen](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), Updates einspielen und Anwendungen installieren. 
+* **Im Resource Manager-Bereitstellungsmodell erstellte Azure-VM**: Wenn Sie keine Linux-VM erstellt haben, können Sie das [Portal](quick-create-portal.md), die [Befehlszeilenschnittstelle](quick-create-cli.md) oder [Resource Manager-Vorlagen](cli-deploy-templates.md) dazu verwenden. Konfigurieren Sie die VM den Anforderungen entsprechend. Sie können beispielsweise [Datenträger hinzufügen](add-disk.md), Updates einspielen und Anwendungen installieren. 
 
 Zudem muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="quick-commands"></a>Schnellbefehle
-Im folgenden Abschnitt werden die grundlegenden Befehle zum Erstellen eines Images eines virtuellen Linux-Computers in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-steps)). Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myVM` und `myImage` verwendet.
+Im folgenden Abschnitt werden die grundlegenden Befehle zum Erstellen eines Images eines virtuellen Linux-Computers in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-steps)). Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *myVM* und *myImage*.
 
-1. Aufheben der Bereitstellung Ihres virtuellen Quellcomputers:
+1. Stellen Sie mit SSH eine Verbindung mit Ihrer VM her, und heben Sie die Bereitstellung mit `waagent -deprovision` auf. Der Parameter *+user* entfernt auch das zuletzt bereitgestellte Benutzerkonto. Wenn Sie Kontoanmeldeinformationen in der VM sichern, lassen die den Parameter *+user* weg. Im folgenden Beispiel wird das zuletzt bereitgestellte Benutzerkonto entfernt:
 
     ```bash
-    ssh ops@myvm.westus.cloudapp.azure.com
     sudo waagent -deprovision+user -force
     exit
     ```
@@ -53,7 +53,7 @@ Im folgenden Abschnitt werden die grundlegenden Befehle zum Erstellen eines Imag
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. Generalisieren Sie den virtuellen Computer mit [az vm generalize](/cli/azure/vm#generalize):
+3. Verallgemeinern Sie den virtuellen Computer mit [az vm generalize](/cli/azure/vm#generalize). Wenn Sie Ihre Quell-VM mit einem Tool wie [Packer](http://www.packer.io) erstellt haben, überspringen Sie diesen Schritt, da Ihr Image bereits generalisiert wurde.
    
     ```azurecli
     az vm generalize --resource-group myResourceGroup --name myVM
@@ -73,10 +73,10 @@ Im folgenden Abschnitt werden die grundlegenden Befehle zum Erstellen eines Imag
     ```
 
 ## <a name="detailed-steps"></a>Ausführliche Schritte
-In den folgenden Schritten heben Sie die Bereitstellung eines vorhandenen virtuellen Computers auf, geben die virtuelle Computerressource frei und verallgemeinern sie und erstellen dann ein Image. Sie können dieses Image verwenden, um virtuelle Computer über jede Ressourcengruppe innerhalb Ihres Abonnements hinweg zu erstellen. Dieser Vorgang bietet [Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) einen Vorteil gegenüber nicht verwalteten Datenträgern. Mit nicht verwalteten Datenträgern erstellen Sie eine Blobkopie der zugrunde liegenden virtuellen Festplatte (VHD) und sind dann auf die Erstellung von virtuellen Computern im selben Speicherkonto wie das kopierte VHD-Blob beschränkt. Mit verwalteten Datenträgern erstellen Sie eine Imageressource, die in Ihrem gesamten Abonnement bereitgestellt werden kann.
+In den folgenden Schritten heben Sie die Bereitstellung einer vorhandenen VM auf, heben die Zuordnung der VM auf, generalisieren diese und erstellen dann ein Image. Sie können dieses Image verwenden, um virtuelle Computer über jede Ressourcengruppe innerhalb Ihres Abonnements hinweg zu erstellen. Dieser Vorgang bietet [Azure Managed Disks](../../storage/storage-managed-disks-overview.md) einen Vorteil gegenüber nicht verwalteten Datenträgern. Bei nicht verwalteten Datenträgern können Sie VMs nur im selben Speicherkonto wie das des kopierten VHD-Blobs erstellen. Mit verwalteten Datenträgern erstellen Sie eine Imageressource, die in Ihrem gesamten Abonnement bereitgestellt werden kann.
 
 ## <a name="step-1-remove-the-azure-linux-agent"></a>Schritt 1: Entfernen des Azure Linux-Agents
-Zur Vorbereitung des virtuellen Computers für das Verallgemeinern heben Sie die Bereitstellung des virtuellen Computers mithilfe des Azure-VM-Agents auf, um Dateien und Daten zu löschen. Verwenden Sie den Befehl **waagent** mit dem Parameter **deprovision** auf dem virtuellen Linux-Zielcomputer. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Zur Vorbereitung des virtuellen Computers für das Verallgemeinern heben Sie die Bereitstellung des virtuellen Computers mithilfe des Azure-VM-Agents auf, um Dateien und Daten zu löschen. Verwenden Sie den Befehl `waagent` mit dem Parameter *-deprovision* auf dem virtuellen Linux-Zielcomputer. Der Parameter *+user* entfernt auch das zuletzt bereitgestellte Benutzerkonto. Wenn Sie Kontoanmeldeinformationen in der VM sichern, lassen die den Parameter *+user* weg. Im folgenden Beispiel wird das zuletzt bereitgestellte Benutzerkonto entfernt. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../windows/agent-user-guide.md).
 
 1. Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrer Linux-VM her.
 2. Geben Sie im SSH-Fenster den folgenden Befehl ein:
@@ -87,25 +87,25 @@ Zur Vorbereitung des virtuellen Computers für das Verallgemeinern heben Sie die
    > [!NOTE]
    > Führen Sie diesen Befehl nur auf einem virtuellen Computer aus, den Sie als Image erfassen möchten. Dies garantiert nicht, dass alle vertraulichen Informationen aus dem Image gelöscht werden oder dass es für eine erneute Verteilung genutzt werden kann.
  
-3. Geben Sie **y** ein, um fortzufahren. Sie können den **-force** -Parameter hinzufügen, um diesen Bestätigungsschritt zu vermeiden.
-4. Geben Sie nach Abschluss des Befehls **exit** ein. Dieser Schritt schließt den SSH-Client.
+3. Geben Sie *y* ein, um fortzufahren. Sie können den *-force* -Parameter hinzufügen, um diesen Bestätigungsschritt zu vermeiden.
+4. Geben Sie nach Abschluss des Befehls `exit` ein. Dieser Schritt schließt den SSH-Client.
 
-## <a name="step-2-capture-the-vm"></a>Schritt 2: Erfassen der VM
-Verwenden Sie Azure CLI 2.0 zum Generalisieren und Erfassen des virtuellen Computers. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. **myResourceGroup**, **myVnet** und **myVM**.
+## <a name="step-2-create-vm-image"></a>Schritt 2: Erstellen des VM-Image
+Verwenden Sie Azure CLI 2.0 zum Generalisieren und Erfassen des virtuellen Computers. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *myVnet* und *myVM*.
 
-1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli//azure/vm#deallocate) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung für den virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben:
+1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli//azure/vm#deallocate) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Verallgemeinern Sie den virtuellen Computer mit [az vm generalize](/cli//azure/vm#generalize). Im folgenden Beispiel wird der virtuelle Computer namens `myVM` in der Ressourcengruppe namens `myResourceGroup` verallgemeinert:
+2. Verallgemeinern Sie den virtuellen Computer mit [az vm generalize](/cli//azure/vm#generalize). Wenn Sie Ihre Quell-VM mit einem Tool wie [Packer](http://www.packer.io) erstellt haben, überspringen Sie diesen Schritt, da Ihr Image bereits generalisiert wurde. Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* generalisiert:
    
     ```azurecli
     az vm generalize --resource-group myResourceGroup --name myVM
     ```
 
-3. Erstellen Sie jetzt ein Image aus der VM-Ressource mit [az image create](/cli//azure/image#create). Im folgenden Beispiel wird ein Image namens `myImage` in der Ressourcengruppe namens `myResourceGroup` mit der VM-Ressource namens `myVM` erstellt:
+3. Erstellen Sie jetzt ein Image aus der VM-Ressource mit [az image create](/cli//azure/image#create). Im folgenden Beispiel wird ein Image namens *myImage* in der Ressourcengruppe *myResourceGroup* mit der VM-Ressource *myVM* erstellt:
    
     ```azurecli
     az image create --resource-group myResourceGroup --name myImage --source myVM
@@ -115,7 +115,7 @@ Verwenden Sie Azure CLI 2.0 zum Generalisieren und Erfassen des virtuellen Compu
    > Das Image wird in derselben Ressourcengruppe wie der virtuelle Quellcomputer erstellt. Sie können aus diesem Image virtuelle Computer in einer beliebigen Ressourcengruppe in Ihrem Abonnement erstellen. Angesichts der Verwaltung können Sie eine spezifische Ressourcengruppe für die VM-Ressourcen und Images erstellen.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Schritt 3: Bereitstellen eines virtuellen Computers anhand des erfassten Images
-Erstellen Sie aus dem erstellten Image einen virtuellen Computer mit [az vm create](/cli/azure/vm#create). Im folgenden Beispiel wird ein virtueller Computer mit dem Namen `myVMDeployed` aus dem Image namens `myImage` erstellt:
+Erstellen Sie aus dem erstellten Image einen virtuellen Computer mit [az vm create](/cli/azure/vm#create). Im folgenden Beispiel wird eine VM namens *myVMDeployed* anhand des Image *myImage* erstellt:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --name myVMDeployed --image myImage
@@ -130,7 +130,7 @@ Mit verwalteten Datenträgern können Sie virtuelle Computer aus einem Image in 
    "name": "myImage",
 ```
 
-Im folgenden Beispiel wird **az vm create** zum Erstellen eines virtuellen Computers in einer anderen Ressourcengruppe als dem Quellimage verwendet, indem die Imageressourcen-ID angegeben wird:
+Im folgenden Beispiel wird [az vm create](/cli/azure/vm#create) zum Erstellen eines virtuellen Computers in einer anderen Ressourcengruppe als dem Quellimage verwendet, indem die Imageressourcen-ID angegeben wird:
 
 ```azurecli
 az vm create --resource-group myOtherResourceGroup --name myOtherVMDeployed 

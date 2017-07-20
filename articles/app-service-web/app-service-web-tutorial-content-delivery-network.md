@@ -1,27 +1,31 @@
 ---
-title: "Hinzufügen eines Content Delivery Network (CDN) zu einer Azure App Service-Instanz | Microsoft-Dokumentation"
+title: "Hinzufügen eines CDN zu Azure App Service | Microsoft-Dokumentation"
 description: "Fügen Sie einer Azure App Service-Instanz ein Content Delivery Network (CDN) hinzu, um Ihre statischen Dateien über Server zwischenzuspeichern und bereitzustellen, die von Ihren weltweiten Kunden jeweils nicht weit entfernt sind."
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
-ms.date: 05/01/2017
+ms.date: 05/31/2017
 ms.topic: article
 ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7208abc0e6eaa9067c5bb36a09e1bfd276fe0b0c
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: a4f5113c4cc0ffb5fdd072e9a59743c83154c38c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Hinzufügen eines Content Delivery Network (CDN) zu einer Azure App Service-Instanz
 
 Das [Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) speichert statische Webinhalte an strategisch platzierten Standorten zwischen, um beim Bereitstellen von Inhalten für Benutzer einen maximalen Durchsatz zu ermöglichen. Durch das CDN wird auch die Serverlast auf Ihrer Web-App verringert. In diesem Tutorial wird veranschaulicht, wie Sie Azure CDN einer [Web-App in Azure App Service](app-service-web-overview.md) hinzufügen. 
 
-In diesem Tutorial lernen Sie Folgendes:
+Hier ist die Startseite der statischen HTML-Beispielwebsite dargestellt, mit der Sie arbeiten:
+
+![Startseite der Beispiel-App](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
+
+Sie lernen Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines CDN-Endpunkts
@@ -29,19 +33,22 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Verwenden von Abfragezeichenfolgen zum Steuern von zwischengespeicherten Versionen
 > * Verwenden einer benutzerdefinierten Domäne für den CDN-Endpunkt
 
-Hier ist die Startseite der statischen HTML-Beispielwebsite dargestellt, mit der Sie arbeiten:
+## <a name="prerequisites"></a>Voraussetzungen
 
-![Startseite der Beispiel-App](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
+Für dieses Tutorial benötigen Sie Folgendes:
+
+- [Installieren Sie Git.](https://git-scm.com/)
+- [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>Erstellen der Web-App
 
-Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](app-service-web-get-started-html.md), aber führen Sie dabei nicht den Schritt **Bereinigen von Ressourcen** aus.
-
-Lassen Sie die Befehlseingabeaufforderung nach Abschluss des Tutorials geöffnet, damit Sie später im Rahmen dieses Tutorials weitere Änderungen für die Web-App bereitstellen können.
+Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](app-service-web-get-started-html.md) bis zum Schritt **Navigieren zur App**.
 
 ### <a name="have-a-custom-domain-ready"></a>Bereithalten einer benutzerdefinierten Domäne
 
-Zum Ausführen des Schritts für die benutzerdefinierte Domäne in diesem Tutorial benötigen Sie Zugriff auf Ihre DNS-Registrierung für Ihren Domänenanbieter (z.B. GoDaddy). Um beispielsweise DNS-Einträge für `contoso.com` und `www.contoso.com` hinzuzufügen, benötigen Sie Zugriff für die Konfiguration der DNS-Einstellungen für die Stammdomäne `contoso.com`.
+Zum Ausführen des Schritts für die benutzerdefinierte Domäne in diesem Tutorial benötigen Sie eine benutzerdefinierte Domäne und Zugriff auf Ihre DNS-Registrierung für Ihren Domänenanbieter (z.B. GoDaddy). Um beispielsweise DNS-Einträge für `contoso.com` und `www.contoso.com` hinzuzufügen, benötigen Sie Zugriff für die Konfiguration der DNS-Einstellungen für die Stammdomäne `contoso.com`.
 
 Wenn Sie nicht bereits einen Domänennamen besitzen, können Sie beispielsweise das [Tutorial zur App Service-Domäne](custom-dns-web-site-buydomains-web-app.md) absolvieren, um eine Domäne über das Azure-Portal zu erwerben. 
 
@@ -65,7 +72,7 @@ Geben Sie auf der Seite **Azure Content Delivery Network** die Einstellungen fü
 
 | Einstellung | Empfohlener Wert | Beschreibung |
 | ------- | --------------- | ----------- |
-| **CDN-Profil** | myCDNProfile | Wählen Sie die Option **Neu erstellen**, um ein neues CDN-Profil zu erstellen. Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten mit demselben Tarif. |
+| **CDN-Profil** | myCDNProfile | Wählen Sie **Neu erstellen** aus, um ein CDN-Profil zu erstellen. Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten mit demselben Tarif. |
 | **Tarif** | Standard Akamai | Über den [Tarif](../cdn/cdn-overview.md#azure-cdn-features) werden der Anbieter und die verfügbaren Features angegeben. In diesem Tutorial verwenden wir Standard Akamai. |
 | **CDN-Endpunktname** | Beliebiger Name, der in der Domäne „azureedge.net“ eindeutig ist | Sie greifen auf Ihre zwischengespeicherten Ressourcen in der Domäne *\<Endpunktname>.azureedge.net* zu.
 
@@ -89,7 +96,7 @@ http://<appname>.azurewebsites.net/css/bootstrap.css
 http://<endpointname>.azureedge.net/css/bootstrap.css
 ```
 
-Navigieren Sie in einem Browser zur unten angegebenen URL. Sie gelangen auf dieselbe Seite, die Sie zuvor in einer Azure-Web-App ausgeführt haben, aber nun wird sie über das CDN bereitgestellt.
+Navigieren Sie in einem Browser zur folgenden URL:
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -97,7 +104,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![Startseite der Beispiel-App – Bereitstellung per CDN](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page-cdn.png)
 
-Dies verdeutlicht, dass Azure CDN die Originalobjekte der Web-App abgerufen hat und sie über den CDN-Endpunkt bereitstellt. 
+ Daraufhin wird die Seite angezeigt, die Sie zuvor in einer Azure-Web-App ausgeführt haben. Azure CDN hat die Originalobjekte der Web-App abgerufen und sie über den CDN-Endpunkt bereitstellt.
 
 Aktualisieren Sie die Seite, um sicherzustellen, dass diese Seite im CDN zwischengespeichert ist. Es kann sein, dass für ein Objekt zwei Anforderungen erforderlich sind, damit der angeforderte Inhalt vom CDN zwischengespeichert wird.
 
@@ -105,7 +112,7 @@ Weitere Informationen zum Erstellen von Azure CDN-Profilen und -Endpunkten finde
 
 ## <a name="purge-the-cdn"></a>Bereinigen des CDN
 
-Das CDN aktualisiert basierend auf der Gültigkeitsdauer (Time To Live, TTL) in regelmäßigen Abständen seine Ressourcen der ursprünglichen Web-App. Die Standardgültigkeitsdauer beträgt sieben Tage.
+Das CDN aktualisiert basierend auf der Gültigkeitsdauer (Time To Live, TTL) in regelmäßigen Abständen seine Ressourcen der ursprünglichen Web-App. Die Standardgültigkeitsdauer ist sieben Tage.
 
 Es kann vorkommen, dass Sie das CDN vor Ablauf der Gültigkeitsdauer aktualisieren müssen, z.B. beim Bereitstellen von aktualisiertem Inhalt für die Web-App. Sie können die CDN-Ressourcen manuell bereinigen, um eine Aktualisierung auszulösen. 
 
@@ -188,7 +195,7 @@ Azure CDN verfügt über die folgenden Optionen für das Zwischenspeicherverhalt
 * Umgehen der Zwischenspeicherung für Abfragezeichenfolgen
 * Zwischenspeichern jeder eindeutigen URL 
 
-Die erste Option ist die Standardeinstellung. Dies bedeutet, dass nur eine zwischengespeicherte Version eines Objekts vorhanden ist – unabhängig von der Abfragezeichenfolge, die in der URL für den Zugriff verwendet wird. 
+Die erste Option ist die Standardeinstellung. Dies bedeutet, dass nur eine zwischengespeicherte Version eines Objekts vorhanden ist, und zwar unabhängig von der Abfragezeichenfolge in der URL. 
 
 In diesem Abschnitt des Tutorials ändern Sie das Zwischenspeicherverhalten, sodass jede eindeutige URL zwischengespeichert wird.
 
@@ -235,7 +242,10 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 ![„V2“ im Titel des CDN, Abfragezeichenfolge 1](media/app-service-web-tutorial-content-delivery-network/v2-in-cdn-title-qs1.png)
 
-In dieser Ausgabe ist zu sehen, dass jede Abfragezeichenfolge anders behandelt wird: „q=1“ wurde bereits verwendet, und der zwischengespeicherte Inhalt wird zurückgegeben (V2), aber „q=2“ ist neu, sodass der aktuelle Web-App-Inhalt abgerufen und zurückgegeben wird (V3).
+Diese Ausgabe veranschaulicht, dass jede Abfragezeichenfolge anders behandelt wird:
+
+* q=1 wurden zuvor verwendet, weshalb zwischengespeicherte Inhalte zurückgegeben werden (V2).
+* q=2 ist neu, weshalb die neuesten Web-App-Inhalte abgerufen und zurückgegeben werden (V3).
 
 Weitere Informationen finden Sie unter [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](../cdn/cdn-query-string.md).
 
@@ -261,7 +271,7 @@ Navigieren Sie zur Website der Domänenregistrierungsstelle, und suchen Sie den 
 
 Suchen Sie den Abschnitt zur Verwaltung von CNAMEs. Öffnen Sie ggf. die Seite mit erweiterten Einstellungen, und suchen Sie nach den Wörtern CNAME, Alias oder Unterdomänen.
 
-Erstellen Sie einen neuen CNAME-Eintrag, mit dem Ihre gewählte Unterdomäne (z.B. **static** oder **cdn**) dem zuvor im Portal angezeigten **Endpunkthostnamen** zugeordnet wird. 
+Erstellen Sie einen CNAME-Eintrag, mit dem Ihre gewählte Unterdomäne (z.B. **static** oder **cdn**) dem zuvor im Portal angezeigten **Endpunkthostnamen** zugeordnet wird. 
 
 ### <a name="enter-the-custom-domain-in-azure"></a>Eingeben der benutzerdefinierten Domäne in Azure
 
@@ -269,7 +279,7 @@ Kehren Sie zur Seite **Benutzerdefinierte Domänen hinzufügen** zurück, und ge
    
 Azure überprüft, ob der CNAME-Eintrag für den eingegebenen Domänennamen vorhanden ist. Wenn der CNAME-Eintrag korrekt ist, wird Ihre benutzerdefinierte Domäne überprüft.
 
-Es kann eine Weile dauern, bis der CNAME-Eintrag an alle Namensserver im Internet verteilt wurde. Wenn die Domäne nicht sofort erkannt wird, Sie aber sicher sind, dass der CNAME-Eintrag richtig ist, sollten Sie einige Minuten warten und die Domäne dann erneut überprüfen.
+Es kann eine Weile dauern, bis der CNAME-Eintrag an alle Namensserver im Internet verteilt wurde. Wenn Ihre Domäne nicht sofort überprüft wird, warten Sie einige Minuten und wiederholen dann den Vorgang.
 
 ### <a name="test-the-custom-domain"></a>Testen der benutzerdefinierten Domäne
 
@@ -283,7 +293,7 @@ Weitere Informationen finden Sie unter [Zuordnen von CDN-Inhalt (Content Deliver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines CDN-Endpunkts
@@ -291,12 +301,11 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Verwenden von Abfragezeichenfolgen zum Steuern von zwischengespeicherten Versionen
 > * Verwenden einer benutzerdefinierten Domäne für den CDN-Endpunkt
 
-Die folgenden Artikel enthalten Informationen zur Optimierung der CDN-Leistung.
+Die folgenden Artikel enthalten Informationen zur Optimierung der CDN-Leistung:
 
 > [!div class="nextstepaction"]
 > [Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN](../cdn/cdn-improve-performance.md)
 
 > [!div class="nextstepaction"]
 > [Vorabladen von Assets auf einen Azure CDN-Endpunkt](../cdn/cdn-preload-endpoint.md)
-
 

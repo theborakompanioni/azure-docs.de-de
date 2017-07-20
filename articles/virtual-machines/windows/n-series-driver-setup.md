@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 717f4969a91209576a504c94c31993b938770432
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 96921f4be8aabb6d960ee4f66acd6c07d7ba7f95
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -64,7 +65,11 @@ Sie können die Treiberinstallation im Geräte-Manager überprüfen. Das folgend
 
 ![Eigenschaften des GPU-Treibers](./media/n-series-driver-setup/GPU_driver_properties.png)
 
-Führen Sie zum Abfragen des GPU-Gerätestatus das mit dem Treiber installierte Befehlszeilenprogramm [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) aus. 
+Führen Sie zum Abfragen des GPU-Gerätestatus das mit dem Treiber installierte Befehlszeilenprogramm [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) aus.
+
+1. Öffnen Sie eine Eingabeaufforderung und wechseln Sie in das Verzeichnis **C:\Programme\NVIDIA Corporation\NVSMI**.
+
+2. Führen Sie **nvidia-smi** aus. Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich wie unten angezeigt. Beachten Sie, dass eine **GPU-Auslastung** von **0 %** angezeigt wird, sofern gerade keine GPU-Auslastung auf dem virtuellen Computer ausgeführt wird.
 
 ![NVIDIA-Gerätestatus](./media/n-series-driver-setup/smi.png)  
 

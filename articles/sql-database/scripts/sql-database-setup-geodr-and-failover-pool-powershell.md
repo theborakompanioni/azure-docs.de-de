@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skript – Einrichten der Georeplikation – in Pool für elastische Datenbanken enthaltene SQL-Datenbank | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Einrichten der aktiven Georeplikation für eine in einem Pool für elastische Datenbanken enthaltene Azure SQL-Datenbank mithilfe von PowerShell"
+title: "PowerShell-Beispiel: Aktive Georeplikation für in Pool zusammengefasste Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Azure PowerShell-Beispielskript für das Einrichten der aktiven Georeplikation für eine in einem Pool enthaltene Azure SQL-Datenbank"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 3f62371eb84df1ba0f29ef2c6fe0da82674ed069
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 34a4970e9b0e99cbbbbc52788b00edab4a197755
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="configure-active-geo-replication-for-a-pooled-azure-sql-database-using-powershell"></a>Konfigurieren der aktiven Georeplikation für eine in einem Pool für elastische Datenbanken enthaltene Azure SQL-Datenbank mit PowerShell
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool enthaltene Azure SQL-Datenbank
 
-Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine in einem Pool für elastische Datenbanken enthaltene Datenbank und führt ein Failover zum sekundären Replikat aus.
+In diesem PowerShell-Beispielskript wird die aktive Georeplikation für eine in einem elastischen Pool zusammengefasste Azure SQL-Datenbank konfiguriert und ein Failover für das sekundäre Replikat der Azure SQL-Datenbank ausgeführt.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

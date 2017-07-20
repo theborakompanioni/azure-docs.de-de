@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3735d656429da1f1fe7569f640b272b099382032
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -174,6 +174,117 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
 Wenn die Abfrage aktiv auf Ressourcen einer anderen Abfrage wartet, lautet der Status **AcquireResources**.  Wenn die Abfrage über alle erforderlichen Ressourcen verfügt, ist der Status **Granted**.
+
+## <a name="monitor-tempdb"></a>Überwachen von tempdb
+Eine hohe tempdb-Auslastung kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Überprüfen Sie zuerst, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass tempdb beim Ausführen der Abfrage vollständig ausgelastet ist. Im Folgenden wird beschrieben, wie zu jedem Knoten die tempdb-Auslastung pro Abfrage ermittelt wird. 
+
+Erstellen Sie die folgende Ansicht, um die entsprechende Knoten-ID für „sys.dm_pdw_sql_requests“ zuzuordnen. Dadurch können Sie andere Pass-Through-DMVs nutzen und diese Tabellen mit „sys.dm_pdw_sql_requests“ verknüpfen.
+
+```sql
+-- sys.dm_pdw_sql_requests with the correct node id
+CREATE VIEW sql_requests AS
+(SELECT
+       sr.request_id,
+       sr.step_index,
+       (CASE 
+              WHEN (sr.distribution_id = -1 ) THEN 
+              (SELECT pdw_node_id FROM sys.dm_pdw_nodes WHERE type = 'CONTROL') 
+              ELSE d.pdw_node_id END) AS pdw_node_id,
+       sr.distribution_id,
+       sr.status,
+       sr.error_id,
+       sr.start_time,
+       sr.end_time,
+       sr.total_elapsed_time,
+       sr.row_count,
+       sr.spid,
+       sr.command
+FROM sys.pdw_distributions AS d
+RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
+```
+Führen Sie die folgende Abfrage aus, um tempdb zu überwachen:
+
+```sql
+-- Monitor tempdb
+SELECT
+    sr.request_id,
+    ssu.session_id,
+    ssu.pdw_node_id,
+    sr.command,
+    sr.total_elapsed_time,
+    es.login_name AS 'LoginName',
+    DB_NAME(ssu.database_id) AS 'DatabaseName',
+    (es.memory_usage * 8) AS 'MemoryUsage (in KB)',
+    (ssu.user_objects_alloc_page_count * 8) AS 'Space Allocated For User Objects (in KB)',
+    (ssu.user_objects_dealloc_page_count * 8) AS 'Space Deallocated For User Objects (in KB)',
+    (ssu.internal_objects_alloc_page_count * 8) AS 'Space Allocated For Internal Objects (in KB)',
+    (ssu.internal_objects_dealloc_page_count * 8) AS 'Space Deallocated For Internal Objects (in KB)',
+    CASE es.is_user_process
+    WHEN 1 THEN 'User Session'
+    WHEN 0 THEN 'System Session'
+    END AS 'SessionType',
+    es.row_count AS 'RowCount'
+FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
+    INNER JOIN sys.dm_pdw_nodes_exec_sessions AS es ON ssu.session_id = es.session_id AND ssu.pdw_node_id = es.pdw_node_id
+    INNER JOIN sys.dm_pdw_nodes_exec_connections AS er ON ssu.session_id = er.session_id AND ssu.pdw_node_id = er.pdw_node_id
+    INNER JOIN sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
+WHERE DB_NAME(ssu.database_id) = 'tempdb'
+    AND es.session_id <> @@SPID
+    AND es.login_name <> 'sa' 
+ORDER BY sr.request_id;
+```
+## <a name="monitor-memory"></a>Überwachen des Arbeitsspeichers
+
+Der Arbeitsspeicher kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Überprüfen Sie zuerst, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass die Speicherauslastung von SQL Server beim Ausführen der Abfrage die Grenzwerte erreicht.
+
+Die folgende Abfrage gibt die Speicherauslastung von SQL Server und die Speicherauslastung pro Knoten zurück:   
+```sql
+-- Memory consumption
+SELECT
+  pc1.cntr_value as Curr_Mem_KB, 
+  pc1.cntr_value/1024.0 as Curr_Mem_MB,
+  (pc1.cntr_value/1048576.0) as Curr_Mem_GB,
+  pc2.cntr_value as Max_Mem_KB,
+  pc2.cntr_value/1024.0 as Max_Mem_MB,
+  (pc2.cntr_value/1048576.0) as Max_Mem_GB,
+  pc1.cntr_value * 100.0/pc2.cntr_value AS Memory_Utilization_Percentage,
+  pc1.pdw_node_id
+FROM
+-- pc1: current memory
+sys.dm_pdw_nodes_os_performance_counters AS pc1
+-- pc2: total memory allowed for this SQL instance
+JOIN sys.dm_pdw_nodes_os_performance_counters AS pc2 
+ON pc1.object_name = pc2.object_name AND pc1.pdw_node_id = pc2.pdw_node_id
+WHERE
+pc1.counter_name = 'Total Server Memory (KB)'
+AND pc2.counter_name = 'Target Server Memory (KB)'
+```
+## <a name="monitor-transaction-log-size"></a>Überwachen der Größe von Transaktionsprotokollen
+Die folgende Abfrage gibt die Größe von Transaktionsprotokollen für jede Verteilung zurück. Überprüfen Sie, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Wenn eine der Protokolldateien 160 GB erreicht, sollten Sie Ihre Instanz eventuell zentral hochskalieren oder die Transaktionsgröße beschränken. 
+```sql
+-- Transaction log size
+SELECT
+  instance_name as distribution_db,
+  cntr_value*1.0/1048576 as log_file_size_used_GB,
+  pdw_node_id 
+FROM sys.dm_pdw_nodes_os_performance_counters 
+WHERE 
+instance_name like 'Distribution_%' 
+AND counter_name = 'Log File(s) Used Size (KB)'
+AND counter_name = 'Target Server Memory (KB)'
+```
+## <a name="monitor-transaction-log-rollback"></a>Überwachen des Rollbacks von Transaktionsprotokollen
+Wenn bei Ihren Abfragen Fehler auftreten oder deren Verarbeitung sehr lange dauert, können Sie überprüfen und überwachen, ob Sie über Rollbacks von Transaktionen verfügen.
+```sql
+-- Monitor rollback
+SELECT 
+    SUM(CASE WHEN t.database_transaction_next_undo_lsn IS NOT NULL THEN 1 ELSE 0 END),
+    t.pdw_node_id,
+    nod.[type]
+FROM sys.dm_pdw_nodes_tran_database_transactions t
+JOIN sys.dm_pdw_nodes nod ON t.pdw_node_id = nod.pdw_node_id
+GROUP BY t.pdw_node_id, nod.[type]
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu DMVs finden Sie unter [Systemsichten][System views].

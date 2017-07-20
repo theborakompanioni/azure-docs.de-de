@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 5/16/2017
 ms.author: msfussell
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 17e9f4f81c60d86f804d1d9e6df2014dd4568d75
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: 25d6b056421e71fa70ed20a39589f77dbbc25c69
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/17/2017
 
 In diesem Artikel werden Sie durch den Prozess zum Erstellen von Diensten in Windows-Containern geführt.
 
-Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung von Anwendungen, die sich aus Microservices in Containern zusammensetzen. 
+Service Fabric verfügt über mehrere Funktionen für die Erstellung von Anwendungen, die sich aus in Containern laufenden Microservices zusammensetzen. 
 
 Die Funktionen sind:
 
@@ -55,32 +55,32 @@ Visual Studio stellt eine Service Fabric-Dienstvorlage bereit, um Sie beim Berei
 
 1. Wählen Sie **Datei** > **Neues Projekt**, und erstellen Sie eine Service Fabric-Anwendung.
 2. Wählen Sie die Dienstvorlage **Gastcontainer** aus.
-3. Wählen Sie **Imagename** aus, und geben Sie den Pfad zu dem Image in Ihrem Containerrepository an, z.B. https://hub.docker.com/beispielsweise myrepo/myimage:v1 
+3. Wählen Sie **Abbildname** aus, und geben Sie den Pfad zu dem Image in Ihrem Containerrepository an. Beispielsweise `myrepo/myimage:v1` in https://hub.docker.com
 4. Geben Sie dem Dienst einen Namen, und klicken Sie auf **OK**.
 5. Wenn der im Container ausgeführte Dienst einen Endpunkt für die Kommunikation benötigt, können Sie in der Datei „ServiceManifest.xml“ das Protokoll, den Port und den Typ hinzufügen. Beispiel: 
      
     `<Endpoint Name="MyContainerServiceEndpoint" Protocol="http" Port="80" UriScheme="http" PathSuffix="myapp/" Type="Input" />`
     
-    Durch die Bereitstellung des `UriScheme` wird automatisch der Containerendpunkt im Service Fabric Naming Service registriert, damit er einfacher erkennbar ist. Der Port kann wie bei jedem anderen Dienst entweder fest sein (wie im Beispiel oben) oder dynamisch zugeordnet werden (der Port wird leer gelassen und aus dem der Anwendung zugeordneten Bereich zugewiesen).
-    Sie müssen auch die Zuordnung vom Containerport zum Hostport konfigurieren, indem Sie im Anwendungsmanifest eine `PortBinding`-Richtlinie angeben, wie unten beschrieben.
+    Durch die Bereitstellung von `UriScheme` registriert Service Fabric automatisch den Containerendpunkt im Service Fabric Naming Service, damit er einfacher erkennbar ist. Der Port kann fest (wie im vorherigen Beispiel gezeigt) oder dynamisch zugeordnet werden. Wenn Sie keinen Port angeben, wird der Port aus dem Portbereich der Anwendung dynamisch zugeordnet (wie es bei jedem anderen Dienst auch der Fall wäre).
+    Sie müssen auch die Zuordnung vom Container zum Hostport konfigurieren, indem Sie im Anwendungsmanifest eine `PortBinding`-Richtlinie angeben. Weitere Informationen finden Sie unter [Konfigurieren der Zuordnung vom Containerport zum Hostport](#Portsection).
 6. Wenn Ihr Container eine Ressourcenkontrolle erfordert, fügen Sie eine `ResourceGovernancePolicy` hinzu.
 8. Wenn der Container eine Authentifizierung mit einem privaten Repository durchführen muss, fügen Sie `RepositoryCredentials` hinzu.
-7. Sie können das Paket jetzt verwenden und Aktionen für den lokalen Cluster veröffentlichen, wenn die Ausführung unter Windows Server 2016 mit aktivierter Containerunterstützung erfolgt. 
+7. Wenn Sie einen Windows Server 2016-Computer mit aktivierter Containerunterstützung verwenden, können Sie das Paket verwenden und Aktionen veröffentlichen, die in Ihrem lokalen Cluster bereitgestellt werden sollen. 
 8. Wenn Sie bereit sind, können Sie die Anwendung in einem Remotecluster veröffentlichen oder die Projektmappe in die Quellcodeverwaltung einchecken. 
 
-Eine Beispielanwendung finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers).
+Ein Beispiel finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="creating-a-windows-server-2016-cluster"></a>Erstellen eines Windows Server 2016-Clusters
-Um die in einem Container enthaltene Anwendung bereitzustellen, müssen Sie einen Cluster unter Windows Server 2016 mit aktivierter Containerunterstützung erstellen. Dafür können Sie den lokalen Entwicklungscomputer oder Azure Resource Manager (ARM) in Azure verwenden. 
+Um die in einem Container enthaltene Anwendung bereitzustellen, müssen Sie einen Cluster unter Windows Server 2016 mit aktivierter Containerunterstützung erstellen. Ihr Cluster kann lokal ausgeführt oder mit Azure Resource Manager in Azure bereitgestellt werden. 
 
-Um einen Cluster mit ARM bereitzustellen, wählen Sie das Image **Windows Server 2016 mit Containern** in Azure aus. Weitere Informationen finden Sie im Artikel [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Stellen Sie sicher, dass Sie die folgenden ARM-Einstellungen verwenden:
+Um einen Cluster mit Azure Resource Manager bereitzustellen, wählen Sie das Image **Windows Server 2016 mit Containern** in Azure aus. Weitere Informationen finden Sie im Artikel [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Stellen Sie sicher, dass Sie die folgenden Azure Resource Manager-Einstellungen verwenden:
 
 ```xml
 "vmImageOffer": { "type": "string","defaultValue": "WindowsServer"     },
 "vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
 "vmImageVersion": { "defaultValue": "latest","type": "string"     },  
 ```
-Sie können auch die [hier verfügbare ARM-Vorlage mit 5 Knoten ](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) zum Erstellen eines Clusters verwenden. Lesen Sie alternativ [den Blogbeitrag von Leok](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html) zur Verwendung von Service Fabric und Windows-Containern.
+Sie können auch die [Azure Resource Manager-Vorlage Five Node](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) verwenden, um einen Cluster zu erstellen. Lesen Sie auch [den Community-Blogbeitrag](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html) zum Verwenden von Service Fabric und Windows-Containern.
 
 <a id="manually"></a>
 
@@ -108,7 +108,7 @@ Fügen Sie im Dienstmanifest einen `ContainerHost` für den Einstiegspunkt hinzu
     </CodePackage>
 ```
 
-Sie können Eingabebefehle verwenden, indem Sie das optionale `Commands`-Element mit einer per Komma getrennten Gruppe von Befehlen für die Ausführung im Container angeben.
+Im Element `Commands` können Sie optionale Befehle angeben, die beim Containerstart ausgeführt werden. Mehrere Befehle sind per Komma zu trennen. 
 
 ## <a name="understand-resource-governance"></a>Grundlagen der Ressourcenkontrolle
 Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen beschränkt werden, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, werden Ressourcenlimits für ein Dienstcodepaket deklariert. Ressourcenlimits können für die folgenden Ressourcen festgelegt werden:
@@ -120,7 +120,7 @@ Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen
 * BlkioWeight (relative BlockIO-Gewichtung)
 
 > [!NOTE]
-> In einer zukünftigen Version wird die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten enthalten sein, z.B. IOPS, Bit/s (Lesen/Schreiben) und andere.
+> Die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten wie IOPs, Bit/s (Lesen/Schreiben) und andere sind für eine zukünftige Version geplant.
 > 
 > 
 
@@ -165,7 +165,7 @@ Der private Schlüssel des Zertifikats zum Entschlüsseln des Kennworts muss auf
     </ServiceManifestImport>
 ```
 
-## <a name="configure-container-port-to-host-port-mapping"></a>Konfigurieren der Zuordnung vom Containerport zum Hostport
+## <a name ="Portsection"></a>Konfigurieren der Zuordnung vom Containerport zum Hostport
 Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, indem Sie im Anwendungsmanifest ein `PortBinding`-Element angeben. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet.
 
 ```xml
@@ -180,9 +180,8 @@ Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, in
 ```
 
 ## <a name="configure-container-to-container-discovery-and-communication"></a>Konfigurieren der Container-zu-Container-Ermittlung und -Kommunikation
-Mit der `PortBinding`-Richtlinie können Sie einen Containerport einem `Endpoint` im Dienstmanifest zuordnen. Dies wird im folgenden Beispiel veranschaulicht. Der Endpunkt `Endpoint1` kann einen festen Port angeben (z.B. Port 80). Es kann auch kein Port angegeben werden. In diesem Fall wird ein zufälliger Port aus dem Anwendungsportbereich für Sie ausgewählt.
+Sie können das Element `PortBinding` verwenden, um einen Containerport zu einem Endpunkt im Dienstmanifest zuzuordnen. Im folgenden Beispiel ist durch den Endpunkt `Endpoint1` der feststehende Port 8905 vorgegeben. Es kann auch kein Port angegeben werden. In diesem Fall wird ein zufälliger Port aus dem Anwendungsportbereich für Sie ausgewählt.
 
-Wenn Sie einen Endpunkt angeben, kann Service Fabric mit dem `Endpoint`-Tag im Dienstmanifest eines Gastcontainers den Endpunkt automatisch für den Naming Service veröffentlichen. Andere Dienste, die im Cluster ausgeführt werden, können diesen Container dann ermitteln, indem sie die REST-Abfragen für die Auflösung nutzen.
 
 ```xml
     <ServiceManifestImport>
@@ -194,11 +193,12 @@ Wenn Sie einen Endpunkt angeben, kann Service Fabric mit dem `Endpoint`-Tag im D
         </Policies>
     </ServiceManifestImport>
 ```
+Wenn Sie einen Endpunkt angeben, kann Service Fabric mit dem `Endpoint`-Tag im Dienstmanifest eines Gastcontainers den Endpunkt automatisch für den Naming Service veröffentlichen. Andere Dienste, die im Cluster ausgeführt werden, können diesen Container dann ermitteln, indem sie die REST-Abfragen für die Auflösung nutzen.
 
-Durch die Registrierung mit dem Naming Service können Sie im Code für Ihre Container per [Reverseproxy](service-fabric-reverseproxy.md) leicht eine Kommunikation von Container zu Container einrichten. Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden. Weitere Informationen finden Sie im nächsten Abschnitt. 
+Durch die Registrierung mit dem Naming Service können Sie per [Reverseproxy](service-fabric-reverseproxy.md) eine Kommunikation von Container zu Container einrichten. Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden. Weitere Informationen finden Sie im nächsten Abschnitt. 
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurieren und Festlegen von Umgebungsvariablen
-Umgebungsvariablen können für jedes Codepaket im Dienstmanifest angegeben werden, und zwar sowohl für Dienste, die in Containern bereitgestellt werden, als auch für Dienste, die als Prozesse oder ausführbare Gastanwendungsdateien bereitgestellt werden. Diese Werte von Umgebungsvariablen können im Anwendungsmanifest spezifisch überschrieben oder während der Bereitstellung als Anwendungsparameter angegeben werden.
+Zu jedem Codepaket im Dienstmanifest können Umgebungsvariablen angegeben werden. Diese Funktion ist für alle Dienste verfügbar, unabhängig davon, ob diese als Container, Prozesse oder ausführbare Gastdateien bereitgestellt werden. Die können die Werte von Umgebungsvariablen im Anwendungsmanifest überschreiben oder während der Bereitstellung als Anwendungsparameter angeben.
 
 Der folgende XML-Codeausschnitt eines Dienstmanifests enthält ein Beispiel für die Angabe von Umgebungsvariablen für ein Codepaket:
 
@@ -236,6 +236,15 @@ Diese Umgebungsvariablen können auf Anwendungsmanifestebene überschrieben werd
 ```
 
 Im obigen Beispiel haben wir einen expliziten Wert für die Umgebungsvariable `HttpGateway` (19000) angegeben, und der Wert für den Parameter `BackendServiceName` wird über den Anwendungsparameter `[BackendSvc]` festgelegt. Diese Einstellungen ermöglichen Ihnen das Angeben des Werts für den `BackendServiceName`-Wert während der Anwendungsbereitstellung, und Sie müssen keinen festen Wert im Manifest verwenden.
+
+## <a name="configure-isolation-mode"></a>Isolationsmodus konfigurieren
+
+Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V.  Mit dem Prozessisolationsmodus verwenden alle auf demselben Host ausgeführten Container denselben Kernel wie der Host. Mit dem Hyper-V-Isolationsmodus werden die Kernels der einzelnen Hyper-V-Container und des Containerhosts voneinander getrennt. Der Isolationsmodus wird im `ContainerHostPolicies`-Tag der Anwendungsmanifestdatei angegeben.  Als Isolationsmodi können `process`, `hyperv` und `default` angegeben werden. Der `default`-Standardisolationsmodus für Windows Server-Hosts lautet `process`, für Windows 10-Hosts `hyperv`.  Im folgenden Codeausschnitt wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
+
+```xml
+   <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
+```
+
 
 ## <a name="complete-examples-for-application-and-service-manifest"></a>Vollständige Beispiele für Anwendungs- und Dienstmanifest
 
@@ -299,5 +308,5 @@ Dies ist ein Beispiel für ein Dienstmanifest (aus dem obigen Anwendungsmanifest
 Nachdem Sie nun einen Dienst in einem Container bereitgestellt haben, können Sie sich unter [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) über die Verwaltung des dazugehörigen Lebenszyklus informieren.
 
 * [Übersicht über Service Fabric und Container](service-fabric-containers-overview.md)
-* Eine Beispielanwendung finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers).
+* Ein Beispiel finden Sie in [Codebeispiele zu Service Fabric-Containern in GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 

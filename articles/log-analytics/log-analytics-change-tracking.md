@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a3d958e1a37ddf6821d41afe7427faec1b8259b2
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 7e0fa9a83c3c83145a4813422bf73a0e711d0ecc
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung
+
+![Symbol „Änderungen nachverfolgen“](./media/log-analytics-change-tracking/change-tracking-symbol.png)
 
 Dieser Artikel unterstützt Sie bei der einfachen Erkennung von Änderungen an Ihrer Umgebung mithilfe der Änderungsnachverfolgungslösung in Log Analytics. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows-Dateien und Registrierungsschlüsseln, an Windows-Diensten und an Linux-Daemons nach. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
 
@@ -33,6 +35,17 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 * Sie benötigen einen [Windows](log-analytics-windows-agents.md)-, [Operations Manager](log-analytics-om-agents.md)- oder [Linux](log-analytics-linux-agents.md)-Agent auf jedem Computer, auf dem Änderungen überwacht werden sollen.
 * Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die Lösung für die Änderungsnachverfolgung hinzu.  Es ist keine weitere Konfiguration erforderlich.
+
+### <a name="configure-linux-files-to-track"></a>Konfigurieren von Linux-Dateien für die Nachverfolgung
+Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Linux-Computern die folgenden Schritte aus.
+
+1. Klicken Sie im OMS-Portal auf **Einstellungen** (das Zahnradsymbol).
+2. Klicken Sie auf der Seite **Einstellungen** auf **Daten** und dann auf **Nachverfolgung von Linux-Dateien**.
+3. Geben Sie unter „Nachverfolgung von Linux-Dateien“ den vollständigen Pfad ein, und zwar einschließlich des Dateinamens der Datei, die Sie nachverfolgen möchten. Klicken Sie dann auf das Symbol **Hinzufügen**. Beispiel: „/etc/*.conf“
+4. Klicken Sie auf **Speichern**.  
+  
+> [!NOTE]
+> Beim Nachverfolgen von Linux-Dateien stehen zusätzliche Funktionen zur Verfügung, darunter das Nachverfolgen von Verzeichnissen, das rekursive durchlaufen von Verzeichnissen und das Nachverfolgen von Platzhaltern.
 
 ### <a name="configure-windows-files-to-track"></a>Konfigurieren der nachzuverfolgenden Windows-Dateien
 Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Windows-Computern die folgenden Schritte aus.
@@ -52,14 +65,30 @@ Führen Sie zum Konfigurieren der nachzuverfolgenden Registrierungsschlüssel au
 4. Klicken Sie auf **Speichern**.  
    ![Änderungsverfolgung für Windows-Registrierung](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
+### <a name="explanation-of-linux-file-collection-properties"></a>Erläuterung der Eigenschaften der Linux-Dateisammlung
+1. **Typ**
+   * **Datei** (Metadaten der Berichtsdatei: Größe, Änderungsdatum, Hashwert usw.)
+   * **Verzeichnis** (Metadaten des Berichtsverzeichnisses: Größe, Änderungsdatum usw.)
+2. **Links** (Behandlung von Symlink-Verweisen von Linux auf andere Dateien oder Verzeichnisse)
+   * **Ignorieren** (Ignorieren der Symlinks während Rekursionen, um die Verweisdateien/-verzeichnisse nicht einzuschließen)
+   * **Folgen** (Während der Rekursion den Symlinks folgen, um auch die Verweisdateien/-verzeichnisse einzuschließen)
+   * **Verwalten** (Den Symlinks folgen und die Verarbeitung des zurückgegebenen Inhalts verändern) 
+   
+   > [!NOTE]   
+   > Die Option „Verwalten“ von Links wird nicht empfohlen, da der Abruf des Dateiinhalts derzeit nicht unterstützt wird.
+   
+3. **Rekursiv durchlaufen** (Die Dateiebenen rekursiv durchlaufen und alle Dateien nachverfolgen, die die Pfadanweisung erfüllen)
+4. **Sudo** (Den Zugriff auf Dateien oder Verzeichnisse aktivieren, für die eine Sudo-Berechtigung benötigt wird)
+
 ### <a name="limitations"></a>Einschränkungen
 Die Änderungsnachverfolgungslösung unterstützt derzeit Folgendes nicht:
 
-* Ordner (Verzeichnisse)
-* Rekursion
-* Platzhalter
+* Ordner (Verzeichnisse) für Windows File Tracking
+* Rekursion für Windows File Tracking
+* Platzhalter für Windows File Tracking
 * Pfadvariablen
 * Netzwerkdateisysteme
+* Inhalt der Datei
 
 Weitere Einschränkungen:
 

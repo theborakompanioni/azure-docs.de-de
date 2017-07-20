@@ -4,7 +4,7 @@ description: Verwenden Sie Power BI, um Temperatur- und Luftfeuchtigkeitsdaten v
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Datenvisualisierung in Echtzeit, Visualisierung von Livedaten, Visualisierung von Sensordaten
 ms.assetid: e67c9c09-6219-4f0f-ad42-58edaaa74f61
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: ba25cdee46ce4ceb5acd5ff9da683a057f2bd733
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 404ab1682d9b77f22e60888340ffb70a101ed5d4
+ms.contentlocale: de-de
+ms.lasthandoff: 06/15/2017
 
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
@@ -120,11 +120,7 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten** > **Jetzt** > **Starten*
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Erstellen und Veröffentlichen eines Power BI-Berichts zum Visualisieren der Daten
 
-1. Stellen Sie sicher, dass die Beispielanwendung ausgeführt wird. Falls nicht, führen Sie den folgenden Befehl aus, um die Anwendung auf dem Pi-Gerät auszuführen:
-
-   ```bash
-   gulp run
-   ```
+1. Stellen Sie sicher, dass die Beispielanwendung auf Ihrem Gerät ausgeführt wird. Ist dies nicht der Fall, finden Sie in den Tutorials unter [Einrichten Ihres Geräts](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started) weitere Informationen.
 1. Melden Sie sich bei Ihrem [Power BI](https://powerbi.microsoft.com/en-us/)-Konto an.
 1. Wechseln Sie zum Gruppenarbeitsbereich, den Sie festgelegt haben, als Sie die Ausgabe für den Stream Analytics-Auftrag erstellt haben.
 1. Klicken Sie auf **Streamingdatasets**.
@@ -164,3 +160,4 @@ Sie haben Power BI erfolgreich eingesetzt, um Sensordaten in Ihrem Azure IoT Hub
 Es gibt eine alternative Möglichkeit zum Anzeigen von Daten in Ihrem Azure IoT Hub. Siehe [Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit Azure-Web-Apps](iot-hub-live-data-visualization-in-web-apps.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

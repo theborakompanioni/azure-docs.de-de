@@ -12,20 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/14/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: c0c4ea4eba742e4abe3da9e92508665ec1d91490
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: dc9b64062d7f68c83aa090eec96744819a5ca423
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 In diesem Thema wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Ein ausführliches Tutorial zum Erstellen einer Vorlage finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
-
-Begrenzen Sie die Größe der Vorlage auf 1 MB und die jeder Parameterdatei auf 64 KB. Die 1-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. 
 
 ## <a name="template-format"></a>Vorlagenformat
 In der einfachsten Struktur enthält eine Vorlage die folgenden Elemente:
@@ -78,19 +76,34 @@ Jedes Element enthält Eigenschaften, die Sie festlegen können. Das folgende Be
     },
     "resources": [
       {
+          "condition": "<boolean-value-whether-to-deploy>",
           "apiVersion": "<api-version-of-resource>",
           "type": "<resource-provider-namespace/resource-type-name>",
           "name": "<name-of-the-resource>",
           "location": "<location-of-resource>",
-          "tags": "<name-value-pairs-for-resource-tagging>",
+          "tags": {
+              "<tag-name1>": "<tag-value1>",
+              "<tag-name2>": "<tag-value2>"
+          },
           "comments": "<your-reference-notes>",
+          "copy": {
+              "name": "<name-of-copy-loop>",
+              "count": "<number-of-iterations>",
+              "mode": "<serial-or-parallel>",
+              "batchSize": "<number-to-deploy-serially>"
+          },
           "dependsOn": [
               "<array-of-related-resource-names>"
           ],
-          "properties": "<settings-for-the-resource>",
-          "copy": {
-              "name": "<name-of-copy-loop>",
-              "count": "<number-of-iterations>"
+          "properties": {
+              "<settings-for-the-resource>",
+              "copy": [
+                  {
+                      "name": ,
+                      "count": ,
+                      "input": {}
+                  }
+              ]
           },
           "resources": [
               "<array-of-child-resources>"
@@ -171,7 +184,7 @@ Die zulässigen Typen und Werte lauten folgendermaßen:
 
 Um einen Parameter als optional anzugeben, geben Sie einen Standardwert (kann eine leere Zeichenfolge sein) an. 
 
-Wenn Sie einen Parameternamen in der Vorlage resources, die einem Parameter im Befehl zum Bereitstellen der Vorlage entspricht, sind die bereitgestellten Werte möglicherweise mehrdeutig. Resource Manager löst diese Probleme durch Hinzufügen des Postfix-Elements **FromTemplate** zum Vorlagenparameter. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment][deployment2cmdlet] verursacht. Sie werden während der Bereitstellung zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
+Wenn Sie einen Parameternamen in der Vorlage resources, die einem Parameter im Befehl zum Bereitstellen der Vorlage entspricht, sind die bereitgestellten Werte möglicherweise mehrdeutig. Resource Manager löst diese Probleme durch Hinzufügen des Postfix-Elements **FromTemplate** zum Vorlagenparameter. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) verursacht. Sie werden während der Bereitstellung zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
 > [!NOTE]
 > Für Kennwörter, Schlüssel und andere geheime Informationen sollte der Typ **secureString** verwendet werden. Wenn Sie vertrauliche Daten an ein JSON-Objekt übergeben, verwenden Sie den Typ **secureObject**. Vorlagenparameter des Typs „secureString“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden. 
@@ -280,6 +293,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 ```json
 "resources": [
   {
+      "condition": "<boolean-value-whether-to-deploy>",
       "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
       "name": "<name-of-the-resource>",
@@ -289,13 +303,24 @@ Sie definieren Ressourcen mit der folgenden Struktur:
           "<tag-name2>": "<tag-value2>"
       },
       "comments": "<your-reference-notes>",
+      "copy": {
+          "name": "<name-of-copy-loop>",
+          "count": "<number-of-iterations>",
+          "mode": "<serial-or-parallel>",
+          "batchSize": "<number-to-deploy-serially>"
+      },
       "dependsOn": [
           "<array-of-related-resource-names>"
       ],
-      "properties": "<settings-for-the-resource>",
-      "copy": {
-          "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>"
+      "properties": {
+          "<settings-for-the-resource>",
+          "copy": [
+              {
+                  "name": ,
+                  "count": ,
+                  "input": {}
+              }
+          ]
       },
       "resources": [
           "<array-of-child-resources>"
@@ -306,15 +331,16 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 
 | Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
+| condition | Nein | Boolescher Wert, der angibt, ob die Ressource bereitgestellt wird. |
 | apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. |
 | type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). |
 | Name |Ja |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Darüber hinaus überprüfen Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. |
 | location |Variabel |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. eine Rollenzuweisung) jedoch nicht. Weitere Informationen finden Sie unter [Festlegen des Ressourcenspeicherorts in Azure Resource Manager-Vorlagen](resource-manager-template-location.md). |
 | tags |Nein |Markierungen, die der Ressource zugeordnet sind Weitere Informationen finden Sie unter [Kennzeichnen von Ressourcen in Azure Resource Manager-Vorlagen](resource-manager-template-tags.md). |
 | Kommentare |Nein |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage |
+| copy |Nein |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Der Standardmodus ist parallel. Geben Sie den seriellen Modus an, wenn nicht alle Ressourcen gleichzeitig bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Vermeiden Sie das Hinzufügen unnötiger Abhängigkeiten, da diese die Bereitstellung verlangsamen und Ringabhängigkeiten schaffen können. Tipps für das Festlegen von Abhängigkeiten finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](resource-group-define-dependencies.md). |
-| Eigenschaften |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. |
-| copy |Nein |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md). |
+| Eigenschaften |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Sie können auch ein Kopierarray angeben, um mehrere Instanzen einer Eigenschaft zu erstellen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md). |
 | resources |Nein |Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Stellen Sie nur Ressourcentypen bereit, die laut Schema der übergeordneten Ressource zulässig sind. Der vollqualifizierte Typ der untergeordneten Ressource enthält den übergeordneten Ressourcentyp, z.B. **Microsoft.Web/sites/extensions**. Eine Abhängigkeit von der übergeordneten Ressource ist nicht impliziert. Sie müssen diese Abhängigkeit explizit definieren. |
 
 Der Abschnitt „Ressourcen“ enthält ein Array mit den bereitzustellenden Ressourcen. Innerhalb jeder Ressource können Sie auch ein Array untergeordneter Ressourcen definieren. Der Abschnitt „Ressourcen“ kann daher beispielsweise folgende Struktur aufweisen:
@@ -342,6 +368,70 @@ Der Abschnitt „Ressourcen“ enthält ein Array mit den bereitzustellenden Res
 ```      
 
 Weitere Informationen zum Definieren von untergeordneten Ressourcen finden Sie unter [Festlegen von Namen und Typ für eine untergeordnete Ressource in einer Resource Manager-Vorlage](resource-manager-template-child-resource.md).
+
+Das Element **condition** gibt an, ob die Ressource bereitgestellt wird. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Um zum Beispiel anzugeben, ob ein neues Speicherkonto bereitgestellt wird, verwenden Sie:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+Ein Beispiel für die Verwendung einer neuen oder einer vorhandenen Ressource finden Sie unter [Vorlage für neue oder vorhandene Ressourcenbedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).
+
+Um anzugeben, ob ein virtueller Computer mit einem Kennwort oder einem SSH-Schlüssel bereitgestellt wird, definieren Sie zwei Versionen des virtuellen Computers in der Vorlage, und verwenden Sie **condition**, um die Nutzung zu unterscheiden. Übergeben Sie einen Parameter, der angibt, welches Szenario bereitgestellt werden soll.
+
+```json
+{
+    "condition": "[equals(parameters('passwordOrSshKey'),'password')]",
+    "apiVersion": "2016-03-30",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[concat(variables('vmName'),'password')]",
+    "properties": {
+        "osProfile": {
+            "computerName": "[variables('vmName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]"
+        },
+        ...
+    },
+    ...
+},
+{
+    "condition": "[equals(parameters('passwordOrSshKey'),'sshKey')]",
+    "apiVersion": "2016-03-30",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[concat(variables('vmName'),'ssh')]",
+    "properties": {
+        "osProfile": {
+            "linuxConfiguration": {
+                "disablePasswordAuthentication": "true",
+                "ssh": {
+                    "publicKeys": [
+                        {
+                            "path": "[variables('sshKeyPath')]",
+                            "keyData": "[parameters('adminSshKey')]"
+                        }
+                    ]
+                }
+            }
+        },
+        ...
+    },
+    ...
+}
+``` 
+
+Ein Beispiel für die Verwendung eines Kennworts oder eines SSH-Schlüssels zum Bereitstellen von virtuellen Computern finden Sie unter [Vorlage für Benutzername- oder SSH-Bedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
 
 ## <a name="outputs"></a>Ausgaben
 Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. Sie könnten z. B. den URI für den Zugriff auf eine bereitgestellte Ressource zurückgeben.
@@ -376,11 +466,23 @@ Das folgende Beispiel zeigt einen Wert, der im Ausgabeabschnitt zurückgegeben w
 
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-state.md).
 
+## <a name="template-limits"></a>Vorlagengrenzwerte
+
+Begrenzen Sie die Größe der Vorlage auf 1 MB und die jeder Parameterdatei auf 64 KB. Die 1-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. 
+
+Außerdem gelten folgenden Beschränkungen:
+
+* 256 Parameter
+* 256 Variablen
+* 800 Ressourcen (einschließlich copy-Anzahl)
+* 64 Ausgabewerte
+* 24.576 Zeichen in einem Vorlagenausdruck
+
+Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](resource-group-linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](resource-manager-objects-as-parameters.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 * Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](resource-group-linked-templates.md).
 * Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dieses Szenario ist bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken üblich, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions-resource.md#resourceid).
-
-[deployment2cmdlet]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/new-azurermresourcegroupdeployment
 

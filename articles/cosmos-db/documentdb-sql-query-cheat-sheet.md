@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 06/05/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: e714d3585b78d28aba069464a444162103739657
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 04810ffa33d90d31003d0919c3edb2710fed453c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="azure-cosmos-db-sql-query-cheat-sheet-pdf"></a>PDF-Datei mit dem SQL-Abfragespickzettel für Azure Cosmos DB
-Mit dem **SQL-Abfragespickzettel für Azure Cosmos DB** können Sie schnell Abfragen für Azure Cosmos DB-Daten schreiben, da dort allgemeine Datenbankabfragen, Schlüsselwörter, integrierte Funktionen und Operatoren auf einem leicht zu druckenden PDF-Referenzblatt dargestellt werden. 
+# <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB: PDF-Datei mit dem SQL-Abfragespickzettel für die DocumentDB-API
+Mit dem **Azure Cosmos DB: SQL-Abfragespickzettel für die DocumentDB-API** können Sie schnell Abfragen für DocumentDB-API-Daten schreiben, da dort allgemeine Datenbankabfragen, Schlüsselwörter, integrierte Funktionen und Operatoren auf einem leicht zu druckenden PDF-Referenzblatt dargestellt werden. 
 
 Cosmos DB unterstützt die relationale, hierarchische und räumliche Abfrage von JSON-Dokumenten mithilfe von [SQL](documentdb-sql-query.md), ohne Angabe eines Schemas oder sekundärer Indizes. Neben den standardmäßigen ANSI-SQL-Schlüsselwörtern und -Operatoren unterstützt Cosmos DB eine benutzerdefinierte JavaScript-Funktionen (UDFs), JavaScript-Operatoren und eine Vielzahl von integrierten Funktionen.
 

@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2017
+ms.date: 06/06/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 06fe033be4df07d8c691733016bc7c44dd49f51c
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: e0c44f6aabb56dfc97188bafa5e54ce2a0183e11
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -37,20 +38,16 @@ Wenn Sie Ihre lokalen Standorte sicher mit einem virtuellen Netzwerk verbinden m
 * Welche Art von VPN-Gateway ist für die Lösung erforderlich, die Sie erstellen möchten?
 * Welche Gateway-SKU sollten Sie verwenden?
 
+
+### <a name="planning-table"></a>Planen der Tabelle
 Die folgende Tabelle kann Ihnen dabei helfen, die beste Verbindungsoption für Ihre Lösung zu finden.
 
 [!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
-### <a name="gwrequire"></a>Gatewayanforderungen nach VPN-Typ und SKU
-[!INCLUDE [vpn-gateway-gwsku](../../includes/vpn-gateway-gwsku-include.md)]
 
-Weitere Informationen zu Gateway-SKUs finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
-
-#### <a name="aggregate-throughput-by-sku-and-vpn-type"></a>Aggregieren des Durchsatzes nach SKU und VPN-Typ
+### <a name="gateway-skus"></a>Gateway-SKUs
 [!INCLUDE [vpn-gateway-table-gwtype-aggtput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-#### <a name="supported-configurations-by-sku-and-vpn-type"></a>Unterstützte Konfigurationen nach SKU und VPN-Typ
-[!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
 ### <a name="wf"></a>Workflow
 Die folgende Liste beschreibt den allgemeinen Workflow für die Cloud-Konnektivität:

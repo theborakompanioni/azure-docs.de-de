@@ -14,11 +14,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 7e18325426bac86d89ff0235e18ddca9fd21e8de
-ms.openlocfilehash: 41a58493c8931e8ce241ce31ecb1ca20b5a82cb3
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: cbdc964b16cbc6cf291dbc4b6f60b20d67d9fc41
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -26,7 +28,7 @@ ms.openlocfilehash: 41a58493c8931e8ce241ce31ecb1ca20b5a82cb3
 
 ##<a name="overview"></a>Übersicht
 
-In Microsoft Azure Media Services (AMS) stellt ein **Streamingendpunkt** einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Media Services bietet auch eine nahtlose Integration von Azure CDN. Der ausgehende Stream des StreamingEndpoint-Diensts kann ein Livestream oder ein Video on Demand oder ein progressiver Download Ihres Medienobjekts in Ihrem Media Services-Konto sein. Jede Azure Media Services-Konto umfasst einen Standard-Streamingendpunkt. Zusätzliche Streamingendpunkte können unter dem Konto erstellt werden. Es gibt zwei Versionen von Streamingendpunkten, 1.0 und 2.0. Ab dem 10. Januar 2017 gehört zu allen neu erstellten AMS-Konten **standardmäßig** ein Streamingendpunkt der Version 2.0. Zusätzliche Streamingendpunkte, die Sie diesem Konto hinzufügen, haben auch die Version 2.0. Diese Änderung hat keine Auswirkung auf vorhandene Konten. Vorhandenen Streamingendpunkte haben die Version 1.0 und können auf Version 2.0 aktualisiert werden. Durch diese Änderung ergeben sich Änderungen am Verhalten, an der Abrechnung und an Features (weitere Informationen finden Sie im nachstehenden Abschnitt **Streamingtypen und -versionen**).
+In Microsoft Azure Media Services (AMS) stellt ein **Streamingendpunkt** einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Media Services bietet auch eine nahtlose Integration von Azure CDN. Der ausgehende Stream des StreamingEndpoint-Diensts kann ein Livestream oder ein bei Bedarf abgerufenes Video oder ein progressiver Download Ihres Medienobjekts in Ihrem Media Services-Konto sein. Jedes Azure Media Services-Konto enthält einen Standard-StreamingEndpoint. Zusätzliche StreamingEndpoints können unter dem Konto erstellt werden. Es gibt zwei Versionen von StreamingEndpoint, 1.0 und 2.0. Ab dem 10. Januar 2017 gehört zu allen neu erstellten AMS-Konten **standardmäßig** StreamingEndpoint in Version 2.0. Zusätzliche Streamingendpunkte, die Sie diesem Konto hinzufügen, haben auch die Version 2.0. Diese Änderung hat keine Auswirkung auf vorhandene Konten. Vorhandenen Streamingendpunkte haben die Version 1.0 und können auf Version 2.0 aktualisiert werden. Durch diese Änderung ergeben sich Änderungen am Verhalten, an der Abrechnung und an Features (weitere Informationen finden Sie im nachstehenden Abschnitt **Streamingtypen und -versionen**).
 
 Darüber wurden in der (im Januar 2017 veröffentlichten) Azure Media Services-Version 2.15 der Entität „Streamingendpunkt“ die folgenden Eigenschaften hinzugefügt: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime** und **StreamingEndpointVersion**. Eine detaillierte Übersicht über diese Eigenschaften finden Sie [hier](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
@@ -54,10 +56,10 @@ Ausführlichere Informationen finden Sie im nachfolgenden Abschnitt **Vergleich 
 
 Für Benutzer, die vor der Version vom 10. Januar 2017 AMS-Konten erstellt haben, verfügen Sie über den **klassischen** Typ von Streamingendpunkt. Dieser Typ ist Teil der Streamingendpunktversion „1.0“.
 
-Wenn Ihr Streamingendpunkt der **Version&1;.0** mindestens eine Premium-Streamingeinheit aufweist, handelt es sich um den Premium-Streamingendpunkt, der ohne zusätzliche Konfigurationsschritte alle AMS-Features bietet (genau wie der Typ **Standard/Premium**.
+Wenn Ihr Streamingendpunkt der **Version 1.0** mindestens eine Premium-Streamingeinheit aufweist, handelt es sich um den Premium-Streamingendpunkt, der ohne zusätzliche Konfigurationsschritte alle AMS-Features bietet (genau wie der Typ **Standard/Premium**.
 
 >[!NOTE]
->**Klassische** Streamingendpunkte (Version 1.0 ohne Streameinheit) bieten eingeschränkte Features und keine SLA. Es wird empfohlen, zum Typ **Standard** zu migrieren, um sich eine bessere Umgebung zu sichern und Features wie u.a. die dynamische Paketerstellung oder Verschlüsselung zu nutzen, die der Typ **Standard** bietet. Um zum Typ **Standard** zu migrieren, wechseln Sie zum [Azure-Portal](https://portal.azure.com/) und wählen **Standard abonnieren** aus. Weitere Informationen zur Migration finden Sie im Abschnitt [Migration](#migration-between-types).
+>**Klassische** Streamingendpunkte (Version 1.0 ohne Streameinheit) bieten eingeschränkte Features und keine SLA. Es wird empfohlen, zum Typ **Standard** zu migrieren, um sich eine bessere Umgebung zu sichern und Features wie die dynamische Paketerstellung oder Verschlüsselung zu nutzen, die der Typ **Standard** bietet. Um zum Typ **Standard** zu migrieren, wechseln Sie zum [Azure-Portal](https://portal.azure.com/) und wählen **Standard abonnieren** aus. Weitere Informationen zur Migration finden Sie im Abschnitt [Migration](#migration-between-types).
 >
 >Beachten Sie, dass dieser Vorgang nicht rückgängig gemacht werden kann und Auswirkungen auf die Kosten hat.
 >
@@ -112,10 +114,5 @@ Version 1.0 mit mindestens einer Streamingeinheit mit CDN|Premium mit/ohne CDN|Z
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

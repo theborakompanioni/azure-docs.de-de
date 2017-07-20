@@ -5,17 +5,16 @@ services: postgresql
 author: kamathsun
 ms.author: sukamat
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: postgresql-database
-ms.tgt_pltfrm: portal
+ms.custom: mvc
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/01/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2df8d6e3d3629ad0e383aa80ba7fee02f8862410
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: a4ddb9d4f672de6cf1ebe137bf06e5e2c8b7796f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
@@ -45,23 +44,24 @@ In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Compute-Einheite
 Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgende Fehlermeldung angezeigt:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.
 
-## <a name="preview-functional-limitations"></a>Funktionale Beschränkungen der Vorschau:
-### <a name="scale-operations"></a>Skalierungsvorgänge:
-1.    Die dynamische Skalierung von Servern über verschiedene Diensttarife hinweg, d.h. ein Wechsel zwischen den Diensttarifen „Basic“ und „Standard“, wird derzeit nicht unterstützt.
-2.    Die dynamische bedarfsgesteuerte Steigerung des Speichers auf vorab erstellten Servern wird derzeit nicht unterstützt.
-3.    Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
+## <a name="preview-functional-limitations"></a>Funktionale Beschränkungen der Vorschau
+### <a name="scale-operations"></a>Skalierungsvorgänge
+1.  Die dynamische Skalierung von Servern über verschiedene Diensttarife hinweg, d.h. ein Wechsel zwischen den Diensttarifen „Basic“ und „Standard“, wird derzeit nicht unterstützt.
+2.  Die dynamische bedarfsgesteuerte Steigerung des Speichers auf vorab erstellten Servern wird derzeit nicht unterstützt.
+3.  Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
 
-### <a name="server-version-upgrades"></a>Upgrades von Serverversionen:
+### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
 - Die automatisierte Migration zwischen Hauptversionen von Datenbankmodulen wird derzeit nicht unterstützt.
 
-### <a name="subscription-management"></a>Abonnementverwaltung:
+### <a name="subscription-management"></a>Abonnementverwaltung
 - Die dynamische Verschiebung von vorab erstellten Servern zwischen Abonnement- und Ressourcengruppen wird derzeit nicht unterstützt.
 
-### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung:
-1.    Die Wiederherstellung in anderen Diensttarifen und/oder Compute-Einheiten und Speichergrößen ist nicht zulässig.
-2.    Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
+### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
+1.  Die Wiederherstellung in anderen Diensttarifen und/oder Compute-Einheiten und Speichergrößen ist nicht zulässig.
+2.  Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
 
-## <a name="next-steps"></a>Nächste Schritte:
-- Thema [Informationen zu den verfügbaren Funktionen in jedem Diensttarif](concepts-service-tiers.md) lesen
+## <a name="next-steps"></a>Nächste Schritte
+- Thema [Informationen zu den verfügbaren Funktionen in jedem Tarif](concepts-service-tiers.md) lesen
 - Thema [Unterstützte PostgreSQL-Datenbankversionen ](concepts-supported-versions.md) lesen
 - Thema [Sichern und Wiederherstellen eines Servers in Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals](howto-restore-server-portal.md) durchgehen
+

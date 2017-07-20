@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: aaf3e9daca2fb810aa32b1b58acdade6ddfc1744
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 548b4af7619521e4b61b99b94c1d40f835e6efdb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -153,7 +153,7 @@ Weitere Informationen finden Sie auf [GitHub](https://github.com/Microsoft/CNTK)
 Caffe ist ein Deep Learning-Framework des Berkeley Vision and Learning Center. Es ist unter „/opt/caffe“ verfügbar. Beispiele finden Sie unter „/opt/caffe/examples“.
 
 #### <a name="h2o"></a>H2O
-H2O ist eine schnelle, verteilte In-Memory-Plattform für Machine Learning und Predictive Analytics. Ein Python-Paket ist sowohl in der Stammumgebung als auch der py35 Anaconda-Umgebung installiert. Ein R-Paket ist ebenfalls installiert. Die Flow Web-Benutzeroberfläche kann mit „java -jar /dsvm/tools/h2o/current/h2o.jar“ gestartet werden. Navigieren Sie zu „ http://localhost:54321 “, um zu beginnen. Beispiel-Notebooks stehen auch in JupyterHub zur Verfügung.
+H2O ist eine schnelle, verteilte In-Memory-Plattform für Machine Learning und Predictive Analytics. Ein Python-Paket ist sowohl in der Stammumgebung als auch der py35 Anaconda-Umgebung installiert. Ein R-Paket ist ebenfalls installiert. Führen Sie zum Starten von H2O von der Befehlszeile `java -jar /dsvm/tools/h2o/current/h2o.jar` aus; es gibt verschiedene [Befehlszeilenoptionen](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line), die Sie konfigurieren können. Sie können die Flow-Webbenutzeroberfläche aufrufen, indem Sie für den Einstieg zu http://localhost:54321 navigieren. Beispiel-Notebooks stehen auch in JupyterHub zur Verfügung.
 
 #### <a name="keras"></a>Keras
 Keras ist eine allgemeine API für neuronale Netze in Python, die entweder auf TensorFlow oder auf Theano ausgeführt werden kann. Sie ist in der Stammumgebung und der py35 Python-Umgebung verfügbar. 

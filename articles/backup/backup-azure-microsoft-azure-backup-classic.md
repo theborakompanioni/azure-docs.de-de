@@ -13,12 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 06/14/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 2b278b5c512d3ea0ff045869487d4551118c0e5c
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 348df3f4359e572d3514e1b11ce709f946c2efea
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -58,11 +59,13 @@ Wenn Sie Azure Backup Server einer Domäne hinzufügen möchten, empfiehlt es si
 ## <a name="2-backup-vault"></a>2. Sicherungstresor
 ![Schritt 2](./media/backup-azure-microsoft-azure-backup/step2.png)
 
-Unabhängig davon, ob Sie die Sicherungsdaten an Azure senden oder lokal speichern, muss Azure Backup Server bei einem Tresor registriert sein.
+Unabhängig davon, ob Sie die Sicherungsdaten an Azure senden oder lokal speichern, muss Azure Backup Server bei einem Tresor registriert sein. Wenn Sie mit der Arbeit mit Azure Backup nicht vertraut sind und Azure Backup Server verwenden möchten, sehen Sie die Azure-Portal-Version dieses Artikels ein: [Vorbereiten der Sicherung von Workloads mit Azure Backup Server](backup-azure-microsoft-azure-backup.md).
 
 > [!IMPORTANT]
-> Ab März 2017 können im klassischen Portal keine Sicherungstresore mehr erstellt werden. Vorhandene Sicherungstresore werden weiterhin unterstützt, und [mithilfe von Azure PowerShell können neue Sicherungstresore erstellt werden](./backup-client-automation-classic.md#create-a-backup-vault). Microsoft empfiehlt jedoch das Erstellen von Recovery Services-Tresoren für alle Bereitstellungen, da zukünftige Verbesserungen nur für Recovery Services-Tresore gelten.
->
+> Ab März 2017 können im klassischen Portal keine Sicherungstresore mehr erstellt werden.
+> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> **Ab dem 1. November 2017**:
+>- Für alle verbleibenden Sicherungstresore wird automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
+>- Der Zugriff auf Ihre Sicherungsdaten im klassischen Portal wird nicht möglich sein. Verwenden Sie stattdessen das Azure-Portal, um auf Ihre Sicherungsdaten in Recovery Services-Tresoren zuzugreifen.
 >
 
 

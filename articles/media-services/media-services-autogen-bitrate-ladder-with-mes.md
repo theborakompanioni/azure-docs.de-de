@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 06/06/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 244413be8b094605883445bb3cbf675b538b704e
-ms.lasthandoff: 03/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 3bad3219b087523125047f24d643ffdc5e24caa0
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -28,6 +29,9 @@ ms.lasthandoff: 03/10/2017
 In diesem Thema wird gezeigt, wie Sie mit Media Encoder Standard (MES) automatisch eine Reihe von Bitraten/Auflösungs-Paaren auf Basis der eingegebenen Auflösung und Bitrate generieren können. Die automatisch generierte Voreinstellung wird nie die eingegebene Auflösung und Bitrate übersteigen. Ist die Eingabe beispielsweise 720p bei 3MBit/s, bleibt die Ausgabe bestenfalls bei 720p, und es beginnt mit niedrigeren Raten als 3MBit/s.
 
 Um dieses Feature verwenden zu können, müssen Sie beim Erstellen einer Codierungsaufgabe die Voreinstellung **Adaptives Streaming** angeben. Bei Verwendung der Voreinstellung **Adaptives Streaming** begrenzt der MES-Encoder eine Reihe von Bitraten/Auflösungs-Paaren intelligent. Allerdings können Sie die Codierungskosten nicht steuern, da der Dienst bestimmt, wie viele Ebenen bei welcher Auflösung verwendet werden. Am [Ende](#output) dieses Themas finden Sie Beispiele von Ausgabeebenen, die von MES als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden.
+
+>[!NOTE]
+> Diese Voreinstellung sollte nur verwendet werden, wenn ein Ausgabeasset erstellt werden soll, das gestreamt werden kann. Insbesondere wird das Ausgabeasset MP4-Dateien enthalten, wo Audio- und Videodaten sich nicht überlappen. Wenn die Ausgabe MP4-Dateien enthalten muss, wo Audio- und Videodaten sich überlappen (z.B. zur Verwendung als Datei für progressiven Download), verwenden Sie eine der [in diesem Abschnitt](media-services-mes-presets-overview.md) aufgeführten Voreinstellungen.
 
 ## <a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 

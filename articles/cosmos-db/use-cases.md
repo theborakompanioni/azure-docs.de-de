@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5b0fcc28637e95484d33ce99c7d7a379c4513948
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 6dfa8307162c377ef57412233a81f2769e0f891d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -44,7 +44,7 @@ Aufgrund der folgenden Attribute eignet sich Cosmos DB besonders gut für Hochle
 
 * Cosmos DB partitioniert Ihre Daten systemintern, um eine höhere Verfügbarkeit und Skalierbarkeit zu gewährleisten. Cosmos DB bietet eine Garantie von 99,99 % für Verfügbarkeit, Durchsatz, Konsistenz und niedrige Latenz.
 * Cosmos DB verfügt über SSD-gestützten Speicher mit niedriger Latenz und kurzen Antwortzeiten im Millisekundenbereich.
-* Da Cosmos DB Konsistenzebenen wie „eventual“, „consistent prefix“, „session“ und „bounded-staleness“ unterstützt, wird eine vollständige Flexibilität und ein optimales Preis-Leistungs-Verhältnis ermöglicht. Kein Datenbankdienst bietet so viel Flexibilität wie Cosmos DB bei der Ebenenkonsistenz. 
+* Da Cosmos DB Konsistenzebenen wie „eventual (letztlich), „consistent prefix (Präfixkonsistenz)“, „session (Sitzung)“ und „bounded-staleness (begrenzte Veraltung)“ unterstützt, wird eine vollständige Flexibilität und ein optimales Preis-Leistungsverhältnis ermöglicht. Kein Datenbankdienst bietet so viel Flexibilität wie Cosmos DB bei der Ebenenkonsistenz. 
 * Cosmos DB verfügt über ein flexibles, datenfreundliches Preismodell, das Speicher und Durchsatz unabhängig voneinander misst.
 * Mit dem reservierten Durchsatzmodell in Cosmos DB können Sie mit der Anzahl von Lese-und Schreibvorgängen anstelle von CPU-Leistung, Arbeitsspeicher oder IOPS-Wert der verwendeten Hardware arbeiten.
 * Das Design von Cosmos DB ermöglicht Ihnen auch die Anpassung an sehr hohe Abfragevolumen (Milliarden Abfragen pro Tag).

@@ -1,31 +1,31 @@
 ---
 title: "Unterstützung für Gremlin in Azure Cosmos DB | Microsoft-Dokumentation"
-description: "Informationen über die Gremlin-Sprache, die verfügbaren Funktionen und Schritte in Azure Cosmos DB"
-services: cosmosdb
+description: "Informationen über die Gremlin-Sprache von Apache TinkerPop, die verfügbaren Funktionen und Schritte in Azure Cosmos DB"
+services: cosmos-db
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: 
 tags: 
-ms.assetid: 
-ms.service: cosmosdb
+ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
+ms.service: cosmos-db
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 06/10/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: db2287782df66ecee0795adb483e253021d0c2cf
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: acea54d202d1117cf2dfb1d35ad48346daa9053d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
 
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
-Azure Cosmos DB unterstützt eine [Gremlin]([Gremlin language](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)) Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen sowie Traversierungsvorgängen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
+Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin]([Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)) von [Apache Tinkerpop](http://tinkerpop.apache.org). Dabei handelt es sich um eine Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
 
 Azure Cosmos DB liefert für Unternehmen konzipierte Funktionen für Diagrammdatenbanken. Hierzu zählen globale Verteilungen, unabhängige Skalierungen von Speicher und Durchsatz, vorhersagbare Latenzen im einstelligen Millisekundenbereich, automatische Indizierungen und SLAs von 99,99 %. Da Azure Cosmos DB TinkerPop/Gremlin unterstützt, können Sie mühelos mit einer anderen Diagrammdatenbank geschriebene Anwendungen migrieren, ohne Codeänderungen vorzunehmen. Darüber hinaus wird Azure Cosmos DB aufgrund der Unterstützung für Gremlin nahtlos in TinkerPop-fähige Analyseframeworks wie [Apache Spark GraphX](http://spark.apache.org/graphx/) integriert. 
 
@@ -94,7 +94,7 @@ Die folgende Tabelle enthält die TinkerPop-Funktionen, die von Azure Cosmos DB 
 
 Azure Cosmos DB verwendet bei der Rückgabe von Ergebnissen aus Gremlin-Vorgängen das [GraphSON-Format](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format). GraphSON ist das Standardformat von Gremlin zur Darstellung von Vertices, Edges und (ein- und mehrwertigen) Eigenschaften mittels JSON. 
 
-Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azure Cosmos DB. 
+Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azure Cosmos DB, der *an den Client zurückgegeben wurde*. 
 
 ```json
   {
@@ -172,6 +172,7 @@ Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt 
 | --- | --- | --- | --- |
 | `addE` | Fügt einen Edge zwischen zwei Vertices hinzu | [addE-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
 | `addV` | Fügt einen Vertex zum Diagramm hinzu | [addV-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
+| `and` | Stellt sicher, dass alle Traversierungen einen Wert zurückgeben | [and-Schritt](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
 | `as` | Ein Schrittmodulator für die Zuweisung einer Variable zur Ausgabe eines Schritts | [as-Schritt](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
 | `by` | Ein mit `group` und `order` verwendeter Schrittmodulator | [by-Schritt](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
 | `coalesce` | Gibt die erste Traversierung, die ein Ergebnis zurückgibt, zurück | [coalesce-Schritt](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
@@ -209,4 +210,3 @@ Das für Schreibvorgänge optimierte Modul von Azure Cosmos DB unterstützt stan
 ## <a name="next-steps"></a>Nächste Schritte
 * Erste Schritte zum Erstellen einer Diagrammanwendung [mithilfe unserer SDKs](create-graph-dotnet.md) 
 * Informationen über die [Diagrammunterstützung von Azure Cosmos DB](graph-introduction.md)
-

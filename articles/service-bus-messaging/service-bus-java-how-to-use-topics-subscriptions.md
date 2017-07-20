@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Azure Service Bus-Themen mit Java | Microsoft-Dokumentation
-description: "Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements in Azure. Die Codebeispiele wurden für Java-Anwendungen geschrieben."
+description: Verwenden von Service Bus-Themen und -Abonnements in Azure.
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 06/28/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7132d1e42963d2e419d2bf1b7866ca5888f8719d
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 03cc66659c599b07623e4ba4757b8512a67577b1
 ms.contentlocale: de-de
-ms.lasthandoff: 03/24/2017
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -152,7 +152,7 @@ BrokeredMessage message = new BrokeredMessage("MyMessage");
 service.sendTopicMessage("TestTopic", message);
 ```
 
-An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage][BrokeredMessage] Klasse. [BrokeredMessage][BrokeredMessage] *Objekte enthalten eine Reihe von Standardmethoden (wie etwa* *setLabel* *und* *TimeToLive**), ein Wörterbuch für die Aufnahme benutzerdefinierter, anwendungsspezifischer Eigenschaften und einen Hauptteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Haupttext der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt in den Konstruktor der [BrokeredMessage][BrokeredMessage], übergeben wird. Anschließend wird der passende* *DataContractSerializer** zum Serialisieren des Objekts verwendet. Alternativ kann ein **java.io.InputStream** bereitgestellt werden.
+An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage][BrokeredMessage] Klasse. [BrokeredMessage][BrokeredMessage]* Objekte enthalten eine Reihe von Standardmethoden (wie etwa **setLabel** und **TimeToLive**), ein Wörterbuch für die Aufnahme benutzerdefinierter, anwendungsspezifischer Eigenschaften und einen Hauptteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Haupttext der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt in den Konstruktor der [BrokeredMessage][BrokeredMessage], übergeben wird. Anschließend wird der passende **DataContractSerializer** zum Serialisieren des Objekts verwendet. Alternativ kann ein **java.io.InputStream** bereitgestellt werden.
 
 Das folgende Beispiel veranschaulicht, wie fünf Testnachrichten an den **MessageSender** `TestTopic` gesendet werden, der im vorherigen Codeausschnitt abgerufen wurde.
 Beachten Sie, wie der Eigenschaftswert **MessageNumber** jeder Nachricht gemäß der Iteration der Schleife variiert (dadurch wird bestimmt, welche Abonnements die Nachricht erhalten):
@@ -168,7 +168,7 @@ service.sendTopicMessage("TestTopic", message);
 }
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Grenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 Verwenden Sie ein **ServiceBusContract**-Objekt, um Nachrichten aus einem Abonnement zu empfangen. Empfangene Nachrichten können in zwei unterschiedlichen Modi funktionieren: **ReceiveAndDelete** und **PeekLock**.

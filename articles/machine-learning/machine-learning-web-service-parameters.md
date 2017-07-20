@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: raymondl;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
-ms.openlocfilehash: 4c9f2bb57e3669327d8704b93fa56e2ace1e8b35
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 482726c1dae5385964e08b720e529817d5907537
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -54,7 +55,7 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export
    * Wählen Sie unter **Please specify authentication type**(Authentifizierungstyp angeben) die Option "Account" (Konto) aus.
    * Geben Sie die Kontoinformationen für den Azure-Blobspeicher ein. 
      <p />
-3. Klicken Sie auf das Symbol rechts neben **Path to blob beginning with container parameter**(Blob-Pfad beginnt mit Containerparameter). Es sieht folgendermaßen aus:
+3. Klicken Sie auf das Symbol rechts neben **Path to blob beginning with container parameter** (Blob-Pfad beginnt mit Containerparameter). Es sieht folgendermaßen aus:
    
    ![Symbol für Webdienstparameter][icon]
    
@@ -76,7 +77,7 @@ Benutzer des Webdiensts können jetzt beim Zugreifen auf den Webdienst ein neues
 ## <a name="more-information"></a>Weitere Informationen
 Ein ausführlicheres Beispiel finden Sie unter dem Eintrag [Web Service Parameters](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) im [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
-Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines veröffentlichten Webdiensts für maschinelles Lernen](machine-learning-consume-web-services.md).
+Weitere Informationen über den Zugriff auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines veröffentlichten Webdiensts für maschinelles Lernen](machine-learning-consume-web-services.md).
 
 <!-- Images -->
 [icon]: ./media/machine-learning-web-service-parameters/icon.png

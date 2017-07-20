@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 12/29/2016
+ms.date: 06/01/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4e542ea6431933668d96f7028431826bceb9f337
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 2ec31c5444f72c7255d8925bdb3ea85854cfaf1a
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -58,7 +59,7 @@ Im Anschluss finden Sie Überlegungen und Schritte zum Burst auf RDMA-fähige Az
     Konfigurieren Sie ein Zertifikat, um die Verbindung zwischen dem Hauptknoten und Azure zu sichern. Optionen und Verfahren finden Sie unter [Szenarien zum Konfigurieren des Azure-Verwaltungszertifikats für HPC Pack](http://technet.microsoft.com/library/gg481759.aspx). Für Testbereitstellungen installiert HPC Pack ein Zertifikat mit dem Namen „Default Microsoft HPC Azure Management“, das Sie schnell in Ihr Azure-Abonnement hochladen können.
 3. **Erstellen eines neuen Clouddiensts und eines Speicherkontos**
    
-    Verwenden Sie das klassische Azure-Portal, um einen Clouddienst und ein Speicherkonto für die Bereitstellung in einer Region zu erstellen, in der RDMA-fähige Instanzen verfügbar sind.
+    Verwenden Sie das Azure-Portal, um einen Clouddienst und ein Speicherkonto für die Bereitstellung in einer Region zu erstellen, in der RDMA-fähige Instanzen verfügbar sind.
 4. **Erstellen einer Azure-Knotenvorlage**
    
     Verwenden Sie den Assistenten zum Erstellen von Knotenvorlagen in HPC Cluster Manager. Die Schritte finden Sie unter [Erstellen einer Azure-Knotenvorlage](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) im Thema mit den Schritten zum Bereitstellen von Azure-Knoten mit Microsoft HPC Pack.

@@ -1,79 +1,50 @@
 ---
-title: "Azure CLI-Beispiele zum Erstellen eines einzelnen Azure-Datenbank für MySQL-Servers und Konfigurieren einer Firewallregel | Microsoft-Dokumentation"
+title: "Azure CLI-Skript: Erstellen einer Azure-Datenbank für MySQL | Microsoft-Dokumentation"
 description: "Dieses CLI-Beispielskript erstellt einen einzelnen Azure-Datenbank für MySQL-Server und konfiguriert eine Firewallregel auf Serverebene."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: mysql-database
-ms.tgt_pltfrm: portal
-ms.devlang: azurecli
-ms.topic: article
-ms.custom: sample
-ms.date: 05/10/2017
+ms.devlang: azure-cli
+ms.custom: mvc
+ms.topic: sample
+ms.date: 05/31/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fa961f123dddc2e6243d1efbd1d72b994179eb79
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 201db294ce362ef3e09cbe62f48bd51c8ea94dbb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Erstellen eines MySQL-Servers und Konfigurieren einer Firewallregel mit der Azure CLI
 Dieses CLI-Beispielskript erstellt einen einzelnen Azure-Datenbank für MySQL-Server und konfiguriert eine Firewallregel auf Serverebene. Nach der erfolgreichen Ausführung des Skripts ist der MySQL-Server für alle Azure-Dienste und die konfigurierte IP-Adresse erreichbar.
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
+
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="sample-script"></a>Beispielskript
-```bash
-#!/bin/bash
-
-# Create a resource group
-az group create \
---name myresource \
---location westus
-
-# Create a MySQL server in the resource group
-# Name of a server maps to DNS name and is thus required to be globally unique in Azure.
-# Substitute the <server_admin_password> with your own value.
-az mysql server create \
---name mysqlserver4demo \
---resource-group myresource \
---location westus \
---admin-user myadmin \
---admin-password <server_admin_password> \
---performance-tier Basic \
---compute-units 50 \
-
-# Configure a firewall rule for the server
-# The ip address range that you want to allow to access your server
-az mysql server firewall-rule create \
---resource-group myresource \
---server mysqlserver4demo \
---name AllowIps \
---start-ip-address 0.0.0.0 \
---end-ip-address 255.255.255.255
-
-# Default database ‘postgres’ gets created on the server.
-```
+Bearbeiten Sie in diesem Beispielskript die hervorgehobenen Zeilen, um den Benutzernamen und das Kennwort des Administrators anzupassen.
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/create-mysql-server-and-firewall-rule.sh?highlight=15-16 "Erstellen Sie eine Azure-Datenbank für MySQL und eine Firewallregel auf Serverebene.")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
- Verwenden Sie nach Ausführung des Skriptbeispiels den folgenden Befehl, um die Ressourcengruppe und alle damit verbundenen Ressourcen zu entfernen.
-```azurecli
-az group delete --name myresource
-```
+Nach Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe und alle damit verbundenen Ressourcen entfernt werden.
+[!code-azurecli-interactive[main](../../../cli_scripts/mysql/create-mysql-server-and-firewall-rule/delete-mysql.sh "Löschen Sie die Ressourcengruppe.")]
+
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | **Befehl** | **Hinweise** |
-|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| [az group create](https://docs.microsoft.com/en-us/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| az mysql server create | Erstellt einen MySQL-Server, der die Datenbanken hostet. |
-| az mysql server firewall create | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle Server und darauf befindlichen Datenbanken ermöglicht. |
-| [az group delete](https://docs.microsoft.com/en-us/cli/azure/resource#delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+|---|---|
+| [az group create](/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az mysql server create](/cli/azure/mysql/server#create) | Erstellt einen MySQL-Server, der die Datenbanken hostet. |
+| [az mysql server firewall create](/cli/azure/mysql/server/firewall-rule#create) | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle Server und darauf befindlichen Datenbanken ermöglicht. |
+| [az group delete](/cli/azure/group#delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure CLI-Beispiele für Azure-Datenbank für MySQL](../sample-scripts-azure-cli.md)
+- Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure/overview).
+- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure-Datenbank für MySQL](../sample-scripts-azure-cli.md)
 

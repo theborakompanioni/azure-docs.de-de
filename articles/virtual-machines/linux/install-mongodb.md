@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/14/2017
+ms.date: 06/23/2017
 ms.author: iainfou
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 0494e684d1996fe6208589b6dd806ecdcc2b7822
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: e19c09558285497f29eb78b4f4ae5b15d7f1a191
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -39,7 +39,7 @@ Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengrup
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVM* mit dem Benutzer *azureuser* erstellt, indem die Authentifizierung mit einem öffentlichen SSH-Schlüssel und der öffentliche DNS-Eintrag *mypublicdns* verwendet werden:
+Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVM* mit dem Benutzer *azureuser* erstellt, indem die Authentifizierung mit einem öffentlichen SSH-Schlüssel verwendet wird
 
 ```azurecli
 az vm create \
@@ -47,20 +47,13 @@ az vm create \
     --name myVM \
     --image CentOS \
     --admin-username azureuser \
-    --generate-ssh-keys \
-    --public-ip-address-dns-name mypublicdns
+    --generate-ssh-keys
 ```
 
-Melden Sie sich bei dem virtuellen Computer mit der öffentlichen DNS-Adresse des virtuellen Computers an. Sie können die öffentliche DNS-Adresse mit dem Befehl [az vm show](/cli/azure/vm#show) anzeigen:
-
-```azurecli
-az vm show -g myResourceGroup -n myVM -d --query [fqdns] -o tsv
-```
-
-Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer unter Verwendung Ihres eigenen Benutzernamens und der öffentlichen DNS-Adresse her:
+Führen Sie die SSH-Authentifizierung beim virtuellen Computer mit Ihrem eigenen Benutzernamen und dem in der Ausgabe aus dem vorherigen Schritt angegebenen `publicIpAddress` aus:
 
 ```bash
-ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
+ssh azureuser@<publicIpAddress>
 ```
 
 Erstellen Sie zum Hinzufügen der Installationsquellen für MongoDB wie folgt eine **yum**-Repositorydatei:
@@ -228,6 +221,8 @@ az group deployment show \
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesen Beispielen wird vom virtuellen Computer eine lokale Verbindung mit der MongoDB-Instanz hergestellt. Wenn Sie von einem anderen virtuellen Computer oder Netzwerk eine Verbindung mit der MongoDB-Instanz herstellen möchten, stellen Sie sicher, dass die entsprechenden [Netzwerksicherheitsgruppen-Regeln](nsg-quickstart.md) erstellt werden.
+
+In diesen Beispielen wird die MongoDB-Kernumgebung für Entwicklungszwecke bereitgestellt. Wenden Sie die erforderlichen Optionen der Sicherheitskonfiguration für Ihre Umgebung an. Weitere Informationen finden Sie in den [Dokumenten zur MongoDB-Sicherheit](https://docs.mongodb.com/manual/security/).
 
 Weitere Informationen zur Erstellung mithilfe von Vorlagen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 

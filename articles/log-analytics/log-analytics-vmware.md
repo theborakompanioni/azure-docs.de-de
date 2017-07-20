@@ -12,16 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 813120692232096275f3a7500c3b54e16af26b77
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: a9fc8427e76ee8fa48fa8f1ad452c6fe9b544ce2
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
+
+![VMware-Symbol](./media/log-analytics-vmware/vmware-symbol.png)
+
 Die VMware-Überwachungslösung in Log Analytics ist eine Lösung, die Ihnen dabei hilft, eine Methode für die zentralisierte Protokollierung und Überwachung für große VMware-Protokolle zu erstellen. Dieser Artikel beschreibt, wie Sie mithilfe der Lösung an einem Ort Probleme mit ESXi-Hosts beheben und die Hosts erfassen und verwalten. Mit der Lösung können Sie detaillierte Daten für alle ESXi-Hosts an einem einzigen Ort anzeigen. Sie sehen die wichtigsten Ereigniszahlen, Statusangaben und Trends der VM- und ESXi-Hosts, die über ESXi-Hostprotokolle bereitgestellt werden. Sie können Probleme behandeln, indem Sie zentralisierte ESXi-Hostprotokolle anzeigen und durchsuchen. Zudem können Sie Warnungen auf der Grundlage von Protokollsuchabfragen erstellen.
 
 Die Lösung verwendet die native Syslog-Funktionalität des ESXi-Hosts, um Daten auf einen virtuellen Zielcomputer zu übertragen, auf dem sich ein OMS-Agent befindet. Die Lösung schreibt allerdings keine Dateien in das Syslog auf dem virtuellen Zielcomputer. Der OMS-Agent öffnet Port 1514 und lauscht dort. Sobald Daten empfangen werden, überträgt der OMS-Agent diese Daten an die OMS.
@@ -77,7 +81,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, w
 
 | Plattform | OMS-Agent für Linux | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-|  Linux |![Ja](./media/log-analytics-vmware/oms-bullet-green.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |Alle 3 Minuten |
+| Linux |![Ja](./media/log-analytics-vmware/oms-bullet-green.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |Alle 3 Minuten |
 
 In der folgenden Tabelle sind Beispiele für Datenfelder aufgeführt, die von der VMware-Überwachungslösung erfasst werden:
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9932ac04699f49b7a3ea3dabe4d380fdc4d05ec1
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 0db4ba33c3a6720ba447e27f530ca97c992fbb72
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -70,6 +70,10 @@ Rückkehr zur base64-Darstellung der Eingabezeichenfolge.
 |:--- |:--- |:--- |:--- |
 | inputString |Ja |string |Der Wert, der als base64-Darstellung zurückgegeben wird. |
 
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge mit der base64-Darstellung.
+
 ### <a name="examples"></a>Beispiele
 
 Das folgende Beispiel zeigt die Funktionsweise der base64-Funktion.
@@ -111,9 +115,13 @@ Das folgende Beispiel zeigt die Funktionsweise der base64-Funktion.
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge mit der base64-Darstellung.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
 <a id="base64tojson" />
 
@@ -127,6 +135,10 @@ Konvertiert eine base64-Darstellung in ein JSON-Objekt.
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | base64Value |Ja |string |Die in ein JSON-Objekt zu konvertierende base64-Darstellung. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein JSON-Objekt.
 
 ### <a name="examples"></a>Beispiele
 
@@ -169,9 +181,13 @@ Im folgenden Beispiel wird die base64ToJson-Funktion zum Konvertieren eines base
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein JSON-Objekt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
 <a id="base64tostring" />
 
@@ -185,6 +201,10 @@ Konvertiert eine base64-Darstellung in eine Zeichenfolge.
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | base64Value |Ja |string |Die in eine Zeichenfolge zu konvertierende base64-Darstellung. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge des konvertierten base64-Werts.
 
 ### <a name="examples"></a>Beispiele
 
@@ -227,9 +247,13 @@ Im folgenden Beispiel wird die base64ToString-Funktion verwendet, um einen base6
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge des konvertierten base64-Werts.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | one, two, three |
+| toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
 <a id="bool" />
 
@@ -243,6 +267,9 @@ Konvertiert den Parameter in einen booleschen Wert.
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
+
+### <a name="return-value"></a>Rückgabewert
+Ein boolescher Wert des konvertierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
@@ -274,8 +301,14 @@ Im folgenden Beispiel wird gezeigt, wie „bool“ mit einer Zeichenfolge oder g
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
-Ein boolescher Wert.
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| trueString | Bool | True  |
+| falseString | Bool | False |
+| trueInt | Bool | True  |
+| falseInt | Bool | False |
 
 <a id="concat" />
 
@@ -290,6 +323,9 @@ Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurü
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder Array |Der erste Wert für die Verkettung. |
 | zusätzliche Argumente |Nein |string |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
+
+### <a name="return-value"></a>Rückgabewert
+Eine Zeichenfolge oder ein Array aus verketteten Werten.
 
 ### <a name="examples"></a>Beispiele
 
@@ -308,12 +344,18 @@ Das folgende Beispiel zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und e
     "resources": [],
     "outputs": {
         "concatOutput": {
-            "value": "[concat(parameters('prefix'), uniqueString(resourceGroup().id))]",
+            "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]",
             "type" : "string"
         }
     }
 }
 ```
+
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 
@@ -350,8 +392,11 @@ Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
-Eine Zeichenfolge oder ein Array aus verketteten Werten.
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 <a id="contains" />
 
@@ -366,6 +411,10 @@ Eine Zeichenfolge oder ein Array aus verketteten Werten.
 |:--- |:--- |:--- |:--- |
 | container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
+
+### <a name="return-value"></a>Rückgabewert
+
+**True**, wenn das Element gefunden wurde; andernfalls **False**.
 
 ### <a name="examples"></a>Beispiele
 
@@ -420,9 +469,16 @@ Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlic
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-**True**, wenn das Element gefunden wurde; andernfalls **False**.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| stringTrue | Bool | True  |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True  |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True  |
+| arrayFalse | Bool | False |
 
 <a id="datauri" />
 
@@ -437,6 +493,10 @@ Konvertiert einen Wert in einen Daten-URI.
 |:--- |:--- |:--- |:--- |
 | stringToConvert |Ja |string |Der Wert, der in einen Daten-URI konvertiert werden soll. |
 
+### <a name="return-value"></a>Rückgabewert
+
+Eine als Daten-URI formatierte Zeichenfolge.
+
 ### <a name="examples"></a>Beispiele
 
 Im folgenden Beispiel wird ein Wert in einen Daten-URI und ein Daten-URI in eine Zeichenfolge konvertiert:
@@ -469,9 +529,12 @@ Im folgenden Beispiel wird ein Wert in einen Daten-URI und ein Daten-URI in eine
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine als Daten-URI formatierte Zeichenfolge.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 <a id="datauritostring" />
 
@@ -486,6 +549,10 @@ Konvertiert einen als Daten-URI formatierten Wert in eine Zeichenfolge.
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |Ja |string |Der zu konvertierende Daten-URI-Wert. |
 
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge, die den konvertierten Wert enthält.
+
 ### <a name="examples"></a>Beispiele
 
 Im folgenden Beispiel wird ein Wert in einen Daten-URI und ein Daten-URI in eine Zeichenfolge konvertiert:
@@ -518,9 +585,12 @@ Im folgenden Beispiel wird ein Wert in einen Daten-URI und ein Daten-URI in eine
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge, die den konvertierten Wert enthält.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Hello, World! |
 
 <a id="empty" /> 
 
@@ -534,6 +604,10 @@ Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den geprüft werden soll, ob er leer ist. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurückgegeben.
 
 ### <a name="examples"></a>Beispiele
 
@@ -576,9 +650,13 @@ Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfol
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurückgegeben.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayEmpty | Bool | True  |
+| objectEmpty | Bool | True  |
+| stringEmpty | Bool | True  |
 
 <a id="endswith" />
 
@@ -593,6 +671,10 @@ Bestimmt, ob eine Zeichenfolge mit einem Wert endet. Bei dem Vergleich wird Gro�
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |string |Der zu suchende Wert. |
+
+### <a name="return-value"></a>Rückgabewert
+
+**True**, wenn das letzte Zeichen oder die letzten Zeichen der Zeichenfolge mit dem Wert übereinstimmen, andernfalls **False**.
 
 ### <a name="examples"></a>Beispiele
 
@@ -632,9 +714,16 @@ Das folgende Beispiel zeigt die Verwendung der Funktionen „startsWith“ und �
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-**True**, wenn das letzte Zeichen oder die letzten Zeichen der Zeichenfolge mit dem Wert übereinstimmen, andernfalls **False**.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| startsTrue | Bool | True  |
+| startsCapTrue | Bool | True  |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True  |
+| endsCapTrue | Bool | True  |
+| endsFalse | Bool | False |
 
 <a id="first" />
 
@@ -648,6 +737,10 @@ Gibt das erste Zeichen der Zeichenfolge oder das erste Element des Arrays zurüc
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen erstes Element oder Zeichen abgerufen wird. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des ersten Elements in einem Array.
 
 ### <a name="examples"></a>Beispiele
 
@@ -678,9 +771,12 @@ Im folgenden Beispiel wird die Verwendung der first-Funktion mit einem Array und
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des ersten Elements in einem Array.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 <a id="indexof" />
 
@@ -695,6 +791,10 @@ Gibt die erste Position eines Werts innerhalb einer Zeichenfolge zurück. Bei de
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |string |Der zu suchende Wert. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl, die die Position des zu suchenden Elements darstellt. Der Wert ist nullbasiert. Wenn das Element nicht gefunden wird, wird -1 zurückgegeben.
 
 ### <a name="examples"></a>Beispiele
 
@@ -730,10 +830,15 @@ Das folgende Beispiel zeigt die Verwendung der Funktionen „indexOf“ und „l
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl, die die Position des zu suchenden Elements darstellt. Der Wert ist nullbasiert. Wenn das Element nicht gefunden wird, wird -1 zurückgegeben.
-
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| NotFound | int | -1 |
 
 <a id="last" />
 
@@ -747,6 +852,10 @@ Gibt das letzte Zeichen der Zeichenfolge bzw. das letzte Element des Arrays zur�
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen letztes Element oder Zeichen abgerufen wird. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des letzten Elements in einem Array.
 
 ### <a name="examples"></a>Beispiele
 
@@ -777,9 +886,12 @@ Im folgenden Beispiel wird die Verwendung der last-Funktion mit einem Array und 
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des letzten Elements in einem Array.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 <a id="lastindexof" />
 
@@ -794,6 +906,10 @@ Gibt die letzte Position eines Werts innerhalb einer Zeichenfolge zurück. Bei d
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |string |Der zu suchende Wert. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl, die die letzte Position des zu suchenden Elements darstellt. Der Wert ist nullbasiert. Wenn das Element nicht gefunden wird, wird -1 zurückgegeben.
 
 ### <a name="examples"></a>Beispiele
 
@@ -829,10 +945,15 @@ Das folgende Beispiel zeigt die Verwendung der Funktionen „indexOf“ und „l
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl, die die letzte Position des zu suchenden Elements darstellt. Der Wert ist nullbasiert. Wenn das Element nicht gefunden wird, wird -1 zurückgegeben.
-
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| NotFound | int | -1 |
 
 <a id="length" />
 
@@ -846,6 +967,10 @@ Gibt die Anzahl von Zeichen in einer Zeichenfolge bzw. von Elementen in einem Ar
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Das Array, von dem die Anzahl der Elemente, bzw. die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl. 
 
 ### <a name="examples"></a>Beispiele
 
@@ -883,9 +1008,12 @@ Im folgenden Beispiel wird die Verwendung von „length“ mit einem Array und e
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine ganze Zahl. 
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arraylength | int | 3 |
+| stringLength | int | 13 |
 
 <a id="padleft" />
 
@@ -904,6 +1032,10 @@ Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen 
 
 Wenn die Länge der ursprünglichen Zeichenfolge die Anzahl der aufzufüllenden Zeichen überschreitet, werden keine Zeichen hinzugefügt.
 
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge mit mindestens der angegebenen Zeichenanzahl.
+
 ### <a name="examples"></a>Beispiele
 
 Das folgende Beispiel zeigt, wie Sie den vom Benutzer angegebenen Parameterwert auffüllen, indem Sie das Nullzeichen hinzufügen, bis er die Gesamtzahl der Zeichen erreicht. 
@@ -916,25 +1048,23 @@ Das folgende Beispiel zeigt, wie Sie den vom Benutzer angegebenen Parameterwert 
         "testString": {
             "type": "string",
             "defaultValue": "123"
-        },
-        "totalCharacters": {
-            "type": "int",
-            "defaultValue": 10
         }
     },
     "resources": [],
     "outputs": {
         "stringOutput": {
             "type": "string",
-            "value": "[padLeft(parameters('testString'),parameters('totalCharacters'),'0')]"
+            "value": "[padLeft(parameters('testString'),10,'0')]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge mit mindestens der angegebenen Zeichenanzahl.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| stringOutput | String | 0000000123 |
 
 <a id="replace" />
 
@@ -950,6 +1080,10 @@ Gibt eine neue Zeichenfolge zurück, in der alle Instanzen einer Zeichenfolge du
 | originalString |Ja |string |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
 | oldString |Ja |string |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
 | newString |Ja |string |Die Zeichenfolge, die anstelle der entfernten Zeichenfolge eingefügt werden soll. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge mit den ersetzten Zeichen.
 
 ### <a name="examples"></a>Beispiele
 
@@ -979,9 +1113,12 @@ Das folgende Beispiel zeigt, wie Sie aus einer von einem Benutzer bereitgestellt
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge mit den ersetzten Zeichen.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| firstOutput | String | 1231231234 |
+| secodeOutput | String | 123-123-xxxx |
 
 <a id="skip" />
 
@@ -996,6 +1133,10 @@ Gibt eine Zeichenfolge mit allen Zeichen gemäß der angegebenen Anzahl von Zeic
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Array oder Zeichenfolge, wo Elemente übersprungen werden sollen. |
 | numberToSkip |Ja |int |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist der Wert größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array oder eine Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
@@ -1041,9 +1182,12 @@ Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array und Zeic
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array oder eine Zeichenfolge.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["three"] |
+| stringOutput | String | two three |
 
 <a id="split" />
 
@@ -1058,6 +1202,10 @@ Gibt ein Array mit Zeichenfolgen zurück, das die Teilzeichenfolgen der Eingabez
 |:--- |:--- |:--- |:--- |
 | inputString |Ja |string |Die zu teilende Zeichenfolge. |
 | Trennzeichen |Ja |Zeichenfolge oder Array von Zeichenfolgen |Das Trennzeichen, das zum Teilen der Zeichenfolge verwendet werden soll. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array der Zeichenfolgen.
 
 ### <a name="examples"></a>Beispiele
 
@@ -1094,9 +1242,12 @@ Im nächsten Beispiel wird die Eingabezeichenfolge mit einem Komma sowie entwede
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array der Zeichenfolgen.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| firstOutput | Array | ["one", "two", "three"] |
+| secondOutput | Array | ["one", "two", "three"] |
 
 <a id="startswith" />
 
@@ -1111,6 +1262,10 @@ Stellt fest, ob eine Zeichenfolge mit einem bestimmten Wert beginnt. Bei dem Ver
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |string |Der zu suchende Wert. |
+
+### <a name="return-value"></a>Rückgabewert
+
+**True**, wenn das Zeichen oder die ersten Zeichen der Zeichenfolge mit dem Wert übereinstimmen, andernfalls **False**.
 
 ### <a name="examples"></a>Beispiele
 
@@ -1150,10 +1305,16 @@ Das folgende Beispiel zeigt die Verwendung der Funktionen „startsWith“ und �
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-**True**, wenn das Zeichen oder die ersten Zeichen der Zeichenfolge mit dem Wert übereinstimmen, andernfalls **False**.
-
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| startsTrue | Bool | True  |
+| startsCapTrue | Bool | True  |
+| startsFalse | Bool | False |
+| endsTrue | Bool | True  |
+| endsCapTrue | Bool | True  |
+| endsFalse | Bool | False |
 
 <a id="string" />
 
@@ -1167,6 +1328,10 @@ Konvertiert den angegebenen Wert in eine Zeichenfolge.
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja | Beliebig |Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge des konvertierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
@@ -1215,9 +1380,13 @@ Das folgende Beispiel zeigt das Konvertieren verschiedener Typen von Werten in Z
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | String | ["a","b","c"] |
+| intOutput | String | 5 |
 
 <a id="substring" />
 
@@ -1233,6 +1402,23 @@ Gibt eine Teilzeichenfolge zurück, die an der angegebenen Zeichenposition begin
 | stringToParse |Ja |string |Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird. |
 | startIndex |Nein |int |Die nullbasierte Anfangsposition für die Teilzeichenfolge. |
 | Länge |Nein |int |Die Anzahl der Zeichen der Teilzeichenfolge. Muss auf eine Position innerhalb der Zeichenfolge verweisen. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Die Teilzeichenfolge.
+
+### <a name="remarks"></a>Anmerkungen
+
+Die Funktion schlägt fehl, wenn die Teilzeichenfolge über das Ende der Zeichenfolge hinausreicht. Das folgende Beispiel führt zu dem Fehler „Die Parameter "index" und "length" müssen auf eine Position innerhalb der Zeichenfolge verweisen. Parameter "index": '0', Parameter "length": '11', Länge des Parameters "string": '10'.“.
+
+```json
+"parameters": {
+    "inputString": { "type": "string", "value": "1234567890" }
+},
+"variables": { 
+    "prefix": "[substring(parameters('inputString'), 0, 11)]"
+}
+```
 
 ### <a name="examples"></a>Beispiele
 
@@ -1258,16 +1444,12 @@ Im folgenden Beispiel wird eine Teilzeichenfolge aus einem Parameter extrahiert.
 }
 ```
 
-Das folgende Beispiel führt zu dem Fehler „Die Parameter "index" und "length" müssen auf eine Position innerhalb der Zeichenfolge verweisen. Parameter "index": '0', Parameter "length": '11', Länge des Parameters "string": '10'.“.
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-```json
-"parameters": {
-    "inputString": { "type": "string", "value": "1234567890" }
-},
-"variables": { 
-    "prefix": "[substring(parameters('inputString'), 0, 11)]"
-}
-```
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| substringOutput | String | two |
+
 
 <a id="take" />
 
@@ -1282,6 +1464,10 @@ Gibt eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der 
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Das Array bzw. die Zeichenfolge, wo die Elemente entnommen werden sollen. |
 | numberToTake |Ja |int |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array oder eine Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
@@ -1327,9 +1513,12 @@ Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array und
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array oder eine Zeichenfolge.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["one", "two"] |
+| stringOutput | String | on |
 
 <a id="tolower" />
 
@@ -1344,6 +1533,10 @@ Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben.
 |:--- |:--- |:--- |:--- |
 | stringToChange |Ja |string |Der Wert, der in Kleinbuchstaben konvertiert werden soll. |
 
+### <a name="return-value"></a>Rückgabewert
+
+Die in Kleinbuchstaben konvertierte Zeichenfolge.
+
 ### <a name="examples"></a>Beispiele
 
 Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konvertiert.
@@ -1371,6 +1564,13 @@ Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konve
     }
 }
 ```
+
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
 
 <a id="toupper" />
 
@@ -1385,6 +1585,10 @@ Konvertiert die angegebene Zeichenfolge in Großbuchstaben.
 |:--- |:--- |:--- |:--- |
 | stringToChange |Ja |string |Der Wert, der in Großbuchstaben konvertiert werden soll. |
 
+### <a name="return-value"></a>Rückgabewert
+
+Die in Großbuchstaben konvertierte Zeichenfolge.
+
 ### <a name="examples"></a>Beispiele
 
 Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konvertiert.
@@ -1413,6 +1617,13 @@ Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konve
 }
 ```
 
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
+
 <a id="trim" />
 
 ## <a name="trim"></a>trim
@@ -1425,6 +1636,10 @@ Entfernt alle führenden und nachgestellten Leerzeichen aus der angegebenen Zeic
 | Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |Ja |string |Der zu kürzende Wert. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Die Zeichenfolge ohne vorangestellte oder nachstehende Leerzeichen.
 
 ### <a name="examples"></a>Beispiele
 
@@ -1450,6 +1665,12 @@ Im folgenden Beispiel werden die Leerzeichen aus dem Parameter entfernt.
 }
 ```
 
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| return | String | one two three |
+
 <a id="uniquestring" />
 
 ## <a name="uniquestring"></a>uniqueString
@@ -1471,8 +1692,6 @@ Diese Funktion ist hilfreich, wenn Sie einen eindeutigen Namen für eine Ressour
 Der zurückgegebene Wert ist keine zufällige Zeichenfolge, sondern das Ergebnis einer Hashfunktion. Der zurückgegebene Wert ist 13 Zeichen lang. Er ist nicht global eindeutig. Es empfiehlt sich, den Wert mit einem Präfix aus Ihrer Benennungskonvention zu kombinieren, um einen aussagekräftigen Namen zu erstellen. Im folgenden Beispiel wird das Format des zurückgegebenen Werts veranschaulicht. Der tatsächliche Wert variiert je nach den angegebenen Parametern.
 
     tcvhiyu5h2o5o
-
-### <a name="examples"></a>Beispiele
 
 Die folgenden Beispiele zeigen, wie Sie mithilfe von uniqueString einen eindeutigen Wert für häufig verwendete Ebenen erstellen können.
 
@@ -1505,7 +1724,29 @@ Das folgende Beispiel zeigt, wie Sie einen eindeutigen Namen für ein Speicherko
 
 ### <a name="return-value"></a>Rückgabewert
 
-Eine Zeichenfolge mit 13 Zeichen
+Eine Zeichenfolge mit 13 Zeichen.
+
+### <a name="examples"></a>Beispiele
+
+Im folgenden Beispiel werden Ergebnisse von Uniquestring zurückgegeben:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "uniqueRG": {
+            "value": "[uniqueString(resourceGroup().id)]",
+            "type" : "string"
+        },
+        "uniqueDeploy": {
+            "value": "[uniqueString(resourceGroup().id, deployment().name)]",
+            "type" : "string"
+        }
+    }
+}
+```
 
 <a id="uri" />
 
@@ -1522,6 +1763,10 @@ Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-
 | relativeUri |Ja |string |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
 
 Der Wert für den **baseUri** -Parameter kann eine bestimmte Datei enthalten, beim Erstellen des URI wird jedoch nur der Basispfad verwendet. Beispielsweise führt das Übergeben von `http://contoso.com/resources/azuredeploy.json` als baseUri-Parameter zu einem Basis-URI von `http://contoso.com/resources/`.
+
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge, die den absoluten URI für den Basis- und relativen URI-Wert darstellt.
 
 ### <a name="examples"></a>Beispiele
 
@@ -1560,9 +1805,13 @@ Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und 
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge, die den absoluten URI für den Basis- und relativen URI-Wert darstellt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 <a id="uricomponent" />
 
@@ -1577,6 +1826,10 @@ Codiert einen URI.
 |:--- |:--- |:--- |:--- |
 | stringToEncode |Ja |string |Der zu codierende Wert. |
 
+### <a name="return-value"></a>Rückgabewert
+
+Eine Zeichenfolge des als URI codierten Werts.
+
 ### <a name="examples"></a>Beispiele
 
 Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und „uriComponentToString“ gezeigt:
@@ -1608,9 +1861,14 @@ Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und 
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine Zeichenfolge des als URI codierten Werts.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
 
 <a id="uricomponenttostring" />
 
@@ -1625,6 +1883,10 @@ Gibt eine Zeichenfolge des als URI codierten Werts zurück.
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |Ja |string |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
 
+### <a name="return-value"></a>Rückgabewert
+
+Eine decodierte Zeichenfolge des als URI codierten Werts.
+
 ### <a name="examples"></a>Beispiele
 
 Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und „uriComponentToString“ gezeigt:
@@ -1656,9 +1918,14 @@ Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und 
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Eine decodierte Zeichenfolge des als URI codierten Werts.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 06/12/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c851e01fb8884b2f601986207d730efb338422a8
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: c1f0bbfd1bea292eedaaf8904a2f60e9415dcbcf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**SDK-Download**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)</td></tr>
 
-<tr><td>**API-Dokumentation**</td><td>[.NET API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
+<tr><td>**API-Dokumentation**</td><td>[.NET API-Referenzdokumentation](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
 
 <tr><td>**Beispiele**</td><td>[.NET-Codebeispiele](documentdb-dotnet-samples.md)</td></tr>
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**Web-App-Tutorial**</td><td>[Webanwendungsentwicklung mit DocumentDB](documentdb-dotnet-application.md)</td></tr>
 
-<tr><td>**Aktuelles unterstütztes Framework**</td><td>[.NET Standard 1.6](https://www.nuget.org/packages/NETStandard.Library)</td></tr>
+<tr><td>**Aktuelles unterstütztes Framework**</td><td>[.NET Standard 1.6 und .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Versionsinformationen
@@ -56,16 +56,24 @@ ms.lasthandoff: 05/31/2017
 Das DocumentDB .NET Core SDK weist Funktionsparität mit der neuesten Version des [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) auf.
 
 > [!NOTE] 
-> Das DocumentDB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
+> Das DocumentDB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+
+*   Unterstützung von .NET Standard 1.5 als eines der Ziel-Frameworks.
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+
+*   Es wurde ein Problem mit Auswirkung auf x64-Computer behoben, die die SSE4-Anweisung nicht unterstützen und beim Ausführen von DocumentDB-Abfragen SEHException auslösen.
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-*    Es wurde Unterstützung für das Feature „Anforderungseinheiten pro Minute“ (RU/m) hinzugefügt.
-*    Es wurde Unterstützung für eine neue Konsistenzebene mit dem Namen „ConsistentPrefix“ hinzugefügt.
-*    Es wurde Unterstützung für Abfragemetriken für einzelne Partitionen hinzugefügt.
-*    Es wurde Unterstützung für die Größenbeschränkung des Fortsetzungstoken für Abfragen hinzugefügt.
-*    Es wurde Unterstützung für eine ausführlichere Ablaufverfolgung für Anforderungsfehler hinzugefügt.
-*    Es wurden einige Leistungsverbesserungen im SDK vorgenommen.
+*   Es wurde Unterstützung für das Feature „Anforderungseinheiten pro Minute“ (RU/m) hinzugefügt.
+*   Es wurde Unterstützung für eine neue Konsistenzebene mit dem Namen „ConsistentPrefix“ hinzugefügt.
+*   Es wurde Unterstützung für Abfragemetriken für einzelne Partitionen hinzugefügt.
+*   Es wurde Unterstützung für die Größenbeschränkung des Fortsetzungstoken für Abfragen hinzugefügt.
+*   Es wurde Unterstützung für eine ausführlichere Ablaufverfolgung für Anforderungsfehler hinzugefügt.
+*   Es wurden einige Leistungsverbesserungen im SDK vorgenommen.
 
 ### <a name="a-name122122"></a><a name="1.2.2"/>1.2.2
 
@@ -117,6 +125,8 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.3.2](#1.3.2) |12. Juni 2017 |--- |
+| [1.3.1](#1.3.1) |23. Mai 2017 |--- |
 | [1.3.0](#1.3.0) |10. Mai 2017 |--- |
 | [1.2.2](#1.2.2) |19. April 2017 |--- |
 | [1.2.1](#1.2.1) |29. März 2017 |--- |

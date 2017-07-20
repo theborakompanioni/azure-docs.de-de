@@ -12,20 +12,20 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 06/29/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 616bca96eaff12fa1929605f3480098bd8b867c2
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 7055e207cfbcc9de02669be9f0e97045769ef217
 ms.contentlocale: de-de
-ms.lasthandoff: 01/31/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-java"></a>Verarbeiten von D2C-Nachrichten mit IoT Hub (Java)
+
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
-## <a name="introduction"></a>Einführung
 Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Weitere Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub][lnk-c2d]) veranschaulichen, wie Sie die grundlegenden Device-to-Cloud- und Cloud-to-Device-Messagingfunktionen von IoT Hub verwenden.
 
 Dieses Tutorial stützt sich auf den Code, der im Tutorial [Erste Schritte mit IoT Hub] vorgestellt wird, und zeigt Ihnen, wie Sie das Nachrichtenrouting für das skalierbare Verarbeiten von D2C-Nachrichten einsetzen. Das Tutorial veranschaulicht das Verarbeiten von Nachrichten, die sofortiges Eingreifen vom Lösungs-Back-End erfordern. Beispielsweise könnte ein Gerät eine Alarmnachricht senden, die das Einfügen eines Tickets in ein CRM-System auslöst. Im Gegensatz dazu werden Datenpunktnachrichten einfach in ein Analysemodul eingegeben. Temperaturtelemetriedaten von einem Gerät, die zur späteren Analyse gespeichert werden, sind beispielsweise Datenpunktnachrichten.
@@ -38,25 +38,25 @@ Am Ende dieses Tutorials führen Sie drei Java-Konsolen-Apps aus:
 
 > [!NOTE]
 > IoT Hub verfügt über SDK-Unterstützung für zahlreiche Geräteplattformen und Sprachen, z.B. C, Java und JavaScript. Anleitungen zum Ersetzen des simulierten Geräts in diesem Tutorial durch ein physisches Gerät und Informationen zum Verbinden von Geräten mit einem IoT Hub finden Sie im [Azure IoT Developer Center].
-> 
-> 
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine vollständig funktionierende Version des Tutorials [Erste Schritte mit IoT Hub] .
-* Java SE 8. <br/> Unter [Vorbereiten Ihrer Entwicklungsumgebung][lnk-dev-setup] wird beschrieben, wie Sie für dieses Tutorial Java unter Windows oder Linux installieren.
-* Maven 3.  <br/> Unter [Vorbereiten Ihrer Entwicklungsumgebung][lnk-dev-setup] wird beschrieben, wie Sie für dieses Tutorial Maven unter Windows oder Linux installieren.
-* Ein aktives Azure-Konto. <br/>Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
+* Das neueste [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Maven 3](https://maven.apache.org/install.html)
+* Ein aktives Azure-Konto. (Wenn Sie noch kein Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 Sie sollten über grundlegende Kenntnisse zu [Azure Storage] und [Azure Service Bus] verfügen.
 
 ## <a name="send-interactive-messages-from-a-simulated-device-app"></a>Senden interaktiver Nachrichten von einer simulierten Geräte-App aus
+
 In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben, sodass sie gelegentlich Nachrichten sendet, die sofort verarbeitet werden müssen.
 
 1. Öffnen Sie die Datei „simulated-device\src\main\java\com\mycompany\app\App.java“ mit einem Text-Editor. Diese Datei enthält den Code für die **simulated-device** -App, die Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben.
+
 2. Ersetzen Sie die **MessageSender**-Klasse durch den folgenden Code:
-   
-    ```
+
+    ```java
     private static class MessageSender implements Runnable {
 
         public void run()  {
@@ -101,82 +101,80 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie im Tutorial 
         }
     }
     ```
-   
+
     Mit dieser Methode wird vom simulierten Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaft `"level": "critical"` hinzugefügt, wodurch eine Nachricht simuliert wird, die vom Anwendungs-Back-End sofortiges Eingreifen erfordert. Die Anwendung übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
-   
-   > [!NOTE]
-   > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
-   > 
-   > 
+
+    > [!NOTE]
+    > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
 
 2. Speichern und schließen Sie die Datei „simulated-device\src\main\java\com\mycompany\app\App.java“.
-   
-   > [!NOTE]
-   > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie eine Wiederholungsrichtlinie implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler]beschrieben.
-   > 
-   > 
+
+    > [!NOTE]
+    > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie eine Wiederholungsrichtlinie implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler]beschrieben.
 
 3. Führen Sie zum Erstellen der App **simulated-device** mit Maven den folgenden Befehl an der Eingabeaufforderung im Ordner „simulated-device“ aus:
-   
-    ```
+
+    ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 ## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>Hinzufügen einer Warteschlange zu Ihrem IoT Hub und Weiterleiten von Nachrichten an sie
-In diesem Abschnitt erstellen Sie eine Service Bus-Warteschlange, verbinden sie mit Ihrem IoT Hub und konfigurieren Ihren IoT Hub zum Senden von Nachrichten an die Warteschlange, sofern eine Eigenschaft in der Nachricht vorhanden ist. Weitere Informationen zum Verarbeiten von Nachrichten von der Service Bus-Warteschlange finden Sie in [Erste Schritte mit Event Hubs][Service Bus queue].
 
-1. Erstellen Sie eine Service Bus-Warteschlange wie in [Erste Schritte mit Warteschlangen][Service Bus queue] beschrieben. Notieren Sie den Namespace und den Warteschlangennamen.
+In diesem Abschnitt erstellen Sie eine Service Bus-Warteschlange, verbinden sie mit Ihrem IoT Hub und konfigurieren Ihren IoT Hub zum Senden von Nachrichten an die Warteschlange, sofern eine Eigenschaft in der Nachricht vorhanden ist. Weitere Informationen zum Verarbeiten von Nachrichten von der Service Bus-Warteschlange finden Sie in [Erste Schritte mit Event Hubs][lnk-sb-queues-java].
+
+1. Erstellen Sie eine Service Bus-Warteschlange wie in [Erste Schritte mit Warteschlangen][lnk-sb-queues-java] beschrieben. Notieren Sie den Namespace und den Warteschlangennamen.
 
 2. Öffnen Sie Ihren IoT-Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
-    
+
     ![Endpunkte in IoT Hub][30]
 
 3. Klicken Sie oben auf dem Blatt **Endpunkte** auf **Hinzufügen**, um die Warteschlange Ihrem IoT-Hub hinzuzufügen. Benennen Sie den Endpunkt **CriticalQueue**, und wählen Sie mithilfe der Dropdownlisten **Service Bus-Warteschlange**, den Service Bus-Namespace, in dem sich die Warteschlange befindet, und den Namen der Warteschlange. Klicken Sie anschließend am unteren Rand auf **Speichern**.
-    
+
     ![Hinzufügen eines Endpunkts][31]
-    
+
 4. Klicken Sie jetzt in Ihrem IoT-Hub auf **Routen**. Klicken Sie am oberen Rand des Blatts auf **Hinzufügen**, um eine Routingregel zu erstellen, die Nachrichten an die gerade von Ihnen hinzugefügte Warteschlange leitet. Wählen Sie **DeviceTelemetry** als Quelle der Daten. Geben Sie `level="critical"` als Bedingung ein, und wählen Sie die Warteschlange, die Sie gerade als benutzerdefinierten Endpunkt hinzugefügt haben, als Routingregelendpunkt. Klicken Sie anschließend am unteren Rand auf **Speichern**.
-    
+
     ![Hinzufügen einer Route][32]
-    
+
     Stellen Sie sicher, dass die Fallbackroute auf **EIN** festgelegt ist. Diese Einstellung ist die Standardkonfiguration eines IoT-Hubs.
-    
+
     ![Fallbackroute][33]
 
-
 ## <a name="optional-read-from-the-queue-endpoint"></a>(Optional) Lesen aus dem Warteschlangen-Endpunkt
+
 Sie können optional die Nachrichten aus dem Warteschlangenendpunkt anhand der Anweisungen unter [Erste Schritte mit Warteschlangen][lnk-sb-queues-java] lesen. Benennen Sie die App **read-critical-queue**.
 
 ## <a name="run-the-applications"></a>Ausführen der Anwendungen
+
 Sie können jetzt die drei Anwendungen ausführen.
 
 1. Um die **read-d2c-messages** -Anwendung auszuführen, navigieren Sie in einer Befehlszeile oder Shell zum Ordner „read-d2c“, und geben Sie folgenden Befehl ein:
-   
-   ```
+
+   ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
    ```
-   
+
    ![Ausführen von „read-d2c-messages“][readd2c]
+
 2. Um die **read-critical-queue**-Anwendung auszuführen, navigieren Sie in einer Befehlszeile oder Shell zum Ordner „read-critical-queue“, und geben Sie folgenden Befehl ein:
-   
-   ```
+
+   ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
    ```
    
    ![Ausführen von „read-critical-messages“][readqueue]
 
 3. Um die **simulated-device**-App auszuführen, navigieren Sie in einer Befehlszeile oder Shell zum Ordner „simulated-device“, und geben Sie folgenden Befehl ein:
-   
-   ```
+
+   ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
    ```
    
    ![Ausführen von „simulated-device“][simulateddevice]
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, D2C-Nachrichten zuverlässig mit der Nachrichtenroutingfunktion von IoT Hub zu versenden.
 
+In diesem Tutorial haben Sie gelernt, D2C-Nachrichten zuverlässig mit der Nachrichtenroutingfunktion von IoT Hub zu versenden.
 
 Im Tutorial [Gewusst wie: Senden von C2D-Nachrichten mithilfe von IoT Hub][lnk-c2d] erfahren Sie, wie Sie Nachrichten aus Ihrem Lösungs-Back-End an Ihre Geräte senden.
 
@@ -199,13 +197,7 @@ Weitere Informationen zum Nachrichtenrouting in IoT Hub finden Sie unter [Senden
 
 <!-- Links -->
 
-[Azure blob storage]: ../storage/storage-dotnet-how-to-use-blobs.md
-[Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
-[HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
-[Service Bus queue]: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
 [lnk-sb-queues-java]: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
-
-[IoT Hub developer guide - Device to cloud]: iot-hub-devguide-messaging.md
 
 [Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
@@ -214,24 +206,11 @@ Weitere Informationen zum Nachrichtenrouting in IoT Hub finden Sie unter [Senden
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [Erste Schritte mit IoT Hub]: iot-hub-java-java-getstarted.md
 [Azure IoT Developer Center]: https://azure.microsoft.com/develop/iot
-[lnk-service-fabric]: https://azure.microsoft.com/documentation/services/service-fabric/
-[lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
-[lnk-event-hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh675232.aspx
 
 <!-- Links -->
-[About Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
-[Get Started with Event Hubs]: ../event-hubs/event-hubs-java-ephjava-getstarted.md
-[Azure Storage scalability Guidelines]: ../storage/storage-scalability-targets.md
-[Azure Block Blobs]: https://msdn.microsoft.com/library/azure/ee691964.aspx
-[Event Hubs]: ../event-hubs/event-hubs-overview.md
-[EventProcessorHost]: https://github.com/Azure/azure-event-hubs/tree/master/java/azure-eventhubs-eph
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-c2d]: iot-hub-java-java-c2d.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
-[lnk-create-an-iot-hub]: iot-hub-java-java-getstarted.md#create-an-iot-hub
 

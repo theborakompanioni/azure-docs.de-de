@@ -1,6 +1,6 @@
 ---
 title: Dienstkommunikation mit ASP.NET Core | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie ASP.NET Core in zustandslosen und zustandsbehafteten Reliable Services verwenden.
+description: "Hier erfahren Sie, wie Sie ASP.NET Core in zustandslosen und zustandsbehafteten zuverlässigen Diensten verwenden."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -12,19 +12,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 03/22/2017
+ms.date: 05/02/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: cce66615ebe457ed7230401d154ddad07941f5bc
-ms.lasthandoff: 03/23/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 8ac4d409f7363e8b4ae98be659a627ac8db8d787
+ms.contentlocale: de-de
+ms.lasthandoff: 06/10/2017
 
 ---
 
-# <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core in Service Fabric Reliable Services
+# <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core in zuverlässigen Service Fabric-Diensten
 
-ASP.NET Core ist ein neues quelloffenes und plattformübergreifendes Framework zur Erstellung moderner cloudbasierter Anwendungen mit Internetverbindung. Hierzu zählen beispielsweise Web-Apps, IoT-Apps und mobile Back-Ends. ASP.NET Core-Apps können unter .NET Core oder im gesamten .NET Framework ausgeführt werden. Im Gegensatz dazu können Service Fabric-Dienste derzeit nur im gesamten .NET Framework ausgeführt werden. Wenn Sie also einen ASP.NET Core Service Fabric-Dienst erstellen, müssen Sie ihn auf das gesamte .NET Framework ausrichten.
+ASP.NET Core ist ein neues quelloffenes und plattformübergreifendes Framework zur Erstellung moderner cloudbasierter Anwendungen mit Internetverbindung. Hierzu zählen beispielsweise Web-Apps, IoT-Apps und mobile Back-Ends. 
+
+Dieser Artikel ist eine ausführliche Anleitung zum Hosten von ASP.NET Core-Diensten in Service Fabric Reliable Services mithilfe der **Microsoft.ServiceFabric.AspNetCore.**-*Menge der NuGet-Pakete.
+
+Ein einführendes Tutorial auf ASP.NET Core in Service Fabric und Anweisungen zum Abrufen Ihres Entwicklungsumgebungs-Setups, finden Sie unter [Erstelle eines Web-Front-End für Ihre Anwendung mithilfe von ASP.NET Core](service-fabric-add-a-web-frontend.md).
+
+Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie bereits mit ASP.NET Core vertraut sind. Wenn nicht, empfehlen wir Ihnen [ASP.NET Core Grundlagen](https://docs.microsoft.com/aspnet/core/fundamentals/index) zu lesen.
+
+## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core in der Service Fabric-Umgebung
+
+ASP.NET Core-Apps können unter .NET Core oder im gesamten .NET Framework ausgeführt werden. Im Gegensatz dazu können Service Fabric-Dienste derzeit nur im gesamten .NET Framework ausgeführt werden. Wenn Sie also einen ASP.NET Core Service Fabric-Dienst erstellen, müssen Sie ihn auf das gesamte .NET Framework ausrichten.
 
 ASP.NET Core kann in Service Fabric auf zwei unterschiedliche Arten verwendet werden:
  - **Gehostet als ausführbare Gastanwendungsdatei:** Diese Methode wird hauptsächlich verwendet, um bereits vorhandene ASP.NET Core-Anwendungen ohne Codeänderungen unter Service Fabric auszuführen.
@@ -32,13 +42,8 @@ ASP.NET Core kann in Service Fabric auf zwei unterschiedliche Arten verwendet we
 
 Im weiteren Verlauf dieses Artikels erfahren Sie, wie Sie ASP.NET Core mithilfe der im Service Fabric SDK enthaltenen ASP.NET Core-Integrationskomponenten in einem zuverlässigen Dienst verwenden. 
 
-> [!NOTE]
->Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie mit dem Hosten in ASP.NET Core vertraut sind. Weitere Informationen zum Hosten in ASP.NET Core finden Sie unter [Introduction to hosting in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/hosting) (Einführung in das Hosten in ASP.NET Core).
-
-> [!NOTE]
-> Wenn Sie Reliable Services mit ASP.NET Core in Visual Studio 2015 entwickeln möchten, muss [.NET Core VS 2015 Tooling Preview 2](https://www.microsoft.com/net/download/core) installiert sein.
-
 ## <a name="service-fabric-service-hosting"></a>Service Fabric-Diensthosting
+
 In Service Fabric werden einzelne oder mehrere Instanzen und/oder Replikate Ihres Diensts in einem *Diensthostprozess* in Form einer ausführbaren Datei mit Ihrem Dienstcode ausgeführt. Als Dienstautor sind Sie für den Diensthostprozess zuständig. Dieser wird von Service Fabric für Sie aktiviert und überwacht.
 
 Die herkömmliche ASP.NET-Version (bis MVC 5) ist über „System.Web.dll“ eng an IIS gekoppelt. Bei ASP.NET Core sind der Webserver und Ihre Webanwendung getrennt. Dadurch sind Webanwendungen zwischen verschiedenen Webservern übertragbar, und es ermöglicht die Verwendung *selbst gehosteter* Webserver, sodass Sie einen Webserver in Ihrem eigenen Prozess starten können (im Gegensatz zu einem Prozess, für den eine dedizierte Webserversoftware wie etwa IIS zuständig ist). 
@@ -65,12 +70,12 @@ Beide Kommunikationslistener bieten einen Konstruktor, der folgende Argumente ak
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Ein von Ihnen implementiertes Lambda, in dem Sie ein `IWebHost`-Element erstellen und zurückgeben. Dadurch können Sie `IWebHost` in einer ASP.NET Core-Anwendung wie gewohnt konfigurieren. Das Lambda stellt eine URL bereit, die für Sie in Abhängigkeit von den verwendeten Service Fabric-Integrationsoptionen und der angegebenen `Endpoint`-Konfiguration generiert wird. Diese URL kann anschließend geändert oder unverändert verwendet werden, um den Webserver zu starten.
 
 ## <a name="service-fabric-integration-middleware"></a>Middleware für die Service Fabric-Integration
-Das NuGet-Paket `Microsoft.ServiceFabric.Services.AspNetCore` enthält die `UseServiceFabricIntegration`-Erweiterungsmethode für `IWebHostBuilder`, der Service Fabric-fähigen Middleware hinzufügt. Diese Middleware konfiguriert die `ICommunicationListener`-Implementierung von Kestrel oder WebListener, um eine eindeutige Dienst-URL beim Service Fabric Naming Service zu registrieren, und stellt durch anschließende Überprüfung von Clientanforderungen sicher, dass Clients eine Verbindung mit dem richtigen Dienst herstellen. Das ist in einer Umgebung mit gemeinsam genutztem Host (beispielsweise Service Fabric) erforderlich, in der unter Umständen mehrere Webanwendungen auf dem gleichen physischen oder virtuellen Computer ausgeführt, aber keine eindeutigen Hostnamen verwenden werden, und verhindert, dass Clients irrtümlich eine Verbindung mit dem falschen Dienst herstellen. Dieses Szenario wird im nächsten Abschnitt ausführlicher beschrieben.
+Das NuGet-Paket `Microsoft.ServiceFabric.Services.AspNetCore` enthält die `UseServiceFabricIntegration`-Erweiterungsmethode für `IWebHostBuilder`, der Service Fabric-fähigen Middleware hinzufügt. Diese Middleware konfiguriert die `ICommunicationListener`-Implementierung von Kestrel oder WebListener, um eine eindeutige Dienst-URL beim Service Fabric Naming Service zu registrieren, und stellt durch anschließende Überprüfung von Clientanforderungen sicher, dass Clients eine Verbindung mit dem richtigen Dienst herstellen. Das ist in einer Umgebung mit gemeinsam genutztem Host (beispielsweise Service Fabric) erforderlich, in der unter Umständen mehrere Webanwendungen auf dem gleichen physischen oder virtuellen Computer ausgeführt, aber keine eindeutigen Hostnamen verwendet werden, und verhindert, dass Clients irrtümlich eine Verbindung mit dem falschen Dienst herstellen. Dieses Szenario wird im nächsten Abschnitt ausführlicher beschrieben.
 
 ### <a name="a-case-of-mistaken-identity"></a>Ein Fall von Identitätsverwechslung
-Dienstreplikate lauschen unabhängig vom Protokoll an einer eindeutigen Kombination aus IP-Adresse und Port. Nachdem ein Dienstreplikat damit begonnen hat, an einem IP:Port-Endpunkt zu lauschen, meldet es die entsprechende Endpunktadresse an den Service Fabric Naming Service, wo sie von Clients oder anderen Diensten ermittelt werden kann. Wenn Dienste dynamisch zugewiesene Anwendungsports verwenden, kann ein Dienstreplikat zufällig den gleichen IP:Port-Endpunkt eines anderen Diensts verwenden, der sich zuvor auf dem gleichen physischen oder virtuellen Computer befand. Das kann dazu führen, dass ein Client irrtümlich eine Verbindung mit dem falschen-Dienst herstellt. Dieser Fall kann bei folgendem Ereignisablauf eintreten:
+Dienstreplikate lauschen unabhängig vom Protokoll an einer eindeutigen Kombination aus IP-Adresse und Port. Nachdem ein Dienstreplikat damit begonnen hat, an einem IP:Port-Endpunkt zu lauschen, meldet es die entsprechende Endpunktadresse an den Service Fabric Naming Service, wo sie von Clients oder anderen Diensten ermittelt werden kann. Wenn Dienste dynamisch zugewiesene Anwendungsports verwenden, kann ein Dienstreplikat zufällig den gleichen IP:Port-Endpunkt eines anderen Diensts verwenden, der sich zuvor auf dem gleichen physischen oder virtuellen Computer befand. Das kann dazu führen, dass ein Client irrtümlich eine Verbindung mit dem falschen Dienst herstellt. Dieser Fall kann bei folgendem Ereignisablauf eintreten:
 
- 1. Ein Dienst lauscht an 10.0.0.1:30000 über HTTP. 
+ 1. Dienst A lauscht an 10.0.0.1:30000 über HTTP. 
  2. Der Client löst Dienst A auf und erhält die Adresse 10.0.0.1:30000.
  3. Dienst A wird auf einen anderen Knoten verschoben.
  4. Dienst B wird unter 10.0.0.1 platziert und verwendet zufällig ebenfalls den Port 30000.
@@ -86,18 +91,18 @@ In einer vertrauenswürdigen Umgebung fügt die durch die `UseServiceFabricInteg
 
 Dienste mit dynamisch zugewiesenem Port sollten diese Middleware verwenden.
 
-Bei Diensten mit einem festen eindeutigen Port tritt dieses Problem in einer kooperativen Umgebung nicht auf. Ein fester eindeutiger Port wird üblicherweise für externe Dienste verwendet, die einen bekannten Port benötigen, mit dem Clientanwendungen eine Verbindung herstellen können. So verwenden beispielsweise die meisten Webanwendungen mit Internetzugriff den Port 80 oder 443 für Webbrowserverbindungen. In diesem Fall sollte der eindeutige Bezeichner nicht aktiviert werden.
+Bei Diensten mit einem festen eindeutigen Port tritt dieses Problem in einer kooperativen Umgebung nicht auf. Ein fester eindeutiger Port wird üblicherweise für extern zugängliche Dienste verwendet, die einen bekannten Port benötigen, mit dem Clientanwendungen eine Verbindung herstellen können. So verwenden beispielsweise die meisten Webanwendungen mit Internetzugriff den Port 80 oder 443 für Webbrowserverbindungen. In diesem Fall sollte der eindeutige Bezeichner nicht aktiviert werden.
 
-Das folgende Diagramm zeigt den Anforderungsflow mit aktivierter Middleware:
+Das folgende Diagramm zeigt die Abfolge der Anforderungen bei aktivierter Middleware:
 
 ![Service Fabric ASP.NET Core-integration][2]
 
 Die `ICommunicationListener`-Implementierungen von Kestrel und WebListener verwenden diesen Mechanismus auf die gleiche Weise. Mithilfe des zugrunde liegenden *http.sys*-Portfreigabefeatures kann WebListener Anforderungen zwar intern auf der Grundlage eindeutiger URL-Pfade unterscheiden, die `ICommunicationListener`-Implementierung von WebListener verwendet diese Funktion jedoch *nicht*, da dies im zuvor beschriebenen Szenario zu Fehlerstatuscodes vom Typ „HTTP 503“ und „HTTP 404“ führt. Clients können dadurch wiederum nur sehr schwer den Zweck des Fehlers bestimmen, da „HTTP 503“ und „HTTP 404“ bereits häufig zur Angabe anderer Fehler verwendet werden. Daher wird bei `ICommunicationListener`-Implementierungen von Kestrel und WebListener die durch die `UseServiceFabricIntegration`-Erweiterungsmethode bereitgestellte Middleware als Standard verwendet, sodass Clients nur bei Antworten vom Typ „HTTP 410“ eine erneute Auflösung für einen Dienstendpunkt ausführen müssen.
 
-## <a name="weblistener-in-reliable-services"></a>WebListener in Reliable Services
+## <a name="weblistener-in-reliable-services"></a>WebListener in zuverlässigen Diensten
 WebListener kann in einem zuverlässigen Dienst durch Importieren des NuGet-Pakets **Microsoft.ServiceFabric.AspNetCore.WebListener** verwendet werden. Dieses Paket enthält `WebListenerCommunicationListener` (eine Implementierung von `ICommunicationListener`), mit der Sie einen ASP.NET Core-Webhost innerhalb eines zuverlässigen Diensts mit WebListener als Webserver erstellen können.
 
-WebListener basiert auf der [Windows-HTTP-Server-API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Dabei kommt ein *http.sys*-Kerneltreiber zum Einsatz, der von IIS verwendet wird, um HTTP-Anforderungen zu verarbeitet und an Prozesse weiterzuleiten, die Webanwendungen ausführen. Dadurch können mehrere Prozesse auf dem gleichen physischen oder virtuellen Computer Webanwendungen am gleichen Port hosten. Die Unterscheidung erfolgt entweder anhand eines eindeutigen URL-Pfads oder anhand eines eindeutigen Hostnamens. Mit diesen Features können in Service Fabric mehrere Websites im gleichen Cluster gehostet werden.
+WebListener basiert auf der [Windows-HTTP-Server-API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Dabei kommt der *http.sys*-Kerneltreiber zum Einsatz, der von IIS verwendet wird, um HTTP-Anforderungen zu verarbeiten und an Prozesse weiterzuleiten, die Webanwendungen ausführen. Dadurch können mehrere Prozesse auf dem gleichen physischen oder virtuellen Computer Webanwendungen am gleichen Port hosten. Die Unterscheidung erfolgt entweder anhand eines eindeutigen URL-Pfads oder anhand eines eindeutigen Hostnamens. Mit diesen Features können in Service Fabric mehrere Websites im gleichen Cluster gehostet werden.
 
 Das folgende Diagramm veranschaulicht für WebListener die Verwendung des *http.sys*-Kerneltreibers unter Windows für die Portfreigabe:
 
@@ -186,7 +191,7 @@ Wenn Sie WebListener mit einem dynamisch zugewiesenen Port verwenden möchten, l
 
 Hinweis: Ein von einer `Endpoint`-Konfiguration zugeordneter dynamischer Port stellt nur einen einzelnen Port *pro Hostprozess* bereit. Im Rahmen des aktuellen Service Fabric-Hostingmodells können mehrere Dienstinstanzen und/oder -replikate im gleichen Prozess gehostet werden. Bei der Zuordnung durch die `Endpoint`-Konfiguration teilen sie sich also jeweils den gleichen Port. Mit dem zugrunde liegenden *http.sys*-Portfreigabefeature können mehrere WebListener-Instanzen einen Port gemeinsam nutzen. Dies wird von `WebListenerCommunicationListener` jedoch aufgrund von Schwierigkeiten bei Clientanforderungen nicht unterstützt. Für die Verwendung eines dynamischen Ports wird Kestrel als Webserver empfohlen.
 
-## <a name="kestrel-in-reliable-services"></a>Kestrel in Reliable Services
+## <a name="kestrel-in-reliable-services"></a>Kestrel in zuverlässigen Diensten
 Kestrel kann in einem zuverlässigen Dienst durch Importieren des NuGet-Pakets **Microsoft.ServiceFabric.AspNetCore.Kestrel** verwendet werden. Dieses Paket enthält `KestrelCommunicationListener` (eine Implementierung von `ICommunicationListener`), mit der Sie einen ASP.NET Core-Webhost innerhalb eines zuverlässigen Diensts mit Kestrel als Webserver erstellen können.
 
 Kestrel ist ein plattformübergreifender Webserver für ASP.NET Core und basiert auf libuv, einer plattformübergreifenden asynchronen E/A-Bibliothek. Im Gegensatz zu WebListener verwendet Kestrel keinen zentralen Endpunkt-Manager wie *http.sys*. Und im Gegensatz zu WebListener unterstützt Kestrel keine Portfreigabe zwischen mehreren Prozessen. Jede Instanz von Kestrel muss einen eindeutigen Port verwenden.

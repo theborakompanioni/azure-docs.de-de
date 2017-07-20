@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: bd6f81ee12a7bb655166cf059236175bfb9994e5
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 3ad4e68b90979fd7f9d3ddf5278e65e19cb07152
+ms.contentlocale: de-de
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -45,18 +46,18 @@ Führen Sie den folgenden Befehl aus, um eine Liste mit allen Ressourcengruppen 
 
 
 ### <a name="resources"></a>Ressourcen
- Verwenden Sie den folgenden Befehl, um alle Ressourcen in einer Gruppe (beispielsweise mit dem Namen *testRG*) aufzulisten:
+ Verwenden Sie den folgenden Befehl, um alle Ressourcen in einer Gruppe (beispielsweise die mit dem Namen *testRG*) aufzulisten:
 
     azure resource list testRG
 
-Verwenden Sie einen Befehl wie den folgenden, um eine einzelne Ressource in der Gruppe anzuzeigen (beispielsweise einen virtuellen Computer namens *MyUbuntuVM*:
+Um eine einzelne Ressource in der Gruppe anzuzeigen (beispielsweise einen virtuellen Computer namens *MyUbuntuVM*), verwenden Sie einen Befehl wie diesen:
 
     azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
 Beachten Sie den Parameter **Microsoft.Compute/virtualMachines**. Mit diesem Parameter wird die Art der Ressourcen angegeben, für die Sie Informationen anfordern möchten.
 
 > [!NOTE]
-> Bei Verwendung von Befehlen des Typs **azure resource** müssen Sie mit dem Parameter **-o** die API-Version der Ressource angeben (gilt nicht für den Befehl **list**). Sollte Ihnen die API-Version nicht bekannt sein, öffnen Sie die Vorlagendatei, und sehen Sie sich das Feld „apiVersion“ für die Ressource an. Weitere Informationen zu API-Versionen in Resource Manager finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für Resource Manager](resource-manager-supported-services.md).
+> Bei Verwendung von Befehlen des Typs **azure resource** müssen Sie mit dem Parameter **-o** die API-Version der Ressource angeben (gilt nicht für den Befehl **list**). Sollte Ihnen die API-Version nicht bekannt sein, öffnen Sie die Vorlagendatei, und sehen Sie sich das Feld „apiVersion“ für die Ressource an. Weitere Informationen zu API-Versionen im Ressource Manager finden Sie unter [Ressourcenanbieter und -typen](resource-manager-supported-services.md).
 > 
 > 
 

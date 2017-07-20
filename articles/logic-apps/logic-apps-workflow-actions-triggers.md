@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: ff86340f18a2d3d13d55b7e0bcd4122d9b85ccd9
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: dd4e4282d774c2c336889b1df887806bfe512c10
 ms.contentlocale: de-de
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/07/2017
 
 ---
 
@@ -731,7 +731,7 @@ Mit der Compose-Aktion können Sie ein beliebiges Objekt erstellen. Die Ausgabe 
 
 ## <a name="table-action"></a>Aktion table
 
-Mit der Aktion `table` können Sie ein Array von Elementen in eine **CVS**- oder **HTML**-Tabelle konvertieren.
+Mit der Aktion `table` können Sie ein Array von Elementen in eine **CSV**- oder **HTML**-Tabelle konvertieren.
 
 Beispiel: @triggerBody() ist wie folgt definiert:
 
@@ -761,7 +761,7 @@ Dies ergibt:
 
 <table><thead><tr><th>id</th><th>name</th></tr></thead><tbody><tr><td>0</td><td>apples</td></tr><tr><td>1</td><td>oranges</td></tr></tbody></table>"
 
-Um die Tabelle anzupassen, können Sie die Spalten ausdrücklich angeben. Beispiel:
+Sie können die Spalten zum Anpassen der Tabelle ausdrücklich angeben. Beispiel:
 
 ```json
 "ConvertToTable" : {
@@ -789,7 +789,7 @@ Wenn der Eigenschaftswert `from` ein leeres Array ist, wird eine leere Tabelle a
 |Name|Erforderlich|Typ|Beschreibung|
 |--------|------------|--------|---------------|
 |Aus|Ja|Array|Das Quellarray.|
-|format|Ja|String|Das Format, entweder **CVS** oder **HTML**.|
+|format|Ja|String|Das Format, entweder **CSV** oder **HTML**.|
 |columns|Nein|Array|Die Spalten. Ermöglicht das Überschreiben des Standardformats der Tabelle.|
 |column header|Nein|String|Die Kopfzeile der Spalte.|
 |column value|Ja|String|Der Wert der Spalte.|

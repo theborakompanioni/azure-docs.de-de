@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/12/2017
+ms.date: 06/26/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: a8e35456af8c9f2cf1bf9e9c364e33641f29a477
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen
-In diesem Thema erfahren Sie, wie Sie die Azure-Ressourcen-Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource zu erstellen.
+In diesem Thema erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource oder mehrere Instanzen einer Eigenschaft für eine Ressource zu erstellen.
+
+Wenn Sie der Vorlage Logik hinzufügen müssen, mit der Sie angeben können, ob eine Ressource bereitgestellt wird, sehen Sie [Bedingtes Bereitstellen von Ressourcen](#conditionally-deploy-resource) ein.
 
 ## <a name="resource-iteration"></a>Ressourceniteration
 Fügen Sie zum Erstellen mehrerer Instanzen eines Ressourcentyps ein `copy`-Element zum Ressourcentyp hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten. Resource Manager erstellt die Ressourcen gleichzeitig. Aus diesem Grund ist die Reihenfolge, in der sie erstellt werden, nicht garantiert. Um Ressourcen durch mehrfaches Durchlaufen zu erstellen, finden Sie unter [Serielle Kopie](#serial-copy). 
@@ -256,6 +258,147 @@ Das folgende Beispiel bietet ein etwas realistischeres Szenario und stellt gleic
 }
 ```
 
+## <a name="property-iteration"></a>Iteration von Eigenschaften
+
+Wenn Sie mehrere Werte für eine Eigenschaft einer Ressource erstellen möchten, fügen Sie im properties-Element ein `copy`-Array hinzu. Dieses Array enthält Objekte, und jedes Objekt weist die folgenden Eigenschaften auf:
+
+* „name“ – der Name der Eigenschaft, für die mehrere Werte erstellt werden sollen
+* „count“ – die Anzahl der zu erstellenden Werte
+* „input“ – ein Objekt, das die Werte enthält, die der Eigenschaft zugewiesen werden sollen  
+
+Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die dataDisks-Eigenschaft auf einem virtuellen Computer angewendet wird:
+
+```json
+{
+  "name": "examplevm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2017-03-30",
+  "properties": {
+    "storageProfile": {
+      "copy": [{
+          "name": "dataDisks",
+          "count": 3,
+          "input": {
+              "lun": "[copyIndex('dataDisks')]",
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          }
+      }],
+      ...
+```
+
+Beachten Sie Folgendes: Bei Verwendung von `copyIndex` in einer Eigenschaften-Iteration müssen Sie den Namen der Iteration angeben. Bei Verwendung mit einer Ressourcen-Iteration muss der Name nicht angegeben werden.
+
+Ressourcen-Manager erweitert das `copy`-Array während der Bereitstellung. Der Name des Arrays wird zum Namen der Eigenschaft. Die Eingabewerte werden zu den Eigenschaften des Objekts. Die bereitgestellte Vorlage sieht wie folgt aus:
+
+```json
+{
+  "name": "examplevm",
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2017-03-30",
+  "properties": {
+    "storageProfile": {
+      "dataDisks": [
+          {
+              "lun": 0,
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          },
+          {
+              "lun": 1,
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          },
+          {
+              "lun": 2,
+              "createOption": "Empty",
+              "diskSizeGB": "1023"
+          }
+      }],
+      ...
+```
+
+Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. Verweisen Sie anhand des Namens auf die Eigenschaften-Iteration.
+
+```json
+{
+    "type": "Microsoft.Network/virtualNetworks",
+    "name": "[concat(parameters('vnetname'), copyIndex())]",
+    "apiVersion": "2016-06-01",
+    "copy":{
+        "count": 2,
+        "name": "vnetloop"
+    },
+    "location": "[resourceGroup().location]",
+    "properties": {
+        "addressSpace": {
+            "addressPrefixes": [
+                "[parameters('addressPrefix')]"
+            ]
+        },
+        "copy": [
+            {
+                "name": "subnets",
+                "count": 2,
+                "input": {
+                    "name": "[concat('subnet-', copyIndex('subnets'))]",
+                    "properties": {
+                        "addressPrefix": "[variables('subnetAddressPrefix')[copyIndex('subnets')]]"
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+Sie können nur ein copy-Element in die Eigenschaften jeder Ressource einschließen. Wenn Sie eine Iterationsschleife für mehrere Eigenschaften angeben möchten, definieren Sie mehrere Objekte im copy-Array. Jedes Objekt wird einzeln durchlaufen. Wenn beispielsweise mehrere Instanzen der `frontendIPConfigurations`-Eigenschaft und der `loadBalancingRules`-Eigenschaft für einen Lastenausgleich erstellt werden sollen, definieren Sie beide Objekte in einem einzigen copy-Element: 
+
+```json
+{
+    "name": "[variables('loadBalancerName')]",
+    "type": "Microsoft.Network/loadBalancers",
+    "properties": {
+        "copy": [
+          {
+              "name": "frontendIPConfigurations",
+              "count": 2,
+              "input": {
+                  "name": "[concat('loadBalancerFrontEnd', copyIndex('frontendIPConfigurations', 1))]",
+                  "properties": {
+                      "publicIPAddress": {
+                          "id": "[variables(concat('publicIPAddressID', copyIndex('frontendIPConfigurations', 1)))]"
+                      }
+                  }
+              }
+          },
+          {
+              "name": "loadBalancingRules",
+              "count": 2,
+              "input": {
+                  "name": "[concat('LBRuleForVIP', copyIndex('loadBalancingRules', 1))]",
+                  "properties": {
+                      "frontendIPConfiguration": {
+                          "id": "[variables(concat('frontEndIPConfigID', copyIndex('loadBalancingRules', 1)))]"
+                      },
+                      "backendAddressPool": {
+                          "id": "[variables('lbBackendPoolID')]"
+                      },
+                      "protocol": "tcp",
+                      "frontendPort": "[variables(concat('frontEndPort' copyIndex('loadBalancingRules', 1))]",
+                      "backendPort": "[variables(concat('backEndPort' copyIndex('loadBalancingRules', 1))]",
+                      "probe": {
+                          "id": "[variables('lbProbeID')]"
+                      }
+                  }
+              }
+          }
+        ],
+        ...
+    }
+}
+```
+
 ## <a name="depend-on-resources-in-a-loop"></a>Abhängigkeit von Ressourcen in einer Schleife
 Sie geben an, dass eine Ressource nach einer anderen Ressource bereitgestellt wird, indem Sie das `dependsOn`-Element verwenden. Um eine Ressource bereitzustellen, die von der Sammlung von Ressourcen in einer Schleife abhängt, geben Sie den Namen der Kopierschleife im dependsOn-Element an. Das folgende Beispiel zeigt, wie drei Speicherkonten vor dem Bereitstellen des virtuellen Computers bereitgestellt werden. Die vollständige Definition des virtuellen Computers ist dabei nicht angegeben. Beachten Sie, dass „name“ für das copy-Element auf `storagecopy` und auch das dependsOn-Element für die virtuellen Computer auf `storagecopy` festgelegt ist.
 
@@ -341,6 +484,29 @@ Das folgende Beispiel zeigt die Implementierung:
     ...
 }]
 ```
+
+## <a name="conditionally-deploy-resource"></a>Bedingtes Bereitstellen von Ressourcen
+
+Verwenden Sie das `condition`-Element, um anzugeben, ob eine Ressource bereitgestellt wird. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert „true“ ist, wird die Ressource bereitgestellt. Ist der Wert „false“, wird die Ressource nicht bereitgestellt. Verwenden Sie beispielsweise Folgendes, um anzugeben, ob ein neues Speicherkonto bereitgestellt wird oder ob ein vorhandenes Speicherkonto verwendet wird:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+Ein Beispiel für die Verwendung einer neuen oder einer vorhandenen Ressource finden Sie unter [Vorlage für neue oder vorhandene Ressourcenbedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).
+
+Ein Beispiel für die Verwendung eines Kennworts oder eines SSH-Schlüssels zum Bereitstellen von virtuellen Computern finden Sie unter [Vorlage für Benutzername- oder SSH-Bedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

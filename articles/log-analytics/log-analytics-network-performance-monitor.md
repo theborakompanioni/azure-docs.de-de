@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 7e9ca0c15c29fb670b742d939107bb5d4a48245c
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 5c2cb05ced7841899c2bd19f627d13b86a4b05cc
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Netzwerkleistungsmonitor-Lösung in Azure Log Analytics
+
+![Symbol des Netzwerkleistungsmonitors](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 
 In diesem Dokument wird das Einrichten und Verwenden der Netzwerkleistungsmonitor-Lösung in Log Analytics beschrieben, mit der Sie die Leistung Ihrer Netzwerke quasi in Echtzeit überwachen und Leistungsengpässe im Netzwerk erkennen und lokalisieren können. Mit der Netzwerkleistungsmonitor-Lösung können Sie den Paketverlust und die Latenz zwischen zwei Netzwerken, Subnetzen oder Servern überwachen. Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Der Netzwerkleistungsmonitor generiert Warnungen und gibt eine Benachrichtigung aus, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Diese Schwellenwerte können automatisch vom System erlernt werden, oder Sie können die Werte so konfigurieren, dass benutzerdefinierte Warnungsregeln verwendet werden. Der Netzwerkleistungsmonitor gewährleistet das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu.
 
@@ -178,7 +181,7 @@ Wenn Sie beim Erstellen einer synthetischen Transaktionsregel ICMP wählen, verw
 Ehe Sie ein Protokoll wählen, sollten Sie die folgenden Informationen berücksichtigen:
 
 ##### <a name="discovering-multiple-network-routes"></a>Ermitteln mehrerer Netzwerkrouten
-TCP bietet genauere Daten, wenn mehrere Routen ermitteln werden, und benötigt weniger Agents in jedem Subnetz. Beispielsweise können ein oder zwei Agents, die TCP verwenden, alle redundanten Pfade zwischen Subnetzen ermitteln. Bei Verwenden von ICMP benötigen Sie mehr Agents, um dasselbe Resultat zu erzielen. Wenn Sie bei Verwenden von ICMP über *N* Routen zwischen zwei Subnetzen verfügen, benötigen Sie im jeweiligen Quell- oder Zielsubnetz mehr als *5* Agents.
+TCP ist genauer, wenn mehrere Routen ermitteln werden, und benötigt weniger Agents in jedem Subnetz. Beispielsweise können ein oder zwei Agents, die TCP verwenden, alle redundanten Pfade zwischen Subnetzen ermitteln. Bei Verwenden von ICMP benötigen Sie mehr Agents, um dasselbe Resultat zu erzielen. Wenn Sie bei Verwenden von ICMP über *N* Routen zwischen zwei Subnetzen verfügen, benötigen Sie im jeweiligen Quell- oder Zielsubnetz mehr als *5* Agents.
 
 ##### <a name="accuracy-of-results"></a>Genauigkeit der Ergebnisse
 Router und Switches weisen ICMP ECHO-Paketen im Vergleich mit TCP-Paketen tendenziell eine niedrigere Priorität zu. Wenn Netzwerkgeräte in bestimmten Situationen stark ausgelastet sind, geben die von TCP abgerufenen Daten den Paketverlust und die Latenz von Anwendungen präziser zurück. Dies erfolgt, da der meiste Datenverkehr über TCP übertragen wird. In solchen Fällen bietet ICMP im Vergleich mit TCP ungenauere Ergebnisse.
@@ -199,9 +202,9 @@ Im Gegensatz dazu arbeitet ICMP nicht mit einem Port. In den meisten Unternehmen
 Wenn Sie sich während der Bereitstellung für ICMP entscheiden, können Sie jederzeit zu TCP wechseln, indem Sie die Standardüberwachungsregel bearbeiten.
 
 ##### <a name="to-edit-the-default-monitoring-rule"></a>So bearbeiten Sie die Standardüberwachungsregel
-1.    Navigieren Sie zu **Netzwerkleistung** > **Monitor** > **Konfigurieren** > **Monitor**, und klicken Sie dann auf **Standardregel**.
-2.    Scrollen Sie zum Abschnitt **Protokoll**, und wählen Sie das Protokoll, das Sie verwenden möchten.
-3.    Klicken Sie auf **Speichern**, um die Einstellung zu übernehmen.
+1.  Navigieren Sie zu **Netzwerkleistung** > **Monitor** > **Konfigurieren** > **Monitor**, und klicken Sie dann auf **Standardregel**.
+2.  Scrollen Sie zum Abschnitt **Protokoll**, und wählen Sie das Protokoll, das Sie verwenden möchten.
+3.  Klicken Sie auf **Speichern**, um die Einstellung zu übernehmen.
 
 Auch wenn die Standardregel ein bestimmtes Protokoll angibt, können Sie neue Regeln mit einem anderen Protokoll erstellen. Sie können sogar eine Kombination aus Regeln erstellen, bei der einige der Regeln ICMP und andere TCP verwenden.
 

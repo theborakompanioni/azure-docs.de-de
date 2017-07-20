@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von bedingter Logik und Starten von Workflows – Azure Logic Apps | Microsoft-Dokumentation"
+title: "Hinzufügen von Bedingungen und Starten von Workflows – Azure Logic Apps | Microsoft-Dokumentation"
 description: "Steuern Sie durch Hinzufügen bedingter Logik, von Triggern, Aktionen und Parametern, wie Workflows in Azure Logic Apps ausgeführt werden."
 author: stepsic-microsoft-com
 manager: anneta
@@ -15,55 +15,75 @@ ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9f7d623ec213de6d46f59547aff9d4417ac95ede
-ms.openlocfilehash: 41aafe94d24f0e22fe2256ab213c7668b670764c
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
 ms.contentlocale: de-de
-ms.lasthandoff: 02/15/2017
+ms.lasthandoff: 06/24/2017
 
 
 ---
 # <a name="use-logic-apps-features"></a>Verwenden von Logik-App-Features
-Im [vorherigen Thema](../logic-apps/logic-apps-create-a-logic-app.md)haben Sie Ihre erste Logik-App erstellt. Jetzt erstellen Sie einen umfassenderen Prozess mit Azure Logic Apps. In diesem Thema werden die folgenden neuen Azure Logic Apps-Konzepte vorgestellt:
 
-* Bedingte Logik, die eine Aktion ausführt, wenn eine bestimmte Bedingung erfüllt ist.
-* Codeansicht zum Bearbeiten einer vorhandenen Logik-App.
-* Optionen zum Starten eines Workflows.
+In einem [vorherigen Thema](../logic-apps/logic-apps-create-a-logic-app.md) haben Sie Ihre erste Logik-App erstellt. Um Ihren Logik-App-Workflow zu steuern, können Sie unterschiedliche Pfade für die Ausführung der Logik-App angeben und festlegen, wie Daten in Arrays, Auflistungen und Batches verarbeitet werden. Sie können diese Elemente in Ihrem Logik-App-Workflow einschließen:
 
-Bevor Sie dieses Thema durchgehen, sollten Sie die Schritte unter [Erstellen einer neuen Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)ausgeführt haben. Navigieren Sie im [Azure-Portal]zu Ihrer Logik-App, und klicken Sie in der Übersicht auf **Trigger und Aktionen** , um die Definition der Logik-App zu bearbeiten.
+* Durch [switch-Anweisungen](../logic-apps/logic-apps-switch-case.md) und Bedingungen, kann Ihre Logik-App verschiedene Aktionen basierend darauf ausführen, ob bestimmte Bedingungen erfüllt sind.
 
-## <a name="reference-material"></a>Referenzmaterial
-Die folgenden Dokumente könnten hilfreich sein:
+* Durch [Schleifen](../logic-apps/logic-apps-loops-and-scopes.md) führt Ihre Logik-App Schritte wiederholt aus. Sie können beispielsweise Aktionen über ein Array wiederholen, wenn Sie eine **For_each**-Schleife verwenden. Alternativ können Sie Aktionen wiederholen, bis eine Bedingung erfüllt ist, wenn Sie eine **Bis**-Schleife verwenden.
 
-* [Verwaltungs- und Laufzeit-REST-APIs](https://msdn.microsoft.com/library/azure/mt643787.aspx) : hier wird auch erklärt, wie Logik-Apps direkt aufgerufen werden.
-* [Sprachreferenz](https://msdn.microsoft.com/library/azure/mt643789.aspx) : eine umfassende Liste aller Funktionen und Ausdrücke, die unterstützt werden.
-* [Trigger- und Aktionstypen](https://msdn.microsoft.com/library/azure/mt643939.aspx) : die verschiedenen Arten von Aktionen und die dazugehörigen Eingaben.
-* [Übersicht über App Service](../app-service/app-service-value-prop-what-is.md) : Beschreibung, welche Komponenten für das Erstellen welcher Lösung ausgewählt werden.
+* Durch [Bereiche](../logic-apps/logic-apps-loops-and-scopes.md) können Sie Abfolgen von Aktionen gruppieren, z.B. zum Implementieren der Ausnahmebehandlung.
 
-## <a name="add-conditional-logic-to-your-logic-app"></a>Hinzufügen von bedingter Logik zu Ihrer Logik-App
+* Durch das [Auflösen von Batches](../logic-apps/logic-apps-loops-and-scopes.md) kann Ihre Logik-App getrennte Workflows für Elemente in einem Array starten, wenn Sie den **SplitOn**-Befehl verwenden.
 
-Auch wenn der ursprüngliche Flow Ihrer Logik-App funktioniert, konnten wir einige Bereiche verbessern.
+In diesem Thema werden Ihnen andere Konzepte zum Erstellen Ihrer Logik-App vorgestellt:
 
-### <a name="conditional"></a>Bedingt
+* Codeansicht zum Bearbeiten einer vorhandenen Logik-App
+* Optionen zum Starten eines Workflows
 
-Mit Ihrer ersten Logik-App könnten Sie zu viele E-Mails erhalten. In den folgenden Schritten wird bedingte Logik hinzugefügt, damit Sie nur eine E-Mail erhalten, wenn der Tweet von einer Person mit einer bestimmten Anzahl von Followern stammt.
+## <a name="conditions-run-steps-only-after-meeting-a-condition"></a>Bedingungen: Führen Sie Schritte erst aus, wenn eine Bedingung erfüllt ist
 
-0. Wählen Sie im Logik-App-Designer **Neuer Schritt** (+) > **Aktion hinzufügen** aus.
-0.    Suchen Sie nach der Aktion **Benutzer abrufen** für Twitter, und fügen Sie sie hinzu.
-0. Um die Informationen über den Twitter-Benutzer zu erhalten, suchen Sie das Feld **Getwittert von** aus dem Trigger, und fügen Sie es hinzu.
+Damit Ihre Logik-App die Schritte nur ausführt, wenn die Daten bestimmte Kriterien erfüllen, können Sie eine Bedingung hinzufügen, die Daten im Workflow anhand bestimmter Felder oder Werte vergleicht.
 
-    ![Benutzer abrufen](media/logic-apps-use-logic-app-features/getuser.png)
+Angenommen Sie verfügen über eine Logik-App, die Ihnen zu viele E-Mails über Beiträge auf dem RSS-Feed einer Website sendet. Dann können Sie eine Bedingung hinzufügen, sodass Ihre Logik-App nur dann E-Mails sendet, wenn der neue Beitrag zu einer bestimmten Kategorie gehört.
 
-0. Wählen Sie **Neuer Schritt** (+) > **Bedingung hinzufügen** aus.
-0. Um nach der Anzahl der Follower von Benutzern zu filtern, wählen Sie unter **Objektname** die Option **Dynamischen Inhalt hinzufügen** aus. 
-0.    Suchen Sie im Suchfeld nach dem Feld **Anzahl der Follower**, und fügen Sie es hinzu.
-0. Wählen Sie unter **Beziehung** die Option **ist größer als** aus.
-0. Geben Sie im Feld **Wert** die Anzahl von Followern ein, die Benutzer haben sollten.
+1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
-    ![Bedingt](media/logic-apps-use-logic-app-features/conditional.png)
+2. Fügen Sie eine Bedingung zum gewünschten Workflow-Speicherort hinzu. 
 
-0. Ziehen Sie abschließend das Feld **E-Mail senden** in das Feld**Wenn ja**. 
+   Um die Bedingung zwischen vorhandenen Schritten in den Logik-App-Workflow hinzuzufügen, bewegen Sie den Zeiger auf den Pfeil, zu dem Sie die Bedingung hinzufügen möchten. 
+   Wählen Sie das **Pluszeichen** (**+**) und dann **Bedingung hinzufügen** aus. Beispiel:
 
-Jetzt erhalten Sie nur E-Mails, wenn die Anzahl der Follower die Bedingung erfüllt.
+   ![Hinzufügen einer Bedingung zur Logik-App](./media/logic-apps-use-logic-app-features/add-condition.png)
+
+   > [!NOTE]
+   > Wenn Sie eine Bedingung am Ende des aktuellen Workflows hinzufügen möchten, wechseln Sie zum unteren Rand der Logik-App, und wählen Sie **+ Neuen Schritt** aus.
+
+3. Definieren Sie nun die Bedingung. Geben Sie das Quellfeld an, das Sie auswerten möchten, den auszuführenden Vorgang und den Zielwert oder das Zielfeld. Um vorhandene Felder zu Ihrer Bedingung hinzuzufügen, wählen Sie aus der **Liste „Dynamischen Inhalt hinzufügen“** aus.
+
+   Beispiel:
+
+   ![Bearbeiten einer Bedingung im Standardmodus](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode.png)
+
+   Hier ist die vollständige Bedingung:
+
+   ![Vollständige Bedingung](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode-2.png)
+
+   > [!TIP]
+   > Um die Bedingung im Code zu definieren, wählen Sie **Im erweiterten Modus bearbeiten**. Beispiel:
+   > 
+   > ![Bearbeiten einer Bedingung im Code](./media/logic-apps-use-logic-app-features/edit-condition-advanced-mode.png)
+
+4. Fügen Sie unter **Wenn Ja** und **Wenn Nein** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist.
+
+   Beispiel:
+
+   ![Bedingung mit Ja- und Nein-Pfaden](./media/logic-apps-use-logic-app-features/condition-yes-no-path.png)
+
+   > [!TIP]
+   > Sie können die vorhandenen Aktionen in die **Wenn Ja** und **Wenn Nein**-Pfade ziehen.
+
+5. Wenn Sie fertig sind, speichern Sie Ihre Logik-App.
+
+Jetzt erhalten Sie E-Mail-Nachrichten ausschließlich dann, wenn die Beiträge Ihre Bedingung erfüllen.
 
 ## <a name="repeat-actions-over-a-list-with-foreach"></a>Wiederholen von Aktionen über eine Liste mit forEach
 
@@ -84,31 +104,32 @@ Zwar verfügen Sie über den Logik-App-Designer, Sie können aber den Code, der 
 
 2. Um Ihre Änderungen zu speichern, wählen Sie **Speichern** aus.
 
-### <a name="parameters"></a>Parameter
+## <a name="parameters"></a>Parameter
 
 Einige Funktionen von Logik-Apps sind nur in der Codeansicht verfügbar, z.B. Parameter. Parameter erleichtern das Wiederverwenden von Werten in der gesamten Logik-App. Wenn Sie z.B. eine E-Mail-Adresse haben, die in verschiedenen Aktionen verwendet werden soll, sollten Sie die E-Mail-Adresse als Parameter definieren.
 
-Parameter sind eine gute Möglichkeit, Werte auszuwählen, die Sie wahrscheinlich häufig ändern. Sie sind besonders nützlich, wenn Sie Parameter in verschiedenen Umgebungen überschreiben müssen. Weitere Informationen zum Überschreiben von Parametern auf Grundlage der Umgebung finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/logic).
+Parameter sind eine gute Möglichkeit, Werte auszuwählen, die Sie wahrscheinlich häufig ändern. Sie sind besonders nützlich, wenn Sie Parameter in verschiedenen Umgebungen überschreiben müssen. Weitere Informationen zum Überschreiben von Parametern auf Grundlage der Umgebung finden Sie unter [Erstellen von Logik-App-Definitionen](../logic-apps/logic-apps-author-definitions.md) und [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/logic).
 
 Dieses Beispiel zeigt, wie Sie Ihre vorhandene Logik-App so aktualisieren, dass Sie Parameter als Abfrageausdruck verwenden können.
 
-1. Suchen Sie in der Codeansicht nach dem `parameters : {}`-Objekt, und fügen Sie ein topic-Objekt hinzu:
+1. Suchen Sie in der Codeansicht nach dem `parameters : {}`-Objekt, und fügen Sie ein `currentFeedUrl`-Objekt hinzu:
 
-        "topic" : {
+        "currentFeedUrl" : {
             "type" : "string",
-            "defaultValue" : "MicrosoftAzure"
+            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
         }
 
-2. Wechseln Sie zur `twitterconnector`-Aktion, suchen Sie den Abfragewert, und ersetzen Sie diesen Wert durch `#@{parameters('topic')}`. 
+2. Wechseln Sie zur `When_a_feed-item_is_published`-Aktion, suchen Sie den `queries`-Bereich, und ersetzen Sie den Abfragewert durch: `"feedUrl": "#@{parameters('currentFeedUrl')}"` 
 
     Sie können auch die `concat`-Funktion verwenden, um zwei oder mehr Zeichenfolgen zu verknüpfen. 
-    Beispielsweise funktioniert `@concat('#',parameters('topic'))` genauso wie das Beispiel oben.
+    Beispielsweise funktioniert `"@concat('#',parameters('currentFeedUrl'))"` 
+    genauso wie das Beispiel oben.
 
-3.    Wenn Sie fertig sind, wählen Sie **Speichern** aus. 
+3.  Wenn Sie fertig sind, wählen Sie **Speichern** aus. 
 
-    Jetzt werden Ihnen stündlich alle neuen Tweets mit mehr als fünf Retweets in einen Ordner namens **Tweets** in Ihrer Dropbox übermittelt.
+    Jetzt können Sie den RSS-Feed der Website ändern, indem Sie eine andere URL über das `currentFeedURL`-Objekt übergeben.
 
-Mehr Informationen zu Logik-App-Definitionen finden Sie unter [Logik-App-Definitionen erstellen](../logic-apps/logic-apps-author-definitions.md).
+Erfahren Sie mehr darüber, [wie Sie Logik-App-Definitionen erstellen](../logic-apps/logic-apps-author-definitions.md).
 
 ## <a name="start-logic-app-workflows"></a>Starten des Logik-App-Workflows
 
@@ -125,3 +146,8 @@ Dienste können einen Logik-App-Endpunkt zum Starten eines Workflows aufrufen. U
 <!-- Shared links -->
 [Azure-Portal]: https://portal.azure.com
 
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Wechsel von Anweisungen](../logic-apps/logic-apps-switch-case.md) 
+* [Schleifen, Bereiche und Auflösen von Batches](../logic-apps/logic-apps-loops-and-scopes.md)
+* [Erstellen von Logik-App-Definitionen](../logic-apps/logic-apps-author-definitions.md)

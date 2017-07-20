@@ -12,12 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 71a4ccb1914c147b1504068a09ef957a51067c08
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -36,12 +37,9 @@ Der Lebenszyklus eines zustandslosen Diensts ist sehr einfach. Ein zustandsloser
 
 Obwohl `RunAsync` in fast allen Fällen ausreichen sollte, sind die Ereignisse „Öffnen“, „Schließen“ und „Abbrechen“ auch in zustandslosen Diensten verfügbar:
 
-* `Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java`
-   „OnOpenAsync“ wird zur Verwendung der Instanz des zustandslosen Diensts aufgerufen. Erweiterte Serviceinitialisierungsaufgaben können zu diesem Zeitpunkt gestartet werden.
-* `Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java`
-   „OnCloseAsync“ wird aufgerufen, wenn die Instanz des zustandslosen Diensts ordnungsgemäß beendet wird. Dies kann der Fall sein, wenn Code für den Dienst aktualisiert, die Dienstinstanz aufgrund des Lastenausgleichs verschoben oder ein vorübergehender Fehler erkannt wird. "OnCloseAsync" kann verwendet werden, um Ressourcen sicher zu schließen, die Hintergrundverarbeitung anzuhalten, das Speichern des externen Status zu beenden oder bestehende Verbindungen zu deaktivieren.
-* `void OnAbort() - C# / void onAbort() - Java`
-   „OnAbort“ wird aufgerufen, wenn das Herunterfahren der Instanz des zustandslosen Diensts erzwungen wird. Diese Methode wird im Allgemeinen verwendet, wenn auf dem Knoten ein dauerhafter Fehler erkannt wird oder Service Fabric den Lebenszyklus der Dienstinstanz aufgrund von internen Fehlern nicht zuverlässig verwalten kann.
+* `Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java` „OnOpenAsync“ wird zur Verwendung der Instanz des zustandslosen Diensts aufgerufen. Erweiterte Serviceinitialisierungsaufgaben können zu diesem Zeitpunkt gestartet werden.
+* `Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java` „OnCloseAsync“ wird aufgerufen, wenn die Instanz des zustandslosen Diensts ordnungsgemäß beendet wird. Dies kann der Fall sein, wenn Code für den Dienst aktualisiert, die Dienstinstanz aufgrund des Lastenausgleichs verschoben oder ein vorübergehender Fehler erkannt wird. "OnCloseAsync" kann verwendet werden, um Ressourcen sicher zu schließen, die Hintergrundverarbeitung anzuhalten, das Speichern des externen Status zu beenden oder bestehende Verbindungen zu deaktivieren.
+* `void OnAbort() - C# / void onAbort() - Java` „OnAbort“ wird aufgerufen, wenn das Herunterfahren der Instanz des zustandslosen Diensts erzwungen wird. Diese Methode wird im Allgemeinen verwendet, wenn auf dem Knoten ein dauerhafter Fehler erkannt wird oder Service Fabric den Lebenszyklus der Dienstinstanz aufgrund von internen Fehlern nicht zuverlässig verwalten kann.
 
 ## <a name="stateful-service-replica-lifecycle"></a>Lebenszyklus des zustandsbehafteten Dienstreplikats
 
@@ -52,8 +50,7 @@ Obwohl `RunAsync` in fast allen Fällen ausreichen sollte, sind die Ereignisse �
 
 Der Lebenszyklus eines zustandsbehafteten Dienstsreplikats ist viel komplizierter als der einer zustandslosen Dienstinstanz. Zusätzlich zu den Ereignissen „Öffnen“, „Schließen“ und „Abbrechen“ durchläuft ein zustandsbehafteter Dienst während seiner Lebensdauer Rollenänderungen. Wenn ein zustandsbehaftetes Dienstreplikat die Rolle wechselt, wird das Ereignis `OnChangeRoleAsync` ausgelöst:
 
-* `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)`
-   „OnChangeRoleAsync“ wird aufgerufen, wenn das Replikat des zustandsbehafteten Diensts die Rolle wechselt und beispielsweise ein primäres oder sekundäres Replikat wird. Primäre Replikate erhalten Schreibstatus (mit Erlaubnis zum Erstellen und Schreiben in Reliable Collections). Sekundäre Replikate erhalten Lesestatus (können nur aus vorhandenen Reliable Collections lesen). Die meisten Aufgaben in einem zustandsbehafteten Dienst werden im primären Replikat ausgeführt. Sekundäre Replikate können schreibgeschützte Überprüfungen durchführen, Berichte generieren und Data Mining oder andere schreibgeschützte Aufträge ausführen.
+* `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync wird immer dann aufgerufen, wenn das zustandsbehaftete Dienstreplikat die Rolle wechselt und beispielsweise ein primäres oder sekundäres Replikat wird. Primäre Replikate erhalten Schreibstatus (mit Erlaubnis zum Erstellen und Schreiben in Reliable Collections). Sekundäre Replikate erhalten Lesestatus (können nur aus vorhandenen Reliable Collections lesen). Die meisten Aufgaben in einem zustandsbehafteten Dienst werden im primären Replikat ausgeführt. Sekundäre Replikate können schreibgeschützte Überprüfungen durchführen, Berichte generieren und Data Mining oder andere schreibgeschützte Aufträge ausführen.
 
 In einem zustandsbehafteten Dienst verfügt nur das primäre Replikat über Schreibzugriff auf den Zustand. Daher ist dies in der Regel wo der Dienst die eigentliche Arbeit ausführt. Die `RunAsync`-Methode wird in einem zustandsbehafteten Dienst nur ausgeführt, wenn das Replikat des zustandsbehafteten Diensts primär ist. Die `RunAsync`-Methode wird abgebrochen, wenn ein primäres Replikat seine Rolle ändert und kein primäres Replikat mehr ist, oder während der Ereignisse „Schließen“ oder „Abbrechen“.
 

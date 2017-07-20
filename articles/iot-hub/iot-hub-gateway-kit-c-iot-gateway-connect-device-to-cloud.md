@@ -4,7 +4,7 @@ description: Informationen zum Verwenden von Intel NUC als IoT-Gateway zum Herst
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "IOT-Gateway, Gerät mit der Cloud verbinden"
 ms.assetid: cb851648-018c-4a7e-860f-b62ed3b493a5
@@ -13,14 +13,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 06/25/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2b772afc946f1637cb8d61c198bc9cf18f42e1ba
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 61cb8eb0ad23a7d4b333bf54342b872a3a8ae1da
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/28/2017
 
 ---
 # <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>Verwenden von IoT-Gateway zum Verbinden von Geräten mit der Cloud: SensorTag mit Azure IoT Hub
@@ -42,7 +41,8 @@ Sie erfahren, wie Sie mithilfe eines IoT-Gateways ein Texas Instruments SensorTa
 ## <a name="what-you-need"></a>Voraussetzungen
 
 - Sie haben das Tutorial [Einrichten von Intel NUC als IoT Gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) abgeschlossen, in dem Sie Intel NUC als IoT-Gateway eingerichtet haben.
-- SSH-Client, der auf dem Hostcomputer ausgeführt wird. Unter Windows wird PuTTY empfohlen. Linux und macOS verfügen bereits über einen SSH-Client.
+- * Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
+- Ein SSH-Client, der auf Ihrem Hostcomputer ausgeführt wird. Unter Windows wird PuTTY empfohlen. Linux und macOS verfügen bereits über einen SSH-Client.
 - IP-Adresse und Benutzername samt Kennwort für den Zugriff auf das Gateway vom SSH-Client.
 - Internetverbindung.
 
@@ -133,7 +133,7 @@ Die Beispielanwendung „Bluetooth Low Energy (BLE)“ wird von Azure IoT Edge b
 1. Wechseln Sie durch Ausführen des folgenden Befehls zum Ordner der Beispielanwendung:
 
    ```bash
-   cd /user/share/azureiotgatewaysdk/samples
+   cd /usr/share/azureiotgatewaysdk/samples/ble_gateway
    ```
 
 1. Öffnen Sie die Konfigurationsdatei, indem Sie den folgenden Befehl ausführen:

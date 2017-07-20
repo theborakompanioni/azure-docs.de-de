@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 24ccafb4df95e0010416485199e19f81e1ae31aa
-ms.openlocfilehash: 11017c7c0a761569892aebcd085d5d3fb2d67a69
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 02c51e6a576b5a91044eae784c72d7529497b814
 ms.contentlocale: de-de
-ms.lasthandoff: 02/14/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -84,8 +84,38 @@ Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/
     ![Auswählen der Visualisierung](./media/app-insights-export-power-bi/publish-power-bi.png)
 4. Aktualisieren Sie den Bericht in bestimmten Abständen manuell, oder richten Sie auf der Seite mit den Optionen eine geplante Aktualisierung ein.
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="401-or-403-unauthorized"></a>401 oder 403: Nicht autorisiert 
+Dies kann geschehen, wenn Ihr Aktualisierungstoken nicht aktualisiert wurde. Probieren Sie diese Schritte aus, um sicherzustellen, dass Sie weiterhin Zugriff haben. Wenn Sie Zugriff haben und das Aktualisieren der Anmeldeinformationen nicht funktioniert, öffnen Sie ein Supportticket.
+
+1. Melden Sie sich beim Azure-Portal an, und stellen Sie sicher, dass Sie auf die Ressource zugreifen können.
+2. Versuchen Sie, die Anmeldeinformationen für das Dashboard zu aktualisieren.
+
+### <a name="502-bad-gateway"></a>502 Ungültiges Gateway
+Dies wird normalerweise durch eine Analytics-Abfrage verursacht, die zu viele Daten zurückgibt. Probieren Sie einen kleineren Zeitbereich oder die Funktionen [ago](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#ago) oder [startofweek/startofmonth](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#startofweek), um nur die Felder zu [prognostizieren](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-reference#project-operator), die Sie benötigen.
+
+Wenn das Verkleinern des von der Analytics-Abfrage stammenden Datasets Ihre Anforderungen nicht erfüllt, sollten Sie erwägen, mithilfe der [API](https://dev.applicationinsights.io/documentation/overview) ein größeres Dataset abzurufen. Es folgen Anweisungen zum Konvertieren des M-Query-Exports zum Verwenden der API.
+
+1. Erstellen Sie einen [API-Schlüssel](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
+2. Aktualisieren Sie das M-Skript von Power BI, das Sie aus Analytics exportiert werden, indem Sie die ARM-URL durch die AI-API ersetzen (siehe folgendes Beispiel).
+   * Ersetzen Sie **https://management.azure.com/subscriptions/...**
+   * durch **https://api.applicationinsights.io/beta/apps/...**
+3. Aktualisieren Sie schließlich die Anmeldeinformationen in „basic“, und verwenden Sie Ihren API-Schlüssel.
+  
+
+**Vorhandenes Skript**
+ ```
+ Source = Json.Document(Web.Contents("https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups//providers/microsoft.insights/components//api/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
+ ```
+**Aktualisiertes Skript**
+ ```
+ Source = Json.Document(Web.Contents("https://api.applicationinsights.io/beta/apps/<APPLICATION_ID>/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
+ ```
+
 ## <a name="about-sampling"></a>Informationen zur Stichprobenerstellung (Sampling)
 Wenn für Ihre Anwendung große Datenmengen gesendet werden, wird ggf. die Funktion für die Adaptive Stichprobenerstellung verwendet und nur ein prozentualer Anteil der Telemetriedaten gesendet. Dasselbe gilt, wenn Sie die Stichprobenerstellung entweder im SDK oder bei der Erfassung manuell festgelegt haben. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Power BI – Informationen](http://www.powerbi.com/learning/)

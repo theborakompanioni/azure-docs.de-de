@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2017
+ms.date: 06/13/2017
 ms.author: yuemlu
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 37a22be9fba7b245b2c1ea3ca6e495601d63b611
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 01597767a03a5959c4c0cde994b6a7b8a34bfb7e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -31,7 +32,7 @@ Dieser Artikel beschäftigt sich hauptsächlich mit der Verwendung von Standards
 
 Standarddatenträger für virtuelle Azure-Computer können in zwei Varianten erstellt werden:
 
-**Nicht verwaltete Datenträger:** Bei dieser ursprünglichen Methode verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 64 TB erreicht werden.
+**Nicht verwaltete Datenträger:** Bei dieser ursprünglichen Methode verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 256 TB erreicht werden.
 
 [**Azure Managed Disks**:](storage-managed-disks-overview.md) Dieses Feature nimmt Ihnen die Verwaltung der Speicherkonten ab, die für die VM-Datenträger verwendet werden. Sie geben die Art (Premium oder Standard) und die benötigte Größe des Datenträgers an, und Azure erstellt und verwaltet ihn für Sie. Sie müssen die Datenträger nicht selbst auf mehrere Speicherkonten verteilen, um sicherzustellen, dass Sie die Skalierbarkeitsgrenzwerte für die Speicherkonten einhalten. Dies erledigt Azure für Sie.
 
@@ -85,7 +86,7 @@ Im Gegensatz zu Premium-Datenträgern werden für Standarddatenträger keine E/A
 
 | **VM-Tarif**            | **Virtueller Computer – Basic-Tarif** | **Virtueller Computer – Standard-Tarif** |
 |------------------------|-------------------|----------------------|
-| Maximale Datenträgergröße          | 1023 GB           | 1023 GB              |
+| Maximale Datenträgergröße          | 4095 GB           | 4095 GB              |
 | Max. 8 KB an IOPS pro Datenträger | Bis zu 300         | Bis zu 500            |
 | Max. Bandbreite pro Datenträger | Bis zu 60 MB/s     | Bis zu 60 MB/s        |
 
@@ -121,7 +122,7 @@ Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücks
 * Ausgehende Datenübertragungen
 * Transaktionen
 
-**Nicht verwaltete Speicherdaten und Datenträgergröße:** Bei nicht verwalteten Datenträgern und anderen Daten (Blobs, Tabellen, Warteschlangen und Dateien) fallen nur Kosten für den genutzten Speicherplatz an. Wenn Sie also beispielsweise über einen virtuellen Computer verfügen, bei dem das Seitenblob mit 127 GB bereitgestellt ist, aber nur 10 GB des Speicherplatzes tatsächlich genutzt werden, werden nur 10 GB in Rechnung gestellt. 
+**Nicht verwaltete Speicherdaten und Datenträgergröße:** Bei nicht verwalteten Datenträgern und anderen Daten (Blobs, Tabellen, Warteschlangen und Dateien) fallen nur Kosten für den genutzten Speicherplatz an. Wenn Sie also beispielsweise über einen virtuellen Computer verfügen, bei dem das Seitenblob mit 127 GB bereitgestellt ist, aber nur 10 GB des Speicherplatzes tatsächlich genutzt werden, werden nur 10 GB in Rechnung gestellt. Standardspeicher bis zu 8191 GB und nicht verwaltete Standard-Datenträger bis zu 4.095 GB werden unterstützt. 
 
 **Verwaltete Datenträger:** Verwaltete Datenträger werden nach bereitgestellter Größe abgerechnet. Wenn Ihr Datenträger mit einer Kapazität von 10 GB bereitgestellt wird, Sie aber nur 5 GB davon nutzen, wird trotzdem die bereitgestellte Größe von 10 GB in Rechnung gestellt.
 
@@ -154,3 +155,4 @@ Der Azure Backup-Dienst kann auch in Kombination mit Managed Disks verwendet wer
 * [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
 
 * [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)
+

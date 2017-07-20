@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 691caf95971ccdd37b12bbc178627f25b228a782
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: ecde5dd3211bfbb290e6910d7d55136d079c6cf3
+ms.contentlocale: de-de
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -57,9 +58,13 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 4. Geben Sie **Exit** ein, um den SSH-Client zu schließen.
 
    > [!NOTE]
-   > Bei den nächsten Schritten wird davon ausgegangen, dass Sie [die Azure-Befehlszeilenschnittstelle auf dem Clientcomputer installiert haben](../../../cli-install-nodejs.md) . Die folgenden Schritte können Sie auch im [klassischen Azure-Portal][Azure classic portal] ausführen.
+   > Bei den nächsten Schritten wird davon ausgegangen, dass Sie [die Azure-Befehlszeilenschnittstelle auf dem Clientcomputer installiert haben](../../../cli-install-nodejs.md) . Die folgenden Schritte können Sie auch im [Azure-Portal](http://portal.azure.com) ausführen.
 
 5. Öffnen Sie auf dem Clientcomputer die Azure-CLI, und melden Sie sich bei Ihrem Azure-Abonnement an. Weitere Informationen hierzu finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle](../../../xplat-cli-connect.md).
+
+   > [!NOTE]
+   > Melden Sie sich im Azure-Portal beim Portal an.
+
 6. Stellen Sie sicher, dass der Dienstverwaltungsmodus aktiviert ist:
 
     ```azurecli
@@ -71,9 +76,10 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
     ```azurecli
     azure vm shutdown myVM
     ```
+   Mit `azure vm list` können Sie ggf. eine Liste aller virtuellen Computer anzeigen, die in Ihrem Abonnement erstellt wurden.
 
    > [!NOTE]
-   > Mit `azure vm list` können Sie eine Liste aller virtuellen Computer anzeigen, die in Ihrem Abonnement erstellt wurden.
+   > Wenn Sie das Azure-Portal verwenden, wählen Sie den virtuellen Computer aus, und klicken Sie auf **Beenden**, um den virtuellen Computer herunterzufahren.
 
 8. Erfassen Sie nach dem Beenden des virtuellen Computers das Image. Im folgenden Beispiel wird der virtuelle Computer namens `myVM` erfasst und ein generalisiertes Image namens `myNewVM` erstellt:
 
@@ -82,6 +88,9 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
     ```
 
     Der Unterbefehl `-t` löscht den ursprünglichen virtuellen Computer.
+
+    > [!NOTE]
+    > Im Azure-Portal können Sie ein Image aufzeichnen, indem Sie im Hub-Menü **Image** auswählen. Sie müssen die folgenden Informationen für das Image angeben: Name, Ressourcengruppe, Speicherort, Typ des Betriebssystems und Blob-Speicherpfad.
 
 9. Das neue Image ist jetzt in der Liste mit den Images verfügbar, die zum Konfigurieren neuer virtueller Computer verwendet werden können. Sie können es mit dem folgenden Befehl anzeigen:
 
@@ -96,11 +105,10 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 ## <a name="next-steps"></a>Nächste Schritte
 Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie können den Azure-CLI-Befehl `azure vm create` verwenden und den Namen des Images angeben, das Sie erstellt haben. Weitere Informationen finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
-Alternativ können Sie einen benutzerdefinierten virtuellen Computer über das [klassische Azure-Portal][Azure classic portal] erstellen, indem Sie die Methode **Aus Katalog** verwenden und das Image auswählen, das Sie erstellt haben. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten virtuellen Linux-Computers][How to Create a Custom Virtual Machine].
+Sie können auch im [Azure-Portal](http://portal.azure.com) einen benutzerdefinierten virtuellen Computer erstellen, indem Sie die **Image**-Methode verwenden und das erstellte Image auswählen. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten virtuellen Linux-Computers][How to Create a Custom Virtual Machine].
 
 **Siehe auch** [Benutzerhandbuch für Azure Linux-Agent](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Azure classic portal]:http://manage.windowsazure.com
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]:attach-disk.md

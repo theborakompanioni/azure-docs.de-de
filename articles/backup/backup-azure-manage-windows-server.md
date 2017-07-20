@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/9/2017
 ms.author: markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 767e3b2e8330b4c52576c90e8ef090e1abc69b42
-ms.openlocfilehash: 20e486be706c6fc02ced8343c050379ceff99d82
-ms.lasthandoff: 01/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 70ea11a7ee273d8c8497a6f12693ddb41ac7cb77
+ms.contentlocale: de-de
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -81,7 +82,7 @@ Am oberen Rand des Dashboards:
 | Warnstufe | Gesendete Warnungen |
 | --- | --- |
 | Kritisch |Sicherungsfehler, Wiederherstellungsfehler |
-| Warnung |Sicherung wurde mit Warnungen abgeschlossen (wenn weniger als&100; Dateien aufgrund von Beschädigungen nicht gesichert wurden und mehr als eine Million Dateien erfolgreich gesichert wurden) |
+| Warnung |Sicherung wurde mit Warnungen abgeschlossen (wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden und mehr als eine Million Dateien erfolgreich gesichert wurden) |
 | Information |Keine |
 
 ## <a name="manage-backup-alerts"></a>Verwalten von Sicherungswarnungen
@@ -214,7 +215,7 @@ Auf dem Blatt „Produktionsserver“ sind alle verfügbaren Produktionsserver a
     ![Planen einer Windows Server-Sicherung](./media/backup-azure-manage-windows-server/modify-or-stop-a-scheduled-backup.png)
 3. Wenn Sie Elemente hinzufügen oder ändern möchten, klicken Sie auf dem Bildschirm **Elemente für die Sicherung auswählen** auf **Elemente hinzufügen**.
 
-    Sie können auf dieser Seite des Assistenten auch **Ausschlusseinstellungen** festlegen. Wenn Sie Dateien oder Dateitypen ausschließen möchten, lesen Sie das Verfahren zum Hinzufügen von [Ausschlusseinstellungen](#exclusion-settings).
+    Sie können auf dieser Seite des Assistenten auch **Ausschlusseinstellungen** festlegen. Wenn Sie Dateien oder Dateitypen ausschließen möchten, lesen Sie das Verfahren zum Hinzufügen von [Ausschlusseinstellungen](#manage-exclusion-settings).
 4. Wählen Sie die Dateien und Ordner aus, die Sie sichern möchten, und klicken Sie auf **OK**.
 
     ![Planen einer Windows Server-Sicherung](./media/backup-azure-manage-windows-server/add-items-modify.png)
@@ -243,7 +244,7 @@ Der Azure Backup-Agent verfügt über eine Registerkarte für die Drosselung, mi
 So aktivieren Sie die Drosselung
 
 1. Klicken Sie im **Backup-Agent** auf **Eigenschaften ändern**.
-2. Aktivieren Sie auf der Registerkarte **Drosselung die Option **Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren**.
+2. Wählen Sie auf der Registerkarte **Drosselung **Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren**.
 
     ![Netzwerkdrosselung](./media/backup-azure-manage-windows-server/throttling-dialog.png)
 

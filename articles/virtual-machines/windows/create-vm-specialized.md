@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer VM auf der Grundlage eines spezialisierten Datenträgers in Azure | Microsoft-Dokumentation"
-description: "Erstellen Sie einen neuen virtuellen Computer, indem Sie einen spezialisierten verwalteten oder nicht verwalteten Datenträger im Resource Manager-Bereitstellungsmodell anfügen."
+title: Erstellen einer Windows-VM auf Grundlage einer speziellen VHD in Azure | Microsoft-Dokumentation
+description: "Erstellen Sie eine neue Windows-VM, indem Sie einen speziellen verwalteten Datenträger als Betriebssystemdatenträger im Resource Manager-Bereitstellungsmodell anfügen."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,21 +13,30 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 06/29/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 78f993ce9bab6266479cdd121eeea4965724d9bd
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: b315a37f72f34d45bb55c2bbe6be20cca8c42424
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
-# <a name="create-a-vm-from-a-specialized-disk"></a>Erstellen eines virtuellen Computers von einem speziellen Datenträger
+# <a name="create-a-windows-vm-from-a-specialized-disk"></a>Erstellen einer Windows-VM von einem speziellen Datenträger
 
-Erstellen Sie einen neuen virtuellen Computer, indem Sie mit PowerShell einen spezialisierten Datenträger als Betriebssystem-Datenträger anfügen. Ein spezialisierter Datenträger ist eine Kopie einer VHD einer bestehenden VM, auf der die Benutzerkonten, Anwendungen und andere Statusdaten Ihres ursprünglichen virtuellen Computers beibehalten werden. Sie können entweder einen spezialisierten [verwalteten Datenträger](../../storage/storage-managed-disks-overview.md) oder einen spezialisierten nicht verwalteten Datenträger zum Erstellen des neuen virtuellen Computers verwenden.
+Erstellen Sie eine neue VM, indem Sie mit PowerShell einen speziellen nicht verwalteten Datenträger als Betriebssystemdatenträger anfügen. Ein spezieller Datenträger ist eine Kopie einer virtuellen Festplatte (VHD) einer bereits vorhandenen VM, bei der die Benutzerkonten, Anwendungen und andere Statusdaten Ihrer ursprünglichen VM beibehalten werden. 
+
+Wenn Sie zur Erstellung einer neuen VM eine spezielle VHD verwenden, behält die neue VM den Computernamen der ursprünglichen VM bei. Andere computerspezifische Informationen werden ebenfalls beibehalten. In einigen Fällen können diese doppelten Informationen Probleme verursachen. Achten Sie beim Kopieren einer VM darauf, auf welche Arten von computerspezifischen Informationen Ihre Anwendungen angewiesen sind.
+
+Sie haben zwei Möglichkeiten:
+* [Hochladen einer VHD-Datei](#option-1-upload-a-specialized-vhd)
+* [Kopieren einer vorhandenen Azure-VM](#option-2-copy-an-existing-azure-vm)
+
+In diesem Thema wird gezeigt, wie verwaltete Datenträger verwendet werden. Wenn Sie über eine Legacybereitstellung verfügen, die ein Speicherkonto erfordert, finden Sie unter [Erstellen einer VM auf Grundlage einer speziellen VHD in einem Speicherkonto](sa-create-vm-specialized.md) weitere Informationen dazu.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
+Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. 
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -35,46 +44,197 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 
 
-## <a name="create-the-subnet-and-vnet"></a>Erstellen des Subnetzes und des virtuellen Netzwerks
+## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Hochladen einer speziellen VHD
+
+Sie können die VHD über eine spezielle VM hochladen, die mit einem lokalen Virtualisierungstool (z.B. Hyper-V) erstellt wurde, oder über eine VM, die aus einer anderen Cloud exportiert wurde.
+
+### <a name="prepare-the-vm"></a>Vorbereiten des virtuellen Computers
+Wenn Sie die VHD unverändert zum Erstellen eines neuen virtuellen Computers verwenden möchten, führen Sie auf jeden Fall die folgenden Schritte aus. 
+  
+  * [Vorbereiten einer Windows-VHD für das Hochladen in Azure.](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Generalisieren Sie den virtuellen Computer **nicht** mithilfe von Sysprep.
+  * Entfernen Sie alle auf der VM installierten Gastvirtualisierungstools und Agents (z.B. VMware-Tools).
+  * Stellen Sie sicher, dass der virtuelle Computer so konfiguriert ist, dass die zugehörigen IP-Adressen und DNS-Einstellungen per Pullvorgang über DHCP übertragen werden. Dadurch wird sichergestellt, dass der Server beim Starten eine IP-Adresse innerhalb des VNET bezieht. 
+
+
+### <a name="get-the-storage-account"></a>Abrufen des Speicherkontos
+Sie benötigen ein Speicherkonto in Azure, in dem die hochgeladene VHD gespeichert wird. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. 
+
+Geben Sie zum Anzeigen der verfügbaren Speicherkonten Folgendes ein:
+
+```powershell
+Get-AzureRmStorageAccount
+```
+
+Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, fahren Sie mit dem Abschnitt [Hochladen der VHD](#upload-the-vhd-to-your-storage-account) fort.
+
+Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
+
+1. Sie benötigen den Namen der Ressourcengruppe, in der das Speicherkonto erstellt werden soll. Geben Sie den folgenden Befehl ein, um alle in Ihrem Abonnement enthaltenen Ressourcengruppen zu ermitteln:
+   
+    ```powershell
+    Get-AzureRmResourceGroup
+    ```
+
+    Zum Erstellen einer Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *USA, Westen* geben Sie den folgenden Befehl ein:
+
+    ```powershell
+    New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
+    ```
+
+2. Erstellen Sie mit dem Cmdlet [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) das Speicherkonto *mystorageaccount* in dieser Ressourcengruppe:
+   
+    ```powershell
+    New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
+        -SkuName "Standard_LRS" -Kind "Storage"
+    ```
+
+### <a name="upload-the-vhd-to-your-storage-account"></a>Hochladen der VHD in Ihr Speicherkonto 
+Verwenden Sie das Cmdlet [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd), um die VHD in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei *myVHD.vhd* aus `"C:\Users\Public\Documents\Virtual hard disks\"` in das Speicherkonto *mystorageaccount* in der Ressourcengruppe *myResourceGroup* hochgeladen. Die Datei wird im Container *mycontainer* gespeichert. Der neue Dateiname lautet *myUploadedVHD.vhd*.
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
+Add-AzureRmVhd -ResourceGroupName $resourceGroupName -Destination $urlOfUploadedVhd `
+    -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
+```
+
+
+Bei erfolgreicher Ausführung erhalten Sie eine Antwort, die etwa wie folgt aussieht:
+
+```powershell
+MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
+MD5 hash calculation is completed.
+Elapsed time for the operation: 00:03:35
+Creating new page blob of size 53687091712...
+Elapsed time for upload: 01:12:49
+
+LocalFilePath           DestinationUri
+-------------           --------------
+C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
+```
+
+Abhängig von Ihrer Netzwerkverbindung und der Größe Ihrer VHD-Datei kann die Ausführung dieses Befehls einige Zeit in Anspruch nehmen.
+
+### <a name="create-a-managed-disk-from-the-vhd"></a>Erstellen verwalteter Datenträger aus der VHD
+
+Erstellen Sie mithilfe von [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) einen verwalteten Datenträger auf Grundlage der speziellen VHD in Ihrem Speicherkonto. In diesem Beispiel wird **myOSDisk1** als Name des Datenträgers verwendet, der Datenträger im *StandardLRS*-Speicher gespeichert und *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* als URI für die Quell-VHD verwendet.
+
+Erstellen Sie eine neue Ressourcengruppe für die neue VM.
+
+```powershell
+$destinationResourceGroup = 'myDestinationResourceGroup'
+New-AzureRmResourceGroup -Location $location -Name $destinationResourceGroup
+```
+
+Erstellen Sie den neuen Betriebssystemdatenträger der hochgeladenen VHD. 
+
+```powershell
+$sourceUri = https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
+$osDiskName = 'myOsDisk'
+$osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
+    (New-AzureRmDiskConfig -AccountType StandardLRS  -Location $location -CreateOption Import `
+    -SourceUri $sourceUri) `
+    -ResourceGroupName $destinationResourceGroup
+```
+
+## <a name="option-2-copy-an-existing-azure-vm"></a>Option 2: Kopieren einer vorhandenen Azure-VM
+
+Sie können eine Kopie einer VM mit verwalteten Datenträgern erstellen, indem Sie eine Momentaufnahme von der VM erstellen und damit einen neuen verwalteten Datenträger und eine neue VM erstellen.
+
+
+### <a name="take-a-snapshot-of-the-os-disk"></a>Erstellen einer Momentaufnahme des Betriebssystemdatenträgers
+
+Sie können eine Momentaufnahme der gesamten VM (einschließlich aller Datenträger) oder nur von einem einzelnen Datenträger erstellen. Die folgenden Schritte zeigen, wie Sie mit dem Cmdlet [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) eine Momentaufnahme von lediglich dem Betriebssystemdatenträger Ihrer VM erstellen. 
+
+Legen Sie einige Parameter fest. 
+
+ ```powershell
+$resourceGroupName = 'myResourceGroup' 
+$vmName = 'myVM'
+$location = 'westus' 
+$snapshotName = 'mySnapshot'  
+```
+
+Rufen Sie das VM-Objekt ab.
+
+```powershell
+$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $resourceGroupName
+```
+Rufen Sie den Namen des Betriebssystemdatenträgers ab.
+
+ ```powershell
+$disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $vm.StorageProfile.OsDisk.Name
+```
+
+Erstellen Sie die Momentaufnahmekonfiguration. 
+
+ ```powershell
+$snapshotConfig =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -OsType Windows -CreateOption Copy -Location $location 
+```
+
+Erstellen Sie die Momentaufnahme.
+
+```powershell
+$snapShot = New-AzureRmSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName
+```
+
+
+Wenn Sie vorhaben, die Momentaufnahme zum Erstellen eine auf hohe Leistung ausgelegte VM zu nutzen, verwenden Sie den Parameter `-AccountType Premium_LRS` mit dem Befehl „New-AzureRmSnapshot“. Der Parameter erstellt die Momentaufnahme so, dass sie als verwalteter Premium-Datenträger gespeichert wird. Verwaltete Premium-Datenträger sind teurer als die Standardvariante. Vergewissern Sie sich daher, dass Sie Premium tatsächlich benötigen, ehe Sie diesen Parameter verwenden.
+
+### <a name="create-a-new-disk-from-the-snapshot"></a>Erstellen eines neuen Datenträgers über die Momentaufnahme
+
+Erstellen Sie mit [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) einen verwalteten Datenträger über die Momentaufnahme. Dieses Beispiel verwendet *myOSDisk* für den Namen des Datenträgers an.
+
+Erstellen Sie eine neue Ressourcengruppe für die neue VM.
+
+```powershell
+$destinationResourceGroup = 'myDestinationResourceGroup'
+New-AzureRmResourceGroup -Location $location -Name $destinationResourceGroup
+```
+
+Legen Sie den Namen des Betriebssystemdatenträgers fest. 
+
+```powershell
+$osDiskName = 'myOsDisk'
+```
+
+Erstellen Sie den verwalteten Datenträger.
+
+```powershell
+$osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
+    (New-AzureRmDiskConfig  -Location $location -CreateOption Copy `
+    -SourceResourceId $snapshot.Id) `
+    -ResourceGroupName $destinationResourceGroup
+```
+
+
+## <a name="create-the-new-vm"></a>Erstellen des neuen virtuellen Computers 
+
+Erstellen Sie Netzwerkressourcen und andere VM-Ressourcen für die neue VM.
+
+### <a name="create-the-subnet-and-vnet"></a>Erstellen des Subnetzes und des virtuellen Netzwerks
 
 Erstellen Sie das vNet und das Subnetz des [virtuellen Netzwerks](../../virtual-network/virtual-networks-overview.md).
 
-1. Erstellen Sie das Subnetz. Dieses Beispiel erstellt ein Subnetz mit dem Namen **mySubNet** in der Ressourcengruppe **myResourceGroup** und legt das Adresspräfix **10.0.0.0/24** fest.
+Erstellen Sie das Subnetz. In diesem Beispiel wird ein Subnetz mit dem Namen **mySubNet** in der Ressourcengruppe **myDestinationResourceGroup** erstellt und das Adresspräfix des Subnetzes auf **10.0.0.0/24** festgelegt.
    
-    ```powershell
-    $rgName = "myResourceGroup"
-    $subnetName = "mySubNet"
-    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-    ```
-2. Erstellen Sie das virtuelle Netzwerk. Dieses Beispiel legt den Namen des virtuellen Netzwerks auf **myVnetName**, den Standort auf **USA, Westen** und das Adresspräfix für das virtuelle Netzwerk auf **10.0.0.0/16** fest. 
-   
-    ```powershell
-    $location = "West US"
-    $vnetName = "myVnetName"
-    $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
-        -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
-    ```    
+```powershell
+$subnetName = 'mySubNet'
+$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+```
 
-## <a name="create-a-public-ip-address-and-nic"></a>Erstellen einer öffentlichen IP-Adresse und einer NIC
-Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
-
-1. Erstellen Sie die öffentliche IP-Adresse. In diesem Beispiel ist der Name der öffentlichen IP-Adresse auf **myIP** festgelegt.
+Erstellen Sie das virtuelle Netzwerk. Dieses Beispiel legt den Namen des virtuellen Netzwerks auf **myVnetName**, den Standort auf **USA, Westen** und das Adresspräfix für das virtuelle Netzwerk auf **10.0.0.0/16** fest. 
    
-    ```powershell
-    $ipName = "myIP"
-    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
-        -AllocationMethod Dynamic
-    ```       
-2. Erstellen Sie die NIC. In diesem Beispiel ist der Name der NIC auf **myNicName** festgelegt.
-   
-    ```powershell
-    $nicName = "myNicName"
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
-    -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
-    ```
+```powershell
+$vnetName = "myVnetName"
+$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $destinationResourceGroup -Location $location `
+    -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
+```    
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>Erstellen einer Netzwerksicherheitsgruppe und einer RDP-Regel
-Damit Sie sich über RDP bei Ihrem virtuellen Computer anmelden können, benötigen Sie eine Sicherheitsregel, die RDP-Zugriff auf Port 3389 zulässt. Da die VHD für den neuen virtuellen Computer aus einer vorhandenen spezialisierten VM erstellt wurde, können Sie nach dem Erstellen des virtuellen Computers ein vorhandenes Konto des virtuellen Quellcomputers verwenden, der über die Berechtigung zum Anmelden über RDP verfügte.
+
+### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Erstellen einer Netzwerksicherheitsgruppe und einer RDP-Regel
+Damit Sie sich mit RDP an Ihrem virtuellen Computer anmelden können, benötigen Sie eine Sicherheitsregel, die RDP-Zugriff auf Port 3389 zulässt. Da die VHD für die neue VM aus einer vorhandenen spezialisierten VM erstellt wurde, können Sie für das RDP ein Konto des virtuellen Quellcomputers verwenden.
+
 In diesem Beispiel wird der Name der Netzwerksicherheitsgruppe auf **myNsg** und der Name der RDP-Regel auf **myRdpRule** festgelegt.
 
 ```powershell
@@ -84,95 +244,65 @@ $rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Al
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
     -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $destinationResourceGroup -Location $location `
     -Name $nsgName -SecurityRules $rdpRule
     
 ```
 
 Weitere Informationen zu Endpunkten und Netzwerksicherheitsgruppen finden Sie unter [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe von PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="set-the-vm-name-and-size"></a>Festlegen von Name und Größe des virtuellen Computers
+### <a name="create-a-public-ip-address-and-nic"></a>Erstellen einer öffentlichen IP-Adresse und einer NIC
+Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
 
-In diesem Beispiel wird der Name des virtuellen Computers auf „myVM“ und ihre Größe auf „Standard_A2“ festgelegt.
+Erstellen Sie die öffentliche IP-Adresse. In diesem Beispiel ist der Name der öffentlichen IP-Adresse auf **myIP** festgelegt.
+   
+```powershell
+$ipName = "myIP"
+$pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $destinationResourceGroup -Location $location `
+   -AllocationMethod Dynamic
+```       
+
+Erstellen Sie die NIC. In diesem Beispiel ist der Name der NIC auf **myNicName** festgelegt.
+   
+```powershell
+$nicName = "myNicName"
+$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $destinationResourceGroup `
+    -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+```
+
+
+
+### <a name="set-the-vm-name-and-size"></a>Festlegen von Name und Größe des virtuellen Computers
+
+In diesem Beispiel wird der VM-Name auf *myVM* und die VM-Größe auf *Standard_A2* festgelegt.
+
 ```powershell
 $vmName = "myVM"
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A2"
 ```
 
-## <a name="add-the-nic"></a>Hinzufügen der Netzwerkkarte
+### <a name="add-the-nic"></a>Hinzufügen der Netzwerkkarte
     
 ```powershell
 $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
-    
-## <a name="configure-the-os-disk"></a>Konfigurieren des Betriebssystem-Datenträgers
 
-Der spezialisierte Betriebssystem-Datenträger könnte eine virtuelle Festplatte sein, die Sie [in Azure hochgeladen](upload-image.md) haben, oder eine [Kopie der VHD einer vorhandenen Azure-VM](vhd-copy.md). 
+### <a name="add-the-os-disk"></a>Hinzufügen des Betriebssystemdatenträgers 
 
-Sie können eine dieser beiden Optionen wählen:
-- **Option 1:** Erstellen Sie einen spezialisierten verwalteten Datenträger auf der Grundlage einer spezialisierten VHD in einem vorhandenen Speicherkonto zur Verwendung als Betriebssystem-Datenträger.
-
-oder 
-
-- **Option 2:** Verwenden Sie eine spezialisierte virtuelle Festplatte, die in Ihrem eigenen Speicherkonto gespeichert ist (ein nicht verwalteter Datenträger). 
-
-### <a name="option-1-create-a-managed-disk-from-an-unmanaged-specialized-disk"></a>Option 1: Erstellen eines verwalteten Datenträgers auf der Grundlage eines nicht verwalteten spezialisierten Datenträgers
-
-1. Erstellen Sie einen verwalteten Datenträger auf der Grundlage der vorhandenen spezialisierten VHD in Ihrem Speicherkonto. In diesem Beispiel wird **myOSDisk1** als Name des Datenträgers verwendet, der Datenträger im **StandardLRS**-Speicher gespeichert und **https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vh.vhd** als URI für die Quell-VHD verwendet.
-
-    ```powershell
-    $osDisk = New-AzureRmDisk -DiskName "myOSDisk1" -Disk (New-AzureRmDiskConfig `
-    -AccountType StandardLRS  -Location $location -CreateOption Import `
-    -SourceUri https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vh.vhd) `
-    -ResourceGroupName $rgName
-    ```
-
-2. Fügen Sie den Betriebssystem-Datenträger der Konfiguration hinzu. In diesem Beispiel wird die Größe des Datenträgers auf **128 GB** festgelegt und der verwaltete Datenträger als **Windows**-Betriebssystem-Datenträger angefügt.
-    
-    ```powershell
-    $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType StandardLRS `
+Fügen Sie den Betriebssystemdatenträger mit [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) zur Konfiguration hinzu. In diesem Beispiel wird die Größe des Datenträgers auf *128 GB* festgelegt und der verwaltete Datenträger als *Windows*-Betriebssystem-Datenträger angefügt.
+ 
+```powershell
+$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType StandardLRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
-    ```
-
-Optional: Fügen Sie zusätzliche verwaltete Datenträger als Datenträger für Daten an. Diese Option setzt voraus, dass Sie Ihre verwalteten Datenträger für Daten mit [Verwaltete Datenträger für Daten erstellen](create-managed-disk-ps.md) erstellt haben. 
-
-```powershell
-$vm = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
 ```
 
+### <a name="complete-the-vm"></a>Fertigstellen der VM 
 
-### <a name="option-2-attach-a-vhd-that-is-in-an-existing-storage-account"></a>Option 2: Anfügen einer VHD, die in einem vorhandenen Speicherkonto gespeichert ist
-
-1. Legen Sie den URI für die VHD fest, die Sie verwenden möchten. In diesem Beispiel wird die VHD-Datei mit dem Namen **myOsDisk.vhd** in einem Speicherkonto namens **myStorageAccount** in einem Container mit dem Namen **myContainer** gespeichert.
-
-    ```powershell
-    $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
-    ```
-2. Fügen Sie den Betriebssystem-Datenträger mithilfe der URL der kopierten Betriebssystem-VHD hinzu. In diesem Beispiel wird beim Erstellen des Betriebssystem-Datenträgers der Begriff „osDisk“ dem Namen des virtuellen Computers angefügt, um den Namen des Betriebssystem-Datenträgers zu erstellen. In diesem Beispiel wird auch angegeben, dass diese Windows-basierte VHD dem virtuellen Computer als Betriebssystem-Datenträger angefügt werden soll.
-    
-    ```powershell
-    $osDiskName = $vmName + "osDisk"
-    $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
-    ```
-
-Optional: Wenn Sie über Datenträger für Daten verfügen, die dem virtuellen Computer angefügt werden müssen, fügen Sie die Datenträger für Daten mit den URLs von Daten-VHDs und den entsprechenden logischen Gerätenummern (Logical Unit Number, LUN) hinzu.
+Erstellen Sie die VM anhand von [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) mithilfe der soeben erstellten Konfigurationen.
 
 ```powershell
-$dataDiskName = $vmName + "dataDisk"
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
-```
-
-Bei Verwendung eines Speicherkontos sehen die URLs der Daten- und Betriebssystem-Datenträger wie folgt aus: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. Sie finden dies im Portal, indem Sie zum Zielspeichercontainer wechseln, auf die kopierte Betriebssystem- oder Daten-VHD klicken und dann den Inhalt der URL kopieren.
-
-
-## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
-
-Erstellen Sie den virtuellen Computer mithilfe der soeben erstellten Konfigurationen.
-
-```powershell
-#Create the new VM
-New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
+New-AzureRmVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
 ```
 
 War dieser Befehl erfolgreich, erscheint eine Ausgabe wie die folgende:
@@ -184,11 +314,11 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>Sicherstellen, dass der virtuelle Computer erstellt wurde
+### <a name="verify-that-the-vm-was-created"></a>Sicherstellen, dass der virtuelle Computer erstellt wurde
 Der neu erstellte virtuelle Computer müsste nun im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ dazu können Sie ihn mit den folgenden PowerShell-Befehlen anzeigen:
 
 ```powershell
-$vmList = Get-AzureRmVM -ResourceGroupName $rgName
+$vmList = Get-AzureRmVM -ResourceGroupName $destinationResourceGroup
 $vmList.Name
 ```
 

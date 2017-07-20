@@ -1,31 +1,29 @@
 ---
 title: "Konfigurieren der und Zugreifen auf die Serverprotokolle für PostgreSQL mithilfe der Azure CLI | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt, wie Sie die Serverprotokolle in Azure-Datenbank für PostgreSQL konfigurieren und darauf zugreifen."
+description: "In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI-Befehlszeile die Serverprotokolle in Azure-Datenbank für PostgreSQL konfigurieren und auf diese zugreifen."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
+editor: jasonwhowell
 ms.service: postgresql-database
-ms.tgt_pltfrm: portal
-ms.devlang: azurecli
+ms.devlang: azure-cli
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/13/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dc047e6d5194035586931b3cacc4d5cd07f6cfc2
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 920656aabe21191470f2611279977a763ac14c36
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 # <a name="configure-and-access-server-logs-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure CLI
-Sie können Azure PostgreSQL-Serverfehlerprotokolle mithilfe der Befehlszeilenschnittstelle (Azure CLI) auflisten und herunterladen. Der Zugriff auf Transaktionsprotokolle wird jedoch nicht unterstützt. 
+Sie können die PostgreSQL-Serverfehlerprotokolle mithilfe der Befehlszeilenschnittstelle (Azure CLI) herunterladen. Der Zugriff auf Transaktionsprotokolle wird jedoch nicht unterstützt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 - Einen [Azure-Datenbank für PostgreSQL-Server](quickstart-create-server-database-azure-cli.md)
-- Installiertes Befehlszeilenprogramm [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- Installieren Sie das [Azure CLI 2.0](/cli/azure/install-azure-cli)-Befehlszeilenprogramm, oder verwenden Sie Azure Cloud Shell im Browser.
 
 ## <a name="configure-logging-for-azure-database-for-postgresql"></a>Konfigurieren der Protokollierung für Azure-Datenbank für PostgreSQL
 Sie können den Server für den Zugriff auf Abfrage- und Fehlerprotokolle konfigurieren. Fehlerprotokolle können Informationen über „auto-vacuum“, Verbindungen und Prüfpunkte enthalten.
@@ -35,24 +33,21 @@ Sie können den Server für den Zugriff auf Abfrage- und Fehlerprotokolle konfig
 
 Weitere Informationen finden Sie unter [Anpassen der Serverkonfigurationsparameter](howto-configure-server-parameters-using-cli.md).
 
-## <a name="list-logs-for-azure-postgresql-server"></a>Auflisten von Protokollen für Azure PostgreSQL-Server
-Um die verfügbaren Protokolldateien für Ihren Server aufzulisten, führen Sie den Befehl **az postgres server-logs** aus, wie im folgenden Beispiel gezeigt:
-```azurecli
-az postgres server-logs list --resource-group <resource group name> --server <server name> [ --file-last-written --filename-contains --max-file-size ]
-```
-Sie können z.B. die Protokolldateien für den Azure PostgreSQL-Server **mypgserver.postgres.database.azure.com** in der Ressourcengruppe **myresourcegroup** auflisten und an diese Textdatei leiten: **log\_files\_list.txt **.
-```azurecli
-az postgres server-logs list --resource-group **myresourcegroup** --server **mypgserver** > log\_files\_list.txt
+## <a name="list-logs-for-azure-database-for-postgresql-server"></a>Auflisten der Protokolle für Server für Azure-Datenbank für PostgreSQL
+Um die verfügbaren Protokolldateien für Ihren Server aufzulisten, führen Sie den Befehl [az postgres server-logs list](/cli/azure/postgres/server-logs#list) aus.
+
+Sie können die Protokolldateien für den Server **mypgserver-20170401.postgres.database.azure.com** in der Ressourcengruppe **myresourcegroup** auflisten und an diese Textdatei leiten: **log\_files\_list.txt.**
+```azurecli-interactive
+az postgres server-logs list --resource-group myresourcegroup --server mypgserver-20170401 > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>Herunterladen von Protokollen vom Server auf den lokalen Computer
-Sie können auch einzelne Protokolldateien für Ihren Azure PostgreSQL-Server herunterladen. 
-```azurecli
-az postgres server-logs download –name <log file name> --resource-group <resource group name> --server <server name>
-```
-Dieses Beispiel lädt die spezifische Protokolldatei für den Azure PostgreSQL-Server **mypgserver.postgres.database.azure.com** in der Ressourcengruppe **myresourcegroup** in Ihre lokale Umgebung herunter.
-```azurecli
-az postgres server-logs download --name 20170414-mypgserver-postgresql.log --resource-group **myresourcegroup** --server **mypgserver**
+Mit dem Befehl [az postgres server-logs download](/cli/azure/postgres/server-logs#download) können Sie einzelne Protokolldateien für Ihren Server herunterladen. 
+
+Dieses Beispiel lädt die spezifische Protokolldatei für den Server **mypgserver-20170401.postgres.database.azure.com** in der Ressourcengruppe **myresourcegroup** in Ihre lokale Umgebung herunter.
+```azurecli-interactive
+az postgres server-logs download --name 20170414-mypgserver-20170401-postgresql.log --resource-group myresourcegroup --server mypgserver-20170401
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu Serverprotokollen finden Sie unter [Serverprotokolle in Azure-Datenbank für PostgreSQL](concepts-server-logs.md).
 - Weitere Informationen zu Serverparametern finden Sie unter [Anpassen der Serverkonfigurationsparameter über die Azure CLI](howto-configure-server-parameters-using-cli.md).
+

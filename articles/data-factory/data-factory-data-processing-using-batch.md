@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/19/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: eeaab56b376ffd3123efb95a1223b7344dd6d187
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: 65709ef9f6cdd50fb8650a1a11c9321defb9cf5b
+ms.contentlocale: de-de
+ms.lasthandoff: 06/21/2017
 
 
 ---
@@ -111,16 +112,16 @@ Erstellen eines **Azure Batch-Pools** mit mindestens 2 Computeknoten.
 
    ![](./media/data-factory-data-processing-using-batch/image3.png)
 
-   **inputfolder** (Eingabeordner) und **outputfolder** (Ausgabeordner) sind Ordner in der obersten Ebene von **mycontainer**, und **inputfolder** enthält Unterordner mit Datums-/Zeitstempel (JJJJ-MM-TT-HH).
+   `Inputfolder`und `outputfolder` sind in `mycontainer` Ordner der obersten Ebene. `inputfolder` enthält Unterordner mit Datums-/ Zeitstempel (JJJJ-MM-TT-HH).
 
-   Wenn Sie **Azure Storage Explorer**verwenden, müssen Sie im nächsten Schritt Dateien mit Namen wie inputfolder/2015-11-16-00/file.txt, inputfolder/2015-11-16-01/file.txt usw hochladen. In diesem Schritt werden die Ordner automatisch erstellt.
+   Wenn Sie **Azure Storage Explorer** verwenden, müssen Sie im nächsten Schritt Dateien mit Namen wie `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt` usw. hochladen. In diesem Schritt werden die Ordner automatisch erstellt.
 3. Erstellen Sie eine Textdatei **file.txt** auf dem Computer mit Inhalt, der das Schlüsselwort **Microsoft** enthält. Beispiel: „benutzerdefinierte Aktivität testen Microsoft benutzerdefinierte Aktivität testen Microsoft“.
 4. Laden Sie die Datei in die folgenden Eingangsordner im Azure Blob-Speicher hoch.
 
    ![](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Wenn Sie **Azure Storage Explorer** verwenden, laden Sie die Datei **file.txt** auf **mycontainer** hoch. Klicken Sie in der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Kopieren von Blobs** den **Namen des Ziel-Blobs** in **inputfolder/2015-11-16-00/file.txt.** Wiederholen Sie diesen Schritt, um inputfolder/2015-11-16-01/file.txt, inputfolder/2015-11-16-02/file.txt, inputfolder/2015-11-16-03/file.txt, inputfolder/2015-11-16-04/file.txt usw. zu erstellen. Mit dieser Aktion werden die Ordner automatisch erstellt.
-5. Erstellen Sie einen anderen Container namens **customactivitycontainer**. Sie laden die benutzerdefinierte Aktivität als Zip-Datei in diesen Container hoch.
+   Wenn Sie **Azure Storage Explorer** verwenden, laden Sie die Datei **file.txt** auf **mycontainer** hoch. Klicken Sie in der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren**  den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
+5. Erstellen Sie einen weiteren Container mit dem Namen `customactivitycontainer`. Sie laden die benutzerdefinierte Aktivität als Zip-Datei in diesen Container hoch.
 
 #### <a name="visual-studio"></a>Visual Studio
 Installieren Sie Microsoft Visual Studio 2012 oder höher, um eine benutzerdefinierte Batchaktivität zu erstellen, die in der Data Factory-Lösung verwendet werden soll.
@@ -368,7 +369,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen.
 3. Erstellen Sie die ZIP-Datei **MyDotNetActivity.zip**, die alle Binärdateien im Ordner **\\bin\\Debug** enthält. Sie möchten ggf. die Datei MyDotNetActivity.**pdb** einbeziehen, damit Sie zusätzliche Details wie z. B. die Zeilennummer im Quellcode erhalten, der das Problem bei einem Fehler verursacht hat.
 
    ![](./media/data-factory-data-processing-using-batch/image5.png)
-4. Laden Sie **MyDotNetActivity.zip** als Blob in den Blobcontainer **customactivitycontainer** im Azure-Blobspeicher hoch, den der verknüpfte Dienst **StorageLinkedService** in **ADFTutorialDataFactory** verwendet. Erstellen Sie den Blobcontainer **customactivitycontainer** , sofern er noch nicht vorhanden ist.
+4. Laden Sie **MyDotNetActivity.zip** als Blob in den Blobcontainer `customactivitycontainer` in den Azure-Blobspeicher hoch, den der verknüpfte Dienst **StorageLinkedService** in **ADFTutorialDataFactory** verwendet. Erstellen Sie den Container `customactivitycontainer`, falls noch nicht vorhanden.
 
 #### <a name="execute-method"></a>Execute-Methode
 Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der Execute-Methode.
@@ -447,7 +448,7 @@ Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der Execute-M
 ### <a name="create-the-data-factory"></a>Erstellen der Data Factory
 Sie haben im Abschnitt [Erstellen der benutzerdefinierten Aktivität](#create-the-custom-activity) eine benutzerdefinierte Aktivität erstellt und die Zip-Datei mit Binärdateien und der PDB-Datei in einen Azure-Blob-Container hochgeladen. In diesem Abschnitt erstellen Sie eine Instanz von Azure **Data Factory** mit einer **Pipeline**, die die **benutzerdefinierte Aktivität** verwendet.
 
-Das Eingabe-Dataset für die benutzerdefinierte Aktivität stellt die Blobs (Dateien) im Eingabeordner (Mycontainer\\inputfolder) im Blob-Speicher dar. Das Ausgabe-Dataset für die Aktivität stellt die Ausgabeblobs im Ausgabeordner (Mycontainer\\outputfolder) im Blob-Speicher dar.
+Das Eingabedataset für die benutzerdefinierte Aktivität stellt die Blobs (Dateien) im Eingabeordner (`mycontainer\\inputfolder`) im Blobspeicher dar. Das Ausgabedataset für die Aktivität stellt die Ausgabeblobs im Ausgabeordner (`mycontainer\\outputfolder`) im Blobspeicher dar.
 
 Legen Sie eine oder mehrere Dateien in die Eingangsordner:
 
@@ -668,7 +669,7 @@ In diesem Schritt erstellen Sie ein weiteres Dataset des Typs „Azureblob“, u
     }
     ```
 
-    Eine Ausgabedatei und ein Ausgabe-Blob wird für jeden Eingabeslice generiert. Im Folgenden sehen Sie, wie eine Ausgabedatei für jeden Slice benannt wird. Alle Ausgabedateien werden in einem Ausgabeordner generiert: **mycontainer\\outputfolder**.
+    Eine Ausgabedatei und ein Ausgabe-Blob wird für jeden Eingabeslice generiert. Im Folgenden sehen Sie, wie eine Ausgabedatei für jeden Slice benannt wird. Alle Ausgabedateien werden in einem Ausgabeordner generiert: `mycontainer\\outputfolder`.
 
     | **Slice** | **Startzeit**          | **Ausgabedatei**       |
     |-----------|-------------------------|-----------------------|
@@ -771,7 +772,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
    ![](./media/data-factory-data-processing-using-batch/image13.png)
 6. Verwenden Sie das Azure-Portal, um die den Slices zugeordneten **Aufgaben** anzuzeigen und zu ermitteln, auf welchem virtuellen Computer die **Slices** jeweils ausgeführt wurden. Ausführliche Informationen finden Sie im Abschnitt [Integration von Data Factory und Batch](#data-factory-and-batch-integration) .
-7. Die Ausgabedateien sollten im **outputfolder** von **mycontainer** in Ihrem Azure Blob Storage angezeigt werden.
+7. Die Ausgabedateien sollten im `outputfolder` von `mycontainer` in Ihrem Azure Blob Storage angezeigt werden.
 
    ![](./media/data-factory-data-processing-using-batch/image15.png)
 
@@ -788,7 +789,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 10. Klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice, für den die **SLICE STARTZEIT** auf **11/16/2015 01:00:00 Uhr** festgelegt ist, und klicken Sie auf **Ausführen**, um den Slice erneut auszuführen/zu verarbeiten. Das Segment verfügt jetzt über fünf Dateien statt einer Datei.
 
     ![](./media/data-factory-data-processing-using-batch/image17.png)
-11. Wenn der Slice ausgeführt wird und der Status **bereit** lautet, überprüfen Sie den Inhalt der Ausgabedatei für diesen Slice (**2015-11-16-01.txt**) im **outputfolder** von **mycontainer** in Ihrem Blob-Speicher. Für jede Datei des Slice sollte eine Zeile vorhanden sein.
+11. Wenn der Slice ausgeführt wird und der Status **Bereit** lautet, überprüfen Sie den Inhalt der Ausgabedatei für diesen Slice (**2015-11-16-01.txt**) im `outputfolder` von `mycontainer` in Ihrem Blobspeicher. Für jede Datei des Slice sollte eine Zeile vorhanden sein.
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -804,7 +805,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 >
 
 #### <a name="data-factory-and-batch-integration"></a>Integration von Data Factory und Batch
-Der Data Factory-Dienst erstellt in Azure Batch einen Auftrag mit dem Namen **adf-poolname:job-xxx**.
+Der Data Factory-Dienst erstellt in Azure Batch einen Auftrag mit dem Namen `adf-poolname:job-xxx`.
 
 ![Azure Data Factory – Batch-Aufträge](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
@@ -855,7 +856,7 @@ Das Debuggen umfasst einige grundlegende Verfahren:
    ![](./media/data-factory-data-processing-using-batch/image21.png)
 
    > [!NOTE]
-   > Hinweis: sehen Sie einen **Container** im Azure Blob-Speicher **adfjobs**. Dieser Container wird nicht automatisch gelöscht, jedoch können Sie ihn nach dem Testen der Lösung problemlos löschen. Ebenso erstellt die Data Factory-Lösung einen Azure Batch-**Auftrag** mit dem Namen: **adf-\<Pool-ID/Name\>:job-0000000001**. Sie können diesen Auftrag bei Belieben löschen, nachdem Sie die Lösung getestet haben.
+   > Sie sehen einen **Container** in Ihrem Azure Blob Storage mit dem Namen `adfjobs`. Dieser Container wird nicht automatisch gelöscht, jedoch können Sie ihn nach dem Testen der Lösung problemlos löschen. Ebenso erstellt die Data Factory-Lösung einen Azure Batch-**Auftrag** mit dem Namen: `adf-\<pool ID/name\>:job-0000000001`. Sie können diesen Auftrag bei Belieben löschen, nachdem Sie die Lösung getestet haben.
    >
    >
 7. Die benutzerdefinierte Aktivität verwendet nicht die **app.config**-Datei aus dem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er während der Laufzeit nicht. Bei Verwendung von Azure Batch empfiehlt es sich, alle geheimen Schlüssel in **Azure Key Vault** (Schlüsseltresor) aufzubewahren, den Schlüsseltresor mithilfe eines zertifikatbasierten Dienstprinzipals zu schützen und das Zertifikat an den Azure Batch-Pool zu verteilen. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
@@ -865,12 +866,12 @@ Das Debuggen umfasst einige grundlegende Verfahren:
 #### <a name="extend-the-sample"></a>Erweitern des Beispiels
 Sie können dieses Beispiel erweitern, um mehr über Azure Data Factory und Azure Batch-Funktionen zu erfahren. Gehen Sie zum Verarbeiten von Slices in einem anderen Zeitbereich wie folgt vor:
 
-1. Fügen Sie dem **inputfolder**die folgenden Unterordner hinzu: 2015-11-16-05 2015-11-16-06 201-11-16-07, 2011-11-16-08, 2015-11-16-09 und legen Sie die Eingabedateien in diesen Ordnern ab. Ändern Sie die Endzeit für die Pipeline von `2015-11-16T05:00:00Z` zu `2015-11-16T10:00:00Z`. Doppelklicken Sie in der **Diagrammansicht** auf das **InputDataset**, und vergewissern Sie sich, dass die Eingabeslices bereit sind. Doppelklicken Sie auf **OuptutDataset** , um den Status der Ausgabeslices anzeigen. Wenn sie bereit sind, überprüfen Sie den Ausgangsordner für die Ausgabedateien.
+1. Fügen Sie dem `inputfolder`die folgenden Unterordner hinzu: 2015-11-16-05, 2015-11-16-06, 201-11-16-07, 2011-11-16-08, 2015-11-16-09. Legen Sie die Eingabedateien in diesen Ordnern ab. Ändern Sie die Endzeit für die Pipeline von `2015-11-16T05:00:00Z` zu `2015-11-16T10:00:00Z`. Doppelklicken Sie in der **Diagrammansicht** auf das **InputDataset**, und vergewissern Sie sich, dass die Eingabeslices bereit sind. Doppelklicken Sie auf **OuptutDataset** , um den Status der Ausgabeslices anzeigen. Wenn sie bereit sind, überprüfen Sie den Ausgabeordner für die Ausgabedateien.
 2. Erhöhen oder verringern Sie die **Parallelität** -Einstellung, um zu verstehen, wie sie sich auf die Leistung Ihrer Lösung, insbesondere auf die Verarbeitung auf Azure Batch auswirkt. (Siehe Schritt 4: Erstellen und führen Sie die Pipeline aus, um mehr über die **Parallelität** -Einstellung zu erfahren.)
 3. Erstellen Sie einen Pool mit einer höheren/niedrigeren **maximalen Anzahl an Aufgaben pro virtueller Maschine**. Aktualisieren Sie den mit Azure Batch verknüpften Dienst in der Data Factory-Lösung, um den neu erstellten Anwendungspool zu verwenden. (Siehe Schritt 4: Erstellen und führen Sie die Pipeline aus, um mehr über die Einstellung zur **maximalen Anzahl an Aufgaben pro virtueller Maschine** zu erfahren.)
 4. Erstellen Sie einen Azure Batch-Pool mit **automatischer Skalierung**. Das automatische Skalieren von Computeknoten in einem Azure Batch-Pool ist die dynamische Anpassung der Verarbeitungsleistung, die von der Anwendung beansprucht wird. 
 
-    Mit der hier angeführten Beispielformel wird folgendes Verhalten erzielt: Anfänglich umfasst der Pool nach seiner Erstellung einen virtuellen Computer. Die Metrik $PendingTasks legt die Anzahl der Aufgaben im ausgeführten und im aktiven (in der Warteschlange) Zustand fest.  Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt TargetDedicated auf den entsprechenden Wert fest. Dadurch wird sichergestellt, dass TargetDedicated nie die Anzahl von 25 virtuellen Computern überschreitet. Wenn also neue Aufgaben gesendet werden, wächst der Pool automatisch an. Beim Abschluss von Aufgaben werden virtuelle Computer nacheinander frei, und durch die automatische Skalierung werden diese virtuellen Computer reduziert. startingNumberOfVMs und maxNumberofVMs können entsprechend den jeweiligen Anforderungen angepasst werden.
+    Mit der hier angeführten Beispielformel wird folgendes Verhalten erzielt: Anfänglich umfasst der Pool nach seiner Erstellung einen virtuellen Computer. Die Metrik „$PendingTasks“ legt die Anzahl der Aufgaben im ausgeführten und im aktiven (in der Warteschlange) Zustand fest.  Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt TargetDedicated auf den entsprechenden Wert fest. Dadurch wird sichergestellt, dass TargetDedicated nie die Anzahl von 25 virtuellen Computern überschreitet. Wenn also neue Aufgaben gesendet werden, wächst der Pool automatisch an. Beim Abschluss von Aufgaben werden virtuelle Computer nacheinander frei, und durch die automatische Skalierung werden diese virtuellen Computer reduziert. startingNumberOfVMs und maxNumberofVMs können entsprechend den jeweiligen Anforderungen angepasst werden.
  
     Formel für die automatische Skalierung:
 

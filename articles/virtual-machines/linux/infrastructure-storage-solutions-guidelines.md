@@ -13,13 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5cce2dec867478707457a5e1390980129421ae75
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 771e3d1e728f6c85d9f63111b2483d08396ef530
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -34,7 +35,7 @@ Entscheidungen:
 
 * Verwenden Sie Azure Managed Disks oder nicht verwaltete Datenträger?
 * Möchten Sie Standard- oder Premium-Speicher für Ihre Workload verwenden?
-* Benötigen Sie Datenträgerstriping, um Datenträger mit mehr als 1023 GB zu erstellen?
+* Benötigen Sie Datenträgerstriping, um Datenträger mit mehr als 4TB zu erstellen?
 * Benötigen Sie Datenträgerstriping, um eine optimale E/A-Leistung für Ihre Workload zu erreichen?
 * Welche Speicherkonten benötigen Sie, um Ihre IT-Workload oder -Infrastruktur zu hosten?
 
@@ -63,7 +64,7 @@ Dauerhaftigkeit und hohe Verfügbarkeit werden von der zugrunde liegenden Azure 
 
 Informieren Sie sich über [weitere Replikationsoptionen für hohe Verfügbarkeit](../../storage/storage-introduction.md#replication-for-durability-and-high-availability).
 
-Betriebssystem-Datenträger und reine Datenträger haben eine maximale Größe von 1.023 Gigabyte (GB). Die maximale Größe eines Blobs ist 1.024 GB. Darin enthalten sein müssen die Metadaten (Fußzeile) der VHD-Datei (ein GB hat 1.024<sup>3</sup> Bytes). Mit Logical Volume Manager (LVM) können Sie diese Beschränkung umgehen, indem Sie Datenträger für Daten zu einem Pool zusammenfassen, um dem virtuellen Computer logische Volumes mit mehr als 1023 GB bereitzustellen.
+Betriebssystemdatenträger und reine Datenträger weisen eine maximale Größe von 4 TB auf. Mit Logical Volume Manager (LVM) können Sie diese Beschränkung umgehen, indem Sie Datenträger für Daten zu einem Pool zusammenfassen, um dem virtuellen Computer logische Volumes mit mehr als 1023 GB bereitzustellen.
 
 Es gibt einige Skalierbarkeitsgrenzwerte beim Entwurf der Azure Storage-Bereitstellung. Weitere Informationen finden Sie unter [Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md#storage-limits). Weitere Informationen finden Sie auch unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../../storage/storage-scalability-targets.md).
 
@@ -72,16 +73,15 @@ Für Anwendungsspeicher können Sie unstrukturierte Objektdaten wie z.B. Dokumen
 ## <a name="striped-disks"></a>Stripesetdatenträger
 Neben der Möglichkeit, Datenträger mit mehr als 1023 GB zu erstellen, wird durch Datenträgerstriping in vielen Fällen die Leistung verbessert, indem mehrere Blobs als Speicher für ein einzelnes Volume dienen können. Mit Striping läuft die erforderliche E/A zum Schreiben und Lesen von Daten aus einem einzigen logischen Datenträger parallel ab.
 
-Azure erzwingt Grenzwerte für die Anzahl von Datenträgern und die verfügbare Bandbreite, die sich nach der Größe des virtuellen Computers richten. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Azure erzwingt Grenzwerte für die Anzahl von Datenträgern und die verfügbare Bandbreite, die sich nach der Größe des virtuellen Computers richten. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer] (sizes.md
 
 Wenn Sie Datenträgerstriping für Azure-Datenträger verwenden, beachten Sie die folgenden Richtlinien:
 
-* Datenträger sollten immer die maximale Größe (1.023 GB) haben.
 * Fügen Sie die maximal zulässige Anzahl von Datenträgern für die Größe des virtuellen Computers an.
 * Verwenden Sie LVM.
 * Vermeiden Sie die Verwendung von Azure-Datenträger-Cachingoptionen (Cachingrichtlinie = Keine)
 
-Weitere Informationen finden Sie unter [Konfigurieren von LVM auf einem virtuellen Linux-Computer](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Weitere Informationen finden Sie unter [Konfigurieren von LVM auf einem virtuellen Linux-Computer](configure-lvm.md).
 
 ## <a name="multiple-storage-accounts"></a>Mehrere Speicherkonten
 Dieser Abschnitt gilt nicht für [Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), da Sie keine separaten Speicherkonten erstellen. 

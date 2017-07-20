@@ -13,18 +13,18 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 06/13/2017
 ms.author: daleche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 914084ff790ceb2e11852c5dae757b935f813062
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: b8abf1285318e491d51aadf90f921103d84ce1a4
 ms.contentlocale: de-de
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank
-Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](sql-database-develop-error-messages.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Problemen mit der Verbindung mit Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-the-persistent-errors) bereitgestellt. Zudem werden [alle relevanten Artikel zu Verbindungsproblemen mit der Azure SQL-Datenbank](#all-topics-for-azure-sql-database-connection-problems)aufgelistet.
+Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](sql-database-develop-error-messages.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Problemen mit der Verbindung mit Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-persistent-errors) bereitgestellt. 
 
 Führen Sie bei Verbindungsproblemen die in diesem Artikel beschriebenen Schritte zur Problembehandlung aus.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -42,7 +42,7 @@ Verbindungsprobleme können folgende Ursachen haben:
 Im Allgemeinen können Verbindungsprobleme mit der Azure SQL-Datenbank wie folgt klassifiziert werden:
 
 * [Vorübergehende Fehler (kurzlebige oder zeitweilige Fehler)](#troubleshoot-transient-errors)
-* [Dauerhafte oder nicht vorübergehende Fehler (Fehler, die sich regelmäßig wiederholen)](#troubleshoot-the-persistent-errors)
+* [Dauerhafte oder nicht vorübergehende Fehler (Fehler, die sich regelmäßig wiederholen)](#troubleshoot-persistent-errors)
 
 ## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Verwenden der Problembehandlung für Verbindungsprobleme mit der Azure SQL-Datenbank
 Wenn Sie einen bestimmten Verbindungsfehler erkennen, können Sie das Problem mit [diesem Tool](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database)schnell ermitteln und beheben.
@@ -69,7 +69,7 @@ Dieser Fehler tritt auf, wenn die Azure-Datenbank verschoben (oder neu konfiguri
 3. Wenn sich eine Datenbank ihren Ressourcenbegrenzungen nähert, kann dies wie ein vorübergehendes Verbindungsproblem aussehen. Siehe [Problembehandlung bei Leistungsproblemen](sql-database-troubleshoot-performance.md).
 4. Wenn Verbindungsprobleme weiterhin bestehen, die Fehlerdauer 60 Sekunden überschreitet oder der Fehler an einem Tag mehrfach auftritt, schicken Sie eine Azure-Supportanfrage, indem Sie auf der **Azure-Support** -Website [Support erhalten](https://azure.microsoft.com/support/options) auswählen.
 
-## <a name="troubleshoot-persistent-errors-non-transient-errors"></a>Problembehandlung bei dauerhaften Fehlern (nicht vorübergehende Fehler)
+## <a name="troubleshoot-persistent-errors"></a>Problembehandlung bei dauerhaften Fehlern
 Wenn die Anwendung dauerhaft keine Verbindung mit der Azure SQL-Datenbank herstellen kann, weist dies in der Regel auf Probleme der folgenden Art hin:
 
 * Firewall-Konfiguration Die Firewall von Azure SQL-Datenbank oder eine clientseitige Firewall blockiert Verbindungen mit Azure SQL-Datenbank.

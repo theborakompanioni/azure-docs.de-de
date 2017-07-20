@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/25/2015
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: cbdef43381deac957c0e48b7043273c43b032935
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 4fbf4fcfba4452111f406fe0f2303731877eba71
 ms.contentlocale: de-de
-ms.lasthandoff: 04/07/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -29,6 +29,9 @@ Stellen sie sicher, dass Ihre Anwendung optimal funktioniert, und stellen Sie Fe
 Application Insights kann Java- und ASP.NET-Webanwendungen und -Dienste sowie WCF-Dienste überwachen. Das Hosting kann lokal, auf virtuellen Computern oder als Microsoft Azure-Websites erfolgen. 
 
 Auf Clientseite kann Application Insights Telemetriedaten von Webseiten und eine Vielzahl von Geräten sammeln, einschließlich iOS-, Android- und Windows Store-Apps.
+
+>[!Note]
+> Wir bieten eine neue Oberfläche zum Auffinden langsamer Seiten in Ihrer Webanwendung. Wenn Sie keinen Zugriff darauf haben, aktivieren Sie ihn durch Konfigurieren der Vorschauoptionen auf dem Blatt [Vorschauversion](app-insights-previews.md). Unter [Auffinden und Beseitigen von Leistungsengpässen mithilfe der interaktiven Leistungsuntersuchung](#Find-and-fix-performance-bottlenecks-with-an-interactive-Performance-investigation) erfahren Sie mehr zu dieser neuen Oberfläche.
 
 ## <a name="setup"></a>Einrichten der Leistungsüberwachung
 Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. h., wenn es nicht über ApplicationInsights.config verfügt), gehen Sie nach einer der folgenden Methoden vor, um zu beginnen:
@@ -52,18 +55,16 @@ Klicken Sie auf ein Diagramm, um die anzuzeigenden Metriken auszuwählen, oder f
 
 > [!NOTE]
 > **Deaktivieren Sie alle Metriken**, um die insgesamt verfügbare Auswahl anzuzeigen. Die Metriken werden in Gruppen unterteilt. Wenn ein Mitglied einer Gruppe ausgewählt wird, werden nur die weiteren Mitglieder dieser Gruppe angezeigt.
-> 
-> 
 
 ## <a name="metrics"></a>Was bedeutet was? Leistungskacheln und Berichte
-Ihnen steht eine Vielzahl von Leistungsmetriken zur Verfügung. Lassen Sie uns mit denen beginnen, die standardmäßig im Anwendungsblatt angezeigt werden.
+Ihnen stehen verschiedene Leistungsmetriken zur Verfügung. Lassen Sie uns mit denen beginnen, die standardmäßig im Anwendungsblatt angezeigt werden.
 
 ### <a name="requests"></a>Requests
 Die in einem angegebenen Zeitraum empfangenen HTTP-Anforderungen. Vergleichen Sie den Wert mit den Ergebnissen anderer Berichte, um das Verhalten Ihrer Anwendung mit wechselnder Last zu beurteilen.
 
 HTTP-Anforderungen umfassen alle GET- oder POST-Anforderungen für Seiten, Daten und Bilder.
 
-Klicken Sie auf das Tile, um Zählwerte für bestimmte URLs zu erhalten.
+Klicken Sie auf die Kachel, um Zählwerte für bestimmte URLs zu erhalten.
 
 ### <a name="average-response-time"></a>Average response time
 Misst die Zeit zwischen dem Eingang einer Webanforderung bei Ihrer Anwendung und der zurückgegebenen Antwort.
@@ -86,7 +87,7 @@ Zeigt, welche Anforderungen möglicherweise eine Leistungsfeinabstimmung erforde
 
 Zählwert von Anforderungen, die nicht abgefangene Ausnahmefehler verursacht haben.
 
-Klicken Sie auf das Tile, um Details zu bestimmten Fehlern anzuzeigen, und wählen Sie einzelne Anforderungen aus, um die jeweiligen Details anzuzeigen. 
+Klicken Sie auf die Kachel, um Details zu bestimmten Fehlern anzuzeigen, und wählen Sie einzelne Anforderungen aus, um die jeweiligen Details anzuzeigen. 
 
 Nur eine repräsentative Menge an Fehler wird zur individuellen Überprüfung zurückgehalten.
 
@@ -114,6 +115,37 @@ Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Lei
 * Richten Sie [Webtests][availability] ein, um benachrichtigt zu werden, falls Ihre Website nicht erreichbar ist oder fehlerhaft bzw. langsam reagiert. 
 * Vergleichen Sie den Request-Zählwert mit anderen Metriken, um festzustellen, ob Fehler oder langsame Reaktionen mit der Last zusammenhängen.
 * [Fügen Sie Ihrem Code Trace-Anweisungen hinzu bzw. suchen Sie diese][diagnostic], um Probleme besser einzugrenzen.
+* Überwachen Sie den Betrieb Ihrer Web-App mithilfe von [Live Metrics Stream][livestream].
+* Erfassen Sie den Zustand Ihrer .NET-Anwendung mithilfe des [Momentaufnahmedebuggers][snapshot].
+
+## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-performance-investigation"></a>Auffinden und Beseitigen von Leistungsengpässen mithilfe der interaktiven Leistungsuntersuchung
+
+Mithilfe der neuen interaktiven Application Insights-Leistungsuntersuchung können Sie Bereiche in Ihrer Web-App mit schwacher Gesamtleistung bestimmen. Sie können schnell bestimmte Seiten finden, die Sie ausbremsen, und mithilfe des [Tools für die Profilerstellung](app-insights-profiler.md) prüfen, ob es eine Korrelation zwischen diesen Seiten gibt.
+
+### <a name="create-a-list-of-slow-performing-pages"></a>Erstellen einer Liste der langsamen Seiten 
+
+Der erste Schritt zum Bestimmen von Leistungsproblemen ist das Abrufen einer Liste mit langsam reagierenden Seiten. Der nachstehende Screenshot veranschaulicht, wie Sie mithilfe des Blatts „Leistung“ eine Liste von Seiten abrufen, die potenziell weiter untersucht werden sollten. Anhand dieser Seite können Sie rasch erkennen, dass es um 18:00 Uhr und erneute gegen 22:00 Uhr zu einer langsameren Antwortzeit gekommen ist. Sie können auch erkennen, dass der Vorgang zum Abrufen von Kundendetails einige lang andauernde Operationen mit einer mittleren Antwortzeit von 507,05 Millisekunden aufweist. 
+
+![Interaktive Application Insights-Leistungsuntersuchung](./media/app-insights-web-monitor-performance/performance1.png)
+
+### <a name="drill-down-on-specific-pages"></a>Detailuntersuchung bestimmter Seiten
+
+Nachdem Sie eine Momentaufnahme der Leistung Ihrer App erstellt haben, erhalten Sie weitere Details zu bestimmten langsamen Vorgängen. Klicken Sie auf einen Vorgang in der Liste, um die Details anzuzeigen (siehe unten). Anhand des Diagramms können Sie erkennen, dass die Leistung auf einer Abhängigkeit basierte. Sie können auch die Anzahl der Benutzer sehen, bei denen die verschiedenen Antwortzeiten aufgetreten sind. 
+
+![Application Insights-Blatt „Vorgänge“](./media/app-insights-web-monitor-performance/performance5.png)
+
+### <a name="drill-down-on-a-specific-time-period"></a>Detailuntersuchung eines bestimmten Zeitraums
+
+Nachdem Sie einen zu untersuchenden Zeitpunkt bestimmt haben, setzen Sie die Detailuntersuchung mit den spezifischen Vorgängen fort, die die Verlangsamung der Leistung ggf. verursacht haben. Beim Klicken auf einen bestimmten Zeitpunkt werden die Details der Seite angezeigt (siehe unten). Beim nachstehenden Beispiel können Sie die für einen bestimmten Zeitraum aufgeführten Vorgänge sowie die Serverantwortcodes und die Vorgangsdauer erkennen. Angezeigt wird auch die URL zum Öffnen einer TFS-Arbeitsaufgabe, wenn Sie diese Informationen an Ihr Entwicklungsteam senden müssen.
+
+![Application Insights-Zeitsegment](./media/app-insights-web-monitor-performance/performance2.png)
+
+### <a name="drill-down-on-a-specific-operation"></a>Detailuntersuchung eines bestimmten Vorgangs
+
+Nachdem Sie einen zu untersuchenden Zeitpunkt bestimmt haben, setzen Sie die Detailuntersuchung mit den spezifischen Vorgängen fort, die die Verlangsamung der Leistung ggf. verursacht haben. Klicken Sie auf einen Vorgang in der Liste, um die Details des Vorgangs anzuzeigen (siehe unten). In diesem Beispiel sehen Sie, dass der Vorgang fehlgeschlagen ist und dass Application Insights die Details der Ausnahme bereitstellt, die die Anwendung ausgelöst hat. Wiederum können Sie problemlos eine TFS-Arbeitsaufgabe auf diesem Blatt erstellen.
+
+![Application Insights-Blatt „Vorgänge“](./media/app-insights-web-monitor-performance/performance3.png)
+
 
 ## <a name="next"></a>Nächste Schritte
 [Webtests][availability]: Lassen Sie in regelmäßigen Abständen aus aller Welt Webanforderungen an Ihre Anwendung senden.
@@ -135,6 +167,9 @@ Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Lei
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
+[livestream]: app-insights-live-stream.md
+[snapshot]: app-insights-snapshot-debugger.md
+
 
 
 

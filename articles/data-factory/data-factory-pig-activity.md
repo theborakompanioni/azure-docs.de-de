@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3c04cee00b7dc7c8833daf21cdbca11a065e9dae
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 182a637ab98955129d269e2afc3ba581aa1a7c03
 ms.contentlocale: de-de
-ms.lasthandoff: 03/14/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -36,6 +36,9 @@ ms.lasthandoff: 03/14/2017
 > * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
 
 Die HDInsight Pig-Aktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) wendet Pig-Abfragen auf [Ihren eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows-/Linux-basierten HDInsight-Cluster an. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
+
+> [!NOTE] 
+> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md), und durchlaufen Sie anschließen das Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md), bevor Sie diesen Artikel lesen. 
 
 ## <a name="syntax"></a>Syntax
 
@@ -113,12 +116,12 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-Um dieses Pig-Skript in einer Data Factory-Pipeline auszuführen, führen Sie folgende Schritte aus:
+Um dieses Pig-Skript in einer Data Factory-Pipeline auszuführen, führen Sie die folgenden Schritte aus:
 
 1. Erstellen Sie einen verknüpften Dienst, um [Ihren eigenen HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) zu registrieren oder einen [bedarfsgesteuerten HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) zu konfigurieren. Wir nennen diesen verknüpften Dienst **HDInsightLinkedService**.
 2. Erstellen Sie einen [verknüpften Dienst](data-factory-azure-blob-connector.md) , um die Verbindung mit dem Azure-Blobspeicher zu konfigurieren, in dem die Daten gehostet werden. Wir nennen diesen verknüpften Dienst **StorageLinkedService**.
 3. Erstellen Sie [Datasets](data-factory-create-datasets.md) , die auf die Eingabe- und die Ausgabedaten verweisen. Wir nennen das Eingabedataset **PigSampleIn** und das Ausgabedataset **PigSampleOut**.
-4. Kopieren Sie die Pig-Abfrage in eine Datei in dem in Schritt 2 konfigurierten Azure-Blobspeicher. Wenn der Azure-Speicher, der die Daten hostet, sich von dem Speicher unterscheidet, der die Abfragedatei hostet, erstellen Sie einen separaten mit verknüpften Azure Storage-Dienst. Informationen dazu finden Sie im verknüpften Dienst in der Aktivitätskonfiguration. Verwenden Sie **scriptPath**, um den Pfad zur Pig-Skriptdatei und zum **scriptLinkedService** anzugeben. 
+4. Kopieren Sie die Pig-Abfrage in eine Datei in dem in Schritt 2 konfigurierten Azure-Blobspeicher. Wenn der Azure-Speicher, der die Daten hostet, sich von dem Speicher unterscheidet, der die Abfragedatei hostet, erstellen Sie einen separaten mit verknüpften Azure Storage-Dienst. Informationen dazu finden Sie im verknüpften Dienst in der Aktivitätskonfiguration. Verwenden Sie **scriptPath**, um den Pfad zur Pig-Skriptdatei und zu **scriptLinkedService** anzugeben. 
    
    > [!NOTE]
    > Sie können das Pig-Skript auch inline in der Aktivitätsdefinition bereitstellen, indem Sie die **script** -Eigenschaft verwenden. Dieser Ansatz wird jedoch nicht empfohlen, da alle Sonderzeichen im Skript mit Escapezeichen versehen werden müssen und zu Debuggingproblemen führen können. Die bewährte Methode ist, Schritt 4 auszuführen.

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: jdial
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 430a68ff6a01a53774c1b7843ed774b2ec0d0d36
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 47237fe499cd9244266487cd97f6be0d2cb2e977
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -38,8 +38,8 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 - Lesen Sie den Artikel zu [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits), um mehr über die Einschränkungen für öffentliche IP-Adressen zu erfahren.
 - Melden Sie sich mit einem Azure-Konto beim Azure-Portal, der Azure-Befehlszeilenschnittstelle (CLI) oder bei Azure PowerShell an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
-- Wenn Sie PowerShell-Befehle zum Ausführen der Aufgaben in diesem Artikel verwenden, installieren und konfigurieren Sie Azure PowerShell mithilfe der Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Cmdlets installiert haben. Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Ausführen der Aufgaben in diesem Artikel verwenden, installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle mithilfe der Anweisungen im Artikel [Installieren und Konfigurieren von Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure-Befehlszeilenschnittstelle installiert haben. Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> --help`.
+- Bei Verwenden von PowerShell zum Ausführen der Aufgaben in diesem Artikel installieren und konfigurieren Sie Azure PowerShell gemäß den Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Cmdlets installiert haben. Hilfe und Beispiele für PowerShell-Befehle erhalten Sie durch Eingabe von `get-help <command> -full`.
+- Bei Verwenden der Azure CLI zum Ausführen der Aufgaben in diesem Artikel installieren und konfigurieren Sie die Azure CLI gemäß den Anweisungen im Artikel zum [Installieren und Konfigurieren der Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure CLI installiert haben. Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> --help`.
 
 Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Informationen zu den Preisen finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses). 
 
@@ -67,12 +67,13 @@ Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Informationen zu den
 |CLI|[az network public-ip-create](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 |PowerShell|[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)|
 
-## <a name="change"></a>Ändern von Einstellungen oder Löschen einer öffentlichen IP-Adresse
+## <a name="change"></a>Anzeigen, Ändern von Einstellungen oder Löschen einer öffentlichen IP-Adresse
 
 1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *öffentliche IP-Adresse* ein. Wenn **Öffentliche IP-Adressen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
-3. Klicken Sie auf dem angezeigten Blatt **Öffentliche IP-Adressen** auf den Namen der öffentlichen IP-Adresse, deren Einstellungen Sie ändern oder die Sie löschen möchten.
+3. Klicken Sie auf dem angezeigten Blatt **Öffentliche IP-Adressen** auf den Namen der öffentlichen IP-Adresse, deren Einstellungen Sie anzeigen, ändern oder die Sie löschen möchten.
 4. Führen Sie auf dem für die öffentliche IP-Adresse angezeigten Blatt abhängig davon, ob Sie die öffentliche IP-Adresse löschen oder ändern möchten, eine der folgenden Optionen aus.
+    - **Ansicht**: Im Abschnitt „Übersicht“ des Blattes werden die wichtigsten Einstellungen für die öffentliche IP-Adresse angezeigt, darunter die zugeordnete Netzwerkschnittstelle (sofern die Adresse einer Netzwerkschnittstelle zugeordnet ist).
     - **Löschen:** Um die öffentliche IP-Adresse zu löschen, klicken Sie im Blattabschnitt **Übersicht** auf **Löschen**. Ist die Adresse zurzeit einer IP-Konfiguration zugeordnet, kann sie nicht gelöscht werden. Ist die Adresse zurzeit einer Konfiguration zugeordnet, klicken Sie auf **Trennen**, um die Adresse von der IP-Konfiguration zu trennen.
     - **Ändern:** Klicken Sie auf **Konfiguration**. Ändern Sie Einstellungen anhand der Informationen aus Schritt 4 des Abschnitts [Erstellen einer öffentlichen IP-Adresse](#create) in diesem Artikel. Möchten Sie die Zuweisung von statisch in dynamisch ändern, müssen Sie die öffentliche IP-Adresse zunächst von der IP-Konfiguration trennen, der sie zugewiesen ist. Danach können Sie die Zuweisungsmethode in dynamisch ändern und auf **Zuordnen** klicken, um die IP-Adresse zur selben IP-Konfiguration oder zu einer anderen Konfiguration zuzuordnen. Sie können die Trennung aber auch beibehalten. Um eine öffentliche IP-Adresse von einer IP-Konfiguration zu trennen, klicken Sie in der **Übersicht** auf **Trennen**.
 
@@ -83,8 +84,8 @@ Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Informationen zu den
 
 |Tool|Befehl|
 |---|---|
-|CLI|[az network public-ip update](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#update) zum Aktualisieren; [az network public-ip delete](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#delete) zum Löschen|
-|PowerShell|[Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) zum Aktualisieren; [Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) zum Löschen|
+|Befehlszeilenschnittstelle (CLI)|[az network public-ip-list](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#list) listet die öffentlichen IP-Adressen auf, [az network public-ip-show](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#show) zeigt die Einstellungen an, [az network public-ip update](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#update) führt eine Aktualisierung durch, [az network public-ip delete](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#delete) löscht|
+|PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) ruft ein öffentliches IP-Adressenobjekt ab und zeigt dessen Einstellungen an, [Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) aktualisiert die Einstellungen, [Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) löscht|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Zuweisen von öffentlichen IP-Adressen, wenn die folgenden Azure-Ressourcen erstellt werden:

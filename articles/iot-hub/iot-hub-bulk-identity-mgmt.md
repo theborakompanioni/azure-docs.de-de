@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/06/2017
+ms.date: 07/03/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 9ea3896f73e0e97b89743d8b17c8fd1e723153c3
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 8df8cdfd0b265b11e6a11f0a5eb7ad8f0e669ca2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
 
-Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Hierzu zählt beispielsweise eine Warteschlange mit gesendeten C2D-Nachrichten. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben.
+Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben.
 
 Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Ihnen das Anwenden von Massendienstvorgängen auf einen IoT Hub ermöglichen.
 
@@ -37,7 +37,7 @@ Identitätsregistrierungsvorgänge verwenden das **Job**-System, wenn der Vorgan
 * eine potenziell lange Ausführungsdauer im Vergleich mit standardmäßigen Laufzeitvorgängen hat.
 * eine große Menge von Daten an den Benutzer zurückgibt.
 
-In diesen Fällen erstellt der Vorgang asynchron einen **Auftrag** für diesen IoT Hub, anstatt eines einzelnen API-Aufrufs, mit dem auf das Ergebnis des Vorgangs gewartet bzw. mit dem der Vorgang blockiert wird. Für den Vorgang wird dann sofort ein **JobProperties**-Objekt zurückgegeben.
+Stattdessen erstellt der Vorgang asynchron einen **Auftrag** für diesen IoT Hub, anstatt eines einzelnen API-Aufrufs, mit dem auf das Ergebnis des Vorgangs gewartet bzw. mit dem der Vorgang blockiert wird. Für den Vorgang wird dann sofort ein **JobProperties**-Objekt zurückgegeben.
 
 Der folgende C#-Codeausschnitt zeigt, wie ein Exportauftrag erstellt wird:
 
@@ -48,7 +48,6 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 
 > [!NOTE]
 > Um die **RegistryManager**-Klasse in Ihrem C#-Code zu verwenden, fügen Sie das **Microsoft.Azure.Devices**-NuGet-Paket Ihrem Projekt hinzu. Die **RegistryManager**-Klasse befindet sich im **Microsoft.Azure.Devices**-Namespace.
-
 
 Sie können die **RegistryManager**-Klasse verwenden, um den Status des **Auftrags** unter Verwendung der zurückgegebenen **JobProperties**-Metadaten abzufragen.
 
@@ -122,7 +121,8 @@ Das folgende Beispiel zeigt die Ausgabedaten:
 ```
 
 Wenn ein Gerät Zwillingsdaten aufweist, werden die Zwillingsdaten zusammen mit den Gerätedaten exportiert. Das folgende Beispiel zeigt dieses Format. Alle Daten aus der Zeile „twinETag“ bis zum Ende sind Zwillingsdaten.
-```
+
+```json
 {
    "id":"export-6d84f075-0",
    "eTag":"MQ==",
@@ -172,7 +172,7 @@ Wenn Sie Zugriff auf diese Daten im Code benötigen, können Sie diese Daten mit
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
 
-using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondition.GenerateIfExistsCondition(), RequestOptions, null), Encoding.UTF8))
+using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondition.GenerateIfExistsCondition(), null, null), Encoding.UTF8))
 {
   while (streamReader.Peek() != -1)
   {
@@ -217,7 +217,7 @@ Der folgende C#-Codeausschnitt zeigt, wie ein Importauftrag ausgelöst wird:
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-Diese Methode kann auch verwendet werden, um die Daten für den Gerätezwilling zu importieren. Das Format für die Dateneingabe entspricht demjenigen, das im Abschnitt für **ExportDevicesAsync** gezeigt wurde. Auf diese Weise können die exportierten Daten auch wieder importiert werden. $metadata ist optional.
+Diese Methode kann auch verwendet werden, um die Daten für den Gerätezwilling zu importieren. Das Format für die Dateneingabe entspricht dem Format wie im Abschnitt für **ExportDevicesAsync**. Auf diese Weise können Sie die exportierten Daten erneut importieren. **$metadata** ist optional.
 
 ## <a name="import-behavior"></a>Importverhalten
 
@@ -232,7 +232,7 @@ Sie können die **ImportDevicesAsync** -Methode zum Anwenden der folgenden Masse
 
 Sie können eine beliebige Kombination der obigen Vorgänge innerhalb eines einzelnen Aufrufs von **ImportDevicesAsync** ausführen. Sie können beispielsweise gleichzeitig neue Geräte registrieren oder vorhandene Geräte aktualisieren und löschen. Bei Verwendung zusammen mit der **ExportDevicesAsync** -Methode können Sie alle Ihre Geräte vollständig von einem IoT Hub zu einem anderen migrieren.
 
-Wenn die Importdatei Zwillingsmetadaten angibt, dann überschreiben diese Metadaten die vorhandenen Metadaten des Zwillings. Falls nicht, werden nur die `lastUpdateTime`-Metadaten mit der aktuellen Uhrzeit aktualisiert. 
+Wenn die Importdatei Zwillingsmetadaten enthält, dann überschreiben diese Metadaten die vorhandenen Zwillingsmetadaten. Wenn die Importdatei keine Zwillingsmetadaten enthält, werden nur die `lastUpdateTime`-Metadaten mit der aktuellen Uhrzeit aktualisiert.
 
 Verwenden Sie die optionale **importMode**-Eigenschaft in den Importserialisierungsdaten für jedes Gerät, um den Importprozess gerätebezogen zu steuern. Die **importMode** -Eigenschaft hat die folgenden Optionen:
 
@@ -263,7 +263,8 @@ var serializedDevices = new List<string>();
 
 for (var i = 0; i < 1000; i++)
 {
-// Create a new ExportImportDevice
+  // Create a new ExportImportDevice
+  // CryptoKeyGenerator is in the Microsoft.Azure.Devices.Common namespace
   var deviceToAdd = new ExportImportDevice()
   {
     Id = Guid.NewGuid().ToString(),
@@ -279,11 +280,11 @@ for (var i = 0; i < 1000; i++)
     ImportMode = ImportMode.Create
   };
 
-  // Add device to existing list
+  // Add device to the list
   serializedDevices.Add(JsonConvert.SerializeObject(deviceToAdd));
 }
 
-// Write this list to the blob
+// Write the list to the blob
 var sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice => sb.AppendLine(serializedDevice));
 await blob.DeleteIfExistsAsync();
@@ -298,8 +299,9 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
   }
 }
 
-// Call import using the same blob to add new devices!
-// This normally takes 1 minute per 100 devices the normal way
+// Call import using the blob to add new devices
+// Log information related to the job is written to the same container
+// This normally takes 1 minute per 100 devices
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
@@ -349,7 +351,7 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
   }
 }
 
-// Step 3: Call import using the same blob to delete all devices!
+// Step 3: Call import using the same blob to delete all devices
 importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
@@ -366,7 +368,6 @@ while(true)
 
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
-
 ```
 
 ## <a name="get-the-container-sas-uri"></a>Abrufen des SAS-URI des Containers
@@ -394,7 +395,6 @@ static string GetContainerSasUri(CloudBlobContainer container)
   // including the SAS token.
   return container.Uri + sasContainerToken;
 }
-
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

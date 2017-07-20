@@ -3,7 +3,7 @@ title: "Ausführliche Schritte zum Erstellen eines SSH-Schlüsselpaars für virt
 description: "Hier finden Sie zusätzliche Schritte zum Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure mit bestimmten Zertifikaten für verschiedene Anwendungsfälle."
 services: virtual-machines-linux
 documentationcenter: 
-author: vlivech
+author: dlepow
 manager: timlt
 editor: 
 tags: 
@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 2/6/2016
-ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f452e8b3802bef5dc61bff64a8ac9ec5bb2a5bd9
-ms.lasthandoff: 04/03/2017
-
+ms.date: 6/28/2017
+ms.author: danlep
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 0cb70d36bd6e8d4cf5fcd5ed4a3e85c42f3cf81d
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 ---
 
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Ausführliche exemplarische Vorgehensweise zum Erstellen eines SSH-Schlüsselpaars mit zusätzlichen Zertifikaten für einen virtuellen Linux-Computer in Azure
-Mit einem SSH-Schlüsselpaar können Sie virtuelle Computer in Azure erstellen, bei deren Authentifizierung standardmäßig SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Kennwörter können erraten werden und machen Ihre virtuellen Computer anfällig für entsprechende Brute-Force-Angriffe. Virtuelle Computer, die mit der Azure CLI oder Resource Manager-Vorlagen erstellt werden, können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, sodass eine nachträgliche Deaktivierung von Kennwortanmeldungen für SSH entfällt. Dieser Artikel enthält detaillierte Schritte und zusätzliche Beispiele für das Generieren von Zertifikaten, z.B. zur Verwendung mit dem klassischen Portal. Wenn Sie schnell ein SSH-Schlüsselpaar erstellen und verwenden möchten, finden Sie Informationen dazu unter [Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
+Mit einem SSH-Schlüsselpaar können Sie virtuelle Computer in Azure erstellen, bei deren Authentifizierung standardmäßig SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Kennwörter können erraten werden und machen Ihre virtuellen Computer anfällig für entsprechende Brute-Force-Angriffe. Virtuelle Computer, die mit der Azure CLI oder Resource Manager-Vorlagen erstellt werden, können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, sodass eine nachträgliche Deaktivierung von Kennwortanmeldungen für SSH entfällt. Dieser Artikel enthält detaillierte Schritte und zusätzliche Beispiele zum Generieren von Zertifikaten, z.B. zur Verwendung mit virtuellen Linux-Computern. Wenn Sie schnell ein SSH-Schlüsselpaar erstellen und verwenden möchten, finden Sie Informationen dazu unter [Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
 
 ## <a name="understanding-ssh-keys"></a>Grundlegendes zu SSH-Schlüssels
 
@@ -36,7 +36,7 @@ In diesem Artikel wird ein öffentlich-privates SSH-Schlüsseldateipaar (Protoko
 
 ## <a name="ssh-keys-use-and-benefits"></a>Verwendung und Vorteile von SSH-Schlüsseln
 
-Azure erfordert öffentlich-private Schlüssel im SSH-Format (Protokollversion 2 RSA) mit mindestens 2048 Bit; die öffentliche Schlüsseldatei weist das Containerformat `.pub` auf. (Im klassischen Portal wird das Dateiformat `.pem` verwendet.) Verwenden Sie zum Erstellen der Schlüssel `ssh-keygen`. Hierbei wird eine Reihe von Fragen gestellt, und anschließend werden ein privater Schlüssel und ein passender öffentlicher Schlüssel geschrieben. Beim Erstellen eines virtuellen Azure-Computers kopiert Azure den öffentlichen Schlüssel in den Ordner `~/.ssh/authorized_keys` auf dem virtuellen Computer. SSH-Schlüssel in `~/.ssh/authorized_keys` werden verwendet, um vom Client zu fordern, für eine SSH-Anmeldeverbindung den entsprechenden privaten Schlüssel bereitzustellen.  Wenn bei der Erstellung eines virtuellen Azure-Computers unter Linux SSH-Schlüssel für die Authentifizierung verwendet werden, konfiguriert Azure den SSHD-Server so, dass nur SSH-Schlüssel (und keine kennwortbasierten Anmeldungen) möglich sind.  Wenn Sie also virtuelle Azure Linux-Computer mit SSH-Schlüsseln erstellen, können Sie zur Sicherung der Bereitstellung des virtuellen Computers beitragen, und der üblicherweise nachträglich auszuführende Konfigurationsschritt zum Deaktivieren von Kennwörtern in der Datei **sshd_config** entfällt.
+Azure erfordert öffentlich-private Schlüssel im SSH-Format (Protokollversion 2 RSA) mit mindestens 2048 Bit; die öffentliche Schlüsseldatei weist das Containerformat `.pub` auf. Verwenden Sie zum Erstellen der Schlüssel `ssh-keygen`. Hierbei wird eine Reihe von Fragen gestellt, und anschließend werden ein privater Schlüssel und ein passender öffentlicher Schlüssel geschrieben. Beim Erstellen eines virtuellen Azure-Computers kopiert Azure den öffentlichen Schlüssel in den Ordner `~/.ssh/authorized_keys` auf dem virtuellen Computer. SSH-Schlüssel in `~/.ssh/authorized_keys` werden verwendet, um vom Client zu fordern, für eine SSH-Anmeldeverbindung den entsprechenden privaten Schlüssel bereitzustellen.  Wenn bei der Erstellung eines virtuellen Azure-Computers unter Linux SSH-Schlüssel für die Authentifizierung verwendet werden, konfiguriert Azure den SSHD-Server so, dass nur SSH-Schlüssel (und keine kennwortbasierten Anmeldungen) möglich sind.  Wenn Sie also virtuelle Azure Linux-Computer mit SSH-Schlüsseln erstellen, können Sie zur Sicherung der Bereitstellung des virtuellen Computers beitragen, und der üblicherweise nachträglich auszuführende Konfigurationsschritt zum Deaktivieren von Kennwörtern in der Datei **sshd_config** entfällt.
 
 ## <a name="using-ssh-keygen"></a>Verwenden von ssh-keygen
 
@@ -63,21 +63,6 @@ ssh-keygen \
 
 `-C "azureuser@myserver"` = ein Kommentar, der zur einfachen Identifizierung am Ende der Datei mit dem öffentlichen Schlüssel angefügt wird.  Normalerweise wird eine E-Mail-Adresse als Kommentar verwendet, aber Sie können je nach Eignung für Ihre Infrastruktur auch etwas anderes angeben.
 
-## <a name="classic-portal-and-x509-certs"></a>Klassisches Portal und X.509-Zertifikate
-
-Bei Verwendung des [klassischen Portals](https://manage.windowsazure.com/) von Azure ist die PEM-Datei des X.509-Zertifikats für die SSH-Schlüssel erforderlich.  Öffentliche SSH-Schlüssel eines anderen Typs sind nicht zulässig, es *müssen* X.509-Zertifikate verwendet werden.
-
-So erstellen Sie ein X.509-Zertifikat aus Ihrem vorhandenen privaten SSH-RSA-Schlüssel:
-
-```bash
-openssl req -x509 \
--key ~/.ssh/id_rsa \
--nodes \
--days 365 \
--newkey rsa:2048 \
--out ~/.ssh/id_rsa.pem
-```
-
 ## <a name="classic-deploy-using-asm"></a>Klassische Bereitstellung mithilfe von `asm`
 
 Bei Verwendung des klassischen Bereitstellungsmodells (`asm`-Modus in der CLI) können Sie einen öffentlichen SSH-RSA-Schlüssel oder einen Schlüssel im RFC4716-Format in einem PEM-Container verwenden.  Der öffentliche SSH-RSA-Schlüssel wurde weiter oben in diesem Artikel mit `ssh-keygen` erstellt.
@@ -96,7 +81,7 @@ ssh-keygen \
 ```bash
 ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/azureuser/.ssh/id_rsa): 
+Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.

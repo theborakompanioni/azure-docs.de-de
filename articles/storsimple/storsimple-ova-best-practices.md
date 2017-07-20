@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/01/2017
+ms.date: 06/08/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 6d5563d06d9097134715f8885521c85e987a3acd
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 56e8f5cf3886c740853a40781c42b3e36144134b
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -163,7 +164,7 @@ Beachten Sie die folgenden bewährten Methoden, wenn Sie Freigaben oder Volumes 
 * Für Anwendungsfälle der Notfallwiederherstellung gilt Folgendes: Da sowohl die Anzahl von zulässigen Freigaben/Volumes als auch die maximale Anzahl von Freigaben/Volumes, die parallel verarbeitet werden können, 16 beträgt, wirkt sich die Anzahl von Freigaben/Volumes nicht auf RPO und RTOs aus.
 
 #### <a name="volumeshare-type"></a>Volumen-/Freigabetyp
-StorSimple unterstützt basierend auf der Nutzung zwei Volume-/Freigabetypen: lokal und mehrstufig. Für lokale Volumes/Freigaben wird die Thick-Bereitstellung verwendet, und für mehrstufige Volumes/Freigaben die Thin-Bereitstellung. 
+StorSimple unterstützt basierend auf der Nutzung zwei Volume-/Freigabetypen: lokal und mehrstufig. Für lokale Volumes/Freigaben wird die Thick-Bereitstellung verwendet, und für mehrstufige Volumes/Freigaben die Thin-Bereitstellung. Sie können kein lokal angeheftete Volumen bzw. keine lokal angeheftete Freigabe in eine mehrstufige oder *andersherum* konvertieren, sobald sie erstellt ist.
 
 Es wird empfohlen, beim Konfigurieren von StorSimple-Volumes bzw. -Freigaben die folgenden bewährten Methoden zu implementieren:
 
