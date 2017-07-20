@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/11/2017
+ms.date: 05/24/2017
 ms.author: gauravbh; tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a4348a4d2348d744c03ad3a89d0548526fa2f9f8
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c4e0508e243bd4f0cd57ea1619f7812433329423
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -34,9 +34,13 @@ Es gibt zwei Szenarien beim Arbeiten mit verwalteten Anwendungen:
 1. Bei einem steht der Hersteller oder unabhängige Softwarehersteller (Independent Software Vendor, ISV), der eine verwaltete Anwendung erstellt und zur allgemeinen Nutzung zur Verfügung stellt, im Mittelpunkt. 
 2. Beim anderen geht es um den Kunden oder Verbraucher, der die veröffentlichte Anwendung erstellen und verwenden möchte. 
 
-In diesem Artikel werden beide Szenarien behandelt. Sehen wir uns zunächst die Funktionsweise von verwalteten Anwendungen genauer an. 
+Dieser Artikel enthält eine Übersicht über beide Szenarien. Sehen wir uns zunächst die Funktionsweise von verwalteten Anwendungen genauer an. 
 
 Eine verwaltete Anwendung ähnelt bis auf einen wichtigen Unterschied einer Marketplace-Lösungsvorlage. In einer verwalteten Anwendung werden die Ressourcen in einer Ressourcengruppe bereitgestellt, die vom ISV/Hersteller verwaltet wird. Die Ressourcengruppe ist im Abonnement des Kunden vorhanden, aber ein Benutzer, eine Benutzergruppe oder eine Anwendung im Mandanten des ISV hat Zugriff auf die Ressourcengruppe. Zum Verwalten und Warten der Anwendung wird die Identität des Herstellers einem Active Directory-Besitzer, -Mitwirkenden oder -Leser bzw. einer anderen integrierten Rolle hinzugefügt. 
+
+Weitere Informationen zur Herstellerlösung finden Sie unter [Erstellen und Veröffentlichen von verwalteten Azure-Anwendungen](managed-application-publishing.md).
+
+Weitere Informationen zur Kundenlösung finden Sie unter [Nutzen einer verwalteten Azure-Anwendung](managed-application-consumption.md).
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 

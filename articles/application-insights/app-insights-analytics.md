@@ -3,7 +3,7 @@ title: "Analytics: Das leistungsfähige Suchtool von Azure Application Insights 
 description: "Übersicht über Analytics, das leistungsfähige Diagnosesuchtool von Application Insights. "
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0a2f6011-5bcf-47b7-8450-40f284274b24
 ms.service: application-insights
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 717269a2c0e0b1a3d332e627154eacd2d2c5001e
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 969d4f5c76c0f91c13622cb91d137c7be8007505
 ms.contentlocale: de-de
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -46,6 +46,10 @@ Finden wir also heraus, zu welcher Tageszeit die Einwohner von Hyderabad unsere 
 
 Wir zählen verschiedene Client-IP-Adressen der letzten 7 Tage auf und gruppieren sie nach Uhrzeit. 
 
+> [!NOTE]
+> Um Ergebnisse außerhalb der letzten 24 Stunden zu erhalten, fügen Sie entweder ausdrücklich „timestamp“ in die Abfrage ein, oder verwenden Sie das Dropdownmenü für den Zeitbereich.
+>
+
 Wir zeigen die Ergebnisse mit der Balkendiagramm-Präsentation und listen die Ergebnisse von verschiedenen Antwortcodes auf.
 
 ![Wählen Sie das Balkendiagramm, die X-Achsen und Y-Achsen, dann die Segmentierung](./media/app-insights-analytics/020.png)
@@ -54,7 +58,7 @@ Anscheinend ist unserer App zur Mittagszeit und zur Schlafenszeit in Hyderabad a
 
 Es gibt auch leistungsstarke statistische Vorgänge:
 
-![](./media/app-insights-analytics/025.png)
+![Ergebnisse der statistischen Abfrage](./media/app-insights-analytics/025.png)
 
 Die Sprache verfügt über viele attraktive Features:
 
@@ -83,21 +87,24 @@ Die Sprache verfügt über viele attraktive Features:
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
 
+
+## <a name="query-examples"></a>Abfragebeispiele
+
+Arbeiten Sie diese exemplarischen Vorgehensweisen durch, die die Vorteile der Verwendung von Analytics veranschaulichen:
+
+ *    [Automatic diagnostics of spikes and step jumps in requests durations](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Automatic%20diagnostics%20of%20sudden%20spikes%20or%20step%20jumps%20in%20requests%20duration&shared=true) (Automatische Diagnose von Spitzen und Schrittsprüngen in der Anfragedauer)
+ *    [Analyzing performance degradations with time series analysis](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20performance%20degradations%20with%20time%20series%20analysis&shared=true) (Analysieren der Leistungsbeeinträchtigung mithilfe der Zeitreihenanalyse)
+ *    [Analyzing application failures with autocluster and diffpatterns](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20application%20failures%20with%20autocluster%20and%20diffpatterns&shared=true) (Analysieren von Anwendungsausfällen mit automatischem Clustering und Differenzmustern)
+ *    [Advanced shape detections with time series analysis](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Advanced%20shape%20detection%20with%20time%20series%20analysis&shared=true) (Erkennung erweiterter Formen mithilfe der Zeitreihenanalyse)
+ *    [Using sliding window operations to analyze application usage (rolling MAU/DAU etc)](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Using%20sliding%20window%20calculations%20to%20analyze%20usage%20metrics:%20rolling%20MAU~2FDAU%20and%20cohorts&shared=true) (Analysieren der Anwendungsverwendung (gleitendes MAU/DAU) mithilfe von Schiebefenstervorgängen)
+ *    [Detection of service disruptions based on analysis of debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Detection%20of%20service%20disruptions%20based%20on%20regression%20analysis%20of%20trace%20logs&shared=true) (Erkennen von Dienstunterbrechungen durch Analyse von Debugprotokollen); ein entsprechender Blogbeitrag findet sich [hier](https://maximshklar.wordpress.com/2017/02/16/finding-trends-in-traces-with-smart-data-analytics).
+ *    [Profiling applications’ performance using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Profiling%20applications'%20performance%20with%20simple%20debug%20logs&shared=true) (Erstellen von Leistungsprofilen für Anwendungen mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/13/first-blog-post/)
+ *    [Measuring the duration for each step in your code flow using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Measuring%20the%20duration%20of%20each%20step%20in%20your%20code%20flow%20using%20simple%20debug%20logs&shared=true) (Messen der Dauer der einzelnen Schritte im Codefluss mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/14/measuring-the-duration-of-each-step-in-your-code-flow-using-simple-debug-logs/)
+ *    [Analyzing concurrency using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Analyzing%20concurrency%20with%20simple%20debug%20logs&shared=true) (Analysieren der Parallelität mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/23/analyzing-concurrency-using-simple-debug-logs/)
+
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 * Es wird empfohlen, mit der [Einführung in die Abfragesprache](app-insights-analytics-tour.md)zu beginnen. 
-
-### <a name="query-examples"></a>Abfragebeispiele
-
-* Arbeiten Sie diese exemplarischen Vorgehensweisen durch, die die Vorteile der Verwendung von Analytics veranschaulichen:
- 1.    [Automatic diagnostics of spikes and step jumps in requests durations](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Automatic%20diagnostics%20of%20sudden%20spikes%20or%20step%20jumps%20in%20requests%20duration&shared=true) (Automatische Diagnose von Spitzen und Schrittsprüngen in der Anfragedauer)
- 2.    [Analyzing performance degradations with time series analysis](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20performance%20degradations%20with%20time%20series%20analysis&shared=true) (Analysieren der Leistungsbeeinträchtigung mithilfe der Zeitreihenanalyse)
- 3.    [Analyzing application failures with autocluster and diffpatterns](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Analyzing%20application%20failures%20with%20autocluster%20and%20diffpatterns&shared=true) (Analysieren von Anwendungsausfällen mit automatischem Clustering und Differenzmustern)
- 4.    [Advanced shape detections with time series analysis](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Advanced%20shape%20detection%20with%20time%20series%20analysis&shared=true) (Erkennung erweiterter Formen mithilfe der Zeitreihenanalyse)
- 5.    [Using sliding window operations to analyze application usage (rolling MAU/DAU etc)](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Using%20sliding%20window%20calculations%20to%20analyze%20usage%20metrics:%20rolling%20MAU~2FDAU%20and%20cohorts&shared=true) (Analysieren der Anwendungsverwendung (gleitendes MAU/DAU) mithilfe von Schiebefenstervorgängen)
- 6.    [Detection of service disruptions based on analysis of debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Detection%20of%20service%20disruptions%20based%20on%20regression%20analysis%20of%20trace%20logs&shared=true) (Erkennen von Dienstunterbrechungen durch Analyse von Debugprotokollen); ein entsprechender Blogbeitrag findet sich [hier](https://maximshklar.wordpress.com/2017/02/16/finding-trends-in-traces-with-smart-data-analytics).
- 7.    [Profiling applications’ performance using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Profiling%20applications'%20performance%20with%20simple%20debug%20logs&shared=true) (Erstellen von Leistungsprofilen für Anwendungen mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/13/first-blog-post/)
- 8.    [Measuring the duration for each step in your code flow using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/main?title=Measuring%20the%20duration%20of%20each%20step%20in%20your%20code%20flow%20using%20simple%20debug%20logs&shared=true) (Messen der Dauer der einzelnen Schritte im Codefluss mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/14/measuring-the-duration-of-each-step-in-your-code-flow-using-simple-debug-logs/)
- 9.    [Analyzing concurrency using simple debug logs](https://analytics.applicationinsights.io/demo#/discover/query/results/chart?title=Analyzing%20concurrency%20with%20simple%20debug%20logs&shared=true) (Analysieren der Parallelität mithilfe einfacher Debugprotokolle); ein entsprechender Blogbeitrag findet sich [hier](https://yossiattasblog.wordpress.com/2017/03/23/analyzing-concurrency-using-simple-debug-logs/)
-
-
-
+* Informieren Sie sich über die [Verwendung von Analytics](app-insights-analytics-using.md). 
+* [Sprachreferenz](app-insights-analytics-reference.md). 

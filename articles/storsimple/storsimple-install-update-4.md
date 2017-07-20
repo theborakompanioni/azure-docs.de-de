@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/03/2017
+ms.date: 05/30/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3457601f1d295d17d50725ec19cae96ae6efb5b6
-ms.lasthandoff: 03/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 7dc2f29db64218b9db17eaf555c43a7ad282ea07
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -47,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf [Update 4](storsimple-
 
 Stellen Sie sicher, dass auf Ihrem Gerät **Update 4 der StorSimple 8000-Serie (6.3.9600.17820)** ausgeführt wird. Das **Datum der letzten Aktualisierung** hat sich ebenfalls geändert. 
 
-* Sie werden auch feststellen, dass Wartungsmodus-Updates verfügbar sind. (Diese Meldung wird nach der Installation des Updates u.U. noch bis zu 24 Stunden angezeigt.) Wartungsmodus-Updates unterbrechen die Verwendung, führen zu Ausfallzeiten des Geräts und können nur über die Windows PowerShell-Schnittstelle Ihres Geräts angewendet werden. 
+* Sie werden auch feststellen, dass Wartungsmodus-Updates verfügbar sind. (Diese Meldung wird nach der Installation des Updates u.U. noch bis zu 24 Stunden angezeigt.) Wartungsmodus-Updates unterbrechen die Verwendung, führen zu Ausfallzeiten des Geräts und können nur über die Windows PowerShell-Schnittstelle Ihres Geräts angewendet werden.
  
 * Laden Sie die Wartungsmodus-Updates herunter, indem Sie mithilfe der unter [Herunterladen von Hotfixes](#to-download-hotfixes) angegebenen Schritte nach KB4011837 suchen und es herunterladen, um Datenträger-Firmwareupdates zu installieren. (Die anderen Updates müssten inzwischen bereits installiert sein.) Führen Sie die unter [Installieren und Überprüfen von Wartungsmodus-Hotfixes](#to-install-and-verify-maintenance-mode-hotfixes) angegebenen Schritte aus, um die Wartungsmodus-Updates zu installieren. 
 
@@ -76,9 +77,9 @@ Sie müssen die folgenden Hotfixes in der vorgeschriebenen Reihenfolge und in di
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |Installationsordner|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |Softwareupdate |Regulär  <br></br>Unterbrechungsfrei |ca. 25 Min. |FirstOrderUpdate|
+| 1. |KB4011839 <br> (2 Dateien) |Gerätesoftwareupdate <br> CiS-/MDS-Agent-Update |Regulär  <br></br>Unterbrechungsfrei |ca. 25 Min. |FirstOrderUpdate <br> _Installieren Sie das Gerätesoftwareupdate vor dem Cis-/MDS-Agent-Update._|
 | 2A. |KB4011841 <br> KB4011842 |Updates von LSI-Treiber und -Firmware <br> Update der USM-Firmware (Version 3.38) |Regulär  <br></br>Unterbrechungsfrei |ca. 3 Stunden <br> (enthält 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2B. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Sicherheitsupdatepaket für das Betriebssystem |Regulär  <br></br>Unterbrechungsfrei |- |SecondOrderUpdate|
+| 2B. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3192392  <br> KB3153704, KB3174644 <br> KB3139914  |Sicherheitsupdatepaket für das Betriebssystem |Regulär  <br></br>Unterbrechungsfrei |- |SecondOrderUpdate|
 | 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Paket mit Betriebssystemupdates |Regulär  <br></br>Unterbrechungsfrei |- |SecondOrderUpdate|
 
 Sie müssen zusätzlich zu den in den vorhergehenden Tabellen enthaltenen Updates ggf. auch Updates der Firmware von Datenträgern installieren. Sie können überprüfen, ob Sie Updates für die Datenträgerfirmware benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die Firmwareversionen `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106` ausführen, müssen Sie diese Updates nicht installieren.

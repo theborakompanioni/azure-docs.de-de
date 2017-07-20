@@ -1,6 +1,6 @@
 ---
-title: "Planen der Kapazität und Skalierung der VMware-Replikation in Azure | Microsoft-Dokumentation"
-description: "Verwenden Sie diesen Artikel zum Planen der Kapazität und der Skalierung beim Replizieren von VMware-VMs in Azure"
+title: "Planen der Kapazität und Skalierung der VMware-Replikation mit Azure Site Recovery | Microsoft-Dokumentation"
+description: "Verwenden Sie diesen Artikel zum Planen der Kapazität und der Skalierung beim Replizieren von VMware-VMs in Azure mit Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/05/2017
+ms.date: 05/24/2017
 ms.author: rayne
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 86366359e065c9a9b4a52136254588e67125fb5f
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 8b580ac239bfb6d7b633fb03d4cfb91b168b0610
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -27,7 +28,7 @@ Verwenden Sie diesen Artikel, um zu ermitteln, wie die Kapazität und die Skalie
 
 ## <a name="how-do-i-start-capacity-planning"></a>Wie beginne ich mit der Kapazitätsplanung?
 
-Tragen Sie mit dem [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) Informationen zu Ihrer Replikationsumgebung zusammen. Dies umfasst Informationen über die Anzahl von kompatiblen und nicht kompatiblen virtuellen Computern, von Datenträgern pro VM sowie von Datenänderungen pro Datenträger. Zudem werden die Anforderungen an Netzwerkbandbreite und die erforderliche Azure-Infrastruktur für eine erfolgreiche Replikation und ein erfolgreiches Testfailover behandelt.
+Sammeln Sie für die VMware-Replikation mit dem [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) Informationen zu Ihrer Replikationsumgebung. [Hier](site-recovery-deployment-planner.md) finden Sie weitere Informationen zu diesem Tool. Sie sammeln Informationen über kompatible und inkompatible VMs, Datenträger pro VM und Datenänderungen pro Datenträger. Zudem behandelt das Tool Anforderungen an Netzwerkbandbreite und die erforderliche Azure-Infrastruktur für eine erfolgreiche Replikation und ein erfolgreiches Testfailover.
 
 ## <a name="capacity-considerations"></a>Überlegungen zur Kapazität
 
@@ -79,7 +80,7 @@ Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskaliere
 
 ## <a name="control-network-bandwidth"></a>Steuern der Netzwerkbandbreite
 
-Sie können den [Deployment Planner](https://aka.ms/asr-deployment-planner-doc) verwenden, um die Bandbreite zu berechnen, die Sie für die Replikation benötigen (einschließlich der ersten Replikation, und anschließend der Deltareplikation). Zur Steuerung der für die Replikation verwendeten Bandbreite stehen Ihnen verschiedene Optionen zur Verfügung:
+Nachdem Sie mit dem [Deployment Planner-Tool](site-recovery-deployment-planner.md) die Bandbreite berechnet haben, die für die Replikation erforderlich ist (die erste Replikation und anschließende Deltas), können Sie die Menge der für die Replikation verwendeten Bandbreite mit einer Reihe von Optionen steuern:
 
 * **Bandbreite drosseln**: VMware-Datenverkehr, der nach Azure repliziert wird, wird über einen speziellen Prozessserver geleitet. Sie können die Bandbreite auf den Computern, die als Prozessserver ausgeführt werden, einschränken.
 * **Bandbreite beeinflussen**: Die für die Replikation genutzte Bandbreite lässt sich mithilfe einiger Registrierungsschlüssel beeinflussen:
@@ -87,6 +88,7 @@ Sie können den [Deployment Planner](https://aka.ms/asr-deployment-planner-doc) 
   * Der Registrierungswert **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DownloadThreadsPerVM** gibt die Anzahl von Threads an, die für die Datenübertragung während eines Failbacks verwendet werden.
 
 ### <a name="throttle-bandwidth"></a>Bandbreite drosseln
+
 1. Öffnen Sie das Azure Backup-MMC-Snap-In auf dem Computer, der als Prozessserver fungiert. Standardmäßig ist auf dem Desktop oder im Ordner „C:\Programme\Microsoft Azure Recovery Services Agent\bin\wabadmin“ eine Verknüpfung für Backup verfügbar.
 2. Klicken Sie im Snap-In auf **Eigenschaften ändern**.
 
@@ -140,9 +142,7 @@ Wenn Sie Ihre Bereitstellung über 200 Quellcomputer horizontal hochskalieren m�
 3. Wählen Sie unter **Zielprozessserver auswählen** den neuen Prozessserver aus, den Sie verwenden möchten, und wählen Sie anschließend die virtuellen Computer aus, für die der Server zuständig sein wird. Klicken Sie auf das Informationssymbol, um Informationen über den Server zu erhalten. Der durchschnittliche zum Replizieren jedes ausgewählten virtuellen Computers auf den neuen Prozessserver benötigte Speicherplatz wird angezeigt, um Sie bei Lastenentscheidungen zu unterstützen. Klicken Sie auf das Häkchen, um mit dem Replizieren auf den neuen Prozessserver zu beginnen.
 
 
+## <a name="next-steps"></a>Nächste Schritte
 
-
-
-
-
+Laden Sie den [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) herunter, und installieren Sie ihn.
 

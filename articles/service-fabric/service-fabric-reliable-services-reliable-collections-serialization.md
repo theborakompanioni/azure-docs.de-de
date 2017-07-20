@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 12af426a7392ca96f4a98df5da0cf8d16e58f897
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: c14794b71ce7340d9e90a56d781c712e247ded06
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -54,7 +54,7 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 
 ## <a name="custom-serialization"></a>Benutzerdefinierte Serialisierung
 
-Benutzerdefinierte Serialisierungsprogramme werden häufig zum Steigern der Leistung oder zum Verschlüsseln der Daten über das Netzwerk und auf dem Datenträger verwendet. Neben anderen Gründe sind benutzerdefinierte Serialisierungsprogramme häufig effizienter als generische Serialisierungsprogramme, da diese Informationen über den Typ serialisieren müssen. 
+Benutzerdefinierte Serialisierungsprogramme werden häufig zum Steigern der Leistung oder zum Verschlüsseln der Daten über das Netzwerk und auf dem Datenträger verwendet. Neben anderen Gründen sind benutzerdefinierte Serialisierungsprogramme häufig effizienter als generische Serialisierungsprogramme, da sie Informationen über den Typ nicht serialisieren müssen. 
 
 [IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
 

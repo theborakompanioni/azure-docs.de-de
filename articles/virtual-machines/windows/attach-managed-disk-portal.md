@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 9c29390756ac2cd925ed7d2989393e63ed0a1239
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: f0cf88a06c5470ef173b22e7213419a6c8760723
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -58,6 +58,29 @@ Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](attach-di
 8. Überprüfen Sie im Dialogfeld **Neuen Datenträger formatieren** die Einstellungen, und klicken Sie dann auf **Starten**.
 9. Sie erhalten die Warnung, dass bei Formatierung des Datenträgers alle Daten gelöscht werden. Klicken Sie auf **OK**.
 10. Wenn die Formatierung abgeschlossen ist, klicken Sie auf **OK**.
+
+## <a name="use-trim-with-standard-storage"></a>Verwenden von TRIM mit dem Standardspeicher
+
+Wenn Sie den Standardspeicher (HDD) verwenden, sollten Sie TRIM aktivieren. Mit TRIM werden ungenutzte Blöcke auf dem Datenträger verworfen, sodass nur der Speicher in Rechnung gestellt wird, den Sie tatsächlich verwenden. Dies kann Kosten sparen, wenn Sie große Dateien erstellen und dann löschen. 
+
+Sie können den folgenden Befehl ausführen, um die TRIM-Einstellung zu überprüfen. Öffnen Sie eine Eingabeaufforderung auf dem virtuellen Windows-Computer, und geben Sie Folgendes ein:
+
+```
+fsutil behavior query DisableDeleteNotify
+```
+
+Wenn „0“ zurückgegeben wird, ist TRIM ordnungsgemäß aktiviert. Wenn „1“ zurückgegeben wird, führen Sie den folgenden Befehl aus, um TRIM zu aktivieren:
+```
+fsutil behavior set DisableDeleteNotify 0
+```
+
+Nach dem Löschen von Daten vom Datenträger können Sie sicherstellen, dass die TRIM-Vorgänge ordnungsgemäß geleert werden, indem Sie die Defragmentierung mit TRIM ausführen:
+
+```
+defrag.exe <volume:> -l
+```
+
+Sie können auch sicherstellen, dass das gesamte Volume gekürzt wird, indem Sie das Volume formatieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Ihre Anwendung das Laufwerk „D:“ für die Datenspeicherung verwenden muss, können Sie [den Laufwerkbuchstaben des temporären Windows-Datenträgers ändern](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

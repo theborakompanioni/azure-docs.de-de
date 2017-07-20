@@ -1,6 +1,6 @@
 ---
-title: "Verwenden von Azure Functions zum Ausführen eines geplanten Bereinigungstasks| Microsoft Docs"
-description: "Verwenden Sie Azure Functions, um eine C#-Funktion zu erstellen, die basierend auf einem Ereignistimer ausgeführt wird."
+title: "Verwenden von Azure Functions zum Ausführen eines Datenbank-Bereinigungstasks| Microsoft-Dokumentation"
+description: "Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine Verbindung mit Azure SQL-Datenbank herstellt, um regelmäßig Zeilen zu bereinigen."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -13,91 +13,117 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 05/22/2017
 ms.author: glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b873a7d0ef9efa79c9a173a8bfd3522b12522322
-ms.openlocfilehash: c0b4a963275dae5bbf203388cb61086393803b15
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 6fd0e32374827b249f5aba1cbfc39117c88c6272
 ms.contentlocale: de-de
-ms.lasthandoff: 11/29/2016
+ms.lasthandoff: 05/25/2017
 
 
 ---
-# <a name="use-azure-functions-to-perform-a-scheduled-clean-up-task"></a>Verwenden von Azure Functions zum Ausführen eines geplanten Bereinigungstasks
-In diesem Thema erfahren Sie, wie Sie mit Azure Functions eine neue Funktion in C# erstellen, die basierend auf einem Ereignistimer ausgeführt wird, um Zeilen in einer Datenbanktabelle zu bereinigen. Die neue Funktion wird basierend auf einer vordefinierten Vorlage im Azure Functions-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App Service-Einstellung in der Funktionen-App festlegen. 
+# <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
+In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. Damit Ihre Funktion einzelne CRUD-Vorgänge in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die [Mobile Apps-Bindung](functions-bindings-mobile-apps.md) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
 
-In diesem Thema wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle *TodoItems* in einer SQL-Datenbank ausführt. Diese Tabelle „TodoItems“ wird auch erstellt, wenn Sie das Tutorial [Azure App Service Mobile Apps: Schnellstart](../app-service-mobile/app-service-mobile-ios-get-started.md) durchlaufen. Sie können auch eine Beispieldatenbank verwenden. Wenn Sie eine andere Tabelle verwenden, müssen Sie den Befehl ändern.
++ In diesem Thema wird eine Funktion mit Auslösung per Timer verwendet. Führen Sie die Schritte im Thema [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](functions-create-scheduled-function.md) durch, um eine C#-Version dieser Funktion zu erstellen.   
 
-Sie können die Verbindungszeichenfolge, die von einem Mobile App-Back-End verwendet wird, im Portal unter **Alle Einstellungen** > **Anwendungseinstellungen** > **Verbindungszeichenfolgen** > **Werte der Verbindungszeichenfolge anzeigen** > **MS_TableConnectionString** abrufen. Sie können die Verbindungszeichenfolge auch direkt aus einer SQL-Datenbank im Portal unter **Alle Einstellungen** > **Eigenschaften** > **Datenbank-Verbindungszeichenfolgen anzeigen** > **ADO.NET (SQL-Authentifizierung)** abrufen.
++ In diesem Thema wird ein Transact-SQL-Befehl veranschaulicht, der einen Massenbereinigungsvorgang in der Tabelle **SalesOrderHeader** in der Beispieldatenbank „AdventureWorksLT“ ausführt. Um die Beispieldatenbank „AdventureWorksLT“ zu erstellen, führen Sie die Schritte im Thema [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) aus. 
 
-In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. Damit Ihre Funktion einzelne CRUD-Vorgänge in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die Mobile Table-Bindung verwenden.
+## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-## <a name="set-a-sql-database-connection-string-in-the-function-app"></a>Festlegen einer SQL-Datenbank-Verbindungszeichenfolge in der Funktionen-App
-Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Es ist eine bewährte Methode, Verbindungszeichenfolgen und andere geheime Schlüssel in den Einstellungen Ihrer Funktionen-App zu speichern. Dies verhindert eine versehentliche Offenlegung, wenn Ihr Funktionscode irgendwo in einem Repository abgelegt wird. 
+Sie müssen die Verbindungszeichenfolge für die Datenbank abrufen, die Sie in [Erstellen einer Azure SQL-Datenbank-Instanz im Azure-Portal](../sql-database/sql-database-get-started-portal.md) erstellt haben.
 
-1. Wechseln Sie zum [Azure Functions-Portal](https://functions.azure.com/signin) , und melden Sie sich mit Ihrem Azure-Konto an.
-2. Wenn Sie bereits eine Funktionen-App besitzen, wählen Sie diese in **Ihre Funktionen-Apps** aus, und klicken Sie dann auf **Öffnen**. Um eine neue Funktionen-App zu erstellen, geben Sie einen eindeutigen **Namen** für Ihre neue Funktionen-App ein, oder übernehmen Sie den generierten Namen, wählen Sie die bevorzugte **Region** aus, und klicken Sie anschließend auf **Erstellen und starten**. 
-3. Klicken Sie in Ihrer Funktionen-App auf **Funktionen-App-Einstellungen** > **Zu App Service-Einstellungen wechseln**. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+ 
+3. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
+
+4. Wählen Sie **Datenbank-Verbindungszeichenfolgen anzeigen** aus, und kopieren Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+
+    ![Kopieren Sie die ADO.NET-Verbindungszeichenfolge.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
+
+## <a name="set-the-connection-string"></a>Festlegen der Verbindungszeichenfolge 
+
+Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Es ist eine bewährte Methode, Verbindungszeichenfolgen und andere geheime Schlüssel in den Einstellungen Ihrer Funktionen-App zu speichern. Die Verwendung von Anwendungseinstellungen verhindert eine versehentliche Offenlegung der Verbindungszeichenfolge mit dem Code. 
+
+1. Navigieren Sie zu Ihrer Funktions-App, die Sie in [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](functions-create-scheduled-function.md) erstellt haben.
+
+2. Wählen Sie **Plattformfeatures** > **Anwendungseinstellungen** aus.
    
-    ![Funktionen-App, Blatt „Einstellungen“](./media/functions-create-an-event-processing-function/functions-app-service-settings.png)
-4. Klicken Sie in Ihrer Funktionen-App auf **Alle Einstellungen**, und scrollen Sie nach unten zu **Anwendungseinstellungen**. Geben Sie dann unter **Verbindungszeichenfolgen** den Text `sqldb_connection` für **Name** ein. Fügen Sie die Verbindungszeichenfolge in **Wert** ein. Klicken Sie auf **Speichern**, und schließen Sie dann das Blatt „Funktionen-App“, um zum Functions-Portal zurückzukehren.
+    ![Anwendungseinstellungen für Funktions-App](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
+
+2. Scrollen Sie nach unten bis zu **Verbindungszeichenfolgen**, und fügen Sie eine Verbindungszeichenfolge mit den Einstellungen in der Tabelle hinzu.
    
-    ![App Service-Einstellung „Verbindungszeichenfolge“](./media/functions-create-an-event-processing-function/functions-app-service-settings-connection-strings.png)
+    ![Fügen Sie den Funktions-App-Einstellungen eine Verbindungszeichenfolge hinzu.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
+
+    | Einstellung       | Empfohlener Wert | Beschreibung             | 
+    | ------------ | ------------------ | --------------------- | 
+    | **Name**  |  sqldb_connection  | Wird verwendet, um auf die gespeicherte Verbindungszeichenfolge im Funktionscode zuzugreifen    |
+    | **Wert** | Kopierte Zeichenfolge  | Fügen Sie die Verbindungszeichenfolge ein, die Sie im vorherigen Abschnitt kopiert haben. |
+    | **Typ** | SQL-Datenbank | Verwenden Sie die Standardverbindung mit SQL-Datenbank. |   
+
+3. Klicken Sie auf **Speichern**.
 
 Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer SQL-Datenbank herstellt.
 
-## <a name="create-a-timer-triggered-function-from-the-template"></a>Erstellen einer per Timer ausgelösten Funktion aus der Vorlage
-1. Klicken Sie in Ihrer Funktionen-App auf **+ Neue Funktion** > **TimerTrigger – C#** > **Erstellen**. Eine Funktion mit einem Standardnamen wird erstellt, die nach dem Standardzeitplan einmal pro Minute ausgeführt wird. 
-   
-    ![Neue per Timer ausgelöste Funktion erstellen](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
-2. Fügen Sie im Bereich **Code** auf der Registerkarte **Entwickeln** die folgenden Assemblyverweise am Anfang des vorhandenen Funktionscodes hinzu:
+## <a name="update-your-function-code"></a>Aktualisieren Ihres Funktionscodes
+
+1. Wählen Sie in Ihrer Funktions-App die timer-trigger-Funktion aus.
+ 
+3. Fügen Sie die folgenden Assemblyverweise am Anfang des vorhandenen Funktionscodes hinzu:
+
     ```cs
-        #r "System.Configuration"
-        #r "System.Data"
+    #r "System.Configuration"
+    #r "System.Data"
     ```
 
 3. Fügen Sie der Funktion die folgenden `using` -Anweisungen hinzu:
     ```cs
-        using System.Configuration;
-        using System.Data.SqlClient;
-        using System.Threading.Tasks;
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using System.Threading.Tasks;
     ```
 
 4. Ersetzen Sie die vorhandene **Run** -Funktion durch den folgenden Code:
     ```cs
-        public static async Task Run(TimerInfo myTimer, TraceWriter log)
+    public static async Task Run(TimerInfo myTimer, TraceWriter log)
+    {
+        var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
+        using (SqlConnection conn = new SqlConnection(str))
         {
-            var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
-            using (SqlConnection conn = new SqlConnection(str))
+            conn.Open();
+            var text = "UPDATE SalesLT.SalesOrderHeader " + 
+                    "SET [Status] = 5  WHERE ShipDate < GetDate();";
+
+            using (SqlCommand cmd = new SqlCommand(text, conn))
             {
-                conn.Open();
-                var text = "DELETE from dbo.TodoItems WHERE Complete='True'";
-                using (SqlCommand cmd = new SqlCommand(text, conn))
-                {
-                    // Execute the command and log the # rows deleted.
-                    var rows = await cmd.ExecuteNonQueryAsync();
-                    log.Info($"{rows} rows were deleted");
-                }
+                // Execute the command and log the # rows affected.
+                var rows = await cmd.ExecuteNonQueryAsync();
+                log.Info($"{rows} rows were updated");
             }
         }
+    }
     ```
 
-5. Klicken Sie auf **Speichern**, überwachen Sie das Fenster **Protokolle** auf die nächste Funktionsausführung, und beachten Sie die Anzahl der Zeilen, die aus der Tabelle „TodoItems“ gelöscht wurden.
-6. (Optional) Markieren Sie mithilfe der [Mobile Apps-Schnellstart-App](../app-service-mobile/app-service-mobile-ios-get-started.md) zusätzliche Elemente als „Abgeschlossen“. Kehren Sie dann zum Fenster **Protokolle** zurück, und beobachten Sie, wie dieselbe Anzahl von Zeilen von der Funktion während der nächsten Ausführung gelöscht wird. 
+    Dieser Beispielbefehl aktualisiert die **Status**-Spalte basierend auf dem Lieferdatum. Es sollten 32 Zeilen mit Daten aktualisiert werden.
+
+5. Klicken Sie auf **Speichern**, überwachen Sie das Fenster **Protokolle** auf die nächste Funktionsausführung, und beachten Sie die Anzahl der Zeilen, die in der Tabelle **SalesOrderHeader** aktualisiert wurden.
+
+    ![Zeigen Sie die Funktionsprotokolle an.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
+
+Informieren Sie sich als Nächstes darüber, wie Sie Functions mit Logic Apps für die Integration in andere Dienste verwenden.
+
+> [!div class="nextstepaction"] 
+> [Erstellen einer Funktion, die in Logic Apps integriert ist](functions-twitter-email.md)
+
+Weitere Informationen zu Functions finden Sie in den folgenden Themen:
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
+  Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
-   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
-* [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
-  Beschreibt die für Azure Functions verfügbaren Servicepläne, einschließlich des Verbrauchsplans, und enthält Informationen zur Auswahl des geeigneten Plans.  
-
-
-
+  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  
 

@@ -13,13 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
-ms.openlocfilehash: 6dafec65b2e8091954cae39994d0013d9fd06558
-ms.lasthandoff: 12/22/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 58ddf3913a5d00ee9a89a1fa112f3d55d9a815ed
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die Überprüfung in zwei Schritten
@@ -27,12 +28,17 @@ Die Überprüfung in zwei Schritten ist eine zusätzliche Sicherheitsmaßnahme, 
 
 Dieser Artikel unterstützt Sie beim Einrichten Ihres **Geschäfts-, Schul- oder Unikontos**. Wenn Sie die Überprüfung in zwei Schritten für Ihr eigenes persönliches Microsoft-Konto aktivieren möchten, finden Sie entsprechende Informationen unter [Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
-## <a name="determine-how-you-will-use-multi-factor-authentication"></a>Überprüfungsmethoden für Multi-Factor Authentication
-Bei der Überprüfung in zwei Schritten werden Sie zum Ausführen von zwei Identifizierungsschritten aufgefordert, wenn Sie sich anmelden. Zuerst fordern wir Sie wie üblich zur Angabe Ihres Benutzernamens und Kennworts auf. Dann übermitteln wir einen Anruf oder eine Nachricht an ein Telefon, von dem wir wissen, dass es Ihnen gehört, und Sie bestätigen, dass es sich um einen rechtmäßigen Anmeldeversuch gehandelt hat.  
+## <a name="set-up-your-account"></a>Einrichten Ihres Kontos
 
-Um mit dem Setup zu beginnen, versuchen Sie sich bei Ihrem Konto auf die gleiche Weise anzumelden, wie Sie sich bisher angemeldet haben. Wenn der Administrator Ihr Konto für die Überprüfung in zwei Schritten konfiguriert hat, werden Sie aufgefordert, mit der automatischen Registrierung zu beginnen. Klicken Sie zum Starten dieses Vorgangs auf **Jetzt einrichten**.
+Wenn Ihre IT-Abteilung das Starten mithilfe der Überprüfung in zwei Schritten erzwingt, wird auf einem Bildschirm angezeigt, dass **Ihr Administrator für dieses Konto die Einrichtung einer zusätzlichen Sicherheitsüberprüfung verlangt**:
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time/first.png)
+
+Wählen Sie zum Einstieg **Jetzt einrichten** aus.
+
+Wenn bei der Anmeldung kein solcher Bildschirm angezeigt wird, befolgen Sie die Anweisungen in [Verwalten Ihrer Einstellungen für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page), um die Einstellungsseite zu suchen, auf der Sie Ihre Überprüfungsoptionen verwalten können. 
+
+## <a name="decide-how-you-want-to-verify-your-sign-ins"></a>Auswählen der Überprüfung von Anmeldungen
 
 Die erste Frage bei der Registrierung betrifft die Methode, mit der wir Kontakt zu Ihnen aufnehmen sollen. Überprüfen Sie die Optionen in der Tabelle, und wechseln Sie mithilfe der Links zu den Einrichtungsschritten für jede Methode.
 
@@ -48,16 +54,19 @@ Für diese Methode müssen Sie auf Ihrem Smartphone oder Tablet eine Authenticat
 1. Wählen Sie in der Dropdownliste **Mobile App** aus.
 2. Wählen Sie **Benachrichtigungen zur Überprüfung empfangen** oder **Überprüfungscode verwenden** aus, und wählen Sie dann **Einrichten** aus.
 
-    ![Zusätzliche Sicherheitsüberprüfung, Bildschirm](./media/multi-factor-authentication-end-user-first-time/mobileapp.png)
+   ![Zusätzliche Sicherheitsüberprüfung, Bildschirm](./media/multi-factor-authentication-end-user-first-time/mobileapp.png)
+
 3. Öffnen Sie auf dem Smartphone oder Tablet die App, und tippen Sie auf **+**, um ein Konto hinzuzufügen. (Wählen Sie auf Android-Geräten die drei Punkte und dann **Konto hinzufügen** aus.)
 4. Geben Sie dann an, dass Sie ein Geschäfts-, Schul- oder Unikonto hinzufügen möchten. Der QR-Codescanner auf Ihrem Smartphone wird geöffnet. Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie die Informationen zu Ihrem Unternehmen manuell eingeben. Weitere Informationen finden Sie unter [Manuelles Hinzufügen eines Kontos](#add-an-account-manually).  
 5. Scannen Sie das Bild mit dem QR-Code, das auf dem Bildschirm zum Konfigurieren der mobilen App angezeigt wird.  Klicken Sie auf **Fertig** , um den Bildschirm mit dem QR-Code zu schließen.  
 
-    ![QR-Code, Bildschirm](./media/multi-factor-authentication-end-user-first-time/scan2.png)
+   ![QR-Code, Bildschirm](./media/multi-factor-authentication-end-user-first-time/scan2.png)
+
 6. Wenn die Aktivierung auf dem Telefon abgeschlossen ist, wählen Sie **Nehmen Sie Kontakt mit mir auf**.  Dadurch wird eine Benachrichtigung oder ein Überprüfungscode an Ihr Mobiltelefon gesendet. Wählen Sie **Überprüfen**aus.  
 7. Wenn Ihr Unternehmen eine PIN anfordert, um die Überprüfung der Anmeldung zu genehmigen, gegen Sie sie hier ein.
 
-    ![Feld für die Eingabe einer PIN](./media/multi-factor-authentication-end-user-first-time/scan3.png)
+   ![Feld für die Eingabe einer PIN](./media/multi-factor-authentication-end-user-first-time/scan3.png)
+
 8. Tippen Sie nach der PIN-Eingabe auf **Schließen**. Die Überprüfung sollte jetzt erfolgreich abgeschlossen sein.
 9. Sie sollten Ihre Mobiltelefonnummer eingeben, falls Sie einmal keinen Zugang zu Ihrer mobilen App mehr haben. Wählen Sie in der Dropdownliste Ihr Land aus, und geben Sie im Feld neben dem Land Ihre Mobiltelefonnummer ein. Wählen Sie **Weiter**.
 10. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die Überprüfung in zwei Schritten nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.

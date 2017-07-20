@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 7dd240c4e1a6fcc9c89bf4418e635e7ef8ef0617
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 587d73bc91aa10b79c1d1488f98f05b73801d8c8
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -32,7 +32,7 @@ Folgende Telemetrietypen werden zum Überwachen der Ausführung Ihrer App verwen
 
 * [**Anforderung**](application-insights-data-model-request-telemetry.md) – Zum Protokollieren einer Anforderung generiert, die von Ihrer App empfangen wurde. Das Web-SDK von Application Insights generiert z. B. automatisch einen Eintrag für „Telemetrie anfordern“ für jede HTTP-Anforderung, die Ihre Web-App empfängt. 
 
-    Ein **Vorgang** umfasst den Ausführungsthread, der eine Anforderung verarbeitet. Sie können auch [Code schreiben](app-insights-api-custom-events-metrics.md#trackrequest), um andere Vorgangstypen zu überwachen, z. B. ein „wake up“ (aktivieren) in einem Webauftrag oder einer Funktion, die regelmäßig Daten verarbeitet.  Jeder Vorgang verfügt über eine ID, mit der andere Telemetrie gruppiert werden kann, die bei der Verarbeitung der Anforderung durch Ihre App generiert wird. Jeder Vorgang wird entweder erfolgreich oder nicht erfolgreich ausgeführt und verfügt über eine bestimmte Dauer.
+    Ein **Vorgang** umfasst den Ausführungsthread, der eine Anforderung verarbeitet. Sie können auch [Code schreiben](app-insights-api-custom-events-metrics.md#trackrequest), um andere Vorgangstypen zu überwachen, z. B. ein „wake up“ (aktivieren) in einem Webauftrag oder einer Funktion, die regelmäßig Daten verarbeitet.  Jeder Vorgang verfügt über eine ID. Mit dieser ID können alle Telemetriedaten [gruppiert]((application-insights-correlation.md) werden, die bei der Verarbeitung der Anforderung durch Ihre App generiert werden. Jeder Vorgang wird entweder erfolgreich oder nicht erfolgreich ausgeführt und verfügt über eine bestimmte Dauer.
 * [**Ausnahme**](application-insights-data-model-exception-telemetry.md) – Stellt in der Regel eine Ausnahme dar, die zum Fehlschlagen eines Vorgangs führt.
 * [**Abhängigkeit**](application-insights-data-model-dependency-telemetry.md) – Stellt einen Aufruf von Ihrer App an einen externen Dienst oder Speicher wie REST-API oder SQL dar. Abhängigkeitsaufrufe von SQL werden in ASP.NET durch `System.Data` definiert. Aufrufe von HTTP-Endpunkten werden durch `System.Net` definiert. 
 
@@ -41,6 +41,8 @@ Application Insights bietet drei zusätzliche Datentypen für benutzerdefinierte
 * [Ablaufverfolgung](application-insights-data-model-trace-telemetry.md) – Dieser Typ wird entweder direkt oder über einen Adapter verwendet, um die Diagnoseprotokollierung über ein Instrumentierungsframework zu implementieren, das Ihnen vertraut ist, z. B. `Log4Net` oder `System.Diagnostics`.
 * [Ereignis](application-insights-data-model-event-telemetry.md) – Dieser Typ wird in der Regel dazu verwendet, um Benutzerinteraktionen mit Ihrem Dienst zu erfassen, um Verwendungsmuster zu analysieren.
 * [Metrik](application-insights-data-model-metric-telemetry.md) - Dieser Typ wird zum Melden periodischer skalarer Messungen verwendet.
+
+Jedes Telemetrieelement kann die [Kontextinformationen](application-insights-data-model-context.md) (z.B. Anwendungsversion oder Benutzersitzungs-ID) definieren. Beim Kontext handelt es sich um eine Gruppe stark typisierter Felder, die bestimmte Szenarien zulässt. Wenn die Anwendungsversion ordnungsgemäß initialisiert wird, kann Application Insights neue Muster im Anwendungsverhalten in Korrelation mit der erneuten Bereitstellung erkennen. Über die Sitzungs-ID können der Ausfall oder die Auswirkung eines Problems für Benutzer berechnet werden. Die Berechnung des Distinct Count Measure der Werte der Sitzungs-ID für bestimmte fehlerhafte Abhängigkeiten, Fehlerablaufverfolgungen oder kritische Ausnahmen trägt zum besseren Verständnis der Auswirkungen bei.
 
 Mit dem Application Insights-Telemetriedatenmodell wird eine Weise definiert, auf die Telemetriedaten mit dem zugehörigen Vorgang [korreliert](application-insights-correlation.md) werden. Eine Anforderung kann z.B. SQL-Datenbankaufrufe durchführen und Diagnoseinformationen aufzeichnen. Sie können den Korrelationskontext für diese Telemetrieelemente festlegen, über den diese wieder mit der Anforderungstelemetrie verknüpft werden.
 

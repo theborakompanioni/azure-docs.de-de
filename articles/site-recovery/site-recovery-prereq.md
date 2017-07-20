@@ -1,5 +1,5 @@
 ---
-title: "Voraussetzungen für die Replikation in Azure mithilfe von Azure Site Recovery | Microsoft Docs"
+title: "Voraussetzungen für die Replikation in Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation"
 description: "In diesem Artikel werden die Voraussetzungen für die Replikation von virtuellen und physischen Computern in Azure mithilfe des Azure Site Recovery-Diensts zusammengefasst."
 services: site-recovery
 documentationcenter: 
@@ -12,24 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/27/2017
+ms.date: 06/23/2017
 ms.author: rajanaki
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5ff598af73b6be727753ecac5b99f28bae19a417
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 1ed0bfe4f1b77db00dc858f010f72e084e77039e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 ---
 
-#  <a name="prerequisites-for-replication-to-azure-by-using-azure-site-recovery"></a>Voraussetzungen für die Replikation in Azure mithilfe von Azure Site Recovery
+#  <a name="prerequisites-for-replication-from-on-premises-to-azure-using-azure-site-recovery"></a>Voraussetzungen für die Replikation von lokalen Standorten nach Azure mithilfe von Azure Site Recovery
 
+> [!div class="op_single_selector"]
+> * [Replikation von Azure nach Azure](site-recovery-azure-to-azure-prereq.md)
+> * [Replikation von lokal nach Azure](site-recovery-prereq.md)
 
-Azure Site Recovery ist ein Dienst, der einen Beitrag zu Ihrer Strategie für die Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) leistet, indem er die Replikation von lokalen physischen Servern und virtuellen Computern in die Cloud (Azure) oder in ein sekundäres Datencenter orchestriert. Wenn es an Ihrem primären Standort zu Ausfällen kommt, können Sie ein Failover zu einem sekundären Standort durchführen, um die Verfügbarkeit von Apps und Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, können Sie das Failback zum primären Standort durchführen. Weitere Informationen zu Site Recovery finden Sie unter [Was ist Site Recovery?](site-recovery-overview.md).
+Azure Site Recovery ist ein Dienst, der einen Beitrag zu Ihrer Strategie für die Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) leistet, indem er die Replikation von virtuellen Azure-Computern in eine andere Azure-Region bzw. von lokalen physischen Servern und virtuellen Computern in die Cloud (Azure) oder in ein sekundäres Rechenzentrum orchestriert. Wenn es an Ihrem primären Standort zu Ausfällen kommt, können Sie ein Failover zu einem sekundären Standort durchführen, um die Verfügbarkeit von Apps und Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, können Sie das Failback zum primären Standort durchführen. Weitere Informationen zu Site Recovery finden Sie unter [Was ist Site Recovery?](site-recovery-overview.md).
 
-Dieser Artikel beschreibt die Voraussetzungen für die Replikation in Azure Site Recovery.
+Dieser Artikel fasst die Voraussetzungen für die Replikation von lokalen Standorten nach Azure mit Site Recovery zusammen.
 
 Nach der Lektüre dieses Artikels können Sie Kommentare am Ende des Artikels oder technische Fragen im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
-
 
 ## <a name="azure-requirements"></a>Anforderungen für Azure
 
@@ -67,7 +70,7 @@ Im Anschluss werden die Komponenten aufgeführt, die zusätzlich zu den genannte
 | --- | --- |
 | **Lokal** (virtuelle VMware-Computer) | Auf replizierten VMs sollten VMware-Tools installiert sein und ausgeführt werden.<br/><br/> VMs müssen die [Voraussetzungen für Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) zum Erstellen von Azure-VMs erfüllen.<br/><br/>Die Kapazität der einzelnen Datenträger auf geschützten Computern darf maximal 1.023 GB betragen. <br/><br/>Für die Komponenteninstallation sind mindestens 2 GB verfügbarer Speicherplatz auf dem Installationslaufwerk erforderlich.<br/><br/>Port 20004 muss für die lokale Firewall des virtuellen Computers geöffnet werden, wenn Sie Multi-VM-Konsistenz aktivieren möchten.<br/><br/>Computernamen dürfen zwischen 1 und 63 Zeichen enthalten (Buchstaben, Zahlen und Bindestriche). Der Name muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben oder einer Zahl enden. Sie können den Azure-Namen ändern, nachdem Sie die Replikation für einen Computer aktiviert haben.<br/><br/> |
 | **Windows-Computer** (physisch oder VMware) | Auf dem Computer muss ein unterstütztes 64-Bit-Betriebssystem ausgeführt werden: Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 mit SP1 oder höher.<br/><br/> Das Betriebssystem muss auf dem Laufwerk „C“ installiert sein. Bei dem Betriebssystem-Datenträger muss es sich um einen nicht dynamischen Windows-Basisdatenträger handeln. Der normale Datenträger kann dynamisch sein.<br/><br/>|
-| **Linux-Computer** (physisch oder VMware) | Sie benötigen ein unterstütztes 64-Bit-Betriebssystem: Red Hat Enterprise Linux 6.7, 6.8, 7.1 oder 7.2, Centos 6.5, 6.6, 6.7, 6.8, 7.0, 7.1 oder 7.2, Oracle Enterprise Linux 6.4 oder 6.5 (unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird), oder SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4.<br/><br/>Ihre Dateien vom Typ „/etc/hosts“ auf geschützten Computern müssen Einträge enthalten, die den Namen des lokalen Hosts den IP-Adressen aller Netzwerkkarten zuordnen.<br/><br/>Wenn Sie nach einem Failover über einen Secure Shell-Client (SSH) eine Verbindung mit virtuellen Azure-Computern unter Linux herstellen möchten, stellen Sie sicher, dass der Secure Shell-Dienst auf dem geschützten Computer beim Systemstart automatisch gestartet wird und dass die Firewallregeln eine SSH-Verbindung zulassen.<br/><br/>Hostname, Bereitstellungspunkte, Gerätenamen und Linux-Systempfade/-Dateinamen (beispielsweise „/etc/“ oder „/usr“) dürfen nur auf Englisch angegeben werden.<br/><br/>Die folgenden Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich auf demselben Datenträger (dem Datenträger mit dem Betriebssystem) auf dem Quellserver befinden: / (root), /boot, /usr, /usr/local, /var, /etc<br/><br/>XFS v5-Features, z. B. die Metadatenprüfsumme, werden derzeit von ASR nicht auf XFS-Dateisystemen unterstützt. Stellen Sie sicher, dass Ihre XFS-Dateisysteme keine v5-Features verwenden. Mit dem Hilfsprogramm „xfs_info“ können Sie den XFS-Superblock für die Partition überprüfen. Wenn ftype auf 1 festgelegt ist, werden Features von XFS v5 verwendet.<br/><br/>Auf Servern mit Red Hat Enterprise Linux 7 und CentOS 7 muss das Hilfsprogramm „lsof“ installiert und verfügbar sein.<br/><br/>
+| **Linux-Computer** (physisch oder VMware) | Sie benötigen ein unterstütztes 64-Bit-Betriebssystem: Red Hat Enterprise Linux 6.7, 6.8, 7.1 oder 7.2, CentOS 6.5, 6.6, 6.7, 6.8, 7.0, 7.1 oder 7.2, Ubuntu 14.04 LTS Server (eine Liste der unterstützten Kernelversionen bei Ubuntu finden Sie unter [unterstützte Betriebssysteme](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)), Oracle Enterprise Linux 6.4 oder 6.5 (unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird), SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4.<br/><br/>Ihre Dateien vom Typ „/etc/hosts“ auf geschützten Computern müssen Einträge enthalten, die den Namen des lokalen Hosts den IP-Adressen aller Netzwerkkarten zuordnen.<br/><br/>Wenn Sie nach einem Failover über einen Secure Shell-Client (SSH) eine Verbindung mit virtuellen Azure-Computern unter Linux herstellen möchten, stellen Sie sicher, dass der Secure Shell-Dienst auf dem geschützten Computer beim Systemstart automatisch gestartet wird und dass die Firewallregeln eine SSH-Verbindung zulassen.<br/><br/>Hostname, Bereitstellungspunkte, Gerätenamen und Linux-Systempfade/-Dateinamen (beispielsweise „/etc/“ oder „/usr“) dürfen nur auf Englisch angegeben werden.<br/><br/>Die folgenden Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich auf demselben Datenträger (dem Datenträger mit dem Betriebssystem) auf dem Quellserver befinden: / (root), /boot, /usr, /usr/local, /var, /etc<br/><br/>XFS v5-Features, z. B. die Metadatenprüfsumme, werden derzeit von ASR nicht auf XFS-Dateisystemen unterstützt. Stellen Sie sicher, dass Ihre XFS-Dateisysteme keine v5-Features verwenden. Mit dem Hilfsprogramm „xfs_info“ können Sie den XFS-Superblock für die Partition überprüfen. Wenn ftype auf 1 festgelegt ist, werden Features von XFS v5 verwendet.<br/><br/>Auf Servern mit Red Hat Enterprise Linux 7 und CentOS 7 muss das Hilfsprogramm „lsof“ installiert und verfügbar sein.<br/><br/>
 
 
 ## <a name="disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager"></a>Notfallwiederherstellung virtueller Hyper-V-Computer in Azure (ohne Virtual Machine Manager)

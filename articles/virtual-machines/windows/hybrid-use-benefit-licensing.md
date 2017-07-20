@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 5/1/2017
-ms.author: kmouss
+ms.date: 5/26/2017
+ms.author: xujing
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0854ceddc473a362221140f32b24138221a6f175
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 46b0895dc33fc13a1296301ed096fd3871b38952
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/27/2017
 Für Kunden mit Software Assurance erlaubt die Hybridnutzung von Azure die Verwendung der lokalen Windows Server- und Windows-Clientlizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu reduzierten Kosten. Der Azure-Vorteil bei Hybridnutzung für Windows Server umfasst Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016. Der Azure-Vorteil bei Hybridnutzung für Windows-Clients umfasst Windows 10. Weitere Informationen finden Sie auf der [Lizenzierungsseite für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
 >[!IMPORTANT]
->Der Azure-Vorteil bei Hybridnutzung für Windows-Clients befindet sich zurzeit in der Vorschau. Nur Enterprise-Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows VDA pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) („qualifizierende Lizenzen“) können den Vorteil nutzen.
+>Azure-Vorteile bei Hybridnutzung für Windows-Clients befinden sich zurzeit in der Vorschau und verwenden das Windows 10-Image im Azure Marketplace. Nur Enterprise-Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows VDA pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) („qualifizierende Lizenzen“) können den Vorteil nutzen.
 >
 >
 
@@ -59,8 +59,8 @@ Get-AzureRMVMImageSku -Location "West US" -Publisher "MicrosoftWindowsServer" `
     -Offer "Windows-HUB"
 ```
 
-## <a name="upload-a-windows-vhd"></a>Hochladen einer Windows-VHD
-Für die Bereitstellung eines virtuellen Windows-Computers in Azure müssen Sie zunächst eine virtuelle Festplatte (VHD) erstellen, die den Windows-Basisbuild enthält. Diese virtuelle Festplatte muss entsprechend über Sysprep vorbereitet werden, bevor Sie sie in Azure hochladen. Informieren Sie sich über die [VHD-Anforderungen und den Sysprep-Prozess](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Weitere Informationen finden Sie auch unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen). Sichern Sie den virtuellen Computer vor dem Ausführen von Sysprep. 
+## <a name="upload-a-windows-server-vhd"></a>Hochladen einer Windows Server-VHD
+Für die Bereitstellung eines virtuellen Windows Server-Computers in Azure müssen Sie zunächst eine virtuelle Festplatte (VHD) erstellen, die den Windows-Basisbuild enthält. Diese virtuelle Festplatte muss entsprechend über Sysprep vorbereitet werden, bevor Sie sie in Azure hochladen. Informieren Sie sich über die [VHD-Anforderungen und den Sysprep-Prozess](upload-generalized-managed.md). Weitere Informationen finden Sie auch unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep-Unterstützung für Serverrollen). Sichern Sie den virtuellen Computer vor dem Ausführen von Sysprep. 
 
 Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version installiert und konfiguriert](/powershell/azure/overview)haben. Nachdem Sie die virtuelle Festplatte vorbereitet haben, laden Sie sie mit dem `Add-AzureRmVhd`-Cmdlet wie folgt in Ihr Azure Storage-Konto hoch:
 
@@ -74,10 +74,10 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
 >
 >
 
-Informieren Sie sich auch über das [Hochladen der VHD in Azure](upload-image.md#upload-the-vhd-to-your-storage-account).
+Informieren Sie sich auch über das [Hochladen der VHD in Azure](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account).
 
 
-## <a name="deploy-an-uploaded-vm-via-resource-manager"></a>Bereitstellen einer hochgeladenen VM mit Resource Manager
+## <a name="deploy-a-vm-via-resource-manager-template"></a>Bereitstellen virtueller Computer mit Resource Manager-Vorlagen
 In den Resource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseType` angegeben werden. Informieren Sie sich weiter über das [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md). Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, bearbeiten Sie die Resource Manager-Vorlage, um den Lizenztyp als Teil des Computeanbieters einzuschließen, und stellen die Vorlage als normale Vorlage bereit:
 
 Für Windows Server:
@@ -89,7 +89,7 @@ Für Windows Server:
    }
 ```
 
-Für Windows-Clients:
+Nur für Windows-Clients mit Azure Marketplace-Image:
 ```json
 "properties": {  
    "licenseType": "Windows_Client",
@@ -98,7 +98,7 @@ Für Windows-Clients:
    }
 ```
 
-## <a name="deploy-an-uploaded-vm-via-powershell-quickstart"></a>Bereitstellen einer hochgeladenen VM per PowerShell-Schnellstart
+## <a name="deploy-a-vm-via-powershell-quickstart"></a>Schnellstartanleitung für das Bereitstellen eines virtuellen Computers über PowerShell
 Beim Bereitstellen des virtuellen Windows Server-Computers über PowerShell ist ein zusätzlicher Parameter für `-LicenseType`vorhanden. Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, erstellen Sie einen virtuellen Computer mit `New-AzureRmVM` und geben den Lizenzierungstyp wie folgt an:
 
 Für Windows Server:
@@ -106,7 +106,7 @@ Für Windows Server:
 New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Server"
 ```
 
-Für Windows-Clients:
+Nur für Windows-Clients mit Azure Marketplace-Image:
 ```powershell
 New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
@@ -211,11 +211,6 @@ Erstellen Sie schließlich den virtuellen Computer, und definieren Sie den Lizen
 Für Windows Server:
 ```powershell
 New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm -LicenseType "Windows_Server"
-```
-
-Für Windows-Clients:
-```powershell
-New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm -LicenseType "Windows_Client"
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-via-resource-manager-template"></a>Bereitstellen einer VM-Skalierungsgruppe mit einer Resource Manager-Vorlage

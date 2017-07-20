@@ -1,5 +1,5 @@
 ---
-title: Benutzerdefinierte Livemetriken und Diagnose in Azure Application Insights | Microsoft-Dokumentation
+title: Live Metrics Stream mit benutzerdefinierten Metriken und Diagnosen in Azure Application Insights | Microsoft-Dokumentation
 description: "Überwachen Sie Ihre Web-App mit benutzerdefinierten Metriken in Echtzeit, und diagnostizieren Sie Probleme mit einem Livefeed zu Fehlern, Ablaufverfolgungen und Ereignissen."
 services: application-insights
 documentationcenter: 
@@ -11,36 +11,69 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 05/24/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 86e01cf6cb14334e85da4102610fa7feb66cb543
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 68820f9c018b1076bae8dc0195906d0f34590748
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
-# <a name="custom-live-metrics-and-events-monitor--diagnose-with-1-second-latency"></a>Benutzerdefinierte Livemetriken und Ereignisse: Überwachung und Diagnose mit einer Sekunde Latenzzeit 
-Live Metrics Stream zeigt Ihre [Application Insights](app-insights-overview.md)-Metriken und -Ereignisse nahezu in Echtzeit mit einer Wartezeit von einer Sekunde an. Diese sofortige Überwachung trägt dazu bei, die durchschnittliche Dauer bis zur Erkennung und Diagnose zu reduzieren und SLAs zu erfüllen. Ihre Möglichkeiten:
-* Live-Überwachung benutzerdefinierter KPIs: Experimentieren Sie mit Filtern, um Ihre vorhandene Application Insights-Telemetrie aufzugliedern und die wichtigsten KPIs sofort aus dem Portal abzurufen. Code, Konfigurationsänderungen oder Bereitstellungen sind nicht erforderlich. Alle benutzerdefinierten Metriken oder Messungen, die gesendet werden, sind ebenfalls verfügbar.
-* Live-Erkennung und -Diagnose: Anforderungs- und Abhängigkeitsfehler werden in Echtzeit zusammen mit ausführlichen Ausnahmeablaufverfolgungen angezeigt. Filtern Sie bekannte Probleme aus, um sich auf echte/neue Probleme zu konzentrieren.
-* Live-Debuggen: Reproduzieren Sie ein Problem und zeigen dabei die gesamte zugehörigen Telemetrie in Echtzeit an, indem Sie einen benutzerdefinierten Filter für eine bestimmte Sitzungs-ID (oder benutzerdefinierte Attribute) zur Identifizierung der reproduzierten Interaktion anwenden. Erfassen Sie Informationen von bestimmten oder allen Servern für einen leichten Einstieg in die Behebung des Problems.
-* Unmittelbar anzeigen, wie Ihr Ressourcenverbrauch auf Last reagiert: Überwachen Sie in Echtzeit *einen beliebigen* Windows-Leistungsindikator, während Sie Auslastungstests durchführen, oder überwachen Sie die Produktion, um eingreifen zu können, noch bevor es zu einer Beeinträchtigung kommt. Konfigurationsänderungen oder Bereitstellungen sind nicht erforderlich.
-* Überprüfen Sie eine veröffentlichte Korrektur. Vergewissern Sie sich während des Vorgangs, dass Ihr Dienst stabil ist. Überprüfen Sie, ob der behobene Fehler nicht mehr auftritt.
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Sekunde Latenzzeit 
+
+Überprüfen Sie die Funktionsfähigkeit Ihrer Livewebanwendung in der Produktion mithilfe von Live Metrics Stream von [Application Insights](app-insights-overview.md). Wählen und filtern Sie Metriken und Leistungsindikatoren für die Überwachung in Echtzeit, ohne dass der Dienst beeinträchtigt wird. Überprüfen Sie Stapelüberwachungen von fehlerhaften Anforderungen und Ausnahmen. In Kombination mit [Profiler](app-insights-profiler.md), [Snapshot Debugger](app-insights-snapshot-debugger.md) und [Leistungstests](app-insights-monitor-web-app-availability.md#performance-tests) bietet Live Metrics Stream ein leistungsfähiges und nicht invasives Diagnosetool für Ihre Livewebsite.
+
+Mit Live Metrics Stream haben Sie folgende Möglichkeiten:
+
+* Überprüfen Sie eine veröffentlichte Korrektur durch Überwachen von Leistungs- und Fehlerindikatoren.
+* Überwachen Sie die Auswirkungen von Testauslastungen, und diagnostizieren Sie Probleme im laufenden Betrieb. 
+* Konzentrieren Sie sich auf bestimmte Testsitzungen, oder filtern Sie bekannte Probleme heraus, indem Sie die zu überwachenden Metriken auswählen und filtern.
+* Rufen Sie Ausnahmeablaufverfolgungen in Echtzeit ab.
+* Experimentieren Sie mit Filtern, um die wichtigsten KPIs zu ermitteln.
+* Überwachen Sie Windows-Leistungsindikatoren live.
 * Identifizieren Sie mühelos einen Server mit Problemen, und filtern Sie nach allen KPIs/dem Livefeed nur für diesen Server.
 
-Live Metrics & Events Stream-Daten sind kostenlos, Ihre Rechnung erhöht sich nicht. Die Daten werden bei Bedarf von Ihrem Server gestreamt, wenn Sie die Portalumgebung öffnen. Die Daten werden nur so lange beibehalten, wie sie im Diagramm angezeigt werden. Anschließend werden sie verworfen. Die vollständige Funktionalität steht für klassische ASP.NET-Anwendungen zur Verfügung. .NET Core-Anwendungen bieten derzeit nur einen festen Satz von Live-Metriken und Fehlerbeispielen. Derzeit werden alle unterstützten SDKs überarbeitet, damit sie die Anforderungen der aktuellen Livestreaming-Funktionen erfüllen. 
+[![Video zu Live Metrics Stream](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-Wir erfassen den Livestream von Ihren Anwendungsinstanzen, bevor Stichproben genommen oder benutzerdefinierte Telemetrieprozessoren angewendet werden. 
+Live Metrics Stream ist derzeit für ASP.NET-Apps verfügbar, die lokal oder in der Cloud ausgeführt werden. 
 
-![Video zu Live Metrics Stream](./media/app-insights-live-stream/youtube.png) [Video zu Live Metrics Stream](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+## <a name="get-started"></a>Erste Schritte
 
-Greifen Sie auf Live-Metriken und -Ereignisse zu, indem Sie entweder auf die Option links oder die Schaltfläche auf dem Blatt „Übersicht“ klicken:
+1. Wenn Sie [Application Insights](app-insights-asp-net.md) noch nicht in Ihrer ASP.NET-Web-App oder [Windows-Server-App](app-insights-windows-services.md) installiert haben, holen Sie dies jetzt nach. 
+2. Führen Sie ein **Update auf die neueste Version** des Application Insights-Pakets durch. Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Öffnen Sie die Registerkarte **Updates**, aktivieren Sie **Vorabversion einbeziehen**, und wählen Sie alle Microsoft.ApplicationInsights.*-Pakete aus.
+
+    Stellen Sie Ihre App erneut bereit.
+
+3. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Application Insights-Ressource für Ihre App und anschließend Live Stream.
+
+4. [Sichern Sie den Steuerkanal](#secure-the-control-channel), wenn Sie sensible Daten (z.B. Kundennamen) in Ihren Filtern verwenden möchten.
+
 
 ![Klicken Sie auf dem Blatt „Übersicht“ auf „Livedatenstrom“.](./media/app-insights-live-stream/live-stream-2.png)
 
-## <a name="custom-live-kpi"></a>Benutzerdefinierte Live-KPIs
+### <a name="no-data-check-your-server-firewall"></a>Sie sehen keine Daten? Überprüfen Sie die Serverfirewall
+
+Überprüfen Sie, ob die [ausgehenden Ports für Live Metrics Stream](app-insights-ip-addresses.md#outgoing-ports) in der Firewall Ihrer Server geöffnet sind. 
+
+
+## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Wie unterscheidet sich Live Metrics Stream von Metrik-Explorer und Analytics?
+
+| |Live Stream | Metrik-Explorer und Analytics |
+|---|---|---|
+|Latenz|Daten werden innerhalb einer Sekunde angezeigt.|Aggregation innerhalb mehrerer Minuten|
+|Keine Beibehaltung|Daten werden beibehalten, solange sie im Diagramm angezeigt werden, und dann verworfen.|[Daten werden 90 Tage lang beibehalten.](app-insights-data-retention-privacy.md#how-long-is-the-data-kept)|
+|On-Demand-Streaming|Daten werden beim Öffnen von Live Metrics gestreamt.|Daten werden gesendet, sobald das SDK installiert und aktiviert wird.|
+|Kostenlos|Keine Gebühren für Live Stream-Daten|[Gebührenpflichtig](app-insights-pricing.md)
+|Stichproben|Alle ausgewählten Metriken und Indikatoren werden übertragen. Für Fehler und Stapelüberwachungen werden Stichproben erstellt. Telemetrieprozessoren werden nicht angewendet.|Für Ereignisse können [Stichproben](app-insights-api-filtering-sampling.md) erstellt werden.|
+|Steuerkanal|Filtersteuersignale werden an das SDK gesendet. Es empfiehlt sich, [diesen Kanal zu sichern](#secure-channel).|Unidirektionale Kommunikation zum Portal|
+
+
+## <a name="select-and-filter-your-metrics"></a>Auswählen und Filtern der Metriken
+
+(Für klassische ASP.NET-Apps mit dem aktuellen SDK verfügbar.)
+
 Sie können benutzerdefinierte KPIs live überwachen, indem Sie im Portal beliebige Filter auf Application Insights-Telemetrie anwenden. Klicken Sie auf das Filtersteuerelement, das angezeigt wird, wenn Sie den Mauszeiger über eines der Diagramme bewegen. Das folgende Diagramm stellt eine benutzerdefinierte KPI für die Anforderungsanzahl mit Filtern für die Attribute „URL“ und „Dauer“ dar. Überprüfen Sie Ihre Filter in der Streamvorschau, die jederzeit einen Livefeed von Telemetriedaten anzeigt, die den von Ihnen angegeben Kriterien entsprechen. 
 
 ![Benutzerdefinierte Anforderungs-KPI](./media/app-insights-live-stream/live-stream-filteredMetric.png)
@@ -77,7 +110,7 @@ Wenn Sie eine bestimmte Serverrolleninstanz überwachen möchten, können Sie na
 ## <a name="sdk-requirements"></a>SDK-Anforderungen
 Die benutzerdefinierte Live Metrics Stream-Instanz steht mit der Webversion 2.4.0-beta2 oder höher von [Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zur Verfügung. Denken Sie daran, im NuGet-Paket-Manager die Option „Vorabversion einbeziehen“ auszuwählen.
 
-## <a name="authenticated-channel"></a>Authentifizierter Kanal
+## <a name="secure-the-control-channel"></a>Sichern des Steuerkanals
 Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Livemetrikkomponente des Application Insights SDK zurückgesendet. Der Filter können potenziell vertrauliche Informationen wie z.B. Kunden-IDs enthalten. Zum Sichern des Kanals können Sie neben dem Instrumentierungsschlüssel auch einen geheimen API-Schlüssel verwenden.
 ### <a name="create-an-api-key"></a>Erstellen eines API-Schlüssels
 
@@ -108,6 +141,15 @@ Wenn Sie jedoch alle verbundenen Server erkennen und ihnen vertrauen, können Si
 >Es wird dringend empfohlen, dass Sie den authentifizierten Kanal vor dem Eingeben von potenziell vertraulichen Informationen wie der Kunden-ID in den Filterkriterien einrichten.
 >
 
+## <a name="generating-a-performance-test-load"></a>Generieren einer Leistungstestauslastung
+
+Verwenden Sie das Blatt „Leistungstest“, wenn Sie die Auswirkungen einer zunehmenden Auslastung überwachen möchten. Beim Leistungstest werden Anforderungen von mehreren gleichzeitigen Benutzern simuliert. Sie können entweder „manuelle Tests“ (Ping-Tests) einer einzelnen URL oder einen [Webleistungstest mit mehreren Schritten](app-insights-monitor-web-app-availability.md#multi-step-web-tests) ausführen, den Sie hochladen (auf dieselbe Weise wie einen Verfügbarkeitstest).
+
+> [!TIP]
+> Öffnen Sie nach dem Erstellen des Leistungstests den Test und das Live Stream-Blatt in separaten Fenstern. So können Sie sehen, wann der Leistungstest in der Warteschlange gestartet wird, und gleichzeitig den Livestream überwachen.
+>
+
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Sie sehen keine Daten? Wenn sich Ihre Anwendung in einem geschützten Netzwerk befindet: Live Metrics Stream verwendet andere IP-Adressen als andere Application Insights-Telemetriedaten. Stellen Sie sicher, dass [diese IP-Adressen](app-insights-ip-addresses.md) in Ihrer Firewall geöffnet sind.
@@ -117,5 +159,5 @@ Sie sehen keine Daten? Wenn sich Ihre Anwendung in einem geschützten Netzwerk b
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überwachen der Verwendung mit Application Insights](app-insights-web-track-usage.md)
 * [Verwenden der Diagnosesuche](app-insights-diagnostic-search.md)
-
-
+* [Profiler](app-insights-profiler.md)
+* [Snapshot Debugger](app-insights-snapshot-debugger.md)

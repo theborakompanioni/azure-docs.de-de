@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: steveesp
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: d05bed3b92836bf496804c9d40b5a62a96ffbc3d
-ms.lasthandoff: 03/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: a2cbb6ca9197c7af0d1d30e87d58b0314507a531
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -128,6 +129,38 @@ ntttcp -s10.0.0.4 -t 300
 ```
  
 Die Testlänge beträgt standardmäßig 60 Sekunden, wenn kein Zeitparameter angegeben ist
+
+## <a name="testing-between-vms-running-windows-and-linux"></a>Vergleich der Tests zwischen virtuellen Computern unter Windows und Linux:
+
+In diesen Szenarien sollten wir den Modus ohne Synchronisierung aktivieren, damit der Test ausgeführt werden kann. Dies erfolgt unter Linux mit dem **-N-Flag** und unter Windows mit dem **-ns-Flag**.
+
+#### <a name="from-linux-to-windows"></a>Von Linux nach Windows:
+
+Empfänger <Windows>:
+
+``` bash
+ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
+```
+
+Sender <Linux>:
+
+``` bash
+ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
+```
+
+#### <a name="from-windows-to-linux"></a>Von Windows nach Linux:
+
+Empfänger <Linux>:
+
+``` bash 
+ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
+```
+
+Sender <Windows>:
+
+``` bash
+ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](virtual-network-optimize-network-bandwidth.md) hilft Ihnen womöglich bei Ihrem Szenario, abhängig von den Ergebnissen.

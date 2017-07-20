@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
-ms.author: padmavc
+ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 197df490690754730425231f358fde31d17dcfad
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 97864ade77fc694bd1eababe22e6eeb4b9d6e11e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -69,71 +69,73 @@ Um ein Fallback auf eine primäre Region durchzuführen, sobald sie verfügbar i
 
 ## <a name="x12"></a>X12 
 Die Geschäftskontinuität für EDI X12-Dokumente basiert auf Kontrollnummern:
-* Von Partnern empfangene Kontrollnummern (eingehende Nachrichten)  
-* Generierte und an Partner gesendete Kontrollnummern (ausgehende Nachrichten) 
-    
-    > [!Tip]
+
+> [!Tip]
     > Sie können Logik-Apps auch mithilfe der [X12-Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/) erstellen. Als Voraussetzung für die Verwendung der Vorlage müssen Integrationskonten für die primäre und die sekundäre Region erstellt werden. Mit der Vorlage können zwei Logik-Apps erstellt werden, eine für empfangene Kontrollnummern und eine zweite für generierte Kontrollnummern. In den Logik-Apps werden die entsprechenden Trigger und Aktionen erstellt. Der Trigger wird mit dem Integrationskonto der primären Region und die Aktion mit dem Integrationskonto der sekundären Region verbunden.
-    > 
+    >
     >
 
-### <a name="control-numbers-received-from-partners"></a>Von Partnern empfangene Kontrollnummern
+Voraussetzungen: Wählen Sie die Einstellungen für die doppelte Überprüfung in den Empfangseinstellungen für die X12-Vereinbarung aus, um DR für eingehende Nachrichten zu aktivieren. ![X12-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. Ermöglichen Sie doppelte Überprüfungen in den Empfangseinstellungen der Vereinbarung.   
-![X12-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
+1. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in einer sekundären Region.    
 
-2. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in einer sekundären Region. 
-
-3. Suchen Sie nach **X12**, und wählen Sie **X12 – Bei Änderung einer empfangenen Kontrollnummer** aus.   
-![X12-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN1.png)
-
-4. Der Trigger fordert Sie zum Herstellen einer Verbindung mit einem Integrationskonto auf. Der Trigger muss mit dem Integrationskonto einer primären Region verbunden werden. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der primären Region** aus, und klicken Sie auf **Erstellen**.  
-![Name des Integrationskontos der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN2.png)
-
-5. Die Einstellung **Anfangsdatum und -uhrzeit für die Abfrage von Änderungen** ist optional. Die **Häufigkeit** kann mit einem Intervall auf **Tag**, **Stunde**, **Minute** oder **Sekunde** festgelegt werden.  
-![Datum/Uhrzeit und Häufigkeit](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN3.png)
-
-6. Wählen Sie **Nächster Schritt** > **Aktion hinzufügen** aus.    
-![Hinzufügen einer Aktion](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN4.png)
-
-7. Suchen Sie nach **X12**, und wählen Sie **X12 – Empfangene Kontrollnummer hinzufügen oder aktualisieren** aus.   
-![Änderung der empfangenen Kontrollnummer](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN5.png)
-
-8. Um eine Aktion mit dem Integrationskonto einer sekundären Region zu verbinden, wählen Sie **Verbindung ändern** > **Neue Verbindung hinzufügen** aus, um eine Liste der verfügbaren Integrationskonten anzuzeigen. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der sekundären Region** aus, und klicken Sie auf **Erstellen**.   
-![Name des Integrationskontos der sekundären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN6.png)
-
-9. Wählen Sie den dynamischen Inhalt aus, und speichern Sie die Logik-App. 
-![Dynamischer Inhalt](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN7.png)
-
-10. Basierend auf dem angegebenen Zeitintervall fragt der Trigger die von der primären Region empfangene Kontrollnummerntabelle ab und ruft gegebenenfalls die neuen Datensätze per Pull ab. Die Aktion aktualisiert sie im Integrationskonto der sekundären Region. Wenn keine Aktualisierungen vorhanden sind, wird für den Trigger der Status **Übersprungen** angezeigt.
-![Kontrollnummerntabelle](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12recevicedCN8.png)
-
-### <a name="control-numbers-generated-and-sent-to-partners"></a>Generierte und an Partner gesendete Kontrollnummern
-1. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in einer sekundären Region.
-
-2. Suchen Sie nach **X12**, und wählen Sie **X12 – Bei Änderung einer generierten Kontrollnummer** aus.  
-![Änderung der generierten Kontrollnummer](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN1.png)
+2. Suchen Sie nach **X12**, und wählen Sie **X12 – Bei Änderung einer Kontrollnummer** aus.   
+![X12-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
 3. Der Trigger fordert Sie zum Herstellen einer Verbindung mit einem Integrationskonto auf. Der Trigger muss mit dem Integrationskonto einer primären Region verbunden werden. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der primären Region** aus, und klicken Sie auf **Erstellen**.   
-![Name des Integrationskontos der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN2.png) 
+![Name des Integrationskontos der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. Die Einstellung **Anfangsdatum und -uhrzeit für die Abfrage von Änderungen** ist optional. Die **Häufigkeit** kann mit einem Intervall auf **Tag**, **Stunde**, **Minute** oder **Sekunde** festgelegt werden.  
-![Datum/Uhrzeit und Häufigkeit](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN3.png)  
+4. Die Einstellung **Anfangsdatum und -uhrzeit für die Abfrage von Änderungen** ist optional. Die **Häufigkeit** kann mit einem Intervall auf **Tag**, **Stunde**, **Minute** oder **Sekunde** festgelegt werden.   
+![Datum/Uhrzeit und Häufigkeit](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-5. Wählen Sie **Nächster Schritt** > **Aktion hinzufügen** aus.  
-![Hinzufügen einer Aktion](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN4.png)
+5. Wählen Sie **Nächster Schritt** > **Aktion hinzufügen** aus.    
+![Hinzufügen einer Aktion](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. Suchen Sie nach **X12**, und wählen Sie **X12 – Generierte Kontrollnummer hinzufügen oder aktualisieren** aus.   
-![Hinzufügen oder Aktualisieren der generierten Kontrollnummer](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN5.png)
+6. Suchen Sie nach **X12**, und wählen Sie **X12 – Kontrollnummern hinzufügen oder aktualisieren** aus.   
+![Änderung der empfangenen Kontrollnummer](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
 7. Um eine Aktion mit dem Integrationskonto einer sekundären Region zu verbinden, wählen Sie **Verbindung ändern** > **Neue Verbindung hinzufügen** aus, um eine Liste der verfügbaren Integrationskonten anzuzeigen. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der sekundären Region** aus, und klicken Sie auf **Erstellen**.   
-![Name des Integrationskontos der sekundären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN6.png)
+![Name des Integrationskontos der sekundären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-8. Wählen Sie den dynamischen Inhalt aus, und speichern Sie die Logik-App. 
-![Dynamischer Inhalt](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN7.png)
+8. Wählen Sie den dynamischen Inhalt aus, und speichern Sie die Logik-App.   
+![Dynamischer Inhalt](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn7.png)
 
-9. Basierend auf dem angegebenen Zeitintervall fragt der Trigger die von der primären Region empfangene Kontrollnummerntabelle ab und ruft gegebenenfalls die neuen Datensätze per Pull ab. Die Aktion aktualisiert sie im Integrationskonto der sekundären Region. Wenn keine Aktualisierungen vorhanden sind, wird für den Trigger der Status **Übersprungen** angezeigt.  
-![Kontrollnummerntabelle](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12generatedCN8.png)
+9. Basierend auf dem angegebenen Zeitintervall fragt der Trigger die von der primären Region empfangene Kontrollnummerntabelle ab und ruft gegebenenfalls die neuen Datensätze per Pull ab. Die Aktion aktualisiert sie im Integrationskonto der sekundären Region. Wenn keine Aktualisierungen vorhanden sind, wird für den Trigger der Status **Übersprungen** angezeigt.   
+![Kontrollnummerntabelle](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
+
+Basierend auf dem angegebenen Zeitintervall wird der inkrementelle Laufzeitstatus einer primären Region in einer sekundären Region repliziert. Wenn während eines Notfallereignisses die primäre Region nicht verfügbar ist, wird der Datenverkehr zur Geschäftskontinuität an die sekundäre Region weitergeleitet. 
+
+## <a name="edifact"></a>EDIFACT 
+Die Geschäftskontinuität für EDI EDIFACT-Dokumente basiert auf Kontrollnummern:
+
+Voraussetzungen: Wählen Sie die Einstellungen für die doppelte Überprüfung in den Empfangseinstellungen für die EDIFACT-Vereinbarung aus, um DR für eingehende Nachrichten zu aktivieren.     
+![EDIFACT-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+
+1. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in einer sekundären Region.    
+
+2. Suchen Sie nach **EDIFACT**, und wählen Sie **EDIFACT – Bei Änderung einer Kontrollnummer** aus.     
+![EDIFACT-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
+
+4. Der Trigger fordert Sie zum Herstellen einer Verbindung mit einem Integrationskonto auf. Der Trigger muss mit dem Integrationskonto einer primären Region verbunden werden. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der primären Region** aus, und klicken Sie auf **Erstellen**.    
+![Name des Integrationskontos der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
+
+5. Die Einstellung **Anfangsdatum und -uhrzeit für die Abfrage von Änderungen** ist optional. Die **Häufigkeit** kann mit einem Intervall auf **Tag**, **Stunde**, **Minute** oder **Sekunde** festgelegt werden.    
+![Datum/Uhrzeit und Häufigkeit](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+
+6. Wählen Sie **Nächster Schritt** > **Aktion hinzufügen** aus.    
+![Hinzufügen einer Aktion](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+
+7. Suchen Sie nach **EDIFACT**, und wählen Sie **EDIFACT – Kontrollnummern hinzufügen oder aktualisieren** aus.   
+![Änderung der empfangenen Kontrollnummer](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+
+8. Um eine Aktion mit dem Integrationskonto einer sekundären Region zu verbinden, wählen Sie **Verbindung ändern** > **Neue Verbindung hinzufügen** aus, um eine Liste der verfügbaren Integrationskonten anzuzeigen. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der sekundären Region** aus, und klicken Sie auf **Erstellen**.   
+![Name des Integrationskontos der sekundären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+
+9. Wählen Sie den dynamischen Inhalt aus, und speichern Sie die Logik-App.   
+![Dynamischer Inhalt](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn5.png)
+
+10. Basierend auf dem angegebenen Zeitintervall fragt der Trigger die von der primären Region empfangene Kontrollnummerntabelle ab und ruft gegebenenfalls die neuen Datensätze per Pull ab. Die Aktion aktualisiert sie im Integrationskonto der sekundären Region. Wenn keine Aktualisierungen vorhanden sind, wird für den Trigger der Status **Übersprungen** angezeigt.   
+![Kontrollnummerntabelle](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
 Basierend auf dem angegebenen Zeitintervall wird der inkrementelle Laufzeitstatus einer primären Region in einer sekundären Region repliziert. Wenn während eines Notfallereignisses die primäre Region nicht verfügbar ist, wird der Datenverkehr zur Geschäftskontinuität an die sekundäre Region weitergeleitet. 
 
@@ -148,30 +150,31 @@ Die Geschäftskontinuität für Dokumente, die das AS2-Protokoll verwenden, basi
 1. Erstellen Sie eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) in der sekundären Region.  
 
 2. Suchen Sie nach **AS2**, und wählen Sie **AS2 – When a MIC value is created** (AS2 – Beim Erstellen eines MIC-Werts) aus.   
-![AS2-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid1.png)
+![AS2-Suche](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
 3. Ein Trigger fordert Sie zum Herstellen einer Verbindung mit einem Integrationskonto auf. Der Trigger muss mit dem Integrationskonto einer primären Region verbunden werden. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der primären Region** aus, und klicken Sie auf **Erstellen**.   
-![Name des Integrationskontos der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid2.png)
+![Name des Integrationskontos der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
 4. Die Einstellung **DateTime to start MIC value sync** (DateTime-Wert zum Starten der Synchronisierung des MIC-Werts) ist optional. Die **Häufigkeit** kann mit einem Intervall auf **Tag**, **Stunde**, **Minute** oder **Sekunde** festgelegt werden.   
-![Datum/Uhrzeit und Häufigkeit](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid3.png)
+![Datum/Uhrzeit und Häufigkeit](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
 5. Wählen Sie **Nächster Schritt** > **Aktion hinzufügen** aus.  
-![Hinzufügen einer Aktion](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid4.png)
+![Hinzufügen einer Aktion](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
 6. Suchen Sie nach **AS2**, und wählen Sie **AS2 – Add or update a MIC** (MIC-Wert hinzufügen oder aktualisieren) aus.  
-![Hinzufügen oder Aktualisieren eines MIC-Werts](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid5.png)
+![Hinzufügen oder Aktualisieren eines MIC-Werts](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
 7. Um eine Aktion mit dem Integrationskonto einer sekundären Region zu verbinden, wählen Sie **Verbindung ändern** > **Neue Verbindung hinzufügen** aus, um eine Liste der verfügbaren Integrationskonten anzuzeigen. Geben Sie einen Verbindungsnamen ein, wählen Sie in der Liste das **Integrationskonto der sekundären Region** aus, und klicken Sie auf **Erstellen**.    
-![Name des Integrationskontos der sekundären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid6.png)
+![Name des Integrationskontos der sekundären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 
 8. Wählen Sie den dynamischen Inhalt aus, und speichern Sie die Logik-App.   
-![Dynamischer Inhalt](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid7.png)
+![Dynamischer Inhalt](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid7.png)
 
 9. Basierend auf dem angegebenen Zeitintervall fragt der Trigger die Tabelle der primären Region ab und ruft gegebenenfalls die neuen Datensätze per Pull ab. Die Aktion aktualisiert sie im Integrationskonto der sekundären Region. Wenn keine Aktualisierungen vorhanden sind, wird für den Trigger der Status **Übersprungen** angezeigt.  
-![Tabelle der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/AS2messageid8.png)
+![Tabelle der primären Region](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid8.png)
 
 Basierend auf dem angegebenen Zeitintervall wird der inkrementelle Laufzeitstatus der primären Region in der sekundären Region repliziert. Wenn während eines Notfallereignisses die primäre Region nicht verfügbar ist, wird der Datenverkehr zur Geschäftskontinuität an die sekundäre Region weitergeleitet. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich über das [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md).   

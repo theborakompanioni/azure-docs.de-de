@@ -17,10 +17,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 32a5cfdb520c745dbd0fa5c433849bd3783a364e
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c92692db23ac59f67890e26cce6b2d3272e8901d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -32,9 +32,9 @@ Um HTTP-Endpunkte zu erstellen, können Sie diese Trigger hinzufügen, sodass Ih
 
 * [Anforderung](../connectors/connectors-native-reqres.md)
 
-* [API Connection Webhook](logic-apps-workflow-actions-triggers.md#api-connection)
+* [API Connection Webhook](logic-apps-workflow-actions-triggers.md#api-connection-trigger)
 
-* [HTTP Webhook](../connectors/connectors-native-http.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
    > Unsere Beispiele verwenden zwar den Trigger **Request**, doch Sie können jeden der aufgelisteten HTTP-Trigger verwenden, und alle Prinzipien gelten gleichermaßen für die anderen Triggertypen.
@@ -211,7 +211,7 @@ Nachdem Sie den HTTP-Endpunkt erstellt haben, können Sie Ihre Logik-App über e
 
 ## <a name="reference-content-from-an-incoming-request"></a>Verweisen auf Inhalt von einer eingehenden Anforderung aus
 
-Wenn der Typ des Inhalts `application/json` ist, können Sie von der eingehenden Anforderung aus auf Eigenschaften verweisen. Andernfalls wird der Inhalt als einzelne binäre Einheit behandelt, die Sie an andere APIs übergeben können. Sie können innerhalb des Workflows nicht auf diesen Inhalt verweisen, ohne diesen Inhalt zu konvertieren. Wenn Sie beispielsweise `application/xml`-Inhalt übergeben, können Sie mit `@xpath()` eine XPath-Extrahierung durchführen oder mit `@json()` XML in JSON konvertieren. Erfahren Sie mehr über das [Arbeiten mit Inhaltstypen](../logic-apps/logic-apps-content-type.md).
+Wenn der Typ des Inhalts `application/json` ist, können Sie von der eingehenden Anforderung aus auf Eigenschaften verweisen. Andernfalls wird der Inhalt als einzelne binäre Einheit behandelt, die Sie an andere APIs übergeben können. Um innerhalb des Workflows auf diesen Inhalt zu verweisen, müssen Sie diesen Inhalt konvertieren. Wenn Sie beispielsweise `application/xml`-Inhalt übergeben, können Sie mit `@xpath()` eine XPath-Extrahierung durchführen oder mit `@json()` XML in JSON konvertieren. Erfahren Sie mehr über das [Arbeiten mit Inhaltstypen](../logic-apps/logic-apps-content-type.md).
 
 Um die Ausgabe aus einer eingehenden Anforderung abzurufen, können Sie die `@triggerOutputs()`-Funktion verwenden. Die Ausgabe könnte folgendem Beispiel entsprechen:
 
@@ -277,9 +277,11 @@ Das JSON-Schema für die **Response**-Aktion sieht jetzt so aus:
 
 A: Azure generiert sicher Rückruf-URLs für Logik-Apps über eine Shared Access Signature (SAS). Diese Signatur wird als Abfrageparameter übergeben und muss geprüft werden, bevor Ihre Logik-App ausgelöst werden kann. Azure generiert die Signatur durch eine eindeutige Kombination aus einem geheimen Schlüssel pro Logik-App, dem Namen des Triggers und dem ausgeführten Vorgang. Nur wenn ein Benutzer Zugriff auf den geheimen Logik-App-Schlüssel hat, kann er eine gültige Signatur generieren.
 
-   > [!NOTE]
-   > Für Produktions-/Sicherheitssysteme wird dringend davon abgeraten, die Logik-App direkt über den Browser aufzurufen, da der Schlüssel für den gemeinsamen Zugriff in die URL eingefügt wird und es nicht möglich ist, Richtlinien für sichere Inhalte zu verwalten, da die Domänen von Logik-App-Kunden gemeinsam verwendet werden.
-
+   > [!IMPORTANT]
+   > Für Produktions- und sichere Systeme wird dringend davon abgeraten, Ihre Logik-App direkt aus dem Browser aufzurufen. Das hat folgende Gründe:
+   > 
+   > * Der Schlüssel für den gemeinsamen Zugriff ist in der URL enthalten.
+   > * Sie können keine Richtlinien für sichere Inhalte verwalten, da Domänen von Benutzern der Logik-App gemeinsam verwendet werden.
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>F: Kann ich weitere HTTP-Endpunkte konfigurieren?
 

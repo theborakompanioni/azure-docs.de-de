@@ -13,10 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: estfan
-translationtype: Human Translation
-ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
-ms.openlocfilehash: 6006df4b4ecd6dede94c1013881ddf699e741e51
+ms.author: LADocs; padmavc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 0625787ddcbc0091e70b111f687e25929720ad15
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -78,7 +80,7 @@ Führen Sie diese Schritte zum Erstellen einer B2B-Logik-App aus, die AS2- und X
     Fügen Sie nun Schritte zum Decodieren der vom Handelspartner empfangenen X12-Daten und Ausgeben der Elemente in ein JSON-Objekt hinzu. 
     Um den Partner über den Empfang der Daten zu benachrichtigen, können Sie eine Nachricht zurücksenden, die eine AS2 MDN (Message Disposition Notification, Benachrichtigung über den Nachrichtenstatus) in einer HTTP-Antwortaktion enthält.
 
-12. Fügen Sie die Aktion **Antwort** hinzu, indem Sie **Aktion hinzufügen** wählen.
+12.    Fügen Sie die Aktion **Antwort** hinzu, indem Sie **Aktion hinzufügen** wählen.
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 
@@ -111,9 +113,4 @@ Das Einrichten Ihrer B2B-Logik-App ist damit abgeschlossen. In einer realen Anwe
 
 ## <a name="learn-more"></a>Weitere Informationen
 [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

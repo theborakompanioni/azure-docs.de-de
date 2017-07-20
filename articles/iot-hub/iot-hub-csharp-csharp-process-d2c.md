@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ff0b234f27e2d5068cc0dcdc73e32e60f8622633
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: f8917ca67aa5f15ccc11030fd0292ac803d9e994
 ms.contentlocale: de-de
-ms.lasthandoff: 03/06/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -44,7 +44,7 @@ Am Ende dieses Tutorials führen Sie drei .NET-Konsolen-Apps aus:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Visual Studio 2015 oder Visual Studio 2017.
+* Visual Studio 2015 oder Visual Studio 2017
 * Ein aktives Azure-Konto. <br/>Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
 
 Sie sollten über grundlegende Kenntnisse zu [Azure Storage] und [Azure Service Bus] verfügen.
@@ -114,6 +114,9 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 Weitere Informationen zum Verarbeiten von Nachrichten von der Service Bus-Warteschlange finden Sie in [Erste Schritte mit Event Hubs][Service Bus queue].
 
 1. Erstellen Sie eine Service Bus-Warteschlange wie in [erste Schritte mit Warteschlangen][Service Bus queue] beschrieben. Die Warteschlange muss sich in dem gleichen Abonnement und der gleichen Region wie der IoT Hub befinden. Notieren Sie den Namespace und den Warteschlangennamen.
+
+    > [!NOTE]
+    > Für Service Bus-Warteschlangen und -Themen, die als IoT Hub-Endpunkte verwendet werden, dürfen **Sitzungen** oder **Duplikaterkennung** nicht aktiviert werden. Wenn eine dieser Optionen aktiviert ist, wird der Endpunkt im Azure-Portal als **Nicht erreichbar** angezeigt.
 
 2. Öffnen Sie Ihren IoT-Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
     

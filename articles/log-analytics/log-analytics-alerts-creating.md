@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/23/2017
+ms.date: 05/23/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: eec118430c6262626728c3156634361c977ccb4b
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -32,6 +33,9 @@ Dieser Artikel beschreibt die Prozesse zum Erstellen und Bearbeiten von Warnungs
 ## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
 
 Beim Erstellen einer Warnungsregel mit dem OMS-Portal beginnen Sie mit dem Erstellen einer Protokollsuche für die Datensätze, von denen die Warnung aufgerufen werden soll.  Die Schaltfläche **Warnung** ist dann verfügbar, sodass Sie die Warnungsregel erstellen und konfigurieren können.
+
+>[!NOTE]
+> Maximal 250 Warnungsregeln können derzeit in einem OMS-Arbeitsbereich erstellt werden. 
 
 1. Klicken Sie auf der Seite mit der OMS-Übersicht auf **Log Search**(Protokollsuche).
 2. Erstellen Sie entweder eine neue Protokollsuchabfrage, oder wählen Sie eine gespeicherte Protokollsuche aus. 

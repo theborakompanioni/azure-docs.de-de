@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f6848fef5b23a864496565334b22dc2e2e8d1492
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: f2428661af016071268b1c30a933226c1e804fbb
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -32,17 +33,38 @@ Mit der Azure-Diagnoseerweiterung 1.5 wurden Senken eingeführt, die zusätzlich
 Beispielkonfiguration einer Senke für Application Insights:
 
 ```XML
-    <SinksConfig>
-        <Sink name="ApplicationInsights">
-          <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>
-          <Channels>
-            <Channel logLevel="Error" name="MyTopDiagData"  />
-            <Channel logLevel="Verbose" name="MyLogData"  />
-          </Channels>
-        </Sink>
-      </SinksConfig>
+<SinksConfig>
+    <Sink name="ApplicationInsights">
+      <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>
+      <Channels>
+        <Channel logLevel="Error" name="MyTopDiagData"  />
+        <Channel logLevel="Verbose" name="MyLogData"  />
+      </Channels>
+    </Sink>
+</SinksConfig>
 ```
-
+```JSON
+"SinksConfig": {
+    "Sink": [
+        {
+            "name": "ApplicationInsights",
+            "ApplicationInsights": "{Insert InstrumentationKey}",
+            "Channels": {
+                "Channel": [
+                    {
+                        "logLevel": "Error",
+                        "name": "MyTopDiagData"
+                    },
+                    {
+                        "logLevel": "Error",
+                        "name": "MyLogData"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
 - Das Attribut **Sink** *Name* ist ein Zeichenfolgenwert, der die Senke eindeutig identifiziert.
 
 - Das Element **ApplicationInsights** gibt den Instrumentierungsschlüssel der Application Insights-Ressource an, an die die Azure-Diagnosedaten gesendet werden.
@@ -79,9 +101,8 @@ Hier sehen Sie ein vollständiges Beispiel für eine öffentliche Konfigurations
        sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent to this channel -->
     <DiagnosticInfrastructureLogs />
     <PerformanceCounters>
-      <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" sinks="ApplicationInsights.MyLogData/>
+      <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
       <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
-      <PerformanceCounterConfiguration counterSpecifier="\Web Service(_Total)\Bytes Total/Sec" sampleRate="PT3M" />
     </PerformanceCounters>
     <WindowsEventLog scheduledTransferPeriod="PT1M">
       <DataSource name="Application!*" />
@@ -101,7 +122,61 @@ Hier sehen Sie ein vollständiges Beispiel für eine öffentliche Konfigurations
   </SinksConfig>
 </WadCfg>
 ```
-
+```JSON
+"WadCfg": {
+    "DiagnosticMonitorConfiguration": {
+        "overallQuotaInMB": 4096,
+        "sinks": "ApplicationInsights.MyTopDiagData", "_comment": "All info below sent to this channel",
+        "DiagnosticInfrastructureLogs": {
+        },
+        "PerformanceCounters": {
+            "PerformanceCounterConfiguration": [
+                {
+                    "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                    "sampleRate": "PT3M"
+                },
+                {
+                    "counterSpecifier": "\\Memory\\Available MBytes",
+                    "sampleRate": "PT3M"
+                }
+            ]
+        },
+        "WindowsEventLog": {
+            "scheduledTransferPeriod": "PT1M",
+            "DataSource": [
+                {
+                    "name": "Application!*"
+                }
+            ]
+        },
+        "Logs": {
+            "scheduledTransferPeriod": "PT1M",
+            "scheduledTransferLogLevelFilter": "Verbose",
+            "sinks": "ApplicationInsights.MyLogData", "_comment": "This specific info sent to this channel"
+        }
+    },
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "ApplicationInsights",
+                "ApplicationInsights": "{Insert InstrumentationKey}",
+                "Channels": {
+                    "Channel": [
+                        {
+                            "logLevel": "Error",
+                            "name": "MyTopDiagData"
+                        },
+                        {
+                            "logLevel": "Verbose",
+                            "name": "MyLogData"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+```
 In der vorherigen Konfiguration haben die folgenden Zeilen die folgende Bedeutung:
 
 ### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Senden aller Daten, die von der Azure-Diagnose gesammelt werden
@@ -109,17 +184,35 @@ In der vorherigen Konfiguration haben die folgenden Zeilen die folgende Bedeutun
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
 ```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights",
+}
+```
 
 ### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Ausschließliches Senden von Fehlerprotokollen an die Application Insights-Senke
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
 ```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights.MyTopDiagData",
+}
+```
 
 ### <a name="send-verbose-application-logs-to-application-insights"></a>Senden von ausführlichen Anwendungsprotokollen an Application Insights
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
+```
+```JSON
+"DiagnosticMonitorConfiguration": {
+    "overallQuotaInMB": 4096,
+    "sinks": "ApplicationInsights.MyLogData",
+}
 ```
 
 ## <a name="limitations"></a>Einschränkungen
@@ -129,6 +222,7 @@ In der vorherigen Konfiguration haben die folgenden Zeilen die folgende Bedeutun
 - **Sie können keine von der Azure-Diagnoseerweiterung gesammelten Blobdaten an Application Insights senden.** Beispiel: Alle Daten unter dem Knoten *Directories*. Bei Absturzabbildern wird das tatsächliche Absturzabbild weiterhin an den Blobspeicher gesendet, und es wird nur eine Benachrichtigung, dass das Absturzabbild generiert wurde, an Application Insights gesendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Erfahren Sie etwas über das [Anzeigen von Azure-Diagnoseinformationen](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) in Application Insights.
 * Verwenden Sie [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) , um die Azure-Diagnose-Erweiterung für Ihre Anwendung zu aktivieren.
 * Verwenden Sie [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) , um die Azure-Diagnose-Erweiterung für Ihre Anwendung zu aktivieren.
 

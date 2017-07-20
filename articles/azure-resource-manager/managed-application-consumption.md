@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/11/2017
+ms.date: 05/17/2017
 ms.author: gauravbh; tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 2763da60fe25f2ca55603ecfcbbcefe3e368c25d
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: 041254b07584a52ae92e603f60a439050b747af1
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -49,8 +49,7 @@ az group create --name managedResourceGroup --location westcentralus
 Als Nächstes stellen Sie mit folgendem Befehl „applianceMainTemplate.json“ in „mainResourceGroup“ bereit:
 
 ```azurecli
-az group deployment --name managedAppDeployment --resourceGroup mainResourceGroup 
-      --templateUri  
+az group deployment create --name managedAppDeployment --resourceGroup mainResourceGroup --templateUri  
 ```
 
 Wenn die vorangehende Vorlage ausgeführt wird, werden Sie zur Eingabe der Werte der Parameter aufgefordert, die in der Vorlage definiert sind. Zusätzlich zu den Parametern, die für das Bereitstellen von Ressourcen in einer Vorlage erforderlich sind, benötigen Sie zwei Parameterschlüsselwerte:
@@ -94,9 +93,9 @@ Dieser Befehl gibt die Gerätedefinition zurück. Sie benötigen den Wert der **
 
 Die Nutzung verwalteter Anwendungen, die von den ISVs veröffentlicht werden, wird auch vom Portal unterstützt. Führen Sie die folgenden Schritte aus:
 
-Wählen Sie die verwaltete Anwendung im Azure-Portal auf dem Blatt „Erstellen“ aus:
+Wählen Sie die verwaltete Dienstkataloganwendung im Azure-Portal auf dem Blatt „Erstellen“ aus:
 
-![](./media/managed-application-consumption/create-blade.png)
+![](./media/managed-application-consumption/create-service-catalog-managed-application.png)
 
 Als Nächstes wird die Liste der Angebote von verschiedenen ISVs/Partnern angezeigt. Wählen Sie das zu erstellende Angebot aus, und klicken Sie auf „Erstellen“.
 

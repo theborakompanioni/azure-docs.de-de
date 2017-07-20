@@ -2,6 +2,7 @@
 title: Importieren von Daten in Analytics in Azure Application Insights | Microsoft-Dokumentation
 description: "Importieren Sie statische Daten zur Verknüpfung mit App-Telemetrie, oder importieren Sie einen separaten Datenstrom zum Abfragen durch Analytics."
 services: application-insights
+keywords: "Öffnen des Schemas, Datenimport"
 documentationcenter: 
 author: CFreemanwa
 manager: carmonm
@@ -13,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: d649644959d907ff7fd6c1de360b091682f13d5b
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 8504be28baf202c0b04ee89b18122b29a93588ab
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---

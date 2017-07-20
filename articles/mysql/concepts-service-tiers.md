@@ -1,87 +1,71 @@
 ---
-title: "Diensttarife in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
-description: "Diensttarife in Azure-Datenbank für MySQL"
+title: "Tarife in Azure-Datenbank für MySQL | Microsoft-Dokumentation"
+description: "Tarife in Azure-Datenbank für MySQL"
 services: mysql
-author: v-chenyh
+author: jasonwhowell
+ms.author: jasonh
 manager: jhubbard
-editor: jasonh
+editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/16/2017
-ms.author: v-chenyh
+ms.date: 05/23/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 9ae42c9b151c53a1f57d6856bc29cd7f71a7f9be
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 20ca0abab5e17f82b94a31c1b2c9a0942ba9508a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/25/2017
 
 ---
-# <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-service-tier"></a>Optionen und Leistung von Azure-Datenbank für MySQL: Überblick über die verfügbaren Funktionen in den einzelnen Diensttarifen
-Azure-Datenbank für MySQL bietet die Diensttarife „Basic“ und „Standard“. „Premium“ ist noch nicht verfügbar.
+# <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Optionen und Leistung von Azure-Datenbank für MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen
+Wenn Sie einen Azure-Datenbank für MySQL-Server erstellen, treffen Sie drei Hauptentscheidungen zur Konfiguration der Ressourcen, die diesem Server zugeordnet werden. Diese Entscheidungen beeinflussen die Leistung und Skalierung des Servers.
+- Tarif
+- Compute-Einheiten
+- Speicher (GB)
 
-Jeder Diensttarif enthält mehrere Leistungsstufen für unterschiedliche Arten von Workloadanforderungen. Bei höheren Leistungsstufen stehen zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Leistungsstufen innerhalb eines Diensttarifs dynamisch ohne Anwendungsausfallzeiten ändern.
-
-In Zukunft wird es möglich sein, Upgrades oder Downgrades zwischen den Diensttarifen durchzuführen. 
+Für jeden Tarif steht je nach Anforderungen der Workload ein Bereich von Leistungsebenen (Computeeinheiten) zur Auswahl. Bei höheren Leistungsebenen stehen für den Server zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Leistungsebene des Servers innerhalb eines Tarifs praktisch ohne Ausfallzeiten der Anwendung ändern.
 
 > [!IMPORTANT]
-> Der Dienst ist derzeit als öffentliche Vorschau verfügbar und bietet daher noch keine Vereinbarung zum Servicelevel (SLA).
+> Solange der Dienst als Public Preview verfügbar ist, besteht keine garantierte Vereinbarung zum Servicelevel (SLA).
 
-Sie können einen einzelnen Azure-Datenbank für MySQL-Server mit dedizierten Ressourcen innerhalb eines Diensttarifs auf einer bestimmten Leistungsstufe erstellen. Anschließend können Sie beliebig viele Datenbanken auf dem Server erstellen, auf dem die Ressourcen gemeinsam von mehreren Datenbanken verwendet werden. Die verfügbaren Ressourcen für einen einzelnen Azure-Datenbank für MySQL-Server werden in Form von Compute- und Speichereinheiten ausgedrückt. Weitere Informationen zu Compute- und Speichereinheiten finden Sie unter [Erläuterung von Compute- und Speichereinheiten](concepts-compute-unit-and-storage.md).
+Sie können in einer Instanz von Azure-Datenbank für MySQL-Server eine oder mehrere Datenbanken verwenden. Sie können eine Einzeldatenbank pro Server erstellen, die alle Ressourcen nutzt, oder Sie können mehrere Datenbanken erstellen, um die Ressourcen gemeinsam zu verwenden. 
 
-## <a name="choosing-a-service-tier"></a>Auswählen einer Dienstebene
+## <a name="choose-a-pricing-tier"></a>Auswählen eines Tarifs
+In der Vorschauversion gibt es für Azure-Datenbank für MySQL zwei Tarife: Basic und Standard. Der Tarif Premium ist noch nicht verfügbar, wird aber bald bereitgestellt. 
 
-In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
+In der folgenden Tabelle sind Beispiele für Tarife aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
 
-| Dienstebene | Zielworkloads |
+| Tarif | Zielworkloads |
 | :----------- | :----------------|
 | Basic | Diese Option ist am besten für kleine Workloads geeignet, die skalierbare Compute- und Speichereinheiten ohne IOPS-Garantie erfordern. Beispiele hierfür sind Server, die für die Entwicklung, für Tests oder für kleine, selten verwendete Anwendungen verwendet werden. |
-| Standard | Dies ist die optimale Option für Cloudanwendungen, die IOPS-Garantie mit der Möglichkeit, für einen hohen Durchsatz unabhängig auf eine höhere Anzahl von Computing- und Speichereinheiten zu skalieren, erfordern. Hierzu zählen beispielsweise Web- oder Analyseanwendungen. |
-| Premium | Diese Option ist am besten für Workloads geeignet, die sehr kurze Latenzen für Transaktionen und E/A sowie hohe E/A und einen hohen Workloaddurchsatz erfordern. Sie bietet optimale Unterstützung für viele gleichzeitige Benutzer. Sie gilt für Datenbanken, die unternehmenskritische Anwendungen unterstützen.<br />Der Diensttarif „Premium“ ist nicht in der Vorschau verfügbar. |
+| Standard | Die ideale Wahl für Cloudanwendungen, die eine IOPS-Garantie mit hohem Durchsatz benötigen. Hierzu zählen beispielsweise Web- oder Analyseanwendungen. |
+| Premium | Am besten geeignet für Workloads, die für Transaktionen und E/A-Vorgänge geringe Latenzen benötigen. Sie bietet optimale Unterstützung für viele gleichzeitige Benutzer. Er gilt für Datenbanken, die unternehmenskritische Anwendungen unterstützen.<br />Der Tarif Premium ist in der Vorschauversion nicht verfügbar. |
 
+Um eine Auswahl für einen Tarif zu treffen, müssen Sie zunächst festlegen, ob Ihre Workload eine IOPS-Garantie erfordert. Wenn dies der Fall ist, verwenden Sie den Tarif Standard.
 
-Um eine Auswahl für einen Diensttarif zu treffen, müssen Sie zunächst bestimmen, ob Ihre Workload eine IOPS-Garantie erfordert. Ermitteln Sie dann die Funktionen, die mindestens erforderlich sind:
+| **Features der Tarife** | **Basic** | **Standard** |
+| :------------------------ | :-------- | :----------- |
+| Max. Anzahl von Compute-Einheiten | 100 | 800 | 
+| Max. Gesamtspeicher | 1 TB | 1 TB | 
+| Garantie für Speicher-IOPS | N/V | Ja | 
+| Max. Speicher-IOPS | N/V | 3,000 | 
+| Aufbewahrungszeitraum von Datenbanksicherungen | 7 Tage | 35 Tage | 
 
-| **Dienstebenenfeatures** | **Basic** | **Standard** | **Premium** * |
-| :------------------------ | :-------- | :----------- | :------------ |
-| Max. Anzahl von Compute-Einheiten | 100 | 2.000 | Nicht in der Vorschau verfügbar |
-| Max. Gesamtspeicher | 1.050 GB | 10.000 GB | Nicht in der Vorschau verfügbar |
-| Garantie für Speicher-IOPS | N/V | Ja | Nicht in der Vorschau verfügbar |
-| Max. Speicher-IOPS | N/V | 3,000 | Nicht in der Vorschau verfügbar |
-| Aufbewahrungszeitraum von Datenbanksicherungen | 7 Tage | 35 Tage | 35 Tage |
+Sie können den Tarif während der Vorschauphase nicht wechseln, nachdem der Server erstellt wurde. In Zukunft wird es jedoch möglich sein, Upgrades oder Downgrades zwischen den Tarifen für Server durchzuführen.
 
-> [!NOTE]
-> Der Diensttarif „Standard“ in der Vorschau unterstützt derzeit bis zu 800 Compute-Einheiten und max. 1000 GB Speicher.
+## <a name="choose-a-performance-level-compute-units"></a>Auswählen einer Leistungsebene (Computeeinheiten)
+Nachdem Sie den Tarif für Ihren Azure-Datenbank für MySQL-Server ermittelt haben, können Sie die Leistungsebene durch Auswählen der Anzahl von Computeeinheiten festlegen. Die 200 und 400 Computeeinheiten im Tarif Standard sind häufig ein guter Ausgangspunkt für Anwendungen, die eine höhere Benutzerparallelität für ihre Web- oder Analyseworkloads erfordern. Sie werden bei Bedarf inkrementell angepasst. 
 
-Nachdem Sie den Mindestdiensttarif ermittelt haben, können Sie die Leistungsebene für den Azure-Datenbank für MySQL-Server (Anzahl von Compute-Einheiten) bestimmen. Die 200 und 400 Compute-Einheiten im Tarif „Standard“ sind häufig ein guter Ausgangspunkt für Anwendungen, die eine höhere Benutzerparallelität für ihre Web- oder Analyseworkloads erfordern. 
+Computeeinheiten sind eine Maßeinheit für den CPU-Verarbeitungsdurchsatz, der für einen einzelnen Azure-Datenbank für MySQL-Server garantiert zur Verfügung steht. Eine Compute-Einheit stellt eine kombinierte Maßeinheit für CPU- und Speicherressourcen dar.  Weitere Informationen finden Sie unter [Erläuterungen zu Computeeinheiten](concepts-compute-unit-and-storage.md).
 
-Allerdings können Sie die Compute-Einheiten basierend auf den Workloadanforderungen unabhängig von den Speichereinheiten zentral hoch- bzw. herunterzuskalieren. Wenn die Workload eine Anpassung der Compute-Ressourcen erfordert, können Sie die Compute-Einheiten dynamisch erhöhen oder verringern. Wenn Ihre Workload mehr IOPS oder Speicher benötigt, können Sie auch den Speicher skalieren.
-
-> [!NOTE]
-> In der Vorschau unterstützen die Tarife „Basic“ und „Standard“ derzeit keine dynamische Skalierung von Speicher. Diese Funktion soll in Zukunft hinzugefügt werden.
-
-> [!NOTE]
-> Im Diensttarif „Standard“ werden IOPS in einem festgelegten Verhältnis von 3:1 proportional zur bereitgestellten Speichergröße skaliert. Der inbegriffene Speicher von 125 GB garantiert 375 bereitgestellte IOPS, jeweils mit einer E/A-Größe von bis zu 256 KB. Wenn Sie 1.000 GB bereitstellen, erhalten Sie 3.000 bereitgestellte IOPS. Sie müssen den Verbrauch der Compute-Einheiten der Server überwachen und zentral hochskalieren, um in vollem Umfang von den verfügbaren bereitgestellten IOPS zu profitieren.
-
-## <a name="service-tiers-and-performance-levels"></a>Tarife und Leistungsebenen
-
-Bei Azure-Datenbank für MySQL gibt es mehrere Leistungsstufen in den einzelnen Diensttarifen. Sie können die Ebene, die Ihren Anforderungen an Workloads am besten entspricht, über eine der folgenden Quellen auswählen:
-- [Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Azure-CLI](quickstart-create-mysql-server-database-using-azure-cli.md)
-
-Unabhängig von der Anzahl der gehosteten Datenbanken auf jedem MySQL-Server erhält Ihre Datenbank einen garantierten Ressourcensatz, und die erwarteten Leistungsmerkmale Ihres Servers werden nicht beeinträchtigt.
-
-### <a name="basic-service-tier"></a>Diensttarif „Basic“:
+### <a name="basic-pricing-tier-performance-levels"></a>Leistungsebenen im Tarif Basic:
 
 | **Leistungsstufe** | **50** | **100** |
 | :-------------------- | :----- | :------ |
 | Max. Anzahl von Compute-Einheiten | 50 | 100 |
 | Inbegriffene Speichergröße | 50 GB | 50 GB |
-| Max. Größe des Serverspeichers\* | 1.050 GB | 1.050 GB |
+| Max. Größe des Serverspeichers\* | 1 TB | 1 TB |
 
-\* Die max. Größe des Serverspeichers bezieht sich auf die maximale Speichergröße, die für Ihren Server bereitgestellt wird.
-
-
-### <a name="standard-service-tier"></a>Diensttarif „Standard“:
+### <a name="standard-pricing-tier-performance-levels"></a>Leistungsebenen im Tarif Standard:
 
 | **Leistungsstufe** | **100** | **200** | **400** | **800** |
 | :-------------------- | :------ | :------ | :------ | :------ |
@@ -93,24 +77,28 @@ Unabhängig von der Anzahl der gehosteten Datenbanken auf jedem MySQL-Server erh
 
 \* Die max. Größe des Serverspeichers bezieht sich auf die maximale Speichergröße, die für Ihren Server bereitgestellt wird.
 
-## <a name="scaling-up-or-down-a-single-server"></a>Zentrales Hoch- oder Herunterskalieren eines einzigen Servers
+## <a name="storage"></a>Speicher 
+Die Speicherkonfiguration definiert die Speicherkapazität, die einer Azure-Datenbank für MySQL-Server zur Verfügung steht. Der vom Dienst verwendete Speicher umfasst die Datenbankdateien, Transaktionsprotokolle und die MySQL-Serverprotokolle. Berücksichtigen Sie die erforderliche Speichergröße für das Hosten Ihrer Datenbanken und die Leistungsanforderungen (IOPS), wenn Sie die Speicherkonfiguration auswählen.
 
-Nach der Auswahl eines Diensttarifs und einer Leistungsebene können Sie den Server dynamisch und basierend auf den Workloadanforderungen zentral hoch- oder herunterskalieren. Wenn Sie zentral hoch- oder herunterskalieren müssen, können Sie den Tarif Ihrer Datenbank im Azure-Portal oder über die Azure CLI problemlos ändern.
+In einigen Fällen ist bereits eine Mindestspeicherkapazität im Tarif enthalten. Dies wird in der Tabelle oben als „Inbegriffene Speichergröße“ bezeichnet. Zusätzliche Speicherkapazität kann beim Erstellen des Servers in Schritten von 125 GB bis zum maximal zulässigen Speicher hinzugefügt werden. Die zusätzliche Speicherkapazität kann unabhängig von den Computeeinheiten konfiguriert werden. Die Preise variieren basierend auf der Menge des ausgewählten Speichers.
 
-Wenn Sie die Dienst- und/oder die Leistungsstufe einer Datenbank ändern, wird ein Replikat der ursprünglichen Datenbank mit der neuen Leistungsebene erstellt und anschließend die Verbindung auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, ist das Zeitfenster unter Umständen größer.
+Die IOPS-Konfiguration in jeder Leistungsebene bezieht sich auf den Tarif und die ausgewählte Speichergröße. Der Tarif Basic bietet keine IOPS-Garantie. Innerhalb des Tarifs Standard skalieren die IOPS proportional zur maximalen Speichergröße in einem festen Verhältnis von 3:1. Der inbegriffene Speicher von 125 GB garantiert 375 bereitgestellte IOPS, jeweils mit einer E/A-Größe von bis zu 256 KB. Sie können zusätzlichen Speicher bis 1 TB auswählen, um 3.000 bereitgestellte IOPS zu garantieren.
 
-Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif des Servers vor und nach der Änderung ab. Beispielsweise sollte ein Server beim Ändern von Compute-Einheiten in den oder aus dem Diensttarif „Standard“ bzw. innerhalb dieses Diensttarifs innerhalb von wenigen Minuten zentral hochskalieren. Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
+Überwachen Sie entweder den Metrikgraph im Azure-Portal, oder schreiben Sie Befehle für die Azure-Befehlszeilenschnittstelle zum Messen des Verbrauchs von Speicher und IOPS. Wichtige zu überwachende Metriken sind das Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz.
 
-### <a name="documentation-about-the-steps-for-scaling-up-or-down"></a>Dokumentation zu den Schritten für das zentrale Hoch- oder Herunterskalieren
-[Überwachen und Skalieren eines Azure-Datenbank für MySQL-Servers mithilfe der Azure CLI](scripts/sample-scale-server.md)
+>[!IMPORTANT]
+> In der Vorschauversion wählen Sie die Menge des Speichers beim Erstellen des Servers aus. Das Ändern der Speichergröße auf einem vorhandenen Server wird noch nicht unterstützt. 
 
+## <a name="scaling-a-server-up-or-down"></a>Zentrales Hoch- oder Herunterskalieren eines Servers
+Sie wählen den Tarif und die Leistungsebene anfänglich beim Erstellen Ihrer Instanz von Azure-Datenbank für MySQL aus. Später können Sie die Computeeinheiten innerhalb des Tarifbereichs dynamisch zentral hoch- oder herunterskalieren. Schieben Sie im Azure-Portal die Computeeinheiten auf dem Tarifblatt des Servers, oder erstellen Sie ein Skript anhand des folgenden Beispiels: [Überwachen und Skalieren eines Azure-Datenbank für MySQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle](scripts/sample-scale-server.md).
 
-### <a name="details-about-scaling-up-or-down"></a>Details zum zentralen Hoch- oder Herunterskalieren
+Das Skalieren der Computeeinheiten erfolgt unabhängig von der maximalen Speichergröße, die Sie ausgewählt haben.
 
-- Für ein Downgrade eines Servers sollten die Speichereinheiten des Servers kleiner als die im Zieldiensttarif maximal zulässige Größe sein.
-- Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen eines Azure-Datenbank für MySQL-Servers mit dem Azure-Portal](howto-restore-server-portal.md).
-- Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
+Wenn Sie die Leistungsebene einer Datenbank ändern, wird im Hintergrund ein Replikat der ursprünglichen Datenbank mit der neuen Leistungsebene erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, ist das Zeitfenster unter Umständen größer.
+
+Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Tarif des Servers vor und nach der Änderung ab. Beispielsweise sollte ein Server beim Ändern von Computeeinheiten in den oder aus dem Tarif Standard bzw. innerhalb dieses Tarifs in wenigen Minuten zentral hochskalieren. Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erläuterung der Compute- und der Speichereinheit](concepts-compute-unit-and-storage.md)
+- Weitere Informationen zu Computeeinheiten finden Sie unter [Erläuterungen zu Computeeinheiten](concepts-compute-unit-and-storage.md).
+- Erfahren Sie etwas über das [Überwachen und Skalieren eines Azure-Datenbank für MySQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle](scripts/sample-scale-server.md).
 
