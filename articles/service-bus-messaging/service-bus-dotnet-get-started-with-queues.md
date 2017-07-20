@@ -20,16 +20,11 @@ ms.openlocfilehash: 02d0ce093bc42cffa4f3993826c61c8aeca4d033
 ms.contentlocale: de-de
 ms.lasthandoff: 07/01/2017
 
-
 ---
-<a id="get-started-with-service-bus-queues" class="xliff"></a>
-
-# Erste Schritte mit Service Bus-Warteschlangen
+# <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-<a id="what-will-be-accomplished" class="xliff"></a>
-
-## Ziele
+## <a name="what-will-be-accomplished"></a>Ziele
 Dieses Tutorial enthält die folgenden Schritte:
 
 1. Erstellen eines Service Bus-Namespace mithilfe des Azure-Portals
@@ -37,50 +32,36 @@ Dieses Tutorial enthält die folgenden Schritte:
 3. Erstellen einer Konsolenanwendung zum Senden einer Nachricht
 4. Schreiben einer Konsolenanwendung zum Empfangen der im vorherigen Schritt gesendeten Nachrichten
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 1. [Visual Studio 2015 oder höher](http://www.visualstudio.com) Für die Beispiele in diesem Tutorial wird Visual Studio 2017 verwendet.
 2. Ein Azure-Abonnement.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-<a id="1-create-a-namespace-using-the-azure-portal" class="xliff"></a>
-
-## 1. Erstellen eines Namespace mithilfe des Azure-Portals
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Erstellen eines Namespace mithilfe des Azure-Portals
 Falls Sie bereits einen Service Bus Messaging-Namespace erstellt haben, können Sie zum Abschnitt [Erstellen einer Warteschlange mit dem Azure-Portal](#2-create-a-queue-using-the-azure-portal) springen.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-<a id="2-create-a-queue-using-the-azure-portal" class="xliff"></a>
-
-## 2. Erstellen einer Warteschlange mithilfe des Azure-Portals
+## <a name="2-create-a-queue-using-the-azure-portal"></a>2. Erstellen einer Warteschlange mithilfe des Azure-Portals
 Falls Sie bereits eine Service Bus-Warteschlange erstellt haben, fahren Sie mit dem Abschnitt [Senden von Nachrichten an die Warteschlange](#3-send-messages-to-the-queue) fort.
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-<a id="3-send-messages-to-the-queue" class="xliff"></a>
-
-## 3. Senden von Nachrichten an die Warteschlange
+## <a name="3-send-messages-to-the-queue"></a>3. Senden von Nachrichten an die Warteschlange
 Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe von Visual Studio eine C#-Konsolenanwendung.
 
-<a id="create-a-console-application" class="xliff"></a>
-
-### Erstellen einer Konsolenanwendung
+### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
 Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**.
 
-<a id="add-the-service-bus-nuget-package" class="xliff"></a>
-
-### Hinzufügen des NuGet-Pakets "Service Bus"
+### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 2. Klicken Sie auf die Registerkarte **Durchsuchen**, suchen Sie nach **Microsoft Azure Service Bus**, und wählen Sie anschließend das Element **WindowsAzure.ServiceBus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
    
     ![Auswählen eines NuGet-Pakets][nuget-pkg]
 
-<a id="write-some-code-to-send-a-message-to-the-queue" class="xliff"></a>
-
-### Schreiben von Code zum Senden einer Nachricht an die Warteschlange
+### <a name="write-some-code-to-send-a-message-to-the-queue"></a>Schreiben von Code zum Senden einer Nachricht an die Warteschlange
 1. Fügen Sie am Anfang der Datei „Program.cs“ die folgende `using`-Anweisung hinzu:
    
     ```csharp
@@ -126,7 +107,6 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
                 var client = QueueClient.CreateFromConnectionString(connectionString, queueName);
                 var message = new BrokeredMessage("This is a test message!");
 
-                Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
                 Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
 
                 client.Send(message);
@@ -141,9 +121,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
    
       ![Nachrichtengröße][queue-message]
 
-<a id="4-receive-messages-from-the-queue" class="xliff"></a>
-
-## 4. Empfangen von Nachrichten aus der Warteschlange
+## <a name="4-receive-messages-from-the-queue"></a>4. Empfangen von Nachrichten aus der Warteschlange
 
 1. Gehen Sie wie folgt vor, um die gerade gesendeten Nachrichten zu empfangen: Erstellen Sie eine neue Konsolenanwendung, und fügen Sie einen Verweis auf das Service Bus-NuGet-Paket hinzu, ähnlich wie bei der vorherigen Absenderanwendung.
 2. Fügen Sie am Anfang der Datei „Program.cs“ die folgende `using`-Anweisung hinzu:
@@ -204,9 +182,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
 
 Glückwunsch! Sie haben eine Warteschlange erstellt, eine Nachricht gesendet und eine Nachricht empfangen.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples) an, mit denen einige erweiterte Features des Service Bus Messaging veranschaulicht werden.
 

@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 07/19/2017
 ms.author: christoc;xpouyat;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
 ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Erweiterte Media Encoder Premium Workflow-Tutorials
@@ -66,10 +67,10 @@ Die folgenden Themen werden behandelt:
   * [Ändern der Clipliste über eine Skriptkomponente](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
   * [Hinzufügen einer ClippingEnabled-Hilfseigenschaft](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
 
-## <a name="a-idmxftomp4aencoding-mxf-into-a-single-bitrate-mp4"></a><a id="MXF_to_MP4"></a>Codieren einer MXF-Datei in eine Single-Bitrate-MP4-Datei
+## <a id="MXF_to_MP4"></a>Codieren einer MXF-Datei in eine Single-Bitrate-MP4-Datei
 In dieser exemplarischen Vorgehensweise erstellen wir eine Single-Bitrate-MP4-Datei mit AAC-HE-codierten Audiodaten aus einer MXF-Eingabedatei.
 
-### <a name="a-idmxftomp4startnewastarting-a-new-workflow"></a><a id="MXF_to_MP4_start_new"></a>Starten eines neuen Workflows
+### <a id="MXF_to_MP4_start_new"></a>Starten eines neuen Workflows
 Öffnen Sie Workflow Designer, und wählen Sie „File“ > „New Workspace“ > „Transcode Blueprint“.
 
 Im neuen Workflow werden drei Elemente angezeigt:
@@ -82,7 +83,7 @@ Im neuen Workflow werden drei Elemente angezeigt:
 
 *Neuer Workflow für Codierung*
 
-### <a name="a-idmxftomp4withfileinputausing-the-media-file-input"></a><a id="MXF_to_MP4_with_file_input"></a>Verwenden von „Media File Input“
+### <a id="MXF_to_MP4_with_file_input"></a>Verwenden von „Media File Input“
 Wir beginnen mit dem Hinzufügen einer Media File Input-Komponente, damit unsere Eingabemediendatei akzeptiert wird. Um dem Workflow eine Komponente hinzuzufügen, suchen Sie im Repository-Suchfeld danach und ziehen den gewünschten Eintrag in den Designerbereich. Führen Sie dies für „Media File Input“ durch, und verbinden Sie die Komponente „Primary Source File“ mit dem Eingabepin von „Media File Input“.
 
 ![Verbundene Media File Input-Komponente](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
@@ -101,7 +102,7 @@ Hiermit wird zwar angegeben, mit welcher Eingabe wir arbeiten möchten, aber es 
 
 *Konfigurierte Eingabe- und Ausgabeeigenschaften*
 
-### <a name="a-idmxftomp4streamsainspecting-media-streams"></a><a id="MXF_to_MP4_streams"></a>Untersuchen von Mediendatenströmen
+### <a id="MXF_to_MP4_streams"></a>Untersuchen von Mediendatenströmen
 Häufig ist es wünschenswert zu wissen, wie der Datenstrom aussieht, der durch den Workflow fließt. Klicken Sie zum Untersuchen eines Datenstroms an einem beliebigen Punkt im Workflow einfach auf einen Ausgabe- oder Eingabepin einer Komponente. Versuchen Sie in unserem Beispiel Folgendes: Klicken Sie in der Komponente „Media File Input“ auf den Ausgabepin von „Uncompressed Video“. Es wird ein Dialogfeld geöffnet, in dem Sie die ausgehenden Videodaten untersuchen können.
 
 ![Untersuchen des Ausgabepins von „Uncompressed Video“](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
@@ -110,7 +111,7 @@ Häufig ist es wünschenswert zu wissen, wie der Datenstrom aussieht, der durch 
 
 Hier sehen wir beispielsweise, dass es sich um eine 1920x1080-Eingabe mit 24 Bildern pro Sekunde und 4:2:2-Sampling für ein Video mit einer Länge von fast zwei Minuten handelt.
 
-### <a name="a-idmxftomp4filegenerationaadding-a-video-encoder-for-mp4-file-generation"></a><a id="MXF_to_MP4_file_generation"></a>Hinzufügen eines Videoencoders für die Generierung von MP4-Dateien
+### <a id="MXF_to_MP4_file_generation"></a>Hinzufügen eines Videoencoders für die Generierung von MP4-Dateien
 Beachten Sie, dass jetzt ein Uncompressed Video-Ausgabepin und mehrere Uncompressed Audio-Ausgabepins für die Verwendung in „Media File Input“ verfügbar sind. Um die eingehenden Videodaten zu codieren, benötigen wir eine Codierkomponente – in diesem Fall zum Generieren von MP4-Dateien.
 
 Fügen Sie zum Codieren des Videodatenstroms in H.264 der Designeroberfläche die Komponente „AVC Video Encoder“ hinzu. Für diese Komponente wird ein Datenstrom vom Typ „Uncompressed Video“ als Eingabe verwendet, und am Ausgabepin wird ein Datenstrom vom Typ „Compressed Video (AVC)“ bereitgestellt.
@@ -136,7 +137,7 @@ Verbinden Sie für die Durchführung des Feeds für unseren AVC-Encoder den Ausg
 
 *Verbundener AVC-Hauptencoder*
 
-### <a name="a-idmxftomp4audioaencoding-the-audio-stream"></a><a id="MXF_to_MP4_audio"></a>Codieren des Audiodatenstroms
+### <a id="MXF_to_MP4_audio"></a>Codieren des Audiodatenstroms
 Wir verfügen jetzt über codierte Videodaten, aber der ursprüngliche unkomprimierte Audiodatenstrom muss noch komprimiert werden. Hierfür verwenden wir die AAC-Codierung mit der Komponente „AAC Encoder (Dolby)“. Fügen Sie sie dem Workflow hinzu.
 
 ![Nicht verbundener AVC-Encoder](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
@@ -161,14 +162,14 @@ Konfigurieren Sie den „Speaker Position Assigner“ zur Verwendung mit einem S
 
 Verbinden Sie den Ausgabepin von „Speaker Position Assigner“ mit dem Eingabepin des AAC-Encoders. Legen Sie für den AAC-Encoder dann die Verwendung der Kanaleinstellung „2.0 (L,R)“ fest, damit klar ist, dass Stereo-Audiodaten als Eingabe verwendet werden.
 
-### <a name="a-idmxftomp4audioandfideoamultiplexing-audio-and-video-streams-into-an-mp4-container"></a><a id="MXF_to_MP4_audio_and_fideo"></a>Durchführen von Multiplexing für Audio- und Videodatenströme in einen MP4-Container
+### <a id="MXF_to_MP4_audio_and_fideo"></a>Durchführen von Multiplexing für Audio- und Videodatenströme in einen MP4-Container
 Wir können sowohl den codierten AVC-Videodatenstrom als auch den codierten AAC-Audiodatenstrom in einem MP4-Container erfassen. Das Vermischen unterschiedlicher Datenströme zu einem zentralen Datenstrom wird als „Multiplexing“ (auch „Muxing“) bezeichnet. In diesem Fall führen wir für die Audio- und Videodatenströme das Interleaving in ein einzelnes kohärentes MP4-Paket durch. Die Komponente, mit der dies für einen MP4-Container koordiniert wird, wird als „ISO MPEG-4 Multiplexer“ bezeichnet. Fügen Sie eine Komponente dieses Typs der Designeroberfläche hinzu, und verbinden Sie den AVC-Videoencoder und den AAC-Encoder jeweils mit den Eingabepins der Komponente.
 
 ![Verbundener MPEG4 Multiplexer](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-mpeg4-multiplexer.png)
 
 *Verbundener MPEG4 Multiplexer*
 
-### <a name="a-idmxftomp4writingmp4awriting-the-mp4-file"></a><a id="MXF_to_MP4_writing_mp4"></a>Schreiben der MP4-Datei
+### <a id="MXF_to_MP4_writing_mp4"></a>Schreiben der MP4-Datei
 Zum Schreiben einer Ausgabedatei wird die Komponente „File Output“ verwendet. Wir können hierfür eine Verbindung mit der Ausgabe von „ISO MPEG-4 Multiplexer“ herstellen, damit die Ausgabe auf Datenträger geschrieben wird. Verbinden Sie hierzu den Ausgabepin „Container (MPEG-4)“ mit dem Eingabepin „Write“ von „File Output“.
 
 ![Verbundene Komponente „File Output“](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
@@ -202,7 +203,7 @@ Wenn Sie den Ausdruck durch Drücken von „OK“ bestätigen, wird im Eigenscha
 
 *Dateiausdruck löst Ausgabeverzeichnis auf*
 
-### <a name="a-idmxftomp4assetfromoutputacreating-a-media-services-asset-from-the-output-file"></a><a id="MXF_to_MP4_asset_from_output"></a>Erstellen eines Media Services-Medienobjekts aus der Ausgabedatei
+### <a id="MXF_to_MP4_asset_from_output"></a>Erstellen eines Media Services-Medienobjekts aus der Ausgabedatei
 Wir haben eine MP4-Ausgabedatei geschrieben, aber wir müssen noch angeben, dass diese Datei zu dem Ausgabemedienobjekt gehört, das von Media Services bei der Ausführung dieses Workflows generiert wird. Hierfür wird der Knoten „Output File/Asset“ auf der Workflow-Canvas verwendet. Alle eingehenden Dateien dieses Knotens werden zu einem Teil des sich ergebenden Azure Media Services-Medienobjekts.
 
 Verbinden Sie die Komponente „File Output“ mit der Komponente „Output File/Asset“, um den Workflow fertigzustellen.
@@ -211,10 +212,10 @@ Verbinden Sie die Komponente „File Output“ mit der Komponente „Output File
 
 *Fertiger Workflow*
 
-### <a name="a-idmxftomp4testatest-the-finished-workflow-locally"></a><a id="MXF_to_MP4_test"></a>Lokales Testen des fertigen Workflows
+### <a id="MXF_to_MP4_test"></a>Lokales Testen des fertigen Workflows
 Um den Workflow lokal zu testen, klicken Sie auf die entsprechende Schaltfläche in der Symbolleiste am oberen Rand. Nachdem die Ausführung des Workflows beendet ist, können Sie sich die generierte Ausgabe im konfigurierten Ausgabeordner ansehen. Sie sehen die fertige MP4-Ausgabedatei, die aus der MXF-Eingabequelldatei codiert wurde.
 
-## <a name="a-idmxftomp4withdynpackagingaencoding-mxf-into-mp4---multibitrate-dynamic-packaging-enabled"></a><a id="MXF_to_MP4_with_dyn_packaging"></a>Codieren von MXF in Multi-Bitrate-MP4-Dateien (mit aktivierter dynamischer Paketerstellung)
+## <a id="MXF_to_MP4_with_dyn_packaging"></a>Codieren von MXF in Multi-Bitrate-MP4-Dateien (mit aktivierter dynamischer Paketerstellung)
 In dieser exemplarischen Vorgehensweise erstellen wir eine Gruppe von Multi-Bitrate-MP4-Dateien mit AAC-codierten Audiodaten aus einer einzelnen MXF-Eingabedatei.
 
 Wenn eine Multi-Bitrate-Medienobjektausgabe zur Verwendung in Kombination mit den Azure Media Services-Features für die dynamische Paketerstellung gewünscht wird, müssen mehrere MP4-Dateien mit GOP-Ausrichtung und jeweils unterschiedlicher Bitrate und Auflösung generiert werden. Hierfür ist die exemplarische Vorgehensweise unter [Codieren einer MXF-Datei in eine Single-Bitrate-MP4-Datei](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) ein guter Ausgangspunkt.
@@ -223,7 +224,7 @@ Wenn eine Multi-Bitrate-Medienobjektausgabe zur Verwendung in Kombination mit de
 
 *Workflow als Ausgangspunkt*
 
-### <a name="a-idmxftomp4withdynpackagingmoreoutputsaadding-one-or-more-additional-mp4-outputs"></a><a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>Hinzufügen einer oder mehrerer zusätzlicher MP4-Ausgaben
+### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>Hinzufügen einer oder mehrerer zusätzlicher MP4-Ausgaben
 Jede MP4-Datei in unserem sich ergebenden Azure Media Services-Medienobjekt unterstützt eine andere Bitrate und Auflösung. Wir fügen dem Workflow eine oder mehrere MP4-Ausgabedateien hinzu.
 
 Um sicherzustellen, dass alle Videoencoder mit den gleichen Einstellungen erstellt werden, ist es am einfachsten, den bereits vorhandenen „AVC Video Encoder“ zu duplizieren und eine weitere Kombination aus Auflösung und Bitrate zu konfigurieren (z. B. 960x540 mit 25 Bildern pro Sekunde und 2,5 MBit/s). Kopieren Sie den vorhandenen Encoder, und fügen Sie ihn auf der Designeroberfläche ein, um ihn zu duplizieren.
@@ -258,7 +259,7 @@ Um die Kompatibilität mit der dynamischen Paketerstellung von Azure Media Servi
 
 Hinweis: Es kann ratsam sein, diesen Prozess für andere Kombinationen aus Bitrate und Auflösung zu wiederholen, die Sie der Medienobjektausgabe hinzufügen möchten.
 
-### <a name="a-idmxftomp4withdynpackagingconfoutputnamesaconfiguring-the-file-output-names"></a><a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>Konfigurieren der Dateiausgabenamen
+### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>Konfigurieren der Dateiausgabenamen
 Wir haben dem Ausgabemedienobjekt mehr als eine Datei hinzugefügt. Daher müssen wir sicherstellen, dass sich die Dateinamen für die einzelnen Ausgabedateien voneinander unterscheiden, und unter Umständen sogar eine Benennungskonvention für Dateinamen anwenden. So ist dafür gesorgt, dass bereits am Dateinamen erkennbar ist, worum es geht.
 
 Die Benennung der Dateiausgabe kann über Ausdrücke im Designer gesteuert werden. Öffnen Sie den Eigenschaftenbereich für eine der „File Output“-Komponenten, und öffnen Sie den Expression Editor für die File-Eigenschaft. Unsere erste Ausgabedatei wurde mit dem folgenden Ausdruck konfiguriert (siehe Tutorial für den Wechsel von [MXF zu einer Single-Bitrate-MP4-Ausgabe](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
@@ -276,7 +277,7 @@ Dies bedeutet, dass unser Dateiname anhand von zwei Variablen bestimmt wird: dem
 
 Führen Sie einen Zwischentest durch, um sicherzustellen, dass beide MP4-Ausgabedateien richtig generiert werden.
 
-### <a name="a-idmxftomp4withdynpackagingaudiotracksaadding-a-separate-audio-track"></a><a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>Hinzufügen einer separaten Audiospur
+### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>Hinzufügen einer separaten Audiospur
 Später beim Generieren einer ISM-Datei für unsere MP4-Ausgabedateien werden wir sehen, dass wir auch eine reine MP4-Audiodatei als Audiospur für das adaptive Streaming benötigen. Fügen Sie dem Workflow zum Erstellen dieser Datei einen zusätzlichen Muxer (ISO-MPEG-4 Multiplexer) hinzu, und verbinden Sie den Ausgabepin des AAC-Encoders mit dem Eingabepin für „Track 1“.
 
 ![Hinzugefügter Audio-Muxer](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
@@ -291,7 +292,7 @@ Erstellen Sie eine dritte File Output-Komponente, um den ausgehenden Datenstrom 
 
 *Audio-Muxer erstellt „File Output“*
 
-### <a name="a-idmxftomp4withdynpackagingismfileaadding-the-ism-smil-file"></a><a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Hinzufügen der ISM-SMIL-Datei
+### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Hinzufügen der ISM-SMIL-Datei
 Damit die dynamische Paketerstellung mit beiden MP4-Dateien (und der reinen MP4-Audiodatei) in unserem Media Services-Medienobjekt funktioniert, benötigen wir auch eine Manifestdatei (auch als „SMIL“-Datei bezeichnet: Synchronized Multimedia Integration Language). Diese Datei gibt für Azure Media Services an, welche MP4-Dateien für die dynamische Paketerstellung verfügbar sind und welche Datei für das Audiostreaming berücksichtigt werden sollte. Eine typische Manifestdatei für eine Gruppe von MP4-Dateien mit einem einzelnen Audiodatenstrom sieht wie folgt aus:
 
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -323,17 +324,17 @@ Der fertige Workflow sieht wie folgt aus:
 
 *Fertiger Workflow: MXF zu Multi-Bitrate-MP4*
 
-## <a name="a-idmxftomultibitratemp4aencoding-mxf-into-multibitrate-mp4---enhanced-blueprint"></a><a id="MXF_to__multibitrate_MP4"></a>Codieren von MXF in das Multi-Bitrate-MP4-Format – verbesserte Blaupause
+## <a id="MXF_to__multibitrate_MP4"></a>Codieren von MXF in das Multi-Bitrate-MP4-Format – verbesserte Blaupause
 Bei der [exemplarischen Vorgehensweise für den vorherigen Workflow](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging) haben wir gesehen, wie ein einzelnes MXF-Eingabemedienobjekt in ein Ausgabemedienobjekt mit Multi-Bitrate-MP4-Dateien, eine reine MP4-Audiodatei und eine Manifestdatei zur Verwendung mit der dynamischen Paketerstellung von Azure Media Services konvertiert werden kann.
 
 In dieser exemplarischen Vorgehensweise wird gezeigt, wie einige Aspekte verbessert und benutzerfreundlicher gestaltet werden können.
 
-### <a name="a-idmxftomultibitratemp4overviewaworkflow-overview-to-enhance"></a><a id="MXF_to_multibitrate_MP4_overview"></a>Übersicht über Workflow – Verbesserung
+### <a id="MXF_to_multibitrate_MP4_overview"></a>Übersicht über Workflow – Verbesserung
 ![Zu verbessernder Multi-Bitrate-MP4-Workflow](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
 
 *Zu verbessernder Multi-Bitrate-MP4-Workflow*
 
-### <a name="a-idmxftomultibitratemp4filenamingafile-naming-conventions"></a><a id="MXF_to__multibitrate_MP4_file_naming"></a>Benennungskonventionen für Dateien
+### <a id="MXF_to__multibitrate_MP4_file_naming"></a>Benennungskonventionen für Dateien
 Im vorherigen Workflow haben wir einen einfachen Ausdruck als Basis für die Generierung von Ausgabedateinamen angegeben. Es liegt aber eine Duplizierung vor: Für alle einzelnen Ausgabedateikomponenten wurde dieser Ausdruck angegeben.
 
 Beispielsweise wurde unsere Dateiausgabekomponente für die erste Videodatei mit diesem Ausdruck konfiguriert:
@@ -348,7 +349,7 @@ Wäre es nicht klarer, weniger fehleranfällig und benutzerfreundlicher, wenn wi
 
 Angenommen, wir nutzen für die Dateinamenkonfiguration die Bitraten der einzelnen MP4-Dateien. Für diese Bitraten streben wir die Konfiguration an einem zentralen Ort an (Stamm unseres Graphen), an dem für die Konfiguration und Generierung von Dateinamen darauf zugegriffen werden kann. Wir beginnen hierbei, indem wir die Bitrateneigenschaft beider AVC-Encoder für den Stamm unseres Workflows veröffentlichen, damit sie sowohl über den Stamm als auch über die AVC-Encoder zugänglich ist. (Auch bei Anzeige an zwei unterschiedlichen Orten ist nur ein zugrunde liegender Wert vorhanden.)
 
-### <a name="a-idmxftomultibitratemp4publishingapublishing-component-properties-onto-the-workflow-root"></a><a id="MXF_to__multibitrate_MP4_publishing"></a>Veröffentlichen von Komponenteneigenschaften im Workflowstamm
+### <a id="MXF_to__multibitrate_MP4_publishing"></a>Veröffentlichen von Komponenteneigenschaften im Workflowstamm
 Öffnen Sie den ersten AVC-Encoder, greifen Sie auf die Eigenschaft „Bitrate (kbps)“ zu, und wählen Sie in der Dropdownliste die Option „Publish“.
 
 ![Veröffentlichen der Bitrateneigenschaft](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-bitrate-property.png)
@@ -384,7 +385,7 @@ Wir schließen die Gruppe „Streaming Bitrates“ nun ab, indem wir auch die Au
 
 Beachten Sie Folgendes: Wenn diese drei Werte geändert werden, werden auch die Werte der entsprechenden Komponenten neu konfiguriert und geändert, mit denen sie verknüpft sind (und über die die Veröffentlichung durchgeführt wurde).
 
-### <a name="a-idmxftomultibitratemp4outputfilesahave-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>Generierte Ausgabedateinamen basierend auf veröffentlichten Eigenschaftswerten
+### <a id="MXF_to__multibitrate_MP4_output_files"></a>Generierte Ausgabedateinamen basierend auf veröffentlichten Eigenschaftswerten
 Anstatt die generierten Dateinamen hartzucodieren, können wir den Dateinamenausdruck jetzt für jede Dateiausgabekomponente so ändern, dass er sich auf die gerade im Stamm des Graphen veröffentlichten Bitrateneigenschaften bezieht. Wir beginnen mit der ersten Dateiausgabe, suchen nach der File-Eigenschaft und bearbeiten den Ausdruck wie folgt:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
@@ -405,15 +406,15 @@ Ebenfalls für die reine Audiodateiausgabe:
 
 Wenn wir die Bitrate für eine Video- oder Audiodatei nun ändern, wird der entsprechende Encoder neu konfiguriert, und die auf der Bitrate basierende Dateibenennungskonvention wird automatisch berücksichtigt.
 
-## <a name="a-idthumbnailstomultibitratemp4aadding-thumbnails-to-multibitrate-mp4-output"></a><a id="thumbnails_to__multibitrate_MP4"></a>Hinzufügen von Miniaturbildern zur Multi-Bitrate-MP4-Ausgabe
+## <a id="thumbnails_to__multibitrate_MP4"></a>Hinzufügen von Miniaturbildern zur Multi-Bitrate-MP4-Ausgabe
 Wir beginnen jetzt mit einem Workflow, mit dem [eine Multi-Bitrate-MP4-Ausgabe aus einer MXF-Eingabe](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)generiert wird, und sehen uns das Hinzufügen von Miniaturbildern zur Ausgabe an.
 
-### <a name="a-idthumbnailstomultibitratemp4overviewaworkflow-overview-to-add-thumbnails-to"></a><a id="thumbnails_to__multibitrate_MP4_overview"></a>Übersicht über Workflow – Hinzufügen von Miniaturbildern
+### <a id="thumbnails_to__multibitrate_MP4_overview"></a>Übersicht über Workflow – Hinzufügen von Miniaturbildern
 ![Multi-Bitrate-MP4-Workflow als Ausgangspunkt](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
 
 *Multi-Bitrate-MP4-Workflow als Ausgangspunkt*
 
-### <a name="a-idthumbnailstomultibitratemp4withjpgaadding-jpg-encoding"></a><a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>Hinzufügen von JPG-Codierung
+### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>Hinzufügen von JPG-Codierung
 Das Herzstück der Miniaturbildgenerierung ist die Komponente „JPG Encoder“, mit der die Ausgabe von JPG-Dateien möglich ist.
 
 ![JPG Encoder](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
@@ -434,7 +435,7 @@ Das Frame Gate lässt ein Videobild jeweils nach einer bestimmten Anzahl von Sek
 
 Wir erstellen jede Minute ein Miniaturbild, indem wir den Modus auf „Time (seconds)“ und das Intervall auf „60“ festlegen.
 
-### <a name="a-idthumbnailstomultibitratemp4colorspaceadealing-with-color-space-conversion"></a><a id="thumbnails_to__multibitrate_MP4_color_space"></a>Durchführen der Farbraumkonvertierung
+### <a id="thumbnails_to__multibitrate_MP4_color_space"></a>Durchführen der Farbraumkonvertierung
 Es scheint zwar logisch zu sein, dass beide Pins „Uncompressed Video“ des Frame Gate und „Media File Input“ jetzt verbunden werden können, aber wir erhalten eine Fehlermeldung, wenn wir dies tun.
 
 ![Fehler: Eingangsfarbraum](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-input-color-space-error.png)
@@ -451,7 +452,7 @@ Ziehen Sie die Komponente „Color Space Converter – Intel“ auf den Workflow
 
 Wählen Sie im Eigenschaftenfenster in der Liste „Preset“ den Eintrag „BGR 24“ aus.
 
-### <a name="a-idthumbnailstomultibitratemp4writingthumbnailsawriting-the-thumbnails"></a><a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>Schreiben von Miniaturbildern
+### <a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>Schreiben von Miniaturbildern
 Im Gegensatz zu unseren MP4-Videos gibt die Komponente „JPG Encoder“ mehr als eine Datei aus. Hierfür kann die Komponente „Scene Search JPG File Writer“ verwendet werden: Die eingehenden JPG-Miniaturbilder werden geschrieben, und jeder Dateiname erhält als Suffix eine andere Zahl. (Mit der Zahl wird normalerweise die Anzahl von Sekunden/Einheiten in dem Datenstrom angegeben, aus dem das Miniaturbild erstellt wurde.)
 
 ![Einführung in Scene Search JPG File Writer](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer.png)
@@ -472,7 +473,7 @@ Das Präfix bestimmt, wie die Miniaturbilddateien benannt werden. Sie erhalten a
 
 Verbinden Sie „Scene Search JPG File Writer“ mit dem Knoten „Output File/Asset“.
 
-### <a name="a-idthumbnailstomultibitratemp4errorsadetecting-errors-in-a-workflow"></a><a id="thumbnails_to__multibitrate_MP4_errors"></a>Erkennen von Fehlern in einem Workflow
+### <a id="thumbnails_to__multibitrate_MP4_errors"></a>Erkennen von Fehlern in einem Workflow
 Verbinden Sie die Eingabe von „Color Space Converter“ mit der unformatierten „Uncompressed Video“-Ausgabe. Führen Sie nun einen lokalen Testlauf für den Workflow durch. Die Wahrscheinlichkeit ist hoch, dass die Ausführung des Workflows plötzlich angehalten und ein roter Rahmen für die Komponente angezeigt wird, für die ein Fehler aufgetreten ist:
 
 ![Color Space Converter: Fehler](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
@@ -493,22 +494,22 @@ Um dies zu beheben, geben wir in den Metadaten unseres Datenstroms an, dass wir 
 
 *Aktualisieren von „Color Space Standard“ im Data Type Updater*
 
-### <a name="a-idthumbnailstomultibitratemp4finishafinished-workflow"></a><a id="thumbnails_to__multibitrate_MP4_finish"></a>Fertiger Workflow
+### <a id="thumbnails_to__multibitrate_MP4_finish"></a>Fertiger Workflow
 Nachdem wir den Workflow jetzt fertiggestellt haben, führen wir einen weiteren Testlauf durch, der erfolgreich verläuft.
 
 ![Fertiger Workflow für Multi-MP4-Ausgabe mit Miniaturbildern](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
 
 *Fertiger Workflow für Multi-MP4-Ausgabe mit Miniaturbildern*
 
-## <a name="a-idtimebasedtrimatime-based-trimming-of-multibitrate-mp4-output"></a><a id="time_based_trim"></a>Zeitbasiertes Kürzen der Multi-Bitrate-MP4-Ausgabe
+## <a id="time_based_trim"></a>Zeitbasiertes Kürzen der Multi-Bitrate-MP4-Ausgabe
 Wir beginnen mit einem Workflow, mit dem [eine Multi-Bitrate-MP4-Ausgabe aus einer MXF-Eingabe](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)generiert wird, und sehen uns das Kürzen des Quellvideos basierend auf Zeitstempeln an.
 
-### <a name="a-idtimebasedtrimstartaworkflow-overview-to-start-adding-trimming-to"></a><a id="time_based_trim_start"></a>Übersicht über Workflow – Beginnen mit dem Hinzufügen der Kürzung
+### <a id="time_based_trim_start"></a>Übersicht über Workflow – Beginnen mit dem Hinzufügen der Kürzung
 ![Startworkflow zum Hinzufügen der Kürzung](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
 
 *Startworkflow zum Hinzufügen der Kürzung*
 
-### <a name="a-idtimebasedtrimusestreamtrimmerausing-the-stream-trimmer"></a><a id="time_based_trim_use_stream_trimmer"></a>Verwenden des Stream Trimmers
+### <a id="time_based_trim_use_stream_trimmer"></a>Verwenden des Stream Trimmers
 Mit der Komponente „Stream Trimmer“ können Sie den Anfang und das Ende eines Eingabedatenstroms anhand von Zeitinformationen (Sekunden, Minuten, ...) kürzen. Das framebasierte Kürzen wird vom Trimmer nicht unterstützt.
 
 ![Stream Trimmer](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
@@ -553,12 +554,12 @@ Für „Trimming End Time“:
 
     ${ROOT_TrimmingEndTime}
 
-### <a name="a-idtimebasedtrimfinishafinished-workflow"></a><a id="time_based_trim_finish"></a>Fertiger Workflow
+### <a id="time_based_trim_finish"></a>Fertiger Workflow
 ![Fertiger Workflow](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
 
 *Fertiger Workflow*
 
-## <a name="a-idscriptingaintroducing-the-scripted-component"></a><a id="scripting"></a>Einführung in die Skriptkomponente
+## <a id="scripting"></a>Einführung in die Skriptkomponente
 Skriptkomponenten können während der Ausführungsphasen unseres Workflows beliebige Skripts ausführen. Es gibt vier verschiedene Skripts, die ausgeführt werden können. Jedes verfügt über besondere Merkmale und seinen eigenen Platz im Lebenszyklus des Workflows:
 
 * **commandScript**
@@ -568,7 +569,7 @@ Skriptkomponenten können während der Ausführungsphasen unseres Workflows beli
 
 In der Dokumentation zur Skriptkomponente finden Sie hierzu jeweils ausführliche Informationen. Im [folgenden Abschnitt](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)wird die Skriptkomponente **realizeScript** verwendet, um beim Starten des Workflows nebenbei eine Cliplist-XML-Datei zu erstellen. Dieses Skript wird während der Einrichtung der Komponente aufgerufen, und dieser Vorgang wird während des Lebenszyklus nur einmal durchgeführt.
 
-### <a name="a-idscriptinghelloworldascripting-within-a-workflow-hello-world"></a><a id="scripting_hello_world"></a>Erstellen eines Skripts in einem Workflow: hello world
+### <a id="scripting_hello_world"></a>Erstellen eines Skripts in einem Workflow: hello world
 Ziehen Sie eine Skriptkomponente auf die Designeroberfläche, und benennen Sie sie um (z. B. in „SetClipListXML“).
 
 ![Hinzufügen einer Skriptkomponente](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
@@ -619,15 +620,15 @@ Im Protokollfenster wird Folgendes angezeigt:
 
 *Protokollausgabe für den Zugriff auf Knotenpfade*
 
-## <a name="a-idframebasedtrimaframe-based-trimming-of-multibitrate-mp4-output"></a><a id="frame_based_trim"></a>Framebasiertes Kürzen der Multi-Bitrate-MP4-Ausgabe
+## <a id="frame_based_trim"></a>Framebasiertes Kürzen der Multi-Bitrate-MP4-Ausgabe
 Wir beginnen mit einem Workflow, mit dem [eine Multi-Bitrate-MP4-Ausgabe aus einer MXF-Eingabe](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)generiert wird, und sehen uns das Kürzen des Quellvideos basierend auf der Bildanzahl an.
 
-### <a name="a-idframebasedtrimstartablueprint-overview-to-start-adding-trimming-to"></a><a id="frame_based_trim_start"></a>Übersicht über Blaupause – Beginnen mit dem Hinzufügen der Kürzung
+### <a id="frame_based_trim_start"></a>Übersicht über Blaupause – Beginnen mit dem Hinzufügen der Kürzung
 ![Startworkflow zum Hinzufügen der Kürzung](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
 
 *Startworkflow zum Hinzufügen der Kürzung*
 
-### <a name="a-idframebasedtrimcliplistausing-the-clip-list-xml"></a><a id="frame_based_trim_clip_list"></a>Verwenden der Cliplisten-XML-Datei
+### <a id="frame_based_trim_clip_list"></a>Verwenden der Cliplisten-XML-Datei
 In allen vorherigen Workflow-Tutorials haben wir die Komponente „Media File Input“ als Videoeingabequelle verwendet. Für dieses spezielle Szenario verwenden wir stattdessen die Komponente „Clip List Source“. Beachten Sie, dass dies nicht als bevorzugte Vorgehensweise gewählt werden sollte. Verwenden Sie „Clip List Source“ nur, wenn es dafür einen triftigen Grund gibt (wie im Fall unten, in dem wir die Funktionen zum Kürzen der Clipliste verwenden).
 
 Um von „Media File Input“ zu „Clip List Source“ zu wechseln, ziehen Sie die Komponente „Clip List Source“ auf die Entwurfsoberfläche und verbinden den Pin von „Clip List XML“ mit dem Knoten „Clip List XML“ von Workflow Designer. Hierdurch sollte „Clip List Source“ gemäß Ihrem Eingabevideo mit Ausgabepins gefüllt werden. Verbinden Sie als Nächstes die Pins „Uncompressed Video“ und „Uncompressed Audio“ von „Clip List Source“ mit den entsprechenden AVC-Encodern und dem Audio Stream Interleaver. Entfernen Sie anschließend die Komponente „Media File Input“.
@@ -672,7 +673,7 @@ Wenn Sie sich die Eigenschaften der Skriptkomponente ansehen, werden die vier un
 
 *Eigenschaften von Skriptkomponenten*
 
-### <a name="a-idframebasedtrimmodifycliplistamodifying-the-clip-list-from-a-scripted-component"></a><a id="frame_based_trim_modify_clip_list"></a>Ändern der Clipliste über eine Skriptkomponente
+### <a id="frame_based_trim_modify_clip_list"></a>Ändern der Clipliste über eine Skriptkomponente
 Bevor wir die Cliplisten-XML-Datei neu schreiben können, die beim Starten des Workflows generiert wird, müssen wir Zugriff auf die clipListXML-Eigenschaft und den Inhalt haben. Dies erreichen wir wie folgt:
 
     // get cliplist xml:
@@ -802,7 +803,7 @@ Dieser Code wird direkt über dem Punkt eingefügt, an dem wir die trim-Elemente
 
 Wir können unseren Workflow jetzt so oft wie gewünscht ausführen und ändern, da die Änderungen jedes Mal angewendet werden.    
 
-### <a name="a-idframebasedtrimclippingenabledpropaadding-a-clippingenabled-convenience-property"></a><a id="frame_based_trim_clippingenabled_prop"></a>Hinzufügen einer ClippingEnabled-Hilfseigenschaft
+### <a id="frame_based_trim_clippingenabled_prop"></a>Hinzufügen einer ClippingEnabled-Hilfseigenschaft
 Da das Kürzen vielleicht nicht jedes Mal durchgeführt werden soll, schließen wir den Workflow ab, indem wir ein hilfreiches boolesches Flag hinzufügen. Hiermit kann angegeben werden, ob das Kürzen aktiviert werden soll.
 
 Veröffentlichen Sie genau wie zuvor im Stamm des Workflows eine neue Eigenschaft mit dem Namen „ClippingEnabled“ und dem Typ „BOOLEAN“.
@@ -824,7 +825,7 @@ Mit der folgenden einfachen Wächterklausel können wir überprüfen, ob das Kü
     }
 
 
-### <a name="a-idcodeacomplete-code"></a><a id="code"></a>Vollständiger Code
+### <a id="code"></a>Vollständiger Code
     import javax.xml.parsers.*;
     import org.xml.sax.*;
     import org.w3c.dom.*;
@@ -938,9 +939,4 @@ Mit der folgenden einfachen Wächterklausel können wir überprüfen, ob das Kü
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

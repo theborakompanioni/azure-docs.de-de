@@ -3,8 +3,8 @@ title: "Hinzufügen von Authentifizierung unter Android mit Mobile Apps | Micros
 description: "Hier erfahren Sie, wie Sie das Mobile Apps-Feature in Azure App Service verwenden, um die Benutzer Ihrer Android-App über verschiedene Identitätsanbieter wie Google, Facebook, Twitter und Microsoft zu authentifizieren."
 services: app-service\mobile
 documentationcenter: android
-author: ysxu
-manager: 
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: yuaxu
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: fcaab18c2c22bcbdbb42708da9840fb6e5c25b2e
+ms.contentlocale: de-de
 ms.lasthandoff: 03/25/2017
-
 
 ---
 # <a name="add-authentication-to-your-android-app"></a>Hinzufügen der Authentifizierung zu Ihrer Android-App
