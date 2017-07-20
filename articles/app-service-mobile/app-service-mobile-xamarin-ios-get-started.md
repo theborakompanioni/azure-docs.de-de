@@ -3,7 +3,7 @@ title: "Erste Schritte mit Azure Mobile App Service-Apps für Xamarin.iOS-Apps |
 description: "Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung von Mobile Apps für die Xamarin.iOS-Entwicklung."
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: ed289d0755bbad08de01b0f311d14f5514ce0631
+ms.contentlocale: de-de
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="create-a-xamarinios-app"></a>Erstellen einer Xamarin.iOS-App
@@ -38,8 +38,8 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](https://azure.microsoft.com/try/app-service/mobile/). Sie können direkt eine kurzzeitige mobile Start-App in App Service erstellen, und zwar ohne erforderliche Kreditkarte oder weitere Verpflichtungen.
-> 
-> 
+>
+>
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Erstellen eines Azure Mobile App-Back-Ends
 Führen Sie die folgenden Schritte aus, um ein Mobile App-Back-End zu erstellen.
@@ -56,24 +56,24 @@ Befolgen Sie die folgenden Schritte zum Konfigurieren des Serverprojekts für di
 ## <a name="download-and-run-the-xamarinios-app"></a>Herunterladen und Ausführen der Xamarin.iOS-App
 1. Öffnen Sie das [Azure-Portal] in einem Browserfenster.
 2. Klicken Sie auf dem Blatt „Einstellungen“ für Ihre mobile App auf **Erste Schritte** > **Xamarin.iOS**. Klicken Sie unter Schritt 3 auf **Neue App erstellen** , falls noch nicht ausgewählt.  Klicken Sie dann auf die Schaltfläche **Herunterladen** .
-   
+
       Eine Clientanwendung, die sich mit Ihrem mobilen Back-End-verbindet, wird heruntergeladen. Speichern Sie die komprimierte Projektdatei auf dem lokalen Computer und merken Sie sich, wo Sie sie gespeichert haben.
 3. Extrahieren Sie das heruntergeladene Projekt, und öffnen Sie es dann in Xamarin Studio (oder Visual Studio).
-   
+
     ![][9]
-   
+
     ![][8]
 4. Drücken Sie F5, um das Projekt zu erstellen und die App im iPhone-Simulator zu starten.
 5. Geben Sie in der App einen sinnvollen Text ein, z.B. *Xamarin kennenlernen*, und klicken Sie dann auf die Schaltfläche **+**.
-   
+
     ![][10]
-   
+
     Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden vom mobilen App-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
 
 > [!NOTE]
 > Sie können den Code überprüfen, der auf das mobile App-Back-End zum Abfragen und Einfügen von Daten zugreift. Sie finden ihn in der C#-Datei "QSTodoService.cs C#".
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen der Offlinesynchronisierung zu Ihrer App](app-service-mobile-xamarin-ios-get-started-offline-data.md)

@@ -3,7 +3,7 @@ title: "Ich verwende Mobile Services – welche Vorteile bietet App Service?"
 description: "Erfahren Sie, welche Vorteile App Service für Ihre vorhandenen Mobile Services-Projekte bietet."
 services: app-service\mobile
 documentationcenter: ios
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
@@ -19,7 +19,6 @@ ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: e23a4f182e6bb0ba53927aa6195967c2464e4233
 ms.contentlocale: de-de
 ms.lasthandoff: 07/10/2017
-
 
 ---
 # <a name="getting-started"> </a>Ich verwende Mobile Services – welche Vorteile bietet App Service?
@@ -65,5 +64,4 @@ Sichern Sie automatisch Back-End und Datenbank. Ihr Code und Ihre Daten werden i
 Mit *Azure App Service* können Sie jetzt mehrere private Test- und Stagingumgebungen für Ihre mobilen Apps erstellen. Verwenden Sie sie zum Durchführen von Tests vor der Bereitstellung. Wechseln Sie ohne Ausfallzeiten in die Produktion. Web-Apps werden vorab geladen, um höchste Kundenzufriedenheit zu gewährleisten.
 
 Sie können mithilfe dieses *Tutorials* die Vorteile von [App Service](app-service-mobile-migrating-from-mobile-services.md)für Ihre vorhandenen Mobile Service-Projekte nutzen.
-
 

@@ -3,7 +3,7 @@ title: "Vorgehensweise beim Arbeiten mit dem Node.js Back-End Server SDK für Mo
 description: "Informationen zum Arbeiten mit dem Node.js-Back-End-Server SDK für Azure Mobile App Service-Apps."
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: 8a6fd3711bf273d7035587d3731a334fd2268c32
+ms.contentlocale: de-de
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="how-to-use-the-azure-mobile-apps-nodejs-sdk"></a>Verwenden des Azure Mobile Apps SDK für Node.js
@@ -45,33 +45,33 @@ Das Mobile Apps Node SDK unterstützt zwei Datenbanktreiber: Der node-mssql-Trei
 Jedes Node.js-Back-End von Azure Mobile App Service-Apps verhält sich am Anfang wie eine ExpressJS-Anwendung.  ExpressJS ist das beliebteste Webdienst-Framework für Node.js.  Sie können eine [Express] -Basisanwendung wie folgt erstellen:
 
 1. Erstellen Sie in einem Befehlsfenster oder PowerShell-Fenster ein Verzeichnis für Ihr Projekt.
-   
+
         mkdir basicapp
 2. Führen Sie „npm init“ aus, um die Paketstruktur zu initialisieren.
-   
+
         cd basicapp
         npm init
-   
+
     Im Rahmen des Befehls „npm init“ werden einige Fragen gestellt, um das Projekt initialisieren zu können.  Hier finden Sie eine Beispielausgabe:
-   
+
     ![Ausgabe von npm init][0]
 3. Installieren Sie die express- und azure-mobile-apps-Bibliotheken aus dem Repository „npm“.
-   
+
         npm install --save express azure-mobile-apps
 4. Erstellen Sie die Datei „app.js“, um den einfachen mobilen Server zu implementieren.
-   
+
         var express = require('express'),
             azureMobileApps = require('azure-mobile-apps');
-   
+
         var app = express(),
             mobile = azureMobileApps();
-   
+
         // Define a TodoItem table
         mobile.tables.add('TodoItem');
-   
+
         // Add the mobile API so it is accessible as a Web API
         app.use(mobile);
-   
+
         // Start listening on HTTP
         app.listen(process.env.PORT || 3000);
 
@@ -94,28 +94,28 @@ Für Visual Studio 2015 ist eine Erweiterung zum Entwickeln der Node.js-Anwendu
 2. Erweitern Sie **Vorlagen** > **JavaScript** > **Node.js**.
 3. Wählen Sie die **einfache Azure Node.js Express 4-Anwendung aus**.
 4. Geben Sie den Projektnamen ein.  Klicken Sie auf *OK*.
-   
+
     ![Visual Studio 2015 – Neues Projekt][1]
 5. Klicken Sie mit der rechten Maustaste auf den Knoten **npm**, und wählen Sie **Neue NPM-Pakete installieren...**.
 6. Bei der Erstellung der ersten Node.js-Anwendung müssen Sie den NPM-Katalog möglicherweise aktualisieren.  Klicken Sie bei Bedarf auf **Aktualisieren** .
 7. Geben Sie in das Suchfeld *azure-mobile-apps* ein.  Klicken Sie auf das Paket **azure-mobile-apps 2.0.0** und dann auf **Paket installieren**.
-   
+
     ![Neue NPM-Pakete installieren][2]
 8. Klicken Sie auf **Schließen**.
 9. Öffnen Sie die Datei *app.js*, um Unterstützung für das Azure Mobile Apps SDK-hinzuzufügen.  Fügen Sie unten in den „library require“-Anweisungen in Zeile 6 den folgenden Code hinzu:
-   
+
         var bodyParser = require('body-parser');
         var azureMobileApps = require('azure-mobile-apps');
-   
+
     Fügen Sie ungefähr bei Zeile 27 nach den anderen „app.use“-Anweisungen den folgenden Code hinzu:
-   
+
         app.use('/users', users);
-   
+
         // Azure Mobile Apps Initialization
         var mobile = azureMobileApps();
         mobile.tables.add('TodoItem');
         app.use(mobile);
-   
+
     Speichern Sie die Datei .
 10. Führen Sie die Anwendung entweder lokal aus (die API wird unter http://localhost:3000 bereitgestellt), oder veröffentlichen Sie sie in Azure.
 
@@ -124,7 +124,8 @@ Sie können ein Mobile App Back-End direkt im [Azure-Portal]erstellen. Sie könn
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-Wählen Sie auf dem Blatt *Erste Schritte* unter **Erstellen einer Tabellen-API** die Option **Node.js** als **Back-End-Sprache**. Aktivieren Sie die Schaltfläche **Ich bestätige, dass durch diese Aktion alle Websiteinhalte überschrieben werden**, und klicken Sie auf **TodoItem-Tabelle erstellen**.
+Wählen Sie auf dem Blatt *Erste Schritte* unter **Erstellen einer Tabellen-API** die Option **Node.js** als **Back-End-Sprache**.
+Aktivieren Sie die Schaltfläche **Ich bestätige, dass durch diese Aktion alle Websiteinhalte überschrieben werden**, und klicken Sie auf **TodoItem-Tabelle erstellen**.
 
 ### <a name="download-quickstart"></a>Vorgehensweise: Herunterladen des Schnellstart-Codeprojekts für das Node.js-Back-End mit Git
 Wenn Sie ein Node.js-Mobile App-Back-End erstellen, indem Sie im Portal das Blatt **Schnellstart** verwenden, wird ein Node.js-Projekt für Sie erstellt und auf Ihrer Website bereitgestellt. Im Portal können Sie Tabellen und APIs hinzufügen und Codedateien für das Node.js-Back-End bearbeiten. Sie können auch verschiedene Bereitstellungstools zum Herunterladen des Back-End-Projekts verwenden, damit Sie Tabellen und APIs hinzufügen oder ändern und das Projekt dann erneut veröffentlichen können. Weitere Informationen finden Sie im [Azure App Service-Bereitstellungshandbuch]. Beim folgenden Verfahren wird ein Git-Repository verwendet, um den Schnellstart-Projektcode herunterzuladen.
@@ -133,14 +134,14 @@ Wenn Sie ein Node.js-Mobile App-Back-End erstellen, indem Sie im Portal das Blat
 2. Führen Sie die Schritte unter [Aktivieren des App Service-App-Repositorys](../app-service-web/app-service-deploy-local-git.md#Step3) aus, um das Git-Repository für Ihre Back-End-Website zu aktivieren, und notieren Sie sich den Benutzernamen und das Kennwort der Bereitstellung.
 3. Notieren Sie sich auf dem Blatt für das Mobile App-Back-End, die Einstellung unter **Git-Klon-URL** .
 4. Führen Sie den Befehl `git clone` mit der Git-Klon-URL aus, und geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden. Dies ist im folgenden Beispiel dargestellt:
-   
+
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 5. Navigieren Sie zum lokalen Verzeichnis. Im obigen Beispiel ist dies „/todolist“. Sie sehen, dass Projektdateien heruntergeladen wurden. Suchen Sie die `todoitem.json`-Datei im `/tables`-Verzeichnis.  Diese Datei definiert Berechtigungen für die Tabelle.  Im gleichen Verzeichnis finden Sie auch die Datei `todoitem.js`, die diese CRUD-Vorgangsskripts für die Tabelle definiert.
 6. Führen Sie nach dem Vornehmen der Änderungen an den Projektdateien die folgenden Befehle aus, um die Änderungen hinzuzufügen, dafür einen Commit auszuführen und sie dann auf die Website hochzuladen:
-   
+
         $ git commit -m "updated the table script"
         $ git push origin master
-   
+
     Wenn Sie dem Projekt neue Dateien hinzufügen, müssen Sie zuerst den Befehl `git add .` ausführen.
 
 Die Website wird jeweils neu veröffentlicht, wenn ein neuer Satz mit Commits per Pushvorgang auf die Website übertragen wird.
@@ -242,37 +243,37 @@ Das Node.js SDK für Azure Mobile Apps verwendet das [mssql-Node.js-Paket] , um 
 
 > [!TIP]
 > Beim memory-Treiber wird keine vollständige Gruppe von Elementen für Testzwecke bereitgestellt.  Wenn Sie Ihr Back-End lokal testen möchten, empfehlen wir die Verwendung eines SQL Express-Datenspeichers und des mssql-Treibers.
-> 
-> 
+>
+>
 
 1. Laden Sie [Microsoft SQL Server 2014 Express]herunter, und installieren Sie die Anwendung.  Stellen Sie sicher, dass Sie die Edition „SQL Server 2014 Express with Tools“ installieren.  Falls Sie nicht unbedingt 64-Bit-Unterstützung benötigen, können Sie die 32-Bit-Version verwenden, die bei der Ausführung weniger Arbeitsspeicher verbraucht.
 2. Führen Sie den SQL Server 2014-Konfigurations-Manager aus.
-   
+
    1. Erweitern Sie im linken Strukturmenü den Knoten **SQL Server-Netzwerkkonfiguration** .
    2. Klicken Sie auf **Protokolle für SQLEXPRESS**.
    3. Klicken Sie mit der rechten Maustaste auf **TCP/IP**, und wählen Sie **Aktivieren**.  Klicken Sie im Popupdialogfenster auf **OK** .
    4. Klicken Sie mit der rechten Maustaste auf **TCP/IP**, und wählen Sie **Eigenschaften**.
    5. Klicken Sie auf die Registerkarte **IP-Adressen** .
    6. Suchen Sie nach dem Knoten **IPAll** .  Geben Sie im Feld **TCP-Port** den Wert **1433** ein.
-      
+
           ![Configure SQL Express for TCP/IP][3]
    7. Klicken Sie auf **OK**.  Klicken Sie im Popupdialogfenster auf **OK** .
    8. Klicken Sie im linken Strukturmenü auf **SQL Server-Dienste** .
    9. Klicken Sie mit der rechten Maustaste auf **SQL Server (SQLEXPRESS)**, und wählen Sie **Neu starten**.
    10. Schließen Sie den SQL Server 2014-Konfigurations-Manager.
 3. Ausführen von SQL Server 2014 Management Studio und Herstellen einer Verbindung mit Ihrer lokalen SQL Express-Instanz
-   
+
    1. Klicken Sie mit der rechten Maustaste im Objekt-Explorer auf Ihre Instanz, und wählen Sie **Eigenschaften**
    2. Wählen Sie die Seite **Sicherheit** aus.
    3. Stellen Sie sicher, dass der **SQL Server- und Windows-Authentifizierungsmodus** ausgewählt ist.
    4. Klicken Sie auf **OK**
-      
+
           ![Configure SQL Express Authentication][4]
    5. Erweitern Sie **Sicherheit** > **Anmeldungen** .
    6. Klicken Sie mit der rechten Maustaste auf **Anmeldungen**, und wählen Sie **Neue Anmeldung...**.
    7. Geben Sie einen Anmeldenamen ein.  Wählen Sie **SQL Server-Authentifizierung**.  Geben Sie ein Kennwort ein, und geben Sie das gleiche Kennwort dann noch einmal unter **Kennwort bestätigen** ein.  Das Kennwort muss die unter Windows erforderliche Kennwortkomplexität aufweisen.
    8. Klicken Sie auf **OK**
-      
+
           ![Add a new user to SQL Express][5]
    9. Klicken Sie mit der rechten Maustaste auf die neue Anmeldung, und wählen Sie **Eigenschaften**
    10. Wählen Sie die Seite **Serverrollen** aus.
@@ -356,13 +357,13 @@ Nach der Erstellung des mobilen App-Back-Ends können Sie wählen, ob Sie entwed
 
 > [!NOTE]
 > Wenn Sie am Standort des mobilen App-Back-Ends bereits über eine Datenbank verfügen, können Sie stattdessen **Vorhandene Datenbank verwenden** wählen und dann diese Datenbank auswählen. Die Verwendung einer Datenbank an einem anderen Standort wird aufgrund der höheren Latenz nicht empfohlen.
-> 
-> 
+>
+>
 
 1. Klicken Sie im neuen mobilen App-Back-End auf **Einstellungen** > **Mobile App** > **Daten** > **+Hinzufügen**.
 2. Klicken Sie auf dem Blatt **Datenverbindung hinzufügen** auf **SQL-Datenbank – Erforderliche Einstellungen konfigurieren** > **Neue Datenbank erstellen**.  Geben Sie den Namen der neuen Datenbank in das Feld **Name** ein.
 3. Klicken Sie auf **Server**.  Geben Sie auf dem Blatt **Neuer Server** in **Servername** einen eindeutigen Namen ein, und legen Sie eine geeignete **Serveradministratoranmeldung** mit einem **Kennwort** an.  Stellen Sie sicher, dass **Allow azure services to access server** aktiviert ist.  Klicken Sie auf **OK**.
-   
+
     ![Erstellen einer Azure-SQL-Datenbank][6]
 4. Klicken Sie auf dem Blatt **Neue Datenbank** auf **OK**.
 5. Wählen Sie wieder auf dem Blatt **Datenverbindung hinzufügen** die **Verbindungszeichenfolge** aus, und geben Sie den Anmeldenamen und das Kennwort ein, den/das Sie beim Erstellen der Datenbank angegeben haben.  Wenn Sie eine vorhandene Datenbank verwenden, geben Sie die Anmeldeinformationen für diese Datenbank an.  Klicken Sie nach der Eingabe auf **OK**.
@@ -801,8 +802,8 @@ Wenn Sie in den Einstellungen für die Back-End-Website auf **Easy Tables** klic
 
 Die folgenden Befehle stehen in der Befehlsleiste einer Tabelle zur Verfügung:
 
-* **Berechtigungen ändern** : Dient zum Ändern der Berechtigung für Vorgänge zum Lesen, Einfügen, Aktualisieren und Löschen in der Tabelle. 
-  Sie können den anonymen Zugriff zulassen, eine Authentifizierung erzwingen oder den gesamten Zugriff auf den Vorgang deaktivieren. 
+* **Berechtigungen ändern** : Dient zum Ändern der Berechtigung für Vorgänge zum Lesen, Einfügen, Aktualisieren und Löschen in der Tabelle.
+  Sie können den anonymen Zugriff zulassen, eine Authentifizierung erzwingen oder den gesamten Zugriff auf den Vorgang deaktivieren.
 * **Skript bearbeiten** : Die Skriptdatei für die Tabelle wird im App Service-Editor geöffnet.
 * **Schema verwalten** : Dient zum Hinzufügen oder Löschen von Spalten oder zum Ändern des Tabellenindex.
 * **Tabelle löschen** : Dient zum Abschneiden einer vorhandenen Tabelle, indem alle Datenzeilen gelöscht werden, während das Schema unverändert bleibt.
@@ -822,7 +823,7 @@ Im Portal können Sie die Zugriffsberechtigungen für eine bestimmte HTTP-Aktion
 Im Azure-Portal können Sie Ihre Node.js-Back-End-Skriptdateien im App Service-Editor bearbeiten, ohne dass Sie das Projekt auf den lokalen Computer herunterladen müssen. So bearbeiten Sie Skriptdateien im Online-Editor
 
 1. Klicken Sie auf dem Blatt für Ihr Mobile App-Back-End auf **Alle Einstellungen** und dann entweder auf **Einfache Tabellen** oder **Einfache APIs**, eine Tabelle oder API und dann auf **Skript bearbeiten**. Die Skriptdatei wird im App Service-Editor geöffnet.
-   
+
     ![App Service-Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 2. Nehmen Sie im Online-Editor die gewünschten Änderungen an der Codedatei vor. Die Änderungen werden beim Eingeben automatisch gespeichert.
 

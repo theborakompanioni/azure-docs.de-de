@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 07/18/2017
 ms.author: davidmu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: 907e5b80aeeee4ab2eb0466490ba9ef9b0348144
 ms.contentlocale: de-de
 ms.lasthandoff: 05/17/2017
-
 
 ---
 
@@ -40,7 +39,7 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop",    
+      "name": "virtualMachineLoop", 
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -48,7 +47,7 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
     ], 
     "properties": { 
       "hardwareProfile": { 
-        "vmSize": "Standard_DS1_v2" 
+        "vmSize": "Standard_DS1" 
       }, 
       "osProfile": { 
         "computername": "[concat('myVM', copyindex())]", 
@@ -63,10 +62,10 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
           "version": "latest" 
         }, 
         "osDisk": { 
-          "name": "[concat('myOSDisk', copyindex())]" 
+          "name": "[concat('myOSDisk', copyindex())]",
           "caching": "ReadWrite", 
           "createOption": "FromImage" 
-        }
+        },
         "dataDisks": [
           {
             "name": "[concat('myDataDisk', copyindex())]",
@@ -80,15 +79,14 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
         "networkInterfaces": [ 
           { 
             "id": "[resourceId('Microsoft.Network/networkInterfaces',
-              concat('myNIC', copyindex())]" 
+              concat('myNIC', copyindex()))]" 
           } 
         ] 
-      }
+      },
       "diagnosticsProfile": {
         "bootDiagnostics": {
           "enabled": "true",
-          "storageUri": "[concat('https://', variables('storageName'), 
-            '.blob.core.windows.net"
+          "storageUri": "[concat('https://', variables('storageName'), '.blob.core.windows.net')]"
         }
       } 
     },
@@ -224,7 +222,7 @@ Wenn Sie mehr als einen virtuellen Computer für Ihre Anwendung benötigen, kön
 
 ```
 "copy": {
-  "name": "virtualMachineLoop",    
+  "name": "virtualMachineLoop", 
   "count": "[parameters('numberOfInstances')]"
 },
 ```
@@ -233,7 +231,7 @@ Achten Sie im Beispiel auch darauf, dass der Schleifenindex verwendet wird, wenn
 
 ```
 "osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]" 
+  "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
 }
@@ -273,7 +271,7 @@ Woran ist erkennbar, dass eine Abhängigkeit erforderlich ist? Sehen Sie sich di
     "id": "[resourceId('Microsoft.Network/networkInterfaces',
       concat('myNIC', copyindex())]" 
   } ] 
-}
+},
 ```
 
 Zum Festlegen dieser Eigenschaft muss die Netzwerkschnittstelle vorhanden sein. Aus diesem Grund benötigen Sie eine Abhängigkeit. Außerdem müssen Sie eine Abhängigkeit festlegen, wenn eine Ressource (untergeordnetes Element) in einer anderen Ressource (übergeordnetes Element) definiert wird. Beispielsweise sind die Diagnoseeinstellungen und benutzerdefinierten Skripterweiterungen jeweils als untergeordnete Ressourcen des virtuellen Computers definiert. Sie können erst erstellt werden, wenn der virtuelle Computer vorhanden ist. Aus diesem Grund sind beide Ressourcen als abhängig vom virtuellen Computer gekennzeichnet.
@@ -323,7 +321,7 @@ Konfigurationseinstellungen für den Betriebssystem-Datenträger werden mit dem 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
-}
+},
 ```
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Erstellen neuer virtueller Computer aus vorhandenen verwalteten Datenträgern
@@ -338,7 +336,7 @@ Entfernen Sie zum Erstellen von virtuellen Computern von vorhandenen Datenträge
   }, 
   "caching": "ReadWrite",
   "createOption": "Attach" 
-}
+},
 ```
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>Erstellen neuer virtueller Computer aus einem verwalteten Image
@@ -356,7 +354,7 @@ Entfernen Sie zum Erstellen von virtuellen Computern von vorhandenen Datenträge
     "caching": "ReadWrite", 
     "createOption": "FromImage" 
   }
-}
+},
 ```
 
 ### <a name="attach-data-disks"></a>Anfügen von Datenträgern für Daten
@@ -372,7 +370,7 @@ Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl vo
     "caching": "ReadWrite",
     "createOption": "Empty"
   }
-]
+],
 ```
 
 ## <a name="extensions"></a>Erweiterungen
