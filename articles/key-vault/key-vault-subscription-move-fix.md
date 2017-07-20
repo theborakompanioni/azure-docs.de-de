@@ -20,7 +20,6 @@ ms.openlocfilehash: 4317cf84760289ca29d8d5a78e2adef99c4cedf2
 ms.contentlocale: de-de
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung
 ### <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>F: Mein Abonnement wurde von Mandant A zu Mandant B verschoben. Wie ändere ich die Mandanten-ID für meinen vorhandenen Schlüsseltresor und lege für Mandant B die richtigen ACLs für Prinzipale fest?
@@ -36,7 +35,7 @@ Wenn beispielsweise der Schlüsseltresor „myvault“ in einem Abonnement entha
 $Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
 $vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
 $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
-$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.Id
+$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
 $vault.Properties.AccessPolicies = @()
 Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>

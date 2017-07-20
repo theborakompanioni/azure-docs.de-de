@@ -3,7 +3,7 @@ title: "Erste Schritte mit Azure Mobile Apps für Xamarin.Android-Apps"
 description: "Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung von Azure Mobile Apps für die Xamarin Android-Entwicklung."
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
+ms.contentlocale: de-de
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="create-a-xamarinandroid-app"></a>Erstellen einer Xamarin.Android-App
@@ -41,8 +41,8 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 > [!NOTE]
 > Wenn Sie mobile Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [App Service testen](https://azure.microsoft.com/try/app-service/mobile/).  Sie können sofort eine kurzlebige Starter-Logik-App in Mobile App erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-> 
-> 
+>
+>
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Erstellen eines Azure Mobile App-Back-Ends
 Führen Sie die folgenden Schritte aus, um ein Mobile App-Back-End zu erstellen.
@@ -56,19 +56,19 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 
 ## <a name="download-and-run-the-xamarinandroid-app"></a>Herunterladen und Ausführen der Xamarin.Android-App
 1. Klicken Sie unter **Herunterladen und Xamarin.Android-Projekt ausführen** auf die Schaltfläche **Herunterladen**.
-   
+
       Speichern Sie die komprimierte Projektdatei auf dem lokalen Computer und merken Sie sich, wo Sie sie gespeichert haben.
 2. Drücken Sie die **F5** -Taste, um das Projekt zu erstellen und die App zu starten.
 3. Geben Sie in der App einen sinnvollen Text wie z.B. *Tutorial fertigstellen* ein, und klicken Sie dann auf die Schaltfläche **Hinzufügen**.
-   
+
     ![][10]
-   
+
     Daten von der Anforderung werden in die TodoItem-Tabelle eingefügt. In der Tabelle gespeicherte Einträge werden von dem mobilen App-Back-End zurückgegeben, und die Daten werden in der Liste angezeigt.
-   
+
    > [!NOTE]
    > Sie können den Code überprüfen, der zum Abfragen und Einfügen von Daten auf das mobile App-Back-End zugreift. Der Code befindet sich in der C#-Datei "ToDoActivity.cs".
-   > 
-   > 
+   >
+   >
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen der Offlinesynchronisierung zu Ihrer App](app-service-mobile-xamarin-android-get-started-offline-data.md)

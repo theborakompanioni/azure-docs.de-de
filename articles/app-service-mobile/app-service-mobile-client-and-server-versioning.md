@@ -3,7 +3,7 @@ title: Client- und Server-SDK-Versionskontrolle in Mobile Apps und Mobile Servic
 description: "Liste der Client-SDKs und Kompatibilität mit Server-SDK-Versionen für Mobile Services und Azure Mobile Apps"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: d74137dc3c994cb05e02c4f866043eabf134fcdd
+ms.contentlocale: de-de
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client- und Serverversionsverwaltung in Mobile Apps und Mobile Services
@@ -47,8 +47,8 @@ Sie können die Versionsüberprüfung deaktivieren, indem Sie den Wert **true** 
 
 > [!NOTE]
 > Es gibt einige Änderungen des Verhaltens zwischen Mobile Services und Mobile Apps, vor allem in den Bereichen der Offlinesynchronisierung, Authentifizierung und Pushbenachrichtigungen. Sie sollten die Versionsüberprüfung erst deaktivieren, wenn Sie sich durch umfassende Tests vergewissert haben, dass diese Änderungen des Verhaltens nicht zu Problemen mit den Funktionen Ihrer App führen.
-> 
-> 
+>
+>
 
 ## <a name="summary-of-compatibility-for-all-versions"></a>Zusammenfassung der Kompatibilität für alle Versionen
 Im Diagramm unten ist die Kompatibilität zwischen allen Client- und Servertypen dargestellt. Ein Back-End ist entweder als Mobile **Services** oder als Mobile **Apps** klassifiziert. Ausschlaggebend ist hierbei das verwendete Server-SDK.
@@ -130,5 +130,4 @@ Die Versionsüberprüfung ist in den folgenden Versionen des Server-SDK enthalte
 
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Migrieren eines Mobile Service zu Azure App Service]: app-service-mobile-migrating-from-mobile-services.md
-
 

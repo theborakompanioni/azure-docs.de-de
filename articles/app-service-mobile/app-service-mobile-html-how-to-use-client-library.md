@@ -3,7 +3,7 @@ title: "Verwenden des JavaScript-SDKs für Azure Mobile Apps"
 description: Vorgehensweise beim Verwenden von V for Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
 ms.openlocfilehash: 3914d5bdc8feff7d7de5c6f7255396acade341b9
+ms.contentlocale: de-de
 ms.lasthandoff: 02/07/2017
-
 
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Verwenden der JavaScript-Clientbibliothek für Azure Mobile Apps
@@ -107,5 +107,4 @@ Nach der Aktualisierung des Back-Ends können Sie die neuen Loopback-URLs in Ihr
 [Azure-Portal]: https://portal.azure.com/
 [JavaScript-SDKs für Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
-
 
