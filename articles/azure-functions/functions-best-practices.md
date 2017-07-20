@@ -14,32 +14,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 06/13/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 53dcaea155471d47eb61317c52d38524c05e4600
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 5408bf986b67d420d4d1359961ec83510c97cd05
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
 
-# <a name="tips-for-improving-the-performance-and-reliability-of-azure-functions"></a>Tipps zum Verbessern der Leistung und Zuverlässigkeit von Azure Functions
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
-##<a name="overview"></a>Übersicht
-
-Dieser Artikel enthält eine Sammlung mit den bewährten Methoden, die Sie beim Implementieren von Funktionen-Apps nutzen können. Beachten Sie, dass Ihre Funktionen-App eine App in Azure App Service ist. Es gelten also auch die bewährten Methoden von App Service.
+Dieser Artikel enthält Informationen zur Verbesserung der Leistung und Zuverlässigkeit Ihrer Funktionen-Apps. 
 
 
-## <a name="avoid-large-long-running-functions"></a>Vermeiden von Funktionen mit langer Ausführungsdauer
+## <a name="avoid-long-running-functions"></a>Vermeiden von Funktionen mit langer Ausführungsdauer
 
-Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Eine Funktion kann umfangreich werden, wenn sie über viele Node.js-Abhängigkeiten verfügt. Das Importieren dieser Abhängigkeiten kann zu längeren Ladezeiten und somit zu unerwarteten Zeitüberschreitungen führen. Node.js-Abhängigkeiten können von mehreren `require()`-Anweisungen in Ihrem Code explizit geladen werden. Abhängigkeiten können auch impliziter Art sein, wenn sie auf einem einzelnen Modul mit eigenen internen Abhängigkeiten basieren, das durch Ihren Code geladen wird.  
+Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Eine Funktion kann aufgrund der Vielzahl an Node.js-Abhängigkeiten umfangreich werden. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden.  
 
-Nach Möglichkeit sollten Sie umfangreiche Funktionen immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben. Es ist üblich, dass für Webhooks eine sofortige Antwort erforderlich ist.
+Nach Möglichkeit sollten Sie umfangreiche Funktionen durch Refactoring immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich; bei Webhooks ist üblicherweise eine unmittelbare Antwort notwendig. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben.
 
 
-## <a name="cross-function-communication"></a>Funktionsübergreifende Kommunikation:
+## <a name="cross-function-communication"></a>Funktionsübergreifende Kommunikation
 
 Beim Integrieren von mehreren Funktionen besteht die bewährte Methode im Allgemeinen darin, für die funktionsübergreifende Kommunikation Speicherwarteschlangen zu verwenden.  Der Hauptgrund ist, dass Speicherwarteschlangen kostengünstiger und deutlich einfacher bereitzustellen sind. 
 
@@ -50,7 +49,6 @@ Service Bus-Themen sind nützlich, wenn die Nachrichten vor der Verarbeitung gef
 Event Hubs sind hilfreich, um die Kommunikation mit hohen Volumina zu unterstützen.
 
 
-
 ## <a name="write-functions-to-be-stateless"></a>Schreiben von zustandslosen Funktionen 
 
 Funktionen sollten nach Möglichkeit zustandslos und idempotent sein. Ordnen Sie Ihren Daten alle erforderlichen Zustandsinformationen zu. Einer Bestellung, die verarbeitet wird, ist beispielsweise meist ein `state`-Member zugeordnet. Eine Funktion kann eine Bestellung basierend auf diesem Zustand verarbeiten, während die Funktion selbst zustandslos bleibt. 
@@ -58,7 +56,7 @@ Funktionen sollten nach Möglichkeit zustandslos und idempotent sein. Ordnen Sie
 Idempotente Funktionen sind besonders bei Triggern mit Timer zu empfehlen. Wenn bei Ihnen beispielsweise eine bestimmte Komponente immer einmal am Tag ausgeführt werden muss, sollten Sie sie so schreiben, dass sie zu einer beliebigen Tageszeit ausgeführt werden kann und immer die gleichen Ergebnisse liefert. Die Funktion kann beendet werden, wenn für einen bestimmten Tag keine Arbeit vorhanden ist. Falls die letzte Ausführung nicht abgeschlossen werden konnte, sollte die nächste Ausführung am entsprechenden Punkt fortgesetzt werden.
 
 
-## <a name="write-defensive-functions"></a>Schreiben Sie defensive Funktionen.
+## <a name="write-defensive-functions"></a>Schreiben von defensiven Funktionen
 
 Gehen Sie davon aus, dass es für Ihre Funktion jederzeit zu einer Ausnahme kommen kann. Entwerfen Sie Ihre Funktionen so, dass bei der nächsten Ausführung an einem vorherigen Fehlerpunkt angeknüpft werden kann. Stellen Sie sich ein Szenario mit den folgenden Aktionen vor:
 
@@ -92,18 +90,15 @@ Verwenden Sie im Produktionscode keine ausführliche Protokollierung. Dies wirkt
 
 ## <a name="use-async-code-but-avoid-taskresult"></a>Verwenden von asynchronem Code bei Vermeidung von „Task.Result“
 
-Die asynchrone Programmierung wird als bewährte Methode empfohlen. Vermeiden Sie es aber stets, auf die `Task.Result`-Eigenschaft zu verweisen. Bei diesem Ansatz wird für eine Sperre eines anderen Threads im Wesentlichen ein Busy-Wait-Vorgang durchgeführt. Die Aufrechterhaltung einer Sperre birgt Potenzial für Deadlocks.
+Die asynchrone Programmierung wird als bewährte Methode empfohlen. Vermeiden Sie es aber stets, auf die `Task.Result`-Eigenschaft zu verweisen. Dieser Ansatz kann zur Threadauslastung führen.
 
 
-
+[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* [Entwicklerreferenz zu Azure Functions](functions-reference.md)
-* [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
-* [F#-Entwicklerreferenz zu Azure Functions](functions-reference-fsharp.md)
-* [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
-* [Patterns and Practices HTTP Performance Optimizations](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) (Muster und Methoden – HTTP-Leistungsoptimierungen)
+Da Azure App Service in Azure Functions verwendet wird, sollten Sie auch die App Service-Richtlinien beachten.
+* [Patterns and Practices HTTP Performance Optimizations](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/) (Muster und Methoden – HTTP-Leistungsoptimierungen)
 
 

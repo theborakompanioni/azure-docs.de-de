@@ -12,12 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/13/2017
+ms.date: 06/09/2017
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 3c7c972cdc395e2e20e7f6a296a2ffab6efad66d
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 19346f2e4f2860258c421d76729abeb82f0e8987
+ms.contentlocale: de-de
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -90,6 +91,7 @@ Dieser Schritt erfordert, dass Sie die lokale Dateiserverumgebung vorbereiten, e
       >
       >
 3. Klicken Sie auf **Weiter**.
+
 4. Akzeptieren Sie die **Nutzungsbedingungen**, und klicken Sie anschließend auf **Weiter**.
 5. Klicken Sie auf **Fertig stellen**.
 6. Erstellen Sie Dateifreigaben mithilfe von Volumes, die aus dem StorSimple-Speicher stammen. Weitere Informationen finden Sie unter [Verwalten von Volumes mithilfe des StorSimple Manager-Diensts](storsimple-manage-volumes.md).
@@ -140,9 +142,18 @@ Sie können den virtuellen Computer auf der Registerkarte **Replizierte Elemente
 ## <a name="create-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
 Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozess der Dateifreigaben zu automatisieren. Wenn eine Störung auftritt, können Sie die Dateifreigaben in wenigen Minuten mit nur einem einzigen Klick anzeigen. Sie benötigen ein Azure Automation-Konto, um diese Automatisierung zu aktivieren.
 
-#### <a name="to-create-the-account"></a>So erstellen Sie das Konto
+#### <a name="to-create-an-automation-account"></a>So erstellen Sie ein Automation-Konto
 1. Wechseln Sie zu Azure-Portal &gt; **Automation**.
-2. Erstellen Sie ein neues Automation-Konto. Bewahren Sie es im gleichen geografischen Raum oder in der gleichen Region auf, in dem/der die StorSimple Cloud Appliance und die Speicherkonten erstellt wurden.
+2. Klicken Sie auf die Schaltfläche **+ Hinzufügen**. Dadurch wird das unten angezeigte Blatt geöffnet.
+
+   ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
+
+   * Name: Geben Sie ein neues Automation-Konto ein.
+   * Abonnement: Wählen Sie ein Abonnement aus.
+   * Ressourcengruppe: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
+   * Speicherort: Wählen Sie einen Speicherort im gleichen geografischen Raum oder in der gleichen Region aus, in dem/der die StorSimple Cloud Appliance und die Speicherkonten erstellt wurden.
+   * Erstellen eines ausführenden Azure-Kontos: Wählen Sie die Option **Ja** aus.
+
 3. Wechseln Sie zum Automation-Konto, klicken Sie auf **Runbooks** &gt; **Katalog durchsuchen**, um alle erforderlichen Runbooks in das Automation-Konto zu importieren.
 4. Fügen Sie die folgenden Runbooks hinzu, indem Sie das Tag **Notfallwiederherstellung** im Katalog suchen:
 
@@ -153,13 +164,12 @@ Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozes
    * Starten von StorSimple Virtual Appliance
 
      ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
+
 5. Veröffentlichen Sie alle Skripts, indem Sie das Runbook im Automation-Konto auswählen. Klicken Sie dann auf **Bearbeiten** &gt; **Veröffentlichen** und dann in der Bestätigungsmeldung auf **Ja**. Nach diesem Schritt wird die Registerkarte **Runbook** wie folgt angezeigt:
 
     ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
-6. Wechseln Sie im Automation-Konto zur Registerkarte **Ressourcen**, klicken Sie auf **Anmeldeinformationen** &gt; **+ Anmeldeinformationen hinzufügen**, und fügen Sie Ihre Azure-Anmeldeinformationen hinzu. Geben Sie der Ressource den Namen „AzureCredential“.
 
-   Verwenden Sie die Windows PowerShell-Anmeldeinformationen. Das sollten Anmeldeinformationen sein, die einen Organisations-ID-Benutzernamen und ein Organisations-ID-Kennwort mit Zugriff auf dieses Azure-Abonnement enthalten und bei denen die Multi-Factor Authentication deaktiviert ist. Dies ist erforderlich, damit während des Failovers im Namen des Benutzers authentifiziert werden kann und um die Dateiservervolumes auf dem DR-Standort anzuzeigen.
-7. Wählen Sie im Automation-Konto die Registerkarte **Ressourcen** aus, klicken Sie anschließend auf **Variablen** &gt; **Variable hinzufügen**, und fügen Sie die folgenden Variablen hinzu. Sie können diese Ressourcen verschlüsseln. Diese Variablen sind spezifisch für den Wiederherstellungsplan. Wenn der Name des Wiederherstellungsplans (den Sie im nächsten Schritt erstellen) TestPlan lautet, müssen Ihre Variablen TestPlan-StorSimRegKey, TestPlan-AzureSubscriptionName usw. heißen.
+6. Wählen Sie im Automation-Konto die Registerkarte **Ressourcen** aus, klicken Sie anschließend auf **Variablen** &gt; **Variable hinzufügen**, und fügen Sie die folgenden Variablen hinzu. Sie können diese Ressourcen verschlüsseln. Diese Variablen sind spezifisch für den Wiederherstellungsplan. Wenn der Name des Wiederherstellungsplans (den Sie im nächsten Schritt erstellen) TestPlan lautet, müssen Ihre Variablen TestPlan-StorSimRegKey, TestPlan-AzureSubscriptionName usw. heißen.
 
    * *RecoveryPlanName***-StorSimRegKey**: der Registrierungsschlüssel für den StorSimple Manager-Dienst.
    * *RecoveryPlanName***-AzureSubscriptionName**: der Name des Azure-Abonnements.
@@ -178,8 +188,8 @@ Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozes
 
    ![](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
-8. Klicken Sie auf den Abschnitt **Recovery Services** , und wählen Sie den Azure Site Recovery-Tresor aus, den Sie zuvor erstellt haben.
-9. Wählen Sie die Option **Wiederherstellungspläne (Site Recovery)** aus der Gruppe **Verwalten** aus, und erstellen Sie einen neuen Wiederherstellungsplan wie folgt:
+7. Klicken Sie auf den Abschnitt **Recovery Services** , und wählen Sie den Azure Site Recovery-Tresor aus, den Sie zuvor erstellt haben.
+8. Wählen Sie die Option **Wiederherstellungspläne (Site Recovery)** aus der Gruppe **Verwalten** aus, und erstellen Sie einen neuen Wiederherstellungsplan wie folgt:
 
    a.  Klicken Sie auf die Schaltfläche **+ Plan wiederherstellen**, um das folgende Blatt zu öffnen.
 
@@ -291,7 +301,7 @@ Die Kapazitätsplanung besteht aus mindestens zwei wichtigen Prozessen:
 
   > [!IMPORTANT]
   > Führen Sie die Sicherung manuell vom Azure-Portal aus, und führen Sie anschließend den Wiederherstellungsplan erneut aus.
-  
+
 * Klonauftragstimeout: für das StorSimple-Skript tritt ein Timout auf, wenn das Klonen von Volumes mehr Zeit benötigt, als das Azure Site Recovery-Limit pro Skript (derzeit 120 Minuten).
 * Fehler bei der Zeitsynchronisierung: für die StorSimple Skripts tritt ein Fehler auf, der besagt, dass die Sicherungen nicht erfolgreich ausgeführt wurden, auch wenn die Sicherung im Portal erfolgreich war. Eine mögliche Ursache dafür ist, dass die Zeit der StorSimple Appliance nicht mehr mit der aktuellen Zeit in der Zeitzone synchronisiert ist.
 

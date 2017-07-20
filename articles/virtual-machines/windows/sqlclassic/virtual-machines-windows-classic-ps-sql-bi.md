@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/11/2017
+ms.date: 05/30/2017
 ms.author: asaxton
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: ee480f4382a93a2420f7c73f7259ce1f0a03d595
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 1d35dc01aba57dcf8a37db757138abbd7b22c8c5
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -39,11 +40,12 @@ Weitere Informationen zur Lizenzierung und zu aktuellen Preisen finden Sie unter
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>Im Azure Virtual Machine-Katalog verfügbare SQL Server-Images
 Im Microsoft Azure Virtual Machine-Katalog sind verschiedene Images zu finden, die Microsoft SQL Server enthalten. Die Software, die auf den Images für die virtuellen Computer installiert ist, variiert je nach Version des Betriebssystems und der Version von SQL Server. Die Liste der Images, die im Katalog mit den virtuellen Azure-Computern verfügbar ist, ändert sich häufig.
 
-![SQL-Image in Azure VM-Katalog](./media/virtual-machines-windows-classic-ps-sql-bi/IC741367.png)
+<!--![SQL image in azure VM gallery](./media/virtual-machines-windows-classic-ps-sql-bi/IC741367.png)-->
+![SQL-Image in einem Azure VM-Katalog](./media/virtual-machines-windows-classic-ps-sql-bi/vm-sql-images.png)
 
 ![PowerShell](./media/virtual-machines-windows-classic-ps-sql-bi/IC660119.gif) Mit dem folgenden PowerShell-Skript wird die Liste mit den Azure-Images zurückgegeben, bei denen "SQL-Server" Teil des Namens ("ImageName") ist:
 
-    # assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "settings" menu in Azure classic portal.
+    # assumes you have already uploaded a management certificate to your Microsoft Azure Subscription. View the thumbprint value from the "Subscriptions" menu in Azure portal.
 
     $subscriptionID = ""    # REQUIRED: Provide your subscription ID.
     $subscriptionName = "" # REQUIRED: Provide your subscription name.
@@ -156,18 +158,22 @@ Es gibt zwei allgemeine Workflows zum Herstellen einer Verbindung mit einem virt
      
       Weitere Informationen finden Sie unter [Computehostingoptionen in Azure?](https://azure.microsoft.com/manage/services/cloud-services/what-is-a-cloud-service/).
 
-**Starten Sie den Konfigurations-Manager für Reporting Services.**
 
-1. Unter **Windows Server 2012/2016**:
-2. Geben Sie auf dem Bildschirm **Start** den Text **Reporting Services** ein, um eine Liste von Apps anzuzeigen.
-3. Klicken Sie mit der rechten Maustaste auf **Konfigurations-Manager für Reporting Services**, und klicken Sie auf **Als Administrator ausführen**.
-4. In **Windows Server 2008 R2**:
-5. Klicken Sie auf **Start** und dann auf **Alle Programme**.
-6. Klicken Sie auf **Microsoft SQL Server 2016**.
-7. Klicken Sie auf **Konfigurationstools**.
-8. Klicken Sie mit der rechten Maustaste auf **Konfigurations-Manager für Reporting Services**, und klicken Sie auf **Als Administrator ausführen**.
+**Starten Sie den Konfigurations-Manager für Reporting Services**
 
-oder
+Unter **Windows Server 2012/2016**:
+
+1. Geben Sie auf dem Bildschirm **Start** den Text **Reporting Services** ein, um eine Liste von Apps anzuzeigen.
+2. Klicken Sie mit der rechten Maustaste auf **Konfigurations-Manager für Reporting Services**, und klicken Sie auf **Als Administrator ausführen**.
+
+In **Windows Server 2008 R2**:
+
+1. Klicken Sie auf **Start** und dann auf **Alle Programme**.
+2. Klicken Sie auf **Microsoft SQL Server 2016**.
+3. Klicken Sie auf **Konfigurationstools**.
+4. Klicken Sie mit der rechten Maustaste auf **Konfigurations-Manager für Reporting Services**, und klicken Sie auf **Als Administrator ausführen**.
+
+Oder:
 
 1. Klicken Sie auf **Start**.
 2. Geben Sie im Dialogfeld **Programme/Dateien durchsuchen** den Text **Reporting Services** ein. Wenn auf dem virtuellen Computer Windows Server 2012 ausgeführt wird, geben Sie auf dem Startbildschirm von Windows Server 2012 den Text **Reporting Services** ein.

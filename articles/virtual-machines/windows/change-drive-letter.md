@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 05/31/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: abe380b8cb5988479197353282ef76442ee75930
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 7667175c01be2421bfc3badd83b1d8aaeb29bfde
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -31,10 +31,7 @@ Wenn Sie die Größe eines virtuellen Computers ändern oder diesen **beenden (Z
 Weitere Informationen zur Verwendung des temporären Datenträgers in Azure finden Sie unter [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 ## <a name="attach-the-data-disk"></a>Anfügen des Datenträgers
-Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen. 
-
-* Informationen zur Verwendung des Portals finden Sie unter [How to attach a managed data disk to a Windows VM in the Azure portal](attach-managed-disk-portal.md) (Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal).
-* Informationen zur Verwendung des klassischen Portals finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). 
+Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen. Informationen zur Verwendung des Portals finden Sie unter [Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal](attach-managed-disk-portal.md).
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Temporäres Verschieben von „pagefile.sys“ zu Laufwerk C
 1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. 

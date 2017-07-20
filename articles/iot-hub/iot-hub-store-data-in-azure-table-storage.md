@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: xshi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4918648906212ea9708b6c6f0e89d1f4bb7bdcc5
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: c1f5d737b9718ead9c59794dae23798ef26aa42a
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -48,7 +48,7 @@ Sie erfahren, wie Sie ein Azure-Speicherkonto und eine Azure-Funktionen-App zum 
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-1. Klicken Sie im Azure-Portal auf **Neu** > **Speicher** > **Speicherkonto**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu** > **Speicher** > **Speicherkonto**.
 1. Geben Sie die erforderlichen Informationen für das Speicherkonto ein:
 
    ![Erstellen eines Speicherkontos im Azure-Portal](media\iot-hub-store-data-in-azure-table-storage\1_azure-portal-create-storage-account.png)
@@ -115,6 +115,8 @@ IoT Hub macht einen integrierten mit Event Hub kompatiblen Endpunkt verfügbar, 
 1. Erstellen Sie in der Funktionen-App eine neue Funktion.
    1. Klicken Sie auf **Neue Funktion**.
    1. Wählen Sie **JavaScript** für **Sprache** und **Datenverarbeitung** für **Szenario** aus.
+   1. Klicken Sie auf **Diese Funktion erstellen** und dann auf **Neue Funktion**.
+   1. Wählen Sie **JavaScript** als Sprache und **Datenverarbeitung** als Szenario aus.
    1. Klicken Sie auf die Vorlage **EventHubTrigger-JavaScript**.
    1. Geben Sie die erforderlichen Informationen für die Vorlage ein.
 
@@ -122,7 +124,7 @@ IoT Hub macht einen integrierten mit Event Hub kompatiblen Endpunkt verfügbar, 
 
       **Event Hub-Name**: Der Event Hub-kompatible Name, den Sie notiert haben.
 
-      **Event Hub-Verbindung**: Klicken Sie auf „Neu“, um die Verbindungszeichenfolge Ihren IoT Hub-Endpunkts hinzuzufügen, den Sie erstellt haben.
+      **Event Hub-Verbindung**: Klicken Sie auf „Neu“, um die Verbindungszeichenfolge Ihres IoT Hub-Endpunkts hinzuzufügen, den Sie erstellt haben.
    1. Klicken Sie auf **Erstellen**.
 1. Konfigurieren Sie eine Ausgabe der Funktion.
    1. Klicken Sie auf **Integrieren** > **Neue Ausgabe** > **Azure Table Storage** > **Auswählen**.
@@ -134,7 +136,8 @@ IoT Hub macht einen integrierten mit Event Hub kompatiblen Endpunkt verfügbar, 
       
       **Tabellenname**: Verwenden Sie `deviceData` als Namen.
 
-      **Speicherkontoverbindung**: Klicken Sie auf **Neu**, wählen Sie Ihr Speicherkonto aus, oder geben Sie es ein.
+      **Speicherkontoverbindung**: Klicken Sie auf **Neu**, wählen Sie Ihr Speicherkonto aus, oder geben Sie es ein. Wenn das Speicherkonto nicht angezeigt wird, finden Sie weitere Informationen unter [Anforderungen an das Speicherkonto](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+      
    1. Klicken Sie auf **Speichern**.
 1. Klicken Sie unter **Trigger** auf **Azure Event Hub (myEventHubTrigger)**.
 1. **Event Hub-Consumergruppe**: Geben Sie den Namen der Consumergruppe ein, die Sie zuvor erstellt haben, und klicken Sie auf **Speichern**.

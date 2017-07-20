@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
 ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: f8cb0030290d200ab79e340b9b0fe8f5765d49f0
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
 ms.contentlocale: de-de
-ms.lasthandoff: 03/18/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -120,6 +120,11 @@ Für die folgenden Verfahren ist der Startpunkt das Dashboard für die Tresorele
      Eine Anleitung zum Erstellen einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-manage-vms.md#defining-a-backup-policy).
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
+
+> [!NOTE]
+> Befolgen Sie beim Verwalten von Sicherungsrichtlinien unbedingt die [bewährten Methoden](backup-azure-vms-introduction.md#best-practices) für eine optimale Sicherungsleistung
+>
+>
 
 ## <a name="on-demand-backup-of-a-virtual-machine"></a>On-Demand-Sicherung eines virtuellen Computers
 Sie können eine bedarfsabhängige Sicherung eines virtuellen Computers erstellen, sobald dieser für den Schutz konfiguriert ist. Wenn die erste Sicherung ansteht, erstellt die On-Demand-Sicherung eine vollständige Kopie des virtuellen Computers im Recovery Services-Tresor. Nachdem die erste Sicherung durchgeführt wurde, werden bei einer On-Demand-Sicherung nur Änderungen der vorherigen Momentaufnahme an den Recovery Services-Tresor gesendet. Die nachfolgenden Sicherungen sind also immer inkrementell.

@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 06/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1cb65f738bd77179a7ed379e3c1664c5eb232a68
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: bcbf4b9633f58293edb19aeb33dec6602ac4ec8f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -41,7 +41,7 @@ Die Microsoft Azure IoT-Geräte-SDKs enthalten Code, der das Erstellen von Gerä
 
 Die folgenden Azure IoT-Geräte-SDKs sind auf GitHub zum Download verfügbar:
 
-* [Azure IoT-Geräte-SDK für C][lnk-c-device-sdk] wurde in ANSI C (C99) geschrieben und ist auf Portabilität und hohe Plattformkompatibilität ausgelegt.
+* [Azure IoT-Geräte-SDK für C][lnk-c-device-sdk] wurde in ANSI C (C99) geschrieben und ist auf Portabilität und hohe Plattformkompatibilität ausgelegt. Für C gibt es zwei Geräteclientbibliotheken: **iothub_client** auf niedriger Ebene und das **Serialisierungsmodul**.
 * [Azure IoT-Geräte-SDK für .NET][lnk-dotnet-device-sdk]
 * [Azure IoT-Geräte-SDK für Java][lnk-java-device-sdk]
 * [Azure IoT-Geräte-SDK für Node.js][lnk-node-device-sdk]
@@ -66,16 +66,16 @@ Die folgenden Azure IoT-Dienst-SDKs sind auf GitHub zum Download verfügbar:
 * [Azure IoT-Dienst-SDK für Node.js][lnk-node-service-sdk]
 * [Azure IoT-Dienst-SDK für Java][lnk-java-service-sdk]
 * [Azure IoT-Dienst-SDK für Python][lnk-python-service-sdk]
-
+* [Azure IoT-Dienst-SDK für C][lnk-c-service-sdk]
 
 > [!NOTE]
 > In den „Readme“-Dateien in den GitHub-Repositorys finden Sie Informationen zum Verwenden sprach- und plattformspezifischer Paket-Manager zum Installieren von Binärdateien und Abhängigkeiten auf Ihrem Entwicklungscomputer.
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
 
-Azure IoT Edge enthält die Infrastruktur und Module zum Erstellen von IoT-Gatewaylösungen. Sie können das IoT Edge erweitern, um maßgeschneiderte Gateways für beliebige End-to-End-Szenarien zu erstellen.
+Azure IoT Edge enthält die Infrastruktur und Module zum Erstellen von IoT-Gatewaylösungen. Sie können IoT Edge erweitern, um maßgeschneiderte Gateways für beliebige End-to-End-Szenarien zu erstellen.
 
-Sie können [Azure IoT Edge][lnk-gateway-sdk] von GitHub herunterladen.
+Sie können [Azure IoT Edge][lnk-iot-edge] von GitHub herunterladen.
 
 ## <a name="online-api-reference-documentation"></a>Online verfügbare API-Referenzdokumentation
 
@@ -95,13 +95,14 @@ Die folgende Liste enthält Links zur online verfügbaren API-Referenzdokumentat
 Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
 * [IoT Hub-Endpunkte][lnk-devguide-endpoints]
-* [IoT Hub-Abfragesprache für Gerätezwillinge und Aufträge][lnk-devguide-query]
+* [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-devguide-query]
 * [Kontingente und Drosselung][lnk-devguide-quotas]
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt]
 
 <!-- Links and images -->
 
 [lnk-c-device-sdk]: https://github.com/Azure/azure-iot-sdk-c
+[lnk-c-service-sdk]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_service_client
 [lnk-dotnet-device-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device
 [lnk-java-device-sdk]: https://github.com/Azure/azure-iot-sdk-java/tree/master/device
 [lnk-dotnet-service-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service
@@ -111,15 +112,15 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 [lnk-python-device-sdk]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device
 [lnk-python-service-sdk]: https://github.com/Azure/azure-iot-sdk-python/tree/master/service
 [lnk-certified]: https://catalog.azureiotsuite.com/
-[lnk-gateway-sdk]: https://github.com/Azure/iot-edge
+[lnk-iot-edge]: https://github.com/Azure/iot-edge
 
 [lnk-dotnet-ref]: https://docs.microsoft.com/dotnet/api/microsoft.azure.devices
 [lnk-c-ref]: https://azure.github.io/azure-iot-sdk-c/index.html
 [lnk-java-ref]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device
-[lnk-node-ref]: https://azure.github.io/azure-iot-sdk-node/azure-iot-device/1.1.9/index.html
+[lnk-node-ref]: https://azure.github.io/azure-iot-sdk-node/
 [lnk-rest-ref]: https://docs.microsoft.com/rest/api/iothub/
 [lnk-java-service-ref]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.auth
-[lnk-node-service-ref]: https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.9/index.html
+[lnk-node-service-ref]: https://azure.github.io/azure-iot-sdk-node/
 [lnk-gateway-ref]: http://azure.github.io/iot-edge/api_reference/c/html/
 
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md

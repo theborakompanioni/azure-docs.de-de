@@ -1,9 +1,9 @@
 ---
 title: Erfassen und Analysieren von Syslog-Nachrichten in OMS Log Analytics | Microsoft-Dokumentation
-description: "Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.   Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
+description: "Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
 services: log-analytics
 documentationcenter: 
-author: bwren
+author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
-ms.author: bwren
+ms.date: 06/12/2017
+ms.author: magoedte;bwren
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: 6e92a79c0b7ea35f110c779922255d6ddc93ed7c
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 783b9b48251c5f092121288af8834e2caf31f5d7
 ms.contentlocale: de-de
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/24/2017
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.  Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können.  Wenn der OMS-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent.  Der Agent sendet die Nachricht dann an Log Analytics, wo ein entsprechender Datensatz im OMS-Repository erstellt wird.  
 
 > [!NOTE]
-> Log Analytics unterstützt die Sammlung der von „rsyslog“ oder „syslog-ng“ gesendeten Nachrichten. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der [Rsyslog-Daemon](http://rsyslog.com) sollte installiert und so konfiguriert werden, dass er Sysklog ersetzt, um Syslog-Daten von dieser Version dieser Verteilungen zu sammeln.
+> Log Analytics unterstützt die Sammlung der von „rsyslog“ oder „syslog-ng“ gesendeten Nachrichten, wobei „rsyslog“ der Standarddaemon ist. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der [Rsyslog-Daemon](http://rsyslog.com) sollte installiert und so konfiguriert werden, dass er Sysklog ersetzt, um Syslog-Daten von dieser Version dieser Verteilungen zu sammeln.
 > 
 > 
 
@@ -137,20 +137,50 @@ Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfig
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
 
-### <a name="changing-the-syslog-port"></a>Ändern des Syslog-Ports
-Der OMS-Agent lauscht auf dem lokalen Client am Port 25224 auf Syslog-Nachrichten.  Sie können diesen Port ändern, indem Sie der OMS-Agent-Konfigurationsdatei unter **/etc/opt/microsoft/omsagent/conf/omsagent.conf**den folgenden Abschnitt hinzufügen.  Ersetzen Sie 25224 im Eintrag **port** mit Ihrer gewünschten Portnummer.  Beachten Sie, dass Sie auch die Konfigurationsdatei für den Syslog-Daemon ändern müssen, um Nachrichten an diesen Port zu senden.
+### <a name="collecting-data-from-additional-syslog-ports"></a>Sammeln der Daten von weiteren Syslog-Ports
+Der OMS-Agent lauscht auf dem lokalen Client am Port 25224 auf Syslog-Nachrichten.  Wenn der Agent installiert ist, wird eine Syslog-Standardkonfiguration angewendet, die an folgendem Speicherort verfügbar ist: 
 
-    <source>
-      type syslog
-      port 25224
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
-    </source>
+* Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
+* Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
 
+Sie können die Portnummer ändern, indem Sie zwei Konfigurationsdateien erstellen: eine FluentD-Konfigurationsdatei und eine rsyslog- oder syslog-ng-Konfigurationsdatei, abhängig vom installierten Syslog-Daemon.  
 
-## <a name="data-collection"></a>Datensammlung
-Der OMS-Agent lauscht auf dem lokalen Client am Port 25224 auf Syslog-Nachrichten. Die Konfigurationsdatei für den Syslog-Daemon leitet von der Anwendung gesendete Syslog-Nachrichten an diesen Port weiter, wo sie von Log Analytics gesammelt werden.
+* Die FluentD-Konfigurationsdatei muss eine neue Datei im Verzeichnis `/etc/opt/microsoft/omsagent/conf/omsagent.d` sein. Ersetzen Sie dann den Wert im Eintrag **Port** mit Ihrer benutzerdefinierten Portnummer.
+
+        <source>
+          type syslog
+          port %SYSLOG_PORT%
+          bind 127.0.0.1
+          protocol_type udp
+          tag oms.syslog
+        </source>
+        <filter oms.syslog.**>
+          type filter_syslog
+        </filter>
+
+* Für „rsyslog“ müssen Sie eine neue Konfigurationsdatei im Verzeichnis `/etc/rsyslog.d/` erstellen. Ersetzen Sie dann den Wert „%SYSLOG_PORT“ mit Ihrer benutzerdefinierten Portnummer.  
+
+    > [!NOTE]
+    > Wenn Sie diesen Wert in der Konfigurationsdatei `95-omsagent.conf` ändern, wird er überschrieben, wenn der Agent eine Standardkonfiguration anwendet.
+    > 
+
+        # OMS Syslog collection for workspace %WORKSPACE_ID%
+        kern.warning              @127.0.0.1:%SYSLOG_PORT%
+        user.warning              @127.0.0.1:%SYSLOG_PORT%
+        daemon.warning            @127.0.0.1:%SYSLOG_PORT%
+        auth.warning              @127.0.0.1:%SYSLOG_PORT%
+
+* Ändern Sie die syslog-ng-Konfiguration durch Kopieren der unten gezeigten Beispielkonfiguration und Hinzufügen der benutzerdefinierten geänderten Einstellungen am Ende der Konfigurationsdatei „syslog-ng.conf“ im Verzeichnis `/etc/syslog-ng/`.  Verwenden Sie **nicht** die Standardbezeichnung **%WORKSPACE_ID%_oms** oder **%WORKSPACE_ID_OMS**, definieren Sie eine benutzerdefinierte Bezeichnung, um die Änderungen kenntlich zu machen.  
+
+    > [!NOTE]
+    > Wenn Sie die Standardwerte in der Konfigurationsdatei ändern, werden sie überschrieben, wenn der Agent eine Standardkonfiguration anwendet.
+    > 
+
+        filter f_custom_filter { level(warning) and facility(auth; };
+        destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
+        log { source(s_src); filter(f_custom_filter); destination(d_custom_dest); };
+
+Nach Abschluss der Änderungen müssen Syslog und der OMS-Agent-Dienst neu gestartet werden, um sicherzustellen, dass die Konfigurationsänderungen wirksam werden.   
 
 ## <a name="syslog-record-properties"></a>Eigenschaften der Syslog-Datensätze
 Syslog-Datensätze sind vom Typ **Syslog** und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.

@@ -12,26 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a26b1f6c13b11d0fb6b47599fee43f955cbf7b7a
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: bb89bed9778056c52e47d984e5d559a4abf864a2
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (Vorschau)
 
-![Lösung „Kapazität und Leistung“](./media/log-analytics-capacity/capacity-solution.png) Sie können die Lösung „Kapazität und Leistung“ in Log Analytics nutzen, um die Kapazität Ihrer Hyper-V-Server zu verstehen. Die Lösung bietet Einblicke in Ihre Hyper-V-Umgebung, indem Ihnen die Gesamtnutzung (CPU, Arbeitsspeicher und Festplatte) der Hosts und VMs angezeigt wird, die auf diesen Hyper-V-Servern ausgeführt werden. Für CPU, Arbeitsspeicher und Datenträger auf allen Hosts und VMs werden Metriken gesammelt.
+![Symbol für Kapazität und Leistung](./media/log-analytics-capacity/capacity-solution.png)
+
+Sie können die Lösung „Kapazität und Leistung“ in Log Analytics nutzen, um die Kapazität Ihrer Hyper-V-Server zu verstehen. Die Lösung bietet Einblicke in Ihre Hyper-V-Umgebung, indem Ihnen die Gesamtnutzung (CPU, Arbeitsspeicher und Festplatte) der Hosts und VMs angezeigt wird, die auf diesen Hyper-V-Servern ausgeführt werden. Für CPU, Arbeitsspeicher und Datenträger auf allen Hosts und VMs werden Metriken gesammelt.
 
 Die Lösung:
 
--    Anzeigen von Hosts mit der höchsten und niedrigsten Auslastung von CPU und Arbeitsspeicher
--    Anzeigen von VMs mit der höchsten und niedrigsten Auslastung von CPU und Arbeitsspeicher
--    Anzeigen von VMs mit dem höchsten und niedrigsten IOPS-Wert und Durchsatz
--    Anzeigen, welche VMs auf welchen Hosts ausgeführt werden
--    Anzeigen der Datenträger mit den höchsten Werten für Durchsatz, IOPS und Wartezeit in freigegebenen Clustervolumes
+-   Anzeigen von Hosts mit der höchsten und niedrigsten Auslastung von CPU und Arbeitsspeicher
+-   Anzeigen von VMs mit der höchsten und niedrigsten Auslastung von CPU und Arbeitsspeicher
+-   Anzeigen von VMs mit dem höchsten und niedrigsten IOPS-Wert und Durchsatz
+-   Anzeigen, welche VMs auf welchen Hosts ausgeführt werden
+-   Anzeigen der Datenträger mit den höchsten Werten für Durchsatz, IOPS und Wartezeit in freigegebenen Clustervolumes
 - Anpassen und Filtern anhand von Gruppen
 
 > [!NOTE]

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 04/11/2017
+ms.date: 06/01/2017
 ms.author: danlep
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8c40a0d44463c75e92444b393336db1daf270ee1
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: acd2ee7fb94c43493ffd9ffee157f2c3e795b63e
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -61,7 +61,7 @@ Verwenden Sie eine Azure-Schnellstartvorlage, um schnell einen HPC Pack-Cluster 
    
    a. Geben Sie auf der Seite **Parameter** Werte für die Vorlagenparameter ein, bzw. (Klicken Sie auf das Symbol neben einer Einstellung, um Hilfeinformationen anzuzeigen.) Der Bildschirm weiter unten zeigt Beispielwerte. In diesem Beispiel erstellen wir einen Cluster namens *hpc01* in der Domäne *hpc.local* mit einem Haupt- und zwei Serverknoten. Die Serverknoten werden auf der Grundlage eines HPC Pack-VM-Image erstellt, das auch Microsoft Excel beinhaltet.
    
-   ![Parameter eingeben][parameters]
+   ![Parameter eingeben][parameters-new-portal]
    
    > [!NOTE]
    > Der virtuelle Computer für den Hauptknoten wird automatisch auf der Grundlage des [neuesten Marketplace-Image](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) von HPC Pack 2012 R2 für Windows Server 2012 R2 erstellt. Aktuell basiert das Image auf HPC Pack 2012 R2 Update 3.
@@ -79,9 +79,9 @@ Verwenden Sie eine Azure-Schnellstartvorlage, um schnell einen HPC Pack-Cluster 
    e. Lesen Sie die **rechtlichen Bedingungen**. Klicken Sie auf **Erwerben**, sofern Sie den Bedingungen zustimmen. Legen Sie die Werte für die Vorlage fest, und klicken Sie anschließend auf **Erstellen**.
 4. Wenn die Bereitstellung nach etwa 30 Minuten abgeschlossen ist, exportieren Sie die Clusterzertifikatsdatei aus dem Clusterhauptknoten. Dieses öffentliche Zertifikat importieren Sie in einem späteren Schritt zur serverseitigen Authentifizierung für eine sichere HTTP-Bindung auf dem Clientcomputer .
    
-   a. Stellen Sie über das Azure-Portal eine Remotedesktopverbindung mit dem Hauptknoten her.
+   a. Wechseln Sie im Azure-Portal zum Dashboard, wählen Sie den Hauptknoten, und klicken Sie auf **Verbinden** am oberen Rand der Seite, um mithilfe von Remotedesktop eine Verbindung herzustellen.
    
-    ![Verbindung mit dem Hauptknoten herstellen][connect]
+    <!-- ![Connect to the head node][connect] -->
    
    b. Exportieren Sie das Hauptknotenzertifikat (zu finden unter „Cert:\LocalMachine\My“) mithilfe von Standardverfahren im Zertifikat-Manager ohne den privaten Schlüssel. In diesem Beispiel wird *CN = hpc01.eastus.cloudapp.azure.com*exportiert.
    
@@ -333,12 +333,12 @@ Um die HTTP-Bindung ohne Azure-Speicherwarteschlange zu verwenden, müssen Sie d
 ```
 
 ### <a name="use-nettcp-binding"></a>Verwenden der NetTcp-Bindung
-Bei Verwendung der NetTcp-Bindung wird eine ähnliche Konfiguration verwendet wie bei der Verbindungsherstellung mit einem lokalen Cluster. Auf dem virtuellen Computer für den Hauptknoten müssen einige Endpunkte geöffnet werden. Wenn Sie z.B. das HPC Pack-IaaS-Bereitstellungsskript verwendet haben, um den Cluster zu erstellen, legen Sie die Endpunkte wie folgt im klassischen Azure-Portal fest.
+Bei Verwendung der NetTcp-Bindung wird eine ähnliche Konfiguration verwendet wie bei der Verbindungsherstellung mit einem lokalen Cluster. Auf dem virtuellen Computer für den Hauptknoten müssen einige Endpunkte geöffnet werden. Wenn Sie z.B. das HPC Pack-IaaS-Bereitstellungsskript verwendet haben, um den Cluster zu erstellen, legen Sie die Endpunkte wie folgt im Azure-Portal fest.
 
 1. Beenden Sie den virtuellen Computer.
 2. Fügen Sie die TCP-Ports 9090, 9087, 9091, 9094 für die Sitzung, für den Broker, für den Brokerworkerdienst bzw. für den Brokerdatendienst hinzu.
    
-    ![Endpunkte konfigurieren][endpoint]
+    ![Endpunkte konfigurieren][endpoint-new-portal]
 3. Starten Sie den virtuellen Computer.
 
 Für die SOA-Clientanwendung muss lediglich der Hauptname auf den vollständigen Namen des IaaS-Clusters festgelegt werden.
@@ -352,6 +352,7 @@ Für die SOA-Clientanwendung muss lediglich der Hauptname auf den vollständigen
 [github]: ./media/excel-cluster-hpcpack/github.png
 [template]: ./media/excel-cluster-hpcpack/template.png
 [parameters]: ./media/excel-cluster-hpcpack/parameters.png
+[parameters-new-portal]: ./media/excel-cluster-hpcpack/parameters-new-portal.png
 [create]: ./media/excel-cluster-hpcpack/create.png
 [connect]: ./media/excel-cluster-hpcpack/connect.png
 [cert]: ./media/excel-cluster-hpcpack/cert.png
@@ -360,5 +361,6 @@ Für die SOA-Clientanwendung muss lediglich der Hauptname auf den vollständigen
 [options]: ./media/excel-cluster-hpcpack/options.png
 [run]: ./media/excel-cluster-hpcpack/run.png
 [endpoint]: ./media/excel-cluster-hpcpack/endpoint.png
+[endpoint-new-portal]: ./media/excel-cluster-hpcpack/endpoint-new-portal.png
 [udf]: ./media/excel-cluster-hpcpack/udf.png
 

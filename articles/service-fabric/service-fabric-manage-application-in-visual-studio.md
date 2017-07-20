@@ -3,7 +3,7 @@ title: Verwalten Ihrer Anwendungen in Visual Studio | Microsoft Docs
 description: Verwenden Sie Visual Studio zum Erstellen, Entwickeln, Packen, Bereitstellen und Debuggen Ihrer Service Fabric-Anwendungen und -Dienste.
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: mikkelhegn
 manager: timlt
 editor: 
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
@@ -12,11 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2017
-ms.author: seanmck;mikhegn
-translationtype: Human Translation
-ms.sourcegitcommit: 60d440c75d6352d5e65e0158e439df9db2315ecd
-ms.openlocfilehash: 70c393f1185844bb26ff1f89cb69cb06b51fc155
+ms.date: 06/07/2017
+ms.author: mikkelhegn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -30,54 +32,48 @@ Beim Bereitstellen einer Anwendung werden die folgenden Schritte standardmäßig
 2. Hochladen des Anwendungspakets in den Image-Speicher
 3. Registrieren des Anwendungstyps
 4. Entfernen ausgeführter Anwendungsinstanzen
-5. Erstellen einer neuen Anwendungsinstanz
+5. Erstellen einer Anwendungsinstanz
 
-Sie können in Visual Studio auch **F5** drücken, um die Anwendung bereitzustellen und den Debugger an alle Anwendungsinstanzen anzufügen. Mit **STRG+F5** können Sie eine Anwendung ohne Debuggen bereitstellen oder sie mithilfe des Veröffentlichungsprofils in einem lokalen bzw. Remotecluster veröffentlichen. Weitere Informationen finden Sie unter [Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio](service-fabric-publish-app-remote-cluster.md).
+Sie können in Visual Studio **F5** drücken, um die Anwendung bereitzustellen und den Debugger an alle Anwendungsinstanzen anzufügen. Mit **STRG+F5** können Sie eine Anwendung ohne Debuggen bereitstellen oder sie mithilfe des Veröffentlichungsprofils in einem lokalen bzw. Remotecluster veröffentlichen. Weitere Informationen finden Sie unter [Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio](service-fabric-publish-app-remote-cluster.md).
 
 ### <a name="application-debug-mode"></a>Debugmodus für die Anwendung
-Standardmäßig entfernt Visual Studio vorhandene Instanzen Ihres Anwendungstyps, wenn Sie das Debuggen beenden oder (falls Sie die App ohne angefügten Debugger bereitgestellt haben) Sie die Anwendung erneut bereitstellen. In diesem Fall werden sämtliche Daten der Anwendung entfernt. Beim lokalen Debuggen möchten Sie ggf. die Daten behalten, die Sie beim Testen einer neuen Version der Anwendung erstellt haben, die Anwendung weiter ausführen oder die Anwendung in nachfolgenden Debugsitzungen upgraden. Die Visual Studio Service Fabric-Tools stellen eine Eigenschaft namens **Anwendungsdebugmodus** bereit, die steuert, ob die Anwendung beim Drücken auf **F5** deinstalliert, nach Beenden einer Debugsitzung weiter ausgeführt oder in nachfolgenden Debugsitzungen nicht entfernt und neu bereitgestellt, sondern aktualisiert werden soll.
+Visual Studio stellt eine Eigenschaft mit dem Namen **Anwendungsdebugmodus** bereit, die steuert, wie Visual Studio Anwendungsbereitstellungen im Rahmen des Debuggens behandeln soll.
 
 #### <a name="to-set-the-application-debug-mode-property"></a>So legen Sie die „Anwendungsdebugmodus“-Eigenschaft fest
-1. Wählen Sie im Kontextmenü des Anwendungsprojekts **Eigenschaften** aus (oder drücken Sie **F4**).
+1. Wählen Sie im Kontextmenü des Service Fabric-Anwendungsprojekts (*.sfproj) **Eigenschaften** aus (oder drücken Sie die Taste **F4**).
 2. Legen Sie im Fenster **Eigenschaften** die Eigenschaft **Anwendungsdebugmodus** fest.
 
-    ![Festlegen der „Application Debug Mode“-Eigenschaft][debugmodeproperty]
+![Festlegen der „Application Debug Mode“-Eigenschaft][debugmodeproperty]
 
-Dies sind die für **Anwendungsdebugmodus** verfügbaren Optionen.
+#### <a name="application-debug-modes"></a>Anwendungsdebugmodi
 
-1. **Automatisches Upgrade**: Die Anwendung wird weiter ausgeführt, nachdem die Debugsitzung beendet wurde. Beim nächsten Drücken von **F5** wird die Bereitstellung wie ein Upgrade behandelt, indem der nicht überwachte automatische Modus verwendet wird, um die Anwendung schnell auf eine neuere Version mit angehängter Datumszeichenfolge zu aktualisieren. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
-2. **Anwendung beibehalten**: Die Anwendung wird weiter im Cluster ausgeführt, nachdem die Debugsitzung beendet wurde. Beim nächsten Drücken von **F5** wird die Anwendung entfernt, und die neu erstellte Anwendung wird im Cluster bereitgestellt.
-3. **Anwendung entfernen** bewirkt, dass die Anwendung entfernt wird, wenn die Debugsitzung endet.
+1. **Anwendung aktualisieren** Dieser Modus ermöglicht das schnelle Ändern und Debuggen Ihres Codes und unterstützt die Bearbeitung statischer Webdateien beim Debuggen. Dieser Modus funktioniert nur, wenn sich Ihr lokales Entwicklungscluster im [1-Knoten-Modus](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode) befindet.
+2. **Anwendung entfernen** bewirkt, dass die Anwendung entfernt wird, wenn die Debugsitzung endet.
+3. **Automatisches Upgrade** Die Anwendung wird weiter ausgeführt, nachdem die Debugsitzung beendet wurde. Die nächste Debugsitzung behandelt die Bereitstellung als Upgrade. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
+4. **Anwendung beibehalten** Die Anwendung wird weiter im Cluster ausgeführt, nachdem die Debugsitzung beendet wurde. Zu Beginn der nächsten Debugsitzung wird die Anwendung entfernt.
 
-Beim **Automatischen Upgrade** werden Daten beibehalten, wenn die Anwendungsupgradefunktionen von Service Fabric angewendet werden. Der Optimierungsschwerpunkt liegt jedoch eher auf Leistung und weniger auf Sicherheit. Weitere Informationen zum Upgrade von Anwendungen sowie zur Durchführung eines Upgrades in der Praxis finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md).
-
-![Beispiel der neuen Anwendungsversion mit angefügtem Datum][preservedata]
-
-> [!NOTE]
-> Diese Eigenschaft ist erst ab Version 1.1 der Service Fabric-Tools für Visual Studio verfügbar. Verwenden Sie in Versionen vor 1.1 die Eigenschaft **Daten beim Start beibehalten** , um das gleiche Ergebnis zu erzielen. Die Option „Anwendung behalten“ wurde in Version 1.2 der Service Fabric-Tools für Visual Studio eingeführt.
->
->
+Beim **Automatischen Upgrade** werden Daten beibehalten, wenn die Anwendungsupgradefunktionen von Service Fabric angewendet werden. Weitere Informationen zum Upgrade von Anwendungen sowie zur Durchführung eines Upgrades in der Praxis finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md).
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>Fügen Sie der Service Fabric-Anwendung einen Dienst hinzu.
 Sie können der Anwendung neue Dienste hinzufügen, um den Funktionsumfang der Anwendung zu erweitern.  Um sicherzustellen, dass der Dienst in das Anwendungspaket aufgenommen wird, fügen Sie den Dienst über das Menüelement **Neuer Fabric-Dienst** hinzu.
 
-![Neuen Fabric-Dienst zur Anwendung hinzufügen][newservice]
+![Hinzufügen eines neuen Service Fabric-Diensts][newservice]
 
 Wählen Sie den Service Fabric-Projekttyp aus, der zur Anwendung hinzugefügt werden soll, und geben Sie einen Namen für den Dienst an.  Lesen Sie die Informationen in [Auswählen eines Frameworks für den Dienst](service-fabric-choose-framework.md) , um zu entscheiden, welcher Diensttyp verwendet werden soll.
 
-![Projekttyp des Fabric-Diensts auswählen, das zur Anwendung hinzugefügt werden soll][addserviceproject]
+![Wählen Sie einen Projekttyp des Service Fabric-Diensts aus, der Ihrer Anwendung hinzugefügt werden soll.][addserviceproject]
 
-Der neue Dienst wird zur Projektmappe und dem vorhandenen Anwendungspaket hinzugefügt. Die Dienstverweise und eine Standarddienstinstanz werden zum Anwendungsmanifest hinzugefügt. Der Dienst wird erstellt und mit der nächsten Bereitstellung der Anwendung gestartet.
+Der neue Dienst wird zu Ihrer Lösung und dem vorhandenen Anwendungspaket hinzugefügt. Die Servicereferenzen und eine Standarddienstinstanz werden zum Anwendungsmanifest hinzugefügt. Dies führt dazu, dass der Dienst erstellt und gestartet wird, wenn Sie die Anwendung das nächste Mal bereitstellen.
 
-![Der neue Dienst wird zum Anwendungsmanifest hinzugefügt][newserviceapplicationmanifest]
+![Der neue Dienst wird zum Anwendungsmanifest hinzugefügt.][newserviceapplicationmanifest]
 
 ## <a name="package-your-service-fabric-application"></a>Packen der Service Fabric-Anwendung
-Um die Anwendung und die zugehörigen Dienste in einem Cluster bereitzustellen, müssen Sie ein Anwendungspaket erstellen.  Das Paket ordnet das Anwendungsmanifest, das bzw. die Dienstmanifeste und andere erforderliche Dateien in einem bestimmten Layout an.  Visual Studio richtet das Paket im Projektordner der Anwendung im Verzeichnis "Pkg" ein und verwaltet es.  Klicken Sie zum Erstellen oder Aktualisieren des Anwendungspakets im Kontextmenü der **Anwendung** auf **Packen**.  Dies ist möglicherweise erforderlich, falls Sie die Anwendung mithilfe benutzerdefinierter PowerShell-Skripts bereitstellen möchten.
+Um die Anwendung und die zugehörigen Dienste in einem Cluster bereitzustellen, müssen Sie ein Anwendungspaket erstellen.  Das Paket ordnet das Anwendungsmanifest, die Dienstmanifeste und andere erforderliche Dateien in einem bestimmten Layout an.  Visual Studio richtet das Paket im Projektordner der Anwendung im Verzeichnis "Pkg" ein und verwaltet es.  Klicken Sie zum Erstellen oder Aktualisieren des Anwendungspakets im Kontextmenü der **Anwendung** auf **Packen**.
 
 ## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Entfernen von Anwendungen und Anwendungstypen mit dem Cloud-Explorer
 Einfache Clusterverwaltungsvorgänge können in Visual Studio mit dem Cloud-Explorer ausgeführt werden, den Sie über das Menü **Ansicht** starten können. Damit können Sie beispielsweise Anwendung löschen und die Bereitstellung von Anwendungstypen in lokalen Clustern oder Remoteclustern aufheben.
 
-![Entfernen einer Anwendung](./media/service-fabric-manage-application-in-visual-studio/removeapplication.png)
+![Entfernen einer Anwendung][removeapplication]
 
 > [!TIP]
 > Informationen zu komplexeren Clusterverwaltungsfunktionen finden Sie unter [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
@@ -97,11 +93,5 @@ Einfache Clusterverwaltungsvorgänge können in Visual Studio mit dem Cloud-Expl
 [manageservicefabric]: ./media/service-fabric-manage-application-in-visual-studio/manageservicefabric.png
 [newservice]:./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]:./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
-[preservedata]:./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [debugmodeproperty]:./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+[removeapplication]:./media/service-fabric-manage-application-in-visual-studio/removeapplication.png

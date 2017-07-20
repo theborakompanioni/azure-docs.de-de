@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: fef61e6155471a0459957ea0c510698cfa787fdc
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: f40ceb542a0ee51e17ee539db4dbc91c11e056f2
+ms.contentlocale: de-de
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -31,8 +32,10 @@ Ein gutes Verständnis von Azure-Abonnements, -Regionen und -Netzwerkressourcen 
 Machen Sie sich Folgendes klar, bevor Sie die Fragen zur Planung weiter unten beantworten:
 
 * Alle Elemente, die Sie in Azure erstellen, bestehen aus einer oder mehreren Ressourcen. Eine virtuelle Maschine (VM) ist eine Ressource, die von einer VM verwendete Netzwerkschnittstellenkarte (NIC) ist eine Ressource, die von einer NIC verwendete öffentliche IP-Adresse ist eine Ressource, und das VNET, mit dem die NIC verbunden ist, ist auch eine Ressource.
-* Sie erstellen Ressourcen in einer [Azure-Region](https://azure.microsoft.com/regions/#services) und unter einem Abonnement. Ressourcen können außerdem nur mit einem VNET verbunden werden, das in derselben Region und unter demselben Abonnement vorhanden ist.
-* Sie können VNETs miteinander verbinden, indem Sie ein Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)verwenden. Auf diese Weise können Sie VNETs auch über Regionen und Abonnements hinweg verbinden.
+* Sie erstellen Ressourcen in einer [Azure-Region](https://azure.microsoft.com/regions/#services) und unter einem Abonnement. Ressourcen können nur mit einem virtuellen Netzwerk verbunden werden, das in derselben Region und unter demselben Abonnement vorhanden ist.
+* Virtuelle Netzwerke können über folgende Methoden untereinander verbunden werden:
+    * **[Peering virtueller Netzwerke](virtual-network-peering-overview.md)**: Die virtuellen Netzwerke müssen sich in derselben Azure-Region befinden. Zwischen Ressourcen in virtuellen Netzwerken, die mittels Peering miteinander verknüpft sind, ist dieselbe Bandbreitenmenge verfügbar wie bei Ressourcen, die mit demselben virtuellen Netzwerk verbunden sind.
+    * **Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)**: Die virtuellen Netzwerke können sich in derselben Azure-Region oder in verschiedenen Azure-Regionen befinden. Die Bandbreite zwischen den Ressourcen in virtuellen Netzwerken, die über ein VPN-Gateway verbunden sind, wird durch die Bandbreite des VPN-Gateways beschränkt.
 * Sie können VNETs mit Ihrem lokalen Netzwerk verbinden, indem Sie eine der [Konnektivitätsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel) in Azure verwenden.
 * Unterschiedliche Ressourcen können in [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md#resource-groups) zusammengefasst werden, um die Verwaltung der Ressource als Einheit zu vereinfachen. Eine Ressourcengruppe kann Ressourcen aus mehreren Regionen enthalten, solange die Ressourcen demselben Abonnement angehören.
 
@@ -174,7 +177,7 @@ Beginnen Sie mit Ihrer Entwurfsplanung, indem Sie die Fragen im Abschnitt [Defin
     Ja. Der Grund ist, dass Benutzer, die mit den lokalen Rechenzentren verbunden sind, auf die Anwendungen über einen verschlüsselten Tunnel zugreifen können müssen.
 4. Wie viele IaaS-VMs benötigen Sie für Ihre Lösung?
 
-    200 IaaS-VMs. Für App1, App2 und App3 sind jeweils fünf Webserver, jeweils zwei Anwendungsserver und jeweils zwei Datenbankserver erforderlich. Dies ergibt insgesamt neun IaaS-VMs pro Anwendung bzw. 36 IaaS-VMs. Für App5 und App6 werden jeweils fünf Webserver und zwei Datenbankserver benötigt. Dies ergibt insgesamt sieben IaaS-VMs pro Anwendung bzw. 14 IaaS-VMs. Aus diesem Grund benötigen Sie für alle Anwendungen in jeder Azure-Region 50 IaaS-VMs. Da wir vier Regionen verwenden müssen, ergeben sich 200 IaaS-VMs.
+    200 IaaS-VMs. Für App1, App2, App3 und App4 sind jeweils fünf Webserver, zwei Anwendungsserver und zwei Datenbankserver erforderlich. Dies ergibt insgesamt neun IaaS-VMs pro Anwendung bzw. 36 IaaS-VMs. Für App5 und App6 werden jeweils fünf Webserver und zwei Datenbankserver benötigt. Dies ergibt insgesamt sieben IaaS-VMs pro Anwendung bzw. 14 IaaS-VMs. Aus diesem Grund benötigen Sie für alle Anwendungen in jeder Azure-Region 50 IaaS-VMs. Da wir vier Regionen verwenden müssen, ergeben sich 200 IaaS-VMs.
 
     Sie müssen auch DNS-Server in jedem VNET oder in Ihren lokalen Rechenzentren bereitstellen, um Namen zwischen Ihren Azure IaaS-VMs und dem lokalen Netzwerk aufzulösen.
 5. Müssen Sie Datenverkehr basierend auf VM-Gruppen (also Front-End-Webserver und Back-End-Datenbankserver) isolieren?

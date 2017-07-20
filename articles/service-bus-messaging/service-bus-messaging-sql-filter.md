@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
+ms.date: 06/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: c5127a457e99772a52b76e28e7fd3a3e4dd861b0
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 3aaec8f9b6a3bbcf814f771405c3b589de6f7ae0
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -61,7 +62,7 @@ ms.lasthandoff: 03/24/2017
   
 ## <a name="arguments"></a>Argumente  
   
--   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` oder `user`. Der Wert `sys` gibt die Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschaftenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
+-   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` oder `user`. Der Wert `sys` gibt den Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschafgenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
 ## <a name="remarks"></a>Anmerkungen
 
@@ -87,7 +88,7 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
-Dies stellt beliebige Zeichenfolgen dar, die mit einem Buchstaben beginnen, dem ein oder mehrere Unterstriche/Buchstaben/Ziffern folgen.  
+Diese Grammatik stellt beliebige Zeichenfolgen dar, die mit einem Buchstaben beginnen, dem ein oder mehrere Unterstriche/Buchstaben/Ziffern folgen.  
   
 `[:IsLetter:]` stellt beliebige Unicodezeichen dar, die als Unicodebuchstaben kategorisiert werden. `System.Char.IsLetter(c)` gibt `true` zurück, wenn `c` ein Unicodebuchstabe ist.  
   
@@ -148,7 +149,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
   
 -   `<integer_constant>` ist eine Zahlenzeichenfolge, die nicht in Anführungszeichen eingeschlossen ist und keine Dezimaltrennzeichen enthält. Die Werte werden intern als `System.Int64` gespeichert und folgen dem gleichen Bereich.  
   
-     Es folgen Beispiele langer Konstanten:  
+     Dies sind Beispiele für lange Konstanten:  
   
     ```  
     1894  
@@ -224,7 +225,7 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
 ### <a name="property-evaluation-semantics"></a>Semantik der Eigenschaftsauswertung  
   
--   Ein Versuch, eine nicht existierende Systemeigenschaft auszuwerten, wird eine [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception)-Ausnahme auslösen.  
+-   Ein Versuch, eine nicht existierende Systemeigenschaft auszuwerten, löst eine [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception)-Ausnahme aus.  
   
 -   Eine Eigenschaft, die nicht vorhanden ist, wird intern als **unknown** ausgewertet.  
   
@@ -244,7 +245,7 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
  Unbekannte Auswertung in `[NOT] IN`:  
   
--   Wenn ein linker Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
+-   Wenn der linke Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
   
  Unbekannte Auswertung im **AND**-Operator:  
   

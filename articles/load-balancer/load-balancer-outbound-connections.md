@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2016
+ms.date: 5/31/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 3d2ba1d63f4bb89ff51275044922fb86b5f70365
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: bb490e7ba64f4db454e1bd7171d600ed9dd9e257
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 ---
 
@@ -45,7 +46,9 @@ Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.m
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>VM mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene
 
-In diesem Szenario gehört die VM zum Azure Load Balancer-Pool. Der VM ist keine öffentliche IP-Adresse zugewiesen. Wenn die dem Lastenausgleich unterliegende VM einen ausgehenden Datenfluss erstellt, übersetzt Azure die private IP-Quelladresse des ausgehenden Datenflusses in die öffentliche IP-Adresse des öffentlichen Lastenausgleichs-Frond-End. Azure verwendet das Verfahren „Source Network Address Translation (SNAT, Übersetzung der Quellnetzwerkadresse)“ für diese Aufgabe. Kurzlebiger Ports der öffentlichen IP-Adresse des Lastenausgleichs werden verwendet, um einzelne Datenflüsse zu unterscheiden, die von der VM stammen. Beim Erstellen ausgehender Datenflüsse weist SNAT kurzlebige Ports dynamisch zu. In diesem Kontext werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
+In diesem Szenario gehört die VM zum Azure Load Balancer-Pool.  Der VM ist keine öffentliche IP-Adresse zugewiesen. Die Lastenausgleichsressource muss mit einer Regel zum Verknüpfen der öffentlichen Front-End-IP mit dem Back-End-Pool konfiguriert werden.  Wenn Sie diese Konfiguration nicht abschließen, ergibt sich das Verhalten wie im obigen Abschnitt für [Eigenständige VM ohne öffentliche IP-Adresse auf Instanzebene](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address) beschrieben.
+
+Wenn die dem Lastenausgleich unterliegende VM einen ausgehenden Datenfluss erstellt, übersetzt Azure die private IP-Quelladresse des ausgehenden Datenflusses in die öffentliche IP-Adresse des öffentlichen Lastenausgleichs-Frond-End. Azure verwendet das Verfahren „Source Network Address Translation (SNAT, Übersetzung der Quellnetzwerkadresse)“ für diese Aufgabe. Kurzlebiger Ports der öffentlichen IP-Adresse des Lastenausgleichs werden verwendet, um einzelne Datenflüsse zu unterscheiden, die von der VM stammen. Beim Erstellen ausgehender Datenflüsse weist SNAT kurzlebige Ports dynamisch zu. In diesem Kontext werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
 
 SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig, ihre Nutzung zu verstehen. Pro Datenfluss zu einer einzelnen IP-Zieladresse wird ein SNAT-Port genutzt. Für mehrere Datenflüsse zur gleichen IP-Zieladresse belegt jeder Datenfluss einen einzelnen SNAT-Port. Dadurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse haben. Mehrere Datenflüsse mit jeweils einer anderen IP-Zieladresse nutzen pro Ziel einen einzelnen SNAT-Port. Die IP-Zieladresse sorgt für Eindeutigkeit der Datenflüsse.
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skript – Einrichten der Georeplikation – einzelne SQL-Datenbank | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Einrichten der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank mithilfe von PowerShell"
+title: "PowerShell-Beispiel: Aktive Georeplikation für eine einzelne Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,19 +14,19 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 05/23/2017
+ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: b406c288f1e3eee7e92d690915ca0bdebe6cdb3d
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 80bc573233b73882d4bce553de1a627ae76ed1b4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
-# <a name="configure-active-geo-replication-for-a-single-azure-sql-database-using-powershell"></a>Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank mit PowerShell
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank
 
-Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine einzelne Datenbank und führt ein Failover zum sekundären Replikat aus.
+In diesem PowerShell-Beispielskript wird die aktive Georeplikation für eine einzelne Azure SQL-Datenbank konfiguriert und ein Failover zum sekundären Replikat der Azure SQL-Datenbank ausgeführt.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

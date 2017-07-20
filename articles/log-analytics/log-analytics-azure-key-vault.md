@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 6cf48883d397a4b04e707111306d4596cd7af683
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 708bf39b69cf798ac44aca65cf7dee6fa9a24591
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Azure Key Vault Analytics-Lösung in Log Analytics
+
+![Key Vault-Symbol](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
 
 Sie können die Azure Key Vault-Lösung in Log Analytics verwenden, um AuditEvent-Protokolle von Azure Key Vault zu überprüfen.
 
@@ -35,8 +38,8 @@ Wenn Sie die Lösung verwenden möchten, müssen Sie die Protokollierung für Az
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Key Vault-Lösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses. 
-2. Aktivieren Sie entweder im [Portal](#enable-key-vault-diagnostics-in-the-portal) oder mit [PowerShell](#enable-key-vault-diagnostics-using-powershell) die Diagnoseprotokollierung für die zu überwachenden Key Vault-Ressourcen. 
+1. Aktivieren Sie die Azure Key Vault-Lösung mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses.
+2. Aktivieren Sie entweder im [Portal](#enable-key-vault-diagnostics-in-the-portal) oder mit [PowerShell](#enable-key-vault-diagnostics-using-powershell) die Diagnoseprotokollierung für die zu überwachenden Key Vault-Ressourcen.
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Aktivieren der Key Vault-Diagnose im Portal
 
@@ -62,8 +65,8 @@ $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
- 
- 
+
+
 
 ## <a name="review-azure-key-vault-data-collection-details"></a>Überprüfen von Details zur Datensammlung von Azure Key Vault
 Die Azure Key Vault-Lösung erfasst Diagnoseprotokolle direkt aus der Key Vault-Instanz.
@@ -94,7 +97,7 @@ Nachdem Sie auf die Kachel **Übersicht** geklickt haben, können Sie Zusammenfa
 ### <a name="to-view-details-for-any-operation"></a>So zeigen Sie Details zu einzelnen Vorgängen an
 1. Klicken Sie auf der Seite **Übersicht** auf die Kachel **Azure Key Vault**.
 2. Prüfen Sie im **Azure Key Vault**-Dashboard die Zusammenfassungsinformationen in einem der Blätter, und klicken Sie dann auf einen Eintrag, um ausführliche Informationen auf der Seite „Protokollsuche“ anzuzeigen.
-   
+
     Sie können auf jeder Seite für die Protokollsuche die Ergebnisse nach Zeit, detaillierte Ergebnisse und Ihren Protokollsuchverlauf anzeigen. Außerdem können Sie nach Facets filtern, um die Ergebnisse einzugrenzen.
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
@@ -142,7 +145,7 @@ So verwenden Sie die aktualisierte Lösung:
   - Für jedes Feld, dessen Name das Suffix \_o enthält, werden die Daten basierend auf den geschachtelten Feldnamen in einzelne Felder aufgeteilt. Der UPN des Aufrufers wird z.B. in einem Feld `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` gespeichert.
    - Feld CallerIpAddress wurde in CallerIPAddress geändert.
    - Feld RemoteIPCountry ist nicht mehr vorhanden.
-4. Entfernen Sie die Lösung *Key Vault Analytics (veraltet)*. Wenn Sie PowerShell einsetzen, verwenden Sie `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`. 
+4. Entfernen Sie die Lösung *Key Vault Analytics (veraltet)*. Wenn Sie PowerShell einsetzen, verwenden Sie `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`.
 
 Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht angezeigt. Sie können die Abfrage dieser Daten mithilfe des alten Typs und der alten Feldnamen fortsetzen.
 
@@ -151,5 +154,4 @@ Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md), um ausführliche Azure Key Vault-Daten anzuzeigen.
-
 

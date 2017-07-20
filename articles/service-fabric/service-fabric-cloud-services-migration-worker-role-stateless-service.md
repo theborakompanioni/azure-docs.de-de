@@ -12,11 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/10/2017
+ms.date: 06/29/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
-ms.openlocfilehash: def92885587b11ce8275292680a524d0c8e31751
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -26,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Cloud Services-Web- und -Worker
 ## <a name="cloud-service-project-to-service-fabric-application-project"></a>Vom Cloud Services-Projekt zum Service Fabric-Anwendungsprojekt
  Ein Cloud Services-Projekt und ein Service Fabric-Anwendungsprojekt haben eine ähnliche Struktur, und beide stellen die Bereitstellungseinheit für Ihre Anwendung dar. Sie dienen also jeweils zum Definieren des kompletten Pakets, das zur Ausführung Ihrer Anwendung bereitgestellt wird. Ein Cloud Services-Projekt enthält mindestens eine Web- oder Workerrolle. Analog dazu enthält ein Service Fabric-Anwendungsprojekt mindestens einen Dienst. 
 
-Der Unterschied besteht darin, dass die Anwendungsbereitstellung beim Cloud Services-Projekt mit einer VM-Bereitstellung gekoppelt ist und daher VM-Konfigurationseinstellungen enthält. Beim Service Fabric-Anwendungsprojekt wird dagegen nur eine Anwendung definiert, die für eine Gruppe vorhandener VMs in einem Service Fabric-Cluster bereitgestellt wird. Der eigentliche Service Fabric-Cluster wird nur einmal bereitgestellt, und zwar entweder über eine ARM-Vorlage oder über das Azure-Portal. Hierfür können mehrere Service Fabric-Anwendungen bereitgestellt werden.
+Der Unterschied besteht darin, dass die Anwendungsbereitstellung beim Cloud Services-Projekt mit einer VM-Bereitstellung gekoppelt ist und daher VM-Konfigurationseinstellungen enthält. Beim Service Fabric-Anwendungsprojekt wird dagegen nur eine Anwendung definiert, die für eine Gruppe vorhandener VMs in einem Service Fabric-Cluster bereitgestellt wird. Der eigentliche Service Fabric-Cluster wird nur einmal bereitgestellt, und zwar entweder über eine Resource Manager-Vorlage oder über das Azure-Portal. Hierfür können mehrere Service Fabric-Anwendungen bereitgestellt werden.
 
 ![Vergleich von Service Fabric- und Cloud Services-Projekten][3]
 
@@ -260,9 +262,4 @@ Lesen Sie die weiteren Informationen zu Service Fabric Reliable Services und den
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

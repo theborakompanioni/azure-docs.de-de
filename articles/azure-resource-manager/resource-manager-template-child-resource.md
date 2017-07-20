@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 06/01/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: d7560b689d7cea56d40ffa2db9542f74a649f9c1
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -29,6 +30,16 @@ Der Typ der untergeordneten Ressource weist folgendes Format auf: `{resource-pro
 Der Name der untergeordneten Ressource weist folgendes Format auf: `{parent-resource-name}/{child-resource-name}`
 
 Der Typ und der Name einer untergeordneten Ressource werden jedoch in einer Vorlage unterschiedlich angegeben, je nachdem, ob die untergeordnete Ressource in der übergeordneten Ressource geschachtelt oder eigenständig auf der obersten Ebene definiert ist. In diesem Thema werden beide Fälle beschrieben.
+
+Wenn Sie einen vollqualifizierten Verweis auf eine Ressource erstellen, ist die Reihenfolge für die Kombination von Segmenten von Typ und Name nicht einfach eine Verkettung beider Werte.  Verwenden Sie stattdessen nach dem Namespace eine Folge von *Typ-Name*-Paaren, beginnend mit dem am wenigsten spezifischen bis zum spezifischsten:
+
+```json
+{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
+```
+
+Beispiel:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` ist richtig `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` ist nicht richtig
 
 ## <a name="nested-child-resource"></a>Geschachtelte untergeordnete Ressource
 Eine untergeordnete Ressource lässt sich am einfachsten definieren, indem sie in der übergeordneten Ressource geschachtelt wird. Das folgende Beispiel zeigt eine in einer SQL Server-Instanz geschachtelte SQL-Datenbank.

@@ -15,17 +15,17 @@ ms.workload: backup-recovery
 ms.date: 5/31/2017
 ms.author: bsiva
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b7f26df96ddedb579cf5d9d20fee6b2599e762e0
-ms.openlocfilehash: 555ea8eed17e42019513029f7b3ac2167f002578
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: c84a775564769ddc796aa9d75add019ef1003175
 ms.contentlocale: de-de
-ms.lasthandoff: 02/13/2017
+ms.lasthandoff: 06/15/2017
 
 ---
 
 # <a name="prepare-target-vmware-to-azure"></a>Vorbereiten des Ziels (VMware nach Azure)
 > [!div class="op_single_selector"]
-> * [Virtuelle VMware-Computer](./site-recovery-prepare-target-vmware-to-azure.md)
-> * [Physische Server](./site-recovery-prepare-target-physical-to-azure.md)
+> * [VMware zu Azure](./site-recovery-prepare-target-vmware-to-azure.md)
+> * [Physisch nach Azure](./site-recovery-prepare-target-physical-to-azure.md)
 
 Dieser Artikel beschreibt, wie Sie Ihre Azure-Umgebung vorbereiten, um mit dem Replizieren von virtuellen VMware-Computern nach Azure zu beginnen.
 

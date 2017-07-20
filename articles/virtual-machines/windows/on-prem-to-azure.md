@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 098904d8b5262d8a19d1c10003e0bcaa668ef2dc
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 24ee84bdd1c795d6354bb5cb8fe397b078e7c51f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -30,8 +30,8 @@ ms.lasthandoff: 05/26/2017
 Sie können VHD-Dateien aus AWS oder lokalen Virtualisierungslösungen in Azure hochladen, um VMs zu erstellen, die Managed Disks nutzen. Dank Azure Managed Disks ist es nicht mehr erforderlich, Speicherkonten für Azure IaaS-VMs zu verwalten. Sie müssen nur den Typ (Premium oder Standard) und die benötigte Größe des Datenträgers angeben, der anschließend von Azure erstellt und verwaltet wird. 
 
 Sie können sowohl generalisierte als auch spezialisierte VHDs hochladen. 
-**Generalisierte VHD:** Auf einer generalisierten VHD wurden alle Ihre persönlichen Kontoinformationen mit Sysprep entfernt. 
-**Spezialisierte VHD:** Auf einer spezialisierten VHD werden die Benutzerkonten, Anwendungen und andere Statusdaten Ihres ursprünglichen virtuellen Computers beibehalten. 
+- **Generalisierte VHD**: es wurden alle Ihre persönlichen Kontoinformationen mit Sysprep entfernt. 
+- **Spezialisierte VHD**: werden die Benutzerkonten, Anwendungen und andere Zustandsdaten Ihres ursprünglichen VM beibehalten. 
 
 > [!IMPORTANT]
 > Bevor Sie eine VHD in Azure hochladen, befolgen Sie die Anweisungen unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -41,9 +41,9 @@ Sie können sowohl generalisierte als auch spezialisierte VHDs hochladen.
 
 | Szenario                                                                                                                         | Dokumentation                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Sie verfügen über eine AWS EC2-Instanzen, die Sie zu Azure Managed Disks migrieren möchten.                                     | [Migrieren von Amazon Web Services (AWS) zu Azure Managed Disks](aws-to-azure.md)                           |
-| Sie verfügen über eine VM von einer anderen Virtualisierungsplattform, die Sie als Image zum Erstellen weiterer Azure-VMs nutzen möchten. | [Upload a generalized VHD to Azure and create a new VM using Managed Disks](upload-generalized-managed.md) (Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM mithilfe von Managed Disks) |
-| Sie habe eine besonders angepasste VM, die Sie in Azure neu erstellen möchten.                                                      | [Upload a specialized VHD to Azure and create a new VM using Managed Disks](create-vm-specialized.md) (Hochladen einer spezialisierten VHD in Azure und Erstellen einer neuen VM mithilfe von Managed Disks)         |
+| Sie verfügen über eine AWS EC2-Instanzen, die Sie zu Azure Managed Disks migrieren möchten.                                     | [Verschieben eines VM aus Amazon Web Services (AWS) zu Azure](aws-to-azure.md)                           |
+| Sie verfügen über eine VM von einer anderen Virtualisierungsplattform, die Sie als Image zum Erstellen weiterer Azure-VMs nutzen möchten. | [Hochladen einer generalisierten VHD, und Verwendung dieser zum Erstellen eines neuen VMs in Azure](upload-generalized-managed.md) |
+| Sie habe eine besonders angepasste VM, die Sie in Azure neu erstellen möchten.                                                      | [Hochladen einer spezialisierten VHD in Azure und Erstellen einer neuen VM](create-vm-specialized.md)         |
 
 
 ## <a name="overview-of-managed-disks"></a>Managed Disks (verwaltete Datenträger): Übersicht

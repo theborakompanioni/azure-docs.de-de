@@ -2,24 +2,23 @@
 title: "Anforderungseinheiten und Schätzen des Durchsatzes – Azure Cosmos DB | Microsoft-Dokumentation"
 description: "Enthält Informationen zu den Grundlagen von Anforderungseinheiten in Azure Cosmos DB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten."
 services: cosmos-db
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: mimig
 documentationcenter: 
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
-ms.service: Azure Cosmos DB
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: syamk
+ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: f263aaad1ba2a902401d8210727f146cb92f4ea8
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 95adddc01ee2814515c20f36e8503de30454a8f4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
@@ -30,9 +29,9 @@ Jetzt verfügbar: [Rechner für Anforderungseinheiten](https://www.documentdb.co
 ## <a name="introduction"></a>Einführung
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Mit Azure Cosmos DB müssen Sie keine virtuellen Computer mieten, Software bereitstellen oder Datenbanken überwachen. Azure Cosmos DB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten. Sie können über die API Ihrer Wahl auf Ihre Daten zugreifen – [DocumentDB SQL](documentdb-sql-query.md) (Dokument), MongoDB (Dokument), [Azure Table Storage](https://azure.microsoft.com/services/storage/tables/) (Schlüssel-Wert-Paar) und [Gremlin](https://tinkerpop.apache.org/gremlin.html) (Diagramm) werden nativ unterstützt. Die Währung von Azure Cosmos DB ist die Anforderungseinheit (Request Unit, RU). Dank der Anforderungseinheiten ist es nicht erforderlich, Kapazitäten für Lese- und Schreibvorgänge zu reservieren oder CPU, Arbeitsspeicher und IOPS bereitzustellen.
 
-Azure Cosmos DB unterstützt eine Reihe von APIs mit anderen Vorgängen, die von Lese- und Schreibvorgänge bis zu komplexen Graph-Abfragen reichen. Da nicht alle Anforderungen gleich sind, wird ihnen eine normalisierte Menge von **Anforderungseinheiten** zugewiesen, die auf dem für das Bedienen der Anforderung erforderlichen Rechenaufwand basiert. Die Anzahl der Anforderungseinheiten für einen Vorgang ist deterministisch, und Sie können die Anzahl der von den einzelnen Vorgängen genutzten Anforderungseinheiten in Azure Cosmos DB über einen Antwortheader verfolgen. 
+Azure Cosmos DB unterstützt eine Reihe von APIs mit anderen Vorgängen, die von Lese- und Schreibvorgängen bis hin zu komplexen Graph-Abfragen reichen. Da nicht alle Anforderungen gleich sind, wird ihnen eine normalisierte Menge von **Anforderungseinheiten** zugewiesen, die auf dem für das Bedienen der Anforderung erforderlichen Rechenaufwand basiert. Die Anzahl der Anforderungseinheiten für einen Vorgang ist deterministisch, und Sie können die Anzahl der von den einzelnen Vorgängen genutzten Anforderungseinheiten in Azure Cosmos DB über einen Antwortheader verfolgen. 
 
-Sie müssen einen Durchsatz von 100 RU/Sekunde reservieren, um eine vorhersagbare Leistung bereitstellen zu können. Für jeden Block von 100 RU/Sekunde können Sie einen Block von 1.000 RU/Minute anfügen. Die Kombination von Bereitstellung pro Sekunde und pro Minute ist äußerst leistungsstark, da keine Bereitstellung für Spitzenlasten erforderlich ist und Sie im Vergleich zu Diensten, deren Bereitstellungen ausschließlich pro Sekunde erfolgen, bis zu 75 % der Kosten einsparen können.
+Sie müssen einen Durchsatz von 100 RU/Sekunde reservieren, um eine vorhersagbare Leistung bereitstellen zu können. Für jeden Block von 100 RU/Sekunde können Sie einen Block von 1.000 RU/Minute anfügen. Die Kombination von Bereitstellung pro Sekunde und pro Minute ist äußerst leistungsstark, da keine Bereitstellung für Spitzenlasten erforderlich ist und Sie im Vergleich zu Diensten, deren Bereitstellungen ausschließlich pro Sekunde erfolgen, bis zu 75 % der Kosten einsparen können.
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:  
 
@@ -41,7 +40,7 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wie schätze ich die benötigten Anforderungseinheiten für meine Anwendung?
 * Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für eine Sammlung überschreite?
 
-Da es sich bei Azure Cosmos DB um eine Datenbank mit mehreren Modellen handelt, ist es wichtig zu beachten, dass wir für eine Dokument-API auf eine Sammlung bzw. auf ein Dokument, für eine Graph-API auf einen Graph/Knoten und für eine Tabellen-API auf eine Tabelle/Entität verweisen. In diesem Dokument werden allgemein die Konzepte von Container/Element verwendet.
+Da es sich bei Azure Cosmos DB um eine Datenbank mit mehreren Modellen handelt, ist es wichtig zu beachten, dass wir für eine Dokument-API auf eine Sammlung bzw. auf ein Dokument, für eine Graph-API auf einen Graph/Knoten, und für eine Tabellen-API auf eine Tabelle/Entität verweisen. In diesem Dokument werden allgemein die Konzepte von Container/Element verwendet.
 
 ## <a name="request-units-and-request-charges"></a>Anforderungseinheiten und Anforderungsgebühren
 Azure Cosmos DB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, die dem benötigten Durchsatz für Ihre Anwendung entsprechen.  Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit Azure Cosmos DB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.

@@ -5,20 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: librown
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/17/2017
 ms.author: kgremban
+ms.reviewer: librown
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 731275c72422a622e1d49f7d362447ef3361338b
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 62242f356afd55a7f9e432faa6cdf3be74b7c18c
+ms.contentlocale: de-de
+ms.lasthandoff: 06/22/2017
 
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator-App – häufig gestellte Fragen
@@ -31,13 +32,13 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>Wozu dienen die Codes in der App? Warum wird die Zahl rückwärts gezählt?
 
-Wenn Sie die Microsoft Authenticator-App öffnen, werden Ihnen die hinzugefügten Konten sowie jeweils eine sechs- oder achtstellige Zahl angezeigt. Möglicherweise sehen Sie einen dreißigsekündigen Timer, der abläuft.
+Wenn Sie die Microsoft Authenticator-App öffnen, werden Ihnen die hinzugefügten Konten sowie jeweils eine sechs- oder achtstellige Zahl angezeigt. Möglicherweise sehen Sie einen 30-sekündigen Timer, der abläuft.
 
 Diese Codes werden verwendet, wenn Sie sich bei Ihrem Konto anmelden. Nachdem Sie Ihren Benutzernamen und Ihr Kennwort eingegeben haben, werden Sie möglicherweise zur Eingabe eines Prüfcodes aufgefordert. Öffnen Sie die Microsoft Authenticator-App, und kopieren Sie den aktuell angezeigten Code. Geben Sie diesen Code auf der Anmeldeseite ein, um den Vorgang abzuschließen.
 
 Die Codes ändern sich alle 30 Sekunden, damit Sie den gleichen Code nie zweimal verwenden. Es handelt sich nicht um ein Kennwort, das Sie sich merken sollen. Die Idee dabei ist, dass nur eine Person mit Zugriff auf Ihr Telefon Ihren Prüfcode kennen kann.
 
-Für die Codes sind weder Internet noch Daten erforderlich, daher müssen Sie sich bei keinem Telefondienst anmelden, und die App braucht nicht Ihren Datentarif auf. Wenn Sie die App schließen, wird sie nicht länger im Hintergrund ausgeführt, sodass auch der Akku nicht verbraucht wird. Sie können die App schließen und ignorieren, bis Sie sich das nächste Mal anmelden.  
+Für die Codes sind weder Internet noch Daten erforderlich, daher müssen Sie sich bei keinem Telefondienst anmelden. Wenn Sie die App schließen, wird sie nicht länger im Hintergrund ausgeführt, sodass auch der Akku nicht verbraucht wird. Sie können die App schließen und ignorieren, bis Sie sich das nächste Mal anmelden.  
 
 ### <a name="i-only-get-notifications-when-i-have-the-app-open-if-the-app-isnt-open-i-dont-get-any-notifications"></a>Ich erhalte Benachrichtigungen nur, wenn die App geöffnet ist. Wenn die App nicht geöffnet ist, erhalte ich keine Benachrichtigungen.
 
@@ -46,10 +47,10 @@ Wenn Sie Benachrichtigungen erhalten, aber kein Signalton ausgegeben wird und da
 Wenn Sie überhaupt keine Benachrichtigungen erhalten, überprüfen Sie Folgendes:
 
 - Ist Ihr Telefon im Nicht-stören-Modus oder stummgeschaltet? In diesem Modus können Apps am Senden von Benachrichtigungen gehindert werden.
-- Erhalten Sie Benachrichtigungen von anderen Apps? Wenn dies nicht der Fall ist, liegt möglicherweise ein Problem mit den Netzwerkverbindungen auf Ihrem Mobiltelefon oder mit dem Benachrichtigungskanal von Android oder Apple vor. Im ersten Fall können Sie das Problem über die Einstellungen des Mobiltelefons beheben, im zweiten Fall müssen Sie sich jedoch mit Ihrem Mobilfunkanbieter in Verbindung setzen, um Unterstützung zu erhalten.
-- Können Sie Benachrichtigungen nur für bestimmte Konten in der App erhalten? In diesem Fall entfernen Sie die Konten aus der App, die Probleme bereiten, und fügen sie erneut hinzu, um Pushbenachrichtigungen wieder zu aktivieren. 
+- Erhalten Sie Benachrichtigungen von anderen Apps? Wenn dies nicht der Fall ist, liegt möglicherweise ein Problem mit den Netzwerkverbindungen auf Ihrem Mobiltelefon oder mit dem Benachrichtigungskanal von Android oder Apple vor. Im ersten Fall können Sie das Problem über die Einstellungen des Mobiltelefons beheben, im zweiten Fall müssen Sie sich jedoch möglicherweise mit Ihrem Mobilfunkanbieter in Verbindung setzen, um Unterstützung zu erhalten.
+- Können Sie Benachrichtigungen nur für bestimmte Konten in der App erhalten? In diesem Fall entfernen Sie die Konten aus der App, die Probleme bereiten, und fügen sie erneut hinzu, um Pushbenachrichtigungen zu aktivieren. 
 
-Wenn Sie unseren Vorschlägen zur Problembehebung gefolgt sind, die Probleme aber weiterhin auftreten, senden Sie uns Ihre Protokolle zur Diagnose (wählen Sie in den App-Einstellungen **Hilfe und Feedback** und **Protokolle senden**), und besuchen Sie dann das [Forum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und beschreiben Sie uns das aufgetretene Problem und die Lösungen, die Sie bislang versucht haben. 
+Senden Sie uns Ihre Protokolle zur Diagnose, wenn Sie diese Vorschläge zur Problembehandlung befolgt haben, die Probleme jedoch weiterhin bestehen. Rufen Sie die App-Einstellungen auf. Wählen Sie anschließend **Hilfe und Feedback** und **Protokolle senden** aus. Wechseln Sie anschließend zum [Internetforum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und informieren Sie uns über Ihr Problem und darüber, welche Schritte Sie bisher ausgeführt haben. 
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>Ich verwende für Sicherheitscodes bereits die Microsoft Authenticator-App. Wie wechsle ich zu One-Click-Pushbenachrichtigungen?
 Die Bestätigung einer Anmeldung mittels Pushbenachrichtigungen steht nur für persönliche Microsoft-Konten oder für Geschäfts-, Schul- oder Unikonten von Microsoft zur Verfügung, nicht für Konten von Drittanbietern wie Google oder Facebook. Wenn Sie über ein Geschäfts-, Schul- oder Unikonto von Microsoft verfügen, kann Ihre Organisation diese Option deaktivieren.
@@ -85,7 +86,7 @@ Hier finden Sie eine vollständige Liste der Berechtigungen, die möglicherweise
 * **Andere Apps in den Hintergrund rücken**: Wenn Sie eine Benachrichtigung erhalten, dass Sie Ihre Identität bestätigen müssen, wird diese Benachrichtigung im Vordergrund angezeigt, vor allen anderen Apps, die möglicherweise ausgeführt werden.
 * **Daten aus dem Internet empfangen**: Diese Berechtigung ist für das Senden von Benachrichtigungen erforderlich.
 * **Standby-Modus verhindern**: Wenn Sie Ihr Gerät bei Ihrer Organisation registrieren, können sie diese Richtlinie auf Ihrem Telefon ändern.
-* **Vibrationsfunktion steuern**: Sie haben die Möglichkeit auszuwählen, ob Ihr Telefon vibrieren soll, wenn Sie eine Benachrichtigung erhalten, dass Sie Ihre Identität bestätigen müssen.
+* **Vibrationsfunktion steuern**: Sie können auswählen, ob Ihr Telefon vibrieren soll, wenn Sie eine Benachrichtigung erhalten, dass Sie Ihre Identität bestätigen müssen.
 * **Verwendung der Fingerprint-Hardware**: Bei einigen Geschäfts- und Schulkonten wird eine zusätzliche PIN benötigt, wenn Sie Ihre Identität bestätigen. Sie können Ihren Fingerabdruck verwenden, um den Prozess zu vereinfachen, anstatt die PIN einzugeben.
 * **Anzeigen von Netzwerkverbindungen**: Wenn Sie über ein Microsoft-Konto verfügen, benötigt die App eine Netzwerk-/Internetverbindung.
 * **Lesen Ihres Speichers**: Diese Berechtigung ist nur notwendig, wenn Sie ein technisches Problem über die App-Einstellungen melden. Einige Informationen aus Ihrem Speicherkonto werden gesammelt, um das Problem zu diagnostizieren.
@@ -94,7 +95,7 @@ Hier finden Sie eine vollständige Liste der Berechtigungen, die möglicherweise
 
 ### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>Warum ermöglicht die Microsoft Authenticator-App die Genehmigung einer Anforderung ohne Entsperrung des Geräts?
 
-Dies ist beabsichtigt. Bei der Überprüfung in zwei Schritten werden zwei Dinge überprüft: etwas, das Sie wissen (das Kennwort), und etwas, das Sie haben (Ihr Smartphone; eingerichtet mit der Microsoft Authenticator-App und registriert als MFA-Nachweis.)  Somit sind die Kriterien des zweiten Authentifizierungsschritts erfüllt, wenn Sie über das Smartphone verfügen und die Anforderung bestätigen. 
+Sie müssen Ihr Gerät nicht entsperren, um Überprüfungsanforderungen zu genehmigen. Das Einzige, was Sie nachweisen können müssen, ist, dass Sie jederzeit über Ihr Mobiltelefon erreichbar sind. Bei der Überprüfung in zwei Schritten werden zwei Dinge überprüft: etwas, das Sie wissen (das Kennwort). und etwas, das Sie haben (Ihr Smartphone; eingerichtet mit der Microsoft Authenticator-App und registriert als MFA-Nachweis.) Somit sind die Kriterien des zweiten Authentifizierungsschritts erfüllt, wenn Sie über das Smartphone verfügen und die Anforderung bestätigen. 
 
 ### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>Was bedeutet das Schlosssymbol in der Kontoliste?
 

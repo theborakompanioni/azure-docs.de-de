@@ -13,13 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 05/5/2017
+ms.date: 06/9/2017
 ms.author: LADocs; dimazaid; estfan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8a1ae2ef790455383118bb55c34f6ca10fe0169e
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 7122b970c2e4703df9771e8ace4e710399ca3e6c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -76,19 +76,22 @@ Sie können das Gateway nicht auf einem Domänencontroller installieren.
 
 * Installieren Sie das Gateway nicht auf einem Computer, der ausgeschaltet wird, in den Ruhezustand versetzt wird oder keine Internetverbindung herstellt, da das Gateway unter diesen Umständen nicht ausgeführt werden kann. Darüber hinaus kann die Gatewayleistung bei Einsatz eines Drahtlosnetzwerks ggf. beeinträchtigt werden.
 
-* Sie können sich nur über ein Azure-Konto anmelden, das eine Geschäfts- oder Schul-E-Mail-Adresse hat, die von Azure Active Directory (Azure AD) verwaltet wird. Sie benötigen dieses Konto, um das lokale Datengateway einem Azure-Abonnement für ein Azure AD-basiertes-Konto zuzuordnen.
+* Während der Installation müssen Sie sich mit einem [Geschäfts-, Schul- oder Unikonto](https://docs.microsoft.com/azure/active-directory/sign-up-organization) anmelden, das von Azure Active Directory (Azure AD) verwaltet wird, und nicht mit einem Microsoft-Konto. 
 
-  > [!TIP] 
-  > Wenn Sie ein Microsoft-Kontos haben, etwa @outlook.com, können Sie Ihr Azure-Konto dazu verwenden, [eine Geschäfts- oder Schul-E-Mail-Adresse zu erstellen](../virtual-machines/windows/create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal). Wenn Sie sich für ein Office 365-Angebot registriert und nicht Ihre tatsächliche Geschäfts-E-Mail-Adresse angegeben haben, kann Ihre Anmeldeadresse beispielsweise wie folgt aussehen: jeff@contoso.onmicrosoft.com. 
+  Sie müssen dasselbe Geschäfts-, Schul- oder Unikonto später im Azure-Portal verwenden, wenn Sie eine Gatewayressource erstellen und Ihrer Gatewayinstallation zuordnen. Anschließend wählen Sie diese Gatewayressource aus, wenn Sie die Verbindung zwischen Ihrer Logik-App und der lokalen Datenquelle erstellen. [Warum muss ich ein Azure AD-Geschäfts-, -Schul- oder -Unikonto verwenden?](#why-azure-work-school-account)
+
+  > [!TIP]
+  > Wenn Sie sich für ein Office 365-Angebot registriert und nicht Ihre tatsächliche geschäftliche E-Mail-Adresse angegeben haben, kann Ihre Anmeldeadresse beispielsweise wie folgt aussehen: jeff@contoso.onmicrosoft.com. 
 
 * Wenn Sie ein vorhandenes Gateway haben, das Sie mit einem Installer eingerichtet haben, dessen Version früher ist als 14.16.6317.4, können Sie den Speicherort Ihres Gateways nicht ändern, indem Sie den neuesten Installer ausführen. Sie können aber die neueste Version von Installer verwenden, um ein neues Gateway mit dem Speicherort einzurichten, den Sie stattdessen wünschen.
   
   Wenn Sie einen Gateway-Installer mit einer Version vor 14.16.6317.4, aber Ihr Gateway noch nicht installiert haben, können Sie den neuesten Installer herunterladen und verwenden.
 
 <a name="install-gateway"></a>
+
 ## <a name="install-the-data-gateway"></a>Installieren des Datengateways
 
-1.    [Laden Sie den Gateway-Installer auf einen lokalen Computer herunter, und führen Sie den Installer aus](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+1.  [Laden Sie den Gateway-Installer auf einen lokalen Computer herunter, und führen Sie den Installer aus](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
 
 2. Lesen und akzeptieren Sie die Nutzungsbedingungen und Datenschutzbestimmungen.
 
@@ -96,29 +99,38 @@ Sie können das Gateway nicht auf einem Domänencontroller installieren.
 
 4. Wenn Sie dazu aufgefordert werden, melden Sie sich mit Ihrem Azure-Geschäfts- oder -Schulkonto, nicht mit einem Microsoft-Konto an.
 
-5. Registrieren Sie nun Ihre Gatewayinstallation beim [Gatewayclouddienst](#gateway-cloud-service). 
+   ![Anmelden mit dem Azure-Geschäfts-, -Schul- oder -Unikonto](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-     Der Gatewayclouddienst verschlüsselt und speichert Ihre Anmeldeinformationen für Datenquellen und Ihre Gatewaysdetails. 
-     Der Dienst leitet außerdem Abfragen und deren Ergebnisse zwischen Benutzern in der Cloud, etwa Ihre Logik-App, dem lokalen Datengateway und Ihrer lokalen Datenquelle weiter.
+5. Registrieren Sie nun Ihr installiertes Gateway beim [Gatewayclouddienst](#gateway-cloud-service). Wählen Sie **Registriert ein neues Gateway auf diesem Computer** aus.
 
-     1. Geben Sie einen Namen für Ihre Gatewayinstallation an, und erstellen Sie einen Wiederherstellungsschlüssel. 
-     Bestätigen Sie den Wiederherstellungsschlüssel.
+   Der Gatewayclouddienst verschlüsselt und speichert Ihre Anmeldeinformationen für Datenquellen und Ihre Gatewaysdetails. 
+   Der Dienst leitet außerdem Abfragen und deren Ergebnisse zwischen Ihrer Logik-App, dem lokalen Datengateway und Ihrer lokalen Datenquelle weiter.
 
-        > [!IMPORTANT] 
-        > Der Wiederherstellungsschlüssel muss mindestens acht Zeichen enthalten. Speichern und verwahren Sie den Schlüssel an einem sicheren Ort. Sie benötigen diesen Schlüssel auch, wenn Sie ein vorhandenes Gateway migrieren, wiederherstellen oder übernehmen möchten.
+6. Geben Sie einen Namen für Ihre Gatewayinstallation an. Erstellen Sie einen Wiederherstellungsschlüssel, und bestätigen Sie den Wiederherstellungsschlüssel. 
 
-     2. Um die Standardregion für den Gatewayclouddienst und Azure Service Bus zu ändern, die von Ihrer Gatewayinstallation verwendet werden, wählen Sie **Region ändern** aus.
+   > [!IMPORTANT] 
+   > Der Wiederherstellungsschlüssel muss mindestens acht Zeichen enthalten. Speichern und verwahren Sie den Schlüssel an einem sicheren Ort. Sie benötigen diesen Schlüssel auch, wenn Sie ein vorhandenes Gateway migrieren, wiederherstellen oder übernehmen möchten.
 
-        Beispielsweise bietet es sich an, dieselbe Region wie für Ihre Logik-App oder die Region auszuwählen, die Ihrer lokalen Datenquelle am nächsten liegt, sodass sich die Wartezeit verringern lässt. Ihre Gatewayressource und Ihre Logik-App können unterschiedliche Standorte haben.
+   1. Um die Standardregion für den Gatewayclouddienst und Azure Service Bus zu ändern, die von Ihrer Gatewayinstallation verwendet werden, wählen Sie **Region ändern** aus.
 
-        > [!IMPORTANT]
-        > Sie können diese Region nach der Installation nicht ändern. Diese Region bewirkt auch, dass der Standort bestimmt und eingeschränkt ist, an dem Sie die Azure-Ressource für Ihr Gateway erstellen können. Daher müssen Sie, wenn Sie Ihre Gatewayressource in Azure erstellen, darauf achten, dass der Standort der Ressource mit der Region übereinstimmt, die Sie bei der Gatewayinstallation ausgewählt haben.
-        > 
-        > Wenn Sie für Ihr Gateway später eine andere Region verwenden möchten, müssen Sie ein neues Gateway einrichten.
+      ![Ändern der Region](./media/logic-apps-gateway-install/change-region-gateway-install.png)
 
-     3. Wenn Sie fertig sind, wählen Sie **Konfigurieren** aus.
+      Die Standardregion ist die Region, die Ihrem Azure AD-Mandanten zugeordnet ist.
 
-6. Führen Sie jetzt diese Schritte im Azure-Portal aus, damit Sie [eine Azure-Ressource für Ihr Gateway erstellen](../logic-apps/logic-apps-gateway-connection.md) können. 
+   2. Öffnen Sie im nächsten Bereich **Region auswählen**, um eine andere Region auszuwählen.
+
+      ![Auswählen einer anderen Region](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+
+      Beispielsweise bietet es sich an, dieselbe Region wie für Ihre Logik-App oder die Region auszuwählen, die Ihrer lokalen Datenquelle am nächsten liegt, sodass sich die Wartezeit verringern lässt. Ihre Gatewayressource und Ihre Logik-App können unterschiedliche Standorte haben.
+
+      > [!IMPORTANT]
+      > Sie können diese Region nach der Installation nicht ändern. Diese Region bewirkt auch, dass der Standort bestimmt und eingeschränkt ist, an dem Sie die Azure-Ressource für Ihr Gateway erstellen können. Daher müssen Sie, wenn Sie Ihre Gatewayressource in Azure erstellen, darauf achten, dass der Standort der Ressource mit der Region übereinstimmt, die Sie bei der Gatewayinstallation ausgewählt haben.
+      > 
+      > Wenn Sie für Ihr Gateway später eine andere Region verwenden möchten, müssen Sie ein neues Gateway einrichten.
+
+   3. Wählen Sie abschließend **Fertig** aus.
+
+7. Führen Sie jetzt diese Schritte im Azure-Portal aus, damit Sie [eine Azure-Ressource für Ihr Gateway erstellen](../logic-apps/logic-apps-gateway-connection.md) können. 
 
 Erfahren Sie mehr darüber, [wie das Datengateway funktioniert](#gateway-cloud-service).
 
@@ -127,7 +139,12 @@ Erfahren Sie mehr darüber, [wie das Datengateway funktioniert](#gateway-cloud-s
 Um diese Aufgaben auszuführen, benötigen Sie den Wiederherstellungsschlüssel, der bei der Installation des Gateways angegeben wurde.
 
 1. Wählen Sie im Startmenü des Computers den Eintrag **Lokales Datengateway** aus.
-2. Nachdem der Installer geöffnet ist, geben Sie den Wiederherstellungsschlüssel für das Gateway an, das Sie migrieren, wiederherstellen oder übernehmen möchten.
+
+2. Wenn das Installationsprogramm geöffnet wurde, melden Sie sich mit dem Azure-Konto (Geschäfts-, Schul- oder Unikonto) an, das beim Installieren des Gateways verwendet wurde.
+
+3. Wählen Sie **Hiermit wird ein vorhandenes Gateway migriert, wiederhergestellt oder übernommen** aus.
+
+4. Geben Sie den Wiederherstellungsschlüssel für das Gateway an, das Sie migrieren, wiederherstellen oder übernehmen möchten.
 
 <a name="restart-gateway"></a>
 ## <a name="restart-the-gateway"></a>Neustarten des Gateways
@@ -199,7 +216,7 @@ Wenn Sie anstelle der Domänen IP-Adressen genehmigen müssen, können Sie die [
 <a name="gateway-cloud-service"></a>
 ## <a name="how-does-the-data-gateway-work"></a>Wie funktioniert das Datengateway?
 
-Das Datengateway ermöglicht schnelle und sichere Kommunikation zwischen einem Benutzer in der Cloud, etwa Ihre Logik-App, dem Gatewayclouddienst und Ihrer lokalen Datenquelle. 
+Das Datengateway ermöglicht die schnelle und sichere Kommunikation zwischen Ihrer Logik-App, dem Gatewayclouddienst und Ihrer lokalen Datenquelle. 
 
 ![Datenflussdiagramm-für-lokales-Datengateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -228,8 +245,10 @@ Somit geschieht Folgendes, wenn ein Benutzer in der Cloud mit einem Element inte
 **F**: Muss das Gateway auf dem gleichen Computer wie die Datenquelle installiert werden? <br/>
 **A**: Nein. Das Gateway stellt mithilfe der bereitgestellten Verbindungsinformationen eine Verbindung mit der Datenquelle her. Stellen Sie sich das Gateway in diesem Sinne als Clientanwendung vor. Für das Gateway ist nur die Funktion zum Herstellen der Verbindung mit dem angegebenen Servernamen erforderlich.
 
+<a name="why-azure-work-school-account"></a>
+
 **F**: Warum muss ich ein Azure-Geschäfts-, -Schul- oder -Unikonto verwenden, um mich anzumelden? <br/>
-**A**: Sie können das lokale Datengateway nur einem Azure-Geschäfts-, -Schul- oder -Unikonto zuordnen. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der UPN Ihres Azure AD-Kontos der E-Mail-Adresse.
+**A**: Sie können beim Installieren des lokalen Datengateways nur ein Azure-Geschäfts-, Schul- oder Unikonto verwenden. Ihr Anmeldekonto ist in einem Mandanten gespeichert, der von Azure Active Directory (Azure AD) verwaltet wird. Normalerweise entspricht der Benutzerprinzipalname (UPN) Ihres Azure AD-Kontos der E-Mail-Adresse.
 
 **F**: Wo werden meine Anmeldeinformationen gespeichert ? <br/>
 **A**: Die Anmeldeinformationen, die Sie für eine Datenquelle eingeben, werden verschlüsselt und im Gatewayclouddienst gespeichert. Die Anmeldeinformationen werden im lokalen Datengateway entschlüsselt.

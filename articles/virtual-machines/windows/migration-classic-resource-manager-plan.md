@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 19ae04785d78eae43795b92e808ee835b9047229
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: db23eba9ff8debd5268cd02bc4f37c4e6501bfac
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
 
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
-Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten. 
+Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten.
 
-> [!NOTE] 
-> An der folgenden Anleitung haben das Azure Customer Advisory Team und die Cloudlösungsarchitekten maßgeblich mitgewirkt, die Kunden bei der Migration umfangreicher Umgebungen unterstützen. Das Dokument wird immer wieder mit neuen Erfolgsmustern aktualisiert. Prüfen Sie daher von Zeit zu Zeit, ob neue Empfehlungen verfügbar sind.
+> [!NOTE]
+> An der folgenden Anleitung haben das Azure Customer Advisory Team und die Cloudlösungsarchitekten maßgeblich mitgewirkt, die Kunden bei der Migration umfangreicher Umgebungen zu unterstützen. Das Dokument wird immer wieder mit neuen Erfolgsmustern aktualisiert. Prüfen Sie daher von Zeit zu Zeit, ob neue Empfehlungen verfügbar sind.
 
 Die Migration lässt sich in vier allgemeine Phasen unterteilen:<br>
 
@@ -71,13 +72,13 @@ Erfolgreiche Kunden verfügen über sorgfältig ausgearbeitete Pläne, in denen 
 - Keine Planung für den möglichen Ausfall der Anwendung für Endbenutzer.  Planen Sie einen angemessenen Puffer ein, um Endbenutzer angemessen darüber zu informieren, dass die Anwendung möglicherweise eine Weile nicht verfügbar ist.
 
 
-## <a name="lab-test"></a>Lab-Test 
+## <a name="lab-test"></a>Lab-Test
 
 **Replizieren Ihrer Umgebung und Ausführen einer Testmigration**
   > [!NOTE]
   > Die Erstellung eines exakten Replikats Ihrer vorhandenen Umgebung erfolgt mithilfe eines von der Community bereitgestellten Tools, für das Microsoft offiziell keinen Support bietet. Der Schritt ist daher **optional**, stellt aber die beste Möglichkeit dar, um ohne Auswirkungen auf Ihre Produktionsumgebungen Probleme zu ermitteln. Falls die Verwendung eines von der Community bereitgestellten Tools für Sie keine Option ist, lesen Sie weiter unten die Empfehlung „Probelauf mit Überprüfung/Vorbereitung/Abbruch“.
   >
-  
+
   Mithilfe eines Lab-Tests Ihres exakten Szenarios (Compute, Netzwerk und Speicher) lässt sich am besten eine reibungslose Migration gewährleisten. Vorteile:
 
   - Eine vollständig separate Lab-Umgebung oder eine vorhandene produktionsfremde Umgebung zu Testzwecken. Wir empfehlen ein vollständig separates Lab, das wiederholt migriert und destruktiv geändert werden kann.  Skripts zum Erfassen/Aktualisieren von Metadaten aus den echten Abonnements finden Sie weiter unten.
@@ -96,23 +97,31 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
 - **ExpressRoute-Leitungen und VPN:** ExpressRoute-Gateways mit Autorisierungslinks können derzeit nicht ohne Ausfallzeit migriert werden. Informationen zur Umgehung dieses Problems finden Sie unter [Migrieren von ExpressRoute-Verbindungen und zugeordneten virtuellen Netzwerken vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
 - **VM-Erweiterungen:** Erweiterungen für virtuelle Computer können eines der größten Hindernisse für die Migration ausgeführter virtueller Computer darstellen. Korrekturmaßnahmen für VM-Erweiterungen können bis zu zwei Tage in Anspruch nehmen. Berücksichtigen Sie dies bei der Planung.  Zur Meldung des Status der VM-Erweiterungen von ausgeführten virtuellen Computern wird ein funktionierender Azure-Agent benötigt. Wenn für einen ausgeführten virtuellen Computer ein Fehlerstatus zurückgegeben wird, wird die Migration angehalten. Der Agent selbst muss sich für die Migration nicht in einem funktionsfähigen Zustand befinden, aber wenn auf dem virtuellen Computer Erweiterungen vorhanden sind, kann die Migration nur fortgesetzt werden, wenn ein funktionierender Agent und eine ausgehende Internetverbindung (mit DNS) verfügbar sind.
-  - Falls während der Migration die Verbindung mit einem DNS-Server unterbrochen wird, müssen mit Ausnahme von „BGInfo v1\*“ alle VM-Erweiterungen vor der Migrationsvorbereitung von allen virtuellen Computern entfernt und nach der Migration zu Azure Resource Manager wieder den virtuellen Computern hinzugefügt werden.  **Dies gilt nur für ausgeführte virtuelle Computer.**  Bei virtuellen Computern mit dem Status „Beendet (Zuordnung aufgehoben)“ müssen VM-Erweiterungen nicht entfernt werden. **Hinweis:** Viele Erweiterungen wie Azure-Diagnose und Security Center-Überwachung werden nach der Migration automatisch neu installiert und können daher problemlos entfernt werden.
-  - Vergewissern Sie sich zudem, dass ausgehender Internetzugriff nicht durch Netzwerksicherheitsgruppen (NSGs) eingeschränkt wird. Das kann bei bestimmten NSG-Konfigurationen der Fall sein. Ausgehender Internetzugriff (und DNS) ist für die Migration von VM-Erweiterungen zu Azure Resource Manager erforderlich. 
-  - Von der BGInfo-Erweiterung gibt es zwei Versionen: v1 und v2.  Wenn der virtuelle Computer über das klassische Portal oder mithilfe von PowerShell erstellt wurde, verfügt er wahrscheinlich über die v1-Version der Erweiterung. Diese Erweiterung muss nicht entfernt werden und wird von der Migrations-API übersprungen (nicht migriert). Wenn der klassische virtuelle Computer hingegen über das neue Azure-Portal erstellt wurde, verfügt er wahrscheinlich über die JSON-basierte v2-Version von BGInfo. Diese Version kann zu Azure Resource Manager migriert werden. Dazu muss der Agent jedoch funktionieren und über ausgehenden Internetzugriff (und DNS) verfügen. 
-  - **Korrekturoption 1:** Wenn Sie wissen, dass Ihre virtuellen Computer nicht über ausgehenden Internetzugriff verfügen, kein funktionierender DNS-Dienst verfügbar ist und auf den virtuellen Computern keine funktionierenden Azure-Agents vorhanden sind, deinstallieren Sie alle VM-Erweiterungen im Rahmen der Migration vor der Vorbereitungsphase, und installieren Sie sie nach der Migration neu. 
+  - Wenn die Verbindung mit einem DNS-Server während der Migration abbricht, müssen alle VM-Erweiterungen bis auf BGInfo Version 1.\* zunächst von jeder VM entfernt werden, bevor die Migration vorbereitet wird, und nach der Azure Resource Manager-Migration wieder zu der VM hinzugefügt werden.  **Dies gilt nur für ausgeführte virtuelle Computer.**  Bei virtuellen Computern mit dem Status „Beendet (Zuordnung aufgehoben)“ müssen VM-Erweiterungen nicht entfernt werden.
+
+  > [!NOTE]
+  > Viele Erweiterungen wie Azure-Diagnose und Security Center-Überwachung werden nach der Migration automatisch neu installiert und können daher problemlos entfernt werden.
+
+  - Vergewissern Sie sich zudem, dass ausgehender Internetzugriff nicht durch Netzwerksicherheitsgruppen (NSGs) eingeschränkt wird. Das kann bei bestimmten NSG-Konfigurationen der Fall sein. Ausgehender Internetzugriff (und DNS) ist für die Migration von VM-Erweiterungen zu Azure Resource Manager erforderlich.
+  - Es existieren zwei Versionen der BGInfo-Erweiterung, die als Version 1 und 2 bezeichnet werden.  
+
+      - Wenn die VM die BGInfo-Erweiterung Version 1 verwendet, können Sie diese Erweiterung so belassen. Die Migrations-API überspringt diese Erweiterung. Die BGInfo-Erweiterung kann nach der Migration hinzugefügt werden.
+      - Wenn die VM die JSON-basierte BGInfo-Erweiterung Version 2 verwendet, wurde die VM mithilfe des Azure-Portals erstellt. Die Migrations-API schließt diese Erweiterung in die Migration zu Azure Resource Manager ein, vorausgesetzt der Agent funktioniert und verfügt über ausgehenden Internetzugang (und DNS).
+
+  - **Korrekturoption 1:** Wenn Sie wissen, dass Ihre virtuellen Computer nicht über ausgehenden Internetzugriff verfügen, kein funktionierender DNS-Dienst verfügbar ist und auf den virtuellen Computern keine funktionierenden Azure-Agents vorhanden sind, deinstallieren Sie alle VM-Erweiterungen im Rahmen der Migration vor der Vorbereitungsphase, und installieren Sie sie nach der Migration neu.
   - **Korrekturoption 2:** Falls sich die VM-Erweiterungen als zu große Hürde erweisen, können Sie alle virtuellen Computer vor der Migration herunterfahren bzw. freigeben. Migrieren Sie die virtuellen Computer mit aufgehobener Zuordnung, und starten Sie sie anschließend auf der Azure Resource Manager-Seite wieder. Der Vorteil: Die VM-Erweiterungen werden migriert. Der Nachteil: Alle öffentlich zugänglichen virtuellen IP-Adressen gehen verloren (was unter Umständen den Start verhindert), und die virtuellen Computer werden heruntergefahren, wodurch aktive Anwendungen natürlich erheblich stärker beeinträchtigt werden.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Falls für die ausgeführten virtuellen Computer, die migriert werden, eine Azure Security Center-Richtlinie konfiguriert ist, muss die Sicherheitsrichtlinie vor dem Entfernen von Erweiterungen beendet werden. Andernfalls wird die Sicherheitsüberwachungserweiterung automatisch wieder auf dem virtuellen Computer installiert, nachdem sie entfernt wurde.
-  
-- **Verfügbarkeitsgruppen:** Damit ein virtuelles Netzwerk (VNET) zu Azure Resource Manager migriert werden kann, müssen sich die im klassischen Bereitstellungsmodell (Clouddienst) enthaltenen virtuellen Computer entweder alle in der gleichen Verfügbarkeitsgruppe befinden, oder keiner der virtuellen Computer darf einer Verfügbarkeitsgruppe angehören. Die Verwendung mehrerer Verfügbarkeitsgruppen im Clouddienst ist mit Azure Resource Manager nicht kompatibel und führt dazu, dass die Migration angehalten wird.  Darüber hinaus dürfen sich nicht einige virtuelle Computer in einer Verfügbarkeitsgruppe befinden und andere nicht. Zur Behebung dieses Problems müssen Sie Ihren Clouddienst korrigieren oder umgestalten.  Dies kann sehr zeitaufwendig sein. Planen Sie daher genügend Zeit ein. 
+
+- **Verfügbarkeitsgruppen:** Damit ein virtuelles Netzwerk (VNET) zu Azure Resource Manager migriert werden kann, müssen sich die im klassischen Bereitstellungsmodell (Clouddienst) enthaltenen virtuellen Computer entweder alle in der gleichen Verfügbarkeitsgruppe befinden, oder keiner der virtuellen Computer darf einer Verfügbarkeitsgruppe angehören. Die Verwendung mehrerer Verfügbarkeitsgruppen im Clouddienst ist mit Azure Resource Manager nicht kompatibel und führt dazu, dass die Migration angehalten wird.  Darüber hinaus dürfen sich nicht einige virtuelle Computer in einer Verfügbarkeitsgruppe befinden und andere nicht. Zur Behebung dieses Problems müssen Sie Ihren Clouddienst korrigieren oder umgestalten.  Dies kann sehr zeitaufwendig sein. Planen Sie daher genügend Zeit ein.
 
 - **Web-/Workerrollenbereitstellungen:** Cloud Services mit Web- und Workerrollen können nicht zu Azure Resource Manager migriert werden. Die Web-/Workerrollen müssen vor Beginn der Migration aus dem virtuellen Netzwerk entfernt werden.  Dazu können die Instanzen der Web-/Workerrollen in ein separates klassisches virtuelles Netzwerk verschoben werden, das ebenfalls mit einer ExpressRoute-Leitung verknüpft ist. Alternativ können Sie den Code zu neueren PaaS-App Services migrieren. (Diese Diskussion ist jedoch nicht Gegenstand dieses Dokuments.) Erstellen Sie im ersteren Fall ein neues klassisches virtuelles Netzwerk, verschieben Sie die Web-/Workerrollen in dieses neue virtuelle Netzwerk (oder stellen Sie sie dort neu bereit), und löschen Sie anschließend die Bereitstellungen aus dem zu verschiebenden virtuellen Netzwerk. Codeänderungen sind nicht erforderlich. Mit dem neuen [Peering in virtuellen Netzwerken](../../virtual-network/virtual-network-peering-overview.md) können Sie das klassische virtuelle Netzwerk, das die Web-/Workerrollen enthält, mit anderen virtuellen Netzwerken in der gleichen Azure-Region – beispielsweise das zu migrierende virtuelle Netzwerk – zusammenfassen (**nach Abschluss der Migration des virtuellen Netzwerks, da virtuelle Netzwerke mit Peering nicht migriert werden können**). So können Sie die gleichen Funktionen ohne Leistungsverlust und ohne Wartezeit/Beeinträchtigung der Bandbreite bereitstellen. Dank des [Peerings in virtuellen Netzwerken](../../virtual-network/virtual-network-peering-overview.md) können Web-/Workerrollenbereitstellungen nun problemlos korrigiert werden, sodass sie die Migration zu Azure Resource Manager nicht blockieren.
 
-- **Azure Resource Manager-Kontingente:** In Azure-Regionen gelten für das klassische Bereitstellungsmodell und für Azure Resource Manager separate Kontingente/Grenzwerte. In einem Migrationsszenario wird zwar keine neue Hardware genutzt *(wir tauschen vorhandene virtuelle Computer des klassischen Bereitstellungsmodells gegen virtuelle Computer des Azure Resource Manager-Bereitstellungsmodells)*, vor der Migration müssen aber trotzdem Azure Resource Manager-Kontingente mit ausreichender Kapazität vorhanden sein. Im Anschluss sind die wichtigsten Grenzwerte aufgeführt, die nach unserer Erfahrung Probleme verursachen können.  Erstellen Sie ein kontingentbezogenes Supportticket, um die Grenzwerte zu erhöhen. 
+- **Azure Resource Manager-Kontingente:** In Azure-Regionen gelten für das klassische Bereitstellungsmodell und für Azure Resource Manager separate Kontingente/Grenzwerte. In einem Migrationsszenario wird zwar keine neue Hardware genutzt *(wir tauschen vorhandene virtuelle Computer des klassischen Bereitstellungsmodells gegen virtuelle Computer des Azure Resource Manager-Bereitstellungsmodells)*, vor der Migration müssen aber trotzdem Azure Resource Manager-Kontingente mit ausreichender Kapazität vorhanden sein. Im Anschluss sind die wichtigsten Grenzwerte aufgeführt, die nach unserer Erfahrung Probleme verursachen können.  Erstellen Sie ein kontingentbezogenes Supportticket, um die Grenzwerte zu erhöhen.
 
     > [!NOTE]
-    > Die Grenzwerte müssen in der Region erhöht werden, in der sich die aktuelle Umgebung befindet, die Sie migrieren möchten.
+    > Diese Grenzwerte müssen in der Region erhöht werden, in der sich die aktuelle Umgebung befindet, die Sie migrieren möchten.
     >
 
     - Netzwerkschnittstellen
@@ -132,13 +141,13 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     ```
 
     **Netzwerk** *(virtuelle Netzwerke, statische öffentliche IP-Adressen, öffentliche IP-Adressen, Netzwerksicherheitsgruppen, Netzwerkschnittstellen, Lastenausgleichsmodule, Routingtabellen)*
-    
+
     ```powershell
     Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **Storage** *(Speicherkonto)*
-    
+
     ```powershell
     Get-AzureRmStorageUsage
     ```
@@ -146,9 +155,9 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
 - **Drosselungslimits der Azure Resource Manager-API:** Ab einer gewissen Umgebungsgröße (beispielsweise > 400 virtuelle Computer in einem VNET) werden in Azure Resource Manager unter Umständen die API-Standarddrossellungslimits für Schreibvorgänge (derzeit `1200 writes/hour`) erreicht. Erstellen Sie vor der Migration ein Supportticket, um dieses Limit für Ihr Abonnement zu erhöhen.
 
 
-- **VM-Status „Timeout bei der Bereitstellung“:** Falls ein virtueller Computer den Status `provisioning timed out` besitzt, muss dies vor der Migration behoben werden. Dazu müssen Sie die Bereitstellung des virtuellen Computers aufheben und ihn erneut bereitstellen (ihn also löschen, den Datenträger aufbewahren und den virtuellen Computer neu erstellen). Dies ist immer mit Ausfallzeiten verbunden. 
+- **VM-Status „Timeout bei der Bereitstellung“:** Falls ein virtueller Computer den Status `provisioning timed out` besitzt, muss dies vor der Migration behoben werden. Dazu müssen Sie die Bereitstellung des virtuellen Computers aufheben und ihn erneut bereitstellen (ihn also löschen, den Datenträger aufbewahren und den virtuellen Computer neu erstellen). Dies ist immer mit Ausfallzeiten verbunden.
 
-- **VM-Status „RoleStateUnknown“:** Falls die Migration aufgrund einer Fehlermeldung vom Typ `role state unknown` angehalten wird, überprüfen Sie den virtuellen Computer mithilfe des Portals, und vergewissern Sie sich, dass er ausgeführt wird. Dieser Fehler verschwindet in der Regel nach ein paar Minuten von selbst (also ohne Korrekturmaßnahme). Häufig handelt es sich um einen vorübergehenden Fehler, der während eines VM-Vorgangs vom Typ `start`, `stop` oder `restart` auftritt. **Empfohlene Vorgehensweise:** Warten Sie einige Minuten, und führen Sie die Migration dann erneut aus. 
+- **VM-Status „RoleStateUnknown“:** Falls die Migration aufgrund einer Fehlermeldung vom Typ `role state unknown` angehalten wird, überprüfen Sie den virtuellen Computer mithilfe des Portals, und vergewissern Sie sich, dass er ausgeführt wird. Dieser Fehler verschwindet in der Regel nach ein paar Minuten von selbst (also ohne Korrekturmaßnahme). Häufig handelt es sich um einen vorübergehenden Fehler, der während eines VM-Vorgangs vom Typ `start`, `stop` oder `restart` auftritt. **Empfohlene Vorgehensweise:** Warten Sie einige Minuten, und führen Sie die Migration dann erneut aus.
 
 - **Kein Fabric-Cluster vorhanden:** In manchen Fällen können bestimmte virtuelle Computer aus diversen merkwürdigen Gründen nicht migriert werden. Bekannt ist beispielsweise ein Fall, in dem der virtuelle Computer vor Kurzem (etwa innerhalb der letzten Woche) erstellt und zufällig in einem Azure-Cluster platziert wurde, der noch nicht für Azure Resource Manager-Workloads bereit ist.  In diesem Fall erhalten Sie eine Fehlermeldung vom Typ `fabric cluster does not exist`, und der virtuelle Computer kann nicht migriert werden. Dieses spezielle Problem verschwindet in der Regel, wenn Sie ein paar Tage warten, da Azure Resource Manager zeitnah für den Cluster aktiviert wird. Als sofortige Problemumgehung können Sie jedoch für den Computer `stop-deallocate` ausführen, mit der Migration fortfahren und den virtuellen Computer nach der Migration in Azure Resource Manager wieder starten.
 
@@ -172,7 +181,7 @@ Beachten Sie bei den tatsächlichen Migrationen folgende Punkte:
 
 ### <a name="patterns-of-success"></a>Erfolgsmuster
 
-Ziehen Sie vor einer echten Migration die technische Anleitung aus dem Abschnitt „Lab-Test“ (weiter oben) heran, und ergreifen Sie entsprechende Korrekturmaßnahmen.  Mit angemessenen Tests ist die Migration eigentlich keine große Sache.  Bei Produktionsumgebungen ist unter Umständen zusätzliche Unterstützung hilfreich – etwa durch einen zuverlässigen Microsoft-Partner oder im Rahmen von Microsoft Premier-Diensten.
+Ziehen Sie vor einer echten Migration die technische Anleitung aus dem Abschnitt _Lab-Test_ heran, und ergreifen Sie entsprechende Korrekturmaßnahmen.  Mit angemessenen Tests ist die Migration eigentlich keine große Sache.  Bei Produktionsumgebungen ist unter Umständen zusätzliche Unterstützung hilfreich – etwa durch einen zuverlässigen Microsoft-Partner oder im Rahmen von Microsoft Premier-Diensten.
 
 ### <a name="pitfalls-to-avoid"></a>Vermeidbare Fehler
 

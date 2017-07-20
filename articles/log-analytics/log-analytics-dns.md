@@ -12,18 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: e15ac73051297665a2880a7818273e304d539624
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 1b2f9c3fc59a83b384a63db00d2d039cab8679e8
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
+
+![Symbol für die DNS-Analyse](./media/log-analytics-dns/dns-analytics-symbol.png)
 
 In diesem Artikel wird beschrieben, wie Sie die Azure DNS Analytics-Lösung in Azure Log Analytics einrichten und verwenden, um Erkenntnisse hinsichtlich Sicherheit, Leistung und Betrieb der DNS-Infrastruktur zu sammeln.
 
@@ -155,7 +157,7 @@ Sie können diese Abfragen als Ausgangspunkt für das Erstellen eigener Abfragen
 - **Nicht verwendete Ressourceneinträge**. Zeigt eine Liste aller nicht verwendeten/veralteten Ressourceneinträge an. Diese Liste enthält den Namen und den Typ des Ressourceneintrags, den zugeordneten DNS-Server, den Zeitpunkt der Generierung und den Zonennamen. Sie können mit dieser Liste die DNS-Ressourceneinträge identifizieren, die nicht mehr verwendet werden. Auf der Basis dieser Informationen können Sie dann diese Einträge von den DNS-Servern entfernen.
 - **Abfragelast für DNS-Server**. Zeigt Informationen zur DNS-Last auf den DNS-Servern an. Anhand dieser Informationen können Sie die Kapazität für die Server planen. Sie können zur Registerkarte **Metriken** wechseln, um die Ansicht in eine grafische Visualisierung zu ändern. Mit dieser Ansicht können Sie nachvollziehen, wie die DNS-Last auf die DNS-Server verteilt wird. Sie zeigt Trends der DNS-Abfragerate für jeden Server.
 
-    ![Protokollsuchergebnisse von Abfragen für DNS-Server](./media/log-analytics-dns/dns-servers-query-load.png) 
+    ![Protokollsuchergebnisse von Abfragen für DNS-Server](./media/log-analytics-dns/dns-servers-query-load.png)
 
 - **Abfragelast für DNS-Zonen**. Zeigt die Statistik der DNS-Zonenabfragen pro Sekunde für alle Zonen auf den DNS-Servern an, die von der Lösung verwaltet werden. Klicken Sie auf die Registerkarte **Metriken**, um die Ansicht von ausführlichen Datensätzen in eine grafische Visualisierung der Ergebnisse zu ändern.
 - **Konfigurationsereignisse**. Zeigt alle DNS-Konfigurationsänderungsereignisse und die zugehörigen Meldungen an. Sie können dann diese Ereignisse basierend auf dem Zeitpunkt des Ereignisses, der Ereignis-ID, des DNS-Servers oder der Aufgabenkategorie filtern. Mit den Daten können Sie Änderungen an bestimmten DNS-Servern zu bestimmten Zeitpunkten überprüfen.

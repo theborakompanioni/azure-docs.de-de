@@ -1,34 +1,36 @@
 ---
-title: "Beheben von Azure Backup-Fehlern – Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM | Microsoft-Dokumentation"
-description: "Fehlerbezogene Symptome, Ursachen und Lösungen von Azure Backup-Fehlern: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM."
+title: 'Problembehandlung bei Azure Backup-Fehlern: Status des Gast-Agents ist unbekannt | Microsoft-Dokumentation'
+description: "Hier erfahren Sie mehr zu den Anzeichen und Ursachen von Azure Backup-Fehlern sowie über deren mögliche Lösungen, speziell in Verbindung mit dem Fehler „Fehler bei der Kommunikation mit dem VM-Agent“"
 services: backup
 documentationcenter: 
 author: genlin
 manager: cshepard
 editor: 
+keywords: "Azure Backup; VM-Agent; Netzwerkkonnektivität;"
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 06/13/2017
 ms.author: genli;markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d7924d8aade1ea582faa0f319f8c1d16d5461fbc
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: dd4ac14a703663175bb477de587da8f4ad510c7c
+ms.contentlocale: de-de
+ms.lasthandoff: 06/14/2017
 
 ---
 
-# <a name="troubleshoot-azure-backup-failure-snapshot-vm-sub-task-timed-out"></a>Beheben von Azure Backup-Fehlern – Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.
+# <a name="troubleshoot-azure-backup-failure-vm-agent-unable-to-communicate-with-azure-backup"></a>Problembehandlung bei Azure Backup-Fehlern: VM-Agent kann nicht mit Azure Backup kommunizieren
 ## <a name="summary"></a>Zusammenfassung
-Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Eine von vier Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird, und dies kann wiederum zu einem Backup-Fehler führen. Dieser Artikel enthält Schritte zum Beheben von Problemen im Zusammenhang mit Backup-Fehlern, die infolge einer Zeitüberschreitung bei Momentaufnahmen auftreten.
+Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Eine von vier Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird, und dies kann wiederum zu einem Backup-Fehler führen. Dieser Artikel enthält Schritte für die Problembehebung bei Sicherungsfehlern, die in Zusammenhang mit Kommunikationsproblemen zwischen dem VM-Agent und der Erweiterung auftreten.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="symptom"></a>Symptom
-Für Azure Backup für eine IaaS-VM (Infrastructure as a Service) tritt ein Fehler auf, und im [Azure-Portal](https://portal.azure.com/) wird in den Fehlerdetails des Auftrags die folgende Fehlermeldung zurückgegeben: „Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.“
+In Azure Backup für eine IaaS-VM (Infrastructure as a Service) tritt ein Fehler auf, und im [Azure-Portal](https://portal.azure.com/) wird in den Fehlerdetails des Auftrags die folgende Fehlermeldung zurückgegeben: „Der VM-Agent kann nicht mit dem Azure Backup-Dienst kommunizieren“, „Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer“.
 
 ## <a name="cause-1-the-vm-has-no-internet-access"></a>Ursache 1: Kein Internetzugriff für die VM
 Gemäß der Bereitstellungsanforderung verfügt der virtuelle Computer nicht über Internetzugriff, oder es liegen Einschränkungen vor, die den Zugriff auf die Azure-Infrastruktur verhindern.
@@ -49,6 +51,8 @@ Probieren Sie eine der hier angegebenen Methoden aus, um dieses Problem zu löse
 2. Fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu, um den Zugriff auf das Internet über den HTTP-Proxyserver zuzulassen.
 
 Informationen dazu, wie Sie einen HTTP-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
+
+Falls Sie Managed Disks verwenden, müssen Sie eventuell einen zusätzlichen Port (8443) für die Firewalls öffnen.
 
 ## <a name="cause-2-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Ursache 2: Der auf dem virtuellen Computer installierte Agent ist veraltet (virtuelle Linux-Computer).
 
@@ -77,10 +81,24 @@ Die meisten Fehler im Zusammenhang mit Agents oder Erweiterungen bei virtuellen 
 Führen Sie die folgenden Schritte aus, falls die ausführliche Protokollierung für waagent erforderlich ist:
 
 1. Suchen Sie in der Datei „/etc/waagent.conf“ nach der folgenden Zeile: **Enable verbose logging (y|n)**
-2. Ändern Sie den Wert für **Logs.Verbose** von *n* in *y*.
+2. Ändern Sie den Wert für **Logs.Verbose** von *n* auf *y*.
 3. Speichern Sie die Änderung, und starten Sie waagent neu, indem Sie die zuvor aufgeführten Schritte in diesem Abschnitt ausführen.
 
-## <a name="cause-3-the-backup-extension-fails-to-update-or-load"></a>Ursache 3: Die Sicherungserweiterung wird nicht aktualisiert oder geladen.
+## <a name="cause-3-the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Ursache 3: Der Agent wurde auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
+
+### <a name="solution"></a>Lösung
+Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten. Wenn Sie den VM-Agent erneut installieren, erhalten Sie die neueste Version und können die Kommunikation neu starten.
+
+1. Überprüfen Sie, ob Sie den Windows Guest Agent-Dienst in den Computerdiensten sehen können („services.msc“)
+2. Ist dies nicht der Fall, überprüfen Sie unter „Programm und Funktionen“, ob der Windows Guest Agent-Dienst installiert ist.
+3. Wenn Sie ihn unter „Programm und Funktionen“ sehen können, deinstallieren Sie den Windows Guest Agent.
+4. Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen.
+5. Die Windows Guest Agent-Dienste sollten dann in Dienste angezeigt werden
+6. Versuchen Sie, eine On-Demand-/Ad-hoc-Sicherung auszuführen, indem Sie im Portal auf „Jetzt sichern“ klicken.
+
+Überprüfen Sie auch, ob **.NET 4.5 im System installiert** ist. Dies ist für die Kommunikation des VM-Agent mit dem Dienst erforderlich
+
+## <a name="cause-4-the-backup-extension-fails-to-update-or-load"></a>Ursache 4: Die Sicherungserweiterung wird nicht aktualisiert oder geladen
 Wenn Erweiterungen nicht geladen werden können, schlägt die Sicherung fehl, da keine Momentaufnahme erstellt werden kann.
 
 ### <a name="solution"></a>Lösung
@@ -106,7 +124,7 @@ Gehen Sie wie folgt vor, um die Erweiterung zu deinstallieren:
 
 Hiermit wird bewirkt, dass die Erweiterung während der nächsten Sicherung neu installiert wird.
 
-## <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Ursache 4: Der Momentaufnahmestatus kann nicht abgerufen werden, oder die Momentaufnahme kann nicht erstellt werden.
+## <a name="cause-5-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Ursache 5: Der Momentaufnahmestatus kann nicht abgerufen werden, oder die Momentaufnahme kann nicht erstellt werden
 Die VM-Sicherung basiert auf dem Ausführen eines Momentaufnahmenbefehls für das zugrunde liegende Speicherkonto. Die Sicherung kann fehlschlagen, weil kein Zugriff auf das Speicherkonto besteht oder weil die Ausführung der Momentaufnahmenaufgabe verzögert wird.
 
 ### <a name="solution"></a>Lösung

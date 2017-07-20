@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 06/12/2017
 ms.author: juliako
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: b35390c6eb912db966648bff4efb59cece2837b3
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: f8e6e1da776d680d48737ecb5ac7b9319901f121
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -56,13 +56,21 @@ Enthält eine Sequenz der unten angegebenen Elemente.
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |Derzeit wird nur die Einwegverschlüsselung unterstützt. |
-| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |Bestimmt den Standardabstand zwischen IDR-Bildern. |
+| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |Bestimmt den festen Abstand zwischen IDR-Frames in Sekunden. Wird auch als GOP-Dauer bezeichnet. Siehe **SceneChangeDetection** (unten) um festzulegen, ob der Encoder von diesem Wert abweichen kann. |
 | **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default="false" |**xs:boolean** |Bei der Einstellung auf „true“, versucht der Codierer, eine Szenenänderung im Video zu erkennen, und fügt ein IDR-Bild ein. |
 | **Komplexität**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:string** |Steuert den Kompromiss zwischen Codiergeschwindigkeit und Videoqualität. Dies kann einer der folgenden Werte sein: **Speed**, **Balanced** oder **Quality**.<br/><br/> Standardeinstellung: **Balanced** |
 | **SyncMode**<br/><br/> minOccurs="0" | |Diese Funktion wird in einer zukünftigen Version verfügbar gemacht. |
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Auflistung von Ausgabevideoebenen |
 
+### <a name="attributes"></a>Attribute
+| Name | Typ | Beschreibung |
+| --- | --- | --- |
+| **Condition** |**xs:string** | Wenn die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur hinzuzufügen. Verwenden Sie zu diesem Zweck Condition="InsertBlackIfNoVideoBottomLayerOnly" (Video nur für die unterste Bitrate hinzufügen) oder Condition="InsertBlackIfNoVideo" (Video für alle Ausgabebitraten hinzufügen). Weitere Informationen finden Sie in [diesem](media-services-advanced-encoding-with-mes.md#a-idnovideoainsert-a-video-track-when-input-has-no-video) Thema.|
+
 ## <a name="H264Layers"></a> H264Layers
+
+Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig nur aus Dateien mit Audiodaten. Einige Player können derartige Ausgabedatenströme möglicherweise nicht verarbeiten. Mit der Attributeinstellung **InsertBlackIfNoVideo** von H264Video können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine Videospur hinzuzufügen. Weitere Informationen finden Sie in [diesem](media-services-advanced-encoding-with-mes.md#a-idnovideoainsert-a-video-track-when-input-has-no-video) Thema.
+              
 ### <a name="elements"></a>Elemente
 | Name | Typ | Beschreibung |
 | --- | --- | --- |

@@ -4,7 +4,7 @@ description: "Beschreibt, wie Azure Site Recovery in einer Umgebung mit mehreren
 services: site-recovery
 documentationcenter: 
 author: mayanknayar
-manager: jwhit
+manager: rochakm
 editor: 
 ms.assetid: 
 ms.service: site-recovery
@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 06/23/2017
 ms.author: manayar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: ed484afc59bbf48490e3ff4389e8e28c71a5e471
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 801eb19a2c1601653f229a5175fc71d6551ebe08
 ms.contentlocale: de-de
-ms.lasthandoff: 02/17/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -32,7 +32,7 @@ Diese Anleitung bezieht sich umfassend auf die vorhandene Dokumentation zum Repl
 Es gibt drei wesentliche Modelle mit mehreren Mandanten:
 
 1.  **Shared Hosting Services Provider (SHSP, Anbieter von gemeinsam genutzten Hostingdiensten)**: Hier besitzt der Partner die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Die Verwaltung der Notfallwiederherstellung kann vom Partner als verwalteter Dienst bereitgestellt werden oder als Self-Service-Lösung in die Zuständigkeit des Mandanten fallen.
-2.  **Dedicated Hosting Services Provider (DHSP, Anbieter dedizierter Hostingdienste)**: Hier besitzt der Partner die physische Infrastruktur, wobei jedoch dedizierte Ressourcen (mehrere vCenter, physische Datenspeicher usw.) verwendet werden, um die VMs der einzelnen Mandanten in getrennter Infrastruktur zu hosten. Die Verwaltung der Notfallwiederherstellung kann wiederum vom Partner oder als Self-Service-Lösung vom Mandanten verwaltet werden.
+2.  **Dedicated Hosting Services Provider (DHSP, Anbieter dedizierter Hostingdienste)**: Hier besitzt der Partner die physische Infrastruktur, wobei jedoch dedizierte Ressourcen (mehrere vCenter-Server, physische Datenspeicher usw.) verwendet werden, um die VMs der einzelnen Mandanten in getrennter Infrastruktur zu hosten. Die Verwaltung der Notfallwiederherstellung kann wiederum vom Partner oder als Self-Service-Lösung vom Mandanten verwaltet werden.
 3.  **Managed Services Provider (MSP, Anbieter verwalteter Dienste)**: Hier besitzt der Kunde die physische Infrastruktur, in der die VMs gehostet werden, während die Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig sind.
 
 ## <a name="shared-hosting-multi-tenant-guidance"></a>Anleitung für SHSP mit mehreren Mandanten
@@ -46,7 +46,7 @@ Die Architektur sieht wie folgt aus:
 
 **Abbildung 1: SHSP-Szenario mit einem vCenter**
 
-Wie Sie in dieser Abbildung erkennen können, hat jeder Kunde einen eigenen Verwaltungsserver. Dies erfolgt zum Beschränken des Mandantenzugriffs auf mandantenspezifische VMs zum Ermöglichen der Isolation von Mandanten. Im VMware-VM-Replikationsszenario wird der Konfigurationsserver zum Verwalten von Konten verwendet, um VMs zu ermitteln und Agents zu installieren. Wir befolgen dieselben Prinzipien für Umgebungen mit mehreren Mandanten, wobei die VM-Ermittlung durch die vCenter-Zugriffssteuerung zusätzlich eingeschränkt wird.
+Wie Sie in dieser Abbildung erkennen können, hat jeder Kunde einen eigenen Verwaltungsserver. Dies beschränkt den Mandantenzugriff auf mandantenspezifische VMs und ermöglicht die Isolation von Mandanten. Im VMware-VM-Replikationsszenario wird der Konfigurationsserver zum Verwalten von Konten verwendet, um VMs zu ermitteln und Agents zu installieren. Wir befolgen dieselben Prinzipien für Umgebungen mit mehreren Mandanten, wobei die VM-Ermittlung durch die vCenter-Zugriffssteuerung zusätzlich eingeschränkt wird.
 
 Die Anforderung der Isolation von Daten erfordert, dass sämtliche sensiblen Infrastrukturinformationen (z.B. Anmeldeinformationen für den Zugriff) den Mandanten nicht angezeigt werden. Aus diesem Grund wird empfohlen, dass alle Komponenten des Verwaltungsservers (Konfigurationsserver, Prozessserver und Masterzielserver) der ausschließlichen Kontrolle des Partners unterliegen. Dies schließt Prozessserver mit horizontaler Skalierung ein.
 
@@ -57,7 +57,7 @@ Die Anforderung der Isolation von Daten erfordert, dass sämtliche sensiblen Inf
 
 ### <a name="requirements-for-vcenter-access-account"></a>Anforderungen für das vCenter-Zugriffskonto
 
-Wie im vorherigen Abschnitt erläutert, muss der Konfigurationsserver mit einem Konto konfiguriert werden, dem eine spezielle Rolle zugewiesen ist. Beachten Sie, dass diese Rollenzuweisung für das vCenter-Zugriffskonto für jedes vCenter-Objekt erfolgen muss und nicht an die untergeordneten Objekte weitergegeben werden darf. Dies geschieht, um die Mandantenisolation sicherzustellen, da die Weitergabe von Zugangsdaten zu einem versehentlichen Zugriff auf andere Objekte führen kann.
+Wie im vorherigen Abschnitt erläutert, muss der Konfigurationsserver mit einem Konto konfiguriert werden, dem eine spezielle Rolle zugewiesen ist. Beachten Sie, dass diese Rollenzuweisung für das vCenter-Zugriffskonto für jedes vCenter-Objekt erfolgen muss und nicht an die untergeordneten Objekte weitergegeben werden darf. Dies stellt die Mandantenisolation sicher, da die Weitergabe von Zugangsdaten zu einem versehentlichen Zugriff auf andere Objekte führen kann.
 
 ![Berechtigungen ohne Weitergabe](./media/site-recovery-multi-tenant-support-vmware-using-csp/assign-permissions-without-propagation.png)
 
@@ -91,7 +91,7 @@ Das Zugriffsverfahren des vCenter-Kontos ist wie folgt:
 | Verwaltungsserver | Azure_Site_Recovery | Dies schließt den Zugriff auf alle Komponenten (Konfigurationsserver, Prozessserver und Masterzielserver) ein, wenn sich beliebige davon außerhalb des Konfigurationsservercomputers befinden. |
 | Mandanten-VMs | Azure_Site_Recovery | Stellen Sie sicher, dass alle neuen VMs eines bestimmten Mandanten auch diesen Zugriff erhalten, da sie andernfalls nicht im Azure-Portal ermittelt werden können. |
 
-Der vCenter-Kontozugriff ist nun eingerichtet. Dadurch ist die Anforderung an die Mindestberechtigungen zum Durchführen von Failbackvorgängen erfüllt. Beachten Sie, dass diese Zugriffsberechtigungen auch mit Ihren vorhandenen Richtlinien verwendet werden können. Ändern Sie Ihre vorhandenen Berechtigungen lediglich so, dass die unter Punkt 2 oben genannten Rollenberechtigungen hinzugefügt werden.
+Der vCenter-Kontozugriff ist nun eingerichtet. Dadurch ist die Anforderung an die Mindestberechtigungen zum Durchführen von Failbackvorgängen erfüllt. Diese Zugriffsberechtigungen können auch mit Ihren vorhandenen Richtlinien verwendet werden. Ändern Sie Ihre vorhandenen Berechtigungen lediglich so, dass die unter Punkt 2 oben genannten Rollenberechtigungen hinzugefügt werden.
 
 Zum Einschränken von Vorgängen für die Notfallwiederherstellung bis zum Failoverstatus, d.h. ohne Failbackfunktionen, befolgen Sie das vorherige Verfahren. Doch anstatt dem vCenter-Zugriffskonto die Rolle „Azure_Site_Recovery“ zuzuweisen, weisen Sie ihm lediglich die Rolle „Schreibgeschützt“ zu. Dieser Berechtigungssatz lässt die Replikation und ein Failover von VMs, aber kein Failback zu. Alles andere im obigen Prozess bleibt unverändert. Berechtigungen werden weiterhin nur auf Objektebene zugewiesen und nicht an untergeordnete Objekte weitergegeben, um die Mandantenisolation sicherzustellen und die VM-Ermittlung einzuschränken.
 
@@ -117,9 +117,9 @@ Der Unterschied bei der Architektur besteht darin, dass die Infrastruktur jedes 
 
 
 ## <a name="csp-program-overview"></a>Übersicht über das CSP-Programm
-Das Microsoft Cloud Solution Provider-[Programm](https://partner.microsoft.com/en-US/cloud-solution-provider) (CSP) ermöglicht ein besseres Zusammenspiel mit Partnern beim Anbieten sämtlicher Microsoft-Clouddienste einschließlich Office&365;, EMS und Microsoft Azure. Es ermöglicht unseren Partnern eine lückenlose Zuständigkeit für die Beziehung mit Kunden und die Position als Hauptansprechpartner. Über das CSP-Programm kann ein Partner Azure-Abonnements für Kunden bereitstellen und diese Abonnements mit ihren eigenen angepassten Angeboten mit einem Mehrwert kombinieren.
+Das Microsoft Cloud Solution Provider-[Programm](https://partner.microsoft.com/en-US/cloud-solution-provider) (CSP) ermöglicht ein besseres Zusammenspiel mit Partnern beim Anbieten sämtlicher Microsoft-Clouddienste einschließlich Office 365, EMS und Microsoft Azure. Es ermöglicht unseren Partnern eine lückenlose Zuständigkeit für die Beziehung mit Kunden und die Position als Hauptansprechpartner. Über das CSP-Programm kann ein Partner Azure-Abonnements für Kunden bereitstellen und diese Abonnements mit ihren eigenen angepassten Angeboten mit einem Mehrwert kombinieren.
 
-Im Fall von Azure Site Recovery können Partner die gesamte Notfallwiederherstellungslösung für Kunden direkt über das CSP-Programm verwalten. Sie können auch im Rahmen dieses Programms die Azure Site Recovery-Umgebungen einrichten und Kunden ermöglichen, ihre eigenen Anforderungen an die Notfallwiederherstellung in einem Self-Service-Modell zu erfüllen. In beiden Szenarien ist der Partner das Bindeglied zwischen Azure Site Recovery und Endkunden. Der Partner kümmert sich um die Beziehung mit den Kunden und stellt ihnen die Nutzung von Azure Site Recovery in Rechnung.
+Mit Azure Site Recovery können Partner die gesamte Notfallwiederherstellungslösung für Kunden direkt über das CSP-Programm verwalten. Sie können auch im Rahmen dieses Programms die Azure Site Recovery-Umgebungen einrichten und Kunden ermöglichen, ihre eigenen Anforderungen an die Notfallwiederherstellung in einem Self-Service-Modell zu steuern. In beiden Szenarien ist der Partner das Bindeglied zwischen Azure Site Recovery und Endkunden. Der Partner kümmert sich um die Beziehung mit den Kunden und stellt ihnen die Nutzung von Azure Site Recovery in Rechnung.
 
 ## <a name="creating-and-managing-tenant-accounts"></a>Erstellen und Verwalten von Mandantenkonten
 
@@ -137,7 +137,7 @@ Die VM-Voraussetzungen sind identisch mit der Beschreibung in der [Dokumentation
 
     ![Hinzufügen von Kunden](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-new-customer.png)
 
-3.  Füllen Sie auf der Seite „Neuer Kunde“ alle Kontodetails für den Mandanten aus, und klicken Sie dann auf „Weiter -> Abonnements“.
+3.  Füllen Sie auf der Seite „Neuer Kunde“ alle Kontoinformationen für den Mandanten aus, und klicken Sie dann auf „Weiter: Abonnements“.
 
     ![Ausfüllen von Details](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-add-filled.png)
 
@@ -153,7 +153,7 @@ Die VM-Voraussetzungen sind identisch mit der Beschreibung in der [Dokumentation
 
 ### <a name="step-2-access-tenant-account"></a>Schritt 2: Zugreifen auf das Mandantenkonto
 
-1.  Wie in Schritt 1 beschrieben, können Sie in Ihrem Dashboard auf der Seite „Kunden“ auf das Abonnement des Mandanten zugreifen. Navigieren Sie hierhin, und klicken Sie auf den Namen des Mandantenkontos, das Sie gerade erstellt haben.
+1.  Wie in Schritt 1 beschrieben, können Sie in Ihrem Dashboard auf der Seite „Kunden“ auf das Abonnement des Mandanten zugreifen. Navigieren Sie hierhin, und klicken Sie auf den Namen des erstellten Mandantenkontos.
 2.  Daraufhin wird der Abschnitt „Abonnements“ des Mandantenkontos geöffnet, in dem Sie die vorhandenen Abonnements des Kontos überwachen und bei Bedarf weitere Abonnements hinzufügen können. Wählen Sie zum Verwalten der Notfallwiederherstellungsvorgänge des Mandanten rechts auf der Seite „Alle Ressourcen (Azure-Portal)“ aus.
 
     ![Alle Ressourcen](./media/site-recovery-multi-tenant-support-vmware-using-csp/all-resources-select.png)
@@ -171,7 +171,7 @@ Sie können nun alle Azure Site Recovery-Vorgänge für den Mandanten über das 
 
     ![Konfigurieren von Konten](./media/site-recovery-multi-tenant-support-vmware-using-csp/config-server-account-display.png)
 
-### <a name="step-4-register-site-recovery-infrastructure-to-recovery-services-vault"></a>Schritt 4: Registrieren von Site Recovery-Infrastruktur im Recovery Services-Tresor
+### <a name="step-4-register-site-recovery-infrastructure-to-recovery-services-vault"></a>Schritt 4: Registrieren der Site Recovery-Infrastruktur im Recovery Services-Tresor
 1.  Öffnen Sie das Azure-Portal, und registrieren Sie im zuvor erstellten Tresor den vCenter-Server beim im vorherigen Schritt registrierten Konfigurationsserver. Verwenden Sie für diesen Zweck das vCenter-Zugriffskonto.
 2.  Beenden Sie den Prozess zur Vorbereitung der Infrastruktur für Site Recovery wie üblich.
 3.  Die VMs können jetzt repliziert werden. Vergewissern Sie sich, dass nur die VMs des Mandanten auf dem Blatt zur VM-Auswahl unter der Option „Replizieren“ angezeigt werden.

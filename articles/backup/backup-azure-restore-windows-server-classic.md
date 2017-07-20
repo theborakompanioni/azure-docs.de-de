@@ -12,12 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/31/2017
+ms.date: 06/14/2017
 ms.author: saurse;trinadhk;markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: be6bc58ab856309004904626db166331b29199a8
-ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
-ms.lasthandoff: 02/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e2eac02d194c8a3de653292664cb94a55aafc9b7
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -28,12 +29,20 @@ ms.lasthandoff: 02/02/2017
 >
 >
 
-In diesem Artikel wird das Wiederherstellen von Daten aus einem Sicherungstresor erläutert. Zum Wiederherstellen von Daten verwenden Sie den Assistenten für die Wiederherstellung von Daten im Microsoft Azure Recovery Services-Agent (MARS). Bei der Datenwiederherstellung ist Folgendes möglich:
+In diesem Artikel wird erläutert, wie Sie Daten aus einem Sicherungstresor wiederherstellen und auf einem anderen Server oder Computer wiederherstellen. Ab März 2017 können im klassischen Portal keine Sicherungstresore mehr erstellt werden.
+
+> [!IMPORTANT]
+> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> **Ab dem 1. November 2017**:
+>- Für alle verbleibenden Sicherungstresore wird automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
+>- Der Zugriff auf Ihre Sicherungsdaten im klassischen Portal wird nicht möglich sein. Verwenden Sie stattdessen das Azure-Portal, um auf Ihre Sicherungsdaten in Recovery Services-Tresoren zuzugreifen.
+>
+
+Zum Wiederherstellen von Daten verwenden Sie den Assistenten zum Wiederherstellen von Daten im Microsoft Azure Recovery Services-Agent (MARS). Bei der Datenwiederherstellung ist Folgendes möglich:
 
 * Wiederherstellen von Daten auf dem gleichen Computer, auf dem die Sicherungen erstellt wurden
 * Wiederherstellen auf einem anderen Computer.
 
-Im Januar 2017 hat Microsoft ein Preview-Update für den MARS-Agent veröffentlicht. Dieses Update bietet Fehlerbehebungen sowie eine sofortige Wiederherstellung, wodurch Sie eine Wiederherstellungspunkt-Momentaufnahme mit Schreibzugriff als Wiederherstellungsvolume bereitstellen können. Sie können dann das Wiederherstellungsvolume durchsuchen und Dateien auf einen lokalen Computer kopieren, wodurch Sie Dateien selektiv wiederherstellen können.
+Im Januar 2017 hat Microsoft ein Vorschau-Update für den MARS-Agent veröffentlicht. Dieses Update bietet Fehlerbehebungen sowie eine sofortige Wiederherstellung, wodurch Sie eine Wiederherstellungspunkt-Momentaufnahme mit Schreibzugriff als Wiederherstellungsvolume bereitstellen können. Sie können dann das Wiederherstellungsvolume durchsuchen und Dateien auf einen lokalen Computer kopieren, wodurch Sie Dateien selektiv wiederherstellen können.
 
 > [!NOTE]
 > Das [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/en-us/help/3216528?preview) ist erforderlich, wenn Sie die sofortige Wiederherstellung verwenden möchten, um Daten wiederherzustellen. Außerdem müssen die Sicherungsdaten in Tresoren an einem der Orte geschützt sein, die im Supportartikel aufgeführt sind. Unter [Azure Backup-Update vom Januar 2017](https://support.microsoft.com/en-us/help/3216528?preview) finden Sie die neueste Liste der Regionen, in denen die sofortige Wiederherstellung unterstützt wird. Die sofortige Wiederherstellung ist derzeit **nicht** in allen Regionen verfügbar.
@@ -52,7 +61,7 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 
 2. Klicken Sie auf **Daten wiederherstellen**, um den Assistenten zu starten.
 
-    ![Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/recover.png)
+    ![Daten wiederherstellen](./media/backup-azure-restore-windows-server/recover.png)
 
 3. Wählen Sie im Bereich **Erste Schritte** die Option **Dieser Server (`<server name>`)**, um die Daten auf demselben Server oder Computer wiederherzustellen, und klicken Sie auf **Weiter**.
 
@@ -62,7 +71,7 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 
     ![Dateien durchsuchen](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
 
-5. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, das die wiederherzustellenden Dateien bzw. Ordner enthält.
+5. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, dass die wiederherzustellenden Dateien bzw. Ordner enthält.
 
     Wählen Sie im Kalender einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen.
 
@@ -200,7 +209,7 @@ In diesen Schritten wird folgende Terminologie verwendet:
 
     ![Suche](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
-8. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, das die wiederherzustellenden Dateien bzw. Ordner enthält.
+8. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, dass die wiederherzustellenden Dateien bzw. Ordner enthält.
 
     Wählen Sie im Kalender einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen.
 

@@ -18,10 +18,10 @@ ms.workload: data-management
 ms.date: 04/10/2017
 ms.author: rickbyh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 744ad6cfc15453e1db7a012eebe09ceba226fde9
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: 583c91376418d20d34db17d57d3fa14a1e71cd3b
 ms.contentlocale: de-de
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -69,11 +69,16 @@ Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen
 
 ## <a name="creating-and-managing-firewall-rules"></a>Erstellen und Verwalten von Firewallregeln
 Die erste Firewalleinstellung auf Serverebene kann im [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe von [Azure PowerShell](https://msdn.microsoft.com/library/azure/dn546724.aspx), der [Azure-CLI](/cli/azure/sql/server/firewall-rule#create) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx) erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. 
+
 > [!IMPORTANT]
 > Firewallregeln auf Datenbankebene können nur mit Transact-SQL erstellt und verwaltet werden. 
 >
 
 Um die Leistung zu verbessern, werden Firewallregeln auf Serverebene vorübergehend auf Datenbankebene zwischengespeichert. Informationen zum Aktualisieren des Caches finden Sie unter [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx). 
+
+> [!TIP]
+> Mithilfe der [SQL Server-Datenbanküberwachung](sql-database-auditing.md) können Sie Firewall-Änderungen auf Server- und Datenbankebene überwachen.
+>
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -149,7 +154,7 @@ Im folgenden Beispiel wird mithilfe von PowerShell eine Firewallregel auf Server
 ```powershell
 New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.1"
+    -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
 ```
 
 > [!TIP]
@@ -169,7 +174,7 @@ Im folgenden Beispiel wird mithilfe der Azure CLI eine Firewallregel auf Servere
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
-    -n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.1
+    -n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP]

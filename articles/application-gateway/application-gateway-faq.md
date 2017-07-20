@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 037045c4e76d0fb8e96944fe8a3235223594a034
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 3b2ddf764f54d2e7f23b02b5b593077938ac9355
+ms.contentlocale: de-de
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -32,7 +33,7 @@ Azure Application Gateway ist ein ADC (Application Delivery Controller) als Dien
 
 **F: Welche Funktionen werden von Application Gateway unterstützt?**
 
-Application Gateway unterstützt SSL-Abladung und End-to-End-SSL, Web Application-Firewall (Vorschau), cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Multi-Site-Hosting und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
+Application Gateway unterstützt SSL-Abladung und End-to-End-SSL, Web Application-Firewall, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Multi-Site-Hosting und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
 
 **F: Was ist der Unterschied zwischen Application Gateway und Azure Load Balancer?**
 
@@ -78,6 +79,10 @@ Nur eine öffentliche IP-Adresse wird auf einer Application Gateway-Instanz unte
 
 Ja, Application Gateway fügt X-Forwarded-For-, X-Forwarded-Proto- und X-Forwarded-Port-Header in die Anforderung ein, die an das Back-End weitergeleitet wird. Das Format für den X-Forwarded-For-Header ist eine durch Trennzeichen getrennte Liste der Form „IP:Port“. Die gültigen Werte für X-Forwarded-Proto sind „http“ und „https“. X-Forwarded-Port gibt den Port an, an dem die Anforderung Application Gateway erreicht hat.
 
+**F: Wie lange dauert das Bereitstellen eines Application Gateway? Funktioniert das Application Gateway nach einer Aktualisierung immer noch?**
+
+Die Ausführung neuer Application Gateway-Bereitstellungen kann bis zu 20 Minuten dauern. Beim Vornehmen von Änderungen an Größe/Anzahl der Instanzen wird der Betrieb nicht unterbrochen, und das Gateway bleibt währenddessen aktiv.
+
 ## <a name="configuration"></a>Konfiguration
 
 **F: Wird Application Gateway immer in einem virtuellen Netzwerk bereitgestellt?**
@@ -94,7 +99,13 @@ Nein, aber Sie können weitere Application Gateway-Instanzen im Subnetz bereitst
 
 **F: Werden Netzwerksicherheitsgruppen im Application Gateway-Subnetz unterstützt?**
 
-Netzwerksicherheitsgruppen werden im Application Gateway-Subnetz unterstützt, es müssen jedoch Ausnahmen für die Ports 65503–65534 hinzugefügt werden, damit die Back-End-Integrität ordnungsgemäß funktioniert. Die ausgehende Internetverbindung darf nicht blockiert sein.
+Netzwerksicherheitsgruppen werden im Application Gateway-Subnetz mit folgenden Einschränkungen unterstützt:
+
+* Ausnahmen müssen für eingehenden Datenverkehr an den Ports 65503-65534 festgelegt werden, damit die Back-End-Integrität nicht beeinträchtigt wird.
+
+* Die ausgehende Internetverbindung darf nicht blockiert sein.
+
+* Datenverkehr vom AzureLoadBalancer-Tag muss zulässig sein.
 
 **F: Was sind die Grenzwerte für Application Gateway? Kann ich diese Grenzwerte erhöhen?**
 
@@ -122,7 +133,21 @@ Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Au
 
 **F: Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?**
 
-Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem VM-Hostnamen und weist folgendes Format auf: \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>. 
+Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem VM-Hostnamen und weist folgendes Format auf: \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>.
+
+**F: Kann ich für den Application Gateway-Zugriff einige wenige Quell-IPs in eine Positivliste aufnehmen?**
+
+Dies können Sie mithilfe von Netzwerksicherheitsgruppen im Application Gateway-Subnetz erreichen. Die folgenden Einschränkungen sollten für das Subnetz festgelegt werden (nach ihrer Priorität geordnet):
+
+* Zulassen des eingehenden Datenverkehrs von Quell-IP/-IP-Adressbereich.
+
+* Zulassen von eingehenden Anforderungen aus allen Quellen an den Ports 65503 65534 für die [Back-End-Integrität-Kommunikation](application-gateway-diagnostics.md).
+
+* Zulassen eingehender Azure Load Balancer-Tests (AzureLoadBalancer-Tag) und von eingehendem virtuellem Netzwerkdatenverkehr (VirtualNetwork-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md).
+
+* Blockieren des gesamten übrigen eingehenden Datenverkehrs mit einer Alle-verweigern-Regel.
+
+* Zulassen von ausgehendem Datenverkehr an das Internet für alle Ziele.
 
 ## <a name="performance"></a>Leistung
 
@@ -283,3 +308,4 @@ Der häufigste Grund ist eine Blockierung des Zugriffs auf das Back-End durch ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Application Gateway finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
+

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2017
+ms.date: 06/27/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: a09aefd00a89c48acdc885f98e34d7faa9c5629a
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 756565b3da6e0a818d1ee3d5e17f942d96be14f0
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -36,7 +37,7 @@ Eine Entitätsbeschreibung verweist entweder auf ein Service Bus-Objekt der [Que
   
 ### <a name="brokered-message"></a>Im Broker gespeicherte Nachricht  
 
-Stellt eine Nachricht in Service Bus dar, die einer AMQP-Nachricht zugeordnet ist Die Zuordnung wird im Artikel [Service Bus AMQP-Protokollhandbuch](service-bus-amqp-protocol-guide.md) definiert.  
+Stellt eine Nachricht in Service Bus dar, die einer AMQP-Nachricht zugeordnet ist. Die Zuordnung wird im [Service Bus AMQP-Protokollhandbuch](service-bus-amqp-protocol-guide.md) definiert.  
   
 ## <a name="attach-to-entity-management-node"></a>Hinzufügen zum Entitätsverwaltungsknoten  
 
@@ -47,10 +48,10 @@ Alle in diesem Dokument beschriebenen Vorgänge folgen einem Anforderungs-/Antwo
 Erstellt einen Link zum Verwaltungsknoten zum Senden von Anforderungen  
   
 ```  
-requestLink = session.attach(       
+requestLink = session.attach(     
 role: SENDER,   
-       target: { address: "<entity address>/$management" },   
-       source: { address: ""<my request link unique address>" }   
+    target: { address: "<entity address>/$management" },   
+    source: { address: ""<my request link unique address>" }   
 )  
   
 ```  
@@ -60,10 +61,10 @@ role: SENDER,
 Erstellt einen Link zum Empfangen von Antworten vom Verwaltungsknoten  
   
 ```  
-responseLink = session.attach(      
+responseLink = session.attach(    
 role: RECEIVER,   
     source: { address: "<entity address>/$management" }   
-       target: { address: "<my response link unique address>" }   
+    target: { address: "<my response link unique address>" }   
 )  
   
 ```  
@@ -93,17 +94,17 @@ Empfängt die Antwortnachricht über den Antwortlink
 responseMessage = responseLink.receiveTransfer()  
 ```  
   
-Die Antwortnachricht wird im folgenden Format angezeigt.  
+Die Antwortnachricht hat folgende Form:
   
 ```  
 Message(  
-properties: {      
+properties: {     
         correlation-id: <request id>  
     },  
     application-properties: {  
             "statusCode" -> <status code>,  
             "statusDescription" -> <status description>,  
-           },          
+           },         
 )  
   
 ```  
@@ -124,16 +125,16 @@ Service Bus-Entitäten müssen wie folgt adressiert werden:
 
 Verlängert den Sperrzustand der Nachricht um die in der Entitätsbeschreibung angegebene Zeitspanne  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
- Der Nachrichtentext der Anforderung muss aus einem AMQP-Wert-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält.  
+ Der Nachrichtentext der Anforderung muss aus einem amqp-value-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -141,14 +142,14 @@ Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – Erfolg, andernfalls fehlgeschlagen|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem AMQP-Wert-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem amqp-value-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -158,16 +159,16 @@ Der Nachrichtentext der Antwort muss aus einem AMQP-Wert-Abschnitt bestehen, der
 
 Ermöglicht das Einsehen von Nachrichten ohne Sperren  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -176,20 +177,20 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – verfügt über weitere Nachrichten<br /><br /> 0xcc: Kein Inhalt – keine weiteren Nachrichten|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |Cloud an das Gerät|Liste der Zuordnungen|Ja|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
   
-Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten.  
+Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -199,22 +200,22 @@ Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthal
 
 Plant Nachrichten  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |Cloud an das Gerät|Liste der Zuordnungen|Ja|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
   
-Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten.  
+Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -225,14 +226,14 @@ Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthal
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – Erfolg, andernfalls fehlgeschlagen|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine Zuordnung zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -242,16 +243,16 @@ Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen
 
 Bricht geplante Nachrichten ab  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -259,14 +260,14 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – Erfolg, andernfalls fehlgeschlagen|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine Zuordnung zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -278,16 +279,16 @@ Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen
 
 Verlängert den Sperrzustand der Nachricht um die in der Entitätsbeschreibung angegebene Zeitspanne  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -295,14 +296,14 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – verfügt über weitere Nachrichten<br /><br /> 0xcc: Kein Inhalt – keine weiteren Nachrichten|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine Zuordnung zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -312,16 +313,16 @@ Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen
 
 Ermöglicht das Einsehen von Sitzungsnachrichten ohne Sperren  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -331,20 +332,20 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – verfügt über weitere Nachrichten<br /><br /> 0xcc: Kein Inhalt – keine weiteren Nachrichten|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine Zuordnung zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine Zuordnung zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |Cloud an das Gerät|Liste der Zuordnungen|Ja|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
   
- Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten.  
+ Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -354,16 +355,16 @@ Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen
 
 Legt den Status einer Sitzung fest  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -372,7 +373,7 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -383,16 +384,16 @@ Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.
 
 Ruft den Status einer Sitzung ab  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -400,14 +401,14 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – Erfolg, andernfalls fehlgeschlagen|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -417,16 +418,16 @@ Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen
 
 Zählt die Sitzungen in einer Nachrichtenentität auf  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -436,14 +437,14 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – verfügt über weitere Nachrichten<br /><br /> 0xcc: Kein Inhalt – keine weiteren Nachrichten|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -454,23 +455,23 @@ Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen
   
 ### <a name="add-rule"></a>Regel hinzufügen  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |rule-name|string|Ja|Regelname, außer Abonnement- und Themennamen|  
 |rule-description|map|Ja|Die Regelbeschreibung entsprechend den Angaben im nächsten Abschnitt|  
   
-Die Zuordnung **rule-description** muss die folgenden Einträge enthalten, in denen **sql-filter** und **correlation-filter** sich gegenseitig ausschließen.  
+Die Zuordnung **rule-description** muss die folgenden Einträge enthalten, in denen **sql-filter** und **correlation-filter** sich gegenseitig ausschließen:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -478,13 +479,13 @@ Die Zuordnung **rule-description** muss die folgenden Einträge enthalten, in de
 |correlation-filter|map|Ja|`correlation-filter`, wie im nächsten Abschnitt angegeben|  
 |sql-rule-action|map|Ja|`sql-rule-action`, wie im nächsten Abschnitt angegeben|  
   
-Die Zuordnung „sql-filter“ muss die folgenden Einträge enthalten.  
+Die Zuordnung „sql-filter“ muss die folgenden Einträge enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |expression|string|Ja|SQL-Filterausdruck|  
   
-Die Zuordnung **correlation-filter** muss mindestens eine der folgenden Einträge enthalten.  
+Die Zuordnung **correlation-filter** muss mindestens einen der folgenden Einträge enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -498,7 +499,7 @@ Die Zuordnung **correlation-filter** muss mindestens eine der folgenden Einträg
 |Inhaltstyp|string|Nein||  
 |Eigenschaften|map|Nein|Zuordnung zu Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties)|  
   
-Die Zuordnung **sql-rule-action** muss die folgenden Einträge enthalten.  
+Die Zuordnung **sql-rule-action** muss die folgenden Einträge enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -506,7 +507,7 @@ Die Zuordnung **sql-rule-action** muss die folgenden Einträge enthalten.
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -515,16 +516,16 @@ Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.
   
 ### <a name="remove-rule"></a>Regel entfernen  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -532,7 +533,7 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -545,38 +546,38 @@ Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.
 
 Empfängt Vorgänge zurückgestellter Nachrichten nach Sequenznummer  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |sequence-numbers|Long-Array|Ja|Sequenznummern|  
-|receiver-settle-mode|ubyte|Ja|Behandlungsrichtline des Empfängers den Angaben in AMQP Core v1.0 entsprechend|  
+|receiver-settle-mode|ubyte|Ja|**Behandlungsrichtline** des Empfängers den Angaben in AMQP Core v1.0 entsprechend.|  
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ja|HTTP-Antwortcode [RFC2616]<br /><br /> 200: OK – Erfolg, andernfalls fehlgeschlagen|  
 |statusDescription|string|Nein|Beschreibung des Status|  
   
-Der Nachrichtentext der Antwort muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |Cloud an das Gerät|Liste der Zuordnungen|Ja|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt|  
   
-Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten.  
+Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -587,16 +588,16 @@ Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthal
 
 Aktualisiert den Dipositionsstatus zurückgestellter Nachrichten  
   
-#### <a name="request"></a>Anforderung  
+#### <a name="request"></a>Request  
 
-Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Anforderungsnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|Ja|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Nein|Timeout des für „operation“ zuständigen Servers in Millisekunden|  
   
-Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält.  
+Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt bestehen, der eine **Zuordnung** zu den folgenden Einträgen enthält:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -608,7 +609,7 @@ Der Nachrichtentext der Anforderung muss aus einem Abschnitt **amqp-value** best
   
 #### <a name="response"></a>Antwort  
 
-Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.  
+Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten:  
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
@@ -616,6 +617,7 @@ Die Antwortnachricht muss die folgenden Anwendungseigenschaften enthalten.
 |statusDescription|string|Nein|Beschreibung des Status|
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Klicken Sie auf die folgenden Links, um mehr über AMQP und Service Bus zu erfahren:
 
 * [Übersicht über Service Bus AMQP]

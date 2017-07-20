@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9962766b0a1fdfe313b70ea65e08785ec8a97996
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: d55cfc354ad5a9fc0f06b671f441ba4a0616bb9a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -94,7 +94,10 @@ So wechseln Sie von einem benutzerdefinierten Image zurück zu einem integrierte
 
 ## <a name="troubleshooting"></a>Problembehandlung ##
 
-Überprüfen Sie die Docker-Protokolle im Verzeichnis „LogFiles/docker“, wenn die Anwendung mit Ihrem benutzerdefinierten Docker-Image nicht gestartet werden kann. Sie können auf dieses Verzeichnis entweder über Ihre SCM-Website oder per FTP zugreifen. 
+Überprüfen Sie die Docker-Protokolle im Verzeichnis „LogFiles/docker“, wenn die Anwendung mit Ihrem benutzerdefinierten Docker-Image nicht gestartet werden kann. Sie können auf dieses Verzeichnis entweder über Ihre SCM-Website oder per FTP zugreifen.
+Zum Protokollieren von `stdout` und `stderr` in Ihrem Container müssen Sie unter **Diagnoseprotokolle** die **Webserverprotokollierung** aktivieren.
+
+![Aktivieren der Protokollierung][8]
 
 ![Verwenden von Kudu zum Anzeigen von Docker-Protokollen][7]
 
@@ -120,4 +123,5 @@ In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=win
 [5]: ./media/app-service-linux-using-custom-docker-image/existingapp-configure-builtin.png
 [6]: ./media/app-service-linux-using-custom-docker-image/setting-port.png
 [7]: ./media/app-service-linux-using-custom-docker-image/kudu-docker-logs.png
+[8]: ./media/app-service-linux-using-custom-docker-image/logging.png
 

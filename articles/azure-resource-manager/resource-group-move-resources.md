@@ -12,27 +12,27 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2017
+ms.date: 06/28/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: f1b9beabfb0a92e5cc49d6af762693ae45a85e42
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 4c373eef77605ab45c9a08ed7f60476abafa229c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 In diesem Thema erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe im gleichen Abonnement verschieben. Sie können das Portal, PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden, um Ressourcen zu verschieben. Die Verschiebevorgänge in diesem Thema werden Ihnen ohne Unterstützung durch den Azure-Support zur Verfügung gestellt.
 
-Beim Verschieben von Ressourcen werden die Quell- und Zielgruppe für die Dauer des Vorgangs gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank. 
+Beim Verschieben von Ressourcen werden die Quell- und Zielgruppe für die Dauer des Vorgangs gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank.
 
 Sie können nicht den Speicherort der Ressource ändern. Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe verschoben. Die neue Ressourcengruppe hat möglicherweise einen anderen Speicherort, das heißt jedoch nicht, dass der Speicherort der Ressource geändert wird.
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Ressourcen in einem vorhandenen Azure-Kontoangebot verschieben. Falls Sie Ihr Azure-Kontoangebot ändern (z.B. ein Upgrade von nutzungsbasierter Bezahlung auf einen Pre-Pay-Tarif) und Ihre vorhandenen Ressourcen weiterverwenden möchten, helfen Ihnen die Informationen unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](../billing/billing-how-to-switch-azure-offer.md) weiter. 
-> 
-> 
+> In diesem Artikel wird beschrieben, wie Sie Ressourcen in einem vorhandenen Azure-Kontoangebot verschieben. Falls Sie Ihr Azure-Kontoangebot ändern (z.B. ein Upgrade von nutzungsbasierter Bezahlung auf einen Pre-Pay-Tarif) und Ihre vorhandenen Ressourcen weiterverwenden möchten, helfen Ihnen die Informationen unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](../billing/billing-how-to-switch-azure-offer.md) weiter.
+>
+>
 
 ## <a name="checklist-before-moving-resources"></a>Checkliste vor dem Verschieben von Ressourcen
 Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen: Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
@@ -51,20 +51,20 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   az account show --subscription "Example Subscription" --query tenantId
   ```
 
-  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, können Sie versuchen, das Verzeichnis für das Abonnement zu ändern. Diese Option steht jedoch nur Dienstadministratoren zur Verfügung, die mit einem Microsoft-Konto angemeldet sind (nicht mit einem Organisationskonto). Um zu versuchen, das Verzeichnis zu ändern, melden Sie sich am [klassischen Portal](https://manage.windowsazure.com/) an, und wählen Sie **Einstellungen** und dann das Abonnement aus. Wenn das Symbol **Verzeichnis bearbeiten** verfügbar ist, wählen Sie es aus, um das zugehörige Azure Active Directory zu ändern. 
+  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, können Sie versuchen, das Verzeichnis für das Abonnement zu ändern. Diese Option steht jedoch nur Dienstadministratoren zur Verfügung, die mit einem Microsoft-Konto angemeldet sind (nicht mit einem Organisationskonto). Um zu versuchen, das Verzeichnis zu ändern, melden Sie sich am [klassischen Portal](https://manage.windowsazure.com/) an, und wählen Sie **Einstellungen** und dann das Abonnement aus. Wenn das Symbol **Verzeichnis bearbeiten** verfügbar ist, wählen Sie es aus, um das zugehörige Azure Active Directory zu ändern.
 
-  ![Verzeichnis bearbeiten](./media/resource-group-move-resources/edit-directory.png) 
+  ![Verzeichnis bearbeiten](./media/resource-group-move-resources/edit-directory.png)
 
   Wenn das Symbol nicht verfügbar ist, müssen Sie sich an den Support wenden, um die Ressourcen in einen neuen Mandanten zu verschieben.
 
 2. Der Dienst muss die Möglichkeit bieten, Ressourcen zu verschieben. In diesem Thema wird erläutert, welche Dienste das Verschieben von Ressourcen ermöglichen und welche nicht.
-3. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde. Weitere Informationen zum Überprüfen des Registrierungsstatus und zum Registrieren von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](resource-manager-supported-services.md#resource-providers-and-types).
+3. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde. Weitere Informationen zum Überprüfen des Registrierungsstatus und zum Registrieren von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](resource-manager-supported-services.md).
 
 ## <a name="when-to-call-support"></a>Kontaktaufnahme mit dem Support
 Sie können die meisten Ressourcen mithilfe der in diesem Artikel gezeigten Self-Service-Vorgänge verschieben. Verwenden Sie die Self-Service-Vorgänge für Folgendes:
 
 * Verschieben von Resource Manager-Ressourcen
-* Verschieben von klassischen Ressourcen unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations) 
+* Verschieben von klassischen Ressourcen unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 
 Wenden Sie sich in folgenden Fällen an den Support:
 
@@ -93,7 +93,7 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * Event Hubs
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * IoT Hubs
-* Schlüsseltresor 
+* Schlüsseltresor
 * Load Balancer
 * Logik-Apps
 * Machine Learning
@@ -114,13 +114,14 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * Stream Analytics
 * SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben.
 * Traffic Manager
-* Virtual Machines: Das Verschieben in ein neues Abonnement wird nicht unterstützt, wenn dessen Zertifikate in einem Schlüsseltresor gespeichert sind.
+* Virtual Machines
+* Virtuelle Computer mit in Schlüsseltresor gespeichertem Zertifikat – Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Skalierungsgruppen für virtuelle Computer
-* Virtual Networks – derzeit kann ein mittels Peering verknüpftes virtuelles Netzwerk erst verschoben werden, nachdem VNET-Peering deaktiviert wurde. Nach der Deaktivierung kann das virtuelle Netzwerk verschoben und das VNET-Peering wieder aktiviert werden.
-* VPN Gateway 
+* Virtual Networks – derzeit kann ein mittels Peering verknüpftes virtuelles Netzwerk erst verschoben werden, nachdem VNET-Peering deaktiviert wurde. Nach der Deaktivierung kann das virtuelle Netzwerk verschoben und das VNET-Peering wieder aktiviert werden. Darüber hinaus kann ein virtuelles Netzwerk in ein anderes Abonnement verschoben werden, wenn das virtuelle Netzwerk ein Subnetz mit Navigationslinks für Ressourcen enthält. Beispielsweise weist ein Subnetz eines virtuellen Netzwerks einen Navigationslink für die Ressource aus, wenn eine Microsoft.Cache Redis-Ressource in diesem Subnetz bereitgestellt wird.
+* VPN Gateway
 
- 
+
 ## <a name="services-that-do-not-enable-move"></a>Dienste, die keine Verschiebung ermöglichen
 Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht:
 
@@ -138,7 +139,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Recovery Services-Tresor – verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
 * Sicherheit
 * Von Managed Disks erstellte Momentaufnahmen
-* Virtuelle Computer mit in Schlüsseltresor gespeichertem Zertifikat
+* StorSimple-Geräte-Manager
 * Virtual Machines mit Managed Disks
 * Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Von Marketplace-Ressourcen erstellte virtuelle Computer können nicht über Abonnements verschoben werden. Die Ressource muss im aktuellen Abonnement aufgehoben und im neuen Abonnement erneut bereitgestellt werden
@@ -146,7 +147,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 Bei der Arbeit mit App Service-Apps können Sie nicht nur einen App Service-Plan verschieben. Zum Verschieben von App Service-Apps stehen folgende Optionen bereit:
 
-* Verschieben Sie den App Service-Plan und alle anderen App Service-Ressourcen in dieser Ressourcengruppe in eine neue Ressourcengruppe, die noch nicht über App Service-Ressourcen verfügt. Diese Anforderung bedeutet, dass Sie auch die App Service-Ressourcen verschieben müssen, die nicht dem App Service-Plan zugeordnet sind. 
+* Verschieben Sie den App Service-Plan und alle anderen App Service-Ressourcen in dieser Ressourcengruppe in eine neue Ressourcengruppe, die noch nicht über App Service-Ressourcen verfügt. Diese Anforderung bedeutet, dass Sie auch die App Service-Ressourcen verschieben müssen, die nicht dem App Service-Plan zugeordnet sind.
 * Verschieben Sie Apps in eine andere Ressourcengruppe, behalten Sie jedoch alle App Services-Pläne in der ursprünglichen Ressourcengruppe bei.
 
 Der App Service-Plan muss sich nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
@@ -183,7 +184,7 @@ Sie können ein App Service Certificate ohne Probleme in eine neue Ressourcengru
 3. Hochladen des Zertifikats in die Web-App
 
 ## <a name="recovery-services-limitations"></a>Einschränkungen von Recovery Services
-Das Verschieben von Speicher-, Netzwerk- und Computeressourcen, die dazu dienen, eine Notfallwiederherstellung mit Azure Site Recovery einzurichten, ist nicht möglich. 
+Das Verschieben von Speicher-, Netzwerk- und Computeressourcen, die dazu dienen, eine Notfallwiederherstellung mit Azure Site Recovery einzurichten, ist nicht möglich.
 
 Angenommen, Sie haben die Replikation Ihrer lokalen Computer in ein Speicherkonto (Storage1) eingerichtet, und möchten, dass der geschützte Computer nach einem Failover zu Azure als virtueller Computer (VM1) angezeigt wird, der an ein virtuelles Netzwerk (Network1) angeschlossen ist. Sie können dann die Azure-Ressourcen „Storage1“, „VM1“ und „Network1“ nicht zwischen Ressourcengruppen im selben Abonnement oder zwischen Abonnements verschieben.
 
@@ -194,13 +195,13 @@ Sie können HDInsight-Cluster in ein neues Abonnement oder eine neue Ressourceng
 Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zunächst andere Ressourcen (z.B. das Speicherkonto) verschieben. Verschieben Sie erst anschließend den HDInsight-Cluster.
 
 ## <a name="classic-deployment-limitations"></a>Einschränkungen bei der klassischen Bereitstellung
-Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. 
+Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben.
 
 ### <a name="same-subscription"></a>Gleiches Abonnement
 Beim Verschieben von Ressourcen aus einer Ressourcengruppe in eine andere innerhalb des gleichen Abonnements gelten die folgenden Einschränkungen:
 
 * Virtuelle Netzwerke (klassisch) können nicht verschoben werden.
-* Virtuelle Computer (klassisch) müssen mit dem Clouddienst verschoben werden. 
+* Virtuelle Computer (klassisch) müssen mit dem Clouddienst verschoben werden.
 * Der Clouddienst kann nur verschoben werden, wenn der Verschiebevorgang alle dazugehörigen virtuellen Computer umfasst.
 * Es kann immer nur ein Clouddienst gleichzeitig verschoben werden.
 * Es kann immer nur ein Speicherkonto (klassisch) gleichzeitig verschoben werden.
@@ -222,18 +223,18 @@ Verwenden Sie zum Verschieben von klassischen Ressourcen in ein neues Abonnement
   ```HTTP   
   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
   ```
-   
+
      Fügen Sie Folgendes in den Anforderungstext ein:
 
-  ```json 
+  ```json
   {
     "role": "source"
   }
   ```
-  
+
      Die Antwort für den Überprüfungsvorgang erfolgt in folgendem Format:
 
-  ```json 
+  ```json
   {
     "status": "{status}",
     "reasons": [
@@ -245,34 +246,34 @@ Verwenden Sie zum Verschieben von klassischen Ressourcen in ein neues Abonnement
 
 2. Überprüfen Sie, ob das Zielabonnement an einem abonnementübergreifenden Verschiebevorgang teilnehmen kann. Gehen Sie folgendermaßen vor:
 
-  ```HTTP 
+  ```HTTP
   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
   ```
 
      Fügen Sie Folgendes in den Anforderungstext ein:
 
-  ```json 
+  ```json
   {
     "role": "target"
   }
   ```
-   
+
      Die Antwort liegt im gleichen Format vor wie bei der Überprüfung des Quellabonnements.
 3. Wenn beide Abonnements die Überprüfung bestehen, verschieben Sie alle klassischen Ressourcen mithilfe des folgenden Vorgangs aus einem Abonnement in ein anderes:
 
-  ```HTTP 
+  ```HTTP
   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
   ```
 
     Fügen Sie Folgendes in den Anforderungstext ein:
 
-  ```json 
+  ```json
   {
     "target": "/subscriptions/{target-subscription-id}"
   }
   ```
 
-Dieser Vorgang kann einige Minuten dauern. 
+Dieser Vorgang kann einige Minuten dauern.
 
 ## <a name="use-portal"></a>Mithilfe des Portals
 Um Ressourcen zu verschieben, wählen Sie die Ressourcengruppe mit diesen Ressourcen und dann die Schaltfläche **Verschieben** aus.
@@ -378,7 +379,7 @@ Sie werden aufgefordert zu bestätigen, dass die angegebene Ressource verschoben
 Führen Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement Folgendes aus:
 
 ```HTTP
-POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version} 
+POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}
 ```
 
 Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressourcen an. Weitere Informationen zur REST-Verschiebung finden Sie unter [Verschieben von Ressourcen](https://msdn.microsoft.com/library/azure/mt218710.aspx).
@@ -388,5 +389,4 @@ Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressource
 * Informationen zu Befehlen der Azure-Befehlszeilenschnittstelle zum Verwalten Ihres Abonnements finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Resource Manager](xplat-cli-azure-resource-manager.md).
 * Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](resource-group-portal.md).
 * Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
-
 

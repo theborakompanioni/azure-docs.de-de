@@ -13,18 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 05/30/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 06a97b48fed8f80679632f5c0320d4dd73b8e1e2
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 6032263848c469ce2f416306e5c91c29f4cb30e4
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Erfassen Sie ein Image eines virtuellen Azure Windows-Computers, der mit dem klassischen Bereitstellungsmodell erstellt wurde.
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Modells. Informationen zum Resource Manager-Modell finden Sie unter [Erstellen einer Kopie eines virtuellen Windows-Computers in Azure](../../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Informationen zum Ressourcen-Manager-Modell finden Sie unter [Erstellen verwalteter Images generalisierter virtueller Computer in Azure](../capture-image-resource.md).
 
 In diesem Artikel wird erläutert, wie Sie einen virtuellen Azure-Computer erfassen, auf dem Windows läuft, um ihn als Image zum Erstellen anderer virtueller Computer zu verwenden. Dieses Image enthält den Betriebssystem-Datenträger und alle Datenträger, die an den virtuellen Computer angefügt sind. Da das Image keine Netzwerkkonfiguration enthält, muss diese später festgelegt werden, wenn Sie die anderen virtuellen Computer erstellen, die dieses Image verwenden.
 
@@ -55,7 +56,7 @@ Es empfiehlt sich, vor der Erfassung eines Images eines Azure virtuellen Compute
    * Klicken Sie auf **OK**.
 
    ![Sysprep ausführen](./media/capture-image/SysprepGeneral.png)
-5. Sysprep fährt den virtuellen Computer herunter. Dadurch wird der Status des virtuellen Computers im klassischen Azure-Portal in **Angehalten** geändert.
+5. Sysprep fährt den virtuellen Computer herunter. Dadurch wird der Status des virtuellen Computers im Azure-Portal in **Angehalten** geändert.
 6. Klicken Sie im Azure-Portal auf **Virtuelle Computer (klassisch)**, und wählen Sie den virtuellen Computer aus, den Sie erfassen möchten. Die Gruppe **VM-Images (klassisch)** wird nach Aufruf von **Weitere Dienste** unter **Compute** aufgeführt.
 
 7. Klicken Sie in der Befehlsleiste auf **Aufnehmen**.

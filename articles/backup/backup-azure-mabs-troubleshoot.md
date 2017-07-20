@@ -12,12 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/24/2017
+ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: a42488d618c58b36fa8105c1b22fd32ca615d1b1
-ms.lasthandoff: 03/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: a8df63821af039b7a5ad34f065423701485ee7d8
+ms.contentlocale: de-de
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -26,8 +27,13 @@ ms.lasthandoff: 03/27/2017
 
 Die folgende Tabelle enthält Problembehandlungsinformationen für Fehler, die bei der Verwendung von Azure Backup Server auftreten.
 
->
->
+
+## <a name="installation-issues"></a>Probleme bei der Installation
+
+| Vorgang | Fehlerdetails | Problemumgehung |
+|-----------|---------------|------------|
+|Installation | Setup konnten Registrierungsmetadaten nicht aktualisieren. Dieser Updatefehler kann zu einer übermäßigen Speicherbelegung führen. Um dies zu vermeiden, aktualisieren Sie den Registrierungseintrag zum Trimmen von ReFS. | Passen Sie den Registrierungsschlüssel „SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim“ an. Legen Sie den Wert „Dword“ auf 1 fest. |
+|Installation | Setup konnten Registrierungsmetadaten nicht aktualisieren. Dieser Updatefehler kann zu einer übermäßigen Speicherbelegung führen. Um dies zu vermeiden, aktualisieren Sie den Registrierungseintrag „Volume SnapOptimization“. | Erstellen Sie den Registrierungsschlüssel „SOFTWARE\Microsoft Data Protection Manager\Configuration\VolSnapOptimization\WriteIds“ mit einem leeren Zeichenfolgenwert. |
 
 ## <a name="registration-and-agent-related-issues"></a>Probleme mit der Registrierung oder dem Agent
 | Vorgang | Fehlerdetails | Problemumgehung |
@@ -43,6 +49,7 @@ Die folgende Tabelle enthält Problembehandlungsinformationen für Fehler, die b
 | Konfigurieren von Schutzgruppen | Die Anwendungskomponente konnte von DPM auf dem geschützten Computer nicht aufgelistet werden. | Klicken Sie auf dem Konfigurationsbildschirm für Schutzgruppen auf der entsprechenden Datenquellen-/Komponentenebene auf „Aktualisieren“. |
 | Konfigurieren von Schutzgruppen | Der Schutz kann nicht konfiguriert werden. | Falls es sich bei dem geschützten Server um einen SQL-Server handelt, überprüfen Sie, ob das Systemkonto (NTAuthority\System) auf dem geschützten Computer über Berechtigungen der SysAdmin-Rolle verfügt, wie in [diesem Artikel](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx) angegeben.
 | Konfigurieren von Schutzgruppen | Im Speicherpool für diese Schutzgruppe ist nicht genügend freier Speicherplatz vorhanden. | Die dem Speicherpool hinzugefügten Datenträger [dürfen keine Partition enthalten](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Löschen Sie alle auf den Datenträgern vorhandenen Volumes, und fügen Sie die Datenträger dann dem Speicherpool hinzu.|
+| Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Fehler: Der aktuelle Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] fehlgeschlagen. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, und eine nicht unterstützte Version verwenden (unter MAB-Version 2.0.9052 und Azure Backup Server-Update 1). <br/>**Empfohlene Maßnahme:**<br/> In diesem Fall müssen Sie die Beibehaltungsdauer höher als den angegebenen Mindestzeitraum festlegen (sieben Tage für „Täglich“, vier Wochen für „Wöchentlich“, drei Wochen für „Monatlich“ oder ein Jahr für „Jährlich“), um mit richtlinienbezogenen Aktualisierungen fortzufahren. Die optional bevorzugte Vorgehensweise ist das Aktualisieren des Backup-Agents und von Azure Backup Server, um in den Genuss aller Sicherheitsupdates zu kommen. |
 
 ## <a name="backup"></a>Sicherung
 | Vorgang | Fehlerdetails | Problemumgehung |
@@ -54,4 +61,10 @@ Die folgende Tabelle enthält Problembehandlungsinformationen für Fehler, die b
 | Sicherung | Fehler bei der Erstellung eines Onlinewiederherstellungspunkts. | Falls die Fehlermeldung „Die Verschlüsselungspassphrase für diesen Server ist nicht festgelegt. Konfigurieren Sie eine Verschlüsselungspassphrase.“ angezeigt wird, konfigurieren Sie eine Verschlüsselungspassphrase. Sollte dies nicht erfolgreich sein, <br> <ol><li>überprüfen Sie, ob der Ablageordner vorhanden ist. Der in der Registrierung „HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config“ angegebene Speicherort namens „ScratchLocation“ muss vorhanden sein.</li><li> Falls der Ablageordner vorhanden ist, führen Sie eine erneute Registrierung mit der alten Passphrase durch. **Speichern Sie konfigurierte Verschlüsselungspassphrasen immer an einem sicheren Ort.**</li><ol>
 | Sicherung | Sicherungsfehler für BMR | Verschieben Sie bei einer großen BMR einige Anwendungsdateien auf das Betriebssystemlaufwerk, und versuchen Sie es dann erneut. |
 | Sicherung | Fehler beim Zugreifen auf Dateien/freigegebene Ordner | Ändern Sie die Antivireneinstellungen anhand [dieser Vorschläge](https://technet.microsoft.com/library/hh757911.aspx).|
+
+## <a name="change-passphrase"></a>Ändern der Passphrase
+| Vorgang | Fehlerdetails | Problemumgehung |
+| --- | --- | --- |
+| Ändern der Passphrase |Die eingegebene Sicherheits-PIN ist nicht korrekt. Geben Sie die korrekte Sicherheits-PIN an, um diesen Vorgang abzuschließen. |**Ursache:**<br/> Dieser Fehler tritt bei der Eingabe einer ungültigen oder abgelaufenen Sicherheits-PIN beim Ausführen eines kritischen Vorgangs (z.B. Ändern der Passphrase) auf. <br/>**Empfohlene Maßnahme:**<br/> Um den Vorgang abzuschließen, müssen Sie die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
+| Ändern der Passphrase |Fehler beim Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Passphrase zu ändern, und eine nicht unterstützte Version verwenden.<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zuerst den Backup-Agent auf Mindestversion 2.0.9052 und Azure Backup Server auf mindestens Update 1 aktualisieren und dann die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 

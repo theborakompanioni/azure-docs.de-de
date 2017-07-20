@@ -8,17 +8,17 @@ manager: rochakm
 editor: 
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: asgang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: c7b9da13494958e8941c395a1dff2da44521d0a7
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: cf568d20f60709dbb64774bcbcc1b4aa6c43d8d3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -29,27 +29,27 @@ ms.lasthandoff: 05/08/2017
 
 Microsoft Dynamics AX ist eine der bei Unternehmen am beliebtesten ERP-Lösungen zur standortübergreifenden Standardisierung von Prozessen, zum Verwalten von Ressourcen und zum Vereinfachen der Konformität. Da die Anwendung für eine Organisation unternehmenskritisch ist, ist es von höchster Wichtigkeit, dass die Anwendung in einem Notfall schnellstmöglich wieder in Betrieb genommen werden kann.
 
-Microsoft Dynamics AX bietet derzeit keine vorgefertigten Funktionen zur Notfallwiederherstellung. Microsoft Dynamics AX besteht aus vielen Serverkomponenten wie z.B. Application Object Server, Active Directory (AD), SQL Database Server, SharePoint Server, Reporting Server usw. Das manuelle Verwalten der Notfallwiederherstellung jeder Komponente ist nicht nur teuer, sondern auch fehleranfällig. 
+Microsoft Dynamics AX bietet derzeit keine vorgefertigten Funktionen zur Notfallwiederherstellung. Microsoft Dynamics AX besteht aus vielen Serverkomponenten wie z.B. Application Object Server, Active Directory (AD), SQL Database Server, SharePoint Server, Reporting Server usw. Das manuelle Verwalten der Notfallwiederherstellung jeder Komponente ist nicht nur teuer, sondern auch fehleranfällig.
 
 In diesem Artikel wird ausführlich erklärt, wie Sie eine Lösung zur Notfallwiederherstellung für Ihre Dynamics AX-Anwendung mithilfe von [Azure Site Recovery](site-recovery-overview.md) (ASR) erstellen können. Außerdem werden geplante/nicht geplante/Testfailover mit einem durch einen Klick aktivierbaren Wiederherstellungsplan, unterstützten Konfigurationen und Voraussetzungen behandelt.
-Die Lösung zur Notfallwiederherstellung mit ASR wurde vollständig geprüft und zertifiziert und wird von Microsoft Dynamics AX empfohlen. 
+Die Lösung zur Notfallwiederherstellung mit ASR wurde vollständig geprüft und zertifiziert und wird von Microsoft Dynamics AX empfohlen.
 
 
- 
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das Implementieren der Notfallwiederherstellung für Dynamics AX mit Azure Site Recovery erfordert folgende Voraussetzungen.
 
 • Eine lokale Bereitstellung von Dynamics AX wurde eingerichtet.
 
-• Ein Azure Site Recovery Services-Tresor wurde in einem Microsoft Azure-Abonnement erstellt. 
+• Ein Azure Site Recovery Services-Tresor wurde in einem Microsoft Azure-Abonnement erstellt.
 
-• Falls Azure Ihr Wiederherstellungsstandort ist, führen Sie zusätzlich das Bereitschaftsbewertungstool für virtuelle Computer auf VMs aus, um sicherzustellen, dass diese mit Azure VMs und Azure Site Recovery Services kompatibel sind.
+• Falls Azure Ihr Wiederherstellungsstandort ist, führen Sie zusätzlich das Bereitschaftsbewertungstool für virtuelle Azure-Computer auf VMs aus, um sicherzustellen, dass diese mit Azure-VMs und Azure Site Recovery Services kompatibel sind.
 
 
 ## <a name="site-recovery-support"></a>Site Recovery-Unterstützung
 
-Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamics AX 2012R3 unter Windows Server 2012 R2 Enterprise verwendet. Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten die hier aufgezeigten Empfehlungen voraussichtlich auch für die folgenden Szenarios: 
+Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamics AX 2012R3 unter Windows Server 2012 R2 Enterprise verwendet. Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten die hier aufgezeigten Empfehlungen voraussichtlich auch für die folgenden Szenarios:
 
 ### <a name="source-and-target"></a>Quelle und Ziel
 
@@ -60,7 +60,7 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamic
 **Physischer Server** | Ja | Ja
 
 ## <a name="enable-dr-of-dynamics-ax-application-using-asr"></a>Aktivieren der Notfallwiederherstellung der Dynamics AX-Anwendung mit ASR
-### <a name="protect-your-dynamics-ax-application"></a>Schützen Sie Ihre Dynamics AX-Anwendung 
+### <a name="protect-your-dynamics-ax-application"></a>Schützen Sie Ihre Dynamics AX-Anwendung
 Jede Komponente von Dynamics AX muss geschützt werden, um die vollständige Replikation und Wiederherstellung der Anwendung zu aktivieren. Dieser Abschnitt behandelt:
 
 **1. Schutz von Active Directory**
@@ -83,7 +83,7 @@ Falls der Kunde über eine geringe Anzahl von Anwendungen und über einen einzel
 
 **Option 2**
 
-Wenn der Kunde über eine hohe Anzahl von Anwendungen verfügt und eine Active Directory-Gesamtstruktur und ein Failover für einige Anwendungen gleichzeitig ausführt, wird die Einrichtung eines zusätzlichen Domänencontrollers am DR-Standort empfohlen (ein sekundärer Standort oder in Azure). 
+Wenn der Kunde über eine hohe Anzahl von Anwendungen verfügt und eine Active Directory-Gesamtstruktur und ein Failover für einige Anwendungen gleichzeitig ausführt, wird die Einrichtung eines zusätzlichen Domänencontrollers am DR-Standort empfohlen (ein sekundärer Standort oder in Azure).
 
 Halten Sie sich dafür an das [Begleithandbuch zum Verfügbarmachen eines Domänencontrollers am Standort einer Notfallwiederherstellung](site-recovery-active-directory.md). Für den Rest dieses Dokuments wird davon ausgegangen, dass ein Domänencontroller am Standort der Notfallwiederherstellung verfügbar ist.
 
@@ -92,7 +92,7 @@ Wenden Sie sich für eine ausführlichere technische Anleitung zur empfohlenen O
 
 ### <a name="3-enable-protection-for-dynamics-ax-client-and-aos-vms"></a>3. Aktivieren des Schutz für den Dynamics AX-Client und AOS-VMs
 Nehmen Sie relevante Konfigurationen für ASR durch, je nachdem wo die VMs bereitgestellt wurden – auf [Hyper-V](site-recovery-hyper-v-site-to-azure.md) oder auf [VMware](site-recovery-vmware-to-azure.md).
- 
+
 > [!TIP]
 > Die empfohlene Frequenz der Absturzkonsistenz beträgt 15 Minuten.
 >
@@ -117,15 +117,15 @@ Sie können den virtuellen Computer in den replizierten Elemente auswählen, um 
 
 Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozess zu automatisieren. Fügen Sie dem Wiederherstellungsplan eine Anwendungs- und eine Webschicht hinzu. Sortieren Sie diese nach verschiedenen Gruppen, damit das Front-End vor der Anwendungsschicht beendet wird.
 
-1)    Wählen Sie den ASR-Tresor in Ihrem Abonnement, und klicken Sie auf die Kachel „Wiederherstellungsplan“. 
+1)  Wählen Sie den ASR-Tresor in Ihrem Abonnement, und klicken Sie auf die Kachel „Wiederherstellungsplan“.
 
-2)    Klicken Sie auf „+ Wiederherstellungsplan“, und geben Sie einen Namen ein.
+2)  Klicken Sie auf „+ Wiederherstellungsplan“, und geben Sie einen Namen ein.
 
-3)    Wählen Sie „Quelle“ und „Ziel“ aus. Das Ziel kann sowohl Azure als auch ein sekundärer Standort sein. Sollten Sie Azure wählen, müssen Sie ein Bereitstellungsmodell angeben 
-    
+3)  Wählen Sie „Quelle“ und „Ziel“ aus. Das Ziel kann sowohl Azure als auch ein sekundärer Standort sein. Sollten Sie Azure wählen, müssen Sie ein Bereitstellungsmodell angeben
+
 ![Wiederherstellungsplan erstellen](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4)    Wählen Sie die AOS- und Client-VMs für den Wiederherstellungsplan aus und klicken Sie auf ✓.
+4)  Wählen Sie die AOS- und Client-VMs für den Wiederherstellungsplan aus und klicken Sie auf ✓.
 ![Wiederherstellungsplan erstellen](./media/site-recovery-dynamics-ax/selectvms.png)
 
 
@@ -135,17 +135,17 @@ Sie können den Wiederherstellungsplan für die Dynamics AX-Anwendung anpassen, 
 
 *Schritte*:
 
-*1.    Schritte für das SQL Server-Failover*
+*1. Schritte für das SQL Server-Failover*
 
 Ausführlichere Informationen zu SQL Server-spezifischen Wiederherstellungsschritten finden Sie im Begleithandbuch [SQL Server DR Solution](site-recovery-sql.md) (Notfallwiederherstellungslösung für SQL Server).
 
-*2.    Failovergruppe 1: Durchführen eines Failovers für AOS-VMs*
+*2. Failovergruppe 1: Durchführen eines Failovers für AOS-VMs*
 
-Stellen Sie sicher, dass der gewählte Wiederherstellungspunkt sich so nah wie möglich am PIT der Datenbank befindet. 
+Stellen Sie sicher, dass der gewählte Wiederherstellungspunkt sich so nah wie möglich am PIT der Datenbank befindet.
 
-*3.    Skript: Hinzufügen eines Lastenausgleichs (nur E-A)* Fügen Sie über Azure Automation hinter der AOS-VM-Gruppe ein Skript hinzu, um einen Lastenausgleich hinzuzufügen. Sie können ein Skript in diese Aufgabe einfügen. Weitere Informationen finden Sie im Artikel [how to add load balancer for multi-tier application DR (So können Sie einen Lastenausgleich für die Notfallwiederherstellung für Anwendungen mit mehreren Schichten hinzufügen)](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)
+*3. Skript: Hinzufügen eines Lastenausgleichs (nur E-A)* Fügen Sie über Azure Automation hinter der AOS-VM-Gruppe ein Skript hinzu, um einen Lastenausgleich hinzuzufügen. Sie können ein Skript in diese Aufgabe einfügen. Weitere Informationen finden Sie im Artikel [how to add load balancer for multi-tier application DR (So können Sie einen Lastenausgleich für die Notfallwiederherstellung für Anwendungen mit mehreren Schichten hinzufügen)](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)
 
-*4.    Failovergruppe 2: Durchführen eines Failovers für AX Client-VMs*
+*4. Failovergruppe 2: Durchführen eines Failovers für AX Client-VMs*
 Durchführen eines Failovers für VMs der Webschicht im Rahmen des Wiederherstellungsplans.
 
 
@@ -153,21 +153,21 @@ Durchführen eines Failovers für VMs der Webschicht im Rahmen des Wiederherstel
 
 Halten Sie sich während des Testfailovers an die Begleithandbücher „AD DR solution“ (Notfallwiederherstellungslösung für AD) und „SQL Server DR solution“ (Notfallwiederherstellungslösung für SQL Server) für weitere Überlegungen zu AD bzw. SQL Server.
 
-1.    Wählen Sie im Azure-Portal Ihren Site Recovery-Tresor aus.
-2.    Klicken Sie auf den Wiederherstellungsplan, der für Dynamics AX erstellt wurde.
-3.    Klicken Sie auf „Testfailover“.
-4.    Wählen Sie das virtuelle Netzwerk aus, um den Testfailoverprozess zu starten.
-5.    Wenn die sekundäre Umgebung aktiv ist, können Sie Ihre Überprüfungen durchführen.
-6.    Nachdem die Überprüfungen abgeschlossen wurden, können Sie die Option „Validations complete“ (Überprüfungen abgeschlossen) auswählen. Die Umgebung für das Testfailover wird dann bereinigt.
+1.  Wählen Sie im Azure-Portal Ihren Site Recovery-Tresor aus.
+2.  Klicken Sie auf den Wiederherstellungsplan, der für Dynamics AX erstellt wurde.
+3.  Klicken Sie auf „Testfailover“.
+4.  Wählen Sie das virtuelle Netzwerk aus, um den Testfailoverprozess zu starten.
+5.  Wenn die sekundäre Umgebung aktiv ist, können Sie Ihre Überprüfungen durchführen.
+6.  Nachdem die Überprüfungen abgeschlossen wurden, können Sie die Option „Validations complete“ (Überprüfungen abgeschlossen) auswählen. Die Umgebung für das Testfailover wird dann bereinigt.
 
 Befolgen Sie [diese Anleitung](site-recovery-test-failover-to-azure.md), um ein Testfailover durchzuführen.
 
 ### <a name="doing-a-failover"></a>Durchführen eines Failovers
 
-1.    Wählen Sie im Azure-Portal Ihren Site Recovery-Tresor aus.
-2.    Klicken Sie auf den Wiederherstellungsplan, der für Dynamics AX erstellt wurde.
-3.    Klicken Sie auf „Failover“, und wählen Sie „Failover“ aus.
-4.    Wählen Sie das Zielnetzwerk und klicken Sie auf ✓, um mit dem Failoverprozess zu beginnen.
+1.  Wählen Sie im Azure-Portal Ihren Site Recovery-Tresor aus.
+2.  Klicken Sie auf den Wiederherstellungsplan, der für Dynamics AX erstellt wurde.
+3.  Klicken Sie auf „Failover“, und wählen Sie „Failover“ aus.
+4.  Wählen Sie das Zielnetzwerk und klicken Sie auf ✓, um mit dem Failoverprozess zu beginnen.
 
 Befolgen Sie [diese Anleitung](site-recovery-failover.md), wenn Sie ein Failover durchführen.
 
@@ -175,12 +175,12 @@ Befolgen Sie [diese Anleitung](site-recovery-failover.md), wenn Sie ein Failover
 
 Ausführlichere Informationen zu SQL Server-spezifischen Wiederherstellungsschritten finden Sie im Begleithandbuch „SQL Server DR Solution“ (Notfallwiederherstellungslösung für SQL Server).
 
-1.    Wählen Sie im Azure-Portal Ihren Site Recovery-Tresor aus.
-2.    Klicken Sie auf den Wiederherstellungsplan, der für Dynamics AX erstellt wurde.
-3.    Klicken Sie auf „Failover“, und wählen Sie „Failover“ aus.
-4.    Klicken Sie auf „Richtung ändern“.
-5.    Wählen Sie die entsprechenden Optionen aus: Datensynchronisierung und Erstellen einer VM.
-6.    Klicken Sie auf ✓, um den Failbackprozess zu starten.
+1.  Wählen Sie im Azure-Portal Ihren Site Recovery-Tresor aus.
+2.  Klicken Sie auf den Wiederherstellungsplan, der für Dynamics AX erstellt wurde.
+3.  Klicken Sie auf „Failover“, und wählen Sie „Failover“ aus.
+4.  Klicken Sie auf „Richtung ändern“.
+5.  Wählen Sie die entsprechenden Optionen aus: Datensynchronisierung und Erstellen einer VM.
+6.  Klicken Sie auf ✓, um den Failbackprozess zu starten.
 
 
 Befolgen Sie [diese Anleitung](site-recovery-failback-azure-to-vmware.md), wenn Sie ein Failback durchführen.
@@ -190,5 +190,4 @@ Mit Azure Site Recovery können Sie für Active Directory einen vollständig aut
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie [Welche Workloads können mit Azure Site Recovery geschützt werden?](site-recovery-workload.md) , um weitere Informationen über den Schutz von Unternehmensworkloads mit Azure Site Recovery zu erhalten.
- 
 

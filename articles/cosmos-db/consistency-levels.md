@@ -3,7 +3,7 @@ title: Konsistenzebenen in Azure Cosmos DB | Microsoft-Dokumentation
 description: "Azure Cosmos DB bietet fünf Konsistenzebenen, um für vorhersehbare Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz sorgen zu können."
 keywords: Letztliche Konsistenz, Azure Cosmos DB, Azure, Microsoft Azure
 services: cosmos-db
-author: syamkmsft
+author: mimig1
 manager: jhubbard
 editor: cgronlun
 documentationcenter: 
@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
-ms.author: syamk
+ms.date: 06/16/2017
+ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b4f4a32a19c2145a18557a54d5a495ef0c8dec75
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: abca1eff9d0b79420e70da5a4c551eceda478491
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Einstellbare Datenkonsistenzebenen in Azure Cosmos DB
-Azure Cosmos DB ist für jedes Datenmodell von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Ziel ist das Bieten vorhersehbarer Garantien niedriger Latenz, einer SLA mit einer Verfügbarkeit von 99,99% und mehrerer überlegt definierter gelockerter Konsistenzmodelle. Azure Cosmos DB bietet derzeit fünf Konsistenzebenen: Stark, Begrenzte Veraltung, Sitzung, Letztlich und Präfix. 
+Azure Cosmos DB ist für jedes Datenmodell von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Ziel ist das Bieten vorhersehbarer Garantien niedriger Latenz, einer SLA mit einer Verfügbarkeit von 99,99% und mehrerer überlegt definierter gelockerter Konsistenzmodelle. Azure Cosmos DB bietet derzeit fünf Konsistenzebenen: Stark, Begrenzte Veraltung, Sitzung, Konsistentes Präfix und Letztlich. 
 
 Neben den Modellen **Starke Konsistenz** und **Letztliche Konsistenz**, die üblicherweise von anderen verteilten Datenbanken geboten werden, bietet Azure Cosmos DB drei weitere sorgfältig programmierte und operationalisierte Modelle, die ihren Nutzen in praktischen Anwendungsfällen unter Beweis gestellt haben. Dies sind die Konsistenzebenen **Begrenzte Veraltung**, **Sitzung** und **Präfixkonsistenz**. Diese fünf Konsistenzebenen ermöglichen Ihnen, fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz zu finden. 
 
@@ -40,13 +40,13 @@ Die folgende Tabelle zeigt die speziellen Garantien der einzelnen Konsistenzeben
  
 **Konsistenzebenen und Garantien**
 
-| Konsistenzebene    | Garantien |
+| Konsistenzebene | Garantien |
 | --- | --- |
 | STARK (Strong) | Linearisierbarkeit |
-| Begrenzte Veraltung (Bounded staleness)    | Präfixkonsistenz. Lesevorgänge bleiben hinter Schreibvorgängen um Präfix k oder Intervall t zurück |
-| Sitzung    | Präfixkonsistenz. Monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen |
-| Präfixkonsistenz    | Die zurückgegebenen Updates sind ein bestimmtes Präfix aller Updates ohne Lücken |
-| Letztlich (Eventual)    | Lesevorgänge in falscher Reihenfolge |
+| Begrenzte Veraltung (Bounded staleness) | Präfixkonsistenz. Lesevorgänge bleiben hinter Schreibvorgängen um Präfix k oder Intervall t zurück |
+| Sitzung   | Präfixkonsistenz. Monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen |
+| Präfixkonsistenz | Die zurückgegebenen Updates sind ein bestimmtes Präfix aller Updates ohne Lücken |
+| Letztlich (Eventual)  | Lesevorgänge in falscher Reihenfolge |
 
 Sie können die Standardkonsistenzebene für Ihr Cosmos DB-Konto konfigurieren (und die Konsistenz später für eine bestimmte Leseanforderung außer Kraft setzen). Intern gilt die Standardkonsistenzebene für Daten in den Partitionssätzen, die sich auf mehrere Regionen erstrecken können. Ca. 73 % unsere Mandanten arbeiten mit Sitzungskonsistenz, und 20 % bevorzugen begrenzte Veraltung. Wir beobachten, dass ca. 3 % unserer Kunden anfänglich mit verschiedenen Konsistenzebenen experimentieren, ehe sie für ihre Anwendung eine bestimmte Konsistenzoption wählen. Wir beobachten auch, dass nur 2 % unserer Mandanten Konsistenzebenen anforderungsbezogen überschreiben. 
 

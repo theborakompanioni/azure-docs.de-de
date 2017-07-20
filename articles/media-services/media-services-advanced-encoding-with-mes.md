@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 06/29/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 01448fcff64e99429e2ee7df916b110c869307fb
-ms.openlocfilehash: 7776ac35f1a8a30c959286a9e31beb666f5fc799
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 25a13ad3738286795f45bbdec681614356bd3db8
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -27,6 +28,10 @@ ms.lasthandoff: 03/02/2017
 ## <a name="overview"></a>Übersicht
 
 In diesem Thema wird das Anpassen von Media Encoder Standard-Voreinstellungen gezeigt. Das Thema [Anpassen von Media Encoder Standard-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md) zeigt, wie Sie .NET verwenden können, um eine Codierungsaufgabe zu erstellen sowie einen Auftrag, der diese Aufgabe ausführt. Wenn Sie eine Voreinstellung anpassen, übergeben Sie die benutzerdefinierten Voreinstellungen der Codierungsaufgabe. 
+
+>[!NOTE]
+>Stellen Sie bei der Verwendung einer XML-Voreinstellung sicher, dass Sie die Reihenfolge der Elemente beibehalten, wie in den untenstehenden XML-Beispielen gezeigt wird (z.B. KeyFrameInterval sollte SceneChangeDetection voranstehen).
+>
 
 In diesem Thema werden die benutzerdefinierten Voreinstellungen veranschaulicht, die die folgenden Codierungsaufgaben ausführen.
 
@@ -248,7 +253,7 @@ Es gelten die folgenden Bedingungen:
 ## <a id="trim_video"></a>Kürzen eines Videos (Clipping)
 Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Medienobjekts verwendet werden, das aus einem Livedatenstrom erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie in [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-Zum Kürzen Ihrer Videos können Sie alle in [diesem](media-services-mes-presets-overview.md) Abschnitt dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel&0; trägt. **Sources** muss am Beginn der Voreinstellung platziert werden.
+Zum Kürzen Ihrer Videos können Sie alle in [diesem](media-services-mes-presets-overview.md) Abschnitt dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. **Sources** muss am Beginn der Voreinstellung platziert werden.
 
 ### <a id="json"></a>JSON-Voreinstellung
     {
@@ -808,7 +813,7 @@ Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, u
 * Alle Eingabevideos sollten die gleiche Framerate aufweisen.
 * Sie müssen Ihre Videos in separate Medienobjekte hochladen und die Videos in jedem Medienobjekt als primäre Datei festlegen.
 * Sie müssen die Länge der Videos kennen.
-* Bei den unten gezeigten Voreinstellungsbeispielen wird davon ausgegangen, dass alle Eingabevideos mit dem Zeitstempel&0; starten. Wenn die Videos unterschiedliche Startzeitstempel aufweisen, was bei Live-Archiven häufig vorkommt, müssen Sie die StartTime-Werte ändern.
+* Bei den unten gezeigten Voreinstellungsbeispielen wird davon ausgegangen, dass alle Eingabevideos mit dem Zeitstempel 0 starten. Wenn die Videos unterschiedliche Startzeitstempel aufweisen, was bei Live-Archiven häufig vorkommt, müssen Sie die StartTime-Werte ändern.
 * Die JSON-Voreinstellung verweist explizit auf die AssetID-Werte der Eingabemedienobjekte.
 * Im Beispielcode wird davon ausgegangen, dass die JSON-Voreinstellung in einer lokalen Datei gespeichert wurde, beispielsweise „C:\supportFiles\preset.json“. Es wird ebenfalls angenommen, dass durch Hochladen von zwei Videodateien zwei Medienobjekte erstellt wurden und dass Sie die resultierenden AssetID-Werte kennen.
 * Der Codeausschnitt und die JSON-Voreinstellung zeigen ein Beispiel für das Verketten von zwei Videodateien. Sie können den Vorgang folgendermaßen auf mehr als zwei Videos erweitern:
@@ -909,15 +914,16 @@ Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medieno
 Siehe das Thema [Zuschneiden von Videos mit Media Encoder Standard](media-services-crop-video.md) .
 
 ## <a id="no_video"></a>Einfügen einer Videospur, wenn die Eingabe kein Video enthält
+
 Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig aus Dateien mit ausschließlich Audiodaten. Einige Player, einschließlich Azure Media Player (siehe [hier](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)), solche Streams möglicherweise nicht handhaben. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine monochrome Videospur hinzuzufügen.
 
 > [!NOTE]
 > Wenn der Encoder gezwungen wird, eine Ausgabevideospur einzufügen, erhöht sich die Größe des Ausgabemedienobjekts und dadurch die für die Codierungsaufgabe anfallenden Kosten. Führen Sie Tests aus, um sicherzustellen, dass diese resultierende Zunahme nur geringe Auswirkungen auf Ihre monatlichen Gebühren hat.
 >
->
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Einfügen von Videoinhalten mit ausschließlich der niedrigsten Bitrate
-Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](media-services-mes-preset-h264-multiple-bitrate-720p.md) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur mit ausschließlich der niedrigsten Bitrate anstatt Video mit jeder Ausgabebitrate hinzuzufügen. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideoBottomLayerOnly“ angeben.
+
+Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](media-services-mes-preset-h264-multiple-bitrate-720p.md) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur mit ausschließlich der niedrigsten Bitrate anstatt Video mit jeder Ausgabebitrate hinzuzufügen. Um dies zu erreichen, müssen Sie das Flag **InsertBlackIfNoVideoBottomLayerOnly** verwenden.
 
 Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
 
@@ -932,9 +938,30 @@ Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt d
     }
 
 #### <a name="xml-preset"></a>XML-Voreinstellung
-    <KeyFrameInterval>00:00:02</KeyFrameInterval>
-    <StretchMode>AutoSize</StretchMode>
-    <Condition>InsertBlackIfNoVideoBottomLayerOnly</Condition>
+
+Verwenden Sie bei der Verwendung von XML die Bedingung="InsertBlackIfNoVideoBottomLayerOnly" als Attribut zu dem Element **H264Video** und die Bedingung="InsertSilenceIfNoAudio" als Attribut zu **AACAudio**.
+    
+    . . .
+    <Encoding>  
+    <H264Video Condition="InsertBlackIfNoVideoBottomLayerOnly">  
+      <KeyFrameInterval>00:00:02</KeyFrameInterval>
+      <SceneChangeDetection>true</SceneChangeDetection>  
+      <StretchMode>AutoSize</StretchMode>
+      <H264Layers>  
+    <H264Layer>  
+      . . .
+    </H264Layer>  
+      </H264Layers>  
+      <Chapters />  
+    </H264Video>  
+    <AACAudio Condition="InsertSilenceIfNoAudio">  
+      <Profile>AACLC</Profile>  
+      <Channels>2</Channels>  
+      <SamplingRate>48000</SamplingRate>  
+      <Bitrate>128</Bitrate>  
+    </AACAudio>  
+    </Encoding>  
+    . . .
 
 ### <a name="inserting-video-at-all-output-bitrates"></a>Einfügen von Video mit allen Ausgabebitraten
 Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur für alle Ausgabebitraten hinzuzufügen. Dadurch wird sichergestellt, dass alle Ausgabemedienobjekte in Bezug auf die Anzahl der Video- und Audiospuren homogen sind. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideo“ angeben.
@@ -952,9 +979,30 @@ Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt d
     }
 
 #### <a name="xml-preset"></a>XML-Voreinstellung
-    <KeyFrameInterval>00:00:02</KeyFrameInterval>
-    <StretchMode>AutoSize</StretchMode>
-    <Condition>InsertBlackIfNoVideo</Condition>
+
+Verwenden Sie bei der Verwendung von XML die Bedingung="InsertBlackIfNoVideo" als Attribut zu dem Element **H264Video** und die Bedingung="InsertSilenceIfNoAudio" als Attribut zu **AACAudio**.
+
+    . . .
+    <Encoding>  
+    <H264Video Condition="InsertBlackIfNoVideo">  
+      <KeyFrameInterval>00:00:02</KeyFrameInterval>
+      <SceneChangeDetection>true</SceneChangeDetection>  
+      <StretchMode>AutoSize</StretchMode>
+      <H264Layers>  
+    <H264Layer>  
+      . . .
+    </H264Layer>  
+      </H264Layers>  
+      <Chapters />  
+    </H264Video>  
+    <AACAudio Condition="InsertSilenceIfNoAudio">  
+      <Profile>AACLC</Profile>  
+      <Channels>2</Channels>  
+      <SamplingRate>48000</SamplingRate>  
+      <Bitrate>128</Bitrate>  
+    </AACAudio>  
+    </Encoding>  
+    . . .  
 
 ## <a id="rotate_video"></a>Drehen eines Videos
 Der [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) unterstützt Drehungen in den Winkeln 0/90/180/270 Grad. Das Standardverhalten ist „Auto“. Dabei wird versucht, die Rotationsmetadaten in der eingehenden Videodatei zu erkennen und auszugleichen. Schließen Sie das folgende **Sources**-Element in einer der in [diesem](media-services-mes-presets-overview.md) Abschnitt definierten JSON-Voreinstellungen ein:

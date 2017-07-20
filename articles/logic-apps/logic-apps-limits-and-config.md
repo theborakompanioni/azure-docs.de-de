@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: LADocs; jehollan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 859f9a1ca9dbe166fd514c8eba868b466dbc4d2c
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 41fcccae7b3d306c25f4429d47e81884d88cd83e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -101,6 +101,8 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition.
 |Zulässige Schachtelungstiefe für Aktion|5|Bei Bedarf können Sie geschachtelte Workflows als Erweiterung hinzufügen.|
 |Workflows pro Region und Abonnement|1000||
 |Trigger pro Workflow|10||
+|Bereichsumschaltbegrenzung|25||
+|Anzahl der Variablen pro Workflow|250||
 |Maximale Anzahl von Zeichen pro Ausdruck|8.192||
 |Max. `trackedProperties`-Größe in Zeichen|16.000|
 |`action`/`trigger` -Namensbeschränkung|80||

@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 06/29/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 3a2166fefc8d0b1602562b753e0413be458fae98
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: e9a858addb768ce051fccce0eaf83e49a83da21b
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="assign-and-manage-resource-policies"></a>Zuweisen und Verwalten von Ressourcenrichtlinien
 
-Um eine Richtlinie zu implementieren, müssen Sie drei Schritte ausführen:
+Um eine Richtlinie zu implementieren, müssen Sie diese drei Schritte ausführen:
 
-1. Definieren Sie die Richtlinienregel mit JSON.
-2. Erstellen Sie eine Richtliniendefinition in Ihrem Abonnement über die JSON, die Sie im vorherigen Schritt erstellt haben. Dieser Schritt stellt die Richtlinie für die Zuweisung zur Verfügung, wendet die Regeln aber nicht auf Ihr Abonnement an.
-3. Weisen Sie die Richtlinie einem Bereich zu (z.B. einem Abonnement oder einer Ressourcengruppe). Jetzt werden die Regeln der Richtlinie erzwungen.
-
-Azure stellt einige vordefinierte Richtlinien bereit, durch die die Anzahl der zu definierenden Richtlinien reduziert werden kann. Wenn eine vordefinierte Richtlinie für Ihr Szenario funktioniert, überspringen Sie die ersten beiden Schritte, und weisen Sie die vordefinierte Richtlinie einem Bereich zu.
+1. Überprüfen Sie Richtliniendefinitionen (einschließlich den von Azure bereitgestellten integrierten Richtlinien), um zu überprüfen, ob in Ihrem Abonnement bereits eine vorhanden ist, die Ihre Anforderungen erfüllt.
+2. Wenn eine vorhanden ist, suchen Sie deren Namen.
+3. Wenn noch keine vorhanden ist, definieren Sie die Richtlinienregel mit JSON, und fügen Sie sie als eine Richtliniendefinition Ihrem Abonnement hinzu. Dieser Schritt stellt die Richtlinie für die Zuweisung zur Verfügung, wendet die Regeln aber nicht auf Ihr Abonnement an.
+4. Weisen Sie die Richtlinie in beiden Fällen einem Bereich zu (z.B. einem Abonnement oder einer Ressourcengruppe). Jetzt werden die Regeln der Richtlinie erzwungen.
 
 In diesem Artikel werden hauptsächlich die Schritte zum Erstellen einer Richtliniendefinition und Zuweisen dieser Definition zu einem Bereich über REST-API, PowerShell oder Azure-CLI beschrieben. Wenn Sie es vorziehen, Richtlinien über das Portal zuzuweisen, finden Sie entsprechende Informationen in [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](resource-manager-policy-portal.md). Der Schwerpunkt dieses Artikels liegt nicht auf der Syntax zum Erstellen der Richtliniendefinition. Weitere Informationen zur Richtliniensyntax finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
@@ -144,30 +144,55 @@ Das folgende Beispiel zeigt eine Definition eines Alias. Wie Sie sehen können, 
 
 Vergewissern Sie sich, dass Sie [die neueste Version von Azure PowerShell installiert](/powershell/azure/install-azurerm-ps) haben, bevor Sie mit den PowerShell-Beispielen fortfahren. In Version 3.6.0 wurden Richtlinienparameter hinzugefügt. Bei Verwendung einer älteren Version wird bei den Beispielen ein Fehler mit dem Hinweis zurückgegeben, dass der Parameter nicht gefunden wurde.
 
-### <a name="create-policy-definition"></a>Erstellen einer Richtliniendefinition
-Sie können eine Richtliniendefinition über das Cmdlet `New-AzureRmPolicyDefinition` erstellen. Im folgenden Beispiel wird eine Richtliniendefinition erstellt, um nur Ressourcen in Nord- und Westeuropa zuzulassen.
+### <a name="view-policy-definitions"></a>Anzeigen von Richtliniendefinitionen
+Verwenden Sie den folgenden Befehl, um alle Richtliniendefinitionen in Ihrem Abonnement anzuzeigen:
 
 ```powershell
-$policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{
-   "if": {
-     "not": {
-       "field": "location",
-       "in": "[parameters(''allowedLocations'')]"
-     }
-   },
-   "then": {
-     "effect": "deny"
-   }
- }' -Parameter '{
-     "allowedLocations": {
-       "type": "array",
-       "metadata": {
-         "description": "An array of permitted locations for resources.",
-         "strongType": "location",
-         "displayName": "List of locations"
-       }
-     }
- }'
+Get-AzureRmPolicyDefinition
+```
+
+Es gibt alle verfügbaren Richtliniendefinitionen, einschließlich integrierten Richtlinien, zurück. Jede Richtlinie wird im folgenden Format zurückgeben:
+
+```powershell
+Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceId         : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceName       : e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceType       : Microsoft.Authorization/policyDefinitions
+Properties         : @{displayName=Allowed locations; policyType=BuiltIn; description=This policy enables you to
+                     restrict the locations your organization can specify when deploying resources. Use to enforce
+                     your geo-compliance requirements.; parameters=; policyRule=}
+PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
+```
+
+Betrachten Sie vor dem Erstellen einer Richtliniendefinition die integrierten Richtlinien. Wenn Sie eine integrierte Richtlinie finden, welche die von Ihnen benötigten Beschränkungen anwendet, können Sie das Erstellen einer Richtliniendefinition überspringen. Weisen Sie stattdessen die integrierte Richtlinie dem gewünschten Bereich zu.
+
+### <a name="create-policy-definition"></a>Erstellen einer Richtliniendefinition
+Sie können eine Richtliniendefinition über das Cmdlet `New-AzureRmPolicyDefinition` erstellen.
+
+```powershell
+$policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "field": "kind",
+        "equals": "BlobStorage"
+      },
+      {
+        "not": {
+          "field": "Microsoft.Storage/storageAccounts/accessTier",
+          "equals": "cool"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}'
 ```            
 
 Die Ausgabe wird in einem `$policy`-Objekt gespeichert, das während der Richtlinienzuweisung verwendet wird. 
@@ -175,39 +200,41 @@ Die Ausgabe wird in einem `$policy`-Objekt gespeichert, das während der Richtli
 Statt die JSON als Parameter anzugeben, können Sie den Pfad zu einer JSON-Datei bereitstellen, in der die Richtlinienregel enthalten ist.
 
 ```powershell
-$policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy "c:\policies\storageskupolicy.json"
+$policy = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
 ```
 
 ### <a name="assign-policy"></a>Zuweisen der Richtlinie
 
-Sie wenden die Richtlinie über das Cmdlet `New-AzureRmPolicyAssignment` auf den gewünschten Bereich an:
+Sie wenden die Richtlinie über das `New-AzureRmPolicyAssignment` Cmdlet auf den gewünschten Bereich an. Im folgenden Beispiel wird die Richtlinie einer Ressourcengruppe zugewiesen.
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
+New-AzureRMPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId -PolicyDefinition $policy
+```
+
+Um eine Richtlinie zuzuweisen, die Parameter erfordert, erstellen Sie ein Objekt mit diesen Werten. Im folgenden Beispiel wird eine integrierte Richtlinie abgerufen und in Parameterwerten übergeben:
+
+```powershell
+$rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
+$policy = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/e5662a6-4747-49cd-b67b-bf8b01975c4c
 $array = @("West US", "West US 2")
-$param = @{"allowedLocations"=$array}
-New-AzureRMPolicyAssignment -Name regionPolicyAssignment -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param
+$param = @{"listOfAllowedLocations"=$array}
+New-AzureRMPolicyAssignment -Name locationAssignment -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param
 ```
 
-### <a name="view-policies"></a>Anzeigen von Richtlinien
+### <a name="view-policy-assignment"></a>Anzeigen der Richtlinienzuweisung
 
-Verwenden Sie zum Abrufen aller Richtlinienzuweisungen Folgendes:
-
-```powershell
-Get-AzureRmPolicyAssignment
-```
-
-Verwenden Sie zum Abrufen einer bestimmten Richtlinie Folgendes:
+Verwenden Sie für den Erhalt einer bestimmte Richtlinienzuweisung Folgendes:
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
-(Get-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope $rg.ResourceId
+(Get-AzureRmPolicyAssignment -Name accessTierAssignment -Scope $rg.ResourceId
 ```
 
 Verwenden Sie zum Anzeigen der Richtlinienregel für eine Richtliniendefinition Folgendes:
 
 ```powershell
-(Get-AzureRmPolicyDefinition -Name regionPolicyDefinition).Properties.policyRule | ConvertTo-Json
+(Get-AzureRmPolicyDefinition -Name coolAccessTier).Properties.policyRule | ConvertTo-Json
 ```
 
 ### <a name="remove-policy-assignment"></a>Entfernen der Richtlinienzuweisung 
@@ -218,39 +245,70 @@ Um eine Richtlinienzuweisung zu entfernen, verwenden Sie Folgendes:
 Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+### <a name="view-policy-definitions"></a>Anzeigen von Richtliniendefinitionen
+Verwenden Sie den folgenden Befehl, um alle Richtliniendefinitionen in Ihrem Abonnement anzuzeigen:
+
+```azurecli
+az policy definition list
+```
+
+Es gibt alle verfügbaren Richtliniendefinitionen, einschließlich integrierten Richtlinien, zurück. Jede Richtlinie wird im folgenden Format zurückgeben:
+
+```azurecli
+{                                                            
+  "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",                      
+  "displayName": "Allowed locations",                                                                                                                "id": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",                                                 "name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",                                                                                                    "policyRule": {                                                                                                                                      "if": {                                                                                                                                              "not": {                                                                                                                                             "field": "location",                                                                                                                               "in": "[parameters('listOfAllowedLocations')]"                                                                                                   }                                                                                                                                                },                                                                                                                                                 "then": {                                                                                                                                            "effect": "Deny"                                                                                                                                 }                                                                                                                                                },                                                                                                                                                 "policyType": "BuiltIn"
+}
+```
+
+Betrachten Sie vor dem Erstellen einer Richtliniendefinition die integrierten Richtlinien. Wenn Sie eine integrierte Richtlinie finden, welche die von Ihnen benötigten Beschränkungen anwendet, können Sie das Erstellen einer Richtliniendefinition überspringen. Weisen Sie stattdessen die integrierte Richtlinie dem gewünschten Bereich zu.
 
 ### <a name="create-policy-definition"></a>Erstellen einer Richtliniendefinition
 
-Sie können eine Richtliniendefinition mit dem entsprechenden Befehl über Azure CLI 2.0 erstellen. Im folgenden Beispiel wird eine Richtlinie erstellt, um nur Ressourcen in Nord- und Westeuropa zuzulassen.
+Sie können eine Richtliniendefinition mit dem entsprechenden Befehl über Azure CLI erstellen.
 
 ```azurecli
-az policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --rules '{    
-  "if" : {
-    "not" : {
-      "field" : "location",
-      "in" : ["northeurope" , "westeurope"]
-    }
+az policy definition create --name coolAccessTier --description "Policy to specify access tier." --rules '{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "field": "kind",
+        "equals": "BlobStorage"
+      },
+      {
+        "not": {
+          "field": "Microsoft.Storage/storageAccounts/accessTier",
+          "equals": "cool"
+        }
+      }
+    ]
   },
-  "then" : {
-    "effect" : "deny"
+  "then": {
+    "effect": "deny"
   }
 }'    
 ```
 
 ### <a name="assign-policy"></a>Zuweisen der Richtlinie
 
-Sie können die Richtlinie auf den gewünschten Bereich anwenden, indem Sie den Befehl zur Richtlinienzuweisung verwenden:
+Sie können die Richtlinie auf den gewünschten Bereich anwenden, indem Sie den Befehl zur Richtlinienzuweisung verwenden. Im folgenden Beispiel wird eine Richtlinie einer Ressourcengruppe zugewiesen.
 
 ```azurecli
-az policy assignment create --name regionPolicyAssignment --policy regionPolicyDefinition --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
+az policy assignment create --name coolAccessTierAssignment --policy coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
-### <a name="view-policy-definition"></a>Anzeigen einer Richtliniendefinition
-Um eine Richtliniendefinition abzurufen, verwenden Sie den folgenden Befehl:
+### <a name="view-policy-assignment"></a>Anzeigen der Richtlinienzuweisung
+
+Geben Sie zum Anzeigen einer Richtlinienzuweisung den Namen der Richtlinienzuweisung und den Bereich an:
 
 ```azurecli
-az policy definition show --name regionPolicyAssignment
+az policy assignment show --name coolAccessTierAssignment --scope "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}"
 ```
 
 ### <a name="remove-policy-assignment"></a>Entfernen der Richtlinienzuweisung 
@@ -258,62 +316,7 @@ az policy definition show --name regionPolicyAssignment
 Um eine Richtlinienzuweisung zu entfernen, verwenden Sie Folgendes:
 
 ```azurecli
-az policy assignment delete --name regionPolicyAssignment --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
-```
-
-## <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
-
-### <a name="create-policy-definition"></a>Erstellen einer Richtliniendefinition
-
-Sie können eine Richtliniendefinition mit dem entsprechenden Befehl in der Azure-Befehlszeilenschnittstelle erstellen. Im folgenden Beispiel wird eine Richtlinie erstellt, um nur Ressourcen in Nord- und Westeuropa zuzulassen.
-
-```azurecli
-azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{    
-  "if" : {
-    "not" : {
-      "field" : "location",
-      "in" : ["northeurope" , "westeurope"]
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}'    
-```
-
-Sie können auch den Pfad zu einer JSON-Datei angeben, die die Richtlinie enthält, anstatt die Richtlinie inline anzugeben.
-
-```azurecli
-azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy "path-to-policy-json-on-disk"
-```
-
-### <a name="assign-policy"></a>Zuweisen der Richtlinie
-
-Sie können die Richtlinie auf den gewünschten Bereich anwenden, indem Sie den Befehl zur Richtlinienzuweisung verwenden:
-
-```azurecli
-azure policy assignment create --name regionPolicyAssignment --policy-definition-id /subscriptions/{subscription-id}/providers/Microsoft.Authorization/policyDefinitions/{policy-name} --scope    /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
-```
-
-Der Bereich ist in diesem Fall der Name der von Ihnen angegebenen Ressourcengruppe. Wenn der Wert des Parameters „policy-definition-id“ unbekannt ist, können Sie ihn über die Azure-Befehlszeilenschnittstelle abrufen. 
-
-```azurecli
-azure policy definition show {policy-name}
-```
-
-### <a name="view-policy"></a>Anzeigen der Richtlinie
-Um eine Richtlinie abzurufen, verwenden Sie den folgenden Befehl:
-
-```azurecli
-azure policy definition show {definition-name} --json
-```
-
-### <a name="remove-policy-assignment"></a>Entfernen der Richtlinienzuweisung 
-
-Um eine Richtlinienzuweisung zu entfernen, verwenden Sie Folgendes:
-
-```azurecli
-azure policy assignment delete --name regionPolicyAssignment --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
+az policy assignment delete --name coolAccessTier --scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

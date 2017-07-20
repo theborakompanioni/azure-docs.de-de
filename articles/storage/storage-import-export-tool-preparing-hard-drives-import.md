@@ -12,18 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 06/29/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 04ac94a1c07c3ad2a9384f5cf5fca1341ebfa0d8
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 5b894dac8fdc26999b6f3cbffaf7e6a98e68d000
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 
-Das WAImportExport-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den [Microsoft Azure Import/Export-Dienst](storage-import-export-service.md) verwenden können. Sie können dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Azure-Rechenzentrum senden. Nach Abschluss eines Importauftrags können Sie dieses Tool zum Reparieren von Blobs verwenden, die beschädigt sind, fehlen oder in Konflikt mit anderen Blobs stehen. Nachdem Sie die Laufwerke für einen abgeschlossenen Exportauftrag erhalten haben, können Sie dieses Tool nutzen, um Dateien zu reparieren, die beschädigt waren oder auf den Laufwerken fehlten. In diesem Artikel werden wir die Verwendung dieses Tools besprechen.
+Das WAImportExport-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den [Microsoft Azure Import/Export-Dienst](storage-import-export-service.md) verwenden können. Sie können dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Azure-Rechenzentrum senden. Nach Abschluss eines Importauftrags können Sie dieses Tool zum Reparieren von Blobs verwenden, die beschädigt sind, fehlen oder in Konflikt mit anderen Blobs stehen. Nachdem Sie die Laufwerke für einen abgeschlossenen Exportauftrag erhalten haben, können Sie dieses Tool nutzen, um Dateien zu reparieren, die beschädigt waren oder auf den Laufwerken fehlten. In diesem Artikel behandeln wir die Verwendung dieses Tools.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +52,7 @@ Das WAImportExport-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur
 
 ## <a name="download-and-install-waimportexport"></a>Herunterladen und Installieren von WAImportExport
 
-Laden Sie die [neueste Version von WAImportExport.exe](https://www.microsoft.com/download/details.aspx?id=42659) herunter. Extrahieren Sie den ZIP-Inhalt in ein Verzeichnis auf Ihrem Computer.
+Laden Sie die [neueste Version von WAImportExport.exe](https://www.microsoft.com/download/details.aspx?id=55280) herunter. Extrahieren Sie den ZIP-Inhalt in ein Verzeichnis auf Ihrem Computer.
 
 Die nächste Aufgabe besteht darin, CSV-Dateien zu erstellen.
 
@@ -61,7 +62,7 @@ Die nächste Aufgabe besteht darin, CSV-Dateien zu erstellen.
 
 Die Dataset-CSV-Datei ist der Wert des /DataSet-Flags – eine CSV-Datei, die eine Liste von Verzeichnissen enthält und/oder eine Liste von Dateien, die auf Ziellaufwerke kopiert werden sollen. Der erste Schritt beim Erstellen eines Importauftrags ist, dass Sie bestimmen, welche Verzeichnisse und Dateien Sie importieren möchten. Dies kann eine Liste von Verzeichnissen, eine Liste eindeutiger Dateien oder eine Kombination daraus sein. Wenn ein Verzeichnis einbezogen wird, werden alle Dateien im Verzeichnis und seinen Unterverzeichnissen Teil des Importauftrags.
 
-Für alle Verzeichnisse oder Dateien, die importiert werden sollen, müssen Sie ein virtuelles Zielverzeichnis oder ein Blob im Azure-Blob-Dienst identifizieren. Sie verwenden diese Ziele als Eingaben für das WAImportExport-Tool. Beachten Sie, dass Verzeichnisse mit dem Schrägstrich „/“ begrenzt werden sollen.
+Für alle Verzeichnisse oder Dateien, die importiert werden sollen, müssen Sie ein virtuelles Zielverzeichnis oder ein Blob im Azure-Blob-Dienst identifizieren. Sie verwenden diese Ziele als Eingaben für das WAImportExport-Tool. Verzeichnisse mit dem Schrägstrich „/“ sollen begrenzt werden.
 
 Die folgende Tabelle zeigt einige Beispiele für Blobziele:
 
@@ -84,10 +85,10 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | Feld | Beschreibung |
 | --- | --- |
-| BasePath | **[Erforderlich]**<br/>Der Wert dieses Parameters stellt die Quelle dar, in der sich die zu importierenden Daten befinden. Das Tool kopiert rekursiv alle Daten, die sich in diesem Pfad befinden.<br><br/>**Zulässige Werte**: Dies muss ein gültiger Pfad auf dem lokalen Computer oder ein gültiger Freigabepfad sein, und der Benutzer sollte darauf zugreifen können. Der Verzeichnispfad muss ein absoluter Pfad sein (kein relativer Pfad). Wenn der Pfad mit „\\“ endet , stellt er ein Verzeichnis dar. Ein Pfad, der ohne „\\“ endet, stellt eine Datei dar.<br/>In diesem Feld sind keine regulären Ausdrücke zulässig. Wenn der Pfad Leerzeichen enthält, setzen Sie sie in "".<br><br/>**Beispiel**: „c:\Directory\c\Directory\File.txt“<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | **[Erforderlich]**<br/> Der Pfad zum virtuellen Zielverzeichnis in Ihrem Microsoft Azure-Speicherkonto. Das virtuelle Verzeichnis kann, muss jedoch noch nicht vorhanden sein. Wenn es nicht vorhanden ist, wird es vom Import/Export-Dienst erstellt.<br/><br/>Achten Sie darauf, gültige Containernamen zu verwenden, wenn Sie virtuelle Zielverzeichnisse oder Blobs angeben. Containernamen müssen kleingeschrieben werden. Benennungsregeln für Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese). Wenn nur der Stamm angegeben wird, wird die Verzeichnisstruktur der Quelle im Zielblobcontainer repliziert. Für den Fall, dass eine andere Verzeichnisstruktur als diejenige in der Quelle gewünscht ist, stehen in der CSV-Datei mehrere Zeilen zur Zuordnung zur Verfügung.<br/><br/>Sie können einen Container oder ein Blobpräfix angeben, wie etwa „music/70s/“. Das Zielverzeichnis muss mit dem Containernamen beginnen, gefolgt von einem Schrägstrich „/“, und kann optional ein virtuelles Blobverzeichnis enthalten, das mit „/“ endet.<br/><br/>Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit den Stammcontainer angeben – einschließlich des Schrägstrichs, wie „$root/“. Da die Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten können, werden Unterverzeichnisse des Quellverzeichnisses nicht kopiert, wenn das Zielverzeichnis der Stammcontainer ist.<br/><br/>**Beispiel**<br/>Wenn der Blobzielpfad „https://mystorageaccount.blob.core.windows.net/video“ ist, kann der Wert dieses Felds „video/“ sein.  |
+| BasePath | **[Erforderlich]**<br/>Der Wert dieses Parameters stellt die Quelle dar, in der sich die zu importierenden Daten befinden. Das Tool kopiert rekursiv alle Daten, die sich unter diesem Pfad befinden.<br><br/>**Zulässige Werte**: Dies muss ein gültiger Pfad auf dem lokalen Computer oder ein gültiger Freigabepfad sein, und der Benutzer sollte darauf zugreifen können. Der Verzeichnispfad muss ein absoluter Pfad sein (kein relativer Pfad). Wenn der Pfad mit „\\“ endet, stellt er ein Verzeichnis woanders in einem Pfad dar, der ohne „\\“ endet und eine Datei darstellt.<br/>In diesem Feld sind keine regulären Ausdrücke zulässig. Wenn der Pfad Leerzeichen enthält, setzen Sie sie in "".<br><br/>**Beispiel**: „c:\Directory\c\Directory\File.txt“<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| DstBlobPathOrPrefix | **[Erforderlich]**<br/> Der Pfad zum virtuellen Zielverzeichnis in Ihrem Microsoft Azure-Speicherkonto. Das virtuelle Verzeichnis kann, muss jedoch noch nicht vorhanden sein. Wenn es nicht vorhanden ist, wird es vom Import/Export-Dienst erstellt.<br/><br/>Achten Sie darauf, gültige Containernamen zu verwenden, wenn Sie virtuelle Zielverzeichnisse oder Blobs angeben. Containernamen müssen kleingeschrieben werden. Informationen zu den Benennungsregeln für Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese). Wenn nur der Stamm angegeben wird, wird die Verzeichnisstruktur der Quelle im Zielblobcontainer repliziert. Für den Fall, das eine andere Verzeichnisstruktur als diejenige in der Quelle gewünscht ist, stehen in der CSV-Datei mehrere Zeilen zur Zuordnung zur Verfügung.<br/><br/>Sie können einen Container oder ein Blobpräfix angeben, wie etwa „music/70s/“. Das Zielverzeichnis muss mit dem Containernamen beginnen, gefolgt von einem Schrägstrich „/“, und kann optional ein virtuelles Blobverzeichnis enthalten, das mit „/“ endet.<br/><br/>Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit den Stammcontainer angeben – einschließlich des Schrägstrichs, wie „$root/“. Da die Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten können, werden Unterverzeichnisse des Quellverzeichnisses nicht kopiert, wenn das Zielverzeichnis der Stammcontainer ist.<br/><br/>**Beispiel**<br/>Wenn der Blobzielpfad „https://mystorageaccount.blob.core.windows.net/video“ ist, kann der Wert dieses Felds „video/“ sein.  |
 | BlobType | **[Optional]** block &#124; page<br/>Gegenwärtig unterstützt der Import/Export-Dienst 2 Arten von Blobs. Seitenblobs und Blockblobs – standardmäßig werden alle Dateien als Blockblobs importiert. \*.vhd und \*.vhdx werden als Seitenblobs importiert. Die zulässige Größe von Blockblobs und Seitenblobs ist begrenzt. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Blobs, Warteschlangen, Tabellen und Dateien](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files).  |
-| Disposition | **[Optional]** rename &#124; no-overwrite &#124; overwrite (umbenennen, nicht überschreiben, überschreiben) <br/> Dieses Feld gibt das Kopierverhalten beim Import an, d.h. wenn Daten vom Datenträger in das Speicherkonto hochgeladen werden. Folgende Optionen sind verfügbar: rename&#124;overwrite&#124;no-overwrite (umbenennen, nicht überschreiben, überschreiben). Ohne besondere Angabe gilt „rename“ als Standard. <br/><br/>**Rename**: Wenn das Objekt mit dem gleichen Namen vorhanden ist, wird eine Kopie im Ziel erstellt.<br/>Overwrite: Die Datei wird mit der neueren Dateiversion überschrieben. Die Version mit der letzten Änderung überschreibt die ältere.<br/>**No-overwrite**: Wenn die Datei bereits vorhanden ist, wird sie nicht überschrieben.|
+| Disposition | **[Optional]** rename &#124; no-overwrite &#124; overwrite (umbenennen, nicht überschreiben, überschreiben) <br/> Dieses Feld gibt das Kopierverhalten beim Import an, Das bedeutet, wenn Daten vom Datenträger in das Speicherkonto geladen werden. Verfügbare Optionen sind: rename&#124;overwite&#124;no-overwrite. Der Standardwert ist „rename“, wenn nichts angegeben ist. <br/><br/>**Rename**: Wenn ein Objekt mit dem gleichen Namen vorhanden ist, wird eine Kopie im Ziel erstellt.<br/>Overwrite: Die Datei wird mit der neueren Dateiversion überschrieben. Die Version mit der letzten Änderung überschreibt die ältere.<br/>**No-overwrite**: Wenn die Datei bereits vorhanden ist, wird sie nicht überschrieben.|
 | MetadataFile | **[Optional]** <br/>Der Wert dieses Felds ist die Metadatendatei, die bereitgestellt werden kann, wenn die Metadaten der Objekte beibehalten werden müssen, oder um benutzerdefinierte Metadaten bereitzustellen. Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md). |
 | PropertiesFile | **[Optional]** <br/>Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md). |
 
@@ -222,7 +223,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /ManifestFile:&lt;Laufwerkmanifestdatei&gt; | **Erforderlich** Gilt nur für RepairExport.<br/> Pfad der Laufwerkmanifestdatei.  |
 |     /PathMapFile:&lt;Laufwerkpfad-Zuordnungsdatei&gt; | **Optional**. Gilt nur für RepairImport.<br/> Pfad zur Datei, die relative Zuordnungen von Dateipfaden zu Speicherorten der eigentlichen Dateien zum Laufwerksstamm enthält (mit Tabstopptrennzeichen). Bei der ersten Angabe wird sie mit Dateipfaden mit leeren Zielen aufgefüllt, was bedeutet, das sie entweder nicht in den Zielverzeichnissen gefunden, der Zugriff verweigert wurde, ihre Namen ungültig oder sie in mehreren Verzeichnissen vorhanden sind. Die Pfadzuordnungsdatei kann manuell bearbeitet werden, sodass sie die richtigen Zielpfade enthält, und erneut angegeben werden, damit das Tool die Dateipfade ordnungsgemäß auflöst.  |
 |     /ExportBlobListFile:&lt;Exportbloblisten-Datei&gt; | **Erforderlich**. Gilt nur für PreviewExport.<br/> Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat ist identisch mit dem Bloblisten-Blobformat im „Put Job“-Vorgang der REST-API des Import/Export-Diensts.  |
-|     /DriveSize:&lt;Laufwerkgröße&gt; | **Erforderlich**. Gilt nur für PreviewExport.<br/>  Die Größe der Laufwerke, die für den Export verwendet werden. Beispielsweise 500GB, 1,5TB. Hinweis: 1GB = 1.000.000.000 Bytes 1TB = 1.000.000.000.000 Bytes  |
+|     /DriveSize:&lt;Laufwerkgröße&gt; | **Erforderlich**. Gilt nur für PreviewExport.<br/>  Die Größe der Laufwerke, die für den Export verwendet werden. Beispielsweise 500 GB, 1,5 TB. Hinweis: 1 GB = 1.000.000.000 Bytes, 1 TB = 1.000.000.000.000 Bytes  |
 |     /DataSet:&lt;dataset.csv&gt; | **Erforderlich**<br/> Eine CSV-Datei, die eine Liste von Verzeichnissen enthält und/oder eine Liste von Dateien, die auf Ziellaufwerke kopiert werden sollen.  |
 |     /silentmode  | **Optional**.<br/> Ohne Angabe werden Sie an Laufwerkanforderungen erinnert, und Ihre Bestätigung ist erforderlich, um fortzufahren.  |
 
@@ -285,7 +286,7 @@ SaveCommandOutput: Completed
 [EndUpdateRecord]
 ```
 
-### <a name="sample-journal-file-jrn-for-session-which-records-the-trail-of-sessions"></a>Beispiel einer Sitzungsjournaldatei (JRN), das die Spur der Sitzungen aufzeichnet
+### <a name="sample-journal-file-jrn-for-session-that-records-the-trail-of-sessions"></a>Beispiel einer Sitzungsjournaldatei (JRN), das die Spur der Sitzungen aufzeichnet
 
 ```
 [BeginUpdateRecord][2016/11/02 18:24:14.735][Type:NewJournalFile]
@@ -309,7 +310,7 @@ StorageAccountKey: *******
 
 Das WAImportExport-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Azure-Rechenzentrum senden. Nach Abschluss eines Importauftrags können Sie dieses Tool zum Reparieren von Blobs verwenden, die beschädigt sind, fehlen oder in Konflikt mit anderen Blobs stehen. Nachdem Sie die Laufwerke für einen abgeschlossenen Exportauftrag erhalten haben, können Sie dieses Tool nutzen, um Dateien zu reparieren, die beschädigt waren oder auf den Laufwerken fehlten.
 
-#### <a name="how-does-the-waimportexport-tool-work-on-multiple-sorce-dir-and-disks"></a>Wie funktioniert das WAImportExport-Tool bei mehreren Quellverzeichnissen und Datenträgern?
+#### <a name="how-does-the-waimportexport-tool-work-on-multiple-source-dir-and-disks"></a>Wie funktioniert das WAImportExport-Tool bei mehreren Quellverzeichnissen und Datenträgern?
 
 Wenn die Größe der Daten die Größe des Datenträgers überschreitet, verteilt das WAImportExport-Tool die Daten auf optimierte Weise auf mehrere Datenträger. Das Kopieren der Daten auf mehrere Datenträger kann parallel oder sequenziell ausgeführt werden. Es gibt keine Beschränkung für die Anzahl der Datenträger, auf die die Daten simultan geschrieben werden können. Das Tool verteilt die Daten auf Grundlage der Datenträger- und Ordnergröße. Es wählt den Datenträger aus, der für die Größe des Objekts am meisten optimiert ist. Beim Hochladen in das Speicherkonto werden die Daten wieder in die angegebene Verzeichnisstruktur konvergiert.
 
@@ -357,7 +358,7 @@ Es ist möglich, dass Ihr Computer nicht über einen TPM-Chip verfügt. Wenn Sie
 
 #### <a name="how-to-disable-trusted-platform-module-tpm-in-bitlocker"></a>Wie deaktiviere ich Trusted Platform Module (TPM) in BitLocker?
 > [!NOTE]
-> Sie müssen die TPM-Richtlinie nur deaktivieren, wenn TPM in Ihren Servern nicht vorhanden ist. Es ist nicht notwendig, TPM zu deaktivieren, wenn eine vertrauenswürdige TPM in Ihren Servern vorhanden ist. 
+> Sie müssen die TPM-Richtlinie nur deaktivieren, wenn TPM auf ihren Servern nicht vorhanden ist. Es ist nicht notwendig, TPM zu deaktivieren, wenn ein vertrauenswürdiger TPM im Server des Benutzers vorhanden ist. 
 > 
 
 Um TPM in BitLocker zu deaktivieren, führen Sie die folgenden Schritte aus:<br/>
@@ -394,7 +395,7 @@ Trotz Verteilung auf mehrere Datenträger werden die Daten beim Hochladen in das
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>Bei wie vielen der Eingabedatenträger ist beim Kopiervorgang E/A parallel aktiv?
 
-Das Tool verteilt Daten gemäß der Größe der Eingabedateien auf die Eingabedatenträger. Dies bedeutet, dass die Anzahl der parallel aktiven Datenträger vollständig von der Art der Eingabedaten abhängt. Abhängig von der Größe der einzelnen Dateien im Eingabedataset kann E/A bei ein oder mehreren Datenträgern parallel aktiv sein. Weitere Informationen finden Sie unter der nächsten häufig gestellten Frage.
+Das Tool verteilt Daten gemäß der Größe der Eingabedateien auf die Eingabedatenträger. Dies bedeutet, dass die Anzahl der parallel aktiven Datenträger vollständig von der Art der Eingabedaten abhängt. Abhängig von der Größe der einzelnen Dateien im Eingabedataset kann E/A bei ein oder mehreren Datenträgern parallel aktiv sein. Nächste Frage für weitere Details anzeigen
 
 #### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>Wie verteilt das Tool die Dateien auf die Datenträger?
 

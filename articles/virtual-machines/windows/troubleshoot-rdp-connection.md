@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/26/2017
+ms.date: 06/14/2017
 ms.author: genli
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 25e19b14e1cad41a365ee88ed317078bf551c36a
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ed9945ae007d22c18d259984ee68f9c669927f9a
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -37,10 +37,11 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
 1. Setzen Sie die Remotedesktopkonfiguration zurück.
 2. Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln/Cloud Services-Endpunkte.
 3. Überprüfen Sie die Konsolenprotokolle des virtuellen Computers.
-4. Überprüfen Sie die Ressourcenintegrität des virtuellen Computers.
-5. Setzen Sie Ihr Kennwort für den virtuellen Computer zurück.
-6. Starten Sie den virtuellen Computer neu.
-7. Stellen Sie den virtuellen Computer erneut bereit.
+4. Setzen Sie die NIC für den virtuellen Computer zurück.
+5. Überprüfen Sie die Ressourcenintegrität des virtuellen Computers.
+6. Setzen Sie Ihr Kennwort für den virtuellen Computer zurück.
+7. Starten Sie den virtuellen Computer neu.
+8. Stellen Sie den virtuellen Computer erneut bereit.
 
 Lesen Sie weiter, falls Sie ausführlichere Schritte und Erläuterungen benötigen. Vergewissern Sie sich, dass lokale Netzwerkgeräte wie Router und Firewalls den ausgehenden TCP-Port 3389 nicht blockieren (siehe den Hinweis unter [Detaillierte RDP Problembehandlungsszenarien](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)).
 
@@ -87,23 +88,25 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Sollte keine Regel vorhanden sein, die RDP-Datenverkehr zulässt, [erstellen Sie eine Netzwerksicherheitsgruppen-Regel](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Lassen Sie den TCP-Port 3389 zu.
 3. **Überprüfen Sie die Startdiagnose des virtuellen Computers.** In diesem Problembehandlungsschritt wird anhand der Konsolenprotokolle des virtuellen Computers ermittelt, ob der virtuelle Computer ein Problem meldet. Da die Startdiagnose nicht bei allen virtuellen Computern aktiviert ist, handelt es sich hierbei ggf. um einen optionalen Problembehandlungsschritt.
    
-    Spezifische Problembehandlungsschritte werden in diesem Artikel nicht behandelt, deuten aber möglicherweise auf ein größeres Problem hin, das die RDP-Verbindung beeinträchtigt. Weitere Informationen zum Überprüfen der Konsolenprotokolle des virtuellen Computers sowie einen Screenshot finden Sie unter [Boot Diagnostics for Virtual Machines v2](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) (Startdiagnose für virtuelle Computer v2).
-4. **Überprüfen Sie die Ressourcenintegrität des virtuellen Computers.** In diesem Problembehandlungsschritt wird überprüft, ob bekannte Probleme für die Azure-Plattform vorliegen, die möglicherweise die Verbindung mit dem virtuellen Computer beeinträchtigen.
+    Spezifische Problembehandlungsschritte werden in diesem Artikel nicht behandelt, deuten aber möglicherweise auf ein größeres Problem hin, das die RDP-Verbindung beeinträchtigt. Weitere Informationen zum Überprüfen der Konsolenprotokolle des virtuellen Computers sowie einen Screenshot finden Sie unter [Boot Diagnostics for Virtual Machines v2](boot-diagnostics.md) (Startdiagnose für virtuelle Computer v2).
+
+4. **Setzen Sie die NIC für den virtuellen Computer zurück**. Weitere Informationen finden Sie unter [How to reset NIC for Azure Windows VM (Zurücksetzen der NIC für die Azure-Windows-VM)](reset-network-interface.md).
+5. **Überprüfen Sie die Ressourcenintegrität des virtuellen Computers.** In diesem Problembehandlungsschritt wird überprüft, ob bekannte Probleme für die Azure-Plattform vorliegen, die möglicherweise die Verbindung mit dem virtuellen Computer beeinträchtigen.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Ressourcenintegrität**. Fehlerfreie virtuelle Computer haben den Status **Verfügbar**:
    
     ![Überprüfen der Ressourcenintegrität des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/check-resource-health.png)
-5. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort für ein lokales Administratorkonto zurückgesetzt, falls Sie unsicher sind oder die Anmeldeinformationen vergessen haben.
+6. **Setzen Sie die Benutzeranmeldeinformationen zurück.** In diesem Problembehandlungsschritt wird das Kennwort für ein lokales Administratorkonto zurückgesetzt, falls Sie unsicher sind oder die Anmeldeinformationen vergessen haben.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Vergewissern Sie sich, dass der **Modus** auf **Kennwort zurücksetzen** festgelegt ist, und geben Sie anschließend Ihren Benutzernamen und ein neues Kennwort ein. Klicken Sie abschließend auf die Schaltfläche **Aktualisieren**:
    
     ![Zurücksetzen der Benutzeranmeldeinformationen im Azure-Portal](./media/troubleshoot-rdp-connection/reset-password.png)
-6. **Starten Sie den virtuellen Computer neu.** Dieser Problembehandlungsschritt dient zum Beheben von Problemen, die auf den eigentlichen virtuellen Computer zurückzuführen sind.
+7. **Starten Sie den virtuellen Computer neu.** Dieser Problembehandlungsschritt dient zum Beheben von Problemen, die auf den eigentlichen virtuellen Computer zurückzuführen sind.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus, und klicken Sie auf die Registerkarte **Übersicht**. Klicken Sie auf die Schaltfläche **Neu starten**:
    
     ![Neustarten des virtuellen Computers im Azure-Portal](./media/troubleshoot-rdp-connection/restart-vm.png)
-7. **Stellen Sie den virtuellen Computer erneut bereit.** In diesem Problembehandlungsschritt wird Ihr virtueller Computer auf einen anderen Host innerhalb von Azure neu bereitgestellt, um mögliche Plattform- oder Netzwerkprobleme zu beheben.
+8. **Stellen Sie den virtuellen Computer erneut bereit.** In diesem Problembehandlungsschritt wird Ihr virtueller Computer auf einen anderen Host innerhalb von Azure neu bereitgestellt, um mögliche Plattform- oder Netzwerkprobleme zu beheben.
    
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Erneut bereitstellen** und anschließend auf **Erneut bereitstellen**:
    

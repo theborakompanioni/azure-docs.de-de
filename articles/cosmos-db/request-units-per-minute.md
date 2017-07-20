@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: acomet
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ea63b988a72801ae4c288048021a915b20a34794
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 0c597fa4afa816f9731edb744ae494b6ef928b9e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -176,7 +176,7 @@ var query = client.CreateDocumentQuery<Book>(
 In diesem Artikel wurde beschrieben, wie die Partitionierung in Azure Cosmos DB funktioniert, wie Sie partitionierte Sammlungen erstellen und wie Sie einen sinnvollen Partitionsschlüssel für Ihre Anwendung auswählen.
 
 * Nutzen Sie Azure Cosmos DB, um Skalierungs- und Leistungstests durchzuführen. Ein Beispiel finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
-* Beginnen Sie mit dem Schreiben von Code mit den [SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx).
+* Beginnen Sie mit dem Schreiben von Code mit den [SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](/rest/api/documentdb/).
 * Erfahren Sie mehr über den [bereitgestellten Durchsatz](request-units.md) in Azure Cosmos DB. 
 
 

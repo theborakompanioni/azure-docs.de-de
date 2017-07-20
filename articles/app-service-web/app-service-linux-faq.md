@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dcce8d855f8c37d40fe8f09ef0a97e46b342e3cf
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 3fb0f6b26f36ef4044c9733ace05c4f59909ddda
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -62,6 +62,10 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **A:** Ja.
 
+**F:** Kann ich **Web Deploy** zur Bereitstellung meiner Web-App verwenden?
+
+**A:** Ja, Sie müssen die App-Einstellung `UseWebDeployScm` auf `false` festlegen.
+
 ## <a name="language-support"></a>Sprachunterstützung
 
 **F:** Unterstützen Sie nicht kompilierte .NET Core-Apps?
@@ -70,7 +74,7 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **F:** Unterstützen Sie Composer als Abhängigkeits-Manager für PHP-Apps?
 
-**A:** Nein. Sie müssen Ihre PHP-Apps mit allen Abhängigkeiten bereitstellen. Vollständige Funktionen für Bereitstellungen werden in einer zukünftigen Version verfügbar sein.
+**A:** Ja. Während einer Git-Bereitstellung sollte Kudu erkennen, dass Sie eine PHP-Anwendung bereitstellen (durch das Vorhandensein einer „composer.json“-Datei), und eine Composer-Installation auslösen.
 
 ## <a name="custom-containers"></a>Benutzerdefinierte Container
 

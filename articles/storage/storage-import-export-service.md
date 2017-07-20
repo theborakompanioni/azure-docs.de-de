@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1aebecdaacd3525bec07a9359e52d2bc3d1539de
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: fc0fd0188261263aac550b0f0784076efc807215
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -52,9 +52,7 @@ Sie können den Import/Export-Dienst von Azure verwenden, um Daten in **Blockblo
 Zunächst erstellen Sie einen Auftrag, um mit dem Importieren oder Exportieren von Blob-Speicher zu beginnen. Ein Auftrag kann ein Importauftrag oder ein Exportauftrag sein:
 
 * Erstellen Sie einen Importauftrag, wenn Sie lokal gespeicherte Daten auf Blobs in Ihrem Azure-Speicherkonto übertragen möchten.
-* Erstellen Sie einen Exportauftrag, wenn Sie Daten, die derzeit als Blobs in Ihrem Speicherkonto gespeichert sind, auf Festplatten übertragen möchten, die dann an Sie geschickt werden.
-
-Wenn Sie einen Auftrag erstellen, benachrichtigen Sie den Import-/Export-Dienst, dass Sie eine oder mehrere Festplatten an ein Azure-Datacenter schicken werden.
+* Erstellen Sie einen Exportauftrag, wenn Sie Daten, die aktuell als Blobs in Ihrem Speicherkonto gespeichert sind, auf Festplatten übertragen möchten, die dann an Sie geschickt werden. Wenn Sie einen Auftrag erstellen, benachrichtigen Sie den Import-/Export-Dienst, dass Sie eine oder mehrere Festplatten an ein Azure-Rechenzentrum schicken werden.
 
 * Bei einem Importauftrag verschicken Sie Festplatten, die Ihre Daten enthalten.
 * Bei einem Exportauftrag verschicken Sie leere Festplatten.
@@ -69,7 +67,7 @@ In den Journaldateien werden grundlegende Informationen zum Auftrag und Laufwerk
 
 Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Informationen zu den unterstützten Betriebssystemversionen finden Sie im Abschnitt [Betriebssystem](#operating-system) .
 
-Laden Sie die neueste Version des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) herunter. Weitere Informationen zur Verwendung des WAImportExport-Tools finden Sie unter [Using the WAImportExport Tool](storage-import-export-tool-how-to.md) (Verwenden des WAImportExport-Tools).
+Laden Sie die neueste Version des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExportV2.zip) herunter. Weitere Informationen zur Verwendung des WAImportExport-Tools finden Sie unter [Using the WAImportExport Tool](storage-import-export-tool-how-to.md) (Verwenden des WAImportExport-Tools).
 
 >[!NOTE]
 >**Vorherige Version:** Sie können [Version WAImportExpot V1 des Tools herunterladen](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) und das [WAImportExpot V1-Benutzerhandbuch](storage-import-export-tool-how-to-v1.md) zu Rate ziehen. Version WAImportExpot V1 des Tools bietet Unterstützung für **die Vorbereitung von Datenträgern, wenn die Daten bereits vorab auf den Datenträger geschrieben werden**. Sie müssen das WAImportExpot V1-Tool auch dann verwenden, wenn der einzige verfügbare Schlüssel der SAS-Schlüssel ist.
@@ -85,6 +83,8 @@ Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet
 > Externe Festplattenlaufwerke mit einem integrierten USB-Adapter werden von diesem Dienst nicht unterstützt. Außerdem kann der Datenträger im Gehäuse einer externen Festplatte nicht verwendet werden. Senden Sie bitte keine externen Festplatten ein.
 > 
 > 
+
+Im Folgenden finden Sie eine Liste externer USB-Adapter, die zum Kopieren von Daten auf interne HDDs verwendet werden. Anker 68UPSATAA-02BU Anker 68UPSHHDS-BU Startech SATADOCK22U, Orico 6628SUS3-C-BK (Modellreihe 6628), Thermaltake BlacX Hot-Swap SATA-Dockingstation für externe Festplatte (USB 2.0 und eSATA)
 
 ### <a name="encryption"></a>Verschlüsselung
 Die Daten auf dem Laufwerk müssen mit BitLocker-Laufwerkverschlüsselung verschlüsselt sein. So sind Ihre Daten beim Transport geschützt.
@@ -264,8 +264,8 @@ Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst 
 1. Identifizieren Sie die zu importierenden Daten. Hierbei kann es sich um Verzeichnisse und eigenständige Dateien auf dem lokalen Server oder einer Netzwerkfreigabe handeln.  
 2. Bestimmen Sie anhand der Gesamtgröße der Daten die Anzahl von benötigten Festplatten. Beschaffen Sie die erforderliche Anzahl von 2,5-Zoll-SSD-Laufwerken oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II- oder -III-Festplatten.
 3. Identifizieren Sie das Zielspeicherkonto, den Container, die virtuellen Verzeichnisse und die Blobs.
-4.    Bestimmen Sie die Verzeichnisse bzw. eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
-5.    Erstellen Sie die CSV-Dateien für das Dataset und Driveset.
+4.  Bestimmen Sie die Verzeichnisse bzw. eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
+5.  Erstellen Sie die CSV-Dateien für das Dataset und Driveset.
     
     **Dataset-CSV-Datei**
     
@@ -299,8 +299,8 @@ Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst 
 
     Erfahren Sie mehr über das [Vorbereiten der Driveset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file).
 
-6.    Kopieren Sie Ihre Daten mithilfe des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) auf eine oder mehrere Festplatten.
-7.    Sie können „Encrypt“ im Feld „Encryption“ der Driveset-CSV-Datei angeben, um für die Festplatte die BitLocker-Verschlüsselung zu aktivieren. Alternativ dazu können Sie die BitLocker-Verschlüsselung auf der Festplatte auch manuell aktivieren, „AlreadyEncrypted“ angeben und den Schlüssel beim Ausführen des Tools in der Driveset-CSV-Datei bereitstellen.
+6.  Kopieren Sie Ihre Daten mithilfe des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) auf eine oder mehrere Festplatten.
+7.  Sie können „Encrypt“ im Feld „Encryption“ der Driveset-CSV-Datei angeben, um für die Festplatte die BitLocker-Verschlüsselung zu aktivieren. Alternativ dazu können Sie die BitLocker-Verschlüsselung auf der Festplatte auch manuell aktivieren, „AlreadyEncrypted“ angeben und den Schlüssel beim Ausführen des Tools in der Driveset-CSV-Datei bereitstellen.
 
 8. Ändern Sie die Daten auf den Festplatten oder die Journaldatei nicht mehr, nachdem Sie die Festplattenvorbereitung abgeschlossen haben.
 
@@ -471,9 +471,11 @@ Nein. Alle Festplatten werden mit BitLocker verschlüsselt.
 
 Nein. Sie müssen sowohl für den Import als auch den Export Ihre eigenen Laufwerke einsenden.
 
+** Wie kann ich auf Daten zugreifen, die von diesem Dienst importiert werden?** Sie können über das Azure-Portal oder mithilfe eines eigenständigen Tools, dem Speicher-Explorer, auf die Daten in Ihrem Azure-Speicherkonto zugreifen. https://docs.microsoft.com/de-de/azure/vs-azure-tools-storage-manage-with-storage-explorer 
+
 **Wie sehen meine Daten nach Abschluss des Importauftrags im Speicherkonto aus? Wird meine Verzeichnishierarchie beibehalten?**
 
-Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem Feld DstBlobPathOrPrefix in der Dataset-CSV-Datei angegeben. Dies ist der Zielcontainer im Speicherkonto, in den Daten von der Festplatte kopiert werden. In diesem Zielcontainer werden virtuelle Verzeichnisse für Ordner von der Festplatte und Blobs für Dateien erstellt.
+Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem Feld DstBlobPathOrPrefix in der Dataset-CSV-Datei angegeben. Dies ist der Zielcontainer im Speicherkonto, in den Daten von der Festplatte kopiert werden. In diesem Zielcontainer werden virtuelle Verzeichnisse für Ordner von der Festplatte und Blobs für Dateien erstellt. 
 
 **Wenn die Festplatte Dateien enthält, die in meinem Speicherkonto bereits vorhanden sind, werden die entsprechenden Blobs in meinem Speicherkonto vom Dienst dann überschrieben?**
 
@@ -498,9 +500,9 @@ Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergr
 
 Einige Speicherkontostandorte sind alternativen Standorten für den Versand zugeordnet. Versandstandorte, die bisher verfügbar waren, können vorübergehend auch anderen Standorten zugeordnet werden. Überprüfen Sie immer die Versandadresse, die bei der Erstellung des Auftrags angegeben wurde, bevor Sie die Festplatten verschicken.
 
-**Beim Versand der Festplatte fragt der Kurierdienst nach dem Namen und der Telefonnummer des Ansprechpartners im Rechenzentrum. Was muss ich hier angeben?**
+**Beim Versand der Festplatte fragt der Kurierdienst nach der Anschrift und der Telefonnummer des Rechenzentrums. Was muss ich hier angeben?**
 
-Die Telefonnummer erhalten Sie bei der Erstellung des Auftrags. Falls Sie den Namen eines Ansprechpartners benötigen, können Sie sich unter waimportexport@microsoft.com an uns wenden. Wir senden Ihnen dann einen Namen zu.
+Die Telefonnummer und die Adresse des Rechenzentrums werden beim Erstellen des Auftrags angegeben.
 
 **Kann ich den Azure Import/Export-Dienst zum Kopieren von PST-Postfächern und SharePoint-Daten in O365 verwenden?**
 
@@ -510,11 +512,11 @@ Informationen hierzu finden Sie unter [Importieren von PST-Dateien oder SharePoi
 
 Informationen hierzu finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](../backup/backup-azure-backup-import-export.md).
 
-**Wie viele HDDs kann eine Lieferung maximal enthalten?
+**Wie viele HDDs kann eine Lieferung maximal enthalten?**
 
 Eine Lieferung kann eine beliebige Anzahl von HDDs umfassen, und wenn die Datenträger zu mehreren Aufträgen gehören, wird empfohlen, a) die Datenträger mit den entsprechenden Auftragsnamen zu beschriften, und b) die Aufträge mit einer Nachverfolgungsnummer und dem Suffix -1, -2 usw. zu versehen.
   
-**Welche maximale Blockblob- und Seitenblobgröße wird vom Datenträgerimport/-export unterstützt?
+**Welche maximale Blockblob- und Seitenblobgröße wird vom Datenträgerimport/-export unterstützt?**
 
 Die maximale Blockblobgröße beträgt ungefähr 4,768 TB oder 5.000.000 MB.
 Die maximale Seitenblobgröße beträgt 1 TB.

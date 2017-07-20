@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 7f19efa7e09b0dce43851019f94285b2887c46d5
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 7af374232fd45da8769001cd520fa7d1734cbc4e
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -46,7 +46,30 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 | arg1 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der erste auf Gleichheit zu überprüfende Wert. |
 | arg2 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der zweite auf Gleichheit zu überprüfende Wert. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Gibt **True** zurück, wenn die Werte gleich sind. Andernfalls wird **False** zurückgegeben.
+
+### <a name="remarks"></a>Anmerkungen
+
+Die Funktion „equals“ wird häufig mit dem Element `condition` verwendet, um zu prüfen, ob eine Ressource bereitgestellt wurde.
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+### <a name="example"></a>Beispiel
 
 Die Beispielvorlage überprüft verschiedene Werttypen auf Gleichheit. Alle Standardwerte geben „True“ zurück.
 
@@ -111,9 +134,14 @@ Die Beispielvorlage überprüft verschiedene Werttypen auf Gleichheit. Alle Stan
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Gibt **True** zurück, wenn die Werte gleich sind. Andernfalls wird **False** zurückgegeben.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| checkInts | Bool | True  |
+| checkStrings | Bool | True  |
+| checkArrays | Bool | True  |
+| checkObjects | Bool | True  |
 
 <a id="less" />
 
@@ -129,7 +157,11 @@ Gibt **True** zurück, wenn die Werte gleich sind. Andernfalls wird **False** zu
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Kleiner als“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Kleiner als“. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Gibt **True** zurück, wenn der erste Wert kleiner als der zweite Wert ist. Andernfalls wird **False** zurückgegeben.
+
+### <a name="example"></a>Beispiel
 
 Die Beispielvorlage überprüft, ob der eine Wert kleiner als der andere Wert ist.
 
@@ -139,16 +171,20 @@ Die Beispielvorlage überprüft, ob der eine Wert kleiner als der andere Wert is
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -166,9 +202,12 @@ Die Beispielvorlage überprüft, ob der eine Wert kleiner als der andere Wert is
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Gibt **True** zurück, wenn der erste Wert kleiner als der zweite Wert ist. Andernfalls wird **False** zurückgegeben.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| checkInts | Bool | True  |
+| checkStrings | Bool | False |
 
 <a id="lessorequals" />
 
@@ -184,7 +223,11 @@ Gibt **True** zurück, wenn der erste Wert kleiner als der zweite Wert ist. Ande
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Kleiner als oder gleich“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Kleiner als oder gleich“. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Gibt **True** zurück, wenn der erste Wert kleiner als oder gleich Wert 2 ist. Andernfalls wird **False** zurückgegeben.
+
+### <a name="example"></a>Beispiel
 
 Die Beispielvorlage überprüft, ob der eine Wert kleiner als der andere Wert ist oder diesem entspricht.
 
@@ -194,16 +237,20 @@ Die Beispielvorlage überprüft, ob der eine Wert kleiner als der andere Wert is
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -221,9 +268,12 @@ Die Beispielvorlage überprüft, ob der eine Wert kleiner als der andere Wert is
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Gibt **True** zurück, wenn der erste Wert kleiner als oder gleich Wert 2 ist. Andernfalls wird **False** zurückgegeben.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| checkInts | Bool | True  |
+| checkStrings | Bool | False |
 
 <a id="greater" />
 
@@ -239,7 +289,11 @@ Gibt **True** zurück, wenn der erste Wert kleiner als oder gleich Wert 2 ist. A
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Größer als“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Größer als“. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Gibt **True** zurück, wenn der erste Wert größer als der zweite Wert ist. Andernfalls wird **False** zurückgegeben.
+
+### <a name="example"></a>Beispiel
 
 Die Beispielvorlage überprüft, ob der eine Wert größer als der andere Wert ist.
 
@@ -249,16 +303,20 @@ Die Beispielvorlage überprüft, ob der eine Wert größer als der andere Wert i
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -276,9 +334,12 @@ Die Beispielvorlage überprüft, ob der eine Wert größer als der andere Wert i
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Gibt **True** zurück, wenn der erste Wert größer als der zweite Wert ist. Andernfalls wird **False** zurückgegeben.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| checkInts | Bool | False |
+| checkStrings | Bool | True  |
 
 <a id="greaterorequals" />
 
@@ -294,7 +355,11 @@ Gibt **True** zurück, wenn der erste Wert größer als der zweite Wert ist. And
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Größer als oder gleich“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Größer als oder gleich“. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Gibt **True** zurück, wenn der erste Wert größer als oder gleich Wert 2 ist. Andernfalls wird **False** zurückgegeben.
+
+### <a name="example"></a>Beispiel
 
 Die Beispielvorlage überprüft, ob der eine Wert größer als der andere Wert ist oder diesem entspricht.
 
@@ -304,16 +369,20 @@ Die Beispielvorlage überprüft, ob der eine Wert größer als der andere Wert i
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "secondInt": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "firstString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "A"
         },
         "secondString": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "a"
         }
     },
     "resources": [
@@ -331,9 +400,13 @@ Die Beispielvorlage überprüft, ob der eine Wert größer als der andere Wert i
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Gibt **True** zurück, wenn der erste Wert größer als oder gleich Wert 2 ist. Andernfalls wird **False** zurückgegeben.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| checkInts | Bool | False |
+| checkStrings | Bool | True  |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

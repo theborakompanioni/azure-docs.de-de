@@ -1,5 +1,5 @@
 ---
-title: " Verwalten eines VMware vCenter Servers in Azure Site Recovery | Microsoft-Dokumentations"
+title: " Verwalten eines VMware vCenter Servers in Azure Site Recovery | Microsoft-Dokumentation"
 description: "In diesem Artikel wird beschrieben, wie Sie VMware vCenter in Azure Site Recovery hinzufügen und verwalten."
 services: site-recovery
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 2/14/2017
+ms.date: 06/29/2017
 ms.author: anoopkv
-translationtype: Human Translation
-ms.sourcegitcommit: 96e6696818a0de2fadd55ff7e0ccee350d2666ad
-ms.openlocfilehash: 5578dea457f3eeda72e3a1e4e61382cdf0de285d
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 091f0884417535427c52beee7bcdc5ed1dd83315
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -26,9 +27,9 @@ Dieser Artikel beschreibt die verschiedenen Site Recovery-Vorgänge, die in eine
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-**Unterstützung von VMware vCenter und des VMware vSphere-ESX-Hosts** | **Details**
---- | ---
-**Lokale VMware-Server** | Mindestens ein VMware vSphere-Server mit 6.0, 5.5 oder 5.1 mit den neuesten Updates. Die Server sollten sich in dem gleichen Netzwerk wie der Konfigurationsserver (oder der separate Prozessserver) befinden.<br/><br/> Wir empfehlen Ihnen die Verwendung eines vCenter-Servers zum Verwalten von Hosts, auf dem Version 6.0 oder 5.5 mit den neuesten Updates ausgeführt wird. Bei der Bereitstellung von Version 6.0 werden nur Features unterstützt, die in 5.5 verfügbar sind.
+**Unterstützung von VMware vCenter und des VMware vSphere-ESX-Hosts** | **Details** |
+|--- | --- |
+|**Lokale VMware-Server** | Mindestens einen VMware vSphere-Server mit 6.0, 5.5 oder 5.1 mit den neuesten Updates. Die Server sollten sich in demselben Netzwerk wie der Konfigurationsserver (oder der separate Prozessserver) befinden.<br/><br/> Wir empfehlen Ihnen die Verwendung eines vCenter-Servers zum Verwalten von Hosts, auf dem Version 6.0 oder 5.5 mit den neuesten Updates ausgeführt wird. Bei der Bereitstellung von Version 6.0 werden nur Features unterstützt, die in 5.5 verfügbar sind.|
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Vorbereiten eines Kontos für die automatische Ermittlung
 Für Site Recovery ist der Zugriff auf VMware erforderlich, damit der Prozessserver VMs automatisch ermitteln und das Failover und Failback von VMs durchgeführt werden kann.

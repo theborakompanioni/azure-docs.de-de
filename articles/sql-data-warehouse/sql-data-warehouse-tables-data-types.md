@@ -1,6 +1,6 @@
 ---
-title: "Datentypen für Tabellen in SQL Data Warehouse | Microsoft Docs"
-description: "Es werden die ersten Schritte für die Verwendung von Datentypen für Azure SQL Data Warehouse-Tabellen beschrieben."
+title: "Leitfaden für Datentypen – Azure SQL Data Warehouse | Microsoft-Dokumentation"
+description: Empfehlungen zum Definieren von Datentypen, die mit SQL Data Warehouse kompatibel sind.
 services: sql-data-warehouse
 documentationcenter: NA
 author: shivaniguptamsft
@@ -13,51 +13,49 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
+ms.date: 06/02/2017
 ms.author: shigu;barbkess
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7757de96601c426ff07e94cfa0c12d4dec8f06f5
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
 ms.contentlocale: de-de
-ms.lasthandoff: 03/22/2017
+ms.lasthandoff: 06/05/2017
 
 
 ---
-# <a name="data-types-for-tables-in-sql-data-warehouse"></a>Datentypen für Tabellen in SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Übersicht][Overview]
-> * [Datentypen][Data Types]
-> * [Verteilen][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistiken][Statistics]
-> * [Temporär][Temporary]
-> 
-> 
+# <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>Leitfaden zum Definieren von Datentypen für Tabellen in SQL Data Warehouse
+Verwenden Sie diese Empfehlungen zum Definieren von Datentypen für die Tabelle, die mit SQL Data Warehouse kompatibel sind. Neben der Kompatibilität wird durch die Größe der Datentypen die Abfrageleistung verbessert.
 
-SQL Data Warehouse unterstützt die gängigsten Datentypen.  Unten ist eine Liste mit den Datentypen angegeben, die von SQL Data Warehouse unterstützt werden.  Weitere Informationen zur Unterstützung von Datentypen finden Sie unter [CREATE TABLE][create table].
+SQL Data Warehouse unterstützt die gängigsten Datentypen. Eine Liste der unterstützten Datentypen finden Sie in der CREATE TABLE-Anweisung unter [Datentypen](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes). 
 
-| **Unterstützte Datentypen** |  |  |
-| --- | --- | --- |
-| [bigint][bigint] |[decimal][decimal] |[smallint][smallint] |
-| [binary][binary] |[float][float] |[smallmoney][smallmoney] |
-| [bit][bit] |[int][int] |[sysname][sysname] |
-| [char][char] |[money][money] |[time][time] |
-| [date][date] |[nchar][nchar] |[tinyint][tinyint] |
-| [datetime][datetime] |[nvarchar][nvarchar] |[uniqueidentifier][uniqueidentifier] |
-| [datetime2][datetime2] |[real][real] |[varbinary][varbinary] |
-| [datetimeoffset][datetimeoffset] |[smalldatetime][smalldatetime] |[varchar][varchar] |
 
-## <a name="data-type-best-practices"></a>Bewährte Methoden für Datentypen
- Beim Definieren Ihrer Spaltentypen verbessert sich die Abfrageleistung, wenn Sie den kleinsten Datentyp verwenden, der für Ihre Daten unterstützt wird. Dies ist besonders für CHAR- und VARCHAR-Spalten wichtig. Wenn der längste Wert in einer Spalte 25 Zeichen lang ist, sollten Sie die Spalte VARCHAR(25) definieren. Vermeiden Sie es, für alle Zeichenspalten eine hohe Standardlänge zu definieren. Definieren Sie darüber hinaus Spalten als VARCHAR, sofern dies ausreicht, anstatt [NVARCHAR][NVARCHAR] zu verwenden.  Verwenden Sie anstelle von NVARCHAR(MAX) oder VARCHAR(MAX) nach Möglichkeit NVARCHAR(4000) oder VARCHAR(8000).
+## <a name="minimize-row-length"></a>Minimieren der Zeilenlänge
+Durch das Minimieren der Größe von Datentypen wird die Zeilenlänge verkürzt. Dies führt zu einer besseren Abfrageleistung. Verwenden Sie den kleinsten Datentyp, der für Ihre Daten funktioniert. 
 
-## <a name="polybase-limitation"></a>PolyBase-Beschränkung
-Wenn Sie die Tabellen mit Polybase laden möchten, stellen Sie sicher, dass die Länge der Daten 1 MB nicht überschreitet.  Sie können zwar eine Zeile mit Daten variabler Länge definieren, bei der diese Breite überschritten wird und Zeilen mit BCP geladen werden können, aber Sie können PolyBase nicht zum Laden dieser Daten verwenden.  
+- Vermeiden Sie es, für Zeichenspalten eine hohe Standardlänge zu definieren. Wenn der längste Wert 25 Zeichen umfasst, sollten Sie die Spalte VARCHAR(25) definieren. 
+- Vermeiden Sie die Verwendung von [NVARCHAR][NVARCHAR], wenn Sie nur VARCHAR benötigen.
+- Verwenden Sie anstelle von NVARCHAR(MAX) oder VARCHAR(MAX) nach Möglichkeit NVARCHAR(4000) oder VARCHAR(8000).
 
-## <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
-Wenn Sie die Datenbank von einer anderen SQL-Plattform wie Azure SQL-Datenbank migrieren, begegnen Ihnen während der Migration unter Umständen einige Datentypen, die in SQL Data Warehouse nicht unterstützt werden.  Unten sind nicht unterstützte Datentypen und einige Alternativen angegeben, die Sie anstelle von nicht unterstützten Datentypen verwenden können.
+Wenn Sie die Tabellen mit Polybase laden, darf die definierte Länge der Tabellenzeile 1 MB nicht überschreiten. Wenn eine Zeile mit Daten variabler Länge 1 MB überschreitet, können Sie die Zeile mit BCP, jedoch nicht mit PolyBase laden.
 
-| Datentyp | Problemumgehung |
+## <a name="identify-unsupported-data-types"></a>Identifizieren nicht unterstützter Datentypen
+Wenn Sie die Datenbank aus einer anderen SQL­Datenbank migrieren,treten ggf. Datentypen auf, die in SQL Data Warehouse nicht unterstützt werden. Verwenden Sie diese Abfrage, um nicht unterstützte Datentypen in Ihrem vorhandenen SQL-Schema zu ermitteln.
+
+```sql
+SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
+FROM sys.tables  t
+JOIN sys.columns c on t.[object_id]    = c.[object_id]
+JOIN sys.types   y on c.[user_type_id] = y.[user_type_id]
+WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','sql_variant','timestamp','xml')
+ AND  y.[is_user_defined] = 1;
+```
+
+
+## <a name="unsupported-data-types"></a>Verwenden von Problemumgehungen für nicht unterstützte Datentypen
+
+Die folgende Liste zeigt die Datentypen, die nicht von SQL Data Warehouse unterstützt werden, und bietet Alternativen, die Sie anstelle der nicht unterstützten Datentypen verwenden können.
+
+| Nicht unterstützte Datentypen | Problemumgehung |
 | --- | --- |
 | [geometry][geometry] |[varbinary][varbinary] |
 | [geography][geography] |[varbinary][varbinary] |
@@ -69,22 +67,20 @@ Wenn Sie die Datenbank von einer anderen SQL-Plattform wie Azure SQL-Datenbank m
 | [table][table] |In temporäre Tabellen konvertieren. |
 | [timestamp][timestamp] |Passen Sie den Code an, damit [datetime2][datetime2] und die `CURRENT_TIMESTAMP`-Funktion verwendet werden.  Nur Konstanten werden als Standardwerte unterstützt. Daher kann „current_timestamp“ nicht als Standardeinschränkung definiert werden. Wenn Sie Zeilenversionswerte aus einer Spalte vom Typ timestamp migrieren müssen, sollten Sie [BINARY][BINARY](8) oder [VARBINARY][BINARY](8) für NOT NULL- oder NULL-Zeilenversionswerte verwenden. |
 | [xml][xml] |[varchar][varchar] |
-| [Benutzerdefinierte Typen][user defined types] |Zurück in native Typen konvertieren, falls möglich |
-| Standardwerte |Standardwerte unterstützen nur Literale und Konstanten.  Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt. |
+| [Benutzerdefinierter Typ][user defined types] |Führen Sie, wenn möglich, eine Rückkonvertierung in den nativen Datentyp durch. |
+| Standardwerte | Standardwerte unterstützen nur Literale und Konstanten.  Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt. |
 
-Der unten angegebene SQL-Code kann in Ihrer aktuellen SQL-Datenbank ausgeführt werden, um Spalten zu identifizieren, die von Azure SQL Data Warehouse nicht unterstützt werden:
-
-```sql
-SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
-FROM sys.tables  t
-JOIN sys.columns c on t.[object_id]    = c.[object_id]
-JOIN sys.types   y on c.[user_type_id] = y.[user_type_id]
-WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','sql_variant','timestamp','xml')
- AND  y.[is_user_defined] = 1;
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Statistiken für Tabellen][Statistics] und [Temporäre Tabellen][Temporary].  Weitere Informationen zu Best Practices finden Sie unter [SQL Data Warehouse – Best Practices][SQL Data Warehouse Best Practices].
+Weitere Informationen finden Sie unter:
+
+- [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse Best Practices]
+- [Tabellenübersicht][Overview]
+- [Verteilen einer Tabelle][Distribute]
+- [Indizieren einer Tabelle][Index]
+- [Partitionieren einer Tabelle][Partition]
+- [Verwalten von Tabellenstatistiken][Statistics]
+- [Temporäre Tabellen][Temporary]
 
 <!--Image references-->
 

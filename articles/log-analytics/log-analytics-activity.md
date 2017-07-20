@@ -12,19 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: cfdc507d5e45fc716940bd4607631ba500bf4c59
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 1ad56a54f094f3c314596b3a7c9fecd09647d065
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
 # <a name="view-azure-activity-logs"></a>Anzeigen von Azure-Aktivitätsprotokollen
 
- ![Symbol für Azure-Aktivitätsprotokolle](./media/log-analytics-activity/activity-log-analytics.png) Mithilfe der Log Analytics-Lösung für Aktivitätsprotokolle können Sie das [Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokolle* oder *Vorgangsprotokolle* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
+![Symbol „Azure-Aktivitätsprotokolle“](./media/log-analytics-activity/activity-log-analytics.png)
+
+Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokolle* oder *Vorgangsprotokolle* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
 
 Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen *Was*, *Wer* und *Wann* für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Bereitstellungsmodell verwenden.
 

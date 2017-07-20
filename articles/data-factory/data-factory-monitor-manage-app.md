@@ -12,11 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 05/18/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 1d35fbbe14d1597c23d8521bc21c683b520f0ea6
-ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: d5a2d1f3d85b8a2212326cfcfd0ba5d80356b769
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -27,14 +29,16 @@ ms.openlocfilehash: 34141bb2c3c6e159e4ce3d567b830451c59ed84c
 >
 >
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe der App „Überwachung und Verwaltung“ Ihre Azure Data Factory-Pipelines überwachen, verwalten und debuggen sowie Warnungen erstellen, um bei Fehlern benachrichtigt zu werden. Sie können sich auch das folgende Video ansehen, um Informationen zur Verwendung der App „Überwachung und Verwaltung“ zu erhalten.
+In diesem Artikel wird beschrieben, wie Sie mithilfe der App „Überwachung und Verwaltung“ Ihre Data Factory-Pipelines überwachen, verwalten und debuggen. Ferner wird erläutert, wie Warnungen erstellt werden, um bei Fehlern benachrichtigt zu werden. Machen Sie sich zunächst mit der Anwendung vertraut, indem Sie sich das folgende Video ansehen:
+
+> [!NOTE]
+> Die im Video gezeigte Benutzerschnittstelle entspricht möglicherweise nicht exakt der Benutzerschnittstelle, die Sie im Portal sehen. Die gezeigte Benutzerschnittstelle ist etwas älter, aber das Konzept bleibt unverändert. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Data-Factory-Monitoring-and-Managing-Big-Data-Piplines/player]
 >
->
 
-## <a name="open-the-monitoring-and-management-app"></a>Öffnen der App „Überwachung und Verwaltung“
-Klicken Sie zum Öffnen der App „Überwachung und Verwaltung“ auf dem Blatt **Data Factory** für Ihre Data Factory auf die Kachel **Überwachung & Verwaltung**.
+## <a name="launch-the-monitoring-and-management-app"></a>Starten der App „Überwachung und Verwaltung“
+Klicken Sie zum Starten der App „Überwachung und Verwaltung“ auf dem Blatt **Data Factory** für Ihre Data Factory auf das Blatt **Überwachung & Verwaltung**.
 
 ![Kachel „Überwachung“ auf der Data Factory-Startseite](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
@@ -45,7 +49,13 @@ Die App „Überwachung und Verwaltung“ sollte in einem separaten Fenster geö
 > [!NOTE]
 > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie das Kontrollkästchen **Cookies und Websitedaten von Drittanbietern blockieren**. Lassen Sie die Einstellung alternativ aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, die App zu öffnen.
 
-Wenn Sie in der Liste unten keine Aktivitätsfenster sehen, klicken Sie auf der Symbolleiste auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. Legen Sie darüber hinaus die richtigen Werte für die Filter **Startzeit** und **Endzeit** fest.  
+
+In der Aktivitätsfensterliste im mittleren Bereich sehen Sie ein Aktivitätsfenster pro Aktivitätsausführung. Wenn die Aktivität z.B. so geplant ist, dass sie fünf Stunden lang stündlich ausgeführt wird, sehen Sie fünf Aktivitätsfenster, denen fünf Datenslices zugeordnet sind. Wenn die Aktivitätsfenster nicht in der Liste im unteren Bereich angezeigt werden, führen Sie die folgenden Schritte aus:
+ 
+- Aktualisieren Sie im oberen Bereich die Filter für die**Startzeit** und die **Endzeit**, damit sie den Start- und Endzeiten in Ihrer Pipeline entsprechen, und klicken Sie dann auf die Schaltfläche **Übernehmen**.  
+- Die Liste der Aktivitätsfenster wird nicht automatisch aktualisiert. Klicken Sie auf die Schaltfläche **Aktualisieren** auf der Symbolleiste in der Liste der **Aktivitätsfenster**.  
+
+Wenn Sie keine Data Factory-Anwendung haben, mit der Sie diese Schritte testen können, folgen Sie dem Tutorial: [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="understand-the-monitoring-and-management-app"></a>Grundlegendes zur App „Überwachung und Verwaltung“
 Auf der linken Seite befinden sich drei Registerkarten: **Ressourcen-Explorer**, **Überwachungsansichten** und **Warnungen**. Die erste Registerkarte (**Ressourcen-Explorer**) ist standardmäßig ausgewählt.
@@ -54,9 +64,9 @@ Auf der linken Seite befinden sich drei Registerkarten: **Ressourcen-Explorer**,
 Sie sehen Folgendes:
 
 * Die **Strukturansicht** des Ressourcen-Explorers im linken Bereich
-* Die **Diagrammansicht** oben
+* Die **Diagrammansicht** oben im mittleren Bereich.
 * Die **Aktivitätsfenster** unten im mittleren Bereich
-* Die Registerkarten **Eigenschaften** und **Aktivitätsfenster-Explorer** im rechten Bereich
+* Die Registerkarten **Eigenschaften**, **Aktivitätsfenster-Explorer** und **Skript** im rechten Bereich.
 
 Im Ressourcen-Explorer können Sie alle Ressourcen (Pipelines, Datasets, verknüpfte Dienste) in der Data Factory in einer Strukturansicht anzeigen. Bei Auswahl eines Objekts im Ressourcen-Explorer:
 
@@ -80,23 +90,31 @@ Wenn sich die Pipeline im aktivierten (nicht im angehaltenen) Zustand befindet, 
 
 ![Pipeline wird ausgeführt.](./media/data-factory-monitor-manage-app/PipelineRunning.png)
 
-Es gibt in der Diagrammansicht auf der Befehlsleiste drei Schaltflächen für die Pipeline. Die zweite Schaltfläche dient zum Anhalten der Pipeline. Durch das Anhalten werden die derzeit ausgeführten Aktivitäten nicht beendet, die bis zum Abschluss fortgesetzt werden können. Die dritte Schaltfläche dient zum Anhalten der Pipeline und zum Beenden vorhandener ausgeführter Aktivitäten. Mit der ersten Schaltfläche wird die Pipeline fortgesetzt. Wenn die Pipeline angehalten wird, ändert sich die Farbe der Pipeline in Gelb:
-
-![Fortsetzen/Anhalten auf Kachel](./media/data-factory-monitor-manage-app/SuspendResumeOnTile.png)
-
-Mithilfe der STRG-TASTE können Sie mehrere Pipelines auswählen. Mithilfe der Schaltflächen auf der Befehlsleiste können Sie mehrere Pipelines gleichzeitig anhalten bzw. fortsetzen.
+Sie können eine Pipeline anhalten, fortsetzen oder beenden, indem Sie sie in der Diagrammansicht auswählen und die Schaltflächen in der Befehlsleiste verwenden.
 
 ![Fortsetzen/Anhalten auf Befehlsleiste](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+ 
+Es gibt in der Diagrammansicht auf der Befehlsleiste drei Schaltflächen für die Pipeline. Die zweite Schaltfläche dient zum Anhalten der Pipeline. Durch das Anhalten werden die derzeit ausgeführten Aktivitäten nicht beendet, die bis zum Abschluss fortgesetzt werden können. Die dritte Schaltfläche dient zum Anhalten der Pipeline und zum Beenden vorhandener ausgeführter Aktivitäten. Mit der ersten Schaltfläche wird die Pipeline fortgesetzt. Wenn die Pipeline angehalten wird, ändert sich die Farbe der Pipeline. Die folgende Abbildung zeigt beispielsweise eine angehaltene Pipeline: 
 
-Sie können alle Aktivitäten in der Pipeline anzeigen, indem Sie mit der rechten Maustaste auf die Kachel der Pipeline und dann auf **Pipeline öffnen** klicken.
+![Pipeline angehalten](./media/data-factory-monitor-manage-app/PipelinePaused.png)
+
+Mithilfe der STRG-Taste können Sie zwei oder mehr Pipelines gleichzeitig auswählen. Mithilfe der Schaltflächen auf der Befehlsleiste können Sie mehrere Pipelines gleichzeitig anhalten bzw. fortsetzen.
+
+Sie können auch mit der rechten Maustaste auf eine Pipeline klicken und die gewünschten Optionen für das Anhalten, Fortsetzen und Beenden einer Pipeline auswählen. 
+
+![Kontextmenü für Pipelines](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
+
+Klicken Sie auf die Option **Pipeline öffnen**, um alle Aktivitäten anzuzeigen, die sich in der Pipeline befinden. 
 
 ![Menü "Pipeline öffnen"](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es mit der Kopieraktivität nur eine Aktivität. Um zur vorherigen Ansicht zurückzukehren, klicken Sie oben in der Adressleiste auf den Namen der Data Factory.
+In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es mit der Kopieraktivität nur eine Aktivität. 
 
 ![Geöffnete Pipeline](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
-Wenn Sie in der Pipelineansicht auf ein Ausgabedataset klicken oder mit der Maus darauf zeigen, wird das Popupfenster mit den Aktivitätsfenstern für dieses Dataset eingeblendet.
+Um zur vorherigen Ansicht zurückzukehren, klicken Sie oben in der Adressleiste auf den Namen der Data Factory.
+
+Wenn Sie in der Pipelineansicht ein Ausgabedataset auswählen oder mit der Maus darauf zeigen, wird das Popupfenster mit den Aktivitätsfenstern für dieses Dataset eingeblendet.
 
 ![Popupfenster der Aktivitätsfenster](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
@@ -316,9 +334,4 @@ Die folgende Tabelle enthält die Liste mit den verfügbaren Ereignissen und Sta
 Verwenden Sie die folgenden Schaltflächen (rot hervorgehoben), um eine Warnung zu bearbeiten, löschen oder deaktivieren.
 
 ![Schaltflächen „Warnungen“](./media/data-factory-monitor-manage-app/AlertButtons.png)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -13,15 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-translationtype: Human Translation
-ms.sourcegitcommit: 0ab2e30165fe3dca0e00109e9b4e22a9a1433de5
-ms.openlocfilehash: 43cf4dad58ee0e12a233125049ab4e62411459fe
-ms.lasthandoff: 01/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: 86a2cd8ae9f97c606a378452e44eec8941700531
+ms.contentlocale: de-de
+ms.lasthandoff: 06/23/2017
 
 
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](app-service-deploy-local-git.md) und [FTP/S-Bereitstellungen](app-service-deploy-ftp.md).
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](app-service-deploy-local-git.md) und [FTP/S-Bereitstellungen](app-service-deploy-ftp.md). Diese sind nicht identisch mit Ihren Azure Active Directory-Anmeldeinformationen.
 
 * **Anmeldeinformationen auf Benutzerebene**: ein Satz von Anmeldeinformationen für das gesamte Azure-Konto. Hiermit können Sie App Service für alle Apps in allen Abonnements bereitstellen, für die das Azure-Konto über Zugriffsberechtigungen verfügt. Dies ist der Standardsatz von Anmeldeinformationen, den Sie in **App Services** > **&lt;App-Name>** > **Anmeldeinformationen für Bereitstellung** konfigurieren. Dies ist auch der Standardsatz, der in der Portal-GUI angezeigt wird (z.B. **Übersicht** und **Eigenschaften** auf dem [Ressourcenblatt](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App).
 
@@ -32,13 +33,18 @@ ms.lasthandoff: 01/06/2017
 
 * **Anmeldeinformationen auf App-Ebene**: ein Satz von Anmeldeinformationen für jede App. Er kann nur verwendet werden, um diese App bereitzustellen. Die Anmeldeinformationen für jede App werden automatisch bei der App-Erstellung generiert und befinden sich im Veröffentlichungsprofil der App. Sie können die Anmeldeinformationen nicht manuell konfigurieren, Sie können sie aber jederzeit für eine App zurücksetzen.
 
+    > [!NOTE]
+    > Um Benutzern Zugriff auf diese Anmeldeinformationen über die rollenbasierte Zugriffssteuerung zu gewähren, müssen Sie ihnen für die Web-App mindestens die Rolle „Mitwirkender“ zuweisen. Benutzer mit Leseberechtigung dürfen nicht veröffentlichen und haben deshalb keinen Zugriff auf diese Anmeldeinformationen.
+    >
+    >
+
 ## <a name="userscope"></a>Festlegen und Zurücksetzen der Anmeldeinformationen auf Benutzerebene
 
 Sie können die Anmeldeinformationen auf Benutzerebene auf dem [Ressourcenblatt](../azure-resource-manager/resource-group-portal.md#manage-resources) einer App konfigurieren. Unabhängig von der App, in der Sie diese Anmeldeinformationen konfigurieren, gelten sie für alle Apps und für alle Abonnements in Ihrem Azure-Konto. 
 
 So konfigurieren Sie die Anmeldeinformationen auf Benutzerebene
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > **&lt;eine_App>** > **Anmeldeinformationen für Bereitstellung**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ >  **&lt;eine_App>** > **Anmeldeinformationen für Bereitstellung**.
 
     > [!NOTE]
     > Im Portal muss mindestens eine App vorhanden sein, bevor Sie auf das Blatt mit den Anmeldeinformationen für die Bereitstellung zugreifen können. Mit der [Azure-CLI](app-service-web-app-azure-resource-manager-xplat-cli.md) können Sie die Anmeldeinformationen auf Benutzerebene jedoch ohne eine vorhandene App konfigurieren.
@@ -65,7 +71,7 @@ Für jede App in App Service werden die Anmeldeinformationen auf App-Ebene im XM
 
 So rufen Sie die Anmeldeinformationen auf App-Ebene ab
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > **&lt;eine_App>** > **Übersicht**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ >  **&lt;eine_App>** > **Übersicht**.
 
 2. Klicken Sie auf **Mehr** > **Veröffentlichungsprofil abrufen**, und der Download einer .PublishSettings-Datei beginnt.
 
@@ -80,7 +86,7 @@ Dies sind die Anmeldeinformationen auf App-Ebene.
 
 So setzen Sie die Anmeldeinformationen auf App-Ebene zurück
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ > **&lt;eine_App>** > **Übersicht**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ >  **&lt;eine_App>** > **Übersicht**.
 
 2. Klicken Sie auf **Mehr** > **Veröffentlichungsprofil zurücksetzen**. Klicken Sie auf **Ja**, um das Zurücksetzen zu bestätigen.
 
@@ -89,3 +95,4 @@ So setzen Sie die Anmeldeinformationen auf App-Ebene zurück
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie diese Anmeldeinformationen zum Bereitstellen Ihrer App über [lokales Git](app-service-deploy-local-git.md) oder [FTP/S](app-service-deploy-ftp.md) verwenden.
+

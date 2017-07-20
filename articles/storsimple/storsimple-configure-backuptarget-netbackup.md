@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 06/15/2017
 ms.author: hkanna
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: cbc33fa15d069b55844cc6e4356ca5a01b40c199
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 613fd0c1164ac34d36d5f21d07dfdf00c8aad614
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 ---
 
@@ -228,7 +229,7 @@ Richten Sie Ihre Lösung gemäß den Leitlinien in den folgenden Abschnitten ein
 
 -   Die NetBackup-Datenbank sollte sich lokal auf dem Server und nicht auf einem StorSimple-Volume befinden.
 -   Zur Notfallwiederherstellung sichern Sie Ihre NetBackup-Datenbank auf einem StorSimple-Volume.
--   Wir unterstützen vollständige und inkrementelle Sicherungen von NetBackup für diese Lösung. Es empfiehlt sich nicht, synthetische und differenzielle Sicherungen zu verwenden.
+-   Wir unterstützen vollständige und inkrementelle Sicherungen von NetBackup (in NetBackup auch differenzielle inkrementelle Sicherungen genannt) für diese Lösung. Es empfiehlt sich nicht, synthetische und kumulative inkrementelle Sicherungen zu verwenden.
 -   Sicherungsdatendateien sollten nur die Daten für einen bestimmten Auftrag enthalten. Es können beispielsweise keine Medien aus unterschiedlichen Aufträgen angefügt werden.
 
 Neueste Informationen zu NetBackup-Einstellungen und bewährten Methoden für die Implementierung dieser Anforderungen finden Sie auf der [Website von Veritas](https://www.veritas.com) in der Dokumentation zu NetBackup.

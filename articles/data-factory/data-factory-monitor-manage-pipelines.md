@@ -12,12 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 05/18/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 223edfde090c9b77467e032198c2150fbaa56a5b
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 61bb5379cd94dd00814e14420947e7783999ff0a
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -27,15 +28,11 @@ ms.lasthandoff: 04/12/2017
 > * [Verwenden der App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)
 
 
-Azure Data Factory bietet eine zuverlässige und umfassende Ansicht der Speicherungs-, Verarbeitungs- und Datenverschiebungsdienste. Der Dienst stellt für Sie ein Dashboard für die Überwachung bereit, das Sie für folgende Aufgaben nutzen können:
+> [!IMPORTANT]
+> Die Anwendung „Überwachung und Verwaltung“ bietet eine bessere Unterstützung der Überwachung und Verwaltung Ihrer Datenpipelines und der Problembehandlung. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
 
-* Schnelles Bewerten der Integrität einer End-to-End-Datenpipeline
-* Erkennen von Problemen und, falls erforderlich, Einleiten von Korrekturmaßnahmen
-* Nachverfolgen der Datenherkunft
-* Nachverfolgen von quellenübergreifenden Beziehungen zwischen Daten
-* Anzeigen des vollständigen Verlaufs von Auftragsausführung, Systemintegrität und Abhängigkeiten
 
-In diesem Artikel wird das Überwachen, Verwalten und Debuggen Ihrer Pipelines beschrieben. Ferner wird erläutert, wie Warnungen erstellt und Benachrichtigungen bei Fehlern eingerichtet werden.
+In diesem Artikel wird das Überwachen, Verwalten und Debuggen Ihrer Pipelines mithilfe des Azure-Portals und von PowerShell beschrieben. Ferner wird in diesem Artikel erläutert, wie Warnungen erstellt und Benachrichtigungen bei Fehlern eingerichtet werden.
 
 ## <a name="understand-pipelines-and-activity-states"></a>Grundlegendes zu Pipelines und Aktivitätsstatus
 Im Azure-Portal haben Sie folgende Möglichkeiten:
@@ -44,15 +41,13 @@ Im Azure-Portal haben Sie folgende Möglichkeiten:
 * Anzeigen von Aktivitäten in einer Pipeline
 * Anzeigen von Datasets für Ein- und Ausgabe
 
-In diesem Abschnitt wird auch beschrieben, wie ein Slice von einem Status in einen anderen wechselt.   
+In diesem Abschnitt wird auch beschrieben, wie ein Slice eines Datasets von einem Status in einen anderen wechselt.   
 
 ### <a name="navigate-to-your-data-factory"></a>Navigieren zu Ihrer Data Factory
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im Menü auf der linken Seite auf **Data Factorys**. Wenn die Option nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys**.
 
    ![Alle durchsuchen > Data Factorys](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
-
-   Auf dem Blatt **Data Factorys** sollten alle Data Factorys angezeigt werden.
 3. Wählen Sie auf dem Blatt **Data Factorys** die gewünschte Data Factory aus.
 
     ![Data Factory auswählen](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
@@ -62,13 +57,11 @@ In diesem Abschnitt wird auch beschrieben, wie ein Slice von einem Status in ein
    ![Blatt "Data Factory"](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>Diagrammansicht Ihrer Data Factory
-Die Ansicht **Diagramm** einer Data Factory bietet eine zentrale Konsole zum Überwachen und Verwalten der Data Factory und ihrer Ressourcen.
-
-Klicken Sie auf der Data Factory-Startseite auf **Diagramm**, um die Ansicht **Diagramm** Ihrer Data Factory anzuzeigen.
+Die Ansicht **Diagramm** einer Data Factory bietet eine zentrale Konsole zum Überwachen und Verwalten der Data Factory und ihrer Ressourcen. Klicken Sie auf der Data Factory-Startseite auf **Diagramm**, um die Ansicht **Diagramm** Ihrer Data Factory anzuzeigen.
 
 ![Diagrammansicht](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
-Sie können die Optionen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ verwenden und das Layout des Diagramms sperren sowie Pipelines und Tabellen automatisch positionieren. Außerdem können Sie die Informationen zur Datenherkunft anzeigen (also vor- und nachgeschaltete Elemente von ausgewählten Elementen).
+Sie können die Optionen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ verwenden und das Layout des Diagramms sperren sowie Pipelines und Datasets automatisch positionieren. Außerdem können Sie die Informationen zur Datenherkunft anzeigen (also vor- und nachgeschaltete Elemente von ausgewählten Elementen).
 
 ### <a name="activities-inside-a-pipeline"></a>Aktivitäten innerhalb einer Pipeline
 1. Klicken Sie mit der rechten Maustaste auf die Pipeline, und klicken Sie dann auf **Pipeline öffnen**, um alle Aktivitäten in der Pipeline sowie Ein- und Ausgabedatasets für die Aktivitäten anzuzeigen. Diese Funktion ist hilfreich, wenn Ihre Pipeline mehr als eine Aktivität enthält und Sie die operative Herkunft einer einzelnen Pipeline verstehen möchten.
@@ -172,17 +165,13 @@ Der Slice startet im Status **Warten**. Es wird gewartet, bis die Vorbedingungen
 
 Sie können den Slice vom Status **Bereit** oder **Fehler** in den Status **Warten** zurücksetzen. Außerdem können Sie als Status für den Slice auch **Überspringen** angeben, wodurch die Aktivität nicht ausgeführt und der Slice nicht verarbeitet wird.
 
-## <a name="manage-pipelines"></a>Verwalten von Pipelines
-Sie können Ihre Pipelines mit Azure PowerShell verwalten. Sie können z. B. mit Azure PowerShell-Cmdlets Pipelines anhalten und fortsetzen.
+## <a name="pause-and-resume-pipelines"></a>Anhalten und Fortsetzen von Pipelines
+Sie können Ihre Pipelines mit Azure PowerShell verwalten. Sie können z. B. mit Azure PowerShell-Cmdlets Pipelines anhalten und fortsetzen. 
 
-### <a name="pause-and-resume-pipelines"></a>Anhalten und Fortsetzen von Pipelines
-Sie können Pipelines mit dem PowerShell-Cmdlet **Suspend-AzureRmDataFactoryPipeline** anhalten. Dieses Cmdlet ist nützlich, wenn Sie Ihre Pipelines nicht ausführen möchten, bis ein Problem behoben wurde.
+> [!NOTE] 
+> Die Diagrammansicht unterstützt nicht das Anhalten und Fortsetzen von Pipelines. Wenn Sie eine Benutzeroberfläche nutzen möchten, verwenden Sie die Anwendung „Überwachung und Verwaltung“. Im Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
 
-Im folgenden Screenshot wurde beispielsweise ein Problem in der **PartitionProductsUsagePipeline** in der Data Factory **productrecgamalbox1dev** festgestellt, weshalb die Pipeline angehalten werden soll.
-
-![Pipeline, die angehalten werden soll](./media/data-factory-monitor-manage-pipelines/pipeline-to-be-suspended.png)
-
-Führen Sie den folgenden PowerShell-Befehl aus, um eine Pipeline anzuhalten:
+Sie können Pipelines mit dem PowerShell-Cmdlet **Suspend-AzureRmDataFactoryPipeline** anhalten. Dieses Cmdlet ist nützlich, wenn Sie Ihre Pipelines nicht ausführen möchten, bis ein Problem behoben wurde. 
 
 ```powershell
 Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -193,7 +182,7 @@ Beispiel:
 Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
-Nach der Behebung des Problems in der **PartitionProductsUsagePipeline** können Sie die angehaltene Pipeline mit dem folgenden PowerShell-Befehl fortsetzen:
+Nach der Behebung des Problems in der Pipeline können Sie die angehaltene Pipeline mit dem folgenden PowerShell-Befehl fortsetzen:
 
 ```powershell
 Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -203,8 +192,11 @@ Beispiel:
 ```powershell
 Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
+
 ## <a name="debug-pipelines"></a>Debuggen von Pipelines
 Azure Data Factory bietet über das Azure-Portal und Azure PowerShell umfangreiche Funktionen zum Debuggen und Beheben von Problemen von Pipelines.
+
+> [!NOTE} Die Behebung von Problemen ist in der App „Überwachung und Verwaltung“ wesentlich einfacher. Im Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
 
 ### <a name="find-errors-in-a-pipeline"></a>Suchen von Fehlern in einer Pipeline
 Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat das von der Pipeline erstellte Dataset aufgrund des Fehlers den Status „Fehler“. Sie können Fehler in Azure Data Factory mit den folgenden Methoden debuggen und beheben.
@@ -221,7 +213,7 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
    ![Blatt "Aktivitätsausführung – Details" mit Fehler](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Verwenden von PowerShell zum Debuggen eines Fehlers
-1. Starten Sie **Azure PowerShell**.
+1. Starten Sie **PowerShell**.
 2. Führen Sie den Befehl **Get-AzureRmDataFactorySlice** aus, um die Slices und deren Status anzuzeigen. Ein Slice mit dem Status **Fehler** sollte angezeigt werden.        
 
     ```powershell   
@@ -233,7 +225,7 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
     Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
-   Ersetzen Sie **StartDateTime** durch den für „Set-AzureRmDataFactoryPipelineActivePeriod“ festgelegten StartDateTime-Wert.
+   Ersetzen Sie **StartDateTime** durch die Startzeit der Pipeline. 
 3. Führen Sie nun das **Get-AzureRmDataFactoryRun**-Cmdlet zum Abrufen von Details zur Aktivitätsausführung für den Slice aus.
 
     ```powershell   
@@ -279,12 +271,17 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>Wiederholen nach Fehlern in einer Pipeline
+
+> [!IMPORTANT]
+> Das Beheben von Fehlern und erneute Ausführen fehlerhafter Slices ist in der App „Überwachung und Verwaltung“ wesentlich einfacher. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
+
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 Nachdem Sie eine Problembehandlung und das Debuggen für Fehler in einer Pipeline ausgeführt haben, können Sie Fehler wiederholen, indem Sie zum fehlerhaften Slice navigieren und dann in der Befehlsleiste auf die Schaltfläche **Ausführen** klicken.
 
 ![Wiederholen eines fehlerhaften Slices](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
 Für den Fall, dass der Slice die Überprüfung aufgrund eines Richtlinienfehlers (z.B. Daten nicht verfügbar) nicht besteht, können Sie den Fehler korrigieren und die Überprüfung erneut ausführen, indem Sie auf der Befehlsleiste auf **Überprüfen** klicken.
+
 ![Beheben von Fehlern und Überprüfen](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell

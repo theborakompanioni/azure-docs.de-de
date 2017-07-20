@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 07/17/2017
 ms.author: juliako
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 1c3118bc66afe7ef4f04d86d9b598128d1aadf82
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 32cbfbc78fbb808ed59142b80602a751f607706d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 06/29/2017
 
 ---
 
@@ -27,13 +26,30 @@ ms.lasthandoff: 05/05/2017
 
 In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** und **Media Encoder Premium Workflow** verglichen.
 
-### <a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
+## <a name="video-and-audio-processing-capabilities"></a>Verarbeitungsfunktionen für Video und Audio
+
+In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) und Media Encoder Premium Workflow (MEPW) verglichen. 
+
+|Funktion|Media Encoder Standard|Media Encoder Premium Workflow|
+|---|---|---|
+|Anwenden bedingter Logik beim Codieren<br/>(z.B. wenn die Eingabe in HD erfolgt, dann in 5.1-Audio codieren)|Nein|Ja|
+|Untertitelung|Nein|[Ja](media-services-premium-workflow-encoder-formats.md#a-idclosedcaptioningasupport-for-closed-captioning)|
+|[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> mit Dialogue Intelligence™|Nein|Ja|
+|Deinterlacing, Inverse Telecine|Basic|Broadcastqualität|
+|Erkennen und Entfernen von schwarzen Rahmen <br/>(Pillarbox, Letterbox)|Nein|Ja|
+|Erstellen von Miniaturansichten|[Ja](media-services-dotnet-generate-thumbnail-with-mes.md)|[Ja](media-services-media-encoder-premium-workflow-tutorials.md#a-idthumbnailstomultibitratemp4aadding-thumbnails-to-multibitrate-mp4-output)|
+|Schneiden/Kürzen und Zusammenfügen von Videos|[Ja](media-services-advanced-encoding-with-mes.md#a-idtrimvideoatrim-a-video-clipping)|Ja|
+|Überlagern von Audio oder Video|[Ja](media-services-advanced-encoding-with-mes.md#a-idoverlayacreate-an-overlay)|[Ja](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
+|Überlagern von Grafiken|Aus Bildquellen|Aus Bild- und Textquellen|
+|Mehrere Audiosprachspuren|Eingeschränkt|[Ja](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
+
+## <a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
 | Medienprozessorname | Geltende Preise | Hinweise |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |Codierungsaufgaben werden basierend auf der Gesamtdauer in Minuten für die Ausgabe aller Mediendateien in Rechnung gestellt. Den entsprechenden Kostensatz finden Sie [hier][1] in der Spalte „ENCODER“. |
 | **Media Encoder Premium-Workflow** |PREMIUM ENCODER |Codierungsaufgaben werden basierend auf der Gesamtdauer in Minuten für die Ausgabe aller Mediendateien in Rechnung gestellt. Den entsprechenden Kostensatz finden Sie [hier][1] in der Spalte „PREMIUM ENCODER“. |
 
-### <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
+## <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
 | Eingabecontainer/Dateiformate | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | Adobe® Flash® F4V |Ja |Ja |
@@ -50,7 +66,7 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 | Matroska/WebM |Ja |Nein |
 | QuickTime (.mov) |Ja |Nein |
 
-### <a name="input-video-codecs"></a>Codecs für Videoeingang
+## <a name="input-video-codecs"></a>Codecs für Videoeingang
 | Codecs für Videoeingang | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AVC 8-Bit/10-Bit, bis zu 4:2:2, einschließlich AVCIntra |8-Bit 4:2:0 und 4:2:2 |Ja |
@@ -70,7 +86,7 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 | Apple ProRes 4444 |Ja |Nein |
 | Apple ProRes 4444 XQ |Ja |Nein |
 
-### <a name="input-audio-codecs"></a>Codecs für Audioeingang
+## <a name="input-audio-codecs"></a>Codecs für Audioeingang
 | Codecs für Audioeingang | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M und 302M, AES3-2003) |Nein |Ja |
@@ -86,7 +102,7 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 | [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Ja |Nein |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ja |Nein |
 
-### <a name="output-containerfile-formats"></a>Ausgabecontainer/Dateiformate
+## <a name="output-containerfile-formats"></a>Ausgabecontainer/Dateiformate
 | Ausgabecontainer/Dateiformate | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | Adobe® Flash® F4V |Nein |Ja |
@@ -99,7 +115,7 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 | AVI (unkomprimiert, 8-Bit/10-Bit) |Nein |Ja |
 | Smooth Streaming-Dateiformat (PIFF 1.3) |Nein |Ja |
 
-### <a name="output-video-codecs"></a>Codecs für Videoausgang
+## <a name="output-video-codecs"></a>Codecs für Videoausgang
 | Codecs für Videoausgang | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AVC (H.264; 8-Bit; bis High Profile, Level 5.2; 4K Ultra HD; AVC Intra) |Nur 8-Bit 4:2:0 |Ja |
@@ -111,7 +127,7 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 | Erstellung von PNG-Miniaturansichten |Ja |Ja |
 | Erstellung von BMP-Miniaturansichten |Ja |Nein |
 
-### <a name="output-audio-codecs"></a>Codecs für Audioausgabe
+## <a name="output-audio-codecs"></a>Codecs für Audioausgang
 | Codecs für Audioausgabe | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M und 302M, AES3-2003) |Nein |Ja |

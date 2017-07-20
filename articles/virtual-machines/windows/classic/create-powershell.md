@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 05/30/2017
 ms.author: cynthn
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8b823c42743bc477dceaa3270836de8ebd92c28f
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: bd14d9902f4061965c008454a14f91d3927f5b99
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>Erstellen eines virtuellen Windows-Computers mit PowerShell und dem klassischen Bereitstellungsmodell
 > [!div class="op_single_selector"]
-> * [Klassisches Azure-Portal – Windows](tutorial.md)
+> * [Azure-Portal – Windows](tutorial.md)
 > * [PowerShell – Windows](create-powershell.md)
 > 
 > 
@@ -165,7 +165,7 @@ Option 1: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddiens
 
     New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-Der kurze Name des Clouddiensts ist der Name in der Liste der Clouddienste im klassischen Azure-Portal oder in der Liste der Ressourcengruppen im Azure-Portal.
+Der Kurzname des Clouddiensts ist der Name in der Liste der Clouddienste im Azure-Portal oder in der Liste der Ressourcengruppen im Azure-Portal.
 
 Option 2: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst und virtuellen Netzwerk.
 
@@ -181,7 +181,7 @@ Wenn Sie einen Texteditor verwenden, kopieren Sie den Befehlssatz in die Zwische
 Wenn Sie diesen virtuellen Computer erneut oder einen ähnlichen Computer erstellen, können Sie:
 
 * diesen Befehlssatz als PowerShell-Skriptdatei (*.ps1) speichern
-* diesen Befehlssatz als Azure Automation-Runbook im Bereich **Automatisierung** des klassischen Azure-Portals speichern
+* Speichern Sie diesen Befehlssatz im Azure-Portal im Bereich **Automatisierungskonten** als Azure Automation-Runbook.
 
 ## <a id="examples"></a>Beispiele
 Hier finden Sie zwei Beispiele für die Verwendung der vorangegangenen Schritte zum Erstellen von Azure PowerShell-Befehlssätzen, die Windows-basierte virtuelle Azure-Computer erstellen.

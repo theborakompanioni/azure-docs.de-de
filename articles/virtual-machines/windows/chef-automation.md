@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2015
+ms.date: 05/30/2017
 ms.author: diviso
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: aed46cbf5a57d73f4ce5bab42fdd20ae11d86373
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -59,7 +60,8 @@ Erstellen Sie dann ein zweites Verzeichnis namens „C:\chef\cookbooks“.
 
 Wir müssen jetzt unsere Azure-Einstellungsdatei herunterladen, damit Chef mit unserem Azure-Abonnement kommunizieren kann.
 
-Laden Sie [hier](https://manage.windowsazure.com/publishsettings/)Ihre Veröffentlichungseinstellungen herunter.
+<!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
+Laden Sie Ihre Veröffentlichungseinstellungen mit dem PowerShell Azure-Befehl [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) herunter. 
 
 Speichern Sie die Datei mit den Veröffentlichungseinstellungen unter „C:\chef“.
 
@@ -221,7 +223,7 @@ Nach Abschluss der Bereitstellung können wir über den Port 80 eine Verbindung
 
 Wie Sie sehen, war ich bei meinem HTML-Code richtig kreativ.
 
-Vergessen Sie nicht, dass wir die Verbindung auch im klassischen Azure-Portal per RDP-Sitzung über den Port 3389 herstellen können.
+Vergessen Sie nicht, dass wir die Verbindung auch im Azure-Portal per RDP-Sitzung über den Port 3389 herstellen können.
 
 Ich hoffe, diese Informationen waren hilfreich. Starten Sie noch heute mit Azure, um Ihre Infrastruktur als Code umzusetzen!
 

@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2016
-ms.author: padmavc
+ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 4d68fde29e85fcf9aa623b4d798262bcd486a8bb
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: d1c61ba220b4334f053428a23e620e8004fc60f7
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="track-b2b-messages-in-the-operations-management-suite-portal"></a>Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal
+
+![Symbol für Logic Apps B2B](./media/logic-apps-track-b2b-messages-omsportal/logic-apps-b2b-symbol.png)
+
 Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden Geschäftsprozessen oder Anwendungen. Verwenden Sie die folgenden webbasierten Nachverfolgungsfunktionen im Operations Management Suite-Portal, um zu bestätigen, ob Nachrichten richtig verarbeitet werden:
 
 * Anzahl und Status von Nachrichten
@@ -67,9 +70,10 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 2. Wählen Sie auf der Startseite **Logic Apps B2B Messages**, um den AS2- und X12-Nachrichtenstatus anzuzeigen.  Die Daten basieren auf einem einzelnen Tag.
 ![„Logic Apps B2B Messages“ (Logik-Apps-B2B-Nachrichten) auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
-3. Wählen Sie eine AS2 oder X12-Nachricht nach Status und fahren Sie mit der Nachrichtenliste fort. Im nächsten Screenshot wird der AS2-Nachrichtenstatus angezeigt. Die Eigenschaftsbeschreibungen des AS2- und X12-Nachrichtenstatus finden Sie unter „Beschreibungen der Nachrichtenlisteneigenschaften“.  
+3. Wählen Sie eine AS2-, X12- oder EDIFACT-Nachricht nach Status, und fahren Sie mit der Nachrichtenliste fort. Im nächsten Screenshot wird der AS2-Nachrichtenstatus angezeigt. Die Eigenschaftsbeschreibungen des AS2- und X12-Nachrichtenstatus finden Sie unter „Beschreibungen der Nachrichtenlisteneigenschaften“.  
 ![AS2-Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
-4. Wählen Sie eine Zeile in der AS2- oder X12-Nachrichtenliste aus, um die Protokollsuche anzuzeigen.  In der Protokollsuche werden alle Aktionen mit derselben Ausführungs-ID angezeigt.
+
+4. Wählen Sie eine Zeile in der AS2-, X12- oder EDIFACT-Nachrichtenliste aus, um die Protokollsuche anzuzeigen.  In der Protokollsuche werden alle Aktionen mit derselben Ausführungs-ID angezeigt.
 ![Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
 ## <a name="message-list-property-descriptions"></a>Beschreibungen der Nachrichtenlisteneigenschaften
@@ -92,8 +96,8 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
-| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
+| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine X12-Vereinbarung konfigurierte Hostpartner |
+| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine X12-Vereinbarung konfigurierte Gastpartner |
 | Logik-App | Logik-App, in der die AS2-Aktionen konfiguriert sind |
 | Status | X12-Nachrichtenstatus <br>Erfolg = Gute X12-Nachricht empfangen oder gesendet, keine Funktionsbestätigung konfiguriert <br>Erfolg = Gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und empfangen oder Funktionsbestätigung gesendet <br>Fehler = Fehlerhafte X12-Nachricht empfangen oder gesendet <br>Ausstehend = Gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und Funktionsbestätigung erwartet. |
 | Ack | Status der Funktionsbestätigung (997) <br>Akzeptiert = Positive Funktionsbestätigung empfangen oder gesendet <br>Abgelehnt = Negative Funktionsbestätigung empfangen oder gesendet <br>Ausstehend = Eine Funktionsbestätigung wird erwartet, wurde aber noch nicht empfangen <br>Ausstehend = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden <br>Nicht erforderlich = Funktionsbestätigung ist nicht konfiguriert |
@@ -103,6 +107,24 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 | ICN | Austauschkontrollnummer der X12-Nachricht |
 | TSCN | Transaktionssatzkontrollnummer der X12-Nachricht |
 | Zeitstempel | Uhrzeit, zu der die X12-Aktion die Nachricht verarbeitet hat |
+
+
+#### <a name="edifact-message-list-property-descriptions"></a>Beschreibungen der EDIFACT-Nachrichtenlisteneigenschaften
+
+| Eigenschaft | Beschreibung |
+| --- | --- |
+| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine EDIFACT-Vereinbarung konfigurierte Hostpartner |
+| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine EDIFACT-Vereinbarung konfigurierte Gastpartner |
+| Logik-App | Logik-App, in der die AS2-Aktionen konfiguriert sind |
+| Status | EDIFACT-Nachrichtenstatus <br>Erfolg = Gute X12-Nachricht empfangen oder gesendet, keine Funktionsbestätigung konfiguriert <br>Erfolg = Gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und empfangen oder Funktionsbestätigung gesendet <br>Fehler = Fehlerhafte X12-Nachricht empfangen oder gesendet <br>Ausstehend = Gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und Funktionsbestätigung erwartet. |
+| Ack | Status der Funktionsbestätigung (997) <br>Akzeptiert = Positive Funktionsbestätigung empfangen oder gesendet <br>Abgelehnt = Negative Funktionsbestätigung empfangen oder gesendet <br>Ausstehend = Eine Funktionsbestätigung wird erwartet, wurde aber noch nicht empfangen <br>Ausstehend = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden <br>Nicht erforderlich = Funktionsbestätigung ist nicht konfiguriert |
+| Richtung | Richtung der EDIFACT-Nachricht |
+| Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logik-App |
+| Msg type |  EDIFACT-Nachrichtentyp |
+| ICN | Austauschkontrollnummer der EDIFACT-Nachricht |
+| TSCN | Transaktionssatzkontrollnummer der EDIFACT-Nachricht |
+| Zeitstempel | Uhrzeit, zu der die EDIFACT-Aktion die Nachricht verarbeitet hat |
+
 
 ## <a name="queries-in-the-operations-management-suite-portal"></a>Abfragen im Operations Management Suite-Portal
 

@@ -11,23 +11,18 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1c56a7f16361ac4fae97be6c9f21c959723b396c
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 622604dc3ce69085feff6705168d58ad9938c429
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Failback von Azure zu einem lokalen Standort
-
-> [!div class="op_single_selector"]
-> * [VMware-/physische Computer von Azure](site-recovery-failback-azure-to-vmware.md)
-> * [Hyper-V-VMs von Azure](site-recovery-failback-from-azure-to-hyper-v.md)
-
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Azure-Computer ein Failback von Azure Virtual Machines auf den lokalen Standort durchführen. Befolgen Sie die Anweisungen in diesem Artikel, um Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort auf Azure (beschrieben im Tutorial [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md)) per Failback wieder auf den lokalen Standort zurückzuführen.
 
@@ -76,7 +71,7 @@ Wenn der lokale virtuelle Computer vor dem erneuten Schützen des virtuellen Com
 
 Für einen physischen Computer kann beim Failover auf Azure nur ein Failback als virtueller VMware-Computer (auch als P2A2V bezeichnet) ausgeführt werden. Dieser Flow fällt unter Wiederherstellung an einem alternativen Speicherort.
 
-* Für einen geschützten Windows Server 2008 R2 SP1-Server, für den ein Failover zu Azure ausgeführt wurde, kann kein Failback ausgeführt werden.
+* Für einen geschützten physischen Server unter Windows Server 2008 R2 SP1, für den ein Failover auf Azure ausgeführt wurde, kann kein Failback ausgeführt werden.
 * Stellen Sie sicher, dass Sie mindestens einen Masterzielserver und die erforderlichen ESX/ESXi-Hosts ermitteln, auf die Sie ein Failback ausführen müssen.
 
 ## <a name="have-you-completed-reprotection"></a>Haben Sie das erneute Schützen abgeschlossen?
@@ -112,7 +107,7 @@ Hinweis: Anwendungskonsistente Wiederherstellungspunkte können zeitlich weiter 
 
 ### <a name="what-happens-to-vmware-tools-post-failback"></a>Was geschieht mit VMware-Tools nach dem Failback?
 
-Während des Failovers auf Azure können die VMware-Tools nicht auf dem virtuellen Azure-Computer ausgeführt werden. Bei einem virtuellen Windows-Computer deaktiviert ASR die VMware-Tools während des Failovers. Bei einem virtuellen Linux-Computer deinstalliert ASR die VMware-Tools während des Failovers. 
+Während des Failovers auf Azure können die VMware-Tools nicht auf dem virtuellen Azure-Computer ausgeführt werden. Bei einem virtuellen Windows-Computer deaktiviert ASR die VMware-Tools während des Failovers. Bei einem virtuellen Linux-Computer deinstalliert ASR die VMware-Tools während des Failovers.
 
 Im Zuge des Failbacks eines virtuellen Windows-Computers werden die VMware-Tools wieder aktiviert. Analog dazu werden die VMware-Tools beim Failback eines virtuellen Linux-Computers wieder auf dem Computer installiert.
 

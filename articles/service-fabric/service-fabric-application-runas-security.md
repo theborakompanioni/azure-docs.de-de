@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 06/30/2017
 ms.author: mfussell
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ce1291261cd8f65d44873217345ae6efaa515534
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: e673b45a43a06d18040c3437caf8765704d5c36a
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -202,7 +203,7 @@ Echo "Test console redirection which writes to the application log folder on the
 In den vorangegangenen Schritten wurde erläutert, wie eine RunAs-Richtlinie auf SetupEntryPoint angewendet wird. Nun schauen wir uns genauer an, wie verschiedene Prinzipale erstellt werden, die als Dienstrichtlinien angewendet werden können.
 
 ### <a name="create-local-user-groups"></a>Erstellen lokaler Benutzergruppen
-Sie können Benutzergruppen definieren und erstellen werden, die es ermöglichen, dass der Gruppe ein oder mehrere Benutzer hinzugefügt werden. Dies ist besonders nützlich, wenn es für verschiedene Diensteinstiegspunkte mehrere Benutzer gibt, die auf Gruppenebene bestimmte allgemeine Berechtigungen benötigen. Das folgende Beispiel zeigt eine lokale Gruppe namens **LocalAdminGroup**, die über Administratorrechte verfügt. Zwei Benutzer, „Customer1“ und „Customer2“, wurden dieser lokalen Gruppe hinzugefügt.
+Sie können Benutzergruppen definieren und erstellen werden, die es ermöglichen, dass der Gruppe ein oder mehrere Benutzer hinzugefügt werden. Dies ist nützlich, falls es für verschiedene Diensteinstiegspunkte mehrere Benutzer gibt, die auf Gruppenebene bestimmte allgemeine Berechtigungen benötigen. Das folgende Beispiel zeigt eine lokale Gruppe namens **LocalAdminGroup**, die über Administratorrechte verfügt. Zwei Benutzer, „Customer1“ und „Customer2“, wurden dieser lokalen Gruppe hinzugefügt.
 
 ```xml
 <Principals>
@@ -270,7 +271,7 @@ Verwenden Sie den Abschnitt **DefaultRunAsPolicy**, um ein Standardbenutzerkonto
 </Policies>
 ```
 ### <a name="use-an-active-directory-domain-group-or-user"></a>Verwenden einer Active Directory-Domänengruppe oder eines -Benutzers
-Für eine Service Fabric-Instanz, die mit dem eigenständigen Installer unter Windows Server installiert wurde, können Sie den Dienst mit den Anmeldeinformationen für ein Active Directory-Benutzer- oder -Gruppenkonto ausführen. Hinweis: Dies bezieht sich auf eine lokale Active Directory-Instanz in Ihrer Domäne, nicht auf Azure Active Directory (Azure AD). Indem Sie einen Domänenbenutzer oder eine -gruppe verwenden, können Sie anschließend auf andere Ressourcen in der Domäne (z.B. Dateifreigaben) zugreifen, für die Berechtigungen gewährt wurden.
+Für eine Service Fabric-Instanz, die mit dem eigenständigen Installer unter Windows Server installiert wurde, können Sie den Dienst mit den Anmeldeinformationen für ein Active Directory-Benutzer- oder -Gruppenkonto ausführen. Dies bezieht sich auf eine lokale Active Directory-Instanz in Ihrer Domäne, nicht auf Azure Active Directory (Azure AD). Indem Sie einen Domänenbenutzer oder eine -gruppe verwenden, können Sie anschließend auf andere Ressourcen in der Domäne (z.B. Dateifreigaben) zugreifen, für die Berechtigungen gewährt wurden.
 
 Im folgenden Beispiel wird ein Active Directory-Benutzer mit dem Namen *TestUser* verwendet, dessen Domänenkennwort mit dem Zertifikat *MyCert* verschlüsselt wird. Sie können den PowerShell-Befehl `Invoke-ServiceFabricEncryptText` verwenden, um den Verschlüsselungstext für den geheimen Schlüssel zu erstellen. Weitere Informationen finden Sie unter [Verwalten von Geheimnissen in Service Fabric-Anwendungen](service-fabric-application-secret-management.md).
 
@@ -330,7 +331,7 @@ Test-AdServiceAccount svc-Test$
 ```
 
 ## <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte
-Wenn Sie eine RunAs-Richtlinie auf einen Dienst anwenden und im Dienstmanifest Endpunktressourcen mit dem HTTP-Protokoll deklariert sind, müssen Sie eine **SecurityAccessPolicy** angeben. Diese Richtlinie soll sicherstellen, dass Ports, die diesen Endpunkten zugeordnet sind, richtig auf der Zugriffssteuerungsliste für das RunAs-Benutzerkonto eingetragen sind, in dem der Dienst ausgeführt wird. Andernfalls hat **http.sys** keinen Zugriff auf den Dienst, sodass beim Aufrufen vom Client Fehler auftreten. Im folgenden Beispiel wird das Customer3-Konto auf den Endpunkt **ServiceEndpointName** angewendet, und es werden vollständige Zugriffsrechte gewährt.
+Wenn Sie eine RunAs-Richtlinie auf einen Dienst anwenden und im Dienstmanifest Endpunktressourcen mit dem HTTP-Protokoll deklariert sind, müssen Sie eine **SecurityAccessPolicy** angeben. Diese Richtlinie soll sicherstellen, dass Ports, die diesen Endpunkten zugeordnet sind, richtig auf der Zugriffssteuerungsliste für das RunAs-Benutzerkonto eingetragen sind, in dem der Dienst ausgeführt wird. Andernfalls hat **http.sys** keinen Zugriff auf den Dienst, sodass beim Aufrufen vom Client Fehler auftreten. Im folgenden Beispiel wird das Customer1-Konto auf den Endpunkt **EndpointName** angewendet, und es werden vollständige Zugriffsrechte gewährt.
 
 ```xml
 <Policies>
@@ -351,7 +352,12 @@ Für den HTTPS-Endpunkt müssen Sie auch den Namen des Zertifikats zum Zurückge
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
 ```
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Aktualisieren von mehreren Anwendungen mit HTTPS-Endpunkten
+Sie müssen darauf achten, nicht **denselben Port** für verschiedene Instanzen der gleichen Anwendung zu verwenden, wenn Sie http**s** verwenden. Der Grund ist, dass Service Fabric das Zertifikat für eine der Anwendungsinstanzen nicht aktualisieren kann. Wenn beispielsweise sowohl Anwendung 1 als auch Anwendung 2 ihr Zertifikat 1 auf Zertifikat 2 aktualisieren möchten. Wenn das Upgrade erfolgt, könnte Service Fabric möglicherweise die Zertifikat-1-Registrierung mit http.sys bereinigt haben, obwohl die andere Anwendung es immer noch verwendet. Um dies zu verhindern, erkennt Service Fabric, dass bereits eine andere Anwendungsinstanz auf dem Port mit dem Zertifikat registriert ist (aufgrund von http.sys) und der Vorgang schlägt fehl.
 
+Da Service Fabric das Aktualisieren von zwei verschiedenen Diensten mit **dem gleichen Port** in verschiedenen Anwendungsinstanzen nicht unterstützt. Mit anderen Worten: Sie können das gleiche Zertifikat nicht für verschiedene Dienste auf demselben Port verwenden. Falls Sie ein gemeinsam genutztes Zertifikat auf demselben Port benötigen, müssen Sie sicherstellen, dass die Dienste auf unterschiedlichen Computern mit Platzierungseinschränkungen platziert werden. Oder verwenden Sie nach Möglichkeit, für jeden Dienst in jeder Anwendungsinstanz, dynamische Ports von Service Fabric. 
+
+Eine Fehlermeldung wird Sie darauf hingewiesen, wenn ein Upgrade mit HTTPS ausfällt: „Der Windows-HTTP-Server-API unterstützt mehrere Zertifikate für Anwendungen mit einem gemeinsamen Port nicht.“
 
 ## <a name="a-complete-application-manifest-example"></a>Vollständiges Beispiel eines Anwendungsmanifests
 Im folgenden Anwendungsmanifest sind viele unterschiedliche Einstellungen enthalten:

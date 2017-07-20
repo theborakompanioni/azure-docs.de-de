@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/12/2017
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 34fc513b6d4408e341fc5a723ca743daee39b85d
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 74982663b0501d3a5c7973a5f383e14e0f964696
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -58,7 +58,11 @@ Konvertiert den Wert in ein Array.
 |:--- |:--- |:--- |:--- |
 | convertToArray |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der Wert, der in ein Array konvertiert werden soll. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die Verwendung der array-Funktion mit unterschiedlichen Typen gezeigt.
 
@@ -99,9 +103,13 @@ Im folgenden Beispiel wird die Verwendung der array-Funktion mit unterschiedlich
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| intOutput | Array | [1] |
+| stringOutput | Array | ["a"] |
+| objectOutput | Array | [{"a": "b", "c": "d"}] |
 
 <a id="coalesce" />
 
@@ -117,7 +125,11 @@ Gibt den ersten Wert aus den Parametern zurück, der nicht NULL ist. Leere Zeich
 | arg1 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der erste Wert, der auf NULL getestet werden soll. |
 | weitere arg-Parameter |Nein |Ganze Zahl, Zeichenfolge, Array oder Objekt |Weitere Werte, die auf NULL getestet werden sollen. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Der Wert des ersten Parameters ungleich NULL, der Zeichenfolge, ganze Zahl, Array oder Objekt sein kann. NULL, wenn alle Parameter NULL sind. 
+
+### <a name="example"></a>Beispiel
 
 Das folgende Beispiel zeigt die Ausgabe bei unterschiedlichen Verwendungen von „coalesce“.
 
@@ -128,7 +140,14 @@ Das folgende Beispiel zeigt die Ausgabe bei unterschiedlichen Verwendungen von �
     "parameters": {
         "objectToTest": {
             "type": "object",
-            "defaultValue": {"first": null, "second": null}
+            "defaultValue": {
+                "null1": null, 
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
         }
     },
     "resources": [
@@ -136,27 +155,37 @@ Das folgende Beispiel zeigt die Ausgabe bei unterschiedlichen Verwendungen von �
     "outputs": {
         "stringOutput": {
             "type": "string",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, 'fallback')]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
         },
         "intOutput": {
             "type": "int",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, 1)]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
         },
         "objectOutput": {
             "type": "object",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, parameters('objectToTest'))]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
         },
         "arrayOutput": {
             "type": "array",
-            "value": "[coalesce(parameters('objectToTest').first, parameters('objectToTest').second, array(1))]"
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Der Wert des ersten Parameters ungleich NULL, der Zeichenfolge, ganze Zahl, Array oder Objekt sein kann. NULL, wenn alle Parameter NULL sind. 
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| stringOutput | String | die Standardeinstellung |
+| intOutput | int | 1 |
+| objectOutput | Objekt | {"first": "default"} |
+| arrayOutput | Array | [1] |
+| emptyOutput | Bool | True  |
 
 <a id="concat" />
 
@@ -174,7 +203,10 @@ Kombiniert mehrere Arrays und gibt das verkettete Array zurück oder kombiniert 
 
 Diese Funktion akzeptiert eine beliebige Anzahl von Argumenten und Zeichenfolgen oder Arrays für die Parameter.
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+Eine Zeichenfolge oder ein Array aus verketteten Werten.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 
@@ -211,6 +243,12 @@ Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 }
 ```
 
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+
 Das folgende Beispiel zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgeben.
 
 ```json
@@ -226,15 +264,18 @@ Das folgende Beispiel zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und e
     "resources": [],
     "outputs": {
         "concatOutput": {
-            "value": "[concat(parameters('prefix'), uniqueString(resourceGroup().id))]",
+            "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]",
             "type" : "string"
         }
     }
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
-Eine Zeichenfolge oder ein Array aus verketteten Werten.
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 <a id="contains" />
 
@@ -250,7 +291,11 @@ Eine Zeichenfolge oder ein Array aus verketteten Werten.
 | container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+**True**, wenn das Element gefunden wurde; andernfalls **False**.
+
+### <a name="example"></a>Beispiel
 
 Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
 
@@ -303,9 +348,16 @@ Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlic
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-**True**, wenn das Element gefunden wurde; andernfalls **False**.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| stringTrue | Bool | True  |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True  |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True  |
+| arrayFalse | Bool | False |
 
 <a id="createarray" />
 
@@ -321,7 +373,11 @@ Erstellt ein Array auf der Grundlage der Parameter.
 | arg1 |Ja |Zeichenfolge, ganze Zahl, Array oder Objekt |Der erste Wert im Array. |
 | zusätzliche Argumente |Nein |Zeichenfolge, ganze Zahl, Array oder Objekt |Weitere Werte im Array. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array.
+
+### <a name="example"></a>Beispiel
 
 Das folgende Beispiel zeigt die Verwendung von „createArray“ mit unterschiedlichen Typen:
 
@@ -362,9 +418,14 @@ Das folgende Beispiel zeigt die Verwendung von „createArray“ mit unterschied
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| stringArray | Array | ["a", "b", "c"] |
+| intArray | Array | [1, 2, 3] |
+| objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
+| arrayArray | Array | [["one", "two", "three"]] |
 
 <a id="empty" />
 
@@ -380,7 +441,11 @@ Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den geprüft werden soll, ob er leer ist. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurückgegeben.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfolge leer sind.
 
@@ -421,9 +486,13 @@ Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfol
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurückgegeben.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayEmpty | Bool | True  |
+| objectEmpty | Bool | True  |
+| stringEmpty | Bool | True  |
 
 <a id="first" />
 
@@ -438,7 +507,11 @@ Gibt das erste Element des Arrays oder das erste Zeichen der Zeichenfolge zurüc
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen erstes Element oder Zeichen abgerufen wird. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des ersten Elements in einem Array oder das erste Zeichen einer Zeichenfolge.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge gezeigt.
 
@@ -467,13 +540,16 @@ Im folgenden Beispiel wird die Verwendung der first-Funktion mit einem Array und
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des ersten Elements in einem Array bzw. eine Zeichenfolge des ersten Zeichens.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
 <a id="intersection" />
 
-## <a name="intersection"></a>intersection
+## <a name="intersection"></a>Schnittmenge
 `intersection(arg1, arg2, arg3, ...)`
 
 Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den Parametern zurück.
@@ -486,7 +562,11 @@ Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den P
 | arg2 |Ja |Array oder Objekt |Der zweite Wert für die Suche nach gemeinsamen Elementen. |
 | zusätzliche Argumente |Nein |Array oder Objekt |Weitere Werte für die Suche nach gemeinsamen Elementen. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array oder Objekt mit den gemeinsamen Elementen.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt:
 
@@ -527,9 +607,12 @@ Im folgenden Beispiel wird die Verwendung von „intersection“ mit Arrays und 
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array oder Objekt mit den gemeinsamen Elementen.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| objectOutput | Objekt | {"one": "a", "three": "c"} |
+| arrayOutput | Array | ["two", "three"] |
 
 <a id="last" />
 
@@ -544,7 +627,11 @@ Gibt das letzte Element des Arrays bzw. das letzte Zeichen der Zeichenfolge zur�
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen letztes Element oder Zeichen abgerufen wird. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des letzten Elements in einem Array oder das letzte Zeichen einer Zeichenfolge.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die Verwendung der last-Funktion mit einem Array und einer Zeichenfolge gezeigt.
 
@@ -573,9 +660,12 @@ Im folgenden Beispiel wird die Verwendung der last-Funktion mit einem Array und 
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des letzten Elements in einem Array bzw. ein Zeichenfolgenwert, der dem letzten Zeichen entspricht.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
 <a id="length" />
 
@@ -590,7 +680,11 @@ Gibt die Anzahl von Elementen in einem Array bzw. von Zeichen in einer Zeichenfo
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Das Array, von dem die Anzahl der Elemente, bzw. die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Eine ganze Zahl. 
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die Verwendung von „length“ mit einem Array und einer Zeichenfolge gezeigt:
 
@@ -626,6 +720,13 @@ Im folgenden Beispiel wird die Verwendung von „length“ mit einem Array und e
 }
 ```
 
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
+
 Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von Ressourcen die Anzahl der Iterationen anzugeben. Im folgenden Beispiel bezieht sich der Parameter **siteNames** auf ein Array von Namen, die bei der Erstellung der Websites verwendet werden.
 
 ```json
@@ -636,10 +737,6 @@ Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von 
 ```
 
 Weitere Informationen zur Verwendung dieser Funktion mit einem Array finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
-
-### <a name="return-value"></a>Rückgabewert
-
-Eine ganze Zahl. 
 
 <a id="min" />
 
@@ -654,7 +751,11 @@ Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trenn
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der kleinste Wert abgerufen werden soll. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Ganzzahlwert, der den kleinsten Wert darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird gezeigt, wie „min“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
 
@@ -682,9 +783,12 @@ Im folgenden Beispiel wird gezeigt, wie „min“ mit einem Array und einer List
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Ganzzahlwert, der den kleinsten Wert darstellt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 <a id="max" />
 
@@ -699,7 +803,11 @@ Gibt den größten Wert aus einem Array mit ganzen Zahlen oder einer durch Trenn
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der größte Wert abgerufen werden soll. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Ganzzahlwert, der den größten Wert darstellt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird gezeigt, wie „max“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
 
@@ -727,9 +835,12 @@ Im folgenden Beispiel wird gezeigt, wie „max“ mit einem Array und einer List
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Ganzzahlwert, der den größten Wert darstellt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 <a id="range" />
 
@@ -745,7 +856,11 @@ Erstellt ein Array mit ganzen Zahlen, das mit einer ganzen Zahl beginnt und eine
 | startingInteger |Ja |int |Die erste ganze Zahl im Array. |
 | numberofElements |Ja |int |Die Anzahl von ganzen Zahlen im Array. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array mit ganzen Zahlen.
+
+### <a name="example"></a>Beispiel
 
 Das folgende Beispiel zeigt die Verwendung der „range“-Funktion:
 
@@ -773,9 +888,11 @@ Das folgende Beispiel zeigt die Verwendung der „range“-Funktion:
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array mit ganzen Zahlen.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| rangeOutput | Array | [5, 6, 7] |
 
 <a id="skip" />
 
@@ -791,7 +908,11 @@ Gibt ein Array mit allen Elementen gemäß der angegebenen Anzahl im Array bzw. 
 | originalValue |Ja |Array oder Zeichenfolge |Array oder Zeichenfolge, wo Elemente übersprungen werden sollen. |
 | numberToSkip |Ja |int |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist der Wert größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array oder eine Zeichenfolge.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array und Zeichen in der Zeichenfolge übersprungen.
 
@@ -835,9 +956,12 @@ Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array und Zeic
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array oder eine Zeichenfolge.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["three"] |
+| stringOutput | String | two three |
 
 <a id="take" />
 
@@ -853,7 +977,11 @@ Gibt ein Array mit der angegebenen Anzahl von Elementen ab dem Anfang des Arrays
 | originalValue |Ja |Array oder Zeichenfolge |Das Array bzw. die Zeichenfolge, wo die Elemente entnommen werden sollen. |
 | numberToTake |Ja |int |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array oder eine Zeichenfolge.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array und Zeichen aus der Zeichenfolge entnommen.
 
@@ -897,9 +1025,12 @@ Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array und
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array oder eine Zeichenfolge.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | Array | ["one", "two"] |
+| stringOutput | String | on |
 
 <a id="union" />
 
@@ -916,7 +1047,11 @@ Gibt ein einzelnes Array oder Objekt mit allen Elementen aus den Parametern zur�
 | arg2 |Ja |Array oder Objekt |Der zweite zum Verknüpfen von Elementen zu verwendende Wert. |
 | zusätzliche Argumente |Nein |Array oder Objekt |Weitere zum Verknüpfen von Elementen zu verwendende Werte. |
 
-### <a name="examples"></a>Beispiele
+### <a name="return-value"></a>Rückgabewert
+
+Ein Array oder Objekt.
+
+### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird die Verwendung von „union“ mit Arrays und Objekten gezeigt:
 
@@ -931,7 +1066,7 @@ Im folgenden Beispiel wird die Verwendung von „union“ mit Arrays und Objekte
         },
         "secondObject": {
             "type": "object",
-            "defaultValue": {"four": "d", "five": "e", "six": "f"}
+            "defaultValue": {"three": "c", "four": "d", "five": "e"}
         },
         "firstArray": {
             "type": "array",
@@ -939,7 +1074,7 @@ Im folgenden Beispiel wird die Verwendung von „union“ mit Arrays und Objekte
         },
         "secondArray": {
             "type": "array",
-            "defaultValue": ["four", "five"]
+            "defaultValue": ["three", "four"]
         }
     },
     "resources": [
@@ -957,9 +1092,12 @@ Im folgenden Beispiel wird die Verwendung von „union“ mit Arrays und Objekte
 }
 ```
 
-### <a name="return-value"></a>Rückgabewert
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-Ein Array oder Objekt.
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| objectOutput | Objekt | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
+| arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

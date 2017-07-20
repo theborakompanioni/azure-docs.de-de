@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2017
+ms.date: 06/09/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a8221c35a440ae859c82072ea170b438dc40d261
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 060680fd4a7ce6e0cde406cc4a8f6f3a21d3c588
+ms.contentlocale: de-de
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -49,7 +50,7 @@ Bei der Entscheidung, welches Bereitstellungsmodell Sie für Ihre Ressourcen ver
 2. Der Dienst unterstützt Resource Manager, stellt aber zwei Typen bereit: einen für Resource Manager und einen für das klassische Modell. Dieses Szenario gilt nur für virtuelle Computer, Speicherkonten und virtuelle Netzwerke.
 3. Der Dienst weist keine Unterstützung von Resource Manager auf.
 
-Informationen zur Ermittlung, ob ein Dienst Resource Manager unterstützt, finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für Resource Manager](resource-manager-supported-services.md).
+Informationen zur Ermittlung, ob ein Dienst Resource Manager unterstützt, finden Sie unter [Ressourcenanbieter und -typen](resource-manager-supported-services.md).
 
 Wenn der gewünschte Dienst Resource Manager nicht unterstützt, müssen Sie weiterhin die klassische Bereitstellung verwenden.
 

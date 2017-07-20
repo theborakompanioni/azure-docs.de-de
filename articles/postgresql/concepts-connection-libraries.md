@@ -1,29 +1,27 @@
 ---
 title: "Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
-description: "Auflistung der einzelnen Bibliotheken bzw. Treiber, mit denen Clientprogramme Verbindungen zu Azure-Datenbank für PostgreSQL herstellen können"
-keywords: Azure Cloud PostgreSQL postgres
+description: "In diesem Artikel werden verschiedene Bibliotheken und Treiber beschrieben, die Entwickler beim Schreiben von Anwendungen zum Erstellen von Verbindungen mit und zum Abfragen von Azure-Datenbank für PostgreSQL verwenden können."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: postgresql - database
-ms.tgt_pltfrm: portal
+editor: jasonwhowell
+ms.service: postgresql-database
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/15/2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6bb3f393a8e9533b86919e9a1ebe3490ab838714
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 7099e26fd749820ab6869c0262e1f97d993ab7b2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL
-In diesem Thema werden die einzelnen Bibliotheken bzw. Treiber aufgelistet, mit denen Clientprogramme Verbindungen zu Azure-Datenbank für PostgreSQL herstellen können.
+In diesem Thema werden Bibliotheken und Treiber beschrieben, die Entwickler beim Programmieren von Anwendungen zum Herstellen von Verbindungen mit und zum Abfragen von Azure-Datenbank für PostgreSQL verwenden können.
 
 ## <a name="client-interfaces"></a>Clientschnittstellen
-Die meisten Clientsprachbibliotheken, die eine Verbindung zum PostgreSQL-Server herstellen, sind externe Projekte, und werden unabhängig verteilt. Diese werden auf Windows-, Linux- und Mac-Plattformen unterstützt. Einige der gängigen Clienttreiber werden nachfolgend aufgeführt.
+Die meisten Clientsprachbibliotheken, die eine Verbindung zum PostgreSQL-Server herstellen, sind externe Projekte, und werden unabhängig verteilt. Diese werden auf Windows-, Linux- und Mac-Plattformen unterstützt. Einige der gängigen Clienttreiber werden aufgeführt:
+
 | **Sprache** | **Clientschnittstelle** | **Zusätzliche Informationen** | **Download** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
 | Python | [psycopg](http://initd.org/psycopg/) | DB API 2.0-konform | [Download](http://initd.org/psycopg/download/) |
@@ -38,7 +36,7 @@ Die meisten Clientsprachbibliotheken, die eine Verbindung zum PostgreSQL-Server 
 | C++ | [libpqxx](http://pqxx.org/) | Schnittstelle C++ mit neuer Formatvorlage | [Download](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Einen Überblick über den Dienst finden Sie unter [Azure-Datenbank für PostgreSQL – Überblick](overview.md).
-- Weitere Informationen zu Servern finden Sie unter [Azure-Datenbank für PostgreSQL-Server](concepts-servers.md).
-- Um Ihren ersten PostgreSQL-Server zu erstellen, lesen Sie [Erstellen eines Servers für Azure-Datenbank für PostgreSQL im Azure-Portal](quickstart-create-server-database-portal.md).
+Lesen Sie diese Schnellstarts, in denen beschrieben wird, wie Azure-Datenbank für PostgreSQL mit der gewünschten Sprache verbunden und abgefragt wird:
+
+[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)
 

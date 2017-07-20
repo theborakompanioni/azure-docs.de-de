@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/10/2017
+ms.date: 06/29/2017
 ms.author: mikerou
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 8d7052fabeb348b4bba744b43d9af78f058175a8
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 46b0b62f92abbac57bc27bbcdd5821eafedf5519
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -41,7 +42,7 @@ Azure-APIs sind vorhanden, sodass Anwendungen programmgesteuert mit den VM-Skali
 
 Ein Verfahren zur Implementierung dieser selbst erstellen Funktionalität für automatische Skalierung ist das Hinzufügen eines neuen zustandslosen Diensts zur Service Fabric-Anwendung, um Skalierungsvorgänge zu verwalten. Innerhalb der `RunAsync`-Methode des Dienstes kann ein Satz von Triggern ermitteln, ob eine Skalierung erforderlich ist (dabei werden auch Parameter wie z.B. die maximale Clustergröße überprüft und cooldown-Einstellungen skaliert).   
 
-Die für Interaktionen mit der VM-Skalierungsgruppe (sowohl zum Überprüfen als auch zum Ändern der aktuellen Anzahl von virtuellen Computerinstanzen) verwendete API ist die Fluent-Bibliothek [Azure.Management.Compute](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/1.0.0-beta50). Die Fluent-Compute-Bibliothek stellt eine benutzerfreundliche API für die Interaktion mit VM-Skalierungsgruppen bereit.
+Die API, die für Interaktionen mit der VM-Skalierungsgruppe (sowohl zum Überprüfen als auch zum Ändern der aktuellen Anzahl von VM-Instanzen) verwendet wird, ist die Fluent-Bibliothek [Azure.Management.Compute](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Die Fluent-Compute-Bibliothek stellt eine benutzerfreundliche API für die Interaktion mit VM-Skalierungsgruppen bereit.
 
 Verwenden Sie für die Interaktion mit dem Service Fabric-Cluster selbst [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient).
 
@@ -57,10 +58,13 @@ Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
     1. Notieren Sie sich App-ID (an anderer Stelle als „Client-ID“ bezeichnet), Name, Kennwort und Mandant für die spätere Verwendung.
     2. Sie benötigen auch Ihre Abonnement-ID, die mit `az account list` angezeigt werden kann.
 
-Die Fluent-Compute-Bibliothek kann sich mit diesen Anmeldeinformationen wie folgt anmelden:
+Die Fluent-Compute-Bibliothek kann wie folgt die Anmeldung mit diesen Anmeldeinformationen durchführen (beachten Sie, dass sich Core-Fluent-Azure-Typen wie `IAzure` im Paket [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) befinden):
 
 ```C#
-var credentials = AzureCredentials.FromServicePrincipal(AzureClientId, AzureClientKey, AzureTenantId, AzureEnvironment.AzureGlobalCloud);
+var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
+                ClientId = AzureClientId,
+                ClientSecret = 
+                AzureClientKey }, AzureTenantId, AzureEnvironment.AzureGlobalCloud);
 IAzure AzureClient = Azure.Authenticate(credentials).WithSubscription(AzureSubscriptionId);
 
 if (AzureClient?.SubscriptionId == AzureSubscriptionId)
@@ -79,40 +83,12 @@ Nach der Anmeldung kann die Anzahl von Skalierungsgruppeninstanzen über `AzureC
 Mithilfe des Azure Fluent-Compute-SDKs können der VM-Skalierungsgruppe mit nur wenigen Aufrufe Instanzen hinzugefügt werden:
 
 ```C#
-var scaleSet = AzureClient?.VirtualMachineScaleSets.GetById(ScaleSetId);
-var newCapacity = Math.Min(MaximumNodeCount, NodeCount.Value + 1);
+var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
+var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-**Zurzeit verhindert [ein Fehler](https://github.com/Azure/azure-sdk-for-net/issues/2716), dass dieser Code funktioniert**, es wurde jedoch eine Korrektur zusammengeführt, sodass das Problem in veröffentlichten Versionen von Microsoft.Azure.Management.Compute.Fluent in Kürze gelöst werden sollte. Der Fehler bewirkt, dass beim Ändern der Eigenschaften (z.B Kapazität) der VM-Skalierungsgruppe mit der Fluent-Compute-API geschützte Einstellungen aus der Resource Manager-Vorlage der Skalierungsgruppe verloren gehen. Diese fehlenden Einstellungen führen u. a. dazu, dass Service Fabric-Dienste auf neuen virtuellen Computerinstanzen nicht ordnungsgemäß eingerichtet werden.
-
-Als vorübergehende Problemumgehung können im Skalierungsdienst PowerShell-Cmdlets aufgerufen werden, welche die gleiche Änderung umsetzen (dazu müssen jedoch PowerShell-Tools vorhanden sein):
-
-```C#
-using (var psInstance = PowerShell.Create())
-{
-    psInstance.AddScript($@"
-        $clientId = ""{AzureClientId}""
-        $clientKey = ConvertTo-SecureString -String ""{AzureClientKey}"" -AsPlainText -Force
-        $Credential = New-Object -TypeName ""System.Management.Automation.PSCredential"" -ArgumentList $clientId, $clientKey
-        Login-AzureRmAccount -Credential $Credential -ServicePrincipal -TenantId {AzureTenantId}
-        
-        $vmss = Get-AzureRmVmss -ResourceGroupName {ResourceGroup} -VMScaleSetName {NodeTypeToScale}
-        $vmss.sku.capacity = {newCapacity}
-        Update-AzureRmVmss -ResourceGroupName {ResourceGroup} -Name {NodeTypeToScale} -VirtualMachineScaleSet $vmss
-    ");
-
-    psInstance.Invoke();
-
-    if (psInstance.HadErrors)
-    {
-        foreach (var error in psInstance.Streams.Error)
-        {
-            ServiceEventSource.Current.ServiceMessage(Context, $"ERROR adding node: {error.ToString()}");
-        }
-    }                
-}
-```
+Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzureRmVmss`](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität wird in der Eigenschaft `.sku.capacity` gespeichert. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzureRmVmss`](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvmss) in Azure aktualisiert werden.
 
 Wie beim manuellen Hinzufügen eines Knotens sollte zum Starten eines neuen Service Fabric-Knotens nur das Hinzufügen einer Skalierungsgruppe erforderlich sein, da die Skalierungsgruppenvorlage Erweiterungen beinhaltet, um dem Service Fabric-Cluster automatisch neue Instanzen hinzuzufügen. 
 
@@ -137,7 +113,7 @@ Beachten Sie, dass Knoten mit *Ausgangswert* scheinbar nicht immer der Konventio
 Sobald der zu entfernende Knoten gefunden wurde, kann er mit denselben `FabricClient`- und `IAzure`-Instanzen wie zuvor deaktiviert und entfernt werden.
 
 ```C#
-var scaleSet = AzureClient?.VirtualMachineScaleSets.GetById(ScaleSetId);
+var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster
 ServiceEventSource.Current.ServiceMessage(Context, $"Disabling node {mostRecentLiveNode.NodeName}");
@@ -154,18 +130,16 @@ while ((mostRecentLiveNode.NodeStatus == System.Fabric.Query.NodeStatus.Up || mo
 }
 
 // Decrement VMSS capacity
-var newCapacity = Math.Max(MinimumNodeCount, NodeCount.Value - 1); // Check min count 
+var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Check min count 
 
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-Sobald die virtuelle Computerinstanz entfernt wurde, kann der Zustand des Service Fabric-Knotens entfernt werden.
+Wie beim horizontalen Hochskalieren können auch hier PowerShell-Cmdlets zum Ändern der Kapazität von VM-Skalierungsgruppen verwendet werden, wenn ein Skriptansatz bevorzugt wird. Sobald die virtuelle Computerinstanz entfernt wurde, kann der Zustand des Service Fabric-Knotens entfernt werden.
 
 ```C#
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
-
-Wie zuvor müssen Sie `IVirtualMachineScaleSet.Update()` umgehen, das erst funktioniert, wenn das Problem [Azure/azure-sdk-for-net#2716](https://github.com/Azure/azure-sdk-for-net/issues/2716) behoben wurde.
 
 ## <a name="potential-drawbacks"></a>Mögliche Nachteile
 
@@ -180,3 +154,4 @@ Für die ersten Schritte mit der Implementierung Ihrer eigenen Logik für automa
 - [Manuelles Skalieren oder mit automatischen Skalierungsregeln](./service-fabric-cluster-scale-up-down.md)
 - [Azure-Fluent-Verwaltungsbibliotheken für .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (nützlich für die Interaktion mit den einem Service Fabric-Cluster zugrunde liegenden VM-Skalierungsgruppen)
 - [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (nützlich für die Interaktion mit einem Service Fabric-Cluster und dessen Knoten)
+

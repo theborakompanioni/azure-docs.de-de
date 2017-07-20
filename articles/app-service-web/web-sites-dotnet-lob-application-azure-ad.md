@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 09/01/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: a00e3c5ed41aff48a6845c2f07ea3e43580045ee
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 2576b658eaf1df95aa9700e06559edf6066cc534
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -66,7 +67,7 @@ Sie benötigen Folgendes zum Bearbeiten dieses Lernprogramms:
     ![](./media/web-sites-dotnet-lob-application-azure-ad/3-add-sql-database.png)
 7. Klicken Sie unter **SQL-Datenbank konfigurieren** auf **Neu**, um eine SQL Server-Instanz zu erstellen.
 8. Konfigurieren Sie unter **SQL Server konfigurieren**Ihre SQL Server-Instanz. Klicken Sie dann auf **OK**, **OK** und **Erstellen**, um mit der App-Erstellung in Azure zu beginnen.
-9. Unter **Aktivität von Azure App Service**, sehen Sie, wenn die App-Erstellung abgeschlossen ist. Klicken Sie auf **Publish &lt;*App-Name*> to this Web App now** (<App-Name> jetzt in dieser Web-App veröffentlichen) und anschließend auf **Veröffentlichen**. 
+9. Unter **Aktivität von Azure App Service**, sehen Sie, wenn die App-Erstellung abgeschlossen ist. Klicken Sie auf **Publish &lt;*appname*> to this Web App now** (<App-Name> jetzt in dieser Web-App veröffentlichen) und anschließend auf **Veröffentlichen**. 
    
     Wenn Visual Studio dies abgeschlossen hat, wird die veröffentlichte App im Browser geöffnet. 
    
@@ -113,7 +114,7 @@ Sie benötigen Folgendes zum Bearbeiten dieses Lernprogramms:
 12. Klicken Sie oben auf der Seite auf **Lese-/Schreibberechtigung** , um im Azure-Ressourcen-Explorer Änderungen vorzunehmen.
     
     ![](./media/web-sites-dotnet-lob-application-azure-ad/12-resource-manager-writable.png)
-13. Suchen Sie die Authentifizierungseinstellungen für Ihre App unter „Abonnements“ > **&lt;*Abonnementname*>** > **resourceGroups** > **&lt;*Ressourcengruppenname*>** > **providers** > **Microsoft.Web** > **sites** > **&lt;*App-Name*>** > **config** > **authsettings**.
+13. Die Authentifizierungseinstellungen für Ihre App finden Sie unter „Abonnements“ > **&lt;*Abonnementname*>** > **resourceGroups** > **&lt;*Ressourcengruppenname*>** > **providers** > **Microsoft.Web** > **sites** > **&lt;*App-Name*>** > **config** > **authsettings**.
 14. Klicken Sie auf **Bearbeiten**.
     
     ![](./media/web-sites-dotnet-lob-application-azure-ad/13-edit-authsettings.png)
@@ -175,18 +176,26 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
    <pre class="prettyprint">
    @model WebApplication1.Models.WorkItem
    
-   @{  ViewBag.Title = &quot;Create&quot;; }
+   @{
+    ViewBag.Title = &quot;Create&quot;;
+   }
    
    &lt;h2&gt;Create&lt;/h2&gt;
    
-   @using (Html.BeginForm(<mark>&quot;Create&quot;, &quot;WorkItems&quot;, FormMethod.Post, new { id = &quot;main-form&quot; }</mark>)) {  @Html.AntiForgeryToken()
+   @using (Html.BeginForm(<mark>&quot;Create&quot;, &quot;WorkItems&quot;, FormMethod.Post, new { id = &quot;main-form&quot; }</mark>)) 
+   {
+    @Html.AntiForgeryToken()
    
     &lt;div class=&quot;form-horizontal&quot;&gt;
         &lt;h4&gt;WorkItem&lt;/h4&gt;
         &lt;hr /&gt;
-        @Html.ValidationSummary(true, &quot;&quot;, new { @class = &quot;text-danger&quot; })      &lt;div class=&quot;form-group&quot;&gt;
-            @Html.LabelFor(model =&gt; model.AssignedToID, htmlAttributes: new { @class = &quot;control-label col-md-2&quot; })          &lt;div class=&quot;col-md-10&quot;&gt;
-                @Html.EditorFor(model =&gt; model.AssignedToID, new { htmlAttributes = new { @class = &quot;form-control&quot;<mark>, @type = &quot;hidden&quot;</mark> } })              @Html.ValidationMessageFor(model =&gt; model.AssignedToID, &quot;&quot;, new { @class = &quot;text-danger&quot; })          &lt;/div&gt;
+        @Html.ValidationSummary(true, &quot;&quot;, new { @class = &quot;text-danger&quot; })
+        &lt;div class=&quot;form-group&quot;&gt;
+            @Html.LabelFor(model =&gt; model.AssignedToID, htmlAttributes: new { @class = &quot;control-label col-md-2&quot; })
+            &lt;div class=&quot;col-md-10&quot;&gt;
+                @Html.EditorFor(model =&gt; model.AssignedToID, new { htmlAttributes = new { @class = &quot;form-control&quot;<mark>, @type = &quot;hidden&quot;</mark> } })
+                @Html.ValidationMessageFor(model =&gt; model.AssignedToID, &quot;&quot;, new { @class = &quot;text-danger&quot; })
+            &lt;/div&gt;
         &lt;/div&gt;
    
         &lt;div class=&quot;form-group&quot;&gt;
@@ -222,10 +231,15 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
    }
    
    &lt;div&gt;
-    @Html.ActionLink(&quot;Zurück zur Liste&quot;, &quot;Index&quot;) &lt;/div&gt;
+    @Html.ActionLink(&quot;Back to List&quot;, &quot;Index&quot;)
+   &lt;/div&gt;
    
-   @section Scripts {  @Scripts.Render(&quot;~/bundles/jqueryval&quot;)  <mark>&lt;script&gt;
-        // Code für Personen-/Gruppenauswahl      var maxResultsPerPage = 14;      var input = document.getElementById(&quot;AssignedToName&quot;);
+   @section Scripts {
+    @Scripts.Render(&quot;~/bundles/jqueryval&quot;)
+    <mark>&lt;script&gt;
+        // People/Group Picker Code
+        var maxResultsPerPage = 14;
+        var input = document.getElementById(&quot;AssignedToName&quot;);
    
         // Access token from request header, and tenantID from claims identity
         var token = &quot;@Request.Headers[&quot;X-MS-TOKEN-AAD-ACCESS-TOKEN&quot;]&quot;;
@@ -241,7 +255,8 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
                 return;
             $(&quot;#main-form&quot;).get()[0].elements[&quot;AssignedToID&quot;].value = picker.Selected().objectId;
         });
-    &lt;/script&gt;</mark> }
+    &lt;/script&gt;</mark>
+   }
    </pre>
    
    Beachten Sie, dass `token` und `tenant` vom Objekt `AadPicker` für Azure Active Directory Graph-API verwendet werden. `AadPicker` fügen Sie später hinzu.     
@@ -265,7 +280,12 @@ Jetzt erstellen Sie einen einfachen CRUD-Arbeitsaufgaben-Tracker.
 13. Öffnen Sie „~\App_Start\BundleConfig.cs“, und nehmen Sie die folgenden hervorgehobenen Änderungen vor:  
     
     <pre class="prettyprint">
-    public static void RegisterBundles(BundleCollection bundles) { bundles.Add(new ScriptBundle(&quot;~/bundles/jquery&quot;).Include( &quot;~/Scripts/jquery-{version}.js&quot;<mark>, &quot;~/Scripts/jquery-ui-{version}.js&quot;, &quot;~/Scripts/AadPickerLibrary.js&quot;</mark>));
+    public static void RegisterBundles(BundleCollection bundles)
+    {
+        bundles.Add(new ScriptBundle(&quot;~/bundles/jquery&quot;).Include(
+                    &quot;~/Scripts/jquery-{version}.js&quot;<mark>,
+                    &quot;~/Scripts/jquery-ui-{version}.js&quot;,
+                    &quot;~/Scripts/AadPickerLibrary.js&quot;</mark>));
     
         bundles.Add(new ScriptBundle(&quot;~/bundles/jqueryval&quot;).Include(
                     &quot;~/Scripts/jquery.validate*&quot;));
@@ -328,6 +348,4 @@ Wenn Ihre Branchen-App Zugriff auf lokale Daten benötigt, finden Sie unter [Zug
 * [App Service Auth and the Azure AD Graph API (App Service-Authentifizierung und Azure AD Graph-API)](https://cgillum.tech/2016/03/25/app-service-auth-aad-graph-api/)
 * [Microsoft Azure Active Directory – Beispiele und Dokumentation](https://github.com/AzureADSamples)
 * [Unterstützte Token- und Anspruchstypen](http://msdn.microsoft.com/library/azure/dn195587.aspx)
-
-[Protect the Application with SSL and the Authorize Attribute]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute
 

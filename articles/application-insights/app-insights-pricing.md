@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0a66567d7381f38787f9aa7652c944e4bb3aef82
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 311cee724fc77256748153b5167d2a38ccba9775
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -41,19 +41,21 @@ Aktuelle Preise in Ihrer Währung finden Sie auf der [Application Insights-Seite
 Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights-Ressource erstellt wird. Er ist für die meisten Kunden ausreichend.
 
 * Im Basic-Tarif erfolgt die Abrechnung nach Datenvolumen: Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights aus Ihrer Anwendung empfängt.
+Für [in Analytics importierte Tabellendaten](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import) wird das Datenvolumen als die unkomprimierte Größe von Dateien gemessen, die an Application Insights gesendet werden.  
 * Für jede App ist 1 GB kostenlos. Wenn Sie also nur experimentieren oder entwickeln, ist es unwahrscheinlich, dass Sie dafür zahlen müssen.
 * [Live Metrics Stream](app-insights-live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
-* [Fortlaufender Export](app-insights-export-telemetry.md) ist gegen eine Zusatzgebühr pro GB im Basic-Tarif verfügbar. Bis Anfang März 2017 ist die Funktion allerdings kostenlos.
+* [Fortlaufender Export](app-insights-export-telemetry.md) ist im Basic-Tarif gegen eine Zusatzgebühr pro GB verfügbar.
 
 ### <a name="enterprise-plan"></a>Enterprise-Tarif
 
-* Im Enterprise-Tarif kann Ihre App alle Funktionen von Application Insights nutzen. [Fortlaufender Export](app-insights-export-telemetry.md) und [Log Analytics-Connector](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) sind im Enterprise-Tarif ohne zusätzliche Kosten verfügbar.
+* Im Enterprise-Tarif kann Ihre App alle Funktionen von Application Insights nutzen. [Fortlaufender Export](app-insights-export-telemetry.md) und 
+
+[Log Analytics-Connector](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) sind im Enterprise-Tarif ohne zusätzliche Kosten verfügbar.
 * Sie bezahlen pro Knoten, der Telemetriedaten für Apps im Enterprise-Tarif sendet. 
  * Ein *Knoten* ist entweder ein physischer oder ein virtueller Servercomputer oder eine PaaS-Rolleninstanz (Platform-as-a-Service), der bzw. die Ihre App hostet.
  * Entwicklungscomputer, Clientbrowser und mobile Geräte werden nicht als Knoten gezählt.
  * Wenn die App mehrere Komponenten aufweist, die Telemetriedaten senden, z.B. ein Webdienst und ein Back-End-Worker, werden sie separat gezählt.
- * [Live Metrics Stream](app-insights-live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
-* In einem Abonnement fallen die Gebühren pro Knoten und nicht pro App an. Wenn Sie fünf Knoten haben, die Telemetriedaten für 12 Apps senden, wird die Gebühr für fünf Knoten berechnet.
+ * [Live Metrics Stream](app-insights-live-stream.md)-Daten werden nicht zu Preiszwecken gezählt.* In einem Abonnement fallen Gebühren knoten- und nicht App-bezogen an. Wenn Sie fünf Knoten haben, die Telemetriedaten für 12 Apps senden, wird die Gebühr für fünf Knoten berechnet.
 * Obwohl Gebühren pro Monat angegeben sind, müssen Sie nur für jede Stunde bezahlen, in der ein Knoten Telemetriedaten von einer App sendet. Die Stundengebühr wird als Monatsgebühr angegeben: 744 (die Anzahl der Stunden pro Monat mit 31 Tagen).
 * Eine Datenvolumenzuteilung von 200 MB pro Tag ist für jeden erkannten Knoten vorgesehen (mit stundenbezogener Granularität). Eine nicht genutzte Datenzuteilung wird nicht von einem Tag auf den nächsten übertragen.
  * Wenn Sie sich für die Preisoption Enterprise entscheiden, wird jedem Abonnement basierend auf der Anzahl von Knoten, die in diesem Abonnement Telemetriedaten an Application Insights-Ressourcen senden, ein tägliches Datenkontingent zugeordnet. Wenn Sie also fünf Knoten haben, die den ganzen Tag Daten senden, wird Ihnen insgesamt 1 GB für alle Application Insights-Ressourcen in diesem Abonnement zugeteilt. Es ist dabei unerheblich, ob bestimmte Knoten mehr Daten senden als andere, da die enthaltene Datenmenge für alle Knoten zusammen berechnet wird. Wenn die Application Insights-Ressourcen an einem bestimmten Tag mehr Daten empfangen, als in der täglichen Datenzuteilung für dieses Abonnement vorgesehen ist, gelten Gebühren pro GB Überschreitungsdaten. 
@@ -79,9 +81,18 @@ Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights
 Für [Webtests mit mehreren Schritten](app-insights-monitor-web-app-availability.md#multi-step-web-tests) wird eine zusätzliche Gebühr erhoben. Dies sind Webtests, die eine Sequenz von Aktionen ausführen. 
 
 Es gibt keine gesonderte Gebühr für „Pingtests“ einer einzelnen Seite. Telemetriedaten von Pingtests und Tests mit mehreren Schritten werden zusammen mit anderen Telemetriedaten aus Ihrer App in Rechnung gestellt.
+ 
+## <a name="operations-management-suite-subscription-entitlement"></a>Berechtigung für Operations Management Suite-Abonnement
 
-## <a name="review-pricing-plan-and-estimate-costs-for-your-application-insights-resource"></a>Überprüfen des Tarifs und Schätzen der Kosten für Ihre Application Insights-Ressource
-Öffnen Sie in der Application Insights-Ressource für Ihre Anwendung das Blatt „Features und Preise“.
+Wie [vor Kurzem angekündigt](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/) können Kunden, die Microsoft Operations Management Suite E1 und E2 erwerben, Application Insights Enterprise ohne weitere Kosten als zusätzliche Komponente erhalten. Jede Einheit der Operations Management Suite-Pläne E1 und E2 umfasst eine Berechtigung für einen Knoten des Enterprise-Tarifs von Application Insights. Wie bereits zuvor erwähnt, ermöglicht jeder Application Insights-Knoten das Erfassen von bis zu 200 MB Daten pro Tag (getrennt von der Log Analytics-Datenerfassung) bei einer Datenbeibehaltungsdauer von 90 Tagen ohne zusätzliche Kosten. 
+
+> [!NOTE]
+> Um sicherzustellen, dass Sie diese Berechtigung erhalten, muss für Ihre Application Insights-Ressourcen der Enterprise-Tarif gelten. Diese Berechtigung gilt nur für Knoten, sodass es für Application Insights-Ressourcen im Tarif Basic keine Vorteile gibt. Beachten Sie, dass diese Berechtigung nicht in den geschätzten Kosten ausgewiesen ist, die auf dem Blatt „Features + Preise“ gezeigt werden. 
+>
+ 
+## <a name="review-pricing-plans-and-estimate-costs"></a>Überprüfen von Tarifen und Schätzen von Kosten
+
+Application Insights erleichtert das Verständnis der verfügbaren Tarife und der Kosten, die basierend auf den aktuellen Nutzungsmustern voraussichtlich anfallen. Öffnen Sie im Azure-Portal in der Application Insights-Ressource für Ihre Anwendung das Blatt **Features + Preise**:
 
 ![Wählen Sie „Preise“ aus.](./media/app-insights-pricing/01-pricing.png)
 
