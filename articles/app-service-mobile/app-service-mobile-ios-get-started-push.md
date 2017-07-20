@@ -3,9 +3,9 @@ title: "Hinzufügen von Pushbenachrichtigungen zur iOS-App mit Azure Mobile Apps
 description: "Erfahren Sie mehr über die Verwendung von Azure Mobile Apps zum Senden von Pushbenachrichtigungen an Ihre iOS-App."
 services: app-service\mobile
 documentationcenter: ios
-manager: yochayk
+manager: syntaxc4
 editor: 
-author: ysxu
+author: ggailey777
 ms.assetid: fa503833-d23e-4925-8d93-341bb3fbab7d
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: yuaxu
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: a21ae4b13479f66ada053153834a2b3cc5687e5a
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App
@@ -30,25 +31,25 @@ Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müsse
 
 Der [iOS-Simulator unterstützt keine Pushbenachrichtigungen](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Sie benötigen ein physisches iOS-Gerät und eine [Apple-Entwicklerprogramm-Mitgliedschaft](https://developer.apple.com/programs/ios/).
 
-## <a name="a-nameconfigure-hubaconfigure-notification-hub"></a><a name="configure-hub"></a>Konfigurieren eines Notification Hubs
+## <a name="configure-hub"></a>Konfigurieren eines Notification Hubs
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="a-idregisteraregister-app-for-push-notifications"></a><a id="register"></a>Registrieren der App für Pushbenachrichtigungen
+## <a id="register"></a>Registrieren der App für Pushbenachrichtigungen
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 ## <a name="configure-azure-to-send-push-notifications"></a>Konfigurieren von Azure zum Senden von Pushbenachrichtigungen
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="a-idupdate-serveraupdate-backend-to-send-push-notifications"></a><a id="update-server"></a>Aktualisieren des Back-Ends zum Senden von Pushbenachrichtigungen
+## <a id="update-server"></a>Aktualisieren des Back-Ends zum Senden von Pushbenachrichtigungen
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a name="a-idadd-pushaadd-push-notifications-to-app"></a><a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
+## <a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
 [!INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
-## <a name="a-idtestatest-push-notifications"></a><a id="test"></a>Testen von Pushbenachrichtigungen
+## <a id="test"></a>Testen von Pushbenachrichtigungen
 [!INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
 
-## <a name="a-idmoreamore"></a><a id="more"></a>Weitere Informationen
+## <a id="more"></a>Weitere Informationen
 * Vorlagen ermöglichen Ihnen, flexibel plattformübergreifende Pushvorgänge und lokalisierte Pushvorgänge zu senden. [Verwenden der iOS-Clientbibliothek für Azure Mobile Apps](app-service-mobile-ios-how-to-use-client-library.md#templates) wird erklärt, wie Sie Vorlagen registrieren.
 
 <!-- Anchors.  -->
@@ -57,9 +58,4 @@ Der [iOS-Simulator unterstützt keine Pushbenachrichtigungen](https://developer.
 
 <!-- URLs. -->
 [iOS-Schnellstartprojekt]: app-service-mobile-ios-get-started.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

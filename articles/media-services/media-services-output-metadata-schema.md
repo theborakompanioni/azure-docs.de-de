@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 07/19/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c3c5a3ee123fe021444370583c7f37737a03edce
 ms.openlocfilehash: 2e21c8df29a78da77505b6f67434d97698f7a212
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
@@ -33,7 +34,7 @@ In diesem Artikel werden die Elemente und Typen des XML-Schemas beschrieben, auf
 >
 >
 
-## <a name="a-nameassetfiles-a-assetfiles-root-element"></a><a name="AssetFiles "></a> „AssetFiles“-Stammelement
+## <a name="AssetFiles "></a> „AssetFiles“-Stammelement
 Sammlung von „AssetFile“-Einträgen für den Codierauftrag.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
@@ -41,7 +42,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Ein [„AssetFile“-Element](media-services-output-metadata-schema.md), das Teil der „AssetFiles“-Sammlung ist. |
 
-## <a name="a-nameassetfile-a-assetfile-element"></a><a name="AssetFile "></a> „AssetFile“-Element
+## <a name="AssetFile "></a> „AssetFile“-Element
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
@@ -58,7 +59,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Videospuren. Weitere Informationen finden Sie unter [„VideoTracks“-Element](media-services-output-metadata-schema.md). |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren. Weitere Informationen finden Sie unter [„AudioTracks“-Element](media-services-output-metadata-schema.md). |
 
-## <a name="a-namesources-a-sources-element"></a><a name="Sources "></a> „Sources“-Element
+## <a name="Sources "></a> „Sources“-Element
 Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
@@ -68,7 +69,7 @@ Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medien
 | --- | --- |
 | **Quelle**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird. Weitere Informationen finden Sie unter [„Source“-Element](media-services-output-metadata-schema.md). |
 
-## <a name="a-namesource-a-source-element"></a><a name="Source "></a> „Source“-Element
+## <a name="Source "></a> „Source“-Element
 Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
@@ -78,7 +79,7 @@ Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Name der Eingabequelldatei. |
 
-## <a name="a-namevideotracks-a-videotracks-element"></a><a name="VideoTracks "></a> „VideoTracks“-Element
+## <a name="VideoTracks "></a> „VideoTracks“-Element
 Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Videospuren.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
@@ -88,7 +89,7 @@ Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die 
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Videospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter [„VideoTrack“-Element](media-services-output-metadata-schema.md#VideoTrack). |
 
-## <a name="a-namevideotracka-videotrack-element"></a><a name="VideoTrack"></a> „VideoTrack“-Element
+## <a name="VideoTrack"></a> „VideoTrack“-Element
 Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
@@ -110,7 +111,7 @@ Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.
 | **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Durchschnittliche Bitrate dieser Videospur entsprechend der Anforderung der Codierungsvoreinstellung in kBit/s. |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximale durchschnittliche GOP-Bitrate für diese Videospur in kBit/s. |
 
-## <a name="a-nameaudiotracks-a-audiotracks-element"></a><a name="AudioTracks "></a> „AudioTracks“-Element
+## <a name="AudioTracks "></a> „AudioTracks“-Element
 Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
@@ -120,7 +121,7 @@ Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die 
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter [„AudioTrack“-Element](media-services-output-metadata-schema.md). |
 
-## <a name="a-nameaudiotrack-a-audiotrack-element"></a><a name="AudioTrack "></a> „AudioTrack“-Element
+## <a name="AudioTrack "></a> „AudioTrack“-Element
 Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
@@ -141,7 +142,7 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parameter für das Messergebnis der Lautheit. Weitere Informationen finden Sie unter [„LoudnessMeteringResultParameters“-Element](media-services-output-metadata-schema.md). |
 
-## <a name="a-nameloudnessmeteringresultparameters-a-loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters "></a> „LoudnessMeteringResultParameters“-Element
+## <a name="LoudnessMeteringResultParameters "></a> „LoudnessMeteringResultParameters“-Element
 Parameter für das Messergebnis der Lautheit.  
 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
@@ -509,7 +510,7 @@ Parameter für das Messergebnis der Lautheit.
 
 
 
-## <a name="a-namexmla-xml-example"></a><a name="xml"></a> XML-Beispiel
+## <a name="xml"></a> XML-Beispiel
  Es folgt ein Beispiel der Datei mit den Ausgabemetadaten.  
 
     <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
@@ -603,9 +604,4 @@ Parameter für das Messergebnis der Lautheit.
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
