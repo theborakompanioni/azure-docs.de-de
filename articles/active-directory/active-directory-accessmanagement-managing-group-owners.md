@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 04/26/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 8c4920107b5d05716021bcef80d3c52c25f6eade
+ms.translationtype: HT
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 6b448b4fac56d4b5debcf4fb3a545dd538929aff
 ms.contentlocale: de-de
-ms.lasthandoff: 12/28/2016
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="managing-owners-for-a-group"></a>Verwalten von Besitzern einer Gruppe
@@ -48,5 +47,4 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Was ist Azure Active Directory?](active-directory-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
 
