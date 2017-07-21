@@ -13,16 +13,15 @@ ms.topic: landing-page
 ms.date: 07/07/2017
 ms.author: bernardm
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: d95507be7af7eb69cbab4e11a2aa6af1a9775b0c
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 1452c1dd56829d162d464c4a359fa8c86ce74a6b
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# Dokumentation zu Azure Service Health
-<a id="azure-service-health-documentation" class="xliff"></a>
+# <a name="azure-service-health-documentation"></a>Dokumentation zu Azure Service Health
 
-Serivce Health hilft Ihnen bei der Diagnose und beim Anfordern von Support, wenn ein Azure-Problem Ihre Ressourcen beeinträchtigt. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen und unterstützt Sie beim Beheben von Problemen. Sie erhalten technische Unterstützung bei Problemen mit Azure-Diensten.
+Azure Service Health bietet personalisierte Leitfäden und Support, wenn sich Probleme in Azure-Diensten auf Ihre Arbeit auswirken, und hilft Ihnen bei der Vorbereitung auf bevorstehende geplante Wartungen. Azure Service Health warnt Sie und Ihre Teams mit gezielten und flexiblen Benachrichtigungen.
 <ul class="panelContent cardsFTitle">
     <li>
         <a href="/azure/service-health/service-health-overview">

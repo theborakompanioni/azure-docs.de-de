@@ -25,6 +25,7 @@
 # Anleitung
 
 ## [Migrieren von Benutzerdaten von Azure RemoteApp](remoteapp-migrate.md)
+## [Migrieren zu MyCloudIT](remoteapp-migrate-mycloudit.md)
 ## [Migrieren zu Citrix XenApp Essentials](remoteapp-migrate-citrix.md)
 ## Erstellen einer RemoteApp-Sammlung
 ### [Welche Sammlung benötigen Sie?](remoteapp-collections.md)

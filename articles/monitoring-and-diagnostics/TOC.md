@@ -22,7 +22,7 @@
 ### [Konfigurieren von Warnungen im Azure-Portal](insights-alerts-portal.md)
 ### [Konfigurieren von Warnungen mit CLI](insights-alerts-command-line-interface.md)
 ### [Konfigurieren von Warnungen mit PowerShell](insights-alerts-powershell.md)
-### [Aufrufen eines Webhooks durch eine Metrikwarnung](insights-webhooks-alerts.md)
+### [Aufrufen eines Webhooks durch Metrikwarnung](insights-webhooks-alerts.md)
 ### [Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage](monitoring-enable-alerts-using-template.md)
 ## Verwenden der automatischen Skalierung
 ### [Bewährte Methoden](insights-autoscale-best-practices.md)
@@ -74,3 +74,4 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [PowerShell-Beispiele](insights-powershell-samples.md)
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=monitor)
+## [Schnellstartvorlagen](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)
