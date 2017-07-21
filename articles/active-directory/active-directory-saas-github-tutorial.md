@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 07/20/2017
 ms.author: jeedes
-translationtype: Human Translation
+ms.reviewer: jeedes
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 8b0417d131bc25225e777285b9e4bfbaa97aad8f
+ms.contentlocale: de-de
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Tutorial: Azure Active Directory-Integration mit GitHub
@@ -126,10 +127,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 4. Wählen Sie im Abschnitt **Benutzerattribute** für **Benutzer-ID** die Option „user.mail“.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_attribute_new01.png)
-     
+    
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
 
 6. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
 
@@ -167,9 +168,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. **Anmelde-URL**: Geben Sie die **SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **GitHub konfigurieren** in Azure AD ein.
 
-      b. **Aussteller**: Geben Sie die **SAML-Entitäts-ID** aus dem Abschnitt **GitHub konfigurieren** in Azure AD ein.
+    b. **Aussteller**: Geben Sie die **SAML-Entitäts-ID** aus dem Abschnitt **GitHub konfigurieren** in Azure AD ein.
 
-       c. **Öffentliches Zertifikat**: Öffnen Sie das heruntergeladene Zertifikat aus Azure AD in einem Editor, und kopieren Sie den Inhalt, einschließlich „BEGIN CERTIFICATE“ und „END CERTIFICATE“.
+    c. **Öffentliches Zertifikat**: Öffnen Sie das heruntergeladene Zertifikat aus Azure AD in einem Editor, und kopieren Sie den Inhalt, einschließlich „BEGIN CERTIFICATE“ und „END CERTIFICATE“.
 
     ![Einstellungen](./media/active-directory-saas-github-tutorial/tutorial_github_config_github_051.png)
 
