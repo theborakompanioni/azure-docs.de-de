@@ -88,7 +88,7 @@ Dieser Schritt ist optional. In diesem Tutorial werden vorab bereitgestellte Wer
 Azure AD stellt Token nur für bekannte Anwendungen aus. Bevor Sie Azure AD über Ihre App nutzen können, müssen Sie dafür einen Eintrag in Ihrem Mandanten erstellen. Gehen Sie wie folgt vor, um in Ihrem Mandanten eine neue Anwendung zu registrieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der Verzeichnisliste**** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
+2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnisliste** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Aufforderungen, und erstellen Sie eine **systemeigene Clientanwendung**. (Cordova-Apps sind zwar HTML-basiert, wir erstellen hier aber trotzdem eine systemeigene Clientanwendung. Bei Verwendung einer anderen Option als **Systemeigene Clientanwendung** funktioniert die Anwendung nicht.)

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 07/20/2017
 ms.author: jeedes
+ms.reviewer: jeedes
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 61999ebea05371c53e5ff27644a68039db1aef96
 ms.contentlocale: de-de
 ms.lasthandoff: 05/18/2017
-
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Tutorial: Azure Active Directory-Integration mit Amazon Web Services (AWS)
@@ -133,7 +133,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | Attributname  | Attributwert | Namespace |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | Rolle               | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | Rolle            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
     >Sie müssen die Benutzerbereitstellung in Azure AD so konfigurieren, dass alle Rollen aus der AWS-Konsole abgerufen werden. Im Folgenden finden Sie die erforderlichen Schritte.
@@ -172,13 +172,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     ![Einmaliges Anmelden konfigurieren][14]
  
-      a. Wählen Sie für **Anbietertyp** die Option **SAML** aus.
+    a. Wählen Sie für **Anbietertyp** die Option **SAML** aus.
 
-      b. Geben Sie im Textfeld **Anbietername** einen Anbieternamen ein (z.B.: *WAAD*).
+    b. Geben Sie im Textfeld **Anbietername** einen Anbieternamen ein (z.B.: *WAAD*).
 
-      c. Klicken Sie auf **Datei auswählen**, um die heruntergeladene Metadatendatei hochzuladen.
+    c. Klicken Sie auf **Datei auswählen**, um die heruntergeladene Metadatendatei hochzuladen.
 
-      d. Klicken Sie auf **Nächster Schritt**.
+    d. Klicken Sie auf **Nächster Schritt**.
 
 13. Klicken Sie auf der Dialogfeldseite **Anbieterinformationen überprüfen** auf **Erstellen**. 
     
@@ -192,25 +192,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     ![Einmaliges Anmelden konfigurieren][17] 
 
-      a. Geben Sie im Textfeld **Rollenname** einen Rollennamen ein (z.B.: *TestUser*). 
+    a. Geben Sie im Textfeld **Rollenname** einen Rollennamen ein (z.B.: *TestUser*). 
 
-      b. Klicken Sie auf **Nächster Schritt**.
+    b. Klicken Sie auf **Nächster Schritt**.
 
 16. Führen Sie im Dialogfeld **Rollentyp auswählen** die folgenden Schritte aus: 
     
     ![Einmaliges Anmelden konfigurieren][18] 
 
-      a. Wählen Sie **Rolle für Identitätsanbieterzugriff**aus. 
+    a. Wählen Sie **Rolle für Identitätsanbieterzugriff**aus. 
 
-      b. Klicken Sie im Abschnitt **Zugriff mit einmaliger Webanmeldung für SAML-Anbieter gewähren** auf **Auswählen**.
+    b. Klicken Sie im Abschnitt **Zugriff mit einmaliger Webanmeldung für SAML-Anbieter gewähren** auf **Auswählen**.
 
 17. Führen Sie im Dialogfeld **Vertrauensstellung herstellen** die folgenden Schritte aus:  
     
     ![Einmaliges Anmelden konfigurieren][19] 
 
-      a. Wählen Sie als SAML-Anbieter den zuvor erstellten SAML-Anbieter aus (z.B.: *WAAD*).
+    a. Wählen Sie als SAML-Anbieter den zuvor erstellten SAML-Anbieter aus (z.B.: *WAAD*).
   
-      b. Klicken Sie auf **Nächster Schritt**.
+    b. Klicken Sie auf **Nächster Schritt**.
 
 18. Klicken Sie im Dialogfeld **Vertrauenswürdigkeit der Rolle überprüfen** auf **Nächster Schritt**.
     
@@ -224,7 +224,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     ![Einmaliges Anmelden konfigurieren][34]
  
-      a. Klicken Sie auf **Rolle erstellen**.
+    a. Klicken Sie auf **Rolle erstellen**.
 
     b. Erstellen Sie so viele Rollen, wie Sie benötigen, und ordnen Sie diese dem Identitätsanbieter zu.
 

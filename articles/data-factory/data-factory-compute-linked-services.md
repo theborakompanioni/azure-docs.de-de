@@ -20,7 +20,6 @@ ms.openlocfilehash: 97e40e0081e1dcce0ed42748a053c46cecf569ba
 ms.contentlocale: de-de
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -123,9 +122,10 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "clusterSize": 4,
+            "version": "3.5",
+            "clusterSize": 1,
             "timeToLive": "00:05:00",
-            "osType": "linux",
+            "osType": "Linux",
             "linkedServiceName": "AzureStorageLinkedService"
         }
     }

@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: eefd96f0e2280ad68a4524ffa8b66efa320a3743
-
+ms.contentlocale: de-de
+ms.lasthandoff: 01/11/2017
 
 ---
-
 
 # <a name="h264-single-bitrate-4x3-sd-audio-51"></a>H264 Single Bitrate 4x3 SD Audio 5.1
 `Media Encoder Standard` definiert eine Reihe von Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Sie können mithilfe von `preset name` angeben, in welchem Format Ihre Mediendatei codiert werden soll. Oder Sie erstellen eigene JSON- oder XML-basierte Voreinstellungen (mithilfe von UTF-8- oder UTF-16-Codierung). In diesem Fall übergeben Sie die benutzerdefinierte Voreinstellung dann an den Encoder. Eine Liste aller von diesem `Media Encoder Standard`-Encoder unterstützten Voreinstellungsnamen finden Sie unter [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Aufgabenvoreinstellungen für Media Encoder Standard).  
@@ -117,9 +117,4 @@ ms.openlocfilehash: eefd96f0e2280ad68a4524ffa8b66efa320a3743
   ]  
 }  
 ```
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -13,12 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2016
+ms.date: 07/20/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.reviewer: jesakowi
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 095497656a1c6ed1fe5322b6015de750d8fd6f15
 ms.openlocfilehash: 3706ed729a525526a415d3a3367e6b8245ead812
-
+ms.contentlocale: de-de
+ms.lasthandoff: 12/06/2016
 
 ---
 
@@ -215,10 +217,5 @@ Für FabrikamMail sieht dies wie folgt aus:
 (**ClientId** ist die Dienstprinzipalobjekt-ID von FabrikamMail (gerade erstellt), **PrincipalId** ist die Benutzerobjekt-ID (des Benutzers, der die Zustimmung erteilt hat), **ResourceId** ist die Dienstprinzipalobjekt-ID von Exchange, und „Scope“ ist die Berechtigung in Exchange, für die die Zustimmung erteilt wurde.)
 
 Falls das Erteilen der Zustimmung für Benutzer nicht zulässig ist, wird ein Hinweis angezeigt, dass die Berechtigung erforderlich ist.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

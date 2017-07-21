@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/20/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c547afd9535eb4764caf6b37d4e38a22f6e88186
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="create-contentkeys-with-net"></a>Erstellen von ContentKeys mit .NET
@@ -67,7 +68,7 @@ Einer der Werte, die Sie beim Erstellen eines Inhaltsschlüssels festlegen müss
         EnvelopeEncryption = 4
     }
 
-## <a name="a-idenvelopecontentkeyacreate-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Umschlagverschlüsselung"
+## <a id="envelope_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Umschlagverschlüsselung"
 Im folgenden Codeausschnitt wird ein Inhaltsschlüssel vom Typ „Umschlagverschlüsselung“ erstellt. Anschließend wird der Schlüssel dem angegebenen Medienobjekt zugeordnet.
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -104,7 +105,7 @@ Aufruf
 
 
 
-## <a name="a-idcommoncontentkeyacreate-common-type-contentkey"></a><a id="common_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Allgemeine Verschlüsselung"
+## <a id="common_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Allgemeine Verschlüsselung"
 Im folgenden Codeausschnitt wird ein Inhaltsschlüssel vom Typ „Allgemeine Verschlüsselung“ erstellt. Anschließend wird der Schlüssel dem angegebenen Medienobjekt zugeordnet.
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
@@ -147,10 +148,5 @@ Aufruf
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
