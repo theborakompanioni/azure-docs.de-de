@@ -113,7 +113,7 @@ Bei Verwendung von LDAPS muss SSL 3.0 oder TLS verwendet werden. SSL 2.0 wird 
 Damit der Connector ordnungsgemäß verwendet werden kann, müssen auf dem LDAP-Server folgende LDAP-Steuerelemente/-Features verfügbar sein:   
 `1.3.6.1.4.1.4203.1.5.3` True/False-Filter
 
-Der True/False-Filter wird oftmals nicht als von LDAP-Verzeichnissen unterstützt gemeldet und möglicherweise auf der globalen Seite**** unter **Nicht gefundene erforderliche Features** angezeigt. Er dient zum Erstellen von OR-Filtern **** in LDAP-Abfragen (beispielsweise beim Importieren mehrerer Objekttypen). Wenn Sie mehrere Objekttypen importieren können, wird dieses Feature von Ihrem LDAP-Server unterstützt.
+Der True/False-Filter wird oftmals nicht als von LDAP-Verzeichnissen unterstützt gemeldet und möglicherweise auf der **globalen Seite** unter **Nicht gefundene erforderliche Features** angezeigt. Er dient zum Erstellen von **OR** -Filtern in LDAP-Abfragen (beispielsweise beim Importieren mehrerer Objekttypen). Wenn Sie mehrere Objekttypen importieren können, wird dieses Feature von Ihrem LDAP-Server unterstützt.
 
 Wenn Sie ein Verzeichnis verwenden, bei dem ein eindeutiger Bezeichner als Anker fungiert, muss auch Folgendes verfügbar sein (weitere Informationen finden Sie im Abschnitt [Konfigurieren von Ankern](#configure-anchors)):  
 `1.3.6.1.4.1.4203.1.5.1` Alle Betriebsattribute
@@ -149,7 +149,7 @@ Folgende LDAP-Features werden nicht unterstützt:
 * LDAP-Verweise zwischen Servern (RFC 4511/4.1.10)
 
 ## <a name="create-a-new-connector"></a>Erstellen eines neuen Connectors
-Wählen Sie zum Erstellen eines generischen LDAP-Connectors im Synchronisierungsdienst**** die Option **Verwaltungs-Agent** und anschließend **Erstellen** aus. Wählen Sie den Connector **Generisch, LDAP (Microsoft)** aus.
+Wählen Sie zum Erstellen eines generischen LDAP-Connectors im **Synchronisierungsdienst** die Option **Verwaltungs-Agent** und anschließend **Erstellen** aus. Wählen Sie den Connector **Generisch, LDAP (Microsoft)** aus.
 
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-genericldap/createconnector.png)
 
@@ -163,7 +163,7 @@ Auf der Konnektivitätsseite müssen Informationen zu Host, Port und Bindung ang
 * Geben Sie bei anderen Bindungen entweder Benutzername und Kennwort an, oder wählen Sie ein Zertifikat aus.
 * Geben Sie bei Verwendung der Kerberos-Authentifizierung außerdem den Bereich und die Domäne des Benutzers an.
 
-Das Textfeld für Attributaliase **** wird für Attribute verwendet, die im Schema mit der RFC4522-Syntax definiert sind. Diese Attribute können bei der Schemaerkennung nicht erkannt werden, und der Connector kann sie nicht selbstständig identifizieren. Damit etwa das userCertificate-Attribut ordnungsgemäß als binäres Attribut identifiziert wird, muss das Feld für Attributaliase Folgendes enthalten:
+Das Textfeld für **Attributaliase** wird für Attribute verwendet, die im Schema mit der RFC4522-Syntax definiert sind. Diese Attribute können bei der Schemaerkennung nicht erkannt werden, und der Connector kann sie nicht selbstständig identifizieren. Damit etwa das userCertificate-Attribut ordnungsgemäß als binäres Attribut identifiziert wird, muss das Feld für Attributaliase Folgendes enthalten:
 
 `userCertificate;binary`
 
@@ -182,7 +182,7 @@ Die Seite mit den globalen Parametern dient zum Konfigurieren des DN für das De
 
 Die Informationen im oberen Abschnitt stammen vom Server selbst (etwa der Name des Servers). Der Connector überprüft außerdem, ob die erforderlichen Steuerelemente im Stamm-DSE vorhanden sind. Falls nicht, wird eine Warnung angezeigt. Einige LDAP-Verzeichnisse geben nicht alle Features im Stamm-DSE an. Es kann also sein, dass der Connector trotz vorhandener Warnung problemlos verwendet werden kann.
 
-Die **** Kontrollkästchen für unterstützte Steuerelemente steuern das Verhalten für bestimmte Vorgänge:
+Die **Kontrollkästchen** für unterstützte Steuerelemente steuern das Verhalten für bestimmte Vorgänge:
 
 * Bei aktivierter Strukturlöschung wird eine Hierarchie mit einem einzelnen LDAP-Aufruf gelöscht. Bei deaktivierter Strukturlöschung führt der Connector bei Bedarf einen rekursiven Löschvorgang durch.
 * Wenn die Option für ausgelagerte Ergebnisse aktiviert ist, führt der Connector ausgelagerte Importe mit der in den Ausführungsschritten angegebenen Größe durch.

@@ -100,10 +100,10 @@ Die folgenden Vorgänge werden von der aktuellen Version des Lotus Domino-Conne
 ### <a name="client-software-installation-and-configuration"></a>Installieren und Konfigurieren der Clientsoftware
 Lotus Notes muss auf dem Server installiert sein, **bevor** der Connector installiert wird.
 
-Führen Sie eine Einzelbenutzerinstallation ****aus. Die standardmäßige Mehrbenutzerinstallation **** kann nicht verwendet werden.  
+Führen Sie eine **Einzelbenutzerinstallation** aus. Die standardmäßige Mehrbenutzerinstallation **** kann nicht verwendet werden.  
 ![Notes1](./media/active-directory-aadconnectsync-connector-domino/notes1.png)
 
-Installieren Sie auf der Featureseite nur die erforderlichen Lotus Notes-Features und die einmalige ****Clientanmeldung. Einmaliges Anmelden ist für die Anmeldung des Connectors beim Domino-Server erforderlich.  
+Installieren Sie auf der Featureseite nur die erforderlichen Lotus Notes-Features und die einmalige **Clientanmeldung**. Einmaliges Anmelden ist für die Anmeldung des Connectors beim Domino-Server erforderlich.  
 ![Notes2](./media/active-directory-aadconnectsync-connector-domino/notes2.png)
 
 **Hinweis:** Starten Sie Lotus Notes einmalig mit einem Benutzer, der sich auf demselben Server befindet wie das Konto, das sie als Dienstkonto des Connectors verwenden. Stellen Sie auch sicher, dass der Lotus Notes-Client auf dem Server geschlossen ist. Der Client darf nicht ausgeführt werden, wenn der Connector versucht, eine Verbindung mit dem Domino-Server herzustellen.
@@ -127,13 +127,13 @@ Das Format **Servername/Verzeichnisname** wird für dieses Attribut bevorzugt, d
 
 Die angegebene Benutzer-ID-Datei wird in der Konfigurationsdatenbank des Synchronisierungsdiensts gespeichert.
 
-Für den Deltaimport **** stehen folgende Optionen zur Verfügung:
+Für den **Deltaimport** stehen folgende Optionen zur Verfügung:
 
 * **Keine**. Der Connector führt keine Deltaimporte aus.
-* **Hinzufügen/Aktualisieren**. Der Connector führt Deltaimporte für Hinzufüge- und Aktualisierungsvorgänge aus. Für Löschvorgänge ist ein vollständiger Import **** erforderlich. Bei diesem Vorgang wird das .NET-Interop verwendet.
+* **Hinzufügen/Aktualisieren**. Der Connector führt Deltaimporte für Hinzufüge- und Aktualisierungsvorgänge aus. Für Löschvorgänge ist ein **vollständiger Import** erforderlich. Bei diesem Vorgang wird das .NET-Interop verwendet.
 * **Hinzufügen/Aktualisieren/Löschen**. Der Connector führt Deltaimporte für Hinzufüge-, Aktualisierungs- und Löschvorgänge aus. Bei diesem Vorgang werden die nativen C++-Schnittstellen verwendet.
 
-Folgende Schemaoptionen **** stehen zur Auswahl:
+Folgende **Schemaoptionen** stehen zur Auswahl:
 
 * **Standardschema**. Der Connector erkennt das Schema vom Domino-Server. Diese Auswahl ist die Standardoption.
 * **DSML-Schema**. Wird nur verwendet, wenn der Domino-Server das Schema nicht verfügbar macht. In diesem Fall können Sie eine DSML-Datei mit dem Schema erstellen und das Schema stattdessen importieren. Weitere Informationen zu DSML finden Sie unter [OASIS](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dsml).
@@ -448,7 +448,7 @@ Das Schema kann in Domino auf unterschiedliche Arten erweitert werden, sodass es
    * Fügen Sie in der Domino-Konsole den Befehl [Restart Task LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html) als **Domino-Befehl** ein, um den LDAP-Dienst neu zu starten.
    * Verwenden Sie zum Neuladen des LDAP-Schemas den Befehl „Tell LDAP ReloadSchema“.
 5. Öffnen Sie Domino Administrator, und rufen Sie die Registerkarte für Personen und Gruppen auf, um sich zu vergewissern, dass das hinzugefügte Attribut beim Hinzufügen einer Person in Domino verfügbar ist.
-6. Öffnen Sie auf der Dateiregisterkarte **** die Datei „Schema.nsf“, und vergewissern Sie sich, dass sich das hinzugefügte Attribut in der LDAP-Objektklasse „dominoPerson“ befindet.
+6. Öffnen Sie auf der Dateiregisterkarte **die Datei** „Schema.nsf“, und vergewissern Sie sich, dass sich das hinzugefügte Attribut in der LDAP-Objektklasse „dominoPerson“ befindet.
 
 **Ansatz 2: Erstellen einer Erweiterungsklasse mit benutzerdefiniertem Attribut und Zuordnen zur Objektklasse**
 
@@ -480,7 +480,7 @@ Das Schema kann in Domino auf unterschiedliche Arten erweitert werden, sodass es
     * Fügen Sie in der Domino-Konsole den Befehl [Restart Task LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html) als **Domino-Befehl** ein, um den LDAP-Dienst neu zu starten.
     * Verwenden Sie zum Neuladen des LDAP-Schemas den Befehl **Tell LDAP ReloadSchema**.
 11. Öffnen Sie Domino Administrator, und rufen Sie die Registerkarte für Personen und Gruppen auf, um sich zu vergewissern, dass das hinzugefügte Attribut beim Hinzufügen einer Person in Domino (auf der Registerkarte „Sonstiges“) verfügbar ist.
-12. Öffnen Sie auf der Dateiregisterkarte **** die Datei „Schema.nsf“, und vergewissern Sie sich, dass sich das hinzugefügte Attribut in der LDAP-Erweiterungsobjektklasse „TestSubform“ befindet.
+12. Öffnen Sie auf der Dateiregisterkarte **die Datei** „Schema.nsf“, und vergewissern Sie sich, dass sich das hinzugefügte Attribut in der LDAP-Erweiterungsobjektklasse „TestSubform“ befindet.
 
 **Methode 3: Hinzufügen des benutzerdefinierten Attributs zur ExtensibleObject-Klasse**
 
