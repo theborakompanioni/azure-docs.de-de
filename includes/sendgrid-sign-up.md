@@ -20,7 +20,7 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
     ![sendgrid-pricing][sendgrid-pricing]
 10. Geben Sie einen **Promotioncode** ein (sofern vorhanden).
 11. Geben Sie Ihre **Kontaktinformationen** ein.
-12. Lesen Sie sich die rechtlichen Bedingungen**** durch, und akzeptieren Sie sie.
+12. Lesen Sie sich die rechtlichen **Bedingungen** durch, und akzeptieren Sie sie.
 13. Im Anschluss an die Kaufbestätigung erscheint ein Popup mit dem Hinweis, dass die **Bereitstellung erfolgreich** war, und Ihr Konto wird im Abschnitt **Alle Ressourcen** aufgeführt.
 
     ![Alle Ressourcen][all-resources]
@@ -54,7 +54,7 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
 5. Ihre API wird daraufhin einmal angezeigt. Bewahren Sie sie an einem sicheren Ort auf.
 
 ### <a name="to-find-your-sendgrid-credentials"></a>So finden Sie Ihre SendGrid-Anmeldeinformationen
-1. Klicken Sie auf das Schlüsselsymbol, um zu Ihrem Benutzernamen**** zu gelangen.
+1. Klicken Sie auf das Schlüsselsymbol, um zu Ihrem **Benutzernamen** zu gelangen.
 
     ![key][key]
 2. Als Kennwort wird das Kennwort verwendet, das Sie bei der Einrichtung gewählt haben. Wenn Sie Änderungen vornehmen möchten, können Sie auf **Kennwort ändern** oder auf **Kennwort zurücksetzen** klicken.
