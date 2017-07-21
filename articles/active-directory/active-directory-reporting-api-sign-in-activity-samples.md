@@ -3,7 +3,7 @@ title: "Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API | Mic
 description: Vorgehensweise zum Einstieg in die Azure Active Directory Berichterstellungs-API
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
@@ -12,37 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6b1137c8ca33774ef9852b9441b541cf7723ebd
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
 ms.contentlocale: de-de
-ms.lasthandoff: 12/28/2016
+ms.lasthandoff: 07/17/2017
 
 ---
-<a id="azure-active-directory-sign-in-activity-report-api-samples" class="xliff"></a>
-
-# Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API
+# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API
 Dieses Thema ist Bestandteil einer Sammlung von Themen zur Azure Active Directory-Berichterstellungs-API.  
 Die Azure AD-Berichterstellung bietet eine API, mit der Sie unter Verwendung von Code oder zugehörigen Tools auf Daten zur Anmeldeaktivität zugreifen können.  
 In diesem Thema werden Codebeispiele für die **Anmeldeaktivitätsbericht-API**bereitgestellt.
 
 Unter
 
-* [Überwachungsprotokolle](active-directory-reporting-azure-portal.md#audit-logs) erhalten Sie konzeptionelle Informationen.
+* [Überwachungsprotokolle](active-directory-reporting-azure-portal.md#activity-reports) erhalten Sie konzeptionelle Informationen.
 * [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md) finden Sie weitere Informationen zur Berichterstellungs-API.
 
-Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Damit Sie die Beispielen in diesem Thema verwenden können, müssen die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](active-directory-reporting-api-prerequisites.md)erfüllt sein.  
 
-<a id="powershell-script" class="xliff"></a>
-
-## PowerShell-Skript
+## <a name="powershell-script"></a>PowerShell-Skript
     # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
@@ -85,16 +79,12 @@ Damit Sie die Beispielen in diesem Thema verwenden können, müssen die [Vorauss
 
 
 
-<a id="executing-the-script" class="xliff"></a>
-
-## Ausführen des Skripts
+## <a name="executing-the-script"></a>Ausführen des Skripts
 Wenn Sie die Bearbeitung des Skripts abgeschlossen haben, führen Sie es aus, und prüfen Sie, ob die erwarteten Daten aus dem Bericht zu den Überwachungsprotokollen zurückgegeben werden.
 
 Das Skript gibt die Ausgabe des Anmeldeberichts im JSON-Format zurück. Darüber hinaus wird eine Datei `SigninActivities.json` mit derselben Ausgabe erstellt. Sie können damit experimentieren, indem Sie das Skript so verändern, dass es Daten aus anderen Berichten zurückgibt, und nicht benötigte Ausgabeformate auskommentieren.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Möchten Sie die Beispiele in diesem Thema anpassen? Dann sehen Sie sich die [Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-reference.md)an. 
 * Eine vollständige Übersicht zur Verwendung der Azure Active Directory-Berichterstellungs-API finden Sie im Artikel [Erste Schritte mit der Azure Active Directory-Berichterstellungs-API](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  

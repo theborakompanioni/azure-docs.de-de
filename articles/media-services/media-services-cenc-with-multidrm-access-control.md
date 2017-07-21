@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2016
 ms.author: willzhan;kilroyh;yanmf;juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: 1ea286a04c84d031fcefa8dc771cbdef9d8a9b72
-ms.lasthandoff: 01/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 63f2638cd0d50d1aa9a3b6864daba0b8854768d7
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC mit mehreren DRM-Systemen und Access Control: Referenzentwurf und -implementierung in Azure und Azure Media Services
@@ -274,7 +274,7 @@ Azure AD befolgt den Branchenstandard zum Einrichten einer Vertrauensstellung zw
 
 Detaillierte Informationen zum Azure AD-Schlüsselrollover finden Sie im Dokument [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](../active-directory/active-directory-signing-key-rollover.md).
 
-Im [Schlüsselpaar aus öffentlichem und privatem Schlüssel](https://login.windows.net/common/discovery/keys/)
+Im [Schlüsselpaar aus öffentlichem und privatem Schlüssel](https://login.microsoftonline.com/common/discovery/keys/)
 
 * wird der private Schlüssel von Azure Active Directory verwendet, um ein JWT-Token zu generieren.
 * wird der öffentliche Schlüssel von einer Anwendung wie den DRM-Lizenzbereitstellungsdiensten in AMS verwendet, um das JWT-Token zu überprüfen.
@@ -360,7 +360,7 @@ Es gibt zwei Arten von Sicherheitsschlüsseln:
 #### <a name="tech-note"></a>Technische Hinweise
 Bei Verwendung von .NET Framework/C# als Entwicklungsplattform muss das X.509-Zertifikat des asymmetrischen Schlüssels eine Schlüssellänge von mindestens 2048 aufweisen. Dies ist eine Voraussetzung für die „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“--Klasse in .NET Framework. Andernfalls wird die folgende Ausnahme ausgelöst:
 
-IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als&2048; Bits sein.
+IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als 2048 Bits sein.
 
 ## <a name="the-completed-system-and-test"></a>Das fertige System und Tests
 Wir durchlaufen verschiedene Szenarien im fertigen System, damit sich die Leser ein grundlegendes Bild des Verhaltens machen können, bevor sie ein Anmeldekonto erhalten.

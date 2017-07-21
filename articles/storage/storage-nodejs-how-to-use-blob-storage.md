@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: b5ed7853c696d9e8477a31aba8a9cc9ab8558fa8
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 38c3fd3cd271c3f9d60c44fff17715062b4979ae
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>Verwenden des Blob-Speichers mit Node.js
@@ -418,7 +418,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 * [API-Referenz zum Azure Storage-SDK für Node][Azure Storage SDK for Node API Reference]
 * [Azure Storage-Teamblog][Azure Storage Team Blog]
 * [Azure Storage SDK für Node.js][Azure Storage SDK for Node]-Repository auf GitHub
-* [Node.js Developer Center](/develop/nodejs/)
+* [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node

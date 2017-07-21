@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: b78d8d257ea31e7cb6b4e1abfb32c81fcea67b6d
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: 4be7f077fa5bc03531baf2443c663f1d8bc4a1c8
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/15/2017
 
 ---
 # <a name="community-portal"></a>Communityportal
@@ -105,7 +104,7 @@ Sie können über aktuelle Azure Cosmos DB-Nachrichten und -Features auf dem Lau
 |[South Florida Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|Davie, FL|11. März 2017|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
 |[Orlando Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|Sanford, FL|8. April 2017|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
 |[Global Azure Bootcamp: Serverless computing in Azure with Azure Functions and DocumentDB](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh Lane](https://twitter.com/jplane)|Atlanta (Georgia, USA)|22. April 2017|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
-|[NDC Oslo 2017: Azure DocumentDB – Die beste NoSQL-Datenbank, die Sie wahrscheinlich (noch) nicht verwenden](http://ndcoslo.com/talk/azure-documentdb-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh Lane](https://twitter.com/jplane)|Oslo, Norwegen|14. Juni 2017|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
+|[NDC Oslo 2017: Azure DocumentDB – Die beste NoSQL-Datenbank, die Sie wahrscheinlich (noch) nicht verwenden](http://ndcoslo.com/talk/azure-cosmos-db-the-best-nosql-database-youre-probably-not-using-yet/)|[Josh Lane](https://twitter.com/jplane)|Oslo, Norwegen|14. Juni 2017|[#ndcoslo](https://twitter.com/search?q=%23ndcoslo)|
 
 *Sprechen Sie auf einer Veranstaltung oder organisieren Sie sie? [Lassen Sie uns wissen](mailto:askcosmosdb@microsoft.com), wie wir Ihnen helfen können.*
 

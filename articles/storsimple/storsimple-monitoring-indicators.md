@@ -4,7 +4,7 @@ description: "Beschreibt die LEDs und akustischen Alarme, die zum Überwachen de
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 06/05/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0b8efafadee9bb7636bb204b55758f18a86cf049
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d44f94719bff0cb58b3727050598e55f4774e66
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -135,7 +137,7 @@ Anhand der folgenden Tabelle können Sie ermitteln, ob das Controllermodul ordnu
 ### <a name="controller-indicator-leds"></a>Indikator-LEDs des Controllers
 | LED | Beschreibung |
 | --- | --- |
-| ID-LED (blau) |Zeigt an, dass das Modul identifiziert wurde. Wenn die blaue LED an einem laufenden Controller blinkt, ist dieser Controller der aktive Controller und der andere Controller der Standbycontroller. Weitere Informationen finden Sie unter [Identifizieren des aktiven Controllers auf Ihrem Gerät](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device). |
+| ID-LED (blau) |Zeigt an, dass das Modul identifiziert wurde. Wenn die blaue LED an einem laufenden Controller blinkt, ist dieser Controller der aktive Controller und der andere Controller der Standbycontroller. Weitere Informationen finden Sie unter [Identifizieren des aktiven Controllers auf Ihrem Gerät](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | Fehler-LED (bernsteinfarben) |Zeigt einen Fehler im Controller an. |
 | OK-LED (grün) |Gleichmäßig leuchtendes Grün zeigt an, dass der Controller ordnungsgemäß funktioniert. Blinkendes Grün zeigt einen VPD-Konfigurationsfehler des Controllers an. |
 | SAS-Aktivitäts-LEDs (grün) |Gleichmäßiges leuchtendes Grün zeigt eine Verbindung ohne aktuelle Aktivität an. Blinkendes Grün zeigt an, dass für die Verbindung eine laufende Aktivität besteht. |
@@ -209,12 +211,11 @@ Die verschiedenen Alarmzustände werden in der folgenden Tabelle beschrieben.
 > * Wenn Sie im Alarmzustand S1 die Stummschalttaste nicht innerhalb von zwei Minuten drücken, erfolgt automatisch ein Übergang in den Zustand S2 oder S3.  
 > * Die Alarmzustände S1 bis S4 kehren zu S0 zurück, sobald die Fehlerbedingung behoben wurde.  
 > * Der kritische Fehlerzustand S4 kann aus jedem anderen Zustand erreicht werden.  
-> 
-> 
 
-Der akustische Alarm kann durch Drücken der Stummschalttaste auf dem OPS-Bedienfeld stumm geschaltet werden. Die automatische Stummschaltung erfolgt nach zwei Minuten, wenn der Stummschalter nicht manuell betrieben wird. Wenn der Alarm stummgeschaltet wird, erfolgen weiterhin kurze, intermittierende Pieptöne, um anzuzeigen, dass weiterhin ein Problem vorliegt. Der Alarm verstummt, wenn alle Probleme behoben sind.  
 
-Die verschiedenen Alarmbedingungen werden in der folgenden Tabelle beschrieben.  
+Der akustische Alarm kann durch Drücken der Stummschalttaste auf dem OPS-Bedienfeld stumm geschaltet werden. Die automatische Stummschaltung erfolgt nach zwei Minuten, wenn der Stummschalter nicht manuell betrieben wird. Wenn der Alarm stummgeschaltet wird, erfolgen weiterhin kurze, intermittierende Pieptöne, um anzuzeigen, dass weiterhin ein Problem vorliegt. Der Alarm verstummt, wenn alle Probleme behoben sind.
+
+Die verschiedenen Alarmbedingungen werden in der folgenden Tabelle beschrieben.
 
 ### <a name="alarm-conditions"></a>Alarmbedingungen
 | Status | Schweregrad | Alarm | LED des Bedienfelds |
@@ -240,7 +241,7 @@ Die verschiedenen Alarmbedingungen werden in der folgenden Tabelle beschrieben.
 | Keine ausreichende Energie verfügbar |Warnung |Keine |Modulfehler |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](storsimple-monitor-hardware-status.md).
+Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](storsimple-8000-monitor-hardware-status.md).
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png
@@ -249,10 +250,5 @@ Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](stors
 [5]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE05.png
 [6]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE06.png
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

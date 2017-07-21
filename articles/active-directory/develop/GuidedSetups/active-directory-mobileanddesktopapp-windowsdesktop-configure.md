@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 12c89a6fcbb6d299b64e6b0ec9d1dba29bb41d16
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1dfaa7ade664e43dcb9aa788b0197ca17e6ec4cc
 ms.contentlocale: de-de
 
 
@@ -35,7 +35,7 @@ Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* reg
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
 2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein. 
 3. Stellen Sie sicher, dass die Option für geführtes Setup deaktiviert ist.
-4. Klicken Sie auf `Add Platforms`, wählen Sie `Native Application` aus, und klicken Sie auf „Speichern“.
+4. Klicken Sie auf `Add Platform`, wählen Sie `Native Application` aus, und klicken Sie auf „Speichern“.
 5. Kopieren Sie die GUID in „Anwendungs-ID“, wechseln Sie zurück zu Visual Studio, öffnen Sie `App.xaml.cs`, und ersetzen Sie `your_client_id_here` durch die Anwendungs-ID, die Sie gerade registriert haben:
 
 ```csharp

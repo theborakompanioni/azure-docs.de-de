@@ -1,8 +1,8 @@
 ---
 title: 'Skalieren der Anzahl von Instanzen: Manuell oder automatisch im Azure-Portal | Microsoft Docs'
 description: "Erfahren Sie, wie Sie Ihre Dienste in Azure skalieren können."
-author: rboucher
-manager: carmonm
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 44bcf3ed1be8007a3c1ab9b727acf9a249cf84cc
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: d171538ea57839eccddcc74ca099a39aee34ea10
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>Manuelles oder automatisches Skalieren der Instanzenzahl

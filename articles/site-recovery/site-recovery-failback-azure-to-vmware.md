@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/27/2017
 ms.author: ruturajd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 795dd0c05daf560e5a271fef5356eb83d72a6112
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: dde0bb6b4f6bc10afdd7d40adc6689d42b37de81
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>Failback von virtuellen VMware-Computern und physischen Servern zum lokalen Standort
@@ -70,7 +69,7 @@ Wenn Sie das Failback zu einem anderen Speicherort durchführen, werden die Date
 ## <a name="prerequisites"></a>Voraussetzungen
 * Für das Durchführen von Failbacks für virtuelle VMware-Computer und physische Server benötigen Sie eine VMware-Umgebung. Ein Failback auf einen physischen Server wird nicht unterstützt.
 * Ein Failback ist nur möglich, wenn Sie beim ursprünglichen Einrichten des Schutzes ein Azure-Netzwerk erstellt haben. Für das Failback wird eine VPN-Verbindung oder eine ExpressRoute-Verbindung von dem Azure-Netzwerk, in dem sich die virtuellen Azure-Computer befinden, mit ihrem lokalen Standort benötigt.
-* Wenn die virtuellen Computer, für die Sie das Failback ausführen möchten, von einem vCenter-Server verwaltet werden, stellen Sie sicher, dass auf den vCenter-Servern die erforderlichen Berechtigungen für die Ermittlung von virtuellen Computern vorhanden sind. Weitere Informationen finden Sie unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access).
+* Wenn die virtuellen Computer, für die Sie das Failback ausführen möchten, von einem vCenter-Server verwaltet werden, stellen Sie sicher, dass auf den vCenter-Servern die erforderlichen Berechtigungen für die Ermittlung von virtuellen Computern vorhanden sind. Weitere Informationen finden Sie unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md).
 * Wenn auf einem virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Ausführen des erneuten Schutzes ein Fehler auf. Sie können die Momentaufnahmen oder die Datenträger löschen.
 * Vor dem Ausführen des Failbacks müssen Sie diese Komponenten erstellen:
   * **Erstellen Sie einen Prozessserver in Azure**. Diese Komponente ist ein virtueller Azure-Computer, den Sie erstellen und während des Failbacks fortlaufend ausführen. Sie können den virtuellen Computer nach Abschluss des Failbacks löschen.
@@ -110,7 +109,7 @@ Wenn Ihre virtuellen Computer als klassische Ressourcen geschützt sind (d.h. we
  * Der Name des Images ist *Microsoft Azure Site Recovery Process Server V2*. Wählen Sie **Klassisch** als Bereitstellungsmodell aus.
 
        ![Select "Classic" as the Process Server deployment model](./media/site-recovery-failback-azure-to-vmware-classic/templatename.png)
- * Installieren Sie den Prozessserver gemäß den Anweisungen in [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server).
+ * Installieren Sie den Prozessserver gemäß den Anweisungen in [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md).
 7. Wenn Sie *Resource Manager* als Modell für das Azure-Netzwerk auswählen, geben Sie beim Bereitstellen des Prozessservers die folgenden Informationen an:
 
   * Name der Ressourcengruppe, in der Sie den Server bereitstellen möchten
@@ -123,7 +122,7 @@ Wenn Ihre virtuellen Computer als klassische Ressourcen geschützt sind (d.h. we
 
     ![Eingeben von Informationen im Dialogfeld „Prozessserver hinzufügen“](./media/site-recovery-failback-azure-to-vmware-classic/psinputsadd.png)
 
-8. Klicken Sie auf **OK**. Dadurch wird ein Auftrag ausgelöst, der während der Einrichtung des Prozessservers einen virtuellen Computer mit dem Bereitstellungstyp „Resource Manager“ erstellt. Zum Registrieren des Servers auf dem Konfigurationsserver führen Sie das Setup auf dem virtuellen Computer aus. Folgen Sie dabei den Anweisungen in [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server). Ein Auftrag zum Bereitstellen des Prozessservers wird ausgelöst.
+8. Klicken Sie auf **OK**. Dadurch wird ein Auftrag ausgelöst, der während der Einrichtung des Prozessservers einen virtuellen Computer mit dem Bereitstellungstyp „Resource Manager“ erstellt. Zum Registrieren des Servers auf dem Konfigurationsserver führen Sie das Setup auf dem virtuellen Computer aus. Folgen Sie dabei den Anweisungen in [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md). Ein Auftrag zum Bereitstellen des Prozessservers wird ausgelöst.
 
   Der Prozessserver ist auf der Registerkarte  **Konfigurationsserver** > **Zugeordnete Server** > **Prozessserver**.
 
@@ -142,7 +141,7 @@ Der Masterzielserver empfängt die Failbackdaten. Der Server wird automatisch au
 1. Wenn Sie den Masterzielserver unter Windows einrichten, öffnen Sie auf dem virtuellen Computer, auf dem Sie den Masterzielserver installieren, die Seite „Schnellstart“.
 2. Laden Sie dann die Installationsdatei für den Azure Site Recovery-Assistenten für einheitliches Setup herunter.
 3. Führen Sie das Setup aus, und wählen Sie in **Vorbereitung** die Option **Add additional process servers to scale out deployment** (Weitere Prozessserver zum horizontalen Hochskalieren der Bereitstellung hinzufügen) aus.
-4. Beenden Sie den Assistenten genauso wie beim [Einrichten des Verwaltungsservers](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server). Geben Sie auf der Seite **Konfigurationsserverdetails** die IP-Adresse des Masterzielservers sowie eine Passphrase für den Zugriff auf den virtuellen Computer an.
+4. Beenden Sie den Assistenten genauso wie beim [Einrichten des Verwaltungsservers](site-recovery-vmware-to-azure-classic.md). Geben Sie auf der Seite **Konfigurationsserverdetails** die IP-Adresse des Masterzielservers sowie eine Passphrase für den Zugriff auf den virtuellen Computer an.
 
 ### <a name="set-up-a-linux-vm-as-the-master-target-server"></a>Einrichten eines virtuellen Linux-Computers als Masterzielserver
 Zum Einrichten des Verwaltungsservers, auf dem der Masterzielserver als virtueller Linux-Computer ausgeführt wird, installieren Sie das Minimalbetriebssystem CentOS 6.6. Anschließend rufen Sie die SCSI-IDs für jede SCSI-Festplatte ab, installieren einige zusätzliche Pakete und nehmen einige benutzerdefinierte Änderungen vor.
@@ -233,7 +232,7 @@ Nach dem Commit sollten sich Ihre Daten wieder am lokalen Standort befinden, sin
 Nachdem das erneute Schützen abgeschlossen ist, wird der virtuelle Computer zurück nach Azure repliziert, und Sie können ein Failover ausführen.
 
 ### <a name="resolve-common-failback-issues"></a>Beheben häufiger Probleme beim Failback
-* Wenn Sie die vCenter-Ermittlung schreibgeschützter Benutzer ausführen und virtuelle Computer schützen, funktioniert das Failover. Während des erneuten Schützens schlägt dies fehl, da die Datenspeicher nicht ermittelt werden können. Das Symptom dafür ist, dass Sie die Datenspeicher beim während des erneuten Schützens nicht sehen. Zum Beheben dieses Problems können Sie die vCenter-Anmeldeinformationen mit einem entsprechenden Konto aktualisieren, das über die erforderlichen Berechtigungen verfügt, und den Auftrag wiederholen. Weitere Informationen finden Sie unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access).
+* Wenn Sie die vCenter-Ermittlung schreibgeschützter Benutzer ausführen und virtuelle Computer schützen, funktioniert das Failover. Während des erneuten Schützens schlägt dies fehl, da die Datenspeicher nicht ermittelt werden können. Das Symptom dafür ist, dass Sie die Datenspeicher beim während des erneuten Schützens nicht sehen. Zum Beheben dieses Problems können Sie die vCenter-Anmeldeinformationen mit einem entsprechenden Konto aktualisieren, das über die erforderlichen Berechtigungen verfügt, und den Auftrag wiederholen. Weitere Informationen finden Sie unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md).
 * Wenn Sie ein Failback für einen virtuellen Linux-Computer durchführen und ihn lokal ausführen, sehen Sie, dass das Netzwerk-Manager-Paket auf dem Computer deinstalliert wurde. Der Grund für die Deinstallation ist, dass beim Wiederherstellen des virtuellen Computers in Azure das Netzwerk-Manager-Paket entfernt wird.
 * Wenn ein virtueller Computer mit einer statischen IP-Adresse konfiguriert ist und ein Failover zu Azure ausgeführt wird, wird die IP-Adresse über DHCP abgerufen. Nach dem Failover zurück zum lokalen Standort verwendet der virtuelle Computer weiterhin DHCP zum Abrufen der IP-Adresse. Melden Sie sich ggf. manuell am Computer an, und setzen Sie die IP-Adresse auf die statische Adresse zurück.
 * Wenn Sie die kostenlose Edition ESXi 5.5 oder die kostenlose Edition vSphere 6 Hypervisor verwenden, wäre das Failover erfolgreich, das Failback jedoch nicht. Sie müssen auf die Evaluierungslizenz eines der Programme aktualisieren, um das Failback zu aktivieren.

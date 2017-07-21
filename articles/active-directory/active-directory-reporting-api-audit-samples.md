@@ -3,7 +3,7 @@ title: "Beispiele zur Überwachungs-API für die Azure Active Directory-Berichte
 description: Vorgehensweise zum Einstieg in die Azure Active Directory Berichterstellungs-API
 services: active-directory
 documentationcenter: 
-author: dhanyahk
+author: MarkusVi
 manager: femila
 editor: 
 ms.assetid: de8b8ec3-49b3-4aa8-93fb-e38f52c99743
@@ -14,41 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
-ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: aab705688079601bbce93455f7dda80cdd733110
 ms.contentlocale: de-de
-ms.lasthandoff: 12/28/2016
+ms.lasthandoff: 07/19/2017
 
 ---
-<a id="azure-active-directory-reporting-audit-api-samples" class="xliff"></a>
-
-# Beispiele zur Azure Active Directory-Überwachungs-API
+# <a name="azure-active-directory-reporting-audit-api-samples"></a>Beispiele zur Azure Active Directory-Überwachungs-API
 Dieses Thema ist Bestandteil einer Sammlung von Themen zur Azure Active Directory-Berichterstellungs-API.  
 Die Azure AD-Berichterstellung bietet eine API, mit der Sie unter Verwendung von Code oder zugehörigen Tools auf Überwachungsdaten zugreifen können.
 In diesem Thema werden Codebeispiele für die **Überwachungs-API**bereitgestellt.
 
 Siehe:
 
-* [Überwachungsprotokolle](active-directory-reporting-azure-portal.md#audit-logs) erhalten Sie konzeptionelle Informationen.
+* [Überwachungsprotokolle](active-directory-reporting-azure-portal.md#activity-reports) erhalten Sie konzeptionelle Informationen.
 * [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md) finden Sie weitere Informationen zur Berichterstellungs-API.
 
 Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Damit Sie die Beispielen in diesem Thema verwenden können, müssen die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](active-directory-reporting-api-prerequisites.md)erfüllt sein.  
 
-<a id="known-issue" class="xliff"></a>
-
-## Bekannte Probleme
+## <a name="known-issue"></a>Bekannte Probleme
 Die App-Authentifizierung funktioniert nicht, wenn sich Ihr Mandant in der Region „Europa“ befindet. Verwenden Sie als Umgehung die Benutzerauthentifizierung zum Zugriff auf die Überwachungs-API, bis wir dieses Problem behoben haben. 
 
-<a id="powershell-script" class="xliff"></a>
-
-## PowerShell-Skript
+## <a name="powershell-script"></a>PowerShell-Skript
     # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
 
     # Constants
@@ -93,16 +86,12 @@ Die App-Authentifizierung funktioniert nicht, wenn sich Ihr Mandant in der Regio
     $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 
-<a id="executing-the-powershell-script" class="xliff"></a>
-
-### Ausführen des PowerShell-Skripts
+### <a name="executing-the-powershell-script"></a>Ausführen des PowerShell-Skripts
 Wenn Sie die Bearbeitung des Skripts abgeschlossen haben, führen Sie es aus, und prüfen Sie, ob die erwarteten Daten aus dem Bericht zu den Überwachungsprotokollen zurückgegeben werden.
 
 Das Skript gibt die Ausgabe des Überwachungsberichts im JSON-Format zurück. Darüber hinaus wird eine Datei `audit.json` mit derselben Ausgabe erstellt. Sie können damit experimentieren, indem Sie das Skript so verändern, dass es Daten aus anderen Berichten zurückgibt, und nicht benötigte Ausgabeformate auskommentieren.
 
-<a id="bash-script" class="xliff"></a>
-
-## Bash-Skript
+## <a name="bash-script"></a>Bash-Skript
     #!/bin/bash
 
     # Author: Ken Hoff (kenhoff@microsoft.com)
@@ -130,9 +119,7 @@ Das Skript gibt die Ausgabe des Überwachungsberichts im JSON-Format zurück. Da
 
     echo $REPORT | ./jq-win64.exe -r '.value' | ./jq-win64.exe -r ".[]"
 
-<a id="python-script" class="xliff"></a>
-
-## Python-Skript
+## <a name="python-script"></a>Python-Skript
     # Author: Michael McLaughlin (michmcla@microsoft.com)
     # Date: January 20, 2016
     # This requires the Python Requests module: http://docs.python-requests.org
@@ -177,9 +164,7 @@ Das Skript gibt die Ausgabe des Überwachungsberichts im JSON-Format zurück. Da
 
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Möchten Sie die Beispiele in diesem Thema anpassen? Dann sehen Sie sich die [Referenz zur Azure Active Directory-Überwachungs-API](active-directory-reporting-api-audit-reference.md)an. 
 * Eine vollständige Übersicht zur Verwendung der Azure Active Directory-Berichterstellungs-API finden Sie im Artikel [Erste Schritte mit der Azure Active Directory-Berichterstellungs-API](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  

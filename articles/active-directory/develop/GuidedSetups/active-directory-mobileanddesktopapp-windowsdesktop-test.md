@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 04580626bafe1b432d87ccd44cdff219922ec002
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 972cc48057c13271d725b0c973c3ccf651ad27c4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -54,7 +54,6 @@ Es sollten im Feld mit den Informationen zum Token auch grundlegende Information
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 Die Graph-API erfordert den Bereich `user.read` zum Lesen des Benutzerprofils. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die in unserem Registrierungsportal registriert wird. Einige andere Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern zusätzliche Bereiche. Beispielsweise ist für Graph `Calendars.Read` erforderlich, um Kalender von Benutzern aufzulisten. Um auf den Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie `Calendars.Read` den Informationen zur delegierten Anwendungsregistrierung und dann `Calendars.Read` dem Aufruf von `AcquireTokenAsync` hinzufügen. Wenn Sie die Anzahl der Bereiche weiter erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
 
-Wenn eine Back-End-API keinen Bereich erfordert (nicht empfohlen), können Sie `ClientId` als Bereich im `AcquireTokenAsync`-Aufruf verwenden.
 <!--end-collapse-->
 
 
