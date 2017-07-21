@@ -30,16 +30,6 @@ abstract:
     die skalierbar, zuverlässig und einfach zu verwalten sind. Hier erfahren Sie
     anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Service
     Fabric verwenden.
-  aside:
-    image:
-      alt: null
-      height: 140
-      src: >-
-        https://sec.ch9.ms/ch9/cf61/aa41e58e-ec9f-4f7b-982d-40daaaeacf61/IntroAzureServiceFabric_960.jpg
-      width: 250
-    title: 'Einführung in Service Fabric (3:53)'
-    href: 'https://azure.microsoft.com/en-us/resources/videos/azure-service-fabric/'
-    width: 250
 sections:
   - title: Fünfminütige Schnellstarts
     items:
