@@ -1,14 +1,14 @@
 ---
 title: "Azure CLI-Beispielskript – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme | Microsoft-Dokumentation"
 description: "Azure CLI-Beispielskript – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme"
-services: managed-disks-linux
+services: virtual-machines-linux
 documentationcenter: storage
-author: ramankum
+author: ramankumarlive
 manager: kavithag
-editor: ramankum
+editor: tysonn
 tags: azure-service-management
 ms.assetid: 
-ms.service: managed-disks-linux
+ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux

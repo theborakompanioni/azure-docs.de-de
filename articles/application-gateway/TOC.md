@@ -7,6 +7,7 @@
 ## [URL-Routing](application-gateway-url-route-overview.md)
 ## [Multi-Site](application-gateway-multi-site-overview.md)
 ## [End-to-End-SSL](application-gateway-backend-ssl.md)
+## [Umleitung](application-gateway-redirect-overview.md)
 ## [WebSocket](application-gateway-websocket.md)
 ## [Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # Erste Schritte
@@ -37,6 +38,8 @@
 ## Konfigurieren des Hostens mehrerer Websites
 ### [Portal](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+## Konfigurieren einer Umleitung
+### [PowerShell](application-gateway-configure-redirect-powershell.md)
 ## Konfigurieren von Integritätstests
 ### [Portal](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
