@@ -41,7 +41,7 @@ Sie können mit der Option **Ansicht** die Anzeige im Bereich **Ergebnisse** und
 #### <a name="to-change-the-results-pane-view"></a>So ändern Sie die Ansicht im Ergebnisbereich
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, oder erweitern Sie diesen, und klicken Sie mit der rechten Maustaste auf ein Element im Bereich **Ergebnisse**, und klicken Sie dann auf die Option **Ansicht**. 
-3. Um im Bereich **Ergebnisse** Spalten hinzuzufügen oder zu entfernen, klicken Sie auf** Spalten hinzufügen/entfernen**. Das Dialogfeld **Spalten hinzufügen/entfernen** wird angezeigt.
+3. Um im Bereich **Ergebnisse** Spalten hinzuzufügen oder zu entfernen, klicken Sie auf **Spalten hinzufügen/entfernen**. Das Dialogfeld **Spalten hinzufügen/entfernen** wird angezeigt.
    
     ![Hinzufügen oder Entfernen von Spalten aus dem Ergebnisbereich](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
 4. Füllen Sie das Formular wie folgt aus:
@@ -54,7 +54,7 @@ Sie können mit der Option **Ansicht** die Anzeige im Bereich **Ergebnisse** und
 
 #### <a name="to-change-the-console-window-view"></a>So ändern Sie die Ansicht des Konsolenfensters
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
-2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, klicken Sie auf **Ansicht** und dann auf ** Anpassen**. Das Dialogfeld **Anpassen** wird angezeigt.
+2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, klicken Sie auf **Ansicht** und dann auf  **Anpassen**. Das Dialogfeld **Anpassen** wird angezeigt.
    
     ![Anpassen des Konsolenfensters](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
 3. Aktivieren oder deaktivieren Sie die Kontrollkästchen, um die jeweiligen Elemente im Konsolenfenster ein- oder auszublenden. Wenn Sie mit der Auswahl fertig sind, klicken Sie auf **OK**.
