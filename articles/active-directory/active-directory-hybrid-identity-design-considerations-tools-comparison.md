@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
 ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
-
+ms.contentlocale: de-de
+ms.lasthandoff: 01/18/2017
 
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
@@ -91,10 +92,5 @@ PP = Öffentliche Vorschau
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

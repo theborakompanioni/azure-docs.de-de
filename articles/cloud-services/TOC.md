@@ -21,8 +21,6 @@
 #### [Queue Storage und verbundene Dienste](../storage/vs-storage-cloud-services-getting-started-queues.md)
 #### [Table Storage und verbundene Dienste](../storage/vs-storage-cloud-services-getting-started-tables.md)
 ### Konfigurieren von Paketen für fortlaufende Builds
-#### [Visual Studio Team Services und Git](cloud-services-continuous-delivery-use-vso-git.md)
-#### [Visual Studio Team Services](cloud-services-continuous-delivery-use-vso.md)
 #### [TFS und Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [Konfigurieren von Datenverkehrsregeln für eine Rolle](cloud-services-enable-communication-role-instances.md)
 ### [Behandeln von Cloud Services-Lebenszyklusereignissen](cloud-services-role-lifecycle-dotnet.md)
