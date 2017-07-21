@@ -17,10 +17,10 @@ ms.date: 05/16/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: db95802e2d3cabbef64a414a2fe16a3f6c7e33c8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f1bdfb133b55f5cf18b85fa40908b8df534a15bd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analysieren von Twitter-Daten mit Hive und Hadoop in HDInsight
@@ -30,7 +30,7 @@ Erfahren Sie, wie Sie Twitter-Daten mit Apache Hive verarbeiten. Als Ergebnis er
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument wurden in HDInsight 3.5 getestet.
 >
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="get-the-data"></a>Abrufen von Daten
 

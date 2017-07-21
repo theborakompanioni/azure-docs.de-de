@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 590e2bc759567cf3d679e261592dff1e699ba295
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 746cad19093fd2a1ad23ddd9412394f8d9da331c
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>Integrieren von Azure AD in eine Android-App
@@ -174,7 +173,7 @@ Sie können die JAR-Datei aus dem Repository von Maven abrufen und im Ordner **l
             ....
         <application/>
 
-4. Erstellen Sie eine Instanz von AuthenticationContext als Hauptaktivität. Die Details dieses Aufrufs liegen außerhalb des Umfangs dieses Themas, aber das [Android-Beispiel für systemeigene Clients](https://github.com/AzureADSamples/NativeClient-Android) stellt eine gute Einstiegshilfe dar. Im folgenden Beispiel ist SharedPreferences der Standardcache, und die Autorität hat das Format `https://login.windows.net/yourtenant.onmicrosoft.com`:
+4. Erstellen Sie eine Instanz von AuthenticationContext als Hauptaktivität. Die Details dieses Aufrufs liegen außerhalb des Umfangs dieses Themas, aber das [Android-Beispiel für systemeigene Clients](https://github.com/AzureADSamples/NativeClient-Android) stellt eine gute Einstiegshilfe dar. Im folgenden Beispiel ist SharedPreferences der Standardcache, und die Autorität hat das Format `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`:
 
     `mContext = new AuthenticationContext(MainActivity.this, authority, true); // mContext is a field in your activity`
 
@@ -264,7 +263,7 @@ Ihr App-Manifest sollte über die folgenden Berechtigungen zum Verwenden von Acc
 ### <a name="authority-url-and-ad-fs"></a>Autoritäts-URL und AD FS
 Active Directory-Verbunddienste (Active Directory Federation Services, AD FS) werden nicht als STS für die Produktion erkannt. Daher müssen Sie die Instanzenermittlung deaktivieren und für den AuthenticationContext-Konstruktor „false“ übergeben.
 
-Für die Autoritäts-URL sind die STS-Instanz und ein [Mandantenname](https://login.windows.net/yourtenant.onmicrosoft.com) erforderlich.
+Für die Autoritäts-URL sind die STS-Instanz und ein [Mandantenname](https://login.microsoftonline.com/yourtenant.onmicrosoft.com) erforderlich.
 
 ### <a name="querying-cache-items"></a>Abfragen von Cacheelementen
 Die ADAL stellt einen Standardcache unter SharedPreferences mit einigen einfachen Funktionen für die Cacheabfrage bereit. Sie können den aktuellen Cache wie folgt aus AuthenticationContext abrufen:

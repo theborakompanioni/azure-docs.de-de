@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 08a84ace63465e7c058add69a25687fe46c7ea07
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 9e19618a1b24bbdf3163ddfc3423c5c932dcd7af
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="manage-a-web-app-in-azure-app-service"></a>Verwalten einer Web-App in Azure App Service
@@ -78,10 +77,6 @@ Wenn Sie automatische Sicherungen nicht aktiviert haben, können Sie eine [manue
 
 Ziehen Sie eine [gestaffelte Bereitstellung](web-sites-staged-publishing.md)in Betracht. Mit dieser Option können Sie Updates in Form einer gestaffelten Bereitstellung veröffentlichen, die parallel zu Ihrer Produktionsbereitstellung ausgeführt wird. 
 
-Wenn Sie Visual Studio Team Services verwenden, können Sie die fortlaufende Bereitstellung aus der Quellcodeverwaltung festlegen:
-
-* [Verwendung von Team Foundation Version Control (TFVC)](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
-* [Verwendung von Git](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
 
 <!-- Anchors. -->
 

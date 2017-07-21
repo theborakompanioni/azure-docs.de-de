@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 8f95c79637db39208267e477735aefb9bec14512
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 9174f7c8d16ff311312980fbe4d35996ec7ac832
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -65,7 +65,7 @@ Wenn Sie Oracle-Datenbanken in Azure verwenden, müssen Sie eine Lösung für ho
 
 Hochverfügbarkeit und Notfallwiederherstellung für Oracle Database Enterprise Edition (ohne RAC) in Azure lassen sich mithilfe von [Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) oder [Oracle GoldenGate](http://www.oracle.com/technetwork/middleware/goldengate) mit zwei Datenbanken auf zwei eigenen virtuellen Computern erreichen. Beide virtuellen Computer sollten sich in demselben [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die private statische IP-Adresse Zugriff aufeinander haben.  Darüber hinaus wird empfohlen, die virtuellen Computer in derselben Verfügbarkeitsgruppe zu platzieren, damit sie von Azure in eigenen Fehlerdomänen und Upgradedomänen angeordnet werden können.  Falls Sie Georedundanz verwenden möchten, können Sie festlegen, dass diese zwei Datenbanken zwischen verschiedenen Regionen repliziert werden, und die zwei Instanzen mit einem VPN Gateway verbinden.
 
-Unser Tutorial [Implementieren von Oracle DataGuard in Azure](configuring-oracle-dataguard.md) führt Sie durch die grundlegenden Schritte der Einrichtung, um dies in Azure zu testen.  
+Unser Tutorial [Implementieren von Oracle DataGuard in Azure](configure-oracle-dataguard.md) führt Sie durch die grundlegenden Schritte der Einrichtung, um dies in Azure zu testen.  
 
 Mit Oracle Data Guard kann Hochverfügbarkeit mit einer primären Datenbank auf einem virtuellen Computer, einer sekundären Datenbank (Standbydatenbank) auf einem weiteren virtuellen Computer und unidirektionaler Replikation zwischen diesen Komponenten erzielt werden. Das Ergebnis ist Lesezugriff auf die Kopie der Datenbank. Mit Oracle GoldenGate können Sie bidirektionale Replikation zwischen den beiden Datenbanken konfigurieren. Informationen zum Einrichten einer Hochverfügbarkeitslösung für die Datenbanken mithilfe dieser Tools finden Sie in der Dokumentation zu [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) und [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) auf der Oracle-Website. Wenn Sie Schreibzugriff auf die Kopie der Datenbank benötigen, können Sie [Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)verwenden.
 

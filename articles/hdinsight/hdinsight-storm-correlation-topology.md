@@ -17,10 +17,10 @@ ms.date: 03/01/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 21ce246fab787e06576a295ec4ea45ae3fdfc379
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2d35232cdb9d7076c27e98f7c2300ec910479e8d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>Korrelieren von Ereignissen, die zu unterschiedlichen Zeiten eintreffen, mithilfe von Storm und HBase
@@ -41,7 +41,7 @@ In diesem Dokument erfahren Sie, wie Sie eine einfache C#-Storm-Topologie erstel
 * Apache HBase in HDInsight-Cluster (Linux- oder Windows-basiert)
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Java](https://java.com) 1.7 oder höher in Ihrer Entwicklungsumgebung. Java wird verwendet, um die Topologie zu verpacken, wenn sie an den HDInsight-Cluster übermittelt wird.
 

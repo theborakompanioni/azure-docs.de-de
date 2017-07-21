@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 6faee797ff309fef2b748fa5ac7522a2c090c37f
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: 916c92cab39306352fdf9dff0e0685fd61832d16
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/15/2017
 
 ---
 
@@ -50,10 +50,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Befehl | Hinweise |
 |---|---|
-| [az group create](/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az cosmosdb update](/cli/azure/cosmosdb/name#update) | Aktualisiert ein Azure Cosmos DB-Konto. |
-| [az cosmosdb list-connection-strings](/cli/azure/cosmosdb/list-connection-strings) | Ruft die Verbindungszeichenfolge für das Konto ab.|
-| [az group delete](/cli/azure/resource#delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#update) | Aktualisiert ein Azure Cosmos DB-Konto. |
+| [az cosmosdb list-connection-strings](https://docs.microsoft.com/cli/azure/cosmosdb#list-connection-strings) | Ruft die Verbindungszeichenfolge für das Konto ab.|
+| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

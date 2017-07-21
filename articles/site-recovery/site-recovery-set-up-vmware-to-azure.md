@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: fd331d805c0c6ddcfb492db2902a8e53b23dcab3
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: a2fabc56463c8cbf0b8a76b7a84369ed8e535486
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -33,7 +33,7 @@ Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem R
 
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes bereits erstellt haben:
 - Einen Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal")
-- Ein dediziertes Konto in VMware vCenter, das für die [automatische Ermittlung](./site-recovery-vmware-to-azure.md#vmware-account-permissions) verwendet werden kann
+- Ein dediziertes Konto in VMware vCenter, das für die [automatische Ermittlung](./site-recovery-vmware-to-azure.md) verwendet werden kann
 - Einen virtuellen Computer, auf dem der Konfigurationsserver installiert wird
 
 ## <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver

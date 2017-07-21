@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 64dbff3e5e8cff538effe8a0623e48e81420f16a
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: df60686e7eeb4902bb9df045e28442ade2ad2cb7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Machine Learning-Integration in Stream Analytics
@@ -37,7 +36,7 @@ Microsoft Azure Machine Learning ist ein Drag & Drop-Tool für die Zusammenarb
 Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in AzureML Studio als [Anforderung/Antwort-Dienst](../machine-learning/machine-learning-consume-web-services.md) bezeichnet.
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Für Stream Analytics-Aufträge erforderliche Machine Learning-Ressourcen
-Bei der Verarbeitung von Stream Analytics-Aufträgen sind für eine erfolgreiche Ausführung ein Anforderung/Antwort-Endpunkt, ein [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md#get-an-azure-machine-learning-authorization-key)und eine Swagger-Definition erforderlich. Stream Analytics verfügt über einen zusätzlichen Endpunkt, der die URL für den Swagger-Endpunkt erstellt, nach der Schnittstelle sucht und eine UDF-Standarddefinition für den Benutzer zurückgibt.
+Bei der Verarbeitung von Stream Analytics-Aufträgen sind für eine erfolgreiche Ausführung ein Anforderung/Antwort-Endpunkt, ein [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)und eine Swagger-Definition erforderlich. Stream Analytics verfügt über einen zusätzlichen Endpunkt, der die URL für den Swagger-Endpunkt erstellt, nach der Schnittstelle sucht und eine UDF-Standarddefinition für den Benutzer zurückgibt.
 
 ## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Konfigurieren einer Stream Analytics- und Machine Learning-UDF per REST-API
 Mit REST-APIs können Sie Ihren Auftrag so konfigurieren, dass er Azure Machine Language-Funktionen aufruft. Die Schritte lauten wie folgt:

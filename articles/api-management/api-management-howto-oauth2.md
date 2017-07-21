@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: e43027cdea291f34aa60ad123e0de86b385efb30
-ms.lasthandoff: 01/31/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: a19c453bb3271374b587f3d0b35adad55863b490
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management
@@ -66,7 +67,7 @@ Geben Sie die **Autorisierungscode-Berechtigungstypen** an, indem Sie die gewün
 
 Geben Sie die **Autorisierungsendpunkt-URL**ein. Für Azure Active Directory lautet diese URL ähnlich wie die folgende, wobei `<client_id>` durch die Client-ID ersetzt wird, die Ihre Anwendung gegenüber dem OAuth 2.0-Server authentifiziert.
 
-`https://login.windows.net/<client_id>/oauth2/authorize`
+`https://login.microsoftonline.com/<client_id>/oauth2/authorize`
 
 Über **Methode für Autorisierungsanforderung** wird festgelegt, wie die Autorisierungsanforderung an den OAuth 2.0-Server gesendet wird. Per Voreinstellung ist **GET** ausgewählt.
 
@@ -76,7 +77,7 @@ Im nächsten Abschnitt werden **Token-Endpunkt-URL**, **Clientauthentifizierungs
 
 Bei einem Azure Active Directory OAuth 2.0-Server weist **Token-Endpunkt-URL** das folgende Format auf. Hierbei verwendet `<APPID>` das Format `yourapp.onmicrosoft.com`.
 
-`https://login.windows.net/<APPID>/oauth2/token`
+`https://login.microsoftonline.com/<APPID>/oauth2/token`
 
 Die Standardeinstellung für **Clientauthentifizierungsmethoden** lautet **Basis**, und die **Sendemethode für Zugriffstoken** ist **Autorisierungsheader**. Diese Werte werden zusammen mit **Standardmäßiger Geltungsbereich**in diesem Abschnitt des Formulars festgelegt.
 

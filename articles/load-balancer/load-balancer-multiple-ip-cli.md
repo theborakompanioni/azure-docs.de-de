@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: annahar
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5322840700dca3902286f62f62e44bb3746a6148
-ms.lasthandoff: 04/03/2017
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: bd15713752ea01ad403d8e3dcfed0c9a7adcc7fa
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -38,7 +39,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-
 Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
 
 1. [Installieren und konfigurieren Sie die Azure CLI anhand der Schritte im verlinkten Artikel](../cli-install-nodejs.md), und melden Sie sich dann an Ihrem Azure-Konto an.
-2. [Erstellen Sie eine Ressourcengruppe](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-groups-and-choose-deployment-locations) mit dem Namen *contosofabrikam*, wie oben beschrieben.
+2. [Erstellen Sie eine Ressourcengruppe](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) mit dem Namen *contosofabrikam*, wie oben beschrieben.
 
     ```azurecli
     azure group create contosofabrikam westcentralus
@@ -58,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     azure network vnet subnet create --resource-group contosofabrikam --vnet-name myVnet --name mySubnet --address-prefix 10.0.0.0/24
     ```
 
-5. [Erstellen Sie den Lastenausgleich](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-load-balancer-and-ip-pools) mit dem Namen *mylb*:
+5. [Erstellen Sie den Lastenausgleich](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mit dem Namen *mylb*:
 
     ```azurecli
     azure network lb create --resource-group contosofabrikam --location westcentralus --name mylb
@@ -79,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     azure network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Erstellen Sie die Back-End-Adresspools (*contosopool* und *fabrikampool*), einen [Test (](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-load-balancer-health-probe) - *HTTP*) und die Lastenausgleichsregeln (*HTTPc* und *HTTPf*):
+8. Erstellen Sie die Back-End-Adresspools (*contosopool* und *fabrikampool*), einen [Test (](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *HTTP*) und die Lastenausgleichsregeln (*HTTPc* und *HTTPf*):
 
     ```azurecli
     azure network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -91,13 +92,13 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     azure network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. Führen Sie den folgenden Befehl aus, und überprüfen Sie die Ausgabe, um [sicherzustellen, dass der Lastenausgleich richtig erstellt wurde](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#verify-the-load-balancer):
+9. Führen Sie den folgenden Befehl aus, und überprüfen Sie die Ausgabe, um [sicherzustellen, dass der Lastenausgleich richtig erstellt wurde](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
     ```azurecli
     azure network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. [Erstellen Sie die öffentliche IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp* und das [Speicherkonto](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-storage-account), *mystorageaccont1* für den ersten virtuellen Computer VM1. Dies ist hier dargestellt:
+10. [Erstellen Sie die öffentliche IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address), *myPublicIp* und das [Speicherkonto](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json), *mystorageaccont1* für den ersten virtuellen Computer VM1. Dies ist hier dargestellt:
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -105,7 +106,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     azure storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Erstellen Sie die Netzwerkschnittstellen](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-nic-to-use-with-the-linux-vm) für VM1, fügen Sie eine zweite IP-Konfiguration (*VM1-ipconfig2*) hinzu, und [erstellen Sie den virtuellen Computer](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) wie unten gezeigt:
+11. [Erstellen Sie die Netzwerkschnittstellen](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) für VM1, fügen Sie eine zweite IP-Konfiguration (*VM1-ipconfig2*) hinzu, und [erstellen Sie den virtuellen Computer](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) wie unten gezeigt:
 
     ```azurecli
     azure network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1

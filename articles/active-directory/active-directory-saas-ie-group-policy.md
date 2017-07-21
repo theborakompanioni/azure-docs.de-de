@@ -1,6 +1,6 @@
 ---
 title: "Bereitstellen der Azure-Zugriffsbereichserweiterung für IE mithilfe eines Gruppenrichtlinienobjekts | Microsoft-Dokumentation"
-description: "So stellen Sie das Internet Explorer-Add-On für das Portal &quot;Meine Apps&quot; mithilfe von Gruppenrichtlinien bereit"
+description: "So stellen Sie das Internet Explorer-Add-On für das Portal \"Meine Apps\" mithilfe von Gruppenrichtlinien bereit"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: markvi
+ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c06c089fb08c19b55246122201c378917a560e14
-ms.openlocfilehash: af36f45e66b68e2e76651eb408682f36ee0cbb68
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 53ce95811bbeb306ae986fda91d3387db4e71998
 ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache)

@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 885de1e94e3ce520621dc8dc7a4a495501f6a429
-ms.openlocfilehash: 35b4c30de20c46312bd7e4524a4264450184138a
-ms.lasthandoff: 02/18/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 3714730dce9c856f602cf46e013b1ff6a89cfb07
+ms.contentlocale: de-de
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="alert-management-solution-in-operations-management-suite-oms"></a>Alert Management-Lösung in der Operations Management Suite (OMS)
 
 ![Symbol „Alert Management“](media/log-analytics-solution-alert-management/icon.png)
 
-Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](log-analytics-alerts.md) oder [aus Nagios oder Zabbix importierten](log-analytics-linux-agents.md#linux-alerts).  Die Lösung importiert auch Warnungen aus jeder [verbundenen System Center Operations Manager-Verwaltungsgruppe (SCOM)](log-analytics-om-agents.md).
+Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](log-analytics-alerts.md) oder [aus Nagios oder Zabbix importierten](log-analytics-linux-agents.md).  Die Lösung importiert auch Warnungen aus jeder [verbundenen System Center Operations Manager-Verwaltungsgruppe (SCOM)](log-analytics-om-agents.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Die Lösung funktioniert mit den Einträgen im Log Analytics-Repository mit einem Typ der **Warnung**, sodass Sie die jeweilige erforderliche Konfiguration ausführen müssen, um diese Datensätze zu sammeln.
 
 - Für Log Analytics-Warnungen müssen Sie [Warnungsregeln erstellen](log-analytics-alerts.md), um Warnungsdatensätze direkt im Repository zu erstellen.
-- Für Warnungen von Nagios und Zabbix müssen Sie [diese Server konfigurieren](log-analytics-linux-agents.md#linux-alerts), sodass sie Warnungen an Log Analytics senden.
+- Für Warnungen von Nagios und Zabbix müssen Sie [diese Server konfigurieren](log-analytics-linux-agents.md), sodass sie Warnungen an Log Analytics senden.
 - Für SCOM-Warnungen müssen Sie [Ihre Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich verbinden](log-analytics-om-agents.md).  Alle in SCOM erstellten Warnungen werden in Log Analytics importiert.  
 
 ## <a name="configuration"></a>Konfiguration

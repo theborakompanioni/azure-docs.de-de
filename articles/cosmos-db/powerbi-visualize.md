@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2016
+ms.date: 07/07/2016
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 68b4e317c51e18d61c8bde80d9fce2d63910847c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6221f5fa113bf58ed3f5e0767b79b2b647005c71
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -123,7 +123,7 @@ Sind Sie bereit, es zu versuchen? Lassen Sie uns anfangen.
     ![Power BI-Tutorial für den Power BI-Connector für Azure Cosmos DB – Koordinatenliste](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. Um das Koordinatenarray zu vereinfachen, erstellen wir eine **benutzerdefinierte Spalte** mit dem Namen „LatLong“.  Wählen Sie das Menüband **Spalte hinzufügen** aus, und klicken Sie auf **Benutzerdefinierte Spalte hinzufügen**.  Das Fenster **Benutzerdefinierte Spalte hinzufügen** wird angezeigt.
 8. Geben Sie einen Namen für die neue Spalte an, z. B. „LatLong“.
-9. Geben Sie dann die benutzerdefinierte Formel für die neue Spalte ein.  In unserem Beispiel verketten wir die Werte für Breiten- und Längengrad, getrennt durch ein Komma, wie unten dargestellt, mit der folgenden Formel: `Text.From([Document.Location.coordinates]{1})&","&Text.From([Document.Location.coordinates]{0})`. Klicken Sie auf **OK**.
+9. Geben Sie dann die benutzerdefinierte Formel für die neue Spalte ein.  In unserem Beispiel verketten wir die Werte für Breiten- und Längengrad, getrennt durch ein Komma, wie unten dargestellt, mit der folgenden Formel: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Klicken Sie auf **OK**.
    
     Weitere Informationen zu DAX (Data Analysis Expressions), einschließlich DAX-Funktionen, finden Sie unter [DAX-Grundlagen in Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop).
    

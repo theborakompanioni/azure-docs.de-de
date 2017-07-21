@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 07/17/2017
 ms.author: carlasab
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 789e1eabcd284c17c5728156cf185d2ca168f0eb
-ms.lasthandoff: 03/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 8403b5454b387fa7062d188b18cdd595bf24aecd
+ms.contentlocale: de-de
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Azure-Computer
@@ -56,9 +56,9 @@ In der folgenden Tabelle werden alle primären Migrationsmethoden aufgeführt, u
 
 | Methode | Version der Quelldatenbank | Version der Zieldatenbank | Größeneinschränkung für Sicherung der Quelldatenbank | Hinweise |
 | --- | --- | --- | --- | --- |
-| [Durchführen einer lokalen Sicherung mit Komprimierung und anschließendes manuelles Kopieren der Sicherungsdatei auf den virtuellen Azure-Computer](#backup-to-file-and-copy-to-vm-and-restore) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | Dies ist eine sehr einfache und ausführlich getestete Methode zum Verschieben von Datenbanken auf verschiedene Computer. |
+| [Durchführen einer lokalen Sicherung mit Komprimierung und anschließendes manuelles Kopieren der Sicherungsdatei auf den virtuellen Azure-Computer](#backup-and-restore) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | Dies ist eine sehr einfache und ausführlich getestete Methode zum Verschieben von Datenbanken auf verschiedene Computer. |
 | [Durchführen einer Sicherung auf eine URL und Wiederherstellung auf dem virtuellen Azure-Computer aus der URL](#backup-to-url-and-restore) |SQL Server 2012 SP1 CU2 oder höher |SQL Server 2012 SP1 CU2 oder höher |< 12,8 TB für SQL Server 2016, andernfalls < 1 TB | Dies ist eine weitere Möglichkeit, die Sicherungsdatei mithilfe des Azure-Speichers auf den virtuellen Computer zu verschieben. |
-| [Trennen und anschließendes Kopieren der Daten- und Protokolldateien in einen Azure Blob-Speicher, dann Anschließen an den SQL Server auf dem virtuellen Azure-Computer über URL](#detach-and-copy-to-url-and-attach-from-url) |SQL Server 2005 oder höher |SQL Server 2014 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie diese Methode, wenn Sie planen, [diese Dateien mithilfe des Azure Blob-Speicherdiensts zu speichern](https://msdn.microsoft.com/library/dn385720.aspx) und sie mit SQL Server in einer Azure-VM zu verbinden, insbesondere bei sehr großen Datenbanken. |
+| [Trennen und anschließendes Kopieren der Daten- und Protokolldateien in einen Azure Blob-Speicher, dann Anschließen an den SQL Server auf dem virtuellen Azure-Computer über URL](#detach-and-attach-from-url) |SQL Server 2005 oder höher |SQL Server 2014 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie diese Methode, wenn Sie planen, [diese Dateien mithilfe des Azure Blob-Speicherdiensts zu speichern](https://msdn.microsoft.com/library/dn385720.aspx) und sie mit SQL Server in einer Azure-VM zu verbinden, insbesondere bei sehr großen Datenbanken. |
 | [Konvertieren eines lokalen physischen Computers in Hyper-V-VHD, Hochladen in einen Azure-Blob-Speicher und anschließendes Bereitstellen als neuen virtuellen Computer mithilfe des hochgeladenen VHD](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie diese Methode, wenn Sie [Ihre eigene SQL Server-Lizenz mitbringen](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md) und eine Datenbank migrieren, die unter einer älteren Version von SQL Server ausgeführt wird oder wenn Sie System- und Benutzerdatenbanken gemeinsam als Teil der Migration von Datenbanken migrieren, die von anderen Benutzer- und/oder Systemdatenbanken abhängig sind. |
 | [Versenden einer Festplatte mithilfe des Windows-Import-Export-Diensts](#ship-hard-drive) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie den [Windows-Import/Export-Dienst](../../../storage/storage-import-export-service.md) , wenn das manuelle Kopieren zu langsam ist (etwa bei sehr großen Datenbanken). |
 | [Verwenden des Assistenten zum Hinzufügen von Azure-Replikaten](../classic/sql-onprem-availability.md) |SQL Server 2012 oder höher |SQL Server 2012 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Beschränkt Ausfallzeiten auf ein Mindestmaß, Verwendung bei einer lokalen AlwaysOn-Bereitstellung |
@@ -85,7 +85,7 @@ Trennen Sie Ihre Datenbank und Protokolldateien, und übertragen Sie diese in [A
 ## <a name="convert-to-vm-and-upload-to-url-and-deploy-as-new-vm"></a>Konvertieren in eine VM, Hochladen zur URL und Bereitstellen als neue VM
 Verwenden Sie diese Methode, um alle System- und Benutzerdatenbanken in einer lokalen SQL Server-Instanz zu einem virtuellen Computer zu migrieren. Verwenden Sie die folgenden allgemeinen Schritte, um eine vollständige SQL Server-Instanz mit dieser manuellen Methode zu migrieren:
 
-1. Konvertieren Sie physische oder virtuelle Computer mithilfe von [Microsoft Virtual Machine Converter](http://technet.microsoft.com/library/dn873998.aspx)in Hyper-V-VHDs.
+1. Konvertieren Sie physische oder virtuelle Computer mithilfe von [Microsoft Virtual Machine Converter](https://technet.microsoft.com/library/dn874008(v=ws.11).aspx)in Hyper-V-VHDs.
 2. Laden Sie VHD-Dateien mithilfe des Cmdlets [Add-AzureVHD](https://msdn.microsoft.com/library/windowsazure/dn495173.aspx)in den Azure-Speicher hoch.
 3. Stellen Sie einen neuen virtuellen Computer mithilfe der hochgeladenen VHD bereit.
 

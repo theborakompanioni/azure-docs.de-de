@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 47fb1724ac72df8b83012bcacdc435ea847547da
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 2c57b394beb6382807a4c8c83de975a0ae68d726
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
@@ -50,9 +51,9 @@ Die folgende Tabelle hilft Ihnen bei der Bestimmung der Vor- und Nachteile der f
 
 | Strategie | Vorteile | Nachteile |
 | --- | --- | --- |
-| **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation – keine zusätzliche Hardware erforderlich<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden  <br>  Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
-| **Synchronisiert** |Lokales Kennwort dient sowohl für lokale als auch Cloudverzeichnisse zur Authentifizierung  <br>Für kleine, mittlere und große Organisationen einfacher zu verwalten <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br>  Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud |
-| **Im Verbund** |Benutzer können einmaliges Anmelden (Single Sign-On, SSO) nutzen  <br>Wenn ein Benutzer entlassen wird oder das Unternehmen verlässt, kann das Konto sofort deaktiviert und der Zugriff entzogen werden.<br>  Unterstützt erweiterte Szenarien, die mit Synchronisierung nicht möglich sind |Mehr Schritte für Einrichtung und Konfiguration <br> Höherer Wartungsaufwand <br> Erfordert ggf. zusätzliche Hardware für die STS-Infrastruktur <br> Erfordert ggf. zusätzliche Hardware zur Installation des Verbundservers. Bei Verwendung von AD FS ist zusätzliche Software erforderlich. <br> Erfordert umfangreiches Einrichtung für SSO <br> Kritischer Point of Failure: Wenn der Verbundserver ausfällt, können sich die Benutzer nicht authentifizieren. |
+| **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation – keine zusätzliche Hardware erforderlich<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden  <br> Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
+| **Synchronisiert** |Lokales Kennwort dient sowohl für lokale als auch Cloudverzeichnisse zur Authentifizierung  <br>Für kleine, mittlere und große Organisationen einfacher zu verwalten <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br> Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud |
+| **Im Verbund** |Benutzer können einmaliges Anmelden (Single Sign-On, SSO) nutzen  <br>Wenn ein Benutzer entlassen wird oder das Unternehmen verlässt, kann das Konto sofort deaktiviert und der Zugriff entzogen werden.<br> Unterstützt erweiterte Szenarien, die mit Synchronisierung nicht möglich sind |Mehr Schritte für Einrichtung und Konfiguration <br> Höherer Wartungsaufwand <br> Erfordert ggf. zusätzliche Hardware für die STS-Infrastruktur <br> Erfordert ggf. zusätzliche Hardware zur Installation des Verbundservers. Bei Verwendung von AD FS ist zusätzliche Software erforderlich. <br> Erfordert umfangreiches Einrichtung für SSO <br> Kritischer Point of Failure: Wenn der Verbundserver ausfällt, können sich die Benutzer nicht authentifizieren. |
 
 ### <a name="client-experience"></a>Clienterfahrung
 Von der Strategie, die Sie verwenden, hängt die Benutzeranmeldung ab.  Die folgenden Tabellen zeigen Ihnen, wie die jeweilige Benutzeranmeldung aussieht.  Beachten Sie, dass nicht alle Anbieter von Verbundidentität SSO in allen Szenarien unterstützen.
@@ -176,7 +177,7 @@ In dieser Aufgabe definieren Sie die Strategie der zu verwendenden mehrstufigen 
 
 Mehrstufige Entwurfsoptionen:
 
-| Zu sichernde Ressourcen | MFA in der Cloud | MFA lokal |
+| Zu sichernde Ressourcen | MFA in der Cloud | Lokale MFA |
 | --- | --- | --- |
 | Microsoft-Apps |Ja |Ja |
 | SaaS-Apps im Appkatalog |Ja |Ja |
@@ -212,10 +213,5 @@ Multi-Factor Authentication ist standardmäßig für globale Administratoren ver
 
 ## <a name="see-also"></a>Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

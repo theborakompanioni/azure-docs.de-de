@@ -17,17 +17,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 93ea31b4469f21e92337a768668ae6d93bbc6ba6
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: db5dff01c0459db746eace0c9a4535aeccd4dcfa
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
-<a id="use-the-beeline-client-with-apache-hive" class="xliff"></a>
-
-# Verwenden des Beeline-Clients mit Apache Hive
+# <a name="use-the-beeline-client-with-apache-hive"></a>Verwenden des Beeline-Clients mit Apache Hive
 
 Erfahren Sie, wie Sie [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) verwenden, um Hive-Abfragen unter HDInsight auszuführen.
 
@@ -50,7 +47,7 @@ Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enth
 * Einen Linux-basierten Hadoop auf einem HDInsight-Cluster.
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Ein SSH-Client oder ein lokaler Beeline-Client. In den meisten Schritten in diesem Dokument wird davon ausgegangen, dass Sie Beeline aus einer SSH-Sitzung für den Cluster verwenden. Informationen zum Ausführen von Beeline von außerhalb des Clusters finden Sie im Abschnitt zur [Remoteverwendung von Beeline](#remote).
 
@@ -86,7 +83,7 @@ Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enth
 
 3. Verwenden Sie folgenden Befehl, um das Schema für „hivesampletable“ anzuzeigen:
 
-    ```bash
+    ```hiveql
     describe hivesampletable;
     ```
 

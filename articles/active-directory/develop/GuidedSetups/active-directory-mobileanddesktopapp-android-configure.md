@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 9b23f34300248ff87ed4a6abbeb6cfdda6570581
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 945b09ccdb7537987da33d32d94a3ccacd829ffd
 ms.contentlocale: de-de
 
 
@@ -35,7 +35,7 @@ Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* reg
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
 2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein. 
 3. Stellen Sie sicher, dass die Option für geführtes Setup deaktiviert ist.
-4. Klicken Sie auf `Add Platforms`, wählen Sie `Native Application` aus, und klicken Sie auf „Speichern“.
+4. Klicken Sie auf `Add Platform`, wählen Sie `Native Application` aus, und klicken Sie auf „Speichern“.
 5.  Öffnen Sie `MainActivity` (unter `app` > `java` > *`{host}.{namespace}`*).
 6.  Ersetzen Sie die *[hier die Anwendung-ID eingeben]* in der Zeile, die mit `final static String CLIENT_ID` beginnt, durch die Anwendungs-ID, die Sie gerade registriert haben:
 

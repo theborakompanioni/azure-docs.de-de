@@ -14,10 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
-ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>So integrieren Sie Engagement Reach auf iOS
@@ -33,8 +34,8 @@ Diese Dokumentation erfordert XCode 8. Wenn Sie auf XCode 7 tatsächlich nicht v
 
 > [!IMPORTANT]
 > **Wir empfehlen diese Problemumgebung nicht** , weil diese iOS-API veraltet ist und sich dieses Verhalten in anstehenden (auch kleineren) iOS-Versionsupgrades ändern kann. Sie sollten so bald wie möglich zu XCode 8 wechseln.
-> 
-> 
+>
+>
 
 ### <a name="enable-your-app-to-receive-silent-push-notifications"></a>Aktivieren der App für den Empfang von stillen Pushbenachrichtigungen
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
@@ -45,33 +46,33 @@ Diese Dokumentation erfordert XCode 8. Wenn Sie auf XCode 7 tatsächlich nicht v
 
 ### <a name="modify-your-application-delegate"></a>Ändern des Anwendungsdelegaten
 * Importieren Sie am Beginn Ihrer Implementierungsdatei das Engagement Reach-Modul:
-  
+
       [...]
       #import "AEReachModule.h"
 * Erstellen Sie in der Methode `applicationDidFinishLaunching:` oder `application:didFinishLaunchingWithOptions:` ein Reach-Modul, und übergeben Sie es an Ihre vorhandene Zeile für die Engagement-Initialisierung:
-  
+
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
         [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
         [...]
-  
+
         return YES;
       }
 * Legen Sie die Zeichenfolge **'icon.png'** auf den Namen der Bilddatei fest, die Sie als Benachrichtigungssymbol verwenden möchten.
 * Wenn Sie die Option *Badgewert aktualisieren* in Reach-Kampagnen verwenden oder native Pushkampagnen – \</SaaS/Reach API/Campaign format/Native Push\> – einsetzen möchten, müssen Sie dem Reichweitenmodul die Verwaltung des Badgesymbols gestatten (das Modul löscht automatisch das Anwendungsbadge und setzt den von Engagement gespeicherten Wert bei jedem Start bzw. bei jeder Aktivierung der Anwendung zurück). Dies geschieht durch Hinzufügen der folgenden Codezeile nach der Initialisierung des Reach-Moduls:
-  
+
       [reach setAutoBadgeEnabled:YES];
 * Wenn Sie Pushvorgänge für Reach-Daten verarbeiten möchten, muss der Anwendungsdelegat mit dem `AEReachDataPushDelegate`-Protokoll konform sein. Fügen Sie nach der Initialisierung des Reach-Moduls die folgende Zeile ein:
-  
+
       [reach setDataPushDelegate:self];
 * Anschließend können Sie die Methoden `onDataPushStringReceived:` und `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` im Anwendungsdelegaten implementieren:
-  
+
       -(BOOL)didReceiveStringDataPushWithCategory:(NSString*)category body:(NSString*)body
       {
          NSLog(@"String data push message with category <%@> received: %@", category, body);
          return YES;
       }
-  
+
       -(BOOL)didReceiveBase64DataPushWithCategory:(NSString*)category decodedBody:(NSData *)decodedBody encodedBody:(NSString *)encodedBody
       {
          NSLog(@"Base64 data push message with category <%@> received: %@", category, encodedBody);
@@ -98,10 +99,10 @@ Folgen Sie den Anweisungen im Handbuch: [Vorbereiten der Anwendung für Apple-Pu
 Sofern nicht bereits geschehen, müssen Sie Ihre Anwendung für den Empfang von Pushbenachrichtigungen registrieren.
 
 * Importieren Sie das `User Notification` -Framework:
-  
+
         #import <UserNotifications/UserNotifications.h>
 * Fügen Sie die folgende Zeile beim Start der Anwendung ein (typischerweise in `application:didFinishLaunchingWithOptions:`):
-  
+
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
             if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
@@ -132,21 +133,10 @@ Anschließend muss das Engagement-SDK darüber informiert werden, wenn Ihre Anwe
         [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
     }
 
-> [!NOTE]
-> In iOS 7 wird die oben genannte Methode eingeführt. Wenn Ihr Ziel iOS <&7; ist, implementieren Sie unbedingt die Methode `application:didReceiveRemoteNotification:` in Ihrem Anwendungsdelegaten, und rufen Sie `applicationDidReceiveRemoteNotification` auf dem EngagementAgent durch Übergeben von NULL anstelle des `handler`Arguments auf:
-> 
-> 
-
-    - (void)application:(UIApplication*)application
-    didReceiveRemoteNotification:(NSDictionary*)userInfo
-    {
-        [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:nil];
-    }
-
 > [!IMPORTANT]
 > Standardmäßig steuert Engagement Reach den completionHandler. Wenn Sie den Block `handler` in Ihrem Code manuell bearbeiten möchten, können Sie NULL für das Argument `handler`übergeben und den „completion“-Block selbst kontrollieren. Unter `UIBackgroundFetchResult` -Typ finden Sie eine Liste möglicher Werte.
-> 
-> 
+>
+>
 
 ### <a name="full-example"></a>Vollständiges Beispiel
 Hier sehen Sie ein vollständiges Beispiel für die Integration:
@@ -251,7 +241,7 @@ Wenn Sie beispielsweise den oben erwähnten Vorschlag 1 implementiert haben:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
-  
+
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
         return YES;
       }
@@ -308,8 +298,8 @@ Die bereitgestellte NIB-Datei sollte den folgenden Regeln entsprechen:
 
 > [!TIP]
 > Kopieren Sie einfach die bereitgestellte NIB-Datei namens `AENotificationView.xib`, und beginnen Sie Ihre Arbeit mit dieser Datei. Seien Sie jedoch vorsichtig, die Ansicht in dieser NIB-Datei ist mit der Klasse `AENotificationView`verknüpft. Diese Klasse definiert die Methode `layoutSubViews` neu, um die zugehörigen Unteransichten gemäß Kontext zu verschieben und in der Größe zu ändern. Sie können die Klasse durch `UIView` oder eine benutzerdefinierte Ansichtenklasse ersetzen.
-> 
-> 
+>
+>
 
 Wenn Sie eine umfangreichere Anpassung der Benachrichtigungen benötigen (wenn Sie beispielsweise Ihre Ansicht direkt aus dem Code laden möchten), sollten Sie einen Blick auf den bereitgestellten Quellcode und die Klassendokumentation von `Protocol ReferencesDefaultNotifier` und `AENotifier` werfen.
 
@@ -334,8 +324,8 @@ Wenn Ihre Implementierung von `AENotifier` das Standardverhalten umgeht, müssen
 
 > [!WARNING]
 > Wenn `handleNotification:` eine Ausnahme generiert, wird der Inhalt gelöscht, und es erfolgt ein Aufruf von `drop`. Dies wird in der Statistik berichtet, und es können weitere Kampagnen verarbeitet werden.
-> 
-> 
+>
+>
 
 #### <a name="include-notification-as-part-of-an-existing-view"></a>Einschließen von Benachrichtigungen als Bestandteil einer vorhandenen Ansicht
 Overlays eignen sich hervorragend für eine schnelle Integration, sind aber gelegentlich nicht praktisch oder haben unerwünschte Nebeneffekte.
@@ -345,12 +335,12 @@ Wenn Sie mit dem Overlaysystem in einigen Ihrer Ansichten nicht zufrieden sind, 
 Sie können unser Benachrichtigungslayout in Ihre vorhandenen Ansichten einfügen. Die Implementierung kann auf zwei Arten erfolgen:
 
 1. Fügen Sie die Benachrichtigungsansicht mit dem Interface Builder hinzu.
-   
+
    * Öffnen Sie den *Interface Builder*
    * Platzieren Sie ein `UIView` -Element der Größe 320 x 60 (oder 768 x 60 für das iPad) an der Stelle, an der die Benachrichtigung angezeigt werden soll.
    * Legen Sie den Tagwert für diese Ansicht auf diesen Wert fest: **36822491**
 2. Fügen Sie die Benachrichtigungsansicht programmatisch hinzu. Fügen Sie einfach nach dem Initialisieren Ihrer Ansicht den folgenden Code ein:
-   
+
        UIView* notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)]; //Replace x and y coordinate values to your needs.
        notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
        [self.view addSubview:notificationView];
@@ -359,8 +349,8 @@ Das Makro `NOTIFICATION_AREA_VIEW_TAG` befindet sich in `AEDefaultNotifier.h`.
 
 > [!NOTE]
 > Der standardmäßige Notifier erkennt automatisch, dass das Benachrichtigungslayout in dieser Ansicht enthalten ist und fügt kein Overlay hinzu.
-> 
-> 
+>
+>
 
 ### <a name="announcements-and-polls"></a>Ankündigungen und Umfragen
 #### <a name="layouts"></a>Layouts
@@ -377,8 +367,8 @@ Um eine Kategorie für eine Ankündigung zu erstellen, müssen Sie **AEAnnouncem
 
 > [!NOTE]
 > Jedes Mal, wenn ein Benutzer auf eine Benachrichtigung für eine Ankündigung mit der Kategorie „my\_category“ klickt, wird Ihr registrierter Ansichtscontroller (in diesem Fall `MyCustomAnnouncementViewController`) durch einen Aufruf der Methode `initWithAnnouncement:` initialisiert, und die Ansicht wird dem aktuellen Anwendungsfenster hinzugefügt.
-> 
-> 
+>
+>
 
 In Ihrer Implementierung der Klasse `AEAnnouncementViewController` müssen Sie die Eigenschaft `announcement` lesen, um Ihre Unteransichten zu initialisieren. Siehe hierzu das nachfolgende Beispiel, in dem mithilfe der Eigenschaften `title` und `body` der Klasse `AEReachAnnouncement` zwei Labels initialisiert werden:
 
@@ -413,8 +403,8 @@ Dieses Mal muss der bereitgestellte `MyCustomPollViewController` zur Erweiterung
 
 > [!IMPORTANT]
 > Vergessen Sie nicht, entweder `action` (`submitAnswers:` für benutzerdefinierte Ansichtencontroller für Umfragen) oder die Methode `exit` aufzurufen, bevor der Ansichtencontroller verworfen wird. Andernfalls werden keine Statistiken gesendet (z. B. Analysen der Kampagne) und – noch wichtiger – weitere Kampagnen erhalten erst eine Benachrichtigung, wenn der Anwendungsprozess neu gestartet wurde.
-> 
-> 
+>
+>
 
 ##### <a name="implementation-example"></a>Beispiel für die Implementierung
 In dieser Implementierung wird die benutzerdefinierte Ankündigungsansicht aus einer externen XIB-Datei geladen.
@@ -512,9 +502,4 @@ Wie bei der erweiterten Benachrichtigungsanpassung wird empfohlen, sich den Quel
     }
 
     @end
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

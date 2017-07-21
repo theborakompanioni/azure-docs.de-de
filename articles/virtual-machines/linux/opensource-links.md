@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/27/2016
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0b273631d3d725aded0e92bbe0be0479484cb3bd
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 1cdd0e68368d2dc376ee45df67bf5e75288d4ca3
+ms.contentlocale: de-de
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="linux-and-open-source-computing-on-azure"></a>Linux und Open-Source-Computing auf Azure
@@ -73,7 +73,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 * [Implementierungsrichtlinien für Azure-Infrastrukturdienste](../windows/infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Auswählen von Linux-Benutzernamen](usernames.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Konfigurieren einer Verfügbarkeitsgruppe für virtuelle Computer im klassischen Bereitstellungsmodell](../windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Gewusst wie: Planen der Wartung auf virtuellen Azure-Computern](planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Gewusst wie: Planen der Wartung auf virtuellen Azure-Computern](classic/planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Verwalten der Verfügbarkeit virtueller Computer](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Geplante Wartung für virtuelle Linux-Computer in Azure](planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

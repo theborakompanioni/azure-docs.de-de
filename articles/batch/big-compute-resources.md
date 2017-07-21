@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: aff11fe3d7e4cea3580f73d54a53d9624e4f3ac9
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 18be9f503b57117a7e8f5f0a4e9c93614cc7755b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="big-compute-in-azure-technical-resources-for-batch-and-high-performance-computing"></a>Big Compute in Azure: technische Ressourcen für Batch und High Performance Computing
@@ -77,7 +77,7 @@ Verwenden Sie die folgenden Azure-Vorlagen zum Bereitstellen von Linux-HPC-Clust
 * [MPI-Forum](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>Rechenintensive Instanzen
-Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [verschiedene Größen für virtuelle Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) an, einschließlich [rechenintensiver](../virtual-machines/windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Instanzen der H-Serie, die mit einem Back-End-RDMA-Netzwerk verbunden werden können. 
+Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [verschiedene Größen für virtuelle Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) an, einschließlich [rechenintensiver](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Instanzen der H-Serie, die mit einem Back-End-RDMA-Netzwerk verbunden werden können. 
 
 * [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Einrichten eines Windows RDMA-Clusters mit Microsoft HPC Pack zum Ausführen von MPI-Anwendungen](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)

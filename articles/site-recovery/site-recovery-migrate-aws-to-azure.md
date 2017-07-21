@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/31/2017
 ms.author: bsiva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: b2420da03b83a355215d7beeffd5b4cff10da75b
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: b3c0727a279649f4f7dae30d41027129ce5b04ee
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="migrate-virtual-machines-in-amazon-web-services-aws-to-azure-with-azure-site-recovery"></a>Migrieren virtueller Computer von Amazon Web Services (AWS) zu Azure mit Azure Site Recovery
@@ -43,7 +42,7 @@ Site Recovery kann zum Migrieren von EC2-Instanzen verwendet werden, die unter e
 
 Für diese Bereitstellung benötigen Sie Folgendes:
 
-* **Konfigurationsserver:** Ein virtueller Amazon EC2-Computer unter Windows Server 2012 R2 wird als Konfigurationsserver bereitgestellt. Standardmäßig werden die anderen Azure Site Recovery-Komponenten (Prozessserver und Masterzielserver) beim Bereitstellen des Konfigurationsservers installiert. Dieser Artikel beschreibt die Schritte für die Migration im Azure-Portal. Er basiert auf den Anweisungen unter [Weitere Informationen](site-recovery-components.md#vmware-to-azure).
+* **Konfigurationsserver:** Ein virtueller Amazon EC2-Computer unter Windows Server 2012 R2 wird als Konfigurationsserver bereitgestellt. Standardmäßig werden die anderen Azure Site Recovery-Komponenten (Prozessserver und Masterzielserver) beim Bereitstellen des Konfigurationsservers installiert. Dieser Artikel beschreibt die Schritte für die Migration im Azure-Portal. Er basiert auf den Anweisungen unter [Weitere Informationen](site-recovery-components.md).
 
 * **EC2-Instanzen:** Die Amazon EC2-Instanzen von virtuellen Computern, die Sie migrieren möchten.
 

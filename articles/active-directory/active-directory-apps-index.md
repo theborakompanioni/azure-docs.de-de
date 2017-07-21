@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 3f6ae31f577eb1bc70a06e183518aadbc6279159
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: ea2dc2762b556da837fa1d6674e01aba32face92
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
@@ -203,7 +203,7 @@ Azure Active Directory bietet mehrere Berichte und Warnungen, mit denen Sie den 
 | Nachverfolgen von Änderungen am Zugriff auf eine bestimmte Anwendung |[Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md) |
 | Exportieren der Daten dieser Berichte in Ihre bevorzugten Tools mit der Berichterstellungs-API |[Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md) |
 
-Um herauszufinden, welche Berichte in verschiedenen Editionen von Azure Active Directory enthalten sind, [klicken Sie hier](active-directory-view-access-usage-reports.md#report-editions).
+Um herauszufinden, welche Berichte in verschiedenen Editionen von Azure Active Directory enthalten sind, [klicken Sie hier](active-directory-view-access-usage-reports.md).
 
 ## <a name="see-also"></a>Siehe auch
 [Was ist Azure Active Directory?](active-directory-whatis.md)
