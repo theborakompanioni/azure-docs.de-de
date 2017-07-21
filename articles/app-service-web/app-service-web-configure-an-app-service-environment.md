@@ -123,7 +123,7 @@ Sie können alle Metriken, die sich in den Diagrammen verfolgen lassen, auch zur
 
 Bei den gerade diskutierten Metriken handelt es sich um Metriken für App Service-Umgebungen. Darüber hinaus stehen auch auf der Ebene der App Service-Pläne Metriken zur Verfügung. Dort ist das Überwachen von CPU- und Speicherauslastung besonders sinnvoll.
 
-In einer ASE sind alle App Service-Pläne dedizierte App Service-Pläne. Die einzigen Apps, die auf den zugeordneten Hosts des App Service-Plans ausgeführt werden, sind also die Apps in diesem App Service-Plan. Um die Details zu Ihrem App Service-Plan anzuzeigen, rufen Sie den App Service-Plan aus einer beliebigen Liste in der Benutzeroberfläche der App Service-Umgebung heraus auf oder nutzen die Funktion zum Durchsuchen von App Service-Plänen **** (Auflistung aller Pläne).   
+In einer ASE sind alle App Service-Pläne dedizierte App Service-Pläne. Die einzigen Apps, die auf den zugeordneten Hosts des App Service-Plans ausgeführt werden, sind also die Apps in diesem App Service-Plan. Um die Details zu Ihrem App Service-Plan anzuzeigen, rufen Sie den App Service-Plan aus einer beliebigen Liste in der Benutzeroberfläche der App Service-Umgebung heraus auf oder nutzen die Funktion zum **Durchsuchen von App Service-Plänen** (Auflistung aller Pläne).   
 
 ### <a name="settings"></a>Einstellungen
 Das Blatt „App Service-Umgebung“ enthält einen Abschnitt **Einstellungen** , auf dem Optionen zu verschiedenen wichtigen Funktionen festgelegt werden können:
