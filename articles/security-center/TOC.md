@@ -19,6 +19,7 @@
 
 ## Verhindern
 ### [Festlegen von Sicherheitsrichtlinien](security-center-policies.md)
+### [Bedarfsabhängiger Zugriff](security-center-just-in-time.md)
 ### [Implementieren von Sicherheitsempfehlungen](security-center-recommendations.md)
 
 ### [Anwendungsempfehlungen](security-center-application-recommendations.md)
