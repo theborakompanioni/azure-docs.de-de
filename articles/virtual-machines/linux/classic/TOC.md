@@ -20,6 +20,7 @@
 ### [Überwachen von virtuellen Computern mit v2.x der VM-Erweiterung für die Diagnose](diagnostic-extension-v2.md)
 ### [Einfügen von benutzerdefinierten Daten](inject-custom-data.md)
 ### [Zurücksetzen von Linux-Kennwörtern oder -Schlüsseln, Beheben von SSH-Problemen und Überprüfen der Datenträger](reset-access.md)
+### [Wartung](planned-maintenance-schedule.md)
 ### [Erstellen eines Docker-Hosts mithilfe der Befehlszeilenschnittstelle](cli-use-docker.md)
 ### [Erstellen eines Docker-Hosts mithilfe des Portals](portal-use-docker.md)
 ### [Verwenden von Docker mit Swarm](../../virtual-machines-linux-docker-swarm.md)
