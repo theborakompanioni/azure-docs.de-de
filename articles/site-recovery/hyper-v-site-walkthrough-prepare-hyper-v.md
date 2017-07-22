@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: e61708f4af0715eaa7147e9cd17113d5979dcdf7
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: f9bcaa8e55be6e8fddaf88ebc3f18f5dbb2811e4
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -31,7 +31,7 @@ Nach der Lektüre dieses Artikels können Sie Kommentare am Ende des Artikels od
 
 ## <a name="prepare-hosts"></a>Vorbereiten von Hosts
 
-- Stellen Sie sicher, dass die Hyper-V-Hosts die [Voraussetzungen](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager) erfüllen.
+- Stellen Sie sicher, dass die Hyper-V-Hosts die [Voraussetzungen](site-recovery-prereq.md#disaster-recovery-of-hyper-v-vms-to-azure-no-vmm) erfüllen.
 - Stellen Sie sicher, dass die Hosts auf die erforderlichen URLs zugreifen können.
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]

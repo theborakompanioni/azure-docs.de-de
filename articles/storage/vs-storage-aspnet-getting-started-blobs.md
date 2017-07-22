@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: 003ca36c80274c4cad430ac67cf8cf3551d4137a
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 8fd13efdbdd98c6d7dff1b88a6b232a08aa5a13d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET)
@@ -31,7 +32,7 @@ In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufig verwen
 
 ##<a name="prerequisites"></a>Voraussetzungen
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure-Speicherkonto](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
@@ -469,8 +470,4 @@ Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in 
 
   * [Erste Schritte mit Tabellenspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
   * [Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten](./vs-storage-aspnet-getting-started-queues.md)
-
-
-<!--HONumber=Jan17_HO1-->
-
 

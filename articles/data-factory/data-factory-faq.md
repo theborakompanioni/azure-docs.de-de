@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6af34cf24a8fb7d2dd8f4c44392e0e6c3ed46b1a
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: e96ed72b81f37c3df78647ebfe9cdf271466a0c2
+ms.contentlocale: de-de
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
@@ -47,18 +47,12 @@ Weitere Informationen finden Sie im Abschnitt **Einschränkungen von Azure Data 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Was sieht die Erstellung-/Entwicklungsumgebung im Azure Data Factory-Dienst aus?
 Sie können Data Factorys mithilfe eines der folgenden Werkzeuge/SDKs erstellen:
 
-* **Azure-Portal:**
-   Die Data Factory-Blätter im Azure-Portal bieten eine umfassende Benutzeroberfläche zum Erstellen von Data Factorys und verknüpften Diensten. Der **Data Factory-Editor**, der auch Teil des Portals ist, ermöglicht Ihnen die einfache Erstellung von verknüpften Diensten, Tabellen, Datasets und Pipelines durch Angabe von JSON-Definitionen für diese Artefakte. Unter [Erstellen der ersten Azure Data Factory mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md) finden Sie ein Beispiel für das Verwenden des Portals/Editors zum Erstellen und Bereitstellen einer Data Factory.
-* **Visual Studio:**
-   Sie können mit Visual Studio eine Azure Data Factory erstellen. Unter [Erstellen der ersten Azure Data Factory-Pipeline mit Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) finden Sie weitere Informationen.
-* **Azure PowerShell:**
-   Unter [Erstellen der ersten Azure Data Factory mit Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) finden Sie ein Tutorial und eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mithilfe von PowerShell. In der [Data Factory-Cmdlet-Referenz][adf-powershell-reference] in der MSDN-Bibliothek finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
-* **.NET-Klassenbibliothek**
-   Sie können Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen. Unter [Erstellen, Überwachen und Verwalten von Daten Factorys mit dem .NET SDK](data-factory-create-data-factories-programmatically.md) finden Sie eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mit dem .NET SDK. In der [Data Factory-Klassenbibliotheksreferenz][msdn-class-library-reference] finden Sie eine umfassende Dokumentation zum Data Factory .NET SDK.
-* **REST-API**
-   Sie können auch die vom Azure-Data Factory-Dienst verfügbar gemachte REST-API zum Erstellen und Bereitstellen von Data Factorys nutzen. Unter [Data Factory-REST-API][msdn-rest-api-reference] finden Sie eine umfassende Dokumentation zur Data Factory-REST-API.
-* **Azure Resource Manager-Vorlage**
-   Informationen hierzu finden Sie im [Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md).
+* **Azure-Portal** : Die Data Factory-Blätter im Azure-Portal bieten eine umfassende Benutzeroberfläche zum Erstellen von Data Factorys und verknüpften Diensten. Der **Data Factory-Editor**, der auch Teil des Portals ist, ermöglicht Ihnen die einfache Erstellung von verknüpften Diensten, Tabellen, Datasets und Pipelines durch Angabe von JSON-Definitionen für diese Artefakte. Unter [Erstellen der ersten Azure Data Factory mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md) finden Sie ein Beispiel für das Verwenden des Portals/Editors zum Erstellen und Bereitstellen einer Data Factory.
+* **Visual Studio** : Sie können mit Visual Studio eine Azure Data Factory erstellen. Unter [Erstellen der ersten Azure Data Factory-Pipeline mit Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) finden Sie weitere Informationen.
+* **Azure PowerShell** : Unter [Erstellen der ersten Azure Data Factory mit Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) finden Sie ein Tutorial und eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mithilfe von PowerShell. In der [Data Factory-Cmdlet-Referenz][adf-powershell-reference] in der MSDN-Bibliothek finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
+* **.NET-Klassenbibliothek** Sie können Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen. Unter [Erstellen, Überwachen und Verwalten von Daten Factorys mit dem .NET SDK](data-factory-create-data-factories-programmatically.md) finden Sie eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mit dem .NET SDK. In der [Data Factory-Klassenbibliotheksreferenz][msdn-class-library-reference] finden Sie eine umfassende Dokumentation zum Data Factory .NET SDK.
+* **REST-API** Sie können auch die vom Azure-Data Factory-Dienst verfügbar gemachte REST-API zum Erstellen und Bereitstellen von Data Factorys nutzen. Unter [Data Factory-REST-API][msdn-rest-api-reference] finden Sie eine umfassende Dokumentation zur Data Factory-REST-API.
+* **Azure Resource Manager-Vorlage** Informationen hierzu finden Sie im [Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md) .
 
 ### <a name="can-i-rename-a-data-factory"></a>Können Data Factorys umbenannt werden?
 Nein. Wie bei anderen Azure-Ressourcen auch kann der Name einer Azure Data Factory nicht geändert werden.
@@ -130,8 +124,10 @@ Wenn Sie einen bedarfsgesteuerten Cluster verwenden, der vom Data Factory-Dienst
     {
         "type": "HDInsightOnDemandLinkedService",
         "typeProperties": {
+            "version": "3.5",
             "clusterSize": 1,
-            "timeToLive": "00:01:00",
+            "timeToLive": "00:05:00",
+            "osType": "Linux",
             "linkedServiceName": "LinkedService-SampleData",
             "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ]
         }

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 07/19/2017
 ms.author: juliako;johndeu;anilmur
-translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: bf208f65ef5509e56373a84bb096da39d6bafc1f
-ms.lasthandoff: 01/30/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 74916c9da0c1d71395a087a729513110b663738b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer
@@ -42,7 +42,7 @@ Dieses Tool kann auch verwendet werden, um unsere [veröffentlichten Workflows](
 
 Sobald eine Workflowdatei erstellt wurde, kann sie als Medienobjekt hochgeladen werden und anschließend zum Codieren von Mediendateien verwendet werden. Informationen zum Codieren mit dem **Medienencoder-Premium-Workflow** unter Verwendung von **.NET** finden Sie im Thema [Erweiterte Codierung mit dem Medienencoder-Premium-Workflow](media-services-encode-with-premium-workflow.md).
 
-## <a name="a-idexistingworkflowsamodify-existing-workflows"></a><a id="existing_workflows"></a>Ändern vorhandener Workflows
+## <a id="existing_workflows"></a>Ändern vorhandener Workflows
 Die standardmäßigen [veröffentlichten Workflows](media-services-workflow-designer.md#existing_workflows) können mit dem Designer-Tool geändert werden. Sie können die standardmäßigen Workflowdateien [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)abrufen. Der Ordner enthält auch Beschreibungen dieser Dateien.
 
 In den folgenden Videos wird die Verwendung des Designers veranschaulicht.
