@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über die ersten Schritte mit Azure Queue Storage in einem ASP.NET&5;-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+description: "Erfahren Sie mehr über die ersten Schritte mit Azure Queue Storage in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: 4e5638938c8e9fa0de12aa273d03f3eead35a383
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 76b0d5e270e16a317ce8a7b424c06c867b537a8e
+ms.contentlocale: de-de
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET)
@@ -31,7 +32,7 @@ In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufig verwen
 
 ##<a name="prerequisites"></a>Voraussetzungen
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure-Speicherkonto](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
@@ -230,7 +231,7 @@ Sobald Sie [eine Warteschlange erstellt](#create-a-queue) haben, können Sie die
   
     ![Hinzufügen einer Nachricht](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
-Die beiden Abschnitte [Lesen einer Nachricht in einer Warteschlange, ohne sie zu entfernen](#read-a-message-from-a-queue-without-removing-it) und [Lesen und Entfernen von Nachrichten aus einer Warteschlange](#read-and-remove-a-message-from-a-queue) veranschaulichen, wie Nachrichten aus einer Warteschlange gelesen werden.     
+Die beiden Abschnitte [Lesen einer Nachricht in einer Warteschlange, ohne sie zu entfernen](#read-a-message-from-a-queue-without-removing-it) und [Lesen und Entfernen von Nachrichten aus einer Warteschlange](#read-and-remove-a-message-from-a-queue) veranschaulichen, wie Nachrichten aus einer Warteschlange gelesen werden.    
 
 ## <a name="read-a-message-from-a-queue-without-removing-it"></a>Lesen einer Nachricht in einer Warteschlange, ohne sie zu entfernen
 
@@ -281,7 +282,7 @@ Dieser Abschnitt zeigt, wie Sie eine Nachricht in der Warteschlange in der Vorsc
 1. Aktualisieren Sie **ViewBag** mit zwei Werten: dem Namen der Warteschlange und der Nachricht, die gelesen wurde. Im **CloudQueueMessage**-Objekt sind zwei Eigenschaften verfügbar, aus denen der Wert des Objekts abgerufen werden kann: **CloudQueueMessage.AsBytes** und **CloudQueueMessage.AsString**. **AsString** (in diesem Beispiel verwendet) gibt eine Zeichenfolge zurück, während **AsBytes** ein Bytearray zurückgibt.
 
     ```csharp
-    ViewBag.QueueName = queue.Name;    
+    ViewBag.QueueName = queue.Name; 
     ViewBag.Message = (message != null ? message.AsString : "");
     ```
 
@@ -318,7 +319,7 @@ Dieser Abschnitt zeigt, wie Sie eine Nachricht in der Warteschlange in der Vorsc
 
 ## <a name="read-and-remove-a-message-from-a-queue"></a>Lesen und Entfernen von Nachrichten aus einer Warteschlange
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Nachricht lesen und aus einer Warteschlange entfernen.     
+In diesem Abschnitt erfahren Sie, wie Sie eine Nachricht lesen und aus einer Warteschlange entfernen.   
 
 > [!NOTE]
 > 
@@ -579,8 +580,4 @@ Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in 
 
   * [Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](./vs-storage-aspnet-getting-started-blobs.md)
   * [Erste Schritte mit Tabellenspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
 

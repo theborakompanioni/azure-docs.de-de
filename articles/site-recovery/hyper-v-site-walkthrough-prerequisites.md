@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 63ad1dcc5a069a9958e56c8260f9aa208fafc645
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: cbb5d3598ef91512991d7d1e9f854eb12980752b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -30,7 +30,7 @@ Die Voraussetzungen sind in der Tabelle zusammengefasst.
 **Voraussetzung** | **Details** 
 --- | --- 
 **Azure** | Informieren Sie sich über die [Azure-Anforderungen](site-recovery-prereq.md#azure-requirements).
-**Lokale Server** | [Erfahren Sie mehr](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager) zu den Anforderungen für den lokalen VMM-Server und die Hyper-V-Hosts.
+**Lokale Server** | [Erfahren Sie mehr](site-recovery-prereq.md#disaster-recovery-of-hyper-v-vms-to-azure-no-vmm) zu den Anforderungen für den lokalen VMM-Server und die Hyper-V-Hosts.
 **Lokale Hyper-V-VMs** | Auf VMs, die Sie replizieren möchten, sollte ein [unterstütztes Betriebssystem](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) ausgeführt werden, das die [Azure-Voraussetzungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) erfüllt.
 **Azure-URLs** | Hyper-V-Hosts benötigen Zugriff auf die folgenden URLs:<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> Stellen Sie bei Verwendung von auf IP-Adressen basierenden Firewallregeln sicher, dass hierfür die Kommunikation mit Azure möglich ist.<br/></br> Lassen Sie die [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) (IP-Bereiche für Azure-Rechenzentren) und den HTTPS-Port (443) zu.<br/></br> Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
 

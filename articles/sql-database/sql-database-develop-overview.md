@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 50024fdb487e859b870a1025b23790f1cc5d1a18
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 94257b68b3a0f62f4ade727277a904ceec082c05
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-database-application-development-overview"></a>Übersicht zur SQL-Datenbankanwendungsentwicklung
@@ -36,7 +35,7 @@ Für eine Vielzahl von Programmiersprachen und Plattformen sind Codebeispiele ve
 * Weitere Informationen: [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
 
 ## <a name="tools"></a>Tools 
-Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheetah), [Sql-Cli](https://www.npmjs.com/package/sql-cli) und [VS Code](https://code.visualstudio.com/) nutzen. Darüber hinaus funktioniert Azure SQL-Datenbank mit Microsoft-Tools wie [Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Sie können auch das Azure-Verwaltungsportal, PowerShell und REST-APIs nutzen, um produktiver zu arbeiten.
+Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheetah), [Sql-Cli](https://www.npmjs.com/package/sql-cli) und [VS Code](https://code.visualstudio.com/) nutzen. Darüber hinaus funktioniert Azure SQL-Datenbank mit Microsoft-Tools wie [Visual Studio](https://www.visualstudio.com/downloads/) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Sie können auch das Azure-Verwaltungsportal, PowerShell und REST-APIs nutzen, um produktiver zu arbeiten.
 
 ## <a name="resource-limitations"></a>Ressourcenbeschränkungen
 Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mithilfe zweier verschiedener Mechanismen: Ressourcenkontrolle und Durchsetzung von Grenzen.

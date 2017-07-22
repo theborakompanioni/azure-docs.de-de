@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff0c9f9c800b0e4764efb88e43087bd96fa820e9
-ms.openlocfilehash: 7b02809da6082886b4e2982a698cef09212b6862
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 43d38584270fbbbe6fa4e4ff8cef72ca44e14acc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-use-azure-storage-in-windows-store-apps"></a>Verwenden von Azure Storage in Windows Store-Apps
@@ -27,7 +26,7 @@ ms.lasthandoff: 07/06/2017
 Dieser Leitfaden zeigt die ersten Schritte der Entwicklung einer Windows Store-App, die Azure Storage nutzt.
 
 ## <a name="download-required-tools"></a>Herunterladen erforderlicher Tools
-* [Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) vereinfacht das Erstellen, Debuggen, Lokalisieren, Packen und Bereitstellen von Windows Store-Apps. Visual Studio 2012 oder höher wird vorausgesetzt.
+* [Visual Studio](https://www.visualstudio.com/downloads/) vereinfacht das Erstellen, Debuggen, Lokalisieren, Packen und Bereitstellen von Windows Store-Apps. Visual Studio 2012 oder höher wird vorausgesetzt.
 * Die [Azure Storage-Clientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage) stellt eine Windows-Runtime-Klassenbibliothek für die Arbeit mit Azure Storage bereit.
 * [WCF Data Services-Tools für Windows Store-Apps](http://www.microsoft.com/download/details.aspx?id=30714) erweitern die Nutzung von „Dienstverweis hinzufügen“ durch clientseitige OData-Unterstützung für Windows Store-Apps in Visual Studio.
 
