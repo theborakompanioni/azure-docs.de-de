@@ -77,10 +77,8 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 11. Klicken Sie auf **Weiter**.
-
 12. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die gewünschte Methode der Datensynchronisierung aus, und klicken Sie auf **Weiter**. Für die meisten Szenarien sollten Sie **Vollständige Datensynchronisation**auswählen. Weitere Informationen zu Methoden der Datensynchronisierung finden Sie unter [Seite „Anfängliche Datensynchronisierung auswählen“ (Assistenten für AlwaysOn-Verfügbarkeitsgruppen)](https://msdn.microsoft.com/library/hh231021.aspx).
 13. Überprüfen Sie die Ergebnisse auf der Seite **Überprüfung**. Beheben Sie noch bestehende Probleme, und führen Sie die Überprüfung ggf. erneut aus. Klicken Sie auf **Weiter**.
-
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
 14. Überprüfen Sie die Einstellungen auf der Seite **Zusammenfassung**, und klicken Sie dann auf **Fertig stellen**.
