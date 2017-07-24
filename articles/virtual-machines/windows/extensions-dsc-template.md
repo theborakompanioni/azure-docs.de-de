@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: e85d5563a314964ad1ed43c693cdebe7a30297de
+ms.contentlocale: de-de
 ms.lasthandoff: 03/31/2017
-
 
 ---
 # <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>Windows VMSS und Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
@@ -56,6 +56,7 @@ Der folgende Codeausschnitt wird in den Ressourcenabschnitt der Vorlage eingefü
                   "protectedSettings": {
                       "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
                   }
+              }
 
 ```
 
@@ -89,6 +90,7 @@ Ein VMSS-Knoten weist den Abschnitt „properties“ mit dem Attribut „Virtual
                     }
                 }
             ]
+        }
 ```
 
 ## <a name="detailed-settings-information"></a>Ausführliche Einstellungsinformationen

@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 07/21/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e22a16c0929b28c475aa4caa0465651603713112
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Wiederholungslogik im Media Services SDK für .NET
@@ -47,7 +48,7 @@ Die folgende Tabelle beschreibt die Ausnahmen, die das Media Services SDK für .
 | StorageException |Nein |Ja |Nein |Nein |
 | IOException |Nein |Ja |Nein |Nein |
 
-### <a name="a-namewebexceptionstatusa-webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException status codes
+### <a name="WebExceptionStatus"></a> WebException status codes
 Die folgende Tabelle zeigt, für welche WebException-Fehlercodes die Wiederholungslogik implementiert ist. Die [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx)-Enumeration definiert die Statuscodes.  
 
 | Status | Webanforderung | Speicher | Abfrage | SaveChanges |
@@ -65,7 +66,7 @@ Die folgende Tabelle zeigt, für welche WebException-Fehlercodes die Wiederholun
 | Timeout |Ja |Ja |Ja |Nein |
 | ProtocolError <br/>Die Wiederholung bei ProtocolError wird von der HTTP-Statuscodebehandlung gesteuert. Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ja |Ja |Ja |Ja |
 
-### <a name="a-namehttpstatuscodea-http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP-Fehlerstatuscodes
+### <a name="HTTPStatusCode"></a> HTTP-Fehlerstatuscodes
 Wenn Abfrage- und SaveChanges-Vorgänge DataServiceClientException, DataServiceQueryException, oder DataServiceQueryException ausgeben, wird der HTTP-Fehlerstatuscode in der StatusCode-Eigenschaft zurückgegeben.  Die folgende Tabelle zeigt, für welche Fehlercodes die Wiederholungslogik implementiert ist.  
 
 | Status | Webanforderung | Speicher | Abfrage | SaveChanges |
@@ -86,10 +87,5 @@ Wenn Sie einen Blick auf die tatsächliche Implementierung s Media Services SDKs
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

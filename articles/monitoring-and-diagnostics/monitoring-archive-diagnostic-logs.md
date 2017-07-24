@@ -35,7 +35,7 @@ Legen Sie eine **Diagnoseeinstellung** für eine bestimmte Ressource fest, um di
 2. Wählen Sie im Menü mit den Ressourceneinstellungen im Abschnitt **Überwachung** die Option **Diagnose** aus.
    
     ![Abschnitt „Überwachung“ des Ressourcenmenüs](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-sec.png)
-3. Aktivieren Sie das Kontrollkästchen **In Speicherkonto exportieren**, und wählen Sie dann ein Speicherkonto aus. Legen Sie optional eine Anzahl von Tagen für die Aufbewahrung dieser Protokolle fest. Verwenden Sie dazu die Schieberegler unter **Aufbewahrung (Tage)**. Bei einer Aufbewahrung von&0; Tagen werden die Protokolle dauerhaft gespeichert.
+3. Aktivieren Sie das Kontrollkästchen **In Speicherkonto exportieren**, und wählen Sie dann ein Speicherkonto aus. Legen Sie optional eine Anzahl von Tagen für die Aufbewahrung dieser Protokolle fest. Verwenden Sie dazu die Schieberegler unter **Aufbewahrung (Tage)**. Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert.
    
     ![Blatt „Diagnoseprotokolle“](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-blade.png)
 4. Klicken Sie auf **Speichern**.
@@ -54,7 +54,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | Categories |Nein |Durch Trennzeichen getrennte Liste der zu aktivierenden Protokollkategorien |
 | Aktiviert |Ja |Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |
 | RetentionEnabled |Nein |Boolescher Wert, der angibt, ob eine Aufbewahrungsrichtlinie für diese Ressource aktiviert ist |
-| RetentionInDays |Nein |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von&0; werden die Protokolle dauerhaft gespeichert. |
+| RetentionInDays |Nein |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
 
 ## <a name="archive-diagnostic-logs-via-the-cross-platform-cli"></a>Archivieren von Diagnoseprotokollen mit der plattformübergreifenden Befehlszeilenschnittstelle
 ```
