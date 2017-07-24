@@ -146,6 +146,7 @@
 ## Integrieren
 ### [Zugreifen auf lokale Ressourcen über Hybridverbindungen](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Senden von E-Mails in Azure mit SendGrid](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [Export in PowerApps und Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## Problembehandlung
 ### [Aktivieren der Diagnoseprotokollierung](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-api%2ftoc.json)

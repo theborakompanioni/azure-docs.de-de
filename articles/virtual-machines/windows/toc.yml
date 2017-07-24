@@ -390,6 +390,10 @@
               href: migration-classic-resource-manager-faq.md
     - name: Problembehandlung
       items:
+        - name: >-
+            Unterstützungsmöglichkeiten für das Hinzufügen eines virtuellen
+            Azure-Computers zu einer vorhandenen Verfügbarkeitsgruppe
+          href: ../virtual-machines-availability-set-supportability.md
         - name: Informationen zum Systemneustart
           href: understand-vm-reboot.md
         - name: Remotedesktopverbindungen

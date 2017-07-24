@@ -62,14 +62,14 @@
 
 ## Verwalten und Überwachen
 ### [Verwalten von Logik-Apps mit Visual Studio](logic-apps-manage-from-vs.md)
-### [Überwachen von Logik-Apps](logic-apps-monitor-your-logic-apps.md)
 ### [Verwalten von Integrationskonten](logic-apps-enterprise-integration-accounts.md)
+### [Überwachen des Status von Logik-Apps](logic-apps-monitor-your-logic-apps.md)
 ### [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md)
+#### [Nachverfolgen von B2B-Nachrichten in OMS](logic-apps-track-b2b-messages-omsportal.md)
+#### [Abfragen von B2B-Nachrichten von OMS](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 #### [AS2-Nachverfolgungsschema](logic-apps-track-integration-account-as2-tracking-schemas.md)
 #### [X12-Nachverfolgungsschema](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [Benutzerdefinierte Nachverfolgungsschemas](logic-apps-track-integration-account-custom-tracking-schema.md)
-#### [Nachverfolgen von B2B-Nachrichten in OMS](logic-apps-track-b2b-messages-omsportal.md)
-#### [Abfragen von Nachrichten von OMS](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 
 ## Beispiele, Szenarien und exemplarische Vorgehensweisen
 ### [Übersicht](logic-apps-examples-and-scenarios.md)
@@ -81,7 +81,6 @@
 ## Preise und Abrechnung
 ### [Preise](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [Verwendungsmessung](logic-apps-pricing.md)
-
 
 # Serverlos
 ## Übersicht
