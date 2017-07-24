@@ -410,6 +410,10 @@
           href: migration-classic-resource-manager-faq.md
     - name: Problembehandlung
       items:
+        - name: >-
+            Unterstützungsmöglichkeiten für das Hinzufügen eines virtuellen
+            Azure-Computers zu einer vorhandenen Verfügbarkeitsgruppe
+          href: ../virtual-machines-availability-set-supportability.md
         - name: Zurücksetzen des Kennworts eines virtuellen Linux-Computers
           href: virtual-machines-linux-reset-password.md
         - name: Informationen zum Systemneustart
