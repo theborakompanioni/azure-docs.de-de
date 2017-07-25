@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 07/18/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 2593e6846c897644017083b49ad4ba8219696c6c
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: aefec15c72c6cf8389a29b03be70abb4c7f020b9
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Festlegen von Sicherheitsrichtlinien in Azure Security Center
@@ -43,7 +42,7 @@ Sie können Sicherheitsrichtlinien für jedes Abonnement konfigurieren. Damit Si
     ![Definieren von Richtlinien](./media/security-center-policies/security-center-policies-fig1-ga.png)
 3. Das Blatt **Sicherheitsrichtlinie** für das ausgewählte Abonnement wird mit einer Reihe von Optionen geöffnet. Auf diesem Blatt stehen folgende Optionen zur Verfügung:
 
-   * **Präventionsrichtlinie**: Verwenden Sie diese Option, um Richtlinien auf Abonnement- oder Ressourcengruppenebene zu konfigurieren.  
+   * **Präventionsrichtlinie**: Verwenden Sie diese Option, um Richtlinien auf Abonnementebene zu konfigurieren.  
    * **E-Mail-Benachrichtigung**: Verwenden Sie diese Option zum Konfigurieren einer E-Mail-Benachrichtigung, die beim ersten täglichen Auftreten einer Warnung und für Warnungen mit hohem Schweregrad gesendet wird. E-Mail-Optionen können nur für Abonnementrichtlinien konfiguriert werden. Weitere Informationen zum Konfigurieren einer E-Mail-Benachrichtigung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](security-center-provide-security-contact-details.md) .
    * **Tarif**: Verwenden Sie diese Option, um für die Tarifauswahl ein Upgrade durchzuführen. Weitere Informationen zu den Preisoptionen finden Sie auf der [Security Center-Seite](security-center-pricing.md).
 4. Stellen Sie sicher, dass die Option **Datensammlung für virtuelle Computer** auf **Ein** festgelegt ist. Diese Option aktiviert die automatische Protokollsammlung für vorhandene und neue Ressourcen mit dem Microsoft Monitoring Agent. Dies ist derselbe Agent, den auch die Operations Management Suite und der Log Analytics-Dienst verwenden. Die von diesem Agent gesammelten Daten werden entweder in vorhandenen Log Analytics-Arbeitsbereichen gespeichert, die mit Ihrem Azure-Abonnement verknüpft sind, oder unter Berücksichtigung des geografischen Standorts des virtuellen Computers in neuen Arbeitsbereichen.

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 7/17/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 83a6543a8fd95139fdcb6c031979382b4736a4ad
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 0b1f7711586cdfacbbfb28af121c7f37ba564cde
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Speicher-Explorer (Vorschau)
@@ -68,80 +68,7 @@ Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) ar
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>Herstellen einer Verbindung mit einem Azure Stack-Abonnement
 
-Für den Speicher-Explorer ist eine VPN-Verbindung erforderlich, um den Remotezugriff auf das Azure Stack-Abonnement zu ermöglichen. Weitere Informationen zur Einrichtung einer VPN-Verbindung mit Azure Stack finden Sie unter [Connect with VPN](azure-stack/azure-stack-connect-azure-stack.md#connect-with-vpn) (Herstellen einer VPN-Verbindung).
-
-Für Azure Stack POC (Proof of Concept) müssen Sie das Stammzertifikat der Azure Stack-Zertifizierungsstelle exportieren. Gehen Sie dazu wie folgt vor:
-
-1. Öffnen Sie `mmc.exe` auf „MAS-CON01“, einem Azure Stack-Hostcomputer oder einem lokalen Computer, der über eine VPN-Verbindung mit Azure Stack verfügt. 
-
-2. Wählen Sie unter **Datei** die Option **Snap-In hinzufügen/entfernen** aus, und fügen Sie anschließend **Zertifikate** zum Verwalten des **Computerkontos** von **Lokaler Computer** hinzu.
-
-    ![Laden des Azure Stack-Stammzertifikats per „mmc.exe“][25]   
-
-3. Suchen Sie unter **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** (Konsolenstamm\Zertifiziert (Lokaler Computer)\Vertrauenswürdige Stammzertifizierungsstellen\Zertifikate) nach **AzureStackCertificationAuthority**. 
-
-4. Klicken Sie mit der rechten Maustaste auf das Element, wählen Sie **Alle Aufgaben** > **Exportieren** aus, und führen Sie dann die Anweisungen aus, um das Zertifikat mit **Base-64-codiert X.509 (.CER)** zu exportieren.  
-
-    Das exportierte Zertifikat wird im nächsten Schritt verwendet.   
-
-    ![Exportieren des Stammzertifikats der Azure Stack-Stammzertifizierungsstelle][26]   
-
-5. Zeigen Sie im Speicher-Explorer (Vorschau) im Menü **Bearbeiten** auf **SSL-Zertifikate**, und wählen Sie anschließend **Zertifikate importieren** aus. Suchen Sie im Dialogfeld für die Dateiauswahl nach dem Zertifikat, das Sie im vorherigen Schritt exportiert haben, und öffnen Sie es.  
-
-    Nach dem Importieren werden Sie zum Neustarten des Speicher-Explorers aufgefordert.
-
-    ![Importieren des Zertifikats in den Speicher-Explorer (Vorschau)][27]
-
-6. Wählen Sie nach dem Neustart des Speicher-Explorers (Vorschau) das Menü **Bearbeiten** aus, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack als Ziel) aktiviert ist. Sollte die Option nicht aktiviert sein, aktivieren Sie sie, und starten Sie den Speicher-Explorer anschließend neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, um die Kompatibilität mit Ihrer Azure Stack-Umgebung zu gewährleisten.
-
-    ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack als Ziel)][28]
-
-7. Wählen Sie im linken Bereich **Konten verwalten** aus.  
-    Alle Microsoft-Konten, bei denen Sie angemeldet sind, werden angezeigt.
-
-8. Wählen Sie zum Herstellen einer Verbindung mit dem Azure Stack-Konto die Option **Konto hinzufügen** aus.
-
-    ![Hinzufügen eines Azure Stack-Kontos][29]
-
-9. Wählen Sie im Dialogfeld **Neues Konto hinzufügen** unter **Azure-Umgebung** die Option **Create Custom Environment** (Benutzerdefinierte Umgebung erstellen) aus, und klicken Sie anschließend auf **Weiter**.
-
-10. Geben Sie alle erforderlichen Informationen für die benutzerdefinierte Azure Stack-Umgebung ein, und klicken Sie anschließend auf **Anmelden**. 
-
-11. Füllen Sie die Felder im Dialogfeld **Sign in to a Custom Cloud environment** (Bei benutzerdefinierter Cloudumgebung anmelden) aus, um sich mit dem Azure Stack-Konto anzumelden, das mindestens einem aktiven Azure Stack-Abonnement zugeordnet ist.  
-
-    Im Anschluss finden Sie ausführliche Informationen zu den einzelnen Feldern:
-
-    * **Umgebungsname**: Dieses Feld kann vom Benutzer angepasst werden.
-    * **Autorität**: Der erforderliche Wert ist https://login.microsoftonline.com. Verwenden Sie für Azure China den Wert „https://login.chinacloudapi.cn“.
-    * **Sign in resource id** (Ressourcen-ID für Anmeldung): Führen Sie zum Abrufen des Werts eines der folgenden PowerShell-Skripts aus:
-
-        Als Cloudadministrator:
-
-        ```powershell
-        PowerShell (Invoke-RestMethod -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-        ```
-
-        Als Mandant:
-
-        ```powershell
-        PowerShell (Invoke-RestMethod -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
-        ```
-
-    * **Graph-Endpunkt**: Dieser Wert sollte „https://graph.windows.net“ lauten. Verwenden Sie für Azure China den Wert „https://graph.chinacloudapi.cn“.
-    * **ARM resource id** (ARM-Ressourcen-ID): Verwenden Sie den gleichen Wert wie bei **Sign in resource id** (Ressourcen-ID für Anmeldung).
-    * **ARM resource endpoint** (ARM-Ressourcenendpunkt): Beispiele für Azure Resource Manager-Ressourcenendpunkte:
-
-        * Für Cloudadministratoren: https://adminmanagement.local.azurestack.external   
-        * Für Mandanten: https://management.local.azurestack.external
- 
-    * **Tenant Ids** (Mandanten-IDs): Optional. Der Wert wird nur eingegeben, wenn das Verzeichnis angegeben werden muss.
-
-12. Nach erfolgreicher Anmeldung mit einem Azure Stack-Konto werden im linken Bereich die mit dem Konto verknüpften Azure Stack-Abonnements angezeigt. Wählen Sie die Azure Stack-Abonnements aus, die Sie verwenden möchten, und klicken Sie dann auf **Übernehmen**. (Durch Aktivieren oder Deaktivieren des Kontrollkästchens **Alle Abonnements** können Sie alle bzw. keine Azure Stack-Abonnements in der Liste auswählen.)
-
-    ![Auswählen der Azure Stack-Abonnements nach dem Ausfüllen der Felder im Dialogfeld für die benutzerdefinierte Cloudumgebung][30]  
-    Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure Stack-Abonnements verknüpft sind.
-
-    ![Liste mit Speicherkonten, einschließlich Azure Stack-Abonnementkonten][31]
+Informationen zum Herstellen der Verbindung mit einem Azure Stack-Abonnement finden Sie unter [Connect Storage Explorer to an Azure Stack subscription](azure-stack/azure-stack-storage-connect-se.md) (Verbinden des Speicher-Explorers mit einem Azure Stack-Abonnement).
 
 ## <a name="work-with-local-development-storage"></a>Verwenden von lokalem Entwicklungsspeicher
 Mit dem Speicher-Explorer (Vorschau) können Sie unter Verwendung des Azure-Speicheremulators Schritte für den lokalen Speicher ausführen. Dadurch können Sie Code für Speicher schreiben und Speicher testen, ohne dass unbedingt ein Speicherkonto in Azure bereitgestellt werden muss, da das Speicherkonto vom Azure-Speicheremulator emuliert wird.

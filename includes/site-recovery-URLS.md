@@ -1,10 +1,4 @@
-``*.accesscontrol.windows.net``: Wird für Access Control und Identitätsverwaltung verwendet.<br/><br/>``\*.backup.windowsazure.com``: Wird für die Übertragung und Orchestrierung von Replikationsdaten verwendet. <br/><br/> ``\*.blob.core.windows.net``: Wird für den Zugriff auf das Speicherkonto zum Speichern von replizierten Daten verwendet.<br/><br/> ``\*.hypervrecoverymanager.windowsazure.com``: Wird für die Vorgänge und Orchestrierung der Replikationsverwaltung verwendet.<br/><br/>
-``time.nist.gov`` und ``time.windows.com``: Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und globaler Zeit verwendet.
+``*.accesscontrol.windows.net``. Wird für Zugriffssteuerung und Identitätsverwaltung verwendet.<br/><br/>``\*.backup.windowsazure.com``. Wird für die Übertragung und Koordinierung von Replikationsdaten verwendet. <br/><br/> ``\*.blob.core.windows.net``. Wird für den Zugriff auf das Speicherkonto zum Speichern von replizierten Daten verwendet.<br/><br/> ``\*.hypervrecoverymanager.windowsazure.com``. Wird für die Vorgänge und Koordinierung der Replikationsverwaltung verwendet.<br/><br/>
+``time.nist.gov`` und ``time.windows.com``. Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
 <br/><br/>
-
-URL für Azure Government-Cloud:
-
-- .ugv.hypervrecoverymanager.windowsazure.us
-- .ugv.backup.windowsazure.us
-- .ugi.hypervrecoverymanager.windowsazure.us
-- .ugi.backup.windowsazure.us
+URLs für die Azure Government-Cloud:<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us

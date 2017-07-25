@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 01/12/2017-->
+<!--author=alkohli last changed: 07/19/2017-->
 
 #### <a name="to-create-a-volume"></a>So erstellen Sie ein Volume
 1. Wählen Sie auf dem Blatt **Geräte** in der tabellarischen Geräteauflistung Ihr Gerät aus. Klicken Sie auf **+ Volume hinzufügen**.
@@ -11,7 +11,7 @@
 
    2. Wählen Sie in der Dropdownliste den Volumecontainer aus, dem Sie ein Volume hinzufügen müssen. 
 
-   3.  den **Namen** für das Volume ein.
+   3.  den **Namen** für das Volume ein. Sie können ein Volume nicht mehr umbenennen, nachdem es erstellt wurde.
 
    4. Wählen Sie in der Dropdownliste den **Typ** für das Volume aus. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie ein **lokales** Volume aus. Wählen Sie für alle anderen Daten ein **mehrstufiges** Volume aus. Wenn Sie dieses Volume für archivierte Daten verwenden, aktivieren Sie das Kontrollkästchen **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen**.
       

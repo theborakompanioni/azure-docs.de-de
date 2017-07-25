@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 769377af7bf62d35c45c6e2e7b0ae3311b784894
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 457ba9c9f74bc9d88800607a2f78a3c3c96cea07
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentieren von Web-Apps zur Laufzeit mit Application Insights
@@ -42,10 +41,10 @@ Hier ist zusammengefasst, was Sie jeweils erhalten:
 | [Weitere ausführliche Ausnahmen](app-insights-asp-net-exceptions.md) | |Ja |
 | [Abhängigkeitsdiagnose](app-insights-asp-net-dependencies.md) |Bei .NET 4.6 und höheren Versionen, aber weniger Details |Ja, vollständige Details: Ergebniscodes, SQL-Befehlstext, HTTP-Verb|
 | [Systemleistungsindikatoren](app-insights-performance-counters.md) |Ja |Ja |
-| [API für benutzerdefinierte Telemetrie][api] |Ja | |
-| [Ablaufverfolgungsprotokoll-Integration](app-insights-asp-net-trace-logs.md) |Ja | |
-| [Seitenansicht und Benutzerdaten](app-insights-javascript.md) |Ja | |
-| Neuerstellung des Codes nicht erforderlich |Nein | |
+| [API für benutzerdefinierte Telemetrie][api] |Ja |Nein |
+| [Ablaufverfolgungsprotokoll-Integration](app-insights-asp-net-trace-logs.md) |Ja |Nein |
+| [Seitenansicht und Benutzerdaten](app-insights-javascript.md) |Ja |Nein |
+| Neuerstellung des Codes erforderlich |Ja | Nein |
 
 
 ## <a name="monitor-a-live-azure-web-app"></a>Überwachen einer Azure-Live-Web-App

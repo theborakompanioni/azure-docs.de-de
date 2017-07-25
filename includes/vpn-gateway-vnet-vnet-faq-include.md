@@ -1,3 +1,5 @@
+Die häufig gestellten Fragen zu VNet-zu-VNet-Verbindungen gelten für VPN Gateway-Verbindungen. Informationen zum VNet-Peering finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md).
+
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>Fallen bei Azure Kosten für den Datenverkehr zwischen VNets an?
 
 VNET-zu-VNET-Datenverkehr innerhalb einer Region ist bei Verwendung einer VPN-Gatewayverbindung in beide Richtungen kostenlos. Für regionsübergreifenden VNet-zu-VNet-Datenverkehr in ausgehender Richtung werden Gebühren für ausgehende Datenübertragungen zwischen VNets basierend auf den Quellregionen berechnet. Angaben zu den Preisen finden Sie auf der Seite [VPN Gateway – Preise](https://azure.microsoft.com/pricing/details/vpn-gateway/). Wenn Sie zum Herstellen einer Verbindung zwischen Ihren VNETs VNET-Peering anstelle von VPN Gateway verwenden, lesen Sie die Informationen auf der Seite [Virtual Network – Preise](https://azure.microsoft.com/pricing/details/virtual-network/).
@@ -10,15 +12,19 @@ Nein. VNet-zu-VNet-Datenverkehr wird über den Microsoft Azure-Backbone übertra
 
 Ja, er wird mittels IPsec-/IKE-Verschlüsselung geschützt.
 
-###<a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>Benötige ich ein VPN-Gerät, umVNets miteinander zu verbinden?
+### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>Benötige ich ein VPN-Gerät, umVNets miteinander zu verbinden?
 
 Nein. Für das Verbinden mehrerer virtueller Azure-Netzwerke sind keine VPN-Geräte erforderlich. Diese werden nur benötigt, wenn standortübergreifende Konnektivität erforderlich ist.
 
-###<a name="do-my-vnets-need-to-be-in-the-same-region"></a>Müssen sich meine VNets in der gleichen Region befinden?
+### <a name="do-my-vnets-need-to-be-in-the-same-region"></a>Müssen sich meine VNets in der gleichen Region befinden?
 
 Nein. Die virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen (Standorte) befinden.
 
-###<a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>Kann ich VNet-zu-VNet zusammen mit Verbindungen mit mehreren Standorten verwenden?
+### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>Müssen die Abonnements demselben AD-Mandanten zugeordnet sein, wenn sich die VNets nicht in demselben Abonnement befinden?
+
+Nein.
+
+### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>Kann ich VNet-zu-VNet zusammen mit Verbindungen mit mehreren Standorten verwenden?
 
 Ja. Virtuelle Netzwerkverbindungen können simultan mit VPNs mit mehreren Standorten verwendet werden.
 
@@ -26,15 +32,15 @@ Ja. Virtuelle Netzwerkverbindungen können simultan mit VPNs mit mehreren Stando
 
 Informationen dazu finden Sie in der Tabelle mit [Gatewayanforderungen](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#requirements).
 
-###<a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>Kann ich VNet-zu-VNet für die Verbindung von virtuellen Computern oder Clouddiensten außerhalb eines VNet verwenden?
+### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>Kann ich VNet-zu-VNet für die Verbindung von virtuellen Computern oder Clouddiensten außerhalb eines VNet verwenden?
 
 Nein. VNet-zu-VNet unterstützt das Verbinden virtueller Netzwerke. Nicht unterstützt hingegen werden Verbindungen virtueller Computer oder Clouddienste, die sich nicht in einem virtuellen Netzwerk befinden.
 
-###<a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>Kann sich ein Clouddienst oder eine Lastenausgleichs-Endpunkt über mehrere VNets erstrecken?
+### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>Kann sich ein Clouddienst oder eine Lastenausgleichs-Endpunkt über mehrere VNets erstrecken?
 
 Nein. Ein Clouddienst oder Endpunkt mit Lastenausgleich darf auch dann nicht mehrere virtuelle Netzwerke umfassen, wenn diese verbunden sind.
 
-###<a name="can-i-used-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Kann ich den VPN-Typ „PolicyBased“ für VNet-zu-VNet oder standortübergreifende Verbindungen verwenden?
+### <a name="can-i-used-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>Kann ich den VPN-Typ „PolicyBased“ für VNet-zu-VNet oder standortübergreifende Verbindungen verwenden?
 
 Nein. VNet-zu-VNet- und standortübergreifende Verbindungen erfordern Azure-VPN Gateways mit routenbasierten VPN-Typen (früher als „dynamisches Routing“ bezeichnet).
 
@@ -42,15 +48,15 @@ Nein. VNet-zu-VNet- und standortübergreifende Verbindungen erfordern Azure-VPN 
 
 Nein. Beide virtuellen Netzwerke müssen routenbasierte VPNs (früher als „dynamisches Routing“ bezeichnet) verwenden.
 
-###<a name="do-vpn-tunnels-share-bandwidth"></a>Verwenden VPN-Tunnel Bandbreite gemeinsam?
+### <a name="do-vpn-tunnels-share-bandwidth"></a>Verwenden VPN-Tunnel Bandbreite gemeinsam?
 
 Ja. Alle VPN-Tunnel des virtuellen Netzwerks verwenden die verfügbare Bandbreite auf dem Azure-VPN-Gateway und die gleiche SLA für die Verfügbarkeit des VPN-Gateways in Azure gemeinsam.
 
-###<a name="are-redundant-tunnels-supported"></a>Werden redundante Tunnel unterstützt?
+### <a name="are-redundant-tunnels-supported"></a>Werden redundante Tunnel unterstützt?
 
 Redundante Tunnel zwischen einem Paar virtueller Netzwerke werden unterstützt, wenn ein virtuelles Netzwerkgateway als „Aktiv-Aktiv“ konfiguriert ist.
 
-###<a name="can-i-have-overlapping-address-spaces-for-vnet-to-vnet-configurations"></a>Kann ich für VNet-zu-VNet-Konfigurationen Adressräume verwenden, die sich überschneiden?
+### <a name="can-i-have-overlapping-address-spaces-for-vnet-to-vnet-configurations"></a>Kann ich für VNet-zu-VNet-Konfigurationen Adressräume verwenden, die sich überschneiden?
 
 Nein. IP-Adressbereiche dürfen sich nicht überschneiden.
 

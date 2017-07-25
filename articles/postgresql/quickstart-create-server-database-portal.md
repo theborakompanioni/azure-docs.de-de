@@ -9,10 +9,10 @@ editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 06/19/2017
+ms.date: 07/12/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 2b81b9e1ae2abfd332bd6048b7643b4245ca374b
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: c065d692d2a4ac369cb13a70d09b30498e6c9106
 ms.contentlocale: de-de
 ms.lasthandoff: 07/13/2017
 
@@ -38,12 +38,12 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
  ![Azure-Datenbank für PostgreSQL – Erstellen der Datenbank](./media/quickstart-create-database-portal/1-create-database.png)
 
 3.  Geben Sie die folgenden Informationen in das Formular für den neuen Server ein, wie in der obigen Abbildung dargestellt:
-    - Servername: **mypgserver-20170401** (der Name eines Servers wird dem DNS-Namen zugeordnet und muss deshalb global eindeutig sein) 
+    - Servername: **mypgserver-20170401** (Wählen Sie einen global eindeutigen Servernamen, da dieser Name dem DNS-Namen zugeordnet wird.)
     - Abonnement: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource vorhanden ist oder in Rechnung gestellt wird.
     - Ressourcengruppe: **myresourcegroup**
     - Serveradministrator-Anmeldename und ein Kennwort Ihrer Wahl
-    - Ort
-    - PostgreSQL-Version
+    - Standort: Wählen Sie den nächstgelegenen Standort aus.
+    - PostgreSQL-Version: Wählen Sie die aktuelle Version aus.
 
   > [!IMPORTANT]
   > Der hier angegebene Benutzername bzw. das Kennwort für den Serveradministrator sind erforderlich, um später in diesem Schnellstart die Anmeldung am Server und an den dazugehörigen Datenbanken durchzuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.

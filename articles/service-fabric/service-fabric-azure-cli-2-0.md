@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Service Fabric und der Azure CLI 2.0
-description: Es wird beschrieben, wie Sie das Service Fabric-Befehlsmodul in der Azure CLI, Version 2.0, verwenden und Clusterverbindungen herstellen und Anwendungen verwalten.
+title: Erste Schritte mit Azure Service Fabric und Azure CLI 2.0
+description: "Enthält Informationen zur Verwendung des Moduls mit den Azure Service Fabric-Befehlen in Version 2.0 der Azure CLI. Es wird beschrieben, wie Sie eine Verbindung mit einem Cluster herstellen und Anwendungen verwalten."
 services: service-fabric
 author: samedder
 manager: timlt
@@ -8,80 +8,70 @@ ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: edwardsa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: c5cc6e54acf27456185eeb48858c4d981aa46b4b
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: ee3302b984ca2f5509755dc17b0a5fd06ace0afe
 ms.contentlocale: de-de
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/14/2017
 
 ---
-<a id="service-fabric-and-azure-cli-20" class="xliff"></a>
+# <a name="azure-service-fabric-and-azure-cli-20"></a>Azure Service Fabric und Azure CLI 2.0
 
-# Service Fabric und Azure CLI 2.0
+Version 2.0 des Azure-Befehlszeilentools (Azure CLI) enthält Befehle, mit denen Sie Azure Service Fabric-Cluster verwalten können. Sie erfahren, wie Sie die ersten Schritte mit der Azure CLI und Service Fabric ausführen.
 
-Die neue Azure CLI 2.0 enthält jetzt Befehle zum Verwalten von Service Fabric-Clustern. In dieser Dokumentation werden die ersten Schritte für die Azure CLI beschrieben.
+## <a name="install-azure-cli-20"></a>Installieren von Azure CLI 2.0
 
-<a id="install-azure-cli-20" class="xliff"></a>
+Sie können Azure CLI 2.0-Befehle verwenden, um mit Service Fabric-Clustern zu interagieren und diese zu verwalten. Befolgen Sie den [Prozess für die Azure CLI 2.0-Standardinstallation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-## Installieren von Azure CLI 2.0
+Weitere Informationen finden Sie in der Übersicht über [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview).
 
-Die Azure CLI enthält jetzt Befehle zum Interagieren mit und Verwalten von Service Fabric-Clustern. Sie können den [Standardinstallationsprozess](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) befolgen, um die neueste Azure CLI zu erhalten.
+## <a name="azure-cli-syntax"></a>Azure CLI-Syntax
 
-Weitere Informationen finden Sie in der [Azure CLI 2.0-Dokumentation](https://docs.microsoft.com/en-us/cli/azure/overview).
+In Azure CLI sind alle Service Fabric-Befehle mit dem Präfix `az sf` versehen. Allgemeine Informationen zu den Befehlen, die Sie nutzen können, erhalten Sie mit `az sf -h`. Hilfe zu einem einzelnen Befehl erhalten Sie mit `az sf <command> -h`.
 
-<a id="cli-syntax" class="xliff"></a>
-
-## CLI-Syntax
-
-Alle Azure Service Fabric-Befehle weisen in der Azure CLI das Präfix `az sf` auf. Weitere allgemeine Informationen zu den verfügbaren Befehlen erhalten Sie, indem Sie `az sf -h` ausführen. Sie können auch `az sf <command> -h` ausführen, um ausführliche Hilfe zu einem einzelnen Befehl zu erhalten.
-
-Namensmuster für Azure Service Fabric-Befehle in der CLI
+Namensmuster für Service Fabric-Befehle in Azure CLI:
 
 ```azurecli
 az sf <object> <action>
 ```
 
-Hier ist `<object>` das Ziel für `<action>`.
+`<object>` ist das Ziel für `<action>`.
 
-<a id="selecting-a-cluster" class="xliff"></a>
+## <a name="select-a-cluster"></a>Auswählen eines Clusters
 
-## Auswählen eines Clusters
-
-Bevor Sie Vorgänge durchführen können, müssen Sie einen Cluster auswählen, mit dem die Verbindung hergestellt wird. Der folgende Codeausschnitt enthält beispielsweise Code zum Herstellen einer Verbindung mit einem nicht gesicherten Cluster.
+Bevor Sie Vorgänge durchführen, müssen Sie einen Cluster auswählen, mit dem die Verbindung hergestellt wird. Der folgende Code enthält ein Beispiel hierzu. Im Code wird eine Verbindung mit einem ungeschützten Cluster hergestellt.
 
 > [!WARNING]
-> Vermeiden der Verwendung von nicht gesicherten Service Fabric-Clustern für Produktionsumgebungen
+> Vermeiden Sie die Verwendung von ungeschützten Service Fabric-Clustern in einer Produktionsumgebung.
 
 ```azurecli
 az sf cluster select --endpoint http://testcluster.com:19080
 ```
 
-Der Clusterendpunkt muss das Präfix `http` oder `https` aufweisen und sollte den Port für das HTTP-Gateway enthalten. Dieser Port und diese Adresse entsprechen der Service Fabric Explorer-URL.
+Der Clusterendpunkt muss das Präfix `http` oder `https` aufweisen. Er muss den Port für das HTTP-Gateway enthalten. Der Port und die Adresse entsprechen der Service Fabric Explorer-URL.
 
-Für Cluster, die mit einem Zertifikat gesichert werden, werden entweder unverschlüsselte `pem`- oder `crt`- und `key`-Dateien unterstützt.
+Für Cluster, die durch ein Zertifikat geschützt sind, können Sie entweder unverschlüsselte PEM-Dateien oder CRT- und KEY-Dateien verwenden. Beispiel:
 
 ```azurecli
 az sf cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-Weitere Informationen finden Sie im [ausführlichen Dokument zur Herstellung der Verbindung mit sicheren Clustern](service-fabric-connect-to-secure-cluster.md).
+Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md).
 
 > [!NOTE]
-> Mit dem Select-Befehl werden vor der Rückgabe keine Anforderungen durchgeführt. Gehen Sie wie folgt vor, um zu überprüfen, ob ein Cluster richtig angegeben wurde: Führen Sie einen Befehl wie `az sf cluster health` aus, und stellen Sie sicher, dass für den Befehl keine Fehler zurückgegeben werden.
+> Mit dem Befehl `select` werden vor der Rückgabe keine Schritte für Anforderungen ausgeführt. Verwenden Sie einen Befehl wie `az sf cluster health`, um sicherzustellen, dass Sie einen Cluster richtig angegeben haben. Vergewissern Sie sich, dass für den Befehl keine Fehler zurückgegeben werden.
 
-<a id="performing-basic-operations" class="xliff"></a>
+## <a name="basic-operations"></a>Einfache Vorgänge
 
-## Durchführen von grundlegenden Vorgängen
+Informationen zur Clusterverbindung werden über mehrere Azure CLI-Sitzungen hinweg beibehalten. Nach dem Auswählen eines Service Fabric-Clusters können Sie im Cluster einen beliebigen Service Fabric-Befehl ausführen.
 
-Clusterverbindungsinformationen werden über verschiedene Azure CLI-Sitzungen hinweg beibehalten. Nach der Auswahl eines Service Fabric-Clusters können Sie einen beliebigen Service Fabric-Befehl ausführen.
-
-Führen Sie beispielsweise den folgenden Befehl aus, um den Integritätsstatus des Service Fabric-Clusters abzurufen:
+Verwenden Sie beispielsweise den folgenden Befehl, um den Integritätsstatus des Service Fabric-Clusters abzurufen:
 
 ```azurecli
 az sf cluster health
 ```
 
-Der Befehl ergibt die folgende Ausgabe, wenn in der Azure CLI-Konfiguration die JSON-Ausgabe angegeben ist:
+Der Befehl ergibt die folgende Ausgabe (sofern in der Azure CLI-Konfiguration die JSON-Ausgabe angegeben ist):
 
 ```json
 {
@@ -106,51 +96,41 @@ Der Befehl ergibt die folgende Ausgabe, wenn in der Azure CLI-Konfiguration die 
 }
 ```
 
-<a id="tips-and-faq" class="xliff"></a>
+## <a name="tips-and-troubleshooting"></a>Tipps und Problembehandlung
 
-## Tipps und häufig gestellte Fragen
+Die folgenden Informationen können für Sie hilfreich sein, falls beim Verwenden von Service Fabric-Befehlen in Azure CLI Probleme auftreten.
 
-Hier sind einige Informationen angegeben, die hilfreich sein können, wenn beim Verwenden der Service Fabric-Befehle in der Azure CLI Probleme auftreten.
+### <a name="convert-a-certificate-from-pfx-to-pem-format"></a>Konvertieren eines Zertifikats aus dem PFX- in das PEM-Format
 
-<a id="converting-a-certificate-from-pfx-to-pem" class="xliff"></a>
-
-### Konvertieren eines Zertifikats aus PFX in PEM
-
-Die Azure CLI unterstützt clientseitige Zertifikate als PEM-Dateien (Erweiterung `.pem`). Bei Verwendung von PFX-Dateien aus Windows müssen diese Zertifikate in das PEM-Format konvertiert werden. Mit dem folgenden Befehl konvertieren Sie eine PFX-Datei in eine PEM-Datei:
+Azure CLI unterstützt clientseitige Zertifikate als PEM-Dateien (Erweiterung „.pem“). Bei Verwendung von PFX-Dateien in Windows müssen Sie diese Zertifikate in das PEM-Format konvertieren. Mit dem folgenden Befehl konvertieren Sie eine PFX-Datei in eine PEM-Datei:
 
 ```bash
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
-Ausführliche Informationen finden Sie in der [OpenSSL-Dokumentation](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html).
+Weitere Informationen finden Sie in der [OpenSSL-Dokumentation](https://www.openssl.org/docs/).
 
-<a id="connection-issues" class="xliff"></a>
+### <a name="connection-issues"></a>Verbindungsprobleme
 
-### Verbindungsprobleme
+Für einige Vorgänge wird unter Umständen die folgende Meldung generiert:
 
-Beim Durchführen von Vorgängen tritt ggf. der folgende Fehler auf:
+`Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
 
-> `Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
+Stellen Sie sicher, dass der angegebene Clusterendpunkt verfügbar ist und lauscht. Überprüfen Sie auch, ob die Service Fabric Explorer-Benutzeroberfläche unter diesem Host und Port verfügbar ist. Verwenden Sie `az sf cluster select`, um den Endpunkt zu aktualisieren.
 
-Stellen Sie in diesem Fall sicher, dass der angegebene Clusterendpunkt erreichbar ist und lauscht. Überprüfen Sie auch, ob die Service Fabric Explorer-Benutzeroberfläche unter diesem Host und Port erreichbar ist. Verwenden Sie `az sf cluster select`, um den Endpunkt zu aktualisieren.
+### <a name="detailed-logs"></a>Detaillierte Protokolle
 
-<a id="getting-detailed-logs" class="xliff"></a>
+Detaillierte Protokolle sind häufig hilfreich, wenn Sie das Debuggen durchführen oder ein Problem melden. Azure CLI verfügt über ein globales `--debug`-Flag, mit dem die Ausführlichkeit von Protokolldateien erhöht wird.
 
-### Abrufen von ausführlichen Protokollen
+### <a name="command-help-and-syntax"></a>Befehle – Hilfe und Syntax
 
-Beim Debuggen oder Melden eines Problems ist es nützlich, ausführliche Protokolle einzubeziehen. Die Azure CLI enthält ein globales `--debug`-Flag, das die Ausführlichkeit der Protokolle erhöht.
-
-<a id="command-help-and-syntax" class="xliff"></a>
-
-### Befehle – Hilfe und Syntax
-
-Für die Service Fabric-Befehle gilt die gleiche Konvention wie für die Azure CLI. Geben Sie das `-h`-Flag an, um Hilfe zu einem bestimmten Befehl oder einer Gruppe von Befehlen zu erhalten. Beispiel:
+Für Service Fabric-Befehle gelten die gleichen Konventionen wie für die Azure CLI. Verwenden Sie das `-h`-Flag, um Hilfe zu einem bestimmten Befehl oder einer Gruppe von Befehlen zu erhalten:
 
 ```azurecli
 az sf application -h
 ```
 
-oder
+Hier ist ein weiteres Beispiel angegeben:
 
 ```azurecli
 az sf application create -h

@@ -15,17 +15,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: f9cc157f25e70a8154614b659fb7e59b7fd06ed1
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 8ec9709bfb553f6ee89611e92330dedb6129055d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure-VM-Skalierungsgruppen und verwaltete Datenträger
 
-Azure-[VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) unterstützen jetzt virtuelle Computer mit verwalteten Datenträgern. Die Verwendung von verwalteten Datenträgern mit Skalierungsgruppen hat mehrere Vorteile, z.B.:
+Azure-[VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) unterstützen virtuelle Computer mit verwalteten Datenträgern. Die Verwendung von verwalteten Datenträgern mit Skalierungsgruppen hat mehrere Vorteile, z.B.:
 
 * Es ist nicht mehr erforderlich, Speicherkonten vorab zu erstellen und zu verwalten, um die Betriebssystemdatenträger für die Skalierungsgruppen-VMs zu speichern.
 
@@ -43,10 +42,6 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 ```
 
 Alternativ dazu können Sie im [GitHub-Repository mit den Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) nach Ordnern suchen, die `vmss` enthalten. Darin befinden sich fertige Beispiele für Vorlagen zum Bereitstellen von Skalierungsgruppen. Informationen dazu, für welche Vorlagen bereits verwaltete Datenträger verwendet werden, finden Sie in [dieser Liste](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md).
-
-## <a name="api-versions"></a>API-Versionen
-
-Für Skalierungsgruppen mit verwalteten Datenträgern ist Microsoft.Compute APi-Version `2016-04-30-preview` oder höher erforderlich. Skalierungsgruppen mit nicht verwalteten Datenträgern funktionieren auch für neue API-Versionen, die über Unterstützung für verwaltete Datenträger verfügen, weiter wie bisher. Für Skalierungsgruppen mit nicht verwalteten Datenträgern gelten die Vorteile von verwalteten Datenträgern aber auch dann nicht, wenn diese neuen API-Versionen verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

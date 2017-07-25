@@ -15,12 +15,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 06/19/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 0265503689e189a3e2e30c2ae9fff39641647d0c
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: d1b887e68b1040ea9340235cd215028300c14fac
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Migrieren einer vorhandenen Web-App von Node.js MongoDB 
@@ -93,10 +92,10 @@ az group create --name myResourceGroup --location "West Europe"
 
 Erstellen Sie mit dem Befehl [az cosmosdb create](/cli/azure/cosmosdb#create) ein Azure Cosmos DB-Konto.
 
-Ersetzen Sie im folgenden Befehl den Platzhalter `<cosmosdb_name>` durch Ihren eigenen eindeutigen Azure Cosmos DB-Kontonamen. Da dieser eindeutige Name als Teil des Azure Cosmos DB-Endpunkts (`https://<cosmosdb_name>.documents.azure.com/`) verwendet wird, muss er für alle Azure Cosmos DB-Konten in Azure eindeutig sein. 
+Ersetzen Sie im folgenden Befehl den Platzhalter `<cosmosdb-name>` durch Ihren eigenen eindeutigen Azure Cosmos DB-Kontonamen. Da dieser eindeutige Name als Teil des Azure Cosmos DB-Endpunkts (`https://<cosmosdb-name>.documents.azure.com/`) verwendet wird, muss er für alle Azure Cosmos DB-Konten in Azure eindeutig sein. 
 
 ```azurecli-interactive
-az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
+az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
 Der `--kind MongoDB`-Parameter ermöglicht MongoDB-Clientverbindungen.
@@ -106,17 +105,17 @@ Nach dem Erstellen des Azure Cosmos DB-Kontos zeigt die Azure-CLI ähnliche Info
 ```json
 {
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://<cosmosdb-name>.documents.azure.com:443/",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Document
-DB/databaseAccounts/<cosmosdb_name>",
+DB/databaseAccounts/<cosmosdb-name>",
   "kind": "MongoDB",
   "location": "West Europe",
-  "name": "<cosmosdb_name>",
+  "name": "<cosmosdb-name>",
   "readLocations": [
     {
-      "documentEndpoint": "https://<cosmosdb_name>-westeurope.documents.azure.com:443/",
+      "documentEndpoint": "https://<cosmosdb-name>-westeurope.documents.azure.com:443/",
       "failoverPriority": 0,
-      "id": "<cosmosdb_name>-westeurope",
+      "id": "<cosmosdb-name>-westeurope",
       "locationName": "West Europe",
       "provisioningState": "Succeeded"
     }
@@ -125,9 +124,9 @@ DB/databaseAccounts/<cosmosdb_name>",
   "type": "Microsoft.DocumentDB/databaseAccounts",
   "writeLocations": [
     {
-      "documentEndpoint": "https://<cosmosdb_name>-westeurope.documents.azure.com:443/",
+      "documentEndpoint": "https://<cosmosdb-name>-westeurope.documents.azure.com:443/",
       "failoverPriority": 0,
-      "id": "<cosmosdb_name>-westeurope",
+      "id": "<cosmosdb-name>-westeurope",
       "locationName": "West Europe",
       "provisioningState": "Succeeded"
     }
@@ -139,48 +138,38 @@ DB/databaseAccounts/<cosmosdb_name>",
 
 In diesem Schritt verbinden Sie die MEAN.js-Beispielanwendung mithilfe einer MongoDB-Verbindungszeichenfolge mit der soeben erstellten Azure Cosmos DB-Datenbank. 
 
-## <a name="retrieve-the-key"></a>Abrufen des Schlüssels
-
-Um eine Verbindung mit der Azure Cosmos DB-Datenbank herstellen zu können, benötigen Sie den Datenbankschlüssel. Rufen Sie den Primärschlüssel mit dem Befehl [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) ab.
-
-```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
-```
-
-Die Azure-CLI gibt Informationen ähnlich wie im folgenden Beispiel aus. 
-
-```json
-{
-  "primaryMasterKey": "RUayjYjixJDWG5xTqIiXjC...",
-  "primaryReadonlyMasterKey": "...",
-  "secondaryMasterKey": "...",
-  "secondaryReadonlyMasterKey": "..."
-}
-```
-
-Kopieren Sie den Wert von `primaryMasterKey` in einen Texteditor. Sie benötigen diese Informationen im nächsten Schritt.
-
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurieren der Verbindungszeichenfolge in der Node.js-Anwendung
 
 Öffnen Sie in Ihrem MEAN.js.Repository `config/env/local-development.js`.
 
-Ersetzen Sie den Inhalt dieser Datei durch den folgenden Code. Achten Sie darauf, dass Sie auch die ersten beiden Platzhalter `<cosmosdb_name>` durch den Namen des Azure Cosmos DB-Kontos und den Platzhalter `<primary_master_key>` durch den Schlüssel ersetzen, den Sie im vorherigen Schritt kopiert haben.
+Ersetzen Sie den Inhalt dieser Datei durch den folgenden Code. Achten Sie auch darauf, dass Sie die beiden `<cosmosdb-name>`-Platzhalter durch den Namen Ihres Azure Cosmos DB-Kontos ersetzen.
 
 ```javascript
 'use strict';
 
 module.exports = {
   db: {
-    uri: 'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean-dev?ssl=true&sslverifycertificate=false'
+    uri: 'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.com:10250/mean-dev?ssl=true&sslverifycertificate=false'
   }
 };
 ```
 
-> [!NOTE] 
-> Die Option `ssl=true` ist wichtig, da [für Azure Cosmos DB SSL erforderlich ist](connect-mongodb-account.md#connection-string-requirements). 
->
->
+## <a name="retrieve-the-key"></a>Abrufen des Schlüssels
+
+Um eine Verbindung mit der Azure Cosmos DB-Datenbank herstellen zu können, benötigen Sie den Datenbankschlüssel. Rufen Sie den Primärschlüssel mit dem Befehl [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) ab.
+
+```azurecli-interactive
+az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+```
+
+Die Azure-CLI gibt Informationen ähnlich wie im folgenden Beispiel aus. 
+
+```json
+"RUayjYjixJDWG5xTqIiXjC..."
+```
+
+Kopieren Sie den Wert von `primaryMasterKey`. Fügen Sie ihn anstelle von `<primary_master_key>` in `local-development.js` ein.
 
 Speichern Sie die Änderungen.
 
@@ -222,8 +211,13 @@ Sie haben vielleicht festgestellt, dass die Konfigurationsdatei, die Sie zuvor g
 Ersetzen Sie im `db`-Objekt den Wert von `uri` wie im folgenden Beispiel gezeigt. Achten Sie darauf, die Platzhalter wie zuvor zu ersetzen.
 
 ```javascript
-'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
+'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
 ```
+
+> [!NOTE] 
+> Die Option `ssl=true` ist wichtig, da [für Azure Cosmos DB SSL erforderlich ist](connect-mongodb-account.md#connection-string-requirements). 
+>
+>
 
 Committen Sie im Terminal alle Änderungen in Git. Sie können beide Befehle kopieren, um sie gemeinsam auszuführen.
 

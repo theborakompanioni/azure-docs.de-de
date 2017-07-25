@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 07/19/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: db97edd3c4fbfdbe955c49cc9a58de30c5085305
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: b382225b9e355148279181fbf6238eb1e08f382d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
@@ -82,7 +81,7 @@ Beim Erstellen einer Ressourcengruppe müssen Sie einen Standort für die Ressou
 ## <a name="resource-providers"></a>Ressourcenanbieter
 Jeder Ressourcenanbieter stellt einen Satz mit Ressourcen und Vorgängen für die Verwendung eines Azure-Diensts bereit. Wenn Sie beispielsweise Schlüssel und geheime Schlüssel speichern möchten, verwenden Sie den Ressourcenanbieter **Microsoft.KeyVault** . Dieser Ressourcenanbieter bietet einen Ressourcentyp mit dem Namen **vaults** zum Erstellen des Schlüsseltresors an. 
 
-Der Name eines Ressourcentyps hat folgendes Format: **{Ressourcenanbieter}/{Ressourcentyp}**. Der Schlüsseltresortyp lautet beispielsweise **Microsoft.KeyVault\vaults**.
+Der Name eines Ressourcentyps hat folgendes Format: **{Ressourcenanbieter}/{Ressourcentyp}**. Der Schlüsseltresortyp lautet beispielsweise **Microsoft.KeyVault/vaults**.
 
 Bevor Sie mit der Bereitstellung Ihrer Ressourcen beginnen, ist es ratsam, sich über die verfügbaren Ressourcenanbieter zu informieren. Wenn Sie die Namen der Ressourcenanbieter und Ressourcen kennen, können Sie besser definieren, welche Ressourcen Sie unter Azure bereitstellen möchten. Außerdem müssen Sie die gültigen Speicherorte und API-Versionen für jeden Ressourcentyp kennen. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](resource-manager-supported-services.md).
 
@@ -258,49 +257,28 @@ Das folgende Beispiel enthält eine Richtlinie zum Sicherstellen der Einheitlich
 Es gibt noch viele weitere Arten von Richtlinien, die Sie erstellen können. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
 ## <a name="sdks"></a>SDKs
-Azure-SDKs sind für mehrere Sprachen und Plattformen verfügbar.
-Jede dieser Sprachimplementierungen ist jeweils über die entsprechenden Ökosystem-Paket-Manager und GitHub verfügbar.
-
-Der Code in diesen SDKs wird jeweils über Azure RESTful-API-Spezifikationen generiert.
-Dies sind Open-Source-Spezifikationen, die auf der Swagger 2.0-Spezifikation basieren.
-Der SDK-Code wird über ein Open-Source-Projekt mit dem Namen „AutoRest“ generiert.
-AutoRest transformiert diese RESTful-API-Spezifikationen in Clientbibliotheken in mehreren Sprachen.
-Falls Sie Aspekte des generierten Codes in den SDKs verbessern möchten, können Sie den gesamten Satz der Tools zum Erstellen der SDKs verwenden. Sie sind frei zugänglich und verfügbar und basieren auf dem gängigen API-Spezifikationsformat.
+Azure-SDKs sind für mehrere Sprachen und Plattformen verfügbar. Jede dieser Sprachimplementierungen ist jeweils über die entsprechenden Ökosystem-Paket-Manager und GitHub verfügbar.
 
 Im Anschluss finden Sie unsere Open Source-SDK-Repositorys. Wir freuen uns über Feedback, Hinweise zu Problemen und Pull Requests.
 
-[.NET](https://github.com/Azure/azure-sdk-for-net) | [Java](https://github.com/Azure/azure-sdk-for-java) | [Node.js](https://github.com/Azure/azure-sdk-for-node) | [PHP](https://github.com/Azure/azure-sdk-for-php) | [Python](https://github.com/Azure/azure-sdk-for-python) | [Ruby](https://github.com/Azure/azure-sdk-ruby)
+* [Azure SDK für .NET](https://github.com/Azure/azure-sdk-for-net)
+* [Azure-Verwaltungsbibliotheken für Java](https://github.com/Azure/azure-sdk-for-java)
+* [Azure SDK für Node.js](https://github.com/Azure/azure-sdk-for-node)
+* [Azure SDK für PHP](https://github.com/Azure/azure-sdk-for-php)
+* [Azure-SDK für Python](https://github.com/Azure/azure-sdk-for-python)
+* [Azure SDK für Ruby](https://github.com/Azure/azure-sdk-for-ruby)
+
+Informationen zur Verwendung dieser Sprachen mit Ihren Ressourcen finden Sie unter:
+
+* [Azure für .NET-Entwickler](/dotnet/azure/?view=azure-dotnet)
+* [Azure für Java-Entwickler](/java/azure/)
+* [Azure für Node.js-Entwickler](/nodejs/azure/)
+* [Azure für Python-Entwickler](/python/azure/)
 
 > [!NOTE]
 > Falls die benötigte Funktion durch das SDK nicht bereitstellt wird, können Sie die [Azure-REST-API](https://docs.microsoft.com/rest/api/resources/) auch direkt aufrufen.
 > 
 > 
-
-## <a name="samples"></a>Beispiele
-### <a name="net"></a>.NET
-* [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-* [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
-
-### <a name="java"></a>Java
-* [Manage Azure resources (Verwalten von Azure-Ressourcen)](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource/)
-* [Manage Azure resource groups (Verwalten von Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
-* [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
-
-### <a name="nodejs"></a>Node.js
-* [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-* [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
-
-### <a name="python"></a>Python
-* [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-* [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
-
-### <a name="ruby"></a>Ruby
-* [Manage Azure resources and resource groups (Verwalten von Azure-Ressourcen und -Ressourcengruppen)](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
-* [Deploy an SSH Enabled VM with a Template (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage)](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
-
-Neben diesen Beispielen können Sie auch die Katalogbeispiele durchsuchen.
-
-[.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet) | [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) | [Node.js](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs) | [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python) | [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine einfache Einführung in die Verwendung von Vorlagen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).

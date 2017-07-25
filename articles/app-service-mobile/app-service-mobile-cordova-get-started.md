@@ -3,8 +3,8 @@ title: Erstellen einer Cordova-App in Azure Mobile App Service-Apps | Microsoft 
 description: "Befolgen Sie dieses Tutorial für die ersten Schritte bei der Verwendung mobiler Azure-App-Back-Ends für die Apache Cordova-Entwicklung."
 services: app-service\mobile
 documentationcenter: javascript
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 tags: 
 keywords: cordova,javascript,mobile,client
@@ -14,13 +14,13 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: hero-article
-ms.date: 10/30/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: bf5691dbf4aaae585373de454ad7a0672dd17b84
-ms.openlocfilehash: aab35cdbbc6dc73551ca436985b51e5fe7a50fb6
-ms.lasthandoff: 12/01/2016
-
+ms.date: 07/07/2017
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 251e36364d0440890dc30dc5267be9f775d95933
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="create-an-apache-cordova-app"></a>Erstellen einer Apache Cordova-App
@@ -34,8 +34,8 @@ Das Absolvieren dieses Tutorials ist Voraussetzung für alle anderen Apache Cord
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
-* Einen PC mit [Visual Studio Community 2015] oder höher.
-* [Visual Studio-Tools für Apache Cordova].
+* Einen PC mit [Visual Studio Community 2017] oder höher
+* [Visual Studio-Tools für Apache Cordova]
 * Ein [aktives Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
 
 Sie können auch Visual Studio umgehen und direkt die Apache Cordova-Befehlszeile verwenden.  Die Verwendung der Befehlszeile ist hilfreich, wenn Sie das Tutorial auf einem Macintosh-Computer ausführen.  Das Kompilieren von Apache Cordova-Clientanwendungen über die Befehlszeile wird in diesem Tutorial nicht behandelt.
@@ -74,7 +74,7 @@ Erfahren Sie, wie Sie die SDKs nutzen,
 
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2015]: http://www.visualstudio.com/
+[Visual Studio Community 2017]: http://www.visualstudio.com/
 [Visual Studio-Tools für Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Offlinedaten]: app-service-mobile-offline-data-sync.md
 [Authentifizierung]: app-service-mobile-auth.md

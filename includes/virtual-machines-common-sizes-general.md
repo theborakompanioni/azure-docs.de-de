@@ -9,6 +9,38 @@
 
 - Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und andere Anwendungen bestimmt, für die kein Lastenausgleich, keine automatische Skalierung und keine speicherintensiven virtuellen Computer erforderlich sind. Informationen zu VM-Größen, die für Produktionsanwendungen besser geeignet sind, finden Sie unter (Größen für virtuelle Computer)[virtual-machines-size-specs.md], und Informationen zu VM-Preisen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
+## <a name="dsv3-series"></a>Dsv3-Serie
+
+ACU: 160 - 190
+
+Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen und Premium-Speicher nutzen. Die Größen der Dsv3-Serie bieten eine Kombination aus CPU, Arbeitsspeicher und lokalem Datenträger für die meisten Produktionsworkloads.
+
+
+| Größe             | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+|------------------|-----------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
+| Standard_D2s_v3  | 2         | 8           | 16             | 4              | 4.000/32 (50)                                                       | 3.200/48                                | 2/moderat                                   |
+| Standard_D4s_v3  | 4         | 16          | 32             | 8              | 8.000/64 (100)                                                      | 6.400/96                                | 2/moderat                                   |
+| Standard_D8s_v3  | 8         | 32          | 64             | 16             | 16.000/128 (200)                                                    | 12.800/192                              | 4/hoch                                       |
+| Standard_D16s_v3 | 16        | 64          | 128            | 32             | 32.000/256 (400)                                                    | 25.600/384                              | 8/hoch                                       |
+
+
+## <a name="dv3-series"></a>Dv3-Serie
+
+ACU: 160 - 190
+
+Die Größen der Dv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen. Die Größen der Dv3-Serie bieten eine Kombination aus CPU, Arbeitsspeicher und lokalem Datenträger für die meisten Produktionsworkloads.
+
+Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden Sie die Dsv3-Größen, um Datenträger mit Premium-Speicher zu nutzen. Die Preis- und Abrechnungskennzahlen für die Dsv3-Größen entsprechen denen der Dv3-Serie. 
+
+
+| Größe             | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+|------------------|-----------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
+| Standard_D2_v3  | 2         | 8           | 16             | 4              | 4.000/32 (50)                                                       | 3.200/48                                | 2/moderat                                   |
+| Standard_D4_v3  | 4         | 16          | 32             | 8              | 8.000/64 (100)                                                      | 6.400/96                                | 2/moderat                                   |
+| Standard_D8_v3  | 8         | 32          | 64             | 16             | 16.000/128 (200)                                                    | 12.800/192                              | 4/hoch                                       |
+| Standard_D16_v3 | 16        | 64          | 128            | 32             | 32.000/256 (400)                                                    | 25.600/384                              | 8/hoch                                       |
+
+
 ## <a name="dsv2-series"></a>DSv2-Serie
 
 ACU: 210 - 250

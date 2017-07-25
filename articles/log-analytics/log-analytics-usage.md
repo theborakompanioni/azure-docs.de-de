@@ -1,6 +1,6 @@
 ---
 title: Analysieren der Datennutzung in Log Analytics | Microsoft Docs
-description: "Im Dashboard „Nutzung“ in Log Analytics können Sie anzeigen, wie viele Daten an den OMS-Dienst gesendet werden."
+description: "Verwenden Sie das Dashboard „Nutzung“ in Log Analytics, um anzuzeigen, wie viele Daten an den Log Analytics-Dienst gesendet werden, und per Problembehandlung zu ermitteln, warum große Datenmengen gesendet werden."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -12,26 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
+ms.date: 07/14/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7e3d4b83fefdc70f292cf85b682cf8ed756bf4c5
-ms.openlocfilehash: e7f04df679604f274c8ad9bf4daddc63c8b5418a
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 46766e29287ca130e68aa0f027cbb1ded2526af3
 ms.contentlocale: de-de
-ms.lasthandoff: 02/22/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
-Log Analytics erfasst Daten und sendet sie in regelmäßigen Abständen an den OMS-Dienst.  Im Log Analytics-Dashboard zur **Nutzung** können Sie anzeigen, wie viele Daten an den OMS-Dienst gesendet werden. In diesem Dashboard wird auch angezeigt, wie viele Daten von Lösungen gesendet werden und wie häufig Ihre Server Daten senden.
+Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Computern, die Daten gesendet haben, und zu den unterschiedlichen Arten von gesendeten Daten.  Verwenden Sie das Dashboard zur **Log Analytics-Nutzung**, um anzuzeigen, welche Datenmenge an den Log Analytics-Dienst gesendet wird. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
 
-> [!NOTE]
-> Wenn Sie ein kostenloses Konto verwenden, ist die Datenmenge, die täglich an den OMS-Dienst gesendet wird, auf 500 MB begrenzt. Ist die Tagesgrenze erreicht, wird die Datenanalyse beendet und zu Beginn des nächsten Tags fortgesetzt. In diesem Fall müssen Sie alle Daten erneut senden, die von OMS nicht akzeptiert oder verarbeitet wurden.
-
-Wenn Sie die tägliche Nutzungsgrenze überschritten haben oder sich diesem Grenzwert nähern, können Sie optional eine Lösung entfernen, um die an den OMS-Dienst gesendete Datenmenge zu reduzieren. Weitere Informationen zum Entfernen von Lösungen finden Sie unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md).
-
-![Dashboard „Nutzung“](./media/log-analytics-usage/usage-dashboard01.png)
-
+## <a name="understand-the-usage-dashboard"></a>Grundlagen des Dashboards „Nutzung“
 Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen angezeigt:
 
 - Datenvolume
@@ -49,13 +42,9 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
     - Zeit zum Erfassen und Indizieren von Daten
 - Liste der Abfragen
 
-## <a name="understanding-nodes-for-oms-offers"></a>Informationen zu Knoten für OMS-Angebote
+![Dashboard „Nutzung“](./media/log-analytics-usage/usage-dashboard01.png)
 
-Wenn Sie den Tarif *Pro Knoten (OMS)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von aktivierten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.
-
-![Dashboard „Nutzung“](./media/log-analytics-usage/log-analytics-usage-offerings.png)
-
-## <a name="to-work-with-usage-data"></a>So arbeiten Sie mit Nutzungsdaten
+### <a name="to-work-with-usage-data"></a>So arbeiten Sie mit Nutzungsdaten
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, sofern Sie noch nicht angemeldet sind.
 2. Klicken Sie im Menü **Hub** auf **Weitere Dienste**, und geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
     ![Azure-Hub](./media/log-analytics-usage/hub.png)
@@ -68,7 +57,95 @@ Wenn Sie den Tarif *Pro Knoten (OMS)* nutzen, werden Ihre Gebühren basierend au
 7. Überprüfen Sie im Dashboard „Protokollsuche“ die Ergebnisse, die für die Suche ausgegeben werden.  
     ![Beispiel zur Nutzung für die Protokollsuche](./media/log-analytics-usage/usage-log-search.png)
 
+## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung höher als erwartet ist
+In diesem Abschnitt wird beschrieben, wie Sie eine Warnung erstellen, wenn Folgendes gilt:
+- Das Datenvolumen übersteigt eine angegebene Menge.
+- Für das Datenvolumen besteht die Vorhersage, dass eine bestimmte Menge überschritten wird.
+
+Für Log Analytics-[Warnungen](log-analytics-alerts-creating.md) werden Suchabfragen verwendet. Für die folgende Abfrage wird ein Ergebnis erzielt, wenn innerhalb der letzten 24 Stunden mehr als 100 GB an Daten gesammelt wurden:
+
+`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+
+Für die folgende Abfrage wird eine einfache Formel verwendet, um vorherzusagen, wenn an einem Tag mehr als 100 GB an Daten gesendet werden: 
+
+`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+
+Wenn die Warnung für ein anderes Datenvolumen gelten soll, ändern Sie den Wert 100 in den Abfragen einfach in den gewünschten GB-Wert.
+
+Führen Sie die Schritte unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung höher als erwartet ausfällt.
+
+Legen Sie beim Erstellen der Warnung für die erste Abfrage Folgendes fest, wenn mehr als 100 GB an Daten innerhalb von 24 Stunden anfallen:
+- **Name** auf *Datenvolumen größer als 100 GB in 24 Stunden*
+- **Schweregrad** auf *Warnung*
+- **Suchabfrage** auf `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+- **Zeitfenster** auf *24 Stunden*
+- **Warnungshäufigkeit** auf eine Stunde, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
+- **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
+- **Anzahl von Ergebnissen** auf *Größer als 0*
+
+Führen Sie die Schritte aus, die unter [Hinzufügen von Aktionen zu Warnungsregeln](log-analytics-alerts-actions.md) beschrieben sind, um eine E-Mail-, Webhook- oder Runbookaktion für die Warnungsregel zu konfigurieren.
+
+Legen Sie beim Erstellen der Warnung für die zweite Abfrage Folgendes fest, wenn die Vorhersage besteht, dass innerhalb von 24 Stunden mehr als 100 GB an Daten anfallen:
+- **Name** auf *Erwartetes Datenvolumen von mehr als 100 GB in 24 Stunden*
+- **Schweregrad** auf *Warnung*
+- **Suchabfrage** auf `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+- **Zeitfenster** auf *3 Stunden*
+- **Warnungshäufigkeit** auf eine Stunde, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
+- **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
+- **Anzahl von Ergebnissen** auf *Größer als 0*
+
+Wenn Sie eine Warnung erhalten, können Sie die Schritte im folgenden Abschnitt verwenden, um per Problembehandlung zu ermitteln, warum die Nutzung höher als erwartet ist.
+
+## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Ermittlung per Problembehandlung, warum die Nutzung höher als erwartet ist
+Mit dem Dashboard „Nutzung“ können Sie ermitteln, warum die Nutzung (und somit die Kosten) höher als erwartet ist.
+
+Eine höhere Nutzung wird durch eine bzw. beide der folgenden Bedingungen verursacht:
+- Mehr Daten als erwartet werden an Log Analytics gesendet
+- Mehr Knoten als erwartet senden Daten an Log Analytics
+
+### <a name="check-if-there-is-more-data-than-expected"></a>Überprüfen, ob mehr Daten als erwartet vorhanden sind 
+Die Seite „Nutzung“ enthält zwei wichtige Abschnitte, in denen Sie identifizieren können, welche Gründe die vermehrte Sammlung von Daten hat.
+
+Das Diagramm *Datenmenge im Zeitverlauf* enthält die Informationen zum Gesamtvolumen der gesendeten Daten und zu den Computern, die die meisten Daten senden. Im Diagramm im oberen Bereich können Sie ablesen, ob die Gesamtdatennutzung zunimmt, stabil ist oder abnimmt. In der Liste mit den Computern sind die zehn Computer angegeben, die die meisten Daten senden.
+
+Im Diagramm *Datenmenge nach Lösung* werden das Volumen der Daten, die von den einzelnen Lösungen gesendet werden, und die Lösungen angezeigt, von denen die meisten Daten gesendet werden. Im Diagramm im oberen Bereich ist das Gesamtvolumen der Daten angegeben, die von den einzelnen Lösungen im Zeitverlauf gesendet werden. Mit diesen Informationen können Sie ermitteln, ob von einer Lösung in Abhängigkeit der Zeit eine größere Datenmenge, ungefähr die gleiche Menge an Daten oder eine kleinere Datenmenge gesendet wird. In der Liste mit den Lösungen sind die zehn Lösungen aufgeführt, die die meisten Daten senden. 
+
+![Diagramme zum Datenvolumen](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
+
+Sehen Sie sich das Diagramm *Datenmenge im Zeitverlauf* an. Klicken Sie jeweils auf den Namen eines Computers, um die Lösungen und Datentypen anzuzeigen, die für einen Computer die meisten Daten senden. Klicken Sie auf den Namen des ersten Computers in der Liste.
+
+Im folgenden Screenshot werden für den Computer vom Datentyp *LogManagement/Perf* (Protokollverwaltung/Leistung) die meisten Daten gesendet. 
+![Datenvolumen für einen Computer](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
+
+
+Wechseln Sie als Nächstes zurück zum Dashboard *Nutzung*, und sehen Sie sich das Diagramm *Datenmenge nach Lösung* an. Klicken Sie in der Liste auf den Namen einer Lösung, um die Computer anzuzeigen, die die meisten Daten für die Lösung senden. Klicken Sie auf den Namen der ersten Lösung in der Liste. 
+
+Im folgenden Screenshot ist zu erkennen, dass der Computer *acmetomcat* die meisten Daten für die Lösung „LogManagement“ (Protokollverwaltung) sendet.
+
+![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
+
+
+Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle zu reduzieren:
+
+| Quelle mit hohem Datenvolumen | Reduzieren des Datenvolumens |
+| -------------------------- | ------------------------- |
+| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern Sie die Sicherheitsüberwachungsrichtlinie. Deaktivieren Sie beispielsweise die [Plattform für die Überwachungsfilterung](https://technet.microsoft.com/library/dd772749(WS.10).aspx). |
+| Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
+| Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
+| syslog                     | Ändern Sie die [syslog-Konfiguration](log-analytics-data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
+| Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
+
+### <a name="check-if-there-are-more-nodes-than-expected"></a>Überprüfen, ob mehr Knoten als erwartet vorhanden sind
+Wenn Sie den Tarif *Pro Knoten (OMS)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von genutzten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.
+
+![Dashboard „Nutzung“](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+
+Klicken Sie auf **Alle anzeigen...**, um die vollständige Liste mit Computern anzuzeigen, von denen für das ausgewählte Angebot Daten gesendet werden.
+
+Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Ausführliche Informationen, die von Features und Lösungen gesammelt und an OMS gesendet werden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md).
+* Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.
+* Führen Sie die unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
 

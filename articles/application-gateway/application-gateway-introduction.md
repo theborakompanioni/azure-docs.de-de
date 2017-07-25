@@ -13,14 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 04/27/2017
+ms.date: 07/10/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: e9dfb5a744a7c63ef9805b1341236c4f3c57ec4d
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 17fc7e6a19b835e08360d1bf638d69aabb14e121
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>Übersicht über Application Gateway
@@ -43,6 +42,7 @@ Application Gateway bietet derzeit die folgenden Funktionen:
 * **[Multisiterouting:](application-gateway-multi-site-overview.md)** Mit Application Gateway können Sie bis zu 20 Websites in einem einzelnen Anwendungsgateway zusammenfassen.
 * **[WebSocket-Unterstützung:](application-gateway-websocket.md)** Die native WebSocket-Unterstützung ist ein weiteres tolles Feature von Application Gateway.
 * **[Systemüberwachung:](application-gateway-probe-overview.md)** Application Gateway bietet standardmäßig die Systemüberwachung von Back-End-Ressourcen und benutzerdefinierte Stichproben an, um spezifischere Szenarien zu überwachen.
+* **[Umleitung von Anforderungen:](application-gateway-redirect-overview.md)** Mit diesem Feature können Sie HTTP-Anforderungen an einen HTTPS-Listener umleiten.
 * **[Erweiterte Diagnose](application-gateway-diagnostics.md)**: Application Gateway bietet umfassende Diagnose- und Zugriffsprotokolle. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
 
 ## <a name="benefits"></a>Vorteile

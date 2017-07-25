@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 8fa97a00978b4efdcf5956ee6b92547960b1d57a
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: bf028b0e49833385837fa7bdd68f215ed27e0325
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-# Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
-<a id="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal" class="xliff"></a>
+# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
-Dieser Artikel zeigt, wie Sie eine VPN-Gatewayverbindung zwischen virtuellen Netzwerken erstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und das Azure-Portal. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
+Dieser Artikel zeigt, wie Sie eine VPN-Gatewayverbindung zwischen virtuellen Netzwerken erstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein. 
+
+Die Schritte in diesem Artikel gelten für VNets, die sich unter demselben Abonnement befinden, für das Resource Manager-Bereitstellungsmodell und das Azure-Portal. Wenn sich Ihre VNets in unterschiedlichen Abonnements befinden, können Sie die Verbindung nicht im Portal herstellen. Sie können [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) oder die [CLI](vpn-gateway-howto-vnet-vnet-cli.md) verwenden. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -46,8 +46,7 @@ Die VNET-zu-VNET-Kommunikation kann mit Konfigurationen für mehrere Standorte k
 
 ![Informationen zu Verbindungen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Informationen zu Verbindungen")
 
-### Gründe für Verbindungen zwischen virtuellen Netzwerken
-<a id="why-connect-virtual-networks" class="xliff"></a>
+### <a name="why-connect-virtual-networks"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
 
 Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
 
@@ -59,9 +58,10 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
   
   * In derselben Region können Sie Anwendungen mit mehreren Ebenen und mehreren virtuellen Netzwerken einrichten, die aufgrund von Isolations- oder Verwaltungsanforderungen miteinander verbunden sind.
 
-Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) . Beachten Sie Folgendes: Wenn sich Ihre VNets in unterschiedlichen Abonnements befinden, können Sie die Verbindung nicht im Portal herstellen. Stattdessen können Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) verwenden.
+Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) . Beachten Sie Folgendes: Wenn sich Ihre VNets in unterschiedlichen Abonnements befinden, können Sie die Verbindung nicht im Portal herstellen. Sie können [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) oder die [CLI](vpn-gateway-howto-vnet-vnet-cli.md) verwenden.
 
 ### <a name="values"></a>Beispieleinstellungen
+
 Sie können die Beispieleinstellungswerte nutzen, wenn Sie diese Schritte als Übung verwenden. Als Beispiel verwenden wir mehrere Adressräume für die einzelnen VNets. Bei VNet-zu-VNet-Konfigurationen werden jedoch nicht mehrere Adressräume benötigt.
 
 **Werte für TestVNet1:**
@@ -113,8 +113,7 @@ Sie können die Beispieleinstellungswerte nutzen, wenn Sie diese Schritte als Ü
 ## <a name="CreatVNet"></a>1. Erstellen und Konfigurieren von „TestVNet1“
 Wenn Sie bereits über ein VNet verfügen, sollten Sie überprüfen, ob die Einstellungen mit Ihrem Entwurf des VPN Gateways kompatibel sind. Achten Sie besonders auf Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei. Wenn Ihr VNet mit den richtigen Einstellungen konfiguriert wurde, können Sie mit den Schritten im Abschnitt [Angeben eines DNS-Servers](#dns) beginnen.
 
-### So erstellen Sie ein virtuelles Netzwerk
-<a id="to-create-a-virtual-network" class="xliff"></a>
+### <a name="to-create-a-virtual-network"></a>So erstellen Sie ein virtuelles Netzwerk
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="subnets"></a>2. Hinzufügen weiterer Adressräume und Erstellen von Subnetzen
@@ -129,8 +128,7 @@ Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen de
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### So erstellen Sie ein Gatewaysubnetz
-<a id="to-create-a-gateway-subnet" class="xliff"></a>
+### <a name="to-create-a-gateway-subnet"></a>So erstellen Sie ein Gatewaysubnetz
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
 ## <a name="dns"></a>4. Angeben eines DNS-Servers (optional)
@@ -141,8 +139,7 @@ DNS ist für VNet-zu-VNet-Verbindungen nicht erforderlich. Wenn Sie für Ressour
 ## <a name="VNetGateway"></a>5. Erstellen eines Gateways für das virtuelle Netzwerk
 In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern. Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispieleinstellungen](#values) verwenden.
 
-### So erstellen Sie ein Gateway für das virtuelle Netzwerk
-<a id="to-create-a-virtual-network-gateway" class="xliff"></a>
+### <a name="to-create-a-virtual-network-gateway"></a>So erstellen Sie ein Gateway für das virtuelle Netzwerk
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 ## <a name="CreateTestVNet4"></a>6. Erstellen und Konfigurieren von „TestVNet4“
@@ -192,7 +189,6 @@ Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Info
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) .
 
