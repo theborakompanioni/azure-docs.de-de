@@ -5,20 +5,20 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2017
+ms.date: 07/17/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 9fb0fdf1a2a48c5c9daf7d0ec22e85221bfb6b28
-ms.lasthandoff: 04/07/2017
-
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: aff943e797da93e95563c3de3f064dbbfc30a384
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen
@@ -41,7 +41,7 @@ Im Hauptblatt im [Azure-Portal](https://portal.azure.com)können Sie anzeigen, w
    
     ![Blatt „Benutzer“ – geerbter und zugewiesener Zugriff – Screenshot](./media/role-based-access-control-configure/view-access.png)
 
-Beachten Sie, dass einigen Benutzern der Zugriff **zugewiesen** wurde, während andere ihn **geerbt** haben. Der Zugriff wird entweder speziell der Ressourcengruppe zugewiesen oder von einer Zuweisung des übergeordneten Abonnements geerbt.
+Beachten Sie, dass einige Rollen auf **Diese Ressource** begrenzt sind, während andere von einem anderen Bereich **geerbt** werden. Der Zugriff wird entweder speziell der Ressourcengruppe zugewiesen oder von einer Zuweisung des übergeordneten Abonnements geerbt.
 
 > [!NOTE]
 > Klassische Administratoren und Co-Admins für Abonnements werden im neuen RBAC-Modell als Besitzer des Abonnements betrachtet.
@@ -60,9 +60,10 @@ Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnemen
 Wenn die Rollenzuweisung hinzugefügt wurde, erscheint sie auf dem Blatt **Benutzer** .
 
 ## <a name="remove-access"></a>Zugriff entfernen
-1. Verwenden Sie die Kontrollkästchen auf dem Blatt „Zugriffssteuerung“, um mindestens eine Rollenzuweisung auszuwählen.
+1. Bewegen Sie den Cursor auf den Namen der Zuweisung, die Sie entfernen möchten. Neben dem Namen wird ein Kontrollkästchen angezeigt.
+2. Verwenden Sie die Kontrollkästchen, um mindestens eine Rollenzuweisung auszuwählen.
 2. Wählen Sie **Entfernen**.  
-3. Ein Feld mit der Aufforderung zum Bestätigen der Aktion wird angezeigt. Wählen Sie **Ja**, um die Rollenzuweisungen zu entfernen.
+3. Wählen Sie **Ja**, um das Entfernen zu bestätigen.
 
 Geerbte Zuweisungen können nicht entfernt werden. Wenn Sie eine geerbte Zuweisung entfernen möchten, müssen Sie dies für den Bereich durchführen, in dem die Rollenzuweisung erstellt wurde. Die Spalte **Bereich** neben **Geerbt** enthält einen Link, mit dem Sie zu den Ressourcen gelangen, denen diese Rolle zugewiesen wurde. Sie können die Rollenzuweisung entfernen, indem Sie zu der dort aufgelisteten Ressource gehen.
 

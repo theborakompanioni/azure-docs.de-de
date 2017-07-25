@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: hero-article
-ms.date: 10/05/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Erste Schritte mit Azure Mobile Engagement für iOS-Apps in Objective C
@@ -35,13 +36,13 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen M
 
 > [!NOTE]
 > Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started).
-> 
-> 
+>
+>
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>Einrichten von Mobile Engagement für Ihre iOS-App
+## <a id="setup-azme"></a>Einrichten von Mobile Engagement für Ihre iOS-App
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
+## <a id="connecting-app"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
 In diesem Lernprogramm wird eine "einfache Integration" dargestellt. Dabei handelt es sich um den minimalen erforderlichen Satz zur Sammlung von Daten und zum Senden einer Pushbenachrichtigung. Die vollständige Dokumentation zur Integration finden Sie im Artikel [Integrieren von Mobile Engagement unter iOS](mobile-engagement-ios-sdk-overview.md).
 
 Wir erstellen eine einfache App mit Xcode, um die Integration zu veranschaulichen.
@@ -53,44 +54,44 @@ Wir erstellen eine einfache App mit Xcode, um die Integration zu veranschauliche
 1. Laden Sie das [Mobile Engagement iOS SDK]herunter.
 2. Extrahieren Sie die ".tar.gz"-Datei in einen Ordner auf Ihrem Computer.
 3. Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Add files to**aus.
-   
+
     ![][1]
-4. Navigieren Sie zu dem Ordner, in dem Sie das SDK extrahiert haben, und wählen Sie den Ordner `EngagementSDK` aus. Klicken Sie anschließend auf **OK**.
-   
+4. Navigieren Sie zu dem Ordner, in den Sie das SDK extrahiert haben, wählen Sie den Ordner `EngagementSDK` aus, und klicken Sie unten links auf **Optionen**. Stellen Sie sicher, dass das Kontrollkästchen **Copy items if needed** (Elemente bei Bedarf kopieren) und das Kontrollkästchen für Ihr Ziel aktiviert sind, und klicken Sie auf **OK**.
+
     ![][2]
 5. Öffnen Sie die Registerkarte **Build Phases** (Entwicklungsphasen), und fügen Sie im Menü **Link Binary With Libraries** (Binärdatei mit Bibliotheken verknüpfen) wie unten gezeigt die Frameworks hinzu:
-   
+
     ![][3]
 6. Wechseln Sie zurück zum Azure-Portal auf der Seite **Verbindungsinformationen** Ihrer App und kopieren Sie die Verbindungszeichenfolge.
-   
+
     ![][4]
 7. Fügen Sie in der Datei **AppDelegate.m** die folgende Codezeile hinzu.
-   
+
         #import "EngagementAgent.h"
 8. Fügen Sie jetzt die Verbindungszeichenfolge in den `didFinishLaunchingWithOptions` -Delegaten ein.
-   
+
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         {
               [...]   
               [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
               [...]
         }
-9. `setTestLogEnabled` ist eine optionale Anweisung, die in SDK-Protokollen das Identifizieren von Problemen ermöglicht. 
+9. `setTestLogEnabled` ist eine optionale Anweisung, die in SDK-Protokollen das Identifizieren von Problemen ermöglicht.
 
-## <a name="a-idmonitoraenable-realtime-monitoring"></a><a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
+## <a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
 Um mit dem Senden von Daten zu beginnen und sicherzustellen, dass die Benutzer aktiv sind, müssen Sie mindestens einen Bildschirm (Aktivität) an das Mobile Engagement-Back-End schicken.
 
 1. Öffnen Sie die Datei **ViewController.h**, und importieren Sie **EngagementViewController.h**:
-   
-    `# import "EngagementViewController.h"`
+
+    `#import "EngagementViewController.h"`
 2. Ersetzen Sie jetzt die übergeordnete Klasse der **ViewController**-Schnittstelle durch `EngagementViewController`:
-   
+
     `@interface ViewController : EngagementViewController`
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Verbinden der App mit Überwachung in Echtzeit
+## <a id="monitor"></a>Verbinden der App mit Überwachung in Echtzeit
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
+## <a id="integrate-push"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
 Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Benachrichtigungen und In-App-Nachrichten im Rahmen von Kampagnen interagieren. Dieses Modul nennt sich REACH im Mobile Engagement-Portal.
 In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 
@@ -106,11 +107,11 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 
 ### <a name="modify-your-application-delegate"></a>Ändern des Anwendungsdelegaten
 1. Importieren Sie in der Datei **AppDeletegate.m** das Engagement Reach-Modul.
-   
+
         #import "AEReachModule.h"
         #import <UserNotifications/UserNotifications.h>
 2. Erstellen Sie in der `application:didFinishLaunchingWithOptions` -Methode ein Reach-Modul, und übergeben Sie es an die vorhandene Engagement-Initialisierungszeile:
-   
+
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
             [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
@@ -120,7 +121,7 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 
 ### <a name="enable-your-app-to-receive-apns-push-notifications"></a>Aktivieren Ihrer App für den Empfang von APNS-Pushbenachrichtigungen.
 1. Fügen Sie die folgende Zeile in die `application:didFinishLaunchingWithOptions` Methode ein:
-   
+
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
             if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
@@ -137,21 +138,20 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 2. Fügen Sie die `application:didRegisterForRemoteNotificationsWithDeviceToken`-Methode wie folgt hinzu:
-   
+
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         {
              [[EngagementAgent shared] registerDeviceToken:deviceToken];
             NSLog(@"Registered Token: %@", deviceToken);
         }
 3. Fügen Sie die `didFailToRegisterForRemoteNotificationsWithError`-Methode wie folgt hinzu:
-   
+
         - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
         {
-   
            NSLog(@"Failed to get token, error: %@", error);
         }
 4. Fügen Sie die `didReceiveRemoteNotification:fetchCompletionHandler` -Methode wie folgt hinzu:
-   
+
         - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
         {
             [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
@@ -167,10 +167,4 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 [2]: ./media/mobile-engagement-ios-get-started/xcode-select-engagement-sdk.png
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

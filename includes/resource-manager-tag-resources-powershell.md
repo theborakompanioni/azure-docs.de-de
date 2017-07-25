@@ -12,35 +12,74 @@ Version
 3.5.0
 ```
 
-Wenn Sie Tags auf eine Ressource oder Ressourcengruppe anwenden, werden die bereits vorhandenen Tags für diese Ressource oder Ressourcengruppe überschrieben. Daher müssen Sie Ihre Vorgehensweise darauf abstimmen, ob für die Ressource oder Ressourcengruppe bereits Tags vorhanden sind, die Sie beibehalten möchten. Mögliche Szenarien:
+Verwenden Sie Folgendes, um die vorhandenen Tags für eine **Ressourcengruppe** anzuzeigen:
 
-* Hinzufügen von Tags zu einer Ressourcengruppe ohne vorhandene Tags
+```powershell
+(Get-AzureRmResourceGroup -Name examplegroup).Tags
+```
 
-  ```powershell
-  Set-AzureRmResourceGroup -Name TagTestGroup -Tag @{ Dept="IT"; Environment="Test" }
-  ```
+Hiermit wird das folgende Format zurückgegeben:
 
-* Hinzufügen von Tags zu einer Ressourcengruppe mit vorhandenen Tags
+```powershell
+Name                           Value
+----                           -----
+Dept                           IT
+Environment                    Test
+```
 
-  ```powershell
-  $tags = (Get-AzureRmResourceGroup -Name TagTestGroup).Tags
-  $tags += @{Status="Approved"}
-  Set-AzureRmResourceGroup -Tag $tags -Name TagTestGroup
-  ```
+Verwenden Sie Folgendes, um die vorhandenen Tags für eine **Ressource mit einer angegebenen Ressourcen-ID** anzuzeigen:
 
-* Hinzufügen von Tags zu einer Ressource ohne vorhandene Tags
+```powershell
+(Get-AzureRmResource -ResourceId {resource-id}).Tags
+```
 
-  ```powershell
-  Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName storageexample -ResourceGroupName TagTestGroup -ResourceType Microsoft.Storage/storageAccounts
-  ```
+Oder verwenden Sie Folgendes, um die vorhandenen Tags für eine **Ressource mit einem angegebenen Namen und einer Ressourcengruppe** anzuzeigen:
 
-* Hinzufügen von Tags zu einer Ressource mit vorhandenen Tags
+```powershell
+(Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
+```
 
-  ```powershell
-  $tags = (Get-AzureRmResource -ResourceName storageexample -ResourceGroupName TagTestGroup).Tags
-  $tags += @{Status="Approved"}
-  Set-AzureRmResource -Tag $tags -ResourceName storageexample -ResourceGroupName TagTestGroup -ResourceType Microsoft.Storage/storageAccounts
-  ```
+Verwenden Sie Folgendes, um **Ressourcengruppen mit einem bestimmten Tag** abzurufen:
+
+```powershell
+(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
+```
+
+Verwenden Sie Folgendes, um **Ressourcen mit einem bestimmten Tag** abzurufen:
+
+```powershell
+(Find-AzureRmResource -TagName Dept -TagValue Finance).Name
+```
+
+Wenn Sie Tags auf eine Ressource oder Ressourcengruppe anwenden, werden die bereits vorhandenen Tags für diese Ressource oder Ressourcengruppe überschrieben. Daher müssen Sie Ihre Vorgehensweise darauf abstimmen, ob für die Ressource oder Ressourcengruppe bereits Tags vorhanden sind. 
+
+Verwenden Sie Folgendes, um einer **Ressourcengruppe ohne vorhandene Tags** Tags hinzuzufügen:
+
+```powershell
+Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
+```
+
+Rufen Sie die vorhandenen Tags ab, fügen Sie das neue Tag hinzu, und wenden Sie die Tags wieder an, um einer **Ressourcengruppe mit vorhandenen Tags** Tags hinzuzufügen:
+
+```powershell
+$tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
+$tags += @{Status="Approved"}
+Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
+```
+
+Verwenden Sie Folgendes, um einer **Ressource ohne vorhandene Tags** Tags hinzuzufügen:
+
+```powershell
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName examplevnet -ResourceGroupName exampleroup
+```
+
+Verwenden Sie Folgendes, um einer **Ressource mit vorhandenen Tags** Tags hinzuzufügen:
+
+```powershell
+$tags = (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
+$tags += @{Status="Approved"}
+Set-AzureRmResource -Tag $tags -ResourceName examplevnet -ResourceGroupName examplegroup
+```
 
 Verwenden Sie das folgende Skript, um alle Tags einer Ressourcengruppe auf die darin enthaltenen Ressourcen anzuwenden und **vorhandene Tags für die Ressourcen nicht beizubehalten**:
 
@@ -77,18 +116,8 @@ foreach ($g in $groups)
 Durch Übergeben einer leeren Hashtabelle können Sie alle Tags löschen.
 
 ```powershell
-Set-AzureRmResourceGroup -Tag @{} -Name TagTestGgroup
+Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
 ```
 
-Mit dem Cmdlet `Find-AzureRmResourceGroup` können Sie Ressourcengruppen mit einem bestimmten Tag abrufen.
 
-```powershell
-(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
-```
-
-Mit dem Cmdlet `Find-AzureRmResource` können Sie alle Ressourcen mit einem bestimmten Tag und Wert abrufen.
-
-```powershell
-(Find-AzureRmResource -TagName Dept -TagValue Finance).Name
-```
 

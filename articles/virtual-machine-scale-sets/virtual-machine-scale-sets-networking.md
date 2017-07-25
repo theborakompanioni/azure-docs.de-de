@@ -13,24 +13,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/06/2017
+ms.date: 07/17/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 1c9487be5415d05a8699f458259d872591280d3d
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: a8520c6d8962cc362fc935f6b515a299c0ce75b3
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
 Wenn Sie eine Azure-VM-Skalierungsgruppe über das Portal bereitstellen, werden bestimmte Standardnetzwerkeigenschaften verwendet (beispielsweise ein Azure Load Balancer mit NAT-Eingangsregeln). Dieser Artikel beschreibt die Verwendung einiger der erweiterten Netzwerkfeatures, die Sie mit Skalierungsgruppen konfigurieren können.
 
-Alle in diesem Artikel behandelten Features können mithilfe von Azure Resource Manager-Vorlagen konfiguriert werden. Für einige Features stehen auch Beispiele für die Azure-Befehlszeilenschnittstelle zur Verfügung. Die Version der Befehlszeilenschnittstelle muss mindestens vom Juli 2017 sein. Weitere Beispiele für die Befehlszeilenschnittstelle und für PowerShell folgen in Kürze.
+Alle in diesem Artikel behandelten Features können mithilfe von Azure Resource Manager-Vorlagen konfiguriert werden. Für einige Features stehen auch Beispiele für die Azure-Befehlszeilenschnittstelle und PowerShell zur Verfügung. Verwenden Sie CLI 2.10 und PowerShell 4.2.0 oder höher.
 
 ## <a name="accelerated-networking"></a>Beschleunigter Netzwerkbetrieb
-Der [beschleunigte Netzwerkbetrieb](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-vm-accelerated-networking) von Azure ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer und somit die Verbesserung der Netzwerkleistung. Wenn Sie den beschleunigten Netzwerkbetrieb mit Skalierungsgruppen verwenden möchten, legen Sie in den networkInterfaceConfigurations-Einstellungen Ihrer Skalierungsgruppe die Option „EnableAcceleratedNetworking“ auf _true_ fest. Beispiel:
+Der [beschleunigte Netzwerkbetrieb](../virtual-network/virtual-network-create-vm-accelerated-networking.md) von Azure ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer und somit die Verbesserung der Netzwerkleistung. Wenn Sie den beschleunigten Netzwerkbetrieb mit Skalierungsgruppen verwenden möchten, legen Sie in den networkInterfaceConfigurations-Einstellungen Ihrer Skalierungsgruppe die Option „EnableAcceleratedNetworking“ auf **true** fest. Beispiel:
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -59,9 +58,9 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 
 ## <a name="configurable-dns-settings"></a>Konfigurierbare DNS-Einstellungen
 Standardmäßig werden für Skalierungsgruppen die spezifischen DNS-Einstellungen des VNETs und des Subnetzes verwendet, in dem sie erstellt wurden. Sie können die DNS-Einstellungen für eine Skalierungsgruppe allerdings direkt konfigurieren.
-
+~
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Erstellen einer Skalierungsgruppe mit konfigurierbaren DNS-Servern
-Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie dem Befehl _vmss create_ das Argument „--dns-servers“ und eine durch Leerzeichen getrennte Liste mit Server-IP-Adressen hinzu. Beispiel:
+Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie dem Befehl **vmss create** das Argument **--dns-servers** und eine durch Leerzeichen getrennte Liste mit Server-IP-Adressen hinzu. Beispiel:
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
@@ -73,9 +72,9 @@ Um benutzerdefinierte DNS-Server in einer Azure-Vorlage zu konfigurieren, fügen
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Erstellen einer Skalierungsgruppe mit konfigurierbaren Domänennamen für virtuelle Computer
-Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einem benutzerdefinierten DNS-Namen für virtuelle Computer zu erstellen, fügen Sie dem Befehl _vmss create_ das Argument _--vm-domain-name_ mit einer Zeichenfolgendarstellung des Domänennamens hinzu.
+Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einem benutzerdefinierten DNS-Namen für virtuelle Computer zu erstellen, fügen Sie dem Befehl **vmss create** das Argument **--vm-domain-name** mit einer Zeichenfolgendarstellung des Domänennamens hinzu.
 
-Um den Domänennamen in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abschnitt „networkInterfaceConfigurations“ der Skalierungsgruppe eine Eigenschaft vom Typ „dnsSettings“ hinzu. Beispiel:
+Um den Domänennamen in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abschnitt **networkInterfaceConfigurations** der Skalierungsgruppe eine Eigenschaft vom Typ **dnsSettings** hinzu. Beispiel:
 
 ```json
 "networkProfile": {
@@ -109,84 +108,7 @@ Um den Domänennamen in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abs
 
 Die Ausgabe für einen bestimmten VM-DNS-Namen hat das folgende Format: 
 ```
-<vmname><vmindex>.<specifiedVmssDomainNameLabel>
-```
-
-## <a name="ipv6-preview-for-public-ips-and-load-balancer-pools"></a>IPv6-Vorschau für öffentliche IP-Adressen und Load Balancer-Pools
-Sie können öffentliche IPv6-IP-Adressen für einen Azure Load Balancer konfigurieren und Verbindungen an Back-End-Pools für VM-Skalierungsgruppen weiterleiten. Zur Verwendung von IPv6 (derzeit noch in der Vorschauphase) müssen Sie zunächst eine öffentliche IPv6-Adressressource erstellen. Beispiel:
-```json
-{
-    "apiVersion": "2016-03-30",
-    "type": "Microsoft.Network/publicIPAddresses",
-    "name": "[parameters('ipv6PublicIPAddressName')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "publicIPAddressVersion": "IPv6",
-        "publicIPAllocationMethod": "Dynamic",
-        "dnsSettings": {
-            "domainNameLabel": "[parameters('dnsNameforIPv6LbIP')]"
-        }
-    }
-}
-```
-Konfigurieren Sie dann nach Bedarf Ihre Load Balancer-Front-End-IP-Konfigurationen für IPv4 und IPv6:
-
-```json
-"frontendIPConfigurations": [
-    {
-        "name": "LoadBalancerFrontEndIPv6",
-        "properties": {
-            "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('ipv6PublicIPAddressName'))]"
-            }
-        }
-    }
-]
-```
-Definieren Sie die erforderlichen Back-End-Pools:
-```json
-"backendAddressPools": [
-    {
-        "name": "BackendPoolIPv4"
-    },
-    {
-        "name": "BackendPoolIPv6"
-    }
-]
-```
-Definieren Sie Lastenausgleichsregeln nach Bedarf:
-```json
-{
-    "name": "LBRuleIPv6-46000",
-    "properties": {
-        "frontendIPConfiguration": {
-            "id": "[variables('ipv6FrontEndIPConfigID')]"
-        },
-        "backendAddressPool": {
-            "id": "[variables('ipv6LbBackendPoolID')]"
-        },
-        "protocol": "tcp",
-        "frontendPort": 46000,
-        "backendPort": 60001,
-        "probe": {
-            "id": "[variables('ipv4ipv6lbProbeID')]"
-        }
-    }
-}
-```
-Verweisen Sie abschließend im Abschnitt „IPConfigurations“ der Skalierungsgruppen-Netzwerkeigenschaften auf den IPv6-Adresspool:
-```json
-{
-    "name": "ipv6IPConfig",
-    "properties": {
-        "privateIPAddressVersion": "IPv6",
-        "loadBalancerBackendAddressPools": [
-            {
-                "id": "[variables('ipv6LbBackendPoolID')]"
-            }
-        ]
-    }
-}
+<vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Öffentliche IPv4-Adresse pro virtuellem Computer
@@ -195,9 +117,9 @@ Virtuelle Computer in Azure-Skalierungsgruppen benötigen im Allgemeinen keine e
 In einigen Szenarien müssen virtuelle Computer in Skalierungsgruppen jedoch über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel sind etwa Spiele, bei denen eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, der die Spielphysik verarbeitet. Ein weiteres Beispiel, bei dem virtuelle Computer regionsübergreifend gegenseitige externe Verbindungen herstellen müssen, sind verteilte Datenbanken.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Erstellen einer Skalierungsgruppe mit öffentlicher IP-Adresse pro virtuellem Computer
-Um mithilfe von CLI 2.0 eine Skalierungsgruppe zu erstellen, die jedem virtuellen Computer eine öffentliche IP-Adresse zuweist, fügen Sie dem Befehl _vmss create_ den Parameter _--public-ip-per-vm_ hinzu. 
+Um mithilfe von CLI 2.0 eine Skalierungsgruppe zu erstellen, die jedem virtuellen Computer eine öffentliche IP-Adresse zuweist, fügen Sie dem Befehl **vmss create** den Parameter **--public-ip-per-vm** hinzu. 
 
-Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten, vergewissern Sie sich, dass die API-Version der Ressource „Microsoft.Compute/virtualMachineScaleSets“ mindestens den Wert „2017-03-30“ besitzt, und fügen Sie dem Abschnitt „ipConfigurations“ für die Skalierungsgruppe eine JSON-Eigenschaft vom Typ _publicIpAddressConfiguration_ hinzu. Beispiel:
+Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten, sollten Sie sich vergewissern, dass die API-Version der Ressource „Microsoft.Compute/virtualMachineScaleSets“ mindestens **2017-03-30** lautet. Fügen Sie dem Abschnitt „ipConfigurations“ für die Skalierungsgruppe dann eine JSON-Eigenschaft vom Typ **publicIpAddressConfiguration** hinzu. Beispiel:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -210,11 +132,21 @@ Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten,
 Beispielvorlage: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Abfragen der öffentlichen IP-Adressen der virtuellen Computer in einer Skalierungsgruppe
-Um mithilfe von CLI 2.0 die öffentlichen IP-Adressen aufzulisten, die den virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, verwenden Sie den Befehl _az vmss list-instance-public-ips_.
+Um mithilfe von CLI 2.0 die öffentlichen IP-Adressen aufzulisten, die den virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, verwenden Sie den Befehl **az vmss list-instance-public-ips**.
 
-Die öffentlichen IP-Adressen, die virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, können auch über den [Azure-Ressourcen-Explorer](https://resources.azure.com) oder mithilfe der Azure-REST-API (ab Version _2017-03-30_) abgefragt werden.
+Verwenden Sie den Befehl _Get-AzureRmPublicIpAddress_, um mit PowerShell öffentliche IP-Adressen für Skalierungsgruppen aufzulisten. Beispiel:
+```PowerShell
+PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+```
 
-Wenn Sie die öffentlichen IP-Adressen für eine Skalierungsgruppe mithilfe des Ressourcen-Explorers ermitteln möchten, sehen Sie sich den Abschnitt _publicipaddresses_ unter Ihrer Skalierungsgruppe an. Beispiel: https://resources.azure.com/subscriptions/_Ihre Abonnement-ID_/resourceGroups/_Ihre Ressourcengruppe_/providers/Microsoft.Compute/virtualMachineScaleSets/_Ihre VM-Skalierungsgruppe_/publicipaddresses
+Sie können die öffentlichen IP-Adressen auch abfragen, indem Sie direkt auf die Ressourcen-ID der Konfiguration der öffentlichen IP-Adresse verweisen. Beispiel:
+```PowerShell
+PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+```
+
+Abfragen der öffentlichen IP-Adressen, die virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, über den [Azure-Ressourcen-Explorer](https://resources.azure.com) oder mithilfe der Azure-REST-API (ab Version **2017-03-30**).
+
+Wenn Sie die öffentlichen IP-Adressen für eine Skalierungsgruppe mithilfe des Ressourcen-Explorers ermitteln möchten, sehen Sie sich den Abschnitt **publicipaddresses** unter Ihrer Skalierungsgruppe an. Beispiel: https://resources.azure.com/subscriptions/_Ihre Abonnement-ID_/resourceGroups/_Ihre Ressourcengruppe_/providers/Microsoft.Compute/virtualMachineScaleSets/_Ihre VM-Skalierungsgruppe_/publicipaddresses
 
 ```
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30

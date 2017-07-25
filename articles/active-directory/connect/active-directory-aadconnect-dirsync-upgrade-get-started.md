@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: e358f6d1937a45f375777cea1153b975a745a719
-ms.openlocfilehash: 08ba157ba783d00069750cdc1c80d13111b6a670
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 7049af4567947d3d799a38c5a3940ba25a2c0f18
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -134,7 +136,7 @@ Gehen Sie wie folgt vor, falls Sie über weniger als 50.000 Objekte verfügen, 
 1. Führen Sie den Azure AD Connect-Installer aus (MSI).
 2. Wenn der Bildschirm **Willkommen bei Azure AD Connect** angezeigt wird, beenden Sie den Installations-Assistenten, indem Sie auf das „X“ oben rechts im Fenster klicken.
 3. Öffnen Sie eine Eingabeaufforderung.
-4. Führen Sie aus dem Installationsordner von Azure AD Connect (Standard: „C:\Programme\Microsoft Azure Active Directory Connect“) den folgenden Befehl aus:  `AzureADConnect.exe /ForceExport`.
+4. Führen Sie aus dem Installationsordner von Azure AD Connect (Standard: „C:\Programme\Microsoft Azure Active Directory Connect“) den folgenden Befehl aus: `AzureADConnect.exe /ForceExport`.
 5. Klicken Sie auf die Schaltfläche **Einstellungen exportieren** . Bei der Installation von Azure AD Connect auf einem separaten Server werden diese Einstellungen von Ihrem aktuellen DirSync zur neuen Azure AD Connect-Installation migriert.
 
 ![Analyse abgeschlossen](./media/active-directory-aadconnect-dirsync-upgrade-get-started/forceexport.png)
@@ -147,7 +149,7 @@ Bei der Installation von Azure AD Connect auf einem neuen Server wird davon ausg
 1. Führen Sie den Azure AD Connect-Installer aus (MSI).
 2. Wenn der Bildschirm **Willkommen bei Azure AD Connect** angezeigt wird, beenden Sie den Installations-Assistenten, indem Sie auf das „X“ oben rechts im Fenster klicken.
 3. Öffnen Sie eine Eingabeaufforderung.
-4. Führen Sie aus dem Installationsordner von Azure AD Connect (Standard: „C:\Programme\Microsoft Azure Active Directory Connect“) den folgenden Befehl aus:  `AzureADConnect.exe /migrate`.
+4. Führen Sie aus dem Installationsordner von Azure AD Connect (Standard: „C:\Programme\Microsoft Azure Active Directory Connect“) den folgenden Befehl aus: `AzureADConnect.exe /migrate`.
    Der Installations-Assistent von Azure AD Connect wird gestartet, und der folgende Bildschirm wird angezeigt:  
    ![Geben Sie Ihre Azure AD-Anmeldeinformationen ein.](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
 5. Wählen Sie die Datei mit den Einstellungen, die von Ihrer DirSync-Installation exportiert wurde.
@@ -158,6 +160,7 @@ Bei der Installation von Azure AD Connect auf einem neuen Server wird davon ausg
      Auf diesem Bildschirm werden die folgenden Optionen angezeigt:   
      ![Geben Sie Ihre Azure AD-Anmeldeinformationen ein.](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
 7. Klicken Sie auf **Weiter**.
+
 8. Lassen Sie auf der Seite **Bereit zur Konfiguration** das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, sobald die Konfiguration abgeschlossen wurde** aktiviert. Der Server befindet sich nun im [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode), und Änderungen werden nicht nach Azure AD exportiert.
 9. Klicken Sie auf **Installieren**.
 10. Melden Sie sich nach Abschluss der Installation von Windows ab und anschließend wieder an, ehe Sie den Synchronisierungsdienst-Manager oder Synchronisierungsregel-Editor verwenden oder andere Änderungen an der Konfiguration vornehmen.
@@ -216,9 +219,4 @@ Weitere Informationen zu diesen neuen Features, die mit der Installation aktivie
 Weitere Informationen zu folgenden allgemeinen Themen: [Scheduler und Auslösen der Synchronisierung](active-directory-aadconnectsync-feature-scheduler.md).
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

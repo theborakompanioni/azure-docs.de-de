@@ -7,6 +7,42 @@
 
 * Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
+
+## <a name="esv3-series"></a>ESv3-Serie
+
+ACU: 160 - 190
+
+Die Instanzen der ESv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen und Premium-Speicher nutzen. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
+
+| Größe             | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+|------------------|-----------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
+| Standard_E2s_v3  | 2         | 16          | 32             | 4              | 4.000/32 (50)                                                       | 3.200/48                                | 2/moderat                                   |
+| Standard_E4s_v3  | 4         | 32          | 64             | 8              | 8.000/64 (100)                                                      | 6.400/96                                | 2/moderat                                   |
+| Standard_E8s_v3  | 8         | 64          | 128            | 16             | 16.000/128 (200)                                                    | 12.800/192                              | 4/hoch                                       |
+| Standard_E16s_v3 | 16        | 128         | 256            | 32             | 32.000/256 (400)                                                    | 25.600/384                              | 8/hoch                                       |
+| Standard_E32s_v3 | 32        | 256         | 512            | 32             | 64.000/512 (800)                                                    | 51.200/768                              | 8/äußerst hoch                             |
+| Standard_E64s_v3 | 64        | 432         | 864            | 32             | 128.000/1.024 (1.600)                                                   | 80.000/1.200                             | 8/äußerst hoch                             |
+
+
+
+## <a name="ev3-series"></a>Ev3-Serie
+
+ACU: 160 - 190 
+
+Die Instanzen der Ev3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
+
+Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden Sie die ESv3-Größen, um Datenträger mit Premium-Speicher zu nutzen. Die Preis- und Abrechnungskennzahlen für die ESv3-Größen entsprechen denen der Ev3-Serie. 
+
+| Größe             | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+|------------------|-----------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
+| Standard_E2_v3  | 2         | 16          | 32             | 4              | 4.000/32 (50)                                                       | 3.200/48                                | 2/moderat                                   |
+| Standard_E4_v3  | 4         | 32          | 64             | 8              | 8.000/64 (100)                                                      | 6.400/96                                | 2/moderat                                   |
+| Standard_E8_v3  | 8         | 64          | 128            | 16             | 16.000/128 (200)                                                    | 12.800/192                              | 4/hoch                                       |
+| Standard_E16_v3 | 16        | 128         | 256            | 32             | 32.000/256 (400)                                                    | 25.600/384                              | 8/hoch                                       |
+| Standard_E32_v3 | 32        | 256         | 512            | 32             | 64.000/512 (800)                                                    | 51.200/768                              | 8/äußerst hoch                             |
+| Standard_E64_v3 | 64        | 432         | 864            | 32             | 128.000/1.024 (1.600)                                                   | 80.000/1.200                             | 8/äußerst hoch                             |
+
+
 ## <a name="m-series"></a>M-Serie*
 
 ACU: 160–180
@@ -73,7 +109,7 @@ ACU: 210 - 250
 
 * Der mit einer VM der DSv2-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
-**Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+**Die Instanz ist ein isolierter Knoten, mit dem dafür gesorgt wird, dass Ihre VM die einzige VM auf unserem Intel Haswell-Knoten ist.
 
 ***25000 Mbps mit beschleunigtem Netzwerkbetrieb.
 
@@ -91,7 +127,7 @@ ACU: 210 - 250
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 32/32 x 500                       | 8/6000–12000 &#8224;          |
 | Standard_D15_v2* | 20        | 140         | 1.000          | 60000/937/468                                        | 40/40 x 500                       | 8/20000** |
 
-*Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+*Die Instanz ist ein isolierter Knoten, mit dem dafür gesorgt wird, dass Ihre VM die einzige VM auf unserem Intel Haswell-Knoten ist.
 
 **25000 Mbps mit beschleunigtem Netzwerkbetrieb.
 

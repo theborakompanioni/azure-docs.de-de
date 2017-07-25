@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: d991adb8fa8f71a8785327be244ad9749a837dfd
-ms.lasthandoff: 04/26/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 451d3c956b863ab90f86509fd80a5c96e27525ce
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
@@ -112,7 +112,7 @@ az vmss disk detach -g dsktest -n dskvmss --lun 2
 Sie können einen Datenträger auch aus einer Skalierungsgruppe entfernen, indem Sie einen Eintrag aus der Eigenschaft _dataDisks_ im _storageProfile_ entfernen und die Änderung übernehmen. 
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
-Die Unterstützung für von Azure verwaltete Datenträger und an Skalierungsgruppen angefügte Datenträger wurde der Version [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) von Microsoft.Compute APi hinzugefügt. Sie können jedes SDK oder Befehlszeilentool verwenden, das mit dieser oder einen neueren Version der API erstellt wurde.
+Unterstützung für Azure Managed Disks und Skalierungsgruppen, die an Datenträger angefügt sind, ist über die API-Version [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) oder höher der Microsoft.Compute-API verfügbar.
 
 In der ursprünglichen Implementierung der Unterstützung angefügter Datenträger für Skalierungsgruppen ist es nicht möglich, Datenträger zu einzelnen virtuellen Computer hinzuzufügen oder davon zu entfernen.
 
