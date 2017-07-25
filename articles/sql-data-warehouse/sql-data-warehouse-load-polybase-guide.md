@@ -121,7 +121,7 @@ WHERE
     AND DateRequested < '01/01/2015';
 ```
 ## <a name="isolate-loading-users"></a>Isolieren von geladenen Benutzern
-Häufig müssen mehrere Benutzer vorhanden sein, die Daten in SQL DW laden können. Da für [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] CONTROL-Berechtigungen für die Datenbank benötigt werden, sind am Ende mehrere Benutzer mit Steuerzugriff über alle Schemas vorhanden. Sie können dies mit der Anweisung DENY CONTROL beschränken.
+Häufig müssen mehrere Benutzer vorhanden sein, die Daten in SQL DW laden können. Da für [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] CONTROL-Berechtigungen für die Datenbank benötigt werden, sind am Ende mehrere Benutzer mit Steuerzugriff über alle Schemas vorhanden. Sie können dies mit der Anweisung DENY CONTROL beschränken.
 
 Beispiel: Wenn Sie über die Datenbankschemas Schema_A für Abteilung A und Schema_B für Abteilung B verfügen, beachten Sie, dass die Datenbankbenutzer Benutzer_A und Benutzer_B Benutzer von PolyBase sind und in Abteilung A bzw. B geladen werden. Beiden wurden CONTROL-Datenbankberechtigungen erteilt.
 Die Ersteller von Schema A und B sperren ihre Schemas jetzt mit der DENY-Anweisung:
