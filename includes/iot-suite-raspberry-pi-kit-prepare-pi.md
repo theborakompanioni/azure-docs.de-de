@@ -69,19 +69,21 @@ Wenn Sie einen Ordner für Windows freigeben möchten, konfigurieren Sie einen S
 
 Um die Beispielanwendung ausführen zu können, muss auf dem Raspberry Pi zunächst der SPI-Bus (Serial Peripheral Interface) aktiviert werden. Der Raspberry Pi kommuniziert über den SPI-Bus mit dem BME280-Sensor. Verwenden Sie den folgenden Befehl, um die Konfigurationsdatei zu bearbeiten:
 
-`sudo nano /boot/config.txt`
+```sh
+sudo nano /boot/config.txt
+```
 
 Suchen Sie die folgende Zeile:
 
-```
-#dtparam=spi=on
-```
+`#dtparam=spi=on`
 
 - Löschen das Zeichen `#` am Anfang, um die Auskommentierung der Zeile aufzuheben.
 - Speichern Sie Ihre Änderungen (**STRG+O**, **EINGABETASTE**), und beenden Sie den Editor (**STRG+X**).
 - Starten Sie den Raspberry Pi neu, um die SPI zu aktivieren. Da durch den Neustart die Verbindung mit dem Terminal getrennt wird, müssen Sie sich nach dem Neustart des Raspberry Pi erneut anmelden:
 
-  `sudo reboot`
+  ```sh
+  sudo reboot
+  ```
 
 
 [img-connection-diagram]: media/iot-suite-raspberry-pi-kit-prepare-pi/rpi2_remote_monitoring.png
