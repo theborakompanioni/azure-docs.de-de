@@ -201,8 +201,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     5. Ändern Sie den **Startzeitpunkt** in **21.04.2017**. 
     6. Ändern Sie den **Endzeitpunkt** in **25.04.2017**. Sie können das jeweilige Datum auch direkt eingeben, statt den Kalender zu durchlaufen.     
     8. Klicken Sie auf **Weiter**.
-      
-![Kopiertool – Seite „Eigenschaften“](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
+      ![Kopiertool – Seite „Eigenschaften“](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. Sie können einen verknüpften Datenspeicherdienst verwenden oder einen neuen Datenspeicher angeben. Wählen Sie zum Verwenden eines vorhandenen verknüpften Diensts die Option **AUS VORHANDENEN VERKNÜPFTEN DIENSTEN** aus, und wählen Sie den richtigen verknüpften Dienst aus. 
     ![Kopiertool – Seite „Quelldatenspeicher“](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
 4. Auf der Seite **Azure Blob Storage-Konto angeben** :
@@ -210,9 +209,8 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
    2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
    3. Wählen Sie Ihr Azure-Abonnement aus, oder übernehmen Sie **Alle auswählen** für **Azure-Abonnement**.   
    4. Wählen Sie in der Liste mit den **Azure-Speicherkonten**, die im ausgewählten Abonnement verfügbar sind, ein Azure-Speicherkonto aus. Sie können sich auch für das manuelle Eingeben von Speicherkontoeinstellungen entscheiden, indem Sie unter **Kontoauswahlmethode** die Option **Manuell eingeben** auswählen.
-   5. Klicken Sie auf **Weiter**.
-       
-![Kopiertool – Azure Blob Storage-Konto angeben](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+   5. Klicken Sie auf **Weiter**. 
+      ![Kopiertool – Azure Blob Storage-Konto angeben](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. Auf der Seite **Eingabedatei oder -ordner auswählen** :
    1. Doppelklicken Sie auf **adfblobcontainer**.
    2. Wählen Sie **input** aus, und klicken Sie auf **Auswählen**. In dieser exemplarischen Vorgehensweise wählen Sie den Ordner „input“ aus. Sie könnten stattdessen die Datei „emp.txt“ im Ordner auswählen. 
@@ -223,8 +221,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     3. Aktivieren Sie nicht die **Binärkopie**. Aktivieren Sie diese Option, um die Quelldatei als Binärkopie in das Ziel zu kopieren. Aktivieren Sie diese Option nicht für diese exemplarische Vorgehensweise, damit auf den nächsten Seiten weitere Optionen angezeigt werden. 
     4. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist. Wählen Sie einen Wert für diese Option aus, wenn die Quelldateien in einem der unterstützten Formate komprimiert sind. 
     5. Klicken Sie auf **Weiter**.
-    
-![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
+    ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. Auf der Seite **File format settings** (Dateiformateinstellungen) werden die Trennzeichen und das Schema angezeigt. Diese Informationen werden vom Assistenten beim Analysieren der Datei automatisch erkannt. 
     1. Bestätigen Sie die folgenden Optionen: a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Zum Beispiel: JSON, Avro, ORC, Parquet.
         b. Das **Spaltentrennzeichen** ist auf `Comma (,)` festgelegt. Die weiteren Spaltentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
@@ -244,8 +241,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
    2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
    3. Wählen Sie Ihr Azure- **Abonnement**aus.  
    4. Wählen Sie Ihr Azure Storage-Konto aus. 
-   5. Klicken Sie auf **Weiter**.
-     
+   5. Klicken Sie auf **Weiter**.     
 10. Auf der Seite für **Ausgabedatei oder -ordner auswählen**: 
     6. Geben Sie **Ordnerpfad** als **adfblobconnector/output/{year}/{month}/{day}** an. Drücken Sie die **TAB-TASTE**.
     7. Wählen Sie für **Jahr** die Option **yyyy** aus.
@@ -254,8 +250,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     10. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist.
     11. Vergewissern Sie sich, dass das **Kopierverhalten** auf **Dateien zusammenführen** festgelegt ist. Gibt es bereits eine Ausgabedatei mit demselben Namen, wird der neue Inhalt am Ende dieser Datei hinzugefügt.
     12. Klicken Sie auf **Weiter**.
-    
-![Kopiertool – Ausgabedatei- oder -ordner auswählen](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+    ![Kopiertool – Ausgabedatei- oder -ordner auswählen](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Überprüfen Sie auf der Seite **Dateiformateinstellungen** die Einstellungen, und klicken Sie auf **Weiter**. Eine der weiteren Optionen an dieser Stelle besteht darin, eine Kopfzeile (Header) zu der Ausgabedatei hinzuzufügen. Wenn Sie diese Option aktivieren, wird eine Kopfzeile hinzugefügt, die die Namen der Spalten aus dem Schema der Quelle enthält. Sie können die Standardspaltennamen ändern, wenn Sie das Schema für die Quelle anzeigen. Beispielsweise könnten Sie den Namen der ersten Spalte in „Vorname“ und den Namen der zweiten Spalte in „Nachname“ ändern. Die Ausgabedatei wird dann mit einer Kopfzeile generiert, die diese Namen als Spaltennamen enthält. 
     ![Kopiertool – Dateiformateinstellungen für das Ziel](media/data-factory-azure-blob-connector/file-format-destination.png)
 12. Vergewissern Sie sich auf der Seite **Leistungseinstellungen**, dass **Cloudeinheiten** und **Parallele Kopien** auf **Auto** festgelegt sind, und klicken Sie auf „Weiter“. Einzelheiten zu diesen Einstellungen finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md#parallel-copy).

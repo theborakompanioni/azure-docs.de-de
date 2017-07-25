@@ -139,8 +139,7 @@ Auf der Seite **Eigenschaften** :
 
 1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSqlDataWarehouse** ein.
 2. Wählen Sie die Option **Run once now (Einmalig ausführen)** aus.   
-3. Klicken Sie auf **Weiter**.
-  
+3. Klicken Sie auf **Weiter**.  
 
     ![Kopier-Assistent – Eigenschaftsseite](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -183,7 +182,6 @@ Dieser Abschnitt beschreibt das Konfigurieren des Ziels: Tabelle `lineitem` in d
 ## <a name="step-4-performance-settings"></a>Schritt 4: Leistungseinstellungen
 
 **Allow polybase (Zulassen von PolyBase)** ist standardmäßig aktiviert.  Klicken Sie auf **Weiter**.
-
 
 ![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
