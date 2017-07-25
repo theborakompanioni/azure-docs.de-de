@@ -12,14 +12,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
 ms.openlocfilehash: 522fa6a45521ab917a540e8cc6bc619b05ab262e
 ms.contentlocale: de-de
 ms.lasthandoff: 05/03/2017
-
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-c"></a>Verbinden Sie Ihr Raspberry Pi 3 mit der Remoteüberwachungslösung, und senden Sie mithilfe von C simulierte Telemetriedaten.
@@ -50,15 +49,18 @@ Sie können jetzt Sie die Clientanwendung für die Remoteüberwachung auf Ihr Ra
 
 Falls nicht bereits erfolgt, klonen Sie die erforderlichen Repositorys durch Ausführen der folgenden Befehle in einem Terminal auf Ihrem Pi:
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-c-raspberrypi-getstartedkit.git
+```
 
 ### <a name="update-the-device-connection-string"></a>Aktualisieren der Verbindungszeichenfolge des Geräts
 
 Öffnen Sie die Beispielquelldatei im **Nano**-Editor mithilfe des folgenden Befehls:
 
-`nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/remote_monitoring/remote_monitoring.c`
+```sh
+nano ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/remote_monitoring/remote_monitoring.c
+```
 
 Suchen Sie die folgenden Zeilen:
 
@@ -73,19 +75,23 @@ Ersetzen Sie die Platzhalterwerte durch die Geräte- und IoT Hub-Informationen, 
 
 Installieren Sie die erforderlichen Pakete für das Microsoft Azure IoT-Geräte-SDK für C durch Ausführen der folgenden Befehle in einem Terminal auf dem Raspberry Pi:
 
-`sudo apt-get update`
-
-`sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev`
+```sh
+sudo apt-get update
+sudo apt-get install g++ make cmake git libcurl4-openssl-dev libssl-dev uuid-dev
+```
 
 Sie können die aktualisierte Beispiellösung auf dem Raspberry Pi erstellen:
 
-`chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh`
-
-`~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh`
+```sh
+chmod +x ~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
+~/iot-remote-monitoring-c-raspberrypi-getstartedkit/simulator/build.sh
+```
 
 Sie können nun das Beispielprogramm auf dem Raspberry Pi ausführen. Geben Sie den folgenden Befehl ein:
 
-  `sudo ~/cmake/remote_monitoring/remote_monitoring`
+```sh
+sudo ~/cmake/remote_monitoring/remote_monitoring
+```
 
 Die folgende Beispielausgabe ist ein Beispiel der Ausgabe, die an der Eingabeaufforderung auf dem Raspberry Pi angezeigt wird:
 
@@ -98,7 +104,6 @@ Drücken Sie **STRG+C**, um das Programm zu einem beliebigen Zeitpunkt zu beende
 ## <a name="next-steps"></a>Nächste Schritte
 
 Besuchen Sie das [Azure IoT Dev Center](https://azure.microsoft.com/develop/iot/), in dem Sie weitere Beispiele und Dokumentation zu Azure IoT finden.
-
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-c-get-started-simulator/appoutput.png
 

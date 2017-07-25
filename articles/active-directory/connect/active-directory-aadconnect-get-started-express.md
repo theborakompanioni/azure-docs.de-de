@@ -36,12 +36,10 @@ Im Abschnitt [Videos](#videos) können Sie diese Schritte in Aktion sehen.
 3. Aktivieren Sie auf der Willkommensseite das Kontrollkästchen zum Zustimmen zu den Lizenzbedingungen, und klicken Sie auf **Weiter**.  
 4. Klicken Sie im Bildschirm "Expresseinstellungen" auf **Expresseinstellungen verwenden**.  
    ![Willkommen bei Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
-5. Geben Sie auf dem Bildschirm „Mit Azure AD verbinden“ den Benutzernamen und das Kennwort eines globalen Azure-Administrators für Azure AD ein. Klicken Sie auf **Weiter**.
-     
+5. Geben Sie auf dem Bildschirm „Mit Azure AD verbinden“ den Benutzernamen und das Kennwort eines globalen Azure-Administrators für Azure AD ein. Klicken Sie auf **Weiter**.  
    ![Herstellen einer Verbindung mit Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png) Falls ein Fehler auftritt und Sie Probleme mit der Konnektivität haben, können Sie unter [Problembehebung bei Konnektivitätsproblemen](active-directory-aadconnect-troubleshoot-connectivity.md) nach einer Lösung suchen.
-6. Geben Sie auf dem Bildschirm „Mit AD DS verbinden“ den Benutzernamen und das Kennwort für ein Enterprise-Administratorkonto ein. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\administrator“ oder „fabrikam.com\administrator“. Klicken Sie auf **Weiter**.
-     
-![Herstellen einer Verbindung mit AD DS](./media/active-directory-aadconnect-get-started-express/connectad.png)
+6. Geben Sie auf dem Bildschirm „Mit AD DS verbinden“ den Benutzernamen und das Kennwort für ein Enterprise-Administratorkonto ein. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\administrator“ oder „fabrikam.com\administrator“. Klicken Sie auf **Weiter**.  
+   ![Herstellen einer Verbindung mit AD DS](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. Die Seite [**Konfiguration der Azure AD-Anmeldung**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) wird nur angezeigt, wenn Sie den Vorgang zum [Überprüfen Ihrer Domänen](../active-directory-add-domain.md) unter [Voraussetzungen](active-directory-aadconnect-prerequisites.md) nicht abgeschlossen haben.
    ![Nicht überprüfte Domänen](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
    Wenn diese Seite angezeigt wird, sollten Sie jede Domäne überprüfen, die als **Nicht hinzugefügt** und **Nicht überprüft** gekennzeichnet ist. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Klicken Sie auf das Symbol zum Aktualisieren, wenn Sie Ihre Domänen überprüft haben.
