@@ -131,7 +131,7 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
             private IMongoCollection<MyTask> GetTasksCollection()
             {
                 MongoClientSettings settings = new MongoClientSettings();
-                settings.Server = new MongoServerAddress(host, 10250);
+                settings.Server = new MongoServerAddress(host, 10255);
                 settings.UseSsl = true;
                 settings.SslSettings = new SslSettings();
                 settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
@@ -153,7 +153,7 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
             private IMongoCollection<MyTask> GetTasksCollectionForEdit()
             {
                 MongoClientSettings settings = new MongoClientSettings();
-                settings.Server = new MongoServerAddress(host, 10250);
+                settings.Server = new MongoServerAddress(host, 10255);
                 settings.UseSsl = true;
                 settings.SslSettings = new SslSettings();
                 settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
