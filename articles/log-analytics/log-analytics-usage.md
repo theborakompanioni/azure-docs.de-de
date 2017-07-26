@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/14/2017
+ms.date: 07/21/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 46766e29287ca130e68aa0f027cbb1ded2526af3
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 5f57cbdb1678dd61eda449d2103125d8db83892e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
@@ -110,13 +110,15 @@ Das Diagramm *Datenmenge im Zeitverlauf* enthält die Informationen zum Gesamtvo
 
 Im Diagramm *Datenmenge nach Lösung* werden das Volumen der Daten, die von den einzelnen Lösungen gesendet werden, und die Lösungen angezeigt, von denen die meisten Daten gesendet werden. Im Diagramm im oberen Bereich ist das Gesamtvolumen der Daten angegeben, die von den einzelnen Lösungen im Zeitverlauf gesendet werden. Mit diesen Informationen können Sie ermitteln, ob von einer Lösung in Abhängigkeit der Zeit eine größere Datenmenge, ungefähr die gleiche Menge an Daten oder eine kleinere Datenmenge gesendet wird. In der Liste mit den Lösungen sind die zehn Lösungen aufgeführt, die die meisten Daten senden. 
 
+Diese beiden Diagramme zeigen alle Daten an. Einige Daten sind gebührenpflichtig, andere sind kostenlos. Um nur gebührenpflichtige Daten zu berücksichtigen, ändern Sie die Abfrage auf der Suchseite, um `IsBillable=true` einzuschließen.  
+
 ![Diagramme zum Datenvolumen](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
 
 Sehen Sie sich das Diagramm *Datenmenge im Zeitverlauf* an. Klicken Sie jeweils auf den Namen eines Computers, um die Lösungen und Datentypen anzuzeigen, die für einen Computer die meisten Daten senden. Klicken Sie auf den Namen des ersten Computers in der Liste.
 
 Im folgenden Screenshot werden für den Computer vom Datentyp *LogManagement/Perf* (Protokollverwaltung/Leistung) die meisten Daten gesendet. 
-![Datenvolumen für einen Computer](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
 
+![Datenmenge für einen Computer](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
 
 Wechseln Sie als Nächstes zurück zum Dashboard *Nutzung*, und sehen Sie sich das Diagramm *Datenmenge nach Lösung* an. Klicken Sie in der Liste auf den Namen einer Lösung, um die Computer anzuzeigen, die die meisten Daten für die Lösung senden. Klicken Sie auf den Namen der ersten Lösung in der Liste. 
 
@@ -124,16 +126,31 @@ Im folgenden Screenshot ist zu erkennen, dass der Computer *acmetomcat* die meis
 
 ![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
 
+Führen Sie bei Bedarf zusätzliche Analysen aus, um große Mengen innerhalb einer Lösung oder eines Datentyps zu identifizieren. Beispiele für Abfragen:
+
++ **Sicherheitslösung**
+  - `Type=SecurityEvent | measure count() by EventID`
++ **Protokollverwaltungslösung**
+  - `Type=Usage Solution=LogManagement IsBillable=true | measure count() by DataType`
++ Datentyp **Perf**
+  - `Type=Perf | measure count() by CounterPath`
+  - `Type=Perf | measure count() by CounterName`
++ Datentyp **Event**
+  - `Type=Event | measure count() by EventID`
+  - `Type=Event | measure count() by EventLog, EventLevelName`
++ Datentyp **Syslog**
+  - `Type=Syslog | measure count() by Facility, SeverityLevel`
+  - `Type=Syslog | measure count() by ProcessName`
 
 Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle zu reduzieren:
 
 | Quelle mit hohem Datenvolumen | Reduzieren des Datenvolumens |
 | -------------------------- | ------------------------- |
-| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern Sie die Sicherheitsüberwachungsrichtlinie. Deaktivieren Sie beispielsweise die [Plattform für die Überwachungsfilterung](https://technet.microsoft.com/library/dd772749(WS.10).aspx). |
+| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [Überwachung von Wechselmedien](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
 | Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
 | syslog                     | Ändern Sie die [syslog-Konfiguration](log-analytics-data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
-| Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
+| Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Überprüfen, ob mehr Knoten als erwartet vorhanden sind
 Wenn Sie den Tarif *Pro Knoten (OMS)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von genutzten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.
@@ -148,4 +165,9 @@ Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-managem
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen dazu, wie Sie die Suchsprache verwenden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Sie können Suchabfragen verwenden, um für die Nutzungsdaten eine zusätzliche Analyse durchzuführen.
 * Führen Sie die unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) beschriebenen Schritte aus, um benachrichtigt zu werden, wenn ein Suchkriterium erfüllt ist.
+* Verwenden Sie die [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen.
+* Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus.
+* Ändern Sie die [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md).
+* Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md).
+* Ändern Sie die [Syslog-Konfiguration](log-analytics-data-sources-syslog.md).
 
