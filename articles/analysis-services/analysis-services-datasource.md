@@ -1,6 +1,6 @@
 ---
-title: Datenquellenverbindungen | Microsoft Docs
-description: "Beschreibt die Datenquellenverbindungen für Datenmodelle in Azure Analysis Services."
+title: "In Azure Analysis Services unterstützte Datenquellen | Microsoft-Dokumentation"
+description: "Beschreibt Datenquellen, die für Datenmodelle in Azure Analysis Services unterstützt werden."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -13,22 +13,49 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/14/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: aebabd15e781e726def545960ce3c1ec7674c530
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: a0fe91568d747148b3940e9c90db15481c765a9c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="datasource-connections"></a>Datenquellenverbindungen
+# <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
+Azure Analysis Services-Server unterstützen das Herstellen von Verbindungen mit lokalen Datenquellen in der Organisation oder mit Datenquellen in der Cloud. Weitere unterstützte Datenquellen werden ständig hinzugefügt. Das Zurückkehren zu dieser Seite lohnt sich. 
+
+Die folgenden Datenquellen werden derzeit unterstützt:
+
+| Cloud  |
+|---|
+| Azure Blob Storage*  |
+| Azure SQL-Datenbank  |
+| Azure Data Warehouse |
+
+
+| Lokal  |   |   |   |
+|---|---|---|---|
+| Access-Datenbank  | Ordner* | Oracle-Datenbank  | Teradata-Datenbank |
+| Active Directory*  | JSON-Dokument*  | Postgre SQL-Datenbank*  |XML-Tabelle* |
+| Analysis Services  | Zeilen aus Binärdatei*  | SAP HANA*  |
+| Analytics Platform System  | MySQL Database  | SAP Business Warehouse*  | |
+| Dynamics CRM*  | OData-Feed*  | SharePoint*  |
+| Excel-Arbeitsmappe  | ODBC-Abfrage  | SQL-Datenbank  |
+| Exchange*  | OLE DB  | Sybase-Datenbank  |
+
+\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400. 
+
+> [!IMPORTANT]
+> Das Herstellen einer Verbindung mit lokalen Datenquellen erfordert ein auf einem Computer in Ihrer Umgebung installiertes [lokales Datengateway](analysis-services-gateway.md).
+
+## <a name="data-providers"></a>Datenanbieter
+
 Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben.
 
-Wenn In-Memory- oder Direktabfrage-Datenmodelle eine Verbindung mit einer Clouddatenquelle wie Azure SQL-Datenbank herstellen und dabei einen anderen nativen Anbieter als SQLOLEDB verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **„The provider 'SQLNCLI11.1' is not registered“** (Der Anbieter ‚SQLNCLI11.1‘ ist nicht registriert). Wenn ein Direktabfrage-Modell eine Verbindung mit lokalen Datenquellen herstellt und dabei native Anbieter verwendet, wird möglicherweise folgende Fehlermeldung angezeigt: **„Error creating OLE DB row set. Incorrect syntax near 'LIMIT'.“ (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei 'LIMIT'.)**.
+Wenn Datenmodelle eine Verbindung mit einer Clouddatenquelle wie Azure SQL-Datenbank herstellen und dabei einen anderen nativen Anbieter als SQLOLEDB verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **„The provider 'SQLNCLI11.1' is not registered“** (Der Anbieter ‚SQLNCLI11.1‘ ist nicht registriert). Wenn ein Direktabfrage-Modell eine Verbindung mit lokalen Datenquellen herstellt und dabei native Anbieter verwendet, wird möglicherweise folgende Fehlermeldung angezeigt: **„Error creating OLE DB row set. Incorrect syntax near 'LIMIT'.“ (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei 'LIMIT'.)**.
 
-## <a name="data-source-providers"></a>Datenquellenanbieter
 Die folgenden Datenquellenanbieter werden für In-Memory- oder Direktabfrage-Datenmodelle beim Herstellen einer Verbindung mit lokalen Datenquellen oder Clouddatenquellen unterstützt:
 
 ### <a name="cloud"></a>Cloud

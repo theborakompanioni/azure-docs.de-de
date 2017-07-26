@@ -2,53 +2,54 @@
 title: 'Tutorial: Azure Active Directory-Integration mit CS Stars | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und CS Stars konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: 5704d151-afb8-40a4-b286-8bacd4f279ee
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 06/13/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 015ca80c952110d3289888ed82d7a543be29950c
-ms.openlocfilehash: 3519fcb7621aec61ab35c80558bc0da0e3b2c41e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: acc9160f86e58c7af4779a8bab5627dc5c5ad721
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Tutorial: Azure Active Directory-Integration mit CS Stars
-Dieses Tutorial soll Ihnen zeigen, wie Sie CS Stars in Azure Active Directory (Azure AD) integrieren können.  
+
+In diesem Tutorial erfahren Sie, wie Sie CS Stars in Azure Active Directory (Azure AD) integrieren.
+
 Die Integration von CS Stars in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer auf CS Stars Zugriff hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CS Stars anzumelden (einmaliges Anmelden).
-* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+- Sie können in Azure AD steuern, wer auf CS Stars Zugriff hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CS Stars anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Um die Azure AD-Integration mit CS Stars konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-* Ein CS Stars-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Azure AD-Abonnement
+- Ein CS Stars-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
->
->
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.  
-Das in diesem Tutorial beschriebene Szenario besteht aus drei großen Bausteinen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von CS Stars aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -58,181 +59,173 @@ Zum Konfigurieren der Integration von CS Stars in Azure AD müssen Sie CS Stars 
 
 **Um CS Stars aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Anwendungen][2]
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Anwendungen][3]
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
 
-    ![Anwendungen][4]
-6. Geben Sie im Suchfeld den Text **CS Stars**ein.
+4. Geben Sie im Suchfeld den Text **CS Stars**ein.
 
-    ![Anwendungen][5]
-7. Wählen Sie im Ergebnisbereich **CS Stars** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_search.png)
 
-    ![Anwendungen][400]
+5. Wählen Sie im Ergebnisbereich die Option **CS Stars** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in CS Stars konfiguriert und getestet werden kann.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_addfromgallery.png)
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer der entsprechende Gegenbenutzer in CS Stars zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in CS Stars muss eine Linkbeziehung eingerichtet werden.  
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in CS Stars zuweisen.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei CS Stars basierend auf einer Testbenutzerin mit dem Namen Britta Simon.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer das Pendant in CS Stars zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in CS Stars muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in CS Stars den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei CS Stars müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines CS Stars-Testbenutzers](#creating-a-cs-stars-test-user)** , um eine Entsprechung von Britta Simon in CS Stars zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+3. **[Erstellen eines CS Stars-Testbenutzers](#creating-a-cs-stars-test-user)**, um ein Pendant von Britta Simon in CS Stars zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer CS Stars-Anwendung zu konfigurieren.
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer CS Stars-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in CS Stars die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **CS Stars** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **CS Stars** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][6]
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei CS Stars anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+    ![Einmaliges Anmelden konfigurieren][4]
 
-    ![Azure AD – einmaliges Anmelden][7]
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_samlbase.png)
 
-    ![App-Einstellungen konfigurieren][8]
+3. Führen Sie im Abschnitt **Domäne und URLs für CS Stars** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der CS Stars-Anwendung verwenden (z.B. `https://uat.csstars.com/enterprise/default.cmdx?ssoclient=C234UAT2`).
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_url.png)
 
-    > [!NOTE]
-    > Wenden Sie sich an Ihren Ansprechpartner von Marsh ClearSight, falls Sie den richtigen Wert nicht kennen.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.csstars.com/enterprise/default.cmdx?ssoclient=<uniqueid>`.
 
-    b. Klicken Sie auf **Weiter**.
-4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für CS Stars** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.csstars.com/enterprise/`
 
-    ![Was ist Azure AD Connect?][9]
-5. Wenden Sie sich an Ihren Ansprechpartner von Marsh ClearSight, und übergeben Sie die Metadatendatei, um das einmalige Anmelden für CS Stars aktivieren zu lassen.
-6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von CS Stars](http://www.marshclearsight.com/support/), um diese Werte zu erhalten. 
+ 
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Was ist Azure AD Connect?][10]
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_certificate.png) 
 
-    ![Was ist Azure AD Connect?][11]
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-cs-stars-tutorial/tutorial_general_400.png) 
+<CS>
+6. Zum Konfigurieren des einmaligen Anmeldens bei **CS Stars** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [CS Stars-Supportteam](http://www.marshclearsight.com/support/) senden. 
+<CE>
+
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.  
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][20]
+![Azure AD-Benutzer erstellen][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_02.png)
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cs-stars-tutorial/create_aaduser_01.png) 
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_03.png)
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cs-stars-tutorial/create_aaduser_02.png) 
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_04.png)
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cs-stars-tutorial/create_aaduser_03.png) 
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_05.png)
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-cs-stars-tutorial/create_aaduser_04.png) 
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
-    c. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_06.png)
-
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-
-    e. Klicken Sie auf **Weiter**.
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_07.png)
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_08.png)
-
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-
-    b. Klicken Sie auf **Fertig stellen**.   
-
+    d. Klicken Sie auf **Erstellen**.
+ 
 ### <a name="creating-a-cs-stars-test-user"></a>Erstellen eines CS Stars-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in CS Stars.
 
-Zur Erstellung eines Benutzers in CS Stars müssen Sie sich an Ihren Ansprechpartner von Marsh ClearSight wenden.
+Zur Erstellung eines Benutzers in CS Stars müssen Sie sich an das [CS Stars-Supportteam](http://www.marshclearsight.com/support/) wenden.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf CS Stars erhält.
 
-![Benutzer zuweisen][200]
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf CS Stars gewähren.
+
+![Benutzer zuweisen][200] 
 
 **Um Britta Simon CS Stars zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der Verzeichnisansicht im oberen Menü auf **Anwendungen** .
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-    ![Benutzer zuweisen][201]
+    ![Benutzer zuweisen][201] 
+
 2. Wählen Sie in der Anwendungsliste **CS Stars**aus.
 
-    ![Benutzer zuweisen][202]
-3. Klicken Sie im oberen Menü auf **Benutzer**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
-4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
 
-    ![Benutzer zuweisen][205]
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
 Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.  
 Wenn Sie im Zugriffsbereich auf die Kachel „CS Stars“ klicken, sollten Sie automatisch in Ihrer CS Stars-Anwendung angemeldet werden.
+ 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
+
+
 <!--Image references-->
+
 [1]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_01.png
 [2]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_04.png
-[5]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_01.png
-[6]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_02.png
-[7]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_03.png
-[8]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_04.png
-[9]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_05.png
-[10]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_06.png
-[11]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_07.png
-[20]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_100.png
+
+[100]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_201.png
-[202]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_202.png
+[202]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_205.png
-
-[400]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_csstars_403.png
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

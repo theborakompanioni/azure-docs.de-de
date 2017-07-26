@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 384f4bc285f62b102778118a92a912e73d241663
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 57f465df99ac234466459b8031f61805d8334b59
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -60,8 +60,8 @@ Das iOS-Format für einen Umleitungs-URI lautet:
 <app-scheme>://<bundle-id>
 ```
 
-* **aap-scheme**: dieses Schema ist in Ihrem XCode-Projekt registriert. So können Sie andere Anwendungen aufrufen. Sie finden diese im XCode-Projekt unter **Info.plist** > **URL-Typen** > **URL-Bezeichner**. Sie sollten ein Schema erstellen, sofern Sie nicht bereits ein oder mehrere Schemas konfiguriert haben.
-* **bundle-id**: dies ist die Paket-ID, die sich unter **identity** in Ihren Projekteinstellungen in XCode befindet.
+* **aap-scheme** – Dieses Schema ist in Ihrem XCode-Projekt registriert. So können Sie andere Anwendungen aufrufen. Sie finden dieses Schema unter "Info.plist -> URL types -> URL Identifier". Sie sollten ein Schema erstellen, sofern Sie nicht bereits ein oder mehrere Schemas konfiguriert haben.
+* **bundle-id** – dies ist die Paket-ID, die sich unter "identity" in Ihren Projekteinstellungen in XCode befindet.
 
 Beispiel für diesen QuickStart-Code: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 

@@ -15,28 +15,25 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ef310a094667f390addd5d0df3dc68d67100d2f4
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Entwickeln von benutzerdefinierten Operatoren von U-SQL (UDOs)
 Erfahren Sie, wie man benutzerdefinierte Operatoren entwickelt, um Daten in einem U-SQL-Auftrag zu verarbeiten.
 
-Anweisungen für die Entwicklung allgemeiner Assemblys für U-SQL, finden Sie unter [Entwickeln U-SQL-Assemblys für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-assemblies.md).
+Anweisungen für das Entwickeln allgemeiner Assemblys für U-SQL finden Sie unter [Entwickeln von U-SQL-Assemblys für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-assemblies.md).
 
-## <a name="define-and-use-user-defined-operator-in-u-sql"></a>Definieren und Verwenden von benutzerdefinierten Operatoren in U-SQL
+## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>Definieren und Verwenden eines benutzerdefinierten Operators in U-SQL
 **So erstellen und übermitteln Sie einen U-SQL-Auftrag**
 
-1. Klicken Sie im Menü **Datei** auf **Neu** und dann auf **Projekt**.
-2. Wählen Sie den Typ **U-SQL-Projekt** aus.
-
-    ![Neues Visual Studio-U-SQL-Projekt](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. Klicken Sie auf **OK**. Visual Studio erstellt eine Projektmappe mit der Datei „Script.usql“.
-4. Erweitern Sie im **Projektmappen-Explorer** die Datei „Script.usql“, und doppelklicken Sie dann auf **Script.usql.cs**.
-5. Fügen Sie den folgenden Code in die Datei ein:
+1. Wählen Sie in Visual Studio **Datei > Neu > Projekt > U-SQL-Projekt** aus.
+2. Klicken Sie auf **OK**. Visual Studio erstellt eine Projektmappe mit der Datei „Script.usql“.
+3. Erweitern Sie im **Projektmappen-Explorer** die Datei „Script.usql“, und doppelklicken Sie dann auf **Script.usql.cs**.
+4. Fügen Sie den folgenden Code in die Datei ein:
 
         using Microsoft.Analytics.Interfaces;
         using System.Collections.Generic;
@@ -51,7 +48,7 @@ Anweisungen für die Entwicklung allgemeiner Assemblys für U-SQL, finden Sie un
                         "Deutschland", "Germany"
                     },
                     {
-                        "Schwiiz", "Switzerland"
+                        "Suisse", "Switzerland"
                     },
                     {
                         "UK", "United Kingdom"

@@ -3,8 +3,8 @@ title: "Problembehandelung bei Azure Data Lake Analytics-Aufträgen mithilfe des
 description: "Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Azure-Portal erfolgt. "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.service: data-lake-analytics
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: b2b19a6f2ea20c414119e9dfbf84fda92dd93402
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -27,50 +27,31 @@ Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Az
 
 In diesem Lernprogramm simulieren Sie das Problem einer fehlenden Quelldatei, das Sie anschließend im Azure-Portal beheben.
 
-**Voraussetzungen**
-
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
-
-* **Grundlegende Kenntnisse des Data Lake Analytics-Auftragsprozesses**. Siehe [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md).
-* **Data Lake Analytics-Konto**. Siehe [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account).
-* **Kopieren der Beispieldaten in das Data Lake Store-Standardkonto**.  Siehe [Vorbereiten von Quelldaten](data-lake-analytics-get-started-portal.md)
-
 ## <a name="submit-a-data-lake-analytics-job"></a>Übermitteln eines Data Lake Analytics-Auftrags
-Nun erstellen Sie einen U-SQL-Auftrag mit einem ungültigen Quelldateinamen.  
 
-**So übermitteln Sie den Auftrag**
+Übermitteln Sie den folgenden U-SQL-Auftrag:
 
-1. Klicken Sie im Azure-Portal in der oberen linken Ecke auf **Microsoft Azure** .
-2. Klicken Sie auf die Kachel mit Ihrem Data Lake Analytics-Kontonamen.  Der Name wurde hier angeheftet, als das Konto erstellt wurde.
-   Falls das Konto hier nicht angeheftet ist, siehe [Öffnen eines Data Lake Analytics-Kontos im Portal](data-lake-analytics-manage-use-portal.md#manage-data-sources).
-3. Klicken Sie im oberen Menü auf **Neuer Auftrag** .
-4. Geben Sie den Auftragsnamen und das folgende U-SQL-Skript ein:
+```
+@searchlog =
+   EXTRACT UserId          int,
+           Start           DateTime,
+           Region          string,
+           Query           string,
+           Duration        int?,
+           Urls            string,
+           ClickedUrls     string
+   FROM "/Samples/Data/SearchLog.tsv1"
+   USING Extractors.Tsv();
 
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv1"
-            USING Extractors.Tsv();
+OUTPUT @searchlog   
+   TO "/output/SearchLog-from-adls.csv"
+   USING Outputters.Csv();
+```
+    
+Die im Skript definierte Quelldatei heißt **/Samples/Data/SearchLog.tsv1**, sollte aber **/Samples/Data/SearchLog.tsv** heißen.
 
-        OUTPUT @searchlog   
-            TO "/output/SearchLog-from-adls.csv"
-        USING Outputters.Csv();
-
-    Die im Skript definierte Quelldatei heißt **/Samples/Data/SearchLog.tsv1**, sollte aber **/Samples/Data/SearchLog.tsv** heißen.
-5. Klicken Sie oben auf **Auftrag senden** . Ein neuer Bereich mit Auftragsdetails wird geöffnet. In der Titelleiste wird der Auftragsstatus angezeigt. Bis zum Abschluss des Vorgangs dauert es einige Minuten. Klicken Sie zum Abrufen des aktuellen Status auf **Aktualisieren** .
-6. Warten Sie, bis sich der Auftragsstatus in **Fehlgeschlagen**ändert.  Wenn der Auftrag als **Erfolgreich**angezeigt wird, liegt das daran, dass Sie den Ordner „/Samples“ nicht entfernt haben. Siehe die Informationen im Abschnitt **Voraussetzung** weiter oben in diesem Lernprogramm.
-
-Sie werden sich vielleicht fragen, warum das Ganze bei einem so kleinen Auftrag so lange dauert.  Bedenken Sie, dass Data Lake Analytics auf die Big Data-Verarbeitung ausgelegt ist.  Seine Leistung wird deutlich, sobald eine große Menge von Daten mithilfe seines verteilten Systems verarbeitet wird.
-
-Angenommen, Sie haben den Auftrag übermittelt und das Portal geschlossen.  Im nächsten Abschnitt erfahren Sie, wie Sie das Problem mit dem Auftrag beheben.
 
 ## <a name="troubleshoot-the-job"></a>Beheben des Problems mit dem Auftrag
-Im letzten Abschnitt haben Sie ohne Erfolg einen Auftrag übermittelt.  
 
 **So zeigen Sie alle Aufträge an**
 

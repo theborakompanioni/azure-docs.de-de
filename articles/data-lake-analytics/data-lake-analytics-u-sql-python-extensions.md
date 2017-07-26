@@ -4,7 +4,7 @@ description: "Es wird beschrieben, wie Sie Python-Code in U-SQL-Skripts ausführ
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: sukvg
+manager: jhubbard
 editor: cgronlun
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
+ms.date: 06/20/2017
 ms.author: saveenr
-translationtype: Human Translation
-ms.sourcegitcommit: 624b0370a85827cb9feaa48924bfa76d9ae19d0f
-ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 6f3477b67b27a30e6b69f6015e9063bfa27834f7
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -25,10 +26,10 @@ ms.openlocfilehash: b3a9434df566d391e50e7755f9ab7fa880fe1d53
 
 Mit Python-Erweiterungen für U-SQL können Entwickler Python-Code per Massively Parallel Processing ausführen. Im folgenden Beispiel werden die grundlegenden Schritte veranschaulicht:
 
-* Verwenden der REFERENCE ASSEMBLY-Anweisung zum Aktivieren von Python-Erweiterungen für das U-SQL-Skript
-* Verwenden des REDUCE-Vorgangs zum Partitionieren der Eingabedaten für einen Schlüssel
-* Die Python-Erweiterungen für U-SQL enthalten einen integrierten Reducer (Extension.Python.Reducer), mit dem Python-Code auf jedem Scheitelpunkt ausgeführt wird, der dem Reducer zugewiesen ist.
-* Das U-SQL-Skript enthält den eingebetteten Python-Code mit der Funktion „usqlml_main“, für die ein Pandas-DataFrame als Eingabe akzeptiert und ein Pandas-DataFrame als Ausgabe zurückgegeben wird.
+* Verwenden der `REFERENCE ASSEMBLY`-Anweisung zum Aktivieren von Python-Erweiterungen für das U-SQL-Skript
+* Verwenden des `REDUCE`-Vorgangs zum Partitionieren der Eingabedaten für einen Schlüssel
+* Die Python-Erweiterungen für U-SQL enthalten einen integrierten Reducer (`Extension.Python.Reducer`), mit dem Python-Code auf jedem Vertex ausgeführt wird, der dem Reducer zugewiesen ist.
+* Das U-SQL-Skript enthält den eingebetteten Python-Code mit der Funktion „`usqlml_main`“, für die ein Pandas-DataFrame als Eingabe akzeptiert und ein Pandas-DataFrame als Ausgabe zurückgegeben wird.
 
 --
 
@@ -68,7 +69,7 @@ Mit Python-Erweiterungen für U-SQL können Entwickler Python-Code per Massively
 ### <a name="datatypes"></a>Datentypen
 
 * Zeichenfolgen- und numerische Spalten von U-SQL werden unverändert zwischen Pandas und U-SQL konvertiert
-* U-SQL-Nullen werden in und aus „NA“-Pandas-Werten konvertiert
+* U-SQL-NULL-Werte werden in und aus „`NA`“-Pandas-Werten konvertiert
 
 ### <a name="schemas"></a>Schemas
 
@@ -99,10 +100,5 @@ Jedem Scheitelpunkt ist eine begrenzte Menge an Arbeitsspeicher zugewiesen. Derz
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

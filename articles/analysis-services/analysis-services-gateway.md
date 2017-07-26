@@ -13,17 +13,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 05/26/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: e47fa44d87ad29054b833ee4bf201ac4d72e1e6e
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: f8c9e9ab8b8728202ec3f049b309d96d883022f4
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="on-premises-data-gateway"></a>Lokales Datengateway
 Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und dem Azure Analysis Services-Servers in der Cloud.
+
+Die neueste Version des Gateways unterstützt tabellarische Modelle mit Kompatibilitätsgrad 1400, die mithilfe von „Daten abrufen“ und M-Abfragen in SSDT mit lokalen Datenquellen verbunden sind. 
+
+Weitere Informationen zu unterstützten Datenquellen finden Sie unter [In Azure Analysis Services unterstützte Datenquellen](analysis-services-datasource.md).
 
 Ein Gateway wird auf einem Computer im Netzwerk installiert. Für jeden Azure Analysis Services-Server im Azure-Abonnement muss ein Gateway installiert werden. Wenn beispielsweise Ihr Azure-Abonnement zwei Server enthält, die mit lokalen Datenquellen verbunden werden, muss auf zwei verschiedenen Computern im Netzwerk ein Gateway installiert werden.
 
@@ -48,16 +53,8 @@ Ein Gateway wird auf einem Computer im Netzwerk installiert. Für jeden Azure An
 * Zum Ändern des Servernamens für ein Gateway, das bereits konfiguriert wurde, müssen Sie das Gateway neu installieren und ein neues Gateway konfigurieren.
 * Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben. Weitere Informationen finden Sie unter [Datenquellenverbindungen](analysis-services-datasource.md).
 
-## <a name="supported-on-premises-data-sources"></a>Unterstützte lokale Datenquellen
-Das Gateway unterstützt Verbindungen zwischen dem Azure Analysis Services-Server und den folgenden lokalen Datenquellen:
 
-* SQL Server
-* SQL Data Warehouse
-* APS
-* Oracle
-* Teradata
-
-## <a name="download"></a>Download
+## <a name="download"></a>Herunterladen
  [Gateway herunterladen](https://aka.ms/azureasgateway)
 
 ## <a name="install-and-configure"></a>Installieren und konfigurieren
@@ -128,7 +125,7 @@ De facto ist das lokale Datengateway, das zum Verbinden von Azure Analysis Servi
 
 Wenn beim Installieren und Konfigurieren eines Gateways Probleme auftreten, konsultieren Sie [Power BI-Gateway – Problembehandlung](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem-tshoot/). Wenn Sie der Meinung sind, dass ein Problem bei der Firewall aufgetreten ist, konsultieren Sie die Abschnitte zu Firewall oder Proxy.
 
-Wenn Sie meinen, dass beim Gateway Proxyprobleme vorliegen, konsultieren Sie [Konfigurieren von Proxyeinstellungen für Power BI-Gateways](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy.md).
+Wenn Sie meinen, dass beim Gateway Proxyprobleme vorliegen, konsultieren Sie [Konfigurieren von Proxyeinstellungen für Power BI-Gateways](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy).
 
 ### <a name="telemetry"></a>Telemetrie
 Telemetrie kann zur Überwachung und Problembehandlung verwendet werden. 

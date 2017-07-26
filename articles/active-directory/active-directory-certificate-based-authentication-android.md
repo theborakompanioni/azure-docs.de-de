@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0e2bbb2a94986ca93035aa553db0f9b54af635d5
-ms.lasthandoff: 04/27/2017
-
+ms.reviewer: nigu
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 58733a36e1753c219df51e1fbe845a2f2a0fdbdc
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter Android
@@ -30,7 +31,9 @@ Bei Verwendung der zertifikatbasierten Authentifizierung können Sie von Azure A
 
 Wenn Sie dieses Feature konfigurieren, ist es bei bestimmten E-Mail- und Microsoft Office-Anwendungen auf Ihrem mobilen Gerät nicht länger erforderlich, einen Benutzernamen und ein Kennwort einzugeben. 
 
-Dieses Thema behandelt die Voraussetzungen und die unterstützten Szenarien für die Konfiguration der zertifikatbasierten Authentifizierung auf Android-Geräten für Mandantenbenutzer mit Office 365 Enterprise-, Business-, Education- und US Government-Plänen. 
+Dieses Thema behandelt die Voraussetzungen und die unterstützten Szenarien für die Konfiguration der zertifikatbasierten Authentifizierung auf Android-Geräten für Mandantenbenutzer mit Office 365 Enterprise-, Business-, Education- und US Government- und China-Plänen.
+
+
 
 Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Federal-Plänen verfügbar.
 
@@ -45,6 +48,8 @@ Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Feder
 | Yammer |![Prüfen][1] |
 | Skype for Business |![Prüfen][1] |
 | Azure Information Protection-App |![Prüfen][1] |
+| Microsoft Teams |![Prüfen][1] |
+
 
 
 ### <a name="implementation-requirements"></a>Implementierungsanforderungen

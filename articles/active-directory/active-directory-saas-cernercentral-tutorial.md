@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 06/22/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 5e363a3e59b077a7bccfaff2ae6eee51418c77e5
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 77b5fb94cdfa5722081198aabc59fbf86229c2b0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -38,7 +38,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Zum Konfigurieren der Azure AD-Integration in Cerner Central benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Cerner Central-Abonnement, für das die einmalige Anmeldung aktiviert ist
+- Ein genehmigtes Cerner Central-Systemkonto
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -110,18 +110,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** einen Wert nach folgendem Muster ein: `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata`
+    a. Geben Sie im Textfeld **Bezeichner** einen Wert nach folgendem Muster ein:
+    
+    | |
+    |--|
+    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
+    | `https://<instancename>.sandboxcerner.com/session-api/protocol/saml2/metadata` |
+    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
+    | `https://sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
+    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach einem der folgenden Muster ein: 
+    | |
+    |--|
+    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
+    | `https://cernercentral.com/<instasncename>` |
+    | `https://sandboxcernercentral.com/<instancename>` |
+    | `https://sandboxcernercentral.com/<instancename>` |
+    | `https://<subdomain>.sandboxcernercentral.com/<instancename>` |
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Hier empfehlen wir Ihnen, den eindeutigen Wert der Zeichenfolge im Bezeichner zu verwenden. Wenden Sie sich an das [Cerner Central Supportteam](https://www.cerner.com/support), um diese Werte abzurufen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Cerner Central Supportteam](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations), um diese Werte abzurufen.
  
-5. Klicken Sie auf die Schaltfläche **Save** .
+4. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cernercentral-tutorial/tutorial_general_400.png)
 
-6. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
+5. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
 
     a. Klicken Sie auf **App-Registrierungen**.
     
@@ -141,7 +156,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
-7. Zum Konfigurieren des einmaligen Anmeldens auf der Seite **Cerner Central** müssen Sie die **Metadaten-URL** an den [Cerner Central-Support](https://www.cerner.com/support) senden. Sie konfigurieren das SSO auf der Anwendungsseite, um die Integration abzuschließen.
+6. Zum Konfigurieren des einmaligen Anmeldens auf der Seite **Cerner Central** müssen Sie die **Metadaten-URL** an den [Cerner Central-Support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) senden. Sie konfigurieren das SSO auf der Anwendungsseite, um die Integration abzuschließen.
 
 > [!TIP]
 > Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -180,7 +195,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-cerner-central-test-user"></a>Erstellen eines Testbenutzers für Cerner Central
 
-Damit sich Azure AD-Benutzer bei Cerner Central anmelden können, müssen sie in Cerner Central bereitgestellt werden. Es gibt viele Möglichkeiten zum Erstellen von Benutzern in der Cerner Central-Anwendung. Zum manuellen Erstellen des Benutzers in der Cerner Central-Anwendung arbeiten Sie mit dem [Cerner Central](https://www.cerner.com/support)-Supportteam zusammen.
+Die **Cerner Central**-Anwendung ermöglicht die Authentifizierung über einen beliebigen Partneridentitätsanbieter. Wenn ein Benutzer sich auf der Startseite der Anwendung anmelden kann, ist er Partner und benötigt keine manuelle Bereitstellung.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -216,7 +231,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Cerner Central“ klicken, sollten Sie automatisch bei Ihrer Cerner Central-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://msdn.microsoft.com/library/dn308586).
+Wenn Sie im Zugriffsbereich auf die Kachel „Cerner Central“ klicken, sollten Sie automatisch bei Ihrer Cerner Central-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

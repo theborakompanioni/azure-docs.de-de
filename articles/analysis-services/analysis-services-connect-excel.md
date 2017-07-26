@@ -13,24 +13,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 88d0c2495a13ccf02f7d0e56ce7158ac80dcc2d5
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: ff96602642c56a3cd02aeada056c059573707731
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="connect-with-excel"></a>Herstellen einer Verbindung mit Excel
 
-Sobald Sie in Azure einen Server erstellt und ein tabellarisches Modell bereitgestellt haben, können Sie damit beginnen, eine Verbindung herzustellen und Daten zu durchsuchen. 
+Sobald Sie in Azure einen Server erstellt und ein tabellarisches Modell bereitgestellt haben, können Sie damit beginnen, eine Verbindung herzustellen und Daten zu durchsuchen.
 
 
 ## <a name="connect-in-excel"></a>Eine Verbindung in Excel herstellen
 
-Das Herstellen einer Verbindung mit einem Server in Excel wird unterstützt. Dies geschieht mithilfe der Funktionen „Daten abrufen“ in Excel 2016 oder „Power Query“ in früheren Versionen. Das Herstellen einer Verbindung mithilfe des Import Table Wizard (Assistent „Tabelle importieren“) in Power Pivot wird nicht unterstützt. 
+Das Herstellen einer Verbindung mit einem Server in Excel wird mithilfe der Funktion „Daten abrufen“ in Excel 2016 unterstützt. Das Herstellen einer Verbindung mithilfe des Import Table Wizard (Assistent „Tabelle importieren“) in Power Pivot wird nicht unterstützt. 
 
 **So stellen Sie eine Verbindung in Excel 2016 her**
 
