@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: c40d7107e407a089ea1515357cf9f47d5833edc9
-ms.lasthandoff: 03/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -39,7 +40,7 @@ Für das Data Lake-U-SQL-SDK sind die folgenden Komponenten erforderlich:
 - [Microsoft .NET Framework 4.6 oder höher](https://www.microsoft.com/download/details.aspx?id=17851).
 - Microsoft Visual C++ 14 und Windows SDK 10.0.10240.0 oder höher (in diesem Artikel als „CppSDK“ bezeichnet). Es gibt zwei Möglichkeiten, „CppSDK“ zu erhalten:
 
-    - Installieren Sie [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Im Ordner „Programme“ befindet sich der Ordner „\Windows Kits\10“, z.B. „C:\Programme (x86) \Windows Kits\10“\. Sie finden die Windows 10 SDK-Version unter „\Windows Kits\10\Lib“. Wenn dieser Ordner nicht angezeigt wird, installieren Sie Visual Studio, und wählen Sie während der Installation das Windows 10 SDK aus. Wenn es mit Visual Studio installiert wurde, findet der lokale U-SQL-Compiler es automatisch.
+    - Installieren Sie [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). Im Ordner „Program Files“ befindet sich der Ordner „\Windows Kits\10“, z.B. „C:\Program Files (x86) \Windows Kits\10“. Zudem finden Sie die Windows 10 SDK-Version unter „\Windows Kits\10\Lib“. Wenn dieser Ordner nicht angezeigt wird, installieren Sie Visual Studio, und wählen Sie während der Installation das Windows 10 SDK aus. Wenn es mit Visual Studio installiert wurde, findet der lokale U-SQL-Compiler es automatisch.
 
     ![Windows 10 SDK für lokale Testläufe der Data Lake-Tools für Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
@@ -144,21 +145,21 @@ Der Befehl **run** wird verwendet, um das Skript zu kompilieren und dann die kom
 Im Folgenden sind optionale Argumente für **run** aufgeführt:
 
 
-|Argument|Beschreibung|
-|--------|-----------|
-|-CodeBehind [Standardwert 'False']|Das Skript verfügt über eine CS-CodeBehind-Datei|
-|-CppSDK [Standardwert '']|CppSDK-Verzeichnis|
-|-DataRoot [Standardwert 'DataRoot environment variable']|Datenstamm für die lokale Ausführung, der Standardwert ist die Umgebungsvariable „LOCALRUN_DATAROOT“|
-|-MessageOut [Standardwert '']|Sichern von Meldungen der Konsole in einer Datei|
-|-Parallel [Standardwert '1']|Ausführen des Plans mit der angegebenen Parallelität|
-|-References [Standardwert '']|Liste mit Pfaden zu zusätzlichen Verweisassemblys oder Datendateien mit CodeBehind, getrennt durch „;“|
-|-UdoRedirect [Standardwert 'False']|Generieren einer UDO-Assemblyumleitungskonfiguration|
-|-UseDatabase [Standardwert 'master']|Datenbank, die für die temporäre Assemblyregistrierung von CodeBehind verwendet wird|
-|-Verbose [Standardwert 'False']|Anzeigen ausführlicher Ausgaben der Runtime|
-|-WorkDir [Standardwert 'Current Directory']|Verzeichnis für die Compilernutzung und -ausgaben|
-|-RunScopeCEP [Standardwert '0']|Der zu verwendende ScopeCEP-Modus|
-|-ScopeCEPTempPath [Standardwert 'temp']|Der zum Streamen von Daten zu verwendende Pfad|
-|-OptFlags [Standardwert '']|Durch Trennzeichen getrennte Liste von Flags für die Optimierung|
+|Argument|Standardwert|Beschreibung|
+|--------|-------------|-----------|
+|-CodeBehind|False|Das Skript verfügt über eine CS-CodeBehind-Datei|
+|-CppSDK| |CppSDK-Verzeichnis|
+|-DataRoot| Umgebungsvariable „DataRoot“|Datenstamm für die lokale Ausführung, der Standardwert ist die Umgebungsvariable „LOCALRUN_DATAROOT“|
+|-MessageOut| |Sichern von Meldungen der Konsole in einer Datei|
+|-Parallel|1|Ausführen des Plans mit der angegebenen Parallelität|
+|-References| |Liste mit Pfaden zu zusätzlichen Verweisassemblys oder Datendateien mit CodeBehind, getrennt durch „;“|
+|-UdoRedirect|False|Generieren einer UDO-Assemblyumleitungskonfiguration|
+|-UseDatabase|master|Datenbank, die für die temporäre Assemblyregistrierung von CodeBehind verwendet wird|
+|-Verbose|False|Anzeigen ausführlicher Ausgaben der Runtime|
+|-WorkDir|Aktuelles Verzeichnis|Verzeichnis für die Compilernutzung und -ausgaben|
+|-RunScopeCEP|0|Der zu verwendende ScopeCEP-Modus|
+|-ScopeCEPTempPath|temp|Der zum Streamen von Daten zu verwendende Pfad|
+|-OptFlags| |Durch Trennzeichen getrennte Liste von Flags für die Optimierung|
 
 
 Hier sehen Sie ein Beispiel:
@@ -392,10 +393,7 @@ E_CSC_SYSTEM_INTERNAL: Internal error! Could not load file or assembly 'ScopeEng
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
-* Informationen zu den ersten Schritten der Entwicklung von U-SQL-Anwendungen finden Sie unter [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
 * Informationen zum Erlernen von U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
-* Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 * Informationen zum Protokollieren von Diagnoseinformationen finden Sie unter [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
 * Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Informationen zum Anzeigen von Auftragsdetails finden Sie unter [Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge](data-lake-analytics-data-lake-tools-view-jobs.md).

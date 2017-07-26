@@ -2,55 +2,54 @@
 title: "Tutorial: Azure Active Directory-Integration mit Blackboard Learn – Shibboleth | Microsoft Docs"
 description: "Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Blackboard Learn – Shibboleth konfigurieren."
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: e435cbb4-c0f0-400e-943c-5c923fa8ddf2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 06/05/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: 0fd15c1d01959194ff25ac7f93c015a8edd38057
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 014b0671eb8604235a823c2cf4324a49d94df702
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Tutorial: Azure Active Directory-Integration mit Blackboard Learn – Shibboleth
+
 In diesem Tutorial erfahren Sie, wie Sie Blackboard Learn – Shibboleth in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Blackboard Learn – Shibboleth in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Blackboard Learn – Shibboleth hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Blackboard Learn – Shibboleth anzumelden (einmaliges Anmelden).
-* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+- Sie können in Azure AD steuern, wer Zugriff auf Blackboard Learn – Shibboleth hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Blackboard Learn – Shibboleth anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Um die Azure AD-Integration mit Blackboard Learn – Shibboleth konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-* Ein Abonnement für Blackboard Learn – Shibboleth, für das einmaliges Anmelden aktiviert ist
+- Ein Azure AD-Abonnement
+- Ein Abonnement für Blackboard Learn – Shibboleth, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
-> 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
-
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Blackboard Learn – Shibboleth aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -60,192 +59,159 @@ Zum Konfigurieren der Integration von Blackboard Learn – Shibboleth in Azure A
 
 **Um Blackboard Learn – Shibboleth aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-   
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+
     ![Active Directory][1]
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
     ![Anwendungen][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
     ![Anwendungen][3]
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-    ![Anwendungen][4]
+4. Geben Sie im Suchfeld als Suchbegriff **Blackboard Learn – Shibboleth**ein.
 
-6. Geben Sie im Suchfeld als Suchbegriff **Blackboard Learn – Shibboleth**ein.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_01.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_search.png)
 
-7. Wählen Sie im Ergebnisbereich **Blackboard Learn – Shibboleth** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_02.png)
+5. Wählen Sie im Ergebnisbereich **Blackboard Learn – Shibboleth** aus, und klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Blackboard Learn – Shibboleth basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Blackboard Learn – Shibboleth basierend auf einem Testbenutzer mit dem Namen „Britta Simon“.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Blackboard Learn – Shibboleth als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Blackboard Learn – Shibboleth muss eine Verknüpfungsbeziehung eingerichtet werden.
 
-Diese Verknüpfungsbeziehung wird eingerichtet, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Blackboard Learn – Shibboleth zuweisen.
+Weisen Sie in Blackboard Learn – Shibboleth den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Blackboard Learn – Shibboleth müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Testbenutzers für Blackboard Learn – Shibboleth](#creating-a-blackboard-learn-shibboleth-test-user)**, um eine Entsprechung von Britta Simon in Blackboard Learn – Shibboleth zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Testbenutzers für Blackboard Learn – Shibboleth](#creating-a-blackboard-learn---shibboleth-test-user)**, um eine Entsprechung von Britta Simon in Blackboard Learn – Shibboleth zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Blackboard Learn – Shibboleth-Anwendung.
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Anwendung Blackboard Learn – Shibboleth.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Blackboard Learn – Shibboleth die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Blackboard Learn – Shibboleth** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-   
-    ![Einmaliges Anmelden konfigurieren][6] 
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Blackboard Learn - Shibboleth** auf **Einmaliges Anmelden**.
 
-2. Wählen Sie auf der Seite **How would you like users to sign on to Blackboard Learn - Shibboleth?** (Wie sollen sich Benutzer bei Blackboard Learn – Shibboleth anmelden?) die Option **Azure AD Single Sign-On** (Azure AD – einmaliges Anmelden) aus, und klicken Sie dann auf **Weiter**.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_03.png) 
+    ![Einmaliges Anmelden konfigurieren][4]
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_04.png) 
-   
-    a. Geben Sie im Textfeld **Sign On URL** (Anmelde-URL) die von Ihren Benutzern für die Anmeldung bei Ihrer Blackboard Learn – Shibboleth-Anwendung verwendete URL in folgendem Format ein: **https://\<Ihr Blackboard Learn-Server\>.blackboardlearn.com/Shibboleth.sso/Login**.
-   
-    b. Geben Sie im Textfeld **Identifier** (Bezeichner) die URL in folgendem Format ein: **https://\<Ihr Blackboard Learn-Server\>.blackboardlearn.com/shibboleth-sp**.
-   
-    c. Geben Sie im Textfeld **Reply URL** (Antwort-URL) die URL in folgendem Muster ein: **https://\<Ihr Blackboard Learn-Server\>.blackboardlearn.com/Shibboleth.sso/SAML2/POST**.
-   
-    > [!NOTE]
-    > Sie finden alle Werte im Verbundmetadaten-Dokument, das Sie von Ihrem Blackboard Learn-Partner erhalten haben.
-    > 
-    > 
-   
-    d. click **Weiter**
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_samlbase.png)
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Blackboard Learn – Shibboleth** die folgenden Schritte aus:
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_05.png)
-   
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Next**.
+3. Führen Sie im Abschnitt **Domäne und URLs für Blackboard Learn - Shibboleth** die folgenden Schritte durch:
 
-5. Wenden Sie sich an das Supportteam von Blackboard Learn – Shibboleth, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
-   
-    • Die heruntergeladenen **Metadaten**
-   
-    • Die **Aussteller-URL**
-   
-    • Die **SAML-SSO-URL**
-   
-    • Die **Dienst-URL für einmaliges Abmelden**
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_url.png)
 
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
-   
-    ![Azure AD – einmaliges Anmelden][10]
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/Login`.
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
-   
-    ![Azure AD – einmaliges Anmelden][11]
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<yourblackoardlearnserver>.blackboardlearn.com/shibboleth-sp`
+
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST`
+ 
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Supportteam für den Client von Blackboard Learn – Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx), um diese Werte zu erhalten. 
+
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_400.png)
+    
+6. Klicken Sie im Abschnitt **Konfiguration von Blackboard Learn – Shibboleth** auf **Blackboard Learn – Shibboleth konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_configure.png) 
+
+7. Zum Konfigurieren des einmaligen Anmeldens bei **Blackboard Learn – Shibboleth** müssen Sie die heruntergeladene **XML-Metadaten**-Datei und **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Supportteam für Blackboard Learn – Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx) senden.
+
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][20]
+![Azure AD-Benutzer erstellen][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_09.png) 
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_01.png) 
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-   
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_02.png) 
+
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
-   
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_06.png) 
-   
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-    e. Klicken Sie auf **Weiter**.
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_07.png) 
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="creating-a-blackboard-learn---shibboleth-test-user"></a>Erstellen eines Testbenutzers für Blackboard Learn – Shibboleth
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
-
-### <a name="creating-an-blackboard-learn---shibboleth-test-user"></a>Erstellen eines Testbenutzers für Blackboard Learn – Shibboleth
-In diesem Abschnitt erstellen Sie in Blackboard Learn – Shibboleth einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit Ihrem Blackboard Learn-Partner zusammen, um der Blackboard Learn – Shibboleth-Plattform Benutzer hinzuzufügen.
+In diesem Abschnitt erstellen Sie in Blackboard Learn – Shibboleth einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit Ihrem [Supportteam von Blackboard Learn – Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx) zusammen, um der Plattform Blackboard Learn – Shibboleth Benutzer hinzuzufügen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Blackboard Learn – Shibboleth gewähren.
 
 ![Benutzer zuweisen][200] 
 
 **Um Britta Simon zu Blackboard Learn – Shibboleth zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
     ![Benutzer zuweisen][201] 
 
 2. Wählen Sie in der Anwendungsliste **Blackboard Learn – Shibboleth**aus.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearnshibboleth_50.png) 
 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
-   
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
     ![Benutzer zuweisen][203]
 
-4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-   
-    ![Benutzer zuweisen][205]
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Blackboard Learn – Shibboleth“ klicken, sollten Sie automatisch bei Ihrer Blackboard Learn – Shibboleth-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
@@ -256,19 +222,11 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Blackboard Learn – Shibboleth“
 [3]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

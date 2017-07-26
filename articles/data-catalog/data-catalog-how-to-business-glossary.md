@@ -1,6 +1,6 @@
 ---
-title: "Einrichten des Unternehmensglossars für gesteuertes Markieren | Microsoft Docs"
-description: "Anleitungsartikel zum Unternehmensglossar in Azure Data Catalog zum Definieren und Verwenden eines allgemeinen Geschäftsvokabulars zum Markieren registrierter Datenassets."
+title: "Einrichten des Unternehmensglossars für gesteuertes Markieren in Azure Data Catalog | Microsoft-Dokumentation"
+description: "Anleitungsartikel zum Unternehmensglossar in Azure Data Catalog zum Definieren und Verwenden eines allgemeinen Geschäftsvokabulars zum Markieren registrierter Datenobjekte."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -16,78 +16,73 @@ ms.workload: data-catalog
 ms.date: 05/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8a528f8bccaeb55851ad550aee1da93bf4876730
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 1c0233aa398b975cef5bb346d7c6822e4a47812e
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/01/2017
 
 
 ---
-# <a name="how-to-set-up-the-business-glossary-for-governed-tagging"></a>Einrichten des Unternehmensglossars für gesteuertes Markieren
+# <a name="set-up-the-business-glossary-for-governed-tagging"></a>Einrichten des Unternehmensglossars für gesteuertes Markieren
 ## <a name="introduction"></a>Einführung
-Azure Data Catalog enthält Funktionen für die Datenquellenermittlung. Hiermit können Benutzer Datenquellen, die sie zum Durchführen von Analysen und Treffen von Entscheidungen benötigen, leicht ermitteln und verstehen. Diese Ermittlungsfunktionen haben den größten Nutzen, wenn die Benutzer möglichst viele verfügbare Datenquellen finden und verstehen können.
+Azure Data Catalog ermöglicht die Datenquellenermittlung. Sie können dadurch Datenquellen, die sie zum Durchführen von Analysen und Treffen von Entscheidungen benötigen, leicht ermitteln und verstehen. Diese Funktionen haben den größten Nutzen, wenn Sie möglichst viele verfügbare Datenquellen finden und verstehen können.
 
-Ein Data Catalog-Feature, dass das Verständnis von Assetdaten fördert, ist das Markieren. Das Markieren ermöglicht Benutzern, Schlüsselwörtern ein Asset oder eine Spalte zuzuordnen, was wiederum das Ermitteln des Assets über Suchvorgänge vereinfacht, und erleichtert Benutzern, den Kontext und die Absicht des Assets zu verstehen.
+Ein Data Catalog-Feature, das das Verständnis von Dateiobjekten fördert, ist das Markieren. Mithilfe des Markierens können Sie einem Datenobjekt oder einer Spalte Schlüsselworte zuordnen, wodurch das Datenobjekt bei Suchen einfacher gefunden werden kann. Das Markieren hilft Ihnen auch, den Kontext und Zweck des Datenobjekts einfacher zu verstehen.
 
-Das Markieren kann jedoch gelegentlich spezielle Probleme verursachen. Dies sind Beispiele für Probleme, die das Markieren verursachen kann:
+Das Markieren kann jedoch gelegentlich spezielle Probleme verursachen. Es folgen Beispiele für Probleme, die das Markieren verursachen kann:
 
-1. Benutzer verwenden beim Markieren Abkürzungen für manche Assets und erweiterten Text für andere. Diese Inkonsistenz behindert die Ermittlung von Assets, obwohl das Ziel war, die Assets mit dem gleichen Tag zu markieren.
-2. Tags, die in unterschiedlichen Kontexten unterschiedliche Bedeutungen haben. So könnte sich z.B. ein Tag namens „Umsatz“ auf einem Kundendataset auf den Umsatz pro Kunde beziehen, aber das gleiche Tag könnte sich auf einem Quartalsverkaufsdataset auf den Quartalsumsatz des Unternehmens beziehen.  
+* Das Verwenden von Abkürzungen für einige Datenobjekte und von ausführlichem Text für andere. Diese Inkonsistenz behindert die Ermittlung von Datenobjekten, obwohl es das Ziel war, die Datenobjekte mit dem gleichen Tag zu markieren.
+* Potenzielle Bedeutungsabweichungen abhängig vom Kontext. So kann sich z.B. ein Tag namens *Umsatz* für ein Kundendataset auf den Umsatz pro Kunde beziehen. Doch das gleiche Tag für ein Dataset zum Quartalsabsatz kann sich auf den Quartalsumsatz des Unternehmens beziehen.  
 
-Um diesen und anderen, ähnlichen Problemen zu begegnen, enthält Data Catalog ein Unternehmensglossar.
+Um diesen und anderen ähnlichen Problemen zu begegnen, bietet Data Catalog ein Unternehmensglossar.
 
-Das Unternehmensglossar von Data Catalog ermöglicht Organisationen, die wichtigsten Geschäftsbegriffe und ihre Definitionen zu dokumentieren, um ein allgemeines Geschäftsvokabular zu erstellen. Diese Governance sorgt für Konsistenz bei der Verwendung von Daten in der gesamten Organisation. Nachdem Begriffe im Unternehmensglossar definiert worden sind, können sie Datenassets im Katalog zugewiesen werden, wobei der gleiche Ansatz wie beim Markieren verwendet und so *gesteuertes Markieren*ermöglicht wird.
-
-> [!NOTE]
-> Die in diesem Artikel beschriebenen Funktionen sind nur in der Standard Edition von Azure Data Catalog verfügbar. Die kostenlose Edition bietet keine Funktionen für gesteuertes Markieren bzw. ein Unternehmensglossar.
->
->
+Das Unternehmensglossar von Data Catalog ermöglicht einer Organisation, die wichtigsten Geschäftsbegriffe und ihre Definitionen zu dokumentieren, um ein allgemeines Geschäftsvokabular zu erstellen. Diese Governance sorgt für Konsistenz bei der Verwendung von Daten in der gesamten Organisation. Nachdem ein Begriff im Unternehmensglossar definiert wurde, kann er einem Datenobjekt im Katalog zugewiesen werden. Diese *gesteuertes Markieren* genannte Vorgehensweise folgt demselben Ansatz wie das Markieren.
 
 ## <a name="glossary-availability-and-privileges"></a>Glossarverfügbarkeit und Berechtigungen
-*Das Unternehmensglossar ist in der Standard Edition von Azure Data Catalog verfügbar. Die kostenlose Edition von Data Catalog enthält kein Glossar.*
+Das Unternehmensglossar ist nur in der Standard Edition von Azure Data Catalog verfügbar. Die Free Edition von Data Catalog bietet kein Glossar und keine Möglichkeiten zum gesteuerten Markieren.
 
-Der Zugriff auf das Unternehmensglossar ist über die Option „Glossar“ im Navigationsmenü des Data Catalog-Portals möglich.  
+Sie können auf das Unternehmensglossar über die Option **Glossar** im Navigationsmenü des Data Catalog-Portals zugreifen.  
 
 ![Zugriff auf das Unternehmensglossar](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
-Data Catalog-Administratoren und Mitglieder der Rolle „Glossaradministratoren“ können Glossarbegriffe im Unternehmensglossar erstellen, bearbeiten und löschen. Alle Data Catalog-Benutzer können die Begriffsdefinitionen anzeigen und Assets mit Glossarbegriffen markieren.
+Data Catalog-Administratoren und Mitglieder der Rolle „Glossaradministratoren“ können Glossarbegriffe im Unternehmensglossar erstellen, bearbeiten und löschen. Alle Data Catalog-Benutzer können die Begriffsdefinitionen anzeigen und Datenobjekte mit Glossarbegriffen markieren.
 
 ![Hinzufügen eines neuen Glossarbegriffs](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>Erstellen von Glossarbegriffen
-Data Catalog-Administratoren und Glossaradministratoren können neue Glossarbegriffe erstellen, indem sie auf die Schaltfläche „Neuer Begriff“ klicken, um Glossarbegriffe mit den folgenden Feldern zu erstellen:
+Data Catalog- und Glossaradministratoren können neue Glossarbegriffe erstellen, indem sie auf die Schaltfläche **Neuer Begriff** klicken. Glossarbegriffe enthalten die folgenden Felder:
 
 * Eine geschäftliche Definition für den Begriff
-* Eine Beschreibung, die die beabsichtigte Verwendung oder die Geschäftsregeln für das Asset/die Spalte erfasst
+* Eine Beschreibung, die die beabsichtigte Verwendung oder die Geschäftsregeln für das Datenobjekt oder die Spalte erfasst
 * Eine Liste der Beteiligten, die den Begriff am besten kennen
 * Der übergeordnete Begriff, der die Hierarchie definiert, in die der Begriff eingegliedert ist
 
 ## <a name="glossary-term-hierarchies"></a>Hierarchien von Glossarbegriffen
-Mit dem Data Catalog-Unternehmensglossar können Sie Ihr Geschäftsvokabular in einer Hierarchie von Begriffen darstellen. So können Organisationen eine Klassifizierung der Begriffe erstellen, die ihre Unternehmenstaxonomie besser darstellt.
+Mithilfe des Data Catalog-Unternehmensglossars kann eine Organisation ihr Geschäftsvokabular als Begriffshierarchie beschreiben und eine Begriffsklassifizierung erstellen, die ihre Geschäftstaxonomie besser abbildet.
 
-Der Name eines Begriffs muss auf einer bestimmten Ebene der Hierarchie eindeutig sein – doppelte Namen sind nicht zulässig. Es gibt keine Beschränkung der Anzahl der Hierarchieebenen, aber eine aus höchstens drei Ebenen bestehende Hierarchie ist oft leichter zu verstehen.
+Ein Begriff muss auf einer bestimmten Ebene der Hierarchie eindeutig sein. Doppelte Namen sind nicht zulässig. Es gibt keine Beschränkung der Anzahl der Hierarchieebenen, aber eine aus höchstens drei Ebenen bestehende Hierarchie ist oft leichter zu verstehen.
 
 Die Verwendung von Hierarchien im Unternehmensglossar ist optional. Wenn Sie das übergeordnete Begriffsfeld für Glossarbegriffe frei lassen, wird eine flache (nicht hierarchische) Liste von Begriffen im Glossar erstellt.  
 
-## <a name="tagging-assets-with-glossary-terms"></a>Markieren von Assets mit Glossarbegriffen
-Sobald Glossarbegriffe innerhalb des Katalogs definiert wurden, ist die Erfahrung des Markierens von Assets optimiert für das Durchsuchen des Glossars, sobald der Benutzer ihren Tag eingibt. Das Data Catalog-Portal zeigt dem Benutzer eine Liste der übereinstimmenden Glossarbegriffe zur Auswahl an. Wenn der Benutzer einen Glossarbegriff aus der Liste auswählt, wird er dem Asset als Tag (auch bekannt als Glossartag) hinzugefügt. Wahlweise kann der Benutzer auch ein neues Tag erstellen, indem er einen nicht im Glossar enthaltenen Begriff eingibt (auch bekannt als Benutzertag).
+## <a name="tagging-assets-with-glossary-terms"></a>Markieren von Datenobjekten mit Glossarbegriffen
+Sobald Glossarbegriffe innerhalb des Katalogs definiert wurden, wird das Markierens von Datenobjekten so optimiert, dass das Glossar durchsucht wird, sobald ein Benutzer ein Tag eingibt. Das Data Catalog-Portal zeigt eine Liste übereinstimmender Glossarbegriffe zur Auswahl an. Wenn der Benutzer einen Glossarbegriff in der Liste auswählt, wird er dem Datenobjekt als Tag (bzw. Glossartag) hinzugefügt. Wahlweise kann der Benutzer auch ein neues Tag erstellen, indem er einen nicht im Glossar enthaltenen Begriff eingibt (was als Benutzertag bezeichnet wird).
 
-![Datenasset, das mit einem Benutzertag und zwei Glossartags markiert ist](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
+![Datenobjekt, das mit einem Benutzertag und zwei Glossartags markiert ist](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
 
 > [!NOTE]
-> Benutzertags sind der einzige Tagtyp, der in der kostenlosen Edition von Data Catalog unterstützt wird.
+> Benutzertags sind der einzige Tagtyp, der in der Free Edition von Data Catalog unterstützt wird.
 >
 >
 
 ### <a name="hover-behavior-on-tags"></a>Zeigeverhalten bei Tags
-Im Data Catalog-Portal unterscheiden sich die zwei Tagtypen visuell, auch ihr Zeigeverhalten ist unterschiedlich. Wenn der Benutzer den Cursor auf ein Benutzertag setzt, sieht er den Tagtext und den oder die Benutzer, die das Tag hinzugefügt haben. Wenn der Benutzer den Cursor auf ein Glossartag setzt, sieht er auch die Definition des Glossarbegriffs und einen Link zum Öffnen des Unternehmensglossars, um die vollständige Definition des Begriffs anzuzeigen.
+Im Data Catalog-Portal unterscheiden sich die beiden Tagtypen visuell und weisen ein unterschiedliches Zeigeverhalten auf. Wenn Sie den Cursor auf ein Benutzertag bewegen, sehen Sie den Tagtext und die Benutzer, die das Tag hinzugefügt haben. Wenn Sie den Cursor auf ein Glossartag bewegen, sehen Sie auch die Definition des Glossarbegriffs und einen Link zum Öffnen des Unternehmensglossars, um die vollständige Definition des Begriffs anzuzeigen.
 
 ### <a name="search-filters-for-tags"></a>Suchfilter für Tags
-Sowohl Glossar- als auch Benutzertags können durchsucht und als Filter in einer Suche angewendet werden.
+Glossar- und Benutzertags können durchsucht und als Filter in einer Suche angewendet werden.
 
 ## <a name="summary"></a>Zusammenfassung
-Dank des Unternehmensglossars in Azure Data Catalog und des dadurch möglichen gesteuerten Markierens können Datenassets konsistent identifiziert, verwaltet und ermittelt werden. Das Unternehmensglossar kann das Lernen des Geschäftsvokabulars unter den Benutzern einer Organisation fördern und unterstützt die Erfassung sinnvoller Metadaten, sodass Ermittlung und Verständnis eines Assets völlig unkompliziert sind.
+Dank des Unternehmensglossars in Azure Data Catalog und des dadurch ermöglichten gesteuerten Markierens können Datenobjekte einheitlich bestimmt, verwaltet und ermittelt werden. Das Unternehmensglossar kann das Erlernen des Geschäftsvokabulars durch die Mitarbeiter der Organisation fördern. Das Glossar unterstützt auch das Erfassen aussagekräftiger Metadaten, was das Ermitteln und Verstehen von Datenobjekten vereinfacht.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 * [REST-API-Dokumentation für Unternehmensglossarvorgänge](https://msdn.microsoft.com/library/mt708855.aspx)
 

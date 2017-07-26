@@ -1,6 +1,6 @@
 ---
-title: "Azure AD B2C – Integrieren des Austauschs von REST-API-Ansprüchen als Validierung in benutzerdefinierten Richtlinien | Microsoft-Dokumentation"
-description: Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
+title: "Azure Active Directory B2C: REST-API-Anspruchsaustausch-Vorgänge zur Validierung | Microsoft-Dokumentation"
+description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 46abe48c3c9a7aab3fe013811d088a63957fe500
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: eb44a0d2234c9ee3801d8b3a1655d877aa2f4fef
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/24/2017
 
 ---
 
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journeys-as-validation-on-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journeys als Validierung der Benutzereingabe
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Validierung der Benutzereingabe
 
-Das **Identity Experience Framework** (IEF), das Azure AD B2C zugrunde liegt, ermöglicht dem Identitätsentwickler das Integrieren einer Interaktion mit einer RESTful-API in eine User Journey.  
+Das Framework für die Identitätsfunktion (Identity Experience Framework, IEF), das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, ermöglicht dem Identitätsentwickler die Integration einer Interaktion mit einer RESTful-API in eine User Journey.  
 
-Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, Azure AD B2C User Journeys zu erstellen, die mit RESTful-Diensten interagieren.
+Am Ende dieser exemplarischen Vorgehensweise sind Sie in der Lage, eine Azure AD B2C User Journey zu erstellen, die mit RESTful-Diensten interagiert.
 
-Das IEF sendet Daten in Ansprüchen und erhält Daten in Ansprüchen zurück.  Die Interaktion in die API kann als Austausch von REST-API-Ansprüchen (in Form eines Validierungsprofils), der innerhalb eines Orchestrierungsschritts erfolgt, entworfen werden.
+Das IEF sendet Daten in Ansprüchen und erhält Daten in Ansprüchen zurück. Die Interaktion mit der API bietet Folgendes:
 
-- Hiermit wird normalerweise die Eingabe eines Benutzers validiert.
-- Wenn der Wert des Benutzers abgelehnt wird, kann er erneut versuchen, einen gültigen Wert einzugeben, und für den Benutzer kann eine Fehlermeldung zurückgegeben werden.
+- Kann als Austausch von REST-API-Ansprüchen oder als Validierungsprofil entworfen werden, der bzw. das innerhalb eines Orchestrierungsschritts erfolgt.
+- Normalerweise wird die Eingabe des Benutzers validiert. Wenn der Wert des Benutzers abgelehnt wird, kann er erneut versuchen, einen gültigen Wert einzugeben, wodurch eventuell eine Fehlermeldung zurückgegeben werden kann.
 
-Die Interaktion kann auch als Orchestrierungsschritt entworfen werden. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journeys als Orchestrierungsschritt](active-directory-b2c-rest-api-step-custom.md).
+Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](active-directory-b2c-rest-api-step-custom.md).
 
 Für das Beispiel für das Validierungsprofil verwenden wir die User Journey der Profilbearbeitung in der Starter Pack-Datei „ProfileEdit.xml“.
 
@@ -41,15 +41,15 @@ Wir können sicherstellen, dass der Name, der vom Benutzer bei der Profilbearbei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Konfiguration eines Azure AD B2C-Mandanten zur Durchführung der Registrierung/Anmeldung für ein lokales Konto wie unter [Erste Schritte](active-directory-b2c-get-started-custom.md) beschrieben.
-- Ein REST-API-Endpunkt, mit dem interagiert werden kann. Die Demowebsite [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) wurde mit einem REST-API-Dienst eingerichtet, der für diese exemplarische Vorgehensweise verwendet wird.
+- Ein Azure AD B2C-Mandant ist zur Durchführung der Registrierung/Anmeldung für ein lokales Konto konfiguriert, wie unter [Erste Schritte](active-directory-b2c-get-started-custom.md) beschrieben.
+- Ein REST-API-Endpunkt, mit dem interagiert werden kann. In dieser exemplarischen Vorgehensweise haben wir mit einem REST-API-Dienst die Demowebsite [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) eingerichtet.
 
-## <a name="step-1---prepare-the-rest-api-function"></a>Schritt 1: Vorbereiten der REST-API-Funktion
+## <a name="step-1-prepare-the-rest-api-function"></a>Schritt 1: Vorbereiten der REST-API-Funktion
 
 > [!NOTE]
-> Die Einrichtung von REST-API-Funktionen wird in diesem Artikel nicht beschrieben. Für [Azure-Funktionen-Apps](https://docs.microsoft.com/azure/azure-functions/functions-reference) gibt es ein hervorragendes Toolkit für die Erstellung von RESTful-Diensten in der Cloud.
+> Die Einrichtung von REST-API-Funktionen wird in diesem Artikel nicht beschrieben. Für [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) gibt es ein hervorragendes Toolkit zur Erstellung von RESTful-Diensten in der Cloud.
 
-Wir haben eine Azure-Funktion erstellt, die einen Anspruch erhält. Dieser wird als „playerTag“ erwartet, und es wird überprüft, ob der Anspruch vorhanden ist. Sie können auf [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) auf den gesamten Azure-Funktionscode zugreifen.
+Wir haben eine Azure-Funktion erstellt, die einen als `playerTag` erwarteten Anspruch empfängt. Die Funktion überprüft, ob dieser Anspruch vorhanden ist. Sie können auf [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) auf den gesamten Azure-Funktionscode zugreifen.
 
 ```csharp
 if (requestContentAsJObject.playerTag == null)
@@ -76,14 +76,14 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
 return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-Der von der Azure-Funktion zurückgegebene `userMessage`-Anspruch wird vom Identity Experience Framework erwartet und wird für den Benutzer als Zeichenfolge dargestellt, wenn die Validierung fehlschlägt. Ein Beispiel hierfür ist das Zurückgeben des Konfliktstatus 409 im obigen Beispiel.
+Das IEF erwartet den Anspruch `userMessage`, der die Azure-Funktion zurückgibt. Dieser Anspruch wird dem Benutzer als Zeichenfolge dargestellt, wenn die Überprüfung fehlschlägt, z.B., wenn im vorherigen Beispiel die Fehlermeldung 409 bezüglich eines Statuskonflikts zurückgegeben wird.
 
-## <a name="step-2---configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Schritt 2: Konfigurieren des RESTful-API-Anspruchsaustauschs als technisches Profil in der Datei „TrustFrameworkExtensions.xml“
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Schritt 2: Konfigurieren des RESTful-API-Anspruchsaustauschs als technisches Profil in der Datei „TrustFrameworkExtensions.xml“
 
-Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, der für den RESTful-Dienst gewünscht ist. Öffnen Sie die Datei `TrustFrameworkExtensions.xml`, und fügen Sie im `<ClaimsProviders>`-Element den XML-Codeausschnitt hinzu.
+Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, der für den RESTful-Dienst gewünscht ist. Öffnen Sie die Datei „TrustFrameworkExtensions.xml“, und fügen Sie den folgenden XML-Ausschnitt in das Element `<ClaimsProviders>` ein.
 
 > [!NOTE]
-> Betrachten Sie den „Restful Provider, Version 1.0.0.0“, der unten als Protokoll angegeben ist, als die Funktion, die mit dem externen Dienst interagiert.  Eine vollständige Definition des Schemas finden Sie unter <!-- TODO: Link to RESTful Provider schema definition>-->.
+> Im folgenden XML-Ausschnitt wird der RESTful-Anbieter `Version=1.0.0.0` als Protokoll beschrieben. Betrachten Sie diesen als Funktion, die mit dem externen Dienst interagiert. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```xml
 <ClaimsProvider>
@@ -111,27 +111,27 @@ Ein technisches Profil umfasst die vollständige Konfiguration des Austauschs, d
 </ClaimsProvider>
 ```
 
-Das `InputClaims`-Element definiert die Ansprüche, die von der IEE zum REST-Dienst gesendet werden. Im obigen Beispiel wird der Inhalt des `givenName`-Anspruchs als `playerTag` an den REST-Dienst gesendet. In diesem Beispiel wird von der IEE keine Rückgabe von Ansprüchen erwartet. Stattdessen wird auf eine Antwort vom REST-Dienst gewartet, und basierend auf den empfangenen Statuscodes werden die entsprechenden Schritte ausgeführt.
+Das `InputClaims`-Element definiert die Ansprüche, die vom IEF zum REST-Dienst gesendet werden. In diesem Beispiel wird der Inhalt des Anspruchs `givenName` als `playerTag` an den REST-Dienst gesendet. In diesem Beispiel erwartet das IEF keine Ansprüche zurück. Stattdessen wartet es auf eine Antwort des REST-Diensts und agiert basierend auf den empfangenen Statuscodes.
 
-## <a name="step-3---include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-wish-to-validate-the-user-input"></a>Schritt 3: Einfügen des Austauschs von Ansprüchen des RESTful-Diensts in ein selbstbestätigtes technisches Profil zum Validieren der Benutzereingabe
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Schritt 3: Einfügen des Austauschs von Ansprüchen des RESTful-Diensts in ein selbstbestätigtes technisches Profil zum Validieren der Benutzereingabe
 
-Der Validierungsschritt wird am häufigsten bei der Interaktion mit einem Benutzer eingesetzt.  Alle Interaktionen, bei denen vom Benutzer eine Eingabe erwartet wird, sind **selbstbestätigte technische Profile**. In diesem Beispiel fügen wir diese Validierung dem technischen Profil (TP) **Self-Asserted-ProfileUpdate** hinzu.  Dies ist das TP, das von der RP-Richtliniendatei `Profile Edit` verwendet wird.
+Der Validierungsschritt wird am häufigsten bei der Interaktion mit einem Benutzer eingesetzt. Alle Interaktionen, bei denen vom Benutzer eine Eingabe erwartet wird, sind *selbstbestätigte technische Profile*. In diesem Beispiel fügen wir diese Validierung dem technischen Profil „Self-Asserted-ProfileUpdate“ hinzu. Dies ist das technische Profil, das die Richtliniendatei der vertrauenden Seite `Profile Edit` verwendet.
 
-Gehen Sie wie folgt vor, um dem selbstbestätigten Profil den Anspruchsaustausch hinzuzufügen:
+So fügen Sie dem selbstbestätigten technischen Profil den Anspruchsaustausch hinzu:
 
-1. Öffnen Sie die TrustFrameworkBase-Datei, und suchen Sie nach `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
-2. Prüfen Sie die Konfiguration dieses TP, und ermitteln Sie, wie der Austausch mit dem Benutzer basierend auf Ansprüchen definiert ist: Ansprüche, die vom Benutzer gefordert werden (Eingabeansprüche), und Ansprüche, die vom selbstbestätigten Anbieter zurückerwartet werden (Ausgabeansprüche).
+1. Öffnen Sie die Datei „TrustFrameworkBase.xml“, und suchen Sie nach `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
+2. Überprüfen Sie die Konfiguration dieses technischen Profils. Ermitteln Sie, wie der Austausch mit dem Benutzer basierend auf Ansprüchen definiert ist: Ansprüche, die vom Benutzer gefordert werden (Eingabeansprüche), und Ansprüche, die vom selbstbestätigten Anbieter zurückerwartet werden (Ausgabeansprüche).
 3. Suchen Sie nach `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`. Beachten Sie, dass dieses Profil als Orchestrierungsschritt 6 von `<UserJourney Id="ProfileEdit">` aufgerufen wird.
 
-## <a name="step-4---upload-and-test-the-profile-edit-rp-policy-file"></a>Schritt 4: Hochladen und Testen der RP-Richtliniendatei für die Profilbearbeitung
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Schritt 4: Hochladen und Testen der Richtliniendatei der vertrauenden Seite für die Profilbearbeitung
 
-1. Laden Sie die neue Version der Datei `TrustframeworkExtensions` hoch.
+1. Laden Sie die neue Version der Richtliniendatei „TrustFrameworkExtensions.xml“ hoch.
 2. Verwenden Sie die Option **Jetzt ausführen**, um die RP-Richtliniendatei für die Profilbearbeitung zu testen.
-3. Testen Sie die Validierung, indem Sie einen der vorhandenen Namen (z.B. „mcvinny“) im Feld **Given Name** (Angegebener Name) eingeben. Wenn alles richtig eingerichtet ist, sollten Sie eine Meldung mit dem Hinweis erhalten, dass das `player tag` bereits verwendet wird.
+3. Testen Sie die Validierung, indem Sie einen der vorhandenen Namen (z.B. „mcvinny“) in das Feld **Angegebener Name** eingeben. Wenn alles richtig eingerichtet ist, sollten Sie eine Meldung mit dem Hinweis erhalten, dass das Playertag bereits verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[How to modify profile edit and user registration to gather additional information from your users](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) (Ändern der Profilbearbeitung und der Benutzerregistrierung zum Sammeln von Informationen von Ihren Benutzern)
+[Ändern der Profilbearbeitung und der Benutzerregistrierung zum Sammeln zusätzlicher Informationen von Ihren Benutzern](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journeys als Orchestrierungsschritt](active-directory-b2c-rest-api-step-custom.md)
+[Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](active-directory-b2c-rest-api-step-custom.md)
 

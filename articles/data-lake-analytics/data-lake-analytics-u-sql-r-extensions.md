@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/01/2017
+ms.date: 06/20/2017
 ms.author: saveenr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 3728d81243a1ac9f501bd8d7d538c1f73b954405
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -26,14 +26,14 @@ ms.lasthandoff: 05/05/2017
 # <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Tutorial: Erste Schritte beim Erweitern von U-SQL um R
 
 Im folgenden Beispiel werden die grundlegenden Schritte für eine Bereitstellung von R-Code veranschaulicht:
-* Verwenden Sie die REFERENCE ASSEMBLY-Anweisung, um R-Erweiterungen für das U-SQL-Skript zu aktivieren.
-* Verwenden Sie den REDUCE-Vorgang, um die Eingabedaten für einen Schlüssel zu partitionieren.
-* Die R-Erweiterungen für U-SQL enthalten einen integrierten Reducer (Extension.R.Reducer), mit dem R-Code auf jedem Scheitelpunkt ausgeführt wird, der dem Reducer zugewiesen ist. 
-* Verwenden von dedizierten benannten Datenrahmen („inputFromUSQL“ und „outputToUSQL“), um Daten zwischen USQL und R zu übergeben. Die Namen von Eingabe- und Ausgabedatenrahmen-IDs sind festgelegt (das heißt, Benutzer können diese vordefinierten Namen von Eingabe- und Ausgabedatenrahmen-IDs nicht ändern).
+* Verwenden Sie die `REFERENCE ASSEMBLY`-Anweisung zum Aktivieren von R-Erweiterungen für das U-SQL-Skript.
+* Verwenden Sie den ` REDUCE`-Vorgang zum Partitionieren der Eingabedaten für einen Schlüssel.
+* Die R-Erweiterungen für U-SQL enthalten einen integrierten Reducer (`Extension.R.Reducer`), mit dem R-Code auf jedem Scheitelpunkt ausgeführt wird, der dem Reducer zugewiesen ist. 
+* Verwenden von dedizierten benannten Datenrahmen („`inputFromUSQL`“ und „`outputToUSQL `“), um Daten zwischen U-SQL und R zu übergeben. Die Namen von Eingabe- und Ausgabedatenrahmen-IDs sind festgelegt (d.h., Benutzer können diese vordefinierten Namen von Eingabe- und Ausgabedatenrahmen-IDs nicht ändern).
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>Einbetten von R-Code in das U-SQL-Skript
 
-Sie können den R-Code mithilfe des Befehlsparameters des Reducers „Extension.R.Reducer“ in Ihr U-SQL-Skript einbinden. Sie können das R-Skript beispielsweise als Zeichenfolgenvariable deklarieren und als Parameter an den Reducer übergeben.
+Sie können den R-Code mithilfe des Befehlsparameters des Reducers „`Extension.R.Reducer`“ in Ihr U-SQL-Skript einbinden. Sie können das R-Skript beispielsweise als Zeichenfolgenvariable deklarieren und als Parameter an den Reducer übergeben.
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -98,10 +98,10 @@ Verwenden Sie ein U-SQL-Skript, um das R-Skript mit der Anweisung „DEPLOY RESO
 ## <a name="how-r-integrates-with-u-sql"></a>Integration von R in U-SQL
 
 ### <a name="datatypes"></a>Datentypen
-* Zeichenfolgen- und numerische Spalten von U-SQL werden unmittelbar zwischen R-Datenrahmen (DataFrame) und U-SQL konvertiert [unterstützte Typen: double, string, bool, integer, byte].
-* Der Datentyp „factor“ wird in U-SQL nicht unterstützt.
-* „byte[]“ muss als Base64-codierte Zeichenfolge serialisiert werden.
-* U-SQL-Zeichenfolgen können in Faktoren (factors) in R-Code konvertiert werden, nachdem U-SQL R-Eingabedatenrahmen erstellt oder indem Sie den Reducer-Parameter „stringsAsFactors“ auf „true“ festlegen.
+* Zeichenfolgen- und numerische Spalten von U-SQL werden unmittelbar zwischen R-Datenrahmen (DataFrame) und U-SQL konvertiert [unterstützte Typen: `double`, `string`, `bool`, `integer`, `byte`].
+* Der Datentyp „`Factor`“ wird in U-SQL nicht unterstützt.
+* „`byte[]`“ muss als Base64-codierte `string` serialisiert werden.
+* U-SQL-Zeichenfolgen können in Faktoren (factors) in R-Code konvertiert werden, nachdem U-SQL R-Eingabedatenrahmen erstellt oder indem Sie den Reducer-Parameter auf „`stringsAsFactors: true`“ festlegen.
 
 ### <a name="schemas"></a>Schemas
 * U-SQL-Datasets dürfen keine doppelten Spaltennamen haben.
@@ -111,7 +111,7 @@ Verwenden Sie ein U-SQL-Skript, um das R-Skript mit der Anweisung „DEPLOY RESO
 
 ### <a name="functional-limitations"></a>Funktionale Beschränkungen
 * Das R-Modul kann nicht zweimal in demselben Prozess instanziiert werden. 
-* Derzeit unterstützt U-SQL keine Combiner-UDOs für die Vorhersage mithilfe von partitionierten Modellen, die von Reducer-UDOs erzeugt wurden. Benutzer können die partitionierten Modelle als Ressource deklarieren und sie in ihrem R-Skript verwenden (siehe Beispielcode „ExtR_PredictUsingLMRawStringReducer.usql“)
+* Derzeit unterstützt U-SQL keine Combiner-UDOs für die Vorhersage mithilfe von partitionierten Modellen, die von Reducer-UDOs erzeugt wurden. Benutzer können die partitionierten Modelle als Ressource deklarieren und sie in ihrem R-Skript verwenden (siehe den Beispielcode „`ExtR_PredictUsingLMRawStringReducer.usql`“)
 
 ### <a name="r-versions"></a>Versionen von R
 Es wird nur R 3.2.2 unterstützt.
@@ -170,11 +170,11 @@ Es wird nur R 3.2.2 unterstützt.
 Jedem Scheitelpunkt ist eine begrenzte Menge an Arbeitsspeicher zugewiesen. Da die DataFrames für die Ein- und Ausgabe im Arbeitsspeicher im R-Code vorhanden sein müssen, darf die Gesamtgröße für die Ein- und Ausgabe nicht mehr als 500 GB betragen.
 
 ### <a name="sample-code"></a>Beispielcode
-Weiterer Beispielcode ist in Ihrem Data Lake Store-Konto verfügbar, nachdem Sie die Erweiterungen U-SQL Advanced Analytics installiert haben. Der Pfad für weitere Beispielcodes ist: <ihre_konto_adresse>/usqlext/beispiele/R. 
+Weiterer Beispielcode ist in Ihrem Data Lake Store-Konto verfügbar, nachdem Sie die Erweiterungen U-SQL Advanced Analytics installiert haben. Der Pfad für weiteren Beispielcode ist: `<your_account_address>/usqlext/samples/R`. 
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>Bereitstellen von benutzerdefinierten R-Modulen mit U-SQL
 
-Erstellen Sie zunächst ein benutzerdefiniertes R-Modul und zippen sie es. Laden Sie anschließende die ZIP-Datei mit dem benutzerdefinierten R-Modul in Ihren ADL-Store hoch. Im Beispiel laden Sie „magittr_1.5.zip“ in den Stamm des standardmäßigen ADLS-Kontos für das verwendete ADLA-Konto hoch. Deklarieren Sie das Modul, sobald Sie es in den ADL-Store hochladen haben, als „DEPLOY RESOURCE“, um es in Ihrem U-SQL-Skript verfügbar zu machen. Rufen Sie anschließend „install.packages“ auf, um es zu installieren.
+Erstellen Sie zunächst ein benutzerdefiniertes R-Modul und zippen sie es. Laden Sie anschließende die ZIP-Datei mit dem benutzerdefinierten R-Modul in Ihren ADL-Store hoch. Im Beispiel laden Sie „magittr_1.5.zip“ in den Stamm des standardmäßigen ADLS-Kontos für das verwendete ADLA-Konto hoch. Deklarieren Sie das Modul, sobald Sie es in den ADL-Store hochladen haben, als „DEPLOY RESOURCE“, um es in Ihrem U-SQL-Skript verfügbar zu machen. Rufen Sie anschließend „`install.packages`“ auf, um es zu installieren.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -212,7 +212,6 @@ Erstellen Sie zunächst ein benutzerdefiniertes R-Modul und zippen sie es. Laden
     USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix");
 
     OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

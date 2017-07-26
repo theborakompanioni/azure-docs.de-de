@@ -12,13 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 06/01/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: ba842028ecda47b8011cba948d7c92417214c2d0
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: db04507d50b6dfe767ede4479fe0b02af2461576
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -55,7 +55,7 @@ Bevor Sie eine Sicherung durchführen, müssen Sie die Speichereinstellungen fü
 
     ![Container auswählen](./media/analysis-services-backup/aas-backup-container.png)
 
-5. Speichern Sie die Sicherungseinstellungen. Bei jeder Änderung der Speichereinstellungen und beim Aktivieren oder Deaktivieren der Sicherung müssen Sie die Änderungen speichern.
+5. Speichern Sie die Sicherungseinstellungen.
 
     ![Sicherungseinstellungen speichern](./media/analysis-services-backup/aas-backup-save.png)
 
@@ -67,7 +67,7 @@ Bevor Sie eine Sicherung durchführen, müssen Sie die Speichereinstellungen fü
 
 2. Klicken Sie unter **Datenbank sichern** > **Sicherungsdatei** auf **Durchsuchen**.
 
-3. Überprüfen Sie im Dialogfeld **Datei speichern unter** den Ordnerpfad, und geben Sie einen Namen für die Sicherungsdatei ein. Standardmäßig wird eine ABF-Erweiterung an den Dateinamen angefügt. 
+3. Überprüfen Sie im Dialogfeld **Datei speichern unter** den Ordnerpfad, und geben Sie einen Namen für die Sicherungsdatei ein. 
 
 4. Wählen Sie im Dialogfeld **Datenbank sichern** Optionen aus.
 
@@ -89,7 +89,7 @@ Bei der Wiederherstellung muss sich die Sicherungsdatei im Speicherkonto befinde
 
 
 > [!NOTE]
-> Wenn Sie eine Datenbank für ein tabellarisches Modell von einem lokalen SQL Server Analysis Services-Server wiederherstellen, müssen Sie zuerst alle Domänenbenutzer aus den Rollen des Modells entfernen und sie als Azure Active Directory-Benutzer den Rollen wieder hinzufügen. Die Rollen werden identisch sein.
+> Wenn Sie mithilfe eines lokalen Servers eine Wiederherstellung durchführen, müssen Sie alle Domänenbenutzer aus den Rollen des Modells entfernen und sie als Azure Active Directory-Benutzer den Rollen wieder hinzufügen.
 > 
 > 
 

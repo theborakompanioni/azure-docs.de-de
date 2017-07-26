@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 07/15/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 4a70001f22b47546674c365705554ab30e05f53d
-ms.lasthandoff: 03/24/2017
-
+ms.reviewer: dhanyahk
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: cb36fdd0032d6d3c47e68a782d3bba427fe9fcd5
+ms.contentlocale: de-de
+ms.lasthandoff: 06/14/2017
 
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory-Risikoereignisse
@@ -64,7 +65,7 @@ Bei diesem Algorithmus für maschinelles Lernen werden offensichtliche „*falsc
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Anmeldungen von unbekannten Standorten
 
-Diese Art von Risikoereignis berücksichtigt die Standorte der letzten Anmeldung (IP, Breiten-/Längengrad und ASN), um neue oder unbekannte Standorte zu ermitteln. Im System werden Informationen zu den vorherigen Standorten gespeichert, die von einem Benutzer genutzt wurden, und diese werden als „vertraute“ Standorte angesehen. Das Risikoereignis wird ausgelöst, wenn die Anmeldung von einem Standort aus erfolgt, der in der Liste der vertrauten Standorte noch nicht enthalten ist. Das System benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden. Außerdem ignoriert das System Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem bekannten Speicherort liegen. 
+Diese Art von Risikoereignis berücksichtigt die Standorte der letzten Anmeldung (IP, Breiten-/Längengrad und ASN), um neue oder unbekannte Standorte zu ermitteln. Im System werden Informationen zu den vorherigen Standorten gespeichert, die von einem Benutzer genutzt wurden, und diese werden als „vertraute“ Standorte angesehen. Das Risikoereignis wird ausgelöst, wenn die Anmeldung von einem Standort aus erfolgt, der in der Liste der vertrauten Standorte noch nicht enthalten ist. Das System benötigt einen anfänglichen Lernzeitraum von 30 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden. Außerdem ignoriert das System Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem bekannten Speicherort liegen. 
 
 ### <a name="sign-ins-from-infected-devices"></a>Anmeldungen von infizierten Geräten
 
@@ -131,7 +132,7 @@ Es wird empfohlen, dass Sie sich sofort an den Benutzer wenden, um zu überprüf
 Der unmögliche Ortswechsel ist normalerweise ein zuverlässiger Hinweis darauf, dass sich ein Hacker erfolgreich anmelden konnte. Es kann aber zu falsch positiven Ergebnissen kommen, wenn ein Benutzer mit einem neuen Gerät unterwegs ist oder eine VPN-Verbindung nutzt, die von anderen Personen der Organisation normalerweise nicht verwendet wird. Eine weitere Quelle für falsch positive Ergebnisse sind Anwendungen, von denen Server-IPs fälschlicherweise als Client-IPs übergeben werden. Hierbei kann der Eindruck entstehen, dass Anmeldungen über das Rechenzentrum durchgeführt werden, in dem das Back-End der Anwendung gehostet wird (häufig sind dies Microsoft-Rechenzentren, die den Eindruck entstehen lassen, dass Anmeldungen über im Besitz von Microsoft befindliche IP-Adressen abgewickelt werden). Aufgrund dieser falsch positiven Ergebnisse ergibt sich die Risikostufe **Mittel** für dieses Risikoereignis.
 
 > [!TIP]
-> Sie können die Anzahl der gemeldeten falsch positiven Ergebnisse für diesen Risikoereignistyp verringern, indem Sie [benannte Netzwerke](active-directory-known-networks-azure-portal.md) konfigurieren. 
+> Sie können die Anzahl der gemeldeten falsch positiven Ergebnisse für diesen Risikoereignistyp verringern, indem Sie [Benannte Orte](active-directory-named-locations.md) konfigurieren. 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Anmeldungen von unbekannten Standorten
 
@@ -176,3 +177,4 @@ Es gibt zwei Bereiche, in denen Sie gemeldete Risikoereignisse überprüfen:
 
 Obwohl die Erkennung von Risikoereignissen bereits ein wichtiger Aspekt zum Schutz Ihrer Identitäten darstellt, haben Sie auch die Möglichkeit, diese entweder manuell zu beheben oder durch Konfiguration von Richtlinien für bedingten Zugriff sogar automatisierte Antworten zu implementieren. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
  
+

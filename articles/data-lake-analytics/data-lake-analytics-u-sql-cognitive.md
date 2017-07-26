@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-translationtype: Human Translation
-ms.sourcegitcommit: 21b4d574705d589406f50cac106a47ada71d24cd
-ms.openlocfilehash: 596459e25f8ad072a55ad45a2f444c71b27fd60c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -26,11 +28,11 @@ ms.openlocfilehash: 596459e25f8ad072a55ad45a2f444c71b27fd60c
 Kognitive Funktionen für U-SQL ermöglichen Entwicklern den Einsatz von Intelligenz in ihren Big Data-Programmen. Der Gesamtprozess ist einfach:
 
 * Verwenden der REFERENCE ASSEMBLY-Anweisung zum Aktivieren der kognitiven Funktionen für das U-SQL-Skript
-* Verwenden des PROCESS-Vorgangs zum Verwenden der kognitiven Funktionen 
+* Aufrufen des PROCESS-Vorgangs zum Verwenden der kognitiven Funktionen 
 
 ## <a name="imaging-scenarios"></a>Bildverarbeitungsszenarien
 
-### <a name="a-simple-example-image-tagging"></a>Ein einfaches Beispiel: Bildmarkierung
+### <a name="example-image-tagging"></a>Beispiel: Bildmarkierung
 
 Das folgende Beispiel zeigt eine durchgängige Verwendung der Bildverarbeitungsfunktionen zum Erkennen von Objekten in Bildern.
 
@@ -89,7 +91,7 @@ Das folgende Beispiel zeigt eine durchgängige Verwendung der Bildverarbeitungsf
 
 ### <a name="input-data"></a>Eingabedaten
 
-Angenommen, eine Eingabe besteht aus „Krieg und Frieden“ von Leo Tolstoy.
+Angenommen, eine Eingabe besteht aus „Krieg und Frieden“ von Leo Tolstoi.
 
     REFERENCE ASSEMBLY [TextCommon];
     REFERENCE ASSEMBLY [TextSentiment];
@@ -150,10 +152,5 @@ Angenommen, eine Eingabe besteht aus „Krieg und Frieden“ von Leo Tolstoy.
                 Chapter,
                 Text
         USING new Cognition.Text.SentimentAnalyzer(true);
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

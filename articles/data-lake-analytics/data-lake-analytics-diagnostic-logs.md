@@ -15,18 +15,16 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 71a839d9c076d33c404a56bf0544666dc86eaa4d
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 2bfd7d8a4c06b1b40a9852d21908e7c1c785b91d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
 
-Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Data Lake Analytics-Konto aktivieren und die für Ihr Konto erfassten Protokolle anzeigen.
-
-Organisationen können die Diagnoseprotokollierung für ihr Azure Data Lake Analytics-Konto aktivieren, um Überwachungspfade für den Datenzugriff zu erfassen. Diese Protokolle enthalten beispielsweise folgende Informationen:
+Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwachungspfaden. Diese Protokolle enthalten beispielsweise folgende Informationen:
 
 * Liste der Benutzer, die auf die Daten zugegriffen haben
 * Häufigkeit des Datenzugriffs
@@ -34,9 +32,9 @@ Organisationen können die Diagnoseprotokollierung für ihr Azure Data Lake Anal
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
-1. Melden Sie sich am neuen [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
-2. Öffnen Sie Ihr Data Lake Analytics-Konto, und wählen Sie im __Überwachungsabschnitt__ die Option **Diagnoseprotokolle**. Wählen Sie anschließend __Diagnose aktivieren__.
+2. Öffnen Sie Ihr Data Lake Analytics-Konto, und wählen Sie im Abschnitt __Überwachung__ die Option **Diagnoseprotokolle** aus. Wählen Sie anschließend __Diagnose aktivieren__.
 
     ![Aktivieren der Diagnose zum Sammeln von Überwachungs- und Anforderungsprotokollen](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
@@ -46,34 +44,29 @@ Organisationen können die Diagnoseprotokollierung für ihr Azure Data Lake Anal
 
    * Legen Sie **Status** auf **Ein** fest, um die Diagnoseprotokollierung zu aktivieren.
 
-   * Sie können die Daten auf zwei verschiedene Arten speichern/verarbeiten.
+   * Sie können die Daten auf drei Arten speichern bzw. verarbeiten.
 
      * Wählen Sie __In einem Speicherkonto archivieren__, um Protokolle in einem Azure-Speicherkonto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten. Bei Auswahl dieser Option müssen Sie ein Azure-Speicherkonto zum Speichern der Protokolle angeben.
 
-     * Wählen Sie **An einen Event Hub streamen**, um die Protokolldaten an einen Azure Event Hub zu streamen. Verwenden Sie diese Option, wenn Sie eine Downstream-Verarbeitungspipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
+     * Wählen Sie **An einen Event Hub streamen**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wählen Sie diese Option, wenn Sie eine nachgelagerte Verarbeitungspipeline einsetzen, die eingehende Protokolle in Echtzeit analysiert. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
      * Wählen Sie __An Log Analytics senden__, um die Daten an den Log Analytics-Dienst zu senden. Verwenden Sie diese Option, wenn Sie Log Analytics zum Sammeln und Analysieren von Protokollen verwenden möchten.
-   * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
+   * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.  Ein Anforderungsprotokoll erfasst alle API-Anforderungen. Ein Überwachungsprotokoll zeichnet alle Vorgänge auf, die von der jeweiligen API-Anforderung ausgelöst werden.
 
-   * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen.
+   * Geben Sie für __In einem Speicherkonto archivieren__ die Anzahl von Tagen an, die die Daten beibehalten werden.
 
-   * Klicken Sie auf **Speichern**.
+   * Klicken Sie auf __Speichern__.
 
         > [!NOTE]
-        > Wählen Sie entweder __In einem Speicherkonto archivieren__, __An einen Event Hub streamen__ oder __An Log Analytics senden__ aus, bevor Sie die Schaltfläche __Speichern__ wählen.
+        > Wählen Sie entweder __In einem Speicherkonto archivieren__, __An einen Event Hub streamen__ oder __An Log Analytics senden__ aus, bevor Sie auf die Schaltfläche __Speichern__ klicken.
 
-Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie zum Blatt __Diagnoseprotokolle__ zurückkehren, um Protokolle anzuzeigen.
+Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie zum Blatt __Diagnoseprotokolle__ zurückkehren, um die Protokolle anzuzeigen.
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 
-Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Analytics-Kontos anzuzeigen:
+### <a name="use-the-data-lake-analytics-view"></a>Verwenden der Data Lake Analytics-Ansicht
 
-* Über die Einstellungen des Data Lake Analytics-Kontos
-* Über das Azure Storage-Konto, in dem die Daten gespeichert sind
-
-### <a name="using-the-data-lake-analytics-settings-view"></a>Verwenden der Ansicht mit den Data Lake Analytics-Einstellungen
-
-1. Wählen Sie im Blatt Ihres Data Lake Analytics-Kontos die Option **Diagnoseprotokolle** aus, und wählen Sie dann den Eintrag aus, für den Sie Protokolle anzeigen möchten.
+1. Wählen Sie im Blatt Ihres Data Lake Analytics-Kontos unter **Überwachung** die Option **Diagnoseprotokolle** und dann den Eintrag aus, für den Sie Protokolle anzeigen möchten.
 
     ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "Anzeigen von Diagnoseprotokollen")
 
@@ -82,13 +75,13 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Analytics-Kontos
     ![Protokolleinträge](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
 
    * Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Analytics-Konto.
-   * Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge, die auf dem Data Lake Analytics-Konto ausgeführt werden. Ein einzelner API-Hochladeaufruf in Anforderungsprotokollen könnte möglicherweise in den Überwachungsprotokollen in mehreren „Anfügen“-Vorgängen resultieren.
+   * Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge, die auf dem Data Lake Analytics-Konto ausgeführt werden. Ein einzelner API-Hochladeaufruf in einem Anforderungsprotokoll kann im zugehörigen Überwachungsprotokoll in mehreren Vorgängen des Typs „Anfügen“ resultieren.
 
-3. Klicken Sie für einen Protokolleintrag auf den Link **Herunterladen** , um die Protokolle herunterzuladen.
+3. Klicken Sie für einen Protokolleintrag auf den Link **Herunterladen**, um das gewünschte Protokoll herunterzuladen.
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
+### <a name="use-the-azure-data-lake-storage-account-that-contains-log-data"></a>Verwenden des Azure Data Lage Storage-Kontos mit den Protokolldaten
 
-1. Öffnen Sie das Azure Storage-Kontoblatt, das Data Lake Analytics zur Protokollierung zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
+1. Öffnen Sie das Blatt des Azure Data Lake Storage-Kontos, das Data Lake Analytics zur Protokollierung zugeordnet ist, und klicken Sie dann auf __Blobs__. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
 
     ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
 
@@ -125,7 +118,7 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Analytics-Kontos
 
 ## <a name="log-structure"></a>Protokollstruktur
 
-Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In diesem Abschnitt betrachten wir die Struktur von JSON für Anforderungs- und Überwachungsprotokolle.
+Die Überwachungs- und Anforderungsprotokolle liegen in einem strukturierten JSON-Format vor.
 
 ### <a name="request-logs"></a>Anforderungsprotokollen
 
@@ -164,12 +157,12 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | in |String |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |String |Die ID der Ressource, auf der der Vorgang stattfand. |
+| Ressourcen-ID |String |Die ID der Ressource, für die der Vorgang erfolgt ist |
 | category |String |Die Protokollkategorie. Beispiel: **Anforderungen**. |
 | operationName |String |Der Name des protokollierten Vorgangs. Beispiel: GetAggregatedJobHistory. |
 | resultType |String |Der Status des Vorgangs, beispielsweise 200. |
 | callerIpAddress |String |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
-| correlationId |String |Die ID des Protokolls. Dieser Wert kann verwendet werden, um einen Satz von zusammengehörigen Protokolleinträgen zu gruppieren. |
+| correlationId |String |Der Bezeichner des Protokolls. Dieser Wert kann verwendet werden, um einen Satz zusammengehöriger Protokolleinträgen zu gruppieren. |
 | Identität |Objekt |Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften |JSON |Details hierzu finden Sie im nächsten Abschnitt (Eigenschaftenschema des Anforderungsprotokolls). |
 
@@ -180,13 +173,13 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 | HttpMethod |String |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
 | Pfad |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 | RequestContentLength |int |Die Inhaltslänge der HTTP-Anforderung. |
-| ClientRequestId |String |Die ID, die diese Anforderung eindeutig identifiziert. |
+| ClientRequestId |String |Der Bezeichner, der diese Anforderung eindeutig identifiziert |
 | StartTime |String |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
 | EndTime |String |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 
-Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jeder Blob hat ein Stammobjekt namens **records** , das ein Array von Protokollobjekten enthält.
+Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 
     {
     "records":
@@ -216,7 +209,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | in |String |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |String |Die ID der Ressource, auf der der Vorgang stattfand. |
+| Ressourcen-ID |String |Die ID der Ressource, für die der Vorgang erfolgt ist |
 | category |String |Die Protokollkategorie. Beispiel: **Überwachung**. |
 | operationName |String |Der Name des protokollierten Vorgangs. Beispiel: JobSubmitted. |
 | resultType |String |Ein Unterstatus für den Auftragsstatus (operationName). |
@@ -225,7 +218,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | Eigenschaften |JSON |Details hierzu finden Sie im nächsten Abschnitt (Eigenschaftenschema des Überwachungsprotokolls). |
 
 > [!NOTE]
-> Die Elemente **resultType** und **resultSignature** liefern Informationen zum Ergebnis eines Vorgangs und enthalten nur einen Wert, wenn ein Vorgang abgeschlossen wurde. Beispielsweise ist ein Wert vorhanden, wenn **operationName** den Wert **JobStarted** oder **JobEnded** enthält.
+> Die Elemente **resultType** und **resultSignature** liefern Informationen zum Ergebnis eines Vorgangs und enthalten nur einen Wert, wenn ein Vorgang abgeschlossen wurde. Beispielsweise ist nur ein Wert vorhanden, wenn **operationName** den Wert **JobStarted** oder **JobEnded** enthält.
 >
 >
 
@@ -237,12 +230,12 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | JobName |String |Der Name, der für den Auftrag angegeben wurde. |
 | JobRunTime |String |Die zum Verarbeiten des Auftrags verwendete Laufzeit. |
 | SubmitTime |String |Der Zeitpunkt (UTC), zu dem der Auftrag übermittelt wurde. |
-| StartTime |String |Der Zeitpunkt (UTC), zu dem der Auftrag nach der Übermittlung gestartet wurde. |
-| EndTime |String |Der Zeitpunkt, zu dem der Auftrag beendet wurde. |
-| Parallelität |String |Die Anzahl von Data Lake Analytics-Einheiten, die für diesen Auftrag während der Übermittlung angefordert wurden. |
+| StartTime |String |Die Uhrzeit (UTC), zu der der Auftrag nach der Übermittlung gestartet wurde |
+| EndTime |String |Die Uhrzeit, zu der der Auftrag beendet wurde |
+| Parallelität |String |Die Anzahl von Data Lake Analytics-Einheiten, die für diesen Auftrag während der Übermittlung angefordert wurden |
 
 > [!NOTE]
-> Die Elemente **SubmitTime**, **StartTime**, **EndTime** und **Parallelism** liefern Informationen zu einem Vorgang und enthalten nur dann einen Wert, wenn ein Vorgang gestartet oder abgeschlossen wurde. Beispiel: **SubmitTime** enthält einen Wert, nachdem **operationName** **JobSubmitted** angegeben hat.
+> Die Elemente **SubmitTime**, **StartTime**, **EndTime** und **Parallelism** liefern Informationen zu einem Vorgang und enthalten nur dann einen Wert, wenn der Vorgang gestartet oder abgeschlossen wurde. Beispiel: **SubmitTime** enthält nur einen Wert, sobald **operationName** den Wert **JobSubmitted** hat.
 
 ## <a name="process-the-log-data"></a>Verarbeitung der Protokolldaten
 

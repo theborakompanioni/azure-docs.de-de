@@ -1,6 +1,6 @@
 ---
-title: "Gewusst wie: Speichern von Suchvorgängen und Anheften von Datenressourcen | Microsoft Docs"
-description: "Anleitungsartikel zu den Funktionen in Azure Data Catalog zum Speichern von Datenquellen und von Datenressourcen für die spätere Verwendung"
+title: Speichern von Suchen und Anheften von Datenobjekten in Azure Data Catalog | Microsoft-Dokumentation
+description: "Anleitungsartikel zu den Funktionen in Azure Data Catalog zum Speichern von Datenquellen und -objekten für die spätere Verwendung"
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -16,69 +16,74 @@ ms.workload: data-catalog
 ms.date: 05/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f017776480466979d7f2f9edec2b3ac5caca2321
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 23f38693939ef0dc893ef77267811b176d3083d1
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/05/2017
 
 
 ---
-# <a name="how-to-save-searches-and-pin-data-assets"></a>Gewusst wie: Speichern von Suchvorgängen und Anheften von Datenressourcen
+# <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Speichern von Suchen und Anheften von Datenobjekten in Azure Data Catalog
 ## <a name="introduction"></a>Einführung
-Microsoft Azure Data Catalog enthält Funktionen für die Datenquellenermittlung. Benutzer können den Katalog schnell durchsuchen und filtern, um Datenquellen zu finden und deren Zweck zu verstehen. So ist es einfacher, für den aktuellen Auftrag die richtigen Daten zu finden.
+Azure Data Catalog bietet Funktionen für die Datenquellenermittlung. Sie können den Katalog schnell durchsuchen und filtern, um Datenquellen zu finden und deren Zweck zu verstehen. So ist es einfacher, für die aktuelle Aufgabe die richtigen Daten zu finden.
 
-Aber was ist, wenn Benutzer regelmäßig mit den gleichen Daten arbeiten müssen? Was ist, wenn Benutzer mit ihrem Wissen regelmäßig zu den gleichen Datenquellen im Katalog beitragen? In solchen Situationen ist es ineffizient, wenn die gleichen Suchen immer wieder durchgeführt werden müssen. Daher sind gespeicherte Suchvorgänge und angeheftete Datenressourcen hilfreich.
+Aber was ist, wenn Sie regelmäßig mit den gleichen Daten arbeiten müssen? Was ist, wenn Sie und andere Benutzer mit ihrem Wissen regelmäßig an den gleichen Datenquellen im Katalog mitwirken? In diesen Situationen kann sich die wiederholte Ausführung derselben Suchvorgänge als nicht besonders effizient herausstellen. Die Lösung sind gespeicherte Suchvorgänge und angeheftete Datenobjekte.
 
 ## <a name="saved-searches"></a>Gespeicherte Suchvorgänge
-Ein gespeicherter Suchvorgang in Azure Data Catalog ist eine wiederverwendbare Suchdefinition für einen bestimmten Benutzer. Sobald ein Benutzer eine Suche einschließlich der Suchbegriffe, Tags und anderer Filter definiert hat, kann er sie für die spätere Verwendung speichern. Die Definition des gespeicherten Suchvorgangs kann dann später erneut ausgeführt werden,um die den Suchkriterien entsprechenden Datenressourcen zurückzugeben.
+Ein gespeicherter Suchvorgang in Data Catalog ist eine wiederverwendbare Suchdefinition für einen bestimmten Benutzer. Sie können eine Suche samt Suchbegriffen, Tags und anderer Filter definieren und anschließend speichern. Sie können den gespeicherten Suchvorgang später erneut ausführen, um die den Suchkriterien entsprechenden Datenobjekte zurückzugeben.
 
-### <a name="creating-a-saved-search"></a>Erstellen eines gespeicherten Suchvorgangs
-Geben Sie zum Erstellen einer gespeicherten Suche die Suchkriterien ein, die sie wiederverwenden möchten. Klicken Sie danach auf den Link „Speichern“ im Feld „Aktuelle Suche“ im Azure Data Catalog-Portal.
+### <a name="create-a-saved-search"></a>Erstellen eines gespeicherten Suchvorgangs
+Um einen gespeicherten Suchvorgang zu erstellen, führen Sie folgende Schritte aus:
+1. Klicken Sie im Azure Data Catalog-Portal im Feld **Aktuelle Suche** auf **Speichern**. 
 
- ![Wählen Sie „Speichern“, um die aktuellen Sucheinstellungen zu speichern.](./media/data-catalog-how-to-save-pin/01-save-option.png)
+    ![Einstellungen für „Aktuelle Suche“, Link „Speichern“](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
-Wenn Sie dazu aufgefordert werden, geben Sie einen Namen für die gespeicherte Suche ein. Wählen Sie einen Namen, der aussagekräftig ist und die Datenressourcen, die von der Suche ausgegeben werden, gut beschreibt.
+2. Geben Sie die Suchkriterien ein, die Sie wiederverwenden möchten, und klicken Sie dann auf **Speichern**.
 
- ![Geben Sie einen Namen für den gespeicherten Suchvorgang ein.](./media/data-catalog-how-to-save-pin/02-name.png)
+    ![Einstellungen für „Aktuelle Suche“, Name der gespeicherten Suche](./media/data-catalog-how-to-save-pin/02-name.png)
 
-### <a name="managing-saved-searches"></a>Verwalten gespeicherter Suchvorgänge
-Sobald ein Benutzer eine oder mehrere Suchen gespeichert hat, wird die Option „Gespeicherte Suchvorgänge“ im Azure Data Catalog-Portal unter dem Feld „Aktuelle Suche“ angezeigt. Wird dieses erweitert, wird die vollständige Liste der gespeicherten Suchvorgänge angezeigt.
+3. Geben Sie bei Aufforderung einen Namen für die gespeicherte Suche ein. Wählen Sie einen Namen, der aussagekräftig ist und die Datenobjekte gut beschreibt, die von der Suche zurückgegeben werden.
+
+### <a name="manage-saved-searches"></a>Verwalten gespeicherter Suchvorgänge
+Nachdem Sie einen oder mehrere Suchvorgänge gespeichert haben, wird die Option **Gespeicherte Suchvorgänge** unter dem Feld **Aktuelle Suche** angezeigt. Wenn die Liste erweitert wird, werden alle gespeicherten Suchvorgänge angezeigt.
 
  ![Liste der gespeicherten Suchvorgänge](./media/data-catalog-how-to-save-pin/03-list.png)
 
-Wenn Sie einen gespeicherten Suchvorgang aus der Liste auswählen, wird die Suche ausgeführt.
+Führen Sie einen der folgenden Schritte aus:
 
-Wählen Sie das Dropdownmenü, um verschiedene Verwaltungsoptionen zu erhalten:
+* Um eine Suche auszuführen, wählen Sie eine gespeicherte Suche in der Liste aus.
 
- ![Optionen zum Verwalten gespeicherter Suchvorgänge](./media/data-catalog-how-to-save-pin/04-managing.png)
+* Um eine Liste der Verwaltungsoptionen für eine gespeicherte Suche anzuzeigen, klicken Sie auf den nach unten zeigenden Pfeil neben dem Suchnamen.
 
-Wenn Sie „Umbenennen“ wählen, wird der Benutzer zur Eingabe eines neuen Namens für den gespeicherten Suchvorgang aufgefordert. Die Suchdefinition wird nicht geändert.
+    ![Optionen zum Verwalten gespeicherter Suchvorgänge](./media/data-catalog-how-to-save-pin/04-managing.png)
 
-Wenn Sie „Löschen“ auswählen, wird der Benutzer zunächst zum Bestätigen aufgefordert, und danach wird der gespeicherte Suchvorgang aus der Liste des Benutzers entfernt.
+* Um einen neuen Namen für die gespeicherte Suche einzugeben, wählen Sie **Umbenennen** aus. Die Suchdefinition wird nicht geändert.
 
-Durch Auswahl von „Als Standard speichern“ wird die ausgewählte gespeicherte Suche als Standardsuche für den Benutzer ausgewählt. Wenn der Benutzer über die Azure Data Catalog-Startseite eine „leere“ Suche ausführt, wird die Standardsuche des Benutzers ausgeführt. Darüber hinaus erscheint die als Standard gekennzeichnete Suche oben auf der Liste der gespeicherten Suchvorgänge.
+* Wählen Sie zum Entfernen der gespeicherten Suche aus Ihrer Liste **Löschen** aus, und bestätigen Sie anschließend den Vorgang.
 
-### <a name="organizational-saved-searches"></a>Gespeicherte Organisationssuchen
-Jeder Benutzer kann Suchvorgänge zur eigenen Verwendung speichern. Data Catalog-Administratoren können auch Suchvorgänge für alle Benutzer innerhalb der Organisation speichern. Beim Speichern einer Suche haben Administratoren die Möglichkeit, den gespeicherten Suchvorgang im Unternehmen freizugeben. Ist diese Option aktiviert, wird der gespeicherte Suchvorgang in der Liste verfügbarer Suchvorgänge für alle Benutzer angezeigt.
+* Um die gespeicherte Suche als Standardsuche zu markieren, wählen Sie **Als Standard speichern** aus. Wenn Sie auf der Azure Data Catalog-Startseite eine „leere“ Suche ausführen, wird Ihre Standardsuche ausgeführt. Darüber hinaus wird die Suche, die als die Standardsuche markiert ist, in der Liste **Gespeicherte Suchvorgänge** oben angezeigt.
 
- ![Gespeicherte Organisationssuchen](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+### <a name="organizational-saved-searches"></a>Gespeicherte Suchvorgänge in der Organisation
+Alle Benutzer in Ihrer Organisation können Suchvorgänge für die eigene Verwendung speichern. Data Catalog-Administratoren können auch Suchvorgänge für alle Benutzer innerhalb der Organisation speichern. Wenn Administratoren eine Suche speichern, wird diese mit der Option **Im Unternehmen freigeben** angezeigt. Bei Wahl dieser Option wird die gespeicherte Suche für alle Benutzer in der Organisation freigegeben.
+
+ ![Gespeicherte Suchvorgänge in der Organisation](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>Angeheftete Datenressourcen
-Gespeicherte Suchvorgänge ermöglichen es Benutzern, Suchdefinitionen zu speichern und wiederzuverwenden. Die von den Suchen ausgegebenen Datenressourcen ändern sich ggf. im Laufe der Zeit, wenn sich der Inhalt des Katalogs ändert. Durch das Anheften von Datenressourcen können Benutzer bestimmte Datenressourcen explizit identifizieren und so einfacher darauf zugreifen, ohne dass eine Suche erforderlich ist.
+Mithilfe von gespeicherten Suchvorgängen können Sie Suchdefinitionen speichern und wiederverwenden. Die Datenobjekte, die von den Suchvorgängen zurückgegeben werden, können sich mit der Zeit ändern, sobald sich der Inhalt des Katalogs ändert. Durch Anheften von Datenobjekten können Benutzer bestimmte Datenobjekte explizit bestimmen und so einfacher darauf zugreifen, ohne dass eine Suche erforderlich ist.
 
-Das Anheften einer Datenressource ist einfach: Die Benutzer müssen lediglich auf das Anheftsymbol für die Datenressource klicken, um sie der Liste hinzuzufügen. Dieses Symbol wird in der Kachelansicht in der Ecke der Ressourcenkachel bzw. in der Listenansicht im Azure Data Catalog-Portal in der linken Spalte angezeigt.
+Das Anheften eines Datenobjekts ist ganz einfach. Um das Datenobjekt Ihrer Liste angehefteter Objekte hinzuzufügen, klicken Sie auf das Symbol **Anheften**. Das Symbol wird in der Kachelansicht in der Ecke der Objektkachel bzw. in der Listenansicht im Azure Data Catalog-Portal in der linken Spalte angezeigt.
 
-![Anheften einer Datenressource](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Symbol zum Anheften von Datenobjekten](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
-Wenn eine Ressource nicht mehr angeheftet sein soll, ist dies ebenfalls ganz einfach: In diesem Fall klickt der Benutzer erneut auf das Anheftsymbol, um die Einstellung für die ausgewählte Ressource zu ändern.
+Das Lösen eines Datenobjekts ist ebenfalls ganz einfach. Klicken Sie einfach auf das Symbol **Lösen**, um die Einstellung für das ausgewählte Datenobjekt umzuschalten.
 
-![Anheften einer Datenressource aufheben](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Symbol zum Lösen von Datenobjekten](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
-## <a name="my-assets"></a>„Meine Ressourcen“
-Die Startseite des Azure Data Catalog-Portals enthält den Bereich „Meine Ressourcen“, in dem die Ressourcen angezeigt werden, die für den aktuellen Benutzer interessant sind. Dieser Bereich beinhaltet sowohl angeheftete Ressourcen als auch gespeicherte Suchvorgänge.
+## <a name="the-my-assets-section"></a>Der Abschnitt „Meine Ressourcen“
+Die Startseite des Data Catalog-Portals enthält den Bereich **Meine Ressourcen**, in dem die Datenobjekte angezeigt werden, die für den aktuellen Benutzer interessant sind. Dieser Bereich enthält sowohl angeheftete Datenobjekte als auch gespeicherte Suchvorgänge.
 
-![„Meine Ressourcen“ auf der Startseite](./media/data-catalog-how-to-save-pin/07-my-assets.png)
+![Der Abschnitt „Meine Ressourcen“ auf der Startseite](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
 ## <a name="summary"></a>Zusammenfassung
-Azure Data Catalog enthält Funktionen, mithilfe derer Benutzer die benötigten Datenquellen einfacher finden können, damit das Suchen nach Daten schneller geht und mehr Zeit für die Arbeit mit den Daten bleibt. Gespeicherte Suchvorgänge und angeheftete Datenressourcen funktionieren auf Grundlage dieser Funktionen, damit Benutzer häufig benötigte Datenquellen schnell identifizieren.
+Azure Data Catalog bietet Funktionen, mit deren Hilfe Sie und andere Organisationsmitglieder die benötigten Datenquellen einfacher finden können, damit das Suchen nach Daten schneller erfolgt und mehr Zeit für das Arbeiten mit den Daten bleibt. Gespeicherte Suchvorgänge und angeheftete Datenobjekte funktionieren auf Grundlage dieser Funktionen, damit Benutzer häufig benötigte Datenquellen schnell bestimmen können.
 

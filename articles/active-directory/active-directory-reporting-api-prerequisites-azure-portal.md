@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8f8510b38d795a90850ef58084a04718cb5ac324
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: a84f3825d3f019c60f8d875d250fe4cf79f4b04c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API
@@ -41,7 +41,7 @@ Um auf die Berichterstellungs-API zugreifen zu können, müssen Sie folgende Sch
 2. Erteilen von Berechtigungen 
 3. Erfassen von Konfigurationseinstellungen 
 
-Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
+Bei Fragen, Problemen oder zum Senden von Feedback [eröffnen Sie ein Supportticket](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto).
 
 ## <a name="register-an-azure-active-directory-application"></a>Registrieren einer Azure Active Directory-Anwendung
 

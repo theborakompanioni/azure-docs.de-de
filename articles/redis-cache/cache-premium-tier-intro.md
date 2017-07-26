@@ -1,6 +1,6 @@
 ---
 title: "Einführung in den Premium-Tarif von Azure Redis Cache | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie für Ihre Azure Redis Cache-Instanzen im Tarif &quot;Premium&quot; Redis-Persistenz Redis-Clustering und VNET-Unterstützung erstellen und verwalten."
+description: "Hier erfahren Sie, wie Sie für Ihre Azure Redis Cache-Instanzen im Tarif \"Premium\" Redis-Persistenz Redis-Clustering und VNET-Unterstützung erstellen und verwalten."
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -12,11 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 07/05/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 377d3f28a9de868744d6e85767ede1bdf59a184e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: c7a70e74f8b275ed9e10118b0ae9e81309f97ba3
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -26,9 +28,9 @@ Azure Redis Cache ist ein verteilter, verwalteter Cache, mit der Sie hoch skalie
 Der neue Tarif „Premium“ ist speziell auf Unternehmen zugeschnitten. Er enthält alle Features des Tarifs „Standard“ und bietet darüber hinaus weitere Features, z.B. eine bessere Leistung, größere Workloads, Notfallwiederherstellung, Import/Export und verbesserte Sicherheit. Nachfolgend finden Sie weitere Informationen zu den zusätzlichen Features des Cachetarifs "Premium".
 
 ## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Bessere Leistung als in den Tarifen "Standard" und "Basic"
-**Bessere Leistung in den Tarifen "Standard" und "Basic".**  Caches im Tarif "Premium" werden auf Hardware mit schnelleren Prozessoren bereitgestellt, die im Vergleich zu den Tarifen "Basic" oder "Standard" eine bessere Leistung bieten. Caches im Tarif "Premium" erreichen einen höheren Durchsatz und geringere Wartezeiten. 
+**Bessere Leistung in den Tarifen "Standard" und "Basic".** Caches im Tarif "Premium" werden auf Hardware mit schnelleren Prozessoren bereitgestellt, die im Vergleich zu den Tarifen "Basic" oder "Standard" eine bessere Leistung bieten. Caches im Tarif "Premium" erreichen einen höheren Durchsatz und geringere Wartezeiten. 
 
-**Der Durchsatz für Cache derselben Größe ist im Tarif "Premium" im Vergleich zum Tarif "Standard" höher.**  Ein P4-Cache (Premium) mit 53 GB erreicht beispielsweise einen Durchsatz von 250.000 Anforderungen pro Sekunde, während ein C6-Cache (Standard) einen Durchsatz von 150.000 erreicht.
+**Der Durchsatz für Cache derselben Größe ist im Tarif "Premium" im Vergleich zum Tarif "Standard" höher.** Ein P4-Cache (Premium) mit 53 GB erreicht beispielsweise einen Durchsatz von 250.000 Anforderungen pro Sekunde, während ein C6-Cache (Standard) einen Durchsatz von 150.000 erreicht.
 
 Ausführliche Informationen zu Größe, Durchsatz und Bandbreite von Premium-Caches finden Sie in den [häufig gestellten Fragen zu Azure Redis Cache](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
@@ -68,6 +70,11 @@ Im Premium-Tarif können Sie einen oder mehrere Knoten Ihres Caches bei Bedarf n
 
 Weitere Informationen finden Sie unter [Neustart](cache-administration.md#reboot) und [Häufig gestellte Fragen zum Neustart](cache-administration.md#reboot-faq).
 
+>[!NOTE]
+>Die Neustartfunktionalität ist nun für alle Azure Redis Cache-Tarife aktiviert.
+>
+>
+
 ## <a name="schedule-updates"></a>Planen von Updates
 Mit dem Feature zum Planen von Updates können Sie ein Wartungsfenster für Ihren Cache bestimmen. Wenn das Wartungsfenster angegeben ist, erfolgen alle Redis-Serverupdates in diesem Zeitfenster. Um ein Wartungsfenster anzugeben, wählen Sie die gewünschten Tage aus. Geben Sie die Startzeit des Wartungsfensters für jeden Tag an. Beachten Sie, dass die Zeit im Wartungsfenster als UTC angegeben ist. 
 
@@ -77,6 +84,13 @@ Weitere Informationen finden Sie unter [Planen von Updates](cache-administration
 > Nur Updates des Redis-Servers erfolgen während des geplanten Wartungsfensters. Das Wartungsfenster gilt nicht für Azure-Updates oder Updates des Betriebssystems virtueller Computer.
 > 
 > 
+
+## <a name="geo-replication"></a>Georeplikation
+
+**Georeplikation** bietet einen Mechanismus zum Verknüpfen von zwei Azure Redis Cache-Instanzen im Premium-Tarif. Ein Cache wird als primärer verknüpfter Cache festgelegt und der andere als sekundärer verknüpfter Cache. Der sekundäre verknüpfte Cache ist schreibgeschützt. Und die in den primären Cache geschriebenen Daten werden im sekundären verknüpften Cache repliziert. Über diese Funktion kann ein Cache über mehrere Azure-Regionen hinweg repliziert werden.
+
+Weitere Informationen finden Sie unter [Konfigurieren der Georeplikation für Azure Redis Cache](cache-how-to-geo-replication.md).
+
 
 ## <a name="to-scale-to-the-premium-tier"></a>So wechseln Sie zum Premium-Tarif
 Um zum Premium-Tarif zu wechseln, wählen Sie einfach auf dem Blatt **Tarif ändern** einen der Premium-Tarife aus. Sie können für Ihren Cache auch mithilfe von PowerShell und CLI zum Premium-Tarif wechseln. Eine detaillierte Anleitung finden Sie unter [Skalieren von Azure Redis Cache](cache-how-to-scale.md) und [Automatisieren eines Skalierungsvorgangs](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
@@ -89,10 +103,5 @@ Erstellen Sie einen Cache, und untersuchen Sie die neuen Features des "Premium"-
 * [Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md)
 * [How to import data into and export data from Azure Redis Cache (Gewusst wie: Importieren und Exportieren von Daten in Azure Redis Cache)](cache-how-to-import-export-data.md)
 * [Verwalten von Azure Redis Cache](cache-administration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

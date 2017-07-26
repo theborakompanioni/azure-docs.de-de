@@ -16,18 +16,18 @@ ms.workload: data-catalog
 ms.date: 05/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8cf7ea7ca69753c12469dff9dc352d616c276ddd
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: e31bcfce2c66d9428535fb51c4bbe11bc103a1ad
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 06/21/2017
 
 
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Arbeiten mit großen Datenquellen in Azure Data Catalog
 ## <a name="introduction"></a>Einführung
-**Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Mit anderen Worten ist es die Aufgabe von **Azure Data Catalog** , den Benutzern zu helfen, Datenquellen zu ermitteln, zu verstehen und zu nutzen, und Unternehmen zu helfen, mehr Nutzen aus ihren vorhandenen Datenquellen zu ziehen, einschließlich solchen mit Big Data.
+**Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Der Dienst unterstützt Benutzer beim Ermitteln, Nachvollziehen und Verwenden von Datenquellen und Unternehmen dabei, mehr Nutzen aus ihren vorhandenen Datenquellen, wie z.B. Big Data, zu ziehen.
 
-**Azure Data Catalog** unterstützt die Registrierung von Azure-Blobspeicher-Blobs und -Verzeichnissen sowie Hadoop HDFS-Dateien und -Verzeichnisse. Die halbstrukturierte Natur dieser Datenquellen bietet eine umfassende Flexibilität, bedeutet aber auch, dass Benutzer die Organisation der Datenquellen berücksichtigen müssen, um durch das Registrieren bei **Azure Data Catalog**den größtmöglichen Nutzen zu ziehen.
+**Azure Data Catalog** unterstützt die Registrierung von Azure-Blobspeicher-Blobs und -Verzeichnissen sowie Hadoop HDFS-Dateien und -Verzeichnisse. Die teilweise strukturierte Art dieser Datenquellen bietet enorme Flexibilität. Doch um den größten Nutzen aus ihrer Registrierung bei **Azure Data Catalog** zu ziehen, müssen Benutzer berücksichtigen, wie die Datenquellen organisiert sind.
 
 ## <a name="directories-as-logical-data-sets"></a>Verzeichnisse als logische Datensätze
 Ein allgemeines Muster für die Organisation von großen Datenquellen ist, Verzeichnisse als logische Datensätze zu behandeln. Verzeichnisse der obersten Ebene werden verwendet, um einen Datensatz zu definieren, während Unterordner Partitionen definieren und die darin enthaltenen Dateien die Daten selbst speichern.
@@ -65,7 +65,7 @@ Wenn ein Analytiker oder Datenwissenschaftler mit den in größeren Verzeichniss
 In diesem Muster ist es sinnvoll, die einzelnen Verweisdatendateien bei **Azure Data Catalog**zu registrieren. Jede Datei stellt einen Datensatz dar, und jede kann einzeln kommentiert und ermittelt werden.
 
 ## <a name="alternate-patterns"></a>Alternative Muster
-Die oben beschriebenen Muster sind nur zwei Möglichkeiten, wie ein großer Datenspeicher organisiert werden kann. Jede Implementierung ist dabei anders. Unabhängig davon, wie Ihre Datenquellen strukturiert sind, sollten Sie sich beim Registrieren großer Datenquellen bei **Azure Data Catalog** darauf konzentrieren, die Dateien und Verzeichnisse zu registrieren, die die Datensätze darstellen, die für andere Personen in Ihrer Organisation von Nutzen sind. Das Registrieren aller Dateien und Verzeichnisse kann den Katalog überlasten, wodurch es den Benutzern erschwert wird, das zu suchen, was sie benötigen.
+Die im vorherigen Abschnitt beschriebenen Muster sind nur zwei Möglichkeiten, wie ein großer Datenspeicher organisiert werden kann. Jede Implementierung ist dabei anders. Unabhängig davon, wie Ihre Datenquellen strukturiert sind, sollten Sie sich beim Registrieren großer Datenquellen bei **Azure Data Catalog** darauf konzentrieren, die Dateien und Verzeichnisse zu registrieren, die die Datensätze darstellen, die für andere Personen in Ihrer Organisation von Nutzen sind. Das Registrieren aller Dateien und Verzeichnisse kann den Katalog überlasten, wodurch es den Benutzern erschwert wird, das zu suchen, was sie benötigen.
 
 ## <a name="summary"></a>Zusammenfassung
 Das Registrieren von Datenquellen bei **Azure Data Catalog** erleichtert deren Ermittlung und Verständnis. Durch das Registrieren und Kommentieren der Big Data-Dateien und -Verzeichnisse, die logische Datensätze darstellen, können Ihre Benutzer leichter von ihnen benötigte große Datenquellen suchen und verwenden.

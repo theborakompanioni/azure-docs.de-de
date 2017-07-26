@@ -1,149 +1,286 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit Igloo Software | Microsoft Docs'
-description: "Hier erfahren Sie, wie Sie Igloo Software mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Igloo Software konfigurieren.
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 2eb625c1-d3fc-4ae1-a304-6a6733a10e6e
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/24/2017
+ms.date: 06/23/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 06e70434d61af0f4d704bd5bc95e3c30672e4c15
-ms.openlocfilehash: 5711f9957f0c982f8193d07d536d6665c7a46ec1
-ms.lasthandoff: 03/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
+ms.openlocfilehash: ab3891e11eb33b4d233e4fc967a40c7df06e4f4e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/23/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Tutorial: Azure Active Directory-Integration mit Igloo Software
-In diesem Tutorial wird die Integration von Azure und Igloo Software erläutert.  
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial erfahren Sie, wie Sie Igloo Software in Azure Active Directory (Azure AD) integrieren.
 
-* Ein gültiges Azure-Abonnement
-* Ein [Igloo Software](http://www.igloosoftware.com/) -Abonnement, für das einmaliges Anmelden aktiviert ist
+Die Integration von Igloo Software in Azure AD bietet die folgenden Vorteile:
 
-Nach Abschluss dieses Tutorials können die Azure AD-Benutzer, die Sie Igloo Software zugewiesen haben, mittels einmaliger Anmeldung auf der Igloo Software-Unternehmenswebsite auf die Anwendung zugreifen (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+- Sie können in Azure AD steuern, wer auf Igloo Software Zugriff hat.
+- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch für Igloo Software anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-1. Aktivieren der Anwendungsintegration für Igloo Software
-2. Konfigurieren der einmaligen Anmeldung (SSO)
-3. Konfigurieren der Benutzerbereitstellung
-4. Zuweisen von Benutzern
+## <a name="prerequisites"></a>Voraussetzungen
 
-![Szenario](./media/active-directory-saas-igloo-software-tutorial/IC783961.png "Szenario")
+Um die Azure AD-Integration mit Igloo Software konfigurieren zu können, benötigen Sie Folgendes:
 
-## <a name="enable-the-application-integration-for-igloo-software"></a>Aktivieren der Anwendungsintegration für Igloo Software
-In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Igloo Software aktivieren.
+- Ein Azure AD-Abonnement
+- Ein Igloo Software-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-**So aktivieren Sie die Anwendungsintegration für Igloo Software**
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
-   
-   ![Active Directory](./media/active-directory-saas-igloo-software-tutorial/IC700993.png "Active Directory")
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-   ![Anwendungen](./media/active-directory-saas-igloo-software-tutorial/IC700994.png "Anwendungen")
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
-   ![Anwendung hinzufügen](./media/active-directory-saas-igloo-software-tutorial/IC749321.png "Anwendung hinzufügen")
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-igloo-software-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
-6. Geben Sie im **Suchfeld** **Igloo Software** ein.
-   
-   ![Anwendungskatalog](./media/active-directory-saas-igloo-software-tutorial/IC783962.png "Anwendungskatalog")
-7. Wählen Sie im Ergebnisbereich **Igloo Software** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-   ![Igloo](./media/active-directory-saas-igloo-software-tutorial/IC783963.png "Igloo")
-   
-## <a name="configure-sso"></a>Konfigurieren von SSO
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Igloo Software zu authentifizieren.  
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei in Ihren Central Desktop-Mandanten hochladen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)(Konvertieren eines binären Zertifikats in eine Textdatei; in englischer Sprache) weitere Informationen.
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-**So konfigurieren Sie einmaliges Anmelden**
+1. Hinzufügen von Igloo Software aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Igloo Software** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+## <a name="adding-igloo-software-from-the-gallery"></a>Hinzufügen von Igloo Software aus dem Katalog
+Zum Konfigurieren der Integration von Igloo Software in Azure AD müssen Sie Igloo Software aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
+
+**Um Igloo Software aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+
+    ![Active Directory][1]
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
+    ![Anwendungen][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+    ![Anwendungen][3]
+
+4. Geben Sie im Suchfeld **Igloo Software** ein.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_search.png)
+
+5. Wählen Sie im Ergebnisbereich **Igloo Software** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+Dieser Abschnitt veranschaulicht anhand einer Testbenutzerin namens Britta Simon, wie das einmalige Anmelden von Azure AD in Igloo Software konfiguriert und getestet wird.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer das entsprechende Pendant in Igloo Software zu einem Benutzer in Azure AD ist. Anders ausgedrückt muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Igloo Software eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in Igloo Software den Wert des **Benutzernamens** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Igloo Software müssen Sie die folgenden Schritte ausführen:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Igloo Software-Testbenutzers](#creating-an-igloo-software-test-user)**, um ein Pendant von Britta Simon in Igloo Software zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Igloo Software-Anwendung.
+
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Igloo Software die folgenden Schritte aus:**
+
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Igloo Software** auf **Einmaliges Anmelden**.
+
+    ![Einmaliges Anmelden konfigurieren][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_samlbase.png)
+
+3. Führen Sie im Abschnitt **Domäne und URLs für Igloo Software** die folgenden Schritte aus:
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_url.png)
+    
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.igloocommmunities.com`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<company name>.igloocommmunities.com/saml.digest`
+
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<company name>.igloocommmunities.com/saml.digest`
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Igloo Software](https://www.igloosoftware.com/services/support), um diese Werte zu erhalten. 
+
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/tutorial_general_400.png)
+    
+6. Klicken Sie im Abschnitt mit der **Igloo Software-Konfiguration** auf **Igloo Software konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_configure.png) 
+
+7. Melden Sie sich in einem anderen Webbrowserfenster bei der Igloo Software-Unternehmenswebsite als Administrator an.
+
+8. Wechseln Sie zur **Systemsteuerung**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/IC783964.png "Einmaliges Anmelden konfigurieren")
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Igloo Software anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+     ![Systemsteuerung](./media/active-directory-saas-igloo-software-tutorial/ic799949.png "Systemsteuerung")
+
+9. Klicken Sie auf der Registerkarte **Mitgliedschaft** auf **Anmeldeeinstellungen**.
    
-   ![Microsoft Azure AD – einmaliges Anmelden](./media/active-directory-saas-igloo-software-tutorial/IC783965.png "Microsoft Azure AD – einmaliges Anmelden")
-3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Igloo Software-Anmelde-URL** die URL im Format „*https://company.igloocommunities.com/?signin*“ ein, und klicken Sie dann auf **Weiter**.
+    ![Anmeldeeinstellungen](./media/active-directory-saas-igloo-software-tutorial/ic783968.png "Anmeldeeinstellungen")
+
+10. Klicken Sie im Abschnitt für die SAML-Konfiguration auf **SAML-Authentifizierung konfigurieren**.
    
-   ![App-URL konfigurieren](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "App-URL konfigurieren")
-4. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Igloo Software** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
+    ![SAML-Konfiguration](./media/active-directory-saas-igloo-software-tutorial/ic783969.png "SAML-Konfiguration")
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/IC783966.png "Einmaliges Anmelden konfigurieren")
-5. Melden Sie sich in einem anderen Webbrowserfenster bei der Igloo Software-Unternehmenswebsite als Administrator an.
-6. Wechseln Sie zur **Systemsteuerung**.
+11. Führen Sie im Abschnitt **Allgemeine Konfiguration** die folgenden Schritte aus:
    
-   ![Systemsteuerung](./media/active-directory-saas-igloo-software-tutorial/IC799949.png "Systemsteuerung")
-7. Klicken Sie auf der Registerkarte **Mitgliedschaft** auf **Anmeldeeinstellungen**.
+    ![Allgemeine Konfiguration](./media/active-directory-saas-igloo-software-tutorial/ic783970.png "Allgemeine Konfiguration")
+
+    a. Geben Sie im Textfeld **Verbindungsname** einen Namen für die Konfiguration ein.
    
-   ![Anmeldeeinstellungen](./media/active-directory-saas-igloo-software-tutorial/IC783968.png "Anmeldeeinstellungen")
-8. Klicken Sie im Abschnitt für die SAML-Konfiguration auf **SAML-Authentifizierung konfigurieren**.
+    b. Fügen Sie in das Textfeld **IdP-Anmelde-URL** den Wert der **SAML-Dienst-URL für einmalige Anmeldung** ein, den Sie aus dem Azure-Portal kopiert haben.
    
-   ![SAML-Konfiguration](./media/active-directory-saas-igloo-software-tutorial/IC783969.png "SAML-Konfiguration")
-9. Führen Sie im Abschnitt **Allgemeine Konfiguration** die folgenden Schritte aus:
+    c. Fügen Sie in das Textfeld **IdP-Abmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    
+    d. Wählen Sie für **Abmeldeantwort und HTTP-Anforderungstyp** die Option **POST** aus.
    
-   ![Allgemeine Konfiguration](./media/active-directory-saas-igloo-software-tutorial/IC783970.png "Allgemeine Konfiguration")
-   1. Geben Sie im Textfeld **Verbindungsname** einen Namen für die Konfiguration ein.
-   2. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Igloo Software** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **IdP-Anmelde-URL** ein.
-   3. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Igloo Software** den Wert der **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **IdP-Abmelde-URL** ein.
-   4. Wählen Sie für **Abmeldeantwort und HTTP-Anforderungstyp** die Option **POST** aus.
-   5. Erstellen Sie aus dem heruntergeladenen Zertifikat eine Textdatei.    
-   
-       >[!TIP]
-       >Weitere Informationen finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)(in englischer Sprache). 
-       > 
-   6. Entfernen Sie die erste Zeile und die letzte Zeile aus der Textdateiversion des Zertifikats, kopieren Sie den restlichen Text des Zertifikats, und fügen Sie ihn in das Textfeld **Öffentliches Zertifikat** ein.
-10. Führen Sie unter **Antwort- und Authentifizierungskonfiguration**die folgenden Schritte aus:
+    e. Öffnen Sie das **Base64**-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Öffentliches Zertifikat** ein.
+    
+12. Führen Sie unter **Antwort- und Authentifizierungskonfiguration**die folgenden Schritte aus:
     
     ![Antwort- und Authentifizierungskonfiguration](./media/active-directory-saas-igloo-software-tutorial/IC783971.png "Antwort- und Authentifizierungskonfiguration")
-  1. Wählen Sie für **Identitätsanbieter** die Option **Microsoft ADFS** aus.
-  2. Wählen Sie für **Bezeichnertyp** die Option **E-Mail-Adresse** aus.
-  3. Geben Sie im Textfeld **E-Mail-Attribut** die Zeichenfolge **emailaddress** ein.
-  4. Geben Sie **givenname** in das Textfeld **Vornamen-Attribut** ein.
-  5. Geben Sie **surname** in das Textfeld **Nachnamen-Attribut** ein.
-11. Führen Sie die folgenden Schritte aus, um die Konfiguration abzuschließen:
+  
+      a. Wählen Sie für **Identitätsanbieter** die Option **Microsoft ADFS** aus.
+      
+      b. Wählen Sie für **Bezeichnertyp** die Option **E-Mail-Adresse** aus. 
+
+      c. Geben Sie im Textfeld **E-Mail-Attribut** die Zeichenfolge **emailaddress** ein.
+
+      d. Geben Sie **givenname** in das Textfeld **Vornamen-Attribut** ein.
+
+      e. Geben Sie **surname** in das Textfeld **Nachnamen-Attribut** ein.
+
+13. Führen Sie die folgenden Schritte aus, um die Konfiguration abzuschließen:
     
-    ![Benutzererstellung beim Anmelden](./media/active-directory-saas-igloo-software-tutorial/IC783972.png "Benutzererstellung beim Anmelden")   
-  1. Wählen Sie für **Benutzererstellung beim Anmelden** die Option **Bei der Anmeldung neuen Benutzer in der Website erstellen** aus.
-  2. Wählen Sie für **Anmeldeeinstellungen** die Option **SAML-Schaltfläche auf dem Anmeldebildschirm verwenden** aus.
-  3. Klicken Sie auf **Speichern**.
-12. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+    ![Benutzererstellung beim Anmelden](./media/active-directory-saas-igloo-software-tutorial/IC783972.png "Benutzererstellung beim Anmelden") 
+
+     a. Wählen Sie für **Benutzererstellung beim Anmelden** die Option **Bei der Anmeldung neuen Benutzer in der Website erstellen** aus.
+
+     b. Wählen Sie für **Anmeldeeinstellungen** die Option **SAML-Schaltfläche auf dem Anmeldebildschirm verwenden** aus.
+
+     c. Klicken Sie auf **Speichern**.
+
+> [!TIP]
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+![Azure AD-Benutzer erstellen][100]
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_01.png) 
+
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/IC783973.png "Einmaliges Anmelden konfigurieren")
-    
-## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_02.png) 
+
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_03.png) 
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_04.png) 
+
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="creating-an-igloo-software-test-user"></a>Erstellen eines Testbenutzers für Igloo Software
 
 Für das Konfigurieren der Benutzerbereitstellung in Igloo Software steht kein Aktionselement zur Verfügung.  
 
 Wenn ein zugewiesener Benutzer versucht, sich über den Zugriffsbereich bei Igloo Software anzumelden, überprüft Igloo Software, ob der Benutzer vorhanden ist.  Ist noch kein Benutzerkonto verfügbar, wird es von Igloo Software automatisch erstellt.
 
-## <a name="assign-users"></a>Benutzer zuweisen
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-**So weisen Sie Igloo Software Benutzer zu**
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Igloo Software gewähren.
 
-1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
-2. Klicken Sie auf der Anwendungsintegrationsseite für **Igloo Software** auf **Benutzer zuweisen**.
-   
-   ![Zuweisen von Benutzern](./media/active-directory-saas-igloo-software-tutorial/IC783974.png "Zuweisen von Benutzern")
-3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
-   
-   ![Ja](./media/active-directory-saas-igloo-software-tutorial/IC767830.png "Ja")
+![Benutzer zuweisen][200] 
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+**Um Britta Simon Igloo Software zuzuweisen, führen Sie die folgenden Schritte aus:**
+
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
+    ![Benutzer zuweisen][201] 
+
+2. Wählen Sie in der Anwendungsliste **Igloo Software**aus.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „Igloo Software“ klicken, sollten Sie automatisch bei Ihrer Igloo Software-Anwendung angemeldet werden.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-igloo-software-tutorial/tutorial_general_203.png
 
 

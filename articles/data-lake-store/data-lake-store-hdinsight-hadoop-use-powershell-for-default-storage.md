@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 05/08/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: d129ea9e5f3e320ccd705028f9860188babe2fe4
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -33,11 +33,9 @@ Erfahren Sie, wie Sie mithilfe von Azure PowerShell Azure HDInsight-Cluster mit 
 
 Hier finden Sie einige wichtige Überlegungen zur Verwendung von HDInsight mit Data Lake Store:
 
-* Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als Standardspeicher ist für HDInsight-Version 3.5 verfügbar.
+* Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als Standardspeicher ist für die HDInsight-Versionen 3.5 und 3.6 verfügbar.
 
 * Die Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als Standardspeicher ist für HDInsight Premium-Cluster *nicht verfügbar*.
-
-* Für HBase-Cluster (Windows und Linux) wird Data Lake Store *nicht* als Speicheroption unterstützt, weder für Standardspeicher noch für zusätzlichen Speicher.
 
 Befolgen Sie die Anweisungen in den nächsten fünf Abschnitten, um HDInsight zum Arbeiten mit Data Lake Store mithilfe von PowerShell zu konfigurieren.
 
@@ -46,7 +44,7 @@ Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgend
 
 * **Ein Azure-Abonnement**: Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
 * **Azure PowerShell 1.0 oder höher**: Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/en-us/downloads), um Windows SDK zu installieren. Sie verwenden Windows SDK, um ein Sicherheitszertifikat zu erstellen.
+* **Windows Software Development Kit (SDK)**: Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/en-us/downloads), um Windows SDK zu installieren. Das SDK dient zum Erstellen eines Sicherheitszertifikats.
 * **Azure Active Directory-Dienstprinzipal**: In diesem Tutorial wird beschrieben, wie ein Dienstprinzipal in Azure Active Directory (Azure AD) erstellt wird. Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
 
     >[!NOTE]
@@ -187,7 +185,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Linux-Cluster mit Data 
         # Set these variables
 
         $location = "East US 2"
-        $storageAccountName = $dataLakeStoreName                          # Data Lake Store account name
+        $storageAccountName = $dataLakeStoreName                       # Data Lake Store account name
         $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
         $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
@@ -205,7 +203,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Linux-Cluster mit Data 
                -DefaultStorageAccountType AzureDataLakeStore `
                -DefaultStorageAccountName "$storageAccountName.azuredatalakestore.net" `
                -DefaultStorageRootPath $storageRootPath `
-               -Version "3.5" `
+               -Version "3.6" `
                -SshCredential $sshCredentials `
                -AadTenantId $tenantId `
                -ObjectId $objectId `

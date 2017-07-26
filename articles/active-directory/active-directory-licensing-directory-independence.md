@@ -1,55 +1,57 @@
 ---
-title: Merkmale von Azure Active Directory-Verzeichnissen | Microsoft-Dokumentation
-description: "Verwalten Ihrer Azure Active Directory-Verzeichnisse, indem Sie Ihre Verzeichnisse als vollständig unabhängige Ressourcen verstehen"
-services: active-directory
+title: Eigenschaften von Interaktionen mit Azure Active Directory-Mandanten | Microsoft-Dokumentation
+description: "Verwalten Ihrer Azure Active Directory-Mandanten, indem Sie Ihre Mandanten als vollständig unabhängige Ressourcen verstehen"
+services: active-tenant
 documentationcenter: 
 author: curtand
 manager: femila
-editor: 
+editor: piotrci
 ms.assetid: 2b862b75-14df-45f2-a8ab-2a3ff1e2eb08
-ms.service: active-directory
+ms.service: active-tenant
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2017
+ms.date: 06/01/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
-ms.openlocfilehash: 5ec00d5e8380f121dd9302cf08a0708c530aab9b
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 142bd7fea8d1a409662282b9b23a2e1598c9e86e
 ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
-# <a name="understand-how-multiple-azure-active-directory-directories-interact"></a>Grundlegendes zum Interagieren mehrerer Azure Active Directory-Verzeichnisse
-In Azure Active Directory (Azure AD) ist jedes Verzeichnis eine vollständig unabhängige Ressource: gleichgestellt, voll funktionsfähig und logisch unabhängig von anderen Verzeichnissen, die Sie verwalten. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Verzeichnissen. Diese Unabhängigkeit zwischen den Verzeichnissen beinhaltet Ressourcen-, Verwaltungs- und Synchronisierungsunabhängigkeit.
+
+# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Grundlegendes zum Interagieren mehrerer Azure Active Directory-Mandanten
+
+In Azure Active Directory (Azure AD) ist jeder Mandant eine vollständig unabhängige Ressource: gleichgestellt, logisch unabhängig von anderen Mandanten, die Sie verwalten. Es gibt keine unter- und übergeordneten Beziehungen zwischen den Mandanten. Diese Unabhängigkeit zwischen den Mandanten beinhaltet Ressourcen-, Verwaltungs- und Synchronisierungsunabhängigkeit.
 
 ## <a name="resource-independence"></a>Ressourcenunabhängigkeit
-Wenn Sie eine Ressource in einem Verzeichnis erstellen oder löschen, hat dies keine Auswirkungen auf Ressourcen in einem anderen Verzeichnis. Eine teilweise geltende Ausnahme bilden externe Benutzer, wie unten beschrieben. Wenn Sie eine benutzerdefinierte Domäne "contoso.com" in einem Verzeichnis verwenden, kann sie in keinem anderen Verzeichnis verwendet werden.
+* Wenn Sie eine Ressource in einem Mandanten erstellen oder löschen, hat dies keine Auswirkungen auf Ressourcen in einem anderen Mandanten. Eine teilweise geltende Ausnahme bilden externe Benutzer. 
+* Wenn Sie einen Ihrer Domänennamen bei einem Mandanten verwenden, kann er bei keinem anderen Mandanten verwendet werden.
 
 ## <a name="administrative-independence"></a>Verwaltungsunabhängigkeit
-Wenn ein Benutzer ohne Administratorrechte aus dem Verzeichnis „Contoso“ ein Testverzeichnis „Test“ erstellt, geschieht Folgendes:
+Wenn ein Benutzer ohne Administratorberechtigungen aus dem Mandanten „Contoso“ einen Testmandanten „Test“ erstellt, geschieht Folgendes:
 
-* Standardmäßig wird der Benutzer, der ein Verzeichnis erstellt, als externer Benutzer in diesem neuen Verzeichnis hinzugefügt, und ihm wird ihm die globale Administratorrolle in diesem Verzeichnis zugewiesen.
-* Die Administratoren für das Verzeichnis „Contoso“ haben keine direkten Administratorberechtigungen für das Verzeichnis „Test“, sofern ihnen nicht ein Administrator diese Verzeichnisses die Berechtigungen explizit erteilt. Die Administratoren von „Contoso“ können den Zugriff auf das Verzeichnis „Test“ steuern, wenn sie das Benutzerkonto steuern, mit dem dieses Verzeichnis erstellt wurde.
-* Wenn Sie eine Administratorrolle für einen Benutzer in einem Verzeichnis ändern (hinzufügen oder entfernen), hat die Änderung keine Auswirkungen auf eine Administratorrolle, die der Benutzer möglicherweise in einem anderen Verzeichnis hat.
+* Standardmäßig wird der Benutzer, der einen Mandanten erstellt, als externer Benutzer in diesem neuen Mandanten hinzugefügt, und ihm wird ihm die globale Administratorrolle in diesem Mandanten zugewiesen.
+* Die Administratoren für den Mandanten „Contoso“ haben keine direkten Administratorberechtigungen für den Mandanten „Test“, sofern ihnen nicht ein Administrator dieses Mandanten die Berechtigungen explizit erteilt. Die Administratoren von „Contoso“ können allerdings den Zugriff auf den Mandanten „Test“ steuern, wenn sie das Benutzerkonto steuern, mit dem dieser Mandant erstellt wurde.
+* Wenn Sie eine Administratorrolle für einen Benutzer in einem Mandanten hinzufügen oder entfernen, wirkt sich die Änderung nicht auf die Administratorrollen aus, über die der Benutzer in einem anderen Mandanten verfügt.
 
 ## <a name="synchronization-independence"></a>Synchronisierungsunabhängigkeit
-Sie können jedes Azure AD-Verzeichnis unabhängig voneinander konfigurieren, um Daten mit einer Instanz einer der folgenden Komponenten zu synchronisieren:
+Sie können jeden Azure AD-Mandanten unabhängig voneinander konfigurieren, damit Sie mit einer der folgenden Möglichkeiten synchronisierte Daten einer einzelnen Instanz erhalten:
 
-* Dem Tool für die Verzeichnissynchronisierung (DirSync), um Daten mit einer AD-Gesamtstruktur zu synchronisieren.
-* Dem Azure Active Directory Connector für Forefront Identity Manager, um Daten mit mindestens einer lokalen Gesamtstruktur und/oder anderen Datenquellen als Azure AD zu synchronisieren.
+* Dem Tool Azure AD Connect, um Daten mit einer AD-Gesamtstruktur zu synchronisieren
+* Dem Connector des Azure Active Directory-Mandanten für Forefront Identity Manager, um Daten mit mindestens einer lokalen Gesamtstruktur und/oder anderen Datenquellen als Azure AD zu synchronisieren
 
-## <a name="add-an-azure-ad-directory"></a>Hinzufügen eines Azure AD-Verzeichnisses
-Um ein Azure AD-Verzeichnis im klassischen Azure-Portal hinzuzufügen, wählen Sie die Active Directory-Erweiterung auf der linken Seite aus, und tippen Sie auf **Hinzufügen**.
+## <a name="add-an-azure-ad-tenant"></a>Hinzufügen eines Azure AD-Mandanten
+Um einen Azure AD-Mandanten im klassischen Azure-Portal hinzuzufügen, wählen Sie die Azure Active Directory-Erweiterung auf der linken Seite aus, und tippen Sie auf **Hinzufügen**.
 
 > [!NOTE]
-> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Verzeichnisse keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Sie Ihr Azure-Abonnement kündigen oder ablaufen lassen, können Sie weiterhin mithilfe von Azure PowerShell, der Azure Graph-API oder anderen Schnittstellen wie Office 365 Admin Center auf Ihre Verzeichnisdaten zugreifen. Sie können dem Verzeichnis auch ein anderes Abonnement zuordnen.
->
+> Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Mandanten keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt oder abgelaufen ist, können Sie weiterhin mithilfe von Azure PowerShell, Azure Graph-API oder Office 365 Admin Center auf Ihre Mandantendaten zugreifen. Sie können dem Mandanten auch ein anderes Abonnement zuordnen.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine grobe Übersicht über Lizenzierungsprobleme und bewährte Methoden im Zusammenhang mit Azure AD finden Sie unter [Was ist Azure Active Directory-Lizenzierung?](active-directory-licensing-what-is.md).
+Eine grobe Übersicht über Lizenzierungsprobleme und Best Practices im Zusammenhang mit Azure AD finden Sie unter [Worum handelt es sich bei der Lizenzierung von Azure Active Directory-Mandanten?](active-directory-licensing-whatis-azure-portal.md).
 

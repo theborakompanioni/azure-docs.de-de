@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 06/14/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ddf4affe72c6413501ffa00747c110f8761ed70e
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: ef26a16e79d9c9b0654634960b57dc59827b2c24
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -136,17 +136,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/updateusermail.png)
     
-9. Klicken Sie im Abschnitt **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, und legen Sie die Attribute fest. Sie müssen einen weiteren Anspruch namens **department** hinzufügen, dessen Wert **user.department** zugeordnet werden muss.
+9. Klicken Sie im Abschnitt **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, und legen Sie die Attribute fest. Der Benutzer muss vier Ansprüche mit den Namen **email**, **department**, **firstname** und **lastname** hinzufügen, und der Wert muss mit **user.mail**, **user.department**, **user.givenname** bzw. **user.surname** zugeordnet werden.
 
     | Attributname | Attributwert |
     | --- | --- |    
+    | E-Mail| user.mail |
     | department| user.department |
-
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
-
+    | firstname| user.givenname |
+    | lastname| user.surname |
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
+    
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld zum Attribut zu öffnen.
-
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-linkedinsalesnavigator-tutorial/adduserattribute.png)
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_attribute_05.png)
    
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -154,29 +159,39 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
     
     d. Klicken Sie auf **OK**.
 
-10. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
+10. Führen Sie für das Attribut **Name** die folgenden Schritte aus:
+
+    a. Klicken Sie auf das Attribut, um das Fenster **Attribut bearbeiten** zu öffnen.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/url_update.png)
+
+    b. Löschen Sie den URL-Wert aus dem **Namespace**.
+    
+    c. Klicken Sie auf **OK**, um die Einstellung zu speichern.
+
+11. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
-11. Klicken Sie auf die Schaltfläche **Save** .
+12. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
-12. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Klicken Sie auf **XML-Datei hochladen**, um die Metadaten-XML-Datei hochzuladen, die Sie vom Azure-Portal heruntergeladen haben.
+13. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Klicken Sie auf **XML-Datei hochladen**, um die Metadaten-XML-Datei hochzuladen, die Sie vom Azure-Portal heruntergeladen haben.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
-13. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
+14. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden** und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** im unteren Bereich auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, einen Testbenutzer namens Britta Simon im Azure-Portal zu erstellen.
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
 ![Azure AD-Benutzer erstellen][100]
 

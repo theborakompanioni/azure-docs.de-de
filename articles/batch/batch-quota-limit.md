@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2017
+ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 56e8f5579da2b5bed7975f25f0779c54d70cb886
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
 ms.contentlocale: de-de
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -72,8 +72,10 @@ Das Kernkontingent auf regionaler Ebene oder pro VM-Familie muss entsprechend de
 | [Anwendungen](batch-application-packages.md) pro Batch-Konto |20 |
 | Anwendungspakete pro Anwendung. |40 |
 | Anwendungspaketgröße (jeweils) |Ca. 195 GB<sup>1</sup> |
+| Maximale Größe des Starttasks | 32.768 Zeichen<sup>2</sup> |
 
-<sup>1</sup> Azure Storage-Limit für die maximale Blockblobgröße
+<sup>1</sup> Azure Storage-Limit für die maximale Blockblobgröße<br />
+<sup>2</sup> Einschließlich Ressourcendateien und Umgebungsvariablen
 
 ## <a name="view-batch-quotas"></a>Anzeigen von Batch-Kontingenten
 Sie können die Kontingente Ihres Batch-Kontos im [Azure-Portal][portal] anzeigen.
@@ -112,6 +114,7 @@ Wenn Ihr Batch-Konto im Modus **Batch-Dienst** erstellt wurde, gehen Sie wie fol
     d. **Supportplan** > **Kontingentsupport – inbegriffen**
    
     Klicken Sie auf **Weiter**.
+
 4. Gehen Sie auf dem Blatt **Problem** folgendermaßen vor:
    
     a. Wählen Sie einen **Schweregrad** gemäß der [geschäftlichen Auswirkung][support_sev] aus.
@@ -119,6 +122,7 @@ Wenn Ihr Batch-Konto im Modus **Batch-Dienst** erstellt wurde, gehen Sie wie fol
     b. Geben Sie unter **Details**jedes Kontingent an, das Sie ändern möchten, sowie den Batch-Kontonamen und das neue Limit.
    
     Klicken Sie auf **Weiter**.
+
 5. Gehen Sie auf dem Blatt **Kontaktinformationen** folgendermaßen vor:
    
     a. Wählen Sie eine **bevorzugte Kontaktmethode**aus.

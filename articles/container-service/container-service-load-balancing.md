@@ -14,50 +14,59 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 06/02/2017
 ms.author: rogardle
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: f8a001350c9e1ac50641c3ee4430849023233c60
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 75e9e93b374a21a54405454a8914db8aaf5ff699
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Durchführen des Lastenausgleichs für Container in einem Azure Container Service-DC/OS-Cluster
-In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in einem per DC/OS verwalteten Azure Container Service mit Marathon-LB erstellen. So wird das horizontale Skalieren Ihrer Anwendungen ermöglicht. Außerdem können Sie die öffentlichen und privaten Agent-Cluster nutzen, indem Sie Ihre Lastenausgleichsmodule im öffentlichen Cluster und Ihre Anwendungscontainer im privaten Cluster anordnen.
+In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in einem per DC/OS verwalteten Azure Container Service mit Marathon-LB erstellen. Durch diese Konfiguration wird das horizontale Skalieren Ihrer Anwendungen ermöglicht. Außerdem können Sie die öffentlichen und privaten Agent-Cluster nutzen, indem Sie Ihre Load Balancer im öffentlichen Cluster und Ihre Anwendungscontainer im privaten Cluster anordnen. In diesem Tutorial haben Sie Folgendes durchgeführt:
 
-## <a name="prerequisites"></a>Voraussetzungen
-[Stellen Sie eine Instanz von Azure Container Service mit dem Orchestratortyp DC/OS bereit](container-service-deployment.md), und [stellen Sie sicher, dass der Client eine Verbindung mit Ihrem Cluster herstellen kann](container-service-connect.md). 
+> [!div class="checklist"]
+> * Konfigurieren eines Marathon Load Balancers
+> * Bereitstellen einer Anwendung mithilfe des Load Balancers
+> * Konfigurieren eines Azure Load Balancers
 
-## <a name="load-balancing"></a>Lastenausgleich
-Der Containerdienstcluster, den wir erstellen, enthält zwei Ebenen für den Lastenausgleich: 
+Sie benötigen einen ACS DC/OS-Cluster, um die Schritte in diesem Tutorial auszuführen. Bei Bedarf können Sie mit diesem [Beispielskript](./scripts/container-service-cli-deploy-dcos.md) einen erstellen.
 
-1. Azure Load Balancer verfügt über öffentliche Einstiegspunkte (für Endbenutzer). Diese werden vom Azure-Containerdienst automatisch bereitgestellt und standardmäßig so konfiguriert, dass die Ports 80, 443 und 8080 verfügbar gemacht werden.
-2. Der Marathon Load Balancer (marathon-lb) leitet eingehende Anforderungen an Containerinstanzen weiter, die diese Anforderungen verarbeiten. Wenn wir die Container für unseren Webdienst skalieren, wird „marathon-lb“ dynamisch angepasst. Dieses Lastenausgleichsmodul wird nicht standardmäßig im Containerdienst bereitgestellt, aber es ist sehr einfach zu installieren.
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
-## <a name="marathon-load-balancer"></a>Marathon Load Balancer
-Marathon Load Balancer konfiguriert sich basierend auf den von Ihnen bereitgestellten Containern selbst dynamisch neu. Außerdem kann er den Verlust eines Containers oder Agents überstehen. Wenn dies passiert, wird der Container von Apache Mesos einfach an einem anderen Ort neu gestartet, und „marathon-lb“ wird angepasst.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Zum Installieren von Marathon Load Balancer können Sie entweder die DC/OS-Webbenutzeroberfläche oder die Befehlszeile verwenden.
+## <a name="load-balancing-overview"></a>Übersicht über den Lastenausgleich
 
-### <a name="install-marathon-lb-using-dcos-web-ui"></a>Installieren von Marathon-LB über die DC/OS-Webbenutzeroberfläche
-1. Klicken Sie auf „Universe“.
-2. Suchen Sie nach „Marathon-LB“.
-3. Klicken Sie auf „Install“ (Installieren).
+In einem Azure Container Service DC/OS-Cluster gibt es zwei Ebenen für den Lastenausgleich: 
 
-![„marathon-lb“ über die DC/OS-Webschnittstelle installieren](./media/dcos/marathon-lb-install.png)
+**Azure Load Balancer** bietet öffentliche Einstiegspunkte (auf die Endbenutzer zugreifen). Ein Azure Load Balancer wird vom Azure Container Service automatisch bereitgestellt und standardmäßig so konfiguriert, dass die Ports 80, 443 und 8080 verfügbar gemacht werden.
 
-### <a name="install-marathon-lb-using-the-dcos-cli"></a>Installieren von Marathon-LB mit der DC/OS-Befehlszeilenschnittstelle
-Nachdem Sie die DC/OS-Befehlszeilenschnittstelle installiert und sichergestellt haben, dass Sie eine Verbindung mit Ihrem Cluster herstellen können, können Sie auf Ihrem Clientcomputer den folgenden Befehl ausführen:
+Der **Marathon Load Balancer (marathon-lb)** leitet eingehende Anforderungen an Containerinstanzen weiter, die diese Anforderungen verarbeiten. Wenn wir die Container für unseren Webdienst skalieren, wird marathon-lb dynamisch angepasst. Dieser Load Balancer wird nicht standardmäßig in Ihrem Containerdienst bereitgestellt, ist aber sehr einfach zu installieren.
 
-```bash
+## <a name="configure-marathon-load-balancer"></a>Konfigurieren eines Marathon Load Balancers
+
+Marathon Load Balancer konfiguriert sich basierend auf den von Ihnen bereitgestellten Containern selbst dynamisch neu. Außerdem kann er den Verlust eines Containers oder Agents überstehen. Wenn dies passiert, wird der Container von Apache Mesos an einem anderen Ort neu gestartet, an den sich marathon-lb anpasst.
+
+Führen Sie den folgenden Befehl aus, um den Marathon Load Balancer für den Cluster des öffentlichen Agents zu installieren.
+
+```azurecli-interactive
 dcos package install marathon-lb
 ```
 
-Mit diesem Befehl wird der Lastenausgleich automatisch im öffentlichen Agent-Cluster installiert.
+## <a name="deploy-load-balanced-application"></a>Bereitstellen einer Anwendung mit Lastenausgleich
 
-## <a name="deploy-a-load-balanced-web-application"></a>Bereitstellen einer Webanwendung mit Lastenausgleich
-Da wir jetzt über das „marathon-lb“-Paket verfügen, können wir einen Anwendungscontainer bereitstellen, für den der Lastenausgleich durchgeführt werden soll. In diesem Beispiel stellen wir einen einfachen Webserver bereit, indem wir die folgende Konfiguration verwenden:
+Da wir jetzt über das „marathon-lb“-Paket verfügen, können wir einen Anwendungscontainer bereitstellen, für den der Lastenausgleich durchgeführt werden soll. 
+
+Rufen Sie zunächst den FQDN der öffentlich verfügbar gemachten Agents ab.
+
+```azurecli-interactive
+az acs list --resource-group myResourceGroup --query "[0].agentPoolProfiles[0].fqdn" --output tsv
+```
+
+Als Nächstes erstellen Sie eine Datei namens *hello-web.json*, in die Sie den folgenden Inhalt kopieren. Die Bezeichnung `HAPROXY_0_VHOST` muss mit dem FQDN des DC/OS-Agents aktualisiert werden. 
 
 ```json
 {
@@ -91,47 +100,34 @@ Da wir jetzt über das „marathon-lb“-Paket verfügen, können wir einen Anwe
     "HAPROXY_0_MODE":"http"
   }
 }
-
 ```
 
-* Legen Sie den Wert von `HAPROXY_0_VHOST` auf den FQDN des Lastenausgleichs für Ihre Agents fest. Dieser hat das folgende Format: `<acsName>agents.<region>.cloudapp.azure.com`. Wenn Sie beispielsweise einen Containerdienstcluster mit dem Namen `myacs` in der Region `West US` erstellen, lautet der FQDN wie folgt: `myacsagents.westus.cloudapp.azure.com`. Sie können hierauf auch zugreifen, indem Sie nach dem Lastenausgleichsmodul mit „agent“ im Namen suchen, wenn Sie sich die Ressourcen in der Ressourcengruppe ansehen, die Sie für den Containerdienst im [Azure-Portal](https://portal.azure.com)erstellt haben.
-* Legen Sie `servicePort` auf einen Port >= 10.000 fest. So wird der Dienst identifiziert, der in diesem Container ausgeführt wird. Von „marathon-lb“ wird dieses Verfahren verwendet, um Dienste zu identifizieren, für die der Ausgleich durchgeführt werden soll.
-* Legen Sie die Bezeichnung `HAPROXY_GROUP` auf „external“ fest.
-* Legen Sie `hostPort` auf „0“ fest. Dies bedeutet, dass Marathon willkürlich einen verfügbaren Port zuordnet.
-* Legen Sie `instances` auf die Anzahl von Instanzen fest, die Sie erstellen möchten. Diese Anzahl können Sie später noch erhöhen oder verringern.
+Verwenden Sie die CLI von DC/OS, um die Anwendung auszuführen. Standardmäßig stellt Marathon die Anwendung im privaten Cluster bereit. Dies bedeutet, dass auf die oben genannte Bereitstellung nur über Ihren Load Balancer zugegriffen werden kann, was in der Regel das gewünschte Verhalten ist.
 
-Beachten Sie, dass Marathon die Bereitstellung standardmäßig im privaten Cluster durchführt. Dies bedeutet, dass die obige Bereitstellung nur über den Lastenausgleich zugänglich ist. Dies ist in der Regel das erwünschte Verhalten.
-
-### <a name="deploy-using-the-dcos-web-ui"></a>Bereitstellen mit der DC/OS-Webbenutzeroberfläche
-1. Besuchen Sie die Marathon-Seite unter http://localhost/marathon (nach dem Einrichten des [SSH-Tunnels](container-service-connect.md)), und klicken Sie auf `Create Application`.
-2. Klicken Sie im Dialogfeld `New Application` oben rechts auf `JSON Mode`.
-3. Fügen Sie den obigen JSON-Code in den Editor ein.
-4. Klicken Sie auf `Create Application`.
-
-### <a name="deploy-using-the-dcos-cli"></a>Bereitstellen mit der DC/OS-Befehlszeilenschnittstelle
-Um die Anwendung mit der DC/OS-Befehlszeilenschnittstelle bereitzustellen, kopieren Sie einfach den obigen JSON-Code in eine Datei mit dem Namen `hello-web.json` und führen Folgendes aus:
-
-```bash
+```azurecli-interactive
 dcos marathon app add hello-web.json
 ```
 
-## <a name="azure-load-balancer"></a>Azure-Lastenausgleich
-Azure Load Balancer macht standardmäßig die Ports 80, 8080 und 443 verfügbar. Bei Verwendung von einem dieser drei Ports (wie im obigen Beispiel) müssen Sie nichts weiter unternehmen. Der FQDN Ihres Agent-Lastenausgleichs sollte auf Anhieb gefunden werden. Bei jeder von Ihnen durchgeführten Aktualisierung wird rollierend jeweils ein anderer Ihrer drei Webserver gefunden. Wenn Sie einen anderen Port verwenden, müssen Sie dagegen eine Roundrobin-Regel hinzufügen und für den jeweiligen Port einen Test für den Load Balancer hinzufügen. Hierfür können Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-azure-resource-manager.md) mit den Befehlen `azure network lb rule create` und `azure network lb probe create` verwenden. Außerdem können Sie hierfür das Azure-Portal verwenden.
+Nachdem die Anwendung bereitgestellt wurde, navigieren Sie zum FQDN des Agent-Clusters, um die Anwendung mit Lastenausgleich anzuzeigen.
 
-## <a name="additional-scenarios"></a>Zusätzliche Szenarien
-Es kann vorkommen, dass Sie unterschiedliche Domänen nutzen, um unterschiedliche Dienste verfügbar zu machen. Beispiel:
+![Abbildung einer Anwendung mit Lastenausgleich](media/container-service-load-balanging/lb-app.png)
 
-mydomain1.com -> Azure LB:80 -> marathon-lb:10001 -> mycontainer1:33292  
-mydomain2.com -> Azure LB:80 -> marathon-lb:10002 -> mycontainer2:22321
+## <a name="configure-azure-load-balancer"></a>Konfigurieren von Azure Load Balancer
 
-Informieren Sie sich hierfür über [virtuelle Hosts](https://mesosphere.com/blog/2015/12/04/dcos-marathon-lb/). Sie stellen eine Möglichkeit dar, Domänen bestimmten marathon-lb-Pfaden zuzuordnen.
+Azure Load Balancer macht standardmäßig die Ports 80, 8080 und 443 verfügbar. Bei Verwendung von einem dieser drei Ports (wie im obigen Beispiel) müssen Sie nichts weiter unternehmen. Der FQDN des Load Balancers Ihres Agents sollte auf Anhieb gefunden werden. Bei jeder von Ihnen durchgeführten Aktualisierung wird rollierend jeweils ein anderer Ihrer drei Webserver gefunden. 
 
-Alternativ dazu können Sie verschiedene Ports verfügbar machen und im Hintergrund von „marathon-lb“ neu dem richtigen Dienst zuordnen. Beispiel:
-
-Azure lb:80 -> marathon-lb:10001 -> mycontainer:233423  
-Azure lb:8080 -> marathon-lb:1002 -> mycontainer2:33432
+Wenn Sie einen anderen Port verwenden, müssen Sie eine Roundrobinregel und für den jeweiligen Port einen Test für den Load Balancer hinzufügen. Hierfür können Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-azure-resource-manager.md) mit den Befehlen `azure network lb rule create` und `azure network lb probe create` verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu [marathon-lb](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/)finden Sie in der DC/OS-Dokumentation.
 
+In diesem Tutorial haben Sie mehr über den Lastenausgleich in ACS mit sowohl dem Marathon als auch dem Azure Load Balancer sowie über die folgenden Aktionen erfahren:
 
+> [!div class="checklist"]
+> * Konfigurieren eines Marathon Load Balancers
+> * Bereitstellen einer Anwendung mithilfe des Load Balancers
+> * Konfigurieren eines Azure Load Balancers
+
+Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Integration von Azure-Speicher und DC/OS in Azure zu erfahren.
+
+> [!div class="nextstepaction"]
+> [Bereitstellen einer Azure-Dateifreigabe in einem DC/OS-Cluster](./container-service-dcos-fileshare.md)
