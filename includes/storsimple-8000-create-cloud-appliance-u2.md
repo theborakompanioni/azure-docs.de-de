@@ -5,7 +5,7 @@
     ![StorSimple: Cloudgerät erstellen](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. Geben Sie auf dem Blatt **Cloudgerät erstellen** die folgenden Details an.
    
-    ![StorSimple: Cloudgerät erstellen](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2.png)
+    ![StorSimple: Cloudgerät erstellen](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **Name**: Ein eindeutiger Name für Ihr Cloudgerät.
    2. **Modell**: Wählen Sie das Modell für das Cloudgerät. Ein 8010-Gerät verfügt über 30 TB Standardspeicher, und ein 8020-Gerät verfügt über 64 TB Storage Premium-Speicher. Geben Sie 8010 an, um Abrufszenarien auf Objektebene aus Sicherungen bereitzustellen. Wählen Sie 8020 aus, um Workloads mit hoher Leistung und geringer Wartezeit bereitzustellen oder um das Gerät als sekundäres Gerät für die Notfallwiederherstellung zu verwenden.
