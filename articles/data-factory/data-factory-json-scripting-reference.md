@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 96c46b2c01272abfaf1dd2667a45e3818cbe49a0
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 4e38b54d9ddcb29958f4b078b63c09bec666257a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/10/2017
 
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
@@ -4849,9 +4848,10 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "clusterSize": 4,
+            "version": "3.5",
+            "clusterSize": 1,
             "timeToLive": "00:05:00",
-            "osType": "linux",
+            "osType": "Linux",
             "linkedServiceName": "StorageLinkedService"
         }
     }
@@ -5383,7 +5383,7 @@ Beachten Sie folgende Punkte:
 - Die **type**-Eigenschaft ist auf **HDInsightSpark** festgelegt.
 - **rootPath** ist auf **adfspark\\pyFiles** festgelegt, wobei „adfspark“ den Azure-Blobcontainer und „pyFiles“ einen Dateiordner in diesem Container darstellt. In diesem Beispiel ist Azure Blob Storage der dem Spark-Cluster zugeordnete Speicher. Sie können die Datei auf einen anderen Azure-Speicher hochladen. Erstellen Sie in diesem Fall einen verknüpften Azure Storage-Dienst, der das Speicherkonto mit der Data Factory verknüpft. Geben Sie dann den Namen des verknüpften Diensts als Wert für die Eigenschaft **sparkJobLinkedService** an. Details zu dieser und anderen von der Spark-Aktivität unterstützten Eigenschaften finden Sie unter [Eigenschaften von Spark-Aktivitäten](#spark-activity-properties).
 - **entryFilePath** ist auf **test.py** festgelegt. Dies ist die Python-Datei. 
-- Die Eigenschaft **getDebugInfo** ist auf **Always** festgelegt. Dies bedeutet, dass Protokolldateien in jedem Fall (Erfolg oder Fehler) erstellt werden.    
+- Die Eigenschaft **getDebugInfo** ist auf **Always** festgelegt. Dies bedeutet, dass Protokolldateien in jedem Fall (Erfolg oder Fehler) erstellt werden.  
 
     > [!IMPORTANT]
     > Es wird empfohlen, diese Eigenschaft in einer Produktionsumgebung nicht auf „Always“ festzulegen, sofern Sie kein Problem behandeln möchten. 
