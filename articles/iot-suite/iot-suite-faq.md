@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9b92801609dfc8d14352a50edd10f8902c87c661
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 9f850175be843b29432c4803a150ddb2ec79780d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -95,6 +95,14 @@ Derzeit können Sie keine vorkonfigurierte Lösung erstellen, wenn Sie über ein
 
 Informationen hierzu finden Sie im Blogbeitrag von Eric Golpe: [Exemplarische Vorgehensweise zum Löschen eines Azure AD-Mandanten][lnk-delete-aad-tennant].
 
+### <a name="what-is-opc-ua"></a>Was ist OPC UA?
+
+Die OPC Unified Architektur (UA) wurde 2008 veröffentlicht und ist ein plattformunabhängiger, dienstorientierter Interoperabilitätsstandard, der bei verschiedenen Industriesystemen und -geräten wie z.B. Industriecomputern, PLCs und Sensoren verwendet wird. OPC UA integriert alle Funktionen der einzelnen klassischen OPC-Spezifikationen in einem erweiterbaren Framework mit integrierter Sicherheit. Der Standard wird von der OPC Foundation verwaltet. Die [OPC Foundation][lnk-opc-foundation] ist eine nicht gewinnorientierte Organisation, deren mehr als 440 Mitglieder das gemeinsame Ziel verfolgen, die Infrastruktur, die Spezifikationen, die Technologien und die Prozesse für eine hersteller- und plattformunabhängige, sichere und zuverlässige Interoperabilität mit OPC-Spezifikationen bereitzustellen.
+
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Warum hat sich Microsoft für OPC UA als vorkonfigurierte Lösung für eine verbundene Factory entschieden?
+
+Microsoft hat OPC UA ausgewählt, da es sich um einen offenen, nicht proprietären, plattformunabhängigen, von der Industrie anerkannten und bewährten Standard handelt. Er stellt eine Voraussetzung für Referenzarchitekturlösungen für die Industrie 4.0 (RAMI4.0) dar und gewährleistet die Interoperabilität zwischen einer Vielzahl von Herstellungsverfahren und -geräten. Microsoft sieht bei seinen Kunden einen Bedarf an der Erstellung von Industrie 4.0-Lösungen. Die Unterstützung für OPC UA verringert die Barrieren für Kunden, ihre Ziele zu erreichen, und bietet sofort Geschäftsvorteile.
+
 ### <a name="next-steps"></a>Nächste Schritte
 
 Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
@@ -102,6 +110,7 @@ Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT
 * [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf][lnk-predictive-overview]
 * [Sicherheit im Internet der Dinge von Anfang an][lnk-security-groundup]
 
+[lnk-opc-foundation]: http://opcfoundation.org/
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 

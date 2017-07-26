@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/02/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e5d3301c90adf993b1cba35969dfe4dbeaeab499
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 1e2ce06f5993280dbdb67121849591e67f7979e9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -47,8 +47,9 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 [!INCLUDE [Steps to create a Service Bus action](../../includes/connectors-create-api-servicebus-action.md)]
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/servicebus/). 
+## <a name="connector-specific-details"></a>Connectorspezifische Details
+
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/servicebus/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)

@@ -12,29 +12,29 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5489762a7a392e4e4098d85cba22d560e9858267
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: bc7e9a53f71eff828eaf8c45c104c5dc73018824
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
-Zunächst richten wir ein Virtual Network (VNet) in Azure ein. Anschließend fügen wir dem VNet einen Active Directory-Domänencontroller (gehostet auf einem virtuellen Azure-Computer) hinzu. Danach fügen wir dem erstellten VNet vorhandene Clouddienstrollen hinzu und verbinden diese mit dem Domänencontroller.
+Zunächst richten wir ein Virtual Network (VNet) in Azure ein. Anschließend fügen wir dem VNet einen Active Directory-Domänencontroller (gehostet auf einem virtuellen Azure-Computer) hinzu. Danach fügen wir dem erstellten VNET vorhandene Clouddienstrollen hinzu und verbinden diese mit dem Domänencontroller.
 
 Bedenken Sie vor dem Start Folgendes:
 
 1. In diesem Tutorial wird PowerShell verwendet. Vergewissern Sie sich daher, dass Azure PowerShell installiert und einsatzbereit ist. Unterstützung bei der Einrichtung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 2. Ihr AD-Domänencontroller und Ihre Web-/Workerrolleninstanzen müssen sich im VNet befinden.
 
-Befolgen Sie diese Schrittanleitung, und fügen Sie unten einen Kommentar ein, falls Probleme auftreten sollten. Wir werden uns mit Ihnen in Verbindung setzen (wir lesen die Kommentare wirklich).
+Befolgen Sie diese Schrittanleitung, und fügen Sie am Ende des Artikels einen Kommentar ein, falls Probleme auftreten sollten. Wir werden uns mit Ihnen in Verbindung setzen (wir lesen die Kommentare wirklich).
 
 Beim Netzwerk, auf das vom Clouddienst verwiesen wird, muss es sich um ein **klassisches virtuelles Netzwerk** handeln.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Sie können ein virtuelles Netzwerk in Azure über das klassische Azure-Portal oder über PowerShell erstellen. In diesem Tutorial wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das klassische Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Sie können ein virtuelles Netzwerk in Azure über das Azure-Portal oder über PowerShell erstellen. In diesem Tutorial wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
 
 ```powershell
 #Create Virtual Network
@@ -88,17 +88,17 @@ New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -A
 ## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>Heraufstufen des virtuellen Computers zu einem Domänencontroller
 Sie müssen sich am virtuellen Computer anmelden und diesen konfigurieren, um ihn als AD-Domänencontroller zu konfigurieren.
 
-Zur Anmeldung am virtuellen Computer können Sie die RDP-Datei über PowerShell mithilfe der unten stehenden Befehle abrufen.
+Zur Anmeldung am virtuellen Computer können Sie die RDP-Datei über PowerShell mithilfe der folgenden Befehle abrufen:
 
 ```powershell
 # Get RDP file
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Nachdem Sie am virtuellen Computer angemeldet sind, richten Sie ihn als AD-Domänencontroller ein, indem Sie den schrittweisen Anleitungen unter [Einrichten eines benutzerdefinierten AD-Domänencontrollers](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)folgen.
+Nachdem Sie am virtuellen Computer angemeldet sind, richten Sie ihn als AD-Domänencontroller ein, indem Sie die ausführlichen Anleitungen unter [Einrichten eines benutzerdefinierten AD-Domänencontrollers](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx) befolgen.
 
 ## <a name="add-your-cloud-service-to-the-virtual-network"></a>Hinzufügen des Clouddiensts zu Virtual Network
-Als Nächstes müssen Sie Ihre Clouddienstbereitstellung zu dem eben erstellten VNet hinzufügen. Bearbeiten Sie zu diesem Zweck die CSCFG-Datei Ihres Clouddiensts, indem Sie die relevanten Abschnitte mithilfe von Visual Studio oder einem Editor Ihrer Wahl hinzufügen.
+Als Nächstes müssen Sie Ihre Clouddienstbereitstellung dem neuen VNET hinzufügen. Bearbeiten Sie zu diesem Zweck die CSCFG-Datei Ihres Clouddiensts, indem Sie die relevanten Abschnitte mithilfe von Visual Studio oder einem Editor Ihrer Wahl hinzufügen.
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -150,7 +150,7 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 
 Das ist schon alles.
 
-Ihre Clouddienste sollten nun Ihrem benutzerdefinierten Domänencontroller beigetreten sein. Wenn Sie mehr über die verschiedenen verfügbaren Optionen zur Konfiguration der AD-Domänenerweiterung erfahren möchten, nutzen Sie die PowerShell-Hilfe, wie unten gezeigt.
+Ihre Clouddienste sollten Ihrem benutzerdefinierten Domänencontroller beigetreten sein. Wenn Sie mehr über die verschiedenen verfügbaren Optionen zur Konfiguration der AD-Domänenerweiterung erfahren möchten, nutzen Sie die PowerShell-Hilfe. Nachstehend sind einige Beispiele angegeben:
 
 ```powershell
 help Set-AzureServiceADDomainExtension

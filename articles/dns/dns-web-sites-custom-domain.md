@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
-ms.openlocfilehash: a2a429873c30f526a0de05d4018f53f3a83bbe28
-ms.lasthandoff: 02/10/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b054a41ecd69ee1c802d8403fe4b25128f016e3c
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -42,7 +43,7 @@ Nach dem Erstellen einer Zone und ihrer Delegierung an Azure DNS können Sie Ein
 
 ## <a name="1-create-an-a-record-for-your-custom-domain"></a>1. Hinzufügen eines A-Eintrags für Ihre benutzerdefinierte Domäne
 
-Ein A-Eintrag wird verwendet, um der IP-Adresse einen Namen zuzuordnen. Im folgenden Beispiel wird @ als A-Eintrag einer IPv4-Adresse zugewiesen:
+Ein A-Eintrag wird verwendet, um der IP-Adresse einen Namen zuzuordnen. Im folgenden Beispiel wird „@“ als A-Datensatz einer IPv4-Adresse zugewiesen:
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -54,9 +55,9 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>Schritt 2
 
-Fügen Sie den IPv4-Wert dem zuvor erstellten Ressourceneintragssatz "@" mithilfe der zugewiesenen „$rs“-Variablen hinzu. Der zugewiesene IPv4-Wert ist die IP-Adresse für Ihre Web-App.
+Fügen Sie den IPv4-Wert dem zuvor erstellten Ressourceneintragssatz „@“ mithilfe der zugewiesenen Variable $rs hinzu. Der zugewiesene IPv4-Wert ist die IP-Adresse für Ihre Web-App.
 
-Befolgen Sie zum Auffinden der IP-Adresse für eine Web-App die Anleitungen unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](../app-service-web/web-sites-custom-domain-name.md#vip).
+Befolgen Sie zum Auffinden der IP-Adresse für eine Web-App die Anleitungen unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](../app-service-web/app-service-web-tutorial-custom-domain.md).
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"

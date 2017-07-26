@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Ändern der Registrierung in benutzerdefinierten Richtlinien und Konfigurieren des selbstbestätigten Anbieters"
-description: "Enthält eine exemplarische Vorgehensweise zum Hinzufügen von Ansprüchen zum Registrieren und Konfigurieren der Benutzereingabe."
+description: "Hier finden Sie eine exemplarische Vorgehensweise zum Hinzufügen von Ansprüchen zum Registrieren und Konfigurieren der Benutzereingabe."
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 9f7ee61c9c2ee3c68b215dde81e718db183d3870
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 8731ff3a42e12d145bc259597812aded8333a095
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/23/2017
 
 ---
-# <a name="azure-active-directory-b2c-modify-signup-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Ändern der Registrierung zum Hinzufügen von neuen Ansprüchen und Konfigurieren der Benutzereingabe
+# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Ändern der Registrierung zum Hinzufügen von neuen Ansprüchen und Konfigurieren der Benutzereingabe
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -37,61 +37,62 @@ Die Sammlung der Anfangsdaten von Ihren Benutzern wird per Registrierungs- bzw. 
 
 ## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Definieren des Anspruchs, des Anzeigenamens und des Benutzereingabetyps
 Wir fragen vom Benutzer den Ort ab.  Fügen Sie dem `<ClaimsSchema>`-Element in der TrustFrameWorkExtensions-Richtliniendatei das folgende Element hinzu:
-```
-        <ClaimType Id="city">
-            <DisplayName>city</DisplayName>
-            <DataType>string</DataType>
-            <UserHelpText>Your city</UserHelpText>
-            <UserInputType>TextBox</UserInputType>
-        </ClaimType>
+
+```xml
+<ClaimType Id="city">
+  <DisplayName>city</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Your city</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
 ```
 Sie können hier auch weitere Optionen auswählen, um den Anspruch anzupassen.  Ein vollständiges Schema finden Sie in der **Technischen Referenz zu Identity Experience Framework**.  Dieses Handbuch wird in Kürze im Abschnitt mit den Referenzen veröffentlicht.
 
-* <DisplayName> ist eine Zeichenfolge, mit der die *Bezeichnung* für den Benutzer definiert wird.
+* `<DisplayName>` ist eine Zeichenfolge, mit der die *Bezeichnung* für den Benutzer definiert wird.
 
-* Mithilfe von <UserHelpText> kann der Benutzer verstehen, was erforderlich ist.
+* Mithilfe von `<UserHelpText>` kann der Benutzer verstehen, was erforderlich ist.
 
-* Für <UserInputType> sind die folgenden vier Optionen hervorgehoben:
+* Für `<UserInputType>` sind die folgenden vier Optionen hervorgehoben:
     * `TextBox`
-```
-        <ClaimType Id="city">
-            <DisplayName>city where you work</DisplayName>
-            <DataType>string</DataType>
-            <UserHelpText>Your city</UserHelpText>
-            <UserInputType>TextBox</UserInputType>
-        </ClaimType>
-```
-
-    * `RadioSingleSelectduration`: Erzwingt eine einzelne Auswahl.
-```
-    <ClaimType Id="city">
-      <DisplayName>city where you work</DisplayName>
-      <DataType>string</DataType>
-      <UserInputType>RadioSingleSelect</UserInputType>
-      <Restriction>
-        <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-        <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-        <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-      </Restriction>
-    </ClaimType>
+```xml
+<ClaimType Id="city">
+  <DisplayName>city where you work</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Your city</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
 ```
 
-    * `DropdownSingleSelect`: Ermöglicht die Auswahl des einzigen gültigen Werts.
+    * `RadioSingleSelectduration`: erzwingt eine einzelne Auswahl
+```xml
+<ClaimType Id="city">
+  <DisplayName>city where you work</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>RadioSingleSelect</UserInputType>
+  <Restriction>
+    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+  </Restriction>
+</ClaimType>
+```
+
+    * `DropdownSingleSelect`: ermöglicht die Auswahl des einzigen gültigen Werts
 
 ![Screenshot der Dropdownoption](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 
-```
+```xml
 <ClaimType Id="city">
-       <DisplayName>city where you work</DisplayName>
-       <DataType>string</DataType>
-       <UserInputType>DropdownSingleSelect</UserInputType>
-       <Restriction>
-         <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-         <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-         <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-       </Restriction>
-     </ClaimType>
+  <DisplayName>city where you work</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>DropdownSingleSelect</UserInputType>
+  <Restriction>
+    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+  </Restriction>
+</ClaimType>
 ```
 
 
@@ -100,133 +101,126 @@ Sie können hier auch weitere Optionen auswählen, um den Anspruch anzupassen.  
 ![Screenshot der Option für die Mehrfachauswahl](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 
-```
+```xml
 <ClaimType Id="city">
-        <DisplayName>Receive updates from which cities?</DisplayName>
-        <DataType>string</DataType>
-        <UserInputType>CheckboxMultiSelect</UserInputType>
-        <Restriction>
-          <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-          <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-          <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-        </Restriction>
-      </ClaimType>
+  <DisplayName>Receive updates from which cities?</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>CheckboxMultiSelect</UserInputType>
+  <Restriction>
+    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+  </Restriction>
+</ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-singupsign-user-journey"></a>Hinzufügen des Anspruchs zur User Journey für die Registrierung/Anmeldung
+## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Hinzufügen des Anspruchs zur User Journey für die Registrierung/Anmeldung
 
 1. Fügen Sie den Anspruch als `<OutputClaim ClaimTypeReferenceId="city"/>` dem TechnicalProfile `LocalAccountSignUpWithLogonEmail` hinzu (in der TrustFrameworkBase-Richtliniendatei enthalten).  Beachten Sie, dass für dieses TechnicalProfile der SelfAssertedAttributeProvider verwendet wird.
 
-```xml
-<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-          <DisplayName>Email signup</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-            <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-            <Item Key="language.button_continue">Create</Item>
-          </Metadata>
-          <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
-          </CryptographicKeys>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="email" />
-          </InputClaims>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="objectId" />
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
-            <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-            <OutputClaim ClaimTypeReferenceId="newUser" />
-<!-- Optional claims, to be collected from the user -->
-            <OutputClaim ClaimTypeReferenceId="givenName" />
-            <OutputClaim ClaimTypeReferenceId="surName" />
-
-            <OutputClaim ClaimTypeReferenceId="city"/>
-
-          </OutputClaims>
-          <ValidationTechnicalProfiles>
-            <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-          </ValidationTechnicalProfiles>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-        </TechnicalProfile>
-```
+  ```xml
+  <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+    <DisplayName>Email signup</DisplayName>
+    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Metadata>
+      <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+      <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
+      <Item Key="language.button_continue">Create</Item>
+    </Metadata>
+    <CryptographicKeys>
+      <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
+    </CryptographicKeys>
+    <InputClaims>
+      <InputClaim ClaimTypeReferenceId="email" />
+    </InputClaims>
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="objectId" />
+      <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+      <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+      <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+      <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
+      <OutputClaim ClaimTypeReferenceId="authenticationSource" />
+      <OutputClaim ClaimTypeReferenceId="newUser" />
+      <!-- Optional claims, to be collected from the user -->
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surName" />
+      <OutputClaim ClaimTypeReferenceId="city"/>
+    </OutputClaims>
+    <ValidationTechnicalProfiles>
+      <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
+    </ValidationTechnicalProfiles>
+    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+  </TechnicalProfile>
+  ```
 
 2. Fügen Sie den Anspruch dem AAD-UserWriteUsingLogonEmail-Element als `<PersistedClaim ClaimTypeReferenceId="city" />` hinzu, um den Anspruch nach der Erfassung vom Benutzer in das AAD-Verzeichnis zu schreiben. Sie können diesen Schritt überspringen, wenn Sie es vorziehen, den Anspruch im Verzeichnis nicht zur späteren Verwendung beizubehalten.
 
-```xml
-<!-- Technical profiles for local accounts -->
-        <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-          <Metadata>
-            <Item Key="Operation">Write</Item>
-            <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
-          </Metadata>
-          <IncludeInSso>false</IncludeInSso>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
-          </InputClaims>
-          <PersistedClaims>
-            <!-- Required claims -->
-            <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
-            <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
-            <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
-            <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
-            <!-- Optional claims. -->
-            <PersistedClaim ClaimTypeReferenceId="givenName" />
-            <PersistedClaim ClaimTypeReferenceId="surname" />
-
-            <PersistedClaim ClaimTypeReferenceId="city" />
-
-          </PersistedClaims>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="objectId" />
-            <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-            <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-          </OutputClaims>
-          <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
-        </TechnicalProfile>
-```
+  ```xml
+  <!-- Technical profiles for local accounts -->
+  <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+    <Metadata>
+      <Item Key="Operation">Write</Item>
+      <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+    </Metadata>
+    <IncludeInSso>false</IncludeInSso>
+    <InputClaims>
+      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" Required="true" />
+    </InputClaims>
+    <PersistedClaims>
+      <!-- Required claims -->
+      <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
+      <PersistedClaim ClaimTypeReferenceId="newPassword" PartnerClaimType="password" />
+      <PersistedClaim ClaimTypeReferenceId="displayName" DefaultValue="unknown" />
+      <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration" />
+      <!-- Optional claims. -->
+      <PersistedClaim ClaimTypeReferenceId="givenName" />
+      <PersistedClaim ClaimTypeReferenceId="surname" />
+      <PersistedClaim ClaimTypeReferenceId="city" />
+    </PersistedClaims>
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="objectId" />
+      <OutputClaim ClaimTypeReferenceId="newUser" PartnerClaimType="newClaimsPrincipalCreated" />
+      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+    </OutputClaims>
+    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+    <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+  </TechnicalProfile>
+  ```
 
 3. Hinzufügen des Anspruchs zum TechnicalProfile, das für das Verzeichnis einen Lesevorgang durchführt, wenn sich ein Benutzer als `<OutputClaim ClaimTypeReferenceId="city" />` anmeldet
 
-```xml
-<TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
-  <Metadata>
-    <Item Key="Operation">Read</Item>
-    <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-    <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
-  </Metadata>
-  <IncludeInSso>false</IncludeInSso>
-  <InputClaims>
-    <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
-  </InputClaims>
-  <OutputClaims>
-    <!-- Required claims -->
-    <OutputClaim ClaimTypeReferenceId="objectId" />
-    <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-    <!-- Optional claims -->
-    <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
-    <OutputClaim ClaimTypeReferenceId="displayName" />
-    <OutputClaim ClaimTypeReferenceId="otherMails" />
-    <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
-
-    <OutputClaim ClaimTypeReferenceId="city" />
-
-  </OutputClaims>
-  <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-</TechnicalProfile>
-```
+  ```xml
+  <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
+    <Metadata>
+      <Item Key="Operation">Read</Item>
+      <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
+      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+    </Metadata>
+    <IncludeInSso>false</IncludeInSso>
+    <InputClaims>
+      <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames" Required="true" />
+    </InputClaims>
+    <OutputClaims>
+      <!-- Required claims -->
+      <OutputClaim ClaimTypeReferenceId="objectId" />
+      <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
+      <!-- Optional claims -->
+      <OutputClaim ClaimTypeReferenceId="userPrincipalName" />
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="otherMails" />
+      <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" />
+      <OutputClaim ClaimTypeReferenceId="city" />
+    </OutputClaims>
+    <IncludeTechnicalProfile ReferenceId="AAD-Common" />
+  </TechnicalProfile>
+  ```
 
 4. Fügen Sie `<OutputClaim ClaimTypeReferenceId="city" />` der RP-Richtliniendatei „SignUporSignIn.xml“ hinzu, damit dieser Anspruch nach einer erfolgreichen User Journey an die Anwendung im Token gesendet wird.
 
-
-```xml
-<RelyingParty>
+  ```xml
+  <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
@@ -238,9 +232,7 @@ Sie können hier auch weitere Optionen auswählen, um den Anspruch anzupassen.  
         <OutputClaim ClaimTypeReferenceId="email" />
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
         <OutputClaim ClaimTypeReferenceId="identityProvider" />
-
         <OutputClaim ClaimTypeReferenceId="city" />
-
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>
@@ -249,14 +241,16 @@ Sie können hier auch weitere Optionen auswählen, um den Anspruch anzupassen.  
 
 ## <a name="test-the-custom-policy-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
 
-       1. Open the **Azure AD B2C Blade** and navigate to **Identity Experience Framework > Custom policies**.
-       2. Select the custom policy that you uploaded, and click the **Run now** button.
-       3. You should be able to sign up using an email address.
+1. Öffnen Sie das Blatt **Azure AD B2C**, und navigieren Sie zu **Identity Experience Framework > Benutzerdefinierte Richtlinien**.
+2. Wählen Sie die benutzerdefinierte Richtlinie aus, die hochgeladen werden soll, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
+3. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
 
-Der Registrierungsbildschirm sollte im Testmodus etwa wie folgt aussehen: ![Screenshot der geänderten Registrierungsoption](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
+Der Registrierungsbildschirm sollte im Testmodus etwa wie folgt aussehen:
+
+![Screenshot der geänderten Registrierungsoption](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
   Das Token zum Zurücksenden an Ihre Anwendung enthält jetzt wie unten dargestellt den `city`-Anspruch.
-```
+```json
 {
   "exp": 1493596822,
   "nbf": 1493593222,
@@ -276,21 +270,20 @@ Der Registrierungsbildschirm sollte im Testmodus etwa wie folgt aussehen: ![Scre
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>Optional: Entfernen der E-Mail-Verifizierung aus der Journey für die Registrierung
+## <a name="optional-remove-email-verification-from-signup-journey"></a>Optional: Entfernen der E-Mail-Überprüfung aus der Journey für die Registrierung
 
 Um die E-Mail-Verifizierung zu überspringen, kann sich der Ersteller der Richtlinie für das Entfernen von `PartnerClaimType="Verified.Email"` entscheiden. Die E-Mail-Adresse ist erforderlich, aber sie wird nur verifiziert, wenn „Required“ = true entfernt wird.  Überlegen Sie sich gründlich, ob diese Option für Ihre Anwendungsfälle geeignet ist!
 
 Im `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">`-Element in der TrustFrameworkBase-Richtliniendatei des Starter Packs ist die Verifizierung der E-Mail standardmäßig aktiviert:
+```xml
+<OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-            ```
 
-## Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-
-Add the new claim to the flows for social account logins by changing the TechnicalProfiles listed below. These are used by social/federated account logins to write and read the user data using the alternativeSecurityId as the locator.
-```
-  <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-  <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
+Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung an Social Media-Konten hinzu, indem Sie die unten aufgeführten TechnicalProfiles ändern. Diese werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator verwendet wird.
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
 ```
 

@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 10/05/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bbf5de2d38cc351d48384ff24e87bbf2881f2e1e
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c2e2efd356382df9404f5c4ed54f24758b2cd22b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -55,8 +55,9 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 > 
 > 
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/salesforce/). 
+## <a name="connector-specific-details"></a>Connectorspezifische Details
+
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/salesforce/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)

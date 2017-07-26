@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2016
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 76f59384db37967a9210ba5efa49b25788d21cdc
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: e66a3390c08b66e0f2f38725425cd78a36004118
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -112,7 +113,7 @@ Im Folgenden wird beschrieben, wie eine neue SQL-Datenbankinstanz, die auf einem
     ![Verknüpfen, Seite 1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
 
 4. Klicken Sie auf **Neue Ressource erstellen** oder auf **Vorhandene Ressource verknüpfen**.
-5. Wählen Sie den Typ der zu verknüpfenden Ressource. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/)auf **SQL-Datenbank**. (Das klassische Azure-Portal unterstützt nicht das Verknüpfen eines Speicherkontos mit einem Cloud-Dienst.)
+5. Wählen Sie den Typ der zu verknüpfenden Ressource. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/)auf **SQL-Datenbank**. (Nur das klassische Azure-Portal unterstützt das Verknüpfen eines Speicherkontos mit einem Clouddienst.)
 6. Um die Datenbankkonfiguration abzuschließen, folgen Sie den Anweisungen in der Hilfe für den Bereich **SQL-Datenbanken** im klassischen Azure-Portal.
 
     Sie können den Fortschritt der Verknüpfungsoperation im Nachrichtenbereich verfolgen.

@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 05/18/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 542817c562e10ff32c62afd186cf012abbe82ac5
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: e5ce666f1d826c7901c9fd5e7fafe6171139c3ad
+ms.contentlocale: de-de
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -55,33 +56,27 @@ Bevor Sie einen Clouddienst bereitstellen können, müssen Sie das Clouddienstpa
 Drei Clouddienstfunktionen benötigen vor dem Export eines Dienstpakets spezielle Konfigurationen:
 
 * Wenn Sie einen Clouddienst bereitstellen möchten, der Secure Sockets Layer (SSL) für die Datenverschlüsselung verwendet, [konfigurieren Sie die Anwendung für SSL](cloud-services-configure-ssl-certificate-portal.md#modify) .
-* Wenn Sie Remotedesktopverbindungen zu Rolleninstanzen konfigurieren möchten, [konfigurieren Sie die Rollen](cloud-services-role-enable-remote-desktop.md) für Remotedesktop. Dies kann nur im klassischen Portal durchgeführt werden.
+* Wenn Sie Remotedesktopverbindungen zu Rolleninstanzen konfigurieren möchten, [konfigurieren Sie die Rollen](cloud-services-role-enable-remote-desktop-new-portal.md) für Remotedesktop.
 * Wenn Sie die ausführliche Überwachung für den Clouddienst konfigurieren möchten, aktivieren Sie für den Clouddienst die Azure-Diagnose. *Minimale Überwachung* (die Standardüberwachungsstufe) verwendet Leistungsindikatoren, die aus den Hostbetriebssystemen für Rolleninstanzen (virtuelle Computer) erfasst wurden. *ausführlichen Überwachung* werden zusätzliche Kennzahlen basierend auf Leistungsdaten innerhalb der Rolleninstanzen erfasst, um eine genauere Analyse von Problemen zu ermöglichen, die während der Anwendungsverarbeitung auftreten. Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in Azure](cloud-services-dotnet-diagnostics.md).
 
 Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#servicepackagecspkg), um einen Clouddienst mit Bereitstellungen von Webrollen oder Workerrollen zu erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 * Falls Sie das Azure SDK noch nicht installiert haben, klicken Sie auf **Install Azure SDK** (Azure SDK installieren), um die [Azure-Downloadseite](https://azure.microsoft.com/downloads/) zu öffnen. Laden Sie dann das SDK für die Sprache herunter, in der Sie den Code entwickeln möchten. (Dazu haben Sie auch später noch die Möglichkeit.)
-* Falls Rolleninstanzen ein Zertifikat erfordern, erstellen Sie die Zertifikate. Clouddienste erfordern eine PFX-Datei mit einem privaten Schlüssel. [Zertifikate zu Azure hochladen]() , wenn Sie den Clouddienst erstellen und bereitstellen.
-* Wenn Sie den Clouddienst für eine Affinitätsgruppe bereitstellen möchten, erstellen Sie die Affinitätsgruppe. Sie können eine Affinitätsgruppe verwenden, um den Clouddienst und andere Azure-Dienste für den gleichen Standort in einer Region bereitzustellen. Sie können die Affinitätsgruppe im Bereich **Netzwerke** des klassischen Azure-Portals auf der Seite **Affinitätsgruppen** erstellen.
+* Falls Rolleninstanzen ein Zertifikat erfordern, erstellen Sie die Zertifikate. Clouddienste erfordern eine PFX-Datei mit einem privaten Schlüssel. Sie können die Zertifikate in Azure hochladen, wenn Sie den Clouddienst erstellen und bereitstellen.
 
 ## <a name="create-and-deploy"></a>Erstellen und Bereitstellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie auf **Neu > Compute**, führen Sie einen Bildlauf nach unten zu **Clouddienst** aus, und klicken Sie darauf.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. Klicken Sie unten auf der angezeigten Informationsseite auf **Erstellen**.
-4. Geben Sie auf dem neuen Blatt **Clouddienst** einen Wert für **DNS-Name** ein.
-5. Erstellen Sie eine neue **Ressourcengruppe** , oder wählen Sie eine vorhandene Ressourcengruppe aus.
-6. Wählen Sie einen **Speicherort**aus.
-7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
-
-    > [!IMPORTANT]
-    > Clouddienste können nur [klassischen Speicherkonten](../azure-resource-manager/resource-manager-deployment-model.md) zugeordnet werden. Wenn die Meldung angezeigt wird, dass keine Speicherkonten für Ihr Abonnement und den Speicherort gefunden wurden, stellen Sie sicher, dass Sie ein klassisches Speicherkonto für Ihren Clouddienst an diesem Speicherort erstellt haben.
-
-8. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
-9. Klicken Sie auf **OK**, um das Blatt **Paket hochladen** zu schließen.
-10. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen**.
+3. Geben Sie auf dem neuen Blatt **Clouddienst** einen Wert für **DNS-Name** ein.
+4. Erstellen Sie eine neue **Ressourcengruppe** , oder wählen Sie eine vorhandene Ressourcengruppe aus.
+5. Wählen Sie einen **Speicherort**aus.
+6. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
+7. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
+8. Klicken Sie auf **OK**, um das Blatt **Paket hochladen** zu schließen.
+9. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen**.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 

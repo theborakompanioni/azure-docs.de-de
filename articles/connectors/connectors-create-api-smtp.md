@@ -1,10 +1,10 @@
 ---
-title: SMTP | Microsoft Docs
+title: SMTP-Connector in Azure Logic Apps | Microsoft-Dokumentation
 description: Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine SMTP-Verbindung her, um E-Mails zu senden.
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: msftman
-manager: erikre
+author: MandiOhlinger
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
@@ -14,10 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
-ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: 3a0fdef111fbd4a9f7491e247f2236cf70b89dca
+ms.author: mandia; ladocs
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 1cf96bbf8bd215d7ddb3c99860a5cb4e668be3c2
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -27,7 +29,7 @@ Stellen Sie eine SMTP-Verbindung her, um E-Mails zu senden.
 Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
 
 ## <a name="connect-to-smtp"></a>Herstellen einer SMTP-Verbindung
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine [Verbindung](connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine SMTP-Verbindung herstellen möchten, müssen Sie zunächst eine entsprechende *Verbindung* erstellen. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen an, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Im Falle von SMTP benötigen Sie beispielsweise die Anmeldeinformationen für Ihren Verbindungsnamen, die SMTP-Serveradresse und die Benutzeranmeldeinformationen, um die SMTP-Verbindung zu erstellen. [Weitere Informationen zu Verbindungen]()  
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine [Verbindung](connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine SMTP-Verbindung herstellen möchten, müssen Sie zunächst eine entsprechende *Verbindung* erstellen. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Im Fall von SMTP geben Sie beispielsweise die Anmeldeinformationen für Ihren Verbindungsnamen, die SMTP-Serveradresse und die Benutzeranmeldeinformationen ein, um die SMTP-Verbindung zu erstellen.  
 
 ### <a name="create-a-connection-to-smtp"></a>Herstellen einer Verbindung mit SMTP
 > [!INCLUDE [Steps to create a connection to SMTP](../../includes/connectors-create-api-smtp.md)]
@@ -64,63 +66,9 @@ Führen Sie nach dem Hinzufügen des Triggers die folgenden Schritte aus, um ein
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
 6. Speichern Sie Ihre Arbeit, um den Workflow zu aktivieren.  
 
-## <a name="technical-details"></a>Technische Details
-Im Anschluss finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
+## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-## <a name="smtp-triggers"></a>SMTP-Trigger
-SMTP verfügt über keine Trigger. 
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/smtpconnector/) an.
 
-## <a name="smtp-actions"></a>SMTP-Aktionen
-Für SMTP steht die folgende Aktion zur Verfügung:
-
-| Aktion | Beschreibung |
-| --- | --- |
-| [Senden von E-Mails](connectors-create-api-smtp.md#send-email) |Dieser Vorgang sendet eine E-Mail an einen oder mehrere Empfänger. |
-
-### <a name="action-details"></a>Aktionsdetails
-Im Anschluss finden Sie ausführliche Informationen zu den Aktionen für diesen Connector sowie die jeweiligen Antworten:
-
-### <a name="send-email"></a>E-Mail senden
-Dieser Vorgang sendet eine E-Mail an einen oder mehrere Empfänger. 
-
-| Eigenschaftenname | Display Name | Beschreibung |
-| --- | --- | --- |
-| To |To |Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com) |
-| CC |cc |Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com) |
-| Subject (Antragsteller) |Subject (Antragsteller) |E-Mail-Betreff |
-| Body |body |E-Mail-Text |
-| Aus |Aus |E-Mail-Adresse des Absenders (Beispiel: sender@domain.com) |
-| IsHtml |Is HTML (Ist HTML) |E-Mail im HTML-Format senden (True/False) |
-| Bcc |bcc |Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com) |
-| Priorität |Priorität |Wichtigkeit der E-Mail (hoch, normal oder gering) |
-| ContentData |Attachments Content Data (Anlageninhaltsdaten) |Inhaltsdaten (base64-codiert für Streams, unverändert für Zeichenfolgen) |
-| ContentType |Attachments Content Type (Anlageninhaltstyp) |Content-Typ |
-| ContentTransferEncoding |Attachments Content Transfer Encoding (Codierung für die Anlageninhaltsübertragung) |Codierung für die Inhaltsübertragung (base64 oder keine) |
-| FileName |Attachments File Name (Anlagendateiname) |Dateiname |
-| ContentId |Attachments Content ID (Anlageninhalts-ID) |Inhalts-ID |
-
-Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
-
-## <a name="http-responses"></a>HTTP-Antworten
-Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden: 
-
-| Name | Beschreibung |
-| --- | --- |
-| 200 |OK |
-| 202 |Zulässig |
-| 400 |Ungültige Anforderung |
-| 401 |Nicht autorisiert |
-| 403 |Verboten (403) |
-| 404 |Nicht gefunden |
-| 500 |Interner Serverfehler. Unbekannter Fehler. |
-| die Standardeinstellung |Fehler beim Vorgang. |
-
-## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+## <a name="more-connectors"></a>Weitere Connectors
+Gehen Sie zur [Liste der APIs](apis-list.md)zurück.

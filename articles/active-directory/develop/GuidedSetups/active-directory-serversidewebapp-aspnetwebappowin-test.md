@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
+ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 77030e3e6375682c416d99ef22d754b908ad484d
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 00cb963e85111274c36c3a84489894811ad2dabd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -48,7 +49,7 @@ Klicken Sie auf den Link, um die Ansprüche des Benutzers anzuzeigen. Dadurch ge
 | Antragsteller| {Antragsteller}|Zeichenfolge zur eindeutigen Identifizierung der Benutzeranmeldung über das Web|
 | Mandanten-ID| {GUID}| Eine *GUID*, die die Azure Active Directory-Organisation des Benutzers eindeutig darstellt.|
 
-Darüber hinaus sehen Sie eine Tabelle mit allen Benutzeransprüchen, die in der Authentifizierungsanforderung enthalten sind. Eine Liste aller Ansprüche in einem ID-Token und eine Erläuterung finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Darüber hinaus sehen Sie eine Tabelle mit allen Benutzeransprüchen, die in der Authentifizierungsanforderung enthalten sind. Eine Liste aller Ansprüche in einem ID-Token und eine Erläuterung finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims "Liste der Ansprüche im ID-Token").
 
 
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Testen des Zugriffs auf eine Methode mit einem *[Authorize]*-Attribut (optional)
@@ -82,6 +83,6 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 > Um nur Benutzer in einer Liste angegebener Organisationen zuzulassen, legen Sie `ValidateIssuer` auf TRUE fest, und legen Sie mithilfe des `ValidIssuers`-Parameters eine Liste mit Organisationen fest.
 
-> Eine andere Möglichkeit ist das Implementieren einer benutzerdefinierten Methode, um mit dem „IssuerValidator“-Parameter Aussteller zu überprüfen. Weitere Informationen zu `TokenValidationParameters` finden Sie in [diesem MSDN-Artikel](https://msdn.microsoft.com/en-us/library/system.identitymodel.tokens.tokenvalidationparameters.aspx).
+> Eine andere Möglichkeit ist das Implementieren einer benutzerdefinierten Methode, um mit dem „IssuerValidator“-Parameter Aussteller zu überprüfen. Weitere Informationen zu `TokenValidationParameters` finden Sie in [diesem](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "MSDN-Artikel zu TokenValidationParameters") MSDN-Artikel.
 
 

@@ -12,12 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 04/07/2017
+ms.date: 05/20/2017
 ms.author: TomSh
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 2752ae92fbbbb284756215a53dcab054881bd08a
-ms.lasthandoff: 04/13/2017
+ms.custom: azlog
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 02b3095bb77a122fddd74e636395628333a13936
+ms.contentlocale: de-de
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -31,9 +33,9 @@ Dieser Artikel hilft Ihnen bei den ersten Schritten mit der Azure-Protokollinteg
 >[!NOTE]
 >Die Möglichkeit, die Ausgabe der Azure-Protokollintegration in SIEM einzubringen, wird von SIEM selbst bereitgestellt. Weitere Informationen finden Sie unter [Integrieren der Azure-Protokollintegration mit lokalem SIEM](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/).
 
-Der Azure-Protokollintegrationsdienst wird auf einem physischen oder virtuellen Computer ausgeführt, der Windows Server 2008 R2 oder höher als Betriebssystem verwendet (vorzugsweise Windows Server 2012 R2 oder Windows Server 2016). 
+Der Azure-Protokollintegrationsdienst wird auf einem physischen oder virtuellen Computer ausgeführt, der Windows Server 2008 R2 oder höher als Betriebssystem verwendet (vorzugsweise Windows Server 2012 R2 oder Windows Server 2016).
 
-Der physische Computer kann lokal ausgeführt werden (oder am Standort eines Hosters). Wenn Sie den Azure-Protokollintegrationsdienst auf einem virtuellen Computer ausführen, kann sich dieser virtuelle Computer an einem lokalen Standort oder in einer öffentlichen Cloud wie Microsoft Azure befinden. 
+Der physische Computer kann lokal ausgeführt werden (oder am Standort eines Hosters). Wenn Sie den Azure-Protokollintegrationsdienst auf einem virtuellen Computer ausführen, kann sich dieser virtuelle Computer an einem lokalen Standort oder in einer öffentlichen Cloud wie Microsoft Azure befinden.
 
 Der physische oder virtuelle Computer, der den Azure-Protokollintegrationsdienst ausführt, erfordert Netzwerkverbindungen mit der öffentlichen Azure-Cloud. Die Schritte in diesem Artikel enthalten Details zur Konfiguration.
 
@@ -41,12 +43,20 @@ Der physische oder virtuelle Computer, der den Azure-Protokollintegrationsdienst
 Die Installation von AzLog erfordert mindestens die folgenden Elemente:
 * Ein **Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren.
 * Ein **Speicherkonto**, das für die Azure-Diagnoseprotokollierung verwendet werden kann (Sie können ein vorkonfiguriertes Speicherkonto verwenden oder ein neues erstellen – weiter unten in diesem Artikel wird gezeigt, wie das Speicherkonto konfiguriert wird).
+  >[!NOTE]
+  Je nach Szenario ist möglicherweise kein Speicherkonto erforderlich. Für das in diesem Artikel beschriebene Azure-Diagnose-Szenario ist eines erforderlich.
 * **Zwei Systeme**: Ein Computer, der den Azure-Protokollintegrationsdienst ausführt und ein Computer, der überwacht wird und dessen Protokollinformationen an den Computer mit dem Azlog-Dienst gesendet werden.
    * Ein zu überwachender Computer – dies ist ein virtueller Computer, der als [virtueller Azure-Computer](../virtual-machines/virtual-machines-windows-overview.md) ausführt wird.
    * Einen Computer, auf dem der Azure-Protokollintegrationsdienst ausgeführt wird. Dieser Computer erfasst alle Protokollinformationen, die später in Ihr SIEM importiert werden.
     * Dieses System kann sich an einem lokalen Standort oder in Microsoft Azure befinden.  
     * Es muss eine x64-Version von Windows Server 2008 R2 SP1 oder höher ausgeführt werden und .NET 4.5.1 installiert sein. Sie können die installierte .NET-Version ermitteln, indem Sie den Artikel [Gewusst wie: Feststellen, welche Versionen von .NET Framework installiert sind](https://msdn.microsoft.com/library/hh925568) lesen.  
     Es muss eine Verbindung mit dem Azure-Speicherkonto vorhanden sein, das für die Azure-Diagnoseprotokollierung verwendet wird. Anweisungen zum Bestätigen dieser Verbindung werden später in diesem Artikel bereitgestellt.
+
+Eine kurze Demonstration des Vorgangs zum Erstellen eines virtuellen Computers mit dem Azure-Portal finden Sie im folgenden Video.
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Create-a-Virtual-Machine/player]
+
+
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 Während Sie die Azure-Protokollintegration testen, können Sie ein beliebiges System verwenden, das die Mindestanforderungen zum Betriebssystem erfüllt. Allerdings kann es die Auslastung für eine Produktionsumgebung erforderlich machen, das zentrale oder horizontale Hochskalieren einzuplanen.
@@ -79,6 +89,10 @@ Folgende Telemetriedaten werden erfasst:
 * Metriken zu der Anzahl von verarbeiteten Abfragen und Ereignissen
 * Statistiken zur Verwendung von Azlog.exe-Befehlszeilenoptionen
 
+Der Installationsvorgang wird im folgenden Video behandelt.
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Install-Azure-Log-Integration/player]
+
+
 
 ## <a name="post-installation-and-validation-steps"></a>Schritte nach der Installation und zur Validierung
 Nach Abschluss der grundlegenden Setuproutine sind Sie bereit, die auf die Installation folgenden Schritte sowie die Validierungsschritte auszuführen:
@@ -97,7 +111,7 @@ Es sollte jetzt etwas angezeigt werden, das der folgenden Abbildung ähnelt. </b
 
       ![Azure-Diagnoseeinstellungen](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
       >[!NOTE]
-      Wenn die Überwachung während der Erstellung des virtuellen Computers nicht aktiviert wurde, erhalten Sie die Möglichkeit, sie zu aktivieren (wie oben gezeigt). 
+      Wenn die Überwachung während der Erstellung des virtuellen Computers nicht aktiviert wurde, erhalten Sie die Möglichkeit, sie zu aktivieren (wie oben gezeigt).
 5. Jetzt wenden wir uns wieder dem Computer für die Azure-Protokollintegration zu. Wir müssen überprüfen, ob Sie auf dem System, auf dem Sie die Azure-Protokollintegration installiert haben, über die Verbindung zum Speicherkonto verfügen. Der physische oder virtuelle Computer, auf dem der Azure-Protokollintegrationsdienst ausgeführt wird, benötigt Zugriff auf das Speicherkonto, um gemäß der Konfiguration auf den einzelnen überwachten Systemen von der Azure-Diagnose protokollierte Informationen abzurufen.  
   1. Sie können Azure-Speicher-Explorer [hier](http://storageexplorer.com/) herunterladen.
   2. Führen Sie die Setuproutine durch.
@@ -139,6 +153,10 @@ Führen Sie die folgenden Schritte aus, um den Speicherschlüssel zu erhalten:
 >[!NOTE]  
 Warten Sie bis zu 60 Minuten, und sehen Sie sich dann die aus dem Speicherkonto abgerufenen Ereignisse an. Öffnen Sie hierzu **Ereignisanzeige > Windows-Protokolle > Weitergeleitete Ereignisse** im Azlog Integrator.
 
+Im folgenden Video werden die oben beschriebenen Schritte gezeigt.
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Enable-Diagnostics-and-Storage/player]
+
+
 ## <a name="what-if-data-is-not-showing-up-in-the-forwarded-events-folder"></a>Was, wenn im Ordner „Weitergeleitete Ereignisse“ keine Daten angezeigt werden?
 Sollten im Ordner **Weitergeleitete Ereignisse** nach einer Stunde immer noch keine Daten angezeigt werden, gehen Sie wie folgt vor:
 
@@ -153,6 +171,7 @@ Sollten im Ordner **Weitergeleitete Ereignisse** nach einer Stunde immer noch ke
   </ol>
 3. Vergewissern Sie sich, dass das Speicherkonto, das mithilfe des Befehls **Azlog source add** hinzugefügt wurde, beim Ausführen des Befehls **Azlog source list** aufgeführt wird.
 4. Überprüfen Sie unter **Ereignisanzeige > Windows-Protokolle > Anwendung**, ob von der Azure-Protokollintegration möglicherweise Fehler gemeldet wurden.
+
 
 Wenn während der Installation und Konfiguration Probleme auftreten, öffnen Sie eine [Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md), und wählen Sie **Protokollintegration** als den Dienst aus, für den Sie Support anfordern.
 

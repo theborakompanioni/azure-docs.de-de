@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 850bf9ef5300c72a9e7903be5bf991301d4b574f
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -27,7 +27,8 @@ ms.lasthandoff: 05/11/2017
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-operations-recordsets-portal.md)
-> * [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
+> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 In diesem Artikel wird gezeigt, wie Sie Ressourceneintragssätze und Einträge für die DNS-Zone im Azure-Portal verwalten.
@@ -113,7 +114,7 @@ Sie können dem automatisch erstellten SOA-Ressourceneintragssatz an der Zonensp
 
 Der für die Zonenspitze festgelegte NS-Eintrag wird für jede DNS-Zone automatisch erstellt. Er enthält die Namen der Azure DNS-Namenserver, die der Zone zugewiesen sind.
 
-Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Eintragssatz ändern. Es ist aber nicht möglich, die vorab mit Daten gefüllten Azure DNS-Namenserver zu entfernen oder zu ändern.
+Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern.
 
 Beachten Sie, dass dies nur für den NS-Eintragssatz der Zonenspitze gilt. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen geändert werden.
 
@@ -125,5 +126,5 @@ Sie können den SOA- und NS-Ressourceneintragssatz an der Zonenspitze (Name = �
 
 * Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 * Weitere Informationen zum Automatisieren von DNS finden Sie unter [Erstellen von DNS-Zonen und -Datensatzgruppen mithilfe des .NET SDK](dns-sdk.md).
-* Weitere Informationen zu Reverse-DNS-Einträgen finden Sie unter [Mit PowerShell Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten](dns-reverse-dns-record-operations-ps.md).
+* Weitere Informationen zu Reverse-DNS-Einträgen finden Sie unter [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md).
 

@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: bhanupr
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 909ac8bff4c3fdb78fc7ed6fdcac4743fda6c6a9
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
+ms.openlocfilehash: fa2e37bd922690322ccc3d8f68128180d013b701
+ms.contentlocale: de-de
+ms.lasthandoff: 05/18/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/05/2017
 Um die neuesten HDInsight-Funktionen nutzen zu können, wird empfohlen, HDInsight-Cluster auf die neueste Version zu aktualisieren. Befolgen Sie die nachstehenden Leitlinien zum Aktualisieren Ihrer HDInsight-Clusterversionen.
 
 > [!NOTE]
-> HDInsight-Cluster der Versionen 3.2 und 3.3 nähern sich dem Veraltungsdatum. Informationen zu unterstützten HDInsight-Versionen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
+> HDInsight-Cluster der Versionen 3.2 und 3.3 nähern sich dem Veralterungsdatum. Informationen zu unterstützten HDInsight-Versionen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
 >
 >
 

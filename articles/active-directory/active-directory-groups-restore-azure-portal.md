@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/18/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 473f3e464324cc2667428485235e3b942c736382
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 795b711542c0a200b80e414397094a102213caf2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -27,6 +27,9 @@ ms.lasthandoff: 05/08/2017
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau
 
 Wenn Sie eine Office 365-Gruppe in Azure Active Directory (Azure AD) löschen, wird die gelöschte Gruppe beibehalten, ist aber 30 Tage lang nach dem Löschdatum nicht sichtbar. Damit soll sichergestellt werden, dass die Gruppe und dessen Inhalte bei Bedarf wiederhergestellt werden können. Diese Funktionalität ist ausschließlich auf Office 365-Gruppen in Azure AD beschränkt. Sie ist nicht für Sicherheits- und Verteilergruppen verfügbar.
+
+> [!NOTE] 
+> Verwenden Sie nicht `Remove-MsolGroup`, da hierbei die Gruppe endgültig gelöscht wird. Verwenden Sie immer `Remove-AzureADMSGroup`, um eine Office 365-Gruppe zu löschen. 
 
 Die Berechtigungen, die zum Wiederherstellen einer Gruppe erforderlich sind, können Folgende umfassen:
 
@@ -37,7 +40,7 @@ Benutzerkontoadministrator und Partnersupport der Ebene 1 | Können eine beliebi
 Benutzer | Können eine beliebige gelöschte Office 365-Gruppe wiederherstellen, die sich in dessen Besitz befand 
 
 
-## <a name="how-to-view-deleted-office-365-groups-that-are-available-to-restore"></a>Vorgehensweise beim Anzeigen gelöschter Office 365-Gruppen, die zur Wiederherstellung zur Verfügung stehen
+## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore"></a>Anzeigen gelöschter Office 365-Gruppen, die zur Wiederherstellung zur Verfügung stehen
 Mit den folgenden Cmdlets können gelöschte Gruppen angezeigt werden, um sicherzustellen, dass die gewünschten Gruppen noch nicht endgültig gelöscht wurden. Diese Cmdlets sind Teil des [Azure AD PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureAD/). Weitere Informationen zu diesem Modul finden Sie im Artikel [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 1.    Führen Sie das folgende Cmdlet aus, um alle gelöschten Office 365-Gruppen in Ihrem Mandanten, die noch zur Wiederherstellung verfügbar sind, anzuzeigen.
@@ -52,7 +55,7 @@ Mit den folgenden Cmdlets können gelöschte Gruppen angezeigt werden, um sicher
 
 
 
-## <a name="how-to-restore-an-office-365-group"></a>Vorgehensweise beim Wiederherstellen einer Office 365-Gruppe
+## <a name="how-to-restore-your-deleted-office-365-group"></a>So stellen Sie gelöschte Office 365-Gruppen wieder her
 Nachdem Sie sichergestellt haben, dass die Gruppe noch zur Wiederherstellung verfügbar ist, stellen Sie die gelöschte Gruppe über eine der folgenden Methoden wieder her. Wenn die Gruppe Dokumente, SharePoint-Websites oder andere beständige Objekte enthält, kann es bis zu 24 Stunden dauern, bis eine Gruppe und dessen Inhalte vollständig wiederhergestellt werden.
 
 1.    Führen Sie das folgende Cmdlet aus, um die Gruppe und dessen Inhalte wiederherzustellen.

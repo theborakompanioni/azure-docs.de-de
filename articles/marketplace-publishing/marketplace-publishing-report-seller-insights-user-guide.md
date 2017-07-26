@@ -1,6 +1,6 @@
 ---
-title: "Vorgehensweise: Verwenden des Microsoft Azure Marketplace – Insights-Portal des Verkäufers | Microsoft-Dokumentation"
-description: "Verstehen Sie als Verkäufer auf Azure Marketplace, wie das Microsoft Azure Marketplace – Insights-Portal des Verkäufers verwendet wird."
+title: "Verwenden des Azure Marketplace Insights-Portals für Verkäufer | Microsoft-Dokumentation"
+description: "Erfahren Sie als Verkäufer auf Azure Marketplace, wie das Azure Marketplace Insights-Portal für Verkäufer verwendet wird."
 services: marketplace publishing
 documentationcenter: na
 author: DavidBosland
@@ -12,62 +12,63 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 06/16/2017
 ms.author: v-dabosl
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f5c6f94abdd87eb60eef7a0aa490dbde859be332
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 292598b79b9b9749de8c4994de32349625611195
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
-# <a name="how-to-use-the-microsoft-azure-marketplace-seller-insights-portal"></a>Vorgehensweise: Verwenden des Microsoft Azure Marketplace – Insights-Portal des Verkäufers
-## <a name="onboarding"></a>Onboarding
+# <a name="how-to-use-the-azure-marketplace-seller-insights-portal"></a>Verwenden des Azure Marketplace Insights-Portals für Verkäufer
 
->[!NOTE]
->Nur Administratoren.
+In diesem Artikel wird erläutert, wie Administratoren auf das Insights-Portal für Verkäufer zugreifen, Benutzer hinzufügen oder löschen und Berechtigungen für Benutzer festlegen.
+
+## <a name="onboard-users"></a>Integrieren von Benutzern
+
+In diesem Abschnitt erfahren Sie, wie Administratoren beim ersten Mal auf das Insights-Portal für Verkäufer zugreifen. Die Aufgaben in diesem Abschnitt sind Administratoren vorbehalten. 
 
 
 ### <a name="overview-of-roles"></a>Rollenübersicht
 
-In diesem Abschnitt erfahren Sie, wie Sie erstmals auf das Insights-Portal des Verkäufers zugreifen.
+Administratoren für das Insights-Portal für Verkäufer fügen Benutzer hinzu und bearbeiten und löschen diese.
 
+Benutzer des Insights-Portals für Verkäufer können sämtliche Daten anzeigen, die Ihrer Organisation zur Verfügung stehen.
+
+Administratoren und Benutzer müssen sich mit einem gültigen [Microsoft-Konto](http://signup.live.com) oder mit dem Geschäfts-, Schul- oder Unikonto ihrer Organisation authentifizieren. Stellen Sie sicher, dass mit der neuen Konto-ID ein überwachtes Postfach verknüpft ist.
 
 ![Kontotyp][5]
 
-Verwenden Sie den Administrator des Insights-Portals, um Benutzer hinzuzufügen, zu bearbeiten und zu löschen.
 
-Benutzer des Insights-Portals des Verkäufers können alle Daten anzeigen, die Ihrer Organisation zur Verfügung stehen.
-
-Administratoren und Benutzer müssen sich mit einem gültigen Microsoft-Konto (LiveID; http://signup.live.com) oder mit dem Konto Ihres Unternehmens authentifizieren. Stellen Sie sicher, dass mit der neuen Konto-ID ein überwachtes Postfach verknüpft ist.
 
 ### <a name="invitation-to-activate-your-account"></a>Einladung zur Aktivierung Ihres Kontos
 
-Im Idealfall gibt der Administrator vor der Anmeldung beim Insights-Portal des Verkäufers die Konten der Personen an, die er als Benutzer einrichten möchte. Bei den Konten kann es sich um Microsoft-Konten oder um Unternehmenskonten handeln.
+Der Administrator gibt vor der Anmeldung beim Insights-Portal für Verkäufer die Konten der Personen an, die er als Benutzer einrichten möchte. Benutzer können mit einem Geschäfts-, Schul- oder Unikonto oder mit einem Microsoft-Konto eingerichtet werden.
 
-Zur Aktivierung Ihres Diensts muss der Administrator die in der Einladungs-E-Mail angegebene URL aufrufen (https://reports.azure.com).
+Zur Aktivierung Ihres Diensts muss der Administrator die in der Einladungs-E-Mail angegebene [URL](https://reports.azure.com) aufrufen.
 
 >[!NOTE]
->Wenn die Administrator-E-Mail als Microsoft-Konto gelistet ist, und Sie noch kein Microsoft-Konto erstellt haben, dass mit der E-Mail-Adresse verknüpft ist, von der Sie die Einladung erhalten haben, müssen Sie das Konto erstellen, bevor Sie sich anmelden. Wechseln Sie zu https://signup.live.command, um das Konto zu erstellen.
+>Wenn die Administrator-E-Mail als Microsoft-Konto geführt wird und Sie noch kein Microsoft-Konto erstellt haben, das der E-Mail-Adresse, von der Sie die Einladung erhalten haben, zugeordnet ist, müssen Sie das [Konto erstellen](https://signup.live.com), bevor Sie sich anmelden.
 
 
-### <a name="sign-in-to-the-seller-insights-portal"></a>Anmelden im Insights-Portal des Verkäufers
+### <a name="administrator-sign-in-to-the-seller-insights-portal"></a>Anmelden als Administrator beim Insights-Portal für Verkäufer
 
-1. Klicken Sie in der an Sie verschickten E-Mail auf die URL, um sich beim Insights-Portal des Verkäufers anzumelden.
+1. Klicken Sie in der an Sie gesendeten E-Mail auf die URL, um sich beim Insights-Portal für Verkäufer anzumelden.
 2. Geben Sie die Administrator-E-Mail-Adresse und das dazugehörige Kennwort ein.
 3. Klicken Sie auf die Schaltfläche **Anmelden**.
 4. Beginnen Sie, Ihr Konto zu verwalten. Fügen Sie Benutzer hinzu, legen Sie Berechtigungen fest und bearbeiten Sie Benutzer.
-5. Stellen Sie sicher, dass Ihre Benutzer über die URL für das Insights-Portal des Verkäufers verfügen.
+5. Stellen Sie sicher, dass Ihre Benutzer über die URL für das Insights-Portal für Verkäufer verfügen.
 
-![Anmeldeseite][6]
+    ![Anmeldeseite][6]
 
-## <a name="sign-in"></a>Anmelden
+## <a name="user-sign-in-to-the-portal"></a>Anmelden als Benutzer beim Portal
 
-Der Administrator sollte Ihnen per E-Mail mitteilen, dass Ihr Konto erstellt wurde, und die URL für das Insights-Portal des Verkäufers für Sie (https://reports.azure.com) freigeben.
+Der Administrator sollte Sie per E-Mail benachrichtigen, dass Ihr Konto erstellt wurde, und Ihnen die [URL](https://reports.azure.com) für das Insights-Portal für Verkäufer übermitteln.
 
 >[!NOTE]
->Der Administrator ist der Besitzer des Kontos, über das Lösungen tatsächlich im Azure Marketplace veröffentlicht werden.  Der Besitzer dieses Kontos kann anderen Benutzern Zugriff gewähren.  Wenn Sie als Co-Administrator Zugriff auf das Veröffentlichungsportal haben, finden Sie die Adresse des Administrators über die folgenden Schritte:
+>Der Administrator ist der Besitzer des Kontos, über das Lösungen im Azure Marketplace veröffentlicht werden. Der Besitzer dieses Kontos kann anderen Benutzern Zugriff gewähren.  Wenn Sie als Co-Administrator Zugriff auf das Veröffentlichungsportal haben, finden Sie die Adresse des Administrators über die folgenden Schritte:
 >1. Melden Sie sich beim Veröffentlichungsportal an.
 >2. Klicken Sie auf die Registerkarte **Herausgeber**.
 >3. Öffnen Sie den fraglichen Herausgeber (in der Regel gibt es ist nur einen).
@@ -75,48 +76,50 @@ Der Administrator sollte Ihnen per E-Mail mitteilen, dass Ihr Konto erstellt wur
 >5. Die E-Mail-Adresse des Administrators, den Sie suchen, hat die Bezeichnung *Besitzer*.
 
 
-Sie können sich mit einem persönlichen Microsoft-Konto oder einem Firmen-Konto im Insights-Portal des Verkäufers anmelden. Die Art des Kontos hängt davon ab, was der Administrator in Ihrem Profil festlegt. Ihr Administrator sollte Ihnen mitteilen, welches Konto Sie verwenden sollen.
+Sie können sich mit einem persönlichen Microsoft-Konto oder einem Geschäfts-, Schul- oder Unikonto beim Insights-Portal für Verkäufer anmelden. Die Art des Kontos hängt davon ab, was der Administrator in Ihrem Profil festlegt. Ihr Administrator sollte Ihnen mitteilen, welches Konto Sie verwenden sollen.
 
 ![Kontotyp][1]
 
 
 
-**Willkommen im Insights-Portal des Verkäufers!**
+**Willkommen beim Insights-Portal für Verkäufer!**
 
-1. Nachdem Sie sich angemeldet haben, gelangen Sie auf die Seite **Zusammenfassung**.
-2. Nehmen Sie sich bitte einen Moment Zeit, um die Datenschutzrichtlinie zu lesen.
-3. Sie können uns jederzeit per E-Mail **Kontaktieren** und uns Fragen stellen, die Sie zum Insights-Portal des Verkäufers haben könnten.
-4. Sie können im Insights-Portal des Verkäufers mithilfe der Registerkarten am oberen Rand der Seite navigieren.  Achten Sie auf die Registerkarten am oberen Rand der Seiten in diesem Handbuch, die Ihnen helfen, sich im Insights-Portal des Verkäufers zu orientieren.
-5. Klicken Sie jederzeit auf das Smiley-Symbol, um Feedback im Zusammenhang mit dem Insights-Portal des Verkäufers zu senden.
-6. Klicken Sie auf Ihren Namen in der oberen rechten Ecke, um sich jederzeit aus dem Insights-Portal des Verkäufers abzumelden.
+1. Nachdem Sie sich angemeldet haben, wird die Seite **Zusammenfassung** angezeigt.
+2. Nehmen Sie sich einen Moment Zeit, um die Datenschutzrichtlinie zu lesen.
+3. Sie können uns jederzeit per E-Mail **kontaktieren** und uns Fragen Insights-Portal für Verkäufer stellen.
+4. Sie navigieren im Insights-Portal für Verkäufer mithilfe der Registerkarten am oberen Rand der Seite.  Achten Sie auf die Registerkarten am oberen Rand der Seiten in diesem Handbuch, die Ihnen helfen, sich im Insights-Portal für Verkäufer zu orientieren.
+5. Klicken Sie auf das Smiley-Symbol, um jederzeit Feedback zum Insights-Portal für Verkäufer zu senden.
+6. Klicken Sie auf Ihren Namen in der rechten oberen Ecke, um sich vom Insights-Portal für Verkäufer abzumelden.
 
-![Standardzielseite][2]
+    ![Standardzielseite][2]
 
 
 ## <a name="summary-view"></a>Zusammenfassung
 
+
 1. Wählen Sie die Registerkarte **Zusammenfassung** aus.
-2. Geben Sie hier das **Startdatum** des Zeitraums ein, für den Sie sich interessieren, und klicken Sie anschließend auf **Übernehmen**. Die Daten aus drei Monaten werden angezeigt.
-3. Hier werden Trenddaten für neue Aufträge des ausgewählten dreimonatigen Zeitraums angezeigt.
-4. Hier werden neue Aufträge für den ausgewählten Zeitraum nach Kanal und Angebotstyp angezeigt.
+2. Geben Sie hier das **Startdatum** des Zeitraums ein, für den Sie sich interessieren, und klicken Sie anschließend auf **Übernehmen**. Es werden die Daten von drei Monaten angezeigt.
+3. Hier werden Trenddaten für neue Aufträge im ausgewählten dreimonatigen Zeitraum angezeigt.
+4. Hier werden neue Aufträge im ausgewählten Zeitraum nach Kanal und Angebotstyp angezeigt.
 5. Wählen Sie eine Ansicht aus diesem Bereich aus. **Top 5 Markets** (Die fünf wichtigsten Märkte), **Top 5 Performing Offers** (Die fünf besten Angebote) oder **Top 5 Customers** (Die fünf wichtigsten Kunden).
 6. In diesem Bereich wird für der Auszahlungstrend bezahlte Angebote für den ausgewählten Zeitraum angezeigt. Falls Sie nur über BYOL- oder Erstanbieterangebote verfügen, wird dieser Bereich nicht angezeigt.
 
-![Zusammenfassung][7]
+    ![Zusammenfassung][7]
 
 ## <a name="orders-and-usage"></a>Orders & Usage (Aufträge und Nutzung)
 ### <a name="overview"></a>Übersicht
 
-A: Im *Bereich A* können Sie die Registerkarte **Orders & Usage** (Aufträge und Nutzung) auswählen.  Über **Berichtstyp** können Sie dann **Aufträge** oder **Nutzung** und mithilfe der Schieberegler die für Sie interessanten Daten auswählen.
+Im *Bereich A* können Sie die Registerkarte **Orders & Usage** (Aufträge und Nutzung) auswählen.  Über **Berichtstyp** können Sie dann **Aufträge** oder **Nutzung** und mithilfe der Schieberegler die für Sie interessanten Daten auswählen.
 
-B: In *Bereich B* können Sie die monatlichen Daten auswählen. Wählen Sie **Aufträge** oder **Verwendung** abhängig von Ihrer Auswahl in **Berichtstyp** im Bereich A aus. Die angezeigten Daten geben die Datumsangaben, die Sie eingeben und die Filter wieder, die Sie mithilfe der Schieberegler in Bereich A angewendet haben.
+In *Bereich B* können Sie die monatlichen Daten auswählen. Wählen Sie **Aufträge** oder **Verwendung** abhängig von Ihrer Auswahl in **Berichtstyp** im Bereich A aus. Die angezeigten Daten geben die Datumsangaben, die Sie eingeben und die Filter wieder, die Sie mithilfe der Schieberegler in Bereich A angewendet haben.
 
-C: In *Bereich C* können Sie Ihre Trenddaten für drei Monate auswählen. Wählen Sie **Aufträge** oder **Verwendung** abhängig von Ihrer Auswahl in **Berichtstyp** im Bereich A aus. Die angezeigten Daten geben die Datumsangaben, die Sie eingeben und die Filter wieder, die Sie mithilfe der Schieberegler in Bereich A angewendet haben.
+In *Bereich C* können Sie Ihre Trenddaten für drei Monate auswählen. Wählen Sie **Aufträge** oder **Verwendung** abhängig von Ihrer Auswahl in **Berichtstyp** im Bereich A aus. Die angezeigten Daten geben die Datumsangaben, die Sie eingeben und die Filter wieder, die Sie mithilfe der Schieberegler in Bereich A angewendet haben.
 
-D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können über diesen Bereich im Excel- oder CSV-Format heruntergeladen werden.
+In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können über diesen Bereich im Excel- oder CSV-Format heruntergeladen werden.
 
 ![Auftragsübersicht][8]
 ![Auftragsübersichtsplan][9]
+
 
 ### <a name="orders"></a>Aufträge
 #### <a name="monthly-view-panel-a"></a>Monatsansicht – Bereich A
@@ -128,7 +131,7 @@ D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können üb
   3. Verwenden Sie das Filtersymbol, um die Slicer ein- oder auszublenden.  Filtern Sie die anzuzeigenden Daten mithilfe dieser Slicer nach **Azure-Lizenztyp**, **Marketplace-Lizenztyp**, **Markt**, **Angebotstyp** und **Vorschaustatus**.  Definitionen für diese Begriffe finden Sie auf der Registerkarte **Hilfe**.
   4. Wählen Sie das Startdatum aus, für das Sie sich interessieren, und klicken Sie auf **Los**.
 
-![Monatsansicht für Aufträge – Bereich A][14]
+  ![Monatsansicht für Aufträge – Bereich A][14]
 
 #### <a name="monthly-view-panel-b"></a>Monatsansicht – Bereich B
 
@@ -162,7 +165,8 @@ D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können üb
   4. Zeigen Sie auf die einzelnen Balken der ausgewählten Diagramme, um die zugrunde liegenden Daten anzuzeigen.
   5. Verwenden Sie das Symbol **+**, um in einen Modus zu wechseln, in dem die Daten unter den ausgewählten Diagrammen angezeigt werden.
 
-![Auftragstrendansicht – Bereich C][16]
+  ![Auftragstrendansicht – Bereich C][16]
+
 
 
 #### <a name="detailed-orders-data-panel-d"></a>Ausführliche Auftragsdaten – Bereich D
@@ -177,19 +181,21 @@ D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können üb
   3. Wählen Sie aus, wie viele Elemente pro Seite angezeigt werden sollen. Es sind 10, 20 oder 50 Elemente pro Seite verfügbar.
   4. Laden Sie die Daten im Excel- oder CSV-Format herunter, um sie offline zu analysieren.
 
-![Ausführliche Auftragsansicht – Bereich D][19]
+  ![Ausführliche Auftragsansicht – Bereich D][19]
+
 
 ### <a name="usage"></a>Verwendung
 #### <a name="monthly-view-panel-a"></a>Monatsansicht – Bereich A
 
   ![Bereichsplan – A][10]
 
+
   1. Wählen Sie die Registerkarte **Orders and Usage** (Aufträge und Nutzung) aus, um auf Ihre Auftrags- und Nutzungsdaten zuzugreifen.
   2. Wählen Sie in **Berichtstyp** die Option **Verwendung** aus.
   3. Verwenden Sie das Filtersymbol, um die Slicer ein- oder auszublenden.  Filtern Sie die anzuzeigenden Daten mithilfe dieser Slicer nach **Azure-Lizenztyp**, **Marketplace-Lizenztyp**, **Markt**, **Angebotstyp** und **Vorschaustatus** und **Verwendungstyp**.  Definitionen für diese Begriffe finden Sie auf der Registerkarte **Hilfe**.
   4. Wählen Sie das Startdatum aus, für das Sie sich interessieren, und klicken Sie auf **Los**.
 
-![Monatsansicht der Nutzung – Bereich A][21]
+  ![Monatsansicht der Nutzung – Bereich A][21]
 
 #### <a name="monthly-view-panel-b"></a>Monatsansicht – Bereich B
 
@@ -217,6 +223,7 @@ D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können üb
   1. Wählen Sie **Trend View** (Trendansicht) aus.
   2. Wählen Sie aus der Liste **Themenbereich** die anzuzeigenden Elemente aus, und klicken Sie anschließend auf **Übernehmen**. Standardmäßig sind **alle Optionen** ausgewählt.
 
+
   ![Monatsansicht der Nutzung – Bereich C – Liste „Themenbereich“][17]
 
   3. Verwenden Sie das Filtersymbol, um **alle** Daten oder die **zehn wichtigsten** Daten für Ihre gesamte Auswahl auszuwählen. Standardmäßig ist die Option für die **zehn wichtigsten Daten** ausgewählt.
@@ -226,23 +233,25 @@ D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können üb
   4. Zeigen Sie auf die einzelnen Balken der ausgewählten Diagramme, um die zugrunde liegenden Daten anzuzeigen.
   5. Verwenden Sie das Symbol **+**, um Daten unterhalb der einzelnen Diagramme anzuzeigen, die Sie für die Ansicht ausgewählt haben.
 
-![Nutzungstrendansicht – Bereich C][23]
+  ![Nutzungstrendansicht – Bereich C][23]
 
 
 #### <a name="detailed-usage-data-panel-d"></a>Ausführliche Nutzungsdaten – Bereich D
 
+
   ![Bereichsplan – D][13]
 
   1. Der **Nutzungsdetailbereich** enthält ausführliche Auftragsdaten.
-  2. Über die Filter am oberen Rand der einzelnen Spalten können Sie die Daten mit einer Vielfalt von Befehlen und Werten filtern.
+  2. Über die Filter am oberen Rand der einzelnen Spalten können Sie die Daten mit verschiedenen Befehlen und Werten filtern.
 
   ![Monatsansicht der Nutzung – Bereich D – Filter][20]
 
   3. Wählen Sie aus, wie viele Elemente pro Seite angezeigt werden sollen. Es sind 10, 20 oder 50 Elemente pro Seite verfügbar.
   4. Laden Sie die Daten im Excel- oder CSV-Format herunter, um sie offline zu analysieren.
 
-![Monatsansicht der Nutzung – Bereich D][24]
-![Monatsansicht der Nutzung – Bereich D: Ergebnis herunterladen][25]
+
+  ![Monatsansicht der Nutzung – Bereich D][24]
+  ![Monatsansicht der Nutzung – Bereich D: Ergebnis herunterladen][25]
 
 ### <a name="accessing-detailed-customer-data"></a>Zugreifen auf ausführliche Kundendaten
 
@@ -253,8 +262,7 @@ D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können üb
   2. Sie werden zum Bereich **Customers Detailed Data** (Kundendetailbereich) umgeleitet. Die Daten für den Kunden werden abgerufen.
   3. Sie können die Daten im Excel- oder CSV-Format herunterladen.
 
-
-![Aufträge und Nutzung – Kundendetailbereich][27]
+  ![Aufträge und Nutzung – Kundendetailbereich][27]
 
 ### <a name="customer-data"></a>Kundendaten
 
@@ -262,32 +270,31 @@ D: In *Bereich D* werden die Abonnementdaten aufgelistet.  Die Daten können üb
   2. Filtern Sie die anzuzeigenden Daten mithilfe der Slicer nach **Azure-Lizenztyp** oder **Marketplace-Lizenztyp**.
   3. Wählen Sie das **Start-** und **Enddatum** des Zeitraums aus, für den Sie sich interessieren.
   4. Kundenzusammenfassungsdetails nach **Marketplace-Lizenztyp** werden angezeigt.
-  5. Über die Filter am oberen Rand der einzelnen Spalten können Sie die Daten mit einer Vielfalt von Befehlen und Werten filtern.
+  5. Über die Filter am oberen Rand der einzelnen Spalten können Sie die Daten mit verschiedenen Befehlen und Werten filtern.
   6. Laden Sie die Daten im Excel- oder CSV-Format herunter.
 
-![Kundendatenbereich][28]
+  ![Kundendatenbereich][28]
 
 
 ## <a name="user-management"></a>Benutzerverwaltung
 
->[!NOTE]
->Nur Administratoren.
+Die Aufgaben in diesem Abschnitt sind Administratoren vorbehalten. Anhand der folgenden Verfahren können Sie Benutzer hinzufügen, Berechtigungen ändern oder Benutzer aus dem Insights-Portal für Verkäufer löschen.
 
 
 ### <a name="add-user"></a>Benutzer hinzufügen
 
-In diesem Abschnitt erfahren Sie, wie Sie neue Benutzer hinzufügen oder deren Berechtigungen im Insights-Portal für den Verkäufer ändern.
+In diesem Abschnitt erfahren Sie, wie Sie neue Benutzer hinzufügen oder deren Berechtigungen im Insights-Portal für Verkäufer ändern.
 
 
 1. Wählen Sie die Registerkarte **Benutzerverwaltung** aus.
 2. Wählen Sie zum Hinzufügen eines Benutzers **Benutzer hinzufügen** aus.
-3. Geben Sie die E-Mail-Adresse ein, die dem Microsoft- oder Unternehmenskonto eines Benutzers zugeordnet ist, und klicken Sie anschließend auf **Weiter**.
+3. Geben Sie die E-Mail-Adresse ein, die dem Microsoft-Konto oder dem Geschäfts-, Schul- oder Unikonto eines Benutzers zugeordnet ist. Klicken Sie anschließend auf **Weiter**.
 4. Als Administrator können Sie Benutzern schreibgeschützten Zugriff auf Berichte gewähren.
 5. Geben Sie die Benutzerdetails **Vorname**, **Nachname** und **E-Mail-Adresse** ein, und klicken Sie anschließend auf **Weiter**.
 6. Wählen Sie die Berechtigungen aus, die Sie dem Benutzer zuordnen möchten, und klicken Sie anschließend auf **Weiter**.
 7. Stellen Sie sicher, dass die eingegebenen Informationen korrekt sind, und klicken Sie anschließend auf **Speichern**, um den Vorgang fortzusetzen.  Sie haben erfolgreich einen Benutzer hinzugefügt.
 
-![Bereich zum Hinzufügen eines Benutzers][29]
+  ![Bereich zum Hinzufügen eines Benutzers][29]
 
 
 ### <a name="edit-user"></a>Benutzer bearbeiten
@@ -297,21 +304,19 @@ In diesem Abschnitt erfahren Sie, wie Sie neue Benutzer hinzufügen oder deren B
 3. Klicken Sie auf die Berechtigungen, die Sie für den Benutzer entfernen möchten.  Sie können auch einen Benutzer löschen. Klicken Sie auf **Benutzer löschen**.
 4. Klicken Sie auf **Speichern**, um den Vorgang fortzusetzen.  Sie haben die Berechtigungen des Benutzers erfolgreich bearbeitet.
 
-![Bereich zum Bearbeiten eines Benutzers][30]
+  ![Bereich zum Bearbeiten eines Benutzers][30]
 
 ## <a name="help-support-requests"></a>Supportanfragen
-
-
 
 
 ### <a name="access-the-support-request-format"></a>Zugreifen auf das Formular für Supportanfragen
 
 1. Wählen Sie die Registerkarte **Hilfe** aus.
 2. Wählen Sie **Support und Dokumentation** und anschließend **Anfrage starten** aus.
-3. Supportanfragen können auch über den **Kontaktlink** übermittelt werden, der sich jeweils am unteren Bildschirmrand der Anwendung befindet.
+3. Sie können über den Link **Kontakt** auch eine Supportanfrage übermitteln. Dieser Link wird am unteren Rand jeder Seite in der Anwendung angezeigt.
 4. Eine neue Registerkarte wird geöffnet, über die Sie eine Supportanfrage übermitteln können.
 
-![Zugreifen auf das Supportformular][31]
+  ![Zugreifen auf das Supportformular][31]
 
 ### <a name="review-helpful-information"></a>Lesen hilfreicher Informationen
 
@@ -320,56 +325,56 @@ In diesem Abschnitt erfahren Sie, wie Sie neue Benutzer hinzufügen oder deren B
 3. Einige hilfreiche Links werden angezeigt, die Ihre Frage möglicherweise beantworten.  Überprüfen Sie vor der Übermittlung Ihrer Supportanfrage zunächst die bereitgestellten Links.
 4. Falls Sie trotzdem eine Supportanfrage übermitteln müssen, wählen Sie **Anfrage starten** aus.
 
-![Bereich zum Bearbeiten eines Benutzers][32]
+  ![Bereich zum Bearbeiten eines Benutzers][32]
 
 
-### <a name="fill-out-and-submit-the-request"></a>Ausfüllen und Übermitteln der Anfrage
+### <a name="enter-information-and-submit-the-request"></a>Eingeben der Informationen und Übermitteln der Anforderung
 
 1. Geben Sie Ihre Kontaktinformationen, Ihre Zeitzone, Ihre Region und Ihre bevorzugte Sprache ein, und wählen Sie **Weiter** aus.
 2. Benennen Sie Ihre Anfrage, und geben Sie so viele Informationen wie möglich an.  Sie können auch hilfreiche Dateien mit Screenshots oder Ähnlichem hochladen. Wählen Sie anschließend **Absenden** aus.
 3. Sie erhalten eine Bestätigung, dass Ihre Supportanfrage erfolgreich übermittelt wurde.
 4. Der Status der Supportanfrage kann jederzeit überprüft werden.
 
-![Zugreifen auf das Supportformular][33]
+  ![Zugreifen auf das Supportformular][33]
 
 
 ## <a name="reset-a-password"></a>Zurücksetzen eines Kennworts
 
 **Konto- und Kennwortüberprüfung**
 
-1. *Überprüfen Sie, ob das Konto, das Sie verwenden, registriert ist und das Kennwort nicht funktioniert.* Wenn Sie ein Konto eingeben, dass in Azure Active Directory registriert ist, werden Sie automatisch aufgefordert, auszuwählen, wie Sie sich anmelden möchten. Sie verwenden ein Geschäfts- oder Schulkonto (Organisationskonto) oder ein persönliches Windows LiveID-Konto.
-2. Wechseln Sie zu https://reports.azure.com, und melden Sie sich aus allen Konten ab, mit denen Sie sich anmelden möchten. Sie können es auch in einem privaten Fenster öffnen, um sicherzugehen, dass keine anderen Konten angemeldet sind.
-3. Geben Sie die E-Mail-Adresse des Herausgebers ohne Eingabe eines Kennworts ein. Sie werden zu *Schritt 4* weitergeleitet, wenn das Konto in Azure Active Directory registriert ist.
+1. *Überprüfen Sie, ob das Konto, das Sie verwenden, registriert ist und das Kennwort nicht funktioniert.* Wenn Sie ein Konto eingeben, dass in Azure Active Directory registriert ist, werden Sie automatisch aufgefordert, auszuwählen, wie Sie sich anmelden möchten. Sie verwenden ein Geschäfts-, Schul- oder Unikonto oder ein Microsoft-Konto, das als Ihr privates Konto dient.
+2. Wechseln Sie zu [https://reports.azure.com](https://reports.azure.com), und melden Sie sich bei allen Konten ab, bei denen Sie ggf. angemeldet sind. Sie können es auch in einem privaten Fenster öffnen, um sicherzugehen, dass keine anderen Konten angemeldet sind.
+3. Geben Sie die E-Mail-Adresse des Herausgebers, aber kein Kennwort ein. Wenn das Konto in Azure Active Directory registriert ist, werden Sie zu Schritt 4 weitergeleitet.
 
-  >[!NOTE]
-  >Administratorkonten werden registriert. Organisationskonten, die durch das Administratorkonto eingerichtet sind, werden ebenfalls registriert.
+    >[!NOTE]
+    >Administratorkonten werden registriert. Geschäfts-, Schul- oder Unikonten, die durch das Administratorkonto eingerichtet wurden, werden ebenfalls registriert.
 
-4. Wählen Sie ein **Geschäfts- oder Schulkonto** aus. Geschäfts- oder Schulkonten (auch als Organisationskonten bekannt) werden durch Unternehmen eingerichtet, die bei Azure registriert sind. Persönliche Konten (auch als LiveID-Konten bezeichnet) sind persönliche Konten, die bei Microsoft registriert sind.
+4. Wählen Sie ein **Geschäfts- oder Schulkonto** aus. Geschäfts-, Schul- oder Unikonten werden durch Unternehmen eingerichtet, die bei Azure registriert sind. 
 
-  >[!NOTE]
-  >Es ist möglich, dass ein Benutzer ein LiveID-Konto mit der geschäftlichen E-Mail-Adresse einrichtet. In diesem Szenario wird das Unternehmen später in Azure integriert und somit wird die gleiche E-Mail-Adresse als Organisationskonto registriert. Das bedeutet, dass dieser Benutzer über ein LiveID-Konto mit einem Kennwort verfügt, das er für das Erstellen des LiveID-Kontos verwendet hat. Der Benutzer kann über ein Organisationskonto mit einem separaten Kennwort verfügen, das vom Unternehmen verwendet wird.
+    >[!NOTE]
+    >Es ist möglich, dass ein Benutzer ein Microsoft-Konto mit der E-Mail-Adresse seiner Organisation einrichtet. In diesem Fall wird die Organisation später in Azure integriert und somit die gleiche E-Mail-Adresse als Geschäfts-, Schul- oder Unikonto registriert. Dieser Benutzer kann über ein Microsoft-Konto mit demselben Kennwort verfügen, das er für das Erstellen des Geschäfts-, Schul- oder Unikontos verwendet hat. Der Benutzer kann auch über ein Geschäfts-, Schul- oder Unikonto mit einem separaten Kennwort verfügen, das von der eigenen Organisation verwendet wird.
 
-5. Stellen Sie sicher, dass Sie für das Insights-Portal des Verkäufers bei der Auswahl eines **Geschäfts- oder Schulkontos** die Kombination aus Organisationskonto und Kennwortkombination und keine LiveID-Kennwortkombination verwenden.
-6. Für ein Organisationskonto werden Sie zur Anmeldeseite des Herstellers umgeleitet.
-7. Überprüfen Sie hier, ob das Kennwort für das Konto des Unternehmens funktioniert. Fahren Sie mit dem Abschnitt „Zurücksetzen des Kennworts“ in diesem Artikel fort, wenn dies nicht funktioniert.
+5. Stellen Sie sicher, dass Sie bei der Auswahl eines **Geschäfts-, Schul- oder Unikontos** für das Insights-Portal für Verkäufer auch das zugehörige Kennwort und kein Microsoft-Kontokennwort verwenden.
+6. Bei einem Geschäfts-, Schul- oder Unikonto werden Sie auf die Seite des Herausgebers umgeleitet, um sich dort anzumelden.
+7. Überprüfen Sie hier, ob das Kennwort für das Geschäfts-, Schul- oder Unikonto funktioniert. Fahren Sie mit dem Abschnitt „Zurücksetzen des Kennworts“ in diesem Artikel fort, wenn dies nicht funktioniert.
 
 
 
 **Zurücksetzen des Kennworts**
 
-Versuchen Sie, Ihr Kennwort über die folgenden Links zurückzusetzen.
+Verwenden Sie die folgenden Microsoft- und Geschäfts-, Schul- oder Unikonten, um Ihr Kennwort zurückzusetzen.
 
 >[!NOTE]
->Bei der Einrichtung des Organisationskonto durch ein Administratorkonto werden Sie Ihr eigenes Kennwort zurücksetzen können, wenn der Administrator die Möglichkeit zum Zurücksetzen Ihres eigenen Kennworts aktiviert hat. Andernfalls wird Ihnen das Formular zum Zurücksetzen des Kennworts die Möglichkeit geben, sich an Ihren Administrator zu wenden.
+>Bei der Einrichtung des Geschäfts-, Schul- oder Unikontos durch ein Administratorkonto können Sie Ihr eigenes Kennwort zurücksetzen, wenn der Administrator die Möglichkeit zum Zurücksetzen Ihres eigenen Kennworts aktiviert hat. Andernfalls wird Ihnen das Formular zum Zurücksetzen des Kennworts die Möglichkeit geben, sich an Ihren Administrator zu wenden.
 
-**Microsoft-Konto (LiveID): https://account.live.com/ResetPassword.aspx**
-![Zurücksetzen des Kennworts im Microsoft-Konto][3]
+* [Microsoft-Konto](https://account.live.com/ResetPassword.aspx)
+![Zurücksetzen des Kennworts für ein Microsoft-Konto][3]
 
-**Geschäfts- oder Schulkonto (Organisations-ID): https://passwordreset.microsoftonline.com/**
-![Zurücksetzen des Kennworts im Geschäfts- oder Schulkonto][4]
+* [Geschäfts-, Schul- oder Unikonto](https://passwordreset.microsoftonline.com/)
+![Zurücksetzen des Kennworts für ein Geschäfts-, Schul- oder Unikonto][4]
 
 
-## <a name="have-other-feedback"></a>Haben Sie anderes Feedback?
+## <a name="send-feedback-to-improve-the-seller-insights-portal"></a>Übermitteln von Feedback zur Verbesserung des Insights-Portals für Verkäufer
 
   Sie können jederzeit auf das Smiley-Symbol klicken, um Feedback abzugeben.
 
@@ -412,4 +417,5 @@ Versuchen Sie, Ihr Kennwort über die folgenden Links zurückzusetzen.
 [32]: ./media/marketplace-publishing-report-seller-insights-user-guide/support-information.png
 [33]: ./media/marketplace-publishing-report-seller-insights-user-guide/support-fill-out-and-submit.png
 [34]: ./media/marketplace-publishing-report-seller-insights-user-guide/feedback-form.png
+[35]: ./media/marketplace-publishing-report-seller-insights-user-guide/help.png
 

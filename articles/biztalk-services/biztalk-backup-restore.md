@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 589b95fdd05478305fa8ef629fc6758bdd716da6
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Sichern und Wiederherstellen
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Azure BizTalk Services bieten eine Sicherungs- und Wiederherstellungsfunktion. In diesem Thema wird beschrieben, wie BizTalk Services unter Verwendung des klassischen Azure-Portals gesichert und wiederhergestellt wird.
 
 Sie können BizTalk Services auch mithilfe der [BizTalk Services-REST-API](http://go.microsoft.com/fwlink/p/?LinkID=325584)sichern. 
 
 > [!NOTE]
 > Hybridverbindungen werden editionsunabhängig NICHT gesichert. Sie müssen die Hybridverbindungen neu erstellen.
-> 
-> 
+
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 * Sichern und Wiederherstellen ist unter Umständen nicht für alle Editionen verfügbar. Siehe [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md).
@@ -130,7 +133,7 @@ Wenn eine Sicherung erstellt wird, werden die folgenden Elemente gesichert:
 </tr> 
 <tr>
 <td colspan="2">
- <strong>Azure BizTalk Services Portal</strong></td>
+ <strong>Azure BizTalk Services-Portal</strong></td>
 </tr> 
 <tr>
 <td>Konfiguration und Laufzeit</td> 
@@ -153,7 +156,7 @@ Wenn eine Sicherung erstellt wird, werden die folgenden Elemente gesichert:
 
 <tr>
 <td colspan="2">
- <strong>Azure BizTalk Service</strong></td>
+ <strong>Azure BizTalk Services</strong></td>
 </tr> 
 <tr>
 <td>SSL-Zertifikat</td> 

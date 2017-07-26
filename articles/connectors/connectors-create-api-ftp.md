@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0dd751d9c824f27bdb25681908cb0dca5116100b
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 61bfbedfd4f1e84b6976099323a32f3a720634c0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -88,8 +88,9 @@ Des Weiteren ist die Logik-App mit einer Aktion konfiguriert, die den Inhalt der
 
 Sie können nun eine weitere Aktion hinzufügen – beispielsweise die Aktion [SQL Server – insert row](connectors-create-api-sqlazure.md) (SQL Server – Zeile einfügen), um den Inhalt der neuen oder geänderten Datei in eine SQL-Datenbanktabelle einzufügen.  
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/ftpconnector/). 
+## <a name="connector-specific-details"></a>Connectorspezifische Details
+
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/ftpconnector/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)

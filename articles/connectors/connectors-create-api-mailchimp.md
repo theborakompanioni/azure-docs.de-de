@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 26732369241c9d922b50f4a72808b9bdb8497e6e
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 46de91881f84183d0359755f49a115e712a7033b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -39,9 +39,9 @@ Um Logik-Apps mit MailChimp zu erstellen, müssen Sie zuerst eine **Verbindung**
 > 
 
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
+## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/mailchimp/).
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/mailchimp/) an.
 
 ## <a name="more-connectors"></a>Weitere Connectors
 Gehen Sie zur [Liste der APIs](apis-list.md)zurück.

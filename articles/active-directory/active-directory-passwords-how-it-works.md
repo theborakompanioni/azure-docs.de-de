@@ -6,20 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+ms.reviewer: gahug
 ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 07/17/2017
 ms.author: joflore
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 02826ffad9838c3e22721cc3c189e8cc13020059
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 44426571e3fd8aed090ccccc0dcc46dca8098906
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 05/25/2017
 
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
@@ -77,7 +78,7 @@ Standardmäßig werden nur die Cloudattribute „Bürotelefon“ und „Mobiltel
 
 Benutzer können ihr Kennwort nur dann zurücksetzen, wenn für sie Daten in den Authentifizierungsmethoden vorliegen, die der Administrator aktiviert und als erforderlich festgelegt hat.
 
-Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für das Zurücksetzen von Kennwörtern verwenden möchte, sollten Administratoren die Daten nicht in das Verzeichnis übernehmen, und der Benutzer sollte sein **Authentifizierungstelefon**-Attribut dann über das [Registrierungsportal für die Kennwortzurücksetzung](http://aka.ms/ssprsetup) auffüllen. Administratoren können diese Informationen im Profil des Benutzers weiterhin anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht. Wenn ein Azure-Administratorkonto eine Authentifizierungstelefonnummer registriert, wird sie in das Feld „Mobiltelefon“ eingetragen und ist sichtbar.
+Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für das Zurücksetzen von Kennwörtern verwenden möchte, sollten Administratoren die Daten nicht in das Verzeichnis übernehmen, und der Benutzer sollte sein **Authentifizierungstelefon**-Attribut dann über das [Registrierungsportal für die Kennwortzurücksetzung](http://aka.ms/ssprsetup) auffüllen. Administratoren können diese Informationen im Profil des Benutzers anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht. Wenn ein Azure-Administratorkonto eine Authentifizierungstelefonnummer registriert, wird sie in das Feld „Mobiltelefon“ eingetragen und ist sichtbar.
 
 ### <a name="number-of-authentication-methods-required"></a>Anzahl erforderlicher Authentifizierungsmethoden
 
@@ -242,7 +243,12 @@ So richten Sie die entsprechenden Berechtigungen für das Rückschreiben von Ken
 4. Klicken Sie auf der Registerkarte „Berechtigungen“ auf „Hinzufügen“.
 5. Wählen Sie das Konto aus, dem Berechtigungen zugewiesen werden sollen (vom Azure AD Connect-Setup).
 6. Wählen Sie im Dropdownfeld „Gilt für“ den Eintrag „Nachfolgerbenutzerobjekt“ aus.
-7. Aktivieren Sie unter „Berechtigungen“ die Kontrollkästchen für „Kennwort zurücksetzen“, „Kennwort ändern“, L“ockoutTime schreiben“ und „pwdLastSet schreiben“.
+7. Aktivieren Sie unter „Berechtigungen“ Folgendes:
+    * Abgelaufenes Kennwort wiederherstellen
+    * Kennwort zurücksetzen
+    * Kennwort ändern
+    * lockoutTime schreiben
+    * pwdLastSet schreiben
 8. Klicken Sie auf „Übernehmen/OK“, um die Änderungen zu übernehmen und alle geöffneten Dialogfelder zu schließen.
 
 ## <a name="how-does-password-reset-work-for-b2b-users"></a>Funktionsweise der Kennwortzurücksetzung für B2B-Benutzer
@@ -256,7 +262,7 @@ Navigieren Sie zum Testen mit einem dieser Partnerbenutzer zu „http://password
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD
+Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
 * [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
@@ -266,7 +272,7 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Kennwortrückschreiben:**](active-directory-passwords-writeback.md) Funktionsweise des Kennwortrückschreibens in Ihrem lokalen Verzeichnis
 * [**Anpassung:**](active-directory-passwords-customize.md) Passen Sie das Aussehen und Verhalten von SSPR für Ihr Unternehmen an.
 * [**Berichterstellung:**](active-directory-passwords-reporting.md) Ermitteln Sie, ob, wann und wo Ihre Benutzer auf SSPR-Funktionen zugreifen.
-* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? Antworten auf Fragen, die Sie schon immer stellen wollten
+* [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
 
 

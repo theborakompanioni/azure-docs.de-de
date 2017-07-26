@@ -12,10 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
-translationtype: Human Translation
-ms.sourcegitcommit: 43224628d5726ac2fb0e8c27c649421af7ceeee4
-ms.openlocfilehash: 6cf375fbfe265a53591b9987ebd32db6df73fcb4
-ms.lasthandoff: 02/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 5b9955b2af7f20a79981315fa33a0eb5380a5465
+ms.contentlocale: de-de
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -29,17 +30,17 @@ Laufende Nutzungsgebühren für Azure Active Directory B2C (oder Azure AD B2C) w
 https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 ## <a name="step-1---create-an-azure-ad-b2c-tenant"></a>Schritt 1: Erstellen eines Azure AD B2C-Mandanten
-
-Die Erstellung des B2C-Mandanten muss zuerst abgeschlossen werden. Überspringen Sie diesen Schritt, falls Sie den B2C-Zielmandanten bereits erstellt haben. [Erste Schritte mit Azure AD B2C](https://azure.microsoft.com/documentation/articles/active-directory-b2c-get-started/)
+Die Erstellung des B2C-Mandanten muss zuerst abgeschlossen werden. Überspringen Sie diesen Schritt, falls Sie den B2C-Zielmandanten bereits erstellt haben. [Erste Schritte mit Azure AD B2C](active-directory-b2c-get-started.md)
 
 ## <a name="step-2---open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>Schritt 2: Öffnen des Azure-Portals im Azure AD-Mandanten, für den Ihr Azure-Abonnement angezeigt wird
-Navigieren Sie zu "portal.azure.com". Wechseln Sie zu dem Azure AD-Mandanten, für den das Azure-Abonnement angezeigt wird, das Sie verwenden möchten. Dieser Azure AD-Mandant unterscheidet sich vom B2C-Mandanten. Klicken Sie im Azure-Portal oben rechts im Dashboard auf den Kontonamen, um den Azure AD-Mandanten auszuwählen. Ein Azure-Abonnement ist erforderlich, um den Vorgang fortsetzen zu können. [Erhalten eines Azure-Abonnements](https://account.windowsazure.com/signup?showCatalog=True)
+Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wechseln Sie zu dem Azure AD-Mandanten, für den das Azure-Abonnement angezeigt wird, das Sie verwenden möchten. Dieser Azure AD-Mandant unterscheidet sich vom B2C-Mandanten. Klicken Sie im Azure-Portal oben rechts im Dashboard auf den Kontonamen, um den Azure AD-Mandanten auszuwählen. Ein Azure-Abonnement ist erforderlich, um den Vorgang fortsetzen zu können. [Erhalten eines Azure-Abonnements](https://account.windowsazure.com/signup?showCatalog=True)
 
 ![Wechseln zum Azure AD-Mandanten](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
 
 ## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>Schritt 3: Erstellen einer Ressource vom Typ „B2C-Mandant“ in Azure Marketplace
 Öffnen Sie den Marketplace per Klick auf das Marketplace-Symbol, oder wählen Sie oben links im Dashboard das grüne Pluszeichen.  Suchen Sie nach Azure Active Directory B2C, und wählen Sie die Anwendung aus. Klicken Sie auf Erstellen.
-![Auswählen von „Marketplace“](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
+
+![Wählen Sie den Marketplace aus.](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
 
 ![Suchen nach AD B2C](./media/active-directory-b2c-how-to-enable-billing/searchb2c.png)
 
@@ -75,12 +76,5 @@ Wenn Sie auf die B2C-Mandantenressource klicken, haben Sie folgende Möglichkeit
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie diese Schritte für die einzelnen B2C-Mandanten ausgeführt haben, wird die Abrechnung für Ihr Azure-Abonnement in Übereinstimmung mit Ihren Azure Direct- bzw. Enterprise Agreement-Details durchgeführt.
 - Überprüfen der Nutzung und Abrechnung im ausgewählten Azure-Abonnement
-- Überprüfen von ausführlichen täglichen Nutzungsberichten mit der [Verwendungsberichts-API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api)
-
-
-
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-[gog]: http://google.com/        
-[yah]: http://search.yahoo.com/  
-[msn]: http://search.msn.com/    
+- Überprüfen von ausführlichen täglichen Nutzungsberichten mit der [Verwendungsberichts-API](active-directory-b2c-reference-usage-reporting-api.md)
 

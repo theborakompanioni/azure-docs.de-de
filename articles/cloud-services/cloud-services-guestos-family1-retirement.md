@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/21/2017
+ms.date: 5/21/2017
 ms.author: raiye
-translationtype: Human Translation
-ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
-ms.openlocfilehash: 578059c397319147c8716e2152901dfdc15a28cd
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 3178a09dab1cb972a3460d54dc9908fb95cce68b
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -35,9 +36,9 @@ Ihre Clouddienste sind betroffen, wenn eine der folgenden Bedingungen zutrifft:
 
 1. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist explizit der Wert "osFamily = "1" angegeben.
 2. In der Datei "ServiceConfiguration.cscfg" Ihres Clouddiensts ist kein expliziter Wert für "osFamily" angegeben. In diesem Fall verwendet das System aktuell den Standardwert "1".
-3. Im klassischen Azure-Portal ist der Wert Ihrer Gastbetriebssystemfamilie als „Windows Server 2008“ angegeben.
+3. Im Azure-Portal ist der Wert Ihrer Gastbetriebssystemfamilie als „Windows Server 2008“ angegeben.
 
-Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das unten stehende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](/powershell/azureps-cmdlets-docs). Weitere Details zum Skript finden Sie unter [Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx). 
+Um herauszufinden, welcher Ihrer Clouddienste unter welcher Betriebssystemfamilie ausgeführt wird, können Sie das folgende Skript in Azure PowerShell ausführen. Sie müssen jedoch zuerst [Azure PowerShell einrichten](/powershell/azureps-cmdlets-docs). Weitere Informationen zum Skript finden Sie unter [Azure Guest OS Family 1 End of Life: June 2014](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx) (Einstellung der Azure-Gastbetriebssystemfamilie 1: Juni 2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -70,9 +71,8 @@ Wir empfehlen Ihnen, Ihre Clouddienstrollen zu einer der unterstützten Gastbetr
 2. Legen Sie in der Datei "ServiceConfiguration.cscfg" das osFamily-Attribut auf den Wert "2" fest, und stellen Sie Ihren Clouddienst erneut bereit.
 
 ## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>Erweiterte Unterstützung für Gastbetriebssystemfamilie 1 wurde am 3. November 2014 beendet
-Clouddienste unter Gastbetriebssystemfamilie 1 werden nicht mehr unterstützt. Migrieren Sie schnellst möglich von Familie 1 zu einer neueren Familie, um Dienstunterbrechungen zu vermeiden.  
+Clouddienste unter Gastbetriebssystemfamilie 1 werden nicht mehr unterstützt. Migrieren Sie schnellstmöglich von Familie 1 zu einer neueren Familie, um Dienstunterbrechungen zu vermeiden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die neuesten [Gastbetriebssystemreleases](cloud-services-guestos-update-matrix.md).
-
 

@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 05/30/2017
 ms.author: sethm;clemensv
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 31bf24034558582eb138251207580e8f7fd7ddaf
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 5abdbf70d4fdb2c7feb0f3537ecc0f2abf0775a0
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -40,7 +41,8 @@ Obwohl dies nicht empfohlen wird, ist es möglich, Geräte mit Token auszustatte
 Alle Token werden mit einem SAS-Schlüssel signiert. Alle Token werden in der Regel mit demselben Schlüssel signiert. Clients kennen den Schlüssel nicht. Dadurch wird verhindert, dass Clients Token erzeugen.
 
 ### <a name="create-the-sas-key"></a>Erstellen des SAS-Schlüssels
-Wenn Sie einen Azure Event Hubs-Namespace erstellen, generiert der Dienst einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel mit **EventHubSendKey** benannt haben.
+
+Wenn Sie einen Event Hubs-Namespace erstellen, generiert der Dienst einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können auch zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel mit **EventHubSendKey** benannt haben.
 
 Im folgenden Beispiel wird ein Nur-Senden-Schlüssel erstellt, wenn der Event Hub erstellt wird:
 
@@ -63,6 +65,7 @@ nm.CreateEventHub(ed);
 ```
 
 ### <a name="generate-tokens"></a>Generieren von Token
+
 Sie können Token mit dem SAS-Schlüssel generieren. Sie dürfen nur ein Token pro Client erzeugen. Token können dann mit dem folgenden Verfahren erstellt werden. Alle Token werden mit dem Schlüssel **EventHubSendKey** generiert. Jedes Token erhält einen eindeutigen URI.
 
 ```csharp
@@ -88,15 +91,14 @@ In der Regel müssen die Token eine Lebensdauer haben, die der Lebensdauer des C
 ### <a name="sending-data"></a>Senden von Daten
 Sobald die Token erstellt wurden, wird jedem Client sein eigenes eindeutiges Token bereitgestellt.
 
-Wenn der Client Daten an einen Event Hub sendet, markiert er sein Token mit der Sendeanforderung. Um Lauschangriffe und Diebstahl von Token von einem Angreifer zu verhindern, muss die Kommunikation zwischen dem Client und dem Event Hub über einen verschlüsselten Kanal erfolgen.
+Wenn der Client Daten an einen Event Hub sendet, markiert er seine Sendeanforderung mit dem Token. Um Lauschangriffe und Diebstahl von Token von einem Angreifer zu verhindern, muss die Kommunikation zwischen dem Client und dem Event Hub über einen verschlüsselten Kanal erfolgen.
 
 ### <a name="blacklisting-clients"></a>Eintragen von Clients in eine schwarze Liste
 Wenn ein Token von einem Angreifer gestohlen wurde, kann der Angreifer den Client imitieren, dessen Token gestohlen wurde. Wird ein Client in eine schwarze Liste eingetragen, wird dieser Client als nicht verwendbar gekennzeichnet, bis er ein neues Token erhalten hat, das einen anderen Herausgeber verwendet.
 
 ## <a name="authentication-of-back-end-applications"></a>Authentifizierung von Back-End-Anwendungen
 
-Um Back-End-Anwendungen zu authentifizieren, die von Event Hubs-Clients generierte Daten nutzen, setzen Event Hubs ein Sicherheitsmodell ähnlich dem Modell ein, das für Service Bus-Themen verwendet wird. Eine Event Hubs-Consumergruppe entspricht einem Abonnement für ein Service Bus-Thema. Ein Client kann eine Consumergruppe erstellen, wenn die Anforderung zum Erstellen der Consumergruppe von einem Token begleitet wird, der Berechtigungen zum Verwalten des Event Hubs gewährt, oder für den Namespace, zu dem das Event Hub gehört. Ein Client kann Daten aus einer Consumergruppe nutzen, wenn die Empfangsanforderung von einem Token begleitet wird, die der Gruppe, dem Event Hub oder dem Namespace, zu dem das Event Hub gehört, Empfangsrechte erteilt.
-
+Um Back-End-Anwendungen zu authentifizieren, die von Event Hubs-Clients generierte Daten nutzen, setzen Event Hubs ein Sicherheitsmodell ähnlich dem Modell ein, das für Service Bus-Themen verwendet wird. Eine Event Hubs-Consumergruppe entspricht einem Abonnement für ein Service Bus-Thema. Ein Client kann eine Consumergruppe erstellen, wenn die Anforderung zum Erstellen der Consumergruppe von einem Token begleitet wird, der Berechtigungen zum Verwalten des Event Hubs gewährt, oder für den Namespace, zu dem der Event Hub gehört. Ein Client kann Daten aus einer Consumergruppe nutzen, wenn die Empfangsanforderung von einem Token begleitet wird, die der Gruppe, dem Event Hub oder dem Namespace, zu dem das Event Hub gehört, Empfangsrechte erteilt.
 
 Die aktuelle Version des Service Bus unterstützt nicht die SAS-Regeln für einzelne Abonnements. Dasselbe gilt für Event Hubs-Consumergruppen. SAS-Support wird in Zukunft für beide Funktionen hinzugefügt werden.
 

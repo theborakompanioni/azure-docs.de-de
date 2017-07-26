@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 05/04/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: cfa0320b6c83cf169c64eb5f1932e96bd172f827
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 6f43423096f0e74f41afea275e4ec9801dc2cea5
+ms.contentlocale: de-de
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -38,12 +39,9 @@ Für unterstützte Clustertypen kann Data Lake Store als Standardspeicherkonto o
 
 Hier finden Sie einige wichtige Überlegungen zur Verwendung von HDInsight mit Data Lake Store:
 
-* Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als Standardspeicher ist für die HDInsight-Version 3.5 verfügbar.
+* Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als Standardspeicher ist für die HDInsight-Versionen 3.5 und 3.6 verfügbar.
 
-* Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als zusätzlichen Speicher ist für die HDInsight-Versionen 3.2, 3.4 und 3.5 verfügbar.
-
-* Für HBase-Cluster (Windows und Linux) wird Data Lake Store **nicht** als Speicheroption unterstützt, weder für Standardspeicher noch für zusätzlichen Speicher.
-
+* Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Store als zusätzlichen Speicher ist für die HDInsight-Versionen 3.2, 3.4, 3.5 und 3.6 verfügbar.
 
 In diesem Artikel stellen wir einen Hadoop-Cluster mit Data Lake-Speicher als zusätzlichem Speicher bereit. Anleitungen zum Erstellen eines Hadoop-Clusters mit Data Lake Store als Standardspeicher finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe des Azure-Portals](data-lake-store-hdinsight-hadoop-use-portal.md).
 

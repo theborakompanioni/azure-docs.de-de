@@ -1,5 +1,5 @@
 ---
-title: "Suchen des nächsten Hops mit dem Azure Network Watcher-Feature „Nächster Hop“ – Azure CLI | Microsoft-Dokumentation"
+title: "Suchen des nächsten Hops mit dem Azure Network Watcher-Feature „Nächster Hop“ – Azure CLI 2.0 | Microsoft-Dokumentation"
 description: "In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI den Typ und die IP-Adresse des nächsten Hops feststellen können."
 services: network-watcher
 documentationcenter: na
@@ -14,26 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 49939946f887c51fbc2a135c28236407f5569f48
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d1ee6870ba0188ff2c473e4cca12a5bdc1f97d3d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
 
-# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli"></a>Herausfinden des Typs des nächsten Hops über die Azure CLI mithilfe der Funktion „Nächster Hop“ in Azure Network Watcher
+# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Ermitteln des Typs des nächsten Hops über Azure CLI 2.0 mithilfe der Funktion „Nächster Hop“ in Azure Network Watcher
 
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
-> - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](network-watcher-check-next-hop-cli.md)
+> - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-check-next-hop-cli.md)
 > - [Azure-REST-API](network-watcher-check-next-hop-rest.md)
-
 
 „Nächster Hop“ ist ein Feature von Network Watcher, das Ihnen die Möglichkeit bietet, den Typ und die IP-Adresse des nächsten Hops basierend auf einem angegebenen virtuellen Computer abzurufen. Mithilfe dieses Features können Sie ermitteln, ob der von einem virtuellen Computer ausgehende Datenverkehr ein Gateway, das Internet oder virtuelle Netzwerke durchquert, um zum Ziel zu gelangen.
 
-In diesem Artikel wird die plattformübergreifende Azure CLI 1.0 verwendet, die für Windows, Mac und Linux zur Verfügung steht. Network Watcher verwendet derzeit Azure CLI 1.0 als Unterstützung für die Befehlszeilenschnittstelle.
+In diesem Artikel wird unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell verwendet, Azure CLI 2.0, die für Windows, Mac und Linux verfügbar ist.
+
+Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -48,10 +51,13 @@ In dem in diesem Artikel beschriebenen Szenario wird „Nächster Hop“ verwend
 
 ## <a name="get-next-hop"></a>Abrufen des nächsten Hops
 
-Zum Abrufen des nächsten Hops rufen wir das Cmdlet `azure netowrk watcher next-hop` auf. Wir geben im Cmdlet die Network Watcher-Ressourcengruppe, den NetworkWatcher, die VM-ID, die Quell-IP-Adresse und die Ziel-IP-Adresse an. In diesem Beispiel entspricht die Ziel-IP-Adresse einem virtuellen Computer in einem anderen virtuellen Netzwerk. Zwischen den beiden virtuellen Netzwerken liegt ein Gateway für virtuelle Netzwerke.
+Zum Abrufen des nächsten Hops rufen wir das Cmdlet `az network watcher show-next-hop` auf. Wir geben im Cmdlet die Network Watcher-Ressourcengruppe, den NetworkWatcher, die VM-ID, die Quell-IP-Adresse und die Ziel-IP-Adresse an. In diesem Beispiel entspricht die Ziel-IP-Adresse einem virtuellen Computer in einem anderen virtuellen Netzwerk. Zwischen den beiden virtuellen Netzwerken liegt ein Gateway für virtuelle Netzwerke.
+
+Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. Führen Sie dann den folgenden Befehl aus:
 
 ```azurecli
-azure network watcher next-hop -g resourceGroupName -n networkWatcherName -t targetResourceId -a <source-ip> -d <destination-ip>
+az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNameorID> --source-ip <source-ip> --dest-ip <destination-ip>
+
 ```
 
 > [!NOTE]
@@ -61,9 +67,12 @@ Wenn der virtuelle Computer über mehrere NICs verfügt und die IP-Weiterleitung
 
 Nach Abschluss des Vorgangs werden die Ergebnisse bereitgestellt. Die IP-Adresse des nächsten Hops sowie der Typ der entsprechenden Ressource werden zurückgegeben.
 
-```
-data:    Next Hop Ip Address             : 10.0.1.2
-info:    network watcher next-hop command OK
+```azurecli
+{
+    "nextHopIpAddress": null,
+    "nextHopType": "Internet",
+    "routeTableId": "System Route"
+}
 ```
 
 Die folgende Liste zeigt die derzeit verfügbaren NextHopType-Werte:

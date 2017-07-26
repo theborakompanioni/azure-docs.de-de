@@ -14,11 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 05/26/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 72e7e57185d882a5f3243e2705aed54ee8347798
-ms.openlocfilehash: 1ac5ce4b0c3177069bdd0ba4afdb02ef9950fdef
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: ce4731966baefa76b72e5a1a065c06379fac065d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -44,10 +46,5 @@ Obwohl Sie die Dokumentation gelesen und die Anweisungen befolgt haben, funktion
 
   ![Supportticket, Problembeschreibung](media/active-directory-b2b-support/problem-description.png)
 
-  Geben Sie Ihre Kontaktinformationen an, damit Sie ein Support-Mitarbeiter zur Problembehandlung kontaktieren kann.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+3. Geben Sie Ihre Kontaktinformationen an, damit Sie ein Supportmitarbeiter zur Problembehandlung kontaktieren kann.
 

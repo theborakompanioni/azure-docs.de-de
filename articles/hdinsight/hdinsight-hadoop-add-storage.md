@@ -16,10 +16,10 @@ ms.date: 05/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 1199840da725afdae3ee69a26db9ceedb2ab37e3
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 74809ce12a2a273a18ff3e0559aefd79fb4d2da7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/17/2017
 Erfahren Sie, wie Sie Skriptaktionen verwenden, um einem vorhandenen HDInsight-Cluster mit dem Linux-Betriebssystem zusätzliche Azure-Speicherkonten hinzuzufügen.
 
 > [!IMPORTANT]
-> Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlichen Speichers zu einem Cluster, nachdem es erstellt wurde. Informationen zum Hinzufügen zusätzlicher Speicherkonten während der Erstellung des Clusters finden Sie im Abschnitt __Verwenden von zusätzlichem Speicher__ des Dokuments [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#use-additional-storage).
+> Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlichen Speichers zu einem Cluster, nachdem es erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -122,7 +122,7 @@ Um dieses Problem zu umgehen, müssen Sie den vorhandenen Eintrag für das Speic
 
 2. Wählen Sie aus der Liste der Dienste auf der linken Seite den Dienst __HDFS__ aus. Wählen Sie in der Mitte der Seite die Registerkarte __Configs__ aus.
 
-3. Geben Sie im Feld __Filter...__ den Wert __fs.azure.account__ ein. Damit werden Einträge für alle zusätzlichen Speicherkonten zurückgegeben, die dem Cluster hinzugefügt wurden. Es gibt zwei Arten von Einträgen: __keyprovider__ und __key__. Beide enthalten den Namen des Speicherkontos als Teil des Schlüsselnamens. 
+3. Geben Sie im Feld __Filter...__ den Wert __fs.azure.account__ ein. Damit werden Einträge für alle zusätzlichen Speicherkonten zurückgegeben, die dem Cluster hinzugefügt wurden. Es gibt zwei Arten von Einträgen: __keyprovider__ und __key__. Beide enthalten den Namen des Speicherkontos als Teil des Schlüsselnamens.
 
     Im Folgenden sehen Sie Beispieleinträge für ein Speicherkonto namens __mystorage__:
 
@@ -150,3 +150,4 @@ Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster be
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie haben gelernt, wie Sie einem vorhandenen HDInsight-Cluster zusätzliche Speicherkonten hinzufügen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+

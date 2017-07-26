@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeeda
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 07eddeb35c2b88b2de08270d9ff5de317cc09ec7
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: db658319637f1a45616091e034a0fc4db44885d4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/22/2017
 
 ---
 
@@ -101,8 +101,8 @@ Diese Einträge können ggf. lang sein.  Führen Sie einen Export in eine CSV-Da
 
 Weitere Informationen zum Tool Analytics finden Sie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
 
-^[!NOTE]
-^In der Community wurde ein userjourney-Viewer entwickelt, der als Hilfe für Identitätsentwickler dient.  Er wird von Microsoft nicht unterstützt und unverändert zur Verfügung gestellt.  Mit dem Viewer werden Daten aus Ihrer Application Insights-Instanz gelesen, und es wird eine gut strukturierte Ansicht der userjourney-Ereignisse bereitgestellt.  Sie können den Quellcode abrufen und in Ihrer eigenen Lösung bereitstellen.
+>[!NOTE]
+>In der Community wurde ein User Journey-Viewer entwickelt, der als Hilfe für Identitätsentwickler dient.  Er wird von Microsoft nicht unterstützt und unverändert zur Verfügung gestellt.  Mit dem Viewer werden Daten aus Ihrer Application Insights-Instanz gelesen, und es wird eine gut strukturierte Ansicht der userjourney-Ereignisse bereitgestellt.  Sie können den Quellcode abrufen und in Ihrer eigenen Lösung bereitstellen.
 
 [GitHub-Repository mit Beispielen für nicht unterstützte benutzerdefinierte Richtlinien und verwandte Tools](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 

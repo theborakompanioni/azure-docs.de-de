@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 54389c0b6dfbe5483106ca74e379dff9091fb907
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 2962e30e5d9c60b8e786e2ba79647cabfc5925cd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -26,7 +26,8 @@ ms.lasthandoff: 05/11/2017
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-operations-recordsets-portal.md)
-> * [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
+> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell DNS-Einträge für Ihre DNS-Zone verwalten. DNS-Einträge können auch mithilfe der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwaltet werden.
@@ -46,13 +47,13 @@ Weitere Informationen zu DNS-Einträgen in Azure DNS finden Sie unter [DNS-Zonen
 
 Wenn Ihr neuer Eintrag den gleichen Namen und Typ besitzt wie ein bereits vorhandener Eintrag, müssen Sie ihn [dem vorhandenen Ressourceneintragssatz](#add-a-record-to-an-existing-record-set) hinzufügen. Besitzt Ihr neuer Eintrag einen anderen Namen und Typ als alle bereits vorhandenen Einträge, müssen Sie einen neuen Ressourceneintragssatz erstellen. 
 
-### <a name="create-a-records-in-a-new-record-set"></a>Erstellen von A-Einträgen in einem neuen Ressourceneintragssatz
+### <a name="create-a-records-in-a-new-record-set"></a>Erstellen von A-Einträgen in einer neuen Datensatzgruppe
 
 Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzureRmDnsRecordSet`. Beim Erstellen eines Ressourceneintragssatzes müssen Sie den Namen des Ressourceneintragssatzes, die Zone, die Gültigkeitsdauer (TTL), den Eintragstyp und die zu erstellenden Einträge angeben.
 
 Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Ressourceneintragssatz vom Typ „A“ verwenden, müssen Sie die IP-Adresse mithilfe des Parameters `-IPv4Address` angeben. Für andere Eintragstypen werden andere Parameter verwendet. Ausführlichere Informationen finden Sie unter [Zusätzliche Beispiele für Datensatztypen](#additional-record-type-examples).
 
-Im folgenden Beispiel wird ein Ressourceneintragssatz mit dem relativen Namen „www“ in der DNS-Zone „contoso.com“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp ist „A“, und die Gültigkeitsdauer beträgt 3600 Sekunden. Der Ressourceneintragssatz enthält einen einzelnen Eintrag (mit der IP-Adresse 1.2.3.4).
+Im folgenden Beispiel wird ein Ressourceneintragssatz mit dem relativen Namen „www“ in der DNS-Zone „contoso.com“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp ist „A“, und die Gültigkeitsdauer beträgt 3.600 Sekunden. Der Ressourceneintragssatz enthält einen einzelnen Eintrag (mit der IP-Adresse 1.2.3.4).
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
@@ -164,7 +165,7 @@ Das folgende Beispiel zeigt, wie Sie einen Ressourceneintragssatz abrufen. In di
 $rs = Get-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Alternativ können Sie die Zone auch unter Verwendung eines Zonenobjekts angeben, das mithilfe des Parameters „-Zone“ übergeben wird. 
+Alternativ können Sie die Zone auch unter Verwendung eines Zonenobjekts angeben, das mithilfe des Parameters `-Zone` übergeben wird.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -306,7 +307,7 @@ Set-AzureRmDnsRecordSet -RecordSet $rs
 
 Der für die Zonenspitze festgelegte NS-Eintrag wird für jede DNS-Zone automatisch erstellt. Er enthält die Namen der Azure DNS-Namenserver, die der Zone zugewiesen sind.
 
-Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Eintragssatz ändern. Es ist aber nicht möglich, die vorab mit Daten gefüllten Azure DNS-Namenserver zu entfernen oder zu ändern.
+Sie können diesem NS-Eintragssatz weitere Namenserver hinzufügen, um das gemeinsame Hosten von Domänen mit mehr als einem DNS-Anbieter zu unterstützen. Sie können auch die Gültigkeitsdauer und die Metadaten für diesen Datensatz ändern. Es ist aber nicht möglich, die vorab mit Daten aufgefüllten Azure-DNS-Namensserver zu entfernen oder zu ändern.
 
 Beachten Sie, dass dies nur für den NS-Eintragssatz der Zonenspitze gilt. Andere NS-Eintragssätze in Ihrer Zone (zur Delegierung von untergeordneten Zonen) können ohne Einschränkungen geändert werden.
 
