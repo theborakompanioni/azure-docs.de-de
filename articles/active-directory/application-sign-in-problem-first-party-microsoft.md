@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: c3594b292a5b548bcb1e0df5959775d139576597
-ms.lasthandoff: 04/17/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 77f8f10c764013e539480138fb1479d0326b5eef
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 ---
 
@@ -285,7 +285,7 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 
 9.  Wählen Sie in der Liste der verfügbaren Produkte **ein oder mehrere Produkte** aus.
 
-10. **Optional:** Klicken Sie auf die Option für **Zuweisungsoptionen**, um Produkte abgestuft zuzuweisen. Klicken Sie auf **OK**, wenn Sie fertig sind.
+10. **Optional:** Klicken Sie auf die Option für **Zuweisungsoptionen**, um Produkte differenziert zuzuweisen. Klicken Sie auf **OK**, wenn Sie fertig sind.
 
 11. Klicken Sie auf die Schaltfläche **Zuweisen**, um dem Benutzer diese Lizenzen zuzuweisen.
 
@@ -406,7 +406,7 @@ Führen Sie die folgenden Schritte aus, um einer Gruppe eine Lizenz zuzuweisen:
 
 9.  Wählen Sie in der Liste der verfügbaren Produkte **ein oder mehrere Produkte** aus.
 
-10. **Optional:** Klicken Sie auf die Option für **Zuweisungsoptionen**, um Produkte abgestuft zuzuweisen. Klicken Sie auf **OK**, wenn Sie fertig sind.
+10. **Optional:** Klicken Sie auf die Option für **Zuweisungsoptionen**, um Produkte differenziert zuzuweisen. Klicken Sie auf **OK**, wenn Sie fertig sind.
 
 11. Klicken Sie auf die Schaltfläche **Zuweisen**, um der Gruppe diese Lizenzen zuzuweisen. Dies kann je nach der Größe und Komplexität der Gruppe sehr lange dauern.
 
@@ -504,7 +504,7 @@ Der Anwendungszugriff kann blockiert werden, wenn kein ordnungsgemäßer Berecht
 
 ### <a name="perform-a-user-level-consent-operation"></a>Durchführen einer Zustimmung auf Benutzerebene
 
--   Für jede Anwendung wird beim Navigieren zum Anmeldebildschirm für die Anwendung eine Zustimmung auf Benutzerebene für den angemeldeten Benutzer bei dieser Anmeldung ausgeführt.
+-   Für jede Anwendung, die für Open ID Connect aktiviert ist und Berechtigungen anfordert, wird beim Navigieren zum Anmeldebildschirm für die Anwendung eine Zustimmung auf Benutzerebene für den angemeldeten Benutzer bei dieser Anmeldung ausgeführt.
 
 -   Wenn Sie dies programmgesteuert erledigen möchten, finden Sie weitere Informationen unter [Anfordern der Zustimmung einzelner Benutzer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent).
 

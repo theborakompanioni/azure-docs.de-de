@@ -12,12 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2017
+ms.date: 06/29/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: dbe1dba78fb2597dc595f9e6895d0a15181c1f05
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: dd511422723a0ae1ef941353c9ea5eb725fad7df
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/27/2017
 
 Dieser Artikel beschreibt PowerShell-Cmdlets, die zum Ausführen von Azure Analysis Services-Verwaltungsaufgaben für Server und Datenbanken verwendet werden. 
 
-Für Serververwaltungsaufgaben wie das Erstellen oder Löschen eines Servers, das Anhalten oder Fortsetzen von Servervorgängen oder das Ändern des Servicelevels (Tarif) werden Azure Resource Manager (AzureRM)-Cmdlets verwendet. Für andere Aufgaben zum Verwalten von Datenbanken, z.B. Hinzufügen oder Entfernen von Rollenmitgliedern, Verarbeiten oder Partitionieren, werden die gleichen-Cmdlets im [SQLASCMDLETS](https://msdn.microsoft.com/library/hh758425.aspx)-Modul wie bei SQL Server Analysis Services verwendet.
+Für Serververwaltungsaufgaben wie das Erstellen oder Löschen eines Servers, das Anhalten oder Fortsetzen von Servervorgängen oder das Ändern des Servicelevels (Tarif) werden Azure Resource Manager (AzureRM)-Cmdlets verwendet. Für andere Aufgaben zum Verwalten von Datenbanken, z.B. Hinzufügen oder Entfernen von Rollenmitgliedern, Verarbeiten oder Partitionieren, werden die im gleichen SqlServer-Modul wie SQL Server Analysis Services enthaltenen Cmdlets verwendet.
 
 ## <a name="permissions"></a>Berechtigungen
 Die meisten PowerShell-Aufgaben erfordern, dass Sie über Administratorberechtigungen auf dem verwalteten Analysis Services-Server verfügen. Geplante PowerShell-Aufgaben sind unbeaufsichtigte Vorgänge. Das Konto, in dem der Scheduler ausgeführt wird, muss auf dem Analysis Services-Server über Administratorrechte verfügen. 
@@ -39,17 +40,19 @@ Azure Analysis Services-Cmdlets sind im Komponentenmodul [AzureRM.AnalysisServic
 |Cmdlet|Beschreibung| 
 |------------|-----------------| 
 |[Get-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver)|Ruft die Details einer Serverinstanz ab.|  
-|[New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver)|Erstellt eine neue Serverinstanz.|
+|[New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver)|Erstellt eine Serverinstanz.|
 |[Remove-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/remove-azurermanalysisservicesserver)|Entfernt eine Serverinstanz.|  
-|[Suspend-AzureRmAnalysisServicesServe](/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver)|Hält eine Serverinstanz an.| 
+|[Suspend-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver)|Hält eine Serverinstanz an.| 
 |[Resume-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver)|Setzt eine Serverinstanz fort.|  
 |[Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)|Ändert eine Serverinstanz.|   
 |[Test-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver)|Überprüft das Vorhandensein einer Serverinstanz.| 
 
 ## <a name="database-operations"></a>Datenbankvorgänge
-Für Vorgänge der Azure Analysis Services-Datenbank wird das gleiche [SQLASCMDLETS](https://msdn.microsoft.com/library/hh758425.aspx)-Modul wie bei SQL Server Analysis Services verwendet. Allerdings werden nicht alle Cmdlets für Azure Analysis Services unterstützt. 
 
-Das SQLASCMDLETS-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung sowie das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL (Tabular Model Scripting Language)-Abfragen und -Skripts akzeptiert. Die folgenden Cmdlets im SQLASCMDLETS-Modul werden von Azure Analysis Services unterstützt.
+Für Vorgänge der Azure Analysis Services-Datenbank wird das gleiche [SqlServer](https://www.powershellgallery.com/packages/SqlServer)-Modul wie bei SQL Server Analysis Services verwendet. Allerdings werden nicht alle Cmdlets für Azure Analysis Services unterstützt. 
+
+Das SqlServer-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung sowie das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets im SqlServer-Modul werden von Azure Analysis Services unterstützt.
+
   
 |Cmdlet|Beschreibung|
 |------------|-----------------| 
@@ -65,6 +68,9 @@ Das SQLASCMDLETS-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverw
   
 
 ## <a name="related-information"></a>Verwandte Informationen
-* [PowerShell-Skripterstellung in Analysis Services](https://msdn.microsoft.com/library/hh213141.aspx)
-* [Programmierung von tabellarischen Modellen für den Kompatibilitätsgrad 1200](https://msdn.microsoft.com/library/mt712541.aspx)
+
+* [Herunterladen des SQL Server PowerShell-Moduls](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
+* [Herunterladen von SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [SqlServer-Modul im PowerShell-Katalog](https://www.powershellgallery.com/packages/SqlServer)    
+* [Programmierung von tabellarischen Modellen für den Kompatibilitätsgrad 1200 und höher](https://msdn.microsoft.com/library/mt712541.aspx)
 

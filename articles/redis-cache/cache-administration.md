@@ -12,22 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 07/05/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0355c8a943947f5d53d7cd6892db3567c3bf0cce
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Verwalten von Azure Redis Cache
 In diesem Thema erfahren Sie, wie Verwaltungsaufgaben wie das [Neustarten](#reboot) und [Planen von Updates](#schedule-updates) für Ihre Azure Redis Cache-Instanzen erfolgen.
-
-> [!IMPORTANT]
-> Die in diesem Artikel beschriebenen Einstellungen und Features sind nur für Caches im Premium-Tarif verfügbar.
-> 
-> 
 
 ## <a name="reboot"></a>Neustart
 Auf dem Blatt **Neustart** können Sie einen oder mehrere Knoten Ihres Caches neu starten. Mit dieser Neustartfunktion können Sie Ihre Anwendung bei einem Ausfall eines Cacheknotens auf Resilienz testen.
@@ -52,7 +48,7 @@ Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu st
 * **Knoten eines Premium-Caches mit aktiviertem Clustering:** Wenn Sie einen oder mehrere Knoten eines Premium-Caches mit aktiviertem Clustering neu starten, entspricht das Verhalten für die ausgewählten Knoten dem Neustart des oder der entsprechenden Knoten eines nicht gruppierten Caches.
 
 > [!IMPORTANT]
-> Ein Neustart ist nur für Caches im Premium-Tarif verfügbar.
+> Ein Neustart ist nun für alle Tarife verfügbar.
 > 
 > 
 
@@ -83,10 +79,10 @@ Wenn Sie nur einen der Knoten neu starten, gehen Daten in der Regel nicht verlor
 Ja. Anweisungen für PowerShell finden Sie unter [So starten Sie einen Redis-Cache neu](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache).
 
 ### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Welche Tarife bieten die Neustartfunktionalität?
-Ein Neustart ist nur im Premium-Tarif verfügbar.
+Ein Neustart ist für alle Tarife verfügbar.
 
 ## <a name="schedule-updates"></a>Planen von Updates
-Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihren Cache bestimmen. Wenn das Wartungsfenster angegeben ist, erfolgen alle Redis-Serverupdates in diesem Zeitfenster. 
+Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihren Cache im Premium-Tarif festlegen. Wenn das Wartungsfenster angegeben ist, erfolgen alle Redis-Serverupdates in diesem Zeitfenster. 
 
 > [!NOTE] 
 > Das Wartungsfenster bezieht sich nur auf Redis-Serverupdates und nicht auf Azure-Updates oder Updates des Betriebssystems der virtuellen Computer, die den Cache hosten.

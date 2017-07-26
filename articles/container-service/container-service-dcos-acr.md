@@ -16,111 +16,144 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
 ms.author: juliens
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: a8a3716f8d03b596285026426c7514b7b642cb25
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: a394f7ec3f7985b97eec2eb649a8a310a31ac657
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Verwenden von ACR mit einem DC/OS-Cluster zum Bereitstellen Ihrer Anwendung
 
-In diesem Artikel wird erläutert, wie Sie eine private Containerregistrierung wie ACR (Azure Container Registry) mit einem DC/OS-Cluster verwenden. Mithilfe von ACR können Sie Images privat speichern und behalten die Kontrolle, z.B. über die verschiedenen Versionen und Updates.
+In diesem Artikel wird erläutert, wie Sie Azure Container Registry (ACR) mit einem DC/OS-Cluster verwenden. Mithilfe von ACR können Sie Containerimages privat speichern und verwalten. Dieses Tutorial enthält die folgenden Aufgaben:
 
-Vor dem Durcharbeiten dieses Beispiels müssen folgende Voraussetzungen erfüllt sein: 
-* Sie benötigen eine DC/OS-Cluster, der in Azure Container Service konfiguriert ist. Weitere Informationen dazu finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
-* Eine Azure Container Service-Instanz muss bereitgestellt sein. Informationen finden Sie unter [Erstellen einer privaten Docker-Containerregistrierung mit dem Azure-Portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal) und [Erstellen einer privaten Docker-Containerregistrierung mit der Azure CLI 2.0](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli).
-* Eine Dateifreigabe muss im DC/OS-Cluster konfiguriert sein. Informationen finden Sie unter [Bereitstellen und Einbinden einer Dateifreigabe für einen DC/OS-Cluster](container-service-dcos-fileshare.md).
-* Sie müssen wissen, wie Sie ein Docker-Image über die [Webbenutzeroberfläche](container-service-mesos-marathon-ui.md) oder die [REST-API](container-service-mesos-marathon-rest.md) in einem DC/OS-Cluster bereitstellen.
+> [!div class="checklist"]
+> * Bereitstellen von Azure Container Registry (sofern erforderlich)
+> * Konfigurieren der ACR-Authentifizierung in einem DC/OS-Cluster
+> * Hochladen eines Images in Azure Container Registry
+> * Ausführen eines Containerimages aus Azure Container Registry
 
-## <a name="manage-the-authentication-inside-your-cluster"></a>Verwalten der Authentifizierung in Ihrem Cluster
+Zum Ausführen der Schritte in diesem Tutorial benötigen Sie einen ACS-DC/OS-Cluster. Bei Bedarf können Sie mit diesem [Beispielskript](./scripts/container-service-cli-deploy-dcos.md) einen erstellen.
 
-Bei der herkömmlichen Art, Images per Push und Pull in einer privaten Registrierung zu verwalten, muss zunächst eine Authentifizierung für die Registrierung erfolgen. Zu diesem Zweck müssen Sie die Befehlszeile `docker login` in jedem Docker-Clientprozess verwenden, der Ihre private Registrierung nutzen muss.
-In Produktionsszenarien – in unserem Fall DC/OS – müssen Sie sicherstellen, dass Sie Images aus jedem Knoten per Pull abrufen können. Dies bedeutet, dass Sie den Authentifizierungsprozess automatisieren müssen, anstatt die Befehlszeile auf jedem einzelnen Computer auszuführen, denn die Authentifizierung kann – wie Sie sich sicher vorstellen können – je nach Größe Ihres Clusters ein schwieriger und ressourcenintensiver Vorgang sein. 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
-Wir nehmen an, dass Sie bereits [eine Dateifreigabe in Ihrem DC/OS-Cluster eingerichtet haben](container-service-dcos-fileshare.md), und nutzen diese folgendermaßen:
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="from-any-client-machine-recommended-method"></a>Auf einem beliebigen Clientcomputer [empfohlenen Methode]
+## <a name="deploy-azure-container-registry"></a>Bereitstellen von Azure Container Registry
 
-Die folgenden Befehle können in jeder Umgebung ausgeführt werden (Windows/Mac/Linux):
+Erstellen Sie bei Bedarf mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure Container Registry-Instanz. 
 
-1. Stellen Sie sicher, dass folgende Voraussetzungen erfüllt sind:
-  * TAR-Tool
-    * [Windows](http://gnuwin32.sourceforge.net/packages/gtar.htm)
-  * Docker 
-    * [Windows](https://www.docker.com/docker-windows)
-    * [MAC](https://www.docker.com/docker-mac)
-    * [Ubuntu](https://www.docker.com/docker-ubuntu)
-    * [Andere](https://www.docker.com/get-docker)
-  * Dateifreigabe in Ihrem Cluster [mit folgender Methode](container-service-dcos-fileshare.md) eingebunden:
+Im folgenden Beispiel wird eine Registrierung mit einem zufällig generierten Namen erstellt. Die Registrierung wird zudem mit dem Argument `--admin-enabled` mit einem Administratorkonto konfiguriert.
 
-2. Initiieren Sie die Authentifizierung bei Ihrem ACR-Dienst, indem Sie folgenden Befehl auf Ihrem bevorzugten Terminal verwenden: `sudo docker login --username=<USERNAME> --password=<PASSWORD> <ACR-REGISTRY-NAME>.azurecr.io`. Sie müssen die Variablen `USERNAME`, `PASSWORD` und `ACR-REGISTRY-NAME` durch die Werte ersetzen, die in Ihrem Azure-Portal bereitgestellt wurden.
+```azurecli-interactive
+az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM --sku Basic --admin-enabled true
+```
 
-3. Interessanter Hinweis: Wenn Sie einen `docker login`-Vorgang ausführen, werden die Werte lokal in Ihrem Basisordner auf dem Computer gespeichert (`cd ~/.docker` unter Mac und Linux sowie `cd %HOMEPATH%` unter Windows). Wir komprimieren die Inhalte dieses Ordners mit dem Befehl `tar czf`.
+Nach der Erstellung der Registrierung gibt die Azure-Befehlszeilenschnittstelle Daten ähnlich den folgenden aus. Notieren Sie die Werte für `name` und `loginServer`, diese werden in späteren Schritten verwendet.
 
-4. Der letzte Schritt besteht darin, die gerade erstellte TAR-Datei in die Dateifreigabe zu kopieren, [die Sie als Voraussetzung erstellt haben](container-service-dcos-fileshare.md). Dazu können Sie folgenden Befehl an der Azure-Befehlszeilenschnittstelle verwenden: `az storage file upload -s <shareName> --account-name <storageAccountName> --account-key <storageAccountKey> -source <pathToTheTarFile>`
+```azurecli
+{
+  "adminUserEnabled": false,
+  "creationDate": "2017-06-06T03:40:56.511597+00:00",
+  "id": "/subscriptions/f2799821-a08a-434e-9128-454ec4348b10/resourcegroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry23489",
+  "location": "eastus",
+  "loginServer": "mycontainerregistry23489.azurecr.io",
+  "name": "myContainerRegistry23489",
+  "provisioningState": "Succeeded",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "storageAccount": {
+    "name": "mycontainerregistr034017"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
+```
 
-Hier finden Sie ein Beispiel mit dem folgenden Setup (in einer Windows-Umgebung):
-* ACR-Name: **`demodcos`**
-* Benutzername: **`demodcos`**
-* Kennwort: **`+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0`**
-* Speicherkontoname: **`anystorageaccountname`**
-* Speicherkontoschlüssel: **`aYGl6Nys4De5J3VPldT1rXxz2+VjgO7dgWytnoWClurZ/l8iO5c5N8xXNS6mpJhSc9xh+7zkT7Mr+xIT4OIVMg==`**
-* Im Speicherkonto erstellter Freigabename: **`share`**
-* Pfad des hochzuladenden TAR-Archivs: **`%HOMEPATH%/.docker/docker.tar.gz`**
+Rufen Sie die Anmeldeinformationen der Containerregistrierung mit dem Befehl [az acr credential show](/cli/azure/acr/credential) ab. Ersetzen Sie den Wert für `--name` durch den im vorherigen Schritt notierten Wert. Notieren Sie ein Kennwort, Sie benötigen es in einem späteren Schritt.
 
-```bash
-# Changing directory to the home folder of the default user
-cd %HOMEPATH%
+```azurecli-interactive
+az acr credential show --name myContainerRegistry23489
+```
 
-# Authentication into my ACR
-docker login --username=demodcos --password=+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0 demodcos.azurecr.io
+Weitere Informationen zu Azure Container Registry finden Sie unter [Einführung in private Docker-Containerregistrierungen](../container-registry/container-registry-intro.md). 
 
-# Tar the contains of the .docker folder
+## <a name="manage-acr-authentication"></a>Verwalten der ACR-Authentifizierung
+
+Bei der herkömmlichen Art, Images per Push und Pull in einer privaten Registrierung zu verwalten, muss zunächst eine Authentifizierung für die Registrierung erfolgen. Dazu können Sie den Befehl `docker login` auf jedem Client verwenden, der Zugriff auf die private Registrierung benötigt. Da ein DC/OS-Cluster viele Knoten enthalten kann, die alle mit ACR authentifiziert werden müssen, empfiehlt es sich, diesen Prozess für alle Knoten zu automatisieren. 
+
+### <a name="create-shared-storage"></a>Erstellen eines freigegebenen Speichers
+
+Bei diesem Prozess wird eine Azure-Dateifreigabe verwendet, die auf jedem Knoten im Cluster eingebunden wurde. Wenn Sie noch keinen freigegebenen Speicher eingerichtet haben, finden Sie entsprechende Informationen unter [Einrichten einer Dateifreigabe in einem DC/OS-Cluster](container-service-dcos-fileshare.md).
+
+### <a name="configure-acr-authentication"></a>Konfigurieren der ACR-Authentifizierung
+
+Rufen Sie zunächst den vollqualifizierten Domänennamen (FQDN) des DC/OS-Masters ab, und speichern Sie ihn in einer Variable.
+
+```azurecli-interactive
+FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
+```
+
+Erstellen Sie eine SSH-Verbindung mit dem Master (oder dem ersten Master) des DC/OS-basierten Clusters. Aktualisieren Sie den Benutzernamen, wenn ein nicht standardmäßiger Wert bei der Erstellung des Clusters verwendet wurde.
+
+```azurecli-interactive
+ssh azureuser@$FQDN
+```
+
+Führen Sie den folgenden Befehl für die Anmeldung bei Azure Container Registry aus. Ersetzen Sie `--username` durch den Namen der Containerregistrierung und `--password` durch eines der bereitgestellten Kennwörter. Ersetzen Sie das letzte Argument *mycontainerregistry.azurecr.io* im Beispiel durch den loginServer-Namen der Containerregistrierung. 
+
+Mit diesem Befehl wird der Authentifizierungswert lokal unter dem Pfad `~/.docker` gespeichert.
+
+```azurecli-interactive
+docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry.azurecr.io
+```
+
+Erstellen Sie eine komprimierte Datei, die die Authentifizierungswerte der Containerregistrierung enthält.
+
+```azurecli-interactive
 tar czf docker.tar.gz .docker
-
-# Upload the tar archive in the fileshare
-az storage file upload -s share --account-name anystorageaccountname --account-key aYGl6Nys4De5J3VPldT1rXxz2+VjgO7dgWytnoWClurZ/l8iO5c5N8xXNS6mpJhSc9xh+7zkT7Mr+xIT4OIVMg== --source %HOMEPATH%/docker.tar.gz
 ```
 
-### <a name="from-the-master-not-recommended-method"></a>Über den Master [keine empfohlene Methode]
+Kopieren Sie diese Datei in den freigegebenen Speicher des Clusters. Durch diesen Schritt wird die Datei auf allen Knoten des DC/OS-Clusters verfügbar.
 
-Die Ausführung des Vorgangs über den Master wird nicht empfohlen, um Fehler und negative Auswirkungen auf die gesamte Umgebung zu vermeiden.
-
-1. Stellen Sie zunächst eine SSH-Verbindung mit dem Master (oder dem ersten Master) Ihres DC/OS-basierten Clusters her. Beispielsweise `ssh userName@masterFQDN –A –p 22`, wobei der masterFQDN der vollqualifizierte Domänenname des virtuellen Mastercomputers ist. [Klicken Sie hier, um weitere Informationen zu erhalten](https://docs.microsoft.com/azure/container-service/container-service-connect#connect-to-a-dcos-or-swarm-cluster)
-
-2. Initiieren Sie die Authentifizierung bei Ihrem ACR-Dienst, indem Sie folgenden Befehl verwenden: `sudo docker login --username=<USERNAME> --password=<PASSWORD> <ACR-REGISTRY-NAME>.azurecr.io`. Sie müssen die Variablen `USERNAME`, `PASSWORD` und `ACR-REGISTRY-NAME` durch die Werte ersetzen, die in Ihrem Azure-Portal bereitgestellt wurden.
-
-3. Interessanter Hinweis: Wenn Sie einen `docker login`-Vorgang ausführen, werden die Werte lokal in Ihrem Basisordner (`~/.docker`) auf dem Computer gespeichert. Wir komprimieren die Inhalte dieses Ordners mit dem Befehl `tar czf`.
-
-4. Der letzte Schritt besteht darin, die gerade erstellte TAR-Datei in die Dateifreigabe zu kopieren. Mit diesem Vorgang ermöglichen Sie die Verwendung dieser Anmeldeinformationen auf allen virtuellen Computern in Ihrem Cluster zur Authentifizierung bei Ihrer Azure Container Registry.
-
-Hier finden Sie ein Beispiel mit dem folgenden Setup:
-* ACR-Name: **`demodcos`**
-* Benutzername: **`demodcos`**
-* Kennwort: **`+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0`**
-* Bereitstellungspunkt innerhalb des Clusters: **`/mnt/share`**
-
-```bash
-# Changing directory to the home folder of the default user
-cd ~
-
-# Authentication into my ACR
-sudo docker login --username=demodcos --password=+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0 demodcos.azurecr.io
-
-# Tar the contains of the .docker folder
-sudo tar czf docker.tar.gz .docker
-
-# Copy of the tar file in the file share of my cluster
-sudo cp docker.tar.gz /mnt/share
+```azurecli-interactive
+cp docker.tar.gz /mnt/share/dcosshare
 ```
 
+## <a name="upload-image-to-acr"></a>Hochladen eines Images in ACR
 
-## <a name="deploy-an-image-from-acr-with-marathon"></a>Bereitstellen eines Images aus ACR mit Marathon
+Erstellen Sie über einen Entwicklungscomputer oder ein anderes System, auf dem Docker installiert ist, ein Image, und laden Sie es in Azure Container Registry hoch.
 
-In diesem Abschnitt wird angenommen, dass Sie die Images, die Sie bereitstellen möchten, bereits per Push in Ihre Containerregistrierung übertragen haben. Informationen dazu finden Sie unter [Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
+Erstellen Sie einen Container aus dem Ubuntu-Image.
 
-Wenn wir das Image **simple-web** mit dem Tag **2.1** aus unserer in Azure ACR gehosteten privaten Registrierung bereitstellen möchten, verwenden wir die folgende Konfiguration:
+```azurecli-interactive
+docker run ubunut --name base-image
+```
+
+Erfassen Sie dann den Container in einem neuen Image. Der Imagename muss den `loginServer`-Namen der Containerregistrierung mit dem Format `loginServer/imageName` enthalten.
+
+```azurecli-interactive
+docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
+````
+
+Melden Sie sich bei Azure Container Registry an. Ersetzen Sie den Namen durch den loginServer-Namen, „--username“ durch den Namen der Containerregistrierung und „--password“ durch eines der bereitgestellten Kennwörter.
+
+```azurecli-interactive
+docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
+```
+
+Laden Sie schließlich das Image in die ACR-Registrierung hoch. In diesem Beispiel wird ein Image mit dem Namen „dcos-demo“ hochgeladen.
+
+```azurecli-interactive
+docker push mycontainerregistry30678.azurecr.io/dcos-demo
+```
+
+## <a name="run-an-image-from-acr"></a>Ausführen eines Images aus ACR
+
+Um ein Image aus der ACR-Registrierung zu verwenden, erstellen Sie die Datei *acrDemo.json*, und kopieren Sie den folgenden Text in diese Datei. Ersetzen Sie den Imagenamen durch den loginServer-Namen und Imagenamen der Containerregistrierung, z.B. `loginServer/imageName`. Notieren Sie den Wert der `uris`-Eigenschaft. Diese Eigenschaft enthält den Speicherort der Authentifizierungsdatei für die Containerregistrierung, bei der es sich in diesem Fall um die Azure-Dateifreigabe handelt, die auf jedem Knoten im DC/OS-Cluster eingebunden ist.
 
 ```json
 {
@@ -128,10 +161,16 @@ Wenn wir das Image **simple-web** mit dem Tag **2.1** aus unserer in Azure ACR g
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "demodcos.azurecr.io/simple-web:2.1",
+      "image": "mycontainerregistry30678.azurecr.io/dcos-demo",
       "network": "BRIDGE",
       "portMappings": [
-        { "hostPort": 0, "containerPort": 80, "servicePort": 10000 }
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp",
+          "name": "80",
+          "labels": null
+        }
       ],
       "forcePullImage":true
     }
@@ -148,21 +187,25 @@ Wenn wir das Image **simple-web** mit dem Tag **2.1** aus unserer in Azure ACR g
       "intervalSeconds": 2,
       "maxConsecutiveFailures": 10
   }],
-  "labels":{
-    "HAPROXY_GROUP":"external",
-    "HAPROXY_0_VHOST":"YOUR FQDN",
-    "HAPROXY_0_MODE":"http"
-  },
   "uris":  [
-       "file:///mnt/share/docker.tar.gz"
+       "file:///mnt/share/dcosshare/docker.tar.gz"
    ]
 }
 ```
 
-> [!NOTE] 
-> Wie Sie sehen, verwenden wir die Option **uris**, um anzugeben, wo die Anmeldeinformationen gespeichert sind.
->
+Stellen Sie die Anwendung über die DC/OS-Befehlszeilenschnittstelle bereit.
+
+```azurecli-interactive
+dcos marathon app add acrDemo.json
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erhalten Sie weitere Informationen zum [Verwalten Ihrer DC/OS-Container](container-service-mesos-marathon-ui.md).
-* DC/OS-Containerverwaltung über die [Marathon-REST-API](container-service-mesos-marathon-rest.md).
+
+In diesem Tutorial haben Sie DC/OS für die Verwendung von Azure Container Registry konfiguriert. Dazu haben Sie folgende Aufgaben ausgeführt:
+
+> [!div class="checklist"]
+> * Bereitstellen von Azure Container Registry (sofern erforderlich)
+> * Konfigurieren der ACR-Authentifizierung in einem DC/OS-Cluster
+> * Hochladen eines Images in Azure Container Registry
+> * Ausführen eines Containerimages aus Azure Container Registry
+
