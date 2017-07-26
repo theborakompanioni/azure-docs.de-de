@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 9c780d89093a6d29a22cd1e5504dcc36b39056ea
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 0ebed0c2605862426384c0e219e52c9d626b6246
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -31,7 +31,7 @@ Die Integration von ScaleX Enterprise in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ScaleX Enterprise anzumelden (einmaliges Anmelden, Single Sign-On).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zum Integrieren von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zum Integrieren von SaaS-Apps in Azure AD finden Sie unter Was bedeuten Anwendungszugriff und einmaliges Anmelden mit [Azure Active Directory](active-directory-appssoaccess-whatis.md)?
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

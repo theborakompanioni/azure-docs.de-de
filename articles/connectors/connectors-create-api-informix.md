@@ -16,20 +16,15 @@ ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ca7a62338740e39647b39f2221bc5ac7321ba4fd
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: b2e755b5b1b4939eac90ac55ba8398c5687124c8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="get-started-with-the-informix-connector"></a>Erste Schritte mit dem Informix-Connector
 Mit dem Microsoft Connector für Informix werden Logik-Apps mit Ressourcen verbunden, die in einer IBM Informix-Datenbank gespeichert sind. Der Informix-Connector enthält einen Microsoft-Client zum Kommunizieren mit Informix-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Informix für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe die [Liste mit unterstützten IBM Informix-Plattformen und -Versionen](connectors-create-api-informix.md#supported-informix-platforms-and-versions) (in diesem Thema).
-
-> [!NOTE]
-> Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps. 
-> 
-> 
 
 Der Connector unterstützt die folgenden Datenbankvorgänge:
 
@@ -278,8 +273,9 @@ Dieser Connector unterstützt die folgenden IBM Informix-Versionen, wenn diese f
 * IBM Informix 12.1
 * IBM Informix 11.7
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/informix/). 
+## <a name="connector-specific-details"></a>Connectorspezifische Details
+
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/informix/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.

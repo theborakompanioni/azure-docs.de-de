@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 05/08/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: baf984be59e19f7503c36b12d2b90570ce957edf
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 75366abafa551d21630b0edddb65db23b9ea9d42
 ms.contentlocale: de-de
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -224,7 +224,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für das einmalige Anmelden.
 
-Melden Sie sich mit einer beliebigen vorangestellten URL (z.B. `https://safe.menlosecurity.com/http://www.cnn.com/`) bei Ihrer Anwendung an, und geben Sie die Azure AD-Anmeldeinformationen ein. Sie werden nach erfolgreicher Authentifizierung an die entsprechende Website weitergeleitet.
+Öffnen Sie ein Browserfenster im „privaten“ oder „Inkognito“-Modus, um eine neue Authentifizierung auszulösen.  Verwenden Sie in Internet Explorer STRG+UMSCHALT+P.  Verwenden Sie in Chrome STRG+UMSCHALT+N.  Browsen Sie im privaten Fenster zu einer geschützten Ressource, und führen Sie eine Azure AD-Anmeldung durch.  Nach der erfolgreichen Anmeldung werden Sie in einer isolierten Sitzung zu der angeforderten Website weitergeleitet.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

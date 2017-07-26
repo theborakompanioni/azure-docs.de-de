@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/25/2016
+ms.date: 05/22/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 226e86703843b026d20123543cf5311a5355aad4
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 333d2f26ce043a167fb84858c8327cb39e868ffa
+ms.contentlocale: de-de
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -25,17 +26,17 @@ ms.lasthandoff: 03/25/2017
 Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über Azure-Diagnose](../azure-diagnostics.md) .
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Aktivieren der Diagnose in einer Workerrolle
-In dieser Anleitung wird beschrieben, wie Sie eine Azure-Workerrolle implementieren, die mithilfe der .NET-EventSource-Klasse Telemetriedaten ausgibt. Die Telemetriedaten werden mit der Azure-Diagnose erfasst und in einem Azure-Speicherkonto gespeichert. Wenn Sie eine Workerrolle erstellen, aktiviert Visual Studio automatisch die Diagnose 1.0 als Teil der Projektmappe in Azure SDKs für .NET 2.4 und niedriger. In den folgenden Anweisungen wird beschrieben, wie Sie die Workerrolle erstellen, die Diagnose 1.0 in der Projektmappe deaktivieren und die Diagnose 1.2 oder 1.3 in Ihrer Workerrolle bereitstellen.
+In dieser Anleitung wird beschrieben, wie Sie eine Azure-Workerrolle implementieren, die mithilfe der .NET-EventSource-Klasse Telemetriedaten ausgibt. Die Telemetriedaten werden mit der Azure-Diagnose erfasst und in einem Azure-Speicherkonto gespeichert. Wenn Sie eine Workerrolle erstellen, aktiviert Visual Studio automatisch Diagnose 1.0 als Teil der Projektmappe in Azure SDKs für .NET 2.4 und früher. In den folgenden Anweisungen wird beschrieben, wie Sie die Workerrolle erstellen, die Diagnose 1.0 in der Projektmappe deaktivieren und die Diagnose 1.2 oder 1.3 in Ihrer Workerrolle bereitstellen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie über ein Azure-Abonnement verfügen und Visual Studio mit dem Azure-SDK verwenden. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion][Free Trial] registrieren. [Installieren und konfigurieren Sie Azure PowerShell Version 0.8.7 oder höher][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Schritt 1: Erstellen einer Workerrolle
 1. Starten Sie **Visual Studio**.
-2. Erstellen Sie ein neues **Azure Cloud Service**-Projekt mithilfe der **Cloudvorlage** für .NET Framework 4.5.  Geben Sie dem Projekt den Namen "WadExample", und klicken Sie auf "OK".
+2. Erstellen Sie ein **Azure Cloud Service**-Projekt mithilfe der **Cloudvorlage** für .NET Framework 4.5.  Geben Sie dem Projekt den Namen "WadExample", und klicken Sie auf "OK".
 3. Wählen Sie **Workerrolle** aus, und klicken Sie auf "OK". Das Projekt wird erstellt.
 4. Doppelklicken Sie im **Projektmappen-Explorer** auf die Eigenschaftendatei **WorkerRole1**.
-5. Deaktivieren Sie auf der Registerkarte **Konfiguration** die Option **Diagnose aktivieren**, um Diagnose 1.0 (Azure SDK 2.4 und niedriger) zu deaktivieren.
+5. Deaktivieren Sie auf der Registerkarte **Konfiguration** die Option **Diagnose aktivieren**, um Diagnose 1.0 (Azure SDK 2.4 und früher) zu deaktivieren.
 6. Erstellen Sie die Projektmappe, um zu überprüfen, ob Fehler vorliegen.
 
 ### <a name="step-2-instrument-your-code"></a>Schritt 2: Instrumentieren des Codes
@@ -128,11 +129,11 @@ namespace WorkerRole1
 
 1. Stellen Sie Ihre Workerrolle über Visual Studio in Azure bereit. Wählen Sie dazu das Projekt **WadExample** aus, und klicken Sie anschließend im Menü **Build** auf **Veröffentlichen**.
 2. Wählen Sie Ihr Abonnement aus.
-3. Wählen Sie im Dialogfeld **Microsoft Azure-Veröffentlichungseinstellungen** die Option **Neu erstellen...** aus.
-4. Geben Sie im Dialogfeld **Clouddienst und Speicherkonto erstellen** im Feld **Name** einen Namen ein (z. B. „WadExample“), und wählen Sie eine Region oder Affinitätsgruppe aus.
+3. Wählen Sie im Dialogfeld **Microsoft Azure-Veröffentlichungseinstellungen** die Option **Neu erstellen** aus.
+4. Geben Sie im Dialogfeld **Clouddienst und Speicherkonto erstellen** im Feld **Name** einen Namen ein (z.B. „WadExample“), und wählen Sie eine Region oder Affinitätsgruppe aus.
 5. Legen Sie **Umgebung** auf **Staging** fest.
 6. Ändern Sie unter **Einstellungen** weitere Einstellungen nach Bedarf, und klicken Sie dann auf **Veröffentlichen**.
-7. Überprüfen Sie nach Abschluss der Bereitstellung im klassischen Azure-Portal, ob Ihr Clouddienst den Status **Wird ausgeführt** hat.
+7. Überprüfen Sie nach Abschluss der Bereitstellung im Azure-Portal, ob Ihr Clouddienst den Status **Wird ausgeführt** aufweist.
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Schritt 4: Erstellen der Diagnosekonfigurationsdatei und Installieren der Erweiterung
 1. Laden Sie die Schemadefinition für die öffentliche Konfigurationsdatei mit dem folgenden PowerShell-Befehl herunter:
@@ -186,7 +187,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>Schritt 6: Betrachten der Telemetriedaten
-Navigieren Sie in Visual Studio im **Server-Explorer** zum Speicherkonto „wadexample“. Wenn der Cloud-Dienst etwa fünf Minuten lang ausgeführt worden ist, sollten die Tabellen **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** und **WADSetOtherTable** angezeigt werden. Doppelklicken Sie auf eine der Tabellen, um die erfassten Telemetriedaten anzuzeigen.
+Navigieren Sie in Visual Studio im **Server-Explorer** zum Speicherkonto „wadexample“. Wenn der Clouddienst etwa fünf (5) Minuten lang ausgeführt wurde, sollten die Tabellen **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** und **WADSetOtherTable** angezeigt werden. Doppelklicken Sie auf eine der Tabellen, um die erfassten Telemetriedaten anzuzeigen.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
@@ -197,7 +198,7 @@ Die Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um beim S
 Unter [Problembehandlung bei Azure-Diagnose](../azure-diagnostics-troubleshooting.md) finden Sie Informationen zur Behebung von häufig auftretenden Problemen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Liste von Artikeln zu Azure-Diagnose im Zusammenhang mit virtuellen Computern](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
+[In der Liste der Artikel zur Azure-Diagnose im Zusammenhang mit virtuellen Computern](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) finden Sie eine Anleitung zum Ändern erfasster Daten und zur Fehlerbehebung und erfahren mehr über Diagnose im Allgemeinen.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

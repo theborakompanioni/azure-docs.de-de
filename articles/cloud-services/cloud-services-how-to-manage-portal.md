@@ -12,23 +12,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2016
+ms.date: 07/05/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a8f1bf660c44f7716767d3244a7d6e7f7acf8a83
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: c4ec436df17926114e3e27eabc8ed12761c9614e
+ms.contentlocale: de-de
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="how-to-manage-cloud-services"></a>Verwalten von Clouddiensten
 > [!div class="op_single_selector"]
 > * [Azure-Portal](cloud-services-how-to-manage-portal.md)
-> * [Klassisches Azure-Portal](cloud-services-how-to-manage.md)
+> * [klassischen Azure-Portal](cloud-services-how-to-manage.md)
 >
 >
 
-Ihr Clouddienst wird im Bereich **Clouddienste (klassisch)** des Azure-Portals verwaltet. Dieser Artikel beschreibt einige häufig verwendete Aktionen, die Sie beim Verwalten Ihrer Clouddienste ausführen würden. Dazu zählen Aktualisieren, Löschen, Skalieren und das Heraufstufen einer Bereitstellung zur Produktion.
+Im Bereich **Cloud Services (klassisch)** des Azure-Portals können Sie eine Dienstrolle oder eine Bereitstellung aktualisieren, eine Bereitstellung zur Produktion heraufstufen, Ressourcen mit Ihrem Clouddienst verknüpfen, sodass Sie die Ressourcenabhängigkeiten sehen und die Ressourcen zusammen skalieren können, und einen Clouddienst oder eine Bereitstellung löschen.
 
 Weitere Informationen zum Skalieren Ihres Clouddiensts finden Sie [hier](cloud-services-how-to-scale-portal.md).
 
@@ -80,13 +80,13 @@ Es gibt zwei wichtige Voraussetzungen für einen erfolgreichen Austausch von Ber
 
 - Wenn Sie eine statische IP-Adresse für Ihren Produktionsslot verwenden möchten, müssen Sie auch eine für den Stagingslot reservieren. Andernfalls tritt bei dem Austausch ein Fehler auf.
 
-- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt „Übersicht“ oder mit dem [Befehl Get-AzureRole in Windows PowerShell](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) überprüfen.
+- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt „Übersicht“ überprüfen. Alternativ können Sie den Befehl [Get-AzureRole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) in Windows PowerShell verwenden.
 
 Beachten Sie, dass Updates von Gastbetriebssystemen und Dienstreparaturvorgänge auch dazu führen können, dass beim Austausch von Bereitstellungen ein Fehler auftritt. Weitere Informationen finden Sie unter [Behandeln von Problemen mit der Clouddienstbereitstellung](cloud-services-troubleshoot-deployment-problems.md).
 
 **Führt ein Austausch zu einer Ausfallzeit für die Anwendung? Wie sollte ich dabei vorgehen?**
 
-Wie im vorherigen Abschnitt beschrieben, erfolgt der Austausch von Bereitstellungen in der Regel sehr schnell, da es sich nur um eine Konfigurationsänderung im Azure Load Balancer handelt. In einigen Fällen kann er jedoch zehn oder mehr Sekunden dauern und zu vorübergehenden Verbindungsausfällen führen. Um die Auswirkungen auf Ihre Kunden zu minimieren, ist es empfehlenswert, [Clientwiederholungslogik](../best-practices-retry-general.md) zu implementieren.
+Wie im vorherigen Abschnitt beschrieben, erfolgt der Austausch von Bereitstellungen in der Regel schnell, da es sich nur um eine Konfigurationsänderung im Azure Load Balancer handelt. In einigen Fällen kann er jedoch zehn oder mehr Sekunden dauern und zu vorübergehenden Verbindungsausfällen führen. Um die Auswirkungen auf Ihre Kunden zu minimieren, ist es empfehlenswert, [Clientwiederholungslogik](../best-practices-retry-general.md) zu implementieren.
 
 ## <a name="how-to-link-a-resource-to-a-cloud-service"></a>Verknüpfen einer Ressource mit einem Clouddienst
 Das Azure-Portal verknüpft Ressourcen nicht miteinander wie das aktuelle klassische Azure-Portal. Stellen Sie stattdessen zusätzliche Ressourcen in der gleichen Ressourcengruppe bereit, die auch vom Clouddienst verwendet wird.
@@ -112,8 +112,14 @@ Gehen Sie folgendermaßen vor, um eine Bereitstellung oder Ihren Cloud-Dienst zu
 
 > [!NOTE]
 > Wenn ein Clouddienst gelöscht wird, und die ausführliche Überwachung konfiguriert ist, müssen Sie die Daten manuell aus Ihrem Speicherkonto löschen. Informationen zum Speicherort der Metriktabellen finden Sie in [diesem](cloud-services-how-to-monitor.md) Artikel.
->
->
+
+
+## <a name="how-to-find-more-information-about-failed-deployments"></a>Suchen nach weiteren Informationen zu fehlerhaften Bereitstellungen
+Oben auf dem Blatt **Übersicht** befindet sich eine Statusleiste. Wenn Sie auf diese Leiste klicken, wird ein neues Blatt geöffnet, auf dem eventuelle Fehlerinformationen angezeigt werden. Wenn die Bereitstellung keine Fehler enthält, ist dieses Blatt leer.
+
+![Austauschen von Cloud-Diensten](./media/cloud-services-how-to-manage-portal/status-info.png)
+
+
 
 [Azure portal]: https://portal.azure.com
 

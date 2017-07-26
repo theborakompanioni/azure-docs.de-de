@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 0ce1dbf9f2baf9369875370866690010fe8e9e37
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: eb9697edc5a6085417ec1339c334db6451ebbf12
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
@@ -63,7 +62,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Von Azure AD Connect verwendete SQL Server-Datenbank
 * Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Standardmäßig wird SQL Server 2012 Express LocalDB (eine einfache Version von SQL Server Express) installiert. Für SQL Server Express gilt ein 10-GB-Limit, mit dem Sie etwa 100.000 Objekte verwalten können. Wenn Sie eine höhere Anzahl von Verzeichnisobjekten verwalten möchten, müssen Sie im Installations-Assistenten auf eine andere Version von SQL Server verweisen.
 * Wenn Sie eine separate SQL Server-Instanz verwenden, gelten die folgenden Anforderungen:
-  * Azure AD Connect unterstützt sämtliche Versionen von Microsoft SQL Server – von SQL Server 2008 (mit dem neuesten Service Pack) bis SQL Server 2016. Microsoft Azure SQL-Datenbank wird als Datenbank **nicht unterstützt**.
+  * Azure AD Connect unterstützt sämtliche Versionen von Microsoft SQL Server – von SQL Server 2008 (mit dem neuesten Service Pack) bis SQL Server 2016 SP1. Microsoft Azure SQL-Datenbank wird als Datenbank **nicht unterstützt**.
   * Sie müssen eine SQL-Sortierung ohne Berücksichtigung der Groß- und Kleinschreibung verwenden. Diese Sortierungen werden durch „\_CI_“ in ihrem Namen bestimmt. Eine Sortierung mit Berücksichtigung der Groß- und Kleinschreibung und „\_CS_“ im Namen wird **nicht unterstützt**.
   * Sie können jeweils nur ein Synchronisationsmodul pro SQL-Instanz haben. Die Freigabe einer SQL-Instanz mit FIM/MIM Sync, DirSync oder Azure AD Sync wird **nicht unterstützt** .
 

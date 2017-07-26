@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 73d398613fc726ebd51ab6b107dc46c44caffdcc
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 0b52257a6c38a4392573672b7190d2269c2f145a
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -26,12 +27,16 @@ ms.lasthandoff: 03/28/2017
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-check-ip-flow-verify-portal.md)
 > - [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
-> - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](network-watcher-check-ip-flow-verify-cli.md)
+> - [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
+> - [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
 > - [Azure-REST-API](network-watcher-check-ip-flow-verify-rest.md)
+
 
 Die IP-Datenflussüberprüfung ist ein Feature von Network Watcher, mit dem Sie überprüfen können, ob bei einem virtuellen Computer eingehender oder ausgehender Datenverkehr zugelassen wird. Dieses Szenario eignet sich zum Abrufen des aktuellen Status der Kommunikation eines virtuellen Computers mit einer externen Ressource oder einem Back-End. Anhand der IP-Datenflussüberprüfung können Sie überprüfen, ob die NSG-Regeln (Netzwerksicherheitsgruppe) ordnungsgemäß konfiguriert sind, und eine Problembehandlung für Datenflüsse durchführen, die durch die NSG-Regeln blockiert werden. Ein weiterer Grund für die Verwendung der IP-Datenflussüberprüfung besteht darin sicherzustellen, dass Datenverkehr, der blockiert werden soll, durch die NSG ordnungsgemäß blockiert wird.
 
-In diesem Artikel wird die plattformübergreifende Azure CLI 1.0 verwendet, die für Windows, Mac und Linux zur Verfügung steht. Network Watcher verwendet derzeit Azure CLI 1.0 als Unterstützung für die Befehlszeilenschnittstelle.
+In diesem Artikel wird unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell verwendet, Azure CLI 2.0, die für Windows, Mac und Linux verfügbar ist.
+
+Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -41,29 +46,28 @@ Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Netwo
 
 Dieses Szenario verwendet die IP-Datenflussüberprüfung, um zu überprüfen, ob ein virtueller Computer mit einer bekannten Bing-IP-Adresse kommunizieren kann. Wenn der Datenverkehr abgelehnt wird, wird die Sicherheitsregel zurückgegeben, die den jeweiligen Datenverkehr verweigert. Weitere Informationen zur IP-Datenflussüberprüfung finden Sie in der [Übersicht zur IP-Datenflussüberprüfung](network-watcher-ip-flow-verify-overview.md).
 
-
 ## <a name="get-a-vm"></a>Abrufen eines virtuellen Computers
 
 Die IP-Datenflussüberprüfung testet den bei einer IP-Adresse eines virtuellen Computers eingehenden oder ausgehenden Datenverkehr von einem bzw. an ein Remoteziel. Eine ID eines virtuellen Computers ist zum Ausführen des Cmdlets erforderlich. Wenn Sie die ID des virtuellen Computers bereits kennen, können Sie diesen Schritt überspringen.
 
-```
-azure vm show -g resourceGroupName -n virtualMachineName
+```azurecli
+az vm show --resource-group MyResourceGroup5431 --name MyVM-Web
 ```
 
 ## <a name="get-the-nics"></a>Abrufen der NICs
 
 Die IP-Adresse einer NIC auf dem virtuellen Computer wird benötigt. In diesem Beispiel rufen wir die NICs auf einem virtuellen Computer ab. Wenn Sie die IP-Adresse bereits kennen, die Sie auf dem virtuellen Computer testen möchten, können Sie diesen Schritt überspringen.
 
-```
-azure network nic show -g resourceGroupName -n nicName
+```azurecli
+az network nic show --resource-group MyResourceGroup5431 --name MyNic-Web
 ```
 
 ## <a name="run-ip-flow-verify"></a>Ausführen der IP-Datenflussüberprüfung
 
-Da wir jetzt die zum Ausführen des Cmdlets benötigten Informationen besitzen, führen wir das Cmdlet `network watcher ip-flow-verify` aus, um den Datenverkehr zu testen. In diesem Beispiel verwenden wir die erste IP-Adresse der ersten NIC.
+Da wir jetzt die zum Ausführen des Cmdlets benötigten Informationen besitzen, führen wir das Cmdlet `az network watcher test-ip-flow` aus, um den Datenverkehr zu testen. In diesem Beispiel verwenden wir die erste IP-Adresse der ersten NIC.
 
-```
-azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName -t targetResourceId -d directionInboundorOutbound -p protocolTCPorUDP -o localPort -m remotePort -l localIpAddr -r remoteIpAddr
+```azurecli
+az network watcher test-ip-flow --resource-group resourceGroupName --direction directionInboundorOutbound --protocol protocolTCPorUDP --local ipAddressandPort --remote ipAddressandPort --vm vmNameorID --nic nicNameorID
 ```
 
 > [!NOTE]
@@ -71,12 +75,13 @@ azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName 
 
 ## <a name="review-results"></a>Überprüfen der Ergebnisse
 
-Nach der Ausführung von `network watcher ip-flow-verify` werden die Ergebnisse zurückgegeben. Das folgende Beispiel zeigt die im vorhergehenden Schritt zurückgegebenen Ergebnisse.
+Nach der Ausführung von `az network watcher test-ip-flow` werden die Ergebnisse zurückgegeben. Das folgende Beispiel zeigt die im vorhergehenden Schritt zurückgegebenen Ergebnisse.
 
-```
-data:    Access                          : Deny
-data:    Rule Name                       : defaultSecurityRules/DefaultInboundDenyAll
-info:    network watcher ip-flow-verify command OK
+```azurecli
+{
+    "access": "Allow",
+    "ruleName": "defaultSecurityRules/AllowInternetOutBound"
+}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

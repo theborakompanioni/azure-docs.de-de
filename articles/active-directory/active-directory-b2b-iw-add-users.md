@@ -1,12 +1,12 @@
 ---
 
 title: "Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer zu Azure Active Directory hinzu? | Microsoft Docs"
-description: "Die Azure Active Directory B2B-Zusammenarbeit ermöglicht es Information-Workern, Benutzer aus ihrer Organisationen zu Azure AD hinzuzufügen, um ihnen Zugriff auf die unternehmenseigenen Anwendungen zu gewähren."
+description: "B2B-Zusammenarbeit ermöglicht es Information-Workern, Azure AD für den Zugriff Benutzer aus ihren Organisationen hinzuzufügen | Microsoft-Dokumentation"
 services: active-directory
 documentationcenter: 
 author: sasubram
 manager: femila
-editor: 
+editor: curtand
 tags: 
 ms.assetid: 
 ms.service: active-directory
@@ -14,22 +14,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 05/23/2017
 ms.author: sasubram
-translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 02a1b163c77f3f7f6853762f442bffa617bd9f52
-ms.lasthandoff: 02/17/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: c6ca561d1a02e283c7932f08f53b8dd590208835
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 ---
 
 # <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer zu Azure Active Directory hinzu?
 
-Information-Worker können das [Zugriffspanel für Anwendungen](http://myapps.microsoft.com) verwenden, um B2B-Zusammenarbeitsbenutzer zu von ihnen verwalteten Gruppen und Anwendungen hinzuzufügen.
+Information-Worker können das [Zugriffspanel für Anwendungen](http://myapps.microsoft.com) verwenden, um von ihnen verwalteten Gruppen und Anwendungen B2B-Zusammenarbeitsbenutzer hinzuzufügen.
 
 ## <a name="information-workers-adding-b2b-collaboration-users-to-an-application"></a>Hinzufügen von B2B-Zusammenarbeitsbenutzern zu einer Anwendung durch Information-Worker
-Weisen Sie als Information-Worker in einer Partnerorganisation B2B-Zusammenarbeitsbenutzer zu einer App hinzu, wie im folgenden Video gezeigt:
+Weisen Sie als Information-Worker in einer Partnerorganisation einer App B2B-Zusammenarbeitsbenutzer zu, wie im folgenden Video gezeigt:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps/Player]
 

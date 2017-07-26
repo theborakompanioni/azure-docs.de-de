@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Hadoop-Clustern in HDInsight mit .NET SDK | Microsoft-Dokumentation
+title: "Verwalten von Hadoop-Clustern in HDInsight mit .NET SDK – Azure | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie administrative Aufgaben für Hadoop-Cluster in HDInsight mit HDInsight .NET SDK ausführen."
 services: hdinsight
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ec710057c2016175f65578a9d6884f7273b65169
-ms.openlocfilehash: f2a762ad64feeef91802429cdd959cec67b73473
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: c10471425fa1202ddb7fe35d0adf4ef33509f268
 ms.contentlocale: de-de
-ms.lasthandoff: 12/20/2016
+ms.lasthandoff: 05/26/2017
 
 
 ---

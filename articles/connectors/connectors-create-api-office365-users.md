@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 8f544b781bbf11214183bc0f46215bb9e16c9f55
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 330f733440932a769eb0fe6031cd0d947a820080
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -40,9 +40,9 @@ Wenn Sie Ihren Logik-Apps diesen Connector hinzufügen, müssen Sie sich bei Ihr
 
 Nachdem Sie eine Verbindung hergestellt haben, geben Sie die Eigenschaften für die Office 365-Benutzer-API ein, z. B. die Benutzer-ID. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
+## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/officeusers/).
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/officeusers/) an.
 
 ## <a name="more-connectors"></a>Weitere Connectors
 Gehen Sie zur [Liste der APIs](apis-list.md)zurück.

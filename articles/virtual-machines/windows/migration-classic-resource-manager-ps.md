@@ -21,7 +21,6 @@ ms.openlocfilehash: 7520e07700680fa4129a9babff30202218cefa71
 ms.contentlocale: de-de
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell
 Diese Schritte zeigen, wie Sie Azure PowerShell-Befehle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden.
@@ -78,7 +77,7 @@ Melden Sie sich an Ihrem Konto für das Resource Manager-Modell an.
 Rufen Sie die verfügbaren Abonnements mit dem folgenden Befehl ab:
 
 ```powershell
-    Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+    Get-AzureRMSubscription | Sort Name | Select Name
 ```
 
 Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. In diesem Beispiel wird der Abonnementname standardmäßig auf **My Azure Subscription** festgelegt. Ersetzen Sie den Abonnementnamen im Beispiel durch den Namen Ihres eigenen Abonnements.

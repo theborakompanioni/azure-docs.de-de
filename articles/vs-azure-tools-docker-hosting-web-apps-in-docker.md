@@ -14,25 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7169b6f2d9738abd9651120be96bb1cf209ea85d
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
+ms.contentlocale: de-de
+ms.lasthandoff: 05/23/2017
 
 
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>Bereitstellen eines ASP.NET-Containers auf einem Docker-Remotehost
 ## <a name="overview"></a>Übersicht
 Docker ist ein einfaches Containermodul, in gewisser Weise mit einem virtuellen Computer vergleichbar, das Sie zum Hosten von Anwendungen und Diensten verwenden können.
-Dieses Tutorial führt Sie durch die Verwendung der Erweiterung [Visual Studio 2015-Tools für Docker](http://aka.ms/DockerToolsForVS) , um mithilfe von PowerShell eine ASP.NET Core-App auf einem Docker-Host in Azure bereitzustellen.
+Dieses Tutorial führt Sie durch die Verwendung der Erweiterung [Visual Studio-Tools für Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker), um mithilfe von PowerShell eine ASP.NET Core-App auf einem Docker-Host in Azure bereitzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Folgendes ist zum Durchführen dieses Tutorials erforderlich:
+Zum Abschließen dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
 * Erstellen eines virtuellen Azure-Docker-Hostcomputers gemäß der Beschreibung in [Verwenden von „docker-machine“ mit Azure](virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* Installieren von [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
-* [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
-* Installieren von [Visual Studio 2015-Tools für Docker – Preview](http://aka.ms/DockerToolsForVS)
+* Installieren der neuesten Version von [Visual Studio](https://www.visualstudio.com/downloads/)
+* Herunterladen des [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
+* Installieren von [Docker für Windows](https://docs.docker.com/docker-for-windows/install/)
 
 ## <a name="1-create-an-aspnet-core-web-app"></a>1. Erstellen einer ASP.NET Core-Web-App
 Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET Core-App, die in diesem Tutorial verwendet wird.
@@ -56,19 +57,12 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
    MyDockerHost -        azure    Running   tcp://xxx.xxx.xxx.xxx:2376         v1.10.3
    ```
    
-   > [!NOTE]
-   > Wenn Sie die Betaversion von Docker verwenden, ist Ihr Host hier nicht aufgeführt.
-   > 
-   > 
 3. Erstellen Sie die App mit dem -Build-Parameter.
    
    ```
    PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release -Machine mydockerhost
    ```  
-   
-   > [!NOTE]
-   > Wenn Sie die Betaversion von Docker verwenden, lassen Sie das -Machine-Argument aus.
-   > 
+
    > ```
    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release 
    > ```  
@@ -80,9 +74,6 @@ Die folgenden Schritte führen Sie durch die Erstellung einer einfachen ASP.NET 
    PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release -Machine mydockerhost
    ```
    
-   > [!NOTE]
-   > Wenn Sie die Betaversion von Docker verwenden, lassen Sie das -Machine-Argument aus.
-   > 
    > ```
    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release 
    > ```

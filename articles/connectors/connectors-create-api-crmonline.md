@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 845dd16c703362e9e64f02832a35c90e7e77e264
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 ---
 
@@ -168,9 +168,9 @@ Sehen Sie sich zur Problembehandlung im Falle eines nicht erfolgreichen Schritts
 
 Weitere Informationen zum Behandeln von Problemen mit Logik-Apps finden Sie unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md).
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
+## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/crm/). 
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/crm/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.

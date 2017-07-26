@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure AD AngularJS | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie eine einseitige AngularJS-Anwendung erstellt wird, die für die Anmeldung in Azure AD integriert wird und über OAuth per Azure AD geschützte APIs aufruft."
 services: active-directory
 documentationcenter: 
-author: dstrockis
+author: jmprieur
 manager: mbaldwin
 editor: 
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
@@ -13,10 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
-translationtype: Human Translation
-ms.sourcegitcommit: a9997b6a6d30fbd2d21dee5d9c1e3ea92dfa97ab
-ms.openlocfilehash: 0ace1ee96d9266db9310ba73c36788a787a9dd15
+ms.author: jmprieur
+ms.custom: aaddev
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
+ms.openlocfilehash: 797b6236afad45e3e308ce073a8beb90cb7e94a1
+ms.contentlocale: de-de
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -29,6 +32,7 @@ Mit Azure Active Directory (Azure AD) ist es einfach und problemlos möglich, Ih
 Für JavaScript-Anwendungen, die in einem Browser ausgeführt werden, stellt Azure AD die Active Directory Authentication Library( ADAL) bzw. „adal.js“ bereit. Die einzige Aufgabe von „adal.js“ besteht darin, Ihrer App das Abrufen von Zugriffstoken zu erleichtern. Um Ihnen zu zeigen, wie einfach es geht, erstellen wir hier eine AngularJS-Anwendung mit einer Aufgabenliste, mit der folgende Aktionen ausgeführt werden können:
 
 * Anmelden von Benutzern an der App mit Azure AD als Identitätsanbieter
+
 * Anzeigen einiger Informationen zum Benutzer
 * Sicheres Aufrufen der Aufgabenlisten-API einer App mit Bearertoken aus Azure AD
 * Abmelden von Benutzern von der App
@@ -45,7 +49,7 @@ Beginnen Sie, indem Sie das [Anwendungsgerüst](https://github.com/AzureADQuickS
 Sie müssen die App zuerst in Ihrem Azure AD-Mandanten registrieren, um damit Benutzer authentifizieren und Token abrufen zu können:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie in der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnisliste** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
+2. Wenn Sie in mehreren Verzeichnissen angemeldet sind, müssen Sie ggf. prüfen, ob Sie das richtige Verzeichnis anzeigen. Klicken Sie dazu auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnisliste** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue Webanwendung und/oder Web-API.
@@ -61,6 +65,7 @@ Sie müssen die App zuerst in Ihrem Azure AD-Mandanten registrieren, um damit Be
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Schritt 2: Installieren von ADAL und Konfigurieren der einseitigen Anwendung
 Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie „adal.js“ installieren und Ihren identitätsbezogenen Code schreiben.
 
+### <a name="configure-the-javascript-client"></a>Konfigurieren des JavaScript-Clients
 Beginnen Sie, indem Sie „adal.js“ über die Paket-Manager-Konsole dem Projekt mit der einseitigen Aufgabenlisten-Anwendung (TodoSPA) hinzufügen:
   1. Laden Sie [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) herunter, und fügen Sie die Datei dem Projektverzeichnis `App/Scripts/` hinzu.
   2. Laden Sie [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) herunter, und fügen Sie die Datei dem Projektverzeichnis `App/Scripts/` hinzu.
@@ -73,6 +78,7 @@ Beginnen Sie, indem Sie „adal.js“ über die Paket-Manager-Konsole dem Projek
     ...
     ```
 
+### <a name="configure-the-back-end-server"></a>Konfigurieren des Back-End-Servers
 Damit die Back-End-Aufgabenlisten-API der einseitigen Anwendung Token aus dem Browser akzeptieren kann, benötigt das Back-End Konfigurationsinformationen zur App-Registrierung. Öffnen Sie `web.config`im Projekt mit der einseitigen Aufgabenlisten-Anwendung. Ersetzen Sie die Werte der Elemente im Abschnitt `<appSettings>` durch die Werte, die Sie im Azure-Portal verwendet haben. Sobald Ihr Code ADAL verwendet, verweist er auf diese Werte.
   * `ida:Tenant` ist die Domäne Ihres Azure AD-Mandanten, z. B. „contoso.onmicrosoft.com“.
   * `ida:Audience` ist die Client-ID der Anwendung, die Sie aus dem Portal kopiert haben.
@@ -156,9 +162,4 @@ Das vollständige Beispiel (ohne Ihre Konfigurationswerte) steht in [GitHub](htt
 Sie können sich nun weiteren Szenarien zuwenden. Wie wäre es zum Beispiel mit Folgendem: [Aufrufen einer CORS-Web-API aus einer einseitigen Anwendung](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

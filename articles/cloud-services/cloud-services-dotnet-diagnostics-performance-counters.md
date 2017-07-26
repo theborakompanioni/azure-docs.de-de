@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/29/2016
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 55623820a74b5226471d642e9b960480f25b4390
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
+ms.openlocfilehash: b4357150d0be21672d0b8e212c4ea1a7bec99412
+ms.contentlocale: de-de
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -31,7 +33,7 @@ Sie können Leistungsindikatordaten wie folgt untersuchen:
 2. Mit System Center Operations Manager und dem Azure Management Pack.
 3. Mit anderen Überwachungstools, mit denen auf die Diagnosedaten zugegriffen wird, die an den Azure-Speicher übertragen werden. Weitere Informationen finden Sie unter [Speichern und Anzeigen von Diagnosedaten im Azure-Speicher](https://msdn.microsoft.com/library/azure/hh411534.aspx) .  
 
-Weitere Informationen zum Überwachen der Leistung Ihrer Anwendung im [klassischen Azure-Portal](http://manage.azure.com/) finden Sie unter [Überwachen von Clouddiensten](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/).
+Weitere Informationen zum Überwachen der Leistung Ihrer Anwendung im [Azure-Portal](http://portal.azure.com/) finden Sie unter [Überwachen von Clouddiensten](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/).
 
 Weitere ausführliche Anweisungen zum Erstellen einer Protokollierungs- und Nachverfolgungsstrategie und zum Verwenden von Diagnose- und anderen Methoden zum Beheben von Problemen und Optimieren von Azure-Anwendungen finden Sie unter [Troubleshooting Best Practices for Developing Azure Applications](https://msdn.microsoft.com/library/azure/hh771389.aspx)(Bewährte Methoden zur Problembehandlung bei der Entwicklung von Azure-Anwendungen, in englischer Sprache).
 
@@ -43,7 +45,7 @@ Unter Azure wird eine Teilmenge der Leistungsindikatoren bereitgestellt, die fü
 
 | Leistungsindikatorkategorie: Objekt (Instanz) | Name des Leistungsindikators | Referenz |
 | --- | --- | --- |
-| .NET CLR-Ausnahmen(*Global*) |# Ausgelöste Ausnahmen/Sek. |Ausnahmeleistungsindikatoren |
+| .NET CLR-Ausnahmen(*Global*) |Anzahl der ausgelösten Ausnahmen/Sek. |Ausnahmeleistungsindikatoren |
 | .NET CLR-Speicher(*Global*) |GC-Zeitdauer in Prozent |Arbeitsspeicher-Leistungsindikatoren |
 | ASP.NET |Anwendungsneustarts |Leistungsindikatoren für ASP.NET |
 | ASP.NET |Ausführungszeit der Anforderung |Leistungsindikatoren für ASP.NET |
@@ -74,8 +76,8 @@ Azure verfügt über Unterstützung zum Erstellen und Ändern benutzerdefinierte
 
 > [!NOTE]
 > Code, mit dem Änderungen an benutzerdefinierten Leistungsindikatoren vorgenommen werden, muss für die Ausführung über erhöhte Rechte verfügen. Wenn der Code in einer Webrolle oder Workerrolle enthalten ist, muss die Rolle das Tag <Runtime executionContext="elevated" /> in der Datei „ServiceDefinition.csdef“ enthalten, damit die Rolle richtig initialisiert wird.
-> 
-> 
+>
+>
 
 Sie können benutzerdefinierte Leistungsindikatordaten mit dem Diagnose-Agent an den Azure-Speicher senden.
 
@@ -88,8 +90,8 @@ Jede konfigurierte Leistungsindikatorinstanz wird mit einer angegebenen Sampling
 
 > [!NOTE]
 > Je nach Übertragungshäufigkeit und Warteschlangenlatenz des Diagnose-Agents können die letzten Leistungsindikatordaten im Speicherkonto um mehrere Minuten veraltet sein.
-> 
-> 
+>
+>
 
 ## <a name="enable-performance-counters-using-diagnostics-configuration-file"></a>Aktivieren von Leistungsindikatoren mit der Diagnosekonfigurationsdatei
 Verwenden Sie das folgende Verfahren, um die Leistungsindikatoren in der Azure-Anwendung zu aktivieren.
@@ -98,7 +100,7 @@ Verwenden Sie das folgende Verfahren, um die Leistungsindikatoren in der Azure-A
 In diesem Abschnitt wird vorausgesetzt, dass Sie den Diagnosemonitor in Ihre Anwendung importiert und die Diagnosekonfigurationsdatei Ihrer Visual Studio-Projektmappe („diagnostics.wadcfg“ in SDK 2.4 und früher oder „diagnostics.wadcfgx“ in SDK 2.5 und höher) hinzugefügt haben. Weitere Informationen finden Sie in Schritt 1 und 2 unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services-dotnet-diagnostics.md).
 
 ## <a name="step-1-collect-and-store-data-from-performance-counters"></a>Schritt 1: Sammeln und Speichern der Daten von Leistungsindikatoren
-Nachdem Sie der Visual Studio-Projektmappe die Diagnosedatei hinzugefügt haben, können Sie die Sammlung und Speicherung von Leistungsindikatordaten in einer Azure-Anwendung konfigurieren. Dazu werden der Diagnosedatei Leistungsindikatoren hinzugefügt. Die Diagnosedaten einschließlich der Leistungsindikatoren werden zuerst in der Instanz gesammelt. Die Daten werden dann in der Tabelle WADPerformanceCountersTable im Azure-Tabellendienst gespeichert, sodass Sie in Ihrer Anwendung auch das Speicherkonto angeben müssen. Wenn Sie Ihre Anwendung im Serveremulator lokal testen, können Sie die Diagnosedaten auch lokal im Speicheremulator speichern. Bevor Sie die Diagnosedaten speichern, müssen Sie das [klassische Azure-Portal](http://manage.windowsazure.com/) aufrufen und ein Speicherkonto erstellen. Nach Möglichkeit sollten Sie Ihr Speicherkonto am selben geografischen Standort wie Ihre Azure-Anwendung platzieren, um Kosten für externe Bandbreite zu vermeiden und die Latenz zu verringern.
+Nachdem Sie der Visual Studio-Projektmappe die Diagnosedatei hinzugefügt haben, können Sie die Sammlung und Speicherung von Leistungsindikatordaten in einer Azure-Anwendung konfigurieren. Dazu werden der Diagnosedatei Leistungsindikatoren hinzugefügt. Die Diagnosedaten einschließlich der Leistungsindikatoren werden zuerst in der Instanz gesammelt. Die Daten werden dann in der Tabelle WADPerformanceCountersTable im Azure-Tabellendienst gespeichert, sodass Sie in Ihrer Anwendung auch das Speicherkonto angeben müssen. Wenn Sie Ihre Anwendung im Serveremulator lokal testen, können Sie die Diagnosedaten auch lokal im Speicheremulator speichern. Bevor Sie die Diagnosedaten speichern, müssen Sie das [Azure-Portal](http://portal.azure.com/) aufrufen und ein klassisches Speicherkonto erstellen. Eine bewährte Methode besteht darin, das Speicherkonto im selben geografischen Standort wie die Azure-Anwendung zu erstellen. Wenn sich die Azure-Anwendung und das Speicherkonto am selben geografischen Standort befinden, vermeiden Sie Kosten für externe Bandbreite und verringern die Latenz.
 
 ### <a name="add-performance-counters-to-the-diagnostics-file"></a>Hinzufügen von Leistungsindikatoren zur Diagnosedatei
 Es gibt zahlreiche Leistungsindikatoren, die Sie verwenden können. Im folgenden Beispiel werden mehrere Leistungsindikatoren demonstriert, die für die Web- und Workerrollenüberwachung empfohlen werden.
@@ -134,26 +136,26 @@ Es gibt zahlreiche Leistungsindikatoren, die Sie verwenden können. Im folgenden
 
 Das Attribut bufferQuotaInMB gibt die maximale Größe des Dateisystemspeichers an, der für den Datensammlungstyp (Azure-Protokolle, IIS-Protokolle usw.) zur Verfügung steht. Der Standardwert ist 0. Wenn das Kontingent erreicht ist, werden die ältesten Daten gelöscht, sobald neue Daten hinzugefügt werden. Die Summe aller bufferQuotaInMB-Eigenschaften müssen größer sein als der Wert des Attributs OverallQuotaInMB. Ausführlichere Informationen dazu, wie Sie feststellen, wie viel Speicher für die Sammlung von Diagnosedaten erforderlich ist, finden Sie im Abschnitt "Setup WAD" im Artikel [Troubleshooting Best Practices for Developing Azure Applications](https://msdn.microsoft.com/library/windowsazure/hh771389.aspx)(Bewährte Methoden zur Problembehandlung bei der Entwicklung von Azure-Anwendungen, in englischer Sprache).
 
-Das Attribut scheduledTransferPeriod gibt das auf die nächste Minute gerundete Intervall zwischen geplanten Datenübertragungen an. In den folgenden Beispielen ist es auf PT30M (30 Minuten) festgelegt. Wenn das Übertragungsintervall auf einen kleinen Wert wie z. B. 1 Minute festgelegt wird, hat dies in der Produktion negative Auswirkungen auf die Anwendungsleistung, kann jedoch beim Testen nützlich sein, um festzustellen, ob die Diagnose schnell arbeitet. Das geplante Übertragungsintervall muss so klein sein, dass Diagnosedaten in der Instanz nicht überschrieben werden, andererseits aber auch so groß, dass die Leistung der Anwendung nicht beeinträchtigt wird.
+Das Attribut scheduledTransferPeriod gibt das auf die nächste Minute gerundete Intervall zwischen geplanten Datenübertragungen an. In den folgenden Beispielen ist es auf PT30M (30 Minuten) festgelegt. Wenn das Übertragungsintervall auf einen kleinen Wert wie z. B. 1 Minute festgelegt wird, hat dies in der Produktion negative Auswirkungen auf die Anwendungsleistung, kann jedoch beim Testen nützlich sein, um festzustellen, ob die Diagnose schnell arbeitet. Das geplante Übertragungsintervall muss so klein sein, dass Diagnosedaten in der Instanz nicht überschrieben werden, andererseits aber auch so groß, dass die Leistung der Anwendung nicht beeinträchtigt wird.
 
-Das Attribut counterSpecifier gibt den zu erfassenden Leistungsindikator an. Das Attribut sampleRate gibt die Rate an, mit der der Leistungsindikator gemessen werden soll, in diesem Fall 30 Sekunden.
+Das Attribut counterSpecifier gibt den zu erfassenden Leistungsindikator an. Das Attribut sampleRate gibt die Rate an, mit der der Leistungsindikator gemessen werden soll, in diesem Fall 30 Sekunden.
 
 Nachdem Sie die zu erfassenden Leistungsindikatoren hinzugefügt haben, speichern Sie die Änderungen in der Diagnosedatei. Anschließend müssen Sie das Speicherkonto angeben, in dem die Diagnosedaten gespeichert werden.
 
 ### <a name="specify-the-storage-account"></a>Angeben des Speicherkontos
 Um die Diagnoseinformationen in Ihrem Azure-Speicherkonto abzulegen, müssen Sie in der Dienstkonfigurationsdatei (ServiceConfiguration.cscfg) eine Verbindungszeichenfolge angeben.
 
-Für Azure SDK 2.5 kann das Speicherkonto in der Datei „diagnostics.wadcfgx“ angegeben werden.
+Für Azure SDK 2.5 kann das Speicherkonto in der Datei „diagnostics.wadcfgx“ angegeben werden.
 
 > [!NOTE]
-> Diese Anleitung gilt nur für Azure SDK 2.4 und früher. Für Azure SDK 2.5 kann das Speicherkonto in der Datei „diagnostics.wadcfgx“ angegeben werden.
-> 
-> 
+> Diese Anleitung gilt nur für Azure SDK 2.4 und früher. Für Azure SDK 2.5 kann das Speicherkonto in der Datei „diagnostics.wadcfgx“ angegeben werden.
+>
+>
 
 So legen Sie die Verbindungszeichenfolgen fest:
 
-1. Öffnen Sie die Datei „ServiceConfiguration.Cloud.cscfg“ mit Ihrem bevorzugten Text-Editor, und legen Sie die Verbindungszeichenfolge für Ihren Speicher fest. Die Werte für *AccountName* und *AccountKey* finden Sie im klassischen Azure-Portal im Speicherkonto-Dashboard unter „Schlüssel verwalten“.
-  
+1. Öffnen Sie die Datei „ServiceConfiguration.Cloud.cscfg“ mit Ihrem bevorzugten Text-Editor, und legen Sie die Verbindungszeichenfolge für Ihren Speicher fest. Sie finden die Werte für *AccountName* und *AccountKey* im Azure-Portal im Speicherkontodashboard unter „Zugriffsschlüssel“.
+
     ```xml
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>"/>
@@ -161,7 +163,7 @@ So legen Sie die Verbindungszeichenfolgen fest:
     ```
 2. Speichern Sie die Datei ServiceConfiguration.Cloud.cscfg.
 3. Öffnen Sie die Datei „ServiceConfiguration.Local.cscfg“, und prüfen Sie, ob „UseDevelopmentStorage“ auf „true“ festgelegt ist.
-   
+
     ```xml
     <ConfigurationSettings>
       <Settingname="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true"/>
@@ -173,19 +175,19 @@ So legen Sie die Verbindungszeichenfolgen fest:
 ## <a name="step-2-optional-create-custom-performance-counters"></a>Schritt 2: (Optional) Erstellen benutzerdefinierter Leistungsindikatoren
 Neben den vordefinierten Leistungsindikatoren können Sie Ihre eigenen benutzerdefinierten Leistungsindikator hinzufügen, um Web- oder Workerrollen zu überwachen. Mit benutzerdefinierten Leistungsindikatoren können Sie anwendungsspezifisches Verhalten verfolgen und überwachen. Diese Indikatoren können in einer Startaufgabe, einer Webrolle oder einer Workerrolle mit erhöhten Rechten erstellt oder gelöscht werden.
 
-Der Azure-Diagnose-Agent aktualisiert die Leistungsindikatorkonfiguration über die WADCFG-Datei eine Minute nach dem Starten.  Falls Sie benutzerdefinierte Leistungsindikatoren in der OnStart-Methode erstellen und die Ausführung der Startaufgaben länger als eine Minute dauert, wurden Ihre benutzerdefinierten Leistungsindikatoren noch nicht erstellt, wenn der Azure-Diagnose-Agent versucht, sie zu laden.  In diesem Szenario sehen Sie, dass die Azure-Diagnose alle Diagnosedaten richtig erfasst, mit Ausnahme Ihrer Leistungsindikatoren.  Um dieses Problem zu beheben, erstellen Sie die Leistungsindikatoren in einer Startaufgabe, oder verschieben Sie einen Teil des Startaufgabenaufwands in die OnStart-Methode, nachdem die Leistungsindikatoren erstellt wurden.
+Der Azure-Diagnose-Agent aktualisiert die Leistungsindikatorkonfiguration über die WADCFG-Datei eine Minute nach dem Starten.  Falls Sie benutzerdefinierte Leistungsindikatoren in der OnStart-Methode erstellen und die Ausführung der Startaufgaben länger als eine Minute dauert, wurden Ihre benutzerdefinierten Leistungsindikatoren noch nicht erstellt, wenn der Azure-Diagnose-Agent versucht, sie zu laden.  In diesem Szenario sehen Sie, dass die Azure-Diagnose alle Diagnosedaten richtig erfasst, mit Ausnahme Ihrer benutzerdefinierten Leistungsindikatoren.  Um dieses Problem zu beheben, erstellen Sie die Leistungsindikatoren in einer Startaufgabe, oder verschieben Sie einen Teil des Startaufgabenaufwands in die OnStart-Methode, nachdem die Leistungsindikatoren erstellt wurden.
 
 Führen Sie die folgenden Schritte aus, um einen einfachen benutzerdefinierten Leistungsindikator mit dem Namen "\MyCustomCounterCategory\MyButton1Counter" zu erstellen:
 
 1. Öffnen Sie die Dienstdefinitionsdatei (CSDEF) für Ihre Anwendung.
 2. Fügen Sie das Element Runtime dem Element WebRole oder WorkerRole hinzu, um eine Ausführung mit erhöhten Rechten zuzulassen:
-   
+
     ```xml
     <runtime executioncontext="elevated"/>
     ```
 3. Speichern Sie die Datei.
-4. Öffnen Sie die Diagnosedatei („diagnostics.wadcfg“ in SDK 2.4 und früher oder „diagnostics.wadcfgx“ in SDK 2.5 und höher), und fügen Sie dem DiagnosticMonitorConfiguration-Element Folgendes hinzu: 
-   
+4. Öffnen Sie die Diagnosedatei („diagnostics.wadcfg“ in SDK 2.4 und früher oder „diagnostics.wadcfgx“ in SDK 2.5 und höher), und fügen Sie dem DiagnosticMonitorConfiguration-Element Folgendes hinzu:
+
     ```xml
     <PerformanceCounters bufferQuotaInMB="0" scheduledTransferPeriod="PT30M">
       <PerformanceCounterConfiguration counterSpecifier="\MyCustomCounterCategory\MyButton1Counter" sampleRate="PT30S"/>
@@ -193,37 +195,37 @@ Führen Sie die folgenden Schritte aus, um einen einfachen benutzerdefinierten L
     ```
 5. Speichern Sie die Datei.
 6. Erstellen Sie die benutzerdefinierte Leistungsindikatorkategorie in der OnStart-Methode Ihrer Rolle, bevor base.OnStart aufgerufen wird. Mit dem folgenden C#-Beispiel wird eine benutzerdefinierte Kategorie erstellt, falls noch keine vorhanden ist:
-   
+
     ```csharp
     public override bool OnStart()
     {
       if (!PerformanceCounterCategory.Exists("MyCustomCounterCategory"))
       {
          CounterCreationDataCollection counterCollection = new CounterCreationDataCollection();
-   
+
          // add a counter tracking user button1 clicks
          CounterCreationData operationTotal1 = new CounterCreationData();
          operationTotal1.CounterName = "MyButton1Counter";
          operationTotal1.CounterHelp = "My Custom Counter for Button1";
          operationTotal1.CounterType = PerformanceCounterType.NumberOfItems32;
          counterCollection.Add(operationTotal1);
-   
+
          PerformanceCounterCategory.Create(
            "MyCustomCounterCategory",
            "My Custom Counter Category",
            PerformanceCounterCategoryType.SingleInstance, counterCollection);
-   
+
          Trace.WriteLine("Custom counter category created.");
       }
       else {
         Trace.WriteLine("Custom counter category already exists.");
       }
-   
+
     return base.OnStart();
     }
     ```
 7. Aktualisieren Sie die Indikatoren in Ihrer Anwendung. Mit dem folgenden Beispiel wird ein benutzerdefinierter Leistungsindikator bei Button1_Click-Ereignissen aktualisiert:
-   
+
     ```csharp
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -242,7 +244,7 @@ Führen Sie die folgenden Schritte aus, um einen einfachen benutzerdefinierten L
 Benutzerdefinierte Leistungsindikatordaten werden vom Azure-Diagnosemonitor jetzt erfasst.
 
 ## <a name="step-3-query-performance-counter-data"></a>Schritt 3: Abfragen von Leistungsindikatordaten
-Wenn Ihre Anwendung bereitgestellt ist und ausgeführt wird, beginnt der Diagnosemonitor mit dem Erfassen von Leistungsindikatoren und dem Speichern dieser Daten im Azure-Speicher. Mit Tools wie Server-Explorer in Visual Studio, [Azure-Speicher-Explorer](http://azurestorageexplorer.codeplex.com/) oder [Azure-Diagnose-Manager](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) von Cerebrata zeigen Sie die Daten der Leistungsindikatoren in der Tabelle „WADPerformanceCountersTable“ an. Sie können den Tabellenspeicherdienst mit [C#](../storage/storage-dotnet-how-to-use-tables.md), [Java](../storage/storage-java-how-to-use-table-storage.md), [Node.js](../storage/storage-nodejs-how-to-use-table-storage.md), [Python](../storage/storage-python-how-to-use-table-storage.md), [Ruby](../storage/storage-ruby-how-to-use-table-storage.md) oder [PHP](../storage/storage-php-how-to-use-table-storage.md) auch programmgesteuert abfragen.
+Wenn Ihre Anwendung bereitgestellt ist und ausgeführt wird, beginnt der Diagnosemonitor mit dem Erfassen von Leistungsindikatoren und dem Speichern dieser Daten in Azure Storage. Mit Tools wie Server-Explorer in Visual Studio, [Azure-Speicher-Explorer](http://azurestorageexplorer.codeplex.com/) oder [Azure-Diagnose-Manager](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) von Cerebrata zeigen Sie die Daten der Leistungsindikatoren in der Tabelle „WADPerformanceCountersTable“ an. Sie können den Tabellenspeicherdienst mit [C#](../storage/storage-dotnet-how-to-use-tables.md), [Java](../storage/storage-java-how-to-use-table-storage.md), [Node.js](../storage/storage-nodejs-how-to-use-table-storage.md), [Python](../storage/storage-python-how-to-use-table-storage.md), [Ruby](../storage/storage-ruby-how-to-use-table-storage.md) oder [PHP](../storage/storage-php-how-to-use-table-storage.md) auch programmgesteuert abfragen.
 
 Das folgende C#-Beispiel zeigt eine einfache Abfrage der Tabelle WADPerformanceCountersTable und speichert die Diagnosedaten in einer CSV-Datei. Wenn Sie die Leistungsindikatoren in einer CSV-Datei speichern, können Sie die Daten mit den grafischen Darstellungsfunktionen von Microsoft Excel oder eines anderen Tools darstellen. Fügen Sie einen Verweis auf die Datei Microsoft.WindowsAzure.Storage.dll hinzu, die im Azure SDK für .NET Oktober 2012 und höher enthalten ist. Die Assembly wird im Verzeichnis „%Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\Versionsnummer\ref\“ installiert.
 
@@ -320,9 +322,4 @@ public class PerformanceCountersEntity : TableEntity
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Weitere Artikel zu Azure-Diagnose](../azure-diagnostics.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

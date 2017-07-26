@@ -12,13 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 03/02/2017
+ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 12b121783f6d95a952441f1a570d58af9ec1eb7a
-ms.lasthandoff: 03/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 465306d2de8d1dbe6ba1f0cd74be720b78a50de3
+ms.contentlocale: de-de
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -153,10 +154,11 @@ Nehmen wir beispielsweise an, dass ein abhängiger Task auf Daten vom Abschluss 
 
 Eine Abhängigkeitsaktion basiert auf einer Beendigungsbedingung für den übergeordneten Task. Sie können eine Abhängigkeitsaktion für jede der folgenden Beendigungsbedingungen angeben (Informationen zu .NET finden Sie unter der [ExitConditions][net_exitconditions]-Klasse):
 
-- Wenn ein Planungsfehler auftritt
-- Wenn der Task mit einem Exitcode beendet wird, der durch die **ExitCodes**-Eigenschaft definiert ist
-- Wenn der Task mit einem Exitcode aus einem Bereich beendet wird, der durch die **ExitCodeRanges**-Eigenschaft angegeben wird
-- Im Standardfall, wenn der Task mit einem Exitcode beendet wird, der nicht von **ExitCodes** oder **ExitCodeRanges** definiert wird, oder wenn der Task mit einem Planungsfehler beendet wird und die **SchedulingError**-Eigenschaft nicht festgelegt ist 
+- Wenn bei der Vorverarbeitung ein Fehler auftritt.
+- Wenn beim Dateiupload ein Fehler auftritt. Wenn der Task mit einem Exitcode beendet wird, der über **ExitCodes** oder **ExitCodeRanges** angegeben wurde und dann ein Fehler beim Dateiupload auftritt, hat die durch den Exitcode angegebene Aktion Vorrang.
+- Wenn der Task mit einem Exitcode beendet wird, der durch die **ExitCodes**-Eigenschaft definiert ist.
+- Wenn der Task mit einem Exitcode aus einem Bereich beendet wird, der durch die **ExitCodeRanges**-Eigenschaft angegeben wird.
+- Der Standardfall, wenn der Task einem nicht in **ExitCodes** oder **ExitCodeRanges** definierten Exitcode beendet wird oder wenn der Task mit einem Fehler bei der Vorverarbeitung beendet wird und die **PreProcessingError**-Eigenschaft nicht festgelegt ist oder wenn für den Task ein Fehler beim Dateiupload auftritt und die **FileUploadError**-Eigenschaft nicht festgelegt ist. 
 
 Legen Sie zum Angeben einer Abhängigkeitsaktion in .NET die [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction]-Eigenschaft für die Beendigungsbedingung fest. Die **DependencyAction**-Eigenschaft nimmt einen von zwei Werten an:
 
@@ -165,29 +167,29 @@ Legen Sie zum Angeben einer Abhängigkeitsaktion in .NET die [ExitOptions][net_e
 
 Die Standardeinstellung für die **DependencyAction**-Eigenschaft ist **Satisfy** (Erfüllen) für den Exitcode 0 und **Block** (Blockieren) für alle anderen Beendigungsbedingungen.
 
-Der folgende Codeausschnitt legt die **DependencyAction**-Eigenschaft für einen übergeordneten Task fest. Wenn der übergeordnete Task mit einem Planungsfehler oder den angegebenen Fehlercodes beendet wird, wird der abhängige Task blockiert. Wenn der übergeordnete Task mit einem anderen Fehler ungleich 0 beendet wird, darf der abhängige Task ausgeführt werden.
+Der folgende Codeausschnitt legt die **DependencyAction**-Eigenschaft für einen übergeordneten Task fest. Wenn der übergeordnete Task mit einem Fehler bei der Vorverarbeitung oder den angegebenen Fehlercodes beendet wird, wird der abhängige Task blockiert. Wenn der übergeordnete Task mit einem anderen Fehler ungleich 0 beendet wird, darf der abhängige Task ausgeführt werden.
 
 ```csharp
 // Task A is the parent task.
 new CloudTask("A", "cmd.exe /c echo A")
 {
     // Specify exit conditions for task A and their dependency actions.
-    ExitConditions = new ExitConditions()
+    ExitConditions = new ExitConditions
     {
-        // If task A exits with a scheduling error, block any downstream tasks (in this example, task B).
-        SchedulingError = new ExitOptions()
+        // If task A exits with a pre-processing error, block any downstream tasks (in this example, task B).
+        PreProcessingError = new ExitOptions
         {
             DependencyAction = DependencyAction.Block
         },
         // If task A exits with the specified error codes, block any downstream tasks (in this example, task B).
-        ExitCodes = new List<ExitCodeMapping>()
+        ExitCodes = new List<ExitCodeMapping>
         {
             new ExitCodeMapping(10, new ExitOptions() { DependencyAction = DependencyAction.Block }),
             new ExitCodeMapping(20, new ExitOptions() { DependencyAction = DependencyAction.Block })
         },
         // If task A succeeds or fails with any other error, any downstream tasks become eligible to run 
         // (in this example, task B).
-        Default = new ExitOptions()
+        Default = new ExitOptions
         {
             DependencyAction = DependencyAction.Satisfy
         }

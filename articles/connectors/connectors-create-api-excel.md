@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/23/2016
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 423731710c5584f91188a72702b188636d3104e5
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 4d62bee573aba4c8b0445b1f4c44190496fb3a18
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -29,9 +29,9 @@ In Logic Apps steht kein Excel-Connector zur Verfügung.
 ## <a name="to-use-excel-data"></a>So verwenden Sie Excel-Daten
 Sie können Excel-Daten in einer durch Trennzeichen getrennten Datei (CSV-Datei) in einem Speicherordner speichern (beispielsweise in [OneDrive](connectors-create-api-onedrive.md)). Diese CSV-Datei kann auch mit dem [Flatfile-Connector](../logic-apps/logic-apps-enterprise-integration-flatfile.md)verwendet werden.
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
+## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/excel/).
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/excel/) an.
 
 ## <a name="more-connectors"></a>Weitere Connectors
 Gehen Sie zur [Liste der APIs](apis-list.md)zurück.

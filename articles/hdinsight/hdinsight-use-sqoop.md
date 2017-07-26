@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 1901613b3e0db19f86247ee78828eccd58fb026b
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 8e77153493b6f37f5f48116b86bad6b25a50d1a1
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -62,7 +62,7 @@ Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden di
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
 
-Zunächst exportieren Sie *sample.log* und *hivesampletable* in die Azure SQL-Datenbank bzw. SQL Server. Anschließend importieren Sie die Tabelle mit den Mobilgerätedaten über den folgenden Pfad zurück in HDInsight:
+Zunächst exportieren Sie *sample.log* und *hivesampletable* in die Azure SQL-Datenbank- bzw. SQL Server-Instanz. Anschließend importieren Sie die Tabelle mit den Mobilgerätedaten über den folgenden Pfad zurück in HDInsight:
 
     /tutorials/usesqoop/importeddata
 
@@ -114,7 +114,7 @@ Wenn Sie die vorhandene Azure SQL-Datenbank oder Microsoft SQL Server verwenden 
 * **Azure SQL-Datenbank**: Sie müssen eine Firewall-Regel für den Azure SQL-Datenbankserver konfigurieren, um Zugriff auf Ihre Arbeitsstation zu erlauben. Anweisungen zur Erstellung einer Azure SQL-Datenbank und zur Konfiguration der Firewall erhalten Sie unter [Erste Schritte mit Azure SQL-Datenbank][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn die Firewall-Einstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer Azure SQL-Datenbank-Instanz und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren von SQL-Datenbanken][sqldatabase-create-configue].
+  > Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn diese Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer Azure SQL-Datenbank-Instanz und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren von SQL-Datenbanken][sqldatabase-create-configue].
   > 
   > 
 * **SQL Server**: Falls sich Ihr HDInsight-Cluster im gleichen virtuellen Netzwerk in Azure wie ein SQL Server befindet, können Sie mit den hier beschriebenen Schritten Daten in einer SQL Server-Datenbank importieren und exportieren.

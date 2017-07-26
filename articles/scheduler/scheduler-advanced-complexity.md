@@ -14,9 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e329d152ea6a95c8cdfa6a507504601d4e0957cd
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
+ms.contentlocale: de-de
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -128,7 +130,7 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der Zeitplanelemen
 | **minutes** |Minuten der Stunde, in der der Auftrag ausgeführt wird |<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul> |
 | **hours** |Stunden des Tages, an dem der Auftrag ausgeführt wird |<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul> |
 | **weekDays** |Die Wochentage, an denen der Auftrag ausgeführt wird. Kann nur bei wöchentlicher Häufigkeit angegeben werden. |<ul><li>"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" oder "Sunday"</li><li>Array mit beliebigen der oben angegebenen Werte (maximale Arraygröße: 7)</li></ul>Die Groß-/Kleinschreibung wird *nicht* beachtet. |
-| **monthlyOccurrences** |Bestimmt, an welchen Tagen im Monat der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Array mit monthlyOccurence-Objekten:</li></ul> <pre>{ "day": *Tag*,<br />  "occurrence": *Vorkommen*<br />}</pre><p> *Tag* ist der Wochentag, an dem der Auftrag ausgeführt wird. „{Sunday}“ steht beispielsweise für jeden Sonntag im Monat. Erforderlich.</p><p>*Vorkommen* steht für den Tag innerhalb des Monats. Mit „{Sunday, -1}“ wird beispielsweise der letzte Sonntag des Monats angegeben. Optional.</p> |
+| **monthlyOccurrences** |Bestimmt, an welchen Tagen im Monat der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Array mit monthlyOccurrence-Objekten:</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *Tag* ist der Wochentag, an dem der Auftrag ausgeführt wird. „{Sunday}“ steht beispielsweise für jeden Sonntag im Monat. Erforderlich.</p><p>*Vorkommen* steht für den Tag innerhalb des Monats. Mit „{Sunday, -1}“ wird beispielsweise der letzte Sonntag des Monats angegeben. Optional.</p> |
 | **monthDays** |Der Tag des Monats, an dem der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31.</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31.</li><li>Array mit den oben genannten Werten</li></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>Beispiele: Wiederholungszeitpläne
@@ -188,10 +190,5 @@ Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass *interval* au
  [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

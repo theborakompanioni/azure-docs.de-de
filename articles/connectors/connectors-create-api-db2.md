@@ -16,20 +16,15 @@ ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2dc4c912f018f5d71d8c874763f204cf6c2c415b
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: 4501b3d9a2fdc00582596cb907f7130591e4782e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
 # <a name="get-started-with-the-db2-connector"></a>Erste Schritte mit dem DB2-Connector
 Mit dem Microsoft Connector für DB2 werden Logik-Apps mit Ressourcen verbunden, die in einer IBM DB2-Datenbank gespeichert sind. Dieser Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Bluemix dashDB oder IBM DB2 für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe [Liste mit unterstützten IBM DB2-Plattformen und -Versionen](connectors-create-api-db2.md#supported-db2-platforms-and-versions) (in diesem Thema).
-
-> [!NOTE]
-> Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps. 
-> 
-> 
 
 Der DB2-Connector unterstützt die folgenden Datenbankvorgänge:
 
@@ -283,8 +278,9 @@ Dieser Connector unterstützt die folgenden IBM DB2-Plattformen und -Versionen s
 * IBM DB2 für LUW 11
 * IBM DB2 für LUW 10.5
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/db2/). 
+## <a name="connector-specific-details"></a>Connectorspezifische Details
+
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/db2/) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.

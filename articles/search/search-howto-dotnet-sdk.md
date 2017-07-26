@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/21/2017
+ms.date: 05/22/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 2c7032e74dc59eb610b8860338486afc52e3abbe
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
+ms.openlocfilehash: 552a7ab193e12d2e72da494166d774e974c85d47
+ms.contentlocale: de-de
+ms.lasthandoff: 05/22/2017
 
 
 ---
@@ -42,11 +43,11 @@ Dieses SDK unterstützt keine [Verwaltungsvorgänge](https://docs.microsoft.com/
 Wenn Sie bereits eine ältere Version des Azure Search-.NET SDK nutzen und auf die neue allgemein verfügbare Version aktualisieren möchten, finden Sie [in diesem Artikel](search-dotnet-sdk-migration.md) eine entsprechende Anleitung.
 
 ## <a name="requirements-for-the-sdk"></a>Anforderungen für das SDK
-1. Visual Studio 2015.
+1. Visual Studio 2017
 2. Ihr eigener Azure Search-Dienst. Zur Verwendung des SDK benötigen Sie den Namen Ihres Dienstes und mindestens einen API-Schlüssel. [Create a service in the portal](search-create-service-portal.md) (+++Erstellen eines Dienstes im Portal).
 3. Laden Sie das [NuGet-Paket](http://www.nuget.org/packages/Microsoft.Azure.Search) mit dem Azure Search-.NET-SDK in Visual Studio mithilfe von „NuGet-Pakete verwalten“ herunter. Suchen Sie unter NuGet.org nach dem Paketnamen `Microsoft.Azure.Search` .
 
-Das Azure Search-.NET SDK unterstützt Anwendungen für .NET Framework 4.5, .NET Core sowie Apps, die mit der [portablen Klassenbibliothek (PCL) Profil 111](https://docs.microsoft.com/dotnet/articles/standard/library) kompatibel sind.
+Das Azure Search .NET SDK unterstützt Anwendungen für .NET Framework 4.6 und .NET Core.
 
 ## <a name="core-scenarios"></a>Schlüsselszenarien
 In Ihrer Suchanwendung müssen Sie verschiedene Aktionen ausführen. In diesem Zusammenhang werden in diesem Lernprogramm die folgenden Schlüsselszenarien behandelt:
@@ -64,7 +65,10 @@ Die nachfolgend untersuchte Beispielanwendung erstellt einen neuen Index mit dem
 // This sample shows how to delete, create, upload documents and query an index
 static void Main(string[] args)
 {
-    SearchServiceClient serviceClient = CreateSearchServiceClient();
+    IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+    IConfigurationRoot configuration = builder.Build();
+
+    SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 
     Console.WriteLine("{0}", "Deleting index...\n");
     DeleteHotelsIndexIfExists(serviceClient);
@@ -77,7 +81,7 @@ static void Main(string[] args)
     Console.WriteLine("{0}", "Uploading documents...\n");
     UploadDocuments(indexClient);
 
-    ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+    ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
 
     RunQueries(indexClientForQueries);
 
@@ -91,13 +95,13 @@ static void Main(string[] args)
 > 
 >
 
-Dieses gehen wir nun Schritt für Schritt durch. Zunächst muss das Objekt `SearchServiceClient`erstellt werden. Mit diesem Objekt können Indizes verwaltet werden. Zur Erstellung dieses Objekts müssen Sie Ihren Azure Search-Dienstnamen sowie einen Admin-API-Schlüssel angeben.
+Dieses gehen wir nun Schritt für Schritt durch. Zunächst muss das Objekt `SearchServiceClient`erstellt werden. Mit diesem Objekt können Indizes verwaltet werden. Zur Erstellung dieses Objekts müssen Sie Ihren Azure Search-Dienstnamen sowie einen Admin-API-Schlüssel angeben. Sie können diese Informationen in der Datei `appsettings.json` der [Beispielanwendung](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) eingeben.
 
 ```csharp
-private static SearchServiceClient CreateSearchServiceClient()
+private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
 {
-    string searchServiceName = "myservice";
-    string adminApiKey = "Put your API admin key here";
+    string searchServiceName = configuration["SearchServiceName"];
+    string adminApiKey = configuration["SearchServiceAdminApiKey"];
 
     SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
     return serviceClient;
@@ -140,7 +144,7 @@ UploadDocuments(indexClient);
 Zum Schluss führen wir einige Suchabfragen aus und zeigen die Ergebnisse an. Dieses Mal verwenden wir einen anderen `SearchIndexClient`:
 
 ```csharp
-ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
 
 RunQueries(indexClientForQueries);
 ```
@@ -148,17 +152,17 @@ RunQueries(indexClientForQueries);
 Wir werden uns die Methode `RunQueries` später genauer ansehen. Hier ist der Code zum Erstellen des neuen `SearchIndexClient`:
 
 ```csharp
-private static SearchIndexClient CreateSearchIndexClient()
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
 {
-    string searchServiceName = "myservice";
-    string queryApiKey = "Put one of your API query keys here";
+    string searchServiceName = configuration["SearchServiceName"];
+    string queryApiKey = configuration["SearchServiceQueryApiKey"];
 
     SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
     return indexClient;
 }
 ```
 
-Diesmal verwenden wir einen Abfrageschlüssel, da wir keinen Schreibzugriff auf den Index benötigen.
+Diesmal verwenden wir einen Abfrageschlüssel, da wir keinen Schreibzugriff auf den Index benötigen. Sie können diese Informationen in der Datei `appsettings.json` der [Beispielanwendung](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) eingeben.
 
 Wenn Sie diese Anwendung mit einem gültigen Dienstnamen und API-Schlüsseln ausführen, sollte die Ausgabe wie folgt aussehen:
 
@@ -327,6 +331,12 @@ Der letzte Teil der Methode `UploadDocuments` fügt eine Verzögerung von zwei S
 Vielleicht fragen Sie sich, wie das Azure Search-.NET-SDK Instanzen einer benutzerdefinierten Klasse wie `Hotel` in einen Index hochladen kann. Um diese Frage zu beantworten, sehen wir uns die Klasse `Hotel` an:
 
 ```csharp
+using System;
+using Microsoft.Azure.Search;
+using Microsoft.Azure.Search.Models;
+using Microsoft.Spatial;
+using Newtonsoft.Json;
+
 // The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
 // It ensures that Pascal-case property names in the model class are mapped to camel-case
 // field names in the index.
