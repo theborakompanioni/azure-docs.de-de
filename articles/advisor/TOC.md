@@ -21,4 +21,4 @@
 
 # Ressourcen
 ## [Azure-Ratgeber – Videos](https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor)
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)

@@ -19,12 +19,15 @@
 ## Erstellen und Ändern einer Verbindung
 ### [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-circuit-arm.md)
+### [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
 ## Erstellen und Ändern einer Peeringkonfiguration
 ### [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
+### [Azure-CLI](howto-routing-cli.md)
 ## Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 ### [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
+### [Azure-Befehlszeilenschnittstelle](howto-linkvnet-cli.md)
 ## Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute
 ### [Azure-Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -60,7 +63,7 @@
 ## [Traffic Manager](/azure/traffic-manager/)
 
 # Ressourcen
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Fallstudien](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [Netzwerkblog](https://azure.microsoft.com/blog/topics/networking/)
 ## [Preise](https://azure.microsoft.com/pricing/details/expressroute/)

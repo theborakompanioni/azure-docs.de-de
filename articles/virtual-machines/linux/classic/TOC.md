@@ -66,6 +66,7 @@
 ## Problembehandlung
 ### [VM-Bereitstellungen](troubleshoot-deployment-new-vm.md)
 ### [Neustarten oder Ändern der Größe einer VM](restart-resize-error-troubleshooting.md)
+### [Anfügen einer virtuellen Festplatte an den virtuellen Problembehandlungscomputer](troubleshoot-recovery-disks-portal.md)
 
 # Referenz
 ## [PowerShell](/powershell/azure/overview)
@@ -79,7 +80,7 @@
 
 
 # Ressourcen
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

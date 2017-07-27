@@ -37,8 +37,7 @@ Bevor Sie dieser Anleitung folgen und einen Index erstellen, müssen Sie einen [
 
 > [!NOTE]
 > Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
->
->
+
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, sind Sie fast bereit, Anforderungen für Ihren Dienstendpunkt mithilfe des .NET SDK auszugeben. Zunächst müssen Sie aber einen der Admin-API-Schlüssel abrufen, die für den bereitgestellten Suchdienst generiert wurden. Das .NET SDK sendet diesen API-Schlüssel für jede Anforderung an Ihren Dienst. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.

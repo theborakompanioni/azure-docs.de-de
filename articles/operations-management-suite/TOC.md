@@ -42,6 +42,7 @@
 #### [Container](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Key Vault-Analysen](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Netzwerkleistungsmonitor](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric-Analysen](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Dienstzuordnung
 ##### [Exemplarische Vorgehensweise](operations-management-suite-walkthrough-servicemap.md)

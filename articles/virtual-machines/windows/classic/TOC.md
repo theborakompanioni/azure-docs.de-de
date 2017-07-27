@@ -81,7 +81,8 @@
 ### [Zugreifen auf eine Anwendung](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [Behandeln von typischen Problemen beim Erstellen eines neuen virtuellen Computers](troubleshoot-deployment-new-vm.md)
 ### [Behandeln von typischen Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Computers](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-## [Zurücksetzen des RDP-Kennworts](reset-rdp.md)
+### [Zurücksetzen des RDP-Kennworts](reset-rdp.md)
+### [Anfügen einer virtuellen Festplatte an den virtuellen Problembehandlungscomputer](troubleshoot-recovery-disks-portal.md)
 
 # Referenz
 ## [PowerShell](/powershell/azure/overview)
@@ -95,7 +96,7 @@
 ## [Storage REST](/rest/api/storageservices)
 
 # Ressourcen
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
