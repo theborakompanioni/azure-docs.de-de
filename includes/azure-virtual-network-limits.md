@@ -25,7 +25,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Virtuelle Netzwerke |50 |500 |
 | Subnetze pro virtuellem Netzwerk |1.000 |an den Support wenden |
 | DNS-Server pro virtuellem Netzwerk |9 |25 |
-| Private IP-Adressen pro virtuellem Netzwerk |4096 |4.096 |
+| Private IP-Adressen pro virtuellem Netzwerk |4096 |8192 |
 | Private IP-Adressen pro Netzwerkschnittstelle |50 |an den Support wenden |
 | Parallele TCP-Verbindungen für einen virtuellen Computer bzw. eine Rolleninstanz |500K |500K |
 | Netzwerkschnittstellen |300 |10000 |
