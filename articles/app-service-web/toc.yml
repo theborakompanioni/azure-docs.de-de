@@ -48,16 +48,13 @@
 - name: Konzepte
   items:
     - name: So funktioniert App Service
-      href: >-
-        ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: App Service-Pläne
-      href: >-
-        ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: App Service-Umgebung
       href: ../app-service/app-service-environment/intro.md
     - name: Authentifizierung und Autorisierung
-      href: >-
-        ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: Authentifizierung über lokales AD
       href: web-sites-authentication-authorization.md
 - name: Anleitungen
@@ -161,8 +158,6 @@
               href: custom-dns-web-site-buydomains-web-app.md
             - name: Zuordnen von Domänen mithilfe von Traffic Manager
               href: web-sites-traffic-manager-custom-domain-name.md
-            - name: Zuordnen von GoDaddy-Domänen
-              href: web-sites-godaddy-custom-domain-name.md
             - name: Migrieren einer aktiven Domäne
               href: app-service-custom-domain-name-migrate.md
         - name: Migrieren aus IIS
@@ -177,33 +172,24 @@
           href: web-sites-hybrid-connection-get-started.md
         - name: Herstellen einer Verbindung mit einem Azure-VNET
           href: web-sites-integrate-with-vnet.md
-        - name: >-
-            Herstellen einer Verbindung mit einem Azure-VNET mithilfe von
-            PowerShell
+        - name: Herstellen einer Verbindung mit einem Azure-VNET mithilfe von PowerShell
           href: app-service-vnet-integration-powershell.md
-        - name: >-
-            Herstellen einer Verbindung mit MongoDB auf einem virtuellen
-            Azure-Computer
+        - name: Herstellen einer Verbindung mit MongoDB auf einem virtuellen Azure-Computer
           href: web-sites-dotnet-store-data-mongodb-vm.md
     - name: Sichern der App
       items:
         - name: Authentifizieren von Benutzern
           items:
             - name: Authentifizierung über Azure AD
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Authentifizierung über Facebook
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Authentifizierung über Google
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Authentifizierung über Microsoft-Konto
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Authentifizierung über Twitter
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Authentifizierung über lokales AD
               href: web-sites-authentication-authorization.md
             - name: App mit einer Datenbank mit mehreren Mandanten
@@ -217,20 +203,17 @@
         - name: Zentrales Hochskalieren
           href: web-sites-scale.md
         - name: Horizontales Skalieren
-          href: >-
-            ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: Lastenausgleich mit Traffic Manager
           href: web-sites-traffic-manager.md
         - name: Umfangreiche Skalierung in App Service-Umgebungen
-          href: >-
-            ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: Verwenden von Azure CDN für globale Reichweite
           href: cdn-websites-with-cdn.md
         - name: Herstellen einer Verbindung mit Redis Cache über Memcache
           href: web-sites-connect-to-redis-using-memcache-protocol.md
         - name: Erstellen eines Redis-Cache
-          href: >-
-            ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: Verwalten des Sitzungszustands mit Azure Redis Cache
           href: web-sites-dotnet-session-state-caching.md
     - name: Überwachen
@@ -264,8 +247,7 @@
     - name: Integrieren
       items:
         - name: Export in PowerApps und Microsoft Flow
-          href: >-
-            ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: App Service-Umgebung
       items:
         - name: Verwenden einer App Service-Umgebung
@@ -312,11 +294,8 @@
           href: app-service-web-troubleshoot-performance-degradation.md
         - name: Häufig gestellte Fragen
           items:
-            - name: >-
-                Häufig gestellte Fragen zu Verfügbarkeit, Leistung und
-                Anwendungen
-              href: >-
-                app-service-web-availability-performance-application-issues-faq.md
+            - name: 'Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen'
+              href: app-service-web-availability-performance-application-issues-faq.md
             - name: Häufig gestellte Fragen zur Bereitstellung
               href: app-service-web-deployment-faq.md
             - name: Häufig gestellte Fragen zu Open Source-Technologien
@@ -344,11 +323,9 @@
         - name: Steuern des eingehenden Datenverkehrs
           href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Herstellen einer sicheren Verbindung mit Back-End-Ressourcen
-          href: >-
-            app-service-app-service-environment-securely-connecting-to-backend-resources.md
+          href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: Details zur Netzwerkkonfiguration mit ExpressRoute
-          href: >-
-            app-service-app-service-environment-network-configuration-expressroute.md
+          href: app-service-app-service-environment-network-configuration-expressroute.md
         - name: Automatisches Skalieren in einer App Service-Umgebung
           href: ../app-service/app-service-environment-auto-scale.md
     - name: Preise

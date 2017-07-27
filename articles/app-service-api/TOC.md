@@ -80,7 +80,6 @@
 ### Benutzerdefinierte Domänen
 #### [Kaufen und Konfigurieren benutzerdefinierter Domänen](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Zuordnen Ihrer eigenen benutzerdefinierten Domäne](../app-service-web/web-sites-custom-domain-name.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Konfigurieren von GoDaddy-Domänen](../app-service-web/web-sites-godaddy-custom-domain-name.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Benutzerdefinierte Domänen mit Traffic Manager](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ### [Klonen einer vorhandenen App](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)

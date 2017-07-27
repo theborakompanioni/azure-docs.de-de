@@ -27,7 +27,7 @@
 ## [Porteinstellungen](relay-port-settings.md)
 
 # Ressourcen
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Preise](https://azure.microsoft.com/pricing/details/service-bus/)
 ## [Beispiele](https://github.com/azure/azure-relay/tree/master/samples)
