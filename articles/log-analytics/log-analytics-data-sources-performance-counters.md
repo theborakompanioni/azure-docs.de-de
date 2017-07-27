@@ -50,7 +50,7 @@ Gehen Sie folgendermaßen vor, um einen neuen Windows-Leistungsindikator hinzuzu
 
     Wenn SQL Server Leistungsindikatoren von benannten Instanzen erfasst, beginnen alle benannten Instanzindikatoren mit *MSSQL$*, und anschließend folgt der Name der Instanz.  Um beispielsweise den Indikator für die Protokollcache-Trefferrate für alle Datenbanken aus dem Datenbank-Leistungsobjekt für benannte SQL Server-Instanzen INST2 zu sammeln, geben Sie `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` an. 
  
-2. Klicken Sie auf **+**, oder drücken Sie die EINGABETASTE****, um der Liste den Indikator hinzuzufügen.
+2. Klicken Sie auf **+**, oder drücken Sie die **EINGABETASTE** um der Liste den Indikator hinzuzufügen.
 3. Wenn Sie einen Leistungsindikator hinzufügen, verwendet dieser den Standardwert von 10 Sekunden für das **Stichprobenintervall**.  Sie können diesen Standardwert auf einen höheren Wert von bis zu 1800 Sekunden (30 Minuten) festlegen, wenn Sie die Speicheranforderungen der gesammelten Leistungsdaten reduzieren möchten.
 4. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
 
@@ -62,7 +62,7 @@ Gehen Sie folgendermaßen vor, um einen neuen Linus-Leistungsindikator hinzuzuf�
 
 1. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.  Wenn Sie diese Datei manuell auf jedem Linux-Agenten ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*, und führen Sie die folgenden Anleitungen aus.
 2. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  
-3. Klicken Sie auf **+** oder drücken Sie die EINGABETASTE****, um den Indikator der Liste der anderen Leistungsindikatoren für das Objekt hinzuzufügen.
+3. Klicken Sie auf **+** oder drücken Sie die **EINGABETASTE** um den Indikator der Liste der anderen Leistungsindikatoren für das Objekt hinzuzufügen.
 4. Alle Leistungsindikatoren für ein Objekt verwenden das gleiche **Stichprobenintervall**.  Der Standardwert ist 10 Sekunden.  Sie können einen höheren Wert von bis zu 1800 Sekunden (30 Minuten) festlegen, wenn Sie die Speicheranforderungen der gesammelten Leistungsdaten reduzieren möchten.
 5. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
 

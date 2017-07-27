@@ -148,7 +148,7 @@ Hier können Sie ein Plug-In hochladen. Wählen Sie die Option **Choose file** (
 
    b. Wählen Sie **Add Service** (Dienst hinzufügen), geben Sie **Jenkins** ein, und wählen Sie das **Jenkins-GitHub-Plug-In** aus.
 
-   c. Geben Sie Ihre Jenkins-Webhook-URL ein. (Diese lautet standardmäßig ``http://<PublicIPorFQDN>:8081/github-webhook/``.) Klicken Sie auf die Option zum Hinzufügen/Aktualisieren des Diensts****.
+   c. Geben Sie Ihre Jenkins-Webhook-URL ein. (Diese lautet standardmäßig ``http://<PublicIPorFQDN>:8081/github-webhook/``.) Klicken Sie auf die Option zum **Hinzufügen/Aktualisieren des Diensts**.
 
    d. An die Jenkins-Instanz wird ein Testereignis gesendet. Für den Webhook in GitHub sollte ein grünes Häkchen angezeigt werden, und das Projekt sollte erstellt werden.
 

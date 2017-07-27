@@ -42,7 +42,7 @@ Um dieses Problem zu beheben und eine sichere Verbindung zu erstellen, laden Sie
 
     ![vSphere-Webclient](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-    Im unteren Bereich der Informationen für Administratoren und Entwickler befindet sich der Link zum**** Herunterladen der vertrauenswürdigen Zertifikate der Stammzertifizierungsstelle.
+    Im unteren Bereich der Informationen für Administratoren und Entwickler befindet sich der Link zum**Herunterladen der vertrauenswürdigen Zertifikate** der Stammzertifizierungsstelle.
 
     ![Link zum Herunterladen der vertrauenswürdigen Zertifikate der Stammzertifizierungsstelle](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 

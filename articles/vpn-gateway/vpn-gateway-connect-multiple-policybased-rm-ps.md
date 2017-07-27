@@ -29,7 +29,7 @@ In diesem Artikel wird schrittweise beschrieben, wie Sie ein routenbasiertes Azu
 
 ## <a name="about-policy-based-and-route-based-vpn-gateways"></a>Informationen zu richtlinienbasierten und routenbasierten VPN-Gateways
 
-Richtlinien- **und routenbasierte VPN-Geräte unterscheiden sich darin, wie die IPsec-Datenverkehrsselektoren für eine Verbindung festgelegt werden:
+Richtlinien- *und* routenbasierte VPN-Geräte unterscheiden sich darin, wie die IPsec-Datenverkehrsselektoren für eine Verbindung festgelegt werden:
 
 * Für **richtlinienbasierte** VPN-Geräte werden die Kombinationen aus Präfixen beider Netzwerke verwendet, um zu definieren, wie Datenverkehr mithilfe von IPsec-Tunneln verschlüsselt bzw. entschlüsselt wird. Dies wird normalerweise basierend auf Firewallgeräten erstellt, für die eine Paketfilterung durchgeführt wird. Die Ver- und Entschlüsselung von IPsec-Tunneln wird dem Modul für die Paketfilterung und -verarbeitung hinzugefügt.
 * Für **routenbasierte** VPN-Geräte werden Any-to-Any-Datenverkehrsselektoren (mit Platzhalter) verwendet, und mit Routing-/Weiterleitungstabellen wird das Leiten von Datenverkehr an verschiedene IPsec-Tunnel ermöglicht. Die Basis für die Erstellung bilden normalerweise Routerplattformen, auf denen jeder IPsec-Tunnel als Netzwerkschnittstelle oder virtuelle Tunnelschnittstelle (VTI) modelliert ist.
