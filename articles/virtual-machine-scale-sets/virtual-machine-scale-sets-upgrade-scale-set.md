@@ -40,7 +40,7 @@ Die grundlegende Vorgehensweise zum Ändern der Betriebssystemversion/SKU eines 
 1. Rufen Sie das Modell der VM-Skalierungsgruppe ab.
 2. Ändern Sie im Modell den Wert für Version, SKU, Imageverweis oder URI.
 3. Aktualisieren Sie das Modell.
-4. Führen Sie einen *manualUpgrade* -Aufruf für die virtuellen Computer in der Skalierungsgruppe aus. Dieser Schritt ist nur relevant, wenn *upgradePolicy* in Ihrer Skalierungsgruppe auf **Manuell** festgelegt ist. Im automatischen Modus ****werden alle virtuellen Computer gleichzeitig aktualisiert, was zu Ausfallzeiten führt.
+4. Führen Sie einen *manualUpgrade* -Aufruf für die virtuellen Computer in der Skalierungsgruppe aus. Dieser Schritt ist nur relevant, wenn *upgradePolicy* in Ihrer Skalierungsgruppe auf **Manuell** festgelegt ist. Im **automatischen** Modus werden alle virtuellen Computer gleichzeitig aktualisiert, was zu Ausfallzeiten führt.
 
 Wir sehen uns hinsichtlich dieser Informationen nun an, wie Sie die Version einer Skalierungsgruppe in PowerShell unter Verwendung der REST-API aktualisieren können. Diese Beispiele gelten zwar für Plattformimages, anhand der Informationen in diesem Artikel können Sie den Vorgang jedoch auch für ein benutzerdefiniertes Image anpassen.
 
