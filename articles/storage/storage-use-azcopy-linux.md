@@ -467,7 +467,7 @@ azcopy \
     --include "abc.txt"
 ```
 
-Wenn es sich bei der angegebenen Quelle um eine Azure-Dateifreigabe handelt, müssen Sie entweder den genauen Dateinamen angeben (**z.B. `abc.txt`), um eine einzelne Datei herunterzuladen, oder die Option `--recursive`, um alle Dateien in der Freigabe rekursiv herunterzuladen. Wenn Sie sowohl ein Dateimuster als auch die Option `--recursive` angeben, führt dies zu einem Fehler.
+Wenn es sich bei der angegebenen Quelle um eine Azure-Dateifreigabe handelt, müssen Sie entweder den genauen Dateinamen angeben (*z.B.* `abc.txt`), um eine einzelne Datei herunterzuladen, oder die Option `--recursive`, um alle Dateien in der Freigabe rekursiv herunterzuladen. Wenn Sie sowohl ein Dateimuster als auch die Option `--recursive` angeben, führt dies zu einem Fehler.
 
 ### <a name="download-all-files"></a>Herunterladen aller Dateien
 

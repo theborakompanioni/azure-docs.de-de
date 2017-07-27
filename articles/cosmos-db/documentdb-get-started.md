@@ -23,8 +23,7 @@ ms.lasthandoff: 06/07/2017
 
 
 ---
-# Azure Cosmos DB: DocumentDB-API – Tutorial zu den ersten Schritten
-<a id="azure-cosmos-db-documentdb-api-getting-started-tutorial" class="xliff"></a>
+# <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a>Azure Cosmos DB: DocumentDB-API – Tutorial zu den ersten Schritten
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -55,16 +54,14 @@ Bitte verwenden Sie nach Abschluss des Lernprogramms die Abstimmungsschaltfläch
 
 Lassen Sie uns anfangen.
 
-## Voraussetzungen
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 * Ein aktives Azure-Konto. Wenn Sie keines besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren. 
     * Als Alternative können Sie den [Azure Cosmos DB-Emulator](local-emulator.md) für dieses Tutorial verwenden.
 * [Visual Studio 2013/Visual Studio 2015](http://www.visualstudio.com/).
 
-## Schritt 1: Erstellen eines Azure Cosmos DB-Kontos
-<a id="step-1-create-an-azure-cosmos-db-account" class="xliff"></a>
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>Schritt 1: Erstellen eines Azure Cosmos DB-Kontos
 Wir erstellen nun ein Azure Cosmos DB-Konto. Wenn Sie bereits über ein Konto verfügen, das Sie verwenden möchten, können Sie diesen Schritt überspringen und mit [Einrichten der Visual Studio-Projektmappe](#SetupVS)fortfahren. Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort.
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
@@ -161,12 +158,11 @@ Fügen Sie den folgenden Code hinzu, um die asynchrone Aufgabe über die **Main*
                     Console.ReadKey();
             }
 
-Drücken Sie F5 **** , um die Anwendung auszuführen. Durch die Meldung `End of demo, press any key to exit.` in der Ausgabe des Konsolenfensters wird bestätigt, dass die Verbindung hergestellt wurde.  Das Konsolenfenster kann nun geschlossen werden. 
+Drücken Sie **F5** um die Anwendung auszuführen. Durch die Meldung `End of demo, press any key to exit.` in der Ausgabe des Konsolenfensters wird bestätigt, dass die Verbindung hergestellt wurde.  Das Konsolenfenster kann nun geschlossen werden. 
 
 Glückwunsch! Sie haben die Verbindung mit einem Azure Cosmos DB-Konto erfolgreich hergestellt. Als Nächstes wird beschrieben, wie Sie die Azure Cosmos DB-Ressourcen verwenden.  
 
-## Schritt 4: Erstellen einer Datenbank
-<a id="step-4-create-a-database" class="xliff"></a>
+## <a name="step-4-create-a-database"></a>Schritt 4: Erstellen einer Datenbank
 Bevor Sie den Code zum Erstellen einer Datenbank hinzufügen, fügen Sie eine Hilfsmethode zum Schreiben in die Konsole hinzu.
 
 Kopieren Sie die **WriteToConsoleAndPromptToContinue**-Methode, und fügen Sie sie nach der **GetStartedDemo**-Methode ein.
@@ -190,7 +186,7 @@ Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Clienterstellung in
         // ADD THIS PART TO YOUR CODE
         await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
 
-Drücken Sie F5 **** , um die Anwendung auszuführen.
+Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich eine Azure Cosmos DB-Datenbank erstellt.  
 
@@ -211,7 +207,7 @@ Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Datenbankerstellung
         // ADD THIS PART TO YOUR CODE
          await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB"), new DocumentCollection { Id = "FamilyCollection" });
 
-Drücken Sie F5 **** , um die Anwendung auszuführen.
+Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich eine Azure Cosmos DB-Dokumentsammlung erstellt.  
 
@@ -371,7 +367,7 @@ Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Erstellung der Doku
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
-Drücken Sie F5 **** , um die Anwendung auszuführen.
+Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich zwei Azure Cosmos DB-Dokumente erstellt.  
 
@@ -423,7 +419,7 @@ Kopieren Sie den folgenden Code, und fügen Sie ihn nach der zweiten Dokumenters
     // ADD THIS PART TO YOUR CODE
     this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
-Drücken Sie F5 **** , um die Anwendung auszuführen.
+Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich eine Abfrage für eine Azure Cosmos DB-Sammlung durchgeführt.
 
@@ -459,7 +455,7 @@ Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Abfrageausführung 
 
     this.ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
 
-Drücken Sie F5 **** , um die Anwendung auszuführen.
+Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich ein Azure Cosmos DB-Dokument ersetzt.
 
@@ -484,7 +480,7 @@ Kopieren Sie den folgenden Code, und fügen Sie ihn nach der zweiten Abfrageausf
     // ADD THIS PART TO CODE
     await this.DeleteFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1");
 
-Drücken Sie F5 **** , um die Anwendung auszuführen.
+Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich ein Azure Cosmos DB-Dokument gelöscht.
 
@@ -501,7 +497,7 @@ Kopieren Sie den folgenden Code, und fügen Sie ihn nach dem Dokumentlöschvorga
     // Clean up/delete the database
     await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB"));
 
-Drücken Sie F5 **** , um die Anwendung auszuführen.
+Drücken Sie **F5** um die Anwendung auszuführen.
 
 Glückwunsch! Sie haben erfolgreich eine Azure Cosmos DB-Datenbank gelöscht.
 
@@ -547,8 +543,7 @@ Um die Verweise auf das DocumentDB .NET SDK in Visual Studio wiederherzustellen,
 Das war's auch schon! Nun müssen Sie nur noch die Erstellung durchführen.
 
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 * Möchten Sie ein komplexeres ASP.NET MVC-Tutorial durcharbeiten? Sie finden eines unter [Erstellen einer Webanwendung mit ASP.NET MVC unter Verwendung von Azure Cosmos DB](documentdb-dotnet-application.md).
 * Möchten Sie Azure Cosmos DB nutzen, um Skalierungs- und Leistungstests durchzuführen? Weitere Informationen finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
 * Informieren Sie sich über das [Überwachen eines Azure Cosmos DB-Kontos](monitor-accounts.md).

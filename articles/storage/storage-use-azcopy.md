@@ -140,7 +140,7 @@ Wenn der angegebene Zielcontainer nicht vorhanden ist, wird er von AzCopy erstel
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 
-Wenn das angegebene virtuelle Verzeichnis nicht vorhanden ist, lädt AzCopy die Datei so hoch, dass das virtuelle Verzeichnis Teil des Dateinamens wird (**z.B. `vd/abc.txt` im obigen Beispiel).
+Wenn das angegebene virtuelle Verzeichnis nicht vorhanden ist, lädt AzCopy die Datei so hoch, dass das virtuelle Verzeichnis Teil des Dateinamens wird (*z.B.*, `vd/abc.txt` im obigen Beispiel).
 
 ### <a name="upload-all-files"></a>Hochladen aller Dateien
 
@@ -267,7 +267,7 @@ Anders als beim asynchronen Kopieren kann es bei der Verwendung von `/SyncCopy` 
 AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 ```
 
-Wenn es sich bei der angegebenen Quelle um eine Azure-Dateifreigabe handelt, müssen Sie entweder den genauen Dateinamen angeben (**z.B. `abc.txt`), um eine einzelne Datei herunterzuladen, oder die Option `/S`, um alle Dateien in der Freigabe rekursiv herunterzuladen. Wenn Sie sowohl ein Dateimuster als auch die Option `/S` angeben, führt dies zu einem Fehler.
+Wenn es sich bei der angegebenen Quelle um eine Azure-Dateifreigabe handelt, müssen Sie entweder den genauen Dateinamen angeben (*z.B.* `abc.txt`), um eine einzelne Datei herunterzuladen, oder die Option `/S`, um alle Dateien in der Freigabe rekursiv herunterzuladen. Wenn Sie sowohl ein Dateimuster als auch die Option `/S` angeben, führt dies zu einem Fehler.
 
 ### <a name="download-all-files"></a>Herunterladen aller Dateien
 
