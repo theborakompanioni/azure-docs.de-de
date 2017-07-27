@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 9ab5368c173f016f44546d6c8acb360598f5f5ab
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: f6bcb18a04be9a802e14b960a1e2d04a71a691cc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals
@@ -44,7 +44,7 @@ Für den Zugriff auf Media Services sind zwei zugeordnete Konten erforderlich:
 * Ein Azure-Speicherkonto. Das Speicherkonto muss sich in der gleichen geografischen Region befinden wie das Media Services-Konto. Bei der Erstellung eines Media Services-Kontos können Sie entweder ein vorhandenes Speicherkonto in derselben Region auswählen oder ein neues Speicherkonto in derselben Region erstellen. Wenn Sie ein Media Services-Konto löschen, bleiben die Blobs im zugehörigen Speicherkonto erhalten.
 
 > [!NOTE]
-> Weitere Informationen zur Verfügbarkeit von Azure Media Services-Features in verschiedenen Regionen finden Sie unter [Availability of Media Services features across datacenters](scenarios-and-availability.md#a-idavailabilitya-availability-of-media-services-features-across-datacenters) (Datencenterübergreifende Verfügbarkeit von AMS-Features).
+> Weitere Informationen zur Verfügbarkeit von Azure Media Services-Features in verschiedenen Regionen finden Sie unter [Availability of Media Services features across datacenters](scenarios-and-availability.md#availability) (Datencenterübergreifende Verfügbarkeit von AMS-Features).
 
 ## <a name="create-an-ams-account"></a>Erstellen eines AMS-Kontos
 In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.

@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2017
 ms.author: brjohnst
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 7676262b7bca47444aee7b10a131c01e6b697e7b
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: bdd952869143c6ca6374bb9264db5bcba1f32b50
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Hochladen von Daten in Azure Search mit dem .NET SDK
@@ -34,7 +34,8 @@ In diesem Artikel erfahren Sie, wie Sie das [Azure Search .NET SDK](https://aka.
 
 [Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen. Dieser Artikel setzt auch voraus, dass Sie bereits wie unter [Erstellen eines Azure Search-Index mit dem .NET SDK](search-create-index-dotnet.md#CreateSearchServiceClient) beschrieben ein `SearchServiceClient`-Objekt erstellt haben.
 
-Beachten Sie, dass der gesamte Beispielcode in diesem Artikel in C# geschrieben wurde. Den vollständigen Quellcode finden Sie [auf GitHub](http://aka.ms/search-dotnet-howto).
+> [!NOTE]
+> Der gesamte Beispielcode in diesem Artikel wurde in C# geschrieben. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto). Eine ausführlichere exemplarische Vorgehensweise für den Beispielcode finden Sie auch unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
 Gehen Sie wie folgt vor, um Dokumente mit dem .NET SDK in Ihren Index zu übertragen:
 
