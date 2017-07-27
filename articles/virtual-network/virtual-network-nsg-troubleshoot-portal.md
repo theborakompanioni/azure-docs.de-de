@@ -103,7 +103,7 @@ Wenn der Datenverkehr auf dem virtuellen Computer für eine bestimmte NIC beeint
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image5.png)
    
-    Beachten Sie, dass **Bereich** auf die ausgewählte Netzwerkschnittstelle festgelegt ist. Weitere Informationen zu den angezeigten zusätzlichen Angaben finden Sie in Schritt 6 des Abschnitts zum **** Beheben von Problemen bei NSGs für einen virtuellen Computer in diesem Artikel.
+    Beachten Sie, dass **Bereich** auf die ausgewählte Netzwerkschnittstelle festgelegt ist. Weitere Informationen zu den angezeigten zusätzlichen Angaben finden Sie in Schritt 6 des Abschnitts zum **Beheben von Problemen bei NSGs** für einen virtuellen Computer in diesem Artikel.
    
    > [!NOTE]
    > Wenn eine NSG von einer Netzwerkschnittstelle entfernt wird, ist die Subnetz-NSG für die betreffende NIC weiterhin gültig. In diesem Fall werden in der Ausgabe nur Regeln der Subnetz-NSG angezeigt. Regeln werden nur angezeigt, wenn die NIC an einen virtuellen Computer angefügt ist.

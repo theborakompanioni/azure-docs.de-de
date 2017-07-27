@@ -192,7 +192,7 @@ Geben Sie das Administratorkennwort für die Datenbank ein, das Sie zuvor erstel
 
 ### <a name="allow-client-connection-from-your-computer"></a>Zulassen der Clientverbindung auf dem Computer
 
-Das Dialogfeld zum Erstellen einer neuen Firewallregel**** wird angezeigt. Standardmäßig lässt die SQL-Datenbankinstanz nur Verbindungen von Azure-Diensten zu, z.B. von der Azure-Web-App. Erstellen Sie zum Herstellen einer Verbindung mit Ihrer Datenbank in der SQL-Datenbankinstanz eine Firewallregel. Mit der Firewallregel wird die öffentliche IP-Adresse Ihres lokalen Computers zugelassen.
+Das Dialogfeld zum Erstellen einer neuen **Firewallregel**wird angezeigt. Standardmäßig lässt die SQL-Datenbankinstanz nur Verbindungen von Azure-Diensten zu, z.B. von der Azure-Web-App. Erstellen Sie zum Herstellen einer Verbindung mit Ihrer Datenbank in der SQL-Datenbankinstanz eine Firewallregel. Mit der Firewallregel wird die öffentliche IP-Adresse Ihres lokalen Computers zugelassen.
 
 Das Dialogfeld ist bereits mit der öffentlichen IP-Adresse des Computers ausgefüllt.
 
@@ -355,7 +355,7 @@ Klicken Sie mit der rechten Maustaste auf Ihre Azure-Web-App, und wählen Sie **
 
 ![Aktivieren des Protokollstreamings](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
-Die Protokolle werden jetzt in das Ausgabefenster**** gestreamt. 
+Die Protokolle werden jetzt in das **Ausgabefenster** gestreamt. 
 
 ![Protokollstreaming im Ausgabefenster](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
@@ -376,7 +376,7 @@ Wählen Sie in der Dropdownliste **Anwendungsprotokollierung (Dateisystem)** die
 >
 >
 
-Klicken Sie in Ihrem Browser auf die Aufgaben-App in Azure. Die Ablaufverfolgungsmeldungen werden jetzt in das Ausgabefenster**** in Visual Studio gestreamt.
+Klicken Sie in Ihrem Browser auf die Aufgaben-App in Azure. Die Ablaufverfolgungsmeldungen werden jetzt in das **Ausgabefenster**in Visual Studio gestreamt.
 
 ```
 Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
@@ -389,7 +389,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ### <a name="stop-log-streaming"></a>Beenden des Protokollstreamings
 
-Klicken Sie zum Beenden des Diensts für das Protokollstreaming auf die Schaltfläche **Überwachung beenden** im****  Ausgabefenster.
+Klicken Sie zum Beenden des Diensts für das Protokollstreaming auf die Schaltfläche **Überwachung beenden** im **Ausgabefenster**.
 
 ![Beenden des Protokollstreamings](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
 
