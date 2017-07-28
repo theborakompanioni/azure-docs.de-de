@@ -39,6 +39,8 @@
       href: tutorial-azure-security.md
     - name: '12: Bereitstellen von Jenkins'
       href: tutorial-jenkins-github-docker-cicd.md
+    - name: '13: Einrichten von CI/CD mit Team Services'
+      href: tutorial-build-deploy-jenkins.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -62,23 +64,18 @@
     - name: Container
       href: containers.md
     - name: Ressourcen-Manager
-      href: >-
-        ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       items:
         - name: Bereitstellungsmodelle
-          href: >-
-            ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Vorlagen für virtuelle Computer
-          href: >-
-            ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure Linux-Agent
       href: agent-user-guide.md
     - name: Azure Security Center
-      href: >-
-        ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Notfallwiederherstellung
-      href: >-
-        ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Geplante Wartung
       href: planned-maintenance.md
       items:
@@ -177,8 +174,7 @@
         - name: Ändern der Größe eines virtuellen Computers
           href: change-vm-size.md
         - name: Verwenden von Tags
-          href: >-
-            ../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
           items:
             - name: Kennzeichnen eines virtuellen Computers
               href: tag.md
@@ -187,11 +183,8 @@
         - name: Updaten des Azure-Linux-Agents
           href: update-agent.md
         - name: Sichern mit Recovery Services
-          href: >-
-            ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: >-
-            Verknüpfen eines virtuellen RedHat-Computers mit einem Azure Active
-            Directory-Domänendienst
+          href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Verknüpfen eines virtuellen RedHat-Computers mit einem Azure Active Directory-Domänendienst
           href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
     - name: Verbinden mit SSH
       items:
@@ -200,13 +193,9 @@
           items:
             - name: Ausführliche Schritte
               href: create-ssh-keys-detailed.md
-        - name: >-
-            Verwenden von SSH-Schlüsseln mit Windows für virtuelle
-            Linux-Computer
+        - name: Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer
           href: ssh-from-windows.md
-        - name: >-
-            Verwenden von Remotedesktop zum Herstellen einer Verbindung mit
-            einem virtuellen Linux-Computer
+        - name: Verwenden von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer
           href: use-remote-desktop.md
     - name: Verwalten von VM-Images
       items:
@@ -239,12 +228,10 @@
     - name: Verwalten von VM-Speicher
       items:
         - name: Azure Managed Disks
-          href: >-
-            ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
           items:
             - name: Häufig gestellte Fragen
-              href: >-
-                ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Kopieren von Dateien auf einen virtuellen Linux-Computer
           href: copy-files-to-linux-vm-using-scp.md
         - name: Konvertieren eines virtuellen Computers in Managed Disks
@@ -270,23 +257,17 @@
     - name: VM-Netzwerk
       items:
         - name: Erstellen virtueller Netzwerke
-          href: >-
-            ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: >-
-            Bereitstellen eines virtuellen Computers in einem vorhandenen
-            virtuellen Netzwerk
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Bereitstellen eines virtuellen Computers in einem vorhandenen virtuellen Netzwerk
           items:
             - name: Azure-Befehlszeilenschnittstelle
               href: deploy-linux-vm-into-existing-vnet-using-cli.md
             - name: Azure-Portal
               href: deploy-linux-vm-into-existing-vnet-using-portal.md
-        - name: >-
-            Erstellen eines virtuellen Computers mit mehreren
-            Netzwerkschnittstellenkarten (NICs)
+        - name: Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)
           href: multiple-nics.md
         - name: Erstellen einer statischen öffentlichen IP-Adresse
-          href: >-
-            ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 'Konfigurieren von Ports, Endpunkten und Sicherheit'
           href: endpoints-in-resource-manager.md
         - name: Zulassen des Zugriffs auf einen virtuellen Computer
@@ -300,18 +281,15 @@
         - name: Erstellen eines FQDN
           href: portal-create-fqdn.md
         - name: Erstellen benutzerdefinierter Routen
-          href: >-
-            ../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Skalierung und Verfügbarkeit
       items:
         - name: VM-Verfügbarkeit
           href: manage-availability.md
         - name: Einrichten eines Load Balancers
-          href: >-
-            ../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Skalieren mehrerer virtueller Computer mit Skalierungsgruppen
-          href: >-
-            ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Vertikales Skalieren von VMs mit Azure Automation
           href: vertical-scaling-automation.md
         - name: Überwachung virtueller Computer
@@ -320,9 +298,7 @@
       items:
         - name: Deaktivieren von SSH-Kennwörtern durch konfigurieren von SSHD
           href: mac-disable-ssh-password-usage.md
-        - name: >-
-            Zurücksetzen des SSH-Zugriffs, Verwalten von Benutzern und
-            Überprüfen von Datenträgern
+        - name: 'Zurücksetzen des SSH-Zugriffs, Verwalten von Benutzern und Überprüfen von Datenträgern'
           href: using-vmaccess-extension.md
         - name: Verwenden von Stammberechtigungen
           href: use-root-privileges.md
@@ -351,8 +327,7 @@
             - name: Bereitstellen Ihrer ersten App
               href: cloudfoundry-deploy-your-first-app.md
         - name: Virtuelle Data Science-Computer – Übersicht
-          href: >-
-            ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: MongoDB
           href: install-mongodb.md
         - name: MySQL
@@ -366,8 +341,7 @@
         - name: Bereitstellen eines Deis-Clusters mit drei Knoten
           href: deis-cluster.md
         - name: Entwickeln einer Node.js-Anwendung
-          href: >-
-            ../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Django-Web-App
           href: python-django-web-app.md
         - name: Jupyter Notebook
@@ -404,15 +378,12 @@
         - name: Häufige Fehler bei der Migration
           href: migration-classic-resource-manager-errors.md
         - name: Communitytools für die Migration
-          href: >-
-            ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Häufig gestellte Fragen
           href: migration-classic-resource-manager-faq.md
     - name: Problembehandlung
       items:
-        - name: >-
-            Unterstützungsmöglichkeiten für das Hinzufügen eines virtuellen
-            Azure-Computers zu einer vorhandenen Verfügbarkeitsgruppe
+        - name: Unterstützungsmöglichkeiten für das Hinzufügen eines virtuellen Azure-Computers zu einer vorhandenen Verfügbarkeitsgruppe
           href: ../virtual-machines-availability-set-supportability.md
         - name: Zurücksetzen des Kennworts eines virtuellen Linux-Computers
           href: virtual-machines-linux-reset-password.md
@@ -435,9 +406,7 @@
           href: troubleshoot-deployment-new-vm.md
         - name: Änderung von Gerätenamen
           href: troubleshoot-device-names-problems.md
-        - name: >-
-            Erneutes Bereitstellen eines virtuellen Computers auf einem neuen
-            Azure-Knoten
+        - name: Erneutes Bereitstellen eines virtuellen Computers auf einem neuen Azure-Knoten
           href: redeploy-to-new-node.md
         - name: Häufige Fehlermeldungen
           href: error-messages.md
@@ -466,8 +435,7 @@
 - name: Ressourcen
   items:
     - name: Verfassen von Vorlagen
-      href: >-
-        ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communityvorlagen
@@ -479,7 +447,6 @@
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: Videos
-      href: >-
-        https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: Häufig gestellte Fragen
       href: faq.md

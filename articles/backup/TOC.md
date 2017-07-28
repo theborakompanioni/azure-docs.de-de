@@ -17,7 +17,7 @@
 ### Sichern virtueller Computer
 #### [Sichern von virtuellen Computern in einem Recovery Services-Tresor](backup-azure-arm-vms.md)
 #### [Sichern verschlüsselter virtueller Computer](backup-azure-vms-encryption.md)
-#### [Sichern virtueller Azure-Computer im Sicherungstresor](backup-azure-vms.md)
+#### [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)
 ### Verwalten und Überwachen virtueller Computer
 #### [Verwalten von Azure-VM-Sicherungen im Azure-Portal](backup-azure-manage-vms.md)
 #### [Überwachen von Warnungen für Azure-VM-Sicherungen im Azure-Portal](backup-azure-monitor-vms.md)
@@ -57,7 +57,7 @@
 ### [Vorbereiten von DPM-Workloads im Azure-Portal](backup-azure-dpm-introduction.md)
 ### [Vorbereiten von DPM-Workloads im klassischen Portal](backup-azure-dpm-introduction-classic.md)
 ### [Verwenden von System Center DPM zum Sichern eines Exchange-Servers](backup-azure-backup-exchange-server.md)
-### [Wiederherstellen von Daten im Backup-Tresor auf einem anderen DPM-Server](backup-azure-alternate-dpm-server.md)
+### [Wiederherstellen von Daten auf einem anderen DPM-Server](backup-azure-alternate-dpm-server.md)
 ### [Verwenden von DPM zum Sichern von SQL Server-Workloads](backup-azure-backup-sql.md)
 ### [Verwenden von DPM zum Sichern einer SharePoint-Farm](backup-azure-backup-sharepoint.md)
 
@@ -90,11 +90,12 @@
 # Konzepte
 ## [Übersicht über Recovery Services-Tresore](backup-azure-recovery-services-vault-overview.md)
 ## [Aktualisieren eines Backup-Tresors auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md)
-## [Löschen eines Azure Backup-Tresors](backup-azure-delete-vault.md)
+## [Löschen eines Recovery Services-Tresors](backup-azure-delete-vault.md)
 ## [Rollenbasierte Zugriffssteuerung](backup-rbac-rs-vault.md)
 ## [Sicherheit für Hybrid-Sicherungen](backup-azure-security-feature.md)
 ## [Konfigurieren von Azure Backup-Berichten](backup-azure-configure-reports.md)
 ## [Datenmodell für Azure Backup-Berichte](backup-azure-reports-data-model.md)
+## [Log Analytics-Datenmodell für Azure Backup](backup-azure-log-analytics-data-model.md)
 ## [Konfigurieren der Offlinesicherung](backup-azure-backup-import-export.md)
 ## [Ersetzen der Bandbibliothek](backup-azure-backup-cloud-as-tape.md)
 ## [Anwendungskonsistente Sicherungen von virtuellen Linux-Computern](backup-azure-linux-app-consistent.md)

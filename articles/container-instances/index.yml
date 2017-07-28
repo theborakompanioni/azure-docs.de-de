@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation für Azure Container Instances
+metadata:
+  title: Dokumentation für Azure Container Instances – Tutorials | Microsoft-Dokumentation
+  description: 'Mit Azure Container Instances lassen sich Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen.'
+  services: container-instances
+  author: carolz
+  manager: carolz
+  ms.service: container-instances
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/26/2017
+  ms.author: carolz
+abstract:
+  description: 'Mit Azure Container Instances lassen sich Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen. Wenn Sie eine vollständige Lösung für die Containerorchestrierung benötigen, lesen Sie die Informationen in der <a href="/azure/container-service/kubernetes/">Dokumentation für Kubernetes in Azure Container Service</a>. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Containerinstanzen erstellen und verwalten.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: Erfahren Sie mehr über das Bereitstellen von Containerimages mit Azure Container Instances.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/container-instances/media/container-instances.png
+            text: Erstellen einer Containerinstanz
+            href: /azure/container-instances/container-instances-quickstart
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie Code in einem Containerimage packen und in einer Azure-Containerinstanz ausführen.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Packen einer Anwendung in einem Containerimage</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Erstellen einer Azure Container Registry-Instanz und Hochladen des Containerimages</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Bereitstellen des Containerimages in einer Azure-Containerinstanz</a>

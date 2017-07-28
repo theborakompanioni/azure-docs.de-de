@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation zu Azure Container Service
+title: Dokumentation zu Container Service
 metadata:
-  document_id: 
+  document_id: null
   title: 'Dokumentation für Azure Container Service – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster.  Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
   services: container-service
   author: carolz
   manager: carolz
@@ -12,55 +12,24 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01-23-2017
+  ms.date: 07-21-2017
   ms.author: carolz
 abstract:
-  description: 'Mit Azure Container Service können Sie schnell einen produktionsbereiten Kubernetes-, DC/OS- oder Docker Swarm-Cluster bereitstellen.  Erfahren Sie anhand unserer Schnellstartanleitungen, Tutorials und Beispiele, wie Sie Azure Container Service verwenden.'
+  description: 'Mit Azure Container Service können Sie schnell einen produktionsbereiten Kubernetes-, DC/OS- oder Docker Swarm-Cluster bereitstellen. Erfahren Sie anhand unserer Schnellstartanleitungen, Tutorials und Beispiele, wie Sie Azure Container Service verwenden.'
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Erfahren Sie, wie Sie Kubernetes-Cluster mithilfe von Azure Container Service bereitstellen:'
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: /media/logos/logo_linux.svg
-      text: Linux
-      href: /azure/container-service/container-service-kubernetes-walkthrough
-    - image: 
-        src: /media/logos/logo_Windows.svg
-      text: Windows
-      href: /azure/container-service/container-service-kubernetes-windows-walkthrough
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: 'Erfahren Sie, wie Sie Anwendungen in einem Azure Container Service-Kubernetes-Cluster bereitstellen, verwalten und aktualisieren.'
-  - type: list
-    style: ordered
+  - title: null
     items:
-    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-prepare-app">Create container images from an application (Erstellen von Containerimages auf der Grundlage einer Anwendung)</a>
-    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-prepare-acr">Upload container images to the Azure Container Registry (Hochladen von Containerimages in die Azure Container Registry)</a>
-    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-deploy-cluster">Deploy a Kubernetes cluster in Azure Container Service (Bereitstellen eines Kubernetes-Clusters in Azure Container Service)</a>
-    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-deploy-application">Run your container images in Kubernetes (Ausführen von Containerimages in Kubernetes)</a>
-    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-scale">Scale an application and Kubernetes infrastructure (Skalieren einer Anwendung und einer Kubernetes-Infrastruktur)</a>
-    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-app-update">Update an application running in Kubernetes (Aktualisieren einer in Kubernetes ausgeführten Anwendung)</a>
-    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-monitor">Monitor Kubernetes with OMS (Überwachen von Kubernetes mit OMS)</a>
-- title: Beispiele
- 
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
-    items:
-    - html: <a href="/azure/container-service/cli-samples">Azure-CLI</a>
-- title: Referenz
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Befehlszeile
-      html: <p><a href="/cli/azure/acs">Azure-CLI</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/compute/containerservices">REST-API</a></p>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Erste Schritte mit Kubernetes-Clustern
+            href: /azure/container-service/kubernetes
+            image:
+              src: media/index/get-started.svg
+              href: /azure/container-service/kubernetes
+          - title: Erste Schritte mit DC/OS- und Docker Swarm-Clustern
+            href: /azure/container-service/dcos-swarm
+            image:
+              src: media/index/get-started.svg
+              href: /azure/container-service/dcos-swarm

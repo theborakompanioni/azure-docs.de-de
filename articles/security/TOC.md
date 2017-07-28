@@ -1,5 +1,6 @@
 # [Übersicht](azure-security.md)
 ## [Netzwerksicherheit](security-network-overview.md)
+## [Datenbanksicherheit](azure-database-security-overview.md)
 ## [Speichersicherheit](security-storage-overview.md)
 ## [Computesicherheit](security-virtual-machines-overview.md)
 ## [Sicherheitsverwaltung und -überwachung](security-management-and-monitoring-overview.md)
@@ -12,6 +13,7 @@
 ### [Isolation in der öffentlichen Cloud](azure-isolation.md)
 ### [Technische Sicherheitsfunktionen](azure-security-technical-capabilities.md)
 ### [Governance in Azure](governance-in-azure.md)
+### [Datenverschlüsselung ruhender Daten](azure-security-encryption-atrest.md)
 
 # Erste Schritte
 ## [Erste Schritte mit Azure-Sicherheit](azure-security-getting-started.md)
@@ -51,6 +53,7 @@
 ## PaaS-Dienste
 ### [Schützen von PaaS-Bereitstellungen](security-paas-deployments.md)
 #### [Schützen webbasierter und mobiler PaaS-Anwendungen mit SQL](security-paas-applications-using-sql.md)
+#### [Bewährte Methoden für SQL-Datenbank](azure-database-security-best-practices.md)
 #### [Schützen webbasierter und mobiler PaaS-Anwendungen mit App Services](security-paas-applications-using-app-services.md)
 
 ## Internet der Dinge
@@ -73,7 +76,7 @@
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # Ressourcen
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MVP-Programm für die Azure-Sicherheit](azure-security-mvp.md)
 ## [Cybersecurity-Consulting](azure-security-cyber-services.md)
 ## [Blog zu Sicherheit und Compliance](http://blogs.msdn.com/b/azuresecurity/)
