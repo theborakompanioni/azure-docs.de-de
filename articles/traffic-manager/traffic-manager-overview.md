@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/16/2017
+ms.date: 06/15/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 3f1f19f8d8a4f2e6e892ba3ede67f3749cedb11b
-ms.lasthandoff: 04/22/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 50d7f14d0d4234ee98d8a46e903b5f916cb02fab
+ms.contentlocale: de-de
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -25,7 +26,7 @@ ms.lasthandoff: 04/22/2017
 
 Microsoft Azure Traffic Manager ermöglicht die Verteilung von Benutzerdatenverkehr für Dienstendpunkte in unterschiedlichen Rechenzentren. Zu den von Traffic Manager unterstützten Dienstendpunkten zählen virtuelle Azure-Computer, Web-Apps und Clouddienste. Darüber hinaus kann Traffic Manager auch mit externen, Azure-fremden Endpunkten verwendet werden.
 
-Traffic Manager verwendet das Domain Name System (DNS), um Clientanforderungen auf der Grundlage einer [Datenverkehrsrouting-Methode](traffic-manager-routing-methods.md) und der Integrität der Endpunkte an den optimalen Endpunkt weiterzuleiten. Traffic Manager bietet eine Reihe von Datenverkehrsrouting-Methoden, die verschiedene Anwendungsanforderungen erfüllen und die [Überwachung](traffic-manager-monitoring.md) der Integrität von Endpunkten sowie automatisches Failover ermöglichen. Traffic Manager zeichnet sich durch eine geringe Fehleranfälligkeit aus, selbst wenn es zu einem Ausfall einer ganzen Azure-Region kommt.
+Traffic Manager verwendet das Domain Name System (DNS), um Clientanforderungen auf der Grundlage einer Datenverkehrsrouting-Methode und der Integrität der Endpunkte an den optimalen Endpunkt weiterzuleiten. Traffic Manager bietet eine Reihe von [Datenverkehrsrouting-Methoden](traffic-manager-routing-methods.md) und [Endpunktüberwachungsoptionen](traffic-manager-monitoring.md), die verschiedene Anwendungsanforderungen erfüllen sowie automatisches Failover ermöglichen. Traffic Manager zeichnet sich durch eine geringe Fehleranfälligkeit aus, selbst wenn es zu einem Ausfall einer ganzen Azure-Region kommt.
 
 ## <a name="traffic-manager-benefits"></a>Vorteile von Traffic Manager
 
@@ -68,11 +69,11 @@ Wenn ein Client eine Verbindung mit einem Dienst herstellen möchte, muss zunäc
 
 Contoso Corp hat ein neues Partnerportal entwickelt. Die URL für dieses Portal lautet https://partners.contoso.com/login.aspx. Die Anwendung wird in drei Bereichen von Azure gehostet. Traffic Manager wird zur Verteilung des Clientdatenverkehrs auf den nächstgelegenen verfügbaren Endpunkt verwendet, um die Verfügbarkeit zu verbessern und die allgemeine Leistung zu maximieren.
 
-Hierzu geht das Unternehmen wie folgt vor:
+Um diese Konfiguration zu erzielen, werden die folgenden Schritte ausgeführt:
 
-* Es stellt drei Instanzen des Diensts bereit. Die DNS-Namen dieser Bereitstellungen lauten „contoso-us.cloudapp.net“, „contoso-eu.cloudapp.net“ und „contoso-asia.cloudapp.net“.
-* Anschließend erstellt das Unternehmen ein Traffic Manager-Profil namens „contoso.trafficmanager.net“ und konfiguriert es für die Verwendung der leistungsorientierten Datenverkehrsrouting-Methode für die drei Endpunkte.
-* Abschließend konfiguriert es die Vanity-Domänennamen namens „partners.contoso.com“ mit einem Verweis auf „contoso.trafficmanager.net“ (unter Verwendung eines DNS CNAME-Eintrags).
+1. Drei Instanzen des Diensts werden bereitgestellt. Die DNS-Namen dieser Bereitstellungen lauten „contoso-us.cloudapp.net“, „contoso-eu.cloudapp.net“ und „contoso-asia.cloudapp.net“.
+2. Ein Traffic Manager-Profil namens „contoso.trafficmanager.net“ wird erstellt und für die Verwendung der leistungsorientierten Datenverkehrsrouting-Methode für die drei Endpunkte konfiguriert.
+* Der Vanity-Domänenname „partners.contoso.com“ mit einem Verweis auf „contoso.trafficmanager.net“ (unter Verwendung eines DNS CNAME-Eintrags) wird konfiguriert.
 
 ![Traffic Manager-DNS-Konfiguration][1]
 
@@ -99,7 +100,7 @@ Wenn ein Client (das vorherige Beispiel fortgesetzt) die Seite „https://partne
 7. Der rekursive DNS-Dienst konsolidiert die Ergebnisse und gibt an den Client eine DNS-Antwort zurück.
 8. Der Client erhält die DNS-Ergebnisse und stellt eine Verbindung mit der angegebenen IP-Adresse her. Der Client stellt die Verbindung mit dem Dienstendpunkt der Anwendung direkt und nicht über Traffic Manager her. Da es sich um einen HTTPS-Endpunkt handelt, führt der Client erst den erforderlichen SSL/TLS-Handshake durch und fordert anschließend per HTTP GET-Anforderung die Seite „/login.aspx“ an.
 
-Der rekursive DNS-Dienst speichert die erhaltenen DNS-Antworten im Cache. Von der DNS-Auflösung auf dem Clientgerät wird das Ergebnis ebenfalls im Cache gespeichert. Durch das Speichern im Cache können nachfolgende DNS-Abfragen schneller abgewickelt werden, da keine anderen Namenserver abgefragt werden müssen, sondern die Daten aus dem Cache verwendet werden können. Wie lange die Daten zwischengespeichert werden, hängt von der TTL-Eigenschaft der einzelnen DNS-Einträge ab. Kleinere Werte bedeuten, dass der Cache schneller abläuft und somit mehr Roundtrips zu den Traffic Manager-Nameservern erforderlich sind. Größere Werte bedeuten, dass es möglicherweise länger dauert, bis der Datenverkehr von einem fehlerhaften Endpunkt weggeleitet wird. Mit Traffic Manager können Sie die TTL für Traffic Manager-DNS-Antworten konfigurieren und so einen Wert wählen, der für die Anforderungen Ihrer Anwendung am besten geeignet ist.
+Der rekursive DNS-Dienst speichert die erhaltenen DNS-Antworten im Cache. Von der DNS-Auflösung auf dem Clientgerät wird das Ergebnis ebenfalls im Cache gespeichert. Durch das Speichern im Cache können nachfolgende DNS-Abfragen schneller abgewickelt werden, da keine anderen Namenserver abgefragt werden müssen, sondern die Daten aus dem Cache verwendet werden können. Wie lange die Daten zwischengespeichert werden, hängt von der TTL-Eigenschaft der einzelnen DNS-Einträge ab. Kleinere Werte bedeuten, dass der Cache schneller abläuft und somit mehr Roundtrips zu den Traffic Manager-Nameservern erforderlich sind. Größere Werte bedeuten, dass es möglicherweise länger dauert, bis der Datenverkehr von einem fehlerhaften Endpunkt weggeleitet wird. Mit Traffic Manager können Sie die TTL für Traffic Manager-DNS-Antworten von 0 bis 2.147.483.647 Sekunden (maximale Länge, die [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt) entspricht)konfigurieren und so einen Wert wählen, der für die Anforderungen Ihrer Anwendung am besten geeignet ist.
 
 ## <a name="pricing"></a>Preise
 
@@ -114,6 +115,8 @@ Häufig gestellte Fragen zu Traffic Manager finden Sie unter [Häufig gestellte 
 Informieren Sie sich ausführlicher über [Endpunktüberwachung und automatisches Failover](traffic-manager-monitoring.md)von Traffic Manager.
 
 Informieren Sie sich ausführlicher über [Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md).
+
+Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.
 
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
