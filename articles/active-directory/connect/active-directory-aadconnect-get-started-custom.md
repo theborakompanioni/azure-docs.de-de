@@ -14,29 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: f36d5da78818410e028a73a36a502a758400e5a5
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 82e8d7e0ea975f140eaf73a625d181a4ec68eaa7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/21/2017
 
 ---
-# Benutzerdefinierte Installation von Azure AD Connect
-<a id="custom-installation-of-azure-ad-connect" class="xliff"></a>
+# <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](active-directory-aadconnect-get-started-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
 
 Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die unter [Azure AD Connect: Hardware und Voraussetzungen](active-directory-aadconnect-prerequisites.md) beschriebenen Schritte zur Vorbereitung ausführen. Stellen Sie außerdem sicher, dass die erforderlichen Konten verfügbar sind. Dies ist unter [AzureAD Connect-Konten und -Berechtigungen](active-directory-aadconnect-accounts-permissions.md) beschrieben.
 
 Wenn die benutzerdefinierten Einstellungen nicht zu Ihrer Topologie passen, z.B. in Bezug auf die DirSync-Aktualisierung, helfen Ihnen die Beschreibungen in der [verwandten Dokumentation](#related-documentation) weiter.
 
-## Installation von Azure AD Connect mit benutzerdefinierten Einstellungen
-<a id="custom-settings-installation-of-azure-ad-connect" class="xliff"></a>
-### Expresseinstellungen
-<a id="express-settings" class="xliff"></a>
+## <a name="custom-settings-installation-of-azure-ad-connect"></a>Installation von Azure AD Connect mit benutzerdefinierten Einstellungen
+### <a name="express-settings"></a>Expresseinstellungen
 Klicken Sie auf dieser Seite auf **Anpassen** , um eine Installation mit benutzerdefinierten Einstellungen zu starten.
 
-### Installieren der erforderlichen Komponenten
-<a id="install-required-components" class="xliff"></a>
+### <a name="install-required-components"></a>Installieren der erforderlichen Komponenten
 Bei der Installation der Synchronisierungsdienste können Sie den optionalen Konfigurationsabschnitt deaktiviert lassen, sodass Azure AD Connect alles automatisch einrichtet. Azure AD Connect richtet eine SQL Server 2012 Express LocalDB-Instanz ein, erstellt die entsprechenden Gruppen und weist Berechtigungen zu. Wenn Sie die Standardeinstellungen ändern möchten, können Sie sich in der folgenden Tabelle über die verfügbaren optionalen Konfigurationsoptionen informieren.
 
 ![Erforderliche Komponenten](./media/active-directory-aadconnect-get-started-custom/requiredcomponents.png)
@@ -47,8 +43,7 @@ Bei der Installation der Synchronisierungsdienste können Sie den optionalen Kon
 | Verwenden eines vorhandenen Dienstkontos |Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie einen Remote-SQL Server oder einen Proxy mit Authentifizierungsanforderung verwenden, benötigen Sie ein **verwaltetes Dienstkonto** oder ein Dienstkonto in der Domäne und das Kennwort. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass der die Installation ausführende Benutzer ein SA in SQL ist, damit das Dienstkonto erstellt werden kann. Siehe [Azure AD Connect-Konten und -Berechtigungen](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account) |
 | Angeben benutzerdefinierter Synchronisierungsgruppen |Azure AD Connect erstellt beim Installieren der Synchronisierungsdienste standardmäßig vier lokale Gruppen auf dem Server. Diese Gruppen sind: Administratorengruppe, Operatorengruppe, Durchsuchen-Gruppe und die Gruppe "Kennwort zurücksetzen". Hier können Sie Ihre eigenen Gruppen angeben. Die Gruppen müssen sich lokal auf dem Server befinden und dürfen nicht in der Domäne sein. |
 
-### Benutzeranmeldung
-<a id="user-sign-in" class="xliff"></a>
+### <a name="user-sign-in"></a>Benutzeranmeldung
 Nach der Installation der erforderlichen Komponenten werden Sie aufgefordert, die Methode für das einmalige Anmelden Ihrer Benutzer auszuwählen. Die folgende Tabelle enthält eine kurze Beschreibung der verfügbaren Optionen. Eine vollständige Beschreibung der Anmeldemethoden finden Sie unter [Benutzeranmeldung](active-directory-aadconnect-user-signin.md).
 
 ![Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
@@ -63,8 +58,7 @@ Nach der Installation der erforderlichen Komponenten werden Sie aufgefordert, di
 |Einmaliges Anmelden|Diese Option ist für Kunden mit Kennwortsynchronisierung verfügbar und ermöglicht das einmalige Anmelden für Desktopbenutzer im Unternehmensnetzwerk.  </br>Weitere Informationen finden Sie unter [Einmaliges Anmelden](active-directory-aadconnect-sso.md). </br>Beachten Sie, dass diese Option für AD FS-Kunden nicht verfügbar ist, da AD FS bereits das einmalige Anmelden dieser Art ermöglicht
 
 
-### Mit Azure AD verbinden
-<a id="connect-to-azure-ad" class="xliff"></a>
+### <a name="connect-to-azure-ad"></a>Mit Azure AD verbinden
 Geben Sie im Bildschirm "Mit Azure AD verbinden" ein Konto und ein Kennwort für den globalen Administrator ein. Wenn Sie auf der vorherigen Seite **Verbund mit AD FS** ausgewählt haben, melden Sie sich nicht mit einem Konto in einer Domäne an, die Sie für den Verbund aktivieren möchten. Wir empfehlen Ihnen die Verwendung eines Kontos in der standardmäßigen Domäne **onmicrosoft.com** , die in Ihrem Azure AD-Verzeichnis enthalten ist.
 
 Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD und wird nach Abschluss des Assistenten nicht mehr verwendet.  
@@ -77,11 +71,9 @@ Für das globale Administratorkonto kann auch [Privileged Identity Management](.
 
 Falls ein Fehler auftritt und Sie Probleme mit der Konnektivität haben, können Sie unter [Problembehebung bei Konnektivitätsproblemen](active-directory-aadconnect-troubleshoot-connectivity.md) nach einer Lösung suchen.
 
-## Seiten im Abschnitt "Synchronisierung"
-<a id="pages-under-the-section-sync" class="xliff"></a>
+## <a name="pages-under-the-section-sync"></a>Seiten im Abschnitt "Synchronisierung"
 
-### Verzeichnisse verbinden
-<a id="connect-your-directories" class="xliff"></a>
+### <a name="connect-your-directories"></a>Verzeichnisse verbinden
 Zum Herstellen einer Verbindung mit Ihren Active Directory Domain Services benötigt Azure AD Connect den Namen der Gesamtstruktur und die Anmeldeinformationen für ein Konto, das über ausreichende Berechtigungen verfügt.
 
 ![Verzeichnis verbinden](./media/active-directory-aadconnect-get-started-custom/connectdir01.png)
@@ -96,8 +88,7 @@ Nachdem Sie den Namen der Gesamtstruktur eingegeben und auf **Verzeichnis hinzuf
 ![Verzeichnis verbinden](./media/active-directory-aadconnect-get-started-custom/connectdir02.png)
 
 
-### Konfiguration der Azure AD-Anmeldung
-<a id="azure-ad-sign-in-configuration" class="xliff"></a>
+### <a name="azure-ad-sign-in-configuration"></a>Konfiguration der Azure AD-Anmeldung
 Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS-Instanz vorhanden sind und in Azure AD überprüft wurden. Darüber hinaus können Sie auf dieser Seite das Attribut für „userPrincipalName“ konfigurieren.
 
 ![Nicht überprüfte Domänen](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png)  
@@ -113,8 +104,7 @@ Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS
 >
 >
 
-### Filterung von Domänen und Organisationseinheiten
-<a id="domain-and-ou-filtering" class="xliff"></a>
+### <a name="domain-and-ou-filtering"></a>Filterung von Domänen und Organisationseinheiten
 Standardmäßig werden alle Domänen und Organisationseinheiten synchronisiert. Wenn Sie Domänen oder Organisationseinheiten nicht in Azure AD synchronisieren möchten, können Sie diese Domänen und Organisationseinheiten deaktivieren.  
 ![Domänen und Organisationseinheiten filtern](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)  
 Diese Seite des Assistenten dient zum Konfigurieren der domänenbasierten und OE-basierten Filterung. Wenn Sie Änderungen vornehmen möchten, ist ratsam, vorher die Informationen in den Abschnitten zur [domänenbasierten Filterung](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) und [OE-basierten Filterung](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) zu lesen. Einige OEs sind für die Funktionalität sehr wichtig und sollten nicht deaktiviert werden.
@@ -127,11 +117,9 @@ Möglicherweise sind bestimmte Domänen aufgrund von Beschränkungen der Firewal
 ![Nicht erreichbare Domänen](./media/active-directory-aadconnect-get-started-custom/unreachable.png)  
 Falls diese Warnung angezeigt wird, sollten Sie sich vergewissern, dass die entsprechenden Domänen tatsächlich nicht erreichbar sind und die Warnung zu erwarten ist.
 
-### Eindeutige Identifizierung der Benutzer
-<a id="uniquely-identifying-your-users" class="xliff"></a>
+### <a name="uniquely-identifying-your-users"></a>Eindeutige Identifizierung der Benutzer
 
-#### Auswählen, wie Benutzer in Ihren lokalen Verzeichnissen identifiziert werden sollen
-<a id="select-how-users-should-be-identified-in-your-on-premises-directories" class="xliff"></a>
+#### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>Auswählen, wie Benutzer in Ihren lokalen Verzeichnissen identifiziert werden sollen
 Mit dem Feature zum Abgleich über Gesamtstrukturen können Sie definieren, wie Benutzer Ihrer AD DS-Gesamtstrukturen in Azure AD repräsentiert werden. Ein Benutzer kann entweder nur einmal in allen Gesamtstrukturen vorhanden sein oder über eine Kombination aus aktivierten und deaktivierten Konten verfügen. In bestimmten Gesamtstrukturen wird der Benutzer unter Umständen auch als Kontakt dargestellt.
 
 ![Eindeutig](./media/active-directory-aadconnect-get-started-custom/unique.png)
@@ -139,13 +127,12 @@ Mit dem Feature zum Abgleich über Gesamtstrukturen können Sie definieren, wie 
 | Einstellung | Beschreibung |
 | --- | --- |
 | [Benutzer sind nur einmal in allen Gesamtstrukturen vorhanden.](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |Alle Benutzer werden in Azure AD jeweils als einzelne Objekte erstellt. Die Objekte werden nicht im Metaverse verknüpft. |
-| [E-Mail-Attribut](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |Diese Option verknüpft Benutzer und Kontakte, wenn dieses Attribut in verschiedenen Gesamtstrukturen denselben Wert aufweist. Verwenden Sie diese Option, wenn Ihre Kontakte mit GALSync erstellt wurden. |
+| [E-Mail-Attribut](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |Diese Option verknüpft Benutzer und Kontakte, wenn dieses Attribut in verschiedenen Gesamtstrukturen denselben Wert aufweist. Verwenden Sie diese Option, wenn Ihre Kontakte mit GALSync erstellt wurden. Bei Verwendung dieser Option werden Benutzerobjekte, deren E-Mail-Attribut nicht aufgefüllt ist, nicht mit Azure AD synchronisiert. |
 | [ObjectSID und msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |Mit dieser Option wird ein aktivierter Benutzer in einer Kontogesamtstruktur mit einem deaktivierten Benutzer in einer Ressourcengesamtstruktur verknüpft. In Exchange wird diese Konfiguration als verknüpftes Postfach bezeichnet. Diese Option kann auch verwendet werden, wenn Sie nur Lync verwenden und Exchange in der Ressourcengesamtstruktur nicht vorhanden ist. |
 | sAMAccountName und MailNickName |Mit dieser Option werden Attribute mit der Stelle verknüpft, an der sich erwartungsgemäß die Anmelde-ID für den Benutzer befindet. |
-| Ein bestimmtes Attribut |Mit dieser Option können Sie Ihr eigenes Attribut auswählen. **Einschränkung** : Wählen Sie unbedingt ein Attribut aus, das bereits im Metaverse vorhanden ist. Wenn Sie ein benutzerdefiniertes (nicht im Metaverse vorhandenes) Attribut auswählen, kann der Assistent nicht abgeschlossen werden. |
+| Ein bestimmtes Attribut |Mit dieser Option können Sie Ihr eigenes Attribut auswählen. Bei Verwendung dieser Option werden Benutzerobjekte, deren (ausgewähltes) Attribut nicht aufgefüllt ist, nicht mit Azure AD synchronisiert. **Einschränkung** : Wählen Sie unbedingt ein Attribut aus, das bereits im Metaverse vorhanden ist. Wenn Sie ein benutzerdefiniertes (nicht im Metaverse vorhandenes) Attribut auswählen, kann der Assistent nicht abgeschlossen werden. |
 
-#### Auswählen, wie Benutzer bei Azure AD identifiziert werden sollen – Quellanker
-<a id="select-how-users-should-be-identified-with-azure-ad---source-anchor" class="xliff"></a>
+#### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Auswählen, wie Benutzer bei Azure AD identifiziert werden sollen – Quellanker
 Das sourceAnchor-Attribut ist während der Lebensdauer eines Benutzerobjekts unveränderlich. Das Attribut ist der Primärschlüssel, der den lokalen Benutzer mit dem Benutzer in Azure AD verknüpft.
 
 | Einstellung | Beschreibung |
@@ -155,8 +142,7 @@ Das sourceAnchor-Attribut ist während der Lebensdauer eines Benutzerobjekts unv
 
 Da das Attribut nicht geändert werden kann, müssen Sie sorgfältig planen, welches Attribut Sie verwenden möchten. Hier empfiehlt sich "objectGUID". Dieses Attribut wird nicht geändert, es sei denn, das Benutzerkonto wird zwischen Gesamtstrukturen/Domänen verschoben. In einer Umgebung mit mehreren Gesamtstrukturen, in der Sie Konten zwischen Gesamtstrukturen verschieben, muss ein anderes Attribut verwendet werden, z. B. ein Attribut mit der Mitarbeiter-ID. Vermeiden Sie die Verwendung von Attributen, die sich ändern, wenn eine Person heiratet oder den Aufgabenbereich wechselt. Sie können keine Attribute mit einem @-signZeichen verwenden, sodass E-Mail-Adressen und Benutzerprinzipalnamen ungeeignet sind. Bei dem Attribut wird die Groß-/Kleinschreibung beachtet. Beim Verschieben von Objekten zwischen Gesamtstrukturen muss daher die Groß-/Kleinschreibung beibehalten werden. Binäre Attribute werden base64-codiert, andere Attributtypen bleiben dagegen unverschlüsselt. In Verbundszenarien und bei einigen Azure AD-Schnittstellen wird dieses Attribut auch als immutableID-Attribut bezeichnet. Weitere Informationen zum Quellanker finden Sie unter [Entwurfskonzepte](active-directory-aadconnect-design-concepts.md#sourceanchor).
 
-### Synchronisierungsfilterung anhand von Gruppen
-<a id="sync-filtering-based-on-groups" class="xliff"></a>
+### <a name="sync-filtering-based-on-groups"></a>Synchronisierungsfilterung anhand von Gruppen
 Mit der Filterung nach Gruppen haben Sie die Möglichkeit, nur eine kleine Teilmenge von Objekten für einen Piloten zu synchronisieren. Erstellen Sie dazu in Ihrem lokalen Active Directory eine Gruppe für diesen Zweck. Fügen Sie anschließend Benutzer und Gruppen hinzu, die als direkte Mitglieder mit Azure AD synchronisiert werden sollen. Später können Sie Benutzer hinzufügen und entfernen, um die Liste mit den Objekten zu verwalten, die in Azure AD vorhanden sein sollen. Alle Objekte, die Sie synchronisieren möchten, müssen direkte Mitglieder der Gruppe sein. Benutzer, Gruppen, Kontakte und Computer/Geräte müssen jeweils direkte Mitglieder sein. Geschachtelte Gruppenmitgliedschaften werden nicht aufgelöst. Wenn Sie eine Gruppe als Mitglied hinzufügen, wird nur die Gruppe hinzugefügt, nicht aber ihre Mitglieder.
 
 ![Synchronisierungsfilterung](./media/active-directory-aadconnect-get-started-custom/filter2.png)
@@ -168,8 +154,7 @@ Mit der Filterung nach Gruppen haben Sie die Möglichkeit, nur eine kleine Teilm
 
 In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit allen zu synchronisierenden Objekten zu verwalten. Verwenden Sie stattdessen eine der unter [Konfigurieren der Filterung](active-directory-aadconnectsync-configure-filtering.md) beschriebenen Methoden.
 
-### Optionale Features
-<a id="optional-features" class="xliff"></a>
+### <a name="optional-features"></a>Optionale Features
 Über diesen Bildschirm können Sie die optionalen Features für Ihre spezifischen Szenarios auswählen.
 
 ![Optionale Features](./media/active-directory-aadconnect-get-started-custom/optional.png)
@@ -190,8 +175,7 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 | Geräterückschreiben |Ermöglicht für bedingte Szenarios das Rückschreiben von Geräteobjekten in Azure AD auf Ihr lokales Active Directory. Weitere Informationen finden Sie unter [Aktivieren des Geräterückschreibens in Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md). |
 | Verzeichniserweiterungen-Attributsynchronisierung |Durch Aktivieren der Attributsynchronisierung für Verzeichniserweiterungen werden die angegebenen Attribute mit Azure AD synchronisiert. Weitere Informationen finden Sie unter [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md). |
 
-### Azure AD-App- und Attributfilterung
-<a id="azure-ad-app-and-attribute-filtering" class="xliff"></a>
+### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD-App- und Attributfilterung
 Wenn Sie einschränken möchten, welche Attribute mit Azure AD synchronisiert werden, wählen Sie zunächst die verwendeten Dienste aus. Falls Sie auf dieser Seite Konfigurationsänderungen vornehmen, muss durch erneutes Ausführen des Installations-Assistenten explizit ein neuer Dienst ausgewählt werden.
 
 ![Optionale Features – Apps](./media/active-directory-aadconnect-get-started-custom/azureadapps2.png)
@@ -205,23 +189,20 @@ Auf der Grundlage der im vorherigen Schritt ausgewählten Dienste werden auf die
 >
 >
 
-### Verzeichniserweiterungen-Attributsynchronisierung
-<a id="directory-extension-attribute-sync" class="xliff"></a>
+### <a name="directory-extension-attribute-sync"></a>Verzeichniserweiterungen-Attributsynchronisierung
 Das Schema in Azure AD kann durch von Ihrer Organisation hinzugefügte benutzerdefinierte Attribute oder durch andere Attribute in Active Directory erweitert werden. Wählen Sie auf der Seite **Optionale Features** die Option **Verzeichniserweiterungen-Attributsynchronisierung** aus, um dieses Feature zu verwenden. Auf dieser Seite können weitere zu synchronisierende Attribute ausgewählt werden.
 
 ![Verzeichniserweiterungen](./media/active-directory-aadconnect-get-started-custom/extension2.png)
 
 Weitere Informationen finden Sie unter [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md).
 
-### Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO)
-<a id="enabling-single-sign-on-sso" class="xliff"></a>
+### <a name="enabling-single-sign-on-sso"></a>Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO)
 Das Konfigurieren des einmaligen Anmeldens zur Verwendung mit der Kennwortsynchronisierung oder Passthrough-Authentifizierung ist ein einfacher Prozess, den Sie nur einmal für jede Gesamtstruktur durchführen müssen, die mit Azure AD synchronisiert wird. Die Konfiguration umfasst zwei Schritte:
 
 1.  Erstellen des erforderlichen Computerkontos in Ihrer lokalen Active Directory-Instanz
 2.  Konfigurieren der Intranetzone der Clientcomputer zur Unterstützung des einmaligen Anmeldens
 
-#### Erstellen des Computerkontos in Active Directory
-<a id="create-the-computer-account-in-active-directory" class="xliff"></a>
+#### <a name="create-the-computer-account-in-active-directory"></a>Erstellen des Computerkontos in Active Directory
 Für jede Gesamtstruktur, die in Azure AD Connect hinzugefügt wurde, müssen Sie Domänenadministrator-Anmeldeinformationen angeben, damit das Computerkonto in jeder Gesamtstruktur erstellt werden kann. Die Anmeldeinformationen werden nur zum Erstellen des Kontos verwendet und nicht für andere Vorgänge gespeichert oder genutzt. Fügen Sie die Anmeldeinformationen einfach wie folgt auf der Seite **Einmaliges Anmelden aktivieren** des Azure AD Connect-Assistenten hinzu:
 
 ![Einmaliges Anmelden aktivieren](./media/active-directory-aadconnect-get-started-custom/enablesso.png)
@@ -229,8 +210,7 @@ Für jede Gesamtstruktur, die in Azure AD Connect hinzugefügt wurde, müssen Si
 >[!NOTE]
 >Sie können eine bestimmte Gesamtstruktur auch überspringen, wenn das einmalige Anmelden für die Gesamtstruktur nicht verwendet werden soll.
 
-#### Konfigurieren der Intranetzone für Clientcomputer
-<a id="configure-the-intranet-zone-for-client-machines" class="xliff"></a>
+#### <a name="configure-the-intranet-zone-for-client-machines"></a>Konfigurieren der Intranetzone für Clientcomputer
 Damit der Client in der Intranetzone automatisch angemeldet wird, müssen Sie dafür sorgen, dass zwei URLs Teil der Intranetzone sind. So wird sichergestellt, dass der in die Domäne eingebundene Computer automatisch ein Kerberos-Ticket an Azure AD sendet, wenn eine Verbindung mit dem Unternehmensnetzwerk besteht.
 Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 
@@ -249,28 +229,24 @@ Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 
 6.  Klicken Sie zweimal auf **OK**.
 
-## Konfigurieren des Verbunds mit AD FS
-<a id="configuring-federation-with-ad-fs" class="xliff"></a>
+## <a name="configuring-federation-with-ad-fs"></a>Konfigurieren des Verbunds mit AD FS
 Das Konfigurieren von AD FS mit Azure AD Connect ist mit nur wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:
 
 * Ein Windows Server 2012 R2-Server für den Verbundserver mit aktivierter Remoteverwaltung
 * Ein Windows Server 2012 R2-Server für den Webanwendungsproxy-Server mit aktivierter Remoteverwaltung
 * Ein SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
 
-### Voraussetzungen für die AD FS-Konfiguration
-<a id="ad-fs-configuration-pre-requisites" class="xliff"></a>
+### <a name="ad-fs-configuration-pre-requisites"></a>Voraussetzungen für die AD FS-Konfiguration
 Vergewissern Sie sich, dass WinRM auf den Remoteservern aktiviert ist, damit Sie Ihre AD FS-Farm mithilfe von Azure AD Connect konfigurieren können. Machen Sie sich außerdem unter [Tabelle 3: Azure AD Connect und Verbund-/WAP-Server](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) mit den Portanforderungen vertraut.
 
-### Erstellen einer neuen AD FS-Farm oder Verwenden einer vorhandenen AD FS-Farm
-<a id="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm" class="xliff"></a>
+### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>Erstellen einer neuen AD FS-Farm oder Verwenden einer vorhandenen AD FS-Farm
 Sie können eine vorhandene AD FS-Farm verwenden oder eine neue AD FS-Farm erstellen. Wenn Sie eine neue Farm erstellen, müssen Sie ein SSL-Zertifikat bereitstellen. Bei Verwendung eines kennwortgeschützten SSL-Zertifikats werden Sie zur Eingabe des Kennworts aufgefordert.
 
 ![AD FS-Farm](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
 Wenn Sie sich für die Verwendung einer bereits vorhandenen AD FS-Farm entscheiden, gelangen Sie direkt zur Konfiguration der Vertrauensstellung zwischen AD FS und Azure AD.
 
-### Angeben der AD FS-Server
-<a id="specify-the-ad-fs-servers" class="xliff"></a>
+### <a name="specify-the-ad-fs-servers"></a>Angeben der AD FS-Server
 Geben Sie die Server ein, auf denen Sie AD FS installieren möchten. Sie können je nach Ihren Kapazitätsplanungsanforderungen einen oder mehrere Server hinzufügen. Verknüpfen Sie vor dieser Konfiguration alle Server mit Active Directory. Microsoft empfiehlt, einen einzelnen AD FS-Server für Test- und Pilotbereitstellungen zu installieren. Nach der Erstkonfiguration können Sie dann Azure AD Connect erneut ausführen und weitere Server hinzufügen und bereitstellen, um Ihren Skalierungsanforderungen gerecht zu werden.
 
 > [!NOTE]
@@ -280,8 +256,7 @@ Geben Sie die Server ein, auf denen Sie AD FS installieren möchten. Sie können
 
 ![AD FS-Server](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
 
-### Angeben von Webanwendungsproxy-Servern
-<a id="specify-the-web-application-proxy-servers" class="xliff"></a>
+### <a name="specify-the-web-application-proxy-servers"></a>Angeben von Webanwendungsproxy-Servern
 Geben Sie die Server ein, die Sie als Webanwendungsproxy-Server verwenden möchten. Der Webanwendungsproxy-Server wird in Ihrer DMZ bereitgestellt (Extranetzugriff) und unterstützt Authentifizierungsanforderungen aus dem Extranet. Sie können je nach Ihren Kapazitätsplanungsanforderungen einen oder mehrere Server hinzufügen. Microsoft empfiehlt, einen einzelnen Webanwendungsproxy-Server für Test- und Pilotbereitstellungen zu installieren. Nach der Erstkonfiguration können Sie dann Azure AD Connect erneut ausführen und weitere Server hinzufügen und bereitstellen, um Ihren Skalierungsanforderungen gerecht zu werden. Es empfiehlt sich, eine entsprechende Anzahl von Proxyservern bereitzustellen, um die Authentifizierung über das Intranet zu ermöglichen.
 
 > [!NOTE]
@@ -296,8 +271,7 @@ Sie werden zur Eingabe von Anmeldeinformationen aufgefordert, damit der Webanwen
 
 ![Proxy](./media/active-directory-aadconnect-get-started-custom/adfs4.png)
 
-### Angeben eines Dienstkontos für den AD FS-Dienst
-<a id="specify-the-service-account-for-the-ad-fs-service" class="xliff"></a>
+### <a name="specify-the-service-account-for-the-ad-fs-service"></a>Angeben eines Dienstkontos für den AD FS-Dienst
 Der AD FS-Dienst erfordert ein Domänendienstkonto zur Authentifizierung von Benutzern und zur Suche nach Benutzerinformationen in Active Directory. Zwei Dienstkontotypen werden unterstützt:
 
 * **Gruppenverwaltetes Dienstkonto** : Wurde in den Active Directory-Domänendiensten mit Windows Server 2012 eingeführt. Dieser Kontotyp stellt für Dienste wie AD FS ein einzelnes Konto bereit, das keine regelmäßige Aktualisierung des Kontokennworts erfordert. Verwenden Sie diese Option, wenn Sie in der Domäne, der die AD FS-Server angehören, bereits über Windows Server 2012-Domänencontroller verfügen.
@@ -307,14 +281,12 @@ Wenn Sie das gruppenverwaltete Dienstkonto ausgewählt haben und dieses Feature 
 
 ![AD FS-Dienstkonto](./media/active-directory-aadconnect-get-started-custom/adfs5.png)
 
-### Auswählen der zu verbindenden Azure AD-Domäne
-<a id="select-the-azure-ad-domain-that-you-wish-to-federate" class="xliff"></a>
+### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>Auswählen der zu verbindenden Azure AD-Domäne
 Diese Konfiguration wird verwendet, um die Verbundbeziehung zwischen AD FS und Azure AD einzurichten. Damit wird AD FS zur Ausstellung von Sicherheitstoken an Azure AD konfiguriert, und Azure AD wird so konfiguriert, dass es den Token dieser spezifischen Instanz von AD FS vertraut. Auf dieser Seite kann bei der Erstinstallation nur eine einzelne Domäne konfiguriert werden. Weitere Domänen können Sie später durch erneutes Ausführen von Azure AD Connect konfigurieren.
 
 ![Azure AD-Domäne](./media/active-directory-aadconnect-get-started-custom/adfs6.png)
 
-### Überprüfen der für den Verbund ausgewählten Azure AD-Domäne 
-<a id="verify-the-azure-ad-domain-selected-for-federation" class="xliff"></a>
+### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Überprüfen der für den Verbund ausgewählten Azure AD-Domäne 
 Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connect die erforderlichen Informationen zur Überprüfung einer nicht überprüften Domäne bereit. Informationen zur Verwendung dieser Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../active-directory-add-domain.md).
 
 ![Azure AD-Domäne](./media/active-directory-aadconnect-get-started-custom/verifyfeddomain.png)
@@ -324,8 +296,7 @@ Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connec
 >
 >
 
-## Konfigurieren und Überprüfen von Seiten
-<a id="configure-and-verify-pages" class="xliff"></a>
+## <a name="configure-and-verify-pages"></a>Konfigurieren und Überprüfen von Seiten
 Die Konfiguration wird auf dieser Seite vorgenommen.
 
 > [!NOTE]
@@ -335,8 +306,7 @@ Die Konfiguration wird auf dieser Seite vorgenommen.
 
 ![Bereit für Konfiguration](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
-### Stagingmodus
-<a id="staging-mode" class="xliff"></a>
+### <a name="staging-mode"></a>Stagingmodus
 Mit dem Stagingmodus können Sie parallel einen neuen Synchronisierungsserver einrichten. Nur ein Synchronisierungsserver, der einen Export zu einem Verzeichnis in der Cloud durchführt, wird unterstützt. Wenn Sie jedoch eine Verschiebung von einem anderen Server durchführen möchten, z. B. einem Server, auf dem DirSync ausgeführt wird, kann Azure AD Connect im Stagingmodus aktiviert werden. Bei aktiviertem Stagingmodus werden Daten vom Synchronisierungsmodul wie gewohnt importiert und synchronisiert, es findet aber kein Export an Azure AD oder AD statt. Kennwortsynchronisierung und Kennwortrückschreiben sind im Stagingmodus deaktiviert.
 
 ![Stagingmodus](./media/active-directory-aadconnect-get-started-custom/stagingmode.png)
@@ -345,8 +315,7 @@ Im Stagingmodus können Sie die erforderlichen Änderungen am Synchronisierungsm
 
 Weitere Informationen finden Sie unter [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode).
 
-### Überprüfen der Verbundkonfiguration
-<a id="verify-your-federation-configuration" class="xliff"></a>
+### <a name="verify-your-federation-configuration"></a>Überprüfen der Verbundkonfiguration
 Wenn Sie auf die Schaltfläche „Überprüfen“ klicken, überprüft Azure AD Connect die DNS-Einstellungen.
 
 ![Abgeschlossen](./media/active-directory-aadconnect-get-started-custom/completed.png)
@@ -359,8 +328,7 @@ Führen Sie darüber hinaus die folgenden Überprüfungsschritte aus:
 * Vergewissern Sie sich, dass Sie sich auf einem Gerät über das Extranet anmelden können. Stellen Sie auf einem privaten Computer oder einem mobilen Gerät eine Verbindung mit „https://myapps.microsoft.com“ her, und geben Sie Ihre Anmeldeinformationen an.
 * Überprüfen Sie die Anmeldung per Rich Client. Stellen Sie eine Verbindung mit „https://testconnectivity.microsoft.com“ her, wählen Sie die Registerkarte **Office 365**, und wählen Sie **Office 365-Test für einmaliges Anmelden**.
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Melden Sie sich nach Abschluss der Installation von Windows ab und erneut wieder an, ehe Sie den Synchronisierungsdienst-Manager oder Synchronisierungsregel-Editor verwenden.
 
 Nachdem Sie Azure AD Connect installiert haben, können Sie [die Installation überprüfen und Lizenzen zuweisen](active-directory-aadconnect-whats-next.md).

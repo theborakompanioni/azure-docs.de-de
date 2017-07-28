@@ -4,7 +4,6 @@ description: "Hier wird erklärt, was ein Azure AD-Mandant ist und wie Azure ü
 services: active-directory
 documentationcenter: 
 author: curtand
-writer: markvi
 manager: femila
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
@@ -12,13 +11,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 07/20/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 001ffc0f9c7465552392a9848ef1487a4c0eafce
-ms.lasthandoff: 12/08/2016
-
+ms.reviewer: jeffsta
+ms.custom: it-pro;oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 07b9f4626e9129c7eeb94d43883417f324da5292
+ms.contentlocale: de-de
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="administer-your-azure-ad-directory"></a>Verwalten Ihres Azure AD-Verzeichnisses
@@ -55,7 +56,7 @@ Wenn Sie sich beispielsweise ursprünglich für ein Microsoft Intune-Abonnement 
 Weitere Informationen zum Integrieren Ihres lokalen Verzeichnisses in Azure AD finden Sie unter [Verzeichnisintegration](active-directory-aadconnect.md).
 
 ### <a name="associate-an-azure-ad-directory-with-a-new-azure-subscription"></a>Ordnen Sie ein Azure AD-Verzeichnis einem neuen Azure-Abonnement zu
-Sie können ein neues Azure-Abonnement dem gleichen Verzeichnis zuordnen, das die Anmeldung für ein vorhandenes Office 365- oder Microsoft Intune-Abonnement authentifiziert. Melden Sie sich mit Ihrem Geschäfts- oder Schulkonto beim Azure-Verwaltungsportal an. Das Verwaltungsportal gibt eine Meldung zurück, dass keine Abonnements für dieses Konto gefunden werden konnten. Wählen Sie **Bei Azure registrieren**, und Ihr Verzeichnis ist für die Verwaltung innerhalb des Portals verfügbar. Erfahren Sie hier mehr über das [Verwalten des Verzeichnisses für Ihr Office 365-Abonnement in Azure](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure).
+Sie können ein neues Azure-Abonnement dem gleichen Verzeichnis zuordnen, das die Anmeldung für ein vorhandenes Office 365- oder Microsoft Intune-Abonnement authentifiziert. Melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto beim Azure-Portal an. Das Portal gibt eine Meldung mit dem Hinweis zurück, dass keine Abonnements für dieses Konto gefunden wurden. Wählen Sie **Bei Azure registrieren**, und Ihr Verzeichnis ist für die Verwaltung innerhalb des Portals verfügbar. Erfahren Sie hier mehr über das [Verwalten des Verzeichnisses für Ihr Office 365-Abonnement in Azure](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure).
 
 Ein Video über allgemeine Fragen zur Verwendung von Azure AD finden Sie unter [Azure Active Directory – Allgemeines, Registrierung, Anmeldung und Verwendung](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions).
 
@@ -76,7 +77,7 @@ Die Verwendung von Azure AD ist kostenlos. Das Verzeichnis ist eine kostenlose (
 Um den Anzeigenamen des Verzeichnisses zu ändern, klicken Sie im Portal auf das Verzeichnis und anschließend auf **Konfigurieren**. Wie weiter unten in diesem Thema beschrieben, können Sie ein neues Verzeichnis hinzufügen oder ein Verzeichnis löschen, das Sie nicht mehr benötigen. Um Ihrem Abonnement ein anderes Verzeichnis zuzuordnen, klicken Sie im linken Navigationsbereich auf die Erweiterung **Einstellungen** und unten auf der Seite **Abonnements** auf **Verzeichnis bearbeiten**. Sie können auch eine benutzerdefinierte Domäne mit einem DNS-Namen erstellen, die Sie anstelle der standardmäßigen *.onmicrosoft.com-Domäne registriert haben. Dies ist mit einem Dienst wie SharePoint Online möglicherweise empfehlenswert.
 
 ## <a name="how-can-i-manage-directory-data"></a>Wie kann ich Verzeichnisdaten verwalten?
-Als Administrator eines oder mehrerer Clouddienst-Abonnements von Microsoft können Sie entweder das Azure-Verwaltungsportal, das Microsoft Intune-Kontoportal oder das Office 365 Admin Center verwenden, um Verzeichnisdaten Ihrer Organisation zu verwalten. Sie können auch Cmdlets vom [Microsoft Azure Active Directory-Modul für Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) herunterladen und ausführen, um in Azure AD gespeicherte Daten einfach zu verwalten.
+Als Administrator von Microsoft-Clouddienstabonnements können Sie entweder das [Azure AD Admin Center](https://aad.portal.azure.com), das Microsoft Intune-Kontoportal oder das Office 365 Admin Center verwenden, um Verzeichnisdaten Ihrer Organisation zu verwalten. Sie können auch Cmdlets vom [Microsoft Azure Active Directory-Modul für Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) herunterladen und ausführen, um in Azure AD gespeicherte Daten einfach zu verwalten.
 
 Von einem dieser Portale (oder Cmdlets) können Sie folgende Aktionen ausführen:
 
@@ -84,7 +85,7 @@ Von einem dieser Portale (oder Cmdlets) können Sie folgende Aktionen ausführen
 * Verwalten des entsprechenden Clouddienstes oder der Clouddienste, die Ihre Organisation abonniert
 * Einrichten einer lokale Integration mit Ihrem Verzeichnisdienst
 
-Das Azure-Verwaltungsportal, das Office 365 Admin Center, das Microsoft Intune-Kontoportal und Azure AD-Cmdlets lesen aus und schreiben in eine einzelne freigegebene (shared) Instanz von Azure AD, die dem Verzeichnis Ihrer Organisation zugeordnet ist, wie in der folgenden Abbildung dargestellt. Auf diese Weise fungieren Portale (oder Cmdlets) als Front-End-Schnittstelle, die Ihre Verzeichnisdaten einholen und/oder ändern.
+Das [Azure AD Admin Center](https://aad.portal.azure.com), das Office 365 Admin Center, das Microsoft Intune-Kontoportal und die Azure AD-Cmdlets verwenden alle für Lese- und Schreibvorgänge eine einzelne gemeinsam genutzte Instanz von Azure AD, die dem Verzeichnis Ihrer Organisation zugeordnet ist, wie in der folgenden Abbildung dargestellt. Dadurch fungieren Portale (oder Cmdlets) als Front-End-Schnittstelle, die Ihre Verzeichnisdaten abrufen oder ändern.
 
 ![][2]
 
@@ -94,7 +95,7 @@ Beim Vornehmen von Änderungen an den Daten Ihrer Organisation mithilfe der Port
 Wenn Sie z. B. das Office 365 Admin Center benutzt haben, um einen Benutzer von der Anmeldung zu blockieren, dann blockiert diese Aktion die Anmeldung bei jedem Dienst, den Ihre Organisation zurzeit abonniert hat. Wenn Sie das gleiche Benutzerkonto im Kontext des Microsoft Intune-Kontoportals ziehen, können Sie sehen, dass der Benutzer gesperrt ist.
 
 ## <a name="how-can-i-add-and-manage-multiple-directories"></a>Wie kann ich mehrere Verzeichnisse hinzufügen und verwalten?
-Sie können ein Azure AD-Verzeichnis im Azure-Verwaltungsportal hinzufügen. Wählen Sie die Erweiterung **Active Directory** auf der linken Seite, und klicken Sie auf **Hinzufügen**.
+Sie können ein Azure AD-Verzeichnis im [klassischen Azure AD-Portal](https://manage.windowsazure.com) hinzufügen. Wählen Sie im Bereich **Übersicht** auf der linken Seite die Erweiterung **Active Directory** aus, und klicken Sie anschließend auf **Neu**.
 
 Sie können jedes Verzeichnis als vollständig unabhängige Ressource verwalten: Jedes Verzeichnis ist gleichberechtigt, voll funktionsfähig und logisch unabhängig von anderen Verzeichnissen, die Sie verwalten. Es ist keine unter- und übergeordnete Beziehung zwischen den Verzeichnissen vorhanden. Diese Unabhängigkeit zwischen den Verzeichnissen beinhaltet Ressourcen-, Verwaltungs- und Synchronisierungsunabhängigkeit.
 
@@ -116,7 +117,7 @@ Beachten Sie außerdem, dass Ihre Verzeichnisse im Gegensatz zu anderen Azure-Re
 Ein globaler Administrator kann ein Azure AD-Verzeichnis über das Portal löschen. Wenn ein Verzeichnis gelöscht wird, werden alle im Verzeichnis enthaltenen Ressourcen ebenfalls gelöscht. Sie sollten also vor dem Löschen sicher sein, dass Sie das Verzeichnis nicht mehr benötigen.
 
 > [!NOTE]
-> Wenn der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet ist, darf er das Basisverzeichnis nicht löschen. Wenn der Benutzer z.B. als joe@contoso.onmicrosoft.com, angemeldet ist, kann dieser Benutzer nicht das Verzeichnis mit der Standarddomäne „contoso.onmicrosoft.com“ löschen.
+> Wenn der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet ist, darf er das Basisverzeichnis nicht löschen. Wenn der Benutzer beispielsweise als joe@contoso.onmicrosoft.com angemeldet ist, kann er das Verzeichnis mit der Standarddomäne „contoso.onmicrosoft.com“ nicht löschen.
 > 
 > 
 
@@ -130,7 +131,7 @@ Die folgenden Bedingungen werden überprüft:
 * Dem Verzeichnis können keine Abonnements für Microsoft Online Services, z.B. Microsoft Azure, Office 365 oder Azure AD Premium, zugeordnet werden. Wenn für Sie in Azure beispielsweise ein Standardverzeichnis erstellt wurde, können Sie dieses Verzeichnis nicht löschen, wenn es vom Azure-Abonnement noch für die Authentifizierung benötigt wird. Sie können ein Verzeichnis auch nicht löschen, wenn ein anderer Benutzer dem Verzeichnis ein Abonnement zugeordnet hat. Um Ihrem Abonnement ein anderes Verzeichnis zuzuordnen, melden Sie sich am Azure-Verwaltungsportal an und klicken links im Navigationsbereich auf **Einstellungen**. Klicken Sie dann unten auf der Seite **Abonnements** auf **Verzeichnis bearbeiten**. Weitere Informationen zu Azure-Abonnements finden Sie unter [Verknüpfung von Azure-Abonnements mit Azure AD](active-directory-how-subscriptions-associated-directory.md).
 
 > [!NOTE]
-> Wenn der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet ist, darf er das Basisverzeichnis nicht löschen. Wenn der Benutzer z.B. als joe@contoso.onmicrosoft.com, angemeldet ist, kann dieser Benutzer nicht das Verzeichnis mit der Standarddomäne „contoso.onmicrosoft.com“ löschen.
+> Wenn der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet ist, darf er das Basisverzeichnis nicht löschen. Wenn der Benutzer beispielsweise als joe@contoso.onmicrosoft.com angemeldet ist, kann er das Verzeichnis mit der Standarddomäne „contoso.onmicrosoft.com“ nicht löschen.
 > 
 > 
 
