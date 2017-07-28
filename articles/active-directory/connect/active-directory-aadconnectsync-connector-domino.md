@@ -100,7 +100,7 @@ Die folgenden Vorgänge werden von der aktuellen Version des Lotus Domino-Conne
 ### <a name="client-software-installation-and-configuration"></a>Installieren und Konfigurieren der Clientsoftware
 Lotus Notes muss auf dem Server installiert sein, **bevor** der Connector installiert wird.
 
-Führen Sie eine **Einzelbenutzerinstallation** aus. Die standardmäßige Mehrbenutzerinstallation **** kann nicht verwendet werden.  
+Führen Sie eine **Einzelbenutzerinstallation** aus. Die standardmäßige **Mehrbenutzerinstallation** kann nicht verwendet werden.  
 ![Notes1](./media/active-directory-aadconnectsync-connector-domino/notes1.png)
 
 Installieren Sie auf der Featureseite nur die erforderlichen Lotus Notes-Features und die einmalige **Clientanmeldung**. Einmaliges Anmelden ist für die Anmeldung des Connectors beim Domino-Server erforderlich.  
