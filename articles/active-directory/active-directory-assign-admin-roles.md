@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/14/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: b29633d93484950d6657fc1d618fa0f1a2d5c01a
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 1d3c9023ff4d3a722363d38d3c927fb7f4304448
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -35,7 +35,9 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **Rechnungsadministrator**: Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dienstintegrität.
 
-* **Complianceadministrator**: Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen innerhalb von Office 365 Security & Compliance Center und Exchange Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1).
+* **Complianceadministrator**: Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen innerhalb von Office 365 Security & Compliance Center und Exchange Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+
+* **Administrator für den bedingten Zugriff**: Benutzer mit dieser Rolle haben die Möglichkeit, Azure Active Directory-Einstellungen für den bedingten Zugriff zu verwalten.
 
 * **CRM-Dienstadministrator:** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft CRM Online, wenn der Dienst vorhanden ist, sowie die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -96,17 +98,21 @@ Die folgenden Administratorrollen sind verfügbar:
 
 ## <a name="administrator-permissions"></a>Administratorberechtigungen
 
-### <a name="billing-administrator"></a>Rechnungsadministrator
+### <a name="billing-administrator"></a>Abrechnungsadministrator
 
 | Möglich | Nicht möglich |
 | --- | --- |
 |<p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p> |<p>Zurücksetzen von Benutzerkennwörtern</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Überwachungsprotokollen</p>|
 
+### <a name="conditional-access-administrator"></a>Administrator für den bedingten Zugriff
+| Möglich | Nicht möglich |
+| --- | --- |
+|<p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Einstellungen für den bedingten Zugriff</p> |<p>Zurücksetzen von Benutzerkennwörtern</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Überwachungsprotokollen</p>|
+
 ### <a name="global-administrator"></a>Globaler Administrator
 | Möglich | Nicht möglich |
 | --- | --- |
-| <p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Zurücksetzen von Benutzerkennwörtern</p>
-<p>Zurücksetzen von Kennwörtern anderer Administratoren</p> <p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Aktivieren und Deaktivieren der Multi-Factor Authentication</p><p>Anzeigen von Überwachungsprotokollen</p> |N/V |
+|<p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Zurücksetzen von Benutzerkennwörtern</p><p>Zurücksetzen von Kennwörtern anderer Administratoren</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Aktivieren und Deaktivieren der Multi-Factor Authentication</p><p>Anzeigen von Überwachungsprotokollen</p> |<p>N/V</p>|
 
 ### <a name="password-administrator"></a>Kennwortadministrator
 | Möglich | Nicht möglich |
@@ -156,6 +162,17 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 
 ## <a name="assign-or-remove-administrator-roles"></a>Zuweisen oder Entfernen von Administratorrollen
 Um zu erfahren, wie in Azure Active Directory einem Benutzer Administratorrollen zugewiesen werden, lesen Sie [Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory](active-directory-users-assign-role-azure-portal.md).
+
+## <a name="deprecated-roles"></a>Veraltete Rollen
+
+Die folgenden Rollen sollten nicht verwendet werden. Sie wurden als veraltet markiert und werden aus Azure AD entfernt.
+
+* Ad-hoc-Lizenzadministrator
+* Benutzererstellung mit E-Mail-Überprüfung
+* Geräteeinbindung
+* Geräte-Manager
+* Gerätebenutzer
+* Geräteeinbindung am Arbeitsplatz
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md)

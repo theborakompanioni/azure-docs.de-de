@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 07/14/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 729c89e26e0c2da3ec88b554645091997dea4552
-ms.openlocfilehash: 1f0406b131957500c303172409cafa6be8fb3228
-ms.lasthandoff: 02/03/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: cb88ce2960d63b8a1c5861913b2095bcc977938f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/15/2017
 
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute-Verbindungen und Routingdomänen

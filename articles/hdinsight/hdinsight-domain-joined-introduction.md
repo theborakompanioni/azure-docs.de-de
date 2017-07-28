@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 21078a82e979af251a08bca70d623c80949d064a
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 9f6de5b516da110b93a1e0cddf835b2bcec77bb7
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -29,8 +30,9 @@ Von Azure HDInsight wurde bislang nur ein einzelner lokaler Administratorbenutze
 
 > [!NOTE]
 > Die neuen Features, die in dieser Vorschau beschrieben werden, stehen nur in Linux-basierten HDInsight-Clustern für die Hive-Workload zur Verfügung. Andere Workloads (etwa HBase, Spark, Storm und Kafka) kommen in späteren Versionen hinzu.
->
->
+
+> [!IMPORTANT]
+> Oozie ist auf HDInsight mit Domänenverknüpfung nicht aktiviert.
 
 ## <a name="benefits"></a>Vorteile
 Die Unternehmenssicherheit basiert auf vier zentralen Säulen: Umgebungssicherheit, Authentifizierung, Autorisierung und Verschlüsselung.

@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: c5813341f0d70a3c04e915d243d2a9717cad1fc9
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 6cfd1c1e7b22f5460b78687c815d149e6c6deac9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -73,8 +73,7 @@ Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Note
 
     Sie müssen also keine Anweisungen wie die folgenden ausführen, um die Kontexte festzulegen:
 
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
 
     Stattdessen können Sie in Ihrer Anwendung direkt die vordefinierten Kontexte verwenden.
 
@@ -172,7 +171,7 @@ Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Verwenden von externen Paketen mit Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 

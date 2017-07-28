@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0f62c1f4f67bec12d1f71b1b02fd121402b0e25c
-ms.openlocfilehash: 70fe899087effca47b2b537facf1c3ed227657de
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: dbd3727d3a31132c2dc1ae1bf5fade7ed969e2c9
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
@@ -50,6 +51,13 @@ Funktionen mit den Typen **mvbin**, **mvstr** und **mvref** können nur für meh
 ## <a name="functions-reference"></a>Funktionsreferenz
 | Liste der Funktionen |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
+| **Certificate** | | | | |
+| [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
+| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
+| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
+| [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
+| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
+[ CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Konvertierung** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
@@ -69,7 +77,8 @@ Funktionen mit den Typen **mvbin**, **mvstr** und **mvref** können nur für meh
 | [Contains](#contains) |[Count](#count) |[Element](#item) |[ItemOrNull](#itemornull) | |
 | [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
 | **Programmablauf** | | | | |
-| [Fehler](#error) |[IIF](#iif) |[Switch](#switch) | | |
+| [Fehler](#error) |[IIF](#iif) |[Auswahl](#select) |[Switch](#switch) | |
+| [Where](#where) |[With](#with) | | | |
 | **Text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
@@ -148,6 +157,204 @@ Gibt einen DateTime-Wert auf Basis der Anfangszeit des Mitarbeiters zurück.
 `CDate("2013-01-10 4:00 PM -8")`  
 Gibt einen DateTime-Wert zurück, der „2013-01-11 12:00 AM“ darstellt.
 
+
+
+
+
+
+
+
+- - -
+### <a name="certextensionoids"></a>CertExtensionOids
+**Beschreibung:**  
+Gibt die OID-Werte aller kritischen Erweiterungen eines Zertifikatobjekts zurück
+
+**Syntax:**  
+`mvstr CertExtensionOids(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certformat"></a>CertFormat
+**Beschreibung:**  
+Gibt den Formatnamen dieses X.509v3-Zertifikats zurück
+
+**Syntax:**  
+`str CertFormat(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certfriendlyname"></a>CertFriendlyName
+**Beschreibung:**  
+Gibt den zugeordneten Alias eines Zertifikats zurück
+
+**Syntax:**  
+`str CertFriendlyName(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certhashstring"></a>CertHashString
+**Beschreibung:**  
+Gibt den SHA1-Hashwert des X. 509v3-Zertifikats als hexadezimale Zeichenfolge zurück
+
+**Syntax:**  
+`str CertHashString(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certissuer"></a>CertIssuer
+**Beschreibung:**  
+Gibt den Namen der Zertifizierungsstelle zurück, die das X.509v3-Zertifikat ausgestellt hat
+
+**Syntax:**  
+`str CertIssuer(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certissuerdn"></a>CertIssuerDN
+**Beschreibung:**  
+Gibt den Distinguished Name des Zertifikatausstellers zurück
+
+**Syntax:**  
+`str CertIssuerDN(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certissueroid"></a>CertIssuerOid
+**Beschreibung:**  
+Gibt die OID des Zertifikatausstellers zurück
+
+**Syntax:**  
+`str CertIssuerOid(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
+**Beschreibung:**  
+Gibt die Schlüsselalgorithmusinformationen zu diesem X.509v3-Zertifikat als Zeichenfolge zurück
+
+**Syntax:**  
+`str CertKeyAlgorithm(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
+**Beschreibung:**  
+Gibt die Schlüsselalgorithmusparameter für das X.509v3-Zertifikat als hexadezimale Zeichenfolge zurück
+
+**Syntax:**  
+`str CertKeyAlgorithm(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certnameinfo"></a>CertNameInfo
+**Beschreibung:**  
+Gibt die Namen des Antragstellers und des Ausstellers aus einem Zertifikat zurück
+
+**Syntax:**  
+`str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+*   X509NameType: Der X509NameType-Wert des Antragstellers
+*   includesIssuerName: TRUE, um den Ausstellernamen einzuschließen, andernfalls FALSE
+
+- - -
+### <a name="certnotafter"></a>CertNotAfter
+**Beschreibung:**  
+Gibt das Uhrzeit (Ortszeit) zurück, zu der das Zertifikat abläuft
+
+**Syntax:**  
+`dt CertNotAfter(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certnotbefore"></a>CertNotBefore
+**Beschreibung:**  
+Gibt die Uhrzeit (Ortszeit) zurück, zu der ein Zertifikat gültig wird
+
+**Syntax:**  
+`dt CertNotBefore(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certpublickeyoid"></a>CertPublicKeyOid
+**Beschreibung:**  
+Gibt die OID des öffentlichen Schlüssels für das X.509v3-Zertifikat zurück
+
+**Syntax:**  
+`str CertKeyAlgorithm(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
+**Beschreibung:**  
+Gibt die OID der Parameter des öffentlichen Schlüssels für das X.509v3-Zertifikat zurück
+
+**Syntax:**  
+`str CertPublicKeyParametersOid(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certserialnumber"></a>CertSerialNumber
+**Beschreibung:**  
+Gibt die Seriennummer des X.509v3-Zertifikats zurück
+
+**Syntax:**  
+`str CertSerialNumber(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
+**Beschreibung:**  
+Gibt die OID des Algorithmus zurück, mit dem die Signatur eines Zertifikats erstellt wurde
+
+**Syntax:**  
+`str CertSignatureAlgorithmOid(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certsubject"></a>CertSubject
+**Beschreibung:**  
+Ruft den Distinguished Name des Antragstellers für das Zertifikat ab
+
+**Syntax:**  
+`str CertSubject(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certsubjectnamedn"></a>CertSubjectNameDN
+**Beschreibung:**  
+Gibt den Distinguished Name des Antragstellers für das Zertifikat zurück
+
+**Syntax:**  
+`str CertSubjectNameDN(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certsubjectnameoid"></a>CertSubjectNameOid
+**Beschreibung:**  
+Gibt die OID des Antragstellernamens aus einem Zertifikat zurück
+
+**Syntax:**  
+`str CertSubjectNameOid(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certthumbprint"></a>CertThumbprint
+**Beschreibung:**  
+Gibt den Fingerabdruck eines Zertifikats zurück
+
+**Syntax:**  
+`str CertThumbprint(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
+- - -
+### <a name="certversion"></a>CertVersion
+**Beschreibung:**  
+Gibt die X.509-Formatversion eines Zertifikats zurück
+
+**Syntax:**  
+`str CertThumbprint(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
+
 - - -
 ### <a name="cguid"></a>CGuid
 **Beschreibung:**  
@@ -172,7 +379,7 @@ Die Contains-Funktion sucht in einem mehrwertigen Attribut nach einer Zeichenfol
 * search: Die im Attribut zu suchende Zeichenfolge.
 * Casetype: „CaseInsensitive“ (ohne Berücksichtigung der Groß-/Kleinschreibung) oder „CaseSensitive“ (mit Berücksichtigung der Groß-/Kleinschreibung).
 
-Gibt den Index in dem mehrwertigen Attribut zurück, in dem die Zeichenfolge gefunden wurde. Wenn die Zeichenfolge nicht gefunden wird, wird&0; zurückgegeben.
+Gibt den Index in dem mehrwertigen Attribut zurück, in dem die Zeichenfolge gefunden wurde. Wenn die Zeichenfolge nicht gefunden wird, wird 0 zurückgegeben.
 
 **Hinweise:**  
 Bei mehrwertigen Zeichenfolgenattributen werden in den Werten Teilzeichenfolgen gefunden.  
@@ -492,7 +699,7 @@ Die IsBitSet-Funktion testet, ob ein Bit festgelegt ist.
 
 **Beispiel:**  
 `IsBitSet(&HF,4)`  
-Gibt „True“ zurück, da Bit&amp;4; auf den Hexadezimalwert „F“ festgelegt ist.
+Gibt „True“ zurück, da Bit 4 auf den Hexadezimalwert „F“ festgelegt ist.
 
 - - -
 ### <a name="isdate"></a>IsDate
@@ -505,6 +712,14 @@ Die IsDate-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als DateT
 **Hinweise:**  
 Wird verwendet, um zu bestimmen, ob „CDate()“ erfolgreich sein kann.
 
+- - -
+### <a name="iscert"></a>IsCert
+**Beschreibung:**  
+Gibt TRUE zurück, wenn die Rohdaten in ein .NET X509Certificate2-Zertifikatobjekt serialisiert werden können
+
+**Syntax:**  
+`bool CertThumbprint(binary certificateRawData)`  
+*   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 - - -
 ### <a name="isempty"></a>IsEmpty
 **Beschreibung:**  
@@ -643,14 +858,14 @@ Die Join-Funktion akzeptiert eine Zeichenfolge mit mehreren Werten und gibt eine
 `str Join(mvstr attribute, str Delimiter)`
 
 * attribute: Mehrwertiges Attribut mit Zeichenfolgen, die verknüpft werden sollen.
-* delimiter: Eine beliebige Zeichenfolge, die die Teilzeichenfolgen in der zurückgegebenen Zeichenfolge trennt. Wenn nicht angegeben, wird das Leerzeichen (" ") verwendet. Wenn "delimiter" eine Zeichenfolge der Länge&0; ("") oder "Nothing" ist, werden alle Elemente in der Liste ohne Trennzeichen verkettet.
+* delimiter: Eine beliebige Zeichenfolge, die die Teilzeichenfolgen in der zurückgegebenen Zeichenfolge trennt. Wenn nicht angegeben, wird das Leerzeichen (" ") verwendet. Wenn "delimiter" eine Zeichenfolge der Länge 0 ("") oder "Nothing" ist, werden alle Elemente in der Liste ohne Trennzeichen verkettet.
 
 **Hinweise:**  
 Zwischen den Funktionen „Join“ und „Split“ besteht Parität. Die Funktion "Join" nimmt ein Array von Zeichenfolgen entgegen, verknüpft sie mit einer Trennzeichenfolge und gibt eine einzige Zeichenfolge zurück. Die Funktion "Split" nimmt eine Zeichenfolge entgegen, trennt sie mit dem Trennzeichen und gibt ein Array von Zeichenfolgen zurück. Ein wichtiger Unterschied ist jedoch, dass "Join" Zeichenfolgen mit einer beliebigen Trennzeichenfolge verketten kann, "Split" aber nur Zeichenfolgen mit einem einzigen Trennzeichen trennen kann.
 
 **Beispiel:**  
 `Join([proxyAddresses],",")`  
-Kann Folgendes zurückgeben: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
+Kann Folgendes zurückgeben: SMTP:john.doe@contoso.com, smtp:jd@contoso.com
 
 - - -
 ### <a name="lcase"></a>LCase
@@ -954,6 +1169,24 @@ Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
 Gibt „ Test“ zurück.
 
 - - -
+### <a name="select"></a>Wählen Sie
+**Beschreibung:**  
+Verarbeitet alle Werte in einem mehrwertigen Attribut (oder der Ausgabe eines Ausdrucks), basierend auf der angegebenen Funktion
+
+**Syntax:**  
+`mvattr Select(variable item, mvattr attribute, func function)`  
+`mvattr Select(variable item, exp expression, func function)`
+
+* item: Stellt ein Element im mehrwertigen Attribut dar
+* attribute: Das mehrwertige Attribut
+* expression: Ein Ausdruck, der eine Sammlung von Werten zurückgibt
+* condition: Jede Funktion, die ein Element im Attribut verarbeiten kann
+
+**Beispiele:**  
+`Select($item,[otherPhone],Replace($item,“-”,“”))`  
+Gibt alle Werte im mehrwertigen Attribut „otherPhone“ zurück, nachdem Bindestriche (-) entfernt wurden
+
+- - -
 ### <a name="split"></a>Split
 **Beschreibung:**  
 Die Split-Funktion nimmt eine durch Trennzeichen getrennte Zeichenfolge entgegen und wandelt sie in eine mehrwertige Zeichenfolge um.
@@ -1007,7 +1240,7 @@ Switch gibt nichts zurück, wenn:
 * Keiner der Ausdrücke TRUE ist.
 * Der erste als TRUE ausgewertete Ausdruck über einen zugehörigen Wert verfügt, der Null ist.
 
-„Switch“ wertet alle Ausdrücke aus, auch wenn die Funktion nur einen von ihnen zurückgibt. Aus diesem Grund sollten Sie auf unerwünschte Nebeneffekte achten. Wenn z. B. die Berechnung eines beliebigen Ausdrucks zu einer Division durch&0; führt, tritt ein Fehler auf.
+„Switch“ wertet alle Ausdrücke aus, auch wenn die Funktion nur einen von ihnen zurückgibt. Aus diesem Grund sollten Sie auf unerwünschte Nebeneffekte achten. Wenn z. B. die Berechnung eines beliebigen Ausdrucks zu einer Division durch 0 führt, tritt ein Fehler auf.
 
 „value“ kann auch die Error-Funktion sein. In diesem Fall würde dann eine benutzerdefinierte Zeichenfolge zurückgegeben.
 
@@ -1043,6 +1276,42 @@ Die UCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Großbuchst
 Gibt „test“ zurück.
 
 - - -
+### <a name="where"></a>Hierbei gilt:
+
+**Beschreibung:**  
+Gibt eine Teilmenge von Werten aus einem mehrwertigen Attribut (oder die Ausgabe eines Ausdrucks) zurück, basierend auf der spezifischen Bedingung
+
+**Syntax:**  
+`mvattr Where(variable item, mvattr attribute, exp condition)`  
+`mvattr Where(variable item, exp expression, exp condition)`  
+* item: Stellt ein Element im mehrwertigen Attribut dar
+* attribute: Das mehrwertige Attribut
+* condition: Ein beliebiger Ausdruck, der als TRUE oder FALSE ausgewertet werden kann
+* expression: Ein Ausdruck, der eine Sammlung von Werten zurückgibt
+
+**Beispiel:**  
+`Where($item,[userCertificate],CertNotAfter($item)>Now())`  
+Gibt die Zertifikatwerte im mehrwertigen Attribut „userCertificate“ zurück, die nicht abgelaufen sind
+
+- - -
+### <a name="with"></a>With
+**Beschreibung:**  
+Die With-Funktion stellt eine Möglichkeit zum Vereinfachen eines komplexen Ausdrucks mithilfe einer Variablen bereit. Dabei wird ein Teilausdruck dargestellt, der mindestens im komplexen Ausdruck angezeigt wird.
+
+**Syntax:**
+`With(var variable, exp subExpression, exp complexExpression)`  
+* variable: Stellt den Teilausdruck dar
+* subExpression: Der durch eine Variable dargestellte Teilausdruck
+* complexExpression: Ein komplexer Ausdruck
+
+**Beispiel:**  
+`With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
+Ist funktionell gleichwertig mit:  
+`IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
+Hiermit werden nur nicht abgelaufene Zertifikatwerte aus dem Attribut „userCertificate“ zurückgegeben.
+
+
+- - -
 ### <a name="word"></a>Word
 **Beschreibung:**  
 Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.
@@ -1073,9 +1342,4 @@ Gibt „has“ zurück.
 * [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

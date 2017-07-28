@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: e22a1ccb958942cfa3c67194430af6bc74fdba64
-ms.openlocfilehash: 233691d19aa2553744f92af17f7ecf9fda2290e0
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 1f1c453267ea17d749a251539f4232131dae53d3
+ms.contentlocale: de-de
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
@@ -138,6 +139,44 @@ Nein, die Überwachung muss auf den Webanwendungs-Proxyservern nicht aktiviert w
 **F: Wie werden Azure AD Connect Health-Warnungen aufgelöst?**
 
 Azure AD Connect Health-Warnungen-Warnungen werden basierend auf einer Erfolgsbedingung aufgelöst. Azure AD Connect Health-Agents erkennen und melden die Erfolgsbedingungen in regelmäßigen Abständen an den Dienst. Bei einigen Warnungen gilt eine zeitbasierte Unterdrückung. Dies bedeutet: Wenn die gleiche Fehlerbedingung nicht innerhalb von 72 Stunden nach Generieren der Warnung erneut festgestellt wird, wird die Warnung automatisch aufgelöst.
+
+**F:Ich habe die Meldung „Fehler der Testauthentifizierungsanforderungen (synthetischen Transaktionen) beim Abrufen eines Tokens“ erhalten. Wie kann ich das Problem beheben?**
+
+Azure AD Connect Health für Active Directory-Verbunddienste (AD FS) generiert diese Warnung, wenn der auf einem AD FS-Server installierte Integritäts-Agent ein Token im Rahmen einer synthetischen Transaktion nicht abrufen kann, die vom Integritäts-Agent ausgelöst wurde. Der Integritäts-Agent verwendet den Kontext des lokalen Systems und versucht, ein Token für eine sich selbst vertrauende Seite abzurufen. Dies ist ein „catch-all“-Test, mit dem sichergestellt wird, dass AD FS Token ausstellt.
+
+Dieser Test schlägt meistens fehl, weil der Integritäts-Agent den Namen der AD FS-Farm nicht auflösen kann. Dies kann geschehen, wenn die AD FS-Server hinter einem Netzwerk-Load Balancer sind und die Anforderung von einem Knoten initiiert wird, der sich hinter dem Load Balancer befindet (im Gegensatz zu einem regulären Client, der vor einem Load Balancer ist). Dies kann durch Aktualisieren der „Hosts“-Datei unter "C:\Windows\System32\drivers\etc" behoben werden. Nach dem Update muss die IP-Adresse des AD FS-Servers oder einer IP-Loopbackadresse (127.0.0.1) für den AD FS-Farmnamen (z.B. sts.contoso.com) enthalten sein. Das Hinzufügen der Hostdatei verursacht einen Kurzschluss im Netzwerksaufruf, sodass der Integritäts-Agent das Token abrufen darf.
+
+**F: Ich habe eine E-Mail mit der Meldung erhalten, dass meine Computer nicht für die aktuelle Ransomeware-Angriffe gepatcht wurden. Warum habe ich diese E-Mail erhalten?**
+
+Azure AD Connect Health scannt alle Computer, die es überwacht, und stellt sicher, dass die erforderlichen Patches installiert wurden. Die E-Mail wurde an die Mandantenadministratoren gesendet, wenn auf mindestens einem Computer nicht kritische Patches vorhanden waren. Die folgende Logik wurde verwendet, um diese Entscheidung zu treffen.
+1. Suchen Sie alle auf dem Computer installierten Hotfixes.
+2. Überprüfen Sie, ob mindestens eines der Hotfixes aus der definierten Liste vorhanden ist.
+3. Falls dem so ist, wird der Computer geschützt. Wenn nicht, besteht für den Computer das Risiko eines Angriffs.
+
+Sie können diese Überprüfung mithilfe des folgenden PowerShell-Skripts manuell durchführen. Es implementiert die oben genannten Logik.
+
+```
+Function CheckForMS17-010 ()
+{
+    $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
+
+    #checks the computer it's run on if any of the listed hotfixes are present
+    $hotfix = Get-HotFix -ComputerName $env:computername | Where-Object {$hotfixes -contains $_.HotfixID} | Select-Object -property "HotFixID"
+
+    #confirms whether hotfix is found or not
+    if (Get-HotFix | Where-Object {$hotfixes -contains $_.HotfixID})
+    {
+        "Found HotFix: " + $hotfix.HotFixID
+    } else {
+        "Didn't Find HotFix"
+    }
+}
+
+CheckForMS17-010
+
+```
+
+
 
 ## <a name="related-links"></a>Verwandte Links
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

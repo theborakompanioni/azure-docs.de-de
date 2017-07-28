@@ -14,11 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 06/26/2017
 ms.author: sngun; v-reagie
-translationtype: Human Translation
-ms.sourcegitcommit: a8ecffbc5f9c7e2408708d59459a0d39e59d6e1e
-ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
+ms.translationtype: Human Translation
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 64548d91e98754210cc5185d9d759141cc0621d3
+ms.contentlocale: de-de
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -64,6 +66,22 @@ Dieser Artikel bietet Hilfe für die Problembehandlung häufiger Fehler, die in 
 **Tipps zur Problembehandlung**: Informationen zum Verwenden eines Zertifikats mit den Azure Service Management-Cmdlets finden Sie unter [Managing Azure Services with the Microsoft Azure Automation Preview Service](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) (Verwalten von Azure Services mit dem Microsoft Azure Automation Preview-Dienst). Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Erstellen eines Dienstprinzipals mit dem Azure-Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) und [Authentifizieren eines Dienstprinzipals mit dem Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Häufige Fehler beim Verwenden von Runbooks
+### <a name="scenario-the-runbook-job-start-was-attempted-three-times-but-it-failed-to-start-each-time"></a>Szenario: Es wurde dreimal versucht, den Runbookauftrag zu starten, jedoch schlugen die Versuche jedes Mal fehl.
+**Fehler:** Your runbook fails with the error "The job was tried three times but it failed." (Ihr Runbook schlägt mit dem Fehler „Es wurde dreimal erfolglos versucht, den Auftrag auszuführen.“)
+
+**Ursache des Fehlers:** Dieser Fehler kann durch folgende Gründe verursacht werden:  
+
+1. Arbeitsspeicherlimit.  Wir haben dokumentierte Beschränkungen, wie viel Speicherplatz den [Automatisierungsdienstgrenzwerten](../azure-subscription-service-limits.md#automation-limits) einer Sandbox zugeordnet sind. Ein Auftrag schlägt also möglicherweise fehl, wenn mehr als 400 MB Arbeitsspeicher verwendet werden. 
+
+2. Modul inkompatibel.  Dies kann auftreten, wenn Modulabhängigkeiten nicht korrekt sind. Wenn dies der Fall ist, gibt Ihr Runbook in der Regel die Benachrichtigung „Befehl wurde nicht gefunden“ oder „Der Parameter kann nicht gebunden werden“. 
+
+**Tipps zur Problembehandlung:** Sie können dieses Problem wie folgt beheben:  
+
+* Empfohlene Methoden, die innerhalb des Arbeitsspeichergrenzwerts funktionieren, sollen die Workload zwischen mehreren Runbooks aufteilen und nicht so viel Daten im Speicher verarbeiten, keine unnötige Ausgabe aus den Runbooks schreiben oder ermitteln, wie viele Prüfpunkt Sie in Ihre PowerShell-Workflow-Runbooks schreiben.  
+
+* Sie müssen Ihre Azure-Module aktualisieren, indem Sie die Schritte unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) befolgen.  
+
+
 ### <a name="scenario-runbook-fails-because-of-deserialized-object"></a>Szenario: Runbookfehler aufgrund eines deserialisierten Objekts
 **Fehler**: Für Ihr Runbook tritt folgender Fehler auf: „Der Parameter ``<ParameterName>`` kann nicht gebunden werden. Der Wert ``<ParameterType>`` des Typs ``<ParameterType>`` ‚Deserialisiert‘ kann nicht in den Typ ``<ParameterType>`` konvertiert werden.“
 
@@ -172,9 +190,4 @@ Wenn Sie die oben genannten Schritte zur Problembehandlung befolgt und keine Lö
 * Erstellen Sie einen Azure-Supportfall. Klicken Sie auf der [Azure-Support-Website](https://azure.microsoft.com/support/options/) unter **Technischer und Abrechnungssupport** auf **Support erhalten**.
 * Senden Sie im [Script Center](https://azure.microsoft.com/documentation/scripts/) eine Skriptanforderung, wenn Sie nach einer Azure Automation-Runbooklösung oder einem Integrationsmodul suchen.
 * Veröffentlichen Sie Feedback oder Vorschläge zu Features für Azure Automation unter [User Voice](https://feedback.azure.com/forums/34192--general-feedback)(Aussagen von Benutzern).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2017
+ms.date: 06/09/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 5f2615b3df14c82147ff8a2cd997458756581d01
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 518e6a481ab6385b03dd3ddc2e155fb724e677fe
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -43,13 +43,29 @@ Die AAD-Rollen steuern die Fähigkeit, vorkonfigurierte Lösungen bereitzustelle
 
 Weitere Informationen zu Administratorrollen in AAD finden Sie unter [Zuweisen von Administratorrollen in Azure AD][lnk-aad-admin]. Der aktuelle Artikel konzentriert sich auf die Verzeichnisrollen **Globaler Administrator** und **Benutzer**, die von den vorkonfigurierten Lösungen verwendet werden.
 
-**Globaler Administrator:** Es können viele globale Administratoren pro AAD-Mandanten vorhanden sein. Wenn Sie einen AAD-Mandanten erstellen, sind Sie standardmäßig der globale Administrator dieses Mandanten. Der globale Administrator kann eine vorkonfigurierte Lösung bereitstellen und erhält die Rolle **Administrator** für die Anwendung innerhalb des AAD-Mandanten. Wenn jedoch ein anderer Benutzer im selben AAD-Mandanten eine Anwendung erstellt, ist **ReadOnly** die Standardrolle, die dem globalen Administrator zugewiesen wird. Globale Administratoren können Benutzer über das [Azure-Portal][lnk-portal] zu Rollen für Anwendungen zuweisen.
+### <a name="global-administrator"></a>Globaler Administrator
 
-**Benutzer:** Pro AAD-Mandant können zahlreiche Domänenbenutzer vorhanden sein. Domänenbenutzer können eine vorkonfigurierte Lösung über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen. Die Standardrolle, die ihnen für die bereitgestellte Anwendung zugewiesen wird, ist **Administrator**. Sie können mithilfe des Skripts „build.cmd“ eine Anwendung im Repository [azure-iot-remote-monitoring][lnk-rm-github-repo] oder [azure-iot-predictive-maintenance][lnk-pm-github-repo] erstellen. Die Standardrolle, die ihnen erteilt wird, ist jedoch **ReadOnly**, da sie nicht berechtigt sind, Rollen zuzuweisen. Wenn ein anderer Benutzer im AAD-Mandanten eine Anwendung erstellt, wird ihnen standardmäßig die Rolle **ReadOnly** für diese Anwendung zugewiesen. Benutzer können keine Rollen für Anwendungen zuweisen und daher keine Benutzer oder Rollen für Benutzer einer Anwendung hinzufügen, auch wenn sie sie bereitgestellt haben.
+Pro AAD-Mandant kann es viele globale Administratoren geben:
 
-**Gastbenutzer:** Pro AAD-Mandanten kann es viele Gastbenutzer geben. Gastbenutzer verfügen im AAD-Mandanten über begrenzte Rechte. Daher können Gastbenutzer keine vorkonfigurierte Lösung im AAD-Mandanten bereitstellen.
+* Wenn Sie einen AAD-Mandanten erstellen, sind Sie standardmäßig der globale Administrator dieses Mandanten.
+* Der globale Administrator kann eine vorkonfigurierte Lösung bereitstellen und erhält die Rolle **Administrator** für die Anwendung innerhalb des AAD-Mandanten.
+* Wenn ein anderer Benutzer im selben AAD-Mandanten eine Anwendung erstellt, ist **ReadOnly** die Standardrolle, die dem globalen Administrator zugewiesen wird.
+* Ein globaler Administrator kann Benutzer über das [Azure-Portal][lnk-portal] Rollen für Anwendungen zuweisen.
 
-Weitere Informationen finden Sie in den folgenden Ressourcen:
+### <a name="domain-user"></a>Domänenbenutzer
+
+Pro AAD-Mandant können zahlreiche Domänenbenutzer vorhanden sein:
+
+* Domänenbenutzer können eine vorkonfigurierte Lösung über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen. Standardmäßig wird dem Domänenbenutzer in der bereitgestellten Anwendung die **Administratorrolle** erteilt.
+* Ein Domänenbenutzer kann mithilfe des Skripts „build.cmd“ im Repository [azure-iot-remote-monitoring][lnk-rm-github-repo], [azure-iot-predictive-maintenance][lnk-pm-github-repo] oder [azure-iot-connected-factory][lnk-cf-github-repo] eine Anwendung erstellen. Die dem Domänenbenutzer erteilte Standardrolle ist jedoch **schreibgeschützt**, da der Domänenbenutzer keine Berechtigung zum Zuweisen von Rollen besitzt.
+* Wenn ein anderer Benutzer im AAD-Mandanten eine Anwendung erstellt, wird dem Domänenbenutzer standardmäßig die Rolle **ReadOnly** für diese Anwendung zugewiesen.
+* Ein Domänenbenutzer kann keine Rollen für Anwendungen zuweisen und daher keine Benutzer oder Rollen für Benutzer für eine Anwendung hinzufügen, auch wenn diese sie bereitgestellt haben.
+
+### <a name="guest-user"></a>Gastbenutzer
+
+Pro AAD-Mandant kann es viele Gastbenutzer geben. Gastbenutzer verfügen im AAD-Mandanten über begrenzte Rechte. Daher können Gastbenutzer keine vorkonfigurierte Lösung im AAD-Mandanten bereitstellen.
+
+Weitere Informationen zu Benutzern und Rollen in AAD finden Sie in den folgenden Ressourcen:
 
 * [Erstellen von Benutzern in Azure AD][lnk-create-edit-users]
 * [Zuweisen von Benutzern zu Apps][lnk-assign-app-roles]
@@ -58,13 +74,13 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 Azure-Administratorrollen steuern die Fähigkeit, einem AD-Mandanten ein Azure-Abonnement zuzuordnen.
 
-Weitere Informationen zu den Azure-Rollen „Co-Administrator“, „Dienstadministrator“ und „Kontoadministrator“ finden Sie im Artikel [Hinzufügen oder Ändern des Co-Administrators, Dienstadministrators und Kontoadministrators in Azure][lnk-admin-roles].
+Weitere Informationen zu den Azure-Administratorrollen finden Sie im Artikel [Hinzufügen oder Ändern des Co-Administrators, Dienstadministrators und Kontoadministrators in Azure][lnk-admin-roles].
 
 ## <a name="application-roles"></a>Anwendungsrollen
 
 Anwendungsrollen steuern den Zugriff auf Geräte in Ihrer vorkonfigurierten Lösung.
 
-Es gibt zwei definierte und eine implizite Rolle in der Anwendung, die erstellt wird, wenn Sie eine vorkonfigurierte Lösung bereitstellen.
+In einer bereitgestellten Anwendung werden zwei definierte Rollen und eine implizite Rolle definiert:
 
 * **Administrator:** Hat Vollzugriff zum Hinzufügen, Verwalten und Entfernen von Geräten sowie zum Ändern von Einstellungen.
 * **ReadOnly:** Kann Geräte, Regeln, Aktionen, Aufträge und Telemetrie anzeigen.
@@ -99,7 +115,7 @@ Sie müssen globaler AAD-Administrator sein, um Rollen für einen Benutzer zu ä
 
 ### <a name="im-a-domain-usermember-on-the-aad-tenant-and-ive-created-a-preconfigured-solution-how-do-i-get-assigned-a-role-for-my-application"></a>Ich bin Domänenbenutzer/-mitglied des AAD-Mandanten und habe eine vorkonfigurierte Lösung erstellt. Wie wird mir eine Rolle für meine Anwendung zugewiesen?
 
-Bitten Sie einen globalen Administrator, Sie als globalen Administrator für den AAD-Mandanten zuzuweisen, damit Sie selbst Berechtigungen zum Zuweisen von Rollen zu Benutzern erhalten. Oder bitten Sie einen globalen Administrator, Ihnen eine Rolle zuzuweisen. Wenn Sie den AAD-Mandanten ändern möchten, in dem Ihre vorkonfigurierte Lösung bereitgestellt wurde, sehen Sie sich die nächste Frage an.
+Bitten Sie einen globalen Administrator, Sie zu einem globalen Administrator des AAD-Mandanten zu machen, und weisen Sie dann Benutzern selbst Rollen zu. Alternativ können Sie auch einen globalen Administrator bitten, Ihnen direkt eine Rolle zuzuweisen. Wenn Sie den AAD-Mandanten ändern möchten, in dem Ihre vorkonfigurierte Lösung bereitgestellt wurde, sehen Sie sich die nächste Frage an.
 
 ### <a name="how-do-i-switch-the-aad-tenant-my-remote-monitoring-preconfigured-solution-and-application-are-assigned-to"></a>Wie ändere ich den AAD-Mandanten, dem meine vorkonfigurierte Lösung und Anwendung für die Remoteüberwachung zugewiesen sind?
 
@@ -135,6 +151,7 @@ Wenn Sie mehr über IoT Suite erfahren möchten, lesen Sie, wie Sie [eine vorkon
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-rm-github-repo]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
+[lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
 [lnk-classic-portal]: https://manage.windowsazure.com/
 [lnk-portal]: https://portal.azure.com/

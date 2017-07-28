@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 06/21/2017
 ms.author: robmcm;asirveda
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 98c42ae7945d0cf29807319c7b777c5740fc8449
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: 6de5a3632aee3ddb401fd39d252c6afb43260acb
+ms.contentlocale: de-de
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -28,83 +29,50 @@ Das Azure-Toolkit für Eclipse stellt Vorlagen und Funktionen bereit, die Ihnen 
 * <https://github.com/microsoft/azure-tools-for-java>
 
 > [!NOTE]
-> Es gibt auch ein Azure-Toolkit für die IntelliJ-IDE. Weitere Informationen finden Sie unter [Azure Toolkit für IntelliJ].
+> Es gibt auch ein Azure-Toolkit für die IntelliJ-IDE. Weitere Informationen finden Sie unter [Azure-Toolkit für IntelliJ](azure-toolkit-for-intellij.md).
 > 
 > 
 
-## <a name="getting-started-with-the-azure-toolkit-for-eclipse"></a>Erste Schritte mit Azure-Toolkit für Eclipse
+## <a name="getting-started-with-the-azure-toolkit-for-eclipse"></a>Erste Schritte mit dem Azure-Toolkit für Eclipse
 Die folgenden Artikel helfen Ihnen beim Einstieg in die Verwendung des Azure-Toolkit für Eclipse:
 
-* [Neuerungen im Azure-Toolkit für Eclipse]
-* [Installieren des Azure-Toolkits für Eclipse]
-* [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]
-* [Erstellen einer Hello World-Anwendung für Azure in Eclipse]
-* [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
+* [Neuerungen im Azure-Toolkit für Eclipse](azure-toolkit-for-eclipse-whats-new.md)
+* [Installieren des Azure-Toolkits für Eclipse](azure-toolkit-for-eclipse-installation.md)
+* [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse](azure-toolkit-for-eclipse-sign-in-instructions.md)
+* [Erstellen einer Hello World-Anwendung für Azure in Eclipse](azure-toolkit-for-eclipse-creating-a-hello-world-application.md)
+* [Erstellen einer „Hello World“-Web-App für Azure in Eclipse](app-service-web/app-service-web-eclipse-create-hello-world-web-app.md)
 
 ## <a name="configuring-azure-project-settings"></a>Konfigurieren von Azure-Projekteinstellungen
 In den folgenden Artikel erfahren Sie, wie Sie das Azure-Toolkit für Eclipse verwenden, um die Einstellungen für Ihre Projekte in Azure zu konfigurieren:
 
-* [Azure-Projekteigenschaften]
-* [Eigenschaften der Azure-Rolle]
-* [Azure-Dienstendpunkte]
-* [Azure-Speicherkontoliste]
-* [Aktivieren der Sitzungsaffinität]
-* [Aktivieren des Remotezugriffs für Azure-Bereitstellungen in Eclipse]
+* [Azure-Projekteigenschaften](azure-toolkit-for-eclipse-azure-project-properties.md)
+* [Eigenschaften der Azure-Rolle](azure-toolkit-for-eclipse-azure-role-properties.md)
+* [Azure-Dienstendpunkte](azure-toolkit-for-eclipse-azure-service-endpoints.md)
+* [Azure-Speicherkontoliste](azure-toolkit-for-eclipse-azure-storage-account-list.md)
+* [Aktivieren der Sitzungsaffinität](azure-toolkit-for-eclipse-enable-session-affinity.md)
+* [Aktivieren des Remotezugriffs für Azure-Bereitstellungen in Eclipse](azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments.md)
 
 ## <a name="using-the-azure-toolkit-for-eclipse"></a>Verwenden des Azure-Toolkits für Eclipse
 Die folgenden Artikel erklären, wie Sie mit dem Azure-Toolkit für Eclipse Ihren Java-Projekten Azure-Funktionen hinzufügen:
 
-* [Anzeigen von Javadoc-Inhalten in Eclipse für das Paket für Azure-Bibliotheken für Java]
-* [Bereitstellen umfangreicher Bereitstellungen]
-<!-- * [Debug a Java Web App on Azure in Eclipse] -->
-<!-- * [Debugging Azure Applications in Eclipse] -->
-* [Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux][HDInsight Tools Plugin for Eclipse]
+* [Anzeigen von Javadoc-Inhalten in Eclipse für das Paket für Azure-Bibliotheken für Java](azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries.md)
+* [Bereitstellen umfangreicher Bereitstellungen](azure-toolkit-for-eclipse-deploying-large-deployments.md)
+* [Verwalten von Speicherkonten mit dem Azure-Explorer für Eclipse](azure-toolkit-for-eclipse-managing-storage-accounts-using-azure-explorer.md)
+* [Verwalten virtueller Computer mit dem Azure-Explorer für Eclipse](azure-toolkit-for-eclipse-managing-virtual-machines-using-azure-explorer.md)
+* [Informationen zum Veröffentlichen einer Spring Boot-App als Docker-Container mit dem Azure-Toolkit für Eclipse](azure-toolkit-for-eclipse-publish-spring-boot-docker-app.md)
+* [Veröffentlichen einer Web-App als Docker-Container mit dem Azure-Toolkit für Eclipse](azure-toolkit-for-eclipse-publish-as-docker-container.md)
+* [Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux](hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md)
 
-## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
+## <a name="next-steps"></a>Nächste Schritte
 
-* *Azure-Toolkit für Eclipse (dieser Artikel)*
-  * [Neuerungen im Azure-Toolkit für Eclipse]
-  * [Installieren des Azure-Toolkits für Eclipse]
-  * [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
-  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]
-* [Azure Toolkit für IntelliJ]
-  * [Neuerungen im Azure-Toolkit für IntelliJ]
-  * [Installieren des Azure Toolkit für IntelliJ]
-  * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
-  * [Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ]
+[!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
 
 <!-- URL List -->
 
-[Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
-[Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
-[Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
-[Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Anleitung zur Azure-Anmeldung für das Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
-
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Java-Tools für Visual Studio Team Services]: https://java.visualstudio.com/
-
-[Azure-Projekteigenschaften]: ./azure-toolkit-for-eclipse-azure-project-properties.md
-[Eigenschaften der Azure-Rolle]: ./azure-toolkit-for-eclipse-azure-role-properties.md
-[Azure-Dienstendpunkte]: ./azure-toolkit-for-eclipse-azure-service-endpoints.md
-[Azure-Speicherkontoliste]: ./azure-toolkit-for-eclipse-azure-storage-account-list.md
-[Erstellen einer Hello World-Anwendung für Azure in Eclipse]: ./azure-toolkit-for-eclipse-creating-a-hello-world-application.md
-<!-- [Debugging Azure Applications in Eclipse]: ./azure-toolkit-for-eclipse-debugging-azure-applications.md -->
-<!-- [Debug a Java Web App on Azure in Eclipse]: ./app-service-web/app-service-web-debug-java-web-app-in-eclipse.md -->
-[Bereitstellen umfangreicher Bereitstellungen]: ./azure-toolkit-for-eclipse-deploying-large-deployments.md
-[Anzeigen von Javadoc-Inhalten in Eclipse für das Paket für Azure-Bibliotheken für Java]: ./azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries.md
-[Aktivieren des Remotezugriffs für Azure-Bereitstellungen in Eclipse]: ./azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments.md
-[Aktivieren der Sitzungsaffinität]: ./azure-toolkit-for-eclipse-enable-session-affinity.md
-[HDInsight Tools Plugin for Eclipse]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
-[How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: ./active-directory/active-directory-java-authenticate-users-access-control-eclipse.md
 
 <!-- Temporarily Deprecated URLs -->
 
@@ -115,6 +83,9 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 <!-- [How to Use SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699545 -->
 <!-- [SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549 -->
 <!-- [Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551 -->
+<!-- [How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: ./active-directory/active-directory-java-authenticate-users-access-control-eclipse.md -->
+<!-- [Debug a Java Web App on Azure in Eclipse]: ./app-service-web/app-service-web-debug-java-web-app-in-eclipse.md -->
+<!-- [Debugging Azure Applications in Eclipse]: ./azure-toolkit-for-eclipse-debugging-azure-applications.md -->
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
 

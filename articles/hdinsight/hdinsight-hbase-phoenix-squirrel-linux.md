@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Apache Phoenix und SQuirreL mit Azure HDInsight (HBase) | Microsoft-Dokumentation
+title: "Verwenden von Apache Phoenix und SQuirreL – Azure HDInsight | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Apache Phoenix in HDInsight verwenden und wie Sie SQuirreL auf Ihrer Arbeitsstation für die Verbindung mit einem HBase-Cluster in HDInsight installieren und konfigurieren."
 services: hdinsight
 documentationcenter: 
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/26/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 04e078d662c861d5c587c571a42478603e291587
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 13d17083bbe26fa9745ce4c5fef9f56859243c2e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -37,15 +38,15 @@ Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in HDInsight 
 Bevor Sie SQLLine verwenden können, benötigen Sie Folgendes:
 
 * **Ein HBase-Cluster in HDInsight**. Informationen zur Bereitstellung von HBase-Clustern finden Sie unter [Erste Schritte mit Apache HBase in HDInsight][hdinsight-hbase-get-started].
-* **Verbinden Sie sich per Remotedesktop-Protokoll mit dem HBase-Cluster**. Anweisungen finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem klassischen Azure-Portal][hdinsight-manage-portal].
+* **Verbinden Sie sich per Remotedesktop-Protokoll mit dem HBase-Cluster**. Anweisungen finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal][hdinsight-manage-portal].
 
-Beim Verbinden mit einem HBase-Cluster müssen Sie die Verbindung zu einem der Zookeeper herstellen. Jeder HDInsight-Cluster verfügt über 3 Zookeeper.
+Beim Verbinden mit einem HBase-Cluster müssen Sie die Verbindung zu einem der Zookeeper herstellen. Jeder HDInsight-Cluster verfügt über drei Zookeeper.
 
 **So finden Sie den Hostnamen des Zookeeper heraus:**
 
 1. Öffnen Sie Ambari, indem Sie zu **https://<ClusterName>.azurehdinsight.net** navigieren.
 2. Geben Sie zum Anmelden den HTTP-(Cluster-)Benutzernamen und das Kennwort ein.
-3. Klicken Sie im linken Menü auf **ZooKeeper** . Sie sehen drei **ZooKeeper-Server** aufgeführt.
+3. Klicken Sie im linken Menü auf **ZooKeeper** . Es sind drei **ZooKeeper-Server** aufgeführt.
 4. Klicken Sie auf einen der aufgeführten **ZooKeeper-Server** . Suchen Sie im Zusammenfassungsbereich den **Hostnamen**. Er ähnelt *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
 
 **Verwendung von SQLLine**
@@ -71,7 +72,7 @@ Beim Verbinden mit einem HBase-Cluster müssen Sie die Verbindung zu einem der Z
 Weitere Informationen finden Sie im [SQLLine-Handbuch](http://sqlline.sourceforge.net/#manual) sowie unter [Phoenix-Grammatik](http://phoenix.apache.org/language/index.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwenden.  Weitere Informationen finden Sie unter
+In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwenden.  Weitere Informationen finden Sie unter:
 
 * [Übersicht HBase mit HDInsight][hdinsight-hbase-overview]: HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Hadoop aufbaut und wahlfreien Zugriff sowie starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
 * [Bereitstellen von HBase-Clustern in Azure Virtual Network][hdinsight-hbase-provision-vnet]: Mit der Integration in virtuelle Netzwerke können HBase-Cluster im selben virtuellen Netzwerk bereitgestellt werden wie Ihre Anwendungen, sodass Anwendungen direkt mit HBase kommunizieren können.

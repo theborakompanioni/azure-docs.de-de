@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Windows-basierten HDInsight-Clustern zu Linux-basierten HDInsight-Clustern | Microsoft Docs
+title: "Migrieren von Windows-basierten HDInsight-Clustern zu Linux-basierten HDInsight-Clustern – Azure | Microsoft-Dokumentation"
 description: Erfahren Sie, wie sie von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten HDInsight-Cluster migrieren.
 services: hdinsight
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/12/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f2c4956ba296781907498226a18708684281692b
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 2efd8e9981ac5d8f2ff28df9ffe1e6b5c01ba953
+ms.contentlocale: de-de
+ms.lasthandoff: 06/10/2017
 
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
@@ -85,7 +85,7 @@ Kopieren Sie anhand folgender Schritte Daten aus dem Produktionscluster in das T
 6. Verwenden Sie über die SSH-Sitzung den folgenden Befehl, um Daten aus dem verknüpften Speicherkonto in das neue Standardspeicherkonto zu kopieren. Ersetzen Sie CONTAINER durch die von PowerShell zurückgegebenen Containerinformationen. Ersetzen Sie __KONTO__ durch den Kontonamen. Ersetzen Sie den Datenpfad mit dem Datendateipfad.
 
     ```bash
-    hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
+    hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
     > [!NOTE]
@@ -280,9 +280,9 @@ Wenn Sie wissen, dass die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeich
 * **Nach dem Hochladen in den Cluster**: Verwenden Sie den folgenden Befehl aus einer SSH-Sitzung im Linux-basierten Cluster, um das Skript zu ändern.
 
     ```bash
-    hdfs dfs -get wasbs:///path/to/script.py oldscript.py
+    hdfs dfs -get wasb:///path/to/script.py oldscript.py
     tr -d '\r' < oldscript.py > script.py
-    hdfs dfs -put -f script.py wasbs:///path/to/script.py
+    hdfs dfs -put -f script.py wasb:///path/to/script.py
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

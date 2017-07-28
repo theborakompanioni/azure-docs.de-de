@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 7c13931aa6d17036e59674cdd917e3ca221ac57f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -39,16 +41,11 @@ Dieses Thema enthält die aktuellen POP-Standorte für **Azure CDN von Verizon**
 | Südeuropa |Madrid, Spanien<br />Mailand, Italien |**&#x2713;**\* |
 | Ostasien |Tokio, Japan<br />Osaka, Japan<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Hongkong<br />Kaohsiung, Taiwan<br />Seoul, Südkorea<br />Singapur |**&#x2713;**\* |
 | Süd- und Zentralasien |Bangalore, Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien |**&#x2713;**\* |
-| Naher Osten/Westasien |Maskat, Oman |**&#x2713;**\* |
+| Naher Osten/Westasien |Maskat, Oman <br /> Fujirah, Vereinigte Arabische Emirate |**&#x2713;**\* |
 | Afrika | |**&#x2713;**\* |
 | Australien und Neuseeland |Melbourne, Australien<br />Sydney, Australien |**&#x2713;**\* |
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure CDN-Edgeknoten-API zum Abrufen der aktuellen IP-Adressen für Whitelists](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

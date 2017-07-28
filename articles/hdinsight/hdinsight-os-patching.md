@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: bhanupr
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f39dfdff2239bb0b55eca50a1e7c706a5408b83a
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: af3c5a19ae8e2e606e4b0506f9f6dddb41192e40
+ms.contentlocale: de-de
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -47,7 +48,7 @@ Mithilfe der in diesem Artikel beschriebenen Skriptaktion können Sie den Zeitpl
 
 Zur Verwendung des Skripts benötigen Sie die folgenden Informationen:
 1. Den Skriptspeicherort: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.
-     HDInsight verwendet diesen URI zum Suchen und Ausführen des Skripts auf allen virtuellen Computern im Cluster.
+    HDInsight verwendet diesen URI zum Suchen und Ausführen des Skripts auf allen virtuellen Computern im Cluster.
   
 2. Clusterknotentypen, auf die das Skript angewendet wird: Hauptknoten, Arbeitsknoten, Zookeeper. Dieses Skript muss auf alle Knotentypen im Cluster angewendet werden. Wenn es auf einen Knotentyp nicht angewendet wird, verwenden die virtuellen Computer für den betreffenden Knotentyp weiterhin den vorherigen Patchzeitplan.
 

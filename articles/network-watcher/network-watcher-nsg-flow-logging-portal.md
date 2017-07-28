@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: bbea08798a601989d06774475cb25ee67e99add6
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 41cb5ffab9bd3a3bed75ffdb6a7383ca1690f810
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -32,63 +32,72 @@ ms.lasthandoff: 05/26/2017
 > - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
-Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
+Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und stellen die folgenden wichtigen Informationen bereit: 
+
+- Aus- und eingehende Datenflüsse auf Regelbasis
+- Die Netzwerkkarte, auf die sich der Datenfluss bezieht
+- 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll)
+- Informationen zu zugelassenem oder verweigertem Datenverkehr
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist.
 
 ## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 
-Der Anbieter **Microsoft.Insights** muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Um den Provider zu registrieren, wechseln Sie zu **Abonnements**, und wählen Sie das Abonnement aus, für das Sie die Datenflussprotokollierung aktivieren möchten. Wählen Sie auf dem Blatt **Abonnement** die Option **Ressourcenanbieter** aus. Durchsuchen Sie die Liste der Anbieter, und vergewissern Sie sich, dass der Anbieter **microsoft.insights** registriert ist. Klicken Sie andernfalls auf **Registrieren**.
+Der Anbieter **Microsoft.Insights** muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Führen Sie zum Registrieren des Anbieters die folgenden Schritte aus: 
+
+1. Wechseln Sie zu **Abonnements**, und wählen Sie das Abonnement aus, für das Sie die Datenflussprotokollierung aktivieren möchten. 
+2. Wählen Sie auf dem Blatt **Abonnement** die Option **Ressourcenanbieter** aus. 
+3. Vergewissern Sie sich anhand der Liste der Anbieter, dass der Anbieter **microsoft.insights** registriert ist. Ist dies nicht der Fall, wählen Sie **Registrieren**.
 
 ![Anzeigen von Anbietern][providers]
 
 ## <a name="enable-flow-logs"></a>Aktivieren von Flowprotokollen
 
-Diese Schritte führen Sie durch das Aktivieren von Flowprotokollen in einer Netzwerksicherheitsgruppe.
+Diese Schritte führen Sie durch den Prozess des Aktivierens von Flowprotokollen in einer Netzwerksicherheitsgruppe.
 
 ### <a name="step-1"></a>Schritt 1
 
-Navigieren Sie zu einer Network Watcher-Instanz, und wählen Sie **Flowprotokolle**.
+Wechseln Sie zu einer Network Watcher-Instanz, und wählen Sie **NSG-Flowprotokolle**.
 
 ![Übersicht zu Flowprotokollen][1]
 
 ### <a name="step-2"></a>Schritt 2
 
-Wählen Sie eine Netzwerksicherheitsgruppe aus der Liste, indem Sie darauf klicken.
+Wählen Sie in der Liste eine Netzwerksicherheitsgruppe aus.
 
 ![Übersicht zu Flowprotokollen][2]
 
 ### <a name="step-3"></a>Schritt 3 
 
-Legen Sie auf dem Blatt **Flowprotokolleinstellungen** den Status auf **Ein** fest, und konfigurieren Sie ein Speicherkonto.  Wenn Sie fertig sind, klicken Sie auf **OK** und **Speichern**.
+Legen Sie auf dem Blatt **Flowprotokolleinstellungen** den Status auf **Ein** fest, und konfigurieren Sie ein Speicherkonto.  Wenn Sie fertig sind, wählen Sie **OK**. Wählen Sie dann **Speichern**.
 
 ![Übersicht zu Flowprotokollen][3]
 
 ## <a name="download-flow-logs"></a>Herunterladen von Flowprotokollen
 
-Flowprotokolle werden in einem Speicherkonto gespeichert. Um Ihre Flowprotokolle anzuzeigen, müssen Sie sie herunterladen.
+Flowprotokolle werden in einem Speicherkonto gespeichert. Laden Sie Ihre Flowprotokolle herunter, um sie anzuzeigen.
 
 ### <a name="step-1"></a>Schritt 1
 
-Um Flowprotokolle herunterzuladen, klicken Sie auf **Sie können Flowprotokolle aus konfigurierten Speicherkonten herunterladen**.  So gelangen Sie zu einer Speicherkontoansicht, wo Sie zum Herunterladen zu Ihrem Protokoll navigieren können.
+Um Flowprotokolle herunterzuladen, wählen Sie **Sie können Flowprotokolle aus konfigurierten Speicherkonten herunterladen**. So gelangen Sie zu einer Speicherkontoansicht. Dort können Sie wählen, welche Protokolle Sie herunterladen möchten.
 
 ![Flowprotokolleinstellungen][4]
 
 ### <a name="step-2"></a>Schritt 2
 
-Navigieren Sie zum richtigen Speicherkonto und dann zu **Container** > **insights-log-networksecuritygroupflowevent**.
+Wechseln Sie zum richtigen Speicherkonto. Wählen Sie **Container** > **insights-log-networksecuritygroupflowevent**.
 
 ![Flowprotokolleinstellungen][5]
 
 ### <a name="step-3"></a>Schritt 3
 
-Navigieren Sie zum Speicherort des Flowprotokolls, wählen Sie das Flowprotokoll aus, und klicken Sie auf **Herunterladen**.
+Wechseln Sie zum Speicherort des Flowprotokolls, wählen Sie das Flowprotokoll aus, und klicken Sie auf **Herunterladen**.
 
 ![Flowprotokolleinstellungen][6]
 
-Informationen zur Struktur des Protokolls finden Sie unter [Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md) (Einführung in die Flowprotokollierung für Netzwerksicherheitsgruppen).
+Informationen zur Struktur des Protokolls finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -102,3 +111,4 @@ Erfahren Sie, wie Sie [Ihre NSG-Flowprotokolle mit Power BI visualisieren](netwo
 [5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
 [6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
 [providers]: ./media/network-watcher-nsg-flow-logging-portal/providers.png
+

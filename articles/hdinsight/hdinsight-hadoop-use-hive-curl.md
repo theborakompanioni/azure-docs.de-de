@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Hadoop Hive mit Curl in HDInsight | Microsoft Docs
+title: "Verwenden von Hadoop Hive mit Curl in HDInsight – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Pig-Aufträge mithilfe von Curl remote an HDInsight übermitteln."
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5953a4d15af087b30c8bd17245108894791bdf15
-ms.lasthandoff: 04/17/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: afd0bc8c19456fd123f53de7d1704619405bed67
+ms.contentlocale: de-de
+ms.lasthandoff: 06/10/2017
 
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit REST
@@ -118,7 +118,7 @@ Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Hive-Abfragen mit Hadoo
     Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH** angezeigt.
 
    > [!NOTE]
-   > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück.  Mithilfe von „jq“ wird nur der Statuswert abgerufen.
+   > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück. Mithilfe von „jq“ wird nur der Statuswert abgerufen.
 
 4. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure Blob-Speicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies **/example/curl**. Diese Adresse speichert die Ausgabe im Verzeichnis **Beispiel/Curl** im Standardspeicher des Clusters.
 

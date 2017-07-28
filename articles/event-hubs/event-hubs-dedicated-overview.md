@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 06/01/2017
 ms.author: sethm;babanisa
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: fa0d49498db74ec81c98f3df9317d42cdd31ab46
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: b3af61ec0923a0d9d207cee790d59aa9254a578b
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -55,13 +56,13 @@ Die Verwendung der Event Hubs Dedicated-Kapazität bietet die folgenden Vorteile
 * Keine Wartung: Wir verwalten den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und Partitionierung.
 * Monatlicher Festpreis
 
-Mit Event Hubs Dedicated entfallen auch einige der Durchsatzeinschränkungen des Standard-Angebots. Durchsatzeinheiten in den Basic- und Standard-Tarifen berechtigen Sie zu 1.000 Ereignissen pro Sekunde oder 1 Mbit/s an eingehendem Datenverkehr pro TU und die zweifache Menge an ausgehendem Datenverkehr. Das Dedicated-Staffelungsangebot weist keine Einschränkungen der Anzahl von ein- und ausgehenden Ereignissen auf. Diese Grenzwerte werden nur durch die Verarbeitungskapazität der erworbenen Event Hubs geregelt.
+Mit Event Hubs Dedicated entfallen auch einige der Durchsatzeinschränkungen des Standard-Angebots. Durchsatzeinheiten in den Basic- und Standard-Tarifen berechtigen Sie zu 1000 Ereignissen pro Sekunde oder 1 Mbit/s an eingehendem Datenverkehr pro TU und die zweifache Menge an ausgehendem Datenverkehr. Das Dedicated-Staffelungsangebot weist keine Einschränkungen der Anzahl von ein- und ausgehenden Ereignissen auf. Diese Grenzwerte werden nur durch die Verarbeitungskapazität der erworbenen Event Hubs geregelt.
 
 Dieser Dienst ist auf große Telemetriebenutzer ausgerichtet und steht Kunden mit einem Enterprise Agreement zur Verfügung.
 
 ## <a name="how-to-onboard"></a>Onboardingmethoden
 
-Die Event Hubs Dedicated-Plattform ist für über ein Enterprise Agreement mit CUs unterschiedlicher Größe allgemein verfügbar. Jede CU stellt ungefähr die Entsprechung von 200 Durchsatzeinheiten bereit. Sie können Ihre Kapazität während des gesamten Monats nach oben oder unten skalieren, um Ihre Anforderungen durch Hinzufügen oder Entfernen von CUs zu erfüllen. Der dedizierte Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
+Die Event Hubs Dedicated-Plattform ist für über ein Enterprise Agreement mit CUs unterschiedlicher Größe verfügbar. Jede CU stellt ungefähr die Entsprechung von 200 Durchsatzeinheiten bereit. Sie können Ihre Kapazität während des gesamten Monats nach oben oder unten skalieren, um Ihre Anforderungen durch Hinzufügen oder Entfernen von CUs zu erfüllen. Der Dedicated-Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenden Sie sich an Ihren Microsoft-Vertriebsmitarbeiter oder den Microsoft-Support, um weitere Details zur Dedicated Event Hubs-Kapazität zu erhalten. Weitere Informationen zu Event Hubs finden Sie auch unter den folgenden Links:

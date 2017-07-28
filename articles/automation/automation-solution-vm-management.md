@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 06/01/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: db9f2174e9928083957f160be8c268fe21cd4169
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e44f04b3492ac07822b0842864f84a5f16dc3f5b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/03/2017
 
 ---
 
@@ -57,23 +57,23 @@ Variable | Beschreibung|
 Runbook **SendMailO365-MS-Mgmt** ||
 SendMailO365-IsSendEmail-MS-Mgmt | Gibt an, ob mit den Runbooks „StartByResourceGroup-MS-Mgmt-VM“ und „StopByResourceGroup-MS-Mgmt-VM“ nach dem Abschluss des Vorgangs E-Mail-Benachrichtigungen gesendet werden können.  Wählen Sie **True**, um E-Mail-Warnungen zu aktivieren, und sonst **False**. Der Standardwert ist **False**.| 
 Runbook **StartByResourceGroup-MS-Mgmt-VM** ||
-StartByResourceGroup-ExcludeList-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;). Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.|
+StartByResourceGroup-ExcludeList-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;) ohne Leerzeichen. Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.|
 StartByResourceGroup-SendMailO365-EmailBodyPreFix-MS-Mgmt | Text, der am Anfang des E-Mail-Texts angefügt wird.|
 StartByResourceGroup-SendMailO365-EmailRunBookAccount-MS-Mgmt | Gibt den Namen des Automation-Kontos an, in dem das E-Mail-Runbook enthalten ist.  **Ändern Sie diese Variable nicht.**|
 StartByResourceGroup-SendMailO365-EmailRunbookName-MS-Mgmt | Gibt den Namen des E-Mail-Runbooks an.  Wird von den Runbooks „StartByResourceGroup-MS-Mgmt-VM“ und „StopByResourceGroup-MS-Mgmt-VM“ zum Senden von E-Mails verwendet.  **Ändern Sie diese Variable nicht.**|
 StartByResourceGroup-SendMailO365-EmailRunbookResourceGroup-MS-Mgmt | Gibt den Namen der Ressourcengruppe an, in der das E-Mail-Runbook enthalten ist.  **Ändern Sie diese Variable nicht.**|
 StartByResourceGroup-SendMailO365-EmailSubject-MS-Mgmt | Gibt den Text für die Betreffzeile der E-Mail an.|  
-StartByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | Gibt die Empfänger der E-Mail an.  Trennen Sie Namen per Semikolon (;).|
-StartByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;). Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.  Mit dem Standardwert (Sternchen) werden alle Ressourcengruppen in das Abonnement einbezogen.|
+StartByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | Gibt die Empfänger der E-Mail an.  Trennen Sie Namen per Semikolon (;) ohne Leerzeichen.|
+StartByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;) ohne Leerzeichen. Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.  Mit dem Standardwert (Sternchen) werden alle Ressourcengruppen in das Abonnement einbezogen.|
 StartByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | Gibt das Abonnement an, unter dem die VMs enthalten sind, die mit dieser Lösung verwaltet werden sollen.  Dies muss dasselbe Abonnement sein, in dem sich das Automation-Konto der Lösung befindet.|
 Runbook **StopByResourceGroup-MS-Mgmt-VM** ||
-StopByResourceGroup-ExcludeList-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;). Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.|
+StopByResourceGroup-ExcludeList-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;) ohne Leerzeichen. Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.|
 StopByResourceGroup-SendMailO365-EmailBodyPreFix-MS-Mgmt | Text, der am Anfang des E-Mail-Texts angefügt wird.|
 StopByResourceGroup-SendMailO365-EmailRunBookAccount-MS-Mgmt | Gibt den Namen des Automation-Kontos an, in dem das E-Mail-Runbook enthalten ist.  **Ändern Sie diese Variable nicht.**|
 StopByResourceGroup-SendMailO365-EmailRunbookResourceGroup-MS-Mgmt | Gibt den Namen der Ressourcengruppe an, in der das E-Mail-Runbook enthalten ist.  **Ändern Sie diese Variable nicht.**|
 StopByResourceGroup-SendMailO365-EmailSubject-MS-Mgmt | Gibt den Text für die Betreffzeile der E-Mail an.|  
-StopByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | Gibt die Empfänger der E-Mail an.  Trennen Sie Namen per Semikolon (;).|
-StopByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;). Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.  Mit dem Standardwert (Sternchen) werden alle Ressourcengruppen in das Abonnement einbezogen.|
+StopByResourceGroup-SendMailO365-EmailToAddress-MS-Mgmt | Gibt die Empfänger der E-Mail an.  Trennen Sie Namen per Semikolon (;) ohne Leerzeichen.|
+StopByResourceGroup-TargetResourceGroups-MS-Mgmt-VM | Geben Sie die Namen der VMs ein, die vom Verwaltungsvorgang ausgeschlossen werden sollen. Trennen Sie die Namen per Semikolon (;) ohne Leerzeichen. Bei den Werten wird die Groß-/Kleinschreibung berücksichtigt, und das Platzhalterzeichen (Sternchen) wird unterstützt.  Mit dem Standardwert (Sternchen) werden alle Ressourcengruppen in das Abonnement einbezogen.|
 StopByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | Gibt das Abonnement an, unter dem die VMs enthalten sind, die mit dieser Lösung verwaltet werden sollen.  Dies muss dasselbe Abonnement sein, in dem sich das Automation-Konto der Lösung befindet.|  
 <br>
 

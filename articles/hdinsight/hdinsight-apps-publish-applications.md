@@ -1,5 +1,5 @@
 ---
-title: "Veröffentlichen von HDInsight-Anwendungen | Microsoft Docs"
+title: "Veröffentlichen von HDInsight-Anwendungen – Azure| Microsoft-Dokumentation"
 description: "Hier finden Sie Informationen zum Erstellen und Veröffentlichen von HDInsight-Anwendungen."
 services: hdinsight
 documentationcenter: 
@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 1a7dabcbfdc1977e747fd30cfc0383d6c5f7f5a0
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 6aa66cac35bc317fc87003e6c3d824544c53de88
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="publish-hdinsight-applications-into-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
-Eine HDInsight-Anwendung kann von Benutzern in einem Linux-basierten HDInsight-Cluster installiert werden. Diese Anwendungen können von Microsoft oder von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) bezogen oder aber selbst entwickelt werden. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen.  Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md).
+Eine HDInsight-Anwendung kann von Benutzern in einem Linux-basierten HDInsight-Cluster installiert werden. Diese Anwendungen können von Microsoft oder von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) bezogen oder aber selbst entwickelt werden. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung auf Azure Marketplace veröffentlichen.  Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md).
 
 HDInsight-Anwendungen verwenden das Modell *Bring Your Own License (BYOL)*. Bei diesem Modell muss der Anbieter die Anwendung für die Endbenutzer lizenzieren. Den Endbenutzern werden von Azure lediglich die erstellten Ressourcen (wie etwa der HDInsight-Cluster und dessen virtuelle Computer/Knoten) in Rechnung gestellt. Die Abrechnung für die eigentliche Anwendung wird derzeit nicht über Azure abgewickelt.
 
-Weiterer Artikel zu HDInsight-Anwendungen:
+Weitere Artikel zu HDInsight-Anwendungen:
 
 * [Installieren von HDInsight-Anwendungen](hdinsight-apps-install-applications.md): Hier erfahren Sie, wie Sie eine HDInsight-Anwendung in Ihren Clustern installieren.
 * [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Enthält Informationen zum Installieren und Testen benutzerdefinierter HDInsight-Anwendungen.
@@ -41,7 +42,7 @@ Für die Übermittlung einer benutzerdefinierten Anwendung an den Marketplace be
 Darüber hinaus benötigen Sie ein registriertes Entwicklerkonto. Informationen hierzu finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md) sowie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
 
 ## <a name="define-application"></a>Definieren der Anwendung
-Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte.  Im ersten Schritt geben Sie durch das Definieren einer Datei vom Typ **createUiDef.json** an, mit welchen Clustern Ihre Anwendung kompatibel ist. Im zweiten Schritt wird dann die Vorlage über das Azure-Portal veröffentlicht. Im Anschluss sehen Sie ein Beispiel für eine Datei vom Typ „createUiDef.json“:
+Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte.  Im ersten Schritt geben Sie durch das Definieren einer Datei vom Typ **createUiDef.json** an, mit welchen Clustern Ihre Anwendung kompatibel ist. Im zweiten Schritt wird dann die Vorlage über das Azure-Portal veröffentlicht. Im Anschluss finden Sie ein Beispiel für eine Datei vom Typ „createUiDef.json“:
 
     {
         "handler": "Microsoft.HDInsight",
@@ -63,7 +64,7 @@ Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte
 ## <a name="application-install-script"></a>Skript für die Anwendungsinstallation
 Bei jeder Installation einer (vorhandenen oder neuen) Anwendung in einem Cluster wird ein Edgeknoten erstellt, auf dem das Skript für die Anwendungsinstallation ausgeführt wird.
   > [!IMPORTANT]
-  > Der Name der Anwendungsinstallationsskripts muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein.
+  > Der Name des Skripts für die Anwendungsinstallation muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein.
   > 
   > name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
   > 
@@ -77,13 +78,13 @@ Bei jeder Installation einer (vorhandenen oder neuen) Anwendung in einem Cluster
   > 
 Das Installationsskript muss die folgenden Merkmale aufweisen:
 1. Stellen Sie sicher, dass das Skript idempotent ist. Mehrere Aufrufe des Skripts müssen zum gleichen Ergebnis führen.
-2. Das Skript muss ordnungsgemäß mit Versionen versehen werden. Wählen Sie einen anderen Speicherort für das Skript, wenn Sie ein Upgrade vornehmen oder Änderungen testen, damit Kunden, die versuchen, die Anwendung zu installieren, nicht beeinträchtigt werden. 
-3. Versehen Sie die Skripts an jeder Stelle mit adäquater Protokollierung. Die Skriptprotokolle sind in der Regel die einzige Möglichkeit, Probleme bei der Installation von Anwendungen zu beheben.
+2. Das Skript muss ordnungsgemäß mit Versionen versehen werden. Wählen Sie einen anderen Speicherort für das Skript, wenn Sie ein Upgrade vornehmen oder Änderungen testen, damit Kunden, die gerade versuchen die Anwendung zu installieren, nicht beeinträchtigt werden. 
+3. Versehen Sie die Skripts an jeder Stelle mit einer adäquaten Protokollierung. Die Skriptprotokolle sind in der Regel die einzige Möglichkeit, Probleme bei der Installation von Anwendungen zu beheben.
 4. Stellen Sie sicher, dass für Aufrufe externer Dienste oder Ressourcen eine angemessene Anzahl von Wiederholungen vorgesehen ist, damit die Installation nicht von vorübergehenden Netzwerkproblemen betroffen ist.
 5. Wenn Ihr Skript Dienste auf den Knoten startet, stellen Sie sicher, dass die Dienste überwacht werden und so konfiguriert sind, dass Sie bei Neustarts von Knoten automatisch gestartet werden.
 
 ## <a name="package-application"></a>Packen der Anwendung
-Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HDInsight-Anwendung erforderlich sind. Die ZIP-Datei wird im Schritt [Veröffentlichen der Anwendung](#publish-application)benötigt.
+Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HDInsight-Anwendung erforderlich sind. Die ZIP-Datei wird im Schritt [Veröffentlichen der Anwendung](#publish-application) benötigt.
 
 * [createUiDefinition.json](#define-application).
 * mainTemplate.json. Ein Beispiel finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).

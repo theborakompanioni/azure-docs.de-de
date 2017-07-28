@@ -15,9 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/24/2016
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 259c59133499a4a3beb0e5f6f3700944df5ab8a9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: f9f3a7b2369818791ffac1c8eeccef45216c2ff0
+ms.contentlocale: de-de
+ms.lasthandoff: 06/08/2017
 
 ---
 
@@ -83,14 +85,14 @@ Das folgende Diagramm stellt einen Teil der Grenzwerte aus [Grenzwerte für den 
 | Maximale Anzahl der Replikate |– |3 |12 |12 |12 |12 |
 | Abfragen pro Sekunde |– |~3 pro Replikat |~15 pro Replikat |~60 pro Replikat |>60 pro Replikat |>60 pro Replikat |
 
-<sup>1</sup> Für Free- und Vorschau-SKUs gibt es keine SLAs. SLAs werden angewendet, sobald eine SKU allgemein verfügbar ist.
+<sup>1</sup> Für Funktionen der Free- und Vorschauversion gilt keine Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Für alle abrechenbaren Tarife gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Zwei oder mehr Replikate sind für die Abfrage-SLA (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLA (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für die SLA nicht berücksichtigt. 
 
 <sup>2</sup> S3 und S3 HD werden durch eine Infrastruktur mit identischer hoher Verfügbarkeit unterstützt, der jeweilige maximale Grenzwert wird jedoch auf unterschiedliche Weise erreicht. S3 ist für eine kleinere Anzahl sehr umfangreicher Indizes ausgelegt. Damit ist der maximale Grenzwert ressourcengebunden (2,4 TB für jeden Dienst). S3 HD ist für eine große Zahl sehr kleiner Indizes ausgelegt. Bei 1.000 Indizes erreicht S3 HD seine Grenzwerte in Form von Indexeinschränkungen. Wenn Sie als S3 HD-Kunde mehr als 1.000 Indizes benötigen, erhalten Sie beim Microsoft-Support Informationen zur entsprechenden Vorgehensweise.
 
 ## <a name="eliminate-skus-that-dont-meet-requirements"></a>Entfernen von SKUs, die die Anforderungen nicht erfüllen
 Die folgenden Fragen können dabei helfen, die passende SKU für Ihre Workload ermitteln:
 
-1. Sind Anforderungen aufgrund einer **Vereinbarung zum Servicelevel (Service Level Agreement, SLA)** vorhanden? Beschränken Sie sich bei SKU-Entscheidung auf Basic und Standard (keine Vorschau).
+1. Sind Anforderungen aufgrund einer **Vereinbarung zum Servicelevel (Service Level Agreement, SLA)** vorhanden? Sie können einen beliebigen abrechenbaren Tarif (Basic oder höher) verwenden, müssen aber Ihren Dienst für Redundanz konfigurieren. Zwei oder mehr Replikate sind für die Abfrage-SLA (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLA (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für die SLA nicht berücksichtigt.
 2. **Wie viele Indizes** benötigen Sie? Eine der größten Variablen, die es bei der SKU-Entscheidung zu berücksichtigen gilt, ist die Anzahl von Indizes, die die jeweilige SKU unterstützt. Die Indexunterstützung ist bei den günstigeren Tarifen sehr unterschiedlich ausgeprägt. Die Anforderungen hinsichtlich der Indexanzahl kann ein Hauptentscheidungskriterium für eine bestimmte SKU sein.
 3. **Wie viele Dokumente** werden in die einzelnen Indizes geladen? Anzahl und Größe der Dokumente bestimmen letztlich die Größe des Index. Wenn Sie die voraussichtliche Größe des Index abschätzen können, können Sie diesen Wert mit der Partitionsgröße pro SKU vergleichen und dabei auch die Anzahl von Partitionen einbeziehen, die zum Speichern eines Index mit entsprechender Größe erforderlich sind.
 4. **Welches Abfrageaufkommen erwarten Sie**? Nach der Klärung des Speicherbedarfs können Sie sich den Abfrageworkloads zuwenden. Die SKUs S2 und S3 bieten beide einen nahezu identischen Durchsatz, Vorschau-SKUs kommen jedoch unter Umständen aufgrund von SLA-Anforderungen nicht infrage.
@@ -113,9 +115,4 @@ Wenn Sie die optimale SKU ermittelt haben, fahren Sie mit den folgenden Schritte
 
 * [Erstellen eines Azure Search-Diensts über das Azure-Portal](search-create-service-portal.md)
 * [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search](search-capacity-planning.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

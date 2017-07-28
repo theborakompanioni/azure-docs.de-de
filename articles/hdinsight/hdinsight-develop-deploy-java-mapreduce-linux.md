@@ -1,6 +1,6 @@
 ---
 title: "Erstellen von Java MapReduce für Hadoop – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie MapReduce-Programme entwickeln und in Hadoop in HDInsight bereitstellen können."
+description: "Erfahren Sie, wie Sie Apache Maven verwenden, um eine Java-basierte MapReduce-Anwendung zu erstellen und anschließend mit Hadoop in HDInsight ausführen."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,7 +9,7 @@ documentationcenter:
 tags: azure-portal
 ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/17/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: ce5661febe502e9da9682166af1b601b1fc0b965
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 33705cff8d65b40aeca2cdaf0b102bf7fbbfa9d6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -257,7 +257,7 @@ Verwenden Sie den folgenden Befehl, um die JAR-Datei in den HDInsight-Hauptknote
 
 Dieser Befehl kopiert die Dateien aus dem lokalen System auf den Stammknoten. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run"></a>Ausführen des MapReduce-Auftrags
+## <a name="run"></a> So führen Sie den MapReduce-Auftrag in Hadoop aus
 
 1. Stellen Sie per SSH eine Verbindung mit HDInsight her. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
