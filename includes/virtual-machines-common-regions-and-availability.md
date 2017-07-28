@@ -81,7 +81,7 @@ Eine Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor
 
 ![Schematische Darstellung der Konfiguration mit Updatedomäne und Fehlerdomäne](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
 
-Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/linux/manage-availability.md) oder [virtuellen Windows-Computern](../articles/virtual-machines/linux/manage-availability.md).
+Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/linux/manage-availability.md) oder [virtuellen Windows-Computern](../articles/virtual-machines/windows/manage-availability.md).
 
 ### <a name="fault-domains"></a>Fehlerdomänen
 Eine Fehlerdomäne ist eine logische Gruppe von zugrunde liegender Hardware mit einer gemeinsamen Stromquelle und einem Netzwerkswitch, ähnlich einem Rack in einem lokalen Rechenzentrum. Wenn Sie VMs in einer Verfügbarkeitsgruppe erstellen, werden Ihre VMs von der Azure-Plattform automatisch auf diese Fehlerdomänen verteilt. Bei diesem Ansatz werden die Auswirkungen von potenziellen Hardwareausfällen, Netzwerkausfällen oder Stromausfällen beschränkt.

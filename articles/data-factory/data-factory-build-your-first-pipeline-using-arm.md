@@ -15,15 +15,13 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 7303b51a4a107e63e4c6514f7bf8f33a3ba00e39
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: c67169f296f2f13b9ee87180f126fb1dcf10fbea
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
-<a id="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template" class="xliff"></a>
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
 > * [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -43,14 +41,12 @@ Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktiv
 > 
 > Die Pipeline in diesem Tutorial enthält nur eine Aktivität: HDInsightHive. Eine Pipeline kann mehrere Aktivitäten enthalten. Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Weitere Informationen finden Sie unter [Planung und Ausführung in einer Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
-## Voraussetzungen
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>Voraussetzungen
 * Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
 * Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
 * Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) . 
 
-## Dieses Lernprogramm umfasst folgende Punkte
-<a id="in-this-tutorial" class="xliff"></a>
+## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
 | Entität | Beschreibung |
 | --- | --- |
 | Mit Azure Storage verknüpfter Dienst |Verknüpft Ihr Azure Storage-Konto mit der Data Factory. Das Azure Storage-Konto enthält in diesem Beispiel die Ein- und Ausgabedaten für die Pipeline. |
@@ -63,8 +59,7 @@ Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline k
 
 Der folgende Abschnitt enthält die vollständige Resource Manager-Vorlage zum Definieren von Data Factory-Entitäten, damit Sie das Tutorial schnell durchlaufen und die Vorlage testen können. Informationen zum Definieren der einzelnen Data Factory-Entitäten finden Sie im Abschnitt [Data Factory-Entitäten in der Vorlage](#data-factory-entities-in-the-template).
 
-## Data Factory-JSON-Vorlage
-<a id="data-factory-json-template" class="xliff"></a>
+## <a name="data-factory-json-template"></a>Data Factory-JSON-Vorlage
 Das Grundgerüst einer Resource Manager-Vorlage zum Definieren einer Data Factory sieht wie folgt aus: 
 
 ```json
@@ -148,9 +143,10 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
             "properties": {
                   "type": "HDInsightOnDemand",
                   "typeProperties": {
+                    "version": "3.5",
                     "clusterSize": 1,
                     "timeToLive": "00:05:00",
-                    "osType": "windows",
+                    "osType": "Linux",
                     "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
                   }
             }
@@ -251,8 +247,8 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
                       "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
                 }
                   ],
-                  "start": "2016-10-01T00:00:00Z",
-                  "end": "2016-10-02T00:00:00Z",
+                  "start": "2017-07-01T00:00:00Z",
+                  "end": "2017-07-02T00:00:00Z",
                   "isPaused": false
               }
           }
@@ -267,8 +263,7 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
 > 
 > 
 
-## Parameter (JSON)
-<a id="parameters-json" class="xliff"></a>
+## <a name="parameters-json"></a>Parameter (JSON)
 Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Parametern für die Azure Resource Manager-Vorlage.  
 
 > [!IMPORTANT]
@@ -314,8 +309,7 @@ Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Para
 > 
 > 
 
-## Erstellen einer Data Factory
-<a id="create-data-factory" class="xliff"></a>
+## <a name="create-data-factory"></a>Erstellen einer Data Factory
 1. Starten Sie **Azure PowerShell** , und führen Sie den folgenden Befehl aus: 
    * Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
     ```PowerShell
@@ -335,8 +329,7 @@ Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Para
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFTutorialARM-Parameters.json
     ```
 
-## Überwachen der Pipeline
-<a id="monitor-pipeline" class="xliff"></a>
+## <a name="monitor-pipeline"></a>Überwachen der Pipeline
 1. Klicken Sie nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen**, und wählen Sie **Data Factorys** aus.
      ![Durchsuchen > Data Factorys](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. Klicken Sie auf dem Blatt **Data Factorys** auf die von Ihnen erstellte Data Factory (**TutorialFactoryARM**).    
@@ -363,10 +356,8 @@ Sie können auch die App „Überwachung und Verwaltung“ verwenden, um Ihre Da
 > 
 > 
 
-## Data Factory-Entitäten in der Vorlage
-<a id="data-factory-entities-in-the-template" class="xliff"></a>
-### Definieren einer Data Factory
-<a id="define-data-factory" class="xliff"></a>
+## <a name="data-factory-entities-in-the-template"></a>Data Factory-Entitäten in der Vorlage
+### <a name="define-data-factory"></a>Definieren einer Data Factory
 Das folgende Beispiel zeigt, wie Sie in der Resource Manager-Vorlage eine Data Factory definieren:  
 
 ```json
@@ -385,8 +376,7 @@ Das folgende Beispiel zeigt, wie Sie in der Resource Manager-Vorlage eine Data F
 ```
 Hierbei handelt es sich um eine eindeutige Zeichenfolge auf Grundlage der Ressourcengruppen-ID.  
 
-### Definieren von Data Factory-Entitäten
-<a id="defining-data-factory-entities" class="xliff"></a>
+### <a name="defining-data-factory-entities"></a>Definieren von Data Factory-Entitäten
 In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert: 
 
 * [Mit Azure Storage verknüpfter Dienst](#azure-storage-linked-service)
@@ -395,8 +385,7 @@ In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert:
 * [Azure-Blob-Ausgabedataset](#azure-blob-output-dataset)
 * [Datenpipeline mit einer Kopieraktivität](#data-pipeline)
 
-#### Mit Azure Storage verknüpfter Dienst
-<a id="azure-storage-linked-service" class="xliff"></a>
+#### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
 In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure Storage verknüpften Diensts finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service). 
 
 ```json
@@ -418,8 +407,7 @@ In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an.
 ```
 Die Verbindungszeichenfolge (**connectionString**) enthält die Parameter „storageAccountName“ und „storageAccountKey“. Die Werte für diese Parameter werden mithilfe einer Konfigurationsdatei übergeben. In der Definition werden außerdem die in der Vorlage definierten Variablen „azureStorageLinkedService“ und „dataFactoryName“ verwendet. 
 
-#### Bedarfsgesteuerter verknüpfter HDInsight-Dienst
-<a id="hdinsight-on-demand-linked-service" class="xliff"></a>
+#### <a name="hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter HDInsight-Dienst
 Der Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) enthält Details zu JSON-Eigenschaften, die zum Definieren eines bedarfsgesteuerten verknüpften HDInsight-Diensts verwendet werden.  
 
 ```json
@@ -433,9 +421,10 @@ Der Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
+            "version": "3.5",
             "clusterSize": 1,
             "timeToLive": "00:05:00",
-            "osType": "windows",
+            "osType": "Linux",
             "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
         }
     }
@@ -443,7 +432,7 @@ Der Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md
 ```
 Beachten Sie folgende Punkte: 
 
-* Die Data Factory erstellt mit dem obigen JSON-Code einen **Windows-basierten** HDInsight-Cluster für Sie. Sie können sich auch für die Erstellung eines **Linux-basierten** HDInsight-Clusters entscheiden. Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . 
+* Die Data Factory erstellt mit dem obigen JSON-Code einen **Linux-basierten** HDInsight-Cluster für Sie. Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . 
 * Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie **Ihren eigenen HDInsight-Cluster** verwenden. Ausführliche Informationen finden Sie unter [Verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) .
 * Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist.
   
@@ -451,8 +440,7 @@ Beachten Sie folgende Punkte:
 
 Ausführliche Informationen finden Sie unter [Bedarfsgesteuerter verknüpfter HDInsight-Dienst](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) .
 
-#### Azure-Blob-Eingabedataset
-<a id="azure-blob-input-dataset" class="xliff"></a>
+#### <a name="azure-blob-input-dataset"></a>Azure-Blob-Eingabedataset
 In diesem Abschnitt geben Sie den Blobcontainer, den Ordner und die Datei mit den Eingabedaten an. Informationen zu JSON-Eigenschaften zum Definieren eines Azure-Blobdatasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure-Blob“](data-factory-azure-blob-connector.md#dataset-properties). 
 
 ```json
@@ -485,8 +473,7 @@ In diesem Abschnitt geben Sie den Blobcontainer, den Ordner und die Datei mit de
 ```
 In dieser Definition werden die folgenden Parameter verwendet, die in der Parametervorlage definiert sind: blobContainer, inputBlobFolder und inputBlobName. 
 
-#### Azure-Blob-Ausgabedataset
-<a id="azure-blob-output-dataset" class="xliff"></a>
+#### <a name="azure-blob-output-dataset"></a>Azure-Blob-Ausgabedataset
 Sie geben die Namen des Blobcontainers und des Ordners mit den Ausgabedaten an. Informationen zu JSON-Eigenschaften zum Definieren eines Azure-Blobdatasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure-Blob“](data-factory-azure-blob-connector.md#dataset-properties).  
 
 ```json
@@ -518,8 +505,7 @@ Sie geben die Namen des Blobcontainers und des Ordners mit den Ausgabedaten an. 
 
 In dieser Definition werden die folgenden Parameter verwendet, die in der Parametervorlage definiert sind: blobContainer und outputBlobFolder. 
 
-#### Datenpipeline
-<a id="data-pipeline" class="xliff"></a>
+#### <a name="data-pipeline"></a>Datenpipeline
 Sie definieren eine Pipeline zum Transformieren von Daten, indem Sie Hive-Skript in einem bedarfsgesteuerten Azure HDInsight-Cluster ausführen. Informationen zu JSON-Elementen zum Definieren einer Pipeline für dieses Beispiel finden Sie unter [Pipeline-JSON](data-factory-create-pipelines.md#pipeline-json). 
 
 ```json
@@ -569,15 +555,14 @@ Sie definieren eine Pipeline zum Transformieren von Daten, indem Sie Hive-Skript
             "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
         }
         ],
-        "start": "2016-10-01T00:00:00Z",
-        "end": "2016-10-02T00:00:00Z",
+        "start": "2017-07-01T00:00:00Z",
+        "end": "2017-07-02T00:00:00Z",
         "isPaused": false
     }
 }
 ```
 
-## Wiederverwenden der Vorlage
-<a id="reuse-the-template" class="xliff"></a>
+## <a name="reuse-the-template"></a>Wiederverwenden der Vorlage
 In diesem Tutorial haben Sie eine Vorlage zum Definieren von Data Factory-Entitäten und eine Vorlage zum Übergeben von Parameterwerten erstellt. Mit der gleichen Vorlage können Sie Data Factory-Entitäten in unterschiedlichen Umgebungen bereitstellen. Hierzu müssen Sie lediglich eine Parameterdatei für die jeweilige Umgebung erstellen und beim Bereitstellen in dieser Umgebung verwenden.     
 
 Beispiel:  
@@ -593,8 +578,7 @@ Der erste Befehl verwendet eine Parameterdatei für die Entwicklungsumgebung, de
 
 Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Angenommen, Sie müssen zahlreiche Data Factorys mit einer Pipeline oder mehreren Pipelines erstellen, die die gleiche Logik implementieren, aber die einzelnen Data Factorys verwenden jeweils ein anderes Azure Storage- und Azure SQL-Datenbank-Konto. In diesem Szenario können Sie zur Erstellung der Data Factorys die gleiche Vorlage in der gleichen Umgebung (Entwicklungs-, Test- oder Produktionsumgebung) mit unterschiedlichen Parameterdateien verwenden. 
 
-## Resource Manager-Vorlage zum Erstellen eines Gateways
-<a id="resource-manager-template-for-creating-a-gateway" class="xliff"></a>
+## <a name="resource-manager-template-for-creating-a-gateway"></a>Resource Manager-Vorlage zum Erstellen eines Gateways
 Hier ist eine Resource Manager-Beispielvorlage zum Erstellen eines logischen Gateways im Hintergrund angegeben. Installieren Sie ein Gateway auf Ihrem lokalen Computer oder Ihrer Azure IaaS-VM, und registrieren Sie das Gateway beim Data Factory-Dienst per Schlüssel. Ausführlichere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ```json
@@ -631,8 +615,7 @@ Hier ist eine Resource Manager-Beispielvorlage zum Erstellen eines logischen Gat
 ```
 Mit dieser Vorlage wird eine Data Factory mit dem Namen GatewayUsingArmDF und dem Gateway GatewayUsingARM erstellt. 
 
-## Weitere Informationen
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>Weitere Informationen
 | Thema | Beschreibung |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können. |

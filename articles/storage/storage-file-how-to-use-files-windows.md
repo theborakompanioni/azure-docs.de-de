@@ -15,33 +15,31 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: a6d3a6f6e3457c84c5a7dc7d3601ef9495c060fe
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: e911e787cd1e29b2bbeaa648869c50245f2dd9ba
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/22/2017
 
 ---
 
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows
 [Azure File Storage](storage-dotnet-how-to-use-files.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und in Windows Server eingebunden werden. Dieser Artikel zeigt drei verschiedene Methoden zum Einbinden einer Azure-Dateifreigabe unter Windows: über die Benutzeroberfläche des Explorers, mithilfe von PowerShell und über die Eingabeaufforderung. 
 
-Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.x unterstützen. Die folgende Tabelle zeigt die SMB-Version der letzten Windows-Versionen:
+Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.0 unterstützen. 
 
-| Windows-Version | SMB-Version | Unterstützt die Einbindung über virtuelle Azure-Computer | Unterstützt die lokale Einbindung | Mindestens empfohlen (KB) |
-|----|----|----|----|----|
-| Windows 10, Version 1703 | SMB 3.1.1 | Ja | Ja | |
-| Windows Server 2016 | SMB 3.1.1 | Ja | Ja | [KB4015438](https://support.microsoft.com/help/4015438) |
-| Windows 10, Version 1607 | SMB 3.1.1 | Ja | Ja | [KB4015438](https://support.microsoft.com/help/4015438) | 
-| Windows 10, Version 1511 | SMB 3.1.1 | Ja | Ja | [KB4013198](https://support.microsoft.com/help/4013198) |
-| Windows 10, Version 1507 | SMB 3.1.1 | Ja | Ja | [KB4012606](https://support.microsoft.com/help/4012606) | 
-| Windows 8.1 | SMB 3.0.2 | Ja | Ja | [KB4012216](https://support.microsoft.com/help/4012216) |
-| Windows Server 2012 R2 | SMB 3.0.2 | Ja | Ja | [KB4012216](https://support.microsoft.com/help/4012216) |
-| Windows Server 2012 | SMB 3.0 | Ja | Ja | [KB4012214](https://support.microsoft.com/help/4012214) |
-| Windows 7 | SMB 2.1 | Ja | Nein | [KB4012215](https://support.microsoft.com/help/4012215) |
-| Windows Server 2008 R2 | SMB 2.1 | Ja | Nein | [KB4012215](https://support.microsoft.com/help/4012215) |
+Die Azure-Dateifreigabe kann auf einem Windows-Computer je nach Betriebssystemversion entweder lokal oder in einen virtuellen Azure-Computer eingebunden werden. Dies wird in der folgenden Tabelle veranschaulicht: 
+
+| Windows-Version        | SMB-Version |In virtuellen Azure-Computer einbindbar|Lokal einbindbar|
+|------------------------|-------------|---------------------|---------------------|
+| Windows 7              | SMB 2.1     | Ja                 | Nein                  |
+| Windows Server 2008 R2 | SMB 2.1     | Ja                 | Nein                  |
+| Windows 8              | SMB 3.0     | Ja                 | Ja                 |
+| Windows Server 2012    | SMB 3.0     | Ja                 | Ja                 |
+| Windows Server 2012 R2 | SMB 3.0     | Ja                 | Ja                 |
+| Windows 10             | SMB 3.0     | Ja                 | Ja                 |
 
 > [!Note]  
-> Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden. Die Mindestempfehlung für die KB stellt das neueste Paket mit SMB-Fehlerbehebungen für aktualisierungsscheue IT-Administratoren bereit.
+> Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.
 
 ## <a name="aprerequisites-for-mounting-azure-file-share-with-windows"></a></a>Voraussetzungen für das Einbinden von Azure-Dateifreigaben mit Windows 
 * **Name des Speicherkontos:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.
@@ -144,3 +142,4 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 ### <a name="reference"></a>Referenz
 * [Referenz zur Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
+

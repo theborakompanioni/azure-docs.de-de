@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/29/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: a6fdab66a6a41e352d07e3b6f3c58eb331c0d93f
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 4d96483a971d5c4a0c2cc240620e7a9b289f597d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
@@ -456,7 +455,9 @@ Das Blatt „Input“ (Eingabe) enthält eine Übersicht über die VMware-Umgebu
 **VM Compatibility** (VM-Kompatibilität): Mögliche Werte sind **Yes** und **Yes**\*. **Yes**\* steht für Fälle, in denen die VM für [Azure Storage Premium](https://aka.ms/premium-storage-workload) geeignet ist. Hier fällt der Datenträger mit hoher Datenänderungsrate bzw. hohem IOPS-Wert, für den das Profil erstellt wird, in die Kategorie P20 oder P30. Aufgrund der Größe des Datenträgers wird er aber auf P10 bzw. P20 heruntergestuft. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird. Beispiel:
 * Bei weniger als 128 GB ist die Kategorie P10.
 * Bei 128 GB bis 512 GB wird die Kategorie P20 verwendet.
-* Für den Bereich 512 GB bis 1.023 GB lautet die Kategorie P30.
+* Für den Bereich zwischen 512 GB und 1024 GB (jeweils einschließlich) lautet die Kategorie P30.
+* Für den Bereich zwischen 1025 GB und 2048 GB (jeweils einschließlich) lautet die Kategorie P40.
+* Für den Bereich zwischen 2049 GB und 4095 GB (jeweils einschließlich) lautet die Kategorie P50.
 
 Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 oder P30 fällt, aufgrund der Größe aber ein niedrigerer Storage Premium-Datenträgertyp gewählt wird, wird die VM vom Tool als **Yes**\* gekennzeichnet. Sie erhalten vom Tool außerdem die Empfehlung, dass Sie entweder die Größe des Quelldatenträgers an den empfohlenen Storage Premium-Datenträgertyp anpassen oder den Typ des Zieldatenträgers nach dem Failover ändern sollten.
 
@@ -494,7 +495,8 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale in die Kategorie P20 ode
 
 **VM Compatibility** (VM-Kompatibilität): Gibt an, warum die jeweilige VM für die Verwendung mit Site Recovery nicht kompatibel ist. Die Gründe werden für jeden inkompatiblen Datenträger der VM beschrieben. Basierend auf den veröffentlichten [Speichergrenzwerten](https://aka.ms/azure-storage-scalbility-performance) können dies folgende Gründe sein:
 
-* Der Datenträger ist größer als 1.023 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 1 TB sind.
+* Der Datenträger ist größer als 4095 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 4095 GB sind.
+* Der Betriebssystemdatenträger ist größer als 2048 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 2048 GB sind.
 * Der Starttyp ist EFI. Derzeit unterstützt Azure Site Recovery für virtuelle Computer nur den Starttyp „BIOS“.
 
 * Die VM-Gesamtgröße (Replikation + TFO) übersteigt den Grenzwert für die Unterstützung von Speicherkonten (35 TB). Diese Inkompatibilität tritt normalerweise auf, wenn ein einzelner Datenträger der VM über ein Leistungsmerkmal verfügt, das den unterstützten Azure- oder Site Recovery-Grenzwert für Standardspeicher überschreitet. Hierdurch fällt die VM in die Storage Premium-Zone. Die maximal unterstützte Größe für ein Storage Premium-Konto beträgt aber 35 TB, und eine einzelne geschützte VM kann nicht über mehrere Speicherkonten hinweg geschützt werden. Beachten Sie außerdem Folgendes: Wenn ein Testfailover auf einer geschützten VM durchgeführt wird, erfolgt dies unter demselben Speicherkonto, unter dem die Replikation durchgeführt wird. Richten Sie in diesem Fall die doppelte Größe des Datenträgers ein, damit die Replikation weiter durchgeführt werden kann und gleichzeitig das Testfailover erfolgreich ist.
@@ -560,6 +562,15 @@ Gehen Sie wie folgt vor, um den Deployment Planner zu aktualisieren:
 
 
 ## <a name="version-history"></a>Versionsverlauf
+
+### <a name="131"></a>1.3.1
+Aktualisiert: 19. Juli 2017
+
+Folgende neue Funktion wurde hinzugefügt:
+
+* Unterstützung großer Datenträger (über 1 TB) bei der Berichtgenerierung. Mit dem Bereitstellungsplaner können Sie nun die Replikation virtueller Computer planen, deren Datenträger größer als 1 TB (bis zu 4095 GB) sind.
+Weitere Informationen finden Sie unter [Azure Site Recovery now supports large disk sizes in Azure](https://azure.microsoft.com/en-us/blog/azure-site-recovery-large-disks/) (Azure Site Recovery unterstützt nun große Datenträger in Azure).
+
 
 ### <a name="13"></a>1.3
 Aktualisiert: 9. Mai 2017
