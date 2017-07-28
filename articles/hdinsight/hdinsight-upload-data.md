@@ -23,7 +23,6 @@ ms.openlocfilehash: 134afd3495c555f85e8838cbe0344a3a48534950
 ms.contentlocale: de-de
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Hadoop-Aufträge in HDInsight
 Azure HDInsight stellt über Azure-BLOB-Speicher ein Hadoop Distributed File System (HDFS) mit vollem Funktionsumfang zur Verfügung. Es ist als eine HDFS-Erweiterung konzipiert, die eine nahtlose Benutzererfahrung bietet. Der vollständige Satz von Komponenten im Hadoop-Ökosystem kann direkt mit den verwalteten Daten verwendet werden. Azure-BLOB-Speicher und HDFS sind unterschiedliche Dateisysteme, die jeweils für die Datenspeicherung und Berechnungen dieser Daten optimiert sind. Die Vorteile der Verwendung von Azure Blob Storage werden unter [Verwenden von Azure Blob Storage mit HDInsight][hdinsight-storage] beschrieben.
@@ -154,11 +153,11 @@ Beispiel: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
 Da sich das Standarddateisystem für HDInsight im Azure-Blob-Speicher befindet, befindet sich die Datei "/example/data.txt" auch tatsächlich im Azure-Blob-Speicher. Sie können auch folgendermaßen auf die Datei verweisen:
 
-    wasbs:///example/data/data.txt
+    wasb:///example/data/data.txt
 
 oder
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+    wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
 Eine Liste weiterer Hadoop-Befehle für die Arbeit mit Dateien finden Sie unter [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 

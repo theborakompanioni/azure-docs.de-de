@@ -70,7 +70,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **sqltest**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. 
 5. Suchen Sie im Bereich **Durchsuchen** nach ```System.Data.SqlClient```, und wählen Sie es aus.
 6. Klicken Sie auf der Seite **System.Data.SqlClient** auf **Installieren**.
-7. Überprüfen Sie nach Abschluss der Installation die Änderungen, und klicken Sie anschließend auf **OK**, um das Vorschaufenster**** zu schließen. 
+7. Überprüfen Sie nach Abschluss der Installation die Änderungen, und klicken Sie anschließend auf **OK**, um das **Vorschaufenster** zu schließen. 
 8. Sollte das Fenster **Zustimmung zur Lizenz** angezeigt werden, klicken Sie auf **Ich stimme zu**.
 
 ## <a name="insert-code-to-query-sql-database"></a>Einfügen von Code zum Abfragen der SQL-Datenbank

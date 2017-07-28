@@ -22,7 +22,6 @@ ms.openlocfilehash: 7d269a5805da405e4e5f7a3caf5a58fa454b9abb
 ms.contentlocale: de-de
 ms.lasthandoff: 04/28/2017
 
-
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimieren von Hive-Abfragen in Azure HDInsight
 
@@ -100,7 +99,7 @@ Für die erstellte Partitionstabelle können Sie eine statische oder eine dynami
         WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
   
         ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-        LOCATION ‘wasbs://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+        LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
 * **Dynamische Partitionierung** bedeutet, dass Hive die Partitionen automatisch erstellen und anpassen soll. Da wir die Partitionstabelle bereits anhand der Stagingtabelle erstellt haben, müssen wir die Tabelle nun nur noch mit Daten füllen:
   
         SET hive.exec.dynamic.partition = true;

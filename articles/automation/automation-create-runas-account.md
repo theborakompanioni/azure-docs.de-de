@@ -12,7 +12,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/29/2017
+ms.date: 07/27/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
@@ -22,9 +22,7 @@ ms.lasthandoff: 06/30/2017
 
 ---
 
-<a id="update-your-automation-account-authentication-with-run-as-accounts" class="xliff"></a>
-
-# Aktualisieren der Automation-Kontoauthentifizierung mit ausführenden Konten 
+# <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualisieren der Automation-Kontoauthentifizierung mit ausführenden Konten 
 Sie können Ihr vorhandenes Automation-Konto über das Portal oder mit PowerShell aktualisieren, wenn folgende Voraussetzungen erfüllt werden:
 
 * Sie erstellen ein Automation-Konto, aber lehnen die Erstellung des ausführenden Kontos ab.
@@ -32,9 +30,7 @@ Sie können Ihr vorhandenes Automation-Konto über das Portal oder mit PowerShel
 * Sie verwenden bereits ein Automation-Konto zum Verwalten klassischer Ressourcen und möchten es zur Verwendung des klassischen ausführenden Kontos aktualisieren, anstatt ein neues Konto zu erstellen und Ihre Runbooks und Assets zu diesem Konto zu migrieren.   
 * Sie möchten ein ausführendes Konto und ein klassisches ausführendes Konto erstellen, indem Sie ein Zertifikat nutzen, das von Ihrer Unternehmenszertifizierungsstelle ausgestellt wurde.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Das Skript kann nur unter Windows 10 und Windows Server 2016 mit Azure Resource Manager-Modul 3.0.0 und höher ausgeführt werden. Unter älteren Windows-Versionen wird das Skript nicht unterstützt.
 * Azure PowerShell 1.0 und höher. Informationen zur PowerShell 1.0-Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
@@ -46,9 +42,7 @@ Gehen Sie wie folgt vor, um die Werte für *SubscriptionID*, *ResourceGroup* und
 2. Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften**. 
 3. Notieren Sie sich die Werte auf dem Blatt **Eigenschaften**.<br><br> ![Blatt „Eigenschaften“ des Automation-Kontos](media/automation-create-runas-account/automation-account-properties.png)  
 
-<a id="required-permissions-to-update-your-automation-account" class="xliff"></a>
-
-### Erforderliche Berechtigungen zum Aktualisieren Ihres Automation-Kontos
+### <a name="required-permissions-to-update-your-automation-account"></a>Erforderliche Berechtigungen zum Aktualisieren Ihres Automation-Kontos
 Zum Aktualisieren eines Automation-Kontos müssen Sie über die folgenden spezifischen Berechtigungen verfügen, um das Thema abschließen zu können.   
  
 * Ihr AD-Benutzerkonto muss zu einer Rolle mit Berechtigungen hinzugefügt werden, die der Rolle „Mitwirkender“ für Microsoft.Automation-Ressourcen entspricht. Dies wird im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md#contributor-role-permissions) erläutert.  
@@ -56,9 +50,7 @@ Zum Aktualisieren eines Automation-Kontos müssen Sie über die folgenden spezif
 
 Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, bevor Sie der Rolle „Globaler Administrator/Co-Administrator“ des Abonnements hinzugefügt werden, werden Sie Active Directory als Gast hinzugefügt. In diesem Fall erhalten Sie eine Warnung der Art „Sie haben keine Berechtigungen zum Erstellen von…“. auf dem Blatt **Automation-Konto hinzufügen**. Benutzer, die zuerst der Rolle des globalen Administrators/Co-Administrators hinzugefügt wurden, können aus der Active Directory-Instanz des Abonnements entfernt und erneut hinzugefügt werden, um sie als Vollbenutzer in Active Directory einzurichten. Sie können dies im Azure-Portal im Bereich **Azure Active Directory** überprüfen. Wählen Sie hierzu **Benutzer und Gruppen**, **Alle Benutzer** und nach Auswahl des jeweiligen Benutzers die Option **Profil**. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
 
-<a id="create-run-as-account-from-the-portal" class="xliff"></a>
-
-## Erstellen eines ausführenden Kontos über das Portal
+## <a name="create-run-as-account-from-the-portal"></a>Erstellen eines ausführenden Kontos über das Portal
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal Ihr Azure Automation-Konto zu aktualisieren.  Sie können das ausführende Konto und das klassische ausführende Konto einzeln erstellen. Wenn Sie keine Ressourcen im klassischen Azure-Portal verwalten müssen, können Sie auch nur das ausführende Azure-Konto erstellen.  
 
 Mit dem Verfahren werden die folgenden Elemente in Ihrem Automation-Konto erstellt.
@@ -79,9 +71,7 @@ Mit dem Verfahren werden die folgenden Elemente in Ihrem Automation-Konto erstel
 3. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus.  Nach der Auswahl wird das Blatt **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen** angezeigt. Überprüfen Sie die Übersichtsinformationen, und klicken Sie auf **Erstellen**, um mit dem Erstellen des ausführenden Kontos fortzufahren.  
 4. Während Azure das ausführende Konto erstellt, können Sie den Fortschritt unter **Benachrichtigungen** im Menü verfolgen. Außerdem wird ein Banner mit dem Hinweis angezeigt, dass das Konto erstellt wird.  Dieser Vorgang kann einige Minuten dauern.  
 
-<a id="create-run-as-account-using-powershell-script" class="xliff"></a>
-
-## Erstellen eines ausführenden Kontos mit einem PowerShell-Skript
+## <a name="create-run-as-account-using-powershell-script"></a>Erstellen eines ausführenden Kontos mit einem PowerShell-Skript
 Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
 
 * Erstellen eines ausführenden Kontos mit einem selbstsignierten Zertifikat
@@ -166,7 +156,7 @@ Abhängig von der gewählten Konfigurationsoption werden mit dem Skript die folg
 
         $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
         $KeyCredential.StartDate = $CurrentDate
-        $KeyCredential.EndDate= [DateTime]$PfxCert.GetExpirationDateString()
+        $KeyCredential.EndDate = Get-Date $PfxCert.GetExpirationDateString()
         $KeyCredential.EndDate = $KeyCredential.EndDate.AddDays(-1)
         $KeyCredential.KeyId = $KeyId
         $KeyCredential.CertValue  = $keyValue
@@ -307,8 +297,6 @@ Beachten Sie nach dem erfolgreichen Ausführen des Skripts Folgendes:
 * Wenn Sie ein klassisches ausführendes Konto mit einem öffentlichen Unternehmenszertifikat (CER-Datei) erstellt haben, sollten Sie dieses Zertifikat verwenden. Befolgen Sie die Anleitung zum [Hochladen eines Verwaltungs-API-Zertifikats in das klassische Azure-Portal](../azure-api-management-certs.md), und überprüfen Sie anschließend die Konfiguration der Anmeldeinformationen mit Ressourcen der klassischen Bereitstellung, indem Sie den [Beispielcode für die Authentifizierung mit Ressourcen der klassischen Azure-Bereitstellung](automation-verify-runas-authentication.md#classic-run-as-authentication) verwenden. 
 * Falls Sie *kein* klassisches ausführendes Konto erstellt haben, können Sie die Authentifizierung mit Resource Manager-Ressourcen durchführen und die Konfiguration der Anmeldeinformationen überprüfen, indem Sie den [Beispielcode für die Authentifizierung mit Resource Manager-Ressourcen](automation-verify-runas-authentication.md#automation-run-as-authentication) verwenden.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
 * Weitere Informationen zu Zertifikaten und Azure-Diensten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

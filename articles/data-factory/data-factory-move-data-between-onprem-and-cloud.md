@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e1d44f85b36d08944351a79d7a4b39cc8de61201
 ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
 ms.contentlocale: de-de
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
@@ -221,7 +220,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
             }
         }
     }     
-    ```       
+    ```     
    Beachten Sie folgende Punkte:
 
    * **type** ist auf **SqlServerTable** festgelegt.
