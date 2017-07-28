@@ -22,10 +22,8 @@ ms.lasthandoff: 07/12/2017
 
 ---
 
-# Speicherdienste von Azure Deutschland
-<a id="azure-germany-storage-services" class="xliff"></a>
-## Storage
-<a id="storage" class="xliff"></a>
+# <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
+## <a name="storage"></a>Storage
 Einzelheiten zu Azure Storage und seiner Verwendung finden Sie in der [globalen Dokumentation zu Storage](../storage/index.md).
 
 Die in Azure Storage gespeicherten Daten werden repliziert, um eine hohe Verfügbarkeit sicherzustellen. Bei georedundanten Speichern und georedundanten Speichern mit Lesezugriff repliziert Azure Daten zwischen den *Regionspaaren*. Bei Azure Deutschland sind folgende Regionspaare verfügbar:
@@ -39,8 +37,7 @@ Bei der Datenreplikation werden die Daten innerhalb deutscher Grenzen gehalten. 
 
 Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konten. Wenn Sie diese Funktion aktivieren, verschlüsselt Azure automatisch Daten, bevor sie in den Speicher eingefügt werden. Die Daten werden mithilfe einer 256-Bit-AES-Verschlüsselung verschlüsselt. Die Speicherdienstverschlüsselung unterstützt die Verschlüsselung von Block-, Anfüge- und Seitenblobs.
 
-### Speicherdienstverfügbarkeit nach Azure Deutschland-Region
-<a id="storage-service-availability-by-azure-germany-region" class="xliff"></a>
+### <a name="storage-service-availability-by-azure-germany-region"></a>Speicherdienstverfügbarkeit nach Azure Deutschland-Region
 
 | Dienst | Deutschland, Mitte | Deutschland, Nordosten |
 | --- | --- | --- | --- |
@@ -54,8 +51,7 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 | Import/Export |Nicht verfügbar |Nicht verfügbar |
 | StorSimple |Nicht verfügbar |Nicht verfügbar |
 
-### Abweichungen
-<a id="variations" class="xliff"></a>
+### <a name="variations"></a>Abweichungen
 Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen in der globalen Azure-Umgebung:
 
 | Dienstart | Globale Azure-Umgebung | Azure Deutschland |
@@ -80,7 +76,6 @@ Das zu verwendende Endpunktsuffix für diese Überladungen lautet *core.cloudapi
 >
 
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
 

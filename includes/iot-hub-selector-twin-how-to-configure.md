@@ -5,8 +5,7 @@
 > 
 > 
 
-## Einführung
-<a id="introduction" class="xliff"></a>
+## <a name="introduction"></a>Einführung
 
 Unter [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)][lnk-twin-tutorial] wurde beschrieben, wie Sie Gerätemetadaten über Ihr Lösungs-Back-End mit *Tags* festlegen, Gerätebedingungen über eine Geräte-App mit *gemeldeten Eigenschaften* melden und diese Informationen mit einer SQL-ähnlichen Sprache abfragen.
 

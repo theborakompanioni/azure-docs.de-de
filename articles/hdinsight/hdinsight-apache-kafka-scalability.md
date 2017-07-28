@@ -22,8 +22,7 @@ ms.lasthandoff: 07/13/2017
 
 ---
 
-# Konfigurieren von Speicher und Skalierbarkeit für Apache Kafka in HDInsight
-<a id="configure-storage-and-scalability-for-apache-kafka-on-hdinsight" class="xliff"></a>
+# <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Konfigurieren von Speicher und Skalierbarkeit für Apache Kafka in HDInsight
 
 Erfahren Sie, wie Sie die Anzahl der von Apache Kafka in HDInsight verwendeten verwalteten Datenträger konfigurieren.
 
@@ -33,8 +32,7 @@ Das folgende Diagramm zeigt einen Vergleich zwischen Kafka in HDInsight vor verw
 
 ![Diagramm, das Kafka in HDInsight mit einer einzelnen VHD pro VM im Vergleich zu mehreren verwalteten Datenträgern pro VM zeigt](./media/hdinsight-apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## Konfigurieren von verwalteten Datenträgern: Azure-Portal
-<a id="configure-managed-disks-azure-portal" class="xliff"></a>
+## <a name="configure-managed-disks-azure-portal"></a>Konfigurieren von verwalteten Datenträgern: Azure-Portal
 
 1. Führen Sie die Schritte unter [Erstellen eines HDInsight-Clusters](hdinsight-hadoop-create-linux-clusters-portal.md) aus, um die übliche Vorgehensweise zum Erstellen eines Clusters mit dem Portal zu verstehen. Führen Sie den Vorgang zum Erstellen eines Portals nicht aus.
 
@@ -45,8 +43,7 @@ Das folgende Diagramm zeigt einen Vergleich zwischen Kafka in HDInsight vor verw
 
     ![Bild des Blatts „Clustergröße“ mit hervorgehobenen Datenträgern pro Workerknoten](./media/hdinsight-apache-kafka-scalability/set-managed-disks-portal.png)
 
-## Konfigurieren von verwalteten Datenträgern: Resource Manager-Vorlage
-<a id="configure-managed-disks-resource-manager-template" class="xliff"></a>
+## <a name="configure-managed-disks-resource-manager-template"></a>Konfigurieren von verwalteten Datenträgern: Resource Manager-Vorlage
 
 Um die Anzahl der von den Workerknoten in einem Kafka-Cluster verwendeten Datenträger zu steuern, verwenden Sie den folgenden Abschnitt der Vorlage:
 
@@ -60,8 +57,7 @@ Um die Anzahl der von den Workerknoten in einem Kafka-Cluster verwendeten Datent
 
 Eine vollständige Vorlage, die das Konfigurieren verwalteter Datenträger veranschaulicht, finden Sie unter [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json).
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Verwendung von Kafka in HDInsight finden Sie in den folgenden Dokumenten:
 
