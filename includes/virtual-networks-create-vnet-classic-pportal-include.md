@@ -5,7 +5,7 @@ Führen Sie zum Erstellen eines klassischen VNet basierend auf dem oben beschrie
 2. Klicken Sie auf **NEU** > **Netzwerk** > **Virtuelles Netzwerk**. Beachten Sie, dass in der Liste **Bereitstellungsmodell auswählen** bereits **Klassisch** angezeigt wird. Klicken Sie anschließend auf **Erstellen**, wie in der folgenden Abbildung dargestellt.
    
     ![Erstellen eines VNET im Azure-Portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
-3. Geben Sie auf dem Blatt **Virtuelles Netzwerk** den Namen**** des VNets ein, und klicken Sie dann auf **Adressraum**. Konfigurieren Sie Ihre Adressraumeinstellungen für das VNet und sein erstes Subnetz, und klicken Sie dann auf **OK**. Die folgende Abbildung zeigt die Einstellungen des CIDR-Blocks für das aktuelle Szenario.
+3. Geben Sie auf dem Blatt **Virtuelles Netzwerk** den **Namen** des VNets ein, und klicken Sie dann auf **Adressraum**. Konfigurieren Sie Ihre Adressraumeinstellungen für das VNet und sein erstes Subnetz, und klicken Sie dann auf **OK**. Die folgende Abbildung zeigt die Einstellungen des CIDR-Blocks für das aktuelle Szenario.
    
     ![Blatt "Adressraum"](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
 4. Klicken Sie auf **Ressourcengruppe**, und wählen Sie eine Ressourcengruppe aus, zu der Sie das VNet hinzufügen möchten, oder klicken Sie auf **Neue Ressourcengruppe erstellen**, um das VNet einer neuen Ressourcengruppe hinzuzufügen. Die folgende Abbildung zeigt die Ressourcengruppeneinstellungen für eine neue Ressourcengruppe mit dem Namen **TestRG**. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
@@ -22,7 +22,7 @@ Führen Sie zum Erstellen eines klassischen VNet basierend auf dem oben beschrie
 9. Daraufhin sollte die **Konfiguration** für das VNet angezeigt werden, wie unten dargestellt. 
    
     ![Erstellen eines VNet im Portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure6.png)
-10. Klicken Sie auf **Subnetze** > **Hinzufügen**, geben Sie einen Namen**** ein, legen Sie einen **Adressbereich (CIDR-Block)** für Ihr Subnetz fest, und klicken Sie dann auf **OK**. Die folgende Abbildung zeigt die Einstellungen für das aktuelle Szenario.
+10. Klicken Sie auf **Subnetze** > **Hinzufügen**, geben Sie einen **Namen**ein, legen Sie einen **Adressbereich (CIDR-Block)** für Ihr Subnetz fest, und klicken Sie dann auf **OK**. Die folgende Abbildung zeigt die Einstellungen für das aktuelle Szenario.
     
     ![Erstellen eines VNET im Azure-Portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
 
