@@ -4,7 +4,7 @@ description: "Dieses Dokument unterstützt Sie bei der Verwendung der Option Thr
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 7d45a32b-1341-4bb5-a436-1f42a8a2590a
 ms.service: operations-management-suite
@@ -13,12 +13,13 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 06/13/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7161cacfd371aa73974e635a343793bbec76d858
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 0cf9b83d7023641ec445a59a5e61d3da038695fa
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -83,9 +84,21 @@ Die Karte **Informationen zu Bedrohungen** hilft Ihnen beim Auffinden der aktuel
 > [!NOTE]
 > Die Verwendung dieser Funktion bei der Reaktion auf einen Incident wird in der Präsentation [Mitigate datacenter security threats with guided investigation using Operations Management Suite](https://myignite.microsoft.com/videos/5000) (Minimieren von Sicherheitsrisiken im Rechenzentrum per geführter Untersuchung mithilfe der Operations Management Suite) demonstriert, die Sie auf Microsoft Ignite finden.
 > 
-> 
 
-## <a name="see-also"></a>Siehe auch
+### <a name="responding-to-distinct-malicious-ip-accessed"></a>Reagieren auf bestimmte böswillige IP-Adresse, auf die zugegriffen wurde
+In einigen Szenarien sehen Sie möglicherweise eine potenziell böswillige IP-Adresse, auf die einer der überwachten Computer zugegriffen hat:
+
+![Threat Intelligence-Karte](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig6.png)
+
+Diese Warnung und andere derselben Kategorie werden über die OMS-Sicherheit generiert, wobei [Microsoft Threat Intelligence](https://youtu.be/O4WtxgUrDc8) verwendet wird. Die Threat Intelligence-Daten werden von Microsoft gesammelt und von führenden Threat Intelligence-Anbietern erworben. Diese Daten werden regelmäßig aktualisiert und an sich schnell entwickelnde Bedrohungen angepasst. Es empfiehlt sich eine Kombination mit anderen Quellen von Sicherheitsinformationen, wenn eine Sicherheitswarnung [untersucht](https://blogs.technet.microsoft.com/msoms/2016/12/08/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) wird. 
+
+## <a name="customize-alerts-received-via-e-mail"></a>Anpassen von per E-Mail empfangenen Warnungen
+
+Sie können anpassen, welche Benutzer in Ihrer Organisation benachrichtigt werden, wenn durch die Sicherheitslösung von OMS Sicherheitswarnungen ausgelöst werden. Diese Option ist im OMS-Dashboard unter „Überblick“ > „Einstellungen“ verfügbar:
+
+![E-Mail](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig7.png)
+
+## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie die Option **Threat Intelligence** in der Sicherheits- und Überwachungslösung von OMS für das Reagieren auf Sicherheitswarnungen verwenden. Weitere Informationen zur Sicherheitslösung von OMS finden Sie in den folgenden Artikeln:
 
 * [Operations Management Suite (OMS) – Übersicht](operations-management-suite-overview.md)

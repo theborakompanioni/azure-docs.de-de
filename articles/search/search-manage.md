@@ -13,12 +13,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/05/2017
+ms.date: 06/18/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: ab914153df01c6d8135732bc772b78066e14d1d1
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: c293de5b43103c8cbec01f61a26b8b28ac7e9116
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -37,17 +38,18 @@ Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erst
 
 **Nicht behandelte Bereiche** 
 
-*Content Management* (oder Indexverwaltung) bezieht sich auf Vorgänge wie z.B. das Analysieren von Suchdatenverkehr, mit dem Ziel, Informationen zum Abfragevolumen und verwendeten Suchbegriffen zu erhalten und zu ermitteln, wie erfolgreich die Suchergebnisse Kunden zu bestimmten Dokumenten in Ihrem Index leiten. Eine weiter gehende Beschreibung des Content Management würde den Rahmen dieses Artikels sprengen. Informationen dazu, wie Sie Einblicke in die internen Abläufe auf Indexebene erhalten, finden Sie unter [„Datenverkehrsanalyse durchsuchen“ für Azure Search](search-traffic-analytics.md).
+*Content Management* (oder Indexverwaltung) bezieht sich auf Vorgänge wie z.B. das Analysieren von Suchdatenverkehr, mit dem Ziel, Informationen zum Abfragevolumen und verwendeten Suchbegriffen zu erhalten und zu ermitteln, wie erfolgreich die Suchergebnisse Kunden zu bestimmten Dokumenten in Ihrem Index leiten. Hilfe für diesen Bereich finden Sie unter [„Datenverkehrsanalyse durchsuchen“ für Azure Search](search-traffic-analytics.md).
 
 *Abfrageleistung* wird in diesem Artikel ebenfalls nicht eingegangen. Weitere Informationen finden Sie unter [Überwachen der Nutzung und Abfragemetriken](search-monitor-usage.md) und [Leistung und Optimierung](search-performance-optimization.md).
 
+*Upgrade* ist kein administrativer Task. Da beim Bereitstellen des Diensts Ressourcen zugewiesen werden, erfordert das Verschieben zu einer anderen Preisstufe einen neuen Dienst. Weitere Informationen finden Sie unter [Erstellen eines Azure Search-Diensts](search-create-service-portal.md).
 
 <a id="admin-rights"></a>
 
 ## <a name="administrator-rights"></a>Administratorrechte
 Die Bereitstellung oder Außerbetriebnahme des eigentlichen Diensts kann von einem Administrator oder Co-Administrator des Azure-Abonnements durchgeführt werden.
 
-Innerhalb eines Diensts verfügen alle Benutzer mit Zugriff auf die Dienst-URL und mit einem Administrator-API-Schlüssel über Lese-/Schreibzugriff auf den Dienst und können entsprechend Serverobjekte, z.B. API-Schlüssel, Indizes, Indexer, Datenquellen, Zeitpläne und Rollenzuweisungen hinzufügen, löschen oder ändern, die über [per RBAC-definierte Rollen](#rbac) implementiert wurden.
+Innerhalb eines Diensts hat jede Person mit Zugriff auf die Dienst-URL und einem Admin-API-Schlüssel Lese-/Schreibzugriff auf den Dienst. Der Lese-/Schreibzugriff ermöglicht das Hinzufügen, Löschen oder Ändern von Serverobjekten, einschließlich der API-Schlüssel, Indizes, Indexer, Datenquellen, Zeitpläne und Rollenzuweisungen, die über [per RBAC-definierte Rollen](#rbac) implementiert wurden.
 
 Alle Benutzerinteraktionen mit Azure Search fallen unter einen dieser beiden Modi: Lese-/Schreibzugriff auf den Dienst (Administratorrechte) oder Lesezugriff auf den Dienst (Abfragerechte). Weitere Informationen finden Sie unter [Verwalten der API-Schlüssel](#manage-keys).
 
@@ -64,7 +66,7 @@ Für Azure Search werden die folgenden administrativen Aufgaben mit RBAC-Berecht
 | Mitwirkender |Die gleiche Ebene wie „Besitzer“, mit Ausnahme der RBAC-Rollenverwaltung. So kann z.B. ein Mitwirkender den `api-key` anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern. |
 | Leser |Dienststatus und Abfrageschlüssel anzeigen. Mitglieder dieser Rolle können die Dienstkonfiguration nicht ändern und auch keine Admin-Schlüssel anzeigen. |
 
-Beachten Sie, dass die Rollen keine Zugriffsrechte für den Dienstendpunkt erteilen. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter „Autorisierung für Verwaltungsvorgänge im Vergleich zu Datenvorgängen“ im Artikel [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
+Rollen erteilen keine Zugriffsrechte für den Dienstendpunkt. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter „Autorisierung für Verwaltungsvorgänge im Vergleich zu Datenvorgängen“ im Artikel [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
 
 <a id="secure-keys"></a>
 ## <a name="logging-and-system-information"></a>Protokollierungs- und Systeminformationen
@@ -81,7 +83,7 @@ Allgemeine Informationen zu Ihrem Dienst erhalten Sie wie folgt:
 ## <a name="manage-api-keys"></a>Verwalten von API-Schlüsseln
 Für alle Anforderungen an einen Suchdienst wird ein API-Schlüssel benötigt, der speziell für Ihren Dienst generiert wurde. Dieser API-Schlüssel ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Dienstendpunkt. 
 
-Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen und Buchstaben besteht. Er wird ausschließlich von Ihrem Dienst generiert. Mit [RBAC-Berechtigungen](#rbac) können Sie die Schlüssel löschen oder lesen, aber das Überschreiben eines generierten Schlüssels mit einer benutzerdefinierten Zeichenfolge ist nicht möglich (wenn Sie routinemäßig Kennwörter verwenden, können Sie einen API-Schlüssel nicht durch ein benutzerdefiniertes Kennwort ersetzen). 
+Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen und Buchstaben besteht. Mit den [RBAC-Berechtigungen](#rbac) können Sie die Schlüssel löschen oder lesen, sie aber nicht mit einem benutzerdefinierten Kennwort ersetzen. 
 
 Zwei Arten von Schlüsseln werden für den Zugriff auf Ihren Suchdienst verwendet:
 
@@ -127,9 +129,11 @@ Mit der Suchdienst-API können Sie Gesamtzahlen für Dokumente und Indizes abruf
 
 Obwohl wir Ihre Daten retten können, bietet Azure Search kein sofortiges Failover des Diensts, wenn ein Ausfall auf Cluster- oder Rechenzentrumsebene auftritt. Wenn ein Cluster im Rechenzentrum fehlschlägt, wird das Betriebsteam dieses ermitteln und daran arbeiten, den Dienst wiederherzustellen. Während der Dienstwiederherstellung kommt es zu Ausfallzeiten. Sie können laut [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) Dienstguthaben anfordern, um damit die Nichtverfügbarkeit des Diensts kompensieren zu können. 
 
-Damit ein unterbrechungsfreier Dienst sichergestellt werden kann, einschließlich schwerwiegender Fehler, die nicht der Kontrolle von Microsoft unterliegen, müssen Sie [einen zusätzlichen Dienst](search-create-service-portal.md) in einer anderen Region bereitstellen und eine Georeplikationsstrategie implementieren, um sicherzustellen, dass Indizes für alle Dienste vollständig redundant sind.
+Sollte ein unterbrechungsfreier Dienst im Falle schwerwiegender Fehler, die nicht der Kontrolle von Microsoft unterliegen, benötigt werden, können Sie [einen zusätzlichen Dienst](search-create-service-portal.md) in einer anderen Region bereitstellen und eine Georeplikationsstrategie implementieren, um sicherzustellen, dass Indizes für alle Dienste vollständig redundant sind.
 
-Kunden, die Indexer zum Auffüllen und Aktualisieren von Indizes verwenden, führen die Notfallwiederherstellung über geospezifische Indizes aus, die die gleiche Datenquelle verwenden. Anstelle von Indexern verwenden Sie Ihren Anwendungscode, um Objekte und Daten gleichzeitig per Pushvorgang an verschiedene Dienste zu übermitteln. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+Kunden, die [Indexer](search-indexer-overview.md) zum Auffüllen und Aktualisieren von Indizes verwenden, können die Notfallwiederherstellung über geospezifische Indizes ausführen, welche die gleiche Datenquelle verwenden. Zwei Dienste in unterschiedlichen Regionen, die jeweils einen Indexer ausführen, könnten aus der gleichen Datenquelle indizieren, um so Georedundanz zu erzielen. Wenn Sie Daten aus Datenquellen indizieren, die auch georedundant sind, sollten Sie darauf achten, dass Azure Search-Indexer eine inkrementelle Indizierung nur aus primären Replikaten ausführen können. Achten Sie im Falle eines Failoverereignisses darauf, den Indexer erneut auf das neue primäre Replikat auszurichten. 
+
+Wenn Sie keine Indexer verwenden, können Sie Ihren Anwendungscode verwenden, um Objekte und Daten gleichzeitig per Pushvorgang an verschiedene Dienste zu übermitteln. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -141,9 +145,9 @@ Um einen Index neu zu erstellen, würden Sie ihn (sofern vorhanden) löschen, de
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>Herauf- oder Herunterskalieren
-Jeder Suchdienst enthält zunächst ein Minimum von einem Replikat und einer Partition. Wenn Sie sich mit den Tarifen [Basic oder Standard](search-limits-quotas-capacity.md)für fest zugeordnete Ressourcen angemeldet haben, können Sie im Dienstdashboard auf die Kachel **STAFFELUNG** klicken, um die Anzahl von Partitionen und Replikaten für Ihren Dienst anzupassen.
+Jeder Suchdienst enthält zunächst ein Minimum von einem Replikat und einer Partition. Wenn Sie sich für eine [Preisstufe angemeldet haben, die dedizierte Ressourcen bietet](search-limits-quotas-capacity.md), klicken Sie im Servicedashboard auf die Kachel **Skalierung**, um die Ressourcenverwendung anzupassen.
 
-Wenn Sie zusätzliche Kapazität über eine dieser Ressourcen hinzufügen, wird diese vom Dienst automatisch verwendet. Sie müssen nichts weiter tun. Allerdings kann eine kleine Verzögerung auftreten, bevor die Auswirkungen der neuen Ressource spürbar sind. Die Bereitstellung zusätzlicher Ressourcen kann 15 Minuten oder mehr in Anspruch nehmen.
+Wenn Sie zusätzliche Kapazität über eine dieser Ressourcen hinzufügen, wird diese vom Dienst automatisch verwendet. Sie müssen nichts weiter tun. Allerdings tritt eine kleine Verzögerung auf, bevor die Auswirkungen der neuen Ressource spürbar sind. Die Bereitstellung zusätzlicher Ressourcen kann 15 Minuten oder mehr in Anspruch nehmen.
 
  ![][10]
 
@@ -160,7 +164,7 @@ Bei den meisten Dienstanwendungen sind anstelle von Partitionen eher mehr Replik
 In der Preisstufe Standard werden Partitionen jeweils in Teilern von 12 hinzugefügt (1, 2, 3, 4, 6 oder 12). Dies ist ein Artefakt für das Sharding (Horizontales Partitionieren). Indizes werden in 12 Shards erstellt, die entweder in 1 Partition gespeichert oder in gleichen Teilen auf 2, 3, 4, 6 oder 12 Partitionen (1 Shard pro Partition) verteilt werden können.
 
 ### <a name="remove-replicas"></a>Entfernen von Replikaten
-Nach Zeiten mit hohem Abfragevolumen kann es ratsam sein, die Replikate zu reduzieren, wenn sich die Last wieder normalisiert hat (z.B. nach Abschluss des Weihnachtsgeschäfts).
+Nach Zeiten mit hohem Abfragevolumen können Sie die Replikate reduzieren, wenn sich die Last wieder normalisiert hat (z.B. nach Abschluss des Weihnachtsgeschäfts).
 
 Schieben Sie hierzu den Schieberegler für Replikate auf eine niedrigere Einstellung. Keine weiteren Schritte sind erforderlich. Beim Senken der Replikatanzahl werden virtuelle Computer im Rechenzentrum freigegeben. Ihre Abfrage- und Datenerfassungsoperationen werden nun auf weniger VMs ausgeführt als zuvor. Die Untergrenze liegt bei einem Replikat.
 
@@ -183,11 +187,11 @@ In diesem 30-minütigen Video werden die bewährten Methoden für erweiterte Ber
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie sich mit den verschiedenen Vorgängen der Dienstverwaltung vertraut gemacht haben, können Sie sich über die unterschiedlichen Ansätze für die Dienstverwaltung informieren:
+Nachdem Sie sich mit den Konzepten der Dienstverwaltung vertraut gemacht haben, können Sie [PowerShell](search-manage-powershell.md) verwenden, um Aufgaben zu automatisieren.
 
-* [PowerShell](search-manage-powershell.md)
+Außerdem wird empfohlen, dass Sie sich den [Artikel zu Leistung und Optimierung](search-performance-optimization.md) ansehen.
 
-Falls noch nicht geschehen, können Sie sich auch den [Artikel zur Leistung und Optimierung](search-performance-optimization.md)durchlesen und sich optional das im vorherigen Abschnitt angegebene Video ansehen, um eingehendere Informationen und Veranschaulichungen der empfohlenen Vorgehensweisen zu erhalten.
+Es wird ebenfalls empfohlen, sich das im vorherigen Abschnitt erwähnte Video anzusehen. Er bietet umfangreichere Informationen zu den in diesem Abschnitt erwähnten Verfahren.
 
 <!--Image references-->
 [7]: ./media/search-manage/rbac-icon.png

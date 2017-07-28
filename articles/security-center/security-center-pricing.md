@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/16/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9c20ace9112c62e733b7b679e3f0be717144f3c2
-ms.openlocfilehash: 933a485e36b3cf0f514f28fc069d49161605af3a
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 367b8f38cb9fcf3dc36db83641cb1696710608ef
 ms.contentlocale: de-de
-ms.lasthandoff: 02/23/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -33,11 +33,6 @@ Security Center wird in zwei Tarifen angeboten:
 
 Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-> [!NOTE]
-> Die sicherheitsbezogenen Daten, die von Ihren geschützten Knoten generiert werden, werden von Security Center in Azure Storage gespeichert. Die für diesen Speicher anfallenden Kosten sind nicht im Preis dieses Diensts enthalten und werden separat in Rechnung gestellt (zu den üblichen [Preisen für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/)). Speichergebühren fallen auch bei Verwendung der kostenlosen 60-Tage-Testversion an.
->
->
-
 ## <a name="try-standard-free-for-60-days"></a>Kostenloses Testen des Standard-Tarifs für 60 Tage
 Der Standard-Tarif wird für die ersten 60 Tage kostenlos angeboten. Wenn Sie den Dienst über diese 60 Tage hinaus verwenden, beginnen wir automatisch mit der Berechnung des Diensts.
 
@@ -49,7 +44,6 @@ So erhalten Sie den Standard-Tarif:
 4. Wählen Sie auf dem Blatt **Tarif auswählen** die Option **Standard** aus.
 5. Klicken Sie auf **Auswählen**.
 
-![Standard-Tarif][1]
 
 ## <a name="why-upgrade-to-standard"></a>Gründe für ein Upgrade auf den Standard-Tarif
 Der Standard-Tarif von Security Center bietet alle Funktionen des Free-Tarifs und zusätzlich die erweiterte Bedrohungserkennung. Die erweiterte Bedrohungserkennung ermöglicht die Identifizierung von aktiven Bedrohungen für Ihre Azure-Ressourcen und bietet Ihnen die erforderlichen Informationen, um schnell zu reagieren.
@@ -79,11 +73,17 @@ So überprüfen Sie, ob die Datensammlung aktiviert ist:
 2. Wählen Sie ein Abonnement aus.
 3. Wenn **Datensammlung** deaktiviert ist, aktivieren Sie diese Option, und speichern Sie die Änderung.
 
+> [!NOTE]
+> Wenn Sie Azure Security Center Free verwenden, können Sie die Datensammlung von virtuellen Computern in der Sicherheitsrichtlinie deaktivieren. Die Datensammlung ist für Abonnements des Standard-Tarifs erforderlich.
+>
+>
+
 Weitere Informationen finden Sie unter [Aktivieren der Datensammlung in Azure Security Center](security-center-enable-data-collection.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * In diesem Dokument wurden die Preise für Security Center vorgestellt. Weitere Preisinformationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 * Weitere Informationen zu den Funktionen für die erweiterte Erkennung von Security Center finden Sie unter [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md).
+* Weitere Informationen zum Verwalten und Schützen von Daten in Security Center finden Sie unter [Azure Security Center-Datensicherheit](security-center-data-security.md).
 * Antworten auf Fragen zur Verwendung von Security Center finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
 * Wenn Sie noch Fragen zur Verwendung von Security Center oder zu Azure haben, besuchen Sie die [Azure-Foren](https://social.msdn.microsoft.com/Forums/home?forum=AzureSecurityCenter&filter=alltypes&sort=lastpostdesc).
 

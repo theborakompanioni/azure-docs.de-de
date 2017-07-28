@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: markvi;andkjell
+ms.date: 07/17/2017
+ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 08df9939eb31c224d62d96a0d034d1cda10ba270
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 32b5e5a8025be3381e20aad0b22289b2c641f74e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/17/2017
 
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
@@ -54,6 +53,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | assistant |X |X | | |
+| altRecipient |X | | |Erfordert Azure AD Connect Build 1.1.552.0 oder höher |
 | authOrig |X |X |X | |
 | c |X |X | | |
 | cn |X | |X | |
@@ -432,6 +432,7 @@ Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschr
 | msExchUCVoiceMailSettings |X | | |Aktivieren von Unified Messaging (UM) – Online-Voicemail: Wird von Microsoft Lync Server-Integration verwendet, um Lync Server lokal zu melden, dass der Benutzer Voicemail in Onlinediensten verwendet. |
 | msExchUserHoldPolicies |X | | |Beweissicherungsverfahren: Ermöglicht Clouddiensten, zu bestimmen, welche Benutzer einem Beweissicherungsverfahren unterliegen. |
 | proxyAddresses |X |X |X |Nur die x500-Adresse von Exchange Online wird eingefügt. |
+| publicDelegates |X | | |Ermöglicht einem Exchange Online-Postfach, dass Benutzern mit lokalem Exchange-Postfach SendOnBehalfTo-Rechte erteilt werden. Erfordert Azure AD Connect Build 1.1.552.0 oder höher |
 
 ## <a name="exchange-mail-public-folder"></a>Öffentliche Exchange-E-Mail-Ordner
 Diese Attribute werden vom lokalen Active Directory mit Azure AD synchronisiert, wenn Sie den **öffentlichen Exchange-E-Mail-Ordner** aktivieren.

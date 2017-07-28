@@ -12,30 +12,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2017
+ms.date: 06/17/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 8296e88024109e35379faa67ca887e6d2c52a6c5
-ms.openlocfilehash: 41bba4608fd7e3d0b16cbf0d846f5f65a071ad20
-ms.lasthandoff: 02/16/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 0db9dbd2d2743907e3f0b259228201d4f5d0c3c2
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Tutorial zu Azure WCF Relay mit REST
+
 Dieses Tutorial beschreibt, wie Sie eine einfache Azure Relay-Hostanwendung erstellen, die eine REST-basierte Schnittstelle verfügbar macht. REST ermöglicht einem Webclient, z. B. einem Webbrowser, den Zugriff auf die Service Bus-API über HTTP-Anforderungen.
 
-Das Tutorial verwendet das WCF-REST-Programmiermodell (Windows Communication Foundation) zum Erstellen eines REST-Diensts für Service Bus. Weitere Informationen finden Sie unter [WCF-REST-Programmiermodell](https://msdn.microsoft.com/library/bb412169.aspx) und [Entwerfen und Implementieren von Diensten](https://msdn.microsoft.com/library/ms729746.aspx) in der WCF-Dokumentation.
+Das Tutorial verwendet das WCF-REST-Programmiermodell (Windows Communication Foundation) zum Erstellen eines REST-Diensts für Service Bus. Weitere Informationen finden Sie unter [WCF-REST-Programmiermodell](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) und [Entwerfen und Implementieren von Diensten](/dotnet/framework/wcf/designing-and-implementing-services) in der WCF-Dokumentation.
 
-## <a name="step-1-create-a-service-namespace"></a>Schritt 1: Erstellen eines Dienstnamespace
+## <a name="step-1-create-a-namespace"></a>Schritt 1: Erstellen eines Namespace
 
 Um Relay-Features in Azure verwenden zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Azure-Ressourcen innerhalb Ihrer Anwendung. Führen Sie [diese Anleitung](relay-create-namespace-portal.md) aus, um einen Relaynamespace zu erstellen.
 
 ## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Schritt 2: Definieren eines REST-basierten WCF-Dienstvertrags für die Verwendung mit Azure Relay
+
 Sie müssen den Vertrag definieren, wenn Sie einen WCF-Dienst im REST-Stil erstellen. Der Vertrag gibt an, welche Vorgänge der Host unterstützt. Ein Dienstvorgang ähnelt einer Webdienstmethode. Verträge werden durch die Definition einer C++-, C#- oder Visual Basic-Schnittstelle erstellt. Jede Methode in der Schnittstelle entspricht einem bestimmten Dienstvorgang. Auf jede Schnittstelle muss das Attribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) und auf jeden Vorgang das Attribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) angewendet werden. Wenn eine Methode in einer Schnittstelle mit dem Attribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) kein Attribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) besitzt, wird diese Methode nicht bereitgestellt. Der für diese Aufgaben verwendete Code wird im Beispiel nach dem Verfahren bereitgestellt.
 
 Der Hauptunterschied zwischen einem WCF-Vertrag und einem Vertrag im REST-Stil ist das Hinzufügen einer Eigenschaft zum Attribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx): [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx). Mit dieser Eigenschaft können Sie eine Methode in der Schnittstelle einer Methode auf der anderen Seite der Schnittstelle zuordnen. In diesem Fall verwenden wir [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx), um eine Methode mit HTTP GET zu verknüpfen. Dadurch kann Service Bus Befehlen, die an die Schnittstelle gesendet werden, präzise abrufen und interpretieren.
 
 ### <a name="to-create-a-contract-with-an-interface"></a>So erstellen Sie einen Vertrag mit einer Schnittstelle
+
 1. Öffnen Sie Visual Studio als Administrator: Klicken Sie mit der rechten Maustaste im **Startmenü** auf das Programm, und klicken Sie dann auf **Als Administrator ausführen**.
 2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** und dann **Projekt** aus. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#**, wählen Sie die Vorlage **Konsolenanwendung** aus, und nennen Sie sie **ImageListener**. Verwenden Sie den standardmäßigen **Speicherort**. Klicken Sie auf **OK** , um das Projekt zu erstellen.
 3. Für ein C#-Projekt erstellt Visual Studio erstellt eine `Program.cs`-Datei. Diese Klasse enthält eine leere `Main()`-Methode, die erforderlich ist, damit ein Konsolenanwendungsprojekt ordnungsgemäß erstellt wird.
@@ -163,7 +167,7 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
    
     Stellen Sie beim Hinzufügen der Datei sicher, dass in der Dropdownliste neben dem Feld **Dateiname** die Option **Alle Dateien** ausgewählt ist. Im Rest dieses Lernprogramms wird davon ausgegangen, dass der Name des Bilds "image.jpg" lautet. Wenn Sie eine andere Datei haben, müssen Sie das Bild umbenennen oder den Code entsprechend ändern.
 4. Stellen Sie sicher, dass der ausgeführte Dienst die Bilddatei finden kann. Klicken Sie hierzu im **Projektmappen-Explorer** mit der rechten Maustaste auf die Bilddatei, und klicken Sie anschließend auf **Eigenschaften**. Legen Sie im Bereich **Eigenschaften** den Wert für **In Ausgabeverzeichnis kopieren** auf **Kopieren, wenn neuer** fest.
-5. Fügen Sie dem Projekt einen Verweis auf die Assembly **System.Drawing.dll`using` sowie die folgenden dazugehörigen**-Anweisungen hinzu.  
+5. Fügen Sie dem Projekt einen Verweis auf die Assembly **System.Drawing.dll`using` sowie die folgenden dazugehörigen** -Anweisungen hinzu.  
    
     ```csharp
     using System.Drawing;
@@ -558,9 +562,9 @@ Führen Sie nach dem Erstellen der Projektmappe Folgendes aus, um die Anwendung 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie jetzt eine Anwendung erstellt haben, die den Service Bus Relay-Dienst verwendet, finden Sie in den folgenden Artikeln weitere Informationen zu Azure Relay:
 
-* [Übersicht über die Architektur von Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
+* [Übersicht über die Architektur von Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * [Übersicht über Azure Relay](relay-what-is-it.md)
-* [Verwenden des WCF-Relaydiensts mit .NET](service-bus-dotnet-how-to-use-relay.md)
+* [Verwenden des WCF-Relaydiensts mit .NET](relay-wcf-dotnet-get-started.md)
 
 [Azure portal]: https://portal.azure.com
 

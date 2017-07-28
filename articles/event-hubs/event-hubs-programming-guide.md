@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 05/17/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 6d0a1501b97ddb2c819361b00a85ebec12f7b50e
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: f65b992297c429eda2090f744b9b88b1ede39533
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -59,7 +59,7 @@ Alle Event Hubs-Erstellungsvorgänge, z.B. [CreateEventHubIfNotExists][], erford
 Die [EventHubDescription](/dotnet/api/microsoft.servicebus.messaging.eventhubdescription)-Klasse enthält Details zu einem Event Hub, z.B. Autorisierungsregeln, Intervall der Nachrichtenaufbewahrung, Partitions-IDs, Status und Pfad. Sie können diese Klasse verwenden, um die Metadaten für einen Event Hub zu aktualisieren.
 
 ## <a name="create-an-event-hubs-client"></a>Erstellen eines Event Hubs-Clients
-Die Hauptklasse für die Interaktion mit Event Hubs ist [Microsoft.ServiceBus.Messaging.EventHubClient][]. Mit dieser Klasse werden Funktionen für Absender und Empfänger bereitgestellt. Sie können diese Klasse mit der [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create)-Methode instanziieren. Dies wird im folgenden Beispiel veranschaulicht.
+Die Hauptklasse für die Interaktion mit Event Hubs ist [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient]. Mit dieser Klasse werden Funktionen für Absender und Empfänger bereitgestellt. Sie können diese Klasse mit der [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create)-Methode instanziieren. Dies wird im folgenden Beispiel veranschaulicht.
 
 ```csharp
 var client = EventHubClient.Create(description.Path);
@@ -109,6 +109,8 @@ Vor dem Hintergrund dieser Überlegungen zur Verfügbarkeit können Sie eine der
 - Löschen (Nachrichten sind unwichtig und können gelöscht werden)
 - Wiederholen (Nachrichtenübermittlung angemessen wiederholen)
 - [Unzustellbare Nachrichten](../service-bus-messaging/service-bus-dead-letter-queues.md) (Warteschlange oder anderen Event Hub verwenden, um nur die Nachrichten als unzustellbar zu kennzeichnen, die nicht verarbeitet werden konnten)
+
+Weitere Informationen und eine Erläuterung zu den Vor-und Nachteilen zwischen Verfügbarkeit und Konsistenz finden Sie unter [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md). 
 
 ## <a name="batch-event-send-operations"></a>Sendevorgänge für Batchereignisse
 Das Senden von Ereignissen in Batches kann den Durchsatz erheblich erhöhen. Die [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__)-Methode verwendet einen **IEnumerable**-Parameter vom Typ [EventData][] und sendet den gesamten Batch als atomischen Vorgang an den Event Hub.
@@ -187,6 +189,7 @@ Weitere Informationen zu Event Hubs-Szenarien finden Sie unter diesen Links:
 
 * [Übersicht über die Event Hubs-API](event-hubs-api-overview.md)
 * [Was sind Event Hubs?](event-hubs-what-is-event-hubs.md)
+* [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Referenz zur Ereignisprozessorhost-API](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 
 [NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager

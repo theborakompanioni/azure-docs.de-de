@@ -3,7 +3,7 @@ title: Vorabladen von Assets auf einen Azure CDN-Endpunkt | Microsoft Docs
 description: Erfahren Sie, wie Sie zwischengespeicherten Inhalt auf einen Azure CDN-Endpunkt vorab laden.
 services: cdn
 documentationcenter: 
-author: zhangmanling
+author: smcevoy
 manager: erikre
 editor: 
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 242c3a6bf656da9b029a780e8b80667405b7b92f
-ms.lasthandoff: 03/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 1f2dcd9a91bb6e883cbef06373c1acd98bf8d45f
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -64,7 +65,7 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
     ![Schaltfläche „Laden“](./media/cdn-preload-endpoint/cdn-load-button.png)
 
 > [!NOTE]
-> Es gilt eine Einschränkung von 10 Anforderungen zum Laden pro Minute pro CDN-Profil.
+> Es gilt eine Einschränkung von 10 Anforderungen zum Laden pro Minute pro CDN-Profil. Pro Anforderung sind 50 Pfade zulässig. Jeder Pfad hat eine Pfadlänge von maximal 1024 Zeichen.
 > 
 > 
 

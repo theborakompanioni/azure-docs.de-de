@@ -1,5 +1,5 @@
 ---
-title: Analysieren der Twitter-Stimmung in Echtzeit mit HBase | Microsoft Docs
+title: "Analysieren der Twitter-Stimmung in Echtzeit mit HBase – Azure| Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie in Echtzeit Stimmungsanalysen von Big Data aus Twitter mit HBase in einem HDInsight-Cluster (Hadoop) durchführen."
 services: hdinsight
 documentationcenter: 
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5fa91c0fb1858a46745ff50991b843530f0a5d23
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 7a16a1c2a10279b5e7fb523addfdfcd433c8937e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/10/2017
 
 
 ---

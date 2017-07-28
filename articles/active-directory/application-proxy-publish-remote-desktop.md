@@ -5,34 +5,35 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
+editor: harshja
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2017
+ms.date: 06/11/2017
 ms.author: kgremban
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 9724ad2e460837157c7677d2c91493cebc8f7012
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: a66081596f2e8234f6169faa58c571420e706c45
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 06/15/2017
 
 ---
 
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
-In diesem Artikel wird beschrieben, wie Remotedesktopdienste (RDS) mit dem Anwendungsproxy bereitgestellt werden, damit Remotebenutzer ihre Produktivität aufrechterhalten können. 
+In diesem Artikel wird beschrieben, wie Remotedesktopdienste (RDS) mit dem Anwendungsproxy bereitgestellt werden, damit Remotebenutzer ihre Produktivität aufrechterhalten können.
 
 Dieser Artikel richtet sich an folgende Zielgruppe:
-- Bestehende Kunden des Azure AD-Anwendungsproxys, die durch Veröffentlichung von lokalen Anwendungen über Remotedesktopdienste mehrere Anwendungen für ihre Endbenutzer anbieten möchten. 
+- Bestehende Kunden des Azure AD-Anwendungsproxys, die durch Veröffentlichung von lokalen Anwendungen über Remotedesktopdienste mehrere Anwendungen für ihre Endbenutzer anbieten möchten.
 - Bestehende Kunden der Remotedesktopdienste, die die Angriffsfläche ihrer Bereitstellung mit dem Azure AD-Anwendungsproxy reduzieren möchten. Dieses Szenario bietet eine begrenzte Anzahl von Steuerelementen zur Überprüfung in zwei Schritten und für den bedingten Zugriff auf RDS.
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Informationen zur Rolle des Anwendungsproxys bei standardmäßigen RDS-Bereitstellungen
 
-Eine standardmäßige RDS-Bereitstellung umfasst verschiedene Remotedesktop-Rollendienste, die auf Windows Server ausgeführt werden. Die [Architektur der Remotedesktopdienste](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) bietet mehrere Bereitstellungsoptionen. Der größte Unterschied zwischen der [RDS-Bereitstellung mit Azure AD-Anwendungsproxy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (in der folgenden Abbildung dargestellt) und den anderen Bereitstellungsoptionen besteht darin, dass das Anwendungsproxy-Szenario eine permanente ausgehende Verbindung vom Server aufweist, auf dem der Connectordienst ausgeführt wird. Bei anderen Bereitstellungen werden eingehende Verbindungen durch einen Lastenausgleich offen gelassen. 
+Eine standardmäßige RDS-Bereitstellung umfasst verschiedene Remotedesktop-Rollendienste, die auf Windows Server ausgeführt werden. Die [Architektur der Remotedesktopdienste](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) bietet mehrere Bereitstellungsoptionen. Der größte Unterschied zwischen der [RDS-Bereitstellung mit Azure AD-Anwendungsproxy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (in der folgenden Abbildung dargestellt) und den anderen Bereitstellungsoptionen besteht darin, dass das Anwendungsproxy-Szenario eine permanente ausgehende Verbindung vom Server aufweist, auf dem der Connectordienst ausgeführt wird. Bei anderen Bereitstellungen werden eingehende Verbindungen durch einen Lastenausgleich offen gelassen.
 
 ![Der Anwendungsproxy befindet sich zwischen der RDS-VM und dem öffentlichen Internet.](./media/application-proxy-publish-remote-desktop/rds-with-app-proxy.png)
 
@@ -45,13 +46,16 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 
 ## <a name="requirements"></a>Anforderungen
 
-Die RD-Web- und RD-Gateway-Endpunkte müssen sich auf demselben Computer befinden und ein gemeinsames Stamm verwenden. RD-Web und RD-Gateway werden als einzelne Anwendung veröffentlicht, damit Sie über die Möglichkeit für einmaliges Anmelden zwischen den beiden Anwendungen verfügen. 
+- Die RD-Web- und RD-Gateway-Endpunkte müssen sich auf demselben Computer befinden und ein gemeinsames Stamm verwenden. RD-Web und RD-Gateway werden als einzelne Anwendung veröffentlicht, damit Sie über die Möglichkeit für einmaliges Anmelden zwischen den beiden Anwendungen verfügen.
 
-Sie sollten bereits [RDS bereitgestellt](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](active-directory-application-proxy-enable.md) haben. 
+- Sie sollten bereits [RDS bereitgestellt](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](active-directory-application-proxy-enable.md) haben.
 
-Ihre Endbenutzer können nur über Windows 7- und Windows 10-Desktops, die über das RD-Webseite eine Verbindung herstellen, auf dieses Szenario zugreifen. Dieses Szenario wird nicht in anderen Betriebssystemen unterstützt, selbst bei solchen mit Microsoft-Remotedesktopanwendungen.
+- In diesem Szenario wird davon ausgegangen, dass Ihre Endbenutzer mit dem Internet Explorer auf Windows 7- oder Windows 10-Desktops verwenden, die über die Seite von RD-Web eine Verbindung herstellen. Weitere Informationen zur Unterstützung anderer Betriebssysteme finden Sie unter [Unterstützung für andere Clientkonfigurationen](#support-for-other-client-configurations).
 
-Ihre Endbenutzer müssen beim Herstellen einer Verbindung mit ihren Ressourcen Internet Explorer verwenden und das Add-On RDS ActiveX aktivieren. 
+  >[!NOTE]
+  >Das Windows 10 Creators Update wird derzeit nicht unterstützt.
+
+- Aktivieren Sie im Internet Explorer das RDS-ActiveX-Add-On.
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Bereitstellen des gemeinsamen RDS- und Anwendungsproxy-Szenarios
 
@@ -60,13 +64,13 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
 ### <a name="publish-the-rd-host-endpoint"></a>Veröffentlichen des RD-Hostendpunkts
 
 1. [Veröffentlichen Sie anhand der folgenden Werten eine neue Anwendung mit Anwendungsproxy](application-proxy-publish-azure-portal.md):
-   - Interne URL: https://\<rdhost\>.com/, wobei \<rdhost\> das gemeinsame Stammverzeichnis ist, den RD-Web und RD-Gateway gemeinsam nutzen. 
-   - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung ausgefüllt, den Sie jedoch ändern können. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet. 
+   - Interne URL: https://\<rdhost\>.com/, wobei \<rdhost\> das gemeinsame Stammverzeichnis ist, den RD-Web und RD-Gateway gemeinsam nutzen.
+   - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung ausgefüllt, den Sie jedoch ändern können. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet.
    - Präauthentifizierungsmethode: Azure Active Directory
    - URL-Header übersetzen: Nein
 2. Weisen Sie Benutzern die veröffentlichte RD-Anwendung zu. Stellen Sie sicher, dass alle Benutzer auch Zugriff auf RDS haben.
-3. Legen Sie für die Methode zur einmaligen Anmeldung für die Anwendung **Azure AD-SSO deaktiviert** fest. Ihre Benutzer werden aufgefordert, sich einmal bei Azure AD und einmal bei RD-Web zu authentifizieren, verfügen jedoch über die Möglichkeit zur einmaligen Anmeldung beim RD-Gateway. 
-4. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen** > *Ihre Anwendung* > **Einstellungen**. 
+3. Legen Sie für die Methode zur einmaligen Anmeldung für die Anwendung **Azure AD-SSO deaktiviert** fest. Ihre Benutzer werden aufgefordert, sich einmal bei Azure AD und einmal bei RD-Web zu authentifizieren, verfügen jedoch über die Möglichkeit zur einmaligen Anmeldung beim RD-Gateway.
+4. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen** > *Ihre Anwendung* > **Einstellungen**.
 5. Wählen Sie **Eigenschaften** aus, und aktualisieren Sie das Feld **URL der Startseite**, sodass auf Ihren RD-Web-Endpunkt verwiesen wird (z. B. https://\<rdhost\>.com/RDWeb).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Weiterleiten des RDS-Datenverkehrs an den Anwendungsproxy
@@ -78,7 +82,7 @@ Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und
 3. Wählen Sie im Bereich auf der linken Seite **Remotedesktopdienste**.
 4. Wählen Sie **Übersicht**.
 5. Klicken Sie im Abschnitt „Bereitstellungsübersicht“ auf das Dropdownmenü und wählen Sie **Bereitstellungseigenschaften bearbeiten**.
-6. Ändern Sie auf der Registerkarte „RD-Gateway“ das Feld **Servername** in die externe URL, die Sie für den RD-Hostendpunkt im Anwendungsproxy festgelegt haben. 
+6. Ändern Sie auf der Registerkarte „RD-Gateway“ das Feld **Servername** in die externe URL, die Sie für den RD-Hostendpunkt im Anwendungsproxy festgelegt haben.
 7. Ändern Sie das Feld **Anmeldemethode** in **Kennwortauthentifizierung**.
 
   ![Bildschirm „Bereitstellungseigenschaften“ in RDS](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
@@ -86,10 +90,20 @@ Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und
 8. Führen Sie für jede Sammlung den folgenden Befehl aus. Ersetzen Sie *\<yourcollectionname\>* und *\<proxyfrontendurl\>* durch Ihre eigenen Information. Dieser Befehl ermöglicht eine einmalige Anmeldung zwischen RD-Web und RD-Gateway und optimiert die Leistung:
 
    ```
-   Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s: <proxyfrontendurl> `n require pre-authentication:i:1"
+   Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-Nachdem Sie nun den Remotedesktop konfiguriert haben, fungiert der Azure AD-Anwendungsproxy als RDS-Komponente mit Internetzugriff. Sie können die anderen Endpunkte mit öffentlichem Internetzugriff auf Ihren RD-Web- und RD-Gateway-Computern entfernen. 
+   **Beispiel:**
+   ```
+   Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://gateway.contoso.msappproxy.net/`nrequire pre-authentication:i:1"
+   ```
+
+9. Führen den folgenden Befehl aus, um die Änderung der benutzerdefinierten RDP-Eigenschaften zu überprüfen und um den Inhalt der RDP-Datei anzuzeigen, der für diese Sammlung aus RDWeb heruntergeladen wird:
+    ```
+    (get-wmiobject -Namespace root\cimv2\terminalservices -Class Win32_RDCentralPublishedRemoteDesktop).RDPFileContents
+    ```
+
+Nachdem Sie nun den Remotedesktop konfiguriert haben, fungiert der Azure AD-Anwendungsproxy als RDS-Komponente mit Internetzugriff. Sie können die anderen Endpunkte mit öffentlichem Internetzugriff auf Ihren RD-Web- und RD-Gateway-Computern entfernen.
 
 ## <a name="test-the-scenario"></a>Prüfen des Szenarios
 
@@ -97,8 +111,23 @@ Prüfen Sie das Szenario mit Internet Explorer auf einem Windows 7- oder 10-Comp
 
 1. Navigieren Sie zur externen URL, die Sie eingerichtet haben, oder suchen Sie im Bereich [Meine Apps](https://myapps.microsoft.com) nach Ihrer Anwendung.
 2. Sie werden aufgefordert, sich bei Azure Active Directory zu authentifizieren. Melden Sie sich mit einem Konto an, das Sie der Anwendung zugewiesen haben.
-3. Sie werden aufgefordert, sich bei RD-Web zu authentifizieren. 
-4. Nach Ihrer erfolgreichen RDS-Authentifizierung können Sie den gewünschten Desktop oder die gewünschte Anwendung auswählen und loslegen. 
+3. Sie werden aufgefordert, sich bei RD-Web zu authentifizieren.
+4. Nach Ihrer erfolgreichen RDS-Authentifizierung können Sie den gewünschten Desktop oder die gewünschte Anwendung auswählen und loslegen.
+
+## <a name="support-for-other-client-configurations"></a>Unterstützung für andere Clientkonfigurationen
+
+Die in diesem Artikel beschriebene Konfiguration ist für Benutzer unter Windows 7 oder Windows 10 mit dem Internet Explorer sowie dem RDS-ActiveX-Add-On gedacht. Wenn es erforderlich ist, können jedoch auch andere Betriebssysteme oder Browser unterstützt werden. Der Unterschied besteht in der verwendeten Authentifizierungsmethode.
+
+| Authentifizierungsmethode | Unterstützte Clientkonfiguration |
+| --------------------- | ------------------------------ |
+| Vorauthentifizierung    | Windows 7/10 mit dem Internet Explorer + RDS-ActiveX-Add-On |
+| Passthrough | Alle anderen Betriebssysteme, die die Microsoft-Remotedesktopanwendung unterstützen |
+
+Der Vorauthentifizierungsflow bietet weitere Vorteile im Hinblick auf Sicherheit als die der Passthroughflow. Mit der Vorauthentifizierung können Sie Authentifizierungsfunktionen von Azure AD nutzen, z.B. die einmalige Anmeldung, den bedingten Zugriff und die Überprüfung in zwei Schritten für Ihre lokalen Ressourcen. Sie stellen Sie sicher, dass nur authentifizierter Datenverkehr Ihr Netzwerk erreicht.
+
+Um die Passthrough-Authentifizierung zu verwenden, müssen nur zwei Änderungen an den Schritten in diesem Artikel ausgeführt werden:
+1. Legen Sie in Schritt 1: [Veröffentlichen des RD-Hostendpunkts](#publish-the-rd-host-endpoint) die Vorauthentifizierungsmethode auf **Passthrough** fest.
+2. Überspringen Sie unter [Weiterleiten des RDS-Datenverkehrs an den Anwendungsproxy](#direct-rds-traffic-to-application-proxy) Schritt 8 vollständig.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

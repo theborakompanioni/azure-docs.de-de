@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 37a9de5909cf4d6b4568e40de001861d083a85df
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 96680319a6c4c0f0a4673cd6303a5b172f428797
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -107,12 +107,14 @@ Docker-Container sind eine weit verbreitete Methode zum Bereitstellen von Webanw
 
       * **New log in credentials** (Neue Anmeldeinformationen): Erstellen Sie neue Anmeldeinformationen. Gehen Sie bei Auswahl dieser Option wie folgt vor:
 
-        a. Geben Sie auf der Registerkarte **VM Credentials** (VM-Anmeldeinformationen) die folgenden Informationen für die VM-Anmeldeinformationen Ihres Docker-Hosts an:      * **Benutzername**: Geben Sie den Benutzernamen für Ihre VM-Anmeldeinformationen ein.
+        a. Geben Sie auf der Registerkarte **VM Credentials** (VM-Anmeldeinformationen) die folgenden Angaben für die VM-Anmeldeinformationen Ihres Docker-Hosts an: **Benutzername**: Geben Sie den Benutzernamen für Ihre VM-Anmeldeinformationen ein.
              * **Kennwort** und **Bestätigen**: Geben Sie das Kennwort für Ihre VM-Anmeldeinformationen ein.
-             * **SSH**: Geben Sie die SSH-Einstellungen (Secure Shell) für Ihren Docker-Host ein. Sie können eine der folgenden Optionen auswählen:         * **Keine**: Gibt an, dass für Ihren virtuellen Computer keine SSH-Verbindungen zulässig sind.
+             * **SSH**: Geben Sie die SSH-Einstellungen (Secure Shell) für Ihren Docker-Host ein. Sie können eine der folgenden Optionen auswählen: * **Keine**: Gibt an, dass für Ihren virtuellen Computer keine SSH-Verbindungen zulässig sind.
                 * **Automatisch generieren**: Mit dieser Option werden die erforderlichen Einstellungen zum Herstellen einer Verbindung über SSH automatisch erstellt.
-                * **Import from directory** (Aus Verzeichnis importieren): Ermöglicht das Angeben eines Verzeichnisses, das zuvor gespeicherte SSH-Einstellungen enthält. Das Verzeichnis muss die folgenden beiden Dateien enthalten:            * *id_rsa*: Enthält die RSA-Kennung eines Benutzers.
-                   * *id_rsa.pub*: Enthält den öffentlichen RSA-Schlüssel, der für die Authentifizierung verwendet wird.
+                * **Import from directory** (Aus Verzeichnis importieren): Ermöglicht das Angeben eines Verzeichnisses, das zuvor gespeicherte SSH-Einstellungen enthält. Das Verzeichnis muss die folgenden beiden Dateien enthalten:
+                
+                  * *id_rsa*: Contains the RSA identification for a user.
+                  * *id_rsa.pub*: Contains the RSA public key that is used for authentication.
             
         b. Geben Sie auf der Registerkarte **Docker Daemon Access** (Docker-Daemon-Zugriff) die folgenden Informationen an:
 

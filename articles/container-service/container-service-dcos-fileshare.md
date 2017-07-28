@@ -14,52 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 06/07/2017
 ms.author: juliens
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 6d40821327a9df47bb85ea12ecd33e4a0f49e39e
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: b4c81845b521eb1e8003ad399b466e911582b348
+ms.contentlocale: de-de
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Bereitstellen und Einbinden einer Dateifreigabe für einen DC/OS-Cluster
-In diesem Artikel wird untersucht, wie eine Dateifreigabe unter Azure erstellt und in jeden Agent und Master des DC/OS-Clusters eingebunden wird. Das Einrichten einer Dateifreigabe vereinfacht das Freigeben von Dateien über Ihren gesamten Cluster hinweg im Hinblick auf Konfiguration, Zugriff, Protokolle und mehr.
+In diesem Tutorial wird erklärt, wie eine Dateifreigabe unter Azure erstellt und in jeden Agent und Master des DC/OS-Clusters eingebunden wird. Das Einrichten einer Dateifreigabe vereinfacht das Freigeben von Dateien über Ihren gesamten Cluster hinweg im Hinblick auf Konfiguration, Zugriff, Protokolle und mehr. In diesem Tutorial werden die folgenden Aufgaben ausgeführt:
 
-Damit Sie dieses Beispiel durcharbeiten können, benötigen Sie einen DC/OS-Cluster, der im Azure Container Service konfiguriert ist. Weitere Informationen dazu finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
+> [!div class="checklist"]
+> * Erstellen eines Azure-Speicherkontos
+> * Erstellen einer Dateifreigabe
+> * Einbinden der Freigabe in das DC/OS-Cluster
+
+Sie benötigen einen ACS-DC/OS-Cluster, um die Schritte in diesem Tutorial ausführen zu können. Gegebenenfalls kann dieses [Beispielskript](./scripts/container-service-cli-deploy-dcos.md) eines für Sie erstellen.
+
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Erstellen einer Dateifreigabe auf Microsoft Azure
-### <a name="using-the-portal"></a>Verwenden des Portals
 
-1. Melden Sie sich beim Portal an.
-2. Erstellen Sie ein Speicherkonto.
-   
-  ![Azure-Container-Service – Speicherkonto erstellen](media/container-service-dcos-fileshare/createSA.png)
+Bevor Sie eine Azure-Dateifreigabe mit einem ACS DC/OS-Cluster verwenden, müssen das Speicherkonto und die Dateifreigabe erstellt werden. Führen Sie das folgende Skript aus, um den Speicher und die Dateifreigabe zu erstellen. Aktualisieren Sie die Parameter mit denen aus Ihrer Umgebung.
 
-3. Klicken Sie nach der Erstellung im Abschnitt **Dienste** auf **Dateien**.
-   
-  ![Azure Container Service-Abschnitt „Dateien“](media/container-service-dcos-fileshare/filesServices.png)
-
-4. Klicken Sie auf **+ Dateifreigabe**, und geben Sie einen Namen für diese neue Freigabe ein (**Kontingent** ist nicht obligatorisch).
-   
-  ![Azure Container Service – „+ Dateifreigabe“](media/container-service-dcos-fileshare/newFileShare.png)  
-
-### <a name="using-azure-cli-20"></a>Mithilfe von Azure-CLI 2.0
-
-Wenn es erforderlich ist, [installieren Sie das Azure-CLI, und richten Sie es ein](/cli/azure/install-azure-cli.md).
-
-```azurecli
-################# Change these four parameters ##############
-DCOS_PERS_STORAGE_ACCOUNT_NAME=anystorageaccountname
-DCOS_PERS_RESOURCE_GROUP=AnyResourceGroupName
+```azurecli-interactive
+# Change these four parameters
+DCOS_PERS_STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
+DCOS_PERS_RESOURCE_GROUP=myResourceGroup
 DCOS_PERS_LOCATION=eastus
-DCOS_PERS_SHARE_NAME=demoshare
-#############################################################
+DCOS_PERS_SHARE_NAME=dcosshare
 
 # Create the storage account with the parameters
 az storage account create -n $DCOS_PERS_STORAGE_ACCOUNT_NAME -g $DCOS_PERS_RESOURCE_GROUP -l $DCOS_PERS_LOCATION --sku Standard_LRS
 
-# Export the connection string as an environment variable
+# Export the connection string as an environment variable, this is used when creating the Azure file share
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $DCOS_PERS_STORAGE_ACCOUNT_NAME -g $DCOS_PERS_RESOURCE_GROUP -o tsv`
 
 # Create the share
@@ -68,91 +61,101 @@ az storage share create -n $DCOS_PERS_SHARE_NAME
 
 ## <a name="mount-the-share-in-your-cluster"></a>Einbinden der Freigabe in Ihren Cluster
 
-Im nächsten Schritt müssen wir diese Freigabe auf jedem virtuellen Computer innerhalb des Clusters mithilfe des CIFS-Tools/Protokolls einbinden. Dies erfolgt mithilfe der folgenden Befehlszeile: `mount -t cifs`.
+Als Nächstes muss die Dateifreigabe auf jedem virtuellen Computer in Ihrem Cluster eingebunden werden. Diese Aufgabe wird mit dem CIFS-Tool/Protokoll durchgeführt. Der Einbindungsvorgang kann manuell auf jedem Knoten des Clusters oder durch Ausführen eines Skripts gegen jeden Knoten im Cluster abgeschlossen werden.
 
-Hier ist ein Beispiel unter Verwendung von:
-* Speicherkontoname **`anystorageaccountname`**
-* Fiktivem Kontoschlüssel **`P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==`** 
-* Bereitstellungspunkt **`/mnt/share/demoshare`**
+In diesem Beispiel werden zwei Skripts ausgeführt: eines, das die Azure-Dateifreigabe einbindet, und ein zweites, das dieses Skripts auf jedem Knoten des DC/OS-Clusters ausführt.
 
-```bash
-sudo mount -t cifs //anystorageaccountname.file.core.windows.net/demoshare /mnt/share/demoshare -o vers=3.0,username=anystorageaccountname,password=P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==,dir_mode=0777,file_mode=0777
+Zuerst sind der Azure Storage-Kontoname und der Zugriffsschlüssel erforderlich. Führen Sie die folgenden Befehle aus, um diese Informationen abzurufen. Notieren Sie diese Werte, da sie in einem späteren Schritt verwendet werden.
+
+Azure Storage-Kontoname:
+
+```azurecli-interactive
+STORAGE_ACCT=$(az storage account list --resource-group myResourceGroup --query "[?contains(name,'mystorageaccount')].[name]" -o tsv)
+echo $STORAGE_ACCT
 ```
 
-Wir führen diesen Befehl auf jedem virtuellen Computer Ihres Clusters aus (Master- und Agentknoten). Wenn Sie über eine große Anzahl Agents verfügen, empfiehlt sich die Automatisierung dieses Vorgangs mithilfe von Skripts.  
+Zugriffsschlüssel für das Azure Storage-Konto:
 
-### <a name="set-up-scripts"></a>Einrichten von Skripts
+```azurecli-interactive
+az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCT --query "[0].value" -o tsv
+```
 
-1. Stellen Sie zunächst eine SSH-Verbindung mit dem Master (oder dem ersten Master) Ihres DC/OS-basierten Clusters her. Beispielsweise `ssh userName@masterFQDN –A –p 22`, wobei der masterFQDN der vollqualifizierte Domänenname des virtuellen Mastercomputers ist.
+Rufen Sie dann den FQDN des Master-DC/OS ab, und speichern Sie ihn in einer Variablen.
 
-2. Kopieren Sie Ihren privaten Schlüssel in das Arbeitsverzeichnis (~) auf dem Master.
+```azurecli-interactive
+FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
+```
 
-3. Ändern Sie die Berechtigungen dafür mit dem folgenden Befehl: `chmod 600 yourPrivateKeyFile`.
+Kopieren Sie Ihren privaten Schlüssel auf den Masterknoten. Dieser Schlüssel ist erforderlich, um eine SSH-Verbindung mit allen Knoten im Cluster zu erstellen. Aktualisieren Sie den Benutzernamen, wenn ein kein Standardwert für die Erstellung des Clusters verwendet wurde. 
 
-4. Importieren Sie Ihren privaten Schlüssel mithilfe des `ssh-add yourPrivateKeyFile`-Befehls. Möglicherweise müssen Sie `eval ssh-agent -s` ausführen, wenn der erste Versuch keinen Erfolg hat.
+```azurecli-interactive
+scp ~/.ssh/id_rsa azureuser@$FQDN:~/.ssh
+```
 
-5. Erstellen Sie auf dem Master zwei Dateien mit Ihrem bevorzugten Editor, wie etwa vi, nano oder vim: 
-  
-  * Eine mit dem Skript, das auf jedem virtuellen Computer ausgeführt werden soll, und dem Namen **cifsMount.sh** 
-  * Eine weitere zum Herstellen aller SSH-Verbindungen, die das erste Skript aufrufen sollen, die den Namen **mountShares.sh** erhält
+Erstellen Sie eine SSH-Verbindung mit dem Master (oder dem ersten Master) des DC/OS-basierten Clusters. Aktualisieren Sie den Benutzernamen, wenn ein kein Standardwert für die Erstellung des Clusters verwendet wurde.
 
+```azurecli-interactive
+ssh azureuser@$FQDN
+```
 
-```bash
-# cifsMount.sh
+Erstellen Sie eine Datei namens **cifsMount.sh**, und kopieren Sie den folgenden Inhalt hinein. 
+
+Dieses Skript dient zum Einbinden der Azure-Dateifreigabe. Aktualisieren Sie die Variablen `STORAGE_ACCT_NAME` und `ACCESS_KEY` mit den zuvor gesammelten Informationen.
+
+```azurecli-interactive
+#!/bin/bash
+
+# Azure storage account name and access key
+STORAGE_ACCT_NAME=mystorageaccount
+ACCESS_KEY=mystorageaccountKey
 
 # Install the cifs utils, should be already installed
 sudo apt-get update && sudo apt-get -y install cifs-utils
 
 # Create the local folder that will contain our share
-if [ ! -d "/mnt/share/demoshare" ]; then sudo mkdir -p "/mnt/share/demoshare" ; fi
+if [ ! -d "/mnt/share/dcosshare" ]; then sudo mkdir -p "/mnt/share/dcosshare" ; fi
 
 # Mount the share under the previous local folder created
-sudo mount -t cifs //anystorageaccountname.file.core.windows.net/demoshare /mnt/share/demoshare -o vers=3.0,username=anystorageaccountname,password=P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/dcosshare /mnt/share/dcosshare -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
 ```
-  
-```bash
-# mountShares.sh
+Erstellen Sie eine zweite Datei namens **getNodesRunScript.sh**, und kopieren Sie den folgenden Inhalt in die Datei. 
+
+Dieses Skript erkennt alle Knoten des Clusters und führt dann das Skript **cifsMount.sh** aus, um auf jedem Knoten die Dateifreigabe einzubinden.
+
+```azurecli-interactive
+#!/bin/bash
 
 # Install jq used for the next command
-sudo apt-get install jq
-
-# Create the local folder that will contain our share
-if [ ! -d "/mnt/share/demoshare" ]; then sudo mkdir -p "/mnt/share/demoshare" ; fi
-
-# Mount the share on the current vm (master)
-sudo mount -t cifs //anystorageaccountname.file.core.windows.net/demoshare /mnt/share/demoshare -o vers=3.0,username=anystorageaccountname,password=P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==,dir_mode=0777,file_mode=0777
+sudo apt-get install jq -y
 
 # Get the IP address of each node using the mesos API and store it inside a file called nodes
 curl http://leader.mesos:1050/system/health/v1/nodes | jq '.nodes[].host_ip' | sed 's/\"//g' | sed '/172/d' > nodes
-  
+
 # From the previous file created, run our script to mount our share on each node
 cat nodes | while read line
-  do
-    ssh `whoami`@$line -o StrictHostKeyChecking=no -i yourPrivateKeyFile < ./cifsMount.sh
-    done
+do
+  ssh `whoami`@$line -o StrictHostKeyChecking=no < ./cifsMount.sh
+  done
+```
+
+Führen Sie das Skript zum Einbinden der Azure-Dateifreigabe auf allen Knoten des Clusters aus.
+
+```azurecli-interactive
+sh ./getNodesRunScript.sh
 ```  
-> [!IMPORTANT]
-> Sie müssen den Befehl **'mount'** um Ihre eigenen Einstellungen erweitern, wie etwa den Namen Ihres Speicherkontos und das Kennwort.
->  
 
-Der Ordner, in dem Sie die erwähnten Skripts erstellt haben, sollte nun drei Dateien aufweisen:  
-
-* **cifsMount.sh**
-* **mountShares.sh**
-* **IhrePrivaterSchlüsselDatei** 
-
-### <a name="run-the-scripts"></a>Ausführen der Skripts
-
-Führen Sie die **mountShares.sh**-Datei mit dem folgenden Befehl aus: `sh mountShares.sh`.
-
-Die Ausgabe des Ergebnisses sollte im Terminal angezeigt werden. Nach der Ausführung der Skripts können Sie die Dateifreigabe in Ihrem Cluster verwenden.
-
-Sie können die Skripts optimieren, aber dieses Beispiel ist geradlinig und dient zur Anleitung.
-
-> [!NOTE] 
-> Diese Methode wird nicht für Szenarien mit hohen Anforderungen an IOPS empfohlen, sie ist aber sehr nützlich, um Dokumente und Informationen im gesamten Cluster freizugeben.
->
+Die Dateifreigabe ist jetzt unter `/mnt/share/dcosshare` auf jedem Knoten des Clusters verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erhalten Sie weitere Informationen zum [Verwalten Ihrer DC/OS-Container](container-service-mesos-marathon-ui.md).
-* DC/OS-Containerverwaltung über die [Marathon-REST-API](container-service-mesos-marathon-rest.md).
+
+In diesem Tutorial wurde eine Azure-Dateifreigabe für einen DC/OS-Cluster mithilfe der folgenden Schritte eingebunden:
+
+> [!div class="checklist"]
+> * Erstellen eines Azure-Speicherkontos
+> * Erstellen einer Dateifreigabe
+> * Einbinden der Freigabe in das DC/OS-Cluster
+
+Wechseln Sie zum nächsten Tutorial, um mehr über das Integrieren einer Azure Container Registry mit DC/OS in Azure zu erfahren.  
+
+> [!div class="nextstepaction"]
+> [Lastausgleich für Anwendungen](./container-service-dcos-acr.md)

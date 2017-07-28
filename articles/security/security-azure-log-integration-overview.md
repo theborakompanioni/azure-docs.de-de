@@ -12,13 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/20/2017
+ms.date: 06/01/2017
 ms.author: TomSh
+ms.custom: azlog
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 616a29b3f7db817e63a3a3673b845cc86752af77
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 1adabc7f249d9b01f3ad1a819f75b2ef47f72998
 ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 06/05/2017
+
 
 
 ---
@@ -45,6 +47,9 @@ Azure führt für jeden Azure-Dienst eine umfassende Protokollierung durch. Dies
 
 Die Azure-Protokollintegration unterstützt derzeit die Integration von Azure-Aktivitätsprotokollen, Windows-Ereignisprotokollen vom virtuellen Computer unter Windows in Ihr Azure-Abonnement, Azure Security Center-Warnungen, Azure-Diagnoseprotokolle sowie Azure Active Directory-Überwachungsprotokolle.
 
+>[!NOTE]
+Während die Azure-Protokollintegration eine kostenlose Lösung darstellt, ergeben sich durch das Speichern der Protokolldateiinformationen entsprechende Azure-Speicherkosten.
+
 In der folgenden Tabelle werden die Protokollkategorie und Details der SIEM-Integration erläutert.
 
 | Protokolltyp  |Log Analytics unterstützt JSON (Splunk, ELK)| ArcSight  | QRadar  |   
@@ -55,8 +60,8 @@ In der folgenden Tabelle werden die Protokollkategorie und Details der SIEM-Inte
 | Diagnoseprotokolle (Ressourcenprotokolle) | Ja | Der Endbenutzer muss eine FlexConnector-JSON-Parserdatei erstellen. Weitere Informationen zur Vorgehensweise finden Sie in der ArcSight-Dokumentation. | Sie müssen eine Protokollquellenerweiterung erstellen. Weitere Informationen finden Sie in der QRadar-Dokumentation. |
 | VM-Protokolle | Ja, über weitergeleitete Ereignisse und nicht über JSON | Ja, über die weitergeleiteten Ereignisse | Ja, über die weitergeleiteten Ereignisse |
 
->[!NOTE]
-Während die Azure-Protokollintegration eine kostenlose Lösung darstellt, ergeben sich durch das Speichern der Protokolldateiinformationen entsprechende Azure-Speicherkosten.
+Weitere Informationen zu unterstützten Protokolltypen finden Sie in den [häufig gestellten Fragen](security-azure-log-integration-faq.md).
+
 
 Unterstützung durch die Community ist über das [MSDN-Forum für die Azure-Protokollintegration](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration) verfügbar. Das Forum bietet der AzLog-Community die Möglichkeit, sich gegenseitig mit Fragen, Antworten, Tipps und Tricks zur optimalen Verwendung der Azure-Protokollintegration zu unterstützen. Darüber hinaus überwacht das Team für die Azure-Protokollintegration dieses Forum und bietet nach Möglichkeit entsprechende Hilfe an.
 

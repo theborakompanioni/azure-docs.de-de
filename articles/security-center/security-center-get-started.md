@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/16/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 0ca7382ed64fd548f8a086893ea2e3187dd26929
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 392c814b7d3ff6b4f0f7850a51960576775e0307
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/09/2017
 Dieser Artikel enthält hilfreiche Informationen zum schnellen Einstieg in Azure Security Center. Sie erhalten eine Einführung in die Sicherheitsüberwachungs- und Richtlinienverwaltungs-Komponenten.
 
 > [!NOTE]
-> Im Artikel wird der Dienst anhand einer Beispielbereitstellung vorgestellt. Es handelt sich nicht um eine Schritt-für-Schritt-Anleitung.
+> Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
 >
 >
 
@@ -41,9 +41,16 @@ Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-
 In Security Center werden Ihnen nur dann Informationen zu einer Azure-Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, der eine Ressource angehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist. Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Permissions in Azure Security Center](security-center-permissions.md) (Berechtigungen in Azure Security Center).
 
 ## <a name="data-collection"></a>Datensammlung
-Security Center sammelt Daten von Ihren virtuellen Computern (VMs), um den Sicherheitsstatus zu bewerten, Sicherheitsempfehlungen bereitzustellen und vor Bedrohungen zu warnen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle VMs in Ihrem Abonnement aktiviert. Die Datensammlung wird zwar empfohlen, kann aber in der Security Center-Richtlinie deaktiviert werden.
+Security Center sammelt Daten von Ihren virtuellen Computern (VMs), um den Sicherheitsstatus zu bewerten, Sicherheitsempfehlungen bereitzustellen und vor Bedrohungen zu warnen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle VMs in Ihrem Abonnement aktiviert. Security Center stellt den Microsoft Monitoring Agent auf allen vorhandenen unterstützten virtuellen Azure-Computern sowie auf allen neuen virtuellen Computern bereit, die erstellt werden. Weitere Informationen zur Funktionsweise der Datensammlung finden Sie unter [Aktivieren der Datensammlung](security-center-enable-data-collection.md).
+
+Die Datensammlung wird empfohlen. Wenn Sie den Free-Tarif von Security Center verwenden, können Sie die Datensammlung von VMs durch Deaktivieren der Datensammlung in der Sicherheitsrichtlinie deaktivieren. Die Datensammlung ist für Abonnements des Standard-Tarifs von Security Center erforderlich. Weitere Informationen zu den Tarifen Standard und Free finden Sie unter [Azure Security Center-Preise](security-center-pricing.md).
 
 In den folgenden Schritten wird beschrieben, wie Sie auf die Komponenten von Security Center zugreifen und diese verwenden. Die Schritte veranschaulichen, wie Sie die Datensammlung deaktivieren, wenn Sie sie nicht nutzen möchten.
+
+> [!NOTE]
+> Im Artikel wird der Dienst anhand einer Beispielbereitstellung vorgestellt. Es handelt sich nicht um eine Schritt-für-Schritt-Anleitung.
+>
+>
 
 ## <a name="access-security-center"></a>Zugreifen auf Security Center
 Führen Sie im Portal folgende Schritte aus, um auf Security Center zuzugreifen:
@@ -60,21 +67,13 @@ Führen Sie im Portal folgende Schritte aus, um auf Security Center zuzugreifen:
 Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressourcengruppen konfigurieren. Wir konfigurieren nun eine Sicherheitsrichtlinie für Ihr Abonnement:
 
 1. Wählen Sie auf dem Blatt **Security Center** die Kachel **Richtlinie**.
-   ![Sicherheitsrichtlinie][3]
-2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Richtlinie pro Abonnement oder Ressourcengruppe definieren** ein Abonnement aus.
-3. Auf dem Blatt **Sicherheitsrichtlinie** ist die Option **Datensammlung** aktiviert, um automatisch Protokolle zu erfassen. Die Überwachungserweiterung wird auf allen aktuellen und neuen VMs im Abonnement bereitgestellt. (Sie können die Datensammlung auch deaktivieren, indem Sie die Option **Datensammlung** auf **Aus** festlegen. Security Center kann dann aber keine Sicherheitswarnungen und Empfehlungen mehr bereitstellen.)
-4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speicherkonto nach Region auswählen**. Wählen Sie für jede Region, in der Sie VMs ausführen, ein Speicherkonto, in dem Daten dieser VMs gespeichert werden. Wenn Sie nicht für jede Region ein Speicherkonto auswählen, wird ein Speicherkonto für Sie erstellt und in der securitydata-Ressourcengruppe platziert. Die gesammelten Daten werden aus Sicherheitsgründen logisch von anderen Kundendaten getrennt.
+2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Richtlinie pro Abonnement definieren** ein Abonnement aus.
+3. Auf dem Blatt **Sicherheitsrichtlinie** ist die Option **Datensammlung** aktiviert, um automatisch Protokolle zu erfassen. Die Überwachungserweiterung wird auf allen aktuellen und neuen VMs im Abonnement bereitgestellt. (Unter dem Free-Tarif von Security Center können Sie die Datensammlung kündigen, indem Sie **Datensammlung** auf **Aus** festlegen. Wenn Sie **Datensammlung** auf **Aus** festlegen, wird verhindert, dass Security Center Sicherheitswarnungen und Empfehlungen bereitstellt.)
+4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Präventionsrichtlinie**. Das Blatt **Präventionsrichtlinie** wird geöffnet.
+5. Aktivieren Sie auf dem Blatt **Präventionsrichtlinie** die Empfehlungen, die im Rahmen der Sicherheitsrichtlinie verwendet werden sollen. Beispiele:
 
-   > [!NOTE]
-   > Es wird empfohlen, dass Sie zunächst die Datensammlung aktivieren und ein Speicherkonto auf Abonnementebene auswählen. Sicherheitsrichtlinien können auf der Ebene von Azure-Abonnement und Ressourcengruppe festgelegt werden, aber die Konfiguration von Datensammlung und Speicherkonten erfolgt nur auf Abonnementebene.
-   >
-   >
-5. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Präventionsrichtlinie**. Das Blatt **Präventionsrichtlinie** wird geöffnet.
-   ![Präventionsrichtlinie][4]
-6. Aktivieren Sie auf dem Blatt **Präventionsrichtlinie** die Empfehlungen, die im Rahmen der Sicherheitsrichtlinie verwendet werden sollen. Beispiele:
-
-   * Durch Festlegen von **Systemupdates** auf **Ein** werden alle unterstützten virtuellen Computer auf fehlende Betriebssystemupdates überprüft.
-   * Durch Festlegen von **Sicherheitsrisiken des Betriebssystems** auf **Ein** werden alle unterstützten virtuellen Computer untersucht, um Betriebssystemkonfigurationen zu ermitteln, die den virtuellen Computer anfälliger für Angriffe machen können.
+   * Durch Festlegen von **Systemupdates** auf **Ein** werden alle unterstützten VMs auf fehlende Betriebssystemupdates überprüft.
+   * Durch Festlegen von **Sicherheitsrisiken des Betriebssystems** auf **Ein** werden alle unterstützten VMs untersucht, um Betriebssystemkonfigurationen zu ermitteln, die den virtuellen Computer anfälliger für Angriffe machen können.
 
 ### <a name="view-recommendations"></a>Anzeigen von Empfehlungen
 1. Kehren Sie zum Blatt **Security Center** zurück, und klicken Sie auf die Kachel **Empfehlungen**. Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn von Security Center potenzielle Sicherheitsrisiken identifiziert werden, werden die Empfehlungen auf dem Blatt **Empfehlungen** angezeigt.
@@ -82,11 +81,11 @@ Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressource
 2. Wählen Sie eine Empfehlung auf dem Blatt **Empfehlungen** aus, um weitere Informationen anzuzeigen und Maßnahmen zum Beheben des Problems zu ergreifen.
 
 ### <a name="view-the-security-state-of-your-resources"></a>Anzeigen des Sicherheitsstatus Ihrer Ressourcen
-1. Kehren Sie zum Blatt **Security Center** zurück. Der Abschnitt **Prävention** des Dashboards enthält Indikatoren, die den Sicherheitsstatus für virtuelle Computer, Netzwerk, Daten und Anwendungen anzeigen.
+1. Kehren Sie zum Blatt **Security Center** zurück. Der Abschnitt **Prävention** des Dashboards enthält Indikatoren, die den Sicherheitsstatus für VMs, Netzwerk, Daten und Anwendungen anzeigen.
 2. Wählen Sie **Compute**, um weitere Informationen anzuzeigen. Das Blatt **Compute** wird mit drei Registerkarten geöffnet:
 
-  - **Übersicht**: Enthält Empfehlungen zur Überwachung und zu virtuellen Computern.
-  - **Virtuelle Computer**: Liste mit allen virtuellen Computern und dem jeweils aktuellen Sicherheitsstatus
+  - **Übersicht**: Enthält Empfehlungen zur Überwachung und zu VMs.
+  - **Virtuelle Computer**: Liste mit allen VMs und dem jeweils aktuellen Sicherheitsstatus
   - **Clouddienste**: Liste mit den von Security Center überwachten Web- und Workerrollen
 
     ![Kachel „Ressourcenintegrität“ in Azure Security Center][6]
@@ -117,6 +116,7 @@ In diesem Artikel wurden die Security Center-Komponenten für die Sicherheitsüb
 * Konfigurieren Sie eine Sicherheitsrichtlinie für Ihr Azure-Abonnement. Weitere Informationen hierzu finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md).
 * Verwenden Sie die Empfehlungen in Security Center als Hilfe beim Schützen Ihrer Azure-Ressourcen. Weitere Informationen finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 * Überprüfen und verwalten Sie Ihre aktuellen Sicherheitswarnungen. Weitere Informationen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
+- [Azure Security Center-Datensicherheit:](security-center-data-security.md) Hier erfahren Sie, wie Daten in Security Center verwaltet und geschützt werden.
 * Informieren Sie sich über die [Funktionen der erweiterten Bedrohungserkennung](security-center-detection-capabilities.md), die Teil des [Standard-Tarifs](security-center-pricing.md) von Security Center sind. Der Standard-Tarif wird für die ersten 60 Tage kostenlos angeboten.
 * Antworten auf Fragen zur Verwendung von Security Center finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
 

@@ -13,12 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 03/31/2017
+ms.date: 06/06/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 70b04cde5fe877355c1dea29c78df3dcb8277973
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
+ms.contentlocale: de-de
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -36,6 +37,7 @@ Beginnen Sie hier, wenn Sie noch nicht mit Azure Search vertraut sind. Sie könn
 | [Indexabfragen](search-get-started-portal.md) | Erstellen und eine Abfragen eines Index mit integrierten Beispieldaten. Tools im Portal sind eine schnelle Möglichkeit, um mehr über die Abfragetypen und Suchparameter zu erfahren. | Februar 2017 |
 | [Nächster Schritt:<br/> Code in .NET](search-howto-dotnet-sdk.md) | Exemplarische C#-Vorgehensweise zum Verbinden, Indizieren und Abfragen mit der Azure Search .NET Bibliothek. | November 2016 |
 | [Nächster Schritt:<br/> Code in REST](search-create-index-rest-api.md) | Überprüfen von REST-Aufrufen und JSON-Nutzlasten zum Erstellen eines Azure Search-Index mit einer beliebigen Plattform und Programmiersprache. | Dezember 2016 |
+| [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md) | Architektur und Übersicht der Workloads für die Volltextsuche in Azure Search | 17. März 2017 |
 
 ## <a name="code-samples"></a>Codebeispiele
 
@@ -55,6 +57,7 @@ Voll funktionsfähige Webanwendungen, die Azure Search für ihre Suchoberfläche
 
 | Link | Beschreibung |
 |-------|-------------|
+|[Search Analyzer Demo](http://alice.unearth.ai) | Eine Livedemo-Website mit den Abfrageausgaben aus der Standard-Analyse von Lucene, der Englischanalyse von Lucene und vom Prozessor von Microsoft für natürliche Sprache. Für jede Suchbegriffseingabe können Sie einen direkten Vergleich der Ausgabe jeder Analyse anzeigen. |
 |[Demo eines Jobportals für New York City (NYC) mit Azure Search](http://aka.ms/azjobsdemo) | Eine aktive ASP.NET-Website, die Azure Search-Funktionen mithilfe von Daten der NYC Open Data Initiative veranschaulicht. Für diese App wird die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx)verwendet. Sie können den Code ändern, um die [Lucene-Syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx)auszuprobieren. |
 |[Tate Art Gallery-Demo](https://rawgit.com/liamca/azure-search-tate-art-gallery/master/Demo/index.html) | Eine gehostete ASP.NET-Website mit Beispieldaten aus der Tate Art Gallery. Probieren Sie zum Einstieg Suchbegriffe wie „modern“, „Foto“ und „Portrait“ aus.
 |[Demo-Website zu Azure Search](https://searchsamples.azurewebsites.net/#/) | Eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search. |

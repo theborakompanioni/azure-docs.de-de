@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 06/16/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c88dc19cdacc94b9b81adcdbf69f22aac8f6eabe
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: e6b251d5b97c57b3b6f79d14e53fbed5ca37ecb0
+ms.contentlocale: de-de
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -25,14 +26,14 @@ ms.lasthandoff: 03/22/2017
 Azure Security Center untersucht täglich das Betriebssystem Ihres virtuellen Computers (VM) auf Konfigurationen, die bewirken können, dass der virtuelle Computer anfälliger für Angriffe wird, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu bereinigen. Security Center empfiehlt, dass Sie Sicherheitsrisiken beheben, wenn die Betriebssystemkonfiguration Ihres virtuellen Computers nicht den empfohlenen Konfigurationsregeln entspricht.
 
 > [!NOTE]
-> Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Zu diesem Zeitpunkt wird Windows Server 2016 nicht vollständig unterstützt.
+> Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
 >
 >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 
 > [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
+> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
 >
 >
 
@@ -72,10 +73,11 @@ Azure Security Center untersucht täglich das Betriebssystem Ihres virtuellen Co
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Betriebssystem-Sicherheitsrisiken beheben“ umsetzen. Sie können den Satz der Konfigurationsregeln [hier](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)überprüfen. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](https://nvd.nist.gov/cce/index.cfm) finden Sie weitere Informationen.
 
-Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 
+* [Unterstützte Plattformen in Azure Security Center:](security-center-os-coverage.md) Enthält eine Liste mit unterstützten Windows- und Linux-VMs.
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-* [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+* [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.

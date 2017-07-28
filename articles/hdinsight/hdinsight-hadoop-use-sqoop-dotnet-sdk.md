@@ -1,6 +1,7 @@
 ---
-title: "Ausführen von Sqoop-Aufträgen mit .NET und Azure HDInsight | Microsoft-Dokumentation"
+title: "Ausführen von Sqoop-Aufträgen mit .NET und HDInsight – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mit dem HDInsight .NET SDK einen Sqoop-Import und -Export zwischen einem Hadoop-Cluster und einer Azure-SQL-Datenbank durchführen können."
+keywords: Sqoop-Auftrag
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -9,17 +10,18 @@ tags: azure-portal
 author: mumian
 ms.assetid: 87bacd13-7775-4b71-91da-161cb6224a96
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 9cadb72e065f82de8e007b38e909d2bc07d18126
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -34,16 +36,16 @@ Erfahren Sie, wie das HDInsight .NET SDK zum Ausführen von Sqoop-Aufträgen in 
 > 
 
 ### <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Einen Hadoop-Cluster in HDInsight**. Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="run-sqoop-using-net-sdk"></a>Ausführen von Sqoop mit dem .NET SDK
-Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. In diesem Abschnitt erstellen Sie eine C#-Konsolenanwendung zum Exportieren der hivesampletable in die SQL-Datenbanktabelle, die Sie zuvor in diesem Lernprogramm erstellt haben.
+## <a name="use-sqoop-on-hdinsight-clusters-using-net-sdk"></a>Verwenden von Sqoop auf HDInsight-Clustern mit dem .NET SDK
+Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. In diesem Abschnitt erstellen Sie eine C#-Konsolenanwendung zum Exportieren der hivesampletable in die SQL-Datenbanktabelle, die Sie zuvor in diesem Tutorial erstellt haben.
 
-**So übermitteln Sie einen Sqoop-Job**
+## <a name="submit-a-sqoop-job"></a>Übermitteln eines Sqoop-Auftrags
 
-1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio.
+1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung.
 2. Führen Sie in der Paket-Manager-Konsole von Visual Studio den folgenden NuGet-Befehl aus, um das Paket zu importieren.
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job

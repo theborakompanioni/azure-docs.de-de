@@ -14,10 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: be8fed81757d3a7467707e4e0fdf1fd5734e0f07
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 90c8c6d91de667f2d234b1d4e89ce7336813fb62
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -100,7 +101,7 @@ Die Verwendung von PTVS ist optional, aber empfehlenswert, da Sie so bei Python-
 
 PTVS erleichtert auch die Bereitstellung unter Microsoft Azure, mit Unterstützung für die Bereitstellung in [Clouddiensten](cloud-services/cloud-services-python-ptvs.md) und auf [Websites](app-service-web/web-sites-python-ptvs-django-mysql.md).
 
-PTVS funktioniert mit Ihren vorhandenen Installationen von Visual Studio 2013 oder 2015.  Dokumentation, Downloads und Diskussionen finden Sie unter [Python-Tools für Visual Studio].  
+PTVS funktioniert mit Ihren vorhandenen Installationen von Visual Studio 2013, 2015 oder 2017.  Dokumentation, Downloads und Diskussionen finden Sie unter [Python-Tools für Visual Studio].  
 
 ## <a name="python-azure-scenarios-for-linux-and-macos"></a>Python Azure-Szenarien für Linux und MacOS
 Für Linux oder Mac OS werden die folgenden wichtigen Azure-Szenarien unterstützt:

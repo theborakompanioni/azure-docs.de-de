@@ -15,15 +15,28 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: e8774cc290847d48ecdc5dcdac1f2533fdc7d072
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 09585a8e2ffbe0c825ee63f459218c7945cdd243
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/08/2017
 
 ---
 
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>Bereitstellen eines Gateways unter Windows oder Linux für die vorkonfigurierte Connected Factory-Lösung
+
+Die Software, die für die Bereitstellung eines Gateways für die vorkonfigurierte Connected Factory-Lösung erforderlich ist, besteht aus zwei Komponenten:
+
+* *OPC Proxy* stellt eine Verbindung mit dem IoT Hub her und wartet auf Befehls- und Kontrollmeldungen vom integrierten OPC-Browser, der im Portal der Connected Factory-Lösung ausgeführt wird.
+* *OPC Publisher* stellt eine Verbindung mit lokalen OPC UA-Servern her und leitet von diesen Telemetriemeldungen an IoT Hub weiter.
+
+Beide Komponenten sind Open-Source-Lösungen, die als Quelle auf GitHub und als Docker-Container verfügbar sind:
+
+| GitHub | DockerHub |
+| ------ | --------- |
+| [OPC Publisher][lnk-publisher-github] | [OPC Publisher][lnk-publisher-docker] |
+| [OPC Proxy][lnk-proxy-github] | [OPC Proxy][lnk-proxy-docker] |
+
+Für keine der beiden Komponenten ist eine öffentlich erreichbare IP-Adresse oder eine Lücke in der Gateway-Firewall erforderlich. OPC Proxy und OPC Publisher nutzen nur die ausgehenden Ports 443, 5671 und 8883.
 
 Die Schritte in diesem Artikel veranschaulichen, wie ein Gateway mit Docker unter Windows oder Linux bereitgestellt wird. Das Gateway ermöglicht Verbindungen mit der vorkonfigurierten Connected Factory-Lösung.
 
@@ -58,7 +71,7 @@ Sie können diesen Schritt auch nach der Installation von Docker über das Menü
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
-    * **&lt;ApplicationName&gt;** ist der Name der OPC UA-Anwendung, den das Gateway im Format **Herausgeber.&lt;Ihr vollqualifizierter Domänenname&gt;** erstellt. Beispiel: **herausgeber.microsoft.com**.
+    * **&lt;ApplicationName&gt;** ist der Name, den Sie Ihrem OPC UA Publisher im Format **publisher.&lt;Ihr vollqualifizierter Domänenname&gt;** geben. Wenn Ihr Factory-Netzwerk beispielsweise den Namen **myfactorynetwork.com** hat, weist **ApplicationName** den Wert **publisher.myfactorynetwork.com** auf.
     * **&lt;IoTHubOwnerConnectionString&gt;** ist die **iothubowner**-Verbindungszeichenfolge, die Sie im vorherigen Schritt kopiert haben. Diese Verbindungszeichenfolge wird nur in diesem Schritt verwendet, und Sie benötigen sie nicht wieder.
 
     Der zugeordnete Ordner „D:\\docker“ (das `-v`-Argument) wird später verwendet, um die beiden X.509-Zertifikate zu speichern, die von den Gatewaymodulen verwendet werden.
@@ -67,7 +80,7 @@ Sie können diesen Schritt auch nach der Installation von Docker über das Menü
 
 1. Starten Sie das Gateway mit den folgenden Befehlen neu:
 
-    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e \_GW\_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
+    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
 
@@ -152,5 +165,10 @@ Weitere Informationen über die Architektur der vorkonfigurierten Connected Fact
 [Azure-Portal]: http://portal.azure.com/
 [Open Source OPC UA-Client]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
 [Installieren Sie Docker]: https://www.docker.com/community-edition#/download
-[lnk-walkthrough]: iot-suite-overview.md
+[lnk-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [Azure IoT Edge]: https://github.com/Azure/iot-edge
+
+[lnk-publisher-github]: https://github.com/Azure/iot-edge-opc-publisher
+[lnk-publisher-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua
+[lnk-proxy-github]: https://github.com/Azure/iot-edge-opc-proxy
+[lnk-proxy-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua-proxy

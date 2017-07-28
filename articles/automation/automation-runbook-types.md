@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/11/2016
+ms.date: 06/01/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: dd6b2fa2a1ca003578eaee82ef42741b9b1bf2a4
-ms.openlocfilehash: b509629ba0d6bbaea3de979a4e67f5c444e5e9e0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: e859aef473b433fbf4efb639962f3a3ce0a23d7b
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -51,7 +53,7 @@ PowerShell-Runbooks basieren auf Windows PowerShell.  Sie bearbeiten den Code de
 
 ### <a name="advantages"></a>Vorteile
 * Implementierung der gesamten komplexen Logik mit PowerShell-Code ohne die zusätzliche Komplexität des PowerShell-Workflows. 
-* Runbook startet schneller als grafische oder PowerShell-Workflow-Runbooks, da es nicht vor der Ausführung kompiliert werden muss.
+* Runbook startet schneller als PowerShell-Workflow-Runbooks, da es nicht vor der Ausführung kompiliert werden muss.
 
 ### <a name="limitations"></a>Einschränkungen
 * Autor muss mit PowerShell-Skripts vertraut sein.
@@ -92,10 +94,5 @@ Wenn Sie festlegen, welchen Typ Sie für ein bestimmtes Runbook verwenden möcht
 * Weitere Informationen zum Erstellen von grafischen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
 * Informationen zu den Unterschieden zwischen PowerShell- und PowerShell-Workflow-Runbooks finden Sie unter [Grundlagen des Windows PowerShell-Workflows](automation-powershell-workflow.md)
 * Weitere Informationen zum Erstellen oder Importieren eines Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks](automation-creating-importing-runbook.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

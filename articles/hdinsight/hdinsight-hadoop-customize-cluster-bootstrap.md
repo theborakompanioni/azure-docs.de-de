@@ -1,5 +1,5 @@
 ---
-title: Anpassen von HDInsight-Clustern mithilfe von Bootstrap | Microsoft-Dokumentation
+title: "Anpassen von HDInsight-Clustern mithilfe von Bootstrap – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mit Bootstrap HDInsight-Cluster anpassen können."
 services: hdinsight
 documentationcenter: 
@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: c8abf308c20968f184a80b20dc40185b1631105d
-ms.openlocfilehash: 903004ae83d86ddcda13c6f2fce708e71ffa729b
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: c7a6fafa90eac66774d564c82c926c662baf784c
+ms.contentlocale: de-de
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -127,7 +128,7 @@ Sie können Bootstrap in einer Resource Manager-Vorlage verwenden:
     }
 
 
-![HDInsight Hadoop anpassen Cluster Bootstrap Azure Resource Manager-Vorlage](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![HDInsight Hadoop passt Cluster Bootstrap Azure Resource Manager-Vorlage an](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Weitere Informationen
 * Unter [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision-cluster] finden Sie Anweisungen zum Erstellen eines HDInsight-Clusters mit anderen benutzerdefinierten Optionen.

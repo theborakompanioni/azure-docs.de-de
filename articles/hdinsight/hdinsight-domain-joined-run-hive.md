@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung | Microsoft Docs"
+title: "Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung – Azure | Microsoft-Dokumentation"
 description: 'Inhalt:'
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 213b6b5274ebde8cc460829ff1edc96a66eef994
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
 ms.contentlocale: de-de
-ms.lasthandoff: 03/25/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---

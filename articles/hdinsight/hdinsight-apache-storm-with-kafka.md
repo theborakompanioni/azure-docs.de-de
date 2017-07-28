@@ -1,10 +1,10 @@
 ---
-title: Verwenden von Apache Kafka mit Storm in HDInsight | Microsoft Docs
+title: "Verwenden von Apache Kafka mit Storm in HDInsight – Azure | Microsoft-Dokumentation"
 description: "Apache Kafka wird mit Apache Storm in HDInsight installiert. Es wird beschrieben, wie Sie in Kafka schreiben und dann Daten auslesen, indem Sie die von Storm bereitgestellten Komponenten KafkaBolt und KafkaSpout verwenden. Außerdem erfahren Sie, wie Sie das Flux-Framework einsetzen, um Storm-Topologien zu definieren und zu übermitteln."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: paulettm
+manager: jhubbard
 editor: cgronlun
 ms.assetid: e4941329-1580-4cd8-b82e-a2258802c1a7
 ms.service: hdinsight
@@ -13,12 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/20/2017
+ms.date: 06/13/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: dcda5e27cbcadff054c8085b72a1b6fb1c07b889
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: d241dbcdd9dc711769faa69488e3f32acbe5d40c
+ms.contentlocale: de-de
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>Verwenden von Apache Kafka (Vorschau) mit Storm in HDInsight
@@ -57,9 +58,12 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, Kafka-Cluster und Storm-Clu
 
 1. Verwenden Sie die folgende Schaltfläche, um sich bei Azure anzumelden, und öffnen Sie die Vorlage im Azure-Portal.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet.1.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
     Die Azure Resource Manager-Vorlage befindet sich unter **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet.json**.
+
+    > [!WARNING]
+    > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten. Diese Vorlage erstellt einen Kafka-Cluster, der drei Workerknoten enthält.
 
 2. Verwenden Sie die folgende Anleitung, um die Einträge auf dem Blatt **Benutzerdefinierte Bereitstellung** einzufügen:
    
@@ -101,11 +105,11 @@ Der Code für das in diesem Dokument beschriebene Beispiel ist unter [https://gi
 Dieses Projekt enthält zwei Topologien:
 
 * **KafkaWriter**: Diese Topologie wird mit der Datei **writer.yaml** definiert. Sie schreibt zufällige Sätze in Kafka, indem sie die KafkaBolt-Komponente von Apache Storm verwendet.
-  
+
     Für diese Topologie wird eine benutzerdefinierte **SentenceSpout**-Komponente zum Generieren von zufälligen Sätzen verwendet.
 
 * **KafkaReader**: Diese Topologie wird mit der Datei **reader.yaml** definiert. Sie liest Daten aus Kafka, indem sie die KafkaSpout-Komponente von Apache Storm verwendet, und protokolliert die Daten dann in stdout.
-  
+
     Für diese Topologie wird eine benutzerdefinierte **PrinterBolt**-Komponente verwendet, um aus Kafka ausgelesene Daten zu protokollieren.
 
 ### <a name="flux"></a>Flux
@@ -125,11 +129,13 @@ Anhand der Schritte in diesem Dokument wird veranschaulicht, wie Sie diese Umgeb
 ## <a name="create-a-kafka-topic"></a>Erstellen eines Kafka-Themas
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem Kafka-Cluster her. Ersetzen Sie `USERNAME` durch den SSH-Benutzernamen, der beim Erstellen des Clusters verwendet wurde. Ersetzen Sie `BASENAME` durch den Basisnamen, der beim Erstellen des Clusters verwendet wurde.
-   
-        ssh USERNAME@kafka-BASENAME-ssh.azurehdinsight.net
-   
+
+    ```bash
+    ssh USERNAME@kafka-BASENAME-ssh.azurehdinsight.net
+    ```
+
     Geben Sie nach der entsprechenden Aufforderung das Kennwort ein, das Sie beim Erstellen der Cluster verwendet haben.
-   
+
     Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Verwenden Sie für die SSH-Verbindung mit dem Kafka-Cluster die folgenden Befehle, um Variablen für die HTTP-Anmeldung und den Clusternamen festzulegen. Diese Werte werden in anderen Schritten in diesem Abschnitt verwendet.
@@ -195,8 +201,6 @@ Lassen Sie die SSH-Verbindung mit dem Kafka-Cluster aktiv. Sie können damit üb
 ## <a name="download-and-compile-the-project"></a>Herunterladen und Kompilieren des Projekts
 
 1. Laden Sie das Projekt in Ihrer Entwicklungsumgebung unter [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) herunter, öffnen Sie eine Befehlszeile, und ändern Sie die Verzeichnisse gemäß dem Speicherort, an den Sie das Projekt heruntergeladen haben.
-
-    Nehmen Sie sich kurz Zeit, um den Code zu prüfen und sich mit der Funktionsweise des Projekts vertraut zu machen.
 
 2. Verwenden Sie im Verzeichnis **hdinsight-storm-java-kafka** den folgenden Befehl, um das Projekt zu kompilieren und ein Paket für die Bereitstellung zu erstellen:
 
@@ -350,5 +354,3 @@ Da mit den Schritten in diesem Dokument beide Cluster in derselben Azure-Ressour
 Weitere Beispieltopologien, die mit Storm in HDInsight verwendet werden können, finden Sie unter [Beispiel-Storm-Topologien und -Komponenten für Apache Storm auf HDInsight](hdinsight-storm-example-topology.md).
 
 Informationen zur Bereitstellung und Überwachung von Topologien in Linux-basiertem HDInsight finden Sie unter [Bereitstellen und Verwalten von Apache Storm-Topologien in Linux-basiertem HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md).
-
-

@@ -1,5 +1,5 @@
 ---
-title: "Verwenden von C# mit Hive und Pig für Hadoop in HDInsight | Microsoft Docs"
+title: "Verwenden von C# mit Hive und Pig für Hadoop in HDInsight – Azure | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie benutzerdefinierte C#-Funktionen (User-Defined Functions, UDFs) mit Hive- und Pig-Streaming in Azure HDInsight verwenden.
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/12/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: d5854a623f656f08c428cd2f6792f25582362990
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: d92fa4efd69736565e8dc1abc44ec3b1bd8bc508
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>Verwenden benutzerdefinierter C#-Funktionen mit Hive- und Pig-Streaming für Hadoop in HDInsight
@@ -200,7 +199,7 @@ Weitere Informationen zu der mit den verschiedenen HDInsight-Versionen bereitges
 
     ```hiveql
     -- Uncomment the following if you are using Azure Storage
-    -- add file wasbs:///HiveCSharp.exe;
+    -- add file wasb:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Store
     -- add file adl:///HiveCSharp.exe;
 

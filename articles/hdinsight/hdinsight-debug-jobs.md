@@ -1,5 +1,5 @@
 ---
-title: 'Debuggen von Hadoop in HDInsight: Anzeigen von Protokollen und Verstehen von Fehlermeldungen | Microsoft Docs'
+title: "Debuggen von Hadoop in HDInsight: Anzeigen von Protokollen und Verstehen von Fehlermeldungen – Azure | Microsoft-Dokumentation"
 description: "Lernen Sie die Fehlermeldungen kennen, die Sie bei der Administration von HDInsight mit PowerShell erhalten können und Schritte zu deren Behebung."
 services: hdinsight
 tags: azure-portal
@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
-ms.openlocfilehash: bcf2791f0e1788d7d18a4efc123066aaf633d549
-ms.lasthandoff: 02/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 3031644e2975fd59edff13c7a9da1efa418e8abd
+ms.contentlocale: de-de
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -89,7 +90,7 @@ Power Query kann von [https://www.microsoft.com/de-de/download/details.aspx?id=3
 7. Klicken Sie auf **OK** , um die Daten zu importieren.
 8. Wählen Sie die Spalten **TraceLevel**, „Role“ und **ComponentName** aus, und klicken Sie dann auf dem Menüband auf das Steuerelement **Gruppieren nach**.
 9. Klicken Sie im Dialogfeld „Gruppieren nach“ auf **OK** .
-10. Klicken Sie auf **Übernehmen und schließen**.
+10. Klicken Sie auf ** Übernehmen und schließen**.
 
 Sie können jetzt Excel zum Filtern und Sortieren verwenden. Sie können nach Wunsch andere Spalten einbeziehen (z. B. „Message“), um auftretende Probleme detailliert zu untersuchen. Doch das zuvor beschriebene Auswählen und Gruppieren der Spalten bietet einen guten Überblick darüber, was in Hadoop-Diensten passiert. Das gleiche Prinzip kann auf die Tabellen „setuplog“ und „hadoopinstalllog“ angewendet werden.
 

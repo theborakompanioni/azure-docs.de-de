@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 06/16/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: fd52bd8e14ca9bdcd06fc820e5e03fb5feccc72f
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 8951167213da6ab5341c1ca420353ec625ef5424
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/09/2017
 Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funktionen und dazu, wie es funktioniert.
 
 > [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.
+> Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
 >
 >
 
@@ -39,17 +39,23 @@ Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funkt
 | Phase | Funktion |
 | --- | --- |
 | Verhindern |Überwacht den Sicherheitsstatus Ihrer Azure-Ressourcen |
-| Verhindern | Definiert Richtlinien für Ihre Azure-Abonnements und -Ressourcengruppen anhand der Sicherheitsanforderungen Ihres Unternehmens, des Typs der genutzten Anwendungen und der Vertraulichkeit Ihrer Daten |
+| Verhindern | Definiert Richtlinien für Ihre Azure-Abonnements anhand der Sicherheitsanforderungen Ihres Unternehmens, des Typs der genutzten Anwendungen und der Vertraulichkeit Ihrer Daten |
 | Verhindern | Verwendet richtliniengesteuerte Sicherheitsempfehlungen, um Dienstbesitzer durch das Implementieren erforderlicher Sicherheitsmechanismen zu führen |
 | Verhindern | Stellt schnell Sicherheitsdienste und Appliances von Microsoft und Partnern bereit |
 | Erkennen |Erfasst und analysiert automatisch Sicherheitsdaten aus Ihren Azure-Ressourcen, aus dem Netzwerk und aus Partnerlösungen wie Antischadsoftware und Firewalls |
-| Erkennen | Nutzt die globale Bedrohungsintelligenz von Microsoft-Produkten und -Diensten, von der Microsoft Digital Crimes Unit (DCU), vom Microsoft Security Response Center (MSRC) sowie von externen Feeds |
+| Erkennen | Nutzt die globalen Bedrohungsdaten von Microsoft-Produkten und -Diensten, von der Microsoft Digital Crimes Unit (DCU), vom Microsoft Security Response Center (MSRC) sowie von externen Feeds |
 | Erkennen | Wendet erweiterte Analysen an, einschließlich Machine Learning und Verhaltensanalyse |
 | Reagieren |Stellt priorisierte Sicherheitszwischenfälle/-warnungen bereit |
 | Reagieren | Bietet Einblicke in die Quelle des Angriffs und in betroffene Ressourcen |
 | Reagieren | Schlägt Möglichkeiten vor, den aktuellen Angriff zu beenden und zukünftige Angriffe zu verhindern |
 
 ## <a name="introductory-walkthrough"></a>Einführende exemplarische Vorgehensweise
+
+> [!NOTE]
+> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
+>
+>
+
  Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/)auf Security Center zugreifen. [Melden Sie sich beim Portal an](https://portal.azure.com). Scrollen Sie im Hauptmenü des Portals zur Option **Security Center**, oder wählen Sie die Kachel **Security Center** aus, die Sie zuvor am Dashboard des Portals angeheftet haben.
 
 ![Kachel „Sicherheit“ im Azure-Portal][1]
@@ -57,10 +63,10 @@ Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funkt
 In Security Center können Sie Sicherheitsrichtlinien festlegen, Sicherheitskonfigurationen überwachen und Sicherheitswarnungen anzeigen.
 
 ### <a name="security-policies"></a>Sicherheitsrichtlinien
-Sie können Richtlinien für Ihre Azure-Abonnements und Ressourcengruppen gemäß den Sicherheitsanforderungen Ihres Unternehmens definieren. Außerdem können Sie sie genau an die Arten der genutzten Anwendungen und an die Empfindlichkeit der Daten jedes Abonnements anpassen. Beispielsweise haben Ressourcen, die für Entwicklungs- oder Testzwecke verwendet werden, unter Umständen Sicherheitsanforderungen, die sich von denen für Produktionsanwendungen unterscheiden. Ähnlich kann für Anwendungen mit reglementierten Daten, etwa personenbezogene Informationen, eine höhere Sicherheitsstufe erforderlich sein.
+Sie können Richtlinien für Ihre Azure-Abonnements gemäß den Sicherheitsanforderungen Ihres Unternehmens definieren. Außerdem können Sie sie genau an die Arten der genutzten Anwendungen und an die Empfindlichkeit der Daten jedes Abonnements anpassen. Beispielsweise haben Ressourcen, die für Entwicklungs- oder Testzwecke verwendet werden, unter Umständen Sicherheitsanforderungen, die sich von denen für Produktionsanwendungen unterscheiden. Ähnlich kann für Anwendungen mit reglementierten Daten, etwa personenbezogene Informationen, eine höhere Sicherheitsstufe erforderlich sein.
 
 > [!NOTE]
-> Um eine Sicherheitsrichtlinie auf Abonnementebene oder Ressourcengruppenebene zu ändern, müssen Sie der Besitzer des Abonnements oder ein Mitwirkender sein.
+> Damit Sie eine Sicherheitsrichtlinie ändern können, müssen Sie Systemadministrator oder Besitzer bzw. Mitwirkender des Abonnements sein. Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Berechtigungen in Azure Security Center](security-center-permissions.md).
 >
 >
 
@@ -70,35 +76,17 @@ Klicken Sie auf dem Blatt **Security Center** auf die Kachel **Richtlinie**, um 
 
 Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** ein Abonnement aus, um Einzelheiten zur Richtlinie anzuzeigen.
 
-![Blatt „Security Center“, Abonnement][3]
-
-**Datensammlung** (siehe oben) aktiviert die Datensammlung für eine Sicherheitsrichtlinie. Die Aktivierung bietet Folgendes:
+**Datensammlung** aktiviert die Datensammlung für eine Sicherheitsrichtlinie. Die Aktivierung bietet Folgendes:
 
 * Die tägliche Überprüfung aller unterstützten virtuellen Computer (VMs) für die Sicherheitsüberwachung und Empfehlungen
 * Das Sammeln von Sicherheitsereignissen für die Analyse und Bedrohungserkennung
 
-Mit **Speicherkonto nach Region auswählen** (siehe oben) können Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto auswählen, in dem Daten dieser virtuellen Computer gespeichert werden. Wenn Sie kein Speicherkonto für die einzelnen Regionen auswählen, wird ein Speicherkonto für Sie erstellt. Die gesammelten Daten werden aus Sicherheitsgründen logisch von anderen Kundendaten getrennt.
-
 > [!NOTE]
-> Die Datensammlung und die Auswahl eines Speicherkontos pro Region werden auf Abonnementebene konfiguriert.
+> Die Datensammlung wird auf Abonnementebene konfiguriert.
 >
 >
 
-Wählen Sie **Präventionsrichtlinie** (siehe oben) aus, um das Blatt **Präventionsrichtlinie** zu öffnen. **Empfehlungen anzeigen für** ermöglicht es Ihnen, die zu überwachenden Sicherheitsmechanismen sowie die Empfehlungen auszuwählen, die entsprechend den Sicherheitsanforderungen der Ressourcen im Abonnement angezeigt werden sollen.
-
-Wählen Sie anschließend eine Ressourcengruppe aus, um Einzelheiten zur Richtlinie anzuzeigen.
-
-![Blatt „Security Center“, Ressourcengruppe][4]
-
-**Vererbung** (siehe oben) können Sie die Ressourcengruppe wie folgt definieren:
-
-* „Geerbt“ (Standardeinstellung) bedeutet, dass alle Sicherheitsrichtlinien für diese Ressourcengruppe von der Abonnementebene geerbt werden.
-* „Eindeutig“ bedeutet, dass die Ressourcengruppe eine benutzerdefinierte Sicherheitsrichtlinie hat. Sie müssen Änderungen unter **Empfehlungen anzeigen für** vornehmen.
-
-> [!NOTE]
-> Bei einem Konflikt zwischen der Richtlinie auf Abonnementebene und der Richtlinie auf Ressourcengruppenebene hat die Richtlinie auf Ressourcengruppenebene Vorrang.
->
->
+Wählen Sie **Präventionsrichtlinie** aus, um das Blatt **Präventionsrichtlinie** zu öffnen. **Empfehlungen anzeigen für** ermöglicht es Ihnen, die zu überwachenden Sicherheitsmechanismen sowie die Empfehlungen auszuwählen, die entsprechend den Sicherheitsanforderungen der Ressourcen im Abonnement angezeigt werden sollen.
 
 ### <a name="security-recommendations"></a>Sicherheitsempfehlungen
  Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Anhand einer Liste mit Empfehlungen werden Sie durch den Prozess des Konfigurierens der erforderlichen Sicherheitsmechanismen geführt. Beispiele:
@@ -137,7 +125,7 @@ Wenn Sie eine Warnung auswählen, werden weitere Informationen zum Angriff sowie
 ![Details der Sicherheitswarnung][8]
 
 ### <a name="partner-solutions"></a>Partnerlösungen
-Mit der Kachel **Partnerlösungen** können Sie auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind. Von den Lösungen ausgegebene Warnungen werden in Security Center angezeigt.
+Mit der Kachel **Partnerlösungen** können Sie auf einen Blick den Sicherheitsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind. Von den Lösungen ausgegebene Warnungen werden in Security Center angezeigt.
 
 Wählen Sie die Kachel **Partnerlösungen** . Ein Blatt mit einer Liste aller verbundenen Partnerlösungen wird geöffnet.
 
@@ -150,14 +138,15 @@ Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonneme
 
 [Erste Schritte mit Azure Security Center](security-center-get-started.md) werden Sie schnell durch die Komponenten zur Sicherheitsüberwachung und Richtlinienverwaltung von Security Center geführt.
 
-## <a name="see-also"></a>Siehe auch
-In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie die ersten Schritte zu seiner Nutzung vorgestellt. Weitere Informationen finden Sie in den folgenden Artikeln:
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie die ersten Schritte zu seiner Nutzung vorgestellt. Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+* [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+- [Azure Security Center-Datensicherheit:](security-center-data-security.md) Hier erfahren Sie, wie Daten in Security Center verwaltet und geschützt werden.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 

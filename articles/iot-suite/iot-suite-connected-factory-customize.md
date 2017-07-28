@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4e466f34880bf6ffce5012353f539ee93160892b
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: ec4b2808e6984821200be182183e53b69887b912
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="introduction"></a>Einführung
 
-Die verbundene Werkslösung aggregiert und zeigt Daten von OPC UA-Servern, die mit der Lösung verbunden sind. Sie können in Ihrer Lösung zu den OPC UA-Servern navigieren und Befehle an diese senden.
+Die verbundene Werkslösung aggregiert und zeigt Daten von OPC UA-Servern, die mit der Lösung verbunden sind. Sie können in Ihrer Lösung zu den OPC UA-Servern navigieren und Befehle an diese senden. Weitere Informationen zu OPC UA finden Sie in den [FAQ][lnk-faq].
 
 Beispiele für aggregierte Daten in der Lösung sind die anlagenübergreifende Effizienz (Overall Equipment Efficiency, OEE) und Leistungsindikatoren (Key Performance Indicators, KPIs), die Sie im Dashboard auf Werks-, Fertigungsstraßen- und Stationsebene anzeigen können. Der folgende Screenshot zeigt die OEE- und KPI-Werte für die Station **Montage** in der **Fertigungsstraße 1** im Werk **München**:
 
@@ -173,8 +173,8 @@ Das Repository **azure-iot-connected-factory** enthält das PowerShell-Skript **
 
 In den folgenden Artikeln erfahren Sie mehr über die verbundene vorkonfigurierte Werkslösung:
 
-* [Vorkonfigurierte verbundene Werkslösung: Exemplarische Vorgehensweise][lnk-rm-walkthrough]
-* [Verbinden Ihres Geräts mit der vorkonfigurierten verbundenen Werkslösung][lnk-connect-cf]
+* [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise][lnk-rm-walkthrough]
+* [Bereitstellen eines Gateways für verbundene Factorys][lnk-connect-cf]
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 * [Häufig gestellte Fragen][lnk-faq]
 
@@ -188,7 +188,7 @@ In den folgenden Artikeln erfahren Sie mehr über die verbundene vorkonfiguriert
 [img-server-uris]: ./media/iot-suite-connected-factory-customize/serveruris.png
 [lnk-kpi]: ./media/iot-suite-connected-factory-customize/kpidisplay.png
 
-[lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
+[lnk-rm-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [lnk-connect-cf]: iot-suite-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-faq]: iot-suite-faq.md

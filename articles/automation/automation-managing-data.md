@@ -3,7 +3,7 @@ title: Verwalten von Azure Automation-Daten | Microsoft Docs
 description: "Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.  Er enthält derzeit die Themen &quot;Datenaufbewahrung&quot;, &quot;Sichern von Azure Automation&quot; und &quot;Notfallwiederherstellung in Azure Automation&quot;."
 services: automation
 documentationcenter: 
-author: SnehaGunda
+author: mgoedtel
 manager: stevenka
 editor: tysonn
 ms.assetid: 2896f129-82e3-43ce-b9ee-a3860be0423a
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2016
-ms.author: bwren;sngun
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8ac93de19685c11dd25fd746e69ba1066fb35af
+ms.date: 06/02/201
+ms.author: magoedte;bwren;sngun
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 92893edc4e02de148f6585e83c6861fd751401bb
+ms.contentlocale: de-de
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -42,6 +44,8 @@ Die folgende Tabelle zeigt die Aufbewahrungsrichtlinie für unterschiedliche Res
 | Knotenberichte |90 Tage nach dem Generieren eines neuen Berichts für diesen Knoten dauerhaft entfernt |
 
 Die Datenaufbewahrungsrichtlinie gilt für alle Benutzer und kann zurzeit nicht angepasst werden.
+
+Wenn Sie jedoch Daten für einen längeren Zeitraum beibehalten möchten, können Sie Runbook-Auftragsprotokolle zu Log Analytics weiterleiten.  Weitere Informationen finden Sie unter [Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)](automation-manage-send-joblogs-log-analytics.md).   
 
 ## <a name="backing-up-azure-automation"></a>Sichern von Azure Automation
 Wenn Sie ein Automation-Konto in Microsoft Azure löschen, werden alle Objekte im Konto gelöscht – darunter Runbooks, Module, Konfigurationen, Einstellungen, Aufträge und Assets. Die Objekte können nicht wiederhergestellt werden, nachdem das Konto gelöscht wurde.  Sie können die Inhalte Ihres Automation-Kontos mithilfe der folgenden Informationen sichern, bevor Sie das Konto löschen. 
@@ -78,10 +82,5 @@ In der folgenden Tabelle werden die verfügbaren Paare primärer und sekundärer
 | Japan Ost |Japan (Westen) |
 
 Microsoft versucht im unwahrscheinlichen Fall, dass Daten der primären Region verloren gehen, diese wiederherzustellen. Wenn die Daten der primären Region nicht wiederhergestellt werden können, erfolgt ein Geofailover, über das die betroffenen Kunden durch ihr Abonnement benachrichtigt werden.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

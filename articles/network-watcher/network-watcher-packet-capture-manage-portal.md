@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 858769130eed5c996bca151855bfc09d4832a314
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 33390532cc4fc1129a4f960d589f41bc95e5a1ff
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/15/2017
 
 ---
 
@@ -88,7 +88,7 @@ Folgende Eigenschaften können für eine Paketerfassung definiert werden:
 - **Lokaler Dateipfad**: Der lokale Dateipfad auf einem virtuellen Computer zum Speichern der Paketerfassung. (Nur aktiviert, wenn **Datei** ausgewählt ist.) Ein gültiger Pfad muss angegeben werden.
 - **Maximale Anzahl von Bytes pro Paket**: Die Anzahl von Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
 - **Maximale Anzahl von Bytes pro Sitzung:** Die Gesamtanzahl der erfassten Bytes. Nachdem der Wert erreicht wurde, wird die Paketerfassung beendet.
-- **Zeitlimit (Sekunden)**: Legt ein Zeitlimit für die Beendigung der Paketerfassung fest. Der Standardwert ist 1.800 Sekunden.
+- **Zeitlimit (Sekunden)**: Legt ein Zeitlimit für die Beendigung der Paketerfassung fest. Der Standardwert ist 18000 Sekunden.
 
 > [!NOTE]
 > Für Storage Premium-Konten wird das Speichern von Paketerfassungen derzeit nicht unterstützt.

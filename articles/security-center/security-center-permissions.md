@@ -12,11 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 06/13/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 5c4a08d96175d431e0a29dfc5927b64567c40117
-ms.openlocfilehash: d1c8a39bbcda7d22fdce08d122098e994ca87451
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 0aaa99dda44d2020afd3e841e84020eb4ff87a85
+ms.contentlocale: de-de
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -27,17 +29,29 @@ Azure Security Center verwendet die [rollenbasierte Zugriffssteuerung (Role-Base
 
 Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsprobleme und Sicherheitsrisiken zu identifizieren. In Security Center werden Ihnen nur dann Informationen zu einer Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, der eine Ressource angehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist.
 
+Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
+
+* **Benutzer mit Leseberechtigung für Sicherheitsfunktionen:** Ein Benutzer, der dieser Rolle angehört, verfügt über Anzeigerechte für Security Center. Der Benutzer kann Empfehlungen, Warnungen, Sicherheitsrichtlinien und Sicherheitszustände anzeigen, jedoch keine Änderungen vornehmen.
+* **Sicherheitsadministrator:** Ein Benutzer, der dieser Rolle angehört, hat dieselben Rechte wie der Benutzer mit Leseberechtigung für Sicherheitsfunktionen und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren und Warnungen und Empfehlungen verwerfen.
+
+> [!NOTE]
+> Die beiden Sicherheitsrollen, Benutzer mit Leseberechtigung für Sicherheitsfunktionen und Sicherheitsadministrator, haben nur Zugriff in Security Center. Die Sicherheitsrollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).
+>
+>
+
 ## <a name="roles-and-allowed-actions"></a>Rollen und zulässige Aktionen
 
 In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security Center aufgeführt. Mit „X“ wird angegeben, dass die Aktion für die jeweilige Rolle zulässig ist.
 
-| Rolle | Sicherheitsrichtlinie bearbeiten | Sicherheitsempfehlungen für eine Ressource anwenden | Warnungen warten oder verwerfen | Warnungen abonnementübergreifend anzeigen | Warnungen für eine bestimmte Ressource anzeigen |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Besitzer des Abonnements | X | X | X | X | X |
-| Mitwirkender des Abonnements | X | X | X | X | X |
-| Ressourcengruppenbesitzer | -- | X | -- | -- | X |
-| Ressourcengruppenmitwirkender | -- | X | -- | -- | X |
-| Leser | -- | -- | -- | X | X |
+| Rolle | Sicherheitsrichtlinie bearbeiten | Sicherheitsempfehlungen für eine Ressource anwenden | Warnungen und Empfehlungen verwerfen | Warnungen und Empfehlungen anzeigen |
+|:--- |:---:|:---:|:---:|:---:|
+| Besitzer des Abonnements | X | X | X | X |
+| Mitwirkender des Abonnements | X | X | X | X |
+| Ressourcengruppenbesitzer | -- | X | -- | X |
+| Ressourcengruppenmitwirkender | -- | X | -- | X |
+| Leser | -- | -- | -- | X |
+| Sicherheitsadministrator | X | -- | X | X |
+| Sicherheit lesen | -- | -- | -- | X |
 
 > [!NOTE]
 > Es empfiehlt sich, den Benutzern eine Rolle zuzuweisen, die jeweils nur so viele Berechtigungen umfasst wie für die Erfüllung ihrer Aufgaben erforderlich sind. Weisen Sie die Rolle „Leser“ etwa Benutzern zu, die nur Informationen zur Sicherheitsintegrität einer Ressource anzeigen, aber keine Aktionen durchführen müssen (also beispielsweise keine Empfehlungen umsetzen oder Richtlinien bearbeiten).
@@ -52,9 +66,4 @@ In diesem Artikel wurde beschrieben, wie Security Center die rollenbasierte Zugr
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md)
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
 - [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
