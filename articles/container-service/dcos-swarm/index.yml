@@ -1,0 +1,58 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation für Azure Container Service mit DC/OS und Swarm
+metadata:
+  document_id: null
+  title: 'Dokumentation für Azure Container Service mit DC/OS und Swarm – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  services: container-service
+  author: carolz
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07-21-2017
+  ms.author: carolz
+abstract:
+  description: 'Mit Azure Container Service können Sie schnell einen produktionsbereiten DC/OS- oder Docker Swarm-Cluster bereitstellen. Erfahren Sie anhand unserer Schnellstartanleitungen, Tutorials und Beispiele, wie Sie Azure Container Service verwenden.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie DC/OS-Cluster mithilfe von Azure Container Service bereitstellen:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: Linux
+            href: /azure/container-service/container-service-dcos-quickstart
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie Anwendungen in einem Azure Container Service-DC/OS-Cluster bereitstellen, verwalten und aktualisieren.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-service/container-service-dcos-manage-tutorial">Erstellen und Verwalten eines Azure Container Service-DC/OS-Clusters</a>
+          - html: <a href="/azure/container-service/container-service-load-balancing">Vornehmen eines Lastausgleichs für Container in einem Azure Container Service-DC/OS-Cluster</a>
+          - html: <a href="/azure/container-service/container-service-dcos-fileshare">Erstellen und Einbinden einer Dateifreigabe für einen DC/OS-Cluster</a>
+          - html: <a href="/azure/container-service/container-service-dcos-acr">Verwenden von Azure Container Registry mit einem DC/OS-Cluster zum Bereitstellen Ihrer Anwendung</a>
+  - title: Beispiele
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/container-service/cli-samples">Azure-CLI</a>
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/cli/azure/acs">Azure-CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/compute/containerservices">REST-API</a></p>

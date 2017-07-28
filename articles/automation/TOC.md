@@ -60,6 +60,7 @@
 ### [Integration der Quellcodeverwaltung mit GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md)
 ### [Integration der Quellcodeverwaltung mit VSTS](automation-scenario-source-control-integration-with-VSTS.md)
 ### [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](automation-invoke-runbook-from-omsla-alert.md)
+### [Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook](automation-deploy-template-runbook.md)
 ## Lösungen
 ### [Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md)
 ### [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)
@@ -82,7 +83,7 @@
 # Ressourcen
 ## [Einführungsvideo für Automation](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 ## [Azure Automation-Training](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Preise](https://azure.microsoft.com/pricing/details/automation/)  

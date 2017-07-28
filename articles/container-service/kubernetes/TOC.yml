@@ -1,0 +1,89 @@
+- name: ACS mit Kubernetes
+  href: ./index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Container Service
+      href: container-service-intro-kubernetes.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Kubernetes – Linux
+      href: container-service-kubernetes-walkthrough.md
+- name: Lernprogramme
+  items:
+    - name: 1. Erstellen von Containerimages
+      href: container-service-tutorial-kubernetes-prepare-app.md
+    - name: 2. Erstellen der Containerregistrierung
+      href: container-service-tutorial-kubernetes-prepare-acr.md
+    - name: 3. Erstellen des Kubernetes-Clusters
+      href: container-service-tutorial-kubernetes-deploy-cluster.md
+    - name: 4. Ausführen der Anwendung
+      href: container-service-tutorial-kubernetes-deploy-application.md
+    - name: 5. Skalieren der Anwendung
+      href: container-service-tutorial-kubernetes-scale.md
+    - name: 6. Aktualisieren der Anwendung
+      href: container-service-tutorial-kubernetes-app-update.md
+    - name: 7. Überwachen mit OMS
+      href: container-service-tutorial-kubernetes-monitor.md
+- name: Beispiele
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
+- name: Konzepte
+  items:
+    - name: Sichere Container
+      href: container-service-security.md
+    - name: Dienstprinzipal – Kubernetes
+      href: container-service-kubernetes-service-principal.md
+- name: Anleitungen
+  items:
+    - name: 'Kubernetes mit Windows: Schnellstart'
+      href: container-service-kubernetes-windows-walkthrough.md
+    - name: Containerverwaltung – Kubernetes-Benutzeroberfläche
+      href: container-service-kubernetes-ui.md
+    - name: Bereitstellen von Helm-Diagrammen
+      href: container-service-kubernetes-helm.md
+    - name: CI/CD mit Kubernetes und Jenkins
+      href: container-service-kubernetes-jenkins.md
+    - name: Verwenden von Draft mit ACR und ACS
+      href: container-service-draft-up.md
+    - name: Herstellen einer Verbindung mit ACS-Clustern
+      href: container-service-connect.md
+    - name: Skalieren eines ACS-Clusters
+      href: container-service-scale.md
+    - name: Überwachen
+      items:
+        - name: Überwachen mit Datadog
+          href: container-service-kubernetes-datadog.md
+        - name: Überwachen mit Sysdig
+          href: container-service-kubernetes-sysdig.md
+        - name: Überwachen mit CoScale
+          href: container-service-kubernetes-coscale.md
+    - name: Bereitstellen von Spring Boot-Apps
+      items:
+        - name: Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service
+          href: container-service-deploy-spring-boot-app-on-linux.md
+        - name: Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service
+          href: container-service-deploy-spring-boot-app-on-kubernetes.md
+- name: Referenz
+  items:
+    - name: Azure CLI 2.0
+      href: /cli/azure/acs
+    - name: REST
+      href: /rest/api/compute/containerservices
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Häufig gestellte Fragen
+      href: container-service-faq.md
+    - name: Vorlagen – ACS Engine
+      href: 'https://github.com/Azure/acs-engine'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

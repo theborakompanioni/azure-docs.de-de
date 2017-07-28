@@ -1,14 +1,10 @@
 # Übersicht
 ## [Was ist Azure Analysis Services?](analysis-services-overview.md)
 ## [Unterstützte Datenquellen](analysis-services-datasource.md)
-## [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md)
 
 # Schnellstarts
 ## [Erstellen eines Servers – Portal](analysis-services-create-server.md)
 ## [Bereitstellen eines Modells – SSDT](analysis-services-deploy.md)
-
-# Beispiele
-## [Analysis Services-Beispiele auf GitHub](https://github.com/Microsoft/Analysis-Services)
 
 # Lernprogramme
 ## Erstellen und Bereitstellen eines Modells
@@ -30,16 +26,20 @@
 ### [Ergänzende Lektion – Dynamische Sicherheit](tutorials/aas-supplemental-lesson-dynamic-security.md)
 ### [Ergänzende Lektion – Unregelmäßige Hierarchien](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
 
+# Konzepte
+## [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md)
+## [Hohe Verfügbarkeit](analysis-services-bcdr.md)
+
 # Vorgehensweise 
+## [Erstellen eines Modells im Azure-Portal (Vorschau)](analysis-services-create-model-portal.md)
 ## [Verwalten eines Servers](analysis-services-manage.md)
 ## [Verwalten von Datenbankbenutzern](analysis-services-database-users.md)
 ## [Verwalten von Serveradministratoren](analysis-services-server-admins.md)
-## [Integrieren des lokalen Datengateways](analysis-services-gateway.md)
+## [Installieren eines lokalen Datengateways](analysis-services-gateway.md)
 ## [Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)
 ## [Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)
 ## [Abrufen von Clientbibliotheken](analysis-services-data-providers.md)
 ## [Sichern und Wiederherstellen](analysis-services-backup.md)
-## [Hohe Verfügbarkeit](analysis-services-bcdr.md)
 ## [Erstellen einer ODC-Datei](analysis-services-odc.md)
 
 # Referenz
@@ -50,9 +50,10 @@
 ## [TMSL-Referenz (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # Ressourcen
+## [Analysis Services-Codebeispiele auf GitHub](https://github.com/Microsoft/Analysis-Services)
 ## [Teamblog zu Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
-## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Azure-Status](https://azure.microsoft.com/status/)
 ## [Feedback](https://feedback.azure.com/forums/556165-azure-analysis-services)
 ## [Preise](https://azure.microsoft.com/pricing/details/analysis-services/)
