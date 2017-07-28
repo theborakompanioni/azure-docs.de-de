@@ -102,7 +102,7 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten**, und doppelklicken Sie dann auf **Generieren von Sicherheitsüberwachungen**.
 3. Stellen Sie auf der Registerkarte **Lokale Sicherheitseinstellung** sicher, dass das AD FS-Dienstkonto aufgeführt wird. Wenn es nicht vorhanden ist, klicken Sie auf **Benutzer oder Gruppe hinzufügen** und fügen es der Liste hinzu. Klicken Sie dann auf **OK**.
 4. Öffnen Sie zum Aktivieren der Überwachung ein Eingabeaufforderungsfenster mit erweiterten Berechtigungen, und führen Sie den folgenden Befehl aus: ```auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable```.
-5. Schließen Sie **Lokale Sicherheitsrichtlinie**, und öffnen Sie dann das AD FS-Verwaltungs-Snap-In**** (klicken Sie hierzu im Server-Manager auf „Tools“, und wählen Sie dann „AD FS Management“ aus).
+5. Schließen Sie **Lokale Sicherheitsrichtlinie**, und öffnen Sie dann das AD FS-**Verwaltungs-Snap-In** (klicken Sie hierzu im Server-Manager auf „Tools“, und wählen Sie dann „AD FS Management“ aus).
 6. Klicken Sie im Bereich "Aktionen" auf **Verbunddiensteigenschaften bearbeiten**.
 7. Klicken Sie im Dialogfeld "Verbunddiensteigenschaften" auf die Registerkarte **Ereignisse** .
 8. Aktivieren Sie die Kontrollkästchen **Erfolgreiche Überprüfungen und Fehlerüberprüfungen**, und klicken Sie anschließend auf **OK**.
@@ -112,7 +112,7 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten**, und doppelklicken Sie dann auf **Generieren von Sicherheitsüberwachungen**.
 3. Vergewissern Sie sich auf der Registerkarte **Lokale Sicherheitseinstellung**, dass das AD FS-Dienstkonto aufgeführt wird. Ist es nicht vorhanden, klicken Sie auf **Benutzer oder Gruppe hinzufügen**, fügen Sie das AD FS-Dienstkonto der Liste hinzu, und klicken Sie anschließend auf **OK**.
 4. Öffnen Sie zum Aktivieren der Überwachung ein Eingabeaufforderungsfenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
-5. Schließen Sie **Lokale Sicherheitsrichtlinie**, und öffnen Sie dann das AD FS-Verwaltungs-Snap-In**** (klicken Sie hierzu im Server-Manager auf „Tools“, und wählen Sie dann „AD FS Management“ aus).
+5. Schließen Sie **Lokale Sicherheitsrichtlinie**, und öffnen Sie dann das AD FS-**Verwaltungs-Snap-In** (klicken Sie hierzu im Server-Manager auf „Tools“, und wählen Sie dann „AD FS Management“ aus).
 6. Klicken Sie im Bereich "Aktionen" auf **Verbunddiensteigenschaften bearbeiten**.
 7. Klicken Sie im Dialogfeld "Verbunddiensteigenschaften" auf die Registerkarte **Ereignisse** .
 8. Aktivieren Sie die Kontrollkästchen **Erfolgreiche Überprüfungen und Fehlerüberprüfungen**, und klicken Sie anschließend auf **OK**. Diese sollten standardmäßig aktiviert sein.
@@ -122,7 +122,7 @@ Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Inform
 
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>So ermitteln Sie die AD FS-Überwachungsprotokolle
-1. Öffnen Sie die Ereignisanzeige ****.
+1. Öffnen Sie die **Ereignisanzeige**.
 2. Wechseln Sie zu "Windows-Protokolle", und wählen Sie **Sicherheit**aus.
 3. Klicken Sie auf der rechten Seite auf **Aktuelle Protokolle filtern**.
 4. Wählen Sie unter "Ereignisquelle" die **AD FS-Überwachung**aus.
