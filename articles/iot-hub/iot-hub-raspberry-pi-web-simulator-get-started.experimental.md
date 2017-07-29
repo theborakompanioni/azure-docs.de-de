@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: Raspberry Pi-Simulator, Azure IoT Raspberry Pi, Raspberry Pi IoT Hub, Raspberry Pi sendet Daten an Cloud, Raspberry Pi in der Cloud
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started
 ms.service: iot-hub
 ms.devlang: node
 ms.topic: article

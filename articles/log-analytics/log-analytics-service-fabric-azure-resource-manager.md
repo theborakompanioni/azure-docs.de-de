@@ -20,7 +20,6 @@ ms.openlocfilehash: 6f864581fe1d1771371d6805407cb881fedb4187
 ms.contentlocale: de-de
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Bewerten von Service Fabric-Anwendungen und -Microservices über das Azure-Portal
 
@@ -78,6 +77,8 @@ Geben Sie mit den gleichen Schritten wie oben die erforderlichen Parameter ein, 
 ### <a name="viewing-performance-data"></a>Anzeigen von Leistungsdaten
 So zeigen Sie die Leistungsdaten der Knoten an:
 </br>
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 * Starten Sie im Azure-Portal den Log Analytics-Arbeitsbereich.
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: 90d0b7e3f49daa33ab8c617d07ba9098cdda751f
 ms.contentlocale: de-de
 ms.lasthandoff: 05/12/2017
 
-
 ---
 
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Anzeigen von Analysedaten für Metriken über alle Azure-Web-App-Ressourcen
@@ -92,6 +91,8 @@ Wenn Sie die Lösung Azure-Web-Apps-Analyse Ihrem Arbeitsbereich hinzufügen, wi
 ### <a name="view-azure-web-apps-analytics-information"></a>Anzeigen von Informationen aus Azure-Web-Apps-Analyse
 
 Klicken Sie auf die Kachel **Azure-Web-Apps-Analyse**, um das Dashboard **Azure-Web-Apps-Analyse** zu öffnen. Das Dashboard enthält die Blätter, die in der folgenden Tabelle angegeben sind. Auf jedem Blatt sind bis zu zehn Einträge aufgeführt, die die Kriterien des Blatts für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, indem Sie unten auf dem Blatt auf **Alle anzeigen** oder auf die Blattüberschrift klicken.
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | Column | Beschreibung |
 | --- | --- |

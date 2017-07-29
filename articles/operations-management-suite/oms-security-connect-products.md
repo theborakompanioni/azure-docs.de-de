@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 07/18/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
 ms.openlocfilehash: 5cb5c6b6cc047974013df59d615d4f094d8d60a4
+ms.contentlocale: de-de
 ms.lasthandoff: 12/06/2016
-
 
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Verbinden Ihrer Sicherheitsprodukte mit der Sicherheits- und Überwachungslösung der Operations Management Suite (OMS) 
@@ -90,11 +90,13 @@ Auf dem Agent-Computer müssen die Ereignisse vom Syslog-Daemon an den lokalen U
     ```
 6. Geben Sie den folgenden Befehl ein, und prüfen Sie das Ergebnis, um sicherzustellen, dass im OMS-Agent-Protokoll keine Fehler enthalten sind:
 
-    ```    
+    ``` 
     tail /var/opt/microsoft/omsagent/log/omsagent.log
     ```
 
 ## <a name="reviewing-collected-security-events"></a>Überprüfen der gesammelten Sicherheitsereignisse
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 Nachdem die Konfiguration abgeschlossen ist, beginnt die Erfassung des Sicherheitsereignisses durch die OMS-Sicherheit. Öffnen Sie zum Visualisieren dieser Ereignisse die Protokollsuche, geben Sie im Suchfeld den Befehl *Type=CommonSecurityLog* ein, und drücken Sie die EINGABETASTE. Im folgenden Beispiel wird das Ergebnis dieses Befehls veranschaulicht. Beachten Sie, dass die OMS-Sicherheit in diesem Fall bereits Sicherheitsprotokolle von mehreren Anbietern erfasst hat:
    
