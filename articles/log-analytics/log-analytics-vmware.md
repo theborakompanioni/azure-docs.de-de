@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 07/18/2017
 ms.author: banders
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
@@ -151,7 +151,10 @@ Wenn Sie zusätzliche Daten zur VM-Erstellung auf einem ESXi-Host anzeigen möch
 #### <a name="common-search-queries"></a>Allgemeine Suchabfragen
 Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer ESXi-Hosts unterstützen, z.B. hoher Speicherplatzbedarf, Speicherlatenz und Pfadfehler.
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 ![Abfragen](./media/log-analytics-vmware/queries.png)
+
 
 #### <a name="save-queries"></a>Speichern von Abfragen
 Das Speichern von Suchabfragen ist ein Standardfeature in OMS und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](log-analytics-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.

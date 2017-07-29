@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/18/2017
 ms.author: banders
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 297c85d2aa5609729e394dc527fb3a1ca5810ffa
 ms.contentlocale: de-de
 ms.lasthandoff: 06/30/2017
-
 
 ---
 
@@ -86,6 +85,8 @@ Klicken Sie auf die Kachel **Application Insights**, um das **Application Insigh
 ![Application Insights-Dashboard](./media/log-analytics-app-insights-connector/app-insights-dash02.png)
 
 Das Dashboard enthält die in der Tabelle aufgeführten Blätter. Auf jedem Blatt sind bis zu 10 Einträge aufgeführt, die die Kriterien des Blatts für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, wenn Sie unten auf dem Blatt auf **Alle anzeigen** oder auf die Blattüberschrift klicken.
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **Spalte** | **Beschreibung** |
 | --- | --- |

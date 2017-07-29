@@ -20,7 +20,6 @@ ms.openlocfilehash: 1b2f9c3fc59a83b384a63db00d2d039cab8679e8
 ms.contentlocale: de-de
 ms.lasthandoff: 06/09/2017
 
-
 ---
 
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
@@ -147,6 +146,8 @@ Mit den Informationen können Sie Folgendes identifizieren:
 ![Blatt „Anforderungen zur Namensregistrierung“ ](./media/log-analytics-dns/name-reg-req-blade.png)
 
 **DDI Analytics-Beispielabfragen**. Enthält eine Liste der am häufigsten verwendeten Suchabfragen, mit denen unformatierte Analysedaten direkt abgerufen werden.
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Beispielabfragen](./media/log-analytics-dns/queries.png)
 
