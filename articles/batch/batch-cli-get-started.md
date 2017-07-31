@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 05/11/2017
+ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a818a41e2e11926c2dee27e081ae8ffc0a4a6298
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 9bee0344ba70c50cda36a87ea617906283040ff9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
@@ -78,7 +77,7 @@ Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azu
 az login
 ```
 
-Der `az login`-Befehl gibt, wie hier gezeigt, ein Token zurück, das Sie zur Authentifizierung verwenden. Befolgen Sie die bereitgestellten Anweisungen, um eine Webseite zu öffnen und das Token an Azure zu senden:
+Der Befehl `az login` gibt, wie hier gezeigt, ein Token zurück, das Sie zur Authentifizierung verwenden. Befolgen Sie die bereitgestellten Anweisungen, um eine Webseite zu öffnen und das Token an Azure zu senden:
 
 ![Anmelden an Azure](./media/batch-cli-get-started/az-login.png)
 
@@ -119,6 +118,10 @@ Für die Authentifizierung bei Ihrem Batch-Konto stehen Ihnen zwei Optionen zur 
     ```
 
 Die im Abschnitt [Beispielskripts für die Shell](#sample-shell-scripts) aufgeführten Beispiele zeigen, wie Sie sowohl Azure AD als auch einen gemeinsam verwendeten Schlüssel verwenden, um sich über die Azure CLI bei Ihrem Batch-Konto anzumelden.
+
+## <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)
+
+Mit der Azure-Befehlszeilenschnittstelle können Sie vollständige Batch-Aufträge ausführen, ohne Code zu schreiben. Batch-Vorlagendateien unterstützen die Erstellung von Pools, Aufträgen und Aufgaben über die Azure-Befehlszeilenschnittstelle. Sie können die Azure-Befehlszeilenschnittstelle auch verwenden, um Auftragseingabedateien in das dem Batch-Konto zugeordnete Azure Storage-Konto hochzuladen und Auftragsausgabedateien daraus herunterzuladen. Weitere Informationen finden Sie unter [Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)](batch-cli-templates.md).
 
 ## <a name="sample-shell-scripts"></a>Beispielskripts für die Shell
 
@@ -187,7 +190,7 @@ Die folgenden Hinweise können beim Beheben von Problemen mit der Azure CLI helf
 
 * Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/overview).
 * Weitere Informationen zu Batch-Ressourcen finden Sie in der [Übersicht über Azure Batch für Entwickler](batch-api-basics.md).
-* Unter [Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen](batch-application-packages.md) erfahren Sie, wie Sie dieses Feature zum Verwalten und Bereitstellen der auf Batch-Computeknoten ausgeführten Anwendungen verwenden.
+* Weitere Informationen dazu, wie Sie mithilfe von Batch-Vorlagen Pools, Aufträge und Aufgaben ohne Programmieraufwand erstellen, finden Sie unter [Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung (Vorschau)](batch-cli-templates.md).
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md

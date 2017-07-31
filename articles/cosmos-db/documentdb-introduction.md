@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 79156c0b511dafcb43ed91800f01338dbb7ee5f3
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: dba483c21afc46b1b9f0a74ebfb24ed644080e09
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Einführung in Azure Cosmos DB: DocumentDB-API
@@ -51,7 +50,7 @@ Azure Cosmos DB verfügt über die DocumentDB-API über die folgenden wichtigen 
 * **Automatische Indizierung**: Alle Dokumente in der Datenbank werden von Azure Cosmos DB automatisch indiziert, ohne dass ein Schema oder die Erstellung sekundärer Indizes erwartet oder angefordert wird. Ist keine Indizierung aller Elemente gewünscht? Keine Sorge. Sie können [in Ihren JSON-Dateien auch Pfade ausschließen](indexing-policies.md).
 
 ## <a name="data-management"></a>Wie verwalten Sie Daten mit der DocumentDB-API?
-Die DocumentDB-API ermöglicht die Verwaltung von JSON-Daten mit klar definierten Datenbankressourcen. Diese Ressourcen werden werden repliziert, um Hochverfügbarkeit zu bieten, und sind anhand ihres logischen URI eindeutig adressierbar. DocumentDB bietet ein einfaches HTTP-basiertes RESTful-Programmiermodell für alle Ressourcen. 
+Die DocumentDB-API ermöglicht die Verwaltung von JSON-Daten mit klar definierten Datenbankressourcen. Diese Ressourcen werden werden repliziert, um Hochverfügbarkeit zu bieten, und sind anhand ihres logischen URI eindeutig adressierbar. Die DocumentDB-API bietet ein einfaches HTTP-basiertes RESTful-Programmiermodell für alle Ressourcen. 
 
 
 Ein Azure Cosmos DB-Datenbankkonto ist ein eindeutiger Namespace, über den Sie Zugriff auf Azure Cosmos DB erhalten. Um ein Datenbankkonto erstellen zu können, müssen Sie über ein Azure-Abonnement verfügen. Dadurch erhalten Sie Zugriff auf eine Vielzahl von Azure-Diensten. 
@@ -87,16 +86,16 @@ Durch Verwendung des [Azure Cosmos DB-Emulators](local-emulator.md) können Sie 
 Abgesehen von den grundlegenden Erstellungs-, Lese-, Aktualisierungs- und Löschvorgängen bietet die DocumentDB-API eine funktionsreiche SQL-Abfrageschnittstelle für den Abruf von JSON-Dokumenten und serverseitige Unterstützung für die transaktionale Ausführung von JavaScript-Anwendungslogik. Die Schnittstellen für die Abfrage- und Skriptausführung sind über alle Plattformbibliotheken verfügbar. Gleiches gilt für die REST-APIs. 
 
 ### <a name="sql-query"></a>SQL-Abfrage
-Die DocumentDB-API unterstützt die Abfrage von Dokumenten mithilfe einer SQL-Sprache, die im JavaScript-Typsystem verankert ist, sowie mithilfe von Ausdrücken, die relationale, hierarchische und räumliche Abfragen unterstützen. Die DocumentDB-Abfragesprache ist eine einfache und dennoch effektive Schnittstelle für die Abfrage von JSON-Dokumenten. Die Sprache unterstützt einen Teil der ANSI SQL-Grammatik und sorgt für eine enge Integration von JavaScript-basierten Objekt-, Array-, Objektkonstruktions- und Funktionsaufrufen. DocumentDB stellt sein Abfragemodell ohne explizite Schema- oder Indizierungshinweise vom Entwickler bereit.
+Die DocumentDB-API unterstützt die Abfrage von Dokumenten mithilfe einer SQL-Sprache, die im JavaScript-Typsystem verankert ist, sowie mithilfe von Ausdrücken, die relationale, hierarchische und räumliche Abfragen unterstützen. Die DocumentDB-Abfragesprache ist eine einfache und dennoch effektive Schnittstelle für die Abfrage von JSON-Dokumenten. Die Sprache unterstützt einen Teil der ANSI SQL-Grammatik und sorgt für eine enge Integration von JavaScript-basierten Objekt-, Array-, Objektkonstruktions- und Funktionsaufrufen. Die DocumentDB-API stellt ihr Abfragemodell ohne explizite Schema- oder Indizierungshinweise des Entwicklers bereit.
 
 Benutzerdefinierte Funktionen (UDFs) können mit der DocumentDB-API registriert und als Teil einer SQL-Abfrage referenziert werden, um so die Grammatik zu erweitern und die benutzerdefinierte Anwendungslogik zu unterstützen. Diese UDFs werden als JavaScript-Programme programmiert und in der Datenbank ausgeführt. 
 
-Für .NET-Entwickler wird vom DocumentDB [.NET-SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) auch ein LINQ-Abfrageanbieter bereitgestellt. 
+Für .NET-Entwickler wird vom [.NET-SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) der DocumentDB-API auch ein LINQ-Abfrageanbieter bereitgestellt. 
 
 ### <a name="transactions-and-javascript-execution"></a>Transaktionen und JavaScript-Ausführung
 Die DocumentDB-API ermöglicht es Ihnen, Anwendungslogik als festgelegte Programme zu programmieren, die vollständig in JavaScript verfasst sind. Diese Programme werden für eine Auflistung registriert und unterstützen die Ausführung von Datenbankvorgängen in einer gegebenen Auflistung. JavaScript kann für die Ausführung als Trigger, gespeicherte Prozedur oder UDF registriert werden. Trigger und gespeicherte Prozeduren können Dokumente erstellen, lesen, aktualisieren und löschen. UDFs hingegen werden ohne Schreibzugriff auf die Auflistung als Teil der Abfrageausführung ausgeführt.
 
-Die JavaScript-Ausführung in der DocumentDB-API wurde basierend auf den gleichen Konzepten wie relationale Datenbanksysteme modelliert. JavaScript dient dabei als moderner Ersatz für Transact-SQL. Sämtliche JavaScript-Logik wird innerhalb einer umgebenden ACI-Transaktion mit Snapshotisolation ausgeführt. Während des Ausführungsverlaufs wird die gesamte Transaktion abgebrochen, wenn JavaScript eine Ausnahme auslöst.
+Die JavaScript-Ausführung in der Cosmos-Datenbank wurde anhand der gleichen Konzepte modelliert wie relationale Datenbanksysteme. JavaScript dient dabei als moderner Ersatz für Transact-SQL. Sämtliche JavaScript-Logik wird innerhalb einer umgebenden ACI-Transaktion mit Snapshotisolation ausgeführt. Während des Ausführungsverlaufs wird die gesamte Transaktion abgebrochen, wenn JavaScript eine Ausnahme auslöst.
 
 ## <a name="are-there-any-online-courses-on-azure-cosmos-db"></a>Sind Onlinekurse zu Azure Cosmos DB verfügbar?
 

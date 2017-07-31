@@ -6,7 +6,7 @@
 
 | Verteilung | Treiber |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>7.3 (CentOS-basiert) | NVIDIA GID 4.2, Treiberbranch R367|
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>7.3 (CentOS-basiert) | NVIDIA GRID 4.3, Treiberbranch R367|
 
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC-Instanzen – NVIDIA Tesla-Treiber
 | Verteilung | Treiber |

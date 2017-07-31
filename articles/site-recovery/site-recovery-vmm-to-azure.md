@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 475b0cea9be58c9b6fa13645e3c19cc3b689aab2
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 8a03e28045019a4beb423d95a4fa00637cd66294
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds in Azure per Site Recovery im Azure-Portal
@@ -164,6 +164,11 @@ Installieren Sie den Azure Site Recovery-Anbieter auf dem VMM-Server, und regist
 
      ![Internet](./media/site-recovery-vmm-to-azure/provider13.PNG)
 7. Akzeptieren oder ändern Sie den Speicherort eines SSL-Zertifikats, das für die Datenverschlüsselung automatisch generiert wird. Dieses Zertifikat wird verwendet, wenn Sie Datenverschlüsselung für eine Cloud im Azure Site Recovery-Portal aktivieren. Bewahren Sie dieses Zertifikat sicher auf. Wenn Sie ein Failover zu Azure ausführen, benötigen Sie es für die Entschlüsselung, falls die Datenverschlüsselung aktiviert ist.
+
+    > [!NOTE]
+    > Es empfiehlt sich, für die Verschlüsselung ruhender Daten nicht die Datenverschlüsselungsoption von Azure Site Recovery zu verwenden, sondern die Verschlüsselungsfunktion von Azure. Die Verschlüsselungsfunktion von Azure kann für ein Speicherkonto aktiviert werden und bietet eine bessere Leistung, da Verschlüsselung und Entschlüsselung von Azure Storage durchgeführt werden.
+    > Weitere Informationen zur Verschlüsselung des Storage-Diensts von Azure finden Sie [hier](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
+    
 8. Geben Sie unter **Servername**einen Anzeigenamen ein, um den VMM-Server im Tresor zu identifizieren. Geben Sie in einer Clusterkonfiguration den Rollennamen des VMM-Clusters an.
 9. Aktivieren Sie die Option **Cloudmetadaten synchronisieren**, wenn Metadaten für alle Clouds auf dem VMM-Server mit dem Tresor synchronisiert werden sollen. Diese Aktion muss für jeden VMM-Server nur einmal ausgeführt werden. Wenn Sie nicht alle Clouds synchronisieren möchten, können Sie diese Einstellung deaktiviert lassen und in den Cloudeigenschaften in der VMM-Konsole jede Cloud einzeln synchronisieren. Klicken Sie auf **Registrieren** , um den Prozess abzuschließen.
 
@@ -425,6 +430,12 @@ Hierbei gilt:
 * **/Credentials**: erforderlicher Parameter zum Angeben des Speicherorts der Registrierungsschlüsseldatei.  
 * **/FriendlyName**: erforderlicher Parameter für den Namen des Hyper-V-Hostservers, der im Azure Site Recovery-Portal angezeigt wird.
 * * **/EncryptionEnabled**: optionaler Parameter beim Replizieren von Hyper-V-VMs in VMM-Clouds in Azure. Geben Sie an, ob Sie virtuelle Computer in Azure verschlüsseln möchten (Verschlüsselung im ruhenden Zustand). Stellen Sie sicher, dass der Dateiname über die Erweiterung **.pfx** verfügt. Die Verschlüsselung ist standardmäßig deaktiviert.
+
+    > [!NOTE]
+    > Es empfiehlt sich, für die Verschlüsselung ruhender Daten nicht die Verschlüsselungsoption (EncryptionEnabled) von Azure Site Recovery zu verwenden, sondern die Verschlüsselungsfunktion von Azure. Die Verschlüsselungsfunktion von Azure kann für ein Speicherkonto aktiviert werden und bietet eine bessere Leistung, da Verschlüsselung und Entschlüsselung von Azure  
+    > Storage durchgeführt werden.
+    > Weitere Informationen zur Verschlüsselung des Storage-Diensts in Azure finden Sie [hier](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
+    
 * **/proxyAddress**: optionaler Parameter, der die Adresse des Proxyservers angibt.
 * **/proxyport**: optionaler Parameter, der den Port des Proxyservers angibt.
 * **/proxyUsername**: optionaler Parameter, der den Proxybenutzernamen angibt (sofern für den Proxy eine Authentifizierung erforderlich ist).

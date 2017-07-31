@@ -1,6 +1,6 @@
-## <a name="extended-iot-scenarios-use-other-azure-services-and-tools"></a>Erweiterte IoT-Szenarien: Verwenden anderer Azure-Dienste und -Tools
+## <a name="extended-iot-scenarios"></a>Erweiterte IoT-Szenarien
 
-Wenn Sie Ihr Gerät mit IoT Hub verbunden haben, können Sie zusätzliche Szenarien erkunden, in denen andere Azure-Tools und -Dienste verwendet werden:
+Verwenden Sie andere Azure-Dienste und -Tools. Wenn Sie Ihr Gerät mit IoT Hub verbunden haben, können Sie zusätzliche Szenarien erkunden, in denen andere Azure-Tools und -Dienste verwendet werden:
 
 | Szenario                                                   | Azure-Dienst oder -Tool              |
 |----------------------------------------------------------- |------------------------------------|

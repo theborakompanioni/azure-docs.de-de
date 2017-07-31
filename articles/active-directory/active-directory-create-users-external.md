@@ -12,24 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2017
+ms.date: 07/25/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 661470454775d43ce88410a6c995bbcc5e06264c
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 399230584d01986dd0f793a6ff8245ef2b4f8fb1
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Hinzufügen von Benutzern aus anderen Verzeichnissen oder Partnerunternehmen zu Azure Active Directory
-> [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-users-create-external-azure-portal.md )
-> * [Klassisches Azure-Portal](active-directory-create-users-external.md)
->
->
 
-In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen in Azure Active Directory sowie Benutzer von Partnerunternehmen hinzufügen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation sowie Benutzer mit Microsoft-Konten hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-create-users.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
+In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen in Azure Active Directory sowie Benutzer von Partnerunternehmen hinzufügen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation sowie Benutzer mit Microsoft-Konten hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-create-users.md). 
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Informationen zum Hinzufügen von Gastbenutzern für B2B-Zusammenarbeit im Azure AD Admin Center finden Sie unter [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md).
+
+Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
 
 ## <a name="add-a-user"></a>Hinzufügen eines Benutzers
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) mit einem Konto an, bei dem es sich um einen globalen Administrator für das Verzeichnis handelt.

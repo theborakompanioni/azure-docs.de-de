@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 16fdd3aafef1a50554932a0e7843d347182c9b6a
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: bae2e9825bf158bb015ec0affa56f15ce5baa201
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
 # <a name="introduction-to-azure-file-storage"></a>Einführung in Azure File Storage
-Azure File Storage bietet Netzwerkdateifreigaben in der Cloud mit dem branchenüblichen [SMB-Protokoll (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) und [(Samba/CIFS (Common Internet File System)](https://technet.microsoft.com/library/cc939973.aspx). Azure-Dateifreigaben können von Clients (beispielsweise lokale Bereitstellungen von Windows, macOS oder Linux) oder von virtuellen Azure-Computern parallel eingebunden werden. Ein allgemeines Speicherkonto bietet Zugriff auf Azure File Storage und andere Dienste wie Blobs, Datenträger von virtuellen Azure-Computern und Warteschlangen unter einem einzelnen Konto.
+Azure File Storage bietet Netzwerkdateifreigaben in der Cloud mit dem branchenüblichen [SMB-Protokoll (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) und [CIFS (Common Internet File System)](https://technet.microsoft.com/library/cc939973.aspx). Azure-Dateifreigaben können von Clients (beispielsweise lokale Bereitstellungen von Windows, macOS oder Linux) oder von virtuellen Azure-Computern parallel eingebunden werden. Ein allgemeines Speicherkonto bietet Zugriff auf Azure File Storage und andere Dienste wie Blobs, Datenträger von virtuellen Azure-Computern und Warteschlangen unter einem einzelnen Konto.
 
 
 

@@ -2,35 +2,31 @@
 title: Senden von Ereignissen an die Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
 description: "In diesem Tutorial erfahren Sie, wie Sie Ereignisse mithilfe von Push an die Time Series Insights-Umgebung übertragen."
 keywords: 
-services: time-series-insights
+services: tsi
 documentationcenter: 
 author: venkatgct
-manager: almineev
-editor: cgronlun
+manager: jhubbard
+editor: 
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 07/21/2017
 ms.author: venkatja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 9f2d3b57a42efb7b04566278d3267b3cdbed713a
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
 ms.contentlocale: de-de
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/24/2017
 
 ---
-<a id="send-events-to-a-time-series-insights-environment-via-event-hub" class="xliff"></a>
-
-# Senden von Ereignissen an die Azure Time Series Insights-Umgebung per Event Hub
+# <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe von Event Hub
 
 In diesem Tutorial wird erläutert, wie Sie Event Hub erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, sehen Sie sich Ihre Umgebung in [Time Series Insights](https://insights.timeseries.azure.com) an.
 
-<a id="configure-an-event-hub" class="xliff"></a>
-
-## Konfigurieren eines Event Hubs
+## <a name="configure-an-event-hub"></a>Konfigurieren eines Event Hubs
 1. Führen Sie zum Erstellen eines Event Hubs die in der [Event Hub-Dokumentation](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) beschriebenen Schritte aus.
 
 2. Erstellen Sie eine Consumergruppe, die ausschließlich von Ihrer Time Series Insights-Ereignisquelle verwendet wird.
@@ -46,18 +42,14 @@ In diesem Tutorial wird erläutert, wie Sie Event Hub erstellen und konfiguriere
 
   ![Hinzufügen der neuen SAS-Richtlinie](media/send-events/shared-access-policy-2.png)  
 
-<a id="create-time-series-insights-event-source" class="xliff"></a>
+## <a name="create-time-series-insights-event-source"></a>Erstellen der Time Series Insights-Ereignisquelle
+1. Falls Sie noch keine Ereignisquelle erstellt haben, führen Sie [diese Schritte](time-series-insights-add-event-source.md) aus.
 
-## Erstellen der Time Series Insights-Ereignisquelle
-1. Falls Sie noch keine Ereignisquelle erstellt haben, führen Sie die Schritte in [dieser Anleitung](time-series-insights-add-event-source.md) aus.
-
-2. Geben Sie „deviceTimestamp“ als Name der timestamp-Eigenschaft an. Diese Eigenschaft wird im CSharp-Beispiel als tatsächlicher Zeitstempel verwendet. Bei der timestamp-Eigenschaft muss die Groß-/Kleinschreibung beachtet werden, und Werte müssen das Format __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ besitzen, wenn sie als JSON an Event Hub gesendet werden. Sollte die Eigenschaft im Ereignis nicht vorhanden sein, wird der Zeitpunkt verwendet, zu dem der Event Hub in die Warteschlange eingereiht wurde.
+2. Geben Sie „deviceTimestamp“ als Name der timestamp-Eigenschaft an. Diese Eigenschaft wird im CSharp-Beispiel als tatsächlicher Zeitstempel verwendet. Bei der timestamp-Eigenschaft muss die Groß-/Kleinschreibung beachtet werden, und Werte müssen das Format __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ besitzen, wenn sie als JSON-Code an Event Hub gesendet werden. Sollte die Eigenschaft im Ereignis nicht vorhanden sein, wird der Zeitpunkt verwendet, zu dem der Event Hub in die Warteschlange eingereiht wurde.
 
   ![Erstellen der Ereignisquelle](media/send-events/event-source-1.png)
 
-<a id="sample-code-to-push-events" class="xliff"></a>
-
-## Beispielcode zum Übertragen von Ereignissen mithilfe von Push
+## <a name="sample-code-to-push-events"></a>Beispielcode zum Übertragen von Ereignissen mithilfe von Push
 1. Navigieren Sie zur Event Hub-Richtlinie „MySendPolicy“, und kopieren Sie die Verbindungszeichenfolge mit dem Richtlinienschlüssel.
 
   ![Kopieren der MySendPolicy-Verbindungszeichenfolge](media/send-events/sample-code-connection-string.png)
@@ -131,16 +123,10 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-<a id="supported-json-shapes" class="xliff"></a>
+## <a name="supported-json-shapes"></a>Unterstützte JSON-Formen
+### <a name="sample-1"></a>Beispiel 1
 
-## Unterstützte JSON-Formen
-<a id="sample-1" class="xliff"></a>
-
-### Beispiel 1
-
-<a id="input" class="xliff"></a>
-
-#### Eingabe
+#### <a name="input"></a>Eingabe
 
 Ein einfaches JSON-Objekt.
 
@@ -150,21 +136,15 @@ Ein einfaches JSON-Objekt.
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-<a id="output---1-event" class="xliff"></a>
-
-#### Ausgabe: ein Ereignis
+#### <a name="output---1-event"></a>Ausgabe: ein Ereignis
 
 |id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 
-<a id="sample-2" class="xliff"></a>
+### <a name="sample-2"></a>Beispiel 2
 
-### Beispiel 2
-
-<a id="input" class="xliff"></a>
-
-#### Eingabe
+#### <a name="input"></a>Eingabe
 Ein JSON-Array mit zwei JSON-Objekten. Jedes JSON-Objekt wird in ein Ereignis konvertiert.
 ```json
 [
@@ -178,21 +158,15 @@ Ein JSON-Array mit zwei JSON-Objekten. Jedes JSON-Objekt wird in ein Ereignis ko
     }
 ]
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### Ausgabe: zwei Ereignisse
+#### <a name="output---2-events"></a>Ausgabe: zwei Ereignisse
 
 |id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
-<a id="sample-3" class="xliff"></a>
+### <a name="sample-3"></a>Beispiel 3
 
-### Beispiel 3
-
-<a id="input" class="xliff"></a>
-
-#### Eingabe
+#### <a name="input"></a>Eingabe
 
 Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enthält.
 ```json
@@ -211,9 +185,7 @@ Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enth�
 }
 
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### Ausgabe: zwei Ereignisse
+#### <a name="output---2-events"></a>Ausgabe: zwei Ereignisse
 Beachten Sie, dass die location-Eigenschaft in die einzelnen Ereignisse kopiert wird.
 
 |location|events.id|events.timestamp|
@@ -221,13 +193,9 @@ Beachten Sie, dass die location-Eigenschaft in die einzelnen Ereignisse kopiert 
 |WestUs|device1|2016-01-08T01:08:00Z|
 |WestUs|device2|2016-01-08T01:17:00Z|
 
-<a id="sample-4" class="xliff"></a>
+### <a name="sample-4"></a>Beispiel 4
 
-### Beispiel 4
-
-<a id="input" class="xliff"></a>
-
-#### Eingabe
+#### <a name="input"></a>Eingabe
 
 Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enthält. Diese Eingabe zeigt, dass die globalen Eigenschaften vom komplexen JSON-Objekt dargestellt werden können.
 
@@ -260,18 +228,14 @@ Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enth�
     ]
 }
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### Ausgabe: zwei Ereignisse
+#### <a name="output---2-events"></a>Ausgabe: zwei Ereignisse
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 * Anzeigen Ihrer Umgebung im [Time Series Insights-Portal](https://insights.timeseries.azure.com)
 

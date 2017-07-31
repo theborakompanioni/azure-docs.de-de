@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 29e8639a6f1f0c2733d24dda78975ea7cfb6107a
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: d66dece63d2ba944c8f3828ba68c6202485d47e0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Was sind vorkonfigurierte Azure IoT Suite-Lösungen?
+
 Bei den vorkonfigurierten Azure IoT Suite-Lösungen handelt es sich um Implementierungen allgemeiner IoT-Lösungsmuster, die Sie in Azure mit Ihrem Abonnement bereitstellen können. Sie können vorkonfigurierte Lösungen für Folgendes verwenden:
 
 * Als Ausgangspunkt für eigene IoT-Lösungen.
@@ -31,12 +31,10 @@ Bei den vorkonfigurierten Azure IoT Suite-Lösungen handelt es sich um Implement
 
 Bei jeder vorkonfigurierten Lösung handelt es sich um eine vollständige End-to-End-Implementierung, bei der simulierte Geräte zum Generieren von Telemetriedaten verwendet werden.
 
-Sie können nicht nur die Lösungen in Azure bereitstellen und ausführen, sondern auch den kompletten Quellcode herunterladen und die Lösung dann gemäß Ihren speziellen IoT-Anforderungen anpassen und erweitern.
+Sie können den vollständigen Quellcode herunterladen und die Lösung gemäß Ihren individuellen IoT-Anforderungen anpassen und erweitern.
 
 > [!NOTE]
 > Informationen zum Bereitstellen einer vorkonfigurierten Lösung finden Sie unter [Microsoft Azure IoT Suite][lnk-azureiotsuite]. Der Artikel [Erste Schritte mit den vorkonfigurierten IoT-Lösungen][lnk-getstarted-preconfigured] enthält weitere Informationen zum Bereitstellen und Ausführen der Lösungen.
-> 
-> 
 
 In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeordnet sind:
 
@@ -49,11 +47,12 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 * *Datenerfassung:*Skalierbarer Dateneingang in der Cloud
 * *Geräteidentität:* Verwalten eindeutiger Geräteidentitäten und Steuern des Gerätezugriffs auf die Lösung.
 * *Geräteverwaltung:* Verwalten von Gerätemetadaten und Ausführen von Vorgängen wie Geräteneustarts und Firmwareupgrades.
-* *Befehl und Steuerung:* Senden von Nachrichten aus der Cloud an ein Gerät, um zu veranlassen, dass das Gerät eine Aktion ausführt.
-* *Regeln und Aktionen:*Das Lösung-Back-End verwendet Regeln, um auf bestimmte D2C (Device-to-Cloud)-Daten zu reagieren.
+* *Befehl und Steuerung:* Senden von Nachrichten aus der Cloud an ein Gerät, um eine Aktion des Geräts zu veranlassen.
+* *Regeln und Aktionen:* Das Lösung-Back-End verwendet Regeln, um auf bestimmte D2C-Daten (Device-to-Cloud) zu reagieren.
 * *Predictive Analytics:* Das Lösungs-Back-End analysiert D2C-Daten, um vorherzusagen, wann bestimmte Aktionen ausgeführt werden sollen. Beispiel: Analysieren von Telemetriedaten eines Flugzeugtriebwerks, um zu bestimmen, wann die Triebwerkwartung erforderlich ist.
 
 ## <a name="remote-monitoring-preconfigured-solution-overview"></a>Übersicht über die vorkonfigurierte Lösung zur Remoteüberwachung
+
 Die vorkonfigurierte Lösung zur Remoteüberwachung wird in diesem Artikel beschrieben, weil sie zur Veranschaulichung zahlreicher gängiger Entwurfselemente dient, die auch in den anderen vorkonfigurierten Lösungen enthalten sind.
 
 Im folgenden Diagramm sind die wichtigsten Elemente der Remoteüberwachungslösung dargestellt. Die folgenden Abschnitte enthalten weitere Informationen zu diesen Elementen.
@@ -61,7 +60,9 @@ Im folgenden Diagramm sind die wichtigsten Elemente der Remoteüberwachungslösu
 ![Architektur der vorkonfigurierten Lösung für Remoteüberwachung][img-remote-monitoring-arch]
 
 ## <a name="devices"></a>Geräte
+
 Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen, werden vier simulierte Geräte in der Lösung vorab bereitgestellt, mit denen ein Kühlgerät simuliert wird. Diese simulierte Geräte verfügen über ein integriertes Temperatur- und Luftfeuchtigkeitsmodell, das Telemetriedaten ausgibt. Die simulierten Geräte sind aus folgenden Gründen enthalten:
+
 - Sie veranschaulichen den End-to-End-Datenfluss durch die Lösung.
 - Sie sind eine praktische Quelle für Telemetriedaten.
 - Sie bieten ein Ziel für Methoden oder Befehle, wenn Back-End-Entwickler die Lösung als Ausgangspunkt für eine benutzerdefinierte Implementierung nutzen.
@@ -73,13 +74,13 @@ Die simulierten Geräte in der Lösung können auf folgende Kommunikation zwisch
 
 Einen Vergleich dieser unterschiedlichen Konzepte finden Sie im [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance].
 
-Wenn ein Gerät erstmals eine Verbindung mit IoT Hub in der vorkonfigurierten Lösung herstellt, sendet es eine Geräteinformationsmeldung an den Hub, in der die Methoden aufgelistet sind, auf die das Gerät reagieren kann. In der vorkonfigurierten Lösung für die Remoteüberwachung werden von simulierten Geräten folgende Methoden unterstützt:
+Wenn ein Gerät erstmals eine Verbindung mit IoT Hub in der vorkonfigurierten Lösung herstellt, sendet es eine Geräteinformationsmeldung an den Hub. In dieser Meldung sind die Methoden aufgelistet, auf die das Gerät reagieren kann. In der vorkonfigurierten Lösung für die Remoteüberwachung werden von simulierten Geräten folgende Methoden unterstützt:
 
 * *Initiate Firmware Update* (Firmwareupdate initiieren): Diese Methode initiiert auf dem Gerät eine asynchrone Aufgabe, um ein Firmwareupdate auszuführen. Die asynchrone Aufgabe verwendet gemeldete Eigenschaften, um Statusaktualisierungen auf dem Lösungsdashboard bereitzustellen.
 * *Neustart*: Diese Methode bewirkt, dass das simulierte Gerät neu gestartet wird.
 * *FactoryReset*: Diese Methode löst auf dem Gerät eine Zurücksetzung auf die Werkseinstellungen aus.
 
-Wenn ein Gerät erstmals eine Verbindung mit IoT Hub in der vorkonfigurierten Lösung herstellt, sendet es eine Geräteinformationsmeldung an den Hub, in der die Befehle aufgelistet sind, auf die das Gerät reagieren kann. In der vorkonfigurierten Lösung für die Remoteüberwachung werden von simulierten Geräten folgende Befehle unterstützt:
+Wenn ein Gerät erstmals eine Verbindung mit IoT Hub in der vorkonfigurierten Lösung herstellt, sendet es eine Geräteinformationsmeldung an den Hub. In dieser Meldung sind die Befehle aufgelistet, auf die das Gerät reagieren kann. In der vorkonfigurierten Lösung für die Remoteüberwachung werden von simulierten Geräten folgende Befehle unterstützt:
 
 * *Ping Device*(Gerät pingen): Das Gerät reagiert auf diesen Befehl mit einer Bestätigung. Mithilfe dieses Befehls kann überprüft werden, ob das Gerät noch aktiv ist und lauscht.
 * *Start Telemetry*(Telemetrie starten): Weist das Gerät an, mit dem Senden von Telemetriedaten zu beginnen.
@@ -93,6 +94,7 @@ Sie können der Lösung weitere simulierte Geräte hinzufügen, die die gleichen
 Die Lösung reagiert nicht nur auf Befehle und Methoden, sondern verwendet auch [Gerätezwillinge][lnk-device-twin]. Gerätezwillinge werden von Geräten verwendet, um Eigenschaftswerte an das Lösungs-Back-End zu melden. Das Lösungsdashboard verwendet Gerätezwillinge, um neue gewünschte Eigenschaftswerte für Geräte festzulegen. Während des Firmwareupdates meldet das simulierte Gerät beispielsweise den Status des Updates unter Verwendung gemeldeter Eigenschaften.
 
 ## <a name="iot-hub"></a>IoT Hub
+
 Bei dieser vorkonfigurierten Lösung entspricht die IoT Hub-Instanz dem *Cloud-Gateway* in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 Ein IoT Hub empfängt Telemetriedaten von den Geräten an einem Endpunkt. Ein IoT Hub verwaltet auch gerätespezifische Endpunkte, wobei jedes Gerät die Befehle abrufen kann, die an das Gerät gesendet werden.
@@ -106,15 +108,17 @@ Mit der Geräteverwaltungsfunktion von IoT Hub können Sie Ihre Geräteeigenscha
 - Firmwareupdates
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
+
 Die vorkonfigurierte Lösung verwendet drei [Azure Stream Analytics][lnk-asa]-Aufträge (ASA), um den Telemetriedatenstrom von den Geräten zu filtern:
 
-* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine Azure Cosmos DB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum **Ändern des Gerätestatus** ausgeführt wurde.
+* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung weiterleitet. Bei dieser Geräteregistrierung handelt es sich eine Azure Cosmos DB-Datenbank. Diese Nachrichten werden gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum **Ändern des Gerätestatus** ausgeführt wurde.
 * *Telemetrieauftrag* – Sendet alle Telemetrierohdaten zu Cold Storage-Zwecken an den Azure-Blobspeicher und berechnet Telemetrieaggregationen, die im Lösungsdashboard angezeigt werden.
 * *Regelauftrag* – Filtert den Telemetriedatenstrom, um Werte zu identifizieren, die Regelschwellenwerte überschreiten, und gibt die Daten an einen Event Hub aus. Wenn eine Regel ausgelöst wird, wird das Ereignis in der Dashboardansicht des Lösungsportals als neue Zeile der Alarmverlaufstabelle angezeigt. Diese Regeln können auf der Grundlage der Einstellungen, die im Lösungsportal in den Ansichten **Regeln** und **Aktionen** definiert sind, auch eine Aktion auslösen.
 
 Bei dieser vorkonfigurierten Lösung bilden die ASA-Aufträge einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 ## <a name="event-processor"></a>Ereignisprozessor
+
 Bei dieser vorkonfigurierten Lösung bildet der Ereignisprozessor einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventProcessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. **EventProcessorHost** verwendet Folgendes:
@@ -122,6 +126,7 @@ Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs
 - Die **Regeldaten** , um die Logik-App aufzurufen und die Warnungsanzeige im Lösungsportal zu aktualisieren.
 
 ## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>Geräteidentitätsregistrierung, Gerätezwilling und Cosmos DB
+
 Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
 
 Bei einem [Gerätezwilling][lnk-device-twin] handelt es sich um ein von IoT Hub verwaltetes JSON-Dokument. Ein Gerätezwilling enthält Folgendes:
@@ -135,6 +140,7 @@ Diese Lösung verwendet Gerätezwillinge zum Verwalten von Gerätemetadaten. Die
 Die Lösung muss zudem die Informationen in der Geräteidentitätsregistrierung mit dem Inhalt der Cosmos DB-Datenbank synchron halten. **EventProcessorHost** verwendet die Daten aus dem **DeviceInfo**-Datenstromanalyseauftrag zum Verwalten der Synchronisierung.
 
 ## <a name="solution-portal"></a>Lösungsportal
+
 ![Lösungsportal][img-dashboard]
 
 Das Lösungsportal ist eine webbasierte Benutzeroberfläche, die in der Cloud als Teil der vorkonfigurierten Lösung bereitgestellt wird. Hiermit haben Sie folgende Möglichkeiten:
@@ -150,6 +156,7 @@ Das Lösungsportal ist eine webbasierte Benutzeroberfläche, die in der Cloud al
 Bei dieser vorkonfigurierten Lösung bildet das Lösungsportal einen Teil des **IoT-Lösungs-Back-Ends** und einen Teil der **Verarbeitungsverbindung und Business Connectivity** in der typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu den IoT-Lösungsarchitekturen finden Sie unter [Microsoft Azure IoT services: Reference Architecture][lnk-refarch] (Microsoft Azure IoT-Dienste: Referenzarchitektur).
 
 Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und können beginnen, indem Sie die vorkonfigurierte Lösung für die *Remoteüberwachung* bereitstellen: [Erste Schritte mit den vorkonfigurierten Lösungen][lnk-getstarted-preconfigured].

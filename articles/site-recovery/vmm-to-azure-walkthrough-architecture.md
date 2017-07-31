@@ -1,6 +1,6 @@
 ---
-title: "Überprüfen der Architektur für die Hyper-V-Replikation (ohne System Center VMM) in Azure mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet einen Überblick über die Komponenten und Architektur, die beim Replizieren von lokalen virtuellen Hyper-V-Computern (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst verwendet werden."
+title: "Überprüfen der Architektur für die Hyper-V-Replikation (mit System Center VMM) in Azure mit Azure Site Recovery | Microsoft-Dokumentation"
+description: "Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Replizieren lokaler virtueller Hyper-V-Computer in VMM-Clouds in Azure mit dem Azure Site Recovery-Dienst verwendet werden."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,21 +12,21 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/22/2017
+ms.date: 07/24/2017
 ms.author: raynew
 ms.translationtype: HT
 ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: d57cbc5b205cfb020070d567097f3bb648ce5300
+ms.openlocfilehash: df4e227d02901153d3cfcfd4dfd4f11de180763a
 ms.contentlocale: de-de
 ms.lasthandoff: 07/26/2017
 
 ---
 
 
-# <a name="step-1-review-the-architecture-for-hyper-v-replication-to-azure"></a>Schritt 1: Überprüfen der Architektur für die Hyper-V-Replikation in Azure
+# <a name="step-1-review-the-architecture"></a>Schritt 1: Überprüfen der Architektur
 
 
-Dieser Artikel beschreibt die Komponenten und Prozesse bei der Replikation lokaler virtueller Hyper-V-Computer (die nicht von System Center VMM verwaltet werden) in Azure mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts.
+Dieser Artikel beschreibt die Komponenten und Prozesse bei der Replikation lokaler virtueller Hyper-V-Computer in System Center-VMM-Clouds (Virtual Machine Manager) in Azure mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md).
 
 Kommentare können Sie am Ende dieses Artikels eingeben oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
 
@@ -34,26 +34,29 @@ Kommentare können Sie am Ende dieses Artikels eingeben oder im [Forum zu Azure 
 
 ## <a name="architectural-components"></a>Komponenten der Architektur
 
-Beim Replizieren von virtuellen Hyper-V-Computern in Azure ohne VMM sind eine Reihe von Komponenten beteiligt.
+An der Replizierung virtueller Hyper-V-Computer in VMM-Clouds in Azure sind eine Reihe von Komponenten beteiligt.
 
-**Komponente** | **Standort** | **Details**
+**Komponente** | **Anforderung** | **Details**
 --- | --- | ---
 **Azure** | In Azure benötigen Sie ein Microsoft Azure-Konto, ein Azure-Speicherkonto und ein Azure-Netzwerk. | Replizierte Daten werden im Speicherkonto gespeichert, und Azure-VMs werden mit den replizierten Daten erstellt, wenn ein Failover von Ihrem lokalen Standort durchgeführt wird.<br/><br/> Für die Azure-VMs wird eine Verbindung mit dem virtuellen Azure-Netzwerk hergestellt, wenn diese erstellt werden.
-**Hyper-V** | Hyper-V-Hosts und -Cluster werden zu Hyper-V-Standorten zusammengefasst. Der Azure Site Recovery-Anbieter und der Recovery Services-Agent auf jedem Hyper-V-Host installiert. | Der Anbieter orchestriert die Replikation mit Site Recovery über das Internet. Der Recovery Services-Agent verarbeitet die Datenreplikation.<br/><br/> Sowohl die Kommunikation vom Anbieter als auch vom Agent ist sicher und verschlüsselt. Die replizierten Daten im Azure-Speicher werden ebenfalls verschlüsselt.
-**Virtuelle Hyper-V-Computer** | Sie benötigen mindestens einen virtuellen Computer, der auf dem Hyper-V-Hostserver ausgeführt wird. | Auf virtuellen Computern muss nichts explizit installiert werden.
+**VMM-Server** | Der VMM-Server verfügt über mindestens eine Cloud mit Hyper-V-Hosts. | Auf dem VMM-Server installieren Sie den Site Recovery-Anbieter, um die Replikation mit Site Recovery zu orchestrieren. Außerdem registrieren Sie den Server im Recovery Services-Tresor.
+**Hyper-V-Host** | Mindestens ein von VMM verwalteter Hyper-V-Host/-Cluster. |  Sie installieren den Recovery Services-Agent auf jedem Host oder Clustermitglied.
+**Virtuelle Hyper-V-Computer** | Mindestens ein virtueller Computer, der auf einem Hyper-V-Hostserver ausgeführt wird. | Auf virtuellen Computern muss nichts explizit installiert werden.
+**Netzwerk** |Eingerichtetes logisches Netzwerk und VM-Netzwerk auf dem VMM-Server. Ein VM-Netzwerk sollte mit einem logischen Netzwerk verbunden sein, das der Cloud zugeordnet ist. | VM-Netzwerke werden virtuellen Azure-Netzwerken zugeordnet, sodass sich virtuelle Azure-Computer in einem Netzwerk befinden, wenn sie nach einem Failover erstellt werden.
 
 Weitere Informationen zu Voraussetzungen für die Bereitstellung und Anforderungen für die Komponenten finden Sie in der [Supportmatrix](site-recovery-support-matrix-to-azure.md).
 
-**Abbildung 1: Replikation von Hyper-V-Sites in Azure**
 
-![Komponenten](./media/hyper-v-site-walkthrough-architecture/arch-onprem-azure-hypervsite.png)
+**Abbildung 1: Replizieren virtueller Computer auf Hyper-V-Hosts in VMM-Clouds in Azure**
+
+![Komponenten](./media/vmm-to-azure-walkthrough-architecture/arch-onprem-onprem-azure-vmm.png)
 
 
 ## <a name="replication-process"></a>Replikationsprozess
 
 **Abbildung 2: Replikations- und Wiederherstellungsvorgang für die Hyper-V-Replikation in Azure**
 
-![Workflow](./media/hyper-v-site-walkthrough-architecture/arch-hyperv-azure-workflow.png)
+![Workflow](./media/vmm-to-azure-walkthrough-architecture/arch-hyperv-azure-workflow.png)
 
 ### <a name="enable-protection"></a>Schutz aktivieren
 
@@ -61,7 +64,8 @@ Weitere Informationen zu Voraussetzungen für die Bereitstellung und Anforderung
 2. Im Rahmen des Auftrags wird überprüft, ob der Computer die Voraussetzungen erfüllt. Anschließend wird [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aufgerufen, um die Replikation mit den konfigurierten Einstellungen einzurichten.
 3. Der Auftrag startet die erste Replikation durch Aufrufen der [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)-Methode, um eine vollständige VM-Replikation zu initiieren, und übermittelt die virtuellen Datenträger des virtuellen Computers an Azure.
 4. Sie können den Auftrag auf der Registerkarte **Aufträge** überwachen.
- 
+        ![Auftragsliste](media/vmm-to-azure-walkthrough-architecture/image1.png) ![Drilldown für „Schutz aktivieren“](media/vmm-to-azure-walkthrough-architecture/image2.png)
+
 ### <a name="replicate-the-initial-data"></a>Replizieren der ursprünglichen Daten
 
 1. Wenn die erste Replikation ausgelöst wird, wird eine [Hyper-V-Momentaufnahme für den virtuellen Computer](https://technet.microsoft.com/library/dd560637.aspx) erstellt.
@@ -74,6 +78,7 @@ Weitere Informationen zu Voraussetzungen für die Bereitstellung und Anforderung
 ### <a name="finalize-protection"></a>Abschließen des Schutzes
 
 1. Nach Abschluss der ersten Replikation werden mit dem Auftrag **Schutz auf virtuellem Computer abschließen** das Netzwerk und andere Einstellungen für die Zeit nach der Replikation konfiguriert, sodass der virtuelle Computer geschützt ist.
+    ![Auftrag zum Abschließen des Schutzes](media/vmm-to-azure-walkthrough-architecture/image3.png)
 2. Wenn Sie eine Replikation zu Azure durchführen, müssen Sie die Einstellungen für den virtuellen Computer unter Umständen so optimieren, dass er bereit für das Failover ist. An diesem Punkt können Sie ein Testfailover durchführen, um zu überprüfen, ob alles wie erwartet funktioniert.
 
 ### <a name="replicate-the-delta"></a>Replizieren des Deltas
@@ -88,7 +93,7 @@ Weitere Informationen zu Voraussetzungen für die Bereitstellung und Anforderung
 2.  Bei der Neusynchronisierung werden Prüfsummen für die virtuellen Quell- und Zielcomputer berechnet und nur die Deltadaten gesendet, um die Menge der gesendeten Daten zu minimieren. Die Neusynchronisierung verwendet einen Blockerstellungsalgorithmus mit festen Blöcken, durch den Quell-und Zieldateien in feste Blöcke unterteilt werden. Für die einzelnen Blöcke werden Prüfsummen generiert und anschließend verglichen, um zu ermitteln, welche Blöcke aus der Quelle auf das Ziel angewendet werden müssen.
 3. Nach Abschluss der Neusynchronisierung wird die normale Deltareplikation fortgesetzt. Standardmäßig ist die Neusynchronisierung so geplant, dass sie automatisch außerhalb der Geschäftszeiten durchgeführt wird, aber Sie können eine virtuelle Maschine auch manuell neu synchronisieren. Die Neusynchronisierung kann beispielsweise nach einem Netzwerkausfall oder einem anderen Ausfall fortgesetzt werden. Wählen Sie hierzu im Portal den virtuellen Computer und anschließend **Resynchronisieren** aus.
 
-    ![Manuelle Neusynchronisierung](./media/hyper-v-site-walkthrough-architecture/image4.png)
+    ![Manuelle Neusynchronisierung](media/vmm-to-azure-walkthrough-architecture/image4.png)
 
 
 ### <a name="retry-logic"></a>Wiederholungslogik
@@ -115,5 +120,5 @@ Im Falle eines Replikationsfehlers wird die integrierte Wiederholungsfunktion ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wechseln Sie zu [Schritt 2: Überprüfen der Voraussetzungen für die Bereitstellung](hyper-v-site-walkthrough-prerequisites.md)
+Wechseln Sie zu [Schritt 2: Überprüfen der Voraussetzungen für die Bereitstellung](vmm-to-azure-walkthrough-prerequisites.md)
 

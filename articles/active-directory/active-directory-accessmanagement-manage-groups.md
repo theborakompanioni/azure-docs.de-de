@@ -12,13 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 07/24/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
-ms.openlocfilehash: 7d2cc99925e01f8135f04f5863f798e13d7413e3
-ms.lasthandoff: 02/11/2017
-
+ms.reviewer: kairaz.contractor
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 2cc2b63312b331a19c61cd7b59a4cac78edf32e6
+ms.contentlocale: de-de
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>Verwalten von Gruppen in Azure Active Directory
@@ -35,6 +38,9 @@ Ein Feature der Benutzerverwaltung von Azure Active Directory (Azure AD) ist die
 * Verzeichnisexterne Ressourcen, z.B. SaaS-Anwendungen, Azure-Dienste, SharePoint-Websites oder lokale Ressourcen
 
 Darüber hinaus kann ein Ressourcenbesitzer den Zugriff auf eine Ressource auch für eine Azure AD-Gruppe zuweisen, die sich im Besitz einer anderen Person befindet. Hierbei wird den Mitgliedern dieser Gruppe Zugriff auf die Ressource gewährt. Der Besitzer der Gruppe verwaltet dann die Mitgliedschaft in der Gruppe. Der Besitzer der Ressource delegiert quasi die Berechtigung zum Zuweisen von Benutzern zu dieser Gruppe an den Besitzer der Gruppe.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Informationen zum Verwalten von Gruppen im Azure AD Admin Center finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md).
 
 ## <a name="how-do-i-create-a-group"></a>Wie erstelle ich eine Gruppe?
 Je nach den Diensten, die von Ihrer Organisation abonniert wurden, können Sie auf eine der folgenden Arten eine Gruppe erstellen:

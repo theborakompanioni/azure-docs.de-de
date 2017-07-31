@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure Active Directory Premium
-description: "In diesem Thema erfahren Sie, wie Sie sich über die Volumenlizenzierungs-Website für die Premium Edition von Azure Active Directory registrieren."
+description: "Hier erfahren Sie, wie Sie sich über die Volumenlizenzierungs-Website für die Premium Edition von Azure Active Directory registrieren."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -11,17 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 73cbbce9ae3d727632b8cac2a29c2b1b92332ae7
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: fac41a05c97088b55f07455133d960687227af0e
 ms.contentlocale: de-de
-ms.lasthandoff: 12/08/2016
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="getting-started-with-azure-active-directory-premium"></a>Erste Schritte mit Azure Active Directory Premium
+In diesem Artikel werden die ersten Schritte mit einer Azure Active Directory Premium-Instanz beschrieben, die Sie im Rahmen des Volumenlizenzprogramms erworben haben. Falls Sie mit den verschiedenen Editionen von Azure Active Directory noch nicht vertraut sind, helfen Ihnen die Informationen unter [Azure Active Directory-Editionen](active-directory-editions.md)weiter.  
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. 
+
 Es gibt mehrere Möglichkeiten, sich für Active Directory Premium zu registrieren: 
 
 **Azure oder Office 365** : Als Abonnent von Azure oder Office 365 können Sie Active Directory Premium online erwerben. Ausführliche Schritte finden Sie unter [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) (Erwerben von Azure Active Directory Premium – Bestandskunden) oder [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) (Erwerben von Azure Active Directory Premium – Neukunden).  
@@ -30,10 +35,8 @@ Es gibt mehrere Möglichkeiten, sich für Active Directory Premium zu registrier
 
 **Microsoft-Volumenlizenzierung**: Azure Active Directory Premium ist per [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 Lizenzen oder mehr) oder das [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)-Programm (5 bis 250 Lizenzen) erhältlich.
 
-In diesem Thema werden die ersten Schritte mit Azure Active Directory Premium beschrieben, das Sie im Rahmen des Volumenlizenzprogramms erworben haben. Falls Sie mit den verschiedenen Editionen von Azure Active Directory noch nicht vertraut sind, helfen Ihnen die Informationen unter [Azure Active Directory-Editionen](active-directory-editions.md)weiter.  
-
 > [!NOTE]
-> Die Azure Active Directory-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+> Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 > 
 > 
 

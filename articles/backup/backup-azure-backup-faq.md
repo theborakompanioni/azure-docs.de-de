@@ -1,7 +1,7 @@
 
 ---
 title: "Häufig gestellte Fragen zu Azure Backup | Microsoft Docs"
-description: "Antworten auf häufig gestellte Fragen zum Recovery Services-Tresor, zu den sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten."
+description: "Antworten auf häufig gestellte Fragen zu Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. "
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -14,13 +14,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/10/2017
-ms.author: markgal;giridham;arunak;trinadhk;
+ms.date: 7/21/2017
+ms.author: markgal;arunak;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 865d8faef47e333e30c5d4084a93a52efc5eb2ad
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 6f204f2f0dca33e68b9853af3c94934af65ca1f9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
@@ -61,6 +61,13 @@ Eine ausführliche Liste mit Fragen finden Sie in den [häufig gestellten Fragen
 
 ## <a name="azure-vm-backup"></a>Azure VM Backup
 Eine ausführliche Liste mit Fragen finden Sie in den [häufig gestellten Fragen zu Azure VM Backup](backup-azure-vm-backup-faq.md).
+
+## <a name="back-up-vmware-servers"></a>Sichern von VMware-Servern
+
+### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Kann ich VMware vCenter-Server in Azure sichern?
+
+Ja. Mit Azure Backup Server können Sie VMware vCenter und ESXi in Azure sichern. Informationen zur unterstützten VMware-Version finden Sie im Artikel [Azure Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md). Eine ausführliche Anleitung finden Sie unter [Sichern eines VMware-Servers mit Azure Backup Server](backup-azure-backup-server-vmware.md).
+
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure Backup Server und System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen? <br/>

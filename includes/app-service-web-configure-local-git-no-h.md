@@ -16,4 +16,4 @@ https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
 
 `<username>` ist der [Bereitstellungsbenutzer](#configure-a-deployment-user), den Sie in einem der vorherigen Schritte erstellt haben.
 
-Speichern Sie den angezeigten URI, da Sie ihn im nächsten Schritt benötigen. 
+Kopieren Sie den angezeigten URI, da Sie ihn im nächsten Schritt benötigen.

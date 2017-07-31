@@ -1,6 +1,6 @@
 ---
 title: "Herstellen einer Verbindung mit Azure-Datenbank für PostgreSQL per C# | Microsoft-Dokumentation"
-description: "Dieser Schnellstart enthält ein C#-Codebeispiel (.NET), das Sie nutzen können, um zu den Daten von Azure-Datenbank für PostgreSQL eine Verbindung herzustellen und Abfragen dafür durchzuführen."
+description: "Diese Schnellstartanleitung enthält ein C#-Codebeispiel (.NET), mit dem Sie eine Verbindung mit den Daten aus Azure-Datenbank für PostgreSQL herstellen und Daten abfragen können."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,22 +11,18 @@ ms.custom: mvc
 ms.devlang: csharp
 ms.topic: hero-article
 ms.date: 06/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 87854637471fa15a76ae216cb57c549962810b7b
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 9f393e9ab1b3b6ab7f1ff085d625362d50adc97c
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
-<a id="azure-database-for-postgresql-use-net-c-to-connect-and-query-data" class="xliff"></a>
-
-# Azure-Datenbank für PostgreSQL: Verwenden von .NET (C#) zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
+# <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von .NET (C#) zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der C#-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 - [Erstellen einer Datenbank – Portal](quickstart-create-server-database-portal.md)
 - [Erstellen einer Datenbank – CLI](quickstart-create-server-database-azure-cli.md)
@@ -36,22 +32,16 @@ Außerdem benötigen Sie Folgendes:
 - Installieren von [Visual Studio](https://www.visualstudio.com/downloads/)
 - Installieren von [Npgsql](http://www.npgsql.org/doc/index.html) 
 
-<a id="install-visual-studio-and-net" class="xliff"></a>
-
-## Installieren von Visual Studio Code und .NET
+## <a name="install-visual-studio-and-net"></a>Installieren von Visual Studio Code und .NET
 Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Entwicklung per .NET vertraut sind.
 
-<a id="windows-net-framework-and-net-core" class="xliff"></a>
-
-### **Windows .NET Framework und .NET Core**
+### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework und .NET Core**
 Visual Studio 2017 Community ist eine vollwertige, kostenlose und erweiterbare IDE zum Erstellen von modernen Anwendungen für Android, iOS und Windows sowie zum Erstellen von Web- und Datenbankanwendungen und Clouddiensten. Sie können entweder das vollständige .NET Framework oder nur .NET Core installieren. Die Codeausschnitte im Schnellstart funktionieren für beide Szenarien. Falls Visual Studio bereits auf Ihrem Computer installiert ist, überspringen Sie die nächsten Schritte.
 
 1. Laden Sie das [Visual Studio 2017-Installationsprogramm](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) herunter. 
 2. Führen Sie das Installationsprogramm aus, und befolgen Sie die Installationsanweisungen, um die Installation abzuschließen.
 
-<a id="mac-os" class="xliff"></a>
-
-### **Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr .NET Core-Projekt erstellen möchten. Geben Sie die folgenden Befehle ein, um **brew**, **OpenSSL** und **.NET Core** zu installieren. 
 
 ```bash
@@ -65,9 +55,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 Installieren Sie .NET Core unter Mac OS. Laden Sie das [offizielle Installationsprogramm](https://go.microsoft.com/fwlink/?linkid=843444) herunter. Dieses Installationsprogramm installiert die Tools und platziert Sie an Ihrem Pfad, sodass Sie „dotnet“ über die Konsole ausführen können.
 
-<a id="linux-ubuntu" class="xliff"></a>
-
-### **Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr .NET Core-Projekt erstellen möchten. Geben Sie die folgenden Befehle ein, um **.NET Core** zu installieren.
 
 ```bash
@@ -77,10 +65,8 @@ sudo apt-get update
 sudo apt-get install dotnet-dev-1.0.1
 ```
 
-<a id="install-npgsql-references-into-your-visual-studio-solution" class="xliff"></a>
-
-## Installieren von Npgsql-Verweisen in Ihrer Visual Studio-Projektmappe
-Verwenden Sie zum Herstellen einer Verbindung von der C#-Anwendung mit PostgreSQL die Open Source-ADO.NET-Bibliothek mit dem Namen Npgsql. Per NuGet können Sie Verweise herunterladen und leicht verwalten.
+## <a name="install-npgsql-references-into-your-visual-studio-solution"></a>Installieren von Npgsql-Verweisen in Ihrer Visual Studio-Projektmappe
+Wenn Sie eine Verbindung über die C#-Anwendung mit PostgreSQL herstellen möchten, verwenden Sie die Open Source-ADO.NET-Bibliothek „Npgsql“. Per NuGet können Sie Verweise herunterladen und leicht verwalten.
 
 1. Erstellen Sie eine neue C#-Projektmappe, oder öffnen Sie eine vorhandene: 
    - Erstellen Sie in Visual Studio eine Projektmappe, indem Sie im Menü „Datei“ auf **Neu** > **Projekt** klicken.
@@ -92,9 +78,7 @@ Verwenden Sie zum Herstellen einer Verbindung von der C#-Anwendung mit PostgreSQ
    - Geben Sie in der **Paket-Manager-Konsole** den Text `Install-Package Npgsql` ein.
    - Mit dem Installationsbefehl werden „Npgsql.dll“ und dazugehörige Assemblys heruntergeladen und der Projektmappe als Abhängigkeiten hinzugefügt.
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Abrufen von Verbindungsinformationen
+## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure-Datenbank für PostgreSQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
@@ -104,9 +88,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
  ![Azure-Datenbank für PostgreSQL – Anmeldename des Serveradministrators](./media/connect-csharp/1-connection-string.png)
 5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
-<a id="connect-create-table-and-insert-data" class="xliff"></a>
-
-## Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
+## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und die Daten zu laden, indem Sie die SQL-Anweisungen **CREATE TABLE** und **INSERT INTO** verwenden. Im Code wird die NpgsqlCommand-Klasse mit der [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open)-Methode verwendet, um eine Verbindung mit PostgreSQL einzurichten. Anschließend wird im Code die [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand)-Methode verwendet, die CommandText-Eigenschaft festgelegt und die [ExecuteNonQuery()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery)-Methode aufgerufen, um die Datenbankbefehle auszuführen. 
 
 Ersetzen Sie die Parameter „Host“, „DBName“, „User“ und „Password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben. 
@@ -137,7 +119,7 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};",
+                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4}; SSL Mode=Prefer; Trust Server Certificate=true",
                     Host,
                     User,
                     DBname,
@@ -183,9 +165,7 @@ namespace Driver
 }
 ```
 
-<a id="read-data" class="xliff"></a>
-
-## Lesen von Daten
+## <a name="read-data"></a>Lesen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu verbinden und zu lesen. Im Code wird die NpgsqlCommand-Klasse mit der [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open)-Methode verwendet, um eine Verbindung mit PostgreSQL einzurichten. Anschließend werden im Code die Methoden [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) und [ExecuteReader()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader) verwendet, um die Datenbankbefehle auszuführen. Als Nächstes wird im Code [Read()](http://www.npgsql.org/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) verwendet, um auf die Datensätze in den Ergebnissen zuzugreifen. Mithilfe von [GetInt32()](http://www.npgsql.org/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) und [GetString()](http://www.npgsql.org/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) werden im Code dann die Werte im Datensatz analysiert.
 
 Ersetzen Sie die Parameter „Host“, „DBName“, „User“ und „Password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben. 
@@ -255,9 +235,7 @@ namespace Driver
 ```
 
 
-<a id="update-data" class="xliff"></a>
-
-## Aktualisieren von Daten
+## <a name="update-data"></a>Aktualisieren von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer **UPDATE**-SQL-Anweisung zu verbinden und zu lesen. Im Code wird die NpgsqlCommand-Klasse mit der [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open)-Methode verwendet, um eine Verbindung mit PostgreSQL einzurichten. Anschließend wird im Code die [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand)-Methode verwendet, die CommandText-Eigenschaft festgelegt und die [ExecuteNonQuery()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery)-Methode aufgerufen, um die Datenbankbefehle auszuführen.
 
 Ersetzen Sie die Parameter „Host“, „DBName“, „User“ und „Password“ durch die Werte, die Sie beim Erstellen des Servers und der Datenbank angegeben haben. 
@@ -321,9 +299,7 @@ namespace Driver
 ```
 
 
-<a id="delete-data" class="xliff"></a>
-
-## Löschen von Daten
+## <a name="delete-data"></a>Löschen von Daten
 Verwenden Sie den folgenden Code, um die Daten mit einer **DELETE**-SQL-Anweisung zu verbinden und zu lesen. 
 
  Im Code wird die NpgsqlCommand-Klasse mit der [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open)-Methode verwendet, um eine Verbindung mit PostgreSQL einzurichten. Anschließend wird im Code die [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand)-Methode verwendet, die CommandText-Eigenschaft festgelegt und die [ExecuteNonQuery()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery)-Methode aufgerufen, um die Datenbankbefehle auszuführen.
@@ -385,9 +361,7 @@ namespace Driver
 }
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Migrieren der Datenbank mit Export und Import](./howto-migrate-using-export-and-import.md)
 

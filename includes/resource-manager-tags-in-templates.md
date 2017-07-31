@@ -1,6 +1,6 @@
 Um eine Ressource während der Bereitstellung mit einem Tag zu versehen, fügen Sie der Ressource, die Sie bereitstellen, das `tags`-Element hinzu. Geben Sie den Namen und den Wert des Tags an.
 
-### <a name="apply-literal-value-to-tag-name"></a>Anwenden eines literalen Werts auf den Tagnamen
+### <a name="apply-a-literal-value-to-the-tag-name"></a>Anwenden eines literalen Werts auf den Tagnamen
 Das folgende Beispiel zeigt ein Speicherkonto mit zwei Tags (`Dept` und `Environment`), die auf literale Werte festgelegt sind:
 
 ```json
@@ -27,7 +27,7 @@ Das folgende Beispiel zeigt ein Speicherkonto mit zwei Tags (`Dept` und `Environ
 }
 ```
 
-### <a name="apply-object-to-tag-element"></a>Anwenden eines Objekts auf das Tagelement
+### <a name="apply-an-object-to-the-tag-element"></a>Anwenden eines Objekts auf das Tagelement
 Sie können einen Objektparameter definieren, der mehrere Tags speichert, und dieses Objekt auf das Tagelement anwenden. Jede Eigenschaft in dem Objekt wird zu einem separaten Tag für die Ressource. Das folgende Beispiel enthält einen Parameter namens `tagValues`, der auf das Tagelement angewendet wird.
 
 ```json
@@ -60,7 +60,7 @@ Sie können einen Objektparameter definieren, der mehrere Tags speichert, und di
 }
 ```
 
-### <a name="apply-json-string-to-tag-name"></a>Anwenden einer JSON-Zeichenfolge auf den Tagnamen
+### <a name="apply-a-json-string-to-the-tag-name"></a>Anwenden einer JSON-Zeichenfolge auf den Tagnamen
 
 Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie eine JSON-Zeichenfolge an, die die gewünschten Werte darstellt. Die gesamte JSON-Zeichenfolge wird als einzelnes Tag gespeichert und darf maximal 256 Zeichen lang sein. Im folgenden Beispiel gibt es ein einzelnes Tag namens `CostCenter`, das mehrere Werte aus einer JSON-Zeichenfolge enthält:  
 
