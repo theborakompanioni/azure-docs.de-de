@@ -23,30 +23,25 @@ ms.lasthandoff: 05/08/2017
 
 ---
 
-# Ich kann keine Daten in den Azure Active Directory-Aktivitätsprotokollen finden, die ich heruntergeladen habe.
-<a id="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-have-downloaded" class="xliff"></a>
+# <a name="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-have-downloaded"></a>Ich kann keine Daten in den Azure Active Directory-Aktivitätsprotokollen finden, die ich heruntergeladen habe.
 
 
-## Symptome
-<a id="symptoms" class="xliff"></a>
+## <a name="symptoms"></a>Symptome
 
 Ich habe die Aktivitätsprotokolle (Überwachung oder Anmeldungen) heruntergeladen, und für den ausgewählten Zeitraum werden nicht alle Datensätze angezeigt. Warum? 
 
  ![Berichterstellung](./media/active-directory-reporting-troubleshoot-missing-data-download/01.png)
  
 
-## Ursache
-<a id="cause" class="xliff"></a>
+## <a name="cause"></a>Ursache
 
 Beim Herunterladen von Aktivitätsprotokollen im Azure-Portal gilt eine Obergrenze von 120.000 Datensätzen, die nach Aktualität sortiert werden. 
 
-## Lösung
-<a id="resolution" class="xliff"></a>
+## <a name="resolution"></a>Lösung
 
 Mithilfe von [Azure AD-Berichterstellungs-APIs](active-directory-reporting-api-getting-started.md) können jederzeit bis zu einer Millionen Datensätze abgerufen werden. Unsere empfohlene Vorgehensweise ist das Ausführen eines Skripts auf Basis eines Zeitplans, der die Berichterstellungs-APIs zum inkrementellen Abrufen von Datensätzen über eine bestimmte Zeitspanne (z.B. täglich oder wöchentlich) aufruft.
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Active Directory-Berichten](active-directory-reporting-faq.md).
 
 

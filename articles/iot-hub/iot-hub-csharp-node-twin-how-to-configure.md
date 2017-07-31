@@ -21,9 +21,7 @@ ms.contentlocale: de-de
 ms.lasthandoff: 05/09/2017
 
 ---
-<a id="use-desired-properties-to-configure-devices" class="xliff"></a>
-
-# Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten
+# <a name="use-desired-properties-to-configure-devices"></a>Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
 Am Ende dieses Tutorials verfügen Sie über zwei Konsolen-Apps:
@@ -49,9 +47,7 @@ Wenn Sie das Tutorial [Erste Schritte mit Gerätezwillingen][lnk-twin-tutorial] 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 <a id="#create-the-simulated-device-app"></a>
-<a id="create-the-simulated-device-app" class="xliff"></a>
-
-## Erstellen der simulierten Geräte-App
+## <a name="create-the-simulated-device-app"></a>Erstellen der simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDeviceId** eine Verbindung mit dem Hub herstellt, auf eine gewünschte Konfigurationsaktualisierung wartet und dann Aktualisierungen für den simulierten Konfigurationsaktualisierungsvorgang meldet.
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulatedeviceconfiguration**. Erstellen Sie im Ordner **simulatedeviceconfiguration** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen.
@@ -162,9 +158,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
    
     Die Meldung `retrieved device twin` sollte angezeigt werden. Führen Sie die App weiter aus.
 
-<a id="create-the-service-app" class="xliff"></a>
-
-## Erstellen der Dienst-App
+## <a name="create-the-service-app"></a>Erstellen der Dienst-App
 In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die die *gewünschten Eigenschaften* für den Gerätezwilling, der **myDeviceId** zugeordnet ist, mit einem neuen Telemetriekonfigurationsobjekt aktualisiert. Anschließend werden die im IoT Hub gespeicherten Gerätezwillinge abgefragt und die Unterschiede zwischen den gewünschten und den gemeldeten Konfigurationen des Geräts angezeigt.
 
 1. Fügen Sie in Visual Studio in der aktuellen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Nennen Sie das Projekt **SetDesiredConfigurationAndQuery**.
@@ -247,9 +241,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die die *gewünschten 
    > 
    > 
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie eine gewünschte Konfiguration als *gewünschte Eigenschaften* im Lösungs-Back-End festgelegt und eine Geräte-App geschrieben, die diese Änderung erkennt und einen Aktualisierungsvorgang in mehreren Schritten simuliert, bei dem der entsprechende Status als gemeldete Eigenschaften gemeldet wird.
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:

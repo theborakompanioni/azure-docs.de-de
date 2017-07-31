@@ -22,12 +22,10 @@ ms.lasthandoff: 05/05/2017
 
 
 ---
-<a id="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory" class="xliff"></a>
-# Hinzufügen eines sprachspezifischen Unternehmensbrandings zur Anmeldeseite in Azure Active Directory
+# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>Hinzufügen eines sprachspezifischen Unternehmensbrandings zur Anmeldeseite in Azure Active Directory
 Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in Azure Active Directory möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. Die Anmeldeseite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
 
-<a id="customizing-the-sign-in-page-for-another-language" class="xliff"></a>
-## Anpassen der Anmeldeseite für eine andere Sprache
+## <a name="customizing-the-sign-in-page-for-another-language"></a>Anpassen der Anmeldeseite für eine andere Sprache
 Sie können Ihrer benutzerdefinierten Anmeldeseite sprachspezifische Elemente hinzufügen, wenn Sie bereits eine benutzerdefinierte Anmeldeseite erstellt haben. Weitere Informationen hierzu finden Sie unter [Hinzufügen eines Unternehmensbrandings zur Anmeldeseite](active-directory-branding-custom-signon-azure-portal.md). Sie können mithilfe eines Standardsatzes anpassbarer Elementen eine Anmeldeseite pro Verzeichnis konfigurieren. Sobald Sie den Standardsatz an Seitenelementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Beispielsweise ist Folgendes möglich:
 
 * Erstellen Sie eine **Standardabbildung für die Anmeldeseite** , die für alle Kulturen verwendet werden kann, und erstellen Sie dann spezifische Versionen für Englisch und Französisch. Wenn Sie Ihre Browser auf eine dieser zwei Sprachen festlegen, wird das sprachspezifische Bild angezeigt, während für alle anderen Sprachen das Standardbild angezeigt wird.
@@ -50,7 +48,6 @@ Es wird empfohlen, die Anzahl der Sprachvariationen aus Wartungs- und Leistungsg
 
 Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie am Branding der Anmeldeseite vorgenommen haben.
 
-<a id="next-steps" class="xliff"></a>
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Hinzufügen eines Unternehmensbrandings zu Ihrer Anmeldeseite](active-directory-branding-custom-signon-azure-portal.md)
 

@@ -24,12 +24,10 @@ ms.lasthandoff: 05/08/2017
 
 
 ---
-<a id="add-or-change-work-information-for-a-user-in-azure-active-directory" class="xliff"></a>
-# Hinzufügen oder Ändern von Arbeitsinformationen für einen Benutzer in Azure Active Directory
+# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory"></a>Hinzufügen oder Ändern von Arbeitsinformationen für einen Benutzer in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie in Azure Active Directory Arbeitsinformationen wie z.B. Telefonnummern oder Abteilungsnamen für einen Benutzer hinzufügen oder ändern. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-external-azure-portal.md).
 
-<a id="to-change-work-information" class="xliff"></a>
-## Ändern von Arbeitsinformationen
+## <a name="to-change-work-information"></a>Ändern von Arbeitsinformationen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
@@ -43,8 +41,7 @@ In diesem Artikel wird erläutert, wie Sie in Azure Active Directory Arbeitsinfo
     ![Öffnen der Arbeitsinformationen](./media/active-directory-users-work-info-azure-portal/active-directory-create-users-work-info.png)
 6. Fügen Sie Arbeitsinformationen hinzu, oder ändern Sie Arbeitsinformationen. Wählen Sie dann in der Befehlsleiste **Speichern** aus.
 
-<a id="next-steps" class="xliff"></a>
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md)
 * [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
 * [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md)

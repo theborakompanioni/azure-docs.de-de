@@ -23,31 +23,26 @@ ms.lasthandoff: 05/08/2017
 
 ---
 
-# Ich kann einige Aktionen nicht finden, die ich im Aktivitätsprotokoll für Azure Active Directory ausgeführt habe.
-<a id="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log" class="xliff"></a>
+# <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a>Ich kann einige Aktionen nicht finden, die ich im Aktivitätsprotokoll für Azure Active Directory ausgeführt habe.
 
 
-## Symptome
-<a id="symptoms" class="xliff"></a>
+## <a name="symptoms"></a>Symptome
 
 Ich habe einige Aktionen im Azure-Portal ausgeführt und erwartet, die Überwachungsprotokolle für diese Aktionen auf dem Blatt `Activity logs > Audit Logs` zu finden. Ich kann sie jedoch nicht finden.
 
  ![Berichterstellung](./media/active-directory-reporting-troubleshoot-missing-audit-data/01.png)
  
 
-## Ursache
-<a id="cause" class="xliff"></a>
+## <a name="cause"></a>Ursache
 
 Aktionen werden nicht sofort im Aktivitätsüberwachungsprotokoll angezeigt. Ab der Ausführung des Vorgangs kann es zwischen 15 Minuten und eine Stunde dauern, bis die Überwachungsprotokolle im Portal angezeigt werden.
 
-## Lösung
-<a id="resolution" class="xliff"></a>
+## <a name="resolution"></a>Lösung
 
 Warten Sie 15 Minuten bis eine Stunde, und überprüfen Sie dann, ob die Aktionen im Protokoll angezeigt werden. Wenn sie weiterhin nicht vorhanden sind, erstellen Sie ein Supportticket, und wir nehmen uns der Sache an.
 
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Active Directory-Berichten](active-directory-reporting-faq.md).
 
 
