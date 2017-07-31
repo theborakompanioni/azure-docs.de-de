@@ -22,9 +22,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="how-to-use-properties-in-azure-api-management-policies" class="xliff"></a>
-
-# Verwenden von Eigenschaften in Azure API Management-Richtlinien
+# <a name="how-to-use-properties-in-azure-api-management-policies"></a>Verwenden von Eigenschaften in Azure API Management-Richtlinien
 API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit der Herausgeber das Verhalten der API über eine Konfiguration ändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und Eigenschaften erstellt werden. 
 
 Jede API Management-Dienstinstanz weist eine Eigenschaftensammlung von Schlüssel-Wert-Paaren auf, die für die gesamte Dienstinstanz gelten. Diese Eigenschaften können zum Verwalten konstanter Zeichenfolgenwerte für alle API-Konfigurationen und -Richtlinien verwendet werden. Jede Eigenschaft verfügt über die folgenden Attribute.
@@ -48,9 +46,7 @@ Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](https
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
-<a id="to-use-a-property" class="xliff"></a>
-
-## So verwenden Sie eine Eigenschaft
+## <a name="to-use-a-property"></a>So verwenden Sie eine Eigenschaft
 Um eine Eigenschaft in einer Richtlinie zu verwenden, platzieren Sie den Namen der Eigenschaft in ein doppeltes Paar geschweifter Klammern wie `{{ContosoHeader}}`, wie im folgenden Beispiel gezeigt.
 
 ```xml
@@ -83,9 +79,7 @@ Beim Betrachten der [Verfolgung mit dem API-Inspektor](api-management-howto-api-
 
 Beachten Sie, dass Eigenschaftswerte zwar Richtlinienausdrücke enthalten können, Eigenschaftswerte aber keine anderen Eigenschaften enthalten können. Wenn Text, der einen Eigenschaftsverweis enthält, als Eigenschaftswert verwendet wird, z. B. `Property value text {{MyProperty}}`, wird dieser Eigenschaftsverweis nicht ersetzt, und er wird als Bestandteil des Eigenschaftswerts eingebunden.
 
-<a id="to-create-a-property" class="xliff"></a>
-
-## So erstellen Sie eine Eigenschaft
+## <a name="to-create-a-property"></a>So erstellen Sie eine Eigenschaft
 Klicken Sie zum Erstellen einer Eigenschaft auf der Registerkarte **Eigenschaften** auf **Eigenschaft hinzufügen**.
 
 ![Eigenschaft hinzufügen][api-management-properties-add-property-menu]
@@ -100,9 +94,7 @@ Wenn eine neue Eigenschaft gespeichert wird, wird der Name der neuen Eigenschaft
 
 Informationen zum Erstellen einer Eigenschaft mithilfe der REST-API finden Sie unter [Erstellen einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put).
 
-<a id="to-edit-a-property" class="xliff"></a>
-
-## So bearbeiten Sie eine Eigenschaft
+## <a name="to-edit-a-property"></a>So bearbeiten Sie eine Eigenschaft
 Klicken Sie zum Bearbeiten einer Eigenschaft neben der zu bearbeitenden Eigenschaft auf **Bearbeiten** .
 
 ![Eigenschaft bearbeiten][api-management-properties-edit]
@@ -113,9 +105,7 @@ Nehmen Sie die gewünschten Änderungen vor, und klicken Sie auf **Speichern**. 
 
 Informationen zum Bearbeiten einer Eigenschaft mithilfe der REST-API finden Sie unter [Bearbeiten einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
 
-<a id="to-delete-a-property" class="xliff"></a>
-
-## So löschen Sie eine Eigenschaft
+## <a name="to-delete-a-property"></a>So löschen Sie eine Eigenschaft
 Klicken Sie zum Löschen einer Eigenschaft neben der zu löschenden Eigenschaft auf **Löschen** .
 
 ![Eigenschaft löschen][api-management-properties-delete]
@@ -131,9 +121,7 @@ Klicken Sie zur Bestätigung auf **Ja, löschen** .
 
 Informationen zum Löschen einer Eigenschaft mithilfe der REST-API finden Sie unter [Löschen einer Eigenschaft mit der REST-API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
 
-<a id="to-search-and-filter-properties" class="xliff"></a>
-
-## So suchen und filtern Sie Eigenschaften
+## <a name="to-search-and-filter-properties"></a>So suchen und filtern Sie Eigenschaften
 Die Registerkarte **Eigenschaften** umfasst Such- und Filterfunktionen, die Ihnen beim Verwalten Ihrer Eigenschaften helfen. Geben Sie zum Filtern der Eigenschaftenliste nach einem Eigenschaftennamen einen Suchbegriff in das Textfeld **Eigenschaft suchen** ein. Um alle Eigenschaften anzuzeigen, löschen Sie den Inhalt des Textfelds **Eigenschaft suchen** , und drücken Sie EINGABETASTE.
 
 ![Suche][api-management-properties-search]
@@ -142,17 +130,13 @@ Geben Sie zum Filtern der Eigenschaftenliste nach Tagwerten ein oder mehrere Tag
 
 ![Filter][api-management-properties-filter]
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Arbeiten mit Richtlinien
   * [Richtlinien in Azure API Management](api-management-howto-policies.md)
   * [Richtlinienreferenz](https://msdn.microsoft.com/library/azure/dn894081.aspx)
   * [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx)
 
-<a id="watch-a-video-overview" class="xliff"></a>
-
-## Überblicksvideo ansehen
+## <a name="watch-a-video-overview"></a>Überblicksvideo ansehen
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Use-Properties-in-Policies/player]
 > 
 > 

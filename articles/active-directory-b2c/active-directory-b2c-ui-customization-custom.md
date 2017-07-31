@@ -21,31 +21,23 @@ ms.contentlocale: de-de
 ms.lasthandoff: 07/06/2017
 
 ---
-<a id="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy" class="xliff"></a>
-
-# Azure Active Directory B2C: Konfigurieren der Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie
+# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 Nach dem Durcharbeiten dieses Artikels haben Sie eine benutzerdefinierte Registrierungs- oder Anmelderichtlinie mit Ihrer Marke und in Ihrem Design erstellt. Mit Azure Active Directory B2C (Azure AD B2C) erlangen Sie nahezu vollständige Kontrolle über den HTML- und CSS-Inhalt, der Benutzern angezeigt wird. Bei Verwendung einer benutzerdefinierten Richtlinie konfigurieren Sie die Anpassung der Benutzeroberfläche in XML, anstatt über Steuerelemente im Azure-Portal. 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Arbeiten Sie zunächst [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) durch. Sie sollten eine funktionierende benutzerdefinierte Richtlinie für die Registrierung und Anmeldung bei lokalen Konten besitzen.
 
-<a id="page-ui-customization" class="xliff"></a>
-
-## Seite für die Benutzeroberflächenanpassung
+## <a name="page-ui-customization"></a>Seite für die Benutzeroberflächenanpassung
 
 Mit der Funktion zum Anpassen der Benutzeroberfläche können Sie das Aussehen und Verhalten benutzerdefinierter Richtlinien anpassen. Außerdem können Sie die Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C verwalten.
 
 So funktioniert es: Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) (Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in der benutzerdefinierten Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die UI-Elemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Kunden an.
 
-<a id="create-your-html5-content" class="xliff"></a>
-
-## Erstellen des HTML5-Inhalts
+## <a name="create-your-html5-content"></a>Erstellen des HTML5-Inhalts
 
 Erstellen Sie den HTML-Inhalt mit dem Markennamen Ihres Produkts im Titel.
 
@@ -68,9 +60,7 @@ Erstellen Sie den HTML-Inhalt mit dem Markennamen Ihres Produkts im Titel.
 
 2. Fügen Sie den kopierten Codeausschnitt in einen Text-Editor ein, und speichern Sie die Datei dann unter dem Namen *customize-ui.html*.
 
-<a id="create-an-azure-blob-storage-account" class="xliff"></a>
-
-## Erstellen eines Azure Blob Storage-Kontos
+## <a name="create-an-azure-blob-storage-account"></a>Erstellen eines Azure Blob Storage-Kontos
 
 >[!NOTE]
 > In diesem Artikel wird Azure Blob Storage zum Hosten unserer Inhalte verwendet. Sie können angeben, dass Ihre Inhalte auf einem Webserver gehostet werden sollen, aber Sie müssen [auf Ihrem Webserver CORS aktivieren](https://enable-cors.org/server.html).
@@ -92,9 +82,7 @@ Gehen Sie wie folgt vor, um diesen HTML-Inhalt im Blob-Speicher zu hosten:
 13. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.  
     Nach Abschluss der Bereitstellung wird automatisch das Blatt **Speicherkonto** geöffnet.
 
-<a id="create-a-container" class="xliff"></a>
-
-## Erstellen eines Containers
+## <a name="create-a-container"></a>Erstellen eines Containers
 
 Gehen Sie wie folgt vor, um im Blob-Speicher einen öffentlichen Container zu erstellen:
 
@@ -111,9 +99,7 @@ Gehen Sie wie folgt vor, um im Blob-Speicher einen öffentlichen Container zu er
 11. Klicken Sie neben **URL** auf **Kopieren**.
 12. Fügen Sie in einem Browser die kopierte URL ein, und navigieren Sie zur Website. Falls ein Zugriff auf die Website nicht möglich ist, sollten Sie sicherstellen, dass der Zugriffstyp für den Container auf **Blob** festgelegt ist.
 
-<a id="configure-cors" class="xliff"></a>
-
-## Konfigurieren von CORS
+## <a name="configure-cors"></a>Konfigurieren von CORS
 
 Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS), indem Sie wie folgt vorgehen:
 
@@ -129,9 +115,7 @@ Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschi
 7. Geben Sie für **Maximales Alter (Sekunden)** den Wert **200** ein.
 8. Klicken Sie auf **Hinzufügen**.
 
-<a id="test-cors" class="xliff"></a>
-
-## Testen von CORS
+## <a name="test-cors"></a>Testen von CORS
 
 Überprüfen Sie, ob alles bereit ist, indem Sie die folgenden Schritte ausführen:
 
@@ -139,9 +123,7 @@ Konfigurieren Sie den Blob-Speicher für die Ressourcenfreigabe zwischen verschi
 2. Klicken Sie auf **Anforderung senden**.  
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, dass Ihre [CORS-Einstellungen](#configure-cors) richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.
 
-<a id="modify-your-sign-up-or-sign-in-custom-policy" class="xliff"></a>
-
-## Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien
+## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien
 
 Unter dem *\<TrustFrameworkPolicy\>*-Tag der obersten Ebene sollte sich das *\<BuildingBlocks\>*-Tag befinden. Fügen Sie in den *\<BuildingBlocks\>*-Tags ein *\<ContentDefinitions\>*-Tag hinzu, indem Sie das folgende Beispiel kopieren. Ersetzen Sie *your_storage_account* durch den Namen Ihres Speicherkontos.
 
@@ -155,26 +137,20 @@ Unter dem *\<TrustFrameworkPolicy\>*-Tag der obersten Ebene sollte sich das *\<B
   </BuildingBlocks>
   ```
 
-<a id="upload-your-updated-custom-policy" class="xliff"></a>
-
-## Hochladen der aktualisierten benutzerdefinierten Richtlinie
+## <a name="upload-your-updated-custom-policy"></a>Hochladen der aktualisierten benutzerdefinierten Richtlinie
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) [in den Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und öffnen Sie dann das Blatt **Azure AD B2C**.
 2. Klicken Sie auf **Alle Richtlinien**.
 3. Klicken Sie auf **Richtlinie hochladen**.
 4. Laden Sie `SignUpOrSignin.xml` mit dem zuvor hinzugefügten *\<ContentDefinitions\>*-Tag hoch.
 
-<a id="test-the-custom-policy-by-using-run-now" class="xliff"></a>
-
-## Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
+## <a name="test-the-custom-policy-by-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
 
 1. Navigieren Sie auf dem Blatt **Azure AD B2C** zu **Alle Richtlinien**.
 2. Wählen Sie die benutzerdefinierte Richtlinie aus, die hochgeladen werden soll, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
 3. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
 
-<a id="reference" class="xliff"></a>
-
-## Referenz
+## <a name="reference"></a>Referenz
 
 Beispielvorlagen für die Benutzeroberflächenanpassung finden Sie hier:
 
@@ -207,9 +183,7 @@ Im Abschnitt [Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtl
 | *api.selfasserted.profileupdate* | **Seite für Profilaktualisierung**: Diese Seite enthält ein Formular, das von Benutzern zum Aktualisieren des Profils verwendet werden kann. Diese Seite ähnelt der Seite für die Registrierung bei einem Konto für ein soziales Netzwerk, mit Ausnahme der Felder für die Kennworteingabe. |
 | *api.signuporsignin* | **Einheitliche Seite für Registrierung oder Anmeldung**: Auf dieser Seite wird sowohl die Registrierung als auch die Anmeldung von Benutzern verarbeitet, die dafür Unternehmensidentitätsanbieter, Identitätsanbieter sozialer Netzwerke, z.B. Facebook oder Google+, oder lokale Konten verwenden können.  |
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen dazu, welche Elemente der Benutzeroberfläche angepasst werden können, finden Sie unter [Referenzhandbuch zur Anpassung der Benutzeroberfläche für integrierte Richtlinien](active-directory-b2c-reference-ui-customization.md).
 

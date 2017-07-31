@@ -22,15 +22,13 @@ ms.contentlocale: de-de
 ms.lasthandoff: 03/08/2017
 
 ---
-# Verwenden der Registerkarte „Vorgänge“ von Synchronization Service Manager
-<a id="using-the-sync-service-manager-operations-tab" class="xliff"></a>
+# <a name="using-the-sync-service-manager-operations-tab"></a>Verwenden der Registerkarte „Vorgänge“ von Synchronization Service Manager
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
 
 Die Registerkarte „Vorgänge“ zeigt die Ergebnisse der letzten Vorgänge. Diese Registerkarte ist sehr wichtig, um Probleme zu verstehen und zu beheben.
 
-## Grundlagen zu den Informationen, die in der Registerkarte „Vorgänge“ angezeigt werden
-<a id="understand-the-information-visible-in-the-operations-tab" class="xliff"></a>
+## <a name="understand-the-information-visible-in-the-operations-tab"></a>Grundlagen zu den Informationen, die in der Registerkarte „Vorgänge“ angezeigt werden
 Die obere Hälfte zeigt alle Ausführungen in chronologischer Reihenfolge. Standardmäßig enthält das Vorgangsprotokoll Informationen der letzten sieben Tage. Diese Einstellung kann mit dem [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) geändert werden. Suchen Sie nach Ausführungen ohne Erfolgsstatus. Die Sortierung kann durch Klicken auf die Kopfzeilen geändert werden.
 
 Die Spalte **Status** zeigt die wichtigste Information und das schwerwiegendste Problem einer Ausführung an. Hier folgt eine kurze Zusammenfassung der häufigsten Status, in der Reihenfolge ihrer Untersuchungspriorität (bei „*“ gibt es mehrere mögliche Fehlerzeichenfolgen).
@@ -47,8 +45,7 @@ Wenn Sie eine Zeile auswählen, wird der untere Bereich aktualisiert, und die De
 
 Weitere Informationen finden Sie unter [Problembehandlung: Ein Objekt wird nicht synchronisiert](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

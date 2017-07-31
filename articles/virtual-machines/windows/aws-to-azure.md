@@ -24,17 +24,13 @@ ms.lasthandoff: 07/06/2017
 
 ---
 
-<a id="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell" class="xliff"></a>
-
-# Verschieben einer Windows-VM aus Amazon Web Services (AWS) nach Azure mit PowerShell
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Verschieben einer Windows-VM aus Amazon Web Services (AWS) nach Azure mit PowerShell
 
 Wenn Sie virtuelle Azure-Computer für das Hosten von Workloads auswerten, können Sie eine vorhandene Windows-VM-Instanz vom Typ „Amazon Web Services (AWS) EC2“ exportieren und die virtuelle Festplatte (VHD) dann in Azure hochladen. Nach dem Hochladen der VHD können Sie in Azure aus der VHD eine neue VM erstellen. 
 
 In diesem Thema wird beschrieben, wie Sie eine einzelne VM aus AWS nach Azure verschieben. Wenn Sie VMs bedarfsorientiert aus AWS nach Azure verschieben möchten, helfen Ihnen die Informationen unter [Migrieren virtueller Computer von Amazon Web Services (AWS) zu Azure mit Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md) weiter.
 
-<a id="prepare-the-vm" class="xliff"></a>
-
-## Vorbereiten des virtuellen Computers 
+## <a name="prepare-the-vm"></a>Vorbereiten des virtuellen Computers 
  
 Sie können generalisierte sowie spezialisierte VHDs in Azure hochladen. Für jeden Typ müssen Sie den virtuellen Computer vor dem Export aus AWS vorbereiten. 
 
@@ -50,9 +46,7 @@ Sie können generalisierte sowie spezialisierte VHDs in Azure hochladen. Für je
     * Stellen Sie sicher, dass der virtuelle Computer so konfiguriert ist, dass die zugehörigen IP-Adressen und DNS-Einstellungen per Pullvorgang über DHCP übertragen werden. Dadurch wird sichergestellt, dass der Server beim Starten eine IP-Adresse innerhalb des VNET bezieht.  
 
 
-<a id="export-and-download-the-vhd" class="xliff"></a>
-
-## Exportieren und Herunterladen der VHD 
+## <a name="export-and-download-the-vhd"></a>Exportieren und Herunterladen der VHD 
 
 Exportieren Sie die EC2-Instanz auf eine VHD in einem Amazon S3-Bucket. Führen Sie die Schritte aus, die im Amazon-Dokumentationsthema [Exporting an Instance as a VM Using VM Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) (Exportieren einer Instanz als VM per VM-Import/Export) beschrieben sind, und führen Sie den Befehl [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) aus, um die EC2-Instanz in eine VHD-Datei zu exportieren. 
 
@@ -69,9 +63,7 @@ Befolgen Sie nach dem Exportieren der VHD die Anleitung unter [How Do I Download
 > Bei AWS fallen bei der Datenübertragung Gebühren für das Herunterladen der VHD an. Weitere Informationen finden Sie unter [Amazon S3 Pricing](https://aws.amazon.com/s3/pricing/) (Amazon S3 – Preise).
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Jetzt können Sie die VHD in Azure hochladen und eine neue VM erstellen. 
 

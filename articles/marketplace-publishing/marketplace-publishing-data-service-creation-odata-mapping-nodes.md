@@ -22,9 +22,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl" class="xliff"></a>
-
-# Grundlegende Informationen zum Knotenschema zum Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
+# <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>Grundlegende Informationen zum Knotenschema zum Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
 > [!IMPORTANT]
 > **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
 >
@@ -32,9 +30,7 @@ ms.lasthandoff: 07/06/2017
 
 Dieses Dokument verdeutlicht die Knotenstruktur für die Zuordnung eines OData-Protokolls zu CSDL. Ein wichtiger Aspekt ist, dass die Knotenstruktur aus wohlgeformtem XML-Code besteht. Darum können Sie das Schema von Stamm, übergeordnetem und untergeordnetem Element anwenden, wenn Sie die OData-Zuordnung entwerfen.
 
-<a id="ignored-elements" class="xliff"></a>
-
-## Ignorierte Elemente
+## <a name="ignored-elements"></a>Ignorierte Elemente
 Im Folgenden werden die CSDL-Elemente (XML-Knoten) auf hoher Ebene aufgeführt, die während des Imports von Metadaten des Webdiensts nicht vom Azure Marketplace-Back-End verwendet werden. Sie können vorhanden sein, werden aber ignoriert.
 
 | Element | Scope (Umfang) |
@@ -51,9 +47,7 @@ Im Folgenden werden die CSDL-Elemente (XML-Knoten) auf hoher Ebene aufgeführt, 
 
 Im Folgenden werden die Änderungen (hinzugefügte und ignorierte Elemente) der verschiedenen CSDL-XML-Knoten im Detail beschrieben.
 
-<a id="functionimport-node" class="xliff"></a>
-
-## FunctionImport-Knoten
+## <a name="functionimport-node"></a>FunctionImport-Knoten
 Ein FunctionImport-Knoten stellt eine URL (Einstiegspunkt) dar, die einen Dienst für den Endbenutzer verfügbar macht. Der Knoten beschreibt immer, wie die URL adressiert wird, welche Parameter für den Endbenutzer verfügbar sind, und wie diese Parameter bereitgestellt werden.
 
 Details zu diesem Knoten finden Sie [hier][MSDNFunctionImportLink](https://msdn.microsoft.com/library/cc716710.aspx).
@@ -155,9 +149,7 @@ Zusätzliche untergeordnete (nicht in der CSDL-Dokumentation behandelte) Knoten 
 
 **d:ErrorMessage** – Optionale Erweiterung für "OData"
 
-<a id="parameter-node" class="xliff"></a>
-
-## Parameter-Knoten
+## <a name="parameter-node"></a>Parameter-Knoten
 Dieser Knoten stellt einen Parameter dar, der als Teil der URI-Vorlage/des Anforderungstexts verfügbar gemacht wird, der im Knoten "FunctionImport" angegeben wurde.
 
 Eine sehr hilfreiche Dokumentationsseite mit näheren Informationen zum Knoten „Parameter-Element“ finden Sie [hier](http://msdn.microsoft.com/library/ee473431.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.) *Beispiel:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
@@ -180,9 +172,7 @@ Folgende Attribute wurden der CSDL-Spezifikation hinzugefügt:
 | **d:Nullable** *(optional)* |Ermöglicht, festzulegen, ob ein Parameter potenziell den Wert NULL haben kann. Der Standardwert ist: "True". Allerdings können Parameter, die als Teil des Pfads in der URI-Vorlage verfügbar gemacht werden, nicht NULL sein. Die Benutzereingabe wird überschrieben, wenn das Attribut für diese Parameter auf "False" festgelegt wird. **Beispiel:** `<Parameter Name="BikeType" Type="String" Mode="In" Nullable="false"/>` |
 | **d:SampleValue** *(optional)* |Ein Beispielwert, der als Hinweis für den Client in der Benutzeroberfläche angezeigt werden soll.  Mehrere Werte können in einer durch senkrechte Striche getrennten Liste hinzugefügt werden, d.h. `a |
 
-<a id="entitytype-node" class="xliff"></a>
-
-## EntityType-Knoten
+## <a name="entitytype-node"></a>EntityType-Knoten
 Dieser Knoten entspricht einem der Typen, die dem Endbenutzer über den Marketplace zurückgegeben werden. Er enthält auch die Zuordnung aus der Ausgabe, die vom Inhaltsanbieterdienst an die Werte zurückgegeben wird, die an den Endbenutzer zurückgegeben werden.
 
 Nähere Informationen zu diesem Knoten finden Sie [hier](http://msdn.microsoft.com/library/bb399206.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.)
@@ -206,9 +196,7 @@ Der XPath-Ausdruck würde "/foo/bar" lauten, da jeder bar-Knoten der sich wieder
 
 **Key** – Dieses Attribut wird vom Marketplace ignoriert. REST-basierte Webdienste machen in der Regel keinen Primärschlüssel verfügbar.
 
-<a id="property-node" class="xliff"></a>
-
-## Property-Knoten
+## <a name="property-node"></a>Property-Knoten
 Dieser Knoten enthält eine Eigenschaft des Datensatzes.
 
 Nähere Informationen über diesen Knoten finden Sie unter [http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen). *Beispiel:* `<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
@@ -264,9 +252,7 @@ Mit dem XPath-Ausdruck "./bar/baz0" kann hier der baz0-Knoten aus dem Inhaltsanb
 
 **d:DatabaseDataType**: Der Datentyp der Spalte in der Datenbank, d.h. SQL-Datentyp. Siehe "DataService CSDL"-Beispiel.
 
-<a id="supported-parametersproperty-types" class="xliff"></a>
-
-## Unterstützte Parameter-/Eigenschaftstypen
+## <a name="supported-parametersproperty-types"></a>Unterstützte Parameter-/Eigenschaftstypen
 Die folgenden Parameter- und Eigenschaftstypen werden unterstützt. (Groß-/Kleinschreibung wird berücksichtigt)
 
 | Primitive Typen | Beschreibung |
@@ -284,9 +270,7 @@ Die folgenden Parameter- und Eigenschaftstypen werden unterstützt. (Groß-/Klei
 | Int64 |Stellt einen 64-Bit-Ganzzahlwert mit Vorzeichen dar. |
 | String |Stellt Zeichendaten mit fester oder variabler Länge dar. |
 
-<a id="see-also" class="xliff"></a>
-
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * Wenn Sie sich über den gesamten OData-Zuordnungsprozess und seinen Zweck informieren möchten, lesen Sie den Artikel [OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping.md) , um Definitionen, Strukturen und Anweisungen kennen zu lernen.
 * Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md) , um Beispielcode kennen zu lernen und Codesyntax und Kontext zu verstehen.
 * Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).

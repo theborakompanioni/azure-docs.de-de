@@ -31,9 +31,7 @@ Ein Clouddienst kann in Azure CDN integriert werden, um beliebige Inhalte vom Sp
 * Einheitlicher Bereitstellungsworkflow für die Webanwendung und den vom CDN verarbeiteten Inhalt
 * Integrieren von ASP.NET-Bündelung und -Minimierung in Azure CDN
 
-<a id="what-you-will-learn" class="xliff"></a>
-
-## Sie lernen Folgendes
+## <a name="what-you-will-learn"></a>Sie lernen Folgendes
 In diesem Lernprogramm lernen Sie Folgendes:
 
 * [Integrieren eines Azure CDN-Endpunkts in einen Clouddienst und Bereitstellen von statischen Inhalten in Webseiten aus Azure CDN](#deploy)
@@ -42,14 +40,10 @@ In diesem Lernprogramm lernen Sie Folgendes:
 * [Verarbeiten von gebündelten und minimierten Inhalten über Azure CDN bei gleichzeitiger Beibehaltung des Skriptdebugvorgangs in Visual Studio](#bundling)
 * [Konfigurieren des Fallbacks für Skripts und CSS, wenn Ihr Azure CDN offline ist](#fallback)
 
-<a id="what-you-will-build" class="xliff"></a>
-
-## Was Sie erstellen
+## <a name="what-you-will-build"></a>Was Sie erstellen
 Sie stellen eine Clouddienst-Webrolle unter Verwendung der ASP.NET-MVC-Standardvorlage bereit, fügen Code hinzu, um Inhalt aus einem integrierten Azure CDN zu verarbeiten, z. B. ein Bild, Ergebnisse von Controlleraktionen und die JavaScript- und CSS-Standarddateien; außerdem schreiben Sie Code zum Konfigurieren des Fallbackmechanismus für verarbeitete Bundles für den Fall, dass das CDN offline ist.
 
-<a id="what-you-will-need" class="xliff"></a>
-
-## Sie benötigen Folgendes
+## <a name="what-you-will-need"></a>Sie benötigen Folgendes
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Ein aktives [Microsoft Azure-Konto](/account/)
@@ -65,9 +59,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 <a name="deploy"></a>
 
-<a id="deploy-a-cloud-service" class="xliff"></a>
-
-## Bereitstellen eines Cloud-Diensts
+## <a name="deploy-a-cloud-service"></a>Bereitstellen eines Cloud-Diensts
 In diesem Abschnitt stellen Sie die standardmäßige ASP.NET-MVC-Anwendungsvorlage in Visual Studio 2015 für eine Clouddienst-Webrolle bereit und integrieren sie anschließend in einen neuen CDN-Endpunkt. Befolgen Sie die nachstehenden Anweisungen:
 
 1. Erstellen Sie in Visual Studio 2015 einen neuen Azure-Clouddienst über die Menüleiste, indem Sie **Datei > Neu > Projekt > Cloud > Azure-Clouddienst** auswählen. Geben Sie einen Namen ein, und klicken Sie auf **OK**.
@@ -108,9 +100,7 @@ In diesem Abschnitt stellen Sie die standardmäßige ASP.NET-MVC-Anwendungsvorla
    > 
    > 
 
-<a id="create-a-new-cdn-profile" class="xliff"></a>
-
-## Erstellen eines neuen CDN-Profils
+## <a name="create-a-new-cdn-profile"></a>Erstellen eines neuen CDN-Profils
 Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mindestens einen CDN-Endpunkt.  Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren.
 
 > [!TIP]
@@ -120,9 +110,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mind
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
-<a id="create-a-new-cdn-endpoint" class="xliff"></a>
-
-## Erstellen eines neuen CDN-Endpunkts
+## <a name="create-a-new-cdn-endpoint"></a>Erstellen eines neuen CDN-Endpunkts
 **So erstellen Sie einen neuen CDN-Endpunkt für das Speicherkonto**
 
 1. Navigieren Sie im [Azure-Verwaltungsportal](https://portal.azure.com)zu Ihrem CDN-Profil.  Eventuell haben Sie es im vorherigen Schritt an das Dashboard angeheftet.  Andernfalls können Sie es ermitteln, indem Sie nacheinander auf **Durchsuchen**, und **CDN-Profile** und dann auf das Profil klicken, dem Sie den Endpunkt hinzufügen möchten.
@@ -151,9 +139,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mind
    > 
    > 
 
-<a id="test-the-cdn-endpoint" class="xliff"></a>
-
-## Testen des CDN-Endpunkts
+## <a name="test-the-cdn-endpoint"></a>Testen des CDN-Endpunkts
 Wenn der Veröffentlichungsstatus **Abgeschlossen** lautet, öffnen Sie ein Browserfenster, und navigieren Sie zu **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. In meinem Setup lautet diese URL:
 
     http://camservice.azureedge.net/Content/bootstrap.css
@@ -187,9 +173,7 @@ Alternativ kann der von Azure CDN zu verarbeitende Inhalt von Fall zu Fall im Cl
 
 <a name="caching"></a>
 
-<a id="configure-caching-options-for-static-files-in-your-cloud-service" class="xliff"></a>
-
-## Konfigurieren von Cacheoptionen für statische Dateien im Clouddienst
+## <a name="configure-caching-options-for-static-files-in-your-cloud-service"></a>Konfigurieren von Cacheoptionen für statische Dateien im Clouddienst
 Bei Integration von Azure CDN in Ihren Clouddienst können Sie angeben, wie statischer Inhalt im CDN-Endpunkt zwischengespeichert werden soll. Öffnen Sie hierzu die Datei *Web.config* aus Ihrem Webrollenprojekt (z.B. „WebRole1“), und fügen Sie ein `<staticContent>`-Element zu `<system.webServer>` hinzu. Mit dem folgenden XML-Code wird festgelegt, dass der Cache in drei Tagen abläuft.  
 
     <system.webServer>
@@ -218,9 +202,7 @@ Im Abschnitt [Bereitstellen von Inhalten aus Controlleraktionen über Azure CDN]
 
 <a name="controller"></a>
 
-<a id="serve-content-from-controller-actions-through-azure-cdn" class="xliff"></a>
-
-## Verarbeiten von Inhalten aus Controlleraktionen über Azure CDN
+## <a name="serve-content-from-controller-actions-through-azure-cdn"></a>Verarbeiten von Inhalten aus Controlleraktionen über Azure CDN
 Wenn Sie eine Clouddienst-Webrolle in Azure CDN integrieren, ist es relativ einfach, Inhalt von Controlleraktionen über Azure CDN zu verarbeiten. Statt den Clouddienst direkt über Azure CDN bereitzustellen (siehe oben), können Sie hierfür auch einen witzigen MemeGenerator-Controller verwenden, wie [Maarten Balliauw](https://twitter.com/maartenballiauw) in seinem Vortrag zum Thema [Reducing latency on the web with the Azure CDN (Verringern von Latenz im Web mit Azure CDN)](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN) zeigt. Ich werde den Controller hier einfach nur reproduzieren.
 
 Angenommen, Sie möchten in Ihrem Clouddienst Meme auf der Grundlage eines Bilds des jungen Chuck Norris generieren (Foto von [Alan Light](http://www.flickr.com/photos/alan-light/218493788/)), ungefähr so:
@@ -387,9 +369,7 @@ Im nächsten Abschnitt erfahren Sie, wie Sie die gebündelten und minimierten Sk
 
 <a name="bundling"></a>
 
-<a id="integrate-aspnet-bundling-and-minification-with-azure-cdn" class="xliff"></a>
-
-## Integrieren von ASP.NET-Bündelung und -Minimierung in Azure CDN
+## <a name="integrate-aspnet-bundling-and-minification-with-azure-cdn"></a>Integrieren von ASP.NET-Bündelung und -Minimierung in Azure CDN
 Skripts und CSS-Stylesheets ändern sich häufig und sind daher die idealen Kandidaten für den Azure CDN-Cache. Die Verarbeitung der gesamten Webrolle über Azure CDN ist die einfachste Möglichkeit, Bündelung und Minimierung in Azure CDN zu integrieren. Da Sie diese Methode jedoch möglicherweise nicht verwenden möchten, zeige ich Ihnen, wie Sie die Integration unter Wahrung der gewünschten Entwicklerumgebung von ASP.NET-Bündelung und -Minimierung durchführen können, die Ihnen z. B. Folgendes bietet:
 
 * Hervorragende Benutzerfreundlichkeit des Debugmodus
@@ -508,9 +488,7 @@ Führen Sie die folgenden Schritte aus, um ASP.NET-Bündelung und -Minimierung i
 
 <a name="fallback"></a>
 
-<a id="fallback-mechanism-for-cdn-urls" class="xliff"></a>
-
-## Fallbackmechanismus für CDN-URLs
+## <a name="fallback-mechanism-for-cdn-urls"></a>Fallbackmechanismus für CDN-URLs
 Bei einem Fehler des Azure CDN-Endpunkts (gleich welcher Ursache) soll Ihre Webseite so intelligent sein, dass sie als Fallbackoption zum Laden von JavaScript oder Bootstrap auf den ursprünglichen Webserver zugreift. Wenn aufgrund der Nichterreichbarkeit des CDN Bilder auf der Website verloren gehen, ist dies eine Sache, wesentliche Seitenfunktionen zu verlieren, die durch Skripts und Stylesheets zur Verfügung gestellt werden, ist jedoch eine andere Sache.
 
 Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx)-Klasse enthält eine Eigenschaft namens [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx), mit der Sie den Fallbackmechanismus für CDN-Fehler konfigurieren können. Zur Verwendung dieser Eigenschaft führen Sie die folgenden Schritte aus:
@@ -614,9 +592,7 @@ Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.as
 
     Da jedoch der erste Teil des ||-Ausdrucks immer "true" zurückgibt (in der Zeile unmittelbar darüber), wird die document.write()-Funktion niemals ausgeführt.
 
-<a id="more-information" class="xliff"></a>
-
-## Weitere Informationen
+## <a name="more-information"></a>Weitere Informationen
 * [Übersicht über das Azure Content Delivery Network (CDN)](http://msdn.microsoft.com/library/azure/ff919703.aspx)
 * [Verwenden von Azure CDN](cdn-create-new-endpoint.md)
 * [ASP.NET-Bündelung und -Minimierung](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
