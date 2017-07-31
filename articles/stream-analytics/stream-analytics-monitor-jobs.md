@@ -22,15 +22,11 @@ ms.contentlocale: de-de
 ms.lasthandoff: 07/04/2017
 
 ---
-<a id="programmatically-create-a-stream-analytics-job-monitor" class="xliff"></a>
-
-# Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
+# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
 
 Dieser Artikel erläutert, wie die Überwachung für einen Stream Analytics-Auftrag aktiviert wird. Für Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, ist in der Standardeinstellung keine Überwachung aktiviert. Sie können diese manuell im Azure-Portal aktivieren, indem Sie zur Seite „Überwachen“ des Auftrags wechseln und auf die Schaltfläche „Aktivieren“ klicken. Sie können diesen Prozess auch automatisieren, indem Sie die in diesem Artikel beschriebenen Schritte ausführen. Die Überwachungsdaten werden im Azure-Portal im Bereich „Metriken“ für den Stream Analytics-Auftrag angezeigt.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
 
@@ -38,9 +34,7 @@ Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) (heruntergeladen und installiert)
 * Einen vorhandener Stream Analytics-Auftrag, für den die Überwachung aktiviert werden muss
 
-<a id="create-a-project" class="xliff"></a>
-
-## Erstellen eines Projekts
+## <a name="create-a-project"></a>Erstellen eines Projekts
 
 1. Erstellen Sie eine Visual Studio C# .NET-Konsolenanwendung.
 2. Führen Sie in der Paket-Manager-Konsole die folgenden Befehle zum Installieren der NuGet-Pakete aus. Das erste ist das Azure Stream Analytics Management .NET SDK. Das zweite ist das Azure Monitor SDK, mit dem die Überwachung aktiviert wird. Das letzte ist der Azure Active Directory-Client, der für die Authentifizierung verwendet wird.
@@ -124,9 +118,7 @@ Bevor Sie mit diesem Vorgang beginnen können, benötigen Sie Folgendes:
              throw new InvalidOperationException("Failed to acquire token");
      }
 
-<a id="create-management-clients" class="xliff"></a>
-
-## Erstellen von Verwaltungsclients
+## <a name="create-management-clients"></a>Erstellen von Verwaltungsclients
 
 Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclients eingerichtet.
 
@@ -148,9 +140,7 @@ Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclient
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
 
-<a id="enable-monitoring-for-an-existing-stream-analytics-job" class="xliff"></a>
-
-## Aktivieren der Überwachung für einen vorhandenen Stream Analytics-Auftrag
+## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Aktivieren der Überwachung für einen vorhandenen Stream Analytics-Auftrag
 
 Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream Analytics-Auftrag aktiviert. Der erste Teil des Codes führt eine GET-Anforderung an den Stream Analytics-Dienst aus, um Daten zum jeweiligen Stream Analytics-Auftrag abzurufen. Hierbei wird die (mit der GET-Anforderung abgerufene) *Id*-Eigenschaft als Parameter für die Put-Methode in der zweiten Hälfte des Codes verwendet, die eine PUT-Anforderung an den Insights-Dienst sendet, um die Überwachung des Stream Analytics-Auftrags zu aktivieren.
 
@@ -184,15 +174,11 @@ Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream A
 
 
 
-<a id="get-support" class="xliff"></a>
-
-## Support
+## <a name="get-support"></a>Support
 
 Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
