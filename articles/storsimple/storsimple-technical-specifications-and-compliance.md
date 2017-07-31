@@ -22,17 +22,11 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="technical-specifications-and-compliance-for-the-storsimple-device" class="xliff"></a>
-
-# Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
-<a id="overview" class="xliff"></a>
-
-## Übersicht
+# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
+## <a name="overview"></a>Übersicht
 Die Hardwarekomponenten des Microsoft Azure StorSimple-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Stromversorgungs- und Kühleinheiten (PCMs), Laufwerke, Speicherkapazität und Gehäuse beschrieben. Die Richtlinieninformationen umfassen z. B. internationale Standards sowie Sicherheits-, Emissions- sowie Verkabelungsbestimmungen.
 
-<a id="power-and-cooling-module-specifications" class="xliff"></a>
-
-## Spezifikationen der Stromversorgungs- und Kühleinheit
+## <a name="power-and-cooling-module-specifications"></a>Spezifikationen der Stromversorgungs- und Kühleinheit
 Das StorSimple-Gerät verfügt über zwei SBB-kompatible Stromversorgungs- und Kühleinheiten (PCMs) mit 100–240-V-Dual-Lüftern. Dadurch wird eine redundante Stromversorgungskonfiguration gewährleistet. Beim Ausfall eines PCMs wird das Gerät mit der anderen PCM normal weiterbetrieben, bis die fehlerhafte Einheit ausgetauscht wird.  
 
 Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mit einer PCM-Stromversorgung mit 764 W betrieben. In den folgenden Tabellen sind die technischen Spezifikationen der PCMs aufgeführt.
@@ -52,9 +46,7 @@ Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mi
 | Switches und LEDs |Netzteil-Ein-/Aus-Schalter und vier Status-LEDs |Netzteil-Ein-/Aus-Schalter und sechs Status-LEDs |
 | Gehäusekühlung |Axialer Lüfter mit variabler Lüftungssteuerung |Axialer Lüfter mit variabler Lüftungssteuerung |
 
-<a id="power-consumption-statistics" class="xliff"></a>
-
-## Stromverbrauchsstatistiken
+## <a name="power-consumption-statistics"></a>Stromverbrauchsstatistiken
 Die folgende Tabelle enthält die typischen Stromverbrauchsdaten für die verschiedenen Modelle von StorSimple-Geräten (tatsächliche Werte können von den veröffentlichten abweichen). 
 
 | Bedingungen | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
@@ -66,14 +58,10 @@ Die folgende Tabelle enthält die typischen Stromverbrauchsdaten für die versch
 |  Lüfter schnell, Laufwerkszugriff, Betrieb mit zwei Netzteilen |2,26 A |0,51 kW |1740,19 BTU/h |4,95 A |0,54 kW |1842,56 BTU/h |
 |  Lüfter schnell, Laufwerkszugriff, ein Netzteil zur Stromversorgung und das andere im Leerlauf |2,14 A |0,49 kW |1671,95 BTU/h |4,81 A |0,53 kW |1808,44 BTU/h |
 
-<a id="disk-drive-specifications" class="xliff"></a>
-
-## Laufwerksspezifikationen
+## <a name="disk-drive-specifications"></a>Laufwerksspezifikationen
 Das StorSimple-Gerät unterstützt bis zu zwölf serielle SAS-Laufwerke (Serial Attached SCSI) im 3,5-Zoll-Formfaktor. Bei den tatsächlichen Laufwerken kann es sich je nach Produktkonfiguration um eine Mischumgebung aus Solid-State-Laufwerken (SSDs) oder Festplattenlaufwerken (HDDs) handeln. Die zwölf Laufwerkseinschübe befinden sich in einer 3 x 4-Konfiguration vor dem Gehäuse. Das EBOD-Gehäuse bietet zusätzlichen Platz für weitere zwölf Laufwerke. Dies müssen jedoch HDDs sein.  
 
-<a id="storage-specifications" class="xliff"></a>
-
-## Speicherspezifikation
+## <a name="storage-specifications"></a>Speicherspezifikation
 Sowohl das StorSimple 8100 als auch das StorSimple 8600 verfügen über eine Kombination aus Festplatten- und Solid-State-Laufwerken. Die für 8100 und 8600 nutzbare Gesamtkapazität beträgt etwa 15 TB bzw. 38 TB. In der folgenden Tabelle sind die Details von SSD-, HDD- und Cloudkapazität im Kontext der Kapazität der StorSimple-Lösung dokumentiert.
 
 | Gerätemodell/Kapazität | 8100 | 8600 |
@@ -90,14 +78,10 @@ Sowohl das StorSimple 8100 als auch das StorSimple 8600 verfügen über eine Kom
 
 <sup>* </sup>- *Die nutzbare Gesamtkapazität umfasst die Kapazität, die für Daten, Metadaten und Puffer verfügbar ist.*
 
-<a id="enclosure-dimensions-and-weight-specifications" class="xliff"></a>
-
-## Gehäuseabmessungen und Gewicht
+## <a name="enclosure-dimensions-and-weight-specifications"></a>Gehäuseabmessungen und Gewicht
 In den folgenden Tabellen sind die verschiedenen Gehäusespezifikationen (Abmessungen und Gewicht) aufgeführt.  
 
-<a id="enclosure-dimensions" class="xliff"></a>
-
-### Gehäuseabmessungen
+### <a name="enclosure-dimensions"></a>Gehäuseabmessungen
 Die folgenden Tabellen enthalten die Abmessungen des Gehäuses in Millimetern und Zoll.
 
 | Gehäuse | Millimeter | Zoll |
@@ -109,9 +93,7 @@ Die folgenden Tabellen enthalten die Abmessungen des Gehäuses in Millimetern un
 | Tiefe vom Bedienfeld bis zum äußeren Ende des Gehäuses |630,5 |24,82 |
 | Tiefe von der Befestigungsfläche bis zum äußeren Ende des Gehäuses |603 |23,74 |
 
-<a id="enclosure-weight" class="xliff"></a>
-
-### Gehäusegewicht
+### <a name="enclosure-weight"></a>Gehäusegewicht
 Je nach Konfiguration kann ein vollständig beladenes primäres Gehäuse von 21 kg bis zu 33 kg wiegen und muss von zwei Personen getragen werden. 
 
 | Gehäuse | Gewicht |
@@ -119,22 +101,16 @@ Je nach Konfiguration kann ein vollständig beladenes primäres Gehäuse von 21�
 | Max. Gewicht (abhängig von der Konfiguration) |30–33 kg |
 | Leer (ohne Laufwerke) |21–23 kg |
 
-<a id="enclosure-environment-specifications" class="xliff"></a>
-
-## Spezifikationen der Gehäuseumgebung
+## <a name="enclosure-environment-specifications"></a>Spezifikationen der Gehäuseumgebung
 Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseumgebung. Diese Kategorie enthält die Umgebungsvorgaben für Temperatur, Feuchtigkeit, Höhe, Stoßfestigkeit, Schwingungen, Ausrichtung, Sicherheit und elektromagnetische Kompatibilität (EMC).  
 
-<a id="temperature-and-humidity" class="xliff"></a>
-
-### Temperatur und Feuchtigkeit
+### <a name="temperature-and-humidity"></a>Temperatur und Feuchtigkeit
 | Gehäuse | Umgebungstemperaturspanne | Relative Luftfeuchtigkeit der Umgebung | Maximale Feuchttemperatur |
 | --- | --- | --- | --- |
 | Bei Betrieb |5 °C bis 35 °C |20–80 % nicht kondensierend |28 °C |
 | Außerhalb des Betriebs |–40 °C bis 70 °C |5–100 % nicht kondensierend |29 °C |
 
-<a id="airflow-altitude-shock-vibration-orientation-safety-and-emc" class="xliff"></a>
-
-### Luftströmung, Höhe, Stöße, Schwingungen, Ausrichtung, Sicherheit und EMC
+### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Luftströmung, Höhe, Stöße, Schwingungen, Ausrichtung, Sicherheit und EMC
 | Gehäuse | Betriebsspezifikationen |
 | --- | --- |
 | Luftströmung |Die Luftströmung im System verläuft von vorne nach hinten. Das System muss mit einem hinteren Luftstromauslass mit niedrigem Druck betrieben werden. Der Rückstau durch Gehäusetüren und Hindernisse sollte 5 Pascal (0,5 mm Wassersäule) nicht überschreiten. |
@@ -150,76 +126,54 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 | Sicherheit und Genehmigungen |CE und UL EN 61000-3, IEC 61000-3, UL 61000-3 |
 | EMC |EN55022 (CISPR – A), FCC A |
 
-<a id="international-standards-compliance" class="xliff"></a>
-
-## Einhaltung internationaler Standards
+## <a name="international-standards-compliance"></a>Einhaltung internationaler Standards
 Ihr Microsoft Azure StorSimple-Gerät entspricht den folgenden internationalen Standards:  
 
 * CE – EN 60950 – 1  
 * CB-Zertifizierung für IEC 60950 - 1  
 * UL und cUL für UL 60950 - 1  
 
-<a id="safety-compliance" class="xliff"></a>
-
-## Sicherheitskompatibilität
+## <a name="safety-compliance"></a>Sicherheitskompatibilität
 Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden Sicherheitsstandards:  
 
 * System-Produkttypgenehmigung: UL, cUL, CE  
 * Sicherheitskompatibilität: UL 60950, IEC 60950, EN 60950  
 
-<a id="emc-compliance" class="xliff"></a>
-
-## EMC-kompatibel
+## <a name="emc-compliance"></a>EMC-kompatibel
 Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden EMC-Standards:  
 
-<a id="emissions" class="xliff"></a>
-
-### Emissionen
+### <a name="emissions"></a>Emissionen
 Das Gerät ist EMC-konform für Leitungs- und Strahlungsemissionswerte.  
 
 * Leitungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A  
 * Strahlungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A   
 
-<a id="harmonics-and-flicker" class="xliff"></a>
-
-### Oberschwingungen und Flicker
+### <a name="harmonics-and-flicker"></a>Oberschwingungen und Flicker
 Das Gerät entspricht EN61000-3-2/3.  
 
-<a id="immunity-limit-levels" class="xliff"></a>
-
-### Immunitätsgrenzwerte
+### <a name="immunity-limit-levels"></a>Immunitätsgrenzwerte
 Das Gerät entspricht EN55024.  
 
-<a id="ac-power-cord-compliance" class="xliff"></a>
-
-## Netzkabelkompatibilität
+## <a name="ac-power-cord-compliance"></a>Netzkabelkompatibilität
 Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweiligen Landes entsprechen, in dem das Gerät verwendet wird, und sie müssen über die erforderlichen Sicherheitsgenehmigungen für das Land verfügen. In den folgenden Tabellen sind die Standards für USA und Europa aufgeführt.  
 
-<a id="ac-power-cords---usa-must-be-nrtl-listed" class="xliff"></a>
-
-### Netzkabel – USA (muss NRTL-registriert sein)
+### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Netzkabel – USA (muss NRTL-registriert sein)
 | Component | Spezifikation |
 | --- | --- |
 | Kabeltyp |SV oder SVT, 18 AWG Minimum, 3 Leiter, 2,0 m Maximallänge |
 | Stecker |NEMA 5-15P-Stecker mit Erdung und Nennwerten von 120 V, 10 A; oder IEC 320 C14, 250 V, 10 A |
 | Steckdose |IEC 320 C-13, 250 V, 10 A |
 
-<a id="ac-power-cords---europe" class="xliff"></a>
-
-### Netzkabel – Europa
+### <a name="ac-power-cords---europe"></a>Netzkabel – Europa
 | Component | Spezifikation |
 | --- | --- |
 | Kabeltyp |Harmonisiert, H05-VVF-3G1.0 |
 | Steckdose |IEC 320 C-13, 250 V, 10 A |
 
-<a id="supported-network-cables" class="xliff"></a>
-
-## Unterstützte Netzwerkkabel
+## <a name="supported-network-cables"></a>Unterstützte Netzwerkkabel
 Für die 10-GbE-Netzwerkschnittstellen, DATA 2 und DATA 3, finden Sie Informationen in der [Liste der unterstützten Netzwerkkabel und Module](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt ein StorSimple-Gerät in Ihrem Datencenter bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen Ihres lokalen Geräts](storsimple-deployment-walkthrough-u2.md).  
 
 

@@ -22,9 +22,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="analyze-azure-cdn-usage-patterns" class="xliff"></a>
-
-# Analysieren von Azure CDN-Verwendungsmustern
+# <a name="analyze-azure-cdn-usage-patterns"></a>Analysieren von Azure CDN-Verwendungsmustern
 
 [!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
@@ -39,9 +37,7 @@ Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzei
 * Cachetrefferquote
 * Übertragene IPV4-/IPV6-Daten
 
-<a id="accessing-core-reports" class="xliff"></a>
-
-## Zugreifen auf Kernberichte
+## <a name="accessing-core-reports"></a>Zugreifen auf Kernberichte
 1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten** .
    
     ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-reports/cdn-manage-btn.png)
@@ -51,9 +47,7 @@ Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzei
    
     ![CDN-Verwaltungsportal – Menü „Core Reports“ (Kernberichte)](./media/cdn-reports/cdn-core-reports.png)
 
-<a id="bandwidth" class="xliff"></a>
-
-## Bandbreite
+## <a name="bandwidth"></a>Bandbreite
 Der Bandbreitenbericht besteht aus einem Diagramm und einer Datentabelle, die die Nutzung der Bandbreite für HTTP und HTTPS über einen bestimmten Zeitraum angibt. Sie können die Auslastung der Bandbreite für alle CDN-POPs oder für einen bestimmten POP anzeigen. So sehen Sie Spitzen im Datenverkehr und die Verteilung über die CDN-POPs in MBit/s.
 
 * Wählen Sie "Alle Edgeknoten", um Datenverkehr von allen Knoten anzuzeigen, oder wählen Sie einen bestimmten Bereich/Knoten aus der Dropdownliste aus.
@@ -64,9 +58,7 @@ Der Bericht wird alle fünf Minuten aktualisiert.
 
 ![Bericht zur Bandbreite](./media/cdn-reports/cdn-bandwidth.png)
 
-<a id="data-transferred" class="xliff"></a>
-
-## Übertragene Daten
+## <a name="data-transferred"></a>Übertragene Daten
 Dieser Bericht besteht aus einem Diagramm und einer Datentabelle, die den Datenverkehr für HTTP und HTTPS über einen bestimmten Zeitraum angibt. Sie können den Datenverkehr für alle CDN-POPs oder für ein bestimmtes POP anzeigen. So sehen Sie Spitzen im Datenverkehr und die Verteilung über die CDN-POPs in GB.
 
 * Wählen Sie "Alle Edgeknoten", um Datenverkehr von allen Knoten anzuzeigen, oder wählen Sie einen bestimmten Bereich/Knoten aus der Dropdownliste aus.
@@ -77,9 +69,7 @@ Der Bericht wird alle fünf Minuten aktualisiert.
 
 ![Bericht zu übertragenen Daten](./media/cdn-reports/cdn-data-transferred.png)
 
-<a id="hits-status-codes" class="xliff"></a>
-
-## Treffer (Statuscodes)
+## <a name="hits-status-codes"></a>Treffer (Statuscodes)
 Dieser Bericht zeigt die Verteilung von Anforderungsstatuscodes für Ihre Inhalte. Jede Inhaltsanforderung generiert einen HTTP-Statuscode. Der Statuscode beschreibt, wie die Anforderung von Edge-POPs behandelt wurde. Beispielsweise weisen 2xx-Statuscodes darauf hin, dass die Anforderung erfolgreich für einen Client verarbeitet wurde, während ein 4xx-Statuscode auf einen Fehler hinweist. Weitere Informationen zum HTTP-Statuscode finden Sie unter [Statuscodes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
 
 * Wählen Sie "Datumsbereich", um Daten für heute/diese Woche/diesen Monat usw. anzuzeigen, oder geben Sie selbst Datumsangaben ein, und klicken Sie auf "Los", um sicherzustellen, dass Ihre Auswahl aktualisiert wird.
@@ -87,16 +77,12 @@ Dieser Bericht zeigt die Verteilung von Anforderungsstatuscodes für Ihre Inhalt
 
 ![Bericht zu Treffern](./media/cdn-reports/cdn-hits.png)
 
-<a id="cache-statuses" class="xliff"></a>
-
-## Cachestatus
+## <a name="cache-statuses"></a>Cachestatus
 Dieser Bericht zeigt die Verteilung der Cachetreffer und Cachefehler für eine Clientanforderung an. Da die schnellste Leistung durch Cachetreffer erzielt wird, können Sie die Geschwindigkeit der Datenübermittlung optimieren, indem Sie Cachefehler und abgelaufene Cachetreffer auf ein Minimum reduzieren. Cachefehler können durch Konfigurieren des Ursprungsservers verringert werden, um die Zuweisung von "no-cache"-Antwortheadern zu vermeiden. Ferner können Sie das Zwischenspeichern von Abfragezeichenfolgen unterbinden, wo es nicht unbedingt notwendig ist, und Antwortcodes vermeiden, die nicht zwischenspeicherbar sind. Abgelaufene Cachetreffer können vermieden werden, indem Sie den Wert "max-age" eines Medienobjekts so hoch wie möglich setzen, um die Anzahl der Anforderungen an den Ursprungsserver zu minimieren.
 
 ![Bericht zum Cachestatus](./media/cdn-reports/cdn-cache-statuses.png)
 
-<a id="main-cache-statuses-include" class="xliff"></a>
-
-### Im Folgenden sind die wichtigsten Cachestatusangaben aufgeführt:
+### <a name="main-cache-statuses-include"></a>Im Folgenden sind die wichtigsten Cachestatusangaben aufgeführt:
 * TCP_HIT: Von Edge bereitgestellt. Das Objekt befand sich im Cache und hatte den Wert "max-age" nicht überschritten.
 * TCP_MISS: Vom Ursprung bereitgestellt. Das Objekt befand sich nicht im Cache, und die Antwort ging zurück an den Ursprung.
 * TCP_EXPIRED _MISS: Vom Ursprung bereitgestellt nach erneuter Überprüfung beim Ursprung. Das Objekt befand sich im Cache, hatte jedoch den Wert "max-age" überschritten. Eine erneute Überprüfung beim Ursprung führte zum Ersetzen des Cacheobjekts durch eine neue Antwort vom Ursprung.
@@ -104,9 +90,7 @@ Dieser Bericht zeigt die Verteilung der Cachetreffer und Cachefehler für eine C
 * Wählen Sie "Datumsbereich", um Daten für heute/diese Woche/diesen Monat usw. anzuzeigen, oder geben Sie selbst Datumsangaben ein, und klicken Sie auf "Los", um sicherzustellen, dass Ihre Auswahl aktualisiert wird.
 * Sie können die Daten exportieren und herunterladen, indem Sie neben "Los" auf das Excel-Arbeitsblattsymbol klicken.
 
-<a id="full-list-of-cache-statuses" class="xliff"></a>
-
-### Vollständige Liste der Cachestatusangaben
+### <a name="full-list-of-cache-statuses"></a>Vollständige Liste der Cachestatusangaben
 * TCP_HIT: Dieser Status wird gemeldet, wenn eine Anforderung direkt vom POP für den Client bereitgestellt wird. Ein Medienobjekt wird sofort von einem POP bereitgestellt, wenn es auf dem dem Client nächstgelegenen POP zwischengespeichert ist und über eine entsprechende Gültigkeitsdauer und gültige TTL verfügt. Die Gültigkeitsdauer (TTL) wird durch die folgenden Antwortheader bestimmt:
   
   * Cache-Control: s-maxage
@@ -125,9 +109,7 @@ Dieser Bericht zeigt die Verteilung der Cachetreffer und Cachefehler für eine C
 * TCP_ PARTIAL_HIT: Dieser Status wird gemeldet, wenn eine Bytebereichsanforderung zu einem Treffer für ein teilweise zwischengespeichertes Medienobjekt führt. Der angeforderte Bytebereich wird sofort vom POP an den Client übermittelt.
 * UNCACHEABLE: Dieser Status wird gemeldet, wenn die Header "Cache-Control" und "Expires" eines Medienobjekts darauf hinweisen, dass dieses nicht auf einem POP oder vom HTTP-Client zwischengespeichert werden soll. Diese Anforderungstypen werden vom Ursprungsserver bereitgestellt.
 
-<a id="cache-hit-ratio" class="xliff"></a>
-
-## Cachetrefferquote
+## <a name="cache-hit-ratio"></a>Cachetrefferquote
 Dieser Bericht zeigt den Prozentsatz der zwischengespeicherten Anforderungen an, die direkt aus dem Cache bedient wurden.
 
 Die Details finden Sie im folgenden Bericht:
@@ -149,9 +131,7 @@ Die Formel lautet: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
 
 ![Bericht zur Cachetrefferquote](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
-<a id="ipv4ipv6-data-transferred" class="xliff"></a>
-
-## Übertragene IPV4-/IPV6-Daten
+## <a name="ipv4ipv6-data-transferred"></a>Übertragene IPV4-/IPV6-Daten
 Dieser Bericht zeigt die Verteilung des Datenverkehrs in IPV4 und IPV6.
 
 ![Übertragene IPV4-/IPV6-Daten](./media/cdn-reports/cdn-ipv4-ipv6.png)
@@ -159,9 +139,7 @@ Dieser Bericht zeigt die Verteilung des Datenverkehrs in IPV4 und IPV6.
 * Wählen Sie "Datumsbereich", um Daten für heute/diese Woche/diesen Monat usw. anzuzeigen, oder geben Sie selbst Datumsangaben ein.
 * Klicken Sie dann auf "Los", um sicherzustellen, dass Ihre Auswahl aktualisiert wird.
 
-<a id="considerations" class="xliff"></a>
-
-## Überlegungen
+## <a name="considerations"></a>Überlegungen
 Berichte können nur über die letzten 18 Monate generiert werden.
 
 

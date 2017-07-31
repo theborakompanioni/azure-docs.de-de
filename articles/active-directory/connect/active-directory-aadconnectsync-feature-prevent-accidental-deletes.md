@@ -21,16 +21,12 @@ ms.contentlocale: de-de
 ms.lasthandoff: 03/24/2017
 
 ---
-<a id="azure-ad-connect-sync-prevent-accidental-deletes" class="xliff"></a>
-
-# Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen
+# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen
 In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
 
 Bei der Installation von Azure AD Connect wird die Funktion zum Schutz vor unbeabsichtigtem Löschen standardmäßig aktiviert und so konfiguriert, das Exporte mit mehr als 500 Löschungen unterbunden werden. Diese Funktion dient zum Schutz vor unbeabsichtigten Konfigurationsänderungen und Änderungen an Ihrem lokalen Verzeichnis, die sich auf viele Benutzer und andere Objekte auswirken würden.
 
-<a id="what-is-prevent-accidental-deletes" class="xliff"></a>
-
-## Verhindern von versehentlichen Löschungen
+## <a name="what-is-prevent-accidental-deletes"></a>Verhindern von versehentlichen Löschungen
 Häufige Szenarios für Löschvorgänge sind beispielsweise:
 
 * Änderungen an der [Filterung](active-directory-aadconnectsync-configure-filtering.md), bei denen die Auswahl einer gesamten [Organisationseinheit](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) oder [Domäne](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) aufgehoben wird.
@@ -68,9 +64,7 @@ Wenn alle Löschvorgänge gewünscht sind, gehen Sie folgendermaßen vor:
 3. Lassen Sie Azure Active Directory Connector weiterhin ausgewählt, wählen Sie die Aktion **Run** (Ausführen) und anschließend **Export** (Exportieren) aus.
 4. Führen Sie zum erneuten Aktivieren des Schutzes folgendes PowerShell-Cmdlet aus: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. Ersetzen Sie „500“ durch den Wert, den Sie beim Abrufen des aktuellen Schwellenwerts für Löschungen notiert haben. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 **Übersichtsthemen**
 
 * [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
