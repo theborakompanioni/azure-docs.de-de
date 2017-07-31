@@ -15,18 +15,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/20/2017
+ms.date: 07/21/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 0625984bf10588fe50a2632285f565eb79b66ab7
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: ad4330a1fc7f8de154d9aaa8df3acc2ab59b9dc1
 ms.contentlocale: de-de
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Erstellen eines Apache Spark-Clusters in Azure HDInsight
 
-In diesem Artikel erfahren Sie, wie einen Apache Spark-Cluster in Azure HDInsight erstellen.
+In diesem Artikel erfahren Sie, wie einen Apache Spark-Cluster in Azure HDInsight erstellen. Informationen zu Spark in HDInsight finden Sie unter [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md).
 
    ![Schnellstartdiagramm mit einer Beschreibung der Schritte zum Erstellen eines Apache Spark-Clusters unter Azure HDInsight](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "Spark-Schnellstart mit Apache Spark in HDInsight. Dargestellte Schritte: Erstellen eines Clusters; Ausführen einer interaktiven Spark-Abfrage")
 
@@ -115,10 +115,17 @@ Wenn Sie ein für Ihren HDInsight Spark-Cluster konfiguriertes Jupyter Notebook 
 
 7. Fahren Sie das Notebook nach dem Ausführen der Anwendung herunter, um die Clusterressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**.
 
-## <a name="next-step"></a>Nächster Schritt
+8. Falls Sie die nächsten Schritte erst zu einem späteren Zeitpunkt ausführen möchten, löschen Sie den in diesem Artikel erstellten HDInsight-Cluster wieder. 
 
-In diesem Artikel haben Sie gelernt, wie Sie einen HDInsight Spark-Cluster erstellen und eine einfache Spark SQL-Abfrage ausführen. Erfahren Sie als Nächstes, wie Sie [Daten in HDInsight Spark laden und eine interaktive Abfrage ausführen](hdinsight-apache-spark-load-data-run-query.md).
+    [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Falls Sie die nächsten Schritte erst zu einem späteren Zeitpunkt ausführen möchten, löschen Sie den HDInsight-Cluster wieder. 
+## <a name="next-step"></a>Nächster Schritt 
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+In diesem Artikel haben Sie gelernt, wie Sie einen HDInsight Spark-Cluster erstellen und eine einfache Spark SQL-Abfrage ausführen. Im nächsten Artikel erfahren Sie, wie Sie mithilfe eines HDInsight Spark-Clusters interaktive Abfragen für Beispieldaten ausführen.
+
+> [!div class="nextstepaction"]
+>[Ausführen interaktiver Abfragen in einem HDInsight Spark-Cluster](hdinsight-apache-spark-load-data-run-query.md)
+
+
+
+

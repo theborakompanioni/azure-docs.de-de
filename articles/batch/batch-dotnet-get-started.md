@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9776bd4f703227f49f83f563489cfa7c44604fb8
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 1dc728cf6497d8ba0d35a7e41e51a52c5ca6d7df
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Erste Schritte zum Erstellen von Lösungen mit der Batch-Clientbibliothek für .NET
@@ -42,7 +41,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über C#- und Visual Studio-G
 ### <a name="accounts"></a>Konten
 * **Azure-Konto**: Falls Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
 * **Batch-Konto**: Wenn Sie über ein Azure-Abonnement verfügen, können Sie ein [Azure Batch-Konto erstellen](batch-account-create-portal.md).
-* **Storage-Konto**: Weitere Informationen finden Sie unter Informationen zu [Azure Storage-Konten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
+* **Storage-Konto**: Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
 
 > [!IMPORTANT]
 > Batch unterstützt derzeit *nur* den Speicherkontotyp **Allgemein** (siehe Schritt 5, [Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account), unter [Informationen zu Azure Storage-Konten](../storage/storage-create-storage-account.md)).
@@ -105,7 +104,7 @@ private const string StorageAccountKey  = "";
 ```
 
 > [!IMPORTANT]
-> Wie bereits erwähnt, müssen momentan Anmeldeinformationen für ein Speicherkonto vom Typ **Allgemein** in Azure Storage angegeben werden. Ihre Batch-Anwendungen verwenden Blob Storage innerhalb des Speicherkontos vom Typ **Allgemein** . Geben Sie keine Anmeldeinformationen für ein Speicherkonto an, das mit dem Kontotyp *Blob Storage* erstellt wurde.
+> Wie bereits erwähnt, müssen momentan Anmeldeinformationen für ein Speicherkonto vom Typ **Allgemein** in Azure Storage angegeben werden. Ihre Batch-Anwendungen verwenden Blob Storage innerhalb des Speicherkontos vom Typ **Allgemein**. Geben Sie keine Anmeldeinformationen für ein Speicherkonto an, das mit dem Kontotyp *Blob Storage* erstellt wurde.
 >
 >
 
@@ -363,7 +362,12 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
 }
 ```
 
-Beim Erstellen eines Pools mit [CreatePool][net_pool_create] müssen mehrere Parameter angegeben werden – etwa die Anzahl von Computeknoten, die [Größe der Knoten](../cloud-services/cloud-services-sizes-specs.md) und das Betriebssystem der Knoten. In *DotNetTutorial* verwenden wir [CloudServiceConfiguration][net_cloudserviceconfiguration], um Windows Server 2012 R2 über [Cloud Services](../cloud-services/cloud-services-guestos-update-matrix.md) anzugeben. Wenn Sie stattdessen ein [VirtualMachineConfiguration][net_virtualmachineconfiguration]-Element angeben, können Sie Pools mit Knoten erstellen, die mit Marketplace-Images (für Windows und Linux) erstellt wurden. Weitere Informationen finden Sie unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md).
+Beim Erstellen eines Pools mit [CreatePool][net_pool_create] müssen mehrere Parameter angegeben werden – etwa die Anzahl von Computeknoten, die [Größe der Knoten](../cloud-services/cloud-services-sizes-specs.md) und das Betriebssystem der Knoten. In *DotNetTutorial* verwenden wir [CloudServiceConfiguration][net_cloudserviceconfiguration], um Windows Server 2012 R2 über [Cloud Services](../cloud-services/cloud-services-guestos-update-matrix.md) anzugeben. 
+
+Sie können auch Pools mit Computeknoten erstellen, bei denen es sich um virtuelle Azure-Computer handelt. Geben Sie hierzu für Ihren Pool die Klasse [VirtualMachineConfiguration][net_virtualmachineconfiguration] an. Sie können einen Pool mit VM-Computeknoten auf der Grundlage von Windows- oder [Linux-Images](batch-linux-nodes.md) erstellen. Mögliche Quellen für Ihre VM-Images:
+
+- Der [Azure Virtual Machines Marketplace][vm_marketplace] mit vorgefertigten Windows- und Linux-Images. 
+- Benutzerdefiniertes, von Ihnen vorbereitetes und bereitgestelltes Image. Weitere Informationen zu benutzerdefinierten Images finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#pool).
 
 > [!IMPORTANT]
 > Die Nutzung von Computeressourcen in Batch wird Ihnen berechnet. Zur Kostenminimierung können Sie `targetDedicatedComputeNodes` auf 1 verringern, bevor Sie das Beispiel ausführen.
@@ -788,6 +792,7 @@ Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertra
 [nuget_restore]: https://docs.nuget.org/consume/package-restore/msbuild-integrated#enabling-package-restore-during-build
 [storage_explorers]: http://storageexplorer.com/
 [visual_studio]: https://www.visualstudio.com/vs/
+[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
 [1]: ./media/batch-dotnet-get-started/batch_workflow_01_sm.png "Erstellen von Containern in Azure Storage"
 [2]: ./media/batch-dotnet-get-started/batch_workflow_02_sm.png "Hochladen von Aufgabenanwendungs- und Eingabedatendateien in Container"

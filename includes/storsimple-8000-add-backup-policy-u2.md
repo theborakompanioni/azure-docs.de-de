@@ -12,7 +12,7 @@
    
    1. **Gerät auswählen** wird automatisch mit den Informationen Ihres ausgewählten Geräts ausgefüllt.
    
-   2. Geben Sie für Ihre **Sicherungsrichtlinie einen Namen** an, der zwischen 3 und 150 Zeichen lang ist.
+   2. Geben Sie für Ihre **Sicherungsrichtlinie einen Namen** an, der zwischen 3 und 150 Zeichen lang ist. Der Name der Richtlinie kann nach der Erstellung nicht mehr geändert werden.
        
    3. Zum Hinzufügen von Volumes zu dieser Sicherungsrichtlinie wählen Sie **Volumes hinzufügen**, und klicken dann in der tabellarischen Volumeauflistung auf das bzw. die Kontrollkästchen, um dieser Sicherungsrichtlinie ein oder mehrere Volumes zuzuweisen.
 

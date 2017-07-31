@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/20/2017
+ms.date: 07/25/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 07b9f4626e9129c7eeb94d43883417f324da5292
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: d68b641ac934c3930366be3dbf89a86e9611c7b7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="administer-your-azure-ad-directory"></a>Verwalten Ihres Azure AD-Verzeichnisses
@@ -65,7 +65,7 @@ Wenn Sie noch nicht über ein Abonnement für einen Microsoft-Clouddienst verfü
 
 * [Microsoft Azure](https://account.windowsazure.com/organization)
 * [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
-* [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
+* [Microsoft Intune](https://portal.office.com/Signup/Signup.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&dl=INTUNE_A&ali=1#0%20)
 
 ### <a name="manage-an-azure-provisioned-default-directory"></a>Ein Standardverzeichnis mit Azure-Bereitstellung verwalten
 Heute wird ein Verzeichnis automatisch erstellt, wenn Sie sich für Azure registrieren und Ihr Abonnement diesem Verzeichnis zugeordnet ist. Wenn Sie sich ursprünglich vor Oktober 2013 für Azure registriert haben, wurde ein Verzeichnis jedoch nicht automatisch erstellt. In diesem Fall hat Azure Ihr Konto möglicherweise "abgeglichen", indem ein Standardverzeichnis bereitgestellt wurde. Ihr Abonnement wurde dann diesem Standardverzeichnis zugeordnet.

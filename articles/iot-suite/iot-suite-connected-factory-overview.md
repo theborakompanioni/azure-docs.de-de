@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 97da0f4dc5d5528bfb803eefe9037651939a8efd
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: d9d4dcf16954b0cd831e017ecb305d30e3b36dc7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Erste Schritte mit der vorkonfigurierten Connected Factory-Lösung
@@ -78,7 +77,7 @@ Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Dies ist
 
     ![Vorkonfigurierte Lösung starten][img-launch-solution]
 
-1. Standardmäßig zeigt das Lösungsportal das *Dashboard* an. Verwenden Sie das Menü links auf der Seite, um zu anderen Bereichen des Portals zu navigieren.
+1. Standardmäßig zeigt das Lösungsportal das *Dashboard* an. Über das Menü auf der linken Seite gelangen Sie zu anderen Bereichen des Portals.
 
     ![Vorkonfigurierte Connected Factory-Lösung: Dashboard][cf-img-menu]
 
@@ -110,21 +109,21 @@ Im Bereich *Factories* (Werke) werden der geografische Standort aller Werke der 
 
 ## <a name="view-map"></a>Anzeigen der Karte
 
-Wenn für Ihr Abonnement Zugriff auf die Bing Maps-API besteht, werden Ihnen auf der Karte mit den *Werken* der geografische Standort und der Status aller Werke einer Lösung angezeigt. Klicken Sie auf die Standorte, die auf der Karte angezeigt werden, um die Standortdetails dazu aufzurufen.
+Wenn für Ihr Abonnement Zugriff auf die Bing Maps-API besteht, werden Ihnen auf der Karte mit den *Werken* der geografische Standort und der Status aller Werke einer Lösung angezeigt. Klicken Sie auf die Standorte, die auf der Karte angezeigt werden, um Details zum jeweiligen Standort anzuzeigen.
 
 ![Vorkonfigurierte Connected Factory-Lösung: Karte][cf-img-map]
 
 ## <a name="view-alerts"></a>Anzeigen von Warnungen
 
-Im Bereich mit dem Verlauf der **Warnungen** werden die Warnungen angezeigt, die generiert werden, weil ein gemeldeter Wert oder ein berechneter OEE/KPI-Wert den konfigurierten Schwellenwert überschreitet. In diesem Bereich werden Warnungen auf jeder Ebene der Hierarchie angezeigt – von der Stationsebenenansicht bis zur globalen Ansicht. Die Warnungen enthalten eine Beschreibung der Warnung, des Datums, der Uhrzeit, des Standorts und der Häufigkeit. Sie erhalten einen Einblick in die Daten, die zu der Warnung geführt haben, indem die Time Series Insights-Daten verwendet werden. Die Time Series Insights-Daten werden in den Warnungen visualisiert, soweit dies möglich ist. Als Administrator können Sie Standardaktionen für die Warnungen durchführen, z.B.:
+Der Bereich **Warnung** enthält Warnungen, die generiert werden, wenn ein gemeldeter Wert oder ein berechneter OEE/KPI-Wert den konfigurierten Schwellenwert übersteigt. In diesem Bereich werden Warnungen auf jeder Ebene der Hierarchie angezeigt – von der Stationsebenenansicht bis zur globalen Ansicht. Die Warnungen enthalten eine Beschreibung der Warnung, des Datums, der Uhrzeit, des Standorts und der Häufigkeit. Sie erhalten einen Einblick in die Daten, die zu der Warnung geführt haben, indem die Time Series Insights-Daten verwendet werden. Die Time Series Insights-Daten werden in den Warnungen visualisiert, soweit dies möglich ist. Als Administrator können Sie Standardaktionen für die Warnungen durchführen, z.B.:
 
 * Schließen der Warnung
 * Bestätigen der Warnung
 
 Optional können Sie auch komplexere Aktionen durchführen. Für den Knoten „Pressure OPC UA“ (OPC UA für Druck) der Baugruppe können Sie beispielsweise auch Folgendes durchführen:
 
-* Laden einer Webseite in einem neuen Browserfenster zum Anzeigen von hilfreichen Informationen
-* Aufrufen einer OPC UA-Methode auf dem Gerät zum Beseitigen der Ursache einer Warnung
+* Anzeigen hilfreicher Informationen auf einer Webseite in einem neuen Browserfenster
+* Beseitigen der Warnungsursache durch Aufrufen einer OPC UA-Methode auf dem Gerät
 * Unterdrücken der Verfügbarkeit der Standardaktionen
 
     ![Vorkonfigurierte Connected Factory-Lösung: Warnungen][cf-img-alerts]
@@ -148,7 +147,7 @@ Mit dem OEE-Wert wird die Effizienz des Fertigungsprozesses bewertet, indem prod
 
 1. Navigieren Sie zur jeweils gewünschten Ansicht, um den OEE-Wert für eine Ebene der Hierarchie anzuzeigen. Der OEE-Wert für diese Ansicht wird im Bereich zusammen mit den einzelnen Elementen angezeigt, die den OEE-Prozentsatz bilden.
 
-2. Um den OEE-Wert für eine beliebige Ebene der Hierarchiedaten eingehender zu analysieren, können Sie entweder auf den OEE-Prozentsatz, den Verfügbarkeitsprozentsatz, den Leistungsprozentsatz oder den Qualitätsprozentsatz klicken. Es wird ein Kontextbereich mit auf Time Series Insights basierenden Visualisierungen angezeigt, in dem Daten der letzten Stunde, letzten 24 Stunden und letzten sieben Tage angegeben sind.
+2. Zur eingehenderen Analyse des OEE-Werts für eine beliebige Ebene der Hierarchiedaten können Sie auf den OEE-Prozentsatz, den Verfügbarkeitsprozentsatz, den Leistungsprozentsatz oder den Qualitätsprozentsatz klicken. Es wird ein Kontextbereich mit auf Time Series Insights basierenden Visualisierungen angezeigt, in dem Daten der letzten Stunde, letzten 24 Stunden und letzten sieben Tage angegeben sind.
 
     ![Vorkonfigurierte Connected Factory-Lösung: TSI-Visualisierung][cf-img-tsi-visualization]
 
@@ -164,7 +163,7 @@ Die Lösung enthält zwei Key Performance Indicators: *Einheiten pro Stunde* und
 
 1. Navigieren Sie zur jeweiligen Ansicht, um für eine beliebige Ebene der Hierarchie die Einheiten pro Stunde oder die verbrauchte Energie anzuzeigen. Die Einheiten pro Stunde und die verbrauchte Energie werden im Bereich angezeigt.
 
-2. Um die Einheiten pro Stunde oder die verbrauchte Energie für eine beliebige Ebene der Hierarchiedaten eingehender zu analysieren, klicken Sie im Bereich **Key Performance Indicators** entweder auf die Anzeige für die produzierten Einheiten oder den Energieverbrauch. Es wird ein Kontextbereich mit auf Time Series Insights basierenden Visualisierungen angezeigt, in dem Sie die Daten der letzten Stunde, letzten 24 Stunden und letzten sieben Tage aufrufen können.
+2. Zur eingehenderen Analyse der Einheiten pro Stunde oder des Energieverbrauchs für eine beliebige Ebene der Hierarchiedaten können Sie im Bereich **Key Performance Indicators** auf die entsprechende Anzeige klicken. Es wird ein Kontextbereich mit auf Time Series Insights basierenden Visualisierungen angezeigt, in dem Sie die Daten der letzten Stunde, letzten 24 Stunden und letzten sieben Tage aufrufen können.
 
 ## <a name="scenario-review"></a>Szenariorückblick
 
@@ -172,7 +171,7 @@ In diesem Szenario haben Sie die OEE- und KPI-Werte im Dashboard für Ihr Werk �
 
 ## <a name="other-features"></a>Andere Funktionen
 
-In den folgenden Abschnitten werden einige Zusatzfeatures der vorkonfigurierten Connected Factory-Lösung beschrieben, die im vorherigen Szenario nicht behandelt wurden.
+In den folgenden Abschnitten werden einige Zusatzfeatures der Connected Factory-Lösung beschrieben, die im vorherigen Szenario nicht behandelt wurden.
 
 ## <a name="apply-filters"></a>Anwenden von Filtern
 
@@ -182,7 +181,7 @@ In den folgenden Abschnitten werden einige Zusatzfeatures der vorkonfigurierten 
 
     ![Vorkonfigurierte Connected Factory-Lösung: Filter][cf-img-alert-filter]
 
-3. Wählen Sie den gewünschten Filter aus. Bei Bedarf können Sie in die Filterfelder auch anderen Text eingeben.
+3. Wählen Sie den benötigten Filter aus. Bei Bedarf können Sie in die Filterfelder auch einen anderen Text eingeben.
 
 4. Anschließend wird der Filter für Sie angewendet. Im Dashboard wird mithilfe eines Trichters auch der Filterstatus angegeben, der in den Tabellen mit den Werken und Warnungen angezeigt wird.
 
@@ -207,7 +206,7 @@ Beim Bereitstellen der vorkonfigurierten Lösung stellen Sie automatisch simulie
 
 3. Klicken Sie auf **Verbinden**. Ein Sicherheitsdialogfeld wird angezeigt. Es ist sicher, für die Simulation auf **Fortsetzen** zu klicken.
 
-4. Klicken Sie jeweils auf einen Knoten der Serverstruktur, um ihn zu erweitern. Knoten, die Telemetriedaten veröffentlichen, sind mit einem Häkchen gekennzeichnet.
+4. Klicken Sie zum Erweitern eines Knotens in der Serverstruktur auf den gewünschten Knoten. Knoten, die Telemetriedaten veröffentlichen, sind mit einem Häkchen gekennzeichnet.
 
     ![Vorkonfigurierte Connected Factory-Lösung: Serverstruktur][cf-img-server-tree]
 
@@ -215,7 +214,7 @@ Beim Bereitstellen der vorkonfigurierten Lösung stellen Sie automatisch simulie
 
 ## <a name="publish-a-node"></a>Veröffentlichen eines Knotens
 
-Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröffentlichung neuer Knoten wählen. Sie können die Telemetrie dieser Knoten in der Lösung analysieren. Diese *simulierten OPC UA-Server* erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Geräte bereitstellen müssen.
+Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröffentlichung neuer Knoten wählen. Sie können die Telemetrie dieser Knoten in der Lösung analysieren. Diese *simulierten OPC UA-Server* erleichtern das Experimentieren mit der vorkonfigurierten Lösung, ohne dass dafür echte physische Geräte bereitgestellt werden müssen.
 
 1. Navigieren Sie zu einem Knoten in der Browserstruktur des OPC UA-Servers, den Sie veröffentlichen möchten.
 
@@ -223,7 +222,7 @@ Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröff
 
 3. Wählen Sie **Veröffentlichen**.
 
-    ![Connected Factory – Knoten „Veröffentlichen“][cf-img-publish-node]
+    ![Connected Factory veröffentlicht Knoten][cf-img-publish-node]
 
 4. Es wird ein Kontextbereich mit dem Hinweis angezeigt, dass die Veröffentlichung erfolgreich war. In der Stationsebenenansicht wird neben dem Knoten ein Häkchen angezeigt.
 
@@ -231,7 +230,7 @@ Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröff
 
 ## <a name="command-and-control"></a>Befehl und Steuerung
 
-Mit dem Konzept des „verbundenen Werks“ (Connected Factory) können Sie Ihre Industrieanlagen direkt über die Cloud steuern. Sie können dieses Feature nutzen, um auf Warnungen zu reagieren, die vom Gerät generiert werden. Beispielsweise können Sie aus der Cloud einen Befehl an ein Gerät oder eine Anlage senden. Sie finden die verfügbaren Befehle in der Browserstruktur des OPC UA-Servers unter dem Knoten **StationCommands**. In diesem Szenario wird für eine Fertigungsstrecke in München das Druckreduzierventil einer Baugruppenstation geöffnet. Zum Verwenden der Funktionen unter „Befehl und Steuerung“ müssen Sie für die Bereitstellung der vorkonfigurierten Lösung über die Rolle **Administrator** verfügen.
+Mit dem Konzept des „verbundenen Werks“ (Connected Factory) können Sie Ihre Industrieanlagen direkt über die Cloud steuern. Sie können dieses Feature nutzen, um auf Warnungen zu reagieren, die vom Gerät generiert werden. Beispielsweise können Sie aus der Cloud einen Befehl an ein Gerät oder eine Anlage senden. Sie finden die verfügbaren Befehle in der Browserstruktur des OPC UA-Servers unter dem Knoten **StationCommands**. In diesem Szenario wird an einer Montagestation einer Fertigungsstraße in München ein Druckreduzierventil geöffnet. Zum Verwenden der Funktionen unter „Befehl und Steuerung“ müssen Sie für die Bereitstellung der vorkonfigurierten Lösung über die Rolle **Administrator** verfügen.
 
 1. Navigieren Sie in der Browserstruktur des OPC UA-Servers zum Knoten **StationCommands**.
 

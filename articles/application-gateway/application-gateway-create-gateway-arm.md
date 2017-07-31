@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 6d38dd6802a25b147fd014b4d26ca432ca87a07d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-start-or-delete-an-application-gateway-by-using-azure-resource-manager"></a>Erstellen, Starten oder Löschen eines Anwendungsgateways mit Azure Resource Manager
@@ -171,10 +170,10 @@ Dieses Beispiel enthält zwei Back-End-Pools zum Weiterleiten von Netzwerkverkeh
 
 ### <a name="step-3"></a>Schritt 3
 
-Konfigurieren Sie die Anwendungsgatewayeinstellung **poolsetting01** für den Lastenausgleich des Netzwerkdatenverkehrs im Back-End-Pool. Jeder Back-End-Pool kann eine eigene Back-End-Pool-Einstellung aufweisen.  Back-End-HTTP-Einstellungen werden von Regeln verwendet, um Datenverkehr an die richtigen Back-End-Poolmitglieder weiterzuleiten. Back-End-HTTP-Einstellungen bestimmen das Protokoll und den Port, die beim Senden von Datenverkehr an die Back-End-Poolmitglieder verwendet werden. Cookiebasierte Sitzungen werden ebenfalls durch die Back-End-HTTP-Einstellungen gesteuert.  Im aktivierten Zustand sendet die cookiebasierte Sitzungsaffinität Datenverkehr an das gleiche Back-End wie vorherige Anforderungen für das jeweilige Paket.
+Konfigurieren Sie die Anwendungsgatewayeinstellung **poolsetting** für den Netzwerkdatenverkehr mit Lastenausgleich im Back-End-Pool. Jeder Back-End-Pool kann eine eigene Back-End-Pool-Einstellung aufweisen.  Back-End-HTTP-Einstellungen werden von Regeln verwendet, um Datenverkehr an die richtigen Back-End-Poolmitglieder weiterzuleiten. Back-End-HTTP-Einstellungen bestimmen das Protokoll und den Port, die beim Senden von Datenverkehr an die Back-End-Poolmitglieder verwendet werden. Cookiebasierte Sitzungen werden ebenfalls durch die Back-End-HTTP-Einstellungen gesteuert.  Im aktivierten Zustand sendet die cookiebasierte Sitzungsaffinität Datenverkehr an das gleiche Back-End wie vorherige Anforderungen für das jeweilige Paket.
 
 ```powershell
-$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
+$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
 ```
 
 ### <a name="step-4"></a>Schritt 4
@@ -206,7 +205,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol
 Erstellen Sie die Lastenausgleichs-Routingregel **rule01**, die das Verhalten des Lastenausgleichs konfiguriert. Die Regel setzt sich aus den Back-End-Pooleinstellungen, dem Listener und dem Back-End-Pool zusammen, die in den vorherigen Schritten erstellt wurden. Datenverkehr wird auf der Grundlage der definierten Kriterien an das entsprechende Back-End weitergeleitet.
 
 ```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting01 -HttpListener $listener -BackendAddressPool $pool
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
 ### <a name="step-8"></a>Schritt 8

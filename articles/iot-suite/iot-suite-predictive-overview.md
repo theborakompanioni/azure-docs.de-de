@@ -13,36 +13,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: e0e658fc392bf6a53f777f22a2e0b6e7bd742f97
-ms.lasthandoff: 04/26/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 8bad198488c4940a83eb32ec02122a91d47ca86c
+ms.contentlocale: de-de
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf
 
 Die [vorkonfigurierte Lösung][lnk_preconfigured_solutions] für *Predictive Maintenance* ist eine der vorkonfigurierten Lösungen von [Microsoft Azure IoT Suite][lnk_iot_suite]. Diese Lösung integriert die Erfassung von Gerätetelemetrie in Echtzeit mit einem Vorhersagemodell, das [Azure Machine Learning][lnk-machine-learning] verwendet.
 
-Mit Azure IoT Suite kann ein Unternehmen schnell und einfach Verbindungen mit Objekten herstellen, diese überwachen und Daten in Echtzeit analysieren. Die vorkonfigurierte Lösung für Predictive Maintenance nutzt diese Daten und verwendet umfangreiche Dashboards und Visualisierungen, um Ihnen neue Einsichten zu bieten, die zur Effizienzsteigerung und zum Ausbau von Einnahmequellen dienen können.
+Mit Azure IoT Suite können Sie schnell und einfach Verbindungen mit Objekten herstellen, Objekte überwachen und in Echtzeit Telemetriedaten auf Dashboards und in Visualisierungen analysieren. Die Dashboards und Visualisierungen in der Predictive Maintenance-Lösung liefern neue Erkenntnisse, die zur Effizienzsteigerung und zur Optimierung von Einnahmequellen genutzt werden können.
 
 ## <a name="the-scenario"></a>Das Szenario
-Fabrikam ist eine regionale Fluggesellschaft, deren Schwerpunkt auf hervorragender Kundenzufriedenheit zu wettbewerbsfähigen Preisen liegt. Eine Ursache von Flugverspätungen sind Wartungsprobleme, und insbesondere die Wartung von Flugzeugtriebwerken ist anspruchsvoll. Ein Triebwerksausfall während des Flugs muss unter allen Umständen vermieden werden. Daher setzt Fabrikam auf eine regelmäßige Inspektion und ein Programm zur planmäßigen Wartung. Allerdings nutzen sich nicht alle Flugzeugtriebwerke in gleicher Weise ab. Ein gewisser Anteil der Wartung wird ausgeführt, obwohl er nicht erforderlich ist. Wichtiger noch, es können Umstände auftreten, die ein Flugzeug am Boden festhalten, bis eine Wartung durchgeführt wird. Dieses Problem führt zu teuren Verzögerungen, insbesondere dann, wenn sich das Flugzeug an einem Standort befindet, an dem die benötigten Techniker oder Ersatzteile nicht verfügbar sind.
 
-Die Triebwerke der Fabrikam-Flotte sind mit Sensoren ausgestattet, die den Triebwerkszustand während des Flugs erfassen. Fabrikam verwendet die vorkonfigurierte Lösung für Predictive Maintenance zum Erfassen der Sensordaten während des Flugs. Nach jahrelanger Erfassung der Betriebs- und Fehlerdaten haben die Datenanalysten von Fabrikam ein Modell zur Vorhersage der Restnutzungsdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks erstellt. Dieses Modell beruht auf einer gefundenen Korrelation zwischen Daten von vier der Triebwerksensoren und dem Triebwerkverschleiß, der letztlich zum Ausfall führen kann. Obwohl Fabrikam die reguläre Inspektion aus Sicherheitsgründen fortsetzt, kann das Unternehmen jetzt anhand der Modelle nach jedem Flug die Restnutzungsdauer für jedes Triebwerk berechnen. Das Modell verwendet die während des Flugs von den Triebwerken erfassten Telementriedaten. Fabrikam kann jetzt Vorhersagen zu künftigen Fehlerpunkten treffen, und Wartung und Reparatur im Voraus planen.
+Fabrikam ist eine regionale Fluggesellschaft, deren Schwerpunkt auf hervorragender Kundenzufriedenheit zu wettbewerbsfähigen Preisen liegt. Eine Ursache von Flugverspätungen sind Wartungsprobleme, und insbesondere die Wartung von Flugzeugtriebwerken ist anspruchsvoll. Fabrikam muss unter allen Umständen einen Triebwerksausfall während des Flugs vermeiden. Daher setzt Fabrikam auf eine regelmäßige Inspektion und planmäßige Wartungsarbeiten. Allerdings nutzen sich nicht alle Flugzeugtriebwerke in gleicher Weise ab. Ein gewisser Anteil der Wartung wird ausgeführt, obwohl er nicht erforderlich ist. Wichtiger noch, es können Umstände auftreten, die ein Flugzeug am Boden festhalten, bis eine Wartung durchgeführt wird. Dies kann besonders teuer sein, wenn sich das Flugzeug an einem Ort befindet, an dem die benötigten Techniker oder Ersatzteile nicht verfügbar sind.
+
+Die Triebwerke der Fabrikam-Flotte sind mit Sensoren ausgestattet, die den Triebwerkszustand während des Flugs erfassen. Die während des Flugs gesammelten Sensordaten werden von Fabrikam mithilfe der Predictive Maintenance-Lösung erfasst. Nach jahrelanger Erfassung der Betriebs- und Fehlerdaten haben die Datenanalysten von Fabrikam ein Modell zur Vorhersage der Restnutzungsdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks erstellt. Das Modell nutzt eine Korrelation zwischen den Daten von vier der Triebwerksensoren und dem Triebwerkverschleiß, der letztlich zum Ausfall führen kann. Obwohl Fabrikam die reguläre Inspektion aus Sicherheitsgründen fortsetzt, kann das Unternehmen jetzt anhand der Modelle nach jedem Flug die Restnutzungsdauer für jedes Triebwerk berechnen. Das Modell verwendet die während des Flugs von den Triebwerken erfassten Telementriedaten. Fabrikam kann jetzt Vorhersagen zu künftigen Fehlerpunkten treffen, und Wartung und Reparatur im Voraus planen.
 
 > [!NOTE]
 > Das Lösungsmodell verwendet die Daten zur tatsächlichen Maschinennutzung.
 
-Durch die Vorhersage des geeigneten Wartungszeitpunkts kann Fabrikam eine Optimierung durchführen und die Betriebskosten senken. Die Wartungskoordinatoren arbeiten mit Schedulern:
+Durch die Vorhersage des geeigneten Wartungszeitpunkts kann Fabrikam eine Optimierung durchführen und die Betriebskosten senken.
 
-- Um die Wartungsarbeiten so zu planen, dass sie zeitlich mit dem Eintreffen des Flugzeugs an einem bestimmten Standort übereinstimmen
-- Um sicherzustellen, dass für die Außerbetriebnahme des Flugzeugs genügend Zeit zur Verfügung steht, ohne dass der Flugplan dadurch beeinträchtigt wird
+Die Wartungskoordinatoren arbeiten mit Planern, um Folgendes zu erreichen:
+
+- Zeitliche Abstimmung von Wartungsmaßnahmen, sodass die Arbeiten durchgeführt werden können, wenn sich das Flugzeug an einem bestimmten Standort befindet
+- Gewährleistung eines angemessenen Zeitfensters für die Nichtverfügbarkeit des Flugzeugs ohne Beeinträchtigung des Flugplans
 - Um den Einsatz von Technikern so zu planen, dass die Flugzeuge effizient und ohne Leerlauf gewartet werden
 
-Bestandskontrollmanager erhalten Wartungspläne, damit Sie den Bestellvorgang und den Ersatzteilbestand optimieren können. All diese Faktoren ermöglichen es Fabrikam, die Bodenzeiten der Flugzeuge zu minimieren und die Betriebskosten bei unveränderter Sicherheit für Passagiere und Crew zu senken.
+Bestandskontrollmanager erhalten Wartungspläne, damit Sie den Bestellvorgang und den Ersatzteilbestand optimieren können.
+
+Diese Maßnahmen ermöglichen es Fabrikam, die Standzeiten der Flugzeuge zu minimieren und die Betriebskosten zu senken, ohne die Sicherheit von Passagieren und Crew zu beeinträchtigen.
 
 Informationen dazu, wie [Azure IoT Suite][lnk_iot_suite] die vom Kunden benötigten Fähigkeiten bereitstellt, um das Potenzial von Predictive Maintenance zu erschließen, finden Sie in dieser [Infografik][lnk_infographic].
 
@@ -86,17 +91,19 @@ Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Sende
 In diesem Abschnitt erhalten Sie Informationen zur Benutzeroberfläche der Lösung.
 
 ### <a name="predictive-maintenance-dashboard"></a>Dashboard für vorbeugende Wartung
+
 Auf dieser Seite in der Webanwendung werden PowerBI-JavaScript-Steuerelemente (siehe [Repository mit visuellen PowerBI-Elementen][lnk-powerbi]) zum Visualisieren verwendet:
 
 * Ausgabedaten von Stream Analytics-Aufträgen in der Blob Storage-Einheit
 * Restlebensdauer und Zyklusanzahl pro Flugzeugtriebwerk
 
 ### <a name="observing-the-behavior-of-the-cloud-solution"></a>Beobachten des Verhaltens der Cloudlösung
+
 Navigieren Sie im Azure-Portal zur Ressourcengruppe mit dem von Ihnen gewählten Lösungsnamen, um Ihre bereitgestellten Ressourcen anzuzeigen.
 
 ![][img-resource-group]
 
-Beim Bereitstellen der vorkonfigurierten Lösung erhalten Sie eine E-Mail mit einem Link zum Machine Learning-Arbeitsbereich. Sie können auch über die Kachel auf der Seite [azureiotsuite.com][lnk-azureiotsuite] Ihrer bereitgestellten Lösung zum Machine Learning-Arbeitsbereich navigieren, wenn der Status der Lösung **Bereit** lautet.
+Beim Bereitstellen der vorkonfigurierten Lösung erhalten Sie eine E-Mail mit einem Link zum Machine Learning-Arbeitsbereich. Sie können auch über die Seite [azureiotsuite.com][lnk-azureiotsuite] Ihrer bereitgestellten Lösung zum Machine Learning-Arbeitsbereich navigieren. Wenn sich die Lösung im Zustand **Bereit** befindet, steht auf der Seite eine Kachel zur Verfügung.
 
 ![][img-machine-learning]
 
@@ -104,11 +111,11 @@ Im Lösungsportal sehen Sie, dass für das Beispiel vier simulierte Geräte bere
 
 ![][img-simulation-stopped]
 
-Klicken Sie auf **Simulation starten**, um die Simulation zu starten. Das Dashboard wird dann mit dem Sensorverlauf, der Restlebensdauer, den Zyklen und dem Verlauf der Restlebensdauer gefüllt.
+Klicken Sie auf **Simulation starten**, um die Simulation zu starten. Daraufhin füllt sich das Dashboard mit dem Sensorverlauf, der Restlebensdauer, den Zyklen und dem Verlauf der Restlebensdauer.
 
 ![][img-simulation-running]
 
-Wenn der Wert für die Restlebensdauer kleiner als 160 ist (zu Demonstrationszwecken willkürlich gewählter Schwellenwert), wird im Lösungsportal ein Warnsymbol neben der Anzeige der Restlebensdauer eingeblendet, und das Flugzeugtriebwerk wird in gelber Farbe hervorgehoben. Beachten Sie, dass die Werte für die Restlebensdauer im Allgemeinen einen Abwärtstrend aufweisen, aber trotzdem relativ stark variieren. Der Grund für dieses Verhalten sind die variierenden Zykluslängen und die Modellgenauigkeit.
+Wenn der Wert für die Restlebensdauer kleiner als 160 ist (zu Demonstrationszwecken willkürlich gewählter Schwellenwert), erscheint im Lösungsportal neben der Anzeige der Restlebensdauer ein Warnsymbol. Außerdem wird das Flugzeugtriebwerk im Lösungsportal gelb hervorgehoben. Beachten Sie, dass die Werte für die Restlebensdauer im Allgemeinen einen Abwärtstrend aufweisen, aber trotzdem relativ stark variieren. Der Grund für dieses Verhalten sind die variierenden Zykluslängen und die Modellgenauigkeit.
 
 ![][img-simulation-warning]
 
@@ -122,7 +129,7 @@ Sie können die Simulation jederzeit stoppen. Wenn Sie auf **Simulation starten*
 
 Informationen dazu, wie Azure IoT Szenarios mit vorbeugender Wartung ermöglicht, finden Sie unter [Capture value from the Internet of Things][lnk_capture_value] (Nutzen der Vorteile des Internets der Dinge).
 
-Sehen Sie sich die [exemplarische Vorgehensweise][lnk-predictive-walkthrough] zur vorkonfigurierten Lösung für die vorbeugende Wartung an.
+Durchlaufen Sie eine [exemplarische Vorgehensweise][lnk-predictive-walkthrough] für die Predictive Maintenance-Lösung.
 
 Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
 
