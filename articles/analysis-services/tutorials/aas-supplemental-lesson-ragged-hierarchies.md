@@ -22,8 +22,7 @@ ms.contentlocale: de-de
 ms.lasthandoff: 05/05/2017
 
 ---
-<a id="supplemental-lesson---ragged-hierarchies" class="xliff"></a>
-# Ergänzende Lektion – Unregelmäßige Hierarchien
+# <a name="supplemental-lesson---ragged-hierarchies"></a>Ergänzende Lektion – Unregelmäßige Hierarchien
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -35,17 +34,14 @@ Tabellarische Modelle mit dem Kompatibilitätsgrad 1400 verfügen über die zus�
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **20 Minuten**  
   
-<a id="prerequisites" class="xliff"></a>
-## Voraussetzungen  
+## <a name="prerequisites"></a>Voraussetzungen  
 Dieses ergänzende Thema ist Teil eines Tutorials zur Tabellenmodellierung. Vor dem Ausführen der Aufgaben in dieser ergänzenden Lektion sollten Sie alle vorherigen Lektionen oder das Beispielmodellprojekt „Adventure Works Internet Sales“ abgeschlossen haben. 
 
 Wenn Sie das Projekt „AW Internet Sales“ im Rahmen des Tutorials erstellt haben, enthält Ihr Modell noch keine unregelmäßigen Daten oder Hierarchien. Sie müssen dieses Problem zunächst herbeiführen, um diese ergänzende Lektion durchführen zu können. Dazu fügen Sie einige weitere Tabellen hinzu, erstellen Beziehungen, berechnete Spalten, ein Measure und eine neue Hierarchie „Organization“. Dies nimmt lediglich 15 Minuten in Anspruch. Anschließend können Sie das Problem in wenigen Minuten wieder lösen.  
 
-<a id="add-tables-and-objects" class="xliff"></a>
-## Hinzufügen von Tabellen und Objekten
+## <a name="add-tables-and-objects"></a>Hinzufügen von Tabellen und Objekten
   
-<a id="to-add-new-tables-to-your-model" class="xliff"></a>
-### So fügen Sie neue Tabellen in Ihrem Modell hinzu
+### <a name="to-add-new-tables-to-your-model"></a>So fügen Sie neue Tabellen in Ihrem Modell hinzu
   
 1.  Erweitern Sie im tabellarischen Modell-Explorer **Datenquellen**, und klicken Sie anschließend auf Ihre Verbindung und dann auf **Neue Tabelle importieren**.
   
@@ -116,8 +112,7 @@ Wenn Sie das Projekt „AW Internet Sales“ im Rahmen des Tutorials erstellt ha
 
     Wie Sie in der PivotTable sehen können, zeigt die Hierarchie unregelmäßige Zeilen an. Es gibt viele Zeilen, in denen leere Member angezeigt werden.
 
-<a id="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property" class="xliff"></a>
-## So beseitigen Sie unregelmäßige Hierarchien mit der Eigenschaft „Member ausblenden“
+## <a name="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property"></a>So beseitigen Sie unregelmäßige Hierarchien mit der Eigenschaft „Member ausblenden“
 
 1.  Erweitern Sie unter **tabellarischer Modell-Explorer** **Tabellen** > **DimEmployee** > **Hierarchien** > **Organization**.
 
@@ -131,8 +126,7 @@ Wenn Sie das Projekt „AW Internet Sales“ im Rahmen des Tutorials erstellt ha
 
     Das sieht doch sehr viel besser aus.
 
-<a id="see-also" class="xliff"></a>
-## Weitere Informationen   
+## <a name="see-also"></a>Weitere Informationen   
 [Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md)  
 [Ergänzende Lektion – Dynamische Sicherheit](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [Ergänzende Lektion – Detailzeilen](../tutorials/aas-supplemental-lesson-detail-rows.md)  

@@ -20,8 +20,7 @@ ms.contentlocale: de-de
 ms.lasthandoff: 05/08/2017
 
 ---
-# Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
-<a id="risky-sign-ins-report-in-the-azure-active-directory-portal" class="xliff"></a>
+# <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
 Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. 
 
@@ -38,8 +37,7 @@ Im [Azure-Portal](https://portal.azure.com) befinden sich die Sicherheitsbericht
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-risky-sign-ins/10.png)
 
 
-## Azure Active Directory – Free und Basic Edition
-<a id="azure-active-directory-free-and-basic-edition" class="xliff"></a>
+## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
 
 In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Der Bericht über Risikoereignisse enthält Folgendes:
 
@@ -64,8 +62,7 @@ Basierend auf Ihrer Untersuchung der riskanten Anmeldung können Sie Azure Activ
 
 Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
 
-## Azure Active Directory – Premium Editionen
-<a id="azure-active-directory-premium-editions" class="xliff"></a>
+## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – Premium Editionen
 
 Der Bericht „Riskante Anmeldungen“ in den Premium Editionen von Azure Active Directory enthält Folgendes:
 
@@ -114,8 +111,7 @@ Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **De
 
 
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Azure Active Directory Identity Protection finden Sie unter [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 

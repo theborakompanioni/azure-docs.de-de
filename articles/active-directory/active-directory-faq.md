@@ -21,17 +21,13 @@ ms.contentlocale: de-de
 ms.lasthandoff: 05/04/2017
 
 ---
-<a id="azure-active-directory-faq" class="xliff"></a>
-
-# Häufig gestellte Fragen zu Azure Active Directory
+# <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
 
 Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
 
 
-<a id="access-azure-and-azure-active-directory" class="xliff"></a>
-
-## Zugreifen auf Azure und Azure Active Directory
+## <a name="access-azure-and-azure-active-directory"></a>Zugreifen auf Azure und Azure Active Directory
 **F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen (https://manage.windowsazure.com)?**
 
 **A:** Für den Zugriff auf das klassische Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
@@ -72,9 +68,7 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen z
 
 - - -
 
-<a id="get-started-with-hybrid-azure-ad" class="xliff"></a>
-
-## Erste Schritte mit Azure AD als Hybridanwendung
+## <a name="get-started-with-hybrid-azure-ad"></a>Erste Schritte mit Azure AD als Hybridanwendung
 
 
 **F: Wie verlasse ich einen Mandanten, wenn ich als Projektmitarbeiter hinzugefügt werde?**
@@ -111,9 +105,7 @@ Weitere Informationen finden Sie unter [Einführung in den Zugriffsbereich](acti
 Ausführlichere Informationen finden Sie unter [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](active-directory-aadconnect-health.md).  
 
 - - -
-<a id="password-management" class="xliff"></a>
-
-## Kennwortverwaltung
+## <a name="password-management"></a>Kennwortverwaltung
 **F: Kann ich das Kennwortrückschreiben-Feature von Azure AD ohne Kennwortsynchronisierung verwenden? (Ist es in diesem Szenario möglich, die Self-Service-Kennwortzurücksetzung von Azure AD mit dem Kennwortrückschreiben-Feature zu verwenden und Kennwörter nicht in der Cloud zu speichern?)**
 
 **A:** Sie müssen Ihre Active Directory-Kennwörter nicht mit Azure AD synchronisieren, um das Kennwortrückschreiben-Feature verwenden zu können. Bei Verwendung einer Verbundumgebung nutzt das einmalige Anmelden von Azure AD die Benutzerauthentifizierung des lokalen Verzeichnisses. In diesem Szenario muss das lokale Kennwort nicht in Azure AD nachverfolgt werden.
@@ -146,9 +138,7 @@ Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden
 
 
 - - -
-<a id="security" class="xliff"></a>
-
-## Sicherheit
+## <a name="security"></a>Sicherheit
 **F: Werden Konten nach einer bestimmten Anzahl von Versuchen, bei denen Fehler aufgetreten sind, gesperrt, oder wird eine ausgereiftere Strategie angewandt?**</br>
 Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert auf der IP-Adresse der Anforderung und den eingegebenen Kennwörtern. Die Dauer der Sperre wird ebenfalls gemäß der Wahrscheinlichkeit erhöht, dass es sich um einen Angriff handelt.  
 
@@ -158,9 +148,7 @@ Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten 
 **F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**</br>
 Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets bietet und für alle B2C-Mandanten gilt.
 
-<a id="application-access" class="xliff"></a>
-
-## Anwendungszugriff
+## <a name="application-access"></a>Anwendungszugriff
 **F: Wo finde ich eine Liste mit bereits in Azure AD integrierten Anwendungen und deren Funktionen?**
 
 **A:** Für Azure AD stehen bereits über 2.600 integrierte Anwendungen von Microsoft, Anwendungsdienstanbietern und Partnern zur Verfügung. Alle vorab integrierten Anwendungen unterstützen einmaliges Anmelden (Single Sign-On, SSO). Mit SSO können Sie unter Verwendung der Anmeldeinformationen Ihres Unternehmens auf Ihre Apps zugreifen. Einige Anwendungen unterstützen auch die automatisierte Bereitstellung und Aufhebung der Bereitstellung.
