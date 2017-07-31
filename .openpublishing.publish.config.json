@@ -2,15 +2,12 @@
   "build_entry_point": "docs",
   "need_generate_pdf": false,
   "need_generate_intellisense": false,
-  "enable_push_aggregation": true,
-  "enable_pull_request_aggregation": true,
   "docsets_to_publish": [
     {
       "docset_name": "azure-documents",
       "build_source_folder": ".",
       "build_output_subfolder": "azure",
       "locale": "de-de",
-      "version": 0,
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
@@ -19,7 +16,8 @@
         "RestApi": "Content"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes"
+      "template_folder": "_themes",
+      "version": 0
     }
   ],
   "notification_subscribers": [
@@ -30,11 +28,14 @@
     "master",
     "master-sync-work"
   ],
-  "skip_source_output_uploading": false,
-  "need_preview_pull_request":true,
   "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.de-de",
   "git_repository_branch_open_to_public_contributors": "live",
+  "continue_with_document_error": true,
+  "skip_source_output_uploading": false,
+  "need_preview_pull_request": true,
   "enable_incremental_build": true,
+  "enable_push_aggregation": true,
+  "enable_pull_request_aggregation": true,
   "dependent_repositories": [
     {
       "path_to_root": "_themes",
@@ -48,10 +49,10 @@
       "branch": "master"
     },
     {
-       "path_to_root": "_repo.en-us",
-       "url": "https://github.com/Microsoft/azure-docs-pr",
-       "branch": "live",
-       "branch_mapping": {}
+      "path_to_root": "_repo.en-us",
+      "url": "https://github.com/Microsoft/azure-docs-pr",
+      "branch": "live",
+      "branch_mapping": {}
     },
     {
       "path_to_root": "cli_scripts",
