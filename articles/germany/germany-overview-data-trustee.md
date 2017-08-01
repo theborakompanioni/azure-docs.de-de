@@ -22,8 +22,7 @@ ms.lasthandoff: 05/03/2017
 
 
 ---
-# Das Microsoft Datentreuhänderprinzip
-<a id="data-trustee-principle" class="xliff"></a>
+# <a name="data-trustee-principle"></a>Das Microsoft Datentreuhänderprinzip
 
 Microsoft hat Azure Deutschland entwickelt, um die Anforderungen von Kunden und potenziellen Kunden in der Europäischen Union (European Union, EU), der Europäischen Freihandelszone (European Free Trade Association, EFTA) und dem Vereinigten Königreich (United Kingdom, UK) zu erfüllen. Diese Anforderungen beziehen sich unter anderem darauf, Bedenken hinsichtlich Sicherheit und Schutz von Onlinedaten gerecht zu werden. Azure Deutschland umfasst branchenführende Clouddienste, die *unter Anwendung spezieller Sicherheitsmaßnahmen vollständig in Deutschland gehostet und betrieben werden*.
 

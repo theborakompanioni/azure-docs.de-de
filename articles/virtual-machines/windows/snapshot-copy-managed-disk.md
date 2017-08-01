@@ -21,16 +21,12 @@ ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
 
 ---
-<a id="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots" class="xliff"></a>
-
-# Erstellen einer Kopie einer als verwalteter Azure-Datenträger gespeicherten VHD mithilfe verwalteter Momentaufnahmen
+# <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>Erstellen einer Kopie einer als verwalteter Azure-Datenträger gespeicherten VHD mithilfe verwalteter Momentaufnahmen
 Erstellen Sie eine Momentaufnahme eines verwalteten Datenträgers für die Sicherung oder einen verwalteten Datenträger aus der Momentaufnahme, und fügen Sie ihn an einen virtuellen Testcomputer an, um Probleme zu behandeln. Eine verwaltete Momentaufnahme ist eine vollständige zeitpunktabhängige Kopie eines verwalteten VM-Datenträgers. Standardmäßig wird eine schreibgeschützte Kopie Ihrer VHD erstellt, die als verwalteter Standard-Datenträger gespeichert wird. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Informationen zu Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
-<a id="before-you-begin" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
 
 ```
@@ -38,14 +34,10 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
 Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 
-<a id="copy-the-vhd-with-a-snapshot" class="xliff"></a>
-
-## Kopieren der VHD mithilfe einer Momentaufnahme
+## <a name="copy-the-vhd-with-a-snapshot"></a>Kopieren der VHD mithilfe einer Momentaufnahme
 Eine Momentaufnahme des verwalteten Datenträgers können Sie entweder im Azure-Portal oder mit PowerShell erstellen.
 
-<a id="use-azure-portal-to-take-a-snapshot" class="xliff"></a>
-
-### Erstellen einer Momentaufnahme im Azure-Portal 
+### <a name="use-azure-portal-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme im Azure-Portal 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie zunächst links oben auf **Neu**, und suchen Sie nach **Momentaufnahme**.
@@ -57,9 +49,7 @@ Eine Momentaufnahme des verwalteten Datenträgers können Sie entweder im Azure-
 8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard_LRS**, es sei denn, Sie benötigen eine Speicherung auf einem Hochleistungsdatenträger.
 9. Klicken Sie auf **Erstellen**.
 
-<a id="use-powershell-to-take-a-snapshot" class="xliff"></a>
-
-### Erstellen einer Momentaufnahme mit PowerShell
+### <a name="use-powershell-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme mit PowerShell
 Die folgenden Schritte veranschaulichen das Abrufen des zu kopierenden VHD-Datenträgers, das Erstellen der Momentaufnahmenkonfigurationen und das Erstellen einer Momentaufnahme mithilfe des Cmdlets „New-AzureRmSnapshot“<!--Add link to cmdlet when available-->. 
 
 1. Legen Sie einige Parameter fest. 
