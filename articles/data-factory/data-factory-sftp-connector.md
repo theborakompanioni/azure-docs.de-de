@@ -19,7 +19,6 @@ ms.openlocfilehash: c8ac99f63bd6700349bb352b2c880a2ffedf7457
 ms.contentlocale: de-de
 ms.lasthandoff: 06/05/2017
 
-
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Verschieben von Daten von einem SFTP-Server mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie die Kopieraktivität in Azure Data Factory verwendet wird, um Daten von einem lokalen bzw. einem in der Cloud gehosteten SFTP-Server zu einem unterstützten Senkendatenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität und der als Quellen/Senken unterstützten Datenspeichern darstellt.
@@ -219,7 +218,7 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 ## <a name="supported-file-and-compression-formats"></a>Unterstützte Datei- und Komprimierungsformate
 Einzelheiten finden Sie im Artikel [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
-### <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten von einem SFTP-Server nach Azure-Blob
+## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten von einem SFTP-Server nach Azure-Blob
 Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer SFTP-Quelle nach Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 > [!IMPORTANT]
