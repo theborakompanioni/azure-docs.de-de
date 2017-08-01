@@ -23,9 +23,7 @@ ms.lasthandoff: 06/16/2017
 
 
 ---
-<a id="use-azure-portal-to-restore-virtual-machines" class="xliff"></a>
-
-# Wiederherstellen virtueller Computer über das Azure-Portal
+# <a name="use-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 > [!div class="op_single_selector"]
 > * [Wiederherstellen virtueller Computer im klassischen Portal](backup-azure-restore-vms.md)
 > * [Wiederherstellen virtueller Computer im Azure-Portal](backup-azure-arm-restore-vms.md)
@@ -46,9 +44,7 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
 1. Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
 2. Auswählen des Wiederherstellungstyps: Erstellen eines neuen virtuellen Computers oder Wiederherstellen eines Datenträgers und Angeben erforderlicher Parameter. 
 
-<a id="select-restore-point-for-restore" class="xliff"></a>
-
-## Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
+## <a name="select-restore-point-for-restore"></a>Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/)
 2. Klicken Sie im Azure-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Diensten **Recovery Services** ein. Die Liste der Dienste wird während der Eingabe angepasst. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
@@ -97,9 +93,7 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
     ![Wiederherstellungspunkt wird festgelegt](./media/backup-azure-arm-restore-vms/recovery-point-set.png)
 9. Auf dem Blatt **Wiederherstellen** wird **Konfiguration wiederherstellen** automatisch geöffnet, nachdem der Wiederherstellungspunkt festgelegt wurde.
 
-<a id="choosing-a-vm-restore-configuration" class="xliff"></a>
-
-## Auswählen einer Konfiguration für die VM-Wiederherstellung
+## <a name="choosing-a-vm-restore-configuration"></a>Auswählen einer Konfiguration für die VM-Wiederherstellung
 Da Sie jetzt den Wiederherstellungspunkt ausgewählt haben, wählen Sie jetzt eine Konfiguration für den wiederhergestellten virtuellen Computer. Es gibt zwei Möglichkeiten für die Konfiguration der wiederhergestellten VM: Azure-Portal oder PowerShell.
 
 1. Wechseln Sie zum Blatt **Wiederherstellen** , sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass ein [Wiederherstellungspunkt ausgewählt wurde](#select-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**, um das Blatt **Wiederherstellungskonfiguration** zu öffnen.
@@ -111,9 +105,7 @@ Da Sie jetzt den Wiederherstellungspunkt ausgewählt haben, wählen Sie jetzt ei
 
 Das Portal bietet für wiederhergestellte VMs die Option „Schnellerfassung“. Wenn Sie die VM-Konfiguration oder Namen der Ressourcen anpassen möchten, die beim Erstellen einer neuen VM-Auswahl erstellt wurden, verwenden Sie PowerShell oder das Portal zum Wiederherstellen gesicherter Datenträger, und verwenden Sie PowerShell-Befehle, um sie der Auswahl der VM-Konfiguration anzufügen. Alternativ können Sie eine Vorlage verwenden, die zum Wiederherstellungsdatenträger gehört, um den wiederhergestellten virtuellen Computer anzupassen. Weitere Informationen zum Wiederherstellen von virtuellen Computern mit mehreren Netzwerkkarten oder Lastenausgleichsmodulen finden Sie unter [Wiederherstellen eines virtuellen Computers mit speziellen Netzwerkkonfigurationen](#restoring-vms-with-special-network-configurations). Wenn Ihre Windows-VM [HUB-Lizenzierung](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, müssen Sie wie nachfolgend angegeben Datenträger wiederherstellen und mithilfe von PowerShell bzw. einer Vorlage die VM erstellen. Stellen Sie dabei sicher, dass Sie beim Erstellen der VM für „LicenseType“ den Wert „Windows_Server“ festlegen, um von den verfügbaren HUB-Vorteilen auf einer wiederhergestellten VM zu profitieren. 
  
-<a id="create-a-new-vm-from-restore-point" class="xliff"></a>
-
-## Erstellen eines neuen virtuellen Computer über einen Wiederherstellungspunkt
+## <a name="create-a-new-vm-from-restore-point"></a>Erstellen eines neuen virtuellen Computer über einen Wiederherstellungspunkt
 Falls noch nicht geschehen, [wählen Sie einen Wiederherstellungspunkt aus](#restoring-vms-with-special-network-configurations), bevor Sie mit der Erstellung eines neuen virtuellen Computers beginnen. Sobald der Wiederherstellungspunkt ausgewählt wurde, geben Sie auf dem Blatt **Konfiguration wiederherstellen** Werte für jedes der folgenden Felder ein, bzw. wählen Sie sie aus:
 
 * **Wiederherstellungstyp**: Erstellen Sie den virtuellen Computer.
@@ -134,9 +126,7 @@ Falls noch nicht geschehen, [wählen Sie einen Wiederherstellungspunkt aus](#res
 
 Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die Wiederherstellungskonfiguration abzuschließen. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
 
-<a id="restore-backed-up-disks" class="xliff"></a>
-
-## Wiederherstellen von gesicherten Datenträgern
+## <a name="restore-backed-up-disks"></a>Wiederherstellen von gesicherten Datenträgern
 Wenn Sie den virtuellen Computer, der von gesicherten Datenträgern wiederhergestellt werden soll, an die aktuellen Informationen auf dem Blatt „Wiederherstellungskonfiguration“ anpassen möchten, wählen Sie **Restore disks** (Wiederherstellungsdatenträger) als Wert für **Wiederherstellungstyp** aus. Bei dieser Option muss ein Speicherkonto angegeben werden, in das die Datenträger aus den Sicherungen kopiert werden. Wählen Sie bei der Auswahl eines Speicherkontos ein Konto aus, das den gleichen Standort wie der Recovery Services-Tresor verwendet. Zonenredundante Speicherkonten werden nicht unterstützt. Wenn keine Speicherkonten mit dem gleichen Standort wie der Recovery Services-Tresor vorhanden sind, müssen Sie vor dem Starten des Wiederherstellungsvorgangs eins erstellen. Der Replikationstyp des Speicherkontos ist in Klammern aufgeführt.
 
 Nachdem der Wiederherstellungsvorgang abgeschlossen wurde, können Sie folgende Schritte ausführen:
@@ -148,9 +138,7 @@ Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die
 
 ![Konfiguration der Wiederherstellung abgeschlossen](./media/backup-azure-arm-restore-vms/trigger-restore-operation.png)
 
-<a id="track-the-restore-operation" class="xliff"></a>
-
-## Nachverfolgen des Wiederherstellungsvorgangs
+## <a name="track-the-restore-operation"></a>Nachverfolgen des Wiederherstellungsvorgangs
 Sobald Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Backup-Dienst einen Auftrag zum Nachverfolgen des Wiederherstellungsvorgangs. Der Backupdienst erstellt außerdem die Benachrichtigung und zeigt sie vorübergehend im Benachrichtigungsbereich des Portals an. Wenn die Benachrichtigung nicht angezeigt wird, können Sie jederzeit auf das Benachrichtigungssymbol klicken, um Ihre Benachrichtigungen anzuzeigen.
 
 ![Wiederherstellung ausgelöst](./media/backup-azure-arm-restore-vms/restore-notification.png)
@@ -173,9 +161,7 @@ Um den Vorgang während seiner Verarbeitung oder nach seinem Abschluss anzuzeige
 
     ![Liste der virtuellen Computer im Tresor](./media/backup-azure-arm-restore-vms/restore-job-in-progress.png)
     
-<a id="use-templates-to-customize-restore-vm" class="xliff"></a>
-
-## Verwenden von Vorlagen zum Anpassen des wiederhergestellten virtuellen Computers
+## <a name="use-templates-to-customize-restore-vm"></a>Verwenden von Vorlagen zum Anpassen des wiederhergestellten virtuellen Computers
 Sobald [das Wiederherstellen von Datenträgern abgeschlossen ist](#Track-the-restore-operation), können Sie die Vorlage verwenden, die im Rahmen des Wiederherstellungsvorgangs generiert wurde, um einen neuen virtuellen Computer mit einer anderen Konfiguration als der Sicherungskonfiguration zu erstellen oder um Namen von Ressourcen anzupassen, die beim Erstellen eines neuen virtuellen Computers über den Wiederherstellungspunkt erstellt wurden. 
 
 > [!NOTE]
@@ -206,50 +192,34 @@ Akzeptieren Sie nach der Eingabe der erforderlichen Werte die *Geschäftsbedingu
 
    ![Übermitteln der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
-<a id="post-restore-steps" class="xliff"></a>
-
-## Schritte nach der Wiederherstellung
+## <a name="post-restore-steps"></a>Schritte nach der Wiederherstellung
 * Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/classic/reset-access.md)die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden.
 * Erweiterungen, die während der Konfiguration der Sicherung vorhanden waren, werden zwar installiert, aber nicht aktiviert. Installieren Sie Erweiterungen neu, wenn Probleme auftreten. 
 * Wenn die gesicherte VM über eine statische IP-Adresse verfügt, erhält die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte beim Erstellen wiederhergestellter virtueller Computer zu vermeiden. Erfahren Sie mehr über das [Hinzufügen einer statischen IP-Adresse für wiederhergestellte virtuelle Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 * Für wiederhergestellte virtuelle Computer ist kein Verfügbarkeitswert festgelegt. Es wird empfohlen, die Option zur Datenträgerwiederherstellung zu verwenden und [Verfügbarkeitsgruppen hinzuzufügen](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set), wenn Sie einen virtuellen Computer mithilfe von PowerShell oder Vorlagen aus wiederhergestellten Datenträgern erstellen. 
 
 
-<a id="backup-for-restored-vms" class="xliff"></a>
-
-## Sicherung für wiederhergestellte virtuelle Computer
+## <a name="backup-for-restored-vms"></a>Sicherung für wiederhergestellte virtuelle Computer
 Wenn Sie den virtuellen Computer in derselben Ressourcengruppe mit dem Namen des ursprünglich gesicherten virtuellen Computers wiederhergestellt haben, wird der virtuelle Computer nach der Wiederherstellung weiterhin gesichert. Wenn Sie entweder den virtuellen Computer in einer anderen Ressourcengruppe wiederhergestellt oder einen anderen Namen dafür angegeben haben, wird er als neuer virtueller Computer behandelt, und Sie müssen die Sicherung dafür einrichten.
 
-<a id="restoring-a-vm-during-azure-datacenter-disaster" class="xliff"></a>
-
-## Wiederherstellen eines virtuellen Computers während einer Azure-Datencenter-Notfallwiederherstellung
+## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>Wiederherstellen eines virtuellen Computers während einer Azure-Datencenter-Notfallwiederherstellung
 Mit Azure Backup können gesicherte virtuelle Computer im gekoppelten Datencenter wiederhergestellt werden, falls in dem primären Datencenter, in dem VMs ausgeführt werden, ein Notfall eingetreten ist, und Sie den Sicherungstresor als georedundant konfiguriert haben. Bei solchen Szenarien müssen Sie ein Speicherkonto auswählen, das im gekoppelten Datencenter vorhanden ist, ansonsten bleibt der Wiederherstellungsprozess gleich. Azure Backup verwendet den Computedienst des gekoppelten georedundanten Datencenters, um den wiederhergestellten virtuellen Computer zu erstellen. Erfahren Sie mehr über die [Resilienz der Azure-Rechenzentren](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<a id="restoring-domain-controller-vms" class="xliff"></a>
-
-## Wiederherstellen von virtuellen Computern des Domänencontrollers
+## <a name="restoring-domain-controller-vms"></a>Wiederherstellen von virtuellen Computern des Domänencontrollers
 Die Sicherung von virtuellen Computern des Domänencontrollers wird in Azure Backup unterstützt. Der Wiederherstellungsvorgang erfordert jedoch Sorgfalt. Der ordnungsgemäße Wiederherstellungsvorgang hängt von der Struktur der Domäne ab. Im einfachsten Fall verfügen Sie über einen einzelnen Domänencontroller in einer einzelnen Domäne. Doch in Produktionsumgebungen ist es üblicher, über eine einzelne Domäne mit mehreren Domänencontrollern zu verfügen, von denen einige lokal sein können. Möglich ist auch, dass Sie über eine Gesamtstruktur mit mehreren Domänen verfügen. 
 
 Aus Active Directory-Sicht entspricht die Azure-VM beliebigen anderen VMs auf einem modernen unterstützten Hypervisor. Der Hauptunterschied bei lokalen Hypervisoren ist, dass keine VM-Konsole in Azure verfügbar ist. Eine Konsole ist für bestimmte Szenarien erforderlich, z.B. zur Wiederherstellung mithilfe einer Sicherung des Typs Bare-Metal-Recovery (BMR). Die VM-Wiederherstellung aus dem Sicherungstresor ist jedoch ein vollständiger Ersatz für BMR. Der Active Directory-Wiederherstellungsmodus ist auch verfügbar, sodass alle Active Directory-Wiederherstellungsszenarien realisierbar sind. Weitere Hintergrundinformationen finden Sie unter [Sicherungs- und Wiederherstellungsaspekte für virtualisierte Domänencontroller](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) und [Planen der Wiederherstellung der Active Directory-Gesamtstruktur](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx).
 
-<a id="single-dc-in-a-single-domain" class="xliff"></a>
-
-### Einzelner Domänencontroller in einer einzelnen Domäne
+### <a name="single-dc-in-a-single-domain"></a>Einzelner Domänencontroller in einer einzelnen Domäne
 Der virtuelle Computer kann (wie alle anderen virtuellen Computer) über das Azure-Portal oder mithilfe von PowerShell wiederhergestellt werden.
 
-<a id="multiple-dcs-in-a-single-domain" class="xliff"></a>
-
-### Mehrere Domänencontroller in einer einzelnen Domäne
+### <a name="multiple-dcs-in-a-single-domain"></a>Mehrere Domänencontroller in einer einzelnen Domäne
 Wenn andere Domänencontroller in der gleichen Domäne über das Netzwerk erreicht werden können, kann der Domänencontroller wie ein beliebiger virtueller Computer wiederhergestellt werden. Wenn es sich um den letzten verbleibenden Domänencontroller in der Domäne handelt oder eine Wiederherstellung in einem isolierten Netzwerk erfolgt, muss ein Vorgang zur Wiederherstellung der Gesamtstruktur folgen.
 
-<a id="multiple-domains-in-one-forest" class="xliff"></a>
-
-### Mehrere Domänen in einer Gesamtstruktur
+### <a name="multiple-domains-in-one-forest"></a>Mehrere Domänen in einer Gesamtstruktur
 Wenn andere Domänencontroller in der gleichen Domäne über das Netzwerk erreicht werden können, kann der Domänencontroller wie ein beliebiger virtueller Computer wiederhergestellt werden. In allen anderen Fällen wird allerdings eine Wiederherstellung der Gesamtstruktur empfohlen.
 
-<a id="restoring-vms-with-special-network-configurations" class="xliff"></a>
-
-## Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen
+## <a name="restoring-vms-with-special-network-configurations"></a>Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen
 Das Sichern und Wiederherstellen ist für virtuelle Computer mit den folgenden speziellen Netzwerkkonfigurationen möglich. Für diese Konfigurationen sind während des Wiederherstellungsvorgangs jedoch einige besondere Überlegungen anzustellen.
 
 * VMs unter Lastenausgleich (intern und extern)
@@ -271,9 +241,7 @@ Zum vollständigen Wiederherstellen der virtuellen Computer nach der Wiederherst
    * Erstellen Sie die VM mit [mehreren NICs](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)
    * Erstellen Sie die VM mit [mehreren reservierten IP-Adressen](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Jetzt können Sie Ihre virtuellen Computer wiederherstellen. Informationen zu häufig bei VMs auftretenden Fehlern finden Sie im Artikel zur Problembehandlung. Lesen Sie auch den Artikel zur Verwaltung von Aufgaben mit Ihren virtuellen Computern.
 
 * [Problembehandlung](backup-azure-vms-troubleshoot.md#restore)
