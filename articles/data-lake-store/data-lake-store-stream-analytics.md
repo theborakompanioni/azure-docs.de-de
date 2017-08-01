@@ -22,8 +22,7 @@ ms.lasthandoff: 01/06/2017
 
 
 ---
-<a id="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics" class="xliff"></a>
-# Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
+# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
 
 > [!NOTE]
@@ -31,8 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe fü
 >
 >
 
-<a id="prerequisites" class="xliff"></a>
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
@@ -41,8 +39,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
   
 * **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md)aus. Nehmen wir an, dass Sie über ein Data Lake Store-Konto namens **asadatalakestore** verfügen. 
 
-<a id="create-a-stream-analytics-job" class="xliff"></a>
-## Erstellen eines Stream Analytics-Auftrags
+## <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
 Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle und ein Ausgabeziel enthält. In diesem Tutorial ist die Quelle ein Azure-Blobcontainer, und das Ziel ist der Data Lake-Speicher.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
@@ -55,8 +52,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
     > Stellen Sie sicher, dass Sie den Auftrag in der gleichen Region erstellen, in der sich das Speicherkonto befindet, da sonst zusätzliche Kosten für das Verschieben von Daten zwischen Regionen anfallen.
     >
 
-<a id="create-a-blob-input-for-the-job" class="xliff"></a>
-## Erstellen einer Blobeingabe für den Auftrag
+## <a name="create-a-blob-input-for-the-job"></a>Erstellen einer Blobeingabe für den Auftrag
 
 1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie im linken Bereich auf die Registerkarte **Eingaben**, und klicken Sie dann auf **Hinzufügen**.
 
@@ -79,8 +75,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
     Klicken Sie auf **Erstellen**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
 
 
-<a id="create-a-data-lake-store-output-for-the-job" class="xliff"></a>
-## Erstellen einer Data Lake-Speicherausgabe für den Auftrag
+## <a name="create-a-data-lake-store-output-for-the-job"></a>Erstellen einer Data Lake-Speicherausgabe für den Auftrag
 
 1. Öffnen Sie die Seite für den Stream Analytics-Auftrag, klicken Sie auf die Registerkarte **Ausgaben**, und klicken Sie dann auf **Hinzufügen**.
 
@@ -108,8 +103,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
     
     Klicken Sie auf **Erstellen**. Das Portal fügt die Ausgabe hinzu und testet die Verbindung.
     
-<a id="run-the-stream-analytics-job" class="xliff"></a>
-## Ausführen des Stream Analytics-Auftrags
+## <a name="run-the-stream-analytics-job"></a>Ausführen des Stream Analytics-Auftrags
 
 1. Um einen Stream Analytics-Auftrag auszuführen, müssen Sie eine Abfrage auf der Registerkarte **Abfrage** ausführen. Für dieses Tutorial können Sie die Beispielabfrage ausführen, indem Sie die Platzhalter durch die Auftragseingabe- und Auftragsausgabealiase ersetzen, wie in der folgenden Bildschirmaufnahme gezeigt.
 
@@ -133,7 +127,6 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     Beachten Sie, dass die Ausgabe im Daten-Explorer-Fenster gemäß der Angabe in den Data Lake Store-Ausgabeeinstellungen (`streamanalytics/job/output/{date}/{time}`) in einen Ordnerpfad geschrieben wird.  
 
-<a id="see-also" class="xliff"></a>
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 

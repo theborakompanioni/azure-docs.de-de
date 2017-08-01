@@ -21,15 +21,11 @@ ms.lasthandoff: 04/27/2017
 
 ---
 
-<a id="unexpected-application-in-my-applications-list" class="xliff"></a>
-
-# Unerwartete Anwendung in der Liste meiner Anwendungen
+# <a name="unexpected-application-in-my-applications-list"></a>Unerwartete Anwendung in der Liste meiner Anwendungen
 
 Dieser Artikel bietet Informationen dazu, wie Anwendungen in der Liste **Alle Anwendungen** unter **Unternehmensanwendungen** angezeigt werden. 
 
-<a id="how-to-see-all-applications-in-your-tenant" class="xliff"></a>
-
-## Anzeigen aller Anwendungen im Mandanten
+## <a name="how-to-see-all-applications-in-your-tenant"></a>Anzeigen aller Anwendungen im Mandanten
 
 Um alle Anwendungen in Ihrem Mandanten anzuzeigen, müssen Sie das **Filter**-Steuerelement der Liste **Alle Anwendungen** auf **Alle Anwendungen** festlegen. Führen Sie dazu die folgenden Schritte aus:
 
@@ -47,9 +43,7 @@ Um alle Anwendungen in Ihrem Mandanten anzuzeigen, müssen Sie das **Filter**-St
 
 7.  Legen Sie auf dem Blatt **Filter** die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-<a id="why-does-a-specific-application-appear-in-my-all-applications-list" class="xliff"></a>
-
-## Warum wird eine bestimmte Anwendung in der Liste mit all meinen Anwendungen angezeigt?
+## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Warum wird eine bestimmte Anwendung in der Liste mit all meinen Anwendungen angezeigt?
 
 Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendungen** jedes Dienstprinzipalobjekt in Ihrem Mandanten an. Dienstprinzipalobjekte können dieser Liste auf unterschiedliche Arten hinzugefügt werden:
 
@@ -83,21 +77,15 @@ Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendu
 
 Weitere Informationen zu der Art und Weise, in der Apps zu Ihrem Verzeichnis hinzugefügt werden, erhalten Sie unter [Wie und warum werden Anwendungen zu Azure AD hinzugefügt?](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added).
 
-<a id="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application" class="xliff"></a>
-
-## Ich möchte die Zuweisung eines bestimmten Benutzers oder einer bestimmten Gruppe zu einer Anwendung entfernen
+## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Ich möchte die Zuweisung eines bestimmten Benutzers oder einer bestimmten Gruppe zu einer Anwendung entfernen
 
 Um eine Benutzer- oder Gruppenzuweisung zu einer Anwendung zu entfernen, führen Sie die im Artikel [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) beschriebenen Schritte aus.
 
-<a id="i-want-to-disable-all-access-to-an-application-for-every-user" class="xliff"></a>
-
-## Ich möchte den gesamten Zugriff auf eine Anwendung für alle Benutzer deaktivieren
+## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Ich möchte den gesamten Zugriff auf eine Anwendung für alle Benutzer deaktivieren
 
 Um alle Benutzeranmeldungen bei einer Anwendung zu deaktivieren, führen Sie die im Artikel [Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) beschriebenen Schritte aus.
 
-<a id="i-want-to-delete-an-application-entirely" class="xliff"></a>
-
-## Ich möchte eine Anwendung vollständig löschen.
+## <a name="i-want-to-delete-an-application-entirely"></a>Ich möchte eine Anwendung vollständig löschen.
 
 Befolgen Sie die nachstehenden Anweisungen, um **eine Anwendung zu löschen**:
 
@@ -117,9 +105,7 @@ Befolgen Sie die nachstehenden Anweisungen, um **eine Anwendung zu löschen**:
 
 7.  Nachdem die Anwendung geladen wurde, klicken Sie auf dem Blatt **Übersicht** der Anwendung auf **Löschen**.
 
-<a id="i-want-to-disable-all-future-user-consent-operations-to-any-application" class="xliff"></a>
-
-## Ich möchte alle zukünftigen Vorgänge für die Benutzerzustimmung für jede Anwendung deaktivieren.
+## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ich möchte alle zukünftigen Vorgänge für die Benutzerzustimmung für jede Anwendung deaktivieren.
 
 Die Deaktivierung der Benutzerzustimmung für das gesamte Verzeichnis führt dazu, dass Endbenutzer keiner Anwendung zustimmen können. Administratoren können weiterhin im Namen von Benutzern zustimmen. Weitere Informationen zur Zustimmung zu Anwendungen sowie zum Aktivieren bzw. Deaktivieren der Zustimmung finden Sie unter [Grundlegendes zur Benutzer- und Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
 
@@ -137,8 +123,6 @@ Befolgen Sie die nachstehenden Anweisungen, um **alle zukünftigen Vorgänge der
 
 6.  Deaktivieren Sie alle zukünftigen Vorgänge der Benutzerzustimmung, indem Sie **Benutzer können Apps Zugriff auf ihre Daten gewähren** auf **Nein** festlegen und dann auf die Schaltfläche **Speichern** klicken.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md)
 

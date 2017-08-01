@@ -23,8 +23,7 @@ ms.lasthandoff: 04/27/2017
 
 ---
 
-# Virtuelle Netzwerke und virtuelle Windows-Computer in Azure
-<a id="virtual-networks-and-windows-virtual-machines-in-azure" class="xliff"></a> 
+# <a name="virtual-networks-and-windows-virtual-machines-in-azure"></a>Virtuelle Netzwerke und virtuelle Windows-Computer in Azure 
 
 Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../../virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../../azure-subscription-service-limits.md#networking-limits) verstehen.
 
@@ -45,8 +44,7 @@ Zusätzlich zu diesen grundlegenden Ressourcen sollten Sie auch die folgenden op
 - Netzwerksicherheitsgruppen
 - Load Balancer 
 
-## Netzwerkschnittstellen
-<a id="network-interfaces" class="xliff"></a>
+## <a name="network-interfaces"></a>Netzwerkschnittstellen
 
 Eine [Netzwerkschnittstelle (NIC)](../../virtual-network/virtual-network-network-interface.md) ist die Verbindung zwischen einer VM und einem virtuellen Netzwerk (VNet). Eine VM muss mindestens eine NIC haben. Es können je nach der Größe Ihrer erstellten VM aber auch mehr sein. Informationen dazu, wie viele NICs für die einzelnen VM-Größen unterstützt werden, finden Sie unter [Größen für virtuelle Computer in Azure](sizes.md). 
 
@@ -65,8 +63,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 | [Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md) | Verwenden Sie zum Angeben des Bezeichners der zuvor erstellten öffentlichen IP-Adresse [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) mit dem Parameter **--public-ip-address**. |
 | [Vorlage](../../virtual-network/virtual-network-deploy-multinic-arm-template.md) | Verwenden Sie [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) (Netzwerkschnittstelle in einem virtuellen Netzwerk mit öffentlicher IP-Adresse) als Anleitung zum Bereitstellen einer Netzwerkschnittstelle mit einer Vorlage. |
 
-## IP-Adressen
-<a id="ip-addresses" class="xliff"></a> 
+## <a name="ip-addresses"></a>IP-Adressen 
 
 Sie können diese Arten von [IP-Adressen](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) einer NIC in Azure zuweisen:
 
@@ -90,8 +87,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer IP-
 
 Nach dem Erstellen einer öffentlichen IP-Adresse können Sie diese einer VM zuordnen, indem Sie sie einer NIC zuweisen.
 
-## Virtuelles Netzwerk und Subnetze
-<a id="virtual-network-and-subnets" class="xliff"></a>
+## <a name="virtual-network-and-subnets"></a>Virtuelles Netzwerk und Subnetze
 
 Ein Subnetz ist ein Bereich von IP-Adressen im VNet. Sie können ein VNet aus Organisations- und Sicherheitsgründen in mehrere Subnetze unterteilen. Jede NIC einer VM ist mit einem Subnetz im VNet verbunden. NICs, die mit (gleichen oder anderen) Subnetzen in einem VNet verbunden sind, können ohne zusätzliche Konfiguration miteinander kommunizieren.
 
@@ -110,8 +106,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines VNe
 | [Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-vnet-arm-cli.md) | Das Subnetz und das VNet werden gleichzeitig erstellt. Geben Sie für [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) den Parameter **--subnet-name** mit dem Subnetznamen an. |
 | [Vorlage](../../virtual-network/virtual-networks-create-vnet-arm-template-click.md) | Die einfachste Möglichkeit zum Erstellen eines VNet und von Subnetzen ist das Herunterladen einer vorhandenen Vorlage, z.B. [Virtual Network with two Subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets) (Virtuelles Netzwerk mit zwei Subnetzen), und die anschließende Anpassung gemäß Ihren Anforderungen. |
 
-## Netzwerksicherheitsgruppen
-<a id="network-security-groups" class="xliff"></a>
+## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 
 Eine [Netzwerksicherheitsgruppe (NSG)](../../virtual-network/virtual-networks-nsg.md) enthält eine Liste mit ACL-Regeln (Access Control List, Zugriffssteuerungsliste) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Subnetze, NICs oder beides. NSGs können entweder Subnetzen oder einzelnen NICs zugeordnet werden, die mit einem Subnetz verbunden sind. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VMs in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einer einzelnen NIC beschränkt werden, indem eine NSG direkt einer NIC zugewiesen wird.
 
@@ -132,8 +127,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 | [Azure-Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-nsg-arm-cli.md) | Verwenden Sie [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) für die erste Erstellung der NSG. Verwenden Sie [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create), um der NSG Regeln hinzuzufügen. Verwenden Sie [az network vnet subnet update](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet#update), um die NSG dem Subnetz hinzuzufügen. |
 | [Vorlage](../../virtual-network/virtual-networks-create-nsg-arm-template.md) | Verwenden Sie [Create a Network Security Group](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) (Erstellen einer Netzwerksicherheitsgruppe) als Anleitung zum Bereitstellen einer Netzwerksicherheitsgruppe mit einer Vorlage. |
 
-## Load Balancer
-<a id="load-balancers" class="xliff"></a>
+## <a name="load-balancers"></a>Load Balancer
 
 Der [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) bietet hohe Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Ein Load Balancer (Lastenausgleich) kann konfiguriert werden, um [eingehenden Internet-Datenverkehr für VMs auszugleichen](../../load-balancer/load-balancer-internet-overview.md) oder [Datenverkehr zwischen VMs in einem VNet auszugleichen](../../load-balancer/load-balancer-internal-overview.md). Ein Lastenausgleich kann außerdem den Datenverkehr zwischen lokalen Computern und VMs in einem standortübergreifenden Netzwerk ausgleichen oder externen Datenverkehr an eine bestimmte VM weiterleiten.
 
@@ -165,8 +159,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines int
 | [Azure-Befehlszeilenschnittstelle](../../load-balancer/load-balancer-get-started-ilb-arm-cli.md) | Verwenden Sie den Befehl [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create), um die erste Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie zum Definieren der privaten IP-Adresse [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#create) mit dem Parameter **--private-ip-address**. Verwenden Sie [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool#create), um die Konfiguration des Back-End-Adresspools hinzuzufügen. Verwenden Sie [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create), um NAT-Regeln hinzuzufügen. Verwenden Sie [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create), um die Lastenausgleichsregeln hinzuzufügen. Verwenden Sie [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create), um die Tests hinzuzufügen.|
 | [Vorlage](../../load-balancer/load-balancer-get-started-ilb-arm-template.md) | Verwenden Sie [2 VMs in a Load Balancer and configure NAT rules on the LB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) (Zwei VMs in einem Load Balancer und Konfiguration von NAT-Regeln für den LB) als Anleitung zum Bereitstellen eines Lastenausgleichs mit einer Vorlage. |
 
-## VMs
-<a id="vms" class="xliff"></a>
+## <a name="vms"></a>VMs
 
 VMs können in demselben VNet erstellt werden, und die Verbindung dazwischen kann über private IP-Adressen hergestellt werden. Das Herstellen der Verbindung ist auch dann möglich, wenn sie sich in unterschiedlichen Subnetzen befinden, ohne dass Gateways konfiguriert oder öffentliche IP-Adressen verwendet werden müssen. Zum Einfügen von VMs in ein VNet erstellen Sie das VNet und weisen es dann beim Erstellen der einzelnen VMs dem VNet und dem Subnetz zu. VMs beschaffen sich ihre Netzwerkeinstellungen während der Bereitstellung oder des Startvorgangs.  
 
@@ -182,8 +175,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer VM 
 | [Azure PowerShell](../virtual-machines-windows-ps-create.md) | Umfasst die Verwendung von [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) zum Hinzufügen der zuvor erstellten NIC zur VM-Konfiguration. |
 | [Vorlage](ps-template.md) | Verwenden Sie [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) (Sehr einfache Bereitstellung einer Windows-VM) als Anleitung zum Bereitstellen einer VM mit einer Vorlage. |
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich, wie Sie [benutzerdefinierte Routen und die IP-Weiterleitung](../../virtual-network/virtual-networks-udr-overview.md) konfigurieren. 
 - Informieren Sie sich, wie Sie [VNet-zu-VNet-Verbindungen](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) konfigurieren.

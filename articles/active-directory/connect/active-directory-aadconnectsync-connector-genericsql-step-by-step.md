@@ -21,22 +21,16 @@ ms.contentlocale: de-de
 ms.lasthandoff: 01/05/2017
 
 ---
-<a id="generic-sql-connector-step-by-step" class="xliff"></a>
-
-# Schrittweise Anleitung für den generischen SQL-Connector
+# <a name="generic-sql-connector-step-by-step"></a>Schrittweise Anleitung für den generischen SQL-Connector
 Dieses Thema ist eine Schritt-für-Schritt-Anleitung. Damit erstellen Sie eine einfache HR-Beispieldatenbank und verwenden sie, um einige Benutzer und ihre Gruppenmitgliedschaft zu importieren.
 
-<a id="prepare-the-sample-database" class="xliff"></a>
-
-## Vorbereiten der Beispieldatenbank
+## <a name="prepare-the-sample-database"></a>Vorbereiten der Beispieldatenbank
 Führen Sie auf einem Server mit SQL Server das SQL-Skript aus [Anhang A](#appendix-a) aus. Mit diesem Skript wird eine Beispieldatenbank mit dem Namen GSQLDEMO erstellt. Das Objektmodell für die erstellte Datenbank sieht wie in folgender Abbildung aus:   
 ![Objektmodell](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/objectmodel.png)
 
 Außerdem erstellen Sie einen Benutzer, den Sie für die Verbindung mit der Datenbank verwenden möchten. In dieser exemplarischen Vorgehensweise heißt der Benutzer „FABRIKAM\SQLUser“ und befindet sich in der Domäne.
 
-<a id="create-the-odbc-connection-file" class="xliff"></a>
-
-## Erstellen der ODBC-Verbindungsdatei
+## <a name="create-the-odbc-connection-file"></a>Erstellen der ODBC-Verbindungsdatei
 Der generische SQL-Connector verwendet ODBC für die Verbindung mit dem Remoteserver. Zunächst müssen Sie eine Datei mit den Informationen zur ODBC-Verbindung erstellen.
 
 1. Starten Sie das ODBC-Verwaltungshilfsprogramm auf Ihrem Server:   
@@ -66,9 +60,7 @@ Der generische SQL-Connector verwendet ODBC für die Verbindung mit dem Remotese
 
 Jetzt verfügen Sie über die benötigte Datei und können mit dem Erstellen des Connectors beginnen.
 
-<a id="create-the-generic-sql-connector" class="xliff"></a>
-
-## Erstellen des generischen SQL-Connectors
+## <a name="create-the-generic-sql-connector"></a>Erstellen des generischen SQL-Connectors
 1. Wählen Sie auf der Synchronization Service Manager-Benutzeroberfläche **Connectors** und **Erstellen**. Wählen Sie **Generisch, SQL (Microsoft)** aus, und geben Sie dem Connector einen aussagekräftigen Namen.  
    ![Connector 1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector1.png)
 2. Suchen Sie die DSN-Datei, die Sie im vorherigen Abschnitt erstellt haben, und laden Sie sie auf den Server hoch. Geben Sie die Anmeldeinformationen für die Verbindung mit der Datenbank an.  
@@ -89,9 +81,7 @@ Jetzt verfügen Sie über die benötigte Datei und können mit dem Erstellen des
    ![Connector 9](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/connector9.png)
 10. Wählen Sie unter **Objekttypen auswählen** und **Attribute auswählen** beide Objekttypen und alle Attribute aus. Klicken Sie auf der Seite **Anker konfigurieren** auf **Fertig stellen**.
 
-<a id="create-run-profiles" class="xliff"></a>
-
-## Erstellen von Ausführungsprofilen
+## <a name="create-run-profiles"></a>Erstellen von Ausführungsprofilen
 1. Wählen Sie auf der Synchronization Service Manager-Benutzeroberfläche **Connectors** und **Ausführungsprofile konfigurieren** aus. Klicken Sie auf **Neues Profil**. Wir beginnen mit **Vollständiger Import**.  
    ![Ausführungsprofil 1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile1.png)
 2. Wählen Sie den Typ **Vollständiger Import (nur Bereitstellung)**aus.  
@@ -107,18 +97,14 @@ Jetzt verfügen Sie über die benötigte Datei und können mit dem Erstellen des
 6. Optional: Sie können bei Bedarf zusätzliche Ausführungsprofile konfigurieren. In dieser exemplarischen Vorgehensweise wird nur der vollständige Import verwendet.
 7. Klicken Sie auf **OK** , um das Ändern von Ausführungsprofilen abzuschließen.
 
-<a id="add-some-test-data-and-test-the-import" class="xliff"></a>
-
-## Hinzufügen einiger Testdaten und Testen des Imports
+## <a name="add-some-test-data-and-test-the-import"></a>Hinzufügen einiger Testdaten und Testen des Imports
 Geben Sie einige Testdaten in die Beispieldatenbank ein. Wenn Sie bereit sind, wählen Sie **Ausführen** und **Vollständiger Import**.
 
 Hier sehen Sie einen Benutzer mit zwei Telefonnummern und eine Gruppe mit einigen Mitgliedern.  
 ![CS 1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs1.png)  
 ![CS 2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/cs2.png)  
 
-<a id="appendix-a" class="xliff"></a>
-
-## Anhang A
+## <a name="appendix-a"></a>Anhang A
 **SQL-Skript zum Erstellen der Beispieldatenbank**
 
 ```SQL

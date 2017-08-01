@@ -22,16 +22,14 @@ ms.lasthandoff: 04/27/2017
 
 
 ---
-<a id="data-factory-scheduling-and-execution" class="xliff"></a>
-# Data Factory – Planung und Ausführung
+# <a name="data-factory-scheduling-and-execution"></a>Data Factory – Planung und Ausführung
 In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. In diesem Artikel wird vorausgesetzt, dass Sie mit den Grundbegriffen des Data Factory-Anwendungsmodells vertraut sind, z.B. Aktivität, Pipelines, verknüpfte Dienste und Datasets. Grundlegende Konzepte von Azure Data Factory finden Sie in den folgenden Artikeln:
 
 * [Einführung in Data Factory](data-factory-introduction.md)
 * [Pipelines](data-factory-create-pipelines.md)
 * [Datasets](data-factory-create-datasets.md) 
 
-<a id="start-and-end-times-of-pipeline" class="xliff"></a>
-## Start- und Endzeiten der Pipeline
+## <a name="start-and-end-times-of-pipeline"></a>Start- und Endzeiten der Pipeline
 Eine Pipeline ist nur zwischen ihrer **Startzeit** und **Endzeit** aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Sie finden diese Einstellungen (Start, Ende, angehalten) in der Pipelinedefinition: 
 
 ```json
@@ -43,8 +41,7 @@ Eine Pipeline ist nur zwischen ihrer **Startzeit** und **Endzeit** aktiv. Sie wi
 Weitere Informationen zu diesen Eigenschaften finden Sie im Artikel [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md). 
 
 
-<a id="specify-schedule-for-an-activity" class="xliff"></a>
-## Festlegen des Zeitplans für eine Aktivität
+## <a name="specify-schedule-for-an-activity"></a>Festlegen des Zeitplans für eine Aktivität
 Nicht die Pipeline wird ausgeführt. Es handelt sich um die Aktivitäten in der Pipeline, die im Gesamtkontext der Pipeline ausgeführt werden. Im Abschnitt **scheduler** des JSON-Codes der Aktivität können Sie eine Zeitplanserie für die Aktivität angeben. Beispielsweise können Sie wie folgt die stündliche Ausführung einer Aktivität planen:  
 
 ```json
@@ -60,8 +57,7 @@ Wie im folgenden Diagramm dargestellt, wird durch die Angabe eines Zeitplans fü
 
 Die Eigenschaft **scheduler** für eine Aktivität ist optional. Wenn Sie diese Eigenschaft angeben, muss sie mit dem Rhythmus übereinstimmen, den Sie in der Definition des Ausgabedatasets für die Aktivität angeben. Derzeit steuert das Ausgabedataset den Zeitplan. Darum müssen Sie auch dann ein Ausgabedataset erstellen, wenn die Aktivität keine Ausgabe erzeugt. 
 
-<a id="specify-schedule-for-a-dataset" class="xliff"></a>
-## Festlegen des Zeitplans für ein Dataset
+## <a name="specify-schedule-for-a-dataset"></a>Festlegen des Zeitplans für ein Dataset
 Eine Aktivität in einer Data Factory-Pipeline kann über null oder mehr **Eingabedatasets** verfügen und ein oder mehrere Ausgabedatasets erstellen. Für eine Aktivität können Sie den Rhythmus angeben, mit dem die Eingabedaten verfügbar sind, bzw. die Ausgabedaten, die mithilfe des **availability**-Abschnitts in den Datasetdefinitionen erzeugt werden. 
 
 **Frequency** im Abschnitt **availability** gibt die Zeiteinheit an. Die zulässigen Werte für „frequency“ sind: „Minute“, „Hour“, „Day“, „Week“ und „Month“. Die **interval**-Eigenschaft im Abschnitt „availability“ gibt einen Multiplikator für „frequency“ an. Beispiel: Wenn für ein Ausgabedataset „frequency“ auf „Day“ und „interval“ auf „1“ festgelegt ist, werden die Ausgabedaten täglich generiert. Wenn Sie für „frequency“ „Minute“ festlegen, sollten Sie für „interval“ mindestens „15“ festlegen. 
@@ -181,12 +177,10 @@ Sie können diese Variablen für unterschiedliche Zwecke im JSON-Code der Aktivi
 
 Im vorherigen Beispiel ist der Zeitplan für Eingabe- und Ausgabedataset identisch (stündlich). Wenn das Eingabedataset für die Aktivität mit einer anderen Frequenz verfügbar ist, z.B. alle 15 Minuten, wird die Aktivität, die dieses Ausgabedataset erzeugt, dennoch stündlich ausgeführt, da das Ausgabedataset den Aktivitätszeitplan steuert. Weitere Informationen finden Sie unter [Modellieren von Datasets mit unterschiedlichen Frequenzen](#model-datasets-with-different-frequencies).
 
-<a id="dataset-availability-and-policies" class="xliff"></a>
-## Datasetverfügbarkeit und -richtlinien
+## <a name="dataset-availability-and-policies"></a>Datasetverfügbarkeit und -richtlinien
 Sie haben die Verwendung der Eigenschaften „frequency“ und „interval“ im Abschnitt „availability“ der Definition des Datasets kennengelernt. Es gibt einige andere Eigenschaften, die Einfluss auf Zeitplan und Ausführung einer Aktivität haben. 
 
-<a id="dataset-availability" class="xliff"></a>
-### Datasetverfügbarkeit 
+### <a name="dataset-availability"></a>Datasetverfügbarkeit 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt **availability** verwenden können:
 
 | Eigenschaft | Beschreibung | Erforderlich | Standard |
@@ -197,8 +191,7 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 | anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/><b>Hinweis</b>: Wenn AnchorDateTime Datumsteile aufweist, die präziser als die Häufigkeit sind, werden die präziseren Teile ignoriert. <br/><br/>Wenn <b>interval</b> z.B. auf <b>hourly</b> festgelegt ist („frequency: hour“ und „interval: 1“) und <b>AnchorDateTime</b> Angaben für <b>Minuten und Sekunden</b> enthält, werden die <b>Minuten- und Sekundenteile</b> von AnchorDateTime ignoriert. |Nein |01/01/0001 |
 | offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/><b>Hinweis:</b> Wenn sowohl „anchorDateTime“ als auch „offset“ angegeben werden, ist das Ergebnis die kombinierte Verschiebung. |Nein |NA |
 
-<a id="offset-example" class="xliff"></a>
-### Beispiel zu Offset
+### <a name="offset-example"></a>Beispiel zu Offset
 Standardmäßig beginnen Slices täglich (`"frequency": "Day", "interval": 1`) um 00:00 Uhr UTC-Zeit (Mitternacht). Wenn die Startzeit 6:00 Uhr UTC-Zeit sein soll, legen Sie den Versatz wie im folgenden Codeausschnitt gezeigt fest: 
 
 ```json
@@ -209,8 +202,7 @@ Standardmäßig beginnen Slices täglich (`"frequency": "Day", "interval": 1`) u
     "offset": "06:00:00"
 }
 ```
-<a id="anchordatetime-example" class="xliff"></a>
-### Beispiel zu „anchorDateTime“
+### <a name="anchordatetime-example"></a>Beispiel zu „anchorDateTime“
 Im folgenden Beispiel wird das Dataset einmal alle 23 Stunden erstellt. Der erste Slice beginnt zu dem durch anchorDateTime vorgegebenen Zeitpunkt, d.h. um `2017-04-19T08:00:00` (UTC-Zeit).
 
 ```json
@@ -222,8 +214,7 @@ Im folgenden Beispiel wird das Dataset einmal alle 23 Stunden erstellt. Der erst
 }
 ```
 
-<a id="offsetstyle-example" class="xliff"></a>
-### Beispiel zu „offset“/„style“
+### <a name="offsetstyle-example"></a>Beispiel zu „offset“/„style“
 Das folgende Dataset ist ein monatliches Dataset und wird am Dritten jedes Monats um 8:00 Uhr erstellt (`3.08:00:00`):
 
 ```json
@@ -235,8 +226,7 @@ Das folgende Dataset ist ein monatliches Dataset und wird am Dritten jedes Monat
 }
 ```
 
-<a id="dataset-policy" class="xliff"></a>
-### Datasetrichtlinie
+### <a name="dataset-policy"></a>Datasetrichtlinie
 Für ein Dataset kann eine Überprüfungsrichtlinie definiert sein, die angibt, wie die von einer Sliceausführung generierten Daten überprüft werden können, ehe sie zur Nutzung bereit sind. In solchen Fällen wird nach Beendigung der Sliceausführung der Status des Ausgabeslice in **Warten** mit dem Unterstatus **Überprüfung** geändert. Nach der Überprüfung der Slices ändert sich der Slicestatus in **Bereit**. Wenn ein Datenslice erstellt wurde, aber die Überprüfung nicht bestanden hat, werden Aktivitätsausführungen für nachgelagerte, von diesem Slice abhängige Slices nicht verarbeitet. [Überwachen und Verwalten von Pipelines](data-factory-monitor-manage-pipelines.md) behandelt.
 
 Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder die Bedingung, die die Datasetslices erfüllen müssen. In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt **policy** verwenden können:
@@ -246,8 +236,7 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 | minimumSizeMB | Überprüft, ob die Daten in einem **Azure-Blob** die minimalen Größenanforderungen (in MB) erfüllen. |Azure-Blob |Nein |NA |
 | minimumRows | Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. |<ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> |Nein |NA |
 
-<a id="examples" class="xliff"></a>
-#### Beispiele
+#### <a name="examples"></a>Beispiele
 **minimumSizeMB:**
 
 ```json
@@ -275,8 +264,7 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 
 Weitere Informationen zu diesen Eigenschaften und Beispielen finden Sie im Artikel [Datasets in Azure Data Factory](data-factory-create-datasets.md). 
 
-<a id="activity-policies" class="xliff"></a>
-## Aktivitätsrichtlinien
+## <a name="activity-policies"></a>Aktivitätsrichtlinien
 Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität, besonders dann, wenn der Slice einer Tabelle verarbeitet wird. Die Details finden Sie in der folgenden Tabelle.
 
 | Eigenschaft | Zulässige Werte | Standardwert | Beschreibung |
@@ -291,14 +279,12 @@ Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität, besonders dann,
 
 Weitere Informationen finden Sie im Artikel [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md). 
 
-<a id="parallel-processing-of-data-slices" class="xliff"></a>
-## Parallele Verarbeitung von Datenslices
+## <a name="parallel-processing-of-data-slices"></a>Parallele Verarbeitung von Datenslices
 Sie können das Startdatum für die Pipeline auf ein Datum in der Vergangenheit festlegen. Dann führt Data Factory automatisch eine Berechnung (einen Abgleich) aller Datenslices in der Vergangenheit aus und beginnt mit ihrer Verarbeitung. Beispiel: Sie erstellen eine Pipeline mit Startdatum 2017-04-01, und das aktuelle Datum ist 2017-04-10. Wenn für das Ausgabedataset der Rhythmus „Daily“ festgelegt ist, beginnt Data Factory sofort mit der Verarbeitung aller Slices von 2017-04-01 bis 2017-04-09, da das Startdatum in der Vergangenheit liegt. Der Slice aus 2017-04-10 wird noch nicht verarbeitet, da der Wert der style-Eigenschaft im availability-Abschnitt EndOfInterval lautet. Der älteste Slice wird zuerst verarbeitet, da OldestFirst der Standardwert von executionPriorityOrder ist. Eine Beschreibung der Style-Eigenschaft finden Sie im Abschnitt [Datasetverfügbarkeit](#dataset-availability). Eine Beschreibung des Abschnitts executionPriorityOrder finden Sie im Abschnitt [Aktivitätsrichtlinien](#activity-policies). 
 
 Sie können abgeglichene Datenslices für eine parallele Verarbeitung konfigurieren, indem Sie die Eigenschaft **concurrency** im Abschnitt **policy** des JSON-Codes der Aktivität festlegen. Diese Eigenschaft legt die Anzahl der parallelen Ausführungen einer Aktivität fest, die für verschiedene Slices stattfinden können. Der Standardwert für die concurrency-Eigenschaft ist 1. Aus diesem Grund wird standardmäßig jeweils ein Slice verarbeitet. Der Höchstwert ist 10. Wenn eine Pipeline eine große Menge verfügbarer Daten verarbeiten muss, kann die Datenverarbeitung durch einen höheren Parallelitätswert beschleunigt werden. 
 
-<a id="rerun-a-failed-data-slice" class="xliff"></a>
-## Wiederholen eines fehlerhaften Datenslices
+## <a name="rerun-a-failed-data-slice"></a>Wiederholen eines fehlerhaften Datenslices
 Tritt ein Fehler bei der Verarbeitung eines Datenslices auf, können Sie mithilfe des Azure-Portalblatts oder der App zum Überwachen und Verwalten feststellen, warum bei der Verarbeitung des Slices ein Fehler aufgetreten ist. Ausführliche Informationen finden Sie unter [Überwachen und Verwalten von Pipelines mithilfe von Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
 Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Activity1 und Activity2. Activity1 nutzt einen Slice von Dataset1 und erzeugt einen Slice von Dataset2, der von Activity2 als Eingabe genutzt wird, um einen Slice des Final Dataset zu erzeugen.
@@ -313,8 +299,7 @@ Nachdem Sie den Slice „9-10 AM“ für **Dataset2**erneut ausgeführt haben, s
 
 ![Wiederholen eines fehlerhaften Slices](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
-<a id="multiple-activities-in-a-pipeline" class="xliff"></a>
-## Mehrere Aktivitäten in einer Pipeline
+## <a name="multiple-activities-in-a-pipeline"></a>Mehrere Aktivitäten in einer Pipeline
 Sie können mehrere Aktivitäten in einer Pipeline verwenden. Wenn in einer Pipeline mehrere Aktivitäten vorliegen und die Ausgabe einer Aktivität nicht die Eingabe für eine andere Aktivität ist, können die Aktivitäten parallel ausgeführt werden, sofern Eingabedatenslices für die Aktivitäten bereitstehen.
 
 Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Die Aktivitäten können sich in derselben Pipeline oder in verschiedenen Pipelines befinden. Die zweite Aktivität wird nur ausgeführt, wenn die erste erfolgreich abgeschlossen wurde.
@@ -336,12 +321,10 @@ Wie bereits erwähnt, könnten sich die Aktivitäten in verschiedenen Pipelines 
 
 Im Abschnitt [Sequenzielles Kopieren](#copy-sequentially) des Anhangs finden Sie ein Beispiel.
 
-<a id="model-datasets-with-different-frequencies" class="xliff"></a>
-## Modellieren von Datasets mit unterschiedlichen Frequenzen
+## <a name="model-datasets-with-different-frequencies"></a>Modellieren von Datasets mit unterschiedlichen Frequenzen
 In den Beispielen waren die Frequenzen für Eingabe- und Ausgabedatasets und das Aktivitätszeitfenster identisch. Einige Szenarien erfordern die Fähigkeit, eine Ausgabe mit einer Frequenz zu erzeugen, die sich von den Frequenzen einer oder mehrerer Eingaben unterscheidet. Data Factory unterstützt die Modellierung dieser Szenarien.
 
-<a id="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour" class="xliff"></a>
-### Beispiel 1: Erzeugen eines täglichen Ausgabeberichts für Eingabedaten, die stündlich verfügbar sind
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Beispiel 1: Erzeugen eines täglichen Ausgabeberichts für Eingabedaten, die stündlich verfügbar sind
 In diesem Szenario verwenden Sie Eingabemessdaten von Sensoren, die stündlich im Azure-Blobspeicher verfügbar sind. Sie möchten einen täglichen Aggregationsbericht mit Statistiken wie Mittel-, Höchst- und Mindestwert für den Tag mit der [Hive-Aktivität](data-factory-hive-activity.md)von Data Factory erstellen.
 
 Dieses Szenario können Sie wie folgt mit Data Factory realisieren:
@@ -461,8 +444,7 @@ Das folgende Diagramm zeigt das Szenario im Hinblick auf eine Datenabhängigkeit
 
 Der Ausgabeslice für jeden Tag hängt von 24 stündlichen Slices aus einem Eingabedataset ab. Data Factory berechnet diese Abhängigkeiten automatisch, indem die Eingabedatenslices ermittelt werden, die in demselben Zeitraum wie der zu erzeugende Ausgabeslice liegen. Ist einer der 24 Eingabeslices nicht verfügbar, wartet Data Factory, bis der Eingabeslice bereit ist. Erst dann wird die tägliche Aktivitätsausführung gestartet.
 
-<a id="sample-2-specify-dependency-with-expressions-and-data-factory-functions" class="xliff"></a>
-### Beispiel 2: Angeben von Abhängigkeiten mit Ausdrücken und Data Factory-Funktionen
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Beispiel 2: Angeben von Abhängigkeiten mit Ausdrücken und Data Factory-Funktionen
 Lassen Sie uns ein weiteres Szenario betrachten. Angenommen, Sie verwenden eine Hive-Aktivität, die zwei Eingabedatasets verarbeitet. Eines davon verfügt über neue tägliche Daten, und eines erhält jede Woche neue Daten. Angenommen, Sie möchten einen Join-Vorgang auf zwei Eingaben anwenden und eine tägliche Ausgabe erzeugen.
 
 Der einfache Ansatz, bei dem Data Factory die zu verarbeitenden Eingabeslices automatisch durch Abstimmung mit dem Zeitraum des Ausgabedatenslice bestimmt, funktioniert in diesem Fall nicht mehr.
@@ -616,11 +598,9 @@ Die Hive-Aktivität verwendet zwei Eingaben und erzeugt täglich einen Ausgabesl
 
 Unter [Data Factory – Funktionen und Systemvariablen](data-factory-functions-variables.md) finden Sie eine Liste mit den Funktionen und Systemvariablen, die von Data Factory unterstützt werden.
 
-<a id="appendix" class="xliff"></a>
-## Anhang
+## <a name="appendix"></a>Anhang
 
-<a id="example-copy-sequentially" class="xliff"></a>
-### Beispiel: Sequenzielles Kopieren
+### <a name="example-copy-sequentially"></a>Beispiel: Sequenzielles Kopieren
 Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Sie können beispielsweise zwei Kopieraktivitäten in einer Pipeline („CopyActivity1“ und „CopyActivity2“) mit den folgenden Eingabe-/Ausgabedatasets verwenden:   
 
 CopyActivity1
