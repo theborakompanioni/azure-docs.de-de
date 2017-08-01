@@ -21,23 +21,17 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="problem-creating-an-application-proxy-application" class="xliff"></a>
-
-# Problem beim Erstellen einer Anwendungsproxyanwendung 
+# <a name="problem-creating-an-application-proxy-application"></a>Problem beim Erstellen einer Anwendungsproxyanwendung 
 
 Nachfolgend sind einige der häufigen Probleme aufgeführt, die beim Erstellen einer neuen Anwendungsproxyanwendung auftreten können.
 
-<a id="recommended-documents" class="xliff"></a>
-
-## Empfohlene Dokumente 
+## <a name="recommended-documents"></a>Empfohlene Dokumente 
 
 Informationen zum Erstellen einer Anwendungsproxyanwendung über das Verwaltungsportal finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
 
 Wenn Sie die Schritte in dieser Dokumentation befolgen und beim Erstellen der Anwendung einen Fehler erhalten, finden Sie weitere Informationen und Vorschläge zur Behebung der Anwendung in den Fehlerdetails. Die meisten Fehlermeldungen enthalten eine empfohlene Problemlösung. 
 
-<a id="specific-things-to-check" class="xliff"></a>
-
-## Überprüfen bestimmter Punkte
+## <a name="specific-things-to-check"></a>Überprüfen bestimmter Punkte
 
 Stellen Sie Folgendes sicher, um häufige Fehler zu vermeiden:
 
@@ -55,8 +49,6 @@ Die Fehlermeldung sollte beim Erstellen der Anwendung in der oberen rechten Ecke
 
    ![Benachrichtigungsaufforderung](./media/application-proxy-config-problem/error-message.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Aktivieren des Anwendungsproxys über das Azure-Portal](active-directory-application-proxy-enable.md)
 

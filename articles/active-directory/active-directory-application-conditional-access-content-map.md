@@ -20,22 +20,16 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="problems-configuring-conditional-access-to-one-of-my-applications" class="xliff"></a>
-
-# Probleme beim Konfigurieren des bedingten Zugriffs auf eine meiner Anwendungen
+# <a name="problems-configuring-conditional-access-to-one-of-my-applications"></a>Probleme beim Konfigurieren des bedingten Zugriffs auf eine meiner Anwendungen
 
 
-<a id="ive-set-up-conditional-access-but-something-isnt-working" class="xliff"></a>
-
-## Ich habe den bedingten Zugriff eingerichtet, es treten aber Probleme auf.
+## <a name="ive-set-up-conditional-access-but-something-isnt-working"></a>Ich habe den bedingten Zugriff eingerichtet, es treten aber Probleme auf.
   Die unten aufgeführten Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.
   * [Der bedingte Zugriff funktioniert nicht, weil der Kunde die Voraussetzungen der Geräteregistrierung nicht erfüllt.](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Der Mandant wird aufgrund einer falschen Einstellung der Richtlinien für bedingten Zugriff blockiert.](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
 
-<a id="im-having-problems-setting-up-conditional-access" class="xliff"></a>
-
-## Beim Einrichten des bedingten Zugriffs treten Probleme auf.
+## <a name="im-having-problems-setting-up-conditional-access"></a>Beim Einrichten des bedingten Zugriffs treten Probleme auf.
   Die unten aufgeführten Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.
   * [Wie und wann treten Regeln außerhalb des Unternehmensnetzwerks in Kraft?](http://aka.ms/calocation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Wie erhöht man die Anzahl von Geräten, bei denen ein Benutzer sich in Azure AD registrieren darf?](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-setup/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)

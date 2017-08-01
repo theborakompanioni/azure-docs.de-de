@@ -21,15 +21,11 @@ ms.lasthandoff: 04/14/2017
 
 ---
 
-<a id="how-to-grant-permissions-to-a-custom-developed-application" class="xliff"></a>
-
-# Gewähren von Berechtigungen für eine benutzerdefiniert entwickelte Anwendung
+# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Gewähren von Berechtigungen für eine benutzerdefiniert entwickelte Anwendung
 
 Wenn Sie im Vorfeld Berechtigungen für Ihre App gewähren möchten oder ein Fehler auftritt, den Sie keiner App zugeteilt haben, führen Sie die unten stehenden Schritte aus.
 
-<a id="how-to-perform-admin-consent-for-your-application" class="xliff"></a>
-
-## Ausführen der Administratorzustimmung für Ihre Anwendung
+## <a name="how-to-perform-admin-consent-for-your-application"></a>Ausführen der Administratorzustimmung für Ihre Anwendung
 
 Dies entspricht dem Erteilen der Zustimmung zur Anwendung für alle Benutzer in Ihrer Organisation.
 
@@ -39,15 +35,11 @@ Dies entspricht dem Erteilen der Zustimmung zur Anwendung für alle Benutzer in 
 
 Alternativ können Sie eine Anforderung an *login.microsoftonline.com* mit Ihrer App-Konfiguration erstellen und an *&prompt=admin\_consent* anfügen. Nach der Anmeldung als Administrator sollte die App-Zustimmung für alle Benutzer erteilt sein.
 
-<a id="how-to-force-user-consent-for-your-application" class="xliff"></a>
-
-## Erzwingen der Benutzerzustimmung für Ihre Anwendung
+## <a name="how-to-force-user-consent-for-your-application"></a>Erzwingen der Benutzerzustimmung für Ihre Anwendung
 
 * Fügen Sie *&prompt=consent* an Autorisierungsanforderungen an, die bei jeder Authentifizierung Zustimmung durch die Endbenutzer erfordern.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 [Genehmigen und Integrieren von Apps in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
 

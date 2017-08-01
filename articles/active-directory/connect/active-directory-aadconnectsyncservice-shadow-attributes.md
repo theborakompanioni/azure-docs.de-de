@@ -21,12 +21,10 @@ ms.contentlocale: de-de
 ms.lasthandoff: 03/18/2017
 
 ---
-# Schattenattribute für den Azure AD Connect-Synchronisierungsdienst
-<a id="azure-ad-connect-sync-service-shadow-attributes" class="xliff"></a>
+# <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schattenattribute für den Azure AD Connect-Synchronisierungsdienst
 Die meisten Attribute werden in Azure AD genauso wie in Ihrem lokalen Azure Directory dargestellt. Einige Attribute werden jedoch besonders verarbeitet, weshalb sich der Attributwert in Azure AD davon unterscheiden kann, was mit Azure AD Connect synchronisiert wird.
 
-## Was sind Schattenattribute?
-<a id="introducing-shadow-attributes" class="xliff"></a>
+## <a name="introducing-shadow-attributes"></a>Was sind Schattenattribute?
 Für einige Attribute gibt es in Azure AD zwei Darstellungen. Sowohl der lokale Wert als auch ein berechneter Wert werden gespeichert. Diese zusätzlichen Attribute werden Schattenattribute genannt. Die beiden gängigsten Attribute, bei denen dieses Verhalten erkennbar ist, heißen **userPrincipalName** und **proxyAddress**. Attributwerte werden geändert, wenn Werte in diesen Attributen vorhanden sind, die nicht bestätigte Domänen darstellen. Doch das Synchronisierungsmodul in Azure AD Connect liest den Wert im Schattenattribut aus seiner Perspektive dergestalt, dass Attribut von Azure AD bestätigt wurde.
 
 Die Schattenattribute können nicht im Azure-Portal oder mit PowerShell angezeigt werden. Doch das Verstehen des Konzepts hilft, Probleme in bestimmten Szenarien zu beheben, in denen das Attribut lokal und in der Cloud unterschiedliche Werte aufweist.
@@ -35,8 +33,7 @@ Um das Verhalten besser zu verstehen, betrachten Sie dieses Beispiel für Fabrik
 ![Domänen](./media/active-directory-aadconnectsyncservice-shadow-attributes/domains.png)  
 Das Unternehmen hat mehrere UPN-Suffixe in seinem lokalen Active Directory, von denen aber nur eines bestätigt ist.
 
-### userPrincipalName
-<a id="userprincipalname" class="xliff"></a>
+### <a name="userprincipalname"></a>userPrincipalName
 Ein Benutzer hat die folgenden Attributwerte in einer nicht bestätigten Domäne:
 
 | Attribut | Wert |
@@ -49,8 +46,7 @@ Das Attribut „userPrincipalName“ ist der Wert, den Sie bei Verwenden von Pow
 
 Da der tatsächliche lokale Attributwert in Azure AD gespeichert ist, aktualisiert Azure AD beim Bestätigen der Domäne „fabrikam.com“ das Attribut „userPrincipalName“ mit dem Wert von „shadowUserPrincipalName“. Sie müssen keine aus Azure AD Connect stammenden Änderungen synchronisieren, damit diese Werte aktualisiert werden.
 
-### proxyAddresses
-<a id="proxyaddresses" class="xliff"></a>
+### <a name="proxyaddresses"></a>proxyAddresses
 Dasselbe Verfahren für ausschließlich bestätigte Domänen erfolgt auch für „proxyAddresses“, jedoch mit zusätzlicher Logik. Die Suche nach bestätigten Domänen erfolgt nur für Postfachbenutzer. Ein E-Mail-aktivierter Benutzer oder Kontakt stellt einen Benutzer in einer anderen Exchange-Organisation dar. In „proxyAddresses“ können Sie diesen Objekten beliebige Werte hinzufügen.
 
 Für einen Postfachbenutzer, ob lokal oder in Exchange Online, werden nur Werte für bestätigte Domänen angezeigt. Diese können wie folgt aussehen:
@@ -73,12 +69,10 @@ Diese Logik für „proxyAddresses“ wird als **ProxyCalc** bezeichnet. „Prox
 > [!NOTE]
 > Die „ProxyCalc“-Logik weist verschiedene zusätzliche Verhaltensweisen für erweiterte Szenarien auf, die in diesem Artikel nicht dokumentiert werden. Dieses Thema dient zum Erläutern des Verhaltens und nicht zum Dokumentieren der gesamten internen Logik.
 
-### Isolierte Attributwerte
-<a id="quarantined-attribute-values" class="xliff"></a>
+### <a name="quarantined-attribute-values"></a>Isolierte Attributwerte
 Schattenattribute werden auch verwendet, wenn Attributwerte doppelt vorhanden sind. Weitere Informationen finden Sie unter [Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md).
 
-## Weitere Informationen
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>Weitere Informationen
 * [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md)
 * [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 

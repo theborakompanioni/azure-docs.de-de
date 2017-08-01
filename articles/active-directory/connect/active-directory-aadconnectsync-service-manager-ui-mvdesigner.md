@@ -22,15 +22,13 @@ ms.contentlocale: de-de
 ms.lasthandoff: 03/04/2017
 
 ---
-# Synchronization Service Manager – Metaverse Designer
-<a id="sync-service-manager-metaverse-designer" class="xliff"></a>
+# <a name="sync-service-manager-metaverse-designer"></a>Synchronization Service Manager – Metaverse Designer
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvdesigner.png)
 
 Für die meisten Kunden gibt es hier nichts zu konfigurieren.
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

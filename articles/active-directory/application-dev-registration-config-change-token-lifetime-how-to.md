@@ -22,9 +22,7 @@ ms.lasthandoff: 04/14/2017
 ---
 
 
-<a id="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application" class="xliff"></a>
-
-# Ändern der Standardwerte für die Tokengültigkeitsdauer für eine benutzerdefiniert entwickelte Anwendung
+# <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Ändern der Standardwerte für die Tokengültigkeitsdauer für eine benutzerdefiniert entwickelte Anwendung
 
 Azure AD Premium ermöglicht App-Entwicklern und Mandantenadministratoren die Konfiguration der Gültigkeitsdauer von Token, die für nicht vertrauliche Clients ausgegeben werden. Die Richtlinien für die Tokengültigkeitsdauer werden mandantenübergreifend oder auf Basis des Ressourcenzugriffs festgelegt.
 
@@ -36,9 +34,7 @@ Azure AD Premium ermöglicht App-Entwicklern und Mandantenadministratoren die Ko
 
  * Lesen Sie das Dokument [Konfigurieren der Tokengültigkeitsdauer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes), um zu erfahren, wie Sie andere benutzerdefinierte Token erstellen.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren der Tokengültigkeitsdauer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)<br>
 
 [Azure AD-Tokenreferenz](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims)

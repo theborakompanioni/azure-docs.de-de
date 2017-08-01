@@ -20,22 +20,16 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="problems-configuring-and-provisioning-users-to-an-application" class="xliff"></a>
-
-# Probleme beim Konfigurieren und Bereitstellen von Benutzern für eine Anwendung
+# <a name="problems-configuring-and-provisioning-users-to-an-application"></a>Probleme beim Konfigurieren und Bereitstellen von Benutzern für eine Anwendung
 
 
 
-<a id="i-want-to-know-when-provisioning-will-finish" class="xliff"></a>
-
-## Ich möchte wissen, wann die Bereitstellung abgeschlossen ist.
+## <a name="i-want-to-know-when-provisioning-will-finish"></a>Ich möchte wissen, wann die Bereitstellung abgeschlossen ist.
   Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.
   * [Ich weiß nicht, wie man herausfinden kann, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann.](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish-specific-user/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Die Bereitstellung für meine Azure AD-Kataloganwendung funktioniert, aber der Bereitstellungsprozess dauert Stunden.](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-<a id="im-having-problems-configuring-user-provisioning-to-an-application" class="xliff"></a>
-
-## Es treten Probleme beim Konfigurieren der Benutzerbereitstellung für eine Anwendung auf.
+## <a name="im-having-problems-configuring-user-provisioning-to-an-application"></a>Es treten Probleme beim Konfigurieren der Benutzerbereitstellung für eine Anwendung auf.
   Die folgenden Dokumente helfen Ihnen, einige der am häufigsten auftretenden Probleme in dieser Kategorie zu beheben.
   * [Ich weiß nicht, wie die Benutzerbereitstellung für eine Azure AD-Kataloganwendung konfiguriert wird.](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung ist ein Problem aufgetreten.](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)

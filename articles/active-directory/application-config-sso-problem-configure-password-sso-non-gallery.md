@@ -21,15 +21,11 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="problem-configuring-password-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
-
-# Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
+# <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
 In diesem Artikel finden Sie Informationen zu den häufig auftretenden Problemen beim Konfigurieren des **einmaligen Anmeldens per Kennwort** für eine nicht im Katalog enthaltene Anwendung.
 
-<a id="how-to-capture-sign-in-fields-for-an-application" class="xliff"></a>
-
-## So erfassen Sie Anmeldefelder für eine Anwendung
+## <a name="how-to-capture-sign-in-fields-for-an-application"></a>So erfassen Sie Anmeldefelder für eine Anwendung
 
 Das Erfassen von Anmeldefeldern wird nur für HTML-fähige Anmeldeseiten unterstützt. **Nicht unterstützt werden nicht standardmäßige Anmeldeseiten**, z.B. Seiten, bei denen Flash verwendet wird, oder Seiten mit anderen nicht-HTML-fähigen Technologien.
 
@@ -45,9 +41,7 @@ Die **manuelle Erfassung von Anmeldefeldern** kann verwendet werden, falls es be
 
 **Falls die automatische Erfassung von Anmeldefeldern nicht funktioniert, empfehlen wir in der Regel, die manuelle Option auszuprobieren.**
 
-<a id="how-to-automatically-capture-sign-in-fields-for-an-application" class="xliff"></a>
-
-### So erfassen Sie Anmeldefelder für eine Anwendung automatisch
+### <a name="how-to-automatically-capture-sign-in-fields-for-an-application"></a>So erfassen Sie Anmeldefelder für eine Anwendung automatisch
 
 Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort** für eine Anwendung mit der **automatischen Erfassung von Anmeldefeldern** zu konfigurieren:
 
@@ -75,9 +69,7 @@ Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort
 
 11. Diese URL wird von uns dann automatisch auf ein Eingabefeld für einen Benutzernamen und ein Kennwort untersucht, und Sie können Azure AD verwenden, um auf sichere Weise Kennwörter an diese Anwendung zu übertragen, indem Sie die Zugriffsbereich-Browsererweiterung verwenden.
 
-<a id="how-to-manually-capture-sign-in-fields-for-an-application" class="xliff"></a>
-
-## So erfassen Sie Anmeldefelder für eine Anwendung manuell
+## <a name="how-to-manually-capture-sign-in-fields-for-an-application"></a>So erfassen Sie Anmeldefelder für eine Anwendung manuell
 
 Wenn Sie Anmeldefelder manuell erfassen möchten, muss die Browsererweiterung für den Zugriffsbereich installiert sein. Diese **darf nicht InPrivate, inkognito oder privat ausgeführt werden.** Um die Browsererweiterung zu installieren, führen Sie die Schritte im Abschnitt [Installieren der Browsererweiterung für den Zugriffsbereich](#i-cannot-manually-detect-sign-in-fields-for-my-application) aus.
 
@@ -117,23 +109,17 @@ Führen Sie die folgenden Schritte aus, um das **einmalige Anmelden per Kennwort
 
 16. Befolgen Sie die Anweisungen auf dem Bildschirm, um den Zugriffsbereich zu verwenden.
 
-<a id="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error" class="xliff"></a>
-
-## Die Fehlermeldung „Wir konnten unter dieser URL keine Anmeldefelder finden“ wird angezeigt.
+## <a name="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Die Fehlermeldung „Wir konnten unter dieser URL keine Anmeldefelder finden“ wird angezeigt.
 
 Dieser Fehler wird angezeigt, wenn die automatische Erkennung von Anmeldefeldern fehlschlägt. Um dieses Problem zu beheben, verwenden Sie die manuelle Erkennung von Anmeldefeldern, indem Sie die Schritte im Abschnitt [So erfassen Sie Anmeldefelder für eine Anwendung manuell](#how-to-manually-capture-sign-in-fields-for-an-application) ausführen.
 
-<a id="i-see-an-unable-to-save-single-sign-on-configuration-error" class="xliff"></a>
-
-## Die Fehlermeldung „Die Konfiguration für einmaliges Anmelden kann nicht gespeichert werden“ wird angezeigt.
+## <a name="i-see-an-unable-to-save-single-sign-on-configuration-error"></a>Die Fehlermeldung „Die Konfiguration für einmaliges Anmelden kann nicht gespeichert werden“ wird angezeigt.
 
 In seltenen Fällen schlägt die Aktualisierung der Konfiguration für einmaliges Anmelden fehl. Versuchen Sie, diesen Fehler zu beheben, indem Sie die Konfiguration für einmaliges Anmelden erneut speichern.
 
 Sollte dieser Vorgang wiederholt fehlschlagen, erstellen Sie eine Supportanfrage, und geben Sie die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden.
 
-<a id="i-cannot-manually-detect-sign-in-fields-for-my-application" class="xliff"></a>
-
-## Die manuelle Erkennung von Anmeldefeldern für meine Anwendung funktioniert nicht.
+## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>Die manuelle Erkennung von Anmeldefeldern für meine Anwendung funktioniert nicht.
 
 Sollte die manuelle Erkennung nicht funktionieren, können Sie einige der folgenden Verhaltensweisen feststellen:
 
@@ -159,9 +145,7 @@ Sollte die manuelle Erkennung nicht funktionieren, können Sie einige der folgen
 
 Wenn keiner dieser Ansätze funktioniert, können wir weiterhelfen. Erstellen Sie eine Supportanfrage mit den Details Ihrer Lösungsversuche. Geben Sie außerdem die Informationen an, die in den Abschnitten [Anzeigen von Details einer Portalbenachrichtigung](#i-cannot-manually-detect-sign-in-fields-for-my-application) und [Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) erfasst wurden (sofern zutreffend).
 
-<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
-
-## Installieren der Browsererweiterung für den Zugriffsbereich
+## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
 Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
 
@@ -185,9 +169,7 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 -   [Zugriffsbereichserweiterung für Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-<a id="how-to-see-the-details-of-a-portal-notification" class="xliff"></a>
-
-## Anzeigen von Details einer Portalbenachrichtigung
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>Anzeigen von Details einer Portalbenachrichtigung
 
 Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgende Schritte ausführen:
 
@@ -207,21 +189,15 @@ Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgend
 
 6.  Klicken Sie auf das **Symbol** **Kopieren** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
 
-<a id="how-to-get-help-by-sending-notification-details-to-a-support-engineer" class="xliff"></a>
-
-## Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker
 
 Es ist sehr wichtig, dass Sie dem Supporttechniker **alle unten aufgelisteten Details** mitteilen, wenn Sie Hilfe benötigen, damit dieser schnell helfen kann. Hierfür können Sie ganz einfach **einen Screenshot erstellen**, oder Sie klicken auf das Symbol **Fehler kopieren** rechts neben dem Textfeld **Fehler kopieren**.
 
-<a id="notification-details-explained" class="xliff"></a>
-
-## Erläuterungen der Benachrichtigungsdetails
+## <a name="notification-details-explained"></a>Erläuterungen der Benachrichtigungsdetails
 
 Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher erläutert, und es werden Beispiele genannt.
 
-<a id="essential-notification-items" class="xliff"></a>
-
-### Grundlegende Benachrichtigungselemente
+### <a name="essential-notification-items"></a>Grundlegende Benachrichtigungselemente
 
 -   **Titel**: der beschreibende Titel der Benachrichtigung
 
@@ -259,9 +235,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
     -   Beispiel: **17f84be4-51f8-483a-b533-383791227a99**
 
-<a id="detailed-notification-items" class="xliff"></a>
-
-### Detaillierte Benachrichtigungselemente
+### <a name="detailed-notification-items"></a>Detaillierte Benachrichtigungselemente
 
 -   **Anzeigename**: **(kann leer sein)** ein detaillierterer Anzeigename für den Fehler
 
@@ -283,9 +257,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
     -   Beispiel: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 
 
