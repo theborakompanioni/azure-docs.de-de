@@ -119,7 +119,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name* vergibt einen Namen für den ausgeführten Container (anstelle der Container-ID).
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. „http://localhost:4000“. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. http://localhost:4000 . Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ![Hello World!][hello-world]
 
@@ -217,7 +217,7 @@ Verwenden Sie das in der Vorlage bereitgestellte Installationsskript, um das Anw
 
 Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. „http://localhost:4000“. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. http://localhost:4000 . Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ![Hello World!][hello-world]
 
