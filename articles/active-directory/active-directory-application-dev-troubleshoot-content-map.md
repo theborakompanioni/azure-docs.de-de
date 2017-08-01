@@ -20,9 +20,7 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="troubleshoot-azure-active-directory-application-development" class="xliff"></a>
-
-# Problembehandlung bei der Azure Active Directory-Anwendungsentwicklung
+# <a name="troubleshoot-azure-active-directory-application-development"></a>Problembehandlung bei der Azure Active Directory-Anwendungsentwicklung
 Über die folgenden Links gelangen Sie zu einer Inhaltsübersicht, die Sie bei der Behebung einiger der am häufigsten auftretenden Probleme bei der Anwendungsentwicklung mit der **Anwendungsregistrierung** in Azure Active Directory unterstützt.
 
 * [Probleme bei der Anwendungskonfiguration und -registrierung](active-directory-application-dev-config-content-map.md)

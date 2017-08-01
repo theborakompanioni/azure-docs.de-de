@@ -21,15 +21,11 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="problem-installing-the-application-proxy-agent-connector" class="xliff"></a>
-
-# Problem beim Installieren des Anwendungsproxy-Agent-Connectors
+# <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
 Der Microsoft AAD-Anwendungsproxyconnector ist eine interne Domänenkomponente, die ausgehende Verbindungen verwendet, um die Konnektivität zwischen dem von der Cloud zur Verfügung gestellten Endpunkt und der internen Domäne einzurichten.
 
-<a id="general-problem-areas-with-connector-installation" class="xliff"></a>
-
-## Allgemeine Problembereiche bei der Installation des Connectors
+## <a name="general-problem-areas-with-connector-installation"></a>Allgemeine Problembereiche bei der Installation des Connectors
 
 Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Hauptursache in der Regel einem der folgenden Bereiche:
 
@@ -39,9 +35,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 3.  **Authentifizierung des Administrators**: Während der Installation muss der Benutzer Anmeldeinformationen für den Administrator bereitstellen, um die Connectorinstallation abzuschließen.
 
-<a id="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page" class="xliff"></a>
-
-## Überprüfen der Konnektivität mit dem Cloudanwendungsproxy-Dienst und der Microsoft-Anmeldeseite
+## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Überprüfen der Konnektivität mit dem Cloudanwendungsproxy-Dienst und der Microsoft-Anmeldeseite
 
 **Ziel**: Überprüfen Sie, ob der Connectorcomputer eine Verbindung mit dem Registrierungsendpunkt des AAD-Anwendungsproxys und der Microsoft-Anmeldeseite herstellen kann.
 
@@ -51,9 +45,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 3.  Öffnen Sie einen Browser (separate Registerkarte), und wechseln Sie zur folgenden Webseite: <https://login.microsoftonline.com>. Stellen Sie sicher, dass Sie sich bei dieser Seite anmelden können.
 
-<a id="verify-machine-and-backend-components-support-for-application-proxy-trust-cert" class="xliff"></a>
-
-## Überprüfen der Unterstützung des Vertrauensstellungszertifikats des Anwendungsproxys durch Computer und Back-End-Komponenten
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Überprüfen der Unterstützung des Vertrauensstellungszertifikats des Anwendungsproxys durch Computer und Back-End-Komponenten
 
 **Ziel**: Überprüfen Sie, ob Connectorcomputer, Back-End-Proxy und Firewall das Zertifikat unterstützen können, das vom Connector für die zukünftige Vertrauensstellung erstellt wurde.
 
@@ -68,9 +60,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 2.  Wenden Sie sich an Ihren Netzwerkadministrator, damit der Back-End-Proxy und die Firewall überprüft werden, damit sie SHA512 nicht für ausgehenden Datenverkehr blockieren.
 
-<a id="verify-admin-is-used-to-install-the-connector" class="xliff"></a>
-
-## Überprüfen, dass der Connector vom Administrator installiert wird
+## <a name="verify-admin-is-used-to-install-the-connector"></a>Überprüfen, dass der Connector vom Administrator installiert wird
 
 **Ziel**: Überprüfen Sie, ob der Benutzer, der versucht, den Connector zu installieren, ein Administrator mit den richtigen Anmeldeinformationen ist. Derzeit muss der Benutzer ein globaler Administrator sein, damit die Installation erfolgreich ausgeführt werden kann.
 
@@ -80,8 +70,6 @@ Stellen Sie eine Verbindung mit <https://login.microsoftonline.com> her, und ver
 
 Wählen Sie Ihr Benutzerkonto aus, und klicken Sie dann im daraufhin angezeigten Menü auf „Verzeichnisrolle“. Überprüfen Sie, ob die ausgewählte Rolle „Globaler Administrator“ ist. Wenn Sie im Verlauf dieser Schritte nicht auf die Seiten zugreifen können, sind Sie kein globaler Administrator.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
 

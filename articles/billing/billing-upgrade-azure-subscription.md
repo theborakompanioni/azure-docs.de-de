@@ -24,8 +24,7 @@ ms.contentlocale: de-de
 ms.lasthandoff: 03/17/2017
 
 ---
-<a id="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go" class="xliff"></a>
-# Aktualisieren Ihrer kostenlosen Testversion oder Ihres Microsoft Imagine Azure-Abonnements auf nutzungsbasierte Bezahlung
+# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Aktualisieren Ihrer kostenlosen Testversion oder Ihres Microsoft Imagine Azure-Abonnements auf nutzungsbasierte Bezahlung
 Aktualisieren Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/free/) oder Ihr [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/)-Abonnement im Azure-Kontoportal auf [nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/). Das Upgrade kostet selbst nichts, es fallen lediglich Gebühren für die Dienste an, die Sie verwenden.
 
 1. Melden Sie sich beim [Azure-Kontoportal](https://account.windowsazure.com/subscriptions) an, und navigieren Sie zur Registerkarte **Abonnements**.

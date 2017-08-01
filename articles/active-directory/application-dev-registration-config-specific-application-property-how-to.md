@@ -21,15 +21,11 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="how-to-fill-out-specific-fields-for-a-custom-developed-application" class="xliff"></a>
-
-# Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung
+# <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung
 
 Dieser Artikel bietet eine kurze Beschreibung aller verfügbaren Felder im Registrierungsformular für Anwendungen im [Azure-Portal](https://portal.azure.com).
 
-<a id="register-a-new-application" class="xliff"></a>
-
-## Registrieren einer neuen Anwendung
+## <a name="register-a-new-application"></a>Registrieren einer neuen Anwendung
 
 -   Um eine neue Anwendung zu registrieren, navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 
@@ -39,9 +35,7 @@ Dieser Artikel bietet eine kurze Beschreibung aller verfügbaren Felder im Regis
 
 -   Dadurch wird das Formular zur Registrierung der Anwendung geöffnet.
 
-<a id="fields-in-the-application-registration-form" class="xliff"></a>
-
-## Felder im Registrierungsformular für Anwendungen
+## <a name="fields-in-the-application-registration-form"></a>Felder im Registrierungsformular für Anwendungen
 
 
 | Feld            | Beschreibung                                                                              |
@@ -65,8 +59,6 @@ Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im
 | Umleitungs-URIs   | Bei nativen Anwendungen werden Benutzer nach erfolgreicher Autorisierung an diese URIs weitergeleitet. Azure AD prüft, ob der Umleitungs-URI, den Ihre Anwendung in der OAuth 2.0-Anforderung bereitstellt, mit einem der im Portal registrierten Werte übereinstimmt.                                                            |
 | Schlüssel            | Sie können Schlüssel erstellen, um programmgesteuert und ohne Benutzerinteraktion auf Web-APIs zuzugreifen, die von Azure AD gesichert werden. Geben Sie auf der Seite \*\*Schlüssel\*\* eine Beschreibung des Schlüssels sowie das Ablaufdatum ein, und speichern Sie die Informationen, um den Schlüssel zu generieren. Stellen Sie sicher, dass Sie den Schlüssel an sicherer Stelle speichern, da Sie später nicht mehr darauf zugreifen können.             |
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md)
 

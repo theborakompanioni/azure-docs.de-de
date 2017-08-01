@@ -21,9 +21,7 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="problems-signing-in-to-an-application-using-a-deeplink" class="xliff"></a>
-
-# Probleme beim Anmelden bei einer Anwendung über einen Deeplink
+# <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Probleme beim Anmelden bei einer Anwendung über einen Deeplink
 
 Der Zugriffsbereich ist ein webbasiertes Portal, in dem Benutzer mit einem Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. 
 
@@ -31,9 +29,7 @@ Diese Anwendungen werden im Namen des Benutzers im Azure AD-Portal konfiguriert.
 
 Deeplinks oder Benutzerzugriffs-URLs sind Links, mit deren Hilfe Ihre Benutzer direkt über die URL-Leiste ihrer Browser auf ihre Kennwort-SSO-Anwendungen zugreifen können. Bei der Navigation zu diesem Link werden die Benutzer automatisch bei der Anwendung angemeldet, ohne zuerst in den Zugriffsbereich wechseln zu müssen. Es handelt sich um denselben Link, mit dem Benutzer über den Office 365-Anwendungsstarter auf diese Anwendungen zugreifen.
 
-<a id="general-issues-to-check-first" class="xliff"></a>
-
-## Allgemeine Probleme, die zuerst überprüft werden sollten
+## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten
 
 -   Stellen Sie sicher, dass Sie einen **Browser** verwenden, der die Mindestanforderungen für den Zugriffsbereich erfüllt.
 
@@ -55,9 +51,7 @@ Deeplinks oder Benutzerzugriffs-URLs sind Links, mit deren Hilfe Ihre Benutzer d
 
 -   Löschen Sie auch die Cookies in Ihrem Browser, und versuchen Sie sich erneut anzumelden.
 
-<a id="checking-the-deeplink" class="xliff"></a>
-
-## Überprüfen des Deeplinks
+## <a name="checking-the-deeplink"></a>Überprüfen des Deeplinks
 
 Um festzustellen, ob Sie über den richtigen Deeplink verfügen, führen Sie die folgenden Schritte aus:
 
@@ -89,9 +83,7 @@ Um festzustellen, ob Sie über den richtigen Deeplink verfügen, führen Sie die
 
 12. Suchen Sie die Bezeichnung **URL für den Benutzerzugriff**. Ihr Deeplink sollte mit dieser URL übereinstimmen.
 
-<a id="how-to-install-the-access-panel-browser-extension" class="xliff"></a>
-
-## Installieren der Browsererweiterung für den Zugriffsbereich
+## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
 Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
 
@@ -115,9 +107,7 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 
 -   [Zugriffsbereichserweiterung für Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-<a id="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application" class="xliff"></a>
-
-## Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
+## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
@@ -125,9 +115,7 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
 -   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application-for-password-single-sign-on)
 
-<a id="add-an-application-from-the-azure-ad-gallery" class="xliff"></a>
-
-### Hinzufügen einer Anwendung aus dem Azure AD-Katalog
+### <a name="add-an-application-from-the-azure-ad-gallery"></a>Hinzufügen einer Anwendung aus dem Azure AD-Katalog
 
 Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
 
@@ -151,9 +139,7 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird das Konfigurationsblatt der Anwendung angezeigt.
 
-<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
-
-### Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 
@@ -179,9 +165,7 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
 10. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
 
-<a id="how-to-configure-password-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
-
-## Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
@@ -189,9 +173,7 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
 -   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application-for-password-single-sign-on)
 
-<a id="add-a-non-gallery-application" class="xliff"></a>
-
-### Hinzufügen einer nicht im Katalog enthaltenen Anwendung
+### <a name="add-a-non-gallery-application"></a>Hinzufügen einer nicht im Katalog enthaltenen Anwendung
 
 Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
 
@@ -211,9 +193,7 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird das Konfigurationsblatt der Anwendung angezeigt.
 
-<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
-
-### Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 
@@ -241,9 +221,7 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
 11. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
 
-<a id="how-to-assign-a-user-to-an-application-directly" class="xliff"></a>
-
-## Direktes Zuweisen eines Benutzers zu einer Anwendung
+## <a name="how-to-assign-a-user-to-an-application-directly"></a>Direktes Zuweisen eines Benutzers zu einer Anwendung
 
 Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus:
 
@@ -281,9 +259,7 @@ Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus
 
 Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriffsbereich starten.
 
-<a id="if-these-troubleshooting-steps-do-not-the-resolve-the-issue" class="xliff"></a>
-
-## Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird, 
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird, 
 
 öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
@@ -299,8 +275,6 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriff
 
 -   Fiddler-Ablaufverfolgungen
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
 

@@ -20,9 +20,7 @@ ms.lasthandoff: 04/17/2017
 
 ---
 
-<a id="troubleshoot-azure-active-directory-application-management" class="xliff"></a>
-
-# Problembehandlung bei der Azure Active Directory-Anwendungsverwaltung
+# <a name="troubleshoot-azure-active-directory-application-management"></a>Problembehandlung bei der Azure Active Directory-Anwendungsverwaltung
 Über die folgenden Links gelangen Sie zu einer Inhaltsübersicht, die Sie bei der Behebung einiger der am häufigsten auftretenden Probleme mit der Verwaltung von **Unternehmensanwendungen** in Azure Active Directory unterstützt.
 
 * [Probleme bei der Anwendungskonfiguration](active-directory-application-config-content-map.md)
