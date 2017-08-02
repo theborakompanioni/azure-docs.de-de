@@ -372,7 +372,7 @@ Nach dem Herunterladen Ihrer Erfassung können Sie diese mit einem beliebigen To
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Anzeigen der Paketerfassungen finden Sie unter [Packet capture analysis with Wireshark](network-watcher-alert-triggered-packet-capture.md) (Paketerfassungsanalyse mit Wireshark).
+Informationen zum Anzeigen der Paketerfassungen finden Sie unter [Paketuntersuchung mit Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md).
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png
 [1-1]: ./media/network-watcher-alert-triggered-packet-capture/figure1-1.png
