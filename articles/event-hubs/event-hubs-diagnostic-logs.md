@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/27/2017
+ms.date: 06/27/2017
 ms.author: sethm;babanisa
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: bb8679b733e9ebd8d6a95a618d4ab8deab18ece4
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -29,27 +30,25 @@ Sie können zwei Typen von Protokollen für Azure Event Hubs anzeigen:
 * **[Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Sie können Diagnoseprotokolle konfigurieren, um einen umfangreicheren Einblick in alle Vorgänge zu erhalten, die im Rahmen des Auftrags ausgeführt werden. Diagnoseprotokolle enthalten Informationen zu Aktivitäten vom Erstellen bis zum Löschen des Auftrags, einschließlich Updates und Aktivitäten während der Auftragsausführung.
 
 ## <a name="turn-on-diagnostic-logs"></a>Aktivieren der Diagnoseprotokolle
-Diagnoseprotokolle sind standardmäßig **deaktiviert**. So aktivieren Sie Diagnoseprotokolle
+Diagnoseprotokolle sind standardmäßig deaktiviert. So aktivieren Sie Diagnoseprotokolle
 
-1.    Rufen Sie im Azure-Portal das Blatt zum Streamingauftrag auf.
+1.  Klicken Sie im [Azure-Portal](https://portal.azure.com) unter **Überwachung und Verwaltung** auf **Diagnoseprotokolle**.
 
-2.    Klicken Sie unter **Überwachung** auf das Blatt **Diagnoseprotokolle**.
+    ![Navigation zu Diagnoseprotokollen](./media/event-hubs-diagnostic-logs/image1.png)
 
-    ![Navigation zu Diagnoseprotokollen](./media/event-hubs-diagnostic-logs/image1.png)  
+2.  Klicken Sie auf die Ressource, die Sie überwachen möchten.
 
-3.    Wählen Sie **Diagnose aktivieren**.
+3.  Klicken Sie auf **Diagnose aktivieren**.
 
     ![Aktivieren der Diagnoseprotokolle](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.    Wählen Sie als **Status** **Ein** aus.
+4.  Klicken Sie für **Status** auf **Ein**.
 
     ![Ändern des Status der Diagnoseprotokolle](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.    Legen Sie das gewünschte Archivierungsziel fest, z.B. ein Speicherkonto, einen Event Hub oder Azure Log Analytics.
+5.  Legen Sie das gewünschte Archivierungsziel fest, z.B. ein Speicherkonto, einen Event Hub oder Azure Log Analytics.
 
-6.    Wählen Sie die Kategorien von Protokollen aus, die Sie erfassen möchten, z.B. **Ausführung** oder **Erstellung**.
-
-7.    Speichern Sie die neuen Diagnoseeinstellungen.
+6.  Speichern Sie die neuen Diagnoseeinstellungen.
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel auf dem Blatt **Diagnoseprotokolle** angezeigt.
 
@@ -58,7 +57,7 @@ Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersic
 ## <a name="diagnostic-logs-categories"></a>Diagnoseprotokollkategorien
 Event Hubs erfassen Diagnoseprotokolle für zwei Kategorien:
 
-* **ArchivalLogs:** Protokolle im Zusammenhang mit Event Hubs-Archiven, insbesondere im Zusammenhang mit Archivfehlern.
+* **ArchiveLogs:** Protokolle im Zusammenhang mit Event Hubs-Archiven, insbesondere im Zusammenhang mit Archivfehlern.
 * **OperationalLogs:** Informationen zu Abläufen während Event Hubs-Vorgängen, insbesondere zum Vorgangstyp (einschließlich Event Hub-Erstellung, verwendeter Ressourcen und des Status des Vorgangs).
 
 ## <a name="diagnostic-logs-schema"></a>Schema „Diagnoseprotokolle“
@@ -83,7 +82,7 @@ durationInSeconds | Dauer des Fehlers
 Message: | Fehlermeldung.
 category | ArchiveLogs
 
-Es folgt ein Beispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
+Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 
 ```json
 {
@@ -102,14 +101,14 @@ Es folgt ein Beispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 }
 ```
 
-### <a name="operation-logs-schema"></a>Vorgangsprotokollschema
+### <a name="operational-logs-schema"></a>Schema „Betriebsprotokolle“
 
-JSON-Zeichenfolgen im Vorgangsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
+JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
 Name | Beschreibung
 ------- | -------
 ActivityId | Interne ID zur Nachverfolgung
-EventName | Vorgangsname     
+EventName | Vorgangsname  
 resourceId | Azure Resource Manager-Ressourcen-ID
 SubscriptionId | Abonnement-ID
 EventTimeString | Vorgangszeit
@@ -118,7 +117,7 @@ Status | Vorgangsstatus
 Aufrufer | Aufrufer des Vorgangs (Azure-Portal oder Verwaltungsclient)
 category | OperationalLogs
 
-Es folgt ein Beispiel für eine JSON-Zeichenfolge im Vorgangsprotokoll:
+Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Betriebsprotokoll:
 
 ```json
 Example:

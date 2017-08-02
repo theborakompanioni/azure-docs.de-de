@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/29/2017
 ms.author: sumukhs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
-ms.openlocfilehash: 101b4e6a7bd5ded44334a4c3c9efee69669d9bcf
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: fa77eaf44f4d90d1a78f5de69e36432a53d80ecd
 ms.contentlocale: de-de
-ms.lasthandoff: 02/21/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -37,7 +37,7 @@ Die globale Konfiguration für Reliable Services wird im Clustermanifest für de
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad zur freigegebenen Protokolldatei an. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht den SharedLogPath angeben. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 | SharedLogSizeInMB |Megabytes |8192 |Gibt den MB-Wert für den Festplattenspeicher an, der für das freigegebene Protokoll statisch zugeordnet wird. Der Wert muss größer oder gleich 2.048 sein. |
 
-Im folgenden Beispiel wird in einer Azure ARM- bzw. einer lokalen JSON-Vorlage gezeigt, wie Sie das freigegebene Transaktionsprotokoll ändern, das als Unterstützung für zuverlässige Sammlungen für zustandsbehaftete Dienste erstellt wird.
+Im folgenden Beispiel wird in einer Azure ARM- bzw. einer lokalen JSON-Vorlage gezeigt, wie Sie das freigegebene Transaktionsprotokoll ändern, das als Unterstützung zuverlässiger Sammlungen für zustandsbehaftete Dienste erstellt wird.
 
     "fabricSettings": [{
         "name": "KtlLogger",

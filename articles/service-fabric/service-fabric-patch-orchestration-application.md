@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 3fc66d775f97333ad497cf3773643c188ec7c1d6
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: db6e654de074fc6651fd0d7479ee52038f944745
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -60,7 +60,7 @@ Die App für die Patchorchestrierung besteht aus den folgenden Teilkomponenten:
 #### <a name="azure-clusters"></a>Azure-Cluster
 Die App für die Patchorchestrierung muss auf Azure-Clustern mit Service Fabric-Laufzeitversion 5.5 oder höher ausgeführt werden.
 
-#### <a name="standalone-on-premise-clusters"></a>Eigenständige lokale Cluster
+#### <a name="standalone-on-premises-clusters"></a>Eigenständige lokale Cluster
 Die App für die Patchorchestrierung muss auf eigenständigen Clustern mit Service Fabric-Laufzeitversion 5.6 oder höher ausgeführt werden.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Aktivieren des Reparatur-Manager-Diensts (falls dieser nicht bereits ausgeführt wird)
@@ -149,10 +149,9 @@ Die Protokolle der App für die Patchorchestrierung werden auf folgenden festen 
 - 24afa313-0d3b-4c7c-b485-1047fd964b60
 - 05dc046c-60e9-4ef7-965e-91660adffa68
 
-Fügen Sie in der Resource Manager-Vorlage im Abschnitt `WadCfg` folgenden Abschnitt ein: 
+Wechseln Sie in der Resource Manager-Vorlage zum Abschnitt `EtwEventSourceProviderConfiguration` unter `WadCfg`, und fügen Sie die folgenden Einträge hinzu:
 
 ```json
-"PatchOrchestrationApplication": [
   {
     "provider": "e39b723c-590c-4090-abb0-11e3e6616346",
     "scheduledTransferPeriod": "PT5M",
@@ -180,8 +179,7 @@ Fügen Sie in der Resource Manager-Vorlage im Abschnitt `WadCfg` folgenden Absch
     "DefaultEvents": {
     "eventDestination": " PatchOrchestrationApplicationTable"
     }
-  },
-]
+  }
 ```
 
 > [!NOTE]
@@ -293,7 +291,7 @@ Führen Sie zum Aktivieren des Reverseproxys auf dem Cluster die Schritte unter 
 ### <a name="collect-patch-orchestration-app-logs"></a>Erfassen von Protokollen für die App für die Patchorchestrierung
 
 Protokolle für die App für die Patchorchestrierung werden als Teil der Service Fabric-Protokolle aus Laufzeitversion `5.6.220.9494` und höher erfasst.
-Für Cluster, auf denen eine Service Fabric-Laufzeitversion vor `5.6.220.9494`, ausgeführt wird, können Protokolle mithilfe eines der folgenden Verfahren erfasst werden.
+Für Cluster, auf denen eine Service Fabric-Laufzeitversion vor `5.6.220.9494` ausgeführt wird, können Protokolle mithilfe eines der folgenden Verfahren erfasst werden.
 
 #### <a name="locally-on-each-node"></a>Lokal auf jedem Knoten
 

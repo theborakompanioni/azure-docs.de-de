@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 04810ffa33d90d31003d0919c3edb2710fed453c
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB: PDF-Datei mit dem SQL-Abfragespickzettel für die DocumentDB-API
@@ -40,7 +39,7 @@ Schreiben Sie Ihre Abfragen schneller, indem Sie den SQL-Abfragespickzettel heru
 
 ## <a name="more-help-with-writing-sql-queries"></a>Weitere Hilfe beim Schreiben von SQL-Abfragen
 * Eine exemplarische Vorgehensweise der Abfrageoptionen, die in Cosmos DB verfügbar sind, finden Sie unter [Abfragen von Cosmos DB](documentdb-sql-query.md).
-* Die zugehörige Referenzdokumentation finden Sie unter [SQL-Abfragesprache von Cosmos DB](https://msdn.microsoft.com/library/azure/dn782250.aspx).
+* Die entsprechende Referenzdokumentation finden Sie unter [Azure Cosmos DB: DocumentDB-API: SQL-Syntaxreferenz](https://msdn.microsoft.com/library/azure/dn782250.aspx).
 
 ## <a name="release-notes"></a>Versionshinweise
 Aktualisiert am 29.7.2016, um „TOP“ hinzuzufügen.

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 85a3386c8159eb1abf01ccd35c6aea04f5710d5c
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: f39f674bf576a2661a0e03710b9005b0515b3aa5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="azure-functions-queue-storage-bindings"></a>Azure Functions – Queue Storage-Bindungen
@@ -75,7 +74,7 @@ Der Warteschlangentrigger stellt mehrere Metadateneigenschaften bereit. Diese Ei
 * **ExpirationTime** – Typ `DateTimeOffset?`. Die Zeit, zu der die Nachricht abläuft.
 * **Id** – Typ `string`. ID der Warteschlangennachricht
 * **InsertionTime** – Typ `DateTimeOffset?`. Die Zeit, zu der die Nachricht der Warteschlange hinzugefügt wurde.
-* **NextVisibleTime** – Typ „DateTimeOffset“. Die Zeit, zu der die Nachricht als Nächstes sichtbar wird.
+* **NextVisibleTime** – Typ `DateTimeOffset?`. Die Zeit, zu der die Nachricht als Nächstes sichtbar wird.
 * **PopReceipt** – Typ `string`. Die POP-Bestätigung der Nachricht.
 
 Weitere Informationen dazu, wie Sie die Metadaten von Warteschlangen verwenden, finden Sie im [Triggerbeispiel](#triggersample).
@@ -294,3 +293,4 @@ Ein Beispiel für eine Funktion, die Queue Storage-Trigger und -Bindungen verwen
 <!-- LINKS -->
 
 [„CloudQueueMessage“]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+

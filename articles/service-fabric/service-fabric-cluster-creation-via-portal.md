@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/21/2017
+ms.date: 06/21/2017
 ms.author: chackdan
-translationtype: Human Translation
-ms.sourcegitcommit: bb27d279396aa7b670187560cebe2ed074576bad
-ms.openlocfilehash: c413f415cb056f079ed30cf444af4edbe20364ea
-ms.lasthandoff: 01/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 37e8d04f1786187a947a435b3cfd299546617c8b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
@@ -297,7 +297,7 @@ Der Abschnitt **Knotenmonitor** auf dem Dashboardblatt des Clusters gibt die Anz
 > 
 
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Herstellen einer Remoteverbindung mit einer Instanz der VM-Skalierungsgruppe oder einem Clusterknoten
-Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz][remote-connect-to-a-vm-scale-set].
+Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einer Instanz der VM-Skalierungsgruppe][remote-connect-to-a-vm-scale-set].
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie verfügen jetzt über einen sicheren Cluster, der Zertifikate zur Verwaltungsauthentifizierung verwendet. Als Nächstes [stellen Sie eine Verbindung mit dem Cluster her](service-fabric-connect-to-secure-cluster.md) und erfahren, wie Sie [Anwendungsgeheimnisse verwalten](service-fabric-application-secret-management.md).  Informieren Sie sich auch über [Service Fabric-Supportoptionen](service-fabric-support.md).

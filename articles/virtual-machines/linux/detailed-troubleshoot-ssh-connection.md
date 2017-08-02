@@ -14,14 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/18/2017
+ms.date: 07/06/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: f31f17121fdb42f4ae911efde9e98bbd223d0680
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9ccdb3fbca21264065eeb1c4e46314c62af4c2e8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Ausführliche Schritte zum Beheben von SSH-Verbindungsproblemen mit einem virtuellen Azure-Computer unter Linux
@@ -34,28 +33,14 @@ Das folgende Diagramm zeigt die beteiligten Komponenten.
 
 Mit den folgenden Schritten können Sie die Fehlerquelle isolieren und Lösungen oder Problemumgehungen ermitteln.
 
-Überprüfen Sie zunächst den Status des virtuellen Computers im Portal.
+1. Überprüfen Sie den Status des virtuellen Computers im Portal.
+   Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Virtuelle Computer** > *VM-Name* aus.
 
-Im [Azure-Portal](https://portal.azure.com):
+   Im Statusbereich für den virtuellen Computer sollte **Wird ausgeführt**angezeigt werden. Führen Sie einen Bildlauf nach unten durch, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
 
-1. Wählen Sie für virtuelle Computer, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, die Option **Virtuelle Computer** > *VM-Name* aus.
-   
-    ODER
-   
-    Wählen Sie für virtuelle Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, **Virtuelle Computer (klassisch)** > *VM-Name* aus.
-   
-    Im Statusbereich für den virtuellen Computer sollte **Wird ausgeführt**angezeigt werden. Führen Sie einen Bildlauf nach unten durch, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
+2. Wählen Sie **Einstellungen** aus, um Endpunkte, IP-Adressen, Netzwerksicherheitsgruppen und andere Einstellungen zu überprüfen.
 
-2. Wählen Sie **Einstellungen** aus, um Endpunkte, IP-Adressen und andere Einstellungen zu überprüfen.
-   
-    Um Endpunkte auf virtuellen Computern zu identifizieren, die mit Resource Manager erstellt wurden, überprüfen Sie, ob eine [Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md) definiert wurde. Stellen Sie außerdem sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und dass im Subnetz darauf verwiesen wird.
-
-Gehen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com)folgendermaßen für virtuelle Computer vor, die mit dem klassischen Bereitstellungsmodell erstellt wurden:
-
-1. Wählen Sie **Virtuelle Computer** > *VM-Name*aus.
-2. Wählen Sie das **Dashboard** des virtuellen Computers aus, um den Status zu überprüfen.
-3. Wählen Sie **Überwachen** aus, um aktuelle Aktivitäten für Compute-, Speicher- und Netzwerkressourcen anzuzeigen.
-4. Wählen Sie **Endpunkte** aus, und vergewissern Sie sich, dass ein Endpunkt für SSH-Datenverkehr vorhanden ist.
+   Der virtuelle Computer sollte über einen für SSH-Datenverkehr definierten Endpunkt verfügen, den Sie in **Endpunkte** oder **[Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md)** anzeigen können. Endpunkte in virtuellen Computern, die mit Resource Manager erstellt wurden, werden in einer Netzwerksicherheitsgruppe gespeichert. Stellen Sie außerdem sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und dass im Subnetz darauf verwiesen wird.
 
 Analysieren Sie zum Überprüfen der Netzwerkverbindung die konfigurierten Endpunkte, und testen Sie, ob der virtuelle Computer über ein anderes Protokoll (z. B. HTTP oder über einen anderen Dienst) erreichbar ist.
 
@@ -118,7 +103,7 @@ Ist kein anderer virtueller Computer im gleichen virtuellen Netzwerk vorhanden, 
 
 Wenn Sie eine SSH-Verbindung mit einem virtuellen Computer im gleichen virtuellen Netzwerk herstellen können, überprüfen Sie folgende Bereiche:
 
-* **Die Endpunktkonfiguration für den SSH-Datenverkehr auf dem virtuellen Zielcomputer.** Der private TCP-Port des Endpunkts sollte dem TCP-Port entsprechen, an dem der SSH-Dienst auf dem virtuellen Computer lauscht. (Der Standardport ist 22.) Überprüfen Sie bei virtuellen Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, die SSH-TCP-Portnummer im Azure-Portal, indem Sie **Virtuelle Computer** > *VM-Name* > **Einstellungen** > **Endpunkte** auswählen.
+* **Die Endpunktkonfiguration für den SSH-Datenverkehr auf dem virtuellen Zielcomputer.** Der private TCP-Port des Endpunkts sollte dem TCP-Port entsprechen, an dem der SSH-Dienst auf dem virtuellen Computer lauscht. (Der Standardport ist 22.) Überprüfen Sie die SSH-TCP-Portnummer im Azure-Portal, indem Sie **Virtuelle Computer** > *VM-Name* > **Einstellungen** > **Endpunkte** auswählen.
 * **Die ACL für den SSH-Datenverkehrsendpunkt auf dem virtuellen Zielcomputer.** In ACLs können Sie anhand der Quell-IP-Adresse angeben, ob eingehender Datenverkehr aus dem Internet zugelassen oder verweigert wird. Falsch konfigurierte ACLs können dazu führen, dass eingehender SSH-Datenverkehr den Endpunkt nicht erreicht. Überprüfen Sie die ACLs, um sicherzustellen, dass eingehender Verkehr von den öffentlichen IP-Adressen des Proxy- oder eines anderen Edgeservers zugelassen wird. Weitere Informationen finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?](../../virtual-network/virtual-networks-acl.md)
 
 Entfernen Sie den aktuellen Endpunkt, und erstellen Sie einen anderen Endpunkt mit dem SSH-Namen und dem TCP-Port 22 als öffentliche und private Portnummer, um den Endpunkt als Problemquelle auszuschließen. Weitere Informationen finden Sie unter [Festlegen von Endpunkten auf einem virtuellen Computer in Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
@@ -128,6 +113,8 @@ Entfernen Sie den aktuellen Endpunkt, und erstellen Sie einen anderen Endpunkt m
 ## <a name="source-4-network-security-groups"></a>Quelle 4: Netzwerksicherheitsgruppen
 Netzwerksicherheitsgruppen ermöglichen Ihnen eine präzisere Steuerung des zulässigen eingehenden und ausgehenden Datenverkehrs. Sie können Regeln erstellen, die mehrere Subnetze und Clouddienste in einem virtuellen Azure-Netzwerk umfassen. Überprüfen Sie die Regeln der Netzwerksicherheitsgruppe, um sicherzustellen, dass sowohl eingehender als auch ausgehender SSH-Datenverkehr über das Internet zulässig ist.
 Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../../virtual-network/virtual-networks-nsg.md).
+
+Sie können die NSG-Konfiguration auch mithilfe der IP-Überprüfung überprüfen. Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview). 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>Quelle 5: Linux-basierter virtueller Azure-Computer
 Die letzte mögliche Problemquelle ist der virtuelle Azure-Computer selbst.
@@ -145,5 +132,4 @@ Versuchen Sie erneut, die Verbindung von Ihrem Computer aus herzustellen. Wenn d
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](troubleshoot-app-connection.md).
-
 

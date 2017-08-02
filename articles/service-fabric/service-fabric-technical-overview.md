@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/02/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 74b60c0c4c0941a053bd124281772502d0136f23
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 42e5e651d5a3c08e829b48bb47e14458a5c65900
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -72,7 +72,7 @@ Weitere Informationen finden Sie unter [Partitionieren von Service Fabric Reliab
 ## <a name="system-services"></a>Systemdienste
 In jedem Cluster werden Systemdienste erstellt, die die Plattformfunktionen von Service Fabric bereitstellen.
 
-**Naming Service**: Jeder Service Fabric-Cluster verfügt über einen Naming Service, der Dienstnamen in einen Speicherort im Cluster auflöst. Ähnlich wie bei einem Internet-Domänennamendienst (Domain Name Service, DNS) verwalten Sie die Dienstnamen und Eigenschaften für den Cluster. Mithilfe des Naming Service kommunizieren Clients sicher mit allen Knoten im Cluster, um einen Dienstnamen und seinen Speicherort aufzulösen.  Anwendungen werden innerhalb des Clusters z.B. aufgrund von Fehlern, eines Ressourcenausgleichs oder einer Größenänderung des Clusters verschoben. Sie können Dienste und Clients entwickeln, die den aktuellen Netzwerkort auflösen. Clients rufen die tatsächliche Computer-IP-Adresse und den Port ab, wo er derzeit ausgeführt wird.
+**Naming Service**: Jeder Service Fabric-Cluster verfügt über einen Naming Service, der Dienstnamen in einen Speicherort im Cluster auflöst. Ähnlich wie bei einem Internet-Domänennamendienst (Domain Name Service, DNS) verwalten Sie die Dienstnamen und Eigenschaften für den Cluster. Mithilfe des Naming Service kommunizieren Clients sicher mit allen Knoten im Cluster, um einen Dienstnamen und seinen Speicherort aufzulösen.  Anwendungen werden innerhalb des Clusters z.B. aufgrund von Fehlern, eines Ressourcenausgleichs oder einer Größenänderung des Clusters, verschoben. Sie können Dienste und Clients entwickeln, die den aktuellen Netzwerkort auflösen. Clients rufen die tatsächliche Computer-IP-Adresse und den Port ab, wo er derzeit ausgeführt wird.
 
 Weitere Informationen zu Client- und Dienstkommunikations-APIs, die mit Naming Service zusammenarbeiten, finden Sie unter [Kommunikation mit Diensten](service-fabric-connect-and-communicate-with-services.md) .
 

@@ -1,6 +1,6 @@
 ---
 title: "Sicherheitsfunktionen, die mit Azure Storage verwendet werden können | Microsoft-Dokumentation"
-description: " Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können.. "
+description: " Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 2db6effdaf2e23d00eefdde82d074dd5d47857d7
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 1386d16cf0e7f6fd324d0779e9ad54ecd88b3166
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="azure-storage-security-overview"></a>Übersicht über die Sicherheit von Azure Storage
@@ -62,7 +63,7 @@ Weitere Informationen:
 Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie die Daten sichern mit:
 
 * [Verschlüsselung auf Transportebene](../storage/storage-security-guide.md#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
-* [Wire-Verschlüsselung](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)(etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
+* [Wire-Verschlüsselung](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
 * [Clientseitiger Verschlüsselung](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
 Weitere Informationen zur clientseitigen Verschlüsselung finden Sie hier:
@@ -98,9 +99,4 @@ Weitere Informationen:
 
 * [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-whatis.md)
 * [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
