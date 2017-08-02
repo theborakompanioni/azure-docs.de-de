@@ -28,7 +28,10 @@ ms.lasthandoff: 07/06/2017
 
 ![In Azure ausgeführte Beispiel-App](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Nachdem die erforderlichen Komponenten installiert wurden, können die Schritte in etwa fünf Minuten durchgeführt werden.
+Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden. Nachdem die erforderlichen Komponenten installiert wurden, können die Schritte in etwa fünf Minuten durchgeführt werden.   
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-Node-Developers/Create-a-Nodejs-app-in-Azure-Quickstart/player]   
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
