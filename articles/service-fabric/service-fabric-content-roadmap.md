@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/14/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: a4bc09d4b8b9f3bd207ffca977e9098d562bb9fd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4a5ccfa671e6780a3d4305d4e3238c55de8e577c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -97,19 +97,19 @@ Das [Reliable Actor](service-fabric-reliable-actors-introduction.md)-Anwendungsf
 Service Fabric integriert mit [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) ein erstklassiges Programmiermodell zum Erstellen von Web- und API-Anwendungen.
 
 ### <a name="guest-executables"></a>Ausführbare Gastanwendungsdateien
-Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md) handelt es sich um eine vorhandene, beliebig ausführbare Datei (die in einer beliebigen Sprache geschrieben sein kann), die neben anderen Diensten auf einem Service Fabric-Cluster gehostet wird. Ausführbare Gastanwendungsdateien lassen sich nicht direkt in Service Fabric-APIs integrieren. Sie profitieren jedoch weiterhin von den angebotenen Funktionen der Plattform, z.B. Integritäts- und Auslastungsberichte und die Auffindbarkeit von Diensten durch Aufrufen von REST-APIs. Außerdem wird der Anwendungslebenszyklus vollständig unterstützt. 
+Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md) handelt es sich um eine vorhandene, beliebig ausführbare Datei (die in einer beliebigen Sprache geschrieben sein kann), die neben anderen Diensten auf einem Service Fabric-Cluster gehostet wird. Ausführbare Gastanwendungsdateien lassen sich nicht direkt in Service Fabric-APIs integrieren. Sie profitieren jedoch weiterhin von den angebotenen Features der Plattform. Hierzu zählen beispielsweise Integritäts- und Auslastungsberichte und die Auffindbarkeit von Diensten durch Aufrufen von REST-APIs. Außerdem wird der Anwendungslebenszyklus vollständig unterstützt. 
 
 ## <a name="application-lifecycle"></a>Anwendungslebenszyklus
 Ähnlich wie auf anderen Plattformen durchläuft eine Anwendung auf Service Fabric normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Upgrade, Wartung und Deinstallation. Service Fabric bietet erstklassige Unterstützung für den gesamten Anwendungslebenszyklus von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis zur endgültigen Außerbetriebnahme. Das Dienstmodell ermöglicht die unabhängige Beteiligung verschiedener Rollen am Anwendungslebenszyklus. [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden. 
 
-Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/system.fabric._application_management_client) und [REST-APIs](/rest/api/servicefabric/) verwaltet werden. Sie können auch kontinuierliche Integrations-/kontinuierliche Bereitstellungspipelines mit Tools wie [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) oder [Jenkins](service-fabric-cicd-your-linux-java-application-with-jenkins.md) einrichten.
+Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/system.fabric._application_management_client) und [REST-APIs](/rest/api/servicefabric/) verwaltet werden. Sie können auch Continuous Integration/Continuous Deployment-Pipelines mit Tools wie [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) oder [Jenkins](service-fabric-cicd-your-linux-java-application-with-jenkins.md) einrichten.
 
 Das folgende Microsoft Virtual Academy-Video beschreibt die Verwaltung des Anwendungslebenszyklus: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
 ## <a name="test-applications-and-services"></a>Testen von Anwendungen und Diensten
-Zum Erstellen echter Dienste für die Cloud müssen Sie unbedingt sicherstellen, dass Ihre Anwendungen und Dienste für die in der Praxis auftretenden Fehler gerüstet sind. Der Fault Analysis Service ist auf das Testen von Diensten ausgelegt, die in Service Fabric erstellt werden. Mit dem Fault Analysis Service (service-fabric-testability-overview.md) können Sie aussagekräftige Fehler auslösen und vollständige Testszenarien für Ihre Anwendungen ausführen. Mit diesen Fehlern und Szenarien werden die verschiedenen Zustände und Übergänge durchgespielt und überprüft, die während der Lebensdauer eines Diensts auftreten – und zwar auf kontrollierte, sichere und einheitliche Weise.
+Zum Erstellen echter Dienste für die Cloud müssen Sie unbedingt sicherstellen, dass Ihre Anwendungen und Dienste für die in der Praxis auftretenden Fehler gerüstet sind. Der Fault Analysis Service ist auf das Testen von Diensten ausgelegt, die in Service Fabric erstellt werden. Mit dem [Fault Analysis Service](service-fabric-testability-overview.md) können Sie aussagekräftige Fehler auslösen und vollständige Testszenarien für Ihre Anwendungen ausführen. Mit diesen Fehlern und Szenarien werden die verschiedenen Zustände und Übergänge durchgespielt und überprüft, die während der Lebensdauer eines Diensts auftreten – und zwar auf kontrollierte, sichere und einheitliche Weise.
 
 [Aktionen](service-fabric-testability-actions.md) sind auf einen Dienst zum Testen ausgerichtet, bei dem individuelle Fehler verwendet werden. Ein Dienstentwickler kann sie als Bausteine zum Schreiben komplizierter Szenarien verwenden. Beispiele für simulierte Fehler sind:
 
@@ -182,7 +182,7 @@ Die Berichterstellung kann von folgenden Orten aus erfolgen:
 Für Service Fabric-Komponenten werden für alle Entitäten im Cluster standardmäßig Integritätsberichte erstellt. Die [Systemintegritätsberichte](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) sorgen für Transparenz in Bezug auf die Cluster- und Anwendungsfunktionen und weisen auf Probleme mit der Integrität hin. Für Anwendungen und Dienste wird mit den Systemintegritätsberichten überprüft, ob Entitäten implementiert sind und sich aus Sicht der Service Fabric-Runtime richtig verhalten. Die Berichte umfassen keine Integritätsüberwachung der Geschäftslogik des Diensts und keine Erkennung von hängenden Prozessen. [Implementieren Sie benutzerdefinierte Integritätsberichte](service-fabric-report-health.md) in Ihre Dienste, um für Ihre Dienstlogik spezifische Integritätsinformationen hinzuzufügen.
 
 Service Fabric bietet mehrere Möglichkeiten, um [Integritätsberichte anzuzeigen](service-fabric-view-entities-aggregated-health.md), die im Integritätsspeicher aggregiert werden:
-* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) oder andere Visualisierungstools/
+* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) oder andere Visualisierungstools.
 * Integritätsabfragen (über [PowerShell](/powershell/module/ServiceFabric/), [FabricClient-APIs von C#](/api/system.fabric.fabricclient.healthclient) und [FabricClient-APIs von Java](/java/api/system.fabric._health_client) oder [REST-APIs](/rest/api/servicefabric)).
 * Allgemeine Abfragen, die eine Liste mit Entitäten zurückgeben, von denen eine der Eigenschaften die Integrität ist (über PowerShell, die API oder REST).
 

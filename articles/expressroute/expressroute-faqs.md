@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 07/14/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 3f9fb86a5bf63d24432c1ba9945a4da6cf794f13
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: fc11bf194b648cefea32feada4fe9e7fb2119fff
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 07/15/2017
 
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
@@ -104,7 +103,7 @@ Nein, Sie benötigen nur eine einzige physische Verbindung, wenn Ihr Dienstanbie
 Nein. Wir unterstützen keine Schicht-2-Konnektivitätserweiterungen in Azure.
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>Kann mein Abonnement mehr als eine ExpressRoute-Verbindung umfassen?
-Ja. Ihr Abonnement kann mehr als eine ExpressRoute-Verbindung enthalten. Das Limit für die Anzahl dedizierter Verbindungen ist standardmäßig auf 10 festgelegt. Wenden Sie sich an Microsoft Support, um das Limit bei Bedarf zu erhöhen.
+Ja. Ihr Abonnement kann mehr als eine ExpressRoute-Verbindung enthalten. Standardmäßig sind nicht mehr als 10 zulässig. Wenden Sie sich an Microsoft Support, um das Limit bei Bedarf zu erhöhen.
 
 ### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>Kann ich ExpressRoute-Verbindungen von verschiedenen Dienstanbietern haben?
 Ja. Sie können ExpressRoute-Verbindungen von verschiedenen Dienstanbietern verwenden. Jede ExpressRoute-Verbindung wird nur einem Dienstanbieter zugeordnet. 
@@ -185,7 +184,7 @@ Die folgenden Schritte helfen Azure dabei, die Aktivierungsanforderung zu erkenn
 Ja, Sie können versuchen, die Bandbreite Ihrer ExpressRoute-Verbindung im Azure-Portal oder mithilfe von PowerShell zu ändern. Wenn auf dem physischen Port, auf dem die Verbindung erstellt wurde, Kapazität verfügbar ist, ist die Änderung erfolgreich. Wenn die Änderung fehlschlägt, bedeutet dies, dass die Kapazität auf dem aktuellen Port nicht ausreicht und dass Sie eine neue ExpressRoute-Verbindung mit der höheren Bandbreite erstellen müssen. Es kann aber auch bedeuten, dass an dem Standort keine zusätzliche Kapazität verfügbar ist. In dem Fall können Sie die Bandbreite nicht erhöhen. Wenden Sie sich auch an Ihren Konnektivitätsanbieter, um sicherzustellen, dass er die Drosselungen in seinen Netzwerken aktualisiert, damit die Erhöhung der Bandbreite unterstützt wird. Sie können Bandbreite Ihrer ExpressRoute-Verbindung jedoch nicht verringern. Stattdessen müssen Sie eine neue ExpressRoute-Verbindung mit der geringeren Bandbreite erstellen und die alte Verbindung löschen.
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Wie kann ich die Bandbreite einer ExpressRoute-Verbindung ändern?
-Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der API zum Aktualisieren der dedizierten Verbindung und des PowerShell-Cmdlets aktualisieren.
+Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der REST-API und des PowerShell-Cmdlets aktualisieren.
 
 ## <a name="expressroute-premium"></a>ExpressRoute Premium
 ### <a name="what-is-expressroute-premium"></a>Was ist ExpressRoute Premium?
@@ -202,10 +201,10 @@ Die folgenden Tabellen enthalten die ExpressRoute-Grenzwerte und die Anzahl von 
 [!INCLUDE [expressroute-limits](../../includes/expressroute-limits.md)]
 
 ### <a name="how-do-i-enable-expressroute-premium"></a>Wie aktiviere ich ExpressRoute Premium?
-Die Features von ExpressRoute Premium können aktiviert werden, sobald Sie das Feature selbst aktiviert haben. Durch Aktualisieren des Verbindungsstatus können sie beendet werden. Sie können ExpressRoute Premium zum Zeitpunkt der Verbindungserstellung aktivieren, oder Sie können die API zum Aktualisieren der dedizierten Verbindung bzw. das PowerShell-Cmdlet aufrufen, um ExpressRoute Premium zu aktivieren.
+Die Features von ExpressRoute Premium können aktiviert werden, sobald Sie das Feature selbst aktiviert haben. Durch Aktualisieren des Verbindungsstatus können sie beendet werden. Sie können ExpressRoute Premium zum Zeitpunkt der Verbindungserstellung aktivieren, oder Sie können die REST-API oder das PowerShell-Cmdlet aufrufen, um ExpressRoute Premium zu aktivieren.
 
 ### <a name="how-do-i-disable-expressroute-premium"></a>Wie deaktiviere ich ExpressRoute Premium?
-Sie können ExpressRoute Premium aktualisieren, indem Sie die API zum Aktualisieren der dedizierten Verbindung und das PowerShell-Cmdlet aufrufen. Stellen Sie sicher, dass Sie Ihre Konnektivitätsanforderungen skaliert haben, um die Standardlimits zu erfüllen, bevor Sie ExpressRoute Premium deaktivieren. Die Anforderung ExpressRoute Premium zu deaktivieren wird storniert, wenn Ihre Nutzung über dem Standardlimit liegt.
+Sie können ExpressRoute Premium deaktivieren, indem Sie die REST-API oder das PowerShell-Cmdlet aufrufen. Stellen Sie sicher, dass Sie Ihre Konnektivitätsanforderungen skaliert haben, um die Standardlimits zu erfüllen, bevor Sie ExpressRoute Premium deaktivieren. Die Anforderung ExpressRoute Premium zu deaktivieren wird storniert, wenn Ihre Nutzung über dem Standardlimit liegt.
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Kann ich die Features der Premium-Features auswählen, die ich nutzen möchte?
 Nein. Sie können keine einzelnen Features auswählen. Wenn Sie ExpressRoute Premium aktivieren, werden alle Features aktiviert.
@@ -247,6 +246,9 @@ Weitere Informationen zur Liste der Partner und Standorte, die ExpressRoute unte
 
 ### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Kann ich über das Internet auf Office 365 zugreifen, selbst wenn für meine Organisation ExpressRoute konfiguriert wurde?
 Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn ExpressRoute für Ihr Netzwerk konfiguriert wurde. Wenn Sie sich an einem Ort befinden, an dem die Verbindung mit Office 365-Diensten über ExpressRoute konfiguriert wurde, wird die Verbindung über ExpressRoute hergestellt.
+
+### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Kann ich über eine Azure US Government-ExpressRoute-Verbindung auf Government Community Cloud-Dienste (GCC) von Office 365 US Government zugreifen?
+Ja. Office 365 GCC-Dienstendpunkte sind über Azure US Government-ExpressRoute erreichbar. Sie müssen jedoch zunächst im Azure-Portal ein Support-Ticket öffnen, um die Präfixe bereitzustellen, die Sie Microsoft ankündigen möchten. Nachdem das Support-Ticket erfolgreich bearbeitet wurde, wird die Konnektivität mit den GCC-Diensten von Office 365 hergestellt. 
 
 ### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>Kann ich über eine ExpressRoute-Verbindung auf Dynamics 365 for Operations (früher als Dynamics AX Online bekannt) zugreifen?
 Ja. [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) wird in Azure gehostet. Sie können das öffentliche Azure-Peering in Ihrer ExpressRoute-Leitung aktivieren, um eine Verbindung mit ExpressRoute herzustellen. 

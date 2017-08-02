@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: babanisa;sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 775900fcae1b2832a5d0951e2a4053562c21455e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -33,11 +33,11 @@ Sie können zwei Typen von Protokollen für Azure Service Bus anzeigen:
 
 Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie die folgenden Schritte aus, um die Diagnoseprotokolle zu aktivieren:
 
-1.  Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Blatt für den Streamingauftrag.
+1.  Klicken Sie im [Azure-Portal](https://portal.azure.com) unter **Überwachung und Verwaltung** auf **Diagnoseprotokolle**.
 
-2.  Klicken Sie unter **Überwachung** auf das Blatt **Diagnoseprotokolle**.
+    ![Blatt „Navigation zu Diagnoseprotokollen“](./media/service-bus-diagnostic-logs/image1.png)
 
-    ![Blatt „Navigation zu Diagnoseprotokollen“](./media/service-bus-diagnostic-logs/image1.png)  
+2. Klicken Sie auf die Ressource, die Sie überwachen möchten.  
 
 3.  Klicken Sie auf **Diagnose aktivieren**.
 
@@ -49,9 +49,7 @@ Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie die folgenden S
 
 5.  Legen Sie das gewünschte Archivierungsziel fest, z.B. ein Speicherkonto, einen Event Hub oder Azure Log Analytics.
 
-6.  Wählen Sie die Kategorien von Protokollen aus, die Sie erfassen möchten z.B. **Ausführung** oder **Erstellung**.
-
-7.  Speichern Sie die neuen Diagnoseeinstellungen.
+6.  Speichern Sie die neuen Diagnoseeinstellungen.
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel auf dem Blatt **Diagnoseprotokolle** angezeigt.
 
@@ -61,11 +59,11 @@ Weitere Informationen zum Konfigurieren der Diagnose finden Sie in der [Übersic
 
 Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. Jeder Eintrag enthält Zeichenfolgenfelder im nachfolgend beschriebenen Format.
 
-## <a name="operation-logs-example"></a>Beispiel für Vorgangsprotokolle
+## <a name="operational-logs-schema"></a>Schema „Betriebsprotokolle“
 
 Protokolle in der Kategorie **OperationalLogs** erfassen, was während Service Bus-Vorgängen passiert. Diese Protokolle erfassen insbesondere den Vorgangstyp, darunter das Erstellen von Warteschlangen, verwendete Ressourcen und den Status des Vorgangs.
 
-JSON-Zeichenfolgen im Vorgangsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
+JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
 Name | Beschreibung
 ------- | -------
@@ -79,7 +77,7 @@ Status | Vorgangsstatus
 Aufrufer | Aufrufer des Vorgangs (Azure-Portal oder Verwaltungsclient)
 category | OperationalLogs
 
-Hier ein Beispiel für eine JSON-Zeichenfolge im Vorgangsprotokoll:
+Hier ein Beispiel für eine JSON-Zeichenfolge im Betriebsprotokoll:
 
 ```json
 {

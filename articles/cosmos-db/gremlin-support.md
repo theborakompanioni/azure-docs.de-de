@@ -3,7 +3,7 @@ title: "Unterstützung für Gremlin in Azure Cosmos DB | Microsoft-Dokumentation
 description: "Informationen über die Gremlin-Sprache von Apache TinkerPop, die verfügbaren Funktionen und Schritte in Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
-author: arramac
+author: dennyglee
 manager: jhubbard
 editor: 
 tags: 
@@ -14,18 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 06/10/2017
-ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: acea54d202d1117cf2dfb1d35ad48346daa9053d
+ms.author: denlee
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 3f2d2af1d6be41d98f9780b4cf9ca4cd79de0fd7
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
-Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin]([Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)) von [Apache Tinkerpop](http://tinkerpop.apache.org). Dabei handelt es sich um eine Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
+Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) von [Apache Tinkerpop](http://tinkerpop.apache.org). Dabei handelt es sich um eine Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
 
 Azure Cosmos DB liefert für Unternehmen konzipierte Funktionen für Diagrammdatenbanken. Hierzu zählen globale Verteilungen, unabhängige Skalierungen von Speicher und Durchsatz, vorhersagbare Latenzen im einstelligen Millisekundenbereich, automatische Indizierungen und SLAs von 99,99 %. Da Azure Cosmos DB TinkerPop/Gremlin unterstützt, können Sie mühelos mit einer anderen Diagrammdatenbank geschriebene Anwendungen migrieren, ohne Codeänderungen vorzunehmen. Darüber hinaus wird Azure Cosmos DB aufgrund der Unterstützung für Gremlin nahtlos in TinkerPop-fähige Analyseframeworks wie [Apache Spark GraphX](http://spark.apache.org/graphx/) integriert. 
 
@@ -150,8 +149,8 @@ Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teil
 | --- | --- |
 | id | Die ID für den Edge. Muss eindeutig sein (in Kombination mit dem Wert von „_partition“, falls zutreffend). |
 | label | Die Bezeichnung des Edge. Diese Eigenschaft ist optional, und dient zur Beschreibung des Beziehungstyps. |
-| inV | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Edge. Jede Eigenschaft kann mehrere Werte enthalten. |
-| properties | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Edge. Jede Eigenschaft kann mehrere Werte enthalten. |
+| inV | Enthält eine Liste von In-Vertices für einen Edge. Die Speicherung von Informationen über die Nähe zum Vertex mit dem Edge ermöglicht die schnelle Ausführung von Traversierungen. Vertices werden basierend auf ihren Bezeichnungen gruppiert. |
+| Eigenschaften | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Edge. Jede Eigenschaft kann mehrere Werte enthalten. |
 
 Jede Eigenschaft kann mehrere Werte in einem Array speichern. 
 
@@ -210,3 +209,4 @@ Das für Schreibvorgänge optimierte Modul von Azure Cosmos DB unterstützt stan
 ## <a name="next-steps"></a>Nächste Schritte
 * Erste Schritte zum Erstellen einer Diagrammanwendung [mithilfe unserer SDKs](create-graph-dotnet.md) 
 * Informationen über die [Diagrammunterstützung von Azure Cosmos DB](graph-introduction.md)
+

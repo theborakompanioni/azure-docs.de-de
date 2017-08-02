@@ -188,7 +188,7 @@ Verwenden Sie die folgenden Schritte, um eine Datei zu erstellen und sie dann mi
     > [!NOTE]
     > Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
 
-3. Verwenden Sie **STRG**+**_X**, um die Datei zu speichern. Geben Sie dann **Y** ein, und drücken Sie die EINGABETASTE****.
+3. Verwenden Sie **STRG**+**_X**, um die Datei zu speichern. Geben Sie dann **Y** ein, und drücken Sie die **EINGABETASTE**.
 
 4. Verwenden Sie Folgendes, um die Datei mit Beeline auszuführen:
 

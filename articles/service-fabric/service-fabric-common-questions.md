@@ -3,7 +3,7 @@ title: "Häufig gestellte Fragen zu Microsoft Azure Service Fabric | Microsoft-D
 description: "Häufig gestellte Fragen zu Service Fabric und entsprechende Antworten"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: chackdan
 manager: timlt
 editor: 
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/10/2017
-ms.author: seanmck
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 0d1d795a4d6965de6cdc2b9bd81a24a27a255566
+ms.date: 06/20/2017
+ms.author: chackdan
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: ce6debc0832da565d24a3ca82e2fa5bf7b797f8a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -41,7 +41,7 @@ Heute noch nicht, aber auch dies ist eine häufig gestellte Anforderung, die wir
 
 Die Herausforderung von Betriebssystemupdates besteht darin, dass dafür in der Regel ein Neustart des Computers erforderlich ist, was zu einer vorübergehenden Unterbrechung der Verfügbarkeit führt. Dies ist für sich gesehen noch kein Problem, weil Service Fabric Datenverkehr für diese Dienste automatisch an andere Knoten umleitet. Wenn Betriebssystemupdates jedoch nicht über den Cluster koordiniert werden, besteht die Gefahr, dass viele Knoten gleichzeitig ausfallen. Diese gleichzeitigen Neustarts können für einen Dienst oder zumindest für eine bestimmte Partition (bei einem zustandsbehafteten Dienst) zum vollständigen Verlust der Verfügbarkeit führen.
 
-Künftig werden wir eine Betriebssystemupdate-Richtlinie unterstützen, die Updatedomänen-übergreifend vollständig automatisiert und koordiniert ist und sicherstellt, dass die Verfügbarkeit trotz Neustarts und anderen unerwarteten Fehlern beibehalten wird.
+Wir planen die zukünftige Unterstützung einer Betriebssystemupdate-Richtlinie, die Updatedomänen-übergreifend vollständig automatisiert und koordiniert ist und sicherstellt, dass die Verfügbarkeit trotz Neustarts und anderen unerwarteten Fehlern beibehalten wird.
 
 In der Zwischenzeit haben wir [ein Skript bereitgestellt](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/), mit denen ein Clusteradministrator das Patchen jedes Knotens auf sichere Weise manuell starten kann.
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/05/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: a595a2e24b4c2582998d88f74ca13daba5fe618d
-ms.lasthandoff: 02/17/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: cfc38cecfaf0a0bdaae043fc35dcfed743459823
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 ---
 
@@ -101,7 +102,7 @@ Wir sehen uns nun ein Beispiel an. Angenommen, wir verwenden einen Cluster mit s
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
 
-Nun erstellen wir einen Dienst mit einem TargetReplicaSetSize-Wert von&5;. Die Replikate (R) werden auf den Knoten N1-N5 gespeichert. N6 wird unabhängig von der Anzahl von erstellten Diensten niemals verwendet. Warum ist das so? Wir betrachten den Unterschied zwischen dem aktuellen Layout und dem Fall, in dem N6 gewählt wird.
+Nun erstellen wir einen Dienst mit einem TargetReplicaSetSize-Wert von 5. Die Replikate (R) werden auf den Knoten N1-N5 gespeichert. N6 wird unabhängig von der Anzahl von erstellten Diensten niemals verwendet. Warum ist das so? Wir betrachten den Unterschied zwischen dem aktuellen Layout und dem Fall, in dem N6 gewählt wird.
 
 Hier sehen Sie das Layout und die Gesamtzahl von Replikaten pro Fehler- und Upgradedomäne:
 
@@ -127,7 +128,7 @@ Nun sehen wir uns an, was passieren würde, wenn wir N6 anstelle von N2 verwende
 | **UD4** | | | | |R4 |1 |
 | **FDTotal** |2 |0 |1 |1 |1 |- |
 
-Fällt Ihnen etwas auf? Dieses Layout verstößt gegen die Definition der Fehlerdomäneneinschränkung. FD0 hat zwei Replikate, während FD1 keine Replikate hat, sodass der Unterschied zwischen FD0 und FD1 insgesamt&2; beträgt. Der Clusterressourcen-Manager lässt diese Anordnung nicht zu. Wenn wir N2 und N6 (anstelle von N1 und N2) auswählen, erhalten wir Folgendes:
+Fällt Ihnen etwas auf? Dieses Layout verstößt gegen die Definition der Fehlerdomäneneinschränkung. FD0 hat zwei Replikate, während FD1 keine Replikate hat, sodass der Unterschied zwischen FD0 und FD1 insgesamt 2 beträgt. Der Clusterressourcen-Manager lässt diese Anordnung nicht zu. Wenn wir N2 und N6 (anstelle von N1 und N2) auswählen, erhalten wir Folgendes:
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|

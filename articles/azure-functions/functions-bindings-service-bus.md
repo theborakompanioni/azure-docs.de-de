@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: chrande; glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: a930e02313aa0a2238ecfaa31af68d59b2c8e961
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 58b6d5c6ef40891e56ea4811f5e778286bdb8bc3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Service Bus-Bindungen von Azure Functions
@@ -76,7 +75,7 @@ Beachten Sie Folgendes:
 
 ## <a name="trigger-behavior"></a>Triggerverhalten
 * **Single-Threading**: Die Functions-Laufzeit verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `serviceBus.maxConcurrentCalls` in *host.json* auf „1“ fest. 
-  Informationen zu *host.json* finden Sie unter [Ordnerstruktur](functions-reference.md#folder-structure) sowie unter „[host.json](https://git.com/Azure/azure-webjobs-sdk-script/wiki/host.json)“.
+  Informationen zu *host.json* finden Sie unter [Ordnerstruktur](functions-reference.md#folder-structure) sowie unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 * **Behandlung von nicht verarbeitbaren Nachrichten**: Service Bus kümmert sich selbst um die Handhabung nicht verarbeitbarer Nachrichten, die in Azure Functions-Konfigurationen und -Code nicht gesteuert oder konfiguriert werden kann. 
 * **PeekLock-Verhalten**: Die Functions-Runtime empfängt eine Nachricht im [`PeekLock`-Modus](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) und ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Tritt bei der Ausführung ein Fehler auf, wird `Abandon` aufgerufen. 
   Wenn die Funktion länger als im `PeekLock`-Timeout angegeben ausgeführt wird, wird die Sperre automatisch erneuert.
