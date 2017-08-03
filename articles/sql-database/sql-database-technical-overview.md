@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 06/30/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 17b51afc0c67377dccdef63deacdcc67af8df576
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 54aa8c2f738ef92c211462498103d368e4cb4c5c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
@@ -98,7 +98,7 @@ Es gibt zwei Aspekte der automatischen Optimierung, die in SQL-Datenbank verfüg
 
 ### <a name="adaptive-query-processing"></a>Adaptive Abfrageverarbeitung
 
-Wir fügen darüber hinaus auch einen Featuresatz zur [adaptiven Abfrageverarbeitung](/sql/relational-databases/performance/adaptive-query-processing.md) in SQL-Datenbank hinzu. Dies schließt auch die überlappende Ausführung für Tabellenwertfunktionen mit mehreren Anweisungen, Feedback zur Speicherzuweisung im Batchmodus und adaptive Joins im Batchmodus ein. Jedes dieser Features zur adaptiven Abfrageverarbeitung wendet ähnliche Techniken zum Lernen und Anpassen an, um weitere Leistungsprobleme zu beheben, die durch traditionell schwierig zu lösende Probleme bei der Abfrageoptimierung verursacht werden.
+Wir fügen darüber hinaus auch einen Featuresatz zur [adaptiven Abfrageverarbeitung](/sql/relational-databases/performance/adaptive-query-processing) in SQL-Datenbank hinzu. Dies schließt auch die überlappende Ausführung für Tabellenwertfunktionen mit mehreren Anweisungen, Feedback zur Speicherzuweisung im Batchmodus und adaptive Joins im Batchmodus ein. Jedes dieser Features zur adaptiven Abfrageverarbeitung wendet ähnliche Techniken zum Lernen und Anpassen an, um weitere Leistungsprobleme zu beheben, die durch traditionell schwierig zu lösende Probleme bei der Abfrageoptimierung verursacht werden.
 
 ### <a name="intelligent-threat-detection"></a>Intelligente Bedrohungserkennung
 
@@ -160,3 +160,4 @@ SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.
 - Azure CLI- und PowerShell-Beispiele finden Sie unter:
   - [Azure CLI-Beispiele für SQL-Datenbank](sql-database-cli-samples.md)
   - [Azure PowerShell-Beispiele für SQL-Datenbank](sql-database-powershell-samples.md)
+

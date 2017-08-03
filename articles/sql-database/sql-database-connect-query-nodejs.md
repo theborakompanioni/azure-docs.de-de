@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 56696c6c85f117449e7fb80b0daca707267d41c1
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 1907a95df9132c059d7985b6d5cd913536bf3403
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Node.js
@@ -141,7 +141,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 
 - Informieren Sie sich über den [Microsoft Node.js-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/).
 - Informieren Sie sich darüber, wie Sie unter Linux/Windows/macOS [unter Verwendung von .NET Core eine Verbindung mit einer Azure SQL-Datenbank herstellen und die Datenbank abfragen](sql-database-connect-query-dotnet-core.md).  
-- Informieren Sie sich über [die ersten Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile](/dotnet/core/tutorials/using-with-xplat-cli.md).
+- Informieren Sie sich über [die ersten Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile](/dotnet/core/tutorials/using-with-xplat-cli).
 - Erfahren Sie, wie Sie [Ihre erste Azure SQL-Datenbank mithilfe von SSMS entwerfen](sql-database-design-first-database.md) oder wie Sie [Ihre erste Azure SQL-Datenbank mithilfe von .NET entwerfen](sql-database-design-first-database-csharp.md).
 - Informieren Sie sich über das [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md).
 - Informieren Sie sich über das [Verbinden und Abfragen mit Visual Studio Code](sql-database-connect-query-vscode.md).

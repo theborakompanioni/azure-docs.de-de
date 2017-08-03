@@ -11,7 +11,7 @@ Wir haben das Konzept der Azure-Berechnungseinheit ACU (Azure Compute Unit) erst
 
 <br>
 
-| SKU-Familie | ACU/Kern |
+| SKU-Familie | ACU |
 | --- | --- |
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 |
 | [A1–A4](../articles/virtual-machines/windows/sizes-general.md) |100 |

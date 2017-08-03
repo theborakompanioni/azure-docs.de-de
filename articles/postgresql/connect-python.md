@@ -12,10 +12,10 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/07/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 3cd090b02887857a68271f021e3580e05660d1dc
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: f6ae1ef3855711a86333857f26400f29dfd7c54e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden von Python zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
@@ -50,7 +50,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 
 ## <a name="how-to-run-python-code"></a>Ausführen von Python-Code
 - Erstellen Sie mit Ihrem bevorzugten Text-Editor eine neue Datei namens „postgres.py“, und speichern Sie sie in einem Projektordner. Kopieren Sie eines der weiter unten gezeigten Codebeispiele, fügen Sie es in die Textdatei ein, und speichern Sie sie. Wählen Sie die UTF-8-Codierung aus, wenn Sie die Datei unter dem Windows-Betriebssystem speichern. 
-- Starten Sie zum Ausführen des Codes die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie in das Verzeichnis Ihres Projektordners (beispielsweise `cd postgresql`). Geben Sie anschließend den Python-Befehl ein, gefolgt vom Namen der Datei (beispielsweise `python postgresql.py`).
+- Starten Sie zum Ausführen des Codes die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie in das Verzeichnis Ihres Projektordners (beispielsweise `cd postgresql`). Geben Sie anschließend den Python-Befehl ein, gefolgt vom Namen der Datei (beispielsweise `python postgres.py`).
 
 > [!NOTE]
 > Ab Version 3 von Python wird beim Ausführen der weiter unten bereitgestellten Codeblöcke möglicherweise der Fehler `SyntaxError: Missing parentheses in call to 'print'` angezeigt. Ersetzen Sie in diesem Fall jeden Aufruf des Befehls `print "string"` durch einen Funktionsaufruf mit Klammern (beispielsweise `print("string")`).
