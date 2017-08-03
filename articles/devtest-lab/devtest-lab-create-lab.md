@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/30/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 015782373e59d1aaf10a7b089c84c982031b36b2
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 265a968f902f53c7561c8c7e937f8eacfdb37167
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Erstellen eines Labs in Azure DevTest Labs
@@ -64,6 +63,6 @@ Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführ
 * [Festlegen von Labrichtlinien](devtest-lab-set-lab-policy.md).
 * [Erstellen einer Labvorlage](devtest-lab-create-template.md).
 * [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
-* [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
+* [Hinzufügen einer VM mit Artefakten zu einem Lab](https://azure.microsoft.com/resources/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab/).
 
 

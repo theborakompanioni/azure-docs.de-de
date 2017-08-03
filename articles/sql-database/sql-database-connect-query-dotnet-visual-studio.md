@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: c7d54f8355803933e0d581470804ee98a0172937
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 105dab17823a7e7f6957a604833f4ecad35c14bd
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>Herstellen einer Verbindung mit einer Azure SQL-Datenbank und Abfragen der Datenbank mit .NET (C#) und Visual Studio
@@ -74,7 +74,6 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 8. Sollte das Fenster **Zustimmung zur Lizenz** angezeigt werden, klicken Sie auf **Ich stimme zu**.
 
 ## <a name="insert-code-to-query-sql-database"></a>Einfügen von Code zum Abfragen der SQL-Datenbank
-
 1. Wechseln Sie zu **Program.cs**. (Muss ggf. erst noch geöffnet werden.)
 
 2. Ersetzen Sie den Inhalt von **Program.cs** durch den folgenden Code, und fügen Sie die entsprechenden Werte für Server, Datenbank, Benutzer und Kennwort hinzu.
@@ -141,7 +140,7 @@ namespace sqltest
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich darüber, wie Sie unter Linux/Windows/macOS [unter Verwendung von .NET Core eine Verbindung mit einer Azure SQL-Datenbank herstellen und die Datenbank abfragen](sql-database-connect-query-dotnet-core.md).  
-- Informieren Sie sich über [die ersten Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile](/dotnet/core/tutorials/using-with-xplat-cli.md).
+- Informieren Sie sich über [die ersten Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile](/dotnet/core/tutorials/using-with-xplat-cli).
 - Erfahren Sie, wie Sie [Ihre erste Azure SQL-Datenbank mithilfe von SSMS entwerfen](sql-database-design-first-database.md) oder wie Sie [Ihre erste Azure SQL-Datenbank mithilfe von .NET entwerfen](sql-database-design-first-database-csharp.md).
 - Weitere Informationen zu .NET finden Sie in der [.NET-Dokumentation](https://docs.microsoft.com/dotnet/).
 

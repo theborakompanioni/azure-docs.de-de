@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/05/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 708c2d2f40138572c7e65938da6e863cab089cdf
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 046322624d3b89bb983acee863534256fee94b60
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von .NET Core (C#)
@@ -151,7 +151,7 @@ namespace sqltest
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Getting started with .NET Core on Windows/Linux/macOS using the command line](/dotnet/core/tutorials/using-with-xplat-cli.md) (Erste Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile)
+- [Getting started with .NET Core on Windows/Linux/macOS using the command line](/dotnet/core/tutorials/using-with-xplat-cli) (Erste Schritte mit .NET Core unter Windows/Linux/macOS bei Verwendung der Befehlszeile)
 - Informieren Sie sich darüber, wie Sie [unter Verwendung von .NET Framework und Visual Studio eine Verbindung mit einer Azure SQL-Datenbank herstellen und die Datenbank abfragen](sql-database-connect-query-dotnet-visual-studio.md).  
 - Erfahren Sie, wie Sie [Ihre erste Azure SQL-Datenbank mithilfe von SSMS entwerfen](sql-database-design-first-database.md) oder wie Sie [Ihre erste Azure SQL-Datenbank mithilfe von .NET entwerfen](sql-database-design-first-database-csharp.md).
 - Weitere Informationen zu .NET finden Sie in der [.NET-Dokumentation](https://docs.microsoft.com/dotnet/).
