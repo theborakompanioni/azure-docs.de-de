@@ -1,5 +1,5 @@
 ---
-title: Analysieren von Twitter-Daten mit Hadoop in HDInsight | Microsoft Docs
+title: "Analysieren von Twitter-Daten mit Hadoop in HDInsight – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Twitterdaten mit Hive in Hadoop und HDInsight analysieren können, um die Häufigkeit bestimmter Wörter zu ermitteln."
 services: hdinsight
 documentationcenter: 
@@ -12,13 +12,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 159e41f3d1b43abc830b79e1ea0bed05e05505a2
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fa22c0dd4da1117980adb43c937197274f08760b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -28,7 +29,7 @@ Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. 
 In diesem Lernprogramm werden Sie mit der Twitter-Streaming-API Tweets abrufen und dann mithilfe von Apache Hive in Azure HDInsight eine Liste der Twitter-Benutzer abrufen, die die meisten Tweets gesendet haben, die ein bestimmtes Wort enthalten.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen Windows-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date). Die Schritte für einen Linux-basierten Cluster finden Sie unter [Analysieren von Twitter-Daten mit Hive in HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
+> Die Schritte in diesem Dokument erfordern einen Windows-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Die Schritte für einen Linux-basierten Cluster finden Sie unter [Analysieren von Twitter-Daten mit Hive in HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
@@ -50,7 +51,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
     ```
 
     > [!IMPORTANT]
-    > Die Azure PowerShell-Unterstützung zum Verwalten von HDInsight-Ressourcen mithilfe von Azure Service Manager ist **veraltet** und wird zum 1. Januar 2017 eingestellt. Die Schritte in diesem Dokument zeigen die neuen HDInsight-Cmdlets, die mit Azure Resource Manager genutzt werden können.
+    > Die Azure PowerShell-Unterstützung zum Verwalten von HDInsight-Ressourcen mithilfe von Azure Service Manager ist **veraltet** und wurde zum 1. Januar 2017 eingestellt. Die Schritte in diesem Dokument zeigen die neuen HDInsight-Cmdlets, die mit Azure Resource Manager genutzt werden können.
     >
     > Führen Sie zur Installation der neuesten Version von Azure PowerShell die unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) beschriebenen Schritte aus. Wenn Sie über Skripts verfügen, die für die Verwendung der neuen Cmdlets für Azure Resource Manager geändert werden müssen, finden Sie unter [Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster](hdinsight-hadoop-development-using-azure-resource-manager.md) weitere Informationen.
 

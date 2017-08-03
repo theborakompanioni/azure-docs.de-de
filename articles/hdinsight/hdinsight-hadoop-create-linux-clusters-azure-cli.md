@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Azure HDInsight (Hadoop)-Clustern mithilfe der Befehlszeile | Microsoft-Dokumentation
+title: "Erstellen von Hadoop-Clustern mit der Befehlszeilenschnittstelle – Azure HDInsight | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie HDInsight-Cluster mit der plattformübergreifenden Azure-Befehlszeilenschnittstelle 1.0 erstellen."
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: ccb2c827aa95ea967d740860ed17e6cc7bd3b392
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f2fcb46789d000cd66164508f1159338dcae5f9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/18/2017
 Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDInsight 3.5-Clusters mithilfe von Azure CLI 1.0 geführt.
 
 > [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,7 +40,7 @@ Anhand der Schritte in diesem Dokument werden Sie durch die Erstellung eines HDI
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Azure-Befehlszeilenschnittstelle**. Die Schritte in diesem Dokument wurden mit der neuesten Version der Azure-CLI (0.10.1) getestet.
+* **Azure-Befehlszeilenschnittstelle**. Die Schritte in diesem Dokument wurden mit der neuesten Version der Azure-Befehlszeilenschnittstelle (0.10.14) getestet.
 
     > [!IMPORTANT]
     > Die Schritte in diesem Dokument gelten nicht für Azure CLI 2.0. Die Erstellung eines HDInsight-Clusters wird in Azure CLI 2.0 nicht unterstützt.
@@ -51,7 +51,7 @@ Führen Sie die Schritte aus, die unter [Herstellen einer Verbindung mit einem A
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 
-Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitzung nach der Installation und Konfiguration der Azure-CLI erfolgen.
+Die folgenden Schritte sollten an einer Befehlszeile (z.B. PowerShell oder Bash) ausgeführt werden.
 
 1. Führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement zu authentifizieren:
 
@@ -67,21 +67,21 @@ Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitz
 
         azure group create groupname location
 
-    * Ersetzen Sie **groupname** durch einen eindeutigen Gruppenamen.
+    * Ersetzen Sie `groupname` durch einen eindeutigen Gruppenamen.
 
-    * Ersetzen Sie **location** durch die geografische Region, in der die Gruppe erstellt werden soll.
+    * Ersetzen Sie `location` durch die geografische Region, in der die Gruppe erstellt werden soll.
 
-       Eine Liste der gültigen Speicherorte können Sie mithilfe des Befehls `azure location list` erzeugen. Verwenden Sie anschließend einen der Speicherorte aus der Spalte **Name**.
+       Eine Liste der gültigen Orte können Sie mithilfe des Befehls `azure location list` erzeugen. Verwenden Sie anschließend einen der Orte aus der Spalte `Name`.
 
 4. Erstellen Sie ein Speicherkonto. Dieses Speicherkonto wird als Standardspeicher für den HDInsight-Cluster verwendet.
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
 
-    * Ersetzen Sie **groupname** durch den Namen der im vorherigen Schritt erstellten Gruppe:
+    * Ersetzen Sie `groupname` durch den Namen der im vorherigen Schritt erstellten Gruppe.
 
-    * Ersetzen Sie **location** durch den gleichen Speicherort, den Sie im vorherigen Schritt verwendet haben.
+    * Ersetzen Sie `location` durch den gleichen Ort, den Sie im vorherigen Schritt verwendet haben.
 
-    * Ersetzen Sie **storagename** durch einen eindeutigen Namen für das Speicherkonto.
+    * Ersetzen Sie `storagename` durch einen eindeutigen Namen für das Speicherkonto.
 
         > [!NOTE]
         > Verwenden Sie `azure storage account create -h`, um sich in der Hilfe zu diesem Befehl weitere Informationen zu den verwendeten Parametern anzeigen zu lassen.
@@ -90,38 +90,38 @@ Die folgenden Schritte müssen in einer Befehlszeilen-, Shell- oder Terminalsitz
 
         azure storage account keys list -g groupname storagename
 
-    * Ersetzen Sie **groupname** durch den Namen der Ressourcengruppe.
-    * Ersetzen Sie **storagename** durch den Namen des Speicherkontos.
+    * Ersetzen Sie `groupname` durch den Namen der Ressourcengruppe.
+    * Ersetzen Sie `storagename` durch den Namen des Speicherkontos.
 
-     Speichern Sie von den zurückgegebenen Daten den **key**-Wert für **key1**.
+     Speichern Sie von den zurückgegebenen Daten den `key`-Wert für `key1`.
 
 6. Erstellen Sie ein HDInsight-Cluster.
 
-        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 2 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
+        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
-    * Ersetzen Sie **groupname** durch den Namen der Ressourcengruppe.
+    * Ersetzen Sie `groupname` durch den Namen der Ressourcengruppe.
 
-    * Ersetzen Sie **Hadoop** durch den zu erstellenden Clustertyp. Beispielsweise Hadoop, HBase, Storm oder Spark.
+    * Ersetzen Sie `Hadoop` durch den zu erstellenden Clustertyp. Beispiel: `Hadoop`, `HBase`, `Kafka`, `Spark` oder `Storm`.
 
      > [!IMPORTANT]
      > HDInsight-Cluster gibt es in verschiedenen Typen, die der Workload oder Technologie entsprechen, für die der Cluster optimiert ist. Es ist keine unterstützte Methode zum Erstellen eines Clusters vorhanden, bei der mehrere Typen kombiniert werden, z.B. Storm und HBase in einem Cluster.
 
-    * Ersetzen Sie **location** durch den gleichen Speicherort, den Sie in den vorherigen Schritten verwendet haben.
+    * Ersetzen Sie `location` durch den gleichen Ort, den Sie in den vorherigen Schritten verwendet haben.
 
-    * Ersetzen Sie **storagename** durch den Namen des Speicherkontos.
+    * Ersetzen Sie `storagename` durch den Namen des Speicherkontos.
 
-    * Ersetzen Sie **storagekey** durch den Schlüssel, den Sie im vorherigen Schritt abgerufen haben.
+    * Ersetzen Sie `storagekey` durch den Schlüssel, den Sie im vorherigen Schritt abgerufen haben.
 
     * Verwenden Sie für den `--defaultStorageContainer` -Parameter den gleichen Namen wie für den Cluster.
 
-    * Ersetzen Sie **admin** und **httppassword** durch den Namen und das Kennwort, die Sie beim Zugriff auf den Cluster über HTTPS verwenden möchten.
+    * Ersetzen Sie `admin` und `httppassword` durch den Namen und das Kennwort, die Sie für den Zugriff auf den Cluster über HTTPS verwenden möchten.
 
-    * Ersetzen Sie **sshuser** und **sshuserpassword** durch den Benutzernamen und das Kennwort, die Sie beim Zugriff auf den Cluster über SSH verwenden möchten.
+    * Ersetzen Sie `sshuser` und `sshuserpassword` durch den Benutzernamen und das Kennwort, die Sie für den Zugriff auf den Cluster per SSH verwenden möchten.
 
     > [!IMPORTANT]
-    > In diesem Beispiel wird ein Cluster mit zwei Workerknoten erstellt. Wenn Sie mehr als 32 Workerknoten planen (beim Erstellen oder durch Skalieren des Clusters), müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen. Sie können die Hauptknotengröße mit dem `--headNodeSize`-Parameter festlegen.
+    > In diesem Beispiel wird ein Cluster mit zwei Workerknoten erstellt. Sie können die Anzahl der Workerknoten auch nach der Erstellung ändern, indem Sie Skalierungsvorgänge durchführen. Wenn Sie die Verwendung von mehr als 32 Workerknoten planen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen. Sie können die Hauptknotengröße während der Clustererstellung mit dem Parameter `--headNodeSize` festlegen.
     >
-    > Weitere Informationen zu Knotengrößen und damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
+    > Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
     Die Fertigstellung der Clustererstellung kann möglicherweise einige Minuten dauern. In der Regel dauert es etwa 15 Minuten.
 

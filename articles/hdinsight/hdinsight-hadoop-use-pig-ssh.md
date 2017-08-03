@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Hadoop Pig mit SSH in einem HDInsight-Cluster | Microsoft-Dokumentation
+title: "Verwenden von Hadoop Pig mit SSH in einem HDInsight-Cluster – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie eine Verbindung zu einem Linux-basierten Hadoop-Cluster mit SSH aufbauen und dann den Pig-Befehl zum Ausführen von Pig Latin-Anweisungen interaktiv oder als Stapelverarbeitungsauftrag verwenden."
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 36ede2b1c2964f85c454ffd1a653c90296bb307a
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: e4c893ef4bfa573dd9fbc9c9b0ae296720769842
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Ausführen von Pig-Jobs auf einem Linux-basierten Cluster mit dem Pig-Befehl (SSH)
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/18/2017
 Erfahren Sie, wie Sie Pig-Aufträge interaktiv über eine SSH-Verbindung in Ihrem HDInsight-Cluster ausführen. Mit der Programmiersprache Pig Latin können Sie Transformationen beschreiben, die auf die Eingabedaten angewendet werden, um die gewünschte Ausgabe zu generieren.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen Linux-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Die Schritte in diesem Dokument erfordern einen Linux-basierten HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="ssh"></a>Verbinden mit SSH
 

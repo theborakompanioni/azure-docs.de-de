@@ -1,6 +1,6 @@
 ---
-title: "Hive-Abfrage mit Hadoop-Tools für Visual Studio | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Hive mit Hadoop in HDInsight mit den Hadoop-Tools für Visual Studio verwenden."
+title: "Tools für Hive mit Data Lake (Hadoop) für Visual Studio – Azure HDInsight | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio verwenden, um Apache Hive-Abfragen mit Apache Hadoop in Azure HDInsight auszuführen."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,33 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/28/2017
+ms.date: 07/07/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 125531d8d52d4e27951a9e6cae0c50582c5b110e
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 3411c59fee73aa2e26a05d70e1dae11cdfc865ff
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="run-hive-queries-using-the-hdinsight-tools-for-visual-studio"></a>Ausführen von Hive-Abfragen mit HDInsight Tools für Visual Studio
+# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Ausführen von Hive-Abfragen mit Data Lake-Tools für Visual Studio
 
-[!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
-
-Erfahren Sie, wie Sie mit HDInsight-Tools für Visual Studio Hive-Abfragen an einen HDInsight-Cluster übermitteln.
+Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio für Abfragen in Apache Hive verwenden. Mithilfe der Data Lake Tools können Sie Hive-Abfragen an Hadoop in Azure HDInsight ganz einfach erstellen, übermitteln und überwachen.
 
 ## <a id="prereq"></a>Voraussetzungen
-
-Zur Ausführung der in diesem Artikel aufgeführten Schritte benötigen Sie Folgendes.
 
 * Einen Azure HDInsight-Cluster (Hadoop in HDInsight)
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Visual Studio (eine der folgenden Versionen):
 
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate mit [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
+    * Visual Studio 2013 Community/Professional/Premium/Ultimate mit Update 4
 
     * Visual Studio 2015 (beliebige Edition)
 
@@ -70,7 +66,7 @@ Zur Ausführung der in diesem Artikel aufgeführten Schritte benötigen Sie Folg
    * `CREATE EXTERNAL TABLE`: Erstellt eine neue „externe“ Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben am ursprünglichen Speicherort.
 
      > [!NOTE]
-     > Wenn erwartet wird, dass die zugrunde liegenden Daten über eine externe Quelle (z. B. einen automatisierten Prozess zum Hochladen von Daten) oder über einen anderen MapReduce-Vorgang aktualisiert, aber von Hive immer die neuesten Daten verwendet werden, sollten externe Tabellen verwendet werden.
+     > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Beispielsweise einen MapReduce-Auftrag oder Azure-Dienst.
      >
      > Durch das Löschen einer externen Tabelle werden **nicht** die Daten, sondern nur die Tabellendefinitionen gelöscht.
 
@@ -115,7 +111,7 @@ Zur Ausführung der in diesem Artikel aufgeführten Schritte benötigen Sie Folg
 
 8. Wählen Sie auf der Symbolleiste **Übermitteln** aus, um den Auftrag auszuführen. Verwenden Sie **Auftragsstatus** , um zu ermitteln, ob der Auftrag erfolgreich abgeschlossen wurde.
 
-9. Verwenden Sie den **Server-Explorer**, und erweitern Sie **Azure** > **HDInsight** > Ihren HDInsight-Cluster > **Hive-Datenbanken** > **Standard**, um zu überprüfen, ob der Auftrag eine neue Tabelle erstellt hat. Die Tabellen **errorLogs** und **log4jLogs** werden aufgelistet.
+9. Verwenden Sie den **Server-Explorer**, und erweitern Sie **Azure** > **HDInsight** > Ihren HDInsight-Cluster > **Hive-Datenbanken** > **Standard**, um zu überprüfen, ob der Auftrag die Tabelle erstellt hat. Die Tabellen **errorLogs** und **log4jLogs** werden aufgelistet.
 
 ## <a id="nextsteps"></a>Nächste Schritte
 

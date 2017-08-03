@@ -1,5 +1,5 @@
 ---
-title: Installieren und Verwenden von Giraph auf Linux-basiertem HDInsight (Hadoop) | Microsoft-Dokumentation
+title: "Installieren und Verwenden von Giraph in HDInsight (Hadoop) – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Giraph auf Linux-basierten HDInsight-Clustern mit Skriptaktionen installieren. Mit Skriptaktionen können Sie den Cluster während der Erstellung anpassen, indem Sie die Clusterkonfiguration ändern oder Dienste und Hilfsprogramme installieren."
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: c59da3ab9b02f4177272dc3a1194d46b6172a05e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 658616d1979e617a7d80a989b8e80246a9091fdf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Installieren von Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/18/2017
 In diesem Artikel wird erläutert, wie Sie Apache Giraph in einem HDInsight-Cluster installieren. Das Skriptaktionenfeature von HDInsight ermöglicht Ihnen die Anpassung des Clusters durch Ausführen eines Bash-Skripts. Mithilfe von Skripts können Sie Cluster während und nach der Erstellung anpassen.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whatis"></a>Was ist Giraph?
 
@@ -98,19 +97,21 @@ Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her:
 
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
     Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Verwenden Sie den folgenden Befehl, um eine Datei mit dem Namen **tiny_graph.txt**zu erstellen:
 
-    ```
+    ```bash
     nano tiny_graph.txt
     ```
 
     Verwenden Sie als Inhalt der Datei den folgenden Text:
 
-    ```
+    ```text
     [0,0,[[1,1],[3,3]]]
     [1,0,[[0,1],[2,2],[3,1]]]
     [2,0,[[1,2],[4,4]]]
@@ -128,13 +129,13 @@ Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in
 
 4. Verwenden Sie zum Speichern der Daten im primären Speicher für den HDInsight-Cluster den folgenden Befehl:
 
-    ```
+    ```bash
     hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
     ```
 
 5. Führen Sie das Beispiel „SimpleShortestPathsComputation“ mit dem folgenden Befehl aus:
 
-    ```
+    ```bash
     yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
     ```
 
@@ -156,7 +157,7 @@ Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in
 
 6. Nach Abschluss des Auftrags werden die Ergebnisse im Verzeichnis **/example/out/shortestpaths** gespeichert. Die Ausgabedateinamen beginnen mit **part-m-** und enden mit einer Zahl, die die erste, zweite, dritte Datei usw. anzeigt. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
 
-    ```
+    ```bash
     hdfs dfs -text /example/output/shortestpaths/*
     ```
 

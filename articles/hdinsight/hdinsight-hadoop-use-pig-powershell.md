@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Hadoop Pig mit PowerShell in HDInsight | Microsoft-Dokumentation
+title: "Verwenden von Hadoop Pig mit PowerShell in HDInsight – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mit Azure PowerShell Pig-Aufträge an einen Hadoop-Cluster in HDInsight übermitteln."
 services: hdinsight
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 06/16/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e782a065fb680e37cfe5ac58e9b276aeadc748d5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 28904b07609ffb40a8195278fd1afd3957896733
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Ausführen von Pig-Aufträgen in HDInsight mithilfe von Azure PowerShell
@@ -37,7 +37,7 @@ Dieses Dokument enthält ein Beispiel zur Verwendung von Azure PowerShell zum Ü
 * **Einen Azure HDInsight-Cluster**
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Eine Arbeitsstation mit Azure PowerShell**.
 

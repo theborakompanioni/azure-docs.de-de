@@ -12,25 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/18/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9137ed450481bed6d78d97c20b5796b5057092c5
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Verwenden des StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen
 ## <a name="overview"></a>Übersicht
-Mit dem Knoten **Volumegruppen** im Fensterbereich **Bereich** können Sie Volumes Volumegruppen zuordnen, Informationen zu einer Volumegruppe anzeigen, Sicherungen planen und Volumegruppen bearbeiten. 
+Mit dem Knoten **Volumegruppen** im Fensterbereich **Bereich** können Sie Volumes Volumegruppen zuordnen, Informationen zu einer Volumegruppe anzeigen, Sicherungen planen und Volumegruppen bearbeiten.
 
 Volumegruppen sind Pools zusammengehöriger Volumes, mit denen sichergestellt werden soll, dass Sicherungen anwendungskonsistent sind. Weitere Informationen finden Sie unter [Volumes und Volumegruppen](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) und [Integration in den Windows-Volumeschattenkopie-Dienst](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
 
 > [!IMPORTANT]
 > * Alle Volumes in einer Volumegruppe müssen von einem Cloud-Service Provider stammen.
 > * Beim Konfigurieren von Volumegruppen sollten Sie nicht freigegebene Clustervolumes (CSV) und nicht freigegebene Clustervolumes in derselben Volumegruppe zusammenfassen. Der StorSimple Snapshot Manager unterstützt nicht das Zusammenfassen von freigegebenen Clustervolumes und nicht freigegebenen Clustervolumes in derselben Momentaufnahme.
-> 
-> 
 
 ![Knoten "Volumegruppen"](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
 
@@ -38,7 +38,7 @@ Volumegruppen sind Pools zusammengehöriger Volumes, mit denen sichergestellt we
 
 In diesem Lernprogramm erfahren Sie, wie Sie den StorSimple Snapshot Manager für Folgendes verwenden:
 
-* Anzeigen von Informationen zu den Volumegruppen 
+* Anzeigen von Informationen zu den Volumegruppen
 * Erstellen einer Volumegruppe
 * Sichern einer Volumegruppe
 * Bearbeiten einer Volumegruppe
@@ -54,10 +54,10 @@ Wenn Sie auf den Knoten **Volumegruppen** klicken, werden im Bereich **Ergebniss
 | Name |Die Spalte **Name** enthält den Namen der Volumegruppe. |
 | Anwendung |Die Spalte **Anwendungen** zeigt die Anzahl der VSS-Writer an, die zurzeit auf dem Windows-Host installiert sind und ausgeführt werden. |
 | Aktiviert |Die Spalte **Ausgewählt** zeigt die Anzahl der Volumes in der Volumegruppe an. Eine Null (0) gibt an, dass den Volumes in der Volumegruppe keine Anwendung zugeordnet ist. |
-| Importiert |Die Spalte **Importiert** zeigt die Anzahl der importierten Volumes an. Bei Festlegung auf **True**gibt diese Spalte an, dass eine Volumegruppe aus dem klassischen Azure-Portal importiert und nicht im StorSimple Snapshot Manager erstellt wurde. |
+| Importiert |Die Spalte **Importiert** zeigt die Anzahl der importierten Volumes an. Bei Festlegung auf **True** gibt diese Spalte an, dass eine Volumegruppe aus dem Azure-Portal importiert und nicht im StorSimple Snapshot Manager erstellt wurde. |
 
 > [!NOTE]
-> StorSimple Snapshot Manager-Volumegruppen werden ebenfalls auf der Registerkarte **Sicherungsrichtlinien** im klassischen Azure-Portal angezeigt.
+> StorSimple Snapshot Manager-Volumegruppen werden ebenfalls auf der Registerkarte **Sicherungsrichtlinien** im Azure-Portal angezeigt.
 > 
 > 
 
@@ -65,18 +65,18 @@ Wenn Sie auf den Knoten **Volumegruppen** klicken, werden im Bereich **Ergebniss
 Gehen Sie folgendermaßen vor, um eine neue Vorlumegruppe zu erstellen.
 
 #### <a name="to-create-a-volume-group"></a>So erstellen Sie eine Volumegruppe
-1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten. 
-2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf **Volumegruppen**, und klicken Sie dann auf **Volumegruppe** erstellen. 
+1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
+2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf **Volumegruppen**, und klicken Sie dann auf **Volumegruppe** erstellen.
    
     ![Volumegruppe erstellen](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
    
-    Das Dialogfeld **Volumegruppe erstellen** wird angezeigt. 
+    Das Dialogfeld **Volumegruppe erstellen** wird angezeigt.
    
-    ![Dialogfeld "Create Volume Group"](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png) 
-3. Geben Sie Folgendes ein: 
+    ![Dialogfeld "Create Volume Group"](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
+3. Geben Sie Folgendes ein:
    
-   1. Geben Sie im Feld **Name** einen eindeutigen Namen für die neue Volumegruppe ein. 
-   2. Wählen Sie im Feld **Anwendungen** die Anwendungen aus, die den Volumes, die Sie der Volumegruppe hinzufügen werden, zugeordnet sind. 
+   1. Geben Sie im Feld **Name** einen eindeutigen Namen für die neue Volumegruppe ein.
+   2. Wählen Sie im Feld **Anwendungen** die Anwendungen aus, die den Volumes, die Sie der Volumegruppe hinzufügen werden, zugeordnet sind.
       
        Das Feld **Anwendungen** enthält nur die Anwendungen, die StorSimple-Volumes verwenden und für die VSS-Writer aktiviert sind. Ein VSS-Writer wird nur aktiviert, wenn alle vom Writer erkannten Volumes StorSimple-Volumes sind. Wenn das Feld "Anwendungen" leer ist, sind keine Anwendungen installiert, die Azure StorSimple-Volumes und VSS-Writer verwenden. (Zurzeit unterstützt Azure StorSimple Microsoft Exchange und SQL Server.) Weitere Informationen zu VSS-Writern finden Sie unter [Integration in den Windows-Volumeschattenkopie-Dienst](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
       
@@ -85,7 +85,7 @@ Gehen Sie folgendermaßen vor, um eine neue Vorlumegruppe zu erstellen.
       
       * Sie können Volumes mit einer oder mehreren Partitionen hinzufügen. (Volumes mit mehreren Partitionen können dynamische Datenträger oder Basisdatenträger mit mehreren Partitionen sein.) Ein Volume, das mehrere Partitionen enthält, wird als einzelne Einheit behandelt. Wenn Sie also nur eine der Partitionen einer Volumegruppe hinzufügen, werden alle anderen Partitionen automatisch auch dieser Volumegruppe hinzugefügt. Auch nach dem Hinzufügen eines Volumes mit mehreren Partitionen zu einer Volumegruppe wird das aus mehreren Partitionen bestehende Volume als eine Einheit behandelt.
       * Sie können leere Volumegruppen erstellen, indem Sie keine Volumes zuweisen. 
-      * Fassen Sie keine freigegebenen Clustervolumes (CSV) und nicht freigegebenen Clustervolumes in derselben Volumegruppe zusammen. Der StorSimple Snapshot Manager unterstützt nicht das Zusammenfassen von freigegebenen Clustervolumes und nicht freigegebenen Clustervolumes in derselben Momentaufnahme. 
+      * Fassen Sie keine freigegebenen Clustervolumes (CSV) und nicht freigegebenen Clustervolumes in derselben Volumegruppe zusammen. Der StorSimple Snapshot Manager unterstützt nicht das Zusammenfassen von freigegebenen Clustervolumes und nicht freigegebenen Clustervolumes in derselben Momentaufnahme.
 4. Klicken Sie zum Speichern der Volumegruppe auf **OK** .
 
 ## <a name="back-up-a-volume-group"></a>Sichern einer Volumegruppe
@@ -93,22 +93,22 @@ Gehen Sie folgendermaßen vor, um eine Vorlumegruppe zu sichern.
 
 #### <a name="to-back-up-a-volume-group"></a>So sichern Sie eine Volumegruppe
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
-2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Sicherung anlegen**. 
+2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Sicherung anlegen**.
    
     ![Sofortiges Sichern einer Volumegruppe](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
-3. Wählen Sie im Dialogfeld **Sicherung anlegen** entweder **Lokale Momentaufnahme** oder **Cloudmomentaufnahme** aus, und klicken Sie dann auf **Erstellen**. 
+3. Wählen Sie im Dialogfeld **Sicherung anlegen** entweder **Lokale Momentaufnahme** oder **Cloudmomentaufnahme** aus, und klicken Sie dann auf **Erstellen**.
    
-    ![Dialogfeld "Sicherung anlegen"](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png) 
+    ![Dialogfeld "Sicherung anlegen"](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
 4. Um die Ausführung der Sicherung zu bestätigen, erweitern Sie den Knoten **Aufträge**, und klicken Sie dann auf **Wird ausgeführt**. Die Sicherung sollte aufgeführt sein.
-5. Um die abgeschlossene Momentaufnahme anzuzeigen, erweitern Sie den Knoten **Sicherungskatalog** und dann den Volumegruppennamen, und klicken Sie dann auf **Lokale Momentaufnahme** oder **Cloudmomentaufnahme**. Die Sicherung wird aufgeführt, wenn sie erfolgreich abgeschlossen wurde. 
+5. Um die abgeschlossene Momentaufnahme anzuzeigen, erweitern Sie den Knoten **Sicherungskatalog** und dann den Volumegruppennamen, und klicken Sie dann auf **Lokale Momentaufnahme** oder **Cloudmomentaufnahme**. Die Sicherung wird aufgeführt, wenn sie erfolgreich abgeschlossen wurde.
 
 ## <a name="edit-a-volume-group"></a>Bearbeiten einer Volumegruppe
 Gehen Sie folgendermaßen vor, um eine Vorlumegruppe zu bearbeiten.
 
 #### <a name="to-edit-a-volume-group"></a>So bearbeiten Sie eine Volumegruppe
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
-2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Bearbeiten**. 
-3. Das Dialogfeld **Volumegruppe erstellen **wird angezeigt. Sie können die Einträge für **Name**, **Anwendungen** und **Volumes** ändern. 
+2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Bearbeiten**.
+3. Das Dialogfeld **Volumegruppe erstellen** wird angezeigt. Sie können die Einträge für **Name**, **Anwendungen** und **Volumes** ändern.
 4. Klicken Sie zum Speichern der Änderungen auf **OK** .
 
 ## <a name="delete-a-volume-group"></a>Löschen einer Volumegruppe
@@ -120,19 +120,14 @@ Gehen Sie folgendermaßen vor, um eine Volumegruppe zu löschen.
 > 
 
 #### <a name="to-delete-a-volume-group"></a>So löschen Sie eine Volumegruppe
-1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten. 
-2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Löschen**. 
-3. Das Dialogfeld **Volumegruppe löschen** wird angezeigt. Geben Sie in das Textfeld den Text **Bestätigen** ein, und klicken Sie dann auf **OK**. 
+1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
+2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Löschen**.
+3. Das Dialogfeld **Volumegruppe löschen** wird angezeigt. Geben Sie in das Textfeld den Text **Bestätigen** ein, und klicken Sie dann auf **OK**.
    
     Die gelöschte Volumegruppe wird aus der Liste im **Ergebnisbereich** entfernt, und alle Sicherungen, die dieser Volumegruppe zugeordnet sind, werden aus dem Sicherungskatalog gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Weitere Informationen zum [Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Sicherungsrichtlinien](storsimple-snapshot-manager-manage-backup-policies.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

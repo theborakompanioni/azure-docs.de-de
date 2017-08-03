@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 06/05/2017
 ms.author: v-sharos
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 7651a2ba6c206bb39d7cf8839f6f0f828fb3bc16
-ms.openlocfilehash: 25265349cb8cb47e93b7bea7103f1d06878a6158
-ms.lasthandoff: 02/28/2017
+ms.custom: 
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b48c507e38eb7cadff56259f617e336e4efe5708
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -126,7 +127,7 @@ Die folgende Tabelle enthält eine alphabetische Liste aller StorSimple Snapshot
 | Volumes erneut einlesen |Klicken Sie mit der rechten Maustaste auf den Knoten **Volumes** . |Klicken Sie auf **Volumes erneut überprüfen**, um die Liste der Volumes im **Ergebnisbereich** zu aktualisieren. |
 | Wiederherstellen |Erweitern Sie nacheinander **Sicherungskatalog**, eine Volumegruppe, **Lokale Momentaufnahmen** oder **Cloudmomentaufnahmen**, und klicken Sie dann mit der rechten Maustaste auf eine Sicherung. |Klicken Sie auf **Wiederherstellen** , um die aktuellen Volumegruppendaten durch die Daten aus der ausgewählten Sicherung zu ersetzen. |
 | Sicherung anlegen |Führen Sie einen der folgenden Schritte aus:<ul><li>Erweitern Sie **Volumegruppen**, und klicken Sie dann mit der rechten Maustaste auf eine Volumegruppe.</li><li>Erweitern Sie **Sicherungskatalog**, und klicken Sie dann mit der rechten Maustaste auf eine Volumegruppe.</li></ul> |Klicken Sie auf **Sicherung anlegen** , um sofort einen Sicherungsauftrag zu starten. |
-| Importanzeige umschalten |Klicken Sie im **Bereichsfenster** mit der rechten Maustaste auf den obersten Knoten (in den Beispielen der Knoten **StorSimple Snapshot Manager**). |Klicken Sie auf **Importanzeige umschalten** , um die Volumegruppen und die zugeordneten Sicherungen, die aus dem Dashboard des StorSimple Manager-Diensts importiert wurden, ein- oder auszublenden. |
+| Importanzeige umschalten |Klicken Sie im **Bereichsfenster** mit der rechten Maustaste auf den obersten Knoten (in den Beispielen der Knoten **StorSimple Snapshot Manager**). |Klicken Sie auf **Importanzeige umschalten**, um die Volumegruppen und die zugeordneten Sicherungen, die aus dem Dashboard des StorSimple-Geräte-Manager-Diensts importiert wurden, ein- oder auszublenden. |
 
 ### <a name="view-menu"></a>Menü "Ansicht"
 Verwenden Sie das Menü **Ansicht**, um eine benutzerdefinierte Ansicht der Inhalte im **Ergebnisbereich** zu erstellen. Das Menü **Ansicht** enthält die Optionen **Spalten hinzufügen/entfernen** und **Anpassen**.
@@ -273,8 +274,7 @@ Sicherungsrichtlinien sind Auftragszeitpläne für lokale und Cloudmomentaufnahm
 
 > [!NOTE]
 > Sie können maximal 64 Sicherungen speichern.
-> 
-> 
+
 
 ### <a name="backup-catalog-node"></a>Knoten "Sicherungskatalog"
 Der Knoten **Sicherungskatalog** enthält Listen von Sicherungen von Azure StorSimple-Volumes, die lokal oder an einem anderen Standort gespeichert sind. Dieser Knoten wird über Volumegruppen organisiert, wobei jeder Volumegruppencontainer separate Strukturen für lokale Momentaufnahmen (Knoten **Lokale Momentaufnahmen**) und Cloudmomentaufnahmen (Knoten **Cloudmomentaufnahmen**) enthält. Wenn der Knoten erweitert wird, werden für jeden Volumegruppencontainer die erfolgreichen Sicherungen angezeigt, die interaktiv oder durch eine konfigurierte Richtlinie erstellt wurden.
@@ -429,7 +429,7 @@ In den folgenden Tabellen werden die Tastenkombinationen für die einzelnen Knot
 | V |Öffnet das Menü **Ansicht** . |
 | W |Öffnet eine neue StorSimple Snapshot Manager-Konsole mit Fokus auf dem Knoten **Volumegruppen** . |
 | F |Aktualisiert die StorSimple Snapshot Manager-Konsole. |
-| L |Öffnet die Seite **Liste exportieren **. |
+| L |Öffnet die Seite **Liste exportieren**. |
 | H |Öffnet die Onlinehilfe. |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>Tastenkombinationen für den Knoten "Sicherungskatalog"

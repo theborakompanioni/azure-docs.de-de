@@ -1,5 +1,5 @@
 ---
-title: "Aktivieren von Heapdumps für Hadoop-Dienste auf HDInsight | Microsoft-Dokumentation"
+title: "Aktivieren von Heapdumps für Hadoop-Dienste in HDInsight –Azure | Microsoft-Dokumentation"
 description: "Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen."
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3811e3ee1a741230c4499d18f48a5208905cf300
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 59942e989d622c2486edf181d76e13344c71e6f9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/18/2017
 Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie zum Diagnostizieren von Problemen nützlich, die bei der Ausführung auftreten.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument funktionieren nur mit einem HDInsight-Cluster unter Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Die Schritte in diesem Dokument funktionieren nur mit einem HDInsight-Cluster unter Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whichServices"></a>Dienste
 

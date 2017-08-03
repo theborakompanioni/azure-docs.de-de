@@ -1,5 +1,5 @@
 ---
-title: Programmgesteuerter Zugriff auf YARN-Anwendungsprotokolle in Hadoop | Microsoft-Dokumentation
+title: "Programmgesteuerte Zugreifen auf Hadoop YARN-Anwendungsprotokolle – Azure | Microsoft-Dokumentation"
 description: Greifen Sie programmgesteuert auf Anwendungsprotokolle auf einem Hadoop-Cluster in HDInsight zu.
 services: hdinsight
 documentationcenter: 
@@ -17,18 +17,17 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: ce07cf026ca9dae40afe3205685f3ab463492e39
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 798bd85dc136853a73e8a675f7a060a2ad2cf246
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Zugriff auf YARN-Anwendungsprotokolle unter Windows-basiertem HDInsight
 In diesem Thema wird der Zugriff auf Protokolle für YARN-Anwendungen (Yet Another Resource Negotiator) erläutert, die in einem auf Windows basierenden Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
 
 > [!IMPORTANT]
-> Die Informationen in diesem Dokument gelten nur für Windows-basierte HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date). Weitere Informationen zum Zugriff auf YARN-Protokolle auf Linux-basierten HDInsight-Clustern finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle auf Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Die Informationen in diesem Dokument gelten nur für Windows-basierte HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Weitere Informationen zum Zugriff auf YARN-Protokolle auf Linux-basierten HDInsight-Clustern finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle auf Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
@@ -60,7 +59,7 @@ Darüber hinaus kann jede Anwendung aus mehreren *Anwendungsversuchen* mit dem Z
 
 Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation][log-aggregation] ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch "Log Aggregation" lässt sich der Zugriff auf Anwendungsprotokolle besser steuern, denn Protokolle für alle Container auf einem Arbeitsknoten werden zusammengeführt und als zentrale Protokolldatei pro Workerknoten im Standarddateisystem gespeichert, nachdem eine Anwendung abgeschlossen wurde. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Arbeitsknoten vorhandenen Container werden zu einer zentralen Datei zusammengeführt, was in einer Protokolldatei pro Arbeitsknoten mündet, die von Ihrer Anwendung genutzt werden. Log Aggregation ist für HDInsight-Cluster (ab Version 3.0) standardmäßig aktiviert. Zusammengeführte Protokolle befinden sich im Standardcontainer Ihres Clusters am folgenden Speicherort:
 
-    wasbs:///app-logs/<user>/logs/<applicationId>
+    wasb:///app-logs/<user>/logs/<applicationId>
 
 An diesem Speicherort ist *user* der Name des Benutzers, der die Anwendung gestartet hat. *applicationId* ist der eindeutige Bezeichner einer Anwendung gemäß der Zuweisung durch den YARN Resource Manager (RM).
 

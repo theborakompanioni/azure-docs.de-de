@@ -1,7 +1,8 @@
 ---
-title: "Entwickeln von Python MapReduce-Aufträgen mit HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Python MapReduce-Aufträge auf Linux-basierten HDInsight-Clustern erstellen und ausführen."
+title: "Entwickeln von Python MapReduce-Aufträgen für das Streaming mit HDInsight – Azure | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Python für Streaming-MapReduce-Aufträge verwenden. Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie in anderen Sprachen als Java schreiben können."
 services: hdinsight
+keyword: mapreduce python,python map reduce,python mapreduce
 documentationcenter: 
 author: Blackmist
 manager: jhubbard
@@ -9,7 +10,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 7631d8d9-98ae-42ec-b9ec-ee3cf7e57fb3
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,23 +18,23 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: ce96113ad979997c555bc64698c0b78822b525ad
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72d7aefc6a51944eac8075760486dc1a583a171d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="develop-python-streaming-programs-for-hdinsight"></a>Entwickeln von Python-Streamingprogrammen für HDInsight
+# <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Entwickeln von Streaming-MapReduce-Programmen für HDInsight mit Python
 
-Erfahren Sie, wie Sie Python in MapReduce-Vorgängen verwenden. Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können. Die Schritte in diesem Dokument haben die Komponenten für Mapper und Reducer in Python implementiert.
+Erfahren Sie, wie Sie Python für Vorgänge in Streaming-MapReduce-Aufträgen verwenden. Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können. Die Schritte in diesem Dokument haben die Komponenten für Mapper und Reducer in Python implementiert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Linux-basierter Hadoop-Cluster in HDInsight
 
   > [!IMPORTANT]
-  > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+  > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Ein Texteditor
 

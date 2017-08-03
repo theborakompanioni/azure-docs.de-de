@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Hadoop Pig mit .NET in HDInsight | Microsoft-Dokumentation
+title: "Ausführen von Apache Pig-Aufträgen mit dem .NET SDK für Hadoop – Azure HDInsight | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mithilfe des .NET SDK für Hadoop Pig-Aufträge an Hadoop in HDInsight übermitteln."
 services: hdinsight
 documentationcenter: .net
@@ -14,19 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/03/2017
+ms.date: 05/25/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 10e2f35bdaf1b6e00e3d8dde34dd5809a89cde30
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c0c120a457e9eaf0e7ea44f3fc6502fa71d673e7
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>Ausführen von Pig-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight
+
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Dieses Dokument enthält ein Beispiel zur Verwendung von .NET SDK für Hadoop zur Übermittlung von Pig-Aufträgen an einen Hadoop-Cluster in HDInsight.
+Erfahren Sie, wie Sie mithilfe des .NET SDK für Hadoop Apache Pig-Aufträge an Hadoop in Azure HDInsight übermitteln.
 
 Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. Mithilfe von Pig können Sie MapReduce-Vorgänge erstellen, indem Sie eine Reihe von Datentransformationen modellieren. In diesem Dokument erfahren Sie, wie Sie mit einer einfachen C#-Anwendung einen Pig-Auftrag an einen HDInsight-Cluster übermitteln.
 
@@ -37,7 +39,7 @@ Zur Ausführung der in diesem Artikel aufgeführten Schritte benötigen Sie Folg
 * Einen Azure HDInsight-Cluster (Hadoop in HDInsight), der auf Windows oder Linux basiert
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Visual Studio 2012, 2013, 2015 oder 2017.
 

@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters | Microsoft Docs"
+title: "Hinzufügen von Hive-Bibliotheken während der Erstellung von HDInsight-Clustern – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Hive-Bibliotheken (JAR-Dateien) einem HDInsight-Cluster während der Erstellung des Clusters hinzufügen."
 services: hdinsight
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 07/12/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 6f6d7bf50878cc6938f19ba7f79f968f44f82ed6
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 9bd95113616cc8e943f20e8a3795933ac9e99cc8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Hinzufügen benutzerdefinierter Hive-Bibliotheken beim Erstellen des HDInsight-Clusters
@@ -47,7 +47,7 @@ Bei **Linux-basierten Clustern**: [https://hdiconfigactions.blob.core.windows.ne
 Bei **Windows-basierten Clustern**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
 > [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 **Anforderungen**
 

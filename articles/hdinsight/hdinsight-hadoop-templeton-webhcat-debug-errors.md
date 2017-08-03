@@ -1,5 +1,5 @@
 ---
-title: Verstehen und Beheben von WebHCat-Fehlern in HDInsight
+title: "Verstehen und Beheben von WebHCat-Fehlern in HDInsight – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr zu Ursachen und Lösungen von Fehlern, die WebHCat in HDInsight zurückgibt."
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 140d061fefbd9b8cd1b45061bf4dee607f2df44b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d8162e0d64ec9fc42690392b7c822593c0c2767
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -42,7 +42,7 @@ Hier erhalten Sie Informationen zu Fehlern, die bei Verwendung von WebHCat mit H
 * Für **Linux** -Cluster: Verwenden Sie Ambari (Web- oder REST-API), um den Wert zu ändern. Weitere Informationen finden Sie unter [Verwalten von HDInsight mit Ambari](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="default-configuration"></a>Standardkonfiguration
 
@@ -87,7 +87,7 @@ Die Überschreitung der folgenden Standardwerte kann die Leistung von WebHCat be
 | Ursache | Lösung |
 | --- | --- |
 | Im WebHCat-Prozess findet eine interne Bereinigung statt. |Warten Sie, bis die Bereinigung den WebHCat-Dienst beendet oder neu gestartet hat. |
-| Timeout beim Warten auf eine Antwort vom ResourceManager-Dienst. Dies kann passieren, wenn die Anzahl der aktiven Anwendungen den konfigurierten Maximalwert (standardmäßig 10.000) überschreitet. |Warten Sie, bis die aktiven Aufträge abgeschlossen sind, oder erhöhen Sie den Grenzwert für gleichzeitig ausgeführte Aufträge durch Änderung von `yarn.scheduler.capacity.maximum-applications`. Weitere Informationen finden Sie unter [Konfigurationsänderungen](#modifying-configuration) . |
+| Timeout beim Warten auf eine Antwort vom ResourceManager-Dienst. Dieser Fehler kann auftreten, wenn die Anzahl der aktiven Anwendungen den konfigurierten Maximalwert (standardmäßig 10.000) überschreitet. |Warten Sie, bis die aktiven Aufträge abgeschlossen sind, oder erhöhen Sie den Grenzwert für gleichzeitig ausgeführte Aufträge durch Änderung von `yarn.scheduler.capacity.maximum-applications`. Weitere Informationen finden Sie im Abschnitt [Konfigurationsänderungen](#modifying-configuration). |
 | Versuch, alle Aufträge mit dem Aufruf [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) abzurufen, wenn `Fields` auf `*` festgelegt ist |Rufen Sie nicht *alle* Auftragsdetails ab. Rufen Sie stattdessen mit `jobid` nur die Details von Aufträgen ab, deren Auftrags-ID höher als ein bestimmter Wert ist. Oder Sie sollten kein `Fields` |
 | Der WebHCat-Dienst ist während eines Failovers des Hauptknotens nicht verfügbar. |Warten Sie zwei Minuten, bevor Sie den Vorgang wiederholen. |
 | Von WebHCat wurden mehr als 500 Aufträge übermittelt, deren Verarbeitung noch aussteht. |Warten Sie, bis die derzeit ausstehenden Aufträge abgeschlossen sind, bevor Sie weitere Aufträge übermitteln. |

@@ -1,5 +1,5 @@
 ---
-title: "Verwenden der Tez-Benutzeroberfläche mit Windows-basiertem HDInsight | Microsoft Docs"
+title: "Verwenden der Tez-Benutzeroberfläche mit Windows-basiertem HDInsight – Azure | Microsoft-Dokumentation"
 description: "Informationen zum Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight."
 services: hdinsight
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 870d8001b67b43d09427a626761ede1833101ddf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3889fa1c3523eb0330cbe3b7640fd8590a5ceadf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/18/2017
 Die Tez-Benutzeroberfläche ist eine Webseite, die verwendet werden kann, um Aufträge zu verstehen und zu debuggen, die Tez als Ausführungsmodul in Windows-basierten Clustern nutzen. Die Tez-Benutzeroberfläche ermöglicht Ihnen das Visualisieren des Auftrags als Graphen verbundener Elemente, einen Drilldown in die einzelnen Elemente und das Abrufen von Statistiken und Protokollinformationen.
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Windows. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Windows. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Windows-basierter HDInsight-Cluster Anweisungen zum Erstellen eines neuen Clusters finden Sie unter [Erste Schritte mit Windows-basiertem HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md).

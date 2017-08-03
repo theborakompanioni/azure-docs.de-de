@@ -1,6 +1,6 @@
 ---
-title: Verwenden einer benutzerdefinierten Java-Funktion (UDF) mit Hive in HDInsight | Microsoft-Dokumentation
-description: Informationen zum Erstellen und Verwenden einer benutzerdefinierten Java-Funktion (UDF) in Hive in HDInsight.
+title: "Benutzerdefinierte Java-Funktion (UDF) mit Hive in HDInsight – Azure | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Hive erstellen. Diese benutzerdefinierte Beispielfunktion (UDF) konvertiert eine Tabelle von Textzeichenfolgen in Kleinbuchstaben.
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -8,33 +8,33 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/04/2017
+ms.date: 06/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 229bebe16b619f61f2dd4acb73602b97e64cb294
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6fe228ee8967c1d290e9bd515733d8207a721466
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion in HDInsight
 
-Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Hive erstellen.
+Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Hive erstellen. Die benutzerdefinierte Java-Funktion (UDF) in diesem Beispiel konvertiert eine Tabelle von Textzeichenfolgen in klein geschriebene Zeichen.
 
 ## <a name="requirements"></a>Anforderungen
 
-* Ein HDInsight-Cluster (Windows- oder Linux-basiert)
+* Ein HDInsight-Cluster 
 
     > [!IMPORTANT]
-    > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+    > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-    Die meisten Schritte in diesem Dokument funktionieren bei beiden Clustertypen. Die Schritte zum Hochladen der kompilierten UDF in den Cluster und ihrer Ausführung sind jedoch spezifisch für Linux-basierte Cluster. Links zu Informationen, die mit Windows-basierten Clustern verwendet werden können, sind angegeben.
+    Die meisten Schritte in diesem Dokument funktionieren sowohl in Windows- als auch in Linux-basierten Clustern. Die Schritte zum Hochladen der kompilierten UDF in den Cluster und ihrer Ausführung sind jedoch spezifisch für Linux-basierte Cluster. Links zu Informationen, die mit Windows-basierten Clustern verwendet werden können, sind angegeben.
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 oder höher (oder eine entsprechende Anwendung wie OpenJDK)
 
@@ -43,9 +43,9 @@ Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur V
 * Ein Text-Editor oder eine Java-IDE
 
     > [!IMPORTANT]
-    > Wenn Sie einen Linux-basierten HDInsight-Server verwenden, aber die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen des CR-Zeichens mithilfe von Hilfsprogrammen für den HDInsight-Cluster.
+    > Wenn Sie die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen des CR-Zeichens.
 
-## <a name="create-an-example-udf"></a>Erstellen Sie einer Beispiel-UDF
+## <a name="create-an-example-java-udf"></a>Erstellen Sie einer Beispiel-UDF in Java 
 
 1. Geben Sie an der Befehlszeile Folgendes an, um ein neues Maven-Projekt zu erstellen:
 
@@ -60,7 +60,7 @@ Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur V
 
 2. Nachdem das Projekt erstellt wurde, löschen Sie das Verzeichnis **exampleudf/src/test**, das als Teil des Projekts erstellt wurde.
 
-3. Öffnen Sie die Datei **exampleudf/pom.xml**, und ersetzen Sie den vorhandenen Eintrag `<dependencies>` durch den folgenden Eintrag:
+3. Öffnen Sie die Datei **exampleudf/pom.xml**, und ersetzen Sie den vorhandenen Eintrag `<dependencies>` durch folgenden XML-Code:
 
     ```xml
     <dependencies>
@@ -81,7 +81,7 @@ Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur V
 
     Diese Einträge geben die Version von Hadoop und Hive an, die in HDInsight 3.5 enthalten sind. Informationen zu den in HDInsight enthaltenen Versionen von Hadoop und Hive finden Sie im Dokument zu den [Versionen von HDInsight-Komponenten](hdinsight-component-versioning.md) .
 
-    Fügen Sie am Ende der Datei den Abschnitt `<build>` der Zeile `</project>` hinzu. Dieser Abschnitt sollte Folgendes enthalten:
+    Fügen Sie am Ende der Datei den Abschnitt `<build>` der Zeile `</project>` hinzu. Dieser Abschnitt sollte folgenden XML-Code enthalten:
 
     ```xml
     <build>
@@ -178,7 +178,7 @@ Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur V
     mvn compile package
     ```
 
-    Dadurch wird die UDF in **exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar** erstellt und gepackt.
+    Dieser Befehl erstellt und packt die benutzerdefinierte Funktion in der Datei `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar`.
 
 2. Kopieren Sie die Datei mit dem Befehl `scp` in den HDInsight-Cluster.
 
@@ -186,7 +186,7 @@ Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur V
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    Ersetzen Sie **myuser** durch das SSH-Benutzerkonto für den Cluster. Ersetzen Sie **mycluster** durch den Namen des Clusters. Wenn Sie zum Schutz des SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um die Datei mit dem privaten Schlüssel anzugeben.
+    Ersetzen Sie `myuser` durch das SSH-Benutzerkonto für Ihren Cluster. Ersetzen Sie `mycluster` durch den Namen des Clusters. Wenn Sie zum Schutz des SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um die Datei mit dem privaten Schlüssel anzugeben.
 
 3. Stellen Sie mithilfe von SSH eine Verbindung zum Cluster her.
 
@@ -228,7 +228,7 @@ Erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur V
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    Durch diese Abfrage wird die Geräteplattform (Android, Windows, iOS usw.) in der Tabelle ausgewählt, die Zeichenfolge in Kleinbuchstaben umgewandelt und dann angezeigt. Die Ausgabe sieht in etwa wie folgt aus.
+    Durch diese Abfrage wird die Geräteplattform (Android, Windows, iOS usw.) in der Tabelle ausgewählt, die Zeichenfolge in Kleinbuchstaben umgewandelt und dann angezeigt. Die Ausgabe sieht in etwa wie folgt aus:
 
         +----------+--+
         |   _c0    |

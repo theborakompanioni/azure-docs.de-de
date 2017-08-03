@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Hadoop Hive und Remotedesktop in HDInsight | Microsoft-Dokumentation
+title: "Verwenden von Hadoop Hive und Remotedesktop in HDInsight – Azure | Microsoft-Dokumentation"
 description: "In diesem Artikel erfahren Sie, wie Sie die Verbindung zu einem HDInsight-Cluster über den Remotedesktop herstellen und dann die Hive-Abfragen mithilfe der Hive-Befehlszeilenschnittstelle ausführen."
 services: hdinsight
 documentationcenter: 
@@ -17,11 +17,10 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 0ff59627fe0e8db409f1404ee8397f3da3a56569
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0be8ba4cfdf0686e14e70d0688085af5455de43a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>Verwenden von Hive mit Hadoop in HDInsight über den Remotedesktop
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 In diesem Artikel erfahren Sie, wie Sie die Verbindung zu einem HDInsight-Cluster über den Remotedesktop herstellen und dann die Hive-Abfragen mithilfe der Hive-Befehlszeilenschnittstelle (CLI) ausführen.
 
 > [!IMPORTANT]
-> Remotedesktop ist nur in HDInsight-Clustern verfügbar, die als Betriebssystem Windows verwenden. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date).
+> Remotedesktop ist nur in HDInsight-Clustern verfügbar, die als Betriebssystem Windows verwenden. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 > Informationen zum Ausführen von Hive-Abfragen direkt im Cluster mithilfe einer Befehlszeile für HDInsight 3.4 oder höher finden Sie unter [Verwenden von Hive mit HDInsight und Beeline](hdinsight-hadoop-use-hive-beeline.md).
 
@@ -58,7 +57,7 @@ Nachdem die Verbindung mit dem Desktop für den HDInsight-Cluster hergestellt wu
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
+        STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
     Diese Anweisungen führen die folgenden Aktionen aus:
