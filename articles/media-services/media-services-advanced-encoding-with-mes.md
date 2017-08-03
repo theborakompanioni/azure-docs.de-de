@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 08/01/2017
 ms.author: juliako
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 25a13ad3738286795f45bbdec681614356bd3db8
 ms.contentlocale: de-de
 ms.lasthandoff: 06/30/2017
-
 
 ---
 
@@ -940,28 +939,30 @@ Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt d
 #### <a name="xml-preset"></a>XML-Voreinstellung
 
 Verwenden Sie bei der Verwendung von XML die Bedingung="InsertBlackIfNoVideoBottomLayerOnly" als Attribut zu dem Element **H264Video** und die Bedingung="InsertSilenceIfNoAudio" als Attribut zu **AACAudio**.
-    
-    . . .
-    <Encoding>  
-    <H264Video Condition="InsertBlackIfNoVideoBottomLayerOnly">  
-      <KeyFrameInterval>00:00:02</KeyFrameInterval>
-      <SceneChangeDetection>true</SceneChangeDetection>  
-      <StretchMode>AutoSize</StretchMode>
-      <H264Layers>  
-    <H264Layer>  
-      . . .
-    </H264Layer>  
-      </H264Layers>  
-      <Chapters />  
-    </H264Video>  
-    <AACAudio Condition="InsertSilenceIfNoAudio">  
-      <Profile>AACLC</Profile>  
-      <Channels>2</Channels>  
-      <SamplingRate>48000</SamplingRate>  
-      <Bitrate>128</Bitrate>  
-    </AACAudio>  
-    </Encoding>  
-    . . .
+
+```
+. . .
+<Encoding>
+  <H264Video Condition="InsertBlackIfNoVideoBottomLayerOnly">
+    <KeyFrameInterval>00:00:02</KeyFrameInterval>
+    <SceneChangeDetection>true</SceneChangeDetection>
+    <StretchMode>AutoSize</StretchMode>
+    <H264Layers>
+      <H264Layer>
+        . . .
+      </H264Layer>
+    </H264Layers>
+    <Chapters />
+  </H264Video>
+  <AACAudio Condition="InsertSilenceIfNoAudio">
+    <Profile>AACLC</Profile>
+    <Channels>2</Channels>
+    <SamplingRate>48000</SamplingRate>
+    <Bitrate>128</Bitrate>
+  </AACAudio>
+</Encoding>
+. . .
+```
 
 ### <a name="inserting-video-at-all-output-bitrates"></a>Einfügen von Video mit allen Ausgabebitraten
 Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur für alle Ausgabebitraten hinzuzufügen. Dadurch wird sichergestellt, dass alle Ausgabemedienobjekte in Bezug auf die Anzahl der Video- und Audiospuren homogen sind. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideo“ angeben.
@@ -982,27 +983,29 @@ Sie können alle in [diesem](media-services-mes-presets-overview.md) Abschnitt d
 
 Verwenden Sie bei der Verwendung von XML die Bedingung="InsertBlackIfNoVideo" als Attribut zu dem Element **H264Video** und die Bedingung="InsertSilenceIfNoAudio" als Attribut zu **AACAudio**.
 
-    . . .
-    <Encoding>  
-    <H264Video Condition="InsertBlackIfNoVideo">  
-      <KeyFrameInterval>00:00:02</KeyFrameInterval>
-      <SceneChangeDetection>true</SceneChangeDetection>  
-      <StretchMode>AutoSize</StretchMode>
-      <H264Layers>  
-    <H264Layer>  
-      . . .
-    </H264Layer>  
-      </H264Layers>  
-      <Chapters />  
-    </H264Video>  
-    <AACAudio Condition="InsertSilenceIfNoAudio">  
-      <Profile>AACLC</Profile>  
-      <Channels>2</Channels>  
-      <SamplingRate>48000</SamplingRate>  
-      <Bitrate>128</Bitrate>  
-    </AACAudio>  
-    </Encoding>  
-    . . .  
+```
+. . .
+<Encoding>
+  <H264Video Condition="InsertBlackIfNoVideo">
+    <KeyFrameInterval>00:00:02</KeyFrameInterval>
+    <SceneChangeDetection>true</SceneChangeDetection>
+    <StretchMode>AutoSize</StretchMode>
+    <H264Layers>
+      <H264Layer>
+        . . .
+      </H264Layer>
+    </H264Layers>
+    <Chapters />
+  </H264Video>
+  <AACAudio Condition="InsertSilenceIfNoAudio">
+    <Profile>AACLC</Profile>
+    <Channels>2</Channels>
+    <SamplingRate>48000</SamplingRate>
+    <Bitrate>128</Bitrate>
+  </AACAudio>
+</Encoding>
+. . .  
+```
 
 ## <a id="rotate_video"></a>Drehen eines Videos
 Der [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) unterstützt Drehungen in den Winkeln 0/90/180/270 Grad. Das Standardverhalten ist „Auto“. Dabei wird versucht, die Rotationsmetadaten in der eingehenden Videodatei zu erkennen und auszugleichen. Schließen Sie das folgende **Sources**-Element in einer der in [diesem](media-services-mes-presets-overview.md) Abschnitt definierten JSON-Voreinstellungen ein:
