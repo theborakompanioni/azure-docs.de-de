@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: fb84ca46bdb02df315c078889f49db545fee1d64
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: a3cbcf63533f4042dcd695e141655c5814bd7068
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension-with-the-azure-cli-10"></a>Erstellen einer Docker-Umgebung in Azure mit der Docker-VM-Erweiterung mit Azure CLI 1.0
@@ -29,7 +28,7 @@ Weitere Informationen zu den verschiedenen Bereitstellungsmethoden, z.B. der Ver
 
 * Zur schnellen Erstellung eines Prototyps für eine App können Sie mit [Docker Machine](docker-machine.md) einen einzelnen Docker-Host erstellen.
 * Für größere und stabilere Umgebungen können Sie die Azure Docker-VM-Erweiterung verwenden, die auch [Docker Compose](https://docs.docker.com/compose/overview/) unterstützt, um einheitliche Containerbereitstellungen zu generieren. In diesem Artikel wird die Verwendung der Azure Docker-VM-Erweiterung beschrieben.
-* Zum Erstellen von produktionsreifen, skalierbaren Umgebungen, die zusätzliche Planungs- und Verwaltungstools bereitstellen, können Sie einen [Docker Swarm-Cluster in Azure Container Services](../../container-service/container-service-deployment.md) bereitstellen.
+* Zum Erstellen von produktionsreifen, skalierbaren Umgebungen, die zusätzliche Planungs- und Verwaltungstools bereitstellen, können Sie einen [Docker Swarm-Cluster in Azure Container Services](../../container-service/dcos-swarm/container-service-deployment.md) bereitstellen.
 
 ## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
@@ -201,6 +200,6 @@ Weitere Informationen zu den zusätzlichen Docker-Bereitstellungsoptionen in Azu
 
 * [Verwenden eines Docker-Computers mit dem Azure-Treiber](docker-machine.md)  
 * [Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern auf einem virtuellen Azure-Computer](docker-compose-quickstart.md)
-* [Bereitstellen eines Azure Container Service-Clusters](../../container-service/container-service-deployment.md)
+* [Bereitstellen eines Azure Container Service-Clusters](../../container-service/dcos-swarm/container-service-deployment.md)
 
 

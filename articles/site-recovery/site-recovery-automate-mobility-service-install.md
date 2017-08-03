@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: krnese
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 3e9321255b65d46af59d0ee478e214df795664ac
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: cdb88505427cdea05f594277170633183dbe6d3e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Bereitstellen des Mobility Service in Azure Automation DSC für die VM-Replikation
@@ -59,7 +59,7 @@ Dieser Artikel enthält ein Beispiel dafür, wie Sie Azure Automation DSC (Desir
 * Windows Management Framework (WMF) 5.0 auf den Computern, die Sie schützen möchten (eine Voraussetzung für Automation DSC)
 
   > [!NOTE]
-  > Informationen zum Verwenden von DSC für Windows-Computer, auf denen WMF 4.0 installiert ist, finden Sie im Abschnitt [Verwenden von DSC in getrennten Umgebungen](#Use DSC in disconnected environments).
+  > Informationen zum Verwenden von DSC für Windows-Computer, auf denen WMF 4.0 installiert ist, finden Sie im Abschnitt [Verwenden von DSC in getrennten Umgebungen](## Use DSC in disconnected environments).
   >
   >
 

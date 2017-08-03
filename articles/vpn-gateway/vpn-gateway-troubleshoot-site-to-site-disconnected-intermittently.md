@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/21/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: 9f6ea8296f1bf81813594b07c50f70dd8647f032
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 99a790617baa65116bfba976cd9279627e8775f3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -41,7 +41,7 @@ Möglicherweise tritt bei Ihnen das Problem auf, dass eine neue oder bereits vor
 
 ### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Schritt 1: Überprüfen, ob das lokale VPN-Gerät validiert wurde
 
-1. Überprüfen Sie, ob [das VPN-Gerät und die Version des Betriebssystems validiert wurden](vpn-gateway-about-vpn-devices.md#a-namedevicetableavalidated-vpn-devices-and-device-configuration-guides). Wenn das VPN-Gerät nicht validiert wurde, müssen Sie sich möglicherweise beim Gerätehersteller erkundigen, ob ein Kompatibilitätsproblem vorliegt.
+1. Überprüfen Sie, ob [das VPN-Gerät und die Version des Betriebssystems validiert wurden](vpn-gateway-about-vpn-devices.md#devicetable). Wenn das VPN-Gerät nicht validiert wurde, müssen Sie sich möglicherweise beim Gerätehersteller erkundigen, ob ein Kompatibilitätsproblem vorliegt.
 2. Stellen Sie sicher, dass das VPN-Gerät ordnungsgemäß konfiguriert ist. Weitere Informationen finden Sie unter [Bearbeiten von Gerätekonfigurationsbeispielen](vpn-gateway-about-vpn-devices.md#editing).
 
 ### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>Schritt 2: Überprüfen der Sicherheitszuordnungseinstellungen (für richtlinienbasierte virtuelle Azure-Netzwerkgateways)
@@ -74,6 +74,6 @@ Die Funktion **Perfect Forward Secrecy** kann zu den Problemen mit der Trennung 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Configure IPsec/IKE policy for Site-to-Site VPN connections (Konfigurieren einer IPsec/IKE-Richtlinie für Site-to-Site-VPN-Verbindungen)](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+- [Konfigurieren einer IPsec/IKE-Richtlinie für Standort-zu-Standort-VPN-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 
 

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: chrande, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: fb0925f2d6eb8edede67cf208c735b7b2a0221ac
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 641afd78aae145c5e1b16a08567a22c1aafe59a8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
@@ -198,7 +197,7 @@ Mit Functions können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schreibe
 ```json
 { 
     "tracing": {      
-        "consoleLevel": "verbose"      
+        "consoleLevel": "verbose"     
     }
 }  
 ```
@@ -281,7 +280,7 @@ Mit den folgenden Schritten können Sie Pakete in Ihre Funktionen-App einbeziehe
 2. Klicken Sie auf **Debugkonsole** > **CMD**.
 
 3. Gehen Sie zu `D:\home\site\wwwroot`, und ziehen Sie dann die Datei „package.json“ auf den **wwwroot**-Ordner in der oberen Hälfte der Seite.  
-    Es gibt auch andere Möglichkeiten, Dateien in Ihre Funktionen-App hochzuladen. Weitere Informationen finden Sie unter [Aktualisieren von Funktionen-App-Dateien](functions-reference.md#a-idfileupdatea-how-to-update-function-app-files). 
+    Es gibt auch andere Möglichkeiten, Dateien in Ihre Funktionen-App hochzuladen. Weitere Informationen finden Sie unter [Aktualisieren von Funktionen-App-Dateien](functions-reference.md#fileupdate). 
 
 4. Sobald die Datei „package.json“ hochgeladen ist, führen Sie den `npm install`-Befehl in der **Kudu-Remoteausführungskonsole** aus.  
     Mit dieser Aktion werden die in der Datei „package.json“ angegebenen Pakete heruntergeladen und die Funktionen-App neu gestartet.

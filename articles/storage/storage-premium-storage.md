@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: ramankum
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c905bfe672d1027916d7f273ab5ac79ceec9a4d9
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 94ae2fa4600c007725ae2615554144d12306e833
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
@@ -59,7 +58,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 * **Storage Premium-Datenträger**
 
-    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt virtuelle VMs der DS-, DSv2-, GS- und Fs-Serie. Sie haben die Wahl zwischen sieben Datenträgergrößen: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1.024 GB), P40 (2.048 GB) und P50 (4.095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Sie haben die Wahl zwischen sieben Datenträgergrößen: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1.024 GB), P40 (2.048 GB) und P50 (4.095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 * **Premium-Seitenblobs**
 

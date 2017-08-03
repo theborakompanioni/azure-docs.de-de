@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 08/01/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: a6c33f11dfcbb02689956269ce5a37408534b6cd
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 3e5c9ca546629f782a3d722b49f5fbaf5147e823
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
@@ -28,7 +28,6 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [bool](#bool)
 * [concat](#concat)
 * [contains](#contains)
 * [dataUri](#datauri)
@@ -254,60 +253,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | toStringOutput | String | one, two, three |
 | toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
-<a id="bool" />
 
-## <a name="bool"></a>bool
-`bool(arg1)`
-
-Konvertiert den Parameter in einen booleschen Wert.
-
-### <a name="parameters"></a>Parameter
-
-| Parameter | Erforderlich | Typ | Beschreibung |
-|:--- |:--- |:--- |:--- |
-| arg1 |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
-
-### <a name="return-value"></a>Rückgabewert
-Ein boolescher Wert des konvertierten Werts.
-
-### <a name="examples"></a>Beispiele
-
-Im folgenden Beispiel wird gezeigt, wie „bool“ mit einer Zeichenfolge oder ganzen Zahl verwendet wird.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "trueString": {
-            "value": "[bool('true')]",
-            "type" : "bool"
-        },
-        "falseString": {
-            "value": "[bool('false')]",
-            "type" : "bool"
-        },
-        "trueInt": {
-            "value": "[bool(1)]",
-            "type" : "bool"
-        },
-        "falseInt": {
-            "value": "[bool(0)]",
-            "type" : "bool"
-        }
-    }
-}
-```
-
-Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
-
-| Name | Typ | Wert |
-| ---- | ---- | ----- |
-| trueString | Bool | True  |
-| falseString | Bool | False |
-| trueInt | Bool | True  |
-| falseInt | Bool | False |
 
 <a id="concat" />
 

@@ -14,36 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2017
 ms.author: luywang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 522fd46e8c0ccc64eb97ee6622e9886bb51f1e24
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: e3869df76a13d5945d237987dc597fffb302a77d
 ms.contentlocale: de-de
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 07/26/2017
 
 ---
-<a id="migrating-to-premium-storage-using-azure-site-recovery" class="xliff"></a>
-
-# Migrieren zu Storage Premium mit Azure Site Recovery
+# <a name="migrating-to-premium-storage-using-azure-site-recovery"></a>Migrieren zu Storage Premium mit Azure Site Recovery
 
 [Azure Storage Premium](storage-premium-storage.md) bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs), auf denen E/A-intensive Workloads ausgeführt werden. Dieser Leitfaden soll Benutzern beim Migrieren ihrer VM-Datenträger von einem Standard-Speicherkonto zu einem Storage Premium-Konto mithilfe von [Azure Site Recovery](../site-recovery/site-recovery-overview.md) als Hilfe dienen.
 
 Site Recovery ist ein Azure-Dienst, der einen Beitrag zu Ihrer Strategie für die Geschäftskontinuität und Notfallwiederherstellung leistet, indem die Replikation von lokalen physischen Servern und VMs in die Cloud (Azure) oder in ein sekundäres Datencenter orchestriert wird. Wenn es an Ihrem primären Standort zu Ausfällen kommt, wird ein Failover zum sekundären Standort durchgeführt, um die Verfügbarkeit von Anwendungen und Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, führen Sie das Failback zum primären Standort durch. Site Recovery verfügt über Testfailover, mit denen Übungen zur Notfallwiederherstellung unterstützt werden, ohne dass sich dies auf Produktionsumgebungen auswirkt. Sie können Failover mit minimalem Datenverlust (je nach Replikationshäufigkeit) für unerwartete Notfälle ausführen. Bei der Migration zu Storage Premium können Sie ein [Failover in Site Recovery](../site-recovery/site-recovery-failover.md) in Azure Site Recovery verwenden, um Zieldatenträger zu einem Storage Premium-Konto zu migrieren.
 
-Wir empfehlen Ihnen die Migration zu Storage Premium mithilfe von Site Recovery, weil es bei dieser Option zu minimalen Ausfallzeiten kommt und das manuelle Kopieren von Datenträgern und Erstellen von neuen VMs entfällt. Mit Site Recovery werden Ihre Datenträger bei einem Failover systematisch kopiert und neue VMs erstellt. Site Recovery unterstützt verschiedene Failoverarten mit minimalen oder ganz ohne Ausfallzeiten. Die Informationen in der Tabelle mit den [Failoverarten](../site-recovery/site-recovery-failover.md) in Site Recovery sind hilfreich für das Planen der Ausfallzeiten und das Schätzen von Datenverlusten. Wenn Sie [die Vorbereitung zum Herstellen der Verbindung mit Azure-VMs nach dem Failover durchführen](../site-recovery/site-recovery-vmware-to-azure.md#prepare-vms-for-replication), sollten Sie dazu in der Lage sein, nach dem Failover per RDP eine Verbindung mit der Azure-VM herzustellen.
+Wir empfehlen Ihnen die Migration zu Storage Premium mithilfe von Site Recovery, weil es bei dieser Option zu minimalen Ausfallzeiten kommt und das manuelle Kopieren von Datenträgern und Erstellen von neuen VMs entfällt. Mit Site Recovery werden Ihre Datenträger bei einem Failover systematisch kopiert und neue VMs erstellt. Site Recovery unterstützt verschiedene Failoverarten mit minimalen oder ganz ohne Ausfallzeiten. Die Informationen in der Tabelle mit den [Failoverarten](../site-recovery/site-recovery-failover.md) in Site Recovery sind hilfreich für das Planen der Ausfallzeiten und das Schätzen von Datenverlusten. Wenn Sie [die Vorbereitung zum Herstellen der Verbindung mit Azure-VMs nach dem Failover durchführen](../site-recovery/site-recovery-vmware-to-azure.md), sollten Sie dazu in der Lage sein, nach dem Failover per RDP eine Verbindung mit der Azure-VM herzustellen.
 
 ![][1]
 
-<a id="azure-site-recovery-components" class="xliff"></a>
-
-## Azure Site Recovery-Komponenten
+## <a name="azure-site-recovery-components"></a>Azure Site Recovery-Komponenten
 
 Hierbei handelt es sich um die Site Recovery-Komponenten, die für dieses Migrationsszenario relevant sind.
 
-* Ein **Konfigurationsserver** ist eine Azure-VM, mit der die Kommunikation koordiniert wird und die Datenreplikations- und Wiederherstellungsvorgänge verwaltet werden. Auf dieser VM führen Sie eine einzelne Setupdatei aus, um den Konfigurationsserver und eine zusätzliche Komponente, die als Prozessserver bezeichnet wird, als Replikationsgateway zu installieren. Informieren Sie sich über die [Voraussetzungen für den Konfigurationsserver](../site-recovery/site-recovery-vmware-to-azure.md#prerequisites). Der Konfigurationsserver muss nur einmal konfiguriert werden und kann für alle Migrationen zu derselben Region verwendet werden.
+* Ein **Konfigurationsserver** ist eine Azure-VM, mit der die Kommunikation koordiniert wird und die Datenreplikations- und Wiederherstellungsvorgänge verwaltet werden. Auf dieser VM führen Sie eine einzelne Setupdatei aus, um den Konfigurationsserver und eine zusätzliche Komponente, die als Prozessserver bezeichnet wird, als Replikationsgateway zu installieren. Informieren Sie sich über die [Voraussetzungen für den Konfigurationsserver](../site-recovery/site-recovery-vmware-to-azure.md). Der Konfigurationsserver muss nur einmal konfiguriert werden und kann für alle Migrationen zu derselben Region verwendet werden.
 
 * Ein **Prozessserver** ist ein Replikationsgateway, das Replikationsdaten von Quell-VMs empfängt, die Daten per Zwischenspeicherung, Komprimierung und Verschlüsselung optimiert und sie dann an ein Speicherkonto sendet. Außerdem wickelt er die Pushinstallation des Mobilitätsdiensts auf Quell-VMs ab und führt die automatische Ermittlung von Quell-VMs durch. Auf dem Konfigurationsserver ist der Standardprozessserver installiert. Sie können zusätzliche eigenständige Prozessserver bereitstellen, um Ihre Bereitstellung zu skalieren. Informieren Sie sich über die [bewährten Methoden für die Bereitstellung von Prozessservern](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) und die [Bereitstellung zusätzlicher Prozessserver](../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Der Prozessserver muss nur einmal konfiguriert werden und kann für alle Migrationen zu derselben Region verwendet werden.
 
-* Ein **Mobilitätsdienst** ist eine Komponente, die auf jeder zu replizierenden Standard-VM bereitgestellt wird. Er erfasst die Datenschreibvorgänge auf der Standard-VM und sendet sie an den Prozessserver. Informieren Sie sich über die [Voraussetzungen für replizierte Computer](../site-recovery/site-recovery-vmware-to-azure.md#prerequisites).
+* Ein **Mobilitätsdienst** ist eine Komponente, die auf jeder zu replizierenden Standard-VM bereitgestellt wird. Er erfasst die Datenschreibvorgänge auf der Standard-VM und sendet sie an den Prozessserver. Informieren Sie sich über die [Voraussetzungen für replizierte Computer](../site-recovery/site-recovery-vmware-to-azure.md).
 
 Diese Grafik zeigt, wie diese Komponenten zusammenwirken.
 
@@ -54,9 +50,7 @@ Diese Grafik zeigt, wie diese Komponenten zusammenwirken.
 
 Informationen zu weiteren Komponenten für andere Szenarien finden Sie unter [Szenarioarchitektur](../site-recovery/site-recovery-vmware-to-azure.md).
 
-<a id="azure-essentials" class="xliff"></a>
-
-## Wichtige Azure-Komponenten
+## <a name="azure-essentials"></a>Wichtige Azure-Komponenten
 
 Hierbei handelt es sich um die Azure-Anforderungen für dieses Migrationsszenario.
 
@@ -65,16 +59,12 @@ Hierbei handelt es sich um die Azure-Anforderungen für dieses Migrationsszenari
 * Ein virtuelles Azure-Netzwerk (VNet), mit dem für VMs eine Verbindung hergestellt wird, wenn sie bei einem Failover erstellt werden. Das Azure VNet muss sich in derselben Region wie das VNet befinden, in dem Site Recovery ausgeführt wird.
 * Ein Azure-Speicherkonto vom Typ „Standard“, in dem die Replikationsprotokolle gespeichert werden. Dies kann dasselbe Speicherkonto wie für die zu migrierenden VM-Datenträger sein.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Kenntnis der relevanten Migrationsszenariokomponenten aus dem vorherigen Abschnitt
 * Planung der Ausfallzeit basierend auf den Informationen zu [Failovern in Site Recovery](../site-recovery/site-recovery-failover.md)
 
-<a id="setup-and-migration-steps" class="xliff"></a>
-
-## Setup- und Migrationsschritte
+## <a name="setup-and-migration-steps"></a>Setup- und Migrationsschritte
 
 Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder innerhalb derselben Region zu migrieren. Die folgende Anleitung wurde basierend auf dem Artikel [Replizieren von VMware-VMs oder physischen Servern in Azure](../site-recovery/site-recovery-vmware-to-azure.md) für dieses Migrationsszenario angepasst. Verwenden Sie zusätzlich zu der Anleitung in diesem Artikel die Links zu den ausführlichen Schritten.
 
@@ -100,7 +90,7 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 
     ![][5]
 
-    3c. Führen Sie auf der VM, die Sie als Konfigurationsserver verwenden, das einheitliche Setup aus, um den Konfigurationsserver und den Prozessserver zu installieren. Sie können die Screenshots [hier](../site-recovery/site-recovery-vmware-to-azure.md#set-up-the-source-environment) nacheinander anzeigen, um die Installation durchzuführen. Bei den für dieses Migrationsszenario angegebenen Schritten helfen Ihnen die folgenden Screenshots weiter.
+    3c. Führen Sie auf der VM, die Sie als Konfigurationsserver verwenden, das einheitliche Setup aus, um den Konfigurationsserver und den Prozessserver zu installieren. Sie können die Screenshots [hier](../site-recovery/site-recovery-vmware-to-azure.md) nacheinander anzeigen, um die Installation durchzuführen. Bei den für dieses Migrationsszenario angegebenen Schritten helfen Ihnen die folgenden Screenshots weiter.
 
     Wählen Sie unter **Vorbereitung** die Option **Install the configuration server and process server** (Konfigurationsserver und Prozessserver installieren) aus.
 
@@ -124,7 +114,7 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 
     Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen. Beachten Sie Folgendes: Wenn Sie ein Storage Premium-Konto für replizierte Daten verwenden, müssen Sie ein weiteres Standardspeicherkonto zum Speichern von Replikationsprotokollen einrichten.
 
-5. **Richten Sie Replikationseinstellungen ein**. Führen Sie die Schritte unter [Einrichten von Replikationseinstellungen](../site-recovery/site-recovery-vmware-to-azure.md#set-up-replication-settings) aus, um sicherzustellen, dass Ihr Konfigurationsserver erfolgreich der von Ihnen erstellten Replikationsrichtlinie zugeordnet wurde.
+5. **Richten Sie Replikationseinstellungen ein**. Führen Sie die Schritte unter [Einrichten von Replikationseinstellungen](../site-recovery/site-recovery-vmware-to-azure.md) aus, um sicherzustellen, dass Ihr Konfigurationsserver erfolgreich der von Ihnen erstellten Replikationsrichtlinie zugeordnet wurde.
 
 6. **Kapazitätsplanung**. Verwenden Sie den [Capacity Planner](../site-recovery/site-recovery-capacity-planner.md), um Ihre Netzwerkbandbreite, Speicheranforderungen und anderen Anforderungen genau einschätzen und Ihren Replikationsbedarf erfüllen zu können. Wählen Sie anschließend unter **Haben Sie die Kapazitätsplanung abgeschlossen?** die Option **Ja**.
 
@@ -132,11 +122,11 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 
 7. Die folgenden Schritte helfen Ihnen beim **Installieren des Mobilitätsdiensts und beim Aktivieren der Replikation**.
 
-    7a. Sie können die [Pushinstallation](../site-recovery/site-recovery-vmware-to-azure.md#prepare-for-automatic-discovery-and-push-installation) für Ihre Quell-VMs wählen oder [den Mobilitätsdienst manuell auf Ihren Quell-VMs installieren](../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md). Die Anforderungen für die Pushinstallation und den Pfad für die manuelle Installation finden Sie unter dem angegebenen Link. Bei Verwendung einer manuellen Installation müssen Sie unter Umständen eine interne IP-Adresse verwenden, um den Konfigurationsserver zu ermitteln.
+    7a. Sie können die [Pushinstallation](../site-recovery/site-recovery-vmware-to-azure.md) für Ihre Quell-VMs wählen oder [den Mobilitätsdienst manuell auf Ihren Quell-VMs installieren](../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md). Die Anforderungen für die Pushinstallation und den Pfad für die manuelle Installation finden Sie unter dem angegebenen Link. Bei Verwendung einer manuellen Installation müssen Sie unter Umständen eine interne IP-Adresse verwenden, um den Konfigurationsserver zu ermitteln.
 
     ![][12]
 
-    Die für das Failover verwendete VM verfügt über zwei temporäre Datenträger: einen von der primären VM, und der andere wird während der Bereitstellung der VM in der Wiederherstellungsregion erstellt. Installieren Sie den Mobilitätsdienst vor dem Aktivieren der Replikation, um den temporären Datenträger vor der Replikation auszuschließen. Weitere Informationen dazu, wie Sie den temporären Datenträger ausschließen, finden Sie unter [Ausschließen von Datenträgern von der Replikation](../site-recovery/site-recovery-vmware-to-azure.md#exclude-disks-from-replication).
+    Die für das Failover verwendete VM verfügt über zwei temporäre Datenträger: einen von der primären VM, und der andere wird während der Bereitstellung der VM in der Wiederherstellungsregion erstellt. Installieren Sie den Mobilitätsdienst vor dem Aktivieren der Replikation, um den temporären Datenträger vor der Replikation auszuschließen. Weitere Informationen dazu, wie Sie den temporären Datenträger ausschließen, finden Sie unter [Ausschließen von Datenträgern von der Replikation](../site-recovery/site-recovery-vmware-to-azure.md).
 
     7b. Aktivieren Sie die Replikation jetzt wie folgt:
       * Klicken Sie auf **Replicate application (Anwendung replizieren)** > **Quelle**. Klicken Sie nach der erstmaligen Aktivierung der Replikation im Tresor auf „+Replizieren“, um die Replikation für weitere Computer zu aktivieren.
@@ -154,32 +144,26 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 
     Für das Entwerfen Ihrer Azure Storage-Umgebung empfehlen wir Ihnen, für jede VM einer Verfügbarkeitsgruppe separate Speicherkonten zu verwenden. Es empfiehlt sich, die bewährte Methode in der Speicherebene zum [Verwenden mehrerer Speicherkonten für jede Verfügbarkeitsgruppe](../virtual-machines/windows/manage-availability.md) auszuführen. Das Verteilen von VM-Datenträgern auf mehrere Speicherkonten trägt zur Verbesserung der Speicherverfügbarkeit bei, und der E/A-Aufwand wird auf die gesamte Azure-Speicherinfrastruktur verteilt. Falls sich Ihre VMs in einer Verfügbarkeitsgruppe befinden und Datenträger aller VMs nicht unter einem Speicherkonto repliziert werden, empfehlen wir dringend, mehrere VMs mehrfach zu migrieren. Hiermit soll erreicht werden, dass für die VMs einer Verfügbarkeitsgruppe nicht nur ein gemeinsames Speicherkonto genutzt wird. Verwenden Sie das Blatt **Replikation aktivieren**, um nacheinander jeweils ein Zielspeicherkonto für jede VM einzurichten. Sie können je nach Ihren Anforderungen ein Bereitstellungsmodell für die Zeit nach dem Failover wählen. Wenn Sie als Bereitstellungsmodell für die Zeit nach dem Failover „Resource Manager“ (RM) wählen, können Sie für eine RM-VM ein Failover zu einer anderen RM-VM oder für eine klassische VM zu einer RM-VM durchführen.
 
-8. **Führen Sie ein Testfailover durch**. Um zu prüfen, ob die Replikation abgeschlossen ist, klicken Sie auf Ihre Site Recovery-Instanz und dann auf **Einstellungen** > **Replizierte Elemente**. Der Status und der Prozentsatz Ihres Replikationsprozesses werden angezeigt. Führen Sie nach Abschluss des ersten Replikationsvorgangs ein Testfailover durch, um Ihre Replikationsstrategie zu überprüfen. Die ausführlichen Schritte des Testfailovers finden Sie unter [Durchführen eines Testfailovers in Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md#run-a-test-failover). Der Status des Testfailovers wird unter **Einstellungen** > **Aufträge** > **NAME_IHRES_FAILOVERPLANS** angezeigt. Das Blatt enthält eine Übersicht über die Schritte und Ergebnisse (Erfolg/Fehler). Wenn für das Testfailover in einem beliebigen Schritt ein Fehler auftritt, können Sie auf den Schritt klicken, um die Fehlermeldung zu überprüfen. Stellen Sie sicher, dass für Ihre VMs und die Replikationsstrategie die Anforderungen erfüllt sind, bevor Sie ein Failover ausführen. Lesen Sie für weitere Informationen und Anweisungen zu Testfailovern das Dokument [Testfailover in Azure in Site Recovery](../site-recovery/site-recovery-test-failover-to-azure.md).
+8. **Führen Sie ein Testfailover durch**. Um zu prüfen, ob die Replikation abgeschlossen ist, klicken Sie auf Ihre Site Recovery-Instanz und dann auf **Einstellungen** > **Replizierte Elemente**. Der Status und der Prozentsatz Ihres Replikationsprozesses werden angezeigt. Führen Sie nach Abschluss des ersten Replikationsvorgangs ein Testfailover durch, um Ihre Replikationsstrategie zu überprüfen. Die ausführlichen Schritte des Testfailovers finden Sie unter [Durchführen eines Testfailovers in Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md). Der Status des Testfailovers wird unter **Einstellungen** > **Aufträge** > **NAME_IHRES_FAILOVERPLANS** angezeigt. Das Blatt enthält eine Übersicht über die Schritte und Ergebnisse (Erfolg/Fehler). Wenn für das Testfailover in einem beliebigen Schritt ein Fehler auftritt, können Sie auf den Schritt klicken, um die Fehlermeldung zu überprüfen. Stellen Sie sicher, dass für Ihre VMs und die Replikationsstrategie die Anforderungen erfüllt sind, bevor Sie ein Failover ausführen. Lesen Sie für weitere Informationen und Anweisungen zu Testfailovern das Dokument [Testfailover in Azure in Site Recovery](../site-recovery/site-recovery-test-failover-to-azure.md).
 
 9. **Ausführen eines Failovers**. Führen Sie nach Abschluss des Testfailovers ein Failover durch, um Ihre Datenträger zu Storage Premium zu migrieren und die VM-Instanzen zu replizieren. Befolgen Sie die ausführlichen Schritte in [Ausführen eines Failovers](../site-recovery/site-recovery-failover.md#run-a-failover). Achten Sie darauf, die Option **Virtuelle Computer herunterfahren und die aktuellen Daten synchronisieren** auszuwählen, damit Site Recovery die geschützten VMs herunterfährt und die Daten synchronisiert und das Failover mit der neuesten Version der Daten erfolgt. Wenn Sie diese Option nicht auswählen oder der Vorgang nicht erfolgreich ausgeführt werden kann, wird das Failover für den neuesten verfügbaren Wiederherstellungspunkt der VM durchgeführt. Site Recovery erstellt eine VM-Instanz, die den Typ „Storage Premium-fähige VM“ oder einen ähnlichen Typ aufweist. Sie können sich über die Leistung und den Preis verschiedener VM-Instanzen unter [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) und [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) informieren.
 
-<a id="post-migration-steps" class="xliff"></a>
-
-## Schritte nach der Migration
+## <a name="post-migration-steps"></a>Schritte nach der Migration
 
 1. **Konfigurieren Sie replizierte VMs in der Verfügbarkeitsgruppe (falls zutreffend)**. Für Site Recovery wird das Migrieren von VMs zusammen mit der Verfügbarkeitsgruppe nicht unterstützt. Wählen Sie je nach Bereitstellungstyp Ihrer replizierten VM eine der folgenden Vorgehensweisen:
-  * Für eine mit dem klassischen Bereitstellungsmodell erstellte VM: Fügen Sie die VM im Azure-Portal der Verfügbarkeitsgruppe hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../virtual-machines/windows/classic/configure-availability.md#a-idaddmachine-aoption-2-add-an-existing-virtual-machine-to-an-availability-set).
+  * Für eine mit dem klassischen Bereitstellungsmodell erstellte VM: Fügen Sie die VM im Azure-Portal der Verfügbarkeitsgruppe hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../virtual-machines/windows/classic/configure-availability.md#addmachine).
   * Für das Resource Manager-Bereitstellungsmodell: Speichern Sie Ihre Konfiguration der VM, und führen Sie anschließend das Löschen und Neuerstellen der VMs in der Verfügbarkeitsgruppe durch. Verwenden Sie hierfür das Skript unter [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Festlegen der Azure Resource Manager-VM-Verfügbarkeitsgruppe). Überprüfen Sie die Einschränkungen dieses Skripts, und planen Sie Ausfallzeit ein, bevor Sie das Skript ausführen.
 
-2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie vor dem Löschen sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen VMs die gleiche Funktion wie die Quell-VMs erfüllen. Löschen Sie beim Resource Manager-Bereitstellungsmodell (RM) die VM, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Beim klassischen Bereitstellungsmodell können Sie die VM und die Datenträger im klassischen Portal oder im Azure-Portal löschen. Falls der Datenträger nicht gelöscht wird, obwohl Sie die VM gelöscht haben, helfen Ihnen die Informationen unter [Beheben von Fehlern beim Löschen von Azure-Speicherkonten, -Containern oder -VHDs in einer Resource Manager-Bereitstellung](storage-resource-manager-cannot-delete-storage-account-container-vhd.md) oder [Problembehandlung beim Löschen von Azure Storage-Konten, -Containern oder -VHDs in einer klassischen Bereitstellung](storage-cannot-delete-storage-account-container-vhd.md) weiter.
+2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie vor dem Löschen sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen VMs die gleiche Funktion wie die Quell-VMs erfüllen. Löschen Sie beim Resource Manager-Bereitstellungsmodell (RM) die VM, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Beim klassischen Bereitstellungsmodell können Sie die VM und die Datenträger im klassischen Portal oder im Azure-Portal löschen. Falls der Datenträger nicht gelöscht wird, obwohl Sie die VM gelöscht haben, helfen Ihnen die Informationen unter [Problembehandlung bei Fehlern des Typs „Löschen von VHDs“](storage-resource-manager-cannot-delete-storage-account-container-vhd.md) weiter.
 
 3. **Bereinigen Sie die Azure Site Recovery-Infrastruktur**. Falls Site Recovery nicht mehr benötigt wird, können Sie die dazugehörige Infrastruktur bereinigen, indem Sie die replizierten Elemente, den Konfigurationsserver und die Wiederherstellungsrichtlinie löschen und anschließend den Azure Site Recovery-Tresor löschen.
 
-<a id="troubleshooting" class="xliff"></a>
-
-## Problembehandlung
+## <a name="troubleshooting"></a>Problembehandlung
 
 * [Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [Microsoft Azure Site Recovery-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu bestimmten Szenarios zur Migration virtueller Computer finden Sie in den folgenden Ressourcen:
 

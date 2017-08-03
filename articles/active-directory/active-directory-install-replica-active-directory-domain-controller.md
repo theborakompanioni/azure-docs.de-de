@@ -12,18 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 7b267f11a2989b1e621906a46ea4e3bf7f58ca2b
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 5a663bc8290d056b89a929c17722e3c233cdbad7
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Installieren eines Active Directory-Replikatdomänencontrollers in einem virtuellen Azure-Netzwerk
 In diesem Thema wird gezeigt, wie zusätzliche Domänencontroller (die auch als Replikatdomänencontroller bezeichnet werden) für eine lokale Active Directory-Domäne auf virtuellen Azure-Computern in einem virtuellen Azure-Netzwerk installiert werden.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden.
 
 Folgende Themen könnten für Sie ebenfalls von Interesse sein:
 
@@ -81,7 +84,7 @@ Weitere Informationen zum Festlegen einer statischen IP-Adresse finden Sie unter
 Melden Sie sich bei einem virtuellen Computer an, und stellen Sie sicher, dass Sie über die Site-to-Site-VPN-Verbindung bzw. die ExpressRoute-Verbindung mit Ressourcen im lokalen Netzwerk verbunden sind. Installieren Sie dann AD DS auf den virtuellen Azure-Computern. Sie können denselben Prozess wie bei der Installation eines zusätzlichen Domänencontrollers im lokalen Netzwerk verwenden (UI, Windows PowerShell oder eine Antwortdatei). Stellen Sie beim Installieren von AD DS sicher, dass Sie das neue Volume für den Standort der AD-Datenbank, der Protokolle und von SYSVOL angeben. Wenn Sie Ihre Kenntnisse über die AD DS-Installation auffrischen möchten, finden Sie unter [Installieren von Active Directory Domain Services (Stufe 100)](https://technet.microsoft.com/library/hh472162.aspx) oder [Installieren eines Windows Server 2012-Domänencontrollerreplikats in einer vorhandenen Domäne (Stufe 200)](https://technet.microsoft.com/library/jj574134.aspx) weitere Informationen.
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>Erneutes Konfigurieren des DNS-Servers für das virtuelle Netzwerk
-1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf den Namen des virtuellen Netzwerks und anschließend auf die Registerkarte **Konfigurieren**, um die [IP-Adressen der DNS-Server für das virtuelle Netzwerk neu zu konfigurieren](../virtual-network/virtual-networks-manage-dns-in-vnet.md). Auf diese Weise werden die den Replikatdomänencontrollern zugewiesenen statischen IP-Adressen anstelle der IP-Adressen eines lokalen DNS-Servers verwendet.
+1. Geben Sie im [Azure-Portal](https://portal.azure.com) im Feld **Durchsuchen von Ressourcen** den Begriff *Virtuelle Netzwerke* ein, und klicken Sie dann in den Suchergebnissen auf **Virtuelle Netzwerke (klassisch)**. Klicken Sie Portal auf den Namen des virtuellen Netzwerks, und [konfigurieren Sie dann die IP-Adressen der DNS-Server für das virtuelle Netzwerk neu](../virtual-network/virtual-network-manage-network.md#dns-servers), sodass die den Replikatdomänencontrollern zugewiesenen statischen IP-Adressen anstelle der IP-Adressen eines lokalen DNS-Servers verwendet werden.
 2. Um sicherzustellen, dass alle virtuellen Computer des Replikatdomänencontroller im virtuellen Netzwerk für die Verwendung der DNS-Server im virtuellen Netzwerk konfiguriert sind, klicken Sie auf **Virtuelle Computer**, auf die Statusspalte für die einzelnen virtuellen Computer und dann auf **Neustart**. Warten Sie, bis der virtuelle Computer den Status **Wird ausgeführt** anzeigt, bevor Sie versuchen, sich anzumelden.
 
 ## <a name="create-vms-for-application-servers"></a>Erstellen von virtuellen Computern für Anwendungsserver

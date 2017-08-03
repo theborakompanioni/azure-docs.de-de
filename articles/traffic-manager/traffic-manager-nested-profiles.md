@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 2dacb50ab9b8604e48f5ba08e8f8e94fa4a71bd5
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 1ac4ec2775ca9f690f5adf4f939908f8cee3f715
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -46,7 +46,7 @@ Das folgende Diagramm veranschaulicht dieses Beispiel:
 
 In dieser Konfiguration wird der über das übergeordnete Profil geleitete Datenverkehr normal auf alle Regionen verteilt. In Europa, Westen, verteilt das geschachtelte Profil Datenverkehr gemäß den zugeordneten Gewichtungen an die Produktions- und Testendpunkte.
 
-Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, muss jeder Endpunkt einem Standort zugeordnet sein. Der Standort wird beim Konfigurieren des Endpunkts zugewiesen. Wählen Sie die Azure-Region aus, die Ihrer Bereitstellung am nächsten ist. Bei den Azure-Regionen handelt es sich um die Standortwerte, die von der Internetlatenztabelle unterstützt werden. Weitere Informationen finden Sie unter [Prioritätsmethode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#a-name--performanceaperformance-traffic-routing-method).
+Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, muss jeder Endpunkt einem Standort zugeordnet sein. Der Standort wird beim Konfigurieren des Endpunkts zugewiesen. Wählen Sie die Azure-Region aus, die Ihrer Bereitstellung am nächsten ist. Bei den Azure-Regionen handelt es sich um die Standortwerte, die von der Internetlatenztabelle unterstützt werden. Weitere Informationen finden Sie unter [Prioritätsmethode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#performance).
 
 ## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Beispiel 2: Endpunktüberwachung in geschachtelten Profilen
 

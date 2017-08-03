@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: glenga, donnam
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 0de18c51914409df0bb690c2a4e3d8bf429cce66
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: fab2b3042faf870fe4b9d09d5e96dadb7155c450
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions-Tools für Visual Studio  
@@ -117,7 +117,9 @@ In vorab kompilierten Funktionen werden die von der Funktion verwendeten Bindung
 
 ## <a name="testing-functions"></a>Testen von Funktionen
 
-[!INCLUDE [Test the function locally](../../includes/functions-vstools-test.md)]
+Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem lokalen Entwicklungscomputer ausführen. Sie werden beim ersten Starten einer Funktion in Visual Studio zum Installieren dieser Tools aufgefordert.  
+
+Drücken Sie F5, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende Aufforderung von Visual Studio zum Herunterladen und Installieren der Azure Functions Core (CLI)-Tools.  Sie müssen möglicherweise auch eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können.
 
 Wenn das Projekt ausgeführt wird, können Sie Ihren Code wie eine bereitgestellte Funktion testen. Weitere Informationen finden Sie unter [Strategien zum Testen Ihres Codes in Azure Functions](functions-test-a-function.md). Bei der Ausführung im Debug-Modus werden in Visual Studio wie erwartet Haltepunkte erreicht. 
 
