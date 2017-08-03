@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 2776f640bc192b0775b0ccbaaf62bb719b3bb790
-ms.lasthandoff: 04/18/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: dfccb182ffdc43d5437efd7e4f736998c5fa9433
+ms.contentlocale: de-de
+ms.lasthandoff: 07/26/2017
 
 ---
 
-# <a name="diagnose-on-premise-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN Gateway
+# <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
 
-Azure VPN Gateway ermöglicht Ihnen die Erstellung einer Hybridlösung für Ihre Anforderungen an eine sichere Verbindung zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Da Ihre Anforderungen einzigartig sind, gilt dies auch für die Wahl des lokalen VPN-Geräts. Azure unterstützt derzeit [verschiedene VPN-Geräte](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-namedevicetableavalidated-vpn-devices-and-device-configuration-guides), die ständig in Zusammenarbeit mit den Geräteherstellern getestet werden. Überprüfen Sie die gerätespezifischen Konfigurationseinstellungen vor dem Konfigurieren Ihres lokalen VPN-Geräts. Auf ähnliche Weise wird Azure VPN Gateway mit einem Satz von [unterstützten IPsec-Parametern](../vpn-gateway/vpn-gateway-about-vpn-devices.md#a-nameipsecaipsecike-parameters) konfiguriert, die für das Herstellen von Verbindungen verwendet werden. Zurzeit besteht keine Möglichkeit, eine bestimmte Kombination von IPsec-Parametern in Azure VPN Gateway anzugeben oder auszuwählen. Für eine erfolgreiche Verbindung zwischen einem Standort und Azure müssen die lokalen VPN-Geräteeinstellungen mit den von Azure VPN Gateway vorgeschriebenen IPsec-Parametern übereinstimmen. Andernfalls kann keine Verbindung hergestellt werden. Bisher war auch die Problembehandlung schwierig, und es dauerte in der Regel mehrere Stunden, bis das Problem identifiziert und behoben war.
+Azure VPN Gateway ermöglicht Ihnen die Erstellung einer Hybridlösung für Ihre Anforderungen an eine sichere Verbindung zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Da Ihre Anforderungen einzigartig sind, gilt dies auch für die Wahl des lokalen VPN-Geräts. Azure unterstützt derzeit [verschiedene VPN-Geräte](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable), die ständig in Zusammenarbeit mit den Geräteherstellern getestet werden. Überprüfen Sie die gerätespezifischen Konfigurationseinstellungen vor dem Konfigurieren Ihres lokalen VPN-Geräts. Auf ähnliche Weise wird Azure VPN Gateway mit einem Satz von [unterstützten IPsec-Parametern](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) konfiguriert, die für das Herstellen von Verbindungen verwendet werden. Zurzeit besteht keine Möglichkeit, eine bestimmte Kombination von IPsec-Parametern in Azure VPN Gateway anzugeben oder auszuwählen. Für eine erfolgreiche Verbindung zwischen einem Standort und Azure müssen die lokalen VPN-Geräteeinstellungen mit den von Azure VPN Gateway vorgeschriebenen IPsec-Parametern übereinstimmen. Andernfalls kann keine Verbindung hergestellt werden. Bisher war auch die Problembehandlung schwierig, und es dauerte in der Regel mehrere Stunden, bis das Problem identifiziert und behoben war.
 
 Durch das Azure Network Watcher-Feature zur Problembehandlung können Sie Probleme mit dem Gateway und den Verbindungen innerhalb von Minuten diagnostizieren und verfügen dann über genügend Informationen, um eine fundierte Entscheidung zum Beheben des Problems treffen zu können.
 
@@ -33,7 +34,7 @@ Sie möchten eine Standort-zu-Standort-Verbindung zwischen Azure und dem lokalen
 
 1. Virtual Network-Gateway: VPN Gateway in Azure
 1. Lokales Netzwerkgateway: die Darstellung des [lokalen VPN-Gateway (CISCO ASA)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) in der Azure-Cloud
-1. Standort-zu-Standort-Verbindung (richtlinienbasiert): [Verbindung zwischen VPN Gateway und dem lokalen CISCO ASA](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#a-namecreateconnectiona8-create-a-site-to-site-vpn-connection)
+1. Standort-zu-Standort-Verbindung (richtlinienbasiert): [Verbindung zwischen VPN Gateway und dem lokalen CISCO ASA](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
 1. [Konfigurieren von CISCO ASA](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA)
 
 Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
