@@ -5,8 +5,7 @@
     - name: Informationen zu Azure Cosmos DB
       href: introduction.md
     - name: Willkommen DocumentDB-Kunden
-      href: >-
-        https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
+      href: 'https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/'
 - name: Schnellstarts
   expanded: true
   items:
@@ -138,6 +137,8 @@
               href: documentdb-resources.md
             - name: SQL-Abfragen
               href: documentdb-sql-query.md
+            - name: SQL-Abfrageleistungsanalyse
+              href: documentdb-sql-query-metrics.md
             - name: Arbeiten mit SQL
               href: 'https://www.documentdb.com/sql/demo'
             - name: Partitionierung
@@ -195,8 +196,7 @@
                 - name: Stack Overflow
                   href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
                 - name: Videos
-                  href: >-
-                    https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
+                  href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: Dienstupdates
                   href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
                 - name: Communityportal
@@ -224,8 +224,7 @@
         - name: Tabelle-API
           items:
             - name: Table Storage
-              href: >-
-                https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
+              href: 'https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts'
         - name: Änderungsfeed
           href: change-feed.md
         - name: Geodaten
@@ -284,8 +283,12 @@
           href: powerbi-visualize.md
         - name: Nutzen des ODBC-Treibers für die Datenvisualisierung
           href: odbc-driver.md
+        - name: Verwenden von Spring Boot Starter mit DocumentDB-APIs
+          href: documentdb-java-spring-boot-starter-with-cosmos-db.md
 - name: Referenz
   items:
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
     - name: DocumentDB-APIs
       items:
         - name: Java

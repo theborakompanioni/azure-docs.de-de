@@ -42,6 +42,7 @@
 ### [Erstellen und Bereitstellen eines Event Hubs mithilfe einer Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub.md)
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=event-hubs)
 ## Java
 ### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
 ### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
@@ -60,6 +61,7 @@
 ## [Codebeispiele](event-hubs-samples.md)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
 ## [Preise](https://azure.microsoft.com/pricing/details/event-hubs/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)

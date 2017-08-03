@@ -24,10 +24,6 @@
 # Anleitung
 ## Planen und Entwerfen
 ### [Informationen zur Azure AD-Architektur](active-directory-architecture.md)
-### [Empfohlene Sicherheitsrichtlinien und Konfigurationen](secure-email-introduction.md)
-#### [Sichere empfohlene E-Mail-Richtlinien](secure-email-recommended-policies.md)
-##### [Bereitstellen von empfohlenen sicheren E-Mail-Richtlinien](secure-email-deploy-recommended-policies.md)
-#### [Übersicht über EMS und Office 365-Dienste](secure-email-ems-office365-service-descriptions.md)
 ### [Bereitstellen einer Hybrididentitätslösung](active-directory-hybrid-identity-design-considerations-overview.md)
 ### [Zuordnen von Benutzeransprüchen in Azure Active Directory](active-directory-claims-mapping.md)
 #### Bestimmen der Anforderungen
@@ -167,7 +163,6 @@
 ## Verwalten von Apps
 ### [Übersicht](active-directory-enable-sso-scenario.md)
 ### [Erste Schritte](active-directory-integrating-applications-getting-started.md)
-
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
@@ -178,7 +173,7 @@
 ##### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
 ##### [Veröffentlichen von Apps](application-proxy-publish-azure-portal.md)
 ##### [Benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md)
-#### [SSO-Zugriff](active-directory-appssoaccess-whatis.md)
+#### [Einmaliges Anmelden](application-proxy-sso-overview.md)
 ##### [SSO mit KCD](active-directory-application-proxy-sso-using-kcd.md)
 ##### [SSO mit Headern](application-proxy-ping-access.md)
 ##### [SSO mit Kennworttresoren](application-proxy-sso-azure-portal.md)
@@ -219,6 +214,7 @@
 
 ### [Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
 #### [Self-Service-Zugriff](active-directory-self-service-application-access.md)
+#### [SSO-Zugriff](active-directory-appssoaccess-whatis.md)
 #### [Zertifikate für SSO](active-directory-sso-certs.md)
 #### [Mandanteneinschränkungen](active-directory-tenant-restrictions.md)
 #### [Verwenden von SCIM zum Bereitstellen von Benutzern](active-directory-scim-provisioning.md)
@@ -370,6 +366,7 @@
 
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [PowerShell-Cmdlets](/powershell/azure/overview)
 ## [Java-API-Referenz](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
@@ -387,6 +384,7 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 ## [Preise](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)

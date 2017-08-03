@@ -59,6 +59,7 @@
 ### [Problembehandlung](azure-diagnostics-troubleshooting.md)
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=monitor)
 ## [Quellen für Überwachungsdaten](monitoring-data-sources.md)
 ## [Liste der unterstützten Metriken](monitoring-supported-metrics.md)
 ## [Schema für Aktivitätsprotokollereignisse](monitoring-activity-log-schema.md)
@@ -74,5 +75,6 @@
 ## [Beispiele für Azure CLI 1.0](insights-cli-samples.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [PowerShell-Beispiele](insights-powershell-samples.md)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=monitor)
 ## [Schnellstartvorlagen](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)

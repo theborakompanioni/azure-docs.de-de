@@ -68,6 +68,7 @@
 
 # Referenz
 
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=search)
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (Verwaltung)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (Verwaltung)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
@@ -78,6 +79,7 @@
 ## [API-Versionen](search-api-versions.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [Preise](https://azure.microsoft.com/pricing/details/search/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienst-REST (Vorschau)](search-api-2015-02-28-preview.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=search)
 ## Trainingsmaterialien und Tutorials

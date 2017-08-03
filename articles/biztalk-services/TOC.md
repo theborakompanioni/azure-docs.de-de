@@ -26,6 +26,7 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Preise](https://azure.microsoft.com/pricing/details/biztalk-services/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Versionshinweise](biztalk-release-notes.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=biztalk-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)

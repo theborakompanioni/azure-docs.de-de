@@ -29,6 +29,7 @@
 ### [Bewertung von Schadsoftware](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Systemaktualisierungsbewertung](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Verbinden von Sicherheitsprodukten](oms-security-connect-products.md)
+### [Web-Baselinebewertung](oms-security-web-baseline-assessment.md)
 
 ## Verwenden von Lösungen
 ### [Verwaltungslösungen](operations-management-suite-solutions.md)
@@ -77,3 +78,4 @@
 
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

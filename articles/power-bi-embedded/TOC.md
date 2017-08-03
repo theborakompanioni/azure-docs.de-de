@@ -24,6 +24,7 @@
 ### [Sicherheit auf Zeilenebene in Power BI Embedded](power-bi-embedded-rls.md)
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=power-bi-embedded)
 ## [PowerShell](/powershell/module/azurerm.powerbiembedded)
 ## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK-Download](https://www.nuget.org/profiles/powerbi)
@@ -38,5 +39,6 @@
 ## [JavaScript-Git-Repository](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [Git-Repository für Power BI (C#)](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI-Community](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Beispielanwendung](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)

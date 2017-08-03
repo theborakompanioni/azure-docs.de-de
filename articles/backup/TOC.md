@@ -3,8 +3,8 @@
 ## [Was ist Azure Backup?](backup-introduction-to-azure-backup.md)
 
 # Erste Schritte
-## [Sichern von virtuellen Azure-Computern](backup-azure-vms-first-look-arm.md)
-## [Sichern von Dateien und Ordnern](backup-try-azure-backup-in-10-mins.md)
+## [Sichern virtueller Azure-Computer](backup-azure-vms-first-look-arm.md)
+## [Sichern von Windows Server- oder Windows-Computern](backup-try-azure-backup-in-10-mins.md)
 ## [Sichern von VMware-Servern](backup-azure-backup-server-vmware.md)
 
 # Anleitung
@@ -27,16 +27,19 @@
 #### [Wiederherstellen der mit Azure Resource Manager bereitgestellten virtuellen Computer im Azure-Portal](backup-azure-arm-restore-vms.md)
 #### [Wiederherstellen verschlüsselter virtueller Computer](backup-azure-vms-encryption.md)
 #### [Wiederherstellen virtueller Computer in Azure](backup-azure-restore-vms.md)
-#### [Wiederherstellen von Key Vault-Schlüssel und -Geheimnis für verschlüsselte virtuelle Computer mithilfe von Azure Backup](backup-azure-restore-key-secret.md)
+#### [Wiederherstellen von Key Vault-Schlüssel und -Geheimnis für verschlüsselte virtuelle Computer](backup-azure-restore-key-secret.md)
 
 
-## Windows-Dateien und Ordner
-### [Windows Server in Azure mit dem Resource Manager-Bereitstellungsmodell](backup-configure-vault.md)
-### [Windows Server mit dem klassischen Bereitstellungsmodell](backup-configure-vault-classic.md)
+## Windows Server
+### [Sichern von Windows Server-Dateien und -Ordnern](backup-configure-vault.md)
+### [Sichern des Systemstatus von Windows Server](backup-azure-system-state.md)
+### [Wiederherstellen von Dateien aus Azure für Windows Server](backup-azure-restore-windows-server.md)
+### [Wiederherstellen des Systemstatus von Windows Server](backup-azure-restore-system-state.md)
 ### [Überwachen und Verwalten von Recovery Services-Tresoren](backup-azure-manage-windows-server.md)
-### [Verwalten von Backup-Tresoren mit dem klassischen Bereitstellungsmodell](backup-azure-manage-windows-server-classic.md)
-### [Wiederherstellen von Dateien auf einem Windows-Server mit dem Resource Manager-Bereitstellungsmodell](backup-azure-restore-windows-server.md)
-### [Wiederherstellen von Dateien auf einem Windows-Server mit dem klassischen Bereitstellungsmodell](backup-azure-restore-windows-server-classic.md)
+### Sichern und Wiederherstellen über das klassische Portal
+#### [Windows Server mit dem klassischen Bereitstellungsmodell](backup-configure-vault-classic.md)
+#### [Verwalten von Backup-Tresoren mit dem klassischen Bereitstellungsmodell](backup-azure-manage-windows-server-classic.md)
+#### [Wiederherstellen von Dateien auf einem Windows-Server mit dem klassischen Bereitstellungsmodell](backup-azure-restore-windows-server-classic.md)
 
 ## Azure Backup Server
 ### [Azure Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md)
@@ -108,5 +111,6 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
 ## [Preise](https://azure.microsoft.com/pricing/details/backup/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=backup)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=backup)

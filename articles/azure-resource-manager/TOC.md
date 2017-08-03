@@ -7,10 +7,11 @@
 
 # Erste Schritte
 ## [Exportieren der Vorlage](resource-manager-export-template.md)
-## [Erstellen Ihrer ersten Vorlage](resource-manager-create-first-template.md)
+## [Erstellen und Bereitstellen der Vorlage](resource-manager-create-first-template.md)
 ## [Visual Studio mit Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 # Beispiele
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
 ## PowerShell
 ### [Bereitstellen der Vorlage](resource-manager-samples-powershell-deploy.md)
 
@@ -102,6 +103,7 @@
 ### [Array- und Objektfunktionen](resource-group-template-functions-array.md)
 ### [Vergleichsfunktionen](resource-group-template-functions-comparison.md)
 ### [Bereitstellen von Funktionen](resource-group-template-functions-deployment.md)
+### [Logische Funktionen](resource-group-template-functions-logical.md)
 ### [Numerische Funktionen](resource-group-template-functions-numeric.md)
 ### [Ressourcenfunktionen](resource-group-template-functions-resource.md)
 ### [Zeichenfolgenfunktionen](resource-group-template-functions-string.md)
@@ -129,6 +131,7 @@
 
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Drosselungsanforderungen](resource-manager-request-limits.md)

@@ -107,6 +107,7 @@
 #### [Häufig gestellte Fragen zur Bereitstellung](cloud-services-deployment-faq.md)
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
 ## [CSDEF (XML-Schema)](https://msdn.microsoft.com/library/azure/ee758711)
 ## [CSCFG (XML-Schema)](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
@@ -116,5 +117,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
 ## [Preise](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

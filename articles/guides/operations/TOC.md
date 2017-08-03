@@ -101,3 +101,4 @@
 ## [Nächste Schritte](azure-operations-guide.md#next-steps)
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
