@@ -47,7 +47,7 @@ Aktuell sind in Azure Deutschland die Regionen „Deutschland, Mitte“ und „D
 
 
 ## <a name="endpoint-mapping"></a>Endpunktzuordnung
-In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunkten in der globalen Azure-Umgebung und Azure SQL-Datenbank-Endpunkten zu Azure Deutschland-spezifischen Endpunkten:
+In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunkten in der globalen Azure-Umgebung zu Azure Deutschland-spezifischen Endpunkten:
 
 | Name | Azure Deutschland-Endpunkt |
 | --- | --- |
