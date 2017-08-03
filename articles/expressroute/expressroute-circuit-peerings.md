@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/14/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: cb88ce2960d63b8a1c5861913b2095bcc977938f
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 3742fb37016db5e6230bc2b7ce11f0270d9d58b3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute-Verbindungen und Routingdomänen
@@ -83,8 +83,7 @@ Wenn Sie sich für alle drei Peeringsitzungen entscheiden, müssen Sie über dre
 * Suchen Sie nach einem Service Provider. Informationen finden Sie unter [ExpressRoute-Dienstanbieter und -Standorte](expressroute-locations.md).
 * Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind. Informationen finden Sie unter [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 * Konfigurieren Sie Ihre ExpressRoute-Verbindung.
-  * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md)
-  * [Konfigurieren des Routings (Verbindungspeerings)](expressroute-howto-routing-classic.md)
-  * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
+  * [Erstellen und Verwalten von ExpressRoute-Verbindungen](expressroute-howto-circuit-portal-resource-manager.md)
+  * [Konfigurieren des Routings (Peering) für ExpressRoute-Verbindungen](expressroute-howto-routing-portal-resource-manager.md)
 
 

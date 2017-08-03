@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: efd01bb001f4ac05f933793184b5027157f143f6
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: b53b044242f339d00dcc947c213dacb5dffdcce6
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -149,7 +148,7 @@ Azure bietet mehrere Methoden zum Verwenden von Containern in Ihren Anwendungen.
 
     >**Verwendung**: Wenn Sie produktionsreife, skalierbare Umgebungen erstellen müssen, die zusätzliche Planungs- und Verwaltungstools bereitstellen, oder wenn Sie einen Docker Swarm-Cluster bereitstellen.
 
-    >**Erste Schritte**: [Deploy a Container Service cluster (Bereitstellen eines Container Service-Clusters)](../../container-service/container-service-deployment.md).
+    >**Erste Schritte**: [Deploy a Container Service cluster (Bereitstellen eines Container Service-Clusters)](../../container-service/dcos-swarm/container-service-deployment.md).
 
 -   **Docker-Computer**: Hiermit können Sie ein Docker-Modul auf virtuellen Hosts installieren und verwalten, indem Sie Docker-Computerbefehle verwenden.
 

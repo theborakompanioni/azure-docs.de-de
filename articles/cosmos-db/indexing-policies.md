@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/22/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 6d5a5814977d05fbe7be52dcb482a622de1c2ef6
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 2d840f1c70e9668ae0a8b76cd9623258c2563d98
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
@@ -161,7 +160,7 @@ Nachdem wir uns mit der Angabe von Pfaden beschäftigt haben, wenden wir uns jet
 
 * Datentyp: **String**, **Number**, **Point**, **Polygon** oder **LineString** (kann nur einen Eintrag pro Datentyp pro Pfad enthalten)
 * Indexart: **Hash** (Gleichheitsabfragen), **Range** (Gleichheits-, Bereichs- und Order By-Abfragen) oder **Spatial** (räumliche Abfragen) 
-* Genauigkeit: 1–8 oder –1 (maximale Genauigkeit) für Zahlen, 1–100 (maximale Genauigkeit) für Zeichenfolgen
+* Genauigkeit: Beim Hashindex variiert dies von 1 bis 8 für Zeichenfolgen und Zahlen mit Standardwert 3. Für den Bereichsindex kann dieser Wert „-1“ (maximale Genauigkeit) sein und für Zeichenfolgen- oder numerische Werte zwischen 1 und 100 (maximale Genauigkeit) variieren.
 
 #### <a name="index-kind"></a>Indexart
 Azure Cosmos DB unterstützt die Indextypen „Hash“ und „Range“ für alle Pfade (die für Zeichenfolgen, Zahlen oder beides konfiguriert sein können).
@@ -229,7 +228,7 @@ Sie können wählen, ob die Sammlung automatisch alle Dokumente indizieren soll.
 
 Mit deaktivierter automatischer Indizierung können Sie lediglich bestimmte Dokumente weiterhin zum Index hinzufügen. Umgekehrt können Sie die automatische Indizierung aktiviert lassen und nur bestimmte Dokumente einzeln ausschließen. Konfigurationen mit aktivierter/deaktivierter Indizierung sind hilfreich, wenn nur eine Teilmenge der Dokumente abgefragt werden muss.
 
-Das folgende Beispiel veranschaulicht z. B. das explizite Einbeziehen eines Dokuments mithilfe des [DocumentDB API .NET-SDKs](https://github.com/Azure/azure-documentdb-java) und der [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx)-Eigenschaft.
+Das folgende Beispiel veranschaulicht z. B. das explizite Einbeziehen eines Dokuments mithilfe des [DocumentDB API .NET-SDKs](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-sdk-dotnet) und der [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx)-Eigenschaft.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a Document from indexing,

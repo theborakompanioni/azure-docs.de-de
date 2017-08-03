@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 4870d2a0bbe35f3980864d8b4f3d011a189b650e
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 3cc1bd293868b0bb093f617ac12e16c26780fc89
 ms.contentlocale: de-de
-ms.lasthandoff: 04/10/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Verschieben von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
@@ -307,7 +306,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 
 Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **HttpSource** und der Typ **sink** auf **BlobSink** festgelegt.
 
-Eine Liste der von „HttpSource“ unterstützten Eigenschaften finden Sie unter [HttpSource](#httpsource-in-copy-activity).
+Eine Liste der von „HttpSource“ unterstützten Eigenschaften finden Sie unter [HttpSource](#copy-activity-properties).
 
 ```JSON
 {  

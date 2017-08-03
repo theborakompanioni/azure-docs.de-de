@@ -15,10 +15,10 @@ ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 36515f6a3886ec68748a5b21b8022199abc3e092
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: efb5361496a2199a960564f6213f509b693e3cfa
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
@@ -43,7 +43,7 @@ Eine replizierte Tabelle verfügt über eine vollständige Kopie der Tabelle, au
 
 Im folgenden Diagramm wird eine replizierte Tabelle dargestellt, auf die auf jedem Computeknoten zugegriffen werden kann. In SQL Data Warehouse wird die replizierte Tabelle vollständig in eine Verteilungsdatenbank auf jedem Computeknoten kopiert. 
 
-![Replizierte Tabelle](media/sql-data-warehouse-distributed-data/replicated-table.png "Replizierte Tabelle")  
+![Replizierte Tabelle](media/guidance-for-using-replicated-tables/replicated-table.png "Replizierte Tabelle")  
 
 Replizierte Tabellen eignen sich gut für kleine Dimensionstabellen in einem Sternschema. Dimensionstabellen haben normalerweise eine Größe, die das Speichern und Verwalten mehrerer Kopien ermöglicht. In Dimensionen werden beschreibende Daten gespeichert, die sich selten ändern, z.B. Kundenname und -adresse sowie Produktdetails. Da sich die Daten nicht häufig ändern, muss die replizierte Tabelle seltener neu erstellt werden. 
 

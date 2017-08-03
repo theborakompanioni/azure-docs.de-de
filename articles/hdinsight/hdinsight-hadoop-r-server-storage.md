@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 017a66ae1ade5e0f64fc799b7bb6aa97b67791a8
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 02bf921222917a50af8e28e62514e167901743b8
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>Azure Storage-Lösungen für R Server in HDInsight
@@ -77,14 +76,14 @@ Bei Bedarf können Sie mit Ihrem HDI-Cluster auf mehrere Azure-Speicherkonten zu
         #Specify the input file to analyze in HDFS:
         inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
 
-Alle Verzeichnis- und Dateiverweise zeigen auf das Speicherkonto wasbs://container1@storage1.blob.core.windows.net. Dies ist das **Standardspeicherkonto**, das dem HDInsight-Cluster zugeordnet ist.
+Alle Verzeichnis- und Dateiverweise zeigen auf das Speicherkonto wasb://container1@storage1.blob.core.windows.net. Dies ist das **Standardspeicherkonto**, das dem HDInsight-Cluster zugeordnet ist.
 
 Angenommen, Sie möchten eine Datei mit dem Namen „mySpecial.csv“ verarbeiten, die im Verzeichnis „/private“ von **container2** in **storage2** enthalten ist.
 
 Legen Sie den Namensknotenverweis im R-Code auf das Speicherkonto **storage2** fest.
 
 
-    myNameNode <- "wasbs://container2@storage2.blob.core.windows.net"
+    myNameNode <- "wasb://container2@storage2.blob.core.windows.net"
     myPort <- 0
 
     #Location of the data:
@@ -102,14 +101,14 @@ Legen Sie den Namensknotenverweis im R-Code auf das Speicherkonto **storage2** f
     #Specify the input file to analyze in HDFS:
     inputFile <-file.path(bigDataDirRoot,"mySpecial.csv")
 
-Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto wasbs://container2@storage2.blob.core.windows.net. Dies ist der **Namensknoten**, den Sie angegeben haben.
+Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto wasb://container2@storage2.blob.core.windows.net. Dies ist der **Namensknoten**, den Sie angegeben haben.
 
 Sie müssen das Verzeichnis „/user/RevoShare/<SSH username>“ unter **storage2** wie folgt konfigurieren:
 
 
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare
-    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
+    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
 
 

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 7ac80a8521b48f43538ca06a054f8302eb32eea6
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 642f40de546600525fb739d8b158f06851d78406
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API
@@ -258,7 +257,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 Der Rückgabewert ähnelt einem der folgenden Beispiele:
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – dieser Wert gibt an, dass der Cluster ein Azure Storage-Konto als Standardspeicher verwendet. Der Wert `ACCOUNTNAME` ist der Name des Speicherkontos. Der Teil `CONTAINER` ist der Name des Blobcontainers im Speicherkonto. Der Container ist der Stamm des HDFS-kompatiblen Speichers für den Cluster.
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – dieser Wert gibt an, dass der Cluster ein Azure Storage-Konto als Standardspeicher verwendet. Der Wert `ACCOUNTNAME` ist der Name des Speicherkontos. Der Teil `CONTAINER` ist der Name des Blobcontainers im Speicherkonto. Der Container ist der Stamm des HDFS-kompatiblen Speichers für den Cluster.
 
 * `adl://home` – dieser Wert gibt an, dass der Cluster einen Azure Data Lake Store als Standardspeicher verwendet.
 
