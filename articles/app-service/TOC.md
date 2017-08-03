@@ -146,6 +146,9 @@
 ### [Streamingprotokolle und die Konsole](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Behandeln von Problemen mithilfe von Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
+# Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=app-service)
+
 # Ressourcen
 ## [App Service-Referenz](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [Azure-Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -153,6 +156,7 @@
 ## [bewährten Methoden](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
 ## [Preise](https://azure.microsoft.com/pricing/details/app-service/)  
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [REST](https://docs.microsoft.com/rest/api/appservice/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=app-service) 
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 

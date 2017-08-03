@@ -222,6 +222,7 @@
 ## [Liste mit WebJob-Ressourcen](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
 ## [Preise](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)

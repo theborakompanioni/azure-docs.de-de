@@ -29,9 +29,15 @@
       href: container-instances-multi-container-group.md
     - name: Verwalten des Zustands mit Azure-Dateifreigaben
       href: container-instances-mounting-azure-files-volume.md
+- name: Referenz
+  items:
+    - name: Azure CLI 2.0
+      href: /cli/azure/container
 - name: Ressourcen
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'

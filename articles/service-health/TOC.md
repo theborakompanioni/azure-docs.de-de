@@ -5,5 +5,6 @@
 ## [Konfigurieren von Warnungen für Service Health](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
 # Ressourcen
 ## [Häufig gestellte Fragen](resource-health-faq.md)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Über Azure Resource Health verfügbare Ressourcentypen und Integritätsüberprüfungen](resource-health-checks-resource-types.md)
 

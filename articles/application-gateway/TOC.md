@@ -8,6 +8,7 @@
 ## [Multi-Site](application-gateway-multi-site-overview.md)
 ## [End-to-End-SSL](application-gateway-backend-ssl.md)
 ## [Umleitung](application-gateway-redirect-overview.md)
+## [Unterstützung mehrerer Mandanten](application-gateway-web-app-overview.md)
 ## [WebSocket](application-gateway-websocket.md)
 ## [Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # Erste Schritte
@@ -16,7 +17,8 @@
 #### [Portal](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager: Vorlage](application-gateway-create-gateway-arm-template.md)
-#### [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
+#### [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md)
+#### [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
 #### [PowerShell (klassisch)](application-gateway-create-gateway.md)
 ### Intern
 #### [PowerShell](application-gateway-ilb-arm.md)
@@ -40,6 +42,8 @@
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## Konfigurieren einer Umleitung
 ### [PowerShell](application-gateway-configure-redirect-powershell.md)
+## Konfigurieren von Web-Apps als Back-End-Poolmitglieder
+### [PowerShell](application-gateway-web-app-powershell.md)
 ## Konfigurieren von Integritätstests
 ### [Portal](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
@@ -70,6 +74,7 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Preise](https://azure.microsoft.com/pricing/details/application-gateway/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)

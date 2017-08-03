@@ -45,8 +45,11 @@
 ## Skalieren
 ###[Aktualisieren auf eine andere Größe und einen anderen Tarif](cache-how-to-scale.md)
 ###[Horizontales Herunter-/Hochskalieren mithilfe des Redis-Clusters](cache-how-to-premium-clustering.md)
+## Integrieren in Spring Boot
+###[Verwenden einer Spring Boot Initializer-App mit Redis Cache](cache-java-spring-boot-initializer-with-redis-cache.md)
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=redis-cache)
 ## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 (Vorschau)](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)

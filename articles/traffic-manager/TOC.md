@@ -27,6 +27,7 @@
 ### [Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
 ## [PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
@@ -45,6 +46,7 @@
 ## [Blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Preise](https://azure.microsoft.com/pricing/details/traffic-manager/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Diensteinschränkungen](../azure-subscription-service-limits.md#traffic-manager-limits)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=traffic-manager)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)

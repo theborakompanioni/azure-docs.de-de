@@ -98,6 +98,7 @@
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)

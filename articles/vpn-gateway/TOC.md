@@ -17,7 +17,6 @@
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [Klassisches Portal (klassisch)](vpn-gateway-site-to-site-create.md)
 ## Point-to-Site-Verbindung konfigurieren
 ### [Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -59,7 +58,6 @@
 ### [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [Konfigurieren einer VPN Gateway-Instanz (klassisch)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## [Gateway-SKUs (alt)](vpn-gateway-about-skus-legacy.md)
 ## Konfigurieren von VPN-Geräten von Drittanbietern
 ### [Übersicht und Azure-Konfiguration](vpn-gateway-3rdparty-device-config-overview.md)
@@ -91,5 +89,6 @@
 ## [Blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)

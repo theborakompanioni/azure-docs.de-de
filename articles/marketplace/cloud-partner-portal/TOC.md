@@ -34,3 +34,4 @@
 ## [Erhalten von Support](./cloud-partner-portal-support-for-cloud-partner-portal.md)
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

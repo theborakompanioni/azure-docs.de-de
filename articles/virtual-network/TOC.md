@@ -22,10 +22,6 @@
 #### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-arm-cli.md)
 #### [Vorlage](virtual-networks-create-vnet-arm-template-click.md)
-#### Klassisch
-##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-classic-cli.md)
 
 ### Netzwerksicherheitsgruppen
 #### [Portal](virtual-networks-create-nsg-arm-pportal.md)
@@ -99,6 +95,12 @@
 ##### [DMZ mit Firewall, UDR und NSGs](virtual-networks-dmz-nsg-fw-udr-asm.md)
 ##### [Beispielanwendung](virtual-networks-sample-app.md)
 
+### Klassisch
+#### [Virtuelles Netzwerk](create-virtual-network-classic.md)
+##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](virtual-networks-create-vnet-classic-cli.md)
+
 ## Konfigurieren
 ### Virtuelle Computer
 #### [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md)
@@ -140,6 +142,7 @@
 ### [Löschen virtueller Netzwerke nicht möglich](virtual-network-troubleshoot-cannot-delete-vnet.md)
 
 # Referenz
+## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [PowerShell (klassisch)](/powershell/module/azure/)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/network)
@@ -162,4 +165,5 @@
 ## [Netzwerkblog](http://azure.microsoft.com/blog/topics/networking)
 ## [Netzwerkforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Preise](https://azure.microsoft.com/pricing/details/virtual-network)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
