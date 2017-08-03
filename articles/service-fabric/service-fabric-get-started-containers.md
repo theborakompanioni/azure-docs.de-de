@@ -127,7 +127,7 @@ Ermitteln Sie nach dem Start des Containers seine IP-Adresse, damit Sie über ei
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die zurückgegebene IP-Adresse, „http://172.31.194.61“. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die zurückgegebene IP-Adresse, „ http://172.31.194.61 “. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 Führen Sie Folgendes aus, um den Container zu beenden:
 
@@ -318,7 +318,7 @@ Klicken Sie auf **Veröffentlichen**.
 
 Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Bereit][2]
 
-Öffnen Sie einen Browser, und navigieren Sie zu „http://containercluster.westus2.cloudapp.azure.com:8081“. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Öffnen Sie einen Browser, und navigieren Sie zu „ http://containercluster.westus2.cloudapp.azure.com:8081 “. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ## <a name="clean-up"></a>Bereinigen
 Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](service-fabric-get-started-azure-cluster.md#remove-the-cluster) Sie Ihren Cluster daher ggf.  [Partycluster](http://tryazureservicefabric.westus.cloudapp.azure.com/) werden nach einigen Stunden automatisch gelöscht.
