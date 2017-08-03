@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/29/2016
+ms.date: 07/19/2017
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0894908fc4d050e7890dd21e698bf3981a7413f7
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 5bfbeb038dbedae2bf77016abbc19458c3dc22c9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-modify-your-storsimple-device-configuration"></a>Verwenden des StorSimple Manager-Diensts, um eine StorSimple-Gerätekonfiguration zu ändern
@@ -35,6 +34,9 @@ Die Seite **Konfigurieren** im klassischen Azure-Portal enthält alle Gerätepar
 ## <a name="modify-device-settings"></a>Ändern von Geräteeinstellungen
 Die Geräteeinstellungen umfassen den Anzeigenamen des Geräts und die Gerätebeschreibung.
 
+> [!NOTE] 
+> Der Gerätename kann im klassischen Azure-Portal nicht geändert werden. Das Umbenennen des Geräts wird nicht unterstützt.
+
 Einem StorSimple-Gerät, das mit dem StorSimple-Manager-Dienst verbunden ist, ist ein Standardname zugewiesen. Der Standardname basiert üblicherweise auf der Seriennummer des Geräts. Beispielsweise kennzeichnet ein aus 15 Zeichen bestehender Standardgerätename, etwa 8600-SHX0991003G44HT, Folgendes:
 
 * **8600** – Kennzeichnet das Gerätemodell.
@@ -42,9 +44,7 @@ Einem StorSimple-Gerät, das mit dem StorSimple-Manager-Dienst verbunden ist, is
 * **0991003** – Kennzeichnet ein bestimmtes Produkt.
 * **G44HT**– Die letzten 5 Ziffern werden inkrementiert, um eindeutige Seriennummern zu erstellen. Dies ist möglicherweise keine sequenzielle Reihe.
 
-Über das klassische Azure-Portal können Sie den Gerätenamen ändern und dem Gerät einen eindeutigen Anzeigenamen Ihrer Wahl zuweisen. Der Anzeigename kann beliebige Zeichen enthalten und darf maximal 64 Zeichen lang sein.
-
-Sie können auch eine Gerätebeschreibung angeben. Eine Gerätebeschreibung erleichtert es üblicherweise, den Besitzer und den physischen Standort des Geräts zu identifizieren. Das Beschreibungsfeld muss weniger als 256 Zeichen enthalten.
+Sie können eine Gerätebeschreibung angeben. Eine Gerätebeschreibung erleichtert es üblicherweise, den Besitzer und den physischen Standort des Geräts zu identifizieren. Das Beschreibungsfeld muss weniger als 256 Zeichen enthalten.
 
 ## <a name="modify-time-settings"></a>Ändern von Zeiteinstellungen
 Ihr Gerät muss die Zeit synchronisieren, damit es sich beim Cloudspeicher-Dienstanbieter authentifizieren kann. Wählen Sie eine Zeitzone in der Dropdownliste aus, und geben Sie bis zu zwei NTP-Server (Network Time Protocol) an. Der primäre NTP-Server ist erforderlich und wird angegeben, wenn Sie das Gerät über Windows PowerShell für StorSimple konfigurieren. Sie können den standardmäßigen Windows-Server **time.windows.com** als Ihren NTP-Server angeben. Sie können die Konfiguration des primären NTP-Servers zwar über das klassische Azure-Portal anzeigen, wenn Sie die Konfiguration ändern möchten, müssen Sie aber die Windows PowerShell-Schnittstelle verwenden.

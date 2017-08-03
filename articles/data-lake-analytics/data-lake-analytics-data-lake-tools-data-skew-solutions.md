@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
-translationtype: Human Translation
-ms.sourcegitcommit: 4ed240c0e636bb0b482c103bbe8462d86769ecc3
-ms.openlocfilehash: 13fa1bc8278460c1195ec553c32ff79d11240be3
-ms.lasthandoff: 01/05/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -35,27 +35,27 @@ In unserem Szenario bedeutet dies, dass die Daten nicht gleichmäßig auf alle S
 
 Mithilfe der Azure Data Lake Tools für Visual Studio können Sie ermitteln, ob bei Ihrem Auftrag ein Problem aufgrund von Datenschiefe vorliegt. Wenn ein Problem vorliegt, können Sie versuchen, es mit den in diesem Abschnitt vorgestellten Lösungen zu beheben.
 
-### <a name="solution-1-improve-table-partitioning"></a>Lösung 1: Verbessern der Tabellenpartitionierung
+## <a name="solution-1-improve-table-partitioning"></a>Lösung 1: Verbessern der Tabellenpartitionierung
 
-#### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Option 1: Filtern der schiefen Schlüsselwerte im Voraus
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>Option 1: Filtern der schiefen Schlüsselwerte im Voraus
 
 Wenn dies Ihre Geschäftslogik nicht beeinträchtigt, können Sie häufiger verwendete Werte im Voraus filtern. Wenn z.B. die Spalten-GUID viele 000-000-000-Werte enthält, möchten Sie diesen Wert möglicherweise nicht aggregieren. Vor dem Aggregieren können Sie „WHERE GUID != "000-000-000"“ schreiben, um häufig verwendete Werte herauszufiltern.
 
-#### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Option 2: Auswahl eines anderen Partitions- oder Verteilungsschlüssels
+### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Option 2: Auswahl eines anderen Partitions- oder Verteilungsschlüssels
 
 Wenn Sie im oben genannten Beispiel nur die Workload für die Steuerprüfung im gesamten Land überprüfen möchten, können Sie die Datenverteilung verbessern, indem Sie ID als Schlüssel auswählen. Die Auswahl eines anderen Partitions- oder Verteilungsschlüssels kann manchmal für eine gleichmäßigere Verteilung der Daten sorgen, aber Sie müssen sicherstellen, dass dies Ihre Geschäftslogik nicht beeinträchtigt. Wenn Sie z.B. die Steuersumme für jeden Bundesstaat berechnen möchten, sollten Sie als Partitionsschlüssel _State_ auswählen. Lässt sich das Problem dadurch nicht lösen, versuchen Sie Option 3.
 
-#### <a name="option-3-add-more-partition-or-distribution-keys"></a>Option 3: Hinzufügen weiterer Partitions- oder Verteilungsschlüssel
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>Option 3: Hinzufügen weiterer Partitions- oder Verteilungsschlüssel
 
 Anstatt nur _State_ als Partitionsschlüssel zu verwenden, können Sie auch mehrere Schlüssel für die Partitionierung angeben. Sie können beispielsweise _ZIP Code_ als weiteren Partitionsschlüssel hinzufügen, um die Größe der Datenpartitionen zu reduzieren und die Daten gleichmäßiger zu verteilen.
 
-#### <a name="option-4-use-round-robin-distribution"></a>Option 4: Roundrobinverteilung
+### <a name="option-4-use-round-robin-distribution"></a>Option 4: Roundrobinverteilung
 
 Wenn sich kein geeigneter Schlüssel für Partitionierung und Verteilung finden lässt, können Sie versuchen, eine Roundrobinverteilung zu verwenden. Die Roundrobinverteilung behandelt alle Zeilen gleich und fügt sie nach dem Zufallsprinzip in die entsprechenden Buckets ein. Die Daten werden gleichmäßig verteilt, aber es gehen alle Ortsinformationen verloren, wodurch die Auftragsleistung bei einigen Vorgängen sinken kann. Wenn Sie außerdem ohnehin eine Aggregierung für den schiefen Schlüssel durchführen, bleibt das Problem mit der Datenschiefe weiterhin bestehen. Weitere Informationen zur Roundrobinverteilung finden Sie unter [CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch) (CREATE TABLE [U-SQL]: Erstellen einer Tabelle mit Schema) im Abschnitt zu U-SQL-Tabellenverteilungen.
 
-### <a name="solution-2-improve-the-query-plan"></a>Lösung 2 Verbessern des Abfrageplans
+## <a name="solution-2-improve-the-query-plan"></a>Lösung 2 Verbessern des Abfrageplans
 
-#### <a name="option-1-use-the-create-statistics-statement"></a>Option 1: Verwenden der CREATE STATISTICS-Anweisung
+### <a name="option-1-use-the-create-statistics-statement"></a>Option 1: Verwenden der CREATE STATISTICS-Anweisung
 
 U-SQL stellt eine CREATE STATISTICS-Anweisung für Tabellen bereit. Diese Anweisung bietet dem Abfrageoptimierer mehr Informationen zu den in einer Tabelle gespeicherten Datenmerkmalen, wie z.B. die Werteverteilung. Bei den meisten Abfragen generiert der Abfrageoptimierer bereits die notwendigen Statistiken für einen hochwertigen Abfrageplan. In einigen Fällen müssen Sie möglicherweise die Abfrageleistung verbessern, indem Sie mit CREATE STATISTICS weitere Statistiken erstellen oder den Abfrageentwurf ändern. Weitere Informationen finden Sie auf der Seite [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx).
 
@@ -66,7 +66,7 @@ Codebeispiel:
 >[!NOTE]
 >Statistische Informationen werden nicht automatisch aktualisiert. Wenn Sie die Daten in einer Tabelle aktualisieren, ohne die Statistik neu zu erstellen, sinkt möglicherweise die Abfrageleistung.
 
-#### <a name="option-2-use-skewfactor"></a>Option 2: Verwenden von SKEWFACTOR
+### <a name="option-2-use-skewfactor"></a>Option 2: Verwenden von SKEWFACTOR
 
 Wenn Sie die Steuer für jeden Bundesstaat summieren möchten, müssen Sie mit GROUP BY nach Bundesstaat gruppieren. Bei diesem Vorgehen lässt sich aber das Datenschiefeproblem nicht verhindern. Sie können jedoch in Ihrer Abfrage einen Datenhinweis bereitstellen, um Datenschiefe in Schlüsseln zu identifizieren, damit der Optimierer einen Ausführungsplan für Sie erstellen kann.
 
@@ -104,6 +104,7 @@ Codebeispiel:
                 ON @Sessions.Query == @Campaigns.Query
         ;   
 
+### <a name="option-3-use-rowcount"></a>Option 3: Verwenden von ROWCOUNT  
 Wenn Sie bei bestimmten Joins mit schiefen Schlüsseln wissen, dass das andere verknüpfte Rowset klein ist, können Sie vor JOIN einen ROWCOUNT-Hinweis in die U-SQL-Anweisung einfügen, um den Optimierer darüber zu informieren. So kann der Optimierer eine Broadcastjoinstrategie auswählen, um die Leistung zu verbessern. Beachten Sie jedoch, dass ROWCOUNT das Problem mit der Datenschiefe nicht löst, sondern nur zusätzliche Unterstützung bieten kann.
 
     OPTION(ROWCOUNT = n)
@@ -128,11 +129,11 @@ Codebeispiel:
                 INNER JOIN @Small ON Sessions.Client == @Small.Client
                 ;
 
-### <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>Lösung 3: Verbessern der benutzerdefinierten Reduzierungs- und Kombinierungsfunktion
+## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>Lösung 3: Verbessern der benutzerdefinierten Reduzierungs- und Kombinierungsfunktion
 
 In manchen Fällen können Sie einen benutzerdefinierten Operator zur Verarbeitung komplizierter Prozesslogik schreiben. Eine gut geschriebene Reduzierungs- und Kombinierungsfunktion kann das Datenschiefeproblem in einigen Fällen minimieren.
 
-#### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Option 1: Verwenden einer rekursiven Reduzierungsfunktion, sofern möglich
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>Option 1: Verwenden einer rekursiven Reduzierungsfunktion, sofern möglich
 
 Standardmäßig wird eine benutzerdefinierte Reduzierungsfunktion im nicht rekursiven Modus ausgeführt, wodurch der Reduzierungsaufwand für einen Schlüssel in einen einzigen Vertex verteilt wird. Wenn allerdings Datenschiefe vorliegt, werden sehr große Datasets möglicherweise in einem einzigen Vertex verarbeitet und sehr lange ausgeführt.
 
@@ -156,7 +157,7 @@ Codebeispiel:
         }
     }
 
-#### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Option 2: Verwenden des Kombinierungsmodus auf Zeilenebene, sofern möglich
+### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>Option 2: Verwenden des Kombinierungsmodus auf Zeilenebene, sofern möglich
 
 Ähnlich wie beim ROWCOUNT-Hinweis für bestimmte Joins mit schiefen Schlüsseln versucht der Kombinierungsmodus, große Wertsätze mit schiefen Schlüsseln auf mehrere Vertices zu verteilen, sodass die Arbeit parallel ausgeführt werden kann. Dadurch lässt sich das Problem mit der Datenschiefe nicht lösen, aber der Kombinierungsmodus bietet Unterstützung bei sehr großen Wertsätzen mit schiefen Schlüsseln.
 

@@ -1,5 +1,5 @@
 ---
-title: Von HDInsight verwendete Ports | Microsoft-Dokumentation
+title: "Ports für Hadoop-Dienste in HDInsight –Azure | Microsoft-Dokumentation"
 description: "Enthält eine Liste mit Ports, die von in HDInsight ausgeführten Hadoop-Diensten verwendet werden."
 services: hdinsight
 documentationcenter: 
@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/17/2017
+ms.date: 06/02/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 3bf5ff732b03a1ecffb4e149d7805a6216ab0019
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: b1a4ca17a53a6d337d704bc4eef6d441de1f32d8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-# <a name="ports-and-uris-used-by-hdinsight"></a>Von HDInsight verwendete Ports und URIs
+# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Ports für Hadoop-Dienste in HDInsight
 
 Dieses Dokument enthält eine Liste mit den Ports für Hadoop-Dienste, die in Linux-basierten HDInsight-Clustern ausgeführt werden. Außerdem enthält es Informationen zu Ports, die zum Herstellen einer Verbindung mit dem Cluster per SSH verwendet werden.
 
@@ -76,6 +75,14 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 > [!NOTE]
 > Einige Dienste stehen nur bei bestimmten Clustertypen zur Verfügung. HBase beispielsweise ist nur bei HBase-Clustertypen verfügbar.
 
+### <a name="ambari"></a>Ambari
+
+| Dienst | Nodes | Port | path | Protocol | 
+| --- | --- | --- | --- | --- |
+| Ambari-Webbenutzeroberfläche | Hauptknoten | 8080 | / | HTTP |
+| Ambari-REST-API | Hauptknoten | 8080 | /api/v1 | HTTP |
+
+
 ### <a name="hdfs-ports"></a>HDFS-Ports
 
 | Dienst | Nodes | Port | Protocol | Beschreibung |
@@ -105,8 +112,8 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 | Dienst | Nodes | Port | Protocol | Beschreibung |
 | --- | --- | --- | --- | --- |
-| HiveServer2 |Hauptknoten |10001 |Thrift |Dienst für die programmgesteuerte Verbindungsherstellung mit Hive (Thrift/JDBC) |
-| Hive-Metastore |Hauptknoten |9083 |Thrift |Dienst für die programmgesteuerte Verbindungsherstellung mit Hive-Metadaten (Thrift/JDBC) |
+| HiveServer2 |Hauptknoten |10001 |Thrift |Dienst für die Verbindung mit Hive (Thrift/JDBC) |
+| Hive-Metastore |Hauptknoten |9083 |Thrift |Dienst für die Verbindung mit Hive-Metadaten (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat-Ports
 
@@ -152,4 +159,8 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | Broker |Workerknoten |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html) |Für die Clientkommunikation |
 | &nbsp; |Zookeeper-Knoten |2181 |&nbsp; |Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |
 
+### <a name="spark-ports"></a>Spark-Ports
 
+| Dienst | Nodes | Port | Protocol | Beschreibung |
+| --- | --- | --- | --- | --- |
+| Spark Thrift-Server |Hauptknoten |10002 |Thrift |Dienst für die Verbindung mit Spark SQL (Thrift/JDBC) |

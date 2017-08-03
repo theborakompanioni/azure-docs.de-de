@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 07/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 99fab8eafe4e17f50db8e7e33637001be03abe7b
-ms.openlocfilehash: 0cb356910b858bf231dfadffa1d4561df1977af0
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: ba3637a3a8b15b45c16bf5a00c1f4225bcfc5af8
+ms.contentlocale: de-de
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>Bereitstellen des StorSimple Manager-Diensts im klassischen Azure-Portal
@@ -29,7 +29,7 @@ Der StorSimple Manager-Dienst wird in Microsoft Azure ausgeführt. Er stellt Ver
 
 Auf der Startseite von StorSimple Manager werden alle StorSimple Manager-Dienste aufgeführt, mit denen Sie Ihre StorSimple-Speichergeräte verwalten können. Für jeden StorSimple Manager-Dienst werden die folgende Informationen auf der Seite von StorSimple Manager angezeigt:
 
-* **Name:** der Name, der dem StorSimple Manager-Dienst bei der Erstellung zugewiesen wurde. Der Dienstname kann nicht mehr geändert werden, nachdem der Dienst erstellt wurde.
+* **Name:** der Name, der dem StorSimple Manager-Dienst bei der Erstellung zugewiesen wurde. **Der Dienstname kann nicht mehr geändert werden, nachdem der Dienst erstellt wurde. Dies gilt auch für andere Entitäten, wie z B. Geräte, Volumes, Volumecontainer und Sicherungsrichtlinien, die im klassischen Azure-Portal nicht umbenannt werden können.**
 * **Status**: der Status des Diensts mit den möglichen Werten **Aktiv**, **Wird erstellt** oder **Online**.
 * **Standort:** der geografische Standort, an dem das StorSimple-Gerät bereitgestellt wird.
 * **Abonnement:** das Abonnement für die Abrechnung, das mit Ihrem Dienst verbunden ist.

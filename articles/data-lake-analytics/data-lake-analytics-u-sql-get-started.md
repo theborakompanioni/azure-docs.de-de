@@ -3,8 +3,8 @@ title: Erste Schritte mit der U-SQL-Sprache | Microsoft-Dokumentation
 description: "Enthält eine grundlegende Beschreibung der U-SQL-Sprache."
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
-ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 4884d96e8126337f62af23316935978cfe219ec8
+ms.date: 06/23/2017
+ms.author: saveenr
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: a193590504fc3706a7c1f1562e94a8a80da03e75
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -27,9 +27,9 @@ U-SQL ist eine Sprache, bei der deklarative SQL mit imperativen C#-Elementen kom
 
 ## <a name="learning-resources"></a>Schulungsressourcen
 
-Ausführliche Informationen zur **Syntax der U-SQL-Sprache** finden Sie unter [U-SQL Language Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348) (Referenz zur U-SQL-Sprache).
-
-Informationen zur **Entwurfsphilosophie von U-SQL** finden Sie im Visual Studio-Blogbeitrag [Introducing U-SQL – A Language that Makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/) (Einführung in U-SQL: eine Sprache, die die Verarbeitung von Big Data vereinfacht).
+* Im [U-SQL-Tutorial] wird U-SQL ausführlich vorgestellt. Dieses Dokument wird für alle Entwickler empfohlen, die sich mit U-SQL vertraut machen möchten.
+* Ausführliche Informationen zur **Syntax der U-SQL-Sprache** finden Sie unter [U-SQL Language Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348) (Referenz zur U-SQL-Sprache).
+* Informationen zur **Entwurfsphilosophie von U-SQL** finden Sie im Visual Studio-Blogbeitrag [Introducing U-SQL – A Language that Makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/) (Einführung in U-SQL: eine Sprache, die die Verarbeitung von Big Data vereinfacht).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ Bevor Sie die U-SQL-Beispiele in diesem Dokument durcharbeiten, ist es ratsam, d
 
 ## <a name="your-first-u-sql-script"></a>Ihr erstes U-SQL-Skript
 
-Das folgende U-SQL-Skript ist sehr einfach aufgebaut und ermöglicht es uns, viele Aspekte der U-SQL-Sprache zu untersuchen.
+Das folgende U-SQL-Skript ist einfach aufgebaut und ermöglicht es, viele Aspekte der U-SQL-Sprache zu untersuchen.
 
 ```
 @searchlog =
@@ -69,20 +69,13 @@ Beachten Sie im Feld `Duration` das Fragezeichen neben dem Datentyp. Dies bedeut
 
 Für die Anweisungen EXTRACT und OUTPUT werden Dateipfade verwendet. Dateipfade können absolut oder relativ sein:
 
-Dieser absolute Dateipfad verweist auf eine Datei in einer Data Lake Store-Instanz mit dem Namen `mystore`:
+Der folgende absolute Dateipfad verweist auf eine Datei in einer Data Lake Store-Instanz mit dem Namen `mystore`:
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-Dieser absolute Pfad bezieht sich auf eine Datei in einem Azure Blob Storage-Konto mit dem Namen `myblobaccount` und in einem Container mit dem Namen `mycontainer`:
+Der folgende relative Dateipfad beginnt mit `"/"`. Er verweist auf eine Datei im Data Lake Store-Standardkonto:
 
-    wasb://mycontainer@myblobaccount.blob.core.windows.net/Samples/Data/SearchLog.tsv
-
- >[!NOTE]
- >Azure-Blobspeichercontainer mit Zugriffsberechtigungen für öffentliche Blobs oder öffentliche Container werden derzeit nicht unterstützt.
-
-Dieser relative Dateipfad beginnt mit `"/"`. Er verweist auf eine Datei unter dem Data Lake Store-Standardkonto, das dem Data Lake Analytics-Konto zugeordnet ist:
-
-    TO "/output/SearchLog-first-u-sql.csv"
+    /output/SearchLog-first-u-sql.csv
 
 ## <a name="use-scalar-variables"></a>Verwenden von Skalarvariablen
 
@@ -192,15 +185,16 @@ In U-SQL-Rowsets wird die Reihenfolge für die nächste Abfrage nicht beibehalte
     GROUP BY Region;
 
     @res =
-    SELECT *
-    FROM @rs1
-    ORDER BY TotalDuration DESC
-    FETCH 5 ROWS;
+        SELECT *
+        FROM @rs1
+        ORDER BY TotalDuration DESC
+        FETCH 5 ROWS;
 
     OUTPUT @rs1
         TO @out1
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
+
     OUTPUT @res
         TO @out2
         ORDER BY TotalDuration DESC
@@ -226,21 +220,17 @@ Die U-SQL-Klausel HAVING kann verwendet werden, um die Ausgabe auf Gruppen zu be
             Region,
             SUM(Duration) AS TotalDuration
         FROM @searchlog
-    GROUP BY Region
-    HAVING SUM(Duration) > 200;
+        GROUP BY Region
+        HAVING SUM(Duration) > 200;
 
     OUTPUT @res
         TO "/output/Searchlog-having.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-## <a name="see-also"></a>Weitere Informationen
+Erweiterte Aggregationsszenarien finden Sie in der U-SQL-Referenzdokumentation für [Aggregat-, Analyse- und Referenzfunktionen](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx).
+
+## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
-
-## <a name="let-us-know-what-you-think"></a>Teilen Sie uns Ihre Meinung mit
-* [Feature anfordern](http://aka.ms/adlafeedback)
-* [Hilfe in Foren](http://aka.ms/adlaforums)
-* [Feedback zu U-SQL](http://aka.ms/usqldiscuss)
 

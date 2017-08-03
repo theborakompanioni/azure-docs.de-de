@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5086fa86149e4d8133df339b1261d3792fa66b4c
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c0b211bced99d272a73a7b018a22f99d8d58aa9
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -94,7 +96,7 @@ Gehen Sie folgendermaßen vor, um Informationen zu lokalen und Azure StorSimple-
    |:--- |:--- |
    |  Name |Die Spalte **Name** enthält den Laufwerkbuchstaben, der den jeweiligen ermittelten Volumes zugeordnet wurde. |
    |  Gerät |Die Spalte **Gerät** enthält die IP-Adresse des mit dem Hostcomputer verbundenen Geräts. |
-   |  Device Volume Name |Die Spalte **Device Volume Name** enthält den Namen des Gerätevolumes, zu dem das ausgewählte Volume gehört. Dies ist der im klassischen Azure-Portal für das Volume festgelegte Volumename. |
+   |  Device Volume Name |Die Spalte **Device Volume Name** enthält den Namen des Gerätevolumes, zu dem das ausgewählte Volume gehört. Dies ist der im Azure-Portal für das Volume festgelegte Volumename. |
    |  Access Paths |Die Spalte **Access Paths** zeigt den Zugriffspfad zum Volume an. Dies ist der Laufwerkbuchstabe oder der Bereitstellungspunkt, über den auf dem Hostcomputer auf das Volume zugegriffen werden kann. |
 
 ## <a name="delete-a-volume"></a>Löschen von Volumes
@@ -102,8 +104,6 @@ Wenden Sie das folgende Verfahren zum Löschen eines Volumes aus dem StorSimple 
 
 > [!NOTE]
 > Sie können kein Volume löschen, wenn dieses Teil einer Volumegruppe ist. (Die Löschoption ist für Volumes, die Mitglieder einer Volumegruppe sind, nicht verfügbar.) Löschen Sie die gesamte Volumegruppe, um das Volume zu löschen.
-> 
-> 
 
 #### <a name="to-delete-a-volume"></a>So löschen Sie ein Volume
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
@@ -162,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um die Sicherung eines dynamisch gespieg
 ### <a name="prerequisites"></a>Voraussetzungen
 Vorbereitungen
 
-* Stellen Sie sicher, dass das StorSimple-Gerät und der Hostcomputer ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Bereitstellen des lokalen StorSimple-Geräts](storsimple-deployment-walkthrough-u2.md).
+* Stellen Sie sicher, dass das StorSimple-Gerät und der Hostcomputer ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Bereitstellen des lokalen StorSimple-Geräts](storsimple-8000-deployment-walkthrough-u2.md).
 * Installieren und konfigurieren Sie den StorSimple Snapshot Manager. Weitere Informationen finden Sie unter [Bereitstellen des StorSimple Snapshot Managers](storsimple-snapshot-manager-deployment.md).
 * Konfigurieren Sie zwei Volumes auf dem StorSimple-Gerät. (In den Beispielen lauten die verfügbaren Volumes **Disk 1** und **Disk 2**.) 
 
@@ -212,9 +212,4 @@ Verwenden Sie das folgende Verfahren zum Konfigurieren eines dynamisch gespiegel
 
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

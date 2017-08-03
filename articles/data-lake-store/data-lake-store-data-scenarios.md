@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: a1349e53774732ffbfacefc7bd8dcc493f78fbd6
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: f173111fb827a1f25fad857596fef13447bcca38
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -42,7 +42,7 @@ Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Da
 
 | Datenquelle | Erfassen Sie mit |
 | --- | --- |
-| Lokalem Computer |<ul> <li>[Azure-Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Plattformübergreifende Azure-CLI](data-lake-store-get-started-cli.md)</li> <li>[Verwenden von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md#upload-source-data-files) </li></ul> |
+| Lokalem Computer |<ul> <li>[Azure-Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Plattformübergreifende Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Verwenden von Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage-Blob |<ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)</li> <li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von DistCp auf einem HDInsight-Cluster](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Streamingdaten
@@ -63,7 +63,7 @@ Sie können auch Daten aus relationalen Datenbanken erfassen. Relationale Datenb
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Webserverprotokolldaten (mit benutzerdefinierten Anwendungen hochladen)
 Auf diesen Datasettyp wird besonders hingewiesen, da die Analyse von Webserverprotokolldaten eine gängige Praxis für Big Data-Anwendungen ist und voraussetzt, dass zahlreiche Protokolldateien in den Data Lake-Speicher hochgeladen werden. Sie können jedes der folgenden Tools nutzen, um eigene Skripts oder Anwendungen zum Hochladen solcher Daten zu schreiben.
 
-* [Plattformübergreifende Azure-CLI](data-lake-store-get-started-cli.md)
+* [Plattformübergreifende Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [.NET SDK für den Azure Data Lake-Speicher](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)
@@ -77,13 +77,13 @@ Die meisten HDInsight-Clustertypen (Hadoop, HBase, Storm) unterstützen den Data
 * [AdlCopy-Dienst](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)
 
-### <a name="data-stored-in-on-premise-or-iaas-hadoop-clusters"></a>In lokalen oder IaaS Hadoop-Clustern gespeicherte Daten
+### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>In lokalen oder IaaS Hadoop-Clustern gespeicherte Daten
 Große Datenmengen können in vorhandenen Hadoop-Clustern oder lokal auf Computern gespeichert werden, die HDFS verwenden. Die Hadoop-Cluster können sich in einer lokalen Bereitstellung oder innerhalb eines IaaS-Clusters in Azure befinden. Solche Daten müssen möglicherweise einmalig oder regelmäßig in den Azure Data Lake-Speicher kopiert werden. Hierfür stehen verschiedene Möglichkeiten zur Verfügung. Im Folgenden finden Sie eine Liste der Alternativen und die jeweiligen Vor- und Nachteile.
 
 | Vorgehensweise | Details | Vorteile | Überlegungen |
 | --- | --- | --- | --- |
 | Verwenden Sie Azure Data Factory (ADF), um Daten direkt aus Hadoop-Clustern in den Azure Data Lake-Speicher zu kopieren. |[ADF unterstützt HDFS als Datenquelle.](../data-factory/data-factory-hdfs-connector.md) |ADF bietet sofortige Unterstützung für HDFS und erstklassige End-to-End-Verwaltung und -Überwachung. |Ein Datenverwaltungsgateway muss lokal oder im IaaS-Cluster bereitgestellt werden. |
-| Exportieren Sie Daten in Form von Dateien aus Hadoop. Kopieren Sie die Dateien dann mit einem geeigneten Mechanismus in den Azure Data Lake-Speicher. |Sie können Dateien mit folgenden Verfahren in Azure Data Lake Store kopieren:  <ul><li>[Azure PowerShell für Windows-Betriebssystem](data-lake-store-get-started-powershell.md)</li><li>[Plattformübergreifende Azure-CLI für andere Betriebssysteme als Windows](data-lake-store-get-started-cli.md)</li><li>Benutzerdefinierte, beliebiges Data Lake Store-SDK verwendende App</li></ul> |Lässt sich schnell einrichten. Benutzerdefinierte Uploads sind möglich. |Der Prozess erfordert mehrere Schritte und verschiedene Technologien. Da die Tools benutzerdefiniert sind, werden Verwaltung und Überwachung im Lauf der Zeit schwierig. |
+| Exportieren Sie Daten in Form von Dateien aus Hadoop. Kopieren Sie die Dateien dann mit einem geeigneten Mechanismus in den Azure Data Lake-Speicher. |Sie können Dateien mit folgenden Verfahren in Azure Data Lake Store kopieren:  <ul><li>[Azure PowerShell für Windows-Betriebssystem](data-lake-store-get-started-powershell.md)</li><li>[Plattformübergreifende Azure CLI 2.0 für andere Betriebssysteme als Windows](data-lake-store-get-started-cli-2.0.md)</li><li>Benutzerdefinierte, beliebiges Data Lake Store-SDK verwendende App</li></ul> |Lässt sich schnell einrichten. Benutzerdefinierte Uploads sind möglich. |Der Prozess erfordert mehrere Schritte und verschiedene Technologien. Da die Tools benutzerdefiniert sind, werden Verwaltung und Überwachung im Lauf der Zeit schwierig. |
 | Verwenden Sie Distcp, um Daten von Hadoop in Azure Storage zu kopieren. Kopieren Sie die Daten dann mit einem geeigneten Mechanismus von Azure Storage in den Azure Data Lake-Speicher. |Sie können Daten mit folgenden Verfahren von Azure Storage in Data Lake Store kopieren:  <ul><li>[Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)</li><li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von Apache DistCp auf HDInsight-Clustern](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Sie können Open Source-Tools verwenden. |Der Prozess erfordert mehrere Schritte und verschiedene Technologien. |
 
 ### <a name="really-large-datasets"></a>Sehr große Datasets
@@ -123,7 +123,7 @@ In solchen Fällen können Sie eine der folgenden Optionen verwenden:
 
 Sie können auch mit den folgenden Methoden Ihr eigenes Skript/Ihre eigene Anwendung zum Herunterladen von Daten aus dem Data Lake-Speicher schreiben.
 
-* [Plattformübergreifende Azure-CLI](data-lake-store-get-started-cli.md)
+* [Plattformübergreifende Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [.NET SDK für den Azure Data Lake-Speicher](data-lake-store-get-started-net-sdk.md)
 

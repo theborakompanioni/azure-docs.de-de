@@ -4,7 +4,7 @@ description: Beschreibt, wie das MMC-Snap-In StorSimple Snapshot Manager zum Anz
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
 ms.service: storsimple
@@ -12,36 +12,39 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/26/2016
+ms.date: 06/05/2017
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 674030ee836f6f4179fbb4214d2bf31263b39132
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b97753e6f1b67e3c8d247281c5e5208033a56eca
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Verwenden Sie StorSimple Snapshot Manager zum Verwalten des Sicherungkatalogs
+
 ## <a name="overview"></a>Übersicht
-Die primäre Funktion des StorSimple Snapshot Managers ist das Erstellen anwendungskonsistenter Sicherungskopien von StorSimple-Volumes in Form von Momentaufnahmen. Momentaufnahmen werden dann in einer XML-Datei aufgeführt, die *Sicherungkatalog*genannt wird. Der Sicherungkatalog gliedert Momentaufnahmen nach Volumegruppe und anschließend nach lokaler oder cloudbasierter Momentaufnahme. 
+Die primäre Funktion des StorSimple Snapshot Managers ist das Erstellen anwendungskonsistenter Sicherungskopien von StorSimple-Volumes in Form von Momentaufnahmen. Momentaufnahmen werden dann in einer XML-Datei aufgeführt, die *Sicherungkatalog*genannt wird. Der Sicherungkatalog gliedert Momentaufnahmen nach Volumegruppe und anschließend nach lokaler oder cloudbasierter Momentaufnahme.
 
 In diesem Lernprogramm wird beschrieben, wie Sie mit dem Knoten **Sicherungskatalog** die folgenden Aufgaben ausführen können:
 
-* Wiederherstellen eines Volumes 
-* Klonen eines Volumes oder einer Volumegruppe 
-* Löschen einer Sicherung 
+* Wiederherstellen eines Volumes
+* Klonen eines Volumes oder einer Volumegruppe
+* Löschen einer Sicherung
 * Wiederherstellen einer Datei
 * Wiederherstellen der Storsimple Snapshot Manager-Datenbank
 
 Sie können den Sicherungskatalog anzeigen, indem Sie im Fensterbereich **Bereich** zunächst den Knoten **Sicherungskatalog** und anschließend die Volumegruppe erweitern.
 
 * Wenn Sie auf den Namen der Volumegruppe klicken, wird im Bereich **Ergebnisse** die Anzahl der lokalen und cloudbasierten Momentaufnahmen angezeigt, die für diese Volumegruppe verfügbar sind. 
-* Wenn Sie auf **Lokale Momentaufnahme** oder **Cloudmomentaufnahme** klicken, werden im Bereich **Ergebnisse** die folgenden Informationen über jede Sicherungsmomentaufnahme angezeigt (je nach Einstellungen in der **Ansicht**): 
+* Wenn Sie auf **Lokale Momentaufnahme** oder **Cloudmomentaufnahme** klicken, werden im Bereich **Ergebnisse** die folgenden Informationen über jede Sicherungsmomentaufnahme angezeigt (je nach Einstellungen in der **Ansicht**):
   
-  * **Name**: Die Zeit, zu der die Momentaufnahme erstellt wurde. 
-  * **Typ**: Gibt an, ob es sich um eine lokale oder eine cloudbasierte Momentaufnahme handelt. 
+  * **Name**: Die Zeit, zu der die Momentaufnahme erstellt wurde.
+  * **Typ**: Gibt an, ob es sich um eine lokale oder eine cloudbasierte Momentaufnahme handelt.
   * **Besitzer**: Gibt den Besitzer des Inhalts an. 
   * **Verfügbar**: Gibt an, ob die Momentaufnahme aktuell verfügbar ist. **True** gibt an, dass die Momentaufnahme verfügbar ist und wiederhergestellt werden kann. **False** gibt an, dass die Momentaufnahme nicht mehr verfügbar ist. 
-  * **Importiert**: Gibt an, ob die Sicherung importiert wurde. **True** gibt an, dass die Sicherung zum Zeitpunkt der Konfiguration des Geräts in StorSimple Snapshot Manager aus dem StorSimple Manager-Dienst importiert wurde. **False** gibt an, dass er nicht importiert, sondern vom StorSimple Snapshot Manager erstellt wurde. (Sie können problemlos eine importierte Volumegruppe identifizieren, da ein Suffix hinzugefügt wird, das das Gerät identifiziert, aus dem die Volume-Gruppe importiert wurde.)
+  * **Importiert**: Gibt an, ob die Sicherung importiert wurde. **True** gibt an, dass die Sicherung zum Zeitpunkt der Konfiguration des Geräts in StorSimple Snapshot Manager aus dem StorSimple-Geräte-Manager-Dienst importiert wurde. **False** gibt an, dass er nicht importiert, sondern vom StorSimple Snapshot Manager erstellt wurde. (Sie können problemlos eine importierte Volumegruppe identifizieren, da ein Suffix hinzugefügt wird, das das Gerät identifiziert, aus dem die Volume-Gruppe importiert wurde.)
     
     ![Sicherungskatalog](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
 * Wenn Sie die **Lokale Momentaufnahme** oder die **Cloudmomentaufnahme** erweitern, und dann auf den Namen einer einzelnen Momentaufnahme klicken, werden im Bereich **Ergebnisse** die folgenden ausgewählten Informationen zur Momentaufnahme angezeigt:
@@ -68,11 +71,11 @@ Der StorSimple Snapshot Manager zeigt die folgende Meldung an, während aus Vors
 
 #### <a name="to-restore-a-volume"></a>So stellen Sie ein Volume wieder her
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten. 
-2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Sicherungskatalog**, erweitern Sie eine Volumegruppe, und klicken Sie dann auf **Lokale Momentaufnahmen** oder **Cloudmomentaufnahmen**. Eine Liste von Sicherungsmomentaufnahmen wird im Bereich **Ergebnisse** angezeigt. 
-3. Suchen Sie die Sicherung, die Sie wiederherstellen möchten, klicken Sie mit der rechten Maustaste darauf, und anschließend auf **Wiederherstellen**. 
+2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Sicherungskatalog**, erweitern Sie eine Volumegruppe, und klicken Sie dann auf **Lokale Momentaufnahmen** oder **Cloudmomentaufnahmen**. Eine Liste von Sicherungsmomentaufnahmen wird im Bereich **Ergebnisse** angezeigt.
+3. Suchen Sie die Sicherung, die Sie wiederherstellen möchten, klicken Sie mit der rechten Maustaste darauf, und anschließend auf **Wiederherstellen**.
    
     ![Wiederherstellen des Sicherungskatalogs](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
-4. Überprüfen Sie auf der Bestätigungsseite die Details, geben Sie **Bestätigen** ein, und klicken Sie dann auf **OK**. Der StorSimple Snapshot Manager verwendet die Sicherung, um das Volume wiederherzustellen. 
+4. Überprüfen Sie auf der Bestätigungsseite die Details, geben Sie **Bestätigen** ein, und klicken Sie dann auf **OK**. Der StorSimple Snapshot Manager verwendet die Sicherung, um das Volume wiederherzustellen.
    
     ![Bestätigungsmeldung zur Wiederherstellung](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
 5. Sie können die Wiederherstellungsaktion während der Ausführung überwachen. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Aufträge**, und klicken Sie dann auf **Wird ausgeführt**. Die Auftragsdetails werden im Bereich **Ergebnisse** angezeigt. Wenn der Wiederherstellungsvorgang abgeschlossen ist, werden die Auftragsdetails in die Liste **Letzte 24 Stunden** übertragen.
@@ -89,7 +92,7 @@ Verwenden Sie das folgende Verfahren, um ein Duplikat (Klon) eines Volumes oder 
 4. Vervollständigen Sie das Dialogfeld **Cloudmomentaufnahme klonen** wie folgt: 
    
    1. Geben Sie im Textfeld **Name** einen Namen für das geklonte Volume ein. Dieser Name wird im Knoten **Volumes** angezeigt. 
-   2. (Optional) Wählen Sie **Laufwerk**aus, und anschließend einen Laufwerkbuchstaben aus der Dropdown-Liste. 
+   2. (Optional) Wählen Sie **Laufwerk**aus, und anschließend einen Laufwerkbuchstaben aus der Dropdown-Liste.
    3. (Optional) Wählen Sie **Ordner (NTFS)**aus, und geben Sie einen Ordnerpfad ein oder klicken Sie auf „Durchsuchen“, und wählen dann einen Speicherort für den Ordner. 
    4. Klicken Sie auf **Erstellen**.
 5. Wenn der Klonvorgang abgeschlossen ist, müssen Sie das geklonte Volume initialisieren. Starten Sie den Server-Manager, und starten Sie dann die Datenträgerverwaltung. Ausführliche Anweisungen finden Sie unter [Laden von Volumes](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Nach der Initialisierung wird das Volume unter dem Knoten **Volumes** im Fensterbereich **Bereich** aufgeführt. Wenn Sie das aufgeführte Volume nicht erscheint, aktualisieren Sie die Liste der Volumes (mit der rechten Maustaste auf den Knoten **Volumes** klicken, und dann auf **Aktualisieren**).
@@ -99,14 +102,13 @@ Verwenden Sie für das Löschen einer Momentaufnahme aus dem Sicherungskatalog d
 
 > [!NOTE]
 > Das Löschen einer Momentaufnahme löscht die gesicherten Daten, die der Momentaufnahme zugeordnet sind. Allerdings kann das Bereinigen von Daten in der Cloud einige Zeit dauern.<br>
-> 
-> 
+
 
 #### <a name="to-delete-a-backup"></a>So löschen Sie eine Sicherung
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
-2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Sicherungskatalog**, erweitern Sie eine Volumegruppe, und klicken Sie dann auf **Lokale Momentaufnahmen** oder **Cloudmomentaufnahmen**. Eine Liste von Momentaufnahmen wird im Bereich **Ergebnisse** angezeigt. 
+2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Sicherungskatalog**, erweitern Sie eine Volumegruppe, und klicken Sie dann auf **Lokale Momentaufnahmen** oder **Cloudmomentaufnahmen**. Eine Liste von Momentaufnahmen wird im Bereich **Ergebnisse** angezeigt.
 3. Klicken Sie mit der rechten Maustaste auf die Momentaufnahme, die Sie löschen möchten, und klicken Sie dann auf **Löschen**.
-4. Wenn die Bestätigungsmeldung angezeigt wird, klicken Sie auf **OK**. 
+4. Wenn die Bestätigungsmeldung angezeigt wird, klicken Sie auf **OK**.
 
 ## <a name="recover-a-file"></a>Wiederherstellen einer Datei
 Wenn eine Datei versehentlich von einem Volume gelöscht wird, können Sie die Datei wiederherstellen, indem Sie eine Momentaufnahme von vor dem Löschvorgang abrufen. Mit dieser Momentaufnahme erstellen Sie einen Klon des Volumes, und kopieren dann die Datei aus dem geklonten Volume in das ursprüngliche Volume.
@@ -116,7 +118,7 @@ Bevor Sie loslegen, stellen Sie sicher, dass Sie über eine aktuelle Sicherung d
 
 #### <a name="to-recover-a-deleted-file"></a>So stellen Sie eine gelöschte Datei wieder her
 1. Klicken Sie auf das Desktopsymbol des StorSimple Snapshot Managers. Das Fenster der StorSimple Snapshot Manager-Konsole wird angezeigt. 
-2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Sicherungskatalog**, und navigieren Sie zu einer Momentaufnahme, die die gelöschte Datei enthält. In der Regel sollten Sie eine Momentaufnahme auswählen, die unmittelbar vor dem Löschvorgang erstellt wurde. 
+2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Sicherungskatalog**, und navigieren Sie zu einer Momentaufnahme, die die gelöschte Datei enthält. In der Regel sollten Sie eine Momentaufnahme auswählen, die unmittelbar vor dem Löschvorgang erstellt wurde.
 3. Suchen Sie das Volume, das Sie klonen möchten, klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf **Klonen**. Das Dialogfeld **Cloudmomentaufnahme klonen** wird angezeigt.
    
     ![Klonen einer Cloudmomentaufnahme](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
@@ -163,10 +165,5 @@ Sie sollten die StorSimple Snapshot Manager-Datenbank auf dem Hostcomputer regel
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Weitere Informationen zu den [Aufgaben und Workflows im StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

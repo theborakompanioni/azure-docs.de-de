@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern | Microsoft-Dokumentation"
+title: "Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über das Einrichten und Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern"
 services: hdinsight
 documentationcenter: 
@@ -15,15 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 1fb13d60eebbaf45ca9cb394c073c834bbe59bb9
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)
+
 Erfahren Sie, wie man Azure HDInsight-Cluster mit Azure Active Directory (Azure AD) und [Apache Ranger](http://hortonworks.com/apache/ranger/) einrichtet, und profitieren Sie von strengen Richtlinien für Authentifizierung und Rollenbasierte Zugriffssteuerung (role-based access control, RBAC).  In die Domäne eingebundenes HDInsight kann nur unter Linux-basierten Clustern konfiguriert werden. Weitere Informationen finden Sie unter [Introduce Domain-joined HDInsight clusters (Einführung in HDInsight-Cluster mit Domänenverknüpfung)](hdinsight-domain-joined-introduction.md).
+
+> [!IMPORTANT]
+> Oozie ist auf HDInsight mit Domänenverknüpfung nicht aktiviert.
 
 Dieser Artikel ist das erste Tutorial einer Reihe:
 
@@ -71,8 +76,8 @@ In diesem Tutorial finden Sie die Schritte zum Konfigurieren eines in die Domän
 
 Es gibt ein PowerShell-Skript, mit dem die Schritte 3 bis 7 automatisiert werden können.  Weitere Informationen finden Sie unter [Configure Domain-joined HDInsight clusters use Azure PowerShell](hdinsight-domain-joined-configure-use-powershell.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure PowerShell).
 
-## <a name="create-an-azure-classic-vnet"></a>Erstellen Sie ein klassisches Azure-VNet
-In diesem Abschnitt erstellen Sie ein klassisches VNet mithilfe des Azure-Portals. Im nächsten Abschnitt aktivieren Sie Azure AD DS für Azure AD in diesem klassischen VNet. Weitere Informationen über die folgende Vorgehensweise und über das Verwenden anderer Methoden zum Erstellen eines VNet finden Sie unter [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md).
+## <a name="create-an-azure-virtual-network-classic"></a>Erstellen virtueller Azure-Netzwerke (klassisch)
+In diesem Abschnitt erstellen Sie mit dem Azure-Portal ein virtuelles Netzwerk (klassisch). Im nächsten Abschnitt aktivieren Sie Azure AD DS für Azure AD in diesem virtuellen Netzwerk. Weitere Informationen zur folgenden Vorgehensweise und zur Verwendung anderer Methoden zum Erstellen virtueller Netzwerke finden Sie unter [Erstellen virtueller Netzwerke (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
 
 **Um ein klassisches VNet zu erstellen**
 
@@ -250,7 +255,7 @@ In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsi
      
      * **Clustertyp**: Hadoop. HDInsight mit Domänenverknüpfung wird derzeit nur auf Hadoop-Clustern unterstützt.
      * **Betriebssystem**: Linux.  HDInsight mit Domänenverknüpfung wird derzeit nur auf Linux-basierten HDInsight-Clustern unterstützt.
-     * **Version**: Hadoop 2.7.3 (HDI 3.5). HDInsight mit Domänenverknüpfung wird derzeit nur auf HDInsight-Clustern, Version 3.5 unterstützt.
+     * **Version:** HDI 3.6. HDInsight mit Domänenverknüpfung wird derzeit nur auf HDInsight-Clustern, Version 3.6 unterstützt.
      * **Clustertyp**: PREMIUM
        
        Klicken Sie zum Speichern der Änderungen auf **Auswählen**.

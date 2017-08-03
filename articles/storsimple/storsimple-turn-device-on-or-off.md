@@ -1,5 +1,5 @@
 ---
-title: "Ein- und Ausschalten von StorSimple-Geräten | Microsoft Docs"
+title: "Ein- und Ausschalten von StorSimple-Geräten der Serie 8000 | Microsoft-Dokumentation"
 description: "Dieses Thema erläutert Folgendes: Einschalten eines neuen StorSimple-Geräts oder ein Geräts, das heruntergefahren werden musste oder dessen Stromversorgung unterbrochen war, sowie Ausschalten eines ausgeführten Geräts."
 services: storsimple
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 06/29/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 74196c7d3989cc748a27026c04ea837b29a2785f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0577c837e0c47ba37a4f586603b0f5b951f1b549
 ms.contentlocale: de-de
-ms.lasthandoff: 06/05/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -56,8 +56,6 @@ Wenn Sie dieses Gerät zum ersten Mal einrichten, führen Sie zuerst die Schritt
 
 > [!NOTE]
 > Vollständige Anweisungen zur Einrichtung und Verkabelung des Geräts finden Sie unter [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md). Stellen Sie sicher, dass die Anweisungen genau befolgt werden.
-> 
-> 
 
 ## <a name="turn-on-a-device-after-shutdown"></a>Einschalten eines Geräts nach dem Herunterfahren
 Die Schritte zum Einschalten eines StorSimple-Geräts nach dem Herunterfahren unterscheiden sich, je nachdem, ob es sich um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse.
@@ -77,7 +75,7 @@ Verwenden Sie das folgende Verfahren, um ein StorSimple-Gerät mit primärem Geh
    2. Die Status-LEDs an beiden Controllern leuchten grün.
    3. Die blaue LED an einem der Controller blinkt, was darauf hinweist, dass der Controller aktiv ist.
       
-      Wenn eine dieser Bedingungen nicht erfüllt ist, funktioniert das Gerät nicht fehlerfrei. [Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md).
+      Wenn eine dieser Bedingungen nicht erfüllt ist, funktioniert das Gerät nicht fehlerfrei. [Kontaktieren Sie den Microsoft-Support](storsimple-8000-contact-microsoft-support.md).
 
 ### <a name="device-with-ebod-enclosure"></a>Gerät mit EBOD-Gehäuse
 Verwenden Sie das folgende Verfahren, um ein StorSimple-Gerät mit primärem und EBOD-Gehäuse nach dem Herunterfahren einzuschalten. Führen Sie jeden Schritt in der richtigen Reihenfolge und genau wie beschrieben aus. Andernfalls könnten Datenverluste die Folge sein.
@@ -140,9 +138,8 @@ Wenn beide SAS-Kabel (Serial Attached SCSI) entfernt werden oder die Verbindung 
 10. Stellen Sie sicher, dass eine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, indem Sie überprüfen, ob alle SAS-Leitungs-LEDs (vier pro EBOD-Controller) leuchten.
 
 > [!IMPORTANT]
-> Wenn Sie das System einschalten und die SAS-Kabel beschädigt sind oder keine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, wechselt das System in den Wiederherstellungsmodus. [Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md) , falls dies eintritt.
-> 
-> 
+> Wenn Sie das System einschalten und die SAS-Kabel beschädigt sind oder keine gute Verbindung zwischen dem EBOD- und dem primären Gehäuse besteht, wechselt das System in den Wiederherstellungsmodus. [Kontaktieren Sie den Microsoft-Support](storsimple-8000-contact-microsoft-support.md) , falls dies eintritt.
+
 
 ## <a name="turn-off-a-running-device"></a>Ausschalten eines ausgeführten Geräts
 Ein ausgeführtes StorSimple-Gerät muss möglicherweise heruntergefahren werden, wenn es verschoben oder außer Betrieb genommen werden soll oder wenn eine Komponente des Geräts fehlerhaft ist und ausgetauscht werden muss. Die Schritte unterscheiden sich, je nachdem, ob es sich bei dem StorSimple-Gerät um ein 8100- oder ein 8600-Modell handelt. Das Modell 8100 verfügt über ein einziges primäres Gehäuse, während das Modell 8600 zwei Gehäuse aufweist: ein primäres und ein EBOD-Gehäuse. In diesem Abschnitt werden die Schritte zum Herunterfahren eines ausgeführten Geräts beschrieben.
@@ -164,21 +161,18 @@ Nachdem Sie auf Windows PowerShell für StorSimple oder das klassische Azure-Por
 
 ### <a name="device-with-ebod-enclosure-a-name8600a"></a>Gerät mit EBOD-Gehäuse <a name="8600a">
 > [!IMPORTANT]
-> Bevor Sie das primäre und das EBOD-Gehäuse herunterfahren, stellen Sie sicher, dass sich alle Gerätekomponenten in fehlerfreiem Zustand befinden. Navigieren Sie im klassischen Azure-Portal zu **Geräte** > **Wartung** > **Hardwarestatus**, und überprüfen Sie, ob alle Komponenten fehlerfrei funktionieren.
-> 
-> 
+> Bevor Sie das primäre und das EBOD-Gehäuse herunterfahren, stellen Sie sicher, dass sich alle Gerätekomponenten in fehlerfreiem Zustand befinden. Navigieren Sie im Azure-Portal zu **Geräte** > **Überwachung** > **Hardwareintegrität**, und überprüfen Sie, ob alle Komponenten fehlerfrei funktionieren.
+
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>So fahren Sie ein ausgeführtes Gerät mit EBOD-Gehäuse herunter
-1. Führen Sie alle unter [Herunterfahren eines StorSimple-Geräts](storsimple-manage-device-controller.md#shut-down-a-storsimple-device) aufgeführten Schritte für das primäre Gehäuse aus.
+1. Führen Sie alle unter [Herunterfahren eines StorSimple-Geräts](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) aufgeführten Schritte für das primäre Gehäuse aus.
 2. Nachdem das primäre Gehäuse heruntergefahren wurde, fahren Sie das EBOD-Gehäuse herunter, indem Sie beide PCM-Schalter ausschalten.
 3. Stellen Sie sicher, dass das EBOD-Gehäuse heruntergefahren ist, indem Sie sich vergewissern, dass alle LEDs auf der Rückseite des EBOD-Gehäuses erloschen sind.
 
 > [!NOTE]
 > Die SAS-Verbindungskabel zwischen dem EBOD- und dem primären Gehäuse dürfen erst entfernt werden, nachdem das System heruntergefahren wurde.
-> 
-> 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md) , wenn beim Einschalten oder Herunterfahren eines StorSimple-Geräts Probleme auftreten.
+[Kontaktieren Sie den Microsoft-Support](storsimple-8000-contact-microsoft-support.md) , wenn beim Einschalten oder Herunterfahren eines StorSimple-Geräts Probleme auftreten.
 
 

@@ -12,41 +12,48 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 06/16/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: b8a69d89f335c00c5ddc3c201e33a66e1dea1da5
-ms.openlocfilehash: 6ccb5367b1c7c6cae7b9d35b6a5471c8edfe6f85
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: efb86a0ae362c30a6772c391a499154b7ae2a697
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="install-endpoint-protection-in-azure-security-center"></a>Installieren von Endpoint Protection in Azure Security Center
-In Azure Security Center wird die Bereitstellung einer Antischadsoftware für Ihre virtuellen Azure-Computer empfohlen, sofern noch keine Antischadsoftware aktiviert ist. Diese Empfehlung gilt nur für virtuelle Windows-Computer. Diese Empfehlung überprüft gegenwärtig das Vorhandensein von Windows Defender oder TrendMicro Deep Security. In Zukunft sollen zusätzliche Endpoint Protection-Lösungen hinzugefügt werden.
+Azure Security Center empfiehlt die Installation von Endpoint Protection auf Ihren virtuellen Azure-Computern (VMs), sofern noch keine aktiviert ist. Diese Empfehlung gilt nur für virtuelle Windows-Computer.
 
 > [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
+> In diesem Beispielszenario wird Antischadsoftware von Microsoft verwendet. Unter [Partner Integration in Azure Security Center (Partnerintegration in Azure Security Center)](security-center-partner-integration.md#partners-that-integrate-with-security-center) finden Sie eine Liste der Partner, die in Security Center integriert sind.  
 >
 >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Endpoint Protection installieren** aus.
+
+> [!NOTE]
+> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
+>
+>
+
+1. Wählen Sie auf dem Blatt **Empfehlungen** die Option** Endpoint Protection installieren **aus.
    ![„Endpoint Protection installieren“ auswählen][1]
-2. Das Blatt **Endpoint Protection installieren** wird mit einer Liste virtueller Computer geöffnet, für die keine Antischadsoftware aktiviert ist. Wählen Sie in der Liste die virtuellen Computer aus, auf denen Antischadsoftware installiert werden soll, und klicken Sie auf **Install on VMs**(Auf virtuellen Computern installieren).
-   ![Virtuelle Computer auswählen, auf denen Antischadsoftware installiert werden soll][2]
-3. Das Blatt **Select Endpoint Protection** (Endpoint Protection auswählen) wird geöffnet, auf dem Sie die Antischadsoftware-Lösung auswählen können, die Sie verwenden möchten. Wählen wir in diesem Beispiel **Microsoft Antimalware**.
+2. Das Blatt **Endpoint Protection installieren** zeigt eine Liste virtueller Computer an, die nicht über Endpoint Protection verfügen. Wählen Sie die virtuellen Computer aus der Liste aus, auf denen Endpoint Protection installiert werden soll, und klicken Sie auf **Install on VMs** (Auf virtuellen Computern installieren).
+   ![Auswählen virtueller Computer, auf denen Endpoint Protection installiert werden soll][2]
+3. Über das Blatt **Endpoint Protection auswählen** können Sie die Lösung zur Endpoint Protection auswählen, die Sie verwenden möchten. Wählen wir in diesem Beispiel **Microsoft Antimalware**.
    ![Select Endpoint Protection][3]
-4. Weitere Informationen zur Antischadsoftware-Lösung werden angezeigt. Klicken Sie auf **Erstellen**.
+4. Weitere Informationen zur Endpoint Protection-Lösung werden angezeigt. Klicken Sie auf **Erstellen**.
    ![Erstellen einer Antischadsoftware-Lösung][4]
 5. Geben Sie die erforderlichen Konfigurationseinstellungen auf dem Blatt **Erweiterung hinzufügen** ein, und wählen Sie anschließend **OK** aus. Weitere Informationen zu den Konfigurationseinstellungen finden Sie unter [Standardmäßige und benutzerdefinierte Antimalware-Konfiguration](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration).
 
 [Microsoft Antimalware](../security/azure-security-antimalware.md) ist jetzt auf den ausgewählten VMs aktiv.
 
 ## <a name="see-also"></a>Siehe auch
-In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Endpoint Protection installieren“ implementieren. Weitere Informationen zum Aktivieren von Antischadsoftware finden Sie in den folgenden Artikeln:
+In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Endpoint Protection installieren“ implementieren. Weitere Informationen zum Aktivieren von Antischadsoftware von Microsoft finden Sie in den folgenden Dokumenten:
 
-* [Microsoft Antimalware for Cloud Services and Virtual Machine (Microsoft Antischadsoftware für Cloud Services und virtuelle Computer):](../security/azure-security-antimalware.md) Erfahren Sie mehr zur Bereitstellung von Microsoft Antischadsoftware.
+* [Microsoft Antimalware for Cloud Services and Virtual Machine (Antischadsoftware von Microsoft für Cloud Services und virtuelle Computer)](../security/azure-security-antimalware.md): Erfahren Sie mehr zur Bereitstellung von Antischadsoftware von Microsoft.
 
-Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+Weitere Informationen zu Security Center finden Sie in den folgenden Dokumenten:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
@@ -61,9 +68,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [2]:./media/security-center-install-endpoint-protection/install-endpoint-protection-blade.png
 [3]:./media/security-center-install-endpoint-protection/select-endpoint-protection.png
 [4]:./media/security-center-install-endpoint-protection/create-antimalware-solution.png
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 
