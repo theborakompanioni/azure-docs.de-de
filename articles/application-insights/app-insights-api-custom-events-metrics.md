@@ -13,16 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 8793744f63388c5df04a167585d5f7b99ec7acee
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: fe769fb433d65374109fec60c6c6d032b1ad97fb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
-
 
 Fügen Sie einige Codezeilen in Ihre Anwendung ein, um herauszufinden, wie sie von Benutzern eingesetzt wird, oder um Probleme zu diagnostizieren. Sie können Telemetriedaten von Geräte- und Desktop-Apps, Webclients und Webservern senden. Verwenden Sie die [Azure Application Insights](app-insights-overview.md)-Kerntelemetrie-API, um benutzerdefinierte Ereignisse und Metriken und Ihre eigenen Versionen der standardmäßigen Telemetrie zu senden. Dies ist die gleiche API, die von den standardmäßigen Application Insights-Datensammlern verwendet wird.
 
@@ -42,7 +40,7 @@ Die API ist, abgesehen von ein paar kleinen Variationen, auf allen Plattformen e
 Sie können den meisten dieser Telemetrieaufrufe [Eigenschaften und Metriken anfügen](#properties) .
 
 ## <a name="prep"></a>Vorbereitung
-Falls noch nicht geschehen:
+Gehen Sie wie folgt vor, falls Sie noch nicht über einen Verweis auf das Application Insights SDK verfügen:
 
 * Fügen Sie Ihrem Projekt das Application Insights-SDK hinzu:
 
@@ -58,7 +56,7 @@ Falls noch nicht geschehen:
     *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
 
 ## <a name="constructing-a-telemetryclient-instance"></a>Erstellen einer TelemetryClient-Instanz
-Erstellen Sie eine Instanz von TelemetryClient (außer in JavaScript auf Webseiten):
+Erstellen Sie eine `TelemetryClient`-Instanz (gilt nicht für JavaScript auf Webseiten):
 
 *C#*
 
@@ -79,7 +77,7 @@ Wir empfehlen Ihnen, eine Instanz von TelemetryClient für jedes Modul Ihrer App
 ## <a name="trackevent"></a>TrackEvent
 In Application Insights handelt es sich bei einem *benutzerdefinierten Ereignis* um einen Datenpunkt, den Sie als aggregierte Anzahl im [Metrik-Explorer](app-insights-metrics-explorer.md) und als einzelne Vorkommen in der [Diagnosesuche](app-insights-diagnostic-search.md) anzeigen können. (Er gehört nicht zu MVC oder anderen Ereignissen des Frameworks.)
 
-Fügen Sie TrackEvent-Aufrufe in Ihren Code ein, um zu zählen, wie oft Benutzer ein bestimmtes Feature auswählen, bestimmte Ziele erreichen oder ggf. bestimmte Arten von Fehlern machen.
+Fügen Sie `TrackEvent`-Aufrufe in Ihrem Code ein, um verschiedene Ereignisse zu zählen – beispielsweise, wie oft Benutzer ein bestimmtes Feature auswählen, bestimmte Ziele erreichen oder bestimmte Arten von Fehlern machen.
 
 Senden Sie z. B. in einer Spiele-App ein Ereignis, sobald ein Benutzer das Spiel gewinnt:
 
@@ -99,8 +97,7 @@ Senden Sie z. B. in einer Spiele-App ein Ereignis, sobald ein Benutzer das Spiel
 
     telemetry.trackEvent("WinGame");
 
-
-### <a name="view-your-events-in-the-azure-portal"></a>Anzeigen der Ereignisse im Azure-Portal
+### <a name="view-your-events-in-the-microsoft-azure-portal"></a>Anzeigen Ihrer Ereignisse im Microsoft Azure-Portal
 Um die Anzahl der Ereignisse anzuzeigen, öffnen Sie das Blatt [Metrik-Explorer](app-insights-metrics-explorer.md), fügen ein neues Diagramm hinzu und wählen die **Ereignisse** aus.  
 
 ![Anzeigen der Anzahl von benutzerdefinierten Ereignissen](./media/app-insights-api-custom-events-metrics/01-custom.png)
@@ -109,7 +106,7 @@ Um die Anzahl der verschiedene Ereignisse zu vergleichen, legen Sie den Diagramm
 
 ![Festlegen des Diagrammtyps und der Gruppierung](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
-Klicken Sie im Raster auf einen Ereignisnamen, um einzelne Vorkommen dieses Ereignisses anzuzeigen. Klicken Sie auf ein beliebiges Vorkommen, um weitere Details anzuzeigen.
+Klicken Sie im Raster auf einen Ereignisnamen, um einzelne Vorkommen dieses Ereignisses anzuzeigen. Klicken Sie in der Liste auf ein beliebiges Vorkommen, um weitere Details anzuzeigen.
 
 ![Führen Sie ein Drillthrough für die Ereignisse aus.](./media/app-insights-api-custom-events-metrics/03-instances.png)
 
@@ -130,9 +127,9 @@ In Application Insights können Metriken dargestellt werden, die keinen bestimmt
 
 Zum Senden von Metriken an Application Insights können Sie die `TrackMetric(..)`-API verwenden. Es gibt zwei Möglichkeiten, eine Metrik zu senden: 
 
-* Einzelner Wert: Bei jeder Durchführung einer Messung in der Anwendung wird der entsprechende Wert an Application Insights gesendet. Angenommen, Sie haben eine Metrik für die Anzahl der Elemente in einem Container festgelegt. In einem bestimmten Zeitraum fügen Sie dem Container zunächst 3 Elemente hinzu, und anschließend entfernen Sie 2 Elemente. Dementsprechend rufen Sie `TrackMetric` zweimal auf: zuerst zum Übergeben des Werts `3` und anschließend zum Übergeben des Werts `-2`. In Application Insights werden beide Werte unter Ihrem Namen gespeichert. 
+* Einzelner Wert: Bei jeder Durchführung einer Messung in der Anwendung wird der entsprechende Wert an Application Insights gesendet. Angenommen, Sie haben eine Metrik für die Anzahl der Elemente in einem Container festgelegt. In einem bestimmten Zeitraum fügen Sie dem Container zunächst drei Elemente hinzu und entfernen dann zwei Elemente. Dementsprechend rufen Sie `TrackMetric` zweimal auf: zuerst zum Übergeben des Werts `3` und anschließend zum Übergeben des Werts `-2`. Application Insights speichert beide Werte für Sie. 
 
-* Aggregation: Bei der Arbeit mit Metriken ist nur selten jede einzelne Messung von Interesse. Stattdessen ist eine Zusammenfassung der Vorgänge in einem bestimmten Zeitraum wichtig. Eine solche Zusammenfassung wird als _Aggregation_ bezeichnet. Im Beispiel oben lautet die Aggregatmetriksumme für den Zeitraum `1`, und die Anzahl der Metrikwerte ist `2`. Bei Verwendung der Aggregation rufen Sie `TrackMetric` nur einmal pro Zeitraum auf und senden die Aggregatwerte. Diese Vorgehensweise empfiehlt sich, um die Kosten und den Leistungsaufwand erheblich zu reduzieren, da weniger Datenpunkte an Application Insights gesendet, aber dennoch alle relevanten Informationen erfasst werden.
+* Aggregation: Bei der Arbeit mit Metriken ist nur selten jede einzelne Messung von Interesse. Stattdessen ist eine Zusammenfassung der Vorgänge in einem bestimmten Zeitraum wichtig. Eine solche Zusammenfassung wird als _Aggregation_ bezeichnet. Im obigen Beispiel lautet die aggregierte Metriksumme für den Zeitraum `1`, und die Anzahl von Metrikwerten ist `2`. Bei Verwendung der Aggregation rufen Sie `TrackMetric` nur einmal pro Zeitraum auf und senden die aggregierten Werte. Diese Vorgehensweise empfiehlt sich, um die Kosten und den Leistungsaufwand erheblich zu reduzieren, da weniger Datenpunkte an Application Insights gesendet, aber dennoch alle relevanten Informationen erfasst werden.
 
 ### <a name="examples"></a>Beispiele:
 
@@ -405,21 +402,20 @@ Die einfachste Möglichkeit, die ID festzulegen, ist die Festlegung eines Vorgan
 *C#*
 
 ```C#
+// Establish an operation context and associated telemetry item:
+using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
+{
+    // Telemetry sent in here will use the same operation ID.
+    ...
+    telemetry.TrackTrace(...); // or other Track* calls
+    ...
+    // Set properties of containing telemetry item--for example:
+    operation.Telemetry.ResponseCode = "200";
 
-    // Establish an operation context and associated telemetry item:
-    using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
-    {
-        // Telemetry sent in here will use the same operation ID.
-        ...
-        telemetry.TrackEvent(...); // or other Track* calls
-        ...
-        // Set properties of containing telemetry item--for example:
-        operation.Telemetry.ResponseCode = "200";
+    // Optional: explicitly send telemetry item:
+    telemetry.StopOperation(operation);
 
-        // Optional: explicitly send telemetry item:
-        telemetry.StopOperation(operation);
-
-    } // When operation is disposed, telemetry item is sent.
+} // When operation is disposed, telemetry item is sent.
 ```
 
 Neben dem Festlegen eines Vorgangskontexts wird mit `StartOperation` ein Telemetrieelement des von Ihnen angegebenen Typs erstellt. Das Telemetrieelement wird gesendet, wenn Sie den Vorgang verwerfen oder wenn Sie `StopOperation` explizit aufrufen. Wenn Sie `RequestTelemetry` als Telemetrietyp verwenden, wird die Dauer („Duration“) auf das Zeitintervall zwischen Start und Stopp festgelegt.
@@ -429,6 +425,8 @@ Vorgangskontexte können nicht geschachtelt werden. Wenn bereits ein Vorgangskon
 In der Suche wird mit dem Vorgangskontext die Liste **Verwandte Elemente** erstellt:
 
 ![Verwandte Elemente](./media/app-insights-api-custom-events-metrics/21.png)
+
+Weitere Informationen zur Nachverfolgung benutzerdefinierter Vorgänge finden Sie unter [application-insights-custom-operations-tracking.md].
 
 ### <a name="requests-in-analytics"></a>Anforderungen in Analytics 
 
@@ -488,13 +486,13 @@ Die SDKs viele Ausnahmen automatisch abfangen, müssen Sie TrackException nicht 
 
 In [Application Insights Analytics](app-insights-analytics.md) werden Ausnahmen in der Tabelle `exceptions` angezeigt.
 
-Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackException() nur einer übertragen wurde. Um die richtige Anzahl der Ausnahmen segmentiert nach Ausnahmetyp abzurufen, geben Sie beispielsweise folgenden Code ein:
+Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für die Eigenschaft `itemCount` ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackException() nur einer übertragen wurde. Um die richtige Anzahl der Ausnahmen segmentiert nach Ausnahmetyp abzurufen, geben Sie beispielsweise folgenden Code ein:
 
 ```
 exceptions | summarize sum(itemCount) by type
 ```
 
-Die meisten wichtigen Stapelinformationen sind bereits in separate Variablen extrahiert, Sie können jedoch die „Details“-Struktur analysieren, um weitere Informationen zu erhalten. Da es sich um eine dynamische Struktur handelt, sollten Sie das Ergebnis in den erwarteten Typ umwandeln. Beispiel:
+Die meisten wichtigen Stapelinformationen wurden bereits in separate Variablen extrahiert, Sie können jedoch die Struktur `details` analysieren, um weitere Informationen zu erhalten. Da es sich hierbei um eine dynamische Struktur handelt, muss das Ergebnis in den erwarteten Typ umgewandelt werden. Beispiel:
 
 ```AIQL
 exceptions
@@ -537,25 +535,24 @@ Unter [Search](app-insights-diagnostic-search.md) können Sie dann leicht alle N
 
 In [Application Insights Analytics](app-insights-analytics.md) werden Aufrufe von TrackTrace in der Tabelle `traces` angezeigt.
 
-Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackTrace() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl von Ablaufverfolgungsaufrufen sollten Sie daher Code wie `traces | summarize sum(itemCount)` verwenden.
+Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. „itemCount==10“ bedeutet beispielsweise, dass bei der Stichprobenentnahme von zehn `trackTrace()`-Aufrufen nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl von Ablaufverfolgungsaufrufen sollten Sie daher Code wie `traces | summarize sum(itemCount)` verwenden.
 
 ## <a name="trackdependency"></a>TrackDependency
 Verwenden Sie den TrackDependency-Aufruf zum Nachverfolgen der Antwortzeiten und der Erfolgsraten beim Aufrufen einer externen Codepassage. Die Ergebnisse werden in den Abhängigkeitsdiagrammen im Portal angezeigt.
 
 ```C#
-
-            var success = false;
-            var startTime = DateTime.UtcNow;
-            var timer = System.Diagnostics.Stopwatch.StartNew();
-            try
-            {
-                success = dependency.Call();
-            }
-            finally
-            {
-                timer.Stop();
-                telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
-            }
+var success = false;
+var startTime = DateTime.UtcNow;
+var timer = System.Diagnostics.Stopwatch.StartNew();
+try
+{
+    success = dependency.Call();
+}
+finally
+{
+    timer.Stop();
+    telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+}
 ```
 
 Beachten Sie, dass die Server-SDKs ein [Abhängigkeitsmodul](app-insights-asp-net-dependencies.md) enthalten, das bestimmte Abhängigkeitsaufrufe automatisch ermittelt und nachverfolgt (z.B. zu Datenbanken und REST-APIs). Sie müssen einen Agent auf dem Server installieren, damit das Modul funktioniert. Sie verwenden diesen Aufruf, um Aufrufe nachzuverfolgen, die durch die automatisierte Nachverfolgung nicht abgefangen werden, oder wenn Sie den Agent nicht installieren möchten.
@@ -599,12 +596,12 @@ Wenn sich Benutzer bei Ihrer App anmelden, erhalten Sie einen genaueren Zählwer
 *JavaScript*
 
 ```JS
-    // Called when my app has identified the user.
-    function Authenticated(signInId) {
-      var validatedId = signInId.replace(/[,;=| ]+/g, "_");
-      appInsights.setAuthenticatedUserContext(validatedId);
-      ...
-    }
+// Called when my app has identified the user.
+function Authenticated(signInId) {
+    var validatedId = signInId.replace(/[,;=| ]+/g, "_");
+    appInsights.setAuthenticatedUserContext(validatedId);
+    ...
+}
 ```
 
 In einer ASP.NET-MVC-Webanwendung, beispielsweise:
@@ -753,7 +750,7 @@ Wenn es für Sie praktischer ist, können Sie die Parameter eines Ereignisses in
 
 In [Analytics](app-insights-analytics.md) werden benutzerdefinierte Metriken und Eigenschaften in den Attributen `customMeasurements` und `customDimensions` jedes Telemetriedatensatzes angezeigt.
 
-Wenn Sie der Anforderungstelemetrie beispielsweise die Eigenschaft „game“ hinzugefügt haben, werden bei dieser Abfrage die Vorkommen verschiedener Werte von „game“ gezählt und der Durchschnitt der benutzerdefinierten Metrik „score“ angezeigt:
+Wenn Sie der Anforderungstelemetrie beispielsweise die Eigenschaft „game“ hinzugefügt haben, werden bei dieser Abfrage die Vorkommen verschiedener Werte von „game“ gezählt, und der Durchschnitt der benutzerdefinierten Metrik „score“ wird angezeigt:
 
 ```
 requests
@@ -920,7 +917,7 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 
 * **Component**: Die App und ihre Version.
 * **Device**: Daten zu dem Gerät, auf dem die App ausgeführt wird. (In Web-Apps ist dies das Server- oder Clientgerät, von dem die Telemetriedaten gesendet werden.)
-* **InstrumentationKey**: Die Application Insights-Ressource in Azure, auf der die Telemetriedaten angezeigt werden. In der Regel wird diese aus der Datei „ApplicationInsights.config“ übernommen.
+* **InstrumentationKey**: Die Application Insights-Ressource in Azure, in der die Telemetriedaten angezeigt werden. In der Regel wird diese aus der Datei „ApplicationInsights.config“ übernommen.
 * **Location**: Der geografische Standort des Geräts.
 * **Operation** In Web-Apps die aktuelle HTTP-Anforderung. In anderen App-Typen können Sie dies zur Gruppierung von Ereignissen festlegen.
   * **Id**: Ein generierter Wert, der verschiedene Ereignisse korreliert, sodass Sie beim Untersuchen eines Ereignisses in der Diagnosesuche verwandte Elemente finden können.

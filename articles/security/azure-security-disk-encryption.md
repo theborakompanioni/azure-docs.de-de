@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 35a86a91ee60a81b5c743067fcd97da0f2dcc8f1
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 09de76a9147466f002ceb7faa5b1f9a10a2af75b
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
@@ -187,16 +186,16 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 * Die Azure-Plattform benötigt Zugriff auf die Verschlüsselungsschlüssel oder Geheimnisse in Ihrem Schlüsseltresor, um sie für den virtuellen Computer zur Verfügung zu stellen, wenn er startet und das Betriebssystemvolume entschlüsselt. Um Berechtigungen für die Azure-Plattform zu erteilen, legen Sie die **EnabledForDiskEncryption**-Eigenschaft im Schlüsseltresor fest. Weitere Informationen finden Sie im Anhang unter **Einrichten und Konfigurieren Ihres Schlüsseltresors für Azure Disk Encryption**.
 * Ihre URLs für das Geheimnis des Schlüsseltresors und den Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) müssen mit einer Versionsangabe versehen sein. Azure erzwingt diese Einschränkung der Versionsverwaltung. Gültige URLs für Geheimnisse und KEKs finden Sie in den folgenden Beispielen:
 
-  * Beispiel einer gültigen URL für einen geheimen Schlüssel:   *https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Beispiel einer gültigen KEK-URL:   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Beispiel für eine gültige Geheimnis-URL: *https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Beispiel für eine gültige KEK-URL: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Azure Disk Encryption unterstützt nicht die Angabe von Portnummern als Teil von URLs für Schlüsseltresorgeheimnisse und KEK-URLs. Beispiele für nicht unterstützte und unterstützte Schlüsseltresor-URLs finden Sie hier:
 
-  * Nicht akzeptierte Schlüsseltresor-URL:  *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Akzeptierte Schlüsseltresor-URL:   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Unzulässige Schlüsseltresor-URL: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Zulässige Schlüsseltresor-URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Die virtuellen IaaS-Computer müssen die folgenden Anforderungen an die Netzwerkendpunktkonfiguration erfüllen, um Azure Disk Encryption zu aktivieren:
-  * Um ein Token für die Verbindungsherstellung mit Ihrem Schlüsseltresor zu erhalten, muss der virtuelle IaaS-Computer eine Verbindung mit dem Azure Active Directory-Endpunkt \[Login.windows.net\] herstellen können.
+  * Um ein Token für die Verbindungsherstellung mit Ihrem Schlüsseltresor zu erhalten, muss der virtuelle IaaS-Computer eine Verbindung mit dem Azure Active Directory-Endpunkt \[login.microsoftonline.com\] herstellen können.
   * Um die Verschlüsselungsschlüssel in Ihren Schlüsseltresor schreiben zu können, muss der virtuelle IaaS-Computer eine Verbindung mit dem Schlüsseltresorendpunkt herstellen können.
   * Der virtuelle IaaS-Computer muss eine Verbindung mit dem Azure-Speicherendpunkt herstellen können, an dem das Azure-Erweiterungsrepository gehostet wird, sowie mit einem Azure Storage-Konto, das die VHD-Dateien hostet.
 
@@ -214,14 +213,23 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
   * Um die Azure-CLI zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie im Abschnitt zum [Installieren und Konfigurieren der Azure-CLI](../cli-install-nodejs.md).
   * Informationen zur Verwendung der Azure-CLI für Mac, Linux und Windows mit Azure Resource Manager finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus](../virtual-machines/azure-cli-arm-commands.md).
 
-* Sie müssen den Parameter „-skipVmBackup“ angeben, wenn Sie das Azure Disk Encryption-Power-Shell-Cmdlet „Set-AzureRmVMDiskEncryptionExtension“ oder den CLI-Befehl zum Aktivieren der Verschlüsselung für Azure-VMs auf verwalteten Datenträgern verwenden.
+* Beim Verschlüsseln eines verwalteten Datenträgers besteht eine obligatorische Voraussetzung darin, eine Momentaufnahme des verwalteten Datenträgers oder eine Sicherung des Datenträgers außerhalb von Azure Disk Encryption zu erstellen, bevor die Verschlüsselung aktiviert wird.  Bei einer fehlenden Sicherung kann ein unerwarteter Fehler während der Verschlüsselung dazu führen, dass der Datenträger und die VM ohne Wiederherstellungsoption nicht mehr zugänglich sind.  Für Set-AzureRmVMDiskEncryptionExtension werden verwaltete Datenträger derzeit nicht gesichert. Es tritt ein Fehler auf, wenn dieses Element für einen verwalteten Datenträger verwendet wird, sofern nicht der Parameter „-skipVmBackup“ angegeben ist.  Die Verwendung dieses Parameters ist unsicher, wenn außerhalb von Azure Disk Encryption nicht bereits eine Sicherung erstellt wurde.   Wenn der Parameter „-skipVmBackup“ angegeben wurde, erstellt das Cmdlet vor der Verschlüsselung keine Sicherung des verwalteten Datenträgers.  Aus diesem Grund wird es als obligatorische Voraussetzung angesehen sicherzustellen, dass eine Sicherung der VM mit dem verwalteten Datenträger vorhanden ist, bevor Azure Disk Encryption aktiviert wird, falls später eine Wiederherstellung erforderlich ist.  
 > [!NOTE]
- > Wenn Sie den Parameter „-skipVmBackup“ nicht angeben, misslingt der Schritt zur Aktivierung der Verschlüsselung.
+ > Der Parameter „-skipVmBackup“ sollte nur verwendet werden, wenn außerhalb von Azure Disk Encryption bereits eine Momentaufnahme oder eine Sicherung erstellt wurde. 
 
 * Die Azure Disk Encryption-Lösung verwendet für virtuelle Windows-IaaS-Computer die externe BitLocker-Schlüsselschutzvorrichtung. Für VMs, die der Domäne beigetreten sind, sollten Sie keine Gruppenrichtlinien nutzen, mit denen TPM-Schutzvorrichtungen durchgesetzt werden. Informationen zur Gruppenrichtlinie „BitLocker ohne kompatibles TPM zulassen“ finden Sie unter [BitLocker Group Policy Reference](https://technet.microsoft.com/library/ee706521) (Referenz zur BitLocker-Gruppenrichtlinie).
-* Informationen zum Erstellen einer Azure AD-Anwendung, zum Erstellen eines neuen Schlüsseltresors oder zum Einrichten eines vorhandenen Schlüsseltresors und Aktivieren der Verschlüsselung finden Sie auf der Seite zum für [Azure Disk Encryption erforderlichen PowerShell-Skript](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
+* Die BitLocker-Richtlinie auf in die Domäne eingebundenen virtuellen Computern mit einer benutzerdefinierten Gruppenrichtlinie muss die folgende Einstellung enthalten: `Configure user storage of bitlocker recovery information -> Allow 256-bit recovery key`. Für Azure Disk Encryption tritt ein Fehler auf, wenn die Einstellungen für die benutzerdefinierte Gruppenrichtlinie für BitLocker inkompatibel sind. Auf Computern ohne korrekte Richtlinieneinstellung ist es unter Umständen erforderlich, die neue Richtlinie anzuwenden, die Aktualisierung der neuen Richtlinie zu erzwingen (gpupdate.exe /force) und anschließend einen Neustart durchzuführen.  
+* Informationen zum Erstellen einer Azure AD-Anwendung, zum Erstellen eines neuen Schlüsseltresors oder zum Einrichten eines vorhandenen Schlüsseltresors und Aktivieren der Verschlüsselung finden Sie auf der Seite zum für [Azure Disk Encryption erforderlichen PowerShell-Skript](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
 * Um die Datenträgerverschlüsselung mithilfe der Azure-CLI zu konfigurieren, benötigen Sie [dieses Bash-Skript](https://github.com/ejarvi/ade-cli-getting-started).
 * Wenn Sie mit Azure Disk Encryption verschlüsselte virtuelle Computer mit dem Azure Backup-Dienst sichern und wiederherstellen möchten, verschlüsseln Sie Ihre VMs mithilfe der Azure Disk Encryption-Schlüsselkonfiguration. Der Azure Backup-Dienst unterstützt nur virtuelle Computer, die mit der KEK-Konfiguration verschlüsselt sind. Siehe [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup-Verschlüsselung](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).
+
+* Beachten Sie beim Verschlüsseln eines Volumes mit Linux-Betriebssystem, dass derzeit am Ende des Prozesses ein VM-Neustart erforderlich ist. Der Neustart kann per Portal, PowerShell oder CLI durchgeführt werden.   Zum Nachverfolgen des Verschlüsselungsstatus können Sie regelmäßig die Statusmeldung abfragen, die von „Get-AzureRmVMDiskEncryptionStatus“ (https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) zurückgegeben wird.  Nach Abschluss der Verschlüsselung wird dies in der Statusmeldung angegeben, die von diesem Befehl zurückgegeben wird.  Beispiel: „ProgressMessage: OS disk successfully encrypted, please reboot the VM“ (ProgressMessage: Verschlüsselung des Betriebssystemdatenträgers erfolgreich, VM neu starten). Die VM kann dann neu gestartet und verwendet werden.  
+
+* In Azure Disk Encryption für Linux müssen Datenträger vor der Verschlüsselung über ein bereitgestelltes Dateisystem verfügen.
+
+* Rekursiv bereitgestellte Datenträger werden von Azure Disk Encryption für Linux nicht unterstützt. Wenn für das Zielsystem beispielsweise ein Datenträger unter „/foo/bar“ und dann ein weiterer Datenträger unter „/foo/bar/baz“ bereitgestellt wurde, ist die Verschlüsselung von „/foo/bar/baz“ erfolgreich, während dies für „/foo/bar“ nicht der Fall ist. 
+
+* Azure Disk Encryption wird nur für Katalogimages unterstützt, die die oben erwähnten Voraussetzungen erfüllen.  Benutzerdefinierte Images werden aufgrund von benutzerdefinierten Partitionsschemas und Prozessverhalten, die auf diesen Images ggf. vorhanden sind, nicht unterstützt.  Auch auf Katalogimages basierende VMs, die die Voraussetzungen anfänglich erfüllt haben, aber nach der Erstellung geändert wurden, können inkompatibel sein.  Aus diesem Grund besteht das vorgeschlagene Verfahren zum Verschlüsseln einer Linux-VM darin, mit einem sauberen Katalogimage zu beginnen, die VM zu verschlüsseln und der VM dann nach Bedarf benutzerdefinierte Software oder Daten hinzuzufügen.  
 
 > [!NOTE]
 > Das Sichern und Wiederherstellen verschlüsselter virtueller Computer wird nur für virtuelle Computer unterstützt, die mit der KEK-Konfiguration (Key Encryption Key, Schlüsselverschlüsselungsschlüssel) verschlüsselt sind. Für virtuelle Computer ohne KEK-Verschlüsselung wird es nicht unterstützt. „KEK“ ist ein optionaler Parameter zum Aktivieren der VM.
@@ -734,10 +742,8 @@ Nutzen Sie die ARM-Vorlage für verwaltete Azure-Datenträger zum Erstellen eine
  [Create a new encrypted Windows IaaS Managed Disk VM from gallery image] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
 
   > [!NOTE]
-  >Sie müssen den Parameter „-skipVmBackup“ angeben, wenn Sie das Azure Disk Encryption-Power-Shell-Cmdlet „Set-AzureRmVMDiskEncryptionExtension“ oder den CLI-Befehl zum Aktivieren der Verschlüsselung für Azure-VMs auf verwalteten Datenträgern verwenden.
-  >
-  >Es empfiehlt sich, Ihre ausgeführte VM-Instanz zu sichern, ehe Sie die Verschlüsselung aktivieren. Führen Sie dazu das PowerShell-Cmdlet „Set-AzureRmVMDiskEncryptionExtension“ auf Ihrer Linux-VM auf verwalteten Datenträgern aus.
-
+  >Es ist obligatorisch, außerhalb von Azure Disk Encryption und vor der Aktivierung von Azure Disk Encryption eine Momentaufnahme bzw. Sicherung einer VM zu erstellen, die auf einem verwalteten Datenträger basiert.  Sie können über das Portal eine Momentaufnahme des verwalteten Datenträgers erstellen oder Azure Backup verwenden.  Mit Sicherungen ist dafür gesorgt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt.  Nach der Erstellung einer Sicherung kann das Set-AzureRmVMDiskEncryptionExtension-Cmdlet verwendet werden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln.  Dieser Befehl führt für VMs, die auf verwalteten Datenträgern basieren, zu einem Fehler, bis eine Sicherung erstellt und dieser Parameter angegeben wurde.    
+ 
 ### <a name="update-encryption-settings-of-an-existing-encrypted-non-premium-vm"></a>Aktualisieren von Verschlüsselungseinstellungen einer vorhandenen verschlüsselten VM ohne Storage Premium
   Verwenden Sie die vorhandenen unterstützten Azure Disk Encryption-Schnittstellen für die VM-Ausführung (PowerShell-Cmdlets, CLI oder ARM-Vorlagen) zum Aktualisieren der Verschlüsselungseinstellungen wie AAD-Client-ID/-Geheimnis, Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK), BitLocker-Verschlüsselungsschlüssel für Windows-VMs oder Passphrase für Linux-VM usw. Die Einstellung zum Aktualisieren der Verschlüsselung wird nur für VMs ohne Storage Premium unterstützt. Für Storage Premium-VMs wird sie nicht unterstützt.
 
