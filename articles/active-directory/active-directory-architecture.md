@@ -12,14 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2017
+ms.date: 08/02/2017
 ms.author: markvi
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: 5c60fa737c0133482af8b653f795bf9086c39969
 ms.contentlocale: de-de
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Grundlegendes zur Azure Active Directory-Architektur
@@ -31,10 +30,10 @@ Mit Azure AD können Sie Benutzer und Gruppen erstellen und verwalten und Berech
 Die geografisch verteilte Architektur von Azure AD bietet umfassende Funktionen für Überwachung, automatisierte Umleitungen, Failover und Wiederherstellung, damit wir für unsere Kunden eine professionelle Verfügbarkeit und Leistung bereitstellen können.
 
 In diesem Artikel werden die folgenden Architekturelemente behandelt:
- *    Design der Dienstarchitektur
- *    Skalierbarkeit 
- *    Fortlaufende Verfügbarkeit
- *    Rechenzentren
+ *  Design der Dienstarchitektur
+ *  Skalierbarkeit 
+ *  Fortlaufende Verfügbarkeit
+ *  Rechenzentren
 
 ### <a name="service-architecture-design"></a>Design der Dienstarchitektur
 Zum Erstellen eines skalierbaren und hoch verfügbaren Systems mit umfassenden Daten werden am häufigsten unabhängige Bausteine oder Skalierungseinheiten für die Azure AD-Datenschicht verwendet. Skalierungseinheiten werden als *Partitionen* bezeichnet. 
@@ -87,7 +86,7 @@ Azure AD wird basierend auf Rechenzentren mit den folgenden Merkmalen betrieben:
 
  * Authentifizierung, Graph und andere AD-Dienste sind hinter dem Gatewaydienst angeordnet. Das Gateway verwaltet den Lastenausgleich dieser Dienste. Es wird automatisch ein Failover durchgeführt, wenn mit transaktionalen Integritätstests fehlerhafte Server erkannt werden. Basierend auf diesen Integritätstests wird Datenverkehr vom Gateway dynamisch an fehlerfreie Rechenzentren weitergeleitet.
  * Für *Lesevorgänge* verfügt das Verzeichnis über sekundäre Replikate und entsprechende Front-End-Dienste in einer Aktiv/Aktiv-Konfiguration, die in mehreren Rechenzentren betrieben wird. Wenn ein gesamtes Rechenzentrum ausfällt, wird der Datenverkehr automatisch an ein anderes Rechenzentrum weitergeleitet.
- *    Für *Schreibvorgänge* führt das Verzeichnis für primäre Replikate (Master) ein Failover für alle Rechenzentren durch, indem Schritte für geplante Failover (neues primäres Replikat wird mit altem primärem Replikat synchronisiert) oder Notfallfailover ausgeführt werden. Die Dauerhaftigkeit der Daten wird erreicht, indem ein Commit in mindestens zwei Rechenzentren repliziert wird.
+ *  Für *Schreibvorgänge* führt das Verzeichnis für primäre Replikate (Master) ein Failover für alle Rechenzentren durch, indem Schritte für geplante Failover (neues primäres Replikat wird mit altem primärem Replikat synchronisiert) oder Notfallfailover ausgeführt werden. Die Dauerhaftigkeit der Daten wird erreicht, indem ein Commit in mindestens zwei Rechenzentren repliziert wird.
 
 **Datenkonsistenz**
 

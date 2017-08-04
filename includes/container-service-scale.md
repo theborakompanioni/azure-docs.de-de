@@ -32,7 +32,7 @@ Um die Anzahl von Agent-Knoten zu ändern, führen Sie den `az acs scale`-Befehl
 Um z.B. die Anzahl von Agents im vorherigen Cluster auf 10 zu ändern, geben Sie folgenden Befehl ein:
 
 ```azurecli
-azure acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
+az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
 Azure CLI 2.0 gibt eine JSON-Zeichenfolge zurück, die die neue Konfiguration des Containerdiensts darstellt, einschließlich der neuen Anzahl von Agents.

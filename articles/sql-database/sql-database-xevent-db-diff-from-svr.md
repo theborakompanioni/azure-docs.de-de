@@ -126,7 +126,7 @@ Für erweiterte Ereignisse gibt es zusätzliche DMVs, die Azure SQL-Datenbank un
 
 Sie können mithilfe einer einfachen SQL **SELECT** -Anweisung eine Liste der verfügbaren Ereignisse, Aktionen und Ziele abrufen.
 
-```tsql
+```sql
 SELECT
         o.object_type,
         p.name         AS [package_name],

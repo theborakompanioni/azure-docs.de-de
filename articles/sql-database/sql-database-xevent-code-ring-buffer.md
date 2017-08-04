@@ -22,7 +22,6 @@ ms.openlocfilehash: a49be9d5037af120e429a9cc7ae77ceda5e03236
 ms.contentlocale: de-de
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank
 
@@ -67,7 +66,7 @@ Das folgende Codebeispiel für einen Ringpuffer kann mit kleineren Änderungen s
 
 &nbsp;
 
-```tsql
+```sql
 GO
 ----  Transact-SQL.
 ---- Step set 1.
@@ -324,7 +323,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 Wenn Sie mit der Verwendung Ihres Ringpuffers fertig sind, können Sie ihn entfernen und seine Ressourcen freigeben. Verwenden Sie dazu wie nachfolgend gezeigt einen **ALTER**-Befehl:
 
-```tsql
+```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     DROP TARGET package0.ring_buffer;
@@ -334,7 +333,7 @@ GO
 
 Die Definition Ihrer Ereignissitzung wird aktualisiert, jedoch nicht verworfen. Sie können zu einem späteren Zeitpunkt eine weitere Instanz des Ringpuffers zu Ihrer Ereignissitzung hinzufügen.
 
-```tsql
+```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     ADD TARGET
