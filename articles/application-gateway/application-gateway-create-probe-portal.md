@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a12e9d342daf41ee9f83cadb9e29ee867be055de
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 65e9bba4ce9ac41ae2a9a8c3fa7f661165fc1403
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal
@@ -50,7 +49,7 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
 
 1. Stellen Sie auf dem Blatt **Integritätstest hinzufügen** die erforderlichen Informationen für den Test bereit, und klicken Sie anschließend auf **OK**.
 
-  |Einstellung | **Wert** | **Details**|
+  |**Einstellung** | **Wert** | **Details**|
   |---|---|---|
   |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
   |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird.|
@@ -74,7 +73,7 @@ Nachdem der Test erstellt wurde, können Sie ihn jetzt zum Gateway hinzufügen. 
 1. Aktivieren Sie auf dem Blatt mit den Einstellungen für **appGatewayBackEndHttpSettings** das Kontrollkästchen **Benutzerdefinierten Test verwenden**, und wählen Sie den Test aus, den Sie im Abschnitt [Erstellen des Tests](#createprobe) in der Dropdownliste **Benutzerdefinierter Test** erstellt haben.
 Wenn Sie fertig sind, klicken Sie auf **Speichern**, um die Einstellungen anzuwenden.
 
-Der Standardtest prüft den Standardzugriff auf die Webanwendung. Nachdem nun ein benutzerdefinierter Test erstellt wurde, verwendet das Anwendungsgateway den benutzerdefinierten Pfad, um die Integrität der Back-End-Server zu überwachen. Das Anwendungsgateway überprüft den im Test angegebenen Pfad basierend auf den definierten Kriterien. Wenn der Aufruf an „host:Port/path“ keine HTTP-Statusantwort 200-299 zurückgibt, wird der Server aus der Rotation herausgenommen, nachdem der Fehlerschwellenwert erreicht ist. Die fehlerhafte Instanz wird weiterhin überprüft, um festzustellen, wann die Integrität wiederhergestellt ist. Sobald die Instanz dem fehlerfreien Serverpool wieder hinzugefügt wurde, wird wieder Datenverkehr an die Instanz übertragen, und die Instanz wird wie üblich in den vom Benutzer angegebenen Intervallen getestet.
+Der Standardtest prüft den Standardzugriff auf die Webanwendung. Nachdem nun ein benutzerdefinierter Test erstellt wurde, verwendet das Anwendungsgateway den benutzerdefinierten Pfad, um die Integrität der Back-End-Server zu überwachen. Das Anwendungsgateway überprüft den im Test angegebenen Pfad basierend auf den definierten Kriterien. Wenn der Aufruf an „host:Port/path“ keine HTTP-Statusantwort 200-399 zurückgibt, wird der Server aus der Rotation herausgenommen, nachdem der Fehlerschwellenwert erreicht ist. Die fehlerhafte Instanz wird weiterhin überprüft, um festzustellen, wann die Integrität wiederhergestellt ist. Sobald die Instanz dem fehlerfreien Serverpool wieder hinzugefügt wurde, wird wieder Datenverkehr an die Instanz übertragen, und die Instanz wird wie üblich in den vom Benutzer angegebenen Intervallen getestet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

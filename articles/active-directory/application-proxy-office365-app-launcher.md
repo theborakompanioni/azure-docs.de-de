@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 07/06/2017
 ms.author: kgremban
+ms.reviewer: harshja
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 31e8e39580ed83f13fd3ffb9981221765063a0b7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 194367028c3c2c571dd8645a794f67a0c3a21d4c
 ms.contentlocale: de-de
-ms.lasthandoff: 04/21/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -35,8 +36,6 @@ Mithilfe des Azure AD PowerShell-Moduls können Sie URLs für benutzerdefinierte
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-### <a name="determine-the-home-page-url"></a>Bestimmen der URL der Startseite
-
 Bevor Sie die URL der Startseite einrichten, beachten Sie Folgendes:
 
 * Bei dem angegebenen Pfad muss es sich um einen Unterdomänenpfad der Stammdomänen-URL handeln.
@@ -44,6 +43,16 @@ Bevor Sie die URL der Startseite einrichten, beachten Sie Folgendes:
   Falls die URL der Stammdomäne beispielsweise „https://apps.contoso.com/app1/“ lautet, muss die URL der Startseite, die Sie konfigurieren, mit „https://apps.contoso.com/app1/“ beginnen.
 
 * Nach einer Änderung der veröffentlichten App wird der Wert der Startseiten-URL unter Umständen zurückgesetzt. Wenn Sie die App in Zukunft aktualisieren, sollten Sie die URL der Startseite erneut überprüfen und bei Bedarf aktualisieren.
+
+## <a name="change-the-home-page-in-the-azure-portal"></a>Ändern der Startseite im Azure-Portal
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
+2. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen**, und wählen Sie Ihre Anwendung aus der Liste aus. 
+3. Wählen Sie in den Einstellungen die Option **Eigenschaften** aus.
+4. Aktualisieren Sie das Feld **URL der Startseite** mit dem neuen Pfad. 
+5. Wählen Sie **Speichern** aus.
+
+## <a name="change-the-home-page-with-powershell"></a>Ändern der Startseite mit PowerShell
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Installieren des Azure AD PowerShell-Moduls
 
@@ -59,7 +68,7 @@ Führen Sie diese Schritte aus, um das Paket zu installieren:
     Wenn Sie den Befehl als Benutzer ohne Administratorrechte ausführen, verwenden Sie die Option `-scope currentuser`.
 2. Wählen Sie während der Installation **J** aus, um zwei Pakete von „Nuget.org“ zu installieren. Beide Pakete sind erforderlich. 
 
-## <a name="step-1-find-the-objectid-of-the-app"></a>Schritt 1: Ermitteln der Objekt-ID der App
+### <a name="find-the-objectid-of-the-app"></a>Ermitteln der Objekt-ID der App
 
 Rufen Sie die Objekt-ID der App ab, und suchen Sie in der App nach ihrer Startseite.
 
@@ -87,7 +96,7 @@ Rufen Sie die Objekt-ID der App ab, und suchen Sie in der App nach ihrer Startse
     ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
-## <a name="step-2-update-the-home-page-url"></a>Schritt 2: Aktualisieren der URL der Startseite
+### <a name="update-the-home-page-url"></a>Schritt 2: Aktualisieren der URL der Startseite
 
 Führen Sie im gleichen PowerShell-Modul, das Sie für Schritt 1 verwendet haben, folgende Schritte aus:
 

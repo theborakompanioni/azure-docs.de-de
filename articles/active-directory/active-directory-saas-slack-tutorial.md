@@ -11,257 +11,263 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/08/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: a1d7c2f01d3bf345f63077c4d42d79476235e941
-ms.lasthandoff: 04/07/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 5aca630b2077d3f7d4ce9273ee668ed6a5f9843d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Tutorial: Azure Active Directory-Integration mit Slack
 
 In diesem Tutorial erfahren Sie, wie Sie Slack in Azure Active Directory (Azure AD) integrieren.
 
-Bei der Integration von Slack in Azure AD haben Sie folgende Möglichkeiten:
+Die Integration von Slack in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Slack hat.
-* Ermöglichen Sie Benutzern das automatische einmalige Anmelden (SSO) an Slack mit ihren Azure AD-Konten.
-* Verwalten Sie Ihre Konten zentral im Azure-Portal.
+- Sie können in Azure AD steuern, wer Zugriff auf Slack hat.
+- Sie können Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Slack anzumelden (Sigle Sign-On, SSO; einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Slack konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-* Ein SSO-fähiges Slack-Abonnement
+- Ein Azure AD-Abonnement
+- Ein Slack-Abonnement, für das einmaliges Anmelden aktiviert ist
 
->[!NOTE]
->Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
->
->
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* Verwenden Sie Ihre Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
-
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung. Das zu befolgende Szenario besteht aus zwei Hauptbausteinen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-* Hinzufügen von Slack aus dem Katalog
-* Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD
+1. Hinzufügen von Slack aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="add-slack-from-the-gallery"></a>Hinzufügen von Slack aus dem Katalog
-Um die Integration von Slack in Azure AD zu konfigurieren, fügen Sie Slack wie folgt über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzu:
+## <a name="adding-slack-from-the-gallery"></a>Hinzufügen von Slack aus dem Katalog
+Um die Integration von Slack in Azure AD zu konfigurieren, müssen Sie Slack über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie im linken Bereich auf die Schaltfläche **Azure Active Directory**.
+**Führen Sie die folgenden Schritte aus, um Slack über den Katalog hinzuzufügen:**
 
-    ![Schaltfläche „Azure Active Directory“][1]
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-3. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+    ![Active Directory][1]
 
-    ![Schaltfläche „Alle Anwendungen“ auf dem Blatt „Unternehmensanwendungen“][2]
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-4. Klicken Sie oben im Dialogfeld **Alle Anwendungen** auf **Hinzufügen**.
+    ![Anwendungen][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Hinzufügen“ im Dialogfeld „Alle Anwendungen“][3]
+    ![Anwendungen][3]
 
-5. Geben Sie in das Suchfeld den Suchbegriff **Slack** ein.
+4. Geben Sie in das Suchfeld den Suchbegriff **Slack** ein.
 
-    ![Suchfeld „Eine Anwendung hinzufügen“](./media/active-directory-saas-slack-tutorial/tutorial_slack_000.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-slack-tutorial/tutorial_slack_search.png)
 
-6. Wählen Sie im Ergebnisbereich die Option **Slack**, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+5. Wählen Sie im Ergebnisbereich die Option **Slack** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Auswählen von „Slack“ im Ergebnisbereich](./media/active-directory-saas-slack-tutorial/tutorial_slack_0001.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-slack-tutorial/tutorial_slack_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Slack basierend auf einem Testbenutzer namens Britta Simon.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit Slack.
 
-Damit SSO funktioniert, muss von Azure AD eine Linkbeziehung zwischen dem Azure AD-Benutzer und seiner Entsprechung in Slack hergestellt werden. Sie stellen die Linkbeziehung her, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Slack zuweisen.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Slack als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Slack muss eine Linkbeziehung eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Slack müssen Sie die folgenden Bausteine ausführen:
+Weisen Sie in Slack den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
-1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on), um Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. [Erstellen Sie einen Azure AD-Testbenutzer](#creating-an-azure-ad-test-user), um das einmalige Anmelden für Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. [Erstellen Sie einen Slack-Testbenutzer](#creating-a-slack-test-user), um für die Azure AD-Benutzerin Britta Simon eine Entsprechung in Slack einzurichten.
-4. [Weisen Sie den Azure AD-Testbenutzer zu](#assigning-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Testen des einmaligen Anmeldens](#testing-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Slack müssen Sie die folgenden Bausteine ausführen:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Slack-Testbenutzers](#creating-a-slack-test-user)**, um ein Pendant von Britta Simon in Slack zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-In diesem Abschnitt aktivieren Sie wie folgt das einmalige Anmelden von Azure AD im Azure-Portal und führen die entsprechende Konfiguration in Ihrer Slack-Anwendung durch:
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Slack-Anwendung.
+
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Slack die folgenden Schritte aus:**
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Slack** auf **Einmaliges Anmelden**.
 
-    ![Seite für die Integration der Slack-Anwendung][4]
+    ![Einmaliges Anmelden konfigurieren][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** in der Liste **Modus** die Option **SAML-basierte Anmeldung** aus, um das einmalige Anmelden zu aktivieren.
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_samlbase.png)
 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-slack-tutorial/tutorial_slack_01.png)
+3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Slack** aus:
 
-3. Führen Sie unter **Domäne und URLs für Slack** die folgenden Schritte aus:
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_url.png)
 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-slack-tutorial/tutorial_slack_02.png)
-  1. Geben Sie im Feld **Anmelde-URL** eine URL mit der Benennungskonvention _https://<company name>.slack.com_ ein.
-  2. Geben Sie im Feld **Bezeichner** die URL **https://slack.com** ein.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.slack.com`.
 
-     >[!NOTE]
-     >Die vorangehenden Werte sind keine echten Werte. Hier empfehlen wir Ihnen, für die URL und den Bezeichner eindeutige Werte zu verwenden. Später aktualisieren Sie die Werte mit der tatsächlichen URL und dem Bezeichner. Wenden Sie sich an das [Supportteam von Slack](https://slack.com/help/contact), um diese Werte zu erhalten.
-     >
-     >
+    b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://slack.com`.
 
-4. Die Slack-Anwendung erwartet, dass die SAML-Assertionen (Security Assertion Markup Language) in einem bestimmten Format angezeigt werden. Konfigurieren Sie die Ansprüche, und verwalten Sie die Werte der Attribute im Abschnitt **Benutzerattribute** der Seite für die Integration der Slack-Anwendung. Dies ist im folgenden Screenshot dargestellt:
+    > [!NOTE] 
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von Slack](https://slack.com/help/contact), um diesen Wert zu erhalten.
+     
+4. Die Slack-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+    
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute.png)
 
-    ![Konfigurieren von Ansprüchen im Abschnitt „Benutzerattribute“](./media/active-directory-saas-slack-tutorial/tutorial_slack_03.png)
-
-5. Wählen Sie im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute** unter **Benutzer-ID** die Option **user.mail**. Führen Sie für jede Zeile der Tabelle die folgenden Schritte aus:
-
+5. Wählen Sie im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute** den Eintrag **user.mail** als **Benutzerbezeichner** aus, und führen Sie für jede in der folgenden Tabelle aufgeführte Zeile die folgenden Schritte aus:
+    
     | Attributname | Attributwert |
-    | --- | --- |    
-    | User.Email | user.userprincipalname |
+    | --- | --- |
     | first_name | user.givenname |
     | last_name | user.surname |
-    | User.Username | extractmailprefix([Benutzerprinzipalname]) |
+    | User.Email | user.mail |  
+    | User.Username | user.userprincipalname |
 
-    1. Klicken Sie auf die Schaltfläche **Attribut hinzufügen**.
+    a. Klicken Sie auf **Attribut**, um das Dialogfeld **Attribut bearbeiten** zu öffnen, und führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_04.png)
-    2. Geben Sie im Dialogfeld **Attribut hinzufügen** im Feld **Name** den ersten Namen aus der Spalte **Attributname** der Tabelle ein.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute1.png)
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_05.png)
-    3. Geben Sie im Feld **Wert** den ersten Wert aus der Spalte **Attributwert** der Tabelle ein.
-    4. Klicken Sie auf **OK**.
-    5. Wiederholen Sie die Schritte „a“ bis „d“ für die nächsten drei Tabellenzeilen.
+    a. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+    
+    b. Wählen Sie in der Liste **Wert** den für diese Zeile angezeigten Attributwert aus.
+    
+    c. Klicken Sie auf **OK**
 
-6. Klicken Sie unter **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
+6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Erstellen eines Zertifikats](./media/active-directory-saas-slack-tutorial/tutorial_slack_06.png)     
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_certificate.png)
 
-7. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf die Schaltfläche **Kalender**, wählen Sie ein Ablaufdatum aus, und klicken Sie dann auf **Speichern**.
+7. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Auswählen eines Ablaufdatums für das Zertifikat](./media/active-directory-saas-slack-tutorial/tutorial_general_300.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_general_400.png)
 
-8. Aktivieren Sie unter **SAML-Signaturzertifikat** das Kontrollkästchen **Neues Zertifikat aktivieren**, und klicken Sie dann auf **Speichern**.
+8. Klicken Sie im Abschnitt **Slack-Konfiguration** auf **Slack konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Aktivieren des SAML-Signaturzertifikats](./media/active-directory-saas-slack-tutorial/tutorial_slack_07.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png) 
 
-9. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
+9.  Melden Sie sich in einem anderen Webbrowserfenster bei der Slack-Unternehmenswebsite als Administrator an.
 
-    ![Popupfenster „Rolloverzertifikat“](./media/active-directory-saas-slack-tutorial/tutorial_general_400.png)
+10.  Navigieren Sie zu **Microsoft Azure AD** und dann zu **Teameinstellungen**.
 
-10. Klicken Sie unter **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem lokalen Datenträger.
+     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_001.png)
 
-    ![Speichern des Zertifikats auf Ihrem lokalen Datenträger](./media/active-directory-saas-slack-tutorial/tutorial_slack_08.png)
+11.  Klicken Sie im Abschnitt **Teameinstellungen** auf die Registerkarte **Authentifizierung**, und klicken Sie dann auf **Einstellungen ändern**.
 
-11. Klicken Sie unter **Slack-Konfiguration** auf **Slack konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
+     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
 
-    ![Klicken auf „Slack konfigurieren“ zum Öffnen des Fensters „Anmeldung konfigurieren“](./media/active-directory-saas-slack-tutorial/tutorial_slack_09.png)
+12. Führen Sie im Dialogfeld **SAML-Authentifizierungseinstellungen** die folgenden Schritte aus:
 
-    ![Fenster „Anmeldung konfigurieren“](./media/active-directory-saas-slack-tutorial/tutorial_slack_10.png)
+    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_003.png)
 
-12. Öffnen Sie ein neues Browserfenster, und melden Sie sich dann als Administrator auf Ihrer Slack-Unternehmenswebsite an.
+    a.  Fügen Sie in das Textfeld **SAML 2.0 Endpoint (HTTP)** den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-13. Navigieren Sie zu **Microsoft Azure AD** und dann zu **Teameinstellungen**.
+    b.  Fügen Sie in das Textfeld **Aussteller des Identitätsanbieters** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    ![Schaltfläche „Teameinstellungen“ von Microsoft Azure AD auf der Slack-Unternehmenswebsite](./media/active-directory-saas-slack-tutorial/tutorial_slack_001.png)
+    c.  Öffnen Sie das heruntergeladene Zertifikat in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Öffentliches Zertifikat** ein.
 
-14. Klicken Sie unter **Teameinstellungen** auf die Registerkarte **Authentifizierung**, und klicken Sie dann auf **Einstellungen ändern**.
+    d. Konfigurieren Sie die oben genannten drei Einstellungen gemäß den Anforderungen Ihres Slack-Teams. Weitere Informationen zu den Einstellungen finden Sie hier im **SSO-Konfigurationshandbuch für Slack**. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    ![Schaltfläche „Einstellungen ändern“ auf der Seite „Teameinstellungen“](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
+    e.  Klicken Sie auf **Konfiguration speichern**.
+     
+    <!-- Deselect **Allow users to change their email address**.
 
-15. Führen Sie im Dialogfeld **SAML-Authentifizierungseinstellungen** die folgenden Schritte aus:
+    e.  Select **Allow users to choose their own username**.
 
-    ![Dialogfeld „SAML-Authentifizierungseinstellungen“](./media/active-directory-saas-slack-tutorial/tutorial_slack_003.png)
-  1. Geben Sie im Feld **SAML 2.0 Endpoint (HTTP)** (SAML 2.0-Endpunkt (HTTP)) den Wert für die **SAML-Dienst-URL für einmaliges Anmelden** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
-  2. Geben Sie im Feld **Aussteller des Identitätsanbieters** den Wert **SAML-Entitäts-ID** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
-  3. Öffnen Sie die heruntergeladene Zertifikatsdatei im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **Öffentliches Zertifikat** ein.
-  4. Konfigurieren Sie die oben genannten drei Einstellungen gemäß den Anforderungen Ihres Slack-Teams. Weitere Informationen zu den Einstellungen finden Sie unter [Guide für Einmaliges Anmelden in Slack](https://get.slack.help/hc/en-us/articles/220403548-Guide-to-single-sign-on-with-Slack).
-  5. Klicken Sie auf **Konfiguration speichern**.
-  6. Deaktivieren Sie **Benutzern gestatten, ihre E-Mail-Adresse zu ändern**.
-  7. Wählen Sie **Benutzern gestatten, ihren eigenen Benutzernamen zu wählen**aus.
-  8. Wählen Sie für **Authentifizierung für Ihr Team muss verwendet werden von** die Option **Ist optional** aus.
-  
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer mit dem Namen Britta Simon:
+    f.  As **Authentication for your team must be used by**, select **It’s optional**. -->
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
 
-    ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-slack-tutorial/create_aaduser_01.png)
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+![Azure AD-Benutzer erstellen][100]
 
-    ![Azure AD-Schaltfläche „Alle Benutzer“](./media/active-directory-saas-slack-tutorial/create_aaduser_02.png)
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Hinzufügen“ im Dialogfeld „Alle Benutzer“](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-slack-tutorial/create_aaduser_01.png) 
 
-4. Geben Sie im Dialogfeld **Benutzer** die folgenden Informationen ein:
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-slack-tutorial/create_aaduser_02.png) 
 
-    ![Dialogfeld „Benutzer“](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png)
-  1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-  2. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-  3. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
-  4. Klicken Sie auf **Erstellen**.
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png) 
 
-### <a name="create-a-slack-test-user"></a>Erstellen eines Slack-Testbenutzers
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png) 
 
-In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Slack erstellt. Slack unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Falls ein Benutzer nicht bereits in Slack vorhanden ist, wird beim Versuch, auf Slack zuzugreifen, ein neuer Benutzer erstellt.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
->[!NOTE]
->Setzen Sie sich mit dem [Supportteam von Slack](https://slack.com/help/contact) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
->
->
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="creating-a-slack-test-user"></a>Erstellen eines Slack-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie dem Benutzer Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Slack gewähren.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Slack. Slack unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-![Zuweisen eines Benutzers des einmaligen Anmeldens von Azure][200]
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Slack ein neuer Benutzer erstellt.
 
-Führen Sie die folgenden Schritte aus, um Slack den Benutzer Britta Simon zuzuweisen.
+> [!NOTE]
+> Setzen Sie sich mit dem [Supportteam von Slack](https://slack.com/help/contact) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht. Navigieren Sie zur Verzeichnisansicht und dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-    ![Benutzer zuweisen][201]
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Slack gewähren.
 
-2. Wählen Sie in der Liste **Anwendungen** die Option **Slack** aus.
+![Benutzer zuweisen][200] 
 
-    ![Anwendungsliste im Azure-Portal](./media/active-directory-saas-slack-tutorial/tutorial_slack_50.png)
+**Um Britta Simon Slack zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-3. Klicken Sie auf der linken Seite auf **Benutzer und Gruppen**.
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-    ![Schaltfläche „Benutzer und Gruppen“ im linken Bereich][202]
+    ![Benutzer zuweisen][201] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**, und wählen Sie dann auf dem Blatt **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
+2. Wählen Sie in der Anwendungsliste die Option **Slack** aus.
 
-    ![Schaltfläche „Hinzufügen“ und Blatt „Zuweisung hinzufügen“][203]
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-slack-tutorial/tutorial_slack_app.png) 
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-6. Klicken Sie auf die Schaltfläche **Auswählen**.
+    ![Benutzer zuweisen][202] 
 
-7. Klicken Sie auf dem Blatt **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+    ![Benutzer zuweisen][203]
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-Navigieren Sie zum Testen der Konfiguration zum Zugriffsbereich, und klicken Sie dann auf die Kachel **Slack**. Der Benutzer sollte automatisch an der Slack-Anwendung angemeldet werden.
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „Slack“ klicken, sollten Sie automatisch bei Ihrer Slack-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
 
 
 <!--Image references-->
@@ -277,4 +283,5 @@ Navigieren Sie zum Testen der Konfiguration zum Zugriffsbereich, und klicken Sie
 [201]: ./media/active-directory-saas-slack-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-slack-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-slack-tutorial/tutorial_general_203.png
+
 

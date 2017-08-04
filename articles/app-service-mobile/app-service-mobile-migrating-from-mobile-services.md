@@ -3,8 +3,8 @@ title: Migrieren von Mobile Services in eine mobile App Service-App
 description: "Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung in eine mobile App Service-App migrieren können."
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
-ms.openlocfilehash: d5bceb8dd53850f0f11be05be2d5e5d3fbd01c5d
-ms.lasthandoff: 03/01/2017
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: cd6c75fb12182c1c38c9717f7fe51c6e36922540
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
@@ -33,7 +33,7 @@ Die Migration Ihres Azure Mobile Service wandelt den Mobile Service in eine [Azu
 Microsoft empfiehlt Ihnen, Ihren Azure Mobile Service zu migrieren, um die Features von Azure App Service zu nutzen, einschließlich:
 
 * Neue Hostfeatures, einschließlich [WebJobs] und [benutzerdefinierten Domänennamen].
-* Konnektivität mit Ihren lokalen Ressourcen über [VNet] ergänzend zu [Hybridverbindungen].
+* Konnektivität mit Ihren lokalen Ressourcen über [VNET] ergänzend zu [Hybrid Connections].
 * Überwachung und Problembehandlung mit New Relic oder [Application Insights].
 * Integrierte DevOps-Tools, einschließlich [Stagingslots], Rollback und Test in der Produktion.
 * [Automatische Skalierung], Lastenausgleich und [Leistungsüberwachung].
@@ -51,7 +51,7 @@ So migrieren Sie Ihre Website:
 1. Melden Sie sich beim [klassischen Azure-Portal] an.
 2. Wählen Sie einen Mobile Service in der Region aus, die Sie migrieren möchten.
 3. Klicken Sie auf die Schaltfläche **Zu App Service migrieren**.
-   
+
    ![Die Schaltfläche „Migrieren“][0]
 4. Lesen Sie den Inhalt des App Service-Dialogfelds.
 5. Geben Sie den Namen Ihres Mobile Service in das dafür vorgesehene Feld ein.  Wenn Ihr Domänenname beispielsweise „contoso.azure mobile.net“ ist, geben Sie *contoso* in das dafür vorgesehene Feld ein.
@@ -89,8 +89,8 @@ Sie können bei der Auswahl des richtigen Tarifs für Ihre Anwendung sehr flexib
 
 > [!TIP]
 > Der App Service-Tarif Standard umfasst den Zugriff auf viele Features, die unter Umständen nützlich für Sie sein können, z.B. [Stagingslots], automatische Sicherungen und automatische Skalierung.  Informieren Sie sich dort ausführlich über die neuen Funktionen!
-> 
-> 
+>
+>
 
 ### <a name="review-migration-scheduler-jobs"></a>Überprüfen der migrierten Scheduler-Aufträge
 Scheduler-Aufträge sind erst ca. 30 Minuten nach der Migration sichtbar.  Geplante Aufträge werden weiterhin im Hintergrund ausgeführt.
@@ -115,8 +115,8 @@ Die migrierten Einstellungen für CORS stehen als App-Einstellung **MS_CrossDoma
 
 > [!TIP]
 > Ein Vorteil der Verwendung von Azure App Service ist, dass Sie Ihre Website und den Mobile Service auf der gleichen Website ausführen können.  Weitere Informationen finden Sie im Abschnitt [Nächste Schritte](#next-steps).
-> 
-> 
+>
+>
 
 ### <a name="download-publish-profile"></a>Herunterladen eines neuen Veröffentlichungsprofils
 Beim der Migration zu Azure App Service wird das Veröffentlichungsprofil der Website geändert.  Wenn Sie Ihre Website aus Visual Studio heraus veröffentlichen möchten, benötigen Sie ein neues Veröffentlichungsprofil.  So laden Sie das neue Veröffentlichungsprofil herunter:
@@ -163,8 +163,8 @@ Sie können gleichzeitig mehrere App-Einstellungen aktualisieren.
 
 > [!TIP]
 > Zwei Anwendungseinstellungen haben den gleichen Wert.  Beispielsweise werden *ApplicationKey* und *MS\_ApplicationKey* angezeigt.  Aktualisieren Sie beide Anwendungseinstellungen gleichzeitig.
-> 
-> 
+>
+>
 
 ### <a name="authentication"></a>Authentifizierung
 Alle Authentifizierungseinstellungen sind auf der migrierten Website als App-Einstellungen verfügbar.  Um Ihre Authentifizierungseinstellungen zu aktualisieren, müssen Sie die entsprechenden App-Einstellungen ändern.  Die folgende Tabelle zeigt die entsprechenden App-Einstellungen für Ihren Authentifizierungsanbieter:
@@ -181,10 +181,10 @@ Hinweis: **MS\_AadTenants** wird als eine durch Trennzeichen getrennte Liste von
 
 > [!WARNING]
 > **Verwenden Sie nicht die Authentifizierungsmechanismen im Menü „Einstellungen“**
-> 
+>
 > Azure App Service bietet ein separates Authentifizierungs- und Autorisierungssystem „ohne Code“ in den Einstellungen für *Authentifizierung/Autorisierung* und die (veraltete) Option *Mobile Authentifizierung* im Menü „Einstellungen“.  Diese Optionen sind nicht kompatibel mit einem migrierten Azure Mobile Service.  Sie können [Ihre Website aktualisieren](app-service-mobile-net-upgrading-from-mobile-services.md) , um die Azure App Service-Authentifizierung zu nutzen.
-> 
-> 
+>
+>
 
 ### <a name="easytables"></a>Daten
 Die Registerkarte *Daten* in Mobile Services wurde durch *Einfache Tabellen* im Azure-Portal ersetzt.  So greifen Sie auf „Einfache Tabellen“ zu:
@@ -250,15 +250,15 @@ Ihr Notification Hub wird über das [Azure-Portal] verwaltet.  Notieren Sie den 
 
 > [!NOTE]
 > Wenn der Notification Hub den Typ „Gemischt“ hat, ist er nicht sichtbar.  Notification Hubs des Typs „Gemischt“ setzen sowohl Notification Hubs- als auch ältere Service Bus-Features ein.  [Konvertieren Sie Ihre gemischten Namespaces], bevor Sie fortfahren.  Sobald die Konvertierung abgeschlossen ist, wird Ihr Notification Hub im [Azure-Portal] angezeigt.
-> 
-> 
+>
+>
 
 Weitere Informationen finden Sie in der [Notification Hubs] -Dokumentation.
 
 > [!TIP]
 > Im [Azure-Portal] befinden sich Notification Hub-Verwaltungsfeatures noch in der Vorschau.  Das [klassischen Azure-Portal] bleibt für die Verwaltung Ihrer sämtlichen Notification Hubs verfügbar.
-> 
-> 
+>
+>
 
 ### <a name="legacy-push"></a>Legacypush-Einstellungen
 Wenn Sie vor der Einführung von Notification Hubs Pushvorgänge für Ihren mobilen Dienst konfiguriert haben, verwenden Sie den *Legacypushvorgang*.  Wenn Sie Push verwenden und in Ihrer Konfiguration keine Notification Hubs aufgelistet werden, verwenden Sie wahrscheinlich den *Legacypushvorgang*.  Dieses Feature wird zusammen mit allen anderen Features migriert.  Allerdings wird empfohlen, ein Upgrade auf Notification Hubs durchzuführen, sobald die Migration abgeschlossen ist.
@@ -389,7 +389,7 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 [benutzerdefinierten Domänennamen]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
 [allgemeinen Verfügbarkeit von Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
-[Hybridverbindungen]: ../app-service-web/web-sites-hybrid-connection-get-started.md
+[Hybrid Connections]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [Protokollierung]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Mobile Apps-Node.js-SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services im Vergleich zu App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
@@ -397,7 +397,7 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 [Leistungsüberwachung]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
 [Stagingslots]: ../app-service-web/web-sites-staged-publishing.md
-[VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
+[VNET]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 [XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [Funktionen]: ../azure-functions/functions-overview.md

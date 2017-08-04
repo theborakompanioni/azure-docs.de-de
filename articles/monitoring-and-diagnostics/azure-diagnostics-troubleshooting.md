@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2017
+ms.date: 07/12/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 0764b9f3ac262b7c65944d6e2c82490daefa54c3
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: df53e92b877b4790bb700f176a1988d265ec4678
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
@@ -43,6 +42,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. I
 | **Konfigurationsdatei für Monitoring Agent** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Paket mit Azure-Diagnoseerweiterung** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **Pfad des Hilfsprogramms für die Protokollsammlung** | %SystemDrive%\Packages\GuestAgent\ |
+| **MonAgentHost-Protokolldatei** | C:\Resources\Directory\<Clouddienstbereitstellungs-ID>.\<Rollenname>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
 ### <a name="virtual-machines"></a>Virtual Machines
 | Artefakt | Pfad |
@@ -54,9 +54,12 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. I
 | **Statusdatei** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
 | **Paket mit Azure-Diagnoseerweiterung** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Pfad des Hilfsprogramms für die Protokollsammlung** | C:\WindowsAzure\Packages |
+| **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<Diagnoseversion>\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
 ## <a name="azure-diagnostics-is-not-starting"></a>Die Azure-Diagnose wird nicht gestartet.
-Sehen Sie sich die Dateien **DiagnosticsPluginLauncher.log** und **DiagnosticsPlugin.log** am oben angegebenen Speicherort der Protokolldateien an, um Informationen dazu zu erhalten, warum die Diagnose nicht gestartet werden konnte.  
+Sehen Sie sich die Dateien **DiagnosticsPluginLauncher.log** und **DiagnosticsPlugin.log** am oben angegebenen Speicherort der Protokolldateien an, um Informationen dazu zu erhalten, warum die Diagnose nicht gestartet werden konnte. 
+
+Die Angabe `Monitoring Agent not reporting success after launch` in diesen Protokollen bedeutet, dass beim Starten von „MonAgentHost.exe“ ein Fehler aufgetreten ist. Durchsuchen Sie die Protokolle nach dieser Angabe. (Die Protokolle befinden sich an dem Speicherort, der im obigen Abschnitt für `MonAgentHost log file` angegeben ist.)
 
 Die letzte Zeile der Protokolldateien enthält den Exitcode.  
 
@@ -86,7 +89,7 @@ Die Diagnosekonfiguration enthält den Teil, der bewirkt, dass Daten eines besti
 - **Leistungsindikatoren**: Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
 - **Ablaufverfolgungsprotokolle**: Greifen Sie per Remotedesktop auf die VM zu, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter „http://msdn.microsoft.com/en-us/library/sk36c28t.aspx“.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
 Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter [Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen](#more-about-trace-logs-missing) weiter.
- - **ETW-Ablaufverfolgungen**: Greifen Sie per Remotedesktop auf die VM zu, und installieren Sie PerfView.  Führen Sie in PerfView die Optionen „File“ > „User Command“ > „Listen etwprovider1,etwprovider2“ („Datei“ > „Benutzerbefehl“ > „Lauschen etwprovider1,etwprovider2“) usw. aus.  Beachten Sie, dass beim Befehl „Listen“ (Lauschen) die Groß-/Kleinschreibung beachtet wird und die kommagetrennte Liste mit ETW-Anbietern keine Leerstellen enthalten darf.  Falls der Befehl nicht ausgeführt werden kann, können Sie im Perfview-Tool unten rechts auf die Schaltfläche „Log“ (Protokoll) klicken, um anzuzeigen, was ausgeführt werden sollte und wie das Ergebnis lautet.  Wenn die Eingabe richtig ist, wird ein neues Fenster angezeigt, und innerhalb einiger Sekunden werden ETW-Ablaufverfolgungen sichtbar.
+- **ETW-Ablaufverfolgungen**: Greifen Sie per Remotedesktop auf die VM zu, und installieren Sie PerfView.  Führen Sie in PerfView die Optionen „File“ > „User Command“ > „Listen etwprovider1,etwprovider2“ („Datei“ > „Benutzerbefehl“ > „Lauschen etwprovider1,etwprovider2“) usw. aus.  Beachten Sie, dass beim Befehl „Listen“ (Lauschen) die Groß-/Kleinschreibung beachtet wird und die kommagetrennte Liste mit ETW-Anbietern keine Leerstellen enthalten darf.  Falls der Befehl nicht ausgeführt werden kann, können Sie im Perfview-Tool unten rechts auf die Schaltfläche „Log“ (Protokoll) klicken, um anzuzeigen, was ausgeführt werden sollte und wie das Ergebnis lautet.  Wenn die Eingabe richtig ist, wird ein neues Fenster angezeigt, und innerhalb einiger Sekunden werden ETW-Ablaufverfolgungen sichtbar.
 - **Ereignisprotokolle**: Greifen Sie per Remotedesktop auf die VM zu. Öffnen Sie `Event Viewer`, und stellen Sie sicher, dass die Ereignisse vorhanden sind.
 #### <a name="is-data-getting-captured-locally"></a>Lokale Erfassung von Daten:
 Stellen Sie als Nächstes sicher, dass die Daten lokal erfasst werden.
@@ -241,4 +244,3 @@ Im Portal für virtuelle Computer werden bestimmte Leistungsindikatoren standard
 - Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren.
 
 **Lösung**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. „Systemsteuerung“ > „Region“ > „Verwaltung“ > „Einstellungen kopieren“: Deaktivieren Sie die Option „Willkommensseite und Systemkonten“, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird. Stellen Sie auch sicher, dass Sie keine Platzhalter verwenden, wenn Sie das Portal als vorrangige Benutzeroberfläche nutzen möchten.
-

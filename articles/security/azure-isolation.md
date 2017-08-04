@@ -1,5 +1,4 @@
 ---
-
 title: "Isolation in der öffentlichen Azure-Cloud | Microsoft-Dokumentation"
 description: "Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen."
 services: security
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: a167f15b1c885c51c9a85c501a9a9a60992cdf5d
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 2559bdbca8002392ef925e0eddfd23044cc563b5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -116,9 +114,9 @@ Weitere Beispiele für Azure Active Directory-Funktionen sind:
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Isolation gegenüber Microsoft-Administratoren und Datenlöschung
 Microsoft ergreift strenge Maßnahmen, um Ihre Daten vor unerwünschtem Zugriff und dem Zugriff durch unbefugte Personen zu schützen. Diese auf den Betrieb bezogenen Prozesse und Kontrollen basieren auf den [Nutzungsbedingungen für Online Services](http://aka.ms/Online-Services-Terms), die vertragliche Zusagen zum Zugriff auf Ihre Daten enthalten.
 
--    Microsoft-Techniker haben standardmäßig keinen Zugriff auf Ihre Daten in der Cloud. Sie erhalten nur bei Bedarf und unter Aufsicht der Managementebene Zugriff. Dieser Zugriff wird sorgfältig kontrolliert und protokolliert und widerrufen, wenn er nicht mehr benötigt wird.
+-   Microsoft-Techniker haben standardmäßig keinen Zugriff auf Ihre Daten in der Cloud. Sie erhalten nur bei Bedarf und unter Aufsicht der Managementebene Zugriff. Dieser Zugriff wird sorgfältig kontrolliert und protokolliert und widerrufen, wenn er nicht mehr benötigt wird.
 
--    Es kann sein, dass Microsoft andere Unternehmen damit beauftragt, in begrenztem Umfang Dienstleistungen im Namen von Microsoft zu übernehmen. Subunternehmer dürfen nur auf Kundendaten zugreifen, um die von uns in Auftrag gegebenen Dienstleistungen bereitzustellen, und die Nutzung zu anderen Zwecken ist untersagt. Darüber hinaus sind Subunternehmer vertraglich dazu verpflichtet, die Vertraulichkeit der Informationen unserer Kunden zu wahren.
+-   Es kann sein, dass Microsoft andere Unternehmen damit beauftragt, in begrenztem Umfang Dienstleistungen im Namen von Microsoft zu übernehmen. Subunternehmer dürfen nur auf Kundendaten zugreifen, um die von uns in Auftrag gegebenen Dienstleistungen bereitzustellen, und die Nutzung zu anderen Zwecken ist untersagt. Darüber hinaus sind Subunternehmer vertraglich dazu verpflichtet, die Vertraulichkeit der Informationen unserer Kunden zu wahren.
 
 Unternehmensdienstleistungen, die Prüfzertifizierungen unterliegen (z.B. ISO/IEC 27001), werden von Microsoft und akkreditierten Prüfunternehmen regelmäßig überprüft. Diese Überprüfungen werden stichprobenartig durchgeführt, um nachzuweisen, dass der Zugriff nur zu zulässigen geschäftlichen Zwecken erfolgt. Auf Ihre eigenen Kundendaten können Sie jederzeit und aus jedem Grund zugreifen.
 
@@ -176,9 +174,9 @@ Standardmäßig wird beim Erstellen eines virtuellen Computers sämtlicher Daten
 
 Es gibt zwei Kategorien von Regeln, die programmiert werden:
 
--    **Computerkonfiguration oder Infrastrukturregeln**: In der Standardeinstellung wird die gesamte Kommunikation blockiert. Es gibt Ausnahmen, um einem virtuellen Computer das Senden und Empfangen von DHCP- und DNS-Datenverkehr zu ermöglichen. Virtuelle Computer können auch Datenverkehr an das „öffentliche“ Internet und an andere virtuelle Computer in demselben virtuellen Azure-Netzwerk und auf dem Betriebssystem-Aktivierungsserver senden. Die Liste mit zulässigen ausgehenden Zielen der virtuellen Computer enthält keine Azure-Routersubnetze, keine Azure-Verwaltung und keine anderen Microsoft-Komponenten.
+-   **Computerkonfiguration oder Infrastrukturregeln**: In der Standardeinstellung wird die gesamte Kommunikation blockiert. Es gibt Ausnahmen, um einem virtuellen Computer das Senden und Empfangen von DHCP- und DNS-Datenverkehr zu ermöglichen. Virtuelle Computer können auch Datenverkehr an das „öffentliche“ Internet und an andere virtuelle Computer in demselben virtuellen Azure-Netzwerk und auf dem Betriebssystem-Aktivierungsserver senden. Die Liste mit zulässigen ausgehenden Zielen der virtuellen Computer enthält keine Azure-Routersubnetze, keine Azure-Verwaltung und keine anderen Microsoft-Komponenten.
 
--    **Rollenkonfigurationsdatei**: Definiert die eingehenden Zugriffssteuerungslisten (ACLs) auf Grundlage des Dienstmodells des Mandanten.
+-   **Rollenkonfigurationsdatei**: Definiert die eingehenden Zugriffssteuerungslisten (ACLs) auf Grundlage des Dienstmodells des Mandanten.
 
 ### <a name="vlan-isolation"></a>VLAN-Isolation
 Jeder Cluster enthält drei VLANs:
@@ -186,11 +184,11 @@ Jeder Cluster enthält drei VLANs:
 ![VLAN-Isolation](./media/azure-isolation/azure-isolation-fig8.jpg)
 
 
--    Haupt-VLAN: Dient zum Verbinden von nicht vertrauenswürdigen Kundenknoten.
+-   Haupt-VLAN: Dient zum Verbinden von nicht vertrauenswürdigen Kundenknoten.
 
--    FC-VLAN: Enthält vertrauenswürdige FCs und unterstützende Systeme.
+-   FC-VLAN: Enthält vertrauenswürdige FCs und unterstützende Systeme.
 
--    Geräte-VLAN: Enthält vertrauenswürdige Netzwerkgeräte und andere Infrastrukturgeräte.
+-   Geräte-VLAN: Enthält vertrauenswürdige Netzwerkgeräte und andere Infrastrukturgeräte.
 
 Die Kommunikation ist vom FC-VLAN zum Haupt-VLAN zulässig, kann aber nicht vom Haupt-VLAN zum FC-VLAN initiiert werden. Auch die Kommunikation vom Haupt-VLAN zum Geräte-VLAN ist blockiert. So wird sichergestellt, dass auch bei einer Kompromittierung eines Knotens, auf dem Kundencode ausgeführt wird, kein Angriff auf Knoten in FC- oder Geräte-VLANs erfolgen kann.
 
@@ -215,27 +213,27 @@ IP-Speicherdaten können vor unbefugten Benutzern mit einem Netzwerkmechanismus 
 
 ### <a name="encryption"></a>Verschlüsselung
 Azure verfügt über die folgenden Arten von Verschlüsselung zum Schützen von Daten:
--    Verschlüsselung während der Übertragung
+-   Verschlüsselung während der Übertragung
 
--    Verschlüsselung ruhender Daten
+-   Verschlüsselung ruhender Daten
 
 #### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie Daten mit folgenden Verfahren schützen:
 
--    [Verschlüsselung auf Transportebene](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
+-   [Verschlüsselung auf Transportebene](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
 
--    [Wire-Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares)(etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
+-   [Wire-Verschlüsselung](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
 
--    [Clientseitiger Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
+-   [Clientseitiger Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
 #### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
 
--    [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
+-   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
 
--    [Client-side Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
+-   [Client-side Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
 
--    [Azure-Datenträgerverschlüsselung](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
+-   [Azure-Datenträgerverschlüsselung](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 Mithilfe von [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) für virtuelle Computer können Sie die Sicherheits- und Konformitätsanforderungen Ihrer Organisation erfüllen, indem Sie die Datenträger Ihrer virtuellen Computer (Startdatenträger und allgemeine Datenträger) mit Schlüsseln und Richtlinien verschlüsseln, die Sie über [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) steuern.
@@ -243,39 +241,39 @@ Mithilfe von [Azure Disk Encryption](https://docs.microsoft.com/azure/security/a
 Die Disk Encryption-Lösung für Windows basiert auf der [Microsoft BitLocker-Laufwerkverschlüsselung](https://technet.microsoft.com/library/cc732774.aspx), die Linux-Lösung auf [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
--    Integration in Azure-Schlüsseltresor
+-   Integration in Azure-Schlüsseltresor
 
--    Virtuelle Computer im Standard-Tarif: Virtuelle IaaS-Computer der Serien A, D, DS, G, GS usw.
+-   Virtuelle Computer im Standard-Tarif: Virtuelle IaaS-Computer der Serien A, D, DS, G, GS usw.
 
--    Aktivieren der Verschlüsselung auf virtuellen Windows- und Linux-IaaS-Computern
+-   Aktivieren der Verschlüsselung auf virtuellen Windows- und Linux-IaaS-Computern
 
--    Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für virtuelle Windows-IaaS-Computer
+-   Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für virtuelle Windows-IaaS-Computer
 
--    Deaktivieren der Verschlüsselung auf Datenlaufwerken für virtuelle Linux-IaaS-Computer
+-   Deaktivieren der Verschlüsselung auf Datenlaufwerken für virtuelle Linux-IaaS-Computer
 
--    Aktivieren der Verschlüsselung auf virtuellen IaaS-Computern mit dem Windows-Clientbetriebssystem
+-   Aktivieren der Verschlüsselung auf virtuellen IaaS-Computern mit dem Windows-Clientbetriebssystem
 
--    Aktivieren der Verschlüsselung auf Volumes mit Bereitstellungspfaden
+-   Aktivieren der Verschlüsselung auf Volumes mit Bereitstellungspfaden
 
--    Aktivieren der Verschlüsselung auf virtuellen Linux-Computern, die mithilfe von [mdadm](https://en.wikipedia.org/wiki/Mdadm) mit Datenträgerstriping (RAID) konfiguriert sind
+-   Aktivieren der Verschlüsselung auf virtuellen Linux-Computern, die mithilfe von [mdadm](https://en.wikipedia.org/wiki/Mdadm) mit Datenträgerstriping (RAID) konfiguriert sind
 
--    Aktivieren der Verschlüsselung auf virtuellen Linux-Computern mit [LVM (Logical Volume Manager)](https://msdn.microsoft.com/library/windows/desktop/bb540532) für Datenträger
+-   Aktivieren der Verschlüsselung auf virtuellen Linux-Computern mit [LVM (Logical Volume Manager)](https://msdn.microsoft.com/library/windows/desktop/bb540532) für Datenträger
 
--    Aktivieren der Verschlüsselung auf virtuellen Windows-Computern, die mithilfe von Speicherplätzen konfiguriert sind
+-   Aktivieren der Verschlüsselung auf virtuellen Windows-Computern, die mithilfe von Speicherplätzen konfiguriert sind
 
--    Alle öffentlichen Azure-Regionen werden unterstützt.
+-   Alle öffentlichen Azure-Regionen werden unterstützt.
 
 Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologien:
 
--    IaaS-VMs des Basic-Tarifs
+-   IaaS-VMs des Basic-Tarifs
 
--    Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für virtuelle Linux-IaaS-Computer
+-   Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für virtuelle Linux-IaaS-Computer
 
--    Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
+-   Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
 
--    Integration in den lokalen Schlüsselverwaltungsdienst
+-   Integration in den lokalen Schlüsselverwaltungsdienst
 
--    Azure Files (freigegebenes Dateisystem), Netzwerkdateisystem (NFS), dynamische Volumes und Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
+-   Azure Files (freigegebenes Dateisystem), Netzwerkdateisystem (NFS), dynamische Volumes und Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
 
 ## <a name="sql-azure-database-isolation"></a>Isolation per SQL Azure-Datenbank
 SQL-Datenbank ist ein relationaler Datenbankdienst in der Microsoft Cloud, der auf dem marktführenden Microsoft SQL Server-Modul basiert und unternehmenswichtige Workloads verarbeiten kann. Mit der SQL-Datenbank ist eine vorhersagbare Isolation von Daten auf Kontoebene, nach Geografie/Region und nach Netzwerk möglich – nahezu ohne Verwaltungsaufwand.
@@ -298,9 +296,9 @@ SQL Azure-Server sind keine physischen Instanzen oder VM-Instanzen, sondern Samm
 
 Logische Masterdatenbanken umfassen Folgendes:
 
--    SQL-Anmeldungen zum Herstellen der Verbindung mit dem Server
+-   SQL-Anmeldungen zum Herstellen der Verbindung mit dem Server
 
--    Firewallregeln
+-   Firewallregeln
 
 Für abrechnungs- und nutzungsbezogene Informationen für SQL Azure-Datenbanken desselben logischen Servers ist nicht garantiert, dass sie sich im SQL Azure-Cluster auf derselben physischen Clusterinstanz befinden. Stattdessen müssen Anwendungen beim Herstellen der Verbindung den Namen der Zieldatenbank angeben.
 
@@ -311,13 +309,13 @@ Aus Kundensicht wird ein logischer Server in einer geografischen Region erstellt
 Wenn ein logischer Server erstellt und sein DNS-Name registriert wird, verweist der DNS-Name auf die so genannte „Gateway-VIP“-Adresse im jeweiligen Rechenzentrum, in dem der Server angeordnet wurde.
 
 Hinter der VIP (virtuelle IP-Adresse) befindet sich eine Sammlung von zustandslosen Gatewaydiensten. Im Allgemeinen werden Gateways verwendet, wenn eine Koordination zwischen mehreren Datenquellen (Masterdatenbank, Benutzerdatenbank usw.) erforderlich ist. Mit Gatewaydiensten wird Folgendes implementiert:
--    **Proxyfunktion für TDS-Verbindung:** Dieser Vorgang umfasst das Ermitteln der Benutzerdatenbank im Back-End-Cluster, das Implementieren der Anmeldesequenz und das anschließende Weiterleiten der TDS-Pakete an das Back-End (und wieder zurück).
+-   **Proxyfunktion für TDS-Verbindung:** Dieser Vorgang umfasst das Ermitteln der Benutzerdatenbank im Back-End-Cluster, das Implementieren der Anmeldesequenz und das anschließende Weiterleiten der TDS-Pakete an das Back-End (und wieder zurück).
 
--    **Datenbankverwaltung:** Umfasst das Implementieren einer Sammlung von Workflows zur Durchführung von CREATE/ALTER/DROP-Datenbankvorgängen. Die Datenbankvorgänge können aufgerufen werden, indem per „Sniffing“ entweder TDS-Pakete oder explizite OData-APIs ermittelt werden.
+-   **Datenbankverwaltung:** Umfasst das Implementieren einer Sammlung von Workflows zur Durchführung von CREATE/ALTER/DROP-Datenbankvorgängen. Die Datenbankvorgänge können aufgerufen werden, indem per „Sniffing“ entweder TDS-Pakete oder explizite OData-APIs ermittelt werden.
 
--    CREATE/ALTER/DROP – Anmelde-/Benutzervorgänge
+-   CREATE/ALTER/DROP – Anmelde-/Benutzervorgänge
 
--    Verwaltung von logischen Servern per OData-API
+-   Verwaltung von logischen Servern per OData-API
 
 ![Isolation per Netzwerktopologie](./media/azure-isolation/azure-isolation-fig12.png)
 

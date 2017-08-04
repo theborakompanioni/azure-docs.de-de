@@ -2,220 +2,232 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Promapp | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Promapp konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
 ms.assetid: 418d0601-6e7a-4997-a683-73fa30a2cfb5
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2017
+ms.date: 07/03/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 610c731195ffa92ccd915b93e8c901f47b2ff16a
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 27013ca9724cf2f57fc85f5f4ccb71921ca57a3b
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Tutorial: Azure Active Directory-Integration mit Promapp
-Dieses Tutorial soll Ihnen zeigen, wie Sie Promapp in Azure Active Directory (Azure AD) integrieren können.
 
-Die Integration von Promapp in Azure AD bietet die folgenden Vorteile: 
+In diesem Tutorial erfahren Sie, wie Sie Promapp in Azure Active Directory (Azure AD) integrieren.
 
-* Sie können in Azure AD steuern, wer Zugriff auf Promapp hat. 
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Promapp anzumelden (einmaliges Anmelden, SSO).
-* Sie können Ihre Konten an einem zentralen Ort verwalten: im klassischen Azure Active Directory-Portal.
+Die Integration von Promapp in Azure AD bietet die folgenden Vorteile:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- Sie können in Azure AD steuern, wer Zugriff auf Promapp hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Promapp anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Um die Azure AD-Integration mit Promapp konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-* Ein Promapp-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
+- Ein Azure AD-Abonnement
+- Ein Promapp-Abonnement, für das einmaliges Anmelden aktiviert ist
 
->[!NOTE]
->Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
-> 
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/). 
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von Promapp aus dem Katalog 
-2. Konfigurieren und Testen der einmaligen Anmeldung (SSO) von Azure AD
+1. Hinzufügen von Promapp aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="add-promapp-from-the-gallery"></a>Hinzufügen von Promapp aus dem Katalog
+## <a name="adding-promapp-from-the-gallery"></a>Hinzufügen von Promapp aus dem Katalog
 Zum Konfigurieren der Integration von Promapp in Azure AD müssen Sie Promapp aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Promapp aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
-   
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+
     ![Active Directory][1]
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
     ![Anwendungen][2]
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
     ![Anwendungen][3]
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-    ![Anwendungen][4]
-6. Geben Sie im Suchfeld als Suchbegriff **Promapp**ein.
-   
-    ![Anwendungen][5]
-7. Wählen Sie im Ergebnisbereich die Option **Promapp** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-    ![Anwendungen][500]
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden (SSO) von Azure AD in Promapp konfiguriert und getestet werden kann.
+4. Geben Sie im Suchfeld als Suchbegriff **Promapp**ein.
 
-Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Promapp als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Promapp muss eine Linkbeziehung eingerichtet werden.  
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_search.png)
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD dem Benutzernamen ****in Promapp zuweisen.
+5. Wählen Sie im Ergebnisbereich die Option **Promapp** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens (SSO) in Azure AD bei Promapp sind die folgenden Bausteine erforderlich:
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_addfromgallery.png)
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei Promapp mithilfe einer Testbenutzerin namens Britta Simon.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Promapp als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Promapp muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in Promapp den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Promapp müssen Sie die folgenden Bausteine ausführen:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Promapp-Testbenutzers](#creating-a-halogen-software-test-user)** , um eine Entsprechung von Britta Simon in Promapp zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen eines Promapp-Testbenutzers](#creating-a-promapp-test-user)**, um ein Pendant von Britta Simon in Promapp zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden (SSO) von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Promapp-Anwendung zu konfigurieren.
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens (SSO) von Azure AD bei Promapp die folgenden Schritte aus:**
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Promapp-Anwendung.
 
-1. Klicken Sie im klassischen Azure AD-Portal auf der Anwendungsintegrationsseite für **Promapp** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-   
-    ![Einmaliges Anmelden konfigurieren][6] 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Promapp anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
-   
-    ![Azure AD – einmaliges Anmelden][7] 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
-   
-    ![Azure AD – einmaliges Anmelden][8] 
-   
-   1. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer Promapp-Website verwenden (beispielsweise *https://companyname.promapp.com/instancename*).
-   2. Klicken Sie auf **Weiter**.
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens in Azure AD mit Promapp die folgenden Schritte aus:**
 
-1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Promapp** die folgenden Schritte aus:
-   
-    ![Azure AD – einmaliges Anmelden][9] 
-   
-   1. Klicken Sie auf "Zertifikat herunterladen", und speichern Sie das Zertifikat auf Ihrem Computer.
-   2. Klicken Sie auf **Weiter**.
-   
-2. Melden Sie sich bei Ihrer Promapp-Unternehmenswebsite als Administrator an. 
-3. Klicken Sie oben im Menü auf **Administrator**. 
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Promapp** auf **Einmaliges Anmelden**.
+
+    ![Einmaliges Anmelden konfigurieren][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_samlbase.png)
+
+3. Führen Sie auf der Seite **Domäne und URLs für Promapp** die folgenden Schritte aus:
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url.png)
+
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://DOMAINNAME.promapp.com/TENANTNAME`
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Promapp-Client](https://www.promapp.com/about-us/contact-us/), um diese Werte zu erhalten.
+
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
+
+6. Klicken Sie im Abschnitt **Promapp-Konfiguration** auf **Promapp konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
+
+7. Melden Sie sich bei Ihrer Promapp-Unternehmenswebsite als Administrator an. 
+
+8. Klicken Sie oben im Menü auf **Administrator**. 
    
     ![Azure AD – einmaliges Anmelden][12]
-4. Klicken Sie auf **Konfigurieren**. 
+
+9. Klicken Sie auf **Konfigurieren**. 
    
     ![Azure AD – einmaliges Anmelden][13]
-5. Führen Sie im Dialogfeld **Security** die folgenden Schritte aus:
-   
-    ![Azure AD – einmaliges Anmelden][14] 
-   
-   1. Kopieren Sie im klassischen Azure-Portal im Dialogfeld **Einmaliges Anmelden konfigurieren für Promapp** den Wert für **Remoteanmelde-URL**, fügen Sie ihn in das Textfeld **SSO-Login URL** (SSO-Anmelde-URL) ein, und klicken Sie dann auf **Speichern**.
-   2. Wählen Sie für **SSO-Modus** die Option **Optional** aus, und klicken Sie dann auf **Speichern**.
-   3. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie seinen Inhalt mit Ausnahme der ersten Zeile (*-----BEGIN CERTIFICATE-----*) und der letzten Zeile (*-----END CERTIFICATE-----*), und fügen Sie ihn in das Textfeld **SSO-x.509-Zertifikat** ein. Klicken Sie anschließend auf **Speichern**.
-6. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
-   
-    ![Azure AD – einmaliges Anmelden][10]
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
-   
-    ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
+10. Führen Sie im Dialogfeld **Security** die folgenden Schritte aus:
+   
+    ![Azure AD – einmaliges Anmelden][14]
+    
+    a. Fügen Sie den Wert der **SAML-Dienst-URL für einmaliges Anmelden**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **SSO-Login URL** (SSO-Anmelde-URL) ein.
+    
+    b. Wählen Sie für **SSO-Modus** die Option **Optional** aus, und klicken Sie dann auf **Speichern**.
 
-![Azure AD-Benutzer erstellen][20]
+    c. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie seinen Inhalt mit Ausnahme der ersten Zeile (-----BEGIN CERTIFICATE-----) und der letzten Zeile (-----END CERTIFICATE-----), und fügen Sie ihn in das Textfeld **SSO-x.509-Zertifikat** ein. Klicken Sie anschließend auf **Speichern**.
+        
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+![Azure AD-Benutzer erstellen][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_09.png)  
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-   
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_01.png) 
+
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_02.png) 
+
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_03.png) 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. 
-   
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_04.png) 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: 
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_05.png)  
-   
-   1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   3. Klicken Sie auf **Weiter**.
-   
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: 
-   
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_06.png) 
-   
-   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
-   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   5. Klicken Sie auf **Weiter**.
-   
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_07.png) 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_08.png) 
-   
-   1. Notieren Sie den Wert von **Neues Kennwort**.
-   2. Klicken Sie unten auf der Seite auf **Fertigstellen**.   
 
-### <a name="create-a-promapp-test-user"></a>Erstellen eines Promapp-Testbenutzers
-Die Promapp-Anwendung unterstützt die Just-in-Time-Bereitstellung. Das bedeutet, dass ggf. automatisch ein Benutzerkonto erstellt wird, wenn über den Zugriffsbereich auf die Anwendung zugegriffen wird.  
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens (SSO) bei Azure zu ermöglichen, indem sie Zugriff auf Promapp erhält.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="creating-a-promapp-test-user"></a>Erstellen eines Promapp-Testbenutzers
+
+Die Promapp-Anwendung unterstützt die Just-in-Time-Bereitstellung. Das bedeutet, dass ggf. automatisch ein Benutzerkonto erstellt wird, wenn über den Zugriffsbereich auf die Anwendung zugegriffen wird.
+
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Promapp gewähren.
 
 ![Benutzer zuweisen][200] 
 
 **Um Britta Simon Promapp zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-    ![Benutzer zuweisen][201] 
-2. Wählen Sie in der Anwendungsliste **Promapp**aus.
-   
-    ![Benutzer zuweisen][202] 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
-   
-    ![Benutzer zuweisen][203] 
-4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-   
-    ![Benutzer zuweisen][205]
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+    ![Benutzer zuweisen][201] 
+
+2. Wählen Sie in der Anwendungsliste **Promapp**aus.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
 Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Promapp“ klicken, sollten Sie automatisch bei Ihrer Promapp-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
@@ -225,31 +237,15 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Promapp“ klicken, sollten Sie au
 [2]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_04.png
-[5]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_01.png
-
-[500]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_500.png
-
-[6]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_05.png
-[7]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_02.png
-[8]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_03.png
-[9]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_04.png
-[10]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_07.png
 [12]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_05.png
 [13]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_06.png
 [14]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_07.png
 
-[20]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_201.png
-[202]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_10.png
+[202]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_205.png
 
-
-[400]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_400.png
-[401]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_401.png
-[402]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_402.png
 

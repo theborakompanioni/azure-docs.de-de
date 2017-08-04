@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/24/2017
+ms.date: 07/21/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 5d37dbcce06ac979f3cabef1220e5f1fe8e67931
-ms.openlocfilehash: 6c0cd8aeaaa094a6bf046d47a96eddffc6430d44
-ms.lasthandoff: 03/01/2017
-
+ms.reviewer: jeedes
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f8296aa92f58829da698cae8bf6e2e9191c4b257
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Tutorial: Azure Active Directory-Integration mit Salesforce Sandbox
@@ -113,7 +114,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
  5. Wählen Sie für **SAML Identity Type** (SAML-Identitätstyp) die Option **Assertion contains the Federation ID from the User object** (Assertion enthält die Verbund-ID aus dem Benutzerobjekt) aus. 
  6. Wählen Sie für **SAML Identity Location** (Speicherort der SAML-Identität) die Option **Identity is in the NameIdentifier element of the Subject statement** (Identität ist im NameIdentifier-Element der Subject-Anweisung enthalten) aus.
  7. Kopieren Sie im klassischen Azure-Portal auf der Dialogseite **Configure single sign-on at Salesforce Sandbox** (Einmaliges Anmelden bei Salesforce Sandbox konfigurieren) den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Identity Provider Login URL** (Anmelde-URL des Identitätsanbieters) ein. 
- 8. SFDC unterstützt die SAML-Abmeldung nicht.  Fügen Sie 'https://login.windows.net/common/wsfederation?wa=wsignout1.0' in das Textfeld **Abmelde-URL des Identitätsanbieter** ein, um dieses Problem zu umgehen.
+ 8. SFDC unterstützt die SAML-Abmeldung nicht.  Fügen Sie „https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0“ in das Textfeld **Abmelde-URL des Identitätsanbieter** ein, um dieses Problem zu umgehen.
  9. Wählen Sie für **Service Provider Initiated Request Binding** (Vom Dienstanbieter initiierte Anforderungsbindung) die Option **HTTP Post** aus. 
  10. Klicken Sie auf **Speichern**.
 11. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
