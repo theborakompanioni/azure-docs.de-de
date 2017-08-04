@@ -20,7 +20,6 @@ ms.openlocfilehash: def3feb2760c0ec2bb9ff39c6ef8a85bb142a0a7
 ms.contentlocale: de-de
 ms.lasthandoff: 05/19/2017
 
-
 ---
 # <a name="get-started-with-device-management-netnode"></a>Erste Schritte mit der Geräteverwaltung (.NET/Node)
 
@@ -62,6 +61,7 @@ In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die einen Rem
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
    
         using Microsoft.Azure.Devices;
+        using Microsoft.Azure.Devices.Shared;
         
 5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben, und das Zielgerät.
    

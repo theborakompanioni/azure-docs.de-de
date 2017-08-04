@@ -269,7 +269,7 @@ Beim Beenden des PowerShell-Skripts wurden einige benannte Werte ausgegeben. Sie
 
 ### <a name="transact-sql-code"></a>Transact-SQL-Code
 
-```tsql
+```sql
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
@@ -465,7 +465,7 @@ GO
 
 Wenn das Ziel bei der Ausführung nicht angefügt wird, müssen Sie die Ereignissitzung beenden und dann erneut starten:
 
-```tsql
+```sql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;
