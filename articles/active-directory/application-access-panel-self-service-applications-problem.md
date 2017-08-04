@@ -13,25 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 4d8c241344485e50a1afde3cd67adf3d0a7c041f
+ms.reviewer: japere
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 217726709a1fdb02275de5a76a1352ea9c350600
 ms.contentlocale: de-de
-ms.lasthandoff: 04/11/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
-<a id="problem-using-self-service-application-access" class="xliff"></a>
-
-# Probleme beim Self-Service-Anwendungszugriff
+# <a name="problem-using-self-service-application-access"></a>Probleme beim Self-Service-Anwendungszugriff
 
 Der Self-Service-Anwendungszugriff bietet die Möglichkeit, dass Benutzer Anwendungen selbst ermitteln können und die entsprechende Geschäftseinheit den Zugriff auf diese Anwendungen optional genehmigen kann. Sie können der Geschäftseinheit ermöglichen, die Anmeldeinformationen zu verwalten, die Benutzern zugewiesen wurden, damit diese über ihren Zugriffsbereich direkt auf Anwendungen mit einmaligem Anmelden per Kennwort zugreifen können.
 
 Damit Ihre Benutzer über ihren Zugriffsbereich Anwendungen selbst ermitteln können, müssen Sie den **Self-Service-Anwendungszugriff** auf alle Anwendungen aktivieren, die Benutzer selbst ermitteln und für die sie den Zugriff anfordern können sollen.
 
-<a id="general-issues-to-check-first" class="xliff"></a>
-
-## Allgemeine Probleme, die zuerst überprüft werden sollten
+## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten
 
 -   Stellen Sie sicher, dass der Self-Service-Anwendungszugriff ordnungsgemäß konfiguriert ist. Informationen hierzu finden Sie unter „Konfigurieren des Self-Service-Anwendungszugriffs“.
 
@@ -41,9 +38,7 @@ Damit Ihre Benutzer über ihren Zugriffsbereich Anwendungen selbst ermitteln kö
 
 -   Wenn der Self-Service-Anwendungszugriff erst kürzlich konfiguriert wurde, sollte sich der Benutzer vom Zugriffsbereich abmelden und nach einigen Minuten wieder anmelden, um festzustellen, ob die Änderungen am Self-Service-Zugriff angezeigt werden.
 
-<a id="how-to-configure-self-service-application-access" class="xliff"></a>
-
-## Konfigurieren des Self-Service-Anwendungszugriffs
+## <a name="how-to-configure-self-service-application-access"></a>Konfigurieren des Self-Service-Anwendungszugriffs
 
 Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff auf eine Anwendung zu aktivieren:
 
@@ -78,17 +73,15 @@ Führen Sie die folgenden Schritte aus, um den Self-Service-Anwendungszugriff au
  >
  >
 
-13. **Optional:** Wenn Sie für **Anwendungen, die Rollen verfügbar machen**, die für den Self-Service genehmigten Benutzer zu einer Rolle zuweisen möchten, klicken Sie auf das Auswahlfeld neben **Welcher Rolle sollen Benutzer in dieser Anwendung zugewiesen werden?**, und wählen Sie die Rolle aus, der die Benutzer zugewiesen werden sollen.
+13. **Optional:** Wenn Sie für **Anwendungen, die Rollen verfügbar machen**, die für den Self-Service genehmigten Benutzer einer Rolle zuweisen möchten, klicken Sie auf die Auswahl neben **Welcher Rolle sollen Benutzer in dieser Anwendung zugewiesen werden?**, und wählen Sie die Rolle aus, der die Benutzer zugewiesen werden sollen.
 
 14. Klicken Sie abschließend oben auf dem Blatt auf die Schaltfläche **Speichern**.
 
 Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, können Benutzer in ihrem [Anwendungszugriffsbereich](https://myapps.microsoft.com/) auf die Schaltfläche **+Hinzufügen** klicken und die Apps suchen, für die Sie den Self-Service-Zugriff aktiviert haben. Den genehmigenden Personen des Unternehmens wird im [Zugriffsbereich](https://myapps.microsoft.com/) zudem eine Benachrichtigung angezeigt. Sie können festlegen, dass sie in einer E-Mail darüber benachrichtigt werden, dass ein Benutzer den Zugriff auf eine Anwendung angefordert hat, der zu genehmigen ist. 
 
-Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen, d.h., wenn Sie mehrere genehmigende Personen angeben, kann jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen.
+Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen. Das bedeutet, dass bei der Angabe mehrerer genehmigender Personen jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen kann.
 
-<a id="if-these-troubleshooting-steps-do-not-resolve-the-issue" class="xliff"></a>
-
-## Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird 
+## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird 
 
 Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
@@ -104,8 +97,6 @@ Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen, d.h
 
 -   Fiddler-Ablaufverfolgungen
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung](active-directory-accessmanagement-self-service-group-management.md)
 

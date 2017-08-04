@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 65d24488ce4910c59f7afce5d540ace81ffc50ac
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f5d33b6a36b84589a24108a84636c42043f21c69
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -136,20 +135,20 @@ IIS 7 kann zur Aktivierung der Auflistung dieser Ablaufverfolgungsereignisse so
 #### <a name="web-server-diagnostics"></a>Webserverdiagnose
 Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 
--    Detaillierte Fehlerprotokollierung – Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat.
+-   Detaillierte Fehlerprotokollierung – Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat.
 
--    Ablaufverfolgung von Anforderungsfehlern – Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies kann nützlich sein, wenn Sie versuchen, die Leistung von Websites zu verbessern oder herauszufinden, warum ein bestimmter HTTP-Fehler zurückgegeben wird.
+-   Ablaufverfolgung von Anforderungsfehlern – Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies kann nützlich sein, wenn Sie versuchen, die Leistung von Websites zu verbessern oder herauszufinden, warum ein bestimmter HTTP-Fehler zurückgegeben wird.
 
--    Webserverprotokollierung – Informationen über HTTP-Transaktionen im erweiterten W3C-Protokolldateiformat. Dies ist hilfreich, wenn Sie allgemeine Website-Kennzahlen ermitteln möchten, wie die Anzahl der verarbeiteten Anfragen oder wie viele Anforderungen von einer bestimmten IP-Adresse stammen.
+-   Webserverprotokollierung – Informationen über HTTP-Transaktionen im erweiterten W3C-Protokolldateiformat. Dies ist hilfreich, wenn Sie allgemeine Website-Kennzahlen ermitteln möchten, wie die Anzahl der verarbeiteten Anfragen oder wie viele Anforderungen von einer bestimmten IP-Adresse stammen.
 
 #### <a name="application-diagnostics"></a>Anwendungsdiagnose
 Mit der Option [Anwendungsdiagnose](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log) können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Bei der Anwendungsdiagnose gibt es zwei Hauptarten von Ereignissen, die sich auf die Anwendungsleistung oder die Anwendungsausfälle und -fehler beziehen. Die Ausfälle und Fehler können weiter in Verbindungsfehler, Sicherheitsfehler und Ausfallprobleme unterteilt werden. Ausfallprobleme beziehen sich in der Regel auf ein Problem mit dem Anwendungscode.
 
 Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angezeigt werden:
 
--    Alle (alle Ereignisse werden angezeigt)
--    Anwendungsfehler (Ausnahmeereignisse werden angezeigt)
--    Leistung (Leistungsereignisse werden angezeigt)
+-   Alle (alle Ereignisse werden angezeigt)
+-   Anwendungsfehler (Ausnahmeereignisse werden angezeigt)
+-   Leistung (Leistungsereignisse werden angezeigt)
 
 ## <a name="storage"></a>Speicher
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
@@ -162,30 +161,30 @@ Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) siche
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie Daten mit folgenden Verfahren schützen:
--    [Verschlüsselung auf Transportebene](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
+-   [Verschlüsselung auf Transportebene](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
 
--    [Wire-Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares) (etwa [SMB 3.0-Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide) für [Azure-Dateifreigaben](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)).
+-   [Wire-Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares) (etwa [SMB 3.0-Verschlüsselung](https://docs.microsoft.com/azure/storage/storage-security-guide) für [Azure-Dateifreigaben](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files)).
 
--    Clientseitiger Verschlüsselung, um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
+-   Clientseitiger Verschlüsselung, um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
 ### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Für viele Organisationen ist die Verschlüsselung von ruhenden Daten ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features zur Speichersicherheit ermöglichen die Verschlüsselung „ruhender“ Daten:
 
--    [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
+-   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
 
--    [Client-side Encryption](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
+-   [Client-side Encryption](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
 
--    [Azure-Datenträgerverschlüsselung](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
+-   [Azure-Datenträgerverschlüsselung](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
 
 ### <a name="storage-analytics"></a>Speicheranalyse
 Die [Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren. Die Speicheranalyse protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Die folgenden Typen authentifizierter Anforderungen werden protokolliert:
--    Erfolgreiche Anforderungen
+-   Erfolgreiche Anforderungen
 
--    Fehlerhafte Anforderungen, einschließlich Timeout-, Drosselungs-, Netzwerk- und Autorisierungsfehler sowie anderer Fehler
+-   Fehlerhafte Anforderungen, einschließlich Timeout-, Drosselungs-, Netzwerk- und Autorisierungsfehler sowie anderer Fehler
 
--    Anforderungen mithilfe einer SAS (Shared Access Signature), einschließlich fehlerhafter und erfolgreicher Anforderungen
+-   Anforderungen mithilfe einer SAS (Shared Access Signature), einschließlich fehlerhafter und erfolgreicher Anforderungen
 
--    Anforderungen von Analysedaten
+-   Anforderungen von Analysedaten
 
 ### <a name="enabling-browser-based-clients-using-cors"></a>Aktivieren browserbasierter Clients über CORS
 [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) ist ein Mechanismus, der es Domänen gestattet, sich gegenseitig die Zugriffsberechtigung für die Ressourcen der anderen Domänen zu erteilen. Der Benutzer-Agent sendet zusätzliche Header, um sicherzustellen, dass der von einer bestimmten Domäne geladene JavaScript-Code auf Ressourcen zugreifen kann, die sich in einer anderen Domäne befinden. Die letztere Domäne antwortet dann mit zusätzlichen Headern, die der ursprünglichen Domäne den Zugriff auf ihre Ressourcen gestattet oder verweigert.
@@ -220,13 +219,13 @@ Zudem können Sie das virtuelle Netzwerk mit einer der [Konnektivitätsoptionen]
 
 Azure-Netzwerke unterstützen verschiedene Szenarien für den sicheren Remotezugriff. Dazu zählen:
 
--    [Verbinden einzelner Arbeitsstationen mit einem Azure Virtual Network](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+-   [Verbinden einzelner Arbeitsstationen mit einem Azure Virtual Network](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
--    [Verbinden eines lokalen Netzwerks mit einem Azure Virtual Network mithilfe eines VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
+-   [Verbinden eines lokalen Netzwerks mit einem Azure Virtual Network mithilfe eines VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
 
--    [Verbinden eines lokalen Netzwerks mit einem Azure Virtual Network mithilfe eines dedizierten WAN-Links](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
+-   [Verbinden eines lokalen Netzwerks mit einem Azure Virtual Network mithilfe eines dedizierten WAN-Links](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
 
--    [Verbinden von Azure Virtual Networks untereinander](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
+-   [Verbinden von Azure Virtual Networks untereinander](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 Wenn Sie Netzwerkdatenverkehr zwischen Ihrem Azure Virtual Network und Ihrem lokalen Standort senden möchten, müssen Sie für Ihr Azure Virtual Network ein VPN Gateway erstellen. Ein [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr über eine öffentliche Verbindung gesendet wird. Sie können VP Gateways auch verwenden, um Datenverkehr zwischen Azure Virtual Networks über das Azure-Netzwerkfabric zu senden.
@@ -257,17 +256,17 @@ Web Application Firewall ist ein Feature von [Azure Application Gateway](https:/
 
 ![Web Application Firewall](./media/azure-security/azure-security-fig1.png)
 
--    Schutz vor Einschleusung von SQL-Befehlen
+-   Schutz vor Einschleusung von SQL-Befehlen
 
--    Schutz vor allgemeinen Webangriffen wie Befehlseinschleusung, HTTP Request Smuggling, HTTP Response Splitting und Remote File Inclusion
+-   Schutz vor allgemeinen Webangriffen wie Befehlseinschleusung, HTTP Request Smuggling, HTTP Response Splitting und Remote File Inclusion
 
--    Schutz vor Verletzungen des HTTP-Protokolls
+-   Schutz vor Verletzungen des HTTP-Protokolls
 
--    Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
+-   Schutz vor HTTP-Protokollanomalien, z.B. fehlende user-agent- und accept-Header des Hosts
 
--    Verhindern von Bots, Crawlern und Scannern
+-   Verhindern von Bots, Crawlern und Scannern
 
--    Erkennung häufiger Fehler bei der Anwendungskonfiguration (d. h. Apache, IIS usw.)
+-   Erkennung häufiger Fehler bei der Anwendungskonfiguration (d. h. Apache, IIS usw.)
 
 
 Eine zentrale Webanwendungs-Firewall zum Schutz vor Webangriffen vereinfacht die Sicherheitsverwaltung erheblich und verleiht der Anwendung eine bessere Sicherung gegen die Bedrohungen durch Angriffe. Mit einer WAF-Lösung können Sie ebenfalls schneller auf ein Sicherheitsrisiko reagieren, da eine bekannte Schwachstelle an einem zentralen Ort gepatcht wird, statt jede einzelne Webanwendung separat zu sichern. Vorhandene Anwendungsgateways können problemlos in ein Anwendungsgateway mit Web Application Firewall konvertiert werden.
@@ -278,9 +277,9 @@ Traffic Manager bietet eine Reihe von Datenverkehrsrouting-Methoden, die verschi
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Der [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) bietet hohe Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Es ist ein Layer-4-Lastenausgleichsmodul (TCP, UDP), das eingehenden Datenverkehr auf funktionierende Dienstinstanzen verteilt, die in einer Lastenausgleichsgruppe definiert sind. Azure Load Balancer kann für Folgendes konfiguriert werden:
 
--    Lastenausgleich des eingehenden Internetdatenverkehrs für virtuelle Computer. Diese Konfiguration wird als [Lastenausgleich für Internetzugriff](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)bezeichnet.
+-   Lastenausgleich des eingehenden Internetdatenverkehrs für virtuelle Computer. Diese Konfiguration wird als [Lastenausgleich für Internetzugriff](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)bezeichnet.
 
--    Lastenausgleich für Datenverkehr zwischen virtuellen Computern in einem virtuellen Netzwerk, zwischen virtuellen Computern in Clouddiensten oder zwischen lokalen und virtuellen Computern in einem standortübergreifenden virtuellen Netzwerk. Diese Konfiguration wird als [interner Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)bezeichnet. 
+-   Lastenausgleich für Datenverkehr zwischen virtuellen Computern in einem virtuellen Netzwerk, zwischen virtuellen Computern in Clouddiensten oder zwischen lokalen und virtuellen Computern in einem standortübergreifenden virtuellen Netzwerk. Diese Konfiguration wird als [interner Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)bezeichnet. 
 
 - Weiterleiten von externem Datenverkehr an eine bestimmte Instanz eines virtuellen Computers
 
@@ -291,22 +290,22 @@ Sie können die Liste der in einem VNet verwendeten DNS-Server im Verwaltungspor
 Das [Domain Name System](https://technet.microsoft.com/library/bb629410.aspx) (DNS) ist für die Übersetzung (oder Auflösung) eines Website- oder Dienstnamens in die IP-Adresse verantwortlich. [Azure DNS ist ein Hostingdienst](https://docs.microsoft.com/azure/dns/dns-overview) für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten. DNS unterstützt den Verfügbarkeitsaspekt der drei Sicherheitsbereiche „Vertraulichkeit“, „Integrität“ und „Verfügbarkeit“.
 ### <a name="log-analytics-nsgs"></a>Netzwerksicherheitsgruppen für Log Analytics
 Sie können die folgenden Diagnoseprotokoll-Kategorien für Netzwerksicherheitsgruppen aktivieren:
--    Ereignis: Enthält Einträge, für die NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
+-   Ereignis: Enthält Einträge, für die NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
 
--    Regelzähler: Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+-   Regelzähler: Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Darüber hinaus sorgt Security Center für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden. Bei Netzwerkempfehlungen stehen Firewalls, Netzwerksicherheitsgruppen, das Konfigurieren von Regeln für den eingehenden Datenverkehr und vieles mehr im Mittelpunkt.
 
 Verfügbare Netzwerkempfehlungen:
 
--    [Firewall der nächsten Generation hinzufügen](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall): Empfiehlt, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation eines Microsoft-Partners hinzufügen.
+-   [Firewall der nächsten Generation hinzufügen](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall): Empfiehlt, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation eines Microsoft-Partners hinzufügen.
 
--    [Datenverkehr nur über NGFW routen](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only): Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss.
+-   [Datenverkehr nur über NGFW routen](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only): Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss.
 
--    [Netzwerksicherheitsgruppen in Subnetzen oder auf virtuellen Computern aktivieren](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups) Empfiehlt, dass Sie NSGs in Subnetzen oder auf virtuellen Computern aktivieren.
+-   [Netzwerksicherheitsgruppen in Subnetzen oder auf virtuellen Computern aktivieren](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups) Empfiehlt, dass Sie NSGs in Subnetzen oder auf virtuellen Computern aktivieren.
 
--    [Zugriff über Endpunkt mit Internetzugriff einschränken](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints) Empfiehlt, dass Sie Regeln für eingehenden Datenverkehr für NSGs konfigurieren.
+-   [Zugriff über Endpunkt mit Internetzugriff einschränken](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints) Empfiehlt, dass Sie Regeln für eingehenden Datenverkehr für NSGs konfigurieren.
 
 
 ## <a name="compute"></a>Compute
@@ -353,24 +352,24 @@ Das Schützen von Systemen, Anwendungen und Daten beginnt mit der identitätsbas
 
 ### <a name="secure-identity"></a>Schützen der Identität
 Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine Produkte und Dienste für die Identitäts- und Zugriffsverwaltung.
--    [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) erfordert, dass Benutzer mehrere Zugriffsmethoden (lokal und in der Cloud) verwenden. Mit einer Reihe einfacher Verifizierungsoptionen wird für eine leistungsstarke Authentifizierung gesorgt und gleichzeitig die Benutzeranforderungen an einen einfachen Anmeldeprozess erfüllt.
+-   [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) erfordert, dass Benutzer mehrere Zugriffsmethoden (lokal und in der Cloud) verwenden. Mit einer Reihe einfacher Verifizierungsoptionen wird für eine leistungsstarke Authentifizierung gesorgt und gleichzeitig die Benutzeranforderungen an einen einfachen Anmeldeprozess erfüllt.
 
--    [Microsoft Authenticator](https://aka.ms/authenticator) bietet eine benutzerfreundliche Umgebung für die Multi-Factor Authentication, die mit Microsoft Azure Active Directory und Microsoft-Konten funktioniert und Unterstützung für Wearables und fingerabdruckbasierende Genehmigungen bietet.
+-   [Microsoft Authenticator](https://aka.ms/authenticator) bietet eine benutzerfreundliche Umgebung für die Multi-Factor Authentication, die mit Microsoft Azure Active Directory und Microsoft-Konten funktioniert und Unterstützung für Wearables und fingerabdruckbasierende Genehmigungen bietet.
 
--    [Erzwingung der Kennwortrichtlinie](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) erhöht die Sicherheit herkömmlicher Kennwörter, indem Anforderungen hinsichtlich Länge und Komplexität sowie eine regelmäßige erzwungene Rotation und Kontosperrungen nach fehlgeschlagenen Authentifizierungsversuchen durchgesetzt werden.
+-   [Erzwingung der Kennwortrichtlinie](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) erhöht die Sicherheit herkömmlicher Kennwörter, indem Anforderungen hinsichtlich Länge und Komplexität sowie eine regelmäßige erzwungene Rotation und Kontosperrungen nach fehlgeschlagenen Authentifizierungsversuchen durchgesetzt werden.
 
--    [Token-basierte Authentifizierung](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) aktiviert die Authentifizierung über Active Directory-Verbunddienste (AD FS) oder Drittanbietersysteme mit sicheren Token.
+-   [Token-basierte Authentifizierung](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) aktiviert die Authentifizierung über Active Directory-Verbunddienste (AD FS) oder Drittanbietersysteme mit sicheren Token.
 
--    [Rollenbasierte Zugriffssteuerung (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
+-   [Rollenbasierte Zugriffssteuerung (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
 
--    [Integrierte Identitätsverwaltung (Hybrididentität)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) ermöglicht es Ihnen, den Benutzerzugriff auf interne Rechenzentren und Cloudplattformen zu kontrollieren, indem Sie eine einzelne Benutzeridentität für die Authentifizierung und Autorisierung für alle Ressourcen erstellen.
+-   [Integrierte Identitätsverwaltung (Hybrididentität)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) ermöglicht es Ihnen, den Benutzerzugriff auf interne Rechenzentren und Cloudplattformen zu kontrollieren, indem Sie eine einzelne Benutzeridentität für die Authentifizierung und Autorisierung für alle Ressourcen erstellen.
 
 ### <a name="secure-apps-and-data"></a>Schützen von Apps und Daten
 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) ist eine umfassende Cloudlösung zur Identitäts- und Zugriffsverwaltung, die Sie beim Sichern des Zugriffs auf Daten in lokalen Anwendungen sowie in der Cloud unterstützt und die Verwaltung von Benutzern und Gruppen unterstützt. Es kombiniert wesentliche Verzeichnisdienste, erweiterte Identitätskontrolle, Sicherheit und Anwendungszugriffsverwaltung und gestaltet es für Entwickler einfach, eine richtlinienbasierte Identitätsverwaltung in ihre Apps zu integrieren. Sie können Ihre Azure Active Directory-Anwendung erweitern, indem Sie mit den Basic-, Premium P1- und Premium P2-Editionen von Azure Active Directory kostenpflichtige Funktionen hinzufügen.
 
 | Kostenlose/Gemeinsame Features     | Basic-Features    |Premium P1-Features |Premium P2-Features | Azure Active Directory-Einbindung – nur auf Windows 10 bezogene Features|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|     [Verzeichnisobjekte](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#directory-objects),    [Benutzer-/Gruppenverwaltung (hinzufügen/aktualisieren/löschen)/Benutzerbasierte Bereitstellung, Geräteregistrierung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration),     [Einmaliges Anmelden (Single Sign-On, SSO)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#single-sign-on-sso),     [Self-Service-Kennwortänderung für Cloudbenutzer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users),     [Verbinden (Synchronisierungsmodul, das lokale Verzeichnisse auf Azure Active Directory erweitert)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory),     [Sicherheits-/Verwendungsberichte](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#securityusage-reports)       |     [Gruppenbasierte Zugriffsverwaltung/Bereitstellung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning),    [Self-Service-Kennwortzurücksetzung für Cloudbenutzer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users),     [Unternehmensbranding (Anpassen von Anmeldeseiten/Zugriffsbereich)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization),    [Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#application-proxy),    [SLA 99,9 %](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#sla-999) |  [Self-Service-Verwaltung von Gruppen und Apps/Self-Service-Hinzufügung von Anwendungen/Dynamische Gruppen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-group),    [Self-Service-Kennwortzurücksetzung, -änderung, -entsperrung mit lokalem Rückschreiben](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back),    [Multi-Factor Authentication (cloudbasiert und lokal [MFA-Server])](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server),    [MIM CAL + MIM Server](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mim-cal-mim-server),     [Cloud App Discovery](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#cloud-app-discovery),     [Connect Health](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-health),     [Automatisches Kennwortrollover für Gruppenkonten](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|     [Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection),     [Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-configure)|    [Verbinden eines Geräts mit Azure AD, Desktop-SSO, Microsoft Passport für Azure AD, BitLocker-Wiederherstellung (Administrator)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery),    [Automatische Registrierung für MDM, BitLocker-Wiederherstellung (Self-Service), zusätzliche lokale Administratoren für Windows 10-Geräte über die Einbindung in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
+|   [Verzeichnisobjekte](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#directory-objects),   [Benutzer-/Gruppenverwaltung (hinzufügen/aktualisieren/löschen)/Benutzerbasierte Bereitstellung, Geräteregistrierung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration),  [Einmaliges Anmelden (Single Sign-On, SSO)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#single-sign-on-sso),   [Self-Service-Kennwortänderung für Cloudbenutzer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users),     [Verbinden (Synchronisierungsmodul, das lokale Verzeichnisse auf Azure Active Directory erweitert)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory),   [Sicherheits-&/Verwendungsberichte](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#securityusage-reports)       |     [Gruppenbasierte Zugriffsverwaltung/Bereitstellung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning),    [Self-Service-Kennwortzurücksetzung für Cloudbenutzer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users),   [Unternehmensbranding (Anpassen von Anmeldeseiten/Zugriffsbereich)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization),  [Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#application-proxy),   [SLA 99,9 %](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#sla-999) |  [Self-Service-Verwaltung von Gruppen und Apps/Self-Service-Hinzufügung von Anwendungen/Dynamische Gruppen](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-group),  [Self-Service-Kennwortzurücksetzung, -änderung, -entsperrung mit lokalem Rückschreiben](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back), [Multi-Factor Authentication (cloudbasiert und lokal [MFA-Server])](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server), [MIM-CAL + MIM-Server](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mim-cal-mim-server),   [Cloud App Discovery](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#cloud-app-discovery),   [Connect Health](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#connect-health),     [Automatisches Kennwortrollover für Gruppenkonten](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|     [Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection),     [Privileged Identity Management](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-privileged-identity-management-configure)|    [Verbinden eines Geräts mit Azure AD, Desktop-SSO, Microsoft Passport für Azure AD, BitLocker-Wiederherstellung (Administrator)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery),  [Automatische Registrierung für MDM, BitLocker-Wiederherstellung (Self-Service), zusätzliche lokale Administratoren für Windows 10-Geräte über die Einbindung in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
 
 
 - [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-cloudappdiscovery-whatis) ist ein Premium-Feature von Azure Active Directory, mit dem Sie Cloudanwendungen identifizieren können, die von den Mitarbeitern in Ihrer Organisation verwendet werden.

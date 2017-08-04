@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21223eb0cfbff607e15713e4726761c1bdb01774
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: cfc9fb3ca26819999e10eff8df55d48468c7edef
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung
-Das Feature App Service-Umgebungen (App Service Environment, ASE) ist eine Premium-Dienstoption von Azure App Service mit erweiterter Konfigurationsmöglichkeit, die in den mehrinstanzenfähigen Stamps nicht verfügbar ist.  Mit dem ASE-Feature wird im Wesentlichen Azure App Service in Ihrem virtuellen Azure-Netzwerk (VNet) bereitgestellt.  Um ein besseres Verständnis der Möglichkeiten von App Service-Umgebungen zu erhalten, lesen Sie die Dokumentation [Was ist eine App Service-Umgebung?][WhatisASE].  Wenn Sie die Vorteile des Betriebs in einem VNet nicht kennen, ist es ratsam, die [FAQs zu virtuellen Netzwerken][virtualnetwork] zu lesen.  
+Das Feature App Service-Umgebungen (App Service Environment, ASE) ist eine Premium-Dienstoption von Azure App Service mit erweiterter Konfigurationsmöglichkeit, die in den mehrinstanzenfähigen Stamps nicht verfügbar ist.  Mit dem ASE-Feature wird im Wesentlichen Azure App Service in Ihrem virtuellen Azure-Netzwerk (VNet) bereitgestellt.  Um ein besseres Verständnis der Möglichkeiten von App Service-Umgebungen zu erhalten, lesen Sie die Dokumentation [Was ist eine App Service-Umgebung?][WhatisASE].  Wenn Sie die Vorteile des Betriebs in einem VNET nicht kennen, ist es ratsam, die [FAQs zu virtuellen Netzwerken][virtualnetwork] zu lesen.  
 
 ## <a name="overview"></a>Übersicht
 Eine ASE kann mit einem Endpunkt, auf den über das Internet zugegriffen werden kann, oder einer IP-Adresse in Ihrem VNet bereitgestellt werden.  Um die IP-Adresse auf eine VNet-Adresse festzulegen, müssen Sie Ihre ASE mit einem internen Lastenausgleich (Internal Load Balancer, ILB) bereitstellen.  Wenn Ihre ASE mit einem ILB konfiguriert ist, stellen Sie Folgendes bereit:
@@ -109,7 +110,7 @@ Eine ILB-ASE ermöglicht Netzwerkisolation für Ihre Apps, da nicht auf die Apps
 
 Wenn Sie NSGs verwenden möchten, um den Zugriff weiter einzuschränken, müssen Sie sicherstellen, dass Sie nicht die Kommunikation unterbrechen, die die ASE für den Betrieb benötigt.  Obwohl der HTTP/HTTPS-Zugriff nur über den von der ASE verwendeten ILB erfolgt, ist die ASE weiterhin von Ressourcen außerhalb des VNet abhängig.  Um festzustellen, welcher Netzwerkzugriff noch erforderlich ist, lesen Sie das Dokument [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung][ControlInbound] und das Dokument [Details zur Netzwerkkonfiguration für App Service-Umgebungen mit ExpressRoute][ExpressRoute].  
 
-Um Ihre Netzwerksicherheitsgruppen zu konfigurieren, müssen Sie die IP-Adresse kennen, die Azure verwendet, um Ihre ASE zu verwalten.  Diese IP-Adresse ist auch die ausgehende IP-Adresse Ihrer ASE für Internetanfrage.  Wechseln Sie zum Ermitteln der IP-Adresse zu **Einstellungen > Eigenschaften**, und suchen Sie nach **Ausgehende IP-Adresse**.  
+Um Ihre Netzwerksicherheitsgruppen zu konfigurieren, müssen Sie die IP-Adresse kennen, die Azure verwendet, um Ihre ASE zu verwalten.  Diese IP-Adresse ist auch die ausgehende IP-Adresse Ihrer ASE für Internetanfrage.  Die ausgehende IP-Adresse für Ihr ASE bleibt während der Lebensdauer Ihrer ASE statisch.  Wenn Sie die ASE löschen und neu erstellen, erhalten Sie eine neue IP-Adresse.  Wechseln Sie zum Ermitteln der IP-Adresse zu **Einstellungen > Eigenschaften**, und suchen Sie nach **Ausgehende IP-Adresse**.  
 
 ![][5]
 
@@ -128,7 +129,7 @@ Wenn eine externe VIP-Adresse des DNS mithilfe von Azure verwaltet wird.  Jede i
 ## <a name="getting-started"></a>Erste Schritte
 Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md)zur Verfügung.
 
-Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in App Service-Umgebungen][WhatisASE].
+Informationen zu den ersten Schritten mit App Service-Umgebungen finden Sie unter [Einführung in App Service-Umgebungen][WhatisASE].
 
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][AzureAppService].
 
@@ -155,9 +156,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 [vnetnsgs]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [ASEConfig]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

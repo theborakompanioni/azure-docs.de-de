@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 07/21/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: c1e28c5ad7fd3236899ac0ffe9f3d43241061897
-ms.openlocfilehash: 5f253c3a10e5bfdfa9fe36912b5ebcbc9abae3eb
-ms.lasthandoff: 02/15/2017
-
+ms.reviewer: jeedes
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: f4180601e720351a8b0e95ccffe7712028cfba08
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Tutorial: Azure Active Directory-Integration mit ServiceNow
@@ -116,7 +117,7 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
    
     b. Geben Sie im Textfeld **Bezeichner** die URL, die von Ihren Benutzern zur Anmeldung bei der Kronos-Anwendung genutzt wird, im folgenden Format ein: `https://<instance-name>.service-now.com`.
    
-    c. Klicken Sie unten auf der Seite auf **Weiter**
+    c. Klicken Sie auf **Weiter**
 
 4. Damit Azure AD ServiceNow automatisch für die SAML-basierte Authentifizierung konfiguriert, geben Sie den Instanznamen, den Administratorbenutzernamen und das Administratorkennwort für ServiceNow in das Formular **Einmaliges Anmelden automatisch konfigurieren** ein, und klicken Sie auf *Konfigurieren*. Beachten Sie, dass dem angegebenen Administratorbenutzernamen in ServiceNow die Rolle **security_admin** zugewiesen sein muss, damit dies funktioniert. Um ServiceNow manuell für die Verwendung von Azure AD als SAML-Identitätsanbieter zu konfigurieren, klicken Sie auf **Diese Anwendung manuell für das einmalige Anmelden konfigurieren** und anschließend auf **Weiter**, und führen Sie die folgenden Schritte aus.
    

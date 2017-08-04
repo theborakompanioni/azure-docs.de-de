@@ -1,162 +1,307 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Picturepark | Microsoft Docs'
-description: "Hier erfahren Sie, wie Sie Picturepark mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
+title: 'Tutorial: Azure Active Directory-Integration in Picturepark | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Picturepark konfigurieren.
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: 31c21cd4-9c00-4cad-9538-a13996dc872f
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/24/2017
+ms.date: 07/06/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a6b6610bb4d4b427f525934146340a9cca6f52cb
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c009aa1fdd3140a4466cf762b6c9687e74ce4c7
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Tutorial: Azure Active Directory-Integration mit Picturepark
-In diesem Tutorial wird die Integration von Azure und Picturepark erläutert.  
+# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Tutorial: Azure Active Directory-Integration in Picturepark
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial erfahren Sie, wie Sie Picturepark in Azure Active Directory (Azure AD) integrieren.
 
-* Ein gültiges Azure-Abonnement
-* Einen Picturepark-Mandanten
+Die Integration von Picturepark in Azure AD bietet die folgenden Vorteile:
 
-Nach Abschluss dieses Tutorials können sich die Picturepark zugewiesenen Azure AD-Benutzer mittels einmaliger Anmeldung auf Ihrer Picturepark-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+- Sie können in Azure AD steuern, wer Zugriff auf Picturepark hat.
+- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Picturepark anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-1. Aktivieren der Anwendungsintegration für Picturepark
-2. Konfigurieren des einmaligen Anmeldens (SSO)
-3. Konfigurieren der Benutzerbereitstellung
-4. Zuweisen von Benutzern
+## <a name="prerequisites"></a>Voraussetzungen
 
-![Szenario](./media/active-directory-saas-picturepark-tutorial/IC795055.png "Szenario")
+Um die Azure AD-Integration in Picturepark konfigurieren zu können, benötigen Sie Folgendes:
 
-## <a name="enable-the-application-integration-for-picturepark"></a>Aktivieren der Anwendungsintegration für Picturepark
-In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Picturepark aktivieren.
+- Ein Azure AD-Abonnement
+- Ein Picturepark-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-**Um die Anwendungsintegration für Picturepark zu aktivieren, führen Sie die folgenden Schritte durch:**
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
+
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+
+1. Hinzufügen von Picturepark aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+
+## <a name="adding-picturepark-from-the-gallery"></a>Hinzufügen von Picturepark aus dem Katalog
+Zum Konfigurieren der Integration von Picturepark in Azure AD müssen Sie Picturepark aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
+
+**Um Picturepark aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+
+    ![Active Directory][1]
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
+    ![Anwendungen][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+    ![Anwendungen][3]
+
+4. Geben Sie im Suchfeld den Namen **Picturepark** ein.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_search.png)
+
+5. Wählen Sie im Ergebnisbereich die Option **Picturepark** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Picturepark mithilfe einer Testbenutzerin namens Britta Simon.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Picturepark als Pendant zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Picturepark muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in Picturepark den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Picturepark müssen die folgenden Schritte ausgeführt werden:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Picturepark-Testbenutzers](#creating-a-picturepark-test-user)**, um ein Pendant von Britta Simon in Picturepark zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Picturepark-Anwendung.
+
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Picturepark die folgenden Schritte aus:**
+
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Picturepark** auf **Einmaliges Anmelden**.
+
+    ![Einmaliges Anmelden konfigurieren][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_samlbase.png)
+
+3. Führen Sie im Abschnitt **Domäne und URLs für Picturepark** die folgenden Schritte aus:
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_url.png)
+
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.picturepark.com`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: 
+    
+    |  |
+    |--|
+    | `https://<companyname>.current-picturepark.com`|
+    | `https://<companyname>.picturepark.com`|
+    | `https://<companyname>.next-picturepark.com`|
+    | |
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Picturepark-Client](https://picturepark.com/about/contact/), um diese Werte zu erhalten. 
+ 
+4. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK** des Zertifikats.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/tutorial_general_400.png)
+
+6. Klicken Sie im Abschnitt **Picturepark-Konfiguration** auf **Picturepark konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_configure.png) 
+
+7. Melden Sie sich in einem anderen Webbrowserfenster bei der Picturepark-Unternehmenswebsite als Administrator an.
+
+8. Klicken Sie oben auf der Symbolleiste auf **Verwaltungstools**, und klicken Sie dann auf **Verwaltungskonsole**.
    
-   ![Active Directory](./media/active-directory-saas-picturepark-tutorial/IC700993.png "Active Directory")
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-   ![Anwendungen](./media/active-directory-saas-picturepark-tutorial/IC700994.png "Anwendungen")
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
-   ![Anwendung hinzufügen](./media/active-directory-saas-picturepark-tutorial/IC749321.png "Anwendung hinzufügen")
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-picturepark-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
-6. Geben Sie im **Suchfeld** das Wort **Picturepark** ein.
-   
-   ![Anwendungskatalog](./media/active-directory-saas-picturepark-tutorial/IC795056.png "Anwendungskatalog")
-7. Wählen Sie im Ergebnisbereich **Picturepark** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-   ![Picturepark](./media/active-directory-saas-picturepark-tutorial/IC795057.png "Picturepark")
+    ![Verwaltungskonsole](./media/active-directory-saas-picturepark-tutorial/ic795062.png "Verwaltungskonsole")
 
-
-## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren
-
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Picturepark zu authentifizieren.  
-
-Zum Konfigurieren des einmaligen Anmeldens (SSO) für Picturepark müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
-
-Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI)weitere Informationen.
-
-**So konfigurieren Sie einmaliges Anmelden**
-
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Picturepark** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+9. Klicken Sie auf **Authentifizierung** und dann auf **Identitätsanbieter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/IC795058.png "Einmaliges Anmelden konfigurieren")
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Picturepark anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
-   
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/IC795059.png "Einmaliges Anmelden konfigurieren")
-3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Picturepark-Anmelde-URL** Ihre URL im Format „*http://company.picturepark.com*“ ein, und klicken Sie dann auf **Weiter**.
-   
-   ![App-URL konfigurieren](./media/active-directory-saas-picturepark-tutorial/IC795060.png "App-URL konfigurieren")
-4. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Picturepark** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
-   
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/IC795061.png "Einmaliges Anmelden konfigurieren")
-5. Melden Sie sich in einem anderen Webbrowserfenster bei der Picturepark-Unternehmenswebsite als Administrator an.
-6. Klicken Sie oben auf der Symbolleiste auf **Verwaltungstools**, und klicken Sie dann auf **Verwaltungskonsole**.
-   
-   ![Verwaltungskonsole](./media/active-directory-saas-picturepark-tutorial/IC795062.png "Verwaltungskonsole")
-7. Klicken Sie auf **Authentifizierung** und dann auf **Identitätsanbieter**.
-   
-   ![Authentifizierung](./media/active-directory-saas-picturepark-tutorial/IC795063.png "Authentifizierung")
-8. Führen Sie im Abschnitt **Identitätsanbieterkonfiguration** die folgenden Schritte aus:
-   
-   ![Identitätsanbieterkonfiguration](./media/active-directory-saas-picturepark-tutorial/IC795064.png "Identitätsanbieterkonfiguration")
-   
-   1. Klicken Sie auf **Hinzufügen**.
-   2. Geben Sie einen Namen für die Konfiguration ein.
-   3. Wählen Sie **Als Standard festlegen**.
-   4. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Picturepark** den Wert für **SAML-SSO-URL**, und fügen Sie ihn in das Textfeld **Aussteller-URI** ein.
-   5. Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck eines vertrauenswürdigen Ausstellers** ein.  
-      
-      >[!TIP]
-      >Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI).
-      >
-      >
+    ![Authentifizierung](./media/active-directory-saas-picturepark-tutorial/ic795063.png "Authentifizierung")
 
-9. Klicken Sie auf **JoinDefaultUsersGroup**.
-10. Geben Sie zum Festlegen des **Emailaddress**-Attributs im Textfeld **Anspruch** die Adresse **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein, und klicken Sie auf **Speichern**.
-
-      ![Konfiguration](./media/active-directory-saas-picturepark-tutorial/IC795065.png "Konfiguration")
-11. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+10. Führen Sie im Abschnitt **Identitätsanbieterkonfiguration** die folgenden Schritte aus:
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/IC795066.png "Einmaliges Anmelden konfigurieren")
+    ![Identitätsanbieterkonfiguration](./media/active-directory-saas-picturepark-tutorial/ic795064.png "Identitätsanbieterkonfiguration")
+   
+    a. Klicken Sie auf **Hinzufügen**.
+  
+    b. Geben Sie einen Namen für die Konfiguration ein.
+   
+    c. Wählen Sie **Als Standard festlegen**.
+   
+    d. Fügen Sie in das Textfeld **Aussteller-URI** den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+   
+    e. Fügen Sie im Textfeld **Trusted Issuer Thumb Print** (Fingerabdruck eines vertrauenswürdigen Anbieters) den Wert von **Fingerabdruck** ein, den Sie aus dem Abschnitt **SAML-Signaturzertifikat** kopiert haben. 
 
-## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
-Damit sich Azure AD-Benutzer bei Picturepark anmelden können, müssen sie in Picturepark bereitgestellt werden.  
+11. Klicken Sie auf **JoinDefaultUsersGroup**.
 
- * Im Fall von Picturepark ist die Bereitstellung eine manuelle Aufgabe.
+12. Um das Attribut **E-Mail-Adresse** im Textfeld **Anspruch** festzulegen, geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein, und klicken Sie auf **Speichern**.
 
-**Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
+      ![Konfiguration](./media/active-directory-saas-picturepark-tutorial/ic795065.png "Konfiguration")
+
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+![Azure AD-Benutzer erstellen][100]
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-picturepark-tutorial/create_aaduser_01.png) 
+
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-picturepark-tutorial/create_aaduser_02.png) 
+
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-picturepark-tutorial/create_aaduser_03.png) 
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-picturepark-tutorial/create_aaduser_04.png) 
+
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="creating-a-picturepark-test-user"></a>Erstellen eines Picturepark-Testbenutzers
+
+Damit sich Azure AD-Benutzer bei Picturepark anmelden können, müssen sie in Picturepark bereitgestellt werden. Im Fall von Picturepark ist die Bereitstellung eine manuelle Aufgabe.
+
+**Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
 
 1. Melden Sie sich bei Ihrem **Picturepark** -Mandanten an.
+
 2. Klicken Sie oben in der Symbolleiste auf **Verwaltungstools**, und klicken Sie dann auf **Benutzer**.
    
-   ![Benutzer](./media/active-directory-saas-picturepark-tutorial/IC795067.png "Benutzer")
+    ![Benutzer](./media/active-directory-saas-picturepark-tutorial/ic795067.png "Benutzer")
+
 3. Klicken Sie auf der Registerkarte **Benutzerübersicht** auf **Neu**.
    
-   ![Benutzerverwaltung](./media/active-directory-saas-picturepark-tutorial/IC795068.png "Benutzerverwaltung")
-4. Führen Sie im Dialogfeld **Benutzer erstellen** die folgenden Schritte aus:
+    ![Benutzerverwaltung](./media/active-directory-saas-picturepark-tutorial/ic795068.png "Benutzerverwaltung")
+
+4. Führen Sie im Dialogfeld **Benutzer erstellen** die folgenden Schritte für einen gültigen Azure Active Directory-Benutzer aus, den Sie bereitstellen möchten:
    
-   ![Benutzer erstellen](./media/active-directory-saas-picturepark-tutorial/IC795069.png "Benutzer erstellen")
+    ![Benutzer erstellen](./media/active-directory-saas-picturepark-tutorial/ic795069.png "Benutzer erstellen")
    
-  1. Geben Sie die Informationen für **E-Mail-Adresse**, **Kennwort**, **Kennwort bestätigen**, **Vorname**, **Nachname**, **Unternehmen**, **Land**, **PLZ**, **Ort** eines gültigen Azure Active Directory-Benutzers, den Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
-  2. Wählen Sie eine **Sprache**aus.
-  3. Klicken Sie auf **Erstellen**.
+    a. Geben Sie im Textfeld **E-Mail-Adresse** die **E-Mail-Adresse** des Benutzers ein: **BrittaSimon@contoso.com**.  
+   
+    b. Geben Sie in den Textfeldern **Kennwort** und **Kennwort bestätigen** das **Kennwort** von Britta Simon ein. 
+   
+    c. Geben Sie im Textfeld **Vorname** den Vornamen ****des Benutzers ein, z.B. **Britta**. 
+   
+    d. Geben Sie im Textfeld **Nachname** den Nachnamen ****des Benutzers ein, z.B. **Simon**.
+   
+    e. Geben Sie im Textfeld **Unternehmen** den Unternehmensnamen ****des Benutzers ein. 
+   
+    f. Wählen Sie im Textfeld **Land** das Land **** des Benutzers aus.
+  
+    g. Geben Sie im Textfeld **PLZ** die Postleitzahl ****des Orts ein.
+   
+    h. Geben Sie im Textfeld **Ort** den Ortsnamen ****des Benutzers ein.
+
+    i. Wählen Sie eine **Sprache**aus.
+   
+    j. Klicken Sie auf **Erstellen**.
 
 >[!NOTE]
->Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Picturepark-Benutzerkonten oder mithilfe der von Picturepark bereitgestellten APIs erstellen.
+>Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Picturepark-Benutzerkonten oder mithilfe der von Picturepark bereitgestellten APIs erstellen.
 > 
-> 
 
-## <a name="assign-users"></a>Benutzer zuweisen
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-**Um Picturepark Benutzer zuzuweisen, führen Sie die folgenden Schritte durch:**
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Picturepark gewähren.
 
-1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
-2. Klicken Sie auf der Anwendungsintegrationsseite für **Picturepark** auf **Benutzer zuweisen**.
-   
-   ![Zuweisen von Benutzern](./media/active-directory-saas-picturepark-tutorial/IC795070.png "Zuweisen von Benutzern")
-3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
-   
-   ![Ja](./media/active-directory-saas-picturepark-tutorial/IC767830.png "Ja")
+![Benutzer zuweisen][200] 
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+**Um Britta Simon Picturepark zuzuweisen, führen Sie die folgenden Schritte aus:**
+
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
+    ![Benutzer zuweisen][201] 
+
+2. Wählen Sie in der Anwendungsliste **Picturepark** aus.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „Picturepark“ klicken, sollten Sie automatisch bei Ihrer Picturepark-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-picturepark-tutorial/tutorial_general_203.png
 
 
