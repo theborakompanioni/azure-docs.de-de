@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Application Insights in Visual Studio | Microsoft-Dokumentation
+title: Debuggen von Anwendungen mit Azure Application Insights in Visual Studio | Microsoft-Dokumentation
 description: "Es wird beschrieben, wie Sie die Web-App-Leistungsanalyse und Diagnose während des Debuggens und in der Produktion durchführen."
 services: application-insights
 documentationcenter: .net
@@ -11,22 +11,22 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2016
+ms.date: 07/7/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7fe1b572104416fec62261c60228fa966d197dd9
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 93e97cbc5d9bf55334a481183f40083a6f3b99a4
 ms.contentlocale: de-de
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
-# <a name="working-with-azure-application-insights-in-visual-studio"></a>Verwenden von Azure Application Insights in Visual Studio
+# <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Debuggen von Anwendungen mit Azure Application Insights in Visual Studio
 In Visual Studio (2015 und höher) können Sie mithilfe von Telemetriedaten aus [Azure Application Insights](app-insights-overview.md) sowohl beim Debuggen als auch in der Produktion in Ihrer ASP.NET-Web-App die Leistung analysieren und Probleme diagnostizieren.
 
 Wenn Sie die ASP.NET-Web-App mit Visual Studio 2017 oder höher erstellt haben, ist das Application Insights-SDK bereits vorhanden. Andernfalls können Sie [Application Insights Ihrer App hinzufügen](app-insights-asp-net.md), falls Sie dies noch nicht getan haben.
 
-Zur Liveüberwachung Ihrer App in der Produktion zeigen Sie die Application Insights-Telemetrie normalerweise im [Azure-Portal](https://portal.azure.com) an, in dem Sie Warnungen festlegen und leistungsfähige Überwachungstool anwenden können. Für das Debuggen können Sie die Telemetriedaten in Visual Studio auch durchsuchen und analysieren. Sie können Visual Studio nutzen, um die Telemetrie sowohl über Ihren Produktionsstandort als auch über Debugläufe auf Ihrem Entwicklungscomputer zu analysieren. Im letzteren Fall können Sie die Debugläufe auch dann analysieren, wenn Sie das SDK nicht zum Senden von Telemetriedaten an das Azure-Portal konfiguriert haben. 
+Zur Liveüberwachung Ihrer App in der Produktion zeigen Sie die Application Insights-Telemetrie normalerweise im [Azure-Portal](https://portal.azure.com) an, in dem Sie Warnungen festlegen und leistungsfähige Überwachungstool anwenden können. Für das Debuggen können Sie die Telemetriedaten in Visual Studio auch durchsuchen und analysieren. Mit Visual Studio können Sie Telemetriedaten von Ihrem Produktionsstandort sowie aus Debugläufen auf Ihrem Entwicklungscomputer analysieren. Im letzteren Fall können Sie die Debugläufe auch dann analysieren, wenn Sie das SDK nicht zum Senden von Telemetriedaten an das Azure-Portal konfiguriert haben. 
 
 ## <a name="run"></a> Debuggen des Projekts
 Führen Sie Ihre Web-App im lokalen Debugmodus aus, indem Sie F5 drücken. Öffnen Sie verschiedene Seiten, um Telemetriedaten zu generieren.
@@ -58,14 +58,14 @@ Außerdem können Sie zum Diagnostizieren von fehlerhaften Anforderungen oder vo
 
 ![Scrollen zu verwandten Elementen unter „Anforderungsdetails“](./media/app-insights-visual-studio/41.png)
 
-## <a name="exceptions-and-failed-requests"></a>Ausnahmen und fehlerhafte Anforderungen
+## <a name="view-exceptions-and-failed-requests"></a>Anzeigen von Ausnahmen und nicht erfolgreichen Anforderungen
 Ausnahmeberichte werden im Suchfenster angezeigt. (Bei einigen älteren Typen der ASP.NET-Anwendung müssen Sie die [Ausnahmeüberwachung einrichten](app-insights-asp-net-exceptions.md), um Ausnahmen anzuzeigen, die vom Framework verarbeitet werden.)
 
 Klicken Sie auf eine Ausnahme, um eine Stapelüberwachung zu erhalten. Wenn der Code der App in Visual Studio geöffnet ist, können Sie sich durch die Stapelüberwachung bis zur entsprechenden Zeile im Code klicken.
 
 ![Ausnahmestapelüberwachung](./media/app-insights-visual-studio/17.png)
 
-## <a name="request-and-exception-summaries-in-the-code"></a>Zusammenfassungen von Anforderungen und Ausnahmen im Code
+## <a name="view-request-and-exception-summaries-in-the-code"></a>Anzeigen von Zusammenfassungen von Anforderungen und Ausnahmen im Code
 In der Codebereichszeile wird oberhalb jeder Handlermethode die Anzahl von Anforderungen und Ausnahmen angezeigt, die von Application Insights innerhalb der letzten 24 Stunden protokolliert wurden.
 
 ![Ausnahmestapelüberwachung](./media/app-insights-visual-studio/21.png)
@@ -88,7 +88,7 @@ Wählen Sie zum Ermitteln von Anomalien in Ihren Daten in der Dropdownliste „A
 [Weitere Informationen zu Trends](app-insights-visual-studio-trends.md)
 
 ## <a name="local-monitoring"></a>Lokale Überwachung
-(In Visual Studio 2015 Update 2) Falls Sie das SDK nicht zum Senden von Telemetriedaten an das Application Insights-Portal konfiguriert haben (sodass kein Instrumentationsschlüssel in „ApplicationInsights.config“ enthalten ist), werden im Diagnosefenster Telemetriedaten aus der letzten Debugsitzung angezeigt. 
+(Visual Studio 2015 Update 2) Falls Sie das SDK nicht zum Senden von Telemetriedaten an das Application Insights-Portal konfiguriert haben (sodass kein Instrumentationsschlüssel in „ApplicationInsights.config“ enthalten ist), werden im Diagnosefenster Telemetriedaten aus der letzten Debugsitzung angezeigt. 
 
 Dies ist wünschenswert, wenn Sie bereits eine frühere Version der Anwendung veröffentlicht haben. Die Telemetriedaten aus den Debugsitzungen und die Telemetriedaten der veröffentlichten App im Application Insights-Portal müssen getrennt behandelt werden.
 
@@ -100,10 +100,10 @@ Dies ist ebenfalls hilfreich, wenn Sie über [benutzerdefinierte Telemetriedaten
   * Damit keine Telemetriedaten mehr an das Portal gesendet werden, kommentieren Sie die Zeile `<instrumentationkey>...` in „ApplicationInsights.config“ aus. Wenn Sie bereit sind, Telemetriedaten erneut an das Portal zu senden, heben Sie die Auskommentierung auf.
 
 
-## <a name="whats-next"></a>Wie geht es weiter?
+## <a name="next-steps"></a>Nächste Schritte
 |  |  |
 | --- | --- |
 | **[Hinzufügen weiterer Daten](app-insights-asp-net-more.md)**<br/>Überwachen Sie Nutzung, Verfügbarkeit, Abhängigkeiten und Ausnahmen. Integrieren Sie Ablaufverfolgungen aus Protokollierungsframeworks. Schreiben Sie benutzerdefinierte Telemetriedaten. |![Visual Studio](./media/app-insights-visual-studio/64.png) |
-| **[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/>Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen und zum Export von Telemetriedaten sowie eine Livekarte der Abhängigkeiten Ihrer Anwendung. |![Visual Studio](./media/app-insights-visual-studio/62.png) |
+| **[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/>Zeigen Sie Dashboards, leistungsstarke Diagnose- und Analysetools, Warnungen, eine Livezuordnung der Abhängigkeiten Ihrer Anwendung sowie exportierte Telemetriedaten an. |![Visual Studio](./media/app-insights-visual-studio/62.png) |
 
 

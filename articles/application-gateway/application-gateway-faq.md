@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 3b2ddf764f54d2e7f23b02b5b593077938ac9355
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: dbf870ca6e0ab85c96290a93eafd47d4b574dbc7
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 
@@ -57,7 +56,11 @@ Application Gateway ist eine dedizierte Bereitstellung in Ihrem virtuellen Netzw
 
 **F: Wird die Umleitung von HTTP zu HTTPS unterstützt?**
 
-Dies wird derzeit nicht unterstützt.
+Die Umleitung wird unterstützt. Weitere Informationen finden Sie in der [Übersicht über die Umleitung in Application Gateway](application-gateway-redirect-overview.md).
+
+**F: In welcher Reihenfolge werden Listener verarbeitet?**
+
+Listener werden gemäß der Anzeigereihenfolge verarbeitet. Wenn also ein grundlegender Listener zu einer eingehenden Anforderung passt, wird diese zuerst verarbeitet.  Listener für mehrere Standorte müssen vor einem grundlegenden Listener konfiguriert werden, um zu gewährleisten, dass der Datenverkehr an das richtige Back-End weitergeleitet wird.
 
 **F: Wo finde ich IP und DNS von Application Gateway?**
 
@@ -131,6 +134,10 @@ Microservice-Architektur wird unterstützt. Dazu benötigen Sie mehrere HTTP-Ein
 
 Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Ausdrücke in Antwortdaten?
 
+**F: Wie werden Regeln verarbeitet?**
+
+Regeln werden gemäß der Konfigurationsreihenfolge verarbeitet. Es empfiehlt sich, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren, um zu vermeiden, dass Datenverkehr an das falsche Back-End weitergeleitet wird, weil die einfache Regel auf der Grundlage des Ports zu dem Datenverkehr passen würde, bevor die Regel für mehrere Standorte ausgewertet wurde.
+
 **F: Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?**
 
 Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem VM-Hostnamen und weist folgendes Format auf: \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>.
@@ -153,7 +160,7 @@ Dies können Sie mithilfe von Netzwerksicherheitsgruppen im Application Gateway-
 
 **F: Wie unterstützt Application Gateway hohe Verfügbarkeit und Skalierbarkeit?**
 
-Application Gateway unterstützt Szenarien mit hoher Verfügbarkeit, wenn Sie mehr als zwei Instanzen bereitgestellt haben. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
+Application Gateway unterstützt Szenarien mit hoher Verfügbarkeit, wenn mehrere Instanzen bereitgestellt werden. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
 
 **F: Wie erziele ich mit Application Gateway ein rechenzentrumsübergreifendes DR-Szenario?**
 
