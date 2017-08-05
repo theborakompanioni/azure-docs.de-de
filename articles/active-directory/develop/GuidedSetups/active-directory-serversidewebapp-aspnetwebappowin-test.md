@@ -55,7 +55,7 @@ Darüber hinaus sehen Sie eine Tabelle mit allen Benutzeransprüchen, die in der
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Testen des Zugriffs auf eine Methode mit einem *[Authorize]*-Attribut (optional)
 In diesem Schritt testen Sie den Zugriff auf den „Authenticated“-Controller als anonymer Benutzer:<br/>
 Klicken Sie auf den Link zum Abmelden des Benutzers, und schließen Sie den Abmeldevorgang ab.<br/>
-Geben Sie nun „http://localhost:{port}/authenticated“ in Ihren Browser ein, um auf Ihren Controller zuzugreifen, der durch das `[Authorize]`-Attribut geschützt ist.
+Geben Sie nun http://localhost:{port}/authenticated in Ihren Browser ein, um auf Ihren Controller zuzugreifen, der durch das `[Authorize]`-Attribut geschützt ist.
 
 #### <a name="expected-results"></a>Erwartete Ergebnisse
 Sie sollten zum Anmelden aufgefordert werden, um die Ansicht anzuzeigen.

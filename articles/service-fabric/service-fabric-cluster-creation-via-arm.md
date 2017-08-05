@@ -461,6 +461,7 @@ Die zuvor erstellte Azure AD-Konfiguration kann direkt in die Resource Manager-V
 ```
 
 ### <a "configure-arm" ></a>Konfigurieren von Resource Manager-Vorlagenparametern
+<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since the link seems not to be redirecting correctly --->
 Füllen Sie die Parameterdatei abschließend mit den Ausgabewerten aus den Schlüsseltresor- und Azure AD-PowerShell-Befehlen auf:
 
 ```json
@@ -555,7 +556,8 @@ Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benu
 >
 >
 
- <a name="secure-linux-cluster"></a>
+ <a name="secure-linux-clusters"></a>
+ <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
 
 ## <a name="create-secure-clusters-on-linux"></a>Erstellen sicherer Cluster unter Linux
 Zur Vereinfachung des Prozesses haben wir ein [Hilfsskript](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux) erstellt. Vergewissern Sie sich vor der Verwendung dieses Hilfsskripts, dass die Azure-Befehlszeilenschnittstelle bereits installiert ist und sich unter Ihrem Pfad befindet. Vergewissern Sie sich, dass das Skript über Ausführungsberechtigungen verfügt, indem Sie nach dem Herunterladen `chmod +x cert_helper.py` ausführen. Melden Sie sich zunächst über die Befehlszeilenschnittstelle mithilfe des Befehls `azure login` bei Ihrem Azure-Konto an. Verwenden Sie nach der Anmeldung bei Ihrem Azure-Konto das Hilfsskript mit Ihrem von der Zertifizierungsstelle signierten Zertifikat, wie im folgenden Befehl zu sehen:
