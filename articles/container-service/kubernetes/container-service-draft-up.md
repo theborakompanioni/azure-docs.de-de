@@ -197,8 +197,8 @@ Die Ausgabe sieht in etwa wie folgt aus:
   - die Stammbereitstellungsdomäne, die Sie für die Zuordnung zur externen IP-Adresse des Kubernetes-Eingangs konfiguriert haben (in diesem Fall `squillace.io`)
 
   Rufen Sie `draft init` auf. Beim Konfigurationsvorgang werden Sie zur Eingabe der oben genannten Werte aufgefordert. Der Prozess sieht bei der ersten Ausführung etwa wie folgt aus:
-    ```
-    draft init
+ ```bash
+    $ draft init
     Creating pack ruby...
     Creating pack node...
     Creating pack gradle...
