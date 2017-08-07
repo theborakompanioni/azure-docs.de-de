@@ -25,7 +25,7 @@ ms.lasthandoff: 05/25/2017
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
-Drücken Sie `F5`, um das Projekt in Visual Studio auszuführen. Der Browser wird geöffnet und leitet Sie zu *http://localhost: {Port}*, wo Sie die Schaltfläche *Mit Microsoft anmelden* sehen. Fahren Sie fort, indem Sie darauf klicken, um sich anzumelden.
+Drücken Sie `F5`, um das Projekt in Visual Studio auszuführen. Der Browser wird geöffnet und leitet Sie zu *http://localhost:{port}*, wo Sie die Schaltfläche *Mit Microsoft anmelden* sehen. Fahren Sie fort, indem Sie darauf klicken, um sich anzumelden.
 
 Wenn Sie zum Testen bereit sind, verwenden Sie ein Geschäfts-, Schul- oder Unikonto (Azure Active Directory) oder ein persönliches Konto (live.com, outlook.com), um sich anzumelden. 
 
