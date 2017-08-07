@@ -1,6 +1,6 @@
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| VMs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region |10.000 pro Region |
+| VMs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |10.000<sup>1</sup> pro Region |10.000 pro Region |
 | Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
 | VM-Kerne pro Serie (Dv2, F usw.) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt |Unbegrenzt |

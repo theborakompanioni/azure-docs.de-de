@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 9353ad6df121ebd2e92a5d34214c32e852ed60a3
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 9b50f1cca81348b69f7ff2d702c6c72871afe0a0
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="getting-started-with-notification-hubs-for-windows-universal-platform-apps"></a>Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform
@@ -49,33 +48,30 @@ Das Abschließen dieses Tutorials ist eine Voraussetzung für alle anderen Notif
 Sie müssen die App dem Windows Store zuordnen, um Pushbenachrichtigungen an UWP-Apps senden zu können. Sie müssen anschließend den Benachrichtigungshub zur Integration in den WNS konfigurieren.
 
 1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie zum [Windows-Entwicklungscenter](https://dev.windows.com/overview), melden Sie sich dort mit Ihrem Microsoft-Konto an, und klicken Sie dann auf **Neue App erstellen**.
-2. Geben Sie einen Namen für die App ein, und klicken Sie auf **App-Namen reservieren**.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-name.png)
-   
-   Auf diese Weise wird eine neue Windows Store-Registrierung für Ihre App erstellt.
-3. Erstellen Sie in Visual Studio ein neues Visual C# Store-App-Projekt mit der Vorlage **Leere App**, und klicken Sie auf **OK**.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-windows-universal-app.png)
+
+2. Geben Sie einen Namen für die App ein, und klicken Sie auf **App-Namen reservieren**. Auf diese Weise wird eine neue Windows Store-Registrierung für Ihre App erstellt.
+
+3. Erstellen Sie in Visual Studio ein neues Visual C# Store-App-Projekt mit der Windows Universal-Vorlage **Leere App**, und klicken Sie auf **OK**.
+
 4. Übernehmen Sie die Standardwerte für die Zielversion und die Mindestversion der Plattform.
-5. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Windows Store-App-Projekt, klicken Sie auf **Store**, und klicken Sie dann auf **App mit Store verknüpfen**.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png)
 
-   Daraufhin wird der Assistent **App mit Windows Store verknüpfen** angezeigt.
+5. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Windows Store-App-Projekt, klicken Sie auf **Store**, und klicken Sie dann auf **App mit Store verknüpfen**. Daraufhin wird der Assistent **App mit Windows Store verknüpfen** angezeigt.
 
-1. Klicken Sie im Assistenten auf **Anmelden**. Melden Sie sich dann mit Ihrem Microsoft-Konto an.
-2. Klicken Sie auf die App, die Sie in Schritt 2 registriert haben. Klicken Sie auf **Weiter** und dann auf **Zuordnen**.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-app-name.png)
-   
-   Auf diese Weise werden die erforderlichen Windows Store-Registrierungsinformationen zum Anwendungsmanifest hinzugefügt.
-3. Wechseln Sie wieder zur Seite des [Windows-Entwicklungscenters](http://go.microsoft.com/fwlink/p/?LinkID=266582) für Ihre neue App. Klicken Sie auf **Dienste** und **Pushbenachrichtigungen**, und klicken Sie dann unter **Windows-Pushbenachrichtigungsdienste (WNS) und Microsoft Azure Mobile Apps** auf **Live Services-Website**.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-live-services.png)
-4. Notieren Sie sich auf der Registrierungsseite für Ihre App das Kennwort unter **Anwendungsgeheimnis** und die **Paketsicherheits-ID (SID)** in den Einstellungen der Plattform **Windows Store**.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-push-auth.png)
+6. Melden Sie sich im Assistenten mit Ihrem Microsoft-Konto an.
+
+7. Klicken Sie auf die App, die Sie in Schritt 2 registriert haben. Klicken Sie auf **Weiter** und dann auf **Zuordnen**. Auf diese Weise werden die erforderlichen Windows Store-Registrierungsinformationen zum Anwendungsmanifest hinzugefügt.
+
+8. Klicken Sie auf der Seite [Windows Dev Center](http://dev.windows.com/overview) für Ihre neue App auf **Dienste** > **Pushbenachrichtigungen** > **WNS/MPNS**.
+
+9. Klicken Sie auf **Neue Benachrichtigung**.
+
+10. Klicken Sie auf die Vorlage **Blank (Toast)** (Leer) (Popup)) und anschließend auf **OK**.
+
+11. Geben Sie unter **Name** einen Namen und unter **Kontext** eine visuelle Kontextnachricht für die Benachrichtigung ein. Klicken Sie anschließend auf **Als Entwurf speichern**.
+
+12. Navigieren Sie zum [App-Registrierungsportal](http://apps.dev.microsoft.com), und melden Sie sich an.
+
+13. Klicken Sie auf den Namen Ihrer Anwendung. Notieren Sie sich das Kennwort unter **Anwendungsgeheimnis** und die **Paketsicherheits-ID (SID)** in den Plattformeinstellungen für **Windows Store**.
 
      > [AZURE.WARNING]
     Der geheime Schlüssel der Anwendung und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung.
@@ -137,8 +133,6 @@ Der Benachrichtigungshub ist nun konfiguriert, um mit dem WNS arbeiten zu könne
    
     Dadurch wird gewährleistet, dass der Kanal-URI bei jedem Start der Anwendung im Notification Hub registriert wird.
 6. Drücken Sie **F5** , um die App auszuführen. Ein Dialogfenster mit dem Registrierungsschlüssel wird angezeigt.
-   
-     ![][19]
 
 Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 
@@ -162,9 +156,8 @@ Führen Sie die folgenden Schritte aus, um Benachrichtigungen mithilfe einer .NE
 
 1. Klicken Sie mit der rechten Maustaste auf die Projektmappe, wählen Sie **Hinzufügen** und **Neues Projekt** aus, und klicken Sie dann unter **Visual C#** auf **Windows**, **Konsolenanwendung** und **OK**.
    
-     ![][13]
-   
     Damit wird der Projektmappe eine neue Visual C#-Konsolenanwendung hinzugefügt. Sie können dies auch in einer separaten Projektmappe durchführen.
+
 2. Klicken Sie in Visual Studio auf **Extras**, auf **NuGet-Paket-Manager** und dann auf **Paket-Manager-Konsole**.
    
     Daraufhin wird in Visual Studio die Paket-Manager-Konsole angezeigt.
@@ -199,8 +192,6 @@ Führen Sie die folgenden Schritte aus, um Benachrichtigungen mithilfe einer .NE
          SendNotificationAsync();
          Console.ReadLine();
 7. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und klicken Sie auf **Als Startprojekt festlegen** , um es als Startprojekt festzulegen. Drücken Sie dann die Taste **F5** , um die Anwendung auszuführen.
-   
-     ![][14]
    
     Sie erhalten eine Popupbenachrichtigung auf allen registrierten Geräten. Durch Klicken oder Tippen auf das Popupbanner wird die App geladen.
 

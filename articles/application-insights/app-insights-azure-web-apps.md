@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: b25f3dd41c8dc381258bb42d8802ba4b56e05903
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="monitor-azure-web-app-performance"></a>Überwachen der Leistung der Azure-Web-App
@@ -31,7 +30,7 @@ Zum Konfigurieren der Überwachung kann die App auf zwei Arten instrumentiert we
 * **Buildzeit:** Sie können ein Paket in der App installieren, die Sie gerade entwickeln. Diese Option ist wesentlich flexibler. Neben den gleichen Standardpaketen können Sie auch Code schreiben, um die Telemetrie anzupassen oder Ihre eigenen Telemetriedaten zu senden. Sie können bestimmte Aktivitäten protokollieren oder Ereignisse gemäß der Semantik Ihrer App-Domäne erfassen. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Laufzeitinstrumentierung mit Application Insights
-Wenn Sie bereits eine Web-App in Azure ausführen, verfügen Sie schon über eine Art der Überwachung, und zwar von Anforderungs- und Fehlerraten. Fügen Sie Application Insights hinzu, um die Überwachung zu erweitern, z.B. auf Reaktionszeiten, Überwachung beim Aufrufen von Abhängigkeiten, intelligente Erkennung und leistungsstarke Analytics-Abfragesprache. 
+Wenn Sie bereits eine Web-App in Azure ausführen, verfügen Sie schon über eine Art der Überwachung, und zwar von Anforderungs- und Fehlerraten. Fügen Sie Application Insights hinzu, um mehr zu erhalten – beispielsweise Reaktionszeiten, Überwachung von Abhängigkeitsaufrufen, intelligente Erkennung und leistungsstarke Log Analytics-Abfragesprache. 
 
 1. In der Azure-Systemsteuerung für Ihre Web-App können Sie **Application Insights auswählen**.
    
@@ -102,7 +101,7 @@ Application Insights kann durch Installieren eines SDK in Ihrer App eine detaill
    
     Sie können [Suchvorgänge anpassen](app-insights-diagnostic-search.md).
 
-Verwenden Sie die [Analytics-Abfragesprache](app-insights-analytics-tour.md), um Telemetriedaten noch effizienter zu durchsuchen.
+Verwenden Sie die [Log Analytics-Abfragesprache](app-insights-analytics-tour.md), um Telemetriedaten noch effizienter zu durchsuchen.
 
 ## <a name="more-telemetry"></a>Mehr Telemetrie
 

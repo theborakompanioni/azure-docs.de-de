@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: a06ba41193f00f4aa2c7af4e5430ed15f9bb877c
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 1ae47899443d5552178078a417b7d1ebe91966d2
 ms.contentlocale: de-de
-ms.lasthandoff: 04/13/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
@@ -51,7 +50,7 @@ Wenn keine Ressource vorhanden ist, erstellen Sie sie:
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Hinzufügen des SDK-Skripts zu Ihrer App oder Ihren Webseiten
 Rufen Sie im Schnellstart das Skript für Webseiten ab:
 
-![Wählen Sie in Ihrer App auf dem Blatt "Übersicht"  im Schnellstart die Option "Code abrufen", um Ihre Webseiten zu überwachen. Kopieren Sie das Skript.](./media/app-insights-javascript/02-monitor-web-page.png)
+![Wählen Sie in Ihrer App auf dem Blatt "Übersicht" im Schnellstart die Option "Code abrufen", um Ihre Webseiten zu überwachen. Kopieren Sie das Skript.](./media/app-insights-javascript/02-monitor-web-page.png)
 
 Fügen Sie das Skript direkt vor dem `</head>` -Tag jeder Seite ein, die Sie nachverfolgen möchten. Wenn Ihre Website über eine Masterseite verfügt, können Sie das Skript dort ablegen. Beispiel:
 
@@ -197,7 +196,7 @@ Wählen Sie ein Ereignis, um weitere Details anzuzeigen. Klicken Sie auf der Det
 > 
 > 
 
-Sie können auch die leistungsfähige [Analytics-Abfragesprache](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) verwenden, um Seitenansichten zu durchsuchen.
+Sie können auch die leistungsfähige [Log Analytics-Abfragesprache](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) verwenden, um Seitenaufrufe zu durchsuchen.
 
 ### <a name="page-view-properties"></a>Eigenschaften von Seitenansichten
 * **Dauer der Seitenansicht** 

@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
-ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
+ms.custom: it-pro; oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -63,9 +63,9 @@ Mit Azure AD-Anwendungsproxy können Sie Remotearbeiter unterstützen, indem Sie
 6. Um den Assistenten zu beenden, klicken Sie auf das Häkchen unten im Bildschirm. Die Anwendung ist jetzt in Azure AD definiert.
 
 ## <a name="assign-users-and-groups-to-the-application"></a>Zuweisen von Benutzern und Gruppen zur Anwendung
-Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, müssen Sie diese entweder einzeln oder in Gruppen zuweisen. (Denken Sie daran, auch sich selbst den Zugriff zuzuweisen.) Hierfür ist es erforderlich, dass jeder Benutzer über eine Lizenz für Azure Basic oder höher verfügt. Sie können Lizenzen einzeln oder für Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern zu einer Anwendung](active-directory-applications-guiding-developers-assigning-users.md). 
+Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, müssen Sie diese entweder einzeln oder in Gruppen zuweisen. (Denken Sie daran, auch sich selbst den Zugriff zuzuweisen.) Jeder Benutzer, den Sie zuweisen, benötigt mindestens eine Azure Basic-Lizenz. Sie können Lizenzen einzeln oder für Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern zu einer Anwendung](active-directory-applications-guiding-developers-assigning-users.md). 
 
-Bei Apps, für die eine Präauthentifizierung erforderlich ist, werden hierbei Berechtigungen zum Verwenden der App erteilt. Bei Apps, für die keine Präauthentifizierung erforderlich ist, können Benutzer der App trotzdem zugewiesen werden, damit sie in der Anwendungsliste angezeigt wird, z.B. MyApps.
+Bei Apps, die eine Präauthentifizierung erfordern, werden durch Zuweisen eines Benutzers Nutzungsberechtigungen für die Anwendung erteilt. Bei Apps, die keine Präauthentifizierung erfordern, können zugewiesene Benutzer über den Zugriffsbereich auf die Anwendung zugreifen.
 
 1. Nach dem Beenden des Assistenten für das Hinzufügen von Apps wird die Schnellstartseite für die Anwendung angezeigt. Wählen Sie die Option **Benutzer und Gruppen**, um zu verwalten, wer Zugriff auf die App hat.
    
@@ -90,7 +90,7 @@ Auf der Seite „Konfigurieren“ können Sie veröffentlichte Apps ändern oder
 
 Nachdem Sie Anwendungen mit dem Azure Active Directory-Anwendungsproxy veröffentlicht haben, werden sie in der Liste der Anwendungen in Azure AD aufgeführt, und Sie können sie dort verwalten.
 
-Wenn Sie Anwendungsproxydienste deaktivieren, nachdem Sie Anwendungen veröffentlicht haben, ist der Zugriff darauf von außerhalb Ihres privaten Netzwerks nicht mehr möglich. Die Anwendungen werden hierbei nicht gelöscht.
+Wenn Sie Anwendungsproxydienste deaktivieren, nachdem Sie Anwendungen veröffentlicht haben, kann von außerhalb Ihres privaten Netzwerks nicht mehr auf die Anwendungen zugegriffen werden. Ihre Benutzer können allerdings weiterhin wie gewohnt lokal auf die Anwendungen zugreifen.
 
 Um eine Anwendung anzuzeigen und den Zugriff darauf sicherzustellen, doppelklicken Sie auf den Namen der Anwendung. Wenn der Anwendungsproxydienst deaktiviert und die Anwendung nicht verfügbar ist, wird am oberen Bildschirmrand eine Warnmeldung angezeigt.
 

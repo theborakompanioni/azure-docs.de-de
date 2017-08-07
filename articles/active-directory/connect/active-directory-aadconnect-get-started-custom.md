@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 82e8d7e0ea975f140eaf73a625d181a4ec68eaa7
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 1580e2841790b7c1b6c9540da4940eef2c487256
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
@@ -317,6 +317,15 @@ Weitere Informationen finden Sie unter [Stagingmodus](active-directory-aadconnec
 
 ### <a name="verify-your-federation-configuration"></a>Überprüfen der Verbundkonfiguration
 Wenn Sie auf die Schaltfläche „Überprüfen“ klicken, überprüft Azure AD Connect die DNS-Einstellungen.
+
+**Intranet-Konnektivitätsprüfungen**
+
+* Verbund-FQDN auflösen: Azure AD Connect überprüft, ob der Verbund-FQDN von DNS aufgelöst werden kann, um die Konnektivität zu gewährleisten. Falls der FQDN nicht aufgelöst werden kann, ist die Überprüfung nicht erfolgreich. Vergewissern Sie sich, dass der DNS-Eintrag für den Verbunddienst-FQDN vorhanden ist, damit die Überprüfung erfolgreich abgeschlossen werden kann.
+* DNS-A-Eintrag: Azure AD Connect überprüft, ob für Ihren Verbunddienst ein A-Eintrag vorhanden ist. Sollte kein A-Eintrag vorhanden sein, ist die Überprüfung nicht erfolgreich. Erstellen Sie einen A-Eintrag (und keinen CNAME-Eintrag) für Ihren Verbund-FQDN, damit die Überprüfung erfolgreich abgeschlossen werden kann.
+
+**Extranet-Konnektivitätsprüfungen**
+
+* Verbund-FQDN auflösen: Azure AD Connect überprüft, ob der Verbund-FQDN von DNS aufgelöst werden kann, um die Konnektivität zu gewährleisten.
 
 ![Abgeschlossen](./media/active-directory-aadconnect-get-started-custom/completed.png)
 

@@ -14,7 +14,7 @@ Aufgrund von Unterschieden in SLAs und Funktionen werden die folgenden SKUs für
 | **Dev-Test oder Proof of Concept**   | Basic                  |
 |                                    |                        |
 
-Wenn Sie die alten SKUs verwenden, sind die SKU-Empfehlungen für die Produktion die Standard- und HighPerformance-SKUs. Informationen zu den alten SKUs finden Sie im Artikel zu [Gateway-SKUs (alt)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
+Wenn Sie die alten SKUs verwenden, sind die SKU-Empfehlungen für die Produktion die Standard- und HighPerformance-SKUs. Informationen zu den alten SKUs finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (alte SKUs)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
 
 ###  <a name="feature"></a>Gateway-SKU-Funktionsgruppen
 

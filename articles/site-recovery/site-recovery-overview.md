@@ -14,21 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/25/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: a442d398cf5c54b00dc92ebcbe62597fb3ece30c
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
-# Was ist Site Recovery?
-<a id="what-is-site-recovery" class="xliff"></a>
+# <a name="what-is-site-recovery"></a>Was ist Site Recovery?
 
 Willkommen beim Azure Site Recovery-Dienst! Dieser Artikel enthält eine kurze Übersicht über den Dienst.
 
-## Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) mit Azure Recovery Services
-<a id="business-continuity-and-disaster-recovery-bdcr-with-azure-recovery-services" class="xliff"></a>
+## <a name="business-continuity-and-disaster-recovery-bcdr-with-azure-recovery-services"></a>Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) mit Azure Recovery Services
 
 Als Organisation müssen Sie ermitteln, wie Sie Ihre Daten schützen und die Ausführung von Apps/Workloads sicherstellen können, wenn es zu geplanten und ungeplanten Ausfällen kommt.
 
@@ -43,8 +40,7 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 - Replikation von lokalen virtuellen Computern und physischen Servern in Azure oder an einem sekundären Standort
 
 
-## Was bietet Site Recovery?
-<a id="what-does-site-recovery-provide" class="xliff"></a>
+## <a name="what-does-site-recovery-provide"></a>Was bietet Site Recovery?
 
 **Feature** | **Details**
 --- | ---
@@ -63,8 +59,7 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 **Verwalten von Netzwerkeinstellungen** | Site Recovery ist in Azure integriert, um eine einfache Anwendungsnetzwerkverwaltung zu ermöglichen, z.B. das Reservieren von IP-Adressen, Konfigurieren von Lastenausgleichsmodulen und Integrieren von Azure Traffic Manager zur Durchführung von effizienten Netzwerkwechseln.
 
 
-## Was kann ich replizieren?
-<a id="what-can-i-replicate" class="xliff"></a>
+## <a name="what-can-i-replicate"></a>Was kann ich replizieren?
 
 **Unterstützt** | **Details**
 --- | ---
@@ -75,15 +70,13 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 **Welche Workloads kann ich replizieren?** | Sie können jede Workload replizieren, die auf einem unterstützten Replikationscomputer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für eine [Reihe von Apps](site-recovery-workload.md#workload-summary) durchgeführt.
 
 
-## Aspekte des Azure-Portals
-<a id="azure-portal-considerations" class="xliff"></a>
+## <a name="azure-portal-considerations"></a>Aspekte des Azure-Portals
 
 * Site Recovery kann im [Azure-Portal](https://portal.azure.com) bereitgestellt werden.
 * Im klassischen Azure-Portal können Sie Site Recovery mit dem klassischen Dienstverwaltungsmodell verwalten.
 - Das klassische Portal sollte nur zur Verwaltung bereits vorhandener Site Recovery-Bereitstellungen verwendet werden. Über das klassische Portal können keine neuen Tresore erstellt werden.
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich ausführlicher über [Workloadunterstützung](site-recovery-workload.md).
 * Informieren Sie sich über die ersten Schritte der [Azure-VM-Replikation zwischen Regionen](site-recovery-azure-to-azure.md), [VMware-Replikation in Azure](vmware-walkthrough-overview.md) oder [Hyper-V-Replikation in Azure](hyper-v-site-walkthrough-overview.md).
 

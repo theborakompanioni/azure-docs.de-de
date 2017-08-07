@@ -8,7 +8,7 @@ In den folgenden Abschnitten wird das neue ASP.NET WebAPI-Back-End mit den folge
 In den folgenden Schritten erfahren Sie, wie das neue ASP.NET WebAPI-Back-End erstellt wird: 
 
 > [!NOTE]
-> **Wichtig:**Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie sicherstellen, dass Sie die neueste Version des NuGet-Paket-Managers installiert haben. Um dies zu überprüfen, starten Sie Visual Studio. Klicken Sie im Menü **Extras** auf **Erweiterungen und Updates**. Suchen Sie nach **NuGet-Paket-Manager für Visual Studio 2013**, und vergewissern Sie sich, dass Sie Version 2.8.50313.46 oder höher installiert haben. Falls dies nicht der Fall ist, installieren Sie den NuGet-Paket-Manager neu.
+> **Wichtig:** Falls Sie Visual Studio 2015 oder eine ältere Version verwenden, vergewissern Sie sich vor Beginn dieses Tutorials, dass bei Ihnen die neueste Version des NuGet-Paket-Managers installiert ist. Um dies zu überprüfen, starten Sie Visual Studio. Klicken Sie im Menü **Extras** auf **Erweiterungen und Updates**. Suchen Sie nach **NuGet-Paket-Manager** für Ihre Version von Visual Studio, und vergewissern Sie sich, dass Sie über die neueste Version verfügen. Falls dies nicht der Fall ist, installieren Sie den NuGet-Paket-Manager neu.
 > 
 > ![][B4]
 > 
@@ -38,7 +38,9 @@ In diesem Abschnitt erstellen Sie eine neue Meldungshandlerklasse mit dem Namen 
         using System.Threading;
         using System.Security.Principal;
         using System.Net;
-        using System.Web;
+        using System.Text;
+        using System.Threading.Tasks;
+
 3. Ersetzen Sie in der Datei "AuthenticationTestHandler.cs" die Definition der `AuthenticationTestHandler` -Klasse durch den folgenden Code. 
    
     Mit diesem Handler wird die Anforderung autorisiert, wenn die folgenden drei Bedingungen erfüllt sind:
@@ -51,12 +53,7 @@ In diesem Abschnitt erstellen Sie eine neue Meldungshandlerklasse mit dem Namen 
      
      Wenn die Anforderungsnachricht von `AuthenticationTestHandler`authentifiziert und autorisiert ist, wird der Benutzer der Standardauthentifizierung an die aktuelle Anforderung im [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx)angefügt. Die Benutzerinformationen im HttpContext werden von einem anderen Controller (RegisterController) später verwendet, um der Registrierungsanforderung für die Benachrichtigung ein [Tag](https://msdn.microsoft.com/library/azure/dn530749.aspx) hinzuzufügen.
      
-       public class AuthenticationTestHandler : DelegatingHandler   {
-     
-           protected override Task<HttpResponseMessage> SendAsync(
-           HttpRequestMessage request, CancellationToken cancellationToken)
-           {
-               var authorizationHeader = request.Headers.GetValues("Authorization").First();
+       public class AuthenticationTestHandler : DelegatingHandler   {       protected override Task<HttpResponseMessage> SendAsync(       HttpRequestMessage request, CancellationToken cancellationToken)       {           var authorizationHeader = request.Headers.GetValues("Authorization").First();
      
                if (authorizationHeader != null && authorizationHeader
                    .StartsWith("Basic ", StringComparison.InvariantCultureIgnoreCase))
@@ -313,15 +310,16 @@ In diesem Abschnitt fügen Sie einen neuen Controller hinzu, über den Clientger
 
 ## <a name="publish-the-new-webapi-backend"></a>Veröffentlichen des neuen WebAPI-Back-Ends
 1. Nun werden wir diese App auf einer Azure-Website bereitstellen, damit von allen Geräten darauf zugegriffen werden kann. Klicken Sie mit der rechten Maustaste auf das Projekt **AppBackend**, und wählen Sie **Veröffentlichen**.
-2. Wählen Sie **Microsoft Azure Web Apps** als Veröffentlichungsziel aus.
-   
+2. Wählen Sie **Microsoft Azure App Service** als Veröffentlichungsziel aus, und klicken Sie anschließend auf **Veröffentlichen**. Daraufhin wird das Dialogfeld „App Service erstellen“ geöffnet, in dem Sie alle Azure-Ressourcen erstellen können, die benötigt werden, um die ASP.NET-Web-App in Azure auszuführen.
+
     ![][B15]
-3. Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie eine vorhandene oder neue Web-App aus.
-   
-    ![][B16]
-4. Notieren Sie sich die Eigenschaft **Ziel-URL** auf der Registerkarte **Verbindung**. Diese URL wird später in diesem Lernprogramm als *Back-End-Endpunkt* bezeichnet. Klicken Sie auf **Veröffentlichen**.
-   
-    ![][B18]
+3. Wählen Sie im Dialogfeld **App Service erstellen** Ihr Azure-Konto aus. Klicken Sie auf **Typ ändern**, und wählen Sie **Web-App** aus. Behalten Sie die den Wert für **Web-App-Name** bei, und wählen Sie **Abonnement**, **Ressourcengruppe** und **App Service-Plan** aus.  Klicken Sie auf **Erstellen**.
+
+4. Notieren Sie sich die **Website-URL** aus der **Zusammenfassung**. Diese URL wird später in diesem Lernprogramm als *Back-End-Endpunkt* bezeichnet. Klicken Sie auf **Veröffentlichen**.
+
+5. Nach Abschluss des Assistenten wird die ASP.NET Web-App in Azure veröffentlicht und anschließend im Standardbrowser gestartet.  Ihre Anwendung kann in Azure App Services angezeigt werden.
+
+In der URL wird der von Ihnen angegebene Web-App-Name im Format „http://<App-Name>.azurewebsites.net“ verwendet.
 
 [B1]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push1.png
 [B2]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push2.png
@@ -332,6 +330,6 @@ In diesem Abschnitt fügen Sie einen neuen Controller hinzu, über den Clientger
 [B7]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push7.png
 [B8]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push8.png
 [B14]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push14.png
-[B15]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users15.PNG
+[B15]: ./media/notification-hubs-aspnet-backend-notifyusers/publish-to-app-service.png
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG

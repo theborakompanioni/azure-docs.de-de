@@ -14,18 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 6/7/2017
 ms.author: mlearned
-ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 748f1994d0ee5b6c6a988bca8e5b694b29c0b8c5
+ms.custom: Jenkins
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: f892ec7bd61124f7958a50ebdfb49c7310d4ee18
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
-<a id="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure" class="xliff"></a>
-
-# Erstellen des ersten Jenkins-Masters auf einer Linux-VM (Ubuntu) in Azure
+# <a name="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure"></a>Erstellen des ersten Jenkins-Masters auf einer Linux-VM (Ubuntu) in Azure
 
 Dieser Schnellstart veranschaulicht die Installation der neuesten stabilen Jenkins-Version auf einem virtuellen Linux-Computer (Ubuntu 14.04 LTS) zusammen mit den Tools und Plug-Ins, die für die Arbeit mit Azure konfiguriert sind. Zu diesen Tools zählen:
 <ul>
@@ -46,9 +44,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-<a id="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins" class="xliff"></a>
-
-## Erstellen des virtuellen Computers in Azure durch Bereitstellen der Lösungsvorlage für Jenkins
+## <a name="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins"></a>Erstellen des virtuellen Computers in Azure durch Bereitstellen der Lösungsvorlage für Jenkins
 
 Mit Azure-Schnellstartvorlagen können Sie schnell und zuverlässig komplexe Technologien in Azure bereitstellen.  Mit dem Azure Resource Manager können Sie Ihre Anwendungen mit einer [deklarativen Vorlage](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins) bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung während jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
 
@@ -70,7 +66,7 @@ Auf der Registerkarte **Grundeinstellungen konfigurieren**:
 * Authentifizierungstyp: Erstellen Sie eine Instanz, die durch ein Kennwort oder einen [öffentlichen SSH-Schlüssel](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows) geschützt ist. Wenn Sie ein Kennwort verwenden, muss dieses drei der folgenden Anforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Ziffer und ein Sonderzeichen.
 * Behalten Sie für den Jenkins-Releasetyp **LTS** bei.
 * Wählen Sie ein Abonnement aus.
-* Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine bereits vorhandene.
+* Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine bereits vorhandene leere Ressourcengruppe. 
 * Wählen Sie einen Standort aus.
 
 Auf der Registerkarte **Weitere Optionen konfigurieren**:
@@ -85,17 +81,13 @@ Wenn die Validierung erfolgreich war, klicken Sie auf **OK**, um die Vorlage und
 
 Wählen Sie als Nächstes **Kaufen** aus, um alle Ressourcen bereitzustellen.
 
-<a id="setup-ssh-port-forwarding" class="xliff"></a>
-
-## Einrichten der SSH-Portweiterleitung
+## <a name="setup-ssh-port-forwarding"></a>Einrichten der SSH-Portweiterleitung
 
 Standardmäßig verwendet die Jenkins-Instanz das http-Protokoll und lauscht an Port 8080. Die Authentifizierung von Benutzern sollte jedoch nicht über unsichere Protokolle erfolgen.
     
 Richten Sie eine Portweiterleitung ein, um die Jenkins-Benutzeroberfläche auf dem lokalen Computer anzuzeigen.
 
-<a id="if-you-are-using-windows" class="xliff"></a>
-
-### Bei Verwendung von Windows:
+### <a name="if-you-are-using-windows"></a>Bei Verwendung von Windows:
 
 Installieren Sie PuTTY, und führen Sie diesen Befehl aus, wenn Sie zum Schützen von Jenkins ein Kennwort verwenden:
 ```
@@ -110,9 +102,7 @@ Wenn Sie SSH verwenden, führen Sie diesen Befehl aus:
 putty -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-<a id="if-you-are-using-linux-or-mac" class="xliff"></a>
-
-### Wenn Sie Linux oder Mac verwenden:
+### <a name="if-you-are-using-linux-or-mac"></a>Wenn Sie Linux oder Mac verwenden:
 
 Wenn Sie ein Kennwort verwenden, um Ihren Jenkins-Master zu schützen, führen Sie diesen Befehl aus:
 ```
@@ -125,9 +115,7 @@ Wenn Sie SSH verwenden, führen Sie diesen Befehl aus:
 ssh -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-<a id="connect-to-jenkins" class="xliff"></a>
-
-## Herstellen einer Verbindung mit Jenkins
+## <a name="connect-to-jenkins"></a>Herstellen einer Verbindung mit Jenkins
 Nachdem Sie Ihren Tunnel gestartet haben, navigieren Sie auf dem lokalen Computer zu http://localhost:8080/.
 
 Entsperren Sie das Jenkins-Dashboard beim ersten Mal mit dem anfänglichen Administratorkennwort.
@@ -146,9 +134,7 @@ Ihre Jenkins-Instanz ist jetzt einsatzbereit! Eine schreibgeschützte Ansicht fi
 
 ![Jenkins ist bereit!](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes durchgeführt:
 
