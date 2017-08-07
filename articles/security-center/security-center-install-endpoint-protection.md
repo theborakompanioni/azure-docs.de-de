@@ -36,7 +36,7 @@ Azure Security Center empfiehlt die Installation von Endpoint Protection auf Ihr
 >
 >
 
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option** Endpoint Protection installieren **aus.
+1. Wählen Sie auf dem Blatt **Empfehlungen** die **Option Endpoint Protection installieren** aus.
    ![„Endpoint Protection installieren“ auswählen][1]
 2. Das Blatt **Endpoint Protection installieren** zeigt eine Liste virtueller Computer an, die nicht über Endpoint Protection verfügen. Wählen Sie die virtuellen Computer aus der Liste aus, auf denen Endpoint Protection installiert werden soll, und klicken Sie auf **Install on VMs** (Auf virtuellen Computern installieren).
    ![Auswählen virtueller Computer, auf denen Endpoint Protection installiert werden soll][2]
