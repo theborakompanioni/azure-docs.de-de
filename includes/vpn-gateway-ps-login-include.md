@@ -1,6 +1,6 @@
 Bevor Sie mit dieser Konfiguration beginnen, müssen Sie sich beim Azure-Konto anmelden. Sie werden vom Cmdlet zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../articles/powershell-azure-resource-manager.md).
 
-Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+Öffnen Sie zum Anmelden die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
 ```powershell
 Login-AzureRmAccount

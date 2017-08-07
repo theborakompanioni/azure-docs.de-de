@@ -1,8 +1,8 @@
 <!-- F-series, Fs-series* -->
 
-Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie.  Die F-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Berechnungseinheit ACU (Azure Compute Unit) pro Kern das beste Preis-Leistungs-Verhältnis im Azure-Portfolio. 
+Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie.  Die F-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Compute-Einheit (Azure Compute Unit, ACU) das beste Preis-Leistungs-Verhältnis pro vCPU im Azure-Portfolio. 
 
-Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Workloads, die schnellere CPUs erfordern, aber nicht so viel Arbeitsspeicher oder lokalen SSD pro CPU-Kern benötigen.  Bei Arbeitslasten wie Analysen, Gamingservern, Webservern und Batchverarbeitung kommen die Vorteile und der Nutzen der F-Serie besonders gut zum Tragen.
+Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Workloads, die schnellere CPUs erfordern, aber nicht so viel Arbeitsspeicher oder temporären Speicher pro vCPU benötigen.  Bei Arbeitslasten wie Analysen, Gamingservern, Webservern und Batchverarbeitung kommen die Vorteile und der Nutzen der F-Serie besonders gut zum Tragen.
 
 Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F-Serie.
 
@@ -10,7 +10,7 @@ Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F
 
 ACU: 210 - 250
 
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |2 |4.000/32 (12) |3.200/48 |2/750 |
 | Standard_F2s |2 |4 |8 |4 |8.000/64 (24) |6.400/96 |2/1500 |
@@ -24,11 +24,12 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 
 <br>
+
 ## <a name="f-series"></a>F-Serie
 
 ACU: 210 - 250
 
-| Größe         | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
+| Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 2/2 x 500                         | 2/750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000/93/46                                           | 4/4 x 500                         | 2/1500                     |

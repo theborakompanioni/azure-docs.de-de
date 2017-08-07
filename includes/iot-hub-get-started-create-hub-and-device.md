@@ -29,6 +29,9 @@
 
 5. Klicken Sie im Bereich **Freigegebene Zugriffsrichtlinien** auf die Richtlinie **iothubowner**, und kopieren und notieren Sie dann die **Verbindungszeichenfolge** Ihres IoT Hubs. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
 
+> [!NOTE] 
+Die iothubowner-Verbindungszeichenfolge wird für dieses Tutorial nicht benötigt. Sie benötigen sie allerdings unter Umständen für einige Tutorials zu anderen IoT-Szenarien, nachdem Sie diese Einrichtung abgeschlossen haben.
+
    ![Abrufen der IoT Hub-Verbindungszeichenfolge](../articles/iot-hub/media/iot-hub-create-hub-and-device/5_get-azure-iot-hub-connection-string-portal.png)
 
 ## <a name="register-a-device-in-the-iot-hub-for-your-device"></a>Registrieren eines Geräts beim IoT Hub für Ihr Gerät

@@ -18,10 +18,10 @@ ms.date: 07/26/2017
 ms.author: seanmck
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
-ms.openlocfilehash: 933299ce5a5d6f5b2262d40ae768019ccaf8796a
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: ad053391e6b3927ab11faaf4d9e70b610e86f3c3
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Die Befehlszeilenschnittstellen-Befehle für Azure Container Instances stehen derzeit nur in Azure Cloud Shell zur Verfügung.
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.12 verwenden. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -52,8 +52,6 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
 Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe angeben. Der Container kann außerdem mit einer öffentlichen IP-Adresse über das Internet verfügbar gemacht werden, dies ist jedoch optional. In diesem Fall verwenden wir einen Container, der eine sehr einfache, in [Node.js](http://nodejs.org) geschriebene Web-App hostet.
-
-Befehlszeilenschnittstellen-Befehle für Azure Container Instances stehen derzeit nur in Azure Cloud Shell zur Verfügung.
 
 ```azurecli-interactive
 az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public 

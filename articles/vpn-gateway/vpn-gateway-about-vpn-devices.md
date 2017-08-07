@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 8a7419c7a759060dc91f11ec94085ff0afd4a457
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c8e1db0a5488b1296206a4d557e47599edc59a88
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
 
-Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung (Site-to-Site) per VPN Gateway zu konfigurieren. Standort-zu-Standort-Verbindungen können zum Erstellen einer Hybridlösung verwendet werden. Sie können sie auch zum Herstellen von sicheren Verbindungen zwischen Ihren lokalen Netzwerken und den virtuellen Netzwerken verwenden. Dieser Artikel enthält die Liste der IPSec-/IKE-Parameter für Azure-VPN-Gateways und eine Liste mit überprüften VPN-Geräten, die Verbindungen mit Azure-VPN-Gateways herstellen.
-
+Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung (Site-to-Site) per VPN Gateway zu konfigurieren. Standort-zu-Standort-Verbindungen können zum Erstellen einer Hybridlösung verwendet werden. Sie können sie auch zum Herstellen von sicheren Verbindungen zwischen Ihren lokalen Netzwerken und den virtuellen Netzwerken verwenden. Dieser Artikel enthält eine Liste mit überprüften VPN-Geräten und eine Liste mit IPsec-/IKE-Parametern für VPN-Gateways.
 
 > [!IMPORTANT]
-> Bei Verbindungsproblemen zwischen Ihren lokalen VPN-Geräten und Azure-VPN-Gateways helfen Ihnen die Informationen unter [Bekannte Probleme mit der Gerätekompatibilität](#known) weiter. 
+> Bei Verbindungsproblemen zwischen Ihren lokalen VPN-Geräten und VPN-Gateways helfen Ihnen die Informationen unter [Bekannte Probleme mit der Gerätekompatibilität](#known) weiter.
+>
+>
 
+### <a name="items-to-note-when-viewing-the-tables"></a>Was Sie beim Anzeigen der Tabellen beachten sollten:
 
-###<a name="items-to-note-when-viewing-the-tables"></a>Was Sie beim Anzeigen der Tabellen beachten sollten:
-
-* Die Terminologie für Azure-VPN-Gateways wurde geändert. Dies ist nicht mit einer Änderung der Funktionalität verbunden. Es ändern sich nur die Namen.
+* Die Terminologie für Azure-VPN-Gateways wurde geändert. Die Änderung betrifft nur die Namen. Dies ist nicht mit einer Änderung der Funktionalität verbunden.
   * Statisches Routing = Richtlinienbasiert (PolicyBased)
   * Dynamisches Routing = Routenbasiert (RouteBased)
-* Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben dieselben, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem Azure-Hochleistungs-VPN-Gateway kompatibel.
+* Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben unverändert, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem Hochleistungs-VPN-Gateway kompatibel.
+
+## <a name="devicetable"></a>Überprüfte VPN-Geräte und Konfigurationshandbücher für Geräte
 
 > [!NOTE]
 > Beim Konfigurieren einer Standort-zu-Standort-Verbindung ist eine öffentliche IPv4-IP-Adresse für das VPN-Gerät erforderlich.
->                
+>
 
-## <a name="devicetable"></a>Überprüfte VPN-Geräte und Konfigurationshandbücher für Geräte
-Wir haben in Zusammenarbeit mit Geräteherstellern eine Reihe von VPN-Standardgeräten getestet. Alle Geräte der in der folgenden Liste aufgeführten Gerätefamilien sollten mit Azure-VPN-Gateways kompatibel sein. Unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) können Sie den Gatewaytyp ermitteln, der zum Konfigurieren der gewünschten Lösung erstellt werden muss.
+Wir haben in Zusammenarbeit mit Geräteherstellern eine Reihe von VPN-Standardgeräten getestet. Alle Geräte der in der folgenden Liste aufgeführten Gerätefamilien sollten mit VPN-Gateways kompatibel sein. Informationen zur Verwendung des VPN-Typs (richtlinienbasiert oder routenbasiert) für die VPN-Gatewaylösung, die Sie konfigurieren möchten, finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
 
 Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den Links für die entsprechende Gerätefamilie. Die Links zu den Konfigurationsanleitungen werden nach bestem Wissen bereitgestellt. Support für VPN-Geräte erhalten Sie vom jeweiligen Gerätehersteller.
 
@@ -77,9 +77,11 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 (*) Router der Serie ISR 7200 unterstützen nur richtlinienbasierte VPNs.
 
 ## <a name="additionaldevices"></a>Nicht überprüfte VPN-Geräte
+
 Falls Ihr Gerät nicht in der Tabelle mit den überprüften VPN-Geräten enthalten ist, kann es unter Umständen für eine Site-to-Site-Verbindung verwendet werden. Zusätzliche Unterstützung und Konfigurationsanweisungen erhalten Sie vom Gerätehersteller.
 
 ## <a name="editing"></a>Bearbeiten von Gerätekonfigurationsbeispielen
+
 Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät heruntergeladen haben, müssen Sie einige der Werte entsprechend den Einstellungen Ihrer Umgebung ersetzen.
 
 ### <a name="to-edit-a-sample"></a>So bearbeiten Sie eine Vorlage:
@@ -102,8 +104,9 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 | &lt;SP_PresharedKey&gt; |Diese Informationen gelten nur für Ihr virtuelles Netzwerk und befinden sich im Verwaltungsportal unter "Schlüssel verwalten". |
 
 ## <a name="ipsec"></a>IPsec-/IKE-Parameter
+
 > [!NOTE]
-> Die in der folgenden Tabelle aufgeführten Werte werden zwar vom Azure-VPN-Gateway unterstützt, derzeit ist es jedoch nicht möglich, über das Azure-VPN-Gateway eine bestimmte Kombination von Algorithmen oder Parametern festzulegen oder auszuwählen. Alle Einschränkungen müssen Sie vom lokalen VPN-Gerät aus angeben. Darüber hinaus müssen Sie **MSS** mit **1350** verknüpfen.
+> Die in der folgenden Tabelle aufgeführten Werte werden zwar vom VPN-Gateway unterstützt, derzeit ist es jedoch nicht möglich, über das VPN-Gateway eine bestimmte Kombination von Algorithmen oder Parametern festzulegen oder auszuwählen. Alle Einschränkungen müssen Sie vom lokalen VPN-Gerät aus angeben. Darüber hinaus müssen Sie **MSS** mit **1350** verknüpfen.
 > 
 >
 
@@ -114,6 +117,7 @@ Für die folgenden Tabellen gilt:
 * IKE-Phase 2 wird auch als „Schnellmodus“ bezeichnet.
 
 ### <a name="ike-phase-1-main-mode-parameters"></a>Parameter der IKE-Phase 1 (Hauptmodus)
+
 | **Eigenschaft**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
 | IKE-Version           |IKEv1              |IKEv2              |
@@ -123,6 +127,7 @@ Für die folgenden Tabellen gilt:
 | SA-Gültigkeitsdauer           |28.800 Sekunden     |28.800 Sekunden     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>Parameter der IKE-Phase 2 (Schnellmodus)
+
 | **Eigenschaft**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
 | IKE-Version                   |IKEv1          |IKEv2                                        |
@@ -134,9 +139,11 @@ Für die folgenden Tabellen gilt:
 
 
 ### <a name ="RouteBasedOffers"></a>RouteBased-VPN-Angebote der IPsec Security Association (IKE-Schnellmodus-SA)
+
 Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote werden in der Reihenfolge ihrer Priorität aufgeführt, in der das Angebot dargeboten oder akzeptiert wurde.
 
 #### <a name="azure-gateway-as-initiator"></a>Azure-Gateway als Initiator
+
 |-  |**Verschlüsselung**|**Authentifizierung**|**PFS-Gruppe**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Keine         |
@@ -147,6 +154,7 @@ Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote wer
 | 6 |3DES          |SHA256            |Keine         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure-Gateway als Antwortender
+
 |-  |**Verschlüsselung**|**Authentifizierung**|**PFS-Gruppe**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Keine         |
@@ -176,7 +184,7 @@ Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote wer
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
 
-* Sie können IPsec-ESP-NULL-Verschlüsselung mit routenbasierten und High-Performance-VPN-Gateways angeben. Verschlüsselung auf Basis von NULL bietet keinen Schutz der Daten während der Übertragung und sollte nur verwendet werden, wenn maximaler Durchsatz und minimale Latenz erforderlich sind.  Clients können diese in Szenarien mit VNet-zu-VNet-Kommunikation oder bei Anwendung der Verschlüsselung an anderer Stelle in der Lösung verwenden.
+* Sie können IPsec-ESP-NULL-Verschlüsselung mit routenbasierten VPN-Gateways und Hochleistungs-VPN-Gateways angeben. Verschlüsselung auf Basis von NULL bietet keinen Schutz der Daten während der Übertragung und sollte nur verwendet werden, wenn maximaler Durchsatz und minimale Latenz erforderlich sind. Clients können diese in Szenarien mit VNet-zu-VNet-Kommunikation oder bei Anwendung der Verschlüsselung an anderer Stelle in der Lösung verwenden.
 * Verwenden Sie für standortübergreifende Konnektivität über das Internet die Standardeinstellungen für Azure-VPN-Gateways mit Verschlüsselung und Hashalgorithmen, die in der Tabelle oben aufgelistet werden, um die Sicherheit Ihrer kritischen Kommunikation zu gewährleisten.
 
 ## <a name="known"></a>Bekannte Probleme mit der Gerätekompatibilität
@@ -193,4 +201,3 @@ Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote wer
 1. Überprüfen Sie die Firmwareversion Ihres Palo Alto Networks-Geräts. Führen Sie ein Upgrade auf Version 7.1.4 durch, falls Ihre PAN-OS-Version älter als 7.1.4 ist.
 2. Ändern Sie auf dem Palo Alto Networks-Gerät die Phase 2 SA-Lebensdauer (bzw. Quick Mode SA) in 28.800 Sekunden (8 Stunden), wenn Sie die Verbindung mit dem Azure-VPN-Gateway herstellen.
 3. Erstellen Sie über das Azure-Portal eine Supportanfrage, falls weiterhin Probleme mit der Konnektivität auftreten.
-

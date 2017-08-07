@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 07/27/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 3011fd608ba83561c319e57c8a7b5a4f3c4c2284
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 81ecd5771be544e250ea0df31aa274f0850527ad
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise
@@ -47,6 +46,13 @@ In diesem Artikel werden einige wichtige Elemente der Connected Factory-Lösung 
 Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten Lösung:
 
 ![Logische Architektur von Connected Factorys][connected-factory-logical]
+
+## <a name="communication-patterns"></a>Kommunikationsmuster
+
+Die Lösung verwendet die [OPC UA-Pub/Sub-Spezifikation](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/), um OPC UA-Telemetriedaten im JSON-Format an IoT Hub zu senden. Zu diesem Zweck verwendet die Lösung das IoT Edge-Modul [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher).
+
+Die Lösung verfügt auch über einen in eine Webanwendung integrierten OPC UA-Client, um die Verbindungsherstellung mit lokalen OPC UA-Servern zu ermöglichen. Der Client verwendet einen [Reverseproxy](https://wikipedia.org/wiki/Reverse_proxy) und wird von IoT Hub unterstützt, um die Verbindung ohne geöffnete Ports in der lokalen Firewall herstellen zu können. Dieses Kommunikationsmuster wird als [dienstgestützte Kommunikation](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/) bezeichnet. Zu diesem Zweck verwendet die Lösung das IoT Edge-Modul [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/).
+
 
 ## <a name="simulation"></a>Simulation
 

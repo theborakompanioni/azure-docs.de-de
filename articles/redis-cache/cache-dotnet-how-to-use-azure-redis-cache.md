@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/30/2017
+ms.date: 07/27/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: db851023c8620bec6583184326029d1a3e99ad88
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 3dfc026490093523446650c510dbebdd660e8b6b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="how-to-use-azure-redis-cache"></a>Verwenden von Azure Redis Cache
@@ -169,6 +168,17 @@ Beim Aufruf von `StringGet` wird das Objekt zurückgegeben, sofern es vorhanden 
 
         cache.StringSet("key1", value);
     }
+
+Sie können auch `RedisValue` verwenden, wie im folgenden Beispiel gezeigt. `RedisValue`verfügt über implizite Operatoren für die Verwendung integraler Datentypen und kann nützlich sein, wenn `null` ein erwarteter Wert für ein Cacheelement ist.
+
+
+    RedisValue value = cache.StringGet("key1");
+    if (!value.HasValue)
+    {
+        value = GetValueFromDataSource();
+        cache.StringSet("key1", value);
+    }
+
 
 Um die Ablaufzeit eines Elements im Cache anzugeben, verwenden Sie den `TimeSpan`-Parameter von `StringSet`.
 

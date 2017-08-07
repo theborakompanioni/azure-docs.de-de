@@ -16,30 +16,24 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: d1ddfbe9a0a0c7c7e0a060776938bd68a87e1ba5
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 3eae02f7cf756e8e24d4f1952d12c37f2ad4b400
 ms.contentlocale: de-de
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/02/2017
 
 ---
-<a id="add-messages-to-an-azure-storage-queue-using-functions" class="xliff"></a>
-
-# Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
+# <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
 
 Eingabe- und Ausgabebindungen bieten in Azure Functions eine deklarative Möglichkeit, eine Verbindung mit externen Dienstdaten Ihrer Funktion herzustellen. Erfahren Sie in diesem Thema, wie Sie eine vorhandene Funktion aktualisieren können, indem Sie eine Ausgabebindung hinzufügen, die Meldungen an Azure Queue Storage sendet.  
 
 ![Zeigen Sie die Meldung in den Protokollen an.](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
 
-<a id="prerequisites" class="xliff"></a>
-
-## Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen 
 
 [!INCLUDE [Previous topics](../../includes/functions-quickstart-previous-topics.md)]
 
 * Installieren Sie den [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/).
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
 
 ## <a name="add-binding"></a>Ausgabebindung hinzufügen
  
@@ -49,7 +43,7 @@ Eingabe- und Ausgabebindungen bieten in Azure Functions eine deklarative Möglic
     
     ![Hinzufügen einer Ausgabebindung von Queue Storage in einer Funktion im Azure-Portal](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. Verwenden Sie dann die in der Tabelle angegebenen Einstellungen, und klicken Sie anschließend auf **Speichern**: 
+3. Verwenden Sie die Proxyeinstellungen aus der Tabelle: 
 
     ![Hinzufügen einer Ausgabebindung von Queue Storage in einer Funktion im Azure-Portal](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -59,11 +53,11 @@ Eingabe- und Ausgabebindungen bieten in Azure Functions eine deklarative Möglic
     | **Speicherkontoverbindung** | AzureWebJobStorage | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktionen-App verwendet wird, oder eine neue erstellen.  |
     | **Name des Meldungsparameters** | outQueueItem | Der Name des Ausgabebindungsparameters | 
 
+4. Klicken Sie auf **Speichern**, um die Bindung hinzuzufügen.
+ 
 Nachdem Sie eine Ausgabebindung definiert haben, müssen Sie den Code aktualisieren, um die Bindung zum Hinzufügen von Meldungen in eine Warteschlange verwenden zu können.  
 
-<a id="update-the-function-code" class="xliff"></a>
-
-## Aktualisieren des Funktionscodes
+## <a name="update-the-function-code"></a>Aktualisieren des Funktionscodes
 
 1. Wählen Sie die Funktion, um den Funktionscode im Editor anzuzeigen. 
 
@@ -92,9 +86,7 @@ Nachdem Sie eine Ausgabebindung definiert haben, müssen Sie den Code aktualisie
 
 Der an den HTTP-Trigger übergebene Wert ist in einer Meldung beinhaltet, die der Warteschlange hinzugefügt wird.
  
-<a id="test-the-function" class="xliff"></a>
-
-## Testen der Funktion 
+## <a name="test-the-function"></a>Testen der Funktion 
 
 1. Nachdem die Codeänderungen gespeichert wurden, klicken Sie auf **Ausführen**. 
 
@@ -104,9 +96,7 @@ Der an den HTTP-Trigger übergebene Wert ist in einer Meldung beinhaltet, die de
 
 Als Nächstes können Sie Ihr Speicherkonto verknüpfen, um die neue Warteschlange und die von Ihnen hinzugefügte Meldung zu überprüfen. 
 
-<a id="connect-to-the-queue" class="xliff"></a>
-
-## Herstellen einer Verbindung mit der Warteschlange
+## <a name="connect-to-the-queue"></a>Herstellen einer Verbindung mit der Warteschlange
 
 Überspringen Sie die ersten drei Schritte, wenn Sie Storage-Explorer bereits installiert und mit Ihrem Speicherkonto verbunden haben.    
 
@@ -127,15 +117,11 @@ Als Nächstes können Sie Ihr Speicherkonto verknüpfen, um die neue Warteschlan
     ![Erstellen Sie eine Speicherwarteschlange.](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Bereinigen von Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Sie haben eine Ausgabebindung in eine vorhandene Funktion hinzugefügt. 
 

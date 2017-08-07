@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/14/2017
+ms.date: 07/28/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 1794341ed0d4519eef7f065d04ccf86a7e48a4a4
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Graph-API
@@ -54,7 +54,7 @@ Klonen Sie jetzt eine Graph-API-App aus GitHub, legen Sie die Verbindungszeichen
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
     ```
 
-3. Öffnen Sie anschließend die Projektmappendatei in Visual Studio. 
+3. Öffnen Sie anschließend Visual Studio und die Projektmappendatei. 
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
@@ -103,23 +103,19 @@ Es folgt ein kurzer Überblick zu dem, was in der App geschieht. Öffnen Sie die
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
 
-1. Klicken Sie im Azure-Portal unter Ihrem Azure Cosmos DB-Konto im Navigationsbereich auf der linken Seite auf **Übersicht**. Im nächsten Schritt kopieren Sie den **Gremlin-URI**-Wert in die Datei „App.config“. 
+1. Öffnen Sie in Visual Studio 2017 die Datei „App.config“. 
 
-    ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“](./media/create-graph-dotnet/gremlin-uri.png)
-
-    Wenn der Wert für den **Gremlin-URI** leer ist, können Sie ihn im Portal auf der Seite **Schlüssel** generieren, indem Sie den **URI**-Wert verwenden, „https://“ entfernen und „documents“ in „graphs“ ändern. 
-
-2. Öffnen Sie in Visual Studio 2017 die Datei „App.config“. 
-
-3. Kopieren Sie den Wert des **Gremlin-URI** aus dem Portal, und legen Sie ihn der Datei „App.config“ als Wert des Endpunktschlüssels fest. 
-
-    `<add key="Endpoint" value="FILLME.graphs.azure.com:443" />`
-
-4. Wechseln Sie zurück zum Azure-Portal, und klicken Sie im Navigationsmenü auf der linken Seite auf **Schlüssel**. Kopieren Sie den Wert für **PRIMÄRSCHLÜSSEL** aus dem Portal, und legen Sie ihn in der Datei „App.config“ als Wert für den AuthKey-Schlüssel fest. Speichern Sie anschließend die Änderungen. 
-
-    `<add key="AuthKey" value="FILLME" />`
+2. Klicken Sie im Azure-Portal unter Ihrem Azure Cosmos DB-Konto im Navigationsbereich auf der linken Seite auf **Schlüssel**. 
 
     ![Anzeigen und Kopieren eines Primärschlüssels im Azure-Portal auf der Seite „Schlüssel“](./media/create-graph-dotnet/keys.png)
+
+3. Kopieren Sie den Wert für **URI** aus dem Portal, und legen Sie ihn in der Datei „App.config“ als Wert für den Endpunktschlüssel fest. Der Wert kann mithilfe der Schaltfläche „Kopieren“ kopiert werden, wie im vorherigen Screenshot zu sehen.
+
+    `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
+
+4. Kopieren Sie den Wert für **PRIMÄRSCHLÜSSEL** aus dem Portal, legen Sie ihn in „App.config“ als Wert für den AuthKey-Schlüssel fest, und speichern Sie Ihre Änderungen. 
+
+    `<add key="AuthKey" value="FILLME" />`
 
 Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
 
@@ -131,6 +127,8 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 3. Installieren Sie die in den Ergebnissen enthaltene Bibliothek **Microsoft.Azure.Graphs**. Dadurch wird das Azure Cosmos DB-Graph-Bibliothekerweiterungspaket mit sämtlichen Abhängigkeiten installiert.
 
+    Wenn Sie eine Meldung im Zusammenhang mit der Überprüfung von Änderungen an der Projektmappe erhalten, klicken Sie auf **OK**. Wenn Sie eine Meldung im Zusammenhang mit der Akzeptierung der Lizenz erhalten, klicken Sie auf **Ich stimme zu**.
+
 4. Drücken Sie STRG+F5, um die Anwendung auszuführen.
 
    Im Konsolenfenster werden die Scheitelpunkte und Ränder angezeigt, die dem Graph hinzugefügt werden. Drücken Sie bei Abschluss des Skripts zwei Mal die EINGABETASTE, um das Konsolenfenster zu schließen. 
@@ -139,9 +137,13 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren und die neuen Graph-Daten durchsuchen und abfragen.
 
-* Im Daten-Explorer wird die neue Datenbank im Bereich „Sammlungen“ angezeigt. Erweitern Sie **graphdb**, **graphcoll**, und klicken Sie anschließend auf **Graph**.
+1. Im Daten-Explorer wird die neue Datenbank im Diagrammbereich angezeigt. Erweitern Sie **graphdb** > **graphcollz**, und klicken Sie anschließend auf **Graph**.
 
-    Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
+2. Klicken Sie auf die Schaltfläche **Filter anwenden**, um die Standardabfrage zum Anzeigen aller Scheitelpunkte im Diagramm zu verwenden. Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
+
+    Sie können die Diagrammansicht vergrößern und verkleinern, den Anzeigebereich des Diagramms erweitern, zusätzliche Scheitelpunkte hinzufügen und Scheitelpunkte auf der Anzeigeoberfläche verschieben.
+
+    ![Anzeigen des Diagramms im Daten-Explorer im Azure-Portal](./media/create-graph-dotnet/graph-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 

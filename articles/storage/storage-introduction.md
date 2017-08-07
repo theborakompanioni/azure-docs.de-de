@@ -12,14 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/24/2017
+ms.date: 07/26/2017
 ms.author: marsma
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 1cab34785d6e4f7751245ebf77b29fa8dc3c685b
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 98670b60daca7091e09ce2ab03cf2eaff015070e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Einführung in Microsoft Azure Storage
@@ -110,13 +109,19 @@ Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungsk
 Ein Speicherkonto kann eine beliebige Anzahl von Warteschlangen enthalten. Eine Warteschlange kann eine beliebige Anzahl von Nachrichten enthalten (bis zur Kapazitätsgrenze des Speicherkontos). Einzelne Nachrichten können bis zu 64 KB groß sein.
 
 ## <a name="file-storage"></a>File Storage
-Azure File Storage bietet cloudbasierte SMB-Dateifreigaben, mit denen Sie ältere Anwendungen, die auf Dateifreigaben angewiesen sind, schnell und ohne kostspielige Neuentwicklungen nach Azure migrieren können. Mit Azure File Storage können Anwendungen, die auf virtuellen Azure-Computern oder in Clouddiensten ausgeführt werden, eine Dateifreigabe in der Cloud nach dem gleichen Prinzip einbinden wie eine Desktopanwendung, die eine typische SMB-Freigabe einbindet. Die File Storage-Freigaben können dann von beliebig vielen Anwendungskomponenten gleichzeitig eingebunden und genutzt werden.
+Der Azure Files-Dienst ermöglicht die Einrichtung hochverfügbarer Netzwerkdateifreigaben, auf die über das standardmäßige SMB-Protokoll (Server Message Block) zugegriffen werden kann. Dadurch können mehrere virtuelle Computer gemeinsam die gleichen Dateien mit Lese- und Schreibzugriff nutzen. Die Dateien können auch mithilfe der REST-Schnittstelle oder mithilfe der Speicherclientbibliotheken gelesen werden.
 
-Da es sich bei File Storage-Freigaben um gewöhnliche SMB-Freigaben handelt, können Anwendungen in Azure über die E/A-APIs des Systems auf die Freigaben zugreifen. Entwickler können daher bei der Migration vorhandener Anwendungen auf ihren vorhandenen Code sowie auf bereits angeeignetes Know-how zurückgreifen. IT-Experten können PowerShell-Cmdlets verwenden, um File Storage-Freigaben im Rahmen der Verwaltung von Azure-Anwendungen zu erstellen, einzubinden und zu verwalten.
+Der Azure-Dateispeicher unterscheidet sich in einem Punkt von Dateien auf einer Dateifreigabe eines Unternehmens: Über eine URL, die auf die gewünschte Datei verweist und ein SAS-Token (Shared Access Signature) enthält, kann von überall auf der Welt auf die Datei zugegriffen werden. Sie können SAS-Token generieren, um für einen bestimmten Zeitraum spezifischen Zugriff auf eine private Ressource zu ermöglichen.
 
-Genau wie die anderen Azure Storage-Dienste stellt auch File Storage eine REST-API für den Zugriff auf Daten in Freigaben bereit. Lokale Anwendungen können die REST-API von File Storage aufrufen, um auf Daten in Dateifreigaben zuzugreifen. Auf diese Weise können Unternehmen einen Teil ihrer älteren Anwendungen nach Azure migrieren und andere Anwendungen weiterhin intern ausführen. Die Einbindung von Dateifreigaben ist nur für Anwendungen möglich, die in Azure ausgeführt werden. Lokale Anwendungen müssen über die REST-API auf die Dateifreigaben zugreifen.
+Dateifreigaben können in zahlreichen Szenarien verwendet werden:
 
-Verteilte Anwendungen können File Storage für die Speicherung und Weitergabe von Anwendungsdaten sowie für Entwicklungs- und Testtools verwenden. Eine Anwendung kann beispielsweise Konfigurationsdateien und Diagnosedaten wie Protokolle, Metriken und Absturzabbilder in einer File Storage-Freigabe speichern, um diese Daten anderen virtuellen Computern oder Rollen zur Verfügung zu stellen. Entwickler und Administratoren können Hilfsprogramme für die Erstellung oder Verwaltung einer Anwendung in einer File Storage-Freigabe speichern, die für alle Komponenten verfügbar ist, anstatt diese Hilfsprogramme einzeln auf allen virtuellen Computern oder Rolleninstanzen zu installieren.
+* Viele lokale Anwendungen verwenden Dateifreigaben. Dieses Feature erleichtert die Migration dieser Anwendungen mit gemeinsamen Daten zu Azure. Wenn Sie die Dateifreigabe unter dem gleichen Laufwerksbuchstaben einbinden, den auch die lokale Anwendung verwendet, müsste der Teil Ihrer Anwendung, der auf die Dateifreigabe zugreift, mit minimalen (oder sogar ganz ohne) Änderungen funktionieren.
+
+* Konfigurationsdateien können auf einer Dateifreigabe gespeichert und von mehreren virtuellen Computern genutzt werden. Tools und Hilfsprogramme, die von mehreren Entwicklern in einer Gruppe verwendet werden, können auf einer Dateifreigabe gespeichert werden, um sicherzustellen, dass sie von allen gefunden werden und dass alle die gleiche Version verwenden.
+
+* Diagnoseprotokolle, Metriken und Absturzabbilder sind nur drei Beispiele für Daten, die zur späteren Verarbeitung oder Analyse auf eine Dateifreigabe geschrieben werden können.
+
+Active Directory-basierte Authentifizierung und Zugriffssteuerungslisten (Access Control Lists, ACLs) werden derzeit noch nicht unterstützt, wir arbeiten aber daran. Zur Authentifizierung für den Zugriff auf die Dateifreigabe werden die Speicherkonto-Anmeldeinformationen verwendet. Das bedeutet, dass jeder Benutzer, bei dem die Freigabe eingebunden ist, uneingeschränkten Lese-/Schreibzugriff auf die Freigabe hat.
 
 ## <a name="access-to-blob-table-queue-and-file-resources"></a>Zugreifen auf Blob-, Tabellen-, Warteschlangen- und Dateiressourcen
 Standardmäßig kann nur der Besitzer eines Speicherkontos auf Ressourcen in diesem Konto zugreifen. Aus Sicherheitsgründen muss jede Anforderung für Ressourcen in Ihrem Konto authentifiziert werden. Die Authentifizierung beruht auf einem Modell mit gemeinsam verwendeten Schlüsseln. Blobs können auch für die Unterstützung anonymer Authentifizierungen konfiguriert werden.

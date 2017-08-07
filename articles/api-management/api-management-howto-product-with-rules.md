@@ -3,7 +3,7 @@ title: "Schützen Ihrer API mit Azure API Management | Microsoft Docs"
 description: "Erfahren Sie, wie Sie Ihre API mithilfe von Richtlinien für Kontingente und Drosselung (Beschränken der Aufrufhäufigkeit) schützen."
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 450dc368-d005-401d-ae64-3e1a2229b12f
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 9dba928b78c11213d4b0098986561b09678444eb
+ms.contentlocale: de-de
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Schützen Ihrer API mithilfe von Aufruflimits in Azure API Management
@@ -53,7 +54,7 @@ Klicken Sie auf **Produkt hinzufügen**, um das Dialogfeld **Neues Produkt hinzu
 
 Geben Sie im Feld **Titel** den Text **Kostenlose Testversion** ein.
 
-Geben Sie in das Textfeld **Beschreibung** Folgendes ein:  **Abonnenten können bis zu 10 Aufrufe pro Minute und bis zu 200 Aufrufe pro Woche ausführen, danach wird der Zugriff verweigert.**
+Geben Sie in das Textfeld **Beschreibung** Folgendes ein: **Abonnenten können bis zu 10 Aufrufe pro Minute und bis zu 200 Aufrufe pro Woche ausführen, danach wird der Zugriff verweigert.**
 
 Produkte in API Management können geschützt oder offen sein. Geschützte Produkte müssen abonniert werden, bevor sie verwendet werden können. Offene Produkte können ohne Abonnement genutzt werden. Vergewissern Sie sich, dass die Option **Abonnement erforderlich** ausgewählt ist, um ein geschütztes Produkt zu erstellen, das abonniert werden muss. Dies ist die Standardeinstellung.
 
@@ -95,7 +96,9 @@ Wählen Sie **Echo API** aus, und klicken Sie dann auf **Speichern**.
 ![Echo API hinzufügen][api-management-add-echo-api]
 
 ## <a name="policies"> </a>So konfigurieren Sie Richtlinien für Aufruflimits und Kontingente
-Aufruflimits und Kontingente werden im Richtlinien-Editor konfiguriert. Klicken Sie im Menü **API Management** auf der linken Seite auf **Richtlinien**. Klicken Sie in der Liste **Produkt** auf **Kostenlose Testversion**.
+Aufruflimits und Kontingente werden im Richtlinien-Editor konfiguriert. In diesem Tutorial erstellen wir die Richtlinien [Aufruflimit pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) und [Nutzungskontingent pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). Diese Richtlinien müssen auf den Produktbereich angewendet werden.
+
+Klicken Sie im Menü **API Management** auf der linken Seite auf **Richtlinien**. Klicken Sie in der Liste **Produkt** auf **Kostenlose Testversion**.
 
 ![Produktrichtlinie][api-management-product-policy]
 
@@ -103,11 +106,11 @@ Klicken Sie auf **Richtlinie hinzufügen** , um die Richtlinienvorlage zu import
 
 ![Richtlinie hinzufügen][api-management-add-policy]
 
-Um Richtlinien hinzuzufügen, platzieren Sie den Cursor entweder im **Eingehend**- oder **Ausgehend**-Bereich der Richtlinienvorlage. Richtlinien für Aufruflimits und Kontingente sind eingehende Richtlinien. Platzieren Sie den Cursor also im Element für eingehende Richtlinien.
+Richtlinien für Aufruflimits und Kontingente sind eingehende Richtlinien. Platzieren Sie den Cursor also im Element für eingehende Richtlinien.
 
 ![Richtlinieneditor][api-management-policy-editor-inbound]
 
-In diesem Tutorial erstellen wir die Richtlinien [Aufruflimit pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) und [Nutzungskontingent pro Abonnement](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota).
+Scrollen Sie durch die Richtlinienliste zum Richtlinieneintrag **Aufruflimit pro Abonnement**.
 
 ![Richtlinienanweisungen][api-management-limit-policies]
 
@@ -121,7 +124,7 @@ Nachdem Sie den Cursor im Richtlinienelement **Eingehend** platziert haben, klic
 </rate-limit>
 ```
 
-**Aufruflimit pro Abonnement** kann auf der Produktebene sowie auf der API- und auf der Namensebene für einzelne Vorgänge verwendet werden. Dieses Lernprogramm verwendet Richtlinien auf Produktebene. Löschen Sie also die Elemente **api** und **operation** aus dem Element **rate-limit**, sodass nur das äußere **rate-limit**-Element verbleibt, wie im folgenden Beispiel gezeigt.
+Wie in dem Codeausschnitt zu sehen, ermöglicht die Richtlinie das Festlegen von Grenzwerten für die APIs und Vorgänge des Produkts. Diese Funktion wird im aktuellen Tutorial nicht verwendet. Löschen Sie daher die Elemente **api** und **operation** aus dem Element **rate-limit**, sodass nur das äußere Element vom Typ **rate-limit** verbleibt, wie im folgenden Beispiel gezeigt.
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -135,7 +138,7 @@ Für das Produkt „Kostenlose Testversion“ sind maximal 10 Aufrufe pro Minute
 </rate-limit>
 ```
 
-Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzieren Sie den Cursor innerhalb des **inbound**-Elements direkt unterhalb des neu erstellten **rate-limit**-Elements und klicken dann auf den Pfeil links neben **Nutzungskontingent pro Abonnement einstellen**.
+Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzieren Sie den Cursor innerhalb des Elements **inbound** direkt unterhalb des neu erstellten Elements **rate-limit**. Suchen Sie dann nach **Nutzungskontingent pro Abonnement**, und klicken Sie auf den Pfeil links daneben.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -145,7 +148,7 @@ Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzi
 </quota>
 ```
 
-Da diese Richtlinie auf der Produktebene arbeiten soll, löschen Sie die Elemente mit den Namen **api** und **operation**, wie im folgenden Beispiel gezeigt.
+Die Richtlinie **Aufruflimit pro Abonnement** gleicht der Richtlinie **Nutzungskontingent pro Abonnement** und ermöglicht das Festlegen von Obergrenzen für die APIs und Vorgänge des Produkts. Diese Funktion wird im aktuellen Tutorial nicht verwendet. Löschen Sie daher die Elemente **api** und **operation** aus dem Element **quota**, wie im folgenden Beispiel gezeigt.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -166,7 +169,7 @@ Für das Produkt Kostenloser Test gilt ein Kontingent von 200 Aufrufen pro Woche
 </quota>
 ```
 
-> Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl der Tage (7) mit der Anzahl der Stunden pro Tag (24), der Anzahl der Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 * 24 * 60 x 60 = 604800.
+> Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl von Tagen (7) mit der Anzahl von Stunden pro Tag (24), der Anzahl von Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 * 24 * 60 * 60 = 604.800.
 > 
 > 
 
@@ -323,9 +326,4 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

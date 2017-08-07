@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: cc0715b9f2c531ad493beec854202d2211a84daa
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 690aa3ddc6ec0889936565ea732cd714734abecb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
@@ -31,10 +31,8 @@ In diesem Artikel wird beschrieben, wie Sie das Azure-Portal zum Erstellen einer
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
-> * [Klassisches Portal (klassisch)](vpn-gateway-site-to-site-create.md)
 > 
 >
-
 
 Eine Site-to-Site-VPN-Gateway-Verbindung wird verwendet, um Ihr lokales Netzwerk über einen IPsec/IKE-VPN-Tunnel (IKEv1 oder IKEv2) mit einem virtuellen Azure-Netzwerk zu verbinden. Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine extern zugängliche, öffentliche IP-Adresse zugewiesen ist. Weitere Informationen zu VPN-Gateways finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 
@@ -54,8 +52,8 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 
 * **VNET-Name:** TestVNet1
 * **Adressraum:** 
-    * 10.11.0.0/16
-    * 10.12.0.0/16 (für diese Übung optional)
+  * 10.11.0.0/16
+  * 10.12.0.0/16 (für diese Übung optional)
 * **Subnetze:**
   * FrontEnd: 10.11.0.0/24
   * BackEnd: 10.12.0.0/24 (für diese Übung optional)
@@ -87,7 +85,6 @@ DNS ist zum Erstellen von Standort-zu-Standort-Verbindungen nicht erforderlich. 
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-s2s-rm-portal-include.md)]
 
-
 ## <a name="VNetGateway"></a>4. Erstellen des VPN-Gateways
 
 [!INCLUDE [vpn-gateway-add-gw-s2s-rm-portal](../../includes/vpn-gateway-add-gw-s2s-rm-portal-include.md)]
@@ -105,7 +102,6 @@ Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erf
 - Einen gemeinsam verwendeten Schlüssel. Dies ist derselbe gemeinsame Schlüssel, den Sie beim Erstellen Ihrer Site-to-Site-VPN-Verbindung angeben. In unseren Beispielen verwenden wir einen einfachen gemeinsamen Schlüssel. Es wird empfohlen, einen komplexeren Schlüssel zu generieren.
 - Die öffentliche IP-Adresse Ihres Gateways für virtuelle Netzwerke. Sie können die öffentliche IP-Adresse mit dem Azure-Portal, mit PowerShell oder mit der CLI anzeigen. Sie können die öffentliche IP-Adresse des VPN-Gateways mit dem Azure-Portal ermitteln, indem Sie zu **Gateways für virtuelle Netzwerke** navigieren und auf den Namen Ihres Gateways klicken.
 
-
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 ## <a name="CreateConnection"></a>7. Erstellen der VPN-Verbindung
@@ -122,9 +118,17 @@ Erstellen Sie die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuel
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
+## <a name="how-to-reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
+
+Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem Site-to-Site-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen. Eine entsprechende Anleitung finden Sie unter [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md).
+
+## <a name="how-to-change-a-gateway-sku-resize-a-gateway"></a>Ändern einer Gateway-SKU (Ändern der Gatewaygröße)
+
+Eine Anleitung zum Ändern einer Gateway-SKU finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-*  Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
-*  Weitere Informationen zur Tunnelerzwingung finden Sie unter [Informationen zur Tunnelerzwingung](vpn-gateway-forced-tunneling-rm.md).
-*  Informationen zu hochverfügbaren Aktiv/Aktiv-Verbindungen finden Sie unter [Standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen mit hoher Verfügbarkeit](vpn-gateway-highlyavailable.md).
+* Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
+* Weitere Informationen zur Tunnelerzwingung finden Sie unter [Informationen zur Tunnelerzwingung](vpn-gateway-forced-tunneling-rm.md).
+* Informationen zu hochverfügbaren Aktiv/Aktiv-Verbindungen finden Sie unter [Standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen mit hoher Verfügbarkeit](vpn-gateway-highlyavailable.md).
+

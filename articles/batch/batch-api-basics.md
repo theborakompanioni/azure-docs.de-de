@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 346e7abf862330afe64dc5685737a9301d7d861a
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 824f900545136428f6e377c52e2dda7e3ab97cfe
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
@@ -177,10 +177,14 @@ Im Abschnitt [Konto](#account) finden Sie Informationen zum Festlegen des Poolzu
 
 Wenn Sie VM-Pools auf der Grundlage eines benutzerdefinierten Images bereitstellen möchten, erstellen Sie Ihr Batch-Konto mit dem Poolzuordnungsmodus „Benutzerabonnement“. In diesem Modus werden Batch-Pools dem Abonnement zugeordnet, in dem sich das Konto befindet. Im Abschnitt [Konto](#account) finden Sie Informationen zum Festlegen des Poolzuordnungsmodus beim Erstellen eines Batch-Kontos.
 
-Wenn Sie ein benutzerdefiniertes Image verwenden möchten, müssen Sie es zunächst generalisieren. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von virtuellen Azure-Computern finden Sie unter [Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird](../virtual-machines/linux/capture-image-nodejs.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe von PowerShell](../virtual-machines/windows/tutorial-custom-images.md). Beachten Sie bei der Vorbereitung Ihres Images Folgendes:
+Wenn Sie ein benutzerdefiniertes Image verwenden möchten, müssen Sie es zunächst generalisieren. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von virtuellen Azure-Computern finden Sie unter [Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird](../virtual-machines/linux/capture-image-nodejs.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe von PowerShell](../virtual-machines/windows/tutorial-custom-images.md). 
 
-- Vergewissern Sie sich, dass das Betriebssystem-Basisimage, das Sie zum Bereitstellen Ihrer Batch-Pools verwenden, über keine vorinstallierten Azure-Erweiterungen (beispielsweise die benutzerdefinierte Skripterweiterung) verfügt. Wenn das Image eine vorinstallierte Erweiterung enthält, treten beim Bereitstellen des virtuellen Computers unter Umständen Probleme auf.
-- Vergewissern Sie sich, dass das von Ihnen bereitgestellte Betriebssystem-Basisimage das standardmäßige temporäre Laufwerk verwendet, da dies aktuell vom Batch-Knoten-Agent erwartet wird.
+> [!IMPORTANT]
+> Beachten Sie bei der Vorbereitung Ihres benutzerdefinierten Images Folgendes:
+> - Vergewissern Sie sich, dass das Betriebssystem-Basisimage, das Sie zum Bereitstellen Ihrer Batch-Pools verwenden, über keine vorinstallierten Azure-Erweiterungen (beispielsweise die benutzerdefinierte Skripterweiterung) verfügt. Wenn das Image eine vorinstallierte Erweiterung enthält, treten beim Bereitstellen des virtuellen Computers unter Umständen Probleme auf.
+> - Vergewissern Sie sich, dass das von Ihnen bereitgestellte Betriebssystem-Basisimage das standardmäßige temporäre Laufwerk verwendet, da dies aktuell vom Batch-Knoten-Agent erwartet wird.
+>
+>
 
 Wenn Sie einen Pool mit der Konfiguration „Virtueller Computer“ mithilfe eines benutzerdefinierten Images erstellen möchten, benötigen Sie Azure Storage-Standardkonten, um Ihre benutzerdefinierten VHD-Images zu speichern. Benutzerdefinierte Images werden als Blobs gespeichert. Wenn Sie beim Erstellen eines Pools auf Ihre benutzerdefinierten Images verweisen möchten, geben Sie in der [osDisk](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_osdisk)-Eigenschaft der [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_vmconf)-Eigenschaft die URIs der Blobs mit den benutzerdefinierten Image-VHDs an.
 

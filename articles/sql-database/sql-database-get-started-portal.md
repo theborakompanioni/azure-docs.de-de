@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/30/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: ab664eb8803037b0bf09399bf9d28059fec2e204
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: a863cf3ad08040906850f64db6505f30bcfa72eb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Erstellen einer Azure SQL-Datenbank im Azure-Portal
@@ -59,7 +58,7 @@ Führen Sie diese Schritte aus, um eine SQL-Datenbank mit den Adventure Works LT
    > Sie müssen die Beispieldatenbank in diesem Formular auswählen, da sie im restlichen Teil dieses Schnellstarts verwendet wird.
    > 
 
-4. Geben Sie die folgenden Informationen in das Formular „SQL server (logical server)“ ein, wie in der obigen Abbildung dargestellt:   
+4. Klicken Sie unter **Server** auf **Erforderliche Einstellungen konfigurieren**, und geben Sie im Formular für den (logischen) SQL-Server die folgenden Informationen an, wie in der folgenden Abbildung zu sehen:   
 
    | Einstellung       | Empfohlener Wert | Beschreibung | 
    | ------------ | ------------------ | ------------------------------------------------- | 

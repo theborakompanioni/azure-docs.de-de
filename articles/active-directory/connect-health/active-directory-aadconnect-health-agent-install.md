@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 7aa1363c3d4164edb5199a21e75b2b08a3218bf5
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 8ef8a1cc2393f0befbf83c3124b67b405ae06898
 ms.contentlocale: de-de
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren des Azure AD Connect Health-Agents
@@ -37,6 +37,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 | Die SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert. | Beim Agent-Registrierungsschritt oder bei Datenuploads tritt unter Umständen ein Fehler auf, wenn auf der Netzwerkebene eine SSL-Überprüfung oder Beendigung für ausgehenden Datenverkehr erfolgt. |
 | Firewall-Ports auf dem Server, auf dem der Agent ausgeführt wird. |Für den Agent müssen die folgenden Firewallports geöffnet sein, damit er mit den Azure AD Health-Dienstendpunkten kommunizieren kann:</br></br><li>TCP-Port 443</li><li>TCP-Port 5671</li> |
 | Zulassen der folgenden Websites, wenn die verstärkte IE-Sicherheit aktiviert ist |Wenn die verstärkte IE-Sicherheit aktiviert ist, müssen die folgenden Websites auf dem Server zugelassen werden, auf dem der Agent installiert werden soll:</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Der Verbundserver für Ihre Organisation, dem Azure Active Directory vertraut. Beispiel: https://sts.contoso.com</li> |
+|Deaktivieren von FIPS|FIPS wird von Azure AD Connect Health-Agents nicht unterstützt.|
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Installieren des Azure AD Connect Health-Agents für AD FS
 Um die Installation des Agents zu starten, doppelklicken Sie auf die EXE-Datei, die Sie heruntergeladen haben. Klicken Sie auf dem ersten angezeigten Bildschirm auf "Installieren".
@@ -90,7 +91,7 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 1. Klicken Sie auf **Start**, zeigen Sie auf **Programme** und dann auf **Verwaltung**, und klicken Sie anschließend auf **Lokale Sicherheitsrichtlinie**.
 2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\User Rights Management**, und doppelklicken Sie dann auf „Generieren von Sicherheitsüberwachungen“.
 3. Stellen Sie auf der Registerkarte **Lokale Sicherheitseinstellung** sicher, dass das AD FS 2.0-Dienstkonto aufgeführt wird. Wenn es nicht vorhanden ist, klicken Sie auf **Benutzer oder Gruppe hinzufügen** und fügen es der Liste hinzu. Klicken Sie dann auf **OK**.
-4. Öffnen Sie zum Aktivieren der Überwachung ein Eingabeaufforderungsfenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
+4. Öffnen Sie zum Aktivieren der Überwachung eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
 5. Schließen Sie "Lokale Sicherheitsrichtlinie", und öffnen Sie dann das Verwaltungs-Snap-In. Klicken Sie zum Öffnen des Verwaltungs-Snap-Ins auf **Start**, zeigen Sie auf **Programme** und dann auf **Verwaltung**, und klicken Sie anschließend auf „AD FS 2.0 Management“.
 6. Klicken Sie im Bereich "Aktionen" auf "Verbunddiensteigenschaften bearbeiten".
 7. Klicken Sie im Dialogfeld **Verbunddiensteigenschaften** auf die Registerkarte **Ereignisse**.
@@ -111,7 +112,7 @@ Um mithilfe der Nutzungsanalyse Daten zu sammeln und zu analysieren, benötigt d
 1. Öffnen Sie **Lokale Sicherheitsrichtlinie**, indem Sie den **Server-Manager** auf dem Startbildschirm oder über die Taskleiste auf dem Desktop öffnen, und klicken Sie dann auf **Tools/Lokale Sicherheitsrichtlinie**.
 2. Navigieren Sie zum Ordner **Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten**, und doppelklicken Sie dann auf **Generieren von Sicherheitsüberwachungen**.
 3. Vergewissern Sie sich auf der Registerkarte **Lokale Sicherheitseinstellung**, dass das AD FS-Dienstkonto aufgeführt wird. Ist es nicht vorhanden, klicken Sie auf **Benutzer oder Gruppe hinzufügen**, fügen Sie das AD FS-Dienstkonto der Liste hinzu, und klicken Sie anschließend auf **OK**.
-4. Öffnen Sie zum Aktivieren der Überwachung ein Eingabeaufforderungsfenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
+4. Öffnen Sie zum Aktivieren der Überwachung eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
 5. Schließen Sie **Lokale Sicherheitsrichtlinie**, und öffnen Sie dann das AD FS-**Verwaltungs-Snap-In** (klicken Sie hierzu im Server-Manager auf „Tools“, und wählen Sie dann „AD FS Management“ aus).
 6. Klicken Sie im Bereich "Aktionen" auf **Verbunddiensteigenschaften bearbeiten**.
 7. Klicken Sie im Dialogfeld "Verbunddiensteigenschaften" auf die Registerkarte **Ereignisse** .

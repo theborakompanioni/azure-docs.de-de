@@ -1,0 +1,2 @@
+>[!NOTE]
+> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../articles/log-analytics/log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die folgenden Abfragen konvertiert werden. Hierzu können Sie den [Sprachkonverter](../articles/log-analytics/log-analytics-log-search-transition.md#language-converter) verwenden.
