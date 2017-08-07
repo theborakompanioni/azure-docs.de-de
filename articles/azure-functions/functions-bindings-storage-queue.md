@@ -292,5 +292,5 @@ Ein Beispiel für eine Funktion, die Queue Storage-Trigger und -Bindungen verwen
 
 <!-- LINKS -->
 
-[„CloudQueueMessage“]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+[`CloudQueueMessage`]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
 

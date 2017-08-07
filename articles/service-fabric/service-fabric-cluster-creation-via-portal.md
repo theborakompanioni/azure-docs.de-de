@@ -249,7 +249,7 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 8. Wählen Sie den gewünschten Fabric-Upgrademodus für Ihren Cluster aus. Wählen Sie **Automatisch**aus, wenn für Ihren Cluster automatisch ein Upgrade auf die neueste verfügbare Version durchgeführt werden soll. Legen Sie den Modus auf **Manuell**fest, wenn Sie selbst eine unterstützte Version auswählen möchten.
 
 > [!NOTE]
-> Es werden nur Cluster mit einer unterstützten Service Fabric-Version unterstützt. Bei Verwendung des manuellen Modus **** müssen Sie Ihren Cluster eigenverantwortlich auf eine unterstützte Version upgraden. Weitere Informationen zum Fabric-Upgrademodus finden Sie unter [Upgraden von Service Fabric-Clustern][service-fabric-cluster-upgrade].
+> Es werden nur Cluster mit einer unterstützten Service Fabric-Version unterstützt. Bei Verwendung des **manuellen** Modus müssen Sie Ihren Cluster eigenverantwortlich auf eine unterstützte Version upgraden. Weitere Informationen zum Fabric-Upgrademodus finden Sie unter [Upgraden von Service Fabric-Clustern][service-fabric-cluster-upgrade].
 > 
 > 
 
@@ -278,7 +278,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 Klicken Sie zum Abschließen der Clustererstellung auf **Zusammenfassung**, um die angegebene Konfiguration anzuzeigen, oder laden Sie die Azure Resource Manager-Vorlage herunter, die zur Bereitstellung des Clusters verwendet werden soll. Nach Angabe der erforderlichen Einstellungen wird die Schaltfläche **OK** grün dargestellt. Klicken Sie auf die Schaltfläche, um die Clustererstellung zu starten.
 
-Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Klicken Sie auf das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters auf **An Startmenü anheften** geklickt haben, wird im Startmenü**** der Hinweis **Deploying Service Fabric Cluster** (Service Fabric-Cluster wird bereitgestellt) angezeigt.
+Sie können den Verlauf der Erstellung in den Benachrichtigungen finden. (Klicken Sie auf das Glockensymbol in der Nähe der Statusleiste am oberen rechten Bildschirmrand.) Wenn Sie beim Erstellen des Clusters auf **An Startmenü anheften** geklickt haben, wird im **Startmenü** der Hinweis **Deploying Service Fabric Cluster** (Service Fabric-Cluster wird bereitgestellt) angezeigt.
 
 ### <a name="view-your-cluster-status"></a>Anzeigen des Clusterstatus
 ![Screenshot der Clusterdetails im Dashboard.][ClusterDashboard]

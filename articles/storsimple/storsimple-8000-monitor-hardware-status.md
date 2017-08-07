@@ -74,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um den Hardwarestatus einer Gerätekompo
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. Sollte sich eine Komponente nicht in einem fehlerfreien **** Zustand befinden, wenden Sie sich an den Support von Microsoft. Sind Warnungen auf dem Gerät aktiviert, werden Sie per E-Mail benachrichtigt. Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+4. Sollte sich eine Komponente nicht in einem **fehlerfreien** Zustand befinden, wenden Sie sich an den Support von Microsoft. Sind Warnungen auf dem Gerät aktiviert, werden Sie per E-Mail benachrichtigt. Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Komponentenliste für das primäre Gehäuse eines StorSimple-Geräts
 Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponenten im primären Gehäuse Ihres lokalen StorSimple-Geräts (sowohl bei 8100 als auch bei 8600).
