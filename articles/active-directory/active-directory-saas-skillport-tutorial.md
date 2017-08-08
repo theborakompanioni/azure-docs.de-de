@@ -84,7 +84,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azur
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Skillport als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Skillport muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Skillport zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Skillport zuweisen.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Skillport zu konfigurieren und zu testen:
 

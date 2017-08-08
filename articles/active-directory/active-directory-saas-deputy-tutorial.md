@@ -182,7 +182,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_005.png)
     
-    a. Aktivieren der Anmeldung für soziale Netzwerke ****.
+    a. Aktivieren der **Anmeldung für soziale Netzwerke**.
    
     b. Öffnen Sie das vom Azure-Portal heruntergeladene Base64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **OpenSSL-Zertifikat** ein.
    
