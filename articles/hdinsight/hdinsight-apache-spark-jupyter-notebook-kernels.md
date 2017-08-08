@@ -152,7 +152,7 @@ Falls Probleme beim Zugriff auf das Speicherkonto für den Cluster auftreten, we
 Jupyter Notebooks in Spark HDInsight-Clustern werden nur von Google Chrome unterstützt.
 
 ## <a name="feedback"></a>Feedback
-Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit ausreifen. Im Zuge dieser Entwicklung ändern sich unter Umständen auch APIs. Wir freuen uns über Ihr Feedback zur Verwendung der neuen Kernel. Dies hilft uns bei der Gestaltung der endgültigen Kernelversion. Kommentare/Feedback können Sie im Kommentarbereich **** am Ende dieses Artikels hinterlassen.
+Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit ausreifen. Im Zuge dieser Entwicklung ändern sich unter Umständen auch APIs. Wir freuen uns über Ihr Feedback zur Verwendung der neuen Kernel. Dies hilft uns bei der Gestaltung der endgültigen Kernelversion. Kommentare/Feedback können Sie im **Kommentarbereich** am Ende dieses Artikels hinterlassen.
 
 ## <a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
