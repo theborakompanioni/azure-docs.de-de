@@ -92,6 +92,7 @@
 
 ### Verwendung
 #### [Übersicht](app-insights-usage-overview.md)
+#### [Senden von Benutzerkontext](app-insights-usage-send-user-context.md)
 #### [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
 #### [Trichter](usage-funnels.md)
 #### [Aufbewahrung](app-insights-usage-retention.md)
@@ -131,7 +132,7 @@
 ### [Exportieren nach Power BI](app-insights-export-power-bi.md)
 
 ## Schützen
-### [Datensammlung, -vermerkdauer und -speicherung](app-insights-data-retention-privacy.md)
+### [Datensammlung, -aufbewahrung und -speicherung](app-insights-data-retention-privacy.md)
 ### [Ressourcen, Rollen und Zugriffssteuerung](app-insights-resources-roles-access-control.md)
 ### [IP-Adressen](app-insights-ip-addresses.md)
 

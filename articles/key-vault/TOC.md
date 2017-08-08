@@ -15,22 +15,24 @@
 ### [HSM-geschützte Schlüssel](key-vault-hsm-protected-keys.md)
 ### [Migrieren zu .NET 2.0](key-vault-dotnet2api-release-notes.md)
 ### Übersichten
-#### [Übersicht über Sicherheitsumgebungen (Security Worlds)](key-vault-ovw-security-worlds.md)
-#### [Vorläufiges Löschen der Übersicht](key-vault-ovw-soft-delete.md)
-#### [Übersicht über Speicherkontoschlüssel](key-vault-ovw-storage-keys.md)
-#### [Übersicht über die Drosselung](key-vault-ovw-throttling.md)
+#### [Sicherheitsumgebungen (Security Worlds)](key-vault-ovw-security-worlds.md)
+#### [Vorläufiges Löschen](key-vault-ovw-soft-delete.md)
+#### [Speicherkontoschlüssel](key-vault-ovw-storage-keys.md)
+#### [Drosselung](key-vault-ovw-throttling.md)
 
 ## Verwalten
 ### [Azure Key Vault-Protokollierung](key-vault-logging.md)
 ### [Zugreifen hinter Firewalls](key-vault-access-behind-firewall.md)
-### [Ändern der Mandanten-ID](key-vault-subscription-move-fix.md)
-### [Gewähren von Zugriff mithilfe von Gruppen](key-vault-group-permissions-for-apps.md)
 ### [Verfügbarkeit und Redundanz](key-vault-disaster-recovery-guidance.md)
+### [Ändern der Mandanten-ID](key-vault-subscription-move-fix.md)
+### [Erstellen und Verwalten über die CLI 2.0](key-vault-manage-with-cli2.md)
+### [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](key-vault-soft-delete-cli.md)
+### [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](key-vault-soft-delete-powershell.md)
+### [Gewähren von Zugriff mithilfe von Gruppen](key-vault-group-permissions-for-apps.md)
 ### [Schützen Ihrer Key Vault-Instanz](key-vault-secure-your-key-vault.md)
 
 ## Automatisieren
 ### [Azure Automation](automation-manage-key-vault.md)
-### [Erstellen und Verwalten über die CLI 2.0](key-vault-manage-with-cli2.md)
 
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
