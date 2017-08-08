@@ -18,6 +18,7 @@
 #### [Azure AD mit Batch Management](batch-aad-auth-management.md)
 ### [Rechenintensive virtuelle Computer](batch-pool-compute-intensive-sizes.md)
 ### [Gleichzeitige Knotenaufgaben](batch-parallel-node-tasks.md)
+### [Zählen von Aufgaben nach Zustand](batch-get-task-counts.md)
 ### [Effiziente Listenabfragen](batch-efficient-list-queries.md)
 ### [Vorbereitung und Abschluss von Aufträgen](batch-job-prep-release.md)
 ### [Linux-Computeknoten](batch-linux-nodes.md)

@@ -1,10 +1,10 @@
 # Übersicht
 ## [Was ist Azure Analysis Services?](analysis-services-overview.md)
-## [Unterstützte Datenquellen](analysis-services-datasource.md)
 
 # Schnellstarts
 ## [Erstellen eines Servers – Portal](analysis-services-create-server.md)
-## [Bereitstellen eines Modells – SSDT](analysis-services-deploy.md)
+## [Erstellen eines Servers – PowerShell](analysis-services-create-powershell.md)
+## [Bereitstellen eines Modells – Visual Studio](analysis-services-deploy.md)
 
 # Lernprogramme
 ## Erstellen und Bereitstellen eines Modells
@@ -27,6 +27,7 @@
 ### [Ergänzende Lektion – Unregelmäßige Hierarchien](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
 
 # Konzepte
+## [Unterstützte Datenquellen](analysis-services-datasource.md)
 ## [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md)
 ## [Hohe Verfügbarkeit](analysis-services-bcdr.md)
 

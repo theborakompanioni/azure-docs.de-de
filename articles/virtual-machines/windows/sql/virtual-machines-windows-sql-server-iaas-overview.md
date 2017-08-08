@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/27/2017
+ms.date: 08/07/2017
 ms.author: jroth
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
@@ -21,11 +21,8 @@ ms.openlocfilehash: f0100423550046d18642180ce98e93ce3609749b
 ms.contentlocale: de-de
 ms.lasthandoff: 06/28/2017
 
-
 ---
-<a id="overview-of-sql-server-on-azure-virtual-machines" class="xliff"></a>
-
-# Übersicht über SQL Server auf virtuellen Azure-Computern
+# <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Übersicht über SQL Server auf virtuellen Azure-Computern
 Dieses Thema beschreibt die Optionen im Zusammenhang mit der Ausführung von SQL Server auf virtuellen Azure-Computern (VMs) und enthält [Links zu Portal-Images](#option-1-create-a-sql-vm-with-per-minute-licensing) sowie eine Übersicht über [allgemeine Aufgaben](#manage-your-sql-vm).
 
 > [!NOTE]
@@ -33,9 +30,7 @@ Dieses Thema beschreibt die Optionen im Zusammenhang mit der Ausführung von SQL
 > 
 > 
 
-<a id="overview" class="xliff"></a>
-
-## Übersicht
+## <a name="overview"></a>Übersicht
 Wenn Sie ein Datenbankadministrator oder Entwickler sind, stellen Azure-VMs eine Möglichkeit zum Verschieben Ihrer lokalen SQL Server-Workloads und -Anwendungen in die Cloud dar. Das folgende Video enthält eine technische Übersicht über SQL Server Azure-VMs.
 
 > [!VIDEO https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
@@ -61,9 +56,7 @@ Im Video geht es um die folgenden Bereiche:
 > 
 > 
 
-<a id="scenarios" class="xliff"></a>
-
-## Szenarien
+## <a name="scenarios"></a>Szenarien
 Es gibt viele Gründe, die für das Hosten von Daten in Azure sprechen. Wenn Sie Ihre Anwendung nach Azure verschieben, wird die Leistung verbessert, indem Sie auch die Daten verschieben. Aber es gibt noch weitere Vorteile. Sie haben automatisch Zugriff auf mehrere Rechenzentren, um weltweite Präsenz und die Notfallwiederherstellung zu ermöglichen. Außerdem sind die Daten dauerhaft stark geschützt.
 
 Die Ausführung von SQL Server auf Azure-VMs ist eine Möglichkeit zum Speichern Ihrer relationalen Daten in Azure. Dies eignet sich ideal für verschiedene Szenarios. Beispielsweise kann es sein, dass Sie die Azure-VM so konfigurieren möchten, dass sie einem lokalen SQL Server-Computer möglichst genau ähnelt. Unter Umständen möchten Sie auch weitere Anwendungen und Dienste auf demselben Datenbankserver ausführen. Es gibt zwei wichtige Ressourcen, die noch weitere Szenarios und Überlegungen bereitstellen:
@@ -71,16 +64,12 @@ Die Ausführung von SQL Server auf Azure-VMs ist eine Möglichkeit zum Speichern
 * [SQL Server auf virtuellen Azure-Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/) enthält eine Übersicht über die besten Szenarien für die Verwendung von SQL Server auf Azure-VMs. 
 * Einen vollständigen Vergleich zwischen SQL-Datenbank und SQL Server auf einer VM finden Sie unter [Auswählen einer SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
 
-<a id="create-a-new-sql-vm" class="xliff"></a>
-
-## Erstellen einer neuen SQL-VM
+## <a name="create-a-new-sql-vm"></a>Erstellen einer neuen SQL-VM
 Die folgenden Abschnitte enthalten direkte Links zum Azure-Portal für die Katalogimages für virtuelle SQL Server-Computer. Je nach ausgewähltem Image fallen entweder Kosten für die SQL Server-Lizenzierung pro Minute an, oder Sie nutzen eine eigene Lizenz (Bring Your Own License, BYOL).
 
 Eine Schritt-für-Schritt-Anleitung zum Erstellen eines neuen virtuellen SQL-Computers finden Sie im Tutorial [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Sehen Sie sich auch den Artikel [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md) an. Darin wird beschrieben, wie Sie bei der Bereitstellung die richtige Computergröße und andere verfügbare Features auswählen.
 
-<a id="option-1-create-a-sql-vm-with-per-minute-licensing" class="xliff"></a>
-
-## Option 1: Erstellen einer SQL-VM mit minutenbezogener Lizenzierung
+## <a name="option-1-create-a-sql-vm-with-per-minute-licensing"></a>Option 1: Erstellen einer SQL-VM mit minutenbezogener Lizenzierung
 Die folgende Tabelle enthält eine Matrix der aktuellen SQL Server-Images im Katalog der virtuellen Computer. Klicken Sie auf einen beliebigen Link, um mit dem Erstellen einer neuen SQL-VM mit Ihren Angaben zu Version, Edition und Betriebssystem zu beginnen. 
 
 > [!TIP]
@@ -114,48 +103,32 @@ Neben dieser Liste sind noch andere Kombinationen von SQL Server-Versionen und B
 > [!NOTE]
 > Es ist nicht möglich, das Lizenzierungsmodell einer SQL Server-VM mit minutenbasierter Bezahlung zu ändern und eine eigene Lizenz zu verwenden. In diesem Fall müssen Sie einen neuen virtuellen BYOL-Computer erstellen und die Datenbanken zu diesem neuen virtuellen Computer migrieren. 
 
-<a id="manage-your-sql-vm" class="xliff"></a>
-
-## Verwalten der SQL-VM
+## <a name="manage-your-sql-vm"></a>Verwalten der SQL-VM
 Nach der Bereitstellung der SQL Server-VM stehen mehrere optionale Verwaltungsaufgaben an. In vielerlei Hinsicht konfigurieren und verwalten Sie SQL Server genauso wie eine lokale SQL Server-Instanz. Einige Aufgaben gelten aber speziell für Azure. In den folgenden Abschnitten wird auf einige dieser Bereiche mit Links zu weiteren Informationen näher eingegangen.
 
-<a id="connect-to-the-vm" class="xliff"></a>
-
-### Herstellen der Verbindung zur VM
+### <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
 Einer der grundlegendsten Verwaltungsschritte ist die Herstellung einer Verbindung mit der SQL Server-VM über Tools, z.B. SQL Server Management Studio (SSMS). Eine Anleitung zum Herstellen der Verbindung mit Ihrer neuen SQL Server-VM finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Computern](virtual-machines-windows-sql-connect.md).
 
-<a id="migrate-your-data" class="xliff"></a>
-
-### Migrieren Ihrer Daten
+### <a name="migrate-your-data"></a>Migrieren Ihrer Daten
 Wenn Sie über eine vorhandene Datenbank verfügen, empfiehlt sich die Verschiebung auf die neu bereitgestellte SQL-VM. Eine Liste mit Migrationsoptionen und Anleitungen finden Sie unter [Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-migrate-sql.md).
 
-<a id="configure-high-availability" class="xliff"></a>
-
-### Konfigurieren hoher Verfügbarkeit
+### <a name="configure-high-availability"></a>Konfigurieren hoher Verfügbarkeit
 Wenn Sie hohe Verfügbarkeit benötigen, sollten Sie SQL Server-Verfügbarkeitsgruppen konfigurieren. Dies beinhaltet mehrere Azure-VMs in einem virtuellen Netzwerk. Das Azure-Portal bietet eine Vorlage, die diese Konfiguration für Sie einrichtet. Weitere Informationen finden Sie unter [Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe auf Azure Resource Manager-VMs (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Wenn Sie Ihre Verfügbarkeitsgruppe und den ihr zugeordneten Listener manuell konfigurieren möchten, helfen Ihnen die Informationen im Artikel [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen in einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)weiter.
 
 Weitere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md).
 
-<a id="back-up-your-data" class="xliff"></a>
-
-### Sichern Ihrer Daten
+### <a name="back-up-your-data"></a>Sichern Ihrer Daten
 Für virtuelle Azure-Computer kann die [automatisierte Sicherung](virtual-machines-windows-sql-automated-backup.md)verwendet werden, bei der regelmäßig Sicherungen Ihrer Datenbank im Blobspeicher erstellt werden. Sie können dieses Verfahren auch manuell verwenden. Weitere Informationen finden Sie unter [Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung](virtual-machines-windows-use-storage-sql-server-backup-restore.md). Eine Übersicht über alle Sicherungs- und Wiederherstellungsoptionen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md).
 
-<a id="automate-updates" class="xliff"></a>
-
-### Automatisieren von Updates
+### <a name="automate-updates"></a>Automatisieren von Updates
 Für virtuelle Azure-Computer kann das [automatisierte Patchen](virtual-machines-windows-sql-automated-patching.md) verwendet werden, um ein Wartungsfenster zum automatischen Installieren wichtiger Windows- und SQL Server-Updates zu planen.
 
-<a id="customer-experience-improvement-program-ceip" class="xliff"></a>
-
-### Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP)
+### <a name="customer-experience-improvement-program-ceip"></a>Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP)
 Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP) ist standardmäßig aktiviert. Es sendet in regelmäßigen Abständen Berichte an Microsoft, damit die Nutzung von SQL Server verbessert werden kann. Für CEIP ist nur dann eine Verwaltungsaufgabe erforderlich, wenn Sie das Programm nach der Bereitstellung deaktivieren möchten. Sie können CEIP anpassen oder deaktivieren, indem Sie eine Verbindung mit der VM per Remotedesktop herstellen. Führen Sie anschließend das SQL Server-Hilfsprogramm **Fehler- und Verwendungsberichterstellung** aus. Befolgen Sie die Anleitung, um die Berichterstellung zu deaktivieren. 
 
 Weitere Informationen finden Sie im Abschnitt „CEIP“ des Themas [Akzeptieren von Lizenzbedingungen](https://msdn.microsoft.com/library/ms143343.aspx). 
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur Preisgestaltung finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server) und [Virtuelle Windows-Computer – Preise ](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Wählen Sie in der Liste **Betriebssystem/Software** Ihre Zieledition von SQL Server aus. Zeigen Sie dann die Preise für virtuelle Computern unterschiedlicher Größe an.
 

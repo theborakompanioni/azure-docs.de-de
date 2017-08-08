@@ -25,10 +25,14 @@
       href: container-instances-orchestrator-relationship.md
 - name: Anleitungen
   items:
-    - name: Gruppen mit mehreren Containern
+    - name: Bereitstellen von Gruppen mit mehreren Containern
       href: container-instances-multi-container-group.md
     - name: Verwalten des Zustands mit Azure-Dateifreigaben
       href: container-instances-mounting-azure-files-volume.md
+    - name: Bereitstellen aus Azure Container Registry
+      href: container-instances-using-azure-container-registry.md
+    - name: Problembehandlung bei Bereitstellungen in Azure Container Instances
+      href: container-instances-troubleshooting.md
 - name: Referenz
   items:
     - name: Azure CLI 2.0
