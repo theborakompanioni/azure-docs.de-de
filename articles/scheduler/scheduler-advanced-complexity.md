@@ -123,7 +123,7 @@ Andererseits kann *schedule* auch zum *Erweitern* der Anzahl von Auftragsausfüh
 
 Bei Angabe mehrerer Zeitplanelemente werden diese in absteigender Reihenfolge ausgewertet – also von der Wochennummer über Monatstag und Wochentag bis hin zu Stunde und Minute.
 
-Die folgende Tabelle enthält eine ausführliche Beschreibung der Zeitplanelemente**.
+Die folgende Tabelle enthält eine ausführliche Beschreibung der *Zeitplanelemente*.
 
 | **JSON-Name** | **Beschreibung** | **Gültige Werte** |
 |:--- |:--- |:--- |
