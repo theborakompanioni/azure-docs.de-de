@@ -241,7 +241,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren der Bereitstellung von Benutzer
 
 6.  Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7.  Legen Sie **Bereitstellungsmodus****** auf **Automatisch** fest.
+7.  Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
 
 8.  Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -460,7 +460,7 @@ In den folgenden Abschnitten wird das Einrichten einer Verbindung zwischen Workd
 
 6.  Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7.  Legen Sie **Bereitstellungsmodus****** auf **Automatisch** fest.
+7.  Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
 
 8.  Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -565,7 +565,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
 6.  Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7.  Legen Sie **Bereitstellungsmodus****** auf **Automatisch** fest.
+7.  Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
 
 8.  Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
