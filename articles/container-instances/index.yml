@@ -37,3 +37,11 @@ sections:
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Packen einer Anwendung in einem Containerimage</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Erstellen einer Azure Container Registry-Instanz und Hochladen des Containerimages</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Bereitstellen des Containerimages in einer Azure-Containerinstanz</a>
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Azure-Befehlszeilenschnittstelle
+            html: <p><a href="/cli/azure/container">Azure CLI 2.0</a></p>

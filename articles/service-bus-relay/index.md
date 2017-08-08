@@ -2,9 +2,11 @@
 layout: LandingPage
 title: Service Bus Relay-Dokumentation
 description: "Hier erhalten Sie Informationen zur Funktionsweise des Azure Relay-Diensts in einer Hybridumgebung (Cloud und lokal). Der Artikel enthält unter anderem Tutorials, Videos und API-Referenzen."
-translationtype: Human Translation
-ms.sourcegitcommit: ef8188d6790dac8b420348887c480cd4fdab07c4
-ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 43d2c5ca34e4903a41160496fdb4d975cb665de7
+ms.contentlocale: de-de
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="service-bus-relay-documentation"></a>Service Bus Relay-Dokumentation
@@ -30,7 +32,7 @@ Hier erfahren Sie, wie der Azure Relay-Dienst Hybridanwendungen zwischen lokalen
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus-relay">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -112,8 +114,8 @@ Hier erfahren Sie, wie der Azure Relay-Dienst Hybridanwendungen zwischen lokalen
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Beispiele</h3>
-                        <p><a href="/azure/service-bus-relay/service-bus-relay-samples">Beispiele für Service Bus Relay</a></p>
+                        <h3>Befehlszeile</h3>
+                        <p><a href="/powershell/module/azurerm.servicebus">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -124,9 +126,8 @@ Hier erfahren Sie, wie der Azure Relay-Dienst Hybridanwendungen zwischen lokalen
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p><a href="/dotnet/api/microsoft.servicebus.messaging">Microsoft.ServiceBus.Messaging</a></p>
-                        <p><a href="/dotnet/api/microsoft.azure.relay">Microsoft.Azure.Relay</a></p>
+                        <h3>Sprachen</h3>
+                        <p><a href="/dotnet/api/overview/azure/service-bus-relay">.NET</a></p>
                     </div>
                 </div>
             </div>
@@ -137,17 +138,12 @@ Hier erfahren Sie, wie der Azure Relay-Dienst Hybridanwendungen zwischen lokalen
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Sonstige</h3>
-                        <p><a href="service-bus-relay-port-settings.md">Porteinstellungen</a></p>
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/servicebus/">REST-API-Referenz</a></p>
                    </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
