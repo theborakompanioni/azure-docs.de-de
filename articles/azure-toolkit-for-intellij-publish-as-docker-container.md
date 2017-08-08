@@ -107,7 +107,7 @@ Docker-Container sind eine weit verbreitete Methode zum Bereitstellen von Webanw
 
       * **New log in credentials** (Neue Anmeldeinformationen): Erstellen Sie neue Anmeldeinformationen. Gehen Sie bei Auswahl dieser Option wie folgt vor:
 
-        a. Geben Sie auf der Registerkarte **VM Credentials** (VM-Anmeldeinformationen) die folgenden Angaben für die VM-Anmeldeinformationen Ihres Docker-Hosts an: **Benutzername**: Geben Sie den Benutzernamen für Ihre VM-Anmeldeinformationen ein.
+        a. Geben Sie auf der Registerkarte **VM Credentials** (VM-Anmeldeinformationen) die folgenden Angaben für die VM-Anmeldeinformationen Ihres Docker-Hosts an: * **Benutzername**: Geben Sie den Benutzernamen für Ihre VM-Anmeldeinformationen ein.
              * **Kennwort** und **Bestätigen**: Geben Sie das Kennwort für Ihre VM-Anmeldeinformationen ein.
              * **SSH**: Geben Sie die SSH-Einstellungen (Secure Shell) für Ihren Docker-Host ein. Sie können eine der folgenden Optionen auswählen: * **Keine**: Gibt an, dass für Ihren virtuellen Computer keine SSH-Verbindungen zulässig sind.
                 * **Automatisch generieren**: Mit dieser Option werden die erforderlichen Einstellungen zum Herstellen einer Verbindung über SSH automatisch erstellt.
@@ -134,9 +134,8 @@ Docker-Container sind eine weit verbreitete Methode zum Bereitstellen von Webanw
 
    ![Assistent „Deploy Docker Container on Azure“ (Docker-Container in Azure bereitstellen)][PUB07]
 
-8. Klicken Sie auf **Weiter**.
-     
- Das Fenster **Configure the Docker container to be created** (Zu erstellenden Docker-Container konfigurieren) wird geöffnet.
+8. Klicken Sie auf **Weiter**.  
+    Das Fenster **Configure the Docker container to be created** (Zu erstellenden Docker-Container konfigurieren) wird geöffnet.
 
    ![Fenster „Configure the Docker container to be created“ (Zu erstellenden Docker-Container konfigurieren)][PUB08]
 
