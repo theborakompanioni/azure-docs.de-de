@@ -27,16 +27,20 @@
 ## Konfigurieren der Web Application Firewall
 ### [Portal](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
+### [Azure CLI 2.0](application-gateway-web-application-firewall-cli.md)
 ## Anpassen von Web Application Firewall-Regeln
 ### [Portal](application-gateway-customize-waf-rules-portal.md)
+### [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
 ## Konfigurieren der SSL-Auslagerung
 ### [Portal](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (klassisch)](application-gateway-ssl.md)
+### [Azure CLI 2.0](application-gateway-ssl.md)
 ### [Richtlinie und End-to-End](application-gateway-end-to-end-ssl-powershell.md)
 ## Konfigurieren von Routing auf URL-Pfadbasis
 ### [Portal](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
+### [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 ## Konfigurieren des Hostens mehrerer Websites
 ### [Portal](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
