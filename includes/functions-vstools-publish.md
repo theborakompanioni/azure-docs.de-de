@@ -4,7 +4,7 @@
 
 2. Wenn Sie Visual Studio noch nicht mit Ihrem Azure-Konto verbunden haben, klicken Sie auf **Konto hinzufügen...**.  
 
-3. Verwenden Sie im Dialogfeld **App Service erstellen** die in der folgenden Tabelle angegebenen**** Hostingeinstellungen: 
+3. Verwenden Sie im Dialogfeld **App Service erstellen** die in der folgenden Tabelle angegebenen **Hostingeinstellungen**: 
 
     ![Lokale Azure-Laufzeit](./media/functions-vstools-publish/functions-vstools-publish.png)
 
