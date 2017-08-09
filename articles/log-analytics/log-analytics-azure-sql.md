@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 07/13/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: f5f9aa186480926df1110928983566e05f79efb8
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: cab45cc6dd621eb4a95ef5f1842ec38c25e980b6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -104,19 +103,31 @@ Klicken Sie auf die Kachel **Azure SQL Analytics**, um das Dashboard von Azure S
 
 ### <a name="analyze-data-and-create-alerts"></a>Analysieren von Daten und Erstellen von Warnungen
 
-Die Lösung enthält hilfreiche Abfragen, die Ihnen beim Analysieren der Daten helfen sollen. Wenn Sie einen Bildlauf nach rechts durchführen, werden im Dashboard mehrere allgemeine Abfragen aufgeführt, auf die Sie klicken können, um eine [Protokollsuche](log-analytics-log-searches.md) nach Azure SQL-Daten durchzuführen.
+Sie können problemlos Warnungen mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Hier sind einige nützliche Abfragen für die [Protokollsuche](log-analytics-log-searches.md), die Sie für Warnungen verwenden können:
 
-![Abfragen](./media/log-analytics-azure-sql/azure-sql-queries.png)
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-Die Lösung enthält einige *warnungsbasierte Abfragen*, wie oben gezeigt, die Sie verwenden können, um bei bestimmten Schwellenwerten für Azure SQL-Datenbanken und Pools für elastische Datenbanken eine Warnung auszugeben.
+
+*Hohe DTU in Azure SQL-Datenbank*
+
+```
+Type=AzureMetrics ResourceProvider="MICROSOFT.SQL" ResourceId=*"/DATABASES/"* MetricName=dtu_consumption_percent | measure Avg(Average) by Resource interval 5minutes
+```
+
+*Hohe DTU in Pool für elastische Datenbanken in Azure SQL-Datenbank*
+
+```
+Type=AzureMetrics ResourceProvider="MICROSOFT.SQL" ResourceId=*"/ELASTICPOOLS/"* MetricName=dtu_consumption_percent | measure avg(Average) by Resource interval 5minutes
+```
+
+Sie können diese warnungsbasierten Abfragen verwenden, um bei bestimmten Schwellenwerten für Azure SQL-Datenbanken und Pools für elastische Datenbanken eine Warnung auszugeben. So konfigurieren Sie eine Warnung für Ihren OMS-Arbeitsbereich:
 
 #### <a name="to-configure-an-alert-for-your-workspace"></a>Konfigurieren einer Warnung für Ihren Arbeitsbereich
 
 1. Wechseln Sie zum [OMS-Portal](http://mms.microsoft.com/), und melden Sie sich an.
 2. Öffnen Sie den Arbeitsbereich, den Sie für die Lösung konfiguriert haben.
 3. Klicken Sie auf der Seite „Übersicht“ auf die Kachel **Azure SQL Analytics (Vorschau)**.
-4. Führen Sie einen Bildlauf nach rechts durch, und klicken Sie auf eine Abfrage, um mit dem Erstellen einer Warnung zu beginnen.  
-![Warnungsabfrage](./media/log-analytics-azure-sql/alert-query.png)
+4. Führen Sie eine der Beispielabfragen aus.
 5. Klicken Sie in der Protokollsuche auf **Warnung**.  
 ![Erstellen einer Warnung in der Suche](./media/log-analytics-azure-sql/create-alert01.png)
 6. Konfigurieren Sie auf der Seite **Warnungsregel hinzufügen** die entsprechenden Eigenschaften und die spezifischen Schwellenwerte nach Bedarf, und klicken Sie dann auf **Speichern**.  
@@ -131,6 +142,11 @@ Durch Ausführen der folgenden Protokollsuchabfrage können Sie leicht ermitteln
 ```
 Type=AzureMetrics ResourceId=*"/ELASTICPOOLS/"* MetricName=dtu_consumption_percent | measure avg(Average) by Resource | display LineChart
 ```
+
+>[!NOTE]
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
+>
+>`search in (AzureMetrics) isnotempty(ResourceId) and "/ELASTICPOOLS/" and MetricName == "dtu_consumption_percent" | summarize AggregatedValue = avg(Average) by bin(TimeGenerated, 1h), Resource | render timechart`
 
 Im folgenden Beispiel sehen Sie, dass ein Pool für elastische Datenbanken eine hohe Nutzung von nahezu 100 Prozent DTU aufweist, während andere eine sehr geringe Nutzung aufweisen. Sie können weitere Untersuchungen durchführen, um durch kürzlich vorgenommene Änderungen verursachte potenzielle Probleme in Ihrer Umgebung mithilfe von Azure-Aktivitätsprotokollen zu beheben.
 

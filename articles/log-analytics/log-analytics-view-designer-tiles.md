@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/17/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
-ms.openlocfilehash: 07938808a6ce39be80f38d93831db40130bcd4b5
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 806aba12d07c10816a106b9b2af0e824ceb25ade
+ms.contentlocale: de-de
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Kachelreferenz für den Ansicht-Designer in Log Analytics
@@ -26,7 +27,10 @@ Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansicht
 Weitere verfügbare Artikel für den Ansicht-Designer:
 
 * [Ansicht-Designer](log-analytics-view-designer.md): Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
-* [Referenz der Visualisierungskomponenten](log-analytics-view-designer-parts.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind. 
+* [Referenz der Visualisierungskomponenten](log-analytics-view-designer-parts.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
+
+>[!NOTE]
+> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html) geschrieben werden.  Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurden, werden automatisch konvertiert.
 
 Die folgende Tabelle enthält die verschiedenen Typen von Kacheln, die im Ansicht-Designer verfügbar sind.  In den folgenden Abschnitten werden jeder Kacheltyp im Detail und dessen Eigenschaften beschrieben.
 
@@ -176,10 +180,4 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zur Unterstützung der Abfragen in Kacheln.
 * Fügen Sie [Visualisierungskomponenten](log-analytics-view-designer-parts.md) zu Ihrer benutzerdefinierten Ansicht hinzu.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/05/2017
+ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: c97ac8f6df1e0fd669b3789d402e1e60f2154205
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8e58a2290e5034ef393f65cbcddb86e18cf4a6ec
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Sichern virtueller Windows-Computern in Azure
@@ -81,7 +81,7 @@ In diesem Beispiel ist dargestellt, wie die Image-Datei, die auf der Standardweb
 5. Öffnen Sie auf Ihrem lokalen Computer eine neue Registerkarte, und navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 6. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus, und wählen Sie den virtuellen Computer aus der Liste aus.
 8. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung** wird geöffnet. 
-9. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung (Vorschau)** aus. Das Blatt **Dateiwiederherstellung (Vorschau)** wird geöffnet.
+9. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung** aus. Das Blatt **Dateiwiederherstellung** wird geöffnet.
 10. Wählen Sie in **Schritt 1: Auswählen eines Wiederherstellungspunkts** in der Dropdownliste einen Wiederherstellungspunkt aus.
 11. Klicken Sie in **Schritt 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** auf die Schaltfläche **Ausführbare Datei herunterladen**. Speichern Sie die Datei in Ihrem Ordner **Downloads**.
 12. Öffnen Sie auf Ihrem lokalen Computer den **Datei-Explorer**, navigieren Sie zum **Downloads**-Ordner, und kopieren Sie die heruntergeladene EXE-Datei. Der Dateiname enthält Ihren VM-Namen als Präfix. 

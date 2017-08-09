@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines virtuellen Azure-Netzwerks mit Subnetzen | Microsoft-Dokumentation
+title: Erstellen eines virtuellen Azure-Netzwerks mit mehreren Subnetzen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein virtuelles Netzwerk mit mehreren Subnetzen in Azure erstellen.
 services: virtual-network
 documentationcenter: 
@@ -9,102 +9,103 @@ editor:
 tags: azure-resource-manager
 ms.assetid: 4ad679a4-a959-4e48-a317-d9f5655a442b
 ms.service: virtual-network
-ms.devlang: na
+ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 07/26/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1ecfba0470c31d1119b5e6c0f9d8538abe40f834
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: a31f0524a6fa1de45498f340a27b863a3c627e04
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets"></a>Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen
 
-In diesem Tutorial erfahren Sie, wie Sie ein einfaches virtuelles Azure-Netzwerk mit separaten öffentlichen und privaten Subnetzen erstellen. Sie können Azure-Ressourcen wie virtuelle Computer, Azure App Service-Umgebungen, VM-Skalierungsgruppen, Azure HDInsight und andere Clouddienste mit Subnetzen verbinden. Ressourcen, die mit virtuellen Netzwerken verbunden sind, können über das private Azure-Netzwerk miteinander kommunizieren.
+In diesem Tutorial erfahren Sie, wie Sie ein einfaches virtuelles Azure-Netzwerk mit separaten öffentlichen und privaten Subnetzen erstellen. Sie können Azure-Ressourcen wie virtuelle Computer, App Service-Umgebungen, VM-Skalierungsgruppen, Azure HDInsight und andere Clouddienste in Subnetzen erstellen. Ressourcen in virtuellen Netzwerken können miteinander und mit Ressourcen in anderen Netzwerken, die mit einem virtuellen Netzwerk verbunden sind, kommunizieren.
 
-In den folgenden Abschnitten werden die Schritte beschrieben, mit denen Sie ein virtuelles Netzwerk über das [Azure-Portal](#portal), die Azure-Befehlszeilenschnittstelle ([Azure-CLI](#azure-cli)), [Azure PowerShell](#powershell) und eine [Azure Resource Manager-Vorlage](#resource-manager-template) bereitstellen können. Das Ergebnis ist identisch, unabhängig davon, mit welchem Tool Sie das virtuelle Netzwerk bereitstellen. Klicken Sie auf den Link für ein Tool, um zum entsprechenden Abschnitt des Tutorials zu wechseln. Weitere Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Erstellen, Ändern oder Löschen virtueller Netzwerke](virtual-network-manage-network.md) und [Erstellen, Ändern oder Löschen von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md).
+In den folgenden Abschnitten werden die Schritte beschrieben, mit denen Sie ein virtuelles Netzwerk über das [Azure-Portal](#portal), die Azure-Befehlszeilenschnittstelle ([Azure CLI](#azure-cli)), [Azure PowerShell](#powershell) und eine [Azure Resource Manager-Vorlage](#resource-manager-template) erstellen können. Das Ergebnis ist identisch, unabhängig davon, mit welchem Tool Sie das virtuelle Netzwerk erstellen. Klicken Sie auf den Link für ein Tool, um zum entsprechenden Abschnitt des Tutorials zu wechseln. Erfahren Sie mehr über alle Einstellungen für [virtuelle Netzwerke](virtual-network-manage-network.md) und [Subnetze](virtual-network-manage-subnet.md).
+
+Dieser Artikel enthält die Schritte zum Erstellen eines virtuellen Netzwerks über das Resource Manager-Bereitstellungsmodell. Dies ist das empfohlene Bereitstellungsmodell für das Erstellen neuer virtueller Netzwerke. Wenn Sie ein virtuelles Netzwerk (klassisch) erstellen möchten, finden Sie unter [Erstellen eines virtuellen Netzwerks (klassisch)](create-virtual-network-classic.md) weitere Informationen. Wenn Sie mit den Azure-Bereitstellungsmodellen nicht vertraut sind, lesen Sie unter [Grundlegendes zu Azure-Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nach.
 
 ## <a name="portal"></a>Azure-Portal
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in einem Internetbrowser. Melden Sie sich mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) an. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p)registrieren.
 2. Klicken Sie im Portal auf **+ Neu** > **Netzwerk** > **Virtuelles Netzwerk**.
-3. Lassen Sie auf dem Blatt **Virtuelles Netzwerk** unter **Bereitstellungsmodell auswählen** die Option **Resource Manager** ausgewählt, und klicken Sie auf **Erstellen**.
-4. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **Erstellen**:
+3. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **Erstellen**:
 
     |Einstellung|Wert|
     |---|---|
-    |Name|MyVnet|
+    |Name|myVnet|
     |Adressraum|10.0.0.0/16|
     |Subnetzname|Öffentlich|
     |Subnetzadressbereich|10.0.0.0/24|
-    |Ressourcengruppe|Lassen Sie **Neu erstellen** ausgewählt, und geben Sie **MyResourceGroup** ein.|
+    |Ressourcengruppe|Lassen Sie **Neu erstellen** ausgewählt, und geben Sie **myResourceGroup** ein.|
     |Abonnement und Standort|Wählen Sie Ihr Abonnement und Ihren Standort aus.
 
     Wenn Sie noch nicht mit Azure vertraut sind, informieren Sie sich über [Ressourcengruppen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) und [Standorte](https://azure.microsoft.com/regions) (die auch als *Regionen* bezeichnet werden).
-6. Im Portal können Sie beim Erstellen eines virtuellen Netzwerks nur ein Subnetz erstellen. In diesem Tutorial erstellen Sie nach dem virtuellen Netzwerk ein zweites Subnetz. Sie können später über das Internet zugängliche Ressourcen mit dem Subnetz **Public** verbinden. Sie können auch andere Ressourcen, auf die nicht über das Internet zugegriffen werden kann, mit dem Subnetz **Private** verbinden. Geben Sie zum Erstellen des zweiten Subnetzes oben auf der Seite **MyVnet** im Feld **Ressourcen suchen** ein. Klicken Sie in den Suchergebnissen auf **MyVnet**. Wenn Ihr Abonnement mehrere virtuelle Netzwerke mit dem gleichen Namen umfasst, überprüfen Sie die Ressourcengruppen, die unter den einzelnen virtuellen Netzwerken aufgeführt werden. Achten Sie darauf, auf das Suchergebnis **MyVnet** mit der Ressourcengruppe **MyResourceGroup** zu klicken.
-7. Klicken Sie auf dem eingeblendeten Blatt **MyVnet** unter **EINSTELLUNGEN** auf **Subnetze**.
-8. Klicken Sie auf dem Blatt **MyVnet: Subnetze** auf **+ Subnetz**.
-9. Geben Sie auf dem Blatt **Subnetz hinzufügen** unter **Name**, den Namen **Private** ein. Geben Sie unter **Adressenbereich** den Wert **10.0.1.0/24** ein.  Klicken Sie auf **OK**.
-10. Überprüfen Sie die Subnetze auf dem Blatt **MyVnet: Subnetze**. Die von Ihnen erstellten Subnetze **Public** und **Private** werden angezeigt.
-11. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-portal) in diesem Artikel aus.
+4. Im Portal können Sie beim Erstellen eines virtuellen Netzwerks nur ein Subnetz erstellen. In diesem Tutorial erstellen Sie nach dem virtuellen Netzwerk ein zweites Subnetz. Sie können später über das Internet zugängliche Ressourcen im Subnetz **Public** erstellen. Sie können auch andere Ressourcen, auf die nicht über das Internet zugegriffen werden kann, im Subnetz **Private** erstellen. Geben Sie zum Erstellen des zweiten Subnetzes oben auf der Seite **myVnet** im Feld **Ressourcen suchen** ein. Klicken Sie in den Suchergebnissen auf **myVnet**. Wenn Ihr Abonnement mehrere virtuelle Netzwerke mit dem gleichen Namen umfasst, überprüfen Sie die Ressourcengruppen, die unter den einzelnen virtuellen Netzwerken aufgeführt werden. Achten Sie darauf, auf das Suchergebnis **myVnet** mit der Ressourcengruppe **myResourceGroup** zu klicken.
+5. Klicken Sie auf dem eingeblendeten Blatt **myVnet** unter **EINSTELLUNGEN** auf **Subnetze**.
+6. Klicken Sie auf dem Blatt **myVnet: Subnetze** auf **+ Subnetz**.
+7. Geben Sie auf dem Blatt **Subnetz hinzufügen** unter **Name**, den Namen **Private** ein. Geben Sie unter **Adressenbereich** den Wert **10.0.1.0/24** ein.  Klicken Sie auf **OK**.
+8. Überprüfen Sie die Subnetze auf dem Blatt **myVnet: Subnetze**. Die von Ihnen erstellten Subnetze **Public** und **Private** werden angezeigt.
+9. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-portal) in diesem Artikel aus.
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jedoch Unterschiede bei der Skripterstellung für die Betriebssystemshells. Die folgenden Anweisungen gelten für das Ausführen eines Bash-Skripts, das Azure-CLI-Befehle enthält:
+Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jedoch Unterschiede bei der Skripterstellung für die Betriebssystemshells. Das Skript in den folgenden Schritten wird in einer Bash-Shell ausgeführt. 
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in einem Internetbrowser. Melden Sie sich mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) an. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p)registrieren.
-2. Klicken Sie oben auf der Portalseite rechts neben dem Feld **Ressourcen suchen** auf das Symbol **>_**, um eine Bash Azure Cloud Shell (Vorschauversion) zu öffnen. Der Cloud Shell-Bereich wird unten im Portal angezeigt. Nach wenigen Sekunden wird eine **username@Azure:~$**-Eingabeaufforderung angezeigt. Cloud Shell meldet Sie automatisch mit den Anmeldeinformationen bei Azure an, mit denen Sie sich beim Portal angemeldet haben.
-3. Kopieren Sie in Ihrem Browser das folgende Skript:
-    ```azurecli
+1. [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure CLI installiert haben. Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> --help`. Anstatt die CLI und ihre Voraussetzungen zu installieren, können Sie die Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure-Befehlszeilenschnittstelle ist bei der Cloud Shell vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Um die Cloud Shell zu verwenden, klicken Sie oben im [Portal](https://portal.azure.com) auf die Cloud Shell-Schaltfläche (**>_**), oder klicken Sie einfach in den nachfolgenden Schritten auf die Schaltfläche *Jetzt testen*. 
+2. Wenn die Befehlszeilenschnittstelle lokal ausgeführt wird, melden Sie sich mit dem Befehl `az login` bei Azure an. Wenn Sie die Cloud Shell verwenden, sind Sie bereits angemeldet.
+3. Prüfen Sie das folgende Skript und die enthaltenen Kommentare. Kopieren Sie das Skript in Ihrem Browser, und fügen Sie ihn in die CLI-Sitzung ein:
+
+    ```azurecli-interactive
     #!/bin/bash
     
     # Create a resource group.
     az group create \
-      --name MyResourceGroup \
+      --name myResourceGroup \
       --location eastus
     
-    # Create a virtual network with one subnet.
+    # Create a virtual network with one subnet named Public.
     az network vnet create \
-      --name MyVnet \
-      --resource-group MyResourceGroup \
+      --name myVnet \
+      --resource-group myResourceGroup \
       --subnet-name Public
     
-    # Create an additional subnet within the virtual network.
+    # Create an additional subnet named Private in the virtual network.
     az network vnet subnet create \
       --name Private \
       --address-prefix 10.0.1.0/24 \
-      --vnet-name MyVnet \
-      --resource-group MyResourceGroup
+      --vnet-name myVnet \
+      --resource-group myResourceGroup
     ```
-4. Erstellen Sie eine Skriptdatei, und speichern Sie sie. Geben Sie an der Cloud Shell-Eingabeaufforderung `nano myscript.sh --nonewlines` ein. Der Befehl startet den GNU Nano-Editor mit einer leeren Datei „myscript.sh“. Platzieren Sie den Mauszeiger im Editorfenster, klicken Sie mit der rechten Maustaste, und klicken Sie dann auf **Einfügen**.  
-5. Drücken Sie zum Speichern der Datei als „myscript.sh“ STRG + X, geben Sie **Y** ein, und drücken Sie dann die EINGABETASTE. Im Cloud Shell-Speicher werden gespeicherte Dateien nicht sitzungsübergreifend beibehalten. Wenn Sie das Skript über mehrere Cloud Shell-Sitzungen beibehalten möchten, richten Sie [persistenten Speicher](../cloud-shell/persisting-shell-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für Cloud Shell ein, und speichern Sie die Datei in diesem Speicher.
-6. Führen Sie an der Cloud Shell-Eingabeaufforderung den Befehl `chmod +x myscript.sh` aus, um die Datei als ausführbar zu kennzeichnen.
-7. Geben Sie zum Ausführen des Skripts `./myscript.sh` ein.
-8. Um die Subnetze für das virtuelle Netzwerk nach dem Ausführen des Skripts zu überprüfen, kopieren Sie den folgenden Befehl, und fügen Sie ihn im Bash Cloud Shell-Bereich ein:
+    
+4. Überprüfen Sie nach Abschluss der Skriptausführung die Subnetze auf das virtuelle Netzwerk. Kopieren Sie den folgenden Befehl, und fügen Sie ihn in Ihre CLI-Sitzung ein:
+
     ```azurecli
-    az network vnet subnet list --resource-group MyResourceGroup --vnet-name MyVnet --output table
+    az network vnet subnet list --resource-group myResourceGroup --vnet-name myVnet --output table
     ```
-9. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-cli) in diesem Artikel aus.
+
+5. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-cli) in diesem Artikel aus.
 
 ## <a name="powershell"></a>PowerShell
 
 1. Installieren Sie die neueste Version des PowerShell-Moduls [AzureRm](https://www.powershellgallery.com/packages/AzureRM/). Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Um eine PowerShell-Sitzung zu starten, gehen Sie zu **Start**, geben Sie **powershell** ein, und klicken Sie dann auf **PowerShell**.
-3. Geben Sie im PowerShell-Fenster den Befehl `login-azurermaccount` ein, um sich mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) anzumelden.
-4. Kopieren Sie in Ihrem Browser das folgende Skript:
+2. Melden Sie sich in einer PowerShell-Sitzung mithilfe des Befehls `login-azurermaccount` mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) in Azure an.
+
+3. Prüfen Sie das folgende Skript und die enthaltenen Kommentare. Kopieren Sie das Skript in Ihrem Browser, und fügen Sie ihn in die PowerShell-Sitzung ein:
+
     ```powershell
     # Create a resource group.
     New-AzureRmResourceGroup `
-      -Name MyResourceGroup `
+      -Name myResourceGroup `
       -Location eastus
     
-    # Create two subnets.
+    # Create the public and private subnets.
     $Subnet1 = New-AzureRmVirtualNetworkSubnetConfig `
       -Name Public `
       -AddressPrefix 10.0.0.0/24
@@ -114,19 +115,20 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
     
     # Create a virtual network.
     $Vnet=New-AzureRmVirtualNetwork `
-      -ResourceGroupName MyResourceGroup `
+      -ResourceGroupName myResourceGroup `
       -Location eastus `
-      -Name MyVnet `
+      -Name myVnet `
       -AddressPrefix 10.0.0.0/16 `
       -Subnet $Subnet1,$Subnet2
-    #
     ```
-5. Klicken Sie zum Ausführen des Skripts im PowerShell-Fenster mit der rechten Maustaste.
-6. Um die Subnetze für das virtuelle Netzwerk zu überprüfen, kopieren Sie den folgenden Befehl, und fügen Sie ihn im PowerShell-Fenster ein:
+
+4. Um die Subnetze für das virtuelle Netzwerk zu überprüfen, kopieren Sie den folgenden Befehl, und fügen Sie ihn in die PowerShell-Sitzung ein:
+
     ```powershell
-    $Vnet = $Vnet.subnets | Format-Table Name, AddressPrefix
+    $Vnet.subnets | Format-Table Name, AddressPrefix
     ```
-7. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-powershell) in diesem Artikel aus.
+
+5. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-powershell) in diesem Artikel aus.
 
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
@@ -137,16 +139,16 @@ Sie können ein virtuelles Netzwerk über eine Azure Resource Manager-Vorlage be
 ### <a name="template-portal"></a>Azure-Portal
 
 1. Öffnen Sie in Ihrem Browser die [Vorlagenseite](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets).
-2. Klicken Sie auf die Schaltfläche **Bereitstellen in Azure**. Dadurch wird die Anmeldeseite für das Azure-Portal geöffnet.
+2. Klicken Sie auf die Schaltfläche **Bereitstellen in Azure**. Wenn Sie noch nicht bei Azure angemeldet sind, melden Sie sich auf der angezeigten Anmeldeseite im Azure-Portal an.
 3. Melden Sie sich mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) beim Portal an. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p)registrieren.
 4. Geben Sie die folgende Werte für die Parameter ein:
 
     |Parameter|Wert|
     |---|---|
     |Abonnement|Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe|MyResourceGroup|
-    |Ort|Standort auswählen|
-    |VNet-Name|MyVnet|
+    |Ressourcengruppe|myResourceGroup|
+    |Standort|Standort auswählen|
+    |VNet-Name|myVnet|
     |VNet-Adresspräfix|10.0.0.0/16|
     |Subnet1Prefix|10.0.0.0/24|
     |Subnet1Name|Public|
@@ -157,11 +159,20 @@ Sie können ein virtuelles Netzwerk über eine Azure Resource Manager-Vorlage be
 
 ### <a name="template-cli"></a>Azure-Befehlszeilenschnittstelle
 
-1. Melden Sie sich beim [Portal](https://portal.azure.com) mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) an. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p)registrieren.
-2. Klicken Sie rechts neben dem Feld **Ressourcen suchen** auf das Symbol **>_**, um eine Bash Azure Cloud Shell (Vorschauversion) zu öffnen. Der Cloud Shell-Bereich wird unten im Portal angezeigt. Nach wenigen Sekunden wird eine **username@Azure:~$**-Eingabeaufforderung angezeigt. Cloud Shell meldet Sie automatisch mit den Anmeldeinformationen bei Azure an, mit denen Sie sich beim Azure-Portal angemeldet haben.
-3. Geben Sie den folgenden Befehl ein, um eine Ressourcengruppe für das virtuelle Netzwerk zu erstellen:  `az group create --name MyResourceGroup --location eastus`
+1. [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Stellen Sie sicher, dass Sie die neueste Version der Azure CLI installiert haben. Hilfe zu den Befehlen der Befehlszeilenschnittstelle erhalten Sie durch Eingabe von `az <command> --help`. Anstatt die CLI und ihre Voraussetzungen zu installieren, können Sie die Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure-Befehlszeilenschnittstelle ist bei der Cloud Shell vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Um die Cloud Shell zu verwenden, klicken Sie oben im [Portal](https://portal.azure.com) auf die Cloud Shell-Schaltfläche (**>_**), oder klicken Sie einfach in den nachfolgenden Schritten auf die Schaltfläche **Jetzt testen**. 
+2. Wenn die Befehlszeilenschnittstelle lokal ausgeführt wird, melden Sie sich mit dem Befehl `az login` bei Azure an. Wenn Sie die Cloud Shell verwenden, sind Sie bereits angemeldet.
+3. Kopieren Sie den folgenden Befehl, und fügen Sie ihn in die CLI-Sitzung ein, um eine Ressourcengruppe für das virtuelle Netzwerk zu erstellen:
+
+    ```azurecli-interactive
+    az group create --name myResourceGroup --location eastus
+    ```
+    
 4. Sie können die Vorlage mithilfe einer der folgenden Optionen für die Parameter bereitstellen:
-    - **Standardwerte für Parameter**. Geben Sie den folgenden Befehl ein:   `az group deployment create --resource-group MyResourceGroup --name VnetTutorial --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json`
+    - **Standardwerte für Parameter**. Geben Sie den folgenden Befehl ein:
+    
+        ```azurecli-interactive
+        az group deployment create --resource-group myResourceGroup --name VnetTutorial --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json`
+        ```
     - **Benutzerdefinierte Werte für Parameter**. Laden Sie die Vorlage herunter, und bearbeiten Sie sie, bevor Sie die Vorlage bereitstellen. Sie können die Vorlage auch mithilfe von Parametern in der Befehlszeile bereitstellen oder die Vorlage mit einer separaten Parameterdatei bereitstellen. Klicken Sie zum Herunterladen der Vorlagen- und Parameterdateien auf der Webseite zum [Erstellen eines virtuellen Netzwerks mit zwei Subnetzen](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) auf die Schaltfläche **Auf GitHub suchen**. Klicken Sie in GitHub auf die Datei **azuredeploy.parameters.json** oder **azuredeploy.json**. Klicken Sie dann auf die Schaltfläche **Raw**, um die Datei anzuzeigen. Kopieren Sie im Browser den Inhalt der Datei. Speichern Sie den Inhalt in einer Datei auf Ihrem Computer. Sie können die Parameterwerte in der Vorlage ändern oder die Vorlage mit einer separaten Parameterdatei bereitstellen.  
 
     Um mehr über das Bereitstellen von Vorlagen mit diesen Methoden zu erfahren, geben Sie `az group deployment create --help` ein.
@@ -169,37 +180,55 @@ Sie können ein virtuelles Netzwerk über eine Azure Resource Manager-Vorlage be
 ### <a name="template-powershell"></a>PowerShell
 
 1. Installieren Sie die neueste Version des PowerShell-Moduls [AzureRm](https://www.powershellgallery.com/packages/AzureRM/). Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Um eine PowerShell-Sitzung zu starten, gehen Sie zu **Start**, geben Sie **powershell** ein, und klicken Sie dann auf **PowerShell**.
-3. Geben Sie im PowerShell-Fenster den Befehl `login-azurermaccount` ein, um sich mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) anzumelden.
-4. Geben Sie den folgenden Befehl ein, um eine Ressourcengruppe für das virtuelle Netzwerk zu erstellen:  `New-AzureRmResourceGroup -Name MyResourceGroup -Location eastus`
-5. Sie können die Vorlage mithilfe einer der folgenden Optionen für die Parameter bereitstellen:
-    - **Standardwerte für Parameter**. Geben Sie den folgenden Befehl ein:   `New-AzureRmResourceGroupDeployment -Name VnetTutorial -ResourceGroupName MyResourceGroup -TemplateUri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json`        
+2. Geben Sie in einer PowerShell-Sitzung den Befehl `login-azurermaccount` ein, um sich mit Ihrem [Azure-Konto](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) anzumelden.
+3. Geben Sie den folgenden Befehl ein, um eine Ressourcengruppe für das virtuelle Netzwerk zu erstellen:
+
+    ```powershell
+    New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
+    ```
+    
+4. Sie können die Vorlage mithilfe einer der folgenden Optionen für die Parameter bereitstellen:
+    - **Standardwerte für Parameter**. Geben Sie den folgenden Befehl ein:
+    
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name VnetTutorial -ResourceGroupName myResourceGroup -TemplateUri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json
+        ```
+        
     - **Benutzerdefinierte Werte für Parameter**. Laden Sie die Vorlage herunter, und bearbeiten Sie sie, bevor Sie sie bereitstellen. Sie können die Vorlage auch mithilfe von Parametern in der Befehlszeile bereitstellen oder die Vorlage mit einer separaten Parameterdatei bereitstellen. Klicken Sie zum Herunterladen der Vorlagen- und Parameterdateien auf der Webseite zum [Erstellen eines virtuellen Netzwerks mit zwei Subnetzen](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) auf die Schaltfläche **Auf GitHub suchen**. Klicken Sie in GitHub auf die Datei **azuredeploy.parameters.json** oder **azuredeploy.json**. Klicken Sie dann auf die Schaltfläche **Raw**, um die Datei anzuzeigen. Kopieren Sie im Browser den Inhalt der Datei. Speichern Sie den Inhalt in einer Datei auf Ihrem Computer. Sie können die Parameterwerte in der Vorlage ändern oder die Vorlage mit einer separaten Parameterdatei bereitstellen.  
 
     Um mehr über das Bereitstellen von Vorlagen mit diesen Methoden zu erfahren, geben Sie `Get-Help New-AzureRmResourceGroupDeployment` ein. 
 
 ## <a name="delete"></a>Löschen von Ressourcen
-Wenn Sie dieses Tutorial abgeschlossen haben, sollten Sie die Ressourcen, die Sie im Tutorial erstellt haben, wieder löschen, damit keine Nutzungsgebühren anfallen. Durch das Löschen einer Ressourcengruppe werden auch alle Ressourcen der Ressourcengruppe gelöscht.
+
+Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die Sie erstellt haben, möglicherweise wieder löschen, damit keine Nutzungsgebühren anfallen. Durch das Löschen einer Ressourcengruppe werden auch alle Ressourcen in dieser Ressourcengruppe gelöscht.
 
 ### <a name="delete-portal"></a>Azure-Portal
 
-1. Geben Sie in das Suchfeld im Portal **MyResourceGroup** ein. Klicken Sie in den Suchergebnissen auf **MyResourceGroup**.
-2. Klicken Sie auf dem Blatt **MyResourceGroup** auf das **Löschsymbol**.
-3. Um den Löschvorgang zu bestätigen, geben Sie in das Feld **Geben Sie den Ressourcengruppennamen ein** den Namen **MyResourceGroup** ein, und klicken Sie dann auf **Löschen**.
+1. Geben Sie in das Suchfeld im Portal **myResourceGroup** ein. Klicken Sie in den Suchergebnissen auf **myResourceGroup**.
+2. Klicken Sie auf dem Blatt **myResourceGroup** auf das **Löschsymbol**.
+3. Um den Löschvorgang zu bestätigen, geben Sie in das Feld **TYPE THE RESOURCE GROUP NAME** (Ressourcengruppennamen eingeben) **myResourceGroup** ein, und klicken Sie dann auf **Löschen**.
 
 ### <a name="delete-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Geben Sie an der Cloud Shell-Eingabeaufforderung den folgenden Befehl ein: `az group delete --name MyResourceGroup --yes`
+Geben Sie in einer CLI-Sitzung den folgenden Befehl ein:
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes
+```
 
 ### <a name="delete-powershell"></a>PowerShell
 
-Geben Sie an der PowerShell-Eingabeaufforderung den folgenden Befehl ein: `Remove-AzureRmResourceGroup -Name MyResourceGroup`
+Geben Sie in einer PowerShell-Sitzung den folgenden Befehl ein:
+
+```powershell
+Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Erstellen, Ändern oder Löschen virtueller Netzwerke](virtual-network-manage-network.md#view-vnet) und [Erstellen, Ändern oder Löschen von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md#create-subnet). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
-- Erstellen Sie [Netzwerksicherheitsgruppen](virtual-networks-nsg.md) (NSGs) für Subnetze, und wenden Sie sie an, um eingehenden und ausgehenden Subnetzdatenverkehr zu filtern.
-- Erstellen Sie einen [virtuellen Windows-Computer](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder einen [virtuellen Linux-Computer](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), und verbinden Sie ihn mit dem virtuellen Netzwerk.
-- Stellen Sie durch [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md) eine Verbindung zwischen dem virtuellen Netzwerk und einem anderen virtuellen Netzwerk am gleichen Standort her .
-- Verbinden Sie das virtuelle Netzwerk mit einem lokalen Netzwerk. Verwenden Sie hierfür ein [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder eine [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Verbindung.
+- Weitere Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Verwalten virtueller Netzwerke](virtual-network-manage-network.md#view-vnet) und [Verwalten von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md#create-subnet). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
+- Erstellen Sie [Netzwerksicherheitsgruppen](virtual-networks-nsg.md) für Subnetze, und wenden Sie sie an, um eingehenden und ausgehenden Subnetzdatenverkehr zu filtern.
+- Erstellen Sie einen virtuellen [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer, und verbinden Sie ihn mit einem virtuellen Netzwerk.
+- Erstellen Sie für das Verbinden von zwei virtuellen Netzwerken am selben Azure-Standort ein [Peering zwischen diesen virtuellen Netzwerken](virtual-network-peering-overview.md).
+- Verbinden Sie das virtuelle Netzwerk mit einem lokalen Netzwerk. Verwenden Sie hierfür ein [VPN-Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder eine [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Verbindung.
 

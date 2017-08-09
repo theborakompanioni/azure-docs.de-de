@@ -14,14 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 06/14/2017
+ms.date: 07/25/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: ed9945ae007d22c18d259984ee68f9c669927f9a
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 2c42ff5b7ab87e8ef8af2c244a1313fb55503c37
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
@@ -67,25 +66,8 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie im Einstellungsbereich nach unten zum Abschnitt **Support und Problembehandlung**. Klicken Sie auf die Schaltfläche **Kennwort zurücksetzen**. Legen Sie den **Modus** auf **Reset configuration only** (Nur Konfiguration zurücksetzen) fest, und klicken Sie anschließend auf die Schaltfläche **Aktualisieren**:
    
     ![Zurücksetzen der RDP-Konfiguration im Azure-Portal](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln.** In diesem Problembehandlungsschritt wird überprüft, ob Ihre Netzwerksicherheitsgruppe eine Regel enthält, die RDP-Datenverkehr zulässt. Der Standardport für RDP ist der TCP-Port 3389. Unter Umständen wird bei der Erstellung Ihres virtuellen Computers nicht automatisch eine Regel zum Zulassen von RDP-Datenverkehr erstellt.
-   
-    Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Klicken Sie im Einstellungsbereich auf die **Netzwerkschnittstellen**.
-   
-    ![Anzeigen der Netzwerkschnittstellen für einen virtuellen Computer im Azure-Portal](./media/troubleshoot-rdp-connection/select-network-interfaces.png)
-   
-    Wählen Sie in der Liste Ihre Netzwerkschnittstelle aus. (In der Regel enthält die Liste nur einen einzelnen Eintrag.)
-   
-    ![Auswählen der Netzwerkschnittstelle im Azure-Portal](./media/troubleshoot-rdp-connection/select-interface.png)
-   
-    Wählen Sie **Netzwerksicherheitsgruppe** aus, um die Netzwerksicherheitsgruppe anzuzeigen, die Ihrer Netzwerkschnittstelle zugeordnet ist:
-   
-    ![Auswählen der Netzwerksicherheitsgruppe im Azure-Portal](./media/troubleshoot-rdp-connection/select-nsg.png)
-   
-    Vergewissern Sie sich, dass eine eingehende Regel vorhanden ist, die RDP-Datenverkehr über den TCP-Port 3389 zulässt. Das folgende Beispiel zeigt eine gültige Sicherheitsregel, die RDP-Datenverkehr zulässt. Wie Sie sehen, sind `Service` und `Action` ordnungsgemäß konfiguriert:
-   
-    ![Überprüfen der RDP-NSG-Regel im Azure-Portal](./media/troubleshoot-rdp-connection/verify-nsg-rules.png)
-   
-    Sollte keine Regel vorhanden sein, die RDP-Datenverkehr zulässt, [erstellen Sie eine Netzwerksicherheitsgruppen-Regel](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Lassen Sie den TCP-Port 3389 zu.
+2. **Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln.** Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an eine VM oder von einer VM blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den RDP-Port (standardmäßig 3389) Priorität hat. Weitere Informationen finden Sie unter [Verwenden von effektiven Sicherheitsregeln zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+
 3. **Überprüfen Sie die Startdiagnose des virtuellen Computers.** In diesem Problembehandlungsschritt wird anhand der Konsolenprotokolle des virtuellen Computers ermittelt, ob der virtuelle Computer ein Problem meldet. Da die Startdiagnose nicht bei allen virtuellen Computern aktiviert ist, handelt es sich hierbei ggf. um einen optionalen Problembehandlungsschritt.
    
     Spezifische Problembehandlungsschritte werden in diesem Artikel nicht behandelt, deuten aber möglicherweise auf ein größeres Problem hin, das die RDP-Verbindung beeinträchtigt. Weitere Informationen zum Überprüfen der Konsolenprotokolle des virtuellen Computers sowie einen Screenshot finden Sie unter [Boot Diagnostics for Virtual Machines v2](boot-diagnostics.md) (Startdiagnose für virtuelle Computer v2).

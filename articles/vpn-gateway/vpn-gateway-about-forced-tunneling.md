@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 08/01/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 568d8a31306b7065765ea73e831697c9de7e60e6
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 79bf6892c823da282c3e763921e830f986419854
+ms.contentlocale: de-de
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell
@@ -40,8 +40,8 @@ Dieser Artikel beschreibt die Konfiguration der Tunnelerzwingung für virtuelle 
 Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt. Im folgende Abschnitt werden die aktuellen Einschränkung für die Routingtabelle und die Routen in Azure Virtual Network aufgeführt:
 
 * Jedes Subnetz des virtuellen Netzwerks verfügt über eine integrierte Systemroutingtabelle. Die Systemroutingtabelle verfügt über die folgenden drei Gruppen von Routen:
-  
-  * **Lokale VNET-Routen:** direkt zu den virtuelle Zielcomputern im gleichen virtuellen Netzwerk
+
+  * **Lokale VNET-Routen:** direkt zu den virtuelle Zielcomputern im selben virtuellen Netzwerk
   * **Lokale Routen:** zum Azure-VPN-Gateway
   * **Standardroute:** direkt zum Internet. Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
 * Sie können mit der Veröffentlichung von benutzerdefinierten Routen eine Routingtabelle erstellen, um eine Standardroute hinzuzufügen. Anschließend verknüpfen Sie dann die Routingtabelle mit den VNET-Subnetzen, um die Tunnelerzwingung in diesen Subnetzen zu aktivieren.
@@ -104,9 +104,9 @@ Das folgende Verfahren hilft Ihnen bei der Angabe der Tunnelerzwingung für ein 
     </VirtualNetworkSite>
 ```
 
-In diesem Beispiel verfügt das virtuelle Netzwerk „MultiTier-VNet“ über drei Subnetze: *Frontend*, *Midtier* und *Backend* mit vier standortübergreifenden Verbindungen: *DefaultSiteHQ* und drei *Verzweigungen*. 
+In diesem Beispiel verfügt das virtuelle Netzwerk „MultiTier-VNet“ über drei Subnetze („Frontend“, „Midtier“ und „Backend“) mit vier standortübergreifenden Verbindungen: „DefaultSiteHQ“ und drei Verzweigungen. 
 
-Mithilfe der Schritte wird festgelegt, dass *DefaultSiteHQ* die Standard-Standortverbindung für die Tunnelerzwingung ist und die Subnetze „Midtier“ und „Backend“ die Tunnelerzwingung verwenden müssen.
+Mithilfe der Schritte wird festgelegt, dass „DefaultSiteHQ“ die Standard-Standortverbindung für die Tunnelerzwingung ist und die Subnetze „Midtier“ und „Backend“ die Tunnelerzwingung verwenden müssen.
 
 1. Erstellen Sie eine Routingtabelle. Verwenden Sie das folgende Cmdlet zum Erstellen der Routingtabelle.
 
@@ -114,23 +114,23 @@ Mithilfe der Schritte wird festgelegt, dass *DefaultSiteHQ* die Standard-Standor
   New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
   ```
 2. Fügen Sie der Routingtabelle eine Standardroute hinzu. 
-   
-    Das folgende Beispiel fügt der in Schritt 1 erstellten Routingtabelle eine Standardroute hinzu. Beachten Sie, dass die einzige unterstützte Route das Zielpräfix von 0.0.0.0/0 zum nächsten Hop „VPNGateway“ ist.
+
+  Das folgende Beispiel fügt der in Schritt 1 erstellten Routingtabelle eine Standardroute hinzu. Beachten Sie, dass die einzige unterstützte Route das Zielpräfix von 0.0.0.0/0 zum nächsten Hop „VPNGateway“ ist.
 
   ```powershell
   Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
   ```
 3. Ordnen Sie die Routingtabelle den Subnetzen zu. 
-   
-    Nachdem eine Routingtabelle erstellt und eine Route hinzugefügt wurde, verwenden Sie das folgende Beispiel, um die Routingtabelle einem VNet-Subnetz hinzuzufügen oder zuzuordnen. Das Beispiel fügt die Routingtabelle „MyRouteTable“ den Subnetzen „Midtier“ und „Backend“ des virtuellen Netzwerks „MultiTier-VNet“ hinzu.
+
+  Nachdem eine Routingtabelle erstellt und eine Route hinzugefügt wurde, verwenden Sie das folgende Beispiel, um die Routingtabelle einem VNet-Subnetz hinzuzufügen oder zuzuordnen. Das Beispiel fügt die Routingtabelle „MyRouteTable“ den Subnetzen „Midtier“ und „Backend“ des virtuellen Netzwerks „MultiTier-VNet“ hinzu.
 
   ```powershell
   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
   ```
 4. Weisen Sie einen Standardstandort für die Tunnelerzwingung zu. 
-   
-    Im vorherigen Schritt wurde mit dem Cmdlet-Beispielskript die Routingtabelle erstellt und zwei VNet-Subnetzen zugeordnet. Im letzten Schritt wird ein lokaler Standort aus den Verbindungen mit mehreren Standorten des virtuellen Netzwerks als Standardstandort oder -tunnel ausgewählt.
+
+  Im vorherigen Schritt wurde mit dem Cmdlet-Beispielskript die Routingtabelle erstellt und zwei VNet-Subnetzen zugeordnet. Im letzten Schritt wird ein lokaler Standort aus den Verbindungen mit mehreren Standorten des virtuellen Netzwerks als Standardstandort oder -tunnel ausgewählt.
 
   ```powershell
   $DefaultSite = @("DefaultSiteHQ")
@@ -173,10 +173,3 @@ Get-AzureSubnetRouteTable -VirtualNetworkName <virtualNetworkName> -SubnetName <
 ```powershell
 Remove-AzureVnetGatewayDefaultSite -VNetName <virtualNetworkName>
 ```
-
-
-
-
-
-
-

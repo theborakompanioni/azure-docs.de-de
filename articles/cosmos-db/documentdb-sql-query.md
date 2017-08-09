@@ -13,19 +13,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/08/2017
+ms.date: 07/25/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 71878a5a8807b025f418b978990cb0c502e4eca7
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 1b3ce3d87e02a6ffb6fcbf4e6778017f5a129ef9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>SQL-Abfragen für Azure Cosmos DB-DocumentDB-API
 Microsoft Azure Cosmos DB unterstützt Dokumentabfragen mit SQL (Structured Query Language) als JSON-Abfragesprache. Azure Cosmos DB funktioniert ohne Schema. Die direkte Integration des JSON-Datenmodells in das Datenbankmodul ermöglicht eine automatische Indexierung von JSON-Dokumenten ohne explizite Schemas oder die Erstellung sekundärer Indizes. 
 
-Bei der Entwicklung der Abfragesprache für Azure Cosmos DB hatten wir zwei Hauptziele:
+Bei der Entwicklung der Abfragesprache für Cosmos DB hatten wir zwei Hauptziele:
 
 * Wir wollten SQL unterstützen, anstatt eine neue JSON-Abfragesprache zu entwickeln. SQL ist eine der meistverwendeten und beliebtesten Abfragesprachen. Cosmos DB-SQL bietet ein formelles Programmiermodell zur Durchführung umfassender Abfragen für JSON-Dokumente.
 * Als JSON-Dokumentdatenbank, die JavaScript direkt im Datenbankmodul ausführen kann, wollten wir das JavaScript-Programmiermodell als Fundament für unsere Abfragesprache verwenden. Der SQL-Dialekt von DocumentDB-API verwendet Typsystem, Ausdrucksauswertung und Funktionsaufrufe von JavaScript. Dies wiederum bietet ein natürliches Programmiermodell für relationale Projektionen, eine hierarchische Navigation in JSON-Dokumenten, Selbstverknüpfungen, Abfragen für räumliche Daten, den Aufruf vollständig in JavaScript geschriebener, benutzerdefinierter Funktionen (User Defined Functions, UDFs) und andere Features. 
@@ -41,7 +41,7 @@ Für den Einstieg empfiehlt sich folgendes Video, in dem Aravind Ramachandran di
 Kehren Sie anschließend zu diesem Artikel zurück. Dort werden im Rahmen eines SQL-Abfragetutorials zunächst einige einfache JSON-Dokumente und SQL-Befehle behandelt.
 
 ## <a id="GettingStarted"></a>Erste Schritte mit SQL-Befehlen in Cosmos DB
-Um die Cosmos DB-SQL-Sprache in Aktion zu sehen, beginnen wir mit einigen einfachen JSON-Dokumenten und betrachten einige einfache Abfragen für diese Dokumente. Betrachten Sie diese beiden JSON-Dokumente über zwei Familien. Beachten Sie, dass wir in Cosmos DB keine Schemas oder sekundäre Indizes explizit erstellen müssen. Wir fügen einfach die JSON-Dokumente in eine Cosmos DB-Sammlung ein und führen anschließend Abfragen aus. Hier haben wir ein einfaches JSON-Dokument für die Familie Andersen mit Eltern, Kindern (und deren Haustieren), Adresse und Registrierungsinformationen. Das Dokument enthält Zeichenfolgen, Zahlen, boolesche Werte, Arrays und verschachtelte Eigenschaften. 
+Um die Cosmos DB-SQL-Sprache in Aktion zu sehen, beginnen wir mit einigen einfachen JSON-Dokumenten und betrachten einige einfache Abfragen für diese Dokumente. Betrachten Sie diese beiden JSON-Dokumente über zwei Familien. In Cosmos DB müssen keine Schemas oder sekundäre Indizes explizit erstellt werden. Wir fügen einfach die JSON-Dokumente in eine Cosmos DB-Sammlung ein und führen anschließend Abfragen aus. Hier haben wir ein einfaches JSON-Dokument für die Familie Andersen mit Eltern, Kindern (und deren Haustieren), Adresse und Registrierungsinformationen. Das Dokument enthält Zeichenfolgen, Zahlen, boolesche Werte, Arrays und verschachtelte Eigenschaften. 
 
 **Dokument**  
 
@@ -100,7 +100,7 @@ Nun folgt ein zweites Dokument mit einem kleinen Unterschied: `givenName` und `f
 }
 ```
 
-Wir werden nun einige Abfragen an die Daten ausführen, um einige der Schlüsselaspekte des SQL-Dialekts der DocumentDB-API besser zu verstehen. Die folgende Abfrage gibt z. B. die Dokumente zurück, in denen das ID-Feld den Text `AndersenFamily` enthält. Da es sich um `SELECT *` handelt, ist die Rückgabe der Abfrage das komplette JSON-Dokument:
+Wir werden nun einige Abfragen an die Daten ausführen, um einige der Schlüsselaspekte des SQL-Dialekts der DocumentDB-API besser zu verstehen. Die folgende Abfrage gibt z.B. die Dokumente zurück, in denen das ID-Feld den Text `AndersenFamily` enthält. Da es sich um `SELECT *` handelt, ist die Rückgabe der Abfrage das komplette JSON-Dokument:
 
 **Abfragen**
 
@@ -173,7 +173,7 @@ Beachten Sie einige der bemerkenswerten Aspekte der Cosmos DB-Abfragesprache, di
 * Eine Cosmos DB-Sammlung ist ein schemaloser Container mit JSON-Dokumenten. Die Beziehungen in Datenentitäten innerhalb und zwischen Dokumenten in einer Sammlung werden implizit durch Einschluss erfasst, und nicht durch Beziehungen von primären Schlüsseln und Fremdschlüsseln. Dieser Aspekt ist wichtig angesichts der später in diesem Artikel besprochenen dokumentinternen Verknüpfungen.
 
 ## <a id="Indexing"></a>Cosmos DB-Indizierung
-Bevor wir auf die SQL-Syntax der DocumentDB-API eingehen, empfiehlt es sich, dass Sie sich zunächst mit dem Indizierungsdesign der in Cosmos DB-API vertraut machen. 
+Bevor wir auf die SQL-Syntax der DocumentDB-API eingehen, empfiehlt es sich, dass Sie sich zunächst mit dem Indizierungsdesign in Cosmos DB vertraut machen. 
 
 Datenbankindizes dienen zur Ausführung von Abfragen verschiedenster Arten und Formen mit minimaler Ressourcennutzung (CPU, E/A) sowie mit gutem Durchsatz und niedriger Latenz. Die Auswahl der richtigen Indizes für Datenbankabfragen erfordert oft viel Planungs- und Testaufwand. Dieser Ansatz ist eine Herausforderung für schemalose Datenbanken, in denen die Daten nicht einem strikten Schema folgen und sich laufend verändern. 
 
@@ -182,8 +182,8 @@ Daher haben wir uns für die Entwicklung des Indizierungs-Untersystems von Cosmo
 * Indizierung von Dokumenten ohne Schema: Das Indizierungsuntersystem benötigt keine Schemainformationen und stellt keinerlei Annahmen über das Schema der Dokumente an. 
 * Unterstützung für effiziente, umfassende hierarchische und relationale Abfragen: Der Index unterstützt die Cosmos DB-Abfragesprache auf effiziente Weise und bietet Unterstützung für hierarchische und relationale Projektionen.
 * Unterstützung für konsistente Abfragen auch bei steigendem Volumen an Schreibvorgängen: Bei Workloads mit hohem Schreibaufwand und konsistenten Abfragen wird der Index inkrementell, effizient und online aktualisiert, um mit dem hohen Aufkommen an Schreibvorgängen Schritt zu halten. Die konsistente Indexaktualisierung ist entscheidend, um Abfragen auf der Konsistenzebene zu bieten, mit der die Benutzer den Dokumentdienst konfiguriert haben.
-* Mehrinstanzenfähigkeit: Beim reservierungsbasierten Modell für mandantenübergreifende Ressourcenverwaltung werden Indexaktualisierungen innerhalb des Budgets der pro Replikat verfügbaren Systemressourcen (CPU, Speicher und E/A-Vorgänge pro Sekunde) durchgeführt. 
-* Speichereffizienz: Aus Kostengründen ist der zusätzlich benötigte Speicherplatz für den Index beschränkt und vorhersagbar. Dies ist entscheidend, da Entwickler mit Cosmos DB kostenbasierte Kompromisse zwischen Index-Mehraufwand und Abfrageleistung treffen können.  
+* Unterstützung für Mehrinstanzenfähigkeit: Beim reservierungsbasierten Modell für mandantenübergreifende Ressourcenverwaltung werden Indexupdates innerhalb des Budgets der pro Replikat verfügbaren Systemressourcen (CPU, Speicher und E/A-Vorgänge pro Sekunde) durchgeführt. 
+* Speichereffizienz: Aus Kostengründen ist der zusätzlich benötigte Speicherplatz für den Index beschränkt und vorhersagbar. Dies ist entscheidend, da Entwickler mit Cosmos DB kostenbasierte Kompromisse zwischen Indexmehraufwand und Abfrageleistung treffen können.  
 
 Beispiele zum Konfigurieren der Indexrichtlinie für Sammlungen finden Sie in den [Azure Cosmos DB-Beispielen](https://github.com/Azure/azure-documentdb-net) auf der MSDN-Website. Wenden wir uns nun den Details der Azure Cosmos DB-SQL-Syntax zu.
 
@@ -205,8 +205,8 @@ Abfragen wie `SELECT * FROM Families` geben an, dass die gesamte Families-Sammlu
 * Nach der Aliasverwendung kann die Originalquelle nicht mehr gebunden werden. `SELECT Families.id FROM Families f` ist beispielsweise syntaktisch ungültig, da der Bezeichner „Families“ nicht mehr aufgelöst werden kann.
 * Alle referenzierten Eigenschaften müssen vollqualifiziert sein. Dies ist ohne strikte Schemaverwendung notwendig, um mehrdeutige Bindungen zu vermeiden. Daher ist `SELECT id FROM Families f` syntaktisch ungültig, da die `id`-Eigenschaft nicht gebunden ist.
 
-### <a name="sub-documents"></a>Unterdokumente
-Die Quelle kann auch auf eine kleinere Teilmenge reduziert werden. Wenn Sie z. B. nur eine Teilstruktur in jedem Dokument auflisten möchten, kann der Stammknoten der Teilstruktur zur Quelle werden, wie im folgenden Beispiel gezeigt.
+### <a name="subdocuments"></a>Unterdokumente
+Die Quelle kann auch auf eine kleinere Teilmenge reduziert werden. Wenn Sie z.B. nur eine Teilstruktur in jedem Dokument auflisten möchten, kann der Unterstamm der Teilstruktur zur Quelle werden, wie im folgenden Beispiel gezeigt:
 
 **Abfragen**
 
@@ -244,7 +244,7 @@ Die Quelle kann auch auf eine kleinere Teilmenge reduziert werden. Wenn Sie z. B
       ]
     ]
 
-Das obige Beispiel verwendet ein Array als Quelle. Sie können jedoch auch ein Objekt als Quelle verwenden, wie im folgenden Beispiel gezeigt. Jeder gültige JSON-Wert (mit Ausnahme von "Undefined"), der in der Quelle gefunden werden kann, wird für die Integration in das Abfrageergebnis herangezogen. Familien ohne `address.state`-Wert werden aus dem Abfrageergebnis ausgeschlossen.
+Während im obigen Beispiel ein Array als Quelle verwendet wurde, kann auch ein Objekt als Quelle verwendet werden. Dies wird im folgenden Beispiel veranschaulicht: Gültige JSON-Werte (nicht undefiniert), die in der Quelle gefunden werden können, werden für die Aufnahme im Ergebnis der Abfrage berücksichtigt. Familien ohne `address.state`-Wert werden aus dem Abfrageergebnis ausgeschlossen.
 
 **Abfragen**
 
@@ -599,7 +599,7 @@ Sie können auf Eigenschaften auch zugreifen, indem Sie den Anführungszeichenop
 
 
 ## <a id="SelectClause"></a>Die SELECT-Klausel
-Die SELECT-Klausel (**`SELECT <select_list>`**) ist obligatorisch und gibt an, welche Werte die Abfrage zurückgeben soll, wie auch in ANSI-SQL. Die gefilterte Teilmenge aus den Quelldokumenten wird an die Projektionsphase übergeben, in der die angegebenen JSON-Werte abgerufen werden und ein neues JSON-Objekt für jede übergebene Eingabe erstellt wird. 
+Die SELECT-Klausel (**`SELECT <select_list>`**) ist obligatorisch und gibt an, welche Werte von der Abfrage zurückgegeben werden, wie auch in ANSI-SQL. Die gefilterte Teilmenge aus den Quelldokumenten wird an die Projektionsphase übergeben, in der die angegebenen JSON-Werte abgerufen werden und ein neues JSON-Objekt für jede übergebene Eingabe erstellt wird. 
 
 Das folgende Beispiel zeigt eine typische SELECT-Abfrage: 
 
@@ -637,7 +637,7 @@ Im folgenden Beispiel werden zwei verschachtelte Eigenschaften projiziert: `f.ad
     }]
 
 
-Die Projektion unterstützt auch JSON-Ausdrücke, wie im folgenden Beispiel gezeigt.
+Die Projektion unterstützt auch JSON-Ausdrücke, wie im folgenden Beispiel gezeigt wird:
 
 **Abfragen**
 
@@ -679,7 +679,7 @@ Beachten Sie die Rolle von `$1`. Die `SELECT`-Klausel muss ein JSON-Objekt erste
 
 
 ### <a name="aliasing"></a>Aliase
-Wir werden das obige Beispiel nun erweitern und explizite Aliase für Werte verwenden. AS ist das Schlüsselwort für die Aliasvergabe. Dieses Schlüsselwort ist optional, wie Sie bei der Projektion des zweiten Werts als `NameInfo`sehen. 
+Wir werden das obige Beispiel nun erweitern und explizite Aliase für Werte verwenden. AS ist das Schlüsselwort für die Aliasvergabe. Dieses Schlüsselwort ist optional, wie Sie bei der Projektion des zweiten Werts als `NameInfo` sehen. 
 
 Wenn eine Abfrage zwei Eigenschaften mit demselben Namen hat, müssen Aliase verwendet werden, um mindestens eine der Eigenschaften umzubenennen, sodass diese im projizierten Ergebnis eindeutig sind.
 
@@ -751,7 +751,7 @@ Das Ergebnis des skalaren Ausdrucks im folgenden Beispiel ist ein Boolean-Wert.
 
 
 ### <a name="object-and-array-creation"></a>Objekt- und Arrayerstellung
-Eine weitere Schlüsselfunktion von DocumentDB-API-SQL ist die Objekt- und Arrayerstellung. Im vorherigen Beispiel haben wir ein neues JSON-Objekt erstellt. Auf dieselbe Weise können Sie Arrays erstellen, wie in den folgenden Beispielen gezeigt.
+Eine weitere Schlüsselfunktion von DocumentDB-API-SQL ist die Objekt- und Arrayerstellung. Im vorherigen Beispiel haben wir ein neues JSON-Objekt erstellt. Auf dieselbe Weise können Sie Arrays erstellen, wie in den folgenden Beispielen gezeigt:
 
 **Abfragen**
 
@@ -932,7 +932,7 @@ Die folgende Tabelle zeigt die Liste der unterstützten Aggregatfunktionen in de
 | MAX   | Gibt den maximalen Wert im Ausdruck zurück. |
 | DURCHSCHN.   | Gibt den Durchschnitt aller Werte im Ausdruck zurück. |
 
-Aggregate können auch über die Ergebnisse einer Array-Iteration ausgeführt werden. Weitere Informationen finden Sie unter [Array-Iteration in Abfragen](#Iteration).
+Aggregate können auch über die Ergebnisse einer Array-Iteration ausgeführt werden. Weitere Informationen finden Sie unter [Arrayiteration in Abfragen](#Iteration).
 
 > [!NOTE]
 > Beachten Sie bei der Verwendung des Abfrage-Explorers des Azure-Portals, dass Aggregationsabfragen möglicherweise die teilweise aggregierten Ergebnisse über eine Abfrageseite zurückgeben. Die SDKs erzeugen einen einzelnen kumulativen Wert für alle Seiten. 
@@ -1052,7 +1052,7 @@ Betrachten wir nun eine andere Abfrage, die untergeordnete Elemente in der Samml
       }
     ]
 
-Mit dieser Funktion können Sie über einzelne Einträge im Array filtern, wie im folgenden Beispiel gezeigt.
+Mit dieser Funktion können Sie über einzelne Einträge im Array filtern, wie im folgenden Beispiel gezeigt:
 
 **Abfragen**
 
@@ -1082,7 +1082,7 @@ Sie können auch eine Aggregation über das Ergebnis der Array-Iteration ausfüh
     ]
 
 ### <a id="Joins"></a>Joins
-Die Möglichkeit, Tabellen zu verknüpfen, ist sehr wichtig in relationalen Datenbanken. Es ist die logische Grundvoraussetzung für die Planung normalisierter Schemas. Im Gegensatz dazu arbeitet die DocumentDB-API mit denormalisierten Datenmodellen schemafreier Dokumente. Dies ist das logische Äquivalent zu "Selbstverknüpfungen".
+Die Möglichkeit, Tabellen zu verknüpfen, ist wichtig in relationalen Datenbanken. Es ist die logische Grundvoraussetzung für die Planung normalisierter Schemas. Im Gegensatz dazu arbeitet die DocumentDB-API mit denormalisierten Datenmodellen schemafreier Dokumente. Dies ist das logische Äquivalent zu "Selbstverknüpfungen".
 
 Die Sprache unterstützt die folgende Syntax: <from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>. Dabei wird ein Satz von **N**-Tupeln (Tupel mit **N**-Werten) zurückgegeben. Jedes Tupel enthält Werte, die durch Iteration aller Sammlungsaliase über deren jeweilige Sätze entstanden sind. In anderen Worten, dies ist ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze.
 
@@ -1187,7 +1187,7 @@ Der wahre Nutzen von JOIN ist die Bildung von Tupeln aus dem Kreuzprodukt auf ei
 
 
 
-Dieses Beispiel ist eine natürliche Erweiterung des vorherigen Beispiels und zeigt eine doppelte Verknüpfung. Sie sehen das Kreuzprodukt in Form des folgenden Pseudocodes.
+Dieses Beispiel ist eine natürliche Erweiterung des vorherigen Beispiels und zeigt eine doppelte Verknüpfung. Das Kreuzprodukt kann daher als eine Form des folgenden Pseudocodes betrachtet werden:
 
     for-each(Family f in Families)
     {    
@@ -1233,13 +1233,13 @@ Das nächste Beispiel verwendet einen zusätzlichen Filter für `pet`. Damit wer
 ## <a id="JavaScriptIntegration"></a>JavaScript-Integration
 Azure Cosmos DB bietet ein Programmiermodell zur Ausführung JavaScript-basierter Anwendungslogik direkt auf die Sammlungen über gespeicherte Prozeduren und Trigger. Damit ist Folgendes möglich:
 
-* Transaktionale CRUD-Operationen und Abfragen auf Dokumente in einer Sammlung mit hoher Leistung dank der tiefen Integration der JavaScript-Laufzeit direkt im Datenbankmodul. 
+* Transaktionale CRUD-Vorgänge und Abfragen für Dokumente in einer Sammlung mit hoher Leistung dank der umfassenden Integration der JavaScript-Laufzeit direkt im Datenbankmodul. 
 * Eine natürliche Modellierung von Kontrollfluss, Variablen-Bereichssteuerung, Zuweisung und Integration der Ausnahmebehandlung für Datenbanktransaktionen. Weitere Informationen zur Azure Cosmos DB-Unterstützung für die JavaScript-Integration finden Sie in der Dokumentation für serverseitige JavaScript-Programmierung.
 
-### <a id="UserDefinedFunctions"></a>Benutzerdefinierte Funktionen (User Defined Functions UDFs)
-Neben den bereits in diesem Artikel definierten Typen bietet DocumentDB-API-SQL auch Unterstützung für benutzerdefinierte Funktionen (UDF). Insbesondere skalare UDFs werden unterstützt, bei denen Entwickler null oder mehrere Argumente übergeben und ein einziges Argumentergebnis zurückerhalten können. Für dieser Argumente wird geprüft, ob es sich um gültige JSON-Werte handelt.  
+### <a id="UserDefinedFunctions"></a>Benutzerdefinierte Funktionen (User Defined Functions, UDFs)
+Neben den bereits in diesem Artikel definierten Typen bietet DocumentDB-API-SQL auch Unterstützung für benutzerdefinierte Funktionen (UDF). Insbesondere skalare UDFs werden unterstützt, bei denen Entwickler null oder mehrere Argumente übergeben und ein einziges Argumentergebnis zurückerhalten können. Für diese Argumente wird geprüft, ob es sich um gültige JSON-Werte handelt.  
 
-Die Syntax von DocumentDB-API-SQL wurde erweitert und unterstützt nun benutzerdefinierte Anwendungslogik mit diesen benutzerdefinierten Funktionen (User Defined Functions, UDFs). UDFs können bei der DocumentDB-API registriert und anschließend als Teil einer SQL-Abfrage referenziert werden. UDFs dienen in der Tat ausschließlich dazu, in Abfragen aufgerufen zu werden. Als Nebeneffekt haben UDFs im Gegensatz zu den anderen JavaScript-Typen (gespeicherte Prozeduren und Trigger) keinen Zugriff auf das Kontextobjekt. Da Abfragen schreibgeschützt ausgeführt werden, können sie entweder auf primären oder auf sekundären Replikaten ausgeführt werden. Daher werden UDFs normalerweise im Gegensatz zu anderen JavaScript-Typen für die Ausführung auf sekundären Replikaten entwickelt.
+Die Syntax von DocumentDB-API-SQL wurde erweitert und unterstützt nun benutzerdefinierte Anwendungslogik mit diesen benutzerdefinierten Funktionen (User-Defined Functions, UDFs). UDFs können bei der DocumentDB-API registriert und anschließend als Teil einer SQL-Abfrage referenziert werden. UDFs dienen in der Tat ausschließlich dazu, in Abfragen aufgerufen zu werden. Als Nebeneffekt haben UDFs im Gegensatz zu den anderen JavaScript-Typen (gespeicherte Prozeduren und Trigger) keinen Zugriff auf das Kontextobjekt. Da Abfragen schreibgeschützt ausgeführt werden, können sie entweder auf primären oder auf sekundären Replikaten ausgeführt werden. Daher werden UDFs normalerweise im Gegensatz zu anderen JavaScript-Typen für die Ausführung auf sekundären Replikaten entwickelt.
 
 Hier sehen Sie ein Beispiel für die Registrierung einer UDF in der Cosmos DB-Datenbank, speziell unterhalb einer Dokumentensammlung.
 
@@ -1351,7 +1351,7 @@ UDFs sind also hervorragende Werkzeuge, um komplexe Geschäftslogik als Teil der
 ### <a name="operator-evaluation"></a>Operatorauswertung
 Cosmos DB ist eine JSON-Datenbank und enthält daher Parallelen zu JavaScript-Operatoren und deren Auswertungslogik. Obwohl Cosmos DB versucht, die JavaScript-Logik für die JSON-Unterstützung zu erhalten, weicht die Auswertung von Operationen doch in manchen Fällen davon ab.
 
-In DocumentDB-API-SQL ist der Typ eines Werts im Gegensatz zu herkömmlichem SQL oft nicht bekannt, bevor der Wert tatsächlich aus der Datenbank abgerufen wird. Um effiziente Abfragen zu ermöglichen, haben die meisten Operatoren strikte Typanforderungen. 
+In DocumentDB-API-SQL ist der Typ eines Werts im Gegensatz zu herkömmlichem SQL oft nicht bekannt, bevor der Wert aus der Datenbank abgerufen wird. Um effiziente Abfragen zu ermöglichen, haben die meisten Operatoren strikte Typanforderungen. 
 
 DocumentDB-API-SQL führt im Gegensatz zu JavaScript keine impliziten Konvertierungen durch. Eine Abfrage wie `SELECT * FROM Person p WHERE p.Age = 21` stimmt beispielsweise mit Dokumenten überein, die eine Age-Eigenschaft mit dem Wert 21 enthalten. Alle weiteren Dokumente, deren Age-Eigenschaft mit der Zeichenfolge "21" übereinstimmt, oder sonstige Variationen wie "021", "21,0", "0021", "00021" usw. werden nicht zurückgegeben. Bei JavaScript würden diese Zeichenfolgenwerte dagegen implizit in Zahlen umgewandelt (je nach Operator, z. B.: ==). Dieser Unterschied ist wichtig für die effiziente Indexierung in DocumentDB-API-SQL. 
 
@@ -1386,7 +1386,7 @@ Das Argument für TOP kann, wie unten gezeigt, mit parametrisierte Abfragen fest
 Parameterwerte können alle gültigen JSON-Werte sein (Zeichenfolgen, Zahlen, boolesche Werte, Null, Arrays oder verschachteltes JSON). Da Cosmos DB über weniger Schemata verfügt, werden Parameter nicht für jeden Typ überprüft.
 
 ## <a id="BuiltinFunctions"></a>Integrierte Funktionen
-Cosmos DB unterstützt auch eine Reihe von integrierten Funktionen für häufige Vorgänge, die wie benutzerdefinierte Funktionen (User Defined Functions, UDFs) in Abfragen verwendet werden können.
+Cosmos DB unterstützt auch eine Reihe von integrierten Funktionen für häufige Vorgänge, die wie benutzerdefinierte Funktionen (User-Defined Functions, UDFs) in Abfragen verwendet werden können.
 
 | Funktionsgruppe          | Vorgänge                                                                                                                                          |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1396,10 +1396,10 @@ Cosmos DB unterstützt auch eine Reihe von integrierten Funktionen für häufige
 | Arrayfunktionen         | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH und ARRAY_SLICE                                                                                         |
 | Räumliche Funktionen       | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID und ST_ISVALIDDETAILED                                                                           | 
 
-Wenn Sie derzeit eine UDF verwenden, für die jetzt eine entsprechende integrierte Funktion verfügbar ist, sollten Sie diese integrierte Funktion verwenden, da sie schneller und effizienter ausgeführt werden kann. 
+Wenn Sie derzeit eine benutzerdefinierte Funktion (UDF) verwenden, für die jetzt eine entsprechende integrierte Funktion verfügbar ist, sollten Sie diese integrierte Funktion verwenden, da sie schneller und effizienter ausgeführt werden kann. 
 
 ### <a name="mathematical-functions"></a>Mathematische Funktionen
-Jede mathematische Funktion führt eine Berechnung durch, üblicherweise basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück. Im Folgenden finden Sie eine Tabelle der unterstützten integrierten mathematischen Funktionen.
+Jede mathematische Funktion führt eine Berechnung durch, basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück. Im Folgenden finden Sie eine Tabelle der unterstützten integrierten mathematischen Funktionen.
 
 
 | Verwendung | Beschreibung |
@@ -1570,7 +1570,7 @@ Die folgenden Skalarfunktionen führen einen Vorgang für einen Arrayeingabewert
 | --- | --- |
 | [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Gibt die Anzahl der Elemente des angegebenen Arrayausdrucks zurück. |
 | [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Gibt ein Array zurück, das das Ergebnis der Verkettung von zwei oder mehr Arraywerten darstellt. |
-| [ARRAY_CONTAINS (arr_expr, expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Gibt einen booleschen Wert zurück, um anzugeben, ob das Array den angegebenen Wert enthält. |
+| [ARRAY_CONTAINS (arr_expr, expr [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Gibt einen booleschen Wert zurück, um anzugeben, ob das Array den angegebenen Wert enthält. Kann angeben, ob es sich um eine vollständige oder teilweise Übereinstimmung handelt. |
 | [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Gibt einen Teil eines Arrayausdrucks zurück. |
 
 Arrayfunktionen können verwendet werden, um Arrays in JSON zu bearbeiten. Mit dieser Abfrage werden beispielsweise alle Dokumente zurückgegeben, in denen ein Elternteil „Robin Wakefield“ ist. 
@@ -1586,6 +1586,21 @@ Arrayfunktionen können verwendet werden, um Arrays in JSON zu bearbeiten. Mit d
     [{
       "id": "WakefieldFamily"
     }]
+
+Sie können ein Teilfragment für übereinstimmende Elemente innerhalb des Arrays angeben. Die folgende Abfrage sucht alle übergeordneten Elemente mit `givenName` von `Robin`.
+
+**Abfragen**
+
+    SELECT Families.id 
+    FROM Families 
+    WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin" }, true)
+
+**Ergebnisse**
+
+    [{
+      "id": "WakefieldFamily"
+    }]
+
 
 Dies ist ein weiteres Beispiel für die Verwendung von ARRAY_LENGTH. Hierbei wird die Anzahl der Kinder pro Familie abgerufen.
 
@@ -1652,14 +1667,14 @@ Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räum
 Weitere Informationen zur Unterstützung von Geodaten in Cosmos DB finden Sie unter [Arbeiten mit Geodaten in Azure Cosmos DB](geospatial.md). Dies sind alle Informationen zu den räumlichen Funktionen und zur SQL-Syntax für Cosmos DB. Als Nächstes sehen wir uns an, wie LINQ-Abfragen funktionieren und wie sie mit der bereits behandelten Syntax interagieren.
 
 ## <a id="Linq"></a>LINQ zu DocumentDB-API-SQL
-LINQ ist ein .NET-Programmiermodell, das Berechnungen als Abfragen auf Streams von Objekten darstellt. Cosmos DB bietet eine clientseitige Bibliothek als Schnittstelle zu LINQ und erleichtert die Konvertierung zwischen JSON- und .NET-Objekten sowie die Zuordnung einer Teilmenge von LINQ-Abfragen zu Cosmos DB-Abfragen. 
+LINQ ist ein .NET-Programmiermodell, das Berechnungen als Abfragen auf Streams von Objekten darstellt. Cosmos DB bietet eine clientseitige Bibliothek als Schnittstelle zu LINQ und vereinfacht die Konvertierung zwischen JSON- und .NET-Objekten sowie die Zuordnung einer Teilmenge von LINQ-Abfragen zu Cosmos DB-Abfragen. 
 
 Die folgende Abbildung zeigt die Architektur für die Unterstützung von LINQ-Abfragen in Cosmos DB.  Mit dem Cosmos DB-Client können Entwickler ein **IQueryable** -Objekt erstellen, das den Cosmos DB-Abfrageanbieter direkt abfragt, der die LINQ-Abfrage wiederum in eine Cosmos DB-Abfrage übersetzt. Anschließend wird die Abfrage an den Cosmos DB-Server übergeben, um einen Ergebnissatz im JSON-Format abzurufen. Die zurückgegebenen Ergebnisse werden clientseitig in einen Stream von .NET-Objekten deserialisiert.
 
 ![Architektur für die Unterstützung von LINQ-Abfragen mit DocumentDB-API: SQL-Syntax, JSON-Abfragesprache, Datenbankkonzepte und SQL-Abfragen][1]
 
 ### <a name="net-and-json-mapping"></a>.NET- und JSON-Zuordnung
-Die Zuordnung zwischen .NET- und JSON-Objekten erfolgt auf natürliche Weise. Jedes Datenelementfeld wird einem JSON-Objekt zugeordnet. Dabei wird der Feldname in den "key"-Teil des Objekts übernommen, und der "value"-Teil wird rekursiv zur Wertkomponente des Objekts zugeordnet. Betrachten Sie das folgende Beispiel. Das erstellte Family-Objekt wird wie hier gezeigt zum JSON-Dokument zugeordnet. Umgekehrt wird das JSON-Dokument zurück zu einem .NET-Objekt zugeordnet.
+Die Zuordnung zwischen .NET- und JSON-Objekten erfolgt auf natürliche Weise. Jedes Datenelementfeld wird einem JSON-Objekt zugeordnet. Dabei wird der Feldname in den "key"-Teil des Objekts übernommen, und der "value"-Teil wird rekursiv zur Wertkomponente des Objekts zugeordnet. Beachten Sie das folgende Beispiel: Das erstellte „Family“-Objekt wird wie hier gezeigt zum JSON-Dokument zugeordnet. Umgekehrt wird das JSON-Dokument zurück zu einem .NET-Objekt zugeordnet.
 
 **C#-Klasse**
 
@@ -1757,7 +1772,7 @@ Für das Typsystem werden alle primitiven JSON-Typen unterstützt: numerische Ty
      mother.familyName == "Smith";    child.givenName == s; //s ist eine Zeichenfolgenvariable
 * Erstellungsausdrücke für Objekte/Arrays - diese Ausdrücke geben ein Objekt mit einem Verbundwerttyp oder anonymen Typ bzw. ein Array solcher Objekte zurück. Diese Werte können verschachtelt sein.
   
-     new Parent { familyName = "Smith", givenName = "Joe" }; new { first = 1, second = 2 }; //ein anonymer Typ mit 2 Feldern              
+     new Parent { familyName = "Smith", givenName = "Joe" }; new { first = 1, second = 2 }; //ein anonymer Typ mit zwei Feldern              
      new int[] { 3, child.grade, 5 };
 
 ### <a id="SupportedLinqOperators"></a>Liste der unterstützten LINQ-Operatoren
@@ -1969,7 +1984,7 @@ In verschachtelten Abfragen wird die innere Abfrage auf jedes Element der äuße
 
 
 ## <a id="ExecutingSqlQueries"></a>Ausführen von SQL-Abfragen
-Cosmos DB stellt Ressourcen über eine REST-API zur Verfügung, die in jeder Sprache aufgerufen werden kann, die HTTP/HTTPS-Anfragen unterstützt. Zusätzlich bietet Cosmos DB Programmierbibliotheken für einige beliebte Sprachen an wie .NET, Node.js, JavaScript und Python. Die REST-API und die verschiedenen Bibliotheken unterstützen allesamt SQL-Abfragen. Das .NET SDK unterstützt LINQ-Abfragen zusätzlich zu SQL.
+Cosmos DB stellt Ressourcen über eine REST-API zur Verfügung, die in jeder Sprache aufgerufen werden kann, die HTTP/HTTPS-Anfragen unterstützt. Zusätzlich bietet Cosmos DB Programmierbibliotheken für einige beliebte Sprachen an, wie .NET, Node.js, JavaScript und Python. Die REST-API und die verschiedenen Bibliotheken unterstützen allesamt SQL-Abfragen. Das .NET SDK unterstützt LINQ-Abfragen zusätzlich zu SQL.
 
 Die folgenden Beispiele zeigen, wie Sie eine Abfrage erstellen und auf einem Cosmos DB-Datenbankkonto ausführen können.
 
@@ -2100,11 +2115,13 @@ Das zweite Beispiel zeigt eine komplexere Abfrage, die mehrere Ergebnisse der Ve
     }
 
 
-Wenn die Abfrageergebnisse nicht auf eine einzelne Ergebnisseite passen, gibt die REST-API ein Fortsetzungstoken im `x-ms-continuation-token` -Antwortheader zurück. Clients können einzelne Ergebnisseiten abfragen, indem sie den Header in nachfolgenden Abfragen angeben. Die Anzahl der Ergebnisse pro Seite kann über den `x-ms-max-item-count` -number-Header gesteuert werden. Wenn die angegebene Abfrage eine Aggregatfunktion wie `COUNT` hat, gibt die Abfrageseite möglicherweise einen teilweise aggregierten Wert über die Seite mit Ergebnissen zurück. Die Clients müssen eine Aggregation auf zweiter Ebene über diese Ergebnisse ausführen, um die Endergebnisse zu erzeugen , z.B. die Summe über die auf den einzelnen Seiten zurückgegebenen Anzahlen, um die Gesamtanzahl zurückzugeben.
+Wenn die Abfrageergebnisse nicht auf eine einzelne Ergebnisseite passen, gibt die REST-API ein Fortsetzungstoken im `x-ms-continuation-token` -Antwortheader zurück. Clients können einzelne Ergebnisseiten abfragen, indem sie den Header in nachfolgenden Abfragen angeben. Die Anzahl der Ergebnisse pro Seite kann über den `x-ms-max-item-count` -number-Header gesteuert werden. Wenn die angegebene Abfrage eine Aggregatfunktion wie `COUNT` hat, gibt die Abfrageseite möglicherweise einen teilweise aggregierten Wert über die Seite mit Ergebnissen zurück. Die Clients müssen eine Aggregation auf zweiter Ebene über diese Ergebnisse ausführen, um die Endergebnisse zu erzeugen, z.B. die Summe über die auf den einzelnen Seiten zurückgegebenen Anzahlen, um die Gesamtanzahl zurückzugeben.
 
-Für die Verwaltung der Datenkonsistenzrichtlinie für Abfragen verwenden Sie den `x-ms-consistency-level` -Header, wie in allen REST-API-Anfragen. Für die Sitzungskonsistenz muss außerdem der letzte `x-ms-session-token` -Cookie-Header in der Abfrageanforderung wiederholt werden. Die Indexierungsrichtlinie der abgefragten Sammlung kann die Konsistenz der Abfrageergebnisse ebenfalls beeinflussen. Mit den Standardeinstellungen für Indexierungsrichtlinien stimmt der Index einer Sammlung immer mit dem aktuellen Dokumentinhalt überein, und Abfragen liefern die Daten in der gewünschten Konsistenz zurück. Wenn eine verzögerte Indexierungsrichtlinie verwendet wird, kann es passieren, dass veraltete Ergebnisse zurückgegeben werden. Weitere Informationen finden Sie unter [Azure Cosmos DB-Konsistenzebenen][consistency-levels].
+Für die Verwaltung der Datenkonsistenzrichtlinie für Abfragen verwenden Sie den `x-ms-consistency-level` -Header, wie in allen REST-API-Anfragen. Für die Sitzungskonsistenz muss außerdem der letzte `x-ms-session-token` -Cookie-Header in der Abfrageanforderung wiederholt werden. Die Indizierungsrichtlinie der abgefragten Sammlung kann auch die Konsistenz der Abfrageergebnisse beeinflussen. Mit den Standardeinstellungen für Indizierungsrichtlinien stimmt der Index einer Sammlung immer mit dem aktuellen Dokumentinhalt überein, und die Abfrageergebnisse liefern die Daten in der gewünschten Konsistenz zurück. Wenn eine verzögerte Indexierungsrichtlinie verwendet wird, kann es passieren, dass veraltete Ergebnisse zurückgegeben werden. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB][consistency-levels].
 
 Wenn die konfigurierte Indizierungsrichtlinie der Sammlung die angegebene Abfrage nicht unterstützen kann, gibt der Azure Cosmos DB-Server "400 Bad Request" zurück. Dies wird z. B. für Bereichsabfragen auf Pfade zurückgegeben, die für Hash (Gleichheits)-Suchvorgänge konfiguriert sind, oder für Pfade, die ausdrücklich von der Indexierung ausgeschlossen wurden. Mit dem `x-ms-documentdb-query-enable-scan`-Header kann angegeben werden, dass eine Abfrage einen Scan durchführen darf, wenn kein Index verfügbar ist.
+
+Sie können ausführliche Metriken zur Abfrageausführung abrufen, indem Sie den `x-ms-documentdb-populatequerymetrics`-Header auf `True` festlegen. Weitere Informationen finden Sie unter [SQL-Abfragemetriken für die Azure Cosmos DB-DocumentDB-API](documentdb-sql-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>C# (.NET) SDK
 Das .NET SDK unterstützt Abfragen per LINQ und SQL. Das folgende Beispiel zeigt, wie Sie die weiter oben in diesem Dokument gezeigte einfache Filterabfrage ausführen können.
@@ -2197,10 +2214,6 @@ Sie können die Seitenaufteilung steuern, indem Sie mithilfe des `IQueryable`-Ob
 
 Weitere Beispiele, die Abfragen enthalten, finden Sie unter [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-documentdb-net) . 
 
-> [!NOTE]
-> Zum Ausführen der Aggregationsabfragen benötigen Sie die SDK-Version 1.12.0 oder höher. LINQ-Unterstützung für Aggregationsfunktionen ist nicht vorhanden, wird jedoch in .NET SDK 1.13.0 verfügbar gemacht.
->
-
 ### <a id="JavaScriptServerSideApi"></a>Serverseitige JavaScript-API
 Cosmos DB bietet ein Programmiermodell zur Ausführung JavaScript-basierter Anwendungslogik direkt auf die Sammlungen über gespeicherte Prozeduren und Trigger. Die auf Sammlungsebene registrierte JavaScript-Logik kann anschließend Datenbankoperationen auf die Dokumente der jeweiligen Sammlung ausführen. Diese Operationen werden in ACID-Transaktionen der jeweiligen Umgebung gekapselt.
 
@@ -2254,4 +2267,3 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der server
 [1]: ./media/documentdb-sql-query/sql-query1.png
 [introduction]: introduction.md
 [consistency-levels]: consistency-levels.md
-

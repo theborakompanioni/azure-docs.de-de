@@ -5,7 +5,7 @@ keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -14,14 +14,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 07/26/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: a76b1fc1e3fad5f47ffc550833bf34937e62163d
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 42f727aa40e744916b1a8adf634c10d55880bef0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="monitor-performance-of-the-wingtip-saas-application"></a>Überwachen der Leistung der SaaS-Anwendung Wingtip
@@ -118,7 +117,7 @@ Der Ressourcenverbrauch des Pools ist im Wesentlichen die aggregierte Datenbanka
 
 ![](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
 
-Da neben den fünf wichtigsten Datenbanken weitere Datenbanken im Pool vorhanden sind, zeigt die Poolauslastung Aktivität, die nicht im Diagramm der fünf wichtigsten Datenbanken widergespiegelt wird. Um zusätzliche Details anzuzeigen, klicken Sie auf **Datenbankressourcenverbrauch**:
+Da neben den fünf wichtigsten Datenbanken weitere Datenbanken im Pool vorhanden sind, zeigt die Poolauslastung Aktivitäten, die nicht im Diagramm der fünf wichtigsten Datenbanken widergespiegelt werden. Um zusätzliche Details anzuzeigen, klicken Sie auf **Datenbankressourcenverbrauch**:
 
 ![](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
 
@@ -143,7 +142,6 @@ Gehen Sie folgendermaßen vor, um eine Benachrichtigung für den Pool festzulege
    ![Warnung festlegen](media/sql-database-saas-tutorial-performance-monitoring/alert-rule.png)
 
 
-
 ## <a name="scale-up-a-busy-pool"></a>Zentrales Hochskalieren eines ausgelasteten Pools
 
 Wenn der aggregierte Auslastungsgrad für einen Pool sich bis zu dem Punkt erhöht, an dem das Limit des Pools und sowie eine eDTU-Nutzung von 100 % erreicht ist, wird die Leistung einzelner Datenbanken beeinträchtigt, und die Antwortzeiten für Abfragen verlangsamen sich möglicherweise für alle Datenbanken im Pool.
@@ -157,12 +155,12 @@ Sie können einen ausgelasteten Pool simulieren, indem Sie die vom Generator erz
 1. Legen Sie *$DemoScenario* = **3**, _Generieren einer Last mit längeren und häufigeren Spitzen pro Datenbank_ fest, um die Intensität der aggregierten Auslastung des Pools zu erhöhen, ohne die für jede Datenbank erforderliche Spitzenlast zu ändern.
 1. Drücken Sie **F5**, um Lasten auf all Ihre Mandantendatenbanken anzuwenden.
 
-1. Wechseln Sie zu **Pool1** im Portal.
+1. Wechseln Sie im Azure-Portal zu **Pool1**.
 
 Überwachen Sie die erhöhte Pool-eDTU-Nutzung im oben angezeigten Diagramm. Es dauert einige Minuten, bis die neue, höhere Last zum Tragen kommt, aber Sie sollten schnell erkennen können, dass der Pool die maximale Auslastung erreicht, sich die Auslastung in einem neuen Muster stabilisiert und der Pool schnell überlastet ist.
 
-1. Um den Pool zentral hochzuskalieren, klicken Sie auf **Pool konfigurieren**.
-1. Stellen Sie den Schieberegler **Pool-eDTU** auf **100** ein. Das Ändern der Pool-eDTUs ändert die Einstellungen für die einzelnen Datenbanken nicht (die Obergrenze liegt weiterhin bei 50 eDTUs pro Datenbank). Die Einstellungen für die einzelnen Datenbanken werden rechts auf der Seite **Pool konfigurieren** angezeigt.
+1. Um den Pool zentral hochzuskalieren, klicken Sie im oberen Bereich der Seite **Pool1** auf **Pool konfigurieren**.
+1. Passen Sie die Einstellung **Pool-eDTU** auf **100** an. Das Ändern der Pool-eDTUs ändert die Einstellungen für die einzelnen Datenbanken nicht (die Obergrenze liegt weiterhin bei 50 eDTUs pro Datenbank). Die Einstellungen für die einzelnen Datenbanken werden rechts auf der Seite **Pool konfigurieren** angezeigt.
 1. Klicken Sie auf **Speichern**, um die Anforderung zum Skalieren des Pools zu senden.
 
 Wechseln Sie wieder zu **Pool1** > **Übersicht**, um die Überwachungsdiagramme anzuzeigen. Beachten Sie, welche Auswirkungen die Bereitstellung weiterer Ressourcen für den Pool hat (bei wenigen Datenbanken und einer zufälligen Last ist es allerdings gelegentlich erst eindeutig zu erkennen, wenn sie für einen bestimmten Zeitraum ausgeführt werden). Berücksichtigen Sie beim Betrachten der Diagramme, dass 100 % im oberen Diagramm nun 100 eDTUs entspricht, während 100 % im unteren Diagramm weiterhin für 50 eDTUs steht, da die Obergrenze pro Datenbank weiterhin bei 50 eDTUs liegt.

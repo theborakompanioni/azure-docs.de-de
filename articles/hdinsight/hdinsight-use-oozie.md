@@ -17,12 +17,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 10726bdaf1aa0a98276747868771999625ccf5e5
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 220f2806849e59e8799017a2d7558f1ae622a755
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in HDInsight
@@ -134,7 +133,7 @@ Das RunHiveScript enthält mehrere Variablen. Die Werte werden übergeben, wenn 
 <table border = "1">
 <tr><th>Workflow-Variablen</th><th>Beschreibung</th></tr>
 <tr><td>${jobTracker}</td><td>Gibt die URL des Hadoop-JobTrackers an. Verwenden Sie in HDInsight der Versionen 3.0 und 2.1 <strong>jobtrackerhost:9010</strong>.</td></tr>
-<tr><td>${nameNode}</td><td>Gibt die URL des Hadoop-NameNode an. Verwenden Sie die Standard-Dateisystemadresse. Beispiel: <i>wasbs://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>.</td></tr>
+<tr><td>${nameNode}</td><td>Gibt die URL des Hadoop-NameNode an. Verwenden Sie die Standard-Dateisystemadresse, z.B. <i>wasbs://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>.</td></tr>
 <tr><td>${queueName}</td><td>Gibt den Namen der Warteschlange an, an die der Auftrag übermittelt wird. Verwenden Sie den <strong>Standardwert</strong>.</td></tr>
 </table>
 
@@ -191,9 +190,9 @@ Das PowerShell-Skript in diesem Abschnitt führt die folgenden Schritte aus:
    
     Beide Dateien werden in einem öffentlichen Blobcontainer gespeichert.
    
-   * Kopieren des HiveQL-Skripts (useoozie.hql) in Azure Storage (wasbs:///tutorials/useoozie/useoozie.hql).
-   * Kopieren von „workflow.xml“ in „wasbs:///tutorials/useoozie/workflow.xml“.
-   * Kopieren der Datendatei (/example/data/sample.log) in „wasb:///tutorials/useoozie/data/sample.log“.
+   * Kopieren des HiveQL-Skripts (useoozie.hql) nach Azure Storage (wasb:///tutorials/useoozie/useoozie.hql)
+   * Kopieren von „workflow.xml“ nach „wasb:///tutorials/useoozie/workflow.xml“
+   * Kopieren der Datendatei (/example/data/sample.log) nach „wasb:///tutorials/useoozie/data/sample.log“
 6. Übermitteln Sie einen Oozie-Auftrag.
    
     Um die Ergebnisse des Oozie-Jobs zu überprüfen, verwenden Sie Visual Studio oder andere Tools, um eine Verbindung zur Azure SQL-Datenbank herzustellen.
@@ -448,7 +447,7 @@ Hier ist das Skript.  Sie können das Skript mit Windows PowerShell ISE ausführ
 
     #region - submit Oozie job
 
-    $storageUri="wasbs://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net"
+    $storageUri="wasb://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net"
 
     $oozieJobName = $namePrefix + "OozieJob"
 

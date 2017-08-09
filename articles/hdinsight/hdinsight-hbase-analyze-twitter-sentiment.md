@@ -13,14 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 07/24/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 7a16a1c2a10279b5e7fb523addfdfcd433c8937e
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 4d5bb90c0e7573afb75282810c9ba58e7163e127
 ms.contentlocale: de-de
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="analyze-real-time-twitter-sentiment-with-hbase-in-hdinsight"></a>Analysieren Sie Twitter-Stimmungen mit HBase in HDInsight
@@ -37,7 +36,7 @@ Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. 
   * Speichern der Stimmungsinformationen in HBase mithilfe des Microsoft HBase SDK
 * Die Azure Websites-Anwendung
 
-  * Grafisches Darstellen der Echtzeit-Statistikergebnisse auf Bing Maps mithilfe einer ASP.NET-Webanwendung Eine Visualisierung der Tweets sieht etwa so aus:
+  * Grafisches Darstellen der Echtzeit-Statistikergebnisse auf Bing Maps mithilfe einer ASP.NET-Webanwendung Eine Visualisierung der Tweets sieht ähnlich wie im folgenden Screenshot aus:
 
     ![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
 
@@ -48,14 +47,7 @@ Ein vollständiges Visual Studio-Lösungsbeispiel finden Sie auf GitHub: [Realti
 ### <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-* **Ein HBase-Cluster in HDInsight**. Anweisungen zur Erstellung von Clustern finden Sie unter [Erste Schritte mit HBase mit Hadoop in HDInsight][hbase-get-started]. Sie benötigen die folgenden Daten, um das Lernprogramm durchzuarbeiten:
-
-    <table border="1">
-    <tr><th>Clustereigenschaft</th><th>Beschreibung</th></tr>
-    <tr><td>HBase-Clustername</td><td>Der Name Ihres HDInsight HBase-Clusters. Beispiel: https://myhbase.azurehdinsight.net/</td></tr>
-    <tr><td>Clusterbenutzer-Name</td><td>Der Name des Hadoop-Benutzerkontos. Der Standardbenutzername für Hadoop ist <strong>admin</strong>.</td></tr>
-    <tr><td>Clusterbenutzer-Kennwort</td><td>Das Benutzerkennwort für den Hadoop-Cluster.</td></tr>
-    </table>
+* **Ein HBase-Cluster in HDInsight**. Anweisungen zur Erstellung von Clustern finden Sie unter [Erste Schritte mit HBase mit Hadoop in HDInsight][hbase-get-started]. 
 
 * **Eine Workstation** mit installiertem Visual Studio 2013/2015/2017. [Installieren von Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)
 
@@ -68,13 +60,12 @@ Die Streaming-APIs von Twitter verwenden [OAuth](http://oauth.net/) , um Anforde
 2. Klicken Sie auf **Create New App**.
 3. Geben Sie einen **Namen**, eine **Beschreibung** und eine **Website** ein. Der Name der Twitter-Anwendung muss eindeutig sein. Das Feld "Website" ist nicht zwingend erforderlich. Es muss keine gültige URL enthalten.
 4. Aktivieren Sie **Yes, I agree**, und klicken Sie dann auf **Create your Twitter application**.
-5. Klicken Sie auf die Registerkarte **Permissions** . Die Standardberechtigung ist **Read only**. Diese Berechtigung reicht für dieses Lernprogramm aus.
+5. Klicken Sie auf die Registerkarte **Berechtigungen** und dann auf **Schreibgeschützt**. Die Leseberechtigung ist für dieses Tutorial ausreichend.
 6. Klicken Sie auf die Registerkarte **Keys and Access Tokens** .
-7. Klicken Sie auf **Create my access token**.
-8. Klicken Sie oben rechts auf der Seite auf **Test OAuth** .
-9. Kopieren Sie die Werte für **Consumer key** (Verbraucherschlüssel), **Consumer secret** (Geheimer Verbraucherschlüssel), **Access token** (Zugriffstoken) und **Access token secret** (Geheimes Zugriffstoken). Sie benötigen diese Werte später im Tutorial.
+7. Klicken Sie unten auf der Seite auf **Meinen Zugriffstoken erstellen**.
+9. Kopieren Sie die Werte für **Consumerschlüssel (API-Schlüssel)**, **Consumergeheimnis (API-Schlüssel)**, **Zugriffstoken** und **Geheimnis für das Zugriffstoken**. Sie benötigen diese Werte später im Tutorial.
 
-    ![hdi.hbase.twitter.sentiment.twitter.app][img-twitter-app]
+    > HINWEIS: Die Schaltfläche „OAuth testen“ funktioniert nicht mehr.
 
 ## <a name="create-twitter-streaming-service"></a>Erstellen von Twitter-Streamingdiensten
 Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert für Tweets zu berechnen und die verarbeiteten Wörter von Tweets an HBase zu senden.
@@ -386,7 +377,7 @@ Sie müssen eine Anwendung erstellen, um Tweets zu erhalten, einen Stimmungswert
                         {
                             HBaseWriter hbase = new HBaseWriter();
                             var stream = Stream.CreateFilteredStream();
-                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90));
+                            stream.AddLocation(new Coordinates(90, -180), new Coordinates(-90,180));
 
                             var tweetCount = 0;
                             var timer = Stopwatch.StartNew();
@@ -435,7 +426,7 @@ Um den Streamingdienst auszuführen, drücken Sie **F5**. Nachfolgend sehen Sie 
 Führen Sie die Streaming-Konsolenanwendung weiter aus, während Sie die Webanwendung entwickeln, sodass Sie mehr Daten nutzen können. Zum Überprüfen der in die Tabelle eingefügten Daten können Sie die HBase-Befehlszeile verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit HBase in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md#create-tables-and-insert-data).
 
 ## <a name="visualize-real-time-sentiment"></a>Visualisieren der Stimmung in Echtzeit
-In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzeit-Stimmungsdaten aus HBase liest und die Daten auf Bing Maps grafisch darstellt.
+In diesem Abschnitt erstellen Sie eine ASP.NET MVC-Webanwendung, die die Echtzeit-Stimmungsdaten aus HBase liest und die Daten auf Bing Karten grafisch darstellt.
 
 **So erstellen Sie eine ASP.NET MVC-Webanwendung**
 

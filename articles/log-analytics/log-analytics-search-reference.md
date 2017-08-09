@@ -12,18 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 07/13/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 90706434eb78009bc56fc390cfa5a30e53827c19
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: f5da86a95623234d14b0a99ee64c7b98d7e920a1
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="log-analytics-search-reference"></a>Referenz zur Log Analytics-Suche
+
+>[!NOTE]
+> Dieser Artikel beschreibt Protokollsuchen mithilfe der aktuellen Abfragesprache in Azure Log Analytics.  Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, sollten Sie [die Sprachreferenz für die neue Sprache](https://docs.loganalytics.io/queryLanguage/query_language.html) lesen.
+
 Im folgenden Referenzabschnitt zur Suchsprache werden die allgemeinen Optionen zur Abfragesyntax beschrieben, die Sie beim Suchen von Daten und Filtern von Ausdrücken verwenden können, um Ihre Suche einzugrenzen. Außerdem werden die Befehle beschrieben, mit denen Sie Aktionen für die abgerufenen Daten ausführen können.
 
 Informationen zu den von der Suche zurückgegebenen Feldern und den Facetten, mit denen Sie mehr über ähnliche Datenkategorien erfahren können, finden Sie im Abschnitt [Search-Feld- und Facetreferenz](#search-field-and-facet-reference).

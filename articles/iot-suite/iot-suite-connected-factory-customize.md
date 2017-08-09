@@ -13,14 +13,13 @@ ms.devlang: c#
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: ec4b2808e6984821200be182183e53b69887b912
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 86a4d6d3ab4d29fba8f554265958ffa079b69ec2
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Anpassen, wie die verbundene Werkslösung Daten von Ihren OPC UA-Servern anzeigt
@@ -69,7 +68,7 @@ Sie können im Dashboard die Datenelemente durchsuchen, die ein verbundener OPC 
 
 ## <a name="map-the-data"></a>Zuordnen der Daten
 
-Mithilfe der verbundenen Werkslösung werden die vom OPC UA-Server stammenden veröffentlichten Datenelemente in verschiedenen Ansichten in der Lösung zugeordnet und aggregiert. Die verbundene Werkslösung wird in Ihrem Azure-Konto bereitgestellt, sobald Sie die Lösung bereitstellen. Diese Zuordnungsinformationen werden in der verbundenen Werkslösung in Visual Studio in einer JSON-Datei gespeichert. Sie können diese JSON-Konfigurationsdatei in der verbundenen Werkslösung in Visual Studio anzeigen und ändern und erneut bereitstellen.
+Mithilfe der verbundenen Werkslösung werden die vom OPC UA-Server stammenden veröffentlichten Datenelemente in verschiedenen Ansichten in der Lösung zugeordnet und aggregiert. Die verbundene Werkslösung wird in Ihrem Azure-Konto bereitgestellt, sobald Sie die Lösung bereitstellen. Diese Zuordnungsinformationen werden in der verbundenen Werkslösung in Visual Studio in einer JSON-Datei gespeichert. Sie können diese JSON-Konfigurationsdatei in der verbundenen Werkslösung in Visual Studio anzeigen und ändern. Nachdem Sie eine Änderung vorgenommen haben, können Sie die Lösung erneut bereitstellen.
 
 Sie können die Konfigurationsdatei für folgende Aufgaben verwenden:
 
@@ -107,7 +106,7 @@ Jede Station weist mehrere detaillierte Eigenschaften auf, die der Zuordnung der
 
 ### <a name="opcuri"></a>OpcUri
 
-Der **OpcUri**-Wert ist der OPC UA-Anwendungs-URI, der den OPC UA Server eindeutig bestimmt. Der **OpcUri**-Wert der Montagestation in der Fertigungsstraße 1 in München lautet z.B. so: **urn:scada2194:ua:munich:productionline0:assemblystation**.
+Der **OpcUri**-Wert ist der OPC UA-Anwendungs-URI, der den OPC UA Server eindeutig bestimmt. Der **OpcUri**-Wert der Montagestation in der Fertigungsstraße 1 in München lautet z.B. wie folgt: **urn:scada2194:ua:munich:productionline0:assemblystation**.
 
 Sie können die URIs der verbundenen OPC UA-Server im Dashboard der Lösung anzeigen:
 

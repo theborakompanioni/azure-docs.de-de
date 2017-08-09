@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 07/12/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c6e2ecebf6cd1b246c155c158d12d4d83bd1feda
-ms.openlocfilehash: bda2da933accb769bae4c9b420ae330014fc2ba0
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 2114bdafb3b9fe2eb0632271840b8b70a76d10f1
 ms.contentlocale: de-de
-ms.lasthandoff: 02/27/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="iis-logs-in-log-analytics"></a>IIS-Protokolle in Log Analytics
@@ -78,9 +77,19 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 | Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |Anzahl der IIS-Protokolleinträge nach URL für den Host www.contoso.com. |
 | Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |Gesamtzahl an Bytes, die von jedem IIS-Computer empfangen wurden. |
 
+>[!NOTE]
+> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden.
+
+> | Abfrage | Beschreibung |
+|:--- |:--- |
+| W3CIISLog |Alle IIS-Protokolldatensätze. |
+| W3CIISLog &#124; where scStatus==500 |Alle IIS-Protokolleinträge mit dem Rückgabestatus 500 |
+| W3CIISLog &#124; summarize count() by cIP |Anzahl der IIS-Protokolleinträge nach Client-IP-Adresse. |
+| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |Anzahl der IIS-Protokolleinträge nach URL für den Host www.contoso.com. |
+| W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |Gesamtzahl an Bytes, die von jedem IIS-Computer empfangen wurden. |
+
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren Sie Log Analytics für die Sammlung von Daten aus anderen [Datenquellen](log-analytics-data-sources.md) zur Analyse.
 * Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
 * Konfigurieren Sie Warnungen in Log Analytics, sodass Sie proaktiv benachrichtigt werden, wenn in IIS-Protokollen wichtige Probleme gefunden werden.
-
 

@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zu Warnungen in OMS Log Analytics | Microsoft-Dokumentation
+title: Grundlegendes zu Warnungen in Azure Log Analytics | Microsoft-Dokumentation
 description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel werden die verschiedenen Arten von Warnungsregeln und ihre Definition beschrieben."
 services: log-analytics
 documentationcenter: 
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/23/2017
+ms.date: 07/26/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 76db33674c5a3b9e323a1890c0d48d98dc3f03cf
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 951e76d3fb18d9e433b148e82d4d6cee9417ce6d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Grundlegendes zu Warnungen in Log Analytics
 
 Mit Warnungen werden in Log Analytics wichtige Informationen in Ihrem Log Analytics-Repository identifiziert.  Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln in Log Analytics und beschreibt die Unterschiede verschiedener Arten von Warnungsregeln.
 
-Informationen zum Erstellen von Warnungsregeln finden Sie in den folgenden Artikeln.
+Informationen zum Erstellen von Warnungsregeln finden Sie in den folgenden Artikeln:
 
 - Erstellen von Warnungsregeln im [Azure-Portal](log-analytics-alerts-creating.md)
 - Erstellen von Warnungsregeln mithilfe einer [Resource Manager-Vorlage](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)
@@ -40,23 +40,23 @@ Warnungen werden mithilfe von Warnungsregeln erstellt, für die in regelmäßige
 
 Warnungsregeln werden anhand der folgenden Details definiert:
 
-- **Protokollsuche**:  Dies ist die Abfrage, die bei jeder Auslösung der Warnungsregel ausgeführt wird.  Mit den von dieser Abfrage zurückgegebenen Datensätzen wird ermittelt, ob eine Warnung erstellt werden muss.
+- **Protokollsuche**:  Die Abfrage, die bei jeder Auslösung der Warnungsregel ausgeführt wird.  Mit den von dieser Abfrage zurückgegebenen Datensätzen wird ermittelt, ob eine Warnung erstellt werden muss.
 - **Zeitfenster**:  Gibt den Zeitraum für die Abfrage an.  Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Wenn das Zeitfenster beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden.
 - **Häufigkeit**:  Gibt an, wie oft die Abfrage ausgeführt werden soll. Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Er sollte kleiner als oder gleich dem Zeitfensterwert sein.  Wenn der Wert größer als das Zeitfenster ist, besteht das Risiko, dass Datensätze ausgelassen werden.<br>Angenommen, Sie verwenden ein Zeitfenster von 30 Minuten und eine Häufigkeit von 60 Minuten.  Wenn die Abfrage um 13:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 12:30 und 13:00 Uhr zurück.  Wenn die Abfrage dann das nächste Mal um 14 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 13:30 und 14:00 Uhr zurück.  Alle Datensätze, die zwischen 13:00 und 13:30 erstellt werden, werden also nicht ausgewertet.
 - **Schwellenwert**:  Die Ergebnisse der Protokollsuche werden ausgewertet, um festzustellen, ob eine Warnung generiert werden soll.  Der Schwellenwert ist für verschiedene Typen von Warnungsregeln unterschiedlich.
 
-Jede Warnungsregel in Log Analytics hat einen der beiden folgenden Typen.  Diese Typen werden in den nachstehenden Abschnitten ausführlich beschrieben.
+Es gibt zwei Typen von Warnungsregeln in Log Analytics.  Diese Typen werden in den nachstehenden Abschnitten ausführlich beschrieben.
 
 - **[Anzahl von Ergebnissen](#number-of-results-alert-rules)**. Einzelne Warnung, die generiert wird, wenn die Anzahl der von der Protokollsuche zurückgegebenen Datensätze einen angegebenen Wert überschreitet.
-- **[Metrische Maßeinheit](#metric-measurement-alert-rules)**.  Warnung, die für jedes Objekt in den Ergebnissen der Protokollsuche bei Werten generiert wird, die den angegebenen Schwellenwert überschreiten. 
+- **[Metrische Maßeinheit](#metric-measurement-alert-rules)**.  Warnung, die für jedes Objekt in den Ergebnissen der Protokollsuche bei Werten generiert wird, die den angegebenen Schwellenwert überschreiten.
 
 Die Unterschiede zwischen den Warnungsregeltypen sind wie folgt.
 
-- Die Warnungsregel **Anzahl von Ergebnissen** generiert stets eine einzelne Warnung, während die Warnungsregel **Metrische Maßeinheit** eine Warnung für jedes Objekt erzeugt, das den Schwellenwert überschreitet.
-- Warnungsregeln des Typs **Anzahl von Ergebnissen** erzeugen eine Warnung, wenn der Schwellenwert ein einziges Mal überschritten wird. Warnungsregeln des Typs **Metrische Maßeinheit** können eine Warnung generieren, wenn der Schwellenwert in einem bestimmten Zeitintervall mit einer bestimmten Häufigkeit überschritten wird.
+- Die Warnungsregel **Anzahl von Ergebnissen** erstellt stets eine einzelne Warnung, während die Warnungsregel **Metrische Maßeinheit** eine Warnung für jedes Objekt erzeugt, das den Schwellenwert überschreitet.
+- Warnungsregeln vom Typ **Anzahl von Ergebnissen** erzeugen eine Warnung, wenn der Schwellenwert ein einziges Mal überschritten wird. Warnungsregeln des Typs **Metrische Maßeinheit** können eine Warnung generieren, wenn der Schwellenwert in einem bestimmten Zeitintervall mit einer bestimmten Häufigkeit überschritten wird.
 
 ## <a name="number-of-results-alert-rules"></a>Warnungsregeln des Typs „Anzahl von Ergebnissen“
-Warnungsregeln des Typs **Anzahl von Ergebnissen** erzeugen eine einzige Warnung, wenn die von der Suchabfrage zurückgegebene Anzahl von Datensätze den angegebenen Schwellenwert überschreitet. 
+Warnungsregeln des Typs **Anzahl von Ergebnissen** erzeugen eine einzige Warnung, wenn die von der Suchabfrage zurückgegebene Anzahl von Datensätze den angegebenen Schwellenwert überschreitet.
 
 ### <a name="threshold"></a>Schwellenwert
 Der Schwellenwert für die Warnungsregel **Anzahl von Ergebnissen** ist lediglich größer oder kleiner als ein bestimmter Wert.  Eine Warnung wird erstellt, wenn die Anzahl der von der Protokollsuche zurückgegebenen Datensätze dieses Kriterium erfüllt.
@@ -64,7 +64,7 @@ Der Schwellenwert für die Warnungsregel **Anzahl von Ergebnissen** ist lediglic
 ### <a name="scenarios"></a>Szenarien
 
 #### <a name="events"></a>Ereignisse
-Diese Art von Warnungsregel ist ideal für das Arbeiten mit Ereignissen wie z. B. Windows-Ereignisprotokollen, Syslog und benutzerdefinierten Protokollen.  Es kann ratsam sein, eine Warnung zu erstellen, wenn ein bestimmtes Fehlerereignis erstellt wird oder wenn mehrere Fehlerereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.
+Diese Art von Warnungsregel ist ideal für das Arbeiten mit Ereignissen wie Windows-Ereignisprotokollen, Syslog und benutzerdefinierten Protokollen.  Es kann ratsam sein, eine Warnung zu erstellen, wenn ein bestimmtes Fehlerereignis erstellt wird oder wenn mehrere Fehlerereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.
 
 Legen Sie zum Auslösen einer Warnung aufgrund eines einzelnen Ereignisses die Anzahl von Ergebnissen auf einen Wert größer als 0 und sowohl die Häufigkeit als auch das Zeitfenster auf 5 Minuten fest.  Die Abfrage wird dann alle 5 Minuten ausgeführt. Außerdem wird eine Prüfung auf das Vorhandensein eines einzelnen Ereignisses durchgeführt, das seit der letzten Ausführung der Abfrage erstellt wurde.  Bei einem längeren Intervall verlängert sich ggf. der Zeitraum zwischen der Ereigniserfassung und der Warnungserstellung.
 
@@ -79,9 +79,14 @@ Falls beispielsweise eine Warnung erfolgen soll, wenn der Prozessor zu mehr als 
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten Zeitfensters im Schnitt zu mehr als 90 Prozent ausgelastet ist, können Sie wie im folgenden Beispiel eine Abfrage mit dem [measure-Befehl](log-analytics-search-reference.md#commands) verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen: 
+Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten Zeitfensters im Schnitt zu mehr als 90 Prozent ausgelastet ist, können Sie wie im folgenden Beispiel eine Abfrage mit dem [measure-Befehl](log-analytics-search-reference.md#commands) verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen:
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
+
+>[!NOTE]
+> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden: `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
+
 
 ## <a name="metric-measurement-alert-rules"></a>Warnungsregeln des Typs „Metrische Maßeinheit“
 
@@ -94,7 +99,7 @@ Warnungsregeln des Typs **Metrische Maßeinheit** erzeugen eine Warnung für jed
 Während Sie für eine Warnungsregel des Typs **Anzahl von Ergebnissen** eine beliebige Abfrage verwenden können, gelten für die Abfrage für eine Wartungsregel des Typs „Metrische Maßeinheit“ bestimmte Anforderungen.  Sie muss den Befehl [Measure](log-analytics-search-reference.md#commands) enthalten, um die Ergebnisse anhand eines bestimmten Felds zu gruppieren. Dieser Befehl muss die folgenden Elemente enthalten.
 
 - **Aggregatfunktion**.  Bestimmt die zu erfolgende Berechnung und möglicherweise ein numerisches zu aggregierendes Feld.  Beispielsweise gibt **count()** die Anzahl der Datensätze in der Abfrage zurück, während **avg(CounterValue)** den Durchschnitt des Felds „CounterValue“ in diesem Intervall zurückgibt.
-- **Gruppierungsfeld**.  Ein Datensatz mit einem aggregierter Wert wird für jede Instanz dieses Felds erstellt, und für jede kann eine Warnung generiert werden.  Wenn Sie beispielsweise eine Warnung für jeden Computer generieren möchten, wählen Sie **Computer**.   
+- **Gruppierungsfeld**.  Ein Datensatz mit einem aggregierten Wert wird für jede Instanz dieses Felds erstellt, und für jede kann eine Warnung generiert werden.  Wenn Sie beispielsweise eine Warnung für jeden Computer generieren möchten, wählen Sie **Computer**.   
 - **Intervall**:  Definiert das Intervall, über das die Daten aggregiert werden.  Bei Angabe von **5 Minuten** wird beispielsweise ein Datensatz für jede Instanz des Gruppierungsfelds erstellt, das für das für die Warnung angegebene Zeitfenster in 5-Minuten-Intervallen aggregiert wird.
 
 #### <a name="threshold"></a>Schwellenwert
@@ -137,9 +142,8 @@ Es gibt noch andere Arten von Warnungsdatensätzen, die von der [Alert Managemen
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Installieren Sie die [Alert Management-Lösung](log-analytics-solution-alert-management.md) , um die in Log Analytics erstellten Warnungen und die über System Center Operations Manager (SCOM) gesammelten Warnungen zu analysieren.
+* Installieren Sie die [Lösung für die Warnungsverwaltung](log-analytics-solution-alert-management.md), um die in Log Analytics erstellten Warnungen und die über System Center Operations Manager gesammelten Warnungen zu analysieren.
 * Informieren Sie sich weiter über [Protokollsuchen](log-analytics-log-searches.md) , bei denen Warnungen generiert werden können.
 * Arbeiten Sie eine exemplarische Vorgehensweise für das [Konfigurieren eines Webooks](log-analytics-alerts-webhooks.md) mit einer Warnungsregel durch.  
 * Informieren Sie sich darüber, wie Sie [Runbooks in Azure Automation](https://azure.microsoft.com/documentation/services/automation) schreiben, um von Warnungen identifizierte Probleme zu beheben.
-
 

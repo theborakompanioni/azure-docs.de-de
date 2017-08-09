@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/22/2017
+ms.date: 07/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 09585a8e2ffbe0c825ee63f459218c7945cdd243
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: caa12f4ef55006cd3edbe2d9606397d34fed3a3e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 06/08/2017
 
 Die Software, die für die Bereitstellung eines Gateways für die vorkonfigurierte Connected Factory-Lösung erforderlich ist, besteht aus zwei Komponenten:
 
-* *OPC Proxy* stellt eine Verbindung mit dem IoT Hub her und wartet auf Befehls- und Kontrollmeldungen vom integrierten OPC-Browser, der im Portal der Connected Factory-Lösung ausgeführt wird.
+* Der *OPC-Proxy* stellt eine Verbindung mit IoT Hub her. Der *OPC-Proxy* wartet dann auf Befehls- und Kontrollmeldungen vom integrierten OPC-Browser, der im Portal der Connected Factory-Lösung ausgeführt wird.
 * *OPC Publisher* stellt eine Verbindung mit lokalen OPC UA-Servern her und leitet von diesen Telemetriemeldungen an IoT Hub weiter.
 
 Beide Komponenten sind Open-Source-Lösungen, die als Quelle auf GitHub und als Docker-Container verfügbar sind:
@@ -38,7 +38,7 @@ Beide Komponenten sind Open-Source-Lösungen, die als Quelle auf GitHub und als 
 
 Für keine der beiden Komponenten ist eine öffentlich erreichbare IP-Adresse oder eine Lücke in der Gateway-Firewall erforderlich. OPC Proxy und OPC Publisher nutzen nur die ausgehenden Ports 443, 5671 und 8883.
 
-Die Schritte in diesem Artikel veranschaulichen, wie ein Gateway mit Docker unter Windows oder Linux bereitgestellt wird. Das Gateway ermöglicht Verbindungen mit der vorkonfigurierten Connected Factory-Lösung.
+Die Schritte in diesem Artikel veranschaulichen, wie ein Gateway mit Docker unter [Windows](#windows-deployment) oder [Linux](#linux-deployment) bereitgestellt wird. Das Gateway ermöglicht Verbindungen mit der vorkonfigurierten Connected Factory-Lösung.
 
 > [!NOTE]
 > Die Gatewaysoftware, die im Docker-Container ausgeführt wird, ist [Azure IoT Edge].
@@ -72,9 +72,9 @@ Sie können diesen Schritt auch nach der Installation von Docker über das Menü
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
     * **&lt;ApplicationName&gt;** ist der Name, den Sie Ihrem OPC UA Publisher im Format **publisher.&lt;Ihr vollqualifizierter Domänenname&gt;** geben. Wenn Ihr Factory-Netzwerk beispielsweise den Namen **myfactorynetwork.com** hat, weist **ApplicationName** den Wert **publisher.myfactorynetwork.com** auf.
-    * **&lt;IoTHubOwnerConnectionString&gt;** ist die **iothubowner**-Verbindungszeichenfolge, die Sie im vorherigen Schritt kopiert haben. Diese Verbindungszeichenfolge wird nur in diesem Schritt verwendet, und Sie benötigen sie nicht wieder.
+    * **&lt;IoTHubOwnerConnectionString&gt;** ist die **iothubowner**-Verbindungszeichenfolge, die Sie im vorherigen Schritt kopiert haben. Diese Verbindungszeichenfolge wird nur in diesem Schritt verwendet. Für die folgenden Schritte ist diese nicht erforderlich:
 
-    Der zugeordnete Ordner „D:\\docker“ (das `-v`-Argument) wird später verwendet, um die beiden X.509-Zertifikate zu speichern, die von den Gatewaymodulen verwendet werden.
+    Verwenden Sie den zugeordneten Ordner „D:\\docker“ (das `-v`-Argument) später, um die beiden X.509-Zertifikate zu speichern, die von den Gatewaymodulen verwendet werden.
 
 ### <a name="run-the-gateway"></a>Ausführen des Gateways
 
@@ -84,21 +84,21 @@ Sie können diesen Schritt auch nach der Installation von Docker über das Menü
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
 
-1. Aus Gründen der Sicherheit enthalten die beiden X.509-Zertifikate, die im Ordner „D:\\docker“ gespeichert werden, den privaten Schlüssel. Der Zugriff auf diesen Ordner muss auf die Anmeldeinformationen beschränkt werden (in der Regel **Administratoren**), die verwendet werden, um den Docker-Container auszuführen. Klicken Sie mit der rechten Maustaste auf den Ordner „D:\\docker“, und wählen Sie **Eigenschaften**, dann **Sicherheit** und anschließend **Bearbeiten** aus. Gewähren Sie **Administratoren** Vollzugriff, und entfernen Sie alle anderen Benutzer:
+1. Aus Gründen der Sicherheit enthalten die beiden X.509-Zertifikate, die im Ordner „D:\\docker“ gespeichert werden, den privaten Schlüssel. Beschränken Sie den Zugriff auf diesen Ordner mit den Anmeldeinformationen (in der Regel **Administratoren**), die Sie zum Ausführen des Docker-Containers verwenden. Klicken Sie mit der rechten Maustaste auf den Ordner „D:\\docker“, und wählen Sie **Eigenschaften**, dann **Sicherheit** und anschließend **Bearbeiten** aus. Gewähren Sie **Administratoren** Vollzugriff, und entfernen Sie alle anderen Benutzer:
 
     ![Erteilen von Berechtigungen für die Docker-Freigabe][img-docker-share]
 
-1. Überprüfen Sie die Netzwerkkonnektivität. Versuchen Sie, Ihr Gateway zu pingen. Geben Sie an einer Eingabeaufforderung den Befehl `ping publisher.<your fully qualified domain name>` ein. Wenn das Ziel nicht erreichbar ist, fügen Sie die IP-Adresse und den Namen Ihres Gateways der Datei „hosts“ auf Ihrem Gateway hinzu. Die Datei „hosts“ befindet sich im Ordner „Windows\\System32\\drivers\\etc“.
+1. Überprüfen Sie die Netzwerkkonnektivität. Geben Sie an einer Eingabeaufforderung den Befehl `ping publisher.<your fully qualified domain name>` ein, um Ihr Gateway zu pingen. Wenn das Ziel nicht erreichbar ist, fügen Sie die IP-Adresse und den Namen Ihres Gateways der Datei „hosts“ auf Ihrem Gateway hinzu. Die Datei „hosts“ befindet sich im Ordner **Windows\\System32\\drivers\\etc**.
 
-1. Versuchen Sie danach, mithilfe eines lokalen OPC UA-Clients, der auf dem Gateway ausgeführt wird, eine Verbindung mit dem Herausgeber herzustellen. Die OPC UA-Endpunkt-URL lautet `opc.tcp://publisher.<your fully qualified domain name>:62222`. Wenn Sie nicht über einen OPC UA-Client verfügen, können Sie einen [Open Source OPC UA-Client] herunterladen.
+1. Versuchen Sie danach, mithilfe eines lokalen OPC UA-Clients, der auf dem Gateway ausgeführt wird, eine Verbindung mit dem Herausgeber herzustellen. Die OPC UA-Endpunkt-URL lautet `opc.tcp://publisher.<your fully qualified domain name>:62222`. Wenn Sie nicht über einen OPC UA-Client verfügen, können Sie einen [OPC UA-Open-Source-Client] herunterladen und verwenden.
 
-1. Wenn Sie diese lokalen Tests erfolgreich abgeschlossen haben, navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung. Geben Sie die Herausgeberendpunkt-URL (`tcp://publisher.<your fully qualified domain name>:62222`) ein, und klicken Sie auf **Verbinden**. Sie erhalten eine Zertifikatwarnung, klicken Sie dann auf **Fortsetzen**. Als Nächstes erhalten Sie eine Fehlermeldung, die besagt, dass der Herausgeber dem UA-Webclient nicht vertraut. Kopieren Sie zum Beheben dieses Fehlers das **UA-Webclientzertifikat** aus dem Ordner „D:\\docker\\Rejected Certificates\\certs“ in den Ordner „D:\\docker\\UA Applications\\certs“ auf dem Gateway. Sie müssen das Gateway nicht neu starten. Wiederholen Sie diesen Schritt. Sie können jetzt über die Cloud eine Verbindung mit dem Gateway herstellen, und Sie sind bereit, OPC UA-Server zur Lösung hinzuzufügen.
+1. Wenn Sie diese lokalen Tests erfolgreich abgeschlossen haben, navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung. Geben Sie die Herausgeberendpunkt-URL (`tcp://publisher.<your fully qualified domain name>:62222`) ein, und klicken Sie auf **Verbinden**. Sie erhalten eine Zertifikatwarnung, klicken Sie dann auf **Fortsetzen**. Als Nächstes erhalten Sie eine Fehlermeldung, die besagt, dass der Herausgeber dem UA-Webclient nicht vertraut. Kopieren Sie zum Beheben dieses Fehlers das **UA-Webclientzertifikat** aus dem Ordner **D:\\docker\\Rejected Certificates\\certs** in den Ordner **D:\\docker\\UA Applications\\certs** auf dem Gateway. Sie müssen das Gateway nicht neu starten. Wiederholen Sie diesen Schritt. Sie können jetzt über die Cloud eine Verbindung mit dem Gateway herstellen, und Sie sind bereit, OPC UA-Server zur Lösung hinzuzufügen.
 
 ### <a name="add-your-opc-ua-servers"></a>Hinzufügen von OPC UA-Servern
 
 1. Navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung. Führen Sie die gleichen Schritte wie im vorherigen Abschnitt aus, um eine Vertrauensstellung zwischen dem Connected Factory-Portal und dem OPC UA-Server herzustellen. Mit diesem Schritt wird eine gegenseitige Vertrauensstellung für die Zertifikate aus dem Connected Factory-Portal und dem OPC UA-Server eingerichtet und eine Verbindung erstellt.
 
-1. Wechseln Sie zur OPC UA-Knotenstruktur Ihres OPC UA-Servers, klicken Sie mit der rechten Maustaste auf die OPC-Knoten, und wählen **Veröffentlichen** aus. Damit die Veröffentlichung auf diese Weise funktioniert, müssen sich der OPC UA-Server und der Herausgeber im selben Netzwerk befinden. Anders ausgedrückt: Wenn der vollqualifizierte Domänenname des Herausgebers **herausgeber.meinedomäne.com** ist, muss der vollqualifizierte Domänenname des OPC UA-Servers z.B. **meinopcuaserver.meinedomäne.com** sein. Wenn Ihr Setup anders ist, können Sie Knoten manuell zur Datei „publishesnodes.json“ im Ordner „D:\\docker“ hinzufügen. Die Datei „publishesnodes.json“ wird automatisch beim ersten erfolgreichen Veröffentlichen eines OPC-Knotens generiert.
+1. Wechseln Sie zur OPC UA-Knotenstruktur Ihres OPC UA-Servers, klicken Sie mit der rechten Maustaste auf die OPC-Knoten, und wählen **Veröffentlichen** aus. Damit die Veröffentlichung auf diese Weise funktioniert, müssen sich der OPC UA-Server und der Herausgeber im selben Netzwerk befinden. Anders ausgedrückt: Wenn der vollqualifizierte Domänenname des Herausgebers **herausgeber.meinedomäne.com** ist, muss der vollqualifizierte Domänenname des OPC UA-Servers z.B. **meinopcuaserver.meinedomäne.com** sein. Wenn Ihr Setup davon abweicht, können Sie Knoten manuell zur Datei „publishesnodes.json“ im Ordner **D:\\docker** hinzufügen. Die Datei „publishesnodes.json“ wird automatisch beim ersten erfolgreichen Veröffentlichen eines OPC-Knotens generiert.
 
 1. Telemetriedaten werden jetzt vom Gatewaygerät übertragen. Sie können die Telemetriedaten in der Ansicht **Factoryspeicherorte** des Connected Factory-Portals unter **Neue Factory** anzeigen.
 
@@ -124,9 +124,9 @@ Sie können diesen Schritt auch nach der Installation von Docker über das Menü
     `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
     * **&lt;ApplicationName&gt;** ist der Name der OPC UA-Anwendung, den das Gateway im Format **Herausgeber.&lt;Ihr vollqualifizierter Domänenname&gt;** erstellt. Beispiel: **herausgeber.microsoft.com**.
-    * **&lt;IoTHubOwnerConnectionString&gt;** ist die **iothubowner**-Verbindungszeichenfolge, die Sie im vorherigen Schritt kopiert haben. Diese Verbindungszeichenfolge wird nur in diesem Schritt verwendet, und Sie benötigen sie nicht wieder.
+    * **&lt;IoTHubOwnerConnectionString&gt;** ist die **iothubowner**-Verbindungszeichenfolge, die Sie im vorherigen Schritt kopiert haben. Diese Verbindungszeichenfolge wird nur in diesem Schritt verwendet. Für die folgenden Schritte ist diese nicht erforderlich:
 
-    Der zugeordnete Ordner „/shared“ (das `-v`-Argument) wird später verwendet, um die beiden X.509-Zertifikate zu speichern, die von den Gatewaymodulen verwendet werden.
+    Verwenden Sie den Ordner **/shared** (das `-v`-Argument) später, um die beiden X.509-Zertifikate zu speichern, die von den Gatewaymodulen verwendet werden.
 
 ### <a name="run-the-gateway"></a>Ausführen des Gateways
 
@@ -136,19 +136,19 @@ Sie können diesen Schritt auch nach der Installation von Docker über das Menü
 
     `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
 
-1. Aus Gründen der Sicherheit enthalten die beiden X.509-Zertifikate, die im Ordner „/shared“ gespeichert werden, den privaten Schlüssel. Der Zugriff auf diesen Ordner muss auf die Anmeldeinformationen beschränkt werden, die verwendet werden, um den Docker-Container auszuführen. Um die Berechtigungen ausschließlich für **root** festzulegen, verwenden Sie den `chmod`-Shellbefehl für den Ordner.
+1. Aus Gründen der Sicherheit enthalten die beiden X.509-Zertifikate, die im Ordner **/shared** gespeichert werden, den privaten Schlüssel. Beschränken Sie den Zugriff auf diesen Ordner mit den Anmeldeinformationen, die Sie zum Ausführen des Docker-Containers verwenden. Um die Berechtigungen ausschließlich für **root** festzulegen, verwenden Sie den `chmod`-Shellbefehl für den Ordner.
 
-1. Überprüfen Sie die Netzwerkkonnektivität. Versuchen Sie, Ihr Gateway zu pingen. Geben Sie über eine Shell den Befehl `ping publisher.<your fully qualified domain name>` ein. Wenn das Ziel nicht erreichbar ist, fügen Sie die IP-Adresse und den Namen Ihres Gateways der Datei „hosts“ auf Ihrem Gateway hinzu. Die Datei „hosts“ befindet sich in „/etc“.
+1. Überprüfen Sie die Netzwerkkonnektivität. Geben Sie über eine Shell den Befehl `ping publisher.<your fully qualified domain name>` ein, um Ihr Gateway zu pingen. Wenn das Ziel nicht erreichbar ist, fügen Sie die IP-Adresse und den Namen Ihres Gateways der Datei „hosts“ auf Ihrem Gateway hinzu. Die Datei „hosts“ befindet sich im Ordner **/etc**.
 
-1. Versuchen Sie danach, mithilfe eines lokalen OPC UA-Clients, der auf dem Gateway ausgeführt wird, eine Verbindung mit dem Herausgeber herzustellen. Die OPC UA-Endpunkt-URL lautet `opc.tcp://publisher.<your fully qualified domain name>:62222`. Wenn Sie nicht über einen OPC UA-Client verfügen, können Sie einen [Open Source OPC UA-Client] herunterladen.
+1. Versuchen Sie danach, mithilfe eines lokalen OPC UA-Clients, der auf dem Gateway ausgeführt wird, eine Verbindung mit dem Herausgeber herzustellen. Die OPC UA-Endpunkt-URL lautet `opc.tcp://publisher.<your fully qualified domain name>:62222`. Wenn Sie nicht über einen OPC UA-Client verfügen, können Sie einen [OPC UA-Open-Source-Client] herunterladen und verwenden.
 
-1. Wenn Sie diese lokalen Tests erfolgreich abgeschlossen haben, navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung. Geben Sie die Herausgeberendpunkt-URL (`tcp://publisher.<your fully qualified domain name>:62222`) ein, und klicken Sie auf **Verbinden**. Sie erhalten eine Zertifikatwarnung, klicken Sie dann auf **Fortsetzen**. Als Nächstes erhalten Sie eine Fehlermeldung, die besagt, dass der Herausgeber dem UA-Webclient nicht vertraut. Kopieren Sie zum Beheben dieses Fehlers das **UA-Webclientzertifikat** aus dem Ordner „/shared/Rejected Certificates/certs“ in den Ordner „/shared/UA Applications/certs“ auf dem Gateway. Sie müssen das Gateway nicht neu starten. Wiederholen Sie diesen Schritt. Sie können jetzt über die Cloud eine Verbindung mit dem Gateway herstellen, und Sie sind bereit, OPC UA-Server zur Lösung hinzuzufügen.
+1. Wenn Sie diese lokalen Tests erfolgreich abgeschlossen haben, navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung. Geben Sie die Herausgeberendpunkt-URL (`tcp://publisher.<your fully qualified domain name>:62222`) ein, und klicken Sie auf **Verbinden**. Sie erhalten eine Zertifikatwarnung, klicken Sie dann auf **Fortsetzen**. Als Nächstes erhalten Sie eine Fehlermeldung, die besagt, dass der Herausgeber dem UA-Webclient nicht vertraut. Kopieren Sie zum Beheben dieses Fehlers das **UA-Webclientzertifikat** aus dem Ordner **/shared/Rejected Certificates/certs** in den Ordner **/shared/UA Applications/certs** auf dem Gateway. Sie müssen das Gateway nicht neu starten. Wiederholen Sie diesen Schritt. Sie können jetzt über die Cloud eine Verbindung mit dem Gateway herstellen, und Sie sind bereit, OPC UA-Server zur Lösung hinzuzufügen.
 
 ### <a name="add-your-opc-ua-servers"></a>Hinzufügen von OPC UA-Servern
 
 1. Navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung. Führen Sie die gleichen Schritte wie im vorherigen Abschnitt aus, um eine Vertrauensstellung zwischen dem Connected Factory-Portal und dem OPC UA-Server herzustellen. Mit diesem Schritt wird eine gegenseitige Vertrauensstellung für die Zertifikate aus dem Connected Factory-Portal und dem OPC UA-Server eingerichtet und eine Verbindung erstellt.
 
-1. Wechseln Sie zur OPC UA-Knotenstruktur Ihres OPC UA-Servers, klicken Sie mit der rechten Maustaste auf die OPC-Knoten, und wählen **Veröffentlichen** aus. Damit die Veröffentlichung auf diese Weise funktioniert, müssen sich der OPC UA-Server und der Herausgeber im selben Netzwerk befinden. Anders ausgedrückt: Wenn der vollqualifizierte Domänenname des Herausgebers **herausgeber.meinedomäne.com** ist, muss der vollqualifizierte Domänenname des OPC UA-Servers z.B. **meinopcuaserver.meinedomäne.com** sein. Wenn Ihr Setup anders ist, können Sie Knoten manuell zur Datei „publishesnodes.json“ im Ordner „/shared“ hinzufügen. Die Datei „publishesnodes.json“ wird automatisch beim ersten erfolgreichen Veröffentlichen eines OPC-Knotens generiert.
+1. Wechseln Sie zur OPC UA-Knotenstruktur Ihres OPC UA-Servers, klicken Sie mit der rechten Maustaste auf die OPC-Knoten, und wählen **Veröffentlichen** aus. Damit die Veröffentlichung auf diese Weise funktioniert, müssen sich der OPC UA-Server und der Herausgeber im selben Netzwerk befinden. Anders ausgedrückt: Wenn der vollqualifizierte Domänenname des Herausgebers **herausgeber.meinedomäne.com** ist, muss der vollqualifizierte Domänenname des OPC UA-Servers z.B. **meinopcuaserver.meinedomäne.com** sein. Wenn Ihr Setup davon abweicht, können Sie Knoten manuell zur Datei „publishesnodes.json“ im Ordner **/shared** hinzufügen. Die Datei „publishesnodes.json“ wird automatisch beim ersten erfolgreichen Veröffentlichen eines OPC-Knotens generiert.
 
 1. Telemetriedaten werden jetzt vom Gatewaygerät übertragen. Sie können die Telemetriedaten in der Ansicht **Factoryspeicherorte** des Connected Factory-Portals unter **Neue Factory** anzeigen.
 
@@ -163,7 +163,7 @@ Weitere Informationen über die Architektur der vorkonfigurierten Connected Fact
 [Docker für Windows]: https://www.docker.com/docker-windows
 [Katalog der Azure IoT-Geräte]: https://catalog.azureiotsuite.com/?q=opc
 [Azure-Portal]: http://portal.azure.com/
-[Open Source OPC UA-Client]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
+[OPC UA-Open-Source-Client]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
 [Installieren Sie Docker]: https://www.docker.com/community-edition#/download
 [lnk-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [Azure IoT Edge]: https://github.com/Azure/iot-edge

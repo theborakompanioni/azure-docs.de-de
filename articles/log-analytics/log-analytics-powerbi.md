@@ -12,15 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 07/24/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7870e2aebf6c142b0f3103a500ca73d691e6d3e6
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 98befb16d27387e8f65a27771a2a32c264119d74
+ms.contentlocale: de-de
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="export-log-analytics-data-to-power-bi"></a>Exportieren von Log Analytics-Daten nach Power BI
+
+>[!NOTE]
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, funktioniert dieses Verfahren zum Exportieren von Log Analytics-Daten in Power BI nicht mehr.  Alle vorhandenen Zeitpläne, die Sie vor dem Upgrade erstellt haben, werden deaktiviert. 
+>
+> Nach dem Upgrade verwendet Azure Log Analytics dieselbe Plattform wie Application Insights, und Sie verwenden zum Exportieren von Log Analytics-Abfragen nach Power BI dasselbe Verfahren wie zum [Exportieren von Application Insights-Abfragen nach Power BI](../application-insights/app-insights-export-power-bi.md#export-analytics-queries).  Sie können die Abfrage mithilfe der Analytics-Konsole exportieren, wie im genannten Artikel beschrieben, oder Sie können die Schaltfläche **Power BI** im oberen Bereich des Bildschirms im Protokollsuchportal auswählen.
+
+
+
 [Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  Log Analytics kann Daten automatisch aus dem OMS-Repository nach Power BI exportieren, sodass Sie die Visualisierungsfunktionen und Analysetools von Power BI nutzen können.
 
 Wenn Sie Power BI für Log Analytics konfigurieren, können Sie Protokollabfragen erstellen, die ihre Ergebnisse in die entsprechenden Datasets in Power BI exportieren.  Der Abfrage- und Exportvorgang wird weiterhin automatisch nach einem von Ihnen definieren Zeitplan ausgeführt, damit das Dataset jederzeit mit den neuesten von Log Analytics gesammelten Daten aktualisiert wird.
@@ -34,8 +43,8 @@ Die Felder im Dataset entsprechen den Eigenschaften der von der Protokollsuche z
 
 > [!NOTE]
 > Es empfiehlt sich, eine Protokollsuchabfrage zu verwenden, die Rohdaten zurückgibt, anstatt mithilfe von Befehlen wie [Measure](log-analytics-search-reference.md#measure)eine Konsolidierung durchzuführen.  Sie können alle notwendigen Aggregierungen und Berechnungen für die Rohdaten in Power BI durchführen.
-> 
-> 
+>
+>
 
 ## <a name="connecting-oms-workspace-to-power-bi"></a>Verbinden des OMS-Arbeitsbereichs mit Power BI
 Bevor Sie Daten aus Log Analytics nach Power BI exportieren können, müssen Sie Ihren OMS-Arbeitsbereich mit Ihrem Power BI-Konto verbinden. Führen Sie dazu die folgenden Schritte aus.  
@@ -117,10 +126,4 @@ Speichern Sie den Bericht, indem Sie am oberen Bildschirmrand auf die Schaltflä
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr zu [Protokollsuchvorgängen](log-analytics-log-searches.md) zum Erstellen von Abfragen, die nach Power BI exportiert werden können.
 * Erfahren Sie mehr über [Power BI](http://powerbi.microsoft.com), um Visualisierungen anhand von Log Analytics-Exporten zu erstellen.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
