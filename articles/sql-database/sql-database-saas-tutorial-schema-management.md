@@ -14,19 +14,18 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 84c27de6b5fafb3b9236fed77a9d0557d89d217c
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 78d76efb88bf11fa18a416b59e6f881539141232
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="manage-schema-for-multiple-tenants-in-the-wingtip-saas-application"></a>Verwalten des Schemas für mehrere Mandanten in der Wingtip-SaaS-Anwendung
 
-Im [ersten Wingtip-SaaS-Tutorial](sql-database-saas-tutorial.md) wird veranschaulicht, wie die App eine Mandantendatenbank bereitstellen und im Katalog registrieren kann. Wie jede andere Anwendung wird die Wingtip-SaaS-App laufend weiterentwickelt, und gelegentlich sind Änderungen an der Datenbank erforderlich. Derartige Änderungen können ein neues oder geändertes Schema, neue oder geänderte Verweisdaten und routinemäßige Wartungsaufgaben sein, die eine optimale Leistung der App sicherstellen sollen. Bei einer SaaS-Anwendung müssen diese Änderungen u.U. koordiniert für eine große Anzahl von Mandantendatenbanken bereitgestellt werden. Änderungen müssen zudem in den Bereitstellungsprozess für künftige Mandantendatenbanken eingeschlossen werden.
+Im [ersten Wingtip-SaaS-Tutorial](sql-database-saas-tutorial.md) wird veranschaulicht, wie die App eine Mandantendatenbank bereitstellen und im Katalog registrieren kann. Wie jede andere Anwendung wird die Wingtip-SaaS-App laufend weiterentwickelt, und gelegentlich sind Änderungen an der Datenbank erforderlich. Derartige Änderungen können ein neues oder geändertes Schema, neue oder geänderte Verweisdaten und routinemäßige Wartungsaufgaben sein, die eine optimale Leistung der App sicherstellen sollen. Bei einer SaaS-Anwendung müssen diese Änderungen u.U. koordiniert für eine große Anzahl von Mandantendatenbanken bereitgestellt werden. Damit diese Änderungen in künftigen Mandantendatenbanken angewendet werden, müssen sie in den Bereitstellungsprozess eingeschlossen werden.
 
 In diesem Tutorial werden zwei Szenarien erläutert: das Bereitstellen der Aktualisierungen von Verweisdaten für alle Mandanten und das Retuning eines Index für die Tabelle mit den Referenzdaten. Mit der Funktion [Elastische Aufträge](sql-database-elastic-jobs-overview.md) werden diese Vorgänge für alle Mandanten durchgeführt, sowie auch für die *goldene* Mandantendatenbank, die als Vorlage für neue Datenbanken verwendet wird.
 
@@ -34,7 +33,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 
-> * Erstellen eines Auftragskontos zum Abfragen mehrerer Mandanten
+> * Erstellen eines Auftragskontos
+> * Ausführen von Abfragen über mehrere Mandanten hinweg
 > * Aktualisieren von Daten in allen Mandantendatenbanken
 > * Erstellen eines Index für eine Tabelle in allen Mandantendatenbanken
 
@@ -45,7 +45,7 @@ Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Vor
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Die aktuelle Version von SQL Server Management Studio (SSMS) wurde installiert. [Herunterladen und Installieren von SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
-*In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Elastische Datenbankaufträge). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID für SaaSFeedback@microsoft.com mit dem Betreff „subject=Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Da es sich um eine eingeschränkte Vorschauversion handelt, wenden Sie sich bei auftretenden Fragen oder um Support zu erhalten an SaaSFeedback@microsoft.com.*
+*In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Elastische Datenbankaufträge). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID für SaaSFeedback@microsoft.com mit dem Betreff „subject=Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Die Vorschauversion ist eingeschränkt, wenden Sie sich daher an SaaSFeedback@microsoft.com, wenn Sie Fragen haben oder Support benötigen.*
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Einführung in SaaS-Schemaverwaltungsmuster
@@ -60,7 +60,7 @@ Ein Vorteil des SaaS-Musters mit einem Mandanten pro Datenbank ist die Datenabgr
 Es gibt eine neue Version von Elastische Aufträge, die nun eine integrierte Funktion von Azure SQL-Datenbank darstellt (und keine weiteren Dienste und Komponenten erfordert). Diese neue Version von Elastische Aufträge liegt derzeit als eingeschränkte Vorschauversion vor. Die eingeschränkte Vorschauversion unterstützt derzeit PowerShell zum Erstellen von Auftragskonten sowie T-SQL zum Erstellen und Verwalten von Aufträgen.
 
 > [!NOTE]
-> *In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Elastische Datenbankaufträge). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID für SaaSFeedback@microsoft.com mit dem Betreff „subject=Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Da es sich um eine eingeschränkte Vorschauversion handelt, wenden Sie sich bei auftretenden Fragen oder um Support zu erhalten an SaaSFeedback@microsoft.com.*
+> *In diesem Tutorial werden Funktionen des SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen (Elastische Datenbankaufträge). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID für SaaSFeedback@microsoft.com mit dem Betreff „subject=Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Die Vorschauversion ist eingeschränkt, wenden Sie sich daher an SaaSFeedback@microsoft.com, wenn Sie Fragen haben oder Support benötigen.*
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
@@ -89,14 +89,14 @@ Zum Erstellen eines neuen Auftrags verwenden wir eine Gruppe von gespeicherten S
 1. Stellen Sie außerdem eine Verbindung mit dem Mandantenserver her: tenants1-\<user\>.database.windows.net
 1. Navigieren Sie zur Datenbank *contosoconcerthall* auf dem Server *tenants1*, und fragen Sie die Tabelle *VenueTypes* ab, um sich zu vergewissern, dass *Motorcycle Racing* und *Swimming Club* **nicht** in der Ergebnisliste enthalten sind.
 1. Öffnen Sie die Datei …\\Learning Modules\\Schema Management\\DeployReferenceData.sql.
-1. Ändern Sie \<user\>, und geben Sie an allen drei Stellen im Skript den Benutzernamen an, den Sie beim Bereitstellen der Wingtip-App verwendet haben.
+1. Ändern Sie die Anweisung „SET @wtpUser = &lt;user&gt;“, und ersetzen Sie den Wert „User“, der beim Bereitstellen der Wingtip-App verwendet wurde.
 1. Stellen Sie sicher, dass Sie mit der Datenbank „jobaccount“ verbunden sind, und drücken Sie **F5**, um das Skript auszuführen.
 
 * **sp\_add\_target\_group** erstellt den Zielgruppennamen DemoServerGroup, und nun müssen wir Zielelemente hinzufügen.
-* **sp\_add\_target\_group\_member** fügt einen *Server*-Zielelementtyp hinzu, der vorsieht, dass alle Datenbanken auf diesem Server (beachten Sie, dass dies der Server customer1-&lt;WtpUser&gt; mit den Mandantendatenbanken ist) bei der Auftragsausführung in den Auftrag eingeschlossen werden müssen. Zweitens wird ein *Datenbank*-Zielelementtyp hinzugefügt, speziell die „goldene“ Datenbank baseTenantDB, die sich auf dem Server catalog-&lt;WtpUser&gt; befindet, und schließlich ein weiterer *Datenbank*-Zielgruppenelementtyp, der die Datenbank adhocanalytics enthält, welche in einem späteren Tutorial verwendet wird.
+* **sp\_add\_target\_group\_member** fügt einen *Server*-Zielelementtyp hinzu, der vorsieht, dass alle Datenbanken auf diesem Server (beachten Sie, dass dies der Server „tenants1-&lt;User&gt;“ mit den Mandantendatenbanken ist) bei der Auftragsausführung in den Auftrag eingeschlossen werden müssen. Zweitens wird ein *database*-Zielelementtyp hinzugefügt, speziell die „goldene“ Datenbank (basetenantdb), die sich auf dem Server „catalog-&lt;User&gt;“ befindet, und schließlich ein weiterer *database*-Zielgruppenelementtyp, der die Datenbank „adhocanalytics“ enthält, welche in einem späteren Tutorial verwendet wird.
 * **sp\_add\_job** erstellt einen Auftrag mit dem Namen „Reference Data Deployment“ (Verweisdatenbereitstellung).
 * **sp\_add\_jobstep** erstellt den Auftragsschritt mit dem T-SQL-Befehlstext zum Aktualisieren der Verweistabelle VenueTypes.
-* Die übrigen Ansichten im Skript zeigen das Vorhandensein der Objekte an und überwachen die Auftragsausführung. Überprüfen Sie den Statuswert in der Spalte **Lebenszyklus**. Der Auftrag wurde für alle Mandantendatenbanken und die zwei zusätzlichen Datenbanken mit der Verweistabelle erfolgreich abgeschlossen.
+* Die übrigen Ansichten im Skript zeigen das Vorhandensein der Objekte an und überwachen die Auftragsausführung. Verwenden Sie diese Abfragen, um den Statuswert in der **lifecycle**-Spalte zu überprüfen und zu ermitteln, wann der Auftrag in allen Mandantendatenbanken und den beiden zusätzlichen Datenbanken mit der Verweistabelle erfolgreich abgeschlossen wurde.
 
 1. Navigieren Sie in SSMS zur Datenbank *contosoconcerthall* auf dem Server *tenants1*, und fragen Sie die Tabelle *VenueTypes* ab, um sich zu vergewissern, dass *Motorcycle Racing* und *Swimming Club* jetzt in der Ergebnisliste **enthalten sind**.
 

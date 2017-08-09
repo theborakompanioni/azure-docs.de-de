@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0691d6730fddbf9b6145d4a39da94a1762516c2c
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: c77357b2cefc8081728cb20d08b00656ba60bea6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
@@ -201,7 +200,7 @@ Wenn eine Änderung für eines der Attribute der Chunks anfällt, sind die betro
 ## <a name="the-search-box"></a>Das Suchfeld
 Benutzer generieren (glücklicherweise) viel Inhalt. Sie sollten daher auch in der Lage sein, Inhalte zu suchen, die nicht direkt in Ihrem Stream erscheinen, da Sie vielleicht dem jeweiligen Ersteller nicht folgen oder einen eigenen, sechs Monate alten Post suchen.
 
-Dank und aufgrund von Azure DocumentDB können wir mit [Azure Search](https://azure.microsoft.com/services/search/) mühelos binnen weniger Minuten und ohne eine einzige Zeile Code (bis auf den Suchprozess und die Benutzeroberfläche natürlich) eine Suchmaschine implementieren.
+Dank und aufgrund von Azure Cosmos DB können wir mit [Azure Search](https://azure.microsoft.com/services/search/) mühelos binnen weniger Minuten und ohne eine einzige Zeile Code (bis auf den Suchprozess und die Benutzeroberfläche natürlich) ein Suchmodul implementieren.
 
 Warum ist das so einfach?
 

@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/02/2017
 ms.author: anandy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9bb29624324305f5295e0a50ef79d8f4c6d063c0
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
 ms.contentlocale: de-de
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---    
 
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualisieren des SSL-Zertifikats für eine Active Directory-Verbunddienste-Farm (AD FS)
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel wird beschrieben, wie Sie Azure AD Connect verwenden können, um das SSL-Zertifikat für eine AD FS-Farm (Active Directory Federation Services, Active Directory-Verbunddienste) zu aktualisieren. Wenn die Anmeldemethode in Azure AD Connect auf AD FS festgelegt ist, können Sie mit dem Tool Azure AD Connect das SSL-Zertifikat für die AD FS-Farm einfach aktualisieren. Dies kann für alle Verbund- und WAP-Server (Webanwendungsproxy) in drei einfachen Schritten erfolgen:
+In diesem Artikel wird beschrieben, wie Sie Azure AD Connect verwenden können, um das SSL-Zertifikat für eine AD FS-Farm (Active Directory Federation Services, Active Directory-Verbunddienste) zu aktualisieren. Sie können mit dem Tool Azure AD Connect das SSL-Zertifikat für die AD FS-Farm ganz einfach aktualisieren – auch dann, wenn die Anmeldemethode des Benutzers nicht auf AD FS festgelegt ist.
+
+Sie können den gesamten Vorgang der Aktualisierung des SSL-Zertifikats für die AD FS-Farm über alle Verbundserver und Webanwendungsproxy-Server (WAP) hinweg in drei einfachen Schritten ausführen:
 
 ![Drei Schritte](./media/active-directory-aadconnectfed-ssl-update/threesteps.png)
 

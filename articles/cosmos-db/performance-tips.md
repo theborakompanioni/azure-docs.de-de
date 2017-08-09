@@ -1,7 +1,7 @@
 ---
 title: "Leistungstipps – Azure Cosmos DB NoSQL | Microsoft-Dokumentation"
 description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB-Datenbanken vertraut.
-keywords: 'So wird&quot;s gemacht: Verbessern der Datenbankleistung'
+keywords: 'So wird''s gemacht: Verbessern der Datenbankleistung'
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 52c095c9d3c92e32961927ac34770bb34fc768d5
+ms.translationtype: HT
+ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
+ms.openlocfilehash: cab019480a14de1a1481abee800553c6545add70
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="performance-tips-for-azure-cosmos-db"></a>Leistungstipps für Azure Cosmos DB
@@ -49,7 +48,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
      Cosmos DB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Sowohl Direct TCP als auch HTTPS nutzen SSL für die erste Authentifizierung und Verschlüsselung des Datenverkehrs. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.
 
-     Bei der Verwendung von TCP im Gatewaymodus ist TCP-Port 443 der Cosmos DB-Port und 10250 der MongoDB-API-Port. Wenn Sie TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Cosmos DB dynamische TCP-Ports verwendet. Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt.
+     Bei der Verwendung von TCP im Gatewaymodus ist TCP-Port 443 der Cosmos DB-Port und 10255 der MongoDB-API-Port. Wenn Sie TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Cosmos DB dynamische TCP-Ports verwendet. Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt.
 
      Der Verbindungsmodus wird im Zuge der Erstellung der DocumentClient-Instanz mit dem ConnectionPolicy-Parameter konfiguriert. Bei Verwendung des direkten Modus kann das Protokoll auch innerhalb des ConnectionPolicy-Parameters festgelegt werden.
 
@@ -98,15 +97,13 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     Anforderungen an Cosmos DB erfolgen bei Verwendung des Gatewaymodus standardmäßig über HTTPS/REST und unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren MaxConnections-Wert festlegen (100 - 1.000), damit die Clientbibliothek mehrere Verbindungen zu Cosmos DB gleichzeitig nutzen kann. Ab .NET SDK 1.8.0 ist der Standardwert für [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) auf 50 festgelegt. Zur Erhöhung dieses Werts können Sie [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) auf einen höheren Wert festlegen.   
 4. **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
-     Ab Version 1.9.0 des DocumentDB .NET SDKs werden parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. (Weitere Informationen finden Sie unter [Arbeiten mit den SDKs](documentdb-partition-data.md#working-with-the-documentdb-sdks) und in den dazugehörigen [Codebeispielen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs).) Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern. Parallele Abfragen verfügen über zwei Parameter, die Benutzer optimieren können, um sie an ihre Anforderungen anzupassen: (a) MaxDegreeOfParallelism zum Steuern der maximalen Anzahl von Partitionen, die parallel abgefragt werden können, und (b) MaxBufferedItemCount zum Steuern der Anzahl von vorab abgerufenen Ergebnissen.
+     Ab Version 1.9.0 des DocumentDB .NET SDKs werden parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. (Weitere Informationen finden Sie unter [Arbeiten mit den SDKs](documentdb-partition-data.md#working-with-the-azure-cosmos-db-sdks) und in den dazugehörigen [Codebeispielen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs).) Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern. Parallele Abfragen verfügen über zwei Parameter, die Benutzer optimieren können, um sie an ihre Anforderungen anzupassen: (a) MaxDegreeOfParallelism zum Steuern der maximalen Anzahl von Partitionen, die parallel abgefragt werden können, und (b) MaxBufferedItemCount zum Steuern der Anzahl von vorab abgerufenen Ergebnissen.
 
-    (a) ***Optimieren von MaxDegreeOfParallelism\:***
-    Bei parallelen Abfragen werden mehrere Partitionen parallel abgefragt. Die Daten einer individuell partitionierten Sammlung werden in Bezug auf die Abfrage aber seriell abgerufen. Wenn Sie MaxDegreeOfParallelism also auf die Anzahl von Partitionen festlegen, ist die Wahrscheinlichkeit am höchsten, dass die bestmögliche Leistung für die Abfrage erzielt wird (vorausgesetzt, alle anderen Systembedingungen bleiben unverändert). Falls Ihnen die Anzahl von Partitionen nicht bekannt ist, können Sie MaxDegreeOfParallelism auf einen hohen Wert festlegen. Das System wählt für MaxDegreeOfParallelism dann den minimalen Wert aus (Anzahl von Partitionen, Benutzereingabe).
+    (a) ***Optimieren von MaxDegreeOfParallelism\:*** Bei parallelen Abfragen werden mehrere Partitionen parallel abgefragt. Die Daten einer individuell partitionierten Sammlung werden in Bezug auf die Abfrage aber seriell abgerufen. Wenn Sie MaxDegreeOfParallelism also auf die Anzahl von Partitionen festlegen, ist die Wahrscheinlichkeit am höchsten, dass die bestmögliche Leistung für die Abfrage erzielt wird (vorausgesetzt, alle anderen Systembedingungen bleiben unverändert). Falls Ihnen die Anzahl von Partitionen nicht bekannt ist, können Sie MaxDegreeOfParallelism auf einen hohen Wert festlegen. Das System wählt für MaxDegreeOfParallelism dann den minimalen Wert aus (Anzahl von Partitionen, Benutzereingabe).
 
     Es ist wichtig zu beachten, dass sich für parallele Abfragen die größten Vorteile ergeben, wenn die Daten in Bezug auf die Abfrage gleichmäßig auf alle Partitionen verteilt werden. Wenn die partitionierte Auflistung so partitioniert ist, dass sich alle Daten bzw. die meisten Daten, die von einer Abfrage zurückgegeben werden, auf einigen wenigen Partitionen befinden (schlimmstenfalls nur auf einer Partition), können aufgrund dieser Partitionierung Engpässe bei der Leistung auftreten.
 
-    (b) ***Optimieren von Tuning MaxBufferedItemCount\:***
-    Die parallele Abfrage ist so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch mit Ergebnissen verarbeitet. Diese Art des Abrufs führt zu einer Verbesserung der Latenz einer Abfrage. MaxBufferedItemCount ist der Parameter zum Begrenzen der Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie MaxBufferedItemCount auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Anzahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
+    (b) ***Optimieren von MaxBufferedItemCount\:*** Die parallele Abfrage ist so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch mit Ergebnissen verarbeitet. Diese Art des Abrufs führt zu einer Verbesserung der Latenz einer Abfrage. MaxBufferedItemCount ist der Parameter zum Begrenzen der Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie MaxBufferedItemCount auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Anzahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
 
     Beachten Sie, dass das vorherige Abrufen unabhängig von MaxDegreeOfParallelism funktioniert und dass nur ein Puffer für die Daten aller Partitionen vorhanden ist.  
 5. **Aktivieren der serverseitigen Garbage Collection**

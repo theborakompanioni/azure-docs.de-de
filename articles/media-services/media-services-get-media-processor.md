@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Medienprozessors | Microsoft-Dokumentation
+title: "Erstellen eines Medienprozessors mithilfe des Azure Media Services-SDK für .NET| Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie eine Medienprozessorkomponente erstellen können, um Medieninhalte für Azure Media Services zu codieren, zu ver- oder entschlüsseln, und um Formate zu konvertieren. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET."
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 88f6e1da090eb6088e54c6f81d0f83b1737d3c2c
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: cb14bebfaf073cb38bdc1f1718ef3d8c7f6c45fc
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Gewusst wie: Abrufen einer Media Processor-Instanz
@@ -31,21 +31,16 @@ ms.lasthandoff: 04/12/2017
 ## <a name="overview"></a>Übersicht
 Der Medienprozessor in Media Services ist für bestimmte Verarbeitungsaufgaben wie z. B. Codierung, Formatumwandlungen, Verschlüsselung oder Entschlüsselung von Medieninhalten zuständig. Normalerweise erstellen Sie einen Medienprozessor, wenn Sie eine Aufgabe zur Codierung, Verschlüsselung oder Formatumwandlung von Medieninhalten erstellen.
 
-Die folgende Tabelle enthält Name und Beschreibung der verfügbaren Medienprozessoren.
+## <a name="azure-media-processors"></a>Azure-Medienprozessoren 
 
-| Medienprozessorname | Beschreibung | Weitere Informationen |
-| --- | --- | --- |
-| Media Encoder Standard |Umfasst Standardfunktionen für bedarfsgesteuerte Codierung. |[Azure On-Demand Media Encoder – Überblick und Vergleich](media-services-encode-asset.md) |
-| Media Encoder Premium Workflow |Zur Ausführung von Codieraufgaben mit dem Media Encoder Premium Workflow. |[Azure On-Demand Media Encoder – Überblick und Vergleich](media-services-encode-asset.md) |
-| Azure Media Indexer |Macht Mediendateien und Inhalte durchsuchbar und generiert Untertitelspuren und Schlüsselwörter. |[Azure Media Indexer](media-services-index-content.md) |
-| Azure Media Hyperlapse (Vorschau) |Ermöglicht es Ihnen, die "Unregelmäßigkeiten" in Ihrem Video mithilfe von Videostabilisierung auszugleichen. Darüber hinaus können Sie Ihre Inhalte beschleunigen, um einen verwendbaren Clip zu erhalten. |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |Veraltet | |
-| Storage Decryption |Veraltet | |
-| Azure Media Packager |Veraltet | |
-| Azure Media Encryptor |Veraltet | |
+Das folgende Thema enthält Listen von Medienprozessoren:
+
+* [Codieren von Medienprozessoren](scenarios-and-availability.md#encoding-media-processors)
+* [Analytics-Medienprozessoren](scenarios-and-availability.md#analytics-media-processors)
 
 ## <a name="get-media-processor"></a>Abrufen von Medienprozessoren
-Das folgende Beispiel zeigt, wie Sie eine Medienprozessor-Instanz erstellen. Das folgende Codebeispiel setzt eine Variable auf Modulebene mit dem Namen **_context** voraus, die Zugriff auf den Serverkontext bietet. Siehe [Programmgesteuertes Herstellen einer Verbindung mit Media Services](media-services-dotnet-connect-programmatically.md).
+
+Das folgende Beispiel zeigt, wie Sie eine Medienprozessor-Instanz erstellen. Das folgende Codebeispiel setzt eine Variable auf Modulebene mit dem Namen **_context** voraus, die Zugriff auf den Serverkontext bietet. Siehe [Programmgesteuertes Herstellen einer Verbindung mit Media Services](media-services-use-aad-auth-to-access-ams-api.md).
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

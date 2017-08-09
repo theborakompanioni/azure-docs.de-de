@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: andrl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 53b9cdd948e6b4c1d4da9fe52f81816050332a62
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 8cddc7a8c9aa677b9c93bee3a7e05c226cc1f655
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
@@ -55,7 +54,7 @@ Dieser Ansatz von *„JavaScript als modernes T-SQL“* befreit die Anwendungsen
   * Es wird eine Abstraktionsschicht über den Rohdaten hinzugefügt, die es Datenarchitekten gestattet, ihre Anwendungen unabhängig von den Daten zu entwickeln. Dies ist aufgrund der komplizierten Annahmen, die bei der direkten Behandlung der Daten zur Anwendung hinzugefügt werden müssen, insbesondere bei schemafreien Daten von Vorteil.  
   * Durch diese Abstraktion können Unternehmen ihre Daten schützen, indem sie den Zugriff über die Scripts optimieren.  
 
-Die Erstellung und Ausführung von Datenbanktriggern, gespeicherten Prozeduren und benutzerdefinierten Abfrageoperatoren wird über die [REST-API](/rest/api/documentdb/), über [Azure Document DB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) und über [Client-SDKs](documentdb-sdk-dotnet.md) auf vielen Plattformen unterstützt. Hierzu zählen unter anderem .NET, Node.js und JavaScript.
+Die Erstellung und Ausführung von Datenbanktriggern, gespeicherten Prozeduren und benutzerdefinierten Abfrageoperatoren wird über die [REST-API](/rest/api/documentdb/), über [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) und über [Client-SDKs](documentdb-sdk-dotnet.md) auf vielen Plattformen unterstützt. Hierzu zählen unter anderem .NET, Node.js und JavaScript.
 
 In diesem Tutorial wird das [Node.js SDK mit Q Promises](http://azure.github.io/azure-documentdb-node-q/) verwendet, um die Syntax und Verwendung von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen (User Defined Functions, UDFs) zu veranschaulichen.   
 

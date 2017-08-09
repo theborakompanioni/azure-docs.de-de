@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: eae360dd3e627a82986cef32ef39860f60ffe51f
-ms.lasthandoff: 02/17/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 668ba10474fc1b01d5ebccbff1f50fe09ade5f30
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services-Fehlercodes
@@ -28,7 +28,7 @@ Wenn Sie Microsoft Azure Media Services verwenden, erhalten Sie möglicherweise 
 Die Anforderung enthält ungültige Informationen und wird aufgrund einer der folgenden Gründe abgelehnt:
 
 * Es ist eine nicht unterstützte API-Version angegeben. Die aktuellste Version finden Sie unter [Übersicht über die Media Services-REST-API](media-services-rest-how-to-use.md).
-* Die API-Version von Media Services ist nicht angegeben. Informationen zum Angeben der API-Version finden Sie unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md).
+* Die API-Version von Media Services ist nicht angegeben. Weitere Informationen zum Angeben der API-Version finden Sie unter [Media Services Operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) (Media Services-Vorgänge – REST-API-Referenz).
   
   > [!NOTE]
   > Wenn Sie .NET oder Java SDKs für die Verbindung mit Media Services verwenden, wird die API-Version für Sie angegeben, wenn Sie versuchen, eine Aktion in Media Services ausführen.
@@ -48,8 +48,8 @@ Die Anforderung konnte aus einem der folgenden Gründen nicht authentifiziert we
 
 * Fehlender Authentifizierungsheader
 * Ungültiger Authentifizierungsheaderwert
-  * Das Token ist abgelaufen. Wenn Sie die REST-APIs direkt verwenden, finden Sie unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md) Informationen zum Generieren eines neuen Authentifizierungstokens. Wenn Sie .NET oder Java SDKs verwenden, erstellen Sie ein CloudMediaContext- oder MediaContract-Objekt, um das Token zu generieren. Weitere Informationen hierzu finden Sie unter [Herstellen einer Verbindung mit einem Media Services-Konto über das Media Services SDK für .NET](media-services-dotnet-connect-programmatically.md).
-  * Das Token enthält eine ungültige Signatur.</li></ul></li></ul>
+  * Das Token ist abgelaufen. 
+  * Das Token enthält eine ungültige Signatur.
 
 ## <a name="403-forbidden"></a>403 Verboten
 Die Anforderung ist aus einem der folgenden Gründe nicht zulässig:

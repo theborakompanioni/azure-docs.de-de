@@ -3,7 +3,7 @@ title: "Größen von virtuellen Windows-Computern in Azure | Microsoft-Dokumenta
 description: "Listet die verschiedenen verfügbaren Größen für virtuelle Windows-Computer in Azure auf."
 services: virtual-machines-windows
 documentationcenter: 
-author: cynthn
+author: jonbeck7
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/16/2017
-ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 8eaf89c7f83d514b39f889b068bf1e84b9af4ca2
+ms.date: 07/28/2017
+ms.author: jonbeck
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: b3a674137ed3dd47188d4af0bc845104eabc885e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
@@ -30,9 +30,9 @@ Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtue
 
 | Typ                     | Größen           |    Beschreibung       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Allgemeiner Zweck](sizes-general.md)          | DSv2, Dv2, DS, D, Av2, A0-7 | Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. |
+| [Allgemeiner Zweck](sizes-general.md)          | Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7 | Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. |
 | [Computeoptimiert](sizes-compute.md)        | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Webserver, Network Appliances, Stapelverarbeitungsvorgänge und Anwendungsserver mit mittlerer Auslastung.        |
-| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md)         | M, GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu Kern. Hervorragend geeignet für relationale Datenbankserver, mittlere bis große Caches und In-Memory-Analysen.                 |
+| [Arbeitsspeicheroptimiert](../virtual-machines-windows-sizes-memory.md)         | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hohes Verhältnis von Speicher zu CPU. Hervorragend geeignet für relationale Datenbankserver, mittlere bis große Caches und In-Memory-Analysen.                 |
 | [Speicheroptimiert](../virtual-machines-windows-sizes-storage.md)        | Ls                | Datenträgerdurchsatz und -E/A auf hohem Niveau. Ideal für Big Data sowie SQL- und NoSQL-Datenbanken.                                                         |
 | [GPU](sizes-gpu.md)            | NV, NC            | Spezialisierte virtuelle Computer für intensives Grafikrendering und intensive Videobearbeitung. Mit einem oder mehreren GPUs verfügbar.       |
 | [High Performance Computing](sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den schnellsten und leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
@@ -48,11 +48,11 @@ Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtue
 
 ## <a name="rest-api"></a>REST-API
 
-Informationen zur Verwendung der REST-API, um Größen virtueller Computer abzufragen, finden Sie unter:
+Informationen zur Verwendung der REST-API, um VM-Größen abzufragen, finden Sie nachstehend:
 
-- [Auflisten der verfügbaren Größen virtueller Computer zur Größenänderung](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list-sizes-for-resizing)
-- [Auflisten der verfügbaren Größen virtueller Computer für ein Abonnement](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)
-- [Auflisten der verfügbaren Größen virtueller Computer in einer Verfügbarkeitsgruppe](
+- [List available virtual machine sizes for resizing (Auflisten der verfügbaren Größen virtueller Computer zur Größenänderung)](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list-sizes-for-resizing)
+- [List available virtual machine sizes for a subscription (Auflisten der verfügbaren Größen virtueller Computer für ein Abonnement)](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)
+- [List available virtual machine sizes in an availability set (Auflisten der verfügbaren Größen virtueller Computer in einer Verfügbarkeitsgruppe)](
 https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list-sizes-availability-set)
 
 ## <a name="acu"></a>ACU

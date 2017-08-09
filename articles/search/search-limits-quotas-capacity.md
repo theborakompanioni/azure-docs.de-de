@@ -15,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 06/07/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: d41a02b837d2cd0c478abdcf3068a5ccf7ed1b6f
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 60e63401e3915e62e1ec5ac03cd548c291580b24
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
@@ -49,13 +48,15 @@ Es gibt eine 1:1-Entsprechung zwischen Grenzwerten für Indizes und Grenzwerten 
 | Index: maximale Anzahl von Bewertungsprofilen pro Index |100 |100 |100 |100 |100 |100 |
 | Index: maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |
 | Indexer: maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |– <sup>2</sup> |
-| Indexer: maximale Ausführungszeit |3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |– <sup>2</sup> |
+| Indexer: maximale Ausführungszeit | 1–3 Minuten<sup>3</sup> |24 Stunden |24 Stunden |24 Stunden |24 Stunden |– <sup>2</sup> |
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |– <sup>2</sup> |
 | Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |– <sup>2</sup> |
 
 <sup>1</sup> Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
 
 <sup>2</sup> S3 HD unterstützt derzeit keine Indexer. Wenden Sie sich an den Azure-Support, wenn Sie diese Funktion dringend benötigen.
+
+<sup>3</sup> Die maximale Indexerausführungszeit im Free-Tarif beträgt 3 Minuten für Blobquellen und 1 Minute für alle anderen Datenquellen.
 
 ## <a name="document-size-limits"></a>Dokumentgrößenlimits
 | Ressource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD |

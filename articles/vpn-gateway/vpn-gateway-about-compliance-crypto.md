@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 7b0736eeaab387312206f94322684c020894f6c5
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c789e6c278fc0c58c64f5d96e57f94aee5a6cefc
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Kryptografische Anforderungen und Azure-VPN-Gateways
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/31/2017
 In diesem Artikel wird erläutert, wie Sie Azure-VPN-Gateways so konfigurieren können, dass Ihre kryptografischen Anforderungen für standortübergreifende S2S-VPN-Tunnel und VNET-zu-VNET-Verbindungen in Azure erfüllt werden. 
 
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>IPsec- und IKE-Richtlinienparameter für Azure-VPN-Gateways
-Der IPsec- und IKE-Protokollstandard unterstützt ein breites Spektrum von Kryptografiealgorithmen in verschiedenen Kombinationen. Wenn Kunden keine bestimmte Kombination aus Kryptografiealgorithmen und Parametern anfordern, verwenden Azure-VPN-Gateways einen Satz von Standardvorschlägen. Die Standardrichtliniensätze wurden so gewählt, dass die maximale Interoperabilität mit einer Vielzahl von VPN-Geräten von Drittanbietern in Standardkonfigurationen gewährleistet ist. Somit können die Richtlinien und zahlreichen Vorschläge nicht alle möglichen Kombinationen aus verfügbaren Kryptografiealgorithmen und Schlüsselstärken abdecken.
+Der IPsec- und IKE-Protokollstandard unterstützt ein breites Spektrum von Kryptografiealgorithmen in verschiedenen Kombinationen. Wenn Kunden keine bestimmte Kombination aus Kryptografiealgorithmen und Parametern anfordern, verwenden Azure-VPN-Gateways einen Satz von Standardvorschlägen. Die Standardrichtliniensätze wurden so gewählt, dass maximale Interoperabilität mit einer Vielzahl von VPN-Geräten von Drittanbietern in Standardkonfigurationen gewährleistet ist. Somit können die Richtlinien und zahlreichen Vorschläge nicht alle möglichen Kombinationen aus verfügbaren Kryptografiealgorithmen und Schlüsselstärken abdecken.
 
 Der Standardrichtliniensatz für Azure-VPN-Gateways ist im Dokument [Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten](vpn-gateway-about-vpn-devices.md) aufgeführt.
 
@@ -38,11 +37,13 @@ Für Kommunikationsverbindungen, die spezifische Kryptografiealgorithmen oder Pa
 Beispielsweise nutzen die IKEv2-Hauptmodusrichtlinien für Azure-VPN-Gateways nur Diffie-Hellman-Gruppe 2 (1024 Bit), während Kunden möglicherweise stärkere Gruppen zur Verwendung in IKE angeben möchten, z.B. Gruppe 14 (2048 Bit), Gruppe 24 (2048-Bit-MODP-Gruppe) oder ECP (Gruppe für elliptische Kurve) 256 oder 384 Bit (Gruppe 19 bzw. Gruppe 20). Ähnliche Anforderungen gelten auch für IPsec-Schnellmodusrichtlinien.
 
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Benutzerdefinierte IPsec/IKE-Richtlinie mit Azure-VPN-Gateways
-Azure-VPN-Gateways unterstützen jetzt eine benutzerdefinierte IPsec/IKE-Richtlinie pro Verbindung. Sie können eine bestimmte Kombination aus Kryptografiealgorithmen für IPsec und IKE mit der gewünschten Schlüsselstärke für eine S2S- oder VNET-zu-VNET-Verbindung auswählen, wie im folgenden Beispiel gezeigt:
+Azure-VPN-Gateways unterstützen jetzt eine benutzerdefinierte IPsec/IKE-Richtlinie pro Verbindung. Für eine Standort-zu-Standort- oder eine VNET-zu-VNET-Verbindung können Sie eine bestimmte Kombination aus Kryptografiealgorithmen für IPsec und IKE mit der gewünschten Schlüsselstärke auswählen, wie im folgenden Beispiel gezeigt:
 
 ![IPsec/IKE-Richtlinie](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
-Sie können eine IPsec/IKE-Richtlinie erstellen und auf eine neue oder vorhandene Verbindung anwenden. Der entsprechende Workflow ist im Folgenden aufgeführt:
+Sie können eine IPsec/IKE-Richtlinie erstellen und auf eine neue oder vorhandene Verbindung anwenden. 
+
+### <a name="workflow"></a>Workflow
 
 1. Erstellen Sie die virtuellen Netzwerke, VPN-Gateways oder lokalen Netzwerkgateways für Ihre Netzwerktopologie entsprechend den Beschreibungen in anderen Anleitungen.
 2. Erstellen Sie eine IPsec/IKE-Richtlinie.

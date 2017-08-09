@@ -1,5 +1,5 @@
 ---
-title: "Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory | Microsoft Docs"
+title: "Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory | Microsoft-Dokumentation"
 description: "Verwaltungskonzepte und Vorgehensweisen für die Verwaltung einer benutzerdefinierten Domäne in Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -12,17 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 07/26/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: b1ea25a3ec4c10d1821ea876055b15e38d269432
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 5ae19bb370064de96cf466ca09b13d02563d65a4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
-Ein Domänenname ist ein wichtiger Bestandteil des Bezeichners für viele Verzeichnisressourcen: Er ist Teil eines Benutzernamens oder einer E-Mail-Adresse für einen Benutzer, Teil der Adresse für eine Gruppe und kann Teil des App-ID-URI für eine Anwendung sein. Eine Ressource in Azure Active Directory (Azure AD) kann einen Domänennamen enthalten, für den bereits geprüft wurde, ob er zu dem Verzeichnis gehört, das die Ressource enthält. Nur ein globaler Administrator kann Domänenverwaltungsaufgaben in Azure AD ausführen.
+Ein Domänenname kann ein wichtiger Bezeichner für viele Verzeichnisressourcen sein, z.B. als Teil folgender Elemente:
+
+* Benutzername oder E-Mail-Adresse für einen Benutzer
+* Adresse für einen Gruppe
+* App-ID-URI für eine Anwendung
+
+Eine Ressource in Azure Active Directory (Azure AD) kann einen Domänennamen enthalten, für den bereits geprüft wurde, ob er zu dem Verzeichnis gehört, das die Ressource enthält. Nur ein globaler Administrator kann Domänenverwaltungsaufgaben in Azure AD ausführen.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Informationen zum Verwalten der Domänennamen im Azure AD Admin Center finden Sie unter [Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory](active-directory-domains-manage-azure-portal.md).
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Festlegen des primären Domänennamens für Ihr Azure AD-Verzeichnis
 Wenn Ihr Verzeichnis erstellt wird, ist der anfängliche Domänenname (beispielsweise „contoso.onmicrosoft.com“) auch der primäre Domänenname für Ihr Verzeichnis. Der primäre Domänenname ist der Standarddomänenname, der verwendet wird, wenn Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/)oder in einem anderen Portal wie beispielsweise dem Office 365-Verwaltungsportal einen neuen Benutzer erstellen. Dies optimiert die Erstellung neuer Benutzer durch einen Administrator im Portal.

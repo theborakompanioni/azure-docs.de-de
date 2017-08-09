@@ -5,22 +5,22 @@ services: active-tenant
 documentationcenter: 
 author: curtand
 manager: femila
-editor: piotrci
+editor: 
 ms.assetid: 2b862b75-14df-45f2-a8ab-2a3ff1e2eb08
 ms.service: active-tenant
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2017
+ms.date: 07/27/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 142bd7fea8d1a409662282b9b23a2e1598c9e86e
+ms.reviewer: piotrci
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: d25d2c731034d0785bbd404ec693c4c41d913d01
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -46,7 +46,7 @@ Sie können jeden Azure AD-Mandanten unabhängig voneinander konfigurieren, dami
 * Dem Connector des Azure Active Directory-Mandanten für Forefront Identity Manager, um Daten mit mindestens einer lokalen Gesamtstruktur und/oder anderen Datenquellen als Azure AD zu synchronisieren
 
 ## <a name="add-an-azure-ad-tenant"></a>Hinzufügen eines Azure AD-Mandanten
-Um einen Azure AD-Mandanten im klassischen Azure-Portal hinzuzufügen, wählen Sie die Azure Active Directory-Erweiterung auf der linken Seite aus, und tippen Sie auf **Hinzufügen**.
+Um einen Azure AD-Mandanten im Azure-Portal hinzuzufügen, melden Sie sich mit einem globalen Azure AD-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie auf der linken Seite **Neu** aus.
 
 > [!NOTE]
 > Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Mandanten keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Ihr Azure-Abonnement gekündigt oder abgelaufen ist, können Sie weiterhin mithilfe von Azure PowerShell, Azure Graph-API oder Office 365 Admin Center auf Ihre Mandantendaten zugreifen. Sie können dem Mandanten auch ein anderes Abonnement zuordnen.

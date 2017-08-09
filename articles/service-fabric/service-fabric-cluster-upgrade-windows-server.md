@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: a6f74374582d551e2540d1ebd5e9677c92330e09
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 5075f7e7f082a31be3ed30cdce57e89da070dfdb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-on-windows-server-cluster"></a>Upgraden der eigenständigen Azure Service Fabric-Instanz im Windows Server-Cluster
@@ -188,6 +187,23 @@ Nachdem Sie die Probleme behoben haben, die zu dem Rollback geführt haben, init
 
 
 ## <a name="upgrade-the-cluster-configuration"></a>Upgraden der Clusterkonfiguration
+Bevor Sie das Konfigurationsupgrade initiieren, können Sie die neue JSON-Datei für die Clusterkonfiguration durch Ausführen des PowerShell-Skripts im eigenständigen Paket testen.
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
+
+```
+oder
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
+
+```
+
+Einige Konfigurationen können nicht aktualisiert werden, z.B. Endpunkte, Clusternamen, Knoten-IP-Adressen usw. Damit wird die neue JSON-Datei für die Clusterkonfiguration anhand der alten getestet, und es werden Fehler im PowerShell-Fenster ausgegeben, wenn es Probleme gibt.
+
 Um die Clusterkonfiguration upzugraden, führen Sie den Befehl **Start-ServiceFabricClusterConfigurationUpgrade** aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
 
 ```powershell

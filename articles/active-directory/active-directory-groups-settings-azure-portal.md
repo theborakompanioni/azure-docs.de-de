@@ -1,5 +1,4 @@
 ---
-
 title: Verwalten von Gruppeneigenschaften in Azure Active Directory | Microsoft-Dokumentation
 description: "Bearbeiten der Eigenschaften und anderer Konfigurationseinstellungen für eine Gruppe in Azure Active Directory"
 services: active-directory
@@ -13,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ad714d4543f2c1990a2262de456f607c876f738d
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 24f5da884a7d9f1d07c32419316d2c046d54d739
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Verwalten der Einstellungen für eine Gruppe in Azure Active Directory
@@ -31,10 +29,10 @@ In diesem Artikel wird erläutert, wie Sie die Einstellungen für eine Gruppe in
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
-   ![Öffnen der Benutzerverwaltung](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
+   ![Öffnen des Blatts „Benutzer und Gruppen“](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.
 
-   ![Öffnen des Blatts „Gruppen“](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
+   ![Öffnen des Blatts „Alle Gruppen“](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen** eine Gruppe aus.
 5. Wählen Sie auf dem Blatt **Gruppe – *Gruppenname*** die Option **Eigenschaften** aus.
 

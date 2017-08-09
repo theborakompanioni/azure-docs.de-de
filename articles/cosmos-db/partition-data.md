@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 5f501bdb0a3c478a436d729dfe045ad8e39bd3bb
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: e2d2847276e553d7511241ff323c3e00aad8e5c9
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -184,7 +183,7 @@ Um bei Azure Cosmos DB eine effektive Skalierung zu erzielen, müssen Sie beim E
 Im Folgenden sehen wir uns einige Szenarien aus dem echten Leben sowie sinnvolle Partitionsschlüssel für jedes Szenario an:
 * Wenn Sie ein Benutzerprofil-Back-End implementieren, ist die Benutzer-ID eine gute Wahl für den Partitionsschlüssel.
 * Wenn Sie IoT-Daten speichern, z.B. zum Gerätezustand, ist eine Geräte-ID eine gute Wahl für den Partitionsschlüssel.
-* Wenn Sie DocumentDB für die Protokollierung von Zeitreihendaten verwenden, ist der Hostname oder die Prozess-ID eine gute Wahl für den Partitionsschlüssel.
+* Wenn Sie Azure Cosmos DB für die Protokollierung von Zeitreihendaten verwenden, ist der Hostname oder die Prozess-ID eine gute Wahl für den Partitionsschlüssel.
 * Wenn Sie über eine mehrinstanzenfähige Architektur verfügen, ist die Mandanten-ID eine gute Wahl für Partitionsschlüssel.
 
 In einigen Fällen – z.B. bei IoT und Benutzerprofilen – kann der Partitionsschlüssel mit Ihrer ID (Dokumentenschlüssel) identisch sein. In anderen Fällen, wie etwa bei den Zeitreihendaten, kann sich der Partitionsschlüssel von der ID unterscheiden.

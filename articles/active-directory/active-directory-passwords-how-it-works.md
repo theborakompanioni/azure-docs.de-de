@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 44426571e3fd8aed090ccccc0dcc46dca8098906
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 0fa05ee6a2df13845024e770a82f50ab7f75bafd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
@@ -225,7 +225,7 @@ Das Azure AD Connect-Tool sendet regelmäßig Pings/Keep-Alives an ServiceBus-En
 
 Das im Azure AD Connect-Dienstprogramm angegebene Konto muss über Berechtigungen zum Zurücksetzen und Ändern des Kennworts sowie über Schreibberechtigungen für LockoutTime und Schreibberechtigungen für „pwdLastSet“ und erweiterte Rechte entweder für das Stammobjekt **jeder Domäne** in dieser Gesamtstruktur **ODER** für die Benutzerorganisationseinheiten verfügen, die innerhalb des Bereichs für die SSPR liegen sollen.
 
-Wenn Sie nicht sicher sind, auf welches Konto sich die oben genannten Angaben beziehen, öffnen Sie die Azure Active Directory Connect-Konfigurationsoberfläche, und klicken Sie auf die Option „Lösung prüfen“. Das Konto, dem Sie Berechtigungen hinzufügen müssen, wird unter „Synchronisierte Verzeichnisse“ angezeigt.
+Wenn Sie nicht sicher sind, auf welches Konto sich die oben genannten Angaben beziehen, öffnen Sie die Azure Active Directory Connect-Konfigurationsoberfläche, und klicken Sie auf die Option „Aktuelle Konfiguration anzeigen“. Das Konto, dem Sie Berechtigungen hinzufügen müssen, wird unter „Synchronisierte Verzeichnisse“ angezeigt.
 
 Durch das Festlegen dieser Berechtigungen kann das MA-Dienstkonto für jede Gesamtstruktur Kennwörter im Namen der Benutzerkonten innerhalb dieser Gesamtstruktur verwalten. **Wenn Sie diese Berechtigungen nicht gewähren, erhalten die Benutzer – obwohl das Zurückschreiben scheinbar ordnungsgemäß konfiguriert ist – Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud verwalten.**
 

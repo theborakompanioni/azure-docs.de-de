@@ -1,5 +1,5 @@
 ---
-title: "Richtlinien für die Bereitstellung von Windows Server Active Directory in Azure Virtual Machines | Microsoft Docs"
+title: "Richtlinien für die Bereitstellung von Windows Server Active Directory in Azure Virtual Machines | Microsoft-Dokumentation"
 description: "Wenn Sie wissen, wie Sie die AD Domain Services und AD-Verbunddienste lokal bereitstellen, können Sie sich darüber informieren, wie diese auf Azure Virtual Machines funktionieren."
 services: active-directory
 documentationcenter: 
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2017
+ms.date: 07/26/2017
 ms.author: femila
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 4e76a20c7c7eef9a51c6c0373785fd810c09e34a
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 342d9e2787add3d04f1b744152e135db98848179
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern
@@ -109,7 +108,7 @@ Weitere Informationen dazu, welche Auswirkungen sich für DCs ergeben, finden Si
 Ab Windows Server 2012 sind in AD DS zusätzliche Sicherungsmechanismen integriert (siehe [Einführung in die Virtualisierung der Active Directory Domain Services](https://technet.microsoft.com/library/hh831734.aspx)). Mit diesen Sicherheitsmechanismen sind virtualisierte Domänencontroller besser vor den oben beschriebenen Problemen geschützt, solange die zugrunde liegende Hypervisorplattform „VM-GenerationID“ unterstützt. Azure unterstützt „VM-GenerationID“, sodass Domänencontroller, die Windows Server 2012 oder höher auf virtuellen Azure-Computern ausführen, über diese zusätzlichen Sicherheitsmechanismen verfügen.
 
 > [!NOTE]
-> Sie sollten einen virtuellen Computer herunterfahren und neu starten, von der die Domänencontroller-Rolle in Azure im Rahmen des Gastbetriebssystems ausgeführt wird, anstatt die Option **Herunterfahren** im Azure-Portal oder im klassischen Portal zu verwenden. Wenn Sie das Portal zum Herunterfahren einer VM verwenden, wird jetzt die Zuordnung der VM aufgehoben. Eine VM mit aufgehobener Zuordnung hat den Vorteil, dass sie keine Kosten verursacht. Es wird aber auch die „VM-GenerationID“ zurückgesetzt, und dies ist für einen DC nicht wünschenswert. Wenn die „VM-GenerationID“ zurückgesetzt wird, wird dies auch für die „invocationID“ der AD DS-Datenbank durchgeführt, der RID-Pool wird verworfen, und SYSVOL wird als nicht autoritativ gekennzeichnet. Weitere Informationen finden Sie unter [Einführung in die Virtualisierung der Active Directory Domain Services (AD DS)](https://technet.microsoft.com/library/hh831734.aspx) und [Sichere Virtualisierung von DFSR](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx).
+> Sie sollten einen virtuellen Computer, der die Domänencontrollerrolle in Azure im Rahmen des Gastbetriebssystems ausführt, herunterfahren und neu starten, anstatt die Option **Herunterfahren** im Azure-Portal zu verwenden. Wenn Sie das Portal zum Herunterfahren einer VM verwenden, wird jetzt die Zuordnung der VM aufgehoben. Eine VM mit aufgehobener Zuordnung hat den Vorteil, dass sie keine Kosten verursacht. Es wird aber auch die „VM-GenerationID“ zurückgesetzt, und dies ist für einen DC nicht wünschenswert. Wenn die „VM-GenerationID“ zurückgesetzt wird, wird dies auch für die „invocationID“ der AD DS-Datenbank durchgeführt, der RID-Pool wird verworfen, und SYSVOL wird als nicht autoritativ gekennzeichnet. Weitere Informationen finden Sie unter [Einführung in die Virtualisierung der Active Directory Domain Services (AD DS)](https://technet.microsoft.com/library/hh831734.aspx) und [Sichere Virtualisierung von DFSR](http://blogs.technet.com/b/filecab/archive/2013/04/05/safely-virtualizing-dfsr.aspx).
 > 
 > 
 
@@ -127,7 +126,7 @@ Es kann auch sein, dass Sie eine Netzwerkanwendung unter Azure bereitstellen mö
 
 ## <a name="contrasts-between-deploying-windows-server-active-directory-domain-controllers-on-azure-virtual-machines-versus-on-premises"></a>Unterschiede zwischen der Bereitstellung von Windows Server Active Directory-Domänencontrollern auf Azure Virtual Machines und der lokalen Bereitstellung
 * Für jedes Windows Server Active Directory-Bereitstellungsszenario mit mehr als einer einzelnen VM ist die Verwendung eines Azure Virtual Network erforderlich, um die Konsistenz der IP-Adressen sicherzustellen. Beachten Sie, dass in dieser Anleitung davon ausgegangen wird, dass DCs in einem Azure Virtual Network ausgeführt werden.
-* Wie bei lokalen Domänencontrollern auch, werden statische IP-Adressen empfohlen. Eine statische IP-Adresse kann nur mit Azure PowerShell konfiguriert werden. Weitere Informationen finden Sie unter [Static Internal IP Address for Virtual Machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/) (Statische interne IP-Adresse für virtuelle Computer). Wenn Sie Überwachungssysteme oder andere Lösungen nutzen, mit denen die Konfiguration statischer IP-Adressen im Gastbetriebssystem überprüft wird, können Sie die gleiche statische IP-Adresse den Netzwerkadapter-Eigenschaften der VM zuweisen. Beachten Sie aber, dass der Netzwerkadapter verworfen wird, wenn die VM einer Dienstreparatur unterzogen wird oder sie im klassischen Portal heruntergefahren und die Zuordnung der Adresse aufgehoben wird. In diesem Fall muss die statische IP-Adresse im Gastbetriebssystem zurückgesetzt werden.
+* Wie bei lokalen Domänencontrollern auch, werden statische IP-Adressen empfohlen. Eine statische IP-Adresse kann nur mit Azure PowerShell konfiguriert werden. Weitere Informationen finden Sie unter [Static Internal IP Address for Virtual Machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/) (Statische interne IP-Adresse für virtuelle Computer). Wenn Sie Überwachungssysteme oder andere Lösungen nutzen, mit denen die Konfiguration statischer IP-Adressen im Gastbetriebssystem überprüft wird, können Sie die gleiche statische IP-Adresse den Netzwerkadapter-Eigenschaften der VM zuweisen. Beachten Sie aber, dass der Netzwerkadapter verworfen wird, wenn die VM einer Dienstreparatur unterzogen oder sie im Portal heruntergefahren und die Zuordnung der Adresse aufgehoben wird. In diesem Fall muss die statische IP-Adresse im Gastbetriebssystem zurückgesetzt werden.
 * Die Bereitstellung von virtuellen Computern in einem virtuellen Netzwerk impliziert nicht, dass eine Verbindung mit einem lokalen Netzwerk besteht (oder dass diese erforderlich ist). Es bedeutet lediglich, dass das virtuelle Netzwerk dies ermöglicht. Sie müssen ein virtuelles Netzwerk für die private Kommunikation zwischen Azure und Ihrem lokalen Netzwerk erstellen. Sie müssen einen VPN-Endpunkt im lokalen Netzwerk bereitstellen. Die VPN-Verbindung wird von Azure zum lokalen Netzwerk eingerichtet. Weitere Informationen finden Sie unter [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md) und [Konfigurieren eines Site-to-Site-VPN im Azure-Portal](../vpn-gateway/vpn-gateway-site-to-site-create.md).
 
 > [!NOTE]

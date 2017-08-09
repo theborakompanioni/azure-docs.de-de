@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/10/2017
 ms.author: sujayt
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 7c30f5164b9fe7ff6044bbf23767a5db9a0f7c30
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: e8ff96587a840236adfb277b3a33b11db71f7d8e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
@@ -63,16 +62,35 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 #### <a name="windows"></a>Windows
 
-- 64-Bit Windows Server 2012 R2
+- Windows Server 2016 (Server Core und Server mit Desktopdarstellung)*
+- Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2 mit mindestens SP1
 
+>[!NOTE]
+>
+> \*Windows Server 2016, Nano Server wird nicht unterstützt.
+
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7, 6.8, 7.1, 7.2, 7.3
+- Red Hat Enterprise Linux 6.7, 6.8, 7.0, 7.1, 7.2, 7.3
 - CentOS 6.5, 6.6, 6.7, 6.8, 7.0, 7.1, 7.2, 7.3
+- Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+- Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
 - SUSE Linux Enterprise Server 11 SP3
+
+>[!NOTE]
+>
+> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung, auf denen das „cloud-init“-Paket zum Konfigurieren von Cloud-VMs verwendet wird, kann bei einem Failover (abhängig von der „cloud-init“-Konfiguration) die kennwortbasierte Anmeldung deaktiviert sein. Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem das Kennwort im Azure-Portal im Menü „Einstellungen“ (im Abschnitt SUPPORT + PROBLEMBEHANDLUNG) der VM nach erfolgtem Failover zurückgesetzt wird.
+
+### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Ubuntu-Kernelversionen für virtuelle Azure-Computer
+
+**Release** | **Mobility Service-Version** | **Kernelversion** |
+--- | --- | --- |
+14.04 LTS | 9.9 | 3.13.0-24-generic bis 3.13.0-117-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-75-generic |
+14.04 LTS | 9.10 | 3.13.0-24-generic bis 3.13.0-121-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-81-generic |
+16.04 LTS | 9.10 | 4.4.0-21-generic bis 4.4.0-81-generic,<br/>4.8.0-34-generic bis 4.8.0-56-generic,<br/>4.10.0-14-generic bis 4.10.0-24-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Unterstützte Dateisysteme und Gastspeicherkonfigurationen auf virtuellen Azure-Computern unter Linux
 
@@ -88,7 +106,7 @@ Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geo
 -- | --
 Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
 Europa | Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Norden; Europa, Westen
-Asien | Indien, Süden; Indien, Mitte; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen
+Asien | Indien, Süden; Indien, Mitte; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen; Korea, Mitte; Korea, Süden
 Australien   | „Australien, Osten“, „Australien, Südosten“
 
 >[!NOTE]
@@ -113,8 +131,8 @@ Mit Site Recovery migrierte virtuelle Computer | Unterstützt | Wenn ein VMware-
 
 **Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**
 --- | --- | ---
-Maximale Datenträgergröße für das Betriebssystem | Von Azure unterstützte maximale Datenträgergröße für das Betriebssystem| Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)
-Maximale Größe des Datenträgers für Daten | Von Azure unterstützte maximale Datenträgergröße für Daten| Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)
+Maximale Datenträgergröße für das Betriebssystem | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)
+Maximale Größe des Datenträgers für Daten | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)
 Anzahl von Datenträgern für Daten | Bis zu 64, sofern von einer bestimmten Größe für virtuelle Azure-Computer unterstützt | Weitere Informationen finden Sie unter [Größen für virtuelle Azure-Computer](../virtual-machines/windows/sizes.md).
 Temporärer Datenträger | Immer von der Replikation ausgeschlossen | Temporäre Datenträger sind immer von der Replikation ausgeschlossen. Gemäß den Azure-Richtlinien sollten Sie keine persistenten Daten auf einem temporären Datenträger speichern. Unter [Temporärer Datenträger für virtuelle Azure-Computer](../storage/storage-about-disks-and-vhds-windows.md#temporary-disk) finden Sie weitere Informationen.
 Datenänderungsrate auf dem Datenträger | Maximal 6 Mbit/s pro Datenträger | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über 6 Mbit/s liegt, kann die Replikation nicht folgen. Wenn nur gelegentlich viele Daten anfallen und die Datenänderungsrate zeitweise über 6 Mbit/s liegt und dann zurückgeht, kann die Replikation folgen. In diesem Fall kann es möglicherweise zu etwas verzögerten Wiederherstellungspunkten kommen.
@@ -122,7 +140,7 @@ Datenträger in Standardspeicherkonten | Unterstützt |
 Datenträger in Storage Premium-Konten | Unterstützt | Wenn ein virtueller Computer Datenträger in Premium- und Standard-Speicherkonten aufweist, können Sie für jeden Datenträger ein eigenes Zielspeicherkonto auswählen, um sicherzustellen, dass die gleiche Speicherkonfiguration in der Zielregion vorhanden ist.
 Verwaltete Standard-Datenträger | Nicht unterstützt |  
 Verwaltete Premium-Datenträger | Nicht unterstützt |
-Speicherplätze | Nicht unterstützt |         
+Speicherplätze | Unterstützt |         
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | Für Cache- und Zielspeicherkonten können Sie ein Speicherkonto mit aktiviertem SSE auswählen.     
 Azure Disk Encryption (ADE) | Nicht unterstützt |
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer hinzufügen oder entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer wieder aktivieren.
@@ -130,7 +148,7 @@ Ausschließen von Datenträgern | Nicht unterstützt|   Temporäre Datenträger 
 LRS | Unterstützt |
 GRS | Unterstützt |
 RA-GRS | Unterstützt |
-ZRS | Unterstützt |  
+ZRS | Nicht unterstützt |  
 Kalter und heißer Speicher | Nicht unterstützt | Datenträger für virtuelle Computer werden auf kaltem und heißem Speicher nicht unterstützt.
 
 >[!IMPORTANT]

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4466a5aa1d55b178a584832d03f68d307767d167
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 39dd859d60e7f1dcf697e3c59b8f084e400bbae0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -83,7 +83,7 @@ Wenn die erfolgreiche Überwachung auf Ihrem Domänencontroller aktiviert ist, w
 
 ## <a name="manual-reset-of-azure-ad-seamless-sso"></a>Manuelles Zurücksetzen vom nahtlosen SSO in Azure AD
 
-Wenn die Problembehandlung nicht hilft, verwenden Sie die folgenden Schritte, um die Funktion auf Ihrem Mandanten manuell zurückzusetzen:
+Wenn die Problembehandlung nicht hilft, können Sie die Funktion auf Ihrem Mandanten manuell zurücksetzen. Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Schritt 1: Importieren Sie das PowerShell-Modul „Nahtlose SSO“
 
@@ -94,7 +94,7 @@ Wenn die Problembehandlung nicht hilft, verwenden Sie die folgenden Schritte, um
 
 ### <a name="step-2-get-the-list-of-ad-forests-on-which-seamless-sso-has-been-enabled"></a>Schritt 2: Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die nahtlose einmaliges Anmelden aktiviert wurde.
 
-1. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Administratorkontos Ihres Azure AD-Mandanten ein.
+1. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Geben Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten an, wenn Sie dazu aufgefordert werden.
 2. Rufen Sie `Get-AzureADSSOStatus` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
 ### <a name="step-3-disable-seamless-sso-for-each-ad-forest-that-it-was-set-it-up-on"></a>Schritt 3: Deaktivieren Sie die nahtlose SSO für jede AD-Gesamtstruktur, auf der sie eingerichtet wurde.

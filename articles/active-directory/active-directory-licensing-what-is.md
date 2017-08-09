@@ -13,27 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2017
+ms.date: 05/24/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
-ms.openlocfilehash: 7df8805139b6e3cc23041a8201b496fb7fce8063
+ms.custom: oldportal;it-pro;H1Hack27Feb2017
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 9da5bb6987a9eb3398abe0d6066f1945620df9a4
 ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="what-is-microsoft-azure-active-directory-licensing-in-the-azure-classic-portal"></a>Was ist die Microsoft Azure Active Directory-Lizenzierung im klassischen Azure-Portal?
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
-> * [Klassisches Azure-Portal](active-directory-licensing-what-is.md)
+> * [Azure-Portal-Anweisungen abrufen](active-directory-licensing-get-started-azure-portal.md)
+> * [Informationen zum klassischen Azure-Portal](active-directory-licensing-what-is.md)
 >
 >
-
 
 Azure Active Directory (Azure AD) ist die IDaaS-Lösung (Identity as a Service) und -Plattform von Microsoft. Azure AD wird in einer Reihe von funktionalen und technischen Versionen angeboten. Diese reichen von Azure AD Free, die mit anderen Microsoft-Diensten wie Office 365, Dynamics, Microsoft Intune und Azure (Azure AD generiert keine Nutzungsgebühren in diesem Modus) verfügbar ist, bis hin zu kostenpflichtigen Versionen von Azure AD wie Enterprise Mobility Suite (EMS), Azure AD Premium und Basic sowie Azure Multi-Factor Authentication (MFA). Wie bei vielen der Microsoft-Onlinedienste werden die meisten kostenpflichtigen Versionen von Azure AD über Berechtigungen pro Benutzer bereitgestellt, wie auch in Office 365, Microsoft Intune und Azure AD. In diesen Fällen entspricht der Erwerb des Diensts einem oder mehreren Abonnements, und jedes Abonnement umfasst eine im Voraus bezahlte Anzahl von Lizenzen in Ihrem Mandanten. Berechtigungen pro Benutzer werden durch Lizenzzuweisung erreicht und erstellen eine Verknüpfung zwischen dem Benutzer und dem Produkt, sodass die Komponenten des Diensts für den Benutzer aktiviert werden und eine der vorausbezahlten Lizenzen nutzt wird.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Informationen zum Zuweisen von Administratorrollen im Azure AD Admin Center finden Sie unter [Lizenzieren Sie sich selbst und Ihre Benutzer in Azure Active Directory](active-directory-licensing-get-started-azure-portal.md).
 
 [Testen Sie Azure AD Premium jetzt.](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
 

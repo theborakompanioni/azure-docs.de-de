@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2017
+ms.date: 07/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 9c9eff8c828329b9d8358f88b90c174c64f5c29f
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4f1d5f4cc48470f8906edb28628006dd1996bd3a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
@@ -29,9 +29,9 @@ Die Resource Manager-Vorlage, die Sie bereitstellen, kann entweder eine lokale D
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-<a id="deploy-local-template" />
+Wenn die Azure CLI nicht installiert ist, können Sie die [Cloud Shell](#deploy-template-from-cloud-shell) verwenden.
 
-## <a name="deploy-a-template-from-your-local-machine"></a>Bereitstellen einer Vorlage von Ihrem lokalen Computer aus
+## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
 
 Beim Bereitstellen von Ressourcen in Azure gehen Sie folgendermaßen vor:
 
@@ -60,13 +60,16 @@ Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird 
 "provisioningState": "Succeeded",
 ```
 
-## <a name="deploy-a-template-from-an-external-source"></a>Bereitstellen einer Vorlage aus einer externen Quelle
+## <a name="deploy-external-template"></a>Bereitstellen einer externen Vorlage
 
 Anstatt Resource Manager-Vorlagen auf dem lokalen Computer zu speichern, könnten Sie sie vorzugsweise an einem externen Speicherort speichern. Sie können Vorlagen in einem Quellcodeverwaltungs-Repository (z.B. GitHub) speichern. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie sie auch in einem Azure-Speicherkonto speichern.
 
 Verwenden Sie zum Bereitstellen einer externen Vorlage den **template-uri**-Parameter. Verwenden Sie den URI im Beispiel, um die Beispielvorlage aus GitHub bereitzustellen.
    
 ```azurecli
+az login
+
+az group create --name ExampleGroup --location "Central US"
 az group deployment create \
     --name ExampleDeployment \
     --resource-group ExampleGroup \
@@ -75,6 +78,59 @@ az group deployment create \
 ```
 
 Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlage, was in den meisten Szenarien funktioniert, da die Vorlage keine vertraulichen Daten enthalten sollte. Wenn Sie vertrauliche Daten (z.B. ein Administratorkennwort) angeben müssen, übergeben Sie diesen Wert als sicheren Parameter. Wenn Sie jedoch keinen öffentlichen Zugriff auf Ihre Vorlage wünschen, können Sie sie schützen, indem Sie sie in einem privaten Speichercontainer speichern. Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token (Shared Access Signature) erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md).
+
+## <a name="deploy-template-from-cloud-shell"></a>Bereitstellen der Vorlage über Cloud Shell
+
+Mit [Cloud Shell](../cloud-shell/overview.md) können Sie Befehle der Azure-Befehlszeilenschnittstelle ausführen, um Ihre Vorlage bereitzustellen. Die Vorlage muss allerdings zuerst in die Dateifreigabe für Ihre Cloud Shell-Instanz geladen werden. Für den Fall, dass Sie Cloud Shell noch nicht verwendet haben, finden Sie unter [Übersicht über Azure Cloud Shell (Vorschau)](../cloud-shell/overview.md) Informationen zum Einrichten von Cloud Shell.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.   
+
+2. Wählen Sie Ihre Cloud Shell-Ressourcengruppe aus. Namensmuster: `cloud-shell-storage-<region>`.
+
+   ![Auswählen der Ressourcengruppe](./media/resource-group-template-deploy-cli/select-cs-resource-group.png)
+
+3. Wählen Sie das Speicherkonto für Ihre Cloud Shell-Instanz aus.
+
+   ![Auswählen des Speicherkontos](./media/resource-group-template-deploy-cli/select-storage.png)
+
+4. Wählen Sie **Dateien** aus.
+
+   ![Auswählen von Dateien](./media/resource-group-template-deploy-cli/select-files.png)
+
+5. Wählen Sie die Dateifreigabe für Cloud Shell aus. Namensmuster: `cs-<user>-<domain>-com-<uniqueGuid>`.
+
+   ![Auswählen der Dateifreigabe](./media/resource-group-template-deploy-cli/select-file-share.png)
+
+6. Wählen Sie **Verzeichnis hinzufügen** aus.
+
+   ![Hinzufügen des Verzeichnisses](./media/resource-group-template-deploy-cli/select-add-directory.png)
+
+7. Nennen Sie es **templates**, und wählen Sie **OK** aus.
+
+   ![Benennen des Verzeichnisses](./media/resource-group-template-deploy-cli/name-templates.png)
+
+8. Wählen Sie Ihr neues Verzeichnis aus.
+
+   ![Auswählen des Verzeichnisses](./media/resource-group-template-deploy-cli/select-templates.png)
+
+9. Wählen Sie die Option **Hochladen**.
+
+   ![Auswählen von „Hochladen“](./media/resource-group-template-deploy-cli/select-upload.png)
+
+10. Suchen Sie Ihre Vorlage, und laden Sie sie hoch.
+
+   ![Hochladen der Datei](./media/resource-group-template-deploy-cli/upload-files.png)
+
+11. Öffnen Sie die Eingabeaufforderung.
+
+   ![Öffnen von Cloud Shell](./media/resource-group-template-deploy-cli/start-cloud-shell.png)
+
+12. Geben Sie in der Cloud Shell-Instanz folgende Befehle ein:
+
+   ```azurecli
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
+   ```
 
 ## <a name="parameter-files"></a>Parameterdateien
 

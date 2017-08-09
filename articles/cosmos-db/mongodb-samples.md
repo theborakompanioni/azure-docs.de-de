@@ -1,6 +1,6 @@
 ---
 title: Verwenden von MongoDB-APIs zum Erstellen einer Azure Cosmos DB-App | Microsoft-Dokumentation
-description: "Ein Tutorial, das mithilfe von DocumentDB-APIs für MongoDB eine Onlinedatenbank erstellt."
+description: "Ein Tutorial, das mithilfe von Azure Cosmos DB-APIs für MongoDB eine Onlinedatenbank erstellt."
 keywords: MongoDB-Beispiele
 services: cosmos-db
 author: AndrewHoh
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5afe7e716bc33e2d6d07edf15ab1686466c05bb8
+ms.translationtype: HT
+ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
+ms.openlocfilehash: 433d2e585c884a10e7e923a0b27c179a95410d01
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Erstellen von Azure Cosmos DB: API für MongoDB-App mithilfe von Node.js
@@ -49,7 +48,7 @@ Um dieses Beispiel zu verwenden, müssen Sie Folgendes tun:
     var MongoClient = require('mongodb').MongoClient;
     var assert = require('assert');
     var ObjectId = require('mongodb').ObjectID;
-    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10250/?ssl=true';
+    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
 
     var insertDocument = function(db, callback) {
     db.collection('families').insertOne( {
@@ -127,7 +126,7 @@ Um dieses Beispiel zu verwenden, müssen Sie Folgendes tun:
 2. Ändern Sie die folgenden Variablen in der *app.js*-Datei gemäß Ihren Kontoeinstellungen (informieren Sie sich darüber, wie Sie Ihre [Verbindungszeichenfolge](connect-mongodb-account.md) finden):
    
     ```nodejs
-    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10250/?ssl=true';
+    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
 3. Öffnen Sie Ihr bevorzugtes Terminal, führen Sie **npm install mongodb --save** aus, und führen Sie dann Ihre App mit **node app.js** aus.

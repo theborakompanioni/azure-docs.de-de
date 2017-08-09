@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/05/2017
+ms.date: 08/01/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: ba380d88704d33353518c55fdc91493e804c0746
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 01ef2f0309848be5a891749178196e60fff2930e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
-# <a name="working-with-virtual-network-gateway-skus-old-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (alte SKUs)
+# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
 
-Dieser Artikel enthält Informationen über die alten SKUs für virtuelle Netzwerkgateways. Informationen zu den aktuellen SKUs finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
+Dieser Artikel enthält Informationen über die Legacy-SKUs (alte SKUs) für virtuelle Netzwerkgateways. Die Legacy-SKUs sind weiterhin in beiden Bereitstellungsmodellen für VPN-Gateways funktionsfähig, die bereits erstellt wurden. Klassische VPN-Gateways verwenden weiterhin die Legacy-SKUs für vorhandene Gateways und für neue Gateways. Wenn Sie neue Resource Manager-VPN-Gateways erstellen, verwenden Sie die neuen Gateway-SKUs. Informationen zu den neuen SKUs finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 ## <a name="gateway-skus"></a>Gateway-SKUs
 
@@ -39,10 +38,31 @@ Dieser Artikel enthält Informationen über die alten SKUs für virtuelle Netzwe
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="migrating-to-the-new-gateway-skus"></a>Migrieren zu den neuen Gateway-SKUs
+## <a name="resize"></a>Ändern der Größe eines Gateways (Ändern einer Gateway-SKU)
+
+Sie können die Größe einer Gateway-SKU innerhalb einer SKU-Familie ändern. Wenn Sie z.B. eine Standard-SKU haben, können Sie die Größe in eine HighPerformance-SKU ändern. Die Größe Ihrer VPN-Gateways kann zwischen den alten SKUs und den neuen SKU-Familien nicht geändert werden. Beispielsweise können Sie nicht von einer Standard-SKU zu einer VpnGw2-SKU wechseln. 
+
+Um die Größe einer Gateway-SKU für das klassische Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
+
+```powershell
+Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
+
+Um die Größe einer Gateway-SKU für das Resource Manager-Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
+
+```powershell
+$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+```
+
+## <a name="migrate"></a>Migrieren zu den neuen Gateway-SKUs
+
+Wenn Sie mit dem Resource Manager-Bereitstellungsmodell arbeiten, können Sie zu den neuen Gateway-SKUs migrieren. Bei Verwendung des klassischen Bereitstellungsmodells können Sie nicht zu den neuen SKUs migrieren und müssen stattdessen weiterhin die Legacy-SKUs verwenden.
 
 [!INCLUDE [Migrate SKU](../../includes/vpn-gateway-migrate-legacy-sku-include.md)]
 
+## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu den neuen Gateway-SKUs finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpngateways.md#gwsku).
 
-
+Weitere Informationen zu Konfigurationseinstellungen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).

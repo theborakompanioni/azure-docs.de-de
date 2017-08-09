@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: a3f2e8634981ac158312e6b9700db92415e9e6c5
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: b5a1edd08819e82437c5b22d8eb131665d7c9645
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
@@ -50,7 +49,7 @@ Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompiliere
 **Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für „EndpointUrl“, „AuthorizationKey“, „CollectionThroughput“ und „DocumentTemplate“ (optional).
 
 > [!NOTE]
-> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/) , um die Kosten pro Sammlung abschätzen zu können. Cosmos DB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer DocumentDB-Sammlungen nach dem Testen löschen oder verringern.
+> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/) , um die Kosten pro Sammlung abschätzen zu können. Azure Cosmos DB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer Azure Cosmos DB-Sammlungen nach dem Testen löschen oder verringern.
 > 
 > 
 

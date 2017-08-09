@@ -13,20 +13,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2016
+ms.date: 07/25/2016
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6221f5fa113bf58ed3f5e0767b79b2b647005c71
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 398abb0a56f1a12ad563dce889c602af4a5b9bcf
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI-Tutorial für Azure Cosmos DB: Visualisieren von Daten mithilfe des Power BI-Connectors
 [PowerBI.com](https://powerbi.microsoft.com/) ist ein Onlinedienst zum Erstellen und Freigeben von Dashboards und Berichten mit Daten, die für Sie und Ihr Unternehmen wichtig sind.  Power BI Desktop ist ein dediziertes Berichterstellungstool, mit dem Sie Daten aus verschiedenen Datenquellen abrufen, die Daten zusammenführen und transformieren, leistungsstarke Berichte und Visualisierungen erstellen und Berichte in Power BI veröffentlichen können.  Mit der neuesten Version von Power BI Desktop können Sie jetzt über den Cosmos DB-Connector für Power BI eine Verbindung mit Ihrem Cosmos DB-Konto herstellen.   
 
-In diesem Power BI-Tutorial gehen wir die Schritte zum Herstellen einer Verbindung mit einem Cosmos DB-Konto in Power BI Desktop durch, navigieren zu einer Sammlung, aus der die Daten mithilfe des Navigators extrahiert werden sollen, transformieren JSON-Daten mit dem Abfrage-Editor von Power BI Desktop in ein Tabellenformat und erstellen und veröffentlichen einen Bericht in PowerBI.com.
+In diesem Power BI-Tutorial gehen wir die Schritte zum Herstellen einer Verbindung mit einem Cosmos DB-Konto in Power BI Desktop durch, navigieren zu einer Sammlung, aus der die Daten mithilfe des Navigators extrahiert werden sollen, transformieren JSON-Daten mit dem Abfrage-Editor von Power BI Desktop in ein Tabellenformat und erstellen und veröffentlichen einen Bericht in PowerBI.com.
 
 Nach Abschluss dieses Power BI-Tutorials können Sie die folgenden Fragen beantworten:  
 
@@ -37,19 +36,19 @@ Nach Abschluss dieses Power BI-Tutorials können Sie die folgenden Fragen beant
 * Wie kann ich meine Berichte in PowerBI.com veröffentlichen und freigeben?
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Vergewissern Sie sich vor dem Ausführen der Anweisungen dieses Power BI-Tutorials, dass Sie über Folgendes verfügen:
+Vergewissern Sie sich vor dem Ausführen der Anweisungen dieses Power BI-Tutorials, dass Sie über Zugriff auf folgende Ressourcen verfügen:
 
 * [Die neueste Version von Power BI Desktop](https://powerbi.microsoft.com/desktop).
 * Zugriff auf unser Demokonto oder Daten in Ihrem Cosmos DB-Konto.
-  * Das Demokonto ist mit den Daten zu Vulkanen gefüllt, die in diesem Tutorial enthalten sind. Für dieses Demokonto, das nur zur Demonstration dient, gelten keine SLAs.  Wir behalten uns das Recht vor, Änderungen an diesem Demokonto vorzunehmen, dazu gehören u. a. das Kündigen des Kontos, das Ändern des Schlüssels, das Einschränken des Zugriffs, das Ändern und Löschen der Daten sowie weitere Änderungen, jederzeit und ohne Vorankündigung oder Grund.
+  * Das Demokonto ist mit den Daten zu Vulkanen gefüllt, die in diesem Tutorial enthalten sind. Für dieses Demokonto, das nur zur Demonstration dient, gelten keine SLAs.  Wir behalten uns das Recht vor, Änderungen an diesem Demokonto vorzunehmen, dazu gehören u.a. das Kündigen des Kontos, das Ändern des Schlüssels, das Einschränken des Zugriffs, das Ändern und Löschen der Daten sowie weitere Änderungen, jederzeit und ohne Vorankündigung oder Grund.
     * URL: https://analytics.documents.azure.com
     * Schlüssel mit Leseberechtigung: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * Sie können aber auch ein eigenes Konto erstellen. Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Datenbankkontos über das Azure-Portal](https://azure.microsoft.com/documentation/articles/create-account/). Um anschließend Beispieldaten zu Vulkanen abzurufen, die den in diesem Tutorial verwendeten ähneln (aber keine GeoJSON-Blöcke enthalten), besuchen Sie die [NOAA-Website](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5), und importieren Sie die Daten dann mithilfe des [Azure Cosmos DB-Datenmigrationstools](import-data.md).
 
-Zum Freigeben von Berichten in PowerBI.com müssen Sie über ein Konto in PowerBI.com verfügen.  Weitere Informationen zur kostenlosen Power BI-Version und zu Power BI Pro erhalten Sie unter [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
+Zum Freigeben von Berichten in PowerBI.com müssen Sie über ein Konto in PowerBI.com verfügen.  Weitere Informationen zur kostenlosen Power BI-Version und zu Power BI Pro erhalten Sie unter [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
 
 ## <a name="lets-get-started"></a>Erste Schritte
-In diesem Tutorial wird angenommen, dass Sie als Geologe Vulkane auf der ganzen Welt studieren.  Die Daten zu Vulkanen werden in einem Cosmos DB-Konto gespeichert, und die JSON-Dokumente sehen wie das folgende aus.
+In diesem Tutorial wird angenommen, dass Sie als Geologe Vulkane auf der ganzen Welt studieren.  Die Daten zu Vulkanen werden in einem Cosmos DB-Konto gespeichert, und die JSON-Dokumente sehen wie das folgende Beispieldokument aus.
 
     {
         "Volcano Name": "Rainier",
@@ -68,7 +67,7 @@ In diesem Tutorial wird angenommen, dass Sie als Geologe Vulkane auf der ganzen 
           "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
-Sie möchten die Daten zu Vulkanen aus dem Cosmos DB-Konto abrufen und in einem interaktiven Power BI-Bericht wie dem folgenden visualisieren.
+Sie möchten die Daten zu Vulkanen aus dem Cosmos DB-Konto abrufen und in einem interaktiven Power BI-Bericht wie dem folgenden Bericht visualisieren.
 
 ![Nach Abschluss dieses Power BI-Tutorials mit dem Power BI-Connector können Sie Daten mit dem Power BI Desktop-Bericht zu Vulkanen visualisieren.](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
 
@@ -82,30 +81,35 @@ Sind Sie bereit, es zu versuchen? Lassen Sie uns anfangen.
    
     ![Power BI Desktop-Berichtsansicht – Power BI-Connector](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
 4. Wählen Sie das Menüband **Start** aus, und klicken Sie dann auf **Daten abrufen**.  Das Fenster **Daten abrufen** wird angezeigt.
-5. Klicken Sie auf **Azure**, wählen Sie **Microsoft Azure Cosmos DB (Beta)** aus, und klicken Sie dann auf **Verbinden**.  Das Fenster **Verbindung mit Microsoft Azure Cosmos DB** wird angezeigt.
-   
-    ![Power BI Desktop-Datenabruf – Power BI-Connector](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)
-6. Geben Sie die Endpunkt-URL des Cosmos DB-Kontos an, von dem Sie die Daten abrufen möchten, wie unten dargestellt, und klicken Sie dann auf **OK**. Sie können die URL aus dem Feld „URI“ auf dem Blatt **[Schlüssel](manage-account.md#keys)** des Azure-Portals nutzen oder das Demokonto verwenden. In diesem Fall lautet die URL `https://analytics.documents.azure.com`. 
+5. Klicken Sie auf **Azure**, wählen Sie **Microsoft Azure DocumentDB (Beta)** aus, und klicken Sie dann auf **Verbinden**. 
+
+    ![Power BI Desktop-Datenabruf – Power BI-Connector](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
+6. Klicken Sie auf der Seite **Connector (Vorschau)** auf **Fortfahren**. Das Fenster **Verbindung mit Microsoft Azure DocumentDB** wird angezeigt.
+7. Geben Sie die Endpunkt-URL des Cosmos DB-Kontos an, von dem Sie die Daten abrufen möchten, wie unten dargestellt, und klicken Sie dann auf **OK**. Um Ihr eigenes Konto zu verwenden, können Sie die URL aus dem Feld „URI“ auf dem Blatt **[Schlüssel](manage-account.md#keys)** des Azure-Portals abrufen. Geben Sie zum Verwenden des Demokontos `https://analytics.documents.azure.com` als URL ein. 
    
     Lassen Sie den Datenbanknamen, Sammlungsnamen und die SQL-Anweisung leer, da diese Felder optional sind.  Stattdessen verwenden wir den Navigator zum Auswählen der Datenbank und der Sammlung, um zu bestimmen, woher die Daten stammen.
    
     ![Power BI-Tutorial für den Power BI-Connector für Azure Cosmos DB – Fenster für Desktopverbindung](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-7. Wenn Sie zum ersten Mal eine Verbindung mit diesem Endpunkt herstellen, werden Sie aufgefordert, den Kontoschlüssel anzugeben.  Sie können den Schlüssel aus dem Feld **Primärschlüssel** auf dem Blatt **[Schreibgeschützte Schlüssel](manage-account.md#keys)** des Azure-Portals nutzen oder das Demokonto verwenden. In diesem Fall lautet der Schlüssel `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Geben Sie den Kontoschlüssel an, und klicken Sie auf **Verbinden**.
+8. Wenn Sie zum ersten Mal eine Verbindung mit diesem Endpunkt herstellen, werden Sie aufgefordert, den Kontoschlüssel anzugeben. Für Ihr eigenes Konto können Sie den Schlüssel aus dem Feld **Primärschlüssel** auf dem Blatt **[Schreibgeschützte Schlüssel](manage-account.md#keys)** des Azure-Portals abrufen. Für das Demokonto lautet der Schlüssel `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Geben Sie den richtigen Schlüssel ein, und klicken Sie dann auf **Verbinden**.
    
     Es wird empfohlen, den Schlüssel mit Leseberechtigung beim Erstellen von Berichten zu verwenden.  Dadurch wird verhindert, dass der Hauptschlüssel unnötig potenziellen Sicherheitsrisiken ausgesetzt wird. Der Schlüssel mit Leseberechtigung ist auf dem Blatt [Schlüssel](manage-account.md#keys) des Azure-Portals verfügbar. Alternativ können Sie die oben angegebenen Informationen für das Demokonto verwenden.
    
     ![Power BI-Tutorial für den Power BI-Connector für Azure Cosmos DB – Kontoschlüssel](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
-8. Wenn das Konto erfolgreich verbunden wurde, wird der **Navigator** angezeigt.  Der **Navigator** zeigt eine Liste der Datenbanken für das Konto an.
-9. Klicken Sie auf die Datenbank, aus der die Daten für den Bericht stammen sollen, und erweitern Sie sie. Wenn Sie das Demokonto nutzen, wählen Sie **volcanodb** aus.   
-10. Wählen Sie jetzt eine Sammlung aus, aus der Sie die Daten abrufen möchten. Wenn Sie die Demokonto verwenden, wählen Sie **volcano1**aus.
+    
+    > [!NOTE] 
+    > Wenn Sie eine Fehlermeldung erhalten, die besagt, dass die angegebene Datenbank nicht gefunden wurde, finden Sie weitere Informationen in der Problemumgehung zu diesem [Power BI-Problem](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200).
+    
+9. Wenn das Konto erfolgreich verbunden wurde, wird der **Navigator** angezeigt.  Der **Navigator** zeigt eine Liste der Datenbanken für das Konto an.
+10. Klicken Sie auf die Datenbank, aus der die Daten für den Bericht stammen sollen, und erweitern Sie sie. Wenn Sie das Demokonto nutzen, wählen Sie **volcanodb** aus.   
+11. Wählen Sie jetzt eine Sammlung aus, aus der Sie die Daten abrufen möchten. Wenn Sie die Demokonto verwenden, wählen Sie **volcano1**aus.
     
     Im Vorschaubereich wird eine Liste der **Datensatz** -Elemente angezeigt.  Ein Dokument wird mit dem Typ **Datensatz** in Power BI dargestellt. Auch ein geschachtelter JSON-Block innerhalb eines Dokuments ist ein **Datensatz**.
     
     ![Power BI-Tutorial für den Power BI-Connector für Azure Cosmos DB – Navigatorfenster](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
-11. Klicken Sie auf **Bearbeiten** , um den Abfrage-Editor zu starten, damit wir die Daten transformieren können.
+12. Klicken Sie auf **Bearbeiten**, um den Abfrage-Editor in einem neuen Fenster zu starten und die Daten zu transformieren.
 
 ## <a name="flattening-and-transforming-json-documents"></a>Vereinfachen und Transformieren von JSON-Dokumenten
-1. Im Abfrage-Editor von Power BI wird im mittleren Bereich die Spalte **Dokument** angezeigt.
+1. Wechseln Sie zum Abfrage-Editor-Fenster von Power BI, in dem im mittleren Bereich die Spalte **Dokument** angezeigt wird.
    ![Power BI Desktop – Abfrage-Editor](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
 2. Klicken Sie auf das Erweiterungssteuerelement rechts in der Spaltenüberschrift **Dokument**.  Das Kontextmenü mit einer Liste von Feldern wird angezeigt.  Wählen Sie die Felder aus, die Sie für Ihren Bericht benötigen, z.B. „Volcano Name“, „Country“, „Region“, „Location“, „Elevation“, „Type“, „Status“ und „Last Known Eruption“. Klicken Sie dann auf **OK**.
    

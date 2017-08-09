@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 25502e4124442ed1853e3c3d9226107328c29316
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: fb7d391e3118a9dccde5501c3f30c6f580932a30
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>Steuern des Azure-Web-App-Verkehrs mit Azure Traffic Manager
@@ -50,7 +49,7 @@ Beachten Sie die folgenden Aspekte, wenn Sie Azure Traffic Manager mit Azure ver
 * Die Web-App-Endpunkte, die Sie in einem Azure Traffic Manager-Profil festlegen, werden im Abschnitt **Domänennamen** auf der Konfigurationsseite für die Web-App im Profil angezeigt, dort jedoch nicht konfiguriert.
 * Nachdem Sie einem Profil eine Web-App hinzugefügt haben, wird in der **Website-URL** im Dashboard der Portalseite der Web-App die benutzerdefinierte Domänen-URL der Web-App angezeigt, wenn Sie diese eingerichtet haben. Anderenfalls wird die URL des Traffic Manager-Profils angezeigt (z. B. `contoso.trafficmgr.com`). Sowohl der direkte Domänenname der Web-App als auch die Traffic Manager-URL werden auf der Konfigurationsseite der Web-App im Abschnitt **Domänennamen** angezeigt.
 * Ihre benutzerdefinierten Domänennamen funktionieren wie erwartet. Sie fügen sie Ihren Web-Apps hinzu, müssen jedoch auch die DNS-Zuordnung konfigurieren, um auf die Traffic Manager-URL zu verweisen. Informationen zum Einrichten einer benutzerdefinierten Domäne für eine Azure-Web-App finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Azure-Website](app-service-web-tutorial-custom-domain.md).
-* Sie können einem Azure Traffic Manager-Profil nur Web-Apps hinzufügen, die sich im Standardmodus befinden.
+* Sie können einem Azure Traffic Manager-Profil nur Web-Apps hinzufügen, die sich im Standard- oder Premium-Modus befinden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Einen Überblick über die Konzepte und technischen Aspekte von Azure Traffic Manager finden Sie unter [Traffic Manager-Übersicht](../traffic-manager/traffic-manager-overview.md).

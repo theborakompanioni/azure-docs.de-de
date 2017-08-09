@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2017
 ms.author: yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 1a2e9af88c63d00cf6d08f5b1df24e2edcce9232
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 17211379ec61891982a02efca6730ca0da87c1ef
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell
 
-In diesem Artikel wird schrittweise beschrieben, wie Sie ein routenbasiertes Azure-VPN-Gateway konfigurieren, um eine Verbindung mit mehreren lokalen richtlinienbasierten VPN-Geräten herzustellen, indem benutzerdefinierte IPsec/IKE-Richtlinien für S2S-VPN-Verbindungen genutzt werden.
+In diesem Artikel wird beschrieben, wie Sie ein routenbasiertes Azure-VPN-Gateway konfigurieren, um eine Verbindung mit mehreren lokalen richtlinienbasierten VPN-Geräten herzustellen, indem benutzerdefinierte IPsec/IKE-Richtlinien für S2S-VPN-Verbindungen genutzt werden.
 
 ## <a name="about-policy-based-and-route-based-vpn-gateways"></a>Informationen zu richtlinienbasierten und routenbasierten VPN-Gateways
 
@@ -37,10 +36,10 @@ Richtlinien- *und* routenbasierte VPN-Geräte unterscheiden sich darin, wie die 
 Die beiden Modelle sind in den folgenden Diagrammen dargestellt:
 
 ### <a name="policy-based-vpn-example"></a>Beispiel für richtlinienbasiertes VPN
-![policybased](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
+![richtlinienbasiert](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
 
 ### <a name="route-based-vpn-example"></a>Beispiel für routenbasiertes VPN
-![routebased](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
+![routenbasiert](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
 
 ### <a name="azure-support-for-policy-based-vpn"></a>Azure-Unterstützung für richtlinienbasiertes VPN
 Azure unterstützt derzeit beide Modi von VPN-Gateways: routenbasierte VPN-Gateways und richtlinienbasierte VPN-Gateways. Diese werden auf unterschiedlichen internen Plattformen erstellt, und dies führt zu unterschiedlichen Spezifikationen:
@@ -56,18 +55,18 @@ Mit der benutzerdefinierten IPsec/IKE-Richtlinie können Sie jetzt routenbasiert
 
 > [!IMPORTANT]
 > 1. Zur Aktivierung dieser Konnektivität müssen Ihre lokalen richtlinienbasierten VPN-Geräte **IKEv2** unterstützen, damit eine Verbindung mit den routenbasierten Azure-VPN-Gateways hergestellt werden kann. Überprüfen Sie die Spezifikationen Ihres VPN-Geräts.
-> 2. Für die lokalen Netzwerke, für die Verbindungen über richtlinienbasierte VPN-Geräte mit diesem Mechanismus hergestellt werden, sind nur Verbindungen mit dem virtuellen Azure-Netzwerk möglich. **Die Umstellung auf andere lokale Netzwerke oder virtuelle Netzwerke über dasselbe Azure-VPN-Gateway ist nicht möglich**.
-> 3. Die Konfigurationsoption ist Teil der benutzerdefinierten IPsec/IKE-Verbindungsrichtlinie. Sie müssen die vollständige Richtlinie angeben (IPsec/IKE-Ver- und -Entschlüsselungsalgorithmen, Schlüsselstärken und SA-Gültigkeitsdauern), wenn Sie die Option für den richtlinienbasierten Datenverkehrsselektor aktivieren.
+> 2. Für die lokalen Netzwerke, für die Verbindungen über richtlinienbasierte VPN-Geräte mit diesem Mechanismus hergestellt werden, sind nur Verbindungen mit dem virtuellen Azure-Netzwerk möglich. **Die Übertragung auf andere lokale Netzwerke oder virtuelle Netzwerke über dasselbe Azure-VPN-Gateway ist nicht möglich**.
+> 3. Die Konfigurationsoption ist Teil der benutzerdefinierten IPsec/IKE-Verbindungsrichtlinie. Wenn Sie die Option für den richtlinienbasierten Datenverkehrsselektor aktivieren, müssen Sie die vollständige Richtlinie angeben (IPsec/IKE-Verschlüsselungsalgorithmen und -Integritätsalgorithmen, Schlüsselstärken und SA-Gültigkeitsdauern).
 
-Im Diagramm unten ist dargestellt, warum das Transitrouting per Azure-VPN-Gateway mit der Option für die richtlinienbasierte Vorgehensweise nicht funktioniert.
+Im folgenden Diagramm ist dargestellt, warum das Transitrouting per Azure-VPN-Gateway mit der Option für die richtlinienbasierte Vorgehensweise nicht funktioniert:
 
-![policybasedtransit](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
+![richtlinienbasierter Transit](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
 
-Wie im Diagramm zu sehen ist, verfügt das Azure-VPN-Gateway über Datenverkehrsselektoren vom virtuellen Netzwerk bis zu den einzelnen lokalen Netzwerkpräfixen, aber nicht über die verbindungsübergreifenden Präfixe. Beispielsweise können die lokalen Sites 2, 3 und 4 jeweils mit VNet1 kommunizieren, aber untereinander keine Verbindung über das Azure-VPN-Gateway herstellen. Im Diagramm sind die verbindungsübergreifenden Datenverkehrsselektoren zu sehen, die bei dieser Konfiguration nicht im Azure-VPN-Gateway verfügbar sind.
+Wie im Diagramm zu sehen ist, verfügt das Azure-VPN-Gateway über Datenverkehrsselektoren vom virtuellen Netzwerk bis zu den einzelnen lokalen Netzwerkpräfixen, aber nicht über die verbindungsübergreifenden Präfixe. Beispielsweise können die lokalen Standorte 2, 3 und 4 jeweils mit VNET1 kommunizieren, aber untereinander keine Verbindung über das Azure-VPN-Gateway herstellen. Im Diagramm sind die verbindungsübergreifenden Datenverkehrsselektoren zu sehen, die bei dieser Konfiguration nicht im Azure-VPN-Gateway verfügbar sind.
 
 ## <a name="configure-policy-based-traffic-selectors-on-a-connection"></a>Konfigurieren von richtlinienbasierten Datenverkehrsselektoren in einer Verbindung
 
-Die Anleitungen in diesem Artikel basieren auf dem gleichen Beispiel wie unter [Configure IPsec/IKE policy for S2S VPN or VNet-to-VNet connections](vpn-gateway-ipsecikepolicy-rm-powershell.md) (Konfigurieren einer IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen), um eine S2S-VPN-Verbindung herzustellen. Dies ist im folgenden Diagramm dargestellt:
+Die Anleitungen in diesem Artikel basieren auf dem gleichen Beispiel wie unter [Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNET-zu-VNET-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md), um eine S2S-VPN-Verbindung herzustellen. Dies ist im folgenden Diagramm dargestellt:
 
 ![s2s-policy](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
@@ -79,7 +78,7 @@ Workflow zum Aktivieren dieser Konnektivität:
 
 ## <a name="enable-policy-based-traffic-selectors-on-a-connection"></a>Aktivieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
 
-Stellen Sie sicher, dass Sie [Teil 3 des Artikels „Konfigurieren einer IPsec/IKE-Richtlinie“](vpn-gateway-ipsecikepolicy-rm-powershell.md) für diesen Abschnitt durchgearbeitet haben. Im Beispiel unten werden die gleichen Parameter und Schritte verwendet.
+Stellen Sie sicher, dass Sie [Teil 3 des Artikels „Konfigurieren einer IPsec/IKE-Richtlinie“](vpn-gateway-ipsecikepolicy-rm-powershell.md) für diesen Abschnitt durchgearbeitet haben. Im folgenden Beispiel werden die gleichen Parameter und Schritte verwendet:
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Schritt 1: Erstellen des virtuellen Netzwerks, VPN-Gateways und Gateways des lokalen Netzwerks
 
@@ -110,7 +109,7 @@ $LNGPrefix61   = "10.61.0.0/16"
 $LNGPrefix62   = "10.62.0.0/16"
 $LNGIP6        = "131.107.72.22"
 ```
-Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
+Sie müssen in den PowerShell-Modus wechseln, um die Resource Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
 Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
@@ -121,7 +120,7 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### <a name="2-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>2. Erstellen des virtuellen Netzwerks, VPN-Gateways und Gateways des lokalen Netzwerks
-Im Beispiel unten werden das virtuelle Netzwerk „TestVNet1“ mit drei Subnetzen und das VPN-Gateway erstellt. Beim Ersetzen der Werte ist es wichtig, dass Sie Ihrem Gatewaysubnetz immer den Namen „GatewaySubnet“ geben. Wenn Sie einen anderen Namen verwenden, tritt beim Erstellen des Gateways ein Fehler auf.
+Im folgenden Beispiel werden das virtuelle Netzwerk „TestVNet1“ mit drei Subnetzen und das VPN-Gateway erstellt. Beim Ersetzen der Werte ist es wichtig, dass Sie Ihrem Gatewaysubnetz immer den Namen „GatewaySubnet“ geben. Wenn Sie einen anderen Namen verwenden, tritt beim Erstellen des Gateways ein Fehler auf.
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -140,14 +139,14 @@ New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Locatio
 New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="step-2---creat-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>Schritt 2: Erstellen einer S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie
+### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>Schritt 2: Erstellen einer S2S-VPN-Verbindung mit einer IPsec/IKE-Richtlinie
 
 #### <a name="1-create-an-ipsecike-policy"></a>1. Erstellen einer IPsec/IKE-Richtlinie
 
 > [!IMPORTANT]
 > Sie müssen eine IPsec/IKE-Richtlinie erstellen, um für die Verbindung die Option „UsePolicyBasedTrafficSelectors“ zu aktivieren.
 
-Im Beispielskript unten wird eine IPsec/IKE-Richtlinie mit den folgenden Algorithmen und Parametern erstellt:
+Im folgenden Beispielskript wird eine IPsec/IKE-Richtlinie mit diesen Algorithmen und Parametern erstellt:
 * IKEv2: AES256, SHA384, DHGroup24
 * IPsec: AES256, SHA256, PFS24, SA-Gültigkeitsdauer von 3.600 Sekunden und 2.048 KB
 
@@ -156,7 +155,7 @@ $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA38
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2. Erstellen der S2S-VPN-Verbindung mit richtlinienbasierten Datenverkehrsselektoren und IPsec/IKE-Richtlinie
-Erstellen Sie eine S2S-VPN-Verbindung, und wenden Sie die oben erstellte IPsec/IKE-Richtlinie an. Achten Sie auf den zusätzlichen Parameter „-UsePolicyBasedTrafficSelectors $True“ zum Ermöglichen von richtlinienbasierten Datenverkehrsselektoren für die Verbindung.
+Erstellen Sie eine S2S-VPN-Verbindung, und wenden Sie die im vorherigen Schritt erstellte IPsec/IKE-Richtlinie an. Achten Sie auf den zusätzlichen Parameter „-UsePolicyBasedTrafficSelectors $True“, der richtlinienbasierte Datenverkehrsselektoren für die Verbindung ermöglicht.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
@@ -165,7 +164,7 @@ $lng6 = Get-AzureRmLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
 ```
 
-Nach dem Ausführen der Schritte wird für die S2S-VPN-Verbindung die oben definierte IPsec/IKE-Richtlinie verwendet, und für die Verbindung werden richtlinienbasierte Datenverkehrsselektoren aktiviert. Sie können die gleichen Schritte wiederholen, um lokalen richtlinienbasierten VPN-Geräten weitere Verbindungen über das Azure-VPN-Gateway hinzuzufügen.
+Nach dem Ausführen der Schritte wird für die S2S-VPN-Verbindung die definierte IPsec/IKE-Richtlinie verwendet, und für die Verbindung werden richtlinienbasierte Datenverkehrsselektoren aktiviert. Sie können die gleichen Schritte wiederholen, um lokalen richtlinienbasierten VPN-Geräten weitere Verbindungen über das Azure-VPN-Gateway hinzuzufügen.
 
 ## <a name="update-policy-based-traffic-selectors-for-a-connection"></a>Aktualisieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
 Im letzten Abschnitt wird veranschaulicht, wie Sie die Option für richtlinienbasierte Datenverkehrsselektoren für eine vorhandene S2S-VPN-Verbindung aktualisieren.
@@ -186,7 +185,7 @@ Mit der folgenden Zeile können Sie ermitteln, ob die richtlinienbasierten Daten
 $connection6.UsePolicyBasedTrafficSelectors
 ```
 
-Wenn für die Zeile „**True**“ zurückgegeben wird, sind richtlinienbasierte Datenverkehrsselektoren für die Verbindung konfiguriert. Andernfalls wird „**False**“ zurückgegeben.
+Wenn für die Zeile **True** zurückgegeben wird, sind richtlinienbasierte Datenverkehrsselektoren für die Verbindung konfiguriert. Andernfalls wird **False** zurückgegeben.
 
 ### <a name="3-update-the-policy-based-traffic-selectors-on-a-connection"></a>3. Aktualisieren von richtlinienbasierten Datenverkehrsselektoren für eine Verbindung
 Nachdem Sie die Verbindungsressource erhalten haben, können Sie die Option aktivieren oder deaktivieren.

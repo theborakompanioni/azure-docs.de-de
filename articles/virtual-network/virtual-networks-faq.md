@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: d66489b43e983f313028a846d2b7da1534c86b53
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 1032c4e7d378016e36c92efa9478be72e9a557c4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
@@ -59,7 +58,7 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 * Azure-Befehlszeilenschnittstelle (für klassische VNets und Resource Manager-VNets)
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welche Adressbereiche kann ich in meinen VNets verwenden?
-Sie können öffentliche IP-Adressbereiche und alle in [RFC 1918](http://tools.ietf.org/html/rfc1918)definierten IP-Adressbereiche verwenden.
+Alle in [RFC 1918](http://tools.ietf.org/html/rfc1918) definierten IP-Adressbereiche. Beispiel: 10.0.0.0/16.
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Können öffentliche IP-Adressen in VNets verwendet werden?
 Ja. Weitere Informationen zu öffentlichen IP-Adressbereichen finden Sie unter [Öffentlicher IP-Adressraum in einem virtuellen Netzwerk](virtual-networks-public-ip-within-vnet.md). Auf Ihre öffentlichen IP-Adressen kann nicht direkt über das Internet zugegriffen werden.

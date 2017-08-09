@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 946ec4d9c2638cf65f725341dfad1d08751473c6
-ms.openlocfilehash: 534c6e42ace9f42b25fe287de14b02732ed496a4
-ms.lasthandoff: 02/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 68391677b1724f23d52086be0c810385e93c7196
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Verwalten von Media Services-Entitäten mit REST 
@@ -32,7 +32,6 @@ Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von O
 
 Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten mit REST.
 
-
 >[!NOTE]
 > Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Beispielsweise wird jeder Auftragsdatensatz in Ihrem Konto, der vor dem 31. Dezember 2016 erstellt wurde, am 1. April 2017 automatisch gelöscht. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den in diesem Thema beschriebenen Code verwenden.
 
@@ -43,8 +42,7 @@ Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
 > [!NOTE]
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
-> 
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 
 ## <a name="adding-entities"></a>Hinzufügen von Entitäten
@@ -64,7 +62,6 @@ Im folgenden Beispiel wird veranschaulicht, wie eine AccessPolicy erstellt wird:
     Expect: 100-continue
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
-
 
 ## <a name="querying-entities"></a>Abfragen von Entitäten
 Das Abfragen und Auflisten von Entitäten ist unkompliziert und umfasst nur die HTTP-Anforderung GET und optional OData-Vorgänge.
@@ -172,8 +169,6 @@ Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem e
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
     Host: media.windows.net
     Content-Length: 0
-
-
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
