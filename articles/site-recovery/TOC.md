@@ -136,7 +136,7 @@
 ### [Azure IoT Hub](site-recovery-dynamicsax.md)
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
-### [SAP](site-recovery-workload.md#protect-sap)
+### [SAP](site-recovery-sap.md)
 ### [IIS-basierte Webanwendungen](site-recovery-iis.md)
 ### [Citrix XenApp und XenDesktop](site-recovery-citrix-xenapp-and-xendesktop.md)
 ### [Andere Workloads](site-recovery-workload.md#workload-summary)
