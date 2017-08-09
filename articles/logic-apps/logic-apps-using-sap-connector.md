@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 89cd987cee841ea24dce85c0249e0eb3489c8d90
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -36,9 +36,7 @@ Das lokale Datengateway ermöglicht das Verwalten von Daten und den sicheren Zug
 
 - Sie müssen die aktuelle SAP-Clientbibliothek auf den Computer herunterladen, auf dem Sie das Datengateway installiert haben, und installieren. Verwenden Sie eine der folgenden SAP-Versionen: 
     - SAP Server
-        - SAP ECC 6.0 Unicode
-        - SAP ECC 6.0 Unicode mit EHP 4.0
-        - SAP ECC 6.0 mit EHP 7.0 und allen EHP-Vorversionen
+        - SAP Server, der .NET Connector (NCo) 3.0 unterstützt
  
     - SAP Client
         - SAP .NET Connector (NCo) 3.0

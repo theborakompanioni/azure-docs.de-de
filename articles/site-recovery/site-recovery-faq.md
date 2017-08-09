@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 05/22/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 4ed866cf83ff1d38147c9aecf337fd05b025f01a
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 7ff58a488298573372b32f4daa495c9da1c0eaa2
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
@@ -105,7 +105,7 @@ Site Recovery ist nach ISO 27001:2013, 27018, HIPAA und DPA zertifiziert und dur
 Ja. Durch die Erstellung eines Site Recovery-Tresors in einer Region wird sichergestellt, dass alle Metadaten, die wir zum Ermöglichen und Orchestrieren von Replikation und Failover benötigen, innerhalb der geografischen Grenzen dieser Region bleiben.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Verschlüsselt Site Recovery die Replikation?
-Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die Verschlüsselung ruhender Daten (in Azure) unterstützt.
+Für virtuelle Computer und physische Server wird bei der Replikation zwischen lokalen Standorten die Verschlüsselung während der Übertragung unterstützt. Für virtuelle Computer und physische Server wird bei der Replikation in Azure sowohl die Verschlüsselung während der Übertragung als auch die [Verschlüsselung ruhender Daten (in Azure)](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) unterstützt.
 
 ## <a name="replication"></a>Replikation
 

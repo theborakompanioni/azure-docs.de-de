@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: ffe17f50db9afe7c562b0890e8ea24d517e31bf7
-ms.lasthandoff: 02/17/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 475c3ff696af89dd4ff627b04b986562fc2ace7a
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-contentkeys-with-rest"></a>Erstellen von ContentKeys mit REST
@@ -75,8 +75,7 @@ In diesem Thema wurden die Beispiele zum Generieren eines AES-Schlüssels, zur S
 > 
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
-> 
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 
 ## <a name="retrieve-the-protectionkeyid"></a>Abrufen der ProtectionKeyId

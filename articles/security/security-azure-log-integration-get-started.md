@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 05/20/2017
+ms.date: 07/26/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 02b3095bb77a122fddd74e636395628333a13936
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: a5c51817688140cc2778602b4c1d5184ae4729a0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure-Protokollintegration mit Azure-Diagnoseprotokollierung und Windows-Ereignisweiterleitung
@@ -136,7 +135,7 @@ Führen Sie die folgenden Schritte aus, um den Speicherschlüssel zu erhalten:
  ![Weitere Dienste](./media/security-azure-log-integration-get-started/more-services.png)
  3. Geben Sie **Speicher** in das Textfeld **Filter** ein. Klicken Sie auf **Speicherkonten** (dies wird nach der Eingabe von **Speicher** angezeigt).
 
-  ![Filterfeld](./media/security-azure-log-integration-get-started/filter.png)
+   ![Filterfeld](./media/security-azure-log-integration-get-started/filter.png)
  4. Es wird eine Liste der Speicherkonten angezeigt. Doppelklicken Sie auf das Konto, das Sie dem Protokollspeicher zugewiesen haben.
 
    ![Liste der Speicherkonten](./media/security-azure-log-integration-get-started/storage-accounts.png)
@@ -182,8 +181,8 @@ Weitere Informationen zur Azure-Protokollintegration finden Sie in folgenden Dok
 
 * [Microsoft Azure Log Integration for Azure logs (Microsoft Azure-Protokoll-Integration für Azure-Protokolle)](https://www.microsoft.com/download/details.aspx?id=53324): Download Center für Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
 * [Introduction to Azure log integration](security-azure-log-integration-overview.md) (Einführung in die Azure-Protokollintegration): Dieses Dokument stellt die Azure-Protokollintegration, die wichtigsten Funktionen sowie die Funktionsweise vor.
-* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
+* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird. Dies ist die derzeit geltende Empfehlung für die Konfiguration von SIEM-Komponenten. Holen Sie zunächst weitere Informationen bei Ihrem SIEM-Hersteller ein.
 * [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
-* [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration (Vorschau)](../security-center/security-center-integrating-alerts-with-log-integration.md) : In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
+* [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration](../security-center/security-center-integrating-alerts-with-log-integration.md): In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Aktivitätsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
 * [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.
 

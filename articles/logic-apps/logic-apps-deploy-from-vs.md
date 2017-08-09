@@ -15,17 +15,17 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: ad18896548449d85e2af8a91ddd90c8192db1ab2
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: e7f5cf483d22e4c60dedbe5176ceb0bc8b2b6e66
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
 # <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>Entwerfen, Erstellen und Bereitstellen von Azure Logic Apps in Visual Studio
 
-Azure Logic Apps lassen sich zwar hervorragend über das [Azure-Portal](https://portal.azure.com/) erstellen und verwalten, für das Entwerfen, die Erstellung und die Bereitstellung von Logik-Apps empfiehlt sich aber unter Umständen die Verwendung von Visual Studio. Visual Studio bietet umfassende Tools zum Erstellen von Logik-Apps mithilfe des Logik-Apps-Designers, zum Konfigurieren von Bereitstellungs- und Automatisierungsvorlagen sowie zum Bereitstellen in einer beliebigen Umgebung. 
+Azure Logic Apps lassen sich zwar hervorragend über das [Azure-Portal](https://portal.azure.com/) erstellen und verwalten, Sie können aber auch Visual Studio verwenden, um Logik-Apps zu entwerfen, zu erstellen und bereitzustellen. Visual Studio bietet umfassende Tools zum Erstellen von Logik-Apps mithilfe des Logik-Apps-Designers, zum Konfigurieren von Bereitstellungs- und Automatisierungsvorlagen sowie zum Bereitstellen in einer beliebigen Umgebung. 
 
 Eine Einführung in Azure Logic Apps finden Sie im Tutorial [Erstellen Ihrer ersten Logik-App über das Azure-Portal](logic-apps-create-a-logic-app.md).
 
@@ -106,7 +106,7 @@ Wenn Sie wieder zum vollständigen JSON-Ressourcencode zurückkehren möchten, k
 
 ### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>Hinzufügen von Verweisen auf abhängige Ressourcen zu Visual Studio-Bereitstellungsvorlagen
 
-Wenn Ihre Logik-App auf abhängige Ressourcen verweisen soll, können Sie in Ihrer Logik-App-Bereitstellungsvorlage [Azure Resource Manager-Vorlagenfunktionen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) (etwa Parameter) verwenden. So kann Ihre Logik-App beispielsweise auf eine Azure-Funktion oder auf ein Integrationskonto verweisen, die bzw. das Sie zusammen mit Ihrer Logik-App bereitstellen möchten. Halten Sie sich bei der Verwendung von Parametern in Ihrer Bereitstellungsvorlage an die folgenden Richtlinien, damit das Rendering des Designers für Logik-Apps ordnungsgemäß funktioniert. 
+Wenn Ihre Logik-App auf abhängige Ressourcen verweisen soll, können Sie in Ihrer Logik-App-Bereitstellungsvorlage [Azure Resource Manager-Vorlagenfunktionen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) verwenden. So kann Ihre Logik-App beispielsweise auf eine Azure-Funktion oder auf ein Integrationskonto verweisen, die bzw. das Sie zusammen mit Ihrer Logik-App bereitstellen möchten. Halten Sie sich bei der Verwendung von Parametern in Ihrer Bereitstellungsvorlage an die folgenden Richtlinien, damit das Rendering des Designers für Logik-Apps ordnungsgemäß funktioniert. 
 
 Logik-App-Parameter können in folgenden Arten von Triggern und Aktionen verwendet werden:
 
@@ -114,15 +114,16 @@ Logik-App-Parameter können in folgenden Arten von Triggern und Aktionen verwend
 *   Funktionen-App
 *   APIM-Aufruf
 *   Laufzeit-URL für API-Verbindung
+*   API-Verbindungspfad
 
-Außerdem können Sie folgende Vorlagenfunktionen verwenden: „list below“, „includes parameters“, „variables“, „resourceId“, „concat“ usw. Das folgende Beispiel zeigt, wie Sie die Ressourcen-ID einer Azure-Funktion ersetzen können:
+Außerdem können Sie Vorlagenfunktionen verwenden, wie z.B. „parameters“, „variables“, „resourceId“, „concat“ usw. Das folgende Beispiel zeigt, wie Sie die Ressourcen-ID einer Azure-Funktion ersetzen können:
 
 ```
 "parameters":{
     "functionName": {
-    "type":"string",
-    "minLength":1,
-    "defaultValue":"<FunctionName>"
+        "type":"string",
+        "minLength":1,
+        "defaultValue":"<FunctionName>"
     }
 },
 ```
@@ -131,16 +132,43 @@ Und hier sehen Sie, wo Sie „parameters“ verwenden können:
 
 ```
 "MyFunction": {
-        "type": "Function",
-        "inputs": {
+    "type": "Function",
+    "inputs": {
         "body":{},
         "function":{
-        "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
+            "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
         }
     },
     "runAfter":{}
 }
 ```
+Sie können auch den Service Bus-Vorgang zum Senden von Nachrichten parametrisieren:
+
+```
+"Send_message": {
+    "type": "ApiConnection",
+        "inputs": {
+            "host": {
+                "connection": {
+                    "name": "@parameters('$connections')['servicebus']['connectionId']"
+                }
+            },
+            "method": "post",
+            "path": "[concat('/@{encodeURIComponent(''', parameters('queueuname'), ''')}/messages')]",
+            "body": {
+                "ContentData": "@{base64(triggerBody())}"
+            },
+            "queries": {
+                "systemProperties": "None"
+            }
+        },
+        "runAfter": {}
+    }
+```
+> [!NOTE] 
+> „host.runtimeUrl“ ist optional und kann ggf. aus Ihrer Vorlage entfernt werden.
+> 
+
 
 > [!NOTE] 
 > Damit der Designer für Logik-Apps bei Verwendung von „parameters“ ordnungsgemäß funktioniert, müssen Standardwerte angegeben werden. Beispiel:

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/05/2017
+ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 4dcfad63fdc610160bd47a3b900591fb06585005
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: d0cbf7883a8737bcb10e9dd251c9792a12993f77
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>Sichern virtueller Linux-Computer in Azure
@@ -38,7 +38,7 @@ Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicheru
 
 Wenn der Azure Backup-Dienst eine Sicherung initiiert, löst er die Sicherungserweiterung zum Erstellen einer Momentaufnahme aus. Der Azure Backup-Dienst verwendet unter Linux die Erweiterung _VMSnapshotLinux_. Die Erweiterung wird während der ersten VM-Sicherung installiert, wenn die VM ausgeführt wird. Wenn die VM nicht ausgeführt wird, erstellt der Backup-Dienst eine Momentaufnahme des zugrunde liegenden Speichers (da keine Schreibvorgänge der Anwendung erfolgen, während die VM beendet ist).
 
-Nachdem der Azure Backup-Dienst die Momentaufnahme erstellt hat, werden die Daten in den Sicherungstresor übertragen. Um die Effizienz zu maximieren, werden vom Dienst nur diejenigen Datenblöcke bestimmt und übertragen, die seit der vorherigen Sicherung geändert wurden.
+Standardmäßig erstellt Azure Backup eine dateisystemkonsistente Sicherung für Linux-VMs, der Dienst kann aber auch für [anwendungskonsistente Sicherungen mithilfe des Pre-Skript- und Post-Skript-Frameworks](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) konfiguriert werden. Nachdem der Azure Backup-Dienst die Momentaufnahme erstellt hat, werden die Daten in den Sicherungstresor übertragen. Um die Effizienz zu maximieren, werden vom Dienst nur diejenigen Datenblöcke bestimmt und übertragen, die seit der vorherigen Sicherung geändert wurden.
 
 Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
 
@@ -95,7 +95,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
 6. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
 7. Wählen Sie den virtuellen Computer in der Liste aus.
 8. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung** wird geöffnet. 
-9. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung (Vorschau)** aus. Das Blatt **Dateiwiederherstellung (Vorschau)** wird geöffnet.
+9. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung** aus. Das Blatt **Dateiwiederherstellung** wird geöffnet.
 10. Wählen Sie in **Schritt 1: Auswählen eines Wiederherstellungspunkts** in der Dropdownliste einen Wiederherstellungspunkt aus.
 11. In **Schritt 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** klicken Sie auf die Schaltfläche **Ausführbare Datei herunterladen**. Speichern Sie die heruntergeladene Datei auf dem lokalen Computer.
 7. Klicken Sie auf **Skript herunterladen**, um die Skriptdatei lokal herunterzuladen.

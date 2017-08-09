@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 07/25/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: f27bc3689f228809e9db8f61485ea0c8b4b302d1
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: ce19c24905c9ea93a7a35134fe6035b788d8af22
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="resource-policy-overview"></a>Übersicht über Ressourcenrichtlinien
@@ -195,7 +194,7 @@ Die Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgend
 
 Bei Verwendung der Bedingung **like** können Sie im Wert einen Platzhalter (*) angeben.
 
-Geben Sie bei Verwendung der **match**-Bedingung für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Festlegen der Benennungskonvention](#set-naming-convention).
+Geben Sie bei Verwendung der **match**-Bedingung für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Anwenden von Ressourcenrichtlinien für Namen und Text](resource-manager-policy-naming-convention.md).
 
 ### <a name="fields"></a>Felder
 Bedingungen werden mithilfe von Feldern gebildet. Ein Feld stellt Eigenschaften in der Anforderungsnutzlast einer Ressource dar, mit der der Zustand der Ressource beschrieben wird.  

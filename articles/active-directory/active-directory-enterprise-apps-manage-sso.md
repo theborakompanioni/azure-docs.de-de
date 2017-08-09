@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/26/2017
 ms.author: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 118b77064a96585b0d5b951ca56313776021624e
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c975428550690254ba989935fe5110c5903e7102
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Verwalten des einmaligen Anmeldens für Unternehmens-Apps
@@ -28,15 +27,14 @@ ms.lasthandoff: 05/08/2017
 > * [klassischen Azure-Portal](active-directory-sso-integrate-saas-apps.md)
 > 
 
-Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der Einstellungen für einmaliges Anmelden für Anwendungen, insbesondere für solche, die aus dem [Anwendungskatalog von Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. 
+Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zum Verwalten der Einstellungen für das einmalige Anmelden für Unternehmensanwendungen. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden. Dieser Artikel gilt insbesondere für Apps, die aus dem [Azure Active Directory-Anwendungskatalog](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. 
 
-## <a name="finding-your-apps"></a>Suchen Ihrer Apps
 ## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
-Alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) konfiguriert werden, können im [Azure-Portal](https://portal.azure.com) angezeigt und verwaltet werden. Die Anwendungen können im Abschnitt **Weitere Dienste** &gt; **Unternehmensanwendungen** im Portal gefunden werden. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden.
+Alle Unternehmens-Apps, die für das einmalige Anmelden eingerichtet sind, können im Azure-Portal angezeigt und verwaltet werden. Die Anwendungen können im Abschnitt **Weitere Dienste** &gt; **Unternehmensanwendungen** im Portal gefunden werden. 
 
 ![Blatt „Unternehmensanwendungen“][1]
 
-Wählen Sie **Alle Anwendungen**, um eine Liste aller konfigurierten Apps anzuzeigen, einschließlich Apps, die aus dem Katalog hinzugefügt wurden. Beim Auswählen einer App wird das Ressourcenblatt die App geladen, in dem Berichte für App angezeigt und eine Reihe von Einstellungen verwaltet werden können.
+Wählen Sie **Alle Anwendungen** aus, um eine Liste aller konfigurierten Apps anzuzeigen. Beim Auswählen einer App wird das Ressourcenblatt die App geladen, in dem Berichte für App angezeigt und eine Reihe von Einstellungen verwaltet werden können.
 
 Zum Verwalten der Einstellungen für einmaliges Anmelden wählen Sie **Einmaliges Anmelden**.
 

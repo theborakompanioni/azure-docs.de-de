@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 8b401036d4fa8e6c4e6430433b1641f5cb4ae010
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 5b1362854dbc3b0098718bd2ea3cffb06366000c
 ms.contentlocale: de-de
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
 # <a name="app-service-environment-documentation"></a>Dokumentation zur App Service-Umgebung
-Die App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren und umfangreichen Ausführung von Azure App Service-Apps bereitstellt. Diese Funktion kann Ihre [Web-Apps][webapps], [mobilen Apps][mobileapps], [API-Apps][APIApps] und [Functions][Functions] hosten.
+ Eine Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren und umfangreichen Ausführung von App Service-Apps bereitstellt. Diese Funktion kann Ihre [Web-Apps][webapps], [mobilen Apps][mobileapps], [API-Apps][APIApps] und [Funktionen][Functions] hosten.
 
-App Service-Umgebungen sind ideal für Anwendungsworkloads mit folgenden Anforderungen:
+App Service-Umgebungen (ASEs) sind ideal geeignet für Anwendungsworkloads mit folgenden Anforderungen:
 
-* Unterstützung sehr vieler Apps
-* Isolierung und sicherer Netzwerkzugriff
+* Unterstützung sehr vieler Apps.
+* Isolierung und sicherer Netzwerkzugriff.
 
-Kunden können mehrere App Service-Umgebungen innerhalb einer einzelnen Azure-Region sowie über mehrere Azure-Regionen verteilt einrichten. Dadurch eignen sich App Service-Umgebungen hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
+Kunden können mehrere ASEs innerhalb einer einzelnen Azure-Region oder über mehrere Azure-Regionen verteilt einrichten. Durch diese Vielseitigkeit eignen sich ASEs hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
 
-Aufgrund der Isolierung werden in App Service-Umgebungen nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt. Kunden haben präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung, indem sie [Netzwerksicherheitsgruppen][NSGs] verwenden. Anwendungen können auch schnelle, sichere Verbindungen über virtuelle Netzwerke zu lokalen Unternehmensressourcen einrichten.
+Aufgrund der Isolierung werden in ASEs nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Azure-Netzwerk bereitgestellt. Kunden haben präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung, indem sie [Netzwerksicherheitsgruppen][NSGs] verwenden. Anwendungen können auch schnelle, sichere Verbindungen über virtuelle Netzwerke zu lokalen Unternehmensressourcen einrichten.
 
-Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. In App Service-Umgebungen ausgeführte Apps haben Zugriff auf Ressourcen über [Site-to-Site-VPN][SiteToSite] und [Azure ExpressRoute][ExpressRoute]-Verbindungen.
+Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. In ASEs ausgeführte Apps können über [Site-to-Site][SiteToSite]-VPN- und [Azure ExpressRoute][ExpressRoute]-Verbindungen auf Ressourcen zugreifen.
 
 * [Was ist eine App Service-Umgebung?][Intro]
 * [Erstellen einer App Service-Umgebung][MakeExternalASE]
@@ -53,7 +53,7 @@ Deploying Highly Scalable and Secure Apps (Bereitstellen hochgradig skalierbarer
 Running Enterprise Web and Mobile Apps on Azure App Service (Ausführen von Unternehmens-Web-Apps und mobilen Apps in Azure App Service)
 >[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player]
 
-## <a name="asev1"></a>ASEv1 ##
+## <a name="app-service-environment-v1"></a>App Service-Umgebung v1 ##
 Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Informationen zur ASEv1 finden Sie in der [Dokumentation zur App Service-Umgebung v1][ASEv1README].
 
 

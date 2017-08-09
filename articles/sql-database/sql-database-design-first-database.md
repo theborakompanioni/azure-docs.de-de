@@ -3,7 +3,7 @@ title: Entwurf Ihrer ersten Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihre erste Azure SQL-Datenbank erstellen.
 services: sql-database
 documentationcenter: 
-author: janeng
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 06/20/2017
-ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8af9ea0a76b9a0606284505195ee3f52b1964604
+ms.date: 07/31/2017
+ms.author: carlrab
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: ec3b2debcd65f733041462940196a61c109bf051
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 
@@ -42,13 +41,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zur Durchführung dieses Tutorials sicher, dass Sie die neueste Version von [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) installiert haben. 
+Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten installiert sein:
+- Die neueste Version von [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS).
+- Die neueste Version von [BCP und SQLCMD] [https://www.microsoft.com/download/details.aspx?id=36433].
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
-## <a name="create-a-blank-sql-database-in-the-azure-portal"></a>Erstellen einer leeren SQL-Datenbank im Azure-Portal
+## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
 
 Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](sql-database-features.md) erstellt. 
 
@@ -76,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
    | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). | 
    | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
    | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
-   | **Standort** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
+   | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
 
    ![Erstellung des Datenbankservers](./media//sql-database-design-first-database/create-database-server.png)
 
@@ -96,7 +97,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 
    ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Erstellen einer Firewallregel auf Serverebene im Azure-Portal
+## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 
 Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen – sofern keine Firewallregel erstellt wird, um die Firewall für bestimmte IP-Adressen zu öffnen. Führen Sie die hier angegebenen Schritte zum Erstellen einer [SQL-Datenbank-Firewallregel auf Serverebene](sql-database-firewall-configure.md) für die IP-Adresse Ihres Clients und Zulassen der externen Konnektivität durch die SQL-Datenbankfirewall nur für Ihre IP-Adresse aus. 
 
@@ -110,7 +111,7 @@ Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern
    > Sie benötigen diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen.
    > 
 
-   ![Servername](./media/sql-database-get-started-portal/server-name.png) 
+   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 2. Klicken Sie auf der Symbolleiste wie in der obigen Abbildung dargestellt auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
 
@@ -130,7 +131,7 @@ Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbankser
 > [!IMPORTANT]
 > Standardmäßig ist der Zugriff über die SQL-Datenbank-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS**, um dies für alle Azure-Dienste zu deaktivieren.
 
-## <a name="get-connection-information-in-the-azure-portal"></a>Abrufen der Verbindungsinformationen im Azure-Portal
+## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
 Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserver im Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen, um mit SQL Server Management Studio eine Verbindung mit Ihrem Server herzustellen.
 
@@ -138,7 +139,7 @@ Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserve
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**.
 
-   ![Verbindungsinformationen](./media/sql-database-get-started-portal/server-name.png)
+   ![Verbindungsinformationen](./media/sql-database-connect-query-dotnet/server-name.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Herstellen einer Verbindung für die Datenbank mit SSMS
 
@@ -168,7 +169,7 @@ Verwenden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms
 
    ![Datenbankobjekte](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="create-tables-in-the-database-with-ssms"></a>Erstellen von Tabellen in der Datenbank mit SSMS 
+## <a name="create-tables-in-the-database"></a>Erstellen von Tabellen in der Datenbank 
 
 Erstellen Sie mit [Transact-SQL-](https://docs.microsoft.com/sql/t-sql/language-reference) ein Datenbankschema mit vier Tabellen, die ein Studentenverwaltungssystem für Universitäten modellieren:
 
@@ -239,7 +240,7 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
 
    ![Erstellte Tabellen in SMS](./media/sql-database-design-first-database/ssms-tables-created.png)
 
-## <a name="load-data-into-the-tables-with-ssms"></a>Laden von Daten in die Tabellen mit SSMS
+## <a name="load-data-into-the-tables"></a>Laden von Daten in die Tabellen
 
 1. Erstellen Sie in Ihrem Ordner „Downloads“ einen Ordner namens **SampleTableData**, in dem die Beispieldaten für Ihre Datenbank gespeichert werden. 
 
@@ -263,7 +264,7 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
 
 Sie haben jetzt Beispieldaten in die Tabellen geladen, die Sie zuvor erstellt haben.
 
-## <a name="query-the-tables-with-ssms"></a>Abfragen von Tabellen mit SSMS
+## <a name="query-data"></a>Abfragen von Daten
 
 Führen Sie die folgenden Abfragen aus, um Informationen aus den Datenbanktabellen abzurufen. Weitere Informationen zum Schreiben von SQL-Abfragen finden Sie unter [Schreiben von SQL-Abfragen](https://technet.microsoft.com/library/bb264565.aspx). In der ersten Abfrage werden alle vier Tabellen verknüpft, um alle Studenten zu finden, die von „Dominick Pope“ unterrichtet werden und in dessen Kurs ein Ergebnis (Grade) haben, das über 75 % liegt. In der zweite Abfrage werden alle vier Tabellen verknüpft und alle Lehrveranstaltungen gefunden, für die „Noe Coleman“ jemals eingeschrieben war.
 
@@ -300,7 +301,7 @@ Führen Sie die folgenden Abfragen aus, um Informationen aus den Datenbanktabell
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time-using-the-azure-portal"></a>Wiederherstellen des Zustands einer Datenbank zu einem früheren Zeitpunkt über das Azure-Portal
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>Wiederherstellen eines früheren Zustands einer Datenbank
 
 Stellen Sie sich vor, Sie haben versehentlich eine Tabelle gelöscht. Dies ist eine Situation, in der Sie die Datenbank nicht einfach wiederherstellen können. Azure SQL-Datenbank ermöglicht es Ihnen, zu einem beliebigen Zeitpunkt innerhalb der letzten 35 Tage zurückzugehen und diesen Zeitpunkt in einer neuen Datenbank wiederherzustellen. Diese Datenbank können Sie dann verwenden, um die gelöschten Daten wiederherzustellen. In den folgenden Schritten wird die Beispieldatenbank für einen Zeitpunkt wiederhergestellt, der vor dem Hinzufügen der Tabellen lag.
 
@@ -329,8 +330,10 @@ In diesem Tutorial wurden grundlegende Datenbankaufgaben behandelt, z.B. das Ers
 > * Erstellen von Tabellen.
 > * Massenladen von Daten
 > * Abfragen der Daten
-> * Wiederherstellen eines früheren Zeitpunkts der Datenbank mit den SQL-Datenbank-Funktionen für die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) Fahren Sie mit dem nächsten Tutorial fort, um Informationen zum Migrieren Ihrer Daten zu erhalten.
+> * Wiederherstellen eine früheren Zeitpunkts für die Datenbank mit den SQL-Datenbank-Funktionen für die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
+
+Im nächsten Tutorial erfahren Sie, wie Sie eine Datenbank mit Visual Studio und C# entwerfen.
 
 > [!div class="nextstepaction"]
->[Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-migrate-your-sql-server-database.md)
+>[Entwerfen einer Azure SQL-Datenbank und Herstellen einer Verbindung mit C# und ADO.NET](sql-database-design-first-database-csharp.md)
 

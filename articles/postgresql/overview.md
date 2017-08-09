@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql-database
 ms.topic: overview
-ms.date: 07/05/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 30ab79ed40381aaa7a8cf88193fac8d59ecbbced
+ms.date: 08/01/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 322560aece243e150606e722d467b843bc9580b7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
@@ -49,7 +49,7 @@ Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rech
 ## <a name="secure-your-data"></a>Sichern der Daten
 Azure-Datenbank für PostgreSQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
 
-Die Azure-Datenbank für PostgreSQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Alle Daten wie Sicherungen werden auf einem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
+Die Azure-Datenbank für PostgreSQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Daten, einschließlich von Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die vom Modul während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 
 Standardmäßig ist der Azure-Datenbank für PostgreSQL-Dienst so konfiguriert, dass [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) für Daten während Übertragungen innerhalb des Netzwerks erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.  Wenn Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die Erzwingung von SSL zum Herstellen einer Verbindung mit dem Datenbankdienst deaktivieren.
 

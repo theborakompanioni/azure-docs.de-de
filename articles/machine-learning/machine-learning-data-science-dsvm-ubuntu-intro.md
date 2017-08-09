@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 548b4af7619521e4b61b99b94c1d40f835e6efdb
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 148603618a7da05d250a6c4f789a212e98791e53
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
@@ -151,6 +150,13 @@ Weitere Informationen finden Sie auf [GitHub](https://github.com/Microsoft/CNTK)
 
 #### <a name="caffe"></a>Caffe
 Caffe ist ein Deep Learning-Framework des Berkeley Vision and Learning Center. Es ist unter „/opt/caffe“ verfügbar. Beispiele finden Sie unter „/opt/caffe/examples“.
+
+#### <a name="caffe2"></a>Caffe2
+Caffe2 ist ein Deep Learning-Framework von Facebook, das auf Caffe basiert. Es ist in Python 2.7 in der Conda-Stammumgebung verfügbar. Führen Sie Folgendes über die Shell aus, um es zu aktivieren:
+
+    source /anaconda/bin/activate root
+
+Einige Beispiel-Notebooks sind in JupyterHub verfügbar.
 
 #### <a name="h2o"></a>H2O
 H2O ist eine schnelle, verteilte In-Memory-Plattform für Machine Learning und Predictive Analytics. Ein Python-Paket ist sowohl in der Stammumgebung als auch der py35 Anaconda-Umgebung installiert. Ein R-Paket ist ebenfalls installiert. Führen Sie zum Starten von H2O von der Befehlszeile `java -jar /dsvm/tools/h2o/current/h2o.jar` aus; es gibt verschiedene [Befehlszeilenoptionen](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line), die Sie konfigurieren können. Sie können die Flow-Webbenutzeroberfläche aufrufen, indem Sie für den Einstieg zu http://localhost:54321 navigieren. Beispiel-Notebooks stehen auch in JupyterHub zur Verfügung.

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 2fb537bff683fe99b268b310914e9926629fe1b0
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: b6a77e33eea24000037ffb31d7aae3cb1d345ce9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Arbeiten mit Datumsangaben in Azure Cosmos DB
@@ -33,7 +32,7 @@ Standardmäßig serialisiert das [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md)
 * Zeichenfolgen können verglichen werden, und die relative Reihenfolge der DateTime-Werte wird beibehalten, wenn diese in Zeichenfolgen umgewandelt werden. 
 * Für diesen Ansatz sind weder benutzerdefinierter Code noch Attribute für die JSON-Konvertierung erforderlich.
 * Die als JSON gespeicherten Daten sind visuell lesbar.
-* Bei dieser Vorgehensweise können Sie den Cosmos DB-Index für eine schnelle Abfrageleistung nutzen.
+* Bei dieser Vorgehensweise können Sie den Azure Cosmos DB-Index für eine schnelle Abfrageleistung nutzen.
 
 Der folgende Codeausschnitt beispielsweise speichert ein `Order`-Objekt mit zwei DateTime-Eigenschaften – `ShipDate` und `OrderDate` – als Dokument mit dem .NET SDK:
 
@@ -55,7 +54,7 @@ Der folgende Codeausschnitt beispielsweise speichert ein `Order`-Objekt mit zwei
             Total = 113.39
         });
 
-Dieses Dokument wird folgendermaßen in Cosmos DB gespeichert:
+Dieses Dokument wird folgendermaßen in Azure Cosmos DB gespeichert:
 
     {
         "id": "09152014101",
@@ -65,7 +64,7 @@ Dieses Dokument wird folgendermaßen in Cosmos DB gespeichert:
     }
     
 
-Alternativ dazu können Sie DateTime-Werte auch als UNIX-Zeitstempel speichern, also als Zahl, die die Anzahl der seit dem 1. Januar 1970 verstrichenen Sekunden darstellt. Die interne Timestamp-Eigenschaft von Cosmos DB (`_ts`) folgt diesem Ansatz. Sie können die [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx)-Klasse verwenden, um DateTime-Werte als Zahlen zu serialisieren. 
+Alternativ dazu können Sie DateTime-Werte auch als UNIX-Zeitstempel speichern, also als Zahl, die die Anzahl der seit dem 1. Januar 1970 verstrichenen Sekunden darstellt. Die interne Timestamp-Eigenschaft von Azure Cosmos DB (`_ts`) folgt diesem Ansatz. Sie können die [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx)-Klasse verwenden, um DateTime-Werte als Zahlen zu serialisieren. 
 
 ## <a name="indexing-datetimes-for-range-queries"></a>Indizieren von DateTime-Werten für Bereichsabfragen
 Bereichsabfragen werden bei DateTime-Werten häufig ausgeführt. Wenn Sie z.B. alle seit gestern erstellten oder in den letzten fünf Minuten ausgelieferten Aufträge finden möchten, müssen Sie Bereichsabfragen ausführen. Um diese Abfragen effizient auszuführen, müssen Sie Ihre Sammlung für die Bereichsindizierung von Zeichenfolgen konfigurieren.
@@ -74,20 +73,20 @@ Bereichsabfragen werden bei DateTime-Werten häufig ausgeführt. Wenn Sie z.B. a
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
     await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
 
-Weitere Informationen zum Konfigurieren von Indizierungsrichtlinien finden Sie unter [Cosmos DB-Indizierungsrichtlinien](indexing-policies.md).
+Weitere Informationen zum Konfigurieren von Indizierungsrichtlinien finden Sie unter [Azure Cosmos DB-Indizierungsrichtlinien](indexing-policies.md).
 
 ## <a name="querying-datetimes-in-linq"></a>Abfragen von DateTime-Werten in LINQ
-Das DocumentDB .NET SDK unterstützt automatisch die Abfrage von Daten, die über LINQ in DocumentDB gespeichert sind. Der folgende Codeausschnitt zeigt z.B. eine LINQ-Abfrage, die Aufträge filtert, die in den letzten drei Tagen ausgeliefert wurden.
+Das DocumentDB .NET SDK unterstützt automatisch die Abfrage von Daten, die über LINQ in Azure Cosmos DB gespeichert sind. Der folgende Codeausschnitt zeigt z.B. eine LINQ-Abfrage, die Aufträge filtert, die in den letzten drei Tagen ausgeliefert wurden.
 
     IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
         .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
           
-    // Translated to the following SQL statement and executed on Cosmos DB
+    // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-Weitere Informationen über die SQL-Abfragesprache von Cosmos DB und den LINQ-Anbieter finden Sie unter [Abfragen von Cosmos DB](documentdb-sql-query.md).
+Weitere Informationen über die SQL-Abfragesprache von Azure Cosmos DB und den LINQ-Anbieter finden Sie unter [Abfragen von Cosmos DB](documentdb-sql-query.md).
 
-In diesem Artikel wurde erläutert, wie DateTime-Werte in Cosmos DB gespeichert, indiziert und abgefragt werden.
+In diesem Artikel wurde erläutert, wie DateTime-Werte in Azure Cosmos DB gespeichert, indiziert und abgefragt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Herunterladen und Ausführen der [Codebeispiele auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)

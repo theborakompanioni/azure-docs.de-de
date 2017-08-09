@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect Sync: Operative Aufgaben und Überlegungen | Microsoft Docs"
+title: "Azure AD Connect Sync: Operative Aufgaben und Überlegungen | Microsoft-Dokumentation"
 description: "In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync und die Vorbereitung dieser Komponente für den Betrieb beschrieben."
 services: active-directory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 0288d70bb5c0094b5c738b2d0c597e4c6d38a5aa
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: b7583a1556bb1113f349a78890768451e39c6878
 ms.contentlocale: de-de
-ms.lasthandoff: 04/18/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: Operative Aufgaben und Überlegungen
@@ -109,7 +109,9 @@ Weitere Informationen finden Sie unter [Stagingmodus](#staging-mode).
 Eine gängige und unterstützte Methode ist die Ausführung des Synchronisierungsmoduls auf einem virtuellen Computer. Wenn ein Problem mit dem Host vorliegt, kann das Image mit dem Synchronisierungsmodulserver zu einem anderen Server migriert werden.
 
 ### <a name="sql-high-availability"></a>Hohe Verfügbarkeit von SQL
-Falls Sie nicht SQL Server Express (in Azure AD Connect enthalten) verwenden, sollten Sie auch eine hohe Verfügbarkeit für SQL Server in Erwägung ziehen. Die einzige unterstützte Hochverfügbarkeitslösung ist das SQL-Clustering. Nicht unterstützt werden Spiegelung und Always On-Lösungen.
+Falls Sie nicht SQL Server Express (in Azure AD Connect enthalten) verwenden, sollten Sie auch eine hohe Verfügbarkeit für SQL Server in Erwägung ziehen. Zu den unterstützten Hochverfügbarkeitslösungen gehören SQL-Clustering und SQL AOA (Always On Availability Groups, Always On-Verfügbarkeitsgruppen). Nicht unterstützt wird z.B. die Spiegelung.
+
+Unterstützung für SQL AOA wurde in Version 1.1.524.0 zu Azure AD Connect hinzugefügt. Vor der Installation von Azure AD Connect müssen Sie SQL AOA aktivieren. Während der Installation erkennt Azure AD Connect, ob die bereitgestellte SQL-Instanz für SQL AOA aktiviert ist. Wenn SQL AOA aktiviert ist, prüft Azure AD Connect darüber hinaus, ob SQL AOA für die Verwendung synchroner oder asynchroner Replikationen konfiguriert ist. Bei der Einrichtung des Verfügbarkeitsgruppenlisteners wird empfohlen, die Eigenschaft „RegisterAllProvidersIP“ auf 0 festzulegen. Dies liegt daran, weil Azure AD Connect Verbindungen zu SQL derzeit über den SQL Native Client herstellt und der SQL Native Client die Verwendung der Eigenschaft „MultiSubNetFailover“ nicht unterstützt.
 
 ## <a name="appendix-csanalyzer"></a>Anhang CSAnalyzer
 Finden Sie im Abschnitt [Überprüfen](#verify) Anleitungen zum Verwenden dieses Skripts.

@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 7/27/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 868c3051f60c27f15bfd99f66e50b65595951a00
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 781431dc8dd576e6fb6807ade4a0a1e909abcab7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -58,7 +58,17 @@ Service Fabric unterstützt die Angabe von [Docker-Volume-Plug-Ins](https://docs
 </ApplicationManifest>
 ```
 
-Im Beispiel oben bezieht sich das `Source`-Tag für das `Volume` auf den Quellordner. Der Quellordner kann ein Ordner auf dem virtuellen Computer, der die Container hostet, oder ein persistenter Remotespeicher sein. Das `Destination`-Tag ist der Speicherort, dem `Source` im ausgeführten Container zugeordnet ist. Bei Verwendung eines Volume-Plug-Ins wird der Name des Plug-Ins (`Driver`-Tag) wie im Beispiel oben gezeigt angegeben.  Wenn ein Docker-Protokolltreiber angegeben wird, müssen Agents (oder Container) für die Verarbeitung der Protokolle im Cluster bereitgestellt werden. 
+Im Beispiel oben bezieht sich das `Source`-Tag für das `Volume` auf den Quellordner. Der Quellordner kann ein Ordner auf dem virtuellen Computer, der die Container hostet, oder ein persistenter Remotespeicher sein. Das `Destination`-Tag ist der Speicherort, dem `Source` im ausgeführten Container zugeordnet ist. 
+
+Wenn Sie ein Volume-Plug-In angeben, erstellt Service Fabric das Volume automatisch mit den angegebenen Parametern. Das `Source`-Tag ist der Name des Volumes, und das `Driver`-Tag gibt das Volumetreiber-Plug-In an. Optionen können wie im folgenden Codeausschnitt mithilfe des `DriverOption`-Tags angegeben werden:
+
+```xml
+<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
+           <DriverOption Name="share" Value="models"/>
+</Volume>
+```
+
+Wenn ein Docker-Protokolltreiber angegeben wird, müssen Agents (oder Container) für die Verarbeitung der Protokolle im Cluster bereitgestellt werden.  Mit dem `DriverOption`-Tag können außerdem Protokolltreiberoptionen angegeben werden.
 
 Informationen zum Bereitstellen von Containern in einem Service Fabric-Cluster finden Sie in den folgenden Artikeln:
 

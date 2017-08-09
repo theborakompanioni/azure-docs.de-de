@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 9a6d772bddc4417004c99f319ec7592d026efdb1
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 1f0c5cf93b44433aab2163548de916626a7fa480
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
@@ -55,7 +56,7 @@ A: Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den
 
 F: Wie wird eine Verbindung mithilfe von REST hergestellt?
 
-A: Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden.
+A: Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. 
 
 F: Wie kann ich ein Video während des Codierungsvorgangs drehen?
 
@@ -75,16 +76,9 @@ A: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stan
     ...
 
 
-
-
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

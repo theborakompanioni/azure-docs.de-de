@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
-ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
-ms.lasthandoff: 01/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 3f457b1b82d1f75ec8796152b5c93f852175e1a5
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamische Verschlüsselung: Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel
@@ -31,7 +31,7 @@ Wenn ein Medienobjekt durch Media Services verschlüsselt werden soll, müssen S
 
 Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt mit AES- oder PlayReady-Verschlüsselung dynamisch zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
-Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Token**. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im **Simple Web Tokens**-Format ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und **JSON Web Token**-Format (JWT).
+Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Token**. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im **Simple Web Tokens**-Format ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und im **JSON Web Token**-Format (JWT).
 
 Secure Token Services werden von Media Services nicht bereitgestellt. Sie können einen benutzerdefinierten STS erstellen oder Microsoft Azure ACS zum Ausstellen von Token nutzen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausgabe von Ansprüchen konfiguriert sein, die Sie in der Konfiguration der Token-Einschränkung angegeben haben (wie in diesem Artikel beschrieben). Der Schlüsselübermittlungsdienst von Media Services gibt den Verschlüsselungsschlüssel an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Inhaltsschlüssel konfigurierten Ansprüchen übereinstimmen.
 
@@ -58,7 +58,7 @@ Weitere Informationen finden Sie unter
 > 
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden.
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 > 
 
@@ -234,7 +234,7 @@ Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanfo
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Bei der Konfiguration der Richtlinie mit **Token**-Einschränkung müssen die Parameter **PrimaryVerificationKey**, **issuer** und **audience** angegeben werden. **primaryVerificationKey** enthält den Schlüssel, mit dem das Token signiert wurde, und **Issuer** ist der Sicherheitstokendienst (Secure Token Service, STS), von dem das Token ausgestellt wurde. **audience** (manchmal auch **scope**) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen. 
+Bei der Konfiguration der Richtlinie mit **Token**-Einschränkung müssen die Parameter des **primären Verifizierungsschlüssels**, **issuer** und **audience** angegeben werden. Der **primäre Verifizierungsschlüssel** enthält den Schlüssel, mit dem das Token signiert wurde, und **issuer** ist der STS (Secure Token Service), von dem das Token ausgestellt wurde. **audience** (manchmal auch **scope**) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen. 
 
 Im folgenden Beispiel wird eine Autorisierungsrichtlinie mit einer Token-Einschränkung erstellt. In diesem Beispiel müsste der Client ein Token vorlegen, das einen Signaturschlüssel (VerificationKey), einen Tokenherausgeber und erforderliche Ansprüche enthält.
 

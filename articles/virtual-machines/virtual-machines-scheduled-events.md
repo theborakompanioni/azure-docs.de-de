@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 062ab97d00622419e2bca1fcd0a17f6b6b4f6f81
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 793803bfc12059a68ec881da9de37116f7a0eb8c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-metadata-service---scheduled-events-preview"></a>Azure-Metadatendienst: Geplante Ereignisse (Vorschau)
@@ -42,8 +41,8 @@ In vielen anderen Fällen kann die allgemeine Verfügbarkeit des Diensts verbess
 In bestimmten Fällen kann durch eine Benachrichtigung eines Administrators über ein anstehendes Ereignis oder die Protokollierung eines Ereignisses die Wartbarkeit von in der Cloud gehosteten Anwendungen verbessert werden.
 
 Der Azure-Metadatendienst zeigt geplante Ereignisse in den folgenden Anwendungsfällen an:
--    Von der Plattform ausgelöste Wartungsaktionen (Beispiel: Rollout des Hostbetriebssystems)
--    Vom Benutzer initiierte Aufrufe (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
+-   Von der Plattform ausgelöste Wartungsaktionen (Beispiel: Rollout des Hostbetriebssystems)
+-   Vom Benutzer initiierte Aufrufe (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
 
 
 ## <a name="scheduled-events---the-basics"></a>Geplante Ereignisse: Grundlagen  
@@ -69,9 +68,16 @@ Beim Abfragen des Metadatendiensts müssen Sie den Header `Metadata: true` angeb
 ### <a name="enabling-scheduled-events"></a>Aktivieren von Geplante Ereignisse
 Wenn Sie Geplante Ereignisse erstmals aufrufen, aktiviert Azure dieses Feature auf Ihrem virtuellen Computer implizit. Daher ist beim ersten Aufruf eine um bis zu zwei Minuten verzögerte Antwort zu erwarten.
 
-### <a name="testing-your-logic-with-user-initiated-operations"></a>Testen der Logik mit vom Benutzer initiierten Vorgängen
-Um die Logik zu testen, können Sie das Azure-Portal, die Azure-API, die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden, um Vorgänge zu initiieren, die zu geplanten Ereignissen führen. Der Neustart eines virtuellen Computers führt zu einem geplanten Ereignis, dessen Ereignistyp `Reboot` entspricht. Die erneute Bereitstellung eines virtuellen Computers führt zu einem geplanten Ereignis, dessen Ereignistyp `Redeploy` entspricht.
-In beiden Fällen dauert der vom Benutzer initiierte Vorgang länger, da geplante Ereignisse einer Anwendung mehr Zeit für ein ordnungsgemäßes Herunterfahren einräumen. 
+### <a name="user-initiated-maintenance"></a>Vom Benutzer initiierte Wartung
+Eine vom Benutzer über das Azure-Portal, eine API, die Befehlszeilenschnittstelle oder PowerShell initiierte Wartung eines virtuellen Computers führt zu geplanten Ereignissen. So können Sie die Logik zur Vorbereitung auf Wartungsmaßnahmen in Ihrer Anwendung testen und Ihre Anwendung auf die vom Benutzer initiierte Wartung vorbereiten.
+
+Das Neustarten eines virtuellen Computers plant ein Ereignis vom Typ `Reboot`. Das erneute Bereitstellen eines virtuellen Computers plant ein Ereignis vom Typ `Redeploy`.
+
+> [!NOTE] 
+> Zurzeit können maximal 10 vom Benutzer initiierte Wartungsvorgänge gleichzeitig geplant werden. Dieses Limit wird vor der allgemeinen Verfügbarkeit von geplanten Ereignissen erhöht.
+
+> [!NOTE] 
+> Zurzeit ist die vom Benutzer initiierte Wartung, die zu geplanten Ereignissen führt, nicht konfigurierbar. Die Konfigurierbarkeit ist für ein zukünftiges Release geplant.
 
 ## <a name="using-the-api"></a>Verwenden der API
 
@@ -373,3 +379,4 @@ if __name__ == '__main__':
 - Erfahren Sie mehr über die APIs im [Instanz-Metadatendienst](virtual-machines-instancemetadataservice-overview.md).
 - Erfahren Sie mehr über [Geplante Wartung für virtuelle Windows-Computer in Azure](windows/planned-maintenance.md).
 - Erfahren Sie mehr über [Geplante Wartung für virtuelle Linux-Computer in Azure](linux/planned-maintenance.md).
+

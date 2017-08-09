@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2017
+ms.date: 07/24/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: baff8d5f0f2b17acd134ae846286892a2b033721
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 9d5a4bef0c22f637a35390c6a8a245967fb02118
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
@@ -75,11 +75,11 @@ Für diese Berechtigung können die folgenden Werte festgelegt werden:
 * Silber – Die Infrastrukturaufträge können für eine Dauer von 10 Minuten pro UD angehalten werden. Diese Option ist für alle virtuellen Standardcomputer ab einem Kern verfügbar.
 * Bronze: Keine Berechtigungen Dies ist die Standardeinstellung und wird empfohlen, wenn Sie nur zustandslose Workloads in Ihrem Cluster ausführen.
 
-Sie können die Dauerhaftigkeitsstufe für jeden Ihrer Knotentypen auswählen. Für einen Knotentyp kann die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ und für einen anderen Knotentypen im selben Cluster die Stufe „Bronze“ festgelegt werden. **Sie müssen mindestens 5 Knoten für jeden Knotentyp mit der Dauerhaftigkeitsstufe „Gold“ oder „Silber“ verwalten**. 
+Sie können die Dauerhaftigkeitsstufe für jeden Ihrer Knotentypen auswählen. Für einen Knotentyp kann die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ und für einen anderen Knotentypen im selben Cluster die Stufe „Bronze“ festgelegt werden.**Sie müssen mindestens 5 Knoten für jeden Knotentyp mit der Dauerhaftigkeitsstufe „Gold“ oder „Silber“ verwalten**. 
 
 **Vorteile der Verwendung der Dauerhaftigkeitsstufe „Silber“ oder „Gold“**
  
-1. Reduziert die Anzahl der erforderlichen Schritte in einem Vorgang zur horizontalen Herunterskalierung (d.h. die Knotendeaktivierung und des Knotens und der Befehl „Remove-ServiceFabricNodeState“ werden automatisch ausgeführt).
+1. Reduziert die Anzahl der erforderlichen Schritte in einem Vorgang zur horizontalen Herunterskalierung (d.h., die Knotendeaktivierung und der Befehl „Remove-ServiceFabricNodeState“ werden automatisch ausgeführt).
 2. Reduziert das Risiko eines Datenverlusts aufgrund eines vom Kunden initiierten direkten VM-SKU-Änderungsvorgangs oder von Azure-Infrastruktur-Vorgängen.
      
 **Nachteile der Verwendung der Dauerhaftigkeitsstufe „Silber“ oder „Gold“**
@@ -96,14 +96,13 @@ Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die z
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Betriebsempfehlungen für den Knotentyp, dessen Dauerhaftigkeitsstufe Sie auf „Silber“ oder „Gold“ festgelegt haben.
 
 1. Halten Sie Ihren Cluster und Anwendungen jederzeit fehlerfrei, und stellen Sie sicher, dass Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (z.B. Unterbrechung der Replikaterstellung) reagieren.
-2. Führen Sie sicherere Methoden für VM-SKU-Änderungen (Horizontales Hoch-/Herunterskalieren nach) ein:
-
-Diesen Vorgang sollten Sie nicht häufig ausführen, da er nicht sicher ist.  Das Ändern der VM-SKU einer VM-Skalierungsgruppe ist grundsätzlich ein unsicherer Vorgang. Mit dieser Vorgehensweise vermeiden Sie gängige Probleme.
-    - Für nicht primäre Knotentypen wird empfohlen, eine neue VM-Skalierungsgruppe zu erstellen, die Dienstplatzierungseinschränkungen so zu ändern, dass die neue VM-Skalierungsgruppe/der neue Knotentyp enthalten sind, und dann die Instanzenanzahl der alten VM-Skalierungsgruppe auf 0 zu reduzieren (um sicherzustellen, dass das Entfernen der Knoten die Zuverlässigkeit des Clusters nicht beeinträchtigt).
-    - Für den primären Knotentyp wird eine Änderung der VM-SKU nicht empfohlen. Ist Kapazität der Grund für die neue SKU, wird empfohlen, weitere Instanzen hinzuzufügen oder wenn möglich einen neuen Cluster zu erstellen. Wenn es keine andere Möglichkeit gibt, nehmen Sie Änderungen an der Modelldefinition der VM-Skalierungsgruppe vor, um die neue SKU zu übernehmen. Wenn der Cluster nur einen Knotentyp enthält, stellen Sie sicher, dass zustandsbehaftete Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (z.B. Unterbrechung der Replikaterstellung) reagieren, und dass die Dauer für die Neuerstellung des Dienstreplikats weniger als zehn Minuten beträgt (für die Dauerhaftigkeitsstufe „Silber“).
+2. Führen Sie sicherere Methoden für VM-SKU-Änderungen (zentrales Hoch-/Herunterskalieren) ein: Das Ändern der VM-SKU einer VM-Skalierungsgruppe ist grundsätzlich ein unsicherer Vorgang und sollte möglichst vermieden werden. Mit dieser Vorgehensweise vermeiden Sie gängige Probleme.
+    - **Für nicht primäre Knotentypen:** Es wird empfohlen, eine neue VM-Skalierungsgruppe zu erstellen, die Dienstplatzierungseinschränkungen so zu ändern, dass die neue VM-Skalierungsgruppe/der neue Knotentyp enthalten sind, und dann die Instanzenanzahl der alten VM-Skalierungsgruppe auf 0 zu reduzieren (nacheinander für alle Knoten, um sicherzustellen, dass das Entfernen der Knoten die Zuverlässigkeit des Clusters nicht beeinträchtigt).
+    - **Für den primären Knotentyp:** Eine Änderung der VM-SKU des primären Knotentyps wird nicht empfohlen. Ist Kapazität der Grund für die neue SKU, wird empfohlen, weitere Instanzen hinzuzufügen oder wenn möglich einen neuen Cluster zu erstellen. Wenn es keine andere Möglichkeit gibt, nehmen Sie Änderungen an der Modelldefinition der VM-Skalierungsgruppe vor, um die neue SKU zu übernehmen. Wenn der Cluster nur einen Knotentyp enthält, stellen Sie sicher, dass alle Ihre zustandsbehafteten Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (z.B. Unterbrechung der Replikaterstellung) reagieren und dass die Dauer für die Neuerstellung des Dienstreplikats weniger als fünf Minuten beträgt (für die Dauerhaftigkeitsstufe „Silber“). 
 3. Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, bei denen MR aktiviert ist.
-4. Löschen Sie keine zufälligen VM-Instanzen, verwenden Sie immer die zentrale Herunterskalierung für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf UD und FD verteilten VM-Instanz führen. Eine solche Ungleichheit kann die Fähigkeit des Systems zum ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen/Dienstreplikaten beeinträchtigen.
-6. Wenn Sie die automatische Skalierung verwenden, legen Sie die Regeln so fest, dass die horizontale Herunterskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. 
+4. Löschen Sie keine zufälligen VM-Instanzen, verwenden Sie immer die Funktion zum zentralen Herunterskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf UD und FD verteilten VM-Instanz führen. Eine solche Ungleichheit kann die Fähigkeit des Systems zum ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen/Dienstreplikaten beeinträchtigen.
+6. Wenn Sie die automatische Skalierung verwenden, legen Sie die Regeln so fest, dass die horizontale Herunterskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
+7. Wenn Sie einen primären Knotentyp herunterskalieren, sollten Sie ihn nie weiter herunterskalieren, als für die Zuverlässigkeitsstufe zulässig ist.
 
 
 ## <a name="the-reliability-characteristics-of-the-cluster"></a>Die Zuverlässigkeitsmerkmale des Clusters
@@ -117,22 +116,37 @@ Für die Zuverlässigkeitsstufe können folgende Werte festgelegt werden:
 * Bronze: Systemdienste mit einer Replikatgruppen-Zielanzahl von 3 ausführen
 
 > [!NOTE]
-> Die gewählte Zuverlässigkeitsstufe bestimmt die Mindestanzahl von Knoten, über die Ihr primärer Knotentyp verfügen muss. Die Zuverlässigkeitsstufe hat keinen Einfluss auf die maximale Größe des Clusters. Sie können also einen Cluster mit 20 Knoten ausführen, der über die Zuverlässigkeitsstufe „Bronze“ verfügt.
+> Die gewählte Zuverlässigkeitsstufe bestimmt die Mindestanzahl von Knoten, über die Ihr primärer Knotentyp verfügen muss. 
 > 
 > 
 
- Sie können die Zuverlässigkeitsstufe Ihres Clusters jederzeit ändern. Durch diesen Vorgang werden die erforderlichen Clusterupgrades ausgelöst, um die Replikatgruppenanzahl der Systemdienste zu ändern. Warten Sie, bis das laufende Upgrade abgeschlossen ist, ehe Sie Änderungen am Cluster vornehmen, beispielsweise Knoten hinzufügen.  Sie können den Fortschritt des Upgrades im Service Fabric Explorer oder durch Ausführen von [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) verfolgen.
+
+### <a name="recommendations-for-the-reliability-tier"></a>Empfehlungen für die Zuverlässigkeitsstufe.
+
+ Wenn Sie den Cluster vergrößern oder verkleinern (die Summe der VM-Instanzen in allen Knotentypen), müssen Sie die Zuverlässigkeit des Clusters von einer Stufe auf eine andere aktualisieren. Durch diesen Vorgang werden die erforderlichen Clusterupgrades ausgelöst, um die Replikatgruppenanzahl der Systemdienste zu ändern. Warten Sie, bis das laufende Upgrade abgeschlossen ist, ehe Sie Änderungen am Cluster vornehmen, beispielsweise Knoten hinzufügen.  Sie können den Fortschritt des Upgrades im Service Fabric Explorer oder durch Ausführen von [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) verfolgen.
+
+Dies ist die Empfehlung für die Auswahl der Zuverlässigkeitsstufe.
+
+| **Clustergröße** | **Zuverlässigkeitsstufe** |
+| --- | --- |
+| 1 |Geben Sie den Parameter für die Zuverlässigkeitsstufe nicht an, er wird vom System berechnet |
+| 3 |Bronze |
+| 5 oder 6|Silber |
+| 7 oder 8 |Gold |
+| 9 und höher |Platin |
+
+
 
 
 ## <a name="primary-node-type---capacity-guidance"></a>Primärer Knotentyp: Kapazitätsleitfaden
 
 Nutzen Sie diesen Leitfaden, um die Kapazität Ihres primären Knotentyps zu planen.
 
-1. **Anzahl von VM-Instanzen, um eine Produktionsworkload in Azure auszuführen: **Sie müssen Mindestgröße 5 für den primären Knotentyp angeben.
-2. **Anzahl von VM-Instanzen, um eine Testworkload in Azure** auszuführen: Sie können Mindestgröße 1 oder 3 für den primären Knotentyp angeben. Knotencluster 1 setzt eine spezifische Konfiguration voraus, daher wird bei diesem Cluster horizontales Skalieren nicht unterstützt. Knotencluster 1 besitzt keine Zuverlässigkeit. Daher müssen Sie in Ihrer Resource Manager-Vorlage diese Konfiguration entfernen bzw. nicht angeben (es reicht nicht, den Konfigurationswert nicht einzustellen). Wenn Sie über das Portal den Knotencluster 1 eingerichtet haben, wird die Konfiguration automatisch bearbeitet. Bei den Knotenclustern 1 und 3 wird die Ausführung von Produktionsworkloads nicht unterstützt. 
+1. **Anzahl von VM-Instanzen, um eine Produktionsworkload in Azure auszuführen:** Sie müssen die Mindestgröße 5 für den primären Knotentyp angeben. 
+2. **Anzahl von VM-Instanzen, um eine Testworkload in Azure auszuführen:** Sie können die Mindestgröße 1 oder 3 für den primären Knotentyp angeben. Knotencluster 1 setzt eine spezifische Konfiguration voraus, daher wird bei diesem Cluster horizontales Skalieren nicht unterstützt. Knotencluster 1 besitzt keine Zuverlässigkeit. Daher müssen Sie in Ihrer Resource Manager-Vorlage diese Konfiguration entfernen bzw. nicht angeben (es reicht nicht, den Konfigurationswert nicht einzustellen). Wenn Sie über das Portal den Knotencluster 1 eingerichtet haben, wird die Konfiguration automatisch bearbeitet. Bei den Knotenclustern 1 und 3 wird die Ausführung von Produktionsworkloads nicht unterstützt. 
 3. **VM-SKU**: Der primäre Knotentyp dient zur Ausführung der Systemdienste, daher muss die ausgewählte VM-SKU die gesamte Spitzenlast verarbeiten können, die Sie für den Cluster planen. Eine Analogie zur Veranschaulichung: Stellen Sie sich den primären Knotentyp als Ihre Lunge vor, die Ihr Gehirn mit Sauerstoff versorgt. Wenn Ihr Gehirn nicht genügend Sauerstoff erhält, funktioniert Ihr Körper nicht richtig. 
 
-Die Kapazitätsanforderungen eines Clusters sind von der Workload abhängig, die Sie für die Ausführung im Cluster planen. Daher können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen
+Da die Kapazitätsanforderungen eines Clusters von der Workload abhängig sind, die Sie für die Ausführung im Cluster planen, können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen
 
 Für Produktionsworkloads 
 
@@ -145,13 +159,15 @@ Für Produktionsworkloads
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Nicht primärer Knotentyp: Kapazitätsleitfaden für zustandsbehaftete Workloads
 
-Lesen Sie folgende Informationen für Workloads, die zuverlässige Service Fabric-Sammlungen oder Reliable Actors verwenden. Erfahren Sie mehr zu [Programmiermodellen](service-fabric-choose-framework.md).
+Diese Anleitung gilt für zustandsbehaftete Workloads mit [zuverlässigen Sammlungen oder Reliable Actors](service-fabric-choose-framework.md) von Service Fabric, die Sie auf dem nicht primären Knotentyp ausführen.
 
-1. **Anzahl von VM-Instanzen**: Es wird empfohlen, zustandsbehaftete Produktionsworkloads mit mindestens 5 Zielreplikaten auszuführen. Dies bedeutet, dass Sie im stabilen Zustand in jeder Fehlerdomäne und jeder Upgradedomäne ein Replikat (aus einer Replikatgruppe) erhalten. Das gesamte Konzept der Zuverlässigkeitsstufen für den primären Knotentyp ist eine Möglichkeit, diese Einstellung für Systemdienste anzugeben.
+
+**Anzahl von VM-Instanzen**: Es wird empfohlen, zustandsbehaftete Produktionsworkloads mit mindestens 5 Zielreplikaten auszuführen. Dies bedeutet, dass Sie im stabilen Zustand in jeder Fehlerdomäne und jeder Upgradedomäne ein Replikat (aus einer Replikatgruppe) erhalten. Das gesamte Konzept der Zuverlässigkeitsstufen für den primären Knotentyp ist eine Möglichkeit, diese Einstellung für Systemdienste anzugeben. Daher gilt die gleiche Überlegung auch für Ihre zustandsbehafteten Dienste.
 
 Für Produktionsworkloads wird die Mindestgröße 5 für den primären Knotentyp empfohlen, wenn Sie zustandsbehaftete Workloads auf dem Knoten ausführen.
 
-2. **VM-SKU**: Dies ist der Knotentyp, in dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie für die Ausführung im Cluster planen. Daher können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen
+
+**VM-SKU**: Dies ist der Knotentyp, in dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie für die Ausführung im Cluster planen. Daher können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen
 
 Für Produktionsworkloads 
 
@@ -163,7 +179,7 @@ Für Produktionsworkloads
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>Nicht primärer Knotentyp: Kapazitätsleitfaden für zustandslose Workloads
 
-Lesen Sie folgende Informationen für zustandslose Workloads
+Diese Anleitung gilt für zustandslose Workloads, die Sie auf dem nicht primären Knotentyp ausführen.
 
 **Anzahl von VM-Instanzen:** Für zustandslose Produktionsworkloads wird die Mindestgröße 2 für den nicht primären Knotentyp unterstützt. So können Sie zwei zustandslose Instanzen Ihrer Anwendung ausführen und stellen sicher, dass Ihr Dienst auch beim Ausfall einer VM-Instanz weiter funktioniert. 
 
@@ -172,7 +188,7 @@ Lesen Sie folgende Informationen für zustandslose Workloads
 > 
 >
 
-**VM-SKU**: Dies ist der Knotentyp, in dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie für die Ausführung im Cluster planen. Daher können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen.
+**VM-SKU**: Dies ist der Knotentyp, in dem Ihre Anwendungsdienste ausgeführt werden. Daher muss die ausgewählte VM-SKU die Spitzenlast verarbeiten können, die Sie für jeden Knoten planen. Die Kapazitätsanforderungen des Knotentyps sind von der Workload abhängig, die Sie für die Ausführung im Cluster planen. Daher können wir Ihnen keine detaillierten Anleitungen für Ihre spezifische Workload bereitstellen. Im Folgenden finden Sie eine allgemeine Übersicht, um Ihnen beim Einstieg zu helfen
 
 Für Produktionsworkloads 
 
@@ -180,7 +196,7 @@ Für Produktionsworkloads
 - Die empfohlene VM-SKU ist D3 Standard oder D3_V2 Standard oder eine entsprechende SKU. 
 - Die minimal unterstützte VM-SKU ist D1 Standard oder D1_V2 Standard oder eine entsprechende SKU. 
 - VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
-- A1 Standard-SKUs werden aus Leistungsgründen für Produktionsworkloads ausdrücklich nicht unterstützt.
+- A1 Standard-SKUs werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

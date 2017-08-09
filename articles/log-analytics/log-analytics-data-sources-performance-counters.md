@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/16/2017
+ms.date: 07/12/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 4ce302095fc36f046785ac45d1a9452de321113c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows- und Linux-Leistungsindikatoren in Log Analytics
@@ -48,8 +47,8 @@ Gehen Sie folgendermaßen vor, um einen neuen Windows-Leistungsindikator hinzuzu
 
 1. Geben Sie den Namen des Leistungsindikators im Format *Objekt(Instanz)\Indikator* in das Textfeld ein.  Wenn Sie mit der Eingabe beginnen, wird Ihnen eine Liste mit passenden allgemeinen Indikatoren angezeigt.  Sie können einen Indikator aus der Liste auswählen oder selbst einen eingeben.  Sie können auch durch die Angabe von *Objekt\Indikator* alle Instanzen eines bestimmten Leistungsindikators zurückgeben.  
 
-    Wenn SQL Server Leistungsindikatoren von benannten Instanzen erfasst, beginnen alle benannten Instanzindikatoren mit *MSSQL$*, und anschließend folgt der Name der Instanz.  Um beispielsweise den Indikator für die Protokollcache-Trefferrate für alle Datenbanken aus dem Datenbank-Leistungsobjekt für benannte SQL Server-Instanzen INST2 zu sammeln, geben Sie `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` an. 
- 
+    Wenn SQL Server Leistungsindikatoren von benannten Instanzen erfasst, beginnen alle benannten Instanzindikatoren mit *MSSQL$*, und anschließend folgt der Name der Instanz.  Um beispielsweise den Indikator für die Protokollcache-Trefferrate für alle Datenbanken aus dem Datenbank-Leistungsobjekt für benannte SQL Server-Instanzen INST2 zu sammeln, geben Sie `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` an.
+
 2. Klicken Sie auf **+**, oder drücken Sie die **EINGABETASTE** um der Liste den Indikator hinzuzufügen.
 3. Wenn Sie einen Leistungsindikator hinzufügen, verwendet dieser den Standardwert von 10 Sekunden für das **Stichprobenintervall**.  Sie können diesen Standardwert auf einen höheren Wert von bis zu 1800 Sekunden (30 Minuten) festlegen, wenn Sie die Speicheranforderungen der gesammelten Leistungsdaten reduzieren möchten.
 4. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
@@ -67,7 +66,7 @@ Gehen Sie folgendermaßen vor, um einen neuen Linus-Leistungsindikator hinzuzuf�
 5. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurieren von Linux-Leistungsindikatoren in der Konfigurationsdatei
-Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des OMS-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agenten bearbeiten.  Die gesammelten Leistungsmetriken, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<Arbeitsbereichs-ID\>/conf/omsagent.conf** gesteuert. 
+Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des OMS-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agenten bearbeiten.  Die gesammelten Leistungsmetriken, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<Arbeitsbereichs-ID\>/conf/omsagent.conf** gesteuert.
 
 Jedes Objekt oder jede Kategorie von Leistungsindikatoren, die gesammelt werden sollen, sollten in der Konfigurationsdatei als einzelnes `<source>` -Element definiert sein. Die Syntax folgt dem unten angegebenen Muster.
 
@@ -90,7 +89,7 @@ Die in diesem Element verwendeten Parameter werden in der folgenden Tabelle besc
 | interval | Häufigkeit, mit der die Indikatoren des Objekts gesammelt werden. |
 
 
-Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in der Konfigurationsdatei angeben können.  Für bestimmte Anwendungen stehen weitere Indikatoren zur Verfügung. Siehe hierzu [Sammeln von Leistungsindikatoren für Linux-Anwendungen in Log Analytics](log-analytics-data-sources-linux-applications.md). 
+Die folgende Tabelle enthält die Objekte und Leistungsindikatoren, die Sie in der Konfigurationsdatei angeben können.  Für bestimmte Anwendungen stehen weitere Indikatoren zur Verfügung. Siehe hierzu [Sammeln von Leistungsindikatoren für Linux-Anwendungen in Log Analytics](log-analytics-data-sources-linux-applications.md).
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
@@ -158,7 +157,7 @@ Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
       counter_name_regex ".*"
       interval 5m
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Logical Disk"
@@ -166,7 +165,7 @@ Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
       counter_name_regex ".*"
       interval 5m
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Processor"
@@ -174,7 +173,7 @@ Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
       counter_name_regex ".*"
       interval 30s
     </source>
-    
+
     <source>
       type oms_omi
       object_name "Memory"
@@ -222,6 +221,23 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 | Type=Perf CounterName="% Prozessorzeit" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer |
 | Type=Perf ObjectName="MSSQL$INST2:Databases" InstanceName=master | Alle Leistungsdaten aus dem Datenbank-Leistungsobjekt für die Masterdatenbank von der benannten SQL Server-Instanz INST2.  
 
+>[!NOTE]
+> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden:
+
+> | Abfrage | Beschreibung |
+|:--- |:--- |
+| Perf |Alle Leistungsdaten. |
+| Perf &#124; where Computer == "MyComputer" |Alle Leistungsdaten eines bestimmten Computers. |
+| Perf &#124; where CounterName == "Aktuelle Warteschlangenlänge" |Alle Leistungsdaten eines bestimmten Leistungsindikators. |
+| Perf &#124; where ObjectName == "Prozessor" and CounterName == "% Prozessorzeit" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(Average) by Computer |Durchschnittliche CPU-Nutzung aller Computer. |
+| Perf &#124; where CounterName == "% Prozessorzeit" &#124; summarize AggregatedValue = max(Max) by Computer |Maximale CPU-Nutzung aller Computer. |
+| Perf &#124; where ObjectName == "Logischer Datenträger" and CounterName == "Aktuelle Warteschlangenlänge" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(Average) by InstanceName |Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers |
+| Perf &#124; where CounterName == "Übertragungen/s" &#124; summarize AggregatedValue = percentile(Average, 95) by Computer |95. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
+| Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern |
+| Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 70. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer |
+| Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer |
+| Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | Alle Leistungsdaten aus dem Datenbank-Leistungsobjekt für die Masterdatenbank von der benannten SQL Server-Instanz INST2.  
+
 ## <a name="viewing-performance-data"></a>Anzeigen von Leistungsdaten
 Wenn Sie eine Protokollsuche nach Leistungsdaten durchführen, wird standardmäßig die **Listenansicht** angezeigt.  Um die Daten in grafischer Form anzuzeigen, klicken Sie auf **Metriken**.  Für eine detaillierte grafische Darstellung klicken Sie auf **+** neben dem gewünschten Leistungsindikator.  
 
@@ -234,3 +250,4 @@ Informationen zum Aggregieren von Leistungsdaten in einer Protokollsuche finden 
 * [Sammeln von Leistungsindikatoren aus Linux-Anwendungen wie](log-analytics-data-sources-linux-applications.md) MySQL und Apache HTTP Server.
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 * Exportieren Sie gesammelte Daten nach [Power BI](log-analytics-powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.
+

@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Medienprozessors | Microsoft-Dokumentation
+title: Erstellen eines Medienprozessors mithilfe von REST | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie eine Medienprozessorkomponente erstellen können, um Medieninhalte für Azure Media Services zu codieren, zu ver- oder entschlüsseln, und um Formate zu konvertieren."
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: d1d05b46591fe4b72c92c59d357681c8e1cdb336
-ms.openlocfilehash: c208660fc1439ca831ada6c9bb348dbc3eadc18c
-ms.lasthandoff: 02/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 4983069924f0edaeee7ffc91131bb83d9f9f4508
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Gewusst wie: Abrufen einer Media Processor-Instanz
@@ -31,18 +31,12 @@ ms.lasthandoff: 02/21/2017
 ## <a name="overview"></a>Übersicht
 Der Medienprozessor in Media Services ist für bestimmte Verarbeitungsaufgaben wie z. B. Codierung, Formatumwandlungen, Verschlüsselung oder Entschlüsselung von Medieninhalten zuständig. Normalerweise erstellen Sie einen Medienprozessor, wenn Sie eine Aufgabe zur Codierung, Verschlüsselung oder Formatumwandlung von Medieninhalten erstellen.
 
-Die folgende Tabelle enthält Name und Beschreibung der verfügbaren Medienprozessoren.
+## <a name="azure-media-processors"></a>Azure-Medienprozessoren 
 
-| Medienprozessorname | Beschreibung | Weitere Informationen |
-| --- | --- | --- |
-| Media Encoder Standard |Umfasst Standardfunktionen für bedarfsgesteuerte Codierung. |[Azure On-Demand Media Encoder – Überblick und Vergleich](media-services-encode-asset.md) |
-| Media Encoder Premium Workflow |Zur Ausführung von Codieraufgaben mit dem Media Encoder Premium Workflow. |[Azure On-Demand Media Encoder – Überblick und Vergleich](media-services-encode-asset.md) |
-| Azure Media Indexer |Macht Mediendateien und Inhalte durchsuchbar und generiert Untertitelspuren und Schlüsselwörter. |[Azure Media Indexer](media-services-index-content.md) |
-| Azure Media Hyperlapse (Vorschau) |Ermöglicht es Ihnen, die "Unregelmäßigkeiten" in Ihrem Video mithilfe von Videostabilisierung auszugleichen. Darüber hinaus können Sie Ihre Inhalte beschleunigen, um einen verwendbaren Clip zu erhalten. |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |Veraltet | |
-| Storage Decryption |Veraltet | |
-| Azure Media Packager |Veraltet | |
-| Azure Media Encryptor |Veraltet | |
+Das folgende Thema enthält Listen von Medienprozessoren:
+
+* [Codieren von Medienprozessoren](scenarios-and-availability.md#encoding-media-processors)
+* [Analytics-Medienprozessoren](scenarios-and-availability.md#analytics-media-processors)
 
 ## <a name="get-mediaprocessor"></a>Abrufen von MediaProcessor
 > [!NOTE]
@@ -50,8 +44,7 @@ Die folgende Tabelle enthält Name und Beschreibung der verfügbaren Medienproze
 > 
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
-> 
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 
 Der folgende REST-Aufruf zeigt, wie Sie eine Medienprozessorinstanz nach Namen (in diesem Fall **Media Encoder Standard**) abrufen. 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: c90079542a91720cb60010dfd5be2cf76802cc70
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 53c142217c67465d29fa413f4edb4f96fcb4c6cc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
@@ -46,7 +45,7 @@ Dieser monolithische Entwurfsansatz hat auch Vorteile. Er ist häufig einfacher 
 
 Microservices stellen die Antwort auf diese Nachteile dar, und sie sind enger an die obigen geschäftlichen Anforderungen angelehnt. Aber auch sie haben sowohl Vor- als auch Nachteile. Der Vorteil von Microservices ist, dass jeder Microservice normalerweise einfachere Geschäftsfunktionen kapselt, die Sie einzeln zentral hoch- und herunterskalieren, testen, bereitstellen und verwalten können. Ein wichtiger Vorteil eines Microservice-Ansatzes ist, dass Teams anders als beim mehrstufigen Ansatz stärker durch Geschäftsszenarien als durch Technologie beeinflusst werden. In der Praxis entwickeln kleinere Teams basierend auf einem Kundenszenario unter Verwendung beliebiger Technologien ihrer Wahl einen Microservice. 
 
-Anders ausgedrückt: Das Unternehmen muss Technologie nicht zur Verwaltung monolithischer Anwendungen standardisieren. Einzelne für Dienste zuständige Teams können die Vorgehensweise wählen, die aufgrund des Know-hows im Team sinnvoll oder am besten zur Behebung des Problems geeignet ist. In der Praxis ist eine Gruppe empfohlener Technologien vorzuziehen, z.B. ein bestimmter NoSQL-Speicher oder ein Webanwendungsframework.
+Anders ausgedrückt: Das Unternehmen muss Technologie nicht zur Verwaltung von Microserviceanwendungen standardisieren. Einzelne für Dienste zuständige Teams können die Vorgehensweise wählen, die aufgrund des Know-hows im Team sinnvoll oder am besten zur Behebung des Problems geeignet ist. In der Praxis ist eine Gruppe empfohlener Technologien vorzuziehen, z.B. ein bestimmter NoSQL-Speicher oder ein Webanwendungsframework.
 
 Der Nachteil von Microservices sind die Verwaltung der höheren Anzahl separater Entitäten und die höhere Komplexität von Bereitstellungen und der Versionsverwaltung. Der Netzwerkdatenverkehr zwischen Microservices und auch die entsprechenden Netzwerklatenzen nehmen zu. Eine große Anzahl von sehr präzisen Diensten mit vielen Einzelaufrufen kann in Bezug auf die Leistung schnell zu einem Alptraum werden. Und ohne Tools zum Anzeigen dieser Abhängigkeiten ist es nicht einfach, das gesamte System zu „sehen“. 
 

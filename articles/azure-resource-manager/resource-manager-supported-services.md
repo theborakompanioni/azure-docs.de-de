@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 07/25/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 09537fb4058f1fd27469fb9386bc52d938c027ec
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 6a9128f45d4199404019cee594842d59c7f1aaf3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -55,7 +55,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Viele Ressourcenanbieter werden standardmäßig automatisch registriert, dennoch müssen Sie unter Umständen einige Ressourcenanbieter manuell registrieren. Geben Sie zum Registrieren eines Ressourcenanbieters den Namespace an:
+Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Viele Ressourcenanbieter werden standardmäßig automatisch registriert. Einige Ressourcenanbieter müssen Sie jedoch unter Umständen manuell registrieren. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des `/register/action`-Vorgangs für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten.
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
@@ -69,6 +69,8 @@ RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
+
+Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen aus diesem Ressourcenanbieter vorhanden sind.
 
 Verwenden Sie Folgendes, um Informationen für einen bestimmten Ressourcenanbieter anzuzeigen:
 
@@ -157,13 +159,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Viele Ressourcenanbieter werden standardmäßig automatisch registriert, dennoch müssen Sie unter Umständen einige Ressourcenanbieter manuell registrieren. Geben Sie zum Registrieren eines Ressourcenanbieters den Namespace an:
+Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Viele Ressourcenanbieter werden standardmäßig automatisch registriert. Einige Ressourcenanbieter müssen Sie jedoch unter Umständen manuell registrieren. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des `/register/action`-Vorgangs für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
 Daraufhin wird eine Meldung mit dem Hinweis zurückgegeben, dass die Registrierung noch nicht abgeschlossen ist.
+
+Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen aus diesem Ressourcenanbieter vorhanden sind.
 
 Verwenden Sie Folgendes, um Informationen für einen bestimmten Ressourcenanbieter anzuzeigen:
 
@@ -255,9 +259,11 @@ Wählen Sie **Ressourcenanbieter** aus, und sehen Sie sich die Liste mit den ver
 
 ![Ressourcenanbieter anzeigen](./media/resource-manager-supported-services/show-resource-providers.png)
 
-Viele Ressourcenanbieter werden standardmäßig automatisch registriert, dennoch müssen Sie unter Umständen einige Ressourcenanbieter manuell registrieren. Wählen Sie **Registrieren** aus, um einen Ressourcenanbieter zu registrieren.
+Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Viele Ressourcenanbieter werden standardmäßig automatisch registriert. Einige Ressourcenanbieter müssen Sie jedoch unter Umständen manuell registrieren. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des `/register/action`-Vorgangs für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Wählen Sie **Registrieren** aus, um einen Ressourcenanbieter zu registrieren.
 
 ![Ressourcenanbieter registrieren](./media/resource-manager-supported-services/register-provider.png)
+
+Sie können die Registrierung eines Ressourcenanbieters nicht aufheben, wenn in Ihrem Abonnement noch Ressourcentypen aus diesem Ressourcenanbieter vorhanden sind.
 
 Wählen Sie **Weitere Dienste** aus, um Informationen für einen bestimmten Ressourcenanbieter anzuzeigen.
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 256f8323d199db98a1267a5139a1ab3f14a3441c
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 5ca8a8c988afce5f4b9266673aa2afd73dc8ed67
+ms.contentlocale: de-de
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST
@@ -54,7 +54,7 @@ Mit AMS können Sie Medienobjekte auch per Massenvorgang hochladen. Weitere Info
 > 
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 > 
 
@@ -90,7 +90,6 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie ein Medienobjekt erstellen.
     Host: media.windows.net
 
     {"Name":"BigBuckBunny.mp4"}
-
 
 **HTTP-Antwort**
 
@@ -150,7 +149,6 @@ Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, 
        "ParentAssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1"
     }
 
-
 **HTTP-Antwort**
 
     HTTP/1.1 201 Created
@@ -184,7 +182,6 @@ Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, 
        "MimeType":"video/mp4",
        "ContentChecksum":null
     }
-
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>Erstellen der AccessPolicy mit Schreibberechtigung
 
@@ -269,7 +266,6 @@ Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eige
        "Type":1
     }
 
-
 **HTTP-Antwort**
 
 Im Erfolgsfall wird die folgende Antwort zurückgegeben:
@@ -349,7 +345,6 @@ Im Erfolgsfall wird Folgendes zurückgegeben: HTTP/1.1 204 Kein Inhalt
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
     x-ms-version: 2.11
     Host: media.windows.net
-
 
 **HTTP-Antwort**
 

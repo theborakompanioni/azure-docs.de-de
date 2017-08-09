@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 08/02/2017
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 7ea14ccd4ad825d3cf7aa796b0360ada4d55974a
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: a1becaf8465f68ecac768c5c6b2dbc95e8ff7278
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
@@ -50,7 +50,7 @@ Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rech
 ## <a name="secure-your-data"></a>Sichern der Daten
 Azure-Datenbank für MySQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/TrustCenter/Security/default.aspx).
 
-Die Azure-Datenbank für den MySQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Alle Daten und darunter auch Sicherungen werden auf einem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
+Die Azure-Datenbank für den MySQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Daten, einschließlich von Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die vom Modul während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 
 In der Standardeinstellung ist die Azure-Datenbank für den MySQL-Dienst so konfiguriert, dass [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) für Daten während Übertragungen innerhalb des Netzwerks erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.  Wenn Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die Erzwingung von SSL zum Herstellen einer Verbindung mit dem Datenbankdienst deaktivieren.
 

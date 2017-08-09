@@ -1,5 +1,5 @@
 ---
-title: "Schemaaktualisierungen&1;. Juni&2016; – Azure Logic Apps | Microsoft-Dokumentation"
+title: "Schemaaktualisierungen 1. Juni 2016 – Azure Logic Apps | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie JSON-Definitionen für Azure Logic Apps mit der Schemaversion 2016-06-01 erstellen."
 author: jeffhollan
 manager: anneta
@@ -15,12 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dab219386a32f519e50f76e18013f8f94a2266ff
-ms.openlocfilehash: 9d8f0be3d5c8e2c2e5f169dc1d0851c95a641d0c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
 ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schemaaktualisierungen für Azure Logic Apps – 1. Juni 2016
@@ -31,7 +30,7 @@ Diese neue Schema- und API-Version für Azure Logic Apps enthält wichtige Verbe
 * [Bedingungen und Schleifen](#conditions-loops) sind jetzt erstklassige Aktionen.
 * Genauere Sortierung der Ausführung von Aktionen mit der `runAfter`-Eigenschaft (ersetzt `dependsOn`)
 
-Informationen zum Durchführen des Upgrades für Ihre Logik-App vom Schema vom 1. August 2015 (Vorschau) auf das Schema vom 1. Juni 2016 finden Sie im [entsprechenden Abschnitt](#upgrading-to-2016-06-01-schema).
+Informationen zum Durchführen des Upgrades für Ihre Logik-App vom Schema vom 1. August 2015 (Vorschau) auf das Schema vom 1. Juni 2016 finden Sie im [entsprechenden Abschnitt](##upgrade-your-schema).
 
 <a name="scopes"></a>
 ## <a name="scopes"></a>Bereiche
@@ -115,8 +114,7 @@ Zum Durchführen des Upgrades auf die neue Schemaversion sind nur wenige Schritt
     ![Auswählen von „Schema aktualisieren“][1]
    
     Die aktualisierte Definition wird zurückgegeben, und Sie können sie bei Bedarf kopieren und in eine Ressourcendefinition einfügen. 
-    **Wir empfehlen Ihnen aber dringend**, die Option **Speichern unter** 
-    zu wählen, um sicherzustellen, dass alle Verbindungsverweise in der aktualisierten Logik-App gültig sind.
+    Es wird **jedoch dringend empfohlen**, die Option **Speichern unter** zu wählen, um sicherzustellen, dass alle Verbindungsverweise in der aktualisierten Logik-App gültig sind.
 
 3. Wählen Sie in der Symbolleiste des Blatts für das Upgrade die Option **Speichern unter**.
 

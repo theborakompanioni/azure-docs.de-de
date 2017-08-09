@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ff6900cf4516a173e212728a069587d908f9fe11
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatische regionale Failover für die Geschäftskontinuität in Azure Cosmos DB
@@ -122,7 +121,7 @@ In diesem Artikel wurde erläutert, wie manuelle und automatische Failover in Co
 ## <a id="NextSteps"></a>Nächste Schritte
 * Erfahren Sie, wie Cosmos DB die [globale Verteilung](distribute-data-globally.md) unterstützt.
 * Erfahren Sie mehr über die [globale Konsistenz bei Azure Cosmos DB](consistency-levels.md).
-* Entwickeln Sie mit mehreren Regionen mit dem [DocumentDB-SDK](../cosmos-db/tutorial-global-distribution-documentdb.md) für Azure Cosmos DB.
+* Entwickeln Sie mit mehreren Regionen mit der [DocumentDB-API](../cosmos-db/tutorial-global-distribution-documentdb.md) für Azure Cosmos DB.
 * Erfahren Sie, wie Sie mit Azure DocumentDB [Schreibarchitekturen mit mehreren Regionen](multi-region-writers.md) erstellen.
 
 

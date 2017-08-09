@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 11/18/2016
+ms.date: 6/2/2017
 ms.author: shigu;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 8d189256ed4c876859203406cda95ce0be36c96c
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: a0452c4dedc218dff17404c4ecee70d788e49644
+ms.contentlocale: de-de
+ms.lasthandoff: 07/25/2017
 
 ---
 
-# <a name="memory-optimizations-for-columnstore-compression"></a>Arbeitsspeicheroptimierung für Columnstore-Komprimierung
+# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximieren der Zeilengruppenqualität für Columnstore
 
-Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.  Verwenden Sie diese Methoden, um die Komprimierungsrate und Abfrageleistung für Columnstore-Indizes zu verbessern.
+Die Zeilengruppenqualität hängt von der Anzahl von Zeilen in einer Zeilengruppe ab. Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.  Verwenden Sie diese Methoden, um die Komprimierungsrate und Abfrageleistung für Columnstore-Indizes zu verbessern.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Bedeutung der Größe der Zeilengruppe
 Da ein Columnstore-Index eine Tabelle durch die Überprüfung der einzelnen Spaltensegmente von einzelnen Zeilengruppen überprüft, verbessert das Maximieren der Zeilenanzahl in jeder Zeilengruppe die Abfrageleistung. Wenn Zeilengruppen über eine hohe Anzahl von Reihen verfügen, verbessert sich die Datenkomprimierung, d.h., es werden weniger Daten vom Datenträger gelesen.
@@ -37,11 +37,45 @@ Für eine optimale Abfrageleistung besteht das Ziel darin, die Anzahl der Zeilen
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>Zeilengruppen können während der Komprimierung gekürzt werden
 
-Während des Massenladens oder einer Neuerstellung des Columnstore-Indizes ist manchmal nicht genug Arbeitsspeicher verfügbar, um alle Zeilen in die vorgesehenen Zeilengruppen zu komprimieren. Im Fall einer Arbeitsspeicherauslastung kürzen Columnstore-Indizes die Zeilengruppengröße, sodass die Komprimierung im Columnstore erfolgen kann.
+Während des Massenladens oder einer Neuerstellung des Columnstore-Indizes ist manchmal nicht genug Arbeitsspeicher verfügbar, um alle Zeilen in die vorgesehenen Zeilengruppen zu komprimieren. Im Fall einer Arbeitsspeicherauslastung kürzen Columnstore-Indizes die Zeilengruppengröße, sodass die Komprimierung im Columnstore erfolgen kann. 
 
 Reicht der Arbeitsspeicher nicht aus, um mindestens 10.000 Reihen in jede Zeilengruppe zu komprimieren, erzeugt SQL Data Warehouse einen Fehler.
 
 Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a clustered columnstore index (Massenladen in einen gruppierten Columnstore-Index)](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+
+## <a name="how-to-monitor-rowgroup-quality"></a>Überwachen der Zeilengruppenqualität
+
+Über die DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) werden nützliche Informationen wie die Anzahl der Zeilen in Zeilengruppen und ggf. den Grund für eine Kürzung verfügbar gemacht. Sie können die folgende Sicht als eine praktische Möglichkeit zum Abfragen dieser DMV erstellen, um Informationen zur Kürzung von Zeilengruppen abzurufen.
+
+```sql
+create view dbo.vCS_rg_physical_stats
+as 
+with cte
+as
+(
+select   tb.[name]                    AS [logical_table_name]
+,        rg.[row_group_id]            AS [row_group_id]
+,        rg.[state]                   AS [state]
+,        rg.[state_desc]              AS [state_desc]
+,        rg.[total_rows]              AS [total_rows]
+,        rg.[trim_reason_desc]        AS trim_reason_desc
+,        mp.[physical_name]           AS physical_name
+FROM    sys.[schemas] sm
+JOIN    sys.[tables] tb               ON  sm.[schema_id]          = tb.[schema_id]                             
+JOIN    sys.[pdw_table_mappings] mp   ON  tb.[object_id]          = mp.[object_id]
+JOIN    sys.[pdw_nodes_tables] nt     ON  nt.[name]               = mp.[physical_name]
+JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  rg.[object_id]     = nt.[object_id]
+                                                                            AND rg.[pdw_node_id]   = nt.[pdw_node_id]
+                                        AND rg.[distribution_id]    = nt.[distribution_id]                                          
+)
+select *
+from cte;
+```
+
+trim_reason_desc enthält Informationen darüber, ob die Zeilengruppe gekürzt wurde (trim_reason_desc = NO_TRIM bedeutet, dass keine Kürzung erfolgt ist und die Qualität der Zeilengruppe optimal ist). Die folgenden Begründungen für eine Kürzung geben eine vorzeitige Kürzung der Zeilengruppe an:
+- BULKLOAD: Dieser Grund für eine Kürzung wird verwendet, wenn der eingehende Zeilenbatch für den Ladevorgang weniger als 1 Million Zeilen umfasst hat. Das Datenbankmodul erstellt komprimierte Zeilengruppen, wenn mehr als 100.000 Zeilen eingefügt werden (statt sie im Deltaspeicher einzufügen), der Grund für die Kürzung wird jedoch auf BULKLOAD festgelegt. In diesem Szenario soll das Batchladefenster so erhöht werden, dass mehr Zeilen angesammelt werden. Außerdem wird das Partitionsschema überprüft, um sicherzustellen, dass es nicht zu kleinteilig ist, da Zeilengruppen nicht über Partitionsgrenzen hinausgehen können.
+- MEMORY_LIMITATION: Zum Erstellen von Zeilengruppen mit 1 Million Zeilen ist für das Datenbankmodul eine bestimmte Arbeitsspeichergröße erforderlich. Wenn der verfügbare Speicher für die Ladesitzung kleiner als der erforderliche Arbeitsspeicher ist, werden Zeilengruppen vorzeitig gekürzt. In den folgenden Abschnitten wird erläutert, wie Sie den erforderlichen Speicher schätzen und mehr Speicher zuweisen.
+- DICTIONARY_SIZE: Dieser Grund für eine Kürzung gibt an, dass die Zeilengruppenkürzung aufgetreten ist, weil mindestens eine Zeichenfolgenspalte mit breiten Zeichenfolgen oder Zeichenfolgen mit hoher Statusanzahl vorhanden war. Die Wörterbuchgröße ist auf 16 MB Arbeitsspeicher beschränkt. Sobald diese Beschränkung erreicht ist, wird die Zeilengruppe komprimiert. In diesem Fall sollten Sie die problematische Spalte in einer separaten Tabelle isolieren.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Einschätzen der Arbeitsspeicheranforderungen
 

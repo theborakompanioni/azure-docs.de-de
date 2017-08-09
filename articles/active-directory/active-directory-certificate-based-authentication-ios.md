@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2017
+ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 162be9faa51047f4d0be0e73e3dbe6a3dc87ba4c
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4c2e2030d49ab09ee8c72cfd638986b075d53921
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter iOS
@@ -30,7 +30,7 @@ Bei Verwendung der zertifikatbasierten Authentifizierung können Sie von Azure A
 
 Wenn Sie dieses Feature konfigurieren, ist es bei bestimmten E-Mail- und Microsoft Office-Anwendungen auf Ihrem mobilen Gerät nicht länger erforderlich, einen Benutzernamen und ein Kennwort einzugeben. 
 
-Dieses Thema behandelt die Voraussetzungen und die unterstützten Szenarien für die Konfiguration der zertifikatbasierten Authentifizierung auf iOS-Geräten für Mandantenbenutzer mit Office 365 Enterprise-, Business-, Education- und US Government- und China-Plänen.
+Dieses Thema behandelt die Voraussetzungen und die unterstützten Szenarien für die Konfiguration der zertifikatbasierten Authentifizierung auf Android-Geräten für Mandantenbenutzer mit Office 365-Plänen für Enterprise, Business, Education, US Government, China und Deutschland.
 
 Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Federal-Plänen verfügbar.
 
@@ -47,6 +47,7 @@ Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Feder
 | Outlook |![Prüfen][1] |
 | Yammer |![Prüfen][1] |
 | Skype for Business |![Prüfen][1] |
+| Microsoft Information Protection-App |![Prüfen][1] |
 | Microsoft Teams |![Prüfen][1] |
 
 ## <a name="requirements"></a>Anforderungen 

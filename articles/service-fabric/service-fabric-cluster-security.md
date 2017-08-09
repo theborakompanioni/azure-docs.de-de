@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 628df1df8f5de99a5c18d0df5b7ee41e2fb747df
-ms.openlocfilehash: c3ff370b105a1f9bdacd1bdb4b32d6209e150be2
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 5afbe575a8affc37b8f902c0988585a83921e3d2
 ms.contentlocale: de-de
-ms.lasthandoff: 02/16/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
@@ -57,7 +57,7 @@ Hierdurch werden Clients authentifiziert und die Kommunikation zwischen einem Cl
 Cluster unter Azure oder eigenständige Cluster unter Windows können entweder [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) verwenden.
 
 ### <a name="client-to-node-certificate-security"></a>Zertifikatsicherheit (Client zu Knoten)
- Client-zu-Knoten-Zertifikatsicherheit wird beim Erstellen des Clusters über das Azure-Portal, über Azure Resource Manager-Vorlagen oder über eine eigenständige JSON-Vorlage durch Angeben eines Administratorclientzertifikats und/oder eines Benutzerclientzertifikats konfiguriert.  Die angegebenen Administrator- und Benutzerclientzertifikate müssen sich von den primären und sekundären Zertifikaten unterscheiden, die Sie für [Knoten-zu-Knoten-Sicherheit](#node-to-node-security)angeben.
+ Client-zu-Knoten-Zertifikatsicherheit wird beim Erstellen des Clusters über das Azure-Portal, über Azure Resource Manager-Vorlagen oder über eine eigenständige JSON-Vorlage durch Angeben eines Administratorclientzertifikats und/oder eines Benutzerclientzertifikats konfiguriert.  Die angegebenen Administrator- und Benutzerclientzertifikate müssen sich von den primären und sekundären Zertifikaten unterscheiden, die Sie als bewährte Methode für [Knoten-zu-Knoten-Sicherheit](#node-to-node-security) angeben. Standardmäßig werden die Clusterzertifikate für Knoten-zu-Knoten-Sicherheit mit der zulässigen Liste von Client-Administratorzertifikaten hinzugefügt.
 
 Clients, die unter Verwendung des Administratorzertifikats eine Verbindung mit dem Cluster herstellen, haben uneingeschränkten Zugriff auf die Verwaltungsfunktionen.  Clients, die unter Verwendung des schreibgeschützten Benutzerclientzertifikats eine Verbindung mit dem Cluster herstellen, haben nur Lesezugriff auf die Verwaltungsfunktionen. Diese Zertifikate werden also für die weiter unten beschriebene rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) verwendet.
 

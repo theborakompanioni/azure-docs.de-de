@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/17/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
-ms.openlocfilehash: 07edc26f62fada8b5e32693a172cb23b48d36e1f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c1e0f89e2447189c7422368f1ccf7355aac6065b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="log-analytics-view-designer-visualization-part-reference"></a>Referenz der Visualisierungskomponenten im Ansicht-Designer in Log Analytics
@@ -26,7 +27,10 @@ Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansicht
 Weitere verfügbare Artikel für den Ansicht-Designer:
 
 * [Ansicht-Designer](log-analytics-view-designer.md): Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
-* [Referenz der Kacheln](log-analytics-view-designer-tiles.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind. 
+* [Referenz der Kacheln](log-analytics-view-designer-tiles.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
+
+>[!NOTE]
+> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html) geschrieben werden.  Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurde, werden automatisch konvertiert.
 
 Die folgende Tabelle beschreibt die verschiedenen Typen von Kacheln, die im Ansicht-Designer verfügbar sind.  In den folgenden Abschnitten werden jeder Kacheltyp im Detail und dessen Eigenschaften beschrieben.
 
@@ -304,17 +308,17 @@ Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im zeitl
 ## <a name="common-settings"></a>Allgemeine Einstellungen
 In den folgenden Abschnitten werden die Einstellungen beschrieben, die für verschiedene Visualisierungskomponenten gelten.
 
-### <a name="a-namename-value-separatorname--value-separatora"></a><a name="name-value-separator">Trennzeichen für Name und Wert</a>
+### <a name="name-value-separator">Trennzeichen für Name und Wert</a>
 Ein Trennzeichen, um die Texteigenschaft aus einer Listenabfrage in mehrere Werte zu zergliedern.  Wenn Sie ein Trennzeichen angeben, können Sie Namen für die einzelnen Felder getrennt durch dieses Trennzeichen im Feld „Name“ bereitstellen.
 
-Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude12* auf.  Sie könnten - als Trennzeichen für Name und Wert und *Ort-Gebäude* als Namen angeben.  Dadurch wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* zergliedert. 
+Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude12* auf.  Sie könnten - als Trennzeichen für Name und Wert und *Ort-Gebäude* als Namen angeben.  Dadurch wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* zergliedert.
 
-### <a name="a-namenavigation-querynavigation-querya"></a><a name="navigation-query">Navigationsabfrage</a>
+### <a name="navigation-query">Navigationsabfrage</a>
 Die Abfrage, die ausgeführt wird, wenn der Benutzer ein Element in der Liste auswählt.  Verwenden Sie *{ausgewähltes Element}*, um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.
 
 Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt.  Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt.
 
-### <a name="a-namesparklinessparklinesa"></a><a name="sparklines">Sparklines</a>
+### <a name="sparklines">Sparklines</a>
 Eine Sparkline ist ein kleines Liniendiagramm, das den Wert eines Listeneintrags im Lauf der Zeit veranschaulicht.  Bei Visualisierungskomponenten mit einer Liste können Sie auswählen, ob ein horizontaler Balken mit dem relativen Wert einer numerischen Spalte oder eine Sparkline mit dem Wert im Verlauf der Zeit angezeigt werden soll.
 
 In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben.
@@ -324,7 +328,7 @@ In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben.
 | Sparklines aktivieren |Wählen Sie diese Option, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. |
 | Vorgang |Wenn Sparklines aktiviert sind, ist dies der Vorgang, der für jede Eigenschaft in der Liste ausgeführt wird, um die Werte für die Sparkline zu berechnen.<br><br>– Letztes Beispiel: Letzter Wert für die Reihe im Zeitintervall.<br>– Max: Höchstwert für die Reihe im Zeitintervall.<br>– Min: Mindestwert für die Reihe im Zeitintervall.<br>– Summe: Summe der Werte für die Reihe im Zeitintervall.<br>– Zusammenfassung: Verwendet den gleichen Measure-Befehl wie die Abfrage in der Kopfzeile. |
 
-### <a name="a-namethresholdsthresholdsa"></a><a name="thresholds">Schwellenwerte</a>
+### <a name="thresholds">Schwellenwerte</a>
 Schwellenwerte ermöglichen die Anzeige eines farbigen Symbols neben jedem Element einer Liste, damit Sie Elemente, die einen bestimmten Wert überschreiten oder innerhalb eines bestimmten Bereichs liegen, auf einen Blick erkennen können.  Sie können beispielsweise folgende Farbgebung festlegen: ein grünes Symbol für Elemente mit akzeptablem Wert, ein gelbes Symbol für Elemente mit einem Wert in einem Bereich, der auf eine Warnung hindeutet, und ein rotes Symbol für Elemente, die einen Fehlerwert überschreiten.
 
 Wenn Sie Schwellenwerte für eine Komponente aktivieren, müssen Sie mindestens einen Schwellenwert angeben.  Wenn der Wert eines Elements größer ist als ein Schwellenwert und kleiner als der nächste Schwellenwert, wird die entsprechende Farbe verwendet.  Wenn das Element größer ist als der höchste Schwellenwert, wird die entsprechende Farbe verwendet.   
@@ -342,10 +346,4 @@ In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

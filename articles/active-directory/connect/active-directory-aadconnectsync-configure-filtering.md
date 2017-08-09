@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Konfigurieren der Filterung | Microsoft Docs'
+title: 'Azure AD Connect-Synchronisierung: Konfigurieren der Filterung | Microsoft-Dokumentation'
 description: "Erläutert das Konfigurieren der Filterung bei der Azure AD Connect-Synchronisierung."
 services: active-directory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 635affebf9130c2bfb38e84cc144ee4838504777
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 064642ebb9cafb0c6e1b3ff306241182a95215cc
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -300,6 +300,8 @@ Jetzt ist es an der Zeit, den Scheduler wieder zu aktivieren.
 
 ## <a name="group-based-filtering"></a>Gruppenbasierte Filterung
 Die gruppenbasierte Filterung kann bei der erstmaligen Installation von Azure AD Connect als [benutzerdefinierte Installation](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups) konfiguriert werden. Die Option ist für Pilotbereitstellungen gedacht, bei denen nur ein kleiner Satz von Objekten synchronisiert werden soll. Wenn Sie die gruppenbasierte Filterung deaktiviert haben, können Sie sie nicht mehr aktivieren. Die Verwendung der gruppenbasierten Filterung in einer benutzerdefinierten Konfiguration wird *nicht unterstützt*. Die Konfiguration dieses Features wird nur mit dem Installations-Assistenten unterstützt. Wenn Sie Ihr Pilotprojekt abgeschlossen haben, sollten Sie eine der anderen Filteroptionen in diesem Thema verwenden. Wenn Sie die organisationseinheitenbasierte Filterung zusammen mit der gruppenbasierten Filterung verwenden, müssen die Organisationseinheiten mit den Gruppen- und Mitgliedsobjekten eingeschlossen werden.
+
+Beim Synchronisieren mehrerer AD-Gesamtstrukturen können Sie die gruppenbasierte Filterung konfigurieren, indem Sie für jeden AD-Connector eine andere Gruppe angeben. Wenn Sie einen Benutzer in einer AD-Gesamtstruktur synchronisieren möchten und für diesen Benutzer mindestens ein entsprechendes FSP-Objekt (Foreign Security Principal, fremder Sicherheitsprinzipal) in anderen AD-Gesamtstrukturen vorhanden ist, müssen Sie sicherstellen, dass das Benutzerobjekt und alle entsprechenden FSP-Objekte sich innerhalb eines Bereichs für die gruppenbasierte Filterung befinden. Wenn eines (oder mehrere) der FSP-Objekte durch die gruppenbasierte Filterung ausgeschlossen wird, wird das Benutzerobjekt nicht mit Azure AD synchronisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).

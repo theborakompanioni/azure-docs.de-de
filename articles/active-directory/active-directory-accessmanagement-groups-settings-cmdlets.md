@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von Gruppeneinstellungen mit Azure Active Directory-Cmdlets | Microsoft-Dokumentation
-description: "Verwalten der Einstellungen für Gruppen mithilfe von Azure Active Directory-Cmdlets."
+description: "Verwalten der Einstellungen für Gruppen mithilfe von Azure Active Directory-Cmdlets"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/26/2017
 ms.author: rodejo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7dd4833000e8550b172e0451c48788b1e627a1fb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
 > [!IMPORTANT]
-> Dieser Inhalt gilt nur für einheitliche Gruppen, die auch als Office 365-Gruppen bezeichnet werden. 
+> Dieser Inhalt gilt nur für Office 365-Gruppen. 
 
 Office 365-Gruppeneinstellungen werden mithilfe eines Settings- und eines SettingsTemplate-Objekts konfiguriert. Anfänglich werden keine Settings-Objekte im Verzeichnis angezeigt. Dies bedeutet, dass Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, erstellen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage mit dem Namen „Group.Unified“. Zum Konfigurieren von Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Gruppe. 
 

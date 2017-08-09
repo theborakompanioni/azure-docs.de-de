@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen neuer Benutzer in Azure Active Directory | Microsoft Docs"
+title: "Hinzufügen neuer Benutzer in Azure Active Directory | Microsoft-Dokumentation"
 description: "Erklärt, wie neue Benutzer hinzugefügt oder Benutzerinformationen in Azure Active Directory geändert werden."
 services: active-directory
 documentationcenter: 
@@ -11,20 +11,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 07/26/2017
-ms.author: curtand;jeffsta
-ms.reviewer: asteen
-ms.custom: oldportal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
-ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
+ms.author: curtand
+ms.reviewer: jeffsta
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: ff4b742e772a6062885313e9bb49e55907fe125a
 ms.contentlocale: de-de
-ms.lasthandoff: 02/11/2017
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="add-new-users--or-users-with-microsoft-accounts-to-azure-active-directory"></a>Hinzufügen von neuen Benutzer oder Benutzern mit Microsoft-Konten zu Azure Active Directory
+# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>Hinzufügen von neuen Benutzer oder Benutzern mit Microsoft-Konten zu Azure Active Directory
 Fügen Sie Benutzer hinzu, um Ihr Verzeichnis aufzufüllen. In diesem Artikel wird beschrieben, wie Sie neue Benutzer in Ihrer Organisation hinzufügen und wie Benutzer hinzugefügt werden, die über Microsoft-Konten verfügen. Weitere Informationen zum Hinzufügen von Benutzern aus anderen Verzeichnissen in Azure Active Directory oder zum Hinzufügen von Benutzern von Partnerunternehmen finden Sie unter [Hinzufügen von Benutzern aus anderen Verzeichnissen oder Partnerunternehmen in Azure Active Directory](active-directory-create-users-external.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Informationen zum Hinzufügen eines Benutzers im Azure AD Admin Centers finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md).
 
 ## <a name="add-a-user"></a>Hinzufügen eines Benutzers
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) mit einem Konto an, bei dem es sich um einen globalen Administrator für das Verzeichnis handelt.
@@ -41,7 +45,7 @@ Fügen Sie Benutzer hinzu, um Ihr Verzeichnis aufzufüllen. In diesem Artikel wi
 > [!IMPORTANT]
 > Achten Sie auf die folgenden Probleme, die beim Hinzufügen eines Benutzerkontos auftreten können, wenn Ihre Organisation mehr als eine Domäne verwendet:
 >
-> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com, und **anschließend** geoffgrisso@contoso.com hinzu.
+> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com und **anschließend**  geoffgrisso@contoso.com hinzu.
 > * Fügen Sie geoffgrisso@contoso.com **nicht** vor geoffgrisso@contoso.onmicrosoft.com hinzu. Diese Reihenfolge ist wichtig, und es kann umständlich sein, diesen Vorgang rückgängig zu machen.
 >
 >

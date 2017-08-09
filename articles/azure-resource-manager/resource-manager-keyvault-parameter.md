@@ -12,137 +12,188 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 07/25/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 0bf872a44b8ed7cae53d2659aa7be878902130e9
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 1ca72599e67e79d42a3d430dbb13e89ea7265334
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="use-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Verwenden von Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung
 
 Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstellung als Parameter übergeben müssen, können Sie den Wert aus einer Instanz von [Azure Key Vault](../key-vault/key-vault-whatis.md) abrufen. Sie rufen den Wert ab, indem Sie den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei angeben. Der Wert wird nie offengelegt, da Sie nur auf die Schlüsseltresor-ID verweisen. Sie müssen den Wert für das Geheimnis nicht jedes Mal manuell eingeben, wenn Sie die Ressourcen bereitstellen. Der Schlüsseltresor kann unter einem anderen Abonnement als die Ressourcengruppe für die Bereitstellung vorhanden sein. Beim Verweisen auf den Schlüsseltresor geben Sie die Abonnement-ID an.
 
-In diesem Thema wird gezeigt, wie Sie einen Schlüsseltresor und ein Geheimnis erstellen, den Zugriff auf das Geheimnis für eine Resource Manager-Vorlage konfigurieren und das Geheimnis als Parameter übergeben. Wenn Sie bereits über einen Schlüsseltresor und ein Geheimnis verfügen, aber den Zugriff auf die Vorlage und den Benutzerzugriff überprüfen müssen, helfen Ihnen die Informationen im Abschnitt [Ermöglichen des Zugriffs auf das Geheimnis](#enable-access-to-the-secret) weiter. Falls Sie bereits über den Schlüsseltresor und das Geheimnis verfügen und sicher sind, dass die richtige Konfiguration für den Vorlagen- und Benutzerzugriff vorhanden ist, fahren Sie mit dem Abschnitt [Verweisen auf ein Geheimnis mit einer statischen ID](#reference-a-secret-with-static-id) fort. 
+Legen Sie beim Erstellen des Schlüsseltresors die Eigenschaft *enabledForTemplateDeployment* auf *true* fest. Durch Festlegen des Werts auf „true“ ermöglichen Sie den Zugriff über Resource Manager-Vorlagen während der Bereitstellung.  
 
 ## <a name="deploy-a-key-vault-and-secret"></a>Bereitstellen eines Schlüsseltresors und eines geheimen Schlüssels
 
-Sie können einen Schlüsseltresor und ein Geheimnis mit einer Resource Manager-Vorlage bereitstellen. Ein Beispiel finden Sie unter [Key vault template schema](resource-manager-template-keyvault.md) (Schlüsseltresorvorlage – Schema) und [Key vault secret template schema](resource-manager-template-keyvault-secret.md) (Schlüsseltresorgeheimnis-Vorlage – Schema). Legen Sie beim Erstellen der Schlüsseltresors die **enabledForTemplateDeployment**-Eigenschaft auf **true** fest, damit andere Resource Manager-Vorlagen darauf verweisen können. 
+Verwenden Sie zum Erstellen eines Schlüsseltresors und eines Geheimnisses die Azure CLI oder PowerShell. Beachten Sie, dass der Schlüsseltresor für die Vorlagenbereitstellung aktiviert ist. 
 
-Sie können den Schlüsseltresor und das Geheimnis auch mit dem Azure-Portal erstellen. 
+Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 
-1. Wählen Sie **Neu** -> **Sicherheit und Identität** -> **Schlüsseltresor**.
+```azurecli
+vaultname={your-unique-vault-name}
+password={password-value}
 
-   ![Erstellen eines neuen Schlüsseltresors](./media/resource-manager-keyvault-parameter/new-key-vault.png)
+az group create --name examplegroup --location 'South Central US'
+az keyvault create --name $vaultname --resource-group examplegroup --location 'South Central US' --enabled-for-template-deployment true
+az keyvault secret set --vault-name $vaultname --name examplesecret --value $password
+```
 
-2. Geben Sie Werte für den Schlüsseltresor an. Sie können die Einstellungen **Zugriffsrichtlinien** und **Erweiterte Zugriffsrichtlinie** vorerst ignorieren. Diese Einstellungen werden im Abschnitt behandelt. Klicken Sie auf **Erstellen**.
+Verwenden Sie für PowerShell Folgendes:
 
-   ![Festlegen des Schlüsseltresors](./media/resource-manager-keyvault-parameter/create-key-vault.png)
+```powershell
+$vaultname = "{your-unique-vault-name}"
+$password = "{password-value}"
 
-3. Sie verfügen nun über einen Schlüsseltresor. Wählen Sie diesen Schlüsseltresor aus.
-
-4. Wählen Sie auf dem Schlüsseltresorblatt die Option **Geheimnisse**.
-
-   ![Auswählen von Geheimnissen](./media/resource-manager-keyvault-parameter/select-secret.png)
-
-5. Wählen Sie **Hinzufügen**.
-
-   ![„Hinzufügen“ wählen](./media/resource-manager-keyvault-parameter/add-secret.png)
-
-6. Wählen Sie als Uploadoption **Manuell** aus. Geben Sie einen Namen und einen Wert für das Geheimnis an. Klicken Sie auf **Erstellen**.
-
-   ![Angeben des Geheimnisses](./media/resource-manager-keyvault-parameter/provide-secret.png)
-
-Sie haben jetzt den Schlüsseltresor und das Geheimnis erstellt.
+New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmKeyVault -VaultName $vaultname -ResourceGroupName examplegroup -Location "South Central US" -EnabledForTemplateDeployment
+$secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
+Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue $secretvalue
+```
 
 ## <a name="enable-access-to-the-secret"></a>Aktivieren des Zugriffs auf das Geheimnis
 
-Stellen Sie unabhängig davon, ob Sie einen neuen oder einen bereits vorhandenen Schlüsseltresor verwenden, Folgendes sicher: Der Benutzer, der die Vorlage bereitstellt, muss auf das Geheimnis zugreifen können. Der Benutzer, von dem eine Vorlage bereitgestellt wird, in der auf ein Geheimnis verwiesen wird, muss über die Berechtigung `Microsoft.KeyVault/vaults/deploy/action` für den Schlüsseltresor verfügen. Die Rollen [Besitzer](../active-directory/role-based-access-built-in-roles.md#owner) und [Mitwirkender](../active-directory/role-based-access-built-in-roles.md#contributor) gewähren diesen Zugriff. Sie können auch eine [benutzerdefinierte Rolle](../active-directory/role-based-access-control-custom-roles.md) erstellen, die diese Berechtigung gewährt, und den Benutzer zu dieser Rolle hinzufügen. Außerdem müssen Sie für den Resource Manager zulassen, dass während der Bereitstellung Zugriff auf den Schlüsseltresor besteht.
+Stellen Sie unabhängig davon, ob Sie einen neuen oder einen bereits vorhandenen Schlüsseltresor verwenden, Folgendes sicher: Der Benutzer, der die Vorlage bereitstellt, muss auf das Geheimnis zugreifen können. Der Benutzer, von dem eine Vorlage bereitgestellt wird, in der auf ein Geheimnis verwiesen wird, muss über die Berechtigung `Microsoft.KeyVault/vaults/deploy/action` für den Schlüsseltresor verfügen. Die Rollen [Besitzer](../active-directory/role-based-access-built-in-roles.md#owner) und [Mitwirkender](../active-directory/role-based-access-built-in-roles.md#contributor) gewähren diesen Zugriff. Sie können auch eine [benutzerdefinierte Rolle](../active-directory/role-based-access-control-custom-roles.md) erstellen, die diese Berechtigung gewährt, und den Benutzer zu dieser Rolle hinzufügen. Informationen zum Hinzufügen eines Benutzers zu einer Rolle finden Sie unter [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](../active-directory/active-directory-users-assign-role-azure-portal.md).
 
-Sie können diese Schritte über das Portal prüfen bzw. ausführen.
-
-1. Wählen Sie die Option **Zugriffssteuerung (IAM)**.
-
-   ![Auswählen der Zugriffssteuerung](./media/resource-manager-keyvault-parameter/select-access-control.png)
-
-2. Wenn das Konto, das Sie zum Bereitstellen von Vorlagen verwenden möchten, nicht bereits ein Besitzer oder Mitwirkender ist (oder einer benutzerdefinierten Rolle mit der `Microsoft.KeyVault/vaults/deploy/action`-Berechtigung hinzugefügt wurde), wählen Sie **Hinzufügen**.
-
-   ![Benutzer hinzufügen](./media/resource-manager-keyvault-parameter/add-user.png)
-
-3. Wählen Sie die Rolle „Mitwirkender“ oder „Besitzer“, und suchen Sie nach der Identität, die dieser Rolle zugewiesen werden soll. Wählen Sie **OK**, um das Hinzufügen der Identität zur Rolle abzuschließen.
-
-   ![Benutzer hinzufügen](./media/resource-manager-keyvault-parameter/search-user.png)
-
-4. Wählen Sie die Option **Advanced access control** (Erweiterte Zugriffssteuerung), um den Zugriff aus einer Vorlage während der Bereitstellung zu aktivieren. Wählen Sie die Option **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren**.
-
-   ![Aktivieren des Zugriffs auf die Vorlage](./media/resource-manager-keyvault-parameter/select-template-access.png)
 
 ## <a name="reference-a-secret-with-static-id"></a>Verweisen auf ein Geheimnis mit einer statischen ID
 
-Sie verweisen über eine **Parameterdatei (nicht die Vorlage)**, die Werte an die Vorlage übergibt, auf das Geheimnis. Sie verweisen auf den geheimen Schlüssel, indem Sie den Ressourcenbezeichner des Schlüsseltresors und den Namen des geheimen Schlüssels übergeben. Im folgenden Beispiel muss das Geheimnis für den Schlüsseltresor bereits vorhanden sein, und Sie geben einen statischer Wert für dessen Ressourcen-ID ein.
+Die Vorlage, die ein Geheimnis für einen Schlüsseltresor empfängt, unterscheidet sich nicht von anderen Vorlagen. Der Grund hierfür ist, dass **Sie auf den Schlüsseltresor in der Parameterdatei verweisen, nicht in der Vorlage.** Die folgende Vorlage stellt z.B. eine SQL-Datenbank bereit, die ein Administratorkennwort enthält. Der Kennwortparameter ist auf eine sichere Zeichenfolge festgelegt. Aber die Vorlage gibt nicht den Ursprung dieses Werts an.
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      "sqlsvrAdminLoginPassword": {
-        "reference": {
-          "keyVault": {
-            "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-          },
-          "secretName": "adminPassword"
+        "administratorLogin": {
+            "type": "string"
+        },
+        "administratorLoginPassword": {
+            "type": "securestring"
+        },
+        "collation": {
+            "type": "string"
+        },
+        "databaseName": {
+            "type": "string"
+        },
+        "edition": {
+            "type": "string"
+        },
+        "requestedServiceObjectiveId": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "maxSizeBytes": {
+            "type": "string"
+        },
+        "serverName": {
+            "type": "string"
+        },
+        "sampleName": {
+            "type": "string",
+            "defaultValue": ""
         }
-      },
-      "sqlsvrAdminLogin": {
-        "value": "exampleadmin"
-      }
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-05-01-preview",
+            "location": "[parameters('location')]",
+            "name": "[parameters('serverName')]",
+            "properties": {
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                "version": "12.0"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+                    ],
+                    "location": "[parameters('location')]",
+                    "name": "[parameters('databaseName')]",
+                    "properties": {
+                        "collation": "[parameters('collation')]",
+                        "edition": "[parameters('edition')]",
+                        "maxSizeBytes": "[parameters('maxSizeBytes')]",
+                        "requestedServiceObjectiveId": "[parameters('requestedServiceObjectiveId')]",
+                        "sampleName": "[parameters('sampleName')]"
+                    },
+                    "type": "databases"
+                },
+                {
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+                    ],
+                    "location": "[parameters('location')]",
+                    "name": "AllowAllWindowsAzureIps",
+                    "properties": {
+                        "endIpAddress": "0.0.0.0",
+                        "startIpAddress": "0.0.0.0"
+                    },
+                    "type": "firewallrules"
+                }
+            ],
+            "type": "Microsoft.Sql/servers"
+        }
+    ]
+}
+```
+
+Erstellen Sie jetzt eine Parameterdatei für der vorherige Vorlage. Geben Sie in der Parameterdatei einen Parameter an, der dem Namen des Parameters in der Vorlage entspricht. Verweisen Sie für den Parameterwert auf das Geheimnis aus dem Schlüsseltresor. Sie verweisen auf den geheimen Schlüssel, indem Sie den Ressourcenbezeichner des Schlüsseltresors und den Namen des geheimen Schlüssels übergeben. Im folgenden Beispiel muss das Geheimnis für den Schlüsseltresor bereits vorhanden sein, und Sie geben einen statischer Wert für dessen Ressourcen-ID ein.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "administratorLogin": {
+            "value": "exampleadmin"
+        },
+        "administratorLoginPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/{guid}/resourceGroups/examplegroup/providers/Microsoft.KeyVault/vaults/{vault-name}"
+              },
+              "secretName": "examplesecret"
+            }
+        },
+        "collation": {
+            "value": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "databaseName": {
+            "value": "exampledb"
+        },
+        "edition": {
+            "value": "Standard"
+        },
+        "location": {
+            "value": "southcentralus"
+        },
+        "maxSizeBytes": {
+            "value": "268435456000"
+        },
+        "requestedServiceObjectiveId": {
+            "value": "455330e1-00cd-488b-b5fa-177c226f28b7"
+        },
+        "sampleName": {
+            "value": ""
+        },
+        "serverName": {
+            "value": "exampleserver"
+        }
     }
 }
 ```
 
-In der Vorlage sollte der Parameter, der das Geheimnis annimmt, ein Parameter vom Typ **securestring** sein. Das folgende Beispiel zeigt die relevanten Abschnitte einer Vorlage auf, die einen SQL-Server bereitstellt, für den ein Administratorkennwort erforderlich ist.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "sqlsvrAdminLogin": {
-            "type": "string",
-            "minLength": 4
-        },
-        "sqlsvrAdminLoginPassword": {
-            "type": "securestring"
-        },
-        ...
-    },
-    "resources": [
-        {
-          "name": "[variables('sqlsvrName')]",
-          "type": "Microsoft.Sql/servers",
-          "location": "[resourceGroup().location]",
-          "apiVersion": "2014-04-01-preview",
-          "properties": {
-              "administratorLogin": "[parameters('sqlsvrAdminLogin')]",
-              "administratorLoginPassword": "[parameters('sqlsvrAdminLoginPassword')]"
-          },
-          ...
-        }
-    ],
-    "variables": {
-        "sqlsvrName": "[concat('sqlsvr', uniqueString(resourceGroup().id))]"
-    },
-    "outputs": { }
-}
-```
-
-
-
-## <a name="reference-a-secret-with-dynamic-id"></a>Verweisen auf einen geheimen Schlüssel mit dynamischer ID
+## <a name="reference-a-secret-with-dynamic-id"></a>Verweisen auf ein Geheimnis mit dynamischer ID
 
 Im vorherigen Abschnitt wurde für das Geheimnis des Schlüsseltresors eine statische Ressourcen-ID übergeben. Manchmal muss jedoch auf einen geheimen Schlüsseltresorschlüssel verwiesen werden, der je nach aktueller Bereitstellung variiert. In einem solchen Fall kann die Ressourcen-ID nicht in der Parameterdatei hartcodiert werden. Da in der Parameterdatei keine Vorlagenausdrücke zulässig sind, kann die Ressourcen-ID leider nicht dynamisch in der Parameterdatei generiert werden.
 

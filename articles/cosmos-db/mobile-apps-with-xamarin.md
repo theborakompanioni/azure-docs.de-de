@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: f40289f9b5c693557cc8fa0f411c58ede1aa1d48
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 50c47061eaacbe7f7463c4d0bcc82869e31d26e6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Erstellen von mobilen Anwendungen mit Xamarin und Azure Cosmos DB
@@ -37,7 +36,7 @@ Azure Cosmos DB enthält die folgenden Hauptfunktionen für Entwickler von mobil
 * Unbegrenzte Skalierung. Ihre Azure Cosmos DB-Sammlungen [wachsen mit Ihrer App mit](partition-data.md). Sie können mit einer kleinen Datenmenge und einem Durchsatz von Hunderten von Anforderungen pro Sekunde beginnen. Ihre Sammlungen können auf eine Größe im Petabyte-Bereich anwachsen, und der Durchsatz kann auf Hunderte Millionen Anforderungen pro Sekunde vergrößert werden.
 * Globale Verteilung. Benutzer mobiler Apps sind (häufig weltweit) unterwegs. Azure Cosmos DB ist eine [global verteilte Datenbank](distribute-data-globally.md). Klicken Sie auf die Karte, um Ihre Daten den Benutzern zugänglich machen.
 * Integrierte Autorisierung. Mit Azure Cosmos DB können Sie gängige Muster wie [benutzerspezifische Daten](https://aka.ms/documentdb-xamarin-todouser) oder von mehreren Benutzern gemeinsam genutzte Daten ohne benutzerdefinierten komplexen Autorisierungscode leicht implementieren.
-* Geoabfragen. Viele mobile Apps verfügen heutzutage über Geokontextfunktionen. Dank der erstklassigen Unterstützung von [Geotypen](geospatial.md) ist das Erstellen dieser Funktionen mit DocumentDB einfach zu erreichen.
+* Geoabfragen. Viele mobile Apps verfügen heutzutage über Geokontextfunktionen. Dank der erstklassigen Unterstützung von [Geotypen](geospatial.md) ist das Erstellen dieser Funktionen mit Azure Cosmos DB einfach zu erreichen.
 * Binäre Anlagen. Ihre App-Daten enthalten häufig binäre Blobs. Die native Unterstützung von Anlagen vereinfacht die Nutzung von Azure Cosmos DB als zentrale Anwendung für Ihre App-Daten.
 
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Tutorial zu Azure Cosmos DB und Xamarin

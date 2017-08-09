@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/28/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 05d7c50aaa1209220b6cff3305fdb05dd2c421f8
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4a687e1edbb2c9b3db3079a70162886092ede521
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -30,6 +30,14 @@ In diesem Artikel hilft Ihnen beim Auffinden von Informationen zur Problembehand
 >Wenn Sie es mit Benutzeranmeldeproblemen bei der Passthrough-Authentifizierung zu tun haben, deaktivieren das Feature nicht. Deinstallieren auch keine Agents für die Passthrough-Authentifizierung ohne ein ausschließlich cloudbasiertes globales Administratorkonto, auf das ein Fallback ausgeführt werden kann. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Dieser Schritt ist unerlässlich und stellt sicher, dass Sie sich nicht aus Ihrem Mandanten aussperren.
 
 ## <a name="general-issues"></a>Allgemeine Probleme
+
+### <a name="check-status-of-the-feature-and-authentication-agents"></a>Überprüfen des Status der Funktion und der Authentifizierungs-Agents
+
+Stellen Sie sicher, dass die Passthrough-Authentifizierung in Ihrem Mandanten immer noch **aktiviert** ist und der Status der Authentifizierungs-Agents als **aktiv** angezeigt wird, nicht als **inaktiv**. Um diese Informationen anzuzeigen, wechseln Sie im [Azure-Portal](https://portal.azure.com/) zum Blatt **Azure AD Connect**.
+
+![Azure-Portal – Blatt „Azure AD Connect“](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
+
+![Azure-Portal – Blatt „Passthrough-Authentifizierung“](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
 
 ### <a name="user-facing-sign-in-error-messages"></a>Benutzerseitige Fehler bei der Anmeldung
 
@@ -43,13 +51,13 @@ Wenn der Benutzer sich nicht mit der Passthrough-Authentifizierung anmelden kann
 |AADSTS80005|Bei der Überprüfung ist eine unvorhersehbare WebException aufgetreten.|A transient error. (Vorübergehender Fehler.) Wiederholen Sie die Anforderung. Sollte der Fehler weiterhin auftreten, wenden Sie sich an den Microsoft-Support.
 |AADSTS80007|Bei der Kommunikation mit Active Directory ist ein Fehler aufgetreten.|Check the agent logs for more information and verify that Active Directory is operating as expected. (Suchen Sie in den Agent-Protokollen nach weiteren Informationen, und überprüfen Sie, ob Active Directory erwartungsgemäß funktioniert.)
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Gründe für Anmeldefehler im Azure Active Directory Admin Center
+### <a name="sign-in-failure-reasons-on-the-azure-portal"></a>Gründe für Anmeldefehler im Azure-Portal
 
-Sie sollten die Problembehandlung von benutzerseitigen Anmeldefehlern mit der Passthrough-Authentifizierung in den [Berichten zu Anmeldeaktivitäten](../active-directory-reporting-activity-sign-ins.md) im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) beginnen.
+Beginnen Sie mit der Behebung von Problemen bei der Benutzeranmeldung, indem Sie sich den [Bericht zu Anmeldeaktivitäten](../active-directory-reporting-activity-sign-ins.md) im [Azure-Portal](https://portal.azure.com/) ansehen.
 
 ![Bericht zu Anmeldeaktivitäten](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
-Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) zu **Azure Active Directory** -> **Anmeldungen**, und klicken Sie auf die Anmeldeaktivität eines bestimmten Benutzers. Suchen Sie nach dem Feld **Code des Anmeldefehlers**. Ordnen Sie den Wert in diesem Feld mithilfe der folgenden Tabelle einer Ursache und einer Lösung zu:
+Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu **Azure Active Directory** -> **Anmeldungen**, und klicken Sie auf die Anmeldeaktivität eines bestimmten Benutzers. Suchen Sie nach dem Feld **Code des Anmeldefehlers**. Ordnen Sie den Wert in diesem Feld mithilfe der folgenden Tabelle einer Ursache und einer Lösung zu:
 
 |Anmeldefehler|Grund des Anmeldefehlers|Lösung
 | --- | --- | ---
@@ -64,10 +72,6 @@ Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure
 | 80011 | Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.)
 
 ## <a name="authentication-agent-installation-issues"></a>Probleme bei der Installation des Authentifizierungs-Agents
-
-### <a name="an-azure-ad-application-proxy-connector-already-exists"></a>Es ist bereits ein Azure AD-Anwendungsproxy-Connector vorhanden.
-
-Ein Passthrough-Authentifizierungs-Agent kann nicht auf demselben Server wie ein [Azure AD-Anwendungsproxyconnectors](../../active-directory/active-directory-application-proxy-get-started.md) installiert werden. Installieren Sie den Passthrough-Authentifizierungs-Agent auf einem separaten Server.
 
 ### <a name="an-unexpected-error-occurred"></a>Ein unerwarteter Fehler ist aufgetreten.
 
@@ -115,16 +119,16 @@ Je nach Problem müssen Sie an verschiedenen Stellen nach Protokollen von Passth
 
 ### <a name="authentication-agent-event-logs"></a>Ereignisprotokolle von Authentifizierungs-Agents
 
-Öffnen Sie bei Fehlern in Zusammenhang mit dem Authentifizierungs-Agent die Ereignisanzeige auf dem Server unter **Anwendungs- und Dienstprotokolle > Microsoft > AadApplicationProxy > Connector > Administrator**, und prüfen Sie sie.
+Öffnen Sie bei Fehlern in Zusammenhang mit dem Authentifizierungs-Agent die Ereignisanzeige auf dem Server unter **Anwendungs- und Dienstprotokolle\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**, und prüfen Sie sie.
 
 Aktivieren Sie für die detaillierte Analyse da Protokoll „Session“ (Sitzung). Führen Sie den Authentifizierungs-Agent im Normalbetrieb nicht mit diesem Protokoll aus. Verwenden Sie es ausschließlich zur Problembehandlung. Die Protokollinhalte werden nur angezeigt, nachdem das Protokoll wieder deaktiviert wird.
 
 ### <a name="detailed-trace-logs"></a>Ausführliche Ablaufverfolgungsprotokolle
 
-Um Benutzeranmeldefehler zu beheben, suchen Sie unter **C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace** nach Ablaufverfolgungsprotokollen. Diese Protokolle enthalten die Gründe, warum eine bestimmte Benutzeranmeldung mittels der Passthrough-Authentifizierungsfunktion fehlgeschlagen ist. Diese Fehler werden auch den Gründe für benutzerseitige Anmeldefehler zugeordnet, die zuvor in der [Tabelle](#sign-in-failure-reasons-on-the-Azure-portal) gezeigt wurden. Es folgt ein Beispiel für einen Protokolleintrag:
+Um Benutzeranmeldefehler zu beheben, suchen Sie unter **%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** nach Ablaufverfolgungsprotokollen. Diese Protokolle enthalten die Gründe, warum eine bestimmte Benutzeranmeldung mittels der Passthrough-Authentifizierungsfunktion fehlgeschlagen ist. Diese Fehler werden auch den Gründe für benutzerseitige Anmeldefehler zugeordnet, die zuvor in der [Tabelle](#sign-in-failure-reasons-on-the-Azure-portal) gezeigt wurden. Es folgt ein Beispiel für einen Protokolleintrag:
 
 ```
-    ApplicationProxyConnectorService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
+    AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
         ThreadId=5
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
@@ -142,7 +146,7 @@ Weitere Informationen finden Sie auch in den Sicherheitsprotokollen Ihrer Domän
 ```
     <QueryList>
     <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ProcessName'] and (Data='C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe')]]</Select>
+    <Select Path="Security">*[EventData[Data[@Name='ProcessName'] and (Data='C:\Program Files\Microsoft Azure AD Connect Authentication Agent\AzureADConnectAuthenticationAgentService.exe')]]</Select>
     </Query>
     </QueryList>
 ```
