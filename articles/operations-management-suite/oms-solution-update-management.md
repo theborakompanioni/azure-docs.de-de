@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/09/2017
+ms.date: 07/27/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 8f83f5d13cb61709653f255c756dc78453073626
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="update-management-solution-in-oms"></a>Lösung für die Updateverwaltung in OMS
@@ -65,10 +64,10 @@ Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führ
     > [!NOTE]
     > Der Windows-Agent kann nicht gleichzeitig mit System Center Configuration Manager verwaltet werden.  
     >
-* CentOS 6 (x86/x64) und 7 (x64)
-* Red Hat Enterprise 6 (x86/x64) und 7 (x64)
-* SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)
-* Ubuntu 12.04 LTS und höher (x86/x64)  
+* CentOS 6 (x86/x64) und 7 (x64)  
+* Red Hat Enterprise 6 (x86/x64) und 7 (x64)  
+* SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)  
+* Ubuntu 12.04 LTS und höher (x86/x64)   
     > [!NOTE]  
     > Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Informationen zu dieser Konfiguration finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
@@ -79,6 +78,9 @@ Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führ
     >
 
 Weitere Informationen dazu, wie Sie den OMS-Agent für Linux installieren und die aktuelle Version herunterladen, finden Sie im Artikel zum [Operations Management Suite-Agent für Linux](https://github.com/microsoft/oms-agent-for-linux).  Informationen zur Installation des OMS-Agents für Windows finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agents.md).  
+
+### <a name="permissions"></a>Berechtigungen
+Zur Erstellung von Updatebereitstellungen müssen Sie sowohl unter Ihrem Automation-Konto als auch in Ihrem Log Analytics-Arbeitsbereich über die Rolle „Mitwirkender“ verfügen.  
 
 ## <a name="solution-components"></a>Lösungskomponenten
 Diese Lösung besteht aus den folgenden Ressourcen, die Ihrem Automation-Konto hinzugefügt werden, und direkt verbundenen Agents oder mit Operations Manager verbundenen Verwaltungsgruppen.
@@ -156,7 +158,7 @@ Wenn Sie dem OMS-Arbeitsbereich die Lösung für die Updateverwaltung hinzufüge
 ## <a name="viewing-update-assessments"></a>Anzeigen von Updatebewertungen
 Klicken Sie auf die Kachel **Updateverwaltung**, um das Dashboard **Update Management** (Updateverwaltung) zu öffnen.<br><br> ![Dashboard mit Zusammenfassung zur Updateverwaltung](./media/oms-solution-update-management/update-management-dashboard.png)<br>
 
-Dieses Dashboard enthält eine ausführliche Auflistung des Updatestatus, kategorisiert nach Betriebssystemtyp und Updateklassifizierung: kritisch, Sicherheitsupdate oder Sonstiges (z.B. Definitionsupdate). Wenn die Kachel **Updatebereitstellungen** ausgewählt ist, werden Sie auf die Seite „Updatebereitstellungen“ weitergeleitet, auf der Sie Zeitpläne, derzeit ausgeführte Bereitstellungen und abgeschlossene Bereitstellungen anzeigen oder eine neue Bereitstellung planen können.  
+Dieses Dashboard enthält eine ausführliche Auflistung des Updatestatus, kategorisiert nach Betriebssystemtyp und Updateklassifizierung: kritisch, Sicherheitsupdate oder Sonstiges (z.B. Definitionsupdate). Die Ergebnisse auf den einzelnen Kacheln dieses Dashboards spiegeln nur Updates wider, deren Bereitstellung genehmigt wurde (auf der Grundlage der Synchronisierungsquelle des Computers).   Wenn die Kachel **Updatebereitstellungen** ausgewählt ist, werden Sie auf die Seite „Updatebereitstellungen“ weitergeleitet, auf der Sie Zeitpläne, derzeit ausgeführte Bereitstellungen und abgeschlossene Bereitstellungen anzeigen oder eine neue Bereitstellung planen können.  
 
 Sie können eine Protokollsuche ausführen, mit der alle Datensätze zurückgegeben werden, indem Sie auf die jeweilige Kachel klicken. Um eine Abfrage einer bestimmten Kategorie und mit vordefinierten Kriterien auszuführen, wählen Sie diese in der Liste der Spalte **Häufige Updateabfragen** aus.    
 
@@ -310,6 +312,17 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Dieser Abschnitt enthält Informationen zum Durchführen der Problembehandlung mit der Lösung für die Updateverwaltung.  
+
+### <a name="how-do-i-troubleshoot-onboarding-issues"></a>Wie behandle ich Onboardingprobleme?
+Sollten Sie Probleme beim Onboarding der Lösung oder eines virtuellen Computers haben, suchen Sie im Ereignisprotokoll **Anwendungs- und Dienstprotokolle\Operations Manager** nach Ereignissen mit der Ereignis-ID 4502 und einer Ereignisnachricht, die **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** enthält.  Die folgende Tabelle enthält spezifische Fehlermeldungen und passende Lösungsvorschläge.  
+
+| Nachricht | Grund | Lösung |   
+|----------|----------|----------|  
+| Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>System.InvalidOperationException: {"Message":"Machine is already<br>registered to a different account. "} (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "System.InvalidOperationException" bei der Registrierung: {"Meldung":"Der Computer ist bereits für ein anderes Konto registriert."} | Der Computer ist bereits in einen Arbeitsbereich für die Updateverwaltung integriert. | Bereinigen Sie alte Artefakte durch [Löschen der Hybrid-Runbook-Gruppe](../automation/automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups).|  
+| Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>System.Net.Http.HttpRequestException: An error occurred while sending the request. ---><br>System.Net.WebException: The underlying connection<br>was closed: An unexpected error<br>occurred on a receive. ---> System.ComponentModel.Win32Exception:<br>The client and server cannot communicate,<br>because they do not possess a common algorithm (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "System.Net.Http.HttpRequestException" bei der Registrierung: Fehler beim Senden der Anforderung. System.Net.WebException: Die zugrunde liegende Verbindung wurde getrennt. Unerwarteter Fehler bei einem Empfangsvorgang. ---> System.ComponentModel.Win32Exception: Client und Server können nicht kommunizieren, da sie keinen gemeinsamen Algorithmus besitzen.) | Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](../automation/automation-offering-get-started.md#network-planning)|  
+| Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "Newtonsoft.Json.JsonReaderException" bei der Registrierung: Fehler beim Analysieren des positiven Unendlichkeitswerts.) | Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](../automation/automation-offering-get-started.md#network-planning)| 
+| Das durch den Dienst "<wsid>.oms.opinsights.azure.com" vorgelegte Zertifikat<br>wurde nicht durch eine für Microsoft-Dienste verwendete<br>Zertifizierungsstelle ausgestellt. Lassen Sie durch<br>Ihren Netzwerkadministrator überprüfen, ob ein Proxy die<br>TLS/SSL-Kommunikation abfängt. |Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](../automation/automation-offering-get-started.md#network-planning)|  
+| Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Failed to create a self-signed certificate. ---><br>System.UnauthorizedAccessException: Access is denied. (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "AgentService.HybridRegistration.PowerShell.Certificates.CertificateCreationException" bei der Registrierung: Fehler beim Erstellen eines selbstsignierten Zertifikats. System.UnauthorizedAccessException: Zugriff verweigert.) | Fehler beim Erstellen eines selbstsignierten Zertifikats | Vergewissern Sie sich, dass das Systemkonto<br>Lesezugriff auf den folgenden Ordner hat:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
 
 ### <a name="how-do-i-troubleshoot-update-deployments"></a>Wie kann ich die Problembehandlung für Updatebereitstellungen durchführen?
 Sie können die Ergebnisse des Runbooks, das für die Bereitstellung von Updates der geplanten Updatebereitstellung zuständig ist, über das Blatt „Aufträge“ Ihres Automation-Kontos anzeigen, das mit dem OMS-Arbeitsbereich für diese Lösung verknüpft ist.  Das Runbook **Patch-MicrosoftOMSComputer** ist ein untergeordnetes Runbook, das auf einen bestimmten verwalteten Computer ausgerichtet ist. Beim Überprüfen des ausführlichen Datenstroms werden detaillierte Informationen zur Bereitstellung angezeigt.  In der Ausgabe wird angegeben, welche erforderlichen Updates zutreffen, und der Downloadstatus, der Installationsstatus und weitere Details werden aufgeführt.<br><br> ![Auftragsstatus der Updatebereitstellung](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
