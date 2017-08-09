@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2017
+ms.date: 08/01/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 2ef14fccda5c38ebdbf9d64b4766b45503755af0
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 816bf1426704d3391550e80c0700f1b011683a94
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 
@@ -34,15 +33,25 @@ ms.lasthandoff: 05/04/2017
    
     ![](./media/event-hubs-create/create-event-hub1.png)
 1. Ist der Name verfügbar, wählen Sie den Tarif („Basic“ oder „Standard“) aus. Wählen Sie außerdem ein Azure-Abonnement, eine Ressourcengruppe und einen Standort, an dem die Ressource erstellt werden soll. 
-1. Klicken Sie auf **Erstellen** , um den Namespace zu erstellen.
-1. Klicken Sie in der Liste der Event Hubs-Namespaces auf den neu erstellten Namespace.      
-   
-    ![](./media/event-hubs-create/create-event-hub2.png)
-1. Klicken Sie auf dem Blatt mit den Namespaces auf **Event Hubs**.
-   
-    ![](./media/event-hubs-create/create-event-hub3.png)
+1. Klicken Sie auf **Erstellen** , um den Namespace zu erstellen. Möglicherweise müssen Sie ein paar Minuten warten, bis das System die Ressourcen vollständig bereitgestellt hat.
+2. Klicken Sie in der Portalliste mit den Namespaces auf den neu erstellten Namespace.
+2. Klicken Sie auf **SAS-Richtlinien** und dann auf **RootManageSharedAccessKey**.
+    
+    ![](./media/event-hubs-create/create-event-hub7.png)
+
+3. Klicken Sie auf die Kopierschaltfläche, um die Verbindungszeichenfolge **RootManageSharedAccessKey** in die Zwischenablage zu kopieren. Speichern Sie diese Verbindungszeichenfolge zur späteren Verwendung in einem temporären Speicherort, z.B. in Editor.
+    
+    ![](./media/event-hubs-create/create-event-hub8.png)
 
 ## <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
+
+1. Klicken Sie in der Liste der Event Hubs-Namespaces auf den neu erstellten Namespace.      
+   
+    ![](./media/event-hubs-create/create-event-hub2.png) 
+
+2. Klicken Sie auf dem Blatt mit den Namespaces auf **Event Hubs**.
+   
+    ![](./media/event-hubs-create/create-event-hub3.png)
 
 1. Klicken Sie oben auf dem Blatt auf **Event Hub hinzufügen**.
    
@@ -50,15 +59,6 @@ ms.lasthandoff: 05/04/2017
 1. Geben Sie einen Namen für den Event Hub ein, und klicken Sie auf **Erstellen**.
    
     ![](./media/event-hubs-create/create-event-hub5.png)
-1. Klicken Sie in der Liste der Event Hubs auf den Namen des neu erstellten Event Hubs. 
-    
-    ![](./media/event-hubs-create/create-event-hub6.png)
-1. Klicken Sie auf dem Blatt mit Namespaces (nicht auf dem Blatt für den bestimmten Event Hub) auf **SAS-Richtlinien**, und klicken Sie dann auf **RootManageSharedAccessKey**.
-    
-    ![](./media/event-hubs-create/create-event-hub7.png)
-1. Klicken Sie auf die Kopierschaltfläche, um die Verbindungszeichenfolge **RootManageSharedAccessKey** in die Zwischenablage zu kopieren. Speichern Sie diese Verbindungszeichenfolge für die spätere Verwendung in diesem Tutorial.
-    
-    ![](./media/event-hubs-create/create-event-hub8.png)
 
 Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Empfangen von Ereignissen erforderlichen Verbindungszeichenfolgen.
 

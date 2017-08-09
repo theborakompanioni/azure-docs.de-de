@@ -5,7 +5,7 @@ keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -14,14 +14,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2017
+ms.date: 07/26/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: f6beb62246aaf59bfd81467f07d347913a20677b
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 658c316d8d9d14ce11dbb92188afbf0e68c00493
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>Bereitstellen neuer Mandanten und Registrieren der Mandanten im Katalog
@@ -70,7 +69,7 @@ Führen Sie das Skript *Demo-ProvisionAndCatalog* aus, um schnell einen Mandante
 1. Öffnen Sie „**Demo-ProvisionAndCatalog.ps1**“ in der PowerShell-ISE, und legen Sie die folgenden Werte fest:
    * **$TenantName** = Name des neuen Veranstaltungsorts (z.B., *Bushwillow Blues*).
    * **$VenueType** = einer der vordefinierten Veranstaltungsorttypen: „blues“, „classicalmusic“, „dance“, „jazz“, „judo“, „motorracing“, „multipurpose“, „opera“, „rockmusic“, „soccer“.
-   * **$DemoScenario** = 1, behalten Sie hierfür die Einstellung _1_ für **Bereitstellen eines einzelnen Mandanten** bei.
+   * **$DemoScenario** = 1, behalten Sie hierfür die Einstellung _1_ für *Bereitstellen eines einzelnen Mandanten* bei.
 
 1. Drücken Sie **F5**, um das Skript auszuführen.
 
@@ -83,15 +82,15 @@ Nach Abschluss des Skripts wird der neue Mandant bereitgestellt und seine *Veran
 
 In dieser Übung wird einen Batch von zusätzlichen Mandanten bereitgestellt. Es wird empfohlen, dass Sie einen Batch von Mandanten bereitstellen, bevor Sie andere Wingtip SaaS-Tutorials abschließen, damit Ihnen mehrere Datenbanken zur Verfügung stehen.
 
-1. Öffnen Sie „...\\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1*“ in der *PowerShell-ISE*, und legen Sie die folgenden Werte fest:
-   * **$DemoScenario** = **3**, festgelegt auf **3** für **Bereitstellen eines Batches von Mandanten**.
+1. Öffnen Sie „...\\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1*“ in der *PowerShell-ISE*, und ändern Sie den *$DemoScenario*-Parameter in 3:
+   * **$DemoScenario** = **3**, geändert in **3** für das *Bereitstellen eines Batches von Mandanten*.
 1. Drücken Sie **F5**, um das Skript auszuführen.
 
 Das Skript stellt einen Batch von zusätzlichen Mandanten bereit. Es verwendet eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-template-walkthrough.md), die den Batch steuert und anschließend die Bereitstellung der einzelnen Datenbanken an eine verknüpfte Vorlage delegiert. Indem Sie Vorlagen auf diese Weise verwenden, können Sie mit Azure Resource Manager den Bereitstellungsprozess für das Skript vermitteln. Vorlagen stellen Datenbanken, wann immer möglich, parallel bereit, und verarbeiten nötigenfalls Wiederholungen, um den Gesamtprozess zu optimieren. Das Skript ist idempotent. Wenn also ein Fehler auftritt oder das Skript aus irgendeinem Grund angehalten wird, führen Sie es erneut aus.
 
 ### <a name="verify-the-batch-of-tenants-successfully-deployed"></a>Überprüfen, ob der Mandantenbatch erfolgreich bereitgestellt wurde
 
-* Öffnen Sie den Server *tenants1* im [Azure-Portal](https://portal.azure.com), und klicken Sie auf **SQL-Datenbanken**:
+* Öffnen Sie den Server *tenants1*, indem Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Liste der Server wechseln. Klicken Sie auf **SQL-Datenbanken**, und vergewissern Sie sich, dass der Batch von 17 zusätzlichen Datenbanken jetzt in der Liste enthalten ist:
 
    ![Datenbankliste](media/sql-database-saas-tutorial-provision-and-catalog/database-list.png)
 
@@ -103,13 +102,13 @@ Um besser zu verstehen, wie die Wingtip-Anwendung die Bereitstellung neuer Manda
 1. Öffnen Sie „...\\Learning Modules\Utilities\_Demo-ProvisionAndCatalog.ps1_“, und legen Sie die folgenden Parameter fest:
    * **$TenantName** = Mandantennamen müssen eindeutig sein. Legen Sie daher einen anderen Namen als für bestehende Mandanten fest (z.B. *Hackberry Hitters*).
    * **$VenueType** = verwenden Sie einen der vordefinierten Veranstaltungsorttypen (z.B. *Judo*).
-   * **$DemoScenario** = 1, festgelegt auf **1** für **Bereitstellen eines einzelnen Mandanten**.
+   * **$DemoScenario** = **1**, festgelegt auf **1** für das *Bereitstellen eines einzelnen Mandanten*.
 
 1. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in der folgenden Zeile bewegen: *New-Tenant `*, und drücken Sie **F9**.
 
    ![Haltepunkt](media/sql-database-saas-tutorial-provision-and-catalog/breakpoint.png)
 
-1. Betätigen Sie **F5**, um das Skript auszuführen. Wenn der Haltepunkt erreicht wird, drücken Sie **F11** für eine schrittweise Ausführung. Verfolgen Sie die Ausführung des Skripts mit **F10** und **F11** nach, um die aufgerufenen Funktionen zu überspringen oder schrittweise auszuführen. [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+1. Betätigen Sie **F5**, um das Skript auszuführen. Wenn der Haltepunkt erreicht wird, drücken Sie **F11** für eine schrittweise Ausführung. Verfolgen Sie die Ausführung des Skripts mit den Debugoptionen (**F10** und **F11**) nach, um die aufgerufenen Funktionen zu überspringen oder einzeln auszuführen. Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 ### <a name="examine-the-provision-and-catalog-implementation-in-detail-by-stepping-through-the-script"></a>Überprüfen der Bereitstellung und Katalogimplementierung im Detail durch schrittweises Durchlaufen des Skripts
 

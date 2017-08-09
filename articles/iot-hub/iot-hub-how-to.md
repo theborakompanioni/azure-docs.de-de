@@ -12,25 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 07/25/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 6fbdebd316cd00e7dd762487848e616fdd2317e8
-ms.openlocfilehash: 358fd0888049f97e5fde6e2a6303ea6c4cf65da9
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 786121ae249d69376b4be4c74000868cbb208989
+ms.contentlocale: de-de
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="how-to-use-azure-iot-hub"></a>Vorgehensweise: Verwenden von Azure IoT Hub
 
-Sie haben verschiedene Optionen, um zu lernen, wie Sie für den IoT Hub-Dienst entwickeln. Sie können die Artikel zur Konzeption lesen, in denen die Features von IoT Hub im Detail beschrieben werden, oder einem der Tutorials folgen, die die verschiedenen Features von IoT Hub abdecken.
+Sie haben verschiedene Möglichkeiten, um Ihre Kenntnisse zum IoT Hub-Dienst zu vertiefen:
 
-## <a name="the-developer-guide"></a>Das Entwicklerhandbuch
+* Lesen Sie die konzeptionellen Artikel, in denen die Funktionen von IoT Hub im Detail beschrieben werden.
+* Absolvieren Sie eines der Tutorials, in denen die verschiedenen Funktionen von IoT Hub erläutert werden.
 
-Als Entwickler können Sie detaillierte konzeptionelle Anleitungen zu IoT Hub im [Entwicklerhandbuch][lnk-devguide] lesen. Dieses Handbuch enthält ausführliche Beschreibungen aller IoT Hub-Features, mit denen Sie lernen, wie Sie sie verwenden können, und wie Sie sie auswählen, wenn mehrere Optionen verfügbar sind.
+## <a name="developer-guide"></a>Entwicklerhandbuch
 
+Als Entwickler können Sie detaillierte konzeptionelle Anleitungen zu IoT Hub im [Entwicklerhandbuch][lnk-devguide] lesen. Dieses Handbuch umfasst Folgendes:
 
-## <a name="the-tutorials"></a>Die Tutorials
+* Detaillierte Beschreibungen zu allen IoT Hub-Funktionen, um Ihnen Informationen zu ihrer Verwendung bereitzustellen
+* Unterstützende Informationen zur Auswahl, wenn mehrere Optionen verfügbar sind.
+
+## <a name="tutorials"></a>Lernprogramme
 
 Wenn Sie lieber bestimmte IoT Hub-Features kennenlernen möchten, indem Sie praktische Übungen durcharbeiten, stehen Ihnen mehrere Tutorials zur Auswahl. Viele dieser Tutorials sind in verschiedenen Programmiersprachen verfügbar. Diese Tutorials enthalten:
 
@@ -44,11 +49,11 @@ Wenn Sie lieber bestimmte IoT Hub-Features kennenlernen möchten, indem Sie prak
 
 - [Verwenden direkter Methoden][lnk-methods-tutorial]. In diesem Tutorial wird die Verwendung direkter Methoden beschrieben. Sie fügen einen Handler für eine direkte Methode dem simulierten Gerät hinzu und rufen die direkte Methode von IoT Hub aus auf.
 
-- [Erste Schritte mit der Geräteverwaltung][lnk-dm-tutorial]. In diesem Tutorial wird gezeigt, wie Sie wichtige Geräteverwaltungsfeatures wie z.B. Gerätezwillinge und direkte Methoden für den Remoteneustart Ihres simulierten Geräts verwenden.
+- [Erste Schritte mit der Geräteverwaltung][lnk-dm-tutorial]. In diesem Tutorial wird gezeigt, wie Sie wichtige Geräteverwaltungsfeatures wie Gerätezwillinge und direkte Methoden verwenden. Diese Funktionen verwenden Sie, um das simulierte Gerät remote neu zu starten.
 
-- [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten][lnk-properties-tutorial]. In diesem Tutorial lernen Sie, wie Sie die gewünschten Eigenschaften des Gerätezwillings zusammen mit gemeldeten Eigenschaften verwenden, um Ihr Gerät remote zu konfigurieren.
+- [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten][lnk-properties-tutorial]. In diesem Tutorial erfahren Sie, wie Sie die gewünschten und gemeldeten Eigenschaften des Gerätezwillings verwenden, um Ihr Gerät remote zu konfigurieren.
 
-- [Initiieren eines Gerätefirmwareupdates mithilfe der Geräteverwaltung (Node/Node)][lnk-jobs-tutorial]. In diesem Tutorial wird gezeigt, wie Sie wichtige Geräteverwaltungsfeatures wie z.B. Gerätezwillinge und direkte Methoden für das Remoteupdate der Firmware Ihres Geräts verwenden.
+- [Initiieren eines Gerätefirmwareupdates mithilfe der Geräteverwaltung (Node/Node)][lnk-jobs-tutorial]. In diesem Tutorial wird gezeigt, wie Sie wichtige Geräteverwaltungsfeatures wie Gerätezwillinge und direkte Methoden verwenden. Sie erfahren, wie Sie mithilfe dieser Funktionen die Firmware des Geräts remote aktualisieren.
 
 - [Planen und Übertragen von Aufträgen][lnk-schedule-tutorial]. Dieses Tutorial zeigt Ihnen die Verwendung von gewünschten Eigenschaften und direkten Methoden, um zu einem geplanten Zeitpunkt mit mehreren Geräte zu interagieren.
 

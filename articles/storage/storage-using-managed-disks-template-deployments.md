@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: f2c0355068bc6dfd9a4e1aab52e4f4f9f23a9512
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 4c502784a57850d6f11200e95f7432d2206e920a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -75,7 +75,7 @@ Innerhalb eines Objekts für einen virtuellen Computer benötigen Sie eine Abhä
             "dataDisks": [
                 {
                     "name": "datadisk1",
-                    "diskSizeGB": "1023",
+                    "diskSizeGB": 1023,
                     "lun": 0,
                     "vhd": {
                         "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob, 'vhds/datadisk1.vhd')]"
@@ -92,15 +92,20 @@ Innerhalb eines Objekts für einen virtuellen Computer benötigen Sie eine Abhä
 
 ## <a name="managed-disks-template-formatting"></a>Formatieren von Vorlagen mit verwalteten Datenträgern
 
-In Azure Managed Disks wird der Datenträger zu einer Ressource der obersten Ebene und benötigt kein Speicherkonto mehr, um vom Benutzer erstellt zu werden. Verwaltete Datenträger werden mit der API-Version `2016-04-30-preview` zur Verfügung gestellt und sind jetzt der Standard-Datenträgertyp. Die folgenden Abschnitte bieten eine Einführung in die standardmäßigen Einstellungen und erklären, wie Sie Ihre Datenträger weiter anpassen können.
+In Azure Managed Disks wird der Datenträger zu einer Ressource der obersten Ebene und benötigt kein Speicherkonto mehr, um vom Benutzer erstellt zu werden. Verwaltete Datenträger wurden zuerst in der API-Version `2016-04-30-preview` verfügbar gemacht. Sie sind in allen nachfolgenden API-Versionen verfügbar und jetzt der Standard-Datenträgertyp. Die folgenden Abschnitte bieten eine Einführung in die standardmäßigen Einstellungen und erklären, wie Sie Ihre Datenträger weiter anpassen können.
+
+> [!NOTE]
+> Es wird empfohlen, eine neuere API-Version als `2016-04-30-preview` zu verwenden, da zwischen `2016-04-30-preview` und `2017-03-30` grundlegende Änderungen vorgenommen wurden.
+>
+>
 
 ### <a name="default-managed-disk-settings"></a>Standardeinstellungen für verwaltete Datenträger
 
-Sie brauchen zum Erstellen eines virtuellen Computers mit verwalteten Datenträgern keine Speicherkontoressource mehr. Außerdem können Sie die Ressource Ihres virtuellen Computers wie folgt aktualisieren. Beachten Sie insbesondere, dass `apiVersion` `2016-04-30-preview` angibt und `osDisk` und `dataDisks` nicht mehr auf einen spezifischen URI für die VHD-Datei verweisen. Bei der Bereitstellung ohne Angabe von zusätzlichen Eigenschaften verwendet der Datenträger [Standard-LRS-Speicher](storage-redundancy.md). Wenn kein Name angegeben wird, wird das Format `<VMName>_OsDisk_1_<randomstring>` für den Betriebssystemdatenträger und `<VMName>_disk<#>_<randomstring>` für jeden anderen Datenträger übernommen. Standardmäßig ist Azure Disk Encryption deaktiviert; Zwischenspeichern für den Betriebssystemdatenträger erfolgt mit Lese-/Schreibzugriff und für Datenträger ohne Zugriff. Wie Sie im unteren Beispiel sehen können, besteht immer noch eine Speicherkontoabhängigkeit. Diese wird allerdings nur für Diagnosespeicher und nicht für Datenträgerspeicher benötigt.
+Sie brauchen zum Erstellen eines virtuellen Computers mit verwalteten Datenträgern keine Speicherkontoressource mehr. Außerdem können Sie die Ressource Ihres virtuellen Computers wie folgt aktualisieren. Beachten Sie insbesondere, dass `apiVersion` `2017-03-30` angibt und `osDisk` und `dataDisks` nicht mehr auf einen spezifischen URI für die VHD-Datei verweisen. Bei der Bereitstellung ohne Angabe von zusätzlichen Eigenschaften verwendet der Datenträger [Standard-LRS-Speicher](storage-redundancy.md). Wenn kein Name angegeben wird, wird das Format `<VMName>_OsDisk_1_<randomstring>` für den Betriebssystemdatenträger und `<VMName>_disk<#>_<randomstring>` für jeden anderen Datenträger übernommen. Standardmäßig ist Azure Disk Encryption deaktiviert; Zwischenspeichern für den Betriebssystemdatenträger erfolgt mit Lese-/Schreibzugriff und für Datenträger ohne Zugriff. Wie Sie im unteren Beispiel sehen können, besteht immer noch eine Speicherkontoabhängigkeit. Diese wird allerdings nur für Diagnosespeicher und nicht für Datenträgerspeicher benötigt.
 
 ```
 {
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
@@ -123,7 +128,7 @@ Sie brauchen zum Erstellen eines virtuellen Computers mit verwalteten Datenträg
             },
             "dataDisks": [
                 {
-                    "diskSizeGB": "1023",
+                    "diskSizeGB": 1023,
                     "lun": 0,
                     "createOption": "Empty"
                 }
@@ -143,23 +148,25 @@ Anstatt die Datenträgerkonfiguration im Objekt des virtuellen Computers anzugeb
 {
     "type": "Microsoft.Compute/disks",
     "name": "[concat(variables('vmName'),'-datadisk1')]",
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "Standard_LRS"
+    },
     "properties": {
         "creationData": {
             "createOption": "Empty"
         },
-        "accountType": "Standard_LRS",
         "diskSizeGB": 1023
     }
 }
 ```
 
-Innerhalb des Objekt des virtuellen Computers können wir dann auf dieses Datenträgerobjekt verweisen, um es anzufügen. Durch Angabe der Ressourcen-ID des verwalteten Datenträgers, den wir in der Eigenschaft `managedDisk` erstellt haben, kann der Datenträger hinzugefügt werden, während der virtuelle Computer erstellt wird. Damit diese Funktion verwendet werden kann, muss die `apiVersion` für die VM-Ressource `2016-04-30-preview` sein. Beachten Sie außerdem, dass wir eine Abhängigkeit von der Datenträgerressource erstellt haben, um sicherzustellen, dass sie erfolgreich vor der Erstellung des virtuellen Computers erstellt wird. 
+Innerhalb des Objekt des virtuellen Computers können wir dann auf dieses Datenträgerobjekt verweisen, um es anzufügen. Durch Angabe der Ressourcen-ID des verwalteten Datenträgers, den wir in der Eigenschaft `managedDisk` erstellt haben, kann der Datenträger hinzugefügt werden, während der virtuelle Computer erstellt wird. Beachten Sie, dass die `apiVersion` für die VM-Ressource auf `2017-03-30` festgelegt ist. Beachten Sie außerdem, dass wir eine Abhängigkeit von der Datenträgerressource erstellt haben, um sicherzustellen, dass sie erfolgreich vor der Erstellung des virtuellen Computers erstellt wird. 
 
 ```
 {
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
@@ -200,17 +207,17 @@ Innerhalb des Objekt des virtuellen Computers können wir dann auf dieses Datent
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Erstellen verwalteter Verfügbarkeitsgruppen mit virtuellen Computern mit verwalteten Datenträgern
 
-Fügen Sie zum Erstellen verwalteter Verfügbarkeitsgruppen mit virtuellen Computern, die verwaltete Datenträger verwenden, das Objekt `sku` zur Ressource der Verfügbarkeitsgruppe hinzu, und legen Sie die Eigenschaft `name` auf `Aligned` fest. Dadurch wird sichergestellt, dass die Datenträger für jeden virtuellen Computer ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Die `apiVersion` für die Ressource der Verfügbarkeitsgruppe muss ebenfalls `2016-04-30-preview` sein, um diese Funktion verwenden zu können.
+Fügen Sie zum Erstellen verwalteter Verfügbarkeitsgruppen mit virtuellen Computern, die verwaltete Datenträger verwenden, das Objekt `sku` zur Ressource der Verfügbarkeitsgruppe hinzu, und legen Sie die Eigenschaft `name` auf `Aligned` fest. Dadurch wird sichergestellt, dass die Datenträger für jeden virtuellen Computer ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Beachten Sie, dass die `apiVersion` für die Verfügbarkeitsgruppenressource auf `2017-03-30` festgelegt ist.
 
 ```
 {
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/availabilitySets",
     "location": "[resourceGroup().location]",
     "name": "[variables('avSetName')]",
     "properties": {
-        "PlatformUpdateDomainCount": "3",
-        "PlatformFaultDomainCount": "2"
+        "PlatformUpdateDomainCount": 3,
+        "PlatformFaultDomainCount": 2
     },
     "sku": {
         "name": "Aligned"

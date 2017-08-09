@@ -1,180 +1,240 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit Work.com | Microsoft Docs'
-description: "Hier erfahren Sie, wie Sie Work.com mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Work.com konfigurieren.
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 98e6739e-eb24-46bd-9dd3-20b489839076
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/22/2017
+ms.date: 07/27/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 86742dc7ee1429a0cdb23f4da3fa58341468afbc
-ms.openlocfilehash: 8d75ee95bcaf506c2378bb9cf34da576fb1c83e1
-ms.lasthandoff: 02/23/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 7cfec8e9ac12d43095483696a15c0580776d3114
+ms.contentlocale: de-de
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Tutorial: Azure Active Directory-Integration mit Work.com
-In diesem Tutorial wird die Integration von Azure und Work.com erläutert.  
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-* Ein gültiges Azure-Abonnement
-* Ein Work.com-Abonnement, für das einmaliges Anmelden aktiviert ist
+In diesem Tutorial erfahren Sie, wie Sie Work.com in Azure Active Directory (Azure AD) integrieren.
 
-Nach Abschluss dieses Tutorials können sich die AAD-Benutzer, denen Sie den Zugriff auf Work.com erteilt haben, mittels einmaliger Anmeldung auf der Work.com-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können Sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+Die Integration von Work.com in Azure AD bietet die folgenden Vorteile:
 
-Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
+- Sie können in Azure AD steuern, wer Zugriff auf Work.com hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Work.com anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-1. Aktivieren der Anwendungsintegration für Work.com
-2. Konfigurieren der einmaligen Anmeldung
-3. Konfigurieren der Benutzerbereitstellung
-4. Zuweisen von Benutzern
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-![Szenario](./media/active-directory-saas-work-com-tutorial/IC794105.png "Szenario")
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="enabling-the-application-integration-for-workcom"></a>Aktivieren der Anwendungsintegration für Work.com
-In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Work.com aktivieren.
+Um die Azure AD-Integration mit Work.com konfigurieren zu können, benötigen Sie Folgendes:
 
-### <a name="to-enable-the-application-integration-for-workcom-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Work.com
-1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
-   
-    ![Active Directory](./media/active-directory-saas-work-com-tutorial/IC700993.png "Active Directory")
-
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-    ![Anwendungen](./media/active-directory-saas-work-com-tutorial/IC700994.png "Anwendungen")
-
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
-    ![Anwendung hinzufügen](./media/active-directory-saas-work-com-tutorial/IC749321.png "Anwendung hinzufügen")
-
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-work-com-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
-
-6. Geben Sie im **Suchfeld** die Wörter **Work.com** ein.
-   
-    ![Anwendungskatalog](./media/active-directory-saas-work-com-tutorial/IC794106.png "Anwendungskatalog")
-
-7. Wählen Sie im Ergebnisbereich **Work.com** aus, und klicken Sie anschließend auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-    ![Work.com](./media/active-directory-saas-work-com-tutorial/IC794107.png "Work.com")
-
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Work.com zu authentifizieren.  
-Im Rahmen dieses Verfahrens müssen Sie ein Zertifikat auf Work.com hochladen.
+- Ein Azure AD-Abonnement
+- Ein Work.com-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
-> Um einmaliges Anmelden zu konfigurieren, müssen Sie einen benutzerdefinierten Domänennamen von Work.com einrichten. Sie müssen mindestens einen Domänennamen definieren, testen und dann in Ihrer gesamten Organisation bereitstellen.
-> 
-> 
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
-1. Melden Sie sich bei Ihrem Work.com-Mandanten als Administrator an.
-2. Wechseln Sie zu **Setup**.
-   
-    ![Setup](./media/active-directory-saas-work-com-tutorial/IC794108.png "Setup")
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-3. Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen. 
-   
-    ![Meine Domäne](./media/active-directory-saas-work-com-tutorial/IC767825.png "Meine Domäne")
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
-4. Um zu überprüfen, ob Ihre Domäne richtig eingerichtet wurde, stellen Sie sicher, dass sich die Domäne in **Schritt 4 – bereitgestellt für Benutzer** befindet, und überprüfen Sie die **Domäneneinstellungen**.
-   
-    ![Domäne für Benutzer bereitgestellt](./media/active-directory-saas-work-com-tutorial/IC784377.png "Domäne für Benutzer bereitgestellt")
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-5. Melden Sie sich in einem anderen Webbrowserfenster beim klassischen Azure-Portal an.
+1. Hinzufügen von Work.com aus dem Katalog
+2. Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-6. Klicken Sie auf der Anwendungsintegrationsseite für **Work.com** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-work-com-tutorial/IC794109.png "Einmaliges Anmelden konfigurieren")
+## <a name="add-workcom-from-the-gallery"></a>Hinzufügen von Work.com aus dem Katalog
+Zum Konfigurieren der Integration von Work.com in Azure AD müssen Sie Work.com aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-7. Wählen Sie auf der Seite **How would you like users to sign on to Work.com?** (Wie sollen sich Benutzer bei Work.com anmelden?) die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie anschließend auf **Weiter**.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-work-com-tutorial/IC794110.png "Einmaliges Anmelden konfigurieren")
+**Um Work.com aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-8. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Work.com-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Work.com verwenden (z.B. „*http://company.my.salesforce.com*“), und klicken Sie anschließend auf **Weiter**: 
-   
-    ![App-URL konfigurieren](./media/active-directory-saas-work-com-tutorial/IC794111.png "App-URL konfigurieren")
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-9. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Work.com** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-work-com-tutorial/IC794112.png "Einmaliges Anmelden konfigurieren")
+    ![Active Directory][1]
 
-10. Melden Sie sich bei Ihrem Work.com-Mandanten an.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-11. Wechseln Sie zu **Setup**.
+    ![Anwendungen][2]
     
-    ![Setup](./media/active-directory-saas-work-com-tutorial/IC794108.png "Setup")
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-12. Erweitern Sie das Menü **Sicherheitskontrollen**, und klicken Sie anschließend auf **Single Sign-On Settings** (Einstellungen für einmaliges Anmelden).
-    
-    ![Einstellungen für einmaliges Anmelden](./media/active-directory-saas-work-com-tutorial/IC794113.png "Einstellungen für einmaliges Anmelden")
+    ![Anwendungen][3]
 
-13. Führen Sie auf der Dialogfeldseite **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
+4. Geben Sie im Suchfeld **Work.com** ein, wählen Sie im Ergebnisbereich **Work.com** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+    ![Hinzufügen aus dem Katalog](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_addfromgallery.png)
+
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Work.com basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Work.com als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Work.com muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in Work.com den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Work.com müssen Sie die folgenden Bausteine ausführen:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Work.com-Testbenutzers](#create-a-workcom-test-user)**, um eine Entsprechung von Britta Simon in Work.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Work.com-Anwendung.
+
+>[!NOTE]
+>Um einmaliges Anmelden zu konfigurieren, müssen Sie einen benutzerdefinierten Domänennamen von Work.com einrichten. Sie müssen mindestens einen Domänennamen definieren, testen und dann in Ihrer gesamten Organisation bereitstellen.
+
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Work.com die folgenden Schritte aus:**
+
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Work.com** auf **Einmaliges Anmelden**.
+
+    ![Einmaliges Anmelden konfigurieren][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![SAML-basierte Anmeldung](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_samlbase.png)
+
+3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Work.com** aus:
+
+    ![Abschnitt „Domäne und URLs für Work.com“](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_url.png)
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `http://<companyname>.my.salesforce.com`.
+
+    > [!NOTE] 
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Work.com](https://help.salesforce.com/articleView?id=000159855&type=3), um diesen Wert zu erhalten. 
+
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+
+    ![Abschnitt für SAML-Signaturzertifikat](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Schaltfläche „Save“](./media/active-directory-saas-work-com-tutorial/tutorial_general_400.png)
+
+6. Klicken Sie im Abschnitt **Work.com-Konfiguration** auf **Work.com konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+
+    ![Work.com-Konfigurationsabschnitt](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_configure.png) 
+7. Melden Sie sich bei Ihrem Work.com-Mandanten als Administrator an.
+
+8. Wechseln Sie zu **Setup**.
+   
+    ![Setup](./media/active-directory-saas-work-com-tutorial/ic794108.png "Setup")
+
+9. Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen. 
+   
+    ![Meine Domäne](./media/active-directory-saas-work-com-tutorial/ic767825.png "Meine Domäne")
+
+10. Um zu überprüfen, ob Ihre Domäne richtig eingerichtet wurde, stellen Sie sicher, dass sich die Domäne in **Schritt 4 – bereitgestellt für Benutzer** befindet, und überprüfen Sie die **Domäneneinstellungen**.
+   
+    ![Domäne für Benutzer bereitgestellt](./media/active-directory-saas-work-com-tutorial/ic784377.png "Domäne für Benutzer bereitgestellt")
+
+11. Melden Sie sich bei Ihrem Work.com-Mandanten an.
+
+12. Wechseln Sie zu **Setup**.
     
-    ![SAML aktiviert](./media/active-directory-saas-work-com-tutorial/IC781026.png "SAML aktiviert")
+    ![Setup](./media/active-directory-saas-work-com-tutorial/ic794108.png "Setup")
+
+13. Erweitern Sie das Menü **Sicherheitskontrollen**, und klicken Sie anschließend auf **Single Sign-On Settings** (Einstellungen für einmaliges Anmelden).
+    
+    ![Einstellungen für einmaliges Anmelden](./media/active-directory-saas-work-com-tutorial/ic794113.png "Einstellungen für einmaliges Anmelden")
+
+14. Führen Sie auf der Dialogfeldseite **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
+    
+    ![SAML aktiviert](./media/active-directory-saas-work-com-tutorial/ic781026.png "SAML aktiviert")
     
     a. Wählen Sie **SAML aktiviert**aus.
     
     b. Klicken Sie auf **Neu**.
 
-14. Führen Sie im Abschnitt **Einstellungen für einmalige Anmelden für SAML** die folgenden Schritte aus:
+15. Führen Sie im Abschnitt **Einstellungen für einmalige Anmelden für SAML** die folgenden Schritte aus:
     
-    ![SAML-Einstellungen für einmaliges Anmelden](./media/active-directory-saas-work-com-tutorial/IC794114.png "SAML-Einstellungen für einmaliges Anmelden")
+    ![SAML-Einstellungen für einmaliges Anmelden](./media/active-directory-saas-work-com-tutorial/ic794114.png "SAML-Einstellungen für einmaliges Anmelden")
     
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.  
        
     > [!NOTE]
     > Bei Eingabe eines Werts für **Name** wird automatisch das Textfeld **API-Name** gefüllt.
-    > 
-    > 
     
-    b. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Configure single sign-on at Work.com** (Einmaliges Anmelden für Work.com konfigurieren) den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Aussteller** ein.
+    b. Fügen Sie in das Textfeld **Issuer** (Aussteller) den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
     
-    c. Klicken Sie auf **Durchsuchen**, um das heruntergeladene Zertifikat hochzuladen.
+    c. Klicken Sie auf **Browse** (Durchsuchen), um das aus dem Azure-Portal heruntergeladene Zertifikat hochzuladen.
     
-    d. Geben Sie im Textfeld **Entitäts-ID** die folgende URL ein:**https://salesforce-work.com**.
+    d. Geben Sie `https://salesforce-work.com` in das Textfeld **Entity Id** (Entitäts-ID) ein.
     
     e. Wählen Sie für **SAML Identity Type** (SAML-Identitätstyp) die Option **Assertion contains the Federation ID from the User object** (Assertion enthält die Verbund-ID aus dem Benutzerobjekt) aus.
     
     f. Wählen Sie für **SAML Identity Location** (Speicherort der SAML-Identität) die Option **Identity is in the NameIdentifier element of the Subject statement** (Identität ist im NameIdentifier-Element der Subject-Anweisung enthalten) aus.
     
-    g. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Configure single sign-on at Work.com** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmelde-URL des Identitätsanbieters** ein.
-    
-    h. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Configure single sign-on at Work.com** den Wert der **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmelde-URL des Identitätsanbieters** ein.
+    g. Fügen Sie in das Textfeld für die **Identity Provider Login URL** (Anmelde-URL des Identitätsanbieters) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    h. Fügen Sie in das Textfeld für die **Identity Provider Logout URL** (Abmelde-URL des Identitätsanbieters) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
     
     i. Wählen Sie für **Service Provider Initiated Request Binding** (Vom Dienstanbieter initiierte Anforderungsbindung) die Option **HTTP Post** aus.
     
     j. Klicken Sie auf **Speichern**.
 
-15. Klicken Sie im linken Navigationsbereich des klassischen Work.com-Portals auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen. 
+16. Klicken Sie im linken Navigationsbereich des klassischen Work.com-Portals auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen. 
     
-    ![Meine Domäne](./media/active-directory-saas-work-com-tutorial/IC794115.png "Meine Domäne")
+    ![Meine Domäne](./media/active-directory-saas-work-com-tutorial/ic794115.png "Meine Domäne")
 
-16. Klicken Sie auf der Seite **Meine Domäne** im Abschnitt **Anmeldeseitenbranding** auf **Bearbeiten**.
+17. Klicken Sie auf der Seite **Meine Domäne** im Abschnitt **Anmeldeseitenbranding** auf **Bearbeiten**.
     
-    ![Anmeldeseitenbranding](./media/active-directory-saas-work-com-tutorial/IC767826.png "Anmeldeseitenbranding")
+    ![Anmeldeseitenbranding](./media/active-directory-saas-work-com-tutorial/ic767826.png "Anmeldeseitenbranding")
 
-17. Im Abschnitt **Authentifizierungsdienst** der Seite **Anmeldeseitenbranding** wird der Name Ihrer **SAML-SSO-Einstellungen** angezeigt. Wählen Sie den Namen aus, und klicken Sie auf **Speichern**.
+14. Im Abschnitt **Authentifizierungsdienst** der Seite **Anmeldeseitenbranding** wird der Name Ihrer **SAML-SSO-Einstellungen** angezeigt. Wählen Sie den Namen aus, und klicken Sie auf **Speichern**.
     
-    ![Anmeldeseitenbranding](./media/active-directory-saas-work-com-tutorial/IC784366.png "Anmeldeseitenbranding")
+    ![Anmeldeseitenbranding](./media/active-directory-saas-work-com-tutorial/ic784366.png "Anmeldeseitenbranding")
 
-18. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+![Azure AD-Benutzer erstellen][100]
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-work-com-tutorial/create_aaduser_01.png) 
+
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-work-com-tutorial/IC794116.png "Einmaliges Anmelden konfigurieren")
+    ![Benutzer und Gruppen -> Alle Benutzer](./media/active-directory-saas-work-com-tutorial/create_aaduser_02.png) 
 
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
-Damit sich Azure Active Directory-Benutzer anmelden können, müssen sie in Work.com bereitgestellt werden.  
-Im Fall von Work.com ist die Bereitstellung eine manuelle Aufgabe.
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Hinzufügen](./media/active-directory-saas-work-com-tutorial/create_aaduser_03.png) 
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Dialogfeldseite „Benutzer“](./media/active-directory-saas-work-com-tutorial/create_aaduser_04.png) 
+
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="create-a-workcom-test-user"></a>Erstellen eines Work.com-Testbenutzers
+Damit sich Azure Active Directory-Benutzer anmelden können, müssen sie in Work.com bereitgestellt werden. Im Fall von Work.com ist die Bereitstellung eine manuelle Aufgabe.
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
 1. Melden Sie sich bei der Work.com-Unternehmenswebsite als Administrator an.
@@ -190,37 +250,86 @@ Im Fall von Work.com ist die Bereitstellung eine manuelle Aufgabe.
    
     ![Alle Benutzer](./media/active-directory-saas-work-com-tutorial/IC794117.png "Alle Benutzer")
 
-5. Führen Sie im Abschnitt „Benutzer bearbeiten“ die folgenden Schritte aus:
+5. Führen Sie im Abschnitt „User Edit“ (Benutzer bearbeiten) die folgenden Schritte aus, und fügen Sie die Attribute eines gültigen Azure AD-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein:
    
-    ![Benutzer bearbeiten](./media/active-directory-saas-work-com-tutorial/IC794118.png "Benutzer bearbeiten")
+    ![Benutzer bearbeiten](./media/active-directory-saas-work-com-tutorial/ic794118.png "Benutzer bearbeiten")
    
-    a. Geben Sie die Attribute **Nachname**, **Alias**, **E-Mail**, **Benutzername** und **Spitzname** eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
-   
-    b. Wählen Sie **Rolle**, **Benutzerlizenz** und **Profil** aus.
-   
-    c. Klicken Sie auf **Speichern**.  
+    a. Geben Sie im Textfeld **First Name** den **Vornamen** des Benutzers ein, z.B. **Britta**.
+    
+    b. Geben Sie im Textfeld **Last Name** den **Nachnamen** des Benutzers ein, z.B. **Simon**.
+    
+    c. Geben Sie im Textfeld **Alias** den **Namen** des Benutzers ein, z.B. **BrittaS**.
+    
+    d. Geben Sie im Textfeld **Email** die **E-Mail-Adresse** des Benutzers ein, z.B. **Brittasimon@contoso.com**.
+    
+    e. Geben Sie im Textfeld **User Name** den Benutzernamen des Benutzers ein, z.B. **Brittasimon@contoso.com**.
+    
+    f. Geben Sie im Textfeld **Nick Name** den **Spitznamen** der Benutzerin **Simon** ein.
+    
+    g. Wählen Sie **Rolle**, **Benutzerlizenz** und **Profil** aus.
+    
+    h. Klicken Sie auf **Speichern**.  
       
     > [!NOTE]
-    > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
+    > Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
     > 
     > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-### <a name="to-assign-users-to-workcom-perform-the-following-steps"></a>So weisen Sie Work.com Benutzer zu:
-1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Work.com gewähren.
 
-2. Klicken Sie auf der Anwendungsintegrationsseite für Work.com auf **Benutzer zuweisen**.
-   
-    ![Zuweisen von Benutzern](./media/active-directory-saas-work-com-tutorial/IC794119.png "Zuweisen von Benutzern")
+![Benutzer zuweisen][200] 
 
-3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
-   
-    ![Ja](./media/active-directory-saas-work-com-tutorial/IC767830.png "Ja")
+**Um Britta Simon Work.com zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-Nach 10 Minuten können Sie überprüfen, ob das Konto mit Work.com synchronisiert wurde.
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+    ![Benutzer zuweisen][201] 
+
+2. Wählen Sie in der Anwendungsliste **Work.com** aus.
+
+    ![Work.com in der App Liste](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „Work.com“ klicken, sollten Sie automatisch bei Ihrer Work.com-Anwendung angemeldet.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-work-com-tutorial/tutorial_general_203.png
 
 

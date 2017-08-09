@@ -1,6 +1,6 @@
 ---
 title: Verwenden einer Azure App Service-Umgebung
-description: "Anleitung für das Erstellen, Veröffentlichen und Skalieren in einer Azure App Service-Umgebung"
+description: "Erstellen, Veröffentlichen und Skalieren in einer Azure App Service-Umgebung"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,128 +13,141 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: c24f716d58f534d1439377234fa1263269961db7
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: fc20979575b204cdd8dda5291552af0adbde180f
 ms.contentlocale: de-de
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/03/2017
 
 ---
-# <a name="using-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
+# <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
 ## <a name="overview"></a>Übersicht ##
 
-Eine App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service in einem Subnetz im Azure Virtual Network (VNet) des Kunden. Sie besteht aus:
+Die Azure App Service-Umgebung ist eine Bereitstellung des Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie besteht aus:
 
-- Front-Ends: Hier endet HTTP/HTTPS in einer ASE
-- Worker: Dabei handelt es sich um die Ressourcen, die Ihre Apps hosten.
-- Datenbank: Die Datenbank enthält Informationen, durch die die Umgebung festgelegt ist.
-- Speicher: Der Speicher wird zum Hosten der vom Kunden veröffentlichten Apps verwendet.
+- **Front-Ends:** In den Front-Ends endet HTTP/HTTPS in einer App Service-Umgebung (ASE).
+- **Worker:** Bei Workern handelt es sich um die Ressourcen, die Ihre Apps hosten.
+- **Datenbank:** Die Datenbank enthält Informationen, durch die die Umgebung festgelegt ist.
+- **Speicher:** Der Speicher wird zum Hosten der vom Kunden veröffentlichten Apps verwendet.
 
 > [!NOTE]
-> Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. In ASEv1 müssen Sie die Ressourcen verwalten, bevor Sie sie verwenden können. Informationen zum Konfigurieren und Verwalten einer ASEv1 finden Sie unter [Konfigurieren einen App Service-Umgebung V1][ConfigureASEv1]. Der Rest dieses Dokuments konzentriert sich auf ASEv2.
+> Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. In ASEv1 müssen Sie die Ressourcen verwalten, bevor Sie sie verwenden können. Informationen zum Konfigurieren und Verwalten von ASEv1 finden Sie unter [Konfigurieren einen App Service-Umgebung v1][ConfigureASEv1]. Im weiteren Verlauf dieses Artikels liegt der Schwerpunkt auf ASEv2.
 >
 >
 
-Sie können eine ASE (ASEv1 und ASEv2) mit einer externen oder internen VIP für den App-Zugriff bereitstellen. Die Bereitstellung mit einer externen VIP wird im Allgemeinen als externe ASE bezeichnet, die interne Version aufgrund der Verwendung eines internen Lastenausgleichs (ILB) als ILB-ASE. Weitere Informationen zur ILB-ASE finden Sie unter [Verwenden einer ILB-ASE][MakeILBASE].
+Sie können eine ASE (ASEv1 und ASEv2) mit einer externen oder internen virtuellen IP (VIP) für den App-Zugriff bereitstellen. Die Bereitstellung mit einer externen VIP wird im Allgemeinen als externe ASE bezeichnet. Die interne Version wird als ILB-ASE bezeichnet, da ein interner Load Balancer (ILB) verwendet wird. Weitere Informationen zur ILB-ASE finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
 
 ## <a name="create-a-web-app-in-an-ase"></a>Erstellen einer Web-App in einer ASE ##
 
-Das Erstellen einer Web-App in einer ASE folgt demselben Prozess wie das normale Erstellen. Es gibt nur wenige kleine Unterschiede. Beim Erstellen eines neuen App Service-Plans:
+Um eine Web-App in einer ASE zu erstellen, verwenden Sie den gleichen Prozess wie bei der normalen Erstellung, jedoch mit einigen kleinen Unterschieden. Beim Erstellen eines neuen App Service-Plans gilt:
 
-- Anstatt einen geografischen Standort auszuwählen, an dem Sie Ihre App bereitstellen, wählen Sie eine ASE als Ihren Standort aus
+- Anstatt einen geografischen Standort auszuwählen, an dem Sie Ihre App bereitstellen, wählen Sie eine ASE als Ihren Standort aus.
 - Alle in einer ASE erstellen App Service-Pläne müssen im Tarif „Isoliert“ enthalten sein.
 
-Wenn Sie nicht über eine ASE verfügen, können Sie eine erstellen. Folgen Sie hierzu den Anweisungen in [Erstellen einer App Service-Umgebung][MakeExternalASE].
+Wenn Sie über keine ASE verfügen, können Sie eine erstellen. Folgen Sie hierzu den Anweisungen in [Erstellen einer App Service-Umgebung][MakeExternalASE].
 
 So erstellen Sie eine Web-App in einer ASE:
 
-1. Klicken Sie auf **Neu &gt; Web und Mobil****Web-App**.
-2. Geben Sie einen Namen für die Web-App an. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
+1. Wählen Sie **Neu** > **Web + Mobil** > **Web-App** aus.
 
-    ![][1]
+2. Geben Sie einen Namen für die Web-App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
 
-1. Wählen Sie ein Abonnement aus.
-2. Geben Sie einen Namen für eine neue Ressourcengruppe an, oder wählen Sie **Vorhandene verwenden**, und wählen Sie eine Ressourcengruppe aus der Dropdownliste aus.
-3. Wählen Sie einen in Ihrer ASE vorhandenen App Service-Plan, oder erstellen Sie mit den folgenden Schritten einen neuen:
-    1. Wählen Sie **Neu erstellen**.
-    2. Geben Sie einen Namen für Ihren App Service-Plan ein.
-    3. Wählen Sie Ihre ASE aus der Dropdownliste der **Speicherorte** aus.
-    4. Wählen Sie einen **Isolierten** Tarif. Klicken Sie auf **Auswählen**.
-    5. Klicken Sie auf **Okay**.
+    ![Namensauswahl für Web-Apps][1]
+
+3. Wählen Sie ein Abonnement aus.
+
+4. Geben Sie einen Namen für eine neue Ressourcengruppe ein, oder wählen Sie **Vorhandene verwenden** aus, und wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
+
+5. Wählen Sie einen in Ihrer ASE vorhandenen App Service-Plan aus, oder erstellen Sie mit den folgenden Schritten einen neuen:
+
+    a. Wählen Sie **Neu erstellen**.
+
+    b. Geben Sie einen Namen für Ihren App Service-Plan ein.
+
+    c. Wählen Sie Ihre ASE in der Dropdownliste **Speicherort** aus.
+
+    d. Wählen Sie einen **Isolierten** Tarif. Wählen Sie **Auswählen**.
+
+    e. Klicken Sie auf **OK**.
     
-    ![][2]
-1. Klicken Sie auf **Erstellen**.
+    ![Isolierte Tarife][2]
+
+6. Klicken Sie auf **Erstellen**.
 
 ## <a name="how-scale-works"></a>Skalieren ##
 
-Jede App Service-App wird in einem App Service-Plan ausgeführt. Das Containermodell ist: Umgebungen beinhalten App Service-Pläne, und App Service-Pläne beinhalten Apps. Wenn Sie eine App skalieren, skalieren Sie den App Service-Plan und damit alle Apps in diesem Plan.
+Jede App Service-App wird in einem App Service-Plan ausgeführt. Im Containermodell beinhalten Umgebungen App Service-Pläne, und App Service-Pläne beinhalten Apps. Wenn Sie eine App skalieren, skalieren Sie den App Service-Plan und damit alle Apps in diesem Plan.
 
-Wenn Sie in einer ASEv2 einen App Service-Plan skalieren, wird die erforderliche Infrastruktur automatisch hinzugefügt. Dies ist ein Unterschied zu ASEv1, wo die erforderliche Infrastruktur vor dem Erstellen oder Skalieren Ihres App Service-Plans hinzugefügt werden muss. Für ASEv2 bedeutet dies, dass es zu einer Zeitverzögerung bei der Skalierung von Vorgängen kommt, weil die Infrastruktur hinzugefügt wird.
+Wenn Sie in einer ASEv2 einen App Service-Plan skalieren, wird die erforderliche Infrastruktur automatisch hinzugefügt. Bei der Skalierung von Vorgängen kommt es zu einer Zeitverzögerung, während die Infrastruktur hinzugefügt wird. In ASEv1 muss die erforderliche Infrastruktur vor dem Erstellen oder horizontalen Hochskalieren Ihres App Service-Plans hinzugefügt werden. 
 
-Im mehrinstanzenfähigen App Service erfolgt die Skalierung unmittelbar, weil es dort einen sofort verfügbaren Ressourcenpool für die Unterstützung der horizontalen Skalierung gibt. In einer ASE gibt es keinen solchen Puffer. Die Ressourcen werden nach Bedarf zugeordnet.
+Im mehrinstanzenfähigen App Service erfolgt die Skalierung normalerweise unmittelbar, da sofort ein Ressourcenpool für die Unterstützung verfügbar ist. In einer ASE gibt es keinen solchen Puffer. Die Ressourcen werden nach Bedarf zugeordnet.
 
-In einer ASE können bis zu 100 Instanzen skaliert werden. Diese 100 Instanzen können alle zu demselben App Service-Plan gehören oder über mehrere App Service-Pläne verteilt sein.
+In einer ASE können Sie auf 100 Instanzen zentral hochskalieren. Diese 100 Instanzen können alle zu demselben App Service-Plan gehören oder über mehrere App Service-Pläne verteilt sein.
 
 ## <a name="ip-addresses"></a>IP-Adressen ##
 
-In App Service gibt es die Möglichkeit, eine dedizierte IP-Adresse an eine App zu vergeben. Diese Funktion ist per Konfigurieren einer IP-basierten SSL verfügbar. Dies wird hier beschrieben: [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps][ConfigureSSL]. Bei ASEs gibt es jedoch eine wichtige Ausnahme: In eine ILB-ASE kann keine zusätzliche IP-Adresse für die IP-basierte SSL hinzugefügt werden.
+In App Service gibt es die Möglichkeit, eine dedizierte IP-Adresse an eine App zu vergeben. Diese Funktion ist nach dem Konfigurieren einer IP-basierten SSL verfügbar, wie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps][ConfigureSSL] beschrieben. In einer ASE gibt es jedoch eine wichtige Ausnahme. Sie können keine zusätzlichen IP-Adressen hinzufügen, die für eine IP-basierte SSL in einer ILB-ASE verwendet werden sollen.
 
-In ASEv1 müssen die IP-Adressen vor der Verwendung als Ressourcen zugewiesen werden. In ASEv2 können Sie die IP-Adressen einfach wie im mehrinstanzenfähigen App Service aus der App heraus verwenden. In einer ASEv2 mit bis zu 30 IP-Adressen ist immer eine freie Adresse vorhanden. Bei jeder Verwendung einer IP-Adresse wird eine weitere hinzugefügt, weswegen immer eine sofort verfügbare IP-Adresse zur Verfügung steht. Bei der Vergabe einer weiteren IP-Adresse kommt es zu einer zeitlichen Verzögerung, weswegen IP-Adressen nicht in schneller Abfolge hinzugefügt werden können.
+In ASEv1 müssen die IP-Adressen vor der Verwendung als Ressourcen zugewiesen werden. In ASEv2 können Sie die IP-Adressen einfach genau wie im mehrinstanzenfähigen App Service aus der App heraus verwenden. In einer ASEv2 mit bis zu 30 IP-Adressen ist immer eine freie Adresse vorhanden. Bei jeder Verwendung einer IP-Adresse wird eine weitere hinzugefügt, sodass immer eine sofort verfügbare Adresse zur Verfügung steht. Bei der Vergabe einer weiteren IP-Adresse ist eine zeitliche Verzögerung erforderlich. Daher können IP-Adressen nicht in schneller Abfolge hinzugefügt werden.
 
 ## <a name="front-end-scaling"></a>Front-End-Skalierung ##
 
-Beim horizontalen Skalieren Ihrer App Service-Pläne in einer ASEv2 werden die Worker zur Unterstützung der App Service-Pläne automatisch hinzugefügt. Jede ASE wird mit zwei Front-Ends erstellt, und diese werden mit einem Front-End pro 15 Instanzen automatisch horizontal skaliert. Bei 15 Instanzen bedeutet dies, dass Sie drei Front-Ends haben. Wenn Sie auf 30 Instanzen skalieren, haben Sie vier Front-Ends usw.
+Beim horizontalen Hochskalieren Ihrer App Service-Pläne in einer ASEv2 werden die Worker zur Unterstützung der App Service-Pläne automatisch hinzugefügt. Jede ASE wird mit zwei Front-Ends erstellt. Darüber hinaus werden die Front-Ends automatisch mit einer Rate von einem Front-End für je 15 Instanzen in Ihren App Service-Plänen horizontal hochskaliert. Bei 15 Instanzen bedeutet dies beispielsweise, dass Sie drei Front-Ends haben. Wenn Sie auf 30 Instanzen skalieren, haben Sie vier Front-Ends usw.
 
-Für die meisten Szenarios sollte dies mehr als ausreichend sein. Wenn schneller horizontal skaliert werden muss, können Sie das Verhältnis in Ihren App Service-Plänen aber bis auf ein Front-End pro fünf Instanzen reduzieren. Für das Verändern des Verhältnisses fallen Gebühren an. Diese werden in [Azure App Service-Preise][Pricing] beschrieben.
+Diese Anzahl von Front-Ends sollte für die meisten Szenarien mehr als ausreichend sein. Sie können allerdings auch schneller horizontal hochskalieren. Sie können das Verhältnis bis hin zu einem Front-End für je fünf Instanzen ändern. Für das Ändern des Verhältnisses fällt eine Gebühr an. Weitere Informationen finden Sie unter [Azure App Service – Preise][Pricing].
 
-Front-End-Ressourcen sind die HTTP/HTTPS-Endpunkte der ASE. Mit der standardmäßigen Front-End-Konfiguration beträgt der Speicherverbrauch pro Front-End konstant etwa 60 Prozent. Kundenworkloads können nicht in einem Front-End ausgeführt werden. Der wichtigste Skalierungsfaktor für ein Front-End ist die CPU, die hauptsächlich vom HTTPS-Datenverkehr getrieben ist.
+Front-End-Ressourcen sind die HTTP/HTTPS-Endpunkte der ASE. Mit der standardmäßigen Front-End-Konfiguration beträgt der Speicherverbrauch pro Front-End konstant etwa 60 %. Kundenworkloads können nicht in einem Front-End ausgeführt werden. Der wichtigste Skalierungsfaktor für ein Front-End ist die CPU, die hauptsächlich vom HTTPS-Datenverkehr abhängig ist.
 
 ## <a name="app-access"></a>App-Zugriff ##
 
-In einer externen ASE unterscheidet sich die beim Erstellen der ASE verwendete Domäne von dem mehrinstanzenfähigen App Service und enthält den Namen der ASE. Weitere Informationen zum Erstellen einer externen ASE finden Sie in [Erstellen einer App Service-Umgebung][MakeExternalASE]. In einer externen ASE folgt der Domänenname dem folgenden Muster: *.&lt;Name der ASE&gt;.p.azurewebsites.net*. Wenn Sie z.B. in einer ASE mit dem Namen _external-ase_ arbeiten und in dieser ASE eine App mit dem Namen _contoso_ hosten, können Sie über die folgenden URLs auf diese zugreifen:
+In einer externen ASE unterscheidet sich die für das Erstellen von Apps verwendete Domäne vom mehrinstanzenfähigen App Service. Sie enthält den Namen der ASE. Weitere Informationen zum Erstellen einer externen ASE finden Sie unter [Erstellen einer App Service-Umgebung][MakeExternalASE]. In einer externen ASE folgt der Domänenname dem folgenden Muster: *.&lt;Name der ASE&gt;.p.azurewebsites.net*. Wenn Ihre ASE z.B. den Namen _external-ase_ trägt und Sie in dieser ASE eine App mit dem Namen _contoso_ hosten, erreichen Sie sie über die folgenden URLs:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-Die URL *contoso.scm.external-ase.p.azurewebsites.net* wird für den Zugriff auf die Kudu-Konsole und zum Veröffentlichen Ihrer App mit Web Deploy verwendet. Informationen zur Kudu-Konsole finden Sie in [Kudu-Konsole für Azure App Service][Kudu]. Die Kudu-Konsole bietet Ihnen eine Web-Benutzeroberfläche für das Debuggen, Hochladen und Bearbeiten von Dateien und vieles mehr.
+Die URL contoso.scm.external-ase.p.azurewebsites.net wird für den Zugriff auf die Kudu-Konsole und zum Veröffentlichen Ihrer App mit Web Deploy verwendet. Informationen zur Kudu-Konsole finden Sie in [Kudu-Konsole für Azure App Service][Kudu]. Die Kudu-Konsole bietet eine Webbenutzeroberfläche für das Debuggen, Hochladen und Bearbeiten von Dateien und vieles mehr.
 
-In einer ILB-ASE legen Sie die Domäne und die Bereitstellungszeit fest. Weitere Informationen zum Erstellen einer ILB-ASE finden Sie in [Erstellen und Verwenden einer ILB-ASE][MakeILBASE]. Wenn Sie z.B. den Domänennamen _Ilb-ase.info_ angeben, verwenden die Apps in dieser ASE während der App-Erstellung diese Domäne. Für die App mit dem Namen _contoso_ würden die URLs wie folgt lauten:
+In einer ILB-ASE legen Sie die Domäne und die Bereitstellungszeit fest. Weitere Informationen zum Erstellen einer ILB-ASE finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE]. Wenn Sie den Domänennamen _Ilb-ase.info_ angeben, verwenden die Apps in dieser ASE während der App-Erstellung diese Domäne. Für die App mit dem Namen _contoso_ lauten die URLs wie folgt:
 
 - contoso.ilb-ase.info
 - contoso.scm.ilb-ase.info
 
 ## <a name="publishing"></a>Veröffentlichung ##
 
-Neben dem mehrinstanzenfähigen App Service können Sie auch auf folgende Weise in einer ASE veröffentlichen:
+Wie bei dem mehrinstanzenfähigen App Service können Sie auch folgendermaßen in einer ASE veröffentlichen:
 
-- Web Deploy
+- Webbereitstellung
 - FTP
 - Continuous Integration
-- Drag and Drop in der Kudu-Konsole
-- Eine IDE wie z.B. Visual Studio, Eclipse oder Intellij IDEA
+- Drag & Drop in der Kudu-Konsole
+- Eine IDE wie Visual Studio, Eclipse oder IntelliJ IDEA
 
-In einer externen ASE ist das Verhalten jeweils dasselbe. Weitere Informationen finden Sie in [Bereitstellen in Azure App Service][AppDeploy]. 
+Mit einer externen ASE weisen alle diese Veröffentlichungsoptionen das gleiche Verhalten auf. Weitere Informationen finden Sie unter [Bereitstellen in Azure App Service][AppDeploy]. 
 
-Der große Unterschied bei der Veröffentlichung betrifft die ILB-ASEs. In einer ILB-ASE sind die Veröffentlichungsendpunkte nur über die ILB verfügbar. Die ILB liegt in einer privaten IP im ASE-Subnetz im virtuellen Netzwerk. Wenn Sie keinen Netzwerkzugriff auf die ILB haben, können Sie in der betreffenden ASE keine Apps veröffentlichen. Wie in [Erstellen und Verwenden einer ILB-ASE][MakeILBASE] erwähnt, müssen Sie für die Apps im System ein DNS konfigurieren. Dazu gehört der SCM-Endpunkt. Wenn DNS und SCM-Endpunkt nicht korrekt definiert sind, können Sie nicht veröffentlichen. Darüber hinaus müssen Ihre IDEs über Netzwerkzugriff auf den ILB verfügen, um direkt an ihn veröffentlichen zu können.
+Der wesentliche Unterschied bei der Veröffentlichung betrifft die ILB-ASE. In einer ILB-ASE sind die Veröffentlichungsendpunkte nur über die ILB verfügbar. Die ILB liegt in einer privaten IP-Adresse im ASE-Subnetz im virtuellen Netzwerk. Wenn Sie keinen Netzwerkzugriff auf die ILB haben, können Sie in der betreffenden ASE keine Apps veröffentlichen. Wie in [Erstellen und Verwenden einer ILB-ASE][MakeILBASE] erwähnt, müssen Sie für die Apps im System ein DNS konfigurieren. Dazu gehört der SCM-Endpunkt. Wenn sie nicht ordnungsgemäß definiert sind, ist keine Veröffentlichung möglich. Darüber hinaus müssen Ihre IDEs über Netzwerkzugriff auf den ILB verfügen, um direkt an ihn veröffentlichen zu können.
 
-Internetbasierte CI-Systemen wie Github und VSTS können nicht mit einer ILB-ASE verwendet werden, weil der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Stattdessen müssen Sie ein CI-System wie Dropbox verwenden, das ein Pull-Modell verwendet.
+Internetbasierte CI-Systemen wie GitHub und Visual Studio Team Services können nicht mit einer ILB-ASE verwendet werden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Stattdessen müssen Sie ein CI-System wie Dropbox verwenden, das ein Pull-Modell verwendet.
 
-Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Domäne, mit der die ILB-ASE erstellt wurde. Dies wird im Veröffentlichungsprofil und im Portalblatt der App angezeigt (in **Übersicht** > **Zusammenfassung** und in den **Eigenschaften**). 
+Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Domäne, mit der die ILB-ASE erstellt wurde. Dies wird im Veröffentlichungsprofil und auf dem Portalblatt der App angezeigt (in **Übersicht** > **Zusammenfassung** sowie in den **Eigenschaften**). 
 
 ## <a name="pricing"></a>Preise ##
 
-Es gibt eine neue Preis-SKU, die nur für ASEv2 gilt und **Isoliert** heißt. Alle App Service-Pläne, die in einer ASEv2 gehostet werden, befinden sich in der Preis-SKU „Isoliert“. Zusätzlich zum Preis Ihrer App Service-Pläne fällt eine Pauschalgebühr für die eigentliche ASE an. Dieser Preis richtet sich nicht nach der Größe Ihrer ASE. 
+Bei ASEv2 wird eine neue Preis-SKU mit dem Namen **Isoliert** ausschließlich für ASEv2 verwendet. Alle App Service-Pläne, die in einer ASEv2 gehostet werden, befinden sich in der Preis-SKU „Isoliert“. Zusätzlich zum Preis Ihrer App Service-Pläne fällt eine Pauschalgebühr für die eigentliche ASE an. Dieser Preis richtet sich nicht nach der Größe Ihrer ASE. 
 
-Die sonstigen potenziellen Gebühren beziehen sich auf die Anpassung des Front-End-Skalierungsverhältnisses oder der Größe des Front-Ends. Wenn Sie zwecks schnelleren Hinzufügens von Front-Ends das Skalierungsverhältnis erhöhen, zahlen Sie für die zusätzlichen Kerne, die sonst nicht automatisch zum System hinzugefügt worden wären. Analog dazu zahlen Sie bei Erhöhung Ihrer Front-End-Größe für die Kerne, die nicht automatisch zugeordnet wurden. Wenn Sie z.B. das Skalierungsverhältnis auf den Wert 10 anpassen, bedeutet dies, dass pro zehn Instanzen ein Front-End Ihren App Service-Plänen hinzugefügt wird. Die Pauschalgebühr deckt ein Skalierungsverhältnis von einem Front-End pro 15 Instanzen ab. Mit einem Skalierungsverhältnis von 10 zahlen Sie eine Gebühr für das dritte Front-End, das zu den zehn ASP-Instanzen hinzugefügt wird. Wenn 15 Instanzen erreicht werden, fällt dagegen keine Gebühr an, weil das Front-End automatisch hinzugefügt worden wäre.
+Die sonstigen potenziellen Gebühren beziehen sich auf die Anpassung des Front-End-Skalierungsverhältnisses oder der Größe des Front-Ends. Sie können das Skalierungsverhältnis zum schnelleren Hinzufügen von Front-Ends anpassen. Für zusätzliche Kerne, die dem System nicht automatisch hinzugefügt werden, müssen Sie jedoch bezahlen. Analog dazu bezahlen Sie bei Erhöhung Ihrer Front-End-Größe für die Kerne, die nicht automatisch zugeordnet werden. Wenn Sie z.B. das Skalierungsverhältnis auf den Wert 10 anpassen, wird für je zehn Instanzen in Ihren App Service-Plänen ein Front-End hinzugefügt. Die Pauschalgebühr deckt ein Skalierungsverhältnis von einem Front-End pro 15 Instanzen ab. Mit einem Skalierungsverhältnis von 10 bezahlen Sie für das dritte Front-End, das für die 10 Instanzen des App Service-Plans hinzugefügt wird, eine Gebühr. Sie müssen nicht dafür bezahlen, wenn Sie 15 Instanzen erreichen, da es in diesem Fall automatisch hinzugefügt wurde.
 
-Weitere Informationen finden Sie in [Azure App Service – Preise][Pricing].
+Weitere Informationen finden Sie unter [Azure App Service – Preise][Pricing].
 
-## <a name="deleting-an-ase"></a>Löschen einer ASE ##
+## <a name="delete-an-ase"></a>Löschen einer ASE ##
 
-Wenn Sie eine App Service-Umgebung löschen möchten, verwenden Sie einfach die Aktion **Löschen** im oberen Bereich des Blatts „App Service-Umgebung“. Wenn Sie dies tun, werden Sie aufgefordert, den Namen Ihrer App Service-Umgebung einzugeben. Auf diese Weise bestätigen Sie, dass Sie diesen Schritt wirklich ausführen möchten. Beachten Sie Folgendes: Beim Löschen einer App Service-Umgebung wird auch ihr gesamter Inhalt gelöscht. 
+So löschen Sie eine ASE 
 
-![][3]
+1. Verwenden Sie **Löschen** im oberen Bereich des Blatts **App Service-Umgebung**. 
+
+2. Geben Sie den Namen Ihrer ASE ein, um zu bestätigen, dass Sie sie löschen möchten. Beim Löschen einer ASE wird auch ihr gesamter Inhalt gelöscht. 
+
+    ![Löschen einer ASE][3]
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

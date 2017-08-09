@@ -1,37 +1,37 @@
 ---
 title: Abfragen von Daten aus der Azure Time Series Insights-Umgebung mit C# | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Daten mithilfe von C# aus einer Time Series Insights-Umgebung abfragen.
+description: "In diesem Tutorial erfahren Sie, wie Sie Daten mithilfe von C# aus einer Time Series Insights-Umgebung abfragen. Außerdem finden Sie hier Beispielcode."
 keywords: 
-services: time-series-insights
+services: tsi
 documentationcenter: 
 author: ankryach
-manager: almineev
-editor: cgronlun
+manager: jhubbard
+editor: 
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/25/2017
+ms.date: 07/20/2017
 ms.author: ankryach
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 81d16b4093a4eef77e5a9c88cb39f2dd36bcba4e
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 99507a7bf9ca332f0b7adc56c2d8df0240f29b06
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 07/24/2017
 
 ---
-# <a name="query-data-from-the-azure-time-series-insights-environment-by-using-c"></a>Abfragen von Daten aus einer Azure Time Series Insights-Umgebung mit C#
+# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Abfragen von Daten aus einer Azure Time Series Insights-Umgebung mit C#
 
 Dieses C#-Beispiel veranschaulicht, wie Daten aus einer Azure Time Series Insights-Umgebung abgefragt werden.
 Das Beispiel zeigt einige einfache Beispiele für die Verwendung der Abfrage-API:
-1. Zur Vorbereitung wird das Zugriffstoken mithilfe der Azure Active Directory-API abgerufen. Dieses Token muss im `Authorization`-Header jeder Abfrage-API-Anforderung übergeben werden. Sehen Sie sich für das Einrichten nicht-interaktiver Anwendungen den Artikel [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md) an.
+1. Rufen Sie zur Vorbereitung das Zugriffstoken mithilfe der Azure Active Directory-API ab. Übergeben Sie dieses Token im `Authorization`-Header jeder Abfrage-API-Anforderung. Informationen zum Einrichten nicht interaktiver Anwendungen finden Sie unter [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md).
 2. Die Liste der Umgebungen, auf die der Benutzer Zugriff hat, wird abgerufen. Eine der Umgebungen wird als relevant übernommen, und für diese Umgebung werden weitere Daten abgefragt.
 3. Als Beispiel für eine HTTPS-Anforderung werden Verfügbarkeitsdaten für die relevante Umgebung abgefragt.
 4. Als Beispiel für eine Websocketanforderung werden aggregierte Ereignisdaten für die relevante Umgebung abgefragt. Daten werden für den gesamten Verfügbarkeitszeitbereich abgefragt.
 
-## <a name="c-sample"></a>C#-Beispiel
+## <a name="c-example"></a>C#-Beispiel
 
 ```csharp
 using System;

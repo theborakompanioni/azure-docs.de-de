@@ -1,231 +1,255 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit eTouches | Microsoft Docs'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und eTouches konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit etouches | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und etouches konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
+ms.reviewer: joflore
 ms.assetid: 76cccaa8-859c-4c16-9d1d-8a6496fc7520
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2017
+ms.date: 07/19/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
-ms.openlocfilehash: e5706f1c33e5fb9305090c6c4444cf0adb5737c2
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 3cd9e9d6aae924369065ca492b1f6380c0ddc5fe
+ms.contentlocale: de-de
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Tutorial: Azure Active Directory-Integration mit eTouches
-In diesem Tutorial erfahren Sie, wie Sie eTouches in Azure Active Directory (Azure AD) integrieren.
+# <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Tutorial: Azure Active Directory-Integration mit etouches
 
-Die Integration von eTouches in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie etouches in Azure Active Directory (Azure AD) integrieren.
 
-* Sie können in Azure AD steuern, wer auf eTouches Zugriff hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei eTouches anzumelden (einmaliges Anmelden, SSO).
-* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+Die Integration von etouches in Azure AD bietet die folgenden Vorteile:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- Sie können in Azure AD steuern, wer Zugriff auf etouches hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei etouches anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um die Azure AD-Integration mit eTouches konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-* Ein eTouches-Abonnement, für das einmaliges Anmelden aktiviert ist
+Um die Azure AD-Integration mit etouches konfigurieren zu können, benötigen Sie Folgendes:
 
->[!NOTE]
->Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
-> 
+- Ein Azure AD-Abonnement
+- Ein etouches-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden (SSO) von Azure AD in einer Testumgebung.
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+1. Hinzufügen von etouches aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-1. Hinzufügen von eTouches aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung (SSO) von Azure AD
+## <a name="adding-etouches-from-the-gallery"></a>Hinzufügen von etouches aus dem Katalog
+Zum Konfigurieren der Integration von etouches in Azure AD müssen Sie etouches aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-## <a name="adding-etouches-from-the-gallery"></a>Hinzufügen von eTouches aus dem Katalog
-Zum Konfigurieren der Integration von eTouches in Azure AD müssen Sie eTouches aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+**Um etouches aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-**Um eTouches aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+    ![Schaltfläche „Azure Active Directory“][1]
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
+    ![Blatt „Unternehmensanwendungen“][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+    ![Schaltfläche „Neue Anwendung“][3]
+
+4. Geben Sie im Suchfeld **etouches** ein, wählen Sie im Ergebnisbereich **etouches** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+    ![etouches in der Ergebnisliste](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_addfromgallery.png)
+
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei etouches basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in etouches als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in etouches muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in etouches den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei etouches müssen Sie die folgenden Bausteine ausführen:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines etouches-Testbenutzers](#create-an-etouches-test-user)**, um eine Entsprechung von Britta Simon in etouches zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer etouches-Anwendung.
+
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei etouches die folgenden Schritte aus:**
+
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **etouches** auf **Einmaliges Anmelden**.
+
+    ![Einmaliges Anmelden konfigurieren][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_samlbase.png)
+
+3. Führen Sie auf der Seite **Domäne und URLs für etouches** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für etouches](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_url.png)
+
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.eiseverywhere.com/<instance name>`
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Sie ersetzen den Wert durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Dies wird später in diesem Tutorial beschrieben.
+    > 
+
+4. Die etouches-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute auf der Registerkarte **Benutzerattribut** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
+
+    ![Benutzerattribut](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_attribute.png) 
+
+5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
+    
+    | Attributname | Attributwert |
+    | ------------------- | -------------------- |
+    | E-Mail | user.mail |    
+    
+    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+
+    ![Attribut hinzufügen](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_04.png)
+
+    ![Dialogfeld „Attribut hinzufügen“](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_05.png)
+
+    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+
+    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    
+    d. Klicken Sie auf **OK**. 
+
+6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_certificate.png) 
+
+7. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-etouches-tutorial/tutorial_general_400.png)
+
+8. Führen Sie zum Konfigurieren von SSO für Ihre Anwendung in der etouches-Anwendung die folgenden Schritte aus: 
+
+    ![etouches-Konfiguration](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_06.png) 
+
+    a. Melden Sie sich mit Administratorrechten bei der **etouches**-Anwendung an.
    
-    ![Active Directory][1]
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-    ![Anwendungen][2]
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
-    ![Anwendungen][3]
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-    ![Anwendungen][4]
-6. Geben Sie im Suchfeld als Suchbegriff **eTouches**ein.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_01.png)
-7. Wählen Sie im Ergebnisbereich **eTouches** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_02.png)
+    b. Navigieren Sie zur **SAML**-Konfiguration.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (SSO) von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit eTouches basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+    c. Öffnen Sie das aus dem Azure-Portal heruntergeladene Zertifikat in Editor, kopieren Sie den Inhalt, und fügen Sie ihn im Abschnitt **General Settings** (Allgemeine Einstellungen) in das Textfeld für die IDP-Metadaten ein. 
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in eTouches als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in eTouches muss eine Linkbeziehung eingerichtet werden.
+    d. Klicken Sie auf die Schaltfläche **Save & Stay** (Speichern und bleiben).
+  
+    e. Klicken Sie im Abschnitt mit den SAML-Metadaten auf die Schaltfläche **Update Metadata** (Metadaten aktualisieren). 
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in eTouches zuweisen.
+    f. Dadurch wird die Seite geöffnet und das einmalige Anmelden durchgeführt. Wenn das einmalige Anmelden funktioniert, können Sie den Benutzernamen einrichten.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei eTouches müssen Sie die folgenden Bausteine ausführen:
+    g. Wählen Sie im Feld „Username“ (Benutzername) wie unten dargestellt **emailaddress** (E-Mail-Adresse) aus. 
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines eTouches-Testbenutzers](#creating-a-predictix-price-reporting-test-user)**, um eine Entsprechung von Britta Simon in eTouches zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+    h. Kopieren Sie den Wert der **SP entity ID** (SP-Entitäts-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für etouches** in das Textfeld **Bezeichner** ein.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer eTouches-Anwendung.
-
-Die eTouches-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute auf der Registerkarte **Attribut** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
-
-![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_07.png) 
-
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in eTouches die folgenden Schritte aus:**
-
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **eTouches** im Menü oben auf **Attribute**.
+    i. Kopieren Sie den Wert der **SSO URL / AC**, und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für etouches** in das Textfeld **Anmelde-URL** ein.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_general_80.png) 
-2. Führen Sie im Dialogfeld **SAML-Tokenattribute** für jede Zeile in der folgenden Tabelle die folgenden Schritte aus:
-   
-   | Attributname | Attributwert |
-   | --- | --- |
-   | E-Mail |user.mail |
-   
- 1. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_general_81.png) 
-  2. Geben Sie im Textfeld **Attributname** den für die Zeile angezeigten Attributnamen ein.
-  3. Wählen Sie in der Liste **Attributwert** den für die Zeile angezeigten Attributwert aus.
-  4. Klicken Sie auf **Fertig stellen**.    
-3. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **eTouches** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-   
-    ![Einmaliges Anmelden konfigurieren][6] 
-4. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei eTouches anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_03.png) 
-5. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_04.png)   
-  1. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der eTouches-Anwendung verwendet wird, nach folgenden Muster ein: **https://www.eiseverywhere.com/saml/accounts/?sso&accountid=\<accountid\>**.
-  2. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für eTouches** die folgenden Schritte aus:
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_05.png)  
-  1. Klicken Sie auf **Metadaten herunterladen**, und speichern Sie die Datei auf Ihrem Computer.
-  2. Klicken Sie auf **Weiter**.
-7. Führen Sie zum Konfigurieren von SSO für Ihre Anwendung in der eTouches-Anwendung die folgenden Schritte aus:  
-  1. Melden Sie sich mit Administratorrechten bei der Anwendung **eTouches** an. 
-  2. Navigieren Sie zur **SAML**-Konfiguration.
-  3. Fügen Sie im Abschnitt **Allgemeine Einstellungen** den Azure AD-Verbundmetadaten-Inhalt in das Textfeld ein.
-  4. Klicken Sie auf die Schaltfläche **Save & Stay** (Speichern und bleiben).
-  5. Klicken Sie im Abschnitt mit den SAML-Metadaten auf die Schaltfläche **Update Metadata** (Metadaten aktualisieren). 
-  6. Die Seite wird geöffnet, und das einmalige Anmelden wird durchgeführt. Wenn das einmalige Anmelden funktioniert, können Sie den Benutzernamen einrichten.
-  7. Wählen Sie im Feld **Benutzername** wie unten dargestellt **emailaddress** (E-Mail-Adresse) aus. 
-  8. Kopieren Sie den Wert von **SSO URL/ACS** (SSO-URL/ACS), und fügen Sie ihn in das Textfeld „Anmelde-URL“ des Konfigurations-Assistenten der Azure AD-Anwendung ein.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_06.png)
-8. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
-   
-    ![Azure AD – einmaliges Anmelden][10]
-9. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
-
-    ![Azure AD – einmaliges Anmelden][11]
-
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][20]
+![Erstellen eines Azure AD-Testbenutzers][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/create_aaduser_09.png) 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/create_aaduser_03.png) 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
-   
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/create_aaduser_04.png) 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
 
- ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/create_aaduser_05.png) 
-  1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-  2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-  3. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+    ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-etouches-tutorial/create_aaduser_01.png) 
 
- ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/create_aaduser_06.png)  
-  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
-  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-  5. Klicken Sie auf **Weiter**.
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-   
-  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/create_aaduser_07.png) 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-   
-  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-etouches-tutorial/create_aaduser_08.png)   
-  1. Notieren Sie den Wert von **Neues Kennwort**.
-  2. Klicken Sie auf **Fertig stellen**.   
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-etouches-tutorial/create_aaduser_02.png) 
 
-### <a name="create-an-etouches-test-user"></a>Erstellen eines eTouches-Testbenutzers
-In diesem Abschnitt erstellen Sie in eTouches einen Benutzer mit dem Namen „Britta Simon“. Wenden Sie sich an das Supportteam von eTouches, um die Benutzer im eTouches-System hinzufügen zu lassen.
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Schaltfläche „Hinzufügen“](./media/active-directory-saas-etouches-tutorial/create_aaduser_03.png) 
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Dialogfeld „Benutzer“](./media/active-directory-saas-etouches-tutorial/create_aaduser_04.png) 
+
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="create-an-etouches-test-user"></a>Erstellen eines etouches-Testbenutzers
+
+In diesem Abschnitt erstellen Sie in etouches einen Benutzer mit dem Namen „Britta Simon“. Wenden Sie sich an das [Clientsupportteam von etouches](https://www.etouches.com/event-software/support/customer-support/), um die Benutzer in der etouches-Plattform hinzuzufügen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf eTouches gewähren.
 
-![Benutzer zuweisen][200] 
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf etouches gewähren.
 
-**Um Britta Simon eTouches zuzuweisen, führen Sie die folgenden Schritte aus:**
+![Zuweisen der Benutzerrolle][200] 
 
-1. Klicken Sie in der Verzeichnisansicht des klassischen Portals auf der oberen Menüleiste auf **Anwendungen** , um die Anwendungsansicht zu öffnen.
-   
+**Um Britta Simon etouches zuzuweisen, führen Sie die folgenden Schritte aus:**
+
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
     ![Benutzer zuweisen][201] 
-2. Wählen Sie in der Anwendungsliste **eTouches**aus.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_50.png) 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
-   
-    ![Benutzer zuweisen][203]
-4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-   
-    ![Benutzer zuweisen][205]
 
+2. Wählen Sie in der Anwendungsliste **etouches** aus.
+
+    ![etouches-Link in der Anwendungsliste](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Link „Benutzer und Gruppen“][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Bereich „Zuweisung hinzufügen“][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „eTouches“ klicken, sollten Sie automatisch bei Ihrer eTouches-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „etouches“ klicken, sollten Sie automatisch bei Ihrer etouches-Anwendung angemeldet.
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 
@@ -234,14 +258,11 @@ Wenn Sie im Zugriffsbereich auf die Kachel „eTouches“ klicken, sollten Sie a
 [3]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-etouches-tutorial/tutorial_general_205.png
+
 

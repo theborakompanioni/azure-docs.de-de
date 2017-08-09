@@ -1,6 +1,6 @@
 ---
-title: Azure DocumentDB .NET-SDK und -Ressourcen | Microsoft-Dokumentation
-description: "Wichtige Informationen zu .NET-API und -SDK einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB-.NET-SDK."
+title: Azure Cosmos DB .NET SDK und Ressourcen | Microsoft-Dokumentation
+description: "Erhalten Sie alle Informationen zu .NET API und SDK, einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des Azure Cosmos DB .NET SDK."
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -16,13 +16,13 @@ ms.date: 07/05/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: a41df84034dbc2f1ec6c61d027ced77694354d51
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 8d6b953ae95713dc8b5a4037fa59bec49ea52b85
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="documentdb-net-sdk-download-and-release-notes"></a>DocumentDB .NET SDK: Download und Anmerkungen zur Version
+# <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET-Änderungsfeed](documentdb-sdk-dotnet-changefeed.md)
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/13/2017
 
 <tr><td>**Beispiele**</td><td>[.NET-Codebeispiele](documentdb-dotnet-samples.md)</td></tr>
 
-<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem DocumentDB .NET SDK](documentdb-get-started.md)</td></tr>
+<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem Azure Cosmos DB .NET SDK](documentdb-get-started.md)</td></tr>
 
 <tr><td>**Web-App-Tutorial**</td><td>[Entwicklung von Webanwendungen mit Azure Cosmos DB](documentdb-dotnet-application.md)</td></tr>
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/13/2017
 *   Unterstützung für das Angeben von benutzerdefinierten Einstellungen vom Typ „JsonSerializerSettings“ beim Instanziieren von [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) wurde hinzugefügt.
 
 ### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
-*   Es wurde ein Problem mit Auswirkung auf x64-Computer behoben, die die SSE4-Anweisung nicht unterstützen und beim Ausführen von DocumentDB API-Abfragen eine SEHException-Ausnahme auslösen.
+*   Es wurde ein Problem mit Auswirkungen auf x64-Computern behoben, die die SSE4-Anweisung nicht unterstützen und beim Ausführen von DocumentDB-API-Abfragen von Azure Cosmos DB eine SEHException-Ausnahme auslösen.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 *   Es wurde Unterstützung für das Feature „Anforderungseinheiten pro Minute“ (RU/m) hinzugefügt.
@@ -143,7 +143,7 @@ ms.lasthandoff: 07/13/2017
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
 * Unterstützung für parallele Abfragen für partitionierte Sammlungen hinzugefügt.
 * Unterstützung für partitionsübergreifende ORDER BY-und TOP-Abfragen für partitionierte Sammlungen hinzugefügt.
-* Fehlende Verweise auf DocumentDB.Spatial.Sql.dll und Microsoft.Azure.Documents.ServiceInterop.dll behoben, die beim Referenzieren eines DocumentDB-Projekts mit einem Verweis auf das DocumentDB NuGet-Paket erforderlich sind.
+* Fehlende Verweise auf „DocumentDB.Spatial.Sql.dll“ und „Microsoft.Azure.Documents.ServiceInterop.dll“ wurden behoben, die beim Referenzieren eines Azure Cosmos DB-Projekts mit einem Verweis auf das Azure Cosmos DB NuGet-Paket erforderlich sind.
 * Ein Fehler in Bezug auf die Verwendung verschiedener Parametertypen in benutzerdefinierten Funktionen in LINQ wurde behoben. 
 * Fehler bei global replizierten Konten behoben, bei dem Upsert-Aufrufe an Leseregionen anstatt Schreibregionen geleitet wurden.
 * Der „IDocumentClient“-Schnittstelle fehlende Methoden hinzugefügt: 
@@ -156,7 +156,7 @@ ms.lasthandoff: 07/13/2017
 * Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
 * Unterstützung für Wiederholungsversuche für gedrosselte Anforderungen hinzugefügt.  Benutzer kann die Anzahl von Wiederholungsversuchen und die maximale Wartezeit durch Konfigurieren der ConnectionPolicy.RetryOptions-Eigenschaft anpassen.
 * Neue IDocumentClient-Schnittstelle hinzugefügt, die die Signaturen aller DocumentClient-Eigenschaften und -Methoden definiert.  Im Rahmen dieser Änderung wurden auch die Erweiterungsmethoden zum Erstellen von IQueryable und IOrderedQueryable in Methoden der DocumentClient-Klasse selbst geändert.
-* Konfigurationsoption zum Festlegen des ServicePoint.ConnectionLimit-Werts für einen bestimmten DocumentDB-Endpunkt-URI hinzugefügt.  Verwenden Sie ConnectionPolicy.MaxConnectionLimit zum Ändern des Standardwerts, der auf 50 festgelegt ist.
+* Eine Konfigurationsoption zum Festlegen des „ServicePoint.ConnectionLimit“-Werts für einen bestimmten Azure Cosmos DB-Endpunkt-URI wurde hinzugefügt.  Verwenden Sie ConnectionPolicy.MaxConnectionLimit zum Ändern des Standardwerts, der auf 50 festgelegt ist.
 * IPartitionResolver und die zugehörige Implementierung wurden als „veraltet“ markiert.  Unterstützung für IPartitionResolver ist jetzt veraltet. Um mehr Speicher und höheren Durchsatz zu erzielen, empfiehlt sich die Verwendung von partitionierten Sammlungen.
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
@@ -172,7 +172,7 @@ ms.lasthandoff: 07/13/2017
 * [Partitionierte Sammlungen](partition-data.md) und [benutzerdefinierte Leistungsstufen](performance-levels.md) implementiert. 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Korrigiert]** Die Abfrage des DocumentDB-Endpunkts löst Folgendes aus: „System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Stream“.
+* **[Behoben]** Die Abfrage des Azure Cosmos DB-Endpunkts löst Folgendes aus: „System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Stream“.
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Erweiterte LINQ-Unterstützung, einschließlich neuer Operatoren für Paging, bedingte Ausdrücke und Bereichsvergleiche.

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 7055e207cfbcc9de02669be9f0e97045769ef217
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: d1aca8f39e305105d4ec9f63fbe7bee95487e294
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-java"></a>Verarbeiten von D2C-Nachrichten mit IoT Hub (Java)
@@ -33,11 +32,11 @@ Dieses Tutorial stützt sich auf den Code, der im Tutorial [Erste Schritte mit I
 Am Ende dieses Tutorials führen Sie drei Java-Konsolen-Apps aus:
 
 * **simulated-device**, eine geänderte Version der im Tutorial [Erste Schritte mit IoT Hub] erstellten App, die jede Sekunde Datenpunkt-D2C-Nachrichten und alle 10 Sekunden interaktive D2C-Nachrichten sendet. Für diese App wird das AMQP-Protokoll für die Kommunikation mit IoT Hub verwendet.
-* **read-d2c-messages**: Hiermit wird die Telemetrie angezeigt, die Ihre simulierte Geräte-App sendet.
+* **read-d2c-messages** zeigt die Telemetrie an, die Ihre Geräte-App sendet.
 * **read-critical-queue** holt die kritischen Nachrichten aus der Service Bus-Warteschlange, die mit dem IoT Hub verbunden ist.
 
 > [!NOTE]
-> IoT Hub verfügt über SDK-Unterstützung für zahlreiche Geräteplattformen und Sprachen, z.B. C, Java und JavaScript. Anleitungen zum Ersetzen des simulierten Geräts in diesem Tutorial durch ein physisches Gerät und Informationen zum Verbinden von Geräten mit einem IoT Hub finden Sie im [Azure IoT Developer Center].
+> IoT Hub verfügt über SDK-Unterstützung für zahlreiche Geräteplattformen und Sprachen, z.B. C, Java und JavaScript. Anleitungen zum Ersetzen des Geräts in diesem Tutorial durch ein physisches Gerät und Informationen zum Verbinden von Geräten mit einem IoT Hub finden Sie im [Azure IoT Developer Center].
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
@@ -48,9 +47,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Sie sollten über grundlegende Kenntnisse zu [Azure Storage] und [Azure Service Bus] verfügen.
 
-## <a name="send-interactive-messages-from-a-simulated-device-app"></a>Senden interaktiver Nachrichten von einer simulierten Geräte-App aus
-
-In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben, sodass sie gelegentlich Nachrichten sendet, die sofort verarbeitet werden müssen.
+## <a name="send-interactive-messages-from-a-device-app"></a>Senden interaktiver Nachrichten von einer Geräte-App aus
+In diesem Abschnitt ändern Sie die Geräte-App, die Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben, sodass sie gelegentlich Nachrichten sendet, die sofort verarbeitet werden müssen.
 
 1. Öffnen Sie die Datei „simulated-device\src\main\java\com\mycompany\app\App.java“ mit einem Text-Editor. Diese Datei enthält den Code für die **simulated-device** -App, die Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben.
 
@@ -101,11 +99,11 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie im Tutorial 
         }
     }
     ```
-
-    Mit dieser Methode wird vom simulierten Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaft `"level": "critical"` hinzugefügt, wodurch eine Nachricht simuliert wird, die vom Anwendungs-Back-End sofortiges Eingreifen erfordert. Die Anwendung übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
-
-    > [!NOTE]
-    > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
+   
+    Mit dieser Methode wird vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaft `"level": "critical"` hinzugefügt, wodurch eine Nachricht simuliert wird, die vom Anwendungs-Back-End sofortiges Eingreifen erfordert. Die Anwendung übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
+   
+   > [!NOTE]
+   > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
 
 2. Speichern und schließen Sie die Datei „simulated-device\src\main\java\com\mycompany\app\App.java“.
 

@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/31/2017
+ms.date: 07/25/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 05517573232f5b5234364865d92d5a2d1b7096e6
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7a9d994e10ec79437d6ccf60531cb12b86f34151
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Detaillierte Problembehandlung beim Herstellen einer Remotedesktopverbindung mit virtuellen Windows-Computern in Azure
@@ -109,18 +109,9 @@ Wenn Sie mit einem virtuellen Computer im gleichen Clouddienst oder virtuellen N
 Um den Endpunkt als Problemquelle auszuschließen, entfernen Sie den aktuellen Endpunkt und erstellen Sie einen neuen Endpunkt. Wählen Sie einen zufälligen Port im Bereich von 49152 bis 65535 für die externe Portnummer aus. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="source-4-network-security-groups"></a>Quelle 4: Netzwerksicherheitsgruppen
-Netzwerksicherheitsgruppen ermöglichen Ihnen eine präzisere Steuerung des zulässigen eingehenden und ausgehenden Datenverkehrs. Sie können Regeln erstellen, die mehrere Subnetze und Clouddienste in einem virtuellen Azure-Netzwerk umfassen. Überprüfen Sie die Regeln der Netzwerksicherheitsgruppe, um sicherzustellen, dass Remotedesktop-Datenverkehr aus dem Internet zugelassen wird:
+Netzwerksicherheitsgruppen ermöglichen Ihnen eine präzisere Steuerung des zulässigen eingehenden und ausgehenden Datenverkehrs. Sie können Regeln erstellen, die mehrere Subnetze und Clouddienste in einem virtuellen Azure-Netzwerk umfassen.
 
-* Wählen Sie im Azure-Portal Ihren virtuellen Computer aus.
-* Klicken Sie auf **Alle Einstellungen** | **Netzwerkschnittstellen**, und wählen Sie Ihre Netzwerkschnittstelle aus.
-* Klicken Sie auf **Alle Einstellungen** | **Netzwerksicherheitsgruppe**, und wählen Sie Ihre Netzwerksicherheitsgruppe aus.
-* Klicken Sie auf **Alle Einstellungen** | **Eingangssicherheitsregeln**, und vergewissern Sie sich, dass eine Regel vorhanden ist, die RDP am TCP-Port 3389 zulässt.
-  * Sollte keine Regel vorhanden sein, klicken Sie auf **Hinzufügen** , um eine Regel zu erstellen. Geben Sie als Protokoll **TCP** und für den Zielportbereich den Wert **3389** ein.
-  * Vergewissern Sie sich, dass die Aktion auf **Zulassen** festgelegt ist, und klicken Sie auf „OK“, um die neue Eingangsregel zu speichern.
-
-Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../../virtual-network/virtual-networks-nsg.md)
-
-Sie können die NSG-Konfiguration auch mithilfe der IP-Überprüfung überprüfen. Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview). 
+Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md), um zu bestätigen, dass eine Regel in einer Netzwerksicherheitsgruppe den Datenverkehr an eine VM oder von einer VM blockiert. Sie können auch die aktiven Sicherheitsgruppenregeln überprüfen, um sicherzustellen, dass die NSG-Regel „Zulassen“ für eingehende Verbindungen vorhanden ist und für den RDP-Port (standardmäßig 3389) Priorität hat. Weitere Informationen finden Sie unter [Verwenden von effektiven Sicherheitsregeln zur Problembehandlung des Datenverkehrsflusses auf VMs](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
 
 ## <a name="source-5-windows-based-azure-vm"></a>Quelle 5: Windows-basierter virtueller Azure-Computer
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)

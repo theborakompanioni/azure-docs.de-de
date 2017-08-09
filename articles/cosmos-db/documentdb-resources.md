@@ -17,10 +17,10 @@ ms.date: 05/24/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: f632d94222590f97b7a95edf9d4941a66b0710e6
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 8051742c7c368d1ed84bcd90ab75b20f62105e2f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchisches Azure Cosmos DB-Ressourcenmodell und zentrale Konzepte
@@ -38,7 +38,7 @@ Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 Wie das folgende Diagramm veranschaulicht, besteht das hierarchische **Ressourcenmodell** von Cosmos DB aus Gruppen von Ressourcen, die unter einem Datenbankkonto angeordnet sind und jeweils über einen logischen und beständigen URI adressiert werden können. Eine Ressourcengruppe wird in diesem Dokument als **Feed** bezeichnet. 
 
 > [!NOTE]
-> Cosmos DB bietet ein hoch effizientes TCP-Protokoll mit einem RESTful-basierten Kommunikationsmodell, das über die [DocumentDB .NET-Client-API](documentdb-sdk-dotnet.md) verfügbar ist.
+> Azure Cosmos DB bietet ein hoch effizientes TCP-Protokoll mit einem RESTful-basierten Kommunikationsmodell, das über die [DocumentDB .NET-Client-API](documentdb-sdk-dotnet.md) verfügbar ist.
 > 
 > 
 

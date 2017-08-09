@@ -12,14 +12,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 021bf7c3ce70d9857b14597a2d378d7baad5aab2
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 54503d5d6a636239d240509d7d09cf334234bac7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Verbinden Ihres Raspberry Pi 3 mit der Remoteüberwachungslösung und Ermöglichen von Remoteupdates der Firmware mithilfe von Node.js
@@ -35,7 +34,6 @@ In diesem Tutorial wird Folgendes verwendet:
 
 - Raspbian OS, die Programmiersprache Node.js und das Microsoft Azure IoT SDK für Node.js, um ein Beispielgerät zu implementieren.
 - Die von IoT Suite vorkonfigurierte Remoteüberwachungslösung als cloudbasiertes Back-End.
-
 
 ## <a name="overview"></a>Übersicht
 
@@ -67,33 +65,44 @@ Falls noch nicht geschehen, installieren Sie Node.js auf Ihrem Raspberry Pi. Das
 
 1. Verwenden Sie den folgenden Befehl aus, um Ihr Raspberry Pi zu aktualisieren:
 
-    `sudo apt-get update`
+    ```sh
+    sudo apt-get update
+    ```
 
 1. Verwenden Sie den folgenden Befehl zum Herunterladen der Node.js-Binärdateien auf Ihr Raspberry Pi:
 
-    `wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. Verwenden Sie den folgenden Befehl, um die Binärdateien zu installieren:
 
-    `sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz`
+    ```sh
+    sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz
+    ```
 
 1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Sie Node.js 6.10.2 erfolgreich installiert haben:
 
-    `node --version`
+    ```sh
+    node --version
+    ```
 
 ### <a name="clone-the-repositories"></a>Klonen der Repositorys
 
 Falls nicht bereits erfolgt, klonen Sie die erforderlichen Repositorys durch Ausführen der folgenden Befehle auf Ihrem Pi:
 
-`cd ~`
-
-`git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git`
+```sh
+cd ~
+git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git
+```
 
 ### <a name="update-the-device-connection-string"></a>Aktualisieren der Verbindungszeichenfolge des Geräts
 
 Öffnen Sie die Beispielkonfigurationsdatei im **Nano**-Editor mithilfe des folgenden Befehls:
 
-`nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/config/deviceinfo`
+```sh
+nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/config/deviceinfo
+```
 
 Ersetzen Sie die Platzhalterwerte durch die Geräte-ID und IoT Hub-Informationen, die Sie am Anfang dieses Tutorials erstellt und gespeichert haben.
 
@@ -110,13 +119,16 @@ Speichern Sie Ihre Änderungen (**STRG+O**, **EINGABETASTE**), und beenden Sie d
 
 Führen Sie die folgenden Befehle zum Installieren der erforderlichen Pakete für das Beispiel aus:
 
-`cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advance/1.0`
-
-`npm install`
+```sh
+cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advance/1.0
+npm install
+```
 
 Sie können nun das Beispielprogramm auf dem Raspberry Pi ausführen. Geben Sie den folgenden Befehl ein:
 
-`sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/remote_monitoring.js`
+```sh
+sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/remote_monitoring.js
+```
 
 Die folgende Beispielausgabe ist ein Beispiel der Ausgabe, die an der Eingabeaufforderung auf dem Raspberry Pi angezeigt wird:
 
@@ -126,13 +138,13 @@ Drücken Sie **STRG+C**, um das Programm zu einem beliebigen Zeitpunkt zu beende
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-telemetry-advanced](../../includes/iot-suite-raspberry-pi-kit-view-telemetry-advanced.md)]
 
-1. Klicken Sie im Lösungsdashboard auf **Geräte**, um die Seite **Geräte** aufzurufen. Wählen Sie in der **Geräteliste** Ihr Raspberry Pi aus. Wählen Sie anschließend **Methoden** aus:
+1. Klicken Sie im Lösungsdashboard auf **Geräte**, um die Seite **Geräte** aufzurufen. Wählen Sie in der **Geräteliste** Ihren Raspberry Pi aus. Wählen Sie anschließend **Methoden** aus:
 
     ![Auflisten von Geräten im Dashboard][img-list-devices]
 
 1. Wählen Sie auf der Seite **Methode aufrufen** in der Dropdownliste **Methode** die Option **InitiateFirmwareUpdate** aus.
 
-1. Geben Sie in das Feld **FWPackageURI** Folgendes ein: **https://raw.githubusercontent.com/IoTChinaTeam/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**. Diese Datei enthält die Implementierung der Version 2.0 der Firmware.
+1. Geben Sie in das Feld **FWPackageURI** Folgendes ein: **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**. Diese Datei enthält die Implementierung der Version 2.0 der Firmware.
 
 1. Wählen Sie **InvokeMethod** aus. Die App auf dem Raspberry Pi gibt eine Bestätigung an das Lösungsdashboard zurück. Anschließend wird das Update der Firmware gestartet, indem die neue Version der Firmware heruntergeladen wird:
 
@@ -149,7 +161,7 @@ Sie können das Update der Firmware während der Ausführung auf dem Gerät und 
     > [!NOTE]
     > Die Remoteüberwachungs-App wird automatisch neu gestartet, sobald das Update abgeschlossen ist. Verwenden Sie den Befehl `ps -ef`, um zu überprüfen, ob sie ausgeführt wird. Wenn Sie den Prozess beenden möchten, verwenden Sie den Befehl `kill` mit der Prozess-ID.
 
-1. Sie können den vom Gerät gemeldeten Status des Updates der Firmware im Lösungsportal anzeigen. Der folgende Screenshot zeigt den Status und die Dauer der einzelnen Phasen des Updatevorgangsund die neue Firmwareversion:
+1. Sie können den vom Gerät gemeldeten Status des Updates der Firmware im Lösungsportal anzeigen. Der folgende Screenshot zeigt den Status und die Dauer der einzelnen Phasen des Updatevorgangs und die neue Firmwareversion:
 
     ![Anzeigen des Auftragsstatus][img-job-status]
 

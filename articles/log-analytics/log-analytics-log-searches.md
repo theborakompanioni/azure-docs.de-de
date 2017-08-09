@@ -12,18 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/26/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: b005d0fb25483f3dce14133038d7759dff07fc7c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="find-data-using-log-searches"></a>Suchen von Daten mithilfe der Protokollsuche
+# <a name="find-data-using-log-searches-in-log-analytics"></a>Suchen von Daten mit Protokollsuchen in Log Analytics
+
+>[!NOTE]
+> Dieser Artikel beschreibt Protokollsuchen mithilfe der aktuellen Abfragesprache in Azure Log Analytics.  Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, lesen Sie [Informationen zu Protokollsuchen in Log Analytics (neu)](log-analytics-log-search-new.md).
+
 
 Der Kern von Log Analytics ist die Protokollsuchfunktion, die Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung ermöglicht. Lösungen werden auch von der Protokollsuche beim Bereitstellen von Metriken unterstützt, die eine Pivotierung in Bezug auf einen bestimmten Problembereich bieten.
 
@@ -135,6 +137,24 @@ Wie beim Ereignisprotokoll-Feld können Sie Daten nur für einen Satz bestimmter
 
 ```
 CounterName="% Processor Time"  AND InstanceName="_Total" AND (Computer=SERVER1.contoso.com OR Computer=SERVER2.contoso.com)
+```
+
+### <a name="field-types"></a>Feldtypen
+Wenn Sie Filter erstellen, sollten Sie die Unterschiede bei der Arbeit mit verschiedenen Typen von Feldern kennen, die von Protokollsuchen zurückgegeben werden.
+
+**Durchsuchbare Felder** werden in den Suchergebnissen blau angezeigt.  Sie können durchsuchbare Felder in Suchbedingungen verwenden, die für das Feld spezifisch sind, z.B. folgende:
+
+```
+Type: Event EventLevelName: "Error"
+Type: SecurityEvent Computer:Contains("contoso.com")
+Type: Event EventLevelName IN {"Error","Warning"}
+```
+
+**Freitextsuchefelder** werden in den Suchergebnissen grau angezeigt.  Sie können nicht wie durchsuchbare Felder mit für das Feld spezifischen Suchbedingungen verwendet werden.  Sie werden nur beim Ausführen einer alle Felder umfassenden Abfrage wie der folgenden durchsucht.
+
+```
+"Error"
+Type: Event "Exception"
 ```
 
 

@@ -12,15 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 07/26/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6c0affd0f5ea600f979cfcc87e2435658c8dab14
-
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: a2ddc932343d54963a378ee27dc962a790326b2a
+ms.contentlocale: de-de
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
+
+>[!NOTE]
+> Dieser Artikel beschreibt die Verwendung von Computergruppen mithilfe der aktuellen Log Analytics-Abfragesprache.    Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, funktionieren Computergruppen nun anders.  Dieser Artikel enthält Hinweise zur unterschiedlichen Syntax und dem Verhalten der neuen Abfragesprache.  
+
+
 Mit Computergruppen in Log Analytics können Sie [Protokollsuchvorgänge](log-analytics-log-searches.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollsuche eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die Computern in der Gruppe entsprechen.
 
 ## <a name="creating-a-computer-group"></a>Erstellen einer Computergruppe
@@ -34,19 +40,25 @@ Sie können eine Computergruppe in Log Analytics mithilfe einer der Methoden in 
 | WSUS |Scannen Sie automatisch WSUS-Server oder -Clients auf Zielgruppen, und erstellen Sie jeweils eine Gruppe in Log Analytics. |
 
 ### <a name="log-search"></a>Protokollsuche
-Computergruppen, die aus einer Protokollsuche erstellt wurden, enthalten alle Computer die bei der von Ihnen definierten Suchabfrage zurückgegeben wurden.  Diese Abfrage wird jedes Mal ausgeführt, wenn die Computergruppe verwendet wird. Daher werden sämtliche Änderungen seit der Erstellung der Gruppe berücksichtigt.
+Computergruppen, die aus einer Protokollsuche erstellt wurden, enthalten alle Computer, die bei der von Ihnen definierten Suchabfrage zurückgegeben wurden.  Diese Abfrage wird jedes Mal ausgeführt, wenn die Computergruppe verwendet wird. Daher werden sämtliche Änderungen seit der Erstellung der Gruppe berücksichtigt.
 
 Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche wie folgt vor.
 
 1. [Erstellen Sie eine Protokollsuche](log-analytics-log-searches.md), die eine Liste mit Computern zurückgibt.  Die Suche muss eine bestimmten Gruppe von Computern zurückgeben, indem Sie in der Abfrage z.B. **distinct Computer** oder **measure count() by Computer** verwenden.  
 2. Klicken Sie oben auf der Seite auf die Schaltfläche **Speichern**.
-3. Wählen Sie für **Speichern Sie diese Abfrage als Computergruppe:** die Option **Ja** aus.
+3. Wählen Sie für **Speichern Sie diese Abfrage als Computergruppe** die Option **Ja** aus.
 4. Geben Sie einen **Namen** und eine **Kategorie** für die Gruppe ein.  Wenn bereits eine Suche mit demselben Namen und derselben Kategorie vorhanden ist, werden Sie gefragt, ob diese überschrieben werden soll.  Sie können über mehrere Suchvorgänge mit demselben Namen in unterschiedlichen Kategorien verfügen. 
 
 Nachstehend finden Sie Beispielsuchen, die Sie als eine Computergruppe speichern können.
 
     Computer="Computer1" OR Computer="Computer2" | distinct Computer 
     Computer=*srv* | measure count() by Computer
+
+>[!NOTE]
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, wurden am Verfahren zum Erstellen einer neuen Computergruppe die folgenden Änderungen vorgenommen.
+>  
+> - Die Abfrage zum Erstellen einer Computergruppe muss `distinct Computer` enthalten.  Es folgt ein Beispiel für eine Abfrage zum Erstellen einer Computergruppe.<br>`Heartbeat | where Computer contains "srv" `
+> - Wenn Sie eine neue Computergruppe erstellen, müssen Sie zusätzlich zum Namen einen Alias angeben.  Sie verwenden den Alias, wenn Sie die Computergruppe in einer Abfrage verwenden, wie im Folgenden beschrieben.  
 
 ### <a name="log-search-api"></a>Protokollsuch-API
 Computergruppen, die mit der Protokoll-API erstellt wurden, sind mit denen, die mit einer Protokollsuche erstellt wurden, identisch.
@@ -85,9 +97,14 @@ Verwenden Sie die folgende Syntax, um in einer Protokollsuche auf eine Computerg
 
 Wenn eine Suche ausgeführt wird, werden zuerst die Mitglieder aller in der Suche enthaltenen Computergruppen aufgelöst.  Wenn die Gruppe auf einer Protokollsuche basiert, wird diese Suche vor der eigentlichen Protokollsuche ausgeführt, um die Mitglieder der Gruppe zurückzugeben.
 
-Computergruppen werden häufig mit der **IN**-Klausel in der Protokollsuche verwendet, wie im folgenden Beispiel gezeigt.
+Computergruppen werden häufig mit der **IN**-Klausel in der Protokollsuche verwendet, wie im folgenden Beispiel gezeigt:
 
     Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]
+
+>[!NOTE]
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, verwenden Sie eine Computergruppe in einer Abfrage, indem Sie den Alias als Funktion behandeln wie im folgenden Beispiel:
+> 
+>  `UpdateSummary | where Computer IN (MyComputerGroup)`
 
 ## <a name="computer-group-records"></a>Computergruppen-Datensätze
 Im OMS-Repositorys wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf der Protokollsuche erstellt.
@@ -100,16 +117,11 @@ Im OMS-Repositorys wird für jede Mitgliedschaft in einer Computergruppe, die au
 | Group |Der Anzeigename der Gruppe |
 | GroupFullName |Der vollständige Pfad zur Gruppe, einschließlich Quelle und Quellname |
 | GroupSource |Die Quelle, aus der die Gruppe zusammengestellt wurde <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |Der Name der Quelle, aus der die Gruppen zusammengestellt wurden.  Für Active Directory ist dies der Domänenname. |
+| GroupSourceName |Der Name der Quelle, aus der die Gruppe zusammengestellt wurde.  Für Active Directory ist dies der Domänenname. |
 | ManagementGroupName |Name der Verwaltungsgruppe für SCOM-Agents.  Bei anderen Agents lautet dieser „AOI-\<Arbeitsbereich-ID\>“. |
 | TimeGenerated |Das Datum und die Uhrzeit der Erstellung oder letzten Aktualisierung der Computergruppe |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

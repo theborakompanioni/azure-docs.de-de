@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 43acd0e8e6b106013fc4491e3785f6efefc51493
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 1031cd63dede9ed202fdc11b153a550766d9cb19
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -131,7 +130,7 @@ Wenn Sie nicht über ein Azure-Konto verfügen, können Sie eine [kostenlose Tes
 > 
 > 
 
-Stellen Sie sicher, dass Sie am Ende dieses Artikels die Schritte der Anleitung zum „Bereinigen Ihres Azure-Kontos“ befolgen, sodass Sie Ihre Azure-Gutschrift in Höhe von 200 US-Dollar bestmöglich nutzen können.
+Stellen Sie sicher, dass Sie am Ende dieses Artikels die Anleitung zum Bereinigen Ihres Azure-Kontos befolgen, damit Sie Ihre Azure-Gutschrift bestmöglich nutzen können.
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>Bereitstellen von Azure-Ressourcen, die für das Tutorial nötig sind
 Für dieses Tutorial sind zwei Event Hubs zum Empfangen von Eingabe- und Ausgabedatenströmen (*entry* und *exit*) erforderlich. Azure SQL-Datenbank gibt die Ergebnisse der Stream Analytics-Aufträge aus. In Azure Storage werden Referenzdaten zu Fahrzeugregistrierungen gespeichert.
